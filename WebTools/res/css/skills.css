@@ -1,0 +1,70 @@
+﻿.skill-container,
+.skill-container-option {
+    width: 300px;
+    height: auto;
+}
+
+.skill-name {
+    font-size: 20px;
+    margin-bottom: 2px;
+    border-bottom: 1px solid rgba(95, 100, 62, 0.2);
+}
+
+.skill-expertise,
+.skill-focus {
+    font-size: 16px;
+    padding-left: 20px !important;
+}
+
+.skill-expertise-value,
+.skill-focus-value {
+    font-size: 16px;
+    text-align: center;
+    padding-right: 4px;
+}
+
+.skill-points {
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: 0px;
+    background-color: white;
+}
+
+.skill-inc-expertise,
+.skill-inc-focus {
+    transform: translateY(2px);
+}
+
+#signature-skill {
+    width: 200px;
+}
+
+.legendary {
+    background-color: #5f643e;
+    color: white;
+    padding: 2px 4px 2px 4px;
+    float: right;
+}
+  .legendary-selected {
+    background-color: white;
+    color: black;
+    padding: 4px 8px 4px 8px !important;
+    font-size: x-small;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .legendary-unselected {
+    background-color: #41450a;
+    color: white;
+    padding: 4px 8px 4px 8px !important;
+    font-size: x-small;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+
+@media screen and (min-width: 0px) and (max-width: 800px) {
+    .skill-container {
+        width: 100%;
+    }
+}

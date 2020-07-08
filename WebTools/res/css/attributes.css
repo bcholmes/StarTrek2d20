@@ -1,0 +1,53 @@
+﻿#Agility,
+#Awareness,
+#Brawn,
+#Coordination,
+#Intelligence,
+#Personality,
+#Willpower {
+    display: inline-block;
+}
+
+.attribute-container {
+    display: inline-block;
+    width: 100px;
+    background-color: #906F9A;
+    color: white;
+    padding: 4px;
+    margin: 2px;
+    text-align: right;
+    border: 2px solid #906F9A;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.attribute-value {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding: 4px;
+    width: 100px;
+    text-align: center;
+    margin: 2px;
+    border: 2px solid #906F9A;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+    .attribute-value > img {
+        margin-right: 5px;
+    }
+
+.attribute-points {
+    font-size: 14px;
+    text-shadow: 1px 1px 1px #333;
+}
+
+@media screen and (min-width: 0px) and (max-width: 800px) {
+    .attribute-container {
+        width: 60px;
+    }
+
+    .attribute-value {
+        width: 80px;
+    }
+}

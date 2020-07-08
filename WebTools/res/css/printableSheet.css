@@ -1,0 +1,640 @@
+﻿.content-container-wide {
+    width: 29.7cm;
+    /*margin-left: auto;
+    margin-right: auto;*/
+    margin-bottom: 100px;
+}
+
+.content-scrollable {
+    overflow-x: scroll;
+}
+
+.logo-hidden {
+    display: none;
+}
+
+.page-wide {
+    width: 29.7cm;
+}
+
+.sheet-page {
+    width: 29.7cm;
+    height: 22cm;
+    padding: 0cm;
+    background-image: url(../img/sheet.jpg);
+    background-repeat: no-repeat;
+    background-size: 29.7cm 22cm;
+    font-size: x-small;
+    font-weight: bold;
+}
+
+.sheet-name {
+    position: absolute;
+    left: 530px;
+    top: 133px;
+    font-weight: bold;
+}
+
+.sheet-age-gender {
+    position: absolute;
+    left: 494px;
+    top: 200px;
+}
+
+.sheet-caste {
+    position: absolute;
+    left: 494px;
+    top: 220px;
+}
+
+.sheet-archetype {
+    position: absolute;
+    left: 494px;
+    top: 240px;
+}
+
+.sheet-education {
+    position: absolute;
+    left: 494px;
+    top: 259px;
+    max-width: 126px;
+    line-height: 10px;
+}
+
+.sheet-homeland {
+    position: absolute;
+    left: 704px;
+    top: 200px;
+}
+
+.sheet-trait {
+    position: absolute;
+    left: 704px;
+    top: 220px;
+}
+
+.sheet-nature {
+    position: absolute;
+    left: 704px;
+    top: 240px;
+}
+
+.sheet-warstory {
+    position: absolute;
+    left: 704px;
+    top: 260px;
+    max-width: 126px;
+    line-height: 10px;
+}
+
+.sheet-languages {
+    position: absolute;
+    left: 494px;
+    top: 323px;
+    font-size: xx-small;
+}
+
+.sheet-talent-home {
+    position: absolute;
+    left: 503px;
+    top: 447px;
+}
+
+.sheet-talent-caste1 {
+    position: absolute;
+    left: 503px;
+    top: 480px;
+}
+
+.sheet-talent-caste2 {
+    position: absolute;
+    left: 503px;
+    top: 517px;
+}
+
+.sheet-talent-education {
+    position: absolute;
+    left: 503px;
+    top: 590px;
+}
+
+.sheet-talent-nature {
+    position: absolute;
+    left: 503px;
+    top: 626px;
+}
+
+.sheet-talent-archetype {
+    position: absolute;
+    left: 503px;
+    top: 663px;
+}
+
+.sheet-agility {
+    position: absolute;
+    left: 1041px;
+    top: 148px;
+}
+
+.sheet-awareness {
+    position: absolute;
+    left: 1041px;
+    top: 228px;
+}
+
+.sheet-brawn {
+    position: absolute;
+    left: 1041px;
+    top: 326px;
+}
+
+.sheet-coordination {
+    position: absolute;
+    left: 1041px;
+    top: 390px;
+}
+
+.sheet-intelligence {
+    position: absolute;
+    left: 1041px;
+    top: 471px;
+}
+
+.sheet-personality {
+    position: absolute;
+    left: 1041px;
+    top: 594px;
+}
+
+.sheet-willpower {
+    position: absolute;
+    left: 1041px;
+    top: 705px;
+}
+
+.sheet-acrobatics-exp {
+    position: absolute;
+    left: 994px;
+    top: 180px;
+}
+.sheet-acrobatics-foc {
+    position: absolute;
+    left: 1024px;
+    top: 180px;
+}
+.sheet-acrobatics-tn {
+    position: absolute;
+    left: 1055px;
+    top: 180px;
+}
+
+.sheet-melee-exp {
+    position: absolute;
+    left: 994px;
+    top: 197px;
+}
+.sheet-melee-foc {
+    position: absolute;
+    left: 1024px;
+    top: 197px;
+}
+.sheet-melee-tn {
+    position: absolute;
+    left: 1055px;
+    top: 197px;
+}
+
+.sheet-stealth-exp {
+    position: absolute;
+    left: 994px;
+    top: 214px;
+}
+.sheet-stealth-foc {
+    position: absolute;
+    left: 1024px;
+    top: 214px;
+}
+.sheet-stealth-tn {
+    position: absolute;
+    left: 1055px;
+    top: 214px;
+}
+
+.sheet-insight-exp {
+    position: absolute;
+    left: 994px;
+    top: 260px;
+}
+.sheet-insight-foc {
+    position: absolute;
+    left: 1024px;
+    top: 260px;
+}
+.sheet-insight-tn {
+    position: absolute;
+    left: 1055px;
+    top: 260px;
+}
+
+.sheet-observation-exp {
+    position: absolute;
+    left: 994px;
+    top: 277px;
+}
+.sheet-observation-foc {
+    position: absolute;
+    left: 1024px;
+    top: 277px;
+}
+.sheet-observation-tn {
+    position: absolute;
+    left: 1055px;
+    top: 277px;
+}
+
+.sheet-survival-exp {
+    position: absolute;
+    left: 994px;
+    top: 294px;
+}
+.sheet-survival-foc {
+    position: absolute;
+    left: 1024px;
+    top: 294px;
+}
+.sheet-survival-tn {
+    position: absolute;
+    left: 1055px;
+    top: 294px;
+}
+
+.sheet-thievery-exp {
+    position: absolute;
+    left: 994px;
+    top: 311px;
+}
+.sheet-thievery-foc {
+    position: absolute;
+    left: 1024px;
+    top: 311px;
+}
+.sheet-thievery-tn {
+    position: absolute;
+    left: 1055px;
+    top: 311px;
+}
+
+.sheet-athletics-exp {
+    position: absolute;
+    left: 994px;
+    top: 358px;
+}
+.sheet-athletics-foc {
+    position: absolute;
+    left: 1024px;
+    top: 358px;
+}
+.sheet-athletics-tn {
+    position: absolute;
+    left: 1055px;
+    top: 358px;
+}
+
+.sheet-resistance-exp {
+    position: absolute;
+    left: 994px;
+    top: 375px;
+}
+.sheet-resistance-foc {
+    position: absolute;
+    left: 1024px;
+    top: 375px;
+}
+.sheet-resistance-tn {
+    position: absolute;
+    left: 1055px;
+    top: 375px;
+}
+
+.sheet-parry-exp {
+    position: absolute;
+    left: 994px;
+    top: 422px;
+}
+.sheet-parry-foc {
+    position: absolute;
+    left: 1024px;
+    top: 422px;
+}
+.sheet-parry-tn {
+    position: absolute;
+    left: 1055px;
+    top: 422px;
+}
+
+.sheet-ranged-exp {
+    position: absolute;
+    left: 994px;
+    top: 439px;
+}
+.sheet-ranged-foc {
+    position: absolute;
+    left: 1024px;
+    top: 439px;
+}
+.sheet-ranged-tn {
+    position: absolute;
+    left: 1055px;
+    top: 439px;
+}
+
+.sheet-sailing-exp {
+    position: absolute;
+    left: 994px;
+    top: 456px;
+}
+.sheet-sailing-foc {
+    position: absolute;
+    left: 1024px;
+    top: 456px;
+}
+.sheet-sailing-tn {
+    position: absolute;
+    left: 1055px;
+    top: 456px;
+}
+
+.sheet-alchemy-exp {
+    position: absolute;
+    left: 994px;
+    top: 504px;
+}
+.sheet-alchemy-foc {
+    position: absolute;
+    left: 1024px;
+    top: 504px;
+}
+.sheet-alchemy-tn {
+    position: absolute;
+    left: 1055px;
+    top: 504px;
+}
+
+.sheet-craft-exp {
+    position: absolute;
+    left: 994px;
+    top: 521px;
+}
+.sheet-craft-foc {
+    position: absolute;
+    left: 1024px;
+    top: 521px;
+}
+.sheet-craft-tn {
+    position: absolute;
+    left: 1055px;
+    top: 521px;
+}
+
+.sheet-healing-exp {
+    position: absolute;
+    left: 994px;
+    top: 535px;
+}
+.sheet-healing-foc {
+    position: absolute;
+    left: 1024px;
+    top: 535px;
+}
+.sheet-healing-tn {
+    position: absolute;
+    left: 1055px;
+    top: 535px;
+}
+
+.sheet-linguistics-exp {
+    position: absolute;
+    left: 994px;
+    top: 550px;
+}
+.sheet-linguistics-foc {
+    position: absolute;
+    left: 1024px;
+    top: 550px;
+}
+.sheet-linguistics-tn {
+    position: absolute;
+    left: 1055px;
+    top: 550px;
+}
+
+.sheet-lore-exp {
+    position: absolute;
+    left: 994px;
+    top: 565px;
+}
+.sheet-lore-foc {
+    position: absolute;
+    left: 1024px;
+    top: 565px;
+}
+.sheet-lore-tn {
+    position: absolute;
+    left: 1055px;
+    top: 565px;
+}
+
+.sheet-warfare-exp {
+    position: absolute;
+    left: 994px;
+    top: 580px;
+}
+.sheet-warfare-foc {
+    position: absolute;
+    left: 1024px;
+    top: 580px;
+}
+.sheet-warfare-tn {
+    position: absolute;
+    left: 1055px;
+    top: 580px;
+}
+
+.sheet-animal-exp {
+    position: absolute;
+    left: 994px;
+    top: 626px;
+}
+.sheet-animal-foc {
+    position: absolute;
+    left: 1024px;
+    top: 626px;
+}
+.sheet-animal-tn {
+    position: absolute;
+    left: 1055px;
+    top: 626px;
+}
+
+.sheet-command-exp {
+    position: absolute;
+    left: 994px;
+    top: 641px;
+}
+.sheet-command-foc {
+    position: absolute;
+    left: 1024px;
+    top: 641px;
+}
+.sheet-command-tn {
+    position: absolute;
+    left: 1055px;
+    top: 641px;
+}
+
+.sheet-counsel-exp {
+    position: absolute;
+    left: 994px;
+    top: 656px;
+}
+.sheet-counsel-foc {
+    position: absolute;
+    left: 1024px;
+    top: 656px;
+}
+.sheet-counsel-tn {
+    position: absolute;
+    left: 1055px;
+    top: 656px;
+}
+
+.sheet-persuade-exp {
+    position: absolute;
+    left: 994px;
+    top: 671px;
+}
+.sheet-persuade-foc {
+    position: absolute;
+    left: 1024px;
+    top: 671px;
+}
+.sheet-persuade-tn {
+    position: absolute;
+    left: 1055px;
+    top: 671px;
+}
+
+.sheet-society-exp {
+    position: absolute;
+    left: 994px;
+    top: 688px;
+}
+.sheet-society-foc {
+    position: absolute;
+    left: 1024px;
+    top: 688px;
+}
+.sheet-society-tn {
+    position: absolute;
+    left: 1055px;
+    top: 688px;
+}
+
+.sheet-discipline-exp {
+    position: absolute;
+    left: 994px;
+    top: 737px;
+}
+.sheet-discipline-foc {
+    position: absolute;
+    left: 1024px;
+    top: 737px;
+}
+.sheet-discipline-tn {
+    position: absolute;
+    left: 1055px;
+    top: 737px;
+}
+
+.sheet-sorcery-exp {
+    position: absolute;
+    left: 994px;
+    top: 752px;
+}
+.sheet-sorcery-foc {
+    position: absolute;
+    left: 1024px;
+    top: 752px;
+}
+.sheet-sorcery-tn {
+    position: absolute;
+    left: 1055px;
+    top: 752px;
+}
+
+.sheet-social {
+    position: absolute;
+    left: 620px;
+    top: 364px;
+    font-size: medium;
+}
+
+.sheet-gold {
+    position: absolute;
+    left: 323px;
+    top: 705px;
+    font-size: medium;
+}
+
+.sheet-fortune {
+    position: absolute;
+    top: 365px;
+    font-size: large;
+}
+    .sheet-fortune1 {
+        position: absolute;
+        left: 416px;
+    }
+    .sheet-fortune2 {
+        position: absolute;
+        left: 438px;
+    }
+    .sheet-fortune3 {
+        position: absolute;
+        left: 458px;
+    }
+    .sheet-fortune4 {
+        position: absolute;
+        left: 478px;
+    }
+    .sheet-fortune5 {
+        position: absolute;
+        left: 498px;
+    }
+
+.sheet-ranged {
+    position: absolute;
+    left: 120px;
+    top: 115px;
+}
+
+.sheet-melee {
+    position: absolute;
+    left: 220px;
+    top: 115px;
+}
+
+.sheet-presence {
+    position: absolute;
+    left: 320px;
+    top: 115px;
+}
+
+.sheet-belongings {
+    position: absolute;
+    left: 83px;
+    top: 701px;
+    max-width: 186px;
+    line-height: 16px;
+    font-size: xx-small;
+}

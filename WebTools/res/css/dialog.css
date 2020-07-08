@@ -1,0 +1,82 @@
+﻿.dialog-hidden {
+    display: none;
+}
+
+.dialog-visible {
+}
+
+.dialog-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-color: black;
+    opacity: .7;
+    z-index: 100;
+}
+
+.dialog-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    width: 50%;
+    min-width: 300px;
+    max-width: 500px;
+    min-height: 5%;
+    max-height: 100%;
+    background-color: #9179B7;
+    color: white;
+    text-align: center;
+    padding: 45px 15px 45px 15px;
+    border-radius: 20px;
+    overflow-y: auto;
+    z-index: 150;
+}
+
+.dialog-container-visible {
+    animation: dialog-in linear .2s;
+}
+
+/* ANIMATION */
+
+@keyframes dialog-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+@-webkit-keyframes dialog-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+@-moz-keyframes dialog-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+@-o-keyframes dialog-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}

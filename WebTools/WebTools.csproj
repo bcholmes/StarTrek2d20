@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{80169DDF-A214-4966-B97D-95F3B5D3473B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebTools</RootNamespace>
+    <AssemblyName>WebTools</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="dist\trek.js" />
+    <None Include="package.json" />
+    <Content Include="res\css\sourceselection.css" />
+    <Content Include="res\css\attributes.css" />
+    <Content Include="res\css\characterSheet.css" />
+    <Content Include="res\css\common.css" />
+    <Content Include="res\css\components.css" />
+    <Content Include="res\css\dialog.css" />
+    <Content Include="res\css\printableSheet.css" />
+    <Content Include="res\css\skills.css" />
+    <Content Include="res\img\dec.png" />
+    <Content Include="res\img\inc.png" />
+    <Content Include="res\img\logo.png" />
+    <Content Include="res\img\modiphius.png" />
+    <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
+    <None Include="tsd.json" />
+    <None Include="tsconfig.json" />
+    <None Include="Properties\PublishProfiles\localhost.pubxml" />
+    <Content Include="res\fonts\tt0106m0.TTF" />
+    <None Include="set_version.ps1" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="version.js" />
+    <None Include="webpack.config.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config.js" />
+    <Content Include="index.html" />
+    <None Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\app.tsx" />
+    <TypeScriptCompile Include="src\common\character.ts" />
+    <TypeScriptCompile Include="src\common\characterSerializer.ts" />
+    <TypeScriptCompile Include="src\common\starshipSerializer.ts" />
+    <TypeScriptCompile Include="src\common\window.ts" />
+    <TypeScriptCompile Include="src\common\eventChannel.ts" />
+    <TypeScriptCompile Include="src\common\extensions.ts" />
+    <TypeScriptCompile Include="src\common\navigator.ts" />
+    <TypeScriptCompile Include="src\components\attribute.tsx" />
+    <TypeScriptCompile Include="src\components\attributeImprovement.tsx" />
+    <TypeScriptCompile Include="src\components\button.tsx" />
+    <TypeScriptCompile Include="src\components\careerEventSelection.tsx" />
+    <TypeScriptCompile Include="src\components\careerSelection.tsx" />
+    <TypeScriptCompile Include="src\components\characterSheet.tsx" />
+    <TypeScriptCompile Include="src\components\checkBox.tsx" />
+    <TypeScriptCompile Include="src\components\clickableSuggestions.tsx" />
+    <TypeScriptCompile Include="src\components\dialog.tsx" />
+    <TypeScriptCompile Include="src\components\dieRoll.tsx" />
+    <TypeScriptCompile Include="src\components\dropDownInput.tsx" />
+    <TypeScriptCompile Include="src\components\electiveSkillList.tsx" />
+    <TypeScriptCompile Include="src\components\environmentSelection.tsx" />
+    <TypeScriptCompile Include="src\components\footer.tsx" />
+    <TypeScriptCompile Include="src\components\history.tsx" />
+    <TypeScriptCompile Include="src\components\majorsList.tsx" />
+    <TypeScriptCompile Include="src\components\mixedSpeciesSelection.tsx" />
+    <TypeScriptCompile Include="src\components\pageHeader.tsx" />
+    <TypeScriptCompile Include="src\components\radioButton.tsx" />
+    <TypeScriptCompile Include="src\components\refits.tsx" />
+    <TypeScriptCompile Include="src\components\skill.tsx" />
+    <TypeScriptCompile Include="src\components\skillImprovement.tsx" />
+    <TypeScriptCompile Include="src\components\speciesSelection.tsx" />
+    <TypeScriptCompile Include="src\components\starshipTalentSelection.tsx" />
+    <TypeScriptCompile Include="src\components\supportingCharacterAttributes.tsx" />
+    <TypeScriptCompile Include="src\components\supportingCharacterDisciplines.tsx" />
+    <TypeScriptCompile Include="src\components\talentDescription.tsx" />
+    <TypeScriptCompile Include="src\components\talentList.tsx" />
+    <TypeScriptCompile Include="src\components\talentSelection.tsx" />
+    <TypeScriptCompile Include="src\components\talentSelectionList.tsx" />
+    <TypeScriptCompile Include="src\components\trackSelection.tsx" />
+    <TypeScriptCompile Include="src\components\upbringingSelection.tsx" />
+    <TypeScriptCompile Include="src\components\valueInput.tsx" />
+    <TypeScriptCompile Include="src\helpers\careerEvents.ts" />
+    <TypeScriptCompile Include="src\helpers\careers.ts" />
+    <TypeScriptCompile Include="src\helpers\departments.ts" />
+    <TypeScriptCompile Include="src\helpers\environments.ts" />
+    <TypeScriptCompile Include="src\helpers\missionProfiles.ts" />
+    <TypeScriptCompile Include="src\helpers\ranks.ts" />
+    <TypeScriptCompile Include="src\helpers\roles.ts" />
+    <TypeScriptCompile Include="src\helpers\sources.ts" />
+    <TypeScriptCompile Include="src\helpers\spaceframes.ts" />
+    <TypeScriptCompile Include="src\helpers\species.ts" />
+    <TypeScriptCompile Include="src\helpers\attributes.ts" />
+    <TypeScriptCompile Include="src\helpers\eras.ts" />
+    <TypeScriptCompile Include="src\helpers\diceRoller.ts" />
+    <TypeScriptCompile Include="src\helpers\skills.ts" />
+    <TypeScriptCompile Include="src\helpers\systems.ts" />
+    <TypeScriptCompile Include="src\helpers\tracks.ts" />
+    <TypeScriptCompile Include="src\helpers\talents.ts" />
+    <TypeScriptCompile Include="src\helpers\upbringings.ts" />
+    <TypeScriptCompile Include="src\pages\attributesAndDisciplinesPage.tsx" />
+    <TypeScriptCompile Include="src\pages\careerDetailsPage.tsx" />
+    <TypeScriptCompile Include="src\pages\careerEventDetailsPage.tsx" />
+    <TypeScriptCompile Include="src\pages\careerEventPage.tsx" />
+    <TypeScriptCompile Include="src\pages\careerPage.tsx" />
+    <TypeScriptCompile Include="src\pages\environmentDetailsPage.tsx" />
+    <TypeScriptCompile Include="src\pages\environmentPage.tsx" />
+    <TypeScriptCompile Include="src\pages\eraSelectionPage.tsx" />
+    <TypeScriptCompile Include="src\pages\exportTestPage.tsx" />
+    <TypeScriptCompile Include="src\pages\finishPage.tsx" />
+    <TypeScriptCompile Include="src\pages\pageBase.tsx" />
+    <TypeScriptCompile Include="src\pages\pageFactory.tsx" />
+    <TypeScriptCompile Include="src\pages\selectionPage.tsx" />
+    <TypeScriptCompile Include="src\pages\speciesDetailsPage.tsx" />
+    <TypeScriptCompile Include="src\pages\speciesPage.tsx" />
+    <TypeScriptCompile Include="src\pages\starfleetAcademyDetailsPage.tsx" />
+    <TypeScriptCompile Include="src\pages\starfleetAcademyPage.tsx" />
+    <TypeScriptCompile Include="src\pages\starshipPage.tsx" />
+    <TypeScriptCompile Include="src\pages\supportingCharacterPage.tsx" />
+    <TypeScriptCompile Include="src\pages\talentsOverviewPage.tsx" />
+    <TypeScriptCompile Include="src\pages\toolSelectionPage.tsx" />
+    <TypeScriptCompile Include="src\pages\upbringingDetailsPage.tsx" />
+    <TypeScriptCompile Include="src\pages\upbringingPage.tsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>False</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>False</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>26431</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:26431/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <Target Name="Packaging" DependsOnTargets="CompileTypeScript" AfterTargets="ResolveAssemblyReferences">
+    <Message Importance="high" Text="Executing webpack..." />
+    <Exec Command="npm run package" />
+  </Target>
+  <Target Name="BeforeBuild">
+    <Exec Command="powershell.exe Set-ExecutionPolicy RemoteSigned -Scope CurrentUser" />
+  </Target>
+  <Target Name="AfterBuild">
+    <Message Importance="high" Text="Setting version..." />
+    <Exec Command="powershell.exe ./set_version.ps1" />
+  </Target>
+</Project>

@@ -1,0 +1,14 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "jsx": "react",
+    "lib": [ "dom", "es2015.collection", "es5", "es2015.promise" ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
