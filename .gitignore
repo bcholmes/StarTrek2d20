@@ -4,3 +4,7 @@ bin/
 WebTools/bin/
 WebTools/dist/trek.js
 WebTools/src/**/*.js
+/.vs/WebTools-StarTrek
+/packages
+/WebTools/node_modules
+/WebTools/obj/Debug
