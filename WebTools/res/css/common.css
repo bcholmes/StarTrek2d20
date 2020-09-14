@@ -251,7 +251,7 @@ a:hover {
 		}
 			
 		.lcar-emphasis {
-			background: #9179B7 !important;
+			background: #CC6666 !important;
 			max-height: 150px;
 
             animation: fadein .5s ease;
@@ -301,7 +301,8 @@ a:hover {
 
 .lcar-content-history,
 .lcar-content-profile,
-.lcar-content-feedback {
+.lcar-content-feedback,
+.lcar-news {
     color: black;
     text-align: right;
     font-family: lcars;
@@ -313,7 +314,9 @@ a:hover {
 }
     .lcar-content-history {
         padding: 3px 11px 8px 0px;
-        background-color: #906F9A !important;
+        background-color: #9999FF !important;
+        animation: fadein .5s ease;
+        animation-delay: .4s !important;
     }
 
     .lcar-content-profile {
@@ -323,6 +326,10 @@ a:hover {
 
     .lcar-content-feedback {
         background-color: #F9AC76 !important;
+    }
+
+    .lcar-content-news {
+        background-color: #CC6666 !important;
     }
 
 .legal {
@@ -487,7 +494,8 @@ table.aspect-list td:first-child {
 
     .lcar-content-history,
     .lcar-content-profile,
-    .lcar-content-feedback {
+    .lcar-content-feedback,
+    .lcar-content-news{
         text-align: center;
         padding: 3px 18px 8px 0px;
         font-size: 1.6em;

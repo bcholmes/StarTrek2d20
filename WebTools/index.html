@@ -40,7 +40,9 @@
                     <div id="character-sheet"></div>
                 </div>
                 <div class="lcar-content-feedback" onclick="feedback();">Feedback</div>
-                <div class="lcar-emphasis"></div>
+                <div class="lcar-content-news" onclick="showNews();">
+                    <div id="news-button" class="lcar-news">News</div>
+                </div>
                 <div></div>
             </div>
             <div class="lcar-content-round"></div>
@@ -57,6 +59,19 @@
 
     <div id="version"></div>
     <div id="dialog"></div>
+    <div id="news" class="dialog-hidden">
+        <div class="dialog-bg"></div>
+        <div class="dialog-container dialog-container-visible">
+            <b>WHAT'S NEW?</b>
+            <br /><br/>
+            - XX
+            <div class="button-container-centered">
+                <div class="button" onclick="showNews();">
+                    OK
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="dist/trek.js"></script>
     <script src="version.js"></script>
@@ -124,6 +139,24 @@
             }
             else {
                 alert("Please allow popup windows for this site.");
+            }
+        }
+
+        function showNews() {
+            const dialog = document.getElementById("news");
+
+            if (dialog) {
+                if (dialog.classList.contains("dialog-visible")) {
+                    dialog.classList.remove("dialog-visible");
+                    dialog.classList.add("dialog-hidden");
+                }
+                else {
+                    dialog.classList.add("dialog-visible");
+                    dialog.classList.remove("dialog-hidden");
+                }
+            }
+            else {
+                console.error("Could not find news.");
             }
         }
 
