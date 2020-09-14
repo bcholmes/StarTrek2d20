@@ -380,6 +380,17 @@ class Ranks {
         return this._ranks[rank];
     }
 
+    getRankByName(name: string) {
+        for (const rank in this._ranks) {
+            const r = this._ranks[rank];
+            if (r.name === name) {
+                return r;
+            }
+        }
+
+        return null;
+    }
+
     applyRank(rank: Rank, tier: number) {
         const r = this.getRank(rank);
         character.rank = r.name;

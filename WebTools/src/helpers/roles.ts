@@ -186,6 +186,10 @@ class Roles {
         for (var role in this._roles) {
             var r = this._roles[role];
             if (character.hasSource(r.source)) {
+                if (character.isYoung() && n === Role.CommandingOfficer) {
+                    n++;
+                    continue;
+                }
                 roles.push(new RoleViewModel(n, r));
             }
             n++;
