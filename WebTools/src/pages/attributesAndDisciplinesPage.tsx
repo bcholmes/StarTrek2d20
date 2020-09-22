@@ -128,7 +128,12 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
                 return;
             }
 
-            Navigation.navigateToPage(PageIdentity.Finish);
+            if (character.hasTalent("Borg Implants")) {
+                Navigation.navigateToPage(PageIdentity.BorgImplants);
+            }
+            else {
+                Navigation.navigateToPage(PageIdentity.Finish);
+            }
         }
     }
 }

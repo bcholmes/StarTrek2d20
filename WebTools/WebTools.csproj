@@ -145,6 +145,7 @@
     <TypeScriptCompile Include="src\helpers\talents.ts" />
     <TypeScriptCompile Include="src\helpers\upbringings.ts" />
     <TypeScriptCompile Include="src\pages\attributesAndDisciplinesPage.tsx" />
+    <TypeScriptCompile Include="src\pages\borgImplantSelection.tsx" />
     <TypeScriptCompile Include="src\pages\careerDetailsPage.tsx" />
     <TypeScriptCompile Include="src\pages\careerEventDetailsPage.tsx" />
     <TypeScriptCompile Include="src\pages\careerEventPage.tsx" />

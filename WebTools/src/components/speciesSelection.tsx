@@ -18,34 +18,32 @@ export class SpeciesSelection extends React.Component<ISpeciesSelectionPropertie
 
     render() {
         var species = SpeciesHelper.getSpecies().map((s, i) => {
-            if (s.id !== Species.LiberatedBorg) {
-                const attributes = s.id === Species.Ktarian
-                    ? (
-                        <div>
-                            <div>Control</div>
-                            <div>Reason</div>
-                            <div>Fitness or Presence</div>
-                        </div>
-                    )
-                    : s.attributes.map((a, i) => {
-                        return <div key={i}>{AttributesHelper.getAttributeName(a)}</div>;
-                    });
+            const attributes = s.id === Species.Ktarian
+                ? (
+                    <div>
+                        <div>Control</div>
+                        <div>Reason</div>
+                        <div>Fitness or Presence</div>
+                    </div>
+                )
+                : s.attributes.map((a, i) => {
+                    return <div key={i}>{AttributesHelper.getAttributeName(a)}</div>;
+                });
 
-                const talents = s.id === Species.Changeling
-                    ? <div>Morphogenic Matrix</div>
-                    : s.talents.map((t, i) => {
-                        return <div key={i}>{t.name}</div>;
-                    });
+            const talents = s.id === Species.Changeling
+                ? <div>Morphogenic Matrix</div>
+                : s.talents.map((t, i) => {
+                    return <div key={i}>{t.name}</div>;
+                });
 
-                return (
-                    <tr key={i} onClick={() => { if (Window.isCompact()) this.props.onSelection(s.id); }}>
-                        <td className="selection-header">{s.name}</td>
-                        <td>{attributes}</td>
-                        <td>{talents}</td>
-                        <td><Button className="button-small" text="Select" onClick={() => { this.props.onSelection(s.id) }} /></td>
-                    </tr>
-                );
-            }
+            return (
+                <tr key={i} onClick={() => { if (Window.isCompact()) this.props.onSelection(s.id); }}>
+                    <td className="selection-header">{s.name}</td>
+                    <td>{attributes}</td>
+                    <td>{talents}</td>
+                    <td><Button className="button-small" text="Select" onClick={() => { this.props.onSelection(s.id) }} /></td>
+                </tr>
+            );
         });
 
         return (

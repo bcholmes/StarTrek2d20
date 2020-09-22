@@ -21,6 +21,7 @@ import {SupportingCharacterPage} from './supportingCharacterPage';
 import {ExportTestPage} from './exportTestPage';
 import { TalentsOverviewPage } from './talentsOverviewPage';
 import { SelectionPage } from './selectionPage';
+import { BorgImplantSelection } from './borgImplantSelection';
 
 export enum PageIdentity {
     Selection,
@@ -41,6 +42,7 @@ export enum PageIdentity {
     CareerEvent2,
     CareerEvent2Details,
     AttributesAndDisciplines,
+    BorgImplants,
     Finish,
 
     Starship,
@@ -76,7 +78,8 @@ export class PageFactory {
         this.factories[PageIdentity.CareerEvent1Details] = () => <CareerEventDetailsPage/>;
         this.factories[PageIdentity.CareerEvent2] = () => <CareerEventPage/>;
         this.factories[PageIdentity.CareerEvent2Details] = () => <CareerEventDetailsPage/>;
-        this.factories[PageIdentity.AttributesAndDisciplines] = () => <AttributesAndDisciplinesPage/>;
+        this.factories[PageIdentity.AttributesAndDisciplines] = () => <AttributesAndDisciplinesPage />;
+        this.factories[PageIdentity.BorgImplants] = () => <BorgImplantSelection />;
         this.factories[PageIdentity.Finish] = () => <FinishPage/>;
         this.factories[PageIdentity.Starship] = () => <StarshipPage/>;
         this.factories[PageIdentity.SupportingCharacter] = () => <SupportingCharacterPage />;
