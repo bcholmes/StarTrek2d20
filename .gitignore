@@ -8,3 +8,4 @@ WebTools/src/**/*.js
 /packages
 /WebTools/node_modules
 /WebTools/obj/Debug
+/WebTools/obj/Release
