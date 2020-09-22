@@ -186,7 +186,8 @@ class Roles {
         for (var role in this._roles) {
             var r = this._roles[role];
             if (character.hasSource(r.source)) {
-                if (character.isYoung() && n === Role.CommandingOfficer) {
+                if (((character.isYoung() || character.enlisted) && n === Role.CommandingOfficer) ||
+                    (character.enlisted && n === Role.ExecutiveOfficer)) {
                     n++;
                     continue;
                 }
