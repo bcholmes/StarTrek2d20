@@ -9,3 +9,4 @@ WebTools/src/**/*.js
 /WebTools/node_modules
 /WebTools/obj/Debug
 /WebTools/obj/Release
+.DS_Store
