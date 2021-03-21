@@ -33,7 +33,7 @@ export class SpeciesSelection extends React.Component<ISpeciesSelectionPropertie
             const talents = s.id === Species.Changeling
                 ? <div>Morphogenic Matrix</div>
                 : s.talents.map((t, i) => {
-                    return <div key={i}>{t.name}</div>;
+                    return t.isAvailableExcludingSpecies() ? <div key={i}>{t.name}</div> : <span></span>;
                 });
 
             return (

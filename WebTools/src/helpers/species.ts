@@ -86,6 +86,8 @@ export enum Species {
     Zahl,
     // Voyager
     Hologram,
+    // Klingon Core
+    KlingonQuchHa
 }
 
 class NameModel {
@@ -427,7 +429,7 @@ class _Species {
             "Klingon",
             "There is a great redundancy in Klingon organs, with two livers, multiple stomachs, three lungs, and an eight-chambered heart. Their skeletal structure also has several redundancies that mitigate injuries that would prove fatal to other humanoids.",
             "Honor is More Important Than Life",
-            [TalentsHelper.getTalent("To Battle!"), TalentsHelper.getTalent("Brak'lul"), TalentsHelper.getTalent("R'uustai")],
+            [TalentsHelper.getTalent("To Battle!"), TalentsHelper.getTalent("Brak'lul"), TalentsHelper.getTalent("R'uustai"), TalentsHelper.getTalent("Warrior's Spirit"), TalentsHelper.getTalent("Killer's Instinct")],
             "",
             [
                 { type: "Male", suggestions: "Be'etor, Cheng, Mogh, Qeng, Torgh" },
@@ -1185,6 +1187,18 @@ class _Species {
             "Holograms can be programmed to any specification, though the nature of their holomatrix means that they are essentially impervious to direct physical harm – they can allow energy and objects to pass through them at will. However, they are unable to go anywhere that lacks holographic emitters that can project their image and forcefields, and those emitters can be damaged even if the holograms themselves cannot. Holograms also tend not to receive much respect or consideration from flesh-and-blood people, who see them as tools at best or annoyances at worst. Holograms may also have a second species trait, reflecting the species they were designed to emulate.",
             "Am I More Than My Programming?",
             [TalentsHelper.getTalent("Expanded Program"), TalentsHelper.getTalent("Mobile Emitter")],
+            "",
+            []),
+        [Species.KlingonQuchHa]: new SpeciesModel(
+            "Klingon (QuchHa')",
+            [Era.Enterprise, Era.OriginalSeries],
+            Source.KlingonCore,
+            "In 2154, a lethal, metagenic strain of the Levodian flu ran rampant through the Klingon Empire, infecting vast numbers of Klingons. Though a cure was eventually devised, the combination of the plague’s metagenic effects and the cure itself led to numerous physiological and genetic changes in those afflicted, most notably the dissolution of their cranial ridges and a number of neurological alterations, to a point where they somewhat resemble Humans, with these changes passed onto the descendants of those afflicted. These altered Klingons came to be known as QuchHa', \"the unhappy ones,\" for their seeming deformity, while those who escaped the plague's effects were commonly referred to as the HemQuch. Though still hardy and vigorous, the QuchHa’ tend to express the customary aggression of their culture as a ruthless cunning, and they are often regarded as less honorable and trustworthy. They join the armed forces and intelligence services in great numbers to prove their worth and gain glory as a result of this discrimination. By the early 2270s, almost all QuchHa’ had undergone corrective treatment to restore their Klingon physiology, and Klingons in later eras refuse to discuss the matter with outsiders.",
+            [Attribute.Control, Attribute.Insight, Attribute.Presence],
+            "Klingon and QuchHa'",
+            "Those Klingons affected by this metagenic plague are frequently discriminated against or regarded as cowardly, shameful, or un-Klingon in nature, a stigma that they frequently strive to disprove, or which frees them to take actions that other Klingons may not regard as proper. Their altered genetics leave them less susceptible to a number of diseases and disorders that affect Klingons but allows them to contract a number of Human diseases that Klingons are normally immune to.",
+            "",
+            [TalentsHelper.getTalent("Cruel"), TalentsHelper.getTalent("Superior Ambition"), TalentsHelper.getTalent("To Battle!"), TalentsHelper.getTalent("R'uustai"), TalentsHelper.getTalent("Warrior's Spirit"), TalentsHelper.getTalent("Killer's Instinct")],
             "",
             []),
         //[Species.Romulan]: new SpeciesModel(

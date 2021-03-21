@@ -10,6 +10,7 @@
     TNG,
     DS9,
     Voyager,
+    KlingonCore,
 }
 
 class SourceViewModel {
@@ -35,6 +36,7 @@ class Sources {
         [Source.TNG]: "TNG",
         [Source.DS9]: "DS9",
         [Source.Voyager]: "Voyager",
+        [Source.KlingonCore]: "Klingon Core",
 
     };
 
@@ -49,8 +51,10 @@ class Sources {
         return sources;
     }
 
-    getSourceName(source: Source) {
-        return this._sources[source];
+    getSourceName(sources: Source[]) {
+        var result = "";
+        sources.forEach((s) => { result = (result == "") ? this._sources[s] : (result + ", " + this._sources[s]) })
+        return result;
     }
 }
 
