@@ -3,7 +3,7 @@ import {SetHeaderText} from '../common/extensions';
 import {character} from '../common/character';
 import {CharacterSerializer} from '../common/characterSerializer';
 import {Species, SpeciesHelper, SpeciesViewModel} from '../helpers/species';
-import {DropDownInput} from '../components/dropdownInput';
+import {DropDownInput} from '../components/dropDownInput';
 import {SupportingCharacterAttributes} from '../components/supportingCharacterAttributes';
 import {SupportingCharacterDisciplines} from '../components/supportingCharacterDisciplines';
 import {Rank, RanksHelper} from '../helpers/ranks';
