@@ -281,19 +281,31 @@ class DepartmentPrerequisite implements ITalentPrerequisite {
     }
 }
 
+export class TalentAliasModel {
+    name: string;
+    sources: Source[]
+
+    constructor(name: string, ...sources: Source[]) {
+        this.name = name;
+        this.sources = sources;
+    }
+}
+
 export class TalentModel {
     name: string;
     description: string;
     prerequisites: ITalentPrerequisite[];
     maxRank: number;
     category: string;
+    aliases: TalentAliasModel[];
 
-    constructor(name: string, desc: string, prerequisites: ITalentPrerequisite[], maxRank: number, category?: string) {
+    constructor(name: string, desc: string, prerequisites: ITalentPrerequisite[], maxRank: number, category?: string, ...aliases: TalentAliasModel[]) {
         this.name = name;
         this.description = desc;
         this.prerequisites = prerequisites;
         this.maxRank = maxRank;
         this.category = category || "";
+        this.aliases = aliases || TalentAliasModel[0];
     }
 
     isAvailableExcludingSpecies() {
@@ -319,6 +331,7 @@ export class TalentViewModel {
         this.description = description;
         this.name = this.constructDisplayName(name, rank, showRank, skill, category);
     }
+
 
     private constructDisplayName(name: string, rank: number, showRank: boolean, skill: Skill, category: string) {
         let displayName = name + (showRank ? " [Rank: " + rank + "]" : "");
@@ -356,7 +369,7 @@ export class Talents {
                 "Supervisor",
                 "The ship’s Crew Support increases by one. This increase is cumulative if multiple Main Characters in the group select it.",
                 [],
-                1),
+                1, null, new TalentAliasModel("War Leader", Source.KlingonCore)),
             new TalentModel(
                 "Bargain",
                 "When negotiating an offer with someone during Social Conflict, you may re-roll a d20 on your next Persuade Task to convince that person. If the Social Conflict involves an Extended Task, you gain the Progression 1 benefit when you roll your Challenge Dice.",
@@ -490,7 +503,7 @@ export class Talents {
                 "Mean Right Hook",
                 "Your Unarmed Strike Attack has the Vicious 1 Damage Effect.",
                 [],
-                1),
+                1, null, new TalentAliasModel("Warrior's Strike", Source.KlingonCore)),
             new TalentModel(
                 "Pack Tactics",
                 "Whenever you assist another character during combat, the character you assisted gains one bonus Momentum if they succeed.",
@@ -557,7 +570,7 @@ export class Talents {
                 "A Little More Power",
                 "Whenever you succeed at an Engineering Task aboard your own ship, you may spend one Momentum to regain one spent Power.",
                 [new DisciplinePrerequisite(Skill.Engineering, 3)],
-                1),
+                1, null, new TalentAliasModel("More Power", Source.KlingonCore)),
             new TalentModel(
                 "I Know My Ship",
                 "Whenever you attempt a Task to determine the source of a technical problem with your ship, add one bonus d20.",
@@ -2170,6 +2183,11 @@ export class Talents {
 
     getSourceForTalent(name: string) {
         const talent = this.getTalent(name);
+        return this.getSourceForTalentModel(talent);
+    }
+
+    getSourceForTalentModel(talent: TalentModel) {
+
         let src = [ Source.Core ];
 
         if (talent.prerequisites.some(p => p instanceof SourcePrerequisite)) {
