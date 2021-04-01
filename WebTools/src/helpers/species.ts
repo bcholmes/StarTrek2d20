@@ -1,7 +1,7 @@
 ﻿import { Attribute, AttributesHelper } from './attributes';
 import { SkillsHelper, Skill } from './skills';
 import { TalentModel, TalentsHelper } from './talents';
-import { character } from '../common/character';
+import { character, CharacterType } from '../common/character';
 import { Era } from '../helpers/eras';
 import { Source } from '../helpers/sources';
 
@@ -1234,6 +1234,32 @@ class _Species {
         return species.sort((a, b) => {
             return a.name.localeCompare(b.name);
         });
+    }
+
+    getPrimarySpecies() {
+        if (character.type == CharacterType.KlingonWarrior) {
+            var species: SpeciesViewModel[] = [];
+
+            var klingonSpecies = [
+                Species.Klingon, Species.KlingonQuchHa
+            ];
+            for (var archetype of klingonSpecies) {
+                var spec = this._species[archetype];
+
+                const hasSource = character.hasSource(spec.source) || (archetype === Species.LiberatedBorg && character.hasSource(Source.Voyager));
+
+                if (hasSource && !this.ignoreSpecies(archetype)) {
+                    species.push(new SpeciesViewModel(archetype, spec));
+                }
+            }
+
+            return species.sort((a, b) => {
+                return a.name.localeCompare(b.name);
+            });
+
+        } else {
+            return this.getSpecies();
+        }
     }
 
     getSpeciesByType(species: Species) {

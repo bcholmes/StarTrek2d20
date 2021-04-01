@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {character, CharacterType} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {SetHeaderText} from '../common/extensions';
 import {PageIdentity, IPageProperties} from './pageFactory';
@@ -28,11 +28,11 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
     }
 
     render() {
-        const rollAlpha = character.hasSource(Source.AlphaQuadrant)
+        const rollAlpha = character.hasSource(Source.AlphaQuadrant) && character.type != CharacterType.KlingonWarrior
             ? <Button className="button" text="Roll Alpha Species" onClick={() => this.rollAlphaSpecies()} />
             : undefined;
 
-        const rollBeta = character.hasSource(Source.BetaQuadrant)
+        const rollBeta = character.hasSource(Source.BetaQuadrant) && character.type != CharacterType.KlingonWarrior
             ? <Button className="button" text="Roll Beta Species" onClick={() => this.rollBetaSpecies()} />
             : undefined;
 

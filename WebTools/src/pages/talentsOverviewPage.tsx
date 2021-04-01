@@ -1,8 +1,9 @@
 ﻿import React = require("react");
 import { SetHeaderText } from "../common/extensions";
 import { DropDownInput } from "../components/dropDownInput";
+import { AliasModel } from "../helpers/aliases";
 import { Skill, SkillsHelper } from "../helpers/skills";
-import { TalentModel, TalentsHelper, TalentAliasModel } from "../helpers/talents";
+import { TalentModel, TalentsHelper } from "../helpers/talents";
 import { Source, SourcesHelper } from "../helpers/sources";
 import { character } from "../common/character";
 import { Species, SpeciesHelper } from "../helpers/species";
@@ -10,34 +11,20 @@ import { Species, SpeciesHelper } from "../helpers/species";
 class TalentViewModel {
     name: string;
     description: string;
-    notes: string;
     source: string;
+    aliases: AliasModel[];
 
-    constructor(name: string, description: string, source: string, notes: string) {
+    constructor(name: string, description: string, source: string, aliases: AliasModel[]) {
         this.name = name;
         this.description = description;
         this.source = source;
-        this.notes = notes;
+        this.aliases = aliases;
     }
 
     static from(talent: TalentModel) {
         let sourceString = SourcesHelper.getSourceName(TalentsHelper.getSourceForTalentModel(talent));
-        let notes = ""
 
-        for (var a of talent.aliases) {
-            var sourcesDescription = ""
-            for (var s of a.sources) {
-                if (sourcesDescription.length > 0) {
-                    sourcesDescription += " and ";
-                }
-                sourcesDescription += SourcesHelper.getSourceName([ s ]);
-            }
-
-            notes += "This talent is known as " + a.name + " in the " + sourcesDescription + (a.sources.length > 1 ? " source books." : " source book.");
-        }
-
-        let result = new TalentViewModel(talent.name, talent.description, sourceString, notes);
-        return result;
+        return new TalentViewModel(talent.name, talent.description, sourceString, talent.aliases);
     }
 }
 
@@ -58,10 +45,12 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
 
     render() {
         const talents = this._talents[this._category].map((t, i) => {
-            let notes = <span></span>
-            if (t.notes != null && t.notes.length > 0) {
-                notes = (<p><i>{t.notes}</i></p>);
-            }
+            const info = t.aliases.map((a, i) => {
+                return (
+                    <p><i>The talent is known as </i><b>{a.name}</b><i> in the
+                    </i> {SourcesHelper.getSourceName([a.source])} <i>book.</i></p>
+                )
+            });
 
             return (
                 <tr key={i}>
@@ -71,7 +60,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
                             ({t.source})
                         </div>
                     </td>
-                    <td>{t.description} {notes}</td>
+                    <td>{t.description} {info}</td>
                 </tr>
             );
         });

@@ -66,6 +66,11 @@ export class Starship {
     }
 }
 
+export const enum CharacterType {
+    Starfleet = 0,
+    KlingonWarrior
+}
+
 class Step {
     page: number;
     character: Character;
@@ -112,6 +117,7 @@ export class Character {
     public focuses: string[];
     public stress: number;
     public allowCrossSpeciesTalents: boolean;
+    public type: CharacterType = CharacterType.Starfleet;
 
     public starship: Starship;
 
