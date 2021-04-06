@@ -19,7 +19,7 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
     constructor(props: IPageProperties) {
         super(props);
 
-        SetHeaderText("SPECIES");
+        SetHeaderText(character.workflow.currentStep().name);
 
         this.state = {
             showSelection: false,

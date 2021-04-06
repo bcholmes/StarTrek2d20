@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 import { character } from '../common/character';
 import { Navigation } from '../common/navigator';
+import { SetHeaderText } from '../common/extensions';
 import { PageIdentity, IPageProperties } from './pageFactory';
 import { Species, SpeciesHelper } from '../helpers/species';
 import { AttributesHelper } from '../helpers/attributes';
@@ -20,6 +21,8 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
 
     constructor(props: IPageProperties) {
         super(props);
+
+        SetHeaderText(character.workflow.currentStep().name);
     }
 
     render() {
@@ -141,6 +144,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
             character.addEquipment("Ushaan-tor ice pick");
         }
 
+        character.workflow.next();
         Navigation.navigateToPage(PageIdentity.Environment);
     }
 }

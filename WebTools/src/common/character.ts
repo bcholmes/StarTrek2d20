@@ -10,6 +10,7 @@ import {Role, RolesHelper} from '../helpers/roles';
 import {Species, SpeciesHelper} from '../helpers/species';
 import {Track, TracksHelper} from '../helpers/tracks';
 import {Upbringing, UpbringingsHelper} from '../helpers/upbringings';
+import {WorkflowsHelper, Workflow} from '../helpers/workflows';
 import {TalentsHelper} from '../helpers/talents';
 import {Spaceframe, MissionPod} from '../helpers/spaceframes';
 import {MissionProfile} from "../helpers/missionProfiles";
@@ -118,6 +119,7 @@ export class Character {
     public stress: number;
     public allowCrossSpeciesTalents: boolean;
     public type: CharacterType = CharacterType.Starfleet;
+    public workflow: Workflow;
 
     public starship: Starship;
 

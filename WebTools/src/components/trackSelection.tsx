@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {character, CharacterType} from '../common/character';
 import {Window} from '../common/window';
 import {Track, TracksHelper} from '../helpers/tracks';
 import {AttributesHelper} from '../helpers/attributes';
@@ -34,9 +34,9 @@ export class TrackSelection extends React.Component<ITrackSelectionProperties, {
             )
         });
 
-        const title = !character.enlisted
-            ? "SELECT ACADEMY TRACK"
-            : "SELECT TRACK";
+        const title = character.enlisted || character.type === CharacterType.KlingonWarrior
+            ? "SELECT TRACK"
+            : "SELECT ACADEMY TRACK";
 
         return (
             <div>

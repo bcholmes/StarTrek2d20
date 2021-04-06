@@ -7,6 +7,7 @@ import {Button} from '../components/button';
 import {Era} from '../helpers/eras';
 import {Source} from '../helpers/sources';
 import {Species, SpeciesHelper} from '../helpers/species';
+import {WorkflowsHelper} from '../helpers/workflows';
 
 export class ToolSelectionPage extends React.Component<{}, {}> {
     constructor(props: {}) {
@@ -17,7 +18,7 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
 
     render() {
         let additionalOptions = character.hasSource(Source.KlingonCore)
-            ? <Button className="button" text="Klingon Warrior" onClick={() => { this.startKlingonCharacterWorkflow() } } />
+            ? <Button className="button" text="Klingon Warrior" onClick={() => { this.startKlingonCharacterWorkflow(); } } />
             : <div></div>;
 
         return (
@@ -26,7 +27,7 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
                     What do you want to register?
                 </div>
                 <div className="button-container">
-                    <Button className="button" text="Starfleet Personnel" onClick={() => { this.goToPage(PageIdentity.Species); } } />
+                    <Button className="button" text="Starfleet Personnel" onClick={() => { this.startStarfleetWorkflow(); } } />
                     <Button className="button" text="Starship" onClick={() => { this.goToPage(PageIdentity.Starship); } } />
                     <Button className="button" text="Supporting Character" onClick={() => { this.goToPage(PageIdentity.SupportingCharacter); } } />
                     {additionalOptions}
@@ -37,6 +38,7 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
 
     private startKlingonCharacterWorkflow() {
         character.type = CharacterType.KlingonWarrior;
+        character.workflow = WorkflowsHelper.klingonWarriorWorkflow;
         if (character.era == Era.NextGeneration) {
             character.species = Species.Klingon;
             SpeciesHelper.applySpecies(character.species);
@@ -45,6 +47,13 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
             this.goToPage(PageIdentity.Species);
         }
     }
+
+    private startStarfleetWorkflow() {
+        character.type = CharacterType.Starfleet;
+        character.workflow = WorkflowsHelper.starfleetWorkflow;
+        this.goToPage(PageIdentity.Species);
+    }
+
 
     private goToPage(page: PageIdentity) {
         Navigation.navigateToPage(page);

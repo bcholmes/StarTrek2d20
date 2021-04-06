@@ -1,5 +1,5 @@
 ﻿import {SkillsHelper, Skill} from './skills';
-import {character} from '../common/character';
+import {character, CharacterType} from '../common/character';
 import {Source} from './sources';
 
 export enum Track {
@@ -15,6 +15,11 @@ export enum Track {
     // Sciences
     UniversityAlumni,
     ResearchInternship,
+
+    // Klingon Core
+    Technical,
+    EnlistedWarrior,
+    Laborer,
 }
 
 class TrackModel {
@@ -104,19 +109,55 @@ class Tracks {
         ),
     };
 
+    private _klingonTracks: { [id: number]: TrackModel } = {
+        [Track.Command]: new TrackModel(
+            "Command Officer",
+            Source.KlingonCore,
+            "Your training was in leadership, but you have honed your martial prowess too, for any leader who cannot defend themselves is not worthy of their rank...and you may find you have to put this to the test if an underling challenges you for position. You are required to serve as a representative of your ship, your crew, and the Empire (and possibly a particular House as well), to varying degrees depending on your posting, and this may involve a degree of diplomacy as well as strength at arms.",
+            [Skill.Command, Skill.Security],
+            [Skill.Conn, Skill.Engineering, Skill.Medicine, Skill.Science],
+            ["Astronavigation", "Composure", "Diplomacy", "Extra-Vehicular Activity", "Evasive Action", "Helm Operations", "Inspiration", "Persuasion", "Small Craft", "Starship Recognition", "Starfleet Protocols", "Team Dynamics"]
+        ),
+        [Track.Technical]: new TrackModel(
+            "Technical Officer",
+            Source.KlingonCore,
+            "Your role in the Klingon Defense Force means that you require both technical skill and considerable authority. You are amongst those responsible for operating and maintaining the advanced systems of a bird-of-prey or other starship, such as the warp drive, the cloaking device, and similar, and for overseeing the warriors and laborers who support your efforts.",
+            [Skill.Conn, Skill.Engineering, Skill.Medicine, Skill.Science],
+            [Skill.Command, Skill.Security],
+            ["Astrophysics", "Astronavigation", "Computers", "Cybernetics", "Electro-Plasma Power Systems", "Emergency Medicine", "Extra-Vehicular Activity", "Genetics", "Helm Operations", "Infectious Diseases", "Physics", "Quantum Mechanics", "Sensor Operations", "Shipboard Tactical Systems", "Transporters", "Trauma Surgery", "Warp Field Dynamics"]
+        ),
+        [Track.EnlistedWarrior]: new TrackModel(
+            "Enlisted Warrior",
+            Source.KlingonCore,
+            "or could not gain admission to one of the prestigious military academies to become an officer, you joined the Klingon Defense Force as one of the rank-and-file. You may yet attain some important position aboard the ship, or achieve glory sufficient to earn a battlefield commission, but for now, you fight where the officers command, and do so without complaint.",
+            [Skill.Conn, Skill.Security],
+            [Skill.Command, Skill.Engineering, Skill.Medicine, Skill.Science],
+            ["Blades", "Composure", "Disruptors", "Hand-to-Hand Combat", "Intimidation", "Sensor Operations", "Shipboard Tactical Systems", "Survival"]
+        ),
+        [Track.Laborer]: new TrackModel(
+            "Laborer",
+            Source.KlingonCore,
+            "The Klingon Defense Force has need of more than merely warriors. Numerous practical and technical aspects of military life require workers to perform routine, mundane labors, assisting with the maintenance and upkeep of the ship, overseeing cargo, preparing meals for the crew and officers, providing basic first aid, and a variety of other tasks. This is vital work, but not especially glorious, though a few of the civilian laborers working on KDF vessels catch the attentions of their superiors and receive the opportunity to better themselves, being permitted to enlist or even being offered a battlefield commission if they have proven themselves worthy.",
+            [Skill.Engineering, Skill.Science],
+            [Skill.Command, Skill.Conn, Skill.Medicine, Skill.Security],
+            ["Animal Handling", "Computers", "Electro-Plasma Power Systems", "Emergency Medicine", "Starship Maintenance", "Survival", "Transporter Systems"]
+        ),
+    };
+
     getTracks() {
         var tracks: TrackViewModel[] = [];
         var n = 0;
-        for (var track in this._tracks) {
-            var trk = this._tracks[track];
+        var list = character.type === CharacterType.KlingonWarrior ? this._klingonTracks : this._tracks;
+        for (var track in list) {
+            var trk = list[track];
 
             if (character.hasSource(trk.source)) {
-                if (n === Track.EnlistedSecurityTraining && !character.enlisted) {
+                if (n === Track.EnlistedSecurityTraining && !character.enlisted && character.type != CharacterType.KlingonWarrior) {
                     n++
                     continue;
                 }
 
-                tracks.push(new TrackViewModel(n, trk));
+                tracks.push(new TrackViewModel(parseInt(track), trk));
             }
 
             n++;
@@ -128,7 +169,9 @@ class Tracks {
     }
 
     getTrack(track: Track) {
-        return this._tracks[track];
+        console.log("Track ----> " + track);
+        var list = character.type === CharacterType.KlingonWarrior ? this._klingonTracks : this._tracks;
+        return list[track];
     }
 
     generateTrack(): Track {

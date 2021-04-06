@@ -77,9 +77,10 @@ export class UpbringingSelection extends React.Component<IUpbringingSelectionPro
                 </tr>
               );
 
+        var title = "Select " + character.workflow.currentStep().name;
         return (
             <div>
-                <div className="header-text"><div>SELECT UPBRINGING</div></div>
+                <div className="header-text"><div>{title}</div></div>
                 <table className="selection-list">
                     <thead>
                         {selectionHeaders}
