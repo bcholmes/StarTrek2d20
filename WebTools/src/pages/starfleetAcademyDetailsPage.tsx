@@ -105,7 +105,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">DISCIPLINES</div>
-                    <SkillView points={2} skill={Skill.Security} /> 
+                    <SkillView points={2} skill={Skill.Security} />
                     <SkillView points={1} skill={Skill.Conn} />
                     <SkillView points={1} skill={Skill.Engineering} />
                 </div>
@@ -352,14 +352,14 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 !focus3 || focus3.length === 0) {
                 Dialog.show("You need to type in three Focuses. Choose from the suggestions if you cannot come up with your own.");
                 return;
-            } 
+            }
         }
         else {
             if (!focus1 || focus1.length === 0 ||
                 !focus2 || focus2.length === 0) {
                 Dialog.show("You need to type in two Focuses. Choose from the suggestions if you cannot come up with your own.");
                 return;
-            } 
+            }
         }
 
         character.addFocus(focus1);
@@ -376,6 +376,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
 
         character.addTalent(this._talent);
 
+        character.workflow.next();
         Navigation.navigateToPage(PageIdentity.Career);
     }
 }

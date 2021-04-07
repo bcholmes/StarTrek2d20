@@ -16,7 +16,7 @@ export class CareerPage extends React.Component<IPageProperties, ICareerPageStat
     constructor(props: IPageProperties) {
         super(props);
 
-        SetHeaderText("CAREER");
+        SetHeaderText(character.workflow.currentStep().name);
 
         this.state = {
             showSelection: false

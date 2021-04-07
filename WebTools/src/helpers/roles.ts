@@ -1,6 +1,6 @@
 ﻿import {Skill} from './skills';
 import {Source} from './sources';
-import {character} from '../common/character';
+import {character, CharacterType} from '../common/character';
 
 export enum Role {
     // Core
@@ -28,6 +28,11 @@ export enum Role {
     HeadNurse,
     Anesthesiologist,
     PhysiciansAssistant,
+
+    // Klingon Core
+    SecondOrThirdOfficer,
+    WeaponsOfficer,
+    ShipsCook
 }
 
 class RoleModel {
@@ -179,12 +184,70 @@ class Roles {
             Source.SciencesDivision),
     };
 
+    private _klingonRoles: { [id: number]: RoleModel } = {
+        [Role.CommandingOfficer]: new RoleModel(
+            "Commanding Officer (ra'wl)",
+            "Normally holding the rank of captain or commander, the commanding officer makes all important decisions concerning the ship and the mission, and should expect total obedience from the crew, in exchange for the responsibility to lead them to glorious victories and bring honor to ship and crew alike. The commanding officer may promote officers and may elevate enlisted personnel and even laborers to officer status, though unjustified promotions and signs of favoritism are likely to result in a challenge.",
+            Skill.Command,
+            "The commanding officer may spend a point of Determination to grant any other character they can communicate with one point of Determination; this does not have to be linked to a value.",
+            Source.KlingonCore),
+        [Role.ExecutiveOfficer]: new RoleModel(
+            "First Officer (yaS wa’DIch)",
+            "The ship’s second-in- command, the first officer “serves the captain, but stands for the crew”. In practice, this mean that the first officer represents the crew’s needs and wishes to the commanding officer, but also to ensure that the crew is functioning properly. They will assume command if the commanding officer is incapacitated and may challenge the commanding officer if they see signs of weakness or dishonor.",
+            Skill.Command,
+            "When another character in communication with the first officer spends a point of Determination, the first officer may spend 3 Momentum (Immediate) to let that character regain the spent point of Determination.",
+            Source.KlingonCore),
+        [Role.SecondOrThirdOfficer]: new RoleModel(
+            "Second Officer/Third Officer (yaS cha’DIch/yaS wejDIch)",
+            "The second and third officers are the next in line to command after the first officer, though they typically have other roles aboard ship as well, and have less direct interaction with the commanding officer, often performing their duties on other shifts. The third officer in particular is likely to be a young officer with little field experience, learning how a starship is run.",
+            Skill.Command,
+            "The second officer becomes first officer if the previous first officer is incapacitated or successfully challenges the  previous commanding officer. Similarly, the third officer becomes second officer if that position is vacated. Aside from this, characters of these roles should select another role to perform.",
+            Source.KlingonCore),
+        [Role.FlightController]: new RoleModel(
+            "Helm Officer (DeghwI’)",
+            "The weapons officer has direct control of the ship’s weaponry, and is responsible for their maintenance and upkeep. Since this can vary from vessel to vessel, it is vital that a ship’s weapons officer be completely familiar with the arsenal they oversee. The weapons officer also has the duty of becoming familiar with enemy vessels, learning their strengths, weaknesses, and capabilities to advise the commanding officer during battle.",
+            Skill.Conn,
+            "When the weapons officer succeeds at an attack with the ship’s weapons, they may re-roll a number of challenge dice on the damage roll equal to the weapons officer’s Security score.",
+            Source.KlingonCore),
+        [Role.WeaponsOfficer]: new RoleModel(
+            "Weapons Officer (nuHpIn)",
+            "The helm officer is responsible for laying a course and controlling the ship’s speed. For travel at warp, this is mostly automated with the helm officer overseeing and correcting for unexpected activity. A skilled helm officer is respected for their ability to manually control their ship, both in space and (in smaller ships) in atmosphere and will have learned a wide range of tactical maneuvers and be able to perform them instantly when commanded.",
+            Skill.Security,
+            "When the weapons officer succeeds at an attack with the ship’s weapons, they may re-roll a number of challenge dice on the damage roll equal to the weapons officer’s Security score.",
+            Source.KlingonCore),
+        [Role.ScienceOfficer]: new RoleModel(
+            "Science Officer (QeDpIn)",
+            "The science officer is responsible for interpreting all sensor data the ship collects, as well as advising the commanding officer about any scientific phenomena encountered which could affect the ship or its mission. The science officer also assesses planetary conditions for landing parties and makes recommendations as to the best landing site. In combat, they gather data on enemy vessels and pass this to other officers to devise effective tactics.",
+            Skill.Science,
+            "When the science officer succeeds at a task assisted by the ship’s Computers or Sensors, or using a tricorder, the character generates one bonus Momentum, which may only be used on the Obtain Information Momentum spend.",
+            Source.KlingonCore),
+        [Role.ChiefEngineer]: new RoleModel(
+            "Engineering Officer (jonpIn)",
+            "Overseeing the engineers who operate in the engine room, the engineering officer serves on the bridge and is responsible for monitoring and reporting on the condition of the ship, coordinating damage control, distributing power to different systems, and operating non-weapon systems such as the cloaking device and shields.",
+            Skill.Engineering,
+            "When the engineering officer succeeds at an Engineering task to perform repairs or re-route power, they generate one point of bonus Momentum to be used on that task. Bonus Momentum may not be saved.",
+            Source.KlingonCore),
+        [Role.ChiefMedicalOfficer]: new RoleModel(
+            "Surgeon (HaqwI’)",
+            "Every Klingon vessel includes a physician of some kind, and though they are not customarily officers, they are nevertheless well- respected: every warrior aboard a vessel will owe life or limb to the surgeon’s care. Even outside of battle, the surgeon is kept busy tending to injuries sustained in training, brawling, or other common activities. Klingon medicine is primarily focused on getting the patient back into action as quickly as possible, commonly using stimulants and pain suppressants and quickly mending broken bones and flesh wounds to send injured crew back to their posts in minutes. Only the most severe injuries may require lengthy care, and a Klingon surgeon may perform triage with a ruthlessness that would shock a Federation doctor.",
+            Skill.Engineering,
+            "When a surgeon succeeds at a Medicine task to stabilize an injured character, they need only spend 1 Momentum rather than 2 to get the patient back on their feet and able to act again.",
+            Source.KlingonCore),
+        [Role.ShipsCook]: new RoleModel(
+            "Ship’s Cook (vutwI’)",
+            "Every Klingon ship has a cook – larger ships may have several, in which case this role applies to the head cook – who is responsible for ensuring that the crew is well-fed. The whole crew customarily eats together, and most Klingons are disdainful of replicated food. The ship’s cook is thus of vital importance, as good meals ensure the crew remains in good spirits and ready for battle. Their role also includes raising and butchering animals kept aboard, such as targs.",
+            undefined,
+            "Once per adventure, before a new scene begins, the ship’s cook may declare a short scene of the crew eating a meal together. At the end of this scene, instead of reducing the group’s Momentum pool by 1, roll 1 challenge die, and add the total rolled to the group’s Momentum pool. If the commanding officer allows, the meal may include bloodwine; in this case, roll 3 challenge dice instead of 1, but add 1 to Threat for each effect rolled, as the crew gets a little too drunk.",
+            Source.KlingonCore),
+    };
+
     getRoles() {
         var departments = this.determineHighestDiscipline();
         var roles: RoleViewModel[] = [];
-        var n = 0;
-        for (var role in this._roles) {
-            var r = this._roles[role];
+        var list = character.type === CharacterType.KlingonWarrior ? this._klingonRoles : this._roles;
+        for (var role in list) {
+            var r = list[role];
+            var n = parseInt(role);
             if (character.hasSource(r.source)) {
                 if (((character.isYoung() || character.enlisted) && n === Role.CommandingOfficer) ||
                     (character.enlisted && n === Role.ExecutiveOfficer)) {
@@ -193,7 +256,6 @@ class Roles {
                 }
                 roles.push(new RoleViewModel(n, r));
             }
-            n++;
         }
 
         return roles.sort((a, b) => {
@@ -202,18 +264,19 @@ class Roles {
     }
 
     getRole(role: Role) {
-        return this._roles[role];
+        var list = character.type === CharacterType.KlingonWarrior ? this._klingonRoles : this._roles;
+        return list[role];
     }
 
     getRoleByName(role: string) {
-        var n = 0;
 
+        var list = character.type === CharacterType.KlingonWarrior ? this._klingonRoles : this._roles;
         for (var rol in this._roles) {
+            var n = parseInt(rol);
             var r = this._roles[rol];
             if (r.name === role) {
                 return n;
             }
-            n++;
         }
 
         return undefined;
@@ -243,7 +306,7 @@ class Roles {
             }
         }
 
-        return highest; 
+        return highest;
     }
 }
 

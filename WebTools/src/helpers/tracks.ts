@@ -169,7 +169,6 @@ class Tracks {
     }
 
     getTrack(track: Track) {
-        console.log("Track ----> " + track);
         var list = character.type === CharacterType.KlingonWarrior ? this._klingonTracks : this._tracks;
         return list[track];
     }

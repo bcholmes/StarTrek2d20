@@ -25,7 +25,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
     constructor(props: IPageProperties) {
         super(props);
 
-        SetHeaderText("FINISHED");
+        SetHeaderText(character.workflow.currentStep().name);
 
         character.addEquipment("Uniform");
         character.addEquipment("Communicator");

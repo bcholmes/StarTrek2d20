@@ -2,7 +2,7 @@
 import {Role, RolesHelper} from './roles';
 import {Era} from './eras';
 import {Source} from './sources';
-import {character} from '../common/character';
+import {character, CharacterType} from '../common/character';
 
 export enum Rank {
     // Core
@@ -34,6 +34,11 @@ export enum Rank {
     FleetCaptain,
 
     Civilian,
+
+    // KlingonCore
+    Sergeant,
+    Corporal,
+    Bekk,
 }
 
 interface IRankPrerequisite {
@@ -114,6 +119,30 @@ class NotEraPrerequisite implements IRankPrerequisite {
     }
 }
 
+class NotTypePrerequisite implements IRankPrerequisite {
+    private _type: CharacterType;
+
+    constructor(type: CharacterType) {
+        this._type = type;
+    }
+
+    isPrerequisiteFulfilled() {
+        return character.type !== this._type;
+    }
+}
+
+class TypePrerequisite implements IRankPrerequisite {
+    private _type: CharacterType;
+
+    constructor(type: CharacterType) {
+        this._type = type;
+    }
+
+    isPrerequisiteFulfilled() {
+        return character.type === this._type;
+    }
+}
+
 class SourcePrerequisite implements IRankPrerequisite {
     private _source: Source;
 
@@ -170,7 +199,8 @@ class Ranks {
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
-                new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer])
+                new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.Lieutenant]: new RankModel(
@@ -186,7 +216,8 @@ class Ranks {
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
-                new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer])
+                new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.Ensign]: new RankModel(
@@ -201,70 +232,80 @@ class Ranks {
             "Master Chief Petty Officer",
             [
                 new EnlistedPrerequisite(),
-                new CareersPrerequisite([Career.Experienced, Career.Veteran])
+                new CareersPrerequisite([Career.Experienced, Career.Veteran]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.MasterChiefSpecialist]: new RankModel(
             "Master Chief Specialist",
             [
                 new EnlistedPrerequisite(),
-                new CareersPrerequisite([Career.Experienced, Career.Veteran])
+                new CareersPrerequisite([Career.Experienced, Career.Veteran]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.SeniorChiefPettyOfficer]: new RankModel(
             "Senior Chief Petty Officer",
             [
                 new EnlistedPrerequisite(),
-                new CareersPrerequisite([Career.Experienced, Career.Veteran])
+                new CareersPrerequisite([Career.Experienced, Career.Veteran]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.SeniorChiefSpecialist]: new RankModel(
             "Senior Chief Specialist",
             [
                 new EnlistedPrerequisite(),
-                new CareersPrerequisite([Career.Experienced, Career.Veteran])
+                new CareersPrerequisite([Career.Experienced, Career.Veteran]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.ChiefPettyOfficer]: new RankModel(
             "Chief Petty Officer",
             [
                 new EnlistedPrerequisite(),
-                new CareersPrerequisite([Career.Experienced, Career.Veteran])
+                new CareersPrerequisite([Career.Experienced, Career.Veteran]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.ChiefSpecialist]: new RankModel(
             "Chief Specialist",
             [
                 new EnlistedPrerequisite(),
-                new CareersPrerequisite([Career.Experienced, Career.Veteran])
+                new CareersPrerequisite([Career.Experienced, Career.Veteran]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.PettyOfficer]: new RankModel(
             "Petty Officer",
             [
                 new EnlistedPrerequisite(),
-                new CareersPrerequisite([Career.Young, Career.Experienced])
+                new CareersPrerequisite([Career.Young, Career.Experienced]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             3),
         [Rank.Specialist]: new RankModel(
             "Specialist",
             [
                 new EnlistedPrerequisite(),
-                new CareersPrerequisite([Career.Young, Career.Experienced])
+                new CareersPrerequisite([Career.Young, Career.Experienced]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             3),
         [Rank.Yeoman]: new RankModel(
             "Yeoman",
             [
                 new EnlistedPrerequisite(),
-                new CareersPrerequisite([Career.Young, Career.Experienced])
+                new CareersPrerequisite([Career.Young, Career.Experienced]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             3),
         [Rank.Crewman]: new RankModel(
             "Crewman",
             [
                 new EnlistedPrerequisite(),
-                new CareersPrerequisite([Career.Young, Career.Experienced])
+                new CareersPrerequisite([Career.Young, Career.Experienced]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             3),
         [Rank.RearAdmiral]: new RankModel(
@@ -274,7 +315,8 @@ class Ranks {
                 new CareersPrerequisite([Career.Veteran]),
                 new NotEraPrerequisite(Era.NextGeneration),
                 new SourcePrerequisite(Source.CommandDivision),
-                new RolesPrerequisite([Role.Admiral])
+                new RolesPrerequisite([Role.Admiral]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.RearAdmiralLower]: new RankModel(
@@ -284,7 +326,8 @@ class Ranks {
                 new CareersPrerequisite([Career.Veteran]),
                 new EraPrerequisite(Era.NextGeneration),
                 new SourcePrerequisite(Source.CommandDivision),
-                new RolesPrerequisite([Role.Admiral])
+                new RolesPrerequisite([Role.Admiral]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.RearAdmiral]: new RankModel(
@@ -294,7 +337,8 @@ class Ranks {
                 new CareersPrerequisite([Career.Veteran]),
                 new EraPrerequisite(Era.NextGeneration),
                 new SourcePrerequisite(Source.CommandDivision),
-                new RolesPrerequisite([Role.Admiral])
+                new RolesPrerequisite([Role.Admiral]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.ViceAdmiral]: new RankModel(
@@ -303,7 +347,8 @@ class Ranks {
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Veteran]),
                 new SourcePrerequisite(Source.CommandDivision),
-                new RolesPrerequisite([Role.Admiral])
+                new RolesPrerequisite([Role.Admiral]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.ViceAdmiral]: new RankModel(
@@ -312,7 +357,8 @@ class Ranks {
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Veteran]),
                 new SourcePrerequisite(Source.CommandDivision),
-                new RolesPrerequisite([Role.Admiral])
+                new RolesPrerequisite([Role.Admiral]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.ViceAdmiral]: new RankModel(
@@ -321,7 +367,8 @@ class Ranks {
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Veteran]),
                 new SourcePrerequisite(Source.CommandDivision),
-                new RolesPrerequisite([Role.Admiral])
+                new RolesPrerequisite([Role.Admiral]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.Commodore]: new RankModel(
@@ -331,7 +378,8 @@ class Ranks {
                 new CareersPrerequisite([Career.Veteran]),
                 new NotEraPrerequisite(Era.NextGeneration),
                 new SourcePrerequisite(Source.CommandDivision),
-                new RolesPrerequisite([Role.CommandingOfficer])
+                new RolesPrerequisite([Role.CommandingOfficer]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.FleetCaptain]: new RankModel(
@@ -339,7 +387,8 @@ class Ranks {
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.CommandDivision),
-                new RolesPrerequisite([Role.CommandingOfficer])
+                new RolesPrerequisite([Role.CommandingOfficer]),
+                new NotTypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
         [Rank.Civilian]: new RankModel(
@@ -348,6 +397,28 @@ class Ranks {
                 new RolesPrerequisite([Role.DiplomaticAttache])
             ],
             1),
+        [Rank.Sergeant]: new RankModel(
+            "Sergeant (bu')",
+            [
+                new EnlistedPrerequisite(),
+                new TypePrerequisite(CharacterType.KlingonWarrior)
+            ],
+            1),
+        [Rank.Corporal]: new RankModel(
+            "Corporal (Da')",
+            [
+                new EnlistedPrerequisite(),
+                new TypePrerequisite(CharacterType.KlingonWarrior)
+            ],
+            1),
+        [Rank.Bekk]: new RankModel(
+            "Bekk (beq)",
+            [
+                new EnlistedPrerequisite(),
+                new TypePrerequisite(CharacterType.KlingonWarrior)
+            ],
+            1),
+
     };
 
     getRanks(ignorePrerequisites?: boolean) {
