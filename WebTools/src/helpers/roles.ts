@@ -271,9 +271,9 @@ class Roles {
     getRoleByName(role: string) {
 
         var list = character.type === CharacterType.KlingonWarrior ? this._klingonRoles : this._roles;
-        for (var rol in this._roles) {
+        for (var rol in list) {
             var n = parseInt(rol);
-            var r = this._roles[rol];
+            var r = list[rol];
             if (r.name === role) {
                 return n;
             }

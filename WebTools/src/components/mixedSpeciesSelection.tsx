@@ -19,7 +19,7 @@ export class MixedSpeciesSelection extends React.Component<IMixedSpeciesSelectio
     }
 
     render() {
-        const primarySpecies = SpeciesHelper.getSpecies().map((s, i) => {
+        const primarySpecies = SpeciesHelper.getPrimarySpecies().map((s, i) => {
             if (s.id === this._secondary) return undefined;
 
             const attributes = s.attributes.map((a, i) => {
@@ -121,7 +121,7 @@ export class MixedSpeciesSelection extends React.Component<IMixedSpeciesSelectio
                     </tbody>
                 </table>
                 <Button className="button" text="Confirm" onClick={() => this.props.onSelection(this._primary, this._secondary) }/>
-                <Button className="button button-cancel" text="Cancel" onClick={() => this.props.onCancel() }/>  
+                <Button className="button button-cancel" text="Cancel" onClick={() => this.props.onCancel() }/>
             </div>
         );
     }

@@ -174,8 +174,9 @@ class Tracks {
     }
 
     generateTrack(): Track {
-        var roll = Math.floor(Math.random() * 3);
-        return roll;
+        var list = character.type === CharacterType.KlingonWarrior ?  [ Track.Command, Track.Technical, Track.EnlistedWarrior, Track.Laborer ] : [ Track.Command, Track.Operations, Track.Sciences ];
+        var roll = Math.floor(Math.random() * list.length);
+        return list[roll];
     }
 
     applyTrack(track: Track) {
@@ -202,6 +203,12 @@ class Tracks {
                 character.skills[Skill.Science].expertise += 2;
                 character.skills[Skill.Engineering].expertise++;
                 character.skills[Skill.Medicine].expertise++;
+                break;
+            case Track.EnlistedWarrior:
+                character.enlisted = true;
+                break;
+            case Track.Laborer:
+                character.enlisted = true;
                 break;
             default:
                 break;

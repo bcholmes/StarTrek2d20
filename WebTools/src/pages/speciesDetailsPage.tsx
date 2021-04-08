@@ -66,8 +66,8 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
             talents.push(...TalentsHelper.getTalentsForSkills(character.skills.map(s => { return s.skill; })), ...TalentsHelper.getTalentsForSkills([Skill.None]));
         }
 
-        const talentSelection = talents.length > 0
-            ? <div className="panel">
+        const talentSelection = talents.length > 0 && character.workflow.currentStep().talentPrompt
+            ? (<div className="panel">
                 <div className="header-small">TALENTS</div>
                 <div>
                     <CheckBox
@@ -77,8 +77,17 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
                         onChanged={() => { character.allowCrossSpeciesTalents = !character.allowCrossSpeciesTalents; console.log(character.allowCrossSpeciesTalents); this.forceUpdate(); }} />
                 </div>
                 <TalentSelectionList talents={talents} onSelection={talent => this.onTalentSelected(talent)} />
-            </div>
-            : undefined;
+            </div>)
+            : (<div className="panel">
+                <div className="header-small">SPECIES OPTIONS</div>
+                <div>
+                    <CheckBox
+                        isChecked={character.allowCrossSpeciesTalents}
+                        text="Allow cross-species talents (GM's decision)"
+                        value={!character.allowCrossSpeciesTalents}
+                        onChanged={() => { character.allowCrossSpeciesTalents = !character.allowCrossSpeciesTalents; console.log(character.allowCrossSpeciesTalents); this.forceUpdate(); }} />
+                </div>
+              </div>);
 
         const mixedTrait = mixed != null
             ? (
@@ -133,15 +142,17 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
             }
         }
 
-        if (!this._selectedTalent || this._selectedTalent === "Select talent") {
-            Dialog.show("You have not selected a talent.");
-            return;
-        }
+        if (character.workflow.currentStep().talentPrompt) {
+            if (!this._selectedTalent || this._selectedTalent === "Select talent") {
+                Dialog.show("You have not selected a talent.");
+                return;
+            }
 
-        character.addTalent(this._selectedTalent);
+            character.addTalent(this._selectedTalent);
 
-        if (this._selectedTalent === "The Ushaan") {
-            character.addEquipment("Ushaan-tor ice pick");
+            if (this._selectedTalent === "The Ushaan") {
+                character.addEquipment("Ushaan-tor ice pick");
+            }
         }
 
         character.workflow.next();

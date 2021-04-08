@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {character, CharacterType} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity, IPageProperties} from './pageFactory';
 import {Track, TracksHelper} from '../helpers/tracks';
@@ -49,6 +49,15 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
             return this.renderResearchInternshipDetails();
         }
 
+        var training = "Select three focuses for your character, at least one reflecting the time at Starfleet Academy.";
+        if (character.type === CharacterType.KlingonWarrior) {
+            if (character.enlisted) {
+                var training = "Select three focuses for your character, at least one reflecting their time training.";
+            } else {
+                var training = "Select three focuses for your character, at least one reflecting the time at KDF Academy.";
+            }
+        }
+
         return (
             <div className="page">
                 <div className="header-text"><div>{track.name}</div></div>
@@ -62,7 +71,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 <MajorsList skills={track.majorDisciplines} onMajorSelected={skill => this.onMajorSelected(skill) } onOtherSelected={skills => this.onElectiveSkillsSelected(skills) }/>
                 <div className="panel">
                     <div className="header-small">FOCUS</div>
-                    <div>Select three focuses for your character, at least one reflecting the time at Starfleet Academy.</div>
+                    <div>{training}</div>
                     <div>
                         <div className="textinput-label">FOCUS</div>
                         <input type="text" ref={(input) => { this._focus1 = input; } } />

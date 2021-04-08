@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
+import {SetHeaderText} from '../common/extensions';
 import {PageIdentity, IPageProperties} from './pageFactory';
 import {AttributesHelper} from '../helpers/attributes';
 import {Skill, SkillsHelper} from '../helpers/skills';
@@ -9,8 +10,10 @@ import {AttributeView} from '../components/attribute';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovement';
 import {SkillImprovementCollection} from '../components/skillImprovement';
 import {ElectiveSkillList} from '../components/electiveSkillList';
+import { TalentsHelper, ToViewModel } from '../helpers/talents';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
+import { TalentSelectionList } from '../components/talentSelectionList';
 import {ValueInput, Value} from '../components/valueInput';
 
 interface IPageState {
@@ -19,6 +22,7 @@ interface IPageState {
 }
 
 export class AttributesAndDisciplinesPage extends React.Component<IPageProperties, IPageState> {
+    private _selectedTalent: string;
     private _attrPoints: number;
     private _excessAttrPoints: number;
     private _skillPoints: number;
@@ -29,6 +33,8 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
 
     constructor(props: IPageProperties) {
         super(props);
+
+        SetHeaderText(character.workflow.currentStep().name);
 
         this._attrPoints = 2;
         this._skillPoints = 2;
@@ -78,6 +84,17 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
               </div>
             : undefined;
 
+        let talents = [];
+        talents.push(...TalentsHelper.getTalentsForSkills(character.skills.map(s => { return s.skill; })), ...TalentsHelper.getTalentsForSkills([Skill.None]));
+
+        const talentSelection = !hasExcess && character.workflow.currentStep().talentPrompt
+            ? (<div className="panel">
+                <div className="header-small">TALENTS</div>
+                <TalentSelectionList talents={talents} onSelection={talent => { this._selectedTalent = talent; }} />
+            </div>)
+            : undefined;
+
+
         const buttonText = !hasExcess ? "FINISH" : "PROCEED";
 
         return (
@@ -94,6 +111,7 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
                     {disciplines}
                 </div>
                 {value}
+                {talentSelection}
                 <Button text={buttonText} className="button-next" onClick={() => this.onNext() }/>
             </div>
         );
@@ -126,6 +144,19 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
             if (!this._skillsDone) {
                 Dialog.show("You have not distributed all Discipline points.");
                 return;
+            }
+
+            if (character.workflow.currentStep().talentPrompt) {
+                if (!this._selectedTalent || this._selectedTalent === "Select talent") {
+                    Dialog.show("You have not selected a talent.");
+                    return;
+                }
+
+                character.addTalent(this._selectedTalent);
+
+                if (this._selectedTalent === "The Ushaan") {
+                    character.addEquipment("Ushaan-tor ice pick");
+                }
             }
 
             if (character.hasTalent("Borg Implants")) {

@@ -1240,7 +1240,9 @@ class _Species {
         if (character.type == CharacterType.KlingonWarrior) {
             var species: SpeciesViewModel[] = [];
 
-            var klingonSpecies = [
+            var klingonSpecies = character.era === Era.NextGeneration ? [
+                Species.Klingon 
+            ] : [
                 Species.Klingon, Species.KlingonQuchHa
             ];
             for (var archetype of klingonSpecies) {
@@ -1281,101 +1283,109 @@ class _Species {
     }
 
     generateSpecies(): Species {
-        var roll = Math.floor(Math.random() * 20) + 1;
-        var species = Species.Human;
+        if (character.type === CharacterType.KlingonWarrior && character.era === Era.NextGeneration) {
+            return Species.Klingon;
+        } else if (character.type === CharacterType.KlingonWarrior) {
+            var roll = Math.floor(Math.random() * 20) + 1;
+            // it doesn't appear that there are any real rules for this.
+            return roll <= 5 ? Species.KlingonQuchHa : Species.Klingon;
+        } else {
+            var roll = Math.floor(Math.random() * 20) + 1;
+            var species = Species.Human;
 
-        switch (character.era) {
-            case Era.Enterprise: {
-                switch (roll) {
-                    case 1:
-                    case 2:
-                        species = Species.Andorian;
-                        break;
-                    case 3:
-                    case 4:
-                        species = Species.Denobulan;
-                        break;
-                    case 17:
-                    case 18:
-                        species = Species.Tellarite;
-                        break;
-                    case 19:
-                    case 20:
-                        species = Species.Vulcan;
-                        break;
-                    default:
-                        species = Species.Human;
-                        break;
+            switch (character.era) {
+                case Era.Enterprise: {
+                    switch (roll) {
+                        case 1:
+                        case 2:
+                            species = Species.Andorian;
+                            break;
+                        case 3:
+                        case 4:
+                            species = Species.Denobulan;
+                            break;
+                        case 17:
+                        case 18:
+                            species = Species.Tellarite;
+                            break;
+                        case 19:
+                        case 20:
+                            species = Species.Vulcan;
+                            break;
+                        default:
+                            species = Species.Human;
+                            break;
+                    }
+                    break;
                 }
-                break;
-            }
-            case Era.OriginalSeries: {
-                switch (roll) {
-                    case 1:
-                    case 2:
-                        species = Species.Andorian;
-                        break;
-                    case 3:
-                    case 4:
-                        species = Species.Denobulan;
-                        break;
-                    case 15:
-                    case 16:
-                        species = Species.Tellarite;
-                        break;
-                    case 17:
-                    case 18:
-                        species = Species.Trill;
-                        break;
-                    case 19:
-                    case 20:
-                        species = Species.Vulcan;
-                        break;
-                    default:
-                        species = Species.Human;
-                        break;
+                case Era.OriginalSeries: {
+                    switch (roll) {
+                        case 1:
+                        case 2:
+                            species = Species.Andorian;
+                            break;
+                        case 3:
+                        case 4:
+                            species = Species.Denobulan;
+                            break;
+                        case 15:
+                        case 16:
+                            species = Species.Tellarite;
+                            break;
+                        case 17:
+                        case 18:
+                            species = Species.Trill;
+                            break;
+                        case 19:
+                        case 20:
+                            species = Species.Vulcan;
+                            break;
+                        default:
+                            species = Species.Human;
+                            break;
+                    }
+                    break;
                 }
-                break;
-            }
-            case Era.NextGeneration: {
-                switch (roll) {
-                    case 1:
-                    case 2:
-                        species = Species.Andorian;
-                        break;
-                    case 3:
-                    case 4:
-                        species = Species.Bajoran;
-                        break;
-                    case 5:
-                    case 6:
-                        species = Species.Betazoid;
-                        break;
-                    case 7:
-                    case 8:
-                        species = Species.Denobulan;
-                        break;
-                    case 15:
-                    case 16:
-                        species = Species.Tellarite;
-                        break;
-                    case 17:
-                    case 18:
-                        species = Species.Trill;
-                        break;
-                    case 19:
-                    case 20:
-                        species = Species.Vulcan;
-                        break;
-                    default:
-                        species = Species.Human;
-                        break;
+                case Era.NextGeneration: {
+                    switch (roll) {
+                        case 1:
+                        case 2:
+                            species = Species.Andorian;
+                            break;
+                        case 3:
+                        case 4:
+                            species = Species.Bajoran;
+                            break;
+                        case 5:
+                        case 6:
+                            species = Species.Betazoid;
+                            break;
+                        case 7:
+                        case 8:
+                            species = Species.Denobulan;
+                            break;
+                        case 15:
+                        case 16:
+                            species = Species.Tellarite;
+                            break;
+                        case 17:
+                        case 18:
+                            species = Species.Trill;
+                            break;
+                        case 19:
+                        case 20:
+                            species = Species.Vulcan;
+                            break;
+                        default:
+                            species = Species.Human;
+                            break;
+                    }
+                    break;
                 }
-                break;
             }
+
+            return species;
         }
-
-        return species;
     }
 
     applySpecies(species: Species, mixed?: Species) {

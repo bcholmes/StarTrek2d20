@@ -332,7 +332,7 @@ class CareerEvents {
             "You were involved in a mission or action that earned the official praise of a foreign nation, such as a world within the Federation; you’re now considered to be a friend to that people. What culture was aided by this mission? What was the mission? Why was it particularly praiseworthy? Does the character have any friends or contacts in that culture who can be contacted for help?",
             [Attribute.Presence],
             [Skill.Science],
-            "The character gains a Focus, which should reflect the character’s experience with that culture. A Focus of X Culture, replacing the X with the name of that culture, is a good example, as would any that represent skills or techniques specific to that culture.",
+            "The character gains a focus, which should reflect the character’s experience with that culture. A focus of X Culture, replacing the X with the name of that culture, is a good example (e.g., Pakled Culture)",
             "The character may gain a Trait, which should reflect this event. A good example might be Friend to the X, replacing the X with the name of the culture. This reflects the character’s renown amongst that culture, and the benefits and problems such status brings.",
             3,
             () => {
@@ -417,6 +417,7 @@ class CareerEvents {
             9,
             () => {
                 this.improveDiscipline(Skill.Conn);
+                this.fieldCommission();
             },
             "If your character was an Enlisted Warrior or Laborer, you gain a field commission and become an officer."
         ),
@@ -521,6 +522,7 @@ class CareerEvents {
             17,
             () => {
                 this.improveAttribute(Attribute.Fitness);
+                this.fieldCommission();
             },
             "If your character was an Enlisted Warrior or Laborer, you gain a field commission and become an officer."
         ),
@@ -618,6 +620,13 @@ class CareerEvents {
 
         character.skills[discipline].expertise++;
     }
+
+    private fieldCommission() {
+        if (character.enlisted) {
+            character.enlisted = false;
+        }
+    }
+
 }
 
 export const CareerEventsHelper = new CareerEvents();

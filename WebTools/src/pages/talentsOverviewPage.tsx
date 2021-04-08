@@ -158,7 +158,6 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
 
     private onCategoryChanged(index: number) {
         this._category = this._categories[index];
-        console.log(this._category);
         this.forceUpdate();
     }
 }

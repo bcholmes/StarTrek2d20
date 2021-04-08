@@ -2,6 +2,7 @@
 import {Role, RolesHelper} from './roles';
 import {Era} from './eras';
 import {Source} from './sources';
+import {Track} from './tracks';
 import {character, CharacterType} from '../common/character';
 
 export enum Rank {
@@ -69,6 +70,30 @@ class CareersPrerequisite implements IRankPrerequisite {
     }
 }
 
+class TrackPrerequisite implements IRankPrerequisite {
+    private _track: Track;
+
+    constructor(track: Track) {
+        this._track = track;
+    }
+
+    isPrerequisiteFulfilled() {
+        return this._track === character.track;
+    }
+}
+
+class NotTrackPrerequisite implements IRankPrerequisite {
+    private _track: Track;
+
+    constructor(track: Track) {
+        this._track = track;
+    }
+
+    isPrerequisiteFulfilled() {
+        return this._track !== character.track;
+    }
+}
+
 class RolesPrerequisite implements IRankPrerequisite {
     private _roles: Role[];
 
@@ -128,6 +153,26 @@ class NotTypePrerequisite implements IRankPrerequisite {
 
     isPrerequisiteFulfilled() {
         return character.type !== this._type;
+    }
+}
+
+class AnyOfRankPrerequisite implements IRankPrerequisite {
+    private _prequisites: IRankPrerequisite[];
+
+    constructor(...prequisites: IRankPrerequisite[]) {
+        this._prequisites = prequisites;
+    }
+
+    isPrerequisiteFulfilled() {
+        if (this._prequisites.length == 0) {
+            return true;
+        } else {
+            var result = false;
+            this._prequisites.forEach(req => {
+                result = result || req.isPrerequisiteFulfilled();
+            });
+            return result;
+        }
     }
 }
 
@@ -207,7 +252,7 @@ class Ranks {
             "Lieutenant",
             [
                 new OfficerPrerequisite(),
-                new CareersPrerequisite([Career.Experienced]),
+                new AnyOfRankPrerequisite(new CareersPrerequisite([Career.Experienced]), new TypePrerequisite(CharacterType.KlingonWarrior)),
                 new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer])
             ],
             1),
@@ -225,7 +270,7 @@ class Ranks {
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
-                new RolesPrerequisite([Role.CommunicationsOfficer, Role.FlightController, Role.OperationsManager, Role.ScienceOfficer, Role.ShipsCounselor])
+                new RolesPrerequisite([Role.CommunicationsOfficer, Role.FlightController, Role.OperationsManager, Role.ScienceOfficer, Role.ShipsCounselor, Role.WeaponsOfficer])
             ],
             1),
         [Rank.MasterChiefPettyOfficer]: new RankModel(
@@ -394,13 +439,14 @@ class Ranks {
         [Rank.Civilian]: new RankModel(
             "Civilian",
             [
-                new RolesPrerequisite([Role.DiplomaticAttache])
+                new AnyOfRankPrerequisite(new RolesPrerequisite([Role.DiplomaticAttache]), new TrackPrerequisite(Track.Laborer))
             ],
             1),
         [Rank.Sergeant]: new RankModel(
             "Sergeant (bu')",
             [
                 new EnlistedPrerequisite(),
+                new NotTrackPrerequisite(Track.Laborer),
                 new TypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
@@ -408,6 +454,7 @@ class Ranks {
             "Corporal (Da')",
             [
                 new EnlistedPrerequisite(),
+                new NotTrackPrerequisite(Track.Laborer),
                 new TypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
@@ -415,6 +462,7 @@ class Ranks {
             "Bekk (beq)",
             [
                 new EnlistedPrerequisite(),
+                new NotTrackPrerequisite(Track.Laborer),
                 new TypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),

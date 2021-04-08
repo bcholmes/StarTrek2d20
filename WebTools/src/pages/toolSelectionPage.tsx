@@ -39,13 +39,7 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
     private startKlingonCharacterWorkflow() {
         character.type = CharacterType.KlingonWarrior;
         character.workflow = WorkflowsHelper.klingonWarriorWorkflow;
-        if (character.era == Era.NextGeneration) {
-            character.species = Species.Klingon;
-            SpeciesHelper.applySpecies(character.species);
-            Navigation.navigateToPage(PageIdentity.SpeciesDetails);
-        } else {
-            this.goToPage(PageIdentity.Species);
-        }
+        this.goToPage(PageIdentity.Species);
     }
 
     private startStarfleetWorkflow() {

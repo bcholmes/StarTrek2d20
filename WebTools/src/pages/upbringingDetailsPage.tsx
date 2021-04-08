@@ -27,7 +27,6 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
     }
 
     render() {
-        console.log(character.upbringing);
         var upbringing = UpbringingsHelper.getUpbringing(character.upbringing);
 
         var nextPageName = character.workflow.peekNextStep().name;
