@@ -86,7 +86,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
                         <DropDownInput items={this._categories} defaultValue={this._category} onChange={(index) => { this.onCategoryChanged(index); }} />
                     </div>
                     <div className="talent-filter">
-                        <input type="text" id="search" onChange={(e) => { this.searchChanged(e); }} value={this._search} placeholder="Search..." />
+                        <input type="text" id="search" onChange={(e) => { this.searchChanged(e); }} value={this._search} placeholder="Search..." autoComplete="off"/>
                     </div>
                 </div>
                 <div className="page">
