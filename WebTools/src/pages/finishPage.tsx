@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character, Gender} from '../common/character';
+import {character, CharacterType, Gender} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {SetHeaderText} from '../common/extensions';
 import {PageIdentity, IPageProperties} from './pageFactory';
@@ -17,6 +17,8 @@ import {RolesHelper, RoleViewModel} from '../helpers/roles';
 
 export class FinishPage extends React.Component<IPageProperties, {}> {
     private name: HTMLInputElement;
+    private lineage: HTMLInputElement;
+    private house: HTMLInputElement;
     private ranks: string[];
     private roles: RoleViewModel[];
     private role: string;
@@ -119,6 +121,23 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                 </tr>
             )
         });
+        let extra = (<div></div>);
+        if (character.type == CharacterType.KlingonWarrior) {
+            extra = (<div><div className="panel">
+                <div className="header-small">LINEAGE</div>
+                <div>{nameDescription}</div>
+                <div className="textinput-label">Lineage</div>
+                <input type="text" onChange={() => this.onLineageChanged() } ref={(input) => this.lineage = input}/>
+                <div><small><b>Example: </b> <i>Daughter of Martok</i> or <i>Child of Koloth</i></small></div>
+            </div><div className="panel">
+                <div className="header-small">HOUSE</div>
+                <div>{nameDescription}</div>
+                <div className="textinput-label">House</div>
+                <input type="text" onChange={() => this.onHouseChanged() } ref={(input) => this.house = input}/>
+                <div><small><b>Example: </b> <i>House Duras</i> or <i>House Kor</i></small></div>
+            </div></div>);
+        }
+
 
         return (
             <div className="page">
@@ -136,6 +155,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                     <input type="text" onChange={() => this.onNameChanged() } ref={(input) => this.name = input}/>
                     <div><small><b>Suggestions: </b> <i>{suggestions}</i></small></div>
                 </div>
+                {extra}
                 <br/>
                 <div className="panel">
                     <div className="header-small">ASSIGNMENT</div>
@@ -178,6 +198,16 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
 
     private onNameChanged() {
         character.name = this.name.value;
+        this.forceUpdate();
+    }
+
+    private onLineageChanged() {
+        character.lineage = this.lineage.value;
+        this.forceUpdate();
+    }
+
+    private onHouseChanged() {
+        character.house = this.house.value;
         this.forceUpdate();
     }
 

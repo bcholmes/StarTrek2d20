@@ -184,6 +184,9 @@
     margin-right: 5px;
     font-family: lcars;
     font-size: large;
+    min-width: 45px;
+    text-align: right;
+    text-transform: uppercase;
 }
 
 .view-character {

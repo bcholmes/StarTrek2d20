@@ -94,6 +94,8 @@ export class Character {
     public talents: { [name: string]: CharacterTalent };
     public age: number;
     public name: string;
+    public lineage: string;
+    public house: string;
     public appearance: string;
     public personality: string;
     public gender: Gender = Gender.Male;
