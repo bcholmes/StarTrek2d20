@@ -108,12 +108,10 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
     }
 
     componentDidUpdate(prevProps) {
-        console.log("Component did update.");
         if (this.props.points !== prevProps.points) {
             this._points = this.props.points;
         }
         if (this.props.mode !== prevProps.mode) {
-            console.log("Mode changed. Let's fix the state.");
             this.setState({ mode: this.props.mode });
             this.initializeAttributeContainers();
         }
@@ -162,8 +160,6 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
     }
 
     render() {
-        console.log("re-render");
-
         const attributes = this._attributes.map((a, i) => {
             return <AttributeImprovement
                 key={i}
