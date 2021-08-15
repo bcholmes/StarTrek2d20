@@ -55,17 +55,16 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
     }
 
     render() {
-        const attributes = !this.state.showExcessAttrDistribution
-            ? <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Customization} points={this._attrPoints} onDone={(done) => { this.attributesDone(done); } } />
-            : this._excessAttrPoints > 0
-                ? <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Increase} points={this._excessAttrPoints} onDone={(done) => { this.attributesDone(done); } } />
-                : undefined;
+        const hasExcess = this.state.showExcessAttrDistribution || this.state.showExcessSkillDistribution;
+        const attributes = hasExcess
+                ? (this.state.showExcessAttrDistribution 
+                    ? <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Increase} points={this._excessAttrPoints} onDone={(done) => { this.attributesDone(done); } } />
+                    : <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.ReadOnly} points={this._excessAttrPoints} onDone={(done) => { this.attributesDone(done); } } />)
+                : <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Customization} points={this._attrPoints} onDone={(done) => { this.attributesDone(done); } } />
 
         const disciplines = !this.state.showExcessSkillDistribution
             ? <ElectiveSkillList points={this._skillPoints} skills={character.skills.map(s => { return s.skill; }) } onUpdated={(skills) => { this._skillsDone = skills.length === this._skillPoints; } } />
             : <SkillImprovementCollection points={this._excessSkillPoints} skills={character.skills.map(s => s.skill) } onDone={(done) => { this._skillsDone = done; }} />;
-
-        const hasExcess = this.state.showExcessAttrDistribution || this.state.showExcessSkillDistribution;
 
         const description = !hasExcess
             ? "At this stage, your character is almost complete, and needs only a few final elements and adjustments. This serves as a last chance to customize the character before play."
