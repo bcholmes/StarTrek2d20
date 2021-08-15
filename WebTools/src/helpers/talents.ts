@@ -440,6 +440,11 @@ export class Talents {
                 [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.CommandDivision)],
                 1),
             new TalentModel(
+                "Multi-Discipline",
+                "The character may select one additional Role, but not Commanding Officer or Admiral.",
+                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.CommandDivision)],
+                1),
+            new TalentModel(
                 "Plan of Action",
                 "When an ally succeeds at a Task that was made possible or had reduced Difficulty because of an Advantage created by the character, if that Advantage represented a plan or strategy, they generate two bonus Momentum. Bonus Momentum cannot be saved into the group pool.",
                 [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.CommandDivision)],
