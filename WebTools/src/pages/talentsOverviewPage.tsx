@@ -11,20 +11,30 @@ class TalentViewModel {
     name: string;
     description: string;
     source: string;
+    category: string;
     prerequisites: string;
 
-    constructor(name: string, description: string, source: string, prerequisites: string) {
+    constructor(name: string, description: string, source: string, category: string, prerequisites: string) {
         this.name = name;
         this.description = description;
         this.source = source;
         this.prerequisites = prerequisites;
+        this.category = category;
+    }
+
+    matches(term) {
+        term = term.toLowerCase();
+        return this.name.toLowerCase().indexOf(term) >= 0 || this.description.toLowerCase().indexOf(term) >= 0 || this.category.toLowerCase().indexOf(term) >= 0;
     }
 }
 
 export class TalentsOverviewPage extends React.Component<{}, {}> {
+    static ALL: string = "All";
     private _categories: string[] = [];
     private _category: string = "";
+    private _allTalents: TalentViewModel[] = [];
     private _talents: { [category: string]: TalentViewModel[] } = {};
+    private _search: string = '';
 
     constructor(props: {}) {
         super(props);
@@ -36,8 +46,25 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
         this.loadTalents();
     }
 
+    selectTalents() {
+        if (this._search.length == 0) {
+            return this._category == TalentsOverviewPage.ALL ? this._allTalents : this._talents[this._category];
+        } else {
+            var talents = [];
+            for (var i = 0; i < this._allTalents.length; i++) {
+                const talent = this._allTalents[i];
+                if (talent.matches(this._search)) {
+                    talents.push(talent);
+                }
+            }
+            
+            return talents;
+        }
+    }
+
     render() {
-        const talents = this._talents[this._category].map((t, i) => {
+        const talentList = this.selectTalents();
+        const talents = talentList.map((t, i) => {
             return (
                 <tr key={i}>
                     <td className="selection-header">
@@ -46,6 +73,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
                             ({t.source})
                         </div>
                     </td>
+                    <td>{t.category}</td>
                     <td>{t.description}</td>
                 </tr>
             );
@@ -54,7 +82,12 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
         return (
             <div>
                 <div className="float-top">
-                    <DropDownInput items={this._categories} defaultValue={this._category} onChange={(index) => { this.onCategoryChanged(index); }} />
+                    <div className="talent-filter">
+                        <DropDownInput items={this._categories} defaultValue={this._category} onChange={(index) => { this.onCategoryChanged(index); }} />
+                    </div>
+                    <div className="talent-filter">
+                        <input type="text" id="search" onChange={(e) => { this.searchChanged(e); }} value={this._search} placeholder="Search..." autoComplete="off"/>
+                    </div>
                 </div>
                 <div className="page">
                     <table className="selection-list">
@@ -67,6 +100,14 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
         );
     }
 
+    private searchChanged(event) {
+        this._search = event.target.value;
+        if (this._search.length > 0) {
+            this._category = TalentsOverviewPage.ALL;
+        }
+        this.forceUpdate();
+    }
+
     private setupSources() {
         for (let source in Object.keys(Source).filter(src => !isNaN(Number(Source[src])))) {
             let src = Number(source);
@@ -77,6 +118,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
     private setupCategories() {
         var skillFilter = [6];
 
+        this._categories.push(TalentsOverviewPage.ALL);
         for (let sk in Object.keys(Skill).filter(skill => !isNaN(Number(Skill[skill])))) {
             if (skillFilter.indexOf(Number(sk)) === -1) {
                 let s = SkillsHelper.getSkillName(Number(sk));
@@ -110,6 +152,23 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
     }
 
     private loadTalents() {
+        
+        const talentsList = TalentsHelper.getTalents();
+        for (const key in talentsList) {
+            const talents = talentsList[key];
+            for (var i = 0; i < talents.length; i++) {
+                const talent = talents[i];
+                const skill = SkillsHelper.findSkill(key);
+                const model = new TalentViewModel(talent.name, talent.description, this.getSource(talent.name), 
+                        skill !== Skill.None ? ("" + skill) : talent.category, this.prerequisitesToString(talent.prerequisites));
+                this._allTalents.push(model);
+            }
+        }
+        this._allTalents.sort((left, right): number => {
+            if (left.name < right.name) return -1;
+            if (left.name > right.name) return 1;
+            return 0;
+        });
         for (var c = 0; c < this._categories.length; c++) {
             const category = this._categories[c];
             const skill = SkillsHelper.toSkill(category);
@@ -117,15 +176,17 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
                 const talents = TalentsHelper.getTalents()[skill];
                 for (var i = 0; i < talents.length; i++) {
                     const talent = talents[i];
-                    this._talents[category].push(new TalentViewModel(talent.name, talent.description, this.getSource(talent.name), this.prerequisitesToString(talent.prerequisites)));
+                    const model = new TalentViewModel(talent.name, talent.description, this.getSource(talent.name), category, this.prerequisitesToString(talent.prerequisites));
+                    this._talents[category].push(model);
                 }
             }
-            else {
+            else if (category != TalentsOverviewPage.ALL) {
                 const talents = TalentsHelper.getTalents()[Skill.None];
                 for (var i = 0; i < talents.length; i++) {
                     const talent = talents[i];
                     if (talent.category === category) {
-                        this._talents[category].push(new TalentViewModel(talent.name, talent.description, this.getSource(talent.name), this.prerequisitesToString(talent.prerequisites)));
+                        const model = new TalentViewModel(talent.name, talent.description, this.getSource(talent.name), category, this.prerequisitesToString(talent.prerequisites));
+                        this._talents[category].push(model);
                     }
                 }
             }
@@ -144,7 +205,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
 
     private onCategoryChanged(index: number) {
         this._category = this._categories[index];
-        console.log(this._category);
+        this._search = '';
         this.forceUpdate();
     }
 }
