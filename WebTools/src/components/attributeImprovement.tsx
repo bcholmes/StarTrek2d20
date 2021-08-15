@@ -55,6 +55,7 @@ export enum AttributeImprovementCollectionMode {
     Customization,
     Academy,
     Ktarian,
+    ReadOnly,
 }
 
 interface AttributeImprovementCollectionProperties {
@@ -93,7 +94,6 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
         super(props);
 
         this._points = props.points;
-        this._attributes = [];
 
         if (character.isYoung()) {
             this._absoluteMax = 11;
@@ -103,7 +103,30 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
             this._absoluteMax--;
         }
 
-        switch (props.mode) {
+        this.initializeAttributeContainers();
+        this.state = { mode: props.mode };
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.points !== prevProps.points) {
+            this._points = this.props.points;
+        }
+        if (this.props.mode !== prevProps.mode) {
+            this.setState({ mode: this.props.mode });
+            this.initializeAttributeContainers();
+        }
+    }
+
+    initializeAttributeContainers() {
+        this._attributes = [];
+        switch (this.props.mode) {
+            case AttributeImprovementCollectionMode.ReadOnly:
+                for (var i = 0; i < character.attributes.length; i++) {
+                    if (!this.props.filter || this.props.filter.indexOf(i) > -1) {
+                        this._attributes.push(new AttributeContainer(character.attributes[i].attribute, character.attributes[i].value, character.attributes[i].value, this._absoluteMax, false, false));
+                    }
+                }
+                break;
             case AttributeImprovementCollectionMode.Increase:
                 for (var i = 0; i < character.attributes.length; i++) {
                     if (!this.props.filter || this.props.filter.indexOf(i) > -1) {

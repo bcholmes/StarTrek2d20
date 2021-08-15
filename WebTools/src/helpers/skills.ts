@@ -49,6 +49,13 @@ export class Skills {
 
         return Skill.None;
     }
+    findSkill(name: string) {
+        if (Number(name) != NaN && Number(name) >= 0 && Number(name) < Skill.None) {
+            return Skill[Number(name)];
+        } else {
+            return this.toSkill(name);
+        }
+    }
 }
 
 export const SkillsHelper = new Skills();

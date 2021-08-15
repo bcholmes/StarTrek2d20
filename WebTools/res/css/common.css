@@ -457,6 +457,10 @@ table.aspect-list td:first-child {
         transform: translate(5px, -8px);
     }
 
+.talent-filter {
+    display: inline-block;
+    padding-right: 10px;
+}
 
 #version {
     position: fixed;
