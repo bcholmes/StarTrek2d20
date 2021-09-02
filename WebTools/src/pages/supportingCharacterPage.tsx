@@ -205,11 +205,18 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
 
         const pdfBytes = await pdfDoc.save()
 
-			// Trigger the browser to download the PDF document
-        download(pdfBytes, "supporting-character.pdf", "application/pdf");
+		// Trigger the browser to download the PDF document
+        download(pdfBytes, this.createFileName(character.name), "application/pdf");
     }
 
-
+    private createFileName(name: string): string {
+        if (name == null || name.length == 0) {
+            return "supporting-character.pdf";
+        } else {
+            var escaped = name.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_');
+            return escaped + '-supporting-character.pdf';
+        }
+    }
 
     private selectSpecies(index: number) {
         const species = SpeciesHelper.getSpecies();

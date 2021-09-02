@@ -38,6 +38,11 @@ abstract class BasicShortCharacterSheet implements ICharacterSheet {
             this.fillField(form, 'Focus ' + (i+1), f);
         });
 
+        this.fillAttributes(form);
+        this.fillSkills(form);
+    }
+
+    fillAttributes(form: PDFForm) {
         character.attributes.forEach( (a, i) => {
             switch (a.attribute) {
             case Attribute.Control:
@@ -60,7 +65,9 @@ abstract class BasicShortCharacterSheet implements ICharacterSheet {
                 break;
             }
         });
+    }
 
+    fillSkills(form: PDFForm) {
         character.skills.forEach( (a, i) => {
             switch (a.skill) {
             case Skill.Command:
