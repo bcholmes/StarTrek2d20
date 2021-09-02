@@ -1,4 +1,5 @@
 ﻿import * as React from 'react';
+import { PDFDocument } from 'pdf-lib'
 import {SetHeaderText} from '../common/extensions';
 import {character} from '../common/character';
 import {CharacterSerializer} from '../common/characterSerializer';
@@ -7,6 +8,10 @@ import {DropDownInput} from '../components/dropDownInput';
 import {SupportingCharacterAttributes} from '../components/supportingCharacterAttributes';
 import {SupportingCharacterDisciplines} from '../components/supportingCharacterDisciplines';
 import {Rank, RanksHelper} from '../helpers/ranks';
+import {Button} from '../components/button';
+import {CharacterSheetRegistry} from '../helpers/sheets';
+
+declare function download(bytes: any, fileName: any, contentType: any): any;
 
 export class SupportingCharacterPage extends React.Component<{}, {}> {
     private _nameElement: HTMLInputElement;
@@ -179,16 +184,32 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
                     </div>
                     <br/>
                     <div className="button-container">
-                        <form action="http://pdf.modiphiusapps.hostinguk.org/api/sheet" method="post" encType="application/x-www-form-urlencoded" target="_blank">
-                            {data}
-                            <input type="submit" value="Export to PDF" className="button-small" />
-                        </form>
+                        <Button text="Export to PDF" className="button-small" onClick={() => this.exportPdf() } />
                         <br/>
                     </div>
                 </div>
             </div>
         );
     }
+
+    private async exportPdf() {
+        const sheet = CharacterSheetRegistry.getCharacterSheet();
+
+        console.log("exporty goodness: " + sheet.getName());
+        const existingPdfBytes = await fetch(sheet.getPdfUrl()).then(res => res.arrayBuffer())
+        console.log("now let's load");
+
+        const pdfDoc = await PDFDocument.load(existingPdfBytes)
+
+        sheet.populate(pdfDoc)
+
+        const pdfBytes = await pdfDoc.save()
+
+			// Trigger the browser to download the PDF document
+        download(pdfBytes, "supporting-character.pdf", "application/pdf");
+    }
+
+
 
     private selectSpecies(index: number) {
         const species = SpeciesHelper.getSpecies();

@@ -50,7 +50,7 @@ export class CharacterSerializer {
         return result;
     }
 
-    private static serializeSpecies(primary: Species, secondary: Species) {
+    public static serializeSpecies(primary: Species, secondary: Species) {
         const mixed = secondary != null
             ? `/${SpeciesHelper.getSpeciesByType(secondary).name}`
             : "";
@@ -68,7 +68,7 @@ export class CharacterSerializer {
         return env;
     }
 
-    private static serializeTraits(traits: string[]) {
+    public static serializeTraits(traits: string[]) {
         var result = "";
         for (var i = 0; i < traits.length; i++) {
             result += `${traits[i]}${i < traits.length-1 ? "," : ""}`;
