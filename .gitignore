@@ -3,6 +3,7 @@ WebTools/Properties/PublishProfiles/Localhost.pubxml.user
 bin/
 WebTools/bin/
 WebTools/dist/trek.js
+WebTools/dist/trek.js.LICENSE.txt
 WebTools/src/**/*.js
 /.vs/WebTools-StarTrek
 /packages

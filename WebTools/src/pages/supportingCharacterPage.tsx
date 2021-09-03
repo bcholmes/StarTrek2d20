@@ -7,6 +7,9 @@ import {DropDownInput} from '../components/dropDownInput';
 import {SupportingCharacterAttributes} from '../components/supportingCharacterAttributes';
 import {SupportingCharacterDisciplines} from '../components/supportingCharacterDisciplines';
 import {Rank, RanksHelper} from '../helpers/ranks';
+import {Button} from '../components/button';
+import {CharacterSheetDialog} from '../components/characterSheetDialog'
+import {CharacterSheetRegistry} from '../helpers/sheets';
 
 export class SupportingCharacterPage extends React.Component<{}, {}> {
     private _nameElement: HTMLInputElement;
@@ -179,15 +182,16 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
                     </div>
                     <br/>
                     <div className="button-container">
-                        <form action="http://pdf.modiphiusapps.hostinguk.org/api/sheet" method="post" encType="application/x-www-form-urlencoded" target="_blank">
-                            {data}
-                            <input type="submit" value="Export to PDF" className="button-small" />
-                        </form>
+                        <Button text="Export to PDF" className="button-small" onClick={() => this.showDialog() } />
                         <br/>
                     </div>
                 </div>
             </div>
         );
+    }
+
+    private showDialog() {
+        CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet());
     }
 
     private selectSpecies(index: number) {

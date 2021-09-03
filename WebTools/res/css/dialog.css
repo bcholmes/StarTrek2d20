@@ -38,6 +38,94 @@
     overflow-y: auto;
     z-index: 150;
 }
+.dialog-container .dialog-header {
+  margin-top: -30px;
+  text-align: left;
+}
+
+.dialog-container .close {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #B5B3D8;
+  margin-top: -30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.dialog-container.dialog-container-lg {
+    width: 75%;
+    max-width: 1000px;
+}
+
+.dialog-container .sheet-selection-item {
+    display: inline-block;
+    padding: 20px;
+    vertical-align: top;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    box-sizing: border-box;
+    width: 242px;
+}
+
+.dialog-container .sheet-selection-item.selected {
+    border: 1px solid white;
+}
+
+.dialog-container .sheet-selection-item  .sheet-selection-item-name {
+  width: 200px;
+  min-height: 45px;
+  text-align: center;
+}
+
+.dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail {
+    position: relative;
+    width: 200px;
+    height: 260px;
+}
+
+.dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail img.thumbnail {
+    width: 200px;
+    height: auto;
+}
+
+.dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail img.overlay {
+  position: absolute;
+  left: 50%;
+  top: 75px;
+  transform: translateX(-50%);
+}
+
+@media screen and (min-width: 0px) and (max-width: 1000px) {
+
+  .dialog-container.dialog-container-lg {
+      width: 90%;
+      max-width: 90%;
+  }
+
+  .dialog-container .sheet-selection-item {
+    padding: 12px;
+    width: 166px;
+  }
+  .dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail img.thumbnail {
+    width: 140px;
+    height: 186px;
+  }
+
+  .dialog-container .sheet-selection-item  .sheet-selection-item-name {
+    width: 140px;
+  }
+}
+
+.dialog-container .style-selections {
+    clear: both;
+    max-height: 700px;
+    overflow: scroll;
+    text-align: left;
+}
 
 .dialog-container-visible {
     animation: dialog-in linear .2s;
