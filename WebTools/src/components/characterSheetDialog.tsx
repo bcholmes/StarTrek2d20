@@ -17,14 +17,20 @@ interface ICharacterSheetDialogProperties {
 class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogProperties, {}> {
     constructor(props: ICharacterSheetDialogProperties) {
         super(props);
+
+        const { sheets } = this.props;
+        if (sheets) {
+            this.state = { selection: sheets[0] }
+        }
     }
 
     render() {
         const {sheets, isVisible} = this.props;
 
         const sheetList = sheets.map((s, i) => {
+            const selected = (s == this.state['selection']) ? "sheet-selection-item selected" : "sheet-selection-item"; 
             return (
-                <div className="sheet-selection-item" onClick={() => this.selectTemplate(s)}>
+                <div className={selected} onClick={() => this.selectTemplate(s)}>
                     <div className="sheet-selection-item-name">
                         {s.getName()}
                     </div>

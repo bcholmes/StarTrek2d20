@@ -66,6 +66,10 @@
     cursor: pointer;
 }
 
+.dialog-container .sheet-selection-item.selected {
+    border: 1px solid white;
+}
+
 .dialog-container .sheet-selection-item  .sheet-selection-item-name {
   width: 200px;
   min-height: 45px;
