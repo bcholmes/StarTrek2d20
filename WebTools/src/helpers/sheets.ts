@@ -40,6 +40,34 @@ abstract class BasicShortCharacterSheet implements ICharacterSheet {
 
         this.fillAttributes(form);
         this.fillSkills(form);
+        this.fillStress(form);
+    }
+
+    fillStress(form: PDFForm) {
+        var stress = character.stress || 0; 
+        if (stress == 0) {
+            character.attributes.forEach( (a, i) => {
+                switch(a.attribute) {
+                case Attribute.Fitness:
+                    stress += a.value;
+                    break;
+                default:
+                }
+            })
+
+            character.skills.forEach( (s, i) => {
+                switch(s.skill) {
+                case Skill.Security:
+                    stress += s.expertise;
+                    break;
+                default:
+                }
+            })
+        }
+
+        for (var i = 1; i <= 30; i++) {
+            this.fillCheckbox(form, "Stress " + i, i > stress);
+        }
     }
 
     fillAttributes(form: PDFForm) {
@@ -101,7 +129,21 @@ abstract class BasicShortCharacterSheet implements ICharacterSheet {
         } catch (e) {
             // ignore it
         }
+    }
 
+    fillCheckbox(form: PDFForm, name: string, value: boolean) {
+        try {
+            const field = form.getCheckBox(name)
+            if (field) {
+                if (value) {
+                    field.check();
+                } else {
+                    field.uncheck();
+                }
+            }
+        } catch (e) {
+            // ignore it
+        }
     }
 }
 

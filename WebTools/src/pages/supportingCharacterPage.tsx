@@ -191,7 +191,12 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
     }
 
     private showDialog() {
+        this.populateAdditionalFields();
         CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet());
+    }
+
+    private populateAdditionalFields() {
+        character.traits = [ CharacterSerializer.serializeSpecies(character.species, character.mixedSpecies) ];
     }
 
     private selectSpecies(index: number) {
