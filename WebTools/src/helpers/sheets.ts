@@ -110,7 +110,19 @@ class HalfPageSupportingCharacterSheet extends BasicShortCharacterSheet {
         return 'Half-Page Supporting Character Sheet'
     }
     getThumbnailUrl(): string {
-        throw new Error('Method not implemented.');
+        return 'https://sta.bcholmes.org/res/img/sheets/TNG_Supporting_Character_Half_Page.png'
+    }
+    getPdfUrl(): string {
+        return 'https://sta.bcholmes.org/res/pdf/TNG_Supporting_Character_Half_Page.pdf'
+    }
+}
+
+class StandardCharacterSheet extends BasicShortCharacterSheet {
+    getName(): string {
+        return 'Standard Character Sheet'
+    }
+    getThumbnailUrl(): string {
+        return 'https://sta.bcholmes.org/res/img/sheets/TNG_Standard_Character_Sheet.png'
     }
     getPdfUrl(): string {
         return 'https://sta.bcholmes.org/res/pdf/TNG_Supporting_Character_Half_Page.pdf'
@@ -120,6 +132,11 @@ class HalfPageSupportingCharacterSheet extends BasicShortCharacterSheet {
 class CharacterSheets {
     public getCharacterSheet(): ICharacterSheet {
         return new HalfPageSupportingCharacterSheet()
+    }
+
+    public getSupportingCharacterSheet(): ICharacterSheet[] {
+        var result: ICharacterSheet[] = [ new StandardCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
+        return result
     }
 }
 

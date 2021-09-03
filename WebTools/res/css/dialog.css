@@ -38,6 +38,64 @@
     overflow-y: auto;
     z-index: 150;
 }
+.dialog-container .dialog-header {
+  margin-top: -30px;
+  text-align: left;
+}
+
+.dialog-container .close {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #B5B3D8;
+  margin-top: -30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.dialog-container.dialog-container-lg {
+    max-width: 1000px;
+}
+
+.dialog-container .sheet-selection-item {
+    display: inline-block;
+    padding: 20px;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.dialog-container .sheet-selection-item  .sheet-selection-item-name {
+  width: 200px;
+  min-height: 45px;
+  text-align: center;
+}
+
+.dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail {
+    width: 200px;
+    height: 260px;
+}
+
+.dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail img {
+    width: 200px;
+    height: auto;
+}
+
+@media screen and (min-width: 0px) and (max-width: 1000px) {
+
+  .dialog-container.dialog-container-lg {
+      max-width: 96%;
+  }
+
+}
+
+.dialog-container .style-selections {
+    clear: both;
+    max-height: 700px;
+    overflow: scroll;
+    text-align: left;
+}
 
 .dialog-container-visible {
     animation: dialog-in linear .2s;

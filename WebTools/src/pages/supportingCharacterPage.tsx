@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import { PDFDocument } from 'pdf-lib'
 import {SetHeaderText} from '../common/extensions';
 import {character} from '../common/character';
 import {CharacterSerializer} from '../common/characterSerializer';
@@ -9,9 +8,8 @@ import {SupportingCharacterAttributes} from '../components/supportingCharacterAt
 import {SupportingCharacterDisciplines} from '../components/supportingCharacterDisciplines';
 import {Rank, RanksHelper} from '../helpers/ranks';
 import {Button} from '../components/button';
+import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
-
-declare function download(bytes: any, fileName: any, contentType: any): any;
 
 export class SupportingCharacterPage extends React.Component<{}, {}> {
     private _nameElement: HTMLInputElement;
@@ -184,7 +182,7 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
                     </div>
                     <br/>
                     <div className="button-container">
-                        <Button text="Export to PDF" className="button-small" onClick={() => this.exportPdf() } />
+                        <Button text="Export to PDF" className="button-small" onClick={() => this.showDialog() } />
                         <br/>
                     </div>
                 </div>
@@ -192,30 +190,8 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
         );
     }
 
-    private async exportPdf() {
-        const sheet = CharacterSheetRegistry.getCharacterSheet();
-
-        console.log("exporty goodness: " + sheet.getName());
-        const existingPdfBytes = await fetch(sheet.getPdfUrl()).then(res => res.arrayBuffer())
-        console.log("now let's load");
-
-        const pdfDoc = await PDFDocument.load(existingPdfBytes)
-
-        sheet.populate(pdfDoc)
-
-        const pdfBytes = await pdfDoc.save()
-
-		// Trigger the browser to download the PDF document
-        download(pdfBytes, this.createFileName(character.name), "application/pdf");
-    }
-
-    private createFileName(name: string): string {
-        if (name == null || name.length == 0) {
-            return "supporting-character.pdf";
-        } else {
-            var escaped = name.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_');
-            return escaped + '-supporting-character.pdf';
-        }
+    private showDialog() {
+        CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet());
     }
 
     private selectSpecies(index: number) {
