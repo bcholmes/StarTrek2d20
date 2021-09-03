@@ -125,7 +125,7 @@ class StandardCharacterSheet extends BasicShortCharacterSheet {
         return 'https://sta.bcholmes.org/res/img/sheets/TNG_Standard_Character_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/res/pdf/TNG_Supporting_Character_Half_Page.pdf'
+        return 'https://sta.bcholmes.org/res/pdf/TNG_Standard_Character_Sheet.pdf'
     }
 }
 

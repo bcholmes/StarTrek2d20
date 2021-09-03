@@ -26,16 +26,19 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
 
     render() {
         const {sheets, isVisible} = this.props;
+        const selection = this.state['selection'];
 
         const sheetList = sheets.map((s, i) => {
-            const selected = (s == this.state['selection']) ? "sheet-selection-item selected" : "sheet-selection-item"; 
+            const selected = (s.getName() == selection.getName()) ? "sheet-selection-item selected" : "sheet-selection-item"; 
+            const overlay = (s.getName() == selection.getName()) ? <img className="overlay" src="./res/img/check.png" /> : undefined;
             return (
                 <div className={selected} onClick={() => this.selectTemplate(s)}>
                     <div className="sheet-selection-item-name">
                         {s.getName()}
                     </div>
                     <div className="sheet-selection-item-thumbnail">
-                        <img src={s.getThumbnailUrl()} />
+                        <img className="thumbnail" src={s.getThumbnailUrl()} />
+                        {overlay}
                     </div>
                 </div>
             );
@@ -69,22 +72,24 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
     }
 
     private selectTemplate(sheet: ICharacterSheet) {
-        console.log("clicky thing");
+        this.setState({ selection: sheet });
     }
 
     private async exportPdf() {
-        const sheet = CharacterSheetRegistry.getCharacterSheet();
+        const sheet = this.state['selection'];
+        if (sheet) {
 
-        const existingPdfBytes = await fetch(sheet.getPdfUrl()).then(res => res.arrayBuffer())
-        const pdfDoc = await PDFDocument.load(existingPdfBytes)
+            const existingPdfBytes = await fetch(sheet.getPdfUrl()).then(res => res.arrayBuffer())
+            const pdfDoc = await PDFDocument.load(existingPdfBytes)
 
-        sheet.populate(pdfDoc)
+            sheet.populate(pdfDoc)
 
-        const pdfBytes = await pdfDoc.save()
+            const pdfBytes = await pdfDoc.save()
 
-		// Trigger the browser to download the PDF document
-        download(pdfBytes, this.createFileName(character.name), "application/pdf");
-
+            // Trigger the browser to download the PDF document
+            download(pdfBytes, this.createFileName(character.name), "application/pdf");
+        }
+        
         CharacterSheetDialog.hide();
     }
 

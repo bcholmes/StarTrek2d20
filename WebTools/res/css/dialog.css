@@ -64,6 +64,8 @@
     padding: 20px;
     vertical-align: top;
     cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 15px;
 }
 
 .dialog-container .sheet-selection-item.selected {
@@ -77,13 +79,21 @@
 }
 
 .dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail {
+    position: relative;
     width: 200px;
     height: 260px;
 }
 
-.dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail img {
+.dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail img.thumbnail {
     width: 200px;
     height: auto;
+}
+
+.dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail img.overlay {
+  position: absolute;
+  left: 50%;
+  top: 75px;
+  transform: translateX(-50%);
 }
 
 @media screen and (min-width: 0px) and (max-width: 1000px) {
