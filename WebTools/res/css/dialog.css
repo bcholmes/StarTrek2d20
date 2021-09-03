@@ -56,6 +56,7 @@
 }
 
 .dialog-container.dialog-container-lg {
+    width: 75%;
     max-width: 1000px;
 }
 
@@ -66,6 +67,8 @@
     cursor: pointer;
     border: 1px solid transparent;
     border-radius: 15px;
+    box-sizing: border-box;
+    width: 242px;
 }
 
 .dialog-container .sheet-selection-item.selected {
@@ -99,9 +102,22 @@
 @media screen and (min-width: 0px) and (max-width: 1000px) {
 
   .dialog-container.dialog-container-lg {
-      max-width: 96%;
+      width: 90%;
+      max-width: 90%;
   }
 
+  .dialog-container .sheet-selection-item {
+    padding: 12px;
+    width: 166px;
+  }
+  .dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail img.thumbnail {
+    width: 140px;
+    height: 186px;
+  }
+
+  .dialog-container .sheet-selection-item  .sheet-selection-item-name {
+    width: 140px;
+  }
 }
 
 .dialog-container .style-selections {
