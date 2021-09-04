@@ -1,19 +1,17 @@
 ﻿import * as React from 'react';
 import {character, CharacterType, Gender} from '../common/character';
-import {Navigation} from '../common/navigator';
 import {SetHeaderText} from '../common/extensions';
-import {PageIdentity, IPageProperties} from './pageFactory';
-import {PageHeader} from '../components/pageHeader';
+import {IPageProperties} from './pageFactory';
 import {Button} from '../components/button';
-import {RadioButton} from '../components/radioButton';
 import {CheckBox} from '../components/checkBox';
-import {DropDownInput} from '../components/dropDownInput';
 import {ValueInput, Value} from '../components/valueInput';
 import {_CharacterSheet} from '../components/characterSheet';
 import {CharacterSerializer} from '../common/characterSerializer';
 import {SpeciesHelper} from '../helpers/species';
 import {RanksHelper} from '../helpers/ranks';
 import {RolesHelper, RoleViewModel} from '../helpers/roles';
+import {CharacterSheetDialog} from '../components/characterSheetDialog'
+import {CharacterSheetRegistry} from '../helpers/sheets';
 
 export class FinishPage extends React.Component<IPageProperties, {}> {
     private name: HTMLInputElement;
@@ -186,15 +184,17 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                 </div>
                 <br/>
                 <div className="button-container">
-                    <form action="http://pdf.modiphiusapps.hostinguk.org/api/sheet" method="post" encType="application/x-www-form-urlencoded" target="_blank">
-                        {data}
-                        <input type="submit" value="Export to PDF" className="button-small" />
-                    </form>
-                    <br/>
+                <Button text="Export to PDF" className="button-small" onClick={() => this.showDialog() } />
+                        <br/>
                 </div>
             </div>
         );
     }
+
+    private showDialog() {
+        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(), "sta-character");
+    }
+
 
     private onNameChanged() {
         character.name = this.name.value;

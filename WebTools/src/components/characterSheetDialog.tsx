@@ -11,6 +11,7 @@ declare function download(bytes: any, fileName: any, contentType: any): any;
 
 interface ICharacterSheetDialogProperties {
     sheets: ICharacterSheet[];
+    suffix: string,
     isVisible: boolean;
 }
 
@@ -95,19 +96,21 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
 
     private createFileName(name: string): string {
         if (name == null || name.length == 0) {
-            return "supporting-character.pdf";
+            return this.props.suffix + ".pdf";
         } else {
             var escaped = name.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_');
-            return escaped + '-supporting-character.pdf';
+            return escaped + '-'  + this.props.suffix + ".pdf";
         }
     }
 }
 
 class CharacterSheetDialogControl {
     private _sheets: ICharacterSheet[];
+    private _suffix: string;
 
-    show(sheets: ICharacterSheet[]) {
+    show(sheets: ICharacterSheet[], suffix: string) {
         this._sheets = sheets;
+        this._suffix = suffix;
         this.render(true);
     }
 
@@ -119,6 +122,7 @@ class CharacterSheetDialogControl {
         ReactDOM.render(
             React.createElement(_CharacterSheetDialog, {
                 sheets: this._sheets,
+                suffix: this._suffix,
                 isVisible: visible
             }),
             document.getElementById("dialog")

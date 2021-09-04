@@ -192,7 +192,7 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
 
     private showDialog() {
         this.populateAdditionalFields();
-        CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet());
+        CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet(), "supporting-character");
     }
 
     private populateAdditionalFields() {

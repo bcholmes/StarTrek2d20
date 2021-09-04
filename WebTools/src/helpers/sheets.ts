@@ -28,7 +28,7 @@ abstract class BasicShortCharacterSheet implements ICharacterSheet {
     }
 
     populateForm(form: PDFForm) {
-        this.fillField(form, 'Name', character.name);
+        this.fillName(form);
         this.fillField(form, 'Department', character.role);
         this.fillField(form, 'Purpose', character.role);
         this.fillField(form, 'Rank', character.rank);
@@ -41,6 +41,10 @@ abstract class BasicShortCharacterSheet implements ICharacterSheet {
         this.fillAttributes(form);
         this.fillSkills(form);
         this.fillStress(form);
+    }
+
+    fillName(form: PDFForm) {
+        this.fillField(form, 'Name', character.name);
     }
 
     fillStress(form: PDFForm) {
@@ -147,6 +151,44 @@ abstract class BasicShortCharacterSheet implements ICharacterSheet {
     }
 }
 
+abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
+
+    populateForm(form: PDFForm) {
+        super.populateForm(form);
+
+        this.fillField(form, 'Assignment', character.role);
+
+        this.fillValues(form);
+        this.fillTalents(form);
+        this.fillEquipment(form);
+    }
+
+    fillName(form: PDFForm) {
+        this.fillField(form, 'Name', CharacterSerializer.serializeName(character));
+    }
+
+    fillTalents(form: PDFForm) {
+        var i = 1;
+        for (var talent in character.talents) {
+            this.fillField(form, 'Talent ' + i, talent);
+            i++;
+        }
+    }
+
+    fillEquipment(form: PDFForm) {
+        character.equipment.forEach( (e, i) => {
+            this.fillField(form, 'Equipment ' + (i+1), e);
+        });
+    }
+
+    fillValues(form: PDFForm) {
+        this.fillField(form, 'Value 1', character.environmentValue);
+        this.fillField(form, 'Value 2', character.trackValue);
+        this.fillField(form, 'Value 3', character.careerValue);
+        this.fillField(form, 'Value 4', character.finishValue);
+    }
+}
+
 class HalfPageSupportingCharacterSheet extends BasicShortCharacterSheet {
     getName(): string {
         return 'Half-Page Supporting Character Sheet'
@@ -159,7 +201,7 @@ class HalfPageSupportingCharacterSheet extends BasicShortCharacterSheet {
     }
 }
 
-class StandardCharacterSheet extends BasicShortCharacterSheet {
+class StandardCharacterSheet extends BasicFullCharacterSheet {
     getName(): string {
         return 'Standard Character Sheet'
     }
@@ -171,13 +213,45 @@ class StandardCharacterSheet extends BasicShortCharacterSheet {
     }
 }
 
-class CharacterSheets {
-    public getCharacterSheet(): ICharacterSheet {
-        return new HalfPageSupportingCharacterSheet()
+class KlingonCharacterSheet extends BasicFullCharacterSheet {
+    getName(): string {
+        return 'Klingon Character Sheet'
+    }
+    getThumbnailUrl(): string {
+        return 'https://sta.bcholmes.org/res/img/sheets/STA_Klingon_Character_Sheet.png'
+    }
+    getPdfUrl(): string {
+        return 'https://sta.bcholmes.org/res/pdf/STA_Klingon_Character_Sheet.pdf'
     }
 
+    populateForm(form: PDFForm) {
+        super.populateForm(form);
+
+        this.fillField(form, 'House', character.house);
+    }
+
+    fillName(form: PDFForm) {
+        this.fillField(form, 'Name', this.concatenateName());
+    }
+
+    concatenateName() {
+        var result = character.name;
+        if (character.lineage) {
+            result += (", " + character.lineage);
+        }
+        return result;
+    }
+}
+
+
+class CharacterSheets {
     public getSupportingCharacterSheet(): ICharacterSheet[] {
         var result: ICharacterSheet[] = [ new StandardCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
+        return result
+    }
+
+    public getCharacterSheets(): ICharacterSheet[] {
+        var result: ICharacterSheet[] = [ new StandardCharacterSheet(), new KlingonCharacterSheet() ];
         return result
     }
 }

@@ -33,7 +33,7 @@ export class CharacterSerializer {
         ];
     }
 
-    private static serializeName(character: Character) {
+    public static serializeName(character: Character) {
         if (character.type == CharacterType.KlingonWarrior) {
             var result = character.name;
             if (character.lineage) {
