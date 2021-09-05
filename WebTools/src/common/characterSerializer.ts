@@ -79,7 +79,7 @@ export class CharacterSerializer {
         return `${SpeciesHelper.getSpeciesByType(primary).name}${mixed}`;
     }
 
-    private static serializeEnvironment(environment: Environment, otherSpecies: string) {
+    public static serializeEnvironment(environment: Environment, otherSpecies: string) {
         let env = EnvironmentsHelper.getEnvironment(environment).name;
 
         if (environment === Environment.AnotherSpeciesWorld) {

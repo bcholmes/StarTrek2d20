@@ -1,8 +1,9 @@
-import {character} from '../common/character';
+import { character } from '../common/character';
 import { Attribute } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
 import { PDFDocument, PDFForm } from 'pdf-lib'
-import {CharacterSerializer} from '../common/characterSerializer';
+import { CharacterSerializer } from '../common/characterSerializer';
+import { UpbringingsHelper } from './upbringings';
 
 export interface ICharacterSheet {
     getName(): string;
@@ -156,7 +157,9 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
     populateForm(form: PDFForm) {
         super.populateForm(form);
 
+        this.fillField(form, 'Upbringing', UpbringingsHelper.getUpbringing(character.upbringing).name);
         this.fillField(form, 'Assignment', character.role);
+        this.fillField(form, 'Environment', CharacterSerializer.serializeEnvironment(character.environment, character.otherSpeciesWorld));
 
         this.fillValues(form);
         this.fillTalents(form);
