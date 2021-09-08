@@ -47,6 +47,11 @@ export class CareerEventDetailsPage extends React.Component<IPageProperties, {}>
               )
             : undefined;
 
+        const special = event.special ? (<div className="panel">
+              <div className="header-small">SPECIAL</div>
+              {event.special}
+          </div>) : undefined;
+
         const next = character.careerEvents.length === 2 ? "FINISHING TOUCHES" : "CAREER EVENT";
 
         return (
@@ -72,6 +77,7 @@ export class CareerEventDetailsPage extends React.Component<IPageProperties, {}>
                     <div><b>Suggestions: </b> {event.focusSuggestions}</div>
                 </div>
                 {trait}
+                {special}
                 <Button text={next} className="button-next" onClick={() => this.onNext() }/>
             </div>
         );
@@ -106,6 +112,7 @@ export class CareerEventDetailsPage extends React.Component<IPageProperties, {}>
         }
 
         if (character.careerEvents.length === 2) {
+            character.workflow.next();
             Navigation.navigateToPage(PageIdentity.AttributesAndDisciplines);
         }
         else {

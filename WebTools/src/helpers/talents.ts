@@ -1,4 +1,5 @@
-﻿import {character} from '../common/character';
+import {character, CharacterType} from '../common/character';
+import {AliasModel} from './aliases';
 import {Attribute} from './attributes';
 import {Skill, SkillsHelper} from './skills';
 import {DiceRoller} from './diceRoller';
@@ -131,6 +132,38 @@ class CareerPrerequisite implements ITalentPrerequisite {
         return character.career === this.career;
     }
 }
+
+class CharacterTypePrerequisite implements ITalentPrerequisite {
+    private type: CharacterType;
+
+    constructor(type: CharacterType) {
+        this.type = type;
+    }
+
+    isPrerequisiteFulfilled() {
+        return character.type === this.type;
+    }
+}
+
+class AnyOfPrerequisite implements ITalentPrerequisite {
+    private prerequisites: ITalentPrerequisite[];
+
+    constructor(...prerequisites: ITalentPrerequisite[]) {
+        this.prerequisites = prerequisites;
+    }
+
+    isPrerequisiteFulfilled() {
+        var result = false;
+        for (var p of this.prerequisites) {
+            result = result || p.isPrerequisiteFulfilled();
+            if (result) {
+                break;
+            }
+        }
+        return result;
+    }
+}
+
 
 class TalentPrerequisite implements ITalentPrerequisite {
     private talent: string;
@@ -287,13 +320,15 @@ export class TalentModel {
     prerequisites: ITalentPrerequisite[];
     maxRank: number;
     category: string;
+    aliases: AliasModel[];
 
-    constructor(name: string, desc: string, prerequisites: ITalentPrerequisite[], maxRank: number, category?: string) {
+    constructor(name: string, desc: string, prerequisites: ITalentPrerequisite[], maxRank: number, category?: string, ...aliases: AliasModel[]) {
         this.name = name;
         this.description = desc;
         this.prerequisites = prerequisites;
         this.maxRank = maxRank;
         this.category = category || "";
+        this.aliases = aliases || AliasModel[0];
     }
 
     isAvailableExcludingSpecies() {
@@ -304,6 +339,17 @@ export class TalentModel {
             }
         });
         return available;
+    }
+
+    nameForSource(source: Source) {
+        var result = this.name;
+        for (var a of this.aliases) {
+            if (a.source === source) {
+                result = a.name;
+                break;
+            }
+        }
+        return result;
     }
 }
 
@@ -319,6 +365,7 @@ export class TalentViewModel {
         this.description = description;
         this.name = this.constructDisplayName(name, rank, showRank, skill, category);
     }
+
 
     private constructDisplayName(name: string, rank: number, showRank: boolean, skill: Skill, category: string) {
         let displayName = name + (showRank ? " [Rank: " + rank + "]" : "");
@@ -356,7 +403,7 @@ export class Talents {
                 "Supervisor",
                 "The ship’s Crew Support increases by one. This increase is cumulative if multiple Main Characters in the group select it.",
                 [],
-                1),
+                1, null, new AliasModel("War Leader", Source.KlingonCore)),
             new TalentModel(
                 "Bargain",
                 "When negotiating an offer with someone during Social Conflict, you may re-roll a d20 on your next Persuade Task to convince that person. If the Social Conflict involves an Extended Task, you gain the Progression 1 benefit when you roll your Challenge Dice.",
@@ -495,7 +542,7 @@ export class Talents {
                 "Mean Right Hook",
                 "Your Unarmed Strike Attack has the Vicious 1 Damage Effect.",
                 [],
-                1),
+                1, null, new AliasModel("Warrior's Strike", Source.KlingonCore)),
             new TalentModel(
                 "Pack Tactics",
                 "Whenever you assist another character during combat, the character you assisted gains one bonus Momentum if they succeed.",
@@ -562,7 +609,7 @@ export class Talents {
                 "A Little More Power",
                 "Whenever you succeed at an Engineering Task aboard your own ship, you may spend one Momentum to regain one spent Power.",
                 [new DisciplinePrerequisite(Skill.Engineering, 3)],
-                1),
+                1, null, new AliasModel("More Power", Source.KlingonCore)),
             new TalentModel(
                 "I Know My Ship",
                 "Whenever you attempt a Task to determine the source of a technical problem with your ship, add one bonus d20.",
@@ -975,31 +1022,31 @@ export class Talents {
             new TalentModel(
                 "To Battle!",
                 "Whenever a Klingon buys additional dice for a melee attack using Threat, for each Threat added to the pool, you gain 1 bonus Momentum that can only be spent on Bonus Damage, increasing the damage of the attack by 1 per Momentum spent.",
-                [new AnySpeciesPrerequisite(20, 71, true), new EraPrerequisite(Era.NextGeneration), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(20, 71, true), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
                 "Brak'lul",
                 "Various physiological redundancies mean that wounds that would kill other humanoid species don’t affect Klingons as badly. The character gains +2 Resistance against all Non-lethal attacks. In addition, whenever the Klingon is target of a First Aid Task, reduce the Difficulty of that Task by 1, to a minimum of 1.",
-                [new SpeciesPrerequisite(20, false), new EraPrerequisite(Era.NextGeneration), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
+                [new SpeciesPrerequisite(20, false), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
                 "R'uustai",
                 "This Klingon has lit candles, spoken words to honor their parents, and given their house’s sash to another, joining in a fellowship with another person, and becoming members of the same house (the original house of either party). The R’uustai Talent grants a Klingon an additional Value, which must reflect their relationship with the ritual sibling. In addition, whenever the Klingon assists, or is assisted by another, the character offering assistance may re-roll their die.",
-                [new AnySpeciesPrerequisite(20, 71, true), new EraPrerequisite(Era.NextGeneration), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(20, 71, true), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
                 "Killer's Instinct",
                 "You have shed blood, and will not hesitate to do so again. So familiar are you with the intent to kill that you can even see it in others when you look them in the eyes. When you choose to make a lethal attack, you do not add to Threat for doing so. In addition, whenever an enemy you can see attempts to make a lethal attack against you, you may add 1 to Threat to increase the Difficulty of their attack by 1, as you react to their intent.",
-                [new AnySpeciesPrerequisite(20, 71, true), new EraPrerequisite(Era.NextGeneration), new SourcePrerequisite(Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(20, 71, true), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
                 "Warrior's Spirit",
                 "You are an exemplar of what it means to be a Klingon warrior, and you will not hesitate to demonstrate your prowess to any who challenge you. When you make a melee attack, or are targeted by a melee attack, and you buy one or more d20s by adding to Threat, you may re-roll the dice pool for the task. Further, you own either a mek'leth or a bat'leth, at your discretion, and do not have to pay an Opportunity Cost to acquire it.",
-                [new AnySpeciesPrerequisite(20, 71, true), new EraPrerequisite(Era.NextGeneration), new SourcePrerequisite(Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(20, 71, true), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
@@ -2098,8 +2145,11 @@ export class Talents {
                         var rank = character.hasTalent(talent.name)
                             ? character.talents[talent.name].rank + 1
                             : 1;
-
-                        talents.push(new TalentViewModel(talent.name, rank, talent.maxRank > 1, talent.description, s, talent.category));
+                        var name = talent.name;
+                        if (character.type == CharacterType.KlingonWarrior) {
+                            name = talent.nameForSource(Source.KlingonCore);
+                        }
+                        talents.push(new TalentViewModel(name, rank, talent.maxRank > 1, talent.description, s, talent.category));
                     }
                 }
             }
@@ -2175,6 +2225,11 @@ export class Talents {
 
     getSourceForTalent(name: string) {
         const talent = this.getTalent(name);
+        return this.getSourceForTalentModel(talent);
+    }
+
+    getSourceForTalentModel(talent: TalentModel) {
+
         let src = [ Source.Core ];
 
         if (talent.prerequisites.some(p => p instanceof SourcePrerequisite)) {
