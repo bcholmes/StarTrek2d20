@@ -29,6 +29,8 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
     render() {
         var upbringing = UpbringingsHelper.getUpbringing(character.upbringing);
 
+        var nextPageName = character.workflow.peekNextStep().name;
+
         const attributes = this._accepted
             ? <div>
                 <AttributeView name={AttributesHelper.getAttributeName(upbringing.attributeAcceptPlus2) } points={2} value={character.attributes[upbringing.attributeAcceptPlus2].value + 2}/>
@@ -71,7 +73,7 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
                     </div>
                     <div><b>Suggestions:</b> {upbringing.focusSuggestions.join(", ")}</div>
                 </div>
-                <Button text="STARFLEET ACADEMY" className="button-next" onClick={() => this.onNext() }/>
+                <Button text={nextPageName} className="button-next" onClick={() => this.onNext() }/>
             </div>
         );
     }
@@ -113,6 +115,7 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
         character.acceptedUpbringing = this._accepted;
 
         UpbringingsHelper.applyUpbringing(character.upbringing, this._accepted);
+        character.workflow.next();
         Navigation.navigateToPage(PageIdentity.StarfleetAcademy);
     }
 }

@@ -17,7 +17,7 @@ export class SpeciesSelection extends React.Component<ISpeciesSelectionPropertie
     }
 
     render() {
-        var species = SpeciesHelper.getSpecies().map((s, i) => {
+        var species = SpeciesHelper.getPrimarySpecies().map((s, i) => {
             const attributes = s.id === Species.Ktarian
                 ? (
                     <div>

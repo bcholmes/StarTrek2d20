@@ -1,8 +1,9 @@
 ﻿import React = require("react");
 import { SetHeaderText } from "../common/extensions";
 import { DropDownInput } from "../components/dropDownInput";
+import { AliasModel } from "../helpers/aliases";
 import { Skill, SkillsHelper } from "../helpers/skills";
-import { TalentsHelper } from "../helpers/talents";
+import { TalentModel, TalentsHelper } from "../helpers/talents";
 import { Source, SourcesHelper } from "../helpers/sources";
 import { character } from "../common/character";
 import { Species, SpeciesHelper } from "../helpers/species";
@@ -11,20 +12,36 @@ class TalentViewModel {
     name: string;
     description: string;
     source: string;
+    aliases: AliasModel[];
     category: string;
-    prerequisites: string;
 
-    constructor(name: string, description: string, source: string, category: string, prerequisites: string) {
+    constructor(name: string, description: string, source: string, category: string, aliases: AliasModel[]) {
         this.name = name;
         this.description = description;
         this.source = source;
-        this.prerequisites = prerequisites;
         this.category = category;
+        this.aliases = aliases;
     }
 
     matches(term) {
         term = term.toLowerCase();
-        return this.name.toLowerCase().indexOf(term) >= 0 || this.description.toLowerCase().indexOf(term) >= 0 || this.category.toLowerCase().indexOf(term) >= 0;
+        return this.name.toLowerCase().indexOf(term) >= 0 || this.description.toLowerCase().indexOf(term) >= 0 || this.category.toLowerCase().indexOf(term) >= 0 || this.matchesAlias(term);
+    }
+    matchesAlias(term) {
+        var result = false;
+        for (var i = 0; i < this.aliases.length; i++) {
+            const alias = this.aliases[i];
+            result = alias.name.toLowerCase().indexOf(term) >= 0;
+            if (result) {
+                break;
+            }
+        }
+        return result;
+    }
+    static from(talent: TalentModel, category: string) {
+        let sourceString = SourcesHelper.getSourceName(TalentsHelper.getSourceForTalentModel(talent));
+
+        return new TalentViewModel(talent.name, talent.description, sourceString, category, talent.aliases);
     }
 }
 
@@ -65,6 +82,12 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
     render() {
         const talentList = this.selectTalents();
         const talents = talentList.map((t, i) => {
+            const info = t.aliases.map((a, i) => {
+                return (
+                    <p><i>The talent is known as </i><b>{a.name}</b><i> in the
+                    </i> {SourcesHelper.getSourceName([a.source])} <i>book.</i></p>
+                )
+            });
             return (
                 <tr key={i}>
                     <td className="selection-header">
@@ -74,7 +97,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
                         </div>
                     </td>
                     <td>{t.category}</td>
-                    <td>{t.description}</td>
+                    <td>{t.description} {info}</td>
                 </tr>
             );
         });
@@ -159,8 +182,8 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
             for (var i = 0; i < talents.length; i++) {
                 const talent = talents[i];
                 const skill = SkillsHelper.findSkill(key);
-                const model = new TalentViewModel(talent.name, talent.description, this.getSource(talent.name), 
-                        skill !== Skill.None ? ("" + skill) : talent.category, this.prerequisitesToString(talent.prerequisites));
+                const category = skill !== Skill.None ? ("" + skill) : talent.category;
+                const model = TalentViewModel.from(talent, category);
                 this._allTalents.push(model);
             }
         }
@@ -176,8 +199,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
                 const talents = TalentsHelper.getTalents()[skill];
                 for (var i = 0; i < talents.length; i++) {
                     const talent = talents[i];
-                    const model = new TalentViewModel(talent.name, talent.description, this.getSource(talent.name), category, this.prerequisitesToString(talent.prerequisites));
-                    this._talents[category].push(model);
+                    this._talents[category].push(TalentViewModel.from(talent, category));
                 }
             }
             else if (category != TalentsOverviewPage.ALL) {
@@ -185,8 +207,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
                 for (var i = 0; i < talents.length; i++) {
                     const talent = talents[i];
                     if (talent.category === category) {
-                        const model = new TalentViewModel(talent.name, talent.description, this.getSource(talent.name), category, this.prerequisitesToString(talent.prerequisites));
-                        this._talents[category].push(model);
+                        this._talents[category].push(TalentViewModel.from(talent, category));
                     }
                 }
             }

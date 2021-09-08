@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {character, CharacterType} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity, IPageProperties} from './pageFactory';
 import {Environment, EnvironmentsHelper } from '../helpers/environments';
@@ -54,6 +54,8 @@ export class EnvironmentDetailsPage extends React.Component<IPageProperties, {}>
             otherSpeciesName = `(${otherSpecies.name})`;
         }
 
+        var nextPageName = character.type === CharacterType.KlingonWarrior ? "CASTE" : "UPBRINGING";
+
         return (
             <div className="page">
                 <div className="header-text"><div>{env.name} {otherSpeciesName}</div></div>
@@ -79,7 +81,7 @@ export class EnvironmentDetailsPage extends React.Component<IPageProperties, {}>
                     <div className="header-small">VALUE</div>
                     <ValueInput value={Value.Environment}/>
                 </div>
-                <Button text="UPBRINGING" className="button-next" onClick={() => this.onNext() }/>
+                <Button text={nextPageName} className="button-next" onClick={() => this.onNext() }/>
             </div>
         );
     }
@@ -96,6 +98,7 @@ export class EnvironmentDetailsPage extends React.Component<IPageProperties, {}>
         }
 
         if (this._electiveSkills.length === 1) {
+            character.workflow.next();
             Navigation.navigateToPage(PageIdentity.Upbringing);
         }
         else {

@@ -62,6 +62,7 @@ export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
 
         character.addTalent(this._talent);
 
+        character.workflow.next();
         Navigation.navigateToPage(PageIdentity.CareerEvent1);
     }
 }

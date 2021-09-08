@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {character, CharacterType} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {SetHeaderText} from '../common/extensions';
 import {PageIdentity, IPageProperties} from './pageFactory';
@@ -16,7 +16,7 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
     constructor(props: IPageProperties) {
         super(props);
 
-        SetHeaderText("STARFLEET ACADEMY");
+        SetHeaderText(character.workflow.currentStep().name);
 
         this.state = {
             showSelection: false
@@ -24,21 +24,29 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
     }
 
     render() {
+        var instruction = character.workflow.currentStep().description.map((s, i) => {
+            return (
+                <div className="page-text">{s}</div>
+            );
+        });
+
+        var buttons = character.type === CharacterType.KlingonWarrior ?
+            (<div className="button-container">
+                <Button className="button" text="Select Training Track" onClick={() => this.showKlingonTracks() } />
+                <Button className="button" text="Roll Training Track" onClick={() => this.rollKlingonTrack() } />
+            </div>)
+            : (<div className="button-container">
+                <Button className="button" text="Select Officer Track" onClick={() => this.showTracks(true) } />
+                <Button className="button" text="Roll Officer Track" onClick={() => this.rollTrack(true) } />
+                <Button className="button" text="Select Enlisted Track" onClick={() => this.showTracks(false) } />
+                <Button className="button" text="Roll Enlisted Track" onClick={() => this.rollTrack(false) } />
+            </div>);
+
         var content = !this.state.showSelection ?
             (
                 <div>
-                    <div className="page-text">
-                        The years spent at Starfleet Academy are some of the most memorable and definitive of an officer’s life, shaping the direction of their career going forwards. For those who pass the grueling entrance examinations, the Academy takes four years, covering a mixture of intense training, academic studies, and practical experiences.Much of this takes place within the main Starfleet Academy campus in San Francisco on Earth, but other campuses and annexes exist across the Federation, and a cadet may spend time at any of these before they graduate.
-                        <br /><br />
-                        Alternatively, you may opt for an Enlisted character. This is however purely background and does not affect you in more ways than the fact that you never went to Starfleet Academy and cannot select Command as your Major.
-                        Either select or roll your Academy Track.
-                    </div>
-                    <div className="button-container">
-                        <Button className="button" text="Select Officer Track" onClick={() => this.showTracks(true) } />
-                        <Button className="button" text="Roll Officer Track" onClick={() => this.rollTrack(true) } />
-                        <Button className="button" text="Select Enlisted Track" onClick={() => this.showTracks(false) } />
-                        <Button className="button" text="Roll Enlisted Track" onClick={() => this.rollTrack(false) } />
-                    </div>
+                    {instruction}
+                    {buttons}
                 </div>
             )
             : (
@@ -65,6 +73,15 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
     private showTracks(isOfficer: boolean) {
         character.enlisted = !isOfficer;
         this.setState({ showSelection: true });
+    }
+
+    private showKlingonTracks() {
+        this.setState({ showSelection: true });
+    }
+
+    private rollKlingonTrack() {
+        var track = TracksHelper.generateTrack();
+        this.selectTrack(track);
     }
 
     private hideTracks() {

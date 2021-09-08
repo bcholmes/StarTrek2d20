@@ -16,7 +16,7 @@ export class CareerPage extends React.Component<IPageProperties, ICareerPageStat
     constructor(props: IPageProperties) {
         super(props);
 
-        SetHeaderText("CAREER");
+        SetHeaderText(character.workflow.currentStep().name);
 
         this.state = {
             showSelection: false
@@ -24,14 +24,16 @@ export class CareerPage extends React.Component<IPageProperties, ICareerPageStat
     }
 
     render() {
+        var instruction = character.workflow.currentStep().description.map((s, i) => {
+            return (
+                <div className="page-text">{s}</div>
+            );
+        });
+
         var content = !this.state.showSelection ?
             (
                 <div>
-                    <div className="page-text">
-                        At this stage, you have a choice to make about the character. This decision is a clear one: are you a young officer, fresh out of the Academy, with your whole career ahead of you, have you served in Starfleet for several years, or are you a veteran with decades of experience?
-                        <br /><br />
-                        Either select or roll your Career.
-                    </div>
+                    {instruction}
                     <div className="button-container">
                         <Button className="button" text="Select Career" onClick={() => this.showCareer() } />
                         <Button className="button" text="Roll Career" onClick={() => this.rollCareer() } />
