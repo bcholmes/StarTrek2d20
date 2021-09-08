@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {character, CharacterType} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {SetHeaderText} from '../common/extensions';
 import {PageIdentity, IPageProperties} from './pageFactory';
@@ -16,7 +16,7 @@ export class UpbringingPage extends React.Component<IPageProperties, IUpbringing
     constructor(props: IPageProperties) {
         super(props);
 
-        SetHeaderText("UPBRINGING");
+        SetHeaderText(character.workflow.currentStep().name);
 
         this.state = {
             showSelection: false
@@ -24,17 +24,22 @@ export class UpbringingPage extends React.Component<IPageProperties, IUpbringing
     }
 
     render() {
+        var selectLabel = "Select " +  character.workflow.currentStep().name;
+        var rollLabel = "Roll " +  character.workflow.currentStep().name;
+
+        var instruction = character.workflow.currentStep().description.map((s, i) => {
+            return (
+                <div className="page-text">{s}</div>
+            );
+        });
+
         var content = !this.state.showSelection ?
             (
                 <div>
-                    <div className="page-text">
-                        The nature of a person’s family and their surroundings as they grew up can have a massive impact upon them, and, whether they accept this influence or rebelled against it, it will shape the rest of their lives.
-                        <br /><br />
-                        Either select or roll your Upbringing.
-                    </div>
+                    {instruction}
                     <div className="button-container">
-                        <Button className="button" text="Select Upbringing" onClick={() => this.showUpbringings() } />
-                        <Button className="button" text="Roll Upbringing" onClick={() => this.rollUpbringing() } />
+                        <Button className="button" text={selectLabel} onClick={() => this.showUpbringings() } />
+                        <Button className="button" text={rollLabel} onClick={() => this.rollUpbringing() } />
                     </div>
                 </div>
             )

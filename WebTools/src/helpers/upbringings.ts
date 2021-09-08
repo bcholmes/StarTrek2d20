@@ -1,4 +1,4 @@
-﻿import {character} from '../common/character';
+﻿import {character, CharacterType} from '../common/character';
 import {Attribute, AttributesHelper} from './attributes';
 import {SkillsHelper, Skill} from './skills';
 import {SpeciesHelper} from './species';
@@ -11,6 +11,14 @@ export enum Upbringing {
     ScienceAndTechnology,
     ArtisticAndCreative,
     DiplomacyAndPolitics,
+
+    // Klingon Core : castes
+    Warrior,
+    Merchant,
+    Scientific,
+    Agriculture,
+    Artistic,
+    Academic,
 }
 
 class UpbringingModel {
@@ -116,11 +124,81 @@ class Upbringings {
         ),
     };
 
+    private _castes: { [id: number]: UpbringingModel } = {
+        [Upbringing.Warrior]: new UpbringingModel(
+            "Warrior",
+            "Yours is a family of warriors, who have served the Empire with honor for generations. At least one member of your family in each generation will have gone to war for the Empire, and you were raised to tales of glorious battle.",
+            Attribute.Control,
+            Attribute.Fitness,
+            Attribute.Daring,
+            Attribute.Insight,
+            [Skill.Command, Skill.Conn, Skill.Engineering, Skill.Medicine, Skill.Science, Skill.Security],
+            "Your focus should relate to your upbringing, covering skills learned during your formative years.",
+            ["Composure", "Hand-to-Hand Combat (may be renamed to a particular style or weapon)", "Disruptors", "Intimidation", "Military History", "Small Craft", "Starship Recognition", "Survival."]
+        ),
+        [Upbringing.Merchant]: new UpbringingModel(
+            "Merchant",
+            "Your family members are traders, with connections on countless worlds, buying, moving, and selling goods across the Empire and to distant trading partners. You may have been raised into the world of commerce and trade or grown up on an interstellar freighter carrying vital cargo. Regardless, you’ve grown up encountering people from all walks of life, including those from outside the Empire, and your outlook on life has been shaped accordingly.",
+            Attribute.Presence,
+            Attribute.Daring,
+            Attribute.Insight,
+            Attribute.Reason,
+            [Skill.Command, Skill.Engineering, Skill.Science],
+            "Your focus should relate to your upbringing, covering skills learned during your formative years.",
+            ["Finances", "Geology", "Linguistics", "Manufacturing", "Metallurgy", "Negotiation", "Survey"]
+        ),
+        [Upbringing.Scientific]: new UpbringingModel(
+            "Scientific",
+            "Your family home was one filled with the potential of science, and cutting-edge developments were familiar ground, even if those pursuits are not well-appreciated by other Klingons. Where would the Empire be without warp drive, disruptors, cloaking devices, or even the alloys which make a warrior’s blades? Your family has always been one of those studying and providing these advances, for all that the outside Galaxy thinks that ‘Klingon scientist’ is a contradiction.",
+            Attribute.Control,
+            Attribute.Reason,
+            Attribute.Insight,
+            Attribute.Daring,
+            [Skill.Conn, Skill.Engineering, Skill.Medicine, Skill.Science],
+            "Your focus should relate to your upbringing, covering skills learned during your formative years.",
+            ["Astrophysics", "Astronavigation", "Computers", "Cybernetics", "Power Systems", "Genetics", "Physics", "Subspace Communications", "Temporal Mechanics", "Surgery", "Quantum Mechanics", "Warp Field Dynamics", "Xenobiology"]
+        ),
+        [Upbringing.Agriculture]: new UpbringingModel(
+            "Agriculture",
+            "You grew up surrounded more by nature than by people, in rural communities, on the frontier, or somewhere else distant from the bustle of cities. Your family might be heavily involved in agriculture, growing real food, maintaining hunting grounds, or rearing livestock. Unlike the Federation, you do not rely on replicated food, inert and synthetic: a Klingon requires fresh, living food to sustain them, and your family has provided this for generations.",
+            Attribute.Fitness,
+            Attribute.Control,
+            Attribute.Reason,
+            Attribute.Presence,
+            [Skill.Conn, Skill.Medicine, Skill.Security],
+            "Your focus should relate to your upbringing, covering skills learned during your formative years.",
+            ["Animal Handling", "Athletics", "Emergency Medicine", "Endurance", "Ground Vehicles", "Infectious Diseases", "Navigation", "Toxicology", "Survival Training"]
+        ),
+        [Upbringing.Artistic]: new UpbringingModel(
+            "Artistic",
+            "Your life was filled with arts and creativity of all kinds, and no matter the pursuits you favor, you’ve been exposed to the great works not only of the Empire’s storied history but also that of other cultures and given every opportunity to express yourself. Different forms of art are appreciated to different degrees amongst Klingons, but the performing arts are especially beloved: many warriors fancy themselves as poets or playwrights in the manner of WIlyam SeQpIr when recounting a glorious victory, and Klingon opera is known and studied across the Alpha and Beta Quadrants.",
+            Attribute.Presence,
+            Attribute.Insight,
+            Attribute.Fitness,
+            Attribute.Daring,
+            [Skill.Command, Skill.Engineering, Skill.Science],
+            "The character’s Focus should relate to the character’s preferred way of applying their skills.",
+            ["Botany", "Cultural Studies", "Holoprogramming", "Linguistics", "Music", "Observation", "Persuasion", "Psychology"]
+        ),
+        [Upbringing.Academic]: new UpbringingModel(
+            "Academic",
+            "You’ve been surrounded by the complexities of political thought, the nuances of diplomacy, and intense study of a range of subjects and fields for your entire life. Your family is one of lawyers, civil servants, historians, diplomats, and more besides, maintaining the fabric of Empire just as the farmers feed it, the merchants keep it supplied, and the warriors protect it. The Klingon Empire is a nation often led by warriors, but it is the learned who govern it and keep it running, often without the respect such endeavors deserve.",
+            Attribute.Presence,
+            Attribute.Control,
+            Attribute.Reason,
+            Attribute.Fitness,
+            [Skill.Command, Skill.Conn, Skill.Security],
+            "Your focus should relate to your upbringing, covering skills learned during your formative years.",
+            ["Composure", "Debate", "Diplomacy", "Espionage", "Etiquette", "Interrogation", "Law", "Philosophy"]
+        ),
+    };
+
     getUpbringings() {
         var upbringings: UpbringingViewModel[] = [];
-        var n = 0;
-        for (var upbringing in this._upbringings) {
-            var upb = this._upbringings[upbringing];
+        var n = character.type === CharacterType.KlingonWarrior ? Upbringing.Warrior : 0;
+        var list = character.type === CharacterType.KlingonWarrior ? this._castes : this._upbringings;
+        for (var upbringing in list) {
+            var upb = list[upbringing];
             upbringings.push(new UpbringingViewModel(n, upb));
             n++;
         }
@@ -131,12 +209,16 @@ class Upbringings {
     }
 
     getUpbringing(upbringing: Upbringing) {
-        return this._upbringings[upbringing];
+        if (character.type === CharacterType.KlingonWarrior) {
+            return this._castes[upbringing];
+        } else {
+            return this._upbringings[upbringing];
+        }
     }
 
     generateUpbringing() {
         var roll = Math.floor(Math.random() * 6);
-        return roll;
+        return roll + (character.type === CharacterType.KlingonWarrior ? 6 : 0);
     }
 
     applyUpbringing(upbringing: Upbringing, accepted: boolean) {

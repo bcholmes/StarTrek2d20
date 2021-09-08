@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {character, CharacterType} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity, IPageProperties} from './pageFactory';
 import {Track, TracksHelper} from '../helpers/tracks';
@@ -49,6 +49,15 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
             return this.renderResearchInternshipDetails();
         }
 
+        var training = "Select three focuses for your character, at least one reflecting the time at Starfleet Academy.";
+        if (character.type === CharacterType.KlingonWarrior) {
+            if (character.enlisted) {
+                var training = "Select three focuses for your character, at least one reflecting their time training.";
+            } else {
+                var training = "Select three focuses for your character, at least one reflecting the time at KDF Academy.";
+            }
+        }
+
         return (
             <div className="page">
                 <div className="header-text"><div>{track.name}</div></div>
@@ -62,7 +71,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 <MajorsList skills={track.majorDisciplines} onMajorSelected={skill => this.onMajorSelected(skill) } onOtherSelected={skills => this.onElectiveSkillsSelected(skills) }/>
                 <div className="panel">
                     <div className="header-small">FOCUS</div>
-                    <div>Select three focuses for your character, at least one reflecting the time at Starfleet Academy.</div>
+                    <div>{training}</div>
                     <div>
                         <div className="textinput-label">FOCUS</div>
                         <input type="text" ref={(input) => { this._focus1 = input; } } />
@@ -105,7 +114,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">DISCIPLINES</div>
-                    <SkillView points={2} skill={Skill.Security} /> 
+                    <SkillView points={2} skill={Skill.Security} />
                     <SkillView points={1} skill={Skill.Conn} />
                     <SkillView points={1} skill={Skill.Engineering} />
                 </div>
@@ -352,14 +361,14 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 !focus3 || focus3.length === 0) {
                 Dialog.show("You need to type in three Focuses. Choose from the suggestions if you cannot come up with your own.");
                 return;
-            } 
+            }
         }
         else {
             if (!focus1 || focus1.length === 0 ||
                 !focus2 || focus2.length === 0) {
                 Dialog.show("You need to type in two Focuses. Choose from the suggestions if you cannot come up with your own.");
                 return;
-            } 
+            }
         }
 
         character.addFocus(focus1);
@@ -376,6 +385,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
 
         character.addTalent(this._talent);
 
+        character.workflow.next();
         Navigation.navigateToPage(PageIdentity.Career);
     }
 }

@@ -10,6 +10,7 @@ import {Role, RolesHelper} from '../helpers/roles';
 import {Species, SpeciesHelper} from '../helpers/species';
 import {Track, TracksHelper} from '../helpers/tracks';
 import {Upbringing, UpbringingsHelper} from '../helpers/upbringings';
+import {WorkflowsHelper, Workflow} from '../helpers/workflows';
 import {TalentsHelper} from '../helpers/talents';
 import {Spaceframe, MissionPod} from '../helpers/spaceframes';
 import {MissionProfile} from "../helpers/missionProfiles";
@@ -66,6 +67,11 @@ export class Starship {
     }
 }
 
+export const enum CharacterType {
+    Starfleet = 0,
+    KlingonWarrior
+}
+
 class Step {
     page: number;
     character: Character;
@@ -88,6 +94,8 @@ export class Character {
     public talents: { [name: string]: CharacterTalent };
     public age: number;
     public name: string;
+    public lineage: string;
+    public house: string;
     public appearance: string;
     public personality: string;
     public gender: Gender = Gender.Male;
@@ -112,6 +120,8 @@ export class Character {
     public focuses: string[];
     public stress: number;
     public allowCrossSpeciesTalents: boolean;
+    public type: CharacterType = CharacterType.Starfleet;
+    public workflow: Workflow;
 
     public starship: Starship;
 

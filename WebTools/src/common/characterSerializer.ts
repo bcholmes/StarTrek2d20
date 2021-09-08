@@ -1,4 +1,4 @@
-﻿import {Character, CharacterAttribute, CharacterSkill, CharacterTalent, Gender} from './character';
+﻿import {Character, CharacterAttribute, CharacterSkill, CharacterTalent, CharacterType, Gender} from './character';
 import {RolesHelper} from '../helpers/roles';
 import {SpeciesHelper, Species} from '../helpers/species';
 import {EnvironmentsHelper, Environment} from '../helpers/environments';
@@ -29,8 +29,29 @@ export class CharacterSerializer {
             { name: "accepted", value: character.acceptedUpbringing === true ? "1" : "0" },
             { name: "equipment", value: CharacterSerializer.serializeEquipment(character.equipment) },
             { name: "assignment", value: character.role },
-            { name: "name", value: character.name },
+            { name: "name", value: CharacterSerializer.serializeName(character) },
         ];
+    }
+
+    private static serializeName(character: Character) {
+        if (character.type == CharacterType.KlingonWarrior) {
+            var result = character.name;
+            if (character.lineage) {
+                result += (", " + character.lineage);
+            }
+            if (character.house) {
+                if (character.house.toLowerCase().indexOf("house of ") == 0) {
+                    result += (", of the " + character.house);
+                } else if (character.house.toLowerCase().indexOf("house ") == 0) {
+                    result += (", of " + character.house);
+                } else {
+                    result += (", " + character.house);
+                }
+            }
+            return result;
+        } else {
+            return character.name;
+        }
     }
 
     private static serializeAttributes(attrs: CharacterAttribute[]) {
