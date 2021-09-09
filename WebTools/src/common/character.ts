@@ -106,6 +106,7 @@ export class Character {
     public otherSpeciesWorld: string;
     public rank: string;
     public role: string;
+    public secondaryRole: string;
     public roleAbility: string;
     public species: Species;
     public mixedSpecies: Species;

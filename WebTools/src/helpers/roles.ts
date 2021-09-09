@@ -253,6 +253,9 @@ class Roles {
                     (character.enlisted && n === Role.ExecutiveOfficer)) {
                     n++;
                     continue;
+                } else if (character.hasTalent("Multi-Discipline") && (n === Role.CommandingOfficer || n === Role.Admiral)) {
+                    n++;
+                    continue;
                 }
                 roles.push(new RoleViewModel(n, r));
             }

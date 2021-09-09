@@ -22,6 +22,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
     private ranks: string[];
     private roles: RoleViewModel[];
     private role: string;
+    private secondaryRole: string;
     private roleDescription: string;
 
     constructor(props: IPageProperties) {
@@ -96,7 +97,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                         <CheckBox
                             text=""
                             value={r.name}
-                            isChecked={this.role === r.name}
+                            isChecked={this.role === r.name || this.secondaryRole == r.name}
                             onChanged={(val) => {
                                 this.onSelectRole(val);
                             } }/>
@@ -138,6 +139,8 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
             </div></div>);
         }
 
+        let multiDiscipline = character.hasTalent("Multi-Discipline") ? <div>Because your character has the <b>Multi-Discipline talent</b>, you may choose <b>two roles</b>. 
+            Some options (e.g. Commanding Officer, Admiral) are excluded from the available roles.</div> : undefined;
 
         return (
             <div className="page">
@@ -164,6 +167,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                         This choice will be based on your highest discipline(s).
                         The most suitable choice will appear on top, while the other options will be available as well in case you want to create a different character.
                     </div>
+                    {multiDiscipline}
                     <table className="selection-list">
                         <tbody>
                             {assignments}
@@ -217,8 +221,24 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
     }
 
     private onSelectRole(role: string) {
-        character.role = role;
-        this.role = role;
+        if (character.hasTalent("Multi-Discipline")) {
+            if (!character.role || character.role === role) {
+                character.role = role;
+            } else if (!character.secondaryRole || character.secondaryRole === role) {
+                character.secondaryRole = role;
+            } else {
+                character.role = character.secondaryRole;
+                character.secondaryRole = role;
+            }
+
+            this.role = character.role;
+            this.secondaryRole = character.secondaryRole;
+        } else {
+            character.role = role;
+            character.secondaryRole = undefined;
+            this.role = role;
+            this.secondaryRole = undefined;
+        }
         this.getRanks();
         this.forceUpdate();
     }

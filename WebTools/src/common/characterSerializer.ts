@@ -28,9 +28,17 @@ export class CharacterSerializer {
             { name: "upbringing", value: character.upbringing >= 0 ? UpbringingsHelper.getUpbringing(character.upbringing).name : "" },
             { name: "accepted", value: character.acceptedUpbringing === true ? "1" : "0" },
             { name: "equipment", value: CharacterSerializer.serializeEquipment(character.equipment) },
-            { name: "assignment", value: character.role },
+            { name: "assignment", value: CharacterSerializer.serializeAssignment(character) },
             { name: "name", value: CharacterSerializer.serializeName(character) },
         ];
+    }
+
+    private static serializeAssignment(character: Character) {
+        var result = character.role;
+        if (character.secondaryRole) {
+            result = result + " / " + character.secondaryRole;
+        }
+        return result;
     }
 
     private static serializeName(character: Character) {
