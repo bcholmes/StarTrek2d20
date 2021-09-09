@@ -33,7 +33,7 @@ export class CharacterSerializer {
         ];
     }
 
-    private static serializeAssignment(character: Character) {
+    public static serializeAssignment(character: Character) {
         var result = character.role;
         if (character.secondaryRole) {
             result = result + " / " + character.secondaryRole;

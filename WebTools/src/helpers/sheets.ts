@@ -30,8 +30,8 @@ abstract class BasicShortCharacterSheet implements ICharacterSheet {
 
     populateForm(form: PDFForm) {
         this.fillName(form);
-        this.fillField(form, 'Department', character.role);
-        this.fillField(form, 'Purpose', character.role);
+        this.fillField(form, 'Department', CharacterSerializer.serializeAssignment(character));
+        this.fillField(form, 'Purpose', CharacterSerializer.serializeAssignment(character));
         this.fillField(form, 'Rank', character.rank);
         this.fillField(form, 'Species', CharacterSerializer.serializeSpecies(character.species, character.mixedSpecies));
         this.fillField(form, 'Traits', CharacterSerializer.serializeTraits(character.traits));
@@ -158,7 +158,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         super.populateForm(form);
 
         this.fillField(form, 'Upbringing', UpbringingsHelper.getUpbringing(character.upbringing).name);
-        this.fillField(form, 'Assignment', character.role);
+        this.fillField(form, 'Assignment', CharacterSerializer.serializeAssignment(character));
         this.fillField(form, 'Environment', CharacterSerializer.serializeEnvironment(character.environment, character.otherSpeciesWorld));
 
         this.fillValues(form);
