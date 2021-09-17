@@ -261,6 +261,14 @@ export class Character {
         return character.sources.indexOf(source) > -1 || source === Source.Core;
     }
 
+    hasAnySource(sources: Source[]) {
+        var result: boolean = false;
+        for (var s of sources) {
+            result = result || character.sources.indexOf(s) > -1 || s === Source.Core;
+        }
+        return result;
+    }
+
     update() {
         let maxAttribute = 12;
         let maxDiscipline = 5;

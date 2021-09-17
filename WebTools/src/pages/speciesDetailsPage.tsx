@@ -27,6 +27,11 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
 
     render() {
         var species = SpeciesHelper.getSpeciesByType(character.species);
+        var paragraphs = species.description.split('\n');
+        var description = paragraphs.map((p, i) => {
+            return (<div className="desc-text">{p}</div>);
+        });
+
         var mixed = character.mixedSpecies != null
             ? SpeciesHelper.getSpeciesByType(character.mixedSpecies)
             : null;
@@ -106,7 +111,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
             <div className="page">
                 <div className="header-text"><div>{name}</div></div>
                 <div className="panel">
-                    <div className="desc-text">{species.description}</div>
+                    {description}
                 </div>
                 <div className="panel">
                     <div className="header-small">ATTRIBUTES {selectDesc}</div>
