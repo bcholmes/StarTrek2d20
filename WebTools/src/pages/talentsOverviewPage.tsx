@@ -163,7 +163,15 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
             }
         }
 
-        this._categories = this._categories.sort((a, b) => a.localeCompare(b));
+        this._categories = this._categories.sort((a, b) => {
+            if (a == 'All') {
+                return -1;
+            } else if (b == 'All') {
+                return 1;
+            } else {
+                return a.localeCompare(b);
+            }
+        });
         this._category = this._categories[0];
 
         for (var c = 0; c < this._categories.length; c++) {

@@ -1619,6 +1619,67 @@ export class Talents {
                 [new SourcePrerequisite(Source.KlingonCore), new NotEraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(71, true)],
                 1,
                 "Klingon (QuchHa')"),
+            new TalentModel(
+                "A Better Path",
+                "Akaru value efficiency in all things, including when working on problems or tasks. Whenever you succeed at a task during an extended task, add 1d to your dice pool to determine Work completed.",
+                [new SourcePrerequisite(Source.ShakletonExpanse), new EraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(72, true)],
+                1,
+                "Akaru"),
+            new TalentModel(
+                "Charming Demeanor",
+                "Akaru are a robust and passionate people, and readily build relationships with others. Whenever you engage in a social interaction or social conflict with another character, you may re-roll a single d20 in your dice pool. In addition, if you succeed in that task, you gain 1 bonus Momentum.",
+                [new SourcePrerequisite(Source.ShakletonExpanse), new EraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(72, true)],
+                1,
+                "Akaru"),
+            new TalentModel(
+                "Water Glassing",
+                "A Cal-Mirran can learn to “glass” water on contact, i.e., harden it temporarily, similar to freezing, but without expansion or temperature change. Glassing can create tools or be used for defense. It is a skill that must be mastered, and requires concentration. Advanced glassers can harden anywhere from their body volume of water, to large swaths of ocean, but the larger the volume and the longer it is held, the greater the strain on the Cal-Mirran mind. Glassing requires a Fitness + Science task, with a Difficulty determined by the quantity of water being affected. After a successful use of this ability, the character is sluggish and will be unable to use this talent or change their own body’s state for the remainder of the scene.",
+                [new SourcePrerequisite(Source.ShakletonExpanse), new EraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(73, true)],
+                1,
+                "Cal-Mirran"),
+            new TalentModel(
+                "Time Refraction",
+                "With training, Cal-Mirrans can absorb tachyon radiation and use it to refract space-time, bending their surroundings slightly into the future or past. The more radiation, the further the slide, but the greater the risk – too much refraction can result in severe physical or mental damage and a weakening of their crystalline matrix. By spending a point of Determination and attempting an Insight + Science task, the character can perceive a glimpse of the past or future as if they were in that location at that time. The Difficulty of this task is based on how far into the past or future the character is looking; a glimpse of up to a minute earlier or later is Difficulty 1, up to an hour is Difficulty 2, up to a day is Difficulty 3, and longer durations have a higher Difficulty at the gamemaster’s discretion. Success allows the character to ask one question, plus one extra question per Momentum spent, about events in that time and place. Glimpses of the future are subject to change, as future events are not fixed.",
+                [new SourcePrerequisite(Source.ShakletonExpanse), new EraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(73, true)],
+                1,
+                "Cal-Mirran"),
+            new TalentModel(
+                "That Wasn't Me",
+                "The Orions are known as one of the most untrustworthy species in the Galaxy next to the Ferengi, and yet people are always willing to do business with them or are continually tricked by them. This is due to the subtle dance of social interactions and the release of pheromones that make the Orion endearing to whom they are dealing with, and can be used to gain their trust. An Orion adds 1 bonus Momentum to their pool when they have successfully completed a task to win a target’s trust.",
+                [new SourcePrerequisite(Source.ShakletonExpanse), new SpeciesPrerequisite(30, true)],
+                1,
+                "Orion"),
+            new TalentModel(
+                "Criminal Understanding",
+                "Orion culture is based around understanding the complicated meanings behind words and plans. They do not take things at face value but look to see the underlying scheme going on behind the scenes, whether it is noticing a word that was omitted from a contract agreement to understanding how a pickpocket slipped a watch off their victim’s wrist. When trying to understand a matter involving intrigue or guile, an Orion may roll an additional d20 when attempting to decipher the hidden meaning behind the action.",
+                [new SourcePrerequisite(Source.ShakletonExpanse), new SpeciesPrerequisite(30, true)],
+                1,
+                "Orion"),
+            new TalentModel(
+                "Mental Imaging",
+                "You can envision complicated technology and project the details forward, yielding results with the accuracy of real-world testing. Provided with a schematic or the time to inspect an unfamiliar device, you can quickly determine its use and any necessary repairs. This also makes you an excellent game player; imagine multiple choices and follow their consequences along branching paths to develop the best response. When you attempt a task involving Reason, you may re-roll one d20. In addition, when you succeed at a Reason-based task which is subject to time pressure, the Momentum cost to reduce the time taken is reduced by 1.",
+                [new SourcePrerequisite(Source.ShakletonExpanse), new EraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(74, true)],
+                1,
+                "Qofuari"),
+            new TalentModel(
+                "Nimble",
+                "Your long, flexible body makes you an excellent swimmer. You can move rapidly and acrobatically on land. Maneuvering and climbing in cramped spaces tubes is easier for you than humanoids evolved for fully upright walking. When you attempt a Fitness test to maneuver through water, within a tight space, or when climbing, gain one additional d20 in your dice pool.",
+                [new SourcePrerequisite(Source.ShakletonExpanse), new EraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(74, true)],
+                1,
+                "Qofuari"),
+            new TalentModel(
+                "Silent Scream",
+                "The VinShari’s bone collars allow them to attenuate their vocal cords to achieve harmonic resonance in a silent scream that can cause pain, unconsciousness, and death. Two or more VinShari harmonizing together can shatter bone. The silent scream can be used as a ranged weapon (2d, Area and Piercing 1 effects). Other VinShari with this talent may assist these attacks, and each VinShari providing assistance increases the Stress inflicted by 1d.",
+                [new SourcePrerequisite(Source.ShakletonExpanse), new EraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(75, true)],
+                1,
+                "VinShari"),
+            new TalentModel(
+                "Vocal Gymnastics",
+                "VinShari are among the best singers in the Shackleton Expanse, perhaps even the Beta Quadrant. They are also experts at ventriloquism and mimicking voices. A VinShari with this talent can mimic any voice they have heard, and most non-vocal sounds they hear, accurate to a degree where even a computer analysis cannot distinguish the mimicry from the real thing. When you attempt to distract or deceive someone using this mimicry, you may re-roll your entire dice pool.",
+                [new SourcePrerequisite(Source.ShakletonExpanse), new EraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(75, true)],
+                1,
+                "VinShari"),
+                            
             // Careers
             new TalentModel(
                 "Untapped Potential",
