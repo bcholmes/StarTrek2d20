@@ -87,7 +87,13 @@ export enum Species {
     // Voyager
     Hologram,
     // Klingon Core
-    KlingonQuchHa
+    KlingonQuchHa,
+    // Shakleton Expanse
+    Akaru,
+    //CalMirran,
+    //Quofuari,
+    //Vinshari
+
 }
 
 class NameModel {
@@ -1201,7 +1207,19 @@ class _Species {
             [TalentsHelper.getTalent("Cruel"), TalentsHelper.getTalent("Superior Ambition"), TalentsHelper.getTalent("To Battle!"), TalentsHelper.getTalent("R'uustai"), TalentsHelper.getTalent("Warrior's Spirit"), TalentsHelper.getTalent("Killer's Instinct")],
             "",
             []),
-        //[Species.Romulan]: new SpeciesModel(
+        [Species.Akaru]: new SpeciesModel(
+            "Akaru",
+            [Era.NextGeneration],
+            Source.ShakletonExpanse,
+            "A sentient humanoid species indigenous to the planet Setu within the Shackleton Expanse, the Akaru are relative newcomers in developing warp technology and are only just starting to explore nearby systems and the interior of the Expanse. They are a highly competent and curious species, and are eager to meet and trade with beings from other cultures and worlds. Their global leader and religious icon, Iryax Nedaon, actively encourages technological development oriented toward space travel and stellar exploration, and regional universities have increased the number of degree programs in related fields of study. While a population of 1.3 billion generally should not be described by one word, a common note through all Akaru society is that of efficiency. Their cities, vessels, farms, and processes are all designed toward maximizing resources, space, and personnel. That dedication to communal efficiency permeates Akaru relationships as well, sometimes to a given relationship’s potential detriment. If a family determines that the whole would be rendered more efficient by adding or removing specific individuals, adjustments are carried out, often with the assistance of trained counselors, in order to mitigate potential complications and ensure a successful and efficient family unit.",
+            [Attribute.Control, Attribute.Fitness, Attribute.Presence],
+            "Akaru",
+            "The Akaru are a bipedal, mammalian species that resembles Romulans and Vulcans to some extent – possessing copper-based blood and slightly pointed ears – but as a whole have more widely-set eyes, more robust physical frames, and generational instances of digital fusion or vestigial webbing between fingers and toes. Their mindset is something of a blend of Romulan and Vulcan perspectives – Akaru are an enthusiastic and passionate species who embrace efficiency of thought and operation, with a keen focus on the betterment of all, be it the individual, the family, or the entire Akaru culture.",
+            "",
+            [TalentsHelper.getTalent("A Better Path"), TalentsHelper.getTalent("Charming Demeanor")],
+            "Akaru tend to have a proper name and a secondary name that represents one of their parents or a beloved member of their extended family; the individual’s profession; or perhaps a location relevant to the individual, whether it is a specific continent, region, island, or city.",
+            [{ type: "Any", suggestions: "Curate Belar, Dajala of the Mallan Valley, Postulant Herikhet, Gravek ir’Loval, Mediator Ruia, First Engineer Wallea" }]),
+            //[Species.Romulan]: new SpeciesModel(
         //    "",
         //    [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
         //    Source.,

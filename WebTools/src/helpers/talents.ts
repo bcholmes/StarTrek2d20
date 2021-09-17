@@ -1614,6 +1614,19 @@ export class Talents {
                 [new SourcePrerequisite(Source.KlingonCore), new NotEraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(71, true)],
                 1,
                 "Klingon (QuchHa')"),
+            new TalentModel(
+                "A Better Path",
+                "Akaru value efficiency in all things, including when working on problems or tasks. Whenever you succeed at a task during an extended task, add 1d to your dice pool to determine Work completed.",
+                [new SourcePrerequisite(Source.ShakletonExpanse), new EraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(72, true)],
+                1,
+                "Akaru"),
+            new TalentModel(
+                "Charming Demeanor",
+                "Akaru are a robust and passionate people, and readily build relationships with others. Whenever you engage in a social interaction or social conflict with another character, you may re-roll a single d20 in your dice pool. In addition, if you succeed in that task, you gain 1 bonus Momentum.",
+                [new SourcePrerequisite(Source.ShakletonExpanse), new EraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(72, true)],
+                1,
+                "Akaru"),
+                
             // Careers
             new TalentModel(
                 "Untapped Potential",
