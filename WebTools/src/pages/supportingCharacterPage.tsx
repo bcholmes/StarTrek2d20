@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import {SetHeaderText} from '../common/extensions';
-import {character} from '../common/character';
+import {character, CharacterType} from '../common/character';
 import {CharacterSerializer} from '../common/characterSerializer';
 import {Species, SpeciesHelper, SpeciesViewModel} from '../helpers/species';
 import {DropDownInput} from '../components/dropDownInput';
@@ -10,8 +10,24 @@ import {Rank, RanksHelper} from '../helpers/ranks';
 import {Button} from '../components/button';
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
+import { numberToString } from 'pdf-lib';
+
+class CharacterTypeModel {
+    name: string;
+    type: CharacterType;
+    constructor(name: string, type: CharacterType) {
+        this.name = name;
+        this.type = type;
+    }
+}
 
 export class SupportingCharacterPage extends React.Component<{}, {}> {
+    private static TYPES: CharacterTypeModel[] = [ 
+        new CharacterTypeModel("Federation/Starfleet", CharacterType.Starfleet),
+        new CharacterTypeModel("Klingon Empire", CharacterType.KlingonWarrior),
+        new CharacterTypeModel("Other", CharacterType.Other)
+    ];
+
     private _nameElement: HTMLInputElement;
     private _purposeElement: HTMLInputElement;
     private _focus1Element: HTMLInputElement;
@@ -19,6 +35,7 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
     private _focus3Element: HTMLInputElement;
     private _attributeElement: SupportingCharacterAttributes;
 
+    private _type: CharacterTypeModel = SupportingCharacterPage.TYPES[character.type];
     private _name: string;
     private _rank: string;
     private _purpose: string;
@@ -65,6 +82,18 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
             <div className="page">
                 <div className="starship-container">
                     <div className="starship-panel">
+                        <div className="panel">
+                            <div className="header-small">Character Type</div>
+                            <div className="page-text-aligned">
+                                Is this a Starfleet/Federation character, or a member of the Klingon Empire?
+                            </div>
+                            <div>
+                                <DropDownInput
+                                    items={this.getTypes() }
+                                    defaultValue={this._type.name}
+                                    onChange={(index) => this.selectType(index) }/>
+                            </div>
+                        </div>
                         <div className="panel">
                             <div className="header-small">Purpose/Department</div>
                             <div className="page-text-aligned">
@@ -210,6 +239,9 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
         this.forceUpdate();
     }
 
+    private getTypes() {
+        return SupportingCharacterPage.TYPES.map((t, i) => t.name);
+    }
     private getRanks() {
         var result = [];
 
@@ -249,6 +281,13 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
         this._rank = ranks[index];
 
         character.rank = ranks[index];
+
+        this.forceUpdate();
+    }
+
+    private selectType(index: number) {
+        this._type = SupportingCharacterPage.TYPES[index];
+        character.type = this._type.type;
 
         this.forceUpdate();
     }

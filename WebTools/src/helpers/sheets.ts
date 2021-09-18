@@ -219,11 +219,17 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
             result.push(new Weapon("Ushaan-tor", 1, "Vicious 1"));
         }
 
-        if (character.type === CharacterType.KlingonWarrior) {
-            result.push(new Weapon("d’k tahg daggar", 1, "Vicious 1, Deadly, Hidden 1"));
-            result.push(new Weapon("Disruptor Pistol", 3, "Vicious 1"));
-        } else {
+        if (character.hasTalent("Warrior's Spirit")) {
+            result.push(new Weapon("Bat'leth", 3, "Vicious 1"));
+        }
+
+        if (character.type === CharacterType.Starfleet) {
             result.push(new Weapon("Phaser type-2", 2, "Charges"));
+        } else {
+            if (character.type === CharacterType.KlingonWarrior) {
+                result.push(new Weapon("d’k tahg dagger", 1, "Vicious 1, Deadly, Hidden 1"));
+            }
+            result.push(new Weapon("Disruptor Pistol", 3, "Vicious 1"));
         }
         return result;
     }
@@ -324,10 +330,12 @@ class KlingonCharacterSheet extends BasicFullCharacterSheet {
 
 class CharacterSheets {
     public getSupportingCharacterSheet(): ICharacterSheet[] {
-        if (character.era == Era.NextGeneration) {
-            return [ new StandardTngCharacterSheet(), new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet()  ];
+        if (character.type == CharacterType.KlingonWarrior) {
+            return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
+        } else if (character.era == Era.NextGeneration) {
+            return [ new StandardTngCharacterSheet(), new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet(), new KlingonCharacterSheet()  ];
         } else {
-            return [ new StandardTosCharacterSheet(), new StandardTngCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
+            return [ new StandardTosCharacterSheet(), new StandardTngCharacterSheet(), new HalfPageSupportingCharacterSheet(), new KlingonCharacterSheet() ];
         }
     }
 

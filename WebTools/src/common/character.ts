@@ -69,7 +69,8 @@ export class Starship {
 
 export const enum CharacterType {
     Starfleet = 0,
-    KlingonWarrior
+    KlingonWarrior,
+    Other
 }
 
 class Step {
