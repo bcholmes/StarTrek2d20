@@ -1,9 +1,10 @@
-import { character } from '../common/character';
+import { character, CharacterType } from '../common/character';
 import { Attribute } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
 import { PDFDocument, PDFForm } from 'pdf-lib'
 import { CharacterSerializer } from '../common/characterSerializer';
 import { UpbringingsHelper } from './upbringings';
+import { Era } from './eras';
 
 export interface ICharacterSheet {
     getName(): string;
@@ -157,7 +158,10 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
     populateForm(form: PDFForm) {
         super.populateForm(form);
 
-        this.fillField(form, 'Upbringing', UpbringingsHelper.getUpbringing(character.upbringing).name);
+        var upbringing = UpbringingsHelper.getUpbringing(character.upbringing);
+        if (upbringing) {
+            this.fillField(form, 'Upbringing', upbringing.name);
+        }
         this.fillField(form, 'Assignment', CharacterSerializer.serializeAssignment(character));
         this.fillField(form, 'Environment', CharacterSerializer.serializeEnvironment(character.environment, character.otherSpeciesWorld));
 
@@ -204,9 +208,9 @@ class HalfPageSupportingCharacterSheet extends BasicShortCharacterSheet {
     }
 }
 
-class StandardCharacterSheet extends BasicFullCharacterSheet {
+class StandardTngCharacterSheet extends BasicFullCharacterSheet {
     getName(): string {
-        return 'Standard Character Sheet'
+        return 'Standard TNG Character Sheet'
     }
     getThumbnailUrl(): string {
         return 'https://sta.bcholmes.org/res/img/sheets/TNG_Standard_Character_Sheet.png'
@@ -215,6 +219,19 @@ class StandardCharacterSheet extends BasicFullCharacterSheet {
         return 'https://sta.bcholmes.org/res/pdf/TNG_Standard_Character_Sheet.pdf'
     }
 }
+
+class StandardTosCharacterSheet extends BasicFullCharacterSheet {
+    getName(): string {
+        return 'TOS Character Sheet (Landscape)'
+    }
+    getThumbnailUrl(): string {
+        return 'https://sta.bcholmes.org/res/img/sheets/TOS_Standard_Character_Sheet.png'
+    }
+    getPdfUrl(): string {
+        return 'https://sta.bcholmes.org/res/pdf/TOS_Standard_Character_Sheet.pdf'
+    }
+}
+
 
 class KlingonCharacterSheet extends BasicFullCharacterSheet {
     getName(): string {
@@ -249,13 +266,21 @@ class KlingonCharacterSheet extends BasicFullCharacterSheet {
 
 class CharacterSheets {
     public getSupportingCharacterSheet(): ICharacterSheet[] {
-        var result: ICharacterSheet[] = [ new StandardCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
-        return result
+        if (character.era == Era.NextGeneration) {
+            return [ new StandardTngCharacterSheet(), new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet()  ];
+        } else {
+            return [ new StandardTosCharacterSheet(), new StandardTngCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
+        }
     }
 
     public getCharacterSheets(): ICharacterSheet[] {
-        var result: ICharacterSheet[] = [ new StandardCharacterSheet(), new KlingonCharacterSheet() ];
-        return result
+        if (character.type == CharacterType.KlingonWarrior) {
+            return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet() ];
+        } else if (character.era == Era.NextGeneration) {
+            return [ new StandardTngCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet() ];
+        } else {
+            return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet() ];
+        }
     }
 }
 

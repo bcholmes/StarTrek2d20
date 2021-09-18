@@ -208,8 +208,10 @@ class Upbringings {
         });
     }
 
-    getUpbringing(upbringing: Upbringing) {
-        if (character.type === CharacterType.KlingonWarrior) {
+    public getUpbringing(upbringing: Upbringing) {
+        if (upbringing == null) {
+            return undefined;
+        } else if (character.type === CharacterType.KlingonWarrior) {
             return this._castes[upbringing];
         } else {
             return this._upbringings[upbringing];
