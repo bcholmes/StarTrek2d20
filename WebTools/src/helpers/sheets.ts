@@ -6,6 +6,19 @@ import { CharacterSerializer } from '../common/characterSerializer';
 import { UpbringingsHelper } from './upbringings';
 import { Era } from './eras';
 
+class Weapon {
+    name: string;
+    dice: number;
+    qualities: string;
+
+    constructor(name: string, dice: number, qualities: string) {
+        this.name = name;
+        this.dice = dice;
+        this.qualities = qualities;
+    }
+}
+
+
 export interface ICharacterSheet {
     getName(): string;
     getThumbnailUrl(): string;
@@ -168,6 +181,51 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         this.fillValues(form);
         this.fillTalents(form);
         this.fillEquipment(form);
+
+        this.fillWeapons(form);
+    }
+
+    findSecurityValue() {
+        var result = undefined;
+        character.skills.forEach( (s, i) => {
+            if (s.skill == Skill.Security) {
+                result = s.expertise;
+            }
+        });
+        return result;
+    }    
+
+    fillWeapons(form: PDFForm) {
+        var weapons = this.determineWeapons();
+        const security = this.findSecurityValue() || 0;
+
+        weapons.forEach( (w, i) => {
+            this.fillField(form, 'Weapon ' + (i+1) + ' name', w.name);
+            this.fillField(form, 'Weapon ' + (i+1) + ' dice', "" + (security + w.dice));
+            this.fillField(form, 'Weapon ' + (i+1) + ' qualities', w.qualities);
+        });
+    }
+
+    determineWeapons() {
+        var result: Weapon[] = [];
+        
+        if (character.hasTalent("Mean Right Hook")) {
+            result.push(new Weapon("Unarmed Strike", 1, "Knockdown, Non-lethal Vicious 1"));
+        } else {
+            result.push(new Weapon("Unarmed Strike", 1, "Knockdown"));
+        }
+
+        if (character.hasTalent("The Ushaan")) {
+            result.push(new Weapon("Ushaan-tor", 1, "Vicious 1"));
+        }
+
+        if (character.type === CharacterType.KlingonWarrior) {
+            result.push(new Weapon("d’k tahg daggar", 1, "Vicious 1, Deadly, Hidden 1"));
+            result.push(new Weapon("Disruptor Pistol", 3, "Vicious 1"));
+        } else {
+            result.push(new Weapon("Phaser type-2", 2, "Charges"));
+        }
+        return result;
     }
 
     fillName(form: PDFForm) {
