@@ -191,7 +191,7 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
     }
 
     private showDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet());
+        CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet(), "supporting-character");
     }
 
     private selectSpecies(index: number) {

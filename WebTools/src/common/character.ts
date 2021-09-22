@@ -52,6 +52,9 @@ export class CharacterTalent {
 }
 
 export class Starship {
+    name: string;
+    reegistry: string;
+    traits: string;
     serviceYear: number;
     spaceframe: Spaceframe;
     missionPod: MissionPod;
@@ -59,6 +62,8 @@ export class Starship {
     systems: number[];
     departments: number[];
     scale: number;
+    profileTalent: string;
+    additionalTalents: string[] = [];
 
     constructor() {
         this.systems = [];
