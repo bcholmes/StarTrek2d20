@@ -54,7 +54,7 @@ export class StarshipSerializer {
         ];
     }
 
-    private static calculateResistance(scale: number, talents: string[]) {
+    public static calculateResistance(scale: number, talents: string[]) {
         var resistance = scale;
 
         if (talents.indexOf("Ablative Armor") > -1) {
@@ -68,7 +68,7 @@ export class StarshipSerializer {
         return resistance.toString();
     }
 
-    private static calculatePower(base: number, talents: string[]) {
+    public static calculatePower(base: number, talents: string[]) {
         var power = base;
 
         if (talents.indexOf("Secondary Reactors") > -1) {
@@ -78,7 +78,7 @@ export class StarshipSerializer {
         return power.toString();
     }
 
-    private static calculateShields(base: number, talents: string[]) {
+    public static calculateShields(base: number, talents: string[]) {
         var shields = base;
 
         if (talents.indexOf("Advanced Shields") > -1) {
@@ -88,7 +88,7 @@ export class StarshipSerializer {
         return shields.toString();
     }
 
-    private static calculateCrewSupport(scale: number) {
+    public static calculateCrewSupport(scale: number) {
         var crew = scale;
         return crew.toString();
     }

@@ -9,11 +9,13 @@ import {System} from '../helpers/systems';
 import {Department} from '../helpers/departments';
 import {TalentViewModel} from "../helpers/talents";
 import {Skill} from "../helpers/skills";
-import {DropDownInput} from '../components/dropDownInput';
+import {Button} from '../components/button';
 import {CheckBox} from "../components/checkBox";
 import {TalentSelectionList} from "../components/talentSelectionList";
 import {Refits} from "../components/refits";
 import {StarshipTalentSelection} from "../components/starshipTalentSelection";
+import {CharacterSheetDialog} from '../components/characterSheetDialog'
+import {CharacterSheetRegistry} from '../helpers/sheets';
 
 export class StarshipPage extends React.Component<{}, {}> {
     private _yearInput: HTMLInputElement;
@@ -243,7 +245,7 @@ export class StarshipPage extends React.Component<{}, {}> {
                     <StarshipTalentSelection
                         points={character.starship.scale - numAdditionalTalents}
                         filter={[this._profileTalent, ...spaceframeTalents]}
-                        onSelection={(talents) => { this._talentSelection = talents; this.forceUpdate(); } }/>
+                        onSelection={(talents) => { this._talentSelection = talents; character.starship.additionalTalents = this._talentSelection; this.forceUpdate(); } }/>
                 </div>
               )
             : undefined;
@@ -397,6 +399,7 @@ export class StarshipPage extends React.Component<{}, {}> {
                                 talents={talents}
                                 onSelection={(talent) => {
                                     this._profileTalent = talent.substr(0, talent.indexOf("(") - 1);
+                                    character.starship.profileTalent = this._profileTalent;
                                     this.forceUpdate();
                                 } }/>
                         </div>
@@ -417,6 +420,7 @@ export class StarshipPage extends React.Component<{}, {}> {
                                 rows={8}
                                 onChange={(ev) => {
                                     this._traits = ((ev.target as HTMLTextAreaElement).value);
+                                    character.starship.traits = this._traits;
                                     this.forceUpdate();
                                 } }
                                 onBlur={(ev) => {
@@ -441,6 +445,7 @@ export class StarshipPage extends React.Component<{}, {}> {
                                 type="text"
                                 onChange={(ev) => {
                                     this._name = (ev.target as HTMLInputElement).value;
+                                    character.starship.name = this._name;
                                     this.forceUpdate();
                                 } }
                                 value={this._name} />
@@ -458,6 +463,7 @@ export class StarshipPage extends React.Component<{}, {}> {
                                 type="text"
                                 onChange={(ev) => {
                                     this._registry = (ev.target as HTMLInputElement).value;
+                                    character.starship.reegistry = this._registry;
                                     this.forceUpdate();
                                 } }
                                 value={this._registry} />
@@ -466,16 +472,17 @@ export class StarshipPage extends React.Component<{}, {}> {
                     <br/><br/>
                     <div className="starship-panel">
                         <div className="button-container">
-                            <form action="http://pdf.modiphiusapps.hostinguk.org/api/sheet" method="post" encType="application/x-www-form-urlencoded" target="_blank">
-                                {data}
-                                <input type="submit" value="Export to PDF" className="button-small" />
-                            </form>
+                            <Button text="Export to PDF" className="button-small" onClick={() => this.showDialog() } />
                             <br/>
                         </div>
                     </div>
                 </div>
             </div>
         );
+    }
+
+    private showDialog() {
+        CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(), "starship");
     }
 
     private eraDefaultYear(era: Era) {
