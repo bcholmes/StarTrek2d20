@@ -93,15 +93,6 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
         
         CharacterSheetDialog.hide();
     }
-
-    private createFileName(name: string): string {
-        if (name == null || name.length == 0) {
-            return this.props.suffix + ".pdf";
-        } else {
-            var escaped = name.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_');
-            return escaped + '-'  + this.props.suffix + ".pdf";
-        }
-    }
 }
 
 class CharacterSheetDialogControl {

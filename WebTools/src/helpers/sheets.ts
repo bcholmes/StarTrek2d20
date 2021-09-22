@@ -71,14 +71,6 @@ abstract class BasicSheet implements ICharacterSheet {
         }
     }
 
-    fillTalents(form: PDFForm, talents: string[]) {
-        var i = 1;
-        for (var talent of talents) {
-            this.fillField(form, 'Talent ' + i, talent);
-            i++;
-        }
-    }
-
     findSecurityValue() {
         return 0;
     }
@@ -154,6 +146,14 @@ abstract class BasicStarshipSheet extends BasicSheet {
         this.fillDepartments(form);
         this.fillTalents(form, talents);
         this.fillWeapons(form);
+    }
+
+    fillTalents(form: PDFForm, talents: string[]) {
+        var i = 1;
+        for (var talent of talents) {
+            this.fillField(form, 'Talent ' + i, talent);
+            i++;
+        }
     }
 
     calculateTalentList() {
