@@ -352,6 +352,9 @@ export class Character {
         });
         character.stress = this.stress;
         character.allowCrossSpeciesTalents = this.allowCrossSpeciesTalents;
+        if (this.workflow) {
+            character.workflow = this.workflow.copy();
+        }
 
         return character;
     }

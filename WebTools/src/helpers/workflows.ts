@@ -30,6 +30,12 @@ export class Workflow {
     public next() {
         this.currentStepIndex++;
     }
+
+    public copy() {
+        let result = new Workflow(this.steps);
+        result.currentStepIndex = this.currentStepIndex;
+        return result;
+    }
 }
 
 class Workflows {
