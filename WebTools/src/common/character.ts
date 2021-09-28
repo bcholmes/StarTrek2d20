@@ -53,7 +53,7 @@ export class CharacterTalent {
 
 export class Starship {
     name: string;
-    reegistry: string;
+    registry: string;
     traits: string;
     serviceYear: number;
     spaceframe: Spaceframe;

@@ -110,7 +110,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
     populateForm(form: PDFForm) {
         this.fillField(form, 'Name', character.starship.name);
         this.fillField(form, 'Service Date', character.starship.serviceYear.toString());
-        this.fillField(form, 'Designation', character.starship.reegistry);
+        this.fillField(form, 'Designation', character.starship.registry);
         let trait = "Federation Starship";
         if (character.starship.traits !== undefined) {
             trait += `, ${character.starship.traits}`;
@@ -284,6 +284,18 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
     }
     getPdfUrl(): string {
         return 'https://sta.bcholmes.org/res/pdf/TNG_Standard_Starship_Sheet.pdf'
+    }
+}
+
+class StandardTosStarshipSheet extends BasicStarshipSheet {
+    getName(): string {
+        return 'TOS Standard Starship Sheet (Landscape)'
+    }
+    getThumbnailUrl(): string {
+        return 'https://sta.bcholmes.org/res/img/sheets/TOS_Standard_Starship_Sheet.png'
+    }
+    getPdfUrl(): string {
+        return 'https://sta.bcholmes.org/res/pdf/TOS_Standard_Starship_Sheet.pdf'
     }
 }
 
@@ -612,7 +624,11 @@ class CharacterSheets {
     }
 
     public getStarshipSheets(): ICharacterSheet[] {
-        return [ new StandardTngStarshipSheet() ];
+        if (character.era == Era.NextGeneration) {
+            return [ new StandardTngStarshipSheet(), new StandardTosStarshipSheet() ];
+        } else {
+            return [ new StandardTosStarshipSheet(), new StandardTngStarshipSheet() ];
+        }
     }
 }
 

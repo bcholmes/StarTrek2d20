@@ -463,7 +463,7 @@ export class StarshipPage extends React.Component<{}, {}> {
                                 type="text"
                                 onChange={(ev) => {
                                     this._registry = (ev.target as HTMLInputElement).value;
-                                    character.starship.reegistry = this._registry;
+                                    character.starship.registry = this._registry;
                                     this.forceUpdate();
                                 } }
                                 value={this._registry} />
