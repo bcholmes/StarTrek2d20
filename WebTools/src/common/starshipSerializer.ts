@@ -1,4 +1,4 @@
-﻿import {Starship} from './character';
+﻿import {Starship, CharacterType } from './character';
 import {SpaceframeHelper} from '../helpers/spaceframes';
 import {MissionProfileHelper} from '../helpers/missionProfiles';
 import {TalentModel} from '../helpers/talents';
@@ -17,7 +17,7 @@ export class StarshipSerializer {
         }
 
         const spaceframe = SpaceframeHelper.getSpaceframe(starship.spaceframe);
-        const missionProfile = MissionProfileHelper.getMissionProfile(starship.missionProfile);
+        const missionProfile = MissionProfileHelper.getMissionProfile(starship.missionProfile, CharacterType.Starfleet);
         const missionPod = SpaceframeHelper.getMissionPod(starship.missionPod);
 
         let talents = [...spaceframe.talents.map(t => { return t.name; }), profileTalent, ...additionalTalents];

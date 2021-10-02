@@ -65,8 +65,10 @@ class SpaceframeModel {
     scale: number;
     attacks: string[];
     talents: TalentModel[];
+    additionalTraits: string[];
+    maxServiceYear: number;
 
-    constructor(type: CharacterType, name: string, serviceYear: number, eras: Era[], source: Source, systems: number[], departments: number[], scale: number, attacks: string[], talents: TalentModel[]) {
+    constructor(type: CharacterType, name: string, serviceYear: number, eras: Era[], source: Source, systems: number[], departments: number[], scale: number, attacks: string[], talents: TalentModel[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999) {
         this.type = type;
         this.name = name;
         this.serviceYear = serviceYear;
@@ -77,6 +79,8 @@ class SpaceframeModel {
         this.scale = scale;
         this.attacks = attacks;
         this.talents = talents;
+        this.additionalTraits = additionalTraits;
+        this.maxServiceYear = maxServiceYear;
     }
 }
 
@@ -84,7 +88,7 @@ export class SpaceframeViewModel extends SpaceframeModel {
     id: Spaceframe;
 
     constructor(id: Spaceframe, base: SpaceframeModel) {
-        super(base.type, base.name, base.serviceYear, base.eras, base.source, base.systems, base.departments, base.scale, base.attacks, base.talents);
+        super(base.type, base.name, base.serviceYear, base.eras, base.source, base.systems, base.departments, base.scale, base.attacks, base.talents, base.additionalTraits, base.maxServiceYear);
         this.id = id;
     }
 }
@@ -170,7 +174,9 @@ class Spaceframes {
             [
                 TalentsHelper.getTalent("Rugged Design"),
                 TalentsHelper.getTalent("Modular Laboratories")
-            ]),
+            ],
+            [ "Federation Starship" ],
+            2290),
         [Spaceframe.Defiant]: new SpaceframeModel(
             CharacterType.Starfleet,
             "Defiant Class",
@@ -571,7 +577,11 @@ class Spaceframes {
             [
                 TalentsHelper.getTalent("Improved Hull Integrity"),
                 TalentsHelper.getTalent("Improved Warp Drive")
-            ]),
+            ],
+            [
+                "Klingon Starship"
+            ],
+            2279),
         [Spaceframe.Raptor]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
             "Raptor-class Scout",
@@ -588,7 +598,12 @@ class Spaceframes {
             [
                 TalentsHelper.getTalent("Ablative Armor"),
                 TalentsHelper.getTalent("Improved Reaction Control System")
-            ]),
+            ],
+            [
+                "Klingon Starship",
+                "Targ-pit"
+            ],
+            2270),
         [Spaceframe.VonTalk]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
             "Vo'n'Talk",
@@ -606,7 +621,12 @@ class Spaceframes {
             [
                 TalentsHelper.getTalent("Improved Reaction Control System"),
                 TalentsHelper.getTalent("Redundant Systems"),
-            ]),
+            ],
+            [
+                "Klingon Starship",
+                "Bird-of-Prey"
+            ],
+            2210),
         [Spaceframe.KToch]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
             "K'Toch Scout",
@@ -621,7 +641,11 @@ class Spaceframes {
             ],
             [
                 TalentsHelper.getTalent("Rugged Design")
-            ]),
+            ],
+            [
+                "Klingon Starship"
+            ],
+            2310),
         [Spaceframe.TuYuQ]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
             "Tu'YuQ Exploratory Ship",
@@ -639,7 +663,12 @@ class Spaceframes {
             [
                 TalentsHelper.getTalent("High Resolution Sensors"),
                 TalentsHelper.getTalent("Improved Power Systems")
-            ]),
+            ],
+            [
+                "Klingon Starship",
+                "Bird-of-Prey"
+            ],
+            2299),
         [Spaceframe.D7]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
             "D7-Class Battle Cruiser",
@@ -658,7 +687,12 @@ class Spaceframes {
             [
                 TalentsHelper.getTalent("Cloaking Device"),
                 TalentsHelper.getTalent("Rugged Design")
-            ]),
+            ],
+            [
+                "Klingon Starship",
+                "Long-Serving (24th century)"
+            ],
+            2350),
         [Spaceframe.Brel]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
             "B'rel-Class Bird-of-Prey",
@@ -676,6 +710,10 @@ class Spaceframes {
             [
                 TalentsHelper.getTalent("Cloaking Device"),
                 TalentsHelper.getTalent("Fast Targeting Systems")
+            ],
+            [
+                "Klingon Starship",
+                "Bird-of-Prey"
             ]),
         [Spaceframe.PachNom]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
@@ -695,6 +733,9 @@ class Spaceframes {
                 TalentsHelper.getTalent("Advanced Medical Ward"),
                 TalentsHelper.getTalent("Extensive Shuttlebays"),
                 TalentsHelper.getTalent("Redundant Systems")
+            ],
+            [
+                "Klingon Starship"
             ]),
         [Spaceframe.QoToch]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
@@ -710,6 +751,9 @@ class Spaceframes {
             ],
             [
                 TalentsHelper.getTalent("Improved Hull Integrity")
+            ],
+            [
+                "Klingon Starship"
             ]),
         [Spaceframe.IwChaPar]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
@@ -728,6 +772,10 @@ class Spaceframes {
             [
                 TalentsHelper.getTalent("High Resolution Sensors"),
                 TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher")
+            ],
+            [
+                "Klingon Starship",
+                "Bird-of-Prey"
             ]),
         [Spaceframe.D12]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
@@ -748,6 +796,11 @@ class Spaceframes {
                 TalentsHelper.getTalent("Backup EPS Conduits"),
                 TalentsHelper.getTalent("Cloaking Device"),
                 TalentsHelper.getTalent("Rugged Design")
+            ],
+            [ 
+                "Klingon Starship", 
+                "Bird-of-Prey", 
+                "Bad Reputation"
             ]),
         [Spaceframe.KlingonCivilianTransport]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
@@ -765,6 +818,11 @@ class Spaceframes {
             [
                 TalentsHelper.getTalent("Redundant Systems"),
                 TalentsHelper.getTalent("Rugged Design")
+            ],
+            [ 
+                "Klingon Starship", 
+                "Civilian", 
+                "Targ-Pit"
             ]),
         [Spaceframe.KVort]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
@@ -777,7 +835,7 @@ class Spaceframes {
             4,
             [
                 "Disruptor Banks",
-                "Disruptor Array",
+                "Disruptor Arrays",
                 "Photon Torpedoes",
                 "Tractor Bean (Strength 4)"
             ],
@@ -785,6 +843,10 @@ class Spaceframes {
                 TalentsHelper.getTalent("Cloaking Device"),
                 TalentsHelper.getTalent("Improved Impulse Drive"),
                 TalentsHelper.getTalent("Improved Reaction Control System")
+            ],
+            [ 
+                "Klingon Starship",
+                "Bird-of-Prey"
             ]),
         [Spaceframe.ParTok]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
@@ -800,8 +862,14 @@ class Spaceframes {
                 "Tractor Bean (Strength 4)"
             ],
             [
+                TalentsHelper.getTalent("Modular Cargo Pods"),
                 TalentsHelper.getTalent("Extensive Shuttlebays"),
                 TalentsHelper.getTalent("Secondary Reactors")
+            ],
+            [ 
+                "Klingon Starship", 
+                "Civilian", 
+                "Targ-Pit"
             ]),
         [Spaceframe.Toron]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
@@ -813,11 +881,15 @@ class Spaceframes {
             [0, 2, 1, 1, 0, 0],
             4,
             [
-                "Disruptor Array",
+                "Disruptor Arrays",
                 "Photon Torpedo"
             ],
             [
                 TalentsHelper.getTalent("Improved Reaction Control System")
+            ],
+            [ 
+                "Klingon Ship", 
+                "Small Craft"
             ]),
         [Spaceframe.VorCha]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
@@ -838,6 +910,9 @@ class Spaceframes {
                 TalentsHelper.getTalent("Cloaking Device"),
                 TalentsHelper.getTalent("Command Ship"),
                 TalentsHelper.getTalent("Improved Hull Integrity")
+            ],
+            [
+                "Klingon Starship"
             ]),
         [Spaceframe.NeghVar]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
@@ -850,7 +925,7 @@ class Spaceframes {
             6,
             [
                 "Disruptor Cannons",
-                "Disruptor Array",
+                "Disruptor Arrays",
                 "Photon Torpedoes",
                 "Tractor Bean (Strength 5)"
             ],
@@ -859,6 +934,9 @@ class Spaceframes {
                 TalentsHelper.getTalent("Extensive Shuttlebays"),
                 TalentsHelper.getTalent("Fast Targeting Systems"),
                 TalentsHelper.getTalent("Secondary Reactors")
+            ],
+            [
+                "Klingon Starship"
             ]),
                                                                     
         //[Spaceframe.]: new SpaceframeModel(
@@ -912,15 +990,11 @@ class Spaceframes {
 
         for (var frame in this._frames) {
             let f = this._frames[frame];
-            if (f.serviceYear <= year) {
-                if (n === Spaceframe.Constitution && year >= 2290 ||
-                    !character.hasSource(f.source) || type !== f.type) {
-                    n++
-                    continue;
+            if (f.serviceYear <= year && f.maxServiceYear >= year) {
+                if (character.hasSource(f.source) && type === f.type) {
+                    frames.push(new SpaceframeViewModel(n, f));
                 }
-                frames.push(new SpaceframeViewModel(n, f));
             }
-
             n++;
         }
 

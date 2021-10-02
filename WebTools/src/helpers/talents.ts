@@ -2172,7 +2172,13 @@ export class Talents {
             [new StarshipPrerequisite(), new ServiceYearPrerequisite(2272), new SourcePrerequisite(Source.KlingonCore)],
             1,
             "Starship"),
-    ];
+        new TalentModel(
+            "Modular Cargo Pods",
+            "The modular cargo pods of the Par'tok class transport can be replaced or removed at any rudimentary spacedock as long as other pods are available and service vehicles such as shuttlecraft can assist in tractoring new pods into place. Depending on the mission assigned to the Par’tok class vessel, the performance and traits of the vessel can drastically change.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.KlingonCore)],
+            1,
+            "Starship"),
+        ];
 
     getTalents() {
         return this._talents;

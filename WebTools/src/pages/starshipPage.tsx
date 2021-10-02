@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
 import {SetHeaderText} from '../common/extensions';
 import {character, CharacterType, CharacterTypeModel, Starship} from '../common/character';
-import {StarshipSerializer} from '../common/starshipSerializer';
 import {DropDownInput} from '../components/dropDownInput';
 import {Era} from '../helpers/eras';
 import {SpaceframeHelper, Spaceframe, MissionPod} from '../helpers/spaceframes';
@@ -21,6 +20,7 @@ import {CharacterSheetRegistry} from '../helpers/sheets';
 
 interface StarshipPageState {
     type: CharacterTypeModel
+    name: string
 }
 
 export class StarshipPage extends React.Component<{}, StarshipPageState> {
@@ -28,7 +28,6 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     private _profileTalent: string;
     private _talentSelection: string[];
     private _traits: string;
-    private _name: string = "U.S.S. ";
     private _registry: string = "NCC-";
     private _refits: number;
 
@@ -50,7 +49,8 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         this._refits = 0;
 
         this.state = {
-            type: CharacterTypeModel.getStarshipTypes()[character.type]
+            type: CharacterTypeModel.getStarshipTypes()[character.type],
+            name: 'U.S.S. '
         };
     }
 
@@ -175,7 +175,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
               )
             : undefined;
 
-        const missionProfiles = MissionProfileHelper.getMissionProfiles().map((m, i) => {
+        const missionProfiles = MissionProfileHelper.getMissionProfiles(character.type).map((m, i) => {
             const departments = m.departments.map((d, di) => {
                 return (
                     <tr key={di}>
@@ -217,7 +217,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
         let talents: TalentViewModel[] = [];
         if (character.starship.missionProfile !== undefined) {
-            MissionProfileHelper.getMissionProfile(character.starship.missionProfile).talents
+            MissionProfileHelper.getMissionProfile(character.starship.missionProfile, character.type).talents
                 .forEach(t => {
                     if (spaceframeTalents.indexOf(t.name) === -1) {
                         talents.push(new TalentViewModel(t.name, 1, false, t.description, Skill.None, t.category));
@@ -261,11 +261,6 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
               )
             : undefined;
 
-        const starshipData = StarshipSerializer.serialize(character.starship, this._profileTalent, this._talentSelection, this._traits, this._name, this._registry);
-        const data = starshipData.map((d, i) => {
-            return (<input type="hidden" name={d.name} value={d.value}/>)
-        });
-
         let typeSelection = character.hasSource(Source.KlingonCore) 
                 ? (<div className="panel">
                         <div className="header-small">Ship Type</div>
@@ -281,7 +276,81 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                     </div>)
                 : undefined;
 
-        let defaultTrait = character.type == CharacterType.KlingonWarrior ? "Klingon Starship" : "Federation Starship";
+        let defaultTrait = character.type === CharacterType.KlingonWarrior ? "Klingon Starship" : "Federation Starship";
+
+        let nameSection = character.type == CharacterType.KlingonWarrior 
+            ?   (<div className="panel">
+                    <div className="page-text-aligned">
+                    <div className="header-small">Name</div>
+                        Every Starship needs a name.
+                        The Empire has no universal convention for the naming of ships, often naming them after locations, brave warriors, 
+                        ancient ships, mythical figures, or even important objects from history, great beasts, or boasts relating to a 
+                        House's conquests.
+                        In many cases, these vague naming conventions overlap — a ship may be named after an ancient ship that was itself 
+                        named after a location, for example — but this shouldn’t cause any issues.
+                        The name should ideally be a single word or, more rarely, two.
+                        <br/><br/>
+                        A Klingon starship's name is prefixed with I.K.S., standing for Imperial Klingon Ship, if it is not part of a 
+                        House fleet and serves the Empire as a whole. House vessels may continue to use the I.K.S. prefix, though they 
+                        may also not have any prefix at all or one made by the leader of that House.
+                    </div>
+                    <div className="textinput-label">NAME</div>
+                    <input
+                        type="text"
+                        onChange={(ev) => {
+                            let name = (ev.target as HTMLInputElement).value;
+                            character.starship.name = name;
+                            let state = this.state;
+                            this.setState({
+                                ...state,
+                                name: name
+                            });
+                        } }
+                        value={this.state.name} />
+                </div>)
+            : (<div className="panel">
+                    <div className="header-small">Name</div>
+                    <div className="page-text-aligned">
+                        Every Starship needs a name.
+                        The Federation has no universal convention for the naming of ships, often naming them after locations, important historical persons (normally only the person’s surname), ancient ships, mythical figures, or even more abstract ideals, virtues, or concepts.
+                        In many cases, these vague naming conventions overlap — a ship may be named after an ancient ship that was itself named after a location, for example — but this shouldn’t cause any issues.
+                        The name should ideally be a single word or, more rarely, two.
+                        <br/><br/>
+                        In all cases, a Federation starship’s name will be prefixed with U.S.S.
+                    </div>
+                    <div className="textinput-label">NAME</div>
+                    <input
+                        type="text"
+                        onChange={(ev) => {
+                            let name = (ev.target as HTMLInputElement).value;
+                            character.starship.name = name;
+                            let state = this.state;
+                            this.setState({
+                                ...state,
+                                name: name
+                            });
+                        } }
+                        value={this.state.name} />
+                </div>);
+
+        let registrySection = character.type === CharacterType.KlingonWarrior ? undefined
+            : (<div className="panel">
+            <div className="header-small">Registry Number</div>
+            <div className="page-text-aligned">
+                To go with the name, each Federation starship has a registry number.
+                This is a four- (for games set in the Original Series era), or five-digit number (for games set in the Next Generation era), prefixed by either the letters NCC, or NX.
+                NCC is used for most ships, but NX is reserved for prototype vessels and the first ship of a class , in honor of the first Human starships able to reach warp 5. 
+            </div>
+            <div className="textinput-label">REGISTRY NUMBER</div>
+            <input
+                type="text"
+                onChange={(ev) => {
+                    this._registry = (ev.target as HTMLInputElement).value;
+                    character.starship.registry = this._registry;
+                    this.forceUpdate();
+                } }
+                value={this._registry} />
+        </div>);
 
         return (
             <div className="page">
@@ -459,44 +528,9 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                                 value={this._traits} />
                         </div>
                         <br/><br/>
-                        <div className="panel">
-                            <div className="header-small">Name</div>
-                            <div className="page-text-aligned">
-                                Every Starship needs a name.
-                                The Federation has no universal convention for the naming of ships, often naming them after locations, important historical persons (normally only the person’s surname), ancient ships, mythical figures, or even more abstract ideals, virtues, or concepts.
-                                In many cases, these vague naming conventions overlap — a ship may be named after an ancient ship that was itself named after a location, for example — but this shouldn’t cause any issues.
-                                The name should ideally be a single word or, more rarely, two.
-                                <br/><br/>
-                                In all cases, a Federation starship’s name will be prefixed with U.S.S.
-                            </div>
-                            <div className="textinput-label">NAME</div>
-                            <input
-                                type="text"
-                                onChange={(ev) => {
-                                    this._name = (ev.target as HTMLInputElement).value;
-                                    character.starship.name = this._name;
-                                    this.forceUpdate();
-                                } }
-                                value={this._name} />
-                        </div>
+                        {nameSection}
                         <br/><br/>
-                        <div className="panel">
-                            <div className="header-small">Registry Number</div>
-                            <div className="page-text-aligned">
-                                To go with the name, each Federation starship has a registry number.
-                                This is a four- (for games set in the Original Series era), or five-digit number (for games set in the Next Generation era), prefixed by either the letters NCC, or NX.
-                                NCC is used for most ships, but NX is reserved for prototype vessels and the first ship of a class , in honor of the first Human starships able to reach warp 5. 
-                            </div>
-                            <div className="textinput-label">REGISTRY NUMBER</div>
-                            <input
-                                type="text"
-                                onChange={(ev) => {
-                                    this._registry = (ev.target as HTMLInputElement).value;
-                                    character.starship.registry = this._registry;
-                                    this.forceUpdate();
-                                } }
-                                value={this._registry} />
-                        </div>
+                        {registrySection}
                     </div>
                     <br/><br/>
                     <div className="starship-panel">
@@ -525,9 +559,14 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     private selectType(index: number) {
         let state = this.state;
         character.type = CharacterTypeModel.getStarshipTypes()[index].type;
+        let name = state.name;
+        if (name === "U.S.S. " && character.type === CharacterType.KlingonWarrior) {
+            name = "I.K.S. ";
+        }
         this.setState({
             ...state,
-            type: CharacterTypeModel.getStarshipTypes()[index]
+            type: CharacterTypeModel.getStarshipTypes()[index],
+            name: name
         });
     }
 
@@ -567,7 +606,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
         const frame = SpaceframeHelper.getSpaceframe(character.starship.spaceframe);
         const missionPod = SpaceframeHelper.getMissionPod(character.starship.missionPod);
-        const profile = MissionProfileHelper.getMissionProfile(character.starship.missionProfile);
+        const profile = MissionProfileHelper.getMissionProfile(character.starship.missionProfile, character.type);
 
         character.starship.scale = frame.scale;
 

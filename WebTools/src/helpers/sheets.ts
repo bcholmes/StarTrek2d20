@@ -110,12 +110,12 @@ abstract class BasicStarshipSheet extends BasicSheet {
     populateForm(form: PDFForm) {
         this.fillField(form, 'Name', character.starship.name);
         this.fillField(form, 'Service Date', character.starship.serviceYear.toString());
-        this.fillField(form, 'Designation', character.starship.registry);
-        let trait = "Federation Starship";
-        if (character.starship.traits !== undefined) {
-            trait += `, ${character.starship.traits}`;
+        if (character.type === CharacterType.KlingonWarrior) {
+            this.fillField(form, 'Designation', 'N/A');
+        } else {
+            this.fillField(form, 'Designation', character.starship.registry);
         }
-        this.fillField(form, 'Traits', trait);
+        let trait = character.type == CharacterType.KlingonWarrior ? "Klingon Starship" : "Federation Starship";
 
         const talents = this.calculateTalentList();
 
@@ -123,8 +123,13 @@ abstract class BasicStarshipSheet extends BasicSheet {
         if (spaceframe) {
             this.fillField(form, 'Space Frame', spaceframe.name);
             this.fillField(form, 'Scale', spaceframe.scale.toString());
+            trait = spaceframe.additionalTraits.join(', ');
         }
-        const missionProfile = MissionProfileHelper.getMissionProfile(character.starship.missionProfile);
+        if (character.starship.traits !== undefined) {
+            trait += `, ${character.starship.traits}`;
+        }
+        this.fillField(form, 'Traits', trait);
+        const missionProfile = MissionProfileHelper.getMissionProfile(character.starship.missionProfile, character.type);
         if (missionProfile) {
             this.fillField(form, 'Mission Profile', missionProfile.name);
         }
@@ -138,7 +143,6 @@ abstract class BasicStarshipSheet extends BasicSheet {
         }
 
         if (character.starship.systems[System.Structure] && character.starship.departments[Department.Security]) {
-            console.log("Gimme shields");
             this.fillShields(form, this.calculateShields(character.starship.systems[System.Structure] + character.starship.departments[Department.Security], talents));
         }
 
@@ -211,9 +215,15 @@ abstract class BasicStarshipSheet extends BasicSheet {
                 } else if (attack === 'Phaser Banks') {
                     result.push(new Weapon(attack, (character.starship.scale || 0) + 1, "Versatile 2"));
                 } else if (attack === 'Phaser Arrays') {
-                    result.push(new Weapon(attack, (character.starship.scale || 0), "Versatile 2"));
-                } else if (attack === 'Phaser Arrays') {
-                    result.push(new Weapon(attack, (character.starship.scale || 0), "Versatile 2"));
+                    result.push(new Weapon(attack, (character.starship.scale || 0), "Versatile 2, Area or Spread"));
+                } else if (attack === 'Disruptor Cannons') {
+                    result.push(new Weapon(attack, (character.starship.scale || 0) + 2, "Viscious 1"));
+                } else if (attack === 'Disruptor Banks') {
+                    result.push(new Weapon(attack, (character.starship.scale || 0) + 1, "Viscious 1"));
+                } else if (attack === 'Disruptor Arrays') {
+                    result.push(new Weapon(attack, (character.starship.scale || 0), "Viscious 1, Area or Spread"));
+                } else if (attack === 'Plasma Torpedoes') {
+                    result.push(new Weapon(attack, 3, "Persistent, Calibration"));
                 } else if (attack.indexOf('Tractor Beam') >= 0 || attack.indexOf('Grappler Cables') >= 0) {
                     let index = attack.indexOf("(Strength");
                     let index2 = attack.indexOf(")", index);
