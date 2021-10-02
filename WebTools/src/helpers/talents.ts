@@ -1973,7 +1973,7 @@ export class Talents {
             new TalentModel(
                 "Emergency Medical Hologram",
                 "The ship’s sickbay is equipped with holoemitters and a stateof-the-art holographic doctor, able to assist medical personnel during emergencies. The ship has one additional Supporting Character, an Emergency Medical Hologram, using the Attributes, Disciplines, and so forth as shown in the sidebar, which does not cost any Crew Support to introduce, and which does not automatically improve when introduced. This character cannot go into any location not equipped with holoemitters.",
-                [new StarshipPrerequisite(), new ServiceYearPrerequisite(2371)],
+                [new StarshipPrerequisite(), new NotCharacterTypePrerequisite(CharacterType.KlingonWarrior), new ServiceYearPrerequisite(2371)],
                 1,
                 "Starship"),
             new TalentModel(

@@ -225,10 +225,12 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                 });
         }
 
+        let defaultTrait = character.type === CharacterType.KlingonWarrior ? ["Klingon Starship"] : ["Federation Starship"];
         let numRefits = 0;
         if (character.starship.spaceframe >= 0) {
             const frame = SpaceframeHelper.getSpaceframe(character.starship.spaceframe);
             numRefits = Math.floor((character.starship.serviceYear - frame.serviceYear) / 10);
+            defaultTrait = frame.additionalTraits;
         }
 
         const refits = numRefits > 0
@@ -276,7 +278,14 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                     </div>)
                 : undefined;
 
-        let defaultTrait = character.type === CharacterType.KlingonWarrior ? "Klingon Starship" : "Federation Starship";
+        const traitList = defaultTrait.map((t, i) => {
+            return (
+                <li>
+                    {t}
+                </li>
+            );
+        });
+    
 
         let nameSection = character.type == CharacterType.KlingonWarrior 
             ?   (<div className="panel">
@@ -508,11 +517,12 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                             <div className="header-small">Traits</div>
                             <div className="page-text-aligned">
                                 You may now define additional Traits for your starship.
-                                Your starship already has the <b>{defaultTrait}</b> trait, but
-                                your GM may allow you to pick additional traits that describe your
-                                vessel.
-                                <br/><br/>
-                                Examples include: Prototype, Legacy Vessel, Renowned and Long-Serving.
+                                Your starship already has these traits:
+                                <ul>
+                                    {traitList}
+                                </ul>
+                                Your GM may allow you to pick additional traits that describe your
+                                vessel. Examples include: Prototype, Legacy Vessel, Renowned and Long-Serving.
                             </div>
                             <textarea
                                 rows={8}
