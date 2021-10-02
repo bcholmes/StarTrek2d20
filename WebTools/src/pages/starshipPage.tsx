@@ -1,13 +1,15 @@
 ﻿import * as React from 'react';
 import {SetHeaderText} from '../common/extensions';
-import {character, Starship} from '../common/character';
+import {character, CharacterType, CharacterTypeModel, Starship} from '../common/character';
 import {StarshipSerializer} from '../common/starshipSerializer';
+import {DropDownInput} from '../components/dropDownInput';
 import {Era} from '../helpers/eras';
 import {SpaceframeHelper, Spaceframe, MissionPod} from '../helpers/spaceframes';
 import {MissionProfileHelper, MissionProfile} from '../helpers/missionProfiles';
 import {System} from '../helpers/systems';
 import {Department} from '../helpers/departments';
 import {TalentViewModel} from "../helpers/talents";
+import {Source} from "../helpers/sources";
 import {Skill} from "../helpers/skills";
 import {Button} from '../components/button';
 import {CheckBox} from "../components/checkBox";
@@ -17,7 +19,11 @@ import {StarshipTalentSelection} from "../components/starshipTalentSelection";
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
 
-export class StarshipPage extends React.Component<{}, {}> {
+interface StarshipPageState {
+    type: CharacterTypeModel
+}
+
+export class StarshipPage extends React.Component<{}, StarshipPageState> {
     private _yearInput: HTMLInputElement;
     private _profileTalent: string;
     private _talentSelection: string[];
@@ -42,10 +48,15 @@ export class StarshipPage extends React.Component<{}, {}> {
         this._profileTalent = null;
         this._talentSelection = [];
         this._refits = 0;
+
+        this.state = {
+            type: CharacterTypeModel.getStarshipTypes()[character.type]
+        };
     }
 
     render() {
-        const spaceframes = SpaceframeHelper.getSpaceframes(character.starship.serviceYear);
+
+        const spaceframes = SpaceframeHelper.getSpaceframes(character.starship.serviceYear, this.state.type.type);
         
         const frames = spaceframes.map((f, i) => {
             const systems = f.systems.map((s, si) => {
@@ -71,9 +82,9 @@ export class StarshipPage extends React.Component<{}, {}> {
                     console.log(f.name);
                 }
 
-                return (
+                return t.isAvailableForServiceYear() ? (
                     <div key={ti}>{t.name}</div>
-                );
+                ) : undefined;
             });
 
             return (
@@ -255,10 +266,28 @@ export class StarshipPage extends React.Component<{}, {}> {
             return (<input type="hidden" name={d.name} value={d.value}/>)
         });
 
+        let typeSelection = character.hasSource(Source.KlingonCore) 
+                ? (<div className="panel">
+                        <div className="header-small">Ship Type</div>
+                        <div className="page-text-aligned">
+                            Is this a Starfleet/Federation vessel, or a ship of the Klingon Empire?
+                        </div>
+                        <div>
+                            <DropDownInput
+                                items={this.getTypes() }
+                                defaultValue={this.getSelectedType()}
+                                onChange={(index) => this.selectType(index) }/>
+                        </div>
+                    </div>)
+                : undefined;
+
+        let defaultTrait = character.type == CharacterType.KlingonWarrior ? "Klingon Starship" : "Federation Starship";
+
         return (
             <div className="page">
                 <div className="starship-container">
                     <div className="starship-panel">
+                        {typeSelection}
                         <div className="panel">
                             <div className="header-small">Year of Service</div>
                             <div className="page-text-aligned">
@@ -410,7 +439,7 @@ export class StarshipPage extends React.Component<{}, {}> {
                             <div className="header-small">Traits</div>
                             <div className="page-text-aligned">
                                 You may now define additional Traits for your starship.
-                                Your starship already has the <b>Federation Starship</b> trait, but
+                                Your starship already has the <b>{defaultTrait}</b> trait, but
                                 your GM may allow you to pick additional traits that describe your
                                 vessel.
                                 <br/><br/>
@@ -483,6 +512,23 @@ export class StarshipPage extends React.Component<{}, {}> {
 
     private showDialog() {
         CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(), "starship");
+    }
+
+    private getTypes() {
+        return CharacterTypeModel.getStarshipTypes().map((t, i) => t.name);
+    }
+
+    private getSelectedType() {
+        return this.state.type.name;
+    }
+
+    private selectType(index: number) {
+        let state = this.state;
+        character.type = CharacterTypeModel.getStarshipTypes()[index].type;
+        this.setState({
+            ...state,
+            type: CharacterTypeModel.getStarshipTypes()[index]
+        });
     }
 
     private eraDefaultYear(era: Era) {

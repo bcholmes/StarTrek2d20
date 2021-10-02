@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import {SetHeaderText} from '../common/extensions';
-import {character, CharacterType} from '../common/character';
+import {character, CharacterType, CharacterTypeModel } from '../common/character';
 import {CharacterSerializer} from '../common/characterSerializer';
 import {Species, SpeciesHelper, SpeciesViewModel} from '../helpers/species';
 import {DropDownInput} from '../components/dropDownInput';
@@ -12,22 +12,7 @@ import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
 import { numberToString } from 'pdf-lib';
 
-class CharacterTypeModel {
-    name: string;
-    type: CharacterType;
-    constructor(name: string, type: CharacterType) {
-        this.name = name;
-        this.type = type;
-    }
-}
-
 export class SupportingCharacterPage extends React.Component<{}, {}> {
-    private static TYPES: CharacterTypeModel[] = [ 
-        new CharacterTypeModel("Federation/Starfleet", CharacterType.Starfleet),
-        new CharacterTypeModel("Klingon Empire", CharacterType.KlingonWarrior),
-        new CharacterTypeModel("Other", CharacterType.Other)
-    ];
-
     private _nameElement: HTMLInputElement;
     private _purposeElement: HTMLInputElement;
     private _focus1Element: HTMLInputElement;
@@ -35,7 +20,7 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
     private _focus3Element: HTMLInputElement;
     private _attributeElement: SupportingCharacterAttributes;
 
-    private _type: CharacterTypeModel = SupportingCharacterPage.TYPES[character.type];
+    private _type: CharacterTypeModel = CharacterTypeModel.getAllTypes()[character.type];
     private _name: string;
     private _rank: string;
     private _purpose: string;
@@ -240,7 +225,7 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
     }
 
     private getTypes() {
-        return SupportingCharacterPage.TYPES.map((t, i) => t.name);
+        return CharacterTypeModel.getAllTypes().map((t, i) => t.name);
     }
     private getRanks() {
         var result = [];
@@ -286,7 +271,7 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
     }
 
     private selectType(index: number) {
-        this._type = SupportingCharacterPage.TYPES[index];
+        this._type = CharacterTypeModel.getAllTypes()[index];
         character.type = this._type.type;
 
         this.forceUpdate();

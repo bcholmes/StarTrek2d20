@@ -145,6 +145,18 @@ class CharacterTypePrerequisite implements ITalentPrerequisite {
     }
 }
 
+class NotCharacterTypePrerequisite implements ITalentPrerequisite {
+    private type: CharacterType;
+
+    constructor(type: CharacterType) {
+        this.type = type;
+    }
+
+    isPrerequisiteFulfilled() {
+        return character.type !== this.type;
+    }
+}
+
 class AnyOfPrerequisite implements ITalentPrerequisite {
     private prerequisites: ITalentPrerequisite[];
 
@@ -335,6 +347,16 @@ export class TalentModel {
         var available = true;
         this.prerequisites.forEach((p, i) => {
             if (!(p instanceof SpeciesPrerequisite) && !(p instanceof AnySpeciesPrerequisite) && !p.isPrerequisiteFulfilled()) {
+                available = false;
+            }
+        });
+        return available;
+    }
+
+    isAvailableForServiceYear() {
+        var available = true;
+        this.prerequisites.forEach((p, i) => {
+            if (((p instanceof ServiceYearPrerequisite) || (p instanceof MaxServiceYearPrerequisite)) && !p.isPrerequisiteFulfilled()) {
                 available = false;
             }
         });
@@ -1921,7 +1943,7 @@ export class Talents {
             new TalentModel(
                 "Advanced Sickbay",
                 "The ship’s sickbay is extremely well-equipped, and larger than is normal for a ship of this size. The ship gains the Advanced Sickbay Advantage, which applies to all Tasks related to medicine and biology performed within the sickbay itself. This Advantage is lost if the ship’s Computers System is Disabled.",
-                [new StarshipPrerequisite()],
+                [new StarshipPrerequisite(), new NotCharacterTypePrerequisite(CharacterType.KlingonWarrior)],
                 1,
                 "Starship"),
             new TalentModel(
@@ -2134,8 +2156,23 @@ export class Talents {
                 [new StarshipPrerequisite(), new MaxServiceYearPrerequisite(2199), new SpaceframesPrerequisite([5,17])],
                 1,
                 "Starship"),
-        ],
+            new TalentModel(
+                "Advanced Medical Ward",
+                "The ship’s medical ward is extremely well-equipped, and larger than is normal for a ship of this size. The ship gains the Advanced Medical Ward Advantage, which applies to all Tasks related to medicine and biology performed within the ward itself. This Advantage is lost if the ship’s Computers System is Disabled.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.KlingonCore), new CharacterTypePrerequisite(CharacterType.KlingonWarrior)],
+                1,
+                "Starship"),
+            ],
     };
+
+    private _specialRules: TalentModel[] = [
+        new TalentModel(
+            "Cloaking Device",
+            "The vessel has a device that allows it to vanish from sensors. Operating the device requires a Control + Engineering task with a Difficulty of 2, assisted by the ship’s Engines + Security as this is a task from the tactical position. This task has a Power requirement of 3. If successful, the vessel gains the Cloaked trait. While cloaked, the vessel cannot attempt any attacks, nor can it be the target of an attack unless the attacker has found some way of detecting the cloaked vessel. While cloaked, a vessel’s shields are down. It requires a minor action to decloak a vessel.",
+            [new StarshipPrerequisite(), new ServiceYearPrerequisite(2272), new SourcePrerequisite(Source.KlingonCore)],
+            1,
+            "Starship"),
+    ];
 
     getTalents() {
         return this._talents;
@@ -2165,6 +2202,16 @@ export class Talents {
                         talent = t;
                         break;
                     }
+                }
+            }
+        }
+
+        if (talent == null) {
+            for (var i = 0; i < this._specialRules.length; i++) {
+                var t = this._specialRules[i];
+                if (t.name === name) {
+                    talent = t;
+                    break;
                 }
             }
         }
