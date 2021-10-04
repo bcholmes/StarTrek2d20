@@ -368,6 +368,10 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
             })
         }
 
+        if (character.hasTalent("Resolute")) {
+            stress += 3;
+        }
+
         for (var i = 1; i <= 30; i++) {
             this.fillCheckbox(form, "Stress " + i, i > stress);
         }
