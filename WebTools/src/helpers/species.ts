@@ -613,7 +613,7 @@ class _Species {
         [Species.Orion]: new SpeciesModel(
             "Orion",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
-            [Source.BetaQuadrant, Source.ShakletonExpanse],
+            [Source.BetaQuadrant, Source.ShackletonExpanse],
             "The Orions are a paradoxical species. An Orion will be warm and welcoming to newcomers and be open to talking about a variety of topics as they get to know them. Too often this is a ruse, as Orion culture is based around seizing the advantage in all things and working out the best deals to benefit their society. Though they proudly claim to be strictly neutral in the affairs of the galaxy, the Orions are the founders of two organizations that have profoundly impacted Starfleet and other empires: the Orion Trade Union and the Orion Syndicate. Too often Orions are members of both of these organizations and the species they interact with will learn too late which group they are dealing with. Though the Orion Syndicate is a menace that is the target of dozens of law enforcement agencies, their persuasive negotiating skills and extensive criminal empire have guaranteed their continued existence. \nOrion society is broken down along binary gender lines. Orion females are typically the leaders of Orion society, and have evolved an advantage where their bodies secrete special pheromones that cause a hypnotic effect in males of some species. Orion males were second-class citizens for centuries and only recently gained full recognition in Orion society, though they are still most commonly seen as laborers and crew on Orion outposts and vessels. When it comes to the Syndicate, Orions prefer to let members of other species work for them; this not only guarantees that the Orion can continue their claim of strict neutrality, but they also avoid the risk of fallout from their criminal enterprises.",
             [Attribute.Daring, Attribute.Fitness, Attribute.Presence],
             "Orion",
@@ -1212,7 +1212,7 @@ class _Species {
         [Species.Akaru]: new SpeciesModel(
             "Akaru",
             [Era.NextGeneration],
-            [Source.ShakletonExpanse],
+            [Source.ShackletonExpanse],
             "A sentient humanoid species indigenous to the planet Setu within the Shackleton Expanse, the Akaru are relative newcomers in developing warp technology and are only just starting to explore nearby systems and the interior of the Expanse. They are a highly competent and curious species, and are eager to meet and trade with beings from other cultures and worlds. Their global leader and religious icon, Iryax Nedaon, actively encourages technological development oriented toward space travel and stellar exploration, and regional universities have increased the number of degree programs in related fields of study. \nWhile a population of 1.3 billion generally should not be described by one word, a common note through all Akaru society is that of efficiency. Their cities, vessels, farms, and processes are all designed toward maximizing resources, space, and personnel. That dedication to communal efficiency permeates Akaru relationships as well, sometimes to a given relationship’s potential detriment. If a family determines that the whole would be rendered more efficient by adding or removing specific individuals, adjustments are carried out, often with the assistance of trained counselors, in order to mitigate potential complications and ensure a successful and efficient family unit.",
             [Attribute.Control, Attribute.Fitness, Attribute.Presence],
             "Akaru",
@@ -1224,7 +1224,7 @@ class _Species {
         [Species.CalMirran]: new SpeciesModel(
             "Cal-Mirran",
             [Era.NextGeneration],
-            [Source.ShakletonExpanse],
+            [Source.ShackletonExpanse],
             "A race of peacemakers birthed by lightning on an oceanic world, the Cal-Mirran people have evolved to seek balance in the midst of extremes. They are crystalline, water-based life-forms held together by a bio-electric charge, able to shift their state of matter at will. Cal-Mirrans are a deeply spiritual people who are known for analytical theorizing, meticulous ethics, and abstract art. While unity is a core value of Cal-Mirran society, a small minority choose to reside away from civilization in the planet’s harshest climes. This division, and the unrest it occasionally sows, tests the equity-focused civil system on which Cal-Mirrans pride themselves.",
             [Attribute.Control, Attribute.Fitness, Attribute.Reason],
             "Cal-Mirran",
@@ -1236,7 +1236,7 @@ class _Species {
         [Species.Qofuari]: new SpeciesModel(
             "Qofuari",
             [Era.NextGeneration],
-            [Source.ShakletonExpanse],
+            [Source.ShackletonExpanse],
             "These egalitarian people from the planet Lilafas are generally unassuming and content, happy to do whatever chores are necessary to support their modest tribal lifestyles while keeping ample time free to be alone in quiet philosophical reflection or to pursue recreational activities with family and friends. Many devote their free time to pure research, imagining technology far in advance of what they use in real life. This is not merely the wishful thinking of science fiction, however, but the detailed mental imaging, down to the tiniest detail, of fully realizable apparatuses; from tricorders to warp engines, they carry three-dimensional blueprints and schematics in their minds as easily as other species recall what they ate for breakfast. \nMembers of the Future Builders faction, most of whom are part of the younger generations of Qofuari, are more outgoing and wish to construct the high-tech devices not allowed by tradition. Once the Qofuari encounter the Federation, some Future Builders request leave from their homeworld to explore the Beta Quadrant and beyond.",
             [Attribute.Fitness, Attribute.Insight, Attribute.Reason],
             "Qufuari",
@@ -1252,7 +1252,7 @@ class _Species {
         [Species.VinShari]: new SpeciesModel(
             "VinShari",
             [Era.NextGeneration],
-            [Source.ShakletonExpanse],
+            [Source.ShackletonExpanse],
             "The VinShari are the dominant humanoid species in their system within the Shackleton Expanse – and they are spreading out. Highly adaptable, utilizing the spaceborne Ha’kiv beings as an energy resource, the VinShari saved themselves from self-annihilation and went from their first space flight to warp speed in under a century. Organic technology is woven into every part of VinShari life as is their artistry and history. The VinShari have the capacity to be friendly or brutal, but everything they do is from a position of strength, and with an innate desire to dominate. \nThe Order of the Midajah-Ka believe in power through knowledge and information rather than brute force, and only resort to violence when necessary. \nMembers of the Ar-Ka-Se faction are unlike other VinShari: they believe harvesting Ha’kiv is morally wrong, and they actively resist the VinShari government. They also believe the VinShari mandate of dominance and power will ultimately lead to the destruction of their species. The Ar-Ka-Se see cooperation and peaceful coexistence as the only viable options in a growing galactic community.",
             [Attribute.Control, Attribute.Presence, Attribute.Reason],
             "VinShari",

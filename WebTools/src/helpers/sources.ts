@@ -11,7 +11,7 @@
     DS9,
     Voyager,
     KlingonCore,
-    ShakletonExpanse,
+    ShackletonExpanse,
 }
 
 class SourceViewModel {
@@ -38,7 +38,7 @@ class Sources {
         [Source.DS9]: "DS9",
         [Source.Voyager]: "Voyager",
         [Source.KlingonCore]: "Klingon Core",
-        [Source.ShakletonExpanse]: "Shakleton Expanse",
+        [Source.ShackletonExpanse]: "Shackleton Expanse",
 
     };
 
