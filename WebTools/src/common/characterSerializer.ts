@@ -88,17 +88,17 @@ export class CharacterSerializer {
     }
 
     public static serializeEnvironment(environment: Environment, otherSpecies: string) {
-        if (environment) {
-            let env = EnvironmentsHelper.getEnvironment(environment).name;
-
+        let environmentModel = (environment == null /* or, implicitly, undefined */) ? undefined : EnvironmentsHelper.getEnvironment(environment);
+        if (environmentModel) {
+            let result = environmentModel.name;
             if (environment === Environment.AnotherSpeciesWorld) {
-                env += ` (${otherSpecies})`;
+                result += ` (${otherSpecies})`;
             }
-
-            return env;
+            return result;
         } else {
             return undefined;
         }
+
     }
 
     public static serializeTraits(traits: string[]) {
