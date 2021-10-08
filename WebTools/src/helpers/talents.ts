@@ -1637,13 +1637,13 @@ export class Talents {
                 "The constant churn of the election cycle on Sigma Iotia II has made most Iotians experts at sniffing our liars and frauds. Whenever the character attempts a task to resist being deceived, they add a bonus d20 to their dice pool.",
                 [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(73, true)],
                 1,
-                "Iotians"),
+                "Iotian"),
             new TalentModel(
                 "Imitative",
                 "Iotians study and quickly adopt the technology of alien species. When the character attempts a task using Reason to discern the purpose of or to reverse-engineer a piece of alien technology, reduce the Difficulty by 1, to a minimum of 0.",
                 [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(73, true)],
                 1,
-                "Iotians"),
+                "Iotian"),
             new TalentModel(
                 "Crystalline Telepathy",
                 "Tholian exoskeletons can emit and detect specific forms of radiation capable of transmitting messages over short distances. This ability acts as a form of physical telepathy among the Tholian species, allowing them to communicate over limited distances.",
