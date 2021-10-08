@@ -12,6 +12,7 @@
     Voyager,
     KlingonCore,
     ShackletonExpanse,
+    IdwYearFive
 }
 
 class SourceViewModel {
@@ -39,7 +40,7 @@ class Sources {
         [Source.Voyager]: "Voyager",
         [Source.KlingonCore]: "Klingon Core",
         [Source.ShackletonExpanse]: "Shackleton Expanse",
-
+        [Source.IdwYearFive]: "IDW Year Five",
     };
 
     getSources() {
