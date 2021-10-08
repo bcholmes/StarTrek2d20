@@ -11,6 +11,7 @@
     DS9,
     Voyager,
     KlingonCore,
+    IdwYearFive
 }
 
 class SourceViewModel {
@@ -37,6 +38,7 @@ class Sources {
         [Source.DS9]: "DS9",
         [Source.Voyager]: "Voyager",
         [Source.KlingonCore]: "Klingon Core",
+        [Source.IdwYearFive]: "IDW Year Five",
 
     };
 

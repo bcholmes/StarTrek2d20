@@ -1614,7 +1614,55 @@ export class Talents {
                 [new SourcePrerequisite(Source.KlingonCore), new NotEraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(71, true)],
                 1,
                 "Klingon (QuchHa')"),
-            // Careers
+            new TalentModel(
+                "Looking for a Fight",
+                "Many members of the permanently calcified Lo’Kari faction will look for any excuse to start a fight with the sea-dwelling I’Qosa. During the first round of any combat against sea dwellers, the character may ignore the normal cost to Retain the Initiative.",
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(72, true)],
+                1,
+                "I'Qosa"),
+            new TalentModel(
+                "Waters of Renewal",
+                "The waters of I’Qosa nourish and restore the inhabitants of the planet. While in the waters of their homeworld, the character recovers 2 Stress at the start of each round, up to the character’s normal maximum Stress.",
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(72, true)],
+                1,
+                "I'Qosa"),
+            new TalentModel(
+                "Zero-G Swimmer",
+                "I’Qosa are experts at moving both in underwater and zero- gravity environments due to their natural aquatic habitat. The character receives a bonus d20 on any task related to swimming or zero-g maneuvering.",
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(72, true)],
+                1,
+                "I'Qosa"),
+            new TalentModel(
+                "Campaign Fatigue",
+                "The constant churn of the election cycle on Sigma Iotia II has made most Iotians experts at sniffing our liars and frauds. Whenever the character attempts a task to resist being deceived, they add a bonus d20 to their dice pool.",
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(73, true)],
+                1,
+                "Iotians"),
+            new TalentModel(
+                "Imitative",
+                "Iotians study and quickly adopt the technology of alien species. When the character attempts a task using Reason to discern the purpose of or to reverse-engineer a piece of alien technology, reduce the Difficulty by 1, to a minimum of 0.",
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(73, true)],
+                1,
+                "Iotians"),
+            new TalentModel(
+                "Crystalline Telepathy",
+                "Tholian exoskeletons can emit and detect specific forms of radiation capable of transmitting messages over short distances. This ability acts as a form of physical telepathy among the Tholian species, allowing them to communicate over limited distances.",
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(74, true)],
+                1,
+                "Tholian"),
+            new TalentModel(
+                "Immune to Vacuum",
+                "Some Tholians can spend extended periods of time exposed to vacuum without suffering any ill effects, allowing them, for instance, to scale the strands of Tholian webs without the protection of EV suits. This immunity usually only lasts a single scene before vacuum starts causing complications or injuries.",
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(74, true)],
+                1,
+                "Tholian"),
+            new TalentModel(
+                "Radiation Burst",
+                "Some Tholians can channel radiation into intense bursts that act as a ranged weapon in combat (3A, Vicious 1 damage effect).",
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(74, true)],
+                1,
+                "Tholian"),
+                // Careers
             new TalentModel(
                 "Untapped Potential",
                 "The character is inexperienced, but talented and with a bright future in Starfleet. The character may not have or increase any Attribute above 11, or any Discipline above 4 while they have this Talent (and may have to adjust Attributes and Disciplines accordingly at the end of character creation). Whenever the character succeeds at a Task for which they bought one or more additional dice with either Momentum or Threat, they may roll 1[D]. The character receives bonus Momentum equal to the roll, and adds one point to Threat if an Effect is rolled. The character cannot gain any higher rank than lieutenant (junior grade) while they possess this Talent.",

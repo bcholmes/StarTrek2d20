@@ -87,7 +87,11 @@ export enum Species {
     // Voyager
     Hologram,
     // Klingon Core
-    KlingonQuchHa
+    KlingonQuchHa,
+    // IwdYearFive
+    IQosa,
+    Iotian,
+    Tholian,
 }
 
 class NameModel {
@@ -1200,6 +1204,42 @@ class _Species {
             "",
             [TalentsHelper.getTalent("Cruel"), TalentsHelper.getTalent("Superior Ambition"), TalentsHelper.getTalent("To Battle!"), TalentsHelper.getTalent("R'uustai"), TalentsHelper.getTalent("Warrior's Spirit"), TalentsHelper.getTalent("Killer's Instinct")],
             "",
+            []),
+        [Species.IQosa]: new SpeciesModel(
+            "I'Qosa",
+            [Era.OriginalSeries, Era.NextGeneration],
+            Source.IdwYearFive,
+            "The I’Qosa are an aquatic species native to the planet I’Qos. They are humanoid but also possess some physical features reminiscent of Earth’s aquatic species. I’Qos is an oxygen-rich M-Class world with high humidity. The chemical makeup of its atmosphere renders communications and transporter technology ineffective. The crew of the U.S.S. Enterprise made first contact with the I’Qosa near the end of the Enterprise’s five-year exploratory mission under the command of Captain James T. Kirk. First contact unfolded when a Tholian web ensnared both the Enterprise and an I’Qosa ship, requiring the Enterprise crew to work with Ayal, the lone I’Qosa survivor, to escape.\n I’Qosa live in the seas of their home planet, and they share a deep, almost spiritual relationship with the waters, which grant the I’Qosa powerful healing abilities. I’Qosa society centers around the Crest, a living ecosystem at the bottom of the ocean that can be summoned as a powerful protector during times of peril. The concept of fluidity forms the cornerstone of I’Qosa culture. Individuals routinely change various aspects of their identities, including their genders and their roles in larger I’Qosa society. The idea of remaining a single gender for an entire lifetime puzzles I’Qosa, and their understanding of freedom revolves around their ability to change identities, or “flow” from one identity into another. \nNot all I’Qosa subscribe to this philosophy, however. Some believe fluidity causes disorder and leave the waters to live permanently on the dry land of I’Qos. These I’Qosa gradually lose their ability to change their identities, instead becoming “calcified” in a single state of being. These I’Qosa are called Lo’Kari. \nI’Qosa and Lo’Kari leaders have managed to share the planet in relative peace, but tensions between the two factions ignited into a crisis shortly after the Enterprise returned Ayal to their home planet. The Enterprise crew attempted to mediate negotiations between the two parties, but the talks descended into chaos. Open war broke out on I’Qos. The Lo’Kari unleashed war machines called sea burners in an attempt to dry out the I’Qosa. The I’Qosa retaliated by attacking with the full power of the Crest. The war raged on as the Enterprise was forced to leave orbit.",
+            [Attribute.Control, Attribute.Presence, Attribute.Reason],
+            "I'Qosa",
+            "I’Qosa are an aquatic species. They can spend limited amounts of time in dry environments, though they prefer to do so wearing specialized EV suits containing water. The I’Qosa embrace the concept of fluidity in all facets of their identities. They can change their name, gender, and – to some extent – their appearance at will. This ability depends on recent contact with the renewing waters of their homeworld. If an I’Qosa spends an extended period away from the waters of their homeworld, they take on the trait Calcified. This trait locks the character into their current identity and prevents them from flowing into new ones. The trait can be removed if a character returns to the waters of I’Qos in time, but the trait can become permanent if the character spends too long outside the water. The Lo’Kari are a faction of I’Qosa who choose to live permanently calcified on land.",
+            "",
+            [TalentsHelper.getTalent("Looking for a Fight"), TalentsHelper.getTalent("Waters of Renewal"), TalentsHelper.getTalent("Zero-G Swimmer")],
+            "",
+            [{ type: "Sample Names", suggestions: "Ayal, Balatera, Bryni, Talaha, Prizah, Phelina, Urchalar, Vorcani" }]),
+        [Species.Iotian]: new SpeciesModel(
+            "Iotian",
+            [Era.OriginalSeries, Era.NextGeneration],
+            Source.IdwYearFive,
+            "Iotians are a humanoid species native to the planet Sigma Iotia II. Their physical features resemble those of Humans in most respects. The starship Horizon made first contact with the Iotians in 2168. At that time, the Iotians were a pre-warp society, but they demonstrated great intelligence and a talent for imitation. The Horizon’s crew left behind a number of books, including a volume on the history of organized crime in Chicago. This book became a formative document for Iotian society. The Iotian people modeled their entire way of life on Chicago’s mobster underworld, and endless gang wars erupted across the planet. \nThe U.S.S. Enterprise visited Sigma Iotia II in 2268, and several members of the Enterprise crew became entangled in gangland plots and power plays. Dr. Leonard McCoy mistakenly left his communicator on the planet when the Enterprise departed the system, unleashing an entirely new wave of cultural contamination among the planet’s populace. \nThis time, the Iotians accessed data files contained in the communicator to learn about Federation and Earth history, and they reverse engineered the communicator’s transtator technology. These experiments allowed the Iotians to make enormous technological leaps. They began experiments with warp technology, though they achieved only limited success. The Iotians also remade their society yet again, this time using Earth’s representational democracies as their guide. Just as the Iotians did with mobster culture, they exaggerated certain key elements of Earth’s representational democracies. For instance, the Iotians held presidential elections every six weeks, leading to discontinuity and dysfunction in the planet’s governance. \nThe Iotians thought of the Enterprise crew as founding fathers of their democratic movement as a result of the Starfleet officers’ role in introducing these political concepts to Iotian society. Upon returning to Sigma Iotia II near the end of the Enterprise’s five-year mission, Spock decided to run for the Iotian presidency to defuse a sudden political crisis on the planet. Upon winning the election, Spock immediately abdicated the office after suggesting several reforms to stabilize the Iotian government.",
+            [Attribute.Control, Attribute.Insight, Attribute.Reason],
+            "Iotian",
+            "Sigma Iotians largely resemble Humans in appearance. They possess keen intellects and a natural proclivity for imitation.",
+            "",
+            [TalentsHelper.getTalent("Campaign Fatigue"), TalentsHelper.getTalent("Imitative")],
+            "",
+            [{ type: "Sample Names", suggestions: "Grak, Jamek, Krako, Marcon, Mose, Okmyx, Pocks, Tocsty, Vapel" }]),
+        [Species.Tholian]: new SpeciesModel(
+            "Tholian",
+            [Era.OriginalSeries, Era.NextGeneration],
+            Source.IdwYearFive,
+            "Tholians are a nonhumanoid, crystalline-based species with six thin legs and a dome-like head atop the torso. Tholians evolved in a high-temperature, methane-rich atmosphere and their life-support requirements differ widely from those of most humanoid species. Accordingly, Tholian characters must wear protective EV suits if they intend to spend lengthy periods of time on a Federation starship or space station. Exposure to cooler environments causes their exoskeletons to crack and eventually shatter. Their language, composed of high-frequency chirps and squeals, can render the Universal Translator unreliable. Tholians possess a high level of technology, and their use of Tholian webs, or high-energy nets that can entrap vessels, are formidable weapons. \nThe Tholians played a central role in Aegis’s plot to plunge the Galaxy into permanent stasis in order to prevent further expansion of the United Federation of Planets. The crew of the U.S.S. Enterprise rescued a Tholian child from the rubble of an abandoned outpost on the planet Lloyd Zeta- 9, setting off a volatile diplomatic crisis.",
+            [Attribute.Control, Attribute.Daring, Attribute.Fitness],
+            "Tholian",
+            "Tholians possess crystalline exoskeletons that grant them 2 resistance and allow them to withstand vacuum for extended, though not unlimited, periods of time. Tholian exoskeletons also transmit radiation that can be modulated, or sensed, by other Tholians. This can act as a form of communication, similar to telepathy, though the full extent of this ability varies by individual.",
+            "",
+            [TalentsHelper.getTalent("Crystalline Telepathy"), TalentsHelper.getTalent("Immune to Vacuum"), TalentsHelper.getTalent("Radiation Burst")],
+            "Tholian names are usually unpronounceable by non-Tholians.",
             []),
         //[Species.Romulan]: new SpeciesModel(
         //    "",
