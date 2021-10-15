@@ -1,7 +1,7 @@
 import { character, CharacterType } from '../common/character';
 import { Attribute } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
-import { PDFDocument, PDFForm } from 'pdf-lib'
+import { PDFDocument, PDFForm, rgb } from 'pdf-lib'
 import { CharacterSerializer } from '../common/characterSerializer';
 import { UpbringingsHelper } from './upbringings';
 import { Era } from './eras';
@@ -10,6 +10,7 @@ import { MissionProfileHelper } from '../helpers/missionProfiles';
 import { Department } from './departments';
 import { System } from './systems';
 import { StarshipSerializer } from '../common/starshipSerializer';
+import { DEFAULT_OUTLINE } from './spaceframes';
 
 class Weapon {
     name: string;
@@ -293,7 +294,35 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
         return 'https://sta.bcholmes.org/res/img/sheets/TNG_Standard_Starship_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/res/pdf/TNG_Standard_Starship_Sheet.pdf'
+        return 'https://sta.bcholmes.org/res/pdf/TNG_Standard_Starship_Sheet_no_outline.pdf'
+    }
+
+    populate(pdf: PDFDocument) {
+        super.populate(pdf);
+
+        const spaceframe = SpaceframeHelper.getSpaceframe(character.starship.spaceframe);
+        if (spaceframe) {
+            console.log('Spaceframe: ' + spaceframe.name);
+            this.drawOutline(pdf, spaceframe.outline);
+        } else {
+            console.log('Spaceframe: <default>');
+            this.drawOutline(pdf, DEFAULT_OUTLINE);
+        }
+    }
+
+    drawOutline(pdf: PDFDocument, outline: string) {
+        const page = pdf.getPage(0);
+        page.moveTo(0, page.getHeight());
+
+        const orange = rgb(245.0/255, 157.0/255.0, 8.0/255.0);
+
+        if (outline.charAt(0) === 'm') {
+            // SVG edited using Inkscape end up using a px-based measures
+            page.drawSvgPath(outline, { borderColor: orange, borderWidth: 1.3, scale: 0.75 })
+        } else {
+            // SVG created by Illustrator ends us using a pt-based measure
+            page.drawSvgPath(outline, { borderColor: orange, borderWidth: 1 })
+        }
     }
 }
 
