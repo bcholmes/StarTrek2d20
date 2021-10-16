@@ -187,7 +187,6 @@ abstract class BasicStarshipSheet extends BasicSheet {
         if (talents.indexOf("Advanced Shields") > -1) {
             shields += 5;
         }
-        console.log("Shields: " + shields);
         return shields;
     }
 
@@ -302,10 +301,8 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
 
         const spaceframe = SpaceframeHelper.getSpaceframe(character.starship.spaceframe);
         if (spaceframe) {
-            console.log('Spaceframe: ' + spaceframe.name);
             this.drawOutline(pdf, spaceframe.outline);
         } else {
-            console.log('Spaceframe: <default>');
             this.drawOutline(pdf, DEFAULT_OUTLINE);
         }
     }
