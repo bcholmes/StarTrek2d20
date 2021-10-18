@@ -104,7 +104,7 @@ export class CharacterSerializer {
     public static serializeTraits(traits: string[]) {
         var result = "";
         for (var i = 0; i < traits.length; i++) {
-            result += `${traits[i]}${i < traits.length-1 ? "," : ""}`;
+            result += `${traits[i]}${i < traits.length-1 ? ", " : ""}`;
         }
         return result;
     }

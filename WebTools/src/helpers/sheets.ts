@@ -358,7 +358,18 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
         this.fillField(form, 'Purpose', CharacterSerializer.serializeAssignment(character));
         this.fillField(form, 'Rank', character.rank);
         this.fillField(form, 'Species', CharacterSerializer.serializeSpecies(character.species, character.mixedSpecies));
-        this.fillField(form, 'Traits', CharacterSerializer.serializeTraits(character.traits));
+        let traits = [ ...character.traits ];
+        if (character.hasTalent("Augmented Ability (Control)") 
+                || character.hasTalent("Augmented Ability (Daring)")
+                || character.hasTalent("Augmented Ability (Fitness)")
+                || character.hasTalent("Augmented Ability (Insight)")
+                || character.hasTalent("Augmented Ability (Presence)")
+                || character.hasTalent("Augmented Ability (Reason)")
+                || character.hasTalent("Augmented Ability")) {
+            traits.push("Augmented");
+        }
+
+        this.fillField(form, 'Traits', CharacterSerializer.serializeTraits(traits));
         character.focuses.forEach( (f, i) => {
             this.fillField(form, 'Focus ' + (i+1), f);
         });
