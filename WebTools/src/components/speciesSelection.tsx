@@ -1,23 +1,38 @@
 ﻿import * as React from 'react';
-import { character } from '../common/character';
+import { character, CharacterType } from '../common/character';
 import { Window } from '../common/window';
 import { Species, SpeciesHelper } from '../helpers/species';
 import { AttributesHelper } from '../helpers/attributes';
 import { Button } from './button';
-import { AttributeView } from './attribute';
+import { CheckBox } from './checkBox';
 
 interface ISpeciesSelectionProperties {
     onSelection: (species: Species) => void;
     onCancel: () => void;
 }
 
-export class SpeciesSelection extends React.Component<ISpeciesSelectionProperties, {}> {
+interface ISpeciesSelectionPageState {
+    allowAllSpecies: boolean
+}
+
+export class SpeciesSelection extends React.Component<ISpeciesSelectionProperties, ISpeciesSelectionPageState> {
     constructor(props: ISpeciesSelectionProperties) {
         super(props);
+        this.state = {
+            allowAllSpecies: false
+        }
     }
 
     render() {
-        var species = SpeciesHelper.getPrimarySpecies().map((s, i) => {
+        let overrideCheckbox = (character.type == CharacterType.KlingonWarrior ) ? (<CheckBox
+            isChecked={this.state.allowAllSpecies}
+            text="Allow non-Klingon species (GM's decision)"
+            value={!this.state.allowAllSpecies}
+            onChanged={() => { let val = this.state.allowAllSpecies; this.setState({ allowAllSpecies: !val }); }} />) 
+            : undefined
+
+
+        var species = SpeciesHelper.getPrimarySpecies(this.state.allowAllSpecies ? CharacterType.Starfleet : character.type).map((s, i) => {
             const attributes = s.id === Species.Ktarian
                 ? (
                     <div>
@@ -49,6 +64,7 @@ export class SpeciesSelection extends React.Component<ISpeciesSelectionPropertie
         return (
             <div>
                 <div className="header-text"><div>SELECT SPECIES</div></div>
+                {overrideCheckbox}
                 <table className="selection-list">
                     <thead>
                         <tr>

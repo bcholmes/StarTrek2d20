@@ -4,6 +4,7 @@ import {SpeciesHelper, Species} from '../helpers/species';
 import {AttributesHelper} from '../helpers/attributes';
 import {CheckBox} from './checkBox';
 import {Button} from './button';
+import { character } from '../common/character'
 
 interface IMixedSpeciesSelectionProperties {
     onSelection: (primary: Species, secondary: Species) => void;
@@ -19,7 +20,7 @@ export class MixedSpeciesSelection extends React.Component<IMixedSpeciesSelectio
     }
 
     render() {
-        const primarySpecies = SpeciesHelper.getPrimarySpecies().map((s, i) => {
+        const primarySpecies = SpeciesHelper.getPrimarySpecies(character.type).map((s, i) => {
             if (s.id === this._secondary) return undefined;
 
             const attributes = s.attributes.map((a, i) => {

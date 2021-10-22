@@ -1030,7 +1030,7 @@ class _Species {
         [Species.LiberatedBorg]: new SpeciesModel(
             "Liberated Borg",
             [Era.NextGeneration],
-            [Source.DeltaQuadrant],
+            [Source.DeltaQuadrant, Source.Voyager],
             "The true power of the Borg comes from the nearly infinite number of drones that have been assimilated into the collective, like slaves of ancient civilizations. Thousands upon thousands of species have been forcibly pressed into service, their individuality stripped away in the most horrific way imaginable. For centuries, these poor souls had no hope of escape, condemned to a life of servitude aboard Borg ships, installations, and planets. Worse, once fully brought into the hive mind, they would seek out and visit the same fate upon anyone and everyone unfortunate enough to cross their path. However, in recent decades, more drones have been separated from the collective – either intentionally or by some twist of fate. Once removed from the grip of the cacophony of voices speaking as one, the identity of these lucky few can begin to resurface, allowing them an opportunity to regain the life that was taken from them. Liberated Borg, as they have become known, are as different and distinct from each other as any other individual member of a species. Some want only to return to the simplicity of existence that the collective offers, and will work tirelessly to become one with the Borg again. Others, invigorated by their release, embrace life with exuberant abandon. Regardless of their response to their new-found freedom, all must contend with the difficulties that their new life brings: rehabilitation, reintegration, and reintroduction to life as a solitary individual.",
             [Attribute.Control, Attribute.Fitness, Attribute.Reason],
             "Liberated Borg",
@@ -1323,10 +1323,10 @@ class _Species {
         for (var archetype in this._species) {
             var spec = this._species[archetype];
 
-            const hasEra = spec.eras.indexOf(character.era);
+            const hasEra = (spec.eras.indexOf(character.era) > -1) || (n === Species.Klingon && character.type == CharacterType.KlingonWarrior);
             const hasSource = character.hasAnySource(spec.sources) || (n === Species.LiberatedBorg && character.hasSource(Source.Voyager));
 
-            if (hasEra > -1 && hasSource && !this.ignoreSpecies(n)) {
+            if (hasEra && hasSource && !this.ignoreSpecies(n)) {
                 species.push(new SpeciesViewModel(n, spec));
             }
 
@@ -1338,8 +1338,8 @@ class _Species {
         });
     }
 
-    getPrimarySpecies() {
-        if (character.type == CharacterType.KlingonWarrior) {
+    getPrimarySpecies(type: CharacterType) {
+        if (type == CharacterType.KlingonWarrior) {
             var species: SpeciesViewModel[] = [];
 
             var klingonSpecies = character.era === Era.NextGeneration ? [
@@ -1350,7 +1350,7 @@ class _Species {
             for (var archetype of klingonSpecies) {
                 var spec = this._species[archetype];
 
-                const hasSource = character.hasAnySource(spec.sources) || (archetype === Species.LiberatedBorg && character.hasSource(Source.Voyager));
+                const hasSource = character.hasAnySource(spec.sources);
 
                 if (hasSource && !this.ignoreSpecies(archetype)) {
                     species.push(new SpeciesViewModel(archetype, spec));

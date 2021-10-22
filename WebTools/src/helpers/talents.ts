@@ -373,6 +373,20 @@ export class TalentModel {
         }
         return result;
     }
+
+    matches(name: string) {
+        if (this.name === name) {
+            return true;
+        } else {
+            let result = false;
+            this.aliases.forEach(a => {
+                if (a.name === name) {
+                    result = true;
+                }
+            })
+            return result;
+        }
+    }
 }
 
 export class TalentViewModel {
@@ -2236,7 +2250,7 @@ export class Talents {
 
         for (var i = 0; i < this._talents[Skill.None].length; i++) {
             var t = this._talents[Skill.None][i];
-            if (t.name === name) {
+            if (t.matches(name)) {
                 talent = t;
                 break;
             }
@@ -2251,7 +2265,7 @@ export class Talents {
 
                 for (var i = 0; i < this._talents[tal].length; i++) {
                     var t = this._talents[tal][i];
-                    if (t.name === name) {
+                    if (t.matches(name)) {
                         talent = t;
                         break;
                     }
@@ -2262,7 +2276,7 @@ export class Talents {
         if (talent == null) {
             for (var i = 0; i < this._specialRules.length; i++) {
                 var t = this._specialRules[i];
-                if (t.name === name) {
+                if (t.matches(name)) {
                     talent = t;
                     break;
                 }
