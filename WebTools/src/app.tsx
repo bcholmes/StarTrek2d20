@@ -7,6 +7,8 @@ import {Page} from './pages/pageBase';
 import {History} from './components/history';
 import {sheet} from './components/characterSheet';
 
+window.version = 'v1.211023';
+
 class Application {
     private _activePage: PageIdentity;
 

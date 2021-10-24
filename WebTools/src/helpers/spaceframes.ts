@@ -366,7 +366,7 @@ class Spaceframes {
                 TalentsHelper.getTalent("Rugged Design"),
             ],
             [ "Federation Starship" ],
-            99999,
+            2269,
             DAEDALUS_OUTLINE),
         [Spaceframe.NX]: new SpaceframeModel(
             CharacterType.Starfleet,
@@ -1101,13 +1101,13 @@ class Spaceframes {
             ]),
     };
 
-    getSpaceframes(year: number, type: CharacterType) {
+    getSpaceframes(year: number, type: CharacterType, ignoreMaxServiceYear: boolean = false) {
         let frames: SpaceframeViewModel[] = [];
         let n = 0;
 
         for (var frame in this._frames) {
             let f = this._frames[frame];
-            if (f.serviceYear <= year && f.maxServiceYear >= year) {
+            if (f.serviceYear <= year && (f.maxServiceYear >= year || ignoreMaxServiceYear)) {
                 if (character.hasSource(f.source) && type === f.type) {
                     frames.push(new SpaceframeViewModel(n, f));
                 }

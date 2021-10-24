@@ -21,6 +21,7 @@ import {CharacterSheetRegistry} from '../helpers/sheets';
 interface StarshipPageState {
     type: CharacterTypeModel
     name: string
+    allowAllFrames: boolean
 }
 
 export class StarshipPage extends React.Component<{}, StarshipPageState> {
@@ -50,13 +51,20 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
         this.state = {
             type: CharacterTypeModel.getStarshipTypes()[character.type],
-            name: 'U.S.S. '
+            name: 'U.S.S. ',
+            allowAllFrames: false
         };
     }
 
     render() {
 
-        const spaceframes = SpaceframeHelper.getSpaceframes(character.starship.serviceYear, this.state.type.type);
+        let overrideCheckbox =(<CheckBox
+            isChecked={this.state.allowAllFrames}
+            text="Ignore end-of-service date (GM's decision)"
+            value={!this.state.allowAllFrames}
+            onChanged={() => { let val = this.state.allowAllFrames; this.setState({ allowAllFrames: !val }); }} />);
+
+        const spaceframes = SpaceframeHelper.getSpaceframes(character.starship.serviceYear, this.state.type.type, this.state.allowAllFrames);
         
         const frames = spaceframes.map((f, i) => {
             const systems = f.systems.map((s, si) => {
@@ -391,6 +399,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                                 The vessel's spaceframe is its basic superstructure, core systems, operation infrastructure, 
                                 and all the other elements that are common to every vessel of the same class.
                             </div>
+                            {overrideCheckbox}
                             <table className="selection-list">
                                 <tbody>
                                     <tr>

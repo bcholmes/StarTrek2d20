@@ -62,7 +62,11 @@
     <div id="news" class="dialog-hidden">
         <div class="dialog-bg"></div>
         <div class="dialog-container dialog-container-visible" style="text-align:left;">
-            <b>WHAT'S NEW? (v1.211022)</b>
+            <b>WHAT'S NEW? (v1.211023)</b>
+            <ul>
+                <li>Enhancement: Allow an override to starship "end of service" dates.</li>
+            </ul>
+            <b>v1.211022</b>
             <ul>
                 <li>Enhancement: add support for more ship outlines (notably the Olympic and Sydney class).</li>
                 <li>Bug: Data corrections for Klingon spaceframes.</li>
@@ -121,8 +125,10 @@
         </div>
     </div>
 
-    <script src="dist/trek.js"></script>
+    <!-- Deprecate the version number being separate from the main app; we want to be able to 
+         detect cases where the "old" version of the app is being retrieved from the cache. -->
     <script src="version.js"></script>
+    <script src="dist/trek.js"></script>
     <script src="res/js/download.min.js"></script>
 
     <script>
@@ -141,7 +147,7 @@
             }
         }
 
-        document.getElementById("version").innerText = version;
+        document.getElementById("version").innerText = window.version;
 
         // Action functions.
         var sheetIsVisible = false;
