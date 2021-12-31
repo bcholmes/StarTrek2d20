@@ -1,13 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {character} from '../common/character';
 import { PDFDocument } from 'pdf-lib'
 import { ICharacterSheet } from '../helpers/sheets';
 import {Button} from './button';
-import {CharacterSheetRegistry} from '../helpers/sheets';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
-
 
 interface ICharacterSheetDialogProperties {
     sheets: ICharacterSheet[];
@@ -31,7 +28,7 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
 
         const sheetList = sheets.map((s, i) => {
             const selected = (s.getName() == selection.getName()) ? "sheet-selection-item selected" : "sheet-selection-item"; 
-            const overlay = (s.getName() == selection.getName()) ? <img className="overlay" src="./res/img/check.png" /> : undefined;
+            const overlay = (s.getName() == selection.getName()) ? <img className="overlay" src="./img/check.png" /> : undefined;
             return (
                 <div className={selected} onClick={() => this.selectTemplate(s)}>
                     <div className="sheet-selection-item-name">

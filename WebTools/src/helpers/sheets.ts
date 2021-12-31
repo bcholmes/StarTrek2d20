@@ -1,4 +1,5 @@
-import { character, CharacterType } from '../common/character';
+import { character } from '../common/character';
+import { CharacterType } from '../common/characterType';
 import { Attribute } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
 import { PDFDocument, PDFForm, rgb } from 'pdf-lib'
@@ -652,6 +653,17 @@ class KlingonCharacterSheet extends BasicFullCharacterSheet {
     }
 }
 
+class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
+    getName(): string {
+        return 'Standard TNG Character Sheet'
+    }
+    getThumbnailUrl(): string {
+        return 'https://sta.bcholmes.org/res/img/sheets/TNG_2_Page_Character_Sheet.png'
+    }
+    getPdfUrl(): string {
+        return 'https://sta.bcholmes.org/res/pdf/TNG_2_Page_Character_Sheet.pdf'
+    }
+}
 
 class CharacterSheets {
     public getSupportingCharacterSheet(): ICharacterSheet[] {

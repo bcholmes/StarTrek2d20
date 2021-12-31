@@ -1,11 +1,11 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {PageIdentity, IPageProperties} from './pageFactory';
-import {Upbringing, UpbringingsHelper} from '../helpers/upbringings';
+import {IPageProperties} from './iPageProperties';
+import {PageIdentity} from './pageIdentity';
+import {UpbringingsHelper} from '../helpers/upbringings';
 import {AttributesHelper} from '../helpers/attributes';
 import {Skill, SkillsHelper} from '../helpers/skills';
-import {PageHeader} from '../components/pageHeader';
 import {AttributeView} from '../components/attribute';
 import {ElectiveSkillList} from '../components/electiveSkillList';
 import {Button} from '../components/button';

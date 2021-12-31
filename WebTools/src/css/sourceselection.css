@@ -5,7 +5,6 @@
     width: 100%;
     z-index: 1000;
     transition: margin-left linear .25s; /* should match .content transition */
-    background: url(../img/top.png);
 }
 
 .source-selection-list {

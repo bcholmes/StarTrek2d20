@@ -1,8 +1,6 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
 import {Skill} from '../helpers/skills';
 import {TalentViewModel, TalentsHelper} from '../helpers/talents';
-import {DropDownInput} from './dropDownInput';
 import {CheckBox} from './checkBox';
 
 interface ITalentListProperties {
@@ -12,7 +10,6 @@ interface ITalentListProperties {
 
 export class TalentList extends React.Component<ITalentListProperties, {}> {
     private _talents: TalentViewModel[];
-    private _selectedIndex: number;
     private _talent: string;
 
     constructor(props: ITalentListProperties) {
@@ -23,7 +20,6 @@ export class TalentList extends React.Component<ITalentListProperties, {}> {
                 return a.name.localeCompare(b.name)
             });
 
-        this._selectedIndex = 0;
     }
 
     componentWillReceiveProps(props: ITalentListProperties) {

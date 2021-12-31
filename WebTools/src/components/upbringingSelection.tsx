@@ -12,10 +12,6 @@ interface IUpbringingSelectionProperties {
 }
 
 export class UpbringingSelection extends React.Component<IUpbringingSelectionProperties, {}> {
-    constructor(props: IUpbringingSelectionProperties) {
-        super(props);
-    }
-
     render() {
         var upbringings = UpbringingsHelper.getUpbringings().map((u, i) => {
             const disciplines = u.disciplines.map((d, i) => {

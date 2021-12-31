@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
 import {System} from '../helpers/systems';
 import {SpaceframeHelper} from '../helpers/spaceframes';
-import {MissionProfileHelper} from '../helpers/missionProfiles';
 import {character} from '../common/character';
 
 interface IRefitImprovementProperties {
@@ -13,19 +12,15 @@ interface IRefitImprovementProperties {
 }
 
 export class Refit extends React.Component<IRefitImprovementProperties, {}> {
-    constructor(props: IRefitImprovementProperties) {
-        super(props);
-    }
-
     render() {
         const {system, value, showDecrease, showIncrease} = this.props;
 
         const dec = showDecrease
-            ? (<img style={{ float: "left" }} height="20" src="res/img/dec.png" onClick={ () => { this.onDecrease() } }/>)
+            ? (<img style={{ float: "left" }} height="20" src="img/dec.png" onClick={ () => { this.onDecrease() } } alt="-"/>)
             : undefined;
 
         const inc = showIncrease
-            ? (<img style={{ float: "right" }} height="20" src="res/img/inc.png" onClick={ () => { this.onIncrease() } }/>)
+            ? (<img style={{ float: "right" }} height="20" src="img/inc.png" onClick={ () => { this.onIncrease() } } alt="+"/>)
             : undefined;
 
         return (
@@ -96,7 +91,7 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
         this._points = this.calculatePoints(props.points, minimum);
         this._refits = [];
 
-        for (var i = 0; i < character.starship.systems.length; i++) {
+        for (let i = 0; i < character.starship.systems.length; i++) {
             this._refits.push(
                 new RefitContainer(
                     i,
@@ -121,7 +116,7 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
         this._points = this.calculatePoints(props.points, minimum);
         this._refits = [];
 
-        for (var i = 0; i < character.starship.systems.length; i++) {
+        for (let i = 0; i < character.starship.systems.length; i++) {
             this._refits.push(
                 new RefitContainer(
                     i,
@@ -152,8 +147,8 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
     }
 
     onDecrease(attr: System) {
-        for (var i = 0; i < this._refits.length; i++) {
-            var a = this._refits[i];
+        for (let i = 0; i < this._refits.length; i++) {
+            let a = this._refits[i];
             if (a.system === attr) {
                 a.value--;
                 character.starship.systems[a.system] = a.value;
@@ -163,8 +158,8 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
 
         this._points++;
 
-        for (var i = 0; i < this._refits.length; i++) {
-            var a = this._refits[i];
+        for (let i = 0; i < this._refits.length; i++) {
+            let a = this._refits[i];
             a.showDecrease = a.value > a.minValue;
             a.showIncrease = a.value < a.maxValue;
         }
@@ -179,8 +174,8 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
     }
 
     onIncrease(attr: System) {
-        for (var i = 0; i < this._refits.length; i++) {
-            var a = this._refits[i];
+        for (let i = 0; i < this._refits.length; i++) {
+            let a = this._refits[i];
             if (a.system === attr) {
                 a.value++;
                 character.starship.systems[a.system] = a.value;
@@ -190,8 +185,8 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
 
         this._points--;
 
-        for (var i = 0; i < this._refits.length; i++) {
-            var a = this._refits[i];
+        for (let i = 0; i < this._refits.length; i++) {
+            let a = this._refits[i];
             a.showDecrease = a.value > a.minValue;
             a.showIncrease = a.value < a.maxValue && this._points > 0;
         }
@@ -206,13 +201,14 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
     }
 
     private calculatePoints(allotted: number, systems: number[]) {
+        /*
         let reduction = 0;
 
-        for (var i = 0; i < systems.length; i++) {
+        for (let i = 0; i < systems.length; i++) {
             const diff = character.starship.systems[i] - systems[i];
             reduction += diff; 
         }
-
+        */
         return allotted;// - reduction;
     }
 }

@@ -1,11 +1,10 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {PageIdentity, IPageProperties} from './pageFactory';
+import {IPageProperties} from './iPageProperties';
+import {PageIdentity} from './pageIdentity';
 import {CareerEventsHelper} from '../helpers/careerEvents';
 import {AttributesHelper} from '../helpers/attributes';
-import {SkillsHelper} from '../helpers/skills';
-import {PageHeader} from '../components/pageHeader';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {AttributeView} from '../components/attribute';
@@ -18,10 +17,6 @@ export class CareerEventDetailsPage extends React.Component<IPageProperties, {}>
     private _trait: HTMLInputElement;
     private _attributeDone: boolean;
     private _skillDone: boolean;
-
-    constructor(props: IPageProperties) {
-        super(props);
-    }
 
     render() {
         const event = CareerEventsHelper.getCareerEvent(character.careerEvents[character.careerEvents.length-1]);

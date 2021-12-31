@@ -8,9 +8,6 @@ interface ICheckBoxProperties {
 }
 
 export class CheckBox extends React.Component<ICheckBoxProperties, {}> {
-    constructor(props: ICheckBoxProperties) {
-        super(props);
-    }
 
     render() {
         const {value, onChanged, isChecked, text} = this.props;

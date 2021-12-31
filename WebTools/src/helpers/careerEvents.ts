@@ -1,6 +1,7 @@
 ﻿import {SkillsHelper, Skill} from './skills';
 import {Attribute} from './attributes';
-import {character, CharacterType} from '../common/character';
+import {character } from '../common/character';
+import { CharacterType } from '../common/characterType';
 
 class CareerEventModel {
     name: string;

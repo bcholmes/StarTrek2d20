@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
 import {CheckBox} from './checkBox';
 import {TalentsHelper} from '../helpers/talents';
 

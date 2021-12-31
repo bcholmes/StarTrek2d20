@@ -1,4 +1,5 @@
-﻿import {character, CharacterType } from '../common/character';
+﻿import {character } from '../common/character';
+import { CharacterType } from '../common/characterType';
 import {Era} from './eras';
 import {Source} from './sources';
 import {TalentsHelper, TalentModel} from './talents';

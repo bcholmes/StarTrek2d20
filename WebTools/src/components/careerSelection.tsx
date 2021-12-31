@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
 import {Window} from '../common/window';
 import {Career, CareersHelper} from '../helpers/careers';
 import {Button} from './button';
@@ -10,10 +9,6 @@ interface ICareerSelectionProperties {
 }
 
 export class CareerSelection extends React.Component<ICareerSelectionProperties, {}> {
-    constructor(props: ICareerSelectionProperties) {
-        super(props);
-    }
-
     render() {
         var careers = CareersHelper.getCareers().map((c, i) => {
             const talent = c.talent.length === 1

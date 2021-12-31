@@ -1,7 +1,7 @@
-﻿import { Attribute, AttributesHelper } from './attributes';
-import { SkillsHelper, Skill } from './skills';
+﻿import { Attribute } from './attributes';
 import { TalentModel, TalentsHelper } from './talents';
-import { character, CharacterType } from '../common/character';
+import { character } from '../common/character';
+import { CharacterType } from '../common/characterType';
 import { Era } from '../helpers/eras';
 import { Source } from '../helpers/sources';
 
@@ -1323,7 +1323,7 @@ class _Species {
         for (var archetype in this._species) {
             var spec = this._species[archetype];
 
-            const hasEra = (spec.eras.indexOf(character.era) > -1) || (n === Species.Klingon && character.type == CharacterType.KlingonWarrior);
+            const hasEra = (spec.eras.indexOf(character.era) > -1) || (n === Species.Klingon && character.type === CharacterType.KlingonWarrior);
             const hasSource = character.hasAnySource(spec.sources) || (n === Species.LiberatedBorg && character.hasSource(Source.Voyager));
 
             if (hasEra && hasSource && !this.ignoreSpecies(n)) {
@@ -1339,7 +1339,7 @@ class _Species {
     }
 
     getPrimarySpecies(type: CharacterType) {
-        if (type == CharacterType.KlingonWarrior) {
+        if (type === CharacterType.KlingonWarrior) {
             var species: SpeciesViewModel[] = [];
 
             var klingonSpecies = character.era === Era.NextGeneration ? [
@@ -1388,12 +1388,12 @@ class _Species {
         if (character.type === CharacterType.KlingonWarrior && character.era === Era.NextGeneration) {
             return Species.Klingon;
         } else if (character.type === CharacterType.KlingonWarrior) {
-            var roll = Math.floor(Math.random() * 20) + 1;
+            let roll = Math.floor(Math.random() * 20) + 1;
             // it doesn't appear that there are any real rules for this.
             return roll <= 5 ? Species.KlingonQuchHa : Species.Klingon;
         } else {
-            var roll = Math.floor(Math.random() * 20) + 1;
-            var species = Species.Human;
+            let roll = Math.floor(Math.random() * 20) + 1;
+            let species = Species.Human;
 
             switch (character.era) {
                 case Era.Enterprise: {

@@ -1,5 +1,6 @@
-﻿import {SkillsHelper, Skill} from './skills';
-import {character, CharacterType} from '../common/character';
+﻿import {Skill} from './skills';
+import {character } from '../common/character';
+import {CharacterType } from '../common/characterType';
 import {Source} from './sources';
 
 export enum Track {
@@ -152,7 +153,7 @@ class Tracks {
             var trk = list[track];
 
             if (character.hasSource(trk.source)) {
-                if (n === Track.EnlistedSecurityTraining && !character.enlisted && character.type != CharacterType.KlingonWarrior) {
+                if (n === Track.EnlistedSecurityTraining && !character.enlisted && character.type !== CharacterType.KlingonWarrior) {
                     n++
                     continue;
                 }

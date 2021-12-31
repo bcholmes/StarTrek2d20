@@ -8,12 +8,8 @@ interface IDialogProperties {
 }
 
 class _Dialog extends React.Component<IDialogProperties, {}> {
-    constructor(props: IDialogProperties) {
-        super(props);
-    }
-
     render() {
-        const {message, isVisible} = this.props;
+        const {isVisible} = this.props;
 
         const visibilityClass = isVisible
             ? "dialog-visible"

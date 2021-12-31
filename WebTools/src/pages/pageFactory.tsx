@@ -18,42 +18,11 @@ import {AttributesAndDisciplinesPage} from './attributesAndDisciplinesPage';
 import {FinishPage} from './finishPage';
 import {StarshipPage} from './starshipPage';
 import {SupportingCharacterPage} from './supportingCharacterPage';
-import {ExportTestPage} from './exportTestPage';
 import { TalentsOverviewPage } from './talentsOverviewPage';
 import { SelectionPage } from './selectionPage';
 import { BorgImplantSelection } from './borgImplantSelection';
+import { PageIdentity } from './pageIdentity';
 
-export enum PageIdentity {
-    Selection,
-    Era,
-    ToolSelecton,
-    Species,
-    SpeciesDetails,
-    Environment,
-    EnvironmentDetails,
-    Upbringing,
-    UpbringingDetails,
-    StarfleetAcademy,
-    StarfleetAcademyDetails,
-    Career,
-    CareerDetails,
-    CareerEvent1,
-    CareerEvent1Details,
-    CareerEvent2,
-    CareerEvent2Details,
-    AttributesAndDisciplines,
-    BorgImplants,
-    Finish,
-
-    Starship,
-    SupportingCharacter,
-    TalentsOverview,
-
-    ExportTest
-}
-
-export interface IPageProperties {
-}
 
 export class PageFactory {
     private factories = {};
@@ -84,7 +53,6 @@ export class PageFactory {
         this.factories[PageIdentity.Starship] = () => <StarshipPage/>;
         this.factories[PageIdentity.SupportingCharacter] = () => <SupportingCharacterPage />;
         this.factories[PageIdentity.TalentsOverview] = () => <TalentsOverviewPage />;
-        this.factories[PageIdentity.ExportTest] = () => <ExportTestPage/>;
     }
 
     createPage(page: PageIdentity) {

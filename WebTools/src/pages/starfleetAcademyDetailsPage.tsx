@@ -1,15 +1,12 @@
 ﻿import * as React from 'react';
-import {character, CharacterType} from '../common/character';
+import {character} from '../common/character';
+import {CharacterType} from '../common/characterType';
 import {Navigation} from '../common/navigator';
-import {PageIdentity, IPageProperties} from './pageFactory';
+import {IPageProperties} from './iPageProperties';
+import {PageIdentity} from './pageIdentity';
 import {Track, TracksHelper} from '../helpers/tracks';
-import {AttributesHelper} from '../helpers/attributes';
 import {Skill, SkillsHelper} from '../helpers/skills';
-import {TalentsHelper} from '../helpers/talents';
-import {PageHeader} from '../components/pageHeader';
-import {AttributeView} from '../components/attribute';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovement';
-import {ElectiveSkillList} from '../components/electiveSkillList';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {ValueInput, Value} from '../components/valueInput';
@@ -49,12 +46,12 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
             return this.renderResearchInternshipDetails();
         }
 
-        var training = "Select three focuses for your character, at least one reflecting the time at Starfleet Academy.";
+        let training = "Select three focuses for your character, at least one reflecting the time at Starfleet Academy.";
         if (character.type === CharacterType.KlingonWarrior) {
             if (character.enlisted) {
-                var training = "Select three focuses for your character, at least one reflecting their time training.";
+                training = "Select three focuses for your character, at least one reflecting their time training.";
             } else {
-                var training = "Select three focuses for your character, at least one reflecting the time at KDF Academy.";
+                training = "Select three focuses for your character, at least one reflecting the time at KDF Academy.";
             }
         }
 

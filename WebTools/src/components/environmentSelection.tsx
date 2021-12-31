@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
 import {Window} from '../common/window';
 import {Environment, EnvironmentsHelper} from '../helpers/environments';
 import {AttributesHelper} from '../helpers/attributes';
@@ -12,10 +11,6 @@ interface IEnvironmentSelectionProperties {
 }
 
 export class EnvironmentSelection extends React.Component<IEnvironmentSelectionProperties, {}> {
-    constructor(props: IEnvironmentSelectionProperties) {
-        super(props);
-    }
-
     render() {
         var envs = EnvironmentsHelper.getEnvironments().map((e, i) => {
             const attributes = e.attributes.map((a, i) => {

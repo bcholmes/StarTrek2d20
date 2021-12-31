@@ -2,7 +2,6 @@
 import {character} from '../common/character';
 import {Skill, SkillsHelper} from '../helpers/skills';
 import {CheckBox} from '../components/checkBox';
-import {Button} from '../components/button';
 
 interface IMajorSkillProperties {
     skill: Skill;
@@ -12,15 +11,11 @@ interface IMajorSkillProperties {
 }
 
 class MajorSkill extends React.Component<IMajorSkillProperties, {}> {
-    constructor(props: IMajorSkillProperties) {
-        super(props);
-    }
 
     render() {
         const {skill, onSelected, isSelected, showCheckBox} = this.props;
 
         const skillExpertise = character.skills[skill].expertise;
-        const skillFocus = character.skills[skill].focus;
 
         const checkBox = showCheckBox
             ? <CheckBox value={skill} onChanged={val => onSelected(val) } isChecked={isSelected} />
@@ -41,15 +36,10 @@ class MajorSkill extends React.Component<IMajorSkillProperties, {}> {
 }
 
 class OtherSkill extends React.Component<IMajorSkillProperties, {}> {
-    constructor(props: IMajorSkillProperties) {
-        super(props);
-    }
-
     render() {
         const {skill, onSelected, isSelected, showCheckBox} = this.props;
 
         const skillExpertise = character.skills[skill].expertise;
-        const skillFocus = character.skills[skill].focus;
 
         const checkBox = showCheckBox
             ? <CheckBox value={skill} onChanged={val => onSelected(val) } isChecked={isSelected} />

@@ -3,7 +3,8 @@ import {Role, RolesHelper} from './roles';
 import {Era} from './eras';
 import {Source} from './sources';
 import {Track} from './tracks';
-import {character, CharacterType} from '../common/character';
+import {character } from '../common/character';
+import { CharacterType } from '../common/characterType';
 
 export enum Rank {
     // Core
@@ -164,7 +165,7 @@ class AnyOfRankPrerequisite implements IRankPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        if (this._prequisites.length == 0) {
+        if (this._prequisites.length === 0) {
             return true;
         } else {
             var result = false;
@@ -473,9 +474,9 @@ class Ranks {
         let ranks: RankViewModel[] = [];
         let n = 0;
 
-        for (var rank in this._ranks) {
-            var r = this._ranks[rank];
-            var valid = true;
+        for (let rank in this._ranks) {
+            let r = this._ranks[rank];
+            let valid = true;
 
             if (ignorePrerequisites === undefined || ignorePrerequisites === false) {
                 r.prerequisites.forEach(req => {

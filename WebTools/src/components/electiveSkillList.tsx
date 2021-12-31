@@ -2,7 +2,6 @@
 import {character} from '../common/character';
 import {Skill, SkillsHelper} from '../helpers/skills';
 import {CheckBox} from '../components/checkBox';
-import {Button} from '../components/button';
 
 interface IElectiveSkillProperties {
     skill: Skill;
@@ -12,10 +11,6 @@ interface IElectiveSkillProperties {
 }
 
 class ElectiveSkill extends React.Component<IElectiveSkillProperties, {}> {
-    constructor(props: IElectiveSkillProperties) {
-        super(props);
-    }
-
     render() {
         const {skill, onSelected, isSelected, showCheckBox} = this.props;
 

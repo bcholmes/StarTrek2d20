@@ -1,10 +1,11 @@
 ﻿import * as React from 'react';
-import {character, CharacterType} from '../common/character';
+import {character} from '../common/character';
+import { CharacterType } from '../common/characterType';
 import {Navigation} from '../common/navigator';
 import {SetHeaderText} from '../common/extensions';
-import {PageIdentity, IPageProperties} from './pageFactory';
+import {IPageProperties} from './iPageProperties';
+import {PageIdentity} from './pageIdentity';
 import {Track, TracksHelper} from '../helpers/tracks';
-import {PageHeader} from '../components/pageHeader';
 import {Button} from '../components/button';
 import {TrackSelection} from '../components/trackSelection';
 

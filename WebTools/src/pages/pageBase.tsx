@@ -1,5 +1,6 @@
 ﻿import * as React from 'react';
-import {PageFactory, PageIdentity} from  './pageFactory';
+import {PageFactory} from  './pageFactory';
+import {PageIdentity} from './pageIdentity';
 
 interface IPageBaseProperties {
     page: PageIdentity;

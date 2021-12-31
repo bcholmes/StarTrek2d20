@@ -1,6 +1,4 @@
-﻿import {character} from '../common/character';
-
-export enum Attribute {
+﻿export enum Attribute {
     Control,
     Daring,
     Fitness,

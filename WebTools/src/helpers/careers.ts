@@ -1,6 +1,7 @@
-﻿import {SkillsHelper, Skill} from './skills';
+﻿import {SkillsHelper} from './skills';
 import {TalentViewModel, TalentsHelper, ToViewModel} from './talents';
-import {character, CharacterType} from '../common/character';
+import {character } from '../common/character';
+import { CharacterType } from '../common/characterType';
 
 export enum Career {
     // Core

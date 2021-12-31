@@ -1,10 +1,8 @@
-﻿import {Character, CharacterAttribute, CharacterSkill, CharacterTalent, CharacterType, Gender} from './character';
-import {RolesHelper} from '../helpers/roles';
+﻿import {Character, CharacterAttribute, CharacterSkill, CharacterTalent} from './character';
+import { CharacterType } from '../common/characterType';
 import {SpeciesHelper, Species} from '../helpers/species';
 import {EnvironmentsHelper, Environment} from '../helpers/environments';
-import {UpbringingsHelper} from '../helpers/upbringings';
-import {SkillsHelper, Skill} from '../helpers/skills';
-import {TalentsHelper} from '../helpers/talents';
+import {Skill} from '../helpers/skills';
 
 export interface ICharacterData {
     name: string;
@@ -12,6 +10,7 @@ export interface ICharacterData {
 }
 
 export class CharacterSerializer {
+    /*
     static serialize(character: Character): ICharacterData[] {
         return [
             { name: "game", value: "STARTREK" },
@@ -32,7 +31,7 @@ export class CharacterSerializer {
             { name: "name", value: CharacterSerializer.serializeName(character) },
         ];
     }
-
+    */
     public static serializeAssignment(character: Character) {
         var result = character.role;
         if (character.secondaryRole) {
@@ -42,15 +41,15 @@ export class CharacterSerializer {
     }
 
     public static serializeName(character: Character) {
-        if (character.type == CharacterType.KlingonWarrior) {
+        if (character.type === CharacterType.KlingonWarrior) {
             var result = character.name;
             if (character.lineage) {
                 result += (", " + character.lineage);
             }
             if (character.house) {
-                if (character.house.toLowerCase().indexOf("house of ") == 0) {
+                if (character.house.toLowerCase().indexOf("house of ") === 0) {
                     result += (", of the " + character.house);
-                } else if (character.house.toLowerCase().indexOf("house ") == 0) {
+                } else if (character.house.toLowerCase().indexOf("house ") === 0) {
                     result += (", of " + character.house);
                 } else {
                     result += (", " + character.house);
@@ -71,9 +70,8 @@ export class CharacterSerializer {
     }
 
     private static serializeTalents(talents: { [name: string]: CharacterTalent }) {
-        var result = "";
-        for (var talent in talents) {
-            var t = talents[talent];
+        let result = "";
+        for (let talent in talents) {
             result += `${talent}|`;
         }
         return result;

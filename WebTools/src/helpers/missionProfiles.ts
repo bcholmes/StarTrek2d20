@@ -1,4 +1,4 @@
-﻿import { CharacterType } from '../common/character';
+﻿import { CharacterType } from '../common/characterType';
 import {TalentsHelper, TalentModel} from './talents';
 
 export enum MissionProfile {
@@ -178,7 +178,7 @@ class MissionProfiles {
 
     getMissionProfiles(type: CharacterType) {
         let profiles: MissionProfileViewModel[] = [];
-        let keys = (type == CharacterType.KlingonWarrior) 
+        let keys = (type === CharacterType.KlingonWarrior) 
         ? [ MissionProfile.CrisisAndEmergencyResponse,
             MissionProfile.MultiroleExplorer,
             MissionProfile.PathfinderAndReconaissance,
@@ -196,7 +196,7 @@ class MissionProfiles {
 
         for (let i in keys) {
             let n = keys[i];
-            let profile = (type == CharacterType.KlingonWarrior) ? this._klingonProfiles[n] : this._profiles[n];
+            let profile = (type === CharacterType.KlingonWarrior) ? this._klingonProfiles[n] : this._profiles[n];
 
             profiles.push(new MissionProfileViewModel(n, profile));
         }
@@ -205,7 +205,7 @@ class MissionProfiles {
     }
 
     getMissionProfile(profile: MissionProfile, type: CharacterType) {
-        return (type == CharacterType.KlingonWarrior) ? this._klingonProfiles[profile] : this._profiles[profile];
+        return (type === CharacterType.KlingonWarrior) ? this._klingonProfiles[profile] : this._profiles[profile];
     }
 }
 

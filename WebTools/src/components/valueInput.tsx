@@ -18,10 +18,6 @@ interface IValueInputProperties {
 export class ValueInput extends React.Component<IValueInputProperties, {}> {
     private textInput: HTMLInputElement;
 
-    constructor(props: IValueInputProperties) {
-        super(props);
-    }
-
     render() {
         const {text} = this.props;
 

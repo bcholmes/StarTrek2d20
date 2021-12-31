@@ -1,10 +1,8 @@
-﻿import { PageIdentity } from '../pages/pageFactory';
+﻿import { PageIdentity } from '../pages/pageIdentity';
 import { Events, EventIdentity } from './eventChannel';
 import { character } from './character';
 
 export class Navigator {
-    constructor() {
-    }
 
     navigateToPage(pageId: PageIdentity) {
         var page = document.getElementsByClassName('page')[0];

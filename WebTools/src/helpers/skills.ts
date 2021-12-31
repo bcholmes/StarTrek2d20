@@ -1,6 +1,4 @@
-﻿import {Attribute} from './attributes';
-
-export enum Skill {
+﻿export enum Skill {
     Command,
     Conn,
     Engineering,
@@ -9,16 +7,6 @@ export enum Skill {
     Medicine,
 
     None
-}
-
-class SkillModel {
-    name: string;
-    attribute: Attribute;
-
-    constructor(name: string, attr: Attribute) {
-        this.name = name;
-        this.attribute = attr
-    }
 }
 
 export class Skills {
@@ -50,7 +38,7 @@ export class Skills {
         return Skill.None;
     }
     findSkill(name: string) {
-        if (Number(name) != NaN && Number(name) >= 0 && Number(name) < Skill.None) {
+        if (!isNaN(Number(name)) && Number(name) >= 0 && Number(name) < Skill.None) {
             return Skill[Number(name)];
         } else {
             return this.toSkill(name);

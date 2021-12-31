@@ -10,21 +10,17 @@ interface ISkillImprovementProperties {
 }
 
 export class SkillImprovement extends React.Component<ISkillImprovementProperties, {}> {
-    constructor(props: ISkillImprovementProperties) {
-        super(props);
-    }
-
     render() {
         const {skill, showDecrease, showIncrease} = this.props;
 
         const expertise = character.skills[skill].expertise;
 
         const dec = showDecrease
-            ? (<img height="20" src="res/img/dec.png" onClick={ () => { this.onDecrease() } }/>)
+            ? (<img height="20" src="img/dec.png" onClick={ () => { this.onDecrease() } } alt="-"/>)
             : undefined;
 
         const inc = showIncrease
-            ? (<img height="20" src="res/img/inc.png" onClick={ () => { this.onIncrease() } }/>)
+            ? (<img height="20" src="img/inc.png" onClick={ () => { this.onIncrease() } } alt="+"/>)
             : undefined;
 
         return (

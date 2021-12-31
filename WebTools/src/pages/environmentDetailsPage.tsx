@@ -1,13 +1,12 @@
 ﻿import * as React from 'react';
-import {character, CharacterType} from '../common/character';
+import {character} from '../common/character';
+import {CharacterType} from '../common/characterType';
 import {Navigation} from '../common/navigator';
-import {PageIdentity, IPageProperties} from './pageFactory';
+import {IPageProperties} from './iPageProperties';
+import {PageIdentity} from './pageIdentity';
 import {Environment, EnvironmentsHelper } from '../helpers/environments';
 import {Species, SpeciesHelper } from '../helpers/species';
-import {Attribute, AttributesHelper} from '../helpers/attributes';
 import {Skill} from '../helpers/skills';
-import {PageHeader} from '../components/pageHeader';
-import {AttributeView} from '../components/attribute';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovement';
 import {ElectiveSkillList} from '../components/electiveSkillList';
 import {Button} from '../components/button';

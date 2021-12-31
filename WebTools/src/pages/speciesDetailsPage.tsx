@@ -2,12 +2,12 @@
 import { character } from '../common/character';
 import { Navigation } from '../common/navigator';
 import { SetHeaderText } from '../common/extensions';
-import { PageIdentity, IPageProperties } from './pageFactory';
+import {IPageProperties} from './iPageProperties';
+import {PageIdentity} from './pageIdentity';
 import { Species, SpeciesHelper } from '../helpers/species';
 import { AttributesHelper } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
 import { TalentsHelper, ToViewModel } from '../helpers/talents';
-import { PageHeader } from '../components/pageHeader';
 import { AttributeView } from '../components/attribute';
 import { AttributeImprovementCollection, AttributeImprovementCollectionMode } from '../components/attributeImprovement';
 import { Button } from '../components/button';

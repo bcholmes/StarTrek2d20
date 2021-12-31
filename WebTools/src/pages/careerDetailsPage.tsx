@@ -1,10 +1,10 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {PageIdentity, IPageProperties} from './pageFactory';
-import {Career, CareersHelper} from '../helpers/careers';
+import {IPageProperties} from './iPageProperties';
+import {PageIdentity} from './pageIdentity';
+import {CareersHelper} from '../helpers/careers';
 import {SkillsHelper, Skill} from '../helpers/skills';
-import {PageHeader} from '../components/pageHeader';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {TalentList} from '../components/talentList';

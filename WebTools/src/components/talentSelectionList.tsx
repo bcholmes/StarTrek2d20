@@ -1,7 +1,5 @@
 ﻿import * as React from 'react';
-import {Skill} from '../helpers/skills';
-import {TalentViewModel, TalentsHelper} from '../helpers/talents';
-import {DropDownInput} from './dropDownInput';
+import {TalentViewModel} from '../helpers/talents';
 import {CheckBox} from './checkBox';
 
 interface ITalentSelectionListProperties {

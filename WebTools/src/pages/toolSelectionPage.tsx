@@ -1,12 +1,11 @@
 ﻿import * as React from 'react';
-import {character, CharacterType} from '../common/character';
+import {character} from '../common/character';
+import { CharacterType } from '../common/characterType';
 import {Navigation} from '../common/navigator';
 import {SetHeaderText} from '../common/extensions';
-import {PageIdentity} from './pageFactory';
+import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
-import {Era} from '../helpers/eras';
 import {Source} from '../helpers/sources';
-import {Species, SpeciesHelper} from '../helpers/species';
 import {WorkflowsHelper} from '../helpers/workflows';
 
 export class ToolSelectionPage extends React.Component<{}, {}> {

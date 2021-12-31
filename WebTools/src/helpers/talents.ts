@@ -1,13 +1,11 @@
-import {character, CharacterType} from '../common/character';
+import {character } from '../common/character';
+import { CharacterType } from '../common/characterType';
 import {AliasModel} from './aliases';
 import {Attribute} from './attributes';
 import {Skill, SkillsHelper} from './skills';
-import {DiceRoller} from './diceRoller';
 import {Department} from './departments';
 import {Source} from './sources';
-import {Rank, RanksHelper} from './ranks';
 import {Era} from './eras';
-import { Species } from './species';
 
 interface ITalentPrerequisite {
     isPrerequisiteFulfilled(): boolean;

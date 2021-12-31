@@ -1,16 +1,5 @@
-﻿import {Starship, CharacterType } from './character';
-import {SpaceframeHelper} from '../helpers/spaceframes';
-import {MissionProfileHelper} from '../helpers/missionProfiles';
-import {TalentModel} from '../helpers/talents';
-import {Department} from '../helpers/departments';
-import {System} from '../helpers/systems';
-
-interface IData {
-    name: string;
-    value: string;
-}
-
-export class StarshipSerializer {
+﻿export class StarshipSerializer {
+    /*
     static serialize(starship: Starship, profileTalent: string, additionalTalents: string[], traits: string, name: string, registryNumber: string): IData[] {
         if (starship.spaceframe === undefined || starship.missionProfile === undefined) {
             return [];
@@ -53,6 +42,7 @@ export class StarshipSerializer {
             { name: "weapons", value: this.serializeWeapons(spaceframe.attacks, talents) },
         ];
     }
+    */
 
     public static calculateResistance(scale: number, talents: string[]) {
         var resistance = scale;

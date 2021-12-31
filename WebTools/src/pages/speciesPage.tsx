@@ -1,10 +1,11 @@
 ﻿import * as React from 'react';
-import {character, CharacterType} from '../common/character';
+import {character} from '../common/character';
+import {CharacterType} from '../common/characterType';
 import {Navigation} from '../common/navigator';
 import {SetHeaderText} from '../common/extensions';
-import {PageIdentity, IPageProperties} from './pageFactory';
+import {IPageProperties} from './iPageProperties';
+import {PageIdentity} from './pageIdentity';
 import {Species, SpeciesHelper} from '../helpers/species';
-import {PageHeader} from '../components/pageHeader';
 import {Button} from '../components/button';
 import {SpeciesSelection} from '../components/speciesSelection';
 import {MixedSpeciesSelection} from '../components/mixedSpeciesSelection';
@@ -28,11 +29,11 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
     }
 
     render() {
-        const rollAlpha = character.hasSource(Source.AlphaQuadrant) && character.type != CharacterType.KlingonWarrior
+        const rollAlpha = character.hasSource(Source.AlphaQuadrant) && character.type !== CharacterType.KlingonWarrior
             ? <Button className="button" text="Roll Alpha Species" onClick={() => this.rollAlphaSpecies()} />
             : undefined;
 
-        const rollBeta = character.hasSource(Source.BetaQuadrant) && character.type != CharacterType.KlingonWarrior
+        const rollBeta = character.hasSource(Source.BetaQuadrant) && character.type !== CharacterType.KlingonWarrior
             ? <Button className="button" text="Roll Beta Species" onClick={() => this.rollBetaSpecies()} />
             : undefined;
 

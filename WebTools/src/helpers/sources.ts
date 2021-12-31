@@ -56,7 +56,7 @@ class Sources {
 
     getSourceName(sources: Source[]) {
         var result = "";
-        sources.forEach((s) => { result = (result == "") ? this._sources[s] : (result + ", " + this._sources[s]) })
+        sources.forEach((s) => { result = (result === "") ? this._sources[s] : (result + ", " + this._sources[s]) })
         return result;
     }
 }

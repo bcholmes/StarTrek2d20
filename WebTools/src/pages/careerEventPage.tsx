@@ -2,9 +2,9 @@
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {SetHeaderText} from '../common/extensions';
-import {PageIdentity, IPageProperties} from './pageFactory';
+import {IPageProperties} from './iPageProperties';
+import {PageIdentity} from './pageIdentity';
 import {CareerEventsHelper} from '../helpers/careerEvents';
-import {PageHeader} from '../components/pageHeader';
 import {Button} from '../components/button';
 import {CareerEventSelection} from '../components/careerEventSelection';
 

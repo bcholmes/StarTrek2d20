@@ -1,0 +1,27 @@
+
+export enum PageIdentity {
+    Selection,
+    Era,
+    ToolSelecton,
+    Species,
+    SpeciesDetails,
+    Environment,
+    EnvironmentDetails,
+    Upbringing,
+    UpbringingDetails,
+    StarfleetAcademy,
+    StarfleetAcademyDetails,
+    Career,
+    CareerDetails,
+    CareerEvent1,
+    CareerEvent1Details,
+    CareerEvent2,
+    CareerEvent2Details,
+    AttributesAndDisciplines,
+    BorgImplants,
+    Finish,
+
+    Starship,
+    SupportingCharacter,
+    TalentsOverview,
+}

@@ -6,10 +6,6 @@ interface ITalentDescriptionProperties {
 }
 
 export class TalentDescription extends React.Component<ITalentDescriptionProperties, {}> {
-    constructor(props: ITalentDescriptionProperties) {
-        super(props);
-    }
-
     render() {
         const desc = this.props.description
             ? <div className="talent-desc">{this.props.description}</div>

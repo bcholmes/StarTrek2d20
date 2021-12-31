@@ -1,10 +1,10 @@
 ﻿import * as React from 'react';
-import {character, CharacterType} from '../common/character';
+import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {SetHeaderText} from '../common/extensions';
-import {PageIdentity, IPageProperties} from './pageFactory';
+import {IPageProperties} from './iPageProperties';
+import {PageIdentity} from './pageIdentity';
 import {Upbringing, UpbringingsHelper} from '../helpers/upbringings';
-import {PageHeader} from '../components/pageHeader';
 import {Button} from '../components/button';
 import {UpbringingSelection} from '../components/upbringingSelection';
 

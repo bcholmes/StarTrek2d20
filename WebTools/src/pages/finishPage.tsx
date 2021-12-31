@@ -1,12 +1,11 @@
 ﻿import * as React from 'react';
-import {character, CharacterType, Gender} from '../common/character';
+import {character} from '../common/character';
+import {CharacterType} from '../common/characterType';
 import {SetHeaderText} from '../common/extensions';
-import {IPageProperties} from './pageFactory';
+import {IPageProperties} from './iPageProperties';
 import {Button} from '../components/button';
 import {CheckBox} from '../components/checkBox';
 import {ValueInput, Value} from '../components/valueInput';
-import {_CharacterSheet} from '../components/characterSheet';
-import {CharacterSerializer} from '../common/characterSerializer';
 import {SpeciesHelper} from '../helpers/species';
 import {RanksHelper} from '../helpers/ranks';
 import {RolesHelper, RoleViewModel} from '../helpers/roles';
@@ -48,12 +47,6 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
     }
 
     render() {
-        const characterData = CharacterSerializer.serialize(character);
-
-        const data = characterData.map((d, i) => {
-            return (<input type="hidden" name={d.name} value={d.value}/>)
-        });
-
         const species = SpeciesHelper.getSpeciesByType(character.species);
 
         const nameDescription = species.nameDescription;
@@ -95,7 +88,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                         <CheckBox
                             text=""
                             value={r.name}
-                            isChecked={this.role === r.name || this.secondaryRole == r.name}
+                            isChecked={this.role === r.name || this.secondaryRole === r.name}
                             onChanged={(val) => {
                                 this.onSelectRole(val);
                             } }/>
@@ -121,7 +114,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
             )
         });
         let extra = (<div></div>);
-        if (character.type == CharacterType.KlingonWarrior) {
+        if (character.type === CharacterType.KlingonWarrior) {
             extra = (<div><div className="panel">
                 <div className="header-small">LINEAGE</div>
                 <div>{nameDescription}</div>

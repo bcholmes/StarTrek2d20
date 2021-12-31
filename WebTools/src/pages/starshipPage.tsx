@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 import {SetHeaderText} from '../common/extensions';
-import {character, CharacterType, CharacterTypeModel, Starship} from '../common/character';
+import {character, CharacterTypeModel, Starship} from '../common/character';
+import { CharacterType } from '../common/characterType';
 import {DropDownInput} from '../components/dropDownInput';
 import {Era} from '../helpers/eras';
 import {SpaceframeHelper, Spaceframe, MissionPod} from '../helpers/spaceframes';
@@ -295,7 +296,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         });
     
 
-        let nameSection = character.type == CharacterType.KlingonWarrior 
+        let nameSection = character.type === CharacterType.KlingonWarrior 
             ?   (<div className="panel">
                     <div className="page-text-aligned">
                     <div className="header-small">Name</div>

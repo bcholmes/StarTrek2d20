@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { CheckBox } from '../components/checkBox';
 import { Button } from '../components/button';
-import { PageIdentity } from './pageFactory';
+import { PageIdentity } from './pageIdentity';
 import { Navigation } from '../common/navigator';
 import { character } from '../common/character';
 

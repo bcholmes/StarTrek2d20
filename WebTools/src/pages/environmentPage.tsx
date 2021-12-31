@@ -2,9 +2,9 @@
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {SetHeaderText} from '../common/extensions';
-import {PageIdentity, IPageProperties} from './pageFactory';
+import {IPageProperties} from './iPageProperties';
+import {PageIdentity} from './pageIdentity';
 import {Environment, EnvironmentsHelper} from '../helpers/environments';
-import {PageHeader} from '../components/pageHeader';
 import {Button} from '../components/button';
 import {EnvironmentSelection} from '../components/environmentSelection';
 

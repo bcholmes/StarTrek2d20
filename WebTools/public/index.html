@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>STAR TREK Adventures</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script src="./js/download.min.js"></script>
+
+    <script>
+        function setupGuard() {
+            if (window.history && history.pushState) {
+                history.pushState(null, null, null);
+                addEventListener('popstate', function () {
+                    var leave = confirm("Do you want to leave this page? This will cause your character to become lost in the Delta Quadrant.");
+                    if (leave) {
+                        history.back();
+                    }
+                    else {
+                        history.pushState(null, null, null);
+                    }
+                });
+            }
+        }
+
+        // Action functions.
+        var sheetIsVisible = false;
+        var historyIsVisible = false;
+
+        function showCharacter() {
+            var sheetBg = document.getElementById("sheet-bg");
+            var sheet = document.getElementsByClassName("sheet-container")[0];
+
+            sheetIsVisible = !sheetIsVisible;
+
+            if (sheetIsVisible) {
+                sheetBg.style.display = "";
+                sheet.classList.add("sheet-container-visible");
+                sheet.classList.remove("sheet-container-hidden");
+            }
+            else {
+                sheetBg.style.display = "none";
+                sheet.classList.remove("sheet-container-visible");
+                sheet.classList.add("sheet-container-hidden");
+            }
+        }
+
+        function showHistory() {
+            var history = document.getElementsByClassName("history")[0];
+
+            historyIsVisible = !historyIsVisible;
+
+            if (historyIsVisible) {
+                history.classList.add("history-visible");
+                history.classList.remove("history-hidden");
+            }
+            else {
+                history.classList.add("history-hidden");
+                history.classList.remove("history-visible");
+            }
+        }
+
+        function feedback() {
+            const url = "https://github.com/bcholmes/StarTrek2d20/discussions";
+            const win = window.open(url, "_blank");
+            if (win) {
+                win.focus();
+            }
+            else {
+                alert("Please allow popup windows for this site.");
+            }
+        }
+
+        function showNews() {
+            const dialog = document.getElementById("news");
+
+            if (dialog) {
+                if (dialog.classList.contains("dialog-visible")) {
+                    dialog.classList.remove("dialog-visible");
+                    dialog.classList.add("dialog-hidden");
+                }
+                else {
+                    dialog.classList.add("dialog-visible");
+                    dialog.classList.remove("dialog-hidden");
+                }
+            }
+            else {
+                console.error("Could not find news.");
+            }
+        }
+
+        const historyButton = document.getElementById("history-button");
+        const profileButton = document.getElementById("profile-button");
+
+        document.onclick = function (e) {
+            const target = (e && e.target) || (event && event.srcElement);
+
+            if (sheetIsVisible && target !== profileButton) {
+                showCharacter();
+            }
+
+            if (historyIsVisible && target !== historyButton) {
+                showHistory();
+            }
+        };
+    </script>
+</head>
+<body onload="setupGuard();">
+    <div id="mainBody"></div>
+
+</body>
+</html>

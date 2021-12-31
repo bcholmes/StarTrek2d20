@@ -8,10 +8,6 @@ interface ISkillProperties {
 }
 
 export class SkillView extends React.Component<ISkillProperties, {}> {
-    constructor(props: ISkillProperties) {
-        super(props);
-    }
-
     render() {
         const {skill, points} = this.props;
 

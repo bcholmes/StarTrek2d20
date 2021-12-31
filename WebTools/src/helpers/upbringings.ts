@@ -1,7 +1,7 @@
-﻿import {character, CharacterType} from '../common/character';
-import {Attribute, AttributesHelper} from './attributes';
-import {SkillsHelper, Skill} from './skills';
-import {SpeciesHelper} from './species';
+﻿import {character} from '../common/character';
+import { CharacterType } from '../common/characterType';
+import {Attribute} from './attributes';
+import {Skill} from './skills';
 
 export enum Upbringing {
     // Core

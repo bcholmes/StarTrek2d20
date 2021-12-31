@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { Navigation } from '../common/navigator';
-import { SetHeaderText } from '../common/extensions';
-import { PageIdentity, IPageProperties } from './pageFactory';
+import {IPageProperties} from './iPageProperties';
+import {PageIdentity} from './pageIdentity';
 import { Button } from '../components/button';
 
 enum Tool {
@@ -10,11 +10,6 @@ enum Tool {
 }
 
 export class SelectionPage extends React.Component<IPageProperties, {}> {
-    constructor(props: IPageProperties) {
-        super(props);
-
-        SetHeaderText("TOOLS");
-    }
 
     render() {
         return (
@@ -23,7 +18,7 @@ export class SelectionPage extends React.Component<IPageProperties, {}> {
                     Select tool.
                 </div>
                 <div className="button-container">
-                    <Button text="Characters & Starships" className="button" onClick={() => { this.selectTool(Tool.CharacterGenerator); }} />
+                    <Button text="Characters &amp; Starships" className="button" onClick={() => { this.selectTool(Tool.CharacterGenerator); }} />
                     <Button text="Talents Overview" className="button" onClick={() => { this.selectTool(Tool.TalentsOverview); }} />
                 </div>
             </div>

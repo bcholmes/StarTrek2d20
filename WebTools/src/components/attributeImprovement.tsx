@@ -11,19 +11,16 @@ interface IAttributeImprovementProperties {
 }
 
 export class AttributeImprovement extends React.Component<IAttributeImprovementProperties, {}> {
-    constructor(props: IAttributeImprovementProperties) {
-        super(props);
-    }
 
     render() {
         const {attribute, value, showDecrease, showIncrease} = this.props;
 
         const dec = showDecrease
-            ? (<img style={{ float: "left" }} height="20" src="res/img/dec.png" onClick={ () => { this.onDecrease() } }/>)
+            ? (<img style={{ float: "left" }} height="20" src="img/dec.png" onClick={ () => { this.onDecrease() } } alt="+"/>)
             : undefined;
 
         const inc = showIncrease
-            ? (<img style={{ float: "right" }} height="20" src="res/img/inc.png" onClick={ () => { this.onIncrease() } }/>)
+            ? (<img style={{ float: "right" }} height="20" src="img/inc.png" onClick={ () => { this.onIncrease() } }alt="-"/>)
             : undefined;
 
         return (
@@ -86,8 +83,8 @@ class AttributeContainer {
 export class AttributeImprovementCollection extends React.Component<AttributeImprovementCollectionProperties, {}> {
     private _absoluteMax: number = 12;
 
-    private _points: number;
-    private _attributes: AttributeContainer[];
+    private _points: number = 0;
+    private _attributes: AttributeContainer[] = [];
     private _ktarianAttributes: Attribute[] = [Attribute.Fitness, Attribute.Presence];
 
     constructor(props: AttributeImprovementCollectionProperties) {
@@ -121,31 +118,31 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
         this._attributes = [];
         switch (this.props.mode) {
             case AttributeImprovementCollectionMode.ReadOnly:
-                for (var i = 0; i < character.attributes.length; i++) {
+                for (let i = 0; i < character.attributes.length; i++) {
                     if (!this.props.filter || this.props.filter.indexOf(i) > -1) {
                         this._attributes.push(new AttributeContainer(character.attributes[i].attribute, character.attributes[i].value, character.attributes[i].value, this._absoluteMax, false, false));
                     }
                 }
                 break;
             case AttributeImprovementCollectionMode.Increase:
-                for (var i = 0; i < character.attributes.length; i++) {
+                for (let i = 0; i < character.attributes.length; i++) {
                     if (!this.props.filter || this.props.filter.indexOf(i) > -1) {
                         this._attributes.push(new AttributeContainer(character.attributes[i].attribute, character.attributes[i].value, character.attributes[i].value, this._absoluteMax, false, character.attributes[i].value < this._absoluteMax));
                     }
                 }
                 break;
             case AttributeImprovementCollectionMode.StarTrek:
-                for (var i = 0; i < character.attributes.length; i++) {
+                for (let i = 0; i < character.attributes.length; i++) {
                     this._attributes.push(new AttributeContainer(character.attributes[i].attribute, character.attributes[i].value, character.attributes[i].value, 8, false, true));
                 }
                 break;
             case AttributeImprovementCollectionMode.Customization:
-                for (var i = 0; i < character.attributes.length; i++) {
+                for (let i = 0; i < character.attributes.length; i++) {
                     this._attributes.push(new AttributeContainer(character.attributes[i].attribute, character.attributes[i].value, character.attributes[i].value, Math.min(this._absoluteMax, character.attributes[i].value + 1), false, character.attributes[i].value < this._absoluteMax));
                 }
                 break;
             case AttributeImprovementCollectionMode.Academy:
-                for (var i = 0; i < character.attributes.length; i++) {
+                for (let i = 0; i < character.attributes.length; i++) {
                     if (!this.props.filter || this.props.filter.indexOf(i) > -1) {
                         const upperLimit = Math.min(character.attributes[i].value + 2, this._absoluteMax);
                         this._attributes.push(new AttributeContainer(character.attributes[i].attribute, character.attributes[i].value, character.attributes[i].value, upperLimit, false, character.attributes[i].value < upperLimit));
@@ -178,8 +175,8 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
     }
 
     onDecrease(attr: Attribute) {
-        for (var i = 0; i < this._attributes.length; i++) {
-            var a = this._attributes[i];
+        for (let i = 0; i < this._attributes.length; i++) {
+            let a = this._attributes[i];
             if (a.attribute === attr) {
                 a.value--;
                 character.attributes[a.attribute].value = a.value;
@@ -192,8 +189,8 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
             case AttributeImprovementCollectionMode.Academy:
                 this._points++;
 
-                for (var i = 0; i < this._attributes.length; i++) {
-                    var a = this._attributes[i];
+                for (let i = 0; i < this._attributes.length; i++) {
+                    let a = this._attributes[i];
                     a.showDecrease = a.value > a.minValue;
                     a.showIncrease = a.value < a.maxValue;
                 }
@@ -203,8 +200,8 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
             case AttributeImprovementCollectionMode.Ktarian:
                 this._points++;
 
-                for (var i = 0; i < this._attributes.length; i++) {
-                    var a = this._attributes[i];
+                for (let i = 0; i < this._attributes.length; i++) {
+                    let a = this._attributes[i];
                     a.showDecrease = a.value > a.minValue;
                     a.showIncrease = a.value < a.maxValue;
                 }
@@ -219,8 +216,8 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
     }
 
     onIncrease(attr: Attribute) {
-        for (var i = 0; i < this._attributes.length; i++) {
-            var a = this._attributes[i];
+        for (let i = 0; i < this._attributes.length; i++) {
+            let a = this._attributes[i];
             if (a.attribute === attr) {
                 a.value++;
                 character.attributes[a.attribute].value = a.value;
@@ -233,8 +230,8 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
             case AttributeImprovementCollectionMode.Academy:
                 this._points--;
 
-                for (var i = 0; i < this._attributes.length; i++) {
-                    var a = this._attributes[i];
+                for (let i = 0; i < this._attributes.length; i++) {
+                    let a = this._attributes[i];
                     a.showDecrease = a.value > a.minValue;
                     a.showIncrease = a.value < a.maxValue && this._points > 0;
                 }
@@ -244,8 +241,8 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
             case AttributeImprovementCollectionMode.Ktarian:
                 this._points--;
 
-                for (var i = 0; i < this._attributes.length; i++) {
-                    var a = this._attributes[i];
+                for (let i = 0; i < this._attributes.length; i++) {
+                    let a = this._attributes[i];
                     a.showDecrease = a.value > a.minValue;
 
                     const absoluteMax = character.isYoung() ? 11 : 12;

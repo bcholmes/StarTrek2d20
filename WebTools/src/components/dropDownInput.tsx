@@ -7,10 +7,6 @@ interface IDropDownInputProperties {
 }
 
 export class DropDownInput extends React.Component<IDropDownInputProperties, {}> {
-    constructor(props: IDropDownInputProperties) {
-        super(props);
-    }
-
     render() {
         const {items, defaultValue, onChange} = this.props;
 

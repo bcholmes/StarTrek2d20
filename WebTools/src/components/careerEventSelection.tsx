@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
 import {Window} from '../common/window';
 import {CareerEventsHelper} from '../helpers/careerEvents';
 import {AttributesHelper} from '../helpers/attributes';
@@ -12,10 +11,6 @@ interface ICareerEventSelectionProperties {
 }
 
 export class CareerEventSelection extends React.Component<ICareerEventSelectionProperties, {}> {
-    constructor(props: ICareerEventSelectionProperties) {
-        super(props);
-    }
-
     render() {
         var events = CareerEventsHelper.getCareerEvents().map((e, i) => {
             const attributes = e.attributes.map((a, i) => {

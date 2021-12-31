@@ -1,8 +1,7 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {Events, EventIdentity} from '../common/eventChannel';
-import {PageIdentity} from '../pages/pageFactory';
+import {PageIdentity} from '../pages/pageIdentity';
 
 interface IHistoryState {
     showHistory: boolean;

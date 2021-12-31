@@ -1,7 +1,8 @@
-﻿import {Attribute, AttributesHelper} from './attributes';
-import {SkillsHelper, Skill} from './skills';
+﻿import {Attribute} from './attributes';
+import {Skill} from './skills';
 import {SpeciesHelper} from './species';
-import {character, CharacterType} from '../common/character';
+import {character } from '../common/character';
+import { CharacterType } from '../common/characterType';
 
 export enum Environment {
     // Core
@@ -123,7 +124,7 @@ class Environments {
     getEnvironments() {
         var environments: EnvironmentViewModel[] = [];
         var n = 0;
-        var environmentList = character.type == CharacterType.KlingonWarrior ? this._klingonEnvironments : this._environments;
+        var environmentList = character.type === CharacterType.KlingonWarrior ? this._klingonEnvironments : this._environments;
         for (var environment in environmentList) {
             var env = environmentList[environment];
             if (n !== Environment.AnotherSpeciesWorld) {
@@ -150,7 +151,7 @@ class Environments {
     }
 
     getEnvironment(env: Environment) {
-        var environmentList = character.type == CharacterType.KlingonWarrior ? this._klingonEnvironments : this._environments;
+        var environmentList = character.type === CharacterType.KlingonWarrior ? this._klingonEnvironments : this._environments;
         return environmentList[env];
     }
 

@@ -1,6 +1,7 @@
 ﻿import {Skill} from './skills';
 import {Source} from './sources';
-import {character, CharacterType} from '../common/character';
+import {character} from '../common/character';
+import { CharacterType } from '../common/characterType';
 
 export enum Role {
     // Core

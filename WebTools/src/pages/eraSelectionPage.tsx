@@ -3,17 +3,14 @@ import {Era, ErasHelper} from '../helpers/eras';
 import {Source, SourcesHelper} from '../helpers/sources';
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {SetHeaderText} from '../common/extensions';
 import {Window} from '../common/window';
-import {PageIdentity, IPageProperties} from './pageFactory';
+import {IPageProperties} from './iPageProperties';
+import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
-import {CheckBox} from '../components/checkBox';
 
 export class EraSelectionPage extends React.Component<IPageProperties, {}> {
     constructor(props: IPageProperties) {
         super(props);
-
-        SetHeaderText("ERA");
 
         const profileButton = document.getElementById("profile-button");
         if (profileButton !== undefined) {

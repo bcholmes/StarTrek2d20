@@ -1,5 +1,4 @@
-﻿import React = require("react");
-import { SetHeaderText } from "../common/extensions";
+﻿import * as React from 'react';
 import { DropDownInput } from "../components/dropDownInput";
 import { AliasModel } from "../helpers/aliases";
 import { Skill, SkillsHelper } from "../helpers/skills";
@@ -56,7 +55,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
     constructor(props: {}) {
         super(props);
 
-        SetHeaderText("Talents");
+        //SetHeaderText("Talents");
 
         this.setupSources();
         this.setupCategories();
@@ -64,11 +63,11 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
     }
 
     selectTalents() {
-        if (this._search.length == 0) {
-            return this._category == TalentsOverviewPage.ALL ? this._allTalents : this._talents[this._category];
+        if (this._search.length === 0) {
+            return this._category === TalentsOverviewPage.ALL ? this._allTalents : this._talents[this._category];
         } else {
-            var talents = [];
-            for (var i = 0; i < this._allTalents.length; i++) {
+            let talents = [];
+            for (let i = 0; i < this._allTalents.length; i++) {
                 const talent = this._allTalents[i];
                 if (talent.matches(this._search)) {
                     talents.push(talent);
@@ -82,7 +81,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
     render() {
         const talentList = this.selectTalents();
         const talents = talentList.map((t, i) => {
-            const info = t.aliases.map((a, i) => {
+            const info = t.aliases.map((a) => {
                 return (
                     <p><i>The talent is known as </i><b>{a.name}</b><i> in the
                     </i> {SourcesHelper.getSourceName([a.source])} <i>book.</i></p>
@@ -164,9 +163,9 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
         }
 
         this._categories = this._categories.sort((a, b) => {
-            if (a == 'All') {
+            if (a === 'All') {
                 return -1;
-            } else if (b == 'All') {
+            } else if (b === 'All') {
                 return 1;
             } else {
                 return a.localeCompare(b);
@@ -200,19 +199,19 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
             if (left.name > right.name) return 1;
             return 0;
         });
-        for (var c = 0; c < this._categories.length; c++) {
+        for (let c = 0; c < this._categories.length; c++) {
             const category = this._categories[c];
             const skill = SkillsHelper.toSkill(category);
             if (skill !== Skill.None) {
                 const talents = TalentsHelper.getTalents()[skill];
-                for (var i = 0; i < talents.length; i++) {
+                for (let i = 0; i < talents.length; i++) {
                     const talent = talents[i];
                     this._talents[category].push(TalentViewModel.from(talent, category));
                 }
             }
-            else if (category != TalentsOverviewPage.ALL) {
+            else if (category !== TalentsOverviewPage.ALL) {
                 const talents = TalentsHelper.getTalents()[Skill.None];
-                for (var i = 0; i < talents.length; i++) {
+                for (let i = 0; i < talents.length; i++) {
                     const talent = talents[i];
                     if (talent.category === category) {
                         this._talents[category].push(TalentViewModel.from(talent, category));

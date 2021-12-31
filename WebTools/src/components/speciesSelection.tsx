@@ -1,5 +1,6 @@
 ﻿import * as React from 'react';
-import { character, CharacterType } from '../common/character';
+import { character } from '../common/character';
+import { CharacterType } from '../common/characterType';
 import { Window } from '../common/window';
 import { Species, SpeciesHelper } from '../helpers/species';
 import { AttributesHelper } from '../helpers/attributes';
@@ -24,7 +25,7 @@ export class SpeciesSelection extends React.Component<ISpeciesSelectionPropertie
     }
 
     render() {
-        let overrideCheckbox = (character.type == CharacterType.KlingonWarrior ) ? (<CheckBox
+        let overrideCheckbox = (character.type === CharacterType.KlingonWarrior ) ? (<CheckBox
             isChecked={this.state.allowAllSpecies}
             text="Allow non-Klingon species (GM's decision)"
             value={!this.state.allowAllSpecies}

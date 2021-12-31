@@ -1,8 +1,8 @@
 ﻿import * as React from 'react';
 import {SetHeaderText} from '../common/extensions';
-import {character, CharacterType, CharacterTypeModel } from '../common/character';
+import {character, CharacterTypeModel } from '../common/character';
 import {CharacterSerializer} from '../common/characterSerializer';
-import {Species, SpeciesHelper, SpeciesViewModel} from '../helpers/species';
+import {Species, SpeciesHelper} from '../helpers/species';
 import {DropDownInput} from '../components/dropDownInput';
 import {SupportingCharacterAttributes} from '../components/supportingCharacterAttributes';
 import {SupportingCharacterDisciplines} from '../components/supportingCharacterDisciplines';
@@ -10,7 +10,6 @@ import {Rank, RanksHelper} from '../helpers/ranks';
 import {Button} from '../components/button';
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
-import { numberToString } from 'pdf-lib';
 
 export class SupportingCharacterPage extends React.Component<{}, {}> {
     private _nameElement: HTMLInputElement;
@@ -57,12 +56,6 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
     }
 
     render() {
-        const characterData = CharacterSerializer.serialize(character);
-
-        const data = characterData.map((d, i) => {
-            return (<input key={i} type="hidden" name={d.name} value={d.value}/>)
-        });
-
         return (
             <div className="page">
                 <div className="starship-container">

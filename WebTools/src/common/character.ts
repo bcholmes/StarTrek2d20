@@ -1,24 +1,17 @@
-﻿import {Attribute, AttributesHelper} from '../helpers/attributes';
+﻿import {Attribute} from '../helpers/attributes';
 import {Skill} from '../helpers/skills';
 import {Source} from '../helpers/sources';
 import {Era} from '../helpers/eras';
-import {Career, CareersHelper} from '../helpers/careers';
-import {CareerEventsHelper} from '../helpers/careerEvents';
-import {Environment, EnvironmentsHelper} from '../helpers/environments';
-import {Rank, RanksHelper} from '../helpers/ranks';
-import {Role, RolesHelper} from '../helpers/roles';
-import {Species, SpeciesHelper} from '../helpers/species';
-import {Track, TracksHelper} from '../helpers/tracks';
-import {Upbringing, UpbringingsHelper} from '../helpers/upbringings';
-import {WorkflowsHelper, Workflow} from '../helpers/workflows';
+import {Career} from '../helpers/careers';
+import {Environment} from '../helpers/environments';
+import {Species} from '../helpers/species';
+import {Track} from '../helpers/tracks';
+import {Upbringing} from '../helpers/upbringings';
+import {Workflow} from '../helpers/workflows';
 import {TalentsHelper} from '../helpers/talents';
 import {Spaceframe, MissionPod} from '../helpers/spaceframes';
 import {MissionProfile} from "../helpers/missionProfiles";
-
-export enum Gender {
-    Male,
-    Female
-}
+import {CharacterType} from './characterType';
 
 export class CharacterAttribute {
     attribute: Attribute;
@@ -34,7 +27,6 @@ export class CharacterSkill {
     skill: Skill;
     expertise: number;
     focus: number;
-    isLegendary: boolean;
 
     constructor(skill: Skill, expertise: number, focus: number) {
         this.skill = skill;
@@ -52,17 +44,17 @@ export class CharacterTalent {
 }
 
 export class Starship {
-    name: string;
-    registry: string;
-    traits: string;
-    serviceYear: number;
-    spaceframe: Spaceframe;
-    missionPod: MissionPod;
-    missionProfile: MissionProfile;
+    name: string = "";
+    registry: string = "";
+    traits: string = "";
+    serviceYear?: number;
+    spaceframe?: Spaceframe = undefined;
+    missionPod?: MissionPod;
+    missionProfile?: MissionProfile;
     systems: number[];
     departments: number[];
     scale: number;
-    profileTalent: string;
+    profileTalent?: string;
     additionalTalents: string[] = [];
 
     constructor() {
@@ -70,12 +62,6 @@ export class Starship {
         this.departments = [];
         this.scale = 0;
     }
-}
-
-export const enum CharacterType {
-    Starfleet = 0,
-    KlingonWarrior,
-    Other
 }
 
 export class CharacterTypeModel {
@@ -123,39 +109,38 @@ export class Character {
     public skills: CharacterSkill[] = [];
     public traits: string[];
     public talents: { [name: string]: CharacterTalent };
-    public age: number;
-    public name: string;
-    public lineage: string;
-    public house: string;
-    public appearance: string;
-    public personality: string;
-    public gender: Gender = Gender.Male;
+    public age?: number;
+    public name?: string;
+    public lineage?: string;
+    public house?: string;
+    public appearance?: string;
+    public personality?: string;
     public equipment: string[];
-    public career: Career;
+    public career?: Career;
     public careerEvents: number[];
-    public environment: Environment;
-    public otherSpeciesWorld: string;
-    public rank: string;
-    public role: string;
-    public secondaryRole: string;
-    public roleAbility: string;
-    public species: Species;
-    public mixedSpecies: Species;
-    public track: Track;
-    public upbringing: Upbringing;
-    public acceptedUpbringing: boolean;
-    public enlisted: boolean;
-    public environmentValue: string;
-    public trackValue: string;
-    public careerValue: string;
-    public finishValue: string;
+    public environment?: Environment;
+    public otherSpeciesWorld?: string;
+    public rank?: string;
+    public role?: string;
+    public secondaryRole?: string;
+    public roleAbility?: string;
+    public species?: Species;
+    public mixedSpecies?: Species;
+    public track?: Track;
+    public upbringing?: Upbringing;
+    public acceptedUpbringing?: boolean;
+    public enlisted?: boolean;
+    public environmentValue?: string;
+    public trackValue?: string;
+    public careerValue?: string;
+    public finishValue?: string;
     public focuses: string[];
-    public stress: number;
-    public allowCrossSpeciesTalents: boolean;
+    public stress?: number;
+    public allowCrossSpeciesTalents: boolean = false;
     public type: CharacterType = CharacterType.Starfleet;
-    public workflow: Workflow;
+    public workflow?: Workflow;
 
-    public starship: Starship;
+    public starship?: Starship;
 
     constructor() {
         this.attributes.push(new CharacterAttribute(Attribute.Control, this._attributeInitialValue));
@@ -180,7 +165,7 @@ export class Character {
 
         this.allowCrossSpeciesTalents = false;
 
-        this.starship = null;
+        this.starship = undefined;
     }
 
     get steps() {
@@ -219,8 +204,8 @@ export class Character {
             name = name.substr(0, name.indexOf('(') - 1);
         }
 
-        for (var talent in this.talents) {
-            var t = this.talents[talent];
+        for (let talent in this.talents) {
+            let t = this.talents[talent];
             if (talent === name) {
                 t.rank++;
                 found = true;
@@ -236,10 +221,9 @@ export class Character {
     }
 
     hasTalent(name: string) {
-        var found = false;
+        let found = false;
 
-        for (var talent in this.talents) {
-            var t = this.talents[talent];
+        for (let talent in this.talents) {
             if (talent === name) {
                 found = true;
                 break;
@@ -262,7 +246,7 @@ export class Character {
                 (this.rank.toLowerCase() === "captain" ||
                  this.rank.toLowerCase() === "commander" ||
                  this.rank.toLowerCase() === "lieutenant commander" ||
-                 this.role.toLowerCase() === "chief of security"));
+                 (this.role !== undefined && this.role!.toLowerCase() === "chief of security")));
     }
 
     isYoung() {

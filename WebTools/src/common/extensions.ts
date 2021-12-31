@@ -1,5 +1,4 @@
 ﻿export function SetHeaderText(text: string) {
-    document.getElementById("header").innerText = text.toUpperCase();
 }
 
 export function CopyObject(target: {}, ...sources: Array<{}>) {
