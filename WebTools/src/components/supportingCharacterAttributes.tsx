@@ -20,8 +20,8 @@ class Value extends React.Component<IValueProperties, {}> {
         this._isSelected = props.isSelected;
     }
 
-    componentWillReceiveProps(props: IValueProperties) {
-        this._isSelected = props.isSelected;
+    componentDidUpdate(prevProps: IValueProperties) {
+        this._isSelected = this.props.isSelected;
     }
 
     render() {

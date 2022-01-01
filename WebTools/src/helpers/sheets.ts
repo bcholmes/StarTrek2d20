@@ -65,7 +65,7 @@ abstract class BasicSheet implements ICharacterSheet {
         }
     }
     createFileName(suffix: string): string {
-        if (character.name == null || character.name.length == 0) {
+        if (character.name == null || character.name.length === 0) {
             return suffix + ".pdf";
         } else {
             var escaped = character.name.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_');
@@ -117,7 +117,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
         } else {
             this.fillField(form, 'Designation', character.starship.registry);
         }
-        let trait = character.type == CharacterType.KlingonWarrior ? "Klingon Starship" : "Federation Starship";
+        let trait = character.type === CharacterType.KlingonWarrior ? "Klingon Starship" : "Federation Starship";
 
         const talents = this.calculateTalentList();
 
@@ -386,7 +386,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
 
     fillStress(form: PDFForm) {
         var stress = character.stress || 0; 
-        if (stress == 0) {
+        if (stress === 0) {
             character.attributes.forEach( (a, i) => {
                 switch(a.attribute) {
                 case Attribute.Fitness:
@@ -514,7 +514,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
     findSecurityValue() {
         var result = undefined;
         character.skills.forEach( (s, i) => {
-            if (s.skill == Skill.Security) {
+            if (s.skill === Skill.Security) {
                 result = s.expertise;
             }
         });
@@ -655,7 +655,7 @@ class KlingonCharacterSheet extends BasicFullCharacterSheet {
 
 class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
     getName(): string {
-        return 'Standard TNG Character Sheet'
+        return '2-Page TNG Character Sheet'
     }
     getThumbnailUrl(): string {
         return 'https://sta.bcholmes.org/res/img/sheets/TNG_2_Page_Character_Sheet.png'
@@ -667,9 +667,9 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
 
 class CharacterSheets {
     public getSupportingCharacterSheet(): ICharacterSheet[] {
-        if (character.type == CharacterType.KlingonWarrior) {
+        if (character.type === CharacterType.KlingonWarrior) {
             return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
-        } else if (character.era == Era.NextGeneration) {
+        } else if (character.era === Era.NextGeneration) {
             return [ new StandardTngCharacterSheet(), new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet(), new KlingonCharacterSheet()  ];
         } else {
             return [ new StandardTosCharacterSheet(), new StandardTngCharacterSheet(), new HalfPageSupportingCharacterSheet(), new KlingonCharacterSheet() ];
@@ -677,9 +677,9 @@ class CharacterSheets {
     }
 
     public getCharacterSheets(): ICharacterSheet[] {
-        if (character.type == CharacterType.KlingonWarrior) {
+        if (character.type === CharacterType.KlingonWarrior) {
             return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet() ];
-        } else if (character.era == Era.NextGeneration) {
+        } else if (character.era === Era.NextGeneration) {
             return [ new StandardTngCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet() ];
         } else {
             return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet() ];
@@ -687,7 +687,7 @@ class CharacterSheets {
     }
 
     public getStarshipSheets(): ICharacterSheet[] {
-        if (character.era == Era.NextGeneration) {
+        if (character.era === Era.NextGeneration) {
             return [ new StandardTngStarshipSheet(), new StandardTosStarshipSheet() ];
         } else {
             return [ new StandardTosStarshipSheet(), new StandardTngStarshipSheet() ];

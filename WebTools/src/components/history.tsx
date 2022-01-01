@@ -3,18 +3,12 @@ import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from '../pages/pageIdentity';
 
-interface IHistoryState {
+interface IHistoryProperties {
     showHistory: boolean;
 }
 
-export class History extends React.Component<{}, IHistoryState> {
-    constructor(props: {}) {
-        super(props);
 
-        this.state = {
-            showHistory: true
-        };
-    }
+export class History extends React.Component<IHistoryProperties, {}> {
 
     render() {
         const pages = character.steps.length > 0
@@ -26,21 +20,16 @@ export class History extends React.Component<{}, IHistoryState> {
                             {name}
                         </div>
                     );
+                } else {
+                    return undefined;
                 }
             })
             : <div>No history.</div>;
 
-        const history = this.state.showHistory
-            ? <div className="history history-hidden">
-                {pages}
-            </div>
-            : undefined;
-
-        return (
-            <div>
-                {history}
-            </div>
-        );
+            return (
+                <div className={this.props.showHistory ? 'history history-visible' : 'history history-hidden'}>
+                    {pages}
+                </div>);
     }
 
     private goToPage(page: PageIdentity) {

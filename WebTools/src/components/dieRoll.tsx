@@ -16,7 +16,7 @@ export class DieRoll extends React.Component<IDieRollProperties, {}> {
         this._isSelected = this.props.isSelected;
     }
 
-    componentWillReceiveProps(proos: IDieRollProperties) {
+    componentDidUpdate(prevProps: IDieRollProperties) {
         this._isSelected = this.props.isSelected;
     }
 

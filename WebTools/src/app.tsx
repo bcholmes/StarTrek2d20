@@ -6,6 +6,8 @@ import News from './components/news';
 import { PageFactory } from './pages/pageFactory';
 import { PageHeader } from './components/pageHeader';
 import { PageIdentity } from './pages/pageIdentity';
+import { History } from './components/history';
+import { CharacterSheet } from './components/characterSheet';
 
 import './css/main.css';
 
@@ -72,6 +74,8 @@ const app = new Application();
 
 interface IAppState {
     showNews: boolean;
+    showHistory: boolean;
+    showProfile: boolean;
     activePage: PageIdentity;
 }
 
@@ -83,6 +87,8 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
 
         this.state = {
             showNews: false,
+            showHistory: false,
+            showProfile: false,
             activePage: PageIdentity.Selection
         };
         this.pageFactory = new PageFactory();
@@ -134,14 +140,16 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
                     <div className="lcar-content-start">
                         <div className="lcar-content-start-top"></div>
                         <div className="lcar-content-action">
-                            <div id="history-button" className="lcar-content-history" onClick={ () => console.log("showHistory();") }>History</div>
-                            <div id="history-container" className="history-container-hidden"></div>
+                            <div id="history-button" className="lcar-content-history" onClick={ () => this.toggleHistory() }>History</div>
+                            <div id="history-container" className="history-container-hidden">
+                                <History showHistory={this.state.showHistory} />
+                            </div>
                         </div>
                         <div className="lcar-content-action">
-                            <div id="profile-button" className="lcar-content-profile" onClick={ () => console.log("showCharacter();") }>Profile</div>
-                            <div id="character-sheet"></div>
+                            <div id="profile-button" className="lcar-content-profile" onClick={ () => this.toggleProfile() }>Profile</div>
+                            <CharacterSheet showProfile={this.state.showProfile} />
                         </div>
-                        <div className="lcar-content-feedback" onClick={ () => console.log("feedback();") }>Feedback</div>
+                        <div className="lcar-content-feedback" onClick={ () => this.showFeedbackPage() }>Feedback</div>
                         <div className="lcar-content-news" onClick={() => this.showNews()}>
                             <div id="news-button" className="lcar-news">News</div>
                         </div>
@@ -164,14 +172,34 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
         ];
     }
 
+    showFeedbackPage() {
+        window.open("https://github.com/bcholmes/StarTrek2d20/discussions", "_blank");
+    }
+
+    toggleHistory() {
+        this.setState({
+            ...this.state,
+            showHistory: !this.state.showHistory
+        })
+    }
+
+    toggleProfile() {
+        this.setState({
+            ...this.state,
+            showProfile: !this.state.showProfile
+        })
+    }
+
     showNews() {
         this.setState({
+            ...this.state,
             showNews: true
         })
     }
 
     hideNews() {
         this.setState({
+            ...this.state,
             showNews: false
         })
     }

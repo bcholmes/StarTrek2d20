@@ -163,8 +163,8 @@ class AnyOfPrerequisite implements ITalentPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        var result = false;
-        for (var p of this.prerequisites) {
+        let result = false;
+        for (let p of this.prerequisites) {
             result = result || p.isPrerequisiteFulfilled();
             if (result) {
                 break;
@@ -219,7 +219,7 @@ class SourcePrerequisite implements ITalentPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        var result = false
+        let result = false
         this.sources.forEach((s) => { result = result || character.hasSource(s) })
         return result;
     }
@@ -249,8 +249,8 @@ class NotEraPrerequisite implements ITalentPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        var result = true;
-        this.eras.forEach((e) => { result = result && character.era != e })
+        let result = true;
+        this.eras.forEach((e) => { result = result && character.era !== e })
         return result;
     }
 }
@@ -342,7 +342,7 @@ export class TalentModel {
     }
 
     isAvailableExcludingSpecies() {
-        var available = true;
+        let available = true;
         this.prerequisites.forEach((p, i) => {
             if (!(p instanceof SpeciesPrerequisite) && !(p instanceof AnySpeciesPrerequisite) && !p.isPrerequisiteFulfilled()) {
                 available = false;
@@ -352,7 +352,7 @@ export class TalentModel {
     }
 
     isAvailableForServiceYear() {
-        var available = true;
+        let available = true;
         this.prerequisites.forEach((p, i) => {
             if (((p instanceof ServiceYearPrerequisite) || (p instanceof MaxServiceYearPrerequisite)) && !p.isPrerequisiteFulfilled()) {
                 available = false;
@@ -362,8 +362,8 @@ export class TalentModel {
     }
 
     nameForSource(source: Source) {
-        var result = this.name;
-        for (var a of this.aliases) {
+        let result = this.name;
+        for (let a of this.aliases) {
             if (a.source === source) {
                 result = a.name;
                 break;
@@ -2244,10 +2244,10 @@ export class Talents {
     }
 
     getTalent(name: string) {
-        var talent: TalentModel = null;
+        let talent: TalentModel = null;
 
-        for (var i = 0; i < this._talents[Skill.None].length; i++) {
-            var t = this._talents[Skill.None][i];
+        for (let i = 0; i < this._talents[Skill.None].length; i++) {
+            let t = this._talents[Skill.None][i];
             if (t.matches(name)) {
                 talent = t;
                 break;
@@ -2255,14 +2255,14 @@ export class Talents {
         }
 
         if (talent === null) {
-            var found = false;
-            for (var tal in this._talents) {
+            let found = false;
+            for (let tal in this._talents) {
                 if (found) {
                     break;
                 }
 
-                for (var i = 0; i < this._talents[tal].length; i++) {
-                    var t = this._talents[tal][i];
+                for (let i = 0; i < this._talents[tal].length; i++) {
+                    let t = this._talents[tal][i];
                     if (t.matches(name)) {
                         talent = t;
                         break;
@@ -2272,8 +2272,8 @@ export class Talents {
         }
 
         if (talent == null) {
-            for (var i = 0; i < this._specialRules.length; i++) {
-                var t = this._specialRules[i];
+            for (let i = 0; i < this._specialRules.length; i++) {
+                let t = this._specialRules[i];
                 if (t.matches(name)) {
                     talent = t;
                     break;
@@ -2289,12 +2289,12 @@ export class Talents {
     }
 
     getTalentsForSkills(skills: Skill[]) {
-        var talents: TalentViewModel[] = [];
+        let talents: TalentViewModel[] = [];
 
         skills.forEach((s, i) => {
-            for (var i = 0; i < this._talents[s].length; i++) {
-                var include = true;
-                var talent = this._talents[s][i];
+            for (let i = 0; i < this._talents[s].length; i++) {
+                let include = true;
+                let talent = this._talents[s][i];
 
                 talent.prerequisites.forEach((p, i) => {
                     if (!p.isPrerequisiteFulfilled()) {
@@ -2315,11 +2315,11 @@ export class Talents {
                     }
 
                     if (include) {
-                        var rank = character.hasTalent(talent.name)
+                        let rank = character.hasTalent(talent.name)
                             ? character.talents[talent.name].rank + 1
                             : 1;
-                        var name = talent.name;
-                        if (character.type == CharacterType.KlingonWarrior) {
+                        let name = talent.name;
+                        if (character.type === CharacterType.KlingonWarrior) {
                             name = talent.nameForSource(Source.KlingonCore);
                         }
                         talents.push(new TalentViewModel(name, rank, talent.maxRank > 1, talent.description, s, talent.category));
@@ -2334,11 +2334,11 @@ export class Talents {
     }
 
     getStarshipTalents() {
-        var talents: TalentViewModel[] = [];
+        let talents: TalentViewModel[] = [];
 
-        for (var i = 0; i < this._talents[Skill.None].length; i++) {
-            var talent = this._talents[Skill.None][i];
-            var include = talent.category === "Starship";
+        for (let i = 0; i < this._talents[Skill.None].length; i++) {
+            let talent = this._talents[Skill.None][i];
+            let include = talent.category === "Starship";
 
             talent.prerequisites.forEach((p, i) => {
                 if (!p.isPrerequisiteFulfilled()) {
@@ -2359,7 +2359,7 @@ export class Talents {
                 }
 
                 if (include) {
-                    var rank = character.hasTalent(talent.name)
+                    let rank = character.hasTalent(talent.name)
                         ? character.talents[talent.name].rank + 1
                         : 1;
 
@@ -2381,10 +2381,10 @@ export class Talents {
     }
 
     getSkillForTalent(talent: string) {
-        var n = 0;
-        for (var skill in this._talents) {
-            for (var i = 0; i < this._talents[skill].length; i++) {
-                var t = this._talents[skill][i];
+        let n = 0;
+        for (let skill in this._talents) {
+            for (let i = 0; i < this._talents[skill].length; i++) {
+                let t = this._talents[skill][i];
                 if (t.name === talent) {
                     return n;
                 }

@@ -27,15 +27,15 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
         const selection = this.state['selection'];
 
         const sheetList = sheets.map((s, i) => {
-            const selected = (s.getName() == selection.getName()) ? "sheet-selection-item selected" : "sheet-selection-item"; 
-            const overlay = (s.getName() == selection.getName()) ? <img className="overlay" src="./img/check.png" /> : undefined;
+            const selected = (s.getName() === selection.getName()) ? "sheet-selection-item selected" : "sheet-selection-item"; 
+            const overlay = (s.getName() === selection.getName()) ? <img className="overlay" src="./img/check.png" alt="checkmark" /> : undefined;
             return (
                 <div className={selected} onClick={() => this.selectTemplate(s)}>
                     <div className="sheet-selection-item-name">
                         {s.getName()}
                     </div>
                     <div className="sheet-selection-item-thumbnail">
-                        <img className="thumbnail" src={s.getThumbnailUrl()} />
+                        <img className="thumbnail" src={s.getThumbnailUrl()} alt="Thumbnail" />
                         {overlay}
                     </div>
                 </div>

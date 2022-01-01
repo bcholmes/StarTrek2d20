@@ -1,9 +1,7 @@
 ﻿import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import {character} from '../common/character';
-import {Events, EventIdentity} from '../common/eventChannel';
-import {Attribute, AttributesHelper} from '../helpers/attributes';
-import {Skill, SkillsHelper} from '../helpers/skills';
+import {Attribute} from '../helpers/attributes';
+import {Skill} from '../helpers/skills';
 import {SpeciesHelper} from '../helpers/species';
 import {EnvironmentsHelper, Environment} from '../helpers/environments';
 import {UpbringingsHelper} from '../helpers/upbringings';
@@ -28,7 +26,7 @@ class CharacterSheetData {
         new SectionContent("SPECIES", this.getSpeciesString()),
         new SectionContent("ENVIRONMENT", this.getEnvironmentString()),
         new SectionContent("UPBRINGING", character.upbringing >= 0 ? UpbringingsHelper.getUpbringing(character.upbringing).name + (character.acceptedUpbringing ? "(A)" : "(R)") : "None"),
-        new SectionContent("STARFLEET ACADEMY", character.track >= 0 ? TracksHelper.getTrack(character.track).name : "None"),
+        new SectionContent("TRAINING", character.track >= 0 ? TracksHelper.getTrack(character.track).name : "None"),
         new SectionContent("CAREER", character.career >= 0 ? CareersHelper.getCareer(character.career).name : "None"),
         new SectionContent("TRAITS", character.traits.join(", "))
     ];
@@ -57,12 +55,12 @@ class CharacterSheetData {
     }
 }
 
-export class _CharacterSheet extends React.Component<{}, {}> {
-    private _sheetData: CharacterSheetData;
+interface ICharacterSheetProperties {
+    showProfile: boolean;
+}
 
-    constructor(props: {}) {
-        super(props);
-    }
+export class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
+    private _sheetData: CharacterSheetData;
 
     render() {
         this._sheetData = new CharacterSheetData();
@@ -129,160 +127,150 @@ export class _CharacterSheet extends React.Component<{}, {}> {
             return (<div key={i}>{CareerEventsHelper.getCareerEvent(e).name}</div>)
         });
 
-        let containerClass = "sheet-container";
+        let containerClass = this.props.showProfile ? "sheet-container sheet-container-visible" :  "sheet-container sheet-container-hidden";
 
         return (
-            <div id="character-sheet" className="sheet-hidden">
-                <div className="sheet-bg" id="sheet-bg" style={{ display: "none" }}></div>
-                <div className={containerClass} id="sheet-container">
-                    <div className="sheet-panel">
-                        <table className="sheet-section">
-                            <tbody>
-                                {data}
-                            </tbody>
-                        </table>
+            <div id="character-sheet">
+                <div id="character-sheet" className={this.props.showProfile ? 'sheet-visible' : 'sheet-hidden'}>
+                    <div className="sheet-bg" id="sheet-bg" style={{ display: this.props.showProfile ? '' : 'none' }}></div>
+                    <div className={containerClass} id="sheet-container">
+                        <div className="sheet-panel">
+                            <table className="sheet-section">
+                                <tbody>
+                                    {data}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className="sheet-panel">
+                            <table className="sheet-section">
+                                <tbody>
+                                    <tr>
+                                        <td className="bg-darker">CONTROL</td>
+                                        <td className="bg-light border-dark-nopadding text-dark text-center">
+                                            {character.attributes[Attribute.Control].value}
+                                        </td>
+                                        <td className="bg-darker">DARING</td>
+                                        <td className="bg-light border-dark-nopadding text-dark text-center">
+                                            {character.attributes[Attribute.Daring].value}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="bg-darker">FITNESS</td>
+                                        <td className="bg-light border-dark-nopadding text-dark text-center">
+                                            {character.attributes[Attribute.Fitness].value}
+                                        </td>
+                                        <td className="bg-darker">INSIGHT</td>
+                                        <td className="bg-light border-dark-nopadding text-dark text-center">
+                                            {character.attributes[Attribute.Insight].value}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="bg-darker">PRESENCE</td>
+                                        <td className="bg-light border-dark-nopadding text-dark text-center">
+                                            {character.attributes[Attribute.Presence].value}
+                                        </td>
+                                        <td className="bg-darker">REASON</td>
+                                        <td className="bg-light border-dark-nopadding text-dark text-center">
+                                            {character.attributes[Attribute.Reason].value}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="bg-darkest">COMMAND</td>
+                                        <td className="bg-light border-dark-nopadding text-dark text-center">
+                                            {character.skills[Skill.Command].expertise}
+                                        </td>
+                                        <td className="bg-darkest">CONN</td>
+                                        <td className="bg-light border-dark-nopadding text-dark text-center">
+                                            {character.skills[Skill.Conn].expertise}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="bg-darkest">SECURITY</td>
+                                        <td className="bg-light border-dark-nopadding text-dark text-center">
+                                            {character.skills[Skill.Security].expertise}
+                                        </td>
+                                        <td className="bg-darkest">ENGINEERING</td>
+                                        <td className="bg-light border-dark-nopadding text-dark text-center">
+                                            {character.skills[Skill.Engineering].expertise}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="bg-darkest">SCIENCE</td>
+                                        <td className="bg-light border-dark-nopadding text-dark text-center">
+                                            {character.skills[Skill.Science].expertise}
+                                        </td>
+                                        <td className="bg-darkest">MEDICINE</td>
+                                        <td className="bg-light border-dark-nopadding text-dark text-center">
+                                            {character.skills[Skill.Medicine].expertise}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className="sheet-panel">
+                            <table className="sheet-section">
+                                <tbody>
+                                    <tr>
+                                        <td className="bg-dark">VALUES</td>
+                                        <td className="bg-light border-dark-nopadding text-dark">
+                                            {values}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className="sheet-panel">
+                            <table className="sheet-section">
+                                <tbody>
+                                    <tr>
+                                        <td className="bg-dark">FOCUSES</td>
+                                        <td className="bg-light border-dark-nopadding text-dark">
+                                            {focuses}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className="sheet-panel">
+                            <table className="sheet-section">
+                                <tbody>
+                                    <tr>
+                                        <td className="bg-dark">TALENTS</td>
+                                        <td className="bg-light border-dark-nopadding text-dark">
+                                            {talents}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className="sheet-panel">
+                            <table className="sheet-section">
+                                <tbody>
+                                    <tr>
+                                        <td className="bg-dark">EQUIPMENT</td>
+                                        <td className="bg-light border-dark text-dark">
+                                            {equipment}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className="sheet-panel">
+                            <table className="sheet-section">
+                                <tbody>
+                                    <tr>
+                                        <td className="bg-dark">CAREER EVENTS</td>
+                                        <td className="bg-light border-dark text-dark">
+                                            {careerEvents}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br />
                     </div>
-                    <div className="sheet-panel">
-                        <table className="sheet-section">
-                            <tbody>
-                                <tr>
-                                    <td className="bg-darker">CONTROL</td>
-                                    <td className="bg-light border-dark-nopadding text-dark text-center">
-                                        {character.attributes[Attribute.Control].value}
-                                    </td>
-                                    <td className="bg-darker">DARING</td>
-                                    <td className="bg-light border-dark-nopadding text-dark text-center">
-                                        {character.attributes[Attribute.Daring].value}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="bg-darker">FITNESS</td>
-                                    <td className="bg-light border-dark-nopadding text-dark text-center">
-                                        {character.attributes[Attribute.Fitness].value}
-                                    </td>
-                                    <td className="bg-darker">INSIGHT</td>
-                                    <td className="bg-light border-dark-nopadding text-dark text-center">
-                                        {character.attributes[Attribute.Insight].value}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="bg-darker">PRESENCE</td>
-                                    <td className="bg-light border-dark-nopadding text-dark text-center">
-                                        {character.attributes[Attribute.Presence].value}
-                                    </td>
-                                    <td className="bg-darker">REASON</td>
-                                    <td className="bg-light border-dark-nopadding text-dark text-center">
-                                        {character.attributes[Attribute.Reason].value}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="bg-darkest">COMMAND</td>
-                                    <td className="bg-light border-dark-nopadding text-dark text-center">
-                                        {character.skills[Skill.Command].expertise}
-                                    </td>
-                                    <td className="bg-darkest">CONN</td>
-                                    <td className="bg-light border-dark-nopadding text-dark text-center">
-                                        {character.skills[Skill.Conn].expertise}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="bg-darkest">SECURITY</td>
-                                    <td className="bg-light border-dark-nopadding text-dark text-center">
-                                        {character.skills[Skill.Security].expertise}
-                                    </td>
-                                    <td className="bg-darkest">ENGINEERING</td>
-                                    <td className="bg-light border-dark-nopadding text-dark text-center">
-                                        {character.skills[Skill.Engineering].expertise}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="bg-darkest">SCIENCE</td>
-                                    <td className="bg-light border-dark-nopadding text-dark text-center">
-                                        {character.skills[Skill.Science].expertise}
-                                    </td>
-                                    <td className="bg-darkest">MEDICINE</td>
-                                    <td className="bg-light border-dark-nopadding text-dark text-center">
-                                        {character.skills[Skill.Medicine].expertise}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className="sheet-panel">
-                        <table className="sheet-section">
-                            <tbody>
-                                <tr>
-                                    <td className="bg-dark">VALUES</td>
-                                    <td className="bg-light border-dark-nopadding text-dark">
-                                        {values}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className="sheet-panel">
-                        <table className="sheet-section">
-                            <tbody>
-                                <tr>
-                                    <td className="bg-dark">FOCUSES</td>
-                                    <td className="bg-light border-dark-nopadding text-dark">
-                                        {focuses}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className="sheet-panel">
-                        <table className="sheet-section">
-                            <tbody>
-                                <tr>
-                                    <td className="bg-dark">TALENTS</td>
-                                    <td className="bg-light border-dark-nopadding text-dark">
-                                        {talents}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className="sheet-panel">
-                        <table className="sheet-section">
-                            <tbody>
-                                <tr>
-                                    <td className="bg-dark">EQUIPMENT</td>
-                                    <td className="bg-light border-dark text-dark">
-                                        {equipment}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className="sheet-panel">
-                        <table className="sheet-section">
-                            <tbody>
-                                <tr>
-                                    <td className="bg-dark">CAREER EVENTS</td>
-                                    <td className="bg-light border-dark text-dark">
-                                        {careerEvents}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <br />
                 </div>
             </div>
         );
     }
 }
-
-class SheetControl {
-    public mount() {
-        ReactDOM.render(
-            React.createElement(_CharacterSheet),
-            document.getElementById("character-sheet")
-        );
-    }
-}
-
-export const sheet = new SheetControl();
-sheet.mount();
