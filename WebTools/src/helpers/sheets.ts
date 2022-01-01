@@ -381,7 +381,19 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
     }
 
     fillName(form: PDFForm) {
-        this.fillField(form, 'Name', character.name);
+        this.fillField(form, 'Name', this.formatName());
+    }
+
+    formatNameWithoutPronouns() {
+        return CharacterSerializer.serializeName(character);
+    }
+
+    formatName() {
+        let name = this.formatNameWithoutPronouns();
+        if (character.pronouns.length > 0) {
+            name += " (" + character.pronouns + ")";
+        }
+        return name;
     }
 
     fillStress(form: PDFForm) {
@@ -560,10 +572,6 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         return result;
     }
 
-    fillName(form: PDFForm) {
-        this.fillField(form, 'Name', CharacterSerializer.serializeName(character));
-    }
-
     fillTalents(form: PDFForm) {
         var i = 1;
         for (var talent in character.talents) {
@@ -640,11 +648,7 @@ class KlingonCharacterSheet extends BasicFullCharacterSheet {
         this.fillField(form, 'House', character.house);
     }
 
-    fillName(form: PDFForm) {
-        this.fillField(form, 'Name', this.concatenateName());
-    }
-
-    concatenateName() {
+    formatNameWithoutPronouns() {
         var result = character.name;
         if (character.lineage) {
             result += (", " + character.lineage);

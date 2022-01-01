@@ -20,7 +20,14 @@ class News extends React.Component<INewsProperties, {}> {
             <div>   
                 <div className="dialog-bg"></div>
                 <div className="dialog-container dialog-container-visible dialog-container-lg" style={{ textAlign: 'left' }}>
-                    <b>WHAT'S NEW? (v1.211023)</b>
+                    <b>WHAT'S NEW? (v1.211231)</b>
+                    <ul>
+                        <li>I've upgraded some of the underlying technologies used to build the site. For the most part, I'd expect the  
+                            app to behave the same as before, but as with all broad-reaching changes, please let me know if you see  
+                            any odd behaviour.
+                        </li>
+                    </ul>
+                    <b>v1.211023</b>
                     <ul>
                         <li>Enhancement: Allow an override to starship "end of service" dates.</li>
                     </ul>

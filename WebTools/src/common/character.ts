@@ -139,6 +139,7 @@ export class Character {
     public allowCrossSpeciesTalents: boolean = false;
     public type: CharacterType = CharacterType.Starfleet;
     public workflow?: Workflow;
+    public pronouns: string = '';
 
     public starship?: Starship;
 

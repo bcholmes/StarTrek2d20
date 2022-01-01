@@ -14,6 +14,7 @@ import {CharacterSheetRegistry} from '../helpers/sheets';
 
 export class FinishPage extends React.Component<IPageProperties, {}> {
     private name: HTMLInputElement;
+    private pronouns: HTMLInputElement;
     private lineage: HTMLInputElement;
     private house: HTMLInputElement;
     private ranks: string[];
@@ -117,13 +118,11 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
         if (character.type === CharacterType.KlingonWarrior) {
             extra = (<div><div className="panel">
                 <div className="header-small">LINEAGE</div>
-                <div>{nameDescription}</div>
                 <div className="textinput-label">Lineage</div>
                 <input type="text" onChange={() => this.onLineageChanged() } ref={(input) => this.lineage = input}/>
                 <div><small><b>Example: </b> <i>Daughter of Martok</i> or <i>Child of Koloth</i></small></div>
             </div><div className="panel">
                 <div className="header-small">HOUSE</div>
-                <div>{nameDescription}</div>
                 <div className="textinput-label">House</div>
                 <input type="text" onChange={() => this.onHouseChanged() } ref={(input) => this.house = input}/>
                 <div><small><b>Example: </b> <i>House Duras</i> or <i>House Kor</i></small></div>
@@ -150,6 +149,12 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                     <div><small><b>Suggestions: </b> <i>{suggestions}</i></small></div>
                 </div>
                 {extra}
+                <div className="panel">
+                    <div className="header-small">PRONOUNS</div>
+                    <div className="textinput-label">Pronouns</div>
+                    <input type="text" onChange={() => this.onPronounsChanged() } ref={(input) => this.pronouns = input}/>
+                    <div><small><b>Suggestions: </b> <i>she/her, they/them, etc.</i></small></div>
+                </div>
                 <br/>
                 <div className="panel">
                     <div className="header-small">ASSIGNMENT</div>
@@ -195,6 +200,11 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
 
     private onNameChanged() {
         character.name = this.name.value;
+        this.forceUpdate();
+    }
+
+    private onPronounsChanged() {
+        character.pronouns = this.pronouns.value;
         this.forceUpdate();
     }
 

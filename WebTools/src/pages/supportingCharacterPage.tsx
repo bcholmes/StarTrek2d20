@@ -18,6 +18,7 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
     private _focus2Element: HTMLInputElement;
     private _focus3Element: HTMLInputElement;
     private _attributeElement: SupportingCharacterAttributes;
+    private _pronounsElement: HTMLInputElement;
 
     private _type: CharacterTypeModel = CharacterTypeModel.getAllTypes()[character.type];
     private _name: string;
@@ -27,6 +28,7 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
     private _focus1: string;
     private _focus2: string;
     private _focus3: string;
+    private _pronouns: string = "";
 
     constructor(props: {}) {
         super(props);
@@ -183,6 +185,18 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
                                 onChange={() => {
                                     this._name = this._nameElement.value;
                                     character.name = this._name;
+                                    this.forceUpdate();
+                                } } />
+                        </div>
+                        <div>
+                            <div className="textinput-label">PRONOUNS</div>
+                            <input
+                                type="text"
+                                defaultValue={this._pronouns}
+                                ref={(el) => { this._pronounsElement = el; } }
+                                onChange={() => {
+                                    this._pronouns = this._pronounsElement.value;
+                                    character.pronouns = this._pronouns;
                                     this.forceUpdate();
                                 } } />
                         </div>
