@@ -16,11 +16,11 @@ export class SkillImprovement extends React.Component<ISkillImprovementPropertie
         const expertise = character.skills[skill].expertise;
 
         const dec = showDecrease
-            ? (<img height="20" src="img/dec.png" onClick={ () => { this.onDecrease() } } alt="-"/>)
+            ? (<img height="20" src="static/img/dec.png" onClick={ () => { this.onDecrease() } } alt="-"/>)
             : undefined;
 
         const inc = showIncrease
-            ? (<img height="20" src="img/inc.png" onClick={ () => { this.onIncrease() } } alt="+"/>)
+            ? (<img height="20" src="static/img/inc.png" onClick={ () => { this.onIncrease() } } alt="+"/>)
             : undefined;
 
         return (

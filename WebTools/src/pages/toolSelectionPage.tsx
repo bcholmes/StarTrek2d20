@@ -2,18 +2,12 @@
 import {character} from '../common/character';
 import { CharacterType } from '../common/characterType';
 import {Navigation} from '../common/navigator';
-import {SetHeaderText} from '../common/extensions';
 import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
 import {Source} from '../helpers/sources';
 import {WorkflowsHelper} from '../helpers/workflows';
 
 export class ToolSelectionPage extends React.Component<{}, {}> {
-    constructor(props: {}) {
-        super(props);
-
-        SetHeaderText("REGISTRY");
-    }
 
     render() {
         let additionalOptions = character.hasSource(Source.KlingonCore)

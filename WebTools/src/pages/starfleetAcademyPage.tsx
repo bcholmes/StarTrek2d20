@@ -2,7 +2,6 @@
 import {character} from '../common/character';
 import { CharacterType } from '../common/characterType';
 import {Navigation} from '../common/navigator';
-import {SetHeaderText} from '../common/extensions';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {Track, TracksHelper} from '../helpers/tracks';
@@ -16,8 +15,6 @@ interface IStarfleetAcademygPageState {
 export class StarfleetAcademyPage extends React.Component<IPageProperties, IStarfleetAcademygPageState> {
     constructor(props: IPageProperties) {
         super(props);
-
-        SetHeaderText(character.workflow.currentStep().name);
 
         this.state = {
             showSelection: false

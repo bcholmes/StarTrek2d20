@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import {SetHeaderText} from '../common/extensions';
 import {character, CharacterTypeModel } from '../common/character';
 import {CharacterSerializer} from '../common/characterSerializer';
 import {Species, SpeciesHelper} from '../helpers/species';
@@ -32,8 +31,6 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
 
     constructor(props: {}) {
         super(props);
-
-        SetHeaderText("SUPPORTING CHARACTER");
 
         const profileButton = document.getElementById("profile-button");
         if (profileButton !== undefined) {

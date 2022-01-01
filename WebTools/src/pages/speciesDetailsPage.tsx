@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
 import { character } from '../common/character';
 import { Navigation } from '../common/navigator';
-import { SetHeaderText } from '../common/extensions';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import { Species, SpeciesHelper } from '../helpers/species';
@@ -18,12 +17,6 @@ import { TalentSelectionList } from '../components/talentSelectionList';
 export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
     private _selectedTalent: string;
     private _attributesDone: boolean;
-
-    constructor(props: IPageProperties) {
-        super(props);
-
-        SetHeaderText(character.workflow.currentStep().name);
-    }
 
     render() {
         var species = SpeciesHelper.getSpeciesByType(character.species);

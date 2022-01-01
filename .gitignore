@@ -1,6 +1,7 @@
 WebTools/Properties/PublishProfiles/Localhost.pubxml
 WebTools/Properties/PublishProfiles/Localhost.pubxml.user
 bin/
+build/
 WebTools/bin/
 WebTools/dist/trek.js
 WebTools/dist/trek.js.LICENSE.txt

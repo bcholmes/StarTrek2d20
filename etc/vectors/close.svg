@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg947"
+   inkscape:version="1.1.1 (c3084ef, 2021-09-22)"
+   sodipodi:docname="close.svg"
+   inkscape:export-filename="/Users/bcholmes/Code/StarTrek/StarTrek2d20/WebTools/public/static/img/close.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview949"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     units="px"
+     inkscape:zoom="24.333333"
+     inkscape:cx="11.979452"
+     inkscape:cy="12"
+     inkscape:window-width="1440"
+     inkscape:window-height="810"
+     inkscape:window-x="2630"
+     inkscape:window-y="301"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs944" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="rect1030"
+       style="fill:#b5b3d8;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round"
+       d="M 4.5761719 1.453125 C 4.3205528 1.453125 4.0650092 1.5502252 3.8691406 1.7460938 L 1.7460938 3.8691406 C 1.3543566 4.2608778 1.3543566 4.891466 1.7460938 5.2832031 L 8.4628906 12 L 1.7460938 18.716797 C 1.3543566 19.108534 1.3543566 19.739122 1.7460938 20.130859 L 3.8691406 22.253906 C 4.2608778 22.645643 4.891466 22.645643 5.2832031 22.253906 L 12 15.537109 L 18.716797 22.253906 C 19.108534 22.645643 19.739122 22.645643 20.130859 22.253906 L 22.253906 20.130859 C 22.645643 19.739122 22.645643 19.108534 22.253906 18.716797 L 15.537109 12 L 22.253906 5.2832031 C 22.645643 4.891466 22.645643 4.2608778 22.253906 3.8691406 L 20.130859 1.7460938 C 19.739122 1.3543566 19.108534 1.3543566 18.716797 1.7460938 L 12 8.4628906 L 5.2832031 1.7460938 C 5.0873345 1.5502252 4.831791 1.453125 4.5761719 1.453125 z " />
+  </g>
+</svg>

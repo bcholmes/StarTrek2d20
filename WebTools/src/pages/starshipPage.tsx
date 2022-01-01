@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import {SetHeaderText} from '../common/extensions';
 import {character, CharacterTypeModel, Starship} from '../common/character';
 import { CharacterType } from '../common/characterType';
 import {DropDownInput} from '../components/dropDownInput';
@@ -35,8 +34,6 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
     constructor(props: {}) {
         super(props);
-
-        SetHeaderText("STARSHIP");
 
         const profileButton = document.getElementById("profile-button");
         if (profileButton !== undefined) {

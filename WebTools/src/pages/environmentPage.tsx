@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {SetHeaderText} from '../common/extensions';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {Environment, EnvironmentsHelper} from '../helpers/environments';
@@ -15,8 +14,6 @@ interface IEnvironmentPageState {
 export class EnvironmentPage extends React.Component<IPageProperties, IEnvironmentPageState> {
     constructor(props: IPageProperties) {
         super(props);
-
-        SetHeaderText("ENVIRONMENT");
 
         this.state = {
             showSelection: false

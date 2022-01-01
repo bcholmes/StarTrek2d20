@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {CharacterType} from '../common/characterType';
-import {SetHeaderText} from '../common/extensions';
 import {IPageProperties} from './iPageProperties';
 import {Button} from '../components/button';
 import {CheckBox} from '../components/checkBox';
@@ -25,8 +24,6 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
 
     constructor(props: IPageProperties) {
         super(props);
-
-        SetHeaderText(character.workflow.currentStep().name);
 
         character.addEquipment("Uniform");
         character.addEquipment("Communicator");

@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {SetHeaderText} from '../common/extensions';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {Career, CareersHelper} from '../helpers/careers';
@@ -15,8 +14,6 @@ interface ICareerPageState {
 export class CareerPage extends React.Component<IPageProperties, ICareerPageState> {
     constructor(props: IPageProperties) {
         super(props);
-
-        SetHeaderText(character.workflow.currentStep().name);
 
         this.state = {
             showSelection: false

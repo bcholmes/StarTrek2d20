@@ -11,67 +11,6 @@ import { CharacterSheet } from './components/characterSheet';
 
 import './css/main.css';
 
-/*
-class Application {
-    private _activePage: PageIdentity;
-
-    constructor() {
-        this._activePage = PageIdentity.Selection;
-    }
-
-    start() {
-        this.initialize();
-        this.render();
-    }
-
-    private initialize() {
-        Events.listen(EventIdentity.ShowPage, (page: any) => {
-            this.activatePage(page as PageIdentity, false);
-        });
-
-        Events.listen(EventIdentity.HistoryBack, (page: any) => {
-            this.activatePage(page as PageIdentity, true);
-        });
-    }
-
-    private activatePage(page: PageIdentity, isHistory: boolean) {
-        document.getElementById("app")!.scrollTop = 0;
-
-        if (page === this._activePage) {
-            var pageComponent = document.getElementsByClassName('page')[0];
-            pageComponent.classList.remove('page-out');
-            return;
-        }
-
-        this._activePage = page;
-
-        if (!isHistory) {
-            character.saveStep(this._activePage);
-        }
-
-        sheet.mount();
-
-        this.render();
-    }
-
-    private render() {
-        ReactDOM.render(
-            React.createElement(Page, {
-                page: this._activePage
-            }),
-            document.getElementById("app")
-        );
-
-        ReactDOM.render(
-            React.createElement(History),
-            document.getElementById("history-container")
-        );
-    }
-}
-
-const app = new Application();
-*/
-
 interface IAppState {
     showNews: boolean;
     showHistory: boolean;
@@ -130,7 +69,7 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
         return [
             <div className="lcar-container">
                 <div className="lcar-header">
-                    <div className="lcar-header-start"><a href="index.html"><img src="./img/logo.png" className="logo" alt="Star Trek Adventures Logo"/></a></div>
+                    <div className="lcar-header-start"><a href="index.html"><img src="./static/img/logo.png" className="logo" alt="Star Trek Adventures Logo"/></a></div>
                     <div></div>
                     <div className="lcar-header-middle"></div>
                     <PageHeader page={this.state.activePage} />
