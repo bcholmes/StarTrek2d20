@@ -11,21 +11,25 @@ interface IValueProperties {
     onSelect: (index: number) => void;
 }
 
-class Value extends React.Component<IValueProperties, {}> {
-    private _isSelected: boolean;
+interface IValueState {
+    isSelected: boolean;
+}
 
+class Value extends React.Component<IValueProperties, IValueState> {
     constructor(props: IValueProperties) {
         super(props);
-
-        this._isSelected = props.isSelected;
+        this.state = {
+            isSelected: props.isSelected
+        }
     }
 
-    componentDidUpdate(prevProps: IValueProperties) {
-        this._isSelected = this.props.isSelected;
+    static getDerivedStateFromProps(props: IValueProperties, state: IValueState) {
+        return {
+            isSelected: props.isSelected
+        }
     }
-
     render() {
-        const className = this._isSelected ? "die die-selected" : "die";
+        const className = this.state.isSelected ? "die die-selected" : "die";
 
         return (
             <div className={className} onClick={() => this.toggleSelection() }>
@@ -36,10 +40,12 @@ class Value extends React.Component<IValueProperties, {}> {
         );
     }
 
-    private toggleSelection() {
-        this._isSelected = !this._isSelected;
-        this.props.onSelect(this._isSelected ? this.props.index : -1);
-        this.forceUpdate();
+    private toggleSelection() {        
+        let isSelected = !this.state.isSelected;
+        this.setState({
+            isSelected: isSelected
+        });
+        this.props.onSelect(isSelected ? this.props.index : -1);
     }
 }
 
@@ -66,16 +72,6 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
 
         this.updateCharacterAttributes();
     }
-
-    //componentWillReceiveProps(props: IAttributeProperties) {
-    //    if (props.species !== this.props.species) {
-    //        this._checkedValues = [];
-    //    }
-
-    //    this._species = SpeciesHelper.getSpeciesByType(props.species);
-
-    //    this.updateCharacterAttributes();
-    //}
 
     set species(species: Species) {
         if (this.props.species !== species) {

@@ -79,7 +79,7 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
     constructor(props: IRefitsProperties) {
         super(props);
 
-        let minimum = SpaceframeHelper.getSpaceframe(character.starship.spaceframe).systems;
+        let minimum = character.starship.spaceframeModel.systems;
 
         const missionPod = SpaceframeHelper.getMissionPod(character.starship.missionPod);
         if (missionPod) {
@@ -103,8 +103,9 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
         }
     }
 
-    componentWillReceiveProps(props: IRefitsProperties) {
-        let minimum = SpaceframeHelper.getSpaceframe(character.starship.spaceframe).systems;
+    // TODO: fix this to use State
+    UNSAFE_componentWillReceiveProps(props: IRefitsProperties) {
+        let minimum = character.starship.spaceframeModel.systems;
 
         const missionPod = SpaceframeHelper.getMissionPod(character.starship.missionPod);
         if (missionPod) {

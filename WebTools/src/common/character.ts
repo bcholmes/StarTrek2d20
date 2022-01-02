@@ -9,7 +9,7 @@ import {Track} from '../helpers/tracks';
 import {Upbringing} from '../helpers/upbringings';
 import {Workflow} from '../helpers/workflows';
 import {TalentsHelper} from '../helpers/talents';
-import {Spaceframe, MissionPod, SpaceframeViewModel} from '../helpers/spaceframes';
+import {MissionPod, SpaceframeViewModel} from '../helpers/spaceframes';
 import {MissionProfile} from "../helpers/missionProfiles";
 import {CharacterType} from './characterType';
 
@@ -48,7 +48,6 @@ export class Starship {
     registry: string = "";
     traits: string = "";
     serviceYear?: number;
-    spaceframe?: Spaceframe = undefined;
     spaceframeModel?: SpaceframeViewModel = undefined;
     missionPod?: MissionPod;
     missionProfile?: MissionProfile;

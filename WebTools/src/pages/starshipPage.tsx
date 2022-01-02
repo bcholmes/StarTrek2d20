@@ -4,7 +4,7 @@ import {CharacterTypeModel} from '../common/characterType';
 import { CharacterType } from '../common/characterType';
 import {DropDownInput} from '../components/dropDownInput';
 import {Era} from '../helpers/eras';
-import {SpaceframeHelper, Spaceframe, MissionPod, SpaceframeViewModel} from '../helpers/spaceframes';
+import {SpaceframeHelper, MissionPod, SpaceframeViewModel} from '../helpers/spaceframes';
 import {MissionProfileHelper, MissionProfile} from '../helpers/missionProfiles';
 import {TalentViewModel} from "../helpers/talents";
 import {Source} from "../helpers/sources";
@@ -61,7 +61,6 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         if (character.starship && character.starship.spaceframeModel) {
             let frames = spaceframes.filter(f => f.id === character.starship.spaceframeModel.id);
             if (frames.length === 0) {
-                character.starship.spaceframe = undefined;
                 character.starship.spaceframeModel = undefined;
             }
         }
@@ -158,14 +157,12 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                                 </div>
                             </div>
                     </div>);
+                if (character.starship.missionPod !== undefined) {
+                    SpaceframeHelper.getMissionPod(character.starship.missionPod).talents.forEach(t => {
+                        spaceframeTalents.push(t.name);
+                    });
+                }
             }
-        }
-
-
-        if ((character.starship.spaceframe === Spaceframe.Nebula || character.starship.spaceframe === Spaceframe.Luna) && character.starship.missionPod !== undefined) {
-            SpaceframeHelper.getMissionPod(character.starship.missionPod).talents.forEach(t => {
-                spaceframeTalents.push(t.name);
-            });
         }
 
         let talents: TalentViewModel[] = [];
@@ -180,8 +177,8 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
         let defaultTrait = character.type === CharacterType.KlingonWarrior ? ["Klingon Starship"] : ["Federation Starship"];
         let numRefits = 0;
-        if (character.starship.spaceframe >= 0) {
-            const frame = SpaceframeHelper.getSpaceframe(character.starship.spaceframe);
+        if (character.starship.spaceframeModel) {
+            const frame = character.starship.spaceframeModel;
             numRefits = Math.floor((character.starship.serviceYear - frame.serviceYear) / 10);
             defaultTrait = frame.additionalTraits;
         }
@@ -233,7 +230,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
         const traitList = defaultTrait.map((t, i) => {
             return (
-                <li>
+                <li key={'trait-' + i}>
                     {t}
                 </li>
             );
@@ -449,7 +446,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     modalContents(name: string) {
         if (name === 'spaceframes') {
             return (<SpaceframeSelection serviceYear={character.starship.serviceYear} type={character.type} 
-                initialSelection={character.starship.spaceframe} onSelection={(s) => { this.onSpaceframeSelected(s); this.closeModal() }} />);
+                initialSelection={character.starship.spaceframeModel} onSelection={(s) => { this.onSpaceframeSelected(s); this.closeModal() }} />);
         } else if (name === 'missionProfile') {
             return (<MissionProfileSelection type={character.type} 
                 initialSelection={character.starship.missionProfile} onSelection={(m) => { this.onMissionProfileSelected(m); this.closeModal() }} />);
@@ -500,13 +497,11 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
     private onSpaceframeSelected(spaceframe: SpaceframeViewModel) {
         character.starship.spaceframeModel = spaceframe;
-        character.starship.spaceframe = spaceframe.id;
         this.updateSystemAndDepartments();
         this.forceUpdate();
     }
 
     private onMissionPodSelected(pod: MissionPod) {
-        console.log("mission pod");
         character.starship.missionPod = pod;
         this.updateSystemAndDepartments();
         this.forceUpdate();
@@ -564,7 +559,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         if (character.starship.spaceframeModel !== undefined) {
             numTalents += character.starship.spaceframeModel.talents.length;
 
-            if (character.starship.spaceframeModel.id === Spaceframe.Nebula) {
+            if (character.starship.spaceframeModel.isMissionPodAvailable) {
                 numTalents += 2;
             }
         }

@@ -293,7 +293,7 @@ class SpaceframePrerequisite implements ITalentPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        return character.starship != null && character.starship.spaceframe === this.frame;
+        return character.starship != null && character.starship.spaceframeModel && character.starship.spaceframeModel.id === this.frame;
     }
 }
 
@@ -305,8 +305,8 @@ class SpaceframesPrerequisite implements ITalentPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        return character.starship != null &&
-               this.frames.indexOf(character.starship.spaceframe) > -1;
+        return character.starship != null && character.starship.spaceframeModel &&
+               this.frames.indexOf(character.starship.spaceframeModel.id) > -1;
     }
 }
 

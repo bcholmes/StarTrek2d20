@@ -22,7 +22,7 @@ export class TalentList extends React.Component<ITalentListProperties, {}> {
 
     }
 
-    componentWillReceiveProps(props: ITalentListProperties) {
+    UNSAFE_componentWillReceiveProps(props: ITalentListProperties) {
         this._talents = TalentsHelper.getTalentsForSkills(this.props.skills)
             .sort((a, b) => {
                 return a.name.localeCompare(b.name)

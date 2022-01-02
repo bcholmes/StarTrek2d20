@@ -3,13 +3,13 @@ import * as React from 'react';
 import { CharacterType } from '../common/characterType';
 import { CheckBox } from './checkBox';
 import { Department } from '../helpers/departments';
-import { Spaceframe, SpaceframeHelper, SpaceframeViewModel } from '../helpers/spaceframes';
+import { SpaceframeHelper, SpaceframeViewModel } from '../helpers/spaceframes';
 import { System } from '../helpers/systems';
 
 interface ISpaceframeSelectionProperties {
     serviceYear: number;
     type: CharacterType;
-    initialSelection?: Spaceframe;
+    initialSelection?: SpaceframeViewModel;
     onSelection: (s: SpaceframeViewModel) => void;
 }
 
@@ -72,7 +72,7 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
                     <td style={{ verticalAlign: "top" }}>{talents}</td>
                     <td>
                         <CheckBox
-                            isChecked={this.props.initialSelection === f.id}
+                            isChecked={this.props.initialSelection != null && this.props.initialSelection.id === f.id}
                             text=""
                             value={f.id}
                             onChanged={(e) => { this.props.onSelection(f); } }/>
