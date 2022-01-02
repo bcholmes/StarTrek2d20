@@ -17,11 +17,13 @@ import {Refits} from "../components/refits";
 import {StarshipTalentSelection} from "../components/starshipTalentSelection";
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
+import { ModalControl } from '../components/modal';
+import SpaceframeSelection from '../components/spaceframeSelection';
+import StarshipStats from '../components/starshipStats';
 
 interface StarshipPageState {
     type: CharacterTypeModel
     name: string
-    allowAllFrames: boolean
 }
 
 export class StarshipPage extends React.Component<{}, StarshipPageState> {
@@ -49,68 +51,36 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
         this.state = {
             type: CharacterTypeModel.getStarshipTypes()[character.type],
-            name: 'U.S.S. ',
-            allowAllFrames: false
+            name: 'U.S.S. '
         };
     }
 
     render() {
 
-        let overrideCheckbox =(<CheckBox
-            isChecked={this.state.allowAllFrames}
-            text="Ignore end-of-service date (GM's decision)"
-            value={!this.state.allowAllFrames}
-            onChanged={() => { let val = this.state.allowAllFrames; this.setState({ allowAllFrames: !val }); }} />);
+        const spaceframes = SpaceframeHelper.getSpaceframes(character.starship.serviceYear, this.state.type.type, true);
+        let spaceframeTalents = undefined;
+        let selectedSpaceframe = undefined;
+        if (character.starship.spaceframe !== undefined) {
+            let frames = spaceframes.filter(f => f.id === character.starship.spaceframe);
+            if (frames.length > 0) {
+                // it's possible that someone chose a frame that's no longer valid because
+                // they subsequently changed other info (to, say, Klingon)
+                selectedSpaceframe = frames[0];
+                spaceframeTalents = selectedSpaceframe.talents.map(t => { return t.name });
+            } else {
+                character.starship.spaceframe = undefined;
+            }
+        }
 
-        const spaceframes = SpaceframeHelper.getSpaceframes(character.starship.serviceYear, this.state.type.type, this.state.allowAllFrames);
-        
-        const frames = spaceframes.map((f, i) => {
-            const systems = f.systems.map((s, si) => {
-                return (
-                    <tr key={si}>
-                        <td>{System[si]}</td>
-                        <td>{s}</td>
-                    </tr>
-                );
-            });
-
-            const departments = f.departments.map((d, di) => {
-                return (
-                    <tr key={di}>
-                        <td>{Department[di]}</td>
-                        <td>{d === 0 ? "-" : `+${d}`}</td>
-                    </tr>
-                );
-            });
-
-            const talents = f.talents.map((t, ti) => {
-                if (t === null) {
-                    console.log(f.name);
-                }
-
-                return t.isAvailableForServiceYear() ? (
-                    <div key={ti}>{t.name}</div>
-                ) : undefined;
-            });
-
-            return (
-                <tr key={i}>
-                    <td className="selection-header">{f.name}</td>
-                    <td><table><tbody>{systems}</tbody></table></td>
-                    <td><table><tbody>{departments}</tbody></table></td>
-                    <td style={{ verticalAlign: "top" }}>{f.scale}</td>
-                    <td style={{ verticalAlign: "top" }}>{talents}</td>
-                    <td>
-                        <CheckBox
-                            isChecked={character.starship.spaceframe === f.id}
-                            text=""
-                            value={f.id}
-                            onChanged={(val) => { this.onSpaceframeSelected(f.id); } }/>
-                    </td>
-                </tr>
+        let selectedSpaceframeDetails = (<div className="p-0"><h4 className="text-selection">No Selection</h4></div>);
+        if (selectedSpaceframe) {
+            selectedSpaceframeDetails = (
+                <div className="p-0">
+                    <h4 className="text-selection">{selectedSpaceframe.name}</h4>
+                    <StarshipStats model={selectedSpaceframe} type="spaceframe" />
+                </div>
             );
-        });
-
+        }
         const missionPods = character.starship.spaceframe === Spaceframe.Nebula ||
                             character.starship.spaceframe === Spaceframe.Luna
             ? (
@@ -210,10 +180,6 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                 </tr>
             );
         });
-
-        let spaceframeTalents = character.starship.spaceframe !== undefined
-            ? spaceframes.filter(f => f.id === character.starship.spaceframe)[0].talents.map(t => { return t.name })
-            : undefined;
 
         if ((character.starship.spaceframe === Spaceframe.Nebula || character.starship.spaceframe === Spaceframe.Luna) && character.starship.missionPod !== undefined) {
             SpaceframeHelper.getMissionPod(character.starship.missionPod).talents.forEach(t => {
@@ -397,20 +363,12 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                                 The vessel's spaceframe is its basic superstructure, core systems, operation infrastructure, 
                                 and all the other elements that are common to every vessel of the same class.
                             </div>
-                            {overrideCheckbox}
-                            <table className="selection-list">
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td>Systems</td>
-                                        <td>Departments</td>
-                                        <td>Scale</td>
-                                        <td>Talents</td>
-                                        <td></td>
-                                    </tr>
-                                    {frames}
-                                </tbody>
-                            </table>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', width: '700px'}}>
+                                {selectedSpaceframeDetails}
+                                <div className="p-0">
+                                    <Button className="button-small" text="Choose..." onClick={() => this.showModal('spaceframes')} buttonType={true}/>
+                                </div>
+                            </div>
                         </div>
                         <br/><br/>
                         {missionPods}
@@ -559,6 +517,32 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                 </div>
             </div>
         );
+    }
+
+    closeModal() {
+        ModalControl.hide();
+        this.forceUpdate();
+    }
+
+    showModal(name: string) {
+        ModalControl.show("lg", () => this.closeModal(), this.modalContents(name), this.modalHeader(name));
+    }
+
+    modalHeader(name: string) {
+        if (name === 'spaceframes') {
+            return "Select a Spaceframe";
+        } else {
+            return undefined;
+        }
+    }
+
+    modalContents(name: string) {
+        if (name === 'spaceframes') {
+            return (<SpaceframeSelection serviceYear={character.starship.serviceYear} type={character.type} 
+                initialSelection={character.starship.spaceframe} onSelection={(s) => { this.onSpaceframeSelected(s); this.closeModal() }} />);
+        } else {
+            return undefined;
+        }
     }
 
     private showDialog() {

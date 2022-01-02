@@ -1,0 +1,107 @@
+import * as React from 'react';
+
+import { CharacterType } from '../common/characterType';
+import { CheckBox } from './checkBox';
+import { Department } from '../helpers/departments';
+import { Spaceframe, SpaceframeHelper } from '../helpers/spaceframes';
+import { System } from '../helpers/systems';
+
+interface ISpaceframeSelectionProperties {
+    serviceYear: number;
+    type: CharacterType;
+    initialSelection?: Spaceframe;
+    onSelection: (s: Spaceframe) => void;
+}
+
+interface ISpaceframeSelectionState {
+    allowAllFrames: boolean
+}
+
+class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties, ISpaceframeSelectionState> {
+
+    constructor(props: ISpaceframeSelectionProperties) {
+        super(props);
+        this.state = {
+            allowAllFrames: false
+        };
+    }
+
+    render() {
+        let overrideCheckbox =(<CheckBox
+            isChecked={this.state.allowAllFrames}
+            text="Ignore end-of-service date (GM's decision)"
+            value={!this.state.allowAllFrames}
+            onChanged={(e) => { this.setState({ allowAllFrames: !this.state.allowAllFrames }); }} />);
+
+        const spaceframes = SpaceframeHelper.getSpaceframes(this.props.serviceYear, this.props.type, this.state.allowAllFrames);
+        const frames = spaceframes.map((f, i) => {
+            const systems = f.systems.map((s, si) => {
+                return (
+                    <tr key={si}>
+                        <td>{System[si]}</td>
+                        <td>{s}</td>
+                    </tr>
+                );
+            });
+
+            const departments = f.departments.map((d, di) => {
+                return (
+                    <tr key={di}>
+                        <td>{Department[di]}</td>
+                        <td>{d === 0 ? "-" : `+${d}`}</td>
+                    </tr>
+                );
+            });
+
+            const talents = f.talents.map((t, ti) => {
+                if (t === null) {
+                    console.log(f.name);
+                }
+
+                return t.isAvailableForServiceYear() ? (
+                    <div key={ti}>{t.name}</div>
+                ) : undefined;
+            });
+
+            return (
+                <tr key={i}>
+                    <td className="selection-header">{f.name}</td>
+                    <td><table><tbody>{systems}</tbody></table></td>
+                    <td><table><tbody>{departments}</tbody></table></td>
+                    <td style={{ verticalAlign: "top" }}>{f.scale}</td>
+                    <td style={{ verticalAlign: "top" }}>{talents}</td>
+                    <td>
+                        <CheckBox
+                            isChecked={this.props.initialSelection === f.id}
+                            text=""
+                            value={f.id}
+                            onChanged={(e) => { this.props.onSelection(f.id); } }/>
+                    </td>
+                </tr>
+            );
+        });
+
+        return (
+            <div>
+                {overrideCheckbox}
+                <table className="selection-list">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td>Systems</td>
+                            <td>Departments</td>
+                            <td>Scale</td>
+                            <td>Talents</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {frames}
+                    </tbody>
+                </table>
+            </div>);
+    }
+
+}
+
+export default SpaceframeSelection;

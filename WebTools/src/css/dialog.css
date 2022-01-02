@@ -5,17 +5,71 @@
 .dialog-visible {
 }
 
-.dialog-bg {
+.dialog-bg, .modal-backdrop {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 200%;
+    width: 100vw;
+    height: 100vh;
     background-color: black;
-    opacity: .7;
+    opacity: .5;
     z-index: 100;
 }
 
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+}
+
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: .5rem;
+    pointer-events: none;
+}
+.modal-dialog {
+  max-width: 500px;
+  margin: 1.75rem auto;
+}
+.modal-dialog.modal-lg {
+  width: 75%;
+  max-width: 1000px;
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #9179B7;
+    color: white;
+    border-radius: 20px;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    outline: 0;
+}
+.modal-header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+}
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
+}
 .dialog-container {
     position: fixed;
     top: 50%;
@@ -29,30 +83,40 @@
     min-width: 300px;
     max-width: 500px;
     min-height: 5%;
-    max-height: 100%;
+    max-height: 90%;
     background-color: #9179B7;
     color: white;
     text-align: center;
     padding: 45px 15px 45px 15px;
     border-radius: 20px;
-    overflow-y: auto;
+    overflow-y: scroll;
     z-index: 150;
 }
+
 .dialog-container .dialog-header {
   margin-top: -30px;
   text-align: left;
 }
 
-.dialog-container .close {
+.modal-content .selection-header {
+  color: #cccccc;
+}
+
+.modal-content table.selection-list td {
+  border-bottom: 1px solid #aaaaaa;
+}
+
+.dialog-container .close, .modal-dialog .close {
   float: right;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
   color: #B5B3D8;
-  margin-top: -30px;
+  margin: -1rem -1rem -1rem auto;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  padding: 1rem 1rem;
 }
 
 .dialog-container.dialog-container-lg {
@@ -60,7 +124,7 @@
     max-width: 1000px;
 }
 
-.dialog-container .sheet-selection-item {
+.modal-dialog .sheet-selection-item {
     display: inline-block;
     padding: 20px;
     vertical-align: top;
@@ -71,28 +135,28 @@
     width: 242px;
 }
 
-.dialog-container .sheet-selection-item.selected {
+.modal-dialog .sheet-selection-item.selected {
     border: 1px solid white;
 }
 
-.dialog-container .sheet-selection-item  .sheet-selection-item-name {
+.modal-dialog .sheet-selection-item  .sheet-selection-item-name {
   width: 200px;
   min-height: 45px;
   text-align: center;
 }
 
-.dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail {
+.modal-dialog .sheet-selection-item  .sheet-selection-item-thumbnail {
     position: relative;
     width: 200px;
     height: 260px;
 }
 
-.dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail img.thumbnail {
+.modal-dialog .sheet-selection-item  .sheet-selection-item-thumbnail img.thumbnail {
     width: 200px;
     height: auto;
 }
 
-.dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail img.overlay {
+.modal-dialog .sheet-selection-item  .sheet-selection-item-thumbnail img.overlay {
   position: absolute;
   left: 50%;
   top: 75px;
@@ -101,26 +165,26 @@
 
 @media screen and (min-width: 0px) and (max-width: 1000px) {
 
-  .dialog-container.dialog-container-lg {
+  .modal-dialog.modal-lg {
       width: 90%;
       max-width: 90%;
   }
 
-  .dialog-container .sheet-selection-item {
+  .modal-dialog.sheet-selection-item {
     padding: 12px;
     width: 166px;
   }
-  .dialog-container .sheet-selection-item  .sheet-selection-item-thumbnail img.thumbnail {
+  .modal-dialog .sheet-selection-item  .sheet-selection-item-thumbnail img.thumbnail {
     width: 140px;
     height: 186px;
   }
 
-  .dialog-container .sheet-selection-item  .sheet-selection-item-name {
+  .modal-dialog .sheet-selection-item  .sheet-selection-item-name {
     width: 140px;
   }
 }
 
-.dialog-container .style-selections {
+.modal-dialog .style-selections {
     clear: both;
     max-height: 700px;
     overflow: scroll;

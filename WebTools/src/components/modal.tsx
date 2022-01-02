@@ -1,10 +1,12 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
 interface IModalProperties {
-    size?: string,
+    size?: string;
     show: boolean;
-    onClose?: () => void;
+    onClose: () => void;
     children?: React.ReactNode;
+    header: string;
 }
 
 class Modal extends React.Component<IModalProperties, {}> {
@@ -12,10 +14,19 @@ class Modal extends React.Component<IModalProperties, {}> {
     render() {
         return (
             <div className={this.props.show ? "dialog-visible": "dialog-hidden" }>
-                <div className="dialog-bg" onClick={() => { if (this.props.onClose) this.props.onClose() }}></div>
-                <div className={'dialog-container dialog-container-visible ' + (this.props.size === 'lg' ? 'dialog-container-lg' : '')} style={{ textAlign: 'left' }}>
-                    <button className="close" onClick={() => { if (this.props.onClose) this.props.onClose() } }><img src="static/img/close.png" style={{height: '24px', width: '24px'}} alt="Close" /></button>
-                    {this.props.children}
+                <div className="modal-backdrop"></div>
+                <div className="modal" onClick={() => { console.log('background action'); this.props.onClose(); } }>
+                    <div className={'modal-dialog ' + (this.props.size === 'lg' ? 'modal-lg' : '')}>
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5>{this.props.header}</h5>
+                                <button className="close" onClick={() => this.props.onClose() }><img src="static/img/close.png" style={{height: '24px', width: '24px'}} alt="Close" /></button>
+                            </div>
+                            <div className="modal-body">
+                                {this.props.children}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
@@ -24,3 +35,37 @@ class Modal extends React.Component<IModalProperties, {}> {
 }
 
 export default Modal;
+
+class ModalDialogControl {
+
+    size?: string;
+    onClose?: () => void;
+    children?: React.ReactNode;
+    header: string;
+
+    show(size?: string, onClose?: () => void, children?: React.ReactNode, header?: string) {
+        this.size = size;
+        this.onClose = onClose;
+        this.children = children;
+        this.header = header ? header : 'Select';
+        this.render(true);
+    }
+
+    hide() {
+        this.render(false);
+    }
+
+    private render(visible: boolean) {
+        ReactDOM.render(
+            React.createElement(Modal, {
+                show: visible,
+                onClose: () => { console.log('click close'); ModalControl.hide(); if (this.onClose) this.onClose();  },
+                size: this.size,
+                children: this.children,
+                header: this.header
+            }),
+            document.getElementById("dialog")
+        );
+    }
+}
+export const ModalControl = new ModalDialogControl();

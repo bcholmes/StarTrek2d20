@@ -10,8 +10,8 @@ class News extends React.Component<INewsProperties, {}> {
 
     render() {
         return (
-            <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()}>
-                <b>WHAT'S NEW? (v1.211231)</b>
+            <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.211231</b>
                 <ul>
                     <li>I've upgraded some of the underlying technologies used to build the site. For the most part, I'd expect the  
                         app to behave the same as before, but as with all broad-reaching changes, please let me know if you see  
