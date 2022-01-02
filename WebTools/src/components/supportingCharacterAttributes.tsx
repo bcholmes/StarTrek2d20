@@ -11,25 +11,9 @@ interface IValueProperties {
     onSelect: (index: number) => void;
 }
 
-interface IValueState {
-    isSelected: boolean;
-}
-
-class Value extends React.Component<IValueProperties, IValueState> {
-    constructor(props: IValueProperties) {
-        super(props);
-        this.state = {
-            isSelected: props.isSelected
-        }
-    }
-
-    static getDerivedStateFromProps(props: IValueProperties, state: IValueState) {
-        return {
-            isSelected: props.isSelected
-        }
-    }
+class Value extends React.Component<IValueProperties, {}> {
     render() {
-        const className = this.state.isSelected ? "die die-selected" : "die";
+        const className = this.props.isSelected ? "die die-selected" : "die";
 
         return (
             <div className={className} onClick={() => this.toggleSelection() }>
@@ -41,11 +25,7 @@ class Value extends React.Component<IValueProperties, IValueState> {
     }
 
     private toggleSelection() {        
-        let isSelected = !this.state.isSelected;
-        this.setState({
-            isSelected: isSelected
-        });
-        this.props.onSelect(isSelected ? this.props.index : -1);
+        this.props.onSelect(this.props.isSelected ? -1 : this.props.index);
     }
 }
 
@@ -54,49 +34,55 @@ interface IAttributeProperties {
     onUpdate: () => void;
 }
 
-export class SupportingCharacterAttributes extends React.Component<IAttributeProperties, {}> {
+interface IAttributeState {
+    selectedValue?: number;
+    assignedValues: number[];
+    checkedValues: number[];
+}
+
+export class SupportingCharacterAttributes extends React.Component<IAttributeProperties, IAttributeState> {
     private _values: number[];
-    private _assignedValues: number[];
-    private _selectedValue: number;
     private _species: SpeciesViewModel;
-    private _checkedValues: number[];
 
     constructor(props: IAttributeProperties) {
         super(props);
 
         this._values = [10, 9, 9, 8, 8, 7];
-        this._assignedValues = [0, 1, 2, 3, 4, 5];
-        this._checkedValues = [];
+        this.state = {
+            assignedValues: [0, 1, 2, 3, 4, 5],
+            checkedValues: []
+        };
 
         this._species = SpeciesHelper.getSpeciesByType(this.props.species);
 
-        this.updateCharacterAttributes();
+        this.updateCharacterAttributes(this.state.assignedValues, this.state.checkedValues);
     }
 
     set species(species: Species) {
         if (this.props.species !== species) {
-            this._checkedValues = [];
+            this._species = SpeciesHelper.getSpeciesByType(species);
+            this.updateCharacterAttributes(this.state.assignedValues, []);
+            this.setState({
+                ...this.state,
+                checkedValues: []
+            });
         }
-
-        this._species = SpeciesHelper.getSpeciesByType(species);
-
-        this.updateCharacterAttributes();
     }
 
     render() {
         const attributes = [Attribute.Control, Attribute.Daring, Attribute.Fitness, Attribute.Insight, Attribute.Presence, Attribute.Reason].map((a, i) => {
-            const val = this._values[this._assignedValues[a]];
+            const val = this._values[this.state.assignedValues[a]];
             const showCheckBoxes = this._species.attributes.length > 3;
             const speciesHasAttribute = !showCheckBoxes && this._species.attributes.indexOf(a) > -1;
-            const isChecked = this._checkedValues.indexOf(a) > -1;
+            const isChecked = this.state.checkedValues.indexOf(a) > -1;
 
             const checkBox = showCheckBoxes
                 ? (
                     <td>
                         <CheckBox
                             text=""
-                            value={this._checkedValues.indexOf(a) === -1 }
-                            isChecked={this._checkedValues.indexOf(a) > -1 }
+                            value={this.state.checkedValues.indexOf(a) === -1 }
+                            isChecked={this.state.checkedValues.indexOf(a) > -1 }
                             onChanged={(val) => this.checkAttribute(a, val) }/>
                     </td>
                   )
@@ -110,7 +96,7 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
                             index={a}
                             value={val}
                             onSelect={(index) => this.selectValue(index) }
-                            isSelected={this._selectedValue === a} />
+                            isSelected={this.state.selectedValue === a} />
                     </td>
                     {checkBox}
                     <td>{speciesHasAttribute || isChecked ? "+1" : "-"}</td>
@@ -143,54 +129,67 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
 
     private selectValue(index: number) {
         if (index > -1) {
-            if (this._selectedValue === undefined) {
-                this._selectedValue = index;
+            if (this.state.selectedValue === undefined) {
+                this.setState({
+                    ...this.state,
+                    selectedValue: index
+                });
+            } else {
+                this.swapValues(this.state.selectedValue, index);
             }
-            else {
-                this.swapValues(this._selectedValue, index);
-            }
-        }
-        else {
-            this._selectedValue = undefined;
+        } else {
+            this.setState({
+                ...this.state,
+                selectedValue: undefined
+            });
         }
     }
 
     private swapValues(from: number, to: number) {
-        const f = this._assignedValues[from];
-        const t = this._assignedValues[to];
+        let assignedValues = [...this.state.assignedValues];
+        const f = assignedValues[from];
+        const t = assignedValues[to];
 
-        this._assignedValues[from] = t;
-        this._assignedValues[to] = f;
+        assignedValues[from] = t;
+        assignedValues[to] = f;
 
-        this._selectedValue = undefined;
-
-        this.updateCharacterAttributes();
-        this.forceUpdate();
+        this.updateCharacterAttributes(assignedValues, this.state.checkedValues);
+        this.setState({
+            assignedValues: assignedValues,
+            selectedValue: undefined
+        });
     }
 
     private checkAttribute(attribute: Attribute, check: boolean) {
+        let checkedValues = [...this.state.checkedValues];
         if (check) {
-            this._checkedValues.push(attribute);
+            checkedValues.push(attribute);
 
-            if (this._checkedValues.length > 3) {
-                this._checkedValues.splice(0, 1);
+            if (checkedValues.length > 3) {
+                checkedValues.splice(0, 1);
             }
-        }
-        else {
-            this._checkedValues.splice(this._checkedValues.indexOf(attribute), 1);
+            this.setState({
+                ...this.state,
+                checkedValues: checkedValues
+            });    
+        } else {
+            checkedValues.splice(checkedValues.indexOf(attribute), 1);
+            this.setState({
+                ...this.state,
+                checkedValues: checkedValues
+            });    
         }
 
-        this.updateCharacterAttributes();
-        this.forceUpdate();
+        this.updateCharacterAttributes(this.state.assignedValues, checkedValues);
     }
 
-    private updateCharacterAttributes() {
+    private updateCharacterAttributes(assignedValues: number[], checkedValues: number[]) {
         [Attribute.Control, Attribute.Daring, Attribute.Fitness, Attribute.Insight, Attribute.Presence, Attribute.Reason].forEach(a => {
             const hasAttributeOptions = this._species.attributes.length > 3;
             const speciesHasAttribute = !hasAttributeOptions && this._species.attributes.indexOf(a) > -1;
-            const isChecked = this._checkedValues.indexOf(a) > -1;
+            const isChecked = checkedValues.indexOf(a) > -1;
 
-            character.attributes[a].value = this._values[this._assignedValues[a]];
+            character.attributes[a].value = this._values[assignedValues[a]];
 
             if (speciesHasAttribute || isChecked) {
                 character.attributes[a].value++;
