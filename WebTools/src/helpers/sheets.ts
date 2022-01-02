@@ -121,7 +121,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
 
         const talents = this.calculateTalentList();
 
-        const spaceframe = SpaceframeHelper.getSpaceframe(character.starship.spaceframe);
+        const spaceframe = character.starship.spaceframeModel;
         if (spaceframe) {
             this.fillField(form, 'Space Frame', spaceframe.name);
             this.fillField(form, 'Scale', spaceframe.scale.toString());
@@ -165,7 +165,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
     calculateTalentList() {
         let talents = [];
 
-        const spaceframe = SpaceframeHelper.getSpaceframe(character.starship.spaceframe);
+        const spaceframe = character.starship.spaceframeModel;
         if (spaceframe) {
             talents = [...spaceframe.talents.map(t => { return t.name; })];
         }
@@ -205,7 +205,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
         var result = [];
         var secondary = [];
         const talents = this.calculateTalentList();
-        const spaceframe = SpaceframeHelper.getSpaceframe(character.starship.spaceframe);
+        const spaceframe = character.starship.spaceframeModel;
         if (spaceframe) {
             for (var attack of spaceframe.attacks) {
 
@@ -300,7 +300,7 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
     populate(pdf: PDFDocument) {
         super.populate(pdf);
 
-        const spaceframe = SpaceframeHelper.getSpaceframe(character.starship.spaceframe);
+        const spaceframe = character.starship.spaceframeModel;
         if (spaceframe) {
             this.drawOutline(pdf, spaceframe.outline);
         } else {

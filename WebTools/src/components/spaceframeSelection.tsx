@@ -3,14 +3,14 @@ import * as React from 'react';
 import { CharacterType } from '../common/characterType';
 import { CheckBox } from './checkBox';
 import { Department } from '../helpers/departments';
-import { Spaceframe, SpaceframeHelper } from '../helpers/spaceframes';
+import { Spaceframe, SpaceframeHelper, SpaceframeViewModel } from '../helpers/spaceframes';
 import { System } from '../helpers/systems';
 
 interface ISpaceframeSelectionProperties {
     serviceYear: number;
     type: CharacterType;
     initialSelection?: Spaceframe;
-    onSelection: (s: Spaceframe) => void;
+    onSelection: (s: SpaceframeViewModel) => void;
 }
 
 interface ISpaceframeSelectionState {
@@ -75,7 +75,7 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
                             isChecked={this.props.initialSelection === f.id}
                             text=""
                             value={f.id}
-                            onChanged={(e) => { this.props.onSelection(f.id); } }/>
+                            onChanged={(e) => { this.props.onSelection(f); } }/>
                     </td>
                 </tr>
             );
@@ -84,7 +84,7 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
         return (
             <div>
                 {overrideCheckbox}
-                <table className="selection-list">
+                <table className="selection-list w-100">
                     <thead>
                         <tr>
                             <td></td>

@@ -15,8 +15,8 @@ class Modal extends React.Component<IModalProperties, {}> {
         return (
             <div className={this.props.show ? "dialog-visible": "dialog-hidden" }>
                 <div className="modal-backdrop"></div>
-                <div className="modal" onClick={() => { console.log('background action'); this.props.onClose(); } }>
-                    <div className={'modal-dialog ' + (this.props.size === 'lg' ? 'modal-lg' : '')}>
+                <div className="modal" onClick={() => { this.props.onClose(); } }>
+                    <div className={'modal-dialog ' + (this.props.size === 'lg' ? 'modal-lg' : '')} onClick={(e) => e.stopPropagation()}>
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5>{this.props.header}</h5>

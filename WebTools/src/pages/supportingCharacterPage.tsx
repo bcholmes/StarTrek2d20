@@ -1,5 +1,6 @@
 ﻿import * as React from 'react';
-import {character, CharacterTypeModel } from '../common/character';
+import {character } from '../common/character';
+import {CharacterTypeModel } from '../common/characterType';
 import {CharacterSerializer} from '../common/characterSerializer';
 import {Species, SpeciesHelper} from '../helpers/species';
 import {DropDownInput} from '../components/dropDownInput';

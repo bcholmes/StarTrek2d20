@@ -124,10 +124,12 @@ class SpaceframeModel {
 
 export class SpaceframeViewModel extends SpaceframeModel {
     id: Spaceframe;
+    isMissionPodAvailable: boolean;
 
     constructor(id: Spaceframe, base: SpaceframeModel) {
         super(base.type, base.name, base.serviceYear, base.eras, base.source, base.systems, base.departments, base.scale, base.attacks, base.talents, base.additionalTraits, base.maxServiceYear, base.outline);
         this.id = id;
+        this.isMissionPodAvailable = (id === Spaceframe.Nebula || id === Spaceframe.Luna);
     }
 }
 
@@ -1120,7 +1122,8 @@ class Spaceframes {
     }
 
     getSpaceframe(frame: Spaceframe) {
-        return this._frames[frame];
+        const result = this._frames[frame];
+        return result ? new SpaceframeViewModel(frame, result) : undefined;
     }
 
     getMissionPods() {

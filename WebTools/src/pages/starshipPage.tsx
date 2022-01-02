@@ -1,17 +1,15 @@
 ﻿import * as React from 'react';
-import {character, CharacterTypeModel, Starship} from '../common/character';
+import {character, Starship} from '../common/character';
+import {CharacterTypeModel} from '../common/characterType';
 import { CharacterType } from '../common/characterType';
 import {DropDownInput} from '../components/dropDownInput';
 import {Era} from '../helpers/eras';
-import {SpaceframeHelper, Spaceframe, MissionPod} from '../helpers/spaceframes';
+import {SpaceframeHelper, Spaceframe, MissionPod, SpaceframeViewModel} from '../helpers/spaceframes';
 import {MissionProfileHelper, MissionProfile} from '../helpers/missionProfiles';
-import {System} from '../helpers/systems';
-import {Department} from '../helpers/departments';
 import {TalentViewModel} from "../helpers/talents";
 import {Source} from "../helpers/sources";
 import {Skill} from "../helpers/skills";
 import {Button} from '../components/button';
-import {CheckBox} from "../components/checkBox";
 import {TalentSelectionList} from "../components/talentSelectionList";
 import {Refits} from "../components/refits";
 import {StarshipTalentSelection} from "../components/starshipTalentSelection";
@@ -20,6 +18,8 @@ import {CharacterSheetRegistry} from '../helpers/sheets';
 import { ModalControl } from '../components/modal';
 import SpaceframeSelection from '../components/spaceframeSelection';
 import StarshipStats from '../components/starshipStats';
+import MissionProfileSelection from '../components/missionProfileSelection';
+import MissionPodSelection from '../components/missionPodSelection';
 
 interface StarshipPageState {
     type: CharacterTypeModel
@@ -55,131 +55,112 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         };
     }
 
-    render() {
-
+    renderSpaceframeSection() {
         const spaceframes = SpaceframeHelper.getSpaceframes(character.starship.serviceYear, this.state.type.type, true);
-        let spaceframeTalents = undefined;
-        let selectedSpaceframe = undefined;
-        if (character.starship.spaceframe !== undefined) {
-            let frames = spaceframes.filter(f => f.id === character.starship.spaceframe);
-            if (frames.length > 0) {
-                // it's possible that someone chose a frame that's no longer valid because
-                // they subsequently changed other info (to, say, Klingon)
-                selectedSpaceframe = frames[0];
-                spaceframeTalents = selectedSpaceframe.talents.map(t => { return t.name });
-            } else {
+        // if other choices have changed, then the current spaceframe might be invalid
+        if (character.starship && character.starship.spaceframeModel) {
+            let frames = spaceframes.filter(f => f.id === character.starship.spaceframeModel.id);
+            if (frames.length === 0) {
                 character.starship.spaceframe = undefined;
+                character.starship.spaceframeModel = undefined;
             }
         }
 
-        let selectedSpaceframeDetails = (<div className="p-0"><h4 className="text-selection">No Selection</h4></div>);
-        if (selectedSpaceframe) {
+        let selectedSpaceframeDetails = (<div className="p-0"><h5 className="text-selection">No Selection</h5></div>);
+        if (character.starship.spaceframeModel) {
+            let talentList = character.starship.spaceframeModel.talents ? character.starship.spaceframeModel.talents.map(t => t.name).join(", ") : "None specified";
             selectedSpaceframeDetails = (
                 <div className="p-0">
-                    <h4 className="text-selection">{selectedSpaceframe.name}</h4>
-                    <StarshipStats model={selectedSpaceframe} type="spaceframe" />
+                    <h5 className="text-selection">{character.starship.spaceframeModel.name}</h5>
+                    <StarshipStats model={character.starship.spaceframeModel} type="spaceframe" />
+                    <p><b className="text-selection">Talents:</b> {talentList}</p>
                 </div>
             );
         }
-        const missionPods = character.starship.spaceframe === Spaceframe.Nebula ||
-                            character.starship.spaceframe === Spaceframe.Luna
-            ? (
-                <div className="panel">
-                    <div className="header-small">Mission Pod</div>
-                    <div className="page-text-aligned">
-                        This class of starship is fitted with a single Mission Pod, chosen from the list below.
-                    </div>
-                    <table className="selection-list">
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td>Systems</td>
-                                <td>Departments</td>
-                                <td>Talents</td>
-                                <td></td>
-                            </tr>
-                            {
-                                SpaceframeHelper.getMissionPods().map((p, i) => {
-                                    const systems = p.systems.map((s, si) => {
-                                        return (
-                                            <tr key={si}>
-                                                <td>{System[si]}</td>
-                                                <td>{s}</td>
-                                            </tr>
-                                        );
-                                    });
+        return selectedSpaceframeDetails;
+    }
 
-                                    const departments = p.departments.map((d, di) => {
-                                        return (
-                                            <tr key={di}>
-                                                <td>{Department[di]}</td>
-                                                <td>{d === 0 ? "-" : `+${d}`}</td>
-                                            </tr>
-                                        );
-                                    });
+    renderMissionProfilesSection() {
+        const profiles = MissionProfileHelper.getMissionProfiles(this.state.type.type);
+        let missionProfileModel = undefined;
+        // if other choices have changed, then the current spaceframe might be invalid
+        if (character.starship && character.starship.missionProfile !== undefined) {
+            let frames = profiles.filter(p => p.id === character.starship.missionProfile);
+            if (frames.length === 0) {
+                character.starship.missionProfile = undefined;
+            } else {
+                missionProfileModel = frames[0];
+            }
+        }
 
-                                    const talents = p.talents.map((t, ti) => {
-                                        if (t === null) {
-                                            console.log(t.name);
-                                        }
-
-                                        return (
-                                            <div key={ti}>{t.name}</div>
-                                        );
-                                    });
-                                    return (
-                                        <tr key={i}>
-                                            <td className="selection-header">{p.name}</td>
-                                            <td><table><tbody>{systems}</tbody></table></td>
-                                            <td><table><tbody>{departments}</tbody></table></td>
-                                            <td style={{ verticalAlign: "top" }}>{talents}</td>
-                                            <td>
-                                                <CheckBox
-                                                    isChecked={character.starship.missionPod === p.id}
-                                                    text=""
-                                                    value={p.id}
-                                                    onChanged={(val) => { this.onMissionPodSelected(p.id); } }/>
-                                            </td>
-                                        </tr>
-                                    );
-                                })
-                            }
-                        </tbody>
-                    </table>
-                    <br/> <br/>
+        let details = (<div className="p-0"><h5 className="text-selection">No Selection</h5></div>);
+        if (missionProfileModel) {
+            details = (
+                <div className="p-0">
+                    <h5 className="text-selection">{missionProfileModel.name}</h5>
+                    <StarshipStats model={missionProfileModel} type="missionProfile" />
                 </div>
-              )
-            : undefined;
-
-        const missionProfiles = MissionProfileHelper.getMissionProfiles(character.type).map((m, i) => {
-            const departments = m.departments.map((d, di) => {
-                return (
-                    <tr key={di}>
-                        <td>{Department[di]}</td>
-                        <td>{d}</td>
-                    </tr>
-                );
-            });
-
-            const talents = m.talents.map((t, ti) => {
-                return (<div key={ti}>{t.name}</div>);
-            });
-
-            return (
-                <tr key={i}>
-                    <td className="selection-header">{m.name}</td>
-                    <td><table><tbody>{departments}</tbody></table></td>
-                    <td style={{ verticalAlign: "top" }}>{talents}</td>
-                    <td>
-                        <CheckBox
-                            isChecked={character.starship.missionProfile === m.id}
-                            text=""
-                            value={m.id}
-                            onChanged={(val) => { this.onMissionProfileSelected(m.id); } }/>
-                    </td>
-                </tr>
             );
-        });
+        }
+        return details;
+    }
+
+    renderMissionPodsSection() {
+        if (character.starship && character.starship.spaceframeModel && character.starship.spaceframeModel.isMissionPodAvailable) {
+            const pods = SpaceframeHelper.getMissionPods();
+            let missionPodModel = undefined;
+            // if other choices have changed, then the current spaceframe might be invalid
+            if (character.starship && character.starship.missionPod !== undefined) {
+                let items = pods.filter(p => p.id === character.starship.missionPod);
+                if (items.length === 0) {
+                    character.starship.missionPod = undefined;
+                } else {
+                    missionPodModel = items[0];
+                }
+            }
+    
+            let details = (<div className="p-0"><h5 className="text-selection">No Selection</h5></div>);
+            if (missionPodModel) {
+                details = (
+                    <div className="p-0">
+                        <h5 className="text-selection">{missionPodModel.name}</h5>
+                        <StarshipStats model={missionPodModel} type="missionPod" />
+                    </div>
+                );
+            }
+            return details;
+    
+        } else {
+            character.starship.missionPod = undefined;
+            return undefined;
+        }
+    }
+
+
+    render() {
+        const selectedSpaceframeDetails = this.renderSpaceframeSection();
+        const missionProfilesDetails = this.renderMissionProfilesSection();
+        
+        let spaceframeTalents = [];
+        let missionPodDetails = undefined;
+        if (character.starship.spaceframeModel) {
+            spaceframeTalents = character.starship.spaceframeModel.talents.map(t => { return t.name });
+            if (character.starship.spaceframeModel.isMissionPodAvailable) {
+                missionPodDetails = (<div className="panel">
+                        <div className="header-small">Mission Pod</div>
+                        <div className="page-text-aligned">
+                            This class of starship is fitted with a single Mission Pod.
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '700px'}}>
+                                {this.renderMissionPodsSection()}
+                                <div className="p-0">
+                                    <Button className="button-small" text="Choose..." onClick={() => this.showModal('missionPod')} buttonType={true}/>
+                                </div>
+                            </div>
+                    </div>);
+            }
+        }
+
 
         if ((character.starship.spaceframe === Spaceframe.Nebula || character.starship.spaceframe === Spaceframe.Luna) && character.starship.missionPod !== undefined) {
             SpaceframeHelper.getMissionPod(character.starship.missionPod).talents.forEach(t => {
@@ -363,7 +344,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                                 The vessel's spaceframe is its basic superstructure, core systems, operation infrastructure, 
                                 and all the other elements that are common to every vessel of the same class.
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', width: '700px'}}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '700px'}}>
                                 {selectedSpaceframeDetails}
                                 <div className="p-0">
                                     <Button className="button-small" text="Choose..." onClick={() => this.showModal('spaceframes')} buttonType={true}/>
@@ -371,7 +352,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                             </div>
                         </div>
                         <br/><br/>
-                        {missionPods}
+                        {missionPodDetails}
                         <div className="panel">
                             <div className="header-small">Mission Profile</div>
                             <div className="page-text-aligned">
@@ -379,86 +360,11 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                                 It determines how the ship will be equipped, what facilities and personnel are assigned to
                                 it, and what kind of operations it will be expected to perform.
                             </div>
-                            <table className="selection-list">
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td>Departments</td>
-                                        <td>Talent options</td>
-                                        <td></td>
-                                    </tr>
-                                    {missionProfiles}
-                                </tbody>
-                            </table>
-                        </div>
-                        <br/><br/>
-                        <div className="panel">
-                            <div className="header-small">Stats</div>
-                            <div className="sheet-panel">
-                                <table className="sheet-section">
-                                    <tbody>
-                                        <tr>
-                                            <td className="bg-darker">COMMS</td>
-                                            <td className="bg-light border-dark-nopadding text-dark text-center">
-                                                {character.starship.systems[System.Comms]}
-                                            </td>
-                                            <td className="bg-darker">COMPUTERS</td>
-                                            <td className="bg-light border-dark-nopadding text-dark text-center">
-                                                {character.starship.systems[System.Computer]}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className="bg-darker">ENGINES</td>
-                                            <td className="bg-light border-dark-nopadding text-dark text-center">
-                                                {character.starship.systems[System.Engines]}
-                                            </td>
-                                            <td className="bg-darker">SENSORS</td>
-                                            <td className="bg-light border-dark-nopadding text-dark text-center">
-                                                {character.starship.systems[System.Sensors]}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className="bg-darker">STRUCTURE</td>
-                                            <td className="bg-light border-dark-nopadding text-dark text-center">
-                                                {character.starship.systems[System.Structure]}
-                                            </td>
-                                            <td className="bg-darker">WEAPONS</td>
-                                            <td className="bg-light border-dark-nopadding text-dark text-center">
-                                                {character.starship.systems[System.Weapons]}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className="bg-darkest">COMMAND</td>
-                                            <td className="bg-light border-dark-nopadding text-dark text-center">
-                                                {character.starship.departments[Department.Command]}
-                                            </td>
-                                            <td className="bg-darkest">CONN</td>
-                                            <td className="bg-light border-dark-nopadding text-dark text-center">
-                                                {character.starship.departments[Department.Conn]}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className="bg-darkest">SECURITY</td>
-                                            <td className="bg-light border-dark-nopadding text-dark text-center">
-                                                {character.starship.departments[Department.Security]}
-                                            </td>
-                                            <td className="bg-darkest">ENGINEERING</td>
-                                            <td className="bg-light border-dark-nopadding text-dark text-center">
-                                                {character.starship.departments[Department.Engineering]}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className="bg-darkest">SCIENCE</td>
-                                            <td className="bg-light border-dark-nopadding text-dark text-center">
-                                                {character.starship.departments[Department.Science]}
-                                            </td>
-                                            <td className="bg-darkest">MEDICINE</td>
-                                            <td className="bg-light border-dark-nopadding text-dark text-center">
-                                                {character.starship.departments[Department.Medicine]}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '700px'}}>
+                                {missionProfilesDetails}
+                                <div className="p-0">
+                                    <Button className="button-small" text="Choose..." onClick={() => this.showModal('missionProfile')} buttonType={true}/>
+                                </div>
                             </div>
                         </div>
                         <br/><br/>
@@ -510,7 +416,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                     <br/><br/>
                     <div className="starship-panel">
                         <div className="button-container">
-                            <Button text="Export to PDF" className="button-small" onClick={() => this.showDialog() } />
+                            <Button text="Export to PDF" className="button-small" onClick={() => this.showExportDialog() } />
                             <br/>
                         </div>
                     </div>
@@ -531,6 +437,10 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     modalHeader(name: string) {
         if (name === 'spaceframes') {
             return "Select a Spaceframe";
+        } else if (name === 'missionProfile') {
+            return "Select a Mission Profile";
+        } else if (name === 'missionPod') {
+            return "Select a Mission Pod";
         } else {
             return undefined;
         }
@@ -540,12 +450,18 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         if (name === 'spaceframes') {
             return (<SpaceframeSelection serviceYear={character.starship.serviceYear} type={character.type} 
                 initialSelection={character.starship.spaceframe} onSelection={(s) => { this.onSpaceframeSelected(s); this.closeModal() }} />);
-        } else {
+        } else if (name === 'missionProfile') {
+            return (<MissionProfileSelection type={character.type} 
+                initialSelection={character.starship.missionProfile} onSelection={(m) => { this.onMissionProfileSelected(m); this.closeModal() }} />);
+        } else if (name === 'missionPod') {
+            return (<MissionPodSelection 
+                initialSelection={character.starship.missionPod} onSelection={(m) => { this.onMissionPodSelected(m); this.closeModal() }} />);
+            } else {
             return undefined;
         }
     }
 
-    private showDialog() {
+    private showExportDialog() {
         CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(), "starship");
     }
 
@@ -582,13 +498,15 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         }
     }
 
-    private onSpaceframeSelected(spaceframe: Spaceframe) {
-        character.starship.spaceframe = spaceframe;
+    private onSpaceframeSelected(spaceframe: SpaceframeViewModel) {
+        character.starship.spaceframeModel = spaceframe;
+        character.starship.spaceframe = spaceframe.id;
         this.updateSystemAndDepartments();
         this.forceUpdate();
     }
 
     private onMissionPodSelected(pod: MissionPod) {
+        console.log("mission pod");
         character.starship.missionPod = pod;
         this.updateSystemAndDepartments();
         this.forceUpdate();
@@ -601,11 +519,11 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     }
 
     private updateSystemAndDepartments() {
-        if (character.starship.spaceframe === undefined || character.starship.missionProfile === undefined) {
+        if (character.starship.spaceframeModel === undefined || character.starship.missionProfile === undefined) {
             return;
         }
 
-        const frame = SpaceframeHelper.getSpaceframe(character.starship.spaceframe);
+        const frame = character.starship.spaceframeModel;
         const missionPod = SpaceframeHelper.getMissionPod(character.starship.missionPod);
         const profile = MissionProfileHelper.getMissionProfile(character.starship.missionProfile, character.type);
 
@@ -643,10 +561,10 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
             numTalents++;
         }
 
-        if (character.starship.spaceframe !== undefined) {
-            numTalents += SpaceframeHelper.getSpaceframe(character.starship.spaceframe).talents.length;
+        if (character.starship.spaceframeModel !== undefined) {
+            numTalents += character.starship.spaceframeModel.talents.length;
 
-            if (character.starship.spaceframe === Spaceframe.Nebula) {
+            if (character.starship.spaceframeModel.id === Spaceframe.Nebula) {
                 numTalents += 2;
             }
         }

@@ -9,7 +9,7 @@ import {Track} from '../helpers/tracks';
 import {Upbringing} from '../helpers/upbringings';
 import {Workflow} from '../helpers/workflows';
 import {TalentsHelper} from '../helpers/talents';
-import {Spaceframe, MissionPod} from '../helpers/spaceframes';
+import {Spaceframe, MissionPod, SpaceframeViewModel} from '../helpers/spaceframes';
 import {MissionProfile} from "../helpers/missionProfiles";
 import {CharacterType} from './characterType';
 
@@ -49,6 +49,7 @@ export class Starship {
     traits: string = "";
     serviceYear?: number;
     spaceframe?: Spaceframe = undefined;
+    spaceframeModel?: SpaceframeViewModel = undefined;
     missionPod?: MissionPod;
     missionProfile?: MissionProfile;
     systems: number[];
@@ -61,30 +62,6 @@ export class Starship {
         this.systems = [];
         this.departments = [];
         this.scale = 0;
-    }
-}
-
-export class CharacterTypeModel {
-    private static TYPES: CharacterTypeModel[] = [ 
-        new CharacterTypeModel("Federation/Starfleet", CharacterType.Starfleet),
-        new CharacterTypeModel("Klingon Empire", CharacterType.KlingonWarrior),
-        new CharacterTypeModel("Other", CharacterType.Other)
-    ];
-    
-    name: string;
-    type: CharacterType;
-
-    constructor(name: string, type: CharacterType) {
-        this.name = name;
-        this.type = type;
-    }
-
-    public static getAllTypes() {
-        return CharacterTypeModel.TYPES;
-    }
-
-    public static getStarshipTypes() {
-        return [ CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1] ]; 
     }
 }
 

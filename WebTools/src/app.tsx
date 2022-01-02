@@ -67,7 +67,7 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
         const page = this.pageFactory.createPage(this.state.activePage);
 
         return [
-            <div className="lcar-container">
+            <div className="lcar-container" key="main-container">
                 <div className="lcar-header">
                     <div className="lcar-header-start"><a href="index.html"><img src="./static/img/logo.png" className="logo" alt="Star Trek Adventures Logo"/></a></div>
                     <div></div>
@@ -105,9 +105,9 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
                     TM &amp; &copy; 2018 CBS Studios Inc. STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.
                 </div>
             </div>,
-            <AppVersion />,
-            <div id="dialog"></div>,
-            <News showModal={this.state.showNews} onClose={() => {this.hideNews()}}/>
+            <AppVersion key="app-version"/>,
+            <div id="dialog" key="modal-dialog"></div>,
+            <News showModal={this.state.showNews} onClose={() => {this.hideNews()}} key="news"/>
         ];
     }
 
