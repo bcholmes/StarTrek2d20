@@ -11,11 +11,15 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
-                <b>v1.211231</b>
+                <b>v1.220103</b>
                 <ul>
                     <li>I've upgraded some of the underlying technologies used to build the site. For the most part, I'd expect the  
                         app to behave the same as before, but as with all broad-reaching changes, please let me know if you see  
                         any odd behaviour.
+                    </li>
+                    <li>I've made a number of revisions to the starship creation process, including adding the ability to create
+                        custom spaceframes. If you ever wanted to try out a spaceframe from Continuing Missions, or you had your
+                        own stats for a <i>Loknar</i> Class, this update should help you.
                     </li>
                 </ul>
                 <b>v1.211023</b>

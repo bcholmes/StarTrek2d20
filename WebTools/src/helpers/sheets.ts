@@ -11,20 +11,8 @@ import { MissionProfileHelper } from '../helpers/missionProfiles';
 import { Department } from './departments';
 import { System } from './systems';
 import { StarshipSerializer } from '../common/starshipSerializer';
+import { Weapon } from './weapons';
 import { DEFAULT_OUTLINE } from './spaceframes';
-
-class Weapon {
-    name: string;
-    dice: number;
-    qualities: string;
-
-    constructor(name: string, dice: number, qualities: string) {
-        this.name = name;
-        this.dice = dice;
-        this.qualities = qualities;
-    }
-}
-
 
 export interface ICharacterSheet {
     getName(): string;
@@ -212,17 +200,17 @@ abstract class BasicStarshipSheet extends BasicSheet {
                 if (attack === 'Photon Torpedoes') {
                     result.push(new Weapon(attack, 3, "High Yield"));
                 } else if (attack === 'Phaser Cannons' || attack === 'Phase Cannons') {
-                    result.push(new Weapon(attack, (character.starship.scale || 0) + 2, "Versatile 2"));
+                    result.push(new Weapon(attack, (character.starship.scale || 0) + 2, "Versatile 2", true));
                 } else if (attack === 'Phaser Banks') {
-                    result.push(new Weapon(attack, (character.starship.scale || 0) + 1, "Versatile 2"));
+                    result.push(new Weapon(attack, (character.starship.scale || 0) + 1, "Versatile 2", true));
                 } else if (attack === 'Phaser Arrays') {
-                    result.push(new Weapon(attack, (character.starship.scale || 0), "Versatile 2, Area or Spread"));
+                    result.push(new Weapon(attack, (character.starship.scale || 0), "Versatile 2, Area or Spread", true));
                 } else if (attack === 'Disruptor Cannons') {
-                    result.push(new Weapon(attack, (character.starship.scale || 0) + 2, "Viscious 1"));
+                    result.push(new Weapon(attack, (character.starship.scale || 0) + 2, "Viscious 1", true));
                 } else if (attack === 'Disruptor Banks') {
-                    result.push(new Weapon(attack, (character.starship.scale || 0) + 1, "Viscious 1"));
+                    result.push(new Weapon(attack, (character.starship.scale || 0) + 1, "Viscious 1", true));
                 } else if (attack === 'Disruptor Arrays') {
-                    result.push(new Weapon(attack, (character.starship.scale || 0), "Viscious 1, Area or Spread"));
+                    result.push(new Weapon(attack, (character.starship.scale || 0), "Viscious 1, Area or Spread", true));
                 } else if (attack === 'Plasma Torpedoes') {
                     result.push(new Weapon(attack, 3, "Persistent, Calibration"));
                 } else if (attack.indexOf('Tractor Beam') >= 0 || attack.indexOf('Grappler Cables') >= 0) {

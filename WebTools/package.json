@@ -1,7 +1,7 @@
 {
-  "version": "1.220101",
+  "version": "1.220103",
   "name": "startrek",
-  "author": "Christoffer Lundberg",
+  "author": "Christoffer Lundberg, BC Holmes",
   "license": "ISC",
   "main": "src/app.tsx",
   "private": true,

@@ -25,6 +25,9 @@ $lcars-very-light-pink: #f7bbdd;
 .pt-2 {
     padding-top: 0.5rem !important;
 }
+.pb-2 {
+    padding-bottom: 0.5rem !important;
+}
 
 
 #mainBody {
@@ -93,13 +96,14 @@ h5 {
     display: inline-block;
     padding: 4px;
     width: 100px;
-    border-radius: 10px 0 0 10px;
+    border-radius: 15px 0 0 15px;
     text-align: right;
     text-transform: uppercase;
     height: 30px;
     margin: 0 0.25rem 0 0;
     font-family: lcars;
     font-size: large;
+    background-color: $lcars-purple;
 }
 
 .stat-name.purple, .stat-value.purple {
@@ -130,11 +134,12 @@ h5 {
     background-color: black;
     color: white;
     padding: 4px;
-    width: 100px;
+    padding-right: 10px;
+    width: 105px;
     height: 30px;
     text-align: center;
     border: 2px solid #906F9A;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 15px 15px 0;
 }
 
 .stats-block, .panel div.stats-block {
@@ -543,10 +548,10 @@ a:hover {
     color: white;
     max-width: 90%;
     border-radius: 0px;
-    padding: 5px;
+    padding: 5px 5px 10px 5px;
 }
 
-.panel div {
+.panel > div {
     padding: 5px;
 }
 

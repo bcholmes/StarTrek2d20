@@ -24,11 +24,11 @@ export class AttributeImprovement extends React.Component<IAttributeImprovementP
             : undefined;
 
         return (
-            <div>
-                <div className="attribute-container">
+            <div className="stat pb-2">
+                <div className="stat-entry-name purple">
                     {AttributesHelper.getAttributeName(attribute) }
                 </div>
-                <div className="attribute-value">
+                <div className="stat-entry-value">
                     {dec}
                     {value}
                     {inc}

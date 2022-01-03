@@ -1,0 +1,26 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.row-cols-md-3 > * {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+}
+
+@media screen and (min-width: 0px) and (max-width: 975px) {
+    .row-cols-md-3 > * {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.col {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    padding-right: 5px;
+    padding-left: 5px;
+}

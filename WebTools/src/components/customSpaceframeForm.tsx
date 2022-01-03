@@ -1,9 +1,14 @@
 import * as React from 'react';
+import { character } from '../common/character';
+import { CharacterType } from '../common/characterType';
 import { Department } from '../helpers/departments';
 
 import { SpaceframeViewModel } from '../helpers/spaceframes';
 import { System } from '../helpers/systems';
+import { TalentsHelper } from '../helpers/talents';
+import StarshipWeaponRegistry, { Weapon } from '../helpers/weapons';
 import { Button } from './button';
+import { CheckBox } from './checkBox';
 
 interface IStatControlProperties {
     statName: string;
@@ -53,8 +58,12 @@ interface ICustomSpacefraemState {
     systems: number[];
     scale: number;
     serviceYear: number;
+    weapons: string[];
+    talents: string[];
 }
 class CustomSpaceframeForm extends React.Component<ICustomSpacefraemProperties, ICustomSpacefraemState> {
+
+    weapons: Weapon[];
 
     constructor(props: ICustomSpacefraemProperties) {
         super(props);
@@ -63,11 +72,21 @@ class CustomSpaceframeForm extends React.Component<ICustomSpacefraemProperties, 
             departments: [...this.props.initialSelection.departments],
             systems: [...this.props.initialSelection.systems],
             scale: this.props.initialSelection.scale,
-            serviceYear: this.props.initialSelection.serviceYear
+            serviceYear: this.props.initialSelection.serviceYear,
+            weapons: [],
+            talents: []
         }
+
+        this.weapons = StarshipWeaponRegistry.availableWeapons(character.type, character.era);
     }
 
     render() {
+        let weaponList = this.weapons.map((w, i) => { return (<div className="col" key={'weapon-' + i}><CheckBox
+            isChecked={this.isWeaponAdded(w)}
+            value={i}
+            text={w.description}
+            onChanged={(e) =>  { this.toggleWeapon(w)} } /></div>);} );
+
         return (
             <div>
                 <div className="panel">
@@ -179,10 +198,55 @@ class CustomSpaceframeForm extends React.Component<ICustomSpacefraemProperties, 
                     </div>
                 </div>
 
+                <div className="panel">
+                    <div className="page-text">What weapons are built in to this spaceframe?</div>
+                    <div className="row row-cols-md-3">
+                        {weaponList}
+                    </div>
+                </div>
+
                 <div className="button-container-centered">
                     <Button className="button-small" onClick={() => this.props.onComplete(this.createSpaceframe()) } text="OK" />
                 </div>
             </div>);
+    }
+
+    isWeaponAdded(weapon: Weapon) {
+        return this.state.weapons.indexOf(weapon.description) >= 0;
+    }
+
+    toggleWeapon(weapon: Weapon) {
+        if (this.isWeaponAdded(weapon)) {
+            this.setState((state) => {
+                let weapons = state.weapons;
+                if (weapons.indexOf(weapon.description) >=0) {
+                    weapons.splice(weapons.indexOf(weapon.description), 1);
+                }
+                let talents = state.talents;
+                if (talents.indexOf(weapon.description) >=0) {
+                    talents.splice(weapons.indexOf(weapon.description), 1);
+                }
+                return {
+                    ...state,
+                    weapons: weapons,
+                    talents: talents
+                };
+            });
+        } else {
+            this.setState((state) => {
+                let weapons = state.weapons;
+                weapons.push(weapon.description);
+                let talents = state.talents;
+                if (weapon.requiresTalent && talents.indexOf(weapon.description) < 0) {
+                    talents.push(weapon.description);
+                }
+                return {
+                    ...state,
+                    weapons: weapons,
+                    talents: talents
+                };
+            });
+        }
     }
 
     setScale(delta: number) {
@@ -220,6 +284,20 @@ class CustomSpaceframeForm extends React.Component<ICustomSpacefraemProperties, 
         result.scale = this.state.scale;
         result.systems = this.state.systems;
         result.departments = this.state.departments;
+        result.attacks = this.state.weapons;
+        if (character.type === CharacterType.KlingonWarrior) {
+            result.additionalTraits = [ "Klingon Starship" ];
+        } else if (character.type === CharacterType.Starfleet) {
+            result.additionalTraits = [ "Federation Starship" ];
+        }
+        let talentList = [];
+        this.state.talents.forEach((t) => {
+            const talent = TalentsHelper.getTalent(t);
+            if (talent) {
+                talentList.push(talent);
+            }
+        });
+        result.talents = talentList;
         return result;
     }
 }

@@ -13,7 +13,7 @@ export class CheckBox extends React.Component<ICheckBoxProperties, {}> {
         const {value, onChanged, isChecked, text} = this.props;
 
         return (
-            <div>
+            <div style={{ paddingTop: '0.25rem', paddingBottom: '0.25rem'}}>
                 <input type="checkbox" value={value} onChange={e => onChanged(value) } checked={isChecked} 
                     onClick={(e) => { e.stopPropagation(); }} />
                 <span className="checkbox-text">{text}</span>

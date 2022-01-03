@@ -60,7 +60,7 @@ class ModalDialogControl {
             ReactDOM.render(
                 React.createElement(Modal, {
                     show: visible,
-                    onClose: () => { console.log('click close'); ModalControl.hide(); if (this.onClose) this.onClose();  },
+                    onClose: () => { ModalControl.hide(); if (this.onClose) this.onClose();  },
                     size: this.size,
                     children: this.children,
                     header: this.header

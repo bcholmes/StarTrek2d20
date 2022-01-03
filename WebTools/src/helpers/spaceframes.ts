@@ -778,7 +778,7 @@ class Spaceframes {
             [
                 "Disruptor Cannons",
                 "Photon Torpedoes",
-                "Tractor Bean (Strength 2)"
+                "Tractor Beam (Strength 2)"
             ],
             [
                 TalentsHelper.getTalent("High Resolution Sensors"),
@@ -802,7 +802,7 @@ class Spaceframes {
                 "Disruptor Cannons",
                 "Phaser Banks",
                 "Photon Torpedoes",
-                "Tractor Bean (Strength 3)"
+                "Tractor Beam (Strength 3)"
             ],
             [
                 TalentsHelper.getTalent("Cloaking Device"),
@@ -826,7 +826,7 @@ class Spaceframes {
             [
                 "Disruptor Cannons",
                 "Photon Torpedoes",
-                "Tractor Bean (Strength 2)"
+                "Tractor Beam (Strength 2)"
             ],
             [
                 TalentsHelper.getTalent("Cloaking Device"),
@@ -850,7 +850,7 @@ class Spaceframes {
             [
                 "Disruptor Cannons",
                 "Photon Torpedoes",
-                "Tractor Bean (Strength 4)"
+                "Tractor Beam (Strength 4)"
             ],
             [
                 TalentsHelper.getTalent("Advanced Medical Ward"),
@@ -890,7 +890,7 @@ class Spaceframes {
             [
                 "Disruptor Cannons",
                 "Photon Torpedoes",
-                "Tractor Bean (Strength 3)"
+                "Tractor Beam (Strength 3)"
             ],
             [
                 TalentsHelper.getTalent("High Resolution Sensors"),
@@ -913,7 +913,7 @@ class Spaceframes {
                 "Disruptor Cannons",
                 "Disruptor Banks",
                 "Photon Torpedoes",
-                "Tractor Bean (Strength 3)"
+                "Tractor Beam (Strength 3)"
             ],
             [
                 TalentsHelper.getTalent("Backup EPS Conduits"),
@@ -938,7 +938,7 @@ class Spaceframes {
             4,
             [
                 "Disruptor Banks",
-                "Tractor Bean (Strength 3)"
+                "Tractor Beam (Strength 3)"
             ],
             [
                 TalentsHelper.getTalent("Redundant Systems"),
@@ -962,7 +962,7 @@ class Spaceframes {
                 "Disruptor Banks",
                 "Disruptor Arrays",
                 "Photon Torpedoes",
-                "Tractor Bean (Strength 4)"
+                "Tractor Beam (Strength 4)"
             ],
             [
                 TalentsHelper.getTalent("Cloaking Device"),
@@ -986,7 +986,7 @@ class Spaceframes {
             5,
             [
                 "Disruptor Banks",
-                "Tractor Bean (Strength 4)"
+                "Tractor Beam (Strength 4)"
             ],
             [
                 TalentsHelper.getTalent("Modular Cargo Pods"),
@@ -1031,7 +1031,7 @@ class Spaceframes {
                 "Disruptor Cannons",
                 "Disruptor Banks",
                 "Photon Torpedoes",
-                "Tractor Bean (Strength 4)"
+                "Tractor Beam (Strength 4)"
             ],
             [
                 TalentsHelper.getTalent("Cloaking Device"),
@@ -1056,7 +1056,7 @@ class Spaceframes {
                 "Disruptor Cannons",
                 "Disruptor Arrays",
                 "Photon Torpedoes",
-                "Tractor Bean (Strength 5)"
+                "Tractor Beam (Strength 5)"
             ],
             [
                 TalentsHelper.getTalent("Cloaking Device"),
