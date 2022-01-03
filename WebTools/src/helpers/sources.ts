@@ -12,7 +12,9 @@
     Voyager,
     KlingonCore,
     ShackletonExpanse,
-    IdwYearFive
+    IdwYearFive,
+
+    None
 }
 
 class SourceViewModel {
@@ -56,7 +58,10 @@ class Sources {
 
     getSourceName(sources: Source[]) {
         var result = "";
-        sources.forEach((s) => { result = (result === "") ? this._sources[s] : (result + ", " + this._sources[s]) })
+        sources.forEach((s) => { if (s !== Source.None) {
+                result = (result === "") ? this._sources[s] : (result + ", " + this._sources[s]);
+            } 
+        });
         return result;
     }
 }

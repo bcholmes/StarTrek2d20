@@ -20,6 +20,7 @@ import SpaceframeSelection from '../components/spaceframeSelection';
 import StarshipStats from '../components/starshipStats';
 import MissionProfileSelection from '../components/missionProfileSelection';
 import MissionPodSelection from '../components/missionPodSelection';
+import CustomSpaceframeForm from '../components/customSpaceframeForm';
 
 interface StarshipPageState {
     type: CharacterTypeModel
@@ -59,18 +60,26 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         const spaceframes = SpaceframeHelper.getSpaceframes(character.starship.serviceYear, this.state.type.type, true);
         // if other choices have changed, then the current spaceframe might be invalid
         if (character.starship && character.starship.spaceframeModel) {
-            let frames = spaceframes.filter(f => f.id === character.starship.spaceframeModel.id);
-            if (frames.length === 0) {
-                character.starship.spaceframeModel = undefined;
+            if (character.starship.spaceframeModel.isCustom) {
+                // check type and year?
+            } else {
+
+                let frames = spaceframes.filter(f => f.id === character.starship.spaceframeModel.id);
+                if (frames.length === 0) {
+                    character.starship.spaceframeModel = undefined;
+                }
             }
         }
 
         let selectedSpaceframeDetails = (<div className="p-0"><h5 className="text-selection">No Selection</h5></div>);
         if (character.starship.spaceframeModel) {
             let talentList = character.starship.spaceframeModel.talents ? character.starship.spaceframeModel.talents.map(t => t.name).join(", ") : "None specified";
+            if (!talentList) {
+                talentList = "None";
+            }
             selectedSpaceframeDetails = (
                 <div className="p-0">
-                    <h5 className="text-selection">{character.starship.spaceframeModel.name}</h5>
+                    <h5 className="text-selection">{character.starship.spaceframeModel.name ? character.starship.spaceframeModel.name : "Unnamed Class"}</h5>
                     <StarshipStats model={character.starship.spaceframeModel} type="spaceframe" />
                     <p><b className="text-selection">Talents:</b> {talentList}</p>
                 </div>
@@ -153,7 +162,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                         <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '700px'}}>
                                 {this.renderMissionPodsSection()}
                                 <div className="p-0">
-                                    <Button className="button-small" text="Choose..." onClick={() => this.showModal('missionPod')} buttonType={true}/>
+                                    <Button className="button-small" text="Choose" onClick={() => this.showModal('missionPod')} buttonType={true}/>
                                 </div>
                             </div>
                     </div>);
@@ -344,7 +353,12 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                             <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '700px'}}>
                                 {selectedSpaceframeDetails}
                                 <div className="p-0">
-                                    <Button className="button-small" text="Choose..." onClick={() => this.showModal('spaceframes')} buttonType={true}/>
+                                    <div className="p-0">
+                                        <Button className="button-small" text="Choose" onClick={() => this.showModal('spaceframes')} buttonType={true}/>
+                                    </div>
+                                    <div className="p-0 pt-2">
+                                        <Button className="button-small" text="Custom" onClick={() => this.showModal('customSpaceframe')} buttonType={true}/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -360,7 +374,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                             <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '700px'}}>
                                 {missionProfilesDetails}
                                 <div className="p-0">
-                                    <Button className="button-small" text="Choose..." onClick={() => this.showModal('missionProfile')} buttonType={true}/>
+                                    <Button className="button-small" text="Choose" onClick={() => this.showModal('missionProfile')} buttonType={true}/>
                                 </div>
                             </div>
                         </div>
@@ -438,6 +452,8 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
             return "Select a Mission Profile";
         } else if (name === 'missionPod') {
             return "Select a Mission Pod";
+        } else if (name === 'customSpaceframe') {
+            return "Provide details about your Spaceframe";
         } else {
             return undefined;
         }
@@ -447,6 +463,9 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         if (name === 'spaceframes') {
             return (<SpaceframeSelection serviceYear={character.starship.serviceYear} type={character.type} 
                 initialSelection={character.starship.spaceframeModel} onSelection={(s) => { this.onSpaceframeSelected(s); this.closeModal() }} />);
+        } else if (name === 'customSpaceframe') {
+            return (<CustomSpaceframeForm  
+                initialSelection={this.createOrReuseCustomSpaceframe()} onComplete={(s) => { this.onSpaceframeSelected(s); this.closeModal() }} />);
         } else if (name === 'missionProfile') {
             return (<MissionProfileSelection type={character.type} 
                 initialSelection={character.starship.missionProfile} onSelection={(m) => { this.onMissionProfileSelected(m); this.closeModal() }} />);
@@ -468,6 +487,14 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
     private getSelectedType() {
         return this.state.type.name;
+    }
+
+    createOrReuseCustomSpaceframe() {
+        if (character.starship && character.starship.spaceframeModel && character.starship.spaceframeModel.isCustom) {
+            return character.starship.spaceframeModel;
+        } else {
+            return SpaceframeViewModel.createCustomSpaceframe(character.type, character.starship.serviceYear, [ character.era ]);
+        }
     }
 
     private selectType(index: number) {

@@ -42,9 +42,12 @@
     text-transform: uppercase;
 }
 
-.button-container-centered .button {
-    margin-left: auto;
-    margin-right: auto;
+.button-container-centered {
+
+    .button, .button-small {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .checkbox-text {
@@ -173,6 +176,10 @@
     animation: desc-flyin .4s ease;
 }
 
+label.textinput-label {
+    display: inline-block;
+    padding: 5px;
+}
 .textinput-label {
     background-color: #DE84B7;
     color: black;

@@ -125,11 +125,22 @@ class SpaceframeModel {
 export class SpaceframeViewModel extends SpaceframeModel {
     id: Spaceframe;
     isMissionPodAvailable: boolean;
+    isCustom: boolean;
 
-    constructor(id: Spaceframe, base: SpaceframeModel) {
-        super(base.type, base.name, base.serviceYear, base.eras, base.source, base.systems, base.departments, base.scale, base.attacks, base.talents, base.additionalTraits, base.maxServiceYear, base.outline);
+    constructor(type: CharacterType, name: string, serviceYear: number, eras: Era[], source: Source, systems: number[], departments: number[], scale: number, attacks: string[], talents: TalentModel[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999, outline: string = DEFAULT_OUTLINE, id?: Spaceframe) {
+        super(type, name, serviceYear, eras, source, systems, departments, scale, attacks, talents, additionalTraits, maxServiceYear, outline);
         this.id = id;
+        this.isCustom = (id === undefined || source === Source.None);
         this.isMissionPodAvailable = (id === Spaceframe.Nebula || id === Spaceframe.Luna);
+    }
+
+    static createCustomSpaceframe(type: CharacterType, serviceYear: number, eras: Era[]) {
+        return new SpaceframeViewModel(type, "", serviceYear, eras, Source.None, [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [], []);
+    }
+
+    static from(id: Spaceframe, base: SpaceframeModel) {
+        return new SpaceframeViewModel(base.type, base.name, base.serviceYear, base.eras, base.source, base.systems, base.departments, base.scale, 
+            base.attacks, base.talents, base.additionalTraits, base.maxServiceYear, base.outline, id);
     }
 }
 
@@ -1112,7 +1123,7 @@ class Spaceframes {
             let f = this._frames[frame];
             if (f.serviceYear <= year && (f.maxServiceYear >= year || ignoreMaxServiceYear)) {
                 if (character.hasSource(f.source) && type === f.type) {
-                    frames.push(new SpaceframeViewModel(n, f));
+                    frames.push(SpaceframeViewModel.from(n, f));
                 }
             }
             n++;
@@ -1123,7 +1134,7 @@ class Spaceframes {
 
     getSpaceframe(frame: Spaceframe) {
         const result = this._frames[frame];
-        return result ? new SpaceframeViewModel(frame, result) : undefined;
+        return result ? SpaceframeViewModel.from(frame, result) : undefined;
     }
 
     getMissionPods() {

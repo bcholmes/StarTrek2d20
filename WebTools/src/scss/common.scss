@@ -5,6 +5,16 @@
     font-style: normal;
 }
 
+$lcars-salmon: #CC6666;
+$lcars-purple: #906F9A;
+$lcars-brighter-purple: #9179B7;
+$lcars-orange: #F89B24;
+$lcars-pink: orchid;
+$lcars-dull-purple: #B5B3D8; // used for buttons
+$lcars-light-orange: #FFCC66;
+$lcars-light-pink: #DE84B7;
+$lcars-very-light-pink: #f7bbdd;
+
 .p-0 {
     padding: 0 !important;
 }
@@ -77,6 +87,21 @@ h5 {
     height: 14px;
     margin: 0 0.25rem 0 0;
 }
+
+.stat-entry-name {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 4px;
+    width: 100px;
+    border-radius: 10px 0 0 10px;
+    text-align: right;
+    text-transform: uppercase;
+    height: 30px;
+    margin: 0 0.25rem 0 0;
+    font-family: lcars;
+    font-size: large;
+}
+
 .stat-name.purple, .stat-value.purple {
     background-color: #906F9A;
 }
@@ -85,18 +110,6 @@ h5 {
 }
 .stat-name.red, .stat-value.red {
     background-color: #CC6666;
-}
-
-.stats-block, .panel div.stats-block {
-    padding: 0;
-}
-
-.stats-row, .stat, .panel div.stat, .panel div.stats-row {
-    padding: 0 15px 3px 0;
-}
-
-.stats-row {
-    display: flex;
 }
 
 .stat-value {
@@ -108,6 +121,37 @@ h5 {
     text-transform: uppercase;
     height: 14px;
     margin: 0;
+}
+
+
+.stat-entry-value {
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding: 4px;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    border: 2px solid #906F9A;
+    border-radius: 0 10px 10px 0;
+}
+
+.stats-block, .panel div.stats-block {
+    padding: 0;
+}
+
+.stats-row, .stat, .panel div.stat, .panel div.stats-row {
+    padding: 0 15px 3px 0;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+}
+
+.stats-row {
+    display: flex;
 }
 
 @media screen and (min-width: 0px) and (max-width: 975px) {

@@ -28,6 +28,22 @@
     outline: 0;
 }
 
+.modal-content {
+    input[type=text], input[type=number] {
+      background-color: black;
+    }
+
+    .stat-entry-name {
+        background-color: $lcars-light-pink;
+        border-color: $lcars-light-pink;
+        color: black;
+    }
+
+    .stat-entry-value {
+        border-color: $lcars-light-pink;
+    }
+}
+
 .modal-dialog {
     position: relative;
     width: auto;

@@ -9,7 +9,7 @@ import { PageIdentity } from './pages/pageIdentity';
 import { History } from './components/history';
 import { CharacterSheet } from './components/characterSheet';
 
-import './css/main.css';
+import './scss/main.scss';
 
 interface IAppState {
     showNews: boolean;

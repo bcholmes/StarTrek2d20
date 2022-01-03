@@ -56,16 +56,20 @@ class ModalDialogControl {
     }
 
     private render(visible: boolean) {
-        ReactDOM.render(
-            React.createElement(Modal, {
-                show: visible,
-                onClose: () => { console.log('click close'); ModalControl.hide(); if (this.onClose) this.onClose();  },
-                size: this.size,
-                children: this.children,
-                header: this.header
-            }),
-            document.getElementById("dialog")
-        );
+        if (visible) {
+            ReactDOM.render(
+                React.createElement(Modal, {
+                    show: visible,
+                    onClose: () => { console.log('click close'); ModalControl.hide(); if (this.onClose) this.onClose();  },
+                    size: this.size,
+                    children: this.children,
+                    header: this.header
+                }),
+                document.getElementById("dialog")
+            );
+        } else {
+            ReactDOM.unmountComponentAtNode(document.getElementById("dialog"));
+        }
     }
 }
 export const ModalControl = new ModalDialogControl();
