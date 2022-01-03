@@ -40,7 +40,7 @@ export class ValueInput extends React.Component<IValueInputProperties, {}> {
 
         return (
             <div>
-                <div>{description}</div>
+                <div className="pb-3">{description}</div>
                 <div className="textinput-label">VALUE</div>
                 <input type="text" onChange={() => this.onValueChanged() } ref={(input) => this.textInput = input} value={text} />
             </div>
