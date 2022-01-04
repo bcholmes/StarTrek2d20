@@ -70,13 +70,17 @@ abstract class BasicSheet implements ICharacterSheet {
     }
     fillWeapons(form: PDFForm) {
         var weapons = this.determineWeapons();
+        weapons.forEach( (w, i) => {
+            this.fillWeapon(form, w, i+1);
+        });
+    }
+
+    fillWeapon(form: PDFForm, weapon: Weapon, index: number) {
         const security = this.findSecurityValue() || 0;
 
-        weapons.forEach( (w, i) => {
-            this.fillField(form, 'Weapon ' + (i+1) + ' name', w.name);
-            this.fillField(form, 'Weapon ' + (i+1) + ' dice', "" + (security + w.dice));
-            this.fillField(form, 'Weapon ' + (i+1) + ' qualities', w.qualities);
-        });
+        this.fillField(form, 'Weapon ' + index + ' name', weapon.name);
+        this.fillField(form, 'Weapon ' + index + ' dice', "" + (security + weapon.dice));
+        this.fillField(form, 'Weapon ' + index + ' qualities', weapon.qualities);
     }
 
     fillCheckbox(form: PDFForm, name: string, value: boolean) {
@@ -200,17 +204,17 @@ abstract class BasicStarshipSheet extends BasicSheet {
                 if (attack === 'Photon Torpedoes') {
                     result.push(new Weapon(attack, 3, "High Yield"));
                 } else if (attack === 'Phaser Cannons' || attack === 'Phase Cannons') {
-                    result.push(new Weapon(attack, (character.starship.scale || 0) + 2, "Versatile 2", true));
+                    result.push(new Weapon(attack, 2, "Versatile 2", true));
                 } else if (attack === 'Phaser Banks') {
-                    result.push(new Weapon(attack, (character.starship.scale || 0) + 1, "Versatile 2", true));
+                    result.push(new Weapon(attack, 1, "Versatile 2", true));
                 } else if (attack === 'Phaser Arrays') {
-                    result.push(new Weapon(attack, (character.starship.scale || 0), "Versatile 2, Area or Spread", true));
+                    result.push(new Weapon(attack, 0, "Versatile 2, Area or Spread", true));
                 } else if (attack === 'Disruptor Cannons') {
-                    result.push(new Weapon(attack, (character.starship.scale || 0) + 2, "Viscious 1", true));
+                    result.push(new Weapon(attack, 2, "Viscious 1", true));
                 } else if (attack === 'Disruptor Banks') {
-                    result.push(new Weapon(attack, (character.starship.scale || 0) + 1, "Viscious 1", true));
+                    result.push(new Weapon(attack, 1, "Viscious 1", true));
                 } else if (attack === 'Disruptor Arrays') {
-                    result.push(new Weapon(attack, (character.starship.scale || 0), "Viscious 1, Area or Spread", true));
+                    result.push(new Weapon(attack, 0, "Viscious 1, Area or Spread", true));
                 } else if (attack === 'Plasma Torpedoes') {
                     result.push(new Weapon(attack, 3, "Persistent, Calibration"));
                 } else if (attack.indexOf('Tractor Beam') >= 0 || attack.indexOf('Grappler Cables') >= 0) {
@@ -271,6 +275,15 @@ abstract class BasicStarshipSheet extends BasicSheet {
         } else {
             return suffix + ".pdf";
         }
+    }
+
+    fillWeapon(form: PDFForm, weapon: Weapon, index: number) {
+        const security = this.findSecurityValue() || 0;
+        const scale = character.starship && character.starship.scale ? character.starship.scale : 0;
+
+        this.fillField(form, 'Weapon ' + index + ' name', weapon.name);
+        this.fillField(form, 'Weapon ' + index + ' dice', "" + (security + weapon.dice + (weapon.scaleApplies ? scale : 0)));
+        this.fillField(form, 'Weapon ' + index + ' qualities', weapon.qualities);
     }
 }
 

@@ -129,10 +129,15 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     
             let details = (<div className="p-0"><h5 className="text-selection">No Selection</h5></div>);
             if (missionPodModel) {
+                let talentList = missionPodModel.talents ? missionPodModel.talents.map(t => t.name).join(", ") : "None specified";
+                if (!talentList) {
+                    talentList = "None";
+                }
                 details = (
                     <div className="p-0">
                         <h5 className="text-selection">{missionPodModel.name}</h5>
                         <StarshipStats model={missionPodModel} type="missionPod" />
+                        <p><b className="text-selection">Talents:</b> {talentList}</p>
                     </div>
                 );
             }
@@ -197,7 +202,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                 <div className="panel" style={{ marginTop: "2em" }}>
                     <div className="header-small">Refits</div>
                     <div className="page-text-aligned">
-                        Your ship is entitled to <b>{numRefits}</b> Refits.
+                        Your ship is entitled to <b>{numRefits}</b> {(numRefits === 1 ? ' Refit' : ' Refits')}.
                         Each refit grants a point that can be used to increase a System attribute by one.
                         No System attribute may go above 12.
                     </div>
@@ -212,7 +217,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                 <div className="panel" style={{ marginTop: "2em" }}>
                     <div className="header-small">Additional Talents</div>
                     <div className="page-text-aligned">
-                        Select {character.starship.scale - numAdditionalTalents} additional talents for your starship.
+                        Select {character.starship.scale - numAdditionalTalents} additional {(character.starship.scale - numAdditionalTalents === 1) ? ' talent ' : ' talents '} for your starship.
                     </div>
                     <StarshipTalentSelection
                         points={character.starship.scale - numAdditionalTalents}
@@ -577,11 +582,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     }
 
     private calculateTalents() {
-        let numTalents = 0;
-
-        if (this._profileTalent !== null) {
-            numTalents++;
-        }
+        let numTalents = 1; // the mission profile talent should always be counted
 
         if (character.starship.spaceframeModel !== undefined) {
             numTalents += character.starship.spaceframeModel.talents.length;
