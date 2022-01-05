@@ -279,10 +279,18 @@ abstract class BasicStarshipSheet extends BasicSheet {
 
     fillWeapon(form: PDFForm, weapon: Weapon, index: number) {
         const security = this.findSecurityValue() || 0;
-        const scale = character.starship && character.starship.scale ? character.starship.scale : 0;
+
+        let dice = security + weapon.dice;
+        if (weapon.isTractorOrGrappler) {
+            dice = weapon.dice;
+        }
+        if (weapon.scaleApplies) {
+            const scale = character.starship && character.starship.scale ? character.starship.scale : 0;
+            dice += scale;
+        }
 
         this.fillField(form, 'Weapon ' + index + ' name', weapon.name);
-        this.fillField(form, 'Weapon ' + index + ' dice', "" + (security + weapon.dice + (weapon.scaleApplies ? scale : 0)));
+        this.fillField(form, 'Weapon ' + index + ' dice', "" + dice);
         this.fillField(form, 'Weapon ' + index + ' qualities', weapon.qualities);
     }
 }

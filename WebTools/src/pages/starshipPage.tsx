@@ -61,7 +61,9 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         // if other choices have changed, then the current spaceframe might be invalid
         if (character.starship && character.starship.spaceframeModel) {
             if (character.starship.spaceframeModel.isCustom) {
-                // check type and year?
+                if (character.type != character.starship.spaceframeModel.type || character.starship.serviceYear < character.starship.spaceframeModel.serviceYear) {
+                    character.starship.spaceframeModel = undefined;
+                }
             } else {
 
                 let frames = spaceframes.filter(f => f.id === character.starship.spaceframeModel.id);
