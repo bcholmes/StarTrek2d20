@@ -303,7 +303,7 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
         return 'https://sta.bcholmes.org/static/img/sheets/TNG_Standard_Starship_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/static/pdf/TNG_Standard_Starship_Sheet_no_outline.pdf'
+        return 'https://sta.bcholmes.org/static/pdf/TNG_Standard_Starship_Sheet_no_outline_new.pdf'
     }
 
     populate(pdf: PDFDocument) {
