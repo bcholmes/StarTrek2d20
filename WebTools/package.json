@@ -1,7 +1,13 @@
 {
-  "version": "1.220103",
+  "version": "1.220110",
   "name": "startrek",
-  "author": "Christoffer Lundberg, BC Holmes",
+  "author": "Christoffer Lundberg",
+  "contributors": [
+    {
+      "name": "BC Holmes",
+      "url": "https://blog.bcholmes.org"
+    }
+  ],
   "license": "ISC",
   "main": "src/app.tsx",
   "private": true,

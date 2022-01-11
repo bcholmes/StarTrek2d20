@@ -31,8 +31,8 @@ class MissionProfileSelection extends React.Component<IMissionProfileSelectionPr
             return (
                 <tr key={i}>
                     <td className="selection-header">{m.name}</td>
-                    <td><table><tbody>{departments}</tbody></table></td>
-                    <td style={{ verticalAlign: "top" }}>{talents}</td>
+                    <td className="d=none d-md-table-cell"><table><tbody>{departments}</tbody></table></td>
+                    <td className="d=none d-md-table-cell" style={{ verticalAlign: "top" }}>{talents}</td>
                     <td>
                         <CheckBox
                             isChecked={this.props.initialSelection === m.id}
@@ -50,8 +50,8 @@ class MissionProfileSelection extends React.Component<IMissionProfileSelectionPr
                     <tbody>
                         <tr>
                             <td></td>
-                            <td>Departments</td>
-                            <td>Talent options</td>
+                            <td className="d=none d-md-table-cell">Departments</td>
+                            <td className="d=none d-md-table-cell">Talent options</td>
                             <td></td>
                         </tr>
                         {missionProfiles}

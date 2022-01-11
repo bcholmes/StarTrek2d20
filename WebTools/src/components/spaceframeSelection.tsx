@@ -66,10 +66,10 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
             return (
                 <tr key={i}>
                     <td className="selection-header">{f.name}</td>
-                    <td><table><tbody>{systems}</tbody></table></td>
-                    <td><table><tbody>{departments}</tbody></table></td>
-                    <td style={{ verticalAlign: "top" }}>{f.scale}</td>
-                    <td style={{ verticalAlign: "top" }}>{talents}</td>
+                    <td className="d=none d-md-table-cell"><table><tbody>{systems}</tbody></table></td>
+                    <td className="d=none d-md-table-cell"><table><tbody>{departments}</tbody></table></td>
+                    <td className="d=none d-md-table-cell" style={{ verticalAlign: "top" }}>{f.scale}</td>
+                    <td className="d=none d-md-table-cell" style={{ verticalAlign: "top" }}>{talents}</td>
                     <td>
                         <CheckBox
                             isChecked={this.props.initialSelection != null && this.props.initialSelection.id === f.id}
@@ -88,10 +88,10 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
                     <thead>
                         <tr>
                             <td></td>
-                            <td>Systems</td>
-                            <td>Departments</td>
-                            <td>Scale</td>
-                            <td>Talents</td>
+                            <td className="d=none d-md-table-cell">Systems</td>
+                            <td className="d=none d-md-table-cell">Departments</td>
+                            <td className="d=none d-md-table-cell">Scale</td>
+                            <td className="d=none d-md-table-cell">Talents</td>
                             <td></td>
                         </tr>
                     </thead>

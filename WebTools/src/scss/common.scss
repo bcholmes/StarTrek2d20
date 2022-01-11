@@ -38,6 +38,20 @@ $lcars-very-light-pink: #f7bbdd;
     padding-bottom: 0.75rem !important;
 }
 
+.d-none {
+    display: none !important;
+}
+
+.d-md-table-cell {
+    display: none !important;
+}
+
+@media screen and (min-width: 768px) {
+    .d-md-table-cell {
+        display: table-cell !important;
+    }
+}
+
 
 #mainBody {
 	width: 100%;

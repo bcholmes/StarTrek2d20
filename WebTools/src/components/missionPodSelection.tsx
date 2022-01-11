@@ -44,9 +44,9 @@ class MissionPodSelection extends React.Component<IMissionPodSelectionProperties
             return (
                 <tr key={i}>
                     <td className="selection-header">{p.name}</td>
-                    <td><table><tbody>{systems}</tbody></table></td>
-                    <td><table><tbody>{departments}</tbody></table></td>
-                    <td style={{ verticalAlign: "top" }}>{talents}</td>
+                    <td className="d=none d-md-table-cell"><table><tbody>{systems}</tbody></table></td>
+                    <td className="d=none d-md-table-cell"><table><tbody>{departments}</tbody></table></td>
+                    <td className="d=none d-md-table-cell" style={{ verticalAlign: "top" }}>{talents}</td>
                     <td>
                         <CheckBox
                             isChecked={this.props.initialSelection === p.id}
@@ -64,9 +64,9 @@ class MissionPodSelection extends React.Component<IMissionPodSelectionProperties
                     <thead>
                         <tr>
                             <td></td>
-                            <td>Systems</td>
-                            <td>Departments</td>
-                            <td>Talents</td>
+                            <td className="d=none d-md-table-cell">Systems</td>
+                            <td className="d=none d-md-table-cell">Departments</td>
+                            <td className="d=none d-md-table-cell">Talents</td>
                             <td></td>
                         </tr>
                     </thead>
