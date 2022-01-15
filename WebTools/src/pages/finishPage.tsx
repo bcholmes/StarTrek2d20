@@ -14,6 +14,7 @@ import {CharacterSheetRegistry} from '../helpers/sheets';
 export class FinishPage extends React.Component<IPageProperties, {}> {
     private name: HTMLInputElement;
     private pronouns: HTMLInputElement;
+    private traits: HTMLInputElement;
     private lineage: HTMLInputElement;
     private house: HTMLInputElement;
     private ranks: string[];
@@ -152,6 +153,17 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                     <input type="text" onChange={() => this.onPronounsChanged() } ref={(input) => this.pronouns = input}/>
                     <div><small><b>Suggestions: </b> <i>she/her, they/them, etc.</i></small></div>
                 </div>
+                <div className="panel">
+                    <div className="header-small">ADDITIONAL TRAITS</div>
+                    <div>Your character automatically has the following traits:</div>
+                    <ul>
+                        {character.baseTraits.map((e,i) => { return (<li>{e}</li>); })}
+                    </ul>
+                        
+                    <div>You can specify additional traits, here.</div>
+                    <div className="textinput-label">Traits</div>
+                    <input type="text" onChange={() => this.onTraitsChanged() } ref={(input) => this.traits = input}/>
+                </div>
                 <br/>
                 <div className="panel">
                     <div className="header-small">ASSIGNMENT</div>
@@ -202,6 +214,11 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
 
     private onPronounsChanged() {
         character.pronouns = this.pronouns.value;
+        this.forceUpdate();
+    }
+
+    private onTraitsChanged() {
+        character.additionalTraits = this.traits.value;
         this.forceUpdate();
     }
 

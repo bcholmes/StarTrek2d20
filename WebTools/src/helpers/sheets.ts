@@ -2,7 +2,7 @@ import { character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Attribute } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
-import { PDFDocument, PDFForm, rgb } from 'pdf-lib'
+import { PDFDocument, PDFForm } from 'pdf-lib'
 import { CharacterSerializer } from '../common/characterSerializer';
 import { UpbringingsHelper } from './upbringings';
 import { Era } from './eras';
@@ -10,9 +10,8 @@ import { SpaceframeHelper } from '../helpers/spaceframes';
 import { MissionProfileHelper } from '../helpers/missionProfiles';
 import { Department } from './departments';
 import { System } from './systems';
-import { StarshipSerializer } from '../common/starshipSerializer';
 import { Weapon } from './weapons';
-import { DEFAULT_OUTLINE } from './spaceframes';
+import { SpaceframeOutline } from './spaceframeOutlineHelper';
 
 export interface ICharacterSheet {
     getName(): string;
@@ -119,7 +118,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
             this.fillField(form, 'Scale', spaceframe.scale.toString());
             trait = spaceframe.additionalTraits.join(', ');
         }
-        if (character.starship.traits !== undefined) {
+        if (character.starship.traits) {
             trait += `, ${character.starship.traits}`;
         }
         this.fillField(form, 'Traits', trait);
@@ -129,11 +128,11 @@ abstract class BasicStarshipSheet extends BasicSheet {
         }
 
         if (character.starship.systems[System.Engines]) {
-            this.fillField(form, "Power Total", StarshipSerializer.calculatePower(character.starship.systems[System.Engines], talents));
+            this.fillField(form, "Power Total", this.calculatePower(character.starship.systems[System.Engines], talents));
         }
         if (character.starship.scale) {
-            this.fillField(form, "Resistance",  StarshipSerializer.calculateResistance(character.starship.scale, talents));
-            this.fillField(form, "Crew Total",  StarshipSerializer.calculateCrewSupport(character.starship.scale));
+            this.fillField(form, "Resistance",  this.calculateResistance(character.starship.scale, talents));
+            this.fillField(form, "Crew Total",  this.calculateCrewSupport(character.starship.scale));
         }
 
         if (character.starship.systems[System.Structure] && character.starship.departments[Department.Security]) {
@@ -144,6 +143,35 @@ abstract class BasicStarshipSheet extends BasicSheet {
         this.fillDepartments(form);
         this.fillTalents(form, talents);
         this.fillWeapons(form);
+    }
+
+    calculateCrewSupport(scale: number) {
+        var crew = scale;
+        return crew.toString();
+    }
+
+    calculateResistance(scale: number, talents: string[]) {
+        var resistance = scale;
+
+        if (talents.indexOf("Ablative Armor") > -1) {
+            resistance += 2;
+        }
+
+        if (talents.indexOf("Improved Hull Integrity") > -1) {
+            resistance++;
+        }
+
+        return resistance.toString();
+    }
+
+    calculatePower(base: number, talents: string[]) {
+        var power = base;
+
+        if (talents.indexOf("Secondary Reactors") > -1) {
+            power += 5;
+        }
+
+        return power.toString();
     }
 
     fillTalents(form: PDFForm, talents: string[]) {
@@ -310,26 +338,7 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
         super.populate(pdf);
 
         const spaceframe = character.starship.spaceframeModel;
-        if (spaceframe) {
-            this.drawOutline(pdf, spaceframe.outline);
-        } else {
-            this.drawOutline(pdf, DEFAULT_OUTLINE);
-        }
-    }
-
-    drawOutline(pdf: PDFDocument, outline: string) {
-        const page = pdf.getPage(0);
-        page.moveTo(0, page.getHeight());
-
-        const orange = rgb(245.0/255, 157.0/255.0, 8.0/255.0);
-
-        if (outline.charAt(0) === 'm') {
-            // SVG edited using Inkscape end up using a px-based measures
-            page.drawSvgPath(outline, { borderColor: orange, borderWidth: 1.3, scale: 0.75 })
-        } else {
-            // SVG created by Illustrator ends us using a pt-based measure
-            page.drawSvgPath(outline, { borderColor: orange, borderWidth: 1 })
-        }
+        SpaceframeOutline.draw(pdf, spaceframe, character.starship.serviceYear);
     }
 }
 
@@ -368,15 +377,9 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
         this.fillField(form, 'Purpose', CharacterSerializer.serializeAssignment(character));
         this.fillField(form, 'Rank', character.rank);
         this.fillField(form, 'Species', CharacterSerializer.serializeSpecies(character.species, character.mixedSpecies));
-        let traits = [ ...character.traits ];
-        if (character.hasTalent("Augmented Ability (Control)") 
-                || character.hasTalent("Augmented Ability (Daring)")
-                || character.hasTalent("Augmented Ability (Fitness)")
-                || character.hasTalent("Augmented Ability (Insight)")
-                || character.hasTalent("Augmented Ability (Presence)")
-                || character.hasTalent("Augmented Ability (Reason)")
-                || character.hasTalent("Augmented Ability")) {
-            traits.push("Augmented");
+        let traits = character.baseTraits;
+        if (character.additionalTraits) {
+            traits.push(character.additionalTraits);
         }
 
         this.fillField(form, 'Traits', CharacterSerializer.serializeTraits(traits));

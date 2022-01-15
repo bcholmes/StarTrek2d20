@@ -84,6 +84,7 @@ export class Character {
     public attributes: CharacterAttribute[] = [];
     public skills: CharacterSkill[] = [];
     public traits: string[];
+    public additionalTraits: string;
     public talents: { [name: string]: CharacterTalent };
     public age?: number;
     public name?: string;
@@ -164,6 +165,20 @@ export class Character {
                 break;
             }
         }
+    }
+
+    get baseTraits() {
+        let traits = [ ...this.traits ];
+        if (character.hasTalent("Augmented Ability (Control)") 
+                || character.hasTalent("Augmented Ability (Daring)")
+                || character.hasTalent("Augmented Ability (Fitness)")
+                || character.hasTalent("Augmented Ability (Insight)")
+                || character.hasTalent("Augmented Ability (Presence)")
+                || character.hasTalent("Augmented Ability (Reason)")
+                || character.hasTalent("Augmented Ability")) {
+            traits.push("Augmented");
+        }
+        return traits;
     }
 
     addTrait(trait: string) {
