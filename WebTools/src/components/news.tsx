@@ -11,6 +11,14 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220115</b>
+                <ul>
+                    <li>More layout adjustments to Starship creation.</li>
+                    <li>Fixed a long-standing bug with <i>Luna</i>-class ships and Mission Pods.</li>
+                    <li><a href="https://github.com/bcholmes/StarTrek2d20/issues/11" target="_blank" rel="noreferrer">Enhancement:</a> Allow 
+                    user to enter additional traits in the final step of the character creation process.</li>
+                    <li>Improvements to the Talent Overview page to display some of the pre-requisite information</li>
+                </ul>
                 <b>v1.220110</b>
                 <ul>
                     <li>Tweaked some screens to get better layout support on phones.</li>

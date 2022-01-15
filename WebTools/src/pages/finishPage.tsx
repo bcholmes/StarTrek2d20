@@ -155,9 +155,9 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                 </div>
                 <div className="panel">
                     <div className="header-small">ADDITIONAL TRAITS</div>
-                    <div>Your character automatically has the following traits:</div>
+                    <div>Your character automatically has the following {character.baseTraits.length === 1 ? 'trait' : 'traits'}:</div>
                     <ul>
-                        {character.baseTraits.map((e,i) => { return (<li>{e}</li>); })}
+                        {character.baseTraits.map((e,i) => { return (<li key={'trait-' + i}>{e}</li>); })}
                     </ul>
                         
                     <div>You can specify additional traits, here.</div>

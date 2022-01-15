@@ -35,49 +35,61 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
 
         const spaceframes = SpaceframeHelper.getSpaceframes(this.props.serviceYear, this.props.type, this.state.allowAllFrames);
         const frames = spaceframes.map((f, i) => {
-            const systems = f.systems.map((s, si) => {
-                return (
-                    <tr key={si}>
-                        <td>{System[si]}</td>
-                        <td>{s}</td>
-                    </tr>
-                );
-            });
-
-            const departments = f.departments.map((d, di) => {
-                return (
-                    <tr key={di}>
-                        <td>{Department[di]}</td>
-                        <td>{d === 0 ? "-" : `+${d}`}</td>
-                    </tr>
-                );
-            });
-
             const talents = f.talents.map((t, ti) => {
                 if (t === null) {
                     console.log(f.name);
                 }
 
                 return t.isAvailableForServiceYear() ? (
-                    <div key={ti}>{t.name}</div>
+                    <div key={ti} style={{ padding: "2px" }}>{t.name}</div>
                 ) : undefined;
             });
 
             return (
-                <tr key={i}>
-                    <td className="selection-header">{f.name}</td>
-                    <td className="d=none d-md-table-cell"><table><tbody>{systems}</tbody></table></td>
-                    <td className="d=none d-md-table-cell"><table><tbody>{departments}</tbody></table></td>
-                    <td className="d=none d-md-table-cell" style={{ verticalAlign: "top" }}>{f.scale}</td>
-                    <td className="d=none d-md-table-cell" style={{ verticalAlign: "top" }}>{talents}</td>
-                    <td>
-                        <CheckBox
-                            isChecked={this.props.initialSelection != null && this.props.initialSelection.id === f.id}
-                            text=""
-                            value={f.id}
-                            onChanged={(e) => { this.props.onSelection(f); } }/>
-                    </td>
-                </tr>
+                <tbody key={i}>
+                    <tr>
+                        <td className="selection-header" rowSpan={4}>{f.name}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Comms</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{f.systems[System.Comms]}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Engines</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{f.systems[System.Engines]}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Structure</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{f.systems[System.Structure]}</td>
+                        <td className="d=none d-md-table-cell" style={{ verticalAlign: "top", textAlign: "center" }} rowSpan={4}>{f.scale}</td>
+                        <td className="d=none d-md-table-cell" style={{ verticalAlign: "top" }} rowSpan={4}>{talents}</td>
+                        <td rowSpan={4}>
+                            <CheckBox
+                                isChecked={this.props.initialSelection != null && this.props.initialSelection.id === f.id}
+                                text=""
+                                value={f.id}
+                                onChanged={(e) => { this.props.onSelection(f); } }/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Computers</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{f.systems[System.Computer]}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Sensors</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{f.systems[System.Sensors]}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Weapons</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{f.systems[System.Weapons]}</td>
+                    </tr>
+                    <tr>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Command</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{this.formatAsDelta(f.departments[Department.Command])}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Security</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{this.formatAsDelta(f.departments[Department.Security])}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Science</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{this.formatAsDelta(f.departments[Department.Science])}</td>
+                    </tr>
+                    <tr>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Conn</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{this.formatAsDelta(f.departments[Department.Conn])}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Engineering</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{this.formatAsDelta(f.departments[Department.Engineering])}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Medicine</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{this.formatAsDelta(f.departments[Department.Medicine])}</td>
+                    </tr>
+                </tbody>
             );
         });
 
@@ -88,20 +100,28 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
                     <thead>
                         <tr>
                             <td></td>
-                            <td className="d=none d-md-table-cell">Systems</td>
-                            <td className="d=none d-md-table-cell">Departments</td>
+                            <td className="d=none d-md-table-cell" colSpan={6}>Stats</td>
                             <td className="d=none d-md-table-cell">Scale</td>
                             <td className="d=none d-md-table-cell">Talents</td>
                             <td></td>
                         </tr>
                     </thead>
-                    <tbody>
-                        {frames}
-                    </tbody>
+                    {frames}
                 </table>
             </div>);
     }
 
+    formatAsDelta(value: number) {
+        if (value && value > 0) {
+            return "+" + value;
+        } else if (value && value < 0) {
+            return "" + value;
+        } else if (value === 0) {
+            return (<span>&ndash;</span>)
+        } else {
+            return (<span>&nbsp;</span>)
+        }
+    }
 }
 
 export default SpaceframeSelection;

@@ -13,12 +13,14 @@ class TalentViewModel {
     source: string;
     aliases: AliasModel[];
     category: string;
+    prerequisites: string;
 
-    constructor(name: string, description: string, source: string, category: string, aliases: AliasModel[]) {
+    constructor(name: string, description: string, source: string, category: string, prerequisites: string, aliases: AliasModel[]) {
         this.name = name;
         this.description = description;
         this.source = source;
         this.category = category;
+        this.prerequisites = prerequisites;
         this.aliases = aliases;
     }
 
@@ -40,7 +42,19 @@ class TalentViewModel {
     static from(talent: TalentModel, category: string) {
         let sourceString = SourcesHelper.getSourceName(TalentsHelper.getSourceForTalentModel(talent));
 
-        return new TalentViewModel(talent.name, talent.description, sourceString, category, talent.aliases);
+        let prerequisites = "";
+        talent.prerequisites.forEach((p) => {
+            let desc = p.describe();
+            if (desc) {
+                if (prerequisites === "") {
+                    prerequisites = desc;
+                } else {
+                    prerequisites += (", " + desc);
+                }
+            }
+        });
+
+        return new TalentViewModel(talent.name, talent.description, sourceString, category, prerequisites, talent.aliases);
     }
 }
 
@@ -87,6 +101,11 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
                     </i> {SourcesHelper.getSourceName([a.source])} <i>book.</i></p>
                 )
             });
+            let prerequsites = undefined;
+            if (t.prerequisites) {
+                prerequsites = (<div style={{ fontWeight: "bold" }}>{t.prerequisites}</div>);
+            }
+
             return (
                 <tr key={i}>
                     <td className="selection-header">
@@ -95,8 +114,8 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
                             ({t.source})
                         </div>
                     </td>
-                    <td>{t.category}</td>
-                    <td>{t.description} {info}</td>
+                    <td className="d=none d-md-table-cell">{t.category}</td>
+                    <td>{t.description} {prerequsites} {info}</td>
                 </tr>
             );
         });

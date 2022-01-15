@@ -131,7 +131,7 @@ export class SpaceframeViewModel extends SpaceframeModel {
         super(type, name, serviceYear, eras, source, systems, departments, scale, attacks, talents, additionalTraits, maxServiceYear, outline);
         this.id = id;
         this.isCustom = (id === undefined || source === Source.None);
-        this.isMissionPodAvailable = (id === Spaceframe.Nebula || id === Spaceframe.Luna);
+        this.isMissionPodAvailable = (id === Spaceframe.Nebula);
     }
 
     static createCustomSpaceframe(type: CharacterType, serviceYear: number, eras: Era[]) {

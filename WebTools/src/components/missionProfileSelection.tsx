@@ -15,47 +15,53 @@ class MissionProfileSelection extends React.Component<IMissionProfileSelectionPr
 
     render() {
         const missionProfiles = MissionProfileHelper.getMissionProfiles(this.props.type).map((m, i) => {
-            const departments = m.departments.map((d, di) => {
-                return (
-                    <tr key={di}>
-                        <td>{Department[di]}</td>
-                        <td>{d}</td>
-                    </tr>
-                );
-            });
-
             const talents = m.talents.map((t, ti) => {
-                return (<div key={ti}>{t.name}</div>);
+                return (<div key={ti} style={{ padding: "2px"}}>{t.name}</div>);
             });
 
             return (
-                <tr key={i}>
-                    <td className="selection-header">{m.name}</td>
-                    <td className="d=none d-md-table-cell"><table><tbody>{departments}</tbody></table></td>
-                    <td className="d=none d-md-table-cell" style={{ verticalAlign: "top" }}>{talents}</td>
-                    <td>
-                        <CheckBox
-                            isChecked={this.props.initialSelection === m.id}
-                            text=""
-                            value={m.id}
-                            onChanged={() => { this.props.onSelection(m.id); } }/>
-                    </td>
-                </tr>
+                <tbody key={i}>
+                    <tr>
+                        <td className="selection-header" rowSpan={2}>{m.name}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Command</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{m.departments[Department.Command]}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Security</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{m.departments[Department.Security]}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Science</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{m.departments[Department.Science]}</td>
+                        <td className="d=none d-md-table-cell" style={{ verticalAlign: "top", paddingLeft: "0.75rem" }} rowSpan={2}><div style={{minHeight: "80px" }}>{talents}</div></td>
+                        <td rowSpan={2}>
+                            <CheckBox
+                                isChecked={this.props.initialSelection === m.id}
+                                text=""
+                                value={m.id}
+                                onChanged={() => { this.props.onSelection(m.id); } }/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Conn</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{m.departments[Department.Conn]}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Engineering</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{m.departments[Department.Engineering]}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Medicine</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{m.departments[Department.Medicine]}</td>
+                    </tr>
+                </tbody>
             );
         });
 
         return (
             <div>
                 <table className="selection-list w-100">
-                    <tbody>
+                    <thead>
                         <tr>
-                            <td></td>
-                            <td className="d=none d-md-table-cell">Departments</td>
-                            <td className="d=none d-md-table-cell">Talent options</td>
-                            <td></td>
+                            <th></th>
+                            <th className="d=none d-md-table-cell" style={{ textAlign: "left"}} colSpan={6}>Departments</th>
+                            <th className="d=none d-md-table-cell" style={{ textAlign: "left",  paddingLeft: "0.75rem"}}>Talent options</th>
+                            <th></th>
                         </tr>
-                        {missionProfiles}
-                    </tbody>
+                    </thead>
+                    {missionProfiles}
                 </table>
             </div>);
     }

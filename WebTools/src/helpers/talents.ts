@@ -9,6 +9,7 @@ import {Era} from './eras';
 
 interface ITalentPrerequisite {
     isPrerequisiteFulfilled(): boolean;
+    describe(): string
 }
 
 class AttributePrerequisite implements ITalentPrerequisite {
@@ -22,6 +23,9 @@ class AttributePrerequisite implements ITalentPrerequisite {
 
     isPrerequisiteFulfilled() {
         return character.attributes[this.attribute].value >= this.value;
+    }
+    describe(): string {
+        return "Requires " + Attribute[this.attribute] + " " + this.value + "+";
     }
 };
 
@@ -37,6 +41,10 @@ class DisciplinePrerequisite implements ITalentPrerequisite {
     isPrerequisiteFulfilled() {
         return character.skills[this.discipline].expertise >= this.value;
     }
+
+    describe(): string {
+        return "Requires " + Skill[this.discipline] + " " + this.value + "+";
+    }
 };
 
 class UntrainedDisciplinePrerequisite implements ITalentPrerequisite {
@@ -48,6 +56,9 @@ class UntrainedDisciplinePrerequisite implements ITalentPrerequisite {
 
     isPrerequisiteFulfilled() {
         return character.skills[this.discipline].expertise === 1;
+    }
+    describe(): string {
+        return "Requires " + Skill[this.discipline] + " = 1";
     }
 };
 
@@ -66,6 +77,10 @@ class VariableDisciplinePrerequisite implements ITalentPrerequisite {
         return character.skills[this.discipline1].expertise >= this.value ||
                character.skills[this.discipline2].expertise >= this.value;
     }
+    describe(): string {
+        return "Requires " + Skill[this.discipline1] + " " + this.value + "+ or "
+            + Skill[this.discipline2] + " " + this.value + "+";
+    }
 };
 
 class SpeciesPrerequisite implements ITalentPrerequisite {
@@ -81,6 +96,9 @@ class SpeciesPrerequisite implements ITalentPrerequisite {
         return character.species === this.species ||
                character.mixedSpecies === this.species ||
                (this.allowCrossSelection && character.allowCrossSpeciesTalents);
+    }
+    describe(): string {
+        return "";
     }
 }
 
@@ -102,6 +120,9 @@ class AnySpeciesPrerequisite implements ITalentPrerequisite {
                character.mixedSpecies === this.species2 ||
                (this.allowCrossSelection && character.allowCrossSpeciesTalents);
     }
+    describe(): string {
+        return "";
+    }
 }
 
 class PureSpeciesPrerequisite implements ITalentPrerequisite {
@@ -117,6 +138,9 @@ class PureSpeciesPrerequisite implements ITalentPrerequisite {
         return (character.species === this.species && character.mixedSpecies == null) ||
                (this.allowCrossSelection && character.allowCrossSpeciesTalents);
     }
+    describe(): string {
+        return "";
+    }
 }
 
 class CareerPrerequisite implements ITalentPrerequisite {
@@ -128,6 +152,9 @@ class CareerPrerequisite implements ITalentPrerequisite {
 
     isPrerequisiteFulfilled() {
         return character.career === this.career;
+    }
+    describe(): string {
+        return "";
     }
 }
 
@@ -141,6 +168,9 @@ class CharacterTypePrerequisite implements ITalentPrerequisite {
     isPrerequisiteFulfilled() {
         return character.type === this.type;
     }
+    describe(): string {
+        return "";
+    }
 }
 
 class NotCharacterTypePrerequisite implements ITalentPrerequisite {
@@ -152,6 +182,9 @@ class NotCharacterTypePrerequisite implements ITalentPrerequisite {
 
     isPrerequisiteFulfilled() {
         return character.type !== this.type;
+    }
+    describe(): string {
+        return "";
     }
 }
 
@@ -172,6 +205,9 @@ class AnyOfPrerequisite implements ITalentPrerequisite {
         }
         return result;
     }
+    describe(): string {
+        return "";
+    }
 }
 
 
@@ -185,6 +221,9 @@ class TalentPrerequisite implements ITalentPrerequisite {
     isPrerequisiteFulfilled() {
         return character.hasTalent(this.talent);
     }
+    describe(): string {
+        return "Requires \"" + this.talent + "\" Talent";
+    }
 }
 
 class FocusPrerequisite implements ITalentPrerequisite {
@@ -197,6 +236,9 @@ class FocusPrerequisite implements ITalentPrerequisite {
     isPrerequisiteFulfilled() {
         return character.focuses.indexOf(this.focus) > -1;
     }
+    describe(): string {
+        return "Requires \"" + this.focus + "\" Focus";
+    }
 }
 
 class NotTalentPrerequisite implements ITalentPrerequisite {
@@ -208,6 +250,9 @@ class NotTalentPrerequisite implements ITalentPrerequisite {
 
     isPrerequisiteFulfilled() {
         return !character.hasTalent(this.talent);
+    }
+    describe(): string {
+        return "Conflicts with \"" + this.talent + "\" Talent";
     }
 }
 
@@ -227,6 +272,9 @@ class SourcePrerequisite implements ITalentPrerequisite {
     getSources() {
         return this.sources;
     }
+    describe(): string {
+        return "";
+    }
 }
 
 class EraPrerequisite implements ITalentPrerequisite {
@@ -238,6 +286,9 @@ class EraPrerequisite implements ITalentPrerequisite {
 
     isPrerequisiteFulfilled() {
         return character.era >= this.era;
+    }
+    describe(): string {
+        return "";
     }
 }
 
@@ -253,11 +304,17 @@ class NotEraPrerequisite implements ITalentPrerequisite {
         this.eras.forEach((e) => { result = result && character.era !== e })
         return result;
     }
+    describe(): string {
+        return "";
+    }
 }
 
 class StarshipPrerequisite implements ITalentPrerequisite {
     isPrerequisiteFulfilled() {
         return character.starship != null;
+    }
+    describe(): string {
+        return "";
     }
 }
 
@@ -271,6 +328,9 @@ class ServiceYearPrerequisite implements ITalentPrerequisite {
     isPrerequisiteFulfilled() {
         return character.starship != null && character.starship.serviceYear >= this.year;
     }
+    describe(): string {
+        return "";
+    }
 }
 
 class MaxServiceYearPrerequisite implements ITalentPrerequisite {
@@ -283,6 +343,9 @@ class MaxServiceYearPrerequisite implements ITalentPrerequisite {
     isPrerequisiteFulfilled() {
         return character.starship != null && character.starship.serviceYear <= this.year;
     }
+    describe(): string {
+        return "";
+    }
 }
 
 class SpaceframePrerequisite implements ITalentPrerequisite {
@@ -294,6 +357,9 @@ class SpaceframePrerequisite implements ITalentPrerequisite {
 
     isPrerequisiteFulfilled() {
         return character.starship != null && character.starship.spaceframeModel && character.starship.spaceframeModel.id === this.frame;
+    }
+    describe(): string {
+        return "";
     }
 }
 
@@ -308,6 +374,9 @@ class SpaceframesPrerequisite implements ITalentPrerequisite {
         return character.starship != null && character.starship.spaceframeModel &&
                this.frames.indexOf(character.starship.spaceframeModel.id) > -1;
     }
+    describe(): string {
+        return "";
+    }
 }
 
 class DepartmentPrerequisite implements ITalentPrerequisite {
@@ -321,6 +390,9 @@ class DepartmentPrerequisite implements ITalentPrerequisite {
 
     isPrerequisiteFulfilled() {
         return character.starship != null && character.starship.departments[this.department] >= this.value;
+    }
+    describe(): string {
+        return "";
     }
 }
 

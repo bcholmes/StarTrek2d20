@@ -126,34 +126,34 @@ class CustomSpaceframeForm extends React.Component<ICustomSpacefraemProperties, 
 
                     <div className="stats-row">
                         <StatControl statName="Comms" value={this.state.systems[System.Comms]} 
-                            showIncrease={this.state.systems[System.Comms] < 12} showDecrease={this.state.systems[System.Comms] > 7} 
+                            showIncrease={this.state.systems[System.Comms] < 15} showDecrease={this.state.systems[System.Comms] > 7} 
                             onIncrease={() => { this.setSystem(System.Comms, 1) }} 
                             onDecrease={() => {this.setSystem(System.Comms, -1)}} />
 
                         <StatControl statName="Engines" value={this.state.systems[System.Engines]} 
-                            showIncrease={this.state.systems[System.Engines] < 12} showDecrease={this.state.systems[System.Engines] > 7} 
+                            showIncrease={this.state.systems[System.Engines] < 15} showDecrease={this.state.systems[System.Engines] > 7} 
                             onIncrease={() => { this.setSystem(System.Engines, 1) }} 
                             onDecrease={() => {this.setSystem(System.Engines, -1)}} />
 
                         <StatControl statName="Structure" value={this.state.systems[System.Structure]} 
-                            showIncrease={this.state.systems[System.Structure] < 12} showDecrease={this.state.systems[System.Structure] > 7} 
+                            showIncrease={this.state.systems[System.Structure] < 15} showDecrease={this.state.systems[System.Structure] > 7} 
                             onIncrease={() => { this.setSystem(System.Structure, 1) }} 
                             onDecrease={() => {this.setSystem(System.Structure, -1)}} />
                     </div>
 
                     <div className="stats-row">
                         <StatControl statName="Computers" value={this.state.systems[System.Computer]} 
-                            showIncrease={this.state.systems[System.Computer] < 12} showDecrease={this.state.systems[System.Computer] > 7} 
+                            showIncrease={this.state.systems[System.Computer] < 15} showDecrease={this.state.systems[System.Computer] > 7} 
                             onIncrease={() => { this.setSystem(System.Computer, 1) }} 
                             onDecrease={() => {this.setSystem(System.Computer, -1)}} />
 
                         <StatControl statName="Sensors" value={this.state.systems[System.Sensors]} 
-                            showIncrease={this.state.systems[System.Sensors] < 12} showDecrease={this.state.systems[System.Sensors] > 7} 
+                            showIncrease={this.state.systems[System.Sensors] < 15} showDecrease={this.state.systems[System.Sensors] > 7} 
                             onIncrease={() => { this.setSystem(System.Sensors, 1) }} 
                             onDecrease={() => {this.setSystem(System.Sensors, -1)}} />
 
                         <StatControl statName="Weapons" value={this.state.systems[System.Weapons]} 
-                            showIncrease={this.state.systems[System.Weapons] < 12} showDecrease={this.state.systems[System.Weapons] > 7} 
+                            showIncrease={this.state.systems[System.Weapons] < 15} showDecrease={this.state.systems[System.Weapons] > 7} 
                             onIncrease={() => { this.setSystem(System.Weapons, 1) }} 
                             onDecrease={() => {this.setSystem(System.Weapons, -1)}} />
                     </div>
