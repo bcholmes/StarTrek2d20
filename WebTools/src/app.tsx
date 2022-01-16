@@ -102,7 +102,7 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
                     <div className="lcar-footer-end"></div>
                 </div>
                 <div className="legal">
-                    TM &amp; &copy; 2018 CBS Studios Inc. STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.
+                    TM &amp; &copy; 2022 CBS Studios Inc. STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.
                 </div>
             </div>,
             <AppVersion key="app-version"/>,

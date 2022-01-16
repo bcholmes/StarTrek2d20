@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { CharacterType } from '../common/characterType';
+import formatAsDelta from '../common/formatAsDelta';
 import { CheckBox } from './checkBox';
 import { Department } from '../helpers/departments';
 import { SpaceframeHelper, SpaceframeViewModel } from '../helpers/spaceframes';
@@ -75,19 +76,19 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
                     </tr>
                     <tr>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Command</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{this.formatAsDelta(f.departments[Department.Command])}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{formatAsDelta(f.departments[Department.Command])}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Security</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{this.formatAsDelta(f.departments[Department.Security])}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{formatAsDelta(f.departments[Department.Security])}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Science</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{this.formatAsDelta(f.departments[Department.Science])}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{formatAsDelta(f.departments[Department.Science])}</td>
                     </tr>
                     <tr>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Conn</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{this.formatAsDelta(f.departments[Department.Conn])}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{formatAsDelta(f.departments[Department.Conn])}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Engineering</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{this.formatAsDelta(f.departments[Department.Engineering])}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{formatAsDelta(f.departments[Department.Engineering])}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Medicine</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{this.formatAsDelta(f.departments[Department.Medicine])}</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{formatAsDelta(f.departments[Department.Medicine])}</td>
                     </tr>
                 </tbody>
             );
@@ -109,18 +110,6 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
                     {frames}
                 </table>
             </div>);
-    }
-
-    formatAsDelta(value: number) {
-        if (value && value > 0) {
-            return "+" + value;
-        } else if (value && value < 0) {
-            return "" + value;
-        } else if (value === 0) {
-            return (<span>&ndash;</span>)
-        } else {
-            return (<span>&nbsp;</span>)
-        }
     }
 }
 
