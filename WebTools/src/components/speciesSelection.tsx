@@ -36,7 +36,7 @@ export class SpeciesSelection extends React.Component<ISpeciesSelectionPropertie
         var species = SpeciesHelper.getPrimarySpecies(this.state.allowAllSpecies ? CharacterType.Starfleet : character.type).map((s, i) => {
             const attributes = s.id === Species.Ktarian
                 ? (
-                    <div>
+                    <div key={'species-' + s.id}>
                         <div>Control</div>
                         <div>Reason</div>
                         <div>Fitness or Presence</div>
@@ -49,7 +49,7 @@ export class SpeciesSelection extends React.Component<ISpeciesSelectionPropertie
             const talents = s.id === Species.Changeling
                 ? <div>Morphogenic Matrix</div>
                 : s.talents.map((t, i) => {
-                    return t.isAvailableExcludingSpecies() ? <div key={i}>{t.name}</div> : <span></span>;
+                    return t.isAvailableExcludingSpecies() ? <div key={i}>{t.name}</div> : <span key={i}></span>;
                 });
 
             return (

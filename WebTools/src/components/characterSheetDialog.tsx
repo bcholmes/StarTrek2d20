@@ -64,7 +64,7 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
             const existingPdfBytes = await fetch(sheet.getPdfUrl()).then(res => res.arrayBuffer())
             const pdfDoc = await PDFDocument.load(existingPdfBytes)
 
-            sheet.populate(pdfDoc)
+            await sheet.populate(pdfDoc)
 
             const pdfBytes = await pdfDoc.save()
 

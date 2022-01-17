@@ -11,6 +11,13 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220116</b>
+                <ul>
+                    <li><a href="https://github.com/bcholmes/StarTrek2d20/issues/9" target="_blank" rel="noreferrer">Enhancement:</a> I've
+                    created an initial implementation of a 2-page character sheet that displays the full text of the Talents. At the 
+                    moment, I consider this a very preliminary implementation. In particular, I don't like the aesthetics of the 
+                    final character sheet, and I'll probably end up making a lot of changes, there.</li>
+                </ul>
                 <b>v1.220115</b>
                 <ul>
                     <li>More layout adjustments to Starship creation.</li>

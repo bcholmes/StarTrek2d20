@@ -22,7 +22,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
         var species = SpeciesHelper.getSpeciesByType(character.species);
         var paragraphs = species.description.split('\n');
         var description = paragraphs.map((p, i) => {
-            return (<div className="desc-text">{p}</div>);
+            return (<div className="desc-text" key={'text-' + i}>{p}</div>);
         });
 
         var mixed = character.mixedSpecies != null

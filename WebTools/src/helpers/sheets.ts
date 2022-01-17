@@ -2,7 +2,8 @@ import { character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Attribute } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
-import { PDFDocument, PDFForm } from 'pdf-lib'
+import { PDFDocument, PDFFont, PDFForm, PDFPage, rgb, StandardFonts } from 'pdf-lib'
+import fontkit from '@pdf-lib/fontkit'
 import { CharacterSerializer } from '../common/characterSerializer';
 import { UpbringingsHelper } from './upbringings';
 import { Era } from './eras';
@@ -12,6 +13,17 @@ import { Department } from './departments';
 import { System } from './systems';
 import { Weapon } from './weapons';
 import { SpaceframeOutline } from './spaceframeOutlineHelper';
+import { TalentsHelper } from './talents';
+
+class TextBlock {
+    text: string;
+    x: number;
+    y: number;
+    fontSize: number;
+    font: PDFFont;
+    height: number;
+    width: number;
+}
 
 export interface ICharacterSheet {
     getName(): string;
@@ -31,7 +43,7 @@ abstract class BasicSheet implements ICharacterSheet {
     getPdfUrl(): string {
         throw new Error('Method not implemented.');
     }
-    populate(pdf: PDFDocument) {
+    async populate(pdf: PDFDocument) {
         const form = pdf.getForm();
         this.populateForm(form);
     }
@@ -334,7 +346,7 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
         return 'https://sta.bcholmes.org/static/pdf/TNG_Standard_Starship_Sheet_no_outline_new.pdf'
     }
 
-    populate(pdf: PDFDocument) {
+    async populate(pdf: PDFDocument) {
         super.populate(pdf);
 
         const spaceframe = character.starship.spaceframeModel;
@@ -366,7 +378,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
     getPdfUrl(): string {
         throw new Error('Method not implemented.');
     }
-    populate(pdf: PDFDocument) {
+    async populate(pdf: PDFDocument) {
         const form = pdf.getForm();
         this.populateForm(form);
     }
@@ -679,6 +691,120 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
     getPdfUrl(): string {
         return 'https://sta.bcholmes.org/static/pdf/TNG_2_Page_Character_Sheet.pdf'
     }
+
+    async populate(pdf: PDFDocument) {
+        pdf.registerFontkit(fontkit);
+        await super.populate(pdf);
+        await this.fillPageTwo(pdf);
+    }
+
+    async fillPageTwo(pdf: PDFDocument) {
+        const page2 = pdf.getPages()[1];
+        const helveticaBold = await pdf.embedFont(StandardFonts.HelveticaBold);
+        const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
+
+        let startPointX = 165;
+        let startPointY = page2.getSize().height - 40;
+        let textBlocks: TextBlock[] = [];
+
+        for (var t in character.talents) {   
+            const text = t;
+
+            let blocks = this.createTextBlocks(text, helveticaBold, 10, startPointX, startPointY, page2.getSize().height - 40);
+            blocks.forEach(b => textBlocks.push(b));
+            
+            if (blocks.length > 0) {
+                let textBlock = blocks[blocks.length-1];
+                startPointY = textBlock.y;
+            }
+
+            const talent = TalentsHelper.getTalent(t);
+            blocks = this.createTextBlocks(talent.description, helvetica, 10, startPointX, startPointY, page2.getSize().height - 40);
+            blocks.forEach(b => textBlocks.push(b));
+            
+            if (blocks.length > 0) {
+                let textBlock = blocks[blocks.length-1];
+                startPointY = textBlock.y - textBlock.height;
+            }
+        };
+
+        textBlocks.forEach(t => 
+            this.writeTextBlock(t, page2)
+        );
+    }
+
+    createTextBlocks(text: string, font: PDFFont, fontSize: number, startPointX: number, startPointY: number, top: number) {
+        const maxColumnWidth = 210;
+
+        let result: TextBlock[] = [];
+        let textBlock = this.createTextBlock(text, font, fontSize);
+        if (textBlock.width < maxColumnWidth) {
+            textBlock.x = startPointX;
+            textBlock.y = startPointY - textBlock.height;
+    
+            result.push(textBlock);
+        } else {
+            let words = text.split(/\s+/);
+            let previousBlock = null;
+            let textPortion = "";
+            for (let i = 0; i < words.length; i++) {
+                if (textPortion === "") {
+                    textPortion = words[i];
+                } else {
+                    textPortion += (" " + words[i]);
+                }
+                let block = this.createTextBlock(textPortion, font, fontSize);
+                if (block.width < maxColumnWidth) {
+                    previousBlock = block;
+                } else {
+                    if (previousBlock != null) {
+                        previousBlock.x = startPointX;
+                        previousBlock.y = startPointY - previousBlock.height;
+                        result.push(previousBlock);
+
+                        startPointY -= previousBlock.height;
+                        if (startPointY < 40 && startPointX === 165) {
+                            startPointY = top;
+                            startPointX = 390;
+                        } else if (startPointY > 755) {
+                            break;
+                        }
+                    }
+                    textPortion = words[i];
+                    previousBlock = null;
+                }
+            }
+            if (previousBlock != null) {
+                previousBlock.x = startPointX;
+                previousBlock.y = startPointY - previousBlock.height;
+                result.push(previousBlock);
+            }
+        }
+
+        return result;
+    }
+
+    createTextBlock(text: string, font:PDFFont, fontSize: number) {
+        let textBlock = new TextBlock();
+        textBlock.text = text;
+        const textWidth = font.widthOfTextAtSize(text, fontSize);
+        const textHeight = font.heightAtSize(fontSize);
+        textBlock.height = textHeight;
+        textBlock.width = textWidth;
+        textBlock.font = font;
+        textBlock.fontSize = fontSize;
+        return textBlock;
+    }
+
+    writeTextBlock(textBlock: TextBlock, page: PDFPage) {
+        page.drawText(textBlock.text, {
+            x: textBlock.x,
+            y: textBlock.y,
+            size: textBlock.fontSize,
+            font: textBlock.font,
+            color: rgb(0.1, 0.1, 0.1)
+        });
+    }
 }
 
 class CharacterSheets {
@@ -696,7 +822,7 @@ class CharacterSheets {
         if (character.type === CharacterType.KlingonWarrior) {
             return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet() ];
         } else if (character.era === Era.NextGeneration) {
-            return [ new StandardTngCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet() ];
+            return [ new StandardTngCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(), new TwoPageTngCharacterSheet() ];
         } else {
             return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet() ];
         }

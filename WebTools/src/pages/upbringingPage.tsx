@@ -26,7 +26,7 @@ export class UpbringingPage extends React.Component<IPageProperties, IUpbringing
 
         var instruction = character.workflow.currentStep().description.map((s, i) => {
             return (
-                <div className="page-text">{s}</div>
+                <div className="page-text" key={'text-' + i}>{s}</div>
             );
         });
 
