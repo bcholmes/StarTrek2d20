@@ -4,32 +4,35 @@ import {CheckBox} from './checkBox';
 
 interface ITalentSelectionListProperties {
     talents: TalentViewModel[];
-    onSelection: (talent: string) => void;
+    onSelection: (talent: TalentViewModel) => void;
 }
 
-export class TalentSelectionList extends React.Component<ITalentSelectionListProperties, {}> {
-    private _selectedIndex: number;
-    private _talents: TalentViewModel[];
-    private _talent: string;
+interface ITalentSelectionListState {
+    talentId?: string;
+}
+
+export class TalentSelectionList extends React.Component<ITalentSelectionListProperties, ITalentSelectionListState> {
 
     constructor(props: ITalentSelectionListProperties) {
         super(props);
-        this._selectedIndex = 0;
+        this.state = {
+            talentId: undefined
+        }
     }
 
     render() {
         const talents = this.props.talents.map((t, i) => {
             return (
                 <tr key={i}>
-                    <td className="selection-header-small">{t.name}</td>
+                    <td className="selection-header-small">{t.displayName}</td>
                     <td>{t.description}</td>
                     <td>
                         <CheckBox
                             text=""
                             value={t.name}
-                            isChecked={this._talent === t.name}
-                            onChanged={(val) => {
-                                this.selectTalent(val);
+                            isChecked={this.state.talentId === t.name}
+                            onChanged={() => {
+                                this.selectTalent(t);
                             } }/>
                     </td>
                 </tr>
@@ -45,9 +48,11 @@ export class TalentSelectionList extends React.Component<ITalentSelectionListPro
         );
     }
 
-    private selectTalent(talent: string) {
-        this._talent = talent;
-        this.props.onSelection(this._talent);
-        this.forceUpdate();
+    private selectTalent(talent: TalentViewModel) {
+        this.setState((state) => ({
+            ...state,
+            talentId: talent.name
+        }));
+        this.props.onSelection(talent);
     }
 }

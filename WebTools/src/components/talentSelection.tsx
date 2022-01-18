@@ -1,44 +1,63 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
-import {SkillsHelper} from '../helpers/skills';
-import {TalentViewModel, TalentsHelper} from '../helpers/talents';
-import {DropDownInput} from './dropDownInput';
 import {CheckBox} from './checkBox';
+import {TalentViewModel} from '../helpers/talents';
 
 interface ITalentSelectionProperties {
-    onSelection: (talent: string) => void;
+    talents: TalentViewModel[]
+    points: number;
+    onSelection: (talents: TalentViewModel[]) => void;
 }
 
-export class TalentSelection extends React.Component<ITalentSelectionProperties, {}> {
-    private _talents: TalentViewModel[];
-    private _talent: string;
-    private _index: number;
+interface ITalentSelectionState {
+    selectedTalents: string[]
+}
+
+export class TalentSelection extends React.Component<ITalentSelectionProperties, ITalentSelectionState> {
+
+    static defaultProps = {
+        points: 1
+    };
 
     constructor(props: ITalentSelectionProperties) {
         super(props);
 
-        this._talents = TalentsHelper.getTalentsForSkills(SkillsHelper.getSkills())
-            .sort((a, b) => {
-                return a.name.localeCompare(b.name);
-            });
+        this.state = {
+            selectedTalents: []
+        };
+    }
 
-        this._talent = this._talents[0].name;
-        this._index = 0;
+    componentDidUpdate(prevProps: Readonly<ITalentSelectionProperties>, prevState: Readonly<ITalentSelectionState>, snapshot?: any): void {
+        let temp = this.state.selectedTalents;
+        let allSelections = [];
+        this.props.talents.forEach(t => {
+            if (temp.indexOf(t.name) >= 0) {
+                allSelections.push(t);
+            }
+        });
+        // did something get deleted?
+        if (temp.length !== allSelections.length) {
+            this.setState((state) => ({
+                ...state,
+                selectedTalents: allSelections.map(t => t.name) 
+            }));
+            this.props.onSelection(allSelections);
+        }
     }
 
     render() {
-        const talents = this._talents.map((t, i) => {
+        const talents = this.props.talents
+            .map((t, i) => {
             return (
                 <tr key={i}>
-                    <td className="selection-header-small">{t.name}</td>
+                    <td className="selection-header-small">{t.displayName}</td>
                     <td>{t.description}</td>
                     <td>
                         <CheckBox
                             text=""
                             value={t.name}
-                            isChecked={this._talent === t.name}
-                            onChanged={(val) => {
-                                this.selectTalent(val);
+                            isChecked={this.state.selectedTalents.indexOf(t.name) > -1}
+                            onChanged={() => {
+                                this.selectTalent(t);
                             } }/>
                     </td>
                 </tr>
@@ -54,9 +73,26 @@ export class TalentSelection extends React.Component<ITalentSelectionProperties,
         );
     }
 
-    private selectTalent(talent: string) {
-        this._talent = talent;
-        this.props.onSelection(this._talent);
-        this.forceUpdate();
+    private selectTalent(talent: TalentViewModel) {
+        let allSelections = this.state.selectedTalents;
+
+        if (allSelections.indexOf(talent.name) > -1) {
+            allSelections.splice(allSelections.indexOf(talent.name), 1);
+        } else {
+            allSelections.push(talent.name);
+        }
+
+        if (allSelections.length > this.props.points) {
+            allSelections.splice(0, 1);
+        }
+
+        const talents = this.props.talents.filter(t => allSelections.indexOf(t.name) >= 0);
+
+        this.props.onSelection(talents);
+
+        this.setState((state) => ({
+            ...state,
+            selectedTalents: allSelections 
+        }));
     }
 }

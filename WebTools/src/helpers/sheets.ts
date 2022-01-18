@@ -7,13 +7,13 @@ import fontkit from '@pdf-lib/fontkit'
 import { CharacterSerializer } from '../common/characterSerializer';
 import { UpbringingsHelper } from './upbringings';
 import { Era } from './eras';
-import { SpaceframeHelper } from '../helpers/spaceframes';
 import { MissionProfileHelper } from '../helpers/missionProfiles';
 import { Department } from './departments';
 import { System } from './systems';
 import { Weapon } from './weapons';
 import { SpaceframeOutline } from './spaceframeOutlineHelper';
 import { TalentsHelper } from './talents';
+import { CareerEventsHelper } from './careerEvents';
 
 class TextBlock {
     text: string;
@@ -23,6 +23,20 @@ class TextBlock {
     font: PDFFont;
     height: number;
     width: number;
+}
+
+class Column {
+    x: number;
+    y: number;
+    height: number;
+    width: number;
+
+    constructor(x: number, y: number, height: number, width: number) {
+        this.x = x;
+        this.y = y;
+        this.height = height;
+        this.width = width;
+    }
 }
 
 export interface ICharacterSheet {
@@ -122,7 +136,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
         }
         let trait = character.type === CharacterType.KlingonWarrior ? "Klingon Starship" : "Federation Starship";
 
-        const talents = this.calculateTalentList();
+        const talents = character.starship.getTalentList();
 
         const spaceframe = character.starship.spaceframeModel;
         if (spaceframe) {
@@ -194,27 +208,6 @@ abstract class BasicStarshipSheet extends BasicSheet {
         }
     }
 
-    calculateTalentList() {
-        let talents = [];
-
-        const spaceframe = character.starship.spaceframeModel;
-        if (spaceframe) {
-            talents = [...spaceframe.talents.map(t => { return t.name; })];
-        }
-
-        talents.push(character.starship.profileTalent);
-        character.starship.additionalTalents.forEach(t => {
-            talents.push(t);
-        });
-        const missionPod = SpaceframeHelper.getMissionPod(character.starship.missionPod);
-        if (missionPod) {
-            missionPod.talents.forEach(t => {
-                talents.push(t.name);
-            });
-        }
-        return talents;
-    }
-
     calculateShields(base: number, talents: string[]) {
         var shields = base;
         if (talents.indexOf("Advanced Shields") > -1) {
@@ -236,7 +229,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
     determineWeapons(): Weapon[] {
         var result = [];
         var secondary = [];
-        const talents = this.calculateTalentList();
+        const talents = character.starship.getTalentList();
         const spaceframe = character.starship.spaceframeModel;
         if (spaceframe) {
             for (var attack of spaceframe.attacks) {
@@ -698,33 +691,60 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
         await this.fillPageTwo(pdf);
     }
 
+    populateForm(form: PDFForm): void {
+        super.populateForm(form);
+        
+        if (character.careerEvents && character.careerEvents.length > 0) {
+            let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0]);
+            if (event1) {
+                this.fillField(form, 'Career Event 1', event1.name);
+            }
+
+            if (character.careerEvents && character.careerEvents.length > 1) {
+                let event2 = CareerEventsHelper.getCareerEvent(character.careerEvents[1]);
+                if (event2) {
+                    this.fillField(form, 'Career Event 2', event2.name);
+                }
+            }
+        }
+    }
+
     async fillPageTwo(pdf: PDFDocument) {
         const page2 = pdf.getPages()[1];
         const helveticaBold = await pdf.embedFont(StandardFonts.HelveticaBold);
         const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
 
-        let startPointX = 165;
-        let startPointY = page2.getSize().height - 40;
+        let column1 = new Column(180, 204, 196, 550);
+        let column2 = new Column(392, 204, 196, 550);
+        let columns = [ column1, column2 ];
+        let startPointX = column1.x;
+        let startPointY = page2.getSize().height - column1.y;
         let textBlocks: TextBlock[] = [];
 
         for (var t in character.talents) {   
             const text = t;
 
-            let blocks = this.createTextBlocks(text, helveticaBold, 10, startPointX, startPointY, page2.getSize().height - 40);
+            let blocks = this.createTextBlocks(text, helveticaBold, 10, startPointX, startPointY, page2, columns);
             blocks.forEach(b => textBlocks.push(b));
             
             if (blocks.length > 0) {
                 let textBlock = blocks[blocks.length-1];
                 startPointY = textBlock.y;
+                startPointX = textBlock.x;
             }
 
             const talent = TalentsHelper.getTalent(t);
-            blocks = this.createTextBlocks(talent.description, helvetica, 10, startPointX, startPointY, page2.getSize().height - 40);
-            blocks.forEach(b => textBlocks.push(b));
-            
-            if (blocks.length > 0) {
-                let textBlock = blocks[blocks.length-1];
-                startPointY = textBlock.y - textBlock.height;
+            if (talent) {
+                blocks = this.createTextBlocks(talent.description, helvetica, 10, startPointX, startPointY, page2, columns);
+                blocks.forEach(b => textBlocks.push(b));
+                
+                if (blocks.length > 0) {
+                    let textBlock = blocks[blocks.length-1];
+                    startPointY = textBlock.y - textBlock.height;
+                    startPointX = textBlock.x;
+                }
+            } else {
+                console.log("problem with " + t);
             }
         };
 
@@ -733,7 +753,7 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
         );
     }
 
-    createTextBlocks(text: string, font: PDFFont, fontSize: number, startPointX: number, startPointY: number, top: number) {
+    createTextBlocks(text: string, font: PDFFont, fontSize: number, startPointX: number, startPointY: number, page: PDFPage, columns: Column[]) {
         const maxColumnWidth = 210;
 
         let result: TextBlock[] = [];
@@ -763,9 +783,9 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
                         result.push(previousBlock);
 
                         startPointY -= previousBlock.height;
-                        if (startPointY < 40 && startPointX === 165) {
-                            startPointY = top;
-                            startPointX = 390;
+                        if (startPointY < (page.getSize().height - columns[0].y - columns[0].height) && startPointX === columns[0].x) {
+                            startPointY = page.getSize().height - columns[1].y;
+                            startPointX = columns[1].x;
                         } else if (startPointY > 755) {
                             break;
                         }

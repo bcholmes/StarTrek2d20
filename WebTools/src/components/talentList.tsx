@@ -33,7 +33,7 @@ export class TalentList extends React.Component<ITalentListProperties, {}> {
         const talents = this._talents.map((t, i) => {
             return (
                 <tr key={i}>
-                    <td className="selection-header-small">{t.name}</td>
+                    <td className="selection-header-small">{t.displayName}</td>
                     <td>{t.description}</td>
                     <td>
                         <CheckBox

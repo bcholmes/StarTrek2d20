@@ -462,6 +462,7 @@ export class TalentModel {
 export class TalentViewModel {
     id: string;
     name: string;
+    displayName: string;
     rank: number;
     description: string;
     category: string;
@@ -469,7 +470,8 @@ export class TalentViewModel {
     constructor(name: string, rank: number, showRank: boolean, description: string, skill: Skill, category: string) {
         this.id = name;
         this.description = description;
-        this.name = this.constructDisplayName(name, rank, showRank, skill, category);
+        this.displayName = this.constructDisplayName(name, rank, showRank, skill, category);
+        this.name = name;
     }
 
 

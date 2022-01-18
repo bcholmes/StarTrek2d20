@@ -8,8 +8,8 @@ import {Species} from '../helpers/species';
 import {Track} from '../helpers/tracks';
 import {Upbringing} from '../helpers/upbringings';
 import {Workflow} from '../helpers/workflows';
-import {TalentsHelper} from '../helpers/talents';
-import {MissionPod, SpaceframeViewModel} from '../helpers/spaceframes';
+import {TalentsHelper, TalentViewModel} from '../helpers/talents';
+import {MissionPod, SpaceframeHelper, SpaceframeViewModel} from '../helpers/spaceframes';
 import {MissionProfile} from "../helpers/missionProfiles";
 import {CharacterType} from './characterType';
 
@@ -54,14 +54,38 @@ export class Starship {
     systems: number[];
     departments: number[];
     scale: number;
-    profileTalent?: string;
-    additionalTalents: string[] = [];
+    profileTalent?: TalentViewModel;
+    additionalTalents: TalentViewModel[] = [];
 
     constructor() {
         this.systems = [];
         this.departments = [];
         this.scale = 0;
     }
+
+    getTalentList() {
+        let talents = [];
+
+        if (this.spaceframeModel) {
+            talents = [...this.spaceframeModel.talents.map(t => { return t.name; })];
+        }
+
+        if (this.profileTalent) {
+            talents.push(this.profileTalent.name);
+        }
+        character.starship.additionalTalents.forEach(t => {
+            talents.push(t.name);
+        });
+        const missionPod = SpaceframeHelper.getMissionPod(this.missionPod);
+        if (missionPod) {
+            missionPod.talents.forEach(t => {
+                talents.push(t.name);
+            });
+        }
+        return talents;
+    }
+
+
 }
 
 
@@ -187,18 +211,19 @@ export class Character {
 
     addTalent(name: string) {
         var found = false;
+        let origName = name;
 
-        if (name.indexOf('[') > -1) {
-            name = name.substr(0, name.indexOf('[') - 1);
+        if (origName.indexOf('[') > -1) {
+            origName = origName.substr(0, origName.indexOf('[') - 1);
         }
 
-        if (name.indexOf('(') > -1) {
-            name = name.substr(0, name.indexOf('(') - 1);
+        if (origName.indexOf('(') > -1) {
+            origName = origName.substr(0, origName.indexOf('(') - 1);
         }
 
         for (let talent in this.talents) {
             let t = this.talents[talent];
-            if (talent === name) {
+            if (talent === origName) {
                 t.rank++;
                 found = true;
                 break;

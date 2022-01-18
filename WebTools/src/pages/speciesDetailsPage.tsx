@@ -74,7 +74,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
                         value={!character.allowCrossSpeciesTalents}
                         onChanged={() => { character.allowCrossSpeciesTalents = !character.allowCrossSpeciesTalents; console.log(character.allowCrossSpeciesTalents); this.forceUpdate(); }} />
                 </div>
-                <TalentSelectionList talents={talents} onSelection={talent => this.onTalentSelected(talent)} />
+                <TalentSelectionList talents={talents} onSelection={talent => this.onTalentSelected(talent.name)} />
             </div>)
             : (<div className="panel">
                 <div className="header-small">SPECIES OPTIONS</div>

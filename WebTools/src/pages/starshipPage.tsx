@@ -6,13 +6,12 @@ import {DropDownInput} from '../components/dropDownInput';
 import {Era} from '../helpers/eras';
 import {SpaceframeHelper, MissionPod, SpaceframeViewModel} from '../helpers/spaceframes';
 import {MissionProfileHelper, MissionProfile} from '../helpers/missionProfiles';
-import {TalentViewModel} from "../helpers/talents";
+import {TalentsHelper, TalentViewModel} from "../helpers/talents";
 import {Source} from "../helpers/sources";
 import {Skill} from "../helpers/skills";
 import {Button} from '../components/button';
-import {TalentSelectionList} from "../components/talentSelectionList";
 import {Refits} from "../components/refits";
-import {StarshipTalentSelection} from "../components/starshipTalentSelection";
+import {TalentSelection} from "../components/talentSelection";
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
 import { ModalControl } from '../components/modal';
@@ -25,12 +24,12 @@ import CustomSpaceframeForm from '../components/customSpaceframeForm';
 interface StarshipPageState {
     type: CharacterTypeModel
     name: string
+    profileTalent?: string
 }
 
 export class StarshipPage extends React.Component<{}, StarshipPageState> {
     private _yearInput: HTMLInputElement;
-    private _profileTalent: string;
-    private _talentSelection: string[];
+    private _talentSelection: TalentViewModel[];
     private _traits: string;
     private _registry: string = "NCC-";
     private _refits: number;
@@ -46,13 +45,13 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         character.starship = new Starship();
         character.starship.serviceYear = this.eraDefaultYear(character.era);
 
-        this._profileTalent = null;
         this._talentSelection = [];
         this._refits = 0;
 
         this.state = {
             type: CharacterTypeModel.getStarshipTypes()[character.type],
-            name: 'U.S.S. '
+            name: 'U.S.S. ',
+            profileTalent: undefined
         };
     }
 
@@ -214,6 +213,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
             : undefined;
 
         const numAdditionalTalents = this.calculateTalents();
+        const filter = [this.state.profileTalent, ...spaceframeTalents];
         const additionalTalentOptions = numAdditionalTalents < character.starship.scale
             ? (
                 <div className="panel" style={{ marginTop: "2em" }}>
@@ -221,9 +221,10 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                     <div className="page-text-aligned">
                         Select {character.starship.scale - numAdditionalTalents} additional {(character.starship.scale - numAdditionalTalents === 1) ? ' talent ' : ' talents '} for your starship.
                     </div>
-                    <StarshipTalentSelection
+                    <TalentSelection
                         points={character.starship.scale - numAdditionalTalents}
-                        filter={[this._profileTalent, ...spaceframeTalents]}
+                        talents={TalentsHelper.getStarshipTalents()
+                            .filter(t => filter.indexOf(t.name) === -1)}
                         onSelection={(talents) => { this._talentSelection = talents; character.starship.additionalTalents = this._talentSelection; this.forceUpdate(); } }/>
                 </div>
               )
@@ -391,12 +392,17 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                             <div className="page-text-aligned">
                                 Select one talent from those offered by the ship's Mission Profile.
                             </div>
-                            <TalentSelectionList
+                            <TalentSelection
                                 talents={talents}
-                                onSelection={(talent) => {
-                                    this._profileTalent = talent.substr(0, talent.indexOf("(") - 1);
-                                    character.starship.profileTalent = this._profileTalent;
-                                    this.forceUpdate();
+                                onSelection={(talents) => {
+                                    if (talents.length > 0) {
+                                        let talent = talents[0];
+                                        this.setState((state) => ({...state, profileTalent: talent.name}));
+                                        character.starship.profileTalent = talent;
+                                    } else {
+                                        this.setState((state) => ({...state, profileTalent: undefined}));
+                                        character.starship.profileTalent = undefined;
+                                    }
                                 } }/>
                         </div>
                         {refits}

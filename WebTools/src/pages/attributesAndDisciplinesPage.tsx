@@ -84,7 +84,7 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
         const talentSelection = !hasExcess && character.workflow.currentStep().talentPrompt
             ? (<div className="panel">
                 <div className="header-small">TALENTS</div>
-                <TalentSelectionList talents={talents} onSelection={talent => { this._selectedTalent = talent; }} />
+                <TalentSelectionList talents={talents} onSelection={talent => { this._selectedTalent = talent.name; }} />
             </div>)
             : undefined;
 
