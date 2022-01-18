@@ -2031,13 +2031,13 @@ export class Talents {
                 "Enhancement"),
             new TalentModel(
                 "Neural Interface",
-                "The character has had a cybernetic device implanted directly into their brain, allowing them to interface with computers and similar technologies with their thoughts. Initiating or breaking the link between their minds and a computer system takes a Minor Action, and while they are connected they may reroll the d20 gained from using ship's Systems. However, any time the ship suffers a Breach the character also suffers 3 CD of Stress.",
+                "The character has had a cybernetic device implanted directly into their brain, allowing them to interface with computers and similar technologies with their thoughts. Initiating or breaking the link between their minds and a computer system takes a Minor Action, and while they are connected they may reroll the d20 gained from using ship's Systems. However, any time the ship suffers a Breach the character also suffers 3 CD of Stress.",
                 [new SourcePrerequisite(Source.SciencesDivision)],
                 1,
                 "Enhancement"),
             new TalentModel(
                 "Physical Enhancement",
-                "The character has some portion of their body replaced by an advanced piece of bio-mechanical hardware. This device functions exactly like its organic counterpart; however, before attempting a Task, the Character may choose to take 3 CD Stress to add a single additional d20 to their dice pool. Any Injuries caused by this damage is resolved after the effects of the Task. Multiple dice may be bought in this way, but the damage is added together (so, buying two dice inflicts 6 CD damage, and buying 3 dice inflicts 9 CD damage). These dice count towards the normal limit of bonus d20s purchased.",
+                "The character has some portion of their body replaced by an advanced piece of bio-mechanical hardware. This device functions exactly like its organic counterpart; however, before attempting a Task, the Character may choose to take 3 CD Stress to add a single additional d20 to their dice pool. Any Injuries caused by this damage is resolved after the effects of the Task. Multiple dice may be bought in this way, but the damage is added together (so, buying two dice inflicts 6 CD damage, and buying 3 dice inflicts 9 CD damage). These dice count towards the normal limit of bonus d20s purchased.",
                 [new SourcePrerequisite(Source.SciencesDivision)],
                 1,
                 "Enhancement"),

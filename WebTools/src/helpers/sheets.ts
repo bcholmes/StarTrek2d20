@@ -714,8 +714,8 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
         const helveticaBold = await pdf.embedFont(StandardFonts.HelveticaBold);
         const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
 
-        let column1 = new Column(180, 204, 196, 550);
-        let column2 = new Column(392, 204, 196, 550);
+        let column1 = new Column(180, 204, 550, 196);
+        let column2 = new Column(392, 204, 550, 196);
         let columns = [ column1, column2 ];
         let startPointX = column1.x;
         let startPointY = page2.getSize().height - column1.y;
@@ -754,7 +754,7 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
     }
 
     createTextBlocks(text: string, font: PDFFont, fontSize: number, startPointX: number, startPointY: number, page: PDFPage, columns: Column[]) {
-        const maxColumnWidth = 210;
+        const maxColumnWidth = columns[0].width;
 
         let result: TextBlock[] = [];
         let textBlock = this.createTextBlock(text, font, fontSize);
