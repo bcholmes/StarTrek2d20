@@ -8,7 +8,7 @@ import {Species} from '../helpers/species';
 import {Track} from '../helpers/tracks';
 import {Upbringing} from '../helpers/upbringings';
 import {Workflow} from '../helpers/workflows';
-import {TalentsHelper, TalentViewModel} from '../helpers/talents';
+import {TalentViewModel} from '../helpers/talents';
 import {MissionPod, SpaceframeHelper, SpaceframeViewModel} from '../helpers/spaceframes';
 import {MissionProfile} from "../helpers/missionProfiles";
 import {CharacterType} from './characterType';
@@ -63,7 +63,7 @@ export class Starship {
         this.scale = 0;
     }
 
-    getTalentList() {
+    getTalentNameList() {
         let talents = [];
 
         if (this.spaceframeModel) {
@@ -209,21 +209,12 @@ export class Character {
         this.traits.push(trait);
     }
 
-    addTalent(name: string) {
+    addTalent(talentModel: TalentViewModel) {
         var found = false;
-        let origName = name;
-
-        if (origName.indexOf('[') > -1) {
-            origName = origName.substr(0, origName.indexOf('[') - 1);
-        }
-
-        if (origName.indexOf('(') > -1) {
-            origName = origName.substr(0, origName.indexOf('(') - 1);
-        }
 
         for (let talent in this.talents) {
             let t = this.talents[talent];
-            if (talent === origName) {
+            if (talent === talentModel.name) {
                 t.rank++;
                 found = true;
                 break;
@@ -231,9 +222,7 @@ export class Character {
         }
 
         if (!found) {
-            this.talents[name] = new CharacterTalent(1);
-
-            TalentsHelper.applyTalent(name);
+            this.talents[talentModel.name] = new CharacterTalent(1);
         }
     }
 

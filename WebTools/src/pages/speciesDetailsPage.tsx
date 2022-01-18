@@ -6,16 +6,16 @@ import {PageIdentity} from './pageIdentity';
 import { Species, SpeciesHelper } from '../helpers/species';
 import { AttributesHelper } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
-import { TalentsHelper, ToViewModel } from '../helpers/talents';
+import { TalentsHelper, TalentViewModel, ToViewModel } from '../helpers/talents';
 import { AttributeView } from '../components/attribute';
 import { AttributeImprovementCollection, AttributeImprovementCollectionMode } from '../components/attributeImprovement';
 import { Button } from '../components/button';
 import { CheckBox } from '../components/checkBox';
 import { Dialog } from '../components/dialog';
-import { TalentSelectionList } from '../components/talentSelectionList';
+import { TalentSelection } from '../components/talentSelection';
 
 export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
-    private _selectedTalent: string;
+    private _selectedTalent: TalentViewModel;
     private _attributesDone: boolean;
 
     render() {
@@ -74,7 +74,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
                         value={!character.allowCrossSpeciesTalents}
                         onChanged={() => { character.allowCrossSpeciesTalents = !character.allowCrossSpeciesTalents; console.log(character.allowCrossSpeciesTalents); this.forceUpdate(); }} />
                 </div>
-                <TalentSelectionList talents={talents} onSelection={talent => this.onTalentSelected(talent.name)} />
+                <TalentSelection talents={talents} onSelection={talents => this.onTalentSelected(talents.length > 0 ? talents[0] : undefined)} />
             </div>)
             : (<div className="panel">
                 <div className="header-small">SPECIES OPTIONS</div>
@@ -127,7 +127,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
         this._attributesDone = done;
     }
 
-    private onTalentSelected(talent: string) {
+    private onTalentSelected(talent: TalentViewModel) {
         this._selectedTalent = talent;
     }
 
@@ -141,14 +141,14 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
         }
 
         if (character.workflow.currentStep().talentPrompt) {
-            if (!this._selectedTalent || this._selectedTalent === "Select talent") {
+            if (!this._selectedTalent) {
                 Dialog.show("You have not selected a talent.");
                 return;
             }
 
             character.addTalent(this._selectedTalent);
 
-            if (this._selectedTalent === "The Ushaan") {
+            if (this._selectedTalent.name === "The Ushaan") {
                 character.addEquipment("Ushaan-tor ice pick");
             }
         }

@@ -7,11 +7,11 @@ import {Skill} from '../helpers/skills';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovement';
 import {SkillImprovementCollection} from '../components/skillImprovement';
 import {ElectiveSkillList} from '../components/electiveSkillList';
-import { TalentsHelper } from '../helpers/talents';
+import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
-import { TalentSelectionList } from '../components/talentSelectionList';
 import {ValueInput, Value} from '../components/valueInput';
+import { TalentSelection } from '../components/talentSelection';
 
 interface IPageState {
     showExcessAttrDistribution: boolean;
@@ -19,12 +19,11 @@ interface IPageState {
 }
 
 export class AttributesAndDisciplinesPage extends React.Component<IPageProperties, IPageState> {
-    private _selectedTalent: string;
+    private _selectedTalent: TalentViewModel;
     private _attrPoints: number;
     private _excessAttrPoints: number;
     private _skillPoints: number;
     private _excessSkillPoints: number;
-    private _skills: Skill[];
     private _attributesDone: boolean;
     private _skillsDone: boolean;
 
@@ -33,7 +32,6 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
 
         this._attrPoints = 2;
         this._skillPoints = 2;
-        this._skills = [];
 
         let attrSum = 0;
         let discSum = 0;
@@ -84,7 +82,7 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
         const talentSelection = !hasExcess && character.workflow.currentStep().talentPrompt
             ? (<div className="panel">
                 <div className="header-small">TALENTS</div>
-                <TalentSelectionList talents={talents} onSelection={talent => { this._selectedTalent = talent.name; }} />
+                <TalentSelection talents={talents} onSelection={talents => { this._selectedTalent = talents.length > 0 ? talents[0] : undefined; }} />
             </div>)
             : undefined;
 
@@ -141,14 +139,14 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
             }
 
             if (character.workflow.currentStep().talentPrompt) {
-                if (!this._selectedTalent || this._selectedTalent === "Select talent") {
+                if (!this._selectedTalent) {
                     Dialog.show("You have not selected a talent.");
                     return;
                 }
 
                 character.addTalent(this._selectedTalent);
 
-                if (this._selectedTalent === "The Ushaan") {
+                if (this._selectedTalent.name === "The Ushaan") {
                     character.addEquipment("Ushaan-tor ice pick");
                 }
             }

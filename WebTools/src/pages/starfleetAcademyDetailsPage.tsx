@@ -5,19 +5,20 @@ import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {Track, TracksHelper} from '../helpers/tracks';
-import {Skill, SkillsHelper} from '../helpers/skills';
+import {Skill} from '../helpers/skills';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovement';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {ValueInput, Value} from '../components/valueInput';
-import {TalentList} from '../components/talentList';
 import {MajorsList} from '../components/majorsList';
 import {SkillView} from '../components/skill';
+import { TalentSelection } from '../components/talentSelection';
+import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 
 export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties, {}> {
     private _major: Skill;
     private _electiveSkills: Skill[];
-    private _talent: string;
+    private _talent: TalentViewModel;
     private _focus1: HTMLInputElement;
     private _focus2: HTMLInputElement;
     private _focus3: HTMLInputElement;
@@ -85,7 +86,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentList skills={[...SkillsHelper.getSkills(), Skill.None]} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
+                    <TalentSelection talents={TalentsHelper.getAllTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -130,7 +131,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentList skills={[...SkillsHelper.getSkills(), Skill.None]} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
+                    <TalentSelection talents={TalentsHelper.getAllTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -179,7 +180,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentList skills={[...SkillsHelper.getSkills(), Skill.None]} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
+                    <TalentSelection talents={TalentsHelper.getAllTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -237,7 +238,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentList skills={[...SkillsHelper.getSkills(), Skill.None]} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
+                    <TalentSelection talents={TalentsHelper.getAllTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -295,7 +296,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentList skills={[...SkillsHelper.getSkills(), Skill.None]} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
+                    <TalentSelection talents={TalentsHelper.getAllTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -316,8 +317,8 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
         this.forceUpdate();
     }
 
-    private onTalentSelected(talent: string) {
-        this._talent = talent;
+    private onTalentSelected(talents: TalentViewModel[]) {
+        this._talent = talents.length > 0 ? talents[0] : undefined;
         this.forceUpdate();
     }
 
@@ -343,7 +344,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
             return;
         }
 
-        if (!this._talent || this._talent === "Select talent") {
+        if (!this._talent) {
             Dialog.show("You must select a talent before proceeding.");
             return;
         }

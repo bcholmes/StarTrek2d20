@@ -2362,6 +2362,11 @@ export class Talents {
         return talent;
     }
 
+    getAllTalents() {
+        let skills = [...SkillsHelper.getSkills(), Skill.None];
+        return this.getTalentsForSkills(skills);
+    }
+
     getTalentsForSkills(skills: Skill[]) {
         let talents: TalentViewModel[] = [];
 
@@ -2381,8 +2386,7 @@ export class Talents {
                         if (character.hasTalent(talent.name) && character.talents[talent.name].rank === talent.maxRank) {
                             include = false;
                         }
-                    }
-                    else {
+                    } else {
                         if (character.hasTalent(talent.name)) {
                             include = false;
                         }
@@ -2484,9 +2488,6 @@ export class Talents {
         }
 
         return src;
-    }
-
-    applyTalent(talent: string) {
     }
 }
 

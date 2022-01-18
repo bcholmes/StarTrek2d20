@@ -4,22 +4,22 @@ import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {CareersHelper} from '../helpers/careers';
-import {SkillsHelper, Skill} from '../helpers/skills';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
-import {TalentList} from '../components/talentList';
 import {TalentDescription} from '../components/talentDescription';
 import {ValueInput, Value} from '../components/valueInput';
+import { TalentSelection } from '../components/talentSelection';
+import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 
 export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
-    private _talent: string;
+    private _talent: TalentViewModel;
 
     constructor(props: IPageProperties) {
         super(props);
 
         const career = CareersHelper.getCareer(character.career);
         if (career.talent.length === 1) {
-            this._talent = career.talent[0].name;
+            this._talent = career.talent[0];
         }
     }
 
@@ -28,7 +28,7 @@ export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
 
         const talent = career.talent.length === 1
             ? (<TalentDescription name={career.talent[0].name} description={career.talent[0].description}/>)
-            : (<TalentList skills={[...SkillsHelper.getSkills(), Skill.None]} onSelection={(talent) => { this.onTalentSelected(talent) } }/>);
+            : (<TalentSelection talents={TalentsHelper.getAllTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>);
 
         return (
             <div className="page">
@@ -49,13 +49,13 @@ export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
         );
     }
 
-    private onTalentSelected(talent: string) {
-        this._talent = talent;
+    private onTalentSelected(talents: TalentViewModel[]) {
+        this._talent = talents.length > 0 ? talents[0] : undefined;
         this.forceUpdate();
     }
 
     private onNext() {
-        if (!this._talent || this._talent === "Select talent") {
+        if (!this._talent) {
             Dialog.show("You must select a Talent before proceeding.");
             return;
         }

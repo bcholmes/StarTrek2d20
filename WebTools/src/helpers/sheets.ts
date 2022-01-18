@@ -136,7 +136,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
         }
         let trait = character.type === CharacterType.KlingonWarrior ? "Klingon Starship" : "Federation Starship";
 
-        const talents = character.starship.getTalentList();
+        const talents = character.starship.getTalentNameList();
 
         const spaceframe = character.starship.spaceframeModel;
         if (spaceframe) {
@@ -229,7 +229,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
     determineWeapons(): Weapon[] {
         var result = [];
         var secondary = [];
-        const talents = character.starship.getTalentList();
+        const talents = character.starship.getTalentNameList();
         const spaceframe = character.starship.spaceframeModel;
         if (spaceframe) {
             for (var attack of spaceframe.attacks) {
