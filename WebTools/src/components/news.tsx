@@ -11,6 +11,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220119</b>
+                <ul>
+                    <li>Minor improvements to the TOS character sheets, including initial support for ship outlines.</li>
+                </ul>
                 <b>v1.220118</b>
                 <ul>
                     <li><a href="https://github.com/bcholmes/StarTrek2d20/issues/9" target="_blank" rel="noreferrer">Enhancement:</a> I've
@@ -80,21 +84,6 @@ class News extends React.Component<INewsProperties, {}> {
                 <b>v1.210927</b>
                 <ul>
                     <li>Bug fix: The app would stop working if you tried to use the History widget to navigate to an earlier page.</li>
-                </ul>
-                <b>v1.210922</b>
-                <ul>
-                    <li>Bug fix: re-tool the starship PDF generation, because the original site is offline.</li>
-                </ul>
-                <b>v1.210918</b>
-                <ul>
-                    <li>Support for TOS character sheets.</li>
-                    <li>Fixed a bug on the supporting character while trying to export to PDF.</li>
-                    <li>Restore the weapons list to the exported PDF</li>
-                    <li>Better support for Klingon supporting characters.</li>
-                </ul>
-                <b>v1.210917</b>
-                <ul>
-                    <li>Added support for the Shackleton Expanse book (new species and Talents).</li>
                 </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>

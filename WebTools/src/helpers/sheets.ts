@@ -11,7 +11,7 @@ import { MissionProfileHelper } from '../helpers/missionProfiles';
 import { Department } from './departments';
 import { System } from './systems';
 import { Weapon } from './weapons';
-import { SpaceframeOutline } from './spaceframeOutlineHelper';
+import { SheetOutlineOptions, SpaceframeOutline, XYLocation } from './spaceframeOutlineHelper';
 import { TalentsHelper } from './talents';
 import { CareerEventsHelper } from './careerEvents';
 
@@ -343,7 +343,7 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
         super.populate(pdf);
 
         const spaceframe = character.starship.spaceframeModel;
-        SpaceframeOutline.draw(pdf, spaceframe, character.starship.serviceYear);
+        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(43.5, 290.25), rgb(245.0/255, 157.0/255.0, 8.0/255.0)), spaceframe, character.starship.serviceYear);
     }
 }
 
@@ -355,7 +355,14 @@ class StandardTosStarshipSheet extends BasicStarshipSheet {
         return 'https://sta.bcholmes.org/static/img/sheets/TOS_Standard_Starship_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/static/pdf/TOS_Standard_Starship_Sheet.pdf'
+        return 'https://sta.bcholmes.org/static/pdf/TOS_Starship_Sheet_no_outline.pdf'
+    }
+
+    async populate(pdf: PDFDocument) {
+        super.populate(pdf);
+
+        const spaceframe = character.starship.spaceframeModel;
+        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(42.5, 243.0), rgb(237.0/255, 27.0/255.0, 47.0/255.0)), spaceframe, character.starship.serviceYear, true);
     }
 }
 
