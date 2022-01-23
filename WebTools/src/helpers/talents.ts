@@ -837,7 +837,7 @@ export class Talents {
                 1),
             new TalentModel(
                 "Temporal Mechanic",
-                "Long study into the facets of temporal mechanics has given the character an intuitive understanding of the space-time continuum and the various phenomena that can distort it. Once per scene, when confronted with an anomaly that affects the flow of time and space, the character rolls 1 CD when attempting a Task relating to the phenomenon. The character generates bonus Momentum equal to the result, in addition to any Momentum generated from the Task result. If an Effect is rolled, the Gamemaster gains 1 Threat instead.",
+                "Long study into the facets of temporal mechanics has given the character an intuitive understanding of the space-time continuum and the various phenomena that can distort it. Once per scene, when confronted with an anomaly that affects the flow of time and space, the character rolls 1[D] when attempting a Task relating to the phenomenon. The character generates bonus Momentum equal to the result, in addition to any Momentum generated from the Task result. If an Effect is rolled, the Gamemaster gains 1 Threat instead.",
                 [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Science, 3), new FocusPrerequisite("Temporal Mechanics")],
                 1),
             new TalentModel(
@@ -1099,7 +1099,7 @@ export class Talents {
                 "Bolian"),
             new TalentModel(
                 "Born Near a Warp Core",
-                "Bolian traditions say that a child born near an active Warp Core has an improved, more positive, disposition. Optimism and an upbeat attitude certainly lends credence to this tradition, allowing the Bolian to weather misfortune. When they suffer a Complication from a Task, roll 1[CD]; if the result is an Effect, the Complication is ignored. Once a Complication has been ignored in this way, the Bolian may not ignore another Complication for the remainder of the scene.",
+                "Bolian traditions say that a child born near an active Warp Core has an improved, more positive, disposition. Optimism and an upbeat attitude certainly lends credence to this tradition, allowing the Bolian to weather misfortune. When they suffer a Complication from a Task, roll 1[D]; if the result is an Effect, the Complication is ignored. Once a Complication has been ignored in this way, the Bolian may not ignore another Complication for the remainder of the scene.",
                 [new SpeciesPrerequisite(17, true), new EraPrerequisite(Era.NextGeneration), new SourcePrerequisite(Source.BetaQuadrant)],
                 1,
                 "Bolian"),
@@ -1165,7 +1165,7 @@ export class Talents {
                 "Rigellian Chelon"),
             new TalentModel(
                 "Toxic Claws",
-                "In times of danger Chelons excrete a contact toxin onto their claws that can be used to debilitate foes. Their Unarmed Strike is replaced with a melee attack Claw Strike (Melee, 1[CD], Piercing 1, Debilitating, Non-lethal).",
+                "In times of danger Chelons excrete a contact toxin onto their claws that can be used to debilitate foes. Their Unarmed Strike is replaced with a melee attack Claw Strike (Melee, 1[D], Piercing 1, Debilitating, Non-lethal).",
                 [new SpeciesPrerequisite(21, false), new EraPrerequisite(Era.OriginalSeries), new SourcePrerequisite(Source.BetaQuadrant)],
                 1,
                 "Rigellian Chelon"),
@@ -1729,7 +1729,7 @@ export class Talents {
                 "Klingon (QuchHa')"),
             new TalentModel(
                 "A Better Path",
-                "Akaru value efficiency in all things, including when working on problems or tasks. Whenever you succeed at a task during an extended task, add 1d to your dice pool to determine Work completed.",
+                "Akaru value efficiency in all things, including when working on problems or tasks. Whenever you succeed at a task during an extended task, add 1[D] to your dice pool to determine Work completed.",
                 [new SourcePrerequisite(Source.ShackletonExpanse), new EraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(72, true)],
                 1,
                 "Akaru"),
@@ -1777,7 +1777,7 @@ export class Talents {
                 "Qofuari"),
             new TalentModel(
                 "Silent Scream",
-                "The VinShari’s bone collars allow them to attenuate their vocal cords to achieve harmonic resonance in a silent scream that can cause pain, unconsciousness, and death. Two or more VinShari harmonizing together can shatter bone. The silent scream can be used as a ranged weapon (2d, Area and Piercing 1 effects). Other VinShari with this talent may assist these attacks, and each VinShari providing assistance increases the Stress inflicted by 1d.",
+                "The VinShari’s bone collars allow them to attenuate their vocal cords to achieve harmonic resonance in a silent scream that can cause pain, unconsciousness, and death. Two or more VinShari harmonizing together can shatter bone. The silent scream can be used as a ranged weapon (2d, Area and Piercing 1 effects). Other VinShari with this talent may assist these attacks, and each VinShari providing assistance increases the Stress inflicted by 1[D].",
                 [new SourcePrerequisite(Source.ShackletonExpanse), new EraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(75, true)],
                 1,
                 "VinShari"),
@@ -2031,13 +2031,13 @@ export class Talents {
                 "Enhancement"),
             new TalentModel(
                 "Neural Interface",
-                "The character has had a cybernetic device implanted directly into their brain, allowing them to interface with computers and similar technologies with their thoughts. Initiating or breaking the link between their minds and a computer system takes a Minor Action, and while they are connected they may reroll the d20 gained from using ship's Systems. However, any time the ship suffers a Breach the character also suffers 3 CD of Stress.",
+                "The character has had a cybernetic device implanted directly into their brain, allowing them to interface with computers and similar technologies with their thoughts. Initiating or breaking the link between their minds and a computer system takes a Minor Action, and while they are connected they may reroll the d20 gained from using ship's Systems. However, any time the ship suffers a Breach the character also suffers 3[D] of Stress.",
                 [new SourcePrerequisite(Source.SciencesDivision)],
                 1,
                 "Enhancement"),
             new TalentModel(
                 "Physical Enhancement",
-                "The character has some portion of their body replaced by an advanced piece of bio-mechanical hardware. This device functions exactly like its organic counterpart; however, before attempting a Task, the Character may choose to take 3 CD Stress to add a single additional d20 to their dice pool. Any Injuries caused by this damage is resolved after the effects of the Task. Multiple dice may be bought in this way, but the damage is added together (so, buying two dice inflicts 6 CD damage, and buying 3 dice inflicts 9 CD damage). These dice count towards the normal limit of bonus d20s purchased.",
+                "The character has some portion of their body replaced by an advanced piece of bio-mechanical hardware. This device functions exactly like its organic counterpart; however, before attempting a Task, the Character may choose to take 3[D] Stress to add a single additional d20 to their dice pool. Any Injuries caused by this damage is resolved after the effects of the Task. Multiple dice may be bought in this way, but the damage is added together (so, buying two dice inflicts 6[D] damage, and buying 3 dice inflicts 9[D] damage). These dice count towards the normal limit of bonus d20s purchased.",
                 [new SourcePrerequisite(Source.SciencesDivision)],
                 1,
                 "Enhancement"),
@@ -2081,7 +2081,7 @@ export class Talents {
                 "Starship"),
             new TalentModel(
                 "Backup EPS Conduits",
-                "The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of an emergency, keeping it from being lost when the ship is damaged. Whenever the ship would lose one or more Power because of suffering damage, roll [CD] for each Power lost. Each Effect rolled prevents the loss of that point of Power.",
+                "The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of an emergency, keeping it from being lost when the ship is damaged. Whenever the ship would lose one or more Power because of suffering damage, roll [D] for each Power lost. Each Effect rolled prevents the loss of that point of Power.",
                 [new StarshipPrerequisite()],
                 1,
                 "Starship"),
@@ -2183,7 +2183,7 @@ export class Talents {
                 "Starship"),
             new TalentModel(
                 "Rapid-Fire Torpedo Launcher",
-                "The vessel’s torpedo launchers have been redesigned to allow the ship to fire multiple torpedoes much more quickly and accurately. Whenever the crew add 3 to Threat to fire a torpedo salvo, they may re-roll a single d20 on the attack, and any number of CD on the damage roll.",
+                "The vessel’s torpedo launchers have been redesigned to allow the ship to fire multiple torpedoes much more quickly and accurately. Whenever the crew add 3 to Threat to fire a torpedo salvo, they may re-roll a single d20 on the attack, and any number of [D] on the damage roll.",
                 [new StarshipPrerequisite()],
                 1,
                 "Starship"),
@@ -2273,7 +2273,7 @@ export class Talents {
                 "Starship"),
             new TalentModel(
                 "Grappler Cables",
-                "This precursor to tractor beams uses sturdy cables and magnetic grapplers to grab on to objects and ships. This functions as a tractor beam, but if the target breaks free, roll 1[CD] — on an Effect, the cables have been Damaged and cannot be used again until repaired.",
+                "This precursor to tractor beams uses sturdy cables and magnetic grapplers to grab on to objects and ships. This functions as a tractor beam, but if the target breaks free, roll 1[D] — on an Effect, the cables have been Damaged and cannot be used again until repaired.",
                 [new StarshipPrerequisite(), new MaxServiceYearPrerequisite(2199)],
                 1,
                 "Starship"),

@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'trekarrows';
+    src: url('../fonts/Trek_Arrowheads.ttf') format('truetype');
+    font-style: normal;
+}
+
+.delta {
+    color: inherit;
+    letter-spacing: -1px;
+    font-size: 0px;    
+}
+.delta::after {
+    font-size: 1rem;
+    content: "A";
+    color: inherit;
+    font-family: 'trekarrows';
+}
+
+table.selection-list .delta::after {
+    font-size: 12px;
+}

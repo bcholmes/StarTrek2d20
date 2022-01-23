@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 import {CheckBox} from './checkBox';
 import {TalentViewModel} from '../helpers/talents';
+import replaceDiceWithArrowhead from '../common/arrowhead';
 
 interface ITalentSelectionProperties {
     talents: TalentViewModel[]
@@ -50,7 +51,7 @@ export class TalentSelection extends React.Component<ITalentSelectionProperties,
             return (
                 <tr key={i}>
                     <td className="selection-header-small">{t.displayName}</td>
-                    <td>{t.description}</td>
+                    <td>{replaceDiceWithArrowhead(t.description)}</td>
                     <td>
                         <CheckBox
                             text=""

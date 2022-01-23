@@ -6,6 +6,7 @@ import { TalentModel, TalentsHelper } from "../helpers/talents";
 import { Source, SourcesHelper } from "../helpers/sources";
 import { character } from "../common/character";
 import { Species, SpeciesHelper } from "../helpers/species";
+import replaceDiceWithArrowhead from '../common/arrowhead';
 
 class TalentViewModel {
     name: string;
@@ -105,7 +106,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
             if (t.prerequisites) {
                 prerequsites = (<div style={{ fontWeight: "bold" }}>{t.prerequisites}</div>);
             }
-
+            let description = replaceDiceWithArrowhead(t.description);
             return (
                 <tr key={i}>
                     <td className="selection-header">
@@ -115,7 +116,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
                         </div>
                     </td>
                     <td className="d=none d-md-table-cell">{t.category}</td>
-                    <td>{t.description} {prerequsites} {info}</td>
+                    <td>{description} {prerequsites} {info}</td>
                 </tr>
             );
         });

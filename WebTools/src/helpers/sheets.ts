@@ -37,6 +37,11 @@ class Column {
         this.height = height;
         this.width = width;
     }
+
+    contains(point: XYLocation) {
+        return point.x >= this.x && point.x <= (this.x + this.width)
+            && point.y >= this.y && point.y <= (this.y + this.height);
+    }
 }
 
 export interface ICharacterSheet {
@@ -336,7 +341,7 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
         return 'https://sta.bcholmes.org/static/img/sheets/TNG_Standard_Starship_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/static/pdf/TNG_Standard_Starship_Sheet_no_outline_new.pdf'
+        return 'https://sta.bcholmes.org/static/pdf/TNG_Standard_Starship_Sheet_no_outline.pdf'
     }
 
     async populate(pdf: PDFDocument) {
@@ -761,11 +766,17 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
     }
 
     createTextBlocks(text: string, font: PDFFont, fontSize: number, startPointX: number, startPointY: number, page: PDFPage, columns: Column[]) {
-        const maxColumnWidth = columns[0].width;
+        let currentColumnIndex = 0;
+        columns.forEach((c, i) => {
+            if (c.contains(new XYLocation(startPointX, startPointY))) {
+                currentColumnIndex = i;
+            }
+        });
+        let currentColumn = columns[currentColumnIndex];
 
         let result: TextBlock[] = [];
         let textBlock = this.createTextBlock(text, font, fontSize);
-        if (textBlock.width < maxColumnWidth) {
+        if (textBlock.width < currentColumn.width) {
             textBlock.x = startPointX;
             textBlock.y = startPointY - textBlock.height;
     
@@ -781,7 +792,7 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
                     textPortion += (" " + words[i]);
                 }
                 let block = this.createTextBlock(textPortion, font, fontSize);
-                if (block.width < maxColumnWidth) {
+                if (block.width < currentColumn.width) {
                     previousBlock = block;
                 } else {
                     if (previousBlock != null) {
@@ -790,9 +801,12 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
                         result.push(previousBlock);
 
                         startPointY -= previousBlock.height;
-                        if (startPointY < (page.getSize().height - columns[0].y - columns[0].height) && startPointX === columns[0].x) {
-                            startPointY = page.getSize().height - columns[1].y;
-                            startPointX = columns[1].x;
+                        startPointX = currentColumn.x;
+                        if (startPointY < (page.getSize().height - currentColumn.y - currentColumn.height) && currentColumnIndex < columns.length) {
+                            currentColumnIndex++;
+                            currentColumn = columns[currentColumnIndex];
+                            startPointY = page.getSize().height - currentColumn.y;
+                            startPointX = currentColumn.x;
                         } else if (startPointY > 755) {
                             break;
                         }
