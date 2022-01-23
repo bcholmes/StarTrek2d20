@@ -38,6 +38,7 @@ export class Refit extends React.Component<IRefitImprovementProperties, {}> {
     }
 
     private onDecrease() {
+        console.log("on decrease 1");
         this.props.controller.onDecrease(this.props.system);
     }
 
@@ -48,33 +49,13 @@ export class Refit extends React.Component<IRefitImprovementProperties, {}> {
 
 interface IRefitsProperties {
     points: number;
-    onDone?: (done: boolean) => void;
-    onUpdate: (points: number) => void;
-}
-
-class RefitContainer {
-    system: System;
-    value: number;
-    minValue: number;
-    maxValue: number;
-    showDecrease: boolean;
-    showIncrease: boolean;
-
-    constructor(system: System, value: number, minValue: number, maxValue: number, showDecrease: boolean, showIncrease: boolean) {
-        this.system = system;
-        this.value = value;
-        this.minValue = minValue;
-        this.maxValue = maxValue;
-        this.showDecrease = showDecrease;
-        this.showIncrease = showIncrease;
-    }
+    refits: System[]
+    onIncrease?: (system: System) => void;
+    onDecrease?: (system: System) => void;
 }
 
 export class Refits extends React.Component<IRefitsProperties, {}> {
     private _absoluteMax: number = 12;
-
-    private _points: number;
-    private _refits: RefitContainer[];
 
     constructor(props: IRefitsProperties) {
         super(props);
@@ -87,57 +68,18 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
                 minimum[i] += s;
             });
         }
-
-        this._points = this.calculatePoints(props.points, minimum);
-        this._refits = [];
-
-        for (let i = 0; i < character.starship.systems.length; i++) {
-            this._refits.push(
-                new RefitContainer(
-                    i,
-                    character.starship.systems[i],
-                    minimum[i],
-                    this._absoluteMax,
-                    character.starship.systems[i] > minimum[i],
-                    character.starship.systems[i] < this._absoluteMax && this._points > 0));
-        }
-    }
-
-    // TODO: fix this to use State
-    UNSAFE_componentWillReceiveProps(props: IRefitsProperties) {
-        let minimum = character.starship.spaceframeModel.systems;
-
-        const missionPod = SpaceframeHelper.getMissionPod(character.starship.missionPod);
-        if (missionPod) {
-            missionPod.systems.forEach((s, i) => {
-                minimum[i] += s;
-            });
-        }
-
-        this._points = this.calculatePoints(props.points, minimum);
-        this._refits = [];
-
-        for (let i = 0; i < character.starship.systems.length; i++) {
-            this._refits.push(
-                new RefitContainer(
-                    i,
-                    character.starship.systems[i],
-                    minimum[i],
-                    this._absoluteMax,
-                    character.starship.systems[i] > minimum[i],
-                    character.starship.systems[i] < this._absoluteMax && this._points > 0));
-        }
     }
 
     render() {
-        const attributes = this._refits.map((a, i) => {
+        const systems: System[] = [ System.Comms, System.Computer, System.Engines, System.Sensors, System.Structure, System.Weapons ];
+        const attributes = systems.map((a, i) => {
             return <Refit
                 key={i}
                 controller={this}
-                system={a.system}
-                value={a.value}
-                showIncrease={a.showIncrease}
-                showDecrease={a.showDecrease} />
+                system={a}
+                value={this.currentValue(a)}
+                showIncrease={this.showIncrease(a)}
+                showDecrease={this.showDecrease(a)} />
         });
 
         return (
@@ -147,69 +89,26 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
         );
     }
 
+    showDecrease(system: System) {
+        return this.currentValue(system) > character.starship.getBaseSystem(system);
+    }
+
+    showIncrease(system: System) {
+        return this.currentValue(system) < this._absoluteMax && this.props.refits.length < this.props.points;
+    }
+
+    currentValue(s: System) {
+        return character.starship.getSystemValue(s);
+    }
+
     onDecrease(attr: System) {
-        for (let i = 0; i < this._refits.length; i++) {
-            let a = this._refits[i];
-            if (a.system === attr) {
-                a.value--;
-                character.starship.systems[a.system] = a.value;
-                break;
-            }
-        }
-
-        this._points++;
-
-        for (let i = 0; i < this._refits.length; i++) {
-            let a = this._refits[i];
-            a.showDecrease = a.value > a.minValue;
-            a.showIncrease = a.value < a.maxValue;
-        }
-
-        if (this.props.onDone) {
-            this.props.onDone(this._points === 0);
-        }
-
-        this.props.onUpdate(this._points);
-
+        console.log("on decrease 2");
+        this.props.onDecrease(attr);
         this.forceUpdate();
     }
 
     onIncrease(attr: System) {
-        for (let i = 0; i < this._refits.length; i++) {
-            let a = this._refits[i];
-            if (a.system === attr) {
-                a.value++;
-                character.starship.systems[a.system] = a.value;
-                break;
-            }
-        }
-
-        this._points--;
-
-        for (let i = 0; i < this._refits.length; i++) {
-            let a = this._refits[i];
-            a.showDecrease = a.value > a.minValue;
-            a.showIncrease = a.value < a.maxValue && this._points > 0;
-        }
-
-        if (this.props.onDone) {
-            this.props.onDone(this._points === 0);
-        }
-
-        this.props.onUpdate(this._points);
-
+        this.props.onIncrease(attr);
         this.forceUpdate();
-    }
-
-    private calculatePoints(allotted: number, systems: number[]) {
-        /*
-        let reduction = 0;
-
-        for (let i = 0; i < systems.length; i++) {
-            const diff = character.starship.systems[i] - systems[i];
-            reduction += diff; 
-        }
-        */
-        return allotted;// - reduction;
     }
 }

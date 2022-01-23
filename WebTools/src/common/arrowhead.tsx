@@ -16,7 +16,7 @@ const replaceDiceWithArrowhead = (description: string) => {
         if (description.length > 0) {
             parts.push(description);
         }
-        let content = parts.map(p => p === "[D]" ? (<span className="delta">{p}</span>) : (<span>{p}</span>));
+        let content = parts.map((p,i) => p === "[D]" ? (<span className="delta" key={'part'+i}>{p}</span>) : (<span key={'part'+i}>{p}</span>));
         return (<span>
             {content}
         </span>)

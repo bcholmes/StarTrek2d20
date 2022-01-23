@@ -20,11 +20,14 @@ import StarshipStats from '../components/starshipStats';
 import MissionProfileSelection from '../components/missionProfileSelection';
 import MissionPodSelection from '../components/missionPodSelection';
 import CustomSpaceframeForm from '../components/customSpaceframeForm';
+import { System } from '../helpers/systems';
 
 interface StarshipPageState {
     type: CharacterTypeModel
     name: string
     profileTalent?: string
+    refitCount: number
+    refits: System[]
 }
 
 export class StarshipPage extends React.Component<{}, StarshipPageState> {
@@ -32,7 +35,6 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     private _talentSelection: TalentViewModel[];
     private _traits: string;
     private _registry: string = "NCC-";
-    private _refits: number;
 
     constructor(props: {}) {
         super(props);
@@ -46,12 +48,13 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         character.starship.serviceYear = this.eraDefaultYear(character.era);
 
         this._talentSelection = [];
-        this._refits = 0;
 
         this.state = {
             type: CharacterTypeModel.getStarshipTypes()[character.type],
             name: 'U.S.S. ',
-            profileTalent: undefined
+            profileTalent: undefined,
+            refitCount: 0,
+            refits: []
         };
     }
 
@@ -191,23 +194,22 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         }
 
         let defaultTrait = character.type === CharacterType.KlingonWarrior ? ["Klingon Starship"] : ["Federation Starship"];
-        let numRefits = 0;
         if (character.starship.spaceframeModel) {
             const frame = character.starship.spaceframeModel;
-            numRefits = Math.floor((character.starship.serviceYear - frame.serviceYear) / 10);
             defaultTrait = frame.additionalTraits;
         }
 
-        const refits = numRefits > 0
+        const refits = this.state.refitCount > 0
             ? (
                 <div className="panel" style={{ marginTop: "2em" }}>
                     <div className="header-small">Refits</div>
                     <div className="page-text-aligned">
-                        Your ship is entitled to <b>{numRefits}</b> {(numRefits === 1 ? ' Refit' : ' Refits')}.
+                        Your ship is entitled to <b>{this.state.refitCount}</b> {(this.state.refitCount === 1 ? ' Refit' : ' Refits')}.
                         Each refit grants a point that can be used to increase a System attribute by one.
                         No System attribute may go above 12.
                     </div>
-                    <Refits points={numRefits - this._refits} onUpdate={(points) => { this._refits = points; }}/>
+                    <Refits refits={this.state.refits} points={this.state.refitCount} 
+                        onIncrease={(s) => { this.addRefit(s)} } onDecrease={(s) => { this.removeRefit(s); } }/>
                 </div>
             )
             : undefined;
@@ -449,6 +451,27 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         );
     }
 
+    addRefit(system: System) {
+        character.starship.refits = [...this.state.refits, system];
+        this.setState((state) => ({
+            ...state,
+            refits: [...state.refits, system]
+        }));
+    }
+
+    removeRefit(system: System) {
+        let initial = [ ...this.state.refits ];
+        let index = initial.indexOf(system);
+        if (index >= 0) {
+            initial.splice(index, 1);
+            character.starship.refits = initial;
+            this.setState((state) => ({
+                ...state,
+                refits: initial
+            }));
+        }
+    }
+
     closeModal() {
         ModalControl.hide();
         this.forceUpdate();
@@ -543,6 +566,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
     private onMissionPodSelected(pod: MissionPod) {
         character.starship.missionPod = pod;
+        character.starship.missionPodModel = SpaceframeHelper.getMissionPod(character.starship.missionPod);
         this.updateSystemAndDepartments();
         this.forceUpdate();
     }
@@ -586,7 +610,18 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
             character.starship.departments[i] += d;
         });
 
-        this._refits = 0;
+        let numRefits = 0;
+        if (character.starship.spaceframeModel) {
+            const frame = character.starship.spaceframeModel;
+            numRefits = Math.floor((character.starship.serviceYear - frame.serviceYear) / 10);
+        }
+
+        character.starship.refits = [];
+        this.setState((state) => ({
+            ...state,
+            refitCount: numRefits,
+            refits: []
+         }));
     }
 
     private calculateTalents() {

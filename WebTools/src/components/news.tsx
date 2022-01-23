@@ -11,6 +11,13 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220123</b>
+                <ul>
+                    <li>I've re-written some of the starship handling around refits, because I found the old behaviour buggy.
+                        One of the side-effects of doing this is that I can now add the Refit field to the final sheet.
+                    </li>
+                    <li>When listing talents, I now render the Challenge Dice using the Starfleet delta, in line with the rulebook.</li>
+                </ul>
                 <b>v1.220119</b>
                 <ul>
                     <li>Minor improvements to the TOS character sheets, including initial support for ship outlines.</li>

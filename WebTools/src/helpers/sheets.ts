@@ -170,10 +170,30 @@ abstract class BasicStarshipSheet extends BasicSheet {
             this.fillShields(form, this.calculateShields(character.starship.systems[System.Structure] + character.starship.departments[Department.Security], talents));
         }
 
+        this.fillRefits(form);
         this.fillSystems(form);
         this.fillDepartments(form);
         this.fillTalents(form, talents);
         this.fillWeapons(form);
+    }
+
+    fillRefits(form: PDFForm) {
+        let systems: System[] = [ System.Comms, System.Computer, System.Engines, System.Sensors, System.Structure, System.Weapons ];
+        let refitString = "";
+        if (character.starship.refits) {
+            systems.forEach(s => {
+                let value = 0;
+                character.starship.refits.forEach(r => value += (r === s) ? 1 : 0);
+                if (value > 0) {
+                    if (refitString !== "") {
+                        refitString += ", ";
+                    }
+                    refitString += "+" + value + " " + System[s];
+                }
+            });
+        }
+        console.log("Refit: " + refitString);
+        this.fillField(form, "Refit", refitString);
     }
 
     calculateCrewSupport(scale: number) {
@@ -284,12 +304,12 @@ abstract class BasicStarshipSheet extends BasicSheet {
     }
 
     fillSystems(form: PDFForm) {
-        this.fillFieldWithNumber(form, "Engines", character.starship.systems[System.Engines]);
-        this.fillFieldWithNumber(form, "Structure", character.starship.systems[System.Structure]);
-        this.fillFieldWithNumber(form, "Computers", character.starship.systems[System.Computer]);
-        this.fillFieldWithNumber(form, "Sensors", character.starship.systems[System.Sensors]);
-        this.fillFieldWithNumber(form, "Weapons", character.starship.systems[System.Weapons]);
-        this.fillFieldWithNumber(form, "Communications", character.starship.systems[System.Comms]);
+        this.fillFieldWithNumber(form, "Engines", character.starship.getSystemValue(System.Engines));
+        this.fillFieldWithNumber(form, "Structure", character.starship.getSystemValue(System.Structure));
+        this.fillFieldWithNumber(form, "Computers", character.starship.getSystemValue(System.Computer));
+        this.fillFieldWithNumber(form, "Sensors", character.starship.getSystemValue(System.Sensors));
+        this.fillFieldWithNumber(form, "Weapons", character.starship.getSystemValue(System.Weapons));
+        this.fillFieldWithNumber(form, "Communications", character.starship.getSystemValue(System.Comms));
     }
 
     fillDepartments(form: PDFForm) {

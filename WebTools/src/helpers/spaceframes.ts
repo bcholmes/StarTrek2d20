@@ -1106,11 +1106,12 @@ class Spaceframes {
     }
 
     getMissionPod(pod: MissionPod) {
-        if (pod === null) {
+        if (pod == null) {
             return null;
         }
 
-        return this._missionPods[pod];
+        let model = this._missionPods[pod];
+        return model == null ? null : new MissionPodViewModel(pod, this._missionPods[pod]);
     }
 }
 

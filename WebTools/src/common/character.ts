@@ -9,9 +9,10 @@ import {Track} from '../helpers/tracks';
 import {Upbringing} from '../helpers/upbringings';
 import {Workflow} from '../helpers/workflows';
 import {TalentViewModel} from '../helpers/talents';
-import {MissionPod, SpaceframeHelper, SpaceframeViewModel} from '../helpers/spaceframes';
+import {MissionPod, MissionPodViewModel, SpaceframeHelper, SpaceframeViewModel} from '../helpers/spaceframes';
 import {MissionProfile} from "../helpers/missionProfiles";
 import {CharacterType} from './characterType';
+import { System } from '../helpers/systems';
 
 export class CharacterAttribute {
     attribute: Attribute;
@@ -50,17 +51,35 @@ export class Starship {
     serviceYear?: number;
     spaceframeModel?: SpaceframeViewModel = undefined;
     missionPod?: MissionPod;
+    missionPodModel?: MissionPodViewModel;
     missionProfile?: MissionProfile;
     systems: number[];
     departments: number[];
     scale: number;
     profileTalent?: TalentViewModel;
     additionalTalents: TalentViewModel[] = [];
+    refits: System[] = [];
 
     constructor() {
         this.systems = [];
         this.departments = [];
         this.scale = 0;
+    }
+
+    getBaseSystem(system: System) {
+        let result = 0;
+        if (this.spaceframeModel) {
+            result = this.spaceframeModel.systems[system];
+            if (this.spaceframeModel.isMissionPodAvailable && this.missionPodModel) {
+                result += this.missionPodModel.systems[system];
+            }
+        }
+        return result;
+    }
+    getSystemValue(system: System) {
+        let base = this.getBaseSystem(system);
+        this.refits.forEach(r => { if (r === system) base++});
+        return base;
     }
 
     getTalentNameList() {
