@@ -387,7 +387,7 @@ class StandardTosStarshipSheet extends BasicStarshipSheet {
         super.populate(pdf);
 
         const spaceframe = character.starship.spaceframeModel;
-        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(42.5, 243.0), rgb(237.0/255, 27.0/255.0, 47.0/255.0)), spaceframe, character.starship.serviceYear, true);
+        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(42.5, 243.0), rgb(237.0/255, 27.0/255.0, 47.0/255.0)), spaceframe, character.starship.serviceYear);
     }
 }
 

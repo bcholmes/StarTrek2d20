@@ -21,6 +21,7 @@ import MissionProfileSelection from '../components/missionProfileSelection';
 import MissionPodSelection from '../components/missionPodSelection';
 import CustomSpaceframeForm from '../components/customSpaceframeForm';
 import { System } from '../helpers/systems';
+import { OutlineImage } from '../components/outlineImage';
 
 interface StarshipPageState {
     type: CharacterTypeModel
@@ -84,6 +85,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
             selectedSpaceframeDetails = (
                 <div className="p-0">
                     <h5 className="text-selection">{character.starship.spaceframeModel.name ? character.starship.spaceframeModel.name : "Unnamed Class"}</h5>
+                    <OutlineImage serviceYear={character.starship.serviceYear} spaceframe={character.starship.spaceframeModel} />
                     <StarshipStats model={character.starship.spaceframeModel} type="spaceframe" />
                     <p><b className="text-selection">Talents:</b> {talentList}</p>
                 </div>
