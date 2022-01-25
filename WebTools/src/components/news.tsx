@@ -11,6 +11,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220125</b>
+                <ul>
+                    <li>Minor, cosmetic revisions.</li>
+                </ul>
                 <b>v1.220123</b>
                 <ul>
                     <li>I've re-written some of the starship handling around refits, because I found the old behaviour buggy.
