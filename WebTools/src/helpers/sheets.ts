@@ -391,6 +391,18 @@ class StandardTosStarshipSheet extends BasicStarshipSheet {
     }
 }
 
+class StandardKlingonStarshipSheet extends BasicStarshipSheet {
+    getName(): string {
+        return 'Klingon Starship Sheet (Landscape)'
+    }
+    getThumbnailUrl(): string {
+        return 'https://sta.bcholmes.org/static/img/sheets/STA_Klingon_Starship_Sheet.png'
+    }
+    getPdfUrl(): string {
+        return 'https://sta.bcholmes.org/static/pdf/STA_Klingon_Starship_Sheet.pdf'
+    }
+}
+
 
 abstract class BasicShortCharacterSheet extends BasicSheet {
 
@@ -890,10 +902,12 @@ class CharacterSheets {
     }
 
     public getStarshipSheets(): ICharacterSheet[] {
-        if (character.era === Era.NextGeneration) {
-            return [ new StandardTngStarshipSheet(), new StandardTosStarshipSheet() ];
+        if (character.type === CharacterType.KlingonWarrior) {
+            return [ new StandardKlingonStarshipSheet(), new StandardTngStarshipSheet(), new StandardTosStarshipSheet() ];
+        } else if (character.era === Era.NextGeneration) {
+            return [ new StandardTngStarshipSheet(), new StandardTosStarshipSheet(), new StandardKlingonStarshipSheet() ];
         } else {
-            return [ new StandardTosStarshipSheet(), new StandardTngStarshipSheet() ];
+            return [ new StandardTosStarshipSheet(), new StandardTngStarshipSheet(), new StandardKlingonStarshipSheet() ];
         }
     }
 }
