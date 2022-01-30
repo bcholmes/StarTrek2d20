@@ -14,11 +14,11 @@ import { Weapon } from './weapons';
 import { SheetOutlineOptions, SpaceframeOutline, XYLocation } from './spaceframeOutlineHelper';
 import { TalentsHelper } from './talents';
 import { CareerEventsHelper } from './careerEvents';
+import { RolesHelper } from './roles';
 
 class TextBlock {
     text: string;
-    x: number;
-    y: number;
+    location: XYLocation;
     fontSize: number;
     font: PDFFont;
     height: number;
@@ -26,21 +26,26 @@ class TextBlock {
 }
 
 class Column {
-    x: number;
-    y: number;
+    start: XYLocation;
     height: number;
     width: number;
+    nextColumn?: Column;
 
-    constructor(x: number, y: number, height: number, width: number) {
-        this.x = x;
-        this.y = y;
+    constructor(x: number, y: number, height: number, width: number, nextColumn?: Column) {
+        this.start = new XYLocation(x, y);
         this.height = height;
         this.width = width;
+        this.nextColumn = nextColumn;
     }
 
-    contains(point: XYLocation) {
-        return point.x >= this.x && point.x <= (this.x + this.width)
-            && point.y >= this.y && point.y <= (this.y + this.height);
+    contains(point: XYLocation, page: PDFPage) {
+        return point.x >= this.start.x && point.x <= (this.start.x + this.width)
+            && point.y <= (page.getSize().height - this.start.y) && point.y >= (page.getSize().height - this.start.y - this.height);
+    }
+    translatedStart(page: PDFPage) {
+        let x = this.start.x;
+        let y = page.getSize().height - this.start.y;
+        return new XYLocation(x, y);
     }
 }
 
@@ -753,42 +758,76 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
         }
     }
 
+    addBlankLineAfter(blocks: TextBlock[], columns: Column[], page: PDFPage) {
+
+        let currentColumn = columns[0];
+        let newLocation = null;
+        if (blocks.length > 0) {
+            let textBlock = blocks[blocks.length-1];
+            newLocation = textBlock.location;
+
+            columns.forEach((c, i) => {
+                if (c.contains(newLocation, page)) {
+                    currentColumn = c;
+                }
+            });
+            newLocation = new XYLocation(textBlock.location.x, textBlock.location.y - textBlock.height);
+        }
+        if (newLocation && !currentColumn.contains(newLocation, page)) {
+            if (currentColumn.nextColumn) {
+                newLocation = currentColumn.nextColumn.translatedStart(page);
+                console.log("Move to column: " + newLocation.x);
+            } else {
+                newLocation = null;
+            }
+        }
+        return newLocation;
+    }
+
     async fillPageTwo(pdf: PDFDocument) {
         const page2 = pdf.getPages()[1];
         const helveticaBold = await pdf.embedFont(StandardFonts.HelveticaBold);
         const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
 
-        let column1 = new Column(180, 204, 550, 196);
         let column2 = new Column(392, 204, 550, 196);
+        let column1 = new Column(180, 204, 550, 196, column2);
         let columns = [ column1, column2 ];
-        let startPointX = column1.x;
-        let startPointY = page2.getSize().height - column1.y;
         let textBlocks: TextBlock[] = [];
+        let start = column1.translatedStart(page2);
+
+        if (character.role) {
+            let role = RolesHelper.getRoleModelByName(character.role);
+            if (role) {
+                let blocks = this.createTextBlocks(role.name, helveticaBold, 10, start, page2, columns);
+                blocks.forEach(b => textBlocks.push(b));
+
+                if (blocks.length > 0) {
+                    let textBlock = blocks[blocks.length-1];
+                    start = textBlock.location;
+                }
+
+                blocks = this.createTextBlocks(role.ability, helvetica, 10, start, page2, columns);
+                blocks.forEach(b => textBlocks.push(b));
+                start = this.addBlankLineAfter(blocks, columns, page2);
+            }
+        }
 
         for (var t in character.talents) {   
             const text = t;
 
-            let blocks = this.createTextBlocks(text, helveticaBold, 10, startPointX, startPointY, page2, columns);
+            let blocks = this.createTextBlocks(text, helveticaBold, 10, start, page2, columns);
             blocks.forEach(b => textBlocks.push(b));
             
             if (blocks.length > 0) {
                 let textBlock = blocks[blocks.length-1];
-                startPointY = textBlock.y;
-                startPointX = textBlock.x;
+                start = textBlock.location;
             }
 
             const talent = TalentsHelper.getTalent(t);
             if (talent) {
-                blocks = this.createTextBlocks(talent.description, helvetica, 10, startPointX, startPointY, page2, columns);
+                blocks = this.createTextBlocks(talent.description, helvetica, 10, start, page2, columns);
                 blocks.forEach(b => textBlocks.push(b));
-                
-                if (blocks.length > 0) {
-                    let textBlock = blocks[blocks.length-1];
-                    startPointY = textBlock.y - textBlock.height;
-                    startPointX = textBlock.x;
-                }
-            } else {
-                console.log("problem with " + t);
+                start = this.addBlankLineAfter(blocks, columns, page2);
             }
         };
 
@@ -797,63 +836,59 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
         );
     }
 
-    createTextBlocks(text: string, font: PDFFont, fontSize: number, startPointX: number, startPointY: number, page: PDFPage, columns: Column[]) {
-        let currentColumnIndex = 0;
-        columns.forEach((c, i) => {
-            if (c.contains(new XYLocation(startPointX, startPointY))) {
-                currentColumnIndex = i;
-            }
-        });
-        let currentColumn = columns[currentColumnIndex];
-
+    createTextBlocks(text: string, font: PDFFont, fontSize: number, start: XYLocation, page: PDFPage, columns: Column[]) {
         let result: TextBlock[] = [];
-        let textBlock = this.createTextBlock(text, font, fontSize);
-        if (textBlock.width < currentColumn.width) {
-            textBlock.x = startPointX;
-            textBlock.y = startPointY - textBlock.height;
-    
-            result.push(textBlock);
-        } else {
-            let words = text.split(/\s+/);
-            let previousBlock = null;
-            let textPortion = "";
-            for (let i = 0; i < words.length; i++) {
-                if (textPortion === "") {
-                    textPortion = words[i];
-                } else {
-                    textPortion += (" " + words[i]);
+        if (start) {
+            let currentColumn = columns[0];
+            columns.forEach((c, i) => {
+                if (c.contains(start, page)) {
+                    currentColumn = c;
                 }
-                let block = this.createTextBlock(textPortion, font, fontSize);
-                if (block.width < currentColumn.width) {
-                    previousBlock = block;
-                } else {
-                    if (previousBlock != null) {
-                        previousBlock.x = startPointX;
-                        previousBlock.y = startPointY - previousBlock.height;
-                        result.push(previousBlock);
+            });
 
-                        startPointY -= previousBlock.height;
-                        startPointX = currentColumn.x;
-                        if (startPointY < (page.getSize().height - currentColumn.y - currentColumn.height) && currentColumnIndex < columns.length) {
-                            currentColumnIndex++;
-                            currentColumn = columns[currentColumnIndex];
-                            startPointY = page.getSize().height - currentColumn.y;
-                            startPointX = currentColumn.x;
-                        } else if (startPointY > 755) {
-                            break;
-                        }
+            let textBlock = this.createTextBlock(text, font, fontSize);
+            if (textBlock.width < currentColumn.width) {
+                textBlock.location = new XYLocation(start.x, start.y - textBlock.height);
+        
+                result.push(textBlock);
+            } else {
+                let words = text.split(/\s+/);
+                let previousBlock = null;
+                let textPortion = "";
+                for (let i = 0; i < words.length; i++) {
+                    if (textPortion === "") {
+                        textPortion = words[i];
+                    } else {
+                        textPortion += (" " + words[i]);
                     }
-                    textPortion = words[i];
-                    previousBlock = null;
+                    let block = this.createTextBlock(textPortion, font, fontSize);
+                    if (block.width < currentColumn.width) {
+                        previousBlock = block;
+                    } else {
+                        if (previousBlock != null) {
+                            previousBlock.location = new XYLocation(start.x, start.y - previousBlock.height);
+                            result.push(previousBlock);
+                            start = new XYLocation(currentColumn.start.x, start.y - previousBlock.height);
+                            previousBlock = null;
+                            if (!currentColumn.contains(start, page)) {
+                                if (currentColumn.nextColumn) {
+                                    currentColumn = currentColumn.nextColumn;
+                                    start = currentColumn.translatedStart(page);
+                                } else {
+                                    break;
+                                }
+                            }
+                        }
+                        textPortion = words[i];
+                        previousBlock = this.createTextBlock(textPortion, font, fontSize);
+                    }
                 }
-            }
-            if (previousBlock != null) {
-                previousBlock.x = startPointX;
-                previousBlock.y = startPointY - previousBlock.height;
-                result.push(previousBlock);
+                if (previousBlock != null) {
+                    previousBlock.location = new XYLocation(start.x, start.y - previousBlock.height);
+                    result.push(previousBlock);
+                }
             }
         }
-
         return result;
     }
 
@@ -871,8 +906,8 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
 
     writeTextBlock(textBlock: TextBlock, page: PDFPage) {
         page.drawText(textBlock.text, {
-            x: textBlock.x,
-            y: textBlock.y,
+            x: textBlock.location.x,
+            y: textBlock.location.y,
             size: textBlock.fontSize,
             font: textBlock.font,
             color: rgb(0.1, 0.1, 0.1)

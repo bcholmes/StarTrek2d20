@@ -272,6 +272,20 @@ class Roles {
         return list[role];
     }
 
+    getRoleModelByName(role: string) {
+
+        var list = character.type === CharacterType.KlingonWarrior ? this._klingonRoles : this._roles;
+        for (var rol in list) {
+            var n = parseInt(rol);
+            var r = list[rol];
+            if (r.name === role) {
+                return new RoleViewModel(n, r);
+            }
+        }
+
+        return undefined;
+    }
+
     getRoleByName(role: string) {
 
         var list = character.type === CharacterType.KlingonWarrior ? this._klingonRoles : this._roles;
