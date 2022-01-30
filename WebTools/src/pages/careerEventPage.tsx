@@ -6,6 +6,7 @@ import {PageIdentity} from './pageIdentity';
 import {CareerEventsHelper} from '../helpers/careerEvents';
 import {Button} from '../components/button';
 import {CareerEventSelection} from '../components/careerEventSelection';
+import InstructionText from '../components/instructionText';
 
 interface ICareerEventPageState {
     showSelection: boolean;
@@ -24,9 +25,8 @@ export class CareerEventPage extends React.Component<IPageProperties, ICareerEve
         var content = !this.state.showSelection ?
             (
                 <div>
+                    <InstructionText text={character.workflow.currentStep().description} />
                     <div className="page-text">
-                        Your career is a tapestry of events and experiences, but amongst this, a few will have been pivotal moments in your life. Define which moments of your life are important in retrospect, and what seemed definitive to an ensign in their early 20s may be inconsequential to that same officer decades later.
-                        <br /><br />
                         Either select or roll a Career Event.
                     </div>
                     <div className="button-container">

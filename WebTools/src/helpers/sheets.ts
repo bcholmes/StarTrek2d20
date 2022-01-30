@@ -23,7 +23,19 @@ class TextBlock {
     font: PDFFont;
     height: number;
     width: number;
+    column: Column;
 }
+
+class FontSpecification {
+    font: PDFFont; 
+    size: number;
+
+    constructor(font: PDFFont, size: number) {
+        this.font = font;
+        this.size = size;
+    }
+}
+
 
 class Column {
     start: XYLocation;
@@ -776,7 +788,6 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
         if (newLocation && !currentColumn.contains(newLocation, page)) {
             if (currentColumn.nextColumn) {
                 newLocation = currentColumn.nextColumn.translatedStart(page);
-                console.log("Move to column: " + newLocation.x);
             } else {
                 newLocation = null;
             }
@@ -798,7 +809,7 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
         if (character.role) {
             let role = RolesHelper.getRoleModelByName(character.role);
             if (role) {
-                let blocks = this.createTextBlocks(role.name, helveticaBold, 10, start, page2, columns);
+                let blocks = this.createTextBlocks(role.name, new FontSpecification(helveticaBold, 10), start, page2, columns);
                 blocks.forEach(b => textBlocks.push(b));
 
                 if (blocks.length > 0) {
@@ -806,7 +817,7 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
                     start = textBlock.location;
                 }
 
-                blocks = this.createTextBlocks(role.ability, helvetica, 10, start, page2, columns);
+                blocks = this.createTextBlocks(role.ability, new FontSpecification(helvetica, 10), start, page2, columns);
                 blocks.forEach(b => textBlocks.push(b));
                 start = this.addBlankLineAfter(blocks, columns, page2);
             }
@@ -815,7 +826,7 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
         for (var t in character.talents) {   
             const text = t;
 
-            let blocks = this.createTextBlocks(text, helveticaBold, 10, start, page2, columns);
+            let blocks = this.createTextBlocks(text, new FontSpecification(helveticaBold, 10), start, page2, columns);
             blocks.forEach(b => textBlocks.push(b));
             
             if (blocks.length > 0) {
@@ -825,7 +836,7 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
 
             const talent = TalentsHelper.getTalent(t);
             if (talent) {
-                blocks = this.createTextBlocks(talent.description, helvetica, 10, start, page2, columns);
+                blocks = this.createTextBlocks(talent.description, new FontSpecification(helvetica, 10), start, page2, columns);
                 blocks.forEach(b => textBlocks.push(b));
                 start = this.addBlankLineAfter(blocks, columns, page2);
             }
@@ -836,7 +847,7 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
         );
     }
 
-    createTextBlocks(text: string, font: PDFFont, fontSize: number, start: XYLocation, page: PDFPage, columns: Column[]) {
+    createTextBlocks(text: string, fontSpec: FontSpecification, start: XYLocation, page: PDFPage, columns: Column[]) {
         let result: TextBlock[] = [];
         if (start) {
             let currentColumn = columns[0];
@@ -846,7 +857,7 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
                 }
             });
 
-            let textBlock = this.createTextBlock(text, font, fontSize);
+            let textBlock = this.createTextBlock(text, fontSpec.font, fontSpec.size, currentColumn);
             if (textBlock.width < currentColumn.width) {
                 textBlock.location = new XYLocation(start.x, start.y - textBlock.height);
         
@@ -861,7 +872,7 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
                     } else {
                         textPortion += (" " + words[i]);
                     }
-                    let block = this.createTextBlock(textPortion, font, fontSize);
+                    let block = this.createTextBlock(textPortion, fontSpec.font, fontSpec.size, currentColumn);
                     if (block.width < currentColumn.width) {
                         previousBlock = block;
                     } else {
@@ -880,7 +891,7 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
                             }
                         }
                         textPortion = words[i];
-                        previousBlock = this.createTextBlock(textPortion, font, fontSize);
+                        previousBlock = this.createTextBlock(textPortion, fontSpec.font, fontSpec.size, currentColumn);
                     }
                 }
                 if (previousBlock != null) {
@@ -892,7 +903,7 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
         return result;
     }
 
-    createTextBlock(text: string, font:PDFFont, fontSize: number) {
+    createTextBlock(text: string, font:PDFFont, fontSize: number, column: Column) {
         let textBlock = new TextBlock();
         textBlock.text = text;
         const textWidth = font.widthOfTextAtSize(text, fontSize);
@@ -901,6 +912,7 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
         textBlock.width = textWidth;
         textBlock.font = font;
         textBlock.fontSize = fontSize;
+        textBlock.column = column;
         return textBlock;
     }
 

@@ -7,6 +7,7 @@ import {PageIdentity} from './pageIdentity';
 import {Track, TracksHelper} from '../helpers/tracks';
 import {Button} from '../components/button';
 import {TrackSelection} from '../components/trackSelection';
+import InstructionText from '../components/instructionText';
 
 interface IStarfleetAcademygPageState {
     showSelection: boolean;
@@ -22,12 +23,6 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
     }
 
     render() {
-        var instruction = character.workflow.currentStep().description.map((s, i) => {
-            return (
-                <div className="page-text">{s}</div>
-            );
-        });
-
         var buttons = character.type === CharacterType.KlingonWarrior ?
             (<div className="button-container">
                 <Button className="button" text="Select Training Track" onClick={() => this.showKlingonTracks() } />
@@ -43,7 +38,7 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
         var content = !this.state.showSelection ?
             (
                 <div>
-                    {instruction}
+                    <InstructionText text={character.workflow.currentStep().description} />
                     {buttons}
                 </div>
             )

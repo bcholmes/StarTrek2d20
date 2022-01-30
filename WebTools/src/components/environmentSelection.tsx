@@ -14,11 +14,11 @@ export class EnvironmentSelection extends React.Component<IEnvironmentSelectionP
     render() {
         var envs = EnvironmentsHelper.getEnvironments().map((e, i) => {
             const attributes = e.attributes.map((a, i) => {
-                return <div>{AttributesHelper.getAttributeName(a) }</div>;
+                return <div key={'attr-' + i}>{AttributesHelper.getAttributeName(a) }</div>;
             });
 
             const disciplines = e.disciplines.map((d, i) => {
-                return <div>{SkillsHelper.getSkillName(d)}</div>;
+                return <div key={'skill-' + i}>{SkillsHelper.getSkillName(d)}</div>;
             });
 
             return (

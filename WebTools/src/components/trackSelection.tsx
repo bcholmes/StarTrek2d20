@@ -18,7 +18,7 @@ export class TrackSelection extends React.Component<ITrackSelectionProperties, {
             const disciplines = t.majorDisciplines.map((d, i) => {
                 if (character.enlisted && d === Skill.Command) return undefined;
 
-                return <div>{SkillsHelper.getSkillName(d) }</div>;
+                return <div key={'skill-' + i}>{SkillsHelper.getSkillName(d) }</div>;
             });
 
             return (

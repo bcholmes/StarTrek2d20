@@ -6,6 +6,7 @@ import {PageIdentity} from './pageIdentity';
 import {Upbringing, UpbringingsHelper} from '../helpers/upbringings';
 import {Button} from '../components/button';
 import {UpbringingSelection} from '../components/upbringingSelection';
+import InstructionText from '../components/instructionText';
 
 interface IUpbringingPageState {
     showSelection: boolean;
@@ -24,16 +25,10 @@ export class UpbringingPage extends React.Component<IPageProperties, IUpbringing
         var selectLabel = "Select " +  character.workflow.currentStep().name;
         var rollLabel = "Roll " +  character.workflow.currentStep().name;
 
-        var instruction = character.workflow.currentStep().description.map((s, i) => {
-            return (
-                <div className="page-text" key={'text-' + i}>{s}</div>
-            );
-        });
-
         var content = !this.state.showSelection ?
             (
                 <div>
-                    {instruction}
+                    <InstructionText text={character.workflow.currentStep().description} />
                     <div className="button-container">
                         <Button className="button" text={selectLabel} onClick={() => this.showUpbringings() } />
                         <Button className="button" text={rollLabel} onClick={() => this.rollUpbringing() } />

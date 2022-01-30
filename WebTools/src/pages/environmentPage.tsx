@@ -6,6 +6,7 @@ import {PageIdentity} from './pageIdentity';
 import {Environment, EnvironmentsHelper} from '../helpers/environments';
 import {Button} from '../components/button';
 import {EnvironmentSelection} from '../components/environmentSelection';
+import InstructionText from '../components/instructionText';
 
 interface IEnvironmentPageState {
     showSelection: boolean;
@@ -24,9 +25,8 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
         var content = !this.state.showSelection ?
             (
                 <div>
+                    <InstructionText text={character.workflow.currentStep().description} />
                     <div className="page-text">
-                        Regardless of their species, Starfleet officers come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.
-                        <br /><br />
                         Either select or roll your Environment.
                     </div>
                     <div className="button-container">
