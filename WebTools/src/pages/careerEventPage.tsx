@@ -26,9 +26,6 @@ export class CareerEventPage extends React.Component<IPageProperties, ICareerEve
             (
                 <div>
                     <InstructionText text={character.workflow.currentStep().description} />
-                    <div className="page-text">
-                        Either select or roll a Career Event.
-                    </div>
                     <div className="button-container">
                         <Button className="button" text="Select Career Event" onClick={() => this.showCareerEvent() } />
                         <Button className="button" text="Roll Career Event" onClick={() => this.rollCareerEvent() } />

@@ -12,6 +12,13 @@ export enum Environment {
     FrontierColony,
     StarshipOrStarbase,
     AnotherSpeciesWorld,
+
+    UtopianParadise,
+    Cosmopolitan,
+    RigorousDiscipline,
+    AscetismAndIntrospection,
+    StruggleAndHardship,
+    OccupationOrWar,
 }
 
 class EnvironmentModel {
@@ -82,6 +89,44 @@ class Environments {
         ),
     };
 
+    private _alternateEnvironments: { [id: number]: EnvironmentModel } = {
+        [Environment.UtopianParadise]: new EnvironmentModel(
+            "Utopian Paradise",
+            "You were raised in an environment of peace, prosperity, and abundance. There was no war on your world, nor any poverty, homelessness, hunger, or crime. You knew of those things only from studies of history and you have never really been able to understand how a society could produce such destructive inequality. You have always had access to the resources to not merely survive, but to thrive in whatever endeavors you chose to pursue.",
+            [Attribute.Control, Attribute.Reason, Attribute.Presence],
+            [Skill.Command, Skill.Conn, Skill.Engineering, Skill.Medicine, Skill.Science, Skill.Security],
+        ),
+        [Environment.Cosmopolitan]: new EnvironmentModel(
+            "Cosmopolitan",
+            "You were raised in environments of trade or diplo- macy, and the intermingling of different communi- ties and cultures. The unfamiliar has always been familiar to you, and you had become familiar with dozens of cultures from distant worlds long before you were an adult. The frenetic pace of life and the basic need to revel in differences between groups and individuals have stayed with you as simple facts of existence in this big Galaxy.",
+            [Attribute.Daring, Attribute.Insight, Attribute.Presence],
+            [Skill.Command, Skill.Conn, Skill.Science],
+        ),
+        [Environment.RigorousDiscipline]: new EnvironmentModel(
+            "Isolated Colony",
+            "You have always been surrounded by notions of duty and purpose, and your childhood was a strict one, aimed at preparing you to take on a specific role or to achieve a specific goal. This meant relatively little personal freedom, but it instilled within you a powerful sense of what you were capable of when pushed to succeed.",
+            [Attribute.Control, Attribute.Fitness, Attribute.Reason],
+            [Skill.Command, Skill.Security, Skill.Medicine]
+        ),
+        [Environment.AscetismAndIntrospection]: new EnvironmentModel(
+            "Ascetism and Introspection",
+            "Your life was a simple one, lacking in many of the luxuries that prosperous worlds take for granted. This was not because of a lack, but rather a choice – a belief amongst those you grew up with that external and material abundance can distract from self-knowledge and personal growth.",
+            [Attribute.Control, Attribute.Insight, Attribute.Reason],
+            [Skill.Science, Skill.Engineering, Skill.Medicine]
+        ),
+        [Environment.StruggleAndHardship]: new EnvironmentModel(
+            "Struggle and Hardship",
+            "For one reason or another, your world was one with few available resources. Worlds on the frontier, as well as isolated outposts, are often places of hard- ship where continued survival is difficult, while other worlds struggle in the wake of natural or ecological disasters, the aftermath of war, or societal collapse that leaves basic infrastructure in ruins. Some seek out worlds such as this, where “honest toil” is held as a virtue, while others find themselves in lives of daily struggle through no choice of their own and seek to either better their world or escape it.",
+            [Attribute.Control, Attribute.Daring, Attribute.Insight],
+            [Skill.Conn, Skill.Engineering, Skill.Science]
+        ),
+        [Environment.OccupationOrWar]: new EnvironmentModel(
+            "Occupation or War",
+            "Though the Federation’s members no longer war amongst themselves, warfare is still a part of the Galaxy. Local or planetary conflicts afflict many independent worlds, and interstellar conflicts rang- ing from border skirmishes to sector-spanning wars are something which all civilizations must prepare to face. Worlds ravaged by war, or even occupied by a hostile nation, are difficult places to live, often forcing people to adapt to horrific conditions and life-or-death decisions.",
+            [Attribute.Daring, Attribute.Fitness, Attribute.Presence],
+            [Skill.Command, Skill.Security, Skill.Medicine]
+        ),
+    };
     private _klingonEnvironments: { [id: number]: EnvironmentModel } = {
         [Environment.Homeworld]: new EnvironmentModel(
             "Qo'noS",
@@ -150,9 +195,29 @@ class Environments {
         return environments;
     }
 
+    getAlternateEnvironments() {
+        let environments: EnvironmentViewModel[] = [];
+        let n = Environment.UtopianParadise;
+        let environmentList = this._alternateEnvironments;
+        for (var environment in environmentList) {
+            var env = environmentList[environment];
+            environments.push(new EnvironmentViewModel(n, env));
+            n++;
+        }
+
+        environments = environments.sort((a, b) => {
+            return a.name.localeCompare(b.name);
+        });
+        return environments;
+    }
+
     getEnvironment(env: Environment) {
-        var environmentList = character.type === CharacterType.KlingonWarrior ? this._klingonEnvironments : this._environments;
-        return environmentList[env];
+        if (env >= Environment.UtopianParadise) {
+            return this._alternateEnvironments[env];
+        } else {
+            let environmentList = character.type === CharacterType.KlingonWarrior ? this._klingonEnvironments : this._environments;
+            return environmentList[env];
+        }
     }
 
     generateEnvironment() {
@@ -160,7 +225,9 @@ class Environments {
         return roll;
     }
 
-    applyEnvironment(env: Environment) {
+    generateAlternateEnvironment() {
+        var roll = Math.floor(Math.random() * 6);
+        return roll + 6;
     }
 }
 

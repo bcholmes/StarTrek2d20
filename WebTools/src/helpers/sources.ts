@@ -13,6 +13,7 @@
     KlingonCore,
     ShackletonExpanse,
     IdwYearFive,
+    PlayersGuide,
 
     None
 }
@@ -43,6 +44,7 @@ class Sources {
         [Source.KlingonCore]: "Klingon Core",
         [Source.ShackletonExpanse]: "Shackleton Expanse",
         [Source.IdwYearFive]: "IDW Year Five",
+        [Source.PlayersGuide]: "Player's Guide",
     };
 
     getSources() {

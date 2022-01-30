@@ -11,6 +11,16 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220130</b>
+                <ul>
+                    <li>Bug fix: a user reported a glitch with showing the Talent text. When the full text is shown (on 
+                        the 2-page character sheet), if the last word is on a line by itself, it gets omitted.
+                    </li>
+                    <li>
+                        New Source: <cite>Player's Guide</cite>. This is very preliminary work on supporting the <cite>Player's Guide</cite>. 
+                        At the moment, only the new alternate Environments are supported.
+                    </li>
+                </ul>
                 <b>v1.220128</b>
                 <ul>
                     <li>Provide a Klingon Starship sheet option.</li>
@@ -24,7 +34,7 @@ class News extends React.Component<INewsProperties, {}> {
                     <li>I've re-written some of the starship handling around refits, because I found the old behaviour buggy.
                         One of the side-effects of doing this is that I can now add the Refit field to the final sheet.
                     </li>
-                    <li>When listing talents, I now render the Challenge Dice using the Starfleet delta, in line with the rulebook.</li>
+                    <li>When listing talents (on the web applcation), I now render the Challenge Dice using the Starfleet delta, in line with the rulebook.</li>
                 </ul>
                 <b>v1.220119</b>
                 <ul>
@@ -87,18 +97,6 @@ class News extends React.Component<INewsProperties, {}> {
                     <li>Bug fixes: Some minor bugs have been fixed (if you choose Homeworld as the environment, it would be blank on the character
                         sheet, and the damage calculation for phasers was slightly off.
                     </li>
-                </ul>
-                <b>v1.211003</b>
-                <ul>
-                    <li>Bug fix: The Resolute talent wasn't being factored into the Stress calculation.</li>
-                </ul>
-                <b>v1.211002</b>
-                <ul>
-                    <li>Initial support for Klingon spaceframes / starships.</li>
-                </ul>
-                <b>v1.210927</b>
-                <ul>
-                    <li>Bug fix: The app would stop working if you tried to use the History widget to navigate to an earlier page.</li>
                 </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>

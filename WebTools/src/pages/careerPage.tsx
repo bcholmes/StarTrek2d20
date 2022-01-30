@@ -6,6 +6,7 @@ import {PageIdentity} from './pageIdentity';
 import {Career, CareersHelper} from '../helpers/careers';
 import {Button} from '../components/button';
 import {CareerSelection} from '../components/careerSelection';
+import InstructionText from '../components/instructionText';
 
 interface ICareerPageState {
     showSelection: boolean;
@@ -21,16 +22,10 @@ export class CareerPage extends React.Component<IPageProperties, ICareerPageStat
     }
 
     render() {
-        var instruction = character.workflow.currentStep().description.map((s, i) => {
-            return (
-                <div className="page-text">{s}</div>
-            );
-        });
-
         var content = !this.state.showSelection ?
             (
                 <div>
-                    {instruction}
+                    <InstructionText text={character.workflow.currentStep().description} />
                     <div className="button-container">
                         <Button className="button" text="Select Career" onClick={() => this.showCareer() } />
                         <Button className="button" text="Roll Career" onClick={() => this.rollCareer() } />

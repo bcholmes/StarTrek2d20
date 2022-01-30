@@ -6,13 +6,15 @@ import {SkillsHelper} from '../helpers/skills';
 import {Button} from './button';
 
 interface IEnvironmentSelectionProperties {
+    alternate: boolean;
     onSelection: (env: Environment, name: string) => void;
     onCancel: () => void;
 }
 
 export class EnvironmentSelection extends React.Component<IEnvironmentSelectionProperties, {}> {
     render() {
-        var envs = EnvironmentsHelper.getEnvironments().map((e, i) => {
+        let environments = this.props.alternate ? EnvironmentsHelper.getAlternateEnvironments() : EnvironmentsHelper.getEnvironments();
+        var envs = environments.map((e, i) => {
             const attributes = e.attributes.map((a, i) => {
                 return <div key={'attr-' + i}>{AttributesHelper.getAttributeName(a) }</div>;
             });

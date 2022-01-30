@@ -7,9 +7,11 @@ import {Environment, EnvironmentsHelper} from '../helpers/environments';
 import {Button} from '../components/button';
 import {EnvironmentSelection} from '../components/environmentSelection';
 import InstructionText from '../components/instructionText';
+import { Source } from '../helpers/sources';
 
 interface IEnvironmentPageState {
     showSelection: boolean;
+    alternate: boolean;
 }
 
 export class EnvironmentPage extends React.Component<IPageProperties, IEnvironmentPageState> {
@@ -17,11 +19,15 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
         super(props);
 
         this.state = {
-            showSelection: false
+            showSelection: false,
+            alternate: false
         };
     }
 
     render() {
+        let selectAlt = (character.hasSource(Source.PlayersGuide)) ? (<Button className="button" text="Select Alternate Environment" onClick={() => this.showAlternateEnvironments()} />) : null;
+        let rollAlt = (character.hasSource(Source.PlayersGuide)) ? (<Button className="button" text="Roll Alternate Environment" onClick={() => this.rollAlternateEnvironment()} />) : null;
+
         var content = !this.state.showSelection ?
             (
                 <div>
@@ -31,13 +37,16 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
                     </div>
                     <div className="button-container">
                         <Button className="button" text="Select Environment" onClick={() => this.showEnvironments() } />
+                        {selectAlt}
                         <Button className="button" text="Roll Environment" onClick={() => this.rollEnvironment() } />
+                        {rollAlt}
                     </div>
                 </div>
             )
             : (
                 <div>
                     <EnvironmentSelection
+                        alternate={this.state.alternate}
                         onSelection={(env, name) => this.selectEnvironment(env, name) }
                         onCancel={() => this.hideEnvironments() } />
                 </div>
@@ -51,12 +60,21 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
     }
 
     private rollEnvironment() {
-        var env = EnvironmentsHelper.generateEnvironment();
+        let env = EnvironmentsHelper.generateEnvironment();
+        this.selectEnvironment(env, "");
+    }
+
+    private rollAlternateEnvironment() {
+        let env = EnvironmentsHelper.generateAlternateEnvironment();
         this.selectEnvironment(env, "");
     }
 
     private showEnvironments() {
-        this.setState({ showSelection: true });
+        this.setState({ showSelection: true, alternate: false });
+    }
+
+    private showAlternateEnvironments() {
+        this.setState({ showSelection: true, alternate: true });
     }
 
     private hideEnvironments() {
@@ -65,7 +83,6 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
 
     private selectEnvironment(env: Environment, name: string) {
         character.environment = env;
-        EnvironmentsHelper.applyEnvironment(env);
 
         var n = name.indexOf("Another Species' World");
         if (n > -1) {
