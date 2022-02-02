@@ -10,8 +10,15 @@ import {Rank, RanksHelper} from '../helpers/ranks';
 import {Button} from '../components/button';
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
+import AgeHelper, { Age } from '../helpers/age';
+import { Source } from '../helpers/sources';
 
-export class SupportingCharacterPage extends React.Component<{}, {}> {
+
+interface ISupportingCharacterState {
+    age: Age;
+}
+
+export class SupportingCharacterPage extends React.Component<{}, ISupportingCharacterState> {
     private _nameElement: HTMLInputElement;
     private _purposeElement: HTMLInputElement;
     private _focus1Element: HTMLInputElement;
@@ -53,9 +60,29 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
         character.addEquipment("Uniform");
         character.addEquipment("Tricorder");
         character.addEquipment("Communicator");
+        this.state = {
+            age: AgeHelper.getAdultAge()
+        }
     }
 
     render() {
+        let ageDiv = character.hasSource(Source.PlayersGuide) 
+            ? (<div className="panel">
+                    <div className="header-small">Age</div>
+                    <div className="page-text-aligned">
+                        How old is this character?
+                    </div>
+                    <div>
+                        <DropDownInput
+                            items={this.getAges() }
+                            defaultValue={this.state.age.name}
+                            onChange={(index) => this.selectAge(index) }/>
+                    </div>
+                </div>)
+            : null;
+
+
+
         return (
             <div className="page">
                 <div className="starship-container">
@@ -89,8 +116,8 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
                                     this.forceUpdate();
                                 } } />
                         </div>
-                        <br/><br/>
-                        <div className="panel">
+                        {ageDiv}
+                        <div className="panel mt-3">
                             <div className="header-small">Species &amp; Attributes</div>
                             <div className="page-text-aligned">
                                 Secondly, assign Attribute scores and choose the character's species.
@@ -102,20 +129,19 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
                                 defaultValue={this._species}
                                 onChange={(index) => this.selectSpecies(index) }/>
                             <br/><br/>
-                            <SupportingCharacterAttributes
+                            <SupportingCharacterAttributes age={this.state.age}
                                 ref={(el) => this._attributeElement = el}
                                 species={SpeciesHelper.getSpeciesByName(this._species) }
                                 onUpdate={() => { this.forceUpdate(); }}/>
                         </div>
-                        <br/><br/>
-                        <div className="panel">
+                        <div className="panel mt-3">
                             <div className="header-small">Disciplines</div>
                             <div className="page-text-aligned">
                                 Next, assign the character's Disciplines.
                                 The highest value should match up with the department/purpose of the character.
                                 Select two different values to swap them.
                             </div>
-                            <SupportingCharacterDisciplines
+                            <SupportingCharacterDisciplines age={this.state.age}
                                 onUpdate={() => { this.forceUpdate(); } }/>
                         </div>
                     </div>
@@ -207,6 +233,14 @@ export class SupportingCharacterPage extends React.Component<{}, {}> {
                 </div>
             </div>
         );
+    }
+
+    getAges() {
+        return AgeHelper.getAllAges().map(a => a.name);
+    }
+
+    selectAge(index: number) {
+        this.setState((state) => ({ ...state, age: AgeHelper.getAllAges()[index]}));
     }
 
     private showDialog() {

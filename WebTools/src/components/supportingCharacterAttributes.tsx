@@ -3,6 +3,7 @@ import {character} from '../common/character';
 import {Species, SpeciesHelper, SpeciesViewModel} from '../helpers/species';
 import {Attribute, AttributesHelper} from '../helpers/attributes';
 import {CheckBox} from './checkBox';
+import { Age } from '../helpers/age';
 
 interface IValueProperties {
     index: number;
@@ -31,6 +32,7 @@ class Value extends React.Component<IValueProperties, {}> {
 
 interface IAttributeProperties {
     species: Species;
+    age: Age;
     onUpdate: () => void;
 }
 
@@ -41,13 +43,11 @@ interface IAttributeState {
 }
 
 export class SupportingCharacterAttributes extends React.Component<IAttributeProperties, IAttributeState> {
-    private _values: number[];
     private _species: SpeciesViewModel;
 
     constructor(props: IAttributeProperties) {
         super(props);
 
-        this._values = [10, 9, 9, 8, 8, 7];
         this.state = {
             assignedValues: [0, 1, 2, 3, 4, 5],
             checkedValues: []
@@ -71,7 +71,7 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
 
     render() {
         const attributes = [Attribute.Control, Attribute.Daring, Attribute.Fitness, Attribute.Insight, Attribute.Presence, Attribute.Reason].map((a, i) => {
-            const val = this._values[this.state.assignedValues[a]];
+            const val = this.props.age.attributes[this.state.assignedValues[a]];
             const showCheckBoxes = this._species.attributes.length > 3;
             const speciesHasAttribute = !showCheckBoxes && this._species.attributes.indexOf(a) > -1;
             const isChecked = this.state.checkedValues.indexOf(a) > -1;
@@ -189,7 +189,7 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
             const speciesHasAttribute = !hasAttributeOptions && this._species.attributes.indexOf(a) > -1;
             const isChecked = checkedValues.indexOf(a) > -1;
 
-            character.attributes[a].value = this._values[assignedValues[a]];
+            character.attributes[a].value = this.props.age.attributes[assignedValues[a]];
 
             if (speciesHasAttribute || isChecked) {
                 character.attributes[a].value++;

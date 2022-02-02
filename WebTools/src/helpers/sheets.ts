@@ -735,7 +735,155 @@ class KlingonCharacterSheet extends BasicFullCharacterSheet {
     }
 }
 
-class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
+class BaseTextCharacterSheet extends BasicFullCharacterSheet {
+
+    addBlankLineAfter(blocks: TextBlock[], page: PDFPage) {
+        let currentColumn = null;
+        let newLocation = null;
+        if (blocks.length > 0) {
+            let textBlock = blocks[blocks.length-1];
+            newLocation = textBlock.location;
+            currentColumn = textBlock.column;
+            newLocation = new XYLocation(textBlock.location.x, textBlock.location.y - textBlock.height);
+        }
+        if (newLocation && !currentColumn.contains(newLocation, page)) {
+            if (currentColumn.nextColumn) {
+                newLocation = currentColumn.nextColumn.translatedStart(page);
+                currentColumn = currentColumn.nextColumn;
+            } else {
+                newLocation = null;
+            }
+        }
+        return { location: newLocation, column: currentColumn };
+    }
+
+    writeRoleAndTalents(page: PDFPage, titleStyle: FontSpecification, paragraphStyle: FontSpecification, currentColumn: Column) {
+        let start = currentColumn.translatedStart(page);
+        let textBlocks: TextBlock[] = [];
+        if (character.role) {
+            let role = RolesHelper.getRoleModelByName(character.role);
+            if (role) {
+                let blocks = this.createTextBlocks(role.name, titleStyle, start, page, currentColumn);
+                blocks.forEach(b => textBlocks.push(b));
+
+                if (blocks.length > 0) {
+                    let textBlock = blocks[blocks.length-1];
+                    start = textBlock.location;
+                }
+
+                blocks = this.createTextBlocks(role.ability, paragraphStyle, start, page, currentColumn);
+                blocks.forEach(b => textBlocks.push(b));
+                let output = this.addBlankLineAfter(blocks, page);
+                start = output.location;
+                currentColumn = output.column;
+            }
+        }
+
+        if (currentColumn) {
+            for (var t in character.talents) {   
+                const text = t;
+
+                let blocks = this.createTextBlocks(text, titleStyle, start, page, currentColumn);
+                blocks.forEach(b => textBlocks.push(b));
+                
+                if (blocks.length > 0) {
+                    let textBlock = blocks[blocks.length-1];
+                    start = textBlock.location;
+                }
+
+                const talent = TalentsHelper.getTalent(t);
+                if (talent) {
+                    blocks = this.createTextBlocks(talent.description, paragraphStyle, start, page, currentColumn);
+                    blocks.forEach(b => textBlocks.push(b));
+                    let output = this.addBlankLineAfter(blocks, page);
+                    start = output.location;
+                    currentColumn = output.column;
+                    if (!currentColumn) {
+                        break;
+                    }
+                }
+            };
+        }
+
+        textBlocks.forEach(t => 
+            this.writeTextBlock(t, page)
+        );
+    }
+
+    createTextBlocks(text: string, fontSpec: FontSpecification, start: XYLocation, page: PDFPage, currentColumn: Column, newLine: boolean = true) {
+        let result: TextBlock[] = [];
+        if (start) {
+            let textBlock = this.createTextBlock(text, fontSpec, currentColumn);
+            if (textBlock.width < currentColumn.width) {
+                textBlock.location = new XYLocation(start.x, start.y - (newLine ? textBlock.height : 0));
+        
+                result.push(textBlock);
+            } else {
+                let words = text.split(/\s+/);
+                let previousBlock = null;
+                let textPortion = "";
+                for (let i = 0; i < words.length; i++) {
+                    if (textPortion === "") {
+                        textPortion = words[i];
+                    } else {
+                        textPortion += (" " + words[i]);
+                    }
+                    let block = this.createTextBlock(textPortion, fontSpec, currentColumn);
+                    if (block.width < currentColumn.width) {
+                        previousBlock = block;
+                    } else {
+                        if (previousBlock != null) {
+                            previousBlock.location = new XYLocation(start.x, start.y - previousBlock.height);
+                            result.push(previousBlock);
+                            start = new XYLocation(currentColumn.start.x, start.y - previousBlock.height);
+                            previousBlock = null;
+                            if (!currentColumn.contains(start, page)) {
+                                if (currentColumn.nextColumn) {
+                                    currentColumn = currentColumn.nextColumn;
+                                    start = currentColumn.translatedStart(page);
+                                } else {
+                                    break;
+                                }
+                            }
+                        }
+                        textPortion = words[i];
+                        previousBlock = this.createTextBlock(textPortion, fontSpec, currentColumn);
+                    }
+                }
+                if (previousBlock != null) {
+                    previousBlock.location = new XYLocation(start.x, start.y - previousBlock.height);
+                    result.push(previousBlock);
+                }
+            }
+        }
+        return result;
+    }
+
+    createTextBlock(text: string, fontSpec: FontSpecification, column: Column) {
+        let textBlock = new TextBlock();
+        textBlock.text = text;
+        const textWidth = fontSpec.font.widthOfTextAtSize(text, fontSpec.size);
+        const textHeight = fontSpec.font.heightAtSize(fontSpec.size);
+        textBlock.height = textHeight;
+        textBlock.width = textWidth;
+        textBlock.font = fontSpec.font;
+        textBlock.fontSize = fontSpec.size;
+        textBlock.column = column;
+        return textBlock;
+    }
+
+    writeTextBlock(textBlock: TextBlock, page: PDFPage) {
+        page.drawText(textBlock.text, {
+            x: textBlock.location.x,
+            y: textBlock.location.y,
+            size: textBlock.fontSize,
+            font: textBlock.font,
+            color: rgb(0.1, 0.1, 0.1)
+        });
+    }
+}
+
+class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
     getName(): string {
         return '2-Page TNG Character Sheet'
     }
@@ -770,27 +918,6 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
         }
     }
 
-    addBlankLineAfter(blocks: TextBlock[], page: PDFPage) {
-
-        let currentColumn = null;
-        let newLocation = null;
-        if (blocks.length > 0) {
-            let textBlock = blocks[blocks.length-1];
-            newLocation = textBlock.location;
-            currentColumn = textBlock.column;
-            newLocation = new XYLocation(textBlock.location.x, textBlock.location.y - textBlock.height);
-        }
-        if (newLocation && !currentColumn.contains(newLocation, page)) {
-            if (currentColumn.nextColumn) {
-                newLocation = currentColumn.nextColumn.translatedStart(page);
-                currentColumn = currentColumn.nextColumn;
-            } else {
-                newLocation = null;
-            }
-        }
-        return { location: newLocation, column: currentColumn };
-    }
-
     async fillPageTwo(pdf: PDFDocument) {
         const page2 = pdf.getPages()[1];
         const helveticaBold = await pdf.embedFont(StandardFonts.HelveticaBold);
@@ -800,130 +927,9 @@ class TwoPageTngCharacterSheet extends BasicFullCharacterSheet {
 
         let column2 = new Column(392, 204, 550, 196);
         let column1 = new Column(180, 204, 550, 196, column2);
-        let textBlocks: TextBlock[] = [];
-        let start = column1.translatedStart(page2);
         let currentColumn = column1;
 
-        if (character.role) {
-            let role = RolesHelper.getRoleModelByName(character.role);
-            if (role) {
-                let blocks = this.createTextBlocks(role.name, titleStyle, start, page2, currentColumn);
-                blocks.forEach(b => textBlocks.push(b));
-
-                if (blocks.length > 0) {
-                    let textBlock = blocks[blocks.length-1];
-                    start = textBlock.location;
-                }
-
-                blocks = this.createTextBlocks(role.ability, paragraphStyle, start, page2, currentColumn);
-                blocks.forEach(b => textBlocks.push(b));
-                let output = this.addBlankLineAfter(blocks, page2);
-                start = output.location;
-                currentColumn = output.column;
-            }
-        }
-
-        if (currentColumn) {
-            for (var t in character.talents) {   
-                const text = t;
-
-                let blocks = this.createTextBlocks(text, titleStyle, start, page2, currentColumn);
-                blocks.forEach(b => textBlocks.push(b));
-                
-                if (blocks.length > 0) {
-                    let textBlock = blocks[blocks.length-1];
-                    start = textBlock.location;
-                }
-
-                const talent = TalentsHelper.getTalent(t);
-                if (talent) {
-                    blocks = this.createTextBlocks(talent.description, paragraphStyle, start, page2, currentColumn);
-                    blocks.forEach(b => textBlocks.push(b));
-                    let output = this.addBlankLineAfter(blocks, page2);
-                    start = output.location;
-                    currentColumn = output.column;
-                    if (!currentColumn) {
-                        break;
-                    }
-                }
-            };
-        }
-
-        textBlocks.forEach(t => 
-            this.writeTextBlock(t, page2)
-        );
-    }
-
-    createTextBlocks(text: string, fontSpec: FontSpecification, start: XYLocation, page: PDFPage, currentColumn: Column) {
-        let result: TextBlock[] = [];
-        if (start) {
-            let textBlock = this.createTextBlock(text, fontSpec.font, fontSpec.size, currentColumn);
-            if (textBlock.width < currentColumn.width) {
-                textBlock.location = new XYLocation(start.x, start.y - textBlock.height);
-        
-                result.push(textBlock);
-            } else {
-                let words = text.split(/\s+/);
-                let previousBlock = null;
-                let textPortion = "";
-                for (let i = 0; i < words.length; i++) {
-                    if (textPortion === "") {
-                        textPortion = words[i];
-                    } else {
-                        textPortion += (" " + words[i]);
-                    }
-                    let block = this.createTextBlock(textPortion, fontSpec.font, fontSpec.size, currentColumn);
-                    if (block.width < currentColumn.width) {
-                        previousBlock = block;
-                    } else {
-                        if (previousBlock != null) {
-                            previousBlock.location = new XYLocation(start.x, start.y - previousBlock.height);
-                            result.push(previousBlock);
-                            start = new XYLocation(currentColumn.start.x, start.y - previousBlock.height);
-                            previousBlock = null;
-                            if (!currentColumn.contains(start, page)) {
-                                if (currentColumn.nextColumn) {
-                                    currentColumn = currentColumn.nextColumn;
-                                    start = currentColumn.translatedStart(page);
-                                } else {
-                                    break;
-                                }
-                            }
-                        }
-                        textPortion = words[i];
-                        previousBlock = this.createTextBlock(textPortion, fontSpec.font, fontSpec.size, currentColumn);
-                    }
-                }
-                if (previousBlock != null) {
-                    previousBlock.location = new XYLocation(start.x, start.y - previousBlock.height);
-                    result.push(previousBlock);
-                }
-            }
-        }
-        return result;
-    }
-
-    createTextBlock(text: string, font:PDFFont, fontSize: number, column: Column) {
-        let textBlock = new TextBlock();
-        textBlock.text = text;
-        const textWidth = font.widthOfTextAtSize(text, fontSize);
-        const textHeight = font.heightAtSize(fontSize);
-        textBlock.height = textHeight;
-        textBlock.width = textWidth;
-        textBlock.font = font;
-        textBlock.fontSize = fontSize;
-        textBlock.column = column;
-        return textBlock;
-    }
-
-    writeTextBlock(textBlock: TextBlock, page: PDFPage) {
-        page.drawText(textBlock.text, {
-            x: textBlock.location.x,
-            y: textBlock.location.y,
-            size: textBlock.fontSize,
-            font: textBlock.font,
-            color: rgb(0.1, 0.1, 0.1)
-        });
+        this.writeRoleAndTalents(page2, titleStyle, paragraphStyle, currentColumn);
     }
 }
 

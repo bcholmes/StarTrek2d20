@@ -71,7 +71,7 @@ class Environments {
         ),
         [Environment.FrontierColony]: new EnvironmentModel(
             "Frontier Colony",
-            "The character comes from a colony located on the fringes of known space, either on the edge of uncharted space or on the border with another civilization. Frontier colonists tend to be hardy and determined, even stubborn, and well- prepared for the dangers that their home may pose.",
+            "The character comes from a colony located on the fringes of known space, either on the edge of uncharted space or on the border with another civilization. Frontier colonists tend to be hardy and determined, even stubborn, and well-prepared for the dangers that their home may pose.",
             [Attribute.Control, Attribute.Fitness],
             [Skill.Conn, Skill.Medicine, Skill.Security]
         ),
@@ -98,7 +98,7 @@ class Environments {
         ),
         [Environment.Cosmopolitan]: new EnvironmentModel(
             "Cosmopolitan",
-            "You were raised in environments of trade or diplo- macy, and the intermingling of different communi- ties and cultures. The unfamiliar has always been familiar to you, and you had become familiar with dozens of cultures from distant worlds long before you were an adult. The frenetic pace of life and the basic need to revel in differences between groups and individuals have stayed with you as simple facts of existence in this big Galaxy.",
+            "You were raised in environments of trade or diplomacy, and the intermingling of different communities and cultures. The unfamiliar has always been familiar to you, and you had become familiar with dozens of cultures from distant worlds long before you were an adult. The frenetic pace of life and the basic need to revel in differences between groups and individuals have stayed with you as simple facts of existence in this big Galaxy.",
             [Attribute.Daring, Attribute.Insight, Attribute.Presence],
             [Skill.Command, Skill.Conn, Skill.Science],
         ),
@@ -116,13 +116,13 @@ class Environments {
         ),
         [Environment.StruggleAndHardship]: new EnvironmentModel(
             "Struggle and Hardship",
-            "For one reason or another, your world was one with few available resources. Worlds on the frontier, as well as isolated outposts, are often places of hard- ship where continued survival is difficult, while other worlds struggle in the wake of natural or ecological disasters, the aftermath of war, or societal collapse that leaves basic infrastructure in ruins. Some seek out worlds such as this, where “honest toil” is held as a virtue, while others find themselves in lives of daily struggle through no choice of their own and seek to either better their world or escape it.",
+            "For one reason or another, your world was one with few available resources. Worlds on the frontier, as well as isolated outposts, are often places of hardship where continued survival is difficult, while other worlds struggle in the wake of natural or ecological disasters, the aftermath of war, or societal collapse that leaves basic infrastructure in ruins. Some seek out worlds such as this, where “honest toil” is held as a virtue, while others find themselves in lives of daily struggle through no choice of their own and seek to either better their world or escape it.",
             [Attribute.Control, Attribute.Daring, Attribute.Insight],
             [Skill.Conn, Skill.Engineering, Skill.Science]
         ),
         [Environment.OccupationOrWar]: new EnvironmentModel(
             "Occupation or War",
-            "Though the Federation’s members no longer war amongst themselves, warfare is still a part of the Galaxy. Local or planetary conflicts afflict many independent worlds, and interstellar conflicts rang- ing from border skirmishes to sector-spanning wars are something which all civilizations must prepare to face. Worlds ravaged by war, or even occupied by a hostile nation, are difficult places to live, often forcing people to adapt to horrific conditions and life-or-death decisions.",
+            "Though the Federation’s members no longer war amongst themselves, warfare is still a part of the Galaxy. Local or planetary conflicts afflict many independent worlds, and interstellar conflicts ranging from border skirmishes to sector-spanning wars are something which all civilizations must prepare to face. Worlds ravaged by war, or even occupied by a hostile nation, are difficult places to live, often forcing people to adapt to horrific conditions and life-or-death decisions.",
             [Attribute.Daring, Attribute.Fitness, Attribute.Presence],
             [Skill.Command, Skill.Security, Skill.Medicine]
         ),

@@ -1,5 +1,6 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
+import { Age } from '../helpers/age';
 import {Skill, SkillsHelper} from '../helpers/skills';
 
 interface IValueProperties {
@@ -28,6 +29,7 @@ class Value extends React.Component<IValueProperties, {}> {
 }
 
 interface IProperties {
+    age: Age;
     onUpdate: () => void;
 }
 
@@ -37,12 +39,10 @@ interface IDisciplinesState {
 }
 
 export class SupportingCharacterDisciplines extends React.Component<IProperties, IDisciplinesState> {
-    private _values: number[];
 
     constructor(props: IProperties) {
         super(props);
 
-        this._values = [4, 3, 2, 2, 1, 1];
         this.state = {
             assignedValues: [0, 1, 2, 3, 4, 5]
         }
@@ -52,7 +52,7 @@ export class SupportingCharacterDisciplines extends React.Component<IProperties,
 
     render() {
         const disciplines = [Skill.Command, Skill.Conn, Skill.Engineering, Skill.Security, Skill.Science, Skill.Medicine].map((s, i) => {
-            const val = this._values[this.state.assignedValues[s]];
+            const val = this.props.age.disciplines[this.state.assignedValues[s]];
 
             return (
                 <tr key={i}>
@@ -118,7 +118,7 @@ export class SupportingCharacterDisciplines extends React.Component<IProperties,
 
     private updateCharacterDisciplines(assignedValues: number[]) {
         [Skill.Command, Skill.Conn, Skill.Engineering, Skill.Security, Skill.Science, Skill.Medicine].forEach(a => {
-            character.skills[a].expertise = this._values[assignedValues[a]];
+            character.skills[a].expertise = this.props.age.disciplines[assignedValues[a]];
         });
 
         this.props.onUpdate();
