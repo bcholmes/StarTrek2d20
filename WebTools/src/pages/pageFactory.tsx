@@ -22,6 +22,7 @@ import { TalentsOverviewPage } from './talentsOverviewPage';
 import { SelectionPage } from './selectionPage';
 import { BorgImplantSelection } from './borgImplantSelection';
 import { PageIdentity } from './pageIdentity';
+import { CharacterTypePage } from './characterTypePage';
 
 
 export class PageFactory {
@@ -33,6 +34,7 @@ export class PageFactory {
         this.factories[PageIdentity.Selection] = () => <SelectionPage />;
         this.factories[PageIdentity.Era] = () => <EraSelectionPage/>;
         this.factories[PageIdentity.ToolSelecton] = () => <ToolSelectionPage/>;
+        this.factories[PageIdentity.CharacterType] = () => <CharacterTypePage/>;
         this.factories[PageIdentity.Species] = () => <SpeciesPage/>;
         this.factories[PageIdentity.SpeciesDetails] = () => <SpeciesDetailsPage/>;
         this.factories[PageIdentity.Environment] = () => <EnvironmentPage/>;

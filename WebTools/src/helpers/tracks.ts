@@ -2,6 +2,7 @@
 import {character } from '../common/character';
 import {CharacterType } from '../common/characterType';
 import {Source} from './sources';
+import { Attribute } from './attributes';
 
 export enum Track {
     // Core
@@ -21,6 +22,22 @@ export enum Track {
     Technical,
     EnlistedWarrior,
     Laborer,
+
+    // Player's Guide - Allied Militaries
+    RankAndFile,
+    Officer,
+    IntelligenceTraining,
+    MilitiaAndGuerillas
+}
+
+class TrackAttributeImprovementRule {
+    points: number
+    attributes: Attribute[]
+
+    constructor(points: number, attributes: Attribute[]) {
+        this.points = points;
+        this.attributes = attributes;
+    }
 }
 
 class TrackModel {
@@ -31,7 +48,7 @@ class TrackModel {
     otherDisciplines: Skill[];
     focusSuggestions: string[];
 
-    constructor(name: string, source: Source, description: string, majorDisciplines: Skill[], otherDisciplines: Skill[], focusSuggestions: string[]) {
+    constructor(name: string, source: Source, description: string, majorDisciplines: Skill[], otherDisciplines: Skill[], focusSuggestions: string[], attributes?: TrackAttributeImprovementRule[]) {
         this.name = name;
         this.source = source;
         this.description = description;
@@ -139,6 +156,43 @@ class Tracks {
             "Laborer",
             Source.KlingonCore,
             "The Klingon Defense Force has need of more than merely warriors. Numerous practical and technical aspects of military life require workers to perform routine, mundane labors, assisting with the maintenance and upkeep of the ship, overseeing cargo, preparing meals for the crew and officers, providing basic first aid, and a variety of other tasks. This is vital work, but not especially glorious, though a few of the civilian laborers working on KDF vessels catch the attentions of their superiors and receive the opportunity to better themselves, being permitted to enlist or even being offered a battlefield commission if they have proven themselves worthy.",
+            [Skill.Engineering, Skill.Science],
+            [Skill.Command, Skill.Conn, Skill.Medicine, Skill.Security],
+            ["Animal Handling", "Computers", "Electro-Plasma Power Systems", "Emergency Medicine", "Starship Maintenance", "Survival", "Transporter Systems"]
+        ),
+    };
+        
+    private _alliedMilitaryTracks: { [id: number]: TrackModel } = {
+        [Track.RankAndFile]: new TrackModel(
+            "Rank and File",
+            Source.PlayersGuide,
+            "You represent the common mass of professional military personnel, who will serve as a mixture of ground troops and naval personnel. Most powerful civilizations operate a voluntary and highly selective armed service, preferring to cultivate quality rather than rely on the dubious advantages of raw quantity. When considering the need to transport and supply warriors across an interstellar nation, the drawbacks of massed ranks of conscripts far outweigh the benefits.",
+            [Skill.Security],
+            [Skill.Conn, Skill.Engineering, Skill.Medicine, Skill.Science, Skill.Command],
+            ["Composure", "Extra-Vehicular Activity", "Small Craft", "Military Protocol", "Hand Phasers", "Disruptors", "Hand-to-Hand Combat", "Infiltration", "Survival", "Demolitions"],
+            [new TrackAttributeImprovementRule(1, [Attribute.Daring])]
+        ),
+        [Track.Officer]: new TrackModel(
+            "Officer Training",
+            Source.PlayersGuide,
+            "You spent years of study to become an officer in your nation’s military. This encompassed both training in leadership and command, but also combat skills, technical and scientific studies, and a variety of other disciplines. Most military officers in the Alpha and Beta Quadrants have a breadth and depth of training akin to that of a Starfleet officer, though generally with more focus on military applications rather than exploration.",
+            [Skill.Conn, Skill.Engineering, Skill.Medicine, Skill.Science],
+            [Skill.Command, Skill.Security],
+            ["Diplomacy", "Inspiration", "Strategy & Tactics", "Military Protocol", "History", "Politics", "Hand Phasers", "Disruptors", "Hand-to-Hand Combat", "Shipboard Tactical Systems"]
+        ),
+        [Track.IntelligenceTraining]: new TrackModel(
+            "Intelligence Training",
+            Source.PlayersGuide,
+            "You applied to join your nation’s military or some other civil service, and they found that your talents could be put to good use in intelligence. While you might have an official posting as ordinary personnel aboard a ship or a starbase, or an office in some government bureau, your true duties are both loftier and more clandestine.",
+            [Skill.Conn, Skill.Security],
+            [Skill.Command, Skill.Engineering, Skill.Medicine, Skill.Science],
+            ["Blades", "Composure", "Disruptors", "Hand-to-Hand Combat", "Intimidation", "Sensor Operations", "Shipboard Tactical Systems", "Survival"],
+            []
+        ),
+        [Track.MilitiaAndGuerillas]: new TrackModel(
+            "Militias and Guerillas",
+            Source.PlayersGuide,
+            "You didn’t have any formal training. Rather, you learned to fight out of necessity, to defend your home from aggressors and invaders, or to try and liberate it from those who were oppressing your people. Frontier colonies, worlds where society has collapsed into feuding factions, and conquered planets often produce these kinds of fighters.",
             [Skill.Engineering, Skill.Science],
             [Skill.Command, Skill.Conn, Skill.Medicine, Skill.Security],
             ["Animal Handling", "Computers", "Electro-Plasma Power Systems", "Emergency Medicine", "Starship Maintenance", "Survival", "Transporter Systems"]

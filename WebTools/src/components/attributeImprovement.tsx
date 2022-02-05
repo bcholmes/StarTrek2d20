@@ -52,7 +52,6 @@ export enum AttributeImprovementCollectionMode {
     Customization,
     Academy,
     Ktarian,
-    ReadOnly,
 }
 
 interface AttributeImprovementCollectionProperties {
@@ -61,6 +60,10 @@ interface AttributeImprovementCollectionProperties {
     onDone?: (done: boolean) => void;
     filter?: Attribute[];
 }
+
+interface AttributeImprovementCollectionState {
+    allocatedPoints: number;
+} 
 
 class AttributeContainer {
     attribute: Attribute;
@@ -80,17 +83,15 @@ class AttributeContainer {
     }
 }
 
-export class AttributeImprovementCollection extends React.Component<AttributeImprovementCollectionProperties, {}> {
+export class AttributeImprovementCollection extends React.Component<AttributeImprovementCollectionProperties, AttributeImprovementCollectionState> {
     private _absoluteMax: number = 12;
 
-    private _points: number = 0;
     private _attributes: AttributeContainer[] = [];
     private _ktarianAttributes: Attribute[] = [Attribute.Fitness, Attribute.Presence];
+    private initialValues: number[] = [];
 
     constructor(props: AttributeImprovementCollectionProperties) {
         super(props);
-
-        this._points = props.points;
 
         if (character.isYoung()) {
             this._absoluteMax = 11;
@@ -100,30 +101,15 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
             this._absoluteMax--;
         }
 
-        this.initializeAttributeContainers();
-        this.state = { mode: props.mode };
-    }
-
-    componentDidUpdate(prevProps) {
-        if (this.props.points !== prevProps.points) {
-            this._points = this.props.points;
-        }
-        if (this.props.mode !== prevProps.mode) {
-            this.setState({ mode: this.props.mode });
-            this.initializeAttributeContainers();
+        this.initialValues = character.attributes.map(a => a.value);
+        this.state = {
+            allocatedPoints: 0
         }
     }
 
     initializeAttributeContainers() {
         this._attributes = [];
         switch (this.props.mode) {
-            case AttributeImprovementCollectionMode.ReadOnly:
-                for (let i = 0; i < character.attributes.length; i++) {
-                    if (!this.props.filter || this.props.filter.indexOf(i) > -1) {
-                        this._attributes.push(new AttributeContainer(character.attributes[i].attribute, character.attributes[i].value, character.attributes[i].value, this._absoluteMax, false, false));
-                    }
-                }
-                break;
             case AttributeImprovementCollectionMode.Increase:
                 for (let i = 0; i < character.attributes.length; i++) {
                     if (!this.props.filter || this.props.filter.indexOf(i) > -1) {
@@ -138,7 +124,7 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
                 break;
             case AttributeImprovementCollectionMode.Customization:
                 for (let i = 0; i < character.attributes.length; i++) {
-                    this._attributes.push(new AttributeContainer(character.attributes[i].attribute, character.attributes[i].value, character.attributes[i].value, Math.min(this._absoluteMax, character.attributes[i].value + 1), false, character.attributes[i].value < this._absoluteMax));
+                    this._attributes.push(new AttributeContainer(character.attributes[i].attribute, character.attributes[i].value, character.attributes[i].value, Math.min(this._absoluteMax, character.attributes[i].value + (this.props.points - this.state.allocatedPoints) - 1), false, character.attributes[i].value < this._absoluteMax));
                 }
                 break;
             case AttributeImprovementCollectionMode.Academy:
@@ -157,109 +143,91 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
     }
 
     render() {
-        const attributes = this._attributes.map((a, i) => {
-            return <AttributeImprovement
-                key={i}
-                controller={this}
-                attribute={a.attribute}
-                value={a.value}
-                showIncrease={a.showIncrease}
-                showDecrease={a.showDecrease} />
-        });
-
+        const control = this.isShown(Attribute.Control) ? (<AttributeImprovement controller={this} attribute={Attribute.Control} 
+            value={character.attributes[Attribute.Control].value} 
+            showIncrease={this.canIncrease(Attribute.Control)}  showDecrease={this.canDecrease(Attribute.Control)} />) : undefined;
+        const daring = this.isShown(Attribute.Daring) ? (<AttributeImprovement controller={this} attribute={Attribute.Daring} 
+            value={character.attributes[Attribute.Daring].value} 
+            showIncrease={this.canIncrease(Attribute.Daring)}  showDecrease={this.canDecrease(Attribute.Daring)} />) : undefined;
+        const fitness = this.isShown(Attribute.Fitness) ? (<AttributeImprovement controller={this} attribute={Attribute.Fitness} 
+            value={character.attributes[Attribute.Fitness].value} 
+            showIncrease={this.canIncrease(Attribute.Fitness)}  showDecrease={this.canDecrease(Attribute.Fitness)} />) : undefined;
+        const insight = this.isShown(Attribute.Insight) ? (<AttributeImprovement controller={this} attribute={Attribute.Insight} 
+            value={character.attributes[Attribute.Insight].value} 
+            showIncrease={this.canIncrease(Attribute.Insight)}  showDecrease={this.canDecrease(Attribute.Insight)} />) : undefined;
+        const presence = this.isShown(Attribute.Presence) ? (<AttributeImprovement controller={this} attribute={Attribute.Presence} 
+            value={character.attributes[Attribute.Presence].value} 
+            showIncrease={this.canIncrease(Attribute.Presence)}  showDecrease={this.canDecrease(Attribute.Presence)} />) : undefined;
+        const reason = this.isShown(Attribute.Reason) ? (<AttributeImprovement controller={this} attribute={Attribute.Reason} 
+            value={character.attributes[Attribute.Reason].value} 
+            showIncrease={this.canIncrease(Attribute.Reason)}  showDecrease={this.canDecrease(Attribute.Reason)} />) : undefined;
+                
         return (
             <div>
-                {attributes}
+                {control}
+                {daring}
+                {fitness}
+                {insight}
+                {presence}
+                {reason}
             </div>
         );
     }
 
-    onDecrease(attr: Attribute) {
-        for (let i = 0; i < this._attributes.length; i++) {
-            let a = this._attributes[i];
-            if (a.attribute === attr) {
-                a.value--;
-                character.attributes[a.attribute].value = a.value;
-                break;
-            }
-        }
-
+    isShown(attribute: Attribute) {
         switch (this.props.mode) {
             case AttributeImprovementCollectionMode.Increase:
             case AttributeImprovementCollectionMode.Academy:
-                this._points++;
-
-                for (let i = 0; i < this._attributes.length; i++) {
-                    let a = this._attributes[i];
-                    a.showDecrease = a.value > a.minValue;
-                    a.showIncrease = a.value < a.maxValue;
-                }
-                break;
+                return !this.props.filter || this.props.filter.indexOf(attribute) > -1;
+            case AttributeImprovementCollectionMode.Ktarian:
+                return this._ktarianAttributes.indexOf(attribute) >= 0;
             case AttributeImprovementCollectionMode.StarTrek:
             case AttributeImprovementCollectionMode.Customization:
-            case AttributeImprovementCollectionMode.Ktarian:
-                this._points++;
-
-                for (let i = 0; i < this._attributes.length; i++) {
-                    let a = this._attributes[i];
-                    a.showDecrease = a.value > a.minValue;
-                    a.showIncrease = a.value < a.maxValue;
-                }
-                break;
+            default:
+                return true;
         }
+    }
 
+    canIncrease(attribute: Attribute) {
+        switch (this.props.mode) {
+            case AttributeImprovementCollectionMode.Academy:
+                return character.attributes[attribute].value < this._absoluteMax && this.state.allocatedPoints < this.props.points 
+                    && (character.attributes[attribute].value - this.initialValues[attribute] < (this.props.points -1));
+            case AttributeImprovementCollectionMode.StarTrek:
+                return character.attributes[attribute].value < this._absoluteMax && this.state.allocatedPoints < this.props.points 
+                    && (character.attributes[attribute].value - this.initialValues[attribute] < 1);
+            default:
+                return character.attributes[attribute].value < this._absoluteMax && this.state.allocatedPoints < this.props.points;
+        }
+    }
+
+    canDecrease(attribute: Attribute) {
+        return character.attributes[attribute].value > this.initialValues[attribute] && this.state.allocatedPoints > 0;
+    }
+
+
+    onDecrease(attr: Attribute) {
+        let points = this.state.allocatedPoints;
+        character.attributes[attr].value = character.attributes[attr].value - 1;
+
+        points--;
         if (this.props.onDone) {
-            this.props.onDone(this._points === 0);
+            this.props.onDone(points === this.props.points);
         }
 
-        this.forceUpdate();
+        this.setState((state) => ({ ...state, allocatedPoints: points }));
     }
 
     onIncrease(attr: Attribute) {
-        for (let i = 0; i < this._attributes.length; i++) {
-            let a = this._attributes[i];
-            if (a.attribute === attr) {
-                a.value++;
-                character.attributes[a.attribute].value = a.value;
-                break;
-            }
-        }
+        let points = this.state.allocatedPoints;
+        character.attributes[attr].value = character.attributes[attr].value + 1;
 
-        switch (this.props.mode) {
-            case AttributeImprovementCollectionMode.Increase:
-            case AttributeImprovementCollectionMode.Academy:
-                this._points--;
-
-                for (let i = 0; i < this._attributes.length; i++) {
-                    let a = this._attributes[i];
-                    a.showDecrease = a.value > a.minValue;
-                    a.showIncrease = a.value < a.maxValue && this._points > 0;
-                }
-                break;
-            case AttributeImprovementCollectionMode.StarTrek:
-            case AttributeImprovementCollectionMode.Customization:
-            case AttributeImprovementCollectionMode.Ktarian:
-                this._points--;
-
-                for (let i = 0; i < this._attributes.length; i++) {
-                    let a = this._attributes[i];
-                    a.showDecrease = a.value > a.minValue;
-
-                    const absoluteMax = character.isYoung() ? 11 : 12;
-                    let maxValue = a.maxValue;
-                    if (character.hasMaxedAttribute() && maxValue === absoluteMax) {
-                        maxValue--;
-                    }
-
-                    a.showIncrease = a.value < maxValue && this._points > 0;
-                }
-                break;
-        }
+        points++;
 
         if (this.props.onDone) {
-            this.props.onDone(this._points === 0);
+            this.props.onDone(points === this.props.points);
         }
 
-        this.forceUpdate();
+        this.setState((state) => ({ ...state, allocatedPoints: points }));
     }
 }

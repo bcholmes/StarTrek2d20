@@ -1,6 +1,7 @@
 export const enum CharacterType {
     Starfleet = 0,
     KlingonWarrior,
+    AlliedMilitary,
     Other
 }
 
@@ -8,7 +9,12 @@ export class CharacterTypeModel {
     private static TYPES: CharacterTypeModel[] = [ 
         new CharacterTypeModel("Federation/Starfleet", CharacterType.Starfleet),
         new CharacterTypeModel("Klingon Empire", CharacterType.KlingonWarrior),
+        new CharacterTypeModel("Allied Military", CharacterType.AlliedMilitary),
         new CharacterTypeModel("Other", CharacterType.Other)
+    ];
+
+    private static TYPES_EXCEPT_OTHER: CharacterTypeModel[] = [ 
+        CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1], CharacterTypeModel.TYPES[2]
     ];
     
     name: string;
@@ -21,6 +27,10 @@ export class CharacterTypeModel {
 
     public static getAllTypes() {
         return CharacterTypeModel.TYPES;
+    }
+
+    public static getAllTypesExceptOther() {
+        return CharacterTypeModel.TYPES_EXCEPT_OTHER;
     }
 
     public static getStarshipTypes() {

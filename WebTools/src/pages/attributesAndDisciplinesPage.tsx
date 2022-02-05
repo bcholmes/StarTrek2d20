@@ -55,11 +55,8 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
 
     render() {
         const hasExcess = this.state.showExcessAttrDistribution || this.state.showExcessSkillDistribution;
-        const attributes = hasExcess
-                ? (this.state.showExcessAttrDistribution 
-                    ? <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Increase} points={this._excessAttrPoints} onDone={(done) => { this.attributesDone(done); } } />
-                    : <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.ReadOnly} points={this._excessAttrPoints} onDone={(done) => { this.attributesDone(done); } } />)
-                : <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Customization} points={this._attrPoints} onDone={(done) => { this.attributesDone(done); } } />
+        const attributes = 
+                (<AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Customization} points={this._excessAttrPoints + this._attrPoints} onDone={(done) => { this.attributesDone(done); } } />)
 
         const disciplines = !this.state.showExcessSkillDistribution
             ? <ElectiveSkillList points={this._skillPoints} skills={character.skills.map(s => { return s.skill; }) } onUpdated={(skills) => { this._skillsDone = skills.length === this._skillPoints; } } />
@@ -87,7 +84,20 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
             : undefined;
 
 
-        const buttonText = !hasExcess ? "FINISH" : "PROCEED";
+        const attributeText = this._excessAttrPoints > 0 ? (
+            <div className="page-text">
+                The point total includes {this._excessAttrPoints} excess {this._excessAttrPoints > 1 ? ' Points ' : ' Point '} that could not 
+                be automatically added to your attributes without exceeding maximum values.
+            </div>
+        ) : undefined;
+
+        const disciplinesText = this._excessSkillPoints > 0 ? (
+            <div className="page-text">
+                The point total includes {this._excessSkillPoints} excess {this._excessSkillPoints > 1 ? ' Points ' : ' Point '} that could not 
+                be automatically added to your dsciplines without exceeding maximum values.
+            </div>
+        ) : undefined;
+
 
         return (
             <div className="page">
@@ -95,16 +105,18 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
                     {description}
                 </div>
                 <div className="panel">
-                    <div className="header-small">{`ATTRIBUTES (POINTS: ${hasExcess ? this._excessAttrPoints : this._attrPoints})`}</div>
+                    <div className="header-small">{`ATTRIBUTES (POINTS: ${this._excessAttrPoints + this._attrPoints})`}</div>
+                    {attributeText}
                     {attributes}
                 </div>
                 <div className="panel">
-                    <div className="header-small">{`DISCIPLINES (POINTS: ${hasExcess ? this._excessSkillPoints : this._skillPoints})`}</div>
+                    <div className="header-small">{`DISCIPLINES (POINTS: ${this._excessSkillPoints + this._skillPoints})`}</div>
+                    {disciplinesText}
                     {disciplines}
                 </div>
                 {value}
                 {talentSelection}
-                <Button text={buttonText} className="button-next" onClick={() => this.onNext() }/>
+                <Button text="FINISH" className="button-next" onClick={() => this.onNext() }/>
             </div>
         );
     }
