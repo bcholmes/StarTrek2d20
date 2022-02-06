@@ -1,3 +1,5 @@
+import { Source } from "../helpers/sources";
+
 export const enum CharacterType {
     Starfleet = 0,
     KlingonWarrior,
@@ -29,8 +31,16 @@ export class CharacterTypeModel {
         return CharacterTypeModel.TYPES;
     }
 
-    public static getAllTypesExceptOther() {
-        return CharacterTypeModel.TYPES_EXCEPT_OTHER;
+    public static getAllTypesExceptOther(sources: Source[]) {
+        return this.TYPES_EXCEPT_OTHER.filter(t => {
+            if (t.type === CharacterType.KlingonWarrior) {
+                return sources.indexOf(Source.KlingonCore) >= 0;
+            } else if (t.type === CharacterType.AlliedMilitary) {
+                return sources.indexOf(Source.PlayersGuide) >= 0
+            } else {
+                return true;
+            }
+        });
     }
 
     public static getStarshipTypes() {

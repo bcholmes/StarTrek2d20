@@ -13,6 +13,24 @@ import {MissionPod, MissionPodViewModel, SpaceframeHelper, SpaceframeViewModel} 
 import {MissionProfile} from "../helpers/missionProfiles";
 import {CharacterType} from './characterType';
 import { System } from '../helpers/systems';
+import { AlliedMilitary } from '../helpers/alliedMilitary';
+
+export abstract class CharacterTypeDetails {
+
+}
+
+export class AlliedMilitaryDetails extends CharacterTypeDetails {
+
+    alliedMilitary: AlliedMilitary;
+    name: string;
+
+    constructor(alliedMilitary: AlliedMilitary, name: string) {
+        super();
+        this.alliedMilitary = alliedMilitary;
+        this.name = name;
+    }
+}
+
 
 export class CharacterAttribute {
     attribute: Attribute;
@@ -158,6 +176,7 @@ export class Character {
     public stress?: number;
     public allowCrossSpeciesTalents: boolean = false;
     public type: CharacterType = CharacterType.Starfleet;
+    public typeDetails: CharacterTypeDetails;
     public workflow?: Workflow;
     public pronouns: string = '';
 

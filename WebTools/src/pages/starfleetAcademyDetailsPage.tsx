@@ -64,7 +64,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">ATTRIBUTES (Select up to three)</div>
-                    <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Academy} points={3} onDone={(done) => { this._attributesDone = done; } }/>
+                    <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Academy} points={3} onDone={(done) => { this._attributesDone = done; } } rule={track.attributesRule}/>
                 </div>
                 <MajorsList skills={track.majorDisciplines} onMajorSelected={skill => this.onMajorSelected(skill) } onOtherSelected={skills => this.onElectiveSkillsSelected(skills) }/>
                 <div className="panel">

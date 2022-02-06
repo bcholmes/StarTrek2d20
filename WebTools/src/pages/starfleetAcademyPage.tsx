@@ -23,17 +23,18 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
     }
 
     render() {
-        var buttons = character.type === CharacterType.KlingonWarrior ?
-            (<div className="button-container">
-                <Button className="button" text="Select Training Track" onClick={() => this.showKlingonTracks() } />
-                <Button className="button" text="Roll Training Track" onClick={() => this.rollKlingonTrack() } />
-            </div>)
-            : (<div className="button-container">
+        var buttons = character.type === CharacterType.Starfleet
+            ? (<div className="button-container">
                 <Button className="button" text="Select Officer Track" onClick={() => this.showTracks(true) } />
                 <Button className="button" text="Roll Officer Track" onClick={() => this.rollTrack(true) } />
                 <Button className="button" text="Select Enlisted Track" onClick={() => this.showTracks(false) } />
                 <Button className="button" text="Roll Enlisted Track" onClick={() => this.rollTrack(false) } />
-            </div>);
+            </div>)
+            : (<div className="button-container">
+                <Button className="button" text="Select Training Track" onClick={() => this.showTrackForType() } />
+                <Button className="button" text="Roll Training Track" onClick={() => this.rollTrackForType() } />
+            </div>)
+    
 
         var content = !this.state.showSelection ?
             (
@@ -68,11 +69,11 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
         this.setState({ showSelection: true });
     }
 
-    private showKlingonTracks() {
+    private showTrackForType() {
         this.setState({ showSelection: true });
     }
 
-    private rollKlingonTrack() {
+    private rollTrackForType() {
         var track = TracksHelper.generateTrack();
         this.selectTrack(track);
     }

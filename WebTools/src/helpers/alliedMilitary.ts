@@ -39,6 +39,11 @@ class _AllyHelper {
     selectOptions(era: Era, includeKlingon: boolean) {
         return this.options.filter(o => o.eras.indexOf(era) >= 0 && (o.type !== AlliedMilitaryType.KLINGON_DEFENCE_FORCE || includeKlingon));
     }
+
+    findOption(type: AlliedMilitaryType) {
+        let temp = this.options.filter(o => o.type === type);
+        return temp ? temp[0] : null;
+    }
 }
 
 const AllyHelper = new _AllyHelper();

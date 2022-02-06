@@ -8,10 +8,12 @@ import {Button} from '../components/button';
 import {EnvironmentSelection} from '../components/environmentSelection';
 import InstructionText from '../components/instructionText';
 import { Source } from '../helpers/sources';
+import { CheckBox } from '../components/checkBox';
 
 interface IEnvironmentPageState {
     showSelection: boolean;
     alternate: boolean;
+    showAlternates: boolean;
 }
 
 export class EnvironmentPage extends React.Component<IPageProperties, IEnvironmentPageState> {
@@ -20,13 +22,21 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
 
         this.state = {
             showSelection: false,
-            alternate: false
+            alternate: false,
+            showAlternates: false
         };
     }
 
     render() {
-        let selectAlt = (character.hasSource(Source.PlayersGuide)) ? (<Button className="button" text="Select Alternate Environment" onClick={() => this.showAlternateEnvironments()} />) : null;
-        let rollAlt = (character.hasSource(Source.PlayersGuide)) ? (<Button className="button" text="Roll Alternate Environment" onClick={() => this.rollAlternateEnvironment()} />) : null;
+        let showAlt = (character.hasSource(Source.PlayersGuide)) ? (<CheckBox isChecked={this.state.showAlternates} value={'alternates'} text="Allow alternate Environments (GM's decision)" onChanged={val => { this.setState(state => ({...state, showAlternates: !state.showAlternates}) ) }} />) : null;
+
+        let alt = (this.state.showAlternates) 
+                ? (<div className="pl-2 pr-2">
+                    <Button className="button" text="Select Alternate Environment" onClick={() => this.showAlternateEnvironments()} />
+                    <Button className="button" text="Roll Alternate Environment" onClick={() => this.rollAlternateEnvironment()} />
+                   </div>) 
+                : null;
+
 
         var content = !this.state.showSelection ?
             (
@@ -35,11 +45,13 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
                     <div className="page-text">
                         Either select or roll your Environment.
                     </div>
-                    <div className="button-container">
-                        <Button className="button" text="Select Environment" onClick={() => this.showEnvironments() } />
-                        {selectAlt}
-                        <Button className="button" text="Roll Environment" onClick={() => this.rollEnvironment() } />
-                        {rollAlt}
+                    {showAlt}
+                    <div className="row row-cols-md-3">
+                        <div className="pl-2 pr-2">
+                            <Button className="button" text="Select Environment" onClick={() => this.showEnvironments() } />
+                            <Button className="button" text="Roll Environment" onClick={() => this.rollEnvironment() } />
+                        </div>
+                        {alt}
                     </div>
                 </div>
             )

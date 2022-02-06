@@ -17,8 +17,8 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
                 </div>
                 <div className="button-container">
                     <Button className="button" text="Main Character" onClick={() => { this.startStarfleetWorkflow(); } } />
-                    <Button className="button" text="Starship" onClick={() => { this.goToPage(PageIdentity.Starship); } } />
                     <Button className="button" text="Supporting Character" onClick={() => { this.goToPage(PageIdentity.SupportingCharacter); } } />
+                    <Button className="button" text="Starship" onClick={() => { this.goToPage(PageIdentity.Starship); } } />
                 </div>
             </div>
         );

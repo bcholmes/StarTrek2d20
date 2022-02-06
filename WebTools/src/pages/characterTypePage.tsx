@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {character} from '../common/character';
+import {AlliedMilitaryDetails, character} from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
@@ -11,7 +11,7 @@ import { Source } from '../helpers/sources';
 interface ICharacterTypePageState {
     type: CharacterType,
     alliedMilitary?: AlliedMilitaryType
-    otherName?: string
+    otherName: string
 }
 
 export class CharacterTypePage extends React.Component<{}, ICharacterTypePageState> {
@@ -19,7 +19,8 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
     constructor(props) {
         super(props);
         this.state = {
-            type: CharacterType.Starfleet
+            type: CharacterType.Starfleet,
+            otherName: ''
         }
     }
 
@@ -36,7 +37,8 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
                         What's the name of this military?
                     </div>
                     <input value={this.state.otherName} onChange={(e) => { 
-                        this.setState(state => ({ ...state, otherName: e.target.value }) ); 
+                        let value = e.target.value;
+                        this.setState(state => ({ ...state, otherName: value }) ); 
                     } }/>
                 </div>)
                 : null;
@@ -47,6 +49,7 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
                         What military does this character represent?
                     </div>
                     <select onChange={(e) => this.selectAlliedMilitaryType(e.target.value)} value={this.state.alliedMilitary}>
+                        <option>Choose...</option>
                         {types}
                     </select>
                     {other}
@@ -60,7 +63,7 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
     render() {
         const alliedMilitary = this.renderAlliedMilitaryList();
 
-        const types = CharacterTypeModel.getAllTypesExceptOther().map(t => {
+        const types = CharacterTypeModel.getAllTypesExceptOther(character.sources).map(t => {
             return (<option value={t.type} key={'type-' + t.type}>{t.name}</option>);
         });
 
@@ -99,6 +102,10 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
         }));
     }
     private startWorkflow() {
+        character.type = this.state.type;
+        if (character.type === CharacterType.AlliedMilitary) {
+            character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(this.state.alliedMilitary), this.state.otherName);
+        }
         character.workflow = WorkflowsHelper.getWorkflow(character.type);
         this.goToPage(PageIdentity.Species);
     }

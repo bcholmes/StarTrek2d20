@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 import {Attribute, AttributesHelper} from '../helpers/attributes';
 import {character} from '../common/character';
+import { AttributeImprovementRule } from '../helpers/tracks';
 
 interface IAttributeImprovementProperties {
     controller: AttributeImprovementCollection;
@@ -59,6 +60,7 @@ interface AttributeImprovementCollectionProperties {
     mode: AttributeImprovementCollectionMode;
     onDone?: (done: boolean) => void;
     filter?: Attribute[];
+    rule?: AttributeImprovementRule;
 }
 
 interface AttributeImprovementCollectionState {
@@ -143,6 +145,8 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
     }
 
     render() {
+        const description = this.props.rule ? (<div>{this.props.rule.describe()}</div>) : null;
+
         const control = this.isShown(Attribute.Control) ? (<AttributeImprovement controller={this} attribute={Attribute.Control} 
             value={character.attributes[Attribute.Control].value} 
             showIncrease={this.canIncrease(Attribute.Control)}  showDecrease={this.canDecrease(Attribute.Control)} />) : undefined;
@@ -164,12 +168,15 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
                 
         return (
             <div>
-                {control}
-                {daring}
-                {fitness}
-                {insight}
-                {presence}
-                {reason}
+                <div>
+                    {control}
+                    {daring}
+                    {fitness}
+                    {insight}
+                    {presence}
+                    {reason}
+                </div>
+                {description}
             </div>
         );
     }
@@ -188,11 +195,29 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
         }
     }
 
+    isRuleMet() {
+        if (this.props.rule) {
+            let result = false;
+            this.props.rule.attributes.forEach(a => {result = result || (this.initialValues[a] < character.attributes[a].value) });
+            return result;
+        } else {
+            return true;
+        }
+    }
+
     canIncrease(attribute: Attribute) {
         switch (this.props.mode) {
             case AttributeImprovementCollectionMode.Academy:
-                return character.attributes[attribute].value < this._absoluteMax && this.state.allocatedPoints < this.props.points 
-                    && (character.attributes[attribute].value - this.initialValues[attribute] < (this.props.points -1));
+                if (this.state.allocatedPoints === this.props.points) {
+                    return false;
+                } else if (this.isRuleMet() || (this.props.points - this.state.allocatedPoints > 1)) {
+                    return character.attributes[attribute].value < this._absoluteMax 
+                        && (character.attributes[attribute].value - this.initialValues[attribute] < (this.props.points -1));
+                } else if (this.props.rule.attributes.indexOf(attribute) >= 0) {
+                    return character.attributes[attribute].value < this._absoluteMax; 
+                } else {
+                    return false;
+                }
             case AttributeImprovementCollectionMode.StarTrek:
                 return character.attributes[attribute].value < this._absoluteMax && this.state.allocatedPoints < this.props.points 
                     && (character.attributes[attribute].value - this.initialValues[attribute] < 1);

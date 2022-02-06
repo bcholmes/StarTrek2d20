@@ -61,13 +61,13 @@ class Workflows {
     ]);
 
     alliedMilitaryWorkflow: Workflow = new Workflow([
-        new WorkflowStep("Species", [], false),
+        new WorkflowStep("Species", [], true),
         new WorkflowStep("Environment", ["Regardless of their species, military officers and ratings come from many places, across many types of worlds."]),
         new WorkflowStep("Upbringing", ["The nature of a person’s family and their surroundings as they grew up can have a massive impact upon them, and, whether they accept this influence or rebelled against it, it will shape the rest of their lives.", "Either select or roll your Upbringing."]),
         new WorkflowStep("Training", ["You have chosen to commit your life to your government's military. You have undergone necessary training to prepare for your military role, whether that be formal officer education, or much more informal guerilla training."]),
         new WorkflowStep("Career", ["At this stage, you have a choice to make about the character: is the character a young officer, fresh out of training, have they served in the military for several years, or are they a veteran with decades of experience?", "Either select or roll your Career."]),
         new WorkflowStep("Career Events", ["The character’s career is a tapestry of events and experiences, but amongst this, a few will have been pivotal moments in the character’s life. A character defines which moments of their life are important in retrospect, and what seemed definitive to a young officer may be inconsequential to that same officer decades years later.", "Either select or roll a Career Event."]),
-        new WorkflowStep("Finishing Touches", [], true)
+        new WorkflowStep("Finishing Touches", [], false)
     ]);
 
     getWorkflow(type: CharacterType) {
