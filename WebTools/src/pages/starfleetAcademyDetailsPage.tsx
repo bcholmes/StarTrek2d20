@@ -16,19 +16,16 @@ import { TalentSelection } from '../components/talentSelection';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 
 export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties, {}> {
-    private _major: Skill;
-    private _electiveSkills: Skill[];
     private _talent: TalentViewModel;
     private _focus1: HTMLInputElement;
     private _focus2: HTMLInputElement;
     private _focus3: HTMLInputElement;
     private _trait: HTMLInputElement;
     private _attributesDone: boolean;
+    private _skillsDone: boolean;
 
     constructor(props: IPageProperties) {
         super(props);
-
-        this._electiveSkills = [];
     }
 
     render() {
@@ -66,7 +63,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                     <div className="header-small">ATTRIBUTES (Select up to three)</div>
                     <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Academy} points={3} onDone={(done) => { this._attributesDone = done; } } rule={track.attributesRule}/>
                 </div>
-                <MajorsList skills={track.majorDisciplines} onMajorSelected={skill => this.onMajorSelected(skill) } onOtherSelected={skills => this.onElectiveSkillsSelected(skills) }/>
+                <MajorsList skills={track.majorDisciplines} onDone={(done) => {this._skillsDone = done; this.forceUpdate() }} rule={track.skillsRule}/>
                 <div className="panel">
                     <div className="header-small">FOCUS</div>
                     <div>{training}</div>
@@ -307,16 +304,6 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
         );
     }
 
-    private onMajorSelected(skill: Skill) {
-        this._major = skill;
-        this.forceUpdate();
-    }
-
-    private onElectiveSkillsSelected(skills: Skill[]) {
-        this._electiveSkills = skills;
-        this.forceUpdate();
-    }
-
     private onTalentSelected(talents: TalentViewModel[]) {
         this._talent = talents.length > 0 ? talents[0] : undefined;
         this.forceUpdate();
@@ -334,16 +321,10 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
             return;
         }
 
-        if (this._major == null && !ignoresDisciplineRequirements) {
-            Dialog.show("You must select a Major before proceeding.");
+        if (!this._skillsDone && !ignoresDisciplineRequirements) {
+            Dialog.show("You must select one major and two other disciplines before proceeding.");
             return;
         }
-
-        if (this._electiveSkills.length !== 2 && !ignoresDisciplineRequirements) {
-            Dialog.show("You must select 2 Other Disciplines to improve before proceeding.");
-            return;
-        }
-
         if (!this._talent) {
             Dialog.show("You must select a talent before proceeding.");
             return;

@@ -49,7 +49,7 @@ export class AttributeImprovement extends React.Component<IAttributeImprovementP
 
 export enum AttributeImprovementCollectionMode {
     Increase,
-    StarTrek,
+    Species,
     Customization,
     Academy,
     Ktarian,
@@ -67,28 +67,9 @@ interface AttributeImprovementCollectionState {
     allocatedPoints: number;
 } 
 
-class AttributeContainer {
-    attribute: Attribute;
-    value: number;
-    minValue: number;
-    maxValue: number;
-    showDecrease: boolean;
-    showIncrease: boolean;
-
-    constructor(attribute: Attribute, value: number, minValue: number, maxValue: number, showDecrease: boolean, showIncrease: boolean) {
-        this.attribute = attribute;
-        this.value = value;
-        this.minValue = minValue;
-        this.maxValue = maxValue;
-        this.showDecrease = showDecrease;
-        this.showIncrease = showIncrease;
-    }
-}
-
 export class AttributeImprovementCollection extends React.Component<AttributeImprovementCollectionProperties, AttributeImprovementCollectionState> {
     private _absoluteMax: number = 12;
 
-    private _attributes: AttributeContainer[] = [];
     private _ktarianAttributes: Attribute[] = [Attribute.Fitness, Attribute.Presence];
     private initialValues: number[] = [];
 
@@ -106,41 +87,6 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
         this.initialValues = character.attributes.map(a => a.value);
         this.state = {
             allocatedPoints: 0
-        }
-    }
-
-    initializeAttributeContainers() {
-        this._attributes = [];
-        switch (this.props.mode) {
-            case AttributeImprovementCollectionMode.Increase:
-                for (let i = 0; i < character.attributes.length; i++) {
-                    if (!this.props.filter || this.props.filter.indexOf(i) > -1) {
-                        this._attributes.push(new AttributeContainer(character.attributes[i].attribute, character.attributes[i].value, character.attributes[i].value, this._absoluteMax, false, character.attributes[i].value < this._absoluteMax));
-                    }
-                }
-                break;
-            case AttributeImprovementCollectionMode.StarTrek:
-                for (let i = 0; i < character.attributes.length; i++) {
-                    this._attributes.push(new AttributeContainer(character.attributes[i].attribute, character.attributes[i].value, character.attributes[i].value, 8, false, true));
-                }
-                break;
-            case AttributeImprovementCollectionMode.Customization:
-                for (let i = 0; i < character.attributes.length; i++) {
-                    this._attributes.push(new AttributeContainer(character.attributes[i].attribute, character.attributes[i].value, character.attributes[i].value, Math.min(this._absoluteMax, character.attributes[i].value + (this.props.points - this.state.allocatedPoints) - 1), false, character.attributes[i].value < this._absoluteMax));
-                }
-                break;
-            case AttributeImprovementCollectionMode.Academy:
-                for (let i = 0; i < character.attributes.length; i++) {
-                    if (!this.props.filter || this.props.filter.indexOf(i) > -1) {
-                        const upperLimit = Math.min(character.attributes[i].value + 2, this._absoluteMax);
-                        this._attributes.push(new AttributeContainer(character.attributes[i].attribute, character.attributes[i].value, character.attributes[i].value, upperLimit, false, character.attributes[i].value < upperLimit));
-                    }
-                }
-                break;
-            case AttributeImprovementCollectionMode.Ktarian:
-                this._ktarianAttributes.forEach(a => {
-                    this._attributes.push(new AttributeContainer(a, character.attributes[a].value, character.attributes[a].value, character.attributes[a].value + 1, false, true));
-                });
         }
     }
 
@@ -188,7 +134,7 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
                 return !this.props.filter || this.props.filter.indexOf(attribute) > -1;
             case AttributeImprovementCollectionMode.Ktarian:
                 return this._ktarianAttributes.indexOf(attribute) >= 0;
-            case AttributeImprovementCollectionMode.StarTrek:
+            case AttributeImprovementCollectionMode.Species:
             case AttributeImprovementCollectionMode.Customization:
             default:
                 return true;
@@ -218,9 +164,16 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
                 } else {
                     return false;
                 }
-            case AttributeImprovementCollectionMode.StarTrek:
+            case AttributeImprovementCollectionMode.Species:
+                // "Species" is used when a player selects "Human" on the Species page. The rule is that only one point can be 
+                // added to an attribute
                 return character.attributes[attribute].value < this._absoluteMax && this.state.allocatedPoints < this.props.points 
                     && (character.attributes[attribute].value - this.initialValues[attribute] < 1);
+            case AttributeImprovementCollectionMode.Customization:
+                // "Customization" Mode is used on the "finishing touches" screen. Two points must be spent on two different 
+                // attributes. Any other points can be distributed freely.
+                return character.attributes[attribute].value < this._absoluteMax && this.state.allocatedPoints < this.props.points 
+                    && (character.attributes[attribute].value - this.initialValues[attribute] < (this.props.points - 1));
             default:
                 return character.attributes[attribute].value < this._absoluteMax && this.state.allocatedPoints < this.props.points;
         }

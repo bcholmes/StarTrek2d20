@@ -354,6 +354,8 @@ export class Character {
     private copy(): Character {
         var character = new Character();
 
+        character.type = this.type;
+        character.typeDetails = this.typeDetails;
         this.sources.forEach(s => {
             character.sources.push(s);
         });

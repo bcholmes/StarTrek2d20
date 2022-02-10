@@ -103,7 +103,7 @@ class Environments {
             [Skill.Command, Skill.Conn, Skill.Science],
         ),
         [Environment.RigorousDiscipline]: new EnvironmentModel(
-            "Isolated Colony",
+            "Rigorous Discipline",
             "You have always been surrounded by notions of duty and purpose, and your childhood was a strict one, aimed at preparing you to take on a specific role or to achieve a specific goal. This meant relatively little personal freedom, but it instilled within you a powerful sense of what you were capable of when pushed to succeed.",
             [Attribute.Control, Attribute.Fitness, Attribute.Reason],
             [Skill.Command, Skill.Security, Skill.Medicine]

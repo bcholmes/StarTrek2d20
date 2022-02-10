@@ -11,6 +11,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220206</b>
+                <ul>
+                    <li>More functionality from the <cite>Player's Guide</cite> added.</li>
+                </ul>
                 <b>v1.220130</b>
                 <ul>
                     <li>Bug fix: a user reported a glitch with showing the Talent text. When the full text is shown (on 

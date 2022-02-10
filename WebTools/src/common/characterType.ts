@@ -9,8 +9,8 @@ export const enum CharacterType {
 
 export class CharacterTypeModel {
     private static TYPES: CharacterTypeModel[] = [ 
-        new CharacterTypeModel("Federation/Starfleet", CharacterType.Starfleet),
-        new CharacterTypeModel("Klingon Empire", CharacterType.KlingonWarrior),
+        new CharacterTypeModel("Starfleet", CharacterType.Starfleet),
+        new CharacterTypeModel("Klingon Defense Force", CharacterType.KlingonWarrior),
         new CharacterTypeModel("Allied Military", CharacterType.AlliedMilitary),
         new CharacterTypeModel("Other", CharacterType.Other)
     ];

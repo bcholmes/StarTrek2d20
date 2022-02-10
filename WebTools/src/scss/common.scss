@@ -233,6 +233,10 @@ b {
     text-transform: uppercase;
 }
 
+.skill-name b {
+    text-transform: none;
+}
+
 body {
     width: 100%;
     height: 100%;

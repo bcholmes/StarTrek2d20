@@ -31,7 +31,7 @@ export enum Track {
 }
 
 export enum ImprovementRuleType {
-    AT_LEAST_ONE, TWO_AND_ONE
+    AT_LEAST_ONE, MUST_INCLUDE_ALL
 }
 
 export class AttributeImprovementRule {
@@ -44,11 +44,7 @@ export class AttributeImprovementRule {
     }
 
     describe() {
-        if (this.type === ImprovementRuleType.AT_LEAST_ONE) {
-            return "At least one point must be spent on " + this.describeAttributes() + ".";
-        } else {
-            return "Two points must be spent on " + this.describeAttributes() + "; one point must be spent on the other."
-        }
+        return "At least one point must be spent on " + this.describeAttributes() + ".";
     }
 
     describeAttributes() {
@@ -58,6 +54,27 @@ export class AttributeImprovementRule {
     }
 }
 
+export class SkillImprovementRule {
+    skills: Skill[];
+    type: ImprovementRuleType;
+
+    constructor(type: ImprovementRuleType, ...skills: Skill[]) {
+        this.type = type;
+        this.skills = skills;
+    }
+
+    describe() {
+        return "Points must be distributed to " + this.describeSkills() + ".";
+    }
+
+    describeSkills() {
+        let result = this.skills.length > 1 ? "each of " : "";
+        this.skills.forEach((s, i) => { result += (i === 0) ? Skill[s] : (" and " + Skill[s])});
+        return result;
+    }
+}
+
+
 export class TrackModel {
     id: Track;
     name: string;
@@ -66,9 +83,10 @@ export class TrackModel {
     majorDisciplines: Skill[];
     otherDisciplines: Skill[];
     focusSuggestions: string[];
-    attributesRule?: AttributeImprovementRule
+    attributesRule?: AttributeImprovementRule;
+    skillsRule?: SkillImprovementRule;
 
-    constructor(id: Track, name: string, source: Source, description: string, majorDisciplines: Skill[], otherDisciplines: Skill[], focusSuggestions: string[], attributes?: AttributeImprovementRule) {
+    constructor(id: Track, name: string, source: Source, description: string, majorDisciplines: Skill[], otherDisciplines: Skill[], focusSuggestions: string[], attributes?: AttributeImprovementRule, skillsRule?: SkillImprovementRule) {
         this.id = id;
         this.name = name;
         this.source = source;
@@ -77,6 +95,7 @@ export class TrackModel {
         this.otherDisciplines = otherDisciplines;
         this.focusSuggestions = focusSuggestions;
         this.attributesRule = attributes;
+        this.skillsRule = skillsRule;
     }
 }
 
@@ -202,27 +221,30 @@ class Tracks {
             "Officer Training",
             Source.PlayersGuide,
             "You spent years of study to become an officer in your nation’s military. This encompassed both training in leadership and command, but also combat skills, technical and scientific studies, and a variety of other disciplines. Most military officers in the Alpha and Beta Quadrants have a breadth and depth of training akin to that of a Starfleet officer, though generally with more focus on military applications rather than exploration.",
-            [Skill.Conn, Skill.Engineering, Skill.Medicine, Skill.Science],
             [Skill.Command, Skill.Security],
-            ["Diplomacy", "Inspiration", "Strategy & Tactics", "Military Protocol", "History", "Politics", "Hand Phasers", "Disruptors", "Hand-to-Hand Combat", "Shipboard Tactical Systems"]
+            [Skill.Conn, Skill.Engineering, Skill.Medicine, Skill.Science],
+            ["Diplomacy", "Inspiration", "Strategy & Tactics", "Military Protocol", "History", "Politics", "Hand Phasers", "Disruptors", "Hand-to-Hand Combat", "Shipboard Tactical Systems"],
+            undefined, 
+            new SkillImprovementRule(ImprovementRuleType.MUST_INCLUDE_ALL, Skill.Command, Skill.Security)
         ),
         new TrackModel(
             Track.IntelligenceTraining,
             "Intelligence Training",
             Source.PlayersGuide,
             "You applied to join your nation’s military or some other civil service, and they found that your talents could be put to good use in intelligence. While you might have an official posting as ordinary personnel aboard a ship or a starbase, or an office in some government bureau, your true duties are both loftier and more clandestine.",
-            [Skill.Conn, Skill.Security],
-            [Skill.Command, Skill.Engineering, Skill.Medicine, Skill.Science],
+            [Skill.Conn, Skill.Security, Skill.Command, Skill.Engineering, Skill.Medicine, Skill.Science],
+            [],
             ["Persuasion", "Computers", "Espionage", "Infiltration", "Interrogation", "Linguistics", "Threat Analysis"],
-            new AttributeImprovementRule(ImprovementRuleType.AT_LEAST_ONE, Attribute.Insight, Attribute.Reason)
+            new AttributeImprovementRule(ImprovementRuleType.AT_LEAST_ONE, Attribute.Insight, Attribute.Reason),
+            new SkillImprovementRule(ImprovementRuleType.MUST_INCLUDE_ALL, Skill.Security)
         ),
         new TrackModel(
             Track.MilitiaAndGuerillas,
             "Militias and Guerillas",
             Source.PlayersGuide,
             "You didn’t have any formal training. Rather, you learned to fight out of necessity, to defend your home from aggressors and invaders, or to try and liberate it from those who were oppressing your people. Frontier colonies, worlds where society has collapsed into feuding factions, and conquered planets often produce these kinds of fighters.",
-            [Skill.Engineering, Skill.Science],
-            [Skill.Command, Skill.Conn, Skill.Medicine, Skill.Security],
+            [Skill.Security],
+            [Skill.Command, Skill.Conn,Skill.Engineering, Skill.Medicine, Skill.Science],
             ["Composure, Inspiration", "Psychological Warfare", "Hand Phasers", "Disruptors", "Hand-to-Hand Combat", "Infiltration", "Disguise", "Interrogation", "Demolition"],
             new AttributeImprovementRule(ImprovementRuleType.AT_LEAST_ONE, Attribute.Daring, Attribute.Fitness)
         ),

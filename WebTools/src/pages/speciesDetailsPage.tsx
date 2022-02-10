@@ -30,7 +30,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
             : null;
 
         let attributes = species.attributes.length > 3
-            ? <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.StarTrek} points={3} onDone={(done) => { this.attributesDone(done); }} />
+            ? <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Species} points={3} onDone={(done) => { this.attributesDone(done); }} />
             : species.attributes.map((a, i) => {
                 return <AttributeView key={i} name={AttributesHelper.getAttributeName(a)} points={1} value={character.attributes[a].value} />;
             });

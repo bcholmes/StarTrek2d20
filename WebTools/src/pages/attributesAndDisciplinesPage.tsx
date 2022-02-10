@@ -56,27 +56,23 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
     render() {
         const hasExcess = this.state.showExcessAttrDistribution || this.state.showExcessSkillDistribution;
         const attributes = 
-                (<AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Customization} points={this._excessAttrPoints + this._attrPoints} onDone={(done) => { this.attributesDone(done); } } />)
+                (<AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Customization} 
+                    points={this._excessAttrPoints + this._attrPoints} onDone={(done) => { this.attributesDone(done); } } />)
 
         const disciplines = !this.state.showExcessSkillDistribution
-            ? <ElectiveSkillList points={this._skillPoints} skills={character.skills.map(s => { return s.skill; }) } onUpdated={(skills) => { this._skillsDone = skills.length === this._skillPoints; } } />
-            : <SkillImprovementCollection points={this._excessSkillPoints} skills={character.skills.map(s => s.skill) } onDone={(done) => { this._skillsDone = done; }} />;
+            ? <ElectiveSkillList points={this._skillPoints} skills={character.skills.map(s => { return s.skill; }) } 
+                onUpdated={(skills) => { this._skillsDone = skills.length === this._skillPoints; } } />
+            : <SkillImprovementCollection points={this._excessSkillPoints + this._skillPoints} 
+                skills={character.skills.map(s => s.skill) } onDone={(done) => { this._skillsDone = done; }} />;
 
         const description = !hasExcess
             ? "At this stage, your character is almost complete, and needs only a few final elements and adjustments. This serves as a last chance to customize the character before play."
             : "You will now get a chance to spend any excess Attribute and/or Discipline points accumulated during your lifepath.";
 
-        const value = !hasExcess
-            ? <div className="panel">
-                <div className="header-small">VALUE</div>
-                <ValueInput value={Value.Finish}/>
-              </div>
-            : undefined;
-
         let talents = [];
         talents.push(...TalentsHelper.getTalentsForSkills(character.skills.map(s => { return s.skill; })), ...TalentsHelper.getTalentsForSkills([Skill.None]));
 
-        const talentSelection = !hasExcess && character.workflow.currentStep().talentPrompt
+        const talentSelection = character.workflow.currentStep().talentPrompt
             ? (<div className="panel">
                 <div className="header-small">TALENTS</div>
                 <TalentSelection talents={talents} onSelection={talents => { this._selectedTalent = talents.length > 0 ? talents[0] : undefined; }} />
@@ -114,7 +110,10 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
                     {disciplinesText}
                     {disciplines}
                 </div>
-                {value}
+                <div className="panel">
+                    <div className="header-small">VALUE</div>
+                    <ValueInput value={Value.Finish}/>
+                </div>
                 {talentSelection}
                 <Button text="FINISH" className="button-next" onClick={() => this.onNext() }/>
             </div>
@@ -126,49 +125,34 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
     }
 
     private onNext() {
-        if (this.state.showExcessAttrDistribution || this.state.showExcessSkillDistribution) {
-            if (!this._attributesDone && this._excessAttrPoints > 0) {
-                Dialog.show("You have not distributed all Attribute points.");
+        if (!this._attributesDone) {
+            Dialog.show("You have not distributed all Attribute points.");
+            return;
+        }
+
+        if (!this._skillsDone) {
+            Dialog.show("You have not distributed all Discipline points.");
+            return;
+        }
+
+        if (character.workflow.currentStep().talentPrompt) {
+            if (!this._selectedTalent) {
+                Dialog.show("You have not selected a talent.");
                 return;
             }
 
-            if (!this._skillsDone && this._excessSkillPoints > 0) {
-                Dialog.show("You have not distributed all Discipline points.");
-                return;
-            }
+            character.addTalent(this._selectedTalent);
 
-            this.setState({ showExcessAttrDistribution: false, showExcessSkillDistribution: false });
+            if (this._selectedTalent.name === "The Ushaan") {
+                character.addEquipment("Ushaan-tor ice pick");
+            }
+        }
+
+        if (character.hasTalent("Borg Implants")) {
+            Navigation.navigateToPage(PageIdentity.BorgImplants);
         }
         else {
-            if (!this._attributesDone) {
-                Dialog.show("You have not distributed all Attribute points.");
-                return;
-            }
-
-            if (!this._skillsDone) {
-                Dialog.show("You have not distributed all Discipline points.");
-                return;
-            }
-
-            if (character.workflow.currentStep().talentPrompt) {
-                if (!this._selectedTalent) {
-                    Dialog.show("You have not selected a talent.");
-                    return;
-                }
-
-                character.addTalent(this._selectedTalent);
-
-                if (this._selectedTalent.name === "The Ushaan") {
-                    character.addEquipment("Ushaan-tor ice pick");
-                }
-            }
-
-            if (character.hasTalent("Borg Implants")) {
-                Navigation.navigateToPage(PageIdentity.BorgImplants);
-            }
-            else {
-                Navigation.navigateToPage(PageIdentity.Finish);
-            }
+            Navigation.navigateToPage(PageIdentity.Finish);
         }
     }
 }

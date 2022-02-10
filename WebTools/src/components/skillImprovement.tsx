@@ -57,34 +57,45 @@ interface ISkillImprovementCollectionProperties {
 class SkillContainer {
     skill: Skill;
     value: number;
-    minValue: number;
-    maxValue: number;
-    showDecrease: boolean;
-    showIncrease: boolean;
 
-    constructor(skill: Skill, value: number, showDecrease: boolean, showIncrease: boolean) {
+    constructor(skill: Skill, value: number) {
         this.skill = skill;
         this.value = value;
-        this.minValue = value;
-        this.showDecrease = showDecrease;
-        this.showIncrease = showIncrease;
     }
 }
 
-export class SkillImprovementCollection extends React.Component<ISkillImprovementCollectionProperties, {}> {
-    private _points: number;
+interface ISkillImprovementCollectionState {
+    allocatedPoints: number;
+}
+
+export class SkillImprovementCollection extends React.Component<ISkillImprovementCollectionProperties, ISkillImprovementCollectionState> {
     private _skills: SkillContainer[];
+    private initialValues: number[];
 
     constructor(props: ISkillImprovementCollectionProperties) {
         super(props);
 
-        this._points = props.points;
         this._skills = [];
+        this.initialValues = character.skills.map(s => s.expertise);
 
         for (var i = 0; i < character.skills.length; i++) {
-            this._skills.push(new SkillContainer(i, character.skills[i].expertise, false, true));
+            this._skills.push(new SkillContainer(i, character.skills[i].expertise));
         }
+
+        this.state = {
+            allocatedPoints: 0
+        };
     }
+
+    showDecrease(skill: Skill) {
+        return character.skills[skill].expertise > this.initialValues[skill];
+    }
+
+    showIncrease(skill: Skill) {
+        return this.state.allocatedPoints < this.props.points && character.skills[skill].expertise < this.calculateMax() && 
+            ((character.skills[skill].expertise - this.initialValues[skill]) < (this.props.points - 1));
+    }
+
 
     render() {
         const skills = this._skills.map((s, i) => {
@@ -93,8 +104,8 @@ export class SkillImprovementCollection extends React.Component<ISkillImprovemen
                     key={i}
                     controller={this}
                     skill={s.skill}
-                    showDecrease={s.showDecrease}
-                    showIncrease={s.showIncrease && character.skills[s.skill].expertise < this.calculateMax()}/>
+                    showDecrease={this.showDecrease(s.skill)}
+                    showIncrease={this.showIncrease(s.skill)}/>
             )
         });
 
@@ -106,7 +117,8 @@ export class SkillImprovementCollection extends React.Component<ISkillImprovemen
     }
 
     onDecrease(skill: Skill) {
-        this._points++;
+        let points = this.state.allocatedPoints;
+        points--;
 
         character.skills[skill].expertise--;
 
@@ -114,16 +126,14 @@ export class SkillImprovementCollection extends React.Component<ISkillImprovemen
             if (container.skill === skill) {
                 container.value--;
             }
-
-            container.showDecrease = container.value > container.minValue;
-            container.showIncrease = container.value < this.calculateMax() && this._points > 0;
         });
 
-        this.forceUpdate();
+        this.setState(state => ({ ...state, allocatedPoints: points }));
     }
 
     onIncrease(skill: Skill) {
-        this._points--;
+        let points = this.state.allocatedPoints;
+        points++;
 
         character.skills[skill].expertise++;
 
@@ -131,14 +141,11 @@ export class SkillImprovementCollection extends React.Component<ISkillImprovemen
             if (container.skill === skill) {
                 container.value++;
             }
-
-            container.showDecrease = container.value > container.minValue;
-            container.showIncrease = container.value < this.calculateMax() && this._points > 0;
         });
 
-        this.props.onDone(this._points === 0);
+        this.props.onDone(points === this.props.points);
 
-        this.forceUpdate();
+        this.setState(state => ({ ...state, allocatedPoints: points }));
     }
 
     private calculateMax() {

@@ -2,12 +2,14 @@
 import {character} from '../common/character';
 import {Skill, SkillsHelper} from '../helpers/skills';
 import {CheckBox} from '../components/checkBox';
+import { SkillImprovementRule } from '../helpers/tracks';
 
 interface IMajorSkillProperties {
     skill: Skill;
     isSelected: boolean;
     showCheckBox?: boolean;
     onSelected: (val: any) => void;
+    bold?: boolean;
 }
 
 class MajorSkill extends React.Component<IMajorSkillProperties, {}> {
@@ -39,6 +41,7 @@ class OtherSkill extends React.Component<IMajorSkillProperties, {}> {
     render() {
         const {skill, onSelected, isSelected, showCheckBox} = this.props;
 
+        const skillName = this.props.bold ? (<b>{SkillsHelper.getSkillName(skill)}</b>) : (<span>{SkillsHelper.getSkillName(skill)}</span>);
         const skillExpertise = character.skills[skill].expertise;
 
         const checkBox = showCheckBox
@@ -49,7 +52,7 @@ class OtherSkill extends React.Component<IMajorSkillProperties, {}> {
             <table className="skill-container" cellPadding="0" cellSpacing="0">
                 <tbody>
                     <tr>
-                        <td className="skill-name" style={{ width: "250px" }}>{SkillsHelper.getSkillName(skill) }</td>
+                        <td className="skill-name" style={{ width: "250px" }}>{skillName}</td>
                         <td className="skill-expertise">{skillExpertise}</td>
                         <td>{checkBox}</td>
                     </tr>
@@ -63,31 +66,57 @@ interface IMajorsSkillListProperties {
     skills: Skill[];
     onMajorSelected?: (skill: Skill) => void;
     onOtherSelected?: (skills: Skill[]) => void;
+    onDone: (done: boolean) => void;
+    rule?: SkillImprovementRule;
 }
 
-export class MajorsList extends React.Component<IMajorsSkillListProperties, {}> {
-    private _selectedMajor: Skill;
-    private _selectedOther: Skill[];
+class MajorSkillSelections {
+    major?: Skill;
+    other: Skill[];
+
+    constructor(major?: Skill, other: Skill[] = []) {
+        this.major = major;
+        this.other = other;
+    }
+
+    isFullyPopulated() {
+        return this.major != null && this.other.length === 2;
+    }
+}
+
+
+interface IMajorsSkillListState {
+    selections: MajorSkillSelections;
+}
+
+export class MajorsList extends React.Component<IMajorsSkillListProperties, IMajorsSkillListState> {
+
+    private initialValues: number[];
 
     constructor(props: IMajorsSkillListProperties) {
         super(props);
 
-        this._selectedOther = [];
+        this.initialValues = character.skills.map(s => s.expertise);
+
+        this.state = {
+            selections: new MajorSkillSelections()
+        }
     }
 
     render() {
+        const description = this.props.rule ? (<div className="panel"><div>{this.props.rule.describe()}</div></div>) : null;
+
         const majors = this.props.skills.map((s, i) => {
             if (character.enlisted && s === Skill.Command) return undefined;
 
-            const isSelected = this._selectedMajor === s;
+            const isSelected = this.state.selections.major === s;
             return (<MajorSkill key={i} skill={s} isSelected={isSelected} showCheckBox={true} onSelected={skill => this.onSelectMajor(skill) }/>);
         });
 
         let otherSkills = SkillsHelper.getSkills();
-        if (this._selectedMajor != null) {
-            otherSkills = otherSkills.filter(s => s !== this._selectedMajor);
-        }
-        else {
+        if (this.state.selections.major != null) {
+            otherSkills = otherSkills.filter(s => s !== this.state.selections.major);
+        } else {
             otherSkills = otherSkills.filter(s => this.props.skills.indexOf(s) === -1);
         }
 
@@ -96,8 +125,8 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, {}> 
         }
 
         const other = otherSkills.map((s, i) => {
-            const isSelected = this._selectedOther.indexOf(s) > -1;
-            return (<OtherSkill key={i} skill={s} isSelected={isSelected} showCheckBox={true} onSelected={skill => this.onSelectOther(skill) }/>);
+            const isSelected = this.state.selections.other.indexOf(s) > -1;
+            return (<OtherSkill key={i} skill={s} isSelected={isSelected} showCheckBox={true} onSelected={skill => this.onSelectOther(skill) } bold={this.props.rule && this.props.rule.skills.indexOf(s) >= 0}/>);
         });
 
         return (
@@ -110,65 +139,117 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, {}> 
                     <div className="header-small">OTHER DISCIPLINES (SELECT TWO) </div>
                     {other}
                 </div>
+                {description}
             </div>
         );
     }
 
     private onSelectMajor(skill: Skill) {
-        if (this._selectedMajor !== undefined) {
-            this.deselectMajor(this._selectedMajor);
-        }
+        let other = [ ...this.state.selections.other ];
 
-        if (this._selectedOther.indexOf(skill) > -1) {
-            this.deselectOther(skill);
-            this._selectedOther.splice(this._selectedOther.indexOf(skill), 1);
+        if (other.indexOf(skill) > -1) {
+            other.splice(other.indexOf(skill), 1);
         }
-
-        this._selectedMajor = skill;
-        this.selectMajor(skill);
 
         if (this.props.onMajorSelected) {
-            this.props.onMajorSelected(this._selectedMajor);
+            this.props.onMajorSelected(skill);
         }
-        else {
-            this.forceUpdate();
+
+        let selections = this.makeEmptySlotsForRule(new MajorSkillSelections(skill, other));
+
+        this.updateValues(selections);
+        this.props.onDone(selections.isFullyPopulated());
+        this.setState(state => ({...state, selections: selections }) );
+    }
+
+    private updateValues(selections: MajorSkillSelections) {
+        character.skills.forEach(s => {
+            if (selections.major === s.skill) {
+                s.expertise = this.initialValues[s.skill] + 2;
+            } else if (selections.other.indexOf[s.skill] >= 0) {
+                s.expertise = this.initialValues[s.skill] + 1;
+            } else {
+                s.expertise = this.initialValues[s.skill];
+            }
+        });
+    }
+
+    private makeEmptySlotsForRule(selections: MajorSkillSelections, removeNonRuleSkillsFirst: boolean = true) {
+        let needed: Skill[] = [];
+        if (this.props.rule) {
+            this.props.rule.skills.forEach(s => {
+                if (selections.major !== s && selections.other.indexOf(s) < 0) {
+                    needed.push(s);
+                }
+            });
+        }
+
+        let spaces = needed.length;
+        if (selections.major == null && spaces > 0) {
+            spaces -= 1;
+        }
+        if (spaces > 0 || selections.other.length > 2) {
+            let other = [...selections.other];
+            let available = 2 - other.length;
+
+            if (removeNonRuleSkillsFirst) {
+                other = other.filter(s => {
+                    let result = !this.isRuleSkill(s) && (available < spaces);
+                    if (result) {
+                        available += 1;
+                    }
+                    return !result;
+                });
+            }
+
+            other = other.filter(s => {
+                let result = (available < spaces);
+                if (result) {
+                    available += 1;
+                }
+                return !result;
+            });
+            return new MajorSkillSelections(selections.major, other);
+        } else {
+            return selections;
         }
     }
 
-    private selectMajor(skill: Skill) {
-        character.skills[skill].expertise += 2;
-    }
-
-    private deselectMajor(skill: Skill) {
-        character.skills[skill].expertise -= 2;
-    }
 
     private onSelectOther(skill: Skill) {
-        if (this._selectedOther.indexOf(skill) > -1) {
+        if (this.state.selections.other.indexOf(skill) > -1) {
             return;
         }
 
-        if (this._selectedOther.length === 2) {
-            this.deselectOther(this._selectedOther[0]);
-            this._selectedOther.splice(0, 1);
-        }
+        let other = [...this.state.selections.other];
+        other.push(skill);
 
-        this._selectedOther.push(skill);
-        this.selectOther(skill);
-
+        let selections = this.makeEmptySlotsForRule(new MajorSkillSelections(this.state.selections.major, other), !this.isRuleSkill(skill));
         if (this.props.onOtherSelected) {
-            this.props.onOtherSelected(this._selectedOther);
+            this.props.onOtherSelected(selections.other);
         }
-        else {
-            this.forceUpdate();
-        }
+
+        this.updateValues(selections);
+        this.props.onDone(selections.isFullyPopulated());
+        this.setState(state => ({...state, selections: selections }) );
     }
 
-    private selectOther(skill: Skill) {
-        character.skills[skill].expertise++;
+    private isRuleSkill(skill: Skill) {
+        return this.props.rule ? this.props.rule.skills.indexOf(skill) >= 0 : false;
     }
 
-    private deselectOther(skill: Skill) {
-        character.skills[skill].expertise--;
+    private isRuleSatisfied(major?: Skill, other?: Skill[]) {
+        let skills: Skill[] = major ? [ major ] : [];
+        if (other) {
+            other.forEach(s => skills.push(s));
+        }
+
+        if (this.props.rule) {
+            let result = true;
+            this.props.rule.skills.forEach(s => result = result && (skills.indexOf(s) >= 0));
+            return result;
+        } else {
+            return true;
+        }
     }
 }
