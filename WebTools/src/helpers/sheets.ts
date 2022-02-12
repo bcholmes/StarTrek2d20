@@ -150,12 +150,12 @@ abstract class BasicStarshipSheet extends BasicSheet {
     populateForm(form: PDFForm) {
         this.fillField(form, 'Name', character.starship.name);
         this.fillField(form, 'Service Date', character.starship.serviceYear.toString());
-        if (character.type === CharacterType.KlingonWarrior) {
+        if (character.isKlingon()) {
             this.fillField(form, 'Designation', 'N/A');
         } else {
             this.fillField(form, 'Designation', character.starship.registry);
         }
-        let trait = character.type === CharacterType.KlingonWarrior ? "Klingon Starship" : "Federation Starship";
+        let trait = character.isKlingon() ? "Klingon Starship" : "Federation Starship";
 
         const talents = character.starship.getTalentNameList();
 
@@ -641,7 +641,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         if (character.type === CharacterType.Starfleet) {
             result.push(new Weapon("Phaser type-2", 3, "Charges"));
         } else {
-            if (character.type === CharacterType.KlingonWarrior) {
+            if (character.isKlingon()) {
                 result.push(new Weapon("d’k tahg dagger", 1, "Vicious 1, Deadly, Hidden 1"));
             }
             result.push(new Weapon("Disruptor Pistol", 3, "Vicious 1"));
@@ -934,7 +934,7 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
 
 class CharacterSheets {
     public getSupportingCharacterSheet(): ICharacterSheet[] {
-        if (character.type === CharacterType.KlingonWarrior) {
+        if (character.isKlingon()) {
             return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
         } else if (character.era === Era.NextGeneration) {
             return [ new StandardTngCharacterSheet(), new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet(), new KlingonCharacterSheet()  ];
@@ -944,7 +944,7 @@ class CharacterSheets {
     }
 
     public getCharacterSheets(): ICharacterSheet[] {
-        if (character.type === CharacterType.KlingonWarrior) {
+        if (character.isKlingon()) {
             return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet() ];
         } else if (character.era === Era.NextGeneration) {
             return [ new StandardTngCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(), new TwoPageTngCharacterSheet() ];
@@ -954,7 +954,7 @@ class CharacterSheets {
     }
 
     public getStarshipSheets(): ICharacterSheet[] {
-        if (character.type === CharacterType.KlingonWarrior) {
+        if (character.isKlingon()) {
             return [ new StandardKlingonStarshipSheet(), new StandardTngStarshipSheet(), new StandardTosStarshipSheet() ];
         } else if (character.era === Era.NextGeneration) {
             return [ new StandardTngStarshipSheet(), new StandardTosStarshipSheet(), new StandardKlingonStarshipSheet() ];

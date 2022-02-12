@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {AlliedMilitaryDetails, character} from '../common/character';
 import {CharacterType} from '../common/characterType';
 import {IPageProperties} from './iPageProperties';
 import {Button} from '../components/button';
@@ -7,9 +7,10 @@ import {CheckBox} from '../components/checkBox';
 import {ValueInput, Value} from '../components/valueInput';
 import {SpeciesHelper} from '../helpers/species';
 import {RanksHelper} from '../helpers/ranks';
-import {RolesHelper, RoleViewModel} from '../helpers/roles';
+import {RolesHelper, RoleModel} from '../helpers/roles';
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
+import { AlliedMilitaryType } from '../helpers/alliedMilitary';
 
 export class FinishPage extends React.Component<IPageProperties, {}> {
     private name: HTMLInputElement;
@@ -18,7 +19,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
     private lineage: HTMLInputElement;
     private house: HTMLInputElement;
     private ranks: string[];
-    private roles: RoleViewModel[];
+    private roles: RoleModel[];
     private role: string;
     private secondaryRole: string;
     private roleDescription: string;
@@ -96,24 +97,8 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
             )
         });
 
-        const ranks = this.ranks.map((r, i) => {
-            return (
-                <tr key={i}>
-                    <td className="selection-header-small">{r}</td>
-                    <td>
-                        <CheckBox
-                            text=""
-                            value={r}
-                            isChecked={character.rank === r}
-                            onChanged={(val) => {
-                                this.onSelectRank(val);
-                            } }/>
-                    </td>
-                </tr>
-            )
-        });
         let extra = (<div></div>);
-        if (character.type === CharacterType.KlingonWarrior) {
+        if (character.isKlingon()) {
             extra = (<div><div className="panel">
                 <div className="header-small">LINEAGE</div>
                 <div className="textinput-label">Lineage</div>
@@ -180,15 +165,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                     </table>
                 </div>
                 <br/>
-                <div className="panel">
-                    <div className="header-small">RANK</div>
-                    <div>Select your character's rank.</div>
-                    <table className="selection-list">
-                        <tbody>
-                            {ranks}
-                        </tbody>
-                    </table>
-                </div>
+                {this.renderRank()}
                 <br/>
                 {values}
                 <div className="panel">
@@ -200,6 +177,49 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                 </div>
             </div>
         );
+    }
+
+    renderRank() {
+        if (character.type === CharacterType.AmbassadorDiplomat) {
+            return null;
+        } else if (character.type === CharacterType.AlliedMilitary && character.typeDetails 
+            && (character.typeDetails as AlliedMilitaryDetails).alliedMilitary.type === AlliedMilitaryType.OTHER) {
+
+                return (<div className="panel">
+                        <div className="header-small">RANK</div>
+                        <div>What is your character's rank?</div>
+                        <input type="text" onChange={(e) => this.onSelectRank(e.target.value) } />
+                    </div>
+           );
+        } else {
+            const ranks = this.ranks.map((r, i) => {
+                return (
+                    <tr key={i}>
+                        <td className="selection-header-small">{r}</td>
+                        <td>
+                            <CheckBox
+                                text=""
+                                value={r}
+                                isChecked={character.rank === r}
+                                onChanged={(val) => {
+                                    this.onSelectRank(val);
+                                } }/>
+                        </td>
+                    </tr>
+                )
+            });
+
+            return (<div className="panel">
+                        <div className="header-small">RANK</div>
+                        <div>Select your character's rank.</div>
+                        <table className="selection-list">
+                            <tbody>
+                                {ranks}
+                            </tbody>
+                        </table>
+                    </div>
+                );
+        }
     }
 
     private showDialog() {
@@ -275,6 +295,8 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
             }
         });
 
-        character.rank = this.ranks[0];
+        if (character.type !== CharacterType.AmbassadorDiplomat) {
+            character.rank = this.ranks[0];
+        }
     }
 }

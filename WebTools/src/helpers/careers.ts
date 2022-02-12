@@ -55,6 +55,27 @@ class Careers {
         ),
     };
 
+    private _civilianCareers: { [id: number]: CareerModel } = {
+        [Career.Young]: new CareerModel(
+            "Young",
+            "The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.",
+            [ToViewModel(TalentsHelper.getTalent("Untapped Potential"))],
+            "The character receives a Value, which must reflect the character’s inexperience and naïveté in some way."
+        ),
+        [Career.Experienced]: new CareerModel(
+            "Experienced",
+            "The character has several years of experience in service, and is enjoying a promising career.",
+            TalentsHelper.getTalentsForSkills(SkillsHelper.getSkills()),
+            "The character receives a Value, and this can be chosen freely."
+        ),
+        [Career.Veteran]: new CareerModel(
+            "Veteran",
+            "The character has decades of experience in the service, and has served on many ships, worlds, and/or starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.",
+            [ToViewModel(TalentsHelper.getTalent("Veteran"))],
+            "The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career."
+        ),
+    };
+
     private _klingonCareers: { [id: number]: CareerModel } = {
         [Career.Young]: new CareerModel(
             "Young Warrior",
@@ -76,10 +97,20 @@ class Careers {
         ),
     };
 
+    private getList() {
+        if (character.type === CharacterType.KlingonWarrior) {
+            return this._klingonCareers;
+        } else if (character.type === CharacterType.Starfleet) {
+            return this._careers;
+        } else {
+            return this._civilianCareers; // also allied military
+        }
+    }
+
     getCareers() {
         var careers: CareerViewModel[] = [];
         var n = 0;
-        var list = character.type === CharacterType.KlingonWarrior ? this._klingonCareers : this._careers;
+        var list = this.getList();
         for (var career in list) {
             var c = list[career];
             careers.push(new CareerViewModel(n, c));
@@ -90,7 +121,7 @@ class Careers {
     }
 
     getCareer(career: Career) {
-        var list = character.type === CharacterType.KlingonWarrior ? this._klingonCareers : this._careers;
+        var list = this.getList();
         return list[career];
     }
 

@@ -6,6 +6,7 @@ import {Track} from './tracks';
 import {AlliedMilitaryDetails, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { AlliedMilitaryType } from './alliedMilitary';
+import { AllOfPrerequisite, AnyOfPrerequisite, EnlistedPrerequisite, EraPrerequisite, IPrerequisite, NotPrerequisite, SourcePrerequisite, TypePrerequisite } from './prerequisite';
 
 export enum Rank {
     // Core
@@ -78,17 +79,8 @@ export enum Rank {
     FleetCommander
 }
 
-interface IRankPrerequisite {
-    isPrerequisiteFulfilled(): boolean;
-}
 
-class EnlistedPrerequisite implements IRankPrerequisite {
-    isPrerequisiteFulfilled() {
-        return character.enlisted;
-    }
-}
-
-class AlliedMilitaryPrerequisite implements IRankPrerequisite {
+class AlliedMilitaryPrerequisite implements IPrerequisite {
 
     private types: AlliedMilitaryType[];
 
@@ -104,13 +96,13 @@ class AlliedMilitaryPrerequisite implements IRankPrerequisite {
 }
 
 
-class OfficerPrerequisite implements IRankPrerequisite {
+class OfficerPrerequisite implements IPrerequisite {
     isPrerequisiteFulfilled() {
         return !character.enlisted;
     }
 }
 
-class CareersPrerequisite implements IRankPrerequisite {
+class CareersPrerequisite implements IPrerequisite {
     private _careers: Career[];
 
     constructor(careers: Career[]) {
@@ -122,7 +114,7 @@ class CareersPrerequisite implements IRankPrerequisite {
     }
 }
 
-class TrackPrerequisite implements IRankPrerequisite {
+class TrackPrerequisite implements IPrerequisite {
     private _track: Track;
 
     constructor(track: Track) {
@@ -134,7 +126,7 @@ class TrackPrerequisite implements IRankPrerequisite {
     }
 }
 
-class NotTrackPrerequisite implements IRankPrerequisite {
+class NotTrackPrerequisite implements IPrerequisite {
     private _track: Track;
 
     constructor(track: Track) {
@@ -146,7 +138,7 @@ class NotTrackPrerequisite implements IRankPrerequisite {
     }
 }
 
-class RolesPrerequisite implements IRankPrerequisite {
+class RolesPrerequisite implements IPrerequisite {
     private _roles: Role[];
 
     constructor(roles: Role[]) {
@@ -159,7 +151,7 @@ class RolesPrerequisite implements IRankPrerequisite {
     }
 }
 
-class NotRolesPrerequisite implements IRankPrerequisite {
+class NotRolesPrerequisite implements IPrerequisite {
     private _roles: Role[];
 
     constructor(roles: Role[]) {
@@ -172,19 +164,7 @@ class NotRolesPrerequisite implements IRankPrerequisite {
     }
 }
 
-class EraPrerequisite implements IRankPrerequisite {
-    private _era: Era;
-
-    constructor(era: Era) {
-        this._era = era;
-    }
-
-    isPrerequisiteFulfilled() {
-        return character.era === this._era;
-    }
-}
-
-class NotEraPrerequisite implements IRankPrerequisite {
+class NotEraPrerequisite implements IPrerequisite {
     private _era: Era;
 
     constructor(era: Era) {
@@ -196,88 +176,13 @@ class NotEraPrerequisite implements IRankPrerequisite {
     }
 }
 
-class AnyOfRankPrerequisite implements IRankPrerequisite {
-    private _prequisites: IRankPrerequisite[];
-
-    constructor(...prequisites: IRankPrerequisite[]) {
-        this._prequisites = prequisites;
-    }
-
-    isPrerequisiteFulfilled() {
-        if (this._prequisites.length === 0) {
-            return true;
-        } else {
-            var result = false;
-            this._prequisites.forEach(req => {
-                result = result || req.isPrerequisiteFulfilled();
-            });
-            return result;
-        }
-    }
-}
-
-class AllOfRankPrerequisite implements IRankPrerequisite {
-    private _prequisites: IRankPrerequisite[];
-
-    constructor(...prequisites: IRankPrerequisite[]) {
-        this._prequisites = prequisites;
-    }
-
-    isPrerequisiteFulfilled() {
-        if (this._prequisites.length === 0) {
-            return true;
-        } else {
-            var result = true;
-            this._prequisites.forEach(req => {
-                result = result && req.isPrerequisiteFulfilled();
-            });
-            return result;
-        }
-    }
-}
-
-class NotPrerequisite implements IRankPrerequisite {
-    private prereq: IRankPrerequisite;
-
-    constructor(prereq: IRankPrerequisite) {
-        this.prereq = prereq;
-    }
-    isPrerequisiteFulfilled(): boolean {
-        return !this.prereq.isPrerequisiteFulfilled();
-    }
-}
-
-class TypePrerequisite implements IRankPrerequisite {
-    private _types: CharacterType[];
-
-    constructor(...type: CharacterType[]) {
-        this._types = type;
-    }
-
-    isPrerequisiteFulfilled() {
-        return this._types.indexOf(character.type) >= 0;
-    }
-}
-
-class SourcePrerequisite implements IRankPrerequisite {
-    private _sources: Source[];
-
-    constructor(...source: Source[]) {
-        this._sources = source;
-    }
-
-    isPrerequisiteFulfilled() {
-        return character.hasAnySource(this._sources);
-    }
-}
-
 class RankModel {
     id: Rank;
     name: string;
-    prerequisites: IRankPrerequisite[];
+    prerequisites: IPrerequisite[];
     tiers: number;
 
-    constructor(id: Rank, name: string, prerequisites: IRankPrerequisite[], tiers: number = 1) {
+    constructor(id: Rank, name: string, prerequisites: IPrerequisite[], tiers: number = 1) {
         this.id = id;
         this.name = name;
         this.prerequisites = prerequisites;
@@ -322,8 +227,8 @@ class Ranks {
             [
                 new OfficerPrerequisite(),
                 new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer]),
-                new AnyOfRankPrerequisite(
-                    new AllOfRankPrerequisite(
+                new AnyOfPrerequisite(
+                    new AllOfPrerequisite(
                         new TypePrerequisite(CharacterType.Starfleet),
                         new CareersPrerequisite([Career.Experienced])
                     ),
@@ -348,7 +253,7 @@ class Ranks {
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
                 new RolesPrerequisite([Role.CommunicationsOfficer, Role.FlightController, Role.OperationsManager, Role.ScienceOfficer, Role.ShipsCounselor, Role.WeaponsOfficer]),
-                new AnyOfRankPrerequisite(new TypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior), 
+                new AnyOfPrerequisite(new TypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior), 
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.KLINGON_DEFENCE_FORCE)),
             ],
             1),
@@ -497,7 +402,7 @@ class Ranks {
                 new CareersPrerequisite([Career.Veteran]),
                 new SourcePrerequisite(Source.CommandDivision, Source.PlayersGuide),
                 new RolesPrerequisite([Role.Admiral]),
-                new AnyOfRankPrerequisite(
+                new AnyOfPrerequisite(
                     new TypePrerequisite(CharacterType.Starfleet),
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.ROMULAN_STAR_EMPIRE)
                 )
@@ -539,7 +444,7 @@ class Ranks {
             Rank.Civilian,
             "Civilian",
             [
-                new AnyOfRankPrerequisite(new RolesPrerequisite([Role.DiplomaticAttache]), new TrackPrerequisite(Track.Laborer))
+                new AnyOfPrerequisite(new RolesPrerequisite([Role.DiplomaticAttache]), new TrackPrerequisite(Track.Laborer))
             ],
             1),
         new RankModel(
@@ -576,7 +481,7 @@ class Ranks {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CareersPrerequisite([Career.Veteran]),
-                new AnyOfRankPrerequisite(
+                new AnyOfPrerequisite(
                     new TypePrerequisite(CharacterType.KlingonWarrior),
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA, 
                         AlliedMilitaryType.ANDORIAN_IMPERIAL_GUARD, 
@@ -609,7 +514,7 @@ class Ranks {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CareersPrerequisite([Career.Veteran]),
-                new AnyOfRankPrerequisite(
+                new AnyOfPrerequisite(
                     new TypePrerequisite(CharacterType.KlingonWarrior),
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.KLINGON_DEFENCE_FORCE)
                 )
@@ -620,7 +525,7 @@ class Ranks {
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AnyOfRankPrerequisite(
+                new AnyOfPrerequisite(
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA, 
                         AlliedMilitaryType.ROMULAN_STAR_EMPIRE, AlliedMilitaryType.KLINGON_DEFENCE_FORCE),
                     new TypePrerequisite(CharacterType.KlingonWarrior)

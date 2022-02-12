@@ -27,7 +27,11 @@ export enum Track {
     RankAndFile,
     Officer,
     IntelligenceTraining,
-    MilitiaAndGuerillas
+    MilitiaAndGuerillas,
+
+    // Player's Guide - Ambassador / Diplomat
+    DiplomaticCorps,
+    HonoraryStatus,
 }
 
 export enum ImprovementRuleType {
@@ -263,9 +267,33 @@ class Tracks {
         ),
     ];
 
+    private _ambassardorTracks: TrackModel[] = [
+        new TrackModel(
+            Track.DiplomaticCorps,
+            "Diplomatic Corps",
+            Source.PlayersGuide,
+            "You pursued diplomacy as a vocation early in life, and you have spent years or more rising from the staff of senior diplomats to your own postings in later life. You might serve within the Federation Diplomatic Corps, or as a representative on behalf of a specific world (typically your own homeworld). Either way, your role is a respected one, and you have considerable professional and personal influence.",
+            [Skill.Command],
+            [Skill.Conn, Skill.Engineering, Skill.Security, Skill.Medicine, Skill.Science],
+            ["Diplomacy", "Espionage", "Politics", "Linguistics", "Xenoanthropology", "History", "Philosophy"],
+            new AttributeImprovementRule(ImprovementRuleType.AT_LEAST_ONE, Attribute.Reason)
+        ),
+        new TrackModel(
+            Track.HonoraryStatus,
+            "Honorary Status",
+            Source.PlayersGuide,
+            "You had an illustrious career – perhaps in Starfleet or your culture’s military, perhaps in politics – and received a diplomatic appointment later in life as a reward for your accomplishments. You serve well in such a role, having established valuable connections to other worlds and civilizations during your prior career. You might be retired from your prior career, or you may be on an extended leave of absence while you serve as a diplomat.",
+            [Skill.Command],
+            [Skill.Conn, Skill.Engineering, Skill.Security, Skill.Medicine, Skill.Science],
+            ["Diplomacy", "Espionage", "Politics", "Strategy and Tactics", "Leadership", "Xenoanthropology", "History", "Philosophy"]
+        ),
+    ];
+
     private chooseList(type: CharacterType) {
         if (type === CharacterType.AlliedMilitary) {
             return this._alliedMilitaryTracks;
+        } else if (type === CharacterType.AmbassadorDiplomat) {
+            return this._ambassardorTracks;
         } else if (type === CharacterType.KlingonWarrior) {
             return this._klingonTracks;
         } else {
@@ -317,7 +345,7 @@ class Tracks {
 
     applyTrack(track: Track) {
         const model = this.getTrack(track);
-        switch (track) {
+        switch (model.id) {
             case Track.EnlistedSecurityTraining:
                 character.skills[Skill.Conn].expertise++;
                 character.skills[Skill.Security].expertise += 2;
