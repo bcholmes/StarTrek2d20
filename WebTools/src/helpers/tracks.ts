@@ -85,8 +85,9 @@ export class TrackModel {
     focusSuggestions: string[];
     attributesRule?: AttributeImprovementRule;
     skillsRule?: SkillImprovementRule;
+    enlisted: boolean;
 
-    constructor(id: Track, name: string, source: Source, description: string, majorDisciplines: Skill[], otherDisciplines: Skill[], focusSuggestions: string[], attributes?: AttributeImprovementRule, skillsRule?: SkillImprovementRule) {
+    constructor(id: Track, name: string, source: Source, description: string, majorDisciplines: Skill[], otherDisciplines: Skill[], focusSuggestions: string[], attributes?: AttributeImprovementRule, skillsRule?: SkillImprovementRule, enlisted: boolean = false) {
         this.id = id;
         this.name = name;
         this.source = source;
@@ -96,6 +97,7 @@ export class TrackModel {
         this.focusSuggestions = focusSuggestions;
         this.attributesRule = attributes;
         this.skillsRule = skillsRule;
+        this.enlisted = enlisted;
     }
 }
 
@@ -135,7 +137,10 @@ class Tracks {
             "",
             [Skill.Security],
             [Skill.Conn, Skill.Engineering],
-            ["Espionage", "Hand Phasers", "Hand-to-Hand Combat", "Infiltration", "Interrogation", "Shipboard Tactical Systems", "Survival"]
+            ["Espionage", "Hand Phasers", "Hand-to-Hand Combat", "Infiltration", "Interrogation", "Shipboard Tactical Systems", "Survival"],
+            undefined,
+            undefined,
+            true
         ),
         new TrackModel(
             Track.ShipOperations,
@@ -192,7 +197,10 @@ class Tracks {
             "or could not gain admission to one of the prestigious military academies to become an officer, you joined the Klingon Defense Force as one of the rank-and-file. You may yet attain some important position aboard the ship, or achieve glory sufficient to earn a battlefield commission, but for now, you fight where the officers command, and do so without complaint.",
             [Skill.Conn, Skill.Security],
             [Skill.Command, Skill.Engineering, Skill.Medicine, Skill.Science],
-            ["Blades", "Composure", "Disruptors", "Hand-to-Hand Combat", "Intimidation", "Sensor Operations", "Shipboard Tactical Systems", "Survival"]
+            ["Blades", "Composure", "Disruptors", "Hand-to-Hand Combat", "Intimidation", "Sensor Operations", "Shipboard Tactical Systems", "Survival"],
+            undefined,
+            undefined,
+            true
         ),
         new TrackModel(
             Track.Laborer,
@@ -201,7 +209,10 @@ class Tracks {
             "The Klingon Defense Force has need of more than merely warriors. Numerous practical and technical aspects of military life require workers to perform routine, mundane labors, assisting with the maintenance and upkeep of the ship, overseeing cargo, preparing meals for the crew and officers, providing basic first aid, and a variety of other tasks. This is vital work, but not especially glorious, though a few of the civilian laborers working on KDF vessels catch the attentions of their superiors and receive the opportunity to better themselves, being permitted to enlist or even being offered a battlefield commission if they have proven themselves worthy.",
             [Skill.Engineering, Skill.Science],
             [Skill.Command, Skill.Conn, Skill.Medicine, Skill.Security],
-            ["Animal Handling", "Computers", "Electro-Plasma Power Systems", "Emergency Medicine", "Starship Maintenance", "Survival", "Transporter Systems"]
+            ["Animal Handling", "Computers", "Electro-Plasma Power Systems", "Emergency Medicine", "Starship Maintenance", "Survival", "Transporter Systems"],
+            undefined,
+            undefined,
+            true
         ),
     ];
         
@@ -214,7 +225,9 @@ class Tracks {
             [Skill.Security],
             [Skill.Conn, Skill.Engineering, Skill.Medicine, Skill.Science, Skill.Command],
             ["Composure", "Extra-Vehicular Activity", "Small Craft", "Military Protocol", "Hand Phasers", "Disruptors", "Hand-to-Hand Combat", "Infiltration", "Survival", "Demolitions"],
-            new AttributeImprovementRule(ImprovementRuleType.AT_LEAST_ONE, Attribute.Daring)
+            new AttributeImprovementRule(ImprovementRuleType.AT_LEAST_ONE, Attribute.Daring),
+            undefined,
+            true
         ),
         new TrackModel(
             Track.Officer,
@@ -303,6 +316,7 @@ class Tracks {
     }
 
     applyTrack(track: Track) {
+        const model = this.getTrack(track);
         switch (track) {
             case Track.EnlistedSecurityTraining:
                 character.skills[Skill.Conn].expertise++;
@@ -310,7 +324,6 @@ class Tracks {
                 character.skills[Skill.Engineering].expertise++;
                 character.addFocus("Chain of Command");
                 character.addTrait("Enlisted Crewman");
-                character.enlisted = true;
                 break;
             case Track.ShipOperations:
                 character.skills[Skill.Conn].expertise += 2;
@@ -327,14 +340,11 @@ class Tracks {
                 character.skills[Skill.Engineering].expertise++;
                 character.skills[Skill.Medicine].expertise++;
                 break;
-            case Track.EnlistedWarrior:
-                character.enlisted = true;
-                break;
-            case Track.Laborer:
-                character.enlisted = true;
-                break;
             default:
                 break;
+        }
+        if (model.enlisted) {
+            character.enlisted = true;
         }
     }
 }

@@ -24,10 +24,6 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     private _attributesDone: boolean;
     private _skillsDone: boolean;
 
-    constructor(props: IPageProperties) {
-        super(props);
-    }
-
     render() {
         const track = TracksHelper.getTrack(character.track);
 

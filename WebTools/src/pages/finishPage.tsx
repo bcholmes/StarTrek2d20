@@ -58,7 +58,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
         });
 
         const suggestions = names.map((n, i) => {
-            return (<div>{`${n}${i < names.length - 1 ? "," : ""} `}</div>);
+            return (<div key={'name-' + i}>{`${n}${i < names.length - 1 ? "," : ""} `}</div>);
         });
 
         const values =

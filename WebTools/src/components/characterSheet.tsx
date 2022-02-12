@@ -4,7 +4,6 @@ import {Attribute} from '../helpers/attributes';
 import {Skill} from '../helpers/skills';
 import {SpeciesHelper} from '../helpers/species';
 import {EnvironmentsHelper, Environment} from '../helpers/environments';
-import {UpbringingsHelper} from '../helpers/upbringings';
 import {TracksHelper} from '../helpers/tracks';
 import {CareersHelper} from '../helpers/careers';
 import {TalentsHelper} from '../helpers/talents';
@@ -25,7 +24,7 @@ class CharacterSheetData {
     private _data: SectionContent[] = [
         new SectionContent("SPECIES", this.getSpeciesString()),
         new SectionContent("ENVIRONMENT", this.getEnvironmentString()),
-        new SectionContent("UPBRINGING", character.upbringing >= 0 ? UpbringingsHelper.getUpbringing(character.upbringing).name + (character.acceptedUpbringing ? "(A)" : "(R)") : "None"),
+        new SectionContent("UPBRINGING", character.upbringing ? character.upbringing.name + (character.acceptedUpbringing ? "(A)" : "(R)") : "None"),
         new SectionContent("TRAINING", character.track >= 0 ? TracksHelper.getTrack(character.track).name : "None"),
         new SectionContent("CAREER", character.career >= 0 ? CareersHelper.getCareer(character.career).name : "None"),
         new SectionContent("TRAITS", character.traits.join(", "))

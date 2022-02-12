@@ -6,14 +6,14 @@ import {Career} from '../helpers/careers';
 import {Environment} from '../helpers/environments';
 import {Species} from '../helpers/species';
 import {Track} from '../helpers/tracks';
-import {Upbringing} from '../helpers/upbringings';
+import {UpbringingModel} from '../helpers/upbringings';
 import {Workflow} from '../helpers/workflows';
 import {TalentViewModel} from '../helpers/talents';
 import {MissionPod, MissionPodViewModel, SpaceframeHelper, SpaceframeViewModel} from '../helpers/spaceframes';
 import {MissionProfile} from "../helpers/missionProfiles";
 import {CharacterType} from './characterType';
 import { System } from '../helpers/systems';
-import { AlliedMilitary } from '../helpers/alliedMilitary';
+import { AlliedMilitary, AlliedMilitaryType } from '../helpers/alliedMilitary';
 
 export abstract class CharacterTypeDetails {
 
@@ -165,7 +165,7 @@ export class Character {
     public species?: Species;
     public mixedSpecies?: Species;
     public track?: Track;
-    public upbringing?: Upbringing;
+    public upbringing?: UpbringingModel;
     public acceptedUpbringing?: boolean;
     public enlisted?: boolean;
     public environmentValue?: string;
@@ -295,6 +295,12 @@ export class Character {
 
     isYoung() {
         return this.hasTalent("Untapped Potential");
+    }
+
+    isKlingon() {
+        return this.type === CharacterType.KlingonWarrior || 
+            (this.type === CharacterType.AlliedMilitary && this.typeDetails 
+                && (this.typeDetails as AlliedMilitaryDetails).alliedMilitary.type === AlliedMilitaryType.KLINGON_DEFENCE_FORCE);
     }
 
     hasMaxedAttribute() {

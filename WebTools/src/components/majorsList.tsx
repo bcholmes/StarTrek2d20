@@ -166,7 +166,7 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
         character.skills.forEach(s => {
             if (selections.major === s.skill) {
                 s.expertise = this.initialValues[s.skill] + 2;
-            } else if (selections.other.indexOf[s.skill] >= 0) {
+            } else if (selections.other.indexOf(s.skill) >= 0) {
                 s.expertise = this.initialValues[s.skill] + 1;
             } else {
                 s.expertise = this.initialValues[s.skill];
@@ -199,7 +199,7 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
                         available += 1;
                     }
                     return !result;
-                });
+                }).map(s => s as Skill);
             }
 
             other = other.filter(s => {
@@ -208,8 +208,8 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
                     available += 1;
                 }
                 return !result;
-            });
-            return new MajorSkillSelections(selections.major, other);
+            }).map(s => s as Skill);
+            return new MajorSkillSelections(selections.major, [ ...other ]);
         } else {
             return selections;
         }
@@ -239,7 +239,7 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
     }
 
     private isRuleSatisfied(major?: Skill, other?: Skill[]) {
-        let skills: Skill[] = major ? [ major ] : [];
+        let skills: Skill[] = major != null ? [ major ] : [];
         if (other) {
             other.forEach(s => skills.push(s));
         }

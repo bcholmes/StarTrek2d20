@@ -3,8 +3,9 @@ import {Role, RolesHelper} from './roles';
 import {Era} from './eras';
 import {Source} from './sources';
 import {Track} from './tracks';
-import {character } from '../common/character';
+import {AlliedMilitaryDetails, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
+import { AlliedMilitaryType } from './alliedMilitary';
 
 export enum Rank {
     // Core
@@ -41,6 +42,40 @@ export enum Rank {
     Sergeant,
     Corporal,
     Bekk,
+
+    // Player's Guide
+    Colonel,
+    Brigadier,
+    General,
+
+    MajorGeneral,
+    LieutenantGeneral,
+    LieutenantColonel,
+    Major,
+    FirstLieutenant,
+    SecondLieutenant,
+    MasterSergeant,
+    StaffSergeant,
+    Private,
+
+    SubCommander,
+    SubLieutenant,
+    Centurion,
+    Uhlan,
+
+    GrandGul,
+    Legate,
+    Jagul,
+    Gul,
+    Dal,
+    Glinn,
+    Gil,
+    Garresh,
+
+    Trooper,
+
+    Administrator,
+    FleetCommander
 }
 
 interface IRankPrerequisite {
@@ -52,6 +87,22 @@ class EnlistedPrerequisite implements IRankPrerequisite {
         return character.enlisted;
     }
 }
+
+class AlliedMilitaryPrerequisite implements IRankPrerequisite {
+
+    private types: AlliedMilitaryType[];
+
+    constructor(...alliedMilitary: AlliedMilitaryType[]) {
+        this.types = alliedMilitary;
+    }
+
+    isPrerequisiteFulfilled() {
+        return character.type === CharacterType.AlliedMilitary 
+            && character.typeDetails
+            &&  this.types.indexOf((character.typeDetails as AlliedMilitaryDetails).alliedMilitary.type) >= 0;
+    }
+}
+
 
 class OfficerPrerequisite implements IRankPrerequisite {
     isPrerequisiteFulfilled() {
@@ -145,18 +196,6 @@ class NotEraPrerequisite implements IRankPrerequisite {
     }
 }
 
-class NotTypePrerequisite implements IRankPrerequisite {
-    private _type: CharacterType;
-
-    constructor(type: CharacterType) {
-        this._type = type;
-    }
-
-    isPrerequisiteFulfilled() {
-        return character.type !== this._type;
-    }
-}
-
 class AnyOfRankPrerequisite implements IRankPrerequisite {
     private _prequisites: IRankPrerequisite[];
 
@@ -177,54 +216,79 @@ class AnyOfRankPrerequisite implements IRankPrerequisite {
     }
 }
 
-class TypePrerequisite implements IRankPrerequisite {
-    private _type: CharacterType;
+class AllOfRankPrerequisite implements IRankPrerequisite {
+    private _prequisites: IRankPrerequisite[];
 
-    constructor(type: CharacterType) {
-        this._type = type;
+    constructor(...prequisites: IRankPrerequisite[]) {
+        this._prequisites = prequisites;
     }
 
     isPrerequisiteFulfilled() {
-        return character.type === this._type;
+        if (this._prequisites.length === 0) {
+            return true;
+        } else {
+            var result = true;
+            this._prequisites.forEach(req => {
+                result = result && req.isPrerequisiteFulfilled();
+            });
+            return result;
+        }
+    }
+}
+
+class NotPrerequisite implements IRankPrerequisite {
+    private prereq: IRankPrerequisite;
+
+    constructor(prereq: IRankPrerequisite) {
+        this.prereq = prereq;
+    }
+    isPrerequisiteFulfilled(): boolean {
+        return !this.prereq.isPrerequisiteFulfilled();
+    }
+}
+
+class TypePrerequisite implements IRankPrerequisite {
+    private _types: CharacterType[];
+
+    constructor(...type: CharacterType[]) {
+        this._types = type;
+    }
+
+    isPrerequisiteFulfilled() {
+        return this._types.indexOf(character.type) >= 0;
     }
 }
 
 class SourcePrerequisite implements IRankPrerequisite {
-    private _source: Source;
+    private _sources: Source[];
 
-    constructor(source: Source) {
-        this._source = source;
+    constructor(...source: Source[]) {
+        this._sources = source;
     }
 
     isPrerequisiteFulfilled() {
-        return character.hasSource(this._source);
+        return character.hasAnySource(this._sources);
     }
 }
 
 class RankModel {
+    id: Rank;
     name: string;
     prerequisites: IRankPrerequisite[];
     tiers: number;
 
-    constructor(name: string, prerequisites: IRankPrerequisite[], tiers: number) {
+    constructor(id: Rank, name: string, prerequisites: IRankPrerequisite[], tiers: number = 1) {
+        this.id = id;
         this.name = name;
         this.prerequisites = prerequisites;
         this.tiers = tiers;
     }
 }
 
-class RankViewModel extends RankModel {
-    id: Rank;
-
-    constructor(id: Rank, base: RankModel) {
-        super(base.name, base.prerequisites, base.tiers);
-        this.id = id;
-    }
-}
-
 class Ranks {
-    private _ranks: { [id: number]: RankModel } = {
-        [Rank.Captain]: new RankModel(
+    private _ranks: RankModel[] = [
+        new RankModel(
+            Rank.Captain,
             "Captain",
             [
                 new OfficerPrerequisite(),
@@ -232,218 +296,254 @@ class Ranks {
                 new RolesPrerequisite([Role.CommandingOfficer, Role.Adjutant])
             ],
             1),
-        [Rank.Commander]: new RankModel(
+        new RankModel(
+            Rank.Commander,
             "Commander",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
-                new NotRolesPrerequisite([Role.Admiral])
+                new NotRolesPrerequisite([Role.Admiral]),
+                new NotPrerequisite(new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.CARDASSIAN_UNION))
             ],
             1),
-        [Rank.LieutenantCommander]: new RankModel(
+        new RankModel(
+            Rank.LieutenantCommander,
             "Lieutenant Commander",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
                 new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.Lieutenant]: new RankModel(
+        new RankModel(
+            Rank.Lieutenant,
             "Lieutenant",
             [
                 new OfficerPrerequisite(),
-                new AnyOfRankPrerequisite(new CareersPrerequisite([Career.Experienced]), new TypePrerequisite(CharacterType.KlingonWarrior)),
-                new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer])
-            ],
-            1),
-        [Rank.LieutenantJunior]: new RankModel(
+                new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer]),
+                new AnyOfRankPrerequisite(
+                    new AllOfRankPrerequisite(
+                        new TypePrerequisite(CharacterType.Starfleet),
+                        new CareersPrerequisite([Career.Experienced])
+                    ),
+                    new TypePrerequisite(CharacterType.KlingonWarrior), 
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.KLINGON_DEFENCE_FORCE, AlliedMilitaryType.ROMULAN_STAR_EMPIRE, 
+                        AlliedMilitaryType.ANDORIAN_IMPERIAL_GUARD, AlliedMilitaryType.VULCAN_HIGH_COMMAND, AlliedMilitaryType.BAJORAN_MILITIA)),
+            ]),
+        new RankModel(
+            Rank.LieutenantJunior,
             "Lieutenant (Junior Grade)",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
                 new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.Ensign]: new RankModel(
+        new RankModel(
+            Rank.Ensign,
             "Ensign",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
-                new RolesPrerequisite([Role.CommunicationsOfficer, Role.FlightController, Role.OperationsManager, Role.ScienceOfficer, Role.ShipsCounselor, Role.WeaponsOfficer])
+                new RolesPrerequisite([Role.CommunicationsOfficer, Role.FlightController, Role.OperationsManager, Role.ScienceOfficer, Role.ShipsCounselor, Role.WeaponsOfficer]),
+                new AnyOfRankPrerequisite(new TypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior), 
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.KLINGON_DEFENCE_FORCE)),
             ],
             1),
-        [Rank.MasterChiefPettyOfficer]: new RankModel(
+        new RankModel(
+            Rank.MasterChiefPettyOfficer,
             "Master Chief Petty Officer",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.MasterChiefSpecialist]: new RankModel(
+        new RankModel(
+            Rank.MasterChiefSpecialist,
             "Master Chief Specialist",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.SeniorChiefPettyOfficer]: new RankModel(
+        new RankModel(
+            Rank.SeniorChiefPettyOfficer,
             "Senior Chief Petty Officer",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.SeniorChiefSpecialist]: new RankModel(
+        new RankModel(
+            Rank.SeniorChiefSpecialist,
             "Senior Chief Specialist",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.ChiefPettyOfficer]: new RankModel(
+        new RankModel(
+            Rank.ChiefPettyOfficer,
             "Chief Petty Officer",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.ChiefSpecialist]: new RankModel(
+        new RankModel(
+            Rank.ChiefSpecialist,
             "Chief Specialist",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.PettyOfficer]: new RankModel(
+        new RankModel(
+            Rank.PettyOfficer,
             "Petty Officer",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             3),
-        [Rank.Specialist]: new RankModel(
+        new RankModel(
+            Rank.Specialist,
             "Specialist",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             3),
-        [Rank.Yeoman]: new RankModel(
+        new RankModel(
+            Rank.Yeoman,
             "Yeoman",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             3),
-        [Rank.Crewman]: new RankModel(
+        new RankModel(
+            Rank.Crewman,
             "Crewman",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             3),
-        [Rank.RearAdmiral]: new RankModel(
+        new RankModel(
+            Rank.RearAdmiral,
             "Rear Admiral",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Veteran]),
                 new NotEraPrerequisite(Era.NextGeneration),
-                new SourcePrerequisite(Source.CommandDivision),
+                new SourcePrerequisite(Source.CommandDivision, Source.PlayersGuide),
                 new RolesPrerequisite([Role.Admiral]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.RearAdmiralLower]: new RankModel(
+        new RankModel(
+            Rank.RearAdmiralLower,
             "Rear Admiral, Lower Half",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Veteran]),
                 new EraPrerequisite(Era.NextGeneration),
-                new SourcePrerequisite(Source.CommandDivision),
+                new SourcePrerequisite(Source.CommandDivision, Source.PlayersGuide),
                 new RolesPrerequisite([Role.Admiral]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.RearAdmiral]: new RankModel(
+        new RankModel(
+            Rank.RearAdmiral,
             "Rear Admiral, Upper Half",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Veteran]),
                 new EraPrerequisite(Era.NextGeneration),
-                new SourcePrerequisite(Source.CommandDivision),
+                new SourcePrerequisite(Source.CommandDivision, Source.PlayersGuide),
                 new RolesPrerequisite([Role.Admiral]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.ViceAdmiral]: new RankModel(
+        new RankModel(
+            Rank.ViceAdmiral,
             "Vice-Admiral",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Veteran]),
-                new SourcePrerequisite(Source.CommandDivision),
+                new SourcePrerequisite(Source.CommandDivision, Source.PlayersGuide),
                 new RolesPrerequisite([Role.Admiral]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.ViceAdmiral]: new RankModel(
+        new RankModel(
+            Rank.ViceAdmiral,
             "Admiral",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Veteran]),
-                new SourcePrerequisite(Source.CommandDivision),
+                new SourcePrerequisite(Source.CommandDivision, Source.PlayersGuide),
                 new RolesPrerequisite([Role.Admiral]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new AnyOfRankPrerequisite(
+                    new TypePrerequisite(CharacterType.Starfleet),
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.ROMULAN_STAR_EMPIRE)
+                )
             ],
             1),
-        [Rank.ViceAdmiral]: new RankModel(
+        new RankModel(
+            Rank.ViceAdmiral,
             "Fleet Admiral",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Veteran]),
                 new SourcePrerequisite(Source.CommandDivision),
                 new RolesPrerequisite([Role.Admiral]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.Commodore]: new RankModel(
+        new RankModel(
+            Rank.Commodore,
             "Commodore",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Veteran]),
-                new NotEraPrerequisite(Era.NextGeneration),
-                new SourcePrerequisite(Source.CommandDivision),
+                new SourcePrerequisite(Source.CommandDivision, Source.PlayersGuide),
                 new RolesPrerequisite([Role.CommandingOfficer]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.FleetCaptain]: new RankModel(
+        new RankModel(
+            Rank.FleetCaptain,
             "Fleet Captain",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.CommandDivision),
                 new RolesPrerequisite([Role.CommandingOfficer]),
-                new NotTypePrerequisite(CharacterType.KlingonWarrior)
+                new TypePrerequisite(CharacterType.Starfleet)
             ],
             1),
-        [Rank.Civilian]: new RankModel(
+        new RankModel(
+            Rank.Civilian,
             "Civilian",
             [
                 new AnyOfRankPrerequisite(new RolesPrerequisite([Role.DiplomaticAttache]), new TrackPrerequisite(Track.Laborer))
             ],
             1),
-        [Rank.Sergeant]: new RankModel(
+        new RankModel(
+            Rank.Sergeant,
             "Sergeant (bu')",
             [
                 new EnlistedPrerequisite(),
@@ -451,7 +551,8 @@ class Ranks {
                 new TypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
-        [Rank.Corporal]: new RankModel(
+        new RankModel(
+            Rank.Corporal,
             "Corporal (Da')",
             [
                 new EnlistedPrerequisite(),
@@ -459,7 +560,8 @@ class Ranks {
                 new TypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
-        [Rank.Bekk]: new RankModel(
+        new RankModel(
+            Rank.Bekk,
             "Bekk (beq)",
             [
                 new EnlistedPrerequisite(),
@@ -467,12 +569,302 @@ class Ranks {
                 new TypePrerequisite(CharacterType.KlingonWarrior)
             ],
             1),
+        new RankModel(
+            Rank.General,
+            "General",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CareersPrerequisite([Career.Veteran]),
+                new AnyOfRankPrerequisite(
+                    new TypePrerequisite(CharacterType.KlingonWarrior),
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA, 
+                        AlliedMilitaryType.ANDORIAN_IMPERIAL_GUARD, 
+                        AlliedMilitaryType.ROMULAN_STAR_EMPIRE,
+                        AlliedMilitaryType.KLINGON_DEFENCE_FORCE)
+                )
+            ]),
+        new RankModel(
+            Rank.LieutenantGeneral,
+            "Lieutenant General",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CareersPrerequisite([Career.Veteran]),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+            ]),
+        new RankModel(
+            Rank.MajorGeneral,
+            "Major General",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CareersPrerequisite([Career.Veteran]),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+            ]),
+        new RankModel(
+            Rank.Brigadier,
+            "Brigadier",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CareersPrerequisite([Career.Veteran]),
+                new AnyOfRankPrerequisite(
+                    new TypePrerequisite(CharacterType.KlingonWarrior),
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.KLINGON_DEFENCE_FORCE)
+                )
+            ]),
+        new RankModel(
+            Rank.Colonel,
+            "Colonel",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AnyOfRankPrerequisite(
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA, 
+                        AlliedMilitaryType.ROMULAN_STAR_EMPIRE, AlliedMilitaryType.KLINGON_DEFENCE_FORCE),
+                    new TypePrerequisite(CharacterType.KlingonWarrior)
+                )
+            ]),
+        new RankModel(
+            Rank.LieutenantColonel,
+            "Lieutenant Colonel",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+            ]),
+        new RankModel(
+            Rank.Major,
+            "Major",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA, 
+                    AlliedMilitaryType.ROMULAN_STAR_EMPIRE, AlliedMilitaryType.VULCAN_HIGH_COMMAND)
+            ]),
+        new RankModel(
+            Rank.Captain,
+            "Captain",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA)
+            ]),
+        new RankModel(
+            Rank.Lieutenant,
+            "Lieutenant",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.BAJORAN_MILITIA)
+            ]),
+        new RankModel(
+            Rank.FirstLieutenant,
+            "First Lieutenant",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+            ]),
+        new RankModel(
+            Rank.SecondLieutenant,
+            "Second Lieutenant",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+            ]),
+        new RankModel(
+            Rank.MasterSergeant,
+            "Master Sergeant",
+            [
+                new EnlistedPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+            ]),
+        new RankModel(
+            Rank.Sergeant,
+            "Sergeant",
+            [
+                new EnlistedPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+            ]),
+        new RankModel(
+            Rank.Corporal,
+            "Corporal",
+            [
+                new EnlistedPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+            ]),
+        new RankModel(
+            Rank.Private,
+            "Private",
+            [
+                new SourcePrerequisite(Source.PlayersGuide),
+                new EnlistedPrerequisite(),
+                new CareersPrerequisite([Career.Young]),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+            ]),
+        
+        // Cardassian Ranks
+        new RankModel(
+            Rank.GrandGul,
+            "Grand Gul",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CareersPrerequisite([Career.Veteran]),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+            ]),
+        new RankModel(
+            Rank.Legate,
+            "Legate",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CareersPrerequisite([Career.Veteran]),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+            ]),
+        new RankModel(
+            Rank.Jagul,
+            "Jagul",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+            ]),
+        new RankModel(
+            Rank.Gul,
+            "Gul",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+            ]),
+        new RankModel(
+            Rank.Dal,
+            "Dal / Dalin",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+            ]),
+        new RankModel(
+            Rank.Glinn,
+            "Glinn / Gil",
+            [
+                new OfficerPrerequisite(),
+                new CareersPrerequisite([Career.Young, Career.Experienced]),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+            ]),
+        new RankModel(
+            Rank.Gil,
+            "Gil",
+            [
+                new OfficerPrerequisite(),
+                new CareersPrerequisite([Career.Young]),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+            ]),
+        new RankModel(
+            Rank.Gil,
+            "Gil",
+            [
+                new EnlistedPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+            ]),
+        new RankModel(
+            Rank.Garresh,
+            "Garresh / Gorr",
+            [
+                new EnlistedPrerequisite(),
+                new CareersPrerequisite([Career.Young]),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+            ]),
 
-    };
+        new RankModel(
+            Rank.Trooper,
+            "Trooper",
+            [
+                new EnlistedPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.ANDORIAN_IMPERIAL_GUARD)
+            ]),
+
+        // Romulan Star Empire
+        new RankModel(
+            Rank.SubCommander,
+            "Sub-Commander",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.ROMULAN_STAR_EMPIRE, AlliedMilitaryType.VULCAN_HIGH_COMMAND)
+            ]),
+        new RankModel(
+            Rank.SubLieutenant,
+            "Sub-Lieutenant",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.ROMULAN_STAR_EMPIRE, AlliedMilitaryType.VULCAN_HIGH_COMMAND)
+            ]),
+        new RankModel(
+            Rank.Centurion, // Junior officer
+            "Centurion",
+            [
+                new SourcePrerequisite(Source.PlayersGuide),
+                new OfficerPrerequisite(),
+                new CareersPrerequisite([Career.Young]),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.ROMULAN_STAR_EMPIRE)
+            ]),
+        new RankModel(
+            Rank.Centurion, // Enlisted
+            "Centurion",
+            [
+                new SourcePrerequisite(Source.PlayersGuide),
+                new EnlistedPrerequisite(),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.ROMULAN_STAR_EMPIRE)
+            ]),
+        new RankModel(
+            Rank.Uhlan,
+            "Uhlan",
+            [
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CareersPrerequisite([Career.Young]),
+                new EnlistedPrerequisite(),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.ROMULAN_STAR_EMPIRE)
+            ]),
+
+        // Vulcan High Command
+        new RankModel(
+            Rank.Administrator,
+            "Administrator",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CareersPrerequisite([Career.Veteran]),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.VULCAN_HIGH_COMMAND)
+            ]),
+        new RankModel(
+            Rank.FleetCommander,
+            "Fleet Commander",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CareersPrerequisite([Career.Veteran]),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.VULCAN_HIGH_COMMAND)
+            ]),
+            
+    ];
 
     getRanks(ignorePrerequisites?: boolean) {
-        let ranks: RankViewModel[] = [];
-        let n = 0;
+        let ranks: RankModel[] = [];
 
         for (let rank in this._ranks) {
             let r = this._ranks[rank];
@@ -487,12 +879,9 @@ class Ranks {
             }
 
             if (valid) {
-                ranks.push(new RankViewModel(n, r));
+                ranks.push(r);
             }
-
-            n++;
         }
-
         return ranks;
     }
 

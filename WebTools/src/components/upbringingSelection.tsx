@@ -1,26 +1,27 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {Window} from '../common/window';
-import {Upbringing, UpbringingsHelper} from '../helpers/upbringings';
+import {UpbringingModel, UpbringingsHelper} from '../helpers/upbringings';
 import {AttributesHelper} from '../helpers/attributes';
 import {SkillsHelper} from '../helpers/skills';
 import {Button} from './button';
 
 interface IUpbringingSelectionProperties {
-    onSelection: (upbringing: Upbringing) => void;
+    alternate: boolean;
+    onSelection: (upbringing: UpbringingModel) => void;
     onCancel: () => void;
 }
 
 export class UpbringingSelection extends React.Component<IUpbringingSelectionProperties, {}> {
     render() {
-        var upbringings = UpbringingsHelper.getUpbringings().map((u, i) => {
+        var upbringings = UpbringingsHelper.getUpbringings(this.props.alternate).map((u, i) => {
             const disciplines = u.disciplines.map((d, i) => {
                 return <div key={i}>{SkillsHelper.getSkillName(d) }</div>;
             });
 
             if (Window.isCompact()) {
                 return (
-                    <tr key={i} onClick={() => { this.props.onSelection(u.id); } }>
+                    <tr key={i} onClick={() => { this.props.onSelection(u); } }>
                         <td className="selection-header">{u.name}</td>
                         <td>
                             ACCEPT<br/>
@@ -48,7 +49,7 @@ export class UpbringingSelection extends React.Component<IUpbringingSelectionPro
                             <div>{AttributesHelper.getAttributeName(u.attributeRebelPlus1) } +1</div>
                         </td>
                         <td>{disciplines}</td>
-                        <td><Button className="button-small" text="Select" onClick={() => { this.props.onSelection(u.id) } } /></td>
+                        <td><Button className="button-small" text="Select" onClick={() => { this.props.onSelection(u) } } /></td>
                     </tr>
                 )
             }

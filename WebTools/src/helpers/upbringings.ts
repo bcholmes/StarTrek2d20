@@ -24,7 +24,7 @@ export enum Upbringing {
     ToProsper,
 }
 
-class UpbringingModel {
+export class UpbringingModel {
     id: Upbringing;
     name: string;
     description: string;
@@ -123,6 +123,81 @@ class Upbringings {
             [Skill.Command, Skill.Conn, Skill.Security],
             "The character’s Focus should relate to the character’s preferred way of applying their skills.",
             ["Composure", "Debate", "Diplomacy", "Espionage", "Interrogation", "Law", "Philosophy", "Starfleet Protocol"]
+        ),
+    ];
+
+    private _alternateUpbringings: UpbringingModel[] = [
+        new UpbringingModel(
+            Upbringing.ToExplore,
+            "To Explore",
+            "You dreamed of exploring strange new worlds, seeking out new life and new civilizations, and boldly going where no one had gone before. You read everything you could about the bold explorers of the past and dreamed of one day sitting in the captain’s chair of your own starship.",
+            Attribute.Presence,
+            Attribute.Fitness,
+            Attribute.Reason,
+            Attribute.Control,
+            [Skill.Command, Skill.Science],
+            "Your focus should relate to your dreams, covering skills learned because they were the kinds of things that explorers needed to know.",
+            ["Astronavigation", "Composure", "Diplomacy", "Linguistics", "Starship Recognition", "Team Dynamics", "Wilderness Survival"]
+        ),
+        new UpbringingModel(
+            Upbringing.ToFly,
+            "To Fly",
+            "You saw shuttles and transports soar overhead, and wanted to be up there with them, in the skies and among the stars. You took pilot’s lessons as soon as you were able and may have gotten in trouble a few times as a child for pushing your craft a little too far.",
+            Attribute.Control,
+            Attribute.Daring,
+            Attribute.Insight,
+            Attribute.Reason,
+            [Skill.Conn, Skill.Engineering],
+            "Your focus should relate to your dreams, cov- ering skills learned because they would help you fly.",
+            ["Astronavigation", "Helm Operations", "Small Craft", "Starship Recognition", "Propulsion Systems"]
+        ),
+        new UpbringingModel(
+            Upbringing.ToCreate,
+            "To Create",
+            "Locked away within your mind have always been things that didn’t exist. Your imagination has always been filled with ideas for things that might be, or could be, rather than simply things that already were. And you wanted to show people the worlds you saw. Whether your creations would take the form of works of fiction or new inventions to change the world, your creativity is boundless.",
+            Attribute.Insight,
+            Attribute.Presence,
+            Attribute.Daring,
+            Attribute.Control,
+            [Skill.Command, Skill.Engineering],
+            "Your focus should relate to your creativity, which is likely to relate to art or engineering.",
+            ["Literature", "Theatre", "Art", "Holoprogramming", "Computers", "Cybernetics", "Structural Engineering", "Transporters & Replicators", "Warp Field Dynamics"]
+        ),
+        new UpbringingModel(
+            Upbringing.ToDiscover,
+            "To Discover",
+            "You want to know what’s out there. “Out there” might be the furthest reaches of unexplored space, or it might be the tiniest subatomic realms, or the depths of the mind, or the myriad complexities of the body, or some other field. Your drive is to find that which is unknown and to make it known.",
+            Attribute.Reason,
+            Attribute.Presence,
+            Attribute.Fitness,
+            Attribute.Insight,
+            [Skill.Medicine, Skill.Science],
+            "Your focus should relate to your dreams, represent- ing the field you were most curious about growing up.",
+            ["Anthropology", "Astrophysics", "Botany", "Genetics", "Linguistics", "Psychology", "Quantum Mechanics", "Xenobiology"]
+        ),
+        new UpbringingModel(
+            Upbringing.ToProtect,
+            "To Protect",
+            "Your first concern is helping others. You have a deep disdain for anyone who would bring harm to the people you care about, or you have a deep compassion for those who have come to harm and seek to give them aid and comfort. Or both.",
+            Attribute.Daring,
+            Attribute.Fitness,
+            Attribute.Control,
+            Attribute.Reason,
+            [Skill.Security, Skill.Medicine],
+            "Your focus should relate to the skills you honed protecting and caring for others.",
+            ["Hand-to-Hand Combat (may rename as a spe- cific Martial Art)", "Hand Phasers", "Survival", "Threat Awareness", "Emergency Medicine", "Triage"]
+        ),
+        new UpbringingModel(
+            Upbringing.ToProsper,
+            "To Prosper",
+            "Success is your goal. This might mean fame or recognition in a particular field, or it might mean wealth, or influence, or power. There may be some noble agenda behind this – a desire to overcome being powerless or to escape hardship, or to be able to provide for family – or it may just be pure ambition, even greed. In whatever ways you seek to prosper, you have the drive to seize the chances you get, and, as the Ferengi say, the lobes to hear the opportunities coming your way.",
+            Attribute.Presence,
+            Attribute.Daring,
+            Attribute.Fitness,
+            Attribute.Insight,
+            [Skill.Command, Skill.Conn, Skill.Security, Skill.Engineering, Skill.Medicine, Skill.Science],
+            "Your focus should relate to the ways you intend to make your way in the galaxy.",
+            ["Computers", "Genetics", "Holoprogramming", "Music (may rename as a particular genre or instrument)", "Persuasion", "Philosophy", "Politics", "Trade & Finance"]
         ),
     ];
 
@@ -277,7 +352,9 @@ class Upbringings {
     ];
 
     private getUpbringingList(type: CharacterType, alternate: boolean) {
-        if (type === CharacterType.Starfleet) {
+        if (alternate) {
+            return this._alternateUpbringings;
+        } else if (type === CharacterType.Starfleet) {
             return this._upbringings;
         } else if (type === CharacterType.KlingonWarrior) {
             return this._castes;
@@ -286,9 +363,9 @@ class Upbringings {
         }
     }
 
-    getUpbringings() {
+    getUpbringings(alternate: boolean) {
         var upbringings: UpbringingModel[] = [];
-        var list = this.getUpbringingList(character.type, false);
+        var list = this.getUpbringingList(character.type, alternate);
         for (let upbringing of list) {
             upbringings.push(upbringing);
         }
@@ -298,45 +375,20 @@ class Upbringings {
         });
     }
 
-    public getUpbringing(upbringing: Upbringing) {
-        if (upbringing == null) {
-            return undefined;
-        } else if (character.type === CharacterType.KlingonWarrior) {
-            return this.findInList(this._castes, upbringing);
-        } else if (character.type === CharacterType.Starfleet) {
-            return this._upbringings[upbringing];
-        } else {
-            return this._genericUpbringings[upbringing];
-        }
-    }
-
-    private findInList(upbringings: UpbringingModel[], upbringing: Upbringing) {
-        let result = null;
-
-        for (let u of upbringings) {
-            if (u.id === upbringing) {
-                result = u;
-                break;
-            }
-        }
-        return result;
-    }
-
-    generateUpbringing() {
-        let list = this.getUpbringingList(character.type, false);
+    generateUpbringing(alternate: boolean) {
+        let list = this.getUpbringingList(character.type, alternate);
         var roll = Math.floor(Math.random() * list.length);
-        return list[roll].id;
+        return list[roll];
     }
 
-    applyUpbringing(upbringing: Upbringing, accepted: boolean) {
-        const upb = this.getUpbringing(upbringing);
+    applyUpbringing(upbringing: UpbringingModel, accepted: boolean) {
 
         if (accepted) {
-            character.attributes[upb.attributeAcceptPlus2].value += 2;
-            character.attributes[upb.attributeAcceptPlus1].value += 1;
+            character.attributes[upbringing.attributeAcceptPlus2].value += 2;
+            character.attributes[upbringing.attributeAcceptPlus1].value += 1;
         } else {
-            character.attributes[upb.attributeRebelPlus2].value += 2;
-            character.attributes[upb.attributeRebelPlus1].value += 1;
+            character.attributes[upbringing.attributeRebelPlus2].value += 2;
+            character.attributes[upbringing.attributeRebelPlus1].value += 1;
         }
     }
 }

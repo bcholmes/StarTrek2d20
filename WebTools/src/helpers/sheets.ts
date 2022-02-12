@@ -5,7 +5,6 @@ import { Skill } from '../helpers/skills';
 import { PDFDocument, PDFFont, PDFForm, PDFPage, rgb, StandardFonts } from 'pdf-lib'
 import fontkit from '@pdf-lib/fontkit'
 import { CharacterSerializer } from '../common/characterSerializer';
-import { UpbringingsHelper } from './upbringings';
 import { Era } from './eras';
 import { MissionProfileHelper } from '../helpers/missionProfiles';
 import { Department } from './departments';
@@ -587,7 +586,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
     populateForm(form: PDFForm) {
         super.populateForm(form);
 
-        var upbringing = UpbringingsHelper.getUpbringing(character.upbringing);
+        var upbringing = character.upbringing;
         if (upbringing) {
             this.fillField(form, 'Upbringing', upbringing.name + (character.acceptedUpbringing ? " (A)" : " (R)"));
         }
