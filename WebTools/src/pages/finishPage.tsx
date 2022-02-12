@@ -43,7 +43,11 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
         this.roleDescription = `${this.roles[0].description} ${this.roles[0].ability}`;
 
         this.getRanks();
-        character.rank = this.ranks[0];
+        if (!character.isCivilian()) {
+            character.rank = this.ranks[0];
+        } else {
+            character.rank = '';
+        }
     }
 
     render() {
@@ -295,8 +299,10 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
             }
         });
 
-        if (character.type !== CharacterType.AmbassadorDiplomat) {
+        if (!character.isCivilian()) {
             character.rank = this.ranks[0];
+        } else {
+            character.rank = '';
         }
     }
 }

@@ -88,6 +88,7 @@ export class RoleModel {
     prerequisites: IPrerequisite[];
 
     constructor(id: Role, name: string, description: string, department: Skill, ability: string, ...prerequisites: IPrerequisite[]) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.department = department;
@@ -254,7 +255,7 @@ class Roles {
             Role.DiplomaticAttache,
             "Diplomatic Attaché",
             "A civilian from the Federation Diplomatic Corps and a valuable part of the staff who advises the admiral, and briefs them on culture, protocol, and other essential information during negotiations and other diplomatic activities.",
-            undefined,
+            Skill.Command,
             "At the start of any Social Conflict involving a foreign culture, the diplomatic attaché may spend two Momentum (Immediate) to create an Advantage for any Main Character present, representing a briefing provided by the attaché. This may be performed even if the attaché character is not personally present in that scene; it is prior counsel, rather than immediate assistance.",
             new SourcePrerequisite(Source.CommandDivision),
             new CivilianPrerequisite(),
@@ -407,7 +408,7 @@ class Roles {
             Role.ShipsCookOrChef,
             "Chef",
             "In addition to owning restaurants, chefs and cooks are often found on starships and starbases, particularly those which do not purely rely upon replicators to feed the crew; a ship’s cook was a common fixture on older ships before the introduction of the replicator. Larger modern Starfleet vessels, especially ones serving diplomatic roles, will often have a chef aboard to help prepare banquets for dignitaries, cooking with a mixture of stored foods, fruit and vegetables grown in hydroponics bays, and replicated ingredients to produce spectacular dishes.",
-            Skill.Command,
+            undefined,
             "Once per adventure, you may prepare a meal for a non-combat scene set aboard ship; this may be a dinner at the captain’s table, a banquet for dignitaries or other VIPs, part of a celebration, or some other meaningful occasion. Player characters may re-roll 1d20 on all social conflict tasks they attempt during that scene. When the scene ends, do not reduce the group’s Momentum pool by 1",
             new SourcePrerequisite(Source.PlayersGuide),
             new NotKlingonPrerequisite()),
@@ -454,9 +455,24 @@ class Roles {
             }
         }
 
-        return roles.sort((a, b) => {
-            return departments.indexOf(a.department) > -1 ? -1 : 1;
+        let temp = roles.sort((a, b) => {
+            if (a.department == null && b.department == null) {
+                return a.id - b.id;
+            } else if (a.department != null && b.department != null && departments.indexOf(a.department) >= 0 && departments.indexOf(b.department) >= 0) {
+                return a.id - b.id;
+            } else if (a.department != null && departments.indexOf(a.department) >= 0 && b.department != null) {
+                return -1;
+            } else if (b.department != null && departments.indexOf(b.department) >= 0 && a.department != null) {
+                return 1;
+            } else if (a.department == null) {
+                return 1;
+            } else if (b.department == null) {
+                return -1;
+            } else {
+                return a.id - b.id;
+            }
         });
+        return temp;
     }
 
     getRole(role: Role) {

@@ -240,6 +240,9 @@ export class Character {
                 || character.hasTalent("Augmented Ability")) {
             traits.push("Augmented");
         }
+        if (character.role === 'Ambassador') {
+            traits.push("Ambassador");
+        }
         return traits;
     }
 
@@ -295,6 +298,10 @@ export class Character {
 
     isYoung() {
         return this.hasTalent("Untapped Potential");
+    }
+
+    isCivilian() {
+        return this.type === CharacterType.AmbassadorDiplomat;
     }
 
     isKlingon() {

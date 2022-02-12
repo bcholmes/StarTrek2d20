@@ -14,9 +14,11 @@ export class CheckBox extends React.Component<ICheckBoxProperties, {}> {
 
         return (
             <div style={{ paddingTop: '0.25rem', paddingBottom: '0.25rem'}}>
+                <label>
                 <input type="checkbox" value={value} onChange={e => onChanged(value) } checked={isChecked} 
                     onClick={(e) => { e.stopPropagation(); }} />
-                <span className="checkbox-text">{text}</span>
+                    <span className="checkbox-text">{text}</span>
+                </label>
             </div>
         );
     }
