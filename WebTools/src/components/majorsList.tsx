@@ -2,7 +2,7 @@
 import {character} from '../common/character';
 import {Skill, SkillsHelper} from '../helpers/skills';
 import {CheckBox} from '../components/checkBox';
-import { SkillImprovementRule } from '../helpers/tracks';
+import { ImprovementRuleType, SkillImprovementRule } from '../helpers/tracks';
 
 interface IMajorSkillProperties {
     skill: Skill;
@@ -34,6 +34,53 @@ class MajorSkill extends React.Component<IMajorSkillProperties, {}> {
                 </tbody>
             </table>
         );
+    }
+}
+
+interface IOtherSkillIncrementAndDecrementProperties {
+    skill: Skill;
+    showIncrease: boolean;
+    showDecrease: boolean;
+    onIncrease: (s: Skill) => void;
+    onDecrease: (s: Skill) => void;
+}
+
+export class OtherSkillIncrementAndDecrement extends React.Component<IOtherSkillIncrementAndDecrementProperties, {}> {
+    render() {
+        const {skill, showDecrease, showIncrease} = this.props;
+
+        const expertise = character.skills[skill].expertise;
+
+        const dec = showDecrease
+            ? (<img height="20" src="static/img/dec.png" onClick={ () => { this.onDecrease() } } alt="-"/>)
+            : undefined;
+
+        const inc = showIncrease
+            ? (<img height="20" src="static/img/inc.png" onClick={ () => { this.onIncrease() } } alt="+"/>)
+            : undefined;
+
+        return (
+            <table cellPadding="0" cellSpacing="0">
+                <tbody>
+                    <tr>
+                        <td style={{ width: "250px" }}>
+                            <div className="skill-name">{SkillsHelper.getSkillName(skill) }</div>
+                        </td>
+                        <td style={{ width: "30px" }}>{dec}</td>
+                        <th style={{ width: "60px" }}>{expertise}</th>
+                        <td style={{ width: "30px" }}>{inc}</td>
+                    </tr>
+                </tbody>
+            </table>
+        );
+    }
+
+    private onIncrease() {
+        this.props.onIncrease(this.props.skill);
+    }
+
+    private onDecrease() {
+        this.props.onDecrease(this.props.skill);
     }
 }
 
@@ -70,15 +117,24 @@ interface IMajorsSkillListProperties {
 
 class MajorSkillSelections {
     major?: Skill;
+    decrementSkill?: Skill;
     other: Skill[];
 
-    constructor(major?: Skill, other: Skill[] = []) {
+    constructor(major?: Skill, other: Skill[] = [], decrementSkill?: Skill) {
         this.major = major;
         this.other = other;
+        this.decrementSkill = decrementSkill;
     }
 
     isFullyPopulated() {
-        return this.major != null && this.other.length === 2;
+        /*
+        console.log("Major: " + (this.major != null ? Skill[this.major] : "none") 
+            + ", Decrement: " + (this.decrementSkill != null ? Skill[this.decrementSkill] : "none") 
+            + ", Other: " + this.other.map((o, i) => Skill[o]));
+        */
+        return this.major != null 
+            && ((this.other.length === 2 && this.decrementSkill == null)
+                || (this.other.length === 3 && this.decrementSkill != null));
     }
 }
 
@@ -122,10 +178,15 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
             otherSkills.push(Skill.Command);
         }
 
-        const other = otherSkills.map((s, i) => {
-            const isSelected = this.state.selections.other.indexOf(s) > -1;
-            return (<OtherSkill key={i} skill={s} isSelected={isSelected} showCheckBox={true} onSelected={skill => this.onSelectOther(skill) } bold={this.props.rule && this.props.rule.skills.indexOf(s) >= 0}/>);
-        });
+        const other = (this.props.rule && this.props.rule.type === ImprovementRuleType.MAY_DECREMENT_ONE) 
+            ? SkillsHelper.getSkills().map((s, i) => {
+                return (<OtherSkillIncrementAndDecrement key={i} skill={s} showDecrease={this.showDecreaseOther(s)} 
+                    showIncrease={this.showIncreaseOther(s)} onIncrease={s => this.onIncrease(s)} onDecrease={s => this.onDecrease(s)} />);
+            })
+            : otherSkills.map((s, i) => {
+                const isSelected = this.state.selections.other.indexOf(s) > -1;
+                return (<OtherSkill key={i} skill={s} isSelected={isSelected} showCheckBox={true} onSelected={skill => this.onSelectOther(skill) } bold={this.props.rule && this.props.rule.skills.indexOf(s) >= 0}/>);
+            });
 
         return (
             <div>
@@ -142,23 +203,98 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
         );
     }
 
+    showIncreaseOther(skill: Skill) {
+        if (this.props.skills.indexOf(skill) >= 0 && this.state.selections.major == null) {
+            return false;
+        } else if (skill === this.state.selections.major) {
+            return false;
+        } else if (this.state.selections.isFullyPopulated()) {
+            return false;
+        } else if (this.state.selections.decrementSkill == null) {
+            return character.skills[skill].expertise === this.initialValues[skill];
+        } else if (this.state.selections.decrementSkill === skill) {
+            return true;
+        } else if (this.countOf(this.state.selections.other, skill) >= 2) {
+            return false;
+        } else {
+            return this.state.selections.other.length < 3;
+        }
+    }
+
+    showDecreaseOther(skill: Skill) {
+        if (this.props.skills.indexOf(skill) >= 0 && this.state.selections.major == null) {
+            return false;
+        } else if (skill === this.state.selections.major) {
+            return false;
+        } else if (this.state.selections.decrementSkill == null) {
+            return true;
+        } else if (character.skills[skill].expertise > this.initialValues[skill]) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    onIncrease(skill: Skill) {
+        let selections = this.state.selections;
+        let other = [...selections.other];
+        let decrementSkill = selections.decrementSkill;
+
+        if (decrementSkill === skill) {
+            decrementSkill = undefined;
+        } else {
+            other.push(skill);
+        }
+
+        selections = this.makeEmptySlotsForRule(new MajorSkillSelections(selections.major, other, decrementSkill));
+
+        this.updateValues(selections);
+        this.props.onDone(selections.isFullyPopulated());
+        this.setState(state => ({...state, selections: selections }) );
+    }
+
+    onDecrease(skill: Skill) {
+        let selections = this.state.selections;
+        let other = [...selections.other];
+        let decrementSkill = selections.decrementSkill;
+
+        if (other.indexOf(skill) >= 0) {
+            other.splice(other.indexOf(skill), 1);
+        } else {
+            decrementSkill = skill;
+        }
+
+        selections = this.makeEmptySlotsForRule(new MajorSkillSelections(selections.major, other, decrementSkill));
+
+        this.updateValues(selections);
+        this.props.onDone(selections.isFullyPopulated());
+        this.setState(state => ({...state, selections: selections }) );
+    }
+
     private onSelectMajor(skill: Skill) {
         let other = [ ...this.state.selections.other ];
+        let decrementSKill = this.state.selections.decrementSkill;
+
+        if (decrementSKill === skill) {
+            decrementSKill = undefined;
+        }
 
         if (this.state.selections.major === skill) {
             // if already selected, then unselect
             skill = undefined;
             // make sure we remove any major skills from the "other" list
             for (let s of this.props.skills) {
-                if (other.indexOf(s) > -1) {
+                while (other.indexOf(s) > -1) {
                     other.splice(other.indexOf(s), 1);
                 } 
             }
-        } else if (other.indexOf(skill) > -1) {
-            other.splice(other.indexOf(skill), 1);
+        } else {
+            while (other.indexOf(skill) > -1) {
+                other.splice(other.indexOf(skill), 1);
+            }
         }
 
-        let selections = this.makeEmptySlotsForRule(new MajorSkillSelections(skill, other));
+        let selections = this.makeEmptySlotsForRule(new MajorSkillSelections(skill, other, decrementSKill));
 
         this.updateValues(selections);
         this.props.onDone(selections.isFullyPopulated());
@@ -169,17 +305,25 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
         character.skills.forEach(s => {
             if (selections.major === s.skill) {
                 s.expertise = this.initialValues[s.skill] + 2;
+            } else if (selections.decrementSkill === s.skill) {
+                s.expertise = this.initialValues[s.skill] - 1;
             } else if (selections.other.indexOf(s.skill) >= 0) {
-                s.expertise = this.initialValues[s.skill] + 1;
+                s.expertise = this.initialValues[s.skill] + this.countOf(selections.other, s.skill);
             } else {
                 s.expertise = this.initialValues[s.skill];
             }
         });
     }
 
+    countOf(others: Skill[], skill: Skill) {
+        let result = 0;
+        others.forEach(s => { if (s === skill) result++; });
+        return result;
+    }
+
     private makeEmptySlotsForRule(selections: MajorSkillSelections, removeNonRuleSkillsFirst: boolean = true) {
         let needed: Skill[] = [];
-        if (this.props.rule) {
+        if (this.props.rule && this.props.rule.type === ImprovementRuleType.MUST_INCLUDE_ALL) {
             this.props.rule.skills.forEach(s => {
                 if (selections.major !== s && selections.other.indexOf(s) < 0) {
                     needed.push(s);
@@ -191,9 +335,10 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
         if (selections.major == null && spaces > 0) {
             spaces -= 1;
         }
-        if (spaces > 0 || selections.other.length > 2) {
+        let count = (selections.decrementSkill == null) ? 2 : 3;
+        if (spaces > 0 || selections.other.length > count) {
             let other = [...selections.other];
-            let available = 2 - other.length;
+            let available = count - other.length;
 
             if (removeNonRuleSkillsFirst) {
                 other = other.filter(s => {
@@ -236,7 +381,11 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
     }
 
     private isRuleSkill(skill: Skill) {
-        return this.props.rule ? this.props.rule.skills.indexOf(skill) >= 0 : false;
+        if (this.props.rule && this.props.rule.type === ImprovementRuleType.MUST_INCLUDE_ALL) {
+            return this.props.rule.skills.indexOf(skill) >= 0;
+        } else {
+            return false;
+        }
     }
 
     private isRuleSatisfied(major?: Skill, other?: Skill[]) {

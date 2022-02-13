@@ -144,8 +144,6 @@ export class Starship {
         }
         return talents;
     }
-
-
 }
 
 
@@ -263,8 +261,19 @@ export class Character {
                 || character.hasTalent("Augmented Ability")) {
             traits.push("Augmented");
         }
+        if (character.hasTalent("Joined")) {
+            traits.push("Symbiont");
+        }
+        if (character.hasTalent("Sensory Replacement")) {
+            traits.push("Artificial Sense");
+        }
         if (character.role === 'Ambassador') {
-            traits.push("Ambassador");
+            if (character.type === CharacterType.AmbassadorDiplomat && character.typeDetails) {
+                let details = character.typeDetails as GovernmentDetails;
+                traits.push(details.getName() ? details.getName() + " Ambassador" : "Ambassador");
+            } else {
+                traits.push("Ambassador");
+            }
         }
         return traits;
     }
@@ -324,7 +333,7 @@ export class Character {
     }
 
     isCivilian() {
-        return this.type === CharacterType.AmbassadorDiplomat;
+        return this.type === CharacterType.AmbassadorDiplomat || this.type === CharacterType.Civilian;
     }
 
     isKlingon() {

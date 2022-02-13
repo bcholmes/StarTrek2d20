@@ -183,7 +183,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
     }
 
     renderRank() {
-        if (character.type === CharacterType.AmbassadorDiplomat) {
+        if (character.isCivilian()) {
             return null;
         } else if (character.type === CharacterType.AlliedMilitary && character.typeDetails 
             && (character.typeDetails as AlliedMilitaryDetails).alliedMilitary.type === AlliedMilitaryType.OTHER) {
