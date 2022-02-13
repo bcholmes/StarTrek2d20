@@ -6,9 +6,9 @@ import {Skill, SkillsHelper} from './skills';
 import {Department} from './departments';
 import {Source} from './sources';
 import {Era} from './eras';
+import { IPrerequisite } from './prerequisite';
 
-interface ITalentPrerequisite {
-    isPrerequisiteFulfilled(): boolean;
+interface ITalentPrerequisite extends IPrerequisite {
     describe(): string
 }
 
@@ -55,10 +55,10 @@ class UntrainedDisciplinePrerequisite implements ITalentPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        return character.skills[this.discipline].expertise === 1;
+        return character.skills[this.discipline].expertise <= 1;
     }
     describe(): string {
-        return "Requires " + Skill[this.discipline] + " = 1";
+        return "Requires " + Skill[this.discipline] + " <= 1";
     }
 };
 
@@ -155,6 +155,26 @@ class CareerPrerequisite implements ITalentPrerequisite {
     }
     describe(): string {
         return "";
+    }
+}
+
+class MainCharacterPrerequisite implements ITalentPrerequisite {
+
+    isPrerequisiteFulfilled() {
+        return true; // at the moment, only Main characters can have talents, so I think this is always true
+    }
+    describe(): string {
+        return "Main Character only";
+    }
+}
+
+class SupportingCharacterPrerequisite implements ITalentPrerequisite {
+
+    isPrerequisiteFulfilled() {
+        return false; // at the moment, only Main characters can have talents, so I think this is always false
+    }
+    describe(): string {
+        return "Supporting Character only, must have at least two values and at least two other talents";
     }
 }
 
@@ -2047,7 +2067,103 @@ export class Talents {
                 [new SourcePrerequisite(Source.SciencesDivision)],
                 1,
                 "Enhancement"),
-
+            new TalentModel(
+                "Back-Up Plans",
+                "You have plans and contingencies which are set into motion whenever something goes awry. Whenever you or an ally fails a task, you may add 1 point to the group’s Momentum pool.",
+                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Control, 9)],
+                1,
+                "General"),
+            new TalentModel(
+                "Calm and Logical",
+                "You are a highly rational individual, with a disciplined mind that can set aside your feelings to view things as objectively as possible. You may still have to deal with those feelings later, however. When you would gain a trait or complication which represents a mood or emotional state, you may immediately remove that trait by adding 1 to Threat.",
+                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Reason, 11)],
+                1,
+                "General"),
+            new TalentModel(
+                "Close-Knit Crew",
+                "You and your crew have bonded through shared adversity, and you all pull together when the situation demands. When a scene begins, if there are fewer points of Momentum in the group pool than there are characters in the scene who possess this talent, immediately add 1 point of Momentum to the group pool.",
+                [new SourcePrerequisite(Source.PlayersGuide), new MainCharacterPrerequisite()],
+                1,
+                "General"),
+            new TalentModel(
+                "Constant Presence",
+                "You’re a regular fixture of away missions and other important work, relied upon by the senior staff for your expertise and judgement. Introducing this Supporting Character in subsequent adventures no longer costs Crew Support, and the Supporting Character gains 1 Determination the first time they are used in an adventure.",
+                [new SourcePrerequisite(Source.PlayersGuide), new SupportingCharacterPrerequisite()],
+                1,
+                "General"),
+            new TalentModel(
+                "Extra Effort",
+                "You can push yourself to extremes to succeed, but at a cost. When you attempt a task, you may reduce the Difficulty of the task by 1, to a minimum of 0. However, once the task is completed, you reduce your maximum Stress by 2 for the remainder of the current adventure (after which you can rest sufficiently to return your maximum Stress to its normal value).",
+                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Fitness, 9)],
+                1,
+                "General"),
+            new TalentModel(
+                "Gut Feeling",
+                "You’ve learned to trust your gut when something doesn’t feel right, and your instincts are rarely wrong. When the gamemaster spends one or more Threat to introduce reinforcements or to cause a Reversal, they must spend 2 additional Threat to do so (2 extra Threat in total, not per reinforcement).",
+                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Insight, 11)],
+                1,
+                "General"),
+            new TalentModel(
+                "Indefatigable",
+                "You don’t give up, and you don’t let failure deter you. When you fail a task, and attempt that task again during the same scene, reduce the Difficulty of the second attempt (and any subsequent attempts if you still fail) by 1.",
+                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Fitness, 11)],
+                1,
+                "General"),
+            new TalentModel(
+                "Methodical Planning",
+                "You have a clear path to achieving your goals and objectives, and you have a thorough understanding of what you and your allies need to do at each step. When an ally attempts a task which benefits from an advantage or other trait you created based on your plans or strategy, you may assist that ally’s task even if you are not present. In combat, this assistance does not require you to use your task to assist that ally.",
+                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Reason, 9)],
+                1,
+                "General"),
+            new TalentModel(
+                "No Hesitation",
+                "You know that responding quickly to dangerous situations can be vital, so you are always the first to act. At the start of any round in an action scene, you may add 1 to Threat to take the first turn, regardless of who would otherwise have acted first.",
+                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Daring, 9)],
+                1,
+                "General"),
+            new TalentModel(
+                "No Pain, No Gain",
+                "You prefer to achieve your goal first, and then deal with the consequences felt along the way. When you fail a task (but not an opposed task) which used your Daring, you may always choose to succeed at a cost.",
+                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Daring, 11)],
+                1,
+                "General"),
+            new TalentModel(
+                "Quick Survey",
+                "You have a way of getting a good impression of a situation with only a moment’s observation. At the start of a scene, you may immediately ask one question, as if you had spent one Momentum on the Obtain Information Momentum spend. The answer can only provide information that you could obtain with your own senses; you cannot gain information from equipment in so short a time.",
+                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Insight, 9)],
+                1,
+                "General"),
+            new TalentModel(
+                "Reassuring",
+                "Your presence is a boon to your comrades, providing them with a little extra confidence when they need it most. When you succeed at a task using your Presence, you may spend Momentum to reassure your allies, so long as they are within communication range of you. It costs 1 Momentum (Repeatable) to reassure an ally, and this effect allows them to ignore a single complication rolled. This cannot be used to ignore complications from succeeding at cost.",
+                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Insight, 9)],
+                1,
+                "General"),
+            new TalentModel(
+                "Second Wind",
+                "You can sometimes draw upon deep reserves of energy and resilience when the situation becomes desperate. You may spend a point of Determination to remove all the Stress you have accumulated. The normal requirements for spending a point of Determination still apply.",
+                [new SourcePrerequisite(Source.PlayersGuide)],
+                1,
+                "General"),
+            new TalentModel(
+                "Self-Reliant",
+                "While you understand the value of teamwork, you’re just as capable when you’re forced to rely on your own abilities. Whenever you succeed at a task where you did not purchase additional dice by spending Momentum or adding to Threat, you generate bonus Momentum equal to the task’s Difficulty. Bonus Momentum cannot be saved.",
+                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Control, 11)],
+                1,
+                "General"),
+            new TalentModel(
+                "Voice of Authority",
+                "The tone of your voice and the clarity of your words conveys that you are in control, that you are someone who should be listened to. When you assist someone, and use your Presence to do so, you may add 2 to Threat to treat your assistance die as if it had rolled a 1 instead of rolling it.",
+                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Presence, 11)],
+                1,
+                "General"),
+            new TalentModel(
+                "Well-Informed",
+                "You have contacts everywhere and you listen for news and rumors from far and wide. At the start of a scene, you may add 1 to Threat to ask the gamemaster two questions about the situation or location, as if you had spent Momentum on the Obtain Information spend. The answers you receive will be knowledge you’ve gained from your contacts and the news and rumors you’ve heard.",
+                [new SourcePrerequisite(Source.PlayersGuide)],
+                1,
+                "General"),
+                        
             // Starships
             new TalentModel(
                 "Ablative Armor",

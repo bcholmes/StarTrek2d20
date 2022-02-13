@@ -17,12 +17,52 @@ import { RolesHelper } from './roles';
 
 class TextBlock {
     text: string;
-    location: XYLocation;
     fontSize: number;
     font: PDFFont;
     height: number;
     width: number;
+}
+
+class Line {
+    blocks: TextBlock[];
     column: Column;
+    location: XYLocation; // represents the upper-left-hand corner of the line
+
+    constructor(location: XYLocation, column: Column, blocks?: TextBlock[]) {
+        this.location = location;
+        this.blocks = blocks || [];
+        this.column = column;
+    }
+
+    height() {
+        let h = 0.0;
+        this.blocks.forEach(b => {if (b.height > h) h = b.height; });
+        return h;
+    }
+    bottom() {
+        return new XYLocation(this.location.x, this.location.y - this.height());
+    }
+    availableWidth() {
+        let w = 0.0;
+        this.blocks.forEach(b => w += b.width);
+        return this.column.width - w;
+    }
+    isEmpty() {
+        return this.blocks.length === 0;
+    }
+    add(block: TextBlock) {
+        this.blocks.push(block);
+    }
+
+    moveToNextColumnIfNecessary(page: PDFPage) {
+        if (this.column.contains(this.bottom(), page)) {
+            return this;
+        } else if (this.column.nextColumn == null) {
+            return null;
+        } else {
+            return new Line(this.column.nextColumn.translatedStart(page), this.column.nextColumn, this.blocks);
+        }
+    }
 }
 
 class FontSpecification {
@@ -736,129 +776,114 @@ class KlingonCharacterSheet extends BasicFullCharacterSheet {
 
 class BaseTextCharacterSheet extends BasicFullCharacterSheet {
 
-    addBlankLineAfter(blocks: TextBlock[], page: PDFPage) {
+    addBlankLineAfter(lines: Line[], page: PDFPage) {
         let currentColumn = null;
         let newLocation = null;
-        if (blocks.length > 0) {
-            let textBlock = blocks[blocks.length-1];
-            newLocation = textBlock.location;
-            currentColumn = textBlock.column;
-            newLocation = new XYLocation(textBlock.location.x, textBlock.location.y - textBlock.height);
+        if (lines.length > 0) {
+            let line = lines[lines.length-1];
+            newLocation = line.location;
+            currentColumn = line.column;
+            newLocation = new XYLocation(line.bottom().x, line.bottom().y - (0.5 * line.height()));
         }
-        if (newLocation && !currentColumn.contains(newLocation, page)) {
-            if (currentColumn.nextColumn) {
-                newLocation = currentColumn.nextColumn.translatedStart(page);
-                currentColumn = currentColumn.nextColumn;
-            } else {
-                newLocation = null;
-            }
+
+        if (newLocation && currentColumn) {
+            let line = new Line(newLocation, currentColumn);
+            line = line.moveToNextColumnIfNecessary(page);
+            return line;
+        } else {
+            return null;
         }
-        return { location: newLocation, column: currentColumn };
     }
 
     writeRoleAndTalents(page: PDFPage, titleStyle: FontSpecification, paragraphStyle: FontSpecification, currentColumn: Column) {
         let start = currentColumn.translatedStart(page);
-        let textBlocks: TextBlock[] = [];
+        let lines: Line[] = [];
+        let startLine = new Line(start, currentColumn);
         if (character.role) {
             let role = RolesHelper.getRoleModelByName(character.role);
             if (role) {
-                let blocks = this.createTextBlocks(role.name, titleStyle, start, page, currentColumn);
-                blocks.forEach(b => textBlocks.push(b));
+                let blocks = this.createTextBlocks(role.name + ":", titleStyle, startLine, page);
+                blocks.forEach((b, i) => { if (i < blocks.length -1) lines.push(b); });
 
-                if (blocks.length > 0) {
-                    let textBlock = blocks[blocks.length-1];
-                    start = textBlock.location;
-                }
+                let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
 
-                blocks = this.createTextBlocks(role.ability, paragraphStyle, start, page, currentColumn);
-                blocks.forEach(b => textBlocks.push(b));
-                let output = this.addBlankLineAfter(blocks, page);
-                start = output.location;
-                currentColumn = output.column;
+                blocks = this.createTextBlocks(role.ability, paragraphStyle, line, page);
+                blocks.forEach(b => lines.push(b));
+                startLine = this.addBlankLineAfter(lines, page);
             }
         }
 
-        if (currentColumn) {
+        if (startLine) {
             for (var t in character.talents) {   
                 const text = t;
 
-                let blocks = this.createTextBlocks(text, titleStyle, start, page, currentColumn);
-                blocks.forEach(b => textBlocks.push(b));
-                
-                if (blocks.length > 0) {
-                    let textBlock = blocks[blocks.length-1];
-                    start = textBlock.location;
-                }
+                let blocks = this.createTextBlocks(text + ":", titleStyle, startLine, page);
+                blocks.forEach((b, i) => { if (i < blocks.length -1) lines.push(b); });
+                let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
 
                 const talent = TalentsHelper.getTalent(t);
                 if (talent) {
-                    blocks = this.createTextBlocks(talent.description, paragraphStyle, start, page, currentColumn);
-                    blocks.forEach(b => textBlocks.push(b));
-                    let output = this.addBlankLineAfter(blocks, page);
-                    start = output.location;
-                    currentColumn = output.column;
-                    if (!currentColumn) {
+                    blocks = this.createTextBlocks(talent.description, paragraphStyle, line, page);
+                    blocks.forEach(b => lines.push(b));
+                    startLine = this.addBlankLineAfter(lines, page);
+                    if (startLine == null) {
                         break;
                     }
                 }
             };
         }
 
-        textBlocks.forEach(t => 
+        lines.forEach(t => 
             this.writeTextBlock(t, page)
         );
     }
 
-    createTextBlocks(text: string, fontSpec: FontSpecification, start: XYLocation, page: PDFPage, currentColumn: Column, newLine: boolean = true) {
-        let result: TextBlock[] = [];
-        if (start) {
-            let textBlock = this.createTextBlock(text, fontSpec, currentColumn);
-            if (textBlock.width < currentColumn.width) {
-                textBlock.location = new XYLocation(start.x, start.y - (newLine ? textBlock.height : 0));
-        
-                result.push(textBlock);
+    createTextBlocks(text: string, fontSpec: FontSpecification, line: Line, page: PDFPage) {
+        let result: Line[] = [];
+        if (line) {
+            let textBlock = this.createTextBlock(line.isEmpty() ? text : (" " + text), fontSpec);
+            if (textBlock.width < line.availableWidth()) {
+                line.add(textBlock);        
+                result.push(line);
             } else {
                 let words = text.split(/\s+/);
                 let previousBlock = null;
                 let textPortion = "";
                 for (let i = 0; i < words.length; i++) {
-                    if (textPortion === "") {
+                    if (textPortion === "" && line.isEmpty()) {
                         textPortion = words[i];
                     } else {
                         textPortion += (" " + words[i]);
                     }
-                    let block = this.createTextBlock(textPortion, fontSpec, currentColumn);
-                    if (block.width < currentColumn.width) {
+                    let block = this.createTextBlock(textPortion, fontSpec);
+                    if (block.width < line.availableWidth()) {
                         previousBlock = block;
                     } else {
                         if (previousBlock != null) {
-                            previousBlock.location = new XYLocation(start.x, start.y - previousBlock.height);
-                            result.push(previousBlock);
-                            start = new XYLocation(currentColumn.start.x, start.y - previousBlock.height);
+                            line.add(previousBlock);
+                            line = line.moveToNextColumnIfNecessary(page);
                             previousBlock = null;
-                            if (!currentColumn.contains(start, page)) {
-                                if (currentColumn.nextColumn) {
-                                    currentColumn = currentColumn.nextColumn;
-                                    start = currentColumn.translatedStart(page);
-                                } else {
-                                    break;
-                                }
+                            if (line) {
+                                result.push(line);
+                                line = new Line(line.bottom(), line.column);
+                            } else {
+                                break;
                             }
                         }
                         textPortion = words[i];
-                        previousBlock = this.createTextBlock(textPortion, fontSpec, currentColumn);
+                        previousBlock = this.createTextBlock(textPortion, fontSpec);
                     }
                 }
-                if (previousBlock != null) {
-                    previousBlock.location = new XYLocation(start.x, start.y - previousBlock.height);
-                    result.push(previousBlock);
+                if (previousBlock != null && line != null) {
+                    line.add(previousBlock);
+                    result.push(line);
                 }
             }
         }
         return result;
     }
 
-    createTextBlock(text: string, fontSpec: FontSpecification, column: Column) {
+    createTextBlock(text: string, fontSpec: FontSpecification) {
         let textBlock = new TextBlock();
         textBlock.text = text;
         const textWidth = fontSpec.font.widthOfTextAtSize(text, fontSpec.size);
@@ -867,17 +892,20 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         textBlock.width = textWidth;
         textBlock.font = fontSpec.font;
         textBlock.fontSize = fontSpec.size;
-        textBlock.column = column;
         return textBlock;
     }
 
-    writeTextBlock(textBlock: TextBlock, page: PDFPage) {
-        page.drawText(textBlock.text, {
-            x: textBlock.location.x,
-            y: textBlock.location.y,
-            size: textBlock.fontSize,
-            font: textBlock.font,
-            color: rgb(0.1, 0.1, 0.1)
+    writeTextBlock(line: Line, page: PDFPage) {
+        let x = line.bottom().x;
+        line.blocks.forEach(textBlock => {
+            page.drawText(textBlock.text, {
+                x: x,
+                y: line.bottom().y,
+                size: textBlock.fontSize,
+                font: textBlock.font,
+                color: rgb(0.1, 0.1, 0.1)
+            });
+            x += textBlock.width;
         });
     }
 }
@@ -932,6 +960,63 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
     }
 }
 
+class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
+    getName(): string {
+        return 'Landscape TNG Character Sheet'
+    }
+    getThumbnailUrl(): string {
+        return 'https://sta.bcholmes.org/static/img/sheets/TNG_Landscape_Character_Sheet.png'
+    }
+    getPdfUrl(): string {
+        return 'https://sta.bcholmes.org/static/pdf/TNG_Landscape_Character_Sheet.pdf'
+    }
+
+    async populate(pdf: PDFDocument) {
+        pdf.registerFontkit(fontkit);
+        await super.populate(pdf);
+        await this.fillTalentTextBlock(pdf);
+    }
+
+    async fillTalentTextBlock(pdf: PDFDocument) {
+        const page = pdf.getPages()[0];
+        const boldFontBytes = await fetch("/static/font/OpenSansCondensed-Bold.ttf").then(res => res.arrayBuffer())
+        const lightFontBytes = await fetch("/static/font/OpenSansCondensed-Light.ttf").then(res => res.arrayBuffer())
+
+        const openSansBold = await pdf.embedFont(boldFontBytes);
+        const openSansLight = await pdf.embedFont(lightFontBytes);
+        const titleStyle = new FontSpecification(openSansBold, 9);
+        const paragraphStyle = new FontSpecification(openSansLight, 9);
+
+        let currentColumn = new Column(583, 45, 563-45, 757-583);
+
+        this.writeRoleAndTalents(page, titleStyle, paragraphStyle, currentColumn);
+    }
+
+    populateForm(form: PDFForm): void {
+        super.populateForm(form);
+        
+        this.fillField(form, "Pronouns", character.pronouns);
+
+        if (character.careerEvents && character.careerEvents.length > 0) {
+            let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0]);
+            if (event1) {
+                this.fillField(form, 'Career Event 1', event1.name);
+            }
+
+            if (character.careerEvents && character.careerEvents.length > 1) {
+                let event2 = CareerEventsHelper.getCareerEvent(character.careerEvents[1]);
+                if (event2) {
+                    this.fillField(form, 'Career Event 2', event2.name);
+                }
+            }
+        }
+    }
+
+    fillName(form: PDFForm) {
+        this.fillField(form, 'Name', this.formatNameWithoutPronouns());
+    }
+}
+
 class CharacterSheets {
     public getSupportingCharacterSheet(): ICharacterSheet[] {
         if (character.isKlingon()) {
@@ -945,11 +1030,11 @@ class CharacterSheets {
 
     public getCharacterSheets(): ICharacterSheet[] {
         if (character.isKlingon()) {
-            return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet() ];
+            return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet() ];
         } else if (character.era === Era.NextGeneration) {
-            return [ new StandardTngCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(), new TwoPageTngCharacterSheet() ];
+            return [ new StandardTngCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet() ];
         } else {
-            return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet() ];
+            return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new LandscapeTngCharacterSheet() ];
         }
     }
 

@@ -148,7 +148,7 @@ class Upbringings {
             Attribute.Insight,
             Attribute.Reason,
             [Skill.Conn, Skill.Engineering],
-            "Your focus should relate to your dreams, cov- ering skills learned because they would help you fly.",
+            "Your focus should relate to your dreams, covering skills learned because they would help you fly.",
             ["Astronavigation", "Helm Operations", "Small Craft", "Starship Recognition", "Propulsion Systems"]
         ),
         new UpbringingModel(
@@ -172,7 +172,7 @@ class Upbringings {
             Attribute.Fitness,
             Attribute.Insight,
             [Skill.Medicine, Skill.Science],
-            "Your focus should relate to your dreams, represent- ing the field you were most curious about growing up.",
+            "Your focus should relate to your dreams, representing the field you were most curious about growing up.",
             ["Anthropology", "Astrophysics", "Botany", "Genetics", "Linguistics", "Psychology", "Quantum Mechanics", "Xenobiology"]
         ),
         new UpbringingModel(
@@ -185,7 +185,7 @@ class Upbringings {
             Attribute.Reason,
             [Skill.Security, Skill.Medicine],
             "Your focus should relate to the skills you honed protecting and caring for others.",
-            ["Hand-to-Hand Combat (may rename as a spe- cific Martial Art)", "Hand Phasers", "Survival", "Threat Awareness", "Emergency Medicine", "Triage"]
+            ["Hand-to-Hand Combat (may rename as a specific Martial Art)", "Hand Phasers", "Survival", "Threat Awareness", "Emergency Medicine", "Triage"]
         ),
         new UpbringingModel(
             Upbringing.ToProsper,

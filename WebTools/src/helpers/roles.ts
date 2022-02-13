@@ -369,6 +369,14 @@ class Roles {
 
         // Player's Guide
         new RoleModel(
+            Role.Administrator,
+            "Administrator",
+            "Administrators are important but often unappreciated. They oversee the smooth operation of colonies and other institutions, such as spaceports, hospitals, and research centers. These positions tend to be held by civilians in many cases, but military administrators necessarily exist to oversee military facilities, such as Starfleet commanders running a starbase. Their role often ensures that they are well-connected, given the variety of people and services involved in running a colony, port, or similar.",
+            Skill.Command,
+            "You may, once per session, create an advantage which represents a favor owed by a connection in politics, bureaucracy, trade, or some similar position of importance. Creating this advantage has no cost, and it may be used before attempting a task.",
+            new SourcePrerequisite(Source.PlayersGuide),
+            new CivilianPrerequisite()),
+        new RoleModel(
             Role.Ambassador,
             "Ambassador",
             "Ambassadors represent the interests of their nation or other political entity to other nations. The Federation has numerous ambassadors, as do member worlds within the Federation, and other powers such as the Cardassian Union, the Ferengi Alliance, the Klingon Empire, and the Romulan Star Empire. Ambassadors are the highest rank of diplomats, and thus possess all the rights, privileges, and responsibilities afforded to diplomatic personnel under international treaties observed by all cultures, including immunity from criminal prosecution.",
@@ -413,6 +421,22 @@ class Roles {
             new SourcePrerequisite(Source.PlayersGuide),
             new NotKlingonPrerequisite()),
         new RoleModel(
+            Role.CivilianBureaucrat,
+            "Civilian Bureaucrat",
+            "You keep an organization functioning, ensuring that the wheels of civilization continue to turn. You’re often placed in charge of important matters within an organization, liaising with other groups to ensure that vital tasks get accomplished",
+            Skill.Command,
+            "When you attempt a task which relates to bureaucracy or administrative work, you may reduce the Difficulty by 2, to a minimum of 0. In addition, if you succeed at such a task and spend Momentum to Obtain Information, then the first point of Momentum spent allows you to ask two questions rather than one.",
+            new SourcePrerequisite(Source.PlayersGuide),
+            new CivilianPrerequisite()),
+        new RoleModel(
+            Role.Constable,
+            "Constable",
+            "A somewhat old-fashioned term for an officer of the law or a keeper of the peace, you serve a community by upholding the law, maintaining order, and arbitrating disputes. This is a common role in colonies and amongst the civilian population of space stations, either in place of or along- side more conventional security forces such as Starfleet. You may be a lone peace officer, handling matters with your wits and your words, or you might oversee a collection of deputies or other subordinates.",
+            Skill.Security,
+            "When you succeed at a task to investigate a crime scene, or to question a witness or suspect, you generate one bonus Momentum. Bonus Momentum may not be saved. In addition, your knowledge of local criminal activity means that once per scene, you may create an advantage representing an informant’s information by adding 1 to Threat rather than spending 2 Momentum.",
+            new SourcePrerequisite(Source.PlayersGuide),
+            new CivilianPrerequisite()),    
+        new RoleModel(
             Role.Expert,
             "Expert",
             "You are an expert in a particular field, working alongside the crew to consult upon a matter related to your expertise. You are highly specialized, and extremely capable in your chosen field, but this may lead you to ignore or overlook things that fall outside your knowledge, or result in an obsession that causes you to prioritize your work over other concerns.",
@@ -427,6 +451,14 @@ class Roles {
             "Once per adventure, you may create an advantage without requiring a task or spending any Momentum, Threat, or Determination. This advantage must reflect information, equipment, physical resources, or access to a location (such as access codes or identification data) provided to you by a contact or by your agency.",
             new SourcePrerequisite(Source.PlayersGuide)),
         new RoleModel(
+            Role.Merchant,
+            "Merchant",
+            "You’re a merchant or trader, exchanging valuable goods for latinum, or for other goods. Even in the Federation, a civilization which has largely evolved beyond scarcity and the personal accumulation of wealth, merchants are necessary for ensuring that resources can easily move from place to place, and the Federation and its members maintain reserves of latinum and other precious commodities to allow them to trade with other civilizations. In a practical, day-to-day sense, merchants are well-connected and often have access to unusual items or specialized resources that might not be available normally.",
+            Skill.Command,
+            "Once per adventure, you can waive the Opportunity costs on up to three items of equip- ment being acquired by other player characters. You may even allow other player characters to obtain items that are not normally available to them (such as disruptors to a Starfleet crew, or items which are restricted or illegal), though you add 1 to Threat for each such item provided.",
+            new SourcePrerequisite(Source.PlayersGuide),
+            new CivilianPrerequisite()),    
+        new RoleModel(
             Role.PoliticalLiaison,
             "Political Liaison",
             "You serve as a representative of a government to the crew, representing the government’s needs and interests during the operations of the crew, and providing the crew with a means of communicating with that government in turn. This is often the case where multiple groups are required to coexist, such as a Starfleet facility operating close to an allied non-Federation world, or as part of a joint operation between Starfleet and Klingon Defense Force personnel. You represent the official government that your organization belongs to – i.e., if you are a member of the Bajoran Militia, then you represent the current Bajoran government.",
@@ -434,10 +466,25 @@ class Roles {
             "You gain an additional Directive or Dictate, which only applies to you, which reflects the political stance of the government you represent. Your gamemaster will work with you to determine the wording of this Directive or Dictate. It serves to provide you with a source of complications and potential restrictions when acting against the interests of your government, as well as benefits when you are acting with the full support of your superiors.",
             new SourcePrerequisite(Source.PlayersGuide)),
         new RoleModel(
+            Role.ShipsDoctor,
+            "Ship's Doctor",
+            "You care for the crew of your ship, or the station you serve on (in which case, rename the role to Station Doctor), but unlike a Chief Medical Officer, you do not have an extensive medical department to manage or to aid you. This is common in smaller crews which do not require a large sickbay or infirmary and tends to mean that these smaller postings favor generalists who can adapt to a variety of circumstances, where a larger medical staff could rely on specialists.",
+            Skill.Command,
+            "You have two additional focuses, which must relate to fields of study within medicine. However, your ship cannot use Crew Support to introduce supporting charac- ters from the medical department.",
+            new SourcePrerequisite(Source.PlayersGuide)),
+        new RoleModel(
+            Role.SpiritualLeader,
+            "Spritual Leader",
+            "You are an important figure within your community, providing spiritual and philosophical guidance to those who are troubled. In many cases, this can overlap with the role of a counselor, but there are meaningful differences between the two. Spiritual leaders are more prominent in overtly religious or spiritual cultures, but religion is not necessary for spiritual leaders to be present in a culture, as demonstrated by the Vulcans and Klingons. The Bajoran faith is an example of one that has many spiritual leaders.",
+            undefined,
+            "When you are in a non-conflict scene with a character who is suffering a complication from using a value negatively, or who has challenged one of their values, you may re-roll your d20 when you assist them. If they have challenged one of their values, you may spend 2 Momentum (Immediate) during the scene to allow them to rewrite their crossed-out value in that scene rather than at the end of the adventure.",
+            new SourcePrerequisite(Source.PlayersGuide),
+            new CivilianPrerequisite()),
+        new RoleModel(
             Role.Translator,
             "Translator",
             "You are an expert in language and communication. While the development of the universal translator has reduced the need for translators during daily life, there are still situations which call for experts in linguistics. Encounters with new cultures often require support from xenolinguistics experts to smooth over any problems that the universal translator has, particularly if a culture has an unusual style or method of communication. Similarly, archaeological research often requires piecing together extinct languages from evidence in ways that can’t easily be automated. You are a polyglot, who knows enough of most common languages spoken by your culture and its neighbors to communicate freely without a universal translator.",
-            Skill.Science,
+            Skill.Medicine,
             "You reduce the Difficulty of any task to translate or understand an unfamiliar language by 2, to a minimum of 0.",
             new SourcePrerequisite(Source.PlayersGuide)),
     ];

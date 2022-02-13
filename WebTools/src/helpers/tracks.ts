@@ -32,6 +32,14 @@ export enum Track {
     // Player's Guide - Ambassador / Diplomat
     DiplomaticCorps,
     HonoraryStatus,
+
+    // Player's Guide - Civilian
+    FreightAndTransport,
+    LawEnforcement,
+    Physician,
+    PoliticianOrBureaucrat,
+    ScientificOrTechnicalExpert,
+    TraderOrMerchant
 }
 
 export enum ImprovementRuleType {
@@ -289,11 +297,73 @@ class Tracks {
         ),
     ];
 
+    private _civilianTracks: TrackModel[] = [
+        new TrackModel(
+            Track.FreightAndTransport,
+            "Freight and Transport",
+            Source.PlayersGuide,
+            "You are a crew of a privately-owned starship, perhaps running cargo from system to system, or flying passengers to distant destinations. Some of these ships are often family businesses, passed down through generations, running a specific route. Others take whatever contracts they can find, carrying goods or passengers on an ad-hoc basis.",
+            [Skill.Conn, Skill.Engineering],
+            [Skill.Command, Skill.Security, Skill.Medicine, Skill.Science],
+            ["Astronavigation", "Helm Operations", "Logistics", "Bureaucracy", "Small Craft", "Extra-Vehicular Activity", "Starship Recognition", "Propulsion Systems", "Emergency Repairs", "Transporters & Replicators"],
+        ),
+        new TrackModel(
+            Track.LawEnforcement,
+            "Law Enforcement",
+            Source.PlayersGuide,
+            "You work to protect people in your local community, keeping the peace, arbitrating disputes, and confronting those who seek to exploit or do harm to others. Such groups normally exist on frontier worlds, and independent settlements far from the stability of the Federation. On the main worlds of the Federation, Starfleet security personnel fill this role during emergencies, but law enforcement isn’t typically a concern on worlds where crime no longer exists.",
+            [Skill.Command, Skill.Security],
+            [Skill.Conn, Skill.Engineering, Skill.Medicine, Skill.Science],
+            ["Law", "Hand-to-Hand Combat", "Phasers", "Interrogation", "Intimidation", "Small Craft"]
+        ),
+        new TrackModel(
+            Track.Physician,
+            "Physician",
+            Source.PlayersGuide,
+            "You’ve devoted your life to healing others. You may be trained as a doctor, a paramedic, a counselor, or you may be a medical researcher rather than a practicing physician, but either way, the goal is to help people who are hurt in some way. Your skills are in demand across explored space, and even civilian-trained physicians can find themselves aboard Starfleet and military ships.",
+            [Skill.Medicine],
+            [Skill.Command, Skill.Conn, Skill.Security, Skill.Engineering, Skill.Science],
+            ["Emergency Medicine", "Surgery", "Psychiatry", "Virology", "Cybernetics", "Genetics", "Xenobiology"]
+        ),
+        new TrackModel(
+            Track.PoliticianOrBureaucrat,
+            "Politician or Bureaucrat",
+            Source.PlayersGuide,
+            "You are a civil servant, operating within the structure of a civilization to ensure that if continues to function smoothly and to the benefit of its people. Your role may be narrowly focused upon a specific area of government, or you may be responsible for overseeing large departments or ministries, your decisions impacting millions or even billions of lives. Either way, your role is important, and you take pride in the necessary work you carry out.",
+            [Skill.Command],
+            [Skill.Conn, Skill.Security, Skill.Engineering, Skill.Medicine, Skill.Science],
+            ["Bureaucracy", "Diplomacy", "Politics", "Linguistics", "History", "Philosophy", "or something related to your role in public service"],
+            new AttributeImprovementRule(ImprovementRuleType.AT_LEAST_ONE, Attribute.Insight, Attribute.Presence)
+        ),
+        new TrackModel(
+            Track.ScientificOrTechnicalExpert,
+            "Scientific or Technical Expert",
+            Source.PlayersGuide,
+            "You pursue scientific truth or technological progress, seeking to become your generation’s Zefram Cochrane, Emory Erickson, Leah Brahms, or Richard Daystrom. You probably specialize in a single field of scientific study or technical expertise, or a small number of related fields. You may end up working with Starfleet or a military, but this is more because they are interested in your work, rather than you serving their goals.",
+            [Skill.Science, Skill.Engineering],
+            [Skill.Command, Skill.Conn, Skill.Security, Skill.Medicine],
+            ["Astrophysics", "Botany", "Cybernetics", "Exo-Tectonics", "Genetics", "Quantum Mechanics", "Subspace Mechanics", "Temporal Mechanics", "Transporters and Replicators", "Warp Field Dynamics"],
+            new AttributeImprovementRule(ImprovementRuleType.AT_LEAST_ONE, Attribute.Reason)
+        ),
+        new TrackModel(
+            Track.TraderOrMerchant,
+            "Trader or Merchant",
+            Source.PlayersGuide,
+            "You exchange money for goods or services. Within the Federation, the actual transactions are a trivial matter, but other civilizations still make more overt use of money, with gold-pressed latinum serving as a common economic standard, easily exchanged for the Cardassian lek, Bajoran lita, or Klingon darsek. You’re a part of the galactic economy, providing a service or trading in valuable goods (or both) in exchange for latinum, currency, or other goods or services.",
+            [Skill.Command],
+            [Skill.Conn, Skill.Security, Skill.Engineering, Skill.Medicine, Skill.Science],
+            ["Art", "Cooking", "Psychology", "Economics", "Logistics", "Persuasion", "Tailoring", "Disruptors"],
+            new AttributeImprovementRule(ImprovementRuleType.AT_LEAST_ONE, Attribute.Insight, Attribute.Presence)
+        ),
+    ];
+
     private chooseList(type: CharacterType) {
         if (type === CharacterType.AlliedMilitary) {
             return this._alliedMilitaryTracks;
         } else if (type === CharacterType.AmbassadorDiplomat) {
             return this._ambassardorTracks;
+        } else if (type === CharacterType.Civilian) {
+            return this._civilianTracks;
         } else if (type === CharacterType.KlingonWarrior) {
             return this._klingonTracks;
         } else {

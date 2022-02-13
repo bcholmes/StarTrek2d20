@@ -5,6 +5,7 @@ export const enum CharacterType {
     KlingonWarrior,
     AlliedMilitary,
     AmbassadorDiplomat,
+    Civilian,
     Other
 }
 
@@ -14,11 +15,12 @@ export class CharacterTypeModel {
         new CharacterTypeModel("Klingon Defense Force", CharacterType.KlingonWarrior),
         new CharacterTypeModel("Allied Military", CharacterType.AlliedMilitary),
         new CharacterTypeModel("Ambassador / Diplomat", CharacterType.AmbassadorDiplomat),
+        new CharacterTypeModel("Civilian", CharacterType.Civilian),
         new CharacterTypeModel("Other", CharacterType.Other)
     ];
 
     private static TYPES_EXCEPT_OTHER: CharacterTypeModel[] = [ 
-        CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1], CharacterTypeModel.TYPES[2], CharacterTypeModel.TYPES[3]
+        CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1], CharacterTypeModel.TYPES[2], CharacterTypeModel.TYPES[3], CharacterTypeModel.TYPES[4]
     ];
     
     name: string;
@@ -37,12 +39,10 @@ export class CharacterTypeModel {
         return this.TYPES_EXCEPT_OTHER.filter(t => {
             if (t.type === CharacterType.KlingonWarrior) {
                 return sources.indexOf(Source.KlingonCore) >= 0;
-            } else if (t.type === CharacterType.AlliedMilitary) {
-                return sources.indexOf(Source.PlayersGuide) >= 0
-            } else if (t.type === CharacterType.AmbassadorDiplomat) {
-                return sources.indexOf(Source.PlayersGuide) >= 0
-            } else {
+            } else if (t.type === CharacterType.Starfleet) {
                 return true;
+            } else {
+                return sources.indexOf(Source.PlayersGuide) >= 0
             }
         });
     }

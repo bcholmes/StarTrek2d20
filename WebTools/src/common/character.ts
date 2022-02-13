@@ -14,6 +14,7 @@ import {MissionProfile} from "../helpers/missionProfiles";
 import {CharacterType} from './characterType';
 import { System } from '../helpers/systems';
 import { AlliedMilitary, AlliedMilitaryType } from '../helpers/alliedMilitary';
+import { Government, GovernmentType } from '../helpers/governments';
 
 export abstract class CharacterTypeDetails {
 
@@ -28,6 +29,28 @@ export class AlliedMilitaryDetails extends CharacterTypeDetails {
         super();
         this.alliedMilitary = alliedMilitary;
         this.name = name;
+    }
+}
+
+export class GovernmentDetails extends CharacterTypeDetails {
+
+    government: Government;
+    name: string;
+
+    constructor(government: Government, name: string) {
+        super();
+        this.government = government;
+        this.name = name;
+    }
+
+    getName() {
+        if (this.government && this.government.type === GovernmentType.OTHER && this.name) {
+            return this.name;
+        } else if (this.government) {
+            return this.government.name;
+        } else {
+            return "";
+        }
     }
 }
 

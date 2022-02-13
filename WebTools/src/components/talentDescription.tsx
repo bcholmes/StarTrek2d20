@@ -1,4 +1,5 @@
 ﻿import * as React from 'react';
+import replaceDiceWithArrowhead from '../common/arrowhead';
 
 interface ITalentDescriptionProperties {
     name: string;
@@ -8,7 +9,7 @@ interface ITalentDescriptionProperties {
 export class TalentDescription extends React.Component<ITalentDescriptionProperties, {}> {
     render() {
         const desc = this.props.description
-            ? <div className="talent-desc">{this.props.description}</div>
+            ? <div className="talent-desc">{replaceDiceWithArrowhead(this.props.description)}</div>
             : undefined;
 
         return (

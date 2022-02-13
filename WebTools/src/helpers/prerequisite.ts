@@ -32,7 +32,8 @@ export class CivilianPrerequisite implements IPrerequisite {
 
     isPrerequisiteFulfilled() {
         if (new SourcePrerequisite(Source.SciencesDivision, Source.PlayersGuide, Source.KlingonCore).isPrerequisiteFulfilled) {
-            return character.type === CharacterType.AmbassadorDiplomat ||
+            return character.type === CharacterType.AmbassadorDiplomat || 
+                character.type === CharacterType.Civilian ||
                 (character.type === CharacterType.Starfleet 
                     && (character.track === Track.UniversityAlumni
                         || character.track === Track.ResearchInternship)) ||

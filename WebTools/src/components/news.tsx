@@ -11,6 +11,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220213</b>
+                <ul>
+                    <li>Even more functionality from the <cite>Player's Guide</cite> added (Civilian characters, additional roles, and some Talents)</li>
+                    <li>Add a new type of character sheet, and make certain improvements to rendering full talent text on sheets.</li>
+                </ul>
                 <b>v1.220212</b>
                 <ul>
                     <li>More functionality from the <cite>Player's Guide</cite> added.</li>

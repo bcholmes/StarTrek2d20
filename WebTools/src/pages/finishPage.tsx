@@ -11,6 +11,7 @@ import {RolesHelper, RoleModel} from '../helpers/roles';
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
 import { AlliedMilitaryType } from '../helpers/alliedMilitary';
+import replaceDiceWithArrowhead from '../common/arrowhead';
 
 export class FinishPage extends React.Component<IPageProperties, {}> {
     private name: HTMLInputElement;
@@ -22,7 +23,6 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
     private roles: RoleModel[];
     private role: string;
     private secondaryRole: string;
-    private roleDescription: string;
 
     constructor(props: IPageProperties) {
         super(props);
@@ -40,7 +40,6 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
         character.roleAbility = this.roles[0].ability;
 
         this.role = this.roles[0].name;
-        this.roleDescription = `${this.roles[0].description} ${this.roles[0].ability}`;
 
         this.getRanks();
         if (!character.isCivilian()) {
@@ -87,7 +86,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
             return (
                 <tr key={i}>
                     <td className="selection-header-small">{r.name}</td>
-                    <td>{r.description}</td>
+                    <td>{replaceDiceWithArrowhead(r.description)}</td>
                     <td>
                         <CheckBox
                             text=""

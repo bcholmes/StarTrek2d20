@@ -64,8 +64,6 @@ class OtherSkill extends React.Component<IMajorSkillProperties, {}> {
 
 interface IMajorsSkillListProperties {
     skills: Skill[];
-    onMajorSelected?: (skill: Skill) => void;
-    onOtherSelected?: (skills: Skill[]) => void;
     onDone: (done: boolean) => void;
     rule?: SkillImprovementRule;
 }
@@ -147,12 +145,17 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
     private onSelectMajor(skill: Skill) {
         let other = [ ...this.state.selections.other ];
 
-        if (other.indexOf(skill) > -1) {
+        if (this.state.selections.major === skill) {
+            // if already selected, then unselect
+            skill = undefined;
+            // make sure we remove any major skills from the "other" list
+            for (let s of this.props.skills) {
+                if (other.indexOf(s) > -1) {
+                    other.splice(other.indexOf(s), 1);
+                } 
+            }
+        } else if (other.indexOf(skill) > -1) {
             other.splice(other.indexOf(skill), 1);
-        }
-
-        if (this.props.onMajorSelected) {
-            this.props.onMajorSelected(skill);
         }
 
         let selections = this.makeEmptySlotsForRule(new MajorSkillSelections(skill, other));
@@ -217,17 +220,15 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
 
 
     private onSelectOther(skill: Skill) {
-        if (this.state.selections.other.indexOf(skill) > -1) {
-            return;
-        }
-
         let other = [...this.state.selections.other];
-        other.push(skill);
-
-        let selections = this.makeEmptySlotsForRule(new MajorSkillSelections(this.state.selections.major, other), !this.isRuleSkill(skill));
-        if (this.props.onOtherSelected) {
-            this.props.onOtherSelected(selections.other);
+        if (other.indexOf(skill) > -1) {
+            other.splice(other.indexOf(skill), 1);
+            skill = undefined;
+        } else {
+            other.push(skill);
         }
+
+        let selections = this.makeEmptySlotsForRule(new MajorSkillSelections(this.state.selections.major, other), skill != null ? !this.isRuleSkill(skill) : true);
 
         this.updateValues(selections);
         this.props.onDone(selections.isFullyPopulated());
