@@ -8,6 +8,8 @@ import {Source} from './sources';
 import {Era} from './eras';
 import { IPrerequisite } from './prerequisite';
 
+export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
+
 interface ITalentPrerequisite extends IPrerequisite {
     describe(): string
 }
@@ -167,6 +169,30 @@ class MainCharacterPrerequisite implements ITalentPrerequisite {
         return "Main Character only";
     }
 }
+
+class CommandingAndExecutiveOfficerPrerequisite implements ITalentPrerequisite {
+
+    isPrerequisiteFulfilled() {
+        // Awkwardly, we don't know the character's role at the time that
+        // they select talents. What we *do* know is that Young characters
+        // don't get to be Commanding Officers or Executive Officers.
+        return !character.isYoung();
+    }
+    describe(): string {
+        return "Commanding Officer or Executive Officer only";
+    }
+}
+
+class GMsDiscretionPrerequisite implements ITalentPrerequisite {
+
+    isPrerequisiteFulfilled() {
+        return character.allowEsotericTalents;
+    }
+    describe(): string {
+        return "Gamemaster’s discretion";
+    }
+}
+
 
 class SupportingCharacterPrerequisite implements ITalentPrerequisite {
 
@@ -424,7 +450,7 @@ export class TalentModel {
     category: string;
     aliases: AliasModel[];
 
-    constructor(name: string, desc: string, prerequisites: ITalentPrerequisite[], maxRank: number, category?: string, ...aliases: AliasModel[]) {
+    constructor(name: string, desc: string, prerequisites: ITalentPrerequisite[], maxRank: number = 1, category?: string, ...aliases: AliasModel[]) {
         this.name = name;
         this.description = desc;
         this.prerequisites = prerequisites;
@@ -582,6 +608,25 @@ export class Talents {
                 "During any Challenge, Extended Task or other activity under time pressure, the character may attempt a Control + Command Task with a Difficulty 3. If this Task succeeds, reduce the total number of intervals the Players have taken by 1; for every 2 Momentum spent (Repeatable) reduce by a further 1. The character has managed to minimize lost time. If the Task fails, add one additional interval as the character’s efforts actually waste time.",
                 [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.CommandDivision)],
                 1),
+            new TalentModel(
+                "Advanced Team Dynamics",
+                "The people working for you are the best, and you expect the best from them. The first time each adventure that you introduce a supporting character, that supporting character may take one additional option to improve the supporting character (from the list on page 134 of the core rulebook, or page 126 of The Klingon Empire core rulebook).",
+                [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.PlayersGuide), new MainCharacterPrerequisite(), new CommandingAndExecutiveOfficerPrerequisite()],
+                1),
+            new TalentModel(
+                "Bolster",
+                "You are skilled in keeping your allies up and active even under the most difficult circumstances. When you succeed at any task using your Command discipline during an action scene, you may spend Momentum to recover Stress suffered by your allies: each Momentum spent (Repeatable) recovers Stress equal to your Command rating from a single ally. This cannot help an injured character.",
+                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.PlayersGuide)],
+                1),
+            new TalentModel(
+                "Precautions",
+                "You prepare for the worst, just in case. Once per scene, when an ally suffers an injury or the ship suffers a breach, you may prevent that injury or breach; describe what precaution you took to allow that ally to avoid being injured or to prevent that breach occurring.",
+                [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.PlayersGuide)],
+                1),
+            new TalentModel(
+                "Teacher",
+                "Beyond only being a leader, you concern yourself with the development and growth of your crew, taking pride in their accomplishments. When you create an advantage for an ally that represents your guidance or advice, that ally may re-roll one d20 on a single task they attempt which benefits from that advantage.",
+                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.PlayersGuide)]),
         ],
         [Skill.Conn]: [
             new TalentModel(
@@ -654,6 +699,23 @@ export class Talents {
                 "When a character succeeds at the Attack Pattern Task and spends Momentum to keep the initiative, the cost to keep the initiative is 0.",
                 [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.CommandDivision)],
                 1),
+            new TalentModel(
+                "Thread the Needle",
+                "You’re used to operating small, nimble ships, where their agility and small profile make them a much harder target, if you know how to fly them. When you perform an Impulse, Warp, or Evasive Action task when piloting a starship, enemy attacks from ships with a greater Scale than yours increase in Difficulty by 1. If attacked by a ship with a Scale that is double or more the Scale of your ship, then you increase the Difficulty by 2 instead.",
+                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.PlayersGuide)]),
+            new TalentModel(
+                "Zero-G Combat",
+                "You have received special training to fight effectively in micro-gravity and zero-gravity environments, a process that famously involves a significant amount of nausea as participants acclimatize to the conditions. In combat, when you make an attack while in a zero-gravity or micro-gravity environment, you may use the higher of your Conn or Security disciplines for the task, and you ignore any Difficulty increases caused by the lack of gravity. In addition, enemies who lack similar training increase the Difficulty of attacks against you by 1.",
+                [new DisciplinePrerequisite(Skill.Conn, 3), new DisciplinePrerequisite(Skill.Security, 3), new SourcePrerequisite(Source.PlayersGuide)]),
+            new TalentModel(
+                "Hands-On Pilot",
+                "Your piloting style delves deeply into the technical aspects of a ship’s propulsion systems, and you spend much of your time in Engineering, fine-tuning power flows, subspace field geometries, and inertial stabilizers to ensure that the ship flies exactly the way you want it to. When you perform one of the Impulse, Warp, Evasive Action, or Attack Pattern tasks, the ship may treat its assistance die as if it had rolled a 1. However, when anyone else pilots the ship, they increase their complication range by 1, as your adjustments don’t suit everyone.",
+                [new DisciplinePrerequisite(Skill.Conn, 3), new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.PlayersGuide)]),
+            new TalentModel(
+                "Visit Every Star",
+                "Your expertise in navigation and stellar cartography come from a deep and enduring fascination with space; as a child, you dreamed of the stars you’d visit and the stellar phenomena you’d see up close, and you memorized every fact you could about them. You gain an additional focus, and one of your focuses (either the one gained from this talent, or an existing one) must relate to Astronavigation, Stellar Cartography, or a similar field of space science. Further, when you succeed at a navigation-related task, you gain 1 bonus Momentum due to your knowledge and familiarity. Bonus Momentum cannot be saved.",
+                [new DisciplinePrerequisite(Skill.Conn, 4), new DisciplinePrerequisite(Skill.Science, 2), new SourcePrerequisite(Source.PlayersGuide)]),
+                    
         ],
         [Skill.Security]: [
             new TalentModel(
@@ -731,6 +793,26 @@ export class Talents {
                 "Having extensive knowledge of ship systems and operations, the character can easily target specific systems when attacking an enemy vessel. When the character makes an attack that targets a specific System they may  reroll 1d20 in their dice pool, and the attack gains the Piercing 1 damage effect.",
                 [new DisciplinePrerequisite(Skill.Security, 4), new DisciplinePrerequisite(Skill.Conn, 3), new SourcePrerequisite(Source.OperationsDivision)],
                 1),
+            new TalentModel(
+                "Ambush Tactics",
+                "You’ve familiarized yourself with techniques that make ambushes and surprise attacks especially effective. When you succeed at an attack against an enemy who is unaware of your presence, or who is suffering from a trait or complication which represents a weakness or vulnerability, add 2[D] to the amount of Stress the attack inflicts. This applies to both personal combat and ship combat",
+                [new DisciplinePrerequisite(Skill.Security, 3), new SourcePrerequisite(Source.PlayersGuide)]),
+            new TalentModel(
+                "Applied Force",
+                "You’ve trained to best apply your size and strength in a fight. When you make a melee attack, you may use Fitness instead of Daring. In addition, you add 1[D] to the Stress rating of your unarmed attacks, or 2[D] if you have a Fitness of 11 or higher.",
+                [new DisciplinePrerequisite(Skill.Security, 4), new AttributePrerequisite(Attribute.Fitness, 9), new SourcePrerequisite(Source.PlayersGuide)]),
+            new TalentModel(
+                "Defensive Training",
+                "You’re especially good at avoiding harm. Select either melee attacks or ranged attacks when you acquire this talent. Attacks against you of the chosen type increase in Difficulty by 1.",
+                [new DisciplinePrerequisite(Skill.Security, 2), new SourcePrerequisite(Source.PlayersGuide)]),
+            new TalentModel(
+                "Precision Salvo",
+                "You’ve spent countless hours running combat simulations and fine-tuning targeting subroutines, and you can now place a torpedo salvo exactly where it will have the most decisive effect. When you make a torpedo attack, you may spend 1 Momentum (Immediate) to add the Piercing 1 weapon effect.",
+                [new DisciplinePrerequisite(Skill.Security, 4), new SourcePrerequisite(Source.PlayersGuide)]),
+            new TalentModel(
+                "Shield Breaker",
+                "You’ve developed firing solutions designed to overwhelm a target vessel’s shields without harming the ship beneath, ideally as a prelude to boarding or extracting a target using transporters. When you make an attack with a starship’s energy weapons, you may spend 1 Momentum (Immediate) to target shields. If you do so, then increase the Stress rating of the energy weapon used by 2[D]. This attack cannot inflict any breaches to the target. If used on a ship with 0 shields, then it adds 1 Difficulty to the next Regenerate Shields task the target attempts.",
+                [new DisciplinePrerequisite(Skill.Security, 3), new SourcePrerequisite(Source.PlayersGuide)]),
         ],
         [Skill.Engineering]: [
             new TalentModel(
@@ -808,6 +890,26 @@ export class Talents {
                 "Starfleet engineers are famed for being able to build or create nearly anything needed from the most basic of available components. Once per session, you may destroy any single piece of equipment to create any other piece of equipment of an equal or lower Opportunity Cost. This new piece of equipment has a Complication range increase of 2, with the Complication being a malfunction that renders it useless. You should provide a reasonable explanation as to how a repurposed or cannibalized device could function and the Gamemaster has final say if there is any question about the “reasonableness” of the new device.",
                 [new DisciplinePrerequisite(Skill.Engineering, 4), new DisciplinePrerequisite(Skill.Science, 2), new SourcePrerequisite(Source.OperationsDivision)],
                 1),
+            new TalentModel(
+                "Saboteur",
+                "You’re skilled in taking things apart – violently if necessary. When you make an attack against a structure, machine, or stationary vehicle while in personal combat (i.e., you aren’t using a ship’s weapons to make the attack), you may use your Engineering instead of your Security to resolve the attack task and the Stress inflicted.",
+                [new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.PlayersGuide)]
+                ),
+            new TalentModel(
+                "Percussive Maintenance",
+                "You have an extensive repertoire of quick fixes, crude bypasses, and other improvised techniques for using and repairing devices during a crisis. They all do the job, but it’s messy work. When you attempt a Control + Engineering task, you may add 2 to Threat to use your Daring instead of your Control. If you do this, and the task succeeds, you may reduce the time taken by 1 interval without spending Momentum.",
+                [new DisciplinePrerequisite(Skill.Engineering, 4), new SourcePrerequisite(Source.PlayersGuide)]
+                ),
+            new TalentModel(
+                "I’m Giving It All She’s Got!",
+                "You can keep a ship running on a fraction of its normal power levels, and always seem to be able to squeeze just a little more power out of the reserves or non-essential systems. Whenever someone attempts a task with a Power requirement aboard your ship while you are aboard, roll 1[D]; on an effect, reduce that Power requirement by 1, to a minimum of 0. In addition, when you succeed at the Power Management task, you restore Power equal to your Engineering score, rather than only 1; you may increase this amount by spending Momentum as normal.",
+                [new DisciplinePrerequisite(Skill.Engineering, 4), new DisciplinePrerequisite(Skill.Science, 2), new SourcePrerequisite(Source.OperationsDivision)]
+                ),
+            new TalentModel(
+                "Transporter Chief",
+                "You’re well-versed in the operation of transporter systems and can often get them to function in extreme circumstances or to achieve outcomes that few others could manage. Such efforts are never without risk, given the delicacy of the technology. When you attempt a task to use, repair, or modify a transporter, you may add 2 to Threat to reduce the Difficulty of the task by 2, to a minimum of 0.",
+                [new DisciplinePrerequisite(Skill.Engineering, 4), new DisciplinePrerequisite(Skill.Science, 2), new SourcePrerequisite(Source.OperationsDivision)]
+                ),
         ],
         [Skill.Science]: [
             new TalentModel(
@@ -875,7 +977,23 @@ export class Talents {
                 "Once per session, when you attempt a Task, you may spend 2 Momentum (Immediate) in order to gain an additional Focus for the remainder of the session, due to your breadth of knowledge. However, any Task using that Focus increases in Complication range by 1, as you are not a true expert on that subject.",
                 [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Science, 2), new AttributePrerequisite(Attribute.Reason, 9)],
                 1),
-        ],
+            new TalentModel(
+                "Applied Research",
+                "You’re a practical scientist, always looking to see how your knowledge can be put into practice. Once per scene, when you attempt a task which relates to information you received earlier that scene from an Obtain Information question, you may roll an additional d20.",
+                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Science, 3)]),
+            new TalentModel(
+                "Did the Reading",
+                "You absorb information quickly and know how to put it to good use. When you attempt a task, you may spend 1 Momentum (Immediate) to use Science on that task instead of the discipline you would normally use. In addition, you count as having an applicable focus for that task. Each time after the first in a single scene that you use this ability, the Momentum cost increases by 1: this is cumulative.",
+                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Science, 4)]),
+            new TalentModel(
+                "Learn from Failure",
+                "A true scientist learns as much from failure as from success. When you fail at a Science task, you may add 3 to Threat to create an advantage that represents knowledge or insights gained from the failure. The cost of this is reduced by 1 for each success you scored on the failed task.",
+                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Science, 4)]),
+            new TalentModel(
+                "Rapid Hypothesis",
+                "You are quick to devise a working theory about an unknown phenomenon’s nature, origin, or effect. Once per scene, when you ask two or more ques- tions using Obtain Information, you may immediately create an advantage that represents your theoretical understanding of the subject of those questions.",
+                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Science, 5)]),
+            ],
         [Skill.Medicine]: [
             new TalentModel(
                 "Doctor's Orders",
@@ -982,7 +1100,23 @@ export class Talents {
                 "When attempting a Medicine Task during an Extended Task relating to surgery, the character gains the Triumphant Effect.",
                 [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 4)],
                 1),
-        ],
+            new TalentModel(
+                "Cutting-Edge Medicine",
+                "You keep up to date with the latest medical publications and the latest advances in medical science, to ensure that there are no diseases you’re unprepared to face, and no treatments or medicines you’re unfamiliar with. Whenever you make a Medicine task with a Difficulty of 3 or higher, you may spend up to 3 Momentum (Immediate) to reduce the Difficulty by the number of Momentum spent, to a minimum Difficulty of 1. However, as these latest advances are often experimental, the complication range of the task increases by 1 for each Momentum spent.",
+                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Medicine, 4)]),
+            new TalentModel(
+                "Diagnostic Expertise",
+                "You focus on diagnosing the nature of an illness, injury, psychological problem, or other condition, because once the cause has been determined, finding the solution gets easier. When you succeed at a Medicine task to identify and diagnose the nature of a medical problem, you gain 1 bonus Momentum for every additional d20 you bought by spending Momentum, which may only be used to Obtain Information or Create Advantage.",
+                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Medicine, 4)]),
+            new TalentModel(
+                "Don’t Die on Me!",
+                "The line between life and death is a thin one, and you’re good enough to keep a patient alive when lesser doctors would have pronounced them dead. When a character is killed, you may spend 1 Determination to make one attempt to revive them. If they were killed instantly by suffering two injuries, then this may only be attempted within that scene. If the character suffered a lethal injury and died because they didn’t receive medical treatment in time, this may be attempted before the end of the subsequent scene. This requires a Daring + Medicine task, with a Difficulty of 3. If successful, the character is brought back from the brink of death, though the injury / injuries that nearly killed them still require healing. Failure means that your efforts were unsuccessful and the character dies.",
+                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Medicine, 5)]),
+            new TalentModel(
+                "Stimulant Shot",
+                "You’ve got a few tricks and treatments that can get an injured patient back on their feet for a while. They are rough on the body, but they can be essential during a crisis. When you perform the First Aid task on an injured ally, you may get them back into the fighting right away without spending Momentum. In addition, the ally recovers Stress equal to twice your Medicine rating.",
+                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Medicine, 3)]),
+            ],
         [Skill.None]: [
             // Species
             new TalentModel(
@@ -2163,7 +2297,25 @@ export class Talents {
                 [new SourcePrerequisite(Source.PlayersGuide)],
                 1,
                 "General"),
-                        
+            new TalentModel(
+                "Extra-Sensory Perception",
+                "You have an ability to perceive things beyond the normal limits of humanoid senses, allowing you to gain knowledge of people, places, and objects beyond your ability to sense them conventionally. This is known as Extra-Sensory Perception, or ESP. It is not directly under your control, but instead tends to come in the form of accurate guesses, strong feelings, or flashes of insight. Such sensitivity often leaves you vulnerable to psychic dangers as well. At any point during play, you may ask the gamemaster for hints or insights about the current situation, and the gamemaster may similarly offer you information about the current situation that you would not normally be able to determine. Each hint adds 1 point to Threat, and you may always refuse to accept the hints offered.",
+                [new SourcePrerequisite(Source.PlayersGuide), new GMsDiscretionPrerequisite()],
+                1,
+                "Esoteric"),
+            new TalentModel(
+                "Psychokinesis",
+                "You can manipulate and control objects using only the power of the mind, an ability referred to as psychokinesis or telekinesis. You may exert a psychic force upon an object within Close range equivalent to the force that you would normally be able to exert physically, though this takes concentration and cannot be applied suddenly or violently. Greater force may be applied but requires greater effort; you may spend 1 or more Momentum (Immediate) to increase the magnitude of the force you apply, with each Momentum spent counting as an additional person’s worth of force applied (that is, you can move or manipulate objects that would take two people to move or manipulate by spending 1 Momentum). Momentum (Immediate) may also be spent to increase the range: 1 Momentum to affect objects in Medium range, 2 to affect objects at Long range, and gamemaster’s discretion for distances beyond. To apply force violently instead, add 1 point to Threat to make a Control + Security task with a Difficulty of 2 to strike an opponent, inflicting 2+Security[D] Stress with the Knockdown effect (you may apply the Grapple or Shove melee combat options instead).",
+                [new SourcePrerequisite(Source.PlayersGuide), new GMsDiscretionPrerequisite()],
+                1,
+                "Esoteric"),
+            new TalentModel(
+                "Telepathic Projection",
+                "Your telepathic ability is more potent than most, and you are quite accustomed to projecting your thoughts into other minds. You can send your thoughts into the minds of other creatures – other than those immune to telepathy – even if those creatures are not telepathic themselves. You can “hear” their responses by reading their minds as normal. You are also capable of using this ability offensively, overwhelming a target’s mind with pain-inducing psychic noise. This requires a Presence + Security task with a Difficulty of 2 (increasing by 1 for each range category beyond Close), and inflicting [D] Stress equal to your Presence, with the Intense effect.",
+                [new SourcePrerequisite(Source.PlayersGuide), new TalentPrerequisite("Telepath"),  new GMsDiscretionPrerequisite()],
+                1,
+                "Esoteric"),
+                                    
             // Starships
             new TalentModel(
                 "Ablative Armor",

@@ -282,9 +282,9 @@ abstract class BasicStarshipSheet extends BasicSheet {
     }
 
     fillTalents(form: PDFForm, talents: string[]) {
-        var i = 1;
-        for (var talent of talents) {
-            this.fillField(form, 'Talent ' + i, talent);
+        let i = 1;
+        for (var t of talents) {
+            this.fillField(form, 'Talent ' + i, t);
             i++;
         }
     }
@@ -690,9 +690,15 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
     }
 
     fillTalents(form: PDFForm) {
-        var i = 1;
-        for (var talent in character.talents) {
-            this.fillField(form, 'Talent ' + i, talent);
+        let i = 1;
+        for (var t in character.talents) {
+            let talent = TalentsHelper.getTalent(t);
+            if (talent && talent.maxRank > 1) {
+                let rank = character.talents[t];
+                this.fillField(form, 'Talent ' + i, t + " [Rank " + rank.rank + "]");
+            } else {
+                this.fillField(form, 'Talent ' + i, t);
+            }
             i++;
         }
     }
@@ -795,19 +801,19 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         }
     }
 
-    writeRoleAndTalents(page: PDFPage, titleStyle: FontSpecification, paragraphStyle: FontSpecification, currentColumn: Column) {
+    writeRoleAndTalents(page: PDFPage, titleStyle: FontSpecification, paragraphStyle: FontSpecification, symbolStyle: FontSpecification, currentColumn: Column) {
         let start = currentColumn.translatedStart(page);
         let lines: Line[] = [];
         let startLine = new Line(start, currentColumn);
         if (character.role) {
             let role = RolesHelper.getRoleModelByName(character.role);
             if (role) {
-                let blocks = this.createTextBlocks(role.name + ":", titleStyle, startLine, page);
+                let blocks = this.createTextBlocks(role.name + ":", titleStyle, symbolStyle, startLine, page);
                 blocks.forEach((b, i) => { if (i < blocks.length -1) lines.push(b); });
 
                 let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
 
-                blocks = this.createTextBlocks(role.ability, paragraphStyle, line, page);
+                blocks = this.createTextBlocks(role.ability, paragraphStyle, symbolStyle, line, page);
                 blocks.forEach(b => lines.push(b));
                 startLine = this.addBlankLineAfter(lines, page);
             }
@@ -815,15 +821,20 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
 
         if (startLine) {
             for (var t in character.talents) {   
-                const text = t;
+                let text = t;
 
-                let blocks = this.createTextBlocks(text + ":", titleStyle, startLine, page);
+                const talent = TalentsHelper.getTalent(t);
+                if (talent && talent.maxRank > 1) {
+                    let rank = character.talents[t];
+                    text += " [Rank: " + rank.rank + "]";                    
+                }
+
+                let blocks = this.createTextBlocks(text + ":", titleStyle, symbolStyle, startLine, page);
                 blocks.forEach((b, i) => { if (i < blocks.length -1) lines.push(b); });
                 let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
 
-                const talent = TalentsHelper.getTalent(t);
                 if (talent) {
-                    blocks = this.createTextBlocks(talent.description, paragraphStyle, line, page);
+                    blocks = this.createTextBlocks(talent.description, paragraphStyle, symbolStyle, line, page);
                     blocks.forEach(b => lines.push(b));
                     startLine = this.addBlankLineAfter(lines, page);
                     if (startLine == null) {
@@ -838,23 +849,59 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         );
     }
 
-    createTextBlocks(text: string, fontSpec: FontSpecification, line: Line, page: PDFPage) {
+    createTextBlocks(text: string, fontSpec: FontSpecification, symbolStyle: FontSpecification, line: Line, page: PDFPage) {
         let result: Line[] = [];
         if (line) {
-            let textBlock = this.createTextBlock(line.isEmpty() ? text : (" " + text), fontSpec);
-            if (textBlock.width < line.availableWidth()) {
-                line.add(textBlock);        
-                result.push(line);
-            } else {
-                let words = text.split(/\s+/);
-                let previousBlock = null;
-                let textPortion = "";
-                for (let i = 0; i < words.length; i++) {
-                    if (textPortion === "" && line.isEmpty()) {
-                        textPortion = words[i];
+            let words = text.split(/\s+/);
+            let previousBlock = null;
+            let textPortion = "";
+            for (let i = 0; i < words.length; i++) {
+                let word = words[i];
+                if (textPortion !== "" || !line.isEmpty()) {
+                    word = " " + word;
+                }
+                if (this.containsDelta(word)) {
+                    let parts = this.separateDeltas(word);
+                    let blocks = parts.map(p => {
+                        if (p === '[D]') {
+                            return this.createTextBlock("A", symbolStyle);
+                        } else {
+                            return this.createTextBlock(p, fontSpec);
+                        }
+                    });
+                    let sum = previousBlock == null ? 0 : previousBlock.width;
+                    blocks.forEach(b => sum += b.width);
+
+                    if (sum < line.availableWidth()) {
+                        if (previousBlock != null) {
+                            line.add(previousBlock);
+                            previousBlock = null;
+                        }
+                        blocks.forEach(b => line.add(b));
+                        textPortion = "";
+
                     } else {
-                        textPortion += (" " + words[i]);
+                        line.add(previousBlock);
+                        line = line.moveToNextColumnIfNecessary(page);
+                        previousBlock = null;
+                        if (line) {
+                            result.push(line);
+                            line = new Line(line.bottom(), line.column);
+                        } else {
+                            break;
+                        }
+
+                        let parts = this.separateDeltas(words[i]); // get the original word without the leading space
+                        parts.forEach(p => {
+                            if (p === '[D]') {
+                                line.add(this.createTextBlock("A", symbolStyle));
+                            } else {
+                                line.add(this.createTextBlock(p, fontSpec));
+                            }
+                        });
                     }
+                } else {
+                    textPortion += word;
                     let block = this.createTextBlock(textPortion, fontSpec);
                     if (block.width < line.availableWidth()) {
                         previousBlock = block;
@@ -874,10 +921,33 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
                         previousBlock = this.createTextBlock(textPortion, fontSpec);
                     }
                 }
-                if (previousBlock != null && line != null) {
-                    line.add(previousBlock);
-                    result.push(line);
-                }
+            }
+            if (previousBlock != null && line != null) {
+                line.add(previousBlock);
+                result.push(line);
+            }
+        }
+        return result;
+    }
+
+    containsDelta(word: string) {
+        return word.indexOf("[D]") >= 0;
+    }
+
+    separateDeltas(word: string) {
+        let result: string[] = [];
+        while (word.length > 0) {
+            let index = word.indexOf("[D]");
+            if (index > 0) {
+                result.push(word.substring(0, index));
+                result.push(word.substring(index, index+3));
+                word = word.substring(index + 3);
+            } else if (index === 0) {
+                result.push(word.substring(index, index+3));
+                word = word.substring(index + 3);
+            } else {
+                result.push(word);
+                word = "";
             }
         }
         return result;
@@ -947,16 +1017,21 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
 
     async fillPageTwo(pdf: PDFDocument) {
         const page2 = pdf.getPages()[1];
+        const symbolFontBytes = await fetch("/static/font/Trek_Arrowheads.ttf").then(res => res.arrayBuffer());
+
         const helveticaBold = await pdf.embedFont(StandardFonts.HelveticaBold);
         const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
+        const symbolFont = await pdf.embedFont(symbolFontBytes);
+
         const titleStyle = new FontSpecification(helveticaBold, 10);
         const paragraphStyle = new FontSpecification(helvetica, 10);
+        const symbolStyle = new FontSpecification(symbolFont, 10);
 
         let column2 = new Column(392, 204, 550, 196);
         let column1 = new Column(180, 204, 550, 196, column2);
         let currentColumn = column1;
 
-        this.writeRoleAndTalents(page2, titleStyle, paragraphStyle, currentColumn);
+        this.writeRoleAndTalents(page2, titleStyle, paragraphStyle, symbolStyle, currentColumn);
     }
 }
 
@@ -979,17 +1054,20 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
 
     async fillTalentTextBlock(pdf: PDFDocument) {
         const page = pdf.getPages()[0];
-        const boldFontBytes = await fetch("/static/font/OpenSansCondensed-Bold.ttf").then(res => res.arrayBuffer())
-        const lightFontBytes = await fetch("/static/font/OpenSansCondensed-Light.ttf").then(res => res.arrayBuffer())
+        const boldFontBytes = await fetch("/static/font/OpenSansCondensed-Bold.ttf").then(res => res.arrayBuffer());
+        const lightFontBytes = await fetch("/static/font/OpenSansCondensed-Light.ttf").then(res => res.arrayBuffer());
+        const symbolFontBytes = await fetch("/static/font/Trek_Arrowheads.ttf").then(res => res.arrayBuffer());
 
         const openSansBold = await pdf.embedFont(boldFontBytes);
         const openSansLight = await pdf.embedFont(lightFontBytes);
+        const symbolFont = await pdf.embedFont(symbolFontBytes);
         const titleStyle = new FontSpecification(openSansBold, 9);
         const paragraphStyle = new FontSpecification(openSansLight, 9);
+        const symbolStyle = new FontSpecification(symbolFont, 9);
 
         let currentColumn = new Column(583, 45, 563-45, 757-583);
 
-        this.writeRoleAndTalents(page, titleStyle, paragraphStyle, currentColumn);
+        this.writeRoleAndTalents(page, titleStyle, paragraphStyle, symbolStyle, currentColumn);
     }
 
     populateForm(form: PDFForm): void {
@@ -1010,6 +1088,28 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
                 }
             }
         }
+
+        this.fillField(form, "Resistance", "" + this.calculateResistance());
+    }
+
+    calculateResistance() {
+        let result = 0;
+        if (character.isKlingon()) {
+            result += 1; // Klingon standard-issue armour
+        }
+        if (character.hasTalent("Chelon Shell")) {
+            result += 1;
+        }
+        if (character.hasTalent("Morphogenic Matrix")) {
+            result += 4;
+        }
+        if (character.hasTalent("Polyalloy Construction")) {
+            result += 1;
+        }
+        if (character.hasTalent("Hardened Hide")) {
+            result += 2;
+        }
+        return result;
     }
 
     fillName(form: PDFForm) {

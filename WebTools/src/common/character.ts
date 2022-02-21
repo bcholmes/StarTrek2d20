@@ -195,13 +195,16 @@ export class Character {
     public finishValue?: string;
     public focuses: string[];
     public stress?: number;
-    public allowCrossSpeciesTalents: boolean = false;
     public type: CharacterType = CharacterType.Starfleet;
     public typeDetails: CharacterTypeDetails;
     public workflow?: Workflow;
     public pronouns: string = '';
 
     public starship?: Starship;
+
+    // these options probably shouldn't be in the character. Fix that later
+    public allowCrossSpeciesTalents: boolean = false;
+    public allowEsotericTalents: boolean = false;
 
     constructor() {
         this.attributes.push(new CharacterAttribute(Attribute.Control, this._attributeInitialValue));

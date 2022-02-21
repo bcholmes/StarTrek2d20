@@ -79,6 +79,21 @@ class MilitaryPrerequisite implements IPrerequisite {
     }
 }
 
+class NotTalentPrerequisite implements IPrerequisite {
+
+    private talent: string;
+
+    constructor(talent: string) {
+        this.talent = talent;
+    }
+
+    isPrerequisiteFulfilled(): boolean {
+        return !character.hasTalent(this.talent);
+    }
+}
+
+
+
 export class RoleModel {
     id: Role;
     name: string;
@@ -139,6 +154,7 @@ class Roles {
             "When the operations manager succeeds at a Task assisted by the ship’s Computers or Sensors, or using a tricorder, the character generates one bonus Momentum, which may only be used on the Obtain Information Momentum Spend.",
             new SourcePrerequisite(Source.Core),
             new NotKlingonPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
             Role.ChiefEngineer,
@@ -148,6 +164,7 @@ class Roles {
             "When aboard the ship, the chief engineer always has the Advantage “Engineering Department”, which represents the ship’s complement of engineers and technicians.",
             new SourcePrerequisite(Source.Core),
             new NotKlingonPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
             Role.ChiefOfSecurity,
@@ -157,6 +174,7 @@ class Roles {
             "When aboard the ship, the chief of security always has the Advantage “Security Detachment”, which represents the ship’s security personnel.",
             new SourcePrerequisite(Source.Core),
             new NotKlingonPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
             Role.ChiefMedicalOfficer,
@@ -166,6 +184,7 @@ class Roles {
             "When aboard the ship, the chief medical officer always has the Advantage “Medical Department”, which represents the ship’s medical personnel.",
             new SourcePrerequisite(Source.Core),
             new NotKlingonPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
             Role.ScienceOfficer,
@@ -175,6 +194,7 @@ class Roles {
             "When the science officer succeeds at a Task assisted by the ship’s Computers or Sensors, or using a tricorder, the character generates one bonus Momentum, which may only be used on the Obtain Information Momentum spend.",
             new SourcePrerequisite(Source.Core),
             new NotKlingonPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
             Role.FlightController,
@@ -184,6 +204,7 @@ class Roles {
             "When the flight controller is required to analyze or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",
             new SourcePrerequisite(Source.Core),
             new NotKlingonPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
             Role.ShipsCounselor,
@@ -193,6 +214,7 @@ class Roles {
             "After succeeding at a Task to determine the emotional state or intent of another living creature, the ship’s counselor gains one bonus Momentum, which may only be used on the Obtain Information Momentum Spend.",
             new SourcePrerequisite(Source.Core),
             new NotKlingonPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
             Role.CommunicationsOfficer,
@@ -202,6 +224,7 @@ class Roles {
             "When a Task attempted by the communications officer is increased in Difficulty because of an unfamiliar language or encryption, ignore that Difficulty increase.",
             new SourcePrerequisite(Source.Core),
             new NotKlingonPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
             Role.Admiral,
@@ -213,6 +236,7 @@ class Roles {
             new NotPrerequisite(new CareersPrerequisite(Career.Young)),
             new NotPrerequisite(new EnlistedPrerequisite()),
             new NotKlingonPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
             Role.Adjutant,
@@ -222,6 +246,7 @@ class Roles {
             "At the start of any scene, the adjutant may spend one Momentum (Immediate) in order to change the Focus chosen by the admiral for the duration of that scene only. The new Focus must be one of the others selected by the admiral.",
             new SourcePrerequisite(Source.CommandDivision),
             new NotKlingonPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
             Role.StrategicOperations,
@@ -231,6 +256,7 @@ class Roles {
             "Regardless of rank, the strategic operations officer has authority over all vessels and forces linked to their region or mission. They may reduce the Difficulty of Persuade Tasks with the commanding officers of those vessels and forces by 1, to a minimum of 0.",
             new SourcePrerequisite(Source.CommandDivision),
             new NotKlingonPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
             Role.IntelligenceOfficer,
@@ -241,6 +267,7 @@ class Roles {
             new SourcePrerequisite(Source.CommandDivision),
             new NotKlingonPrerequisite(),
             new TypePrerequisite(CharacterType.Starfleet),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
             Role.FleetLiaisonOfficer,
@@ -250,6 +277,7 @@ class Roles {
             "The fleet liaison officer gains an additional Trait (write it in the character sheet after export): Contacts Amongst X, where X is the fleet or service the liaison works with/for. For example, a Klingon Defence Force has the trait Contacts Amongst the Klingon Defence Force.",
             new SourcePrerequisite(Source.CommandDivision),
             new NotKlingonPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
             Role.DiplomaticAttache,
@@ -259,6 +287,7 @@ class Roles {
             "At the start of any Social Conflict involving a foreign culture, the diplomatic attaché may spend two Momentum (Immediate) to create an Advantage for any Main Character present, representing a briefing provided by the attaché. This may be performed even if the attaché character is not personally present in that scene; it is prior counsel, rather than immediate assistance.",
             new SourcePrerequisite(Source.CommandDivision),
             new CivilianPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new NotKlingonPrerequisite()),
         new RoleModel(
             Role.ChiefSurgeon,
@@ -267,6 +296,7 @@ class Roles {
             Skill.Medicine,
             "The chief surgeon gains a Bonus d20 to Control + Medicine Tasks to treat an Injury from a Lethal attack.",
             new SourcePrerequisite(Source.SciencesDivision),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new NotKlingonPrerequisite()),
         new RoleModel(
             Role.HeadNurse,
@@ -275,6 +305,7 @@ class Roles {
             Skill.Medicine,
             "The head nurse may substitute their Medicine Discipline in place of Command whenever attempting to coordinate or direct the medical staff on board the ship. Per the Direct Task, this may only be used with characters subordinate to the head nurse, and thus would not apply to doctors or surgeons.",
             new SourcePrerequisite(Source.SciencesDivision),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new NotKlingonPrerequisite()),
         new RoleModel(
             Role.Anesthesiologist,
@@ -283,6 +314,7 @@ class Roles {
             Skill.Medicine,
             "When the anesthesiologist is providing assistance during a Medicine Task, they do not count against any limit on the number of characters that may assist.",
             new SourcePrerequisite(Source.SciencesDivision),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new NotKlingonPrerequisite()),
         new RoleModel(
             Role.PhysiciansAssistant,
@@ -291,6 +323,7 @@ class Roles {
             Skill.Medicine,
             "When providing assistance to  another character attempting a Medicine Task on a patient that the physician’s assistant has already treated with a successful Medicine Task – the physician’s assistant provides two d20s to the Dice Pool instead of the usual one.",
             new SourcePrerequisite(Source.SciencesDivision),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new NotKlingonPrerequisite()),
 
         // Klingon Core
@@ -317,6 +350,7 @@ class Roles {
             Skill.Command,
             "The second officer becomes first officer if the previous first officer is incapacitated or successfully challenges the  previous commanding officer. Similarly, the third officer becomes second officer if that position is vacated. Aside from this, characters of these roles should select another role to perform.",
             new SourcePrerequisite(Source.KlingonCore),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new KlingonPrerequisite()),
         new RoleModel(
             Role.FlightController,
@@ -325,6 +359,7 @@ class Roles {
             Skill.Conn,
             "When the weapons officer succeeds at an attack with the ship’s weapons, they may re-roll a number of challenge dice on the damage roll equal to the weapons officer’s Security score.",
             new SourcePrerequisite(Source.KlingonCore),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new KlingonPrerequisite()),
         new RoleModel(
             Role.WeaponsOfficer,
@@ -333,6 +368,7 @@ class Roles {
             Skill.Security,
             "When the weapons officer succeeds at an attack with the ship’s weapons, they may re-roll a number of challenge dice on the damage roll equal to the weapons officer’s Security score.",
             new SourcePrerequisite(Source.KlingonCore),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new KlingonPrerequisite()),
         new RoleModel(
             Role.ScienceOfficer,
@@ -341,6 +377,7 @@ class Roles {
             Skill.Science,
             "When the science officer succeeds at a task assisted by the ship’s Computers or Sensors, or using a tricorder, the character generates one bonus Momentum, which may only be used on the Obtain Information Momentum spend.",
             new SourcePrerequisite(Source.KlingonCore),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new KlingonPrerequisite()),
         new RoleModel(
             Role.ChiefEngineer,
@@ -349,6 +386,7 @@ class Roles {
             Skill.Engineering,
             "When the engineering officer succeeds at an Engineering task to perform repairs or re-route power, they generate one point of bonus Momentum to be used on that task. Bonus Momentum may not be saved.",
             new SourcePrerequisite(Source.KlingonCore),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new KlingonPrerequisite()),
         new RoleModel(
             Role.ChiefMedicalOfficer,
@@ -357,6 +395,7 @@ class Roles {
             Skill.Engineering,
             "When a surgeon succeeds at a Medicine task to stabilize an injured character, they need only spend 1 Momentum rather than 2 to get the patient back on their feet and able to act again.",
             new SourcePrerequisite(Source.KlingonCore),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new KlingonPrerequisite()),
         new RoleModel(
             Role.ShipsCookOrChef,
@@ -365,6 +404,7 @@ class Roles {
             undefined,
             "Once per adventure, before a new scene begins, the ship’s cook may declare a short scene of the crew eating a meal together. At the end of this scene, instead of reducing the group’s Momentum pool by 1, roll 1 challenge die, and add the total rolled to the group’s Momentum pool. If the commanding officer allows, the meal may include bloodwine; in this case, roll 3 challenge dice instead of 1, but add 1 to Threat for each effect rolled, as the crew gets a little too drunk.",
             new SourcePrerequisite(Source.KlingonCore),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new KlingonPrerequisite()),
 
         // Player's Guide
@@ -375,6 +415,7 @@ class Roles {
             Skill.Command,
             "You may, once per session, create an advantage which represents a favor owed by a connection in politics, bureaucracy, trade, or some similar position of importance. Creating this advantage has no cost, and it may be used before attempting a task.",
             new SourcePrerequisite(Source.PlayersGuide),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new CivilianPrerequisite()),
         new RoleModel(
             Role.Ambassador,
@@ -383,6 +424,7 @@ class Roles {
             Skill.Command,
             "You possess an additional trait: X Ambassador, where X is the name of the world or civilization the character represents. This trait represents the rights and privileges of ambassadorial status.",
             new SourcePrerequisite(Source.PlayersGuide),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new CivilianPrerequisite()),
         new RoleModel(
             Role.ArmoryOfficer,
@@ -391,6 +433,7 @@ class Roles {
             Skill.Security,
             "When you succeed at an attack with the ship’s weapons, they may re-roll a number of [D] on the Stress roll equal to the armory officer’s Security score",
             new SourcePrerequisite(Source.PlayersGuide),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new AnyOfPrerequisite(
                 new AllOfPrerequisite(
                     new EraPrerequisite(Era.Enterprise),
@@ -404,6 +447,7 @@ class Roles {
             undefined,
             "Each adventure, you may ask the gamemaster three questions, as per the Obtain Information Momentum spend, but without spending Momentum and without requiring a successful task first. The answers represent things you’ve overheard from patrons and passers-by, as well as other rumors circulating your establishment. You do not have to ask all these questions at once.",
             new SourcePrerequisite(Source.PlayersGuide),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new CivilianPrerequisite()),
         new RoleModel(
             Role.Bodyguard,
@@ -411,6 +455,7 @@ class Roles {
             "You specialize in personal security, protecting an individual, whether a paying client, or someone you were assigned to. Militaries tend not to employ specific bodyguards in this sense, but most will have soldiers or security personnel who will be assigned to protect VIPs – ambassadors, admirals, political figures, and similar – as needed.",
             Skill.Security,
             "As a bodyguard, you will have a single character – another PC, or an NPC – whom you are assigned to protect. When you are in the same zone as that character, you may spend 1 Momentum (Immediate) when that character is attacked to have the attack target you instead. If you do this, the attack’s Difficulty is also increased by 1.",
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new SourcePrerequisite(Source.PlayersGuide)),
         new RoleModel(
             Role.ShipsCookOrChef,
@@ -419,6 +464,7 @@ class Roles {
             undefined,
             "Once per adventure, you may prepare a meal for a non-combat scene set aboard ship; this may be a dinner at the captain’s table, a banquet for dignitaries or other VIPs, part of a celebration, or some other meaningful occasion. Player characters may re-roll 1d20 on all social conflict tasks they attempt during that scene. When the scene ends, do not reduce the group’s Momentum pool by 1",
             new SourcePrerequisite(Source.PlayersGuide),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new NotKlingonPrerequisite()),
         new RoleModel(
             Role.CivilianBureaucrat,
@@ -427,6 +473,7 @@ class Roles {
             Skill.Command,
             "When you attempt a task which relates to bureaucracy or administrative work, you may reduce the Difficulty by 2, to a minimum of 0. In addition, if you succeed at such a task and spend Momentum to Obtain Information, then the first point of Momentum spent allows you to ask two questions rather than one.",
             new SourcePrerequisite(Source.PlayersGuide),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new CivilianPrerequisite()),
         new RoleModel(
             Role.Constable,
@@ -435,6 +482,7 @@ class Roles {
             Skill.Security,
             "When you succeed at a task to investigate a crime scene, or to question a witness or suspect, you generate one bonus Momentum. Bonus Momentum may not be saved. In addition, your knowledge of local criminal activity means that once per scene, you may create an advantage representing an informant’s information by adding 1 to Threat rather than spending 2 Momentum.",
             new SourcePrerequisite(Source.PlayersGuide),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new CivilianPrerequisite()),    
         new RoleModel(
             Role.Expert,
@@ -442,6 +490,7 @@ class Roles {
             "You are an expert in a particular field, working alongside the crew to consult upon a matter related to your expertise. You are highly specialized, and extremely capable in your chosen field, but this may lead you to ignore or overlook things that fall outside your knowledge, or result in an obsession that causes you to prioritize your work over other concerns.",
             Skill.Science,
             "You gain one additional value, which must reflect the importance of your work to you. In addition, select one of your focuses – this is the field you are an expert in. When you use this focus on a task and succeed, you generate one bonus Momentum. Bonus Momentum may not be saved.",
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new SourcePrerequisite(Source.PlayersGuide)),
         new RoleModel(
             Role.IntelligenceAgent,
@@ -449,6 +498,7 @@ class Roles {
             "You are not a traditional part of the fleet. Instead, you are an operative of the intelligence services of your civilization. You are charged with gathering information from places and people that don’t want their information gathered, and you achieve this through a combination of your own skills and the network of informants and contacts you have cultivated.",
             Skill.Security,
             "Once per adventure, you may create an advantage without requiring a task or spending any Momentum, Threat, or Determination. This advantage must reflect information, equipment, physical resources, or access to a location (such as access codes or identification data) provided to you by a contact or by your agency.",
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new SourcePrerequisite(Source.PlayersGuide)),
         new RoleModel(
             Role.Merchant,
@@ -457,6 +507,7 @@ class Roles {
             Skill.Command,
             "Once per adventure, you can waive the Opportunity costs on up to three items of equip- ment being acquired by other player characters. You may even allow other player characters to obtain items that are not normally available to them (such as disruptors to a Starfleet crew, or items which are restricted or illegal), though you add 1 to Threat for each such item provided.",
             new SourcePrerequisite(Source.PlayersGuide),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new CivilianPrerequisite()),    
         new RoleModel(
             Role.PoliticalLiaison,
@@ -464,6 +515,7 @@ class Roles {
             "You serve as a representative of a government to the crew, representing the government’s needs and interests during the operations of the crew, and providing the crew with a means of communicating with that government in turn. This is often the case where multiple groups are required to coexist, such as a Starfleet facility operating close to an allied non-Federation world, or as part of a joint operation between Starfleet and Klingon Defense Force personnel. You represent the official government that your organization belongs to – i.e., if you are a member of the Bajoran Militia, then you represent the current Bajoran government.",
             Skill.Command,
             "You gain an additional Directive or Dictate, which only applies to you, which reflects the political stance of the government you represent. Your gamemaster will work with you to determine the wording of this Directive or Dictate. It serves to provide you with a source of complications and potential restrictions when acting against the interests of your government, as well as benefits when you are acting with the full support of your superiors.",
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new SourcePrerequisite(Source.PlayersGuide)),
         new RoleModel(
             Role.ShipsDoctor,
@@ -471,6 +523,7 @@ class Roles {
             "You care for the crew of your ship, or the station you serve on (in which case, rename the role to Station Doctor), but unlike a Chief Medical Officer, you do not have an extensive medical department to manage or to aid you. This is common in smaller crews which do not require a large sickbay or infirmary and tends to mean that these smaller postings favor generalists who can adapt to a variety of circumstances, where a larger medical staff could rely on specialists.",
             Skill.Command,
             "You have two additional focuses, which must relate to fields of study within medicine. However, your ship cannot use Crew Support to introduce supporting charac- ters from the medical department.",
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new SourcePrerequisite(Source.PlayersGuide)),
         new RoleModel(
             Role.SpiritualLeader,
@@ -478,6 +531,7 @@ class Roles {
             "You are an important figure within your community, providing spiritual and philosophical guidance to those who are troubled. In many cases, this can overlap with the role of a counselor, but there are meaningful differences between the two. Spiritual leaders are more prominent in overtly religious or spiritual cultures, but religion is not necessary for spiritual leaders to be present in a culture, as demonstrated by the Vulcans and Klingons. The Bajoran faith is an example of one that has many spiritual leaders.",
             undefined,
             "When you are in a non-conflict scene with a character who is suffering a complication from using a value negatively, or who has challenged one of their values, you may re-roll your d20 when you assist them. If they have challenged one of their values, you may spend 2 Momentum (Immediate) during the scene to allow them to rewrite their crossed-out value in that scene rather than at the end of the adventure.",
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new SourcePrerequisite(Source.PlayersGuide),
             new CivilianPrerequisite()),
         new RoleModel(
@@ -486,6 +540,7 @@ class Roles {
             "You are an expert in language and communication. While the development of the universal translator has reduced the need for translators during daily life, there are still situations which call for experts in linguistics. Encounters with new cultures often require support from xenolinguistics experts to smooth over any problems that the universal translator has, particularly if a culture has an unusual style or method of communication. Similarly, archaeological research often requires piecing together extinct languages from evidence in ways that can’t easily be automated. You are a polyglot, who knows enough of most common languages spoken by your culture and its neighbors to communicate freely without a universal translator.",
             Skill.Medicine,
             "You reduce the Difficulty of any task to translate or understand an unfamiliar language by 2, to a minimum of 0.",
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
             new SourcePrerequisite(Source.PlayersGuide)),
     ];
 

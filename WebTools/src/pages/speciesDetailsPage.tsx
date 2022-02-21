@@ -13,6 +13,7 @@ import { Button } from '../components/button';
 import { CheckBox } from '../components/checkBox';
 import { Dialog } from '../components/dialog';
 import { TalentSelection } from '../components/talentSelection';
+import { Source } from '../helpers/sources';
 
 export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
     private _selectedTalent: TalentViewModel;
@@ -64,6 +65,14 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
             talents.push(...TalentsHelper.getTalentsForSkills(character.skills.map(s => { return s.skill; })), ...TalentsHelper.getTalentsForSkills([Skill.None]));
         }
 
+        const esotericTalentOption = (character.hasSource(Source.PlayersGuide)) ? (<div>
+                <CheckBox
+                    isChecked={character.allowEsotericTalents}
+                    text="Allow esoterric talents (GM's decision)"
+                    value={!character.allowEsotericTalents}
+                    onChanged={() => { character.allowEsotericTalents = !character.allowEsotericTalents; this.forceUpdate(); }} />
+            </div>) : undefined;
+
         const talentSelection = talents.length > 0 && character.workflow.currentStep().talentPrompt
             ? (<div className="panel">
                 <div className="header-small">TALENTS</div>
@@ -72,8 +81,9 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
                         isChecked={character.allowCrossSpeciesTalents}
                         text="Allow cross-species talents (GM's decision)"
                         value={!character.allowCrossSpeciesTalents}
-                        onChanged={() => { character.allowCrossSpeciesTalents = !character.allowCrossSpeciesTalents; console.log(character.allowCrossSpeciesTalents); this.forceUpdate(); }} />
+                        onChanged={() => { character.allowCrossSpeciesTalents = !character.allowCrossSpeciesTalents; this.forceUpdate(); }} />
                 </div>
+                {esotericTalentOption}
                 <TalentSelection talents={talents} onSelection={talents => this.onTalentSelected(talents.length > 0 ? talents[0] : undefined)} />
             </div>)
             : (<div className="panel">
@@ -83,8 +93,9 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
                         isChecked={character.allowCrossSpeciesTalents}
                         text="Allow cross-species talents (GM's decision)"
                         value={!character.allowCrossSpeciesTalents}
-                        onChanged={() => { character.allowCrossSpeciesTalents = !character.allowCrossSpeciesTalents; console.log(character.allowCrossSpeciesTalents); this.forceUpdate(); }} />
+                        onChanged={() => { character.allowCrossSpeciesTalents = !character.allowCrossSpeciesTalents; this.forceUpdate(); }} />
                 </div>
+                {esotericTalentOption}
               </div>);
 
         const mixedTrait = mixed != null
