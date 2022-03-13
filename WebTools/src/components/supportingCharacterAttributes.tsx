@@ -58,6 +58,12 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
         this.updateCharacterAttributes(this.state.assignedValues, this.state.checkedValues);
     }
 
+    componentDidUpdate(prevProps: Readonly<IAttributeProperties>, prevState: Readonly<IAttributeState>, snapshot?: any): void {
+        if (prevProps.age !== this.props.age) {
+            this.updateCharacterAttributes(this.state.assignedValues, this.state.checkedValues);
+        }
+    }
+
     set species(species: Species) {
         if (this.props.species !== species) {
             this._species = SpeciesHelper.getSpeciesByType(species);

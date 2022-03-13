@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import {character } from '../common/character';
-import {CharacterTypeModel } from '../common/characterType';
+import {CharacterType, CharacterTypeModel } from '../common/characterType';
 import {CharacterSerializer} from '../common/characterSerializer';
 import {Species, SpeciesHelper} from '../helpers/species';
 import {DropDownInput} from '../components/dropDownInput';
@@ -16,6 +16,7 @@ import { Source } from '../helpers/sources';
 
 interface ISupportingCharacterState {
     age: Age;
+    type: CharacterTypeModel;
 }
 
 export class SupportingCharacterPage extends React.Component<{}, ISupportingCharacterState> {
@@ -27,7 +28,6 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
     private _attributeElement: SupportingCharacterAttributes;
     private _pronounsElement: HTMLInputElement;
 
-    private _type: CharacterTypeModel = CharacterTypeModel.getAllTypes()[character.type];
     private _name: string;
     private _rank: string;
     private _purpose: string;
@@ -61,12 +61,13 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
         character.addEquipment("Tricorder");
         character.addEquipment("Communicator");
         this.state = {
-            age: AgeHelper.getAdultAge()
+            age: AgeHelper.getAdultAge(),
+            type: CharacterTypeModel.getAllTypes()[character.type]
         }
     }
 
     render() {
-        let ageDiv = character.hasSource(Source.PlayersGuide) 
+        let ageDiv = character.hasSource(Source.PlayersGuide) && character.age.isChild()
             ? (<div className="panel">
                     <div className="header-small">Age</div>
                     <div className="page-text-aligned">
@@ -95,7 +96,7 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                             <div>
                                 <DropDownInput
                                     items={this.getTypes() }
-                                    defaultValue={this._type.name}
+                                    defaultValue={this.state.type.name}
                                     onChange={(index) => this.selectType(index) }/>
                             </div>
                         </div>
@@ -236,11 +237,11 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
     }
 
     getAges() {
-        return AgeHelper.getAllAges().map(a => a.name);
+        return AgeHelper.getAllChildAges().map(a => a.name);
     }
 
     selectAge(index: number) {
-        this.setState((state) => ({ ...state, age: AgeHelper.getAllAges()[index]}));
+        this.setState((state) => ({ ...state, age: AgeHelper.getAllChildAges()[index]}));
     }
 
     private showDialog() {
@@ -310,10 +311,23 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
     }
 
     private selectType(index: number) {
-        this._type = CharacterTypeModel.getAllTypes()[index];
-        character.type = this._type.type;
+        let type = CharacterTypeModel.getAllTypes()[index];
+        character.type = type.type;
+        let age = this.state.age;
 
-        this.forceUpdate();
+        if (type.type !== CharacterType.Child) {
+            age = AgeHelper.getAdultAge();
+            character.age = age;
+        } else if (character.age === AgeHelper.getAdultAge()) {
+            age = AgeHelper.getAllChildAges()[0];
+            character.age = age;
+        }
+
+        this.setState((state) => ({
+            ...state,
+            age: age,
+            type: type
+        }));
     }
 
     private onFocusChanged() {

@@ -50,6 +50,12 @@ export class SupportingCharacterDisciplines extends React.Component<IProperties,
         this.updateCharacterDisciplines(this.state.assignedValues);
     }
 
+    componentDidUpdate(prevProps: Readonly<IProperties>, prevState: Readonly<IDisciplinesState>, snapshot?: any): void {
+        if (prevProps.age !== this.props.age) {
+            this.updateCharacterDisciplines(this.state.assignedValues);
+        }
+    }
+
     render() {
         const disciplines = [Skill.Command, Skill.Conn, Skill.Engineering, Skill.Security, Skill.Science, Skill.Medicine].map((s, i) => {
             const val = this.props.age.disciplines[this.state.assignedValues[s]];
