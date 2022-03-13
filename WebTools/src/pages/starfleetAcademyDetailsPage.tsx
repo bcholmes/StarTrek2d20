@@ -3,7 +3,6 @@ import {character} from '../common/character';
 import {CharacterType} from '../common/characterType';
 import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
-import {PageIdentity} from './pageIdentity';
 import {Track, TracksHelper} from '../helpers/tracks';
 import {Skill} from '../helpers/skills';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovement';
@@ -361,6 +360,6 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
         character.addTalent(this._talent);
 
         character.workflow.next();
-        Navigation.navigateToPage(PageIdentity.Career);
+        Navigation.navigateToPage(character.workflow.currentStep().page);
     }
 }

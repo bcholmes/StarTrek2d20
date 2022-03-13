@@ -30,8 +30,10 @@ export class KlingonPrerequisite implements IPrerequisite {
 
 export class CivilianPrerequisite implements IPrerequisite {
 
+    // arguably, a Child character is a Civilian, but the Roles restrict Child
+    // characters to only one Role, so there's no point including them.
     isPrerequisiteFulfilled() {
-        if (new SourcePrerequisite(Source.SciencesDivision, Source.PlayersGuide, Source.KlingonCore).isPrerequisiteFulfilled) {
+        if (new SourcePrerequisite(Source.SciencesDivision, Source.PlayersGuide, Source.KlingonCore).isPrerequisiteFulfilled()) {
             return character.type === CharacterType.AmbassadorDiplomat || 
                 character.type === CharacterType.Civilian ||
                 (character.type === CharacterType.Starfleet 
@@ -103,6 +105,19 @@ export class EraPrerequisite implements IPrerequisite {
 
     isPrerequisiteFulfilled() {
         return character.era === this.era;
+    }
+}
+
+export class ChildPrerequisite implements IPrerequisite {
+    isPrerequisiteFulfilled(): boolean {
+        return character.type === CharacterType.Child || 
+            character.age.isChild();
+    }
+}
+
+export class AdultPrerequisite implements IPrerequisite {
+    isPrerequisiteFulfilled(): boolean {
+        return character.age.isAdult();
     }
 }
 

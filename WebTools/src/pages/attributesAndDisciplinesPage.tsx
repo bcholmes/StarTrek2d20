@@ -44,8 +44,8 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
             discSum += s.expertise;
         });
 
-        this._excessAttrPoints = 54 - attrSum;
-        this._excessSkillPoints = 14 - discSum;
+        this._excessAttrPoints = character.age.attributeSum - this._attrPoints - attrSum;
+        this._excessSkillPoints = character.age.disciplineSum - this._skillPoints - discSum;
 
         this.state = {
             showExcessAttrDistribution: this._excessAttrPoints > 0,
@@ -65,14 +65,12 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
             : <SkillImprovementCollection points={this._excessSkillPoints + this._skillPoints} 
                 skills={character.skills.map(s => s.skill) } onDone={(done) => { this._skillsDone = done; }} />;
 
-        const description = !hasExcess
-            ? "At this stage, your character is almost complete, and needs only a few final elements and adjustments. This serves as a last chance to customize the character before play."
-            : "You will now get a chance to spend any excess Attribute and/or Discipline points accumulated during your lifepath.";
+        const description = "At this stage, your character is almost complete, and needs only a few final elements and adjustments. This serves as a last chance to customize the character before play.";
 
         let talents = [];
         talents.push(...TalentsHelper.getTalentsForSkills(character.skills.map(s => { return s.skill; })), ...TalentsHelper.getTalentsForSkills([Skill.None]));
 
-        const talentSelection = character.workflow.currentStep().talentPrompt
+        const talentSelection = character.workflow.currentStep().options.talentSelection
             ? (<div className="panel">
                 <div className="header-small">TALENTS</div>
                 <TalentSelection talents={talents} onSelection={talents => { this._selectedTalent = talents.length > 0 ? talents[0] : undefined; }} />
@@ -95,6 +93,14 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
         ) : undefined;
 
 
+        let value = (character.workflow.currentStep().options.valueSelection) 
+            ? (<div className="panel">
+                    <div className="header-small">VALUE</div>
+                    <ValueInput value={Value.Finish}/>
+                </div>)
+            : undefined;
+
+
         return (
             <div className="page">
                 <div className="page-text">
@@ -110,10 +116,7 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
                     {disciplinesText}
                     {disciplines}
                 </div>
-                <div className="panel">
-                    <div className="header-small">VALUE</div>
-                    <ValueInput value={Value.Finish}/>
-                </div>
+                {value}
                 {talentSelection}
                 <Button text="FINISH" className="button-next" onClick={() => this.onNext() }/>
             </div>

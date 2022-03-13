@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {Character, character} from '../common/character';
 import {Skill, SkillsHelper} from '../helpers/skills';
 
 interface ISkillImprovementProperties {
@@ -148,7 +148,11 @@ export class SkillImprovementCollection extends React.Component<ISkillImprovemen
         this.setState(state => ({ ...state, allocatedPoints: points }));
     }
 
-    private calculateMax() {
-        return character.isYoung() ? 4 : character.hasMaxedSkill() ? 4 : 5;
+    calculateMax() {
+        if (character.hasMaxedAttribute()) {
+            return Math.min(Character.maxDiscipline(character), 4);
+        } else {
+            return Character.maxDiscipline(character);
+        }
     }
 }

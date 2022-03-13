@@ -23,6 +23,9 @@ import { SelectionPage } from './selectionPage';
 import { BorgImplantSelection } from './borgImplantSelection';
 import { PageIdentity } from './pageIdentity';
 import { CharacterTypePage } from './characterTypePage';
+import { ChildCareerPage } from './childCareerPage';
+import { ChildEducationPage } from './childEducationPage';
+import { ChildEducationDetailsPage } from './childEducationDetailsPage';
 
 
 export class PageFactory {
@@ -49,6 +52,9 @@ export class PageFactory {
         this.factories[PageIdentity.CareerEvent1Details] = () => <CareerEventDetailsPage/>;
         this.factories[PageIdentity.CareerEvent2] = () => <CareerEventPage/>;
         this.factories[PageIdentity.CareerEvent2Details] = () => <CareerEventDetailsPage/>;
+        this.factories[PageIdentity.ChildCareer] = () => <ChildCareerPage/>;
+        this.factories[PageIdentity.ChildEducationPage] = () => <ChildEducationPage/>;
+        this.factories[PageIdentity.ChildEducationDetailsPage] = () => <ChildEducationDetailsPage/>;
         this.factories[PageIdentity.AttributesAndDisciplines] = () => <AttributesAndDisciplinesPage />;
         this.factories[PageIdentity.BorgImplants] = () => <BorgImplantSelection />;
         this.factories[PageIdentity.Finish] = () => <FinishPage/>;

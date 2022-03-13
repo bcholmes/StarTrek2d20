@@ -2,7 +2,6 @@
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
-import {PageIdentity} from './pageIdentity';
 import {UpbringingsHelper} from '../helpers/upbringings';
 import {AttributesHelper} from '../helpers/attributes';
 import {Skill} from '../helpers/skills';
@@ -118,6 +117,6 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
 
         UpbringingsHelper.applyUpbringing(character.upbringing, this._accepted);
         character.workflow.next();
-        Navigation.navigateToPage(PageIdentity.StarfleetAcademy);
+        Navigation.navigateToPage(character.workflow.currentStep().page);
     }
 }

@@ -1,5 +1,6 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
+import { CharacterType } from '../common/characterType';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from '../pages/pageIdentity';
 
@@ -50,10 +51,13 @@ export class History extends React.Component<IHistoryProperties, {}> {
             case PageIdentity.SpeciesDetails: return "Species Details";
             case PageIdentity.Environment: return "Environment";
             case PageIdentity.EnvironmentDetails: return "Environment Details";
-            case PageIdentity.Upbringing: return "Upbringing";
-            case PageIdentity.UpbringingDetails: return "Upbringing Details";
-            case PageIdentity.StarfleetAcademy: return "Starfleet Academy";
-            case PageIdentity.StarfleetAcademyDetails: return "Starfleet Academy Details";
+            case PageIdentity.Upbringing: return character.type === CharacterType.KlingonWarrior ? "Caste" : "Upbringing";
+            case PageIdentity.UpbringingDetails: return character.type === CharacterType.KlingonWarrior ? "Caste Details" : "Upbringing Details";
+            case PageIdentity.ChildEducationPage: return "Education";
+            case PageIdentity.ChildEducationDetailsPage: return "Education Details";
+            case PageIdentity.StarfleetAcademy: return character.type === CharacterType.Starfleet ? "Starfleet Academy" : "Training";
+            case PageIdentity.StarfleetAcademyDetails: return character.type === CharacterType.Starfleet ? "Starfleet Academy Details" : "Training Details";
+            case PageIdentity.ChildCareer: return "Career";
             case PageIdentity.Career: return "Career";
             case PageIdentity.CareerDetails: return "Career Details";
             case PageIdentity.CareerEvent1: return "Career Event 1";

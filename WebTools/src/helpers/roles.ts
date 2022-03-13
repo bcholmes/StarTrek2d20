@@ -2,7 +2,7 @@
 import {Source} from './sources';
 import {character} from '../common/character';
 import { CharacterType } from '../common/characterType';
-import { AllOfPrerequisite, AnyOfPrerequisite, CareersPrerequisite, CivilianPrerequisite, EnlistedPrerequisite, EraPrerequisite, IPrerequisite, KlingonPrerequisite, NotPrerequisite, SourcePrerequisite, TypePrerequisite } from './prerequisite';
+import { AdultPrerequisite, AllOfPrerequisite, AnyOfPrerequisite, CareersPrerequisite, ChildPrerequisite, CivilianPrerequisite, EnlistedPrerequisite, EraPrerequisite, IPrerequisite, KlingonPrerequisite, NotPrerequisite, SourcePrerequisite, TypePrerequisite } from './prerequisite';
 import { Career } from './careers';
 import { Era } from './eras';
 
@@ -297,7 +297,8 @@ class Roles {
             "The chief surgeon gains a Bonus d20 to Control + Medicine Tasks to treat an Injury from a Lethal attack.",
             new SourcePrerequisite(Source.SciencesDivision),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new NotKlingonPrerequisite()),
+            new NotKlingonPrerequisite(),
+            new AdultPrerequisite()),
         new RoleModel(
             Role.HeadNurse,
             "Head Nurse",
@@ -306,7 +307,8 @@ class Roles {
             "The head nurse may substitute their Medicine Discipline in place of Command whenever attempting to coordinate or direct the medical staff on board the ship. Per the Direct Task, this may only be used with characters subordinate to the head nurse, and thus would not apply to doctors or surgeons.",
             new SourcePrerequisite(Source.SciencesDivision),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new NotKlingonPrerequisite()),
+            new NotKlingonPrerequisite(),
+            new AdultPrerequisite()),
         new RoleModel(
             Role.Anesthesiologist,
             "Anesthesiologist",
@@ -315,7 +317,8 @@ class Roles {
             "When the anesthesiologist is providing assistance during a Medicine Task, they do not count against any limit on the number of characters that may assist.",
             new SourcePrerequisite(Source.SciencesDivision),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new NotKlingonPrerequisite()),
+            new NotKlingonPrerequisite(),
+            new AdultPrerequisite()),
         new RoleModel(
             Role.PhysiciansAssistant,
             "Physician's Assistant",
@@ -324,7 +327,8 @@ class Roles {
             "When providing assistance to  another character attempting a Medicine Task on a patient that the physician’s assistant has already treated with a successful Medicine Task – the physician’s assistant provides two d20s to the Dice Pool instead of the usual one.",
             new SourcePrerequisite(Source.SciencesDivision),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new NotKlingonPrerequisite()),
+            new NotKlingonPrerequisite(),
+            new AdultPrerequisite()),
 
         // Klingon Core
         new RoleModel(
@@ -456,7 +460,8 @@ class Roles {
             Skill.Security,
             "As a bodyguard, you will have a single character – another PC, or an NPC – whom you are assigned to protect. When you are in the same zone as that character, you may spend 1 Momentum (Immediate) when that character is attacked to have the attack target you instead. If you do this, the attack’s Difficulty is also increased by 1.",
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new SourcePrerequisite(Source.PlayersGuide)),
+            new SourcePrerequisite(Source.PlayersGuide),
+            new AdultPrerequisite()),
         new RoleModel(
             Role.ShipsCookOrChef,
             "Chef",
@@ -465,7 +470,16 @@ class Roles {
             "Once per adventure, you may prepare a meal for a non-combat scene set aboard ship; this may be a dinner at the captain’s table, a banquet for dignitaries or other VIPs, part of a celebration, or some other meaningful occasion. Player characters may re-roll 1d20 on all social conflict tasks they attempt during that scene. When the scene ends, do not reduce the group’s Momentum pool by 1",
             new SourcePrerequisite(Source.PlayersGuide),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new NotKlingonPrerequisite()),
+            new NotKlingonPrerequisite(),
+            new AdultPrerequisite()),
+        new RoleModel(
+            Role.Child,
+            "Child",
+            "Child character only. You’re a child of one of the crew, and often get involved in the exploits and adventures of the crew simply by being aboard the ship, perhaps because you’re learning from them. Unless you cause trouble, you may be overlooked by the adults around you, but that and your youthful curiosity often lands you in places you shouldn’t be.",
+            undefined,
+            "Once per adventure, when a non-combat scene begins and does not include you, you may add 2 Threat to declare that you are either present in the scene, or somewhere nearby. In addition, if you do end up in a combat scene, enemies must spend 1 Threat to attack you directly. However, your inexperience means that you add 1 to your complication range for all tasks.",
+            new SourcePrerequisite(Source.PlayersGuide),
+            new ChildPrerequisite()),
         new RoleModel(
             Role.CivilianBureaucrat,
             "Civilian Bureaucrat",
@@ -491,7 +505,8 @@ class Roles {
             Skill.Science,
             "You gain one additional value, which must reflect the importance of your work to you. In addition, select one of your focuses – this is the field you are an expert in. When you use this focus on a task and succeed, you generate one bonus Momentum. Bonus Momentum may not be saved.",
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new SourcePrerequisite(Source.PlayersGuide)),
+            new SourcePrerequisite(Source.PlayersGuide),
+            new AdultPrerequisite()),
         new RoleModel(
             Role.IntelligenceAgent,
             "Intelligence Agent",
@@ -499,7 +514,8 @@ class Roles {
             Skill.Security,
             "Once per adventure, you may create an advantage without requiring a task or spending any Momentum, Threat, or Determination. This advantage must reflect information, equipment, physical resources, or access to a location (such as access codes or identification data) provided to you by a contact or by your agency.",
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new SourcePrerequisite(Source.PlayersGuide)),
+            new SourcePrerequisite(Source.PlayersGuide),
+            new AdultPrerequisite()),
         new RoleModel(
             Role.Merchant,
             "Merchant",
@@ -516,7 +532,8 @@ class Roles {
             Skill.Command,
             "You gain an additional Directive or Dictate, which only applies to you, which reflects the political stance of the government you represent. Your gamemaster will work with you to determine the wording of this Directive or Dictate. It serves to provide you with a source of complications and potential restrictions when acting against the interests of your government, as well as benefits when you are acting with the full support of your superiors.",
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new SourcePrerequisite(Source.PlayersGuide)),
+            new SourcePrerequisite(Source.PlayersGuide),
+            new AdultPrerequisite()),
         new RoleModel(
             Role.ShipsDoctor,
             "Ship's Doctor",
@@ -524,7 +541,8 @@ class Roles {
             Skill.Command,
             "You have two additional focuses, which must relate to fields of study within medicine. However, your ship cannot use Crew Support to introduce supporting charac- ters from the medical department.",
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new SourcePrerequisite(Source.PlayersGuide)),
+            new SourcePrerequisite(Source.PlayersGuide),
+            new AdultPrerequisite()),
         new RoleModel(
             Role.SpiritualLeader,
             "Spritual Leader",
@@ -541,7 +559,8 @@ class Roles {
             Skill.Medicine,
             "You reduce the Difficulty of any task to translate or understand an unfamiliar language by 2, to a minimum of 0.",
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new SourcePrerequisite(Source.PlayersGuide)),
+            new SourcePrerequisite(Source.PlayersGuide),
+            new AdultPrerequisite()),
     ];
 
     getRoles() {

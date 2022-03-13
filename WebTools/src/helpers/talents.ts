@@ -156,7 +156,17 @@ class CareerPrerequisite implements ITalentPrerequisite {
         return character.career === this.career;
     }
     describe(): string {
-        return "";
+        return "Only available to " + (this.career === 0 ? "Young" : "Veteran") + " characters";
+    }
+}
+
+class ChildOnlyPrerequisite implements ITalentPrerequisite {
+
+    isPrerequisiteFulfilled() {
+        return false; // it's never selected by players; only automatically added for child characters
+    }
+    describe(): string {
+        return "Child characters only";
     }
 }
 
@@ -190,6 +200,16 @@ class GMsDiscretionPrerequisite implements ITalentPrerequisite {
     }
     describe(): string {
         return "Gamemaster’s discretion";
+    }
+}
+
+class OnlyAtCharacterCreationPrerequisite implements ITalentPrerequisite {
+
+    isPrerequisiteFulfilled() {
+        return true;
+    }
+    describe(): string {
+        return "Only available at character creation";
     }
 }
 
@@ -2315,7 +2335,14 @@ export class Talents {
                 [new SourcePrerequisite(Source.PlayersGuide), new TalentPrerequisite("Telepath"),  new GMsDiscretionPrerequisite()],
                 1,
                 "Esoteric"),
-                                    
+            new TalentModel(
+                "Childhood Insight",
+                "The character is young, but often spots details or reaches conclusions that adults might overlook. The character may not have or increase any attribute above 10, or any discipline above 3 while they have this talent (and may have to adjust attributes and disciplines accordingly at the end of character creation). Select a single discipline, which must be rated at least 2. Whenever you attempt a task using that discipline and buy one or more dice either by spending Momentum or adding to Threat, roll one [D] for each die you bought. You generate bonus Momentum equal to the total rolled on the [D] (bonus Momentum may not be saved). You add 1 to Threat for each effect rolled.",
+                [new SourcePrerequisite(Source.PlayersGuide), new ChildOnlyPrerequisite(), new OnlyAtCharacterCreationPrerequisite()],
+                1,
+                "Career"),
+    
+                
             // Starships
             new TalentModel(
                 "Ablative Armor",
@@ -2583,6 +2610,26 @@ export class Talents {
 
     getTalents() {
         return this._talents;
+    }
+
+
+    getTalentViewModel(name: string) {
+        let talent = this.getTalent(name);
+
+        if (talent) {
+            let rank = character.hasTalent(talent.name)
+                ? character.talents[talent.name].rank + 1
+                : 1;
+            return new TalentViewModel(
+                talent.name,
+                rank,
+                talent.maxRank > 1,
+                talent.description,
+                Skill.None,
+                "");
+        } else {
+            return null;
+        }
     }
 
     getTalent(name: string) {

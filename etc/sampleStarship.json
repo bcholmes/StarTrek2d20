@@ -1,0 +1,24 @@
+{
+    "stereotype": "starship",
+    "type": "Starfleet",
+    "year": 2371,
+    "spaceframe": {
+        "name": "",
+        "custom": {
+            "serviceYear": 2371,
+            "systems": [],
+            "departments": [],
+            "scale": 4,
+            "weapons": [],
+            "traits": []
+        }
+    },
+    "missionProfile": {
+        "departments": []
+    },
+    "name": "",
+    "registry": "",
+    "refits": [],
+    "talents": [],
+    "traits": []
+}

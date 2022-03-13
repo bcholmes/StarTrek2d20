@@ -15,9 +15,9 @@ import {CharacterType} from './characterType';
 import { System } from '../helpers/systems';
 import { AlliedMilitary, AlliedMilitaryType } from '../helpers/alliedMilitary';
 import { Government, GovernmentType } from '../helpers/governments';
+import AgeHelper, { Age } from '../helpers/age';
 
 export abstract class CharacterTypeDetails {
-
 }
 
 export class AlliedMilitaryDetails extends CharacterTypeDetails {
@@ -53,7 +53,6 @@ export class GovernmentDetails extends CharacterTypeDetails {
         }
     }
 }
-
 
 export class CharacterAttribute {
     attribute: Attribute;
@@ -168,7 +167,7 @@ export class Character {
     public traits: string[];
     public additionalTraits: string;
     public talents: { [name: string]: CharacterTalent };
-    public age?: number;
+    public age: Age;
     public name?: string;
     public lineage?: string;
     public house?: string;
@@ -223,9 +222,9 @@ export class Character {
         this.traits = [];
         this.focuses = [];
         this.talents = {};
-        this.age = 18;
         this.equipment = [];
         this.careerEvents = [];
+        this.age = AgeHelper.getAdultAge();
 
         this.allowCrossSpeciesTalents = false;
 
@@ -379,11 +378,10 @@ export class Character {
 
     update() {
         let maxAttribute = 12;
-        let maxDiscipline = 5;
+        let maxDiscipline = Character.maxDiscipline(this);
 
         if (this.isYoung()) {
             maxAttribute = 11;
-            maxDiscipline = 4;
         }
 
         this.attributes.forEach(a => {
@@ -460,6 +458,16 @@ export class Character {
         }
 
         return character;
+    }
+
+    public static maxDiscipline(character) {
+        if (character.age.isChild()) {
+            return 3;
+        } else if (character.isYoung()) {
+            return 4;
+        } else {
+            return 5;
+        }
     }
 }
 

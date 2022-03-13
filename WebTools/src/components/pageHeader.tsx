@@ -28,6 +28,8 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
             return "Starship";
         } else if (this.props.page === PageIdentity.ToolSelecton) {
             return "Registry";
+        } else if (this.props.page === PageIdentity.CharacterType) {
+            return "Character Type";
         } else if (this.props.page === PageIdentity.Species
                 || this.props.page === PageIdentity.SpeciesDetails
                 || this.props.page === PageIdentity.BorgImplants
@@ -37,6 +39,9 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
                 || this.props.page === PageIdentity.UpbringingDetails
                 || this.props.page === PageIdentity.StarfleetAcademy
                 || this.props.page === PageIdentity.StarfleetAcademyDetails
+                || this.props.page === PageIdentity.ChildCareer
+                || this.props.page === PageIdentity.ChildEducationPage
+                || this.props.page === PageIdentity.ChildEducationDetailsPage
                 || this.props.page === PageIdentity.CareerEvent1
                 || this.props.page === PageIdentity.CareerDetails 
                 || this.props.page === PageIdentity.CareerEvent1Details 

@@ -1,6 +1,6 @@
 ﻿import {SkillsHelper, Skill} from './skills';
 import {Attribute} from './attributes';
-import {character } from '../common/character';
+import {Character, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 
 class CareerEventModel {
@@ -614,7 +614,7 @@ class CareerEvents {
     }
 
     private improveDiscipline(discipline: Skill) {
-        const max = character.isYoung() ? 4 : 5;
+        const max = Character.maxDiscipline(character);
         if (character.hasMaxedSkill() && character.skills[discipline].expertise + 1 === max) {
             return;
         }
