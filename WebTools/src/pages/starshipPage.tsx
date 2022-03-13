@@ -6,9 +6,8 @@ import {DropDownInput} from '../components/dropDownInput';
 import {Era} from '../helpers/eras';
 import {SpaceframeHelper, MissionPod, SpaceframeViewModel} from '../helpers/spaceframes';
 import {MissionProfileHelper, MissionProfile} from '../helpers/missionProfiles';
-import {TalentsHelper, TalentViewModel} from "../helpers/talents";
+import {TalentsHelper, TalentViewModel, ToViewModel} from "../helpers/talents";
 import {Source} from "../helpers/sources";
-import {Skill} from "../helpers/skills";
 import {Button} from '../components/button';
 import {Refits} from "../components/refits";
 import {TalentSelection} from "../components/talentSelection";
@@ -190,7 +189,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
             MissionProfileHelper.getMissionProfile(character.starship.missionProfile, character.type).talents
                 .forEach(t => {
                     if (spaceframeTalents.indexOf(t.name) === -1) {
-                        talents.push(new TalentViewModel(t.name, 1, false, t.description, Skill.None, t.category));
+                        talents.push(ToViewModel(t));
                     }
                 });
         }

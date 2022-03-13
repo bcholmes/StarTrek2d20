@@ -532,12 +532,14 @@ export class TalentViewModel {
     rank: number;
     description: string;
     category: string;
+    prerequisites: ITalentPrerequisite[];
 
-    constructor(name: string, rank: number, showRank: boolean, description: string, skill: Skill, category: string) {
+    constructor(name: string, rank: number, showRank: boolean, description: string, skill: Skill, category: string, prerequities: ITalentPrerequisite[]) {
         this.id = name;
         this.description = description;
         this.displayName = this.constructDisplayName(name, rank, showRank, skill, category);
         this.name = name;
+        this.prerequisites = prerequities;
     }
 
 
@@ -551,8 +553,12 @@ export class TalentViewModel {
     }
 }
 
-export function ToViewModel(talent: TalentModel): TalentViewModel {
-    return new TalentViewModel(talent.name, 1, talent.maxRank > 1, talent.description, undefined, talent.category);
+export function ToViewModel(talent: TalentModel, rank: number = 1): TalentViewModel {
+    let name = talent.name;
+    if (character.type === CharacterType.KlingonWarrior) {
+        name = talent.nameForSource(Source.KlingonCore);
+    }
+    return new TalentViewModel(name, rank, talent.maxRank > 1, talent.description, undefined, talent.category, talent.prerequisites);
 }
 
 export class Talents {
@@ -2620,13 +2626,7 @@ export class Talents {
             let rank = character.hasTalent(talent.name)
                 ? character.talents[talent.name].rank + 1
                 : 1;
-            return new TalentViewModel(
-                talent.name,
-                rank,
-                talent.maxRank > 1,
-                talent.description,
-                Skill.None,
-                "");
+            return ToViewModel(talent, rank);
         } else {
             return null;
         }
@@ -2711,11 +2711,7 @@ export class Talents {
                         let rank = character.hasTalent(talent.name)
                             ? character.talents[talent.name].rank + 1
                             : 1;
-                        let name = talent.name;
-                        if (character.type === CharacterType.KlingonWarrior) {
-                            name = talent.nameForSource(Source.KlingonCore);
-                        }
-                        talents.push(new TalentViewModel(name, rank, talent.maxRank > 1, talent.description, s, talent.category));
+                        talents.push(ToViewModel(talent, rank));
                     }
                 }
             }
@@ -2757,13 +2753,7 @@ export class Talents {
                         : 1;
 
                     talents.push(
-                        new TalentViewModel(
-                            talent.name,
-                            rank,
-                            talent.maxRank > 1,
-                            talent.description,
-                            Skill.None,
-                            ""));
+                        ToViewModel(talent, rank));
                 }
             }
         }

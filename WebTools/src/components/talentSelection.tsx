@@ -48,10 +48,24 @@ export class TalentSelection extends React.Component<ITalentSelectionProperties,
     render() {
         const talents = this.props.talents
             .map((t, i) => {
+            let prerequisites = undefined;
+            t.prerequisites.forEach((p) => {
+                let desc = p.describe();
+                if (desc) {
+                    if (prerequisites == null) {
+                        prerequisites = desc;
+                    } else {
+                        prerequisites += (", " + desc);
+                    }
+                }
+            });
+            if (prerequisites) {
+                prerequisites = (<div style={{ fontWeight: "bold" }}>{prerequisites}</div>);
+            }
             return (
                 <tr key={i}>
                     <td className="selection-header-small">{t.displayName}</td>
-                    <td>{replaceDiceWithArrowhead(t.description)}</td>
+                    <td>{replaceDiceWithArrowhead(t.description)} {prerequisites}</td>
                     <td>
                         <CheckBox
                             text=""
