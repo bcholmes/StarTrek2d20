@@ -2290,7 +2290,7 @@ export class Talents {
             new TalentModel(
                 "Reassuring",
                 "Your presence is a boon to your comrades, providing them with a little extra confidence when they need it most. When you succeed at a task using your Presence, you may spend Momentum to reassure your allies, so long as they are within communication range of you. It costs 1 Momentum (Repeatable) to reassure an ally, and this effect allows them to ignore a single complication rolled. This cannot be used to ignore complications from succeeding at cost.",
-                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Insight, 9)],
+                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Presence, 9)],
                 1,
                 "General"),
             new TalentModel(
