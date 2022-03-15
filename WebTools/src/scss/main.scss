@@ -1,3 +1,14 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+$breadcrumb-bg: #130e1a;
+$breadcrumb-border-radius: 1rem;
+$breadcrumb-padding-x: 1.5rem;
+
+@import '~bootstrap/scss/breadcrumb';
+@import '~bootstrap/scss/utilities/spacing';
+
 @import './common.scss';
 @import './attributes.scss';
 @import './characterSheet.scss';

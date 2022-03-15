@@ -122,7 +122,13 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
         });
 
         return (
-            <div>
+            <div className="page">
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">Talents Overview</li>
+                    </ol>
+                </nav>
                 <div className="float-top">
                     <div className="talent-filter">
                         <DropDownInput items={this._categories} defaultValue={this._category} onChange={(index) => { this.onCategoryChanged(index); }} />

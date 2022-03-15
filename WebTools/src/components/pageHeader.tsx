@@ -17,7 +17,7 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
 
     getTitle() {
         if (this.props.page === PageIdentity.Selection) {
-            return "Tools";
+            return "Home";
         } else if (this.props.page === PageIdentity.TalentsOverview) {
             return "Talents Overview";
         } else if (this.props.page === PageIdentity.Era) {

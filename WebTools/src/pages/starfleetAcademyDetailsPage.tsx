@@ -13,6 +13,7 @@ import {MajorsList} from '../components/majorsList';
 import {SkillView} from '../components/skill';
 import { TalentSelection } from '../components/talentSelection';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
+import { Header } from '../components/header';
 
 export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties, {}> {
     private _talent: TalentViewModel;
@@ -50,7 +51,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
 
         return (
             <div className="page">
-                <div className="header-text"><div>{track.name}</div></div>
+                <Header text={track.name} />
                 <div className="panel">
                     <div className="desc-text">{track.description}</div>
                 </div>

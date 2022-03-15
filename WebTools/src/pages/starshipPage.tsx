@@ -333,6 +333,13 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
         return (
             <div className="page">
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">Starship Creation</li>
+                    </ol>
+                </nav>
+
                 <div className="starship-container">
                     <div className="starship-panel">
                         {typeSelection}

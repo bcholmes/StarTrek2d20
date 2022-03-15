@@ -4,11 +4,12 @@ import {character} from '../common/character';
 import { AttributeImprovementRule } from '../helpers/tracks';
 
 interface IAttributeImprovementProperties {
-    controller: AttributeImprovementCollection;
     attribute: Attribute;
     value: number;
     showIncrease: boolean;
     showDecrease: boolean;
+    onDecrease: () => void;
+    onIncrease: () => void;
 }
 
 export class AttributeImprovement extends React.Component<IAttributeImprovementProperties, {}> {
@@ -17,11 +18,11 @@ export class AttributeImprovement extends React.Component<IAttributeImprovementP
         const {attribute, value, showDecrease, showIncrease} = this.props;
 
         const dec = showDecrease
-            ? (<img style={{ float: "left" }} height="20" src="static/img/dec.png" onClick={ () => { this.onDecrease() } } alt="-"/>)
+            ? (<img style={{ float: "left" }} height="20" src="static/img/dec.png" onClick={ () => { this.props.onDecrease() } } alt="-"/>)
             : undefined;
 
         const inc = showIncrease
-            ? (<img style={{ float: "right" }} height="20" src="static/img/inc.png" onClick={ () => { this.onIncrease() } }alt="+"/>)
+            ? (<img style={{ float: "right" }} height="20" src="static/img/inc.png" onClick={ () => { this.props.onIncrease() } }alt="+"/>)
             : undefined;
 
         return (
@@ -36,14 +37,6 @@ export class AttributeImprovement extends React.Component<IAttributeImprovementP
                 </div>
             </div>
         );
-    }
-
-    private onDecrease() {
-        this.props.controller.onDecrease(this.props.attribute);
-    }
-
-    private onIncrease() {
-        this.props.controller.onIncrease(this.props.attribute);
     }
 }
 
@@ -93,22 +86,28 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
     render() {
         const description = this.props.rule ? (<div>{this.props.rule.describe()}</div>) : null;
 
-        const control = this.isShown(Attribute.Control) ? (<AttributeImprovement controller={this} attribute={Attribute.Control} 
+        const control = this.isShown(Attribute.Control) ? (<AttributeImprovement attribute={Attribute.Control} 
+            onIncrease={() => { this.onIncrease(Attribute.Control)}} onDecrease={() => { this.onDecrease(Attribute.Control)}}
             value={character.attributes[Attribute.Control].value} 
             showIncrease={this.canIncrease(Attribute.Control)}  showDecrease={this.canDecrease(Attribute.Control)} />) : undefined;
-        const daring = this.isShown(Attribute.Daring) ? (<AttributeImprovement controller={this} attribute={Attribute.Daring} 
+        const daring = this.isShown(Attribute.Daring) ? (<AttributeImprovement attribute={Attribute.Daring} 
+            onIncrease={() => { this.onIncrease(Attribute.Daring)}} onDecrease={() => { this.onDecrease(Attribute.Daring)}}
             value={character.attributes[Attribute.Daring].value} 
             showIncrease={this.canIncrease(Attribute.Daring)}  showDecrease={this.canDecrease(Attribute.Daring)} />) : undefined;
-        const fitness = this.isShown(Attribute.Fitness) ? (<AttributeImprovement controller={this} attribute={Attribute.Fitness} 
+        const fitness = this.isShown(Attribute.Fitness) ? (<AttributeImprovement attribute={Attribute.Fitness} 
+            onIncrease={() => { this.onIncrease(Attribute.Fitness)}} onDecrease={() => { this.onDecrease(Attribute.Fitness)}}
             value={character.attributes[Attribute.Fitness].value} 
             showIncrease={this.canIncrease(Attribute.Fitness)}  showDecrease={this.canDecrease(Attribute.Fitness)} />) : undefined;
-        const insight = this.isShown(Attribute.Insight) ? (<AttributeImprovement controller={this} attribute={Attribute.Insight} 
+        const insight = this.isShown(Attribute.Insight) ? (<AttributeImprovement attribute={Attribute.Insight} 
+            onIncrease={() => { this.onIncrease(Attribute.Insight)}} onDecrease={() => { this.onDecrease(Attribute.Insight)}}
             value={character.attributes[Attribute.Insight].value} 
             showIncrease={this.canIncrease(Attribute.Insight)}  showDecrease={this.canDecrease(Attribute.Insight)} />) : undefined;
-        const presence = this.isShown(Attribute.Presence) ? (<AttributeImprovement controller={this} attribute={Attribute.Presence} 
+        const presence = this.isShown(Attribute.Presence) ? (<AttributeImprovement attribute={Attribute.Presence} 
+            onIncrease={() => { this.onIncrease(Attribute.Presence)}} onDecrease={() => { this.onDecrease(Attribute.Presence)}}
             value={character.attributes[Attribute.Presence].value} 
             showIncrease={this.canIncrease(Attribute.Presence)}  showDecrease={this.canDecrease(Attribute.Presence)} />) : undefined;
-        const reason = this.isShown(Attribute.Reason) ? (<AttributeImprovement controller={this} attribute={Attribute.Reason} 
+        const reason = this.isShown(Attribute.Reason) ? (<AttributeImprovement attribute={Attribute.Reason} 
+            onIncrease={() => { this.onIncrease(Attribute.Reason)}} onDecrease={() => { this.onDecrease(Attribute.Reason)}}
             value={character.attributes[Attribute.Reason].value} 
             showIncrease={this.canIncrease(Attribute.Reason)}  showDecrease={this.canDecrease(Attribute.Reason)} />) : undefined;
                 

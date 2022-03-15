@@ -12,6 +12,13 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
     render() {
         return (
             <div className="page">
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">Character/Starship Creation</li>
+                    </ol>
+                </nav>
+
                 <div className="page-text">
                     What do you want to register?
                 </div>

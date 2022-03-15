@@ -39,6 +39,13 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
 
         return (
             <div className="page">
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">Character/Starship Creation</li>
+                    </ol>
+                </nav>
+
                 <div className="page-text">
                     Select sources.
                     Ask your GM which are available.
