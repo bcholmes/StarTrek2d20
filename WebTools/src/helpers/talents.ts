@@ -511,12 +511,12 @@ export class TalentModel {
     }
 
     matches(name: string) {
-        if (this.name === name) {
+        if (this.name === name || this.name.replace("’", "'") === name.replace("’", "'")) {
             return true;
         } else {
             let result = false;
             this.aliases.forEach(a => {
-                if (a.name === name) {
+                if (a.name === name || a.name.replace("’", "'") === name.replace("’", "'")) {
                     result = true;
                 }
             })

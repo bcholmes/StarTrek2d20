@@ -98,7 +98,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
         const talents = talentList.map((t, i) => {
             const info = t.aliases.map((a) => {
                 return (
-                    <p><i>The talent is known as </i><b>{a.name}</b><i> in the
+                    <p key={'talent-' + i}><i>The talent is known as </i><b>{a.name}</b><i> in the
                     </i> {SourcesHelper.getSourceName([a.source])} <i>book.</i></p>
                 )
             });
