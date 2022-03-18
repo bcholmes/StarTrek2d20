@@ -26,14 +26,14 @@ class TalentViewModel {
     }
 
     matches(term) {
-        term = term.toLowerCase();
-        return this.name.toLowerCase().indexOf(term) >= 0 || this.description.toLowerCase().indexOf(term) >= 0 || this.category.toLowerCase().indexOf(term) >= 0 || this.matchesAlias(term);
+        term = term.toLowerCase().replace("’", "'");
+        return this.name.toLowerCase().replace("’", "'").indexOf(term) >= 0 || this.description.toLowerCase().replace("’", "'").indexOf(term) >= 0 || this.category.toLowerCase().indexOf(term) >= 0 || this.matchesAlias(term);
     }
     matchesAlias(term) {
         var result = false;
         for (var i = 0; i < this.aliases.length; i++) {
             const alias = this.aliases[i];
-            result = alias.name.toLowerCase().indexOf(term) >= 0;
+            result = alias.name.toLowerCase().replace("’", "'").indexOf(term) >= 0;
             if (result) {
                 break;
             }
