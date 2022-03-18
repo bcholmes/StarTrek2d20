@@ -758,7 +758,7 @@ export class Talents {
                 "Mean Right Hook",
                 "Your Unarmed Strike Attack has the Vicious 1 Damage Effect.",
                 [],
-                1, null, new AliasModel("Warrior's Strike", Source.KlingonCore)),
+                1, null, new AliasModel("Warrior’s Strike", Source.KlingonCore)),
             new TalentModel(
                 "Pack Tactics",
                 "Whenever you assist another character during combat, the character you assisted gains one bonus Momentum if they succeed.",
@@ -771,7 +771,7 @@ export class Talents {
                 1),
             new TalentModel(
                 "Combat Medic",
-                "The character’s abilities in field medicine and battle triage are exceptional and their presence inspires allies to continue any fight. Whenever the character attempts the First Aid Task, they may spend one Momentum to cause the recipient to regain points of Stress equal to the numaber of the character's Medicine Discipline. A character may only regain Stress in this way once per scene.",
+                "The character’s abilities in field medicine and battle triage are exceptional and their presence inspires allies to continue any fight. Whenever the character attempts the First Aid Task, they may spend one Momentum to cause the recipient to regain points of Stress equal to the numaber of the character’s Medicine Discipline. A character may only regain Stress in this way once per scene.",
                 [new DisciplinePrerequisite(Skill.Security, 2), new DisciplinePrerequisite(Skill.Medicine, 2), new SourcePrerequisite(Source.OperationsDivision)],
                 1),
             new TalentModel(
@@ -898,7 +898,7 @@ export class Talents {
                 1),
             new TalentModel(
                 "Past the Redline",
-                "Engineers understand that safety tolerances and operating margins are always designed into the acceptable performance range of equipment. While not recommended the equipment is usually capable of higher performance, if the consequences are risky. This Talent provides bonus Momentum for using a ship’s System until the end of the scene. Select the System you wish to enhance, and the number of bonus Momentum to be provided. Attempt a Daring + Engineering Task with a Difficulty equal to the bonus Momentum selected. If the you succeed, subsequent Tasks using that System automatically generate that amount of bonus Momentum. However, to represent the risks involved, the Task also increases its Complication Range by the same number as the Bonus Momentum provided. If a Complication is rolled, the System no longer provides bonus Momentum and the System suffers a number of Breaches equal to half the ship's Scale.",
+                "Engineers understand that safety tolerances and operating margins are always designed into the acceptable performance range of equipment. While not recommended the equipment is usually capable of higher performance, if the consequences are risky. This Talent provides bonus Momentum for using a ship’s System until the end of the scene. Select the System you wish to enhance, and the number of bonus Momentum to be provided. Attempt a Daring + Engineering Task with a Difficulty equal to the bonus Momentum selected. If the you succeed, subsequent Tasks using that System automatically generate that amount of bonus Momentum. However, to represent the risks involved, the Task also increases its Complication Range by the same number as the Bonus Momentum provided. If a Complication is rolled, the System no longer provides bonus Momentum and the System suffers a number of Breaches equal to half the ship’s Scale.",
                 [new DisciplinePrerequisite(Skill.Engineering, 4), new AttributePrerequisite(Attribute.Daring, 10), new SourcePrerequisite(Source.OperationsDivision)],
                 1),
             new TalentModel(
@@ -1022,7 +1022,7 @@ export class Talents {
             ],
         [Skill.Medicine]: [
             new TalentModel(
-                "Doctor's Orders",
+                "Doctor’s Orders",
                 "When you attempt a Task to coordinate others, or to coerce someone into taking or refraining from a specific course of action, you may use your Medicine Discipline instead of Command.",
                 [new DisciplinePrerequisite(Skill.Medicine, 4)],
                 1),
@@ -1082,27 +1082,27 @@ export class Talents {
                 [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 3), new DisciplinePrerequisite(Skill.Command, 2)],
                 1),
             new TalentModel(
-                "I'm a Doctor, Not a Starship Captain!",
+                "I’m a Doctor, Not a Starship Captain!",
                 "Once per scene, before attempting a Task using Command, a point of Determination may be spent to substitute the character’s Medicine Score in place of Command. This does not have to be linked to a Value.",
                 [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 3), new UntrainedDisciplinePrerequisite(Skill.Command)],
                 1),
             new TalentModel(
-                "I'm a Doctor, Not a Damn Pilot!",
+                "I’m a Doctor, Not a Damn Pilot!",
                 "Once per scene, before attempting a Task using Conn, a point of Determination may be spent to substitute the character’s Medicine Score in place of Conn. This does not have to be linked to a Value.",
                 [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 3), new UntrainedDisciplinePrerequisite(Skill.Conn)],
                 1),
             new TalentModel(
-                "I'm a Doctor, Not an Engineer!",
+                "I’m a Doctor, Not an Engineer!",
                 "Once per scene, before attempting a Task using Engineering, a point of Determination may be spent to substitute the character’s Medicine Score in place of Engineering. This does not have to be linked to a Value.",
                 [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 3), new UntrainedDisciplinePrerequisite(Skill.Engineering)],
                 1),
             new TalentModel(
-                "I'm a Doctor, Not a Scientist!",
+                "I’m a Doctor, Not a Scientist!",
                 "Once per scene, before attempting a Task using Science, a point of Determination may be spent to substitute the character’s Medicine Score in place of Science. This does not have to be linked to a Value.",
                 [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 3), new UntrainedDisciplinePrerequisite(Skill.Science)],
                 1),
             new TalentModel(
-                "I'm a Doctor, Not the Chief of Security!",
+                "I’m a Doctor, Not the Chief of Security!",
                 "Once per scene, before attempting a Task using Security, a point of Determination may be spent to substitute the character’s Medicine Score in place of Security. This does not have to be linked to a Value.",
                 [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 3), new UntrainedDisciplinePrerequisite(Skill.Security)],
                 1),
@@ -1314,26 +1314,26 @@ export class Talents {
                 1,
                 "Klingon"),
             new TalentModel(
-                "Brak'lul",
+                "Brak’lul",
                 "Various physiological redundancies mean that wounds that would kill other humanoid species don’t affect Klingons as badly. The character gains +2 Resistance against all Non-lethal attacks. In addition, whenever the Klingon is target of a First Aid Task, reduce the Difficulty of that Task by 1, to a minimum of 1.",
                 [new SpeciesPrerequisite(20, false), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
-                "R'uustai",
+                "R’uustai",
                 "This Klingon has lit candles, spoken words to honor their parents, and given their house’s sash to another, joining in a fellowship with another person, and becoming members of the same house (the original house of either party). The R’uustai Talent grants a Klingon an additional Value, which must reflect their relationship with the ritual sibling. In addition, whenever the Klingon assists, or is assisted by another, the character offering assistance may re-roll their die.",
                 [new AnySpeciesPrerequisite(20, 71, true), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
-                "Killer's Instinct",
+                "Killer’s Instinct",
                 "You have shed blood, and will not hesitate to do so again. So familiar are you with the intent to kill that you can even see it in others when you look them in the eyes. When you choose to make a lethal attack, you do not add to Threat for doing so. In addition, whenever an enemy you can see attempts to make a lethal attack against you, you may add 1 to Threat to increase the Difficulty of their attack by 1, as you react to their intent.",
                 [new AnySpeciesPrerequisite(20, 71, true), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
-                "Warrior's Spirit",
-                "You are an exemplar of what it means to be a Klingon warrior, and you will not hesitate to demonstrate your prowess to any who challenge you. When you make a melee attack, or are targeted by a melee attack, and you buy one or more d20s by adding to Threat, you may re-roll the dice pool for the task. Further, you own either a mek'leth or a bat'leth, at your discretion, and do not have to pay an Opportunity Cost to acquire it.",
+                "Warrior’s Spirit",
+                "You are an exemplar of what it means to be a Klingon warrior, and you will not hesitate to demonstrate your prowess to any who challenge you. When you make a melee attack, or are targeted by a melee attack, and you buy one or more d20s by adding to Threat, you may re-roll the dice pool for the task. Further, you own either a mek’leth or a bat’leth, at your discretion, and do not have to pay an Opportunity Cost to acquire it.",
                 [new AnySpeciesPrerequisite(20, 71, true), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.KlingonCore)],
                 1,
                 "Klingon"),
@@ -1696,15 +1696,15 @@ export class Talents {
                 "Though a small power in the Alpha Quadrant, the Son’a have not become one of the dominant powers in the Briar Patch by engaging only in half measures or pulling their punches. When a Son’a declares their attack action, they may add an additional point of Momentum as long as they are not dealing Non-lethal damage. ",
                 [new SourcePrerequisite(Source.GammaQuadrant), new SpeciesPrerequisite(55, true)],
                 1,
-                "Son'a"),
+                "Son’a"),
             new TalentModel(
                 "Particle Engineering",
                 "The Son’a are hedonists who embrace all the pleasures that life has to offer but that does not mean they are not well educated. A large portion of the Son’a’s scientific research is dedicated towards understanding the unique particles that cling to the atmosphere of their former homeworld. When dealing with subatomic particles and the effects of radiation, the Son’a may ignore the effects of any Condition for the scene and may roll an additional d20 when attempting to understand the nature of these effects. ",
                 [new SourcePrerequisite(Source.GammaQuadrant), new SpeciesPrerequisite(55, false)],
                 1,
-                "Son'a"),
+                "Son’a"),
             new TalentModel(
-                "Survivor's Luck",
+                "Survivor’s Luck",
                 "For the Drai, the greatest hunts always come when their prey manages to continually outwit them and the Tosk are cunning adversaries. Some are given extra stores of information when they are created while others are able to pick up survival techniques as they try to escape from the Hunters. The Tosk adds 1 bonus Momentum to the pool for each adversary they are trying to escape in the scene to a maximum of 3. ",
                 [new SourcePrerequisite(Source.GammaQuadrant), new SpeciesPrerequisite(56, true)],
                 1,
@@ -1897,16 +1897,16 @@ export class Talents {
                 "Hologram"),
             new TalentModel(
                 "Cruel",
-                "You have a tendency towards ruthlessness and cruelty, and the reputation to match, always seeking to undermine those you wish to destroy before you deal the final blow. When you attempt a Task to identify the weaknesses or flaws of an enemy, or matters they are particularly sensitive or protective about, you may reduce the Difficulty by 1. If the enemy has a trait which reflects this weakness (such as an advantage you've created, or a complication they're suffering from), you may re-roll a single d20 on the next attack or persuasion Task you attempt against them.",
+                "You have a tendency towards ruthlessness and cruelty, and the reputation to match, always seeking to undermine those you wish to destroy before you deal the final blow. When you attempt a Task to identify the weaknesses or flaws of an enemy, or matters they are particularly sensitive or protective about, you may reduce the Difficulty by 1. If the enemy has a trait which reflects this weakness (such as an advantage you’ve created, or a complication they’re suffering from), you may re-roll a single d20 on the next attack or persuasion Task you attempt against them.",
                 [new SpeciesPrerequisite(71, true), new NotEraPrerequisite(Era.NextGeneration), new SourcePrerequisite(Source.KlingonCore)],
                 1,
-                "Klingon (QuchHa')"),
+                "Klingon (QuchHa’)"),
             new TalentModel(
                 "Superior Ambition",
                 "You believe that your cunning and insight give you an advantage over other Klingons, and your ambition is greater than theirs. When you spend Determination, you may add three to Threat in order to gain two benefits from spending Determination, instead of one.",
                 [new SourcePrerequisite(Source.KlingonCore), new NotEraPrerequisite(Era.NextGeneration), new SpeciesPrerequisite(71, true)],
                 1,
-                "Klingon (QuchHa')"),
+                "Klingon (QuchHa’)"),
             new TalentModel(
                 "A Better Path",
                 "Akaru value efficiency in all things, including when working on problems or tasks. Whenever you succeed at a task during an extended task, add 1[D] to your dice pool to determine Work completed.",
@@ -1932,7 +1932,7 @@ export class Talents {
                 1,
                 "Cal-Mirran"),
             new TalentModel(
-                "That Wasn't Me",
+                "That Wasn’t Me",
                 "The Orions are known as one of the most untrustworthy species in the Galaxy next to the Ferengi, and yet people are always willing to do business with them or are continually tricked by them. This is due to the subtle dance of social interactions and the release of pheromones that make the Orion endearing to whom they are dealing with, and can be used to gain their trust. An Orion adds 1 bonus Momentum to their pool when they have successfully completed a task to win a target’s trust.",
                 [new SourcePrerequisite(Source.ShackletonExpanse), new SpeciesPrerequisite(30, true)],
                 1,
@@ -1972,19 +1972,19 @@ export class Talents {
                 "Many members of the permanently calcified Lo’Kari faction will look for any excuse to start a fight with the sea-dwelling I’Qosa. During the first round of any combat against sea dwellers, the character may ignore the normal cost to Retain the Initiative.",
                 [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(76, true)],
                 1,
-                "I'Qosa"),
+                "I’Qosa"),
             new TalentModel(
                 "Waters of Renewal",
                 "The waters of I’Qosa nourish and restore the inhabitants of the planet. While in the waters of their homeworld, the character recovers 2 Stress at the start of each round, up to the character’s normal maximum Stress.",
                 [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(76, true)],
                 1,
-                "I'Qosa"),
+                "I’Qosa"),
             new TalentModel(
                 "Zero-G Swimmer",
                 "I’Qosa are experts at moving both in underwater and zero- gravity environments due to their natural aquatic habitat. The character receives a bonus d20 on any task related to swimming or zero-g maneuvering.",
                 [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(76, true)],
                 1,
-                "I'Qosa"),
+                "I’Qosa"),
             new TalentModel(
                 "Campaign Fatigue",
                 "The constant churn of the election cycle on Sigma Iotia II has made most Iotians experts at sniffing our liars and frauds. Whenever the character attempts a task to resist being deceived, they add a bonus d20 to their dice pool.",
@@ -2211,7 +2211,7 @@ export class Talents {
                 "Enhancement"),
             new TalentModel(
                 "Neural Interface",
-                "The character has had a cybernetic device implanted directly into their brain, allowing them to interface with computers and similar technologies with their thoughts. Initiating or breaking the link between their minds and a computer system takes a Minor Action, and while they are connected they may reroll the d20 gained from using ship's Systems. However, any time the ship suffers a Breach the character also suffers 3[D] of Stress.",
+                "The character has had a cybernetic device implanted directly into their brain, allowing them to interface with computers and similar technologies with their thoughts. Initiating or breaking the link between their minds and a computer system takes a Minor Action, and while they are connected they may reroll the d20 gained from using ship’s Systems. However, any time the ship suffers a Breach the character also suffers 3[D] of Stress.",
                 [new SourcePrerequisite(Source.SciencesDivision)],
                 1,
                 "Enhancement"),
@@ -2513,7 +2513,7 @@ export class Talents {
                 1,
                 "Starship"),
             new TalentModel(
-                "Captain's Yacht",
+                "Captain’s Yacht",
                 "The vessel has a single additional support craft, normally mounted in a dedicated port under the saucer section of the ship. These craft, larger than most shuttles, are often used for diplomatic missions and special excursions by the commanding officer, and are often known as the Captain’s Yacht (though not always; some Intrepid-class vessels have a similar craft called an aeroshuttle). The ship has one additional Small Craft, which does not count against the number which may be active at any one time.",
                 [new StarshipPrerequisite()],
                 1,
@@ -2608,7 +2608,7 @@ export class Talents {
             "Starship"),
         new TalentModel(
             "Modular Cargo Pods",
-            "The modular cargo pods of the Par'tok class transport can be replaced or removed at any rudimentary spacedock as long as other pods are available and service vehicles such as shuttlecraft can assist in tractoring new pods into place. Depending on the mission assigned to the Par’tok class vessel, the performance and traits of the vessel can drastically change.",
+            "The modular cargo pods of the Par’tok class transport can be replaced or removed at any rudimentary spacedock as long as other pods are available and service vehicles such as shuttlecraft can assist in tractoring new pods into place. Depending on the mission assigned to the Par’tok class vessel, the performance and traits of the vessel can drastically change.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.KlingonCore)],
             1,
             "Starship"),
