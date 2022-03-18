@@ -1135,7 +1135,7 @@ export class Talents {
                 "You focus on diagnosing the nature of an illness, injury, psychological problem, or other condition, because once the cause has been determined, finding the solution gets easier. When you succeed at a Medicine task to identify and diagnose the nature of a medical problem, you gain 1 bonus Momentum for every additional d20 you bought by spending Momentum, which may only be used to Obtain Information or Create Advantage.",
                 [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Medicine, 4)]),
             new TalentModel(
-                "Don’t Die on Me!",
+                "Don’t You Die on Me!",
                 "The line between life and death is a thin one, and you’re good enough to keep a patient alive when lesser doctors would have pronounced them dead. When a character is killed, you may spend 1 Determination to make one attempt to revive them. If they were killed instantly by suffering two injuries, then this may only be attempted within that scene. If the character suffered a lethal injury and died because they didn’t receive medical treatment in time, this may be attempted before the end of the subsequent scene. This requires a Daring + Medicine task, with a Difficulty of 3. If successful, the character is brought back from the brink of death, though the injury / injuries that nearly killed them still require healing. Failure means that your efforts were unsuccessful and the character dies.",
                 [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Medicine, 5)]),
             new TalentModel(
