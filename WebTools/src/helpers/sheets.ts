@@ -988,7 +988,7 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
         return 'https://sta.bcholmes.org/static/img/sheets/TNG_2_Page_Character_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/static/pdf/TNG_2_Page_Character_Sheet.pdf'
+        return 'https://sta.bcholmes.org/static/pdf/TNG_2_Page_Character_Sheet_new.pdf'
     }
 
     async populate(pdf: PDFDocument) {
@@ -1013,6 +1013,25 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
                 }
             }
         }
+
+        // I don't know why PDF-Lib changes the font size, but let's try to 
+        // change it back.
+        this.fixFontSize(form, "Career Event 1 description");
+        this.fixFontSize(form, "Career Event 2 description");
+        this.fixFontSize(form, "Awards and Reputation");
+        this.fixFontSize(form, "Notes");
+    }
+
+    fixFontSize(form: PDFForm, fieldName: string) {
+        try {
+            const field = form.getTextField(fieldName)
+            if (field) {
+                field.enableMultiline();
+                field.setFontSize(9);
+            }
+        } catch (e) {
+            // ignore it
+        }
     }
 
     async fillPageTwo(pdf: PDFDocument) {
@@ -1027,8 +1046,7 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
         const paragraphStyle = new FontSpecification(helvetica, 10);
         const symbolStyle = new FontSpecification(symbolFont, 10);
 
-        let column2 = new Column(392, 204, 550, 196);
-        let column1 = new Column(180, 204, 550, 196, column2);
+        let column1 = new Column(369, 40, 774-40, 585-369);
         let currentColumn = column1;
 
         this.writeRoleAndTalents(page2, titleStyle, paragraphStyle, symbolStyle, currentColumn);
