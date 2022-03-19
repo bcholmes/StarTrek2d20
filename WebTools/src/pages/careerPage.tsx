@@ -7,6 +7,7 @@ import {Career, CareersHelper} from '../helpers/careers';
 import {Button} from '../components/button';
 import {CareerSelection} from '../components/careerSelection';
 import InstructionText from '../components/instructionText';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 interface ICareerPageState {
     showSelection: boolean;
@@ -42,6 +43,7 @@ export class CareerPage extends React.Component<IPageProperties, ICareerPageStat
 
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 {content}
             </div>
         );

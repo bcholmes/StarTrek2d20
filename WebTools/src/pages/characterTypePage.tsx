@@ -8,6 +8,7 @@ import {WorkflowsHelper} from '../helpers/workflows';
 import AllyHelper, { AlliedMilitaryType } from '../helpers/alliedMilitary';
 import { Source } from '../helpers/sources';
 import Governments, { GovernmentType } from '../helpers/governments';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 interface ICharacterTypePageState {
     type: CharacterType,
@@ -107,13 +108,7 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
 
         return (
             <div className="page">
-                <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Character Creation</li>
-                    </ol>
-                </nav>
-
+                <CharacterCreationBreadcrumbs />
                 <div className="panel">
                     <div className="header-small">Character Type</div>
                     <div className="page-text">

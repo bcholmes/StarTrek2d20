@@ -3,6 +3,7 @@ import { character } from '../common/character';
 import { Navigation } from '../common/navigator';
 import { Window } from '../common/window';
 import { Button } from '../components/button';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { Header } from '../components/header';
 import InstructionText from '../components/instructionText';
 import AgeHelper, { Age } from '../helpers/age';
@@ -50,6 +51,7 @@ export class ChildEducationPage extends React.Component<IPageProperties, {}> {
 
     render() {
         return (<div className="page">
+            <CharacterCreationBreadcrumbs />
             <InstructionText text={character.workflow.currentStep().description} />
             <AgeSelection onSelection={(a) => this.selectAge(a)} />
         </div>)

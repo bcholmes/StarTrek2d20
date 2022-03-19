@@ -11,6 +11,7 @@ import {AttributeView} from '../components/attribute';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovement';
 import {SkillView} from '../components/skill';
 import {ElectiveSkillList} from '../components/electiveSkillList';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 export class CareerEventDetailsPage extends React.Component<IPageProperties, {}> {
     private _focus: HTMLInputElement;
@@ -51,6 +52,7 @@ export class CareerEventDetailsPage extends React.Component<IPageProperties, {}>
 
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 <div className="header-text"><div>{event.name}</div></div>
                 <div className="panel">
                     <div className="desc-text">{event.description}</div>

@@ -4,6 +4,7 @@ import { Button } from '../components/button';
 import { PageIdentity } from './pageIdentity';
 import { Navigation } from '../common/navigator';
 import { character } from '../common/character';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 interface Implant {
     name: string;
@@ -51,6 +52,7 @@ export class BorgImplantSelection extends React.Component<{}, {}> {
 
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 <div className="header-text"><div>BORG IMPLANTS</div></div>
                 <div className="panel">
                     <div className="desc-text">

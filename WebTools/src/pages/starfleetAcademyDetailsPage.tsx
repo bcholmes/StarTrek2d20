@@ -14,6 +14,7 @@ import {SkillView} from '../components/skill';
 import { TalentSelection } from '../components/talentSelection';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import { Header } from '../components/header';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties, {}> {
     private _talent: TalentViewModel;
@@ -189,6 +190,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
 
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 <div className="header-text"><div>{track.name}</div></div>
                 <div className="panel">
                     <div className="desc-text">{track.description}</div>

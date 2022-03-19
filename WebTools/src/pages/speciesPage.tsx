@@ -9,6 +9,7 @@ import {Button} from '../components/button';
 import {SpeciesSelection} from '../components/speciesSelection';
 import {MixedSpeciesSelection} from '../components/mixedSpeciesSelection';
 import { Source } from '../helpers/sources';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 interface ISpeciesPageState {
     showSelection: boolean;
@@ -75,6 +76,7 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
 
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 {content}
             </div>
         );

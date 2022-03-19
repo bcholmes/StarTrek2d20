@@ -12,6 +12,7 @@ import {ElectiveSkillList} from '../components/electiveSkillList';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {ValueInput, Value} from '../components/valueInput';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 export class EnvironmentDetailsPage extends React.Component<IPageProperties, {}> {
     private _electiveSkills: Skill[];
@@ -57,6 +58,7 @@ export class EnvironmentDetailsPage extends React.Component<IPageProperties, {}>
 
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 <div className="header-text"><div>{env.name} {otherSpeciesName}</div></div>
                 <div className="panel">
                     <div className="desc-text">{env.description}</div>

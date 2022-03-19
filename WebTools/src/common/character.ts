@@ -171,8 +171,6 @@ export class Character {
     public name?: string;
     public lineage?: string;
     public house?: string;
-    public appearance?: string;
-    public personality?: string;
     public equipment: string[];
     public career?: Career;
     public careerEvents: number[];

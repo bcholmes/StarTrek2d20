@@ -8,6 +8,7 @@ import {ValueInput, Value} from '../components/valueInput';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import InstructionText from '../components/instructionText';
 import { Header } from '../components/header';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 export class ChildCareerPage extends React.Component<IPageProperties, {}> {
 
@@ -21,6 +22,7 @@ export class ChildCareerPage extends React.Component<IPageProperties, {}> {
     render() {
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 <Header text="Career" />
                 <div className="panel">
                     <InstructionText text={character.workflow.currentStep().description} />

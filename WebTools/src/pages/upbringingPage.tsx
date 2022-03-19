@@ -9,6 +9,7 @@ import {UpbringingSelection} from '../components/upbringingSelection';
 import InstructionText from '../components/instructionText';
 import { Source } from '../helpers/sources';
 import { CheckBox } from '../components/checkBox';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 interface IUpbringingPageState {
     showSelection: boolean;
@@ -66,6 +67,7 @@ export class UpbringingPage extends React.Component<IPageProperties, IUpbringing
 
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 {content}
             </div>
         );

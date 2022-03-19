@@ -12,6 +12,7 @@ import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
 import { AlliedMilitaryType } from '../helpers/alliedMilitary';
 import replaceDiceWithArrowhead from '../common/arrowhead';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 export class FinishPage extends React.Component<IPageProperties, {}> {
     private name: HTMLInputElement;
@@ -76,7 +77,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                     </div>
                     <ValueInput value={Value.Environment} text={character.environmentValue} onChange={() => { this.forceUpdate(); } } />
                     <ValueInput value={Value.Track} text={character.trackValue} onChange={() => { this.forceUpdate(); } }/>
-                    <ValueInput value={Value.Career} text={character.careerValue} onChange={() => { this.forceUpdate(); } }/>
+                    <ValueInput value={character.age.isChild() ? Value.ChildCareer : Value.Career} text={character.careerValue} onChange={() => { this.forceUpdate(); } }/>
                     <ValueInput value={Value.Finish} text={character.finishValue} onChange={() => { this.forceUpdate(); } }/>
                 </div>
                 <br/>
@@ -120,6 +121,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
 
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 <div className="page-text">
                     Your character is finished. You can either use this reference to fill in a character sheet by hand, or use the button at the bottom
                     to export your character to PDF.

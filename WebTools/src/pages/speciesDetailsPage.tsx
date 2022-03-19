@@ -14,6 +14,7 @@ import { CheckBox } from '../components/checkBox';
 import { Dialog } from '../components/dialog';
 import { TalentSelection } from '../components/talentSelection';
 import { Source } from '../helpers/sources';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
     private _selectedTalent: TalentViewModel;
@@ -113,6 +114,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
 
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 <div className="header-text"><div>{name}</div></div>
                 <div className="panel">
                     {description}

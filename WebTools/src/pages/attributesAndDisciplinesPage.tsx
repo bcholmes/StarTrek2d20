@@ -12,6 +12,7 @@ import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {ValueInput, Value} from '../components/valueInput';
 import { TalentSelection } from '../components/talentSelection';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 interface IPageState {
     showExcessAttrDistribution: boolean;
@@ -54,7 +55,6 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
     }
 
     render() {
-        const hasExcess = this.state.showExcessAttrDistribution || this.state.showExcessSkillDistribution;
         const attributes = 
                 (<AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Customization} 
                     points={this._excessAttrPoints + this._attrPoints} onDone={(done) => { this.attributesDone(done); } } />)
@@ -103,6 +103,7 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
 
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 <div className="page-text">
                     {description}
                 </div>

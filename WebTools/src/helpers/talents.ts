@@ -1846,7 +1846,7 @@ export class Talents {
                 "The character has developed a degree of ability across a broad range of disciplines. When attempting a Task where more than one of the character’s Focuses apply, the character may reroll a d20.",
                 [new SourcePrerequisite(Source.DeltaQuadrant), new SpeciesPrerequisite(67, true)],
                 1,
-                "Talaxian"),
+                "Talaxian", new AliasModel("Being of Many Virtues", Source.Voyager)),
             new TalentModel(
                 "Infectous Nature",
                 "The character comes from a race of social beings that are outgoing, good-natured, and enjoy the company of others. This exuberance has the pleasant side effect of improving the attitude and outlooks of the people around them – regardless of whether those beings like it or not. When engaged in a Social Conflict, the character may spend 2 Momentum to improve the outlook and attitude of those around them. This provides one of two effects. The character is considered to have an Advantage in subsequent social interactions with the individual affected by this Talent. In addition, the character may choose to allow the individual to recover Stress equal to the character’s Command score.",

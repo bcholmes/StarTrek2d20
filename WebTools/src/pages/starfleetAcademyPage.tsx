@@ -8,6 +8,7 @@ import {Track, TracksHelper} from '../helpers/tracks';
 import {Button} from '../components/button';
 import {TrackSelection} from '../components/trackSelection';
 import InstructionText from '../components/instructionText';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 interface IStarfleetAcademygPageState {
     showSelection: boolean;
@@ -53,6 +54,7 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
 
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 {content}
             </div>
         );

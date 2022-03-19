@@ -12,6 +12,7 @@ import {Dialog} from '../components/dialog';
 import {CheckBox} from '../components/checkBox';
 import { TalentSelection } from '../components/talentSelection';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> {
     private _electiveSkills: Skill[];
@@ -44,6 +45,7 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
 
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 <div className="header-text"><div>{upbringing.name}</div></div>
                 <div className="panel">
                     <div className="desc-text">{upbringing.description}</div>

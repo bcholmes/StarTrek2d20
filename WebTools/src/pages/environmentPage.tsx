@@ -9,6 +9,7 @@ import {EnvironmentSelection} from '../components/environmentSelection';
 import InstructionText from '../components/instructionText';
 import { Source } from '../helpers/sources';
 import { CheckBox } from '../components/checkBox';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 interface IEnvironmentPageState {
     showSelection: boolean;
@@ -66,6 +67,7 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
 
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 {content}
             </div>
         );

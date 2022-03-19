@@ -10,6 +10,7 @@ import {TalentDescription} from '../components/talentDescription';
 import {ValueInput, Value} from '../components/valueInput';
 import { TalentSelection } from '../components/talentSelection';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
+import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
 export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
     private _talent: TalentViewModel;
@@ -32,6 +33,7 @@ export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
 
         return (
             <div className="page">
+                <CharacterCreationBreadcrumbs />
                 <div className="header-text"><div>{career.name}</div></div>
                 <div className="panel">
                     <div className="desc-text">{career.description}</div>
