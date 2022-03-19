@@ -69,7 +69,9 @@ export class AttributeImprovementCollection extends React.Component<AttributeImp
     constructor(props: AttributeImprovementCollectionProperties) {
         super(props);
 
-        if (character.isYoung()) {
+        if (character.age.isChild()) {
+            this._absoluteMax = 10;
+        } else if (character.isYoung()) {
             this._absoluteMax = 11;
         }
 

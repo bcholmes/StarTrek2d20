@@ -11,6 +11,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220319</b>
+                <ul>
+                    <li>Implement Child character creation from the <cite>Player's Guide</cite></li>
+                    <li>Fix a whole host of minor transcription bugs related to Talents, thanks to the diligent reporting of Felderburg.</li>
+                </ul>
                 <b>v1.220220</b>
                 <ul>
                     <li>The complete list of Player's Guide talents are now supported.</li>
@@ -103,13 +108,6 @@ class News extends React.Component<INewsProperties, {}> {
                     <li>I'm experimenting with revisions to the Starship character sheet. You probably won't notice any difference.</li>
                     <li><a href="https://github.com/bcholmes/StarTrek2d20/issues/7" target="_blank" rel="noreferrer">Bug:</a> 
                         retore the accept/reject indicator on character sheets.</li>
-                </ul>
-                <b>v1.211008</b>
-                <ul>
-                    <li>Incorporate the IDW Year Five Sourcebook</li>
-                    <li>Bug fixes: Some minor bugs have been fixed (if you choose Homeworld as the environment, it would be blank on the character
-                        sheet, and the damage calculation for phasers was slightly off.
-                    </li>
                 </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>

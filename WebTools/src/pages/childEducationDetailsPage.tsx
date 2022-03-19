@@ -3,16 +3,17 @@ import { character } from '../common/character';
 import { Navigation } from '../common/navigator';
 import { Button } from '../components/button';
 import { ChildAttributeImprovementCollection } from '../components/childAttributeImprovement';
+import { ChildSkillList } from '../components/childSkillList';
 import { Dialog } from '../components/dialog';
 import { Header } from '../components/header';
-import { TalentSelection } from '../components/talentSelection';
 import { Value, ValueInput } from '../components/valueInput';
-import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import { IPageProperties } from './iPageProperties';
 
 interface IEducationDetailsState {
     attributesChosen: boolean;
     attributesDecreased: boolean;
+    disciplinesChosen: boolean;
+    disciplinesDecreased: boolean;
     focus1?: string;
     focus2?: string;
 }
@@ -23,7 +24,9 @@ export class ChildEducationDetailsPage extends React.Component<IPageProperties, 
         super(props);
         this.state = {
             attributesChosen: false,
-            attributesDecreased: false
+            attributesDecreased: false,
+            disciplinesChosen: false,
+            disciplinesDecreased: false
         };
     }
 
@@ -58,7 +61,11 @@ export class ChildEducationDetailsPage extends React.Component<IPageProperties, 
             </div>
             <div className="panel">
                 <div className="header-small">ATTRIBUTES</div>
-                <ChildAttributeImprovementCollection decreasePoints={character.age.options.decreasePoints} onChange={(dec, inc) => this.onAttributesChanged(dec, inc)} />
+                <ChildAttributeImprovementCollection decreasePoints={character.age.options.decreaseAttributes} onChange={(dec, inc) => this.onAttributesChanged(dec, inc)} />
+            </div>
+            <div className="panel">
+                <div className="header-small">DISCIPLINES</div>
+                <ChildSkillList decreasePoints={character.age.options.decreaseDisciplines} onChanged={(dec, inc) => { this.onDisciplinesChanged(dec, inc) } } />
             </div>
             {focuses}
             <div className="panel">
@@ -87,16 +94,29 @@ export class ChildEducationDetailsPage extends React.Component<IPageProperties, 
         this.setState((state) => ({...state, attributesChosen: inc, attributesDecreased: dec}));
     }
 
+    onDisciplinesChanged(dec: boolean, inc: boolean) {
+        this.setState((state) => ({...state, disciplinesChosen: inc, disciplinesDecreased: dec}));
+    }
+
     private onNext() {
         if (!this.state.attributesDecreased) {
-            Dialog.show("You must decrease " + (character.age.options.decreasePoints === 1 ? "one attribute" : (character.age.options.decreasePoints + " attributes")));
+            Dialog.show("You must decrease " + (character.age.options.decreaseAttributes === 1 ? "one attribute" : (character.age.options.decreaseAttributes + " attributes")));
         } else if (!this.state.attributesChosen) {
             Dialog.show("You must distribute all three attribute points.");
+        } else if (!this.state.attributesDecreased) {
+            Dialog.show("You must decrease " + (character.age.options.decreaseDisciplines === 1 ? "one discipline" : (character.age.options.decreaseDisciplines + " disciplines")));
+        } else if (!this.state.disciplinesChosen) {
+            Dialog.show("You must select one major and two minor disciplines.");
         } else if (character.age.options.numberOfFocuses === 1 && !this.state.focus1) {
             Dialog.show("You must select a Focus");
         } else if (character.age.options.numberOfFocuses > 1 && (!this.state.focus1 || !this.state.focus2)) {
             Dialog.show("You must select " + character.age.options.numberOfFocuses + " Focuses.");
         } else {
+            character.addFocus(this.state.focus1);
+            if (character.age.options.numberOfFocuses > 1) {
+                character.addFocus(this.state.focus2);
+            }
+
             character.workflow.next();
             Navigation.navigateToPage(character.workflow.currentStep().page);
         }

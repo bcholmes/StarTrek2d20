@@ -28,9 +28,19 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
     constructor(props: IPageProperties) {
         super(props);
 
-        character.addEquipment("Uniform");
-        character.addEquipment("Communicator");
-        character.addEquipment("Tricorder");
+        if (character.age.isChild()) {
+            character.addEquipment("Clothing");
+        } else if (character.isCivilian()) {
+            character.addEquipment("Clothing");
+        } else if (character.type === CharacterType.KlingonWarrior) {
+            character.addEquipment("Armor");
+            character.addEquipment("Communicator");
+            character.addEquipment("Tricorder");
+        } else {
+            character.addEquipment("Uniform");
+            character.addEquipment("Communicator");
+            character.addEquipment("Tricorder");
+        }
 
         this.roles = [];
         RolesHelper.getRoles().forEach(role => {
@@ -50,6 +60,41 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
         }
     }
 
+    renderValues() {
+        if (character.age.isChild()) {
+            return (<div>
+                <div className="panel">
+                    <div className="header-small">VALUES</div>
+                    <div>
+                        If you did not define your values during character creation,
+                        or if you want to change any of them,
+                        now is the time to think about the values your character goes by.
+                    </div>
+                    <ValueInput value={Value.Environment} text={character.environmentValue} onChange={() => { this.forceUpdate(); } } />
+                    <ValueInput value={Value.Track} text={character.trackValue} onChange={() => { this.forceUpdate(); } }/>
+                    <ValueInput value={Value.ChildCareer} text={character.careerValue} onChange={() => { this.forceUpdate(); } }/>
+                </div>
+                <br/>
+            </div>);
+        } else {
+            return (<div>
+                <div className="panel">
+                    <div className="header-small">VALUES</div>
+                    <div>
+                        If you did not define your values during character creation,
+                        or if you want to change any of them,
+                        now is the time to think about the values your character goes by.
+                    </div>
+                    <ValueInput value={Value.Environment} text={character.environmentValue} onChange={() => { this.forceUpdate(); } } />
+                    <ValueInput value={Value.Track} text={character.trackValue} onChange={() => { this.forceUpdate(); } }/>
+                    <ValueInput value={Value.Career} text={character.careerValue} onChange={() => { this.forceUpdate(); } }/>
+                    <ValueInput value={Value.Finish} text={character.finishValue} onChange={() => { this.forceUpdate(); } }/>
+                </div>
+                <br/>
+            </div>);
+        }
+    }
+
     render() {
         const species = SpeciesHelper.getSpeciesByType(character.species);
 
@@ -66,22 +111,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
             return (<div key={'name-' + i}>{`${n}${i < names.length - 1 ? "," : ""} `}</div>);
         });
 
-        const values =
-            <div>
-                <div className="panel">
-                    <div className="header-small">VALUES</div>
-                    <div>
-                        If you did not define your values during character creation,
-                        or if you want to change any of them,
-                        now is the time to think about the values your character goes by.
-                    </div>
-                    <ValueInput value={Value.Environment} text={character.environmentValue} onChange={() => { this.forceUpdate(); } } />
-                    <ValueInput value={Value.Track} text={character.trackValue} onChange={() => { this.forceUpdate(); } }/>
-                    <ValueInput value={character.age.isChild() ? Value.ChildCareer : Value.Career} text={character.careerValue} onChange={() => { this.forceUpdate(); } }/>
-                    <ValueInput value={Value.Finish} text={character.finishValue} onChange={() => { this.forceUpdate(); } }/>
-                </div>
-                <br/>
-            </div>;
+        const values = this.renderValues();
 
         const assignments = this.roles.map((r, i) => {
             return (
@@ -185,7 +215,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
     }
 
     renderRank() {
-        if (character.isCivilian()) {
+        if (character.isCivilian() || character.age.isChild()) {
             return null;
         } else if (character.type === CharacterType.AlliedMilitary && character.typeDetails 
             && (character.typeDetails as AlliedMilitaryDetails).alliedMilitary.type === AlliedMilitaryType.OTHER) {
@@ -300,7 +330,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
             }
         });
 
-        if (!character.isCivilian()) {
+        if (!character.isCivilian() || character.age.isChild()) {
             character.rank = this.ranks[0];
         } else {
             character.rank = '';

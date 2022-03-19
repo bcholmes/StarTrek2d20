@@ -680,7 +680,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
 
         if (character.type === CharacterType.Starfleet) {
             result.push(new Weapon("Phaser type-2", 3, "Charges"));
-        } else {
+        } else if (character.age.isAdult()) {
             if (character.isKlingon()) {
                 result.push(new Weapon("d’k tahg dagger", 1, "Vicious 1, Deadly, Hidden 1"));
             }

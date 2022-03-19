@@ -1,5 +1,6 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
+import { CharacterType } from '../common/characterType';
 import {CareersHelper} from '../helpers/careers';
 
 export enum Value {
@@ -29,7 +30,13 @@ export class ValueInput extends React.Component<IValueInputProperties, {}> {
                 description = "This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.";
                 break;
             case Value.Track:
-                description = "The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their time at the Academy."
+                if (character.type === CharacterType.Starfleet) {
+                    description = "The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their time at the Academy."
+                } else if (character.age.isChild()) {
+                    description = "The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Education."
+                } else {
+                    description = "The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Training."
+                }
                 break;
             case Value.Career:
                 description = CareersHelper.getCareer(character.career).valueDescription;

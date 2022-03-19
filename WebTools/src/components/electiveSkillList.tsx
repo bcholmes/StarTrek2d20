@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {Character, character} from '../common/character';
 import {Skill, SkillsHelper} from '../helpers/skills';
 import {CheckBox} from '../components/checkBox';
 
@@ -51,9 +51,7 @@ export class ElectiveSkillList extends React.Component<IElectiveSkillListPropert
     render() {
         const skills = this.props.skills.map((s, i) => {
             const isSelected = this._selected.indexOf(s) > -1;
-            const max = character.isYoung()
-                ? character.hasMaxedSkill() ? 3 : 4
-                : character.hasMaxedSkill() ? 4 : 5;
+            const max = character.hasMaxedSkill() ? Math.min(Character.maxDiscipline(character), 4) : Character.maxDiscipline(character);
             const showCheckBox = isSelected || character.skills[s].expertise < max;
             return (<ElectiveSkill key={i} skill={s} isSelected={isSelected} showCheckBox={showCheckBox} onSelected={skill => this.onSelect(skill) }/>)
         });
