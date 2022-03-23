@@ -3,12 +3,14 @@ import { PDFDocument } from 'pdf-lib'
 import { ICharacterSheet } from '../helpers/sheets';
 import {Button} from './button';
 import { ModalControl } from './modal';
+import { character, Construct } from '../common/character';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
 interface ICharacterSheetDialogProperties {
     sheets: ICharacterSheet[];
-    suffix: string
+    suffix: string;
+    construct: Construct;
 }
 
 class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogProperties, {}> {
@@ -64,12 +66,12 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
             const existingPdfBytes = await fetch(sheet.getPdfUrl()).then(res => res.arrayBuffer())
             const pdfDoc = await PDFDocument.load(existingPdfBytes)
 
-            await sheet.populate(pdfDoc)
+            await sheet.populate(pdfDoc, this.props.construct);
 
             const pdfBytes = await pdfDoc.save()
 
             // Trigger the browser to download the PDF document
-            download(pdfBytes, sheet.createFileName(this.props.suffix), "application/pdf");
+            download(pdfBytes, sheet.createFileName(this.props.suffix, this.props.construct), "application/pdf");
         }
         
         CharacterSheetDialog.hide();
@@ -78,10 +80,11 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
 
 class CharacterSheetDialogControl {
 
-    show(sheets: ICharacterSheet[], suffix: string) {
+    show(sheets: ICharacterSheet[], suffix: string, c: Construct = character) {
         ModalControl.show("lg", () => {}, React.createElement(_CharacterSheetDialog, {
             sheets: sheets,
-            suffix: suffix
+            suffix: suffix,
+            construct: c
         }), "Choose Template" )
     }
 

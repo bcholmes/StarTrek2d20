@@ -207,6 +207,18 @@ class MissionProfiles {
     getMissionProfile(profile: MissionProfile, type: CharacterType) {
         return (type === CharacterType.KlingonWarrior) ? this._klingonProfiles[profile] : this._profiles[profile];
     }
+
+    getMissionProfileByName(profile: string, type: CharacterType) {
+        let list = (type === CharacterType.KlingonWarrior) ? this._klingonProfiles : this._profiles;
+        let result = null;
+        for (let id in list) {
+            if (profile === MissionProfile[parseInt(id)]) {
+                result = list[id];
+                break;
+            }
+        }
+        return result;
+    }
 }
 
 export const MissionProfileHelper = new MissionProfiles();

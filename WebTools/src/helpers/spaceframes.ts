@@ -1069,6 +1069,17 @@ class Spaceframes {
         return result ? SpaceframeViewModel.from(frame, result) : undefined;
     }
 
+    getSpaceframeByName(name: string) {
+        let result = undefined;
+        for (let id in this._frames) {
+            if (Spaceframe[id] === name) {
+                result = SpaceframeViewModel.from(parseInt(id), this._frames[id]);
+                break;
+            }
+        }
+        return result;
+    }
+
     getMissionPods() {
         let missionPods: MissionPodViewModel[] = [];
         let n = 0;

@@ -26,6 +26,7 @@ import { CharacterTypePage } from './characterTypePage';
 import { ChildCareerPage } from './childCareerPage';
 import { ChildEducationPage } from './childEducationPage';
 import { ChildEducationDetailsPage } from './childEducationDetailsPage';
+import { ViewSheetPage } from './viewSheetPage';
 
 
 export class PageFactory {
@@ -61,6 +62,7 @@ export class PageFactory {
         this.factories[PageIdentity.Starship] = () => <StarshipPage/>;
         this.factories[PageIdentity.SupportingCharacter] = () => <SupportingCharacterPage />;
         this.factories[PageIdentity.TalentsOverview] = () => <TalentsOverviewPage />;
+        this.factories[PageIdentity.ViewSheet] = () => <ViewSheetPage />;
     }
 
     createPage(page: PageIdentity) {

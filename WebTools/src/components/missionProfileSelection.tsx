@@ -3,12 +3,12 @@ import * as React from 'react';
 import { CharacterType } from '../common/characterType';
 import { CheckBox } from './checkBox';
 import { Department } from '../helpers/departments';
-import { MissionProfile, MissionProfileHelper } from '../helpers/missionProfiles';
+import { MissionProfile, MissionProfileHelper, MissionProfileViewModel } from '../helpers/missionProfiles';
 
 interface IMissionProfileSelectionProperties {
     type: CharacterType;
     initialSelection?: MissionProfile;
-    onSelection: (s: MissionProfile) => void;
+    onSelection: (s: MissionProfileViewModel) => void;
 }
 
 class MissionProfileSelection extends React.Component<IMissionProfileSelectionProperties, {}> {
@@ -35,7 +35,7 @@ class MissionProfileSelection extends React.Component<IMissionProfileSelectionPr
                                 isChecked={this.props.initialSelection === m.id}
                                 text=""
                                 value={m.id}
-                                onChanged={() => { this.props.onSelection(m.id); } }/>
+                                onChanged={() => { this.props.onSelection(m); } }/>
                         </td>
                     </tr>
                     <tr>

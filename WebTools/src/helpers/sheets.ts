@@ -1,4 +1,4 @@
-import { character } from '../common/character';
+import { Character, character, Construct, Starship } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Attribute } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
@@ -6,7 +6,6 @@ import { PDFDocument, PDFFont, PDFForm, PDFPage, rgb, StandardFonts } from 'pdf-
 import fontkit from '@pdf-lib/fontkit'
 import { CharacterSerializer } from '../common/characterSerializer';
 import { Era } from './eras';
-import { MissionProfileHelper } from '../helpers/missionProfiles';
 import { Department } from './departments';
 import { System } from './systems';
 import { Weapon } from './weapons';
@@ -104,8 +103,8 @@ export interface ICharacterSheet {
     getName(): string;
     getThumbnailUrl(): string;
     getPdfUrl(): string;
-    populate(pdf: PDFDocument);
-    createFileName(suffix: string);
+    populate(pdf: PDFDocument, construct: Construct);
+    createFileName(suffix: string, construct: Construct);
 }
 
 abstract class BasicSheet implements ICharacterSheet {
@@ -118,12 +117,12 @@ abstract class BasicSheet implements ICharacterSheet {
     getPdfUrl(): string {
         throw new Error('Method not implemented.');
     }
-    async populate(pdf: PDFDocument) {
+    async populate(pdf: PDFDocument, construct: Construct) {
         const form = pdf.getForm();
-        this.populateForm(form);
+        this.populateForm(form, construct);
     }
 
-    populateForm(form: PDFForm) {
+    populateForm(form: PDFForm, construct: Construct) {
     }
 
     fillField(form: PDFForm, name: string, value: string) {
@@ -138,31 +137,31 @@ abstract class BasicSheet implements ICharacterSheet {
             }
         }
     }
-    createFileName(suffix: string): string {
-        if (character.name == null || character.name.length === 0) {
+    createFileName(suffix: string, construct: Construct): string {
+        if (construct.name == null || construct.name.length === 0) {
             return suffix + ".pdf";
         } else {
-            var escaped = character.name.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_');
+            var escaped = construct.name.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_');
             return escaped + '-'  + suffix + ".pdf";
         }
     }
 
-    findSecurityValue() {
+    findSecurityValue(construct: Construct) {
         return 0;
     }
 
-    determineWeapons(): Weapon[] {
+    determineWeapons(construct: Construct): Weapon[] {
         return [];
     }
-    fillWeapons(form: PDFForm) {
-        var weapons = this.determineWeapons();
+    fillWeapons(form: PDFForm, construct: Construct) {
+        var weapons = this.determineWeapons(construct);
         weapons.forEach( (w, i) => {
-            this.fillWeapon(form, w, i+1);
+            this.fillWeapon(form, w, i+1, construct);
         });
     }
 
-    fillWeapon(form: PDFForm, weapon: Weapon, index: number) {
-        const security = this.findSecurityValue() || 0;
+    fillWeapon(form: PDFForm, weapon: Weapon, index: number, construct: Construct) {
+        const security = this.findSecurityValue(construct) || 0;
 
         this.fillField(form, 'Weapon ' + index + ' name', weapon.name);
         this.fillField(form, 'Weapon ' + index + ' dice', "" + (security + weapon.dice));
@@ -187,69 +186,50 @@ abstract class BasicSheet implements ICharacterSheet {
 
 abstract class BasicStarshipSheet extends BasicSheet {
 
-    populateForm(form: PDFForm) {
-        this.fillField(form, 'Name', character.starship.name);
-        this.fillField(form, 'Service Date', character.starship.serviceYear.toString());
-        if (character.isKlingon()) {
+    populateForm(form: PDFForm, construct: Construct) {
+        let starship = construct as Starship;
+        this.fillField(form, 'Name', starship.name);
+        this.fillField(form, 'Service Date', starship.serviceYear.toString());
+        if (starship.type === CharacterType.KlingonWarrior) {
             this.fillField(form, 'Designation', 'N/A');
         } else {
-            this.fillField(form, 'Designation', character.starship.registry);
+            this.fillField(form, 'Designation', starship.registry);
         }
-        let trait = character.isKlingon() ? "Klingon Starship" : "Federation Starship";
 
-        const talents = character.starship.getTalentNameList();
+        const talents = starship.getTalentNameList();
 
-        const spaceframe = character.starship.spaceframeModel;
+        const spaceframe = starship.spaceframeModel;
         if (spaceframe) {
             this.fillField(form, 'Space Frame', spaceframe.name);
             this.fillField(form, 'Scale', spaceframe.scale.toString());
-            trait = spaceframe.additionalTraits.join(', ');
         }
-        if (character.starship.traits) {
-            trait += `, ${character.starship.traits}`;
-        }
-        this.fillField(form, 'Traits', trait);
-        const missionProfile = MissionProfileHelper.getMissionProfile(character.starship.missionProfile, character.type);
+        this.fillField(form, 'Traits', starship.getAllTraits());
+        const missionProfile = starship.missionProfileModel;
         if (missionProfile) {
             this.fillField(form, 'Mission Profile', missionProfile.name);
         }
 
-        if (character.starship.systems[System.Engines]) {
-            this.fillField(form, "Power Total", this.calculatePower(character.starship.systems[System.Engines], talents));
+        if (starship.systems[System.Engines]) {
+            this.fillField(form, "Power Total", this.calculatePower(starship.systems[System.Engines], talents));
         }
-        if (character.starship.scale) {
-            this.fillField(form, "Resistance",  this.calculateResistance(character.starship.scale, talents));
-            this.fillField(form, "Crew Total",  this.calculateCrewSupport(character.starship.scale));
-        }
-
-        if (character.starship.systems[System.Structure] && character.starship.departments[Department.Security]) {
-            this.fillShields(form, this.calculateShields(character.starship.systems[System.Structure] + character.starship.departments[Department.Security], talents));
+        if (starship.scale) {
+            this.fillField(form, "Resistance",  this.calculateResistance(starship.scale, talents));
+            this.fillField(form, "Crew Total",  this.calculateCrewSupport(starship.scale));
         }
 
-        this.fillRefits(form);
-        this.fillSystems(form);
-        this.fillDepartments(form);
+        if (starship.systems[System.Structure] && starship.departments[Department.Security]) {
+            this.fillShields(form, this.calculateShields(starship.systems[System.Structure] + starship.departments[Department.Security], talents));
+        }
+
+        this.fillRefits(form, starship);
+        this.fillSystems(form, starship);
+        this.fillDepartments(form, starship);
         this.fillTalents(form, talents);
-        this.fillWeapons(form);
+        this.fillWeapons(form, construct);
     }
 
-    fillRefits(form: PDFForm) {
-        let systems: System[] = [ System.Comms, System.Computer, System.Engines, System.Sensors, System.Structure, System.Weapons ];
-        let refitString = "";
-        if (character.starship.refits) {
-            systems.forEach(s => {
-                let value = 0;
-                character.starship.refits.forEach(r => value += (r === s) ? 1 : 0);
-                if (value > 0) {
-                    if (refitString !== "") {
-                        refitString += ", ";
-                    }
-                    refitString += "+" + value + " " + System[s];
-                }
-            });
-        }
-        console.log("Refit: " + refitString);
-        this.fillField(form, "Refit", refitString);
+    fillRefits(form: PDFForm, starship: Starship) {
+        this.fillField(form, "Refit", starship.refitsAsString());
     }
 
     calculateCrewSupport(scale: number) {
@@ -303,78 +283,32 @@ abstract class BasicStarshipSheet extends BasicSheet {
         }
     }
 
-    findSecurityValue() {
-        return character.starship.departments[Department.Security];
+    findSecurityValue(construct: Construct) {
+        return (construct as Starship).departments[Department.Security];
     }
 
-    determineWeapons(): Weapon[] {
-        var result = [];
-        var secondary = [];
-        const talents = character.starship.getTalentNameList();
-        const spaceframe = character.starship.spaceframeModel;
-        if (spaceframe) {
-            for (var attack of spaceframe.attacks) {
-
-                if (attack === 'Photon Torpedoes') {
-                    result.push(new Weapon(attack, 3, "High Yield"));
-                } else if (attack === 'Phaser Cannons' || attack === 'Phase Cannons') {
-                    result.push(new Weapon(attack, 2, "Versatile 2", true));
-                } else if (attack === 'Phaser Banks') {
-                    result.push(new Weapon(attack, 1, "Versatile 2", true));
-                } else if (attack === 'Phaser Arrays') {
-                    result.push(new Weapon(attack, 0, "Versatile 2, Area or Spread", true));
-                } else if (attack === 'Disruptor Cannons') {
-                    result.push(new Weapon(attack, 2, "Viscious 1", true));
-                } else if (attack === 'Disruptor Banks') {
-                    result.push(new Weapon(attack, 1, "Viscious 1", true));
-                } else if (attack === 'Disruptor Arrays') {
-                    result.push(new Weapon(attack, 0, "Viscious 1, Area or Spread", true));
-                } else if (attack === 'Plasma Torpedoes') {
-                    result.push(new Weapon(attack, 3, "Persistent, Calibration"));
-                } else if (attack.indexOf('Tractor Beam') >= 0 || attack.indexOf('Grappler Cables') >= 0) {
-                    let index = attack.indexOf("(Strength");
-                    let index2 = attack.indexOf(")", index);
-                    let strength = index >= 0 && index2 >= 0 ? attack.substr(index + "(Strength".length + 1, index2) : "0";
-                    secondary.push(new Weapon(attack.indexOf('Tractor Beam') >= 0 ? 'Tractor Beam' : 'Grappler Cables', parseInt(strength), ""));
-                }
-            }
-
-            if (spaceframe.attacks.indexOf('Quantum Torpedoes') >= 0 || talents.indexOf('Quantum Torpedoes') >= 0) {
-                result.push(new Weapon('Quantum Torpedoes', 4, "Vicious 1, Calibration, High Yield"));
-            }
-
-            if (spaceframe.attacks.indexOf('Spatial Torpedoes') >= 0 && talents.indexOf('Nuclear Warheads') >= 0) {
-                result.push(new Weapon('Nuclear Warheads', 3, "Vicious 1, Calibration"));
-            } else if (spaceframe.attacks.indexOf('Spatial Torpedoes') >= 0) {
-                result.push(new Weapon('Spatial Torpedoes', 2, ""));
-            } else if (spaceframe.attacks.indexOf('Nuclear Warheads') >= 0 || talents.indexOf('Nuclear Warheads') >= 0) {
-                result.push(new Weapon('Nuclear Warheads', 3, "Vicious 1, Calibration"));
-            }
-        }
-
-        secondary.forEach(w => {
-            result.push(w);
-        });
-
-        return result;
+    determineWeapons(construct: Construct): Weapon[] {
+        return (construct as Starship).determineWeapons();
     }
 
-    fillSystems(form: PDFForm) {
-        this.fillFieldWithNumber(form, "Engines", character.starship.getSystemValue(System.Engines));
-        this.fillFieldWithNumber(form, "Structure", character.starship.getSystemValue(System.Structure));
-        this.fillFieldWithNumber(form, "Computers", character.starship.getSystemValue(System.Computer));
-        this.fillFieldWithNumber(form, "Sensors", character.starship.getSystemValue(System.Sensors));
-        this.fillFieldWithNumber(form, "Weapons", character.starship.getSystemValue(System.Weapons));
-        this.fillFieldWithNumber(form, "Communications", character.starship.getSystemValue(System.Comms));
+    fillSystems(form: PDFForm, construct: Construct) {
+        let starship = construct as Starship;
+        this.fillFieldWithNumber(form, "Engines", starship.getSystemValue(System.Engines));
+        this.fillFieldWithNumber(form, "Structure", starship.getSystemValue(System.Structure));
+        this.fillFieldWithNumber(form, "Computers", starship.getSystemValue(System.Computer));
+        this.fillFieldWithNumber(form, "Sensors", starship.getSystemValue(System.Sensors));
+        this.fillFieldWithNumber(form, "Weapons", starship.getSystemValue(System.Weapons));
+        this.fillFieldWithNumber(form, "Communications", starship.getSystemValue(System.Comms));
     }
 
-    fillDepartments(form: PDFForm) {
-        this.fillFieldWithNumber(form, "Command", character.starship.departments[Department.Command]);
-        this.fillFieldWithNumber(form, "Conn", character.starship.departments[Department.Conn]);
-        this.fillFieldWithNumber(form, "Security", character.starship.departments[Department.Security]);
-        this.fillFieldWithNumber(form, "Engineering", character.starship.departments[Department.Engineering]);
-        this.fillFieldWithNumber(form, "Science", character.starship.departments[Department.Science]);
-        this.fillFieldWithNumber(form, "Medicine", character.starship.departments[Department.Medicine]);
+    fillDepartments(form: PDFForm, construct: Construct) {
+        let starship = construct as Starship;
+        this.fillFieldWithNumber(form, "Command", starship.departments[Department.Command]);
+        this.fillFieldWithNumber(form, "Conn", starship.departments[Department.Conn]);
+        this.fillFieldWithNumber(form, "Security", starship.departments[Department.Security]);
+        this.fillFieldWithNumber(form, "Engineering", starship.departments[Department.Engineering]);
+        this.fillFieldWithNumber(form, "Science", starship.departments[Department.Science]);
+        this.fillFieldWithNumber(form, "Medicine", starship.departments[Department.Medicine]);
     }
 
     fillFieldWithNumber(form: PDFForm, name: string, value: number) {
@@ -382,24 +316,17 @@ abstract class BasicStarshipSheet extends BasicSheet {
             this.fillField(form, name, value.toString());
         }
     }
-    createFileName(suffix: string): string {
-        if (character.starship.name) {
-            var escaped = character.starship.name.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_');
-            return escaped + '-'  + suffix + ".pdf";
-        } else {
-            return suffix + ".pdf";
-        }
-    }
 
-    fillWeapon(form: PDFForm, weapon: Weapon, index: number) {
-        const security = this.findSecurityValue() || 0;
+    fillWeapon(form: PDFForm, weapon: Weapon, index: number, construct: Construct) {
+        let starship = construct as Starship;
+        const security = this.findSecurityValue(construct) || 0;
 
         let dice = security + weapon.dice;
         if (weapon.isTractorOrGrappler) {
             dice = weapon.dice;
         }
         if (weapon.scaleApplies) {
-            const scale = character.starship && character.starship.scale ? character.starship.scale : 0;
+            const scale = starship && starship.scale ? starship.scale : 0;
             dice += scale;
         }
 
@@ -420,11 +347,12 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
         return 'https://sta.bcholmes.org/static/pdf/TNG_Standard_Starship_Sheet_no_outline.pdf'
     }
 
-    async populate(pdf: PDFDocument) {
-        super.populate(pdf);
+    async populate(pdf: PDFDocument, construct: Construct) {
+        super.populate(pdf, construct);
+        let starship = construct as Starship;
 
-        const spaceframe = character.starship.spaceframeModel;
-        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(43.5, 290.25), rgb(245.0/255, 157.0/255.0, 8.0/255.0)), spaceframe, character.starship.serviceYear);
+        const spaceframe = starship.spaceframeModel;
+        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(43.5, 290.25), rgb(245.0/255, 157.0/255.0, 8.0/255.0)), spaceframe, starship.serviceYear);
     }
 }
 
@@ -439,11 +367,12 @@ class StandardTosStarshipSheet extends BasicStarshipSheet {
         return 'https://sta.bcholmes.org/static/pdf/TOS_Starship_Sheet_no_outline.pdf'
     }
 
-    async populate(pdf: PDFDocument) {
-        super.populate(pdf);
+    async populate(pdf: PDFDocument, construct: Construct) {
+        super.populate(pdf, construct);
+        let starship = construct as Starship;
 
-        const spaceframe = character.starship.spaceframeModel;
-        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(42.5, 243.0), rgb(237.0/255, 27.0/255.0, 47.0/255.0)), spaceframe, character.starship.serviceYear);
+        const spaceframe = starship.spaceframeModel;
+        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(42.5, 243.0), rgb(237.0/255, 27.0/255.0, 47.0/255.0)), spaceframe, starship.serviceYear);
     }
 }
 
@@ -471,12 +400,12 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
     getPdfUrl(): string {
         throw new Error('Method not implemented.');
     }
-    async populate(pdf: PDFDocument) {
+    async populate(pdf: PDFDocument, construct: Construct) {
         const form = pdf.getForm();
-        this.populateForm(form);
+        this.populateForm(form, construct);
     }
 
-    populateForm(form: PDFForm) {
+    populateForm(form: PDFForm, construct: Construct) {
         this.fillName(form);
         this.fillField(form, 'Department', CharacterSerializer.serializeAssignment(character));
         this.fillField(form, 'Purpose', CharacterSerializer.serializeAssignment(character));
@@ -623,8 +552,8 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
 
 abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
 
-    populateForm(form: PDFForm) {
-        super.populateForm(form);
+    populateForm(form: PDFForm, construct: Construct) {
+        super.populateForm(form, construct);
 
         var upbringing = character.upbringing;
         if (upbringing) {
@@ -637,12 +566,13 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         this.fillTalents(form);
         this.fillEquipment(form);
 
-        this.fillWeapons(form);
+        this.fillWeapons(form, construct);
     }
 
-    findSecurityValue() {
+    findSecurityValue(construct: Construct) {
+        let c = construct as Character;
         var result = undefined;
-        character.skills.forEach( (s, i) => {
+        c.skills.forEach( (s, i) => {
             if (s.skill === Skill.Security) {
                 result = s.expertise;
             }
@@ -650,9 +580,9 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         return result;
     }    
 
-    fillWeapons(form: PDFForm) {
-        var weapons = this.determineWeapons();
-        const security = this.findSecurityValue() || 0;
+    fillWeapons(form: PDFForm, construct: Construct) {
+        var weapons = this.determineWeapons(construct);
+        const security = this.findSecurityValue(construct) || 0;
 
         weapons.forEach( (w, i) => {
             this.fillField(form, 'Weapon ' + (i+1) + ' name', w.name);
@@ -661,7 +591,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         });
     }
 
-    determineWeapons() {
+    determineWeapons(construct: Construct) {
         var result: Weapon[] = [];
         
         if (character.hasTalent("Mean Right Hook")) {
@@ -765,8 +695,8 @@ class KlingonCharacterSheet extends BasicFullCharacterSheet {
         return 'https://sta.bcholmes.org/static/pdf/STA_Klingon_Character_Sheet.pdf'
     }
 
-    populateForm(form: PDFForm) {
-        super.populateForm(form);
+    populateForm(form: PDFForm, construct: Construct) {
+        super.populateForm(form, construct);
 
         this.fillField(form, 'House', character.house);
     }
@@ -991,14 +921,14 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
         return 'https://sta.bcholmes.org/static/pdf/TNG_2_Page_Character_Sheet.pdf'
     }
 
-    async populate(pdf: PDFDocument) {
+    async populate(pdf: PDFDocument, construct: Construct) {
         pdf.registerFontkit(fontkit);
-        await super.populate(pdf);
+        await super.populate(pdf, construct);
         await this.fillPageTwo(pdf);
     }
 
-    populateForm(form: PDFForm): void {
-        super.populateForm(form);
+    populateForm(form: PDFForm, construct: Construct): void {
+        super.populateForm(form, construct);
         
         if (character.careerEvents && character.careerEvents.length > 0) {
             let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0]);
@@ -1046,9 +976,9 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
         return 'https://sta.bcholmes.org/static/pdf/TNG_Landscape_Character_Sheet.pdf'
     }
 
-    async populate(pdf: PDFDocument) {
+    async populate(pdf: PDFDocument, construct: Construct) {
         pdf.registerFontkit(fontkit);
-        await super.populate(pdf);
+        await super.populate(pdf, construct);
         await this.fillTalentTextBlock(pdf);
     }
 
@@ -1070,8 +1000,8 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
         this.writeRoleAndTalents(page, titleStyle, paragraphStyle, symbolStyle, currentColumn);
     }
 
-    populateForm(form: PDFForm): void {
-        super.populateForm(form);
+    populateForm(form: PDFForm, construct: Construct): void {
+        super.populateForm(form, construct);
         
         this.fillField(form, "Pronouns", character.pronouns);
 

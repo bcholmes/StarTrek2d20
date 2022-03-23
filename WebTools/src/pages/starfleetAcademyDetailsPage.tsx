@@ -52,7 +52,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
 
         return (
             <div className="page">
-                <Header text={track.name} />
+                <Header>{track.name}</Header>
                 <div className="panel">
                     <div className="desc-text">{track.description}</div>
                 </div>

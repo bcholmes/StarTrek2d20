@@ -24,11 +24,12 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
     constructor(props) {
         super(props);
 
+        let url = new URL(window.location.href);
         this.state = {
             showNews: false,
             showHistory: false,
             showProfile: false,
-            activePage: PageIdentity.Selection
+            activePage: url.pathname === "/view" ? PageIdentity.ViewSheet : PageIdentity.Selection
         };
         this.pageFactory = new PageFactory();
     }

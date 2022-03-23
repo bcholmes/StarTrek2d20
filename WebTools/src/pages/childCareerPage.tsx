@@ -23,7 +23,7 @@ export class ChildCareerPage extends React.Component<IPageProperties, {}> {
         return (
             <div className="page">
                 <CharacterCreationBreadcrumbs />
-                <Header text="Career" />
+                <Header>Career</Header>
                 <div className="panel">
                     <InstructionText text={character.workflow.currentStep().description} />
                 </div>

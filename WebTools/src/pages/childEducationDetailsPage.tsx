@@ -55,7 +55,7 @@ export class ChildEducationDetailsPage extends React.Component<IPageProperties, 
             </div>);
 
         return (<div className="page">
-            <Header text={character.age.name} />
+            <Header>{character.age.name}</Header>
             <div className="panel">
                 <div className="desc-text">{character.age.description}</div>
             </div>

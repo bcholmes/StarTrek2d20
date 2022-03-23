@@ -57,8 +57,7 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
                 <div className="source-container">
                     {sources}
                 </div>
-                <br/><br/><br/><br/>
-                <div className="page-text">
+                <div className="page-text mt-5">
                     Select which Era to play in.
                     Ask your GM which Era to choose.
                 </div>

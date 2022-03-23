@@ -5,7 +5,7 @@ import { CharacterType } from '../common/characterType';
 import {DropDownInput} from '../components/dropDownInput';
 import {Era} from '../helpers/eras';
 import {SpaceframeHelper, MissionPod, SpaceframeViewModel} from '../helpers/spaceframes';
-import {MissionProfileHelper, MissionProfile} from '../helpers/missionProfiles';
+import {MissionProfileHelper, MissionProfileViewModel} from '../helpers/missionProfiles';
 import {TalentsHelper, TalentViewModel, ToViewModel} from "../helpers/talents";
 import {Source} from "../helpers/sources";
 import {Button} from '../components/button';
@@ -97,10 +97,10 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         const profiles = MissionProfileHelper.getMissionProfiles(this.state.type.type);
         let missionProfileModel = undefined;
         // if other choices have changed, then the current spaceframe might be invalid
-        if (character.starship && character.starship.missionProfile !== undefined) {
-            let frames = profiles.filter(p => p.id === character.starship.missionProfile);
+        if (character.starship && character.starship.missionProfileModel !== undefined) {
+            let frames = profiles.filter(p => p.id === character.starship.missionProfileModel.id);
             if (frames.length === 0) {
-                character.starship.missionProfile = undefined;
+                character.starship.missionProfileModel = undefined;
             } else {
                 missionProfileModel = frames[0];
             }
@@ -185,8 +185,8 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         }
 
         let talents: TalentViewModel[] = [];
-        if (character.starship.missionProfile !== undefined) {
-            MissionProfileHelper.getMissionProfile(character.starship.missionProfile, character.type).talents
+        if (character.starship.missionProfileModel !== undefined) {
+            character.starship.missionProfileModel.talents
                 .forEach(t => {
                     if (spaceframeTalents.indexOf(t.name) === -1) {
                         talents.push(ToViewModel(t));
@@ -512,17 +512,17 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                 initialSelection={this.createOrReuseCustomSpaceframe()} onComplete={(s) => { this.onSpaceframeSelected(s); this.closeModal() }} />);
         } else if (name === 'missionProfile') {
             return (<MissionProfileSelection type={character.type} 
-                initialSelection={character.starship.missionProfile} onSelection={(m) => { this.onMissionProfileSelected(m); this.closeModal() }} />);
+                initialSelection={character.starship.missionProfileModel.id} onSelection={(m) => { this.onMissionProfileSelected(m); this.closeModal() }} />);
         } else if (name === 'missionPod') {
             return (<MissionPodSelection 
                 initialSelection={character.starship.missionPod} onSelection={(m) => { this.onMissionPodSelected(m); this.closeModal() }} />);
-            } else {
+        } else {
             return undefined;
         }
     }
 
     private showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(), "starship");
+        CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(), "starship", character.starship);
     }
 
     private getTypes() {
@@ -544,8 +544,9 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     private selectType(index: number) {
         let state = this.state;
         character.type = CharacterTypeModel.getStarshipTypes()[index].type;
+        character.starship.type = CharacterTypeModel.getStarshipTypes()[index].type;
         let name = state.name;
-        if (name === "U.S.S. " && character.type === CharacterType.KlingonWarrior) {
+        if (name === "U.S.S. " && character.starship.type === CharacterType.KlingonWarrior) {
             name = "I.K.S. ";
         }
         this.setState({
@@ -579,44 +580,18 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         this.forceUpdate();
     }
 
-    private onMissionProfileSelected(profile: MissionProfile) {
-        character.starship.missionProfile = profile;
+    private onMissionProfileSelected(profile: MissionProfileViewModel) {
+        character.starship.missionProfileModel = profile;
         this.updateSystemAndDepartments();
         this.forceUpdate();
     }
 
     private updateSystemAndDepartments() {
-        if (character.starship.spaceframeModel === undefined || character.starship.missionProfile === undefined) {
+        if (character.starship.spaceframeModel === undefined || character.starship.missionProfileModel === undefined) {
             return;
         }
 
-        const frame = character.starship.spaceframeModel;
-        const missionPod = SpaceframeHelper.getMissionPod(character.starship.missionPod);
-        const profile = MissionProfileHelper.getMissionProfile(character.starship.missionProfile, character.type);
-
-        character.starship.scale = frame.scale;
-
-        frame.systems.forEach((s, i) => {
-            character.starship.systems[i] = s;
-        });
-
-        frame.departments.forEach((d, i) => {
-            character.starship.departments[i] = d;
-        });
-
-        if (missionPod) {
-            missionPod.systems.forEach((s, i) => {
-                character.starship.systems[i] += s;
-            });
-
-            missionPod.departments.forEach((d, i) => {
-                character.starship.departments[i] += d;
-            });
-        }
-
-        profile.departments.forEach((d, i) => {
-            character.starship.departments[i] += d;
-        });
+        Starship.updateSystemAndDepartments(character.starship);
 
         let numRefits = 0;
         if (character.starship.spaceframeModel) {

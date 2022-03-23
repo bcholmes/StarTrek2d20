@@ -7,7 +7,7 @@
     text-align: right;
     font-family: lcars;
     font-size: x-large;
-    width: 220px;
+    width: 250px;
     margin-top: 30px;
     cursor: pointer;
     opacity: 0.8;
@@ -22,7 +22,7 @@
 }
 
 .button-small {
-    width: 120px;
+    width: 150px;
     padding: 15px !important;
     background-color: #B5B3D8;
     color: black !important;
@@ -33,6 +33,7 @@
     opacity: 0.8;
     border: 0;
     border-radius: 20px;
+    line-height: normal;
 }
     .button-small:hover {
         opacity: 1.0;
