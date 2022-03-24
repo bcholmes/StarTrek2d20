@@ -44,10 +44,10 @@ export class UpbringingPage extends React.Component<IPageProperties, IUpbringing
 
         var content = !this.state.showSelection ?
             (
-                <div>
+                <div className="container ml-0">
                     <InstructionText text={character.workflow.currentStep().description} />
                     {showAlt}
-                    <div className="row row-cols-md-3">
+                    <div className="row row-cols-md-2">
                         <div className="pl-2 pr-2">
                             <Button className="button" text={selectLabel} onClick={() => this.showUpbringings() } />
                             <Button className="button" text={rollLabel} onClick={() => this.rollUpbringing() } />

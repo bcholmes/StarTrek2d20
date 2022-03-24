@@ -26,8 +26,8 @@ class SkillSelection extends React.Component<ISkillSelectionProperties, {}> {
                 <tbody>
                     <tr>
                         <td className="skill-name" style={{ width: "250px" }}>{SkillsHelper.getSkillName(skill)}</td>
-                        <td className="skill-expertise">{skillExpertise}</td>
-                        <td>{checkBox}</td>
+                        <td className="skill-expertise pr-2">{skillExpertise}</td>
+                        <td className="pt-2">{checkBox}</td>
                     </tr>
                 </tbody>
             </table>

@@ -47,6 +47,12 @@ export class ViewSheetPage extends React.Component<IPageProperties, {}> {
             return (<div className="page text-white">This have gone terribly, terribly wrong. We might be in the mirror universe.</div>);
         } else if (json.stereotype === "starship") {
             return (<div className="page">
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">View Starship</li>
+                    </ol>
+                </nav>
                 <StarshipView starship={this.createStarship(json)}/>
             </div>);
         } else if (json.stereotype === "character") {

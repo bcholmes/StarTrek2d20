@@ -19,7 +19,7 @@
     color: white;
     padding: 5px 10px;
     height: 24px;
-    background-color: $lcars-salmon;
+    background-color: $lcars-dull-pink;
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
     line-height: normal;
@@ -44,7 +44,7 @@
     padding: 5px 10px;
     height: 24px;
     margin-left: 0.25rem;
-    background-color: $lcars-salmon;
+    background-color: $lcars-dull-pink;
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
     line-height: normal;
@@ -56,3 +56,13 @@
     text-align: center;
 }
 
+.empty-pill {
+    margin-right: 1rem;
+    border: 2px solid $lcars-purple;
+    width: calc(20% - 1rem);
+    height: 24px;
+    border-radius: 12px;
+}
+.empty-pill.solid {
+    background-color: $lcars-purple;
+}

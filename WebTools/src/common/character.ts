@@ -17,6 +17,7 @@ import { AlliedMilitary, AlliedMilitaryType } from '../helpers/alliedMilitary';
 import { Government, GovernmentType } from '../helpers/governments';
 import AgeHelper, { Age } from '../helpers/age';
 import { Weapon } from '../helpers/weapons';
+import { Department } from '../helpers/departments';
 
 
 export abstract class Construct {
@@ -163,6 +164,18 @@ export class Starship extends Construct {
         return talents;
     }
 
+    getShields() {
+        if (this.systems && this.departments) {
+            let base = this.systems[System.Structure] + this.departments[Department.Security];
+            if (this.getTalentNameList().indexOf("Advanced Shields") > -1) {
+                base += 5;
+            }
+            return base;
+        } else {
+            return undefined;
+        }
+    }
+
     refitsAsString() {
         let systems: System[] = [ System.Comms, System.Computer, System.Engines, System.Sensors, System.Structure, System.Weapons ];
         let refitString = "";
@@ -262,6 +275,10 @@ export class Starship extends Construct {
             profile.departments.forEach((d, i) => {
                 starship.departments[i] += d;
             });
+
+            if (starship.refits) {
+                starship.refits.forEach(r => starship.systems[r] += 1);
+            }
         }
     }
 }

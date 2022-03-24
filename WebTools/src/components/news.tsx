@@ -11,6 +11,13 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220323</b>
+                <ul>
+                    <li>I've been implementing some new features that I'm not yet ready to make public. But one of the things that's changed is
+                        that the code now makes a lot more use of a new library (Bootstrap) for web display. Some layout and sizes of things have 
+                        shifted a bit. If you see something eggregiously bad, make noise in the Feedback area.
+                    </li>
+                </ul>
                 <b>v1.220319</b>
                 <ul>
                     <li>Implement Child character creation from the <cite>Player's Guide</cite></li>

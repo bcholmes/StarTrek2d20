@@ -13,6 +13,7 @@ $lcars-pink: orchid;
 $lcars-dull-purple: #B5B3D8; // used for buttons
 $lcars-light-orange: #FFCC66;
 $lcars-light-pink: #DE84B7;
+$lcars-dull-pink: #c37ba4;
 $lcars-very-light-pink: #f7bbdd;
 
 .d-none {
@@ -600,11 +601,15 @@ table.selection-list {
     width: 90%;
     color: white;
     font-size: 12px;
-}
-    table.selection-list td {
+    td {
         padding: 5px;
         border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+
+        div {
+            line-height: normal;
+        }
     }
+}
 
 .text-selection {
     color: #DE84B7;

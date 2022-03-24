@@ -86,8 +86,8 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
                             </div>
                         </div>
                         <div className="lcar-content-action">
-                            <div id="profile-button" className="lcar-content-profile" onClick={ () => this.toggleProfile() }>Profile</div>
-                            <CharacterSheet showProfile={this.state.showProfile} />
+                            <div id="profile-button" className={'lcar-content-profile ' + (this.isProfileSupportedForPage() ? '' : 'd-none')} onClick={ () => this.toggleProfile() }>Profile</div>
+                            <CharacterSheet showProfile={this.state.showProfile}/>
                         </div>
                         <div className="lcar-content-feedback" onClick={ () => this.showFeedbackPage() }>Feedback</div>
                         <div className="lcar-content-news" onClick={() => this.showNews()}>
@@ -110,6 +110,15 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
             <div id="dialog" key="modal-dialog"></div>,
             <News showModal={this.state.showNews} onClose={() => {this.hideNews()}} key="news"/>
         ];
+    }
+
+    isProfileSupportedForPage() {
+        if (this.state.activePage === PageIdentity.ViewSheet ||
+            this.state.activePage === PageIdentity.Starship) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     showFeedbackPage() {

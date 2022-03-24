@@ -39,11 +39,6 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     constructor(props: {}) {
         super(props);
 
-        const profileButton = document.getElementById("profile-button");
-        if (profileButton !== undefined) {
-            profileButton.style.display = "none";
-        }
-
         character.starship = new Starship();
         character.starship.serviceYear = this.eraDefaultYear(character.era);
 
@@ -512,7 +507,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                 initialSelection={this.createOrReuseCustomSpaceframe()} onComplete={(s) => { this.onSpaceframeSelected(s); this.closeModal() }} />);
         } else if (name === 'missionProfile') {
             return (<MissionProfileSelection type={character.type} 
-                initialSelection={character.starship.missionProfileModel.id} onSelection={(m) => { this.onMissionProfileSelected(m); this.closeModal() }} />);
+                initialSelection={character.starship.missionProfileModel} onSelection={(m) => { this.onMissionProfileSelected(m); this.closeModal() }} />);
         } else if (name === 'missionPod') {
             return (<MissionPodSelection 
                 initialSelection={character.starship.missionPod} onSelection={(m) => { this.onMissionPodSelected(m); this.closeModal() }} />);
@@ -591,8 +586,6 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
             return;
         }
 
-        Starship.updateSystemAndDepartments(character.starship);
-
         let numRefits = 0;
         if (character.starship.spaceframeModel) {
             const frame = character.starship.spaceframeModel;
@@ -600,6 +593,8 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         }
 
         character.starship.refits = [];
+        Starship.updateSystemAndDepartments(character.starship);
+
         this.setState((state) => ({
             ...state,
             refitCount: numRefits,
