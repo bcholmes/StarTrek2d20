@@ -1384,6 +1384,17 @@ class _Species {
         }
     }
 
+    getSpeciesTypeByName(name: string) {
+        let result = undefined;
+        for (let species in this._species) {
+            if (name === Species[species]) {
+                result = species;
+                break;
+            }
+        }
+        return result;
+    }
+
     generateSpecies(): Species {
         if (character.type === CharacterType.KlingonWarrior && character.era === Era.NextGeneration) {
             return Species.Klingon;

@@ -1,6 +1,6 @@
 import { Source } from "../helpers/sources";
 
-export const enum CharacterType {
+export enum CharacterType {
     Starfleet = 0,
     KlingonWarrior,
     AlliedMilitary,

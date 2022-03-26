@@ -12,6 +12,7 @@ import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
 import AgeHelper, { Age } from '../helpers/age';
 import { Source } from '../helpers/sources';
+import { marshaller } from '../helpers/marshaller';
 
 
 interface ISupportingCharacterState {
@@ -235,12 +236,17 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                     </div>
                     <br/>
                     <div className="button-container">
-                        <Button text="Export to PDF" className="button-small" onClick={() => this.showDialog() } />
-                        <br/>
+                        <Button text="Export to PDF" className="button-small mr-2 mb-2" onClick={() => this.showDialog() } buttonType={true} />
+                        <Button text="View" className="button-small mr-2 mb-2" onClick={() => this.showViewPage() } buttonType={true} />
                     </div>
                 </div>
             </div>
         );
+    }
+
+    showViewPage() {
+        const value = marshaller.encodeSupportingCharacter(character);
+        window.open('/view?s=' + value, "_blank");
     }
 
     getAges() {

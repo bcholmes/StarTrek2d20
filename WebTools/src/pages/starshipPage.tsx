@@ -21,6 +21,7 @@ import MissionPodSelection from '../components/missionPodSelection';
 import CustomSpaceframeForm from '../components/customSpaceframeForm';
 import { System } from '../helpers/systems';
 import { OutlineImage } from '../components/outlineImage';
+import { marshaller } from '../helpers/marshaller';
 
 interface StarshipPageState {
     type: CharacterTypeModel
@@ -444,14 +445,19 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                     </div>
                     <br/><br/>
                     <div className="starship-panel">
-                        <div className="button-container">
-                            <Button text="Export to PDF" className="button-small" onClick={() => this.showExportDialog() } />
-                            <br/>
+                        <div className="button-container mb-3">
+                            <Button text="Export to PDF" className="button-small mr-2 mb-2" onClick={() => this.showExportDialog() } buttonType={true} />
+                            <Button text="View" className="button-small mr-2 mb-2" onClick={() => this.showViewPage() } buttonType={true} />
                         </div>
                     </div>
                 </div>
             </div>
         );
+    }
+
+    showViewPage() {
+        const value = marshaller.encodeStarship(character.starship);
+        window.open('/view?s=' + value, "_blank");
     }
 
     addRefit(system: System) {

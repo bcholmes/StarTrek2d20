@@ -150,11 +150,8 @@ abstract class BasicSheet implements ICharacterSheet {
         return 0;
     }
 
-    determineWeapons(construct: Construct): Weapon[] {
-        return [];
-    }
     fillWeapons(form: PDFForm, construct: Construct) {
-        var weapons = this.determineWeapons(construct);
+        var weapons = construct.determineWeapons();
         weapons.forEach( (w, i) => {
             this.fillWeapon(form, w, i+1, construct);
         });
@@ -287,10 +284,6 @@ abstract class BasicStarshipSheet extends BasicSheet {
         return (construct as Starship).departments[Department.Security];
     }
 
-    determineWeapons(construct: Construct): Weapon[] {
-        return (construct as Starship).determineWeapons();
-    }
-
     fillSystems(form: PDFForm, construct: Construct) {
         let starship = construct as Starship;
         this.fillFieldWithNumber(form, "Engines", starship.getSystemValue(System.Engines));
@@ -406,7 +399,8 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
     }
 
     populateForm(form: PDFForm, construct: Construct) {
-        this.fillName(form);
+        let character = construct as Character;
+        this.fillName(form, character);
         this.fillField(form, 'Department', CharacterSerializer.serializeAssignment(character));
         this.fillField(form, 'Purpose', CharacterSerializer.serializeAssignment(character));
         this.fillField(form, 'Rank', character.rank);
@@ -426,16 +420,16 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
         this.fillStress(form);
     }
 
-    fillName(form: PDFForm) {
-        this.fillField(form, 'Name', this.formatName());
+    fillName(form: PDFForm, character: Character) {
+        this.fillField(form, 'Name', this.formatName(character));
     }
 
-    formatNameWithoutPronouns() {
+    formatNameWithoutPronouns(character: Character) {
         return CharacterSerializer.serializeName(character);
     }
 
-    formatName() {
-        let name = this.formatNameWithoutPronouns();
+    formatName(character: Character) {
+        let name = this.formatNameWithoutPronouns(character);
         if (character.pronouns.length > 0) {
             name += " (" + character.pronouns + ")";
         }
@@ -553,6 +547,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
 abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
 
     populateForm(form: PDFForm, construct: Construct) {
+        let character = construct as Character;
         super.populateForm(form, construct);
 
         var upbringing = character.upbringing;
@@ -562,9 +557,9 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         this.fillField(form, 'Assignment', CharacterSerializer.serializeAssignment(character));
         this.fillField(form, 'Environment', CharacterSerializer.serializeEnvironment(character.environment, character.otherSpeciesWorld));
 
-        this.fillValues(form);
-        this.fillTalents(form);
-        this.fillEquipment(form);
+        this.fillValues(form, character);
+        this.fillTalents(form, character);
+        this.fillEquipment(form, character);
 
         this.fillWeapons(form, construct);
     }
@@ -581,7 +576,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
     }    
 
     fillWeapons(form: PDFForm, construct: Construct) {
-        var weapons = this.determineWeapons(construct);
+        var weapons = construct.determineWeapons();
         const security = this.findSecurityValue(construct) || 0;
 
         weapons.forEach( (w, i) => {
@@ -591,35 +586,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         });
     }
 
-    determineWeapons(construct: Construct) {
-        var result: Weapon[] = [];
-        
-        if (character.hasTalent("Mean Right Hook")) {
-            result.push(new Weapon("Unarmed Strike", 1, "Knockdown, Non-lethal Vicious 1"));
-        } else {
-            result.push(new Weapon("Unarmed Strike", 1, "Knockdown"));
-        }
-
-        if (character.hasTalent("The Ushaan")) {
-            result.push(new Weapon("Ushaan-tor", 1, "Vicious 1"));
-        }
-
-        if (character.hasTalent("Warrior's Spirit")) {
-            result.push(new Weapon("Bat'leth", 3, "Vicious 1"));
-        }
-
-        if (character.type === CharacterType.Starfleet) {
-            result.push(new Weapon("Phaser type-2", 3, "Charges"));
-        } else if (character.age.isAdult()) {
-            if (character.isKlingon()) {
-                result.push(new Weapon("d’k tahg dagger", 1, "Vicious 1, Deadly, Hidden 1"));
-            }
-            result.push(new Weapon("Disruptor Pistol", 3, "Vicious 1"));
-        }
-        return result;
-    }
-
-    fillTalents(form: PDFForm) {
+    fillTalents(form: PDFForm, character: Character) {
         let i = 1;
         for (var t in character.talents) {
             let talent = TalentsHelper.getTalent(t);
@@ -633,13 +600,13 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         }
     }
 
-    fillEquipment(form: PDFForm) {
+    fillEquipment(form: PDFForm, character: Character) {
         character.equipment.forEach( (e, i) => {
             this.fillField(form, 'Equipment ' + (i+1), e);
         });
     }
 
-    fillValues(form: PDFForm) {
+    fillValues(form: PDFForm, character: Character) {
         this.fillField(form, 'Value 1', character.environmentValue);
         this.fillField(form, 'Value 2', character.trackValue);
         this.fillField(form, 'Value 3', character.careerValue);
@@ -1001,6 +968,7 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
     }
 
     populateForm(form: PDFForm, construct: Construct): void {
+        let character = construct as Character;
         super.populateForm(form, construct);
         
         this.fillField(form, "Pronouns", character.pronouns);
@@ -1019,39 +987,19 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
             }
         }
 
-        this.fillField(form, "Resistance", "" + this.calculateResistance());
+        this.fillField(form, "Resistance", "" + character.calculateResistance());
     }
 
-    calculateResistance() {
-        let result = 0;
-        if (character.isKlingon()) {
-            result += 1; // Klingon standard-issue armour
-        }
-        if (character.hasTalent("Chelon Shell")) {
-            result += 1;
-        }
-        if (character.hasTalent("Morphogenic Matrix")) {
-            result += 4;
-        }
-        if (character.hasTalent("Polyalloy Construction")) {
-            result += 1;
-        }
-        if (character.hasTalent("Hardened Hide")) {
-            result += 2;
-        }
-        return result;
-    }
-
-    fillName(form: PDFForm) {
-        this.fillField(form, 'Name', this.formatNameWithoutPronouns());
+    fillName(form: PDFForm, character: Character) {
+        this.fillField(form, 'Name', this.formatNameWithoutPronouns(character));
     }
 }
 
 class CharacterSheets {
-    public getSupportingCharacterSheet(): ICharacterSheet[] {
-        if (character.isKlingon()) {
+    public getSupportingCharacterSheet(c: Character = character, era: Era = character.era): ICharacterSheet[] {
+        if (c.isKlingon()) {
             return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
-        } else if (character.era === Era.NextGeneration) {
+        } else if (era === Era.NextGeneration) {
             return [ new StandardTngCharacterSheet(), new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet(), new KlingonCharacterSheet()  ];
         } else {
             return [ new StandardTosCharacterSheet(), new StandardTngCharacterSheet(), new HalfPageSupportingCharacterSheet(), new KlingonCharacterSheet() ];
@@ -1068,10 +1016,10 @@ class CharacterSheets {
         }
     }
 
-    public getStarshipSheets(): ICharacterSheet[] {
-        if (character.isKlingon()) {
+    public getStarshipSheets(starship: Starship = character.starship, era: Era = character.era): ICharacterSheet[] {
+        if (starship.type === CharacterType.KlingonWarrior) {
             return [ new StandardKlingonStarshipSheet(), new StandardTngStarshipSheet(), new StandardTosStarshipSheet() ];
-        } else if (character.era === Era.NextGeneration) {
+        } else if (era === Era.NextGeneration) {
             return [ new StandardTngStarshipSheet(), new StandardTosStarshipSheet(), new StandardKlingonStarshipSheet() ];
         } else {
             return [ new StandardTosStarshipSheet(), new StandardTngStarshipSheet(), new StandardKlingonStarshipSheet() ];

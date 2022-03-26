@@ -107,28 +107,21 @@ export class SpaceframeViewModel extends SpaceframeModel {
     }
 }
 
-class MissionPodModel {
+export class MissionPodViewModel {
+    id: number;
     name: string;
     description: string;
     departments: number[];
     systems: number[];
     talents: TalentModel[];
 
-    constructor(name: string, description: string, departments: number[], systems: number[], talents: TalentModel[]) {
+    constructor(id: number, name: string, description: string, departments: number[], systems: number[], talents: TalentModel[]) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.departments = departments;
         this.systems = systems;
         this.talents = talents;
-    }
-}
-
-export class MissionPodViewModel extends MissionPodModel {
-    id: MissionPod;
-
-    constructor(id: MissionPod, base: MissionPodModel) {
-        super(base.name, base.description, base.departments, base.systems, base.talents);
-        this.id = id;
     }
 }
 
@@ -1017,8 +1010,9 @@ class Spaceframes {
         //    ]),
     };
 
-    private _missionPods: { [id: number]: MissionPodModel } = {
-        [MissionPod.CommandAndControl]: new MissionPodModel(
+    private _missionPods: { [id: number]: MissionPodViewModel } = {
+        [MissionPod.CommandAndControl]: new MissionPodViewModel(
+            MissionPod.CommandAndControl,
             "Command & Control",
             "The pod contains additional subspace antennae and supplementary computer cores, allowing it to serve as a command vessel for fleet actions.",
             [1, 0, 0, 0, 0, 0],
@@ -1027,7 +1021,8 @@ class Spaceframes {
                 TalentsHelper.getTalent("Command Ship"),
                 TalentsHelper.getTalent("Electronic Warfare Systems")
             ]),
-        [MissionPod.Sensors]: new MissionPodModel(
+        [MissionPod.Sensors]: new MissionPodViewModel(
+            MissionPod.Sensors,
             "Sensors",
             "The pod contains additional sensor systems, allowing the ship to serve a range of scientific and reconnaissance roles.",
             [0, 0, 0, 0, 1, 0],
@@ -1036,7 +1031,8 @@ class Spaceframes {
                 TalentsHelper.getTalent("Advanced Sensor Suites"),
                 TalentsHelper.getTalent("High Resolution Sensors")
             ]),
-        [MissionPod.Weapons]: new MissionPodModel(
+        [MissionPod.Weapons]: new MissionPodViewModel(
+            MissionPod.Weapons,
             "Weapons",
             "The pod contains additional torpedo launchers, phaser arrays, and targeting sensors.",
             [0, 0, 1, 0, 0, 0],
@@ -1080,14 +1076,23 @@ class Spaceframes {
         return result;
     }
 
+    getMissionPodByName(name: string) {
+        let result = undefined;
+        for (let id in this._missionPods) {
+            if (MissionPod[id] === name) {
+                result = this._missionPods[id];
+                break;
+            }
+        }
+        return result;
+    }
+
     getMissionPods() {
         let missionPods: MissionPodViewModel[] = [];
-        let n = 0;
 
         for (var pod in this._missionPods) {
             let p = this._missionPods[pod];
-            missionPods.push(new MissionPodViewModel(n, p));
-            n++;
+            missionPods.push(p);
         }
 
         return missionPods;
@@ -1099,7 +1104,7 @@ class Spaceframes {
         }
 
         let model = this._missionPods[pod];
-        return model == null ? null : new MissionPodViewModel(pod, this._missionPods[pod]);
+        return model == null ? null : model;
     }
 }
 
