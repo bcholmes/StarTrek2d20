@@ -18,6 +18,17 @@ interface ISupportingCharacterViewProperties {
 
 export class SupportingCharacterView extends React.Component<ISupportingCharacterViewProperties, {}> {
 
+    componentDidMount() {
+        if (this.props.character.name) {
+            if (this.props.character.rank) {
+                document.title = this.props.character.rank + " " + this.props.character.name + " - STAR TREK ADVENTURES";
+            } else {
+                document.title = this.props.character.name + " - STAR TREK ADVENTURES";
+            }
+        }
+    }
+
+
     render() {
         return (<div className="container ml-0">
             <Header>{this.getRankAbbreviation() + ' ' + this.props.character.name}</Header>

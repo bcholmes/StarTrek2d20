@@ -415,9 +415,9 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
             this.fillField(form, 'Focus ' + (i+1), f);
         });
 
-        this.fillAttributes(form);
-        this.fillSkills(form);
-        this.fillStress(form);
+        this.fillAttributes(form, character);
+        this.fillSkills(form, character);
+        this.fillStress(form, character);
     }
 
     fillName(form: PDFForm, character: Character) {
@@ -436,7 +436,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
         return name;
     }
 
-    fillStress(form: PDFForm) {
+    fillStress(form: PDFForm, character: Character) {
         var stress = character.stress || 0; 
         if (stress === 0) {
             character.attributes.forEach( (a, i) => {
@@ -467,7 +467,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
         }
     }
 
-    fillAttributes(form: PDFForm) {
+    fillAttributes(form: PDFForm, character: Character) {
         character.attributes.forEach( (a, i) => {
             switch (a.attribute) {
             case Attribute.Control:
@@ -492,7 +492,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
         });
     }
 
-    fillSkills(form: PDFForm) {
+    fillSkills(form: PDFForm, character: Character) {
         character.skills.forEach( (a, i) => {
             switch (a.skill) {
             case Skill.Command:
@@ -1016,7 +1016,7 @@ class CharacterSheets {
         }
     }
 
-    public getStarshipSheets(starship: Starship = character.starship, era: Era = character.era): ICharacterSheet[] {
+    public getStarshipSheets(starship: Starship, era: Era): ICharacterSheet[] {
         if (starship.type === CharacterType.KlingonWarrior) {
             return [ new StandardKlingonStarshipSheet(), new StandardTngStarshipSheet(), new StandardTosStarshipSheet() ];
         } else if (era === Era.NextGeneration) {

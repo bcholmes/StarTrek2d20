@@ -1,6 +1,7 @@
 import React from "react";
 import { Starship } from "../common/character";
 import { Department } from "../helpers/departments";
+import { Era } from "../helpers/eras";
 import { CharacterSheetRegistry } from "../helpers/sheets";
 import { System } from "../helpers/systems";
 import { Button } from "./button";
@@ -15,6 +16,12 @@ interface IStarshipViewProperties {
 }
 
 export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
+
+    componentDidMount() {
+        if (this.props.starship.name) {
+            document.title = this.props.starship.name + " - STAR TREK ADVENTURES";
+        }
+    }
 
     render() {
         return (<div className="container ml-0">
@@ -103,7 +110,7 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
     }
 
     private showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(), "starship", this.props.starship);
+        CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(this.props.starship, Era.NextGeneration), "starship", this.props.starship);
     }
 
     renderTalentNames() {
