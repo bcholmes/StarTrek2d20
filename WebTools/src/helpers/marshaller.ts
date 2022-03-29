@@ -87,7 +87,8 @@ class Marshaller {
                         "systems": this.toSystemsObject(starship.spaceframeModel.systems),
                         "departments": this.toDepartmentObject(starship.spaceframeModel.departments),
                         "attacks": starship.spaceframeModel.attacks,
-                        "scale": starship.spaceframeModel.scale
+                        "scale": starship.spaceframeModel.scale,
+                        "talents": starship.spaceframeModel.talents ? starship.spaceframeModel.talents.map(t => t.name) : []
                     }
                 }
             } else {
@@ -158,6 +159,16 @@ class Marshaller {
                 frame.attacks = json.spaceframe.custom.attacks;
                 allDepartments().forEach(d => frame.departments[d] = json.spaceframe.custom.departments[Department[d]]);
                 allSystems().forEach(s => frame.systems[s] = json.spaceframe.custom.systems[System[s]]);
+                frame.talents = [];
+
+                if (json.spaceframe.custom.talents) {
+                    json.spaceframe.custom.talents.forEach(t => {
+                        let model = TalentsHelper.getTalent(t);
+                        if (model) {
+                            frame.talents.push(model);
+                        }
+                    })
+                }
                 result.spaceframeModel = frame;
             } else {
                 result.spaceframeModel = SpaceframeHelper.getSpaceframeByName(json.spaceframe.name);

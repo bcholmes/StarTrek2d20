@@ -11,6 +11,14 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220329</b>
+                <ul>
+                    <li>Various small bug fixes.</li>
+                    <li>Add support for the <i>Archer</i> Class ship from the <i>Tricorder Set</i>.</li>
+                    <li>Implement a bookmarkable "view" page for creations. At the moment, this view is only available for
+                        ships and supporting characters, but it'll be available for main characters in the not-too-distant future.
+                    </li>
+                </ul>
                 <b>v1.220323</b>
                 <ul>
                     <li>I've been implementing some new features that I'm not yet ready to make public. But one of the things that's changed is

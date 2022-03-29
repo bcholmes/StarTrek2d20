@@ -136,6 +136,8 @@ class SpaceframeOutlineHelper {
             return AKIRA_CLASS_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Ambassador) {
             return AMBASSADOR_CLASS_OUTLINE;
+        } else if (spaceframe.id === Spaceframe.Archer) {
+            return ARCHER_CLASS_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Centaur) {
             return CENTAUR_CLASS_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Constellation) {

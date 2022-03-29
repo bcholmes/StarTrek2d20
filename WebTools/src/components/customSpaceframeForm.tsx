@@ -74,7 +74,7 @@ class CustomSpaceframeForm extends React.Component<ICustomSpacefraemProperties, 
             scale: this.props.initialSelection.scale,
             serviceYear: this.props.initialSelection.serviceYear,
             weapons: this.props.initialSelection.attacks,
-            talents: this.props.initialSelection.talents.map((t) => t.description)
+            talents: this.props.initialSelection.talents.map((t) => t.name)
         }
 
         this.weapons = StarshipWeaponRegistry.availableWeapons(character.type, character.era);

@@ -7,6 +7,7 @@ import {TalentsHelper, TalentModel} from './talents';
 export enum Spaceframe {
     Akira,
     Ambassador,
+    Archer,
     Centaur,
     Constellation,
     Constitution,
@@ -610,7 +611,27 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-
+        [Spaceframe.Archer]: new SpaceframeModel(
+            CharacterType.Starfleet,
+            "Archer Class",
+            2258,
+            [],
+            Source.TricorderSet,
+            [8, 9, 6, 7, 8, 6],
+            [0, 0, 1, 2, 0, 0],
+            3,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentsHelper.getTalent("Improved Impulse Drive"),
+                TalentsHelper.getTalent("Improved Reaction Control System")
+            ],
+            [ "Federation Starship" ],
+            2290),
+    
         // Klingon Spaceframes
         [Spaceframe.D5]: new SpaceframeModel(
             CharacterType.KlingonWarrior,

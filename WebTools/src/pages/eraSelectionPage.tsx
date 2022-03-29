@@ -21,10 +21,12 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
     }
 
     render() {
+        let hasUnavailableSources = false;
         const sources = SourcesHelper.getSources().map((s, i) => {
-            const className = character.hasSource(i) ? "source source-selected" : "source";
+            hasUnavailableSources = hasUnavailableSources || !s.available;
+            const className = s.available ? (character.hasSource(i) ? "source source-selected" : "source") : "source unavailable";
             return (
-                <div key={i} className={className} onClick={() => { this.sourceChanged(i); } }>{s.name}</div>
+                <div key={i} className={className} onClick={() => { if (s.available) { this.sourceChanged(i); } } }>{s.name}</div>
             );
         });
 
@@ -36,6 +38,8 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
                 </tr>
             );
         });
+
+        const note = hasUnavailableSources ? " Some sources are not yet implemented; check back soon!" : "";
 
         return (
             <div className="page">
@@ -49,6 +53,7 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
                 <div className="page-text">
                     Select sources.
                     Ask your GM which are available.
+                    {note}
                 </div>
                 <div>
                     <div className="source source-emphasis" onClick={() => { this.toggleSources(true); } }>Select All</div>
@@ -84,7 +89,9 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
     private toggleSources(selectAll: boolean) {
         if (selectAll) {
             SourcesHelper.getSources().forEach(s => {
-                character.addSource(s.id);
+                if (s.available) {
+                    character.addSource(s.id);
+                }
             });
         }
         else {
