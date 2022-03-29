@@ -11,6 +11,8 @@ import { OutlineImage } from "./outlineImage";
 import { StatView } from "./StatView";
 import { WeaponView } from "./weaponView";
 
+const NBSP = '\u00A0';
+
 interface IStarshipViewProperties {
     starship: Starship;
 }
@@ -39,12 +41,12 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.missionProfileModel ? this.props.starship.missionProfileModel.name : undefined}</div></div>
 
                 <div className="col-md-2 view-field-label pb-2">Refits:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2 small">{this.props.starship.refitsAsString()}</div></div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2 small">{this.refitAsString()}</div></div>
             </div>
 
             <div className="row" style={{alignItems: "baseline"}}>
                 <div className="col-md-2 view-field-label pb-2">Traits:</div>
-                <div className="col-md-10 text-white"><div className="view-border-bottom pb-2">{this.props.starship.getAllTraits()}</div></div>
+                <div className="col-md-10 text-white"><div className="view-border-bottom pb-2">{this.getAllTraits()}</div></div>
             </div>
 
             <div className="row">
@@ -109,8 +111,18 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
        </div>);
     }
 
+    private refitAsString() {
+        let refitString = this.props.starship.refitsAsString();
+        return  refitString === "" ? NBSP : refitString;
+    }
+
     private showExportDialog() {
         CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(this.props.starship, Era.NextGeneration), "starship", this.props.starship);
+    }
+
+    private getAllTraits() {
+        let traits = this.props.starship.getAllTraits();
+        return traits === "" ? NBSP : traits;
     }
 
     renderTalentNames() {

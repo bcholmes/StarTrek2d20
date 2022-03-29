@@ -153,11 +153,8 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
             <div className="page">
                 <CharacterCreationBreadcrumbs />
                 <div className="page-text">
-                    Your character is finished. You can either use this reference to fill in a character sheet by hand, or use the button at the bottom
-                    to export your character to PDF.
-                </div>
-                <div>
-                    <b>* PDF exporting is not working on iOS 11. Use this page as a reference to fill in your character manually.</b>
+                    Your character is finished. Export your character to PDF, or use the "Profile" option in the left-hand bar to see the chosen options and
+                    transcribe them manually on to a character sheet.
                 </div>
                 <div className="panel">
                     <div className="header-small">NAME</div>

@@ -99,7 +99,7 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                         <div className="panel">
                             <div className="header-small">Character Type</div>
                             <div className="page-text-aligned">
-                                Is this a Starfleet/Federation character, or a member of the Klingon Empire?
+                                Choose a character type.
                             </div>
                             <div>
                                 <DropDownInput

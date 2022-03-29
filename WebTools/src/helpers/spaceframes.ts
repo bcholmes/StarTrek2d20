@@ -98,7 +98,7 @@ export class SpaceframeViewModel extends SpaceframeModel {
     }
 
     static createCustomSpaceframe(type: CharacterType, serviceYear: number, eras: Era[]) {
-        return new SpaceframeViewModel(type, "", serviceYear, eras, Source.None, [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [], []);
+        return new SpaceframeViewModel(type, "", serviceYear, eras, Source.None, [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [], type === CharacterType.KlingonWarrior ? [ "Klingon Starship"] : [ "Federation Starship" ]);
     }
 
     static from(id: Spaceframe, base: SpaceframeModel) {
