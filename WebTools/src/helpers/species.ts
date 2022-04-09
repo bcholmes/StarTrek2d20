@@ -1535,15 +1535,6 @@ class _Species {
             if (species === Species.CardassianExt) {
                 return true;
             }
-            if (species === Species.Ferengi) { // supercede by FerengiAlpha
-                return true;
-            }
-        }
-
-        if (character.hasSource(Source.GammaQuadrant)) {
-            if (species === Species.Changeling) {
-                return true;
-            }
         }
 
         return false;
