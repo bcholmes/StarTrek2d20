@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
-import {SpeciesHelper, SpeciesViewModel} from '../helpers/species';
+import {SpeciesHelper, SpeciesModel} from '../helpers/species';
 import {Attribute, AttributesHelper} from '../helpers/attributes';
 import {CheckBox} from './checkBox';
 import { Age } from '../helpers/age';
@@ -44,7 +44,7 @@ interface IAttributeState {
 }
 
 export class SupportingCharacterAttributes extends React.Component<IAttributeProperties, IAttributeState> {
-    private _species: SpeciesViewModel;
+    private _species: SpeciesModel;
 
     constructor(props: IAttributeProperties) {
         super(props);

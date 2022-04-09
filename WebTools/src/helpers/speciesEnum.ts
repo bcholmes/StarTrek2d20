@@ -94,4 +94,7 @@ export enum Species {
 
     // Tribble Player Character
     Tribble,
+
+    // Discovery S1
+    Kelpian,
 };

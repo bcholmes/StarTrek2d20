@@ -13,11 +13,12 @@ class NameModel {
     suggestions: string;
 }
 
-class SpeciesModel {
+export class SpeciesModel {
+    id: Species;
     name: string;
     eras: Era[];
     sources: Source[];
-    description: string;
+    description: string[];
     attributes: Attribute[];
     trait: string;
     traitDescription: string;
@@ -26,7 +27,8 @@ class SpeciesModel {
     nameDescription: string;
     nameSuggestions: NameModel[];
 
-    constructor(name: string, eras: Era[], sources: Source[], description: string, attributes: Attribute[], trait: string, traitDescription: string, exampleValue: string, talents: TalentModel[], nameDescription: string, nameSuggestions: NameModel[]) {
+    constructor(id: Species, name: string, eras: Era[], sources: Source[], description: string[], attributes: Attribute[], trait: string, traitDescription: string, exampleValue: string, talents: TalentModel[], nameDescription: string, nameSuggestions: NameModel[]) {
+        this.id = id;
         this.name = name;
         this.eras = eras;
         this.description = description;
@@ -41,22 +43,14 @@ class SpeciesModel {
     }
 }
 
-export class SpeciesViewModel extends SpeciesModel {
-    id: Species;
-
-    constructor(id: Species, base: SpeciesModel) {
-        super(base.name, base.eras, base.sources, base.description, base.attributes, base.trait, base.traitDescription, base.exampleValue, base.talents, base.nameDescription, base.nameSuggestions);
-        this.id = id;
-    }
-}
-
 class _Species {
     private _species: { [id: number]: SpeciesModel } = {
         [Species.Andorian]: new SpeciesModel(
+            Species.Andorian,
             "Andorian",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [ Source.Core ],
-            "An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the United Federation of Planets since its foundation, having been firm allies of Humanity for several years beforehand. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor- duels known as Ushaan, using razorsharp ice-mining tools.",
+            ["An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the United Federation of Planets since its foundation, having been firm allies of Humanity for several years beforehand. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor- duels known as Ushaan, using razorsharp ice-mining tools."],
             [Attribute.Control, Attribute.Daring, Attribute.Presence],
             "Andorian",
             "This trait may reduce the Difficulty of Tasks to resist extreme cold, or Tasks impacted by extremely low temperatures. Their antennae aid in balance and spatial awareness; a lost antenna can be debilitating until it regrows. Andorians also have a high metabolism, meaning, amongst other things, that they tire more quickly than Humans; this also makes them more vulnerable to infection from certain types of injury. Before the Federation, Andorians and Vulcans had numerous disputes; though these issues are largely considered to be ancient history, Andorians and Vulcans don’t always get along.",
@@ -69,10 +63,11 @@ class _Species {
                 { type: "Clan Names", suggestions: "Tharhat, Qiaqir, Chiaqis, Thenehr, Zynes, Shraviq, Thilrerh, Azonan, Azollarh, Shran" }
             ]),
         [Species.Bajoran]: new SpeciesModel(
+            Species.Bajoran,
             "Bajoran",
             [Era.NextGeneration],
             [Source.Core],
-            "A spiritual, dauntless people from the planet Bajor, the Bajorans have lost much after decades of occupation by the Cardassian Union. Many Bajorans were scattered across the Alpha Quadrant during the occupation, while those who remained on Bajor often acted as insurgents or toiled in labor camps under Cardassian rule. The occupation ended a few years ago, but the scars it left will take generations to heal. Bajor is not a member of the Federation, but many Bajorans scattered by the diaspora have found their way into Starfleet. Bajoran culture places a strong belief in the Prophets, celestial beings who are said to have watched over Bajor for millennia; modern religious doctrine states that the Bajoran Wormhole is the Prophets’ Celestial Temple.",
+            ["A spiritual, dauntless people from the planet Bajor, the Bajorans have lost much after decades of occupation by the Cardassian Union. Many Bajorans were scattered across the Alpha Quadrant during the occupation, while those who remained on Bajor often acted as insurgents or toiled in labor camps under Cardassian rule. The occupation ended a few years ago, but the scars it left will take generations to heal. Bajor is not a member of the Federation, but many Bajorans scattered by the diaspora have found their way into Starfleet. Bajoran culture places a strong belief in the Prophets, celestial beings who are said to have watched over Bajor for millennia; modern religious doctrine states that the Bajoran Wormhole is the Prophets’ Celestial Temple."],
             [Attribute.Control, Attribute.Daring, Attribute.Insight],
             "Bajoran",
             "For obvious reasons, Bajorans tend to be hostile towards Cardassians, and resentful of those who are dismissive of, or turned a blind eye to, the suffering of the Bajoran people. While not all Bajorans are spiritual or religious to the same degree, most have a cultural understanding of the Prophets’ place in Bajoran society.",
@@ -85,10 +80,11 @@ class _Species {
                 { type: "Family", suggestions: "Anbara, Anjohl, Faren, Jaro, Kalem, Krim, Kubus, Latara, Latha, Lenaris, Li, Tahna, Reil" },
             ]),
         [Species.Betazoid]: new SpeciesModel(
+            Species.Betazoid,
             "Betazoid",
             [Era.NextGeneration],
             [Source.Core],
-            "The peaceful Betazoid people hail from the idyllic, verdant world Betazed. The world is a valued member of the Federation, and its people can be found across Federation space, including Starfleet. Betazoids appear almost identical to Humans, but differ in one major way: they are naturally telepathic, developing mental abilities during adolescence. The potency of this ability varies between individuals, but it has resulted in a culture where honesty and directness are fundamental: it is difficult to keep secrets when everyone around you can read minds.",
+            ["The peaceful Betazoid people hail from the idyllic, verdant world Betazed. The world is a valued member of the Federation, and its people can be found across Federation space, including Starfleet. Betazoids appear almost identical to Humans, but differ in one major way: they are naturally telepathic, developing mental abilities during adolescence. The potency of this ability varies between individuals, but it has resulted in a culture where honesty and directness are fundamental: it is difficult to keep secrets when everyone around you can read minds."],
             [Attribute.Insight, Attribute.Presence, Attribute.Reason],
             "Betazoid",
             "All Betazoids are telepathic to varying degrees, and even when not actively using their abilities, they are highly perceptive of others around them, but also highly sensitive to telepathic disturbances and mental assaults. They have little familiarity with lies and deception, due to their open culture and ability to read the thoughts and emotions of others. As they are sensitive to the minds of other living beings, they tend not to be comfortable around animals, for fear of losing themselves in the minds of wild creatures.",
@@ -101,10 +97,11 @@ class _Species {
                 { type: "Family", suggestions: "Grax, Hagen, Morganth, Stadi, Dutrax, Odutan, Nelan, Onovren, Kader, Nostrun, Dulas, Konin, Ebesin" },
             ]),
         [Species.Denobulan]: new SpeciesModel(
+            Species.Denobulan,
             "Denobulan",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.Core],
-            "Hailing from the planet Denobula, Denobulans are a gregarious, inquisitive people who have been allies of Humanity since the 2130s. Though Denobula was not one of the founders of the Federation, the Denobulans joined soon after. Denobulans are a sociable people, with distinctive expressive features, who are used to living in close, communal conditions, and whose extended family groups are large and complex — a Denobulan may have several spouses, each of whom may have several partners of their own, and dozens of children between them. Culturally, they are intellectually curious, perceptive, and interested in a wide range of philosophies, though their scholarly nature, large families, and gregarious nature means that relatively few of them venture far from their homeworld.",
+            ["Hailing from the planet Denobula, Denobulans are a gregarious, inquisitive people who have been allies of Humanity since the 2130s. Though Denobula was not one of the founders of the Federation, the Denobulans joined soon after. Denobulans are a sociable people, with distinctive expressive features, who are used to living in close, communal conditions, and whose extended family groups are large and complex — a Denobulan may have several spouses, each of whom may have several partners of their own, and dozens of children between them. Culturally, they are intellectually curious, perceptive, and interested in a wide range of philosophies, though their scholarly nature, large families, and gregarious nature means that relatively few of them venture far from their homeworld."],
             [Attribute.Fitness, Attribute.Insight, Attribute.Reason],
             "Denobulan",
             "Denobulans have a robust immune system, but a vulnerability to various forms of radiation poisoning. They are naturally adept climbers, scuttling up sheer walls like some forms of terrestrial lizard. Denobulans do not need to sleep, but must hibernate for several days each year, becoming disoriented if kept awake during this period.",
@@ -116,10 +113,11 @@ class _Species {
                 { type: "Male", suggestions: "Biras, Bogga, Delix, Grolik, Groznik, Nettus, Moga, Morox, Phlox, Rinix, Takis, Tropp, Tuglian, Vinku, Yolen, Zepht, Zinet" },
             ]),
         [Species.Human]: new SpeciesModel(
+            Species.Human,
             "Human",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.Core],
-            "Originating on the planet Earth in the Sol system, Humans are a resilient, diverse, and adaptable species, who developed from fractious, warring nations on the brink of mutual annihilation to a united, peaceful society in less than a century, and managed to forge alliances between former enemies within a century of achieving interstellar space flight. Earth is a founder and pivotal member of the United Federation of Planets, and many of the Federation’s institutions can be found on Earth. Humans often exhibit a dichotomy in their nature — being both driven to strong emotion and careful reason — and while they have largely grown beyond their warlike and divisive past, their drive and capacity for aggression are as much a part of their success as their curiosity and analytical minds.",
+            ["Originating on the planet Earth in the Sol system, Humans are a resilient, diverse, and adaptable species, who developed from fractious, warring nations on the brink of mutual annihilation to a united, peaceful society in less than a century, and managed to forge alliances between former enemies within a century of achieving interstellar space flight. Earth is a founder and pivotal member of the United Federation of Planets, and many of the Federation’s institutions can be found on Earth. Humans often exhibit a dichotomy in their nature — being both driven to strong emotion and careful reason — and while they have largely grown beyond their warlike and divisive past, their drive and capacity for aggression are as much a part of their success as their curiosity and analytical minds."],
             [Attribute.Control, Attribute.Daring, Attribute.Fitness, Attribute.Insight, Attribute.Presence, Attribute.Reason],
             "Human",
             "Humans are adaptable and resilient, and their resolve and ambition often allow them to resist great hardship and triumph despite great adversity. However, Humans can also be reckless and stubborn, irrational, and unpredictable.",
@@ -129,10 +127,11 @@ class _Species {
             [
             ]),
         [Species.Tellarite]: new SpeciesModel(
+            Species.Tellarite,
             "Tellarite",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.Core],
-            "The stout, hirsute Tellarite species comes from Tellar Prime, a temperate planet in the Alpha Quadrant. Theirs is a culture noted for being abrasive and argumentative, with a stubborn pride, quick tempers, and little patience. However, this is only a superficial view: while Tellarites are argumentative, it comes from a sense of intellectual honesty and rigorous skepticism. To a Tellarite, no idea, concept, or person is beyond challenge or analysis, and any notion that cannot stand up to scrutiny is an unworthy one. Tellarites revel in debates, and tend to greet one another with criticisms, complaints, and even insults; failing to respond in kind is poorly- regarded, as it displays a weakness of character and an unwillingness to confront flaws.",
+            ["The stout, hirsute Tellarite species comes from Tellar Prime, a temperate planet in the Alpha Quadrant. Theirs is a culture noted for being abrasive and argumentative, with a stubborn pride, quick tempers, and little patience. However, this is only a superficial view: while Tellarites are argumentative, it comes from a sense of intellectual honesty and rigorous skepticism. To a Tellarite, no idea, concept, or person is beyond challenge or analysis, and any notion that cannot stand up to scrutiny is an unworthy one. Tellarites revel in debates, and tend to greet one another with criticisms, complaints, and even insults; failing to respond in kind is poorly- regarded, as it displays a weakness of character and an unwillingness to confront flaws."],
             [Attribute.Control, Attribute.Fitness, Attribute.Insight],
             "Tellarite",
             "Tellarites have a keen sense of smell and a high tolerance for many common drugs, toxins, and inebriants (Tellarites don’t get drunk, just feisty). They also have excellent eyesight, and more acute perception of distance, depth, and dimension than Humans.",
@@ -146,10 +145,11 @@ class _Species {
                 { type: "Family", suggestions: "Gronnahk, Nonkursh, Slaal, Ker, Zhiv, Blav, Zhuffand, Khebloss, Pend, Brin, Wenkurn, Gerkow, Khutohk, Jagh, Krer" },
             ]),
         [Species.Trill]: new SpeciesModel(
+            Species.Trill,
             "Trill",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.Core],
-            "The Trill species, from their homeworld of the same name, appear almost identical to Humans, but for rows of spots running down the sides of their bodies, from head to toe. However, this superficial similarity conceals a considerable difference — the Trill are capable of bonding with a symbiotic organism known as a symbiont, creating a distinct being from the two individual creatures. The symbionts can live for many centuries, and are placed with successive hosts, carrying the memories and knowledge of previous hosts into a new joining with each new generation. This fact isn’t widely known outside the Trill themselves, but it isn’t a secret — it simply isn’t widely discussed, and the number of joined Trill is relatively small. The Trill have been part of the Federation for well over a century, with several renowned Trill serving important roles in shaping the Federation. The Trill, as a culture, tend to be focused on intellectual pursuits first and foremost, as learning and wisdom are prized by the symbionts in their hosts.",
+            ["The Trill species, from their homeworld of the same name, appear almost identical to Humans, but for rows of spots running down the sides of their bodies, from head to toe. However, this superficial similarity conceals a considerable difference — the Trill are capable of bonding with a symbiotic organism known as a symbiont, creating a distinct being from the two individual creatures. The symbionts can live for many centuries, and are placed with successive hosts, carrying the memories and knowledge of previous hosts into a new joining with each new generation. This fact isn’t widely known outside the Trill themselves, but it isn’t a secret — it simply isn’t widely discussed, and the number of joined Trill is relatively small. The Trill have been part of the Federation for well over a century, with several renowned Trill serving important roles in shaping the Federation. The Trill, as a culture, tend to be focused on intellectual pursuits first and foremost, as learning and wisdom are prized by the symbionts in their hosts."],
             [Attribute.Control, Attribute.Presence, Attribute.Reason],
             "Trill",
             "Trill are especially resilient to parasites, as a quirk of their potential to be Joined; Joined Trill are entirely immune to parasitic infection. However, they tend to have strong allergic reactions to insect bites and other forms of venom, which can disrupt their neurochemistry, particularly if they’re Joined. As many of the specifics of Trill physiology — especially with regards to symbiosis — are not widely known, this can result in medical complications.",
@@ -163,10 +163,11 @@ class _Species {
                 { type: "Symbiont", suggestions: "Jexen, Del, Ogar, Kyl, Eku, Nala, Cela, Pohr, Ral, Okir, Etahn, Lahl" },
             ]),
         [Species.Vulcan]: new SpeciesModel(
+            Species.Vulcan,
             "Vulcan",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.Core],
-            "The Vulcans are a stoic, rational people. Widely claimed to be emotionless, in truth the Vulcans feel deeply and intensely, to their own detriment. Their stoicism comes from a culture of logic and self- discipline, where emotions are analyzed and dissected to rob them of their potency, so that they cannot overwhelm or control the individual. Vulcans embrace science and reason, but their lives are not purely devoted to logic: they also have a deeply philosophical side, with art and music as vital to their culture as logic. They are also an intensely private people, with many aspects of their culture — such as the rites of pon farr — which are not discussed amongst outsiders.",
+            ["The Vulcans are a stoic, rational people. Widely claimed to be emotionless, in truth the Vulcans feel deeply and intensely, to their own detriment. Their stoicism comes from a culture of logic and self- discipline, where emotions are analyzed and dissected to rob them of their potency, so that they cannot overwhelm or control the individual. Vulcans embrace science and reason, but their lives are not purely devoted to logic: they also have a deeply philosophical side, with art and music as vital to their culture as logic. They are also an intensely private people, with many aspects of their culture — such as the rites of pon farr — which are not discussed amongst outsiders."],
             [Attribute.Control, Attribute.Fitness, Attribute.Reason],
             "Vulcan",
             "Due to the harsh, arid, high-gravity world they come from, Vulcans are naturally resistant to extreme heat and dehydration; they are also extremely strong, with keen auditory and olfactory senses. They are also telepathic, though this takes training to properly manifest, and they learn mental discipline and emotional control from childhood. However, this control takes regular meditation to maintain, and their controlled nature and desire for privacy can distance them from others, and make interactions awkward.",
@@ -178,10 +179,11 @@ class _Species {
                 { type: "Male", suggestions: "Aravik, Delvok, Kovar, Muroc, Rekan, Salok, Savel, Sevek, Skon, Soral, Sutok, Syrran, Tekav, Tolek, Velik" },
             ]),
         [Species.KlingonExt]: new SpeciesModel(
+            Species.KlingonExt,
             "Klingon",
             [Era.NextGeneration],
             [Source.Core],
-            "Klingon characters are typically large, physically powerful, and proud, with an aggressive approach to everything they do, and a propensity for violence that makes them extremely dangerous. They are predatory, with a primarily carnivorous diet, and a preference for either still-living food or wild prey from a hunt. Culturally, Klingons revere physical prowess, victory in battle, and a code of personal and familial honor that influences most of their politics, though not all Klingons live up to this; in some Klingons, this only keeps them from performing shameful acts so long as they can avoid the repercussions.",
+            ["Klingon characters are typically large, physically powerful, and proud, with an aggressive approach to everything they do, and a propensity for violence that makes them extremely dangerous. They are predatory, with a primarily carnivorous diet, and a preference for either still-living food or wild prey from a hunt. Culturally, Klingons revere physical prowess, victory in battle, and a code of personal and familial honor that influences most of their politics, though not all Klingons live up to this; in some Klingons, this only keeps them from performing shameful acts so long as they can avoid the repercussions."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Presence],
             "Klingon",
             "Klingon physiology is hardy, with many redundant internal organs allowing them to withstand harm and a number of poisons, which would be deadly for many other species. They are significantly stronger and more resilient than Humans, though they have less tolerance for the cold.",
@@ -190,10 +192,11 @@ class _Species {
             "",
             []),
         [Species.RomulanExt]: new SpeciesModel(
+            Species.RomulanExt,
             "Romulan",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.Core],
-            "Romulans are similar, but not quite identical, to Vulcans, having diverged from their common ancestors, though they did not adopt the stoicism and logic of their cousins. Rather, Romulans are a cruel and ruthless people, quick to anger, and easily moved to emotion. A culture of military discipline seems to keep their worst members directed towards useful ends, though paranoia and self-interest motivate Romulan politics as much as a desire for collective benefit; at times, it seems that the only things keeping the Romulan Star Empire together are the fact that they despise other species more than they despise one another.",
+            ["Romulans are similar, but not quite identical, to Vulcans, having diverged from their common ancestors, though they did not adopt the stoicism and logic of their cousins. Rather, Romulans are a cruel and ruthless people, quick to anger, and easily moved to emotion. A culture of military discipline seems to keep their worst members directed towards useful ends, though paranoia and self-interest motivate Romulan politics as much as a desire for collective benefit; at times, it seems that the only things keeping the Romulan Star Empire together are the fact that they despise other species more than they despise one another."],
             [Attribute.Control, Attribute.Fitness, Attribute.Reason],
             "Romulan",
             "Romulan physiology is not meaningfully different to that of Vulcans, though a portion of the Romulan species exhibits a v-shaped forehead ridge not evident in Vulcans. The largest difference is that Romulans lack the intense mental discipline common to Vulcans. Psychologically and culturally, Romulans prize cunning and strength of will, and are distrustful of other species: this opinion is reciprocated, as Romulans have a reputation for manipulation, deception, and betrayal.",
@@ -202,10 +205,11 @@ class _Species {
             "",
             []),
         [Species.Borg]: new SpeciesModel(
+            Species.Borg,
             "Borg",
             [Era.NextGeneration],
             [Source.Core],
-            "Borg is not something that a person is born to, but rather something that they are forced to become — though for infants and children assimilated by the Collective, they may have little or no memory of any other life. The Borg meld biology with technology, and a drone will have countless implants, the result of both invasive surgery and aggressive nanotechnology. As of 2371, only a single individual has ever been removed from the Borg Collective — Jean-Luc Picard, who was captured only days earlier, meaning that his implants were less extensive than those of someone assimilated years or decades before. Borg NPCs are all mixed-species characters — their original species, and their new reality as part of the Collective.",
+            ["Borg is not something that a person is born to, but rather something that they are forced to become — though for infants and children assimilated by the Collective, they may have little or no memory of any other life. The Borg meld biology with technology, and a drone will have countless implants, the result of both invasive surgery and aggressive nanotechnology. As of 2371, only a single individual has ever been removed from the Borg Collective — Jean-Luc Picard, who was captured only days earlier, meaning that his implants were less extensive than those of someone assimilated years or decades before. Borg NPCs are all mixed-species characters — their original species, and their new reality as part of the Collective."],
             [Attribute.Control, Attribute.Daring, Attribute.Fitness, Attribute.Insight, Attribute.Presence, Attribute.Reason],
             "Borg",
             "Borg are extremely strong and resilient, owing to their technologically-enhanced physiology. They lack self-determination and intuition, relying on directives and protocols from the Collective, and the gestalt consciousness of countless other Borg drones.",
@@ -214,10 +218,11 @@ class _Species {
             "",
             []),
         [Species.FerengiExt]: new SpeciesModel(
+            Species.FerengiExt,
             "Ferengi",
             [Era.NextGeneration],
             [Source.Core],
-            "Ferengi are short, unimposing beings, noted more as merchants and traders than as warriors, scientists, or engineers. Their culture promotes the acquisition of material wealth, and their society is extremely capitalistic, with most routine activities accompanied by the exchange of a precious, non-replicable substance called latinum (a room-temperature liquid metal, often stored within gold “slips,” “bricks” or “bars”). Ferengi discriminate between their genders considerably, with female Ferengi not being permitted to own property or wear clothing; enterprising female Ferengi invariably find a way around these restrictions.",
+            ["Ferengi are short, unimposing beings, noted more as merchants and traders than as warriors, scientists, or engineers. Their culture promotes the acquisition of material wealth, and their society is extremely capitalistic, with most routine activities accompanied by the exchange of a precious, non-replicable substance called latinum (a room-temperature liquid metal, often stored within gold “slips,” “bricks” or “bars”). Ferengi discriminate between their genders considerably, with female Ferengi not being permitted to own property or wear clothing; enterprising female Ferengi invariably find a way around these restrictions."],
             [Attribute.Control, Attribute.Insight, Attribute.Presence],
             "Ferengi",
             "Ferengi physiology does not lend itself to physical activity, nor does their culture value such hardship, though they have a high resistance to many common diseases. Ferengi have exceptionally keen hearing, and highly-sensitive ears, though this also means that intense sounds (and physical force applied to the ears) can inflict debilitating pain. Their unusual brain structure means that telepaths cannot read Ferengi minds. Culturally, Ferengi are acquisitive, regarding the accumulation of wealth as the highest virtue, and while this has given them a reputation as cunning negotiators, they are also often seen as duplicitous and manipulative as well.",
@@ -226,10 +231,11 @@ class _Species {
             "",
             []),
         [Species.CardassianExt]: new SpeciesModel(
+            Species.CardassianExt,
             "Cardassian",
             [Era.NextGeneration],
             [Source.Core],
-            "Cardassians are tall, grey-skinned humanoids with pronounced ridges on their bodies and faces. Their culture demands absolute loyalty to family and to the state — with Cardassian morality plays often depicting conflicts between familial loyalty and loyalty to the state — and they prize individual cunning, self-control, and the ability to endure hardship. Cardassians are a secretive people, even amongst close friends and family, and being suspicious and skeptical of others is regarded as wise and prudent. They value educational attainment and knowledge, and they are fond of conversation and lively debate. They are frequently regarded as domineering, ruthless, arrogant, and duplicitous.",
+            ["Cardassians are tall, grey-skinned humanoids with pronounced ridges on their bodies and faces. Their culture demands absolute loyalty to family and to the state — with Cardassian morality plays often depicting conflicts between familial loyalty and loyalty to the state — and they prize individual cunning, self-control, and the ability to endure hardship. Cardassians are a secretive people, even amongst close friends and family, and being suspicious and skeptical of others is regarded as wise and prudent. They value educational attainment and knowledge, and they are fond of conversation and lively debate. They are frequently regarded as domineering, ruthless, arrogant, and duplicitous."],
             [Attribute.Control, Attribute.Presence, Attribute.Reason],
             "Cardassian",
             "Cardassians possess extraordinary mental discipline, and commonly have photographic memories, the result of intense training during childhood. They are intolerant of cold environments, but quite comfortable at higher temperatures. Cardassian hearing is slightly less acute than that of Humans, and they are uncomfortable in bright light. Cardassians have a negative reputation amongst many Alpha Quadrant cultures, particularly Bajorans, whose homeworld they occupied for decades.",
@@ -238,10 +244,11 @@ class _Species {
             "",
             []),
         [Species.JemHadar]: new SpeciesModel(
+            Species.JemHadar,
             "Jem'Hadar",
             [Era.NextGeneration],
             [Source.Core],
-            "The Jem’Hadar are genetically-engineered life-forms, created to serve as the military of the Dominion. Bred in birthing chambers, rather than born naturally, they grow to maturity in three days, developing complex reasoning and language skills within a day of birth. Once mature, they do not eat, drink, or sleep, taking all nourishment from the drug ketracel-white, often simply known as “the white,” which is distributed to them by their Vorta overseer as a means of ensuring loyalty. Few Jem’Hadar live for longer than fifteen years due simply to battlefield casualties, with those living to twenty being regarded as ‘Elders’.",
+            ["The Jem’Hadar are genetically-engineered life-forms, created to serve as the military of the Dominion. Bred in birthing chambers, rather than born naturally, they grow to maturity in three days, developing complex reasoning and language skills within a day of birth. Once mature, they do not eat, drink, or sleep, taking all nourishment from the drug ketracel-white, often simply known as “the white,” which is distributed to them by their Vorta overseer as a means of ensuring loyalty. Few Jem’Hadar live for longer than fifteen years due simply to battlefield casualties, with those living to twenty being regarded as ‘Elders’."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Insight],
             "Jem'Hadar",
             "Individual Jem’Hadar are physically powerful, and far stronger and more resilient than Humans. They also have exceptionally keen eyesight, and act utterly without fear or hesitation in battle. They do not regard death with any apprehension, and are extremely aggressive, limited only by their absolute obedience to the Founders and the Vorta.",
@@ -250,10 +257,11 @@ class _Species {
             "",
             []),
         [Species.Vorta]: new SpeciesModel(
+            Species.Vorta,
             "Vorta",
             [Era.NextGeneration],
             [Source.Core],
-            "The Vorta are genetically-engineered life-forms, created to serve as advisors, scientists, diplomats, and overseers for the Dominion, acting as the Founders’ closest servants and foremost representatives. Vorta are cloned, in batches of identical beings, with a new clone being activated and placed into service upon the death of a predecessor, receiving the memories of those that came before them, though each clone is nevertheless a distinct individual. Vorta are extremely cunning and clever, but have little creativity or sense of aesthetics.",
+            ["The Vorta are genetically-engineered life-forms, created to serve as advisors, scientists, diplomats, and overseers for the Dominion, acting as the Founders’ closest servants and foremost representatives. Vorta are cloned, in batches of identical beings, with a new clone being activated and placed into service upon the death of a predecessor, receiving the memories of those that came before them, though each clone is nevertheless a distinct individual. Vorta are extremely cunning and clever, but have little creativity or sense of aesthetics."],
             [Attribute.Insight, Attribute.Presence, Attribute.Reason],
             "Vorta",
             "Vorta have extremely keen hearing, but relatively poor eyesight. They are immune to most forms of poison. Vorta are absolutely loyal to the Dominion, revering the Founders as living gods. Those who encounter the Vorta often regard them as insincere or manipulative.",
@@ -262,10 +270,11 @@ class _Species {
             "",
             []),
         [Species.Ardanan]: new SpeciesModel(
+            Species.Ardanan,
             "Ardanan",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.BetaQuadrant],
-            "Ardanan citizens have a long history of societal division. The two castes that still hold sway over an Ardanian’s potential are the city-dwellers of the floating city, Stratos, and the surface dwelling Troglytes. While anatomically no different, for years the Troglytes suffered from conditions and mental difficulties that reduced their higher brain functions. This was due to exposure to the zenite mines where they labored and, once the Federation Bureau of Industrialization got involved, breathing apparatus was quickly made mandatory. In contrast the beautiful City of Stratos, floating in the lower atmosphere of Ardana, is home to a people entirely devoted to art, government and culture.",
+            ["Ardanan citizens have a long history of societal division. The two castes that still hold sway over an Ardanian’s potential are the city-dwellers of the floating city, Stratos, and the surface dwelling Troglytes. While anatomically no different, for years the Troglytes suffered from conditions and mental difficulties that reduced their higher brain functions. This was due to exposure to the zenite mines where they labored and, once the Federation Bureau of Industrialization got involved, breathing apparatus was quickly made mandatory. In contrast the beautiful City of Stratos, floating in the lower atmosphere of Ardana, is home to a people entirely devoted to art, government and culture."],
             [Attribute.Fitness, Attribute.Presence, Attribute.Reason],
             "Ardanan",
             "Ardana natives from either caste are hardy individuals, whose duality of art and culture, and resource mining and management, make them excellent all-rounders. Without the exposure to zenite gas many Troglytes reach a level of academic and artistic ability on par with the city-dwellers, making the Ardanans both a people of stout endurance and cultural excellence.",
@@ -277,10 +286,11 @@ class _Species {
                 { type: "Female", suggestions: "Droxine, Vanna" }
             ]),
         [Species.Benzite]: new SpeciesModel(
+            Species.Benzite,
             "Benzite",
             [Era.NextGeneration],
             [Source.BetaQuadrant],
-            "Benzite physiology gives this species’ skin a hairless blue-to-green complexion. The Benzite skull has a thick protrusion that extends over the brow and nose, with two facial tendrils above the lip. Until 2370 Benzites in Starfleet had trouble breathing a standard nitrogen/oxygen atmosphere and relied on breathing apparatus. Their apparent change in condition, which allows the species to go without breathing aids, is rumored to be thanks to genetic engineering, though reports are unconfirmed. Highly meticulous, a Benzite Starfleet officer is a valuable resource when it comes to exploration and investigation.",
+            ["Benzite physiology gives this species’ skin a hairless blue-to-green complexion. The Benzite skull has a thick protrusion that extends over the brow and nose, with two facial tendrils above the lip. Until 2370 Benzites in Starfleet had trouble breathing a standard nitrogen/oxygen atmosphere and relied on breathing apparatus. Their apparent change in condition, which allows the species to go without breathing aids, is rumored to be thanks to genetic engineering, though reports are unconfirmed. Highly meticulous, a Benzite Starfleet officer is a valuable resource when it comes to exploration and investigation."],
             [Attribute.Control, Attribute.Insight, Attribute.Reason],
             "Benzite",
             "A Benzite’s average body temperature is several degrees lower than an average, warm blooded humanoid, though the Benzite themselves are not cold blooded. Their blood being mercury and platinum based. Benzites also have 2 apposable thumbs on each hand, aiding their dexterity.",
@@ -292,10 +302,11 @@ class _Species {
                 { type: "Female", suggestions: "Hoya" }
             ]),
         [Species.Bolian]: new SpeciesModel(
+            Species.Bolian,
             "Bolian",
             [Era.NextGeneration],
             [Source.BetaQuadrant],
-            "From the planet Bolarus IX, Bolians are well known for their hospitality and outgoing personalities. Identified by a cartilaginous ridge that extends down their head, vertically, down the center of the face to the chest, with skin color ranging from light blues, to dark greens and muted purples with darker banding across the head. They are predominantly bald, though some females are known to have hair on their heads. Bolian marriages have more than two partners, of both sexes, but procreation with other species isn’t all that common, given the Bolians’ incompatibility with others. Humans, in particular, have noted several side effects of inter-species relations, including nausea, fatigue, and inflammation.",
+            ["From the planet Bolarus IX, Bolians are well known for their hospitality and outgoing personalities. Identified by a cartilaginous ridge that extends down their head, vertically, down the center of the face to the chest, with skin color ranging from light blues, to dark greens and muted purples with darker banding across the head. They are predominantly bald, though some females are known to have hair on their heads. Bolian marriages have more than two partners, of both sexes, but procreation with other species isn’t all that common, given the Bolians’ incompatibility with others. Humans, in particular, have noted several side effects of inter-species relations, including nausea, fatigue, and inflammation."],
             [Attribute.Control, Attribute.Insight, Attribute.Presence],
             "Bolian",
             "Bolians are able, thanks to their cartilaginous tongues, to consume substances unsafe to other species, such as acids or decaying meat. Bolian hearts are on the right side of their body, moving blue blood around their circulatory system. Bolians are an understanding, hospitable species, often forward-facing in their duties in customer relations or diplomatic service.",
@@ -308,10 +319,11 @@ class _Species {
                 { type: "Family Name", suggestions: "Adislo, Arlin, Brott" }
             ]),
         [Species.Deltan]: new SpeciesModel(
+            Species.Deltan,
             "Deltan",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.BetaQuadrant],
-            "These humanoids from the Delta system differ in appearance only slightly from Humans, with very little hair across their bodies, aside from eye brows and lashes. As a telepathic and empathic species, the Deltans rank themselves alongside the Vulcans and Betazoids as able to read and communicate via thoughts and feelings. Indeed, some Deltan genealogists have theorized Betazoids are a distant cousin species. With some of the most potent pheromones the Federation has ever encountered, many other species find the Deltans very sexually appealing.The vast majority of Deltans in Starfleet, therefore, take an oath of celibacy, ensuring their sexuality is not a distraction to their colleagues.By all accounts this is a good thing, as the Deltan act of intimacy involves not only their bodies but also their telepathic minds, possibly endangering the mental health of other species.",
+            ["These humanoids from the Delta system differ in appearance only slightly from Humans, with very little hair across their bodies, aside from eye brows and lashes. As a telepathic and empathic species, the Deltans rank themselves alongside the Vulcans and Betazoids as able to read and communicate via thoughts and feelings. Indeed, some Deltan genealogists have theorized Betazoids are a distant cousin species. With some of the most potent pheromones the Federation has ever encountered, many other species find the Deltans very sexually appealing.The vast majority of Deltans in Starfleet, therefore, take an oath of celibacy, ensuring their sexuality is not a distraction to their colleagues.By all accounts this is a good thing, as the Deltan act of intimacy involves not only their bodies but also their telepathic minds, possibly endangering the mental health of other species."],
             [Attribute.Control, Attribute.Insight, Attribute.Presence],
             "Deltan",
             "Deltans are considered to be beautiful individuals, with powerful empathic abilities and heightened sensuality. The pheromones they excrete are a natural aphrodisiac in most species throughout the Federation, and while serving aboard Starfleet they must be very careful with their natural physiology, using chemical suppressants to cancel the effect.",
@@ -324,10 +336,11 @@ class _Species {
                 { type: "Family Name", suggestions: "Adzhin-Dal" }
             ]),
         [Species.Efrosian]: new SpeciesModel(
+            Species.Efrosian,
             "Efrosian",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.BetaQuadrant],
-            "Hailing from the planet Efros Delta, Efrosians are renowned musicians and historians. Their society is dedicated to oral teaching, most notably in the form of a musical language that all Efrosian children are taught in some form or another. They are also excellent navigators and are often sought out as helm and navigation officers, as well as translators thanks to being natural linguists and communications experts. While their cranial ridges bear some similarity to Klingon physiology (though less pronounced), a male’s hair is almost always white from birth while females exhibit darker colors. Males grow long moustaches and both male and female Efrosians grow their hair out down their backs.",
+            ["Hailing from the planet Efros Delta, Efrosians are renowned musicians and historians. Their society is dedicated to oral teaching, most notably in the form of a musical language that all Efrosian children are taught in some form or another. They are also excellent navigators and are often sought out as helm and navigation officers, as well as translators thanks to being natural linguists and communications experts. While their cranial ridges bear some similarity to Klingon physiology (though less pronounced), a male’s hair is almost always white from birth while females exhibit darker colors. Males grow long moustaches and both male and female Efrosians grow their hair out down their backs."],
             [Attribute.Fitness, Attribute.Presence, Attribute.Reason],
             "Efrosian",
             "As the natives to a planet of harsh freezing storms, Efrosians have natural resilience and survival instincts. They have two stomachs to break down any tough foodstuffs and protect from infection, while their naturally poor eyesight is made up for by their enhanced senses of smell and taste. Interestingly, even though they have poor vision compared to other humanoids, they can perceive a greater portion of the light spectrum than most.",
@@ -339,10 +352,11 @@ class _Species {
                 { type: "Female", suggestions: "Hu'Ghrovlatrei, Fellen Ni-Yaleii" }
             ]),
         [Species.Klingon]: new SpeciesModel(
+            Species.Klingon,
             "Klingon",
             [Era.NextGeneration],
             [Source.BetaQuadrant, Source.KlingonCore],
-            "With its capital at Qo’noS, the Klingon Empire is almost as large as the Federation, and larger than the Romulan Empire. Distinguishable by the sagittal crest over their foreheads and crowns, Klingons are taller and stronger than most humanoid species, something that helps enhance their reputation as warriors. The hardy Klingons have been both allies and enemies throughout their years of contact with the Federation. Now, as staunch allies, this proud people have begun to exchange officers with Starfleet. Not only that but Worf, son of Mogh, created a precedent as the first Klingon to graduate of Starfleet Academy. This has brought more applications from Klingons, especially those of mixed heritage who don’t feel at ease in the Klingon Empire. Klingons embody pride and honor above all. Many dedicate their lives to the warrior ethos for the honor of house and family.",
+            ["With its capital at Qo’noS, the Klingon Empire is almost as large as the Federation, and larger than the Romulan Empire. Distinguishable by the sagittal crest over their foreheads and crowns, Klingons are taller and stronger than most humanoid species, something that helps enhance their reputation as warriors. The hardy Klingons have been both allies and enemies throughout their years of contact with the Federation. Now, as staunch allies, this proud people have begun to exchange officers with Starfleet. Not only that but Worf, son of Mogh, created a precedent as the first Klingon to graduate of Starfleet Academy. This has brought more applications from Klingons, especially those of mixed heritage who don’t feel at ease in the Klingon Empire. Klingons embody pride and honor above all. Many dedicate their lives to the warrior ethos for the honor of house and family."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Presence],
             "Klingon",
             "There is a great redundancy in Klingon organs, with two livers, multiple stomachs, three lungs, and an eight-chambered heart. Their skeletal structure also has several redundancies that mitigate injuries that would prove fatal to other humanoids.",
@@ -354,10 +368,11 @@ class _Species {
                 { type: "Female", suggestions: "a'Setbur, HuS, lurSa, Mara" }
             ]),
         [Species.Chelon]: new SpeciesModel(
+            Species.Chelon,
             "Rigellian Chelon",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.BetaQuadrant],
-            "Chelons are a hardy race, sharing their home solar system of Rigel with Rigellian Jelna. They are descendants of sabertoothed turtles and, though bipedal, they have retained their ancestral beaks, claws and hard shells. Chelons are androgynous and take on masculine or feminine societal roles at varying points in their lives, reproducing like most reptilians by laying eggs and fertilizing those eggs. Some traditionalists within Chelon society maintain a neutral gender, and refuse to take on male or female roles.",
+            ["Chelons are a hardy race, sharing their home solar system of Rigel with Rigellian Jelna. They are descendants of sabertoothed turtles and, though bipedal, they have retained their ancestral beaks, claws and hard shells. Chelons are androgynous and take on masculine or feminine societal roles at varying points in their lives, reproducing like most reptilians by laying eggs and fertilizing those eggs. Some traditionalists within Chelon society maintain a neutral gender, and refuse to take on male or female roles."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Insight],
             "Rigellian Chelon",
             "The Chelon species retains a lot of characteristics from its ancestral species, a type of saber-toothed turtle. They have beaks, and a strong (if clumsy) bite; some have trained to use this in closequarters combat. During times of stress or physical combat they also emit a deadly toxin through their skin. This can be used with their claws so that the toxin reaches an opponent’s blood. They are skilled swimmers and prefer a warm, humid climate. They are also resistant to ultraviolet radiation and, to a lesser extent, other radioactivity. This is probably due to the shells that extend over much their bodies.",
@@ -369,10 +384,11 @@ class _Species {
                 { type: "Female", suggestions: "Salka, Ash'lak, Dakla'" }
             ]),
         [Species.Jelna]: new SpeciesModel(
+            Species.Jelna,
             "Rigellian Jelna",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.BetaQuadrant],
-            "The Jelna, like the Chelon, are natives of the Rigel system and come from Rigel V. A diligent and hard-working species, the Jelna were the first Rigellians to engage in space flight. Although they took to commerce and systemwide government quicker than the Chelon, the Jelna weren’t aggressive, and they made sure that of democratic representation for all Rigellian species on the Governing Board and the Rigellian Trade Commission. The humanoid Jelnas have four genders: two male and two female genders. Male and female exosexes contain an additional Z chromosome, and they outnumber the endosexes 2 to 1. Exosexes are the more resilient and physically adept members of the species, while endosexes are more comparable to the male and female sexes typically found in other humanoid species.",
+            ["The Jelna, like the Chelon, are natives of the Rigel system and come from Rigel V. A diligent and hard-working species, the Jelna were the first Rigellians to engage in space flight. Although they took to commerce and systemwide government quicker than the Chelon, the Jelna weren’t aggressive, and they made sure that of democratic representation for all Rigellian species on the Governing Board and the Rigellian Trade Commission. The humanoid Jelnas have four genders: two male and two female genders. Male and female exosexes contain an additional Z chromosome, and they outnumber the endosexes 2 to 1. Exosexes are the more resilient and physically adept members of the species, while endosexes are more comparable to the male and female sexes typically found in other humanoid species."],
             [Attribute.Fitness, Attribute.Presence, Attribute.Reason],
             "Rigellian Jelna",
             "The Jelna on Rigel V evolved along similar lines to most humanoids, aside from their four sexes. Endosexes are comparable to other humanoids, while exosexes possess a more robust physique and aggressive tendancies. Endosexes have exclusively gray skin and red eyes and are more suited to nurture and care; exosexes have a pale brown complexion.",
@@ -385,10 +401,11 @@ class _Species {
                 { type: "Family Name", suggestions: "Pahtel, Zehron" }
             ]),
         [Species.Risian]: new SpeciesModel(
+            Species.Risian,
             "Risian",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.BetaQuadrant],
-            "Risa was a planet of fierce storms and tectonic instability before the Risians took it upon themselves to essentially terraform their planet. It is now colloquially known throughout the Federation as a “pleasure planet.” It’s a wonder the Risians evolved into the ceremonial society they have today, with tradition and ceremony being central to Risa society. Risians have an honest and open attitude to sexuality, renowned throughout the Galaxy.Potential mates with a sexual appetite display ceremonial icons, called a horga’hn, that invite partners to participate in the sexual rite jamaharon.",
+            ["Risa was a planet of fierce storms and tectonic instability before the Risians took it upon themselves to essentially terraform their planet. It is now colloquially known throughout the Federation as a “pleasure planet.” It’s a wonder the Risians evolved into the ceremonial society they have today, with tradition and ceremony being central to Risa society. Risians have an honest and open attitude to sexuality, renowned throughout the Galaxy.Potential mates with a sexual appetite display ceremonial icons, called a horga’hn, that invite partners to participate in the sexual rite jamaharon."],
             [Attribute.Control, Attribute.Insight, Attribute.Presence],
             "Risian",
             "Risians appear much like Humans, save a decorative gold emblem in the center of the forehead. They have open and adventurous personalities but also have a great patience with others.",
@@ -400,10 +417,11 @@ class _Species {
                 { type: "Female", suggestions: "Aradnis, Elianjah, Joval" }
             ]),
         [Species.XindiArboreal]: new SpeciesModel(
+            Species.XindiArboreal,
             "Xindi-Arboreal",
             [Era.NextGeneration],
             [Source.BetaQuadrant],
-            "The intelligent Arboreal species of the Xindi are a contrast some of their cousins on Xindus in that they are known to have an incredibly calm demeanor, some would call them lethargic. But with a relaxed pace comes an appreciation for logical thought and considered discussion. Since becoming members of the Federation, Xindi–Arboreals have worked in Starfleet and the Federation as mediators, counsellors, diplomats and administrators.",
+            ["The intelligent Arboreal species of the Xindi are a contrast some of their cousins on Xindus in that they are known to have an incredibly calm demeanor, some would call them lethargic. But with a relaxed pace comes an appreciation for logical thought and considered discussion. Since becoming members of the Federation, Xindi–Arboreals have worked in Starfleet and the Federation as mediators, counsellors, diplomats and administrators."],
             [Attribute.Control, Attribute.Insight, Attribute.Reason],
             "Xindi-Arboreal",
             "Covered in hair, and with distinctive ridges on their nose and cheekbones, the Arboreals are evolved from creatures similar to that of the Earth sloth. They possess sharp claws and have slightly longer arms than the average humanoid. With a naturally calm, rational mind, they do not panic or stress easily though they do fear large bodies of water. Their dark eyes allow them to see easier in low light conditions compared to other humanoids.",
@@ -416,10 +434,11 @@ class _Species {
                 { type: "Family Name", suggestions: "Durr" }
             ]),
         [Species.XindiPrimate]: new SpeciesModel(
+            Species.XindiPrimate,
             "Xindi-Primate",
             [Era.NextGeneration],
             [Source.BetaQuadrant],
-            "Xindi-Primates were the second Xindus species to evolve intelligence, after the Xindi–Aquatics. Primates are talented engineers and are often fair, honest and trusted. The Xindi inclusion into the United Federation of Planets in 2311 enabled Xindi-Primates to enhance their learning, and find positions in design, architecture, engineering, along with research and development. They, more than most species to attend the Academy, find themselves in the command division upon graduation, given their adaptability and audaciousness.",
+            ["Xindi-Primates were the second Xindus species to evolve intelligence, after the Xindi–Aquatics. Primates are talented engineers and are often fair, honest and trusted. The Xindi inclusion into the United Federation of Planets in 2311 enabled Xindi-Primates to enhance their learning, and find positions in design, architecture, engineering, along with research and development. They, more than most species to attend the Academy, find themselves in the command division upon graduation, given their adaptability and audaciousness."],
             [Attribute.Daring, Attribute.Presence, Attribute.Reason],
             "Xindi-Primate",
             "With a similar physiology to humans, Primates share their characteristic internal organ structure and metabolism, as well as their sensory perceptions. Their facial structure is markedly different, however, with pronounced foreheads and ridged cheekbones like other Xindus species. Amongst other Xindi, Primates have a reputation for fairness and honesty. Many people beyond Xindus have come to regard Xindi-Primates as trustworthy and decent.",
@@ -431,10 +450,11 @@ class _Species {
                 { type: "Female", suggestions: "Bryn, Guyda, Hreidur" }
             ]),
         [Species.XindiReptilian]: new SpeciesModel(
+            Species.XindiReptilian,
             "Xindi-Reptilian",
             [Era.NextGeneration],
             [Source.BetaQuadrant],
-            "The Reptilian species from Xindus rival the insectoids in aggression, and are likely to resort to force to achieve their goals. They’re also notably dishonest and impatient when it comes to dealing with other species, including other Xindi. It is rare for Reptilians to apply to Starfleet Academy, and rarer still for them to be accepted, as their temperament can lead to confrontations. Those XindiReptilians who do join Starfleet rival the Klingons in martial prowess, Tellarites in aptitude for debate, and Zakdorn in tactical expertise.",
+            ["The Reptilian species from Xindus rival the insectoids in aggression, and are likely to resort to force to achieve their goals. They’re also notably dishonest and impatient when it comes to dealing with other species, including other Xindi. It is rare for Reptilians to apply to Starfleet Academy, and rarer still for them to be accepted, as their temperament can lead to confrontations. Those XindiReptilians who do join Starfleet rival the Klingons in martial prowess, Tellarites in aptitude for debate, and Zakdorn in tactical expertise."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Presence],
             "Xindi-Reptilian",
             "These are cold blooded individuals who prefer hotter climates. Scales, ridges and spikes cover their body and they have vertical slit eyes, for adapting to low light conditions and judging depth. A carnivorous, protein-heavy diet gives them muscular tone and definition that enhances their strength and endurance. They have a reputation amongst other Xindi for being aggressive, impatient, stubborn, and untrustworthy.",
@@ -447,10 +467,11 @@ class _Species {
                 { type: "Family Name", suggestions: "Dolim" },
             ]),
         [Species.XindiInsectoid]: new SpeciesModel(
+            Species.XindiInsectoid,
             "Xindi-Insectoid",
             [Era.NextGeneration],
             [Source.BetaQuadrant],
-            "Among Xindus species, Xindi-Insectoids are considered one of the most aggressive and decisive. They, and the Reptilians are responsible for the destruction of their original homeworld, after detonating vast explosions beneath several seismically active points. Their language is the most complex among the Xindi species with 67 different dialects of clicks and chirps that other species find hard to replicate. Insectoid names grow longer as the individual ages, carrying more meaning and life history than many other species’ given names.",
+            ["Among Xindus species, Xindi-Insectoids are considered one of the most aggressive and decisive. They, and the Reptilians are responsible for the destruction of their original homeworld, after detonating vast explosions beneath several seismically active points. Their language is the most complex among the Xindi species with 67 different dialects of clicks and chirps that other species find hard to replicate. Insectoid names grow longer as the individual ages, carrying more meaning and life history than many other species’ given names."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Reason],
             "Xindi-Insectoid",
             "Reproduction is asexual with a single adult laying a clutch of eggs. Life expectancy is very short compared to other species with 12 years as the average. Their insectoid bodies grant them enhanced abilities, such as crawling and climbing, while their cheek ridges distinguish them as Xindus natives.",
@@ -459,10 +480,11 @@ class _Species {
             "Xindi-Insectoid names are an incredibly intricate series of clicks and chirps, and while amongst other species often choose a name to be known as by their crewmates, favoring short names that work well with their consonant heavy language.",
             []),
         [Species.Zakdorn]: new SpeciesModel(
+            Species.Zakdorn,
             "Zakdorn",
             [Era.NextGeneration],
             [Source.BetaQuadrant],
-            "Seen as easily the best tactical minds in the Galaxy, the Zakdorn excel at complex strategic thinking. This asset has enabled the Federation to streamline its defensive policy over the years, with Zakdorn officials overseeing training exercises and “war games” for Starfleet. Their personal confidence and conviction is often considered boasting and hubris, particularly given that no rival species has ever tested the Zakdorn military. Zakdorn strategists have, however, helped Starfleet and the Federation immeasurably since they joined in the early 24th Century.",
+            ["Seen as easily the best tactical minds in the Galaxy, the Zakdorn excel at complex strategic thinking. This asset has enabled the Federation to streamline its defensive policy over the years, with Zakdorn officials overseeing training exercises and “war games” for Starfleet. Their personal confidence and conviction is often considered boasting and hubris, particularly given that no rival species has ever tested the Zakdorn military. Zakdorn strategists have, however, helped Starfleet and the Federation immeasurably since they joined in the early 24th Century."],
             [Attribute.Insight, Attribute.Presence, Attribute.Reason],
             "Zakdorn",
             "Zakdorn tend to be of shorter stature than most humanoids and have distinctive wrinkles of fatty tissue over their faces and bodies. This fatty layer enables Zakdorn to survive without food for much longer periods than normal humanoids. Their analytical brains give them an edge in logic and reasoning that rivals even Vulcans.",
@@ -475,10 +497,11 @@ class _Species {
                 { type: "Family Name", suggestions: "Azernal, Bunkrep, Kolrami, Roplik" },
             ]),
         [Species.Changeling]: new SpeciesModel(
+            Species.Changeling,
             "Changeling",
             [Era.NextGeneration],
             [Source.DS9],
-            "A fluidic, shapeshifting species from the Gamma Quadrant, Changelings are typically reclusive, elusive beings, who try to avoid contact with other species, referred to by Changelings as “monoforms” or “solids”. Most Changelings are collectively the Founders of the Dominion, but Changelings encountered beyond the Dominion are often from “The Hundred”, a group of infants sent out to learn about the galaxy before being compelled to return home. The Founders collectively regard themselves as The Great Link, a fluid collective that appears more like an ocean than a society, where the distinctions between individuals disappear.",
+            ["A fluidic, shapeshifting species from the Gamma Quadrant, Changelings are typically reclusive, elusive beings, who try to avoid contact with other species, referred to by Changelings as “monoforms” or “solids”. Most Changelings are collectively the Founders of the Dominion, but Changelings encountered beyond the Dominion are often from “The Hundred”, a group of infants sent out to learn about the galaxy before being compelled to return home. The Founders collectively regard themselves as The Great Link, a fluid collective that appears more like an ocean than a society, where the distinctions between individuals disappear."],
             [Attribute.Control, Attribute.Fitness, Attribute.Insight],
             "Changeling",
             "A Changeling is naturally a gelatinous orange-brown fluid, which can adopt the form and structure of any solid object, including other living creatures and diffuse substances like fog. While they cannot become energy, a Changeling’s ability to assume other forms is limited more by skill and experience than by physical capacity: it is theorized that they transfer mass to and from subspace in order to change size and density. Many Changelings find themselves persecuted by “solids” for their shapeshifting ability, and often crave a sense of order and justice in the universe, with a rigid attitude at odds with their fluid forms.",
@@ -487,10 +510,11 @@ class _Species {
             "",
             []),
         [Species.Ferengi]: new SpeciesModel(
+            Species.Ferengi,
             "Ferengi",
             [Era.NextGeneration],
             [Source.DS9],
-            "Ferengi are short, unimposing beings, noted more as merchants than traders than as warriors, scientists, or engineers. Their culture promotes the acquisition of material wealth, and their society is extremely capitalistic, with most routine activities accompanied by the exchange of a precious, nonreplicable substance called latinum (a room-temperature liquid metal, often stored within gold “slips,” “bricks,” or “bars.”) Ferengi discriminate between their genders considerably, with female Ferengi not being permitted to own property or wear clothing; enterprising young female Ferengi invariably find a way around these restrictions.",
+            ["Ferengi are short, unimposing beings, noted more as merchants than traders than as warriors, scientists, or engineers. Their culture promotes the acquisition of material wealth, and their society is extremely capitalistic, with most routine activities accompanied by the exchange of a precious, nonreplicable substance called latinum (a room-temperature liquid metal, often stored within gold “slips,” “bricks,” or “bars.”) Ferengi discriminate between their genders considerably, with female Ferengi not being permitted to own property or wear clothing; enterprising young female Ferengi invariably find a way around these restrictions."],
             [Attribute.Control, Attribute.Insight, Attribute.Presence],
             "Ferengi",
             "Ferengi physiology does not lend itself to physical activity, nor does their culture value such hardship, though they have a resistance to many common diseases. Ferengi have exceptional hearing, and highlysensitive ears, though this also means that intense sounds (and physical force applied to the ears) can inflict debilitating pain. Their unusual brain structure means that telepaths cannot read Ferengi minds. Culturally, Ferengi are acquisitive, regarding the accumulation of wealth as the highest virtue, and while this has given them a reputation as cunning negotiators, they are also often seen as duplicitous and manipulative as well.",
@@ -499,10 +523,11 @@ class _Species {
             "",
             []),
         [Species.Android]: new SpeciesModel(
+            Species.Android,
             "Soong-type Android",
             [Era.NextGeneration],
             [Source.TNG],
-            "Originally designed by Dr. Noonian Soong the Soong-type Android is a exceptionally advanced artificial intelligence life-form. These android are capable of incredible feats of reason due to their positronic brain but are normally emotionless and may find it difficult to relate to organic beings. Certain advanced versions offset this problem by use of an emotion chip that allows them to experience a full gamut of emotions. Unfortunately it is possible for negative emotions like anger and megalomania to become dominant and cause the android to harm others.",
+            ["Originally designed by Dr. Noonian Soong the Soong-type Android is a exceptionally advanced artificial intelligence life-form. These android are capable of incredible feats of reason due to their positronic brain but are normally emotionless and may find it difficult to relate to organic beings. Certain advanced versions offset this problem by use of an emotion chip that allows them to experience a full gamut of emotions. Unfortunately it is possible for negative emotions like anger and megalomania to become dominant and cause the android to harm others."],
             [Attribute.Control, Attribute.Fitness, Attribute.Reason],
             "Soong-type Android",
             "The physical and mental capabilities of a Soong-type android are superior to that of most organic or cybernetic life-forms, allowing them to ignore or resist effects like hard vacuum, disease, radiation, oxygen deprivation, telepathy, or biochemical imbalance. However, some environmental conditions, such as highly-ionized atmospheres, and electromagnetic fields, can have a severe effect. Further, Soong-type androids do not naturally have the capacity for emotions, requiring additional hardware to process and experience any feelings. The legal personhood of Soong-type androids is somewhat disputed, though a landmark case involving Lieutenant Commander Data establishes their right to self-determination.",
@@ -511,10 +536,11 @@ class _Species {
             "",
             []),
         [Species.Reman]: new SpeciesModel(
+            Species.Reman,
             "Reman",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.BetaQuadrant],
-            "Remans are a nocturnal species subjugated by the Romulan Star Empire. They are enslaved by the Empire, employed both as indentured miners within the Reman mines, and as expendable shock troops and bodyguards serving the Romulan military. Little is known about the Remans outside of the Romulan Empire, due mainly to the Romulans’ secrecy.",
+            ["Remans are a nocturnal species subjugated by the Romulan Star Empire. They are enslaved by the Empire, employed both as indentured miners within the Reman mines, and as expendable shock troops and bodyguards serving the Romulan military. Little is known about the Remans outside of the Romulan Empire, due mainly to the Romulans’ secrecy."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Insight],
             "Reman",
             "Remans are tall, powerfully built beings, stronger and more durable even than Romulans. Their nocturnal nature means that they cannot easily tolerate bright light. A proportion of Remans have telepathic abilities, allowing them to read the minds of others and to project their thoughts to others, though using these powers effectively takes skill and training.",
@@ -523,10 +549,12 @@ class _Species {
             "",
             []),
         [Species.Orion]: new SpeciesModel(
+            Species.Orion,
             "Orion",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.BetaQuadrant, Source.ShackletonExpanse],
-            "The Orions are a paradoxical species. An Orion will be warm and welcoming to newcomers and be open to talking about a variety of topics as they get to know them. Too often this is a ruse, as Orion culture is based around seizing the advantage in all things and working out the best deals to benefit their society. Though they proudly claim to be strictly neutral in the affairs of the galaxy, the Orions are the founders of two organizations that have profoundly impacted Starfleet and other empires: the Orion Trade Union and the Orion Syndicate. Too often Orions are members of both of these organizations and the species they interact with will learn too late which group they are dealing with. Though the Orion Syndicate is a menace that is the target of dozens of law enforcement agencies, their persuasive negotiating skills and extensive criminal empire have guaranteed their continued existence. \nOrion society is broken down along binary gender lines. Orion females are typically the leaders of Orion society, and have evolved an advantage where their bodies secrete special pheromones that cause a hypnotic effect in males of some species. Orion males were second-class citizens for centuries and only recently gained full recognition in Orion society, though they are still most commonly seen as laborers and crew on Orion outposts and vessels. When it comes to the Syndicate, Orions prefer to let members of other species work for them; this not only guarantees that the Orion can continue their claim of strict neutrality, but they also avoid the risk of fallout from their criminal enterprises.",
+            ["The Orions are a paradoxical species. An Orion will be warm and welcoming to newcomers and be open to talking about a variety of topics as they get to know them. Too often this is a ruse, as Orion culture is based around seizing the advantage in all things and working out the best deals to benefit their society. Though they proudly claim to be strictly neutral in the affairs of the galaxy, the Orions are the founders of two organizations that have profoundly impacted Starfleet and other empires: the Orion Trade Union and the Orion Syndicate. Too often Orions are members of both of these organizations and the species they interact with will learn too late which group they are dealing with. Though the Orion Syndicate is a menace that is the target of dozens of law enforcement agencies, their persuasive negotiating skills and extensive criminal empire have guaranteed their continued existence.", 
+            "Orion society is broken down along binary gender lines. Orion females are typically the leaders of Orion society, and have evolved an advantage where their bodies secrete special pheromones that cause a hypnotic effect in males of some species. Orion males were second-class citizens for centuries and only recently gained full recognition in Orion society, though they are still most commonly seen as laborers and crew on Orion outposts and vessels. When it comes to the Syndicate, Orions prefer to let members of other species work for them; this not only guarantees that the Orion can continue their claim of strict neutrality, but they also avoid the risk of fallout from their criminal enterprises."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Presence],
             "Orion",
             "Orions thrive in Class-M environments and are well suited to long voyages through space. The Orions are a dimorphic species where the females secrete special pheromones that can stimulate the adrenal systems of other species and make them become fascinated with them, which the Orion women have used to maintain control over not only Orion males but to manipulate other species. The pheromones produced by Orion males can generally make them seem attractive to other humanoids, but not to the same degree as that produced by Orion females.",
@@ -537,10 +565,11 @@ class _Species {
                 { type: "Sample Names", suggestions: "Adreltosh, Brielar, D’Nesh, Kotho, Navaar, Prasad, Savarah, Shretsh" }
             ]),
         [Species.Gorn]: new SpeciesModel(
+            Species.Gorn,
             "Gorn",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.BetaQuadrant],
-            "A bipedal, reptilian species from the Beta quadrant, who have a civilization — the Gorn Hegemony — far from Federation Space. First encountered by Starfleet in 2267, the Gorn are technologically advanced to a level comparable to the Federation and other Beta Quadrant powers in most regards. Even a century after first contact, there is relatively little contact between the Gorn Hegemony and the Federation.",
+            ["A bipedal, reptilian species from the Beta quadrant, who have a civilization — the Gorn Hegemony — far from Federation Space. First encountered by Starfleet in 2267, the Gorn are technologically advanced to a level comparable to the Federation and other Beta Quadrant powers in most regards. Even a century after first contact, there is relatively little contact between the Gorn Hegemony and the Federation."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Reason],
             "Gorn",
             "Gorn are large and powerfully-built, even more so than other famously-mighty species such as the Klingons or Nausicaans. They are many times stronger than a human being, and resilient enough to ignore massive blunt force trauma or even short periods in hard vacuum. However, Gorn are not especially agile or fast. Gorn are ectothermic — cold-blooded — with their body temperature varying by external factors, and thus favour warm environments where they can be most active and effective.",
@@ -549,10 +578,11 @@ class _Species {
             "",
             []),
         [Species.Arbazan]: new SpeciesModel(
+            Species.Arbazan,
             "Arbazan",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.AlphaQuadrant],
-            "The Arbazan were one of the earliest civilizations encountered during Starfleet’s early ventures into deep space. Within a short time, the stoic Arbazan were welcomed into the newly-formed Federation and are considered by many to be one of its founding members, a fact the Arbazan take great pride in. Like many humanoid species within the Federation, the Arbazan are physically similar to Humans, though the forward portion of their skulls have slightly raised plates that reinforce their brows. The Arbazan are known for their conservative values, infallible self-confidence, and devotion to social protocol. Some, however, find the cultural focus on proper social etiquette to be stifling, and rebellious young Arbazan can often be found at Starfleet Academy pursuing security or ship operation roles.",
+            ["The Arbazan were one of the earliest civilizations encountered during Starfleet’s early ventures into deep space. Within a short time, the stoic Arbazan were welcomed into the newly-formed Federation and are considered by many to be one of its founding members, a fact the Arbazan take great pride in. Like many humanoid species within the Federation, the Arbazan are physically similar to Humans, though the forward portion of their skulls have slightly raised plates that reinforce their brows. The Arbazan are known for their conservative values, infallible self-confidence, and devotion to social protocol. Some, however, find the cultural focus on proper social etiquette to be stifling, and rebellious young Arbazan can often be found at Starfleet Academy pursuing security or ship operation roles."],
             [Attribute.Control, Attribute.Insight, Attribute.Presence],
             "Arbazan",
             "Arbazan have been Federation members since shortly after its founding and are found throughout Federation space, often serving as ambassadors, attaches, advisors, and negotiators – though there have also been several well-known scientific discoveries and engineering advancements by dedicated Arbazan.",
@@ -564,10 +594,11 @@ class _Species {
                 { type: "Male", suggestions: " Warik, Rotes. Apocec, Berton, Tuvmil, Valbu" }
             ]),
         [Species.Arkarian]: new SpeciesModel(
+            Species.Arkarian,
             "Arkarian",
             [Era.NextGeneration],
             [Source.AlphaQuadrant],
-            "Arkarians are native to the Class-M world of Arkaria, home to the Remmler Array – an orbital facility that removes built-up baryon particles (a by-product of warp travel) – and Arkaria Base. Arkaria is a member world of the Federation and Arkarians serve throughout Starfleet and other Federation organizations. Arkaria is known for its abnormal weather patterns, resulting in extremely colorful sunrises and sunsets of every shade of green, pink, and purple as well as higherthan-normal average temperatures. The nature trails that run throughout the sweeping plains located near Arkaria Base are a common attraction for those visiting the Array or Base, especially for those wanting to see the nesting sites for horn fowls. Arkarians are physically very similar to Humans and other humanoid species – save for distinctive brow and nasal ridges. Their society has recently begun to shift away from its traditional authoritarian nobility toward the more common egalitarian systems found throughout the Federation. This is largely believed to be due to the increasing interactions between Arkarians and other Federation member worlds, though a conservative minority continues to maintain their noble holdings and social expectations.",
+            ["Arkarians are native to the Class-M world of Arkaria, home to the Remmler Array – an orbital facility that removes built-up baryon particles (a by-product of warp travel) – and Arkaria Base. Arkaria is a member world of the Federation and Arkarians serve throughout Starfleet and other Federation organizations. Arkaria is known for its abnormal weather patterns, resulting in extremely colorful sunrises and sunsets of every shade of green, pink, and purple as well as higherthan-normal average temperatures. The nature trails that run throughout the sweeping plains located near Arkaria Base are a common attraction for those visiting the Array or Base, especially for those wanting to see the nesting sites for horn fowls. Arkarians are physically very similar to Humans and other humanoid species – save for distinctive brow and nasal ridges. Their society has recently begun to shift away from its traditional authoritarian nobility toward the more common egalitarian systems found throughout the Federation. This is largely believed to be due to the increasing interactions between Arkarians and other Federation member worlds, though a conservative minority continues to maintain their noble holdings and social expectations."],
             [Attribute.Control, Attribute.Daring, Attribute.Reason],
             "Arkarian",
             "Direct and hardworking, Arkarians have a reputation for detail-oriented work practices and high expectations. Due to their historical authoritarian nobility, Arkarians tend to be more socially reserved than many other Federation member species and tend to be inwardly uncomfortable in social gatherings where ‘mingling’ and ‘small talk’ are expected. In addition, Arkarians are accustomed to slightly warmer climates than other humanoids and can endure higher temperatures than many other species without difficulty.",
@@ -579,10 +610,11 @@ class _Species {
                 { type: "Male", suggestions: "Pemten, Vivik, Kopnon, Raksab, Navanat, Natsan, Imis, Anat, Hagan, Vilim, Sachan, Feder" }
             ]),
         [Species.Aurelian]: new SpeciesModel(
+            Species.Aurelian,
             "Aurelian",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.AlphaQuadrant],
-            "One of the few avian species to be represented within the Federation, the Aurelians are renowned for their study of history and service within the Federation Science Council. While not unheard of, there are a few Aurelians serving in Starfleet, and those that do most commonly work as science officers. Aurelians dislike enclosed spaces and many suffer from a mild form of claustrophobia, which makes long-term service aboard a starship that much more difficult. Most Aurelians that pursue a career in Starfleet request assignments at planetary installations, allowing them to spend their off-duty time outdoors.",
+            ["One of the few avian species to be represented within the Federation, the Aurelians are renowned for their study of history and service within the Federation Science Council. While not unheard of, there are a few Aurelians serving in Starfleet, and those that do most commonly work as science officers. Aurelians dislike enclosed spaces and many suffer from a mild form of claustrophobia, which makes long-term service aboard a starship that much more difficult. Most Aurelians that pursue a career in Starfleet request assignments at planetary installations, allowing them to spend their off-duty time outdoors."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Insight],
             "Aurelian",
             "Aurelians are capable of flight, thanks to large and muscular wings. This allows them to quickly traverse distances and avoid obstacles on the ground. They also possess keen sight and a natural directional sense based on the magnetic poles of planetary bodies. Nearly all Aurelians suffer from claustrophobia, though the severity of the affliction differs from individual to individual.",
@@ -594,10 +626,11 @@ class _Species {
                 { type: "Male", suggestions: "Jorenber-Le, Aleek-Om, Pealo-Dix, Tarieel-Er, Lovalga-Li, Dueyyit-Ne" }
             ]),
         [Species.Caitian]: new SpeciesModel(
+            Species.Caitian,
             "Caitian",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.AlphaQuadrant],
-            "The Caitian are a bipedal felinoid species with a strong history of service within Starfleet. Their homeworld of Cait is a pleasant Class-M planet with extensive grasslands that support sprawling city complexes that integrate seamlessly into the environment, for which the Caitians have great respect. While known to be extremely effective and proud warriors, the Caitian culture holds artistic and philosophical endeavors in extremely high regard.",
+            ["The Caitian are a bipedal felinoid species with a strong history of service within Starfleet. Their homeworld of Cait is a pleasant Class-M planet with extensive grasslands that support sprawling city complexes that integrate seamlessly into the environment, for which the Caitians have great respect. While known to be extremely effective and proud warriors, the Caitian culture holds artistic and philosophical endeavors in extremely high regard."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Insight],
             "Caitian",
             "Caitians are all slightly smaller in both height and weight than average humanoids – with most reaching between 1.5-1.7 meters. They have retained the retractable claws of their evolutionary ancestors along with a flexible tail. Caitians are carnivorous and prefer uncooked meat. While they evolved from predatory felines, the Caitians are regarded as some of the greatest poets and philosophers within the Federation.",
@@ -609,10 +642,11 @@ class _Species {
                 { type: "Male", suggestions: "R’Than, C’horn, Ur’Barr, L’Enton, H’Sook, K’Raka, A’Outte, V’Wilk, A’Mathi, Z’Thors" }
             ]),
         [Species.Cardassian]: new SpeciesModel(
+            Species.Cardassian,
             "Cardassian",
             [Era.NextGeneration],
             [Source.AlphaQuadrant],
-            "There are few species as disliked or mistrusted as Cardassians. While they generate art, music, and poetry to match any other species – Cardassians are known instead for their devotion to the State, aggressive military tactics, and absolute faith in their own superiority. Advancement in Cardassian society is driven by capability and demonstrated success, resulting in an upper class of cunning and strategic individuals who expect complete devotion of their subordinates and families. While they may not be as technologically capable as the Federation, the ruthless efficiency of the Cardassian government and military has resulted in making them evenly matched with Starfleet during engagements over the last few decades.",
+            ["There are few species as disliked or mistrusted as Cardassians. While they generate art, music, and poetry to match any other species – Cardassians are known instead for their devotion to the State, aggressive military tactics, and absolute faith in their own superiority. Advancement in Cardassian society is driven by capability and demonstrated success, resulting in an upper class of cunning and strategic individuals who expect complete devotion of their subordinates and families. While they may not be as technologically capable as the Federation, the ruthless efficiency of the Cardassian government and military has resulted in making them evenly matched with Starfleet during engagements over the last few decades."],
             [Attribute.Control, Attribute.Presence, Attribute.Reason],
             "Cardassian",
             "Cardassians are known for their dedication and discipline – mentally and culturally. With an emphasis on the superiority of the State, Cardassians are a xenophobic species, considering themselves superior to nearly all others. Many dislike them, viewing them as arrogant, intolerant, and cruel. Physically, Cardassians are similar to most species, save for slightly reduced hearing and a biological preference for hotter climates.",
@@ -625,10 +659,11 @@ class _Species {
                 { type: "Family", suggestions: "Priman, Aanrad, Drat, Rin, Liat, Moset, Tain, Lang, Pa’Dar, Dal, Ghemor, Belor, Prin, Oddat, Zenal" }
             ]),
         [Species.Edosian]: new SpeciesModel(
+            Species.Edosian,
             "Edosian",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.AlphaQuadrant],
-            "Edosians are a tripedal species with three arms and three legs. While not a member of the Federation, the Edosians have a long-standing, loose alliance with the Federation since their earliest contact. It is rare, though not unknown, for Edosians to serve in Starfleet. Edosian culture tends toward inner reflection and a meticulousness with historical records. Genealogy has a much larger focus than in many other cultures, and Edosians are able to trace their individual family lines back thousands of years. Being a race that lives longer than even Vulcans, an Edosian may spend decades focused on a particular area of study before moving on to a new interest. Interesting to exobiologists, with practice, an Edosian becomes capable of allocating sections of their brain to each arm, operating independently with nearly fully focus and capability.",
+            ["Edosians are a tripedal species with three arms and three legs. While not a member of the Federation, the Edosians have a long-standing, loose alliance with the Federation since their earliest contact. It is rare, though not unknown, for Edosians to serve in Starfleet. Edosian culture tends toward inner reflection and a meticulousness with historical records. Genealogy has a much larger focus than in many other cultures, and Edosians are able to trace their individual family lines back thousands of years. Being a race that lives longer than even Vulcans, an Edosian may spend decades focused on a particular area of study before moving on to a new interest. Interesting to exobiologists, with practice, an Edosian becomes capable of allocating sections of their brain to each arm, operating independently with nearly fully focus and capability."],
             [Attribute.Fitness, Attribute.Insight, Attribute.Reason],
             "Edosian",
             "With three legs, Endosians are somewhat slower than most humanoids, but far more stable. With three multidextrous arms, they are able to operate multiple stations or controls at the same time. They are long-lived and capable of deep thought – which others often mistake as antisocial behavior. Their long lives grant them a perspective most others lack and they are often able to recall details and facts from disciplines outside their areas of focus due to decades of exposure and broad study.",
@@ -640,10 +675,11 @@ class _Species {
                 { type: "Male", suggestions: "Ainbelad, Arex, Ropetir, Elwomo, Cargarin, Manoko, Nusien, Joelpo, Darame, Nileber" }
             ]),
         [Species.FerengiAlpha]: new SpeciesModel(
+            Species.FerengiAlpha,
             "Ferengi",
             [Era.NextGeneration],
             [Source.AlphaQuadrant],
-            "While Ferengi have ventured through the stars in search of profit and advantageous business arrangements, official first contact with the Federation did not occur until 2364. In the following decade, Ferengi can be found nearly anywhere there is profit to made. Nearly all of Ferengi culture, government, and beliefs are based around the acquisition and retention of wealth – earning them a reputation as greedy, duplicitous, and conniving merchants and con-men. While some Ferengi are not obsessed with wealth or self-promotion, they are few and far between and are looked down upon by other Ferengi. With a society devoted to business and trade, there is little central government outside of business and regulatory functions. The Ferengi Alliance is, in reality, a collection of corporate and private businesses and their territorial holdings.",
+            ["While Ferengi have ventured through the stars in search of profit and advantageous business arrangements, official first contact with the Federation did not occur until 2364. In the following decade, Ferengi can be found nearly anywhere there is profit to made. Nearly all of Ferengi culture, government, and beliefs are based around the acquisition and retention of wealth – earning them a reputation as greedy, duplicitous, and conniving merchants and con-men. While some Ferengi are not obsessed with wealth or self-promotion, they are few and far between and are looked down upon by other Ferengi. With a society devoted to business and trade, there is little central government outside of business and regulatory functions. The Ferengi Alliance is, in reality, a collection of corporate and private businesses and their territorial holdings."],
             [Attribute.Control, Attribute.Insight, Attribute.Presence],
             "Ferengi",
             "Ferengi possess acute hearing far beyond  that of other humanoid races and are able to hear both higher and lower frequencies. However, this means that they experience severe pain at intense sound and any physical trauma to their enlarged ears. They also possess hardy immune systems, rendering them immune to many common diseases, but their small stature makes them ill-suited for intense or prolonged physical exertion and many consider them weak. Ferengi try to avoid hard labor and direct confrontation, leading to a reputation for cowardice. The structure of Ferengi brains renders them immune to telepathy.",
@@ -655,10 +691,11 @@ class _Species {
                 { type: "Male", suggestions: "Lexor, Nurpax, Nog, Kakag, Frector, Quark, Frink, Torta, Rom, Zek, Gigi" }
             ]),
         [Species.Grazerite]: new SpeciesModel(
+            Species.Grazerite,
             "Grazerite",
             [Era.NextGeneration],
             [Source.AlphaQuadrant],
-            "The Grazerite are a peaceful people whose homeworld, Grazer, is one of the harsher examples of the far ends of the planetary M classification. The three main continents are predominately covered by extensive mountain ranges that reach as far as 10 kilometers above ‘sea level.’ The Grazerites’ evolutionary development has incorporated not only traditional humanoid traits – but also those of bovidae – giving them goat like physical features. Grazerites are a peaceful people with a natural sense of curiosity.",
+            ["The Grazerite are a peaceful people whose homeworld, Grazer, is one of the harsher examples of the far ends of the planetary M classification. The three main continents are predominately covered by extensive mountain ranges that reach as far as 10 kilometers above ‘sea level.’ The Grazerites’ evolutionary development has incorporated not only traditional humanoid traits – but also those of bovidae – giving them goat like physical features. Grazerites are a peaceful people with a natural sense of curiosity."],
             [Attribute.Control, Attribute.Insight, Attribute.Presence],
             "Grazerite",
             "Grazerites possess powerful jaws and durable teeth – allowing them to chew through a surprising number of hardened substances. They cannot, however, digest inorganic materials, despite being able to chew through them, and as evolutionary vegetarians, have a difficult time digesting meats. Their brows are adorned with a pair of durable horns, which slope back in the vast majority. Further, Grazerite fingers evolved from hooves and their fingernails remain extremely dense, and are capable of supporting their full weight – making them excellent climbers.",
@@ -670,10 +707,11 @@ class _Species {
                 { type: "Male", suggestions: "Anmer-Tasik, Erasmo-Tes, Saburo-Taff, Jaresh-Inyo, Zenko-Arwi, Jacus-Kelle, Luciro-Asi" }
             ]),
         [Species.Haliian]: new SpeciesModel(
+            Species.Haliian,
             "Haliian",
             [Era.NextGeneration],
             [Source.AlphaQuadrant],
-            "Haliians are native to the Federation world of Halii – renowned for its crystal formations and beautiful waterfalls. As one of the few telepathic species in the Federation, the Haliians share many of the same social nuances of other telepathic or empathic species, such as Betazoids. Haliians often find it hard to truly connect with non-Haliians, and this has the unfortunate effect of limiting their interactions with other Federation species. Due to the nature of their telepathic abilities, Haliians are either far more prone to physical contact during social encounters or avoid it entirely depending on individual in question. Haliians also share a deep fondness for holidays – of which they have many – which almost always involve music.",
+            ["Haliians are native to the Federation world of Halii – renowned for its crystal formations and beautiful waterfalls. As one of the few telepathic species in the Federation, the Haliians share many of the same social nuances of other telepathic or empathic species, such as Betazoids. Haliians often find it hard to truly connect with non-Haliians, and this has the unfortunate effect of limiting their interactions with other Federation species. Due to the nature of their telepathic abilities, Haliians are either far more prone to physical contact during social encounters or avoid it entirely depending on individual in question. Haliians also share a deep fondness for holidays – of which they have many – which almost always involve music."],
             [Attribute.Daring, Attribute.Insight, Attribute.Presence],
             "Haliian",
             "Physically, Haliians are similar to other humanoid species within the Federation; however, the natives of Halii possess distinctive bulges along the bridge of their noses and just above their brows. Haliians tend to have close family bonds and numerous festivals and holidays. Much like other telepathic species, Haliians struggle with the use of deception, and will often misinterpret it during social encounters.",
@@ -686,10 +724,11 @@ class _Species {
                 { type: "Surnames", suggestions: "Mahki, Santosi, Uhnari, Kinge, Rozenn, Terzi, Abeln, Kedzi, Albini, Nani, Apito" }
             ]),
         [Species.Ktarian]: new SpeciesModel(
+            Species.Ktarian,
             "Ktarian",
             [Era.NextGeneration],
             [Source.AlphaQuadrant],
-            "The Ktarians are a physically diverse species native to the Federation world of Ktaris. They are a common sight throughout Federation space and are one of the many species that maintains its own fleet of vessels – both merchant and military. The Ktarian fleet is considered to be a reserve force, and can be transferred to the command of Starfleet during times of great need. Unlike most Federation species, the Ktarians are comprised of two separate species that evolved together on Ktaris – one whose brows are bisected into two hemispheres and the other with bone ridges along the center of the forehead. Intermarriage among these two species has resulted in both carrying the traits of the other. Predicting which traits will manifest in offspring is extremely difficult, especially when Ktarians mate with other species. Rumors circulate that the Miradorn are an offshoot of Ktarians, but the Miradorns’ reclusive nature makes this difficult to confirm.",
+            ["The Ktarians are a physically diverse species native to the Federation world of Ktaris. They are a common sight throughout Federation space and are one of the many species that maintains its own fleet of vessels – both merchant and military. The Ktarian fleet is considered to be a reserve force, and can be transferred to the command of Starfleet during times of great need. Unlike most Federation species, the Ktarians are comprised of two separate species that evolved together on Ktaris – one whose brows are bisected into two hemispheres and the other with bone ridges along the center of the forehead. Intermarriage among these two species has resulted in both carrying the traits of the other. Predicting which traits will manifest in offspring is extremely difficult, especially when Ktarians mate with other species. Rumors circulate that the Miradorn are an offshoot of Ktarians, but the Miradorns’ reclusive nature makes this difficult to confirm."],
             [Attribute.Control, Attribute.Reason],
             "Ktarian",
             "Ktarians are a hard people, determined and relentless in pursuit of their goals. The intertwining of the two native species has led to the Ktarians possessing the best traits of both. They are physically fit and quick witted – adapting and responding to adversity with ease. They rarely engage in negotiations unless they feel they have the upper hand.",
@@ -701,10 +740,11 @@ class _Species {
                 { type: "Male", suggestions: "Rafen, Tomishamin, Lazos, Mizan, Dukannigarm, Koolen, Barhenk, Greskrendtegk" }
             ]),
         [Species.Zaranite]: new SpeciesModel(
+            Species.Zaranite,
             "Zaranite",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.AlphaQuadrant],
-            "Zaranites are a humanoid species native to a Class-K world, Zaran II, a planet of endless volcanic activity that supports a flourishing chemosynthesis-based ecosystem. The Zaranites evolved breathing the toxic volcanic gases and must wear a respirator that provides the gas mixture that would be lethal to most Federation species. In addition, Zaranites have a strong sensitivity to light due to the constant clouds of volcanic ash covering their world, and must wear special eye protection to prevent damage to their retinas.",
+            ["Zaranites are a humanoid species native to a Class-K world, Zaran II, a planet of endless volcanic activity that supports a flourishing chemosynthesis-based ecosystem. The Zaranites evolved breathing the toxic volcanic gases and must wear a respirator that provides the gas mixture that would be lethal to most Federation species. In addition, Zaranites have a strong sensitivity to light due to the constant clouds of volcanic ash covering their world, and must wear special eye protection to prevent damage to their retinas."],
             [Attribute.Control, Attribute.Fitness, Attribute.Reason],
             "Zaranite",
             "Zaranites are hardy and immune to toxic gases, complications due to bright lighting, and can survive the extremes conditions of the vacuum of space, so long as their respirator tanks last. In general, Zaranites are pleasant if not somewhat reserved. In addition to their service in Starfleet, Zaranites also serve in various positions within the scientific community and diplomatic corps.",
@@ -716,10 +756,11 @@ class _Species {
                 { type: "Male", suggestions: "Castel, Makan, Keshen, Shrive, Rayan, Perraul, Jossmah, Kantasen, Noorber, Vosgi" }
             ]),
         [Species.Argrathi]: new SpeciesModel(
+            Species.Argrathi,
             "Argrathi",
             [Era.NextGeneration],
             [Source.GammaQuadrant],
-            "The Argrathi consider themselves to have the most civilized and orderly culture in the Gamma Quadrant. Decades ago they eliminated their penal system by developing a series of easy to understand laws and by changing the punishment for most crimes from imprisonment to having false memories implanted in the offender’s mind so that they can serve out their sentence instantaneously but feel like they have been in prison for years. The Argrathi consider their society to be an orderly one, and this has freed them to pursue other interests such as literature and developing defensive technology. The Argrathi see upholding the law as one of the most sacred things they can do in their life, and Argrathi police officers frequently cooperate with other planets to maintain peace across the Gamma Quadrant. The only time they will refuse to follow a law is if it conflicts with the Argrathi’s established laws, which they view as sacrosanct and superior to all other legal systems. ",
+            ["The Argrathi consider themselves to have the most civilized and orderly culture in the Gamma Quadrant. Decades ago they eliminated their penal system by developing a series of easy to understand laws and by changing the punishment for most crimes from imprisonment to having false memories implanted in the offender’s mind so that they can serve out their sentence instantaneously but feel like they have been in prison for years. The Argrathi consider their society to be an orderly one, and this has freed them to pursue other interests such as literature and developing defensive technology. The Argrathi see upholding the law as one of the most sacred things they can do in their life, and Argrathi police officers frequently cooperate with other planets to maintain peace across the Gamma Quadrant. The only time they will refuse to follow a law is if it conflicts with the Argrathi’s established laws, which they view as sacrosanct and superior to all other legal systems. "],
             [Attribute.Fitness, Attribute.Insight, Attribute.Reason],
             "Argrathi",
             "The Argrathi are blunt and direct, with an emphasis on seeing that punishments are carried out quickly and that the Argrathi legal system knows best. Although some might claim that mistakes are made, the Argrathi’s desire to promote peace and justice has led to them being seen as one of the more reasonable races in the Gamma Quadrant. The Argrathi hope that one day all other cultures, including the Dominion, will acknowledge the superiority of their legal system. Until that day, they will follow the rules as best they can and work to insure law and order across the quadrant. ",
@@ -732,10 +773,11 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "N'Mi Char, S'Geda Yuu" }
             ]),
         [Species.ChangelingGamma]: new SpeciesModel(
+            Species.ChangelingGamma,
             "Changeling",
             [Era.NextGeneration],
             [Source.GammaQuadrant],
-            "To the people of the Gamma Quadrant, the Founders of the Dominion are shadowed in myth and legend. Few realize that the mythical Changelings from the quadrant’s distant history were in fact the same species that rules over all of the Dominion. To the people of the Alpha Quadrant, the Changelings are a grave threat and one that is very difficult to counter. They are an entire species composed of a morphogenic substance that allows them to not only take on the appearance of what they are trying to mimic but the physical qualities as well. The simplest of them can assume the forms of rocks, trees, and even simple animals like hawks and reptiles. The more experienced Changelings are able to change their forms to completely appear like the species they are mimicking, whether it is a Starfleet officer working in a top secret space station or as a shower of light that floats gently through a room. Some Changelings have even discovered the secret of interstellar travel by taking on the form of organisms that are able to enter subspace at will. Unlike other shapeshifting species throughout the Galaxy, Changelings are unique in that they can shift their molecules around and literally turn into the rocks around them, making it difficult for them to be located by all but the most intensive scans. ",
+            ["To the people of the Gamma Quadrant, the Founders of the Dominion are shadowed in myth and legend. Few realize that the mythical Changelings from the quadrant’s distant history were in fact the same species that rules over all of the Dominion. To the people of the Alpha Quadrant, the Changelings are a grave threat and one that is very difficult to counter. They are an entire species composed of a morphogenic substance that allows them to not only take on the appearance of what they are trying to mimic but the physical qualities as well. The simplest of them can assume the forms of rocks, trees, and even simple animals like hawks and reptiles. The more experienced Changelings are able to change their forms to completely appear like the species they are mimicking, whether it is a Starfleet officer working in a top secret space station or as a shower of light that floats gently through a room. Some Changelings have even discovered the secret of interstellar travel by taking on the form of organisms that are able to enter subspace at will. Unlike other shapeshifting species throughout the Galaxy, Changelings are unique in that they can shift their molecules around and literally turn into the rocks around them, making it difficult for them to be located by all but the most intensive scans. "],
             [Attribute.Control, Attribute.Fitness, Attribute.Presence],
             "Changeling",
             "A Changeling is naturally a gelatinous orange-brown fluid, which can adopt the form and structure of any solid object, including other living creatures and diffuse substances like fog. While they cannot become energy, a Changeling’s ability to assume other forms is limited more by skill and experience than by physical capacity: it is theorized that they transfer mass to and from subspace in order to change size and density. Many Changelings find themselves persecuted by “solids” for their shapeshifting ability, and often crave a sense of order and justice in the universe, with a rigid attitude at odds with their fluid forms. ",
@@ -747,10 +789,11 @@ class _Species {
                 { type: "Feminine", suggestions: "Lall, Chiree" }
             ]),
         [Species.Dosi]: new SpeciesModel(
+            Species.Dosi,
             "Dosi",
             [Era.NextGeneration],
             [Source.GammaQuadrant],
-            "The Dosi may appear comical from a distance with their brightly painted faces and numerous markings along their skin, but they are not a race that appreciates mockery. Equally adept at being warriors as well as merchants, the Dosi are an imposing sight across trading outposts along the Gamma Quadrant. Their aggressive negotiating tactics combined with their need to not appear foolish leads to many races taking great steps not to offend them. The Dosi’s alliance with the Dominion has insured that the Dosi can roam as they please across the Gamma Quadrant as long as they do not interfere with the Dominion’s business and continue to earn them a profit. Contrary to the belief that they must only appreciate war and profit, the Dosi are excellent artists and vintners, and tulaberry wine has become an important trade good between the Alpha and Gamma Quadrants. ",
+            ["The Dosi may appear comical from a distance with their brightly painted faces and numerous markings along their skin, but they are not a race that appreciates mockery. Equally adept at being warriors as well as merchants, the Dosi are an imposing sight across trading outposts along the Gamma Quadrant. Their aggressive negotiating tactics combined with their need to not appear foolish leads to many races taking great steps not to offend them. The Dosi’s alliance with the Dominion has insured that the Dosi can roam as they please across the Gamma Quadrant as long as they do not interfere with the Dominion’s business and continue to earn them a profit. Contrary to the belief that they must only appreciate war and profit, the Dosi are excellent artists and vintners, and tulaberry wine has become an important trade good between the Alpha and Gamma Quadrants."],
             [Attribute.Fitness, Attribute.Insight, Attribute.Presence],
             "Dosi",
             "The Dosi are a conundrum to outsiders, but their culture has lasted over a thousand years. Each Dosi paints their skin in brilliant swirling patterns of stripes and dots to denote battles they have won or great accomplishments they have achieved. The Dosi do not do things subtly, and when they walk into a room they wish to make sure that everyone has noticed that they have arrived. They consider everything to be a test of their skill, and when it comes to trade negotiations they approach each business deal with the same meticulous planning one might focus towards winning a war. ",
@@ -763,10 +806,11 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Ballu, Vish" }
             ]),
         [Species.Drai]: new SpeciesModel(
+            Species.Drai,
             "Drai",
             [Era.NextGeneration],
             [Source.GammaQuadrant],
-            "A reclusive race that prefers to spend their time out exploring the universe in pursuit of their prey, the Drai are known as the Hunters to the majority of the Gamma Quadrant. Unlike other races under the control of the Dominion, the Hunters are free to roam where they please and are given significant leeway into how they manage their own affairs. Masters in the field of cloning, the Drai are responsible for the creation of the perfect prey and the perfect soldiers. It is through their genetic mastery that they created the Tosk, which proves to be the most challenging form of prey for them to stalk, and they have created the Jem’Hadar, who have proven to be the domineering fist of the Dominion for centuries. Proud, vain, and focused solely on their own affairs, the Drai pursue the Hunt as the grandest thing they can do with their lives. While success is publicly shared so too is failure, and it is not uncommon for failed Hunters to find their names spread throughout the quadrant as shameful examples for how others are to do better. ",
+            ["A reclusive race that prefers to spend their time out exploring the universe in pursuit of their prey, the Drai are known as the Hunters to the majority of the Gamma Quadrant. Unlike other races under the control of the Dominion, the Hunters are free to roam where they please and are given significant leeway into how they manage their own affairs. Masters in the field of cloning, the Drai are responsible for the creation of the perfect prey and the perfect soldiers. It is through their genetic mastery that they created the Tosk, which proves to be the most challenging form of prey for them to stalk, and they have created the Jem’Hadar, who have proven to be the domineering fist of the Dominion for centuries. Proud, vain, and focused solely on their own affairs, the Drai pursue the Hunt as the grandest thing they can do with their lives. While success is publicly shared so too is failure, and it is not uncommon for failed Hunters to find their names spread throughout the quadrant as shameful examples for how others are to do better."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Presence],
             "Drai",
             "The Drai care only for the Hunt and each one will wear the finest hunting gear that they can buy. Even their day to day clothing is focused more towards being fit for survival, with hidden pouches and miniaturized survival equipment being commonly found on Drai at all times. While they are on the Hunt they will often not change clothes and will spend every waking hour pursuing their prey. When they are not hunting, the Drai dedicate themselves towards maintaining peak physical fitness and train to keep their eyes and reflexes sharp. ",
@@ -779,10 +823,11 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Netyr, Coziss" }
             ]),
         [Species.Karemma]: new SpeciesModel(
+            Species.Karemma,
             "Karemma",
             [Era.NextGeneration],
             [Source.GammaQuadrant],
-            "Honesty and integrity are cornerstones of the Karemma way of life. The unofficial merchant caste of the Dominion, the Karemma have been tasked by the Founders with regulating trade across the Gamma Quadrant. Unlike the Ferengi, who always attempt to leverage the rules to provide an unfair advantage with who they are dealing with, the Karemma prefer to deal openly and honestly. That is not to say they are naïve, and all Karemma must study hard in order to obtain high positions in the Karemma corporatocracy. Their shrewd business senses and honesty have given them a fair amount of trust by the Founders who allow them to maintain the economic workings of the Dominion. If the Karemma have a fault it is that their pursuit of honesty can often force them to enter into contracts against their will. No Karemma would be willing to dishonor themselves or their family by engaging in dishonesty, though the Karemma will always pursue strongly worded deals that benefit themselves. ",
+            ["Honesty and integrity are cornerstones of the Karemma way of life. The unofficial merchant caste of the Dominion, the Karemma have been tasked by the Founders with regulating trade across the Gamma Quadrant. Unlike the Ferengi, who always attempt to leverage the rules to provide an unfair advantage with who they are dealing with, the Karemma prefer to deal openly and honestly. That is not to say they are naïve, and all Karemma must study hard in order to obtain high positions in the Karemma corporatocracy. Their shrewd business senses and honesty have given them a fair amount of trust by the Founders who allow them to maintain the economic workings of the Dominion. If the Karemma have a fault it is that their pursuit of honesty can often force them to enter into contracts against their will. No Karemma would be willing to dishonor themselves or their family by engaging in dishonesty, though the Karemma will always pursue strongly worded deals that benefit themselves."],
             [Attribute.Control, Attribute.Reason, Attribute.Presence],
             "Karemma",
             "The Karemmas’ tall appearance and bird-like nature causes them to stand out in a crowd, but most Karemma would prefer to be seen rather than ignored. From an early age they are taught the delicate art of appraising what they see around them, and the Karemma are able to tell an object’s true worth in a few moments of inspection. This often leads them to inadvertently offend their hosts when a Karemma, who is truly curious about the worth of objects around them, moves about the bridge of the ship and declaring how much each individual’s possessions are worth. ",
@@ -795,10 +840,11 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Bulko, Yebesh" }
             ]),
         [Species.Lurian]: new SpeciesModel(
+            Species.Lurian,
             "Lurian",
             [Era.NextGeneration],
             [Source.GammaQuadrant],
-            "A race as well known for their fierce martial skills as they are for their artistic endeavors, the Lurians are a power whose homeworld is near the Wormhole. Though their world is controlled by the Royal Family of Luria, they are a frequent sight at outposts and trading posts across the quadrant, and their skill as navigators and warriors makes them prized members of any crew. With multiple hearts and two stomachs they require large quantities of food and their religious custom dictates that attendees at a Lurian funeral should bring plenty of food and liquor to see the dead through their journey into the afterlife. Though some Lurians have become involved in criminal endeavors such as the Orion Syndicate, they prefer to make their own way across the quadrant, and it is not uncommon to see lone Lurians happily plying their way through space on another great adventure. ",
+            ["A race as well known for their fierce martial skills as they are for their artistic endeavors, the Lurians are a power whose homeworld is near the Wormhole. Though their world is controlled by the Royal Family of Luria, they are a frequent sight at outposts and trading posts across the quadrant, and their skill as navigators and warriors makes them prized members of any crew. With multiple hearts and two stomachs they require large quantities of food and their religious custom dictates that attendees at a Lurian funeral should bring plenty of food and liquor to see the dead through their journey into the afterlife. Though some Lurians have become involved in criminal endeavors such as the Orion Syndicate, they prefer to make their own way across the quadrant, and it is not uncommon to see lone Lurians happily plying their way through space on another great adventure."],
             [Attribute.Control, Attribute.Fitness, Attribute.Presence],
             "Lurian",
             "Lurians are a passionate people, and never do anything by half measure. Whether it is by devoting themselves to the arts or by trying to become the greatest pilots in the quadrant, the Lurians live with their emotions on their sleeves despite their normally impassive facial features. Lurians are always great thinkers and dreamers, and even though they may appear quiet their minds are often on important matters and on formulating plans for their futures. The Dominion War is of great interest on the Lurians’ homeworld, where their people swing from obsession with how the war will play out for their people to mild annoyance that the war is all that off worlders will talk about. ",
@@ -811,10 +857,11 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Gresh, Slurr" }
             ]),
         [Species.Paradan]: new SpeciesModel(
+            Species.Paradan,
             "Paradan",
             [Era.NextGeneration],
             [Source.GammaQuadrant],
-            "The Paradans are one of the few Gamma Quadrant races near the wormhole who have not been absorbed into the Dominion, and possess a thorough understanding of cloning techniques. Known for their reptilian appearance and their obnoxious odor, the Paradans are a resourceful species whose ability to create cloned replicants has helped them wage covert wars with their neighbors for centuries. These replicants are so exact that they will often pass undetected through bioscanners and many do not know they are replicants until their cellular structure begins to decay after they have successfully completed or failed their mission. The Paradans come from a curious culture that inspires many to leave their homeworld and travel to the Alpha Quadrant to see what it has in store for them. With their superior medical knowledge and natural ruggedness they are not afraid to travel even into dangerous warzones if only to satisfy their intense curiosity. ",
+            ["The Paradans are one of the few Gamma Quadrant races near the wormhole who have not been absorbed into the Dominion, and possess a thorough understanding of cloning techniques. Known for their reptilian appearance and their obnoxious odor, the Paradans are a resourceful species whose ability to create cloned replicants has helped them wage covert wars with their neighbors for centuries. These replicants are so exact that they will often pass undetected through bioscanners and many do not know they are replicants until their cellular structure begins to decay after they have successfully completed or failed their mission. The Paradans come from a curious culture that inspires many to leave their homeworld and travel to the Alpha Quadrant to see what it has in store for them. With their superior medical knowledge and natural ruggedness they are not afraid to travel even into dangerous warzones if only to satisfy their intense curiosity."],
             [Attribute.Fitness, Attribute.Insight, Attribute.Presence],
             "Paradan",
             "Paradans rely upon their olfactory glands to help determine the mood of whomever they are speaking with, and they possess potent scent glands around their bodies that release potent odors. The Paradans are also physically imposing, and are able to survive comfortably in hot environments. ",
@@ -827,10 +874,11 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Zeill, Shatu" }
             ]),
         [Species.Rakhari]: new SpeciesModel(
+            Species.Rakhari,
             "Rakhari",
             [Era.NextGeneration],
             [Source.GammaQuadrant],
-            "The Rakhari people are as resilient and stoic as their planet which has had the misfortune of seeing dozens of conflicts throughout its history. The Rakhari had just completed their twelfth of what the Terrans might call a “World War” when their current government came into being and declared the majority of crimes on their planet to be punishable by death. This tense atmosphere has led to the Rakhari to finally know peace for the first time in centuries although there is still a strong dissident movement slowly accumulating power on the planet. As more and more Rakhari take to the stars to escape their government, they are starting to become a common sight along the edges of Dominion space. ",
+            ["The Rakhari people are as resilient and stoic as their planet which has had the misfortune of seeing dozens of conflicts throughout its history. The Rakhari had just completed their twelfth of what the Terrans might call a “World War” when their current government came into being and declared the majority of crimes on their planet to be punishable by death. This tense atmosphere has led to the Rakhari to finally know peace for the first time in centuries although there is still a strong dissident movement slowly accumulating power on the planet. As more and more Rakhari take to the stars to escape their government, they are starting to become a common sight along the edges of Dominion space."],
             [Attribute.Daring, Attribute.Insight, Attribute.Reason],
             "Rakhari",
             "The Rakhari live under a strict set of laws known as the Canon. These laws were put in place over a century ago to insure strict obedience to the state but in recent years the control of the Rakhari government has lessened, allowing many Rakhari to begin to think for themselves. Though some still carry themselves in a rough and cautious manner, a growing portion of the population is starting to dream of a different kind of life and demonstrations are becoming more common as these firebrands seek to exact change upon their society. The Rakhari are primarily driven by their families, and whether it is their biological families or adopted ones they will do anything to insure the safety and survival of the group. ",
@@ -843,10 +891,11 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Nicihil, Heldix" }
             ]),
         [Species.Skreeaa]: new SpeciesModel(
+            Species.Skreeaa,
             "Skreeaa",
             [Era.NextGeneration],
             [Source.GammaQuadrant],
-            "The Skreeaans are a people who have been oppressed for centuries and have been forced to suffer the inhumane indignity of exploitation and foreign rule. Conquered by the T-Rogorans, their culture was reduced to a servile state until the Dominion conquered the T-Rogorans in turn. Now the Skreeaans have scattered around the Gamma Quadrant with a few having managed to escape through the anomaly into the Alpha Quadrant. In exchange for a planet to colonize, several Skreeaans have brought their enduring work ethic and physical strength to help the Federation, with a few Skreeaans joining Starfleet. The Skreeaans are known for their tough, abrasive skin and their durable muscle tissue thanks to the higher than normal gravity of their former home world. Most Skreeaans are deeply religious and dream of finding Kentanna, a paradise world that the Skreeaans believe exists somewhere in the Galaxy and is a reward for their enduring untold hardships throughout their history. ",
+            ["The Skreeaans are a people who have been oppressed for centuries and have been forced to suffer the inhumane indignity of exploitation and foreign rule. Conquered by the T-Rogorans, their culture was reduced to a servile state until the Dominion conquered the T-Rogorans in turn. Now the Skreeaans have scattered around the Gamma Quadrant with a few having managed to escape through the anomaly into the Alpha Quadrant. In exchange for a planet to colonize, several Skreeaans have brought their enduring work ethic and physical strength to help the Federation, with a few Skreeaans joining Starfleet. The Skreeaans are known for their tough, abrasive skin and their durable muscle tissue thanks to the higher than normal gravity of their former home world. Most Skreeaans are deeply religious and dream of finding Kentanna, a paradise world that the Skreeaans believe exists somewhere in the Galaxy and is a reward for their enduring untold hardships throughout their history."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Presence],
             "Skreeaa",
             "A Skreeaan’s skin sheds routinely, causing them to leave behind skin flakes. Skreeaan females are also generally taller than males and it is not uncommon for a Skreeaan woman to have multiple husbands. Their language uses a unique syntax that takes time for some universal translators to develop a translation matrix.",
@@ -859,10 +908,11 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Kolden, Hartik" }
             ]),
         [Species.SonA]: new SpeciesModel(
+            Species.SonA,
             "Son'a",
             [Era.NextGeneration],
             [Source.GammaQuadrant],
-            "The Son’a are a new addition to the Dominion’s ranks of allies but important to their war in the Alpha Quadrant. The Son’a are unique in that they are an off-shoot of the Ba’ku, a race of beings hailing from a planet in the sector of space known as the Briar Patch. They are a race of conquerors who had subjugated several neighboring systems into their small but powerful empire, and they were not afraid to employ weaponry such as isolytic subspace weapons which were so deadly they tore holes in subspace to release devastating waves of energy. Their use of slave labor and illegal genetic tampering meant that the Federation could not initiate trade with them although a rogue Starfleet Admiral was caught offering the Son’a assistance with a plot to drain their homeworld of its metaphasic radiation. Although some Son’a returned to their homeworld to try to start over, a large number of their race refused to give up their wealth and territory and allied themselves with the Dominion during the war. Although they make up a small portion of the Dominion’s armed forces, the Son’a fight ravenously against the Federation because they see them as having ruined their chance at immortality. Some Son’a refuse to join in their race’s vendetta against the Federation, and instead travel as traders of illicit goods. ",
+            ["The Son’a are a new addition to the Dominion’s ranks of allies but important to their war in the Alpha Quadrant. The Son’a are unique in that they are an off-shoot of the Ba’ku, a race of beings hailing from a planet in the sector of space known as the Briar Patch. They are a race of conquerors who had subjugated several neighboring systems into their small but powerful empire, and they were not afraid to employ weaponry such as isolytic subspace weapons which were so deadly they tore holes in subspace to release devastating waves of energy. Their use of slave labor and illegal genetic tampering meant that the Federation could not initiate trade with them although a rogue Starfleet Admiral was caught offering the Son’a assistance with a plot to drain their homeworld of its metaphasic radiation. Although some Son’a returned to their homeworld to try to start over, a large number of their race refused to give up their wealth and territory and allied themselves with the Dominion during the war. Although they make up a small portion of the Dominion’s armed forces, the Son’a fight ravenously against the Federation because they see them as having ruined their chance at immortality. Some Son’a refuse to join in their race’s vendetta against the Federation, and instead travel as traders of illicit goods."],
             [Attribute.Control, Attribute.Daring, Attribute.Insight],
             "Son'a",
             "The Son’a were once similar to humans in appearance but centuries of exile from their homeworld has led them to experiment upon themselves to stay alive. Most Son’a must spend several hours each day undergoing beautification treatments and extensive genetic modifications in order to stay alive. Most Son’a can be described as possessing a stretched appearance to their faces, while others develop painful lesions along their body. Son’a children, who are almost never permitted to leave their homeworld, are similar in appearance to the Ba’ku but possess pale skin.",
@@ -875,10 +925,11 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Wy'nalido, Vesh" }
             ]),
         [Species.Tosk]: new SpeciesModel(
+            Species.Tosk,
             "Tosk",
             [Era.NextGeneration],
             [Source.GammaQuadrant],
-            "The Tosk are a created race where their genome was meticulously screened, developed, and created by the race known as the Drai. Tosk are created with one purpose in mind: to serve as prey for the Drai’s Hunts. The Drai consider the Hunt to be the most important task they can ever dedicate themselves to but as a race they bored themselves on stalking lesser forms of life. This led to the creation of the Tosk, a reptilian survivor that is born with all the knowledge they need to provide a meaningful Hunt for the Hunters. They only need 17 minutes of sleep per day and their bodies can survive off simple protein chains for weeks if need be. Although the Drai like to insure that every Tosk is tracked down and captured it is not unheard of for a Tosk to go rogue from the Hunt and seek shelter among the Hunters’ enemies. These Tosk are considered outcasts among their own kind, and the Drai will do anything to bring these rogue creatures back to their homeworld where they can suffer the most horrible death of all: being kept alive, on display for the masses in a zoo where their shame is plain for all to see. The Tosk who do go rogue value their freedom too much to accept this fate willingly and will do anything to remain free. ",
+            ["The Tosk are a created race where their genome was meticulously screened, developed, and created by the race known as the Drai. Tosk are created with one purpose in mind: to serve as prey for the Drai’s Hunts. The Drai consider the Hunt to be the most important task they can ever dedicate themselves to but as a race they bored themselves on stalking lesser forms of life. This led to the creation of the Tosk, a reptilian survivor that is born with all the knowledge they need to provide a meaningful Hunt for the Hunters. They only need 17 minutes of sleep per day and their bodies can survive off simple protein chains for weeks if need be. Although the Drai like to insure that every Tosk is tracked down and captured it is not unheard of for a Tosk to go rogue from the Hunt and seek shelter among the Hunters’ enemies. These Tosk are considered outcasts among their own kind, and the Drai will do anything to bring these rogue creatures back to their homeworld where they can suffer the most horrible death of all: being kept alive, on display for the masses in a zoo where their shame is plain for all to see. The Tosk who do go rogue value their freedom too much to accept this fate willingly and will do anything to remain free."],
             [Attribute.Control, Attribute.Daring, Attribute.Fitness],
             "Tosk",
             "The Tosk are almost completely identical as their genome is often replicated from the same source material. Although some might differ due to the preferences of a Hunter’s requests, each Tosk is strong, resourceful, and cunning. When a Tosk enters a room they instinctively size up the many ways to escape as well as anything that could help them in a fight. Though the Tosk are often peaceful and do not wish to inflict harm on others, they have inborn feral instincts that allow them to fight ferociously when the need calls for it. A Tosk is often issued a simple suit that helps their memetic abilities as well as providing storage compartments for the protein mixes they are issued as a food supply. If a Tosk holds still, they can initiate their Shroud in the same manner as a Jem’Hadar soldier. ",
@@ -887,10 +938,11 @@ class _Species {
             "Tosk possess no gender and often refer to themselves by their species name. Some rogues have been known to take on names that exemplify their physical skills, such as Cunning One or Everfree.",
             []),
         [Species.Wadi]: new SpeciesModel(
+            Species.Wadi,
             "Wadi",
             [Era.NextGeneration],
             [Source.GammaQuadrant],
-            "The first species to formally introduce itself to the Alpha Quadrant and begin trade negotiations, the Wadi are a people obsessed with life and on mastering the many games it offers. They are a whimsical people, prone to bouts of rhyming and singing while at the same time demonstrating their technological superiority and intellectual mastery of multiple disciplines. Though they have yet to be absorbed by the Dominion, they are not considered a threat to its expansion, as they prefer to spend their days mastering pursuits that bring them pleasure then any kind of formal military endeavors. That does not mean they are not a significant power in the Gamma Quadrant, as their ships possess the ability to manipulate matter, covertly transport subjects without being detected, and develop complex holographic fields. Despite their achievements, they are viewed with distrust by other species who view their flighty and esoteric ways as a method of hiding their ruthlessly competitive intentions. ",
+            ["The first species to formally introduce itself to the Alpha Quadrant and begin trade negotiations, the Wadi are a people obsessed with life and on mastering the many games it offers. They are a whimsical people, prone to bouts of rhyming and singing while at the same time demonstrating their technological superiority and intellectual mastery of multiple disciplines. Though they have yet to be absorbed by the Dominion, they are not considered a threat to its expansion, as they prefer to spend their days mastering pursuits that bring them pleasure then any kind of formal military endeavors. That does not mean they are not a significant power in the Gamma Quadrant, as their ships possess the ability to manipulate matter, covertly transport subjects without being detected, and develop complex holographic fields. Despite their achievements, they are viewed with distrust by other species who view their flighty and esoteric ways as a method of hiding their ruthlessly competitive intentions."],
             [Attribute.Fitness, Attribute.Insight, Attribute.Presence],
             "Wadi",
             "The Wadi are mysterious, but at the same time very outgoing as a species. Prone to wearing bright colors and brilliant tattoos on their bodies, they attract attention but are experts at deflecting any real scrutiny. The Wadi are also competitive and when they feel they have been cheated, they must avenge their honor not only by crushing their opponents at whatever game or task they are at but they must teach them a lesson. Their obsession with the game of Allamaraine is used to teach both the innocent and the guilty of what it is like to cross a Wadi. ",
@@ -903,10 +955,11 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Kalyn, Peven" }
             ]),
         [Species.Ankari]: new SpeciesModel(
+            Species.Ankari,
             "Ankari",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.DeltaQuadrant],
-            "The Ankari are a reptilian-humanoid species native to the Delta Quadrant. While warp capable, they prefer to use a form of FTL drive, believed to phase their craft into a parallel realm – similar to, but distinct from, subspace. This realm is also home to a unique nucleogenic lifeform, whose bodies contain significant amounts of nucleogenic energy. Much like traditional subspace/warp-based civilizations, most forms of Ankari technology interface with this nucleogenic realm. As this technology is so rare, few species can accurately detect or track Ankari vessels. Despite this strategic advantage, the Ankari are not a warlike people. Their relationship with the interdimensional beings, whom the Ankari consider heralds of good fortune, has created a unique cultural dynamic. While technologically and scientifically advanced, the Ankari are traditionally a deeply spiritual people and the interdimensional beings factor heavily in that belief system. The Ankari are welcoming of strangers and are open to trade, often celebrating the conclusion of successful endeavors with a summoning to bid their new allies good fortune.",
+            ["The Ankari are a reptilian-humanoid species native to the Delta Quadrant. While warp capable, they prefer to use a form of FTL drive, believed to phase their craft into a parallel realm – similar to, but distinct from, subspace. This realm is also home to a unique nucleogenic lifeform, whose bodies contain significant amounts of nucleogenic energy. Much like traditional subspace/warp-based civilizations, most forms of Ankari technology interface with this nucleogenic realm. As this technology is so rare, few species can accurately detect or track Ankari vessels. Despite this strategic advantage, the Ankari are not a warlike people. Their relationship with the interdimensional beings, whom the Ankari consider heralds of good fortune, has created a unique cultural dynamic. While technologically and scientifically advanced, the Ankari are traditionally a deeply spiritual people and the interdimensional beings factor heavily in that belief system. The Ankari are welcoming of strangers and are open to trade, often celebrating the conclusion of successful endeavors with a summoning to bid their new allies good fortune."],
             [Attribute.Fitness, Attribute.Insight, Attribute.Presence],
             "Ankari",
             "Ankari are reptilian humanoids and possess many of the biological attributes common to those species. Their skin is coarse and thick, with light to dark brown coloring. Like most reptilian species, the Ankari do not possess body hair – though they do have soft spines that run along the back of their skulls. These, along with their brows, provide the Ankari with the ability to detect faint vibrations and act as a form of sixth sense. Their native, harmonic language likely developed due to this additional sense.",
@@ -920,10 +973,11 @@ class _Species {
                 { type: "Ancestor", suggestions: "Ohnyt, Amkut, Efna, Ursuk, Ahzur, Etol, Ofmat, Skaa, Ratka, Vulin" }
             ]),
         [Species.Jye]: new SpeciesModel(
+            Species.Jye,
             "Jye",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.DeltaQuadrant],
-            "Across numerous sectors, the Jye are renowned for their superb administrative and organizational abilities – which they offer to other cultures for a price. Jye can be found throughout the quadrant, usually under the employ of a host species, struggling with some problem that is beyond their ability or desire to address. The Jye believe this to be the greatest export their species has to offer, and take great strides to ensure that any circumstance they’ve been retained on results in a satisfactory outcome for their employers. The Jye believe that they have a sworn duty to uphold the contracts they have been assigned to, and will work tirelessly to ensure that these business arrangements are properly governed and result in successful outcomes to the satisfaction of the employing government or culture. For the most part, the Jye are an unremarkable humanoid species, with pale skin sporting lavender spots and little to no facial hair. Due to their role as administrators and organizers, the Jye are not often exposed to manual labor or exercise.",
+            ["Across numerous sectors, the Jye are renowned for their superb administrative and organizational abilities – which they offer to other cultures for a price. Jye can be found throughout the quadrant, usually under the employ of a host species, struggling with some problem that is beyond their ability or desire to address. The Jye believe this to be the greatest export their species has to offer, and take great strides to ensure that any circumstance they’ve been retained on results in a satisfactory outcome for their employers. The Jye believe that they have a sworn duty to uphold the contracts they have been assigned to, and will work tirelessly to ensure that these business arrangements are properly governed and result in successful outcomes to the satisfaction of the employing government or culture. For the most part, the Jye are an unremarkable humanoid species, with pale skin sporting lavender spots and little to no facial hair. Due to their role as administrators and organizers, the Jye are not often exposed to manual labor or exercise."],
             [Attribute.Control, Attribute.Presence, Attribute.Reason],
             "Jye",
             "The Jye have developed a reputation for effective administration and coordination of large projects and organizations. Most are trained in this area of expertise professionally, and while Jye are capable of physical feats similar to those of Humans, they are not known for their physical attributes. Jye originate from a frigid Class-M planet at the very far edge of its star’s habitable zone. It is a world of dim solar light and cold, relentless winters, and the Jye have evolved with a resistance to the cold. Conversely, the Jye struggle more than other humanoids in hot temperatures",
@@ -937,10 +991,11 @@ class _Species {
                 { type: "Family", suggestions: "Kales, Hormal, Terrek, Questel, Corele, Volel, Foralen, Murcosta, Nertal, Ballek" }
             ]),
         [Species.LiberatedBorg]: new SpeciesModel(
+            Species.LiberatedBorg,
             "Liberated Borg",
             [Era.NextGeneration],
             [Source.DeltaQuadrant, Source.Voyager],
-            "The true power of the Borg comes from the nearly infinite number of drones that have been assimilated into the collective, like slaves of ancient civilizations. Thousands upon thousands of species have been forcibly pressed into service, their individuality stripped away in the most horrific way imaginable. For centuries, these poor souls had no hope of escape, condemned to a life of servitude aboard Borg ships, installations, and planets. Worse, once fully brought into the hive mind, they would seek out and visit the same fate upon anyone and everyone unfortunate enough to cross their path. However, in recent decades, more drones have been separated from the collective – either intentionally or by some twist of fate. Once removed from the grip of the cacophony of voices speaking as one, the identity of these lucky few can begin to resurface, allowing them an opportunity to regain the life that was taken from them. Liberated Borg, as they have become known, are as different and distinct from each other as any other individual member of a species. Some want only to return to the simplicity of existence that the collective offers, and will work tirelessly to become one with the Borg again. Others, invigorated by their release, embrace life with exuberant abandon. Regardless of their response to their new-found freedom, all must contend with the difficulties that their new life brings: rehabilitation, reintegration, and reintroduction to life as a solitary individual.",
+            ["The true power of the Borg comes from the nearly infinite number of drones that have been assimilated into the collective, like slaves of ancient civilizations. Thousands upon thousands of species have been forcibly pressed into service, their individuality stripped away in the most horrific way imaginable. For centuries, these poor souls had no hope of escape, condemned to a life of servitude aboard Borg ships, installations, and planets. Worse, once fully brought into the hive mind, they would seek out and visit the same fate upon anyone and everyone unfortunate enough to cross their path. However, in recent decades, more drones have been separated from the collective – either intentionally or by some twist of fate. Once removed from the grip of the cacophony of voices speaking as one, the identity of these lucky few can begin to resurface, allowing them an opportunity to regain the life that was taken from them. Liberated Borg, as they have become known, are as different and distinct from each other as any other individual member of a species. Some want only to return to the simplicity of existence that the collective offers, and will work tirelessly to become one with the Borg again. Others, invigorated by their release, embrace life with exuberant abandon. Regardless of their response to their new-found freedom, all must contend with the difficulties that their new life brings: rehabilitation, reintegration, and reintroduction to life as a solitary individual."],
             [Attribute.Control, Attribute.Fitness, Attribute.Reason],
             "Liberated Borg",
             "As they come from many different species, Liberated Borg have little physically in common with each other, save for the remnants of their former lives. Each still retains at least some of the cybernetic implants so common to Borg drones, as not all the implants can be safely removed. The characteristics of their original species slowly begin to reassert their influence the longer the drone remains free of the collective. Borg are highly resistant to natural diseases and other ailments, but suffer a slight weakness to direct electrical shocks and exotic radiation. Those who still possess a significant number of Borg implants can even survive hard vacuum and other harsh environments, though they may still be susceptible to influence from the collective, and failing implants can be hazardous to a Liberated Borg’s health. In addition, while Liberated Borg do not sleep conventionally, they require routine access to a Borg regeneration alcove.",
@@ -949,10 +1004,11 @@ class _Species {
             "Borg drones do not possess names and instead are assigned designations which represent their numerical place within their assigned section. Due to the limitation of their connectivity outside of a vinculum or other supporting network, most drones are organized into groups of about six. Because adjunct drones can increase this number to ten or more, sections which include them have higher numbers. These designations are neutral to gender and are always given as “Number-of-Number.” Liberated Borg may choose to retain their Borg designations – often because they feel disassociated from their former cultures and identities – or try to reclaim the names and lives they used to live.",
             []),
         [Species.Lokirrim]: new SpeciesModel(
+            Species.Lokirrim,
             "Lokirrim",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.DeltaQuadrant],
-            "Few other species possess the technical acumen with holograms to match the Lokirrim. For centuries, they developed and utilized detailed holographic programs to perform countless tasks – effectively creating a taskspecific servitor race. As their holograms became increasing sophisticated, with ever evolving mental capacity, it was inevitable that a conflict would erupt. And so it did. For decades, the Lokirrim have been engaged in an ongoing civil war against their creations. The photonic insurgency has been devastating for the Lokirrim, which have become totally dependent on their creations to perform the numerous hazardous or menial tasks necessary for modern life. Unfortunately, Lokirrim photonics were not satisfied with escaping their circumstances. The insurgency has struck at Lokirrim society, using everything from civil disobedience to terror attacks to attempt to force the liberation of all photonics. The rebellion has left most Lokirrim resentful of photonic life, as they have watched their society teeter on the brink of disaster and seen many loved ones lost to the attacks carried out by their former servants. Many willingly joined the Lokirrim naval forces to track down and destroy not only those holograms that originated on Lokirr, but any independent holograms, as the Lokirrim view them as a danger to all organic life.",
+            ["Few other species possess the technical acumen with holograms to match the Lokirrim. For centuries, they developed and utilized detailed holographic programs to perform countless tasks – effectively creating a taskspecific servitor race. As their holograms became increasing sophisticated, with ever evolving mental capacity, it was inevitable that a conflict would erupt. And so it did. For decades, the Lokirrim have been engaged in an ongoing civil war against their creations. The photonic insurgency has been devastating for the Lokirrim, which have become totally dependent on their creations to perform the numerous hazardous or menial tasks necessary for modern life. Unfortunately, Lokirrim photonics were not satisfied with escaping their circumstances. The insurgency has struck at Lokirrim society, using everything from civil disobedience to terror attacks to attempt to force the liberation of all photonics. The rebellion has left most Lokirrim resentful of photonic life, as they have watched their society teeter on the brink of disaster and seen many loved ones lost to the attacks carried out by their former servants. Many willingly joined the Lokirrim naval forces to track down and destroy not only those holograms that originated on Lokirr, but any independent holograms, as the Lokirrim view them as a danger to all organic life."],
             [Attribute.Daring, Attribute.Insight, Attribute.Reason],
             "Lokirrim",
             "Lokirrim are strikingly similar to Humans, save for the signature “v” shape ridge that runs from the bridge of their nose up toward their hairline. Their world is a temperate one, with mild seasons and fair weather. Unfortunately, it is also lacking in natural resources – which forced the Lokirrim to mine deep into the planet’s crust and eventually reach out into their solar system. While they may have used holograms to perform most manual labor, the Lokirrim retained their physical stature and endurance. Most Lokirrim have a deep distrust or outright aggressive response to holograms.",
@@ -965,10 +1021,11 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Ramden, Nadir, Banlin, Anitel, Orlena, Karin, Cordel" },
             ]),
         [Species.Mari]: new SpeciesModel(
+            Species.Mari,
             "Mari",
             [Era.NextGeneration],
             [Source.DeltaQuadrant],
-            "The Mari are a telepathic species that have only recently begun to explore the stars. While they are now known for being pacifists, the Mari were plagued by violent crime up until a few short decades ago. At that time, the Mari outlawed violent thought and introduced a procedural technique that allowed them to extract aggressive thoughts from their minds. This resulted in a drastic reduction in crime and now the Mari enjoy an almost crime-free society. Unfortunately, this technique is not always successful – and when it fails, they employ a much more invasive medical procedure that restructures the neural pathways in the brain. While many may consider this kind of “thought policing” to be a violation of basic sentient rights, the Mari believe that it is necessary to ensure the peaceful existence of their species. While welcoming to visitors, the Mari enforce their system of justice on outsiders as well as natives when such visitations result in impacts to the local populace. Aggressive species such as Klingons are likely to come into immediate conflict with the Mari who, despite their pacifistic nature, will respond if provoked.",
+            ["The Mari are a telepathic species that have only recently begun to explore the stars. While they are now known for being pacifists, the Mari were plagued by violent crime up until a few short decades ago. At that time, the Mari outlawed violent thought and introduced a procedural technique that allowed them to extract aggressive thoughts from their minds. This resulted in a drastic reduction in crime and now the Mari enjoy an almost crime-free society. Unfortunately, this technique is not always successful – and when it fails, they employ a much more invasive medical procedure that restructures the neural pathways in the brain. While many may consider this kind of “thought policing” to be a violation of basic sentient rights, the Mari believe that it is necessary to ensure the peaceful existence of their species. While welcoming to visitors, the Mari enforce their system of justice on outsiders as well as natives when such visitations result in impacts to the local populace. Aggressive species such as Klingons are likely to come into immediate conflict with the Mari who, despite their pacifistic nature, will respond if provoked."],
             [Attribute.Control, Attribute.Insight, Attribute.Presence],
             "Mari",
             "Mari are a gentle, telepathic species, who uphold a state of mental pacifism through the use of memory purging – not dissimilar to Vulcan mental conditioning. Physically they are nearly indistinguishable from Humans and possess similar physical characteristics. Their technological level is a century or more behind the Federation, though their medical techniques, especially those relating to the adjustment of thought patterns, is significantly advanced. The Mari homeworld is pleasantly temperate and, given their warm nature, could easily be a vacation spot in the quadrant – were it not for their justice system. While rare, it is not unheard of to encounter Mari off-world, though this is usually as a passenger on another species’ ship.",
@@ -981,10 +1038,11 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Tonane, Norme, Ande, Sana, Nalde, Kline" },
             ]),
         [Species.Monean]: new SpeciesModel(
+            Species.Monean,
             "Monean",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.DeltaQuadrant],
-            "Having lost their original homeworld, the Moneans were a nomadic people for generations. Centuries ago, however, they discovered a unique planetary body, an artificial world composed entirely of water. Upon this world, the Moneans settled and built an entire civilization in the shallow region near the planet’s surface. While they have created this underwater realm, most Moneans continue to live aboard their starships and only occasionally venture into the depths of their new home. Exploration of the Waters, the name the Moneans have given their adopted world, has been hampered by the crushing depths of the ocean. The Moneans only have the barest of understanding of the origin of this unique planetoid. Monean government reflects their aquatic origin, having been named the Maritime Supremacy. They maintain a reasonably powerful fleet of starships, though despite this, the Moneans have not ventured beyond more than a few hundred light-years. Ancient navigational charts have long since become outdated, and the Monean origin world has long since faded into myth.",
+            ["Having lost their original homeworld, the Moneans were a nomadic people for generations. Centuries ago, however, they discovered a unique planetary body, an artificial world composed entirely of water. Upon this world, the Moneans settled and built an entire civilization in the shallow region near the planet’s surface. While they have created this underwater realm, most Moneans continue to live aboard their starships and only occasionally venture into the depths of their new home. Exploration of the Waters, the name the Moneans have given their adopted world, has been hampered by the crushing depths of the ocean. The Moneans only have the barest of understanding of the origin of this unique planetoid. Monean government reflects their aquatic origin, having been named the Maritime Supremacy. They maintain a reasonably powerful fleet of starships, though despite this, the Moneans have not ventured beyond more than a few hundred light-years. Ancient navigational charts have long since become outdated, and the Monean origin world has long since faded into myth."],
             [Attribute.Control, Attribute.Fitness, Attribute.Reason],
             "Monean",
             "As their new world suggests, the Moneans likely evolved from an amphibioid-mammalian or other similar aquatic species. This theory is supported by their physical appearance. Monean skin coloration and markings all reflect an aquatic origin. As such, Moneans are capable swimmers and can hold their breath for an extended period. Despite this, however, Moneans require an atmosphere similar to Humans and are an air-breathing species.",
@@ -998,10 +1056,11 @@ class _Species {
                 { type: "Family", suggestions: "Zulohu, Bahaho, Mowel, Ahlog, Unajal, Elgoha, Omol, Malom" }
             ]),
         [Species.Ocampa]: new SpeciesModel(
+            Species.Ocampa,
             "Ocampa",
             [Era.NextGeneration],
             [Source.DeltaQuadrant],
-            "An oddity for humanoid species, the Ocampa are an extremely short-lived people whose lifespan rarely exceeds a decade. For nearly all of Ocampan history, they have been under the protective watch of the Caretaker – a member of an extremely powerful extra-galactic civilization. At some point in the distant past, the Caretaker was responsible for rendering the Ocampan homeworld nearly uninhabitable. To attempt to atone for this act, the Caretaker then spent the following centuries ensuring the Ocampan people had everything they could need. This relationship continued until the Caretaker’s death – and as a final act, the powerful being provided the Ocampans with sufficient energy reserves to hold out for another half decade at best. While, physically, they are nearly identical to Humans, Ocampan physiology is radically different. The Ocampa only live to be roughly ten standard years old – though this can be extended significantly through advanced medical technologies. Much like insects, Ocampa development proceeds through a series of stages – alternating periods of stability and rapid aging. New-born Ocampans remain in a childlike stage for a brief year before rapidly aging and growing into pseudo-adulthood. Following this, they remain in this stage for another few years before reaching sexual maturity, a stage that lasts only a few months before fading. After this, Ocampans gradually continue to age through their adulthood before undergoing one final rapid development stage that marks their twilight. Once this occurs, Ocampa can expect to live for no more than a year or two before expiring.",
+            ["An oddity for humanoid species, the Ocampa are an extremely short-lived people whose lifespan rarely exceeds a decade. For nearly all of Ocampan history, they have been under the protective watch of the Caretaker – a member of an extremely powerful extra-galactic civilization. At some point in the distant past, the Caretaker was responsible for rendering the Ocampan homeworld nearly uninhabitable. To attempt to atone for this act, the Caretaker then spent the following centuries ensuring the Ocampan people had everything they could need. This relationship continued until the Caretaker’s death – and as a final act, the powerful being provided the Ocampans with sufficient energy reserves to hold out for another half decade at best. While, physically, they are nearly identical to Humans, Ocampan physiology is radically different. The Ocampa only live to be roughly ten standard years old – though this can be extended significantly through advanced medical technologies. Much like insects, Ocampa development proceeds through a series of stages – alternating periods of stability and rapid aging. New-born Ocampans remain in a childlike stage for a brief year before rapidly aging and growing into pseudo-adulthood. Following this, they remain in this stage for another few years before reaching sexual maturity, a stage that lasts only a few months before fading. After this, Ocampans gradually continue to age through their adulthood before undergoing one final rapid development stage that marks their twilight. Once this occurs, Ocampa can expect to live for no more than a year or two before expiring."],
             [Attribute.Control, Attribute.Insight, Attribute.Presence],
             "Ocampa",
             "Ocampa are an interesting and unique humanoid species. Their development is more closely akin to that of insects than to Humans. Long-time support, provided by the enigmatic Caretaker, has left the species in somewhat of a socially stunted state, and their society has since become entirely dependent upon the services the Caretaker provided. When separated from this welfare state, Ocampa are curious and studious learners – voraciously devouring information with incredible speed.Further still, they are capable of truly astounding psychic feats.",
@@ -1014,10 +1073,11 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Kelis, Das, Terel, Kalen, Talas, Fergas, Voralis, Retis, Nodas, Jonarel" }
             ]),
         [Species.Pendari]: new SpeciesModel(
+            Species.Pendari,
             "Pendari",
             [Era.NextGeneration],
             [Source.DeltaQuadrant],
-            "When the crowd roars in anticipation of the next Tsunkatse match, they are usually roaring for a Pendari. Members of this species have remained the champions of this interplanetary competition due to their physical size and tenacity. The Pendari see this as a political and propaganda victory, and it propels their homeworld into a position of prominence. Pendari fighters are known for their immense physical stature and equally ill-tempered demeanor. This makes them incredibly effective combatants. Politically, the Pendari represent a minor power in their region of space, though they maintain excellent relations with many of the neighboring systems. These cultural alliances ensure that the Pendari have known extended periods of peace, and their feared warriors test themselves in the arena instead of the battlefield. While masculine Pendari are often the vision that others think of when picturing this species, other genders are equally effective in combat, though those with smaller statures focus more toward agility and finesse over raw physical power.",
+            ["When the crowd roars in anticipation of the next Tsunkatse match, they are usually roaring for a Pendari. Members of this species have remained the champions of this interplanetary competition due to their physical size and tenacity. The Pendari see this as a political and propaganda victory, and it propels their homeworld into a position of prominence. Pendari fighters are known for their immense physical stature and equally ill-tempered demeanor. This makes them incredibly effective combatants. Politically, the Pendari represent a minor power in their region of space, though they maintain excellent relations with many of the neighboring systems. These cultural alliances ensure that the Pendari have known extended periods of peace, and their feared warriors test themselves in the arena instead of the battlefield. While masculine Pendari are often the vision that others think of when picturing this species, other genders are equally effective in combat, though those with smaller statures focus more toward agility and finesse over raw physical power."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Presence],
             "Pendari",
             "By their outward appearance, Pendari look to be a species of near-Humans – with hair and skin tones similar to those of Humans and other similar humanoids. They do possess strong bone and cartilage growth along the bridge of the nose and on their brows up to their hair line. The likeness, however, ends there. Physiologically, Pendari are significantly more robust, and possess redundant pulmonary and neurological systems that allow them to withstand tremendous physical punishment. This, combined with a nearly genetic predisposition to aggressive behavior, makes them natural born warriors.",
@@ -1031,10 +1091,11 @@ class _Species {
                 { type: "Clan", suggestions: " Manu, Driras, Rettab, Chanom, Gridou, Nefic, Phinso, Menbe, Biusk" }
             ]),
         [Species.Sikarian]: new SpeciesModel(
+            Species.Sikarian,
             "Sikarian",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.DeltaQuadrant],
-            "One of the oldest and most technologically advanced species in the Delta Quadrant, the Sikarians have enjoyed hundreds of years of peace and prosperity. Warm and welcoming, the Sikarians are renowned through the region as one of the most hospitable civilizations, and deeply enjoy guests and visitors to their world. Despite their advanced capabilities, the Sikarians do not claim a large domain and instead can be found on a handful of colonies outside of their homeworld. While they maintain a small, yet powerful, fleet, they primarily rely on their advanced transporter technology, called a trajectory, to travel between destinations. Similar to the Federation, the Sikarians maintain strict rules regarding the sharing of technology and non-interference with other cultures. While this has served to cause some amount of friction between the Sikarians and their neighbors, technology like the spatial trajector relies exclusively on the unique characteristics of their homeworld and simply will not function elsewhere. Despite this, the Sikarians are a generous people, and will openly provide aid to those in need – so long as such aid remains within the provisions of the Sikarian Canon – the name given to Sikarian law.",
+            ["One of the oldest and most technologically advanced species in the Delta Quadrant, the Sikarians have enjoyed hundreds of years of peace and prosperity. Warm and welcoming, the Sikarians are renowned through the region as one of the most hospitable civilizations, and deeply enjoy guests and visitors to their world. Despite their advanced capabilities, the Sikarians do not claim a large domain and instead can be found on a handful of colonies outside of their homeworld. While they maintain a small, yet powerful, fleet, they primarily rely on their advanced transporter technology, called a trajectory, to travel between destinations. Similar to the Federation, the Sikarians maintain strict rules regarding the sharing of technology and non-interference with other cultures. While this has served to cause some amount of friction between the Sikarians and their neighbors, technology like the spatial trajector relies exclusively on the unique characteristics of their homeworld and simply will not function elsewhere. Despite this, the Sikarians are a generous people, and will openly provide aid to those in need – so long as such aid remains within the provisions of the Sikarian Canon – the name given to Sikarian law."],
             [Attribute.Control, Attribute.Reason, Attribute.Presence],
             "Sikarian",
             "Physically, Sikarians are very similar to Humans and other near-Human species. They are of similar height and mass, with a similar range of skin tones and hair colors. Their utopian existence has nearly eliminated all forms of hard labor, and the Sikarians, by and large, enjoy lives of leisure. This can be seen in both their slight frames and their style of dress. Sikarians prefer loose, flowing robes and delicate wireframe headwear.",
@@ -1048,10 +1109,11 @@ class _Species {
                 { type: "Family", suggestions: "Otel, Labin, Solis, Tann, Almar, Miton, Moras, Goull, Mitlon, Donal" }
             ]),
         [Species.Talaxian]: new SpeciesModel(
+            Species.Talaxian,
             "Talaxian",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.DeltaQuadrant],
-            "Resilient and reliable, the Talaxians have become one of the most widely recognizable and dispersed species in the Delta Quadrant. Talaxians have been warp capable for millennia, and during this time they have encountered countless species and traveled to nearly all corners of the quadrant. Talaxians have a reputation for being sociable, good natured travelers who enjoy the company of others. Unlike other species that have been warp capable for such an extended time, Talaxians are not known for their technological capabilities – which can vary wildly from group to group. Like many species in the quadrant, Talaxians do not boast a significant military presence or large empire, though this may be due to the war between them and the Haakonian Order – a conflict that left both sides exhausted. Unfortunately, the war ended with the surrender of the Talaxian government following the detonation of a weapon of mass destruction on a Talaxian moon.",
+            ["Resilient and reliable, the Talaxians have become one of the most widely recognizable and dispersed species in the Delta Quadrant. Talaxians have been warp capable for millennia, and during this time they have encountered countless species and traveled to nearly all corners of the quadrant. Talaxians have a reputation for being sociable, good natured travelers who enjoy the company of others. Unlike other species that have been warp capable for such an extended time, Talaxians are not known for their technological capabilities – which can vary wildly from group to group. Like many species in the quadrant, Talaxians do not boast a significant military presence or large empire, though this may be due to the war between them and the Haakonian Order – a conflict that left both sides exhausted. Unfortunately, the war ended with the surrender of the Talaxian government following the detonation of a weapon of mass destruction on a Talaxian moon."],
             [Attribute.Control, Attribute.Presence, Attribute.Insight],
             "Talaxian",
             "While humanoid in most respects, Talaxians do have several interesting biological adaptations. First and foremost, Talaxians are capable of enduring heat well beyond what the average Human can comfortably tolerate and can go much longer without water. Talaxian skulls have much more pronounced ridges where the plates meet. Talaxian hair tends to be thin and wispy, and large portions of their heads are bald to allow for greater cooling. Talaxian sight is a touch less refined than that of a Human, though their senses of taste and smell are much keener.",
@@ -1064,10 +1126,11 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Xoma, Karixa, Palax, Graxe, Jonaxa, Mitxi, Adrinax" }
             ]),
         [Species.Turei]: new SpeciesModel(
+            Species.Turei,
             "Turei",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.DeltaQuadrant],
-            "Long ago, the Vaadwaur were the undisputed masters of their region of space. But like all great empires, eventually those that they had dominated rose up and overthrew them. The foremost member of the alliance that defeated the dreaded Vaadwaur was the Turei. The Turei lost no time in filling the vacuum left by the Vaadwaur, and while they would never become as powerful or as feared, the Turei laid claim to the vast network of subspace corridors that had given their ancestral enemies their strategic edge – Underspace. For nearly a thousand years, the Turei have controlled this important territory, using it in a similar way to the Vaadwaur, with perhaps less conquest. Today, the Turei are an insular culture and protect the Underspace, and therefore their livelihood, with aggressiveness and determination. Their control of Underspace has provided them with prosperity and military supremacy on all worlds that connect to it and they jealously guard it. Vessels which stumble into Underspace through anomalies or by navigational mishaps can expect to be intercepted almost immediately and have all records of Underspace purged from their computers.",
+            ["Long ago, the Vaadwaur were the undisputed masters of their region of space. But like all great empires, eventually those that they had dominated rose up and overthrew them. The foremost member of the alliance that defeated the dreaded Vaadwaur was the Turei. The Turei lost no time in filling the vacuum left by the Vaadwaur, and while they would never become as powerful or as feared, the Turei laid claim to the vast network of subspace corridors that had given their ancestral enemies their strategic edge – Underspace. For nearly a thousand years, the Turei have controlled this important territory, using it in a similar way to the Vaadwaur, with perhaps less conquest. Today, the Turei are an insular culture and protect the Underspace, and therefore their livelihood, with aggressiveness and determination. Their control of Underspace has provided them with prosperity and military supremacy on all worlds that connect to it and they jealously guard it. Vessels which stumble into Underspace through anomalies or by navigational mishaps can expect to be intercepted almost immediately and have all records of Underspace purged from their computers."],
             [Attribute.Control, Attribute.Daring, Attribute.Reason],
             "Turei",
             "The Turei are an ancient spacefaring species, once under the thrall of the Vaadwaur. The Turei are now the controlling power of the Underspace – a strange extradimensional realm. With their command of the Underspace, the Turei are powerful and feared. The Turei are a resilient species, both mentally and physically. Their skin is extremely thick and much of their body is covered with cartilage-like protrusions. Lacking a proper nose, the Turei instead possess the ability to “smell” the air through glands along their tongue, similar to a snake.",
@@ -1081,10 +1144,11 @@ class _Species {
                 { type: "Family", suggestions: "Turell, Buhese, Kiralur, Wanoti, Kotathi, Hailova, Jailance, Madmika" }
             ]),
         [Species.Zahl]: new SpeciesModel(
+            Species.Zahl,
             "Zahl",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.DeltaQuadrant],
-            "The Zahl are well known for their friendly and welcoming natures. Amongst the Zahl there is very little hardship, as their technology has transformed their world into a paradise. While technologically advanced, the Zahl are non-combative and have no interest in aggressive expansion – but they will defend their territory if threatened by an outside force. Once, the Zahl and the Krenim were engaged in a series of conflicts that left both sides militarily exhausted. In recent decades, however, these conflicts have become nothing more than simply border disputes that rarely erupt into open hostilities. Given their technological capabilities, want amongst their people has been effectively eliminated – similar to Earth. With no desire for personal gain, the Zahl are welcoming to any peaceful species and will provide whatever aid or support they can, so long as it does not embroil them in someone else’s war. Their good nature, however, quickly fades when threatened, either personally or culturally. In these cases, the Zahl prefer to threaten retaliation before actually engaging in armed aggression, in hopes that their opponent will withdraw before the situation becomes violent.",
+            ["The Zahl are well known for their friendly and welcoming natures. Amongst the Zahl there is very little hardship, as their technology has transformed their world into a paradise. While technologically advanced, the Zahl are non-combative and have no interest in aggressive expansion – but they will defend their territory if threatened by an outside force. Once, the Zahl and the Krenim were engaged in a series of conflicts that left both sides militarily exhausted. In recent decades, however, these conflicts have become nothing more than simply border disputes that rarely erupt into open hostilities. Given their technological capabilities, want amongst their people has been effectively eliminated – similar to Earth. With no desire for personal gain, the Zahl are welcoming to any peaceful species and will provide whatever aid or support they can, so long as it does not embroil them in someone else’s war. Their good nature, however, quickly fades when threatened, either personally or culturally. In these cases, the Zahl prefer to threaten retaliation before actually engaging in armed aggression, in hopes that their opponent will withdraw before the situation becomes violent."],
             [Attribute.Control, Attribute.Insight, Attribute.Presence],
             "Zahl",
             "The Zahl are advanced and enjoy the benefits of that technological capability. Having eliminated want throughout their territory, the Zahl are well known for their kind, welcoming nature and generosity. Before their world was climate regulated, the Zahl were no strangers to environmental extremes, and are capable of thriving in both extreme cold and heat. Their bodies are covered in dermal ridges that regulate their body temperature in a manner far superior to most species.",
@@ -1098,10 +1162,11 @@ class _Species {
                 { type: "Family", suggestions: "Wikan, Tigh, Temb, Sami, Mahid, Remue, Dregor, Nacul, Sedet, Dalin, Ketpor" }
             ]),
         [Species.Hologram]: new SpeciesModel(
+            Species.Hologram,
             "Hologram",
             [Era.NextGeneration],
             [Source.Voyager],
-            "Advances in holotechnology and computing in the 2370s allow for the creation of independent, virtually-intelligent holograms, far more sophisticated than the characters who populate holonovels and other recreations. Arguably, the first true example of this occurred accidentally in 2365, with the activation of a holographic James Moriarty, a simulation of a fictional character with a genuine emergent intellect. However, it took years before these advancements could be recreated deliberately. Doctor Lewis Zimmerman made the leaps that led to the creation of the Emergency Medical Hologram and its successors, the first widespread examples of this technology. Self-aware, independent holograms begin to become more common in both Starfleet and civilian contexts, though few of them seem to develop true individuality, and the matter of their legal personhood is hotly disputed in Federation courts.",
+            ["Advances in holotechnology and computing in the 2370s allow for the creation of independent, virtually-intelligent holograms, far more sophisticated than the characters who populate holonovels and other recreations. Arguably, the first true example of this occurred accidentally in 2365, with the activation of a holographic James Moriarty, a simulation of a fictional character with a genuine emergent intellect. However, it took years before these advancements could be recreated deliberately. Doctor Lewis Zimmerman made the leaps that led to the creation of the Emergency Medical Hologram and its successors, the first widespread examples of this technology. Self-aware, independent holograms begin to become more common in both Starfleet and civilian contexts, though few of them seem to develop true individuality, and the matter of their legal personhood is hotly disputed in Federation courts."],
             [Attribute.Control, Attribute.Daring, Attribute.Fitness, Attribute.Insight, Attribute.Presence, Attribute.Reason],
             "Hologram",
             "Holograms can be programmed to any specification, though the nature of their holomatrix means that they are essentially impervious to direct physical harm – they can allow energy and objects to pass through them at will. However, they are unable to go anywhere that lacks holographic emitters that can project their image and forcefields, and those emitters can be damaged even if the holograms themselves cannot. Holograms also tend not to receive much respect or consideration from flesh-and-blood people, who see them as tools at best or annoyances at worst. Holograms may also have a second species trait, reflecting the species they were designed to emulate.",
@@ -1110,10 +1175,11 @@ class _Species {
             "",
             []),
         [Species.KlingonQuchHa]: new SpeciesModel(
+            Species.KlingonQuchHa,
             "Klingon (QuchHa')",
             [Era.Enterprise, Era.OriginalSeries],
             [Source.KlingonCore],
-            "In 2154, a lethal, metagenic strain of the Levodian flu ran rampant through the Klingon Empire, infecting vast numbers of Klingons. Though a cure was eventually devised, the combination of the plague’s metagenic effects and the cure itself led to numerous physiological and genetic changes in those afflicted, most notably the dissolution of their cranial ridges and a number of neurological alterations, to a point where they somewhat resemble Humans, with these changes passed onto the descendants of those afflicted. These altered Klingons came to be known as QuchHa', \"the unhappy ones,\" for their seeming deformity, while those who escaped the plague's effects were commonly referred to as the HemQuch. Though still hardy and vigorous, the QuchHa’ tend to express the customary aggression of their culture as a ruthless cunning, and they are often regarded as less honorable and trustworthy. They join the armed forces and intelligence services in great numbers to prove their worth and gain glory as a result of this discrimination. By the early 2270s, almost all QuchHa’ had undergone corrective treatment to restore their Klingon physiology, and Klingons in later eras refuse to discuss the matter with outsiders.",
+            ["In 2154, a lethal, metagenic strain of the Levodian flu ran rampant through the Klingon Empire, infecting vast numbers of Klingons. Though a cure was eventually devised, the combination of the plague’s metagenic effects and the cure itself led to numerous physiological and genetic changes in those afflicted, most notably the dissolution of their cranial ridges and a number of neurological alterations, to a point where they somewhat resemble Humans, with these changes passed onto the descendants of those afflicted. These altered Klingons came to be known as QuchHa', \"the unhappy ones,\" for their seeming deformity, while those who escaped the plague's effects were commonly referred to as the HemQuch. Though still hardy and vigorous, the QuchHa’ tend to express the customary aggression of their culture as a ruthless cunning, and they are often regarded as less honorable and trustworthy. They join the armed forces and intelligence services in great numbers to prove their worth and gain glory as a result of this discrimination. By the early 2270s, almost all QuchHa’ had undergone corrective treatment to restore their Klingon physiology, and Klingons in later eras refuse to discuss the matter with outsiders."],
             [Attribute.Control, Attribute.Insight, Attribute.Presence],
             "Klingon and QuchHa'",
             "Those Klingons affected by this metagenic plague are frequently discriminated against or regarded as cowardly, shameful, or un-Klingon in nature, a stigma that they frequently strive to disprove, or which frees them to take actions that other Klingons may not regard as proper. Their altered genetics leave them less susceptible to a number of diseases and disorders that affect Klingons but allows them to contract a number of Human diseases that Klingons are normally immune to.",
@@ -1122,10 +1188,12 @@ class _Species {
             "",
             []),
         [Species.Akaru]: new SpeciesModel(
+            Species.Akaru,
             "Akaru",
             [Era.NextGeneration],
             [Source.ShackletonExpanse],
-            "A sentient humanoid species indigenous to the planet Setu within the Shackleton Expanse, the Akaru are relative newcomers in developing warp technology and are only just starting to explore nearby systems and the interior of the Expanse. They are a highly competent and curious species, and are eager to meet and trade with beings from other cultures and worlds. Their global leader and religious icon, Iryax Nedaon, actively encourages technological development oriented toward space travel and stellar exploration, and regional universities have increased the number of degree programs in related fields of study. \nWhile a population of 1.3 billion generally should not be described by one word, a common note through all Akaru society is that of efficiency. Their cities, vessels, farms, and processes are all designed toward maximizing resources, space, and personnel. That dedication to communal efficiency permeates Akaru relationships as well, sometimes to a given relationship’s potential detriment. If a family determines that the whole would be rendered more efficient by adding or removing specific individuals, adjustments are carried out, often with the assistance of trained counselors, in order to mitigate potential complications and ensure a successful and efficient family unit.",
+            ["A sentient humanoid species indigenous to the planet Setu within the Shackleton Expanse, the Akaru are relative newcomers in developing warp technology and are only just starting to explore nearby systems and the interior of the Expanse. They are a highly competent and curious species, and are eager to meet and trade with beings from other cultures and worlds. Their global leader and religious icon, Iryax Nedaon, actively encourages technological development oriented toward space travel and stellar exploration, and regional universities have increased the number of degree programs in related fields of study.", 
+            "While a population of 1.3 billion generally should not be described by one word, a common note through all Akaru society is that of efficiency. Their cities, vessels, farms, and processes are all designed toward maximizing resources, space, and personnel. That dedication to communal efficiency permeates Akaru relationships as well, sometimes to a given relationship’s potential detriment. If a family determines that the whole would be rendered more efficient by adding or removing specific individuals, adjustments are carried out, often with the assistance of trained counselors, in order to mitigate potential complications and ensure a successful and efficient family unit."],
             [Attribute.Control, Attribute.Fitness, Attribute.Presence],
             "Akaru",
             "The Akaru are a bipedal, mammalian species that resembles Romulans and Vulcans to some extent – possessing copper-based blood and slightly pointed ears – but as a whole have more widely-set eyes, more robust physical frames, and generational instances of digital fusion or vestigial webbing between fingers and toes. Their mindset is something of a blend of Romulan and Vulcan perspectives – Akaru are an enthusiastic and passionate species who embrace efficiency of thought and operation, with a keen focus on the betterment of all, be it the individual, the family, or the entire Akaru culture.",
@@ -1134,10 +1202,11 @@ class _Species {
             "Akaru tend to have a proper name and a secondary name that represents one of their parents or a beloved member of their extended family; the individual’s profession; or perhaps a location relevant to the individual, whether it is a specific continent, region, island, or city.",
             [{ type: "Sample Names", suggestions: "Curate Belar, Dajala of the Mallan Valley, Postulant Herikhet, Gravek ir’Loval, Mediator Ruia, First Engineer Wallea" }]),
         [Species.CalMirran]: new SpeciesModel(
+            Species.CalMirran,
             "Cal-Mirran",
             [Era.NextGeneration],
             [Source.ShackletonExpanse],
-            "A race of peacemakers birthed by lightning on an oceanic world, the Cal-Mirran people have evolved to seek balance in the midst of extremes. They are crystalline, water-based life-forms held together by a bio-electric charge, able to shift their state of matter at will. Cal-Mirrans are a deeply spiritual people who are known for analytical theorizing, meticulous ethics, and abstract art. While unity is a core value of Cal-Mirran society, a small minority choose to reside away from civilization in the planet’s harshest climes. This division, and the unrest it occasionally sows, tests the equity-focused civil system on which Cal-Mirrans pride themselves.",
+            ["A race of peacemakers birthed by lightning on an oceanic world, the Cal-Mirran people have evolved to seek balance in the midst of extremes. They are crystalline, water-based life-forms held together by a bio-electric charge, able to shift their state of matter at will. Cal-Mirrans are a deeply spiritual people who are known for analytical theorizing, meticulous ethics, and abstract art. While unity is a core value of Cal-Mirran society, a small minority choose to reside away from civilization in the planet’s harshest climes. This division, and the unrest it occasionally sows, tests the equity-focused civil system on which Cal-Mirrans pride themselves."],
             [Attribute.Control, Attribute.Fitness, Attribute.Reason],
             "Cal-Mirran",
             "Cal-Mirrans are graceful, adaptive, persistent, and highly analytical. They have strong logic skills and excel at long-term problem solving. Because their bodies can shift states, they can tolerate extremes – heat, cold, pressure, vacuum – but are sensitive to vibration and certain types of radiation, which can disrupt the cohesion of their consciousness. Since their physiology is crystalline, physical injuries (separation of body mass) reduce dexterity and speed.",
@@ -1146,10 +1215,12 @@ class _Species {
             "Cal-Mirran names tend to sound smooth and flowing, like water. Hyphens are often used to splice together imagery, as in Hal-yorith, meaning “coldest light.” Cal-Mirrans will typically adopt a color word surname corresponding to the hue of the sky they saw when they first awoke.",
             [{ type: "Sample Names", suggestions: "Alodon Ray (awoke at the Ray), Tin-darinel Red (awoke in the Twilight Band), Sorma-cue Prism (awoke under an aurora sky), Dal-tivoran Grey (awoke during a storm)" }]),
         [Species.Qofuari]: new SpeciesModel(
+            Species.Qofuari,
             "Qofuari",
             [Era.NextGeneration],
             [Source.ShackletonExpanse],
-            "These egalitarian people from the planet Lilafas are generally unassuming and content, happy to do whatever chores are necessary to support their modest tribal lifestyles while keeping ample time free to be alone in quiet philosophical reflection or to pursue recreational activities with family and friends. Many devote their free time to pure research, imagining technology far in advance of what they use in real life. This is not merely the wishful thinking of science fiction, however, but the detailed mental imaging, down to the tiniest detail, of fully realizable apparatuses; from tricorders to warp engines, they carry three-dimensional blueprints and schematics in their minds as easily as other species recall what they ate for breakfast. \nMembers of the Future Builders faction, most of whom are part of the younger generations of Qofuari, are more outgoing and wish to construct the high-tech devices not allowed by tradition. Once the Qofuari encounter the Federation, some Future Builders request leave from their homeworld to explore the Beta Quadrant and beyond.",
+            ["These egalitarian people from the planet Lilafas are generally unassuming and content, happy to do whatever chores are necessary to support their modest tribal lifestyles while keeping ample time free to be alone in quiet philosophical reflection or to pursue recreational activities with family and friends. Many devote their free time to pure research, imagining technology far in advance of what they use in real life. This is not merely the wishful thinking of science fiction, however, but the detailed mental imaging, down to the tiniest detail, of fully realizable apparatuses; from tricorders to warp engines, they carry three-dimensional blueprints and schematics in their minds as easily as other species recall what they ate for breakfast.", 
+            "Members of the Future Builders faction, most of whom are part of the younger generations of Qofuari, are more outgoing and wish to construct the high-tech devices not allowed by tradition. Once the Qofuari encounter the Federation, some Future Builders request leave from their homeworld to explore the Beta Quadrant and beyond."],
             [Attribute.Fitness, Attribute.Insight, Attribute.Reason],
             "Qufuari",
             "Qofuari tend to live in harmony with each other and their environment. They are natural swimmers and nimble climbers. Their mental capacity is huge, allowing them to think through complicated problems in their minds before taking action.",
@@ -1162,10 +1233,13 @@ class _Species {
                 { type: "Tribal Names", suggestions: "Green Isle, Quiet Sea, Broken Mountains" }
             ]),
         [Species.VinShari]: new SpeciesModel(
+            Species.VinShari,
             "VinShari",
             [Era.NextGeneration],
             [Source.ShackletonExpanse],
-            "The VinShari are the dominant humanoid species in their system within the Shackleton Expanse – and they are spreading out. Highly adaptable, utilizing the spaceborne Ha’kiv beings as an energy resource, the VinShari saved themselves from self-annihilation and went from their first space flight to warp speed in under a century. Organic technology is woven into every part of VinShari life as is their artistry and history. The VinShari have the capacity to be friendly or brutal, but everything they do is from a position of strength, and with an innate desire to dominate. \nThe Order of the Midajah-Ka believe in power through knowledge and information rather than brute force, and only resort to violence when necessary. \nMembers of the Ar-Ka-Se faction are unlike other VinShari: they believe harvesting Ha’kiv is morally wrong, and they actively resist the VinShari government. They also believe the VinShari mandate of dominance and power will ultimately lead to the destruction of their species. The Ar-Ka-Se see cooperation and peaceful coexistence as the only viable options in a growing galactic community.",
+            ["The VinShari are the dominant humanoid species in their system within the Shackleton Expanse – and they are spreading out. Highly adaptable, utilizing the spaceborne Ha’kiv beings as an energy resource, the VinShari saved themselves from self-annihilation and went from their first space flight to warp speed in under a century. Organic technology is woven into every part of VinShari life as is their artistry and history. The VinShari have the capacity to be friendly or brutal, but everything they do is from a position of strength, and with an innate desire to dominate.", 
+            "The Order of the Midajah-Ka believe in power through knowledge and information rather than brute force, and only resort to violence when necessary.", 
+            "Members of the Ar-Ka-Se faction are unlike other VinShari: they believe harvesting Ha’kiv is morally wrong, and they actively resist the VinShari government. They also believe the VinShari mandate of dominance and power will ultimately lead to the destruction of their species. The Ar-Ka-Se see cooperation and peaceful coexistence as the only viable options in a growing galactic community."],
             [Attribute.Control, Attribute.Presence, Attribute.Reason],
             "VinShari",
             "HuntedaspreyintheirearlyhistorycausedtheVinSharitobecomeevolutionary survivors. Psychologically, they learned to thrive and adapt in stressful situations. Physically, the VinShari have bone collars they use for self-defense. They are resistant to most forms of radiation, have a robust immune system, can see into various visual spectrums, and have perfect night vision. Traditional VinShari see the Galaxy through their evolutionary lens and believe they must dominate to survive. Other VinShari, like the Ar-Ka-Se, believe in equal coexistence.",
@@ -1177,10 +1251,14 @@ class _Species {
                 { type: "Sample Names", suggestions: "Jolias-Ar, Kameko-Ka, Ellian-Se" }
             ]),
         [Species.IQosa]: new SpeciesModel(
+            Species.IQosa,
             "I'Qosa",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.IdwYearFive],
-            "The I’Qosa are an aquatic species native to the planet I’Qos. They are humanoid but also possess some physical features reminiscent of Earth’s aquatic species. I’Qos is an oxygen-rich M-Class world with high humidity. The chemical makeup of its atmosphere renders communications and transporter technology ineffective. The crew of the U.S.S. Enterprise made first contact with the I’Qosa near the end of the Enterprise’s five-year exploratory mission under the command of Captain James T. Kirk. First contact unfolded when a Tholian web ensnared both the Enterprise and an I’Qosa ship, requiring the Enterprise crew to work with Ayal, the lone I’Qosa survivor, to escape.\n I’Qosa live in the seas of their home planet, and they share a deep, almost spiritual relationship with the waters, which grant the I’Qosa powerful healing abilities. I’Qosa society centers around the Crest, a living ecosystem at the bottom of the ocean that can be summoned as a powerful protector during times of peril. The concept of fluidity forms the cornerstone of I’Qosa culture. Individuals routinely change various aspects of their identities, including their genders and their roles in larger I’Qosa society. The idea of remaining a single gender for an entire lifetime puzzles I’Qosa, and their understanding of freedom revolves around their ability to change identities, or “flow” from one identity into another. \nNot all I’Qosa subscribe to this philosophy, however. Some believe fluidity causes disorder and leave the waters to live permanently on the dry land of I’Qos. These I’Qosa gradually lose their ability to change their identities, instead becoming “calcified” in a single state of being. These I’Qosa are called Lo’Kari. \nI’Qosa and Lo’Kari leaders have managed to share the planet in relative peace, but tensions between the two factions ignited into a crisis shortly after the Enterprise returned Ayal to their home planet. The Enterprise crew attempted to mediate negotiations between the two parties, but the talks descended into chaos. Open war broke out on I’Qos. The Lo’Kari unleashed war machines called sea burners in an attempt to dry out the I’Qosa. The I’Qosa retaliated by attacking with the full power of the Crest. The war raged on as the Enterprise was forced to leave orbit.",
+            ["The I’Qosa are an aquatic species native to the planet I’Qos. They are humanoid but also possess some physical features reminiscent of Earth’s aquatic species. I’Qos is an oxygen-rich M-Class world with high humidity. The chemical makeup of its atmosphere renders communications and transporter technology ineffective. The crew of the U.S.S. Enterprise made first contact with the I’Qosa near the end of the Enterprise’s five-year exploratory mission under the command of Captain James T. Kirk. First contact unfolded when a Tholian web ensnared both the Enterprise and an I’Qosa ship, requiring the Enterprise crew to work with Ayal, the lone I’Qosa survivor, to escape.", 
+            "I’Qosa live in the seas of their home planet, and they share a deep, almost spiritual relationship with the waters, which grant the I’Qosa powerful healing abilities. I’Qosa society centers around the Crest, a living ecosystem at the bottom of the ocean that can be summoned as a powerful protector during times of peril. The concept of fluidity forms the cornerstone of I’Qosa culture. Individuals routinely change various aspects of their identities, including their genders and their roles in larger I’Qosa society. The idea of remaining a single gender for an entire lifetime puzzles I’Qosa, and their understanding of freedom revolves around their ability to change identities, or “flow” from one identity into another.", 
+            "Not all I’Qosa subscribe to this philosophy, however. Some believe fluidity causes disorder and leave the waters to live permanently on the dry land of I’Qos. These I’Qosa gradually lose their ability to change their identities, instead becoming “calcified” in a single state of being. These I’Qosa are called Lo’Kari.", 
+            "I’Qosa and Lo’Kari leaders have managed to share the planet in relative peace, but tensions between the two factions ignited into a crisis shortly after the Enterprise returned Ayal to their home planet. The Enterprise crew attempted to mediate negotiations between the two parties, but the talks descended into chaos. Open war broke out on I’Qos. The Lo’Kari unleashed war machines called sea burners in an attempt to dry out the I’Qosa. The I’Qosa retaliated by attacking with the full power of the Crest. The war raged on as the Enterprise was forced to leave orbit."],
             [Attribute.Control, Attribute.Presence, Attribute.Reason],
             "I'Qosa",
             "I’Qosa are an aquatic species. They can spend limited amounts of time in dry environments, though they prefer to do so wearing specialized EV suits containing water. The I’Qosa embrace the concept of fluidity in all facets of their identities. They can change their name, gender, and – to some extent – their appearance at will. This ability depends on recent contact with the renewing waters of their homeworld. If an I’Qosa spends an extended period away from the waters of their homeworld, they take on the trait Calcified. This trait locks the character into their current identity and prevents them from flowing into new ones. The trait can be removed if a character returns to the waters of I’Qos in time, but the trait can become permanent if the character spends too long outside the water. The Lo’Kari are a faction of I’Qosa who choose to live permanently calcified on land.",
@@ -1189,10 +1267,14 @@ class _Species {
             "",
             [{ type: "Sample Names", suggestions: "Ayal, Balatera, Bryni, Talaha, Prizah, Phelina, Urchalar, Vorcani" }]),
         [Species.Iotian]: new SpeciesModel(
+            Species.Iotian,
             "Iotian",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.IdwYearFive],
-            "Iotians are a humanoid species native to the planet Sigma Iotia II. Their physical features resemble those of Humans in most respects. The starship Horizon made first contact with the Iotians in 2168. At that time, the Iotians were a pre-warp society, but they demonstrated great intelligence and a talent for imitation. The Horizon’s crew left behind a number of books, including a volume on the history of organized crime in Chicago. This book became a formative document for Iotian society. The Iotian people modeled their entire way of life on Chicago’s mobster underworld, and endless gang wars erupted across the planet. \nThe U.S.S. Enterprise visited Sigma Iotia II in 2268, and several members of the Enterprise crew became entangled in gangland plots and power plays. Dr. Leonard McCoy mistakenly left his communicator on the planet when the Enterprise departed the system, unleashing an entirely new wave of cultural contamination among the planet’s populace. \nThis time, the Iotians accessed data files contained in the communicator to learn about Federation and Earth history, and they reverse engineered the communicator’s transtator technology. These experiments allowed the Iotians to make enormous technological leaps. They began experiments with warp technology, though they achieved only limited success. The Iotians also remade their society yet again, this time using Earth’s representational democracies as their guide. Just as the Iotians did with mobster culture, they exaggerated certain key elements of Earth’s representational democracies. For instance, the Iotians held presidential elections every six weeks, leading to discontinuity and dysfunction in the planet’s governance. \nThe Iotians thought of the Enterprise crew as founding fathers of their democratic movement as a result of the Starfleet officers’ role in introducing these political concepts to Iotian society. Upon returning to Sigma Iotia II near the end of the Enterprise’s five-year mission, Spock decided to run for the Iotian presidency to defuse a sudden political crisis on the planet. Upon winning the election, Spock immediately abdicated the office after suggesting several reforms to stabilize the Iotian government.",
+            ["Iotians are a humanoid species native to the planet Sigma Iotia II. Their physical features resemble those of Humans in most respects. The starship Horizon made first contact with the Iotians in 2168. At that time, the Iotians were a pre-warp society, but they demonstrated great intelligence and a talent for imitation. The Horizon’s crew left behind a number of books, including a volume on the history of organized crime in Chicago. This book became a formative document for Iotian society. The Iotian people modeled their entire way of life on Chicago’s mobster underworld, and endless gang wars erupted across the planet.", 
+            "The U.S.S. Enterprise visited Sigma Iotia II in 2268, and several members of the Enterprise crew became entangled in gangland plots and power plays. Dr. Leonard McCoy mistakenly left his communicator on the planet when the Enterprise departed the system, unleashing an entirely new wave of cultural contamination among the planet’s populace.", 
+            "This time, the Iotians accessed data files contained in the communicator to learn about Federation and Earth history, and they reverse engineered the communicator’s transtator technology. These experiments allowed the Iotians to make enormous technological leaps. They began experiments with warp technology, though they achieved only limited success. The Iotians also remade their society yet again, this time using Earth’s representational democracies as their guide. Just as the Iotians did with mobster culture, they exaggerated certain key elements of Earth’s representational democracies. For instance, the Iotians held presidential elections every six weeks, leading to discontinuity and dysfunction in the planet’s governance.", 
+            "The Iotians thought of the Enterprise crew as founding fathers of their democratic movement as a result of the Starfleet officers’ role in introducing these political concepts to Iotian society. Upon returning to Sigma Iotia II near the end of the Enterprise’s five-year mission, Spock decided to run for the Iotian presidency to defuse a sudden political crisis on the planet. Upon winning the election, Spock immediately abdicated the office after suggesting several reforms to stabilize the Iotian government."],
             [Attribute.Control, Attribute.Insight, Attribute.Reason],
             "Iotian",
             "Sigma Iotians largely resemble Humans in appearance. They possess keen intellects and a natural proclivity for imitation.",
@@ -1201,10 +1283,12 @@ class _Species {
             "",
             [{ type: "Sample Names", suggestions: "Grak, Jamek, Krako, Marcon, Mose, Okmyx, Pocks, Tocsty, Vapel" }]),
         [Species.Tholian]: new SpeciesModel(
+            Species.Tholian,
             "Tholian",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.IdwYearFive],
-            "Tholians are a nonhumanoid, crystalline-based species with six thin legs and a dome-like head atop the torso. Tholians evolved in a high-temperature, methane-rich atmosphere and their life-support requirements differ widely from those of most humanoid species. Accordingly, Tholian characters must wear protective EV suits if they intend to spend lengthy periods of time on a Federation starship or space station. Exposure to cooler environments causes their exoskeletons to crack and eventually shatter. Their language, composed of high-frequency chirps and squeals, can render the Universal Translator unreliable. Tholians possess a high level of technology, and their use of Tholian webs, or high-energy nets that can entrap vessels, are formidable weapons. \nThe Tholians played a central role in Aegis’s plot to plunge the Galaxy into permanent stasis in order to prevent further expansion of the United Federation of Planets. The crew of the U.S.S. Enterprise rescued a Tholian child from the rubble of an abandoned outpost on the planet Lloyd Zeta- 9, setting off a volatile diplomatic crisis.",
+            ["Tholians are a nonhumanoid, crystalline-based species with six thin legs and a dome-like head atop the torso. Tholians evolved in a high-temperature, methane-rich atmosphere and their life-support requirements differ widely from those of most humanoid species. Accordingly, Tholian characters must wear protective EV suits if they intend to spend lengthy periods of time on a Federation starship or space station. Exposure to cooler environments causes their exoskeletons to crack and eventually shatter. Their language, composed of high-frequency chirps and squeals, can render the Universal Translator unreliable. Tholians possess a high level of technology, and their use of Tholian webs, or high-energy nets that can entrap vessels, are formidable weapons.", 
+            "The Tholians played a central role in Aegis’s plot to plunge the Galaxy into permanent stasis in order to prevent further expansion of the United Federation of Planets. The crew of the U.S.S. Enterprise rescued a Tholian child from the rubble of an abandoned outpost on the planet Lloyd Zeta- 9, setting off a volatile diplomatic crisis."],
             [Attribute.Control, Attribute.Daring, Attribute.Fitness],
             "Tholian",
             "Tholians possess crystalline exoskeletons that grant them 2 resistance and allow them to withstand vacuum for extended, though not unlimited, periods of time. Tholian exoskeletons also transmit radiation that can be modulated, or sensed, by other Tholians. This can act as a form of communication, similar to telepathy, though the full extent of this ability varies by individual.",
@@ -1212,6 +1296,21 @@ class _Species {
             [TalentsHelper.getTalent("Crystalline Telepathy"), TalentsHelper.getTalent("Immune to Vacuum"), TalentsHelper.getTalent("Radiation Burst")],
             "Tholian names are usually unpronounceable by non-Tholians.",
             []),
+        [Species.Kelpian]: new SpeciesModel(
+            Species.Kelpian,
+            "Kelpian",
+            [Era.OriginalSeries, Era.NextGeneration],
+            [Source.DiscoveryS1],
+            ["A sentient humanoid species indigenous to the planet Kaminar, Kelpiens live in an agrarian society. Elders are the leaders of the Kelpien culture, passing down knowledge and history through stories. One of these stories speaks of The Great Balance, a belief that by culling members of their species, the Kelpiens would have peace with the Ba’ul; a powerful species that would hunt their people to extinction if the Kaminar population got out of hand. This meant that when a Kelpien started going through their physiological change known as Vahar’ai, they would be brought in front of the All-Seeing Eye and culled, releasing them from the pain and threat of mental instability, as well as keeping the Great Balance in check.",
+            "Commander Saru discovered that the Vahar’ai was actually a natural physical change that made his people expert hunters. The culling and the Great Balance were both lies forced unto the Kelpiens by the Ba’ul. Eventually, the crew of U.S.S. Discovery helped the Kelpiens rise up against the Ba’ul and break free of the lies they had been told for generations."],
+            [Attribute.Control, Attribute.Fitness, Attribute.Insight],
+            "Kelpian",
+            "The Kelpiens are a bipedal species that are adapted to living on land and in the water. Kelpiens are able to run at considerable speeds for short bursts and can see into the ultraviolet and infrared spectrums of light. Pre-Vahar’ai / Post-Vahar’ai. When created, choose one of these two traits. If Pre-Vahar’ai is chosen, and your character ever experiences the changes that come with Vahar’ai, the trait is replaced by the Post-Vahar’ai trait.",
+            "",
+            [TalentsHelper.getTalent("Ganglia"), TalentsHelper.getTalent("On All Fours")],
+            "Kelpiens tend to have just a single name.",
+            [{ type: "Sample Names", suggestions: "Brinna, Dor’na, Kaladar, Lin’lev, Su’Vyn, Trialla, Tuvu, Vilara" }]),
+    
         //[Species.Romulan]: new SpeciesModel(
         //    "",
         //    [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
@@ -1227,7 +1326,7 @@ class _Species {
     };
 
     getSpecies() {
-        var species: SpeciesViewModel[] = [];
+        var species: SpeciesModel[] = [];
         for (var archetype in this._species) {
             var spec = this._species[archetype];
             let n = parseInt(archetype);
@@ -1236,7 +1335,7 @@ class _Species {
             const hasSource = context.hasAnySource(spec.sources) || (n === Species.LiberatedBorg && context.hasSource(Source.Voyager));
 
             if (hasEra && hasSource && !this.ignoreSpecies(n)) {
-                species.push(new SpeciesViewModel(n, spec));
+                species.push(spec);
             }
 
             n++;
@@ -1249,7 +1348,7 @@ class _Species {
 
     getPrimarySpecies(type: CharacterType) {
         if (type === CharacterType.KlingonWarrior) {
-            var species: SpeciesViewModel[] = [];
+            var species: SpeciesModel[] = [];
 
             var klingonSpecies = context.era === Era.NextGeneration ? [
                 Species.Klingon 
@@ -1262,7 +1361,7 @@ class _Species {
                 const hasSource = context.hasAnySource(spec.sources);
 
                 if (hasSource && !this.ignoreSpecies(archetype)) {
-                    species.push(new SpeciesViewModel(archetype, spec));
+                    species.push(spec);
                 }
             }
 
@@ -1277,7 +1376,7 @@ class _Species {
 
     getSpeciesByType(species: Species) {
         let model = this._species[species];
-        return model == null ? null : new SpeciesViewModel(species, model);
+        return model;
     }
 
     getSpeciesByName(name: string) {

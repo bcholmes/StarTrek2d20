@@ -2035,7 +2035,19 @@ export class Talents {
                 [new SourcePrerequisite(Source.TribblePlayerCharacter), new SpeciesPrerequisite(Species.Tribble, true)],
                 1,
                 "Tribble"),
-        
+            new TalentModel(
+                "Ganglia",
+                "Kelpiens have special organs on the back of their heads called ganglia. These organs do different things depending on what stage of life the Kelpien is in, as such, this talent grants different abilities based on the character’s Vahar’ai trait. Pre-Vahar’ai: When the gamemaster spends Threat to either add a complication, or to add dice to a pool or that directly affects the character, roll 1[D]; if an effect is rolled, add 1 Momentum to the pool. Post-Vahar’ai: The character gains the following attack: Ganglia Dart (Ranged, 2[D], Piercing 1). The character’s Security is added as normal to the attack’s Stress rating.",
+                [new SourcePrerequisite(Source.DiscoveryS1), new SpeciesPrerequisite(Species.Kelpian, true)],
+                1,
+                "Kelpian"),
+            new TalentModel(
+                "On All Fours",
+                "Kelpiens are able to run at considerable speeds for short bursts when necessary. Whenever the character succeeds at a Sprint task, they generate 2 additional Momentum which may only be used to move additional zones.",
+                [new SourcePrerequisite(Source.DiscoveryS1), new SpeciesPrerequisite(Species.Kelpian, true)],
+                1,
+                "Kelpian"),
+
 
             // Careers
             new TalentModel(

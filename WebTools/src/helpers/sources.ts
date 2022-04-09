@@ -54,7 +54,7 @@ class Sources {
         [Source.IdwYearFive]: new SourceViewModel(Source.IdwYearFive, "IDW Year Five"),
         [Source.PlayersGuide]: new SourceViewModel(Source.PlayersGuide, "Player's Guide"),
         [Source.TricorderSet]: new SourceViewModel(Source.TricorderSet, "Tricorder Set"),
-        [Source.DiscoveryS1]: new SourceViewModel(Source.DiscoveryS1, "Discovery S1", false),
+        [Source.DiscoveryS1]: new SourceViewModel(Source.DiscoveryS1, "Discovery S1"),
     };
 
     getSources() {

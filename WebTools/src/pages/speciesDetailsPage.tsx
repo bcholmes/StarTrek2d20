@@ -24,8 +24,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
 
     render() {
         var species = SpeciesHelper.getSpeciesByType(character.species);
-        var paragraphs = species.description.split('\n');
-        var description = paragraphs.map((p, i) => {
+        var description = species.description.map((p, i) => {
             return (<div className="desc-text" key={'text-' + i}>{p}</div>);
         });
 
