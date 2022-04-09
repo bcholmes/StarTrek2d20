@@ -448,7 +448,7 @@ export class Character extends Construct {
                 || character.hasTalent("Augmented Ability (Presence)")
                 || character.hasTalent("Augmented Ability (Reason)")
                 || character.hasTalent("Augmented Ability")) {
-            traits.push("Augmented");
+            traits.push("Augment");
         }
         if (character.hasTalent("Joined")) {
             traits.push("Symbiont");
