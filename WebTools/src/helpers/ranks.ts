@@ -363,7 +363,7 @@ class Ranks {
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
-            "Crew",
+            "Crew.",
             3),
         new RankModel(
             Rank.RearAdmiral,

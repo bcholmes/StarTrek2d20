@@ -19,7 +19,7 @@ export class ViewSheetPage extends React.Component<IPageProperties, {}> {
         let json = marshaller.decode(encodedSheet);
 
         if (!json) {
-            return (<div className="page text-white">This have gone terribly, terribly wrong. We might be in the mirror universe.</div>);
+            return (<div className="page text-white">Things have gone terribly, terribly wrong. We might be in the mirror universe.</div>);
         } else if (json.stereotype === "starship") {
             return (<div className="page">
                 <nav aria-label="breadcrumb">

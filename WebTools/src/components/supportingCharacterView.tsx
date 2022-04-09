@@ -31,7 +31,7 @@ export class SupportingCharacterView extends React.Component<ISupportingCharacte
 
     render() {
         return (<div className="container ml-0">
-            <Header>{this.getRankAbbreviation() + ' ' + this.props.character.name}</Header>
+            <Header>{this.getRankAbbreviation() + ' ' + (this.props.character.name ? this.props.character.name : "Unnamed Character")}</Header>
             <div className="row mt-4" style={{alignItems: "baseline"}}>
                 <div className="col-md-2 view-field-label pb-2">Pronouns:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.character.pronouns ? this.props.character.pronouns  : undefined}</div></div>
@@ -94,7 +94,7 @@ export class SupportingCharacterView extends React.Component<ISupportingCharacte
     getRankAbbreviation() {
         if (this.props.character.rank) {
             let rank = RanksHelper.getRankByName(this.props.character.rank);
-            return rank ? rank.abbreviation : "";
+            return (rank && rank.abbreviation) ? rank.abbreviation : "";
         } else {
             return "";
         }

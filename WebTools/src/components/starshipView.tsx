@@ -1,5 +1,6 @@
 import React from "react";
 import { Starship } from "../common/character";
+import { CharacterType } from "../common/characterType";
 import { Department } from "../helpers/departments";
 import { Era } from "../helpers/eras";
 import { CharacterSheetRegistry } from "../helpers/sheets";
@@ -26,8 +27,19 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
     }
 
     render() {
+        let name = "";
+        if (this.props.starship.name) {
+            name = this.props.starship.name;
+
+            if (this.props.starship.type === CharacterType.Starfleet && this.props.starship.registry) {
+                name += ' • ' + this.props.starship.registry;
+            }
+        } else {
+            name = "Unnamed Starship";
+        }
+
         return (<div className="container ml-0">
-            <Header>{this.props.starship.name + ' • ' + this.props.starship.registry}</Header>
+            <Header>{name}</Header>
             <div className="row mt-4" style={{alignItems: "baseline"}}>
                 <div className="col-md-2 view-field-label pb-2">Space Frame:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.spaceframeModel ? this.props.starship.spaceframeModel.name : undefined}</div></div>
