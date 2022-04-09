@@ -1,8 +1,9 @@
 ﻿import {Character, CharacterAttribute, CharacterSkill, CharacterTalent} from './character';
 import { CharacterType } from '../common/characterType';
-import {SpeciesHelper, Species} from '../helpers/species';
+import {SpeciesHelper} from '../helpers/species';
 import {EnvironmentsHelper, Environment} from '../helpers/environments';
 import {Skill} from '../helpers/skills';
+import { Species } from '../helpers/speciesEnum';
 
 export interface ICharacterData {
     name: string;

@@ -1,5 +1,5 @@
-﻿import {character } from '../common/character';
-import { CharacterType } from '../common/characterType';
+﻿import { CharacterType } from '../common/characterType';
+import { context } from '../common/context';
 import {Era} from './eras';
 import {Source} from './sources';
 import {TalentsHelper, TalentModel} from './talents';
@@ -1071,7 +1071,7 @@ class Spaceframes {
         for (var frame in this._frames) {
             let f = this._frames[frame];
             if (f.serviceYear <= year && (f.maxServiceYear >= year || ignoreMaxServiceYear)) {
-                if (character.hasSource(f.source) && type === f.type) {
+                if (context.hasSource(f.source) && type === f.type) {
                     frames.push(SpaceframeViewModel.from(n, f));
                 }
             }

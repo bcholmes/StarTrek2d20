@@ -5,7 +5,7 @@ import { CharacterType } from '../common/characterType';
 import {DropDownInput} from '../components/dropDownInput';
 import {Era} from '../helpers/eras';
 import {SpaceframeHelper, MissionPod, SpaceframeViewModel} from '../helpers/spaceframes';
-import {MissionProfileHelper, MissionProfileViewModel} from '../helpers/missionProfiles';
+import {MissionProfileHelper, MissionProfileModel} from '../helpers/missionProfiles';
 import {TalentsHelper, TalentViewModel, ToViewModel} from "../helpers/talents";
 import {Source} from "../helpers/sources";
 import {Button} from '../components/button';
@@ -22,6 +22,7 @@ import CustomSpaceframeForm from '../components/customSpaceframeForm';
 import { System } from '../helpers/systems';
 import { OutlineImage } from '../components/outlineImage';
 import { marshaller } from '../helpers/marshaller';
+import { context } from '../common/context';
 
 interface StarshipPageState {
     type: CharacterTypeModel
@@ -44,7 +45,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
         this.starship = new Starship();
         character.starship = this.starship;
-        this.starship.serviceYear = this.eraDefaultYear(character.era);
+        this.starship.serviceYear = this.eraDefaultYear(context.era);
 
         this._talentSelection = [];
 
@@ -232,7 +233,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
               )
             : undefined;
 
-        let typeSelection = character.hasSource(Source.KlingonCore) 
+        let typeSelection = context.hasSource(Source.KlingonCore) 
                 ? (<div className="panel">
                         <div className="header-small">Ship Type</div>
                         <div className="page-text-aligned">
@@ -526,7 +527,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     }
 
     private showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(this.starship, character.era), "starship", this.starship);
+        CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(this.starship, context.era), "starship", this.starship);
     }
 
     private getTypes() {
@@ -541,7 +542,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         if (this.starship && this.starship.spaceframeModel && this.starship.spaceframeModel.isCustom) {
             return this.starship.spaceframeModel;
         } else {
-            return SpaceframeViewModel.createCustomSpaceframe(character.type, this.starship.serviceYear, [ character.era ]);
+            return SpaceframeViewModel.createCustomSpaceframe(character.type, this.starship.serviceYear, [ context.era ]);
         }
     }
 
@@ -584,7 +585,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         this.forceUpdate();
     }
 
-    private onMissionProfileSelected(profile: MissionProfileViewModel) {
+    private onMissionProfileSelected(profile: MissionProfileModel) {
         this.starship.missionProfileModel = profile;
         this.updateSystemAndDepartments();
         this.forceUpdate();

@@ -3,12 +3,12 @@ import * as React from 'react';
 import { CharacterType } from '../common/characterType';
 import { CheckBox } from './checkBox';
 import { Department } from '../helpers/departments';
-import { MissionProfileHelper, MissionProfileViewModel } from '../helpers/missionProfiles';
+import { MissionProfileHelper, MissionProfileModel } from '../helpers/missionProfiles';
 
 interface IMissionProfileSelectionProperties {
     type: CharacterType;
-    initialSelection?: MissionProfileViewModel;
-    onSelection: (s: MissionProfileViewModel) => void;
+    initialSelection?: MissionProfileModel;
+    onSelection: (s: MissionProfileModel) => void;
 }
 
 class MissionProfileSelection extends React.Component<IMissionProfileSelectionProperties, {}> {
@@ -18,11 +18,12 @@ class MissionProfileSelection extends React.Component<IMissionProfileSelectionPr
             const talents = m.talents.map((t, ti) => {
                 return (<div key={ti} style={{ padding: "2px"}}>{t.name}</div>);
             });
+            const notes = m.notes !== "" ? (<div className="p-1">{m.notes}</div>) : undefined;
 
             return (
                 <tbody key={i}>
                     <tr>
-                        <td className="selection-header" rowSpan={2}>{m.name}</td>
+                        <td className="" rowSpan={2}><div className="selection-header">{m.name}</div> {notes}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Command</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{m.departments[Department.Command]}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Security</td>

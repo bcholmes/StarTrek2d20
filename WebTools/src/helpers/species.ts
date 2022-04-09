@@ -4,100 +4,9 @@ import { character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Era } from '../helpers/eras';
 import { Source } from '../helpers/sources';
+import { Species } from './speciesEnum';
+import { context } from '../common/context';
 
-export enum Species {
-    // Core
-    Andorian,
-    Bajoran,
-    Betazoid,
-    Denobulan,
-    Human,
-    Tellarite,
-    Trill,
-    Vulcan,
-    // Extended
-    KlingonExt,
-    RomulanExt,
-    Borg,
-    FerengiExt,
-    CardassianExt,
-    JemHadar,
-    Vorta,
-    // Beta Quadrant
-    Ardanan,
-    Benzite,
-    Bolian,
-    Deltan,
-    Efrosian,
-    Klingon,
-    Chelon,
-    Jelna,
-    Risian,
-    XindiArboreal,
-    XindiPrimate,
-    XindiReptilian,
-    XindiInsectoid,
-    Zakdorn,
-    Reman,
-    Orion,
-    Gorn,
-    // DS9
-    Changeling,
-    Ferengi,
-    // TNG
-    Android,
-    // Alpha Quadrant
-    Arbazan,
-    Arkarian,
-    Aurelian,
-    Caitian,
-    Cardassian,
-    Edosian,
-    FerengiAlpha,
-    Grazerite,
-    Haliian,
-    Ktarian,
-    Zaranite,
-    // Gamma Quadrant
-    Argrathi,
-    ChangelingGamma,
-    Dosi,
-    Drai,
-    Karemma,
-    Lurian,
-    Paradan,
-    Rakhari,
-    Skreeaa,
-    SonA,
-    Tosk,
-    Wadi,
-    // Delta Quadrant
-    Ankari,
-    Jye,
-    LiberatedBorg,
-    Lokirrim,
-    Mari,
-    Monean,
-    Ocampa,
-    Pendari,
-    Sikarian,
-    Talaxian,
-    Turei,
-    Zahl,
-    // Voyager
-    Hologram,
-    // Klingon Core
-    KlingonQuchHa,
-    // Shakleton Expanse
-    Akaru,
-    CalMirran,
-    Qofuari,
-    VinShari,
-    // IwdYearFive
-    IQosa,
-    Iotian,
-    Tholian,
-}
 
 class NameModel {
     type: string;
@@ -1319,12 +1228,12 @@ class _Species {
 
     getSpecies() {
         var species: SpeciesViewModel[] = [];
-        var n = 0;
         for (var archetype in this._species) {
             var spec = this._species[archetype];
+            let n = parseInt(archetype);
 
-            const hasEra = (spec.eras.indexOf(character.era) > -1) || (n === Species.Klingon && character.type === CharacterType.KlingonWarrior);
-            const hasSource = character.hasAnySource(spec.sources) || (n === Species.LiberatedBorg && character.hasSource(Source.Voyager));
+            const hasEra = (spec.eras.indexOf(context.era) > -1) || (n === Species.Klingon && character.type === CharacterType.KlingonWarrior);
+            const hasSource = context.hasAnySource(spec.sources) || (n === Species.LiberatedBorg && context.hasSource(Source.Voyager));
 
             if (hasEra && hasSource && !this.ignoreSpecies(n)) {
                 species.push(new SpeciesViewModel(n, spec));
@@ -1342,7 +1251,7 @@ class _Species {
         if (type === CharacterType.KlingonWarrior) {
             var species: SpeciesViewModel[] = [];
 
-            var klingonSpecies = character.era === Era.NextGeneration ? [
+            var klingonSpecies = context.era === Era.NextGeneration ? [
                 Species.Klingon 
             ] : [
                 Species.Klingon, Species.KlingonQuchHa
@@ -1350,7 +1259,7 @@ class _Species {
             for (var archetype of klingonSpecies) {
                 var spec = this._species[archetype];
 
-                const hasSource = character.hasAnySource(spec.sources);
+                const hasSource = context.hasAnySource(spec.sources);
 
                 if (hasSource && !this.ignoreSpecies(archetype)) {
                     species.push(new SpeciesViewModel(archetype, spec));
@@ -1367,7 +1276,8 @@ class _Species {
     }
 
     getSpeciesByType(species: Species) {
-        return new SpeciesViewModel(species, this._species[species]);
+        let model = this._species[species];
+        return model == null ? null : new SpeciesViewModel(species, model);
     }
 
     getSpeciesByName(name: string) {
@@ -1396,7 +1306,7 @@ class _Species {
     }
 
     generateSpecies(): Species {
-        if (character.type === CharacterType.KlingonWarrior && character.era === Era.NextGeneration) {
+        if (character.type === CharacterType.KlingonWarrior && context.era === Era.NextGeneration) {
             return Species.Klingon;
         } else if (character.type === CharacterType.KlingonWarrior) {
             let roll = Math.floor(Math.random() * 20) + 1;
@@ -1406,7 +1316,7 @@ class _Species {
             let roll = Math.floor(Math.random() * 20) + 1;
             let species = Species.Human;
 
-            switch (character.era) {
+            switch (context.era) {
                 case Era.Enterprise: {
                     switch (roll) {
                         case 1:
@@ -1519,19 +1429,19 @@ class _Species {
     }
 
     private ignoreSpecies(species: Species) {
-        if (character.hasAnySource([Source.BetaQuadrant, Source.KlingonCore])) {
+        if (context.hasAnySource([Source.BetaQuadrant, Source.KlingonCore])) {
             if (species === Species.KlingonExt) {
                 return true;
             }
         }
 
-        if (character.hasAnySource([Source.DS9, Source.AlphaQuadrant])) {
+        if (context.hasAnySource([Source.DS9, Source.AlphaQuadrant])) {
             if (species === Species.FerengiExt) {
                 return true;
             }
         }
 
-        if (character.hasSource(Source.AlphaQuadrant)) {
+        if (context.hasSource(Source.AlphaQuadrant)) {
             if (species === Species.CardassianExt) {
                 return true;
             }
@@ -1540,7 +1450,7 @@ class _Species {
             }
         }
 
-        if (character.hasSource(Source.GammaQuadrant)) {
+        if (context.hasSource(Source.GammaQuadrant)) {
             if (species === Species.Changeling) {
                 return true;
             }
@@ -1553,7 +1463,7 @@ class _Species {
         var roll = Math.floor(Math.random() * 20) + 1;
         var species = Species.Human;
 
-        switch (character.era) {
+        switch (context.era) {
             case Era.Enterprise: {
                 switch (roll) {
                     case 1:
@@ -1675,7 +1585,7 @@ class _Species {
         var roll = Math.floor(Math.random() * 20) + 1;
         var species = Species.Human;
 
-        switch (character.era) {
+        switch (context.era) {
             case Era.Enterprise: {
                 switch (roll) {
                     case 1:

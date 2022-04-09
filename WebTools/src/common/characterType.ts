@@ -7,6 +7,7 @@ export enum CharacterType {
     AmbassadorDiplomat,
     Civilian,
     Child,
+    Tribble,
     Other
 }
 

@@ -5,7 +5,7 @@ import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {Environment, EnvironmentsHelper } from '../helpers/environments';
-import {Species, SpeciesHelper } from '../helpers/species';
+import {SpeciesHelper } from '../helpers/species';
 import {Skill} from '../helpers/skills';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovement';
 import {ElectiveSkillList} from '../components/electiveSkillList';
@@ -13,6 +13,7 @@ import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {ValueInput, Value} from '../components/valueInput';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import { Species } from '../helpers/speciesEnum';
 
 export class EnvironmentDetailsPage extends React.Component<IPageProperties, {}> {
     private _electiveSkills: Skill[];

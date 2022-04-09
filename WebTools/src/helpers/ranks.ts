@@ -7,6 +7,7 @@ import {AlliedMilitaryDetails, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { AlliedMilitaryType } from './alliedMilitary';
 import { AllOfPrerequisite, AnyOfPrerequisite, EnlistedPrerequisite, EraPrerequisite, IPrerequisite, NotPrerequisite, SourcePrerequisite, TypePrerequisite } from './prerequisite';
+import { context } from '../common/context';
 
 export enum Rank {
     // Core
@@ -172,7 +173,7 @@ class NotEraPrerequisite implements IPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        return character.era !== this._era;
+        return context.era !== this._era;
     }
 }
 

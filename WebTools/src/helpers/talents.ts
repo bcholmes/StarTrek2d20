@@ -7,6 +7,8 @@ import {Department} from './departments';
 import {Source} from './sources';
 import {Era} from './eras';
 import { IPrerequisite } from './prerequisite';
+import { Species } from './speciesEnum';
+import { context } from '../common/context';
 
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
 
@@ -97,7 +99,7 @@ class SpeciesPrerequisite implements ITalentPrerequisite {
     isPrerequisiteFulfilled() {
         return character.species === this.species ||
                character.mixedSpecies === this.species ||
-               (this.allowCrossSelection && character.allowCrossSpeciesTalents);
+               (this.allowCrossSelection && context.allowCrossSpeciesTalents);
     }
     describe(): string {
         return "";
@@ -120,7 +122,7 @@ class AnySpeciesPrerequisite implements ITalentPrerequisite {
                character.species === this.species2 ||
                character.mixedSpecies === this.species1 ||
                character.mixedSpecies === this.species2 ||
-               (this.allowCrossSelection && character.allowCrossSpeciesTalents);
+               (this.allowCrossSelection && context.allowCrossSpeciesTalents);
     }
     describe(): string {
         return "";
@@ -138,7 +140,7 @@ class PureSpeciesPrerequisite implements ITalentPrerequisite {
 
     isPrerequisiteFulfilled() {
         return (character.species === this.species && character.mixedSpecies == null) ||
-               (this.allowCrossSelection && character.allowCrossSpeciesTalents);
+               (this.allowCrossSelection && context.allowCrossSpeciesTalents);
     }
     describe(): string {
         return "";
@@ -196,7 +198,7 @@ class CommandingAndExecutiveOfficerPrerequisite implements ITalentPrerequisite {
 class GMsDiscretionPrerequisite implements ITalentPrerequisite {
 
     isPrerequisiteFulfilled() {
-        return character.allowEsotericTalents;
+        return context.allowEsotericTalents;
     }
     describe(): string {
         return "Gamemaster’s discretion";
@@ -331,7 +333,7 @@ class SourcePrerequisite implements ITalentPrerequisite {
 
     isPrerequisiteFulfilled() {
         let result = false
-        this.sources.forEach((s) => { result = result || character.hasSource(s) })
+        this.sources.forEach((s) => { result = result || context.hasSource(s) })
         return result;
     }
 
@@ -351,7 +353,7 @@ class EraPrerequisite implements ITalentPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        return character.era >= this.era;
+        return context.era >= this.era;
     }
     describe(): string {
         return "";
@@ -367,7 +369,7 @@ class NotEraPrerequisite implements ITalentPrerequisite {
 
     isPrerequisiteFulfilled() {
         let result = true;
-        this.eras.forEach((e) => { result = result && character.era !== e })
+        this.eras.forEach((e) => { result = result && context.era !== e })
         return result;
     }
     describe(): string {
@@ -1148,103 +1150,103 @@ export class Talents {
             new TalentModel(
                 "Proud and Honorable",
                 "Your personal integrity is unimpeachable, and you will not willingly break a promise made. Whenever you attempt a Task to resist being coerced into breaking a promise, betraying your allies, or otherwise acting dishonorably, you reduce the Difficulty by 1.",
-                [new SpeciesPrerequisite(0, true), new EraPrerequisite(Era.Enterprise)],
+                [new SpeciesPrerequisite(Species.Andorian, true), new EraPrerequisite(Era.Enterprise)],
                 1,
                 "Andorian"),
             new TalentModel(
                 "The Ushaan",
                 "You are experienced in the tradition of honor-dueling known as the Ushaan, having spilt much blood upon the ice. When you make a melee Attack, or are targeted by a melee Attack, and buy one or more d20s by adding to Threat, you may re-roll the dice pool for the Task. Further, you own an Ushaan-tor, a razor-sharp ice-miner’s tool used in these duels.",
-                [new SpeciesPrerequisite(0, true), new EraPrerequisite(Era.Enterprise)],
+                [new SpeciesPrerequisite(Species.Andorian, true), new EraPrerequisite(Era.Enterprise)],
                 1,
                 "Andorian"),
             new TalentModel(
                 "Orb Experience",
                 "You have received a vision from the Bajoran Prophets, through one of the Orbs. This rare experience, though confusing at first, has shaped your life and outlook. You have one additional Value, reflecting the insights you received from the experience. The first time this Value is Challenged, roll 1[D]; if an Effect is rolled, then some foretold element of the Orb Experience has come to pass, and the Value is not crossed out as it would normally be.",
-                [new SpeciesPrerequisite(1, true), new EraPrerequisite(Era.NextGeneration)],
+                [new SpeciesPrerequisite(Species.Bajoran, true), new EraPrerequisite(Era.NextGeneration)],
                 1,
                 "Bajoran"),
             new TalentModel(
                 "Strong Pagh",
                 "You believe profoundly in the Prophets, and rely heavily upon that faith to see you through hardship. Whenever you attempt a Task to resist being coerced or threatened, you reduce the Difficulty of that Task by 1.",
-                [new SpeciesPrerequisite(1, true), new EraPrerequisite(Era.NextGeneration)],
+                [new SpeciesPrerequisite(Species.Bajoran, true), new EraPrerequisite(Era.NextGeneration)],
                 1,
                 "Bajoran"),
             new TalentModel(
                 "Empath",
                 "You can sense the emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. You cannot choose not to sense the emotions of those nearby, except for those who are resistant to telepathy. It may require effort and a Task to pick out the emotions of a specific individual in a crowd, or to block out the emotions of those nearby. Increase the Difficulty of this Task if the situation is stressful, if there are a lot of beings present, if the target has resistance to telepathy, and other relevant factors.",
-                [new SpeciesPrerequisite(2, true), new EraPrerequisite(Era.NextGeneration)],
+                [new SpeciesPrerequisite(Species.Betazoid, true), new EraPrerequisite(Era.NextGeneration)],
                 1,
                 "Betazoid"),
             new TalentModel(
                 "Telepath",
                 "You can sense the surface thoughts and emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. Surface thoughts are whatever a creature is thinking about at that precise moment. The character cannot choose not to sense the emotions or read the surface thoughts of those nearby, except for those who are resistant to telepathy. It will require effort and a Task to pick out the emotions or thoughts of a specific individual in a crowd, to search a creature’s mind for specific thoughts or memories, or to block out the minds of those nearby. Unwilling targets may resist with an Opposed Task.",
-                [new PureSpeciesPrerequisite(2, true), new EraPrerequisite(Era.NextGeneration)],
+                [new PureSpeciesPrerequisite(Species.Betazoid, true), new EraPrerequisite(Era.NextGeneration)],
                 1,
                 "Betazoid"),
             new TalentModel(
                 "Cultural Flexibility",
                 "Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",
-                [new SpeciesPrerequisite(3, true), new EraPrerequisite(Era.Enterprise)],
+                [new SpeciesPrerequisite(Species.Denobulan, true), new EraPrerequisite(Era.Enterprise)],
                 1,
                 "Denobulan"),
             new TalentModel(
                 "Parent Figure",
                 "You have a large family, with many children, nieces, and nephews, and you’ve learned how to coordinate even the most unruly and fractious of groups when necessary. When attempting or assisting a Task, and two or more other characters are involved in the Task, the first Complication generated on the Task — either by the character attempting the Task, or one of the assistants — may be ignored.",
-                [new SpeciesPrerequisite(3, true), new EraPrerequisite(Era.Enterprise)],
+                [new SpeciesPrerequisite(Species.Denobulan, true), new EraPrerequisite(Era.Enterprise)],
                 1,
                 "Denobulan"),
             new TalentModel(
                 "Resolute",
                 "You are indomitable, and unwilling to succumb to adversity. You increase your maximum Stress by 3.",
-                [new SpeciesPrerequisite(4, true), new EraPrerequisite(Era.Enterprise)],
+                [new SpeciesPrerequisite(Species.Human, true), new EraPrerequisite(Era.Enterprise)],
                 1,
                 "Human"),
             new TalentModel(
                 "Spirit of Discovery",
                 "You have the drive, spirit, and courage to voyage into the unknown. You may spend one Determination to add three points to the group Momentum pool. The normal conditions for spending Determination still apply.",
-                [new SpeciesPrerequisite(4, true), new EraPrerequisite(Era.Enterprise)],
+                [new SpeciesPrerequisite(Species.Human, true), new EraPrerequisite(Era.Enterprise)],
                 1,
                 "Human"),
             new TalentModel(
                 "Incisive Scrutiny",
                 "You have a knack for finding weak spots in arguments, theories, and machines alike to glean information from them, learning about things by how they respond to pressure against vulnerable points. When you succeed at a Task using Control or Insight, you gain one bonus Momentum, which may only be used for the Obtain Information Momentum Spend.",
-                [new SpeciesPrerequisite(5, true), new EraPrerequisite(Era.Enterprise)],
+                [new SpeciesPrerequisite(Species.Tellarite, true), new EraPrerequisite(Era.Enterprise)],
                 1,
                 "Tellarite"),
             new TalentModel(
                 "Sturdy",
                 "You have a blend of physical resilience and mental fortitude such that you’re difficult to subdue. You reduce the cost to resist being knocked prone by the Knockdown damage effect by one, to a minimum of 0, and gain +1 Resistance against all non-lethal attacks.",
-                [new SpeciesPrerequisite(5, false), new EraPrerequisite(Era.Enterprise)],
+                [new SpeciesPrerequisite(Species.Tellarite, false), new EraPrerequisite(Era.Enterprise)],
                 1,
                 "Tellarite"),
             new TalentModel(
                 "Former Initiate",
                 "You joined the Initiate Program, hoping to be chosen by the Symbiosis Commission to become Joined. As there are far more Initiates than there are Symbionts, you were one of the many who failed, but the quality of even a failed initiate is enough for Starfleet to recruit you. When you attempt a Task using Control or Reason, and spend Determination to buy a bonus d20 for that Task, you may re-roll your dice pool. Former Initiate cannot be taken if the character has the Joined Talent — they are mutually exclusive.",
-                [new SpeciesPrerequisite(6, false), new NotTalentPrerequisite("Joined"), new EraPrerequisite(Era.OriginalSeries)],
+                [new SpeciesPrerequisite(Species.Trill, false), new NotTalentPrerequisite("Joined"), new EraPrerequisite(Era.OriginalSeries)],
                 1,
                 "Trill"),
             new TalentModel(
                 "Joined",
                 "You have a symbiont, with lifetimes of memories to draw upon. Once per mission, you may declare that a former host had expertise in a relevant skill or field of study; you gain a single Focus for the remainder of the scene, as you draw upon those memories. Additionally, you gain a Trait with the name of the Symbiont; this reflects potential advantages of the Joining, the ability to perform rites and rituals to awaken past hosts’ memories, and the vulnerabilities inherent in the connection. Former Initiate cannot be taken if the character has the Joined Talent — they are mutually exclusive.",
-                [new SpeciesPrerequisite(6, false), new NotTalentPrerequisite("Former Initiate"), new EraPrerequisite(Era.OriginalSeries)],
+                [new SpeciesPrerequisite(Species.Trill, false), new NotTalentPrerequisite("Former Initiate"), new EraPrerequisite(Era.OriginalSeries)],
                 1,
                 "Trill"),
             new TalentModel(
                 "Kolinahr",
                 "You have undergone the ritual journey to purge all emotion. You reduce the Difficulty of all Tasks to resist coercion, mental intrusion, pain, and other mental attacks by two.",
-                [new SpeciesPrerequisite(7, true), new EraPrerequisite(Era.Enterprise)],
+                [new SpeciesPrerequisite(Species.Vulcan, true), new EraPrerequisite(Era.Enterprise)],
                 1,
                 "Vulcan"),
             new TalentModel(
                 "Mind-Meld",
                 "You have undergone training in telepathic techniques that allow the melding of minds through physical contact. This will always require a Task with a Difficulty of at least 1, which can be opposed by an unwilling participant. If successful, you link minds with the participant, sharing thoughts and memories; Momentum may be spent to gain more information, or perform deeper telepathic exchanges. This link goes both ways, and it is a tiring and potentially hazardous process for you. Complications can result in pain, disorientation, or lingering emotional or behavioral difficulties.",
-                [new SpeciesPrerequisite(7, false), new EraPrerequisite(Era.Enterprise)],
+                [new SpeciesPrerequisite(Species.Vulcan, false), new EraPrerequisite(Era.Enterprise)],
                 1,
                 "Vulcan"),
             new TalentModel(
                 "Nerve Pinch",
                 "You have learned numerous techniques for the stimulation and control of nerve impulses — collectively called neuropressure. Some applications of neuropressure can be used to swiftly and non-lethally incapacitate assailants. The nerve pinch counts as a melee weapon with 1[D], Size 1H, and the Intense and Non-lethal qualities. You may use Science or Medicine instead of Security when attempting a nerve pinch Attack, and may increase damage by your Science or Medicine Discipline instead of Security.",
-                [new SpeciesPrerequisite(7, true), new EraPrerequisite(Era.Enterprise)],
+                [new SpeciesPrerequisite(Species.Vulcan, true), new EraPrerequisite(Era.Enterprise)],
                 1,
                 "Vulcan"),
             new TalentModel(
@@ -1970,51 +1972,71 @@ export class Talents {
             new TalentModel(
                 "Looking for a Fight",
                 "Many members of the permanently calcified Lo’Kari faction will look for any excuse to start a fight with the sea-dwelling I’Qosa. During the first round of any combat against sea dwellers, the character may ignore the normal cost to Retain the Initiative.",
-                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(76, true)],
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(Species.IQosa, true)],
                 1,
                 "I’Qosa"),
             new TalentModel(
                 "Waters of Renewal",
                 "The waters of I’Qosa nourish and restore the inhabitants of the planet. While in the waters of their homeworld, the character recovers 2 Stress at the start of each round, up to the character’s normal maximum Stress.",
-                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(76, true)],
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(Species.IQosa, true)],
                 1,
                 "I’Qosa"),
             new TalentModel(
                 "Zero-G Swimmer",
                 "I’Qosa are experts at moving both in underwater and zero- gravity environments due to their natural aquatic habitat. The character receives a bonus d20 on any task related to swimming or zero-g maneuvering.",
-                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(76, true)],
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(Species.IQosa, true)],
                 1,
                 "I’Qosa"),
             new TalentModel(
                 "Campaign Fatigue",
                 "The constant churn of the election cycle on Sigma Iotia II has made most Iotians experts at sniffing our liars and frauds. Whenever the character attempts a task to resist being deceived, they add a bonus d20 to their dice pool.",
-                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(77, true)],
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(Species.Iotian, true)],
                 1,
                 "Iotian"),
             new TalentModel(
                 "Imitative",
                 "Iotians study and quickly adopt the technology of alien species. When the character attempts a task using Reason to discern the purpose of or to reverse-engineer a piece of alien technology, reduce the Difficulty by 1, to a minimum of 0.",
-                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(77, true)],
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(Species.Iotian, true)],
                 1,
                 "Iotian"),
             new TalentModel(
                 "Crystalline Telepathy",
                 "Tholian exoskeletons can emit and detect specific forms of radiation capable of transmitting messages over short distances. This ability acts as a form of physical telepathy among the Tholian species, allowing them to communicate over limited distances.",
-                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(78, true)],
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(Species.Tholian, true)],
                 1,
                 "Tholian"),
             new TalentModel(
                 "Immune to Vacuum",
                 "Some Tholians can spend extended periods of time exposed to vacuum without suffering any ill effects, allowing them, for instance, to scale the strands of Tholian webs without the protection of EV suits. This immunity usually only lasts a single scene before vacuum starts causing complications or injuries.",
-                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(78, true)],
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(Species.Tholian, true)],
                 1,
                 "Tholian"),
             new TalentModel(
                 "Radiation Burst",
                 "Some Tholians can channel radiation into intense bursts that act as a ranged weapon in combat (3A, Vicious 1 damage effect).",
-                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(78, true)],
+                [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(Species.Tholian, true)],
                 1,
                 "Tholian"),
+            new TalentModel(
+                "Duplicate",
+                "As long as you, the Player, are constantly eating from a large stash of food, once per Scene you may duplicate yourself. Photocopy your character sheet and hand it to another Player at the table. They too are now a tribble. Once everyone at the table, including the Gamemaster becomes a tribble, the session ends.",
+                [new SourcePrerequisite(Source.TribblePlayerCharacter), new SpeciesPrerequisite(Species.Tribble, true)],
+                1,
+                "Tribble"),
+            new TalentModel(
+                "Soothe",
+                "You may attempt to help a character recover Stress. To do this you must attempt to replicate the calming purr of a tribble for at least 30 seconds. If successful, the target character recovers 1 point of Stress, plus an additional point per Momentum spent.",
+                [new SourcePrerequisite(Source.TribblePlayerCharacter), new SpeciesPrerequisite(Species.Tribble, true)],
+                1,
+                "Tribble"),
+            new TalentModel(
+                "Klingons",
+                "Your Gamemaster must tell you if a Klingon character enters into Close range with you. Upon being told this, you must shriek loudly and shudder until you are told the character has backed away out of Close range. A Klingon character must attempt a Control + Command Task with a Difficulty of 3 when hearing this shriek, or you inflict 2 A of damage. You may attempt an Insight + Command Task to detect Klingons at further ranges.",
+                [new SourcePrerequisite(Source.TribblePlayerCharacter), new SpeciesPrerequisite(Species.Tribble, true)],
+                1,
+                "Tribble"),
+        
+
             // Careers
             new TalentModel(
                 "Untapped Potential",
@@ -2596,7 +2618,7 @@ export class Talents {
                 [new StarshipPrerequisite(), new SourcePrerequisite(Source.KlingonCore), new CharacterTypePrerequisite(CharacterType.KlingonWarrior)],
                 1,
                 "Starship"),
-            ],
+            ]
     };
 
     private _specialRules: TalentModel[] = [
@@ -2610,6 +2632,12 @@ export class Talents {
             "Modular Cargo Pods",
             "The modular cargo pods of the Par’tok class transport can be replaced or removed at any rudimentary spacedock as long as other pods are available and service vehicles such as shuttlecraft can assist in tractoring new pods into place. Depending on the mission assigned to the Par’tok class vessel, the performance and traits of the vessel can drastically change.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.KlingonCore)],
+            1,
+            "Starship"),
+        new TalentModel(
+            "Expanded Connectivity",
+            "Extensive user-interface reworking has been done throughout the ship. Due to this any Override actions taken, where an action is taken from a different station on the bridge, can be attempted with no penalty.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.TheseAreTheVoyages)],
             1,
             "Starship"),
         ];

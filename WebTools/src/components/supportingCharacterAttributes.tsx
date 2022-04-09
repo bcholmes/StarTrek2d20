@@ -1,9 +1,10 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
-import {Species, SpeciesHelper, SpeciesViewModel} from '../helpers/species';
+import {SpeciesHelper, SpeciesViewModel} from '../helpers/species';
 import {Attribute, AttributesHelper} from '../helpers/attributes';
 import {CheckBox} from './checkBox';
 import { Age } from '../helpers/age';
+import { Species } from '../helpers/speciesEnum';
 
 interface IValueProperties {
     index: number;

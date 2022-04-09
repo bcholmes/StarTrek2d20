@@ -9,6 +9,7 @@ import {CareersHelper} from '../helpers/careers';
 import {TalentsHelper} from '../helpers/talents';
 import {CareerEventsHelper} from '../helpers/careerEvents';
 import {Era} from '../helpers/eras';
+import { context } from '../common/context';
 
 class SectionContent {
     name: string;
@@ -109,7 +110,7 @@ export class CharacterSheet extends React.Component<ICharacterSheetProperties, {
         });
 
         if (character.career !== undefined) {
-            if (character.era === Era.Enterprise) {
+            if (context.era === Era.Enterprise) {
                 equipment.push(<div key={999}>Phase pistol</div>);
             }
             else {

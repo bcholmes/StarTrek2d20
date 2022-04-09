@@ -7,6 +7,7 @@ import {Window} from '../common/window';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
+import { context } from '../common/context';
 
 export class EraSelectionPage extends React.Component<IPageProperties, {}> {
     constructor(props: IPageProperties) {
@@ -24,7 +25,7 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
         let hasUnavailableSources = false;
         const sources = SourcesHelper.getSources().map((s, i) => {
             hasUnavailableSources = hasUnavailableSources || !s.available;
-            const className = s.available ? (character.hasSource(i) ? "source source-selected" : "source") : "source unavailable";
+            const className = s.available ? (context.hasSource(i) ? "source source-selected" : "source") : "source unavailable";
             return (
                 <div key={i} className={className} onClick={() => { if (s.available) { this.sourceChanged(i); } } }>{s.name}</div>
             );
@@ -76,11 +77,12 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
     }
 
     private sourceChanged(source: Source) {
-        if (character.hasSource(source)) {
-            character.removeSource(source);
-        }
-        else {
-            character.addSource(source);
+        if (source === Source.Core) {
+            // do nothing
+        } else if (context.hasSource(source)) {
+            context.removeSource(source);
+        } else {
+            context.addSource(source);
         }
 
         this.forceUpdate();
@@ -90,13 +92,13 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
         if (selectAll) {
             SourcesHelper.getSources().forEach(s => {
                 if (s.available) {
-                    character.addSource(s.id);
+                    context.addSource(s.id);
                 }
             });
         }
         else {
             SourcesHelper.getSources().forEach(s => {
-                character.removeSource(s.id);
+                context.removeSource(s.id);
             });
         }
 
@@ -104,7 +106,7 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
     }
 
     private eraSelected(era: Era) {
-        character.era = era;
+        context.era = era;
         Navigation.navigateToPage(PageIdentity.ToolSelecton);
     }
 }

@@ -2,7 +2,7 @@
 import {character } from '../common/character';
 import {CharacterType, CharacterTypeModel } from '../common/characterType';
 import {CharacterSerializer} from '../common/characterSerializer';
-import {Species, SpeciesHelper} from '../helpers/species';
+import {SpeciesHelper} from '../helpers/species';
 import {DropDownInput} from '../components/dropDownInput';
 import {SupportingCharacterAttributes} from '../components/supportingCharacterAttributes';
 import {SupportingCharacterDisciplines} from '../components/supportingCharacterDisciplines';
@@ -13,6 +13,8 @@ import {CharacterSheetRegistry} from '../helpers/sheets';
 import AgeHelper, { Age } from '../helpers/age';
 import { Source } from '../helpers/sources';
 import { marshaller } from '../helpers/marshaller';
+import { Species } from '../helpers/speciesEnum';
+import { context } from '../common/context';
 
 
 interface ISupportingCharacterState {
@@ -68,7 +70,7 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
     }
 
     render() {
-        let ageDiv = character.hasSource(Source.PlayersGuide) && character.age.isChild()
+        let ageDiv = context.hasSource(Source.PlayersGuide) && character.age.isChild()
             ? (<div className="panel">
                     <div className="header-small">Age</div>
                     <div className="page-text-aligned">

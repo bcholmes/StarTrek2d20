@@ -8,7 +8,7 @@ import { Era } from './eras';
 import { MissionProfile, MissionProfileHelper } from './missionProfiles';
 import { Skill } from './skills';
 import { MissionPod, Spaceframe, SpaceframeHelper, SpaceframeViewModel } from './spaceframes';
-import { Species } from './species';
+import { Species } from './speciesEnum';
 import { allSystems, System } from './systems';
 import { TalentsHelper } from './talents';
 

@@ -1,10 +1,11 @@
 ﻿import * as React from 'react';
 import {Window} from '../common/window';
-import {SpeciesHelper, Species} from '../helpers/species';
+import {SpeciesHelper} from '../helpers/species';
 import {AttributesHelper} from '../helpers/attributes';
 import {CheckBox} from './checkBox';
 import {Button} from './button';
 import { character } from '../common/character'
+import { Species } from '../helpers/speciesEnum';
 
 interface IMixedSpeciesSelectionProperties {
     onSelection: (primary: Species, secondary: Species) => void;

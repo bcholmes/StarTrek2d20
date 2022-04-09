@@ -2,10 +2,11 @@
 import { character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Window } from '../common/window';
-import { Species, SpeciesHelper } from '../helpers/species';
+import { SpeciesHelper } from '../helpers/species';
 import { AttributesHelper } from '../helpers/attributes';
 import { Button } from './button';
 import { CheckBox } from './checkBox';
+import { Species } from '../helpers/speciesEnum';
 
 interface ISpeciesSelectionProperties {
     onSelection: (species: Species) => void;

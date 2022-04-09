@@ -13,6 +13,7 @@ import { SheetOutlineOptions, SpaceframeOutline, XYLocation } from './spaceframe
 import { TalentsHelper } from './talents';
 import { CareerEventsHelper } from './careerEvents';
 import { RolesHelper } from './roles';
+import { context } from '../common/context';
 
 class TextBlock {
     text: string;
@@ -996,7 +997,7 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
 }
 
 class CharacterSheets {
-    public getSupportingCharacterSheet(c: Character = character, era: Era = character.era): ICharacterSheet[] {
+    public getSupportingCharacterSheet(c: Character = character, era: Era = context.era): ICharacterSheet[] {
         if (c.isKlingon()) {
             return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
         } else if (era === Era.NextGeneration) {
@@ -1009,7 +1010,7 @@ class CharacterSheets {
     public getCharacterSheets(): ICharacterSheet[] {
         if (character.isKlingon()) {
             return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet() ];
-        } else if (character.era === Era.NextGeneration) {
+        } else if (context.era === Era.NextGeneration) {
             return [ new StandardTngCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet() ];
         } else {
             return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new LandscapeTngCharacterSheet() ];

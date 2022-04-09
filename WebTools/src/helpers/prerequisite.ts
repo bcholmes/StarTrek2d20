@@ -1,5 +1,6 @@
 import { character } from "../common/character";
 import { CharacterType } from "../common/characterType";
+import { context } from "../common/context";
 import { Career } from "./careers";
 import { Era } from "./eras";
 import { Source } from "./sources";
@@ -17,7 +18,7 @@ export class SourcePrerequisite implements IPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        return character.hasAnySource(this.sources);
+        return context.hasAnySource(this.sources);
     }
 }
 
@@ -104,7 +105,7 @@ export class EraPrerequisite implements IPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        return character.era === this.era;
+        return context.era === this.era;
     }
 }
 

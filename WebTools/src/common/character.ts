@@ -1,16 +1,14 @@
 ﻿import {Attribute} from '../helpers/attributes';
 import {Skill} from '../helpers/skills';
-import {Source} from '../helpers/sources';
-import {Era} from '../helpers/eras';
 import {Career} from '../helpers/careers';
 import {Environment} from '../helpers/environments';
-import {Species} from '../helpers/species';
+import {Species} from '../helpers/speciesEnum';
 import {Track} from '../helpers/tracks';
 import {UpbringingModel} from '../helpers/upbringings';
 import {Workflow} from '../helpers/workflows';
 import {TalentViewModel} from '../helpers/talents';
 import {MissionPod, MissionPodViewModel, SpaceframeHelper, SpaceframeViewModel} from '../helpers/spaceframes';
-import {MissionProfileViewModel} from "../helpers/missionProfiles";
+import {MissionProfileModel} from "../helpers/missionProfiles";
 import {CharacterType} from './characterType';
 import { System } from '../helpers/systems';
 import { AlliedMilitary, AlliedMilitaryType } from '../helpers/alliedMilitary';
@@ -103,7 +101,7 @@ export class Starship extends Construct {
     spaceframeModel?: SpaceframeViewModel = undefined;
     missionPod?: MissionPod;
     missionPodModel?: MissionPodViewModel;
-    missionProfileModel?: MissionProfileViewModel;
+    missionProfileModel?: MissionProfileModel;
     systems: number[];
     departments: number[];
     scale: number;
@@ -123,6 +121,9 @@ export class Starship extends Construct {
         let trait = this.type === CharacterType.KlingonWarrior ? "Klingon Starship" : "Federation Starship";
         if (this.spaceframeModel) {
             trait = this.spaceframeModel.additionalTraits.join(', ');
+        }
+        if (this.missionProfileModel && this.missionProfileModel.traits !== "") {
+            trait += (", " + this.missionProfileModel.traits);
         }
         if (this.traits) {
             trait += `, ${this.traits}`;
@@ -302,8 +303,6 @@ export class Character extends Construct {
     private _attributeInitialValue: number = 7;
     private _steps: Step[];
 
-    public sources: Source[];
-    public era: Era = Era.NextGeneration;
     public attributes: CharacterAttribute[] = [];
     public skills: CharacterSkill[] = [];
     public traits: string[];
@@ -339,10 +338,6 @@ export class Character extends Construct {
 
     public starship?: Starship;
 
-    // these options probably shouldn't be in the character. Fix that later
-    public allowCrossSpeciesTalents: boolean = false;
-    public allowEsotericTalents: boolean = false;
-
     constructor() {
         super();
         this.attributes.push(new CharacterAttribute(Attribute.Control, this._attributeInitialValue));
@@ -357,15 +352,12 @@ export class Character extends Construct {
         }
 
         this._steps = [];
-        this.sources = [];
         this.traits = [];
         this.focuses = [];
         this.talents = {};
         this.equipment = [];
         this.careerEvents = [];
         this.age = AgeHelper.getAdultAge();
-
-        this.allowCrossSpeciesTalents = false;
 
         this.starship = undefined;
     }
@@ -554,28 +546,6 @@ export class Character extends Construct {
         return this.skills.some(s => s.expertise === max);
     }
 
-    addSource(source: Source) {
-        this.sources.push(source);
-    }
-
-    removeSource(source: Source) {
-        if (this.hasSource(source)) {
-            this.sources.splice(this.sources.indexOf(source), 1);
-        }
-    }
-
-    hasSource(source: Source) {
-        return character.sources.indexOf(source) > -1 || source === Source.Core;
-    }
-
-    hasAnySource(sources: Source[]) {
-        var result: boolean = false;
-        for (var s of sources) {
-            result = result || character.sources.indexOf(s) > -1 || s === Source.Core;
-        }
-        return result;
-    }
-
     update() {
         let maxAttribute = 12;
         let maxDiscipline = Character.maxDiscipline(this);
@@ -602,9 +572,6 @@ export class Character extends Construct {
 
         character.type = this.type;
         character.typeDetails = this.typeDetails;
-        this.sources.forEach(s => {
-            character.sources.push(s);
-        });
         this._steps.forEach(s => {
             character.steps.push(new Step(s.page, s.character));
         });
@@ -621,7 +588,6 @@ export class Character extends Construct {
             const t = this.talents[talent];
             character.talents[talent] = new CharacterTalent(t.rank);
         }
-        character.era = this.era;
         this.traits.forEach(t => {
             character.traits.push(t);
         });
@@ -652,7 +618,6 @@ export class Character extends Construct {
             character.focuses.push(f);
         });
         character.stress = this.stress;
-        character.allowCrossSpeciesTalents = this.allowCrossSpeciesTalents;
         if (this.workflow) {
             character.workflow = this.workflow.copy();
         }
