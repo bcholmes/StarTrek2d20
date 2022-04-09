@@ -26,8 +26,10 @@ export class SpeciesModel {
     talents: TalentModel[];
     nameDescription: string;
     nameSuggestions: NameModel[];
+    // at the moment, only Ktarians have secondary attributes
+    secondaryAttributes: Attribute[];
 
-    constructor(id: Species, name: string, eras: Era[], sources: Source[], description: string[], attributes: Attribute[], trait: string, traitDescription: string, exampleValue: string, talents: TalentModel[], nameDescription: string, nameSuggestions: NameModel[]) {
+    constructor(id: Species, name: string, eras: Era[], sources: Source[], description: string[], attributes: Attribute[], trait: string, traitDescription: string, exampleValue: string, talents: TalentModel[], nameDescription: string, nameSuggestions: NameModel[], secondaryAttributes: Attribute[] = []) {
         this.id = id;
         this.name = name;
         this.eras = eras;
@@ -40,6 +42,7 @@ export class SpeciesModel {
         this.nameDescription = nameDescription;
         this.nameSuggestions = nameSuggestions;
         this.sources = sources;
+        this.secondaryAttributes = secondaryAttributes;
     }
 }
 
@@ -738,7 +741,8 @@ class _Species {
             [
                 { type: "Female", suggestions: "Nives, Etana, Milosama, Brunmohley, Jezas, Selit, Meriana, Reginalundula" },
                 { type: "Male", suggestions: "Rafen, Tomishamin, Lazos, Mizan, Dukannigarm, Koolen, Barhenk, Greskrendtegk" }
-            ]),
+            ],
+            [Attribute.Fitness, Attribute.Presence]),
         [Species.Zaranite]: new SpeciesModel(
             Species.Zaranite,
             "Zaranite",

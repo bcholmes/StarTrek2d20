@@ -562,6 +562,8 @@ h2.header-text {
     padding: 4px;
     font-weight: normal;
     text-align: justify;
+}
+.page-text {
     max-width: 700px;
 }
     .page-text-aligned {
@@ -609,6 +611,10 @@ table.selection-list {
             line-height: normal;
         }
     }
+}
+
+.container .selection-list {
+    width: 100%;
 }
 
 .text-selection {

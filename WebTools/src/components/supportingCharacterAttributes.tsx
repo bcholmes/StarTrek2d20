@@ -119,19 +119,20 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
                         <td>{val + (isChecked ? 1 : 0) }</td>
                     </tr>
                 );
-            } else { // Ktarians have two attributes pre-defined, and can choose any other as a third attribute
+            } else { // Ktarians have two attributes pre-defined, and can choose from Secondary Attributes as a third attribute
                 const speciesHasAttribute = this._species.attributes.indexOf(a) > -1;
                 const isChecked = this.state.checkedValues.indexOf(a) > -1;
 
-                let checkBox = speciesHasAttribute
-                    ? (<td></td>)
-                    : ( <td>
+                let checkBox = (<td></td>);
+                if (this._species.secondaryAttributes.indexOf(a) >= 0) {
+                    checkBox = ( <td>
                         <CheckBox
                             text=""
                             value={this.state.checkedValues.indexOf(a) === -1 }
                             isChecked={this.state.checkedValues.indexOf(a) > -1 }
                             onChanged={(val) => this.checkAttribute(a, val) }/>
                     </td>);
+                }
 
                 return (<tr key={i}>
                     <td className="selection-header">{AttributesHelper.getAttributeName(a) }</td>

@@ -88,7 +88,7 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
 
 
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html">Home</a></li>

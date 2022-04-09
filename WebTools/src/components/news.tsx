@@ -11,6 +11,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220409</b>
+                <ul>
+                    <li>More bug fixes.</li>
+                    <li>Add support for Kelpians from the <i>Discovery Season 1</i> source.</li>
+                </ul>
                 <b>v1.220329</b>
                 <ul>
                     <li>Various small bug fixes.</li>

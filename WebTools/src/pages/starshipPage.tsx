@@ -332,7 +332,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         </div>);
 
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -368,7 +368,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                                 The vessel's spaceframe is its basic superstructure, core systems, operation infrastructure, 
                                 and all the other elements that are common to every vessel of the same class.
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '700px'}}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between'}}>
                                 {selectedSpaceframeDetails}
                                 <div className="p-0">
                                     <div className="p-0">
@@ -389,7 +389,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                                 It determines how the ship will be equipped, what facilities and personnel are assigned to
                                 it, and what kind of operations it will be expected to perform.
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '700px'}}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between'}}>
                                 {missionProfilesDetails}
                                 <div className="p-0">
                                     <Button className="button-small" text="Choose" onClick={() => this.showModal('missionProfile')} buttonType={true}/>
