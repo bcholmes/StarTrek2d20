@@ -75,7 +75,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
                     onChanged={() => { context.allowEsotericTalents = !context.allowEsotericTalents; this.forceUpdate(); }} />
             </div>) : undefined;
 
-        const talentSelection = talents.length > 0 && character.workflow.currentStep().talentPrompt
+        const talentSelection = talents.length > 0 && character.workflow.currentStep().options.talentSelection
             ? (<div className="panel">
                 <div className="header-small">TALENTS</div>
                 <div>
@@ -154,7 +154,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
             }
         }
 
-        if (character.workflow.currentStep().talentPrompt) {
+        if (character.workflow.currentStep().options.talentSelection) {
             if (!this._selectedTalent) {
                 Dialog.show("You have not selected a talent.");
                 return;

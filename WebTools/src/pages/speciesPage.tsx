@@ -12,6 +12,7 @@ import { Source } from '../helpers/sources';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { Species } from '../helpers/speciesEnum';
 import { context } from '../common/context';
+import InstructionText from '../components/instructionText';
 
 interface ISpeciesPageState {
     showSelection: boolean;
@@ -29,29 +30,30 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
     }
 
     render() {
-        const rollAlpha = context.hasSource(Source.AlphaQuadrant) && character.type !== CharacterType.KlingonWarrior
+        const rollAlpha = context.hasSource(Source.AlphaQuadrant) && this.isRollAvailable()
             ? <Button className="button" text="Roll Alpha Species" onClick={() => this.rollAlphaSpecies()} />
             : undefined;
 
-        const rollBeta = context.hasSource(Source.BetaQuadrant) && character.type !== CharacterType.KlingonWarrior
+        const rollBeta = context.hasSource(Source.BetaQuadrant) && this.isRollAvailable()
             ? <Button className="button" text="Roll Beta Species" onClick={() => this.rollBetaSpecies()} />
             : undefined;
 
         var content = !this.state.showSelection && !this.state.showMixedSelection?
             (
-                <div>
+                <div className="container ml-0">
                     <div className="page-text">
-                        To what species do you belong?
-                        You may also create a character of mixed species, gaining benefits from both.
-                        <br /><br />
-                        Either select or roll your Species.
+                        <InstructionText text={character.workflow.currentStep().description} />
                     </div>
-                    <div className="button-container">
-                        <Button className="button" text="Select Species" onClick={() => this.showSpecies() } />
-                        <Button className="button" text="Select Mixed Species" onClick={() => this.showMixedSpecies() }/>
-                        <Button className="button" text="Roll Core Species" onClick={() => this.rollSpecies()} />
-                        {rollAlpha}
-                        {rollBeta}
+                    <div className="row row-cols-md-2">
+                        <div className="pl-2 pr-2">
+                            <Button className="button" text="Select Species" onClick={() => this.showSpecies() } />
+                            <Button className="button" text="Select Mixed Species" onClick={() => this.showMixedSpecies() }/>
+                        </div>
+                        <div className="pl-2 pr-2">
+                            {this.isRollAvailable() ? (<Button className="button" text="Roll Core Species" onClick={() => this.rollSpecies()} />) : undefined }
+                            {rollAlpha}
+                            {rollBeta}
+                        </div>
                     </div>
                 </div>
             )
@@ -82,6 +84,10 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
                 {content}
             </div>
         );
+    }
+
+    private isRollAvailable() {
+        return character.type != CharacterType.KlingonWarrior && character.type != CharacterType.AlliedMilitary;
     }
 
     private rollSpecies() {

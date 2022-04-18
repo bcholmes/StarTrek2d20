@@ -16,16 +16,7 @@ import { Government, GovernmentType } from '../helpers/governments';
 import AgeHelper, { Age } from '../helpers/age';
 import { Weapon } from '../helpers/weapons';
 import { Department } from '../helpers/departments';
-
-
-export abstract class Construct {
-    public name?: string;
-    public type: CharacterType = CharacterType.Starfleet;
-    
-    determineWeapons() : Weapon[] {
-        return [];
-    }
-}
+import { Construct } from './construct';
 
 export abstract class CharacterTypeDetails {
 }
@@ -633,6 +624,12 @@ export class Character extends Construct {
         } else {
             return 5;
         }
+    }
+
+    public static isSpeciesListLimited(character) {
+        return character.type === CharacterType.KlingonWarrior || (character.type === CharacterType.AlliedMilitary 
+            && character.typeDetails != null && character.typeDetails instanceof AlliedMilitaryDetails 
+            && (character.typeDetails as AlliedMilitaryDetails).alliedMilitary.species.length > 0);
     }
 }
 

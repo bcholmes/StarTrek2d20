@@ -1,6 +1,6 @@
 ﻿import { Attribute } from './attributes';
 import { TalentModel, TalentsHelper } from './talents';
-import { character } from '../common/character';
+import { AlliedMilitaryDetails, Character, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Era } from '../helpers/eras';
 import { Source } from '../helpers/sources';
@@ -1372,7 +1372,12 @@ class _Species {
             return species.sort((a, b) => {
                 return a.name.localeCompare(b.name);
             });
-
+        } else if (Character.isSpeciesListLimited(character)) {
+            let alliedMilitary = (character.typeDetails as AlliedMilitaryDetails).alliedMilitary;
+            let species = alliedMilitary.species.map(s => this._species[s]).filter(s => context.hasAnySource(s.sources) && !this.ignoreSpecies(s.id));
+            return species.sort((a, b) => {
+                return a.name.localeCompare(b.name);
+            });
         } else {
             return this.getSpecies();
         }

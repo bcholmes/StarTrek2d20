@@ -1,4 +1,4 @@
-import { Character, character, Construct, Starship } from '../common/character';
+import { Character, character, Starship } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Attribute } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
@@ -14,6 +14,7 @@ import { TalentsHelper } from './talents';
 import { CareerEventsHelper } from './careerEvents';
 import { RolesHelper } from './roles';
 import { context } from '../common/context';
+import { Construct } from '../common/construct';
 
 class TextBlock {
     text: string;

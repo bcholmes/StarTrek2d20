@@ -3,7 +3,8 @@ import { PDFDocument } from 'pdf-lib'
 import { ICharacterSheet } from '../helpers/sheets';
 import {Button} from './button';
 import { ModalControl } from './modal';
-import { character, Construct } from '../common/character';
+import { character } from '../common/character';
+import { Construct } from '../common/construct';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 

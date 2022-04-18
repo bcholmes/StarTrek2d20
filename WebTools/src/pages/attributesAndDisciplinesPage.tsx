@@ -149,7 +149,7 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
             return;
         }
 
-        if (character.workflow.currentStep().talentPrompt) {
+        if (character.workflow.currentStep().options.talentSelection) {
             if (!this._selectedTalent) {
                 Dialog.show("You have not selected a talent.");
                 return;
