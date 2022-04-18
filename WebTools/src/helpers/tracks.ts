@@ -381,6 +381,8 @@ class Tracks {
             return this._civilianTracks;
         } else if (type === CharacterType.KlingonWarrior) {
             return this._klingonTracks;
+        } else if (type === CharacterType.Cadet) {
+            return [ this._tracks[0], this._tracks[1], this._tracks[2] ];
         } else {
             return this._tracks;
         }

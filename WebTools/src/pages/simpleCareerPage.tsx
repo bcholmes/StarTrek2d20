@@ -10,13 +10,18 @@ import InstructionText from '../components/instructionText';
 import { Header } from '../components/header';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
-export class ChildCareerPage extends React.Component<IPageProperties, {}> {
+interface ISimpleCareerPageProperties extends IPageProperties {
+    talent: string;
+}
+
+export class SimpleCareerPage extends React.Component<ISimpleCareerPageProperties, {}> {
 
     talent: TalentViewModel;
 
     constructor(props) {
         super(props);
-        this.talent = TalentsHelper.getTalentViewModel("Childhood Insight");
+        // this never changes for the life of the page
+        this.talent = TalentsHelper.getTalentViewModel(this.props.talent);
     }
 
     render() {
@@ -29,7 +34,7 @@ export class ChildCareerPage extends React.Component<IPageProperties, {}> {
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
-                    <ValueInput value={Value.ChildCareer}/>
+                    <ValueInput value={Value.Career}/>
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>

@@ -6,7 +6,7 @@ import {Track} from './tracks';
 import {AlliedMilitaryDetails, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { AlliedMilitaryType } from './alliedMilitary';
-import { AllOfPrerequisite, AnyOfPrerequisite, EnlistedPrerequisite, EraPrerequisite, IPrerequisite, NotPrerequisite, SourcePrerequisite, TypePrerequisite } from './prerequisite';
+import { AllOfPrerequisite, AnyOfPrerequisite, CharacterTypePrerequisite, EnlistedPrerequisite, EraPrerequisite, IPrerequisite, NotPrerequisite, SourcePrerequisite, TypePrerequisite } from './prerequisite';
 import { context } from '../common/context';
 
 export enum Rank {
@@ -77,7 +77,12 @@ export enum Rank {
     Trooper,
 
     Administrator,
-    FleetCommander
+    FleetCommander,
+
+    CadetFourthClass,
+    CadetThirdClass,
+    CadetSecondClass,
+    CadetFirstClass,
 }
 
 
@@ -114,6 +119,21 @@ class CareersPrerequisite implements IPrerequisite {
         return this._careers.indexOf(character.career) > -1;
     }
 }
+
+class NoCareerEventsPrerequisite implements IPrerequisite {
+
+    isPrerequisiteFulfilled() {
+        return character.careerEvents == null ||  character.careerEvents.length === 0;
+    }
+}
+
+class HasCareerEventsPrerequisite implements IPrerequisite {
+
+    isPrerequisiteFulfilled() {
+        return character.careerEvents != null && character.careerEvents.length > 0;
+    }
+}
+
 
 class TrackPrerequisite implements IPrerequisite {
     private _track: Track;
@@ -807,8 +827,50 @@ class Ranks {
                 new CareersPrerequisite([Career.Veteran]),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.VULCAN_HIGH_COMMAND)
             ]),
-            
-    ];
+        
+
+        // Cadets
+        new RankModel(
+            Rank.CadetFourthClass,  // first year cadet
+            "Cadet, fourth class",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CharacterTypePrerequisite(CharacterType.Cadet),
+                new NoCareerEventsPrerequisite(),
+            ],
+            "Cdt."),
+        new RankModel(
+            Rank.CadetThirdClass, // second-year cadet
+            "Cadet, third class",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CharacterTypePrerequisite(CharacterType.Cadet),
+                new NoCareerEventsPrerequisite(),
+            ],
+            "Cdt."),
+        new RankModel(
+            Rank.CadetSecondClass, // third-year cadet
+            "Cadet, second class",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CharacterTypePrerequisite(CharacterType.Cadet),
+                new HasCareerEventsPrerequisite(),
+            ],
+            "Cdt."),
+        new RankModel(
+            Rank.CadetFirstClass, // fourth-year cadet
+            "Cadet, first class",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CharacterTypePrerequisite(CharacterType.Cadet),
+                new HasCareerEventsPrerequisite(),
+            ],
+            "Cdt."),
+        ];
 
     getRanks(ignorePrerequisites?: boolean) {
         let ranks: RankModel[] = [];

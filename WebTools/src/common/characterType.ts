@@ -6,6 +6,7 @@ export enum CharacterType {
     AlliedMilitary,
     AmbassadorDiplomat,
     Civilian,
+    Cadet,
     Child,
     Tribble,
     Other
@@ -18,6 +19,7 @@ export class CharacterTypeModel {
         new CharacterTypeModel("Allied Military", CharacterType.AlliedMilitary),
         new CharacterTypeModel("Ambassador / Diplomat", CharacterType.AmbassadorDiplomat),
         new CharacterTypeModel("Civilian", CharacterType.Civilian),
+        new CharacterTypeModel("Cadet", CharacterType.Cadet),
         new CharacterTypeModel("Child", CharacterType.Child),
         new CharacterTypeModel("Other", CharacterType.Other)
     ];

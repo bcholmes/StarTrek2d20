@@ -17,7 +17,9 @@
     IdwYearFive,
     PlayersGuide,
     TricorderSet,
-    DiscoveryS1,
+    DiscoveryS1S2,
+    DiscoveryCampaign,
+    UtopiaPlantitia,
 
     None
 }
@@ -54,7 +56,9 @@ class Sources {
         [Source.IdwYearFive]: new SourceViewModel(Source.IdwYearFive, "IDW Year Five"),
         [Source.PlayersGuide]: new SourceViewModel(Source.PlayersGuide, "Player's Guide"),
         [Source.TricorderSet]: new SourceViewModel(Source.TricorderSet, "Tricorder Set"),
-        [Source.DiscoveryS1]: new SourceViewModel(Source.DiscoveryS1, "Discovery S1"),
+        [Source.DiscoveryS1S2]: new SourceViewModel(Source.DiscoveryS1S2, "Discovery S1/S2"),
+        [Source.DiscoveryCampaign]: new SourceViewModel(Source.DiscoveryCampaign, "Discovery Campaign", false),
+        [Source.UtopiaPlantitia]: new SourceViewModel(Source.UtopiaPlantitia, "Utopia Planitia", false),
     };
 
     getSources() {

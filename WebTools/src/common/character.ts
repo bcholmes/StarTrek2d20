@@ -122,7 +122,7 @@ export class Starship extends Construct {
         if (this.spaceframeModel) {
             trait = this.spaceframeModel.additionalTraits.join(', ');
         }
-        if (this.missionProfileModel && this.missionProfileModel.traits !== "") {
+        if (this.missionProfileModel && this.missionProfileModel.traits && this.missionProfileModel.traits !== "") {
             trait += (", " + this.missionProfileModel.traits);
         }
         if (this.traits) {
@@ -383,7 +383,7 @@ export class Character extends Construct {
             result.push(new Weapon("Bat'leth", 3, "Vicious 1"));
         }
 
-        if (this.type === CharacterType.Starfleet) {
+        if (this.type === CharacterType.Starfleet || this.type === CharacterType.Cadet) {
             result.push(new Weapon("Phaser type-2", 3, "Charges"));
         } else if (this.age.isAdult()) {
             if (this.isKlingon()) {
@@ -550,7 +550,7 @@ export class Character extends Construct {
         let maxAttribute = 12;
         let maxDiscipline = Character.maxDiscipline(this);
 
-        if (this.isYoung()) {
+        if (this.isYoung() || this.type === CharacterType.Cadet) {
             maxAttribute = 11;
         }
 
@@ -628,7 +628,7 @@ export class Character extends Construct {
     public static maxDiscipline(character) {
         if (character.age.isChild()) {
             return 3;
-        } else if (character.isYoung()) {
+        } else if (character.isYoung() || character.type === CharacterType.Cadet) {
             return 4;
         } else {
             return 5;

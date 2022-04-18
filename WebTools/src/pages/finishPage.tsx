@@ -61,7 +61,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
     }
 
     renderValues() {
-        if (character.age.isChild()) {
+        if (character.age.isChild() || character.type === CharacterType.Cadet) {
             return (<div>
                 <div className="panel">
                     <div className="header-small">VALUES</div>
@@ -72,7 +72,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                     </div>
                     <ValueInput value={Value.Environment} text={character.environmentValue} onChange={() => { this.forceUpdate(); } } />
                     <ValueInput value={Value.Track} text={character.trackValue} onChange={() => { this.forceUpdate(); } }/>
-                    <ValueInput value={Value.ChildCareer} text={character.careerValue} onChange={() => { this.forceUpdate(); } }/>
+                    <ValueInput value={Value.Career} text={character.careerValue} onChange={() => { this.forceUpdate(); } }/>
                 </div>
                 <br/>
             </div>);

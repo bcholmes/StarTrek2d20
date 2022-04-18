@@ -1304,7 +1304,7 @@ class _Species {
             Species.Kelpian,
             "Kelpian",
             [Era.OriginalSeries, Era.NextGeneration],
-            [Source.DiscoveryS1],
+            [Source.DiscoveryS1S2],
             ["A sentient humanoid species indigenous to the planet Kaminar, Kelpiens live in an agrarian society. Elders are the leaders of the Kelpien culture, passing down knowledge and history through stories. One of these stories speaks of The Great Balance, a belief that by culling members of their species, the Kelpiens would have peace with the Ba’ul; a powerful species that would hunt their people to extinction if the Kaminar population got out of hand. This meant that when a Kelpien started going through their physiological change known as Vahar’ai, they would be brought in front of the All-Seeing Eye and culled, releasing them from the pain and threat of mental instability, as well as keeping the Great Balance in check.",
             "Commander Saru discovered that the Vahar’ai was actually a natural physical change that made his people expert hunters. The culling and the Great Balance were both lies forced unto the Kelpiens by the Ba’ul. Eventually, the crew of U.S.S. Discovery helped the Kelpiens rise up against the Ba’ul and break free of the lies they had been told for generations."],
             [Attribute.Control, Attribute.Fitness, Attribute.Insight],

@@ -13,6 +13,7 @@ import {Dialog} from '../components/dialog';
 import {ValueInput, Value} from '../components/valueInput';
 import { TalentSelection } from '../components/talentSelection';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import { CharacterType } from '../common/characterType';
 
 interface IPageState {
     showExcessAttrDistribution: boolean;
@@ -47,6 +48,15 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
 
         this._excessAttrPoints = character.age.attributeSum - this._attrPoints - attrSum;
         this._excessSkillPoints = character.age.disciplineSum - this._skillPoints - discSum;
+
+        if (character.type === CharacterType.Cadet) {
+            let reduction = 2;
+            if (character.careerEvents.length != null) {
+                reduction -= character.careerEvents.length;
+            }
+            this._excessAttrPoints -= reduction;
+            this._excessSkillPoints -= reduction;
+        }
 
         this.state = {
             showExcessAttrDistribution: this._excessAttrPoints > 0,

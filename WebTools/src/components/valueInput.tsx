@@ -7,7 +7,6 @@ export enum Value {
     Environment,
     Track,
     Career,
-    ChildCareer,
     Finish
 }
 
@@ -39,10 +38,11 @@ export class ValueInput extends React.Component<IValueInputProperties, {}> {
                 }
                 break;
             case Value.Career:
-                description = CareersHelper.getCareer(character.career).valueDescription;
-                break;
-            case Value.ChildCareer:
-                description = "The character receives a value, which must reflect their inexperience and naïveté in some way.";
+                if (character.age.isChild() || character.type === CharacterType.Cadet) {
+                    description = "The character receives a value, which must reflect their inexperience and naïveté in some way.";
+                } else {
+                    description = CareersHelper.getCareer(character.career).valueDescription;
+                }
                 break;
             case Value.Finish:
                 description = "The character receives one final Value. This might reflect the Career Events rolled in Step Six, or it may represent some other element of the character. This Value might be a relationship, connecting the character to another character in the crew, or to another organization or culture in some way.";
@@ -69,7 +69,6 @@ export class ValueInput extends React.Component<IValueInputProperties, {}> {
                 character.trackValue = value;
                 break;
             case Value.Career:
-            case Value.ChildCareer:
                 character.careerValue = value;
                 break;
             case Value.Finish:

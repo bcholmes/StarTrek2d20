@@ -29,6 +29,20 @@ export class KlingonPrerequisite implements IPrerequisite {
     }
 }
 
+export class CharacterTypePrerequisite implements IPrerequisite {
+
+    private type: CharacterType;
+
+    constructor(type: CharacterType) {
+        this.type = type;
+    }
+    
+    isPrerequisiteFulfilled() {
+        return character.type === this.type;
+    }
+}
+
+
 export class CivilianPrerequisite implements IPrerequisite {
 
     // arguably, a Child character is a Civilian, but the Roles restrict Child
