@@ -1800,6 +1800,24 @@ class _Species {
 
         return species;
     }
+
+    generateFromGammaQuadrantTable(): Species|null {
+        return this.generateRandomSpeciesForQuadrant(Source.GammaQuadrant);
+    }
+
+    generateFromDeltaQuadrantTable(): Species|null {
+        return this.generateRandomSpeciesForQuadrant(Source.DeltaQuadrant);
+    }
+
+    generateRandomSpeciesForQuadrant(source: Source) : Species|null {
+        let quadrantSpecies = this.getSpecies().filter(s => s.sources.indexOf(source) >=0);
+        if (quadrantSpecies.length === 0) {
+            return null;
+        } else {
+            let roll = Math.floor(Math.random() * quadrantSpecies.length);
+            return quadrantSpecies[roll].id;
+        }
+    }
 }
 
 export const SpeciesHelper = new _Species();

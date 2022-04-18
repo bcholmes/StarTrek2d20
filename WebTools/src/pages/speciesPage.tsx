@@ -1,6 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
-import {CharacterType} from '../common/characterType';
+import {Character, character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
@@ -13,6 +12,7 @@ import { CharacterCreationBreadcrumbs } from '../components/characterCreationBre
 import { Species } from '../helpers/speciesEnum';
 import { context } from '../common/context';
 import InstructionText from '../components/instructionText';
+import { Era } from '../helpers/eras';
 
 interface ISpeciesPageState {
     showSelection: boolean;
@@ -38,6 +38,15 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
             ? <Button className="button" text="Roll Beta Species" onClick={() => this.rollBetaSpecies()} />
             : undefined;
 
+        const rollGamma = context.era === Era.NextGeneration && context.hasSource(Source.GammaQuadrant) && this.isRollAvailable()
+            ? <Button className="button" text="Roll Gamma Species" onClick={() => this.rollGammaSpecies()} />
+            : undefined;
+
+        const rollDelta = context.era === Era.NextGeneration && context.hasSource(Source.DeltaQuadrant) && this.isRollAvailable()
+            ? <Button className="button" text="Roll Delta Species" onClick={() => this.rollDeltaSpecies()} />
+            : undefined;
+
+
         var content = !this.state.showSelection && !this.state.showMixedSelection?
             (
                 <div className="container ml-0">
@@ -53,6 +62,8 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
                             {this.isRollAvailable() ? (<Button className="button" text="Roll Core Species" onClick={() => this.rollSpecies()} />) : undefined }
                             {rollAlpha}
                             {rollBeta}
+                            {rollGamma}
+                            {rollDelta}
                         </div>
                     </div>
                 </div>
@@ -87,7 +98,7 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
     }
 
     private isRollAvailable() {
-        return character.type != CharacterType.KlingonWarrior && character.type != CharacterType.AlliedMilitary;
+        return !Character.isSpeciesListLimited(character);
     }
 
     private rollSpecies() {
@@ -98,6 +109,20 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
     private rollAlphaSpecies() {
         var species = SpeciesHelper.generateFromAlphaQuadrantTable();
         this.selectSpecies(species);
+    }
+
+    private rollGammaSpecies() {
+        let species = SpeciesHelper.generateFromGammaQuadrantTable();
+        if (species != null) {
+            this.selectSpecies(species);
+        }
+    }
+
+    private rollDeltaSpecies() {
+        let species = SpeciesHelper.generateFromDeltaQuadrantTable();
+        if (species != null) {
+            this.selectSpecies(species);
+        }
     }
 
     private rollBetaSpecies() {

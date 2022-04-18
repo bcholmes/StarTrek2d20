@@ -566,6 +566,10 @@ h2.header-text {
 .page-text {
     max-width: 700px;
 }
+
+.container .page-text {
+    max-width: inherit;
+}
     .page-text-aligned {
         margin-left: 0;
         margin-right: 0;
