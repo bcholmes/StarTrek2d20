@@ -1,5 +1,5 @@
 import React from "react";
-import { Starship } from "../common/character";
+import { Starship } from "../common/starship";
 import { CharacterType } from "../common/characterType";
 import { Department } from "../helpers/departments";
 import { Era } from "../helpers/eras";

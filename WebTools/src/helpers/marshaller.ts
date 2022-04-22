@@ -1,7 +1,8 @@
 import base64url from 'base64url';
 import pako from 'pako';
-import { Character, CharacterAttribute, CharacterSkill, Starship } from '../common/character';
+import { Character, CharacterAttribute, CharacterSkill } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
+import { Starship } from '../common/starship';
 import { Attribute } from './attributes';
 import { allDepartments, Department } from './departments';
 import { Era } from './eras';

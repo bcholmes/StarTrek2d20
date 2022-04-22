@@ -1,4 +1,4 @@
-import { Character, character, Starship } from '../common/character';
+import { Character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Attribute } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
@@ -15,6 +15,7 @@ import { CareerEventsHelper } from './careerEvents';
 import { RolesHelper } from './roles';
 import { context } from '../common/context';
 import { Construct } from '../common/construct';
+import { Starship } from '../common/starship';
 
 class TextBlock {
     text: string;
@@ -400,11 +401,39 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
         this.populateForm(form, construct);
     }
 
+    serializeAssignment(character: Character) {
+        let result = this.serializeBasicAssignment(character);
+        if (character.assignedShip != null) {
+            if (result) {
+                result += ", ";
+            } else {
+                result = "";
+            }
+            result += character.assignedShip;
+        }
+        return result;
+    }
+
+    serializeBasicAssignment(character: Character) {
+        if (character.role != null) {
+            var result = character.role;
+            if (character.secondaryRole) {
+                result = result + " / " + character.secondaryRole;
+            }
+            return result;
+        } else if (character.jobAssignment != null) {
+            return character.jobAssignment;
+        } else {
+            return "";
+        }
+    }
+
+
     populateForm(form: PDFForm, construct: Construct) {
         let character = construct as Character;
         this.fillName(form, character);
-        this.fillField(form, 'Department', CharacterSerializer.serializeAssignment(character));
-        this.fillField(form, 'Purpose', CharacterSerializer.serializeAssignment(character));
+        this.fillField(form, 'Department', this.serializeAssignment(character));
+        this.fillField(form, 'Purpose', this.serializeAssignment(character));
         this.fillField(form, 'Rank', character.rank);
         this.fillField(form, 'Species', CharacterSerializer.serializeSpecies(character.species, character.mixedSpecies));
         let traits = character.baseTraits;
@@ -556,7 +585,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         if (upbringing) {
             this.fillField(form, 'Upbringing', upbringing.name + (character.acceptedUpbringing ? " (A)" : " (R)"));
         }
-        this.fillField(form, 'Assignment', CharacterSerializer.serializeAssignment(character));
+        this.fillField(form, 'Assignment', this.serializeAssignment(character));
         this.fillField(form, 'Environment', CharacterSerializer.serializeEnvironment(character.environment, character.otherSpeciesWorld));
 
         this.fillValues(form, character);
@@ -667,10 +696,10 @@ class KlingonCharacterSheet extends BasicFullCharacterSheet {
     populateForm(form: PDFForm, construct: Construct) {
         super.populateForm(form, construct);
 
-        this.fillField(form, 'House', character.house);
+        this.fillField(form, 'House', (construct as Character).house);
     }
 
-    formatNameWithoutPronouns() {
+    formatNameWithoutPronouns(character) {
         var result = character.name;
         if (character.lineage) {
             result += (", " + character.lineage);
@@ -700,11 +729,11 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         }
     }
 
-    writeRoleAndTalents(page: PDFPage, titleStyle: FontSpecification, paragraphStyle: FontSpecification, symbolStyle: FontSpecification, currentColumn: Column) {
+    writeRoleAndTalents(page: PDFPage, character: Character, titleStyle: FontSpecification, paragraphStyle: FontSpecification, symbolStyle: FontSpecification, currentColumn: Column) {
         let start = currentColumn.translatedStart(page);
         let lines: Line[] = [];
         let startLine = new Line(start, currentColumn);
-        if (character.role) {
+        if (character.role != null) {
             let role = RolesHelper.getRoleModelByName(character.role);
             if (role) {
                 let blocks = this.createTextBlocks(role.name + ":", titleStyle, symbolStyle, startLine, page);
@@ -893,11 +922,12 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
     async populate(pdf: PDFDocument, construct: Construct) {
         pdf.registerFontkit(fontkit);
         await super.populate(pdf, construct);
-        await this.fillPageTwo(pdf);
+        await this.fillPageTwo(pdf, construct as Character);
     }
 
     populateForm(form: PDFForm, construct: Construct): void {
         super.populateForm(form, construct);
+        const character = construct as Character;
         
         if (character.careerEvents && character.careerEvents.length > 0) {
             let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0]);
@@ -914,7 +944,7 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
         }
     }
 
-    async fillPageTwo(pdf: PDFDocument) {
+    async fillPageTwo(pdf: PDFDocument, character: Character) {
         const page2 = pdf.getPages()[1];
         const symbolFontBytes = await fetch("/static/font/Trek_Arrowheads.ttf").then(res => res.arrayBuffer());
 
@@ -930,7 +960,7 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
         let column1 = new Column(180, 204, 550, 196, column2);
         let currentColumn = column1;
 
-        this.writeRoleAndTalents(page2, titleStyle, paragraphStyle, symbolStyle, currentColumn);
+        this.writeRoleAndTalents(page2, character, titleStyle, paragraphStyle, symbolStyle, currentColumn);
     }
 }
 
@@ -948,10 +978,10 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
     async populate(pdf: PDFDocument, construct: Construct) {
         pdf.registerFontkit(fontkit);
         await super.populate(pdf, construct);
-        await this.fillTalentTextBlock(pdf);
+        await this.fillTalentTextBlock(pdf, construct as Character);
     }
 
-    async fillTalentTextBlock(pdf: PDFDocument) {
+    async fillTalentTextBlock(pdf: PDFDocument, character: Character) {
         const page = pdf.getPages()[0];
         const boldFontBytes = await fetch("/static/font/OpenSansCondensed-Bold.ttf").then(res => res.arrayBuffer());
         const lightFontBytes = await fetch("/static/font/OpenSansCondensed-Light.ttf").then(res => res.arrayBuffer());
@@ -966,7 +996,7 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
 
         let currentColumn = new Column(583, 45, 563-45, 757-583);
 
-        this.writeRoleAndTalents(page, titleStyle, paragraphStyle, symbolStyle, currentColumn);
+        this.writeRoleAndTalents(page, character, titleStyle, paragraphStyle, symbolStyle, currentColumn);
     }
 
     populateForm(form: PDFForm, construct: Construct): void {
@@ -974,6 +1004,9 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
         super.populateForm(form, construct);
         
         this.fillField(form, "Pronouns", character.pronouns);
+        if (character.assignedShip) {
+            this.fillField(form, "Ship", character.assignedShip);
+        }
 
         if (character.careerEvents && character.careerEvents.length > 0) {
             let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0]);
@@ -992,13 +1025,17 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
         this.fillField(form, "Resistance", "" + character.calculateResistance());
     }
 
+    serializeAssignment(character: Character): string {
+        return this.serializeBasicAssignment(character);
+    }
+
     fillName(form: PDFForm, character: Character) {
         this.fillField(form, 'Name', this.formatNameWithoutPronouns(character));
     }
 }
 
 class CharacterSheets {
-    public getSupportingCharacterSheet(c: Character = character, era: Era = context.era): ICharacterSheet[] {
+    public getSupportingCharacterSheet(c: Character, era: Era = context.era): ICharacterSheet[] {
         if (c.isKlingon()) {
             return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
         } else if (era === Era.NextGeneration) {
@@ -1008,7 +1045,7 @@ class CharacterSheets {
         }
     }
 
-    public getCharacterSheets(): ICharacterSheet[] {
+    public getCharacterSheets(character: Character): ICharacterSheet[] {
         if (character.isKlingon()) {
             return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet() ];
         } else if (context.era === Era.NextGeneration) {

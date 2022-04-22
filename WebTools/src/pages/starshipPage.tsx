@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character, Starship} from '../common/character';
+import {character} from '../common/character';
 import {CharacterTypeModel} from '../common/characterType';
 import { CharacterType } from '../common/characterType';
 import {DropDownInput} from '../components/dropDownInput';
@@ -23,6 +23,7 @@ import { System } from '../helpers/systems';
 import { OutlineImage } from '../components/outlineImage';
 import { marshaller } from '../helpers/marshaller';
 import { context } from '../common/context';
+import { Starship } from '../common/starship';
 
 interface StarshipPageState {
     type: CharacterTypeModel

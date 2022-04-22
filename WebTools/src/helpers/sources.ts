@@ -24,41 +24,74 @@
     None
 }
 
+export enum SourceType {
+    CoreBook,
+    DivisionBook,
+    QuadrantBook,
+    CrewBook, 
+    CampaignBook,
+    Expansion,
+    Misc
+}
+
+class SourceTypeModel {
+    type: SourceType;
+    name: string;
+
+    constructor(type: SourceType, name: string) {
+        this.type = type;
+        this.name = name;
+    }
+}
+
 class SourceViewModel {
     id: Source;
+    type: SourceType;
     name: string;
     available: boolean;
 
-    constructor(id: Source, name: string, available: boolean = true) {
+    constructor(id: Source, type: SourceType, name: string, available: boolean = true) {
         this.id = id;
+        this.type = type;
         this.name = name;
         this.available = available;
     }
 }
 
 class Sources {
+    private types: SourceTypeModel[] = [
+        new SourceTypeModel(SourceType.CoreBook, "Core Rulebooks"),
+        new SourceTypeModel(SourceType.CrewBook, "Crew Books"),
+        new SourceTypeModel(SourceType.QuadrantBook, "Quadrant Books"),
+        new SourceTypeModel(SourceType.DivisionBook, "Division Books"),
+        new SourceTypeModel(SourceType.CampaignBook, "Campaign Books"),
+        new SourceTypeModel(SourceType.Expansion, "Major Expansion Books"),
+        new SourceTypeModel(SourceType.Misc, "Misc/Other Books"),
+        
+    ];
+
     private _sources: { [id: number]: SourceViewModel } = {
-        [Source.Core]: new SourceViewModel(Source.Core, "Core"),
-        [Source.AlphaQuadrant]: new SourceViewModel(Source.AlphaQuadrant, "Alpha Quadrant"),
-        [Source.BetaQuadrant]: new SourceViewModel(Source.BetaQuadrant, "Beta Quadrant"),
-        [Source.GammaQuadrant]: new SourceViewModel(Source.GammaQuadrant, "Gamma Quadrant"),
-        [Source.DeltaQuadrant]: new SourceViewModel(Source.DeltaQuadrant, "Delta Quadrant"),
-        [Source.CommandDivision]: new SourceViewModel(Source.CommandDivision, "Command Division"),
-        [Source.OperationsDivision]: new SourceViewModel(Source.OperationsDivision, "Operations Division"),
-        [Source.SciencesDivision]: new SourceViewModel(Source.SciencesDivision, "Sciences Division"),
-        [Source.TNG]: new SourceViewModel(Source.TNG, "TNG"),
-        [Source.DS9]: new SourceViewModel(Source.DS9, "DS9"),
-        [Source.Voyager]: new SourceViewModel(Source.Voyager, "Voyager"),
-        [Source.TheseAreTheVoyages]: new SourceViewModel(Source.TheseAreTheVoyages, "These are the Voy"),
-        [Source.TribblePlayerCharacter]: new SourceViewModel(Source.TribblePlayerCharacter, "Tribble Player Char"),
-        [Source.KlingonCore]: new SourceViewModel(Source.KlingonCore, "Klingon Core"),
-        [Source.ShackletonExpanse]: new SourceViewModel(Source.ShackletonExpanse, "Shackleton Expanse"),
-        [Source.IdwYearFive]: new SourceViewModel(Source.IdwYearFive, "IDW Year Five"),
-        [Source.PlayersGuide]: new SourceViewModel(Source.PlayersGuide, "Player's Guide"),
-        [Source.TricorderSet]: new SourceViewModel(Source.TricorderSet, "Tricorder Set"),
-        [Source.DiscoveryS1S2]: new SourceViewModel(Source.DiscoveryS1S2, "Discovery S1/S2"),
-        [Source.DiscoveryCampaign]: new SourceViewModel(Source.DiscoveryCampaign, "Discovery Campaign", false),
-        [Source.UtopiaPlantitia]: new SourceViewModel(Source.UtopiaPlantitia, "Utopia Planitia", false),
+        [Source.Core]: new SourceViewModel(Source.Core, SourceType.CoreBook, "Core"),
+        [Source.AlphaQuadrant]: new SourceViewModel(Source.AlphaQuadrant, SourceType.QuadrantBook, "Alpha Quadrant"),
+        [Source.BetaQuadrant]: new SourceViewModel(Source.BetaQuadrant, SourceType.QuadrantBook, "Beta Quadrant"),
+        [Source.GammaQuadrant]: new SourceViewModel(Source.GammaQuadrant, SourceType.QuadrantBook, "Gamma Quadrant"),
+        [Source.DeltaQuadrant]: new SourceViewModel(Source.DeltaQuadrant, SourceType.QuadrantBook, "Delta Quadrant"),
+        [Source.CommandDivision]: new SourceViewModel(Source.CommandDivision, SourceType.DivisionBook, "Command Division"),
+        [Source.OperationsDivision]: new SourceViewModel(Source.OperationsDivision, SourceType.DivisionBook, "Operations Division"),
+        [Source.SciencesDivision]: new SourceViewModel(Source.SciencesDivision, SourceType.DivisionBook, "Sciences Division"),
+        [Source.TNG]: new SourceViewModel(Source.TNG, SourceType.CrewBook, "TNG"),
+        [Source.DS9]: new SourceViewModel(Source.DS9, SourceType.CrewBook, "DS9"),
+        [Source.Voyager]: new SourceViewModel(Source.Voyager, SourceType.CrewBook, "Voyager"),
+        [Source.TheseAreTheVoyages]: new SourceViewModel(Source.TheseAreTheVoyages, SourceType.Misc, "These are the Voy"),
+        [Source.TribblePlayerCharacter]: new SourceViewModel(Source.TribblePlayerCharacter, SourceType.Misc, "Tribble Player Char"),
+        [Source.KlingonCore]: new SourceViewModel(Source.KlingonCore, SourceType.CoreBook, "Klingon Core"),
+        [Source.ShackletonExpanse]: new SourceViewModel(Source.ShackletonExpanse, SourceType.CampaignBook, "Shackleton Expanse"),
+        [Source.IdwYearFive]: new SourceViewModel(Source.IdwYearFive, SourceType.Misc, "IDW Year Five"),
+        [Source.PlayersGuide]: new SourceViewModel(Source.PlayersGuide, SourceType.Expansion, "Player's Guide"),
+        [Source.TricorderSet]: new SourceViewModel(Source.TricorderSet, SourceType.CoreBook, "Tricorder Set"),
+        [Source.DiscoveryS1S2]: new SourceViewModel(Source.DiscoveryS1S2, SourceType.CrewBook, "Discovery S1/S2"),
+        [Source.DiscoveryCampaign]: new SourceViewModel(Source.DiscoveryCampaign, SourceType.CampaignBook, "Discovery Campaign", false),
+        [Source.UtopiaPlantitia]: new SourceViewModel(Source.UtopiaPlantitia, SourceType.Expansion, "Utopia Planitia", false),
     };
 
     getSources() {
@@ -68,6 +101,15 @@ class Sources {
             sources.push(src);
         }
         return sources;
+    }
+
+    getSourcesByType(type: SourceType) {
+        return this.getSources().filter(s => s.type === type);
+    }
+
+
+    getTypes() {
+        return this.types;
     }
 
     getSourceName(sources: Source[]) {

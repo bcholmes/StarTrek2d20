@@ -14,7 +14,14 @@ import { AlliedMilitaryType } from '../helpers/alliedMilitary';
 import replaceDiceWithArrowhead from '../common/arrowhead';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
-export class FinishPage extends React.Component<IPageProperties, {}> {
+
+interface IFinishPageState {
+    roleSelectionAllowed: boolean|null;
+    jobAssignment?: string;
+    assignedShip?: string;
+}
+
+export class FinishPage extends React.Component<IPageProperties, IFinishPageState> {
     private name: HTMLInputElement;
     private pronouns: HTMLInputElement;
     private traits: HTMLInputElement;
@@ -47,10 +54,17 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
             this.roles.push(role);
         });
 
-        character.role = this.roles[0].name;
-        character.roleAbility = this.roles[0].ability;
-
-        this.role = this.roles[0].name;
+        if (character.type !== CharacterType.Cadet) {
+            character.role = this.roles[0].name;
+            this.role = this.roles[0].name;
+            this.state = {
+                roleSelectionAllowed: null
+            };
+        } else {
+            this.state = {
+                roleSelectionAllowed: false
+            };
+        }
 
         this.getRanks();
         if (!character.isCivilian()) {
@@ -113,24 +127,6 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
 
         const values = this.renderValues();
 
-        const assignments = this.roles.map((r, i) => {
-            return (
-                <tr key={i}>
-                    <td className="selection-header-small">{r.name}</td>
-                    <td>{replaceDiceWithArrowhead(r.description)}</td>
-                    <td>
-                        <CheckBox
-                            text=""
-                            value={r.name}
-                            isChecked={this.role === r.name || this.secondaryRole === r.name}
-                            onChanged={(val) => {
-                                this.onSelectRole(val);
-                            } }/>
-                    </td>
-                </tr>
-            )
-        });
-
         let extra = (<div></div>);
         if (character.isKlingon()) {
             extra = (<div><div className="panel">
@@ -145,9 +141,6 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                 <div><small><b>Example: </b> <i>House Duras</i> or <i>House Kor</i></small></div>
             </div></div>);
         }
-
-        let multiDiscipline = character.hasTalent("Multi-Discipline") ? <div>Because your character has the <b>Multi-Discipline talent</b>, you may choose <b>two roles</b>. 
-            Some options (e.g. Commanding Officer, Admiral) are excluded from the available roles.</div> : undefined;
 
         return (
             <div className="page">
@@ -181,22 +174,7 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                     <div className="textinput-label">Traits</div>
                     <input type="text" onChange={() => this.onTraitsChanged() } ref={(input) => this.traits = input}/>
                 </div>
-                <br/>
-                <div className="panel">
-                    <div className="header-small">ASSIGNMENT</div>
-                    <div>
-                        Select the role your character has on the starship they service.
-                        This choice will be based on your highest discipline(s).
-                        The most suitable choice will appear on top, while the other options will be available as well in case you want to create a different character.
-                    </div>
-                    {multiDiscipline}
-                    <table className="selection-list">
-                        <tbody>
-                            {assignments}
-                        </tbody>
-                    </table>
-                </div>
-                <br/>
+                {this.renderAssignment()}
                 {this.renderRank()}
                 <br/>
                 {values}
@@ -209,6 +187,84 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
                 </div>
             </div>
         );
+    }
+
+    renderAssignment() {
+
+        const multiDiscipline = character.hasTalent("Multi-Discipline") 
+            ? <div>Because your character has the <b>Multi-Discipline talent</b>, you may choose <b>two roles</b>. 
+                Some options (e.g. Commanding Officer, Admiral) are excluded from the available roles.</div> 
+            : undefined;
+
+        const roleList = this.roles.map((r, i) => {
+            return (
+                <tr key={i}>
+                    <td className="selection-header-small">{r.name}</td>
+                    <td>{replaceDiceWithArrowhead(r.description)}</td>
+                    <td>
+                        <CheckBox
+                            text=""
+                            value={r.name}
+                            isChecked={this.role === r.name || this.secondaryRole === r.name}
+                            onChanged={(val) => {
+                                this.onSelectRole(val);
+                            } }/>
+                    </td>
+                </tr>
+            )
+        });
+
+        const roles = this.state.roleSelectionAllowed === true || this.state.roleSelectionAllowed == null || character.hasTalent("Multi-Discipline")
+            ? (<table className="selection-list">
+                    <tbody>
+                        {roleList}
+                    </tbody>
+                </table>) 
+            : undefined;
+
+        const roleSelection = (this.state.roleSelectionAllowed != null && !character.hasTalent("Multi-Discipline")) 
+            ? (<CheckBox
+                text="Allow character to have a role (GM's decision)"
+                value={this.state.roleSelectionAllowed}
+                isChecked={this.state.roleSelectionAllowed}
+                onChanged={(val) => this.onRoleSelectionAllowedChange(!this.state.roleSelectionAllowed) }
+                />)
+            : undefined;
+
+        const job = (roles == null) 
+            ? (<div>
+                    <div className="textinput-label">Job</div>
+                    <input type="text" onChange={(e) => this.onJobChanged(e.target.value) } value={this.state.jobAssignment || ""} />
+                </div>) 
+            : undefined;
+
+        const cadetNote = (roles == null && character.type === CharacterType.Cadet) 
+            ? (<div>Cadets do not normally have a key role and instead have a simple job assignment. Cadets might be given a role in special circumstances.</div>)
+            : null;
+
+        const roleDescription = (roles != null) 
+        ? (<div>
+                Select the role your character has on the starship they service.
+                This choice will be based on your highest discipline(s).
+                The most suitable choice will appear on top, while the other options will be available as well in case you want to create a different character.
+            </div>)
+        : undefined;
+
+        return (
+        <div className="panel">
+            <div className="header-small">ASSIGNMENT</div>
+            {cadetNote}
+            {roleDescription}
+            {roleSelection}
+            {multiDiscipline}                
+            {roles}
+            {job}
+
+            <div>
+                <div className="textinput-label">Ship</div>
+                <input type="text" onChange={(e) => this.onShipChanged(e.target.value) } value={this.state.assignedShip || ""} />
+            </div>
+        </div>);
     }
 
     renderRank() {
@@ -254,8 +310,47 @@ export class FinishPage extends React.Component<IPageProperties, {}> {
         }
     }
 
+    private onRoleSelectionAllowedChange(allowed: boolean) {
+        if (allowed) {
+            if (this.roles && this.roles.length > 0 && character.role == null) {
+                character.role = this.roles[0].name;
+                character.jobAssignment = "";
+                this.role = this.roles[0].name;
+            }
+            this.setState((state) => ({
+                ...state,
+                roleSelectionAllowed: allowed,
+                jobAssignment: ""
+            }));
+        } else {
+            character.role = undefined;
+            this.role = undefined;
+            this.setState((state) => ({
+                ...state,
+                roleSelectionAllowed: allowed
+            }));
+        }
+    }
+
+    private onShipChanged(ship: string) {
+        character.assignedShip = ship;
+        this.setState((state) => ({
+            ...state,
+            assignedShip: ship
+        }))
+    }
+
+    private onJobChanged(job: string) {
+        character.jobAssignment = job;
+        this.setState((state) => ({
+            ...state,
+            jobAssignment: job
+        }))
+    }
+
+
     private showDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(), "sta-character");
+        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character), "sta-character");
     }
 
 

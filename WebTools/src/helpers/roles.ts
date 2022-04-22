@@ -75,7 +75,8 @@ class MilitaryPrerequisite implements IPrerequisite {
     isPrerequisiteFulfilled(): boolean {
         return character.type === CharacterType.Starfleet ||
             character.type === CharacterType.KlingonWarrior ||
-            character.type === CharacterType.AlliedMilitary;
+            character.type === CharacterType.AlliedMilitary ||
+            character.type === CharacterType.Cadet;
     }
 }
 
@@ -92,7 +93,11 @@ class NotTalentPrerequisite implements IPrerequisite {
     }
 }
 
-
+class CadetPrerequisite implements IPrerequisite {
+    isPrerequisiteFulfilled(): boolean {
+        return character.type === CharacterType.Cadet;
+    }
+}
 
 export class RoleModel {
     id: Role;
@@ -134,7 +139,8 @@ class Roles {
             new NotPrerequisite(new CareersPrerequisite(Career.Young)),
             new NotPrerequisite(new EnlistedPrerequisite()),
             new NotKlingonPrerequisite(),
-            new MilitaryPrerequisite()),
+            new MilitaryPrerequisite(),
+            new NotPrerequisite(new CadetPrerequisite())),
         new RoleModel(
             Role.ExecutiveOfficer,
             "Executive Officer",
@@ -145,7 +151,8 @@ class Roles {
             new NotPrerequisite(new CareersPrerequisite(Career.Young)),
             new NotPrerequisite(new EnlistedPrerequisite()),
             new NotKlingonPrerequisite(),
-            new MilitaryPrerequisite()),
+            new MilitaryPrerequisite(),
+            new NotPrerequisite(new CadetPrerequisite())),
         new RoleModel(
             Role.OperationsManager,
             "Operations Manager",

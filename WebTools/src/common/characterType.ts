@@ -26,7 +26,7 @@ export class CharacterTypeModel {
 
     private static TYPES_EXCEPT_OTHER: CharacterTypeModel[] = [ 
         CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1], CharacterTypeModel.TYPES[2], CharacterTypeModel.TYPES[3], 
-        CharacterTypeModel.TYPES[4], CharacterTypeModel.TYPES[5]
+        CharacterTypeModel.TYPES[4], CharacterTypeModel.TYPES[5], CharacterTypeModel.TYPES[6]
     ];
     
     name: string;

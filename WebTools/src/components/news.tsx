@@ -11,13 +11,15 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
-                <b>v1.220418</b>
+                <b>v1.220422</b>
                 <ul>
-                    <li>Add in the Cadet type from the <i>Player's Guide</i>.</li>
+                    <li>Add in the Cadet type from the <i>Player's Guide</i>. We ended up having a pretty big discussion
+                        about Cadets and roles on the Modiphius forum.</li>
                     <li>Some minor tweaks to certain workflows.</li>
                     <li>The <i>Discovery Season 1</i> and <cite>Discovery Season 2</cite> books basically have the same
                         rules additions, so I'm not distinguishing them as different sources. I mean, that list of 
-                        sources is already long enough.</li>
+                        sources is already long enough. So long, in fact, that (partially prompted by Felderburg), I 
+                        organized it a bit.</li>
                     <li>Add a placeholder for some not-yet-implemented sources, including the <i>Discovery Campaign</i> and the
                         recently-announced (but still a long way off) <i>Utopia Planetia</i> book. Hey, what can I say? 
                         I am excite.</li>
