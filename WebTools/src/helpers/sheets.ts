@@ -2,7 +2,7 @@ import { Character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Attribute } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
-import { PDFDocument, PDFFont, PDFForm, PDFPage, rgb, StandardFonts } from 'pdf-lib'
+import { PDFDocument, PDFFont, PDFForm, PDFPage, PDFTextField, rgb, StandardFonts } from 'pdf-lib'
 import fontkit from '@pdf-lib/fontkit'
 import { CharacterSerializer } from '../common/characterSerializer';
 import { Era } from './eras';
@@ -16,6 +16,7 @@ import { RolesHelper } from './roles';
 import { context } from '../common/context';
 import { Construct } from '../common/construct';
 import { Starship } from '../common/starship';
+import { staTextFieldAppearanceProvider } from './pdfTextFieldAppearance';
 
 class TextBlock {
     text: string;
@@ -923,6 +924,19 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
         pdf.registerFontkit(fontkit);
         await super.populate(pdf, construct);
         await this.fillPageTwo(pdf, construct as Character);
+
+        // pdf-lib does awful things to empty multi-line fields
+        // See: https://github.com/Hopding/pdf-lib/discussions/1196
+        const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
+        let form = pdf.getForm();
+        form.getFields().forEach(f => {
+            if (f instanceof PDFTextField) {
+                let textField = f as PDFTextField;
+                if (textField.isMultiline() && (textField.getText() == null || textField.getText().length === 0)) {
+                    textField.updateAppearances(helvetica, staTextFieldAppearanceProvider);
+                }
+            }
+        });
     }
 
     populateForm(form: PDFForm, construct: Construct): void {
