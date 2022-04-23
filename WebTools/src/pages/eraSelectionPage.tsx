@@ -63,7 +63,7 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
             return (
                 <tr key={i} onClick={() => { if (Window.isCompact()) this.eraSelected(e.id); }}>
                     <td className="selection-header">{e.name}</td>
-                    <td><Button className="button-small" text="Select" onClick={() => { this.eraSelected(e.id) }} /></td>
+                    <td className="text-right"><Button buttonType={true} className="button-small" text="Select" onClick={() => { this.eraSelected(e.id) }} /></td>
                 </tr>
             );
         });

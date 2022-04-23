@@ -33,13 +33,6 @@ export class CharacterSerializer {
         ];
     }
     */
-    public static serializeAssignment(character: Character) {
-        var result = character.role;
-        if (character.secondaryRole) {
-            result = result + " / " + character.secondaryRole;
-        }
-        return result;
-    }
 
     public static serializeName(character: Character) {
         if (character.type === CharacterType.KlingonWarrior) {

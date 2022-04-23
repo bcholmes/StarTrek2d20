@@ -69,7 +69,7 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
 
             await sheet.populate(pdfDoc, this.props.construct);
 
-            const pdfBytes = await pdfDoc.save()
+            const pdfBytes = await pdfDoc.save();
 
             // Trigger the browser to download the PDF document
             download(pdfBytes, sheet.createFileName(this.props.suffix, this.props.construct), "application/pdf");
