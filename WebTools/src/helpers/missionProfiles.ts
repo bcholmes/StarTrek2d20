@@ -1,4 +1,6 @@
 ﻿import { CharacterType } from '../common/characterType';
+import { context } from '../common/context';
+import { Source } from './sources';
 import {TalentsHelper, TalentModel} from './talents';
 
 export enum MissionProfile {
@@ -9,33 +11,31 @@ export enum MissionProfile {
     ScientificAndSurvey,
     CrisisAndEmergencyResponse,
     MultiroleExplorer,
-    HouseGuard
+    HouseGuard,
+    ProjectEscalante
 }
 
-class MissionProfileModel {
+export class MissionProfileModel {
+    id: MissionProfile;
     name: string;
     departments: number[];
     talents: TalentModel[];
+    traits: string;
+    notes: string;
 
-    constructor(name: string, departments: number[], talents: TalentModel[]) {
+    constructor(id: MissionProfile, name: string, departments: number[], talents: TalentModel[], traits: string = "", notes: string = "") {
+        this.id = id;
         this.name = name;
         this.departments = departments;
         this.talents = talents;
-    }
-}
-
-export class MissionProfileViewModel extends MissionProfileModel {
-    id: MissionProfile;
-
-    constructor(id: MissionProfile, base: MissionProfileModel) {
-        super(base.name, base.departments, base.talents);
-        this.id = id;
+        this.notes = notes;
     }
 }
 
 class MissionProfiles {
     private _profiles: { [id: number]: MissionProfileModel } = {
         [MissionProfile.StrategicAndDiplomatic]: new MissionProfileModel(
+            MissionProfile.StrategicAndDiplomatic,
             "Strategic and Diplomatic Operations",
             [3, 1, 2, 2, 2, 2],
             [
@@ -45,6 +45,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Extensive Shuttlebays")
             ]),
         [MissionProfile.PathfinderAndReconaissance]: new MissionProfileModel(
+            MissionProfile.PathfinderAndReconaissance,
             "Pathfinder and Reconnaissance Operations",
             [2, 3, 2, 2, 2, 1],
             [
@@ -53,6 +54,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Rugged Design")
             ]),
         [MissionProfile.TechnicalTestBed]: new MissionProfileModel(
+            MissionProfile.TechnicalTestBed,
             "Technical Test-Bed",
             [1, 2, 2, 3, 2, 2],
             [
@@ -63,6 +65,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Improved Warp Drive")
             ]),
         [MissionProfile.Tactical]: new MissionProfileModel(
+            MissionProfile.Tactical,
             "Tactical Operations",
             [2, 2, 3, 2, 1, 2],
             [
@@ -73,6 +76,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Improved Impulse Drive")
             ]),
         [MissionProfile.ScientificAndSurvey]: new MissionProfileModel(
+            MissionProfile.ScientificAndSurvey,
             "Scientific and Survey Operations",
             [2, 2, 1, 2, 3, 2],
             [
@@ -82,6 +86,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Modular Laboratories")
             ]),
         [MissionProfile.CrisisAndEmergencyResponse]: new MissionProfileModel(
+            MissionProfile.CrisisAndEmergencyResponse,
             "Crisis and Emergency Response",
             [2, 2, 2, 1, 2, 3],
             [
@@ -91,6 +96,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Modular Laboratories")
             ]),
         [MissionProfile.MultiroleExplorer]: new MissionProfileModel(
+            MissionProfile.MultiroleExplorer,
             "Multirole Explorer",
             [2, 2, 2, 2, 2, 2],
             [
@@ -100,14 +106,20 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Redundant Systems"),
                 TalentsHelper.getTalent("Secondary Reactors")
             ]),
-        //[MissionProfile.StrategicAndDiplomatic]: new MissionProfileModel(
-        //    "",
-        //    [],
-        //    []),
+        [MissionProfile.ProjectEscalante]: new MissionProfileModel(
+            MissionProfile.ProjectEscalante,
+            "Project Escalante",
+            [3, 1, 1, 2, 3, 2],
+            [
+                TalentsHelper.getTalent("Expanded Connectivity")
+            ],
+            "Expanded sensor footprint, Prototype",
+            "Used in the adventure \"Plague of Arias\""),
     };
 
     private _klingonProfiles: { [id: number]: MissionProfileModel } = {
         [MissionProfile.CrisisAndEmergencyResponse]: new MissionProfileModel(
+            MissionProfile.CrisisAndEmergencyResponse,
             "Crisis Response and Interception",
             [2, 2, 2, 3, 1, 2],
             [
@@ -117,6 +129,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Improved Warp Drive")
             ]),
         [MissionProfile.MultiroleExplorer]: new MissionProfileModel(
+            MissionProfile.MultiroleExplorer,
             "Multirole Battle Cruiser",
             [2, 2, 2, 2, 2, 2],
             [
@@ -126,6 +139,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Secondary Reactors")
             ]),
         [MissionProfile.PathfinderAndReconaissance]: new MissionProfileModel(
+            MissionProfile.PathfinderAndReconaissance,
             "Intelligence and Reconnaissance Operations",
             [2, 2, 2, 2, 3, 1],
             [
@@ -135,6 +149,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("High Resolution Sensors")
             ]),
         [MissionProfile.ScientificAndSurvey]: new MissionProfileModel(
+            MissionProfile.ScientificAndSurvey,
             "Scientific and Survey Operations",
             [2, 1, 2, 2, 3, 2],
             [
@@ -144,6 +159,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Modular Laboratories")
             ]),
         [MissionProfile.StrategicAndDiplomatic]: new MissionProfileModel(
+            MissionProfile.StrategicAndDiplomatic,
             "Strategic and Diplomatic Operations",
             [3, 1, 2, 2, 2, 2],
             [
@@ -152,6 +168,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Rugged Design")
             ]),
         [MissionProfile.Tactical]: new MissionProfileModel(
+            MissionProfile.Tactical,
             "Warship",
             [2, 2, 3, 3, 1, 1],
             [
@@ -162,6 +179,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher")
             ]),
         [MissionProfile.HouseGuard]: new MissionProfileModel(
+            MissionProfile.HouseGuard,
             "House Guard",
             [2, 2, 2, 3, 2, 1],
             [
@@ -177,28 +195,40 @@ class MissionProfiles {
     };
 
     getMissionProfiles(type: CharacterType) {
-        let profiles: MissionProfileViewModel[] = [];
-        let keys = (type === CharacterType.KlingonWarrior) 
-        ? [ MissionProfile.CrisisAndEmergencyResponse,
-            MissionProfile.MultiroleExplorer,
-            MissionProfile.PathfinderAndReconaissance,
-            MissionProfile.ScientificAndSurvey,
-            MissionProfile.StrategicAndDiplomatic,
-            MissionProfile.Tactical,
-            MissionProfile.HouseGuard ]
-        : [ MissionProfile.StrategicAndDiplomatic,
-            MissionProfile.PathfinderAndReconaissance,
-            MissionProfile.TechnicalTestBed,
-            MissionProfile.Tactical,
-            MissionProfile.ScientificAndSurvey,
-            MissionProfile.CrisisAndEmergencyResponse,
-            MissionProfile.MultiroleExplorer ];        
-
+        let profiles: MissionProfileModel[] = [];
+        let keys = [];
+        if (type === CharacterType.KlingonWarrior) {
+            keys = [ MissionProfile.CrisisAndEmergencyResponse,
+                MissionProfile.MultiroleExplorer,
+                MissionProfile.PathfinderAndReconaissance,
+                MissionProfile.ScientificAndSurvey,
+                MissionProfile.StrategicAndDiplomatic,
+                MissionProfile.Tactical,
+                MissionProfile.HouseGuard ];
+        } else if (context.hasSource(Source.TheseAreTheVoyages)) {
+            keys = [ MissionProfile.StrategicAndDiplomatic,
+                MissionProfile.PathfinderAndReconaissance,
+                MissionProfile.TechnicalTestBed,
+                MissionProfile.Tactical,
+                MissionProfile.ScientificAndSurvey,
+                MissionProfile.CrisisAndEmergencyResponse,
+                MissionProfile.MultiroleExplorer,
+                MissionProfile.ProjectEscalante ];
+        } else {
+            keys = [ MissionProfile.StrategicAndDiplomatic,
+                MissionProfile.PathfinderAndReconaissance,
+                MissionProfile.TechnicalTestBed,
+                MissionProfile.Tactical,
+                MissionProfile.ScientificAndSurvey,
+                MissionProfile.CrisisAndEmergencyResponse,
+                MissionProfile.MultiroleExplorer ];
+        }
+        
         for (let i in keys) {
             let n = keys[i];
             let profile = (type === CharacterType.KlingonWarrior) ? this._klingonProfiles[n] : this._profiles[n];
 
-            profiles.push(new MissionProfileViewModel(n, profile));
+            profiles.push(profile);
         }
 
         return profiles;
@@ -206,6 +236,19 @@ class MissionProfiles {
 
     getMissionProfile(profile: MissionProfile, type: CharacterType) {
         return (type === CharacterType.KlingonWarrior) ? this._klingonProfiles[profile] : this._profiles[profile];
+    }
+
+    getMissionProfileByName(profile: string, type: CharacterType) {
+        let list = (type === CharacterType.KlingonWarrior) ? this._klingonProfiles : this._profiles;
+        let result = null;
+        for (let id in list) {
+            console.log("Compare " + profile + " to " + MissionProfile[id]);
+            if (profile === MissionProfile[id]) {
+                result = list[id];
+                break;
+            }
+        }
+        return result;
     }
 }
 

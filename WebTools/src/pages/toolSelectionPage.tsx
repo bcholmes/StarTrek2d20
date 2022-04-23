@@ -6,6 +6,7 @@ import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
 import {Source} from '../helpers/sources';
 import {WorkflowsHelper} from '../helpers/workflows';
+import { context } from '../common/context';
 
 export class ToolSelectionPage extends React.Component<{}, {}> {
 
@@ -32,7 +33,7 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
     }
 
     private startStarfleetWorkflow() {
-        if (character.hasSource(Source.KlingonCore) || character.hasSource(Source.PlayersGuide)) {
+        if (context.hasSource(Source.KlingonCore) || context.hasSource(Source.PlayersGuide)) {
             this.goToPage(PageIdentity.CharacterType);
         } else {
             character.type = CharacterType.Starfleet;

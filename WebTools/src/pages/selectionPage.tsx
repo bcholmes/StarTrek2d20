@@ -13,7 +13,7 @@ export class SelectionPage extends React.Component<IPageProperties, {}> {
 
     render() {
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item active" aria-current="page">Home</li>

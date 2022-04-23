@@ -1,5 +1,5 @@
-﻿import {character } from '../common/character';
-import { CharacterType } from '../common/characterType';
+﻿import { CharacterType } from '../common/characterType';
+import { context } from '../common/context';
 import {Era} from './eras';
 import {Source} from './sources';
 import {TalentsHelper, TalentModel} from './talents';
@@ -7,6 +7,7 @@ import {TalentsHelper, TalentModel} from './talents';
 export enum Spaceframe {
     Akira,
     Ambassador,
+    Archer,
     Centaur,
     Constellation,
     Constitution,
@@ -98,7 +99,7 @@ export class SpaceframeViewModel extends SpaceframeModel {
     }
 
     static createCustomSpaceframe(type: CharacterType, serviceYear: number, eras: Era[]) {
-        return new SpaceframeViewModel(type, "", serviceYear, eras, Source.None, [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [], []);
+        return new SpaceframeViewModel(type, "", serviceYear, eras, Source.None, [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [], type === CharacterType.KlingonWarrior ? [ "Klingon Starship"] : [ "Federation Starship" ]);
     }
 
     static from(id: Spaceframe, base: SpaceframeModel) {
@@ -107,28 +108,21 @@ export class SpaceframeViewModel extends SpaceframeModel {
     }
 }
 
-class MissionPodModel {
+export class MissionPodViewModel {
+    id: number;
     name: string;
     description: string;
     departments: number[];
     systems: number[];
     talents: TalentModel[];
 
-    constructor(name: string, description: string, departments: number[], systems: number[], talents: TalentModel[]) {
+    constructor(id: number, name: string, description: string, departments: number[], systems: number[], talents: TalentModel[]) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.departments = departments;
         this.systems = systems;
         this.talents = talents;
-    }
-}
-
-export class MissionPodViewModel extends MissionPodModel {
-    id: MissionPod;
-
-    constructor(id: MissionPod, base: MissionPodModel) {
-        super(base.name, base.description, base.departments, base.systems, base.talents);
-        this.id = id;
     }
 }
 
@@ -617,7 +611,27 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-
+        [Spaceframe.Archer]: new SpaceframeModel(
+            CharacterType.Starfleet,
+            "Archer Class",
+            2258,
+            [],
+            Source.TricorderSet,
+            [8, 9, 6, 7, 8, 6],
+            [0, 0, 1, 2, 0, 0],
+            3,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentsHelper.getTalent("Improved Impulse Drive"),
+                TalentsHelper.getTalent("Improved Reaction Control System")
+            ],
+            [ "Federation Starship" ],
+            2290),
+    
         // Klingon Spaceframes
         [Spaceframe.D5]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
@@ -1017,8 +1031,9 @@ class Spaceframes {
         //    ]),
     };
 
-    private _missionPods: { [id: number]: MissionPodModel } = {
-        [MissionPod.CommandAndControl]: new MissionPodModel(
+    private _missionPods: { [id: number]: MissionPodViewModel } = {
+        [MissionPod.CommandAndControl]: new MissionPodViewModel(
+            MissionPod.CommandAndControl,
             "Command & Control",
             "The pod contains additional subspace antennae and supplementary computer cores, allowing it to serve as a command vessel for fleet actions.",
             [1, 0, 0, 0, 0, 0],
@@ -1027,7 +1042,8 @@ class Spaceframes {
                 TalentsHelper.getTalent("Command Ship"),
                 TalentsHelper.getTalent("Electronic Warfare Systems")
             ]),
-        [MissionPod.Sensors]: new MissionPodModel(
+        [MissionPod.Sensors]: new MissionPodViewModel(
+            MissionPod.Sensors,
             "Sensors",
             "The pod contains additional sensor systems, allowing the ship to serve a range of scientific and reconnaissance roles.",
             [0, 0, 0, 0, 1, 0],
@@ -1036,7 +1052,8 @@ class Spaceframes {
                 TalentsHelper.getTalent("Advanced Sensor Suites"),
                 TalentsHelper.getTalent("High Resolution Sensors")
             ]),
-        [MissionPod.Weapons]: new MissionPodModel(
+        [MissionPod.Weapons]: new MissionPodViewModel(
+            MissionPod.Weapons,
             "Weapons",
             "The pod contains additional torpedo launchers, phaser arrays, and targeting sensors.",
             [0, 0, 1, 0, 0, 0],
@@ -1054,7 +1071,7 @@ class Spaceframes {
         for (var frame in this._frames) {
             let f = this._frames[frame];
             if (f.serviceYear <= year && (f.maxServiceYear >= year || ignoreMaxServiceYear)) {
-                if (character.hasSource(f.source) && type === f.type) {
+                if (context.hasSource(f.source) && type === f.type) {
                     frames.push(SpaceframeViewModel.from(n, f));
                 }
             }
@@ -1069,14 +1086,34 @@ class Spaceframes {
         return result ? SpaceframeViewModel.from(frame, result) : undefined;
     }
 
+    getSpaceframeByName(name: string) {
+        let result = undefined;
+        for (let id in this._frames) {
+            if (Spaceframe[id] === name) {
+                result = SpaceframeViewModel.from(parseInt(id), this._frames[id]);
+                break;
+            }
+        }
+        return result;
+    }
+
+    getMissionPodByName(name: string) {
+        let result = undefined;
+        for (let id in this._missionPods) {
+            if (MissionPod[id] === name) {
+                result = this._missionPods[id];
+                break;
+            }
+        }
+        return result;
+    }
+
     getMissionPods() {
         let missionPods: MissionPodViewModel[] = [];
-        let n = 0;
 
         for (var pod in this._missionPods) {
             let p = this._missionPods[pod];
-            missionPods.push(new MissionPodViewModel(n, p));
-            n++;
+            missionPods.push(p);
         }
 
         return missionPods;
@@ -1088,7 +1125,7 @@ class Spaceframes {
         }
 
         let model = this._missionPods[pod];
-        return model == null ? null : new MissionPodViewModel(pod, this._missionPods[pod]);
+        return model == null ? null : model;
     }
 }
 

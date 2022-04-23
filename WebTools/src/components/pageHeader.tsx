@@ -40,6 +40,8 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
                 || this.props.page === PageIdentity.StarfleetAcademy
                 || this.props.page === PageIdentity.StarfleetAcademyDetails
                 || this.props.page === PageIdentity.ChildCareer
+                || this.props.page === PageIdentity.CadetCareer
+                || this.props.page === PageIdentity.CadetSeniority
                 || this.props.page === PageIdentity.ChildEducationPage
                 || this.props.page === PageIdentity.ChildEducationDetailsPage
                 || this.props.page === PageIdentity.CareerEvent1
@@ -50,6 +52,8 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
                 || this.props.page === PageIdentity.AttributesAndDisciplines
                 || this.props.page === PageIdentity.Finish) {
             return character.workflow.currentStep().name;
+        } else if (this.props.page === PageIdentity.ViewSheet) {
+            return "View Sheet";
         } else {
             return "";
         }

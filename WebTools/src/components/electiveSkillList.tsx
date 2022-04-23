@@ -21,15 +21,11 @@ class ElectiveSkill extends React.Component<IElectiveSkillProperties, {}> {
             : undefined;
 
         return (
-            <table className="skill-container" cellPadding="0" cellSpacing="0">
-                <tbody>
                     <tr>
                         <td className="skill-name" style={{ width: "250px" }}>{SkillsHelper.getSkillName(skill) }</td>
-                        <td className="skill-expertise">{skillExpertise}</td>
-                        <td>{checkBox}</td>
+                        <td className="skill-expertise pr-2">{skillExpertise}</td>
+                        <td className="pt-2">{checkBox}</td>
                     </tr>
-                </tbody>
-            </table>
         );
     }
 }
@@ -58,7 +54,11 @@ export class ElectiveSkillList extends React.Component<IElectiveSkillListPropert
 
         return (
             <div>
-                {skills}
+                <table className="skill-container" cellPadding="0" cellSpacing="0">
+                    <tbody>
+                        {skills}
+                        </tbody>
+                </table>
             </div>
         );
     }

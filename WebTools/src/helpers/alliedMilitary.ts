@@ -1,4 +1,5 @@
 import { Era } from "./eras";
+import { Species } from "./speciesEnum";
 
 export enum AlliedMilitaryType {
     MACO,
@@ -13,11 +14,13 @@ export enum AlliedMilitaryType {
 
 export class AlliedMilitary {
     name: string;
+    species: Species[];
     type: AlliedMilitaryType;
     eras: Era[];
 
-    constructor(name: string, type: AlliedMilitaryType, ...era: Era[]) {
+    constructor(name: string, type: AlliedMilitaryType, species: Species[], ...era: Era[]) {
         this.name = name;
+        this.species = species;
         this.type = type;
         this.eras = era;
     }
@@ -25,15 +28,20 @@ export class AlliedMilitary {
 
 class _AllyHelper {
     options: AlliedMilitary[] = [
-        new AlliedMilitary("Andorian Imperial Guard",AlliedMilitaryType.ANDORIAN_IMPERIAL_GUARD, Era.Enterprise),
-        new AlliedMilitary("Bajoran Militia", AlliedMilitaryType.BAJORAN_MILITIA, Era.NextGeneration),
-        new AlliedMilitary("Cardassian Union", AlliedMilitaryType.CARDASSIAN_UNION, Era.NextGeneration),
-        new AlliedMilitary("Klingon Defence Force",AlliedMilitaryType.KLINGON_DEFENCE_FORCE, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
-        new AlliedMilitary("MACO", AlliedMilitaryType.MACO, Era.Enterprise),
-        new AlliedMilitary("Romulan Star Empire", AlliedMilitaryType.ROMULAN_STAR_EMPIRE, Era.OriginalSeries, Era.NextGeneration),
-        new AlliedMilitary("Vulcan High Command", AlliedMilitaryType.VULCAN_HIGH_COMMAND, Era.Enterprise),
+        new AlliedMilitary("Andorian Imperial Guard", AlliedMilitaryType.ANDORIAN_IMPERIAL_GUARD, [Species.Andorian], 
+                Era.Enterprise),
+        new AlliedMilitary("Bajoran Militia", AlliedMilitaryType.BAJORAN_MILITIA, [Species.Bajoran], 
+                Era.NextGeneration),
+        new AlliedMilitary("Cardassian Union", AlliedMilitaryType.CARDASSIAN_UNION, [Species.Cardassian], 
+                Era.NextGeneration),
+        new AlliedMilitary("Klingon Defence Force",AlliedMilitaryType.KLINGON_DEFENCE_FORCE, [Species.KlingonExt, Species.Klingon, Species.KlingonQuchHa], 
+                Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
+        new AlliedMilitary("MACO", AlliedMilitaryType.MACO, [Species.Human], Era.Enterprise),
+        new AlliedMilitary("Romulan Star Empire", AlliedMilitaryType.ROMULAN_STAR_EMPIRE, [Species.RomulanExt],
+                Era.OriginalSeries, Era.NextGeneration),
+        new AlliedMilitary("Vulcan High Command", AlliedMilitaryType.VULCAN_HIGH_COMMAND, [Species.Vulcan], Era.Enterprise),
 
-        new AlliedMilitary("Other", AlliedMilitaryType.OTHER, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration)
+        new AlliedMilitary("Other", AlliedMilitaryType.OTHER, [], Era.Enterprise, Era.OriginalSeries, Era.NextGeneration)
     ]
 
     selectOptions(era: Era, includeKlingon: boolean) {

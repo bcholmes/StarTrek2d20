@@ -1,21 +1,19 @@
 ﻿import {Attribute} from '../helpers/attributes';
 import {Skill} from '../helpers/skills';
-import {Source} from '../helpers/sources';
-import {Era} from '../helpers/eras';
 import {Career} from '../helpers/careers';
 import {Environment} from '../helpers/environments';
-import {Species} from '../helpers/species';
+import {Species} from '../helpers/speciesEnum';
 import {Track} from '../helpers/tracks';
 import {UpbringingModel} from '../helpers/upbringings';
 import {Workflow} from '../helpers/workflows';
 import {TalentViewModel} from '../helpers/talents';
-import {MissionPod, MissionPodViewModel, SpaceframeHelper, SpaceframeViewModel} from '../helpers/spaceframes';
-import {MissionProfile} from "../helpers/missionProfiles";
 import {CharacterType} from './characterType';
-import { System } from '../helpers/systems';
 import { AlliedMilitary, AlliedMilitaryType } from '../helpers/alliedMilitary';
 import { Government, GovernmentType } from '../helpers/governments';
 import AgeHelper, { Age } from '../helpers/age';
+import { Weapon } from '../helpers/weapons';
+import { Construct } from './construct';
+import { Starship } from './starship';
 
 export abstract class CharacterTypeDetails {
 }
@@ -84,68 +82,6 @@ export class CharacterTalent {
     }
 }
 
-export class Starship {
-    name: string = "";
-    registry: string = "";
-    traits: string = "";
-    serviceYear?: number;
-    spaceframeModel?: SpaceframeViewModel = undefined;
-    missionPod?: MissionPod;
-    missionPodModel?: MissionPodViewModel;
-    missionProfile?: MissionProfile;
-    systems: number[];
-    departments: number[];
-    scale: number;
-    profileTalent?: TalentViewModel;
-    additionalTalents: TalentViewModel[] = [];
-    refits: System[] = [];
-
-    constructor() {
-        this.systems = [];
-        this.departments = [];
-        this.scale = 0;
-    }
-
-    getBaseSystem(system: System) {
-        let result = 0;
-        if (this.spaceframeModel) {
-            result = this.spaceframeModel.systems[system];
-            if (this.spaceframeModel.isMissionPodAvailable && this.missionPodModel) {
-                result += this.missionPodModel.systems[system];
-            }
-        }
-        return result;
-    }
-    getSystemValue(system: System) {
-        let base = this.getBaseSystem(system);
-        this.refits.forEach(r => { if (r === system) base++});
-        return base;
-    }
-
-    getTalentNameList() {
-        let talents = [];
-
-        if (this.spaceframeModel) {
-            talents = [...this.spaceframeModel.talents.map(t => { return t.name; })];
-        }
-
-        if (this.profileTalent) {
-            talents.push(this.profileTalent.name);
-        }
-        character.starship.additionalTalents.forEach(t => {
-            talents.push(t.name);
-        });
-        const missionPod = SpaceframeHelper.getMissionPod(this.missionPod);
-        if (missionPod) {
-            missionPod.talents.forEach(t => {
-                talents.push(t.name);
-            });
-        }
-        return talents;
-    }
-}
-
-
 class Step {
     page: number;
     character: Character;
@@ -156,19 +92,16 @@ class Step {
     }
 }
 
-export class Character {
+export class Character extends Construct {
     private _attributeInitialValue: number = 7;
     private _steps: Step[];
 
-    public sources: Source[];
-    public era: Era = Era.NextGeneration;
     public attributes: CharacterAttribute[] = [];
     public skills: CharacterSkill[] = [];
     public traits: string[];
     public additionalTraits: string;
     public talents: { [name: string]: CharacterTalent };
     public age: Age;
-    public name?: string;
     public lineage?: string;
     public house?: string;
     public equipment: string[];
@@ -178,8 +111,9 @@ export class Character {
     public otherSpeciesWorld?: string;
     public rank?: string;
     public role?: string;
+    public jobAssignment?: string;
+    public assignedShip?: string;
     public secondaryRole?: string;
-    public roleAbility?: string;
     public species?: Species;
     public mixedSpecies?: Species;
     public track?: Track;
@@ -192,18 +126,14 @@ export class Character {
     public finishValue?: string;
     public focuses: string[];
     public stress?: number;
-    public type: CharacterType = CharacterType.Starfleet;
     public typeDetails: CharacterTypeDetails;
     public workflow?: Workflow;
     public pronouns: string = '';
 
     public starship?: Starship;
 
-    // these options probably shouldn't be in the character. Fix that later
-    public allowCrossSpeciesTalents: boolean = false;
-    public allowEsotericTalents: boolean = false;
-
     constructor() {
+        super();
         this.attributes.push(new CharacterAttribute(Attribute.Control, this._attributeInitialValue));
         this.attributes.push(new CharacterAttribute(Attribute.Daring, this._attributeInitialValue));
         this.attributes.push(new CharacterAttribute(Attribute.Fitness, this._attributeInitialValue));
@@ -216,7 +146,6 @@ export class Character {
         }
 
         this._steps = [];
-        this.sources = [];
         this.traits = [];
         this.focuses = [];
         this.talents = {};
@@ -224,13 +153,59 @@ export class Character {
         this.careerEvents = [];
         this.age = AgeHelper.getAdultAge();
 
-        this.allowCrossSpeciesTalents = false;
-
         this.starship = undefined;
     }
 
     get steps() {
         return this._steps;
+    }
+
+    determineWeapons() {
+        let result: Weapon[] = [];
+            
+        if (this.hasTalent("Mean Right Hook")) {
+            result.push(new Weapon("Unarmed Strike", 1, "Knockdown, Non-lethal Vicious 1"));
+        } else {
+            result.push(new Weapon("Unarmed Strike", 1, "Knockdown"));
+        }
+
+        if (this.hasTalent("The Ushaan")) {
+            result.push(new Weapon("Ushaan-tor", 1, "Vicious 1"));
+        }
+
+        if (this.hasTalent("Warrior's Spirit")) {
+            result.push(new Weapon("Bat'leth", 3, "Vicious 1"));
+        }
+
+        if (this.type === CharacterType.Starfleet || this.type === CharacterType.Cadet) {
+            result.push(new Weapon("Phaser type-2", 3, "Charges"));
+        } else if (this.age.isAdult()) {
+            if (this.isKlingon()) {
+                result.push(new Weapon("d’k tahg dagger", 1, "Vicious 1, Deadly, Hidden 1"));
+            }
+            result.push(new Weapon("Disruptor Pistol", 3, "Vicious 1"));
+        }
+        return result;
+    }
+
+    calculateResistance() {
+        let result = 0;
+        if (this.isKlingon()) {
+            result += 1; // Klingon standard-issue armour
+        }
+        if (this.hasTalent("Chelon Shell")) {
+            result += 1;
+        }
+        if (this.hasTalent("Morphogenic Matrix")) {
+            result += 4;
+        }
+        if (this.hasTalent("Polyalloy Construction")) {
+            result += 1;
+        }
+        if (this.hasTalent("Hardened Hide")) {
+            result += 2;
+        }
+        return result;
     }
 
     saveStep(page: number) {
@@ -259,7 +234,7 @@ export class Character {
                 || character.hasTalent("Augmented Ability (Presence)")
                 || character.hasTalent("Augmented Ability (Reason)")
                 || character.hasTalent("Augmented Ability")) {
-            traits.push("Augmented");
+            traits.push("Augment");
         }
         if (character.hasTalent("Joined")) {
             traits.push("Symbiont");
@@ -280,6 +255,19 @@ export class Character {
 
     addTrait(trait: string) {
         this.traits.push(trait);
+    }
+
+    getAllTraits() {
+        let traits = this.baseTraits;
+        if (this.additionalTraits) {
+            traits.push(character.additionalTraits);
+        }
+
+        let result = "";
+        for (let i = 0; i < traits.length; i++) {
+            result += `${traits[i]}${i < traits.length-1 ? ", " : ""}`;
+        }
+        return result;
     }
 
     addTalent(talentModel: TalentViewModel) {
@@ -352,33 +340,11 @@ export class Character {
         return this.skills.some(s => s.expertise === max);
     }
 
-    addSource(source: Source) {
-        this.sources.push(source);
-    }
-
-    removeSource(source: Source) {
-        if (this.hasSource(source)) {
-            this.sources.splice(this.sources.indexOf(source), 1);
-        }
-    }
-
-    hasSource(source: Source) {
-        return character.sources.indexOf(source) > -1 || source === Source.Core;
-    }
-
-    hasAnySource(sources: Source[]) {
-        var result: boolean = false;
-        for (var s of sources) {
-            result = result || character.sources.indexOf(s) > -1 || s === Source.Core;
-        }
-        return result;
-    }
-
     update() {
         let maxAttribute = 12;
         let maxDiscipline = Character.maxDiscipline(this);
 
-        if (this.isYoung()) {
+        if (this.isYoung() || this.type === CharacterType.Cadet) {
             maxAttribute = 11;
         }
 
@@ -400,9 +366,6 @@ export class Character {
 
         character.type = this.type;
         character.typeDetails = this.typeDetails;
-        this.sources.forEach(s => {
-            character.sources.push(s);
-        });
         this._steps.forEach(s => {
             character.steps.push(new Step(s.page, s.character));
         });
@@ -419,7 +382,6 @@ export class Character {
             const t = this.talents[talent];
             character.talents[talent] = new CharacterTalent(t.rank);
         }
-        character.era = this.era;
         this.traits.forEach(t => {
             character.traits.push(t);
         });
@@ -431,11 +393,12 @@ export class Character {
         this.careerEvents.forEach(e => {
             character.careerEvents.push(e);
         });
+        character.jobAssignment = this.jobAssignment;
+        character.assignedShip = this.assignedShip;
         character.environment = this.environment;
         character.otherSpeciesWorld = this.otherSpeciesWorld;
         character.rank = this.rank;
         character.role = this.role;
-        character.roleAbility = this.roleAbility;
         character.species = this.species;
         character.mixedSpecies = this.mixedSpecies;
         character.track = this.track;
@@ -450,7 +413,6 @@ export class Character {
             character.focuses.push(f);
         });
         character.stress = this.stress;
-        character.allowCrossSpeciesTalents = this.allowCrossSpeciesTalents;
         if (this.workflow) {
             character.workflow = this.workflow.copy();
         }
@@ -461,11 +423,17 @@ export class Character {
     public static maxDiscipline(character) {
         if (character.age.isChild()) {
             return 3;
-        } else if (character.isYoung()) {
+        } else if (character.isYoung() || character.type === CharacterType.Cadet) {
             return 4;
         } else {
             return 5;
         }
+    }
+
+    public static isSpeciesListLimited(character) {
+        return character.type === CharacterType.KlingonWarrior || (character.type === CharacterType.AlliedMilitary 
+            && character.typeDetails != null && character.typeDetails instanceof AlliedMilitaryDetails 
+            && (character.typeDetails as AlliedMilitaryDetails).alliedMilitary.species.length > 0);
     }
 }
 

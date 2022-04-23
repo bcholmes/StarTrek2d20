@@ -1,24 +1,16 @@
 {
     "stereotype": "starship",
     "type": "Starfleet",
-    "year": 2371,
+    "year": 2377,
     "spaceframe": {
-        "name": "",
-        "custom": {
-            "serviceYear": 2371,
-            "systems": [],
-            "departments": [],
-            "scale": 4,
-            "weapons": [],
-            "traits": []
-        }
+        "name": "Intrepid Class"
     },
     "missionProfile": {
-        "departments": []
+        "name": "Scientific and Survey Operations"
     },
-    "name": "",
-    "registry": "",
-    "refits": [],
-    "talents": [],
-    "traits": []
+    "name": "USS Alan Turing",
+    "registry": "NCC-74859",
+    "refits": ["Structure"],
+    "talents": ["Modular Laboratories"],
+    "traits": ["Dominion War Service"]
 }

@@ -68,8 +68,7 @@ export class CareerEventPage extends React.Component<IPageProperties, ICareerEve
 
         if (character.careerEvents.length === 1) {
             Navigation.navigateToPage(PageIdentity.CareerEvent1Details);
-        }
-        else {
+        } else {
             Navigation.navigateToPage(PageIdentity.CareerEvent2Details);
         }
     }

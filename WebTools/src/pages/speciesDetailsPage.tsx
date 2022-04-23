@@ -3,7 +3,7 @@ import { character } from '../common/character';
 import { Navigation } from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
-import { Species, SpeciesHelper } from '../helpers/species';
+import { SpeciesHelper } from '../helpers/species';
 import { AttributesHelper } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
 import { TalentsHelper, TalentViewModel, ToViewModel } from '../helpers/talents';
@@ -15,6 +15,8 @@ import { Dialog } from '../components/dialog';
 import { TalentSelection } from '../components/talentSelection';
 import { Source } from '../helpers/sources';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import { Species } from '../helpers/speciesEnum';
+import { context } from '../common/context';
 
 export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
     private _selectedTalent: TalentViewModel;
@@ -22,8 +24,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
 
     render() {
         var species = SpeciesHelper.getSpeciesByType(character.species);
-        var paragraphs = species.description.split('\n');
-        var description = paragraphs.map((p, i) => {
+        var description = species.description.map((p, i) => {
             return (<div className="desc-text" key={'text-' + i}>{p}</div>);
         });
 
@@ -66,23 +67,23 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
             talents.push(...TalentsHelper.getTalentsForSkills(character.skills.map(s => { return s.skill; })), ...TalentsHelper.getTalentsForSkills([Skill.None]));
         }
 
-        const esotericTalentOption = (character.hasSource(Source.PlayersGuide)) ? (<div>
+        const esotericTalentOption = (context.hasSource(Source.PlayersGuide)) ? (<div>
                 <CheckBox
-                    isChecked={character.allowEsotericTalents}
+                    isChecked={context.allowEsotericTalents}
                     text="Allow esoterric talents (GM's decision)"
-                    value={!character.allowEsotericTalents}
-                    onChanged={() => { character.allowEsotericTalents = !character.allowEsotericTalents; this.forceUpdate(); }} />
+                    value={!context.allowEsotericTalents}
+                    onChanged={() => { context.allowEsotericTalents = !context.allowEsotericTalents; this.forceUpdate(); }} />
             </div>) : undefined;
 
-        const talentSelection = talents.length > 0 && character.workflow.currentStep().talentPrompt
+        const talentSelection = talents.length > 0 && character.workflow.currentStep().options.talentSelection
             ? (<div className="panel">
                 <div className="header-small">TALENTS</div>
                 <div>
                     <CheckBox
-                        isChecked={character.allowCrossSpeciesTalents}
+                        isChecked={context.allowCrossSpeciesTalents}
                         text="Allow cross-species talents (GM's decision)"
-                        value={!character.allowCrossSpeciesTalents}
-                        onChanged={() => { character.allowCrossSpeciesTalents = !character.allowCrossSpeciesTalents; this.forceUpdate(); }} />
+                        value={!context.allowCrossSpeciesTalents}
+                        onChanged={() => { context.allowCrossSpeciesTalents = !context.allowCrossSpeciesTalents; this.forceUpdate(); }} />
                 </div>
                 {esotericTalentOption}
                 <TalentSelection talents={talents} onSelection={talents => this.onTalentSelected(talents.length > 0 ? talents[0] : undefined)} />
@@ -91,10 +92,10 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
                 <div className="header-small">SPECIES OPTIONS</div>
                 <div>
                     <CheckBox
-                        isChecked={character.allowCrossSpeciesTalents}
+                        isChecked={context.allowCrossSpeciesTalents}
                         text="Allow cross-species talents (GM's decision)"
-                        value={!character.allowCrossSpeciesTalents}
-                        onChanged={() => { character.allowCrossSpeciesTalents = !character.allowCrossSpeciesTalents; this.forceUpdate(); }} />
+                        value={!context.allowCrossSpeciesTalents}
+                        onChanged={() => { context.allowCrossSpeciesTalents = !context.allowCrossSpeciesTalents; this.forceUpdate(); }} />
                 </div>
                 {esotericTalentOption}
               </div>);
@@ -153,7 +154,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
             }
         }
 
-        if (character.workflow.currentStep().talentPrompt) {
+        if (character.workflow.currentStep().options.talentSelection) {
             if (!this._selectedTalent) {
                 Dialog.show("You have not selected a talent.");
                 return;

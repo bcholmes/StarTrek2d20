@@ -3,6 +3,7 @@ import {character } from '../common/character';
 import {CharacterType } from '../common/characterType';
 import {Source} from './sources';
 import { Attribute } from './attributes';
+import { context } from '../common/context';
 
 export enum Track {
     // Core
@@ -380,6 +381,8 @@ class Tracks {
             return this._civilianTracks;
         } else if (type === CharacterType.KlingonWarrior) {
             return this._klingonTracks;
+        } else if (type === CharacterType.Cadet) {
+            return [ this._tracks[0], this._tracks[1], this._tracks[2] ];
         } else {
             return this._tracks;
         }
@@ -389,7 +392,7 @@ class Tracks {
         var tracks: TrackModel[] = [];
         var list = this.chooseList(character.type);
         for (let model of list) {
-            if (character.hasSource(model.source)) {
+            if (context.hasSource(model.source)) {
                 if (model.id === Track.EnlistedSecurityTraining && !character.enlisted && character.type !== CharacterType.KlingonWarrior) {
                     continue;
                 }

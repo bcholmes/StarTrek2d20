@@ -1,12 +1,14 @@
 import { Source } from "../helpers/sources";
 
-export const enum CharacterType {
+export enum CharacterType {
     Starfleet = 0,
     KlingonWarrior,
     AlliedMilitary,
     AmbassadorDiplomat,
     Civilian,
+    Cadet,
     Child,
+    Tribble,
     Other
 }
 
@@ -17,13 +19,14 @@ export class CharacterTypeModel {
         new CharacterTypeModel("Allied Military", CharacterType.AlliedMilitary),
         new CharacterTypeModel("Ambassador / Diplomat", CharacterType.AmbassadorDiplomat),
         new CharacterTypeModel("Civilian", CharacterType.Civilian),
+        new CharacterTypeModel("Cadet", CharacterType.Cadet),
         new CharacterTypeModel("Child", CharacterType.Child),
         new CharacterTypeModel("Other", CharacterType.Other)
     ];
 
     private static TYPES_EXCEPT_OTHER: CharacterTypeModel[] = [ 
         CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1], CharacterTypeModel.TYPES[2], CharacterTypeModel.TYPES[3], 
-        CharacterTypeModel.TYPES[4], CharacterTypeModel.TYPES[5]
+        CharacterTypeModel.TYPES[4], CharacterTypeModel.TYPES[5], CharacterTypeModel.TYPES[6]
     ];
     
     name: string;

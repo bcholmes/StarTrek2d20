@@ -11,6 +11,39 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220422</b>
+                <ul>
+                    <li>Add in the Cadet type from the <i>Player's Guide</i>. We ended up having a pretty big discussion
+                        about Cadets and roles on the Modiphius forum.</li>
+                    <li>Some minor tweaks to certain workflows.</li>
+                    <li>The <i>Discovery Season 1</i> and <cite>Discovery Season 2</cite> books basically have the same
+                        rules additions, so I'm not distinguishing them as different sources. I mean, that list of 
+                        sources is already long enough. So long, in fact, that (partially prompted by Felderburg), I 
+                        organized it a bit.</li>
+                    <li>Add a placeholder for some not-yet-implemented sources, including the <i>Discovery Campaign</i> and the
+                        recently-announced (but still a long way off) <i>Utopia Planetia</i> book. Hey, what can I say? 
+                        I am excite.</li>
+                </ul>
+                <b>v1.220409</b>
+                <ul>
+                    <li>More bug fixes.</li>
+                    <li>Add support for Kelpians from the <i>Discovery Season 1</i> source.</li>
+                </ul>
+                <b>v1.220329</b>
+                <ul>
+                    <li>Various small bug fixes.</li>
+                    <li>Add support for the <i>Archer</i> Class ship from the <i>Tricorder Set</i>.</li>
+                    <li>Implement a bookmarkable "view" page for creations. At the moment, this view is only available for
+                        ships and supporting characters, but it'll be available for main characters in the not-too-distant future.
+                    </li>
+                </ul>
+                <b>v1.220323</b>
+                <ul>
+                    <li>I've been implementing some new features that I'm not yet ready to make public. But one of the things that's changed is
+                        that the code now makes a lot more use of a new library (Bootstrap) for web display. Some layout and sizes of things have 
+                        shifted a bit. If you see something eggregiously bad, make noise in the Feedback area.
+                    </li>
+                </ul>
                 <b>v1.220319</b>
                 <ul>
                     <li>Implement Child character creation from the <cite>Player's Guide</cite></li>
@@ -91,23 +124,6 @@ class News extends React.Component<INewsProperties, {}> {
                 <b>v1.211023</b>
                 <ul>
                     <li>Enhancement: Allow an override to starship "end of service" dates.</li>
-                </ul>
-                <b>v1.211022</b>
-                <ul>
-                    <li>Enhancement: add support for more ship outlines (notably the Olympic and Sydney class).</li>
-                    <li>Bug: Data corrections for Klingon spaceframes.</li>
-                    <li>Enhancement: Allow users to specify non-Klingon races when creating Klingon Warrior characters.</li>
-                </ul>
-                <b>v1.211018</b>
-                <ul>
-                    <li><a href="https://github.com/bcholmes/StarTrek2d20/issues/10" target="_blank" rel="noreferrer">Enhancement:</a> 
-                        Automatically add the 'Augmented' trait when the character has an Augmented Ability talent.</li>
-                </ul>
-                <b>v1.211016</b>
-                <ul>
-                    <li>I'm experimenting with revisions to the Starship character sheet. You probably won't notice any difference.</li>
-                    <li><a href="https://github.com/bcholmes/StarTrek2d20/issues/7" target="_blank" rel="noreferrer">Bug:</a> 
-                        retore the accept/reject indicator on character sheets.</li>
                 </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>

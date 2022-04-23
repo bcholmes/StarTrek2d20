@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import {System} from '../helpers/systems';
 import {SpaceframeHelper} from '../helpers/spaceframes';
-import {character} from '../common/character';
+import {Starship} from '../common/starship';
 
 interface IRefitImprovementProperties {
     controller: Refits;
@@ -48,6 +48,7 @@ export class Refit extends React.Component<IRefitImprovementProperties, {}> {
 }
 
 interface IRefitsProperties {
+    starship: Starship;
     points: number;
     refits: System[]
     onIncrease?: (system: System) => void;
@@ -60,9 +61,9 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
     constructor(props: IRefitsProperties) {
         super(props);
 
-        let minimum = character.starship.spaceframeModel.systems;
+        let minimum = this.props.starship.spaceframeModel.systems;
 
-        const missionPod = SpaceframeHelper.getMissionPod(character.starship.missionPod);
+        const missionPod = SpaceframeHelper.getMissionPod(this.props.starship.missionPod);
         if (missionPod) {
             missionPod.systems.forEach((s, i) => {
                 minimum[i] += s;
@@ -90,7 +91,7 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
     }
 
     showDecrease(system: System) {
-        return this.currentValue(system) > character.starship.getBaseSystem(system);
+        return this.currentValue(system) > this.props.starship.getBaseSystem(system);
     }
 
     showIncrease(system: System) {
@@ -98,11 +99,10 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
     }
 
     currentValue(s: System) {
-        return character.starship.getSystemValue(s);
+        return this.props.starship.getSystemValue(s);
     }
 
     onDecrease(attr: System) {
-        console.log("on decrease 2");
         this.props.onDecrease(attr);
         this.forceUpdate();
     }

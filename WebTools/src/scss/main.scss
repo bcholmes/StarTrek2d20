@@ -6,8 +6,19 @@ $breadcrumb-bg: #130e1a;
 $breadcrumb-border-radius: 1rem;
 $breadcrumb-padding-x: 1.5rem;
 
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/root';
+@import '~bootstrap/scss/reboot';
+
 @import '~bootstrap/scss/breadcrumb';
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/type';
+@import '~bootstrap/scss/utilities/display';
+@import '~bootstrap/scss/utilities/flex';
 @import '~bootstrap/scss/utilities/spacing';
+@import '~bootstrap/scss/utilities/text';
 
 @import './common.scss';
 @import './attributes.scss';
@@ -17,4 +28,4 @@ $breadcrumb-padding-x: 1.5rem;
 @import './skills.scss';
 @import './sourceselection.scss';
 @import './specialChars.scss';
-@import './rows.scss';
+@import './view.scss';

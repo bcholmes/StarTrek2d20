@@ -24,11 +24,12 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
     constructor(props) {
         super(props);
 
+        let url = new URL(window.location.href);
         this.state = {
             showNews: false,
             showHistory: false,
             showProfile: false,
-            activePage: PageIdentity.Selection
+            activePage: url.pathname === "/view" ? PageIdentity.ViewSheet : PageIdentity.Selection
         };
         this.pageFactory = new PageFactory();
     }
@@ -85,8 +86,8 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
                             </div>
                         </div>
                         <div className="lcar-content-action">
-                            <div id="profile-button" className="lcar-content-profile" onClick={ () => this.toggleProfile() }>Profile</div>
-                            <CharacterSheet showProfile={this.state.showProfile} />
+                            <div id="profile-button" className={'lcar-content-profile ' + (this.isProfileSupportedForPage() ? '' : 'd-none')} onClick={ () => this.toggleProfile() }>Profile</div>
+                            <CharacterSheet showProfile={this.state.showProfile}/>
                         </div>
                         <div className="lcar-content-feedback" onClick={ () => this.showFeedbackPage() }>Feedback</div>
                         <div className="lcar-content-news" onClick={() => this.showNews()}>
@@ -109,6 +110,15 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
             <div id="dialog" key="modal-dialog"></div>,
             <News showModal={this.state.showNews} onClose={() => {this.hideNews()}} key="news"/>
         ];
+    }
+
+    isProfileSupportedForPage() {
+        if (this.state.activePage === PageIdentity.ViewSheet ||
+            this.state.activePage === PageIdentity.Starship) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     showFeedbackPage() {

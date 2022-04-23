@@ -10,6 +10,7 @@ import InstructionText from '../components/instructionText';
 import { Source } from '../helpers/sources';
 import { CheckBox } from '../components/checkBox';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import { context } from '../common/context';
 
 interface IEnvironmentPageState {
     showSelection: boolean;
@@ -29,7 +30,7 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
     }
 
     render() {
-        let showAlt = (character.hasSource(Source.PlayersGuide)) ? (<CheckBox isChecked={this.state.showAlternates} value={'alternates'} text="Allow alternate Environments (GM's decision)" onChanged={val => { this.setState(state => ({...state, showAlternates: !state.showAlternates}) ) }} />) : null;
+        let showAlt = (context.hasSource(Source.PlayersGuide)) ? (<CheckBox isChecked={this.state.showAlternates} value={'alternates'} text="Allow alternate Environments (GM's decision)" onChanged={val => { this.setState(state => ({...state, showAlternates: !state.showAlternates}) ) }} />) : null;
 
         let alt = (this.state.showAlternates) 
                 ? (<div className="pl-2 pr-2">
@@ -41,13 +42,13 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
 
         var content = !this.state.showSelection ?
             (
-                <div>
+                <div className="container ml-0">
                     <InstructionText text={character.workflow.currentStep().description} />
                     <div className="page-text">
                         Either select or roll your Environment.
                     </div>
                     {showAlt}
-                    <div className="row row-cols-md-3">
+                    <div className="row row-cols-md-2">
                         <div className="pl-2 pr-2">
                             <Button className="button" text="Select Environment" onClick={() => this.showEnvironments() } />
                             <Button className="button" text="Roll Environment" onClick={() => this.rollEnvironment() } />

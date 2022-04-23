@@ -1,8 +1,9 @@
 ﻿import {Character, CharacterAttribute, CharacterSkill, CharacterTalent} from './character';
 import { CharacterType } from '../common/characterType';
-import {SpeciesHelper, Species} from '../helpers/species';
+import {SpeciesHelper} from '../helpers/species';
 import {EnvironmentsHelper, Environment} from '../helpers/environments';
 import {Skill} from '../helpers/skills';
+import { Species } from '../helpers/speciesEnum';
 
 export interface ICharacterData {
     name: string;
@@ -32,13 +33,6 @@ export class CharacterSerializer {
         ];
     }
     */
-    public static serializeAssignment(character: Character) {
-        var result = character.role;
-        if (character.secondaryRole) {
-            result = result + " / " + character.secondaryRole;
-        }
-        return result;
-    }
 
     public static serializeName(character: Character) {
         if (character.type === CharacterType.KlingonWarrior) {

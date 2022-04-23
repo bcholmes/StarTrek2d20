@@ -6,7 +6,8 @@ import {Track} from './tracks';
 import {AlliedMilitaryDetails, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { AlliedMilitaryType } from './alliedMilitary';
-import { AllOfPrerequisite, AnyOfPrerequisite, EnlistedPrerequisite, EraPrerequisite, IPrerequisite, NotPrerequisite, SourcePrerequisite, TypePrerequisite } from './prerequisite';
+import { AllOfPrerequisite, AnyOfPrerequisite, CharacterTypePrerequisite, EnlistedPrerequisite, EraPrerequisite, IPrerequisite, NotPrerequisite, SourcePrerequisite, TypePrerequisite } from './prerequisite';
+import { context } from '../common/context';
 
 export enum Rank {
     // Core
@@ -76,7 +77,12 @@ export enum Rank {
     Trooper,
 
     Administrator,
-    FleetCommander
+    FleetCommander,
+
+    CadetFourthClass,
+    CadetThirdClass,
+    CadetSecondClass,
+    CadetFirstClass,
 }
 
 
@@ -113,6 +119,21 @@ class CareersPrerequisite implements IPrerequisite {
         return this._careers.indexOf(character.career) > -1;
     }
 }
+
+class NoCareerEventsPrerequisite implements IPrerequisite {
+
+    isPrerequisiteFulfilled() {
+        return character.careerEvents == null ||  character.careerEvents.length === 0;
+    }
+}
+
+class HasCareerEventsPrerequisite implements IPrerequisite {
+
+    isPrerequisiteFulfilled() {
+        return character.careerEvents != null && character.careerEvents.length > 0;
+    }
+}
+
 
 class TrackPrerequisite implements IPrerequisite {
     private _track: Track;
@@ -172,7 +193,7 @@ class NotEraPrerequisite implements IPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        return character.era !== this._era;
+        return context.era !== this._era;
     }
 }
 
@@ -181,9 +202,11 @@ class RankModel {
     name: string;
     prerequisites: IPrerequisite[];
     tiers: number;
+    abbreviation?: string;
 
-    constructor(id: Rank, name: string, prerequisites: IPrerequisite[], tiers: number = 1) {
+    constructor(id: Rank, name: string, prerequisites: IPrerequisite[], abbreviation?: string, tiers: number = 1) {
         this.id = id;
+        this.abbreviation = abbreviation;
         this.name = name;
         this.prerequisites = prerequisites;
         this.tiers = tiers;
@@ -200,6 +223,7 @@ class Ranks {
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
                 new RolesPrerequisite([Role.CommandingOfficer, Role.Adjutant])
             ],
+            "Capt.",
             1),
         new RankModel(
             Rank.Commander,
@@ -210,6 +234,7 @@ class Ranks {
                 new NotRolesPrerequisite([Role.Admiral]),
                 new NotPrerequisite(new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.CARDASSIAN_UNION))
             ],
+            "Cmdr.",
             1),
         new RankModel(
             Rank.LieutenantCommander,
@@ -220,6 +245,7 @@ class Ranks {
                 new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "LCdr.",
             1),
         new RankModel(
             Rank.Lieutenant,
@@ -235,7 +261,8 @@ class Ranks {
                     new TypePrerequisite(CharacterType.KlingonWarrior), 
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.KLINGON_DEFENCE_FORCE, AlliedMilitaryType.ROMULAN_STAR_EMPIRE, 
                         AlliedMilitaryType.ANDORIAN_IMPERIAL_GUARD, AlliedMilitaryType.VULCAN_HIGH_COMMAND, AlliedMilitaryType.BAJORAN_MILITIA)),
-            ]),
+            ],
+            "Lt."),
         new RankModel(
             Rank.LieutenantJunior,
             "Lieutenant (Junior Grade)",
@@ -245,6 +272,7 @@ class Ranks {
                 new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "Lt. (J.G.)",
             1),
         new RankModel(
             Rank.Ensign,
@@ -256,6 +284,7 @@ class Ranks {
                 new AnyOfPrerequisite(new TypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior), 
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.KLINGON_DEFENCE_FORCE)),
             ],
+            "Ens.",
             1),
         new RankModel(
             Rank.MasterChiefPettyOfficer,
@@ -265,6 +294,7 @@ class Ranks {
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "MCPO",
             1),
         new RankModel(
             Rank.MasterChiefSpecialist,
@@ -274,6 +304,7 @@ class Ranks {
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "MCSP",
             1),
         new RankModel(
             Rank.SeniorChiefPettyOfficer,
@@ -283,6 +314,7 @@ class Ranks {
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "SCPO",
             1),
         new RankModel(
             Rank.SeniorChiefSpecialist,
@@ -292,6 +324,7 @@ class Ranks {
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "SCSP",
             1),
         new RankModel(
             Rank.ChiefPettyOfficer,
@@ -301,6 +334,7 @@ class Ranks {
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "Chief",
             1),
         new RankModel(
             Rank.ChiefSpecialist,
@@ -310,6 +344,7 @@ class Ranks {
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "Chief",
             1),
         new RankModel(
             Rank.PettyOfficer,
@@ -319,6 +354,7 @@ class Ranks {
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "P.O.",
             3),
         new RankModel(
             Rank.Specialist,
@@ -328,6 +364,7 @@ class Ranks {
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "SP",
             3),
         new RankModel(
             Rank.Yeoman,
@@ -337,6 +374,7 @@ class Ranks {
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "Yeo",
             3),
         new RankModel(
             Rank.Crewman,
@@ -346,6 +384,7 @@ class Ranks {
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "Crew.",
             3),
         new RankModel(
             Rank.RearAdmiral,
@@ -358,6 +397,7 @@ class Ranks {
                 new RolesPrerequisite([Role.Admiral]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "Adm.",
             1),
         new RankModel(
             Rank.RearAdmiralLower,
@@ -370,6 +410,7 @@ class Ranks {
                 new RolesPrerequisite([Role.Admiral]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "Adm.",
             1),
         new RankModel(
             Rank.RearAdmiral,
@@ -382,6 +423,7 @@ class Ranks {
                 new RolesPrerequisite([Role.Admiral]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "Adm",
             1),
         new RankModel(
             Rank.ViceAdmiral,
@@ -393,6 +435,7 @@ class Ranks {
                 new RolesPrerequisite([Role.Admiral]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "Adm",
             1),
         new RankModel(
             Rank.ViceAdmiral,
@@ -407,6 +450,7 @@ class Ranks {
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.ROMULAN_STAR_EMPIRE)
                 )
             ],
+            "Adm",
             1),
         new RankModel(
             Rank.ViceAdmiral,
@@ -418,6 +462,7 @@ class Ranks {
                 new RolesPrerequisite([Role.Admiral]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "Adm",
             1),
         new RankModel(
             Rank.Commodore,
@@ -429,6 +474,7 @@ class Ranks {
                 new RolesPrerequisite([Role.CommandingOfficer]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "Comm",
             1),
         new RankModel(
             Rank.FleetCaptain,
@@ -439,14 +485,14 @@ class Ranks {
                 new RolesPrerequisite([Role.CommandingOfficer]),
                 new TypePrerequisite(CharacterType.Starfleet)
             ],
+            "Fl. Capt.",
             1),
         new RankModel(
             Rank.Civilian,
             "Civilian",
             [
                 new AnyOfPrerequisite(new RolesPrerequisite([Role.DiplomaticAttache]), new TrackPrerequisite(Track.Laborer))
-            ],
-            1),
+            ]),
         new RankModel(
             Rank.Sergeant,
             "Sergeant (bu')",
@@ -455,7 +501,7 @@ class Ranks {
                 new NotTrackPrerequisite(Track.Laborer),
                 new TypePrerequisite(CharacterType.KlingonWarrior)
             ],
-            1),
+            "bu'"),
         new RankModel(
             Rank.Corporal,
             "Corporal (Da')",
@@ -464,7 +510,7 @@ class Ranks {
                 new NotTrackPrerequisite(Track.Laborer),
                 new TypePrerequisite(CharacterType.KlingonWarrior)
             ],
-            1),
+            "Da'"),
         new RankModel(
             Rank.Bekk,
             "Bekk (beq)",
@@ -473,7 +519,7 @@ class Ranks {
                 new NotTrackPrerequisite(Track.Laborer),
                 new TypePrerequisite(CharacterType.KlingonWarrior)
             ],
-            1),
+            "beq"),
         new RankModel(
             Rank.General,
             "General",
@@ -488,7 +534,8 @@ class Ranks {
                         AlliedMilitaryType.ROMULAN_STAR_EMPIRE,
                         AlliedMilitaryType.KLINGON_DEFENCE_FORCE)
                 )
-            ]),
+            ],
+            "Gen."),
         new RankModel(
             Rank.LieutenantGeneral,
             "Lieutenant General",
@@ -497,7 +544,8 @@ class Ranks {
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CareersPrerequisite([Career.Veteran]),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
-            ]),
+            ],
+            "Lt.Gen."),
         new RankModel(
             Rank.MajorGeneral,
             "Major General",
@@ -506,7 +554,8 @@ class Ranks {
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CareersPrerequisite([Career.Veteran]),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
-            ]),
+            ],
+            "Maj.Gen."),
         new RankModel(
             Rank.Brigadier,
             "Brigadier",
@@ -518,7 +567,8 @@ class Ranks {
                     new TypePrerequisite(CharacterType.KlingonWarrior),
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.KLINGON_DEFENCE_FORCE)
                 )
-            ]),
+            ],
+            "Brig."),
         new RankModel(
             Rank.Colonel,
             "Colonel",
@@ -530,7 +580,8 @@ class Ranks {
                         AlliedMilitaryType.ROMULAN_STAR_EMPIRE, AlliedMilitaryType.KLINGON_DEFENCE_FORCE),
                     new TypePrerequisite(CharacterType.KlingonWarrior)
                 )
-            ]),
+            ],
+            "Col"),
         new RankModel(
             Rank.LieutenantColonel,
             "Lieutenant Colonel",
@@ -538,7 +589,8 @@ class Ranks {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
-            ]),
+            ],
+            "Lt.Col."),
         new RankModel(
             Rank.Major,
             "Major",
@@ -547,7 +599,8 @@ class Ranks {
                 new SourcePrerequisite(Source.PlayersGuide),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA, 
                     AlliedMilitaryType.ROMULAN_STAR_EMPIRE, AlliedMilitaryType.VULCAN_HIGH_COMMAND)
-            ]),
+            ],
+            "Maj."),
         new RankModel(
             Rank.Captain,
             "Captain",
@@ -555,7 +608,8 @@ class Ranks {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA)
-            ]),
+            ],
+            "Capt."),
         new RankModel(
             Rank.Lieutenant,
             "Lieutenant",
@@ -563,7 +617,8 @@ class Ranks {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.BAJORAN_MILITIA)
-            ]),
+            ],
+            "Lt."),
         new RankModel(
             Rank.FirstLieutenant,
             "First Lieutenant",
@@ -571,7 +626,8 @@ class Ranks {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
-            ]),
+            ],
+            "1st.Lt."),
         new RankModel(
             Rank.SecondLieutenant,
             "Second Lieutenant",
@@ -579,7 +635,8 @@ class Ranks {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
-            ]),
+            ],
+            "2nd.Lt."),
         new RankModel(
             Rank.MasterSergeant,
             "Master Sergeant",
@@ -587,7 +644,8 @@ class Ranks {
                 new EnlistedPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
-            ]),
+            ],
+            "Sgt."),
         new RankModel(
             Rank.Sergeant,
             "Sergeant",
@@ -595,7 +653,8 @@ class Ranks {
                 new EnlistedPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
-            ]),
+            ],
+            "Sgt."),
         new RankModel(
             Rank.Corporal,
             "Corporal",
@@ -603,7 +662,8 @@ class Ranks {
                 new EnlistedPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
-            ]),
+            ],
+            "Cpl."),
         new RankModel(
             Rank.Private,
             "Private",
@@ -612,7 +672,8 @@ class Ranks {
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite([Career.Young]),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
-            ]),
+            ],
+            "Pvt."),
         
         // Cardassian Ranks
         new RankModel(
@@ -648,7 +709,8 @@ class Ranks {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
-            ]),
+            ],
+            "Gul"),
         new RankModel(
             Rank.Dal,
             "Dal / Dalin",
@@ -765,8 +827,50 @@ class Ranks {
                 new CareersPrerequisite([Career.Veteran]),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.VULCAN_HIGH_COMMAND)
             ]),
-            
-    ];
+        
+
+        // Cadets
+        new RankModel(
+            Rank.CadetFourthClass,  // first year cadet
+            "Cadet, fourth class",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CharacterTypePrerequisite(CharacterType.Cadet),
+                new NoCareerEventsPrerequisite(),
+            ],
+            "Cdt."),
+        new RankModel(
+            Rank.CadetThirdClass, // second-year cadet
+            "Cadet, third class",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CharacterTypePrerequisite(CharacterType.Cadet),
+                new NoCareerEventsPrerequisite(),
+            ],
+            "Cdt."),
+        new RankModel(
+            Rank.CadetSecondClass, // third-year cadet
+            "Cadet, second class",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CharacterTypePrerequisite(CharacterType.Cadet),
+                new HasCareerEventsPrerequisite(),
+            ],
+            "Cdt."),
+        new RankModel(
+            Rank.CadetFirstClass, // fourth-year cadet
+            "Cadet, first class",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CharacterTypePrerequisite(CharacterType.Cadet),
+                new HasCareerEventsPrerequisite(),
+            ],
+            "Cdt."),
+        ];
 
     getRanks(ignorePrerequisites?: boolean) {
         let ranks: RankModel[] = [];
@@ -800,6 +904,18 @@ class Ranks {
             if (r.name === name) {
                 return r;
             }
+            if (r.tiers > 1) {
+                for (let i = 1; i <= r.tiers; i++) {
+                    let tieredName = r.name + " " + this.tierToString(i) + " Class";
+                    if (tieredName === name) {
+                        return r;
+                    }
+                    tieredName = r.name + " " + this.tierToString(i) + " class";
+                    if (tieredName === name) {
+                        return r;
+                    }
+                }
+            }
         }
 
         return null;
@@ -810,7 +926,7 @@ class Ranks {
         character.rank = r.name;
 
         if (r.tiers > 1) {
-            character.rank += ` ${this.tierToString(tier)} class`;
+            character.rank += ` ${this.tierToString(tier)} Class`;
         }
     }
 

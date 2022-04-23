@@ -29,7 +29,7 @@ class AgeSelection extends React.Component<ITrackSelectionProperties, {}> {
         });
         return (
             <div>
-                <Header text="Select Child Age" className="mt-4" /> 
+                <Header className="mt-4">Select Child Age</Header>
                 <table className="selection-list">
                     <thead>
                         <tr>

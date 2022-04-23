@@ -12,6 +12,7 @@ import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from
 import {SkillView} from '../components/skill';
 import {ElectiveSkillList} from '../components/electiveSkillList';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import { CharacterType } from '../common/characterType';
 
 export class CareerEventDetailsPage extends React.Component<IPageProperties, {}> {
     private _focus: HTMLInputElement;
@@ -48,7 +49,7 @@ export class CareerEventDetailsPage extends React.Component<IPageProperties, {}>
               {event.special}
           </div>) : undefined;
 
-        const next = character.careerEvents.length === 2 ? "FINISHING TOUCHES" : "CAREER EVENT";
+        const next = this.isSecondCareerEventNeeded() ? "CAREER EVENT" : character.workflow.peekNextStep().name;
 
         return (
             <div className="page">
@@ -80,6 +81,10 @@ export class CareerEventDetailsPage extends React.Component<IPageProperties, {}>
         );
     }
 
+    private isSecondCareerEventNeeded() {
+        return !(character.careerEvents.length === 2 || character.type === CharacterType.Cadet);
+    }
+
     private onNext() {
         const event = CareerEventsHelper.getCareerEvent(character.careerEvents[character.careerEvents.length - 1]);
         if (event.attributes.length > 1) {
@@ -108,7 +113,7 @@ export class CareerEventDetailsPage extends React.Component<IPageProperties, {}>
             character.addTrait(this._trait.value);
         }
 
-        if (character.careerEvents.length === 2) {
+        if (character.careerEvents.length === 2 || character.type === CharacterType.Cadet) {
             character.workflow.next();
             Navigation.navigateToPage(PageIdentity.AttributesAndDisciplines);
         }

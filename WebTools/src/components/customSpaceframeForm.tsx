@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { character } from '../common/character';
 import { CharacterType } from '../common/characterType';
+import { context } from '../common/context';
 import { Department } from '../helpers/departments';
 
 import { SpaceframeViewModel } from '../helpers/spaceframes';
@@ -74,10 +75,10 @@ class CustomSpaceframeForm extends React.Component<ICustomSpacefraemProperties, 
             scale: this.props.initialSelection.scale,
             serviceYear: this.props.initialSelection.serviceYear,
             weapons: this.props.initialSelection.attacks,
-            talents: this.props.initialSelection.talents.map((t) => t.description)
+            talents: this.props.initialSelection.talents.map((t) => t.name)
         }
 
-        this.weapons = StarshipWeaponRegistry.availableWeapons(character.type, character.era);
+        this.weapons = StarshipWeaponRegistry.availableWeapons(character.type, context.era);
     }
 
     render() {

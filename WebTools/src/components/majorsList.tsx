@@ -28,8 +28,8 @@ class MajorSkill extends React.Component<IMajorSkillProperties, {}> {
                 <tbody>
                     <tr>
                         <td className="skill-name" style={{ width: "250px" }}>{SkillsHelper.getSkillName(skill)}</td>
-                        <td className="skill-expertise">{skillExpertise}</td>
-                        <td>{checkBox}</td>
+                        <td className="skill-expertise pr-2">{skillExpertise}</td>
+                        <td className="pt-2">{checkBox}</td>
                     </tr>
                 </tbody>
             </table>
@@ -100,8 +100,8 @@ class OtherSkill extends React.Component<IMajorSkillProperties, {}> {
                 <tbody>
                     <tr>
                         <td className="skill-name" style={{ width: "250px" }}>{skillName}</td>
-                        <td className="skill-expertise">{skillExpertise}</td>
-                        <td>{checkBox}</td>
+                        <td className="skill-expertise pr-2">{skillExpertise}</td>
+                        <td className="pt-2">{checkBox}</td>
                     </tr>
                 </tbody>
             </table>

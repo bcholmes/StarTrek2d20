@@ -10,58 +10,113 @@
     TNG,
     DS9,
     Voyager,
+    TheseAreTheVoyages,
+    TribblePlayerCharacter,
     KlingonCore,
     ShackletonExpanse,
     IdwYearFive,
     PlayersGuide,
+    TricorderSet,
+    DiscoveryS1S2,
+    DiscoveryCampaign,
+    UtopiaPlantitia,
 
     None
 }
 
-class SourceViewModel {
-    id: Source;
+export enum SourceType {
+    CoreBook,
+    DivisionBook,
+    QuadrantBook,
+    CrewBook, 
+    CampaignBook,
+    Expansion,
+    Misc
+}
+
+class SourceTypeModel {
+    type: SourceType;
     name: string;
 
-    constructor(id: Source, name: string) {
-        this.id = id;
+    constructor(type: SourceType, name: string) {
+        this.type = type;
         this.name = name;
     }
 }
 
+class SourceViewModel {
+    id: Source;
+    type: SourceType;
+    name: string;
+    available: boolean;
+
+    constructor(id: Source, type: SourceType, name: string, available: boolean = true) {
+        this.id = id;
+        this.type = type;
+        this.name = name;
+        this.available = available;
+    }
+}
+
 class Sources {
-    private _sources: { [id: number]: string } = {
-        [Source.Core]: "Core",
-        [Source.AlphaQuadrant]: "Alpha Quadrant",
-        [Source.BetaQuadrant]: "Beta Quadrant",
-        [Source.GammaQuadrant]: "Gamma Quadrant",
-        [Source.DeltaQuadrant]: "Delta Quadrant",
-        [Source.CommandDivision]: "Command Division",
-        [Source.OperationsDivision]: "Operations Division",
-        [Source.SciencesDivision]: "Sciences Division",
-        [Source.TNG]: "TNG",
-        [Source.DS9]: "DS9",
-        [Source.Voyager]: "Voyager",
-        [Source.KlingonCore]: "Klingon Core",
-        [Source.ShackletonExpanse]: "Shackleton Expanse",
-        [Source.IdwYearFive]: "IDW Year Five",
-        [Source.PlayersGuide]: "Player's Guide",
+    private types: SourceTypeModel[] = [
+        new SourceTypeModel(SourceType.CoreBook, "Core Rulebooks"),
+        new SourceTypeModel(SourceType.CrewBook, "Crew Books"),
+        new SourceTypeModel(SourceType.QuadrantBook, "Quadrant Books"),
+        new SourceTypeModel(SourceType.DivisionBook, "Division Books"),
+        new SourceTypeModel(SourceType.CampaignBook, "Campaign Books"),
+        new SourceTypeModel(SourceType.Expansion, "Major Expansion Books"),
+        new SourceTypeModel(SourceType.Misc, "Misc/Other Books"),
+        
+    ];
+
+    private _sources: { [id: number]: SourceViewModel } = {
+        [Source.Core]: new SourceViewModel(Source.Core, SourceType.CoreBook, "Core"),
+        [Source.AlphaQuadrant]: new SourceViewModel(Source.AlphaQuadrant, SourceType.QuadrantBook, "Alpha Quadrant"),
+        [Source.BetaQuadrant]: new SourceViewModel(Source.BetaQuadrant, SourceType.QuadrantBook, "Beta Quadrant"),
+        [Source.GammaQuadrant]: new SourceViewModel(Source.GammaQuadrant, SourceType.QuadrantBook, "Gamma Quadrant"),
+        [Source.DeltaQuadrant]: new SourceViewModel(Source.DeltaQuadrant, SourceType.QuadrantBook, "Delta Quadrant"),
+        [Source.CommandDivision]: new SourceViewModel(Source.CommandDivision, SourceType.DivisionBook, "Command Division"),
+        [Source.OperationsDivision]: new SourceViewModel(Source.OperationsDivision, SourceType.DivisionBook, "Operations Division"),
+        [Source.SciencesDivision]: new SourceViewModel(Source.SciencesDivision, SourceType.DivisionBook, "Sciences Division"),
+        [Source.TNG]: new SourceViewModel(Source.TNG, SourceType.CrewBook, "TNG"),
+        [Source.DS9]: new SourceViewModel(Source.DS9, SourceType.CrewBook, "DS9"),
+        [Source.Voyager]: new SourceViewModel(Source.Voyager, SourceType.CrewBook, "Voyager"),
+        [Source.TheseAreTheVoyages]: new SourceViewModel(Source.TheseAreTheVoyages, SourceType.Misc, "These are the Voy"),
+        [Source.TribblePlayerCharacter]: new SourceViewModel(Source.TribblePlayerCharacter, SourceType.Misc, "Tribble Player Char"),
+        [Source.KlingonCore]: new SourceViewModel(Source.KlingonCore, SourceType.CoreBook, "Klingon Core"),
+        [Source.ShackletonExpanse]: new SourceViewModel(Source.ShackletonExpanse, SourceType.CampaignBook, "Shackleton Expanse"),
+        [Source.IdwYearFive]: new SourceViewModel(Source.IdwYearFive, SourceType.Misc, "IDW Year Five"),
+        [Source.PlayersGuide]: new SourceViewModel(Source.PlayersGuide, SourceType.Expansion, "Player's Guide"),
+        [Source.TricorderSet]: new SourceViewModel(Source.TricorderSet, SourceType.CoreBook, "Tricorder Set"),
+        [Source.DiscoveryS1S2]: new SourceViewModel(Source.DiscoveryS1S2, SourceType.CrewBook, "Discovery S1/S2"),
+        [Source.DiscoveryCampaign]: new SourceViewModel(Source.DiscoveryCampaign, SourceType.CampaignBook, "Discovery Campaign", false),
+        [Source.UtopiaPlantitia]: new SourceViewModel(Source.UtopiaPlantitia, SourceType.Expansion, "Utopia Planitia", false),
     };
 
     getSources() {
-        var sources: SourceViewModel[] = [];
-        var n = 0;
-        for (var source in this._sources) {
-            var src = this._sources[source];
-            sources.push(new SourceViewModel(n, src));
-            n++;
+        let sources: SourceViewModel[] = [];
+        for (let source in this._sources) {
+            let src = this._sources[source];
+            sources.push(src);
         }
         return sources;
     }
 
+    getSourcesByType(type: SourceType) {
+        return this.getSources().filter(s => s.type === type);
+    }
+
+
+    getTypes() {
+        return this.types;
+    }
+
     getSourceName(sources: Source[]) {
-        var result = "";
-        sources.forEach((s) => { if (s !== Source.None) {
-                result = (result === "") ? this._sources[s] : (result + ", " + this._sources[s]);
+        let result = "";
+        sources.forEach((s) => { 
+            if (s !== Source.None) {
+                result = (result === "") ? this._sources[s].name : (result + ", " + this._sources[s].name);
             } 
         });
         return result;

@@ -4,9 +4,10 @@ import { AliasModel } from "../helpers/aliases";
 import { Skill, SkillsHelper } from "../helpers/skills";
 import { TalentModel, TalentsHelper } from "../helpers/talents";
 import { Source, SourcesHelper } from "../helpers/sources";
-import { character } from "../common/character";
-import { Species, SpeciesHelper } from "../helpers/species";
+import { SpeciesHelper } from "../helpers/species";
 import replaceDiceWithArrowhead from '../common/arrowhead';
+import { Species } from '../helpers/speciesEnum';
+import { context } from '../common/context';
 
 class TalentViewModel {
     name: string;
@@ -122,7 +123,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
         });
 
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -159,7 +160,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
     private setupSources() {
         for (let source in Object.keys(Source).filter(src => !isNaN(Number(Source[src])))) {
             let src = Number(source);
-            character.addSource(src);
+            context.addSource(src);
         }
     }
 
@@ -182,7 +183,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
 
         for (let sp in Object.keys(Species).filter(species => !isNaN(Number(Species[species])))) {
             const species = SpeciesHelper.getSpeciesByType(Number(sp));
-            if (species.talents.length > 0) {
+            if (species && species.talents.length > 0) {
                 if (this._categories.indexOf(species.name) === -1) {
                     this._categories.push(species.name);
                 }

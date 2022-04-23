@@ -13,6 +13,7 @@ $lcars-pink: orchid;
 $lcars-dull-purple: #B5B3D8; // used for buttons
 $lcars-light-orange: #FFCC66;
 $lcars-light-pink: #DE84B7;
+$lcars-dull-pink: #c37ba4;
 $lcars-very-light-pink: #f7bbdd;
 
 .d-none {
@@ -87,12 +88,13 @@ h5 {
 .stat-name {
     display: inline-block;
     padding: 4px;
-    width: 100px;
+    width: 108px;
     border-radius: 10px 0 0 10px;
     text-align: right;
     text-transform: uppercase;
-    height: 14px;
+    height: 22px;
     margin: 0 0.25rem 0 0;
+    line-height: normal;
 }
 
 .stat-entry-name {
@@ -108,16 +110,20 @@ h5 {
     font-family: lcars;
     font-size: large;
     background-color: $lcars-purple;
+    line-height: normal;
 }
 
 .stat-name.purple, .stat-value.purple {
     background-color: #906F9A;
+    color: white;
 }
 .stat-name.orange, .stat-value.orange {
     background-color: #F89B24;
+    color: white;
 }
 .stat-name.red, .stat-value.red {
     background-color: #CC6666;
+    color: white;
 }
 
 .stat-value {
@@ -127,8 +133,9 @@ h5 {
     border-radius: 0 10px 10px 0;
     text-align: center;
     text-transform: uppercase;
-    height: 14px;
+    height: 22px;
     margin: 0;
+    line-height: normal;
 }
 
 
@@ -170,13 +177,13 @@ h5 {
     }
     .stat-value {
         font-size: 10px;
-        height: 11px;
-        width: 20px;
+        height: 19px;
+        width: 28px;
     }
     .stat-name {
         font-size: 10px;
-        height: 11px;
-        width: 80px;
+        height: 19px;
+        width: 88px;
     }
 }
 
@@ -328,18 +335,33 @@ a:hover {
     color: black;
     background-color: #FFCC66;
     font-family: lcars;
-    font-size: x-large;
+    font-size: 40px;
     max-width: 90%;
     text-transform: uppercase;
     border-radius: 20px;
     padding-left: 30px;
     margin-bottom: 10px;
+    line-height: 38px;
+    font-weight: normal;
+}
+
+h2.header-text {
+    background-color: $lcars-orange;
+    font-size: 30px;
+    text-transform: uppercase;
+    border-radius: 15px;
+    padding-left: 30px;
+    line-height: 30px;
+}
+
+.container .header-text {
+    max-width: 100%;
 }
     .header-text > div {
         background: black;
         color: white;
         display: inline-block;
-        padding: 5px 10px;
+        padding: 0px 10px;
     }
 
 .header-text-small {
@@ -413,6 +435,7 @@ a:hover {
 
 		display: flex;
 		flex-direction: column;
+        box-sizing: content-box;
 	}
 			
 		.lcar-content-start > div {
@@ -486,6 +509,8 @@ a:hover {
     padding: 3px 11px 6px 0px;
     text-transform: uppercase;
     cursor: pointer;
+    box-sizing: content-box;
+    line-height: normal;
 }
     .lcar-content-history {
         padding: 3px 11px 8px 0px;
@@ -537,7 +562,13 @@ a:hover {
     padding: 4px;
     font-weight: normal;
     text-align: justify;
+}
+.page-text {
     max-width: 700px;
+}
+
+.container .page-text {
+    max-width: inherit;
 }
     .page-text-aligned {
         margin-left: 0;
@@ -576,11 +607,19 @@ table.selection-list {
     width: 90%;
     color: white;
     font-size: 12px;
-}
-    table.selection-list td {
+    td {
         padding: 5px;
         border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+
+        div {
+            line-height: normal;
+        }
     }
+}
+
+.container .selection-list {
+    width: 100%;
+}
 
 .text-selection {
     color: #DE84B7;
@@ -601,11 +640,12 @@ table.aspect-list td:first-child {
     font-family: lcars;
     font-size: large;
     text-transform: uppercase;
-    width: 100px;
-    margin-top: 15px;
+    width: 126px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     cursor: pointer;
     opacity: 0.8;
-    display: inline-block;
+    line-height: normal;
 }
     .source:hover {
         opacity: 1.0;
@@ -626,6 +666,18 @@ table.aspect-list td:first-child {
 .source-container {
     max-width: 50%;
 }
+
+.source.unavailable {
+    background-color: #aaaaaa;
+    border-color: #aaaaaa;
+    cursor: not-allowed;
+
+    :hover {
+        background-color: #aaaaaa;
+        border-color: #aaaaaa;
+    }
+}
+
 
 .source-name,
 .source-select {
@@ -663,7 +715,11 @@ table.aspect-list td:first-child {
     }
 
     .header-text {
-        font-size: large;
+        font-size: 18px;
+    }
+
+    h2.header-text {
+        font-size: 14px;
     }
 
     input[type=text],

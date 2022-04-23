@@ -13,6 +13,8 @@ export enum PageIdentity {
     StarfleetAcademy,
     StarfleetAcademyDetails,
     Career,
+    CadetCareer,
+    CadetSeniority,
     ChildCareer,
     ChildEducationPage,
     ChildEducationDetailsPage,
@@ -28,4 +30,6 @@ export enum PageIdentity {
     Starship,
     SupportingCharacter,
     TalentsOverview,
+
+    ViewSheet,
 }

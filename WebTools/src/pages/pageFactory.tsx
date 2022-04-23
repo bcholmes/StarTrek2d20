@@ -23,9 +23,11 @@ import { SelectionPage } from './selectionPage';
 import { BorgImplantSelection } from './borgImplantSelection';
 import { PageIdentity } from './pageIdentity';
 import { CharacterTypePage } from './characterTypePage';
-import { ChildCareerPage } from './childCareerPage';
+import { SimpleCareerPage } from './simpleCareerPage';
 import { ChildEducationPage } from './childEducationPage';
 import { ChildEducationDetailsPage } from './childEducationDetailsPage';
+import { ViewSheetPage } from './viewSheetPage';
+import { CadetSeniorityPage } from './cadetSeniorityPage';
 
 
 export class PageFactory {
@@ -52,7 +54,9 @@ export class PageFactory {
         this.factories[PageIdentity.CareerEvent1Details] = () => <CareerEventDetailsPage/>;
         this.factories[PageIdentity.CareerEvent2] = () => <CareerEventPage/>;
         this.factories[PageIdentity.CareerEvent2Details] = () => <CareerEventDetailsPage/>;
-        this.factories[PageIdentity.ChildCareer] = () => <ChildCareerPage/>;
+        this.factories[PageIdentity.ChildCareer] = () => <SimpleCareerPage talent="Childhood Insight"/>;
+        this.factories[PageIdentity.CadetCareer] = () => <SimpleCareerPage talent="Untapped Potential" />;
+        this.factories[PageIdentity.CadetSeniority] = () => <CadetSeniorityPage />;
         this.factories[PageIdentity.ChildEducationPage] = () => <ChildEducationPage/>;
         this.factories[PageIdentity.ChildEducationDetailsPage] = () => <ChildEducationDetailsPage/>;
         this.factories[PageIdentity.AttributesAndDisciplines] = () => <AttributesAndDisciplinesPage />;
@@ -61,6 +65,7 @@ export class PageFactory {
         this.factories[PageIdentity.Starship] = () => <StarshipPage/>;
         this.factories[PageIdentity.SupportingCharacter] = () => <SupportingCharacterPage />;
         this.factories[PageIdentity.TalentsOverview] = () => <TalentsOverviewPage />;
+        this.factories[PageIdentity.ViewSheet] = () => <ViewSheetPage />;
     }
 
     createPage(page: PageIdentity) {

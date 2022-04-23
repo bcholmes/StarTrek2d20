@@ -1,15 +1,18 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
-import {CharacterType} from '../common/characterType';
+import {Character, character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
-import {Species, SpeciesHelper} from '../helpers/species';
+import {SpeciesHelper} from '../helpers/species';
 import {Button} from '../components/button';
 import {SpeciesSelection} from '../components/speciesSelection';
 import {MixedSpeciesSelection} from '../components/mixedSpeciesSelection';
 import { Source } from '../helpers/sources';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import { Species } from '../helpers/speciesEnum';
+import { context } from '../common/context';
+import InstructionText from '../components/instructionText';
+import { Era } from '../helpers/eras';
 
 interface ISpeciesPageState {
     showSelection: boolean;
@@ -27,29 +30,41 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
     }
 
     render() {
-        const rollAlpha = character.hasSource(Source.AlphaQuadrant) && character.type !== CharacterType.KlingonWarrior
+        const rollAlpha = context.hasSource(Source.AlphaQuadrant) && this.isRollAvailable()
             ? <Button className="button" text="Roll Alpha Species" onClick={() => this.rollAlphaSpecies()} />
             : undefined;
 
-        const rollBeta = character.hasSource(Source.BetaQuadrant) && character.type !== CharacterType.KlingonWarrior
+        const rollBeta = context.hasSource(Source.BetaQuadrant) && this.isRollAvailable()
             ? <Button className="button" text="Roll Beta Species" onClick={() => this.rollBetaSpecies()} />
             : undefined;
 
+        const rollGamma = context.era === Era.NextGeneration && context.hasSource(Source.GammaQuadrant) && this.isRollAvailable()
+            ? <Button className="button" text="Roll Gamma Species" onClick={() => this.rollGammaSpecies()} />
+            : undefined;
+
+        const rollDelta = context.era === Era.NextGeneration && context.hasSource(Source.DeltaQuadrant) && this.isRollAvailable()
+            ? <Button className="button" text="Roll Delta Species" onClick={() => this.rollDeltaSpecies()} />
+            : undefined;
+
+
         var content = !this.state.showSelection && !this.state.showMixedSelection?
             (
-                <div>
+                <div className="container ml-0">
                     <div className="page-text">
-                        To what species do you belong?
-                        You may also create a character of mixed species, gaining benefits from both.
-                        <br /><br />
-                        Either select or roll your Species.
+                        <InstructionText text={character.workflow.currentStep().description} />
                     </div>
-                    <div className="button-container">
-                        <Button className="button" text="Select Species" onClick={() => this.showSpecies() } />
-                        <Button className="button" text="Select Mixed Species" onClick={() => this.showMixedSpecies() }/>
-                        <Button className="button" text="Roll Core Species" onClick={() => this.rollSpecies()} />
-                        {rollAlpha}
-                        {rollBeta}
+                    <div className="row row-cols-md-2">
+                        <div className="pl-2 pr-2">
+                            <Button className="button" text="Select Species" onClick={() => this.showSpecies() } />
+                            <Button className="button" text="Select Mixed Species" onClick={() => this.showMixedSpecies() }/>
+                        </div>
+                        <div className="pl-2 pr-2">
+                            {this.isRollAvailable() ? (<Button className="button" text="Roll Core Species" onClick={() => this.rollSpecies()} />) : undefined }
+                            {rollAlpha}
+                            {rollBeta}
+                            {rollGamma}
+                            {rollDelta}
+                        </div>
                     </div>
                 </div>
             )
@@ -82,6 +97,10 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
         );
     }
 
+    private isRollAvailable() {
+        return !Character.isSpeciesListLimited(character);
+    }
+
     private rollSpecies() {
         var species = SpeciesHelper.generateSpecies();
         this.selectSpecies(species);
@@ -90,6 +109,20 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
     private rollAlphaSpecies() {
         var species = SpeciesHelper.generateFromAlphaQuadrantTable();
         this.selectSpecies(species);
+    }
+
+    private rollGammaSpecies() {
+        let species = SpeciesHelper.generateFromGammaQuadrantTable();
+        if (species != null) {
+            this.selectSpecies(species);
+        }
+    }
+
+    private rollDeltaSpecies() {
+        let species = SpeciesHelper.generateFromDeltaQuadrantTable();
+        if (species != null) {
+            this.selectSpecies(species);
+        }
     }
 
     private rollBetaSpecies() {

@@ -7,6 +7,7 @@ import {Window} from '../common/window';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
+import { context } from '../common/context';
 
 export class EraSelectionPage extends React.Component<IPageProperties, {}> {
     constructor(props: IPageProperties) {
@@ -20,45 +21,63 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
         character.saveStep(PageIdentity.Era);
     }
 
-    render() {
-        const sources = SourcesHelper.getSources().map((s, i) => {
-            const className = character.hasSource(i) ? "source source-selected" : "source";
-            return (
-                <div key={i} className={className} onClick={() => { this.sourceChanged(i); } }>{s.name}</div>
-            );
+    renderSources() {
+        let hasUnavailableSources = false;
+
+        const sources = SourcesHelper.getTypes().map(t => {
+            const list = SourcesHelper.getSourcesByType(t.type).map((s, i) => {
+                hasUnavailableSources = hasUnavailableSources || !s.available;
+                const className = s.available ? (context.hasSource(s.id) ? "source source-selected" : "source") : "source unavailable";
+                return (
+                    <div key={s.id} className={className} onClick={() => { if (s.available) { this.sourceChanged(s.id); } } }>{s.name}</div>
+                );
+            });
+            return (<div>
+                <div className="text-white small text-center">{t.name}</div>
+                {list}
+            </div>)
         });
+
+        const note = hasUnavailableSources ? " Some sources are not yet implemented; check back soon!" : "";
+
+        return (<div>
+            <div className="page-text">
+                Select sources.
+                Ask your GM which are available.
+                {note}
+            </div>
+            <div className="d-flex flex-wrap">
+                <div className="source source-emphasis" onClick={() => { this.toggleSources(true); } }>Select All</div>
+                <div className="source source-emphasis" onClick={() => { this.toggleSources(false); } }>Select None</div>
+            </div>
+            <div className="d-flex flex-wrap mt-3 mb-3">
+                {sources}
+            </div>
+        </div>);
+    }
+
+
+    render() {
 
         const eras = ErasHelper.getEras().map((e, i) => {
             return (
                 <tr key={i} onClick={() => { if (Window.isCompact()) this.eraSelected(e.id); }}>
                     <td className="selection-header">{e.name}</td>
-                    <td><Button className="button-small" text="Select" onClick={() => { this.eraSelected(e.id) }} /></td>
+                    <td className="text-right"><Button buttonType={true} className="button-small" text="Select" onClick={() => { this.eraSelected(e.id) }} /></td>
                 </tr>
             );
         });
 
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html">Home</a></li>
                         <li className="breadcrumb-item active" aria-current="page">Character/Starship Creation</li>
                     </ol>
                 </nav>
-
-                <div className="page-text">
-                    Select sources.
-                    Ask your GM which are available.
-                </div>
-                <div>
-                    <div className="source source-emphasis" onClick={() => { this.toggleSources(true); } }>Select All</div>
-                    <div className="source source-emphasis" onClick={() => { this.toggleSources(false); } }>Select None</div>
-                </div>
-                <div className="source-container">
-                    {sources}
-                </div>
-                <br/><br/><br/><br/>
-                <div className="page-text">
+                {this.renderSources()}
+                <div className="page-text mt-5">
                     Select which Era to play in.
                     Ask your GM which Era to choose.
                 </div>
@@ -72,11 +91,12 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
     }
 
     private sourceChanged(source: Source) {
-        if (character.hasSource(source)) {
-            character.removeSource(source);
-        }
-        else {
-            character.addSource(source);
+        if (source === Source.Core) {
+            // do nothing
+        } else if (context.hasSource(source)) {
+            context.removeSource(source);
+        } else {
+            context.addSource(source);
         }
 
         this.forceUpdate();
@@ -85,12 +105,14 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
     private toggleSources(selectAll: boolean) {
         if (selectAll) {
             SourcesHelper.getSources().forEach(s => {
-                character.addSource(s.id);
+                if (s.available) {
+                    context.addSource(s.id);
+                }
             });
         }
         else {
             SourcesHelper.getSources().forEach(s => {
-                character.removeSource(s.id);
+                context.removeSource(s.id);
             });
         }
 
@@ -98,7 +120,7 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
     }
 
     private eraSelected(era: Era) {
-        character.era = era;
+        context.era = era;
         Navigation.navigateToPage(PageIdentity.ToolSelecton);
     }
 }

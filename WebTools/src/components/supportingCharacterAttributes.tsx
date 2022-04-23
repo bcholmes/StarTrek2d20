@@ -1,9 +1,10 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
-import {Species, SpeciesHelper, SpeciesViewModel} from '../helpers/species';
+import {SpeciesHelper, SpeciesModel} from '../helpers/species';
 import {Attribute, AttributesHelper} from '../helpers/attributes';
 import {CheckBox} from './checkBox';
 import { Age } from '../helpers/age';
+import { Species } from '../helpers/speciesEnum';
 
 interface IValueProperties {
     index: number;
@@ -43,7 +44,7 @@ interface IAttributeState {
 }
 
 export class SupportingCharacterAttributes extends React.Component<IAttributeProperties, IAttributeState> {
-    private _species: SpeciesViewModel;
+    private _species: SpeciesModel;
 
     constructor(props: IAttributeProperties) {
         super(props);
@@ -78,24 +79,62 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
     render() {
         const attributes = [Attribute.Control, Attribute.Daring, Attribute.Fitness, Attribute.Insight, Attribute.Presence, Attribute.Reason].map((a, i) => {
             const val = this.props.age.attributes[this.state.assignedValues[a]];
-            const showCheckBoxes = this._species.attributes.length > 3;
-            const speciesHasAttribute = !showCheckBoxes && this._species.attributes.indexOf(a) > -1;
-            const isChecked = this.state.checkedValues.indexOf(a) > -1;
 
-            const checkBox = showCheckBoxes
-                ? (
-                    <td>
+            if (this._species.attributes.length === 3) { // most species
+                const speciesHasAttribute = this._species.attributes.indexOf(a) > -1;
+                return (
+                    <tr key={i}>
+                        <td className="selection-header">{AttributesHelper.getAttributeName(a) }</td>
+                        <td>
+                            <Value
+                                index={a}
+                                value={val}
+                                onSelect={(index) => this.selectValue(index) }
+                                isSelected={this.state.selectedValue === a} />
+                        </td>
+                        <td>{speciesHasAttribute ? "+1" : "-"}</td>
+                        <td>{val + (speciesHasAttribute ? 1 : 0) }</td>
+                    </tr>
+                );
+            } else if (this._species.attributes.length > 3) { // Human can choose any three
+                const isChecked = this.state.checkedValues.indexOf(a) > -1;
+                return (
+                    <tr key={i}>
+                        <td className="selection-header">{AttributesHelper.getAttributeName(a) }</td>
+                        <td>
+                            <Value
+                                index={a}
+                                value={val}
+                                onSelect={(index) => this.selectValue(index) }
+                                isSelected={this.state.selectedValue === a} />
+                        </td>
+                        <td>
+                            <CheckBox
+                                text=""
+                                value={this.state.checkedValues.indexOf(a) === -1 }
+                                isChecked={this.state.checkedValues.indexOf(a) > -1 }
+                                onChanged={(val) => this.checkAttribute(a, val) }/>
+                        </td>
+                        <td>{isChecked ? "+1" : "-"}</td>
+                        <td>{val + (isChecked ? 1 : 0) }</td>
+                    </tr>
+                );
+            } else { // Ktarians have two attributes pre-defined, and can choose from Secondary Attributes as a third attribute
+                const speciesHasAttribute = this._species.attributes.indexOf(a) > -1;
+                const isChecked = this.state.checkedValues.indexOf(a) > -1;
+
+                let checkBox = (<td></td>);
+                if (this._species.secondaryAttributes.indexOf(a) >= 0) {
+                    checkBox = ( <td>
                         <CheckBox
                             text=""
                             value={this.state.checkedValues.indexOf(a) === -1 }
                             isChecked={this.state.checkedValues.indexOf(a) > -1 }
                             onChanged={(val) => this.checkAttribute(a, val) }/>
-                    </td>
-                  )
-                : undefined;
+                    </td>);
+                }
 
-            return (
-                <tr key={i}>
+                return (<tr key={i}>
                     <td className="selection-header">{AttributesHelper.getAttributeName(a) }</td>
                     <td>
                         <Value
@@ -107,11 +146,11 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
                     {checkBox}
                     <td>{speciesHasAttribute || isChecked ? "+1" : "-"}</td>
                     <td>{val + (speciesHasAttribute || isChecked ? 1 : 0) }</td>
-                </tr>
-            );
+                </tr>);
+            }
         });
 
-        const checkValue = this._species.attributes.length > 3
+        const checkValue = this._species.attributes.length !== 3
             ? <td>Select</td>
             : undefined;
 
@@ -171,7 +210,11 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
         if (check) {
             checkedValues.push(attribute);
 
-            if (checkedValues.length > 3) {
+            let numberOfSelections = 3;
+            if (this._species.attributes.length < 3) {
+                numberOfSelections = 3 - this._species.attributes.length;
+            }
+            while (checkedValues.length > numberOfSelections) {
                 checkedValues.splice(0, 1);
             }
             this.setState({

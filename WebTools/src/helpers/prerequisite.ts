@@ -1,5 +1,6 @@
 import { character } from "../common/character";
 import { CharacterType } from "../common/characterType";
+import { context } from "../common/context";
 import { Career } from "./careers";
 import { Era } from "./eras";
 import { Source } from "./sources";
@@ -17,7 +18,7 @@ export class SourcePrerequisite implements IPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        return character.hasAnySource(this.sources);
+        return context.hasAnySource(this.sources);
     }
 }
 
@@ -27,6 +28,20 @@ export class KlingonPrerequisite implements IPrerequisite {
         return character.isKlingon();
     }
 }
+
+export class CharacterTypePrerequisite implements IPrerequisite {
+
+    private type: CharacterType;
+
+    constructor(type: CharacterType) {
+        this.type = type;
+    }
+    
+    isPrerequisiteFulfilled() {
+        return character.type === this.type;
+    }
+}
+
 
 export class CivilianPrerequisite implements IPrerequisite {
 
@@ -104,7 +119,7 @@ export class EraPrerequisite implements IPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        return character.era === this.era;
+        return context.era === this.era;
     }
 }
 
