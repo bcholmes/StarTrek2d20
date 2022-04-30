@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { character } from '../common/character';
 import { CharacterType } from '../common/characterType';
-import { context } from '../common/context';
 import { Department } from '../helpers/departments';
 
 import { SpaceframeViewModel } from '../helpers/spaceframes';
 import { System } from '../helpers/systems';
 import { TalentsHelper } from '../helpers/talents';
 import StarshipWeaponRegistry, { Weapon } from '../helpers/weapons';
+import store from '../state/store';
 import { Button } from './button';
 import { CheckBox } from './checkBox';
 
@@ -78,7 +78,7 @@ class CustomSpaceframeForm extends React.Component<ICustomSpacefraemProperties, 
             talents: this.props.initialSelection.talents.map((t) => t.name)
         }
 
-        this.weapons = StarshipWeaponRegistry.availableWeapons(character.type, context.era);
+        this.weapons = StarshipWeaponRegistry.availableWeapons(character.type, store.getState().context.era);
     }
 
     render() {

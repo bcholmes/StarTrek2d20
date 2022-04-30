@@ -1,4 +1,3 @@
-import { Era } from "../helpers/eras";
 import { Source } from "../helpers/sources";
 
 /**
@@ -8,7 +7,6 @@ import { Source } from "../helpers/sources";
  */
 export class Context {
     public sources: Source[] = [ Source.Core ];
-    public era: Era = Era.NextGeneration;
 
     public allowCrossSpeciesTalents: boolean = false;
     public allowEsotericTalents: boolean = false;

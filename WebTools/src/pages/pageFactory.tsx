@@ -28,6 +28,8 @@ import { ChildEducationPage } from './childEducationPage';
 import { ChildEducationDetailsPage } from './childEducationDetailsPage';
 import { ViewSheetPage } from './viewSheetPage';
 import { CadetSeniorityPage } from './cadetSeniorityPage';
+import { SystemGenerationPage } from '../mapping/page/systemGenerationPage';
+import StarSystemDetailsPage from '../mapping/page/starSystemDetailsPage';
 
 
 export class PageFactory {
@@ -63,6 +65,8 @@ export class PageFactory {
         this.factories[PageIdentity.BorgImplants] = () => <BorgImplantSelection />;
         this.factories[PageIdentity.Finish] = () => <FinishPage/>;
         this.factories[PageIdentity.Starship] = () => <StarshipPage/>;
+        this.factories[PageIdentity.SystemGeneration] = () => <SystemGenerationPage />;
+        this.factories[PageIdentity.StarSystemDetails] = () => <StarSystemDetailsPage />;
         this.factories[PageIdentity.SupportingCharacter] = () => <SupportingCharacterPage />;
         this.factories[PageIdentity.TalentsOverview] = () => <TalentsOverviewPage />;
         this.factories[PageIdentity.ViewSheet] = () => <ViewSheetPage />;

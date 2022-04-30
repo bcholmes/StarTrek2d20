@@ -3,11 +3,11 @@ import {Role, RolesHelper} from './roles';
 import {Era} from './eras';
 import {Source} from './sources';
 import {Track} from './tracks';
-import {AlliedMilitaryDetails, character } from '../common/character';
+import {AlliedMilitaryDetails, Character, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { AlliedMilitaryType } from './alliedMilitary';
 import { AllOfPrerequisite, AnyOfPrerequisite, CharacterTypePrerequisite, EnlistedPrerequisite, EraPrerequisite, IPrerequisite, NotPrerequisite, SourcePrerequisite, TypePrerequisite } from './prerequisite';
-import { context } from '../common/context';
+import store from '../state/store';
 
 export enum Rank {
     // Core
@@ -94,7 +94,7 @@ class AlliedMilitaryPrerequisite implements IPrerequisite {
         this.types = alliedMilitary;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(character: Character) {
         return character.type === CharacterType.AlliedMilitary 
             && character.typeDetails
             &&  this.types.indexOf((character.typeDetails as AlliedMilitaryDetails).alliedMilitary.type) >= 0;
@@ -103,7 +103,7 @@ class AlliedMilitaryPrerequisite implements IPrerequisite {
 
 
 class OfficerPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(character: Character) {
         return !character.enlisted;
     }
 }
@@ -115,21 +115,21 @@ class CareersPrerequisite implements IPrerequisite {
         this._careers = careers;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(character: Character) {
         return this._careers.indexOf(character.career) > -1;
     }
 }
 
 class NoCareerEventsPrerequisite implements IPrerequisite {
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(character: Character) {
         return character.careerEvents == null ||  character.careerEvents.length === 0;
     }
 }
 
 class HasCareerEventsPrerequisite implements IPrerequisite {
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(character: Character) {
         return character.careerEvents != null && character.careerEvents.length > 0;
     }
 }
@@ -142,7 +142,7 @@ class TrackPrerequisite implements IPrerequisite {
         this._track = track;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(character: Character) {
         return this._track === character.track;
     }
 }
@@ -154,7 +154,7 @@ class NotTrackPrerequisite implements IPrerequisite {
         this._track = track;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(character: Character) {
         return this._track !== character.track;
     }
 }
@@ -166,7 +166,7 @@ class RolesPrerequisite implements IPrerequisite {
         this._roles = roles;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(character: Character) {
         const role = RolesHelper.getRoleByName(character.role);
         return this._roles.indexOf(role) > -1;
     }
@@ -179,7 +179,7 @@ class NotRolesPrerequisite implements IPrerequisite {
         this._roles = roles;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(character: Character) {
         const role = RolesHelper.getRoleByName(character.role);
         return this._roles.indexOf(role) === -1;
     }
@@ -192,8 +192,8 @@ class NotEraPrerequisite implements IPrerequisite {
         this._era = era;
     }
 
-    isPrerequisiteFulfilled() {
-        return context.era !== this._era;
+    isPrerequisiteFulfilled(character: Character) {
+        return store.getState().context.era !== this._era;
     }
 }
 
@@ -881,7 +881,7 @@ class Ranks {
 
             if (ignorePrerequisites === undefined || ignorePrerequisites === false) {
                 r.prerequisites.forEach(req => {
-                    if (!req.isPrerequisiteFulfilled()) {
+                    if (!req.isPrerequisiteFulfilled(character)) {
                         valid = false;
                     }
                 });

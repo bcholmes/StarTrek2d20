@@ -1,4 +1,4 @@
-import {character } from '../common/character';
+import {Character, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import {AliasModel} from './aliases';
 import {Attribute} from './attributes';
@@ -6,17 +6,20 @@ import {Skill, SkillsHelper} from './skills';
 import {Department} from './departments';
 import {Source} from './sources';
 import {Era} from './eras';
-import { IPrerequisite } from './prerequisite';
 import { Species } from './speciesEnum';
 import { context } from '../common/context';
+import { Construct } from '../common/construct';
+import { Starship } from '../common/starship';
+import store from '../state/store';
 
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
 
-interface ITalentPrerequisite extends IPrerequisite {
+interface ITalentPrerequisite<T extends Construct> {
+    isPrerequisiteFulfilled(): boolean;
     describe(): string
 }
 
-class AttributePrerequisite implements ITalentPrerequisite {
+class AttributePrerequisite implements ITalentPrerequisite<Character> {
     private attribute: Attribute;
     private value: number;
 
@@ -33,7 +36,7 @@ class AttributePrerequisite implements ITalentPrerequisite {
     }
 };
 
-class DisciplinePrerequisite implements ITalentPrerequisite {
+class DisciplinePrerequisite implements ITalentPrerequisite<Character> {
     private discipline: Skill;
     private value: number;
 
@@ -51,7 +54,7 @@ class DisciplinePrerequisite implements ITalentPrerequisite {
     }
 };
 
-class UntrainedDisciplinePrerequisite implements ITalentPrerequisite {
+class UntrainedDisciplinePrerequisite implements ITalentPrerequisite<Character> {
     private discipline: Skill;
 
     constructor(discipline: Skill) {
@@ -66,7 +69,7 @@ class UntrainedDisciplinePrerequisite implements ITalentPrerequisite {
     }
 };
 
-class VariableDisciplinePrerequisite implements ITalentPrerequisite {
+class VariableDisciplinePrerequisite implements ITalentPrerequisite<Character> {
     private discipline1: Skill;
     private discipline2: Skill;
     private value: number;
@@ -87,7 +90,7 @@ class VariableDisciplinePrerequisite implements ITalentPrerequisite {
     }
 };
 
-class SpeciesPrerequisite implements ITalentPrerequisite {
+class SpeciesPrerequisite implements ITalentPrerequisite<Character> {
     private species: number;
     private allowCrossSelection: boolean;
 
@@ -106,7 +109,7 @@ class SpeciesPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class AnySpeciesPrerequisite implements ITalentPrerequisite {
+class AnySpeciesPrerequisite implements ITalentPrerequisite<Character> {
     private species1: number;
     private species2: number;
     private allowCrossSelection: boolean;
@@ -129,7 +132,7 @@ class AnySpeciesPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class PureSpeciesPrerequisite implements ITalentPrerequisite {
+class PureSpeciesPrerequisite implements ITalentPrerequisite<Character> {
     private species: number;
     private allowCrossSelection: boolean;
 
@@ -147,7 +150,7 @@ class PureSpeciesPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class CareerPrerequisite implements ITalentPrerequisite {
+class CareerPrerequisite implements ITalentPrerequisite<Character> {
     private career: number;
 
     constructor(species: number) {
@@ -162,7 +165,7 @@ class CareerPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class ChildOnlyPrerequisite implements ITalentPrerequisite {
+class ChildOnlyPrerequisite implements ITalentPrerequisite<Character> {
 
     isPrerequisiteFulfilled() {
         return false; // it's never selected by players; only automatically added for child characters
@@ -172,7 +175,7 @@ class ChildOnlyPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class MainCharacterPrerequisite implements ITalentPrerequisite {
+class MainCharacterPrerequisite implements ITalentPrerequisite<Character> {
 
     isPrerequisiteFulfilled() {
         return true; // at the moment, only Main characters can have talents, so I think this is always true
@@ -182,7 +185,7 @@ class MainCharacterPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class CommandingAndExecutiveOfficerPrerequisite implements ITalentPrerequisite {
+class CommandingAndExecutiveOfficerPrerequisite implements ITalentPrerequisite<Character> {
 
     isPrerequisiteFulfilled() {
         // Awkwardly, we don't know the character's role at the time that
@@ -195,7 +198,7 @@ class CommandingAndExecutiveOfficerPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class GMsDiscretionPrerequisite implements ITalentPrerequisite {
+class GMsDiscretionPrerequisite implements ITalentPrerequisite<Character> {
 
     isPrerequisiteFulfilled() {
         return context.allowEsotericTalents;
@@ -205,7 +208,7 @@ class GMsDiscretionPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class OnlyAtCharacterCreationPrerequisite implements ITalentPrerequisite {
+class OnlyAtCharacterCreationPrerequisite implements ITalentPrerequisite<Character> {
 
     isPrerequisiteFulfilled() {
         return true;
@@ -216,7 +219,7 @@ class OnlyAtCharacterCreationPrerequisite implements ITalentPrerequisite {
 }
 
 
-class SupportingCharacterPrerequisite implements ITalentPrerequisite {
+class SupportingCharacterPrerequisite implements ITalentPrerequisite<Character> {
 
     isPrerequisiteFulfilled() {
         return false; // at the moment, only Main characters can have talents, so I think this is always false
@@ -226,7 +229,7 @@ class SupportingCharacterPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class CharacterTypePrerequisite implements ITalentPrerequisite {
+class CharacterTypePrerequisite implements ITalentPrerequisite<Character> {
     private type: CharacterType;
 
     constructor(type: CharacterType) {
@@ -241,7 +244,7 @@ class CharacterTypePrerequisite implements ITalentPrerequisite {
     }
 }
 
-class NotCharacterTypePrerequisite implements ITalentPrerequisite {
+class NotCharacterTypePrerequisite implements ITalentPrerequisite<Character> {
     private type: CharacterType;
 
     constructor(type: CharacterType) {
@@ -256,10 +259,10 @@ class NotCharacterTypePrerequisite implements ITalentPrerequisite {
     }
 }
 
-class AnyOfPrerequisite implements ITalentPrerequisite {
-    private prerequisites: ITalentPrerequisite[];
+class AnyOfPrerequisite implements ITalentPrerequisite<Character> {
+    private prerequisites: ITalentPrerequisite<Character>[];
 
-    constructor(...prerequisites: ITalentPrerequisite[]) {
+    constructor(...prerequisites: ITalentPrerequisite<Character>[]) {
         this.prerequisites = prerequisites;
     }
 
@@ -279,7 +282,7 @@ class AnyOfPrerequisite implements ITalentPrerequisite {
 }
 
 
-class TalentPrerequisite implements ITalentPrerequisite {
+class TalentPrerequisite implements ITalentPrerequisite<Character> {
     private talent: string;
 
     constructor(talent: string) {
@@ -294,7 +297,7 @@ class TalentPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class FocusPrerequisite implements ITalentPrerequisite {
+class FocusPrerequisite implements ITalentPrerequisite<Character> {
     private focus: string;
 
     constructor(focus: string) {
@@ -309,7 +312,7 @@ class FocusPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class NotTalentPrerequisite implements ITalentPrerequisite {
+class NotTalentPrerequisite implements ITalentPrerequisite<Character> {
     private talent: string;
 
     constructor(talent: string) {
@@ -324,7 +327,7 @@ class NotTalentPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class SourcePrerequisite implements ITalentPrerequisite {
+class SourcePrerequisite implements ITalentPrerequisite<Character> {
     private sources: Source[];
 
     constructor(...sources: Source[]) {
@@ -345,7 +348,7 @@ class SourcePrerequisite implements ITalentPrerequisite {
     }
 }
 
-class EraPrerequisite implements ITalentPrerequisite {
+class EraPrerequisite implements ITalentPrerequisite<Character> {
     private era: Era;
 
     constructor(era: Era) {
@@ -353,14 +356,14 @@ class EraPrerequisite implements ITalentPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        return context.era >= this.era;
+        return store.getState().context.era >= this.era;
     }
     describe(): string {
         return "";
     }
 }
 
-class NotEraPrerequisite implements ITalentPrerequisite {
+class NotEraPrerequisite implements ITalentPrerequisite<Character> {
     private eras: Era[];
 
     constructor(...eras: Era[]) {
@@ -369,7 +372,7 @@ class NotEraPrerequisite implements ITalentPrerequisite {
 
     isPrerequisiteFulfilled() {
         let result = true;
-        this.eras.forEach((e) => { result = result && context.era !== e })
+        this.eras.forEach((e) => { result = result && store.getState().context.era !== e })
         return result;
     }
     describe(): string {
@@ -377,7 +380,7 @@ class NotEraPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class StarshipPrerequisite implements ITalentPrerequisite {
+class StarshipPrerequisite implements ITalentPrerequisite<Construct> {
     isPrerequisiteFulfilled() {
         return character.starship != null;
     }
@@ -386,7 +389,7 @@ class StarshipPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class ServiceYearPrerequisite implements ITalentPrerequisite {
+class ServiceYearPrerequisite implements ITalentPrerequisite<Starship> {
     private year: number;
 
     constructor(year: number) {
@@ -401,7 +404,7 @@ class ServiceYearPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class MaxServiceYearPrerequisite implements ITalentPrerequisite {
+class MaxServiceYearPrerequisite implements ITalentPrerequisite<Starship> {
     private year: number;
 
     constructor(year: number) {
@@ -416,7 +419,7 @@ class MaxServiceYearPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class SpaceframePrerequisite implements ITalentPrerequisite {
+class SpaceframePrerequisite implements ITalentPrerequisite<Starship> {
     private frame: number;
 
     constructor(frame: number) {
@@ -431,7 +434,7 @@ class SpaceframePrerequisite implements ITalentPrerequisite {
     }
 }
 
-class SpaceframesPrerequisite implements ITalentPrerequisite {
+class SpaceframesPrerequisite implements ITalentPrerequisite<Starship> {
     private frames: number[];
 
     constructor(frames: number[]) {
@@ -447,7 +450,7 @@ class SpaceframesPrerequisite implements ITalentPrerequisite {
     }
 }
 
-class DepartmentPrerequisite implements ITalentPrerequisite {
+class DepartmentPrerequisite implements ITalentPrerequisite<Starship> {
     private department: Department;
     private value: number;
 
@@ -467,12 +470,12 @@ class DepartmentPrerequisite implements ITalentPrerequisite {
 export class TalentModel {
     name: string;
     description: string;
-    prerequisites: ITalentPrerequisite[];
+    prerequisites: ITalentPrerequisite<Construct>[];
     maxRank: number;
     category: string;
     aliases: AliasModel[];
 
-    constructor(name: string, desc: string, prerequisites: ITalentPrerequisite[], maxRank: number = 1, category?: string, ...aliases: AliasModel[]) {
+    constructor(name: string, desc: string, prerequisites: ITalentPrerequisite<Construct>[], maxRank: number = 1, category?: string, ...aliases: AliasModel[]) {
         this.name = name;
         this.description = desc;
         this.prerequisites = prerequisites;
@@ -534,9 +537,9 @@ export class TalentViewModel {
     rank: number;
     description: string;
     category: string;
-    prerequisites: ITalentPrerequisite[];
+    prerequisites: ITalentPrerequisite<Construct>[];
 
-    constructor(name: string, rank: number, showRank: boolean, description: string, skill: Skill, category: string, prerequities: ITalentPrerequisite[]) {
+    constructor(name: string, rank: number, showRank: boolean, description: string, skill: Skill, category: string, prerequities: ITalentPrerequisite<Character>[]) {
         this.id = name;
         this.description = description;
         this.displayName = this.constructDisplayName(name, rank, showRank, skill, category);
@@ -1019,7 +1022,7 @@ export class Talents {
                 [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Science, 4)]),
             new TalentModel(
                 "Rapid Hypothesis",
-                "You are quick to devise a working theory about an unknown phenomenon’s nature, origin, or effect. Once per scene, when you ask two or more ques- tions using Obtain Information, you may immediately create an advantage that represents your theoretical understanding of the subject of those questions.",
+                "You are quick to devise a working theory about an unknown phenomenon’s nature, origin, or effect. Once per scene, when you ask two or more questions using Obtain Information, you may immediately create an advantage that represents your theoretical understanding of the subject of those questions.",
                 [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Science, 5)]),
             ],
         [Skill.Medicine]: [

@@ -13,6 +13,7 @@ import { Species } from '../helpers/speciesEnum';
 import { context } from '../common/context';
 import InstructionText from '../components/instructionText';
 import { Era } from '../helpers/eras';
+import store from '../state/store';
 
 interface ISpeciesPageState {
     showSelection: boolean;
@@ -38,11 +39,11 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
             ? <Button className="button" text="Roll Beta Species" onClick={() => this.rollBetaSpecies()} />
             : undefined;
 
-        const rollGamma = context.era === Era.NextGeneration && context.hasSource(Source.GammaQuadrant) && this.isRollAvailable()
+        const rollGamma = store.getState().context.era === Era.NextGeneration && context.hasSource(Source.GammaQuadrant) && this.isRollAvailable()
             ? <Button className="button" text="Roll Gamma Species" onClick={() => this.rollGammaSpecies()} />
             : undefined;
 
-        const rollDelta = context.era === Era.NextGeneration && context.hasSource(Source.DeltaQuadrant) && this.isRollAvailable()
+        const rollDelta = store.getState().context.era === Era.NextGeneration && context.hasSource(Source.DeltaQuadrant) && this.isRollAvailable()
             ? <Button className="button" text="Roll Delta Species" onClick={() => this.rollDeltaSpecies()} />
             : undefined;
 

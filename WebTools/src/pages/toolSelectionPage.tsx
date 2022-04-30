@@ -27,9 +27,18 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
                     <Button className="button" text="Main Character" onClick={() => { this.startStarfleetWorkflow(); } } />
                     <Button className="button" text="Supporting Character" onClick={() => { this.goToPage(PageIdentity.SupportingCharacter); } } />
                     <Button className="button" text="Starship" onClick={() => { this.goToPage(PageIdentity.Starship); } } />
+                    {this.renderSystemGenerationButton()}
                 </div>
             </div>
         );
+    }
+
+    renderSystemGenerationButton() {
+        if (context.hasSource(Source.ShackletonExpanse)) {
+            return (<Button className="button" text="Star System" onClick={() => { this.goToPage(PageIdentity.SystemGeneration); } } />);
+        } else {
+            return undefined;
+        }
     }
 
     private startStarfleetWorkflow() {

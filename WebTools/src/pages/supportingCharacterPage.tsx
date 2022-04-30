@@ -15,6 +15,7 @@ import { Source } from '../helpers/sources';
 import { marshaller } from '../helpers/marshaller';
 import { Species } from '../helpers/speciesEnum';
 import { context } from '../common/context';
+import store from '../state/store';
 
 interface ISupportingCharacterState {
     age: Age;
@@ -260,7 +261,7 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
 
     private showDialog() {
         this.populateAdditionalFields();
-        CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet(character, context.era), "supporting-character");
+        CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet(character, store.getState().context.era), "supporting-character");
     }
 
     private populateAdditionalFields() {

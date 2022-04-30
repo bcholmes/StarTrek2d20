@@ -1,6 +1,6 @@
 ﻿import {Skill} from './skills';
 import {Source} from './sources';
-import {character} from '../common/character';
+import {Character, character} from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { AdultPrerequisite, AllOfPrerequisite, AnyOfPrerequisite, CareersPrerequisite, ChildPrerequisite, CivilianPrerequisite, EnlistedPrerequisite, EraPrerequisite, IPrerequisite, KlingonPrerequisite, NotPrerequisite, SourcePrerequisite, TypePrerequisite } from './prerequisite';
 import { Career } from './careers';
@@ -62,9 +62,9 @@ export enum Role {
  * in play.
  */
 class NotKlingonPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled(): boolean {
-        if (new SourcePrerequisite(Source.KlingonCore).isPrerequisiteFulfilled()) {
-            return !(new KlingonPrerequisite().isPrerequisiteFulfilled());
+    isPrerequisiteFulfilled(character: Character): boolean {
+        if (new SourcePrerequisite(Source.KlingonCore).isPrerequisiteFulfilled(character)) {
+            return !(new KlingonPrerequisite().isPrerequisiteFulfilled(character));
         } else {
             return true;
         }
@@ -72,7 +72,7 @@ class NotKlingonPrerequisite implements IPrerequisite {
 }
 
 class MilitaryPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled(): boolean {
+    isPrerequisiteFulfilled(character: Character): boolean {
         return character.type === CharacterType.Starfleet ||
             character.type === CharacterType.KlingonWarrior ||
             character.type === CharacterType.AlliedMilitary ||
@@ -88,13 +88,13 @@ class NotTalentPrerequisite implements IPrerequisite {
         this.talent = talent;
     }
 
-    isPrerequisiteFulfilled(): boolean {
+    isPrerequisiteFulfilled(character: Character): boolean {
         return !character.hasTalent(this.talent);
     }
 }
 
 class CadetPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled(): boolean {
+    isPrerequisiteFulfilled(character: Character): boolean {
         return character.type === CharacterType.Cadet;
     }
 }
@@ -116,10 +116,10 @@ export class RoleModel {
         this.prerequisites = prerequisites;
     }
 
-    isPrerequisitesFilled() {
+    isPrerequisitesFilled(character: Character) {
         let valid = true;
         this.prerequisites.forEach(req => {
-            if (!req.isPrerequisiteFulfilled()) {
+            if (!req.isPrerequisiteFulfilled(character)) {
                 valid = false;
             }
         });
@@ -575,7 +575,7 @@ class Roles {
         var roles: RoleModel[] = [];
         var list = this._roles;
         for (var r of list) {
-            if (r.isPrerequisitesFilled()) {
+            if (r.isPrerequisitesFilled(character)) {
                 if (character.hasTalent("Multi-Discipline") && (r.id === Role.CommandingOfficer || r.id === Role.Admiral)) {
                     continue;
                 }

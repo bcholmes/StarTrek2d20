@@ -24,6 +24,7 @@ import { OutlineImage } from '../components/outlineImage';
 import { marshaller } from '../helpers/marshaller';
 import { context } from '../common/context';
 import { Starship } from '../common/starship';
+import store from '../state/store';
 
 interface StarshipPageState {
     type: CharacterTypeModel
@@ -46,7 +47,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
         this.starship = new Starship();
         character.starship = this.starship;
-        this.starship.serviceYear = this.eraDefaultYear(context.era);
+        this.starship.serviceYear = this.eraDefaultYear(store.getState().context.era);
 
         this._talentSelection = [];
 
@@ -528,7 +529,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     }
 
     private showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(this.starship, context.era), "starship", this.starship);
+        CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(this.starship, store.getState().context.era), "starship", this.starship);
     }
 
     private getTypes() {
@@ -543,7 +544,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         if (this.starship && this.starship.spaceframeModel && this.starship.spaceframeModel.isCustom) {
             return this.starship.spaceframeModel;
         } else {
-            return SpaceframeViewModel.createCustomSpaceframe(character.type, this.starship.serviceYear, [ context.era ]);
+            return SpaceframeViewModel.createCustomSpaceframe(character.type, this.starship.serviceYear, [ store.getState().context.era ]);
         }
     }
 

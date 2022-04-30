@@ -6,6 +6,7 @@ import { Era } from '../helpers/eras';
 import { Source } from '../helpers/sources';
 import { Species } from './speciesEnum';
 import { context } from '../common/context';
+import store from '../state/store';
 
 
 class NameModel {
@@ -1335,7 +1336,7 @@ class _Species {
             var spec = this._species[archetype];
             let n = parseInt(archetype);
 
-            const hasEra = (spec.eras.indexOf(context.era) > -1) || (n === Species.Klingon && character.type === CharacterType.KlingonWarrior);
+            const hasEra = (spec.eras.indexOf(store.getState().context.era) > -1) || (n === Species.Klingon && character.type === CharacterType.KlingonWarrior);
             const hasSource = context.hasAnySource(spec.sources) || (n === Species.LiberatedBorg && context.hasSource(Source.Voyager));
 
             if (hasEra && hasSource && !this.ignoreSpecies(n)) {
@@ -1354,7 +1355,7 @@ class _Species {
         if (type === CharacterType.KlingonWarrior) {
             var species: SpeciesModel[] = [];
 
-            var klingonSpecies = context.era === Era.NextGeneration ? [
+            var klingonSpecies = store.getState().context.era === Era.NextGeneration ? [
                 Species.Klingon 
             ] : [
                 Species.Klingon, Species.KlingonQuchHa
@@ -1414,7 +1415,7 @@ class _Species {
     }
 
     generateSpecies(): Species {
-        if (character.type === CharacterType.KlingonWarrior && context.era === Era.NextGeneration) {
+        if (character.type === CharacterType.KlingonWarrior && store.getState().context.era === Era.NextGeneration) {
             return Species.Klingon;
         } else if (character.type === CharacterType.KlingonWarrior) {
             let roll = Math.floor(Math.random() * 20) + 1;
@@ -1424,7 +1425,7 @@ class _Species {
             let roll = Math.floor(Math.random() * 20) + 1;
             let species = Species.Human;
 
-            switch (context.era) {
+            switch (store.getState().context.era) {
                 case Era.Enterprise: {
                     switch (roll) {
                         case 1:
@@ -1571,7 +1572,7 @@ class _Species {
         var roll = Math.floor(Math.random() * 20) + 1;
         var species = Species.Human;
 
-        switch (context.era) {
+        switch (store.getState().context.era) {
             case Era.Enterprise: {
                 switch (roll) {
                     case 1:
@@ -1693,7 +1694,7 @@ class _Species {
         var roll = Math.floor(Math.random() * 20) + 1;
         var species = Species.Human;
 
-        switch (context.era) {
+        switch (store.getState().context.era) {
             case Era.Enterprise: {
                 switch (roll) {
                     case 1:

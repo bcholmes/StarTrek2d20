@@ -8,6 +8,8 @@ import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
 import { context } from '../common/context';
+import store from '../state/store';
+import { setEra } from '../state/contextActions';
 
 export class EraSelectionPage extends React.Component<IPageProperties, {}> {
     constructor(props: IPageProperties) {
@@ -32,7 +34,7 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
                     <div key={s.id} className={className} onClick={() => { if (s.available) { this.sourceChanged(s.id); } } }>{s.name}</div>
                 );
             });
-            return (<div>
+            return (<div key={'source-type-' + t.type}>
                 <div className="text-white small text-center">{t.name}</div>
                 {list}
             </div>)
@@ -120,7 +122,7 @@ export class EraSelectionPage extends React.Component<IPageProperties, {}> {
     }
 
     private eraSelected(era: Era) {
-        context.era = era;
+        store.dispatch(setEra(era));
         Navigation.navigateToPage(PageIdentity.ToolSelecton);
     }
 }

@@ -13,10 +13,10 @@ import { SheetOutlineOptions, SpaceframeOutline, XYLocation } from './spaceframe
 import { TalentsHelper } from './talents';
 import { CareerEventsHelper } from './careerEvents';
 import { RolesHelper } from './roles';
-import { context } from '../common/context';
 import { Construct } from '../common/construct';
 import { Starship } from '../common/starship';
 import { staTextFieldAppearanceProvider } from './pdfTextFieldAppearance';
+import store from '../state/store';
 
 class TextBlock {
     text: string;
@@ -1067,7 +1067,7 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
 }
 
 class CharacterSheets {
-    public getSupportingCharacterSheet(c: Character, era: Era = context.era): ICharacterSheet[] {
+    public getSupportingCharacterSheet(c: Character, era: Era = store.getState().context.era): ICharacterSheet[] {
         if (c.isKlingon()) {
             return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
         } else if (era === Era.NextGeneration) {
@@ -1077,10 +1077,10 @@ class CharacterSheets {
         }
     }
 
-    public getCharacterSheets(character: Character): ICharacterSheet[] {
+    public getCharacterSheets(character: Character, era: Era = store.getState().context.era): ICharacterSheet[] {
         if (character.isKlingon()) {
             return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet() ];
-        } else if (context.era === Era.NextGeneration) {
+        } else if (era === Era.NextGeneration) {
             return [ new StandardTngCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet() ];
         } else {
             return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new LandscapeTngCharacterSheet() ];

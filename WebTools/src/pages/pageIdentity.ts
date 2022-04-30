@@ -30,6 +30,9 @@ export enum PageIdentity {
     Starship,
     SupportingCharacter,
     TalentsOverview,
+    
+    SystemGeneration,
+    StarSystemDetails,
 
     ViewSheet,
 }

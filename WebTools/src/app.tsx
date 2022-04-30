@@ -114,6 +114,7 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
 
     isProfileSupportedForPage() {
         if (this.state.activePage === PageIdentity.ViewSheet ||
+            this.state.activePage === PageIdentity.SystemGeneration ||
             this.state.activePage === PageIdentity.Starship) {
             return false;
         } else {

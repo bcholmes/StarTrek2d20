@@ -10,6 +10,7 @@ import { Source } from '../helpers/sources';
 import Governments, { GovernmentType } from '../helpers/governments';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { context } from '../common/context';
+import store from '../state/store';
 
 interface ICharacterTypePageState {
     type: CharacterType,
@@ -31,7 +32,7 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
     renderAlliedMilitaryList() {
         if (this.state.type === CharacterType.AlliedMilitary) {
 
-            const types = AllyHelper.selectOptions(context.era, !context.hasSource(Source.KlingonCore)).map(t => {
+            const types = AllyHelper.selectOptions(store.getState().context.era, !context.hasSource(Source.KlingonCore)).map(t => {
                 return (<option value={t.type} key={'type-' + t.type}>{t.name}</option>);
             });
 
@@ -66,7 +67,7 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
     renderGovernmentsList() {
         if (this.state.type === CharacterType.AmbassadorDiplomat) {
 
-            const types = Governments.selectOptions(context.era).map(t => {
+            const types = Governments.selectOptions(store.getState().context.era).map(t => {
                 return (<option value={t.type} key={'gov-' + t.type}>{t.name}</option>);
             });
 

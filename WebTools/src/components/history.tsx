@@ -58,6 +58,8 @@ export class History extends React.Component<IHistoryProperties, {}> {
             case PageIdentity.StarfleetAcademy: return character.type === CharacterType.Starfleet ? "Starfleet Academy" : "Training";
             case PageIdentity.StarfleetAcademyDetails: return character.type === CharacterType.Starfleet ? "Starfleet Academy Details" : "Training Details";
             case PageIdentity.ChildCareer: return "Career";
+            case PageIdentity.CadetCareer: return "Career";
+            case PageIdentity.CadetSeniority: return "Cadet Seniority";
             case PageIdentity.Career: return "Career";
             case PageIdentity.CareerDetails: return "Career Details";
             case PageIdentity.CareerEvent1: return "Career Event 1";
