@@ -1,7 +1,8 @@
+import { Color } from "../../common/colour";
 import { D20, D6 } from "../../common/die";
 import { setSector, setStar } from "../../state/starActions";
 import store from "../../state/store";
-import { LuminosityClass, Sector, SectorCoordinates, SpectralClass, SpectralClassModel, Star, StarSystem, TemperatureRange, World, WorldClass, WorldClassModel } from "./star";
+import { LuminosityClass, LuminosityClassModel, Sector, SectorCoordinates, SpectralClass, SpectralClassModel, Star, StarSystem, Range, World, WorldClass, WorldClassModel } from "./star";
 
 
 class GardenZone {
@@ -36,17 +37,17 @@ class LuminosityCrossReference {
 class SystemGeneration {
 
     private spectralClasses: SpectralClassModel[] = [
-        new SpectralClassModel(SpectralClass.M, "M", new TemperatureRange(2400, 3700)),
-        new SpectralClassModel(SpectralClass.K, "K", new TemperatureRange(3700, 5200)),
-        new SpectralClassModel(SpectralClass.G, "G", new TemperatureRange(5200, 6000)),
-        new SpectralClassModel(SpectralClass.F, "F", new TemperatureRange(6000, 7500)),
-        new SpectralClassModel(SpectralClass.A, "A", new TemperatureRange(7500, 10000)),
-        new SpectralClassModel(SpectralClass.B, "B", new TemperatureRange(10000, 30000)),
-        new SpectralClassModel(SpectralClass.L, "L", new TemperatureRange(1300, 2400)),
-        new SpectralClassModel(SpectralClass.Y, "Y", new TemperatureRange(500, 1300)),
-        new SpectralClassModel(SpectralClass.T, "T", new TemperatureRange(undefined, 500)),
-        new SpectralClassModel(SpectralClass.WhiteDwarf, "White Dwarf", new TemperatureRange(2400, 3700)),
-        new SpectralClassModel(SpectralClass.BrownDwarf, "Brown Dwarf", new TemperatureRange(2400, 3700)),
+        new SpectralClassModel(SpectralClass.M, "M", new Range(2400, 3700), "Red", Color.from("#ff0000"), new Range(null, 0.7)),
+        new SpectralClassModel(SpectralClass.K, "K", new Range(3700, 5200), "Orange", Color.from("#ff9833"), new Range(0.7, 0.96)),
+        new SpectralClassModel(SpectralClass.G, "G", new Range(5200, 6000), "Yellow", Color.from("#ffff00"), new Range(0.96, 1.15)),
+        new SpectralClassModel(SpectralClass.F, "F", new Range(6000, 7500), "Yellow white", Color.from("#ffffed"), new Range(1.15, 1.4)),
+        new SpectralClassModel(SpectralClass.A, "A", new Range(7500, 10000), "White", Color.from("#fbf8ff"), new Range(1.4, 1.8)),
+        new SpectralClassModel(SpectralClass.B, "B", new Range(10000, 30000), "Blue white", Color.from("#bbccff"), new Range(1.8, 6.6)),
+        new SpectralClassModel(SpectralClass.L, "L", new Range(1300, 2400), "Red brown", Color.from("#a52a2a"), new Range(0.08, 0.15)),
+        new SpectralClassModel(SpectralClass.Y, "Y", new Range(500, 1300), "Brown", Color.from("#964b00"), new Range(0.08, 0.14)),
+        new SpectralClassModel(SpectralClass.T, "T", new Range(undefined, 500), "Dark brown", Color.from("#663300"), new Range(0.08, 0.14)),
+        new SpectralClassModel(SpectralClass.WhiteDwarf, "White Dwarf", new Range(2400, 3700), "White", Color.from("#fbf8ff"), new Range(0.08, 0.14)),
+        new SpectralClassModel(SpectralClass.BrownDwarf, "Brown Dwarf", new Range(2400, 3700), "Brown", Color.from("#964b00"), new Range(0.08, 0.14)),
     ];
 
     private worldClasses: WorldClassModel[] = [
@@ -113,27 +114,37 @@ class SystemGeneration {
         19: [this.spectralClasses[10] ],
     };
 
-    private luminosityClassTable: { [roll: number] : LuminosityClass[] } = {
-        1: [ LuminosityClass.VI ],
-        2: [ LuminosityClass.VI ],
-        3: [ LuminosityClass.V ],
-        4: [ LuminosityClass.V ],
-        5: [ LuminosityClass.V ],
-        6: [ LuminosityClass.V ],
-        7: [ LuminosityClass.V ],
-        8: [ LuminosityClass.V ],
-        9: [ LuminosityClass.V ],
-        10: [ LuminosityClass.V ],
-        11: [ LuminosityClass.V ],
-        12: [ LuminosityClass.V ],
-        13: [ LuminosityClass.V ],
-        14: [ LuminosityClass.V ],
-        15: [ LuminosityClass.V ],
-        16: [ LuminosityClass.V ],
-        17: [ LuminosityClass.IV ],
-        18: [ LuminosityClass.IV ],
-        19: [ LuminosityClass.III ],
-        20: [ LuminosityClass.II, LuminosityClass.Ib, LuminosityClass.Ia ],
+    private luminosityTable: LuminosityClassModel[] = [
+        new LuminosityClassModel(LuminosityClass.Ia, "Luminous supergiant"),
+        new LuminosityClassModel(LuminosityClass.Ib, "Less luminous supergiant"),
+        new LuminosityClassModel(LuminosityClass.II, "Bright giant"),
+        new LuminosityClassModel(LuminosityClass.III, "Normal giant"),
+        new LuminosityClassModel(LuminosityClass.IV, "Subgiant"),
+        new LuminosityClassModel(LuminosityClass.V, "Main Sequence"),
+        new LuminosityClassModel(LuminosityClass.VI, "Subdwarf")
+    ];
+
+    private luminosityClassTable: { [roll: number] : LuminosityClassModel[] } = {
+        1: [ this.luminosityTable[6] ],
+        2: [ this.luminosityTable[6] ],
+        3: [ this.luminosityTable[5] ],
+        4: [ this.luminosityTable[5] ],
+        5: [ this.luminosityTable[5] ],
+        6: [ this.luminosityTable[5] ],
+        7: [ this.luminosityTable[5] ],
+        8: [ this.luminosityTable[5] ],
+        9: [ this.luminosityTable[5] ],
+        10: [ this.luminosityTable[5] ],
+        11: [ this.luminosityTable[5] ],
+        12: [ this.luminosityTable[5] ],
+        13: [ this.luminosityTable[5] ],
+        14: [ this.luminosityTable[5] ],
+        15: [ this.luminosityTable[5] ],
+        16: [ this.luminosityTable[5] ],
+        17: [ this.luminosityTable[4] ],
+        18: [ this.luminosityTable[4] ],
+        19: [ this.luminosityTable[3] ],
+        20: [ this.luminosityTable[2], this.luminosityTable[1], this.luminosityTable[0] ],
     };
 
     private numberOfPlanetsTable: { [roll: number] : number } = {
@@ -165,10 +176,10 @@ class SystemGeneration {
         ( (starSystem) => starSystem.star.spectralClass.id === SpectralClass.G ? 0 : 0 ),
         ( (starSystem) => starSystem.star.spectralClass.id === SpectralClass.F ? 1 : 0 ),
         ( (starSystem) => starSystem.star.spectralClass.id === SpectralClass.A ? 1 : 0 ),
-        ( (starSystem) => ( starSystem.star.spectralClass.id === SpectralClass.B || starSystem.star.spectralClass.id === SpectralClass.O) ? 0 : 0 ),
-        ( (starSystem) => starSystem.star.luminosityClass === LuminosityClass.III ? -3 : 0 ),
-        ( (starSystem) => (starSystem.star.luminosityClass === LuminosityClass.II || starSystem.star.luminosityClass === LuminosityClass.Ia || starSystem.star.luminosityClass === LuminosityClass.Ib) ? -5 : 0 ),
-
+        ( (starSystem) => (starSystem.star.spectralClass.id === SpectralClass.B || starSystem.star.spectralClass.id === SpectralClass.O) ? 0 : 0 ),
+        ( (starSystem) => (starSystem.star.luminosityClass != null && starSystem.star.luminosityClass.id === LuminosityClass.III) ? -3 : 0 ),
+        ( (starSystem) => (starSystem.star.luminosityClass != null && (starSystem.star.luminosityClass.id === LuminosityClass.II || starSystem.star.luminosityClass.id === LuminosityClass.Ia || starSystem.star.luminosityClass.id === LuminosityClass.Ib)) ? -5 : 0 ),
+        ( (starSystem) => starSystem.isBinary ? -3 : 0 ),
     ];
 
     private innerOrOuterWorldTable: { [roll: number]: WorldClassModel[] } = {
@@ -314,6 +325,8 @@ class SystemGeneration {
         new LuminosityCrossReference(SpectralClass.G, 0, LuminosityClass.V, 1.21),
         new LuminosityCrossReference(SpectralClass.G, 0, LuminosityClass.VI, .32),
 
+        new LuminosityCrossReference(SpectralClass.G, 2, LuminosityClass.V, 1), // the sun (Sol)
+
         new LuminosityCrossReference(SpectralClass.G, 5, LuminosityClass.Ia, 89000),
         new LuminosityCrossReference(SpectralClass.G, 5, LuminosityClass.Ib, 8100),
         new LuminosityCrossReference(SpectralClass.G, 5, LuminosityClass.II, 740),
@@ -321,6 +334,39 @@ class SystemGeneration {
         new LuminosityCrossReference(SpectralClass.G, 5, LuminosityClass.IV, 4.9),
         new LuminosityCrossReference(SpectralClass.G, 5, LuminosityClass.V, 0.67),
         new LuminosityCrossReference(SpectralClass.G, 5, LuminosityClass.VI, 0.186),
+
+        new LuminosityCrossReference(SpectralClass.K, 0, LuminosityClass.Ia, 97000),
+        new LuminosityCrossReference(SpectralClass.K, 0, LuminosityClass.Ib, 11700),
+        new LuminosityCrossReference(SpectralClass.K, 0, LuminosityClass.II, 890),
+        new LuminosityCrossReference(SpectralClass.K, 0, LuminosityClass.III, 95),
+        new LuminosityCrossReference(SpectralClass.K, 0, LuminosityClass.IV, 4.65),
+        new LuminosityCrossReference(SpectralClass.K, 0, LuminosityClass.V, 0.42),
+        new LuminosityCrossReference(SpectralClass.K, 0, LuminosityClass.VI, 0.117),
+
+        new LuminosityCrossReference(SpectralClass.K, 5, LuminosityClass.Ia, 107000),
+        new LuminosityCrossReference(SpectralClass.K, 5, LuminosityClass.Ib, 20400),
+        new LuminosityCrossReference(SpectralClass.K, 5, LuminosityClass.II, 2450),
+        new LuminosityCrossReference(SpectralClass.K, 5, LuminosityClass.III, 320),
+        new LuminosityCrossReference(SpectralClass.K, 5, LuminosityClass.IV, 4.75),
+        new LuminosityCrossReference(SpectralClass.K, 5, LuminosityClass.V, 0.08),
+        new LuminosityCrossReference(SpectralClass.K, 5, LuminosityClass.VI, 0.025),
+
+        new LuminosityCrossReference(SpectralClass.M, 0, LuminosityClass.Ia, 117000),
+        new LuminosityCrossReference(SpectralClass.M, 0, LuminosityClass.Ib, 46000),
+        new LuminosityCrossReference(SpectralClass.M, 0, LuminosityClass.II, 4600),
+        new LuminosityCrossReference(SpectralClass.M, 0, LuminosityClass.III, 470),
+        new LuminosityCrossReference(SpectralClass.M, 0, LuminosityClass.IV, 4.9),
+        new LuminosityCrossReference(SpectralClass.M, 0, LuminosityClass.V, 0.04),
+        new LuminosityCrossReference(SpectralClass.M, 0, LuminosityClass.VI, 0.011),
+
+        new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.Ia, 129000),
+        new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.Ib, 89000),
+        new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.II, 14900),
+        new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.III, 2280),
+        new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.IV, 5.6),
+        new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.V, 0.007),
+        new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.VI, 0.002),
+
     ];
 
     private notableSystemsTable: { [roll: number] : number } = {
@@ -344,6 +390,29 @@ class SystemGeneration {
         18: 9,
         19: 9,
         20: 11,
+    }
+
+    private numberOfMoonsTable: { [roll: number] : number } = {
+        1: 1,
+        2: 1,
+        3: 1,
+        4: 1,
+        5: 1,
+        6: 1,
+        7: 1,
+        8: 1,
+        9: 1,
+        10: 1,
+        11: 2,
+        12: 2,
+        13: 2,
+        14: 2,
+        15: 2,
+        16: 3,
+        17: 3,
+        18: 4,
+        19: 4,
+        20: 5,
     }
 
     generateSector() {
@@ -419,37 +488,45 @@ class SystemGeneration {
 
     generateSystem(starSystem: StarSystem) {
 
-        let roll = D20.roll();
-        this.numberOfPlanetsModifiers.forEach(mod => roll += mod(starSystem));
-        roll = Math.max(1, Math.min(20, roll));
+        if (!starSystem.star.spectralClass.isDwarf) {
+            let roll = D20.roll();
+            this.numberOfPlanetsModifiers.forEach(mod => roll += mod(starSystem));
+            roll = Math.max(1, Math.min(20, roll));
 
-        let worldCount = this.numberOfPlanetsTable[roll];
+            let worldCount = this.numberOfPlanetsTable[roll];
 
-        let primaryWorldOrbit =  Math.min(worldCount, Math.ceil(D20.roll() / 4.0));
+            let primaryWorldOrbit =  Math.min(worldCount, Math.ceil(D20.roll() / 4.0));
 
-        console.log("number of worlds: " + worldCount + ". Primary world: " + primaryWorldOrbit);
+            console.log("number of worlds: " + worldCount + ". Primary world: " + primaryWorldOrbit);
 
 
-        for (let i = 1; i <= worldCount; i++) {
+            for (let i = 1; i <= worldCount; i++) {
 
-            let worldRoll = D20.roll();
-            let worldTypes =  (i === primaryWorldOrbit) 
-                ? this.primaryWorldTable[worldRoll] 
-                : this.innerOrOuterWorldTable[worldRoll];
-            let worldType = worldTypes[0];
-            if (worldTypes.length > 1) {
-                worldType = worldTypes[Math.floor(Math.random() * worldTypes.length)];
+                let worldRoll = D20.roll();
+                let worldTypes =  (i === primaryWorldOrbit) 
+                    ? this.primaryWorldTable[worldRoll] 
+                    : this.innerOrOuterWorldTable[worldRoll];
+                let worldType = worldTypes[0];
+                if (worldTypes.length > 1) {
+                    worldType = worldTypes[Math.floor(Math.random() * worldTypes.length)];
+                }
+
+                let world = new World(worldType, starSystem.world.length);
+                if (worldType.id === WorldClass.AsteroidBelt) {
+                    world.numberOfSatellites = 0;
+                } else if (worldType.isGasGiant) {
+                    world.numberOfSatellites = Math.ceil(D20.roll() / 4);
+                } else {
+                    world.numberOfSatellites = this.numberOfMoonsTable[D20.roll()];
+                }
+                starSystem.world.push(world);
             }
-            console.log("World " + i + " is a " + worldType.description);
 
-            let world = new World(worldType, starSystem.world.length);
-            starSystem.world.push(world);
-        }
-
-        for (let i = 0; i < this.gardenZoneTable.length; i++) {
-            let zone = this.gardenZoneTable[i];
-            if (starSystem.star.spectralClass.id === zone.spectralClass && starSystem.star.luminosityClass === zone.luminosity) {
-                console.log("Garden zone: " + zone.from + "-" + zone.to);
+            for (let i = 0; i < this.gardenZoneTable.length; i++) {
+                let zone = this.gardenZoneTable[i];
+                if (starSystem.star.spectralClass.id === zone.spectralClass && starSystem.star.luminosityClass.id === zone.luminosity) {
+                    console.log("Garden zone: " + zone.from + "-" + zone.to);
+                }
             }
         }
     }
@@ -493,7 +570,7 @@ class SystemGeneration {
             if (lumens.length > 1) {
                 luminosity = lumens[Math.floor(Math.random() * lumens.length)];
             }
-            if (luminosity !== LuminosityClass.II && luminosity !== LuminosityClass.Ia && luminosity !== LuminosityClass.Ib) {
+            if (luminosity.id !== LuminosityClass.II && luminosity.id !== LuminosityClass.Ia && luminosity.id !== LuminosityClass.Ib) {
                 break;
             } else if (!spectralClass.isCool() && !spectralClass.isHot()) {
                 break;

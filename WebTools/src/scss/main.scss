@@ -1,3 +1,16 @@
+$lcars-salmon: #CC6666;
+$lcars-purple: #906F9A;
+$lcars-brighter-purple: #9179B7;
+$lcars-orange: #F89B24;
+$lcars-pink: orchid;
+$lcars-dull-purple: #B5B3D8; // used for buttons
+$lcars-light-orange: #FFCC66;
+$lcars-light-pink: #DE84B7;
+$lcars-dull-pink: #c37ba4;
+$lcars-very-light-pink: #f7bbdd;
+
+$primary: $lcars-purple;
+
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
@@ -29,3 +42,4 @@ $breadcrumb-padding-x: 1.5rem;
 @import './sourceselection.scss';
 @import './specialChars.scss';
 @import './view.scss';
+@import './map.scss';

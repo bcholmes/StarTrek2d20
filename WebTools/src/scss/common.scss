@@ -5,17 +5,6 @@
     font-style: normal;
 }
 
-$lcars-salmon: #CC6666;
-$lcars-purple: #906F9A;
-$lcars-brighter-purple: #9179B7;
-$lcars-orange: #F89B24;
-$lcars-pink: orchid;
-$lcars-dull-purple: #B5B3D8; // used for buttons
-$lcars-light-orange: #FFCC66;
-$lcars-light-pink: #DE84B7;
-$lcars-dull-pink: #c37ba4;
-$lcars-very-light-pink: #f7bbdd;
-
 .d-none {
     display: none !important;
 }
@@ -466,7 +455,7 @@ h2.header-text {
 .lcar-footer {
 	flex: 1;
 	max-height: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 0.75rem;
     z-index: 100;
 			
 	display: flex;

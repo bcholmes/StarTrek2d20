@@ -29,6 +29,6 @@ export class SystemGenerationPage extends React.Component<IPageProperties, {}> {
 
     private generateSystem() {
         SystemGenerationTable.generateSector();
-        Navigation.navigateToPage(PageIdentity.StarSystemDetails);
+        Navigation.navigateToPage(PageIdentity.SectorDetails);
     }
 }

@@ -3,7 +3,7 @@ import {character} from '../common/character';
 import {EraSelectionPage} from './eraSelectionPage';
 import {ToolSelectionPage} from './toolSelectionPage';
 import {SpeciesPage} from './speciesPage';
-import {SpeciesDetailsPage} from './speciesDetailsPage';
+import SpeciesDetailsPage from './speciesDetailsPage';
 import {EnvironmentPage} from './environmentPage';
 import {EnvironmentDetailsPage} from './environmentDetailsPage';
 import {UpbringingPage} from './upbringingPage';
@@ -30,6 +30,8 @@ import { ViewSheetPage } from './viewSheetPage';
 import { CadetSeniorityPage } from './cadetSeniorityPage';
 import { SystemGenerationPage } from '../mapping/page/systemGenerationPage';
 import StarSystemDetailsPage from '../mapping/page/starSystemDetailsPage';
+import SectorDetailsPage from '../mapping/page/sectorDetailsPage';
+import { CreditsPage } from './creditsPage';
 
 
 export class PageFactory {
@@ -66,10 +68,12 @@ export class PageFactory {
         this.factories[PageIdentity.Finish] = () => <FinishPage/>;
         this.factories[PageIdentity.Starship] = () => <StarshipPage/>;
         this.factories[PageIdentity.SystemGeneration] = () => <SystemGenerationPage />;
+        this.factories[PageIdentity.SectorDetails] = () => <SectorDetailsPage />;
         this.factories[PageIdentity.StarSystemDetails] = () => <StarSystemDetailsPage />;
         this.factories[PageIdentity.SupportingCharacter] = () => <SupportingCharacterPage />;
         this.factories[PageIdentity.TalentsOverview] = () => <TalentsOverviewPage />;
         this.factories[PageIdentity.ViewSheet] = () => <ViewSheetPage />;
+        this.factories[PageIdentity.CreditsPage] = () => <CreditsPage />;
     }
 
     createPage(page: PageIdentity) {

@@ -33,6 +33,14 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
                     </div>
                 </div>
             </div>
+            <div className="row">
+                <div className="col-md-4 view-field-label pb-2">Satellites:</div>
+                <div className="col-md-8 text-white">
+                    <div className="view-border-bottom pb-2">
+                        {this.props.world.numberOfSatellites}
+                    </div>
+                </div>
+            </div>
         </div>);
     }
 }

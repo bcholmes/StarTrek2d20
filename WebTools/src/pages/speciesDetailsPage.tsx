@@ -17,8 +17,15 @@ import { Source } from '../helpers/sources';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { Species } from '../helpers/speciesEnum';
 import { context } from '../common/context';
+import store from '../state/store';
+import { setAllowCrossSpeciesTalents } from '../state/contextActions';
+import { connect } from 'react-redux';
 
-export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
+interface ISpeciesDetailsProperties extends IPageProperties {
+    allowCrossSpeciesTalents: boolean;
+}
+
+class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, {}> {
     private _selectedTalent: TalentViewModel;
     private _attributesDone: boolean;
 
@@ -79,11 +86,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
             ? (<div className="panel">
                 <div className="header-small">TALENTS</div>
                 <div>
-                    <CheckBox
-                        isChecked={context.allowCrossSpeciesTalents}
-                        text="Allow cross-species talents (GM's decision)"
-                        value={!context.allowCrossSpeciesTalents}
-                        onChanged={() => { context.allowCrossSpeciesTalents = !context.allowCrossSpeciesTalents; this.forceUpdate(); }} />
+                    {this.renderCrossSpeciesCheckbox()}
                 </div>
                 {esotericTalentOption}
                 <TalentSelection talents={talents} onSelection={talents => this.onTalentSelected(talents.length > 0 ? talents[0] : undefined)} />
@@ -91,11 +94,7 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
             : (<div className="panel">
                 <div className="header-small">SPECIES OPTIONS</div>
                 <div>
-                    <CheckBox
-                        isChecked={context.allowCrossSpeciesTalents}
-                        text="Allow cross-species talents (GM's decision)"
-                        value={!context.allowCrossSpeciesTalents}
-                        onChanged={() => { context.allowCrossSpeciesTalents = !context.allowCrossSpeciesTalents; this.forceUpdate(); }} />
+                    {this.renderCrossSpeciesCheckbox()}
                 </div>
                 {esotericTalentOption}
               </div>);
@@ -137,6 +136,18 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
         );
     }
 
+    private renderCrossSpeciesCheckbox() {
+        return (<CheckBox
+            isChecked={this.props.allowCrossSpeciesTalents}
+            text="Allow cross-species talents (GM's decision)"
+            value={!this.props.allowCrossSpeciesTalents}
+            onChanged={() => { 
+                store.dispatch(setAllowCrossSpeciesTalents(!this.props.allowCrossSpeciesTalents)); 
+                context.allowCrossSpeciesTalents = !context.allowCrossSpeciesTalents; 
+                this.forceUpdate(); 
+            }} />);
+    }
+
     private attributesDone(done: boolean) {
         this._attributesDone = done;
     }
@@ -171,3 +182,11 @@ export class SpeciesDetailsPage extends React.Component<IPageProperties, {}> {
         Navigation.navigateToPage(PageIdentity.Environment);
     }
 }
+
+function mapStateToProps(state, ownProps) {
+    return { 
+        allowCrossSpeciesTalents: state.context.allowCrossSpeciesTalents
+    };
+}
+
+export default connect(mapStateToProps)(SpeciesDetailsPage);

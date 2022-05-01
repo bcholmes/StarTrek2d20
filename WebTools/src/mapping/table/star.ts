@@ -1,3 +1,4 @@
+import { Color } from "../../common/colour";
 import { D20 } from "../../common/die";
 
 export enum SpectralClass {
@@ -59,16 +60,16 @@ export enum RomanNumerals {
 }
 
 /**
- * Symbol   Class of Star                  Example
- * 0 	    Extreme, luminous supergiants 	 
- * Ia       Luminous supergiants           Betelgeuse
- * Ib       Less luminous supergiants      Antares
- * II       Bright giants                  Canopus
- * III      Normal giants                  Aldebaran
- * IV       Subgiants                      Procyon
- * V        Main sequence                  Sun
- * sd       Subdwarfs                      Kapteyn's Star (HD 33793)
- * wd or D  White dwarfs                   Sirius B
+ * Symbol    Class of Star                  Example
+ * 0 	     Extreme, luminous supergiants 	 
+ * Ia        Luminous supergiants           Betelgeuse
+ * Ib        Less luminous supergiants      Antares
+ * II        Bright giants                  Canopus
+ * III       Normal giants                  Aldebaran
+ * IV        Subgiants                      Procyon
+ * V         Main sequence                  Sun
+ * VI or sd  Subdwarfs                      Kapteyn's Star (HD 33793)
+ * wd or D   White dwarfs                   Sirius B
  */
  export enum LuminosityClass {
     VI,
@@ -78,6 +79,17 @@ export enum RomanNumerals {
     II,
     Ib,
     Ia
+}
+
+export class LuminosityClassModel {
+
+    public id: LuminosityClass;
+    public description: string;
+
+    constructor(id: LuminosityClass, description: string) {
+        this.id = id;
+        this.description = description;
+    }
 }
 
 export class Sector {
@@ -122,13 +134,25 @@ export class SectorCoordinates {
     }
 }
 
-export class TemperatureRange {
+export class Range {
     public from?: number;
     public to?: number;
 
     constructor(from?: number, to?: number) {
         this.from = from;
         this.to = to;
+    }
+
+    get midpoint() {
+        if (this.to == null && this.from == null) {
+            return 0;
+        } else if (this.to == null) {
+            return this.from;
+        } else if (this.from == null) {
+            return this.to / 2;
+        } else {
+            return (this.to + this.from) / 2;
+        }
     }
 }
 
@@ -151,10 +175,16 @@ export class SpectralClassModel {
 
     public id: SpectralClass;
     public description: string;
+    public colourDescription: string;
+    public colour: Color;
+    public radius: Range;
 
-    constructor(id: SpectralClass, description: string, temperature: TemperatureRange) {
+    constructor(id: SpectralClass, description: string, temperature: Range, colourDescription: string, colour: Color, radius: Range) {
         this.id = id;
         this.description = description;
+        this.colourDescription = colourDescription;
+        this.colour = colour;
+        this.radius = radius;
     }
 
     isDwarf() {
@@ -172,9 +202,9 @@ export class SpectralClassModel {
 export class Star {
     public spectralClass: SpectralClassModel;
     public subClass: number;
-    public luminosityClass?: LuminosityClass;
+    public luminosityClass?: LuminosityClassModel;
 
-    constructor(spectralClass: SpectralClassModel, subClass: number, luminosity?: LuminosityClass) {
+    constructor(spectralClass: SpectralClassModel, subClass: number, luminosity?: LuminosityClassModel) {
         this.spectralClass = spectralClass;
         this.subClass = subClass;
         this.luminosityClass = luminosity;
@@ -184,7 +214,9 @@ export class Star {
         if (this.spectralClass.id === SpectralClass.WhiteDwarf || this.spectralClass.id === SpectralClass.BrownDwarf) {
             return this.spectralClass.description;
         } else {
-            return this.spectralClass.description + "" + this.subClass + (this.luminosityClass != null ? (LuminosityClass[this.luminosityClass]) : "");
+            let designation = this.spectralClass.description + this.subClass + (this.luminosityClass != null ? (LuminosityClass[this.luminosityClass.id]) : "");
+            let description = this.spectralClass.colourDescription + (this.luminosityClass != null ? (" / " + this.luminosityClass.description) : "");
+            return designation + " (" + description + ")";
         }
     }
 }
@@ -209,6 +241,7 @@ export class World {
 
     worldClass: WorldClassModel;
     orbit: number;
+    numberOfSatellites: number;
 
     constructor(worldClass: WorldClassModel, orbit: number) {
         this.worldClass = worldClass;

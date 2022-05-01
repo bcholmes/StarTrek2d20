@@ -10,6 +10,7 @@ import { History } from './components/history';
 import { CharacterSheet } from './components/characterSheet';
 
 import './scss/main.scss';
+import { navigateTo } from './common/navigator';
 
 interface IAppState {
     showNews: boolean;
@@ -102,8 +103,13 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
                     <div className="lcar-footer-start"></div>
                     <div className="lcar-footer-end"></div>
                 </div>
-                <div className="legal">
-                    TM &amp; &copy; 2022 CBS Studios Inc. STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.
+                <div className="row">
+                    <div className="col-md-8 offset-md-2 text-primary text-center">
+                        TM &amp; &copy; 2022 CBS Studios Inc. STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.
+                    </div>
+                    <div className="col-md-2 text-right pr-4">
+                        <a href="./index.html" className="text-primary" onClick={(e) => navigateTo(e, PageIdentity.CreditsPage)} style={{ paddingRight: "10px"}}>About</a>
+                    </div>
                 </div>
             </div>,
             <AppVersion key="app-version"/>,

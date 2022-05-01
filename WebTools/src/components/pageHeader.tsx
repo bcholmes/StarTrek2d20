@@ -54,10 +54,14 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
             return character.workflow.currentStep().name;
         } else if (this.props.page === PageIdentity.SystemGeneration) {
             return "System Generation";
+        } else if (this.props.page === PageIdentity.SectorDetails) {
+            return "Sector Details";
         } else if (this.props.page === PageIdentity.StarSystemDetails) {
             return "Star System Details";
         } else if (this.props.page === PageIdentity.ViewSheet) {
             return "View Sheet";
+        } else if (this.props.page === PageIdentity.CreditsPage) {
+            return "Credits";
         } else {
             return "";
         }
