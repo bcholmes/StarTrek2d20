@@ -16,13 +16,14 @@ import { TalentSelection } from '../components/talentSelection';
 import { Source } from '../helpers/sources';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { Species } from '../helpers/speciesEnum';
-import { context } from '../common/context';
 import store from '../state/store';
-import { setAllowCrossSpeciesTalents } from '../state/contextActions';
+import { setAllowCrossSpeciesTalents, setAllowEsotericTalents } from '../state/contextActions';
 import { connect } from 'react-redux';
+import { hasSource } from '../state/contextFunctions';
 
 interface ISpeciesDetailsProperties extends IPageProperties {
     allowCrossSpeciesTalents: boolean;
+    allowEsotericTalents: boolean;
 }
 
 class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, {}> {
@@ -74,12 +75,12 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, {}> 
             talents.push(...TalentsHelper.getTalentsForSkills(character.skills.map(s => { return s.skill; })), ...TalentsHelper.getTalentsForSkills([Skill.None]));
         }
 
-        const esotericTalentOption = (context.hasSource(Source.PlayersGuide)) ? (<div>
+        const esotericTalentOption = (hasSource(Source.PlayersGuide)) ? (<div>
                 <CheckBox
-                    isChecked={context.allowEsotericTalents}
+                    isChecked={this.props.allowEsotericTalents}
                     text="Allow esoterric talents (GM's decision)"
-                    value={!context.allowEsotericTalents}
-                    onChanged={() => { context.allowEsotericTalents = !context.allowEsotericTalents; this.forceUpdate(); }} />
+                    value={!this.props.allowEsotericTalents}
+                    onChanged={() => { store.dispatch(setAllowEsotericTalents(!this.props.allowEsotericTalents));  }} />
             </div>) : undefined;
 
         const talentSelection = talents.length > 0 && character.workflow.currentStep().options.talentSelection
@@ -143,8 +144,6 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, {}> 
             value={!this.props.allowCrossSpeciesTalents}
             onChanged={() => { 
                 store.dispatch(setAllowCrossSpeciesTalents(!this.props.allowCrossSpeciesTalents)); 
-                context.allowCrossSpeciesTalents = !context.allowCrossSpeciesTalents; 
-                this.forceUpdate(); 
             }} />);
     }
 
@@ -185,7 +184,8 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, {}> 
 
 function mapStateToProps(state, ownProps) {
     return { 
-        allowCrossSpeciesTalents: state.context.allowCrossSpeciesTalents
+        allowCrossSpeciesTalents: state.context.allowCrossSpeciesTalents,
+        allowEsotericTalents: state.context.allowEsotericTalents
     };
 }
 

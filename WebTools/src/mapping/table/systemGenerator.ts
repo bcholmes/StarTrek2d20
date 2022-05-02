@@ -472,7 +472,7 @@ class SystemGeneration {
         if (spectralClass) {
 
             let subClass = this.rollSubSpectralClass();
-            let luminosity = (spectralClass != null && !spectralClass.isDwarf()) ? this.rollLuminosity(spectralClass) : undefined;
+            let luminosity = (spectralClass != null && !spectralClass.isDwarf) ? this.rollLuminosity(spectralClass) : undefined;
             return new Star(spectralClass, subClass, luminosity);
         } else {
             return undefined;
@@ -494,6 +494,7 @@ class SystemGeneration {
             roll = Math.max(1, Math.min(20, roll));
 
             let worldCount = this.numberOfPlanetsTable[roll];
+            console.log("world count: " + worldCount);
 
             let primaryWorldOrbit =  Math.min(worldCount, Math.ceil(D20.roll() / 4.0));
 
@@ -528,6 +529,8 @@ class SystemGeneration {
                     console.log("Garden zone: " + zone.from + "-" + zone.to);
                 }
             }
+        } else {
+            console.log("star " + starSystem.star.spectralClass.id + " is a dwarf?");
         }
     }
 

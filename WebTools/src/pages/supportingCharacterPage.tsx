@@ -14,8 +14,8 @@ import AgeHelper, { Age } from '../helpers/age';
 import { Source } from '../helpers/sources';
 import { marshaller } from '../helpers/marshaller';
 import { Species } from '../helpers/speciesEnum';
-import { context } from '../common/context';
 import store from '../state/store';
+import { hasSource } from '../state/contextFunctions';
 
 interface ISupportingCharacterState {
     age: Age;
@@ -70,7 +70,7 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
     }
 
     render() {
-        let ageDiv = context.hasSource(Source.PlayersGuide) && character.age.isChild()
+        let ageDiv = hasSource(Source.PlayersGuide) && character.age.isChild()
             ? (<div className="panel">
                     <div className="header-small">Age</div>
                     <div className="page-text-aligned">

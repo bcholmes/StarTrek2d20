@@ -1,5 +1,5 @@
 ﻿import { CharacterType } from '../common/characterType';
-import { context } from '../common/context';
+import { hasSource } from '../state/contextFunctions';
 import { Source } from './sources';
 import {TalentsHelper, TalentModel} from './talents';
 
@@ -205,7 +205,7 @@ class MissionProfiles {
                 MissionProfile.StrategicAndDiplomatic,
                 MissionProfile.Tactical,
                 MissionProfile.HouseGuard ];
-        } else if (context.hasSource(Source.TheseAreTheVoyages)) {
+        } else if (hasSource(Source.TheseAreTheVoyages)) {
             keys = [ MissionProfile.StrategicAndDiplomatic,
                 MissionProfile.PathfinderAndReconaissance,
                 MissionProfile.TechnicalTestBed,

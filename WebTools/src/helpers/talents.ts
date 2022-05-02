@@ -7,7 +7,6 @@ import {Department} from './departments';
 import {Source} from './sources';
 import {Era} from './eras';
 import { Species } from './speciesEnum';
-import { context } from '../common/context';
 import { Construct } from '../common/construct';
 import { Starship } from '../common/starship';
 import store from '../state/store';
@@ -102,7 +101,7 @@ class SpeciesPrerequisite implements ITalentPrerequisite<Character> {
     isPrerequisiteFulfilled() {
         return character.species === this.species ||
                character.mixedSpecies === this.species ||
-               (this.allowCrossSelection && context.allowCrossSpeciesTalents);
+               (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
     }
     describe(): string {
         return "";
@@ -125,7 +124,7 @@ class AnySpeciesPrerequisite implements ITalentPrerequisite<Character> {
                character.species === this.species2 ||
                character.mixedSpecies === this.species1 ||
                character.mixedSpecies === this.species2 ||
-               (this.allowCrossSelection && context.allowCrossSpeciesTalents);
+               (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
     }
     describe(): string {
         return "";
@@ -143,7 +142,7 @@ class PureSpeciesPrerequisite implements ITalentPrerequisite<Character> {
 
     isPrerequisiteFulfilled() {
         return (character.species === this.species && character.mixedSpecies == null) ||
-               (this.allowCrossSelection && context.allowCrossSpeciesTalents);
+               (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
     }
     describe(): string {
         return "";
@@ -201,7 +200,7 @@ class CommandingAndExecutiveOfficerPrerequisite implements ITalentPrerequisite<C
 class GMsDiscretionPrerequisite implements ITalentPrerequisite<Character> {
 
     isPrerequisiteFulfilled() {
-        return context.allowEsotericTalents;
+        return store.getState().context.allowEsotericTalents;
     }
     describe(): string {
         return "Gamemaster’s discretion";
@@ -336,7 +335,7 @@ class SourcePrerequisite implements ITalentPrerequisite<Character> {
 
     isPrerequisiteFulfilled() {
         let result = false
-        this.sources.forEach((s) => { result = result || context.hasSource(s) })
+        this.sources.forEach((s) => { result = result || store.getState().context.sources.indexOf(s) >= 0 })
         return result;
     }
 

@@ -10,10 +10,10 @@ import {MixedSpeciesSelection} from '../components/mixedSpeciesSelection';
 import { Source } from '../helpers/sources';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { Species } from '../helpers/speciesEnum';
-import { context } from '../common/context';
 import InstructionText from '../components/instructionText';
 import { Era } from '../helpers/eras';
 import store from '../state/store';
+import { hasSource } from '../state/contextFunctions';
 
 interface ISpeciesPageState {
     showSelection: boolean;
@@ -31,19 +31,19 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
     }
 
     render() {
-        const rollAlpha = context.hasSource(Source.AlphaQuadrant) && this.isRollAvailable()
+        const rollAlpha = hasSource(Source.AlphaQuadrant) && this.isRollAvailable()
             ? <Button className="button" text="Roll Alpha Species" onClick={() => this.rollAlphaSpecies()} />
             : undefined;
 
-        const rollBeta = context.hasSource(Source.BetaQuadrant) && this.isRollAvailable()
+        const rollBeta = hasSource(Source.BetaQuadrant) && this.isRollAvailable()
             ? <Button className="button" text="Roll Beta Species" onClick={() => this.rollBetaSpecies()} />
             : undefined;
 
-        const rollGamma = store.getState().context.era === Era.NextGeneration && context.hasSource(Source.GammaQuadrant) && this.isRollAvailable()
+        const rollGamma = store.getState().context.era === Era.NextGeneration && hasSource(Source.GammaQuadrant) && this.isRollAvailable()
             ? <Button className="button" text="Roll Gamma Species" onClick={() => this.rollGammaSpecies()} />
             : undefined;
 
-        const rollDelta = store.getState().context.era === Era.NextGeneration && context.hasSource(Source.DeltaQuadrant) && this.isRollAvailable()
+        const rollDelta = store.getState().context.era === Era.NextGeneration && hasSource(Source.DeltaQuadrant) && this.isRollAvailable()
             ? <Button className="button" text="Roll Delta Species" onClick={() => this.rollDeltaSpecies()} />
             : undefined;
 

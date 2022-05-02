@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Navigation } from '../../common/navigator';
+import { navigateTo, Navigation } from '../../common/navigator';
 import { Header } from '../../components/header';
 import {IPageProperties} from '../../pages/iPageProperties';
 import { PageIdentity } from '../../pages/pageIdentity';
@@ -21,7 +21,8 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item"><a href="#" onClick={(e) => this.navigateBack(e)}>System Generation</a></li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SystemGeneration)}>System Generation</a></li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SectorDetails)}>Sector Details</a></li>
                         <li className="breadcrumb-item active" aria-current="page">Star</li>
                     </ol>
                 </nav>

@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
-import {EraSelectionPage} from './eraSelectionPage';
+import EraSelectionPage from './eraSelectionPage';
 import {ToolSelectionPage} from './toolSelectionPage';
 import {SpeciesPage} from './speciesPage';
 import SpeciesDetailsPage from './speciesDetailsPage';

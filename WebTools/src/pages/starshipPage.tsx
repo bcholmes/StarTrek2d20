@@ -22,9 +22,9 @@ import CustomSpaceframeForm from '../components/customSpaceframeForm';
 import { System } from '../helpers/systems';
 import { OutlineImage } from '../components/outlineImage';
 import { marshaller } from '../helpers/marshaller';
-import { context } from '../common/context';
 import { Starship } from '../common/starship';
 import store from '../state/store';
+import { hasSource } from '../state/contextFunctions';
 
 interface StarshipPageState {
     type: CharacterTypeModel
@@ -235,7 +235,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
               )
             : undefined;
 
-        let typeSelection = context.hasSource(Source.KlingonCore) 
+        let typeSelection = hasSource(Source.KlingonCore) 
                 ? (<div className="panel">
                         <div className="header-small">Ship Type</div>
                         <div className="page-text-aligned">

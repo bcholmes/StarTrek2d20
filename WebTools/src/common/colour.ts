@@ -29,7 +29,7 @@ export class Color {
             hex = hex.substring(1);
         }
 
-        if (hex.length != 6) {
+        if (hex.length !== 6) {
             return null;
         } else {
             let red = parseInt(hex.substring(0, 2), 16);

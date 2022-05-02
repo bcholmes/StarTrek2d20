@@ -10,7 +10,7 @@ import InstructionText from '../components/instructionText';
 import { Source } from '../helpers/sources';
 import { CheckBox } from '../components/checkBox';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
-import { context } from '../common/context';
+import { hasSource } from '../state/contextFunctions';
 
 interface IEnvironmentPageState {
     showSelection: boolean;
@@ -30,7 +30,7 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
     }
 
     render() {
-        let showAlt = (context.hasSource(Source.PlayersGuide)) ? (<CheckBox isChecked={this.state.showAlternates} value={'alternates'} text="Allow alternate Environments (GM's decision)" onChanged={val => { this.setState(state => ({...state, showAlternates: !state.showAlternates}) ) }} />) : null;
+        let showAlt = (hasSource(Source.PlayersGuide)) ? (<CheckBox isChecked={this.state.showAlternates} value={'alternates'} text="Allow alternate Environments (GM's decision)" onChanged={val => { this.setState(state => ({...state, showAlternates: !state.showAlternates}) ) }} />) : null;
 
         let alt = (this.state.showAlternates) 
                 ? (<div className="pl-2 pr-2">

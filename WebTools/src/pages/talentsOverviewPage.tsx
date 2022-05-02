@@ -3,11 +3,12 @@ import { DropDownInput } from "../components/dropDownInput";
 import { AliasModel } from "../helpers/aliases";
 import { Skill, SkillsHelper } from "../helpers/skills";
 import { TalentModel, TalentsHelper } from "../helpers/talents";
-import { Source, SourcesHelper } from "../helpers/sources";
+import { SourcesHelper } from "../helpers/sources";
 import { SpeciesHelper } from "../helpers/species";
 import replaceDiceWithArrowhead from '../common/arrowhead';
 import { Species } from '../helpers/speciesEnum';
-import { context } from '../common/context';
+import store from '../state/store';
+import { setSources } from '../state/contextActions';
 
 class TalentViewModel {
     name: string;
@@ -158,10 +159,8 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
     }
 
     private setupSources() {
-        for (let source in Object.keys(Source).filter(src => !isNaN(Number(Source[src])))) {
-            let src = Number(source);
-            context.addSource(src);
-        }
+        let allSources = SourcesHelper.getSources().filter(s => s.available).map(s => s.id);
+        store.dispatch(setSources(allSources));
     }
 
     private setupCategories() {

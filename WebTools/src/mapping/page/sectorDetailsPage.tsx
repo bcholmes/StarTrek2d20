@@ -1,10 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Navigation } from "../../common/navigator";
+import { navigateTo, Navigation } from "../../common/navigator";
 import { Header } from "../../components/header";
 import { IPageProperties } from "../../pages/iPageProperties";
 import { PageIdentity } from "../../pages/pageIdentity";
-import { Sector } from "../table/star";
+import { setStar } from "../../state/starActions";
+import store from "../../state/store";
+import { Sector, StarSystem } from "../table/star";
 import SectorMapView from "../view/sectorMapView";
 import SystemView from "../view/systemView";
 
@@ -19,25 +21,37 @@ class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}
         ?   (<div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item"><a href="#" onClick={(e) => this.navigateBack(e)}>System Generation</a></li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Selection)}>Home</a></li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SystemGeneration)}>System Generation</a></li>
                         <li className="breadcrumb-item active" aria-current="page">Sector</li>
                     </ol>
                 </nav>
 
                 <Header>Sector • {this.props.sector.id}</Header>
                 <SectorMapView sector={this.props.sector} />
-                <div className="row row-cols-1 row-cols-md-2 mt-3">
-                    {this.props.sector.systems.map((s, i) => (<div className="col"><SystemView system={s} key={'system-' + i} /></div>))}
+                <Header level={2} className="mb-5 mt-4">Notable Systems</Header>
+                <div>
+                    <table className="selection-list">
+                        <thead>
+                            <tr>
+                                <td>System Identifier</td>
+                                <td>Primary Star</td>
+                                <td>Worlds</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.props.sector.systems.map((s, i) => (<SystemView system={s} key={'system-' + i} onClick={() => this.showSystem(s) }/>))}
+                        </tbody>
+                    </table>
                 </div>
             </div>)
         : null;
     }
 
-    navigateBack(event: React.MouseEvent<HTMLAnchorElement>) {
-        event.preventDefault();
-        event.stopPropagation();
-        Navigation.navigateToPage(PageIdentity.SystemGeneration);
+    showSystem(system: StarSystem) {
+        store.dispatch(setStar(system));
+        Navigation.navigateToPage(PageIdentity.StarSystemDetails);
     }
 }
 

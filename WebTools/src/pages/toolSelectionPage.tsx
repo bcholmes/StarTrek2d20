@@ -6,7 +6,7 @@ import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
 import {Source} from '../helpers/sources';
 import {WorkflowsHelper} from '../helpers/workflows';
-import { context } from '../common/context';
+import { hasSource } from '../state/contextFunctions';
 
 export class ToolSelectionPage extends React.Component<{}, {}> {
 
@@ -34,7 +34,7 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
     }
 
     renderSystemGenerationButton() {
-        if (context.hasSource(Source.ShackletonExpanse)) {
+        if (hasSource(Source.ShackletonExpanse)) {
             return (<Button className="button" text="Star System" onClick={() => { this.goToPage(PageIdentity.SystemGeneration); } } />);
         } else {
             return undefined;
@@ -42,7 +42,7 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
     }
 
     private startStarfleetWorkflow() {
-        if (context.hasSource(Source.KlingonCore) || context.hasSource(Source.PlayersGuide)) {
+        if (hasSource(Source.KlingonCore) || hasSource(Source.PlayersGuide)) {
             this.goToPage(PageIdentity.CharacterType);
         } else {
             character.type = CharacterType.Starfleet;

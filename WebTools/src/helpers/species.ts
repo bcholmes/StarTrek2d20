@@ -5,8 +5,8 @@ import { CharacterType } from '../common/characterType';
 import { Era } from '../helpers/eras';
 import { Source } from '../helpers/sources';
 import { Species } from './speciesEnum';
-import { context } from '../common/context';
 import store from '../state/store';
+import { hasAnySource, hasSource } from '../state/contextFunctions';
 
 
 class NameModel {
@@ -1337,9 +1337,9 @@ class _Species {
             let n = parseInt(archetype);
 
             const hasEra = (spec.eras.indexOf(store.getState().context.era) > -1) || (n === Species.Klingon && character.type === CharacterType.KlingonWarrior);
-            const hasSource = context.hasAnySource(spec.sources) || (n === Species.LiberatedBorg && context.hasSource(Source.Voyager));
+            const isSourceAvailable = hasAnySource(spec.sources);
 
-            if (hasEra && hasSource && !this.ignoreSpecies(n)) {
+            if (hasEra && isSourceAvailable && !this.ignoreSpecies(n)) {
                 species.push(spec);
             }
 
@@ -1363,7 +1363,7 @@ class _Species {
             for (var archetype of klingonSpecies) {
                 var spec = this._species[archetype];
 
-                const hasSource = context.hasAnySource(spec.sources);
+                const hasSource = hasAnySource(spec.sources);
 
                 if (hasSource && !this.ignoreSpecies(archetype)) {
                     species.push(spec);
@@ -1375,7 +1375,7 @@ class _Species {
             });
         } else if (Character.isSpeciesListLimited(character)) {
             let alliedMilitary = (character.typeDetails as AlliedMilitaryDetails).alliedMilitary;
-            let species = alliedMilitary.species.map(s => this._species[s]).filter(s => context.hasAnySource(s.sources) && !this.ignoreSpecies(s.id));
+            let species = alliedMilitary.species.map(s => this._species[s]).filter(s => hasAnySource(s.sources) && !this.ignoreSpecies(s.id));
             return species.sort((a, b) => {
                 return a.name.localeCompare(b.name);
             });
@@ -1538,19 +1538,19 @@ class _Species {
     }
 
     private ignoreSpecies(species: Species) {
-        if (context.hasAnySource([Source.BetaQuadrant, Source.KlingonCore])) {
+        if (hasAnySource([Source.BetaQuadrant, Source.KlingonCore])) {
             if (species === Species.KlingonExt) {
                 return true;
             }
         }
 
-        if (context.hasAnySource([Source.DS9, Source.AlphaQuadrant])) {
+        if (hasAnySource([Source.DS9, Source.AlphaQuadrant])) {
             if (species === Species.FerengiExt) {
                 return true;
             }
         }
 
-        if (context.hasSource(Source.AlphaQuadrant)) {
+        if (hasSource(Source.AlphaQuadrant)) {
             if (species === Species.CardassianExt) {
                 return true;
             }
@@ -1559,7 +1559,7 @@ class _Species {
             }
         }
 
-        if (context.hasSource(Source.GammaQuadrant)) {
+        if (hasSource(Source.GammaQuadrant)) {
             if (species === Species.Changeling) {
                 return true;
             }

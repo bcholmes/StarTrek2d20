@@ -1,6 +1,6 @@
 import { Character } from "../common/character";
 import { CharacterType } from "../common/characterType";
-import { context } from "../common/context";
+import { hasAnySource } from "../state/contextFunctions";
 import store from "../state/store";
 import { Career } from "./careers";
 import { Era } from "./eras";
@@ -19,7 +19,7 @@ export class SourcePrerequisite implements IPrerequisite {
     }
 
     isPrerequisiteFulfilled(character: Character) {
-        return context.hasAnySource(this.sources);
+        return hasAnySource(this.sources);
     }
 }
 

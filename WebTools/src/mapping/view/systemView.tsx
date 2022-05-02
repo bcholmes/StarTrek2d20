@@ -1,26 +1,24 @@
 import React from "react";
-import { Header } from "../../components/header";
+import { Button } from "../../components/button";
 import { IPageProperties } from "../../pages/iPageProperties";
-import { Star, StarSystem } from "../table/star";
+import { StarSystem } from "../table/star";
 
 interface ISystemViewProperties extends IPageProperties {
     system?: StarSystem;
+    onClick: {() : void }
 }
 
 class SystemView extends React.Component<ISystemViewProperties, {}> {
 
     render() {
-        return  this.props.system ? (<div className="mb-4">
-            <Header level={2} className="mb-4">{this.props.system.id}</Header>
-            <div className="row">
-                <div className="col-md-4 view-field-label pb-2">Spectral Class:</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {this.props.system.star ? this.props.system.star.description : ""}
-                    </div>
-                </div>
-            </div>
-        </div>) : null;
+        return  this.props.system ? (<tr>
+            <td className="selection-header">{this.props.system.id}</td>
+            <td>{this.props.system.star ? this.props.system.star.description : ""}</td>
+            <td className="text-center">{this.props.system.world ? this.props.system.world.length : ""}</td>
+            <td className="text-right">
+                <Button buttonType={true} text="View" className="button-small" onClick={() => this.props.onClick()}/>
+            </td>
+        </tr>) : null;
     }
 }
 
