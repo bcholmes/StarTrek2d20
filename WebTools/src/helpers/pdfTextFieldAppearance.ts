@@ -96,7 +96,7 @@ export const staTextFieldAppearanceProvider: AppearanceProviderFor<PDFTextField>
         
             if (textField.getText() == null || textField.getText().length === 0) {
                 textLines = [];
-                fontSize = 10;
+                fontSize = 9;
 
             } else {
                 const layout = layoutMultilineText(text, {

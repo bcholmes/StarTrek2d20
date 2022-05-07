@@ -1,10 +1,11 @@
 import React from "react";
 import { Color } from "../../common/colour";
 import { IPageProperties } from "../../pages/iPageProperties";
-import { Sector } from "../table/star";
+import { Sector, StarSystem } from "../table/star";
 
 interface ISectorMapViewProperties extends IPageProperties {
     sector?: Sector;
+    onClick: { (s: StarSystem) : void }
 }
 
 class SectorMapView extends React.Component<ISectorMapViewProperties, {}> {
@@ -31,19 +32,19 @@ class SectorMapView extends React.Component<ISectorMapViewProperties, {}> {
         let systems = [ ...this.props.sector.systems ];
         systems.sort((a, b) => {
             if (a.sectorCoordinates.z !== b.sectorCoordinates.z) {
-                return b.sectorCoordinates.z - a.sectorCoordinates.z;
+                return a.sectorCoordinates.z - b.sectorCoordinates.z;
             } else if (a.sectorCoordinates.y !== b.sectorCoordinates.y) {
-                return b.sectorCoordinates.y - a.sectorCoordinates.y;
+                return a.sectorCoordinates.y - b.sectorCoordinates.y;
             } else {
-                return b.sectorCoordinates.x - a.sectorCoordinates.x;
+                return a.sectorCoordinates.x - b.sectorCoordinates.x;
             }
         });
 
         return systems.map((s, i) => {
 
-            let z = s.sectorCoordinates.z / 20 * 0.75;
+            let z = s.sectorCoordinates.z / 20 * 0.75 + 0.25;
             let baseColour = s.star.spectralClass.colour;
-            let colour = baseColour.blend(new Color(0, 0, 0), z);
+            let colour = baseColour.blend(new Color(0, 0, 0), 1-z);
 
             let r = Math.max(1, Math.sqrt(s.star.spectralClass.radius.midpoint * 50));
 
@@ -52,7 +53,7 @@ class SectorMapView extends React.Component<ISectorMapViewProperties, {}> {
                 let r1 = r * 0.75;
 
                 let baseColour2 = s.companionStar.spectralClass.colour;
-                let colour2 = baseColour2.blend(new Color(0, 0, 0), z);
+                let colour2 = baseColour2.blend(new Color(0, 0, 0), 1-z);
 
                 let r2 = Math.max(1, Math.sqrt(s.companionStar.spectralClass.radius.midpoint * 50));
 
@@ -60,7 +61,7 @@ class SectorMapView extends React.Component<ISectorMapViewProperties, {}> {
 
                 r2 = r2 * 0.75;
 
-                return (<g key={'system-' + i}>
+                return (<g key={'system-' + i} onClick={() => this.props.onClick(s)} style={{ cursor: "pointer" }}>
                     <circle cx={this.mapCoordinateSpaceX(s.sectorCoordinates.x) - r1/2} cy={this.mapCoordinateSpaceY(s.sectorCoordinates.y) - r1/2} stroke="black" strokeWidth={0.25} fill={colour.asHex()} r={r1} />
                     <circle cx={this.mapCoordinateSpaceX(s.sectorCoordinates.x) + r2/2} cy={this.mapCoordinateSpaceY(s.sectorCoordinates.y) + r2/2} stroke="black" strokeWidth={0.25} fill={colour2.asHex()} r={r2} />
                     <circle cx={this.mapCoordinateSpaceX(s.sectorCoordinates.x)} cy={this.mapCoordinateSpaceY(s.sectorCoordinates.y)} strokeWidth="1" stroke={colour.asHex()} fill="none" r={r+5} />
@@ -68,7 +69,7 @@ class SectorMapView extends React.Component<ISectorMapViewProperties, {}> {
 
             } else {
 
-                return (<g key={'system-' + i}>
+                return (<g key={'system-' + i} onClick={() => this.props.onClick(s)} style={{ cursor: "pointer" }}>
                     <circle cx={this.mapCoordinateSpaceX(s.sectorCoordinates.x)} cy={this.mapCoordinateSpaceY(s.sectorCoordinates.y)} stroke="black" strokeWidth={0.25} fill={colour.asHex()} r={r} />
                     <circle cx={this.mapCoordinateSpaceX(s.sectorCoordinates.x)} cy={this.mapCoordinateSpaceY(s.sectorCoordinates.y)} strokeWidth="1" stroke={colour.asHex()} fill="none" r={r+5} />
                 </g>);

@@ -11,6 +11,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220506</b>
+                <ul>
+                    <li>I've started working on a star sector generator based on the rules in the <cite>Shackleton Expanse</cite> book.
+                    At the moment, I consider the support to be <em>very</em> preliminary.</li>
+                </ul>
                 <b>v1.220423</b>
                 <ul>
                     <li>Revisions to the two-page character sheet.</li>

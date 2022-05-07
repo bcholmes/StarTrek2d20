@@ -30,7 +30,9 @@ export class Navigator {
 export const Navigation = new Navigator();
 
 export function navigateTo(event: React.MouseEvent<HTMLAnchorElement>, page: PageIdentity) {
-    event.preventDefault();
-    event.stopPropagation();
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
     Navigation.navigateToPage(page);
 }

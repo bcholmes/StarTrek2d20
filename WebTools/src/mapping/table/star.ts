@@ -1,6 +1,42 @@
 import { Color } from "../../common/colour";
 import { D20 } from "../../common/die";
 
+export enum SpaceRegion {
+    AlphaQuadrant,
+    BetaQuadrant,
+    GammaQuadrant,
+    DeltaQuadrant,
+    ShackletonExpanse
+}
+
+export class SpaceRegionModel {
+    id: SpaceRegion;
+    name: string;
+    prefix: string;
+
+    constructor(id: SpaceRegion, name: string, prefix: string) {
+        this.id = id;
+        this.name = name;
+        this.prefix = prefix;
+    }
+
+    public static allRegions(): SpaceRegionModel[] {
+        return regions;
+    }
+
+    public static for(id: SpaceRegion): SpaceRegionModel {
+        return SpaceRegionModel.allRegions()[id];
+    }
+}
+
+let regions = [
+    new SpaceRegionModel(SpaceRegion.AlphaQuadrant, "Alpha Quadrant", "AL"),
+    new SpaceRegionModel(SpaceRegion.BetaQuadrant, "Beta Quadrant", "BE"),
+    new SpaceRegionModel(SpaceRegion.GammaQuadrant, "Gamma Quadrant", "GA"),
+    new SpaceRegionModel(SpaceRegion.DeltaQuadrant, "Delta Quadrant", "DE"),
+    new SpaceRegionModel(SpaceRegion.ShackletonExpanse, "Shackleton Expanse", "SE"),
+];
+
 export enum SpectralClass {
     M,
     K,

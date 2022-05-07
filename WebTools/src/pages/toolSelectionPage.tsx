@@ -21,7 +21,7 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
                 </nav>
 
                 <div className="page-text">
-                    What do you want to register?
+                    What do you want to create?
                 </div>
                 <div className="button-container">
                     <Button className="button" text="Main Character" onClick={() => { this.startStarfleetWorkflow(); } } />
@@ -35,7 +35,7 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
 
     renderSystemGenerationButton() {
         if (hasSource(Source.ShackletonExpanse)) {
-            return (<Button className="button" text="Star System" onClick={() => { this.goToPage(PageIdentity.SystemGeneration); } } />);
+            return (<Button className="button" text="Space Sector" onClick={() => { this.goToPage(PageIdentity.SystemGeneration); } } />);
         } else {
             return undefined;
         }

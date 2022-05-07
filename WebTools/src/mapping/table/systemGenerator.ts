@@ -2,7 +2,7 @@ import { Color } from "../../common/colour";
 import { D20, D6 } from "../../common/die";
 import { setSector, setStar } from "../../state/starActions";
 import store from "../../state/store";
-import { LuminosityClass, LuminosityClassModel, Sector, SectorCoordinates, SpectralClass, SpectralClassModel, Star, StarSystem, Range, World, WorldClass, WorldClassModel } from "./star";
+import { LuminosityClass, LuminosityClassModel, Sector, SectorCoordinates, SpectralClass, SpectralClassModel, Star, StarSystem, Range, World, WorldClass, WorldClassModel, SpaceRegionModel } from "./star";
 
 
 class GardenZone {
@@ -37,10 +37,10 @@ class LuminosityCrossReference {
 class SystemGeneration {
 
     private spectralClasses: SpectralClassModel[] = [
-        new SpectralClassModel(SpectralClass.M, "M", new Range(2400, 3700), "Red", Color.from("#ff0000"), new Range(null, 0.7)),
-        new SpectralClassModel(SpectralClass.K, "K", new Range(3700, 5200), "Orange", Color.from("#ff9833"), new Range(0.7, 0.96)),
-        new SpectralClassModel(SpectralClass.G, "G", new Range(5200, 6000), "Yellow", Color.from("#ffff00"), new Range(0.96, 1.15)),
-        new SpectralClassModel(SpectralClass.F, "F", new Range(6000, 7500), "Yellow white", Color.from("#ffffed"), new Range(1.15, 1.4)),
+        new SpectralClassModel(SpectralClass.M, "M", new Range(2400, 3700), "Red", Color.from("#f40b10"), new Range(null, 0.7)),
+        new SpectralClassModel(SpectralClass.K, "K", new Range(3700, 5200), "Orange", Color.from("#F89B24"), new Range(0.7, 0.96)),
+        new SpectralClassModel(SpectralClass.G, "G", new Range(5200, 6000), "Yellow", Color.from("#FFCC66"), new Range(0.96, 1.15)),
+        new SpectralClassModel(SpectralClass.F, "F", new Range(6000, 7500), "Yellow white", Color.from("#ffefcf"), new Range(1.15, 1.4)),
         new SpectralClassModel(SpectralClass.A, "A", new Range(7500, 10000), "White", Color.from("#fbf8ff"), new Range(1.4, 1.8)),
         new SpectralClassModel(SpectralClass.B, "B", new Range(10000, 30000), "Blue white", Color.from("#bbccff"), new Range(1.8, 6.6)),
         new SpectralClassModel(SpectralClass.L, "L", new Range(1300, 2400), "Red brown", Color.from("#a52a2a"), new Range(0.08, 0.15)),
@@ -415,9 +415,9 @@ class SystemGeneration {
         20: 5,
     }
 
-    generateSector() {
+    generateSector(region: SpaceRegionModel) {
         let count = this.notableSystemsTable[D20.roll()];
-        let sector = new Sector("SE");
+        let sector = new Sector(region.prefix);
         for (let i = 0; i < count; i++) {
             let system = this.generateStarSystem();
             if (system) {

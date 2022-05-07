@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { navigateTo, Navigation } from '../../common/navigator';
+import { Button } from '../../components/button';
 import { Header } from '../../components/header';
 import {IPageProperties} from '../../pages/iPageProperties';
 import { PageIdentity } from '../../pages/pageIdentity';
@@ -50,6 +51,9 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
                     </div>
                 </div>
 
+                <div>
+                    <Button buttonType={true} text="Back to Sector" onClick={() => navigateTo(null, PageIdentity.SectorDetails) } />
+                </div>
             </div>);
     }
 

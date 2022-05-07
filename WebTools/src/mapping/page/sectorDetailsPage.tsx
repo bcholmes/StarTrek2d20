@@ -23,12 +23,12 @@ class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Selection)}>Home</a></li>
                         <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SystemGeneration)}>System Generation</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Sector</li>
+                        <li className="breadcrumb-item active" aria-current="page">Sector Details</li>
                     </ol>
                 </nav>
 
                 <Header>Sector • {this.props.sector.id}</Header>
-                <SectorMapView sector={this.props.sector} />
+                <SectorMapView sector={this.props.sector} onClick={(s) => this.showSystem(s) } />
                 <Header level={2} className="mb-5 mt-4">Notable Systems</Header>
                 <div>
                     <table className="selection-list">
