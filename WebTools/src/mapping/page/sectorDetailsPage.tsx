@@ -7,6 +7,8 @@ import { PageIdentity } from "../../pages/pageIdentity";
 import { setStar } from "../../state/starActions";
 import store from "../../state/store";
 import { Sector, StarSystem } from "../table/star";
+import LcarsDecorationLeftView from "../view/lcarsDecorationLeft";
+import LcarsDecorationRightView from "../view/lcarsDecorationRight";
 import SectorMapView from "../view/sectorMapView";
 import SystemView from "../view/systemView";
 
@@ -28,7 +30,11 @@ class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}
                 </nav>
 
                 <Header>Sector • {this.props.sector.id}</Header>
-                <SectorMapView sector={this.props.sector} onClick={(s) => this.showSystem(s) } />
+                <div className="d-flex justify-content-center">
+                    <LcarsDecorationLeftView />
+                    <SectorMapView sector={this.props.sector} onClick={(s) => this.showSystem(s) } />
+                    <LcarsDecorationRightView />
+                </div>
                 <Header level={2} className="mb-5 mt-4">Notable Systems</Header>
                 <div>
                     <table className="selection-list">

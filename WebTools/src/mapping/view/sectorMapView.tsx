@@ -14,7 +14,7 @@ class SectorMapView extends React.Component<ISectorMapViewProperties, {}> {
 
         let purple = "#9179B7";
 
-        return this.props.sector ?(<div className="sectorMap mx-auto">
+        return this.props.sector ?(<div className="sectorMap">
             <svg
                 viewBox="0 0 450 450"
                 xmlns="<http://www.w3.org/2000/svg>"

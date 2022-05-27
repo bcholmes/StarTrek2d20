@@ -2383,6 +2383,12 @@ export class Talents {
                 [new SourcePrerequisite(Source.PlayersGuide), new ChildOnlyPrerequisite(), new OnlyAtCharacterCreationPrerequisite()],
                 1,
                 "Career"),
+            new TalentModel(
+                "Menagerie",
+                "When in your private lab, you automatically receive the advantage: Weapons and Monsters. Increase the complication range of any task by 2 when the advantage is active.",
+                [new SourcePrerequisite(Source.DiscoveryS1S2)],
+                1,
+                "General"),
     
                 
             // Starships

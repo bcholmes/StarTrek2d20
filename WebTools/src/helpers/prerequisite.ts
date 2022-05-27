@@ -113,14 +113,14 @@ export class EnlistedPrerequisite implements IPrerequisite {
 }
 
 export class EraPrerequisite implements IPrerequisite {
-    private era: Era;
+    private eras: Era[];
 
-    constructor(era: Era) {
-        this.era = era;
+    constructor(...era: Era[]) {
+        this.eras = era;
     }
 
     isPrerequisiteFulfilled(character: Character) {
-        return store.getState().context.era === this.era;
+        return this.eras.indexOf(store.getState().context.era) >= 0;
     }
 }
 

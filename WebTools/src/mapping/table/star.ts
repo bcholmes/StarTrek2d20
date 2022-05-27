@@ -9,6 +9,14 @@ export enum SpaceRegion {
     ShackletonExpanse
 }
 
+export enum SpecialSectors {
+    PinwheelSector,
+    EnduranceDivide,
+    EmberSector,
+    TKalNursery,
+    GeneralExpanse
+}
+
 export class SpaceRegionModel {
     id: SpaceRegion;
     name: string;
@@ -224,7 +232,8 @@ export class SpectralClassModel {
     }
 
     get isDwarf() {
-        return (this.id === SpectralClass.WhiteDwarf || this.id === SpectralClass.BrownDwarf);
+        return (this.id === SpectralClass.WhiteDwarf || this.id === SpectralClass.BrownDwarf) || 
+            this.id === SpectralClass.L || this.id === SpectralClass.Y || this.id === SpectralClass.T;
     }
 
     isHot() {
@@ -238,12 +247,14 @@ export class SpectralClassModel {
 export class Star {
     public spectralClass: SpectralClassModel;
     public subClass: number;
-    public luminosityClass?: LuminosityClassModel;
+    public luminosityClass: LuminosityClassModel|null;
+    public mass: number;
 
-    constructor(spectralClass: SpectralClassModel, subClass: number, luminosity?: LuminosityClassModel) {
+    constructor(spectralClass: SpectralClassModel, subClass: number, luminosity: LuminosityClassModel|null, mass: number) {
         this.spectralClass = spectralClass;
         this.subClass = subClass;
         this.luminosityClass = luminosity;
+        this.mass = mass;
     }
 
     get description() {
@@ -278,6 +289,7 @@ export class World {
     worldClass: WorldClassModel;
     orbit: number;
     numberOfSatellites: number;
+    orbitalRadius: number = 0;
 
     constructor(worldClass: WorldClassModel, orbit: number) {
         this.worldClass = worldClass;

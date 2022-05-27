@@ -1373,7 +1373,7 @@ class _Species {
             return species.sort((a, b) => {
                 return a.name.localeCompare(b.name);
             });
-        } else if (Character.isSpeciesListLimited(character)) {
+        } else if (Character.isSpeciesListLimited(character) && character.typeDetails != null) {
             let alliedMilitary = (character.typeDetails as AlliedMilitaryDetails).alliedMilitary;
             let species = alliedMilitary.species.map(s => this._species[s]).filter(s => hasAnySource(s.sources) && !this.ignoreSpecies(s.id));
             return species.sort((a, b) => {

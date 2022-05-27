@@ -4,6 +4,7 @@ import { setSector, setStar } from "../../state/starActions";
 import store from "../../state/store";
 import { LuminosityClass, LuminosityClassModel, Sector, SectorCoordinates, SpectralClass, SpectralClassModel, Star, StarSystem, Range, World, WorldClass, WorldClassModel, SpaceRegionModel } from "./star";
 
+const BLAGG_CONSTANT = 1.7275;
 
 class GardenZone {
     spectralClass: SpectralClass;
@@ -32,6 +33,18 @@ class LuminosityCrossReference {
         this.luminosity = luminosity;
     }
 
+}
+
+class StellarMass {
+    spectralClass: SpectralClass;
+    luminosityClass: LuminosityClass;
+    mass: number;
+
+    constructor(spectralClass: SpectralClass, luminosityClass: LuminosityClass, mass: number) {
+        this.spectralClass = spectralClass;
+        this.luminosityClass = luminosityClass;
+        this.mass = mass;
+    }
 }
 
 class SystemGeneration {
@@ -288,6 +301,13 @@ class SystemGeneration {
         new LuminosityCrossReference(SpectralClass.B, 5, LuminosityClass.IV, 2000),
         new LuminosityCrossReference(SpectralClass.B, 5, LuminosityClass.V, 1400),
 
+        new LuminosityCrossReference(SpectralClass.B, 9, LuminosityClass.Ia, 60000),
+        new LuminosityCrossReference(SpectralClass.B, 9, LuminosityClass.Ib, 4100),
+        new LuminosityCrossReference(SpectralClass.B, 9, LuminosityClass.II, 3200),
+        new LuminosityCrossReference(SpectralClass.B, 9, LuminosityClass.III, 2100),
+        new LuminosityCrossReference(SpectralClass.B, 9, LuminosityClass.IV, 1200),
+        new LuminosityCrossReference(SpectralClass.B, 9, LuminosityClass.V, 800),
+
         new LuminosityCrossReference(SpectralClass.A, 0, LuminosityClass.Ia, 107000),
         new LuminosityCrossReference(SpectralClass.A, 0, LuminosityClass.Ib, 15000),
         new LuminosityCrossReference(SpectralClass.A, 0, LuminosityClass.II, 2200),
@@ -367,6 +387,13 @@ class SystemGeneration {
         new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.V, 0.007),
         new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.VI, 0.002),
 
+        new LuminosityCrossReference(SpectralClass.M, 9, LuminosityClass.Ia, 141000),
+        new LuminosityCrossReference(SpectralClass.M, 9, LuminosityClass.Ib, 117000),
+        new LuminosityCrossReference(SpectralClass.M, 9, LuminosityClass.II, 16200),
+        new LuminosityCrossReference(SpectralClass.M, 9, LuminosityClass.III, 2690),
+        new LuminosityCrossReference(SpectralClass.M, 9, LuminosityClass.IV, 6.2),
+        new LuminosityCrossReference(SpectralClass.M, 9, LuminosityClass.V, 0.001),
+        new LuminosityCrossReference(SpectralClass.M, 9, LuminosityClass.VI, 0.00006),
     ];
 
     private notableSystemsTable: { [roll: number] : number } = {
@@ -415,6 +442,67 @@ class SystemGeneration {
         20: 5,
     }
 
+    private stellarMassTable: StellarMass[] = [
+        new StellarMass(SpectralClass.O, LuminosityClass.Ia, 70),
+        new StellarMass(SpectralClass.O, LuminosityClass.Ib, 60),
+        new StellarMass(SpectralClass.O, LuminosityClass.II, 57),
+        new StellarMass(SpectralClass.O, LuminosityClass.III, 54),
+        new StellarMass(SpectralClass.O, LuminosityClass.IV, 52),
+        new StellarMass(SpectralClass.O, LuminosityClass.V, 50),
+
+        new StellarMass(SpectralClass.B, LuminosityClass.Ia, 50),
+        new StellarMass(SpectralClass.B, LuminosityClass.Ib, 40),
+        new StellarMass(SpectralClass.B, LuminosityClass.II, 35),
+        new StellarMass(SpectralClass.B, LuminosityClass.III, 30),
+        new StellarMass(SpectralClass.B, LuminosityClass.IV, 20),
+        new StellarMass(SpectralClass.B, LuminosityClass.V, 10),
+
+        new StellarMass(SpectralClass.A, LuminosityClass.Ia, 30),
+        new StellarMass(SpectralClass.A, LuminosityClass.Ib, 16),
+        new StellarMass(SpectralClass.A, LuminosityClass.II, 10),
+        new StellarMass(SpectralClass.A, LuminosityClass.III, 6),
+        new StellarMass(SpectralClass.A, LuminosityClass.IV, 4),
+        new StellarMass(SpectralClass.A, LuminosityClass.V, 3),
+
+        new StellarMass(SpectralClass.F, LuminosityClass.Ia, 15),
+        new StellarMass(SpectralClass.F, LuminosityClass.Ib, 13),
+        new StellarMass(SpectralClass.F, LuminosityClass.II, 8),
+        new StellarMass(SpectralClass.F, LuminosityClass.III, 2.5),
+        new StellarMass(SpectralClass.F, LuminosityClass.IV, 2.2),
+        new StellarMass(SpectralClass.F, LuminosityClass.V, 1.9),
+
+        new StellarMass(SpectralClass.G, LuminosityClass.Ia, 12),
+        new StellarMass(SpectralClass.G, LuminosityClass.Ib, 10),
+        new StellarMass(SpectralClass.G, LuminosityClass.II, 6),
+        new StellarMass(SpectralClass.G, LuminosityClass.III, 2.7),
+        new StellarMass(SpectralClass.G, LuminosityClass.IV, 1.8),
+        new StellarMass(SpectralClass.G, LuminosityClass.V, 1.1),        
+        new StellarMass(SpectralClass.G, LuminosityClass.VI, 0.8), 
+
+        new StellarMass(SpectralClass.K, LuminosityClass.Ia, 15),
+        new StellarMass(SpectralClass.K, LuminosityClass.Ib, 12),
+        new StellarMass(SpectralClass.K, LuminosityClass.II, 6),
+        new StellarMass(SpectralClass.K, LuminosityClass.III, 3),
+        new StellarMass(SpectralClass.K, LuminosityClass.IV, 2.3),
+        new StellarMass(SpectralClass.K, LuminosityClass.V, 0.9),
+        new StellarMass(SpectralClass.K, LuminosityClass.VI, 0.5), 
+
+        new StellarMass(SpectralClass.M, LuminosityClass.Ia, 20),
+        new StellarMass(SpectralClass.M, LuminosityClass.Ib, 16),
+        new StellarMass(SpectralClass.M, LuminosityClass.II, 8),
+        new StellarMass(SpectralClass.M, LuminosityClass.III, 4),
+        new StellarMass(SpectralClass.M, LuminosityClass.IV, 2),
+        new StellarMass(SpectralClass.M, LuminosityClass.V, 0.3),
+        new StellarMass(SpectralClass.M, LuminosityClass.VI, 0.2), 
+
+        new StellarMass(SpectralClass.L, null, 0.11), 
+        new StellarMass(SpectralClass.T, null, 0.10), 
+        new StellarMass(SpectralClass.Y, null, 0.10), 
+
+        new StellarMass(SpectralClass.WhiteDwarf, null, 0.8),
+        new StellarMass(SpectralClass.BrownDwarf, null, 0.15),
+    ]
+
     generateSector(region: SpaceRegionModel) {
         let count = this.notableSystemsTable[D20.roll()];
         let sector = new Sector(region.prefix);
@@ -447,15 +535,17 @@ class SystemGeneration {
         if (star != null) {
             let starSystem = new StarSystem(star);
             starSystem.sectorCoordinates = this.generateCoordinates();
-            console.log(starSystem.sectorCoordinates.description);
 
             if (D6.rollFace().isEffect) {
-                console.log("should generate a companion star");
-                while (true) {
+                let tries = 10;
+                while (tries-- > 0) {
                     let companion = this.generateStar();
                     if (companion != null && companion instanceof Star) {
-                        starSystem.companionStar = companion;
-                        break;
+                        console.log("star mass " + star.mass + " and companion mass " + companion.mass);
+                        if ((companion as Star).mass <= star.mass) {
+                            starSystem.companionStar = companion;
+                            break;
+                        }
                     }
                 }
             }
@@ -472,11 +562,55 @@ class SystemGeneration {
         if (spectralClass) {
 
             let subClass = this.rollSubSpectralClass();
-            let luminosity = (spectralClass != null && !spectralClass.isDwarf) ? this.rollLuminosity(spectralClass) : undefined;
-            return new Star(spectralClass, subClass, luminosity);
+            let mass = null;
+            let luminosity = null;
+            while (mass == null) {
+                luminosity = (spectralClass != null && !spectralClass.isDwarf) ? this.rollLuminosity(spectralClass) : undefined;
+                console.log("spectral class " + spectralClass.id + " " + (luminosity == null ? "null" : luminosity.id));
+                mass = this.determineMass(spectralClass, luminosity);
+            }
+            return new Star(spectralClass, subClass, luminosity, mass);
         } else {
             return undefined;
         }
+    }
+
+    determineMass(spectralClass: SpectralClassModel, luminosityClass: LuminosityClassModel) {
+
+        for (let i = 0; i < this.stellarMassTable.length; i++) {
+            let mass = this.stellarMassTable[i];
+            if (mass.spectralClass === spectralClass.id 
+                && ((luminosityClass == null && mass.luminosityClass == null) || (luminosityClass != null && luminosityClass.id === mass.luminosityClass))) {
+
+                let baseMass = mass.mass;
+                
+                let roll = (D20.roll() - 10) / 10;
+                if (roll < 0) {
+                    let delta = Math.min(baseMass / 2, 10);
+                    if (i > 0) {
+                        let previous = this.stellarMassTable[i-1];
+                        if (previous.spectralClass === spectralClass.id) {
+                            delta = previous.mass - baseMass;
+                        }
+                    }
+                    let result = baseMass - roll * delta / 2;
+                    if (result < 0) {
+                        console.log("Weird! " + roll +  " " + baseMass + " " + delta);
+                    }
+                    return baseMass - roll * delta / 2;
+                } else {
+                    let delta = Math.min(baseMass / 2, 0.1);
+                    if (i < (this.stellarMassTable.length - 1)) {
+                        let next = this.stellarMassTable[i+1];
+                        if (next.spectralClass === spectralClass.id) {
+                            delta = baseMass - next.mass;
+                        }
+                    }
+                    return baseMass - roll * delta / 2;
+                }
+            }
+        }
+        return null;
     }
 
     generateCoordinates() {
@@ -494,12 +628,12 @@ class SystemGeneration {
             roll = Math.max(1, Math.min(20, roll));
 
             let worldCount = this.numberOfPlanetsTable[roll];
-            console.log("world count: " + worldCount);
 
             let primaryWorldOrbit =  Math.min(worldCount, Math.ceil(D20.roll() / 4.0));
 
-            console.log("number of worlds: " + worldCount + ". Primary world: " + primaryWorldOrbit);
-
+            let initialOrbit = this.determineInitialOrbit(starSystem);
+            let bodeConstant = (D20.roll() / 4) * 0.1;
+            let orbitIndex = 0;
 
             for (let i = 1; i <= worldCount; i++) {
 
@@ -521,6 +655,18 @@ class SystemGeneration {
                     world.numberOfSatellites = this.numberOfMoonsTable[D20.roll()];
                 }
                 starSystem.world.push(world);
+
+                if (D20.roll() === 20) {
+                    orbitIndex += 1; // throw in an empty orbit
+                }
+
+                if (orbitIndex === 0) {
+                    world.orbitalRadius = initialOrbit;
+                } else {
+                    world.orbitalRadius = initialOrbit + Math.pow(BLAGG_CONSTANT, orbitIndex) * bodeConstant;
+                }
+
+                orbitIndex += 1;
             }
 
             for (let i = 0; i < this.gardenZoneTable.length; i++) {
@@ -531,6 +677,15 @@ class SystemGeneration {
             }
         } else {
             console.log("star " + starSystem.star.spectralClass.id + " is a dwarf?");
+        }
+    }
+
+    determineInitialOrbit(system: StarSystem) {
+        if (system.star.spectralClass.id === SpectralClass.M && system.star.luminosityClass != null && system.star.luminosityClass.id === LuminosityClass.VI) {
+            return 0.2;
+        } else {
+            let orbits = [0.3, 0.35, 0.4];
+            return orbits[Math.floor(Math.random() * orbits.length)];
         }
     }
 

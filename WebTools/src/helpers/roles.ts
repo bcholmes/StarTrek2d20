@@ -55,6 +55,8 @@ export enum Role {
     SpiritualLeader,
     Translator,
 
+    Navigator,
+
 }
 
 /**
@@ -209,7 +211,31 @@ class Roles {
             "Not a typical senior staff role, some captains, particularly those operating in uncharted space, choose the most senior helmsman or flight control officer to serve as senior staff as well.",
             Skill.Conn,
             "When the flight controller is required to analyze or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",
+            new AnyOfPrerequisite(
+                new EraPrerequisite(Era.Enterprise, Era.NextGeneration), 
+                new NotPrerequisite(new SourcePrerequisite(Source.TricorderSet))),
             new SourcePrerequisite(Source.Core),
+            new NotKlingonPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
+            new MilitaryPrerequisite()),
+        new RoleModel(
+            Role.FlightController,
+            "Helmsman",
+            "The helmsman manages and oversees all technical operations aboard or involving  the ship, normally from the helm station on the bridge, or in conjunction with the chief engineer (on smaller ships, one officer may fill both roles). This often entails taking on the duties of a science officer, if there is no dedicated science officer in the senior staff. When the helmsman succeeds at a Task assisted by the ship’s Computers or Sensors, or using a tricorder, the character generates one bonus Momentum, which may only be used on the Obtain Information Momentum spend.",
+            Skill.Conn,
+            "You reduce the Difficulty of any task to translate or understand an unfamiliar language by 2, to a minimum of 0.",
+            new SourcePrerequisite(Source.TricorderSet),
+            new EraPrerequisite(Era.OriginalSeries),
+            new NotKlingonPrerequisite(),
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
+            new MilitaryPrerequisite()),
+        new RoleModel(
+            Role.Navigator,
+            "Navigator",
+            "Not a typical senior staff role, some captains, particularly those operating in uncharted space, choose the most senior navigator to serve as senior staff as well. When the navigator is required to analyze, or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",
+            Skill.Conn,
+            "You reduce the Difficulty of any task to translate or understand an unfamiliar language by 2, to a minimum of 0.",
+            new SourcePrerequisite(Source.TricorderSet),
             new NotKlingonPrerequisite(),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
@@ -568,6 +594,10 @@ class Roles {
             new NotTalentPrerequisite("Advanced Team Dynamics"),
             new SourcePrerequisite(Source.PlayersGuide),
             new AdultPrerequisite()),
+    
+
+
+            
     ];
 
     getRoles() {

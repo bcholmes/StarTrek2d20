@@ -21,7 +21,28 @@ class StarView extends React.Component<IStarViewProperties, {}> {
                     </div>
                 </div>
             </div>
+            <div className="row">
+                <div className="col-md-4 view-field-label pb-2">Mass (Sols):</div>
+                <div className="col-md-8 text-white">
+                    <div className="view-border-bottom pb-2">
+                        {this.props.star ? this.props.star.mass.toFixed(2) : ""}
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-md-4 view-field-label pb-2">Mass (kg):</div>
+                <div className="col-md-8 text-white">
+                    <div className="view-border-bottom pb-2">
+                        {this.renderMassInKg()}
+                    </div>
+                </div>
+            </div>
         </div>) : null;
+    }
+
+    renderMassInKg() {
+        let mass = (1.98847 *  this.props.star.mass).toFixed(4);
+        return (<span>{mass} x 10<sup>30</sup></span>);
     }
 }
 
