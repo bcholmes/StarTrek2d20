@@ -64,9 +64,9 @@ export enum Role {
  * in play.
  */
 class NotKlingonPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled(character: Character): boolean {
-        if (new SourcePrerequisite(Source.KlingonCore).isPrerequisiteFulfilled(character)) {
-            return !(new KlingonPrerequisite().isPrerequisiteFulfilled(character));
+    isPrerequisiteFulfilled(): boolean {
+        if (new SourcePrerequisite(Source.KlingonCore).isPrerequisiteFulfilled()) {
+            return !(new KlingonPrerequisite().isPrerequisiteFulfilled());
         } else {
             return true;
         }
@@ -74,7 +74,7 @@ class NotKlingonPrerequisite implements IPrerequisite {
 }
 
 class MilitaryPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled(character: Character): boolean {
+    isPrerequisiteFulfilled(): boolean {
         return character.type === CharacterType.Starfleet ||
             character.type === CharacterType.KlingonWarrior ||
             character.type === CharacterType.AlliedMilitary ||
@@ -90,13 +90,13 @@ class NotTalentPrerequisite implements IPrerequisite {
         this.talent = talent;
     }
 
-    isPrerequisiteFulfilled(character: Character): boolean {
+    isPrerequisiteFulfilled(): boolean {
         return !character.hasTalent(this.talent);
     }
 }
 
 class CadetPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled(character: Character): boolean {
+    isPrerequisiteFulfilled(): boolean {
         return character.type === CharacterType.Cadet;
     }
 }
@@ -121,7 +121,7 @@ export class RoleModel {
     isPrerequisitesFilled(character: Character) {
         let valid = true;
         this.prerequisites.forEach(req => {
-            if (!req.isPrerequisiteFulfilled(character)) {
+            if (!req.isPrerequisiteFulfilled()) {
                 valid = false;
             }
         });

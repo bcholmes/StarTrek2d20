@@ -1,5 +1,5 @@
 ﻿import { CharacterType } from '../common/characterType';
-import { hasSource } from '../state/contextFunctions';
+import { IPrerequisite, SourcePrerequisite } from './prerequisite';
 import { Source } from './sources';
 import {TalentsHelper, TalentModel} from './talents';
 
@@ -12,7 +12,9 @@ export enum MissionProfile {
     CrisisAndEmergencyResponse,
     MultiroleExplorer,
     HouseGuard,
-    ProjectEscalante
+    ProjectEscalante,
+    Battlecruiser,
+    ReserveFleet
 }
 
 export class MissionProfileModel {
@@ -22,13 +24,23 @@ export class MissionProfileModel {
     talents: TalentModel[];
     traits: string;
     notes: string;
+    prerequisites: IPrerequisite[];
 
-    constructor(id: MissionProfile, name: string, departments: number[], talents: TalentModel[], traits: string = "", notes: string = "") {
+    constructor(id: MissionProfile, name: string, departments: number[], talents: TalentModel[], traits: string = "", notes: string = "", ...prerequisites: IPrerequisite[]) {
         this.id = id;
         this.name = name;
         this.departments = departments;
         this.talents = talents;
         this.notes = notes;
+        this.prerequisites = prerequisites;
+    }
+
+    public isPrerequisitesFulfilled() {
+        let result = true;
+        this.prerequisites.forEach(p => {
+            result = result && p.isPrerequisiteFulfilled();
+        });
+        return result;
     }
 }
 
@@ -114,7 +126,35 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Expanded Connectivity")
             ],
             "Expanded sensor footprint, Prototype",
-            "Used in the adventure \"Plague of Arias\""),
+            "Used in the adventure \"Plague of Arias\"", 
+            new SourcePrerequisite(Source.TheseAreTheVoyages)),
+        [MissionProfile.Battlecruiser]: new MissionProfileModel(
+            MissionProfile.Battlecruiser,
+            "Battlecruiser",
+            [2, 2, 3, 2, 2, 1],
+            [
+                TalentsHelper.getTalent("Ablative Armor"),
+                TalentsHelper.getTalent("Command Ship"),
+                TalentsHelper.getTalent("Fast Targeting Systems"),
+                TalentsHelper.getTalent("Improved Damage Control"),
+                TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher"),
+            ],
+            "",
+            "", 
+            new SourcePrerequisite(Source.DiscoveryCampaign)),
+        [MissionProfile.ReserveFleet]: new MissionProfileModel(
+            MissionProfile.ReserveFleet,
+            "Reserve Fleet",
+            [1, 2, 1, 3, 2, 3],
+            [
+                TalentsHelper.getTalent("Advanced Sickbay"),
+                TalentsHelper.getTalent("Extensive Shuttlebays"),
+                TalentsHelper.getTalent("Improved Hull Integrity"),
+                TalentsHelper.getTalent("Secondary Reactors"),
+            ],
+            "",
+            "", 
+            new SourcePrerequisite(Source.DiscoveryCampaign)),
     };
 
     private _klingonProfiles: { [id: number]: MissionProfileModel } = {
@@ -205,15 +245,6 @@ class MissionProfiles {
                 MissionProfile.StrategicAndDiplomatic,
                 MissionProfile.Tactical,
                 MissionProfile.HouseGuard ];
-        } else if (hasSource(Source.TheseAreTheVoyages)) {
-            keys = [ MissionProfile.StrategicAndDiplomatic,
-                MissionProfile.PathfinderAndReconaissance,
-                MissionProfile.TechnicalTestBed,
-                MissionProfile.Tactical,
-                MissionProfile.ScientificAndSurvey,
-                MissionProfile.CrisisAndEmergencyResponse,
-                MissionProfile.MultiroleExplorer,
-                MissionProfile.ProjectEscalante ];
         } else {
             keys = [ MissionProfile.StrategicAndDiplomatic,
                 MissionProfile.PathfinderAndReconaissance,
@@ -221,14 +252,19 @@ class MissionProfiles {
                 MissionProfile.Tactical,
                 MissionProfile.ScientificAndSurvey,
                 MissionProfile.CrisisAndEmergencyResponse,
-                MissionProfile.MultiroleExplorer ];
+                MissionProfile.MultiroleExplorer, 
+                MissionProfile.ProjectEscalante,
+                MissionProfile.Battlecruiser,
+                MissionProfile.ReserveFleet ];
         }
         
         for (let i in keys) {
             let n = keys[i];
             let profile = (type === CharacterType.KlingonWarrior) ? this._klingonProfiles[n] : this._profiles[n];
 
-            profiles.push(profile);
+            if (profile.isPrerequisitesFulfilled()) {
+                profiles.push(profile);
+            }
         }
 
         return profiles;

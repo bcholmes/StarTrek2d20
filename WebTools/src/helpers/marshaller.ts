@@ -120,9 +120,8 @@ class Marshaller {
 
     encode(json: any) {
         let text = JSON.stringify(json);
-        let encoded = pako.deflate(text);
+        let encoded = pako.deflate(new TextEncoder().encode(text));
         let result = base64url.encode(encoded);
-        console.log(">>> " + text.length + " reduced to " +  result.length);
         return result;
     }
 
@@ -130,7 +129,7 @@ class Marshaller {
         if (s) {
             try {
                 let encoded = base64url.toBuffer(s);
-                let text = pako.inflate(encoded, {to: 'string'});
+                let text = new TextDecoder().decode(pako.inflate(encoded));
                 return JSON.parse(text);
             } catch (e) {
                 return undefined;

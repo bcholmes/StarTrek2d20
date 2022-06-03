@@ -14,6 +14,28 @@ class NameModel {
     suggestions: string;
 }
 
+abstract class SpeciesAttributeRule {
+
+    attributes: Attribute[];
+
+    constructor(attributes: Attribute[]) {
+        this.attributes = attributes;
+    }
+}
+
+class NoSpeciesAttributeRule extends SpeciesAttributeRule {
+    constructor() {
+        super([]);
+    }
+}
+
+class SelectOneOfSpeciesAttributeRule extends SpeciesAttributeRule {
+    constructor(...attributes: Attribute[]) {
+        super(attributes);
+    }
+}
+
+
 export class SpeciesModel {
     id: Species;
     name: string;
@@ -1148,6 +1170,23 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Busal, Derran, Warrek, Sarrvel, Kiran, Arrolen, Kenuer, Shilsen" },
                 { type: "Family", suggestions: "Turell, Buhese, Kiralur, Wanoti, Kotathi, Hailova, Jailance, Madmika" }
             ]),
+        [Species.Kobali]: new SpeciesModel(
+            Species.Kobali,
+            "Kobali",
+            [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
+            [Source.DeltaQuadrant],
+            ["The Kobali are an interesting and unique species native to the Delta Quadrant. Unlike other species, the Kobali do not procreate or breed. Instead, the Kobali collect the corpses of other species and use an advanced from of genetic engineering to modify these deceased individuals, converting them into Kobali – and bringing them back to life. Culturally, Kobali are insular, though they are not openly hostile to those they encounter."],
+            [Attribute.Reason, Attribute.Fitness],
+            "Kobali",
+            "",
+            "",
+            [],
+            "Kobali provide new names for those converted into Kobali once the reanimation process has created a new member of their species from whatever remains were used. The Kobali language is often abrupt and commonly joins words through the use of apostrophes, and this carries over to their names. As is common to many species in the Delta Quadrant, Kobali masculine names tend to be shorter than feminine names, with the former comprised of hard sounds and the latter softer. The Kobali are not known to utilize specific names to identify family units.",
+            [
+                { type: "Masculine", suggestions: "Q’han, T’run, Mal’ret, S’vun, A’kal, Kal’astin, Po’fel, Ta’hil, Su’lean, Ul’plat, Q’mai, Ca’ham" },
+                { type: "Feminine", suggestions: "Blan’tane, Rae’theo, Pana’liode, Teuna’kaha, Elen’ilash, Clelimilia, Fion’ustina, Sawsava" },
+                { type: "Gender-neutral", suggestions: "Flu’dari, Mik’tru, Ma’tee, Alda’nahi, Ora’cas, Jit’ade, Dra’ya, Ta’karhi, Aus’ashly" }
+            ]),
         [Species.Zahl]: new SpeciesModel(
             Species.Zahl,
             "Zahl",
@@ -1384,7 +1423,7 @@ class _Species {
         }
     }
 
-    getSpeciesByType(species: Species) {
+    getSpeciesByType(species: Species): SpeciesModel {
         let model = this._species[species];
         return model;
     }

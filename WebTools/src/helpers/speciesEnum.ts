@@ -97,4 +97,7 @@ export enum Species {
 
     // Discovery S1
     Kelpian,
+
+    // should have been in Delta Quadrant, above...
+    Kobali,    
 };

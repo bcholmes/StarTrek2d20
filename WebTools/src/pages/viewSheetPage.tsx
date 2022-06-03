@@ -54,9 +54,13 @@ export class ViewSheetPage extends React.Component<IPageProperties, {}> {
         result.rank = json.rank;
         result.role = json.role;
         result.pronouns = json.pronouns;
-        result.species = SpeciesHelper.getSpeciesTypeByName(json.species);
-        if (json.species) {
-            result.addTrait(json.species);
+        if (json.species != null) {
+            let speciesCode = SpeciesHelper.getSpeciesTypeByName(json.species);
+            let species = SpeciesHelper.getSpeciesByType(speciesCode);
+            if (species != null) {
+                result.species = speciesCode;
+                result.addTrait(species.trait);
+            }
         }
         result.focuses = [...json.focuses];
         if (json.attributes) {

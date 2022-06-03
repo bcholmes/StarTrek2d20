@@ -1,4 +1,4 @@
-import { Character } from "../common/character";
+import { character } from "../common/character";
 import { CharacterType } from "../common/characterType";
 import { hasAnySource } from "../state/contextFunctions";
 import store from "../state/store";
@@ -8,7 +8,7 @@ import { Source } from "./sources";
 import { Track } from "./tracks";
 
 export interface IPrerequisite {
-    isPrerequisiteFulfilled(character: Character): boolean;
+    isPrerequisiteFulfilled(): boolean;
 }
 
 export class SourcePrerequisite implements IPrerequisite {
@@ -18,14 +18,14 @@ export class SourcePrerequisite implements IPrerequisite {
         this.sources = source;
     }
 
-    isPrerequisiteFulfilled(character: Character) {
+    isPrerequisiteFulfilled() {
         return hasAnySource(this.sources);
     }
 }
 
 export class KlingonPrerequisite implements IPrerequisite {
 
-    isPrerequisiteFulfilled(character: Character) {
+    isPrerequisiteFulfilled() {
         return character.isKlingon();
     }
 }
@@ -38,7 +38,7 @@ export class CharacterTypePrerequisite implements IPrerequisite {
         this.type = type;
     }
     
-    isPrerequisiteFulfilled(character: Character) {
+    isPrerequisiteFulfilled() {
         return character.type === this.type;
     }
 }
@@ -48,8 +48,8 @@ export class CivilianPrerequisite implements IPrerequisite {
 
     // arguably, a Child character is a Civilian, but the Roles restrict Child
     // characters to only one Role, so there's no point including them.
-    isPrerequisiteFulfilled(character: Character) {
-        if (new SourcePrerequisite(Source.SciencesDivision, Source.PlayersGuide, Source.KlingonCore).isPrerequisiteFulfilled(character)) {
+    isPrerequisiteFulfilled() {
+        if (new SourcePrerequisite(Source.SciencesDivision, Source.PlayersGuide, Source.KlingonCore).isPrerequisiteFulfilled()) {
             return character.type === CharacterType.AmbassadorDiplomat || 
                 character.type === CharacterType.Civilian ||
                 (character.type === CharacterType.Starfleet 
@@ -69,8 +69,8 @@ export class NotPrerequisite implements IPrerequisite {
     constructor(prereq: IPrerequisite) {
         this.prereq = prereq;
     }
-    isPrerequisiteFulfilled(character: Character): boolean {
-        return !this.prereq.isPrerequisiteFulfilled(character);
+    isPrerequisiteFulfilled(): boolean {
+        return !this.prereq.isPrerequisiteFulfilled();
     }
 }
 
@@ -81,13 +81,13 @@ export class AnyOfPrerequisite implements IPrerequisite {
         this._prequisites = prequisites;
     }
 
-    isPrerequisiteFulfilled(character: Character) {
+    isPrerequisiteFulfilled() {
         if (this._prequisites.length === 0) {
             return true;
         } else {
             var result = false;
             this._prequisites.forEach(req => {
-                result = result || req.isPrerequisiteFulfilled(character);
+                result = result || req.isPrerequisiteFulfilled();
             });
             return result;
         }
@@ -101,13 +101,13 @@ export class CareersPrerequisite implements IPrerequisite {
         this._careers = careers;
     }
 
-    isPrerequisiteFulfilled(character: Character) {
+    isPrerequisiteFulfilled() {
         return this._careers.indexOf(character.career) > -1;
     }
 }
 
 export class EnlistedPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled(character: Character) {
+    isPrerequisiteFulfilled() {
         return character.enlisted;
     }
 }
@@ -119,20 +119,20 @@ export class EraPrerequisite implements IPrerequisite {
         this.eras = era;
     }
 
-    isPrerequisiteFulfilled(character: Character) {
+    isPrerequisiteFulfilled() {
         return this.eras.indexOf(store.getState().context.era) >= 0;
     }
 }
 
 export class ChildPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled(character: Character): boolean {
+    isPrerequisiteFulfilled(): boolean {
         return character.type === CharacterType.Child || 
             character.age.isChild();
     }
 }
 
 export class AdultPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled(character: Character): boolean {
+    isPrerequisiteFulfilled(): boolean {
         return character.age.isAdult();
     }
 }
@@ -144,7 +144,7 @@ export class TypePrerequisite implements IPrerequisite {
         this.types = type;
     }
 
-    isPrerequisiteFulfilled(character: Character) {
+    isPrerequisiteFulfilled() {
         return this.types.indexOf(character.type) >= 0;
     }
 }
@@ -156,13 +156,13 @@ export class AllOfPrerequisite implements IPrerequisite {
         this.prequisites = prequisites;
     }
 
-    isPrerequisiteFulfilled(character: Character) {
+    isPrerequisiteFulfilled() {
         if (this.prequisites.length === 0) {
             return true;
         } else {
             let result = true;
             this.prequisites.forEach(req => {
-                result = result && req.isPrerequisiteFulfilled(character);
+                result = result && req.isPrerequisiteFulfilled();
             });
             return result;
         }
