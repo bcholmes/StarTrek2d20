@@ -481,6 +481,15 @@ h2.header-text {
         animation-delay: .4s !important;
 	}
 
+    .lcar-footer .lcar-text {
+        color: black;
+        font-family: lcars;
+        font-size: 15px;
+        padding: 3px 6px 3px 6px;
+        text-transform: uppercase;
+        box-sizing: content-box;    
+    }
+
 .lcar-content-action {
     max-height: 34px;
     margin-bottom: 4px;
@@ -743,6 +752,10 @@ table.aspect-list td:first-child {
 
     .lcar-footer {
         max-height: 20px;
+    }
+
+    .lcar-footer .lcar-text {
+        font-size: 11px;
     }
 
     .lcar-header > div:nth-child(2),

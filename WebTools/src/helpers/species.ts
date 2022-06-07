@@ -51,8 +51,9 @@ export class SpeciesModel {
     nameSuggestions: NameModel[];
     // at the moment, only Ktarians have secondary attributes
     secondaryAttributes: Attribute[];
+    isMixedSpeciesAllowed: boolean;
 
-    constructor(id: Species, name: string, eras: Era[], sources: Source[], description: string[], attributes: Attribute[], trait: string, traitDescription: string, exampleValue: string, talents: TalentModel[], nameDescription: string, nameSuggestions: NameModel[], secondaryAttributes: Attribute[] = []) {
+    constructor(id: Species, name: string, eras: Era[], sources: Source[], description: string[], attributes: Attribute[], trait: string, traitDescription: string, exampleValue: string, talents: TalentModel[], nameDescription: string, nameSuggestions: NameModel[], secondaryAttributes: Attribute[] = [], isMixedSpeciesAllowed: boolean = true) {
         this.id = id;
         this.name = name;
         this.eras = eras;
@@ -66,6 +67,7 @@ export class SpeciesModel {
         this.nameSuggestions = nameSuggestions;
         this.sources = sources;
         this.secondaryAttributes = secondaryAttributes;
+        this.isMixedSpeciesAllowed = isMixedSpeciesAllowed;
     }
 }
 
@@ -242,7 +244,7 @@ class _Species {
             "",
             [],
             "",
-            []),
+            [], [], false),
         [Species.FerengiExt]: new SpeciesModel(
             Species.FerengiExt,
             "Ferengi",
@@ -1029,7 +1031,7 @@ class _Species {
             "What Does It Mean to be an Individual?",
             [TalentsHelper.getTalent("Borg Implants"), TalentsHelper.getTalent("Direct Neural Interface")],
             "Borg drones do not possess names and instead are assigned designations which represent their numerical place within their assigned section. Due to the limitation of their connectivity outside of a vinculum or other supporting network, most drones are organized into groups of about six. Because adjunct drones can increase this number to ten or more, sections which include them have higher numbers. These designations are neutral to gender and are always given as “Number-of-Number.” Liberated Borg may choose to retain their Borg designations – often because they feel disassociated from their former cultures and identities – or try to reclaim the names and lives they used to live.",
-            []),
+            [], [], false),
         [Species.Lokirrim]: new SpeciesModel(
             Species.Lokirrim,
             "Lokirrim",
@@ -1186,7 +1188,8 @@ class _Species {
                 { type: "Masculine", suggestions: "Q’han, T’run, Mal’ret, S’vun, A’kal, Kal’astin, Po’fel, Ta’hil, Su’lean, Ul’plat, Q’mai, Ca’ham" },
                 { type: "Feminine", suggestions: "Blan’tane, Rae’theo, Pana’liode, Teuna’kaha, Elen’ilash, Clelimilia, Fion’ustina, Sawsava" },
                 { type: "Gender-neutral", suggestions: "Flu’dari, Mik’tru, Ma’tee, Alda’nahi, Ora’cas, Jit’ade, Dra’ya, Ta’karhi, Aus’ashly" }
-            ]),
+            ],
+            [], false),
         [Species.Zahl]: new SpeciesModel(
             Species.Zahl,
             "Zahl",
@@ -1390,7 +1393,7 @@ class _Species {
         });
     }
 
-    getPrimarySpecies(type: CharacterType) {
+    getPrimarySpecies(type: CharacterType, mixed: boolean = false) {
         if (type === CharacterType.KlingonWarrior) {
             var species: SpeciesModel[] = [];
 
@@ -1419,7 +1422,8 @@ class _Species {
                 return a.name.localeCompare(b.name);
             });
         } else {
-            return this.getSpecies();
+            let candidates = this.getSpecies();
+            return mixed ? candidates.filter(s => s.isMixedSpeciesAllowed) : candidates;
         }
     }
 

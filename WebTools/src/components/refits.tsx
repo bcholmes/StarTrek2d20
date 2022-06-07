@@ -38,7 +38,6 @@ export class Refit extends React.Component<IRefitImprovementProperties, {}> {
     }
 
     private onDecrease() {
-        console.log("on decrease 1");
         this.props.controller.onDecrease(this.props.system);
     }
 
@@ -57,19 +56,6 @@ interface IRefitsProperties {
 
 export class Refits extends React.Component<IRefitsProperties, {}> {
     private _absoluteMax: number = 12;
-
-    constructor(props: IRefitsProperties) {
-        super(props);
-
-        let minimum = this.props.starship.spaceframeModel.systems;
-
-        const missionPod = SpaceframeHelper.getMissionPod(this.props.starship.missionPod);
-        if (missionPod) {
-            missionPod.systems.forEach((s, i) => {
-                minimum[i] += s;
-            });
-        }
-    }
 
     render() {
         const systems: System[] = [ System.Comms, System.Computer, System.Engines, System.Sensors, System.Structure, System.Weapons ];

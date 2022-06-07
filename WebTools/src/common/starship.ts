@@ -12,10 +12,8 @@ export class Starship extends Construct {
     traits: string = "";
     serviceYear?: number;
     spaceframeModel?: SpaceframeViewModel = undefined;
-    missionPod?: MissionPod;
     missionPodModel?: MissionPodViewModel;
     missionProfileModel?: MissionProfileModel;
-    systems: number[];
     departments: number[];
     scale: number;
     profileTalent?: TalentViewModel;
@@ -24,7 +22,6 @@ export class Starship extends Construct {
 
     constructor() {
         super();
-        this.systems = [];
         this.departments = [];
         this.scale = 0;
         this.name = "";
@@ -47,7 +44,7 @@ export class Starship extends Construct {
     getBaseSystem(system: System) {
         let result = 0;
         if (this.spaceframeModel) {
-            result = this.spaceframeModel.systems[system];
+            result += this.spaceframeModel.systems[system];
             if (this.spaceframeModel.isMissionPodAvailable && this.missionPodModel) {
                 result += this.missionPodModel.systems[system];
             }
@@ -73,9 +70,8 @@ export class Starship extends Construct {
         this.additionalTalents.forEach(t => {
             talents.push(t.name);
         });
-        const missionPod = SpaceframeHelper.getMissionPod(this.missionPod);
-        if (missionPod) {
-            missionPod.talents.forEach(t => {
+        if (this.missionPodModel) {
+            this.missionPodModel.talents.forEach(t => {
                 talents.push(t.name);
             });
         }
@@ -83,8 +79,8 @@ export class Starship extends Construct {
     }
 
     getShields() {
-        if (this.systems && this.departments) {
-            let base = this.systems[System.Structure] + this.departments[Department.Security];
+        if (this.spaceframeModel && this.departments) {
+            let base = this.getSystemValue[System.Structure] + this.departments[Department.Security];
             if (this.getTalentNameList().indexOf("Advanced Shields") > -1) {
                 base += 5;
             }
@@ -172,19 +168,11 @@ export class Starship extends Construct {
 
             starship.scale = frame.scale;
 
-            frame.systems.forEach((s, i) => {
-                starship.systems[i] = s;
-            });
-
             frame.departments.forEach((d, i) => {
                 starship.departments[i] = d;
             });
 
             if (missionPod) {
-                missionPod.systems.forEach((s, i) => {
-                    starship.systems[i] += s;
-                });
-
                 missionPod.departments.forEach((d, i) => {
                     starship.departments[i] += d;
                 });
@@ -193,10 +181,6 @@ export class Starship extends Construct {
             profile.departments.forEach((d, i) => {
                 starship.departments[i] += d;
             });
-
-            if (starship.refits) {
-                starship.refits.forEach(r => starship.systems[r] += 1);
-            }
         }
     }
 }

@@ -32,6 +32,8 @@ import { SystemGenerationPage } from '../mapping/page/systemGenerationPage';
 import StarSystemDetailsPage from '../mapping/page/starSystemDetailsPage';
 import SectorDetailsPage from '../mapping/page/sectorDetailsPage';
 import { CreditsPage } from './creditsPage';
+import SpeciesExtraDetailsPage from './speciesExtraDetailsPage';
+import { Species } from '../helpers/speciesEnum';
 
 
 export class PageFactory {
@@ -45,6 +47,7 @@ export class PageFactory {
         this.factories[PageIdentity.ToolSelecton] = () => <ToolSelectionPage/>;
         this.factories[PageIdentity.CharacterType] = () => <CharacterTypePage/>;
         this.factories[PageIdentity.Species] = () => <SpeciesPage/>;
+        this.factories[PageIdentity.KobaliExtraSpeciesDetails] = () => <SpeciesExtraDetailsPage species={Species.Kobali} />;
         this.factories[PageIdentity.SpeciesDetails] = () => <SpeciesDetailsPage/>;
         this.factories[PageIdentity.Environment] = () => <EnvironmentPage/>;
         this.factories[PageIdentity.EnvironmentDetails] = () => <EnvironmentDetailsPage/>;

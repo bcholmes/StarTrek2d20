@@ -11,6 +11,7 @@ import { CharacterSheet } from './components/characterSheet';
 
 import './scss/main.scss';
 import { navigateTo } from './common/navigator';
+import { RandomLcarsReadout } from './components/randomLcarsReadout';
 
 interface IAppState {
     showNews: boolean;
@@ -101,7 +102,7 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
                 </div>
                 <div className="lcar-footer">
                     <div className="lcar-footer-start"></div>
-                    <div className="lcar-footer-end"></div>
+                    <div className="lcar-footer-end"><RandomLcarsReadout page={this.state.activePage} /></div>
                 </div>
                 <div className="row">
                     <div className="col-md-8 offset-md-2 text-primary text-center">

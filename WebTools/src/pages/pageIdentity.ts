@@ -6,6 +6,7 @@ export enum PageIdentity {
     CharacterType,
     Species,
     SpeciesDetails,
+    KobaliExtraSpeciesDetails,
     Environment,
     EnvironmentDetails,
     Upbringing,

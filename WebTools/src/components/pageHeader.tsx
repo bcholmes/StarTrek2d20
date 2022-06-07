@@ -32,6 +32,7 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
             return "Character Type";
         } else if (this.props.page === PageIdentity.Species
                 || this.props.page === PageIdentity.SpeciesDetails
+                || this.props.page === PageIdentity.KobaliExtraSpeciesDetails
                 || this.props.page === PageIdentity.BorgImplants
                 || this.props.page === PageIdentity.Environment
                 || this.props.page === PageIdentity.EnvironmentDetails

@@ -66,12 +66,12 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
                     <Header level={2}>Systems</Header>
 
                     <div className="row row-cols-1 row-cols-md-3 mt-3">
-                        <StatView name="Comms" value={this.props.starship.systems ? this.props.starship.systems[System.Comms] : undefined} className="col mb-1" />
-                        <StatView name="Engines" value={this.props.starship.systems ? this.props.starship.systems[System.Engines] : undefined} className="col mb-1" />
-                        <StatView name="Structure" value={this.props.starship.systems ? this.props.starship.systems[System.Structure] : undefined} className="col mb-1" />
-                        <StatView name="Computers" value={this.props.starship.systems ? this.props.starship.systems[System.Computer] : undefined} className="col mb-1" />
-                        <StatView name="Sensors" value={this.props.starship.systems ? this.props.starship.systems[System.Sensors] : undefined} className="col mb-1" />
-                        <StatView name="Weapons" value={this.props.starship.systems ? this.props.starship.systems[System.Weapons] : undefined} className="col mb-1" />
+                        <StatView name="Comms" value={this.props.starship.spaceframeModel ? this.props.starship.getSystemValue(System.Comms) : undefined} className="col mb-1" />
+                        <StatView name="Engines" value={this.props.starship.spaceframeModel ? this.props.starship.getSystemValue(System.Engines) : undefined} className="col mb-1" />
+                        <StatView name="Structure" value={this.props.starship.spaceframeModel ? this.props.starship.getSystemValue(System.Structure) : undefined} className="col mb-1" />
+                        <StatView name="Computers" value={this.props.starship.spaceframeModel ? this.props.starship.getSystemValue(System.Computer) : undefined} className="col mb-1" />
+                        <StatView name="Sensors" value={this.props.starship.spaceframeModel ? this.props.starship.getSystemValue(System.Sensors) : undefined} className="col mb-1" />
+                        <StatView name="Weapons" value={this.props.starship.spaceframeModel ? this.props.starship.getSystemValue(System.Weapons) : undefined} className="col mb-1" />
                     </div>
 
                     <Header level={2} className="mt-4">Departments</Header>
@@ -85,7 +85,7 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
                     </div>
 
                     <div className="mt-3">
-                        <OutlineImage serviceYear={this.props.starship.serviceYear} spaceframe={this.props.starship.spaceframeModel} />
+                        <OutlineImage serviceYear={this.props.starship.serviceYear} spaceframe={this.props.starship.spaceframeModel} size="lg" />
 
                         <div className="row row-cols-1 row-cols-xl-3 mb-1">
                             <StatView name="Resistance" value={this.props.starship.spaceframeModel ? this.props.starship.spaceframeModel.scale : undefined} className="col mb-1" colourClass="red" />
@@ -105,7 +105,7 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
                         <div className="col-xl-6">
                             <Header level={2}>Power / Crew</Header>
                             <div className="row row-cols-1 row-cols-1 mb-1 mt-3">
-                                <StatView name="Power" value={this.props.starship.systems ? this.props.starship.systems[System.Engines] : undefined} className="col" />
+                                <StatView name="Power" value={this.props.starship.spaceframeModel ? this.props.starship.getSystemValue(System.Engines) : undefined} className="col" />
                             </div>
                             <div className="row row-cols-1 row-cols-1 mb-2">
                                 <StatView name="Crew" value={this.props.starship.spaceframeModel ? this.props.starship.spaceframeModel.scale : undefined} className="col" />

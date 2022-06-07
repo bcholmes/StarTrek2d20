@@ -3,11 +3,11 @@ import * as React from 'react';
 import { CheckBox } from './checkBox';
 import { System } from '../helpers/systems';
 import { Department } from '../helpers/departments';
-import { MissionPod, SpaceframeHelper } from '../helpers/spaceframes';
+import { MissionPod, MissionPodViewModel, SpaceframeHelper } from '../helpers/spaceframes';
 import formatAsDelta from '../common/formatAsDelta';
 
 interface IMissionPodSelectionProperties {
-    initialSelection?: MissionPod;
+    initialSelection?: MissionPodViewModel;
     onSelection: (s: MissionPod) => void;
 }
 
@@ -37,7 +37,7 @@ class MissionPodSelection extends React.Component<IMissionPodSelectionProperties
                         <td className="d=none d-md-table-cell" style={{ verticalAlign: "top", paddingLeft: "0.75rem" }} rowSpan={4}>{talents}</td>
                         <td rowSpan={4}>
                             <CheckBox
-                                isChecked={this.props.initialSelection === p.id}
+                                isChecked={this.props.initialSelection != null && this.props.initialSelection.id === p.id}
                                 text=""
                                 value={p.id}
                                 onChanged={(val) => { this.props.onSelection(p.id); } }/>

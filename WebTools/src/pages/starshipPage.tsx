@@ -125,10 +125,10 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
             const pods = SpaceframeHelper.getMissionPods();
             let missionPodModel = undefined;
             // if other choices have changed, then the current spaceframe might be invalid
-            if (this.starship && this.starship.missionPod !== undefined) {
-                let items = pods.filter(p => p.id === this.starship.missionPod);
+            if (this.starship && this.starship.missionPodModel !== undefined) {
+                let items = pods.filter(p => p.id === this.starship.missionPodModel.id);
                 if (items.length === 0) {
-                    this.starship.missionPod = undefined;
+                    this.starship.missionPodModel = undefined;
                 } else {
                     missionPodModel = items[0];
                 }
@@ -151,7 +151,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
             return details;
     
         } else {
-            this.starship.missionPod = undefined;
+            this.starship.missionPodModel = undefined;
             return undefined;
         }
     }
@@ -171,15 +171,15 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                         <div className="page-text-aligned">
                             This class of starship is fitted with a single Mission Pod.
                         </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '700px'}}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between'}}>
                                 {this.renderMissionPodsSection()}
                                 <div className="p-0">
                                     <Button className="button-small" text="Choose" onClick={() => this.showModal('missionPod')} buttonType={true}/>
                                 </div>
                             </div>
                     </div>);
-                if (this.starship.missionPod !== undefined) {
-                    SpaceframeHelper.getMissionPod(this.starship.missionPod).talents.forEach(t => {
+                if (this.starship.missionPodModel !== undefined) {
+                    this.starship.missionPodModel.talents.forEach(t => {
                         spaceframeTalents.push(t.name);
                     });
                 }
@@ -522,7 +522,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                 initialSelection={this.starship.missionProfileModel} onSelection={(m) => { this.onMissionProfileSelected(m); this.closeModal() }} />);
         } else if (name === 'missionPod') {
             return (<MissionPodSelection 
-                initialSelection={this.starship.missionPod} onSelection={(m) => { this.onMissionPodSelected(m); this.closeModal() }} />);
+                initialSelection={this.starship.missionPodModel} onSelection={(m) => { this.onMissionPodSelected(m); this.closeModal() }} />);
         } else {
             return undefined;
         }
@@ -581,8 +581,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     }
 
     private onMissionPodSelected(pod: MissionPod) {
-        this.starship.missionPod = pod;
-        this.starship.missionPodModel = SpaceframeHelper.getMissionPod(this.starship.missionPod);
+        this.starship.missionPodModel = SpaceframeHelper.getMissionPod(pod);
         this.updateSystemAndDepartments();
         this.forceUpdate();
     }

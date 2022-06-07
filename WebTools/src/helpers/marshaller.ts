@@ -107,7 +107,7 @@ class Marshaller {
             }
             sheet['missionProfile'] = temp;
         }
-        if (starship.missionPod) {
+        if (starship.missionPodModel) {
             sheet['missionPod'] = {
                 "name": MissionPod[starship.missionPodModel.id]
             }

@@ -17,7 +17,7 @@ export class MixedSpeciesSelection extends React.Component<IMixedSpeciesSelectio
     private _secondary: Species;
 
     render() {
-        const primarySpecies = SpeciesHelper.getPrimarySpecies(character.type).map((s, i) => {
+        const primarySpecies = SpeciesHelper.getPrimarySpecies(character.type, true).map((s, i) => {
             if (s.id === this._secondary) return undefined;
 
             const attributes = s.attributes.map((a, i) => {

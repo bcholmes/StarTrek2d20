@@ -1,5 +1,5 @@
 import { Color } from "../../common/colour";
-import { D20 } from "../../common/die";
+import { createRandomValue } from "../../common/randomValueGenerator";
 
 export enum SpaceRegion {
     AlphaQuadrant,
@@ -16,6 +16,84 @@ export enum SpecialSectors {
     TKalNursery,
     GeneralExpanse
 }
+
+export enum NotableSpatialPhenomenon {
+    EmberStar,
+    GravittionalWavesClass1,
+    GravittionalWavesClass2,
+    GravittionalWavesClass3,
+    IonStormClass1,
+    IonStormClass2,
+    NebulaClass1,
+    NebulaClass2,
+    NebulaClass3,
+    NebulaClass4,
+    NeutonStar,
+    RadiationStormClass3,
+    RadiationStormClass4,
+    RadiationStormClass5,
+    RoguePlanet,
+    StellarFlareClass1,
+    StellarFlareClass2,
+    TTauriStar,
+}
+
+export class SpecialSectorTypeModel {
+    id: SpecialSectors;
+    name: string;
+
+    constructor(id: SpecialSectors, name: string) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public static allSpecialSectorTypes() {
+        return sectorsTypes;
+    }
+}
+
+let sectorsTypes = [
+    new SpecialSectorTypeModel(SpecialSectors.PinwheelSector, "Pinwheel Sector"),
+    new SpecialSectorTypeModel(SpecialSectors.EnduranceDivide, "Endurance Divide"),
+    new SpecialSectorTypeModel(SpecialSectors.EmberSector, "Ember Sector"),
+    new SpecialSectorTypeModel(SpecialSectors.TKalNursery, "T'Kal Nursery"),
+    new SpecialSectorTypeModel(SpecialSectors.GeneralExpanse, "General Expanse"),
+];
+
+export class NotableSpatialPhenomenonModel {
+    id: NotableSpatialPhenomenon;
+    name: string;
+
+    constructor(id: NotableSpatialPhenomenon, name: string) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public static allNotableSpatialPhenomenon() {
+        return phenomenon;
+    }
+}
+
+let phenomenon = [
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.EmberStar, "Ember Star"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.GravittionalWavesClass1, "Gravitational Waves, Class 1"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.GravittionalWavesClass2, "Gravitational Waves, Class 2"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.GravittionalWavesClass3, "Gravitational Waves, Class 3"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.IonStormClass1, "Ion Storm, Class 1"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.IonStormClass2, "Ion Storm, Class 2"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.NebulaClass1, "Nebula, Class 1"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.NebulaClass2, "Nebula, Class 2"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.NebulaClass3, "Nebula, Class 3"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.NebulaClass4, "Nebula, Class 4"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.NeutonStar, "Neutron Star"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.RadiationStormClass3, "Radiation Storm, Class 3"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.RadiationStormClass4, "Radiation Storm, Class 4"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.RadiationStormClass5, "Radiation Storm, Class 5"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.RoguePlanet, "Rogue Planet"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.StellarFlareClass1, "Stellar Flare, Class 1"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.StellarFlareClass2, "Stellar Flare, Class 2"),
+    new NotableSpatialPhenomenonModel(NotableSpatialPhenomenon.TTauriStar, "T-Tauri Star"),
+];
 
 export class SpaceRegionModel {
     id: SpaceRegion;
@@ -59,7 +137,6 @@ export enum SpectralClass {
     T,
     WhiteDwarf,
     BrownDwarf,
-    TTauri,
 }
 
 export enum WorldClass {
@@ -145,16 +222,7 @@ export class Sector {
     }
 
     private static randomId(prefix: string) {
-        const alphaNumeric = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        let result = prefix + "-";
-        for (let i = 0; i < 6; i++) {
-            if (D20.roll() === 1) {
-                result += alphaNumeric.charAt(Math.floor(Math.random() * alphaNumeric.length));
-            } else {
-                result += alphaNumeric.charAt(Math.floor(Math.random() * 10));
-            }
-        }
-        return result;
+        return prefix + "-" + createRandomValue();
     }
 }
 
@@ -274,6 +342,7 @@ export class StarSystem {
     public companionStar?: Star;
     public world: World[] = [];
     public sectorCoordinates: SectorCoordinates;
+    public phenomenon: NotableSpatialPhenomenonModel;
 
     constructor (star: Star) {
         this.star = star;

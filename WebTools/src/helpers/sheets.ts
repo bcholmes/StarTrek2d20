@@ -2,7 +2,7 @@ import { Character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Attribute } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
-import { PDFDocument, PDFFont, PDFForm, PDFPage, PDFTextField, rgb, StandardFonts } from 'pdf-lib'
+import { PDFCheckBox, PDFDocument, PDFFont, PDFForm, PDFPage, PDFTextField, rgb, StandardFonts } from 'pdf-lib'
 import fontkit from '@pdf-lib/fontkit'
 import { CharacterSerializer } from '../common/characterSerializer';
 import { Era } from './eras';
@@ -171,16 +171,20 @@ abstract class BasicSheet implements ICharacterSheet {
 
     fillCheckbox(form: PDFForm, name: string, value: boolean) {
         try {
-            const field = form.getCheckBox(name)
-            if (field) {
-                if (value) {
-                    field.check();
-                } else {
-                    field.uncheck();
-                }
-            }
+            const field = form.getCheckBox(name);
+            this.fillCheckboxValue(form, field, value);
         } catch (e) {
             // ignore it
+        }
+    }
+
+    fillCheckboxValue(form: PDFForm, field: PDFCheckBox, value: boolean) {
+        if (field) {
+            if (value) {
+                form.removeField(field);
+            } else {
+                field.uncheck();
+            }
         }
     }
 }
@@ -210,16 +214,16 @@ abstract class BasicStarshipSheet extends BasicSheet {
             this.fillField(form, 'Mission Profile', missionProfile.name);
         }
 
-        if (starship.systems[System.Engines]) {
-            this.fillField(form, "Power Total", this.calculatePower(starship.systems[System.Engines], talents));
+        if (starship.spaceframeModel) {
+            this.fillField(form, "Power Total", this.calculatePower(starship.getSystemValue(System.Engines), talents));
         }
         if (starship.scale) {
             this.fillField(form, "Resistance",  this.calculateResistance(starship.scale, talents));
             this.fillField(form, "Crew Total",  this.calculateCrewSupport(starship.scale));
         }
 
-        if (starship.systems[System.Structure] && starship.departments[Department.Security]) {
-            this.fillShields(form, this.calculateShields(starship.systems[System.Structure] + starship.departments[Department.Security], talents));
+        if (starship.spaceframeModel && starship.departments[Department.Security]) {
+            this.fillShields(form, this.calculateShields(starship.getSystemValue(System.Structure) + starship.departments[Department.Security], talents));
         }
 
         this.fillRefits(form, starship);
