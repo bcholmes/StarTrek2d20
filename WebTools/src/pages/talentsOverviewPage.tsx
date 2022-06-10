@@ -7,8 +7,6 @@ import { SourcesHelper } from "../helpers/sources";
 import { SpeciesHelper } from "../helpers/species";
 import replaceDiceWithArrowhead from '../common/arrowhead';
 import { Species } from '../helpers/speciesEnum';
-import store from '../state/store';
-import { setSources } from '../state/contextActions';
 
 class TalentViewModel {
     name: string;
@@ -72,9 +70,6 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
     constructor(props: {}) {
         super(props);
 
-        //SetHeaderText("Talents");
-
-        this.setupSources();
         this.setupCategories();
         this.loadTalents();
     }
@@ -158,11 +153,6 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
         this.forceUpdate();
     }
 
-    private setupSources() {
-        let allSources = SourcesHelper.getSources().filter(s => s.available).map(s => s.id);
-        store.dispatch(setSources(allSources));
-    }
-
     private setupCategories() {
         var skillFilter = [6];
 
@@ -211,13 +201,18 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
     private loadTalents() {
         
         const talentsList = TalentsHelper.getTalents();
-        for (const key in talentsList) {
-            const talents = talentsList[key];
-            for (var i = 0; i < talents.length; i++) {
-                const talent = talents[i];
-                const skill = SkillsHelper.findSkill(key);
-                const category = skill !== Skill.None ? ("" + skill) : talent.category;
-                const model = TalentViewModel.from(talent, category);
+        for (var i = 0; i < talentsList.length; i++) {
+            const talent = talentsList[i];
+            const sources = TalentsHelper.getSourceForTalent(talent.name);
+
+            let available = (sources && sources.length > 0) ? false : true;
+            sources.forEach(s => {
+                let source = SourcesHelper.getSources()[s];
+                available = available || source.available;
+            });
+
+            if (available) {
+                const model = TalentViewModel.from(talent, talent.category);
                 this._allTalents.push(model);
             }
         }
@@ -228,16 +223,8 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
         });
         for (let c = 0; c < this._categories.length; c++) {
             const category = this._categories[c];
-            const skill = SkillsHelper.toSkill(category);
-            if (skill !== Skill.None) {
-                const talents = TalentsHelper.getTalents()[skill];
-                for (let i = 0; i < talents.length; i++) {
-                    const talent = talents[i];
-                    this._talents[category].push(TalentViewModel.from(talent, category));
-                }
-            }
-            else if (category !== TalentsOverviewPage.ALL) {
-                const talents = TalentsHelper.getTalents()[Skill.None];
+            if (category !== TalentsOverviewPage.ALL) {
+                const talents = TalentsHelper.getTalents();
                 for (let i = 0; i < talents.length; i++) {
                     const talent = talents[i];
                     if (talent.category === category) {

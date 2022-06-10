@@ -1,6 +1,5 @@
 ﻿import * as React from 'react';
 import {System} from '../helpers/systems';
-import {SpaceframeHelper} from '../helpers/spaceframes';
 import {Starship} from '../common/starship';
 
 interface IRefitImprovementProperties {

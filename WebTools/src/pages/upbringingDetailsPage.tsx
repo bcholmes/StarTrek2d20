@@ -31,7 +31,7 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
         var upbringing = character.upbringing;
 
         var nextPageName = character.workflow.peekNextStep().name;
-        let talents = TalentsHelper.getAllTalents();
+        let talents = TalentsHelper.getAllAvailableTalents();
 
         const attributes = this._accepted
             ? <div>

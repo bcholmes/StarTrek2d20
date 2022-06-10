@@ -50,16 +50,16 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
 
         var content = !this.state.showSelection && !this.state.showMixedSelection?
             (
-                <div className="container ml-0">
+                <div>
                     <div className="page-text">
                         <InstructionText text={character.workflow.currentStep().description} />
                     </div>
                     <div className="row row-cols-md-2">
-                        <div className="pl-2 pr-2">
+                        <div className="col">
                             <Button className="button" text="Select Species" onClick={() => this.showSpecies() } />
                             <Button className="button" text="Select Mixed Species" onClick={() => this.showMixedSpecies() }/>
                         </div>
-                        <div className="pl-2 pr-2">
+                        <div className="col">
                             {this.isRollAvailable() ? (<Button className="button" text="Roll Core Species" onClick={() => this.rollSpecies()} />) : undefined }
                             {rollAlpha}
                             {rollBeta}
@@ -92,8 +92,10 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
 
         return (
             <div className="page">
-                <CharacterCreationBreadcrumbs />
-                {content}
+                <div className="container ml-0">
+                    <CharacterCreationBreadcrumbs />
+                    {content}
+                </div>
             </div>
         );
     }

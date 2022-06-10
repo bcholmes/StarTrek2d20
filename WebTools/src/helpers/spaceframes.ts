@@ -31,6 +31,20 @@ export enum Spaceframe {
     Steamrunner,
     Sydney,
 
+    // Discovery
+    Walker,
+    Shepard,
+    Magee,
+    Cardenas,
+    Hoover,
+    Malachowski,
+    Engle,
+    Nimitz,
+    Crossfield,
+    Hiawatha,
+
+
+
     D5,
     Raptor,
     VonTalk,
@@ -631,7 +645,210 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-    
+        [Spaceframe.Walker]: new SpaceframeModel(
+            CharacterType.Starfleet,
+            "Walker Class",
+            2195,
+            [],
+            Source.DiscoveryCampaign,
+            [6, 7, 6, 8, 6, 6],
+            [0, 0, 0, 1, 1, 1],
+            3,
+            [
+                "Phase Cannons",
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentsHelper.getTalent("Rugged Design")
+            ],
+            [ "Federation Starship" ],
+            2290),
+        [Spaceframe.Shepard]: new SpaceframeModel(
+            CharacterType.Starfleet,
+            "Shepard Class",
+            2195,
+            [],
+            Source.DiscoveryCampaign,
+            [6, 6, 7, 7, 7, 6],
+            [0, 0, 1, 1, 1, 0],
+            3,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentsHelper.getTalent("Improved Impulse Drive"),
+                TalentsHelper.getTalent("Rugged Design")
+            ],
+            [ "Federation Starship" ],
+            2290),
+        [Spaceframe.Magee]: new SpaceframeModel(
+            CharacterType.Starfleet,
+            "Magee Class",
+            2198,
+            [],
+            Source.DiscoveryCampaign,
+            [7, 7, 6, 8, 6, 5],
+            [0, 0, 0, 1, 2, 0],
+            3,
+            [
+                "Phaser Banks",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentsHelper.getTalent("Advanced Research Facilities"),
+                TalentsHelper.getTalent("Specialized Crew (Science)")
+            ],
+            [ "Federation Starship" ],
+            2290),
+        [Spaceframe.Cardenas]: new SpaceframeModel(
+            CharacterType.Starfleet,
+            "Cardenas Class",
+            2202,
+            [],
+            Source.DiscoveryCampaign,
+            [6, 6, 8, 7, 6, 7],
+            [0, 1, 1, 0, 1, 0],
+            4,
+            [
+                "Phase Cannons",
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentsHelper.getTalent("Improved Warp Drive"),
+                TalentsHelper.getTalent("Redundant Systems [Warp Enginges]")
+            ],
+            [ "Federation Starship" ],
+            2290),
+        [Spaceframe.Hoover]: new SpaceframeModel(
+            CharacterType.Starfleet,
+            "Hoover Class",
+            2209,
+            [],
+            Source.DiscoveryCampaign,
+            [6, 6, 7, 6, 7, 8],
+            [0, 0, 1, 1, 1, 0],
+            4,
+            [
+                "Phase Cannons",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentsHelper.getTalent("Extensive Shuttlebays")
+            ],
+            [ "Federation Starship" ],
+            2290),
+        [Spaceframe.Malachowski]: new SpaceframeModel(
+            CharacterType.Starfleet,
+            "Malachowski Class",
+            2210,
+            [],
+            Source.DiscoveryCampaign,
+            [7, 6, 5, 6, 8, 8],
+            [0, 0, 2, 1, 0, 0],
+            3,
+            [
+                "Phase Cannons",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentsHelper.getTalent("Fast Targeting Systems"),
+                TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher"),
+            ],
+            [ "Federation Starship" ],
+            2290),
+        [Spaceframe.Engle]: new SpaceframeModel(
+            CharacterType.Starfleet,
+            "Engle Class",
+            2224,
+            [],
+            Source.DiscoveryCampaign,
+            [7, 8, 8, 6, 6, 6],
+            [0, 1, 0, 1, 0, 1],
+            3,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentsHelper.getTalent("Improved Warp Drive"),
+                TalentsHelper.getTalent("Improved Impulse Drive"),
+            ],
+            [ "Federation Starship" ],
+            2290),
+        [Spaceframe.Nimitz]: new SpaceframeModel(
+            CharacterType.Starfleet,
+            "Nimitz Class",
+            2235,
+            [],
+            Source.DiscoveryCampaign,
+            [8, 7, 7, 7, 7, 7],
+            [2, 0, 0, 0, 1, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Phase Cannons",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentsHelper.getTalent("Improved Warp Drive"),
+                TalentsHelper.getTalent("Command Ship"),
+                TalentsHelper.getTalent("Extensive Shuttlebays"),
+            ],
+            [ "Federation Starship" ],
+            2290),
+        [Spaceframe.Crossfield]: new SpaceframeModel(
+            CharacterType.Starfleet,
+            "Crossfield Class",
+            2255,
+            [],
+            Source.DiscoveryCampaign,
+            [7, 8, 8, 8, 8, 7],
+            [0, 0, 0, 1, 2, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentsHelper.getTalent("Improved Warp Drive"),
+                TalentsHelper.getTalent("Command Ship"),
+                TalentsHelper.getTalent("Extensive Shuttlebays"),
+            ],
+            [ "Federation Starship" ],
+            2290),
+        [Spaceframe.Hiawatha]: new SpaceframeModel(
+            CharacterType.Starfleet,
+            "Hiawatha Class",
+            2235,
+            [],
+            Source.DiscoveryCampaign,
+            [8, 8, 6, 8, 8, 5],
+            [0, 0, 0, 0, 1, 2],
+            3,
+            [
+                "Phase Cannons",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentsHelper.getTalent("Advanced Sickbay"),
+                TalentsHelper.getTalent("Redundant Systems [Life Support]"),
+            ],
+            [ "Federation Starship" ],
+            2290),
+
+
+
         // Klingon Spaceframes
         [Spaceframe.D5]: new SpaceframeModel(
             CharacterType.KlingonWarrior,
@@ -692,7 +909,7 @@ class Spaceframes {
             ],
             [
                 TalentsHelper.getTalent("Improved Reaction Control System"),
-                TalentsHelper.getTalent("Redundant Systems"),
+                TalentsHelper.getTalent("Redundant Systems [Warp Drive]"),
             ],
             [
                 "Klingon Starship",
@@ -805,7 +1022,7 @@ class Spaceframes {
             [
                 TalentsHelper.getTalent("Advanced Medical Ward"),
                 TalentsHelper.getTalent("Extensive Shuttlebays"),
-                TalentsHelper.getTalent("Redundant Systems")
+                TalentsHelper.getTalent("Redundant Systems [Engines]")
             ],
             [
                 "Klingon Starship"
@@ -890,7 +1107,7 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Redundant Systems"),
+                TalentsHelper.getTalent("Redundant Systems [Life Support / Structure]"),
                 TalentsHelper.getTalent("Rugged Design")
             ],
             [ 

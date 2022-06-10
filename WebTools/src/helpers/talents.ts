@@ -36,7 +36,7 @@ class AttributePrerequisite implements ITalentPrerequisite<Character> {
 };
 
 class DisciplinePrerequisite implements ITalentPrerequisite<Character> {
-    private discipline: Skill;
+    discipline: Skill;
     private value: number;
 
     constructor(discipline: Skill, minValue: number) {
@@ -479,7 +479,17 @@ export class TalentModel {
         this.description = desc;
         this.prerequisites = prerequisites;
         this.maxRank = maxRank;
-        this.category = category || "";
+        if (category == null) {
+            let prereq = prerequisites.filter(p => (p instanceof DisciplinePrerequisite));
+            if (prereq.length > 0) {
+                let p = prereq[0] as DisciplinePrerequisite;
+                this.category = Skill[p.discipline];
+            } else {
+                this.category = "";
+            }
+        } else {
+            this.category = category;
+        }
         this.aliases = aliases || AliasModel[0];
     }
 
@@ -501,6 +511,16 @@ export class TalentModel {
             }
         });
         return available;
+    }
+
+    isPrerequisiteFulfilled() {
+        let include = true;
+        this.prerequisites.forEach((p, i) => {
+            if (!p.isPrerequisiteFulfilled()) {
+                include = false;
+            }
+        });
+        return include;
     }
 
     nameForSource(source: Source) {
@@ -566,8 +586,7 @@ export function ToViewModel(talent: TalentModel, rank: number = 1): TalentViewMo
 }
 
 export class Talents {
-    private _talents: { [skill: number]: TalentModel[] } = {
-        [Skill.Command]: [
+    private _talents: TalentModel[] = [
             new TalentModel(
                 "Advisor",
                 "Whenever you assist another character using your Command Discipline, the character being assisted may re-roll one d20.",
@@ -587,7 +606,7 @@ export class Talents {
                 "Supervisor",
                 "The ship’s Crew Support increases by one. This increase is cumulative if multiple Main Characters in the group select it.",
                 [],
-                1, null, new AliasModel("War Leader", Source.KlingonCore)),
+                1, "Command", new AliasModel("War Leader", Source.KlingonCore)),
             new TalentModel(
                 "Bargain",
                 "When negotiating an offer with someone during Social Conflict, you may re-roll a d20 on your next Persuade Task to convince that person. If the Social Conflict involves an Extended Task, you gain the Progression 1 benefit when you roll your Challenge Dice.",
@@ -657,8 +676,6 @@ export class Talents {
                 "Teacher",
                 "Beyond only being a leader, you concern yourself with the development and growth of your crew, taking pride in their accomplishments. When you create an advantage for an ally that represents your guidance or advice, that ally may re-roll one d20 on a single task they attempt which benefits from that advantage.",
                 [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.PlayersGuide)]),
-        ],
-        [Skill.Conn]: [
             new TalentModel(
                 "Fly-By",
                 "Whenever you use the Swift Task Momentum Spend, you do not increase the Difficulty of the second Task if one of the Tasks you attempt is to pilot a vessel or vehicle.",
@@ -745,9 +762,6 @@ export class Talents {
                 "Visit Every Star",
                 "Your expertise in navigation and stellar cartography come from a deep and enduring fascination with space; as a child, you dreamed of the stars you’d visit and the stellar phenomena you’d see up close, and you memorized every fact you could about them. You gain an additional focus, and one of your focuses (either the one gained from this talent, or an existing one) must relate to Astronavigation, Stellar Cartography, or a similar field of space science. Further, when you succeed at a navigation-related task, you gain 1 bonus Momentum due to your knowledge and familiarity. Bonus Momentum cannot be saved.",
                 [new DisciplinePrerequisite(Skill.Conn, 3), new DisciplinePrerequisite(Skill.Science, 2), new SourcePrerequisite(Source.PlayersGuide)]),
-                    
-        ],
-        [Skill.Security]: [
             new TalentModel(
                 "Close Protection",
                 "When you make a successful Attack, you may spend one Momentum to protect a single ally within Close range. The next Attack against that ally before the start of your next turn increases in Difficulty by 1.",
@@ -762,12 +776,12 @@ export class Talents {
                 "Mean Right Hook",
                 "Your Unarmed Strike Attack has the Vicious 1 Damage Effect.",
                 [],
-                1, null, new AliasModel("Warrior’s Strike", Source.KlingonCore)),
+                1, "Security", new AliasModel("Warrior’s Strike", Source.KlingonCore)),
             new TalentModel(
                 "Pack Tactics",
                 "Whenever you assist another character during combat, the character you assisted gains one bonus Momentum if they succeed.",
                 [],
-                1),
+                1, "Security"),
             new TalentModel(
                 "Quick to Action",
                 "During the first round of any combat, you and your allies may ignore the normal cost to Retain the Initiative.",
@@ -787,7 +801,8 @@ export class Talents {
                 "Crisis Management",
                 "Small squad tactics can mean the difference between life and death in a dangerous, hostile situation, and the character excels at coordinating action in battle. The character may make use of the Direct Task (Star Trek Adventures core rulebook p. 173). If they already have access to the Direct Task, they may do so twice per scene instead of once.",
                 [new VariableDisciplinePrerequisite(Skill.Security, Skill.Command, 3), new SourcePrerequisite(Source.OperationsDivision)],
-                1),
+                1,
+                "Security"),
             new TalentModel(
                 "Deadeye Marksman",
                 "The character has spent time at the target range every day, working on their aim. When the character takes the Aim Minor Action, they reduce the Difficulty of their next Attack by 1, in addition to the normal effects of the Aim Minor Action.",
@@ -843,8 +858,6 @@ export class Talents {
                 "Shield Breaker",
                 "You’ve developed firing solutions designed to overwhelm a target vessel’s shields without harming the ship beneath, ideally as a prelude to boarding or extracting a target using transporters. When you make an attack with a starship’s energy weapons, you may spend 1 Momentum (Immediate) to target shields. If you do so, then increase the Stress rating of the energy weapon used by 2[D]. This attack cannot inflict any breaches to the target. If used on a ship with 0 shields, then it adds 1 Difficulty to the next Regenerate Shields task the target attempts.",
                 [new DisciplinePrerequisite(Skill.Security, 3), new SourcePrerequisite(Source.PlayersGuide)]),
-        ],
-        [Skill.Engineering]: [
             new TalentModel(
                 "A Little More Power",
                 "Whenever you succeed at an Engineering Task aboard your own ship, you may spend one Momentum to regain one spent Power.",
@@ -859,12 +872,12 @@ export class Talents {
                 "In the Nick of Time",
                 "Whenever you succeed at an Engineering or Science Task as part of an Extended Task, you score 1 additional Work for every Effect rolled.",
                 [new VariableDisciplinePrerequisite(Skill.Engineering, Skill.Science, 3)],
-                1),
+                1, "Science"),
             new TalentModel(
                 "Intense Scrutiny",
                 "Whenever you succeed at a Task using Reason or Control as part of an Extended Task, you may ignore up to two Resistance for every Effect rolled.",
                 [new VariableDisciplinePrerequisite(Skill.Engineering, Skill.Science, 3)],
-                1),
+                1, "Science"),
             new TalentModel(
                 "Jury-Rig",
                 "Whenever you attempt an Engineering Task to perform repairs, you may reduce the Difficulty by two, to a minimum of 0. If you do this, however, then the repairs are only temporary and will last only a single scene, plus one additional scene per Momentum spent (Repeatable) before they fail again. Jury-rigged repairs can only be applied once, and the Difficulty to repair a device that has been Jury-rigged increases by 1.",
@@ -940,8 +953,6 @@ export class Talents {
                 "You’re well-versed in the operation of transporter systems and can often get them to function in extreme circumstances or to achieve outcomes that few others could manage. Such efforts are never without risk, given the delicacy of the technology. When you attempt a task to use, repair, or modify a transporter, you may add 2 to Threat to reduce the Difficulty of the task by 2, to a minimum of 0.",
                 [new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.PlayersGuide)]
                 ),
-        ],
-        [Skill.Science]: [
             new TalentModel(
                 "Computer Expertise",
                 "Whenever you attempt a Task that involves the programming or study of a computer system, you may add a bonus d20 to your pool.",
@@ -951,7 +962,7 @@ export class Talents {
                 "Testing a Theory",
                 "When you attempt a Task using Engineering or Science, you may roll one additional d20, so long as you succeeded at a previous Task covering the same scientific or technological field earlier in the same adventure.",
                 [new VariableDisciplinePrerequisite(Skill.Science, Skill.Engineering, 2)],
-                1),
+                1, "Science"),
             new TalentModel(
                 "Baffling Briefing",
                 "When the character engages in a Social Conflict using deception, the character may use Science in place of Command so long as their technical knowledge is used to mislead their opponent. ",
@@ -1023,8 +1034,6 @@ export class Talents {
                 "Rapid Hypothesis",
                 "You are quick to devise a working theory about an unknown phenomenon’s nature, origin, or effect. Once per scene, when you ask two or more questions using Obtain Information, you may immediately create an advantage that represents your theoretical understanding of the subject of those questions.",
                 [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Science, 5)]),
-            ],
-        [Skill.Medicine]: [
             new TalentModel(
                 "Doctor’s Orders",
                 "When you attempt a Task to coordinate others, or to coerce someone into taking or refraining from a specific course of action, you may use your Medicine Discipline instead of Command.",
@@ -1034,7 +1043,8 @@ export class Talents {
                 "Field Medicine",
                 "When attempting a Medicine Task, you may ignore any increase in Difficulty for working without the proper tools or equipment.",
                 [],
-                1),
+                1, 
+                "Medicine"),
             new TalentModel(
                 "First Response",
                 "Whenever you attempt the First Aid Task during combat, you gain a bonus d20. Further, you may always Succeed at a Cost, with each Complication you suffer adding +1 to the Difficulty of healing the patient’s Injury subsequently.",
@@ -1146,8 +1156,6 @@ export class Talents {
                 "Stimulant Shot",
                 "You’ve got a few tricks and treatments that can get an injured patient back on their feet for a while. They are rough on the body, but they can be essential during a crisis. When you perform the First Aid task on an injured ally, you may get them back into the fighting right away without spending Momentum. In addition, the ally recovers Stress equal to twice your Medicine rating.",
                 [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Medicine, 3)]),
-            ],
-        [Skill.None]: [
             // Species
             new TalentModel(
                 "Proud and Honorable",
@@ -2605,7 +2613,7 @@ export class Talents {
             new TalentModel(
                 "Independent Phaser Supply",
                 "The ship’s phasers use an independent power supply, rather than drawing directly from the ship’s other power sources. Attacking with the ship’s phasers no longer has a Power Requirement. However, the ship may not spend additional Power to boost the effectiveness of an attack with the phasers.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.DiscoveryCampaign)],
                 1,
                 "Starship"),
             new TalentModel(
@@ -2638,8 +2646,25 @@ export class Talents {
                 [new StarshipPrerequisite(), new SourcePrerequisite(Source.KlingonCore), new CharacterTypePrerequisite(CharacterType.KlingonWarrior)],
                 1,
                 "Starship"),
-            ]
-    };
+            new TalentModel(
+                "Specialized Crew (Command)",
+                "Rare in Starfleet, a starship with a specialized crew has had personnel assigned to it primarily from a specific division. During an adventure, if the players wish to introduce supporting characters, they may not use more than half their ship’s Crew Support rating on characters from divisions outside of the ship’s specialty. An example of this is the Crossfield class that is specialized with the Science division and is Scale 4. This means that only two crew points could be used for supporting characters from the Command or Operations divisions, while the other two could be used only for the Science division.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.DiscoveryCampaign)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Specialized Crew (Operations)",
+                "Rare in Starfleet, a starship with a specialized crew has had personnel assigned to it primarily from a specific division. During an adventure, if the players wish to introduce supporting characters, they may not use more than half their ship’s Crew Support rating on characters from divisions outside of the ship’s specialty. An example of this is the Crossfield class that is specialized with the Science division and is Scale 4. This means that only two crew points could be used for supporting characters from the Command or Operations divisions, while the other two could be used only for the Science division.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.DiscoveryCampaign)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Specialized Crew (Science)",
+                "Rare in Starfleet, a starship with a specialized crew has had personnel assigned to it primarily from a specific division. During an adventure, if the players wish to introduce supporting characters, they may not use more than half their ship’s Crew Support rating on characters from divisions outside of the ship’s specialty. An example of this is the Crossfield class that is specialized with the Science division and is Scale 4. This means that only two crew points could be used for supporting characters from the Command or Operations divisions, while the other two could be used only for the Science division.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.DiscoveryCampaign)],
+                1,
+                "Starship"),
+            ];
 
     private _specialRules: TalentModel[] = [
         new TalentModel(
@@ -2683,28 +2708,11 @@ export class Talents {
     getTalent(name: string) {
         let talent: TalentModel = null;
 
-        for (let i = 0; i < this._talents[Skill.None].length; i++) {
-            let t = this._talents[Skill.None][i];
+        for (let i = 0; i < this._talents.length; i++) {
+            let t = this._talents[i];
             if (t.matches(name)) {
                 talent = t;
                 break;
-            }
-        }
-
-        if (talent === null) {
-            let found = false;
-            for (let tal in this._talents) {
-                if (found) {
-                    break;
-                }
-
-                for (let i = 0; i < this._talents[tal].length; i++) {
-                    let t = this._talents[tal][i];
-                    if (t.matches(name)) {
-                        talent = t;
-                        break;
-                    }
-                }
             }
         }
 
@@ -2718,6 +2726,17 @@ export class Talents {
             }
         }
 
+        if (talent == null && name.indexOf(" [") >= 0) {
+            let tempName = name.substring(0, name.indexOf(" ["));
+            for (let i = 0; i < this._talents.length; i++) {
+                let t = this._talents[i];
+                if (t.matches(tempName)) {
+                    talent = t;
+                    break;
+                }
+            }
+            }
+
         if (talent === null) {
             console.log("Failed to find talent " + name);
         }
@@ -2725,56 +2744,17 @@ export class Talents {
         return talent;
     }
 
-    getAllTalents() {
-        let skills = [...SkillsHelper.getSkills(), Skill.None];
-        return this.getTalentsForSkills(skills);
-    }
-
-    getTalentsForSkills(skills: Skill[]) {
-        let talents: TalentViewModel[] = [];
-
-        skills.forEach((s, i) => {
-            for (let i = 0; i < this._talents[s].length; i++) {
-                let include = true;
-                let talent = this._talents[s][i];
-
-                talent.prerequisites.forEach((p, i) => {
-                    if (!p.isPrerequisiteFulfilled()) {
-                        include = false;
-                    }
-                });
-
-                if (include) {
-                    if (talent.maxRank > 1) {
-                        if (character.hasTalent(talent.name) && character.talents[talent.name].rank === talent.maxRank) {
-                            include = false;
-                        }
-                    } else {
-                        if (character.hasTalent(talent.name)) {
-                            include = false;
-                        }
-                    }
-
-                    if (include) {
-                        let rank = character.hasTalent(talent.name)
-                            ? character.talents[talent.name].rank + 1
-                            : 1;
-                        talents.push(ToViewModel(talent, rank));
-                    }
-                }
-            }
-        });
-
-        talents.sort((a, b) => a.name.localeCompare(b.name));
-
-        return talents;
+    getAllAvailableTalents() {
+        let result = this._talents.filter(t => t.isPrerequisiteFulfilled()).map(t => ToViewModel(t));
+        result.sort((a, b) => a.name.localeCompare(b.name));
+        return result;
     }
 
     getStarshipTalents() {
         let talents: TalentViewModel[] = [];
 
-        for (let i = 0; i < this._talents[Skill.None].length; i++) {
-            let talent = this._talents[Skill.None][i];
+        for (let i = 0; i < this._talents.length; i++) {
+            let talent = this._talents[i];
             let include = talent.category === "Starship";
 
             talent.prerequisites.forEach((p, i) => {
@@ -2809,22 +2789,6 @@ export class Talents {
         talents.sort((a, b) => a.name.localeCompare(b.name));
 
         return talents;
-    }
-
-    getSkillForTalent(talent: string) {
-        let n = 0;
-        for (let skill in this._talents) {
-            for (let i = 0; i < this._talents[skill].length; i++) {
-                let t = this._talents[skill][i];
-                if (t.name === talent) {
-                    return n;
-                }
-            }
-
-            n++;
-        }
-
-        return n;
     }
 
     getSourceForTalent(name: string) {

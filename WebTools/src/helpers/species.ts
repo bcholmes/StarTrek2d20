@@ -78,7 +78,7 @@ class _Species {
             "Andorian",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [ Source.Core ],
-            ["An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the United Federation of Planets since its foundation, having been firm allies of Humanity for several years beforehand. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor- duels known as Ushaan, using razorsharp ice-mining tools."],
+            ["An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the United Federation of Planets since its foundation, having been firm allies of Humanity for several years beforehand. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor-duels known as Ushaan, using razorsharp ice-mining tools."],
             [Attribute.Control, Attribute.Daring, Attribute.Presence],
             "Andorian",
             "This trait may reduce the Difficulty of Tasks to resist extreme cold, or Tasks impacted by extremely low temperatures. Their antennae aid in balance and spatial awareness; a lost antenna can be debilitating until it regrows. Andorians also have a high metabolism, meaning, amongst other things, that they tire more quickly than Humans; this also makes them more vulnerable to infection from certain types of injury. Before the Federation, Andorians and Vulcans had numerous disputes; though these issues are largely considered to be ancient history, Andorians and Vulcans don’t always get along.",
@@ -1172,6 +1172,7 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Busal, Derran, Warrek, Sarrvel, Kiran, Arrolen, Kenuer, Shilsen" },
                 { type: "Family", suggestions: "Turell, Buhese, Kiralur, Wanoti, Kotathi, Hailova, Jailance, Madmika" }
             ]),
+/*
         [Species.Kobali]: new SpeciesModel(
             Species.Kobali,
             "Kobali",
@@ -1180,7 +1181,7 @@ class _Species {
             ["The Kobali are an interesting and unique species native to the Delta Quadrant. Unlike other species, the Kobali do not procreate or breed. Instead, the Kobali collect the corpses of other species and use an advanced from of genetic engineering to modify these deceased individuals, converting them into Kobali – and bringing them back to life. Culturally, Kobali are insular, though they are not openly hostile to those they encounter."],
             [Attribute.Reason, Attribute.Fitness],
             "Kobali",
-            "",
+            "The Kobali are humanoids with grayish skin and hairless heads. Their internal physiology is quite different from that of Humans. They also possess unusual tastes in food: for example, meals normally considered tasty by Humans and many humanoids are strongly disliked by Kobali. Similarly, Kobali physiology differs markedly from that of Humans. They have a six-lobed brain and a binary cardiovascular system. The effect of the genetic engineering is not reversable by Starfleet medical technology because there is not enough original DNA present after the alteration to do so.",
             "",
             [],
             "Kobali provide new names for those converted into Kobali once the reanimation process has created a new member of their species from whatever remains were used. The Kobali language is often abrupt and commonly joins words through the use of apostrophes, and this carries over to their names. As is common to many species in the Delta Quadrant, Kobali masculine names tend to be shorter than feminine names, with the former comprised of hard sounds and the latter softer. The Kobali are not known to utilize specific names to identify family units.",
@@ -1190,6 +1191,7 @@ class _Species {
                 { type: "Gender-neutral", suggestions: "Flu’dari, Mik’tru, Ma’tee, Alda’nahi, Ora’cas, Jit’ade, Dra’ya, Ta’karhi, Aus’ashly" }
             ],
             [], false),
+*/
         [Species.Zahl]: new SpeciesModel(
             Species.Zahl,
             "Zahl",
@@ -1393,7 +1395,7 @@ class _Species {
         });
     }
 
-    getPrimarySpecies(type: CharacterType, mixed: boolean = false) {
+    getPrimarySpecies(type: CharacterType, excludeSpeciesBasedOnOtherSpecies: boolean = false) {
         if (type === CharacterType.KlingonWarrior) {
             var species: SpeciesModel[] = [];
 
@@ -1423,7 +1425,7 @@ class _Species {
             });
         } else {
             let candidates = this.getSpecies();
-            return mixed ? candidates.filter(s => s.isMixedSpeciesAllowed) : candidates;
+            return excludeSpeciesBasedOnOtherSpecies ? candidates.filter(s => s.isMixedSpeciesAllowed) : candidates;
         }
     }
 

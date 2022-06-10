@@ -80,7 +80,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelection talents={TalentsHelper.getAllTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <TalentSelection talents={TalentsHelper.getAllAvailableTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -125,7 +125,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelection talents={TalentsHelper.getAllTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <TalentSelection talents={TalentsHelper.getAllAvailableTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -174,7 +174,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelection talents={TalentsHelper.getAllTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <TalentSelection talents={TalentsHelper.getAllAvailableTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -233,7 +233,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelection talents={TalentsHelper.getAllTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <TalentSelection talents={TalentsHelper.getAllAvailableTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -291,7 +291,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelection talents={TalentsHelper.getAllTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <TalentSelection talents={TalentsHelper.getAllAvailableTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>

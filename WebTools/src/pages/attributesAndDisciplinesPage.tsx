@@ -3,7 +3,6 @@ import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
-import {Skill} from '../helpers/skills';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovement';
 import {SkillImprovementCollection} from '../components/skillImprovement';
 import {ElectiveSkillList} from '../components/electiveSkillList';
@@ -77,8 +76,7 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
 
         const description = "At this stage, your character is almost complete, and needs only a few final elements and adjustments. This serves as a last chance to customize the character before play.";
 
-        let talents = [];
-        talents.push(...TalentsHelper.getTalentsForSkills(character.skills.map(s => { return s.skill; })), ...TalentsHelper.getTalentsForSkills([Skill.None]));
+        let talents = TalentsHelper.getAllAvailableTalents();
 
         const talentSelection = character.workflow.currentStep().options.talentSelection
             ? (<div className="panel">

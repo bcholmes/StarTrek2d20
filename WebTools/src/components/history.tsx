@@ -48,6 +48,7 @@ export class History extends React.Component<IHistoryProperties, {}> {
             case PageIdentity.Era: return "Era";
             case PageIdentity.ToolSelecton: return "Registry";
             case PageIdentity.Species: return "Species";
+            case PageIdentity.KobaliExtraSpeciesDetails: return "Species Extra Details";
             case PageIdentity.SpeciesDetails: return "Species Details";
             case PageIdentity.Environment: return "Environment";
             case PageIdentity.EnvironmentDetails: return "Environment Details";

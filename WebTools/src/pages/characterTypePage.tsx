@@ -110,21 +110,23 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
 
         return (
             <div className="page">
-                <CharacterCreationBreadcrumbs />
-                <div className="panel">
-                    <div className="header-small">Character Type</div>
-                    <div className="page-text">
-                        What type of character is this?
+                <div className="container ml-0">
+                    <CharacterCreationBreadcrumbs />
+                    <div className="panel">
+                        <div className="header-small">Character Type</div>
+                        <div className="page-text">
+                            What type of character is this?
+                        </div>
+                        <select onChange={(e) => this.selectType(e.target.value)} value={this.state.type}>
+                            {types}
+                        </select>
                     </div>
-                    <select onChange={(e) => this.selectType(e.target.value)} value={this.state.type}>
-                        {types}
-                    </select>
+
+                    {alliedMilitary}
+                    {governments}
+
+                    <Button onClick={() => this.startWorkflow()} text='CREATE' />
                 </div>
-
-                {alliedMilitary}
-                {governments}
-
-                <Button onClick={() => this.startWorkflow()} text='CREATE' />
             </div>
         );
     }

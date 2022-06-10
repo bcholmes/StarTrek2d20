@@ -19,31 +19,31 @@ export class CreditsPage extends React.Component<{}, {}> {
                 <p className="page-text">
                     Firstly, the <cite>Star Trek Adventures</cite> rules have been created and developed by Modiphius Entertainment. STA is a 
                     great game, and Modiphius has been very cool about supporting this character generator (I mean, to some extent, this
-                    app makes some of their core rules available for free on the Intertubes). 
-                    <a href="https://forums.modiphius.com/u/modiphius-jim/summary" target="_blank" rel="noreferrer"> Jim Johnson </a>, for example, 
-                    the current STA line editor, has been unendingly patient with my many irritating questions.
+                    app makes some of their core rules available for free on the Intertubes). {' '}
+                    <a href="https://forums.modiphius.com/u/modiphius-jim/summary" target="_blank" rel="noreferrer">Jim Johnson</a>, for example, 
+                    the current STA Project Manager, has been unendingly patient with my many irritating questions.
                 </p>
 
                 <p className="page-text">Of course, <cite>Star Trek</cite>, itself, is licensed from CBS Studios, Inc., who own the property and trademarks.</p>
 
                 <p className="page-text">
-                    The original version of this character generator was created by 
-                    <a href="https://forums.modiphius.com/u/christoffer/summary" target="_blank" rel="noreferrer"> Chistoffer </a> 
-                    (aka <a href="https://github.com/azjerei" target="_blank" rel="noreferrer"> azjerei</a>). That includes the lion's
+                    The original version of this character generator was created by {' '}
+                    <a href="https://forums.modiphius.com/u/christoffer/summary" target="_blank" rel="noreferrer">Chistoffer</a> {' '}
+                    (aka {' '} <a href="https://github.com/azjerei" target="_blank" rel="noreferrer">azjerei</a>). That includes the lion's
                     share of the functionality. Christoffer made this generator into a truly first class tool. 
                 </p>
 
                 <p className="page-text">
                     Unfortunately, Christoffer no longer had time to devote to this tool, so back around June 2020, 
                     <a href="" target="_blank"> he posted a request to the Modiphius forums</a> looking for someone to take over 
-                    the development. Forum user <a href="https://forums.modiphius.com/u/misterx/summary" target="_blank" rel="noreferrer"> Mister X </a> was
-                    the one who first prompted Christoffer to <a href="https://github.com/azjerei/StarTrek2d20" target="_blank" rel="noreferrer"> open 
-                    source the code</a> to make it possible for others to contribute.
+                    the development. Forum user {' '} <a href="https://forums.modiphius.com/u/misterx/summary" target="_blank" rel="noreferrer">Mister X</a> {' '} was
+                    the one who first prompted Christoffer to {' '} <a href="https://github.com/azjerei/StarTrek2d20" target="_blank" rel="noreferrer">open 
+                    source the code</a> {' '} to make it possible for others to contribute.
                 </p>
 
                 <p className="page-text">
-                    Since mid-2021, pretty much all of the coding has been done by 
-                    <a href="https://blog.bcholmes.org/" target="_blank" rel="noreferrer"> BC Holmes </a> 
+                    Since mid-2021, pretty much all of the coding has been done by {' '}
+                    <a href="https://blog.bcholmes.org/" target="_blank" rel="noreferrer">BC Holmes</a> {' '}
                     who (according to rumours) is not actually a human but is, instead, a swarm of bees in a trench coat. The bees might be from subspace. 
                     We're not sure. They say that if you put your ear veeeery close to the browser while you're building your character, you can
                     hear the faint buzzing.

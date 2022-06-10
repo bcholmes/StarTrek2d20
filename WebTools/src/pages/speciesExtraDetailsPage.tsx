@@ -14,9 +14,6 @@ interface ISpeciesExtraDetailsPageProperties extends IPageProperties {
     species: Species;
 }
 export class SpeciesExtraDetailsPage extends React.Component<ISpeciesExtraDetailsPageProperties, {}> {
-    constructor(props: ISpeciesExtraDetailsPageProperties) {
-        super(props);
-    }
 
     render() {
         let species = SpeciesHelper.getSpeciesByType(this.props.species);
@@ -34,7 +31,7 @@ export class SpeciesExtraDetailsPage extends React.Component<ISpeciesExtraDetail
 
                 <div className="mt-4">
                     <SimpleSpeciesSelection onSelection={(species) => this.selectOriginalSpecies(species)} 
-                        species={SpeciesHelper.getPrimarySpecies(character.type, false)} />
+                        species={SpeciesHelper.getPrimarySpecies(character.type, true)} />
                 </div>
             </div>
         </div>);

@@ -13,21 +13,23 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
     render() {
         return (
             <div className="page">
-                <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Character/Starship Creation</li>
-                    </ol>
-                </nav>
+                <div className="container ml-0">
+                    <nav aria-label="breadcrumb">
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li className="breadcrumb-item active" aria-current="page">Character/Starship Creation</li>
+                        </ol>
+                    </nav>
 
-                <div className="page-text">
-                    What do you want to create?
-                </div>
-                <div className="button-container">
-                    <Button className="button" text="Main Character" onClick={() => { this.startStarfleetWorkflow(); } } />
-                    <Button className="button" text="Supporting Character" onClick={() => { this.goToPage(PageIdentity.SupportingCharacter); } } />
-                    <Button className="button" text="Starship" onClick={() => { this.goToPage(PageIdentity.Starship); } } />
-                    {this.renderSystemGenerationButton()}
+                    <div className="page-text">
+                        What do you want to create?
+                    </div>
+                    <div className="button-container">
+                        <Button className="button" text="Main Character" onClick={() => { this.startStarfleetWorkflow(); } } />
+                        <Button className="button" text="Supporting Character" onClick={() => { this.goToPage(PageIdentity.SupportingCharacter); } } />
+                        <Button className="button" text="Starship" onClick={() => { this.goToPage(PageIdentity.Starship); } } />
+                        {this.renderSystemGenerationButton()}
+                    </div>
                 </div>
             </div>
         );

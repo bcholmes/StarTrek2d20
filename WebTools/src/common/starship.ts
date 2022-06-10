@@ -1,6 +1,6 @@
 import { Department } from "../helpers/departments";
 import { MissionProfileModel } from "../helpers/missionProfiles";
-import { MissionPod, MissionPodViewModel, SpaceframeHelper, SpaceframeViewModel } from "../helpers/spaceframes";
+import { MissionPodViewModel, SpaceframeViewModel } from "../helpers/spaceframes";
 import { System } from "../helpers/systems";
 import { TalentViewModel } from "../helpers/talents";
 import { Weapon } from "../helpers/weapons";
@@ -80,7 +80,7 @@ export class Starship extends Construct {
 
     getShields() {
         if (this.spaceframeModel && this.departments) {
-            let base = this.getSystemValue[System.Structure] + this.departments[Department.Security];
+            let base = this.getSystemValue(System.Structure) + this.departments[Department.Security];
             if (this.getTalentNameList().indexOf("Advanced Shields") > -1) {
                 base += 5;
             }

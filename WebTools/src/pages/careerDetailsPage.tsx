@@ -29,7 +29,7 @@ export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
 
         const talent = career.talent.length === 1
             ? (<TalentDescription name={career.talent[0].name} description={career.talent[0].description}/>)
-            : (<TalentSelection talents={TalentsHelper.getAllTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>);
+            : (<TalentSelection talents={TalentsHelper.getAllAvailableTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>);
 
         return (
             <div className="page">

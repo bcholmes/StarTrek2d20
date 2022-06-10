@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { character } from '../common/character';
 import { createRandomValue } from '../common/randomValueGenerator';
 import { PageIdentity } from '../pages/pageIdentity';
 
