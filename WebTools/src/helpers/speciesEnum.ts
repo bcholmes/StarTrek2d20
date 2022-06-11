@@ -95,8 +95,13 @@ export enum Species {
     // Tribble Player Character
     Tribble,
 
-    // Discovery S1
+    // Discovery 
     Kelpian,
+    Barzan,
+    Osnullus,
+    Xahean,
+    Saurian,
+    CyberneticallyEnhanced,
 
     // should have been in Delta Quadrant, above...
     Kobali,    

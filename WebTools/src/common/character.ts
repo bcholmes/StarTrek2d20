@@ -116,7 +116,7 @@ export class Character extends Construct {
     public secondaryRole?: string;
     public species?: Species;
     public mixedSpecies?: Species;
-    public baseSpecies?: Species;
+    public originalSpecies?: Species;
     public track?: Track;
     public upbringing?: UpbringingModel;
     public acceptedUpbringing?: boolean;

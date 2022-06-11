@@ -51,8 +51,8 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, {}> 
                     <AttributeView name={AttributesHelper.getAttributeName(species.attributes[1])} points={1} value={character.attributes[species.attributes[1]].value} />
                 </div>
             );
-        } else if (species.id === Species.Kobali && character.baseSpecies != null) {
-            let originalSpecies = SpeciesHelper.getSpeciesByType(character.baseSpecies); 
+        } else if (species.id === Species.Kobali && character.originalSpecies != null) {
+            let originalSpecies = SpeciesHelper.getSpeciesByType(character.originalSpecies); 
             attributes = originalSpecies.attributes.length > 3
                 ? <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Species} points={3} onDone={(done) => { this.attributesDone(done); }} />
                 : originalSpecies.attributes.map((a, i) => {

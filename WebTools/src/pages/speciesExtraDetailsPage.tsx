@@ -39,7 +39,7 @@ export class SpeciesExtraDetailsPage extends React.Component<ISpeciesExtraDetail
 
 
     selectOriginalSpecies(species: SpeciesModel) {
-        character.baseSpecies = species.id;
+        character.originalSpecies = species.id;
         Navigation.navigateToPage(PageIdentity.SpeciesDetails);
     }
 }
