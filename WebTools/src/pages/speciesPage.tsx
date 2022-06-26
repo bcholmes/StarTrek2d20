@@ -156,10 +156,10 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
 
     private selectSpecies(species: Species) {
         character.species = species;
-        SpeciesHelper.applySpecies(species);
         if (species === Species.Kobali) {
             Navigation.navigateToPage(PageIdentity.KobaliExtraSpeciesDetails);
         } else {
+            SpeciesHelper.applySpecies(species);
             Navigation.navigateToPage(PageIdentity.SpeciesDetails);
         }
     }

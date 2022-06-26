@@ -41,8 +41,8 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
                     console.log(f.name);
                 }
 
-                return t.isAvailableForServiceYear() ? (
-                    <div key={ti} style={{ padding: "2px" }}>{t.name}</div>
+                return t.talent.isAvailableForServiceYear() ? (
+                    <div key={ti} style={{ padding: "2px" }}>{t.description}</div>
                 ) : undefined;
             });
 

@@ -2,7 +2,7 @@
 import { hasSource } from '../state/contextFunctions';
 import {Era} from './eras';
 import {Source} from './sources';
-import {TalentsHelper, TalentModel} from './talents';
+import {TalentsHelper, TalentModel, TalentViewModel, TalentSelection} from './talents';
 
 export enum Spaceframe {
     Akira,
@@ -44,6 +44,11 @@ export enum Spaceframe {
     Hiawatha,
 
 
+    // Section 31
+    StealthShip,
+    Nimrod,
+    Shiva,
+
 
     D5,
     Raptor,
@@ -61,7 +66,22 @@ export enum Spaceframe {
     ParTok,
     Toron,
     VorCha,
-    NeghVar
+    NeghVar,
+
+
+    // Discovery
+    DiscoBirdOfPrey,
+    Qugh,
+    Daspu,
+    Qoj,
+    Batlh,
+    Chargh,
+    NaQjej,
+    Elth,
+    BortasBir,
+    Sech,
+    SarcophagusShip,
+
 }
 
 export enum MissionPod {
@@ -70,7 +90,9 @@ export enum MissionPod {
     Weapons
 }
 
+
 class SpaceframeModel {
+    id: Spaceframe;
     type: CharacterType;
     name: string;
     serviceYear: number;
@@ -80,11 +102,13 @@ class SpaceframeModel {
     departments: number[];
     scale: number;
     attacks: string[];
-    talents: TalentModel[];
+    talents: TalentSelection[];
     additionalTraits: string[];
     maxServiceYear: number;
 
-    constructor(type: CharacterType, name: string, serviceYear: number, eras: Era[], source: Source, systems: number[], departments: number[], scale: number, attacks: string[], talents: TalentModel[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999) {
+    constructor(id: Spaceframe, type: CharacterType, name: string, serviceYear: number, eras: Era[], source: Source, systems: number[], departments: number[], 
+        scale: number, attacks: string[], talents: TalentSelection[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999) {
+        this.id = id;
         this.type = type;
         this.name = name;
         this.serviceYear = serviceYear;
@@ -105,8 +129,9 @@ export class SpaceframeViewModel extends SpaceframeModel {
     isMissionPodAvailable: boolean;
     isCustom: boolean;
 
-    constructor(type: CharacterType, name: string, serviceYear: number, eras: Era[], source: Source, systems: number[], departments: number[], scale: number, attacks: string[], talents: TalentModel[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999, id?: Spaceframe) {
-        super(type, name, serviceYear, eras, source, systems, departments, scale, attacks, talents, additionalTraits, maxServiceYear);
+    constructor(type: CharacterType, name: string, serviceYear: number, eras: Era[], source: Source, systems: number[], departments: number[], scale: number, 
+        attacks: string[], talents: TalentSelection[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999, id?: Spaceframe) {
+        super(id, type, name, serviceYear, eras, source, systems, departments, scale, attacks, talents, additionalTraits, maxServiceYear);
         this.id = id;
         this.isCustom = (id === undefined || source === Source.None);
         this.isMissionPodAvailable = (id === Spaceframe.Nebula);
@@ -116,9 +141,9 @@ export class SpaceframeViewModel extends SpaceframeModel {
         return new SpaceframeViewModel(type, "", serviceYear, eras, Source.None, [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [], type === CharacterType.KlingonWarrior ? [ "Klingon Starship"] : [ "Federation Starship" ]);
     }
 
-    static from(id: Spaceframe, base: SpaceframeModel) {
+    static from(base: SpaceframeModel) {
         return new SpaceframeViewModel(base.type, base.name, base.serviceYear, base.eras, base.source, base.systems, base.departments, base.scale, 
-            base.attacks, base.talents, base.additionalTraits, base.maxServiceYear, id);
+            base.attacks, base.talents, base.additionalTraits, base.maxServiceYear, base.id);
     }
 }
 
@@ -143,6 +168,7 @@ export class MissionPodViewModel {
 class Spaceframes {
     private _frames: { [id: number]: SpaceframeModel } = {
         [Spaceframe.Akira]: new SpaceframeModel(
+            Spaceframe.Akira,
             CharacterType.Starfleet,
             "Akira Class",
             2368,
@@ -157,13 +183,14 @@ class Spaceframes {
                 "Tractor Beam (Strength 4)"
             ],
             [
-                TalentsHelper.getTalent("Ablative Armor"),
-                TalentsHelper.getTalent("Extensive Shuttlebays"),
-                TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher")
+                TalentSelection.selectTalent("Ablative Armor"),
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("Rapid-Fire Torpedo Launcher")
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Constellation]: new SpaceframeModel(
+            Spaceframe.Constellation,
             CharacterType.Starfleet,
             "Constellation Class",
             2285,
@@ -178,12 +205,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Improved Warp Drive"),
-                TalentsHelper.getTalent("Extensive Shuttlebays")
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Extensive Shuttlebays")
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Constitution]: new SpaceframeModel(
+            Spaceframe.Constitution,
             CharacterType.Starfleet,
             "Constitution Class",
             2243,
@@ -198,12 +226,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Rugged Design"),
-                TalentsHelper.getTalent("Modular Laboratories")
+                TalentSelection.selectTalent("Rugged Design"),
+                TalentSelection.selectTalent("Modular Laboratories")
             ],
             [ "Federation Starship" ],
             2290),
         [Spaceframe.Defiant]: new SpaceframeModel(
+            Spaceframe.Defiant,
             CharacterType.Starfleet,
             "Defiant Class",
             2371,
@@ -220,12 +249,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("Ablative Armor"),
-                TalentsHelper.getTalent("Quantum Torpedoes")
+                TalentSelection.selectTalent("Ablative Armor"),
+                TalentSelection.selectTalent("Quantum Torpedoes")
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Excelsior]: new SpaceframeModel(
+            Spaceframe.Excelsior,
             CharacterType.Starfleet,
             "Excelsior Class",
             2285,
@@ -240,12 +270,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 4)"
             ],
             [
-                TalentsHelper.getTalent("Improved Impulse Drive"),
-                TalentsHelper.getTalent("Secondary Reactors")
+                TalentSelection.selectTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Secondary Reactors")
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Galaxy]: new SpaceframeModel(
+            Spaceframe.Galaxy,
             CharacterType.Starfleet,
             "Galaxy Class",
             2359,
@@ -260,11 +291,12 @@ class Spaceframes {
                 "Tractor Beam (Strength 5)"
             ],
             [
-                TalentsHelper.getTalent("Saucer Separation"),
-                TalentsHelper.getTalent("Modular Laboratories"),
-                TalentsHelper.getTalent("Redundant Systems")
+                TalentSelection.selectTalent("Saucer Separation"),
+                TalentSelection.selectTalent("Modular Laboratories"),
+                TalentSelection.selectTalent("Redundant Systems")
             ]),
         [Spaceframe.Intrepid]: new SpaceframeModel(
+            Spaceframe.Intrepid,
             CharacterType.Starfleet,
             "Intrepid Class",
             2371,
@@ -279,13 +311,14 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Improved Warp Drive"),
-                TalentsHelper.getTalent("Advanced Sensor Suites"),
-                TalentsHelper.getTalent("Emergency Medical Hologram")
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Advanced Sensor Suites"),
+                TalentSelection.selectTalent("Emergency Medical Hologram")
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Miranda]: new SpaceframeModel(
+            Spaceframe.Miranda,
             CharacterType.Starfleet,
             "Miranda Class",
             2274,
@@ -300,11 +333,12 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Extensive Shuttlebays")
+                TalentSelection.selectTalent("Extensive Shuttlebays")
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Nova]: new SpaceframeModel(
+            Spaceframe.Nova,
             CharacterType.Starfleet,
             "Nova Class",
             2368,
@@ -319,11 +353,12 @@ class Spaceframes {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("Advanced Sensor Suites")
+                TalentSelection.selectTalent("Advanced Sensor Suites")
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Daedalus]: new SpaceframeModel(
+            Spaceframe.Daedalus,
             CharacterType.Starfleet,
             "Daedalus Class",
             2140,
@@ -338,13 +373,14 @@ class Spaceframes {
                 "Grappler Cable (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("Polarized Hull Plating"),
-                TalentsHelper.getTalent("Grappler Cables"),
-                TalentsHelper.getTalent("Rugged Design"),
+                TalentSelection.selectTalent("Polarized Hull Plating"),
+                TalentSelection.selectTalent("Grappler Cables"),
+                TalentSelection.selectTalent("Rugged Design"),
             ],
             [ "Federation Starship" ],
             2269),
         [Spaceframe.NX]: new SpaceframeModel(
+            Spaceframe.NX,
             CharacterType.Starfleet,
             "NX Class",
             2151,
@@ -359,12 +395,13 @@ class Spaceframes {
                 "Grappler Cable (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("Polarized Hull Plating"),
-                TalentsHelper.getTalent("Grappler Cables"),
+                TalentSelection.selectTalent("Polarized Hull Plating"),
+                TalentSelection.selectTalent("Grappler Cables"),
             ],
             [ "Federation Starship" ],
             2170),
         [Spaceframe.Hermes]: new SpaceframeModel(
+            Spaceframe.Hermes,
             CharacterType.Starfleet,
             "Hermes Class",
             2242,
@@ -378,13 +415,14 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Improved Reaction Control System"),
-                TalentsHelper.getTalent("Independent Phaser Supply"),
-                TalentsHelper.getTalent("Rugged Design"),
+                TalentSelection.selectTalent("Improved Reaction Control System"),
+                TalentSelection.selectTalent("Independent Phaser Supply"),
+                TalentSelection.selectTalent("Rugged Design"),
             ],
             [ "Federation Starship" ],
             2290),
         [Spaceframe.Oberth]: new SpaceframeModel(
+            Spaceframe.Oberth,
             CharacterType.Starfleet,
             "Oberth Class",
             2269,
@@ -398,12 +436,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("High Resolution Sensors"),
-                TalentsHelper.getTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Sydney]: new SpaceframeModel(
+            Spaceframe.Sydney,
             CharacterType.Starfleet,
             "Sydney Class",
             2279,
@@ -416,12 +455,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Improved Impulse Drive"),
-                TalentsHelper.getTalent("Rugged Design"),
+                TalentSelection.selectTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Rugged Design"),
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Centaur]: new SpaceframeModel(
+            Spaceframe.Centaur,
             CharacterType.Starfleet,
             "Centaur Class",
             2285,
@@ -436,12 +476,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Improved Impulse Drive"),
-                TalentsHelper.getTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Ambassador]: new SpaceframeModel(
+            Spaceframe.Ambassador,
             CharacterType.Starfleet,
             "Ambassador Class",
             2335,
@@ -456,13 +497,14 @@ class Spaceframes {
                 "Tractor Beam (Strength 4)"
             ],
             [
-                TalentsHelper.getTalent("High Resolution Sensors"),
-                TalentsHelper.getTalent("Improved Impulse Drive"),
-                TalentsHelper.getTalent("Saucer Separation"),
+                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Saucer Separation"),
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Nebula]: new SpaceframeModel(
+            Spaceframe.Nebula,
             CharacterType.Starfleet,
             "Nebula Class",
             2361,
@@ -477,11 +519,12 @@ class Spaceframes {
                 "Tractor Beam (Strength 4)"
             ],
             [
-                TalentsHelper.getTalent("Saucer Separation"),
+                TalentSelection.selectTalent("Saucer Separation"),
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.NewOrleans]: new SpaceframeModel(
+            Spaceframe.NewOrleans,
             CharacterType.Starfleet,
             "New Orleans Class",
             2364,
@@ -496,12 +539,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("High Resolution Sensors"),
-                TalentsHelper.getTalent("Modular Laboratories"),
+                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("Modular Laboratories"),
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Olympic]: new SpaceframeModel(
+            Spaceframe.Olympic,
             CharacterType.Starfleet,
             "Olympic Class",
             2368,
@@ -515,13 +559,14 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Advanced Sickbay"),
-                TalentsHelper.getTalent("Modular Laboratories"),
-                TalentsHelper.getTalent("Dedicated Personnel (Medicine)"),
+                TalentSelection.selectTalent("Advanced Sickbay"),
+                TalentSelection.selectTalent("Modular Laboratories"),
+                TalentSelection.selectTalent("Dedicated Personnel (Medicine)"),
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Steamrunner]: new SpaceframeModel(
+            Spaceframe.Steamrunner,
             CharacterType.Starfleet,
             "Steamrunner Class",
             2370,
@@ -536,12 +581,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Advanced Sensor Suites"),
-                TalentsHelper.getTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Advanced Sensor Suites"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Norway]: new SpaceframeModel(
+            Spaceframe.Norway,
             CharacterType.Starfleet,
             "Norway Class",
             2371,
@@ -556,12 +602,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Advanced Sickbay"),
-                TalentsHelper.getTalent("Emergency Medical Hologram"),
+                TalentSelection.selectTalent("Advanced Sickbay"),
+                TalentSelection.selectTalent("Emergency Medical Hologram"),
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Saber]: new SpaceframeModel(
+            Spaceframe.Saber,
             CharacterType.Starfleet,
             "Saber",
             2371,
@@ -576,12 +623,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 4)"
             ],
             [
-                TalentsHelper.getTalent("High-Power Tractor Beam"),
-                TalentsHelper.getTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("High-Power Tractor Beam"),
+                TalentSelection.selectTalent("Improved Impulse Drive"),
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Sovereign]: new SpaceframeModel(
+            Spaceframe.Sovereign,
             CharacterType.Starfleet,
             "Sovereign Class",
             2371,
@@ -597,14 +645,15 @@ class Spaceframes {
                 "Tractor Beam (Strength 5)"
             ],
             [
-                TalentsHelper.getTalent("Command Ship"),
-                TalentsHelper.getTalent("Emergency Medical Hologram"),
-                TalentsHelper.getTalent("Improved Warp Drive"),
-                TalentsHelper.getTalent("Quantum Torpedoes"),
+                TalentSelection.selectTalent("Command Ship"),
+                TalentSelection.selectTalent("Emergency Medical Hologram"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Quantum Torpedoes"),
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Luna]: new SpaceframeModel(
+            Spaceframe.Luna,
             CharacterType.Starfleet,
             "Luna Class",
             2372,
@@ -619,13 +668,14 @@ class Spaceframes {
                 "Tractor Beam (Strength 5)"
             ],
             [
-                TalentsHelper.getTalent("Advanced Research Facilities"),
-                TalentsHelper.getTalent("Advanced Sensor Suites"),
-                TalentsHelper.getTalent("Emergency Medical Hologram"),
+                TalentSelection.selectTalent("Advanced Research Facilities"),
+                TalentSelection.selectTalent("Advanced Sensor Suites"),
+                TalentSelection.selectTalent("Emergency Medical Hologram"),
             ],
             [ "Federation Starship" ],
             99999),
         [Spaceframe.Archer]: new SpaceframeModel(
+            Spaceframe.Archer,
             CharacterType.Starfleet,
             "Archer Class",
             2258,
@@ -640,12 +690,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("Improved Impulse Drive"),
-                TalentsHelper.getTalent("Improved Reaction Control System")
+                TalentSelection.selectTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Improved Reaction Control System")
             ],
             [ "Federation Starship" ],
             2290),
         [Spaceframe.Walker]: new SpaceframeModel(
+            Spaceframe.Walker,
             CharacterType.Starfleet,
             "Walker Class",
             2195,
@@ -661,11 +712,12 @@ class Spaceframes {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("Rugged Design")
+                TalentSelection.selectTalent("Rugged Design")
             ],
             [ "Federation Starship" ],
             2290),
         [Spaceframe.Shepard]: new SpaceframeModel(
+            Spaceframe.Shepard,
             CharacterType.Starfleet,
             "Shepard Class",
             2195,
@@ -680,12 +732,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("Improved Impulse Drive"),
-                TalentsHelper.getTalent("Rugged Design")
+                TalentSelection.selectTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Rugged Design")
             ],
             [ "Federation Starship" ],
             2290),
         [Spaceframe.Magee]: new SpaceframeModel(
+            Spaceframe.Magee,
             CharacterType.Starfleet,
             "Magee Class",
             2198,
@@ -699,12 +752,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("Advanced Research Facilities"),
-                TalentsHelper.getTalent("Specialized Crew (Science)")
+                TalentSelection.selectTalent("Advanced Research Facilities"),
+                TalentSelection.selectTalent("Specialized Crew (Science)")
             ],
             [ "Federation Starship" ],
             2290),
         [Spaceframe.Cardenas]: new SpaceframeModel(
+            Spaceframe.Cardenas,
             CharacterType.Starfleet,
             "Cardenas Class",
             2202,
@@ -720,12 +774,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Improved Warp Drive"),
-                TalentsHelper.getTalent("Redundant Systems [Warp Enginges]")
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Redundant Systems [Warp Enginges]")
             ],
             [ "Federation Starship" ],
             2290),
         [Spaceframe.Hoover]: new SpaceframeModel(
+            Spaceframe.Hoover,
             CharacterType.Starfleet,
             "Hoover Class",
             2209,
@@ -740,11 +795,12 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Extensive Shuttlebays")
+                TalentSelection.selectTalent("Extensive Shuttlebays")
             ],
             [ "Federation Starship" ],
             2290),
         [Spaceframe.Malachowski]: new SpaceframeModel(
+            Spaceframe.Malachowski,
             CharacterType.Starfleet,
             "Malachowski Class",
             2210,
@@ -759,12 +815,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("Fast Targeting Systems"),
-                TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher"),
+                TalentSelection.selectTalent("Fast Targeting Systems"),
+                TalentSelection.selectTalent("Rapid-Fire Torpedo Launcher"),
             ],
             [ "Federation Starship" ],
             2290),
         [Spaceframe.Engle]: new SpaceframeModel(
+            Spaceframe.Engle,
             CharacterType.Starfleet,
             "Engle Class",
             2224,
@@ -779,12 +836,13 @@ class Spaceframes {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("Improved Warp Drive"),
-                TalentsHelper.getTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Improved Impulse Drive"),
             ],
             [ "Federation Starship" ],
             2290),
         [Spaceframe.Nimitz]: new SpaceframeModel(
+            Spaceframe.Nimitz,
             CharacterType.Starfleet,
             "Nimitz Class",
             2235,
@@ -800,13 +858,14 @@ class Spaceframes {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("Improved Warp Drive"),
-                TalentsHelper.getTalent("Command Ship"),
-                TalentsHelper.getTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Command Ship"),
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
             ],
             [ "Federation Starship" ],
             2290),
         [Spaceframe.Crossfield]: new SpaceframeModel(
+            Spaceframe.Crossfield,
             CharacterType.Starfleet,
             "Crossfield Class",
             2255,
@@ -821,13 +880,14 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Improved Warp Drive"),
-                TalentsHelper.getTalent("Command Ship"),
-                TalentsHelper.getTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Command Ship"),
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
             ],
             [ "Federation Starship" ],
             2290),
         [Spaceframe.Hiawatha]: new SpaceframeModel(
+            Spaceframe.Hiawatha,
             CharacterType.Starfleet,
             "Hiawatha Class",
             2235,
@@ -841,16 +901,81 @@ class Spaceframes {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("Advanced Sickbay"),
-                TalentsHelper.getTalent("Redundant Systems [Life Support]"),
+                TalentSelection.selectTalent("Advanced Sickbay"),
+                TalentSelection.selectTalent("Redundant Systems [Life Support]"),
             ],
             [ "Federation Starship" ],
             2290),
-
+        [Spaceframe.StealthShip]: new SpaceframeModel(
+            Spaceframe.StealthShip,
+            CharacterType.Starfleet,
+            "Stealth Ship",
+            2250,
+            [],
+            Source.DiscoveryCampaign,
+            [8, 8, 6, 9, 6, 6],
+            [0, 0, 0, 0, 3, 0],
+            3,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Electronic Warfare Systems"),
+                TalentSelection.selectTalent("Stealth Systems"),
+            ],
+            [ "Federation Starship", "Section 31 Starship" ],
+            2350),
+        [Spaceframe.Nimrod]: new SpaceframeModel(
+            Spaceframe.Nimrod,
+            CharacterType.Starfleet,
+            "Nimrod",
+            2250,
+            [],
+            Source.DiscoveryCampaign,
+            [7, 7, 8, 7, 7, 8],
+            [0, 0, 1, 1, 1, 0],
+            3,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Electronic Warfare Systems"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+            ],
+            [ "Federation Starship", "Section 31 Starship" ],
+            2299),
+        [Spaceframe.Shiva]: new SpaceframeModel(
+            Spaceframe.Shiva,
+            CharacterType.Starfleet,
+            "Shiva",
+            2253,
+            [],
+            Source.DiscoveryCampaign,
+            [9, 9, 7, 7, 6, 7],
+            [1, 1, 0, 1, 0, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Command Ship"),
+                TalentSelection.selectTalent("Electronic Warfare Systems"),
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+            ],
+            [ "Federation Starship", "Section 31 Starship" ],
+            2299),
+            
 
 
         // Klingon Spaceframes
         [Spaceframe.D5]: new SpaceframeModel(
+            Spaceframe.D5,
             CharacterType.KlingonWarrior,
             "D5-Class Battle Cruiser",
             2146,
@@ -864,14 +989,15 @@ class Spaceframes {
                 "Photon Torpedoes"
             ],
             [
-                TalentsHelper.getTalent("Improved Hull Integrity"),
-                TalentsHelper.getTalent("Improved Warp Drive")
+                TalentSelection.selectTalent("Improved Hull Integrity"),
+                TalentSelection.selectTalent("Improved Warp Drive")
             ],
             [
                 "Klingon Starship"
             ],
             2279),
         [Spaceframe.Raptor]: new SpaceframeModel(
+            Spaceframe.Raptor,
             CharacterType.KlingonWarrior,
             "Raptor-class Scout",
             2146,
@@ -885,8 +1011,8 @@ class Spaceframes {
                 "Photon Torpedoes"
             ],
             [
-                TalentsHelper.getTalent("Ablative Armor"),
-                TalentsHelper.getTalent("Improved Reaction Control System")
+                TalentSelection.selectTalent("Ablative Armor"),
+                TalentSelection.selectTalent("Improved Reaction Control System")
             ],
             [
                 "Klingon Starship",
@@ -894,6 +1020,7 @@ class Spaceframes {
             ],
             2270),
         [Spaceframe.VonTalk]: new SpaceframeModel(
+            Spaceframe.VonTalk,
             CharacterType.KlingonWarrior,
             "Vo'n'Talk",
             2149,
@@ -908,8 +1035,8 @@ class Spaceframes {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("Improved Reaction Control System"),
-                TalentsHelper.getTalent("Redundant Systems [Warp Drive]"),
+                TalentSelection.selectTalent("Improved Reaction Control System"),
+                TalentSelection.selectTalent("Redundant Systems [Warp Drive]"),
             ],
             [
                 "Klingon Starship",
@@ -917,6 +1044,7 @@ class Spaceframes {
             ],
             2210),
         [Spaceframe.KToch]: new SpaceframeModel(
+            Spaceframe.KToch,
             CharacterType.KlingonWarrior,
             "K'Toch Scout",
             2128,
@@ -929,13 +1057,14 @@ class Spaceframes {
                 "Disruptor Cannons"
             ],
             [
-                TalentsHelper.getTalent("Rugged Design")
+                TalentSelection.selectTalent("Rugged Design")
             ],
             [
                 "Klingon Starship"
             ],
             2310),
         [Spaceframe.TuYuQ]: new SpaceframeModel(
+            Spaceframe.TuYuQ,
             CharacterType.KlingonWarrior,
             "Tu'YuQ Exploratory Ship",
             2176,
@@ -950,8 +1079,8 @@ class Spaceframes {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("High Resolution Sensors"),
-                TalentsHelper.getTalent("Improved Power Systems")
+                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("Improved Power Systems")
             ],
             [
                 "Klingon Starship",
@@ -959,6 +1088,7 @@ class Spaceframes {
             ],
             2299),
         [Spaceframe.D7]: new SpaceframeModel(
+            Spaceframe.D7,
             CharacterType.KlingonWarrior,
             "D7-Class Battle Cruiser",
             2250,
@@ -974,8 +1104,8 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Cloaking Device"),
-                TalentsHelper.getTalent("Rugged Design")
+                TalentSelection.selectTalent("Cloaking Device"),
+                TalentSelection.selectTalent("Rugged Design")
             ],
             [
                 "Klingon Starship",
@@ -983,6 +1113,7 @@ class Spaceframes {
             ],
             2350),
         [Spaceframe.Brel]: new SpaceframeModel(
+            Spaceframe.Brel,
             CharacterType.KlingonWarrior,
             "B'rel-Class Bird-of-Prey",
             2280,
@@ -997,8 +1128,8 @@ class Spaceframes {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentsHelper.getTalent("Cloaking Device"),
-                TalentsHelper.getTalent("Fast Targeting Systems")
+                TalentSelection.selectTalent("Cloaking Device"),
+                TalentSelection.selectTalent("Fast Targeting Systems")
             ],
             [
                 "Klingon Starship",
@@ -1006,6 +1137,7 @@ class Spaceframes {
             ],
             99999),
         [Spaceframe.PachNom]: new SpaceframeModel(
+            Spaceframe.PachNom,
             CharacterType.KlingonWarrior,
             "Pach'Nom Multirole Escort",
             2297,
@@ -1020,14 +1152,15 @@ class Spaceframes {
                 "Tractor Beam (Strength 4)"
             ],
             [
-                TalentsHelper.getTalent("Advanced Medical Ward"),
-                TalentsHelper.getTalent("Extensive Shuttlebays"),
-                TalentsHelper.getTalent("Redundant Systems [Engines]")
+                TalentSelection.selectTalent("Advanced Medical Ward"),
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("Redundant Systems [Engines]")
             ],
             [
                 "Klingon Starship"
             ]),
         [Spaceframe.QoToch]: new SpaceframeModel(
+            Spaceframe.QoToch,
             CharacterType.KlingonWarrior,
             "Qo'Toch Heavy Fighter",
             2298,
@@ -1040,12 +1173,13 @@ class Spaceframes {
                 "Disruptor Cannons"
             ],
             [
-                TalentsHelper.getTalent("Improved Hull Integrity")
+                TalentSelection.selectTalent("Improved Hull Integrity")
             ],
             [
                 "Klingon Starship"
             ]),
         [Spaceframe.IwChaPar]: new SpaceframeModel(
+            Spaceframe.IwChaPar,
             CharacterType.KlingonWarrior,
             "Iw'Cha'Par Heavy Explorer",
             2295,
@@ -1060,14 +1194,15 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("High Resolution Sensors"),
-                TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher")
+                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("Rapid-Fire Torpedo Launcher")
             ],
             [
                 "Klingon Starship",
                 "Bird-of-Prey"
             ]),
         [Spaceframe.D12]: new SpaceframeModel(
+            Spaceframe.D12,
             CharacterType.KlingonWarrior,
             "D12-Class Bird-of-Prey",
             2315,
@@ -1083,9 +1218,9 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Backup EPS Conduits"),
-                TalentsHelper.getTalent("Cloaking Device"),
-                TalentsHelper.getTalent("Rugged Design")
+                TalentSelection.selectTalent("Backup EPS Conduits"),
+                TalentSelection.selectTalent("Cloaking Device"),
+                TalentSelection.selectTalent("Rugged Design")
             ],
             [ 
                 "Klingon Starship", 
@@ -1094,6 +1229,7 @@ class Spaceframes {
             ],
             99999),
         [Spaceframe.KlingonCivilianTransport]: new SpaceframeModel(
+            Spaceframe.KlingonCivilianTransport,
             CharacterType.KlingonWarrior,
             "Klingon Civilian Transport",
             2352,
@@ -1107,8 +1243,8 @@ class Spaceframes {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentsHelper.getTalent("Redundant Systems [Life Support / Structure]"),
-                TalentsHelper.getTalent("Rugged Design")
+                TalentSelection.selectTalent("Redundant Systems [Life Support / Structure]"),
+                TalentSelection.selectTalent("Rugged Design")
             ],
             [ 
                 "Klingon Starship", 
@@ -1116,6 +1252,7 @@ class Spaceframes {
                 "Targ-Pit"
             ]),
         [Spaceframe.KVort]: new SpaceframeModel(
+            Spaceframe.KVort,
             CharacterType.KlingonWarrior,
             "K'Vort-Class Bird-of-Prey",
             2349,
@@ -1131,9 +1268,9 @@ class Spaceframes {
                 "Tractor Beam (Strength 4)"
             ],
             [
-                TalentsHelper.getTalent("Cloaking Device"),
-                TalentsHelper.getTalent("Improved Impulse Drive"),
-                TalentsHelper.getTalent("Improved Reaction Control System")
+                TalentSelection.selectTalent("Cloaking Device"),
+                TalentSelection.selectTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Improved Reaction Control System")
             ],
             [ 
                 "Klingon Starship",
@@ -1141,6 +1278,7 @@ class Spaceframes {
             ],
             99999),
         [Spaceframe.ParTok]: new SpaceframeModel(
+            Spaceframe.ParTok,
             CharacterType.KlingonWarrior,
             "Par'Tok Transport",
             2356,
@@ -1154,9 +1292,9 @@ class Spaceframes {
                 "Tractor Beam (Strength 4)"
             ],
             [
-                TalentsHelper.getTalent("Modular Cargo Pods"),
-                TalentsHelper.getTalent("Extensive Shuttlebays"),
-                TalentsHelper.getTalent("Secondary Reactors")
+                TalentSelection.selectTalent("Modular Cargo Pods"),
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("Secondary Reactors")
             ],
             [ 
                 "Klingon Starship", 
@@ -1164,6 +1302,7 @@ class Spaceframes {
                 "Targ-Pit"
             ]),
         [Spaceframe.Toron]: new SpaceframeModel(
+            Spaceframe.Toron,
             CharacterType.KlingonWarrior,
             "Toron-Class Shuttlepod",
             2357,
@@ -1177,13 +1316,14 @@ class Spaceframes {
                 "Photon Torpedo"
             ],
             [
-                TalentsHelper.getTalent("Improved Reaction Control System")
+                TalentSelection.selectTalent("Improved Reaction Control System")
             ],
             [ 
                 "Klingon Ship", 
                 "Small Craft"
             ]),
         [Spaceframe.VorCha]: new SpaceframeModel(
+            Spaceframe.VorCha,
             CharacterType.KlingonWarrior,
             "Vor'Cha-Class Attack Cruiser",
             2367,
@@ -1199,15 +1339,16 @@ class Spaceframes {
                 "Tractor Beam (Strength 4)"
             ],
             [
-                TalentsHelper.getTalent("Cloaking Device"),
-                TalentsHelper.getTalent("Command Ship"),
-                TalentsHelper.getTalent("Improved Hull Integrity")
+                TalentSelection.selectTalent("Cloaking Device"),
+                TalentSelection.selectTalent("Command Ship"),
+                TalentSelection.selectTalent("Improved Hull Integrity")
             ],
             [
                 "Klingon Starship"
             ],
             99999),
         [Spaceframe.NeghVar]: new SpaceframeModel(
+            Spaceframe.NeghVar,
             CharacterType.KlingonWarrior,
             "Negh'Var-Class Warship",
             2372,
@@ -1223,16 +1364,255 @@ class Spaceframes {
                 "Tractor Beam (Strength 5)"
             ],
             [
-                TalentsHelper.getTalent("Cloaking Device"),
-                TalentsHelper.getTalent("Extensive Shuttlebays"),
-                TalentsHelper.getTalent("Fast Targeting Systems"),
-                TalentsHelper.getTalent("Secondary Reactors")
+                TalentSelection.selectTalent("Cloaking Device"),
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("Fast Targeting Systems"),
+                TalentSelection.selectTalent("Secondary Reactors")
             ],
             [
                 "Klingon Starship"
             ],
             99999),
-                                                                    
+        [Spaceframe.DiscoBirdOfPrey]: new SpaceframeModel(
+            Spaceframe.DiscoBirdOfPrey,
+            CharacterType.KlingonWarrior,
+            "Bird of Prey (Mid 23rd Century)",
+            2233,
+            [Era.OriginalSeries, Era.NextGeneration],
+            Source.DiscoveryCampaign,
+            [6, 6, 7, 8, 7, 8],
+            [0, 1, 2, 0, 0, 0],
+            3,
+            [
+                "Phaser Cannons",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Monopole Warp Field"),
+                TalentSelection.selectTalent("Stealth Systems")
+            ],
+            [
+                "Klingon Starship", "Bird-Of-Prey"
+            ],
+            2285),
+        [Spaceframe.Qugh]: new SpaceframeModel(
+            Spaceframe.Qugh,
+            CharacterType.KlingonWarrior,
+            "Qugh-class Destroyer",
+            2130,
+            [Era.OriginalSeries, Era.NextGeneration],
+            Source.DiscoveryCampaign,
+            [4, 4, 7, 5, 6, 6],
+            [0, 1, 1, 1, 0, 0],
+            3,
+            [
+                "Disruptor Cannons",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Secondary Reactors"),
+                TalentSelection.selectTalent("Stealth Systems")  // NOTE: pre-2245 ships are meant to have Extensive Shuttlebays
+            ],
+            [
+                "Klingon Starship", "Hur'q Starship"
+            ],
+            2260),
+        [Spaceframe.Daspu]: new SpaceframeModel(
+            Spaceframe.Daspu,
+            CharacterType.KlingonWarrior,
+            "Daspu'-class Escort",
+            2175,
+            [Era.OriginalSeries, Era.NextGeneration],
+            Source.DiscoveryCampaign,
+            [6, 5, 5, 6, 7, 7],
+            [0, 1, 1, 1, 0, 0],
+            3,
+            [
+                "Disruptor Banks",
+                "Phasor Cannons",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Monopole Warp Field"),
+                TalentSelection.selectTalent("Stealth Systems")
+            ],
+            [
+                "Klingon Starship", "Hur'q Starship", "Targ Pit"
+            ],
+            2269),
+        [Spaceframe.Qoj]: new SpaceframeModel(
+            Spaceframe.Qoj,
+            CharacterType.KlingonWarrior,
+            "Qoj-class Dreadnought",
+            2225,
+            [Era.OriginalSeries, Era.NextGeneration],
+            Source.DiscoveryCampaign,
+            [8, 6, 6, 7, 8, 8],
+            [1, 1, 1, 0, 0, 0],
+            5,
+            [
+                "Disruptor Banks",
+                "Phasor Cannons",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Command Ship"),
+                TalentSelection.selectTalent("Ablative Armor"),
+                TalentSelection.selectTalent("Stealth Systems")
+            ],
+            [
+                "Klingon Starship", "Hur'q Starship"
+            ],
+            2269),
+        [Spaceframe.Batlh]: new SpaceframeModel(
+            Spaceframe.Batlh,
+            CharacterType.KlingonWarrior,
+            "Batlh-class Escort",
+            2203,
+            [Era.OriginalSeries, Era.NextGeneration],
+            Source.DiscoveryCampaign,
+            [7, 7, 6, 7, 7, 8],
+            [0, 0, 1, 1, 1, 0],
+            4,
+            [
+                "Disruptor Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Ablative Armor"),
+                TalentSelection.selectTalent("Stealth Systems"),
+                TalentSelection.selectTalent("Fast Targeting Systems")
+            ],
+            [
+                "Klingon Starship"
+            ],
+            2268),
+        [Spaceframe.Chargh]: new SpaceframeModel(
+            Spaceframe.Chargh,
+            CharacterType.KlingonWarrior,
+            "Chargh / Jach-class Battlecruiser",
+            2203,
+            [Era.OriginalSeries, Era.NextGeneration],
+            Source.DiscoveryCampaign,
+            [6, 7, 7, 6, 6, 8],
+            [0, 0, 2, 1, 0, 0],
+            4,
+            [
+                "Disruptor Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Stealth Systems"),
+                TalentSelection.selectTalent("Redundant Systems [Computers]"),
+                TalentSelection.selectTalent("Fast Targeting Systems")
+            ],
+            [
+                "Klingon Starship"
+            ],
+            2269),
+        [Spaceframe.NaQjej]: new SpaceframeModel(
+            Spaceframe.NaQjej,
+            CharacterType.KlingonWarrior,
+            "Na'Qjej-class Cleave Ship",
+            2185,
+            [Era.OriginalSeries, Era.NextGeneration],
+            Source.DiscoveryCampaign,
+            [6, 5, 6, 6, 9, 7],
+            [0, 2, 0, 1, 0, 0],
+            4,
+            [
+                "Disruptor Banks",
+                "Disruptor Cannons"
+            ],
+            [
+                TalentSelection.selectTalent("Stealth Systems"),
+                TalentSelection.selectTalent("Ablative Armor"),
+                TalentSelection.selectTalent("Improved Hull Integrity", 2)
+            ],
+            [
+                "Klingon Starship", "Doomed"
+            ],
+            2269),
+        [Spaceframe.Elth]: new SpaceframeModel(
+            Spaceframe.Elth,
+            CharacterType.KlingonWarrior,
+            "'Elth-class Assault Ship",
+            2185,
+            [Era.OriginalSeries, Era.NextGeneration],
+            Source.DiscoveryCampaign,
+            [6, 6, 8, 7, 8, 6],
+            [1, 0, 1, 0, 0, 1],
+            4,
+            [
+                "Disruptor Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Advanced Medical Ward"),
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("Improved Hull Integrity")
+            ],
+            [
+                "Klingon Starship"
+            ],
+            2304),
+        [Spaceframe.BortasBir]: new SpaceframeModel(
+            Spaceframe.BortasBir,
+            CharacterType.KlingonWarrior,
+            "Bortas bir-class Battlecruiser",
+            2235,
+            [Era.OriginalSeries, Era.NextGeneration],
+            Source.DiscoveryCampaign,
+            [6, 7, 7, 7, 8, 8],
+            [0, 2, 1, 0, 0, 0],
+            4,
+            [
+                "Disruptor Cannons",
+                "Disruptor Banks",
+                "Phaser Banks",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Stealth Systems"),
+                TalentSelection.selectTalent("Fast Targeting Systems"),
+                TalentSelection.selectTalent("Improved Reaction Control System")
+            ],
+            [
+                "Klingon Starship", "Hur'q Starship"
+            ],
+            2258),
+        [Spaceframe.Sech]: new SpaceframeModel(
+            Spaceframe.Sech,
+            CharacterType.KlingonWarrior,
+            "Sech-class Fast Frigate",
+            2231,
+            [Era.OriginalSeries, Era.NextGeneration],
+            Source.DiscoveryCampaign,
+            [7, 7, 8, 7, 7, 7],
+            [0, 2, 1, 0, 0, 0],
+            4,
+            [
+                "Disruptor Cannons",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Stealth Systems"),
+                TalentSelection.selectTalent("Improved Warp Drive")
+            ],
+            [
+                "Klingon Starship"
+            ],
+            2269),
+                
+
         //[Spaceframe.]: new SpaceframeModel(
         //    CharacterType.Starfleet,
         //    "",
@@ -1283,16 +1663,13 @@ class Spaceframes {
 
     getSpaceframes(year: number, type: CharacterType, ignoreMaxServiceYear: boolean = false) {
         let frames: SpaceframeViewModel[] = [];
-        let n = 0;
-
         for (var frame in this._frames) {
             let f = this._frames[frame];
             if (f.serviceYear <= year && (f.maxServiceYear >= year || ignoreMaxServiceYear)) {
                 if (hasSource(f.source) && type === f.type) {
-                    frames.push(SpaceframeViewModel.from(n, f));
+                    frames.push(SpaceframeViewModel.from(f));
                 }
             }
-            n++;
         }
 
         return frames;
@@ -1300,14 +1677,14 @@ class Spaceframes {
 
     getSpaceframe(frame: Spaceframe) {
         const result = this._frames[frame];
-        return result ? SpaceframeViewModel.from(frame, result) : undefined;
+        return result ? SpaceframeViewModel.from(result) : undefined;
     }
 
     getSpaceframeByName(name: string) {
         let result = undefined;
         for (let id in this._frames) {
             if (Spaceframe[id] === name) {
-                result = SpaceframeViewModel.from(parseInt(id), this._frames[id]);
+                result = SpaceframeViewModel.from(this._frames[id]);
                 break;
             }
         }

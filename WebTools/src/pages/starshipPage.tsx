@@ -79,14 +79,14 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
         let selectedSpaceframeDetails = (<div className="p-0"><h5 className="text-selection">No Selection</h5></div>);
         if (this.starship.spaceframeModel) {
-            let talentList = this.starship.spaceframeModel.talents ? this.starship.spaceframeModel.talents.map(t => t.name).join(", ") : "None specified";
+            let talentList = this.starship.spaceframeModel.talents ? this.starship.spaceframeModel.talents.map(t => t.description).join(", ") : "None specified";
             if (!talentList) {
                 talentList = "None";
             }
             selectedSpaceframeDetails = (
                 <div className="p-0">
                     <h5 className="text-selection">{this.starship.spaceframeModel.name ? this.starship.spaceframeModel.name : "Unnamed Class"}</h5>
-                    <OutlineImage serviceYear={this.starship.serviceYear} spaceframe={this.starship.spaceframeModel} />
+                    <OutlineImage serviceYear={this.starship.serviceYear} spaceframe={this.starship.spaceframeModel} size="lg" />
                     <StarshipStats model={this.starship.spaceframeModel} type="spaceframe" />
                     <p><b className="text-selection">Talents:</b> {talentList}</p>
                 </div>
@@ -164,7 +164,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         let spaceframeTalents = [];
         let missionPodDetails = undefined;
         if (this.starship.spaceframeModel) {
-            spaceframeTalents = this.starship.spaceframeModel.talents.map(t => { return t.name });
+            spaceframeTalents = this.starship.spaceframeModel.talents.map(t => { return t.description });
             if (this.starship.spaceframeModel.isMissionPodAvailable) {
                 missionPodDetails = (<div className="panel">
                         <div className="header-small">Mission Pod</div>

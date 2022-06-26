@@ -11,7 +11,7 @@ import { Skill } from './skills';
 import { MissionPod, Spaceframe, SpaceframeHelper, SpaceframeViewModel } from './spaceframes';
 import { Species } from './speciesEnum';
 import { allSystems, System } from './systems';
-import { TalentsHelper } from './talents';
+import { TalentSelection, TalentsHelper } from './talents';
 
 class Marshaller {
 
@@ -89,7 +89,7 @@ class Marshaller {
                         "departments": this.toDepartmentObject(starship.spaceframeModel.departments),
                         "attacks": starship.spaceframeModel.attacks,
                         "scale": starship.spaceframeModel.scale,
-                        "talents": starship.spaceframeModel.talents ? starship.spaceframeModel.talents.map(t => t.name) : []
+                        "talents": starship.spaceframeModel.talents ? starship.spaceframeModel.talents.map(t => t.description) : []
                     }
                 }
             } else {
@@ -163,7 +163,7 @@ class Marshaller {
 
                 if (json.spaceframe.custom.talents) {
                     json.spaceframe.custom.talents.forEach(t => {
-                        let model = TalentsHelper.getTalent(t);
+                        let model = TalentSelection.selectTalent(t);
                         if (model) {
                             frame.talents.push(model);
                         }

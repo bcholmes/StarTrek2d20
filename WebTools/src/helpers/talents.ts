@@ -549,6 +549,39 @@ export class TalentModel {
     }
 }
 
+export class TalentSelection {
+    talent: TalentModel;
+    rank: number;
+    qualifier?: string;
+
+    constructor(talent: TalentModel, rank: number = 1, qualifier?: string) {
+        this.talent = talent;
+        this.rank = rank;
+        this.qualifier = qualifier;
+    }
+
+    get description() {
+        let result = this.talent.name;
+        if (this.qualifier) {
+            result += " [" + this.qualifier + "]";
+        }
+        if (this.rank > 1) {
+            result += " [x" + this.rank + "]";
+        }
+
+        return result;
+    }
+
+    public static selectTalent(talentName: string, rank: number = 1) {
+        const talent = TalentsHelper.getTalent(talentName);
+        if (talent) {
+            return new TalentSelection(talent, rank);
+        } else {
+            return null;
+        }
+    }
+}
+
 export class TalentViewModel {
     id: string;
     name: string;
@@ -2743,6 +2776,18 @@ export class Talents {
             "Expanded Connectivity",
             "Extensive user-interface reworking has been done throughout the ship. Due to this any Override actions taken, where an action is taken from a different station on the bridge, can be attempted with no penalty.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.TheseAreTheVoyages)],
+            1,
+            "Starship"),
+        new TalentModel(
+            "Stealth Systems",
+            "Prior to the treaty with the Romulan Star Empire and gaining access to advanced cloaking devices, the Klingon Empire used stealth systems based on reverse-engineered Hur’Q technology left behind on Qo’noS after their departure. These stealth systems include adaptive chromatic plates on the outer hull to blend into the background in the near infrared to ultraviolet wavelengths, thermal buffers and heat sinks to reduce the emissions in the far infrared, and microscale wavelength guides to absorb incoming sensor beams and prevent returns. This equipment functions in a similar way to the Cloaking Device found on page 207 of The Klingon Empire core rulebook, except it is more difficult to use, requiring a Control + Engineering task with a Difficulty of 3 rather than 2, and a Power requirement of 5 instead of 3.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.DiscoveryCampaign)],
+            1,
+            "Starship"),
+        new TalentModel(
+            "Monopole Warp Field",
+            "A monopole warp field results from either tightly packed warp coils or through what is referred to as “warp rings” such as early Vulcan superluminal propulsion. These fields provide excellent straight-line warp acceleration, allowing vessels to outrun or escape from pursuers with ease. If an enemy wishes to pursue a vessel with this talent, they must spend at least 2 more Power than the vessel with the talent, rather than only one more. If both vessels have this talent, treat it as though it were a normal warp pursuit. Additionally, a vessel with this talent does not need to spend Power to enter warp.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.DiscoveryCampaign)],
             1,
             "Starship"),
         ];

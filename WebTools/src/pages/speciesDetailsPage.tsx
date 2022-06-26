@@ -4,10 +4,7 @@ import { Navigation } from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import { SpeciesHelper, SpeciesModel } from '../helpers/species';
-import { AttributesHelper } from '../helpers/attributes';
 import { TalentsHelper, TalentViewModel, ToViewModel } from '../helpers/talents';
-import { AttributeView } from '../components/attribute';
-import { AttributeImprovementCollection, AttributeImprovementCollectionMode } from '../components/attributeImprovement';
 import { Button } from '../components/button';
 import { CheckBox } from '../components/checkBox';
 import { Dialog } from '../components/dialog';
@@ -22,53 +19,34 @@ import { hasSource } from '../state/contextFunctions';
 import InstructionText from '../components/instructionText';
 import { SmallHeader } from '../components/smallHeader';
 import { Header } from '../components/header';
+import { AttributeController, AttributeControllerFactory } from '../components/attributeController';
+import SpeciesAttributeComponent from '../components/speciesAttributeComponent';
 
 interface ISpeciesDetailsProperties extends IPageProperties {
     allowCrossSpeciesTalents: boolean;
     allowEsotericTalents: boolean;
 }
 
-class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, {}> {
+interface ISpeciesDetailsPageState {
+    attributeSelectionComplete: boolean;
+}
+
+class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpeciesDetailsPageState> {
     private _selectedTalent: TalentViewModel;
-    private _attributesDone: boolean;
+    attributesController: AttributeController;
+
+    constructor(props) {
+        super(props);
+        this.attributesController = AttributeControllerFactory.create(character, done => this.attributesDone(done));
+        this.state = {
+            attributeSelectionComplete: this.attributesController.selections.length === 3
+        };
+    }
 
     render() {
         let species = SpeciesHelper.getSpeciesByType(character.species);
         
-        let attributes = species.attributes.length > 3
-            ? <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Species} points={3} onDone={(done) => { this.attributesDone(done); }} />
-            : species.attributes.map((a, i) => {
-                return <AttributeView key={i} name={AttributesHelper.getAttributeName(a)} points={1} value={character.attributes[a].value} />;
-            });
-
         const selectDesc = species.attributes.length > 3 ? "(Select three)" : "";
-
-        if (species.id === Species.Ktarian) {
-            attributes =
-            (
-                <div>
-                    <AttributeView name={AttributesHelper.getAttributeName(species.attributes[0])} points={1} value={character.attributes[species.attributes[0]].value} />
-                    <AttributeView name={AttributesHelper.getAttributeName(species.attributes[1])} points={1} value={character.attributes[species.attributes[1]].value} />
-                </div>
-            );
-        } else if (species.id === Species.Kobali && character.originalSpecies != null) {
-            let originalSpecies = SpeciesHelper.getSpeciesByType(character.originalSpecies); 
-            attributes = originalSpecies.attributes.length > 3
-                ? <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Species} points={3} onDone={(done) => { this.attributesDone(done); }} />
-                : originalSpecies.attributes.map((a, i) => {
-                    return <AttributeView key={i} name={AttributesHelper.getAttributeName(a)} points={1} value={character.attributes[a].value} />;
-                });
-        }
-
-        const attributeSelection = species.id === Species.Ktarian
-            ? (
-                <div>
-                    <SmallHeader>(Select one)</SmallHeader>
-                    <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Ktarian} points={1} onDone={(done) => { this.attributesDone(done); }} />
-                </div>
-              )
-            : undefined;
-
         let mixed = character.mixedSpecies != null
             ? SpeciesHelper.getSpeciesByType(character.mixedSpecies)
             : null;
@@ -77,17 +55,20 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, {}> 
             ? `${species.name}/${mixed.name}`
             : species.name;
 
+
         return (
             <div className="page">
                 <div className="container ml-0">
                     <CharacterCreationBreadcrumbs />
                     <Header>{name}</Header>
                     <InstructionText text={species.description} />
+
+                    <SmallHeader>ATTRIBUTES {selectDesc}</SmallHeader>
                     <div className="panel">
-                        <SmallHeader>ATTRIBUTES {selectDesc}</SmallHeader>
-                        {attributes}
-                        {attributeSelection}
+                        <SpeciesAttributeComponent controller={this.attributesController} />
                     </div>
+
+                    <InstructionText text={this.attributesController.instructions} />
                     {this.renderTraitSection(species)}
                     {this.renderTalentsSection(species)}
                     <Button text="ENVIRONMENT" className="button-next" onClick={() => this.onNext()} />
@@ -104,8 +85,8 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, {}> 
         const mixedTrait = mixed != null
             ? (
                 <div>
-                    <div><b>{mixed.trait}</b></div>
-                    <div>{mixed.traitDescription}</div>
+                    <div className="text-white my-3"><b>{mixed.trait}</b></div>
+                    <div className="text-white">{mixed.traitDescription}</div>
                 </div>
             )
             : undefined;
@@ -164,7 +145,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, {}> 
     }
 
     private attributesDone(done: boolean) {
-        this._attributesDone = done;
+        this.setState((state) => ({...state, attributeSelectionComplete: done }))
     }
 
     private onTalentSelected(talent: TalentViewModel) {
@@ -172,12 +153,9 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, {}> 
     }
 
     private onNext() {
-        var species = SpeciesHelper.getSpeciesByType(character.species);
-        if (species.attributes.length > 3) {
-            if (!this._attributesDone) {
-                Dialog.show("You have not distributed all Attribute points.");
-                return;
-            }
+        if (!this.state.attributeSelectionComplete) {
+            Dialog.show("You have not distributed all Attribute points.");
+            return;
         }
 
         if (character.workflow.currentStep().options.talentSelection) {

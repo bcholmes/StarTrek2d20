@@ -14,28 +14,6 @@ class NameModel {
     suggestions: string;
 }
 
-abstract class SpeciesAttributeRule {
-
-    attributes: Attribute[];
-
-    constructor(attributes: Attribute[]) {
-        this.attributes = attributes;
-    }
-}
-
-class NoSpeciesAttributeRule extends SpeciesAttributeRule {
-    constructor() {
-        super([]);
-    }
-}
-
-class SelectOneOfSpeciesAttributeRule extends SpeciesAttributeRule {
-    constructor(...attributes: Attribute[]) {
-        super(attributes);
-    }
-}
-
-
 export class SpeciesModel {
     id: Species;
     name: string;
@@ -1178,7 +1156,7 @@ class _Species {
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.DeltaQuadrant],
             ["The Kobali are an interesting and unique species native to the Delta Quadrant. Unlike other species, the Kobali do not procreate or breed. Instead, the Kobali collect the corpses of other species and use an advanced from of genetic engineering to modify these deceased individuals, converting them into Kobali – and bringing them back to life. Culturally, Kobali are insular, though they are not openly hostile to those they encounter."],
-            [Attribute.Reason, Attribute.Fitness],
+            [],
             "Kobali",
             "The Kobali are humanoids with grayish skin and hairless heads. Their internal physiology is quite different from that of Humans. They also possess unusual tastes in food: for example, meals normally considered tasty by Humans and many humanoids are strongly disliked by Kobali. Similarly, Kobali physiology differs markedly from that of Humans. They have a six-lobed brain and a binary cardiovascular system. The effect of the genetic engineering is not reversable by Starfleet medical technology because there is not enough original DNA present after the alteration to do so.",
             "",
@@ -1189,7 +1167,7 @@ class _Species {
                 { type: "Feminine", suggestions: "Blan’tane, Rae’theo, Pana’liode, Teuna’kaha, Elen’ilash, Clelimilia, Fion’ustina, Sawsava" },
                 { type: "Gender-neutral", suggestions: "Flu’dari, Mik’tru, Ma’tee, Alda’nahi, Ora’cas, Jit’ade, Dra’ya, Ta’karhi, Aus’ashly" }
             ],
-            [], false),
+            [Attribute.Reason, Attribute.Fitness], false),
         [Species.Zahl]: new SpeciesModel(
             Species.Zahl,
             "Zahl",
@@ -1203,8 +1181,8 @@ class _Species {
             [TalentsHelper.getTalent("Thermal Regulation"), TalentsHelper.getTalent("Warm Welcome")],
             "Zahl children are always named after others. Mothers and fathers each contemplate someone of great influence in their lives and then name their child after them, with the child gaining two given names. As they grow into adulthood, the child then selects which name they will use as their common name. Due to this method, certain names often repeat within each Zahl family. These names are usually composed of two to three syllables and usually tend toward softer sounds, and it is very common for names to be shared among genders. A Zahl’s chosen common name is given first, then their second name, and finally the name of their family.",
             [
-                { type: "Masculine", suggestions: " Degna, Ando, Tromo, Deon, Vanil, Darab, Leom, Gree, Gesur, Hanar, Lelsh" },
-                { type: "Feminine", suggestions: " Persa, Halya, Dijah, Morna, Fani, Balwa, Fulna, Essa, Zare, Nalise, Pente" },
+                { type: "Masculine", suggestions: "Degna, Ando, Tromo, Deon, Vanil, Darab, Leom, Gree, Gesur, Hanar, Lelsh" },
+                { type: "Feminine", suggestions: "Persa, Halya, Dijah, Morna, Fani, Balwa, Fulna, Essa, Zare, Nalise, Pente" },
                 { type: "Gender-neutral", suggestions: "Luren, Kley, Jori, Gabel, Bhana, Cirde, Amaro" },
                 { type: "Family", suggestions: "Wikan, Tigh, Temb, Sami, Mahid, Remue, Dregor, Nacul, Sedet, Dalin, Ketpor" }
             ]),
@@ -1629,8 +1607,8 @@ class _Species {
         }
     }
 
-    applySpecies(species: Species, mixed?: Species) {
-        var s = this.getSpeciesByType(species);
+    applySpecies(species: Species, mixed?: Species, otherSpecies?: Species) {
+        let s = this.getSpeciesByType(species);
 
         if (this._species[species].attributes.length !== 6) {
             s.attributes.forEach(attr => {
@@ -1643,6 +1621,13 @@ class _Species {
         if (mixed != null) {
             s = this.getSpeciesByType(mixed);
             character.addTrait(s.trait);
+        }
+
+        if (otherSpecies != null) {
+            s = this.getSpeciesByType(otherSpecies);
+            if (species === Species.Kobali && s.attributes.length <= 3) {
+                s.attributes.forEach(a => character.attributes[a].value++)
+            }
         }
     }
 

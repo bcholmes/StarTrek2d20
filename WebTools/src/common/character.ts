@@ -93,6 +93,9 @@ class Step {
 }
 
 export class Character extends Construct {
+
+    public static ABSOLUTE_MAX_ATTRIBUTE = 12;
+
     private _attributeInitialValue: number = 7;
     private _steps: Step[];
 
@@ -332,7 +335,7 @@ export class Character extends Construct {
     }
 
     hasMaxedAttribute() {
-        const max = 12;
+        const max = Character.ABSOLUTE_MAX_ATTRIBUTE;
         return this.attributes.some(a => a.value === max);
     }
 
@@ -342,7 +345,7 @@ export class Character extends Construct {
     }
 
     update() {
-        let maxAttribute = 12;
+        let maxAttribute = Character.ABSOLUTE_MAX_ATTRIBUTE;
         let maxDiscipline = Character.maxDiscipline(this);
 
         if (this.isYoung() || this.type === CharacterType.Cadet) {
@@ -419,6 +422,16 @@ export class Character extends Construct {
         }
 
         return character;
+    }
+
+    public static maxAttribute(character) {
+        if (character.age.isChild()) {
+            return 10;
+        } else if (character.isYoung() || character.type === CharacterType.Cadet) {
+            return 11;
+        } else {
+            return Character.ABSOLUTE_MAX_ATTRIBUTE;
+        }
     }
 
     public static maxDiscipline(character) {

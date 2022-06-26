@@ -40,6 +40,7 @@ export class SpeciesExtraDetailsPage extends React.Component<ISpeciesExtraDetail
 
     selectOriginalSpecies(species: SpeciesModel) {
         character.originalSpecies = species.id;
+        SpeciesHelper.applySpecies(character.species, undefined, species.id);
         Navigation.navigateToPage(PageIdentity.SpeciesDetails);
     }
 }
