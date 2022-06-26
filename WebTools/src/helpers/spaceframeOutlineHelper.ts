@@ -1,4 +1,5 @@
 import { PDFDocument, RGB } from "pdf-lib";
+import { CharacterType } from "../common/characterType";
 import { Spaceframe, SpaceframeViewModel } from "./spaceframes";
 
 // Federation shapes
@@ -139,6 +140,8 @@ class SpaceframeOutlineHelper {
             const outline = this.getOutline(spaceframe, serviceYear);
             if (outline) {
                 this.drawOutline(pdf, outline, options);
+            } else if (spaceframe.type === CharacterType.KlingonWarrior) {
+                this.drawOutline(pdf, BIRD_OF_PREY_ELABORATE_CLASS, options);
             } else {
                 this.drawOutline(pdf, this.isPreTngEra(serviceYear) ? CONSTITUTION_TOS_ELABORATE_OUTLINE : GALAXY_CLASS_ELABORATE_OUTLINE, options);
             }

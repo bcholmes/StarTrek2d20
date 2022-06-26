@@ -48,6 +48,9 @@ export class PageFactory {
         this.factories[PageIdentity.CharacterType] = () => <CharacterTypePage/>;
         this.factories[PageIdentity.Species] = () => <SpeciesPage/>;
         this.factories[PageIdentity.KobaliExtraSpeciesDetails] = () => <SpeciesExtraDetailsPage species={Species.Kobali} />;
+        this.factories[PageIdentity.BorgSpeciesExtraDetails] = () => <SpeciesExtraDetailsPage species={Species.Borg} />;
+        this.factories[PageIdentity.LiberatedBorgSpeciesExtraDetails] = () => <SpeciesExtraDetailsPage species={Species.LiberatedBorg} />;
+        this.factories[PageIdentity.CyberneticallyEnhancedSpeciesExtraDetails] = () => <SpeciesExtraDetailsPage species={Species.CyberneticallyEnhanced} />;
         this.factories[PageIdentity.SpeciesDetails] = () => <SpeciesDetailsPage/>;
         this.factories[PageIdentity.Environment] = () => <EnvironmentPage/>;
         this.factories[PageIdentity.EnvironmentDetails] = () => <EnvironmentDetailsPage/>;

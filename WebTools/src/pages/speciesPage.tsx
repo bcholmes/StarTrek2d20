@@ -158,6 +158,12 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
         character.species = species;
         if (species === Species.Kobali) {
             Navigation.navigateToPage(PageIdentity.KobaliExtraSpeciesDetails);
+        } else if (species === Species.Borg) {
+            Navigation.navigateToPage(PageIdentity.BorgSpeciesExtraDetails);
+        } else if (species === Species.LiberatedBorg) {
+            Navigation.navigateToPage(PageIdentity.LiberatedBorgSpeciesExtraDetails);
+        } else if (species === Species.CyberneticallyEnhanced) {
+            Navigation.navigateToPage(PageIdentity.CyberneticallyEnhancedSpeciesExtraDetails);
         } else {
             SpeciesHelper.applySpecies(species);
             Navigation.navigateToPage(PageIdentity.SpeciesDetails);

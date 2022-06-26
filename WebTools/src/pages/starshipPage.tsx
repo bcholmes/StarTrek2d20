@@ -617,7 +617,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         let numTalents = 1; // the mission profile talent should always be counted
 
         if (this.starship.spaceframeModel !== undefined) {
-            numTalents += this.starship.spaceframeModel.talents.length;
+            this.starship.spaceframeModel.talents.forEach(t => numTalents += t.rank);
 
             if (this.starship.spaceframeModel.isMissionPodAvailable) {
                 numTalents += 2;

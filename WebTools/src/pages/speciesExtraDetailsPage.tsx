@@ -18,16 +18,11 @@ export class SpeciesExtraDetailsPage extends React.Component<ISpeciesExtraDetail
     render() {
         let species = SpeciesHelper.getSpeciesByType(this.props.species);
 
-        let text = this.props.species === Species.Kobali
-            ? ["The Kobali collect the corpses of other species and use an advanced from of genetic engineering to modify " 
-                + "these deceased individuals, converting them into Kobali.", "The species of the original body can be selected below."]
-            : ["Before being assimilated by the Borg, the Borg drone was a member of another species. That species can be selected below."]
-
         return (<div className="page">
             <div className="container ml-0">
                 <CharacterCreationBreadcrumbs />
                 <Header>{species.name + ' '} Original Species Type</Header>
-                <InstructionText text={text} />
+                <InstructionText text={this.getInstructions()} />
 
                 <div className="mt-4">
                     <SimpleSpeciesSelection onSelection={(species) => this.selectOriginalSpecies(species)} 
@@ -37,10 +32,25 @@ export class SpeciesExtraDetailsPage extends React.Component<ISpeciesExtraDetail
         </div>);
     }
 
+    getInstructions() {
+        if (this.props.species === Species.Kobali) {
+            return ["The Kobali collect the corpses of other species and use an advanced from of genetic engineering to modify " 
+                + "these deceased individuals, converting them into Kobali.", "The species of the original body can be selected below."];
+        } else if (this.props.species === Species.CyberneticallyEnhanced) {
+            return ["Before being cybernetically enhanced, this individual was a member of another species. Please select that species, below."];
+        } else {
+            return ["Before being assimilated by the Borg, the Borg drone was a member of another species. That species can be selected below."];
+        }
+    }
 
     selectOriginalSpecies(species: SpeciesModel) {
-        character.originalSpecies = species.id;
-        SpeciesHelper.applySpecies(character.species, undefined, species.id);
+        if (this.props.species === Species.CyberneticallyEnhanced) {
+            character.mixedSpecies = species.id;
+            SpeciesHelper.applySpecies(character.species, species.id);
+        } else {
+            character.originalSpecies = species.id;
+            SpeciesHelper.applySpecies(character.species, undefined, species.id);
+        }
         Navigation.navigateToPage(PageIdentity.SpeciesDetails);
     }
 }

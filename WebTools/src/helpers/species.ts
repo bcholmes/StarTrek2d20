@@ -1400,7 +1400,7 @@ class _Species {
             "Artificial but Still Alive.",
             [TalentsHelper.getTalent("Synthetic Physiology"), TalentsHelper.getTalent("Analytical Recall")],
             "Based on the name conventions of the original species.",
-            []),
+            [], [], false),
         
         //[Species.Romulan]: new SpeciesModel(
         //    "",

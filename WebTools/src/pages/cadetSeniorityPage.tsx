@@ -13,7 +13,7 @@ export class CadetSeniorityPage extends React.Component<{}, {}> {
             <div className="page">
                 <CharacterCreationBreadcrumbs />
 
-                <InstructionText text={character.workflow.currentStep().description} />
+                <InstructionText text={["Are you a junior or senior cadet?"]} />
                 <div className="button-container">
                     <Button className="button" text="Junior" onClick={() => { this.goToFinishingTouches(); } } />
                     <Button className="button" text="Senior" onClick={() => { this.goToPage(PageIdentity.CareerEvent1); } } />

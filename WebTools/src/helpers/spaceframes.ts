@@ -1525,7 +1525,7 @@ class Spaceframes {
             Source.DiscoveryCampaign,
             [6, 5, 6, 6, 9, 7],
             [0, 2, 0, 1, 0, 0],
-            4,
+            5,
             [
                 "Disruptor Banks",
                 "Disruptor Cannons"

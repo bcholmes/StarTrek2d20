@@ -14,6 +14,7 @@ import AgeHelper, { Age } from '../helpers/age';
 import { Weapon } from '../helpers/weapons';
 import { Construct } from './construct';
 import { Starship } from './starship';
+import { SpeciesHelper, SpeciesModel } from '../helpers/species';
 
 export abstract class CharacterTypeDetails {
 }
@@ -229,6 +230,24 @@ export class Character extends Construct {
         }
     }
 
+    get speciesName() {
+        if (this.species == null) {
+            return "";
+        } else {
+            let species = SpeciesHelper.getSpeciesByType(this.species);
+            let result = species.name;
+            if (this.mixedSpecies != null) {
+                let mixedSpecies = SpeciesHelper.getSpeciesByType(this.mixedSpecies);
+                result += (" / " + mixedSpecies.name);
+            }
+            if (this.originalSpecies != null) {
+                let orginalSpecies = SpeciesHelper.getSpeciesByType(this.originalSpecies);
+                result += (" (originally " + orginalSpecies.name + ")");
+            }
+            return result;
+        }
+    }
+
     get baseTraits() {
         let traits = [ ...this.traits ];
         if (character.hasTalent("Augmented Ability (Control)") 
@@ -405,6 +424,7 @@ export class Character extends Construct {
         character.role = this.role;
         character.species = this.species;
         character.mixedSpecies = this.mixedSpecies;
+        character.originalSpecies = this.originalSpecies;
         character.track = this.track;
         character.upbringing = this.upbringing;
         character.acceptedUpbringing = this.acceptedUpbringing;

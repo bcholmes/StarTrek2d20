@@ -575,7 +575,12 @@ export class TalentSelection {
     public static selectTalent(talentName: string, rank: number = 1) {
         const talent = TalentsHelper.getTalent(talentName);
         if (talent) {
-            return new TalentSelection(talent, rank);
+            if (talent.name !== talentName && talentName.indexOf('[') >= 0 && talentName.indexOf(']') >= 0) {
+                let qualifier = talentName.substring(talentName.indexOf('[') + 1, talentName.indexOf(']'));
+                return new TalentSelection(talent, rank, qualifier);
+            } else {
+                return new TalentSelection(talent, rank);
+            }
         } else {
             return null;
         }

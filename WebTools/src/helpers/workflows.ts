@@ -91,7 +91,7 @@ class Workflows {
         new WorkflowStep("Upbringing", ["The nature of a person’s family and their surroundings as they grew up can have a massive impact upon them, and, whether they accept this influence or rebelled against it, it will shape the rest of their lives.", "Either select or roll your Upbringing."]),
         new WorkflowStep("Starfleet Academy", ["The years spent at Starfleet Academy are some of the most memorable and definitive of an officer’s life, shaping the direction of their career going forwards. For those who pass the grueling entrance examinations, the Academy takes four years, covering a mixture of intense training, academic studies, and practical experiences. Much of this takes place within the main Starfleet Academy campus in San Francisco on Earth, but other campuses and annexes exist across the Federation, and a cadet may spend time at any of these before they graduate."], PageIdentity.StarfleetAcademy),
         new WorkflowStep("Career", ["The character is an officer-in-training, still studying at Starfleet Academy or a similar institution. They have great potential, and some skill, but lack the experience to put their abilities to the best use."], PageIdentity.CadetCareer),
-        new WorkflowStep("Cadet Seniority", ["Are you a junior or senior cadet?"], PageIdentity.CadetSeniority),
+        new WorkflowStep("Cadet Seniority", ["Select or roll a career event."], PageIdentity.CadetSeniority),
         new WorkflowStep("Finishing Touches", [], PageIdentity.AttributesAndDisciplines, new WorkflowStepOptions(false, false))
     ]);
 

@@ -440,7 +440,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
         this.fillField(form, 'Department', this.serializeAssignment(character));
         this.fillField(form, 'Purpose', this.serializeAssignment(character));
         this.fillField(form, 'Rank', character.rank);
-        this.fillField(form, 'Species', CharacterSerializer.serializeSpecies(character.species, character.mixedSpecies));
+        this.fillField(form, 'Species', character.speciesName);
         let traits = character.baseTraits;
         if (character.additionalTraits) {
             traits.push(character.additionalTraits);

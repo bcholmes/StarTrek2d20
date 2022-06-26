@@ -33,6 +33,9 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
         } else if (this.props.page === PageIdentity.Species
                 || this.props.page === PageIdentity.SpeciesDetails
                 || this.props.page === PageIdentity.KobaliExtraSpeciesDetails
+                || this.props.page === PageIdentity.LiberatedBorgSpeciesExtraDetails
+                || this.props.page === PageIdentity.BorgSpeciesExtraDetails
+                || this.props.page === PageIdentity.CyberneticallyEnhancedSpeciesExtraDetails
                 || this.props.page === PageIdentity.BorgImplants
                 || this.props.page === PageIdentity.Environment
                 || this.props.page === PageIdentity.EnvironmentDetails

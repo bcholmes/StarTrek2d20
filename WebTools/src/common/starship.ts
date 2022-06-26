@@ -61,7 +61,7 @@ export class Starship extends Construct {
         let talents = [];
 
         if (this.spaceframeModel) {
-            talents = [...this.spaceframeModel.talents.map(t => { return t.talent.name; })];
+            talents = [...this.spaceframeModel.talents.map(t => { return t.description; })];
         }
 
         if (this.profileTalent) {

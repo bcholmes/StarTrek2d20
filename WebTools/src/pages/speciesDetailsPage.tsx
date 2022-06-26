@@ -45,22 +45,13 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
 
     render() {
         let species = SpeciesHelper.getSpeciesByType(character.species);
-        
         const selectDesc = species.attributes.length > 3 ? "(Select three)" : "";
-        let mixed = character.mixedSpecies != null
-            ? SpeciesHelper.getSpeciesByType(character.mixedSpecies)
-            : null;
-
-        const name = mixed != null
-            ? `${species.name}/${mixed.name}`
-            : species.name;
-
 
         return (
             <div className="page">
                 <div className="container ml-0">
                     <CharacterCreationBreadcrumbs />
-                    <Header>{name}</Header>
+                    <Header>{character.speciesName}</Header>
                     <InstructionText text={species.description} />
 
                     <SmallHeader>ATTRIBUTES {selectDesc}</SmallHeader>
