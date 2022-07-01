@@ -214,15 +214,26 @@ export class LuminosityClassModel {
 }
 
 export class Sector {
+    public prefix: string;
     public id: string;
     public systems: StarSystem[] = [];
+    public simpleName: string;
 
     constructor(idPrefix: string) {
+        this.prefix = idPrefix;
         this.id = Sector.randomId(idPrefix);
+        this.simpleName = this.id;
     }
 
     private static randomId(prefix: string) {
         return prefix + "-" + createRandomValue();
+    }
+    get name() {
+        if (this.simpleName != null && this.simpleName.length > 0) {
+            return this.simpleName;
+        } else {
+            return this.id;
+        }
     }
 }
 
@@ -343,6 +354,8 @@ export class StarSystem {
     public world: World[] = [];
     public sectorCoordinates: SectorCoordinates;
     public phenomenon: NotableSpatialPhenomenonModel;
+    public rootName: string;
+    public friendlyName: string;
 
     constructor (star: Star) {
         this.star = star;
@@ -350,6 +363,26 @@ export class StarSystem {
 
     get isBinary() {
         return this.companionStar != null;
+    }
+
+    get name() {
+        if (this.friendlyName) {
+            return this.friendlyName;
+        } else {
+            return this.rootName + "-" + this.id;
+        }
+    }
+
+    clone() {
+        let result = new StarSystem(this.star);
+        result.id = this.id;
+        result.sectorCoordinates = this.sectorCoordinates;
+        result.world = this.world;
+        result.companionStar = this.companionStar;
+        result.phenomenon = this.phenomenon;
+        result.rootName = this.rootName;
+        result.friendlyName = this.friendlyName;
+        return result;
     }
 }
 

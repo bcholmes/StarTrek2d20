@@ -15,6 +15,8 @@ $primary: $lcars-purple;
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 
+@import '~bootstrap-icons/font/bootstrap-icons.scss';
+
 $breadcrumb-bg: #130e1a;
 $breadcrumb-border-radius: 1rem;
 $breadcrumb-padding-x: 1.5rem;
@@ -28,6 +30,7 @@ $breadcrumb-padding-x: 1.5rem;
 @import '~bootstrap/scss/breadcrumb';
 @import '~bootstrap/scss/grid';
 @import '~bootstrap/scss/type';
+@import '~bootstrap/scss/buttons';
 @import '~bootstrap/scss/utilities/display';
 @import '~bootstrap/scss/utilities/flex';
 @import '~bootstrap/scss/utilities/spacing';

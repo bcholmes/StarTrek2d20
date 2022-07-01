@@ -642,7 +642,8 @@ class SystemGeneration {
             start = id + 1;
 
             const idString = ("0000" + id).slice(-4);
-            s.id = sector.id + "-" + idString;
+            s.id = idString;
+            s.rootName = sector.simpleName;
         });
 
         store.dispatch(setSector(sector));

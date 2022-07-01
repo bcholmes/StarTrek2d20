@@ -4,9 +4,10 @@ import { navigateTo, Navigation } from "../../common/navigator";
 import { Header } from "../../components/header";
 import { IPageProperties } from "../../pages/iPageProperties";
 import { PageIdentity } from "../../pages/pageIdentity";
-import { setStar } from "../../state/starActions";
+import { setSectorName, setStar } from "../../state/starActions";
 import store from "../../state/store";
 import { Sector, StarSystem } from "../table/star";
+import { EditableHeader } from "../view/editableHeader";
 import LcarsDecorationLeftView from "../view/lcarsDecorationLeft";
 import LcarsDecorationRightView from "../view/lcarsDecorationRight";
 import SectorMapView from "../view/sectorMapView";
@@ -29,7 +30,7 @@ class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}
                     </ol>
                 </nav>
 
-                <Header>Sector • {this.props.sector.id}</Header>
+                <EditableHeader prefix="Sector" text={this.props.sector.name} onChange={(text) => this.setSectorName(text)}/>
                 <div className="d-flex justify-content-center">
                     <LcarsDecorationLeftView />
                     <SectorMapView sector={this.props.sector} onClick={(s) => this.showSystem(s) } />
@@ -58,6 +59,10 @@ class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}
     showSystem(system: StarSystem) {
         store.dispatch(setStar(system));
         Navigation.navigateToPage(PageIdentity.StarSystemDetails);
+    }
+
+    setSectorName(text: string) {
+        store.dispatch(setSectorName(text));
     }
 }
 

@@ -52,6 +52,26 @@
     }
 }
 
+.header-text {
+    .btn-link {
+        color: #505050;
+    }
+    .btn-link:hover {
+        color: black;
+    }
+}
+
+@media (pointer: fine) {
+    .visible-on-hover button.btn {
+        display: none;
+        transition: 1s;
+    }
+    .visible-on-hover:hover button.btn {
+        display: inline;
+        transition: 1s;
+    }
+}
+
 .checkbox-text {
     position: relative;
     bottom: 8px;

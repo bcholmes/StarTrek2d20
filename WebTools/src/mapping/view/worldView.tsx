@@ -1,9 +1,10 @@
 import React from "react";
 import { IPageProperties } from "../../pages/iPageProperties";
-import { World, WorldClass } from "../table/star";
+import { StarSystem, World, WorldClass } from "../table/star";
 
 interface IWorldViewProperties extends IPageProperties {
     world: World;
+    system: StarSystem;
 }
 
 class WorldView extends React.Component<IWorldViewProperties, {}> {
@@ -21,7 +22,7 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
                 <div className="col-md-4 view-field-label pb-2">Designation:</div>
                 <div className="col-md-8 text-white">
                     <div className="view-border-bottom pb-2">
-                        {this.props.world.orbitLabel}
+                        {(this.props.system.friendlyName ? this.props.system.friendlyName + ' ' : '') + this.props.world.orbitLabel}
                     </div>
                 </div>
             </div>

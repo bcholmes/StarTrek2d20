@@ -34,7 +34,14 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
             value={!this.state.allowAllFrames}
             onChanged={(e) => { this.setState({ allowAllFrames: !this.state.allowAllFrames }); }} />);
 
-        const spaceframes = SpaceframeHelper.getSpaceframes(this.props.serviceYear, this.props.type, this.state.allowAllFrames);
+        let spaceframes = SpaceframeHelper.getSpaceframes(this.props.serviceYear, this.props.type, this.state.allowAllFrames);
+        spaceframes.sort((s1, s2) => {
+            if (s1.name === s2.name) {
+                return s2.id - s1.id;
+            } else {
+                return s1.name.localeCompare(s2.name);
+            }
+        })
         const frames = spaceframes.map((f, i) => {
             const talents = f.talents.map((t, ti) => {
                 if (t === null) {

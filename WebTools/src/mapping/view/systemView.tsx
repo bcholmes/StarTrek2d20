@@ -12,7 +12,7 @@ class SystemView extends React.Component<ISystemViewProperties, {}> {
 
     render() {
         return  this.props.system ? (<tr>
-            <td className="selection-header">{this.props.system.id}</td>
+            <td className="selection-header">{this.props.system.name}</td>
             <td>{this.props.system.star ? this.props.system.star.description : ""}</td>
             <td className="text-center">{this.props.system.world ? this.props.system.world.length : ""}</td>
             <td className="text-right">

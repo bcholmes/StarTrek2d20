@@ -5,7 +5,10 @@ import { Button } from '../../components/button';
 import { Header } from '../../components/header';
 import {IPageProperties} from '../../pages/iPageProperties';
 import { PageIdentity } from '../../pages/pageIdentity';
+import { setStarSystemName } from '../../state/starActions';
+import store from '../../state/store';
 import { StarSystem } from '../table/star';
+import { EditableHeader } from '../view/editableHeader';
 import NotablePhenomenonView from '../view/notablePhenomenonView';
 import StarView from '../view/starView';
 import WorldView from '../view/worldView';
@@ -29,7 +32,7 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
                     </ol>
                 </nav>
 
-                <Header>{this.renderTitle()}</Header>
+                <EditableHeader prefix="System" text={this.props.starSystem.name} onChange={(text) => store.dispatch(setStarSystemName(text))}/>
 
                 <div className="row mt-5">
                     <div className="col-md-2 view-field-label pb-2">Coordinates:</div>
@@ -49,7 +52,7 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
 
                     <div className="col-md-6">
                         <Header level={2} className="mb-4">Worlds</Header>
-                        {this.props.starSystem.world.map((w,i) => <WorldView world={w} key={'world-' + i}/>)}
+                        {this.props.starSystem.world.map((w,i) => <WorldView world={w} system={this.props.starSystem} key={'world-' + i}/>)}
                     </div>
                 </div>
 
@@ -62,7 +65,7 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
     renderTitle() {
         let result = "Star System";
         if (this.props.starSystem) {
-            return result + ' • ' + this.props.starSystem.id;
+            return result + ' • ' + this.props.starSystem.name;
         } else {
             return result;
         }
@@ -73,6 +76,7 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
         event.stopPropagation();
         Navigation.navigateToPage(PageIdentity.SystemGeneration);
     }
+
 }
 
 function mapStateToProps(state, ownProps) {

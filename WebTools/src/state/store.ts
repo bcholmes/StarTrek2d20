@@ -2,24 +2,8 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import { combineReducers } from 'redux'
 import { Source } from '../helpers/sources';
 import { ADD_SOURCE, REMOVE_SOURCE, SET_ALLOW_CROSS_SPECIES_TALENTS, SET_ALLOW_ESOTERIC_TALENTS, SET_ERA, SET_SOURCES } from './contextActions';
-import { SET_SECTOR, SET_STAR } from './starActions';
+import star from './starReducer';
 
-const star = (state = { starSystem: undefined, sector: undefined }, action) => {
-    switch (action.type) {
-        case SET_SECTOR: 
-            return {
-                ...state,
-                sector: action.payload.sector
-            }
-        case SET_STAR: 
-            return {
-                ...state,
-                starSystem: action.payload.starSystem
-            }
-        default:
-            return state;
-    }
-};
 
 const context = (state = { sources: [ Source.Core ], era: undefined , allowCrossSpeciesTalents: false, allowEsotericTalents: false }, action) => {
     switch (action.type) {

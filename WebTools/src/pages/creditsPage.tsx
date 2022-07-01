@@ -34,8 +34,8 @@ export class CreditsPage extends React.Component<{}, {}> {
                 </p>
 
                 <p className="page-text">
-                    Unfortunately, Christoffer no longer had time to devote to this tool, so back around June 2020, 
-                    <a href="" target="_blank"> he posted a request to the Modiphius forums</a> looking for someone to take over 
+                    Unfortunately, Christoffer no longer had time to devote to this tool, so back around June 2020, {' '}
+                    <a href="https://forums.modiphius.com/t/looking-for-developer-to-take-over-the-online-character-tool/11028" target="_blank">he posted a request to the Modiphius forums</a> looking for someone to take over 
                     the development. Forum user {' '} <a href="https://forums.modiphius.com/u/misterx/summary" target="_blank" rel="noreferrer">Mister X</a> {' '} was
                     the one who first prompted Christoffer to {' '} <a href="https://github.com/azjerei/StarTrek2d20" target="_blank" rel="noreferrer">open 
                     source the code</a> {' '} to make it possible for others to contribute.
