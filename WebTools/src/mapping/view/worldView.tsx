@@ -18,11 +18,13 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
         }
 
         return (<div className="mb-4">
+            
+            {this.renderDesignation()}
             <div className="row">
-                <div className="col-md-4 view-field-label pb-2">Designation:</div>
+                <div className="col-md-4 view-field-label pb-2">Classification:</div>
                 <div className="col-md-8 text-white">
                     <div className="view-border-bottom pb-2">
-                        {(this.props.system.friendlyName ? this.props.system.friendlyName + ' ' : '') + this.props.world.orbitLabel}
+                        {classification}
                     </div>
                 </div>
             </div>
@@ -35,14 +37,6 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-4 view-field-label pb-2">Classification:</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {classification}
-                    </div>
-                </div>
-            </div>
-            <div className="row">
                 <div className="col-md-4 view-field-label pb-2">Satellites:</div>
                 <div className="col-md-8 text-white">
                     <div className="view-border-bottom pb-2">
@@ -51,6 +45,21 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
                 </div>
             </div>
         </div>);
+    }
+
+    renderDesignation() {
+        if (this.props.world && this.props.world.orbit != null) {
+            return (<div className="row">
+                        <div className="col-md-4 view-field-label pb-2">Designation:</div>
+                        <div className="col-md-8 text-white">
+                            <div className="view-border-bottom pb-2">
+                                {(this.props.system.friendlyName ? this.props.system.friendlyName + ' ' : '') + this.props.world.orbitLabel}
+                            </div>
+                        </div>
+                    </div>);
+        } else {
+            return undefined;
+        }
     }
 }
 

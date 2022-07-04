@@ -2,6 +2,7 @@ import { Color } from "../../common/colour";
 import { D20, D6 } from "../../common/die";
 import { setSector, setStar } from "../../state/starActions";
 import store from "../../state/store";
+import { LuminosityTable } from "./luminosityTable";
 import { LuminosityClass, LuminosityClassModel, Sector, SectorCoordinates, SpectralClass, SpectralClassModel, Star, StarSystem, Range, World, WorldClass, WorldClassModel, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon } from "./star";
 
 const BLAGG_CONSTANT = 1.7275;
@@ -18,21 +19,6 @@ class GardenZone {
         this.from = from;
         this.to = to;
     }
-}
-
-class LuminosityCrossReference {
-    spectralClass: SpectralClass;
-    subSpectralClass: number;
-    luminosityClass: LuminosityClass;
-    luminosity: number;
-
-    constructor(spectralClass: SpectralClass, subSpectralClass: number, luminosityClass: LuminosityClass, luminosity: number) {
-        this.spectralClass = spectralClass;
-        this.subSpectralClass = subSpectralClass;
-        this.luminosityClass = luminosityClass;
-        this.luminosity = luminosity;
-    }
-
 }
 
 class StellarMass {
@@ -406,115 +392,7 @@ class SystemGeneration {
         new GardenZone(SpectralClass.M, LuminosityClass.VI, 0.1, 0.1),
     ];
 
-    private luminosityCrossReferenceTable: LuminosityCrossReference[] = [
-        new LuminosityCrossReference(SpectralClass.B, 0, LuminosityClass.Ia, 560000),
-        new LuminosityCrossReference(SpectralClass.B, 0, LuminosityClass.Ib, 270000),
-        new LuminosityCrossReference(SpectralClass.B, 0, LuminosityClass.II, 170000),
-        new LuminosityCrossReference(SpectralClass.B, 0, LuminosityClass.III, 107000),
-        new LuminosityCrossReference(SpectralClass.B, 0, LuminosityClass.IV, 81000),
-        new LuminosityCrossReference(SpectralClass.B, 0, LuminosityClass.V, 560000),
 
-        new LuminosityCrossReference(SpectralClass.B, 5, LuminosityClass.Ia, 204000),
-        new LuminosityCrossReference(SpectralClass.B, 5, LuminosityClass.Ib, 46700),
-        new LuminosityCrossReference(SpectralClass.B, 5, LuminosityClass.II, 18600),
-        new LuminosityCrossReference(SpectralClass.B, 5, LuminosityClass.III, 6700),
-        new LuminosityCrossReference(SpectralClass.B, 5, LuminosityClass.IV, 2000),
-        new LuminosityCrossReference(SpectralClass.B, 5, LuminosityClass.V, 1400),
-
-        new LuminosityCrossReference(SpectralClass.B, 9, LuminosityClass.Ia, 60000),
-        new LuminosityCrossReference(SpectralClass.B, 9, LuminosityClass.Ib, 4100),
-        new LuminosityCrossReference(SpectralClass.B, 9, LuminosityClass.II, 3200),
-        new LuminosityCrossReference(SpectralClass.B, 9, LuminosityClass.III, 2100),
-        new LuminosityCrossReference(SpectralClass.B, 9, LuminosityClass.IV, 1200),
-        new LuminosityCrossReference(SpectralClass.B, 9, LuminosityClass.V, 800),
-
-        new LuminosityCrossReference(SpectralClass.A, 0, LuminosityClass.Ia, 107000),
-        new LuminosityCrossReference(SpectralClass.A, 0, LuminosityClass.Ib, 15000),
-        new LuminosityCrossReference(SpectralClass.A, 0, LuminosityClass.II, 2200),
-        new LuminosityCrossReference(SpectralClass.A, 0, LuminosityClass.III, 280),
-        new LuminosityCrossReference(SpectralClass.A, 0, LuminosityClass.IV, 156),
-        new LuminosityCrossReference(SpectralClass.A, 0, LuminosityClass.V, 90),
-
-        new LuminosityCrossReference(SpectralClass.A, 5, LuminosityClass.Ia, 81000),
-        new LuminosityCrossReference(SpectralClass.A, 5, LuminosityClass.Ib, 11700),
-        new LuminosityCrossReference(SpectralClass.A, 5, LuminosityClass.II, 850),
-        new LuminosityCrossReference(SpectralClass.A, 5, LuminosityClass.III, 90),
-        new LuminosityCrossReference(SpectralClass.A, 5, LuminosityClass.IV, 37),
-        new LuminosityCrossReference(SpectralClass.A, 5, LuminosityClass.V, 16),
-
-        new LuminosityCrossReference(SpectralClass.F, 0, LuminosityClass.Ia, 61000),
-        new LuminosityCrossReference(SpectralClass.F, 0, LuminosityClass.Ib, 7400),
-        new LuminosityCrossReference(SpectralClass.F, 0, LuminosityClass.II, 600),
-        new LuminosityCrossReference(SpectralClass.F, 0, LuminosityClass.III, 53),
-        new LuminosityCrossReference(SpectralClass.F, 0, LuminosityClass.IV, 19),
-        new LuminosityCrossReference(SpectralClass.F, 0, LuminosityClass.V, 8.1),
-
-        new LuminosityCrossReference(SpectralClass.F, 5, LuminosityClass.Ia, 51000),
-        new LuminosityCrossReference(SpectralClass.F, 5, LuminosityClass.Ib, 5100),
-        new LuminosityCrossReference(SpectralClass.F, 5, LuminosityClass.II, 510),
-        new LuminosityCrossReference(SpectralClass.F, 5, LuminosityClass.III, 43),
-        new LuminosityCrossReference(SpectralClass.F, 5, LuminosityClass.IV, 12),
-        new LuminosityCrossReference(SpectralClass.F, 5, LuminosityClass.V, 3.5),
-        new LuminosityCrossReference(SpectralClass.F, 5, LuminosityClass.VI, 0.97),
-
-        new LuminosityCrossReference(SpectralClass.G, 0, LuminosityClass.Ia, 67000),
-        new LuminosityCrossReference(SpectralClass.G, 0, LuminosityClass.Ib, 6100),
-        new LuminosityCrossReference(SpectralClass.G, 0, LuminosityClass.II, 560),
-        new LuminosityCrossReference(SpectralClass.G, 0, LuminosityClass.III, 50),
-        new LuminosityCrossReference(SpectralClass.G, 0, LuminosityClass.IV, 6.5),
-        new LuminosityCrossReference(SpectralClass.G, 0, LuminosityClass.V, 1.21),
-        new LuminosityCrossReference(SpectralClass.G, 0, LuminosityClass.VI, .32),
-
-        new LuminosityCrossReference(SpectralClass.G, 2, LuminosityClass.V, 1), // the sun (Sol)
-
-        new LuminosityCrossReference(SpectralClass.G, 5, LuminosityClass.Ia, 89000),
-        new LuminosityCrossReference(SpectralClass.G, 5, LuminosityClass.Ib, 8100),
-        new LuminosityCrossReference(SpectralClass.G, 5, LuminosityClass.II, 740),
-        new LuminosityCrossReference(SpectralClass.G, 5, LuminosityClass.III, 75),
-        new LuminosityCrossReference(SpectralClass.G, 5, LuminosityClass.IV, 4.9),
-        new LuminosityCrossReference(SpectralClass.G, 5, LuminosityClass.V, 0.67),
-        new LuminosityCrossReference(SpectralClass.G, 5, LuminosityClass.VI, 0.186),
-
-        new LuminosityCrossReference(SpectralClass.K, 0, LuminosityClass.Ia, 97000),
-        new LuminosityCrossReference(SpectralClass.K, 0, LuminosityClass.Ib, 11700),
-        new LuminosityCrossReference(SpectralClass.K, 0, LuminosityClass.II, 890),
-        new LuminosityCrossReference(SpectralClass.K, 0, LuminosityClass.III, 95),
-        new LuminosityCrossReference(SpectralClass.K, 0, LuminosityClass.IV, 4.65),
-        new LuminosityCrossReference(SpectralClass.K, 0, LuminosityClass.V, 0.42),
-        new LuminosityCrossReference(SpectralClass.K, 0, LuminosityClass.VI, 0.117),
-
-        new LuminosityCrossReference(SpectralClass.K, 5, LuminosityClass.Ia, 107000),
-        new LuminosityCrossReference(SpectralClass.K, 5, LuminosityClass.Ib, 20400),
-        new LuminosityCrossReference(SpectralClass.K, 5, LuminosityClass.II, 2450),
-        new LuminosityCrossReference(SpectralClass.K, 5, LuminosityClass.III, 320),
-        new LuminosityCrossReference(SpectralClass.K, 5, LuminosityClass.IV, 4.75),
-        new LuminosityCrossReference(SpectralClass.K, 5, LuminosityClass.V, 0.08),
-        new LuminosityCrossReference(SpectralClass.K, 5, LuminosityClass.VI, 0.025),
-
-        new LuminosityCrossReference(SpectralClass.M, 0, LuminosityClass.Ia, 117000),
-        new LuminosityCrossReference(SpectralClass.M, 0, LuminosityClass.Ib, 46000),
-        new LuminosityCrossReference(SpectralClass.M, 0, LuminosityClass.II, 4600),
-        new LuminosityCrossReference(SpectralClass.M, 0, LuminosityClass.III, 470),
-        new LuminosityCrossReference(SpectralClass.M, 0, LuminosityClass.IV, 4.9),
-        new LuminosityCrossReference(SpectralClass.M, 0, LuminosityClass.V, 0.04),
-        new LuminosityCrossReference(SpectralClass.M, 0, LuminosityClass.VI, 0.011),
-
-        new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.Ia, 129000),
-        new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.Ib, 89000),
-        new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.II, 14900),
-        new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.III, 2280),
-        new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.IV, 5.6),
-        new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.V, 0.007),
-        new LuminosityCrossReference(SpectralClass.M, 5, LuminosityClass.VI, 0.002),
-
-        new LuminosityCrossReference(SpectralClass.M, 9, LuminosityClass.Ia, 141000),
-        new LuminosityCrossReference(SpectralClass.M, 9, LuminosityClass.Ib, 117000),
-        new LuminosityCrossReference(SpectralClass.M, 9, LuminosityClass.II, 16200),
-        new LuminosityCrossReference(SpectralClass.M, 9, LuminosityClass.III, 2690),
-        new LuminosityCrossReference(SpectralClass.M, 9, LuminosityClass.IV, 6.2),
-        new LuminosityCrossReference(SpectralClass.M, 9, LuminosityClass.V, 0.001),
-        new LuminosityCrossReference(SpectralClass.M, 9, LuminosityClass.VI, 0.00006),
-    ];
 
     private notableSystemsTable: { [roll: number] : number } = {
         1: 3,
@@ -656,9 +534,7 @@ class SystemGeneration {
         let phenomenon = undefined;
 
         if (star == null && sectorType != null) { // roll of 20
-            console.log("need a notable spatial phenomenon");
             phenomenon = this.generateSpatialPhenomenon(sectorType);
-            console.log("Phenomenon: " + phenomenon.name);
 
             while (phenomenon.id !== NotableSpatialPhenomenon.RoguePlanet && star == null) {
                 star = this.generateStar();
@@ -680,7 +556,6 @@ class SystemGeneration {
                 while (tries-- > 0) {
                     let companion = this.generateStar();
                     if (companion != null && companion instanceof Star) {
-                        console.log("star mass " + star.mass + " and companion mass " + companion.mass);
                         if ((companion as Star).mass <= star.mass) {
                             starSystem.companionStar = companion;
                             break;
@@ -725,7 +600,13 @@ class SystemGeneration {
             luminosity = (spectralClass != null && !spectralClass.isDwarf) ? this.rollLuminosity(spectralClass) : undefined;
             mass = this.determineMass(spectralClass, luminosity);
         }
-        return new Star(spectralClass, subClass, luminosity, mass);
+        let star = new Star(spectralClass, subClass, luminosity, mass);
+        if (!star.spectralClass.isDwarf) {
+            let luminosityValue = LuminosityTable.generateLuminosity(star);
+            star.luminosityValue = luminosityValue;
+        }
+
+        return star;
     }
 
     determineMass(spectralClass: SpectralClassModel, luminosityClass: LuminosityClassModel) {
@@ -787,6 +668,7 @@ class SystemGeneration {
             let initialOrbit = this.determineInitialOrbit(starSystem);
             let bodeConstant = (D20.roll() / 4) * 0.1;
             let orbitIndex = 0;
+            let orbitId = 0;
 
             for (let i = 1; i <= worldCount; i++) {
 
@@ -799,37 +681,30 @@ class SystemGeneration {
                     worldType = worldTypes[Math.floor(Math.random() * worldTypes.length)];
                 }
 
-                let world = new World(worldType, starSystem.world.length);
-                if (worldType.id === WorldClass.AsteroidBelt) {
-                    world.numberOfSatellites = 0;
-                } else if (worldType.isGasGiant) {
-                    world.numberOfSatellites = Math.ceil(D20.roll() / 4);
-                } else {
-                    world.numberOfSatellites = this.numberOfMoonsTable[D20.roll()];
-                }
-                starSystem.world.push(world);
+                let orbitalRadius = (orbitIndex === 0) 
+                        ? initialOrbit
+                        : initialOrbit + Math.pow(BLAGG_CONSTANT, orbitIndex) * bodeConstant;
 
                 if (D20.roll() === 20) {
                     orbitIndex += 1; // throw in an empty orbit
                 }
-
-                if (orbitIndex === 0) {
-                    world.orbitalRadius = initialOrbit;
-                } else {
-                    world.orbitalRadius = initialOrbit + Math.pow(BLAGG_CONSTANT, orbitIndex) * bodeConstant;
-                }
-
                 orbitIndex += 1;
-            }
-
-            /*
-            for (let i = 0; i < this.gardenZoneTable.length; i++) {
-                let zone = this.gardenZoneTable[i];
-                if (starSystem.star.spectralClass.id === zone.spectralClass && starSystem.star.luminosityClass.id === zone.luminosity) {
-                    console.log("Garden zone: " + zone.from + "-" + zone.to);
+        
+        
+                if (orbitalRadius > LuminosityTable.tenabilityRadius(starSystem.star.luminosityValue)) {
+                    let world = new World(worldType, worldType.id === WorldClass.AsteroidBelt ? undefined : orbitId++);
+                    if (worldType.id === WorldClass.AsteroidBelt) {
+                        world.numberOfSatellites = 0;
+                    } else if (worldType.isGasGiant) {
+                        world.numberOfSatellites = Math.ceil(D20.roll() / 4);
+                    } else {
+                        world.numberOfSatellites = this.numberOfMoonsTable[D20.roll()];
+                    }
+                    world.orbitalRadius = orbitalRadius;
+    
+                    starSystem.world.push(world);
                 }
             }
-            */
         } else {
             console.log("star " + starSystem.star.spectralClass.id + " is a dwarf?");
         }
@@ -837,9 +712,9 @@ class SystemGeneration {
 
     determineInitialOrbit(system: StarSystem) {
         if (system.star.spectralClass.id === SpectralClass.M && system.star.luminosityClass != null && system.star.luminosityClass.id === LuminosityClass.VI) {
-            return 0.2;
+            return 0.05;
         } else {
-            let orbits = [0.3, 0.35, 0.4];
+            let orbits = [0.2, 0.3, 0.35, 0.4];
             return orbits[Math.floor(Math.random() * orbits.length)];
         }
     }

@@ -52,7 +52,9 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
 
                     <div className="col-md-6">
                         <Header level={2} className="mb-4">Worlds</Header>
-                        {this.props.starSystem.world.map((w,i) => <WorldView world={w} system={this.props.starSystem} key={'world-' + i}/>)}
+                        {this.renderWorlds("Inner Zone", 0, this.props.starSystem.gardenZoneInnerRadius)}
+                        {this.renderWorlds("Garden Zone", this.props.starSystem.gardenZoneInnerRadius, this.props.starSystem.gardenZoneOuterRadius)}
+                        {this.renderWorlds("Outer Zone", this.props.starSystem.gardenZoneOuterRadius)}
                     </div>
                 </div>
 
@@ -60,6 +62,19 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
                     <Button buttonType={true} text="Back to Sector" onClick={() => navigateTo(null, PageIdentity.SectorDetails) } />
                 </div>
             </div>);
+    }
+
+    renderWorlds(title: string, from: number, to?: number) {
+        let worlds = this.props.starSystem.world.filter(w => w.orbitalRadius >= from && (to == null || w.orbitalRadius < to));
+        if (worlds.length > 0) {
+            let list = worlds.map((w,i) => <WorldView world={w} system={this.props.starSystem} key={'world-' + w.orbitalRadius}/>);
+            return (<div>
+                <div className="page-text my-3">{title}</div>
+                {list}
+            </div>);
+        } else {
+            return undefined;
+        }
     }
 
     renderTitle() {

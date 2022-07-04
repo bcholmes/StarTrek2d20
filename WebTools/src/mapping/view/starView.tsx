@@ -37,7 +37,23 @@ class StarView extends React.Component<IStarViewProperties, {}> {
                     </div>
                 </div>
             </div>
+            {this.renderLuminosity()}
         </div>) : null;
+    }
+
+    renderLuminosity() {
+        if (this.props.star.luminosityValue != null) {
+            return (<div className="row">
+                <div className="col-md-4 view-field-label pb-2">Luminosity (Sols):</div>
+                <div className="col-md-8 text-white">
+                    <div className="view-border-bottom pb-2">
+                        {this.props.star.luminosityValue > 1 ? this.props.star.luminosityValue.toFixed(0) : this.props.star.luminosityValue.toFixed(4)}
+                    </div>
+                </div>
+            </div>);
+        } else {
+            return undefined;
+        }
     }
 
     renderMassInKg() {

@@ -11,6 +11,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220703</b>
+                <ul>
+                    <li>Some additional spaceframe outline revisions</li>
+                    <li>Minor work improving the star sector functionality.</li>
+                </ul>
                 <b>v1.220626</b>
                 <ul>
                     <li>Now supporting the <cite>Discovery Campaign</cite> sourcebook.</li>
@@ -122,33 +127,6 @@ class News extends React.Component<INewsProperties, {}> {
                     created an initial implementation of a 2-page character sheet that displays the full text of the Talents. At the 
                     moment, I consider this a very preliminary implementation. In particular, I don't like the aesthetics of the 
                     final character sheet, and I'll probably end up making a lot of changes, there.</li>
-                </ul>
-                <b>v1.220115</b>
-                <ul>
-                    <li>More layout adjustments to Starship creation.</li>
-                    <li>Fixed a long-standing bug with <i>Luna</i>-class ships and Mission Pods.</li>
-                    <li><a href="https://github.com/bcholmes/StarTrek2d20/issues/11" target="_blank" rel="noreferrer">Enhancement:</a> Allow 
-                    user to enter additional traits in the final step of the character creation process.</li>
-                    <li>Improvements to the Talent Overview page to display some of the pre-requisite information</li>
-                </ul>
-                <b>v1.220110</b>
-                <ul>
-                    <li>Tweaked some screens to get better layout support on phones.</li>
-                </ul>
-                <b>v1.220103</b>
-                <ul>
-                    <li>I've upgraded some of the underlying technologies used to build the site. For the most part, I'd expect the  
-                        app to behave the same as before, but as with all broad-reaching changes, please let me know if you see  
-                        any odd behaviour.
-                    </li>
-                    <li>I've made a number of revisions to the starship creation process, including adding the ability to create
-                        custom spaceframes. If you ever wanted to try out a spaceframe from Continuing Missions, or you had your
-                        own stats for a <i>Loknar</i> Class, this update should help you.
-                    </li>
-                </ul>
-                <b>v1.211023</b>
-                <ul>
-                    <li>Enhancement: Allow an override to starship "end of service" dates.</li>
                 </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>

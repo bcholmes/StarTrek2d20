@@ -328,6 +328,7 @@ export class Star {
     public subClass: number;
     public luminosityClass: LuminosityClassModel|null;
     public mass: number;
+    public luminosityValue: number|null = null;
 
     constructor(spectralClass: SpectralClassModel, subClass: number, luminosity: LuminosityClassModel|null, mass: number) {
         this.spectralClass = spectralClass;
@@ -384,6 +385,31 @@ export class StarSystem {
         result.friendlyName = this.friendlyName;
         return result;
     }
+
+    get gardenZoneInnerRadius() {
+        if (this.star && this.star.luminosityValue) {
+            return Math.sqrt(this.star.luminosityValue) * 0.72;
+        } else {
+            return undefined;
+        }
+    }
+
+    get gardenZoneOuterRadius() {
+        if (this.star && this.star.luminosityValue) {
+            return Math.sqrt(this.star.luminosityValue) * 1.45;
+        } else {
+            return undefined;
+        }
+    }
+
+    get gardenZoneIdealRadius() {
+        if (this.star && this.star.luminosityValue) {
+            return Math.sqrt(this.star.luminosityValue);
+        } else {
+            return undefined;
+        }
+    }
+
 }
 
 export class World {
@@ -393,12 +419,12 @@ export class World {
     numberOfSatellites: number;
     orbitalRadius: number = 0;
 
-    constructor(worldClass: WorldClassModel, orbit: number) {
+    constructor(worldClass: WorldClassModel, orbit?: number) {
         this.worldClass = worldClass;
         this.orbit = orbit;
     }
 
     get orbitLabel() {
-        return RomanNumerals[this.orbit];
+        return this.orbit == null ? undefined : RomanNumerals[this.orbit];
     }
 }
