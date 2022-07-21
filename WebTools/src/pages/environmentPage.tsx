@@ -42,7 +42,7 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
 
         var content = !this.state.showSelection ?
             (
-                <div className="container ml-0">
+                <div>
                     <InstructionText text={character.workflow.currentStep().description} />
                     <div className="page-text">
                         Either select or roll your Environment.
@@ -58,18 +58,18 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
                 </div>
             )
             : (
-                <div>
-                    <EnvironmentSelection
-                        alternate={this.state.alternate}
-                        onSelection={(env, name) => this.selectEnvironment(env, name) }
-                        onCancel={() => this.hideEnvironments() } />
-                </div>
+                <EnvironmentSelection
+                    alternate={this.state.alternate}
+                    onSelection={(env, name) => this.selectEnvironment(env, name) }
+                    onCancel={() => this.hideEnvironments() } />
             );
 
         return (
             <div className="page">
-                <CharacterCreationBreadcrumbs />
-                {content}
+                <div className="container ml-0">
+                    <CharacterCreationBreadcrumbs />
+                    {content}
+                </div>
             </div>
         );
     }

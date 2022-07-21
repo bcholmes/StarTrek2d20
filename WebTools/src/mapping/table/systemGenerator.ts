@@ -711,12 +711,7 @@ class SystemGeneration {
     }
 
     determineInitialOrbit(system: StarSystem) {
-        if (system.star.spectralClass.id === SpectralClass.M && system.star.luminosityClass != null && system.star.luminosityClass.id === LuminosityClass.VI) {
-            return 0.05;
-        } else {
-            let orbits = [0.2, 0.3, 0.35, 0.4];
-            return orbits[Math.floor(Math.random() * orbits.length)];
-        }
+        return D20.roll() / 20;
     }
 
     rollSpectralClass() {

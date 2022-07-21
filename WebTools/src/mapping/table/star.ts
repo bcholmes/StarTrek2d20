@@ -235,6 +235,11 @@ export class Sector {
             return this.id;
         }
     }
+
+    get plainText() {
+        let systems = this.systems.map(s => s.plainText).join('\n\n');
+        return "Sector: " + this.name + "\n\n" + systems;
+    }
 }
 
 export class SectorCoordinates {
@@ -346,6 +351,9 @@ export class Star {
             return designation + " (" + description + ")";
         }
     }
+    get plainText() {
+        return this.description;
+    }
 }
 
 export class StarSystem {
@@ -410,6 +418,14 @@ export class StarSystem {
         }
     }
 
+    get plainText() {
+        let worlds = this.world.map(w => w.plainText).join("\n\n");
+
+        return "Star System: " + this.name + "\n"
+            + "Star: " + this.star.plainText + "\n"
+            + (this.companionStar == null ? "" : ("Companion Star: " + this.companionStar.plainText)) 
+            + "\n" + worlds;
+    }
 }
 
 export class World {
@@ -426,5 +442,12 @@ export class World {
 
     get orbitLabel() {
         return this.orbit == null ? undefined : RomanNumerals[this.orbit];
+    }
+
+    get plainText() {
+        return "Class: " + this.worldClass.description + "\n" +
+            "Orbit: " + this.orbitLabel + "\n" +
+            "Number of satellites: " + this.numberOfSatellites + "\n" +
+            "Orbital Radius: " + this.orbitalRadius.toFixed(2);
     }
 }

@@ -45,7 +45,7 @@ export class UpbringingPage extends React.Component<IPageProperties, IUpbringing
 
         var content = !this.state.showSelection ?
             (
-                <div className="container ml-0">
+                <div>
                     <InstructionText text={character.workflow.currentStep().description} />
                     {showAlt}
                     <div className="row row-cols-md-2">
@@ -68,8 +68,10 @@ export class UpbringingPage extends React.Component<IPageProperties, IUpbringing
 
         return (
             <div className="page">
-                <CharacterCreationBreadcrumbs />
-                {content}
+                <div className="container ml-0">
+                    <CharacterCreationBreadcrumbs />
+                    {content}
+                </div>
             </div>
         );
     }

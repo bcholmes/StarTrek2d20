@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import copy from "copy-to-clipboard";
 import { navigateTo, Navigation } from "../../common/navigator";
 import { Header } from "../../components/header";
 import { IPageProperties } from "../../pages/iPageProperties";
@@ -12,6 +13,7 @@ import LcarsDecorationLeftView from "../view/lcarsDecorationLeft";
 import LcarsDecorationRightView from "../view/lcarsDecorationRight";
 import SectorMapView from "../view/sectorMapView";
 import SystemView from "../view/systemView";
+import { Button } from "../../components/button";
 
 interface ISectorDetailsPageProperties extends IPageProperties {
     sector: Sector;
@@ -52,8 +54,17 @@ class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}
                         </tbody>
                     </table>
                 </div>
+                <div className="mt-3">
+                    <Button onClick={() => this.copyDetailsToClipboard()} text="Copy to Clipboard" className="button-small" buttonType={true} />
+                </div>
             </div>)
         : null;
+    }
+
+    copyDetailsToClipboard() {
+        copy(this.props.sector.plainText, {
+            debug: true,
+            message: 'Press #{key} to copy',});
     }
 
     showSystem(system: StarSystem) {

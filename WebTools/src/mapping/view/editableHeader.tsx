@@ -21,7 +21,6 @@ export class EditableHeader extends React.Component<IEditableHeaderProperties, I
         };
     }
 
-
     render() {
         return (<h1 className="header-text visible-on-hover">
                 <div> 
@@ -39,7 +38,8 @@ export class EditableHeader extends React.Component<IEditableHeaderProperties, I
             return (<input value={this.state.editText} type="text" style={{fontSize: '20px', lineHeight: '24px'}} 
                 onChange={(e) => {this.setEditText(e.target.value)}}
                 onKeyPress={(e) => {if (e.charCode === 13) this.toggleEditMode() }}
-                onBlur={() => this.toggleEditMode()}/>);
+                onBlur={() => this.toggleEditMode()}
+                autoFocus/>);
         } else {
             return (<div>{this.props.text}</div>);
         }

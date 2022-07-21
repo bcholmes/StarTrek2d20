@@ -28,7 +28,7 @@ export class CreditsPage extends React.Component<{}, {}> {
 
                 <p className="page-text">
                     The original version of this character generator was created by {' '}
-                    <a href="https://forums.modiphius.com/u/christoffer/summary" target="_blank" rel="noreferrer">Chistoffer</a> {' '}
+                    <a href="https://forums.modiphius.com/u/christoffer/summary" target="_blank" rel="noreferrer">Christoffer</a> {' '}
                     (aka {' '} <a href="https://github.com/azjerei" target="_blank" rel="noreferrer">azjerei</a>). That includes the lion's
                     share of the functionality. Christoffer made this generator into a truly first class tool. 
                 </p>
