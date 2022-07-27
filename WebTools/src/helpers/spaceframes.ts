@@ -2,7 +2,7 @@
 import { hasSource } from '../state/contextFunctions';
 import {Era} from './eras';
 import {Source} from './sources';
-import {TalentsHelper, TalentModel, TalentViewModel, TalentSelection} from './talents';
+import {TalentsHelper, TalentModel, TalentSelection} from './talents';
 
 export enum Spaceframe {
     Akira,

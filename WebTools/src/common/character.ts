@@ -14,7 +14,7 @@ import AgeHelper, { Age } from '../helpers/age';
 import { Weapon } from '../helpers/weapons';
 import { Construct } from './construct';
 import { Starship } from './starship';
-import { SpeciesHelper, SpeciesModel } from '../helpers/species';
+import { SpeciesHelper } from '../helpers/species';
 
 export abstract class CharacterTypeDetails {
 }

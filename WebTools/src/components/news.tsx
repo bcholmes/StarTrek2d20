@@ -11,6 +11,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220726</b>
+                <ul>
+                    <li>More spaceframe outline revisions</li>
+                    <li>Minor formatting changes.</li>
+                    <li>Some prep for the Picard Crew book.</li>
+                </ul>
                 <b>v1.220703</b>
                 <ul>
                     <li>Some additional spaceframe outline revisions</li>
@@ -116,17 +122,6 @@ class News extends React.Component<INewsProperties, {}> {
                         One of the side-effects of doing this is that I can now add the Refit field to the final sheet.
                     </li>
                     <li>When listing talents (on the web applcation), I now render the Challenge Dice using the Starfleet delta, in line with the rulebook.</li>
-                </ul>
-                <b>v1.220119</b>
-                <ul>
-                    <li>Minor improvements to the TOS character sheets, including initial support for ship outlines.</li>
-                </ul>
-                <b>v1.220118</b>
-                <ul>
-                    <li><a href="https://github.com/bcholmes/StarTrek2d20/issues/9" target="_blank" rel="noreferrer">Enhancement:</a> I've
-                    created an initial implementation of a 2-page character sheet that displays the full text of the Talents. At the 
-                    moment, I consider this a very preliminary implementation. In particular, I don't like the aesthetics of the 
-                    final character sheet, and I'll probably end up making a lot of changes, there.</li>
                 </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>

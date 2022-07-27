@@ -1,6 +1,5 @@
 import React from "react";
 import { Attribute, AttributesHelper } from "../helpers/attributes";
-import { AttributeView } from "./attribute";
 import { AttributeController } from "./attributeController";
 import { AttributeImprovement } from "./attributeImprovement";
 
