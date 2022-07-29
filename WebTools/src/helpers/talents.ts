@@ -2155,7 +2155,20 @@ export class Talents {
                 [new SourcePrerequisite(Source.DiscoveryCampaign), new SpeciesPrerequisite(Species.CyberneticallyEnhanced, true)],
                 1,
                 "Cybernetically Enhanced"),
-                                        
+            new TalentModel(
+                "Guile and Cunning",
+                "Secrecy is as natural as breathing for you. When you attempt to remain hidden or for your actions to remain unnoticed, you may add 1 to Threat in order to increase the Difficulty of a task to detect you or discern the true nature of your actions.",
+                [new SourcePrerequisite(Source.PicardS1), new SpeciesPrerequisite(Species.Romulan, true)],
+                1,
+                "Romulan"),
+            new TalentModel(
+                "Wary",
+                "Danger can come from any quarter, and you will not be caught off-guard. When you attempt a task to notice or detect an enemy or hazard, you may reroll one d20.",
+                [new SourcePrerequisite(Source.PicardS1), new SpeciesPrerequisite(Species.Romulan, true)],
+                1,
+                "Romulan"),
+                
+                                            
 
             // Careers
             new TalentModel(
@@ -2495,7 +2508,7 @@ export class Talents {
                 [new SourcePrerequisite(Source.DiscoveryS1S2)],
                 1,
                 "General"),
-    
+
                 
             // Starships
             new TalentModel(

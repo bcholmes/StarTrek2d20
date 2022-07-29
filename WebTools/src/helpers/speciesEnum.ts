@@ -105,4 +105,5 @@ export enum Species {
 
     // should have been in Delta Quadrant, above...
     Kobali,    
+    Romulan,
 };

@@ -1401,7 +1401,20 @@ class _Species {
             [TalentsHelper.getTalent("Synthetic Physiology"), TalentsHelper.getTalent("Analytical Recall")],
             "Based on the name conventions of the original species.",
             [], [], false),
-        
+        [Species.Romulan]: new SpeciesModel(
+            Species.Romulan,
+            "Romulan",
+            [Era.OriginalSeries, Era.NextGeneration],
+            [Source.PicardS1],
+            ["The Romulans are a cultural offshoot of Vulcans, descended from a faction of early Vulcans who left their original homeworld millennia ago. These ancestors, who “marched beneath the Raptor’s wings”, did not adopt the stoicism and logic espoused by the Vulcan leader Surak, and would later settle the twin worlds of Romulus and Remus. The Romulans’ prevailing culture is one of secrecy; anyone could be an enemy, so concealing motives, actions, and vulnerabilities are central to survival. A Romulan only trusts their closest kin, with increasing layers of secrecy, obfuscation, and misdirection as relationships grow more distant. The Romulan Star Empire was long regarded as paranoid, even isolationist, for non-Romulans are trusted less than even the most suspect Romulans.",
+            "Physically, Romulans are like Vulcans, differing in numerous small ways, and while many Romulans demonstrate a V-shaped ridge on their foreheads, this is far from a universal trait. The specifics of these differences aren’t well-known by non-Romulans; Romulans do not share information if it can be helped, and the Federation didn’t know the shared origin of Vulcans and Romulans until over a century after first contact between Humans and Romulans."],
+            [Attribute.Control, Attribute.Fitness, Attribute.Reason],
+            "Romulan",
+            "Romulan physiology is not meaningfully different from that of Vulcans, though a portion of the Romulan species exhibits a V-shaped forehead ridge not evident in Vulcans. The largest differences are that most Romulans lack the intense mental discipline common to Vulcans, and do not develop their psychic abilities. Psychologically and culturally, Romulans prize cunning and strength of will, and are distrustful of other species: this opinion is reciprocated, as Romulans have a reputation for manipulation, deception, and betrayal.",
+            "To Die in The Service of my People",
+            [TalentsHelper.getTalent("Guile and Cunning"), TalentsHelper.getTalent("Wary")],
+            "Romulan names are personal and wrapped up in secrecy. Romulans tend to have a single name they use openly, a private name they use amongst family, and a true name used only with those they give their hearts to.",
+            [{ type: "Sample Names", suggestions: "Alidar, Ayel, Bidran, Bochra, Chulak, D’Tan, Donatra, Hiren, Kabath, Karina, Kimara, Koval, Laris, Letant, Lovok, M’ret, Mendak, Mirok, N’Raj, N’Vek, Neral, Pardek, Rakal, Rekar, Setal, Sirol, T’Rul, Taibak, Tal, Tal’aura, Taris, Telek, Tenqem, Tokath, Toreth, Valdore, Vrax, Zhaban"}], [], false),        
         //[Species.Romulan]: new SpeciesModel(
         //    "",
         //    [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
@@ -1655,6 +1668,12 @@ class _Species {
 
         if (hasSource(Source.GammaQuadrant)) {
             if (species === Species.Changeling) {
+                return true;
+            }
+        }
+
+        if (hasSource(Source.PicardS1)) {
+            if (species === Species.RomulanExt) {
                 return true;
             }
         }

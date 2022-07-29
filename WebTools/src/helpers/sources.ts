@@ -91,7 +91,7 @@ class Sources {
         [Source.PlayersGuide]: new SourceViewModel(Source.PlayersGuide, SourceType.Expansion, "Player's Guide"),
         [Source.TricorderSet]: new SourceViewModel(Source.TricorderSet, SourceType.CoreBook, "Tricorder Set"),
         [Source.DiscoveryS1S2]: new SourceViewModel(Source.DiscoveryS1S2, SourceType.CrewBook, "Discovery S1/S2"),
-        [Source.PicardS1]: new SourceViewModel(Source.PicardS1, SourceType.CrewBook, "Picard S1", false),
+        [Source.PicardS1]: new SourceViewModel(Source.PicardS1, SourceType.CrewBook, "Picard S1"),
         [Source.DiscoveryCampaign]: new SourceViewModel(Source.DiscoveryCampaign, SourceType.CampaignBook, "Discovery Campaign"),
         [Source.UtopiaPlantitia]: new SourceViewModel(Source.UtopiaPlantitia, SourceType.Expansion, "Utopia Planitia", false),
     };
