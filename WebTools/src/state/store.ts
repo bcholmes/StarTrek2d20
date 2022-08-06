@@ -23,7 +23,7 @@ const context = (state = { sources: [ Source.Core ], era: undefined , allowCross
             }
         case REMOVE_SOURCE: 
             if (state.sources.indexOf(action.payload) >= 0) {
-                let sources = state.sources;
+                let sources = [...state.sources];
                 sources.splice(state.sources.indexOf(action.payload), 1);
                 return {
                     ...state,

@@ -2,7 +2,7 @@
 import {Era, ErasHelper} from '../helpers/eras';
 import {Source, SourcesHelper} from '../helpers/sources';
 import {character} from '../common/character';
-import {Navigation} from '../common/navigator';
+import {navigateTo, Navigation} from '../common/navigator';
 import {Window} from '../common/window';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
@@ -78,7 +78,7 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
             <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Selection)}>Home</a></li>
                         <li className="breadcrumb-item active" aria-current="page">Character/Starship Creation</li>
                     </ol>
                 </nav>

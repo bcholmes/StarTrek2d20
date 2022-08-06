@@ -2,6 +2,7 @@
 import {CheckBox} from './checkBox';
 import {TalentViewModel} from '../helpers/talents';
 import replaceDiceWithArrowhead from '../common/arrowhead';
+import { character } from '../common/character';
 
 interface ITalentSelectionProperties {
     talents: TalentViewModel[]
@@ -47,6 +48,7 @@ export class TalentSelection extends React.Component<ITalentSelectionProperties,
 
     render() {
         const talents = this.props.talents
+            .filter(t => t.rank > 1 || this.state.selectedTalents.indexOf(t.name) >= 0 || !character.hasTalent(t.name))
             .map((t, i) => {
             let prerequisites = undefined;
             t.prerequisites.forEach((p) => {

@@ -7,6 +7,8 @@ import { SourcesHelper } from "../helpers/sources";
 import { SpeciesHelper } from "../helpers/species";
 import replaceDiceWithArrowhead from '../common/arrowhead';
 import { Species } from '../helpers/speciesEnum';
+import { navigateTo } from '../common/navigator';
+import { PageIdentity } from './pageIdentity';
 
 class TalentViewModel {
     name: string;
@@ -122,8 +124,8 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
             <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Talents Overview</li>
+                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Selection)}>Home</a></li>
+                    <li className="breadcrumb-item active" aria-current="page">Talents Overview</li>
                     </ol>
                 </nav>
                 <div className="float-top">

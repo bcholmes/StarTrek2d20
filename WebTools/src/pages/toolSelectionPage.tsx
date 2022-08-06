@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import { CharacterType } from '../common/characterType';
-import {Navigation} from '../common/navigator';
+import {navigateTo, Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
 import {Source} from '../helpers/sources';
@@ -16,7 +16,7 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
                 <div className="container ml-0">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
-                            <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Selection)}>Home</a></li>
                             <li className="breadcrumb-item active" aria-current="page">Character/Starship Creation</li>
                         </ol>
                     </nav>
