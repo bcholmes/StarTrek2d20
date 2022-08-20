@@ -8,7 +8,7 @@ import { allDepartments, Department } from './departments';
 import { Era } from './eras';
 import { MissionProfile, MissionProfileHelper } from './missionProfiles';
 import { Skill } from './skills';
-import { MissionPod, Spaceframe, SpaceframeHelper, SpaceframeViewModel } from './spaceframes';
+import { MissionPod, Spaceframe, SpaceframeHelper, SpaceframeModel } from './spaceframes';
 import { Species } from './speciesEnum';
 import { allSystems, System } from './systems';
 import { TalentSelection, TalentsHelper } from './talents';
@@ -153,7 +153,7 @@ class Marshaller {
         });
         if (json.spaceframe) {
             if (json.spaceframe.custom) {
-                let frame = SpaceframeViewModel.createCustomSpaceframe(result.type, json.spaceframe.custom.serviceYear, [Era.Enterprise, Era.NextGeneration, Era.OriginalSeries ]);
+                let frame = SpaceframeModel.createCustomSpaceframe(result.type, json.spaceframe.custom.serviceYear, [Era.Enterprise, Era.NextGeneration, Era.OriginalSeries ]);
                 frame.name = json.spaceframe.custom.name;
                 frame.scale = json.spaceframe.custom.scale;
                 frame.attacks = json.spaceframe.custom.attacks;

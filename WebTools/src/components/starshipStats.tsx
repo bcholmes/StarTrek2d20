@@ -2,11 +2,11 @@ import * as React from 'react';
 import formatAsDelta from '../common/formatAsDelta';
 import {Department} from '../helpers/departments';
 import { MissionProfileModel } from '../helpers/missionProfiles';
-import { MissionPodViewModel, SpaceframeViewModel } from '../helpers/spaceframes';
+import { MissionPodViewModel, SpaceframeModel } from '../helpers/spaceframes';
 import {System} from '../helpers/systems';
 
 interface IStarshipStatsProperties {
-    model: SpaceframeViewModel|MissionProfileModel|MissionPodViewModel;
+    model: SpaceframeModel|MissionProfileModel|MissionPodViewModel;
     type: string;
 }
 
@@ -23,7 +23,7 @@ class StarshipStats extends React.Component<IStarshipStatsProperties, {}> {
     }
 
     renderAsSpaceframe() {
-        let model = this.props.model as SpaceframeViewModel;
+        let model = this.props.model as SpaceframeModel;
         return (
             <div className="stats-block">
                 <div className="stats-row">

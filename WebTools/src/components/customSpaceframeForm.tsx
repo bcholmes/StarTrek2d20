@@ -3,13 +3,14 @@ import { character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Department } from '../helpers/departments';
 
-import { SpaceframeViewModel } from '../helpers/spaceframes';
+import { SpaceframeModel } from '../helpers/spaceframes';
 import { System } from '../helpers/systems';
 import { TalentsHelper } from '../helpers/talents';
 import StarshipWeaponRegistry, { Weapon } from '../helpers/weapons';
 import store from '../state/store';
 import { Button } from './button';
 import { CheckBox } from './checkBox';
+import { TalentSelection } from '../helpers/talents';
 
 interface IStatControlProperties {
     statName: string;
@@ -49,8 +50,8 @@ export class StatControl extends React.Component<IStatControlProperties, {}> {
 
 
 interface ICustomSpacefraemProperties {
-    initialSelection: SpaceframeViewModel;
-    onComplete: (s: SpaceframeViewModel) => void;
+    initialSelection: SpaceframeModel;
+    onComplete: (s: SpaceframeModel) => void;
 }
 
 interface ICustomSpacefraemState {
@@ -280,7 +281,7 @@ class CustomSpaceframeForm extends React.Component<ICustomSpacefraemProperties, 
     }
 
     createSpaceframe() {
-        let result = SpaceframeViewModel.createCustomSpaceframe(this.props.initialSelection.type, this.state.serviceYear, this.props.initialSelection.eras);
+        let result = SpaceframeModel.createCustomSpaceframe(this.props.initialSelection.type, this.state.serviceYear, this.props.initialSelection.eras);
         result.name = this.state.name;
         result.scale = this.state.scale;
         result.systems = this.state.systems;
@@ -295,7 +296,7 @@ class CustomSpaceframeForm extends React.Component<ICustomSpacefraemProperties, 
         this.state.talents.forEach((t) => {
             const talent = TalentsHelper.getTalent(t);
             if (talent) {
-                talentList.push(talent);
+                talentList.push(new TalentSelection(talent));
             }
         });
         result.talents = talentList;

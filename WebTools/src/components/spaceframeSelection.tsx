@@ -4,14 +4,14 @@ import { CharacterType } from '../common/characterType';
 import formatAsDelta from '../common/formatAsDelta';
 import { CheckBox } from './checkBox';
 import { Department } from '../helpers/departments';
-import { SpaceframeHelper, SpaceframeViewModel } from '../helpers/spaceframes';
+import { SpaceframeHelper, SpaceframeModel } from '../helpers/spaceframes';
 import { System } from '../helpers/systems';
 
 interface ISpaceframeSelectionProperties {
     serviceYear: number;
     type: CharacterType;
-    initialSelection?: SpaceframeViewModel;
-    onSelection: (s: SpaceframeViewModel) => void;
+    initialSelection?: SpaceframeModel;
+    onSelection: (s: SpaceframeModel) => void;
 }
 
 interface ISpaceframeSelectionState {

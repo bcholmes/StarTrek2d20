@@ -170,6 +170,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
         this._categories.push("Career");
         this._categories.push("Enhancement");
         this._categories.push("Starship");
+        this._categories.push("Starbase");
         this._categories.push("Esoteric");
 
         for (let sp in Object.keys(Species).filter(species => !isNaN(Number(Species[species])))) {

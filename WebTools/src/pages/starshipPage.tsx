@@ -4,7 +4,7 @@ import {CharacterTypeModel} from '../common/characterType';
 import { CharacterType } from '../common/characterType';
 import {DropDownInput} from '../components/dropDownInput';
 import {Era} from '../helpers/eras';
-import {SpaceframeHelper, MissionPod, SpaceframeViewModel} from '../helpers/spaceframes';
+import {SpaceframeHelper, MissionPod, SpaceframeModel} from '../helpers/spaceframes';
 import {MissionProfileHelper, MissionProfileModel} from '../helpers/missionProfiles';
 import {TalentsHelper, TalentViewModel, ToViewModel} from "../helpers/talents";
 import {Source} from "../helpers/sources";
@@ -164,7 +164,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         let spaceframeTalents = [];
         let missionPodDetails = undefined;
         if (this.starship.spaceframeModel) {
-            spaceframeTalents = this.starship.spaceframeModel.talents.map(t => { return t.description });
+            spaceframeTalents = this.starship.spaceframeModel.talents.map(t => { return t.talent.name });
             if (this.starship.spaceframeModel.isMissionPodAvailable) {
                 missionPodDetails = (<div className="panel">
                         <div className="header-small">Mission Pod</div>
@@ -544,7 +544,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         if (this.starship && this.starship.spaceframeModel && this.starship.spaceframeModel.isCustom) {
             return this.starship.spaceframeModel;
         } else {
-            return SpaceframeViewModel.createCustomSpaceframe(character.type, this.starship.serviceYear, [ store.getState().context.era ]);
+            return SpaceframeModel.createCustomSpaceframe(character.type, this.starship.serviceYear, [ store.getState().context.era ]);
         }
     }
 
@@ -574,7 +574,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         }
     }
 
-    private onSpaceframeSelected(spaceframe: SpaceframeViewModel) {
+    private onSpaceframeSelected(spaceframe: SpaceframeModel) {
         this.starship.spaceframeModel = spaceframe;
         this.updateSystemAndDepartments();
         this.forceUpdate();

@@ -1,8 +1,8 @@
 import { Department } from "../helpers/departments";
 import { MissionProfileModel } from "../helpers/missionProfiles";
-import { MissionPodViewModel, SpaceframeViewModel } from "../helpers/spaceframes";
+import { MissionPodViewModel, SpaceframeModel } from "../helpers/spaceframes";
 import { System } from "../helpers/systems";
-import { TalentViewModel } from "../helpers/talents";
+import { TalentSelection, TalentsHelper, TalentViewModel } from "../helpers/talents";
 import { Weapon } from "../helpers/weapons";
 import { CharacterType } from "./characterType";
 import { Construct } from "./construct";
@@ -11,7 +11,7 @@ export class Starship extends Construct {
     registry: string = "";
     traits: string = "";
     serviceYear?: number;
-    spaceframeModel?: SpaceframeViewModel = undefined;
+    spaceframeModel?: SpaceframeModel = undefined;
     missionPodModel?: MissionPodViewModel;
     missionProfileModel?: MissionProfileModel;
     departments: number[];
@@ -76,6 +76,41 @@ export class Starship extends Construct {
             });
         }
         return talents;
+    }
+
+    getTalentSelectionList() {
+        let talents: Map<string, TalentSelection> = new Map();
+        if (this.spaceframeModel) {
+            this.spaceframeModel.talents.forEach(t => {
+                this.addTalent(t, talents);
+            });
+        }
+
+        if (this.profileTalent) {
+            this.addTalent(new TalentSelection(TalentsHelper.getTalent(this.profileTalent.name)), talents);
+        }
+
+        this.additionalTalents.forEach(t => {
+            this.addTalent(new TalentSelection(TalentsHelper.getTalent(t.name)), talents);
+        });
+        if (this.missionPodModel) {
+            this.missionPodModel.talents.forEach(t => {
+                this.addTalent(new TalentSelection(t), talents);
+            });
+        }
+
+        let result: TalentSelection[] = [];
+        talents.forEach((value: TalentSelection) => result.push(value));
+        return result;
+    }
+
+    private addTalent(t: TalentSelection, talents: Map<string, TalentSelection>) {
+        if (talents.get(t.nameWithoutRank) != null) {
+            let temp = talents.get(t.nameWithoutRank);
+            talents.set(t.nameWithoutRank, new TalentSelection(temp.talent, temp.rank + t.rank, temp.qualifier));
+        } else {
+            talents.set(t.nameWithoutRank, t);
+        }
     }
 
     getShields() {

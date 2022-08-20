@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { SpaceframeOutline } from '../helpers/spaceframeOutlineHelper';
-import { SpaceframeViewModel } from '../helpers/spaceframes';
+import { SpaceframeModel } from '../helpers/spaceframes';
 
 interface IOutlineImageProperties {
     serviceYear?: number
-    spaceframe?: SpaceframeViewModel
+    spaceframe?: SpaceframeModel
     size?: string
 }
 

@@ -1,5 +1,5 @@
 ﻿import { CharacterType } from '../common/characterType';
-import { hasSource } from '../state/contextFunctions';
+import { hasAnySource } from '../state/contextFunctions';
 import {Era} from './eras';
 import {Source} from './sources';
 import {TalentsHelper, TalentModel, TalentSelection} from './talents';
@@ -44,11 +44,32 @@ export enum Spaceframe {
     Hiawatha,
 
 
-    // Section 31
+    // Discovery: Section 31
     StealthShip,
     Nimrod,
     Shiva,
 
+    // Utopia Planitia
+    JClassYClass,
+    Delta,
+    IntrepidType,
+    Antares,
+    Soyuz,
+    Cheyenne,
+    Springfield,
+    RavenType,
+    Niagara,
+    Challenger,
+    Freedom,
+    Prometheus,
+    Vesta,
+    Ross,
+    Inquiry,
+    Reliant,
+    Sutherland,
+    Gagarin,
+    Odyssey,
+    Pathfinder,
 
     D5,
     Raptor,
@@ -91,13 +112,13 @@ export enum MissionPod {
 }
 
 
-class SpaceframeModel {
-    id: Spaceframe;
+export class SpaceframeModel {
+    id: Spaceframe|null;
     type: CharacterType;
     name: string;
     serviceYear: number;
     eras: Era[];
-    source: Source;
+    source: Source[];
     systems: number[];
     departments: number[];
     scale: number;
@@ -106,7 +127,7 @@ class SpaceframeModel {
     additionalTraits: string[];
     maxServiceYear: number;
 
-    constructor(id: Spaceframe, type: CharacterType, name: string, serviceYear: number, eras: Era[], source: Source, systems: number[], departments: number[], 
+    constructor(id: Spaceframe|null, type: CharacterType, name: string, serviceYear: number, eras: Era[], source: Source[], systems: number[], departments: number[], 
         scale: number, attacks: string[], talents: TalentSelection[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999) {
         this.id = id;
         this.type = type;
@@ -122,28 +143,19 @@ class SpaceframeModel {
         this.additionalTraits = additionalTraits;
         this.maxServiceYear = maxServiceYear;
     }
-}
 
-export class SpaceframeViewModel extends SpaceframeModel {
-    id: Spaceframe;
-    isMissionPodAvailable: boolean;
-    isCustom: boolean;
+    get isMissionPodAvailable() {
+        return this.id === Spaceframe.Nebula || this.id === Spaceframe.Luna || this.id === Spaceframe.Sutherland;
+    }
 
-    constructor(type: CharacterType, name: string, serviceYear: number, eras: Era[], source: Source, systems: number[], departments: number[], scale: number, 
-        attacks: string[], talents: TalentSelection[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999, id?: Spaceframe) {
-        super(id, type, name, serviceYear, eras, source, systems, departments, scale, attacks, talents, additionalTraits, maxServiceYear);
-        this.id = id;
-        this.isCustom = (id === undefined || source === Source.None);
-        this.isMissionPodAvailable = (id === Spaceframe.Nebula);
+    get isCustom() {
+        return this.id == null || (this.source.length === 1 && this.source[0] === Source.None);
     }
 
     static createCustomSpaceframe(type: CharacterType, serviceYear: number, eras: Era[]) {
-        return new SpaceframeViewModel(type, "", serviceYear, eras, Source.None, [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [], type === CharacterType.KlingonWarrior ? [ "Klingon Starship"] : [ "Federation Starship" ]);
-    }
-
-    static from(base: SpaceframeModel) {
-        return new SpaceframeViewModel(base.type, base.name, base.serviceYear, base.eras, base.source, base.systems, base.departments, base.scale, 
-            base.attacks, base.talents, base.additionalTraits, base.maxServiceYear, base.id);
+        return new SpaceframeModel(null, type, "", serviceYear, eras, 
+            [ Source.None ], [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [], 
+            type === CharacterType.KlingonWarrior ? [ "Klingon Starship"] : [ "Federation Starship" ]);
     }
 }
 
@@ -173,7 +185,7 @@ class Spaceframes {
             "Akira Class",
             2368,
             [],
-            Source.Core,
+            [ Source.Core, Source.UtopiaPlanitia ],
             [9, 9, 10, 9, 11, 11],
             [0, 0, 2, 0, 0, 1],
             5,
@@ -195,7 +207,7 @@ class Spaceframes {
             "Constellation Class",
             2285,
             [],
-            Source.Core,
+            [ Source.Core, Source.UtopiaPlanitia ],
             [8, 7, 9, 9, 8, 9],
             [0, 1, 1, 1, 0, 0],
             4,
@@ -216,7 +228,7 @@ class Spaceframes {
             "Constitution Class",
             2243,
             [],
-            Source.Core,
+            [ Source.Core, Source.UtopiaPlanitia ],
             [7, 7, 8, 8, 8, 8],
             [1, 0, 1, 0, 1, 0],
             4,
@@ -237,7 +249,7 @@ class Spaceframes {
             "Defiant Class",
             2371,
             [],
-            Source.Core,
+            [ Source.Core, Source.UtopiaPlanitia ],
             [9, 9, 10, 9, 8, 13],
             [0, 1, 2, 0, 0, 0],
             3,
@@ -260,7 +272,7 @@ class Spaceframes {
             "Excelsior Class",
             2285,
             [],
-            Source.Core,
+            [ Source.Core, Source.UtopiaPlanitia ],
             [8, 8, 9, 8, 9, 9],
             [1, 0, 0, 2, 0, 0],
             5,
@@ -281,7 +293,7 @@ class Spaceframes {
             "Galaxy Class",
             2359,
             [],
-            Source.Core,
+            [ Source.Core, Source.UtopiaPlanitia ],
             [9, 10, 10, 9, 10, 10],
             [1, 0, 0, 0, 1, 1],
             6,
@@ -301,7 +313,7 @@ class Spaceframes {
             "Intrepid Class",
             2371,
             [],
-            Source.Core,
+            [ Source.Core, Source.UtopiaPlanitia ],
             [10, 11, 11, 10, 8, 9],
             [0, 1, 0, 0, 2, 0],
             4,
@@ -323,7 +335,7 @@ class Spaceframes {
             "Miranda Class",
             2274,
             [],
-            Source.Core,
+            [ Source.Core, Source.UtopiaPlanitia ],
             [8, 8, 8, 9, 8, 9],
             [1, 1, 0, 0, 1, 0],
             4,
@@ -343,7 +355,7 @@ class Spaceframes {
             "Nova Class",
             2368,
             [],
-            Source.Core,
+            [ Source.Core, Source.UtopiaPlanitia ],
             [10, 10, 9, 10, 8, 8],
             [0, 0, 0, 1, 2, 0],
             3,
@@ -363,7 +375,7 @@ class Spaceframes {
             "Daedalus Class",
             2140,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [6, 6, 5, 6, 8, 5],
             [0, 0, 0, 2, 1, 0],
             3,
@@ -385,7 +397,7 @@ class Spaceframes {
             "NX Class",
             2151,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [6, 6, 6, 6, 7, 6],
             [0, 1, 0, 1, 1, 0],
             3,
@@ -406,7 +418,7 @@ class Spaceframes {
             "Hermes Class",
             2242,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [7, 6, 9, 8, 8, 6],
             [0, 2, 0, 0, 1, 0],
             4,
@@ -427,7 +439,7 @@ class Spaceframes {
             "Oberth Class",
             2269,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [8, 9, 7, 9, 8, 7],
             [0, 1, 0, 0, 2, 0],
             3,
@@ -447,7 +459,7 @@ class Spaceframes {
             "Sydney Class",
             2279,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [8, 8, 9, 9, 8, 7],
             [0, 2, 0, 1, 0, 0],
             4,
@@ -466,7 +478,7 @@ class Spaceframes {
             "Centaur Class",
             2285,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [8, 8, 9, 8, 8, 9],
             [0, 2, 1, 0, 0, 0],
             4,
@@ -487,7 +499,7 @@ class Spaceframes {
             "Ambassador Class",
             2335,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [9, 9, 9, 9, 10, 9],
             [1, 1, 0, 0, 1, 0],
             5,
@@ -509,7 +521,7 @@ class Spaceframes {
             "Nebula Class",
             2361,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [9, 10, 10, 8, 10, 9],
             [0, 0, 0, 2, 0, 0],
             5,
@@ -529,7 +541,7 @@ class Spaceframes {
             "New Orleans Class",
             2364,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [9, 10, 10, 10, 8, 9],
             [0, 1, 0, 1, 1, 0],
             4,
@@ -550,7 +562,7 @@ class Spaceframes {
             "Olympic Class",
             2368,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [10, 10, 10, 9, 9, 7],
             [0, 0, 0, 0, 1, 2],
             4,
@@ -571,7 +583,7 @@ class Spaceframes {
             "Steamrunner Class",
             2370,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [10, 9, 11, 10, 9, 10],
             [0, 1, 1, 0, 1, 0],
             4,
@@ -592,7 +604,7 @@ class Spaceframes {
             "Norway Class",
             2371,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [10, 9, 10, 10, 11, 9],
             [0, 0, 0, 1, 0, 2],
             4,
@@ -613,7 +625,7 @@ class Spaceframes {
             "Saber",
             2371,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [10, 9, 10, 10, 8, 9],
             [0, 2, 1, 0, 0, 0],
             3,
@@ -634,7 +646,7 @@ class Spaceframes {
             "Sovereign Class",
             2371,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [9, 11, 11, 9, 10, 10],
             [1, 0, 1, 0, 1, 0],
             6,
@@ -658,7 +670,7 @@ class Spaceframes {
             "Luna Class",
             2372,
             [],
-            Source.CommandDivision,
+            [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [10, 11, 10, 11, 8, 9],
             [0, 0, 0, 1, 2, 0],
             5,
@@ -680,7 +692,7 @@ class Spaceframes {
             "Archer Class",
             2258,
             [],
-            Source.TricorderSet,
+            [ Source.TricorderSet, Source.UtopiaPlanitia ],
             [8, 9, 6, 7, 8, 6],
             [0, 0, 1, 2, 0, 0],
             3,
@@ -701,7 +713,7 @@ class Spaceframes {
             "Walker Class",
             2195,
             [],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [6, 7, 6, 8, 6, 6],
             [0, 0, 0, 1, 1, 1],
             3,
@@ -722,7 +734,7 @@ class Spaceframes {
             "Shepard Class",
             2195,
             [],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [6, 6, 7, 7, 7, 6],
             [0, 0, 1, 1, 1, 0],
             3,
@@ -743,7 +755,7 @@ class Spaceframes {
             "Magee Class",
             2198,
             [],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [7, 7, 6, 8, 6, 5],
             [0, 0, 0, 1, 2, 0],
             3,
@@ -763,7 +775,7 @@ class Spaceframes {
             "Cardenas Class",
             2202,
             [],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [6, 6, 8, 7, 6, 7],
             [0, 1, 1, 0, 1, 0],
             4,
@@ -785,7 +797,7 @@ class Spaceframes {
             "Hoover Class",
             2209,
             [],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [6, 6, 7, 6, 7, 8],
             [0, 0, 1, 1, 1, 0],
             4,
@@ -805,7 +817,7 @@ class Spaceframes {
             "Malachowski Class",
             2210,
             [],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [7, 6, 5, 6, 8, 8],
             [0, 0, 2, 1, 0, 0],
             3,
@@ -826,7 +838,7 @@ class Spaceframes {
             "Engle Class",
             2224,
             [],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [7, 8, 8, 6, 6, 6],
             [0, 1, 0, 1, 0, 1],
             3,
@@ -847,7 +859,7 @@ class Spaceframes {
             "Nimitz Class",
             2235,
             [],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [8, 7, 7, 7, 7, 7],
             [2, 0, 0, 0, 1, 0],
             4,
@@ -870,7 +882,7 @@ class Spaceframes {
             "Crossfield Class",
             2255,
             [],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [7, 8, 8, 8, 8, 7],
             [0, 0, 0, 1, 2, 0],
             4,
@@ -892,7 +904,7 @@ class Spaceframes {
             "Hiawatha Class",
             2235,
             [],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [8, 8, 6, 8, 8, 5],
             [0, 0, 0, 0, 1, 2],
             3,
@@ -912,7 +924,7 @@ class Spaceframes {
             "Stealth Ship",
             2250,
             [],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign ],
             [8, 8, 6, 9, 6, 6],
             [0, 0, 0, 0, 3, 0],
             3,
@@ -933,7 +945,7 @@ class Spaceframes {
             "Nimrod",
             2250,
             [],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign ],
             [7, 7, 8, 7, 7, 8],
             [0, 0, 1, 1, 1, 0],
             3,
@@ -954,7 +966,7 @@ class Spaceframes {
             "Shiva",
             2253,
             [],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign ],
             [9, 9, 7, 7, 6, 7],
             [1, 1, 0, 1, 0, 0],
             4,
@@ -980,7 +992,7 @@ class Spaceframes {
             "D5-Class Battle Cruiser",
             2146,
             [Era.Enterprise],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [6, 7, 7, 6, 7, 8],
             [1, 0, 1, 1, 0, 0],
             2,
@@ -1002,7 +1014,7 @@ class Spaceframes {
             "Raptor-class Scout",
             2146,
             [Era.Enterprise],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [6, 6, 7, 7, 7, 6],
             [0, 1, 1, 0, 1, 0],
             2,
@@ -1025,7 +1037,7 @@ class Spaceframes {
             "Vo'n'Talk",
             2149,
             [Era.Enterprise],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [6, 6, 8, 7, 6, 7],
             [0, 1, 1, 1, 0, 0],
             3,
@@ -1049,7 +1061,7 @@ class Spaceframes {
             "K'Toch Scout",
             2128,
             [Era.Enterprise, Era.OriginalSeries],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [6, 6, 5, 7, 5, 7],
             [0, 1, 0, 1, 1, 0],
             2,
@@ -1069,7 +1081,7 @@ class Spaceframes {
             "Tu'YuQ Exploratory Ship",
             2176,
             [Era.Enterprise, Era.OriginalSeries],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [7, 8, 7, 7, 5, 7],
             [0, 0, 1, 0, 1, 1],
             3,
@@ -1093,7 +1105,7 @@ class Spaceframes {
             "D7-Class Battle Cruiser",
             2250,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [7, 7, 8, 7, 8, 9],
             [0, 1, 2, 0, 0, 0],
             4,
@@ -1118,7 +1130,7 @@ class Spaceframes {
             "B'rel-Class Bird-of-Prey",
             2280,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [8, 7, 9, 7, 7, 9],
             [0, 2, 1, 0, 0, 0],
             3,
@@ -1142,7 +1154,7 @@ class Spaceframes {
             "Pach'Nom Multirole Escort",
             2297,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [8, 7, 8, 8, 10, 8],
             [0, 0, 1, 1, 0, 1],
             5,
@@ -1165,7 +1177,7 @@ class Spaceframes {
             "Qo'Toch Heavy Fighter",
             2298,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [7, 7, 6, 8, 6, 8],
             [0, 1, 1, 1, 0, 0],
             2,
@@ -1184,7 +1196,7 @@ class Spaceframes {
             "Iw'Cha'Par Heavy Explorer",
             2295,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [9, 9, 7, 8, 7, 8],
             [0, 0, 2, 0, 1, 0],
             4,
@@ -1207,7 +1219,7 @@ class Spaceframes {
             "D12-Class Bird-of-Prey",
             2315,
             [Era.NextGeneration],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [9, 7, 9, 7, 8, 10],
             [0, 1, 2, 0, 0, 0],
             4,
@@ -1234,7 +1246,7 @@ class Spaceframes {
             "Klingon Civilian Transport",
             2352,
             [Era.NextGeneration],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [7, 8, 9, 8, 9, 8],
             [0, 1, 1, 0, 0, 1],
             4,
@@ -1257,7 +1269,7 @@ class Spaceframes {
             "K'Vort-Class Bird-of-Prey",
             2349,
             [Era.NextGeneration],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [9, 8, 11, 8, 9, 11],
             [0, 2, 1, 0, 0, 0],
             5,
@@ -1283,7 +1295,7 @@ class Spaceframes {
             "Par'Tok Transport",
             2356,
             [Era.NextGeneration],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [9, 7, 10, 8, 8, 7],
             [0, 1, 0, 2, 0, 0],
             5,
@@ -1307,7 +1319,7 @@ class Spaceframes {
             "Toron-Class Shuttlepod",
             2357,
             [Era.NextGeneration],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [5, 5, 7, 5, 5, 7],
             [0, 2, 1, 1, 0, 0],
             1,
@@ -1328,10 +1340,10 @@ class Spaceframes {
             "Vor'Cha-Class Attack Cruiser",
             2367,
             [Era.NextGeneration],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [9, 9, 10, 9, 10, 10],
             [1, 0, 2, 0, 0, 0],
-            6,
+            5,
             [
                 "Disruptor Cannons",
                 "Disruptor Banks",
@@ -1353,7 +1365,7 @@ class Spaceframes {
             "Negh'Var-Class Warship",
             2372,
             [Era.NextGeneration],
-            Source.KlingonCore,
+            [ Source.KlingonCore ],
             [8, 10, 9, 8, 10, 12],
             [1, 0, 1, 1, 0, 0],
             6,
@@ -1379,7 +1391,7 @@ class Spaceframes {
             "Bird of Prey (Mid 23rd Century)",
             2233,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign ],
             [6, 6, 7, 8, 7, 8],
             [0, 1, 2, 0, 0, 0],
             3,
@@ -1402,7 +1414,7 @@ class Spaceframes {
             "Qugh-class Destroyer",
             2130,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign ],
             [4, 4, 7, 5, 6, 6],
             [0, 1, 1, 1, 0, 0],
             3,
@@ -1425,7 +1437,7 @@ class Spaceframes {
             "Daspu'-class Escort",
             2175,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign ],
             [6, 5, 5, 6, 7, 7],
             [0, 1, 1, 1, 0, 0],
             3,
@@ -1449,7 +1461,7 @@ class Spaceframes {
             "Qoj-class Dreadnought",
             2225,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign ],
             [8, 6, 6, 7, 8, 8],
             [1, 1, 1, 0, 0, 0],
             5,
@@ -1474,7 +1486,7 @@ class Spaceframes {
             "Batlh-class Escort",
             2203,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign ],
             [7, 7, 6, 7, 7, 8],
             [0, 0, 1, 1, 1, 0],
             4,
@@ -1498,7 +1510,7 @@ class Spaceframes {
             "Chargh / Jach-class Battlecruiser",
             2203,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign ],
             [6, 7, 7, 6, 6, 8],
             [0, 0, 2, 1, 0, 0],
             4,
@@ -1522,7 +1534,7 @@ class Spaceframes {
             "Na'Qjej-class Cleave Ship",
             2185,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign ],
             [6, 5, 6, 6, 9, 7],
             [0, 2, 0, 1, 0, 0],
             5,
@@ -1545,7 +1557,7 @@ class Spaceframes {
             "'Elth-class Assault Ship",
             2185,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign ],
             [6, 6, 8, 7, 8, 6],
             [1, 0, 1, 0, 0, 1],
             4,
@@ -1569,7 +1581,7 @@ class Spaceframes {
             "Bortas bir-class Battlecruiser",
             2235,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign ],
             [6, 7, 7, 7, 8, 8],
             [0, 2, 1, 0, 0, 0],
             4,
@@ -1594,7 +1606,7 @@ class Spaceframes {
             "Sech-class Fast Frigate",
             2231,
             [Era.OriginalSeries, Era.NextGeneration],
-            Source.DiscoveryCampaign,
+            [ Source.DiscoveryCampaign ],
             [7, 7, 8, 7, 7, 7],
             [0, 2, 1, 0, 0, 0],
             4,
@@ -1618,7 +1630,7 @@ class Spaceframes {
         //    "",
         //    0,
         //    [],
-        //    Source.Core,
+        //    [ Source.Core, Source.UtopiaPlanitia ],
         //    [],
         //    [],
         //    0,
@@ -1662,12 +1674,12 @@ class Spaceframes {
     };
 
     getSpaceframes(year: number, type: CharacterType, ignoreMaxServiceYear: boolean = false) {
-        let frames: SpaceframeViewModel[] = [];
+        let frames: SpaceframeModel[] = [];
         for (var frame in this._frames) {
             let f = this._frames[frame];
             if (f.serviceYear <= year && (f.maxServiceYear >= year || ignoreMaxServiceYear)) {
-                if (hasSource(f.source) && type === f.type) {
-                    frames.push(SpaceframeViewModel.from(f));
+                if (hasAnySource(f.source) && type === f.type) {
+                    frames.push(f);
                 }
             }
         }
@@ -1677,14 +1689,14 @@ class Spaceframes {
 
     getSpaceframe(frame: Spaceframe) {
         const result = this._frames[frame];
-        return result ? SpaceframeViewModel.from(result) : undefined;
+        return result ? result : undefined;
     }
 
     getSpaceframeByName(name: string) {
         let result = undefined;
         for (let id in this._frames) {
             if (Spaceframe[id] === name) {
-                result = SpaceframeViewModel.from(this._frames[id]);
+                result = this._frames[id];
                 break;
             }
         }

@@ -388,6 +388,15 @@ class StarshipPrerequisite implements ITalentPrerequisite<Construct> {
     }
 }
 
+class StarbasePrerequisite implements ITalentPrerequisite<Construct> {
+    isPrerequisiteFulfilled() {
+        return false;
+    }
+    describe(): string {
+        return "";
+    }
+}
+
 class ServiceYearPrerequisite implements ITalentPrerequisite<Starship> {
     private year: number;
 
@@ -561,14 +570,19 @@ export class TalentSelection {
     }
 
     get description() {
-        let result = this.talent.name;
-        if (this.qualifier) {
-            result += " [" + this.qualifier + "]";
-        }
+        let result = this.nameWithoutRank;
         if (this.rank > 1) {
             result += " [x" + this.rank + "]";
         }
 
+        return result;
+    }
+
+    get nameWithoutRank() {
+        let result = this.talent.name;
+        if (this.qualifier) {
+            result += " [" + this.qualifier + "]";
+        }
         return result;
     }
 
@@ -1348,7 +1362,7 @@ export class Talents {
             new TalentModel(
                 "Visual Spectrum",
                 "An Efrosian can see beyond what others think of as the visual spectrum, from some infra-red to ultra-violet light. Any Tasks in which detecting those parts of the spectrum is useful reduce in Difficulty by 1. Circumstances, such as low light levels, do not affect the Difficulty of Tasks, as long as those Tasks do not relate to perceiving minutiae of a subject.",
-                [new SpeciesPrerequisite(Species.Deltan, false), new EraPrerequisite(Era.OriginalSeries), new SourcePrerequisite(Source.BetaQuadrant)],
+                [new SpeciesPrerequisite(Species.Efrosian, false), new EraPrerequisite(Era.OriginalSeries), new SourcePrerequisite(Source.BetaQuadrant)],
                 1,
                 "Efrosian"),
             new TalentModel(
@@ -2527,7 +2541,7 @@ export class Talents {
                 "Advanced Sensor Suites",
                 "The vessel’s sensors are amongst the most sophisticated and advanced available in the fleet. Unless the ship’s Sensors have suffered one or more Breaches, whenever a character performs a Task assisted by the ship’s Sensors, they may reduce the Difficulty of the Task by one, to a minimum of 0.",
                 [new StarshipPrerequisite()],
-                1,
+                5,
                 "Starship"),
             new TalentModel(
                 "Advanced Shields",
@@ -2545,7 +2559,7 @@ export class Talents {
                 "Backup EPS Conduits",
                 "The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of an emergency, keeping it from being lost when the ship is damaged. Whenever the ship would lose one or more Power because of suffering damage, roll [D] for each Power lost. Each Effect rolled prevents the loss of that point of Power.",
                 [new StarshipPrerequisite()],
-                1,
+                5,
                 "Starship"),
             new TalentModel(
                 "Command Ship",
@@ -2575,7 +2589,7 @@ export class Talents {
                 "Extensive Shuttlebays",
                 "The vessel’s shuttlebays are large, well-supplied, and able to support a larger number of active shuttle missions simultaneously. The ship may have twice as many small craft active at any one time as it would normally allow, and it may carry up to two Scale 2 small craft.",
                 [new StarshipPrerequisite()],
-                1,
+                5,
                 "Starship"),
             new TalentModel(
                 "Fast Targeting Systems",
@@ -2623,13 +2637,13 @@ export class Talents {
                 "Improved Shield Recharge",
                 "The ship’s deflector shields have redundant capacitors and emitter arrays that allow the shields to be recharged and replenished much more efficiently. Whenever the Regenerate Shields Task is successful, the ship regains 3 points of Shields, plus 3 more for each Momentum spent (Repeatable), instead of the normal amount.",
                 [new StarshipPrerequisite(), new DepartmentPrerequisite(Department.Security, 3)],
-                1,
+                5,
                 "Starship"),
             new TalentModel(
                 "Improved Warp Drive",
                 "The ship’s warp drive is more efficient, capitalizing on improved field dynamics, better control of antimatter flow rates, or some other advancement that allows the ship to expend less energy when travelling at warp. Whenever the ship spends power to go to warp, roll 1 for each Power spent; for each Effect rolled, that point of Power is not spent.",
                 [new StarshipPrerequisite()],
-                1,
+                5,
                 "Starship"),
             new TalentModel(
                 "Modular Laboratories",
@@ -2671,7 +2685,7 @@ export class Talents {
                 "Secondary Reactors",
                 "The ship has additional impulse and fusion reactors, that allow the ship to generate far greater quantities of energy. Increase the ship’s normal Power capacity by 5.",
                 [new StarshipPrerequisite()],
-                1,
+                5,
                 "Starship"),
             new TalentModel(
                 "Captain’s Yacht",
@@ -2719,7 +2733,7 @@ export class Talents {
                 "High-Power Tractor Beam",
                 "The ship’s tractor beam systems channel far greater quantities of power and exert much more force on the target. The ship’s tractor beam has a strength two higher than normal. Further, the ship may spend Power whenever a target attempts to escape the tractor beam to increase its strength for that attempt; the strength increases by 1 for every two Power spent.",
                 [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
-                1,
+                5,
                 "Starship"),
             new TalentModel(
                 "Independent Phaser Supply",
@@ -2775,6 +2789,40 @@ export class Talents {
                 [new StarshipPrerequisite(), new SourcePrerequisite(Source.DiscoveryCampaign)],
                 1,
                 "Starship"),
+
+
+
+            new TalentModel(
+                "Docking Capacity",
+                "The station has additional ports and pylons that allow it to support a greater number of docked vessels as well as larger vessels than would normally be the case. The starbase has a number of docking ports equal to one-and-a-half times its Scale (rounding down), instead of half its Scale. The maximum Scale of any ship that may dock at the station is increased by 2.",
+                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                5,
+                "Starbase"),
+            new TalentModel(
+                "Enhanced Defense Grid",
+                "The station’s Shields are increased by an amount equal to half the station’s Scale.",
+                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                5,
+                "Starbase"),
+            new TalentModel(
+                "Firebase",
+                "The station is built to defend itself and surrounding space from attack and can unleash colossal firepower. Whenever a character makes an Attack with the station, they may use the Swift Task Momentum Spend for 1 Momentum instead of the normal 2, so long as their second Task is also an Attack.",
+                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                1,
+                "Starbase"),
+            new TalentModel(
+                "Repair Crews",
+                "With additional personnel to support repair and maintenance work, the station may prioritize repairs to a number of ships equal to its Engineering Department.",
+                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                1,
+                "Starbase"),
+            new TalentModel(
+                "Sturdy Construction",
+                "When the station suffers damage, after Resistance, from an attack or hazard, it suffers a Breach if 8 or more damage is inflicted, rather than 5 or more as is normally the case.",
+                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                1,
+                "Starbase"),
+
             ];
 
     private _specialRules: TalentModel[] = [
