@@ -104,6 +104,11 @@ export class Starship extends Construct {
         return result;
     }
 
+    hasTalent(talentName: string) {
+        let talents = this.getTalentSelectionList().filter(t => t.talent.name === talentName);
+        return talents.length > 0;
+    }
+
     private addTalent(t: TalentSelection, talents: Map<string, TalentSelection>) {
         if (talents.get(t.nameWithoutRank) != null) {
             let temp = talents.get(t.nameWithoutRank);

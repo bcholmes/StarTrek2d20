@@ -10,7 +10,7 @@ import {ElectiveSkillList} from '../components/electiveSkillList';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {CheckBox} from '../components/checkBox';
-import { TalentSelection } from '../components/talentSelection';
+import { TalentSelectionList } from '../components/talentSelection';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
@@ -65,7 +65,7 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelection talents={talents} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <TalentSelectionList talents={talents} onSelection={(talents) => { this.onTalentSelected(talents) } } construct={character}/>
                 </div>
                 <div className="panel">
                     <div className="header-small">FOCUS</div>

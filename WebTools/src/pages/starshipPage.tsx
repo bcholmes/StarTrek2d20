@@ -10,7 +10,8 @@ import {TalentsHelper, TalentViewModel, ToViewModel} from "../helpers/talents";
 import {Source} from "../helpers/sources";
 import {Button} from '../components/button';
 import {Refits} from "../components/refits";
-import {TalentSelection} from "../components/talentSelection";
+import { SmallHeader } from "../components/smallHeader";
+import {TalentSelectionList} from "../components/talentSelection";
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
 import { ModalControl } from '../components/modal';
@@ -32,6 +33,7 @@ interface StarshipPageState {
     profileTalent?: string
     refitCount: number
     refits: System[]
+    serviceYearChanging: boolean
 }
 
 export class StarshipPage extends React.Component<{}, StarshipPageState> {
@@ -56,23 +58,26 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
             name: 'U.S.S. ',
             profileTalent: undefined,
             refitCount: 0,
-            refits: []
+            refits: [],
+            serviceYearChanging: false
         };
     }
 
     renderSpaceframeSection() {
-        const spaceframes = SpaceframeHelper.getSpaceframes(this.starship.serviceYear, this.state.type.type, true);
-        // if other choices have changed, then the current spaceframe might be invalid
-        if (this.starship && this.starship.spaceframeModel) {
-            if (this.starship.spaceframeModel.isCustom) {
-                if (character.type !== this.starship.spaceframeModel.type || this.starship.serviceYear < this.starship.spaceframeModel.serviceYear) {
-                    this.starship.spaceframeModel = undefined;
-                }
-            } else {
+        if (!this.state.serviceYearChanging) {
+            const spaceframes = SpaceframeHelper.getSpaceframes(this.starship.serviceYear, this.state.type.type, true);
+            // if other choices have changed, then the current spaceframe might be invalid
+            if (this.starship && this.starship.spaceframeModel) {
+                if (this.starship.spaceframeModel.isCustom) {
+                    if (character.type !== this.starship.spaceframeModel.type || this.starship.serviceYear < this.starship.spaceframeModel.serviceYear) {
+                        this.starship.spaceframeModel = undefined;
+                    }
+                } else {
 
-                let frames = spaceframes.filter(f => f.id === this.starship.spaceframeModel.id);
-                if (frames.length === 0) {
-                    this.starship.spaceframeModel = undefined;
+                    let frames = spaceframes.filter(f => f.id === this.starship.spaceframeModel.id);
+                    if (frames.length === 0) {
+                        this.starship.spaceframeModel = undefined;
+                    }
                 }
             }
         }
@@ -192,6 +197,9 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                 .forEach(t => {
                     if (spaceframeTalents.indexOf(t.name) === -1) {
                         talents.push(ToViewModel(t));
+                    } else {
+                        console.log("Already exists: " + t.name);
+                        talents.push(ToViewModel(t, 2));
                     }
                 });
         }
@@ -226,10 +234,10 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                     <div className="page-text-aligned">
                         Select {this.starship.scale - numAdditionalTalents} additional {(this.starship.scale - numAdditionalTalents === 1) ? ' talent ' : ' talents '} for your starship.
                     </div>
-                    <TalentSelection
+                    <TalentSelectionList
                         points={this.starship.scale - numAdditionalTalents}
-                        talents={TalentsHelper.getStarshipTalents()
-                            .filter(t => filter.indexOf(t.name) === -1)}
+                        talents={TalentsHelper.getStarshipTalents(this.starship)}
+                        construct={this.starship}
                         onSelection={(talents) => { this._talentSelection = talents; this.starship.additionalTalents = this._talentSelection; this.forceUpdate(); } }/>
                 </div>
               )
@@ -262,7 +270,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         let nameSection = character.type === CharacterType.KlingonWarrior 
             ?   (<div className="panel">
                     <div className="page-text-aligned">
-                    <div className="header-small">Name</div>
+                    <SmallHeader>Name</SmallHeader>
                         Every Starship needs a name.
                         The Empire has no universal convention for the naming of ships, often naming them after locations, brave warriors, 
                         ancient ships, mythical figures, or even important objects from history, great beasts, or boasts relating to a 
@@ -290,7 +298,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                         value={this.state.name} />
                 </div>)
             : (<div className="panel">
-                    <div className="header-small">Name</div>
+                    <SmallHeader>Name</SmallHeader>
                     <div className="page-text-aligned">
                         Every Starship needs a name.
                         The Federation has no universal convention for the naming of ships, often naming them after locations, important historical persons (normally only the person’s surname), ancient ships, mythical figures, or even more abstract ideals, virtues, or concepts.
@@ -316,7 +324,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
         let registrySection = character.type === CharacterType.KlingonWarrior ? undefined
             : (<div className="panel">
-            <div className="header-small">Registry Number</div>
+            <SmallHeader>Registry Number</SmallHeader>
             <div className="page-text-aligned">
                 To go with the name, each Federation starship has a registry number.
                 This is a four- (for games set in the Original Series era), or five-digit number (for games set in the Next Generation era), prefixed by either the letters NCC, or NX.
@@ -345,24 +353,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                 <div className="starship-container">
                     <div className="starship-panel">
                         {typeSelection}
-                        <div className="panel">
-                            <div className="header-small">Year of Service</div>
-                            <div className="page-text-aligned">
-                                The year in which the ship exists determines available options.
-                                Choose which year you want to play in together with your GM.
-                                A default year will be filled in automatically dependent on the chosen Era.
-                            </div>
-                            <div className="textinput-label">YEAR</div>
-                            <input
-                                type="number"
-                                defaultValue={this.starship.serviceYear.toString()}
-                                ref={(el) => { this._yearInput = el; } }
-                                onChange={() => {
-                                    this.starship.serviceYear = parseInt(this._yearInput.value);
-                                    this.updateSystemAndDepartments();
-                                    this.forceUpdate();
-                                } } />
-                        </div>
+                        {this.renderServiceYear()}
                         <br/><br/>
                         <div className="panel">
                             <div className="header-small">Spaceframe</div>
@@ -385,7 +376,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                         <br/><br/>
                         {missionPodDetails}
                         <div className="panel">
-                            <div className="header-small">Mission Profile</div>
+                            <SmallHeader>Mission Profile</SmallHeader>
                             <div className="page-text-aligned">
                                 The ship’s Mission Profile is a key part of what distinguishes it from her sister ships.
                                 It determines how the ship will be equipped, what facilities and personnel are assigned to
@@ -400,12 +391,13 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                         </div>
                         <br/><br/>
                         <div className="panel">
-                            <div className="header-small">Talent</div>
+                            <SmallHeader>Talent</SmallHeader>
                             <div className="page-text-aligned">
                                 Select one talent from those offered by the ship's Mission Profile.
                             </div>
-                            <TalentSelection
+                            <TalentSelectionList
                                 talents={talents}
+                                construct={this.starship}
                                 onSelection={(talents) => {
                                     if (talents.length > 0) {
                                         let talent = talents[0];
@@ -421,7 +413,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                         {additionalTalentOptions}
                         <br/><br/>
                         <div className="panel">
-                            <div className="header-small">Traits</div>
+                            <SmallHeader>Traits</SmallHeader>
                             <div className="page-text-aligned">
                                 You may now define additional Traits for your starship.
                                 Your starship already has these traits:
@@ -459,6 +451,31 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                 </div>
             </div>
         );
+    }
+
+
+    renderServiceYear() {
+        return (<div className="panel">
+                    <SmallHeader>Year of Service</SmallHeader>
+                    <div className="page-text-aligned">
+                        The year in which the ship exists determines available options.
+                        Choose which year you want to play in together with your GM.
+                        A default year will be filled in automatically dependent on the chosen Era.
+                    </div>
+                    <div className="textinput-label">YEAR</div>
+                    <input
+                        type="number"
+                        defaultValue={this.starship.serviceYear.toString()}
+                        ref={(el) => { this._yearInput = el; } }
+                        onChange={() => {
+                            this.starship.serviceYear = parseInt(this._yearInput.value);
+                            this.updateSystemAndDepartments();
+                            this.forceUpdate();
+                        } }
+                        onFocus={() => {this.setState((state) => ({...state, serviceYearChanging: true}))}} 
+                        onBlur={() => {this.setState((state) => ({...state, serviceYearChanging: false}))}} 
+                        />
+                </div>);
     }
 
     showViewPage() {

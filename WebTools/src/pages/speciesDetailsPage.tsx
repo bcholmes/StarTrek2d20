@@ -8,7 +8,7 @@ import { TalentsHelper, TalentViewModel, ToViewModel } from '../helpers/talents'
 import { Button } from '../components/button';
 import { CheckBox } from '../components/checkBox';
 import { Dialog } from '../components/dialog';
-import { TalentSelection } from '../components/talentSelection';
+import { TalentSelectionList } from '../components/talentSelection';
 import { Source } from '../helpers/sources';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { Species } from '../helpers/speciesEnum';
@@ -114,7 +114,8 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
                     {this.renderCrossSpeciesCheckbox()}
                 </div>
                 {esotericTalentOption}
-                <TalentSelection talents={talents} onSelection={talents => this.onTalentSelected(talents.length > 0 ? talents[0] : undefined)} />
+                <TalentSelectionList talents={talents} construct={character} 
+                    onSelection={talents => this.onTalentSelected(talents.length > 0 ? talents[0] : undefined)} />
             </div>)
             : (<div>
                 <SmallHeader>SPECIES OPTIONS</SmallHeader>

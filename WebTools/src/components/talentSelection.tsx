@@ -2,11 +2,12 @@
 import {CheckBox} from './checkBox';
 import {TalentViewModel} from '../helpers/talents';
 import replaceDiceWithArrowhead from '../common/arrowhead';
-import { character } from '../common/character';
+import { Construct } from '../common/construct';
 
 interface ITalentSelectionProperties {
     talents: TalentViewModel[]
     points: number;
+    construct: Construct;
     onSelection: (talents: TalentViewModel[]) => void;
 }
 
@@ -14,7 +15,7 @@ interface ITalentSelectionState {
     selectedTalents: string[]
 }
 
-export class TalentSelection extends React.Component<ITalentSelectionProperties, ITalentSelectionState> {
+export class TalentSelectionList extends React.Component<ITalentSelectionProperties, ITalentSelectionState> {
 
     static defaultProps = {
         points: 1
@@ -46,10 +47,28 @@ export class TalentSelection extends React.Component<ITalentSelectionProperties,
         }
     }
 
+    createTalentList() {
+        let result: TalentViewModel[] = [];
+        this.props.talents.forEach(t => {
+            if (t.name === 'Advanced Sensor Suites') {
+                console.log("Advanced Sensor Suites: " + t.rank);
+            }
+            if (t.rank > 1 || this.state.selectedTalents.indexOf(t.name) >= 0 || !this.props.construct.hasTalent(t.name)) {
+                result.push(t);
+
+                if (t.rank > 1 && this.state.selectedTalents.indexOf(t.name) >= 0 && this.props.points > 1) {
+                    result.push(t);
+                }
+            }
+        });
+        return result;
+    }
+
+
     render() {
-        const talents = this.props.talents
-            .filter(t => t.rank > 1 || this.state.selectedTalents.indexOf(t.name) >= 0 || !character.hasTalent(t.name))
-            .map((t, i) => {
+        const talentList = this.createTalentList()
+
+        const talents = talentList.map((t, i) => {
             let prerequisites = undefined;
             t.prerequisites.forEach((p) => {
                 let desc = p.describe();

@@ -201,7 +201,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
             this.fillField(form, 'Designation', starship.registry);
         }
 
-        const talents = starship.getTalentNameList();
+        const talents = starship.getTalentSelectionList().map(t => t.description);
 
         const spaceframe = starship.spaceframeModel;
         if (spaceframe) {

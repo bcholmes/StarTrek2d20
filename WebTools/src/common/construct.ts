@@ -8,4 +8,8 @@ export abstract class Construct {
     determineWeapons() : Weapon[] {
         return [];
     }
+
+    hasTalent(talentName: string) {
+        return false;
+    }
 }

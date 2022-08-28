@@ -11,7 +11,7 @@ import {Dialog} from '../components/dialog';
 import {ValueInput, Value} from '../components/valueInput';
 import {MajorsList} from '../components/majorsList';
 import {SkillView} from '../components/skill';
-import { TalentSelection } from '../components/talentSelection';
+import { TalentSelectionList } from '../components/talentSelection';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import { Header } from '../components/header';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
@@ -80,7 +80,8 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelection talents={TalentsHelper.getAllAvailableTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <TalentSelectionList talents={TalentsHelper.getAllAvailableTalents()} 
+                        construct={character} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -125,7 +126,8 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelection talents={TalentsHelper.getAllAvailableTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <TalentSelectionList talents={TalentsHelper.getAllAvailableTalents()} 
+                        construct={character} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -174,7 +176,9 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelection talents={TalentsHelper.getAllAvailableTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <TalentSelectionList talents={TalentsHelper.getAllAvailableTalents()} 
+                        onSelection={(talents) => { this.onTalentSelected(talents) } }
+                        construct={character} />
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -233,7 +237,8 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelection talents={TalentsHelper.getAllAvailableTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <TalentSelectionList talents={TalentsHelper.getAllAvailableTalents()} 
+                        construct={character} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -291,7 +296,8 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelection talents={TalentsHelper.getAllAvailableTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <TalentSelectionList talents={TalentsHelper.getAllAvailableTalents()} 
+                        construct={character} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>

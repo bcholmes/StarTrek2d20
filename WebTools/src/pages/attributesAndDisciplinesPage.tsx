@@ -10,7 +10,7 @@ import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {ValueInput, Value} from '../components/valueInput';
-import { TalentSelection } from '../components/talentSelection';
+import { TalentSelectionList } from '../components/talentSelection';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { CharacterType } from '../common/characterType';
 
@@ -81,7 +81,8 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
         const talentSelection = character.workflow.currentStep().options.talentSelection
             ? (<div className="panel">
                 <div className="header-small">TALENTS</div>
-                <TalentSelection talents={talents} onSelection={talents => { this._selectedTalent = talents.length > 0 ? talents[0] : undefined; }} />
+                <TalentSelectionList talents={talents} construct={character} 
+                    onSelection={talents => { this._selectedTalent = talents.length > 0 ? talents[0] : undefined; }} />
             </div>)
             : undefined;
 

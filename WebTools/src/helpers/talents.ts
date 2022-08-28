@@ -604,15 +604,18 @@ export class TalentSelection {
 export class TalentViewModel {
     id: string;
     name: string;
-    displayName: string;
     rank: number;
+    showRank: boolean;
     description: string;
     category: string;
     prerequisites: ITalentPrerequisite<Construct>[];
+    displayName: string;
 
     constructor(name: string, rank: number, showRank: boolean, description: string, skill: Skill, category: string, prerequities: ITalentPrerequisite<Character>[]) {
         this.id = name;
         this.description = description;
+        this.rank = rank;
+        this.showRank = showRank;
         this.displayName = this.constructDisplayName(name, rank, showRank, skill, category);
         this.name = name;
         this.prerequisites = prerequities;
@@ -620,7 +623,7 @@ export class TalentViewModel {
 
 
     private constructDisplayName(name: string, rank: number, showRank: boolean, skill: Skill, category: string) {
-        let displayName = name + (showRank ? " [Rank: " + rank + "]" : "");
+        let displayName = name + ((showRank && category !== "Starship" && category != "Starbase") ? " [Rank: " + rank + "]" : "");
         displayName += skill !== undefined && skill !== Skill.None
             ? ` (${SkillsHelper.getSkillName(skill)})`
             : category.length > 0 ? ` (${category})` : "";
@@ -2921,38 +2924,30 @@ export class Talents {
         return result;
     }
 
-    getStarshipTalents() {
+    getStarshipTalents(starship: Starship) {
         let talents: TalentViewModel[] = [];
 
         for (let i = 0; i < this._talents.length; i++) {
             let talent = this._talents[i];
             let include = talent.category === "Starship";
 
-            talent.prerequisites.forEach((p, i) => {
-                if (!p.isPrerequisiteFulfilled()) {
-                    include = false;
-                }
-            });
-
             if (include) {
-                if (talent.maxRank > 1) {
-                    if (character.hasTalent(talent.name) && character.talents[talent.name].rank === talent.maxRank) {
+                talent.prerequisites.forEach((p, i) => {
+                    if (!p.isPrerequisiteFulfilled()) {
                         include = false;
                     }
-                }
-                else {
-                    if (character.hasTalent(talent.name)) {
-                        include = false;
-                    }
-                }
+                });
 
                 if (include) {
-                    let rank = character.hasTalent(talent.name)
-                        ? character.talents[talent.name].rank + 1
-                        : 1;
+                    let rank =  1;
+                    if (talent.maxRank > 1) {
+                        let selections = starship.getTalentSelectionList().filter(t => t.talent.name === talent.name);
+                        if (selections.length > 0) {
+                            rank = selections[0].rank;
+                        }
+                    }
 
-                    talents.push(
-                        ToViewModel(talent, rank));
+                    talents.push(ToViewModel(talent, rank));
                 }
             }
         }

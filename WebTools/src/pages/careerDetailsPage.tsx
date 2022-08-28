@@ -8,7 +8,7 @@ import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {TalentDescription} from '../components/talentDescription';
 import {ValueInput, Value} from '../components/valueInput';
-import { TalentSelection } from '../components/talentSelection';
+import { TalentSelectionList } from '../components/talentSelection';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 
@@ -29,7 +29,8 @@ export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
 
         const talent = career.talent.length === 1
             ? (<TalentDescription name={career.talent[0].name} description={career.talent[0].description}/>)
-            : (<TalentSelection talents={TalentsHelper.getAllAvailableTalents()} onSelection={(talents) => { this.onTalentSelected(talents) } }/>);
+            : (<TalentSelectionList talents={TalentsHelper.getAllAvailableTalents()} 
+                    construct={character} onSelection={(talents) => { this.onTalentSelected(talents) } }/>);
 
         return (
             <div className="page">

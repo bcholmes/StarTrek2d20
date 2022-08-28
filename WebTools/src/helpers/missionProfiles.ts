@@ -14,7 +14,17 @@ export enum MissionProfile {
     HouseGuard,
     ProjectEscalante,
     Battlecruiser,
-    ReserveFleet
+    ReserveFleet,
+
+    CivilianMerchantMarine,
+    ColonySupport,
+    EntertainmentPleasureShip,
+    EspionageIntelligence,
+    Flagship,
+    LogisticalQuartermaster,
+    Patrol,
+    Warship,
+    TechnicalTestbed,
 }
 
 export class MissionProfileModel {
@@ -141,7 +151,7 @@ class MissionProfiles {
             ],
             "",
             "", 
-            new SourcePrerequisite(Source.DiscoveryCampaign)),
+            new SourcePrerequisite(Source.DiscoveryCampaign, Source.UtopiaPlanitia)),
         [MissionProfile.ReserveFleet]: new MissionProfileModel(
             MissionProfile.ReserveFleet,
             "Reserve Fleet",
@@ -154,7 +164,7 @@ class MissionProfiles {
             ],
             "",
             "", 
-            new SourcePrerequisite(Source.DiscoveryCampaign)),
+            new SourcePrerequisite(Source.DiscoveryCampaign, Source.UtopiaPlanitia)),
     };
 
     private _klingonProfiles: { [id: number]: MissionProfileModel } = {
