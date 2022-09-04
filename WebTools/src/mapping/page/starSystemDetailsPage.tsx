@@ -53,7 +53,7 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
                     <div className="col-md-6">
                         <Header level={2} className="mb-4">Worlds</Header>
                         {this.renderWorlds("Inner Zone", 0, this.props.starSystem.gardenZoneInnerRadius)}
-                        {this.renderWorlds("Garden Zone", this.props.starSystem.gardenZoneInnerRadius, this.props.starSystem.gardenZoneOuterRadius)}
+                        {this.renderWorlds("Ecosphere", this.props.starSystem.gardenZoneInnerRadius, this.props.starSystem.gardenZoneOuterRadius)}
                         {this.renderWorlds("Outer Zone", this.props.starSystem.gardenZoneOuterRadius)}
                     </div>
                 </div>

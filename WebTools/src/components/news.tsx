@@ -11,6 +11,17 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220903</b>
+                <ul>
+                    <li>Two bug fixes: one related to the scale of the Vor'Cha class and one relating to the talents for Efrosians.</li>
+                    <li>I've been doing some (not yet visible) work to support the new <cite>Utopia Planetia</cite> sourcebook. Some
+                        long-standing questions have been resolved by <cite>Utopia Planetia</cite>, including a hotly-debated question of whether
+                        or not the Luna class is meant to have a mission pod. The answer is yes, and this version of the code recognizes that.</li>
+                    <li>Jim posted a correction, on the Modiphius forums, for the "inner worlds" table of the <cite>Shackleton Expanse</cite> 
+                        (in the printed book, the inner worlds table is a repeat of the outer worlds table.) I've plonked that table into 
+                        the system generator.</li>
+                    <li>I continue to add more spaceframe outlines.</li>
+                </ul>
                 <b>v1.220805</b>
                 <ul>
                     <li>Minor bug fixes.</li>
@@ -72,7 +83,7 @@ class News extends React.Component<INewsProperties, {}> {
                 <b>v1.220329</b>
                 <ul>
                     <li>Various small bug fixes.</li>
-                    <li>Add support for the <i>Archer</i> Class ship from the <i>Tricorder Set</i>.</li>
+                    <li>Add support for the <i>Archer</i> Class ship from the <cite>Tricorder Set</cite>.</li>
                     <li>Implement a bookmarkable "view" page for creations. At the moment, this view is only available for
                         ships and supporting characters, but it'll be available for main characters in the not-too-distant future.
                     </li>
@@ -119,13 +130,6 @@ class News extends React.Component<INewsProperties, {}> {
                 <b>v1.220125</b>
                 <ul>
                     <li>Minor, cosmetic revisions.</li>
-                </ul>
-                <b>v1.220123</b>
-                <ul>
-                    <li>I've re-written some of the starship handling around refits, because I found the old behaviour buggy.
-                        One of the side-effects of doing this is that I can now add the Refit field to the final sheet.
-                    </li>
-                    <li>When listing talents (on the web applcation), I now render the Challenge Dice using the Starfleet delta, in line with the rulebook.</li>
                 </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>

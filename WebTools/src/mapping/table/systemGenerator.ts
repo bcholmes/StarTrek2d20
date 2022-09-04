@@ -2,24 +2,12 @@ import { Color } from "../../common/colour";
 import { D20, D6 } from "../../common/die";
 import { setSector, setStar } from "../../state/starActions";
 import store from "../../state/store";
+import { WorldCoreType } from "../view/worldView";
 import { LuminosityTable } from "./luminosityTable";
-import { LuminosityClass, LuminosityClassModel, Sector, SectorCoordinates, SpectralClass, SpectralClassModel, Star, StarSystem, Range, World, WorldClass, WorldClassModel, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon } from "./star";
+import { Orbits } from "./orbit";
+import { LuminosityClass, LuminosityClassModel, Sector, SectorCoordinates, SpectralClass, SpectralClassModel, Star, StarSystem, Range, World, WorldClass, WorldClassModel, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon, AsteroidBeltDetails } from "./star";
 
 const BLAGG_CONSTANT = 1.7275;
-
-class GardenZone {
-    spectralClass: SpectralClass;
-    luminosity: LuminosityClass;
-    from: number;
-    to: number;
-
-    constructor(spectralClass: SpectralClass, luminosity: LuminosityClass, from: number, to: number) {
-        this.spectralClass = spectralClass;
-        this.luminosity = luminosity;
-        this.from = from;
-        this.to = to;
-    }
-}
 
 class StellarMass {
     spectralClass: SpectralClass;
@@ -50,23 +38,22 @@ class SystemGeneration {
     ];
 
     private worldClasses: WorldClassModel[] = [
-        new WorldClassModel(WorldClass.AsteroidBelt, "Asteroid Belt"),
+        new WorldClassModel(WorldClass.AsteroidBelt, "Asteroid Belt"), // 0
+        new WorldClassModel(WorldClass.B, "Geomorphic"),
         new WorldClassModel(WorldClass.C, "Icy Geoinactive"),
         new WorldClassModel(WorldClass.D, "Icy/Rocky Barren"),
         new WorldClassModel(WorldClass.E, "Geoplastic"),
-        new WorldClassModel(WorldClass.I, "Ammonia Clouds/Gas Supergiant"),
-        new WorldClassModel(WorldClass.J, "Jovian Gas Giant"),
-        new WorldClassModel(WorldClass.K, "Adaptable"),
-        new WorldClassModel(WorldClass.L, "Marginal"),
-        new WorldClassModel(WorldClass.M, "Terrestrial"),
-        new WorldClassModel(WorldClass.O, "Pelagic/Ocean"),
-        new WorldClassModel(WorldClass.P, "Glaciated"),
-
-        // not listed in Shackleton Expanse
-        new WorldClassModel(WorldClass.H, "Desert"),
-        new WorldClassModel(WorldClass.N, "Reducing"),
-        new WorldClassModel(WorldClass.T, "Gas Ultragiants"),
-        new WorldClassModel(WorldClass.Y, "Demon"),
+        new WorldClassModel(WorldClass.H, "Desert"), // 11
+        new WorldClassModel(WorldClass.I, "Ammonia Clouds/Gas Supergiant"), // 4
+        new WorldClassModel(WorldClass.J, "Jovian Gas Giant"), // 5
+        new WorldClassModel(WorldClass.K, "Adaptable"), // 6
+        new WorldClassModel(WorldClass.L, "Marginal"), // 7
+        new WorldClassModel(WorldClass.M, "Terrestrial"), // 8
+        new WorldClassModel(WorldClass.N, "Reducing"), // 12
+        new WorldClassModel(WorldClass.O, "Pelagic/Ocean"), // 9
+        new WorldClassModel(WorldClass.P, "Glaciated"), // 10
+        new WorldClassModel(WorldClass.T, "Gas Ultragiants"), // 15
+        new WorldClassModel(WorldClass.Y, "Demon"), // 16
     ];
 
     private spectralClassTable: { [roll: number]: SpectralClassModel } = {
@@ -301,98 +288,74 @@ class SystemGeneration {
         ( (starSystem) => starSystem.isBinary ? -3 : 0 ),
     ];
 
-    private innerOrOuterWorldTable: { [roll: number]: WorldClassModel[] } = {
-        1: [ this.worldClasses[7] ], // L
-        2: [ this.worldClasses[1] ], // C
-        3: [ this.worldClasses[1] ], // C
-        4: [ this.worldClasses[1] ], // C
-        5: [ this.worldClasses[1] ], // C
-        6: [ this.worldClasses[5] ], // J
-        7: [ this.worldClasses[5] ], // J
-        8: [ this.worldClasses[5] ], // J
-        9: [ this.worldClasses[5] ], // J
-        10: [ this.worldClasses[5] ], // J
-        11: [ this.worldClasses[5] ], // J
-        12: [ this.worldClasses[5] ], // J
-        13: [ this.worldClasses[5] ], // J
-        14: [ this.worldClasses[5] ], // J
-        15: [ this.worldClasses[2], this.worldClasses[0] ], // D or Asteroid
-        16: [ this.worldClasses[2], this.worldClasses[0] ], // D or Asteroid
-        17: [ this.worldClasses[2], this.worldClasses[0] ], // D or Asteroid
-        18: [ this.worldClasses[2], this.worldClasses[0] ], // D or Asteroid
-        19: [ this.worldClasses[4] ], // I
-        20: [ this.worldClasses[10] ], // P
+    private innerWorldTable: { [roll: number]: WorldClassModel[] } = {
+        1: [ this.worldClasses[WorldClass.Y] ], // Y
+        2: [ this.worldClasses[WorldClass.B] ], // B
+        3: [ this.worldClasses[WorldClass.B] ], // B
+        4: [ this.worldClasses[WorldClass.N] ], // N
+        5: [ this.worldClasses[WorldClass.N] ], // N
+        6: [ this.worldClasses[WorldClass.N] ], // N
+        7: [ this.worldClasses[WorldClass.J] ], // J
+        8: [ this.worldClasses[WorldClass.J] ], // J
+        9: [ this.worldClasses[WorldClass.J] ], // J
+        10: [ this.worldClasses[WorldClass.J] ], // J
+        11: [ this.worldClasses[WorldClass.J] ], // J
+        12: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        13: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        14: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        15: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        16: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        17: [ this.worldClasses[WorldClass.H] ], // H
+        18: [ this.worldClasses[WorldClass.H] ], // H
+        19: [ this.worldClasses[WorldClass.H] ], // H
+        20: [ this.worldClasses[WorldClass.L], this.worldClasses[WorldClass.K], this.worldClasses[WorldClass.M] ], // L, K, or M
+    }
+
+    private outerWorldTable: { [roll: number]: WorldClassModel[] } = {
+        1: [ this.worldClasses[WorldClass.L] ], // L
+        2: [ this.worldClasses[WorldClass.C] ], // C
+        3: [ this.worldClasses[WorldClass.C] ], // C
+        4: [ this.worldClasses[WorldClass.C] ], // C
+        5: [ this.worldClasses[WorldClass.C] ], // C
+        6: [ this.worldClasses[WorldClass.J] ], // J
+        7: [ this.worldClasses[WorldClass.J] ], // J
+        8: [ this.worldClasses[WorldClass.J] ], // J
+        9: [ this.worldClasses[WorldClass.J] ], // J
+        10: [ this.worldClasses[WorldClass.J] ], // J
+        11: [ this.worldClasses[WorldClass.J] ], // J
+        12: [ this.worldClasses[WorldClass.J] ], // J
+        13: [ this.worldClasses[WorldClass.J] ], // J
+        14: [ this.worldClasses[WorldClass.J] ], // J
+        15: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        16: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        17: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        18: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        19: [ this.worldClasses[WorldClass.I] ], // I
+        20: [ this.worldClasses[WorldClass.P] ], // P
     }
 
     private primaryWorldTable: { [roll: number]: WorldClassModel[] } = {
-        1: [ this.worldClasses[7], this.worldClasses[3] ], // L or E
-        2: [ this.worldClasses[7], this.worldClasses[3] ], // L or E
-        3: [ this.worldClasses[7], this.worldClasses[3] ], // L or E
-        4: [ this.worldClasses[7], this.worldClasses[3] ], // L or E
-        5: [ this.worldClasses[7], this.worldClasses[3] ], // L or E
-        6: [ this.worldClasses[8] ], // M
-        7: [ this.worldClasses[8] ], // M
-        8: [ this.worldClasses[8] ], // M
-        9: [ this.worldClasses[8] ], // M
-        10: [ this.worldClasses[8] ], // M
-        11: [ this.worldClasses[8] ], // M
-        12: [ this.worldClasses[8] ], // M
-        13: [ this.worldClasses[6] ], // K
-        14: [ this.worldClasses[6] ], // K
-        15: [ this.worldClasses[6] ], // K
-        16: [ this.worldClasses[6] ], // K
-        17: [ this.worldClasses[6] ], // K
-        18: [ this.worldClasses[6] ], // K
-        19: [ this.worldClasses[9], this.worldClasses[10] ], // O or P
-        20: [ this.worldClasses[9], this.worldClasses[10] ], // O or P
+        1: [ this.worldClasses[WorldClass.L], this.worldClasses[WorldClass.E] ], // L or E
+        2: [ this.worldClasses[WorldClass.L], this.worldClasses[WorldClass.E] ], // L or E
+        3: [ this.worldClasses[WorldClass.L], this.worldClasses[WorldClass.E] ], // L or E
+        4: [ this.worldClasses[WorldClass.L], this.worldClasses[WorldClass.E] ], // L or E
+        5: [ this.worldClasses[WorldClass.L], this.worldClasses[WorldClass.E] ], // L or E
+        6: [ this.worldClasses[WorldClass.M] ], // M
+        7: [ this.worldClasses[WorldClass.M] ], // M
+        8: [ this.worldClasses[WorldClass.M] ], // M
+        9: [ this.worldClasses[WorldClass.M] ], // M
+        10: [ this.worldClasses[WorldClass.M] ], // M
+        11: [ this.worldClasses[WorldClass.M] ], // M
+        12: [ this.worldClasses[WorldClass.M] ], // M
+        13: [ this.worldClasses[WorldClass.K] ], // K
+        14: [ this.worldClasses[WorldClass.K] ], // K
+        15: [ this.worldClasses[WorldClass.K] ], // K
+        16: [ this.worldClasses[WorldClass.K] ], // K
+        17: [ this.worldClasses[WorldClass.K] ], // K
+        18: [ this.worldClasses[WorldClass.K] ], // K
+        19: [ this.worldClasses[WorldClass.O], this.worldClasses[WorldClass.P] ], // O or P
+        20: [ this.worldClasses[WorldClass.O], this.worldClasses[WorldClass.P] ], // O or P
     }
-
-    private gardenZoneTable: GardenZone[] = [
-        new GardenZone(SpectralClass.O, LuminosityClass.Ia, 790, 1190),
-        new GardenZone(SpectralClass.O, LuminosityClass.Ib, 630, 950),
-        new GardenZone(SpectralClass.O, LuminosityClass.V, 500, 750),
-        new GardenZone(SpectralClass.B, LuminosityClass.Ia, 500, 750),
-        new GardenZone(SpectralClass.B, LuminosityClass.Ib, 320, 480),
-        new GardenZone(SpectralClass.B, LuminosityClass.II, 250, 375),
-        new GardenZone(SpectralClass.B, LuminosityClass.III, 200, 300),
-        new GardenZone(SpectralClass.B, LuminosityClass.IV, 180, 270),
-        new GardenZone(SpectralClass.B, LuminosityClass.V, 30, 45),
-        new GardenZone(SpectralClass.A, LuminosityClass.Ia, 200, 300),
-        new GardenZone(SpectralClass.A, LuminosityClass.Ib, 50, 75),
-        new GardenZone(SpectralClass.A, LuminosityClass.II, 20, 30),
-        new GardenZone(SpectralClass.A, LuminosityClass.III, 5.0, 7.5),
-        new GardenZone(SpectralClass.A, LuminosityClass.IV, 4.0, 6.0),
-        new GardenZone(SpectralClass.A, LuminosityClass.V, 3.1, 4.7),
-        new GardenZone(SpectralClass.F, LuminosityClass.Ia, 200, 300),
-        new GardenZone(SpectralClass.F, LuminosityClass.Ib, 50, 75),
-        new GardenZone(SpectralClass.F, LuminosityClass.II, 13, 19),
-        new GardenZone(SpectralClass.F, LuminosityClass.III, 2.5, 3.7),
-        new GardenZone(SpectralClass.F, LuminosityClass.IV, 2.0, 3.0),
-        new GardenZone(SpectralClass.F, LuminosityClass.V, 1.6, 2.4),
-        new GardenZone(SpectralClass.G, LuminosityClass.Ia, 160, 240),
-        new GardenZone(SpectralClass.G, LuminosityClass.Ib, 50, 75),
-        new GardenZone(SpectralClass.G, LuminosityClass.II, 13, 19),
-        new GardenZone(SpectralClass.G, LuminosityClass.III, 3.1, 4.7),
-        new GardenZone(SpectralClass.G, LuminosityClass.IV, 1.0, 1.5),
-        new GardenZone(SpectralClass.G, LuminosityClass.V, 0.8, 1.2),
-        new GardenZone(SpectralClass.G, LuminosityClass.VI, 0.5, 0.8),
-        new GardenZone(SpectralClass.K, LuminosityClass.Ia, 125, 190),
-        new GardenZone(SpectralClass.K, LuminosityClass.Ib, 50, 75),
-        new GardenZone(SpectralClass.K, LuminosityClass.II, 13, 19),
-        new GardenZone(SpectralClass.K, LuminosityClass.III, 4.0, 5.9),
-        new GardenZone(SpectralClass.K, LuminosityClass.IV, 1.0, 1.5),
-        new GardenZone(SpectralClass.K, LuminosityClass.V, 0.5, 0.6),
-        new GardenZone(SpectralClass.K, LuminosityClass.VI, 0.2, 0.3),
-        new GardenZone(SpectralClass.M, LuminosityClass.Ia, 100, 150),
-        new GardenZone(SpectralClass.M, LuminosityClass.Ib, 50, 76),
-        new GardenZone(SpectralClass.M, LuminosityClass.II, 16, 24),
-        new GardenZone(SpectralClass.M, LuminosityClass.III, 5.0, 7.5),
-        new GardenZone(SpectralClass.M, LuminosityClass.IV, 1.0, 1.5),
-        new GardenZone(SpectralClass.M, LuminosityClass.V, 0.1, 0.2),
-        new GardenZone(SpectralClass.M, LuminosityClass.VI, 0.1, 0.1),
-    ];
-
-
 
     private notableSystemsTable: { [roll: number] : number } = {
         1: 3,
@@ -438,6 +401,29 @@ class SystemGeneration {
         18: 4,
         19: 4,
         20: 5,
+    }
+
+    private asteroidSizeTable: { [roll: number] : number } = {
+        1: 1,
+        2: 5,
+        3: 10,
+        4: 25,
+        5: 50,
+        6: 75,
+        7: 100,
+        8: 150,
+        9: 200,
+        10: 300,
+        11: 500,
+        12: 1000,
+        13: 2500,
+        14: 5000,
+        15: 10000,
+        16: 25000,
+        17: 50000,
+        18: 100000,
+        19: 250000,
+        20: 500000,
     }
 
     private stellarMassTable: StellarMass[] = [
@@ -654,6 +640,16 @@ class SystemGeneration {
         return new SectorCoordinates(x, y, z);
     }
 
+    rollWorldType(table: { [roll: number]: WorldClassModel[] }) {
+        let worldRoll = D20.roll();
+        let worldTypes = table[worldRoll];
+        let worldType = worldTypes[0];
+        if (worldTypes.length > 1) {
+            worldType = worldTypes[Math.floor(Math.random() * worldTypes.length)];
+        }
+        return worldType;
+    }
+
     generateSystem(starSystem: StarSystem) {
 
         if (!starSystem.star.spectralClass.isDwarf) {
@@ -662,56 +658,149 @@ class SystemGeneration {
             roll = Math.max(1, Math.min(20, roll));
 
             let worldCount = this.numberOfPlanetsTable[roll];
-
+            let orbits = Orbits.createOrbits(worldCount, starSystem);
             let primaryWorldOrbit =  Math.min(worldCount, Math.ceil(D20.roll() / 4.0));
-
-            let initialOrbit = this.determineInitialOrbit(starSystem);
-            let bodeConstant = (D20.roll() / 4) * 0.1;
-            let orbitIndex = 0;
-            let orbitId = 0;
-
-            for (let i = 1; i <= worldCount; i++) {
-
-                let worldRoll = D20.roll();
-                let worldTypes =  (i === primaryWorldOrbit) 
-                    ? this.primaryWorldTable[worldRoll] 
-                    : this.innerOrOuterWorldTable[worldRoll];
-                let worldType = worldTypes[0];
-                if (worldTypes.length > 1) {
-                    worldType = worldTypes[Math.floor(Math.random() * worldTypes.length)];
-                }
-
-                let orbitalRadius = (orbitIndex === 0) 
-                        ? initialOrbit
-                        : initialOrbit + Math.pow(BLAGG_CONSTANT, orbitIndex) * bodeConstant;
-
-                if (D20.roll() === 20) {
-                    orbitIndex += 1; // throw in an empty orbit
-                }
-                orbitIndex += 1;
-        
-        
-                if (orbitalRadius > LuminosityTable.tenabilityRadius(starSystem.star.luminosityValue)) {
-                    let world = new World(worldType, worldType.id === WorldClass.AsteroidBelt ? undefined : orbitId++);
-                    if (worldType.id === WorldClass.AsteroidBelt) {
-                        world.numberOfSatellites = 0;
-                    } else if (worldType.isGasGiant) {
-                        world.numberOfSatellites = Math.ceil(D20.roll() / 4);
+            
+            let primaryOrbit = orbits.orbits[primaryWorldOrbit - 1];
+            if (!starSystem.isInGardenZone(primaryOrbit.radius)) {
+                // the randomly-chosen primary world orbit is not normally in the right radius to be habitable
+                let candidates = orbits.between(starSystem.gardenZoneInnerRadius, starSystem.gardenZoneOuterRadius);
+                if (candidates.length > 0) {
+                    if (D20.roll() !== 20) {
+                        let r = Math.floor(Math.random() * candidates.length);
+                        primaryWorldOrbit = candidates[r].index;
+                        console.log(starSystem.star.description + ": This primary doesn't look habitable. Change it to: " + primaryWorldOrbit);
                     } else {
-                        world.numberOfSatellites = this.numberOfMoonsTable[D20.roll()];
+                        console.log(starSystem.star.description + ": This primary doesn't look habitable. Let's consider it weird");
                     }
-                    world.orbitalRadius = orbitalRadius;
-    
-                    starSystem.world.push(world);
+                } else {
+                    console.log(starSystem.star.description + ": This primary doesn't look habitable, and the system has no viable options");
                 }
             }
-        } else {
-            console.log("star " + starSystem.star.spectralClass.id + " is a dwarf?");
+
+            let romanNumeralId = 0;
+
+            for (let i = 0; i < worldCount; i++) {
+
+                let orbit = orbits.orbits[i];
+
+                let table = this.innerWorldTable;
+                if (i === (primaryWorldOrbit-1)) {
+                    table = this.primaryWorldTable;
+                } else if (orbit.radius > starSystem.gardenZoneOuterRadius) {
+                    table = this.outerWorldTable;
+                } else if (orbit.radius >= starSystem.gardenZoneInnerRadius) {
+                    table = this.primaryWorldTable;
+                }
+
+                let worldType = this.rollWorldType(table);
+
+                let world = new World(worldType, worldType.id === WorldClass.AsteroidBelt ? undefined : romanNumeralId++);
+                if (worldType.id === WorldClass.AsteroidBelt) {
+                    world.numberOfSatellites = 0;
+                } else if (worldType.isGasGiant) {
+                    world.numberOfSatellites = Math.ceil(D20.roll() / 4);
+                } else {
+                    world.numberOfSatellites = this.numberOfMoonsTable[D20.roll()];
+                }
+                world.orbitalRadius = orbit.radius;
+                world.period = Math.sqrt(Math.pow(world.orbitalRadius, 3) / starSystem.star.mass);
+
+                if (world.worldClass.id === WorldClass.AsteroidBelt) {
+                    let details = new AsteroidBeltDetails();
+
+                    let roll = Math.ceil((D20.roll() + D20.roll()) / 2);
+                    details.asteroidSize = this.asteroidSizeTable[roll];
+                    world.worldDetails = details;
+                } else if (world.worldClass.isGasGiant) {
+                    this.calculateGasGiantSize(world);
+                } else {
+                    this.calculateStandardPlanetSize(world, starSystem);
+                }
+
+
+                starSystem.world.push(world);
+            }
         }
     }
 
-    determineInitialOrbit(system: StarSystem) {
-        return D20.roll() / 20;
+    calculateGasGiantSize(world: World) {
+        let minimumDiameter = 50000;
+        let maximumDiameter = 140000;
+
+        if (world.worldClass.id === WorldClass.I) {
+            minimumDiameter = 140000;
+            maximumDiameter = 10000000;
+//        } else if (world.worldClass.id === WorldClass.S) {
+//            minimumDiameter = 10000000;
+//            maximumDiameter = 50000000;
+        } else if (world.worldClass.id === WorldClass.T) {
+            minimumDiameter = 50000000;
+            maximumDiameter = 120000000;
+        }
+
+        let delta = (maximumDiameter - minimumDiameter) / (40 - 1);
+        let roll = D20.roll() + D20.roll();
+
+        let diameter = (roll - 2) * delta + minimumDiameter;
+        world.diameter = LuminosityTable.addNoiseToValue(diameter);
+        world.density = LuminosityTable.addNoiseToValue((D20.roll() + D20.roll()) / 2  * 0.01 + 0.1);
+    }
+
+    calculateStandardPlanetSize(world: World, starSystem: StarSystem) {
+        // class E, F, G, L, M, N, P, O
+        let minimumDiameter = 10000;
+        let maximumDiameter = 15000;
+
+        if (world.worldClass.id === WorldClass.K) {
+            minimumDiameter = 5000;
+        } else if (world.worldClass.id === WorldClass.H) {
+            minimumDiameter = 8000;
+        } else if (world.worldClass.id === WorldClass.Y) {
+            maximumDiameter = 50000;
+        } else if (world.worldClass.id === WorldClass.B) {
+            minimumDiameter = 1000;
+            maximumDiameter = 10000;
+        } else if (world.worldClass.id === WorldClass.D) {
+            minimumDiameter = 100;
+            maximumDiameter = 1000;
+        }
+        let delta = (maximumDiameter - minimumDiameter) / (40 - 1);
+        let roll = D20.roll() + D20.roll();
+        let diameter = (roll - 2) * delta + minimumDiameter;
+        world.diameter = LuminosityTable.addNoiseToValue(diameter);
+
+        let core = D20.roll() > 2 ? WorldCoreType.Molten : WorldCoreType.Heavy;
+        if (world.worldClass.id === WorldClass.B || world.worldClass.id === WorldClass.E || world.worldClass.id === WorldClass.Y) { // also F
+            core = WorldCoreType.Molten;
+        } else if (world.worldClass.id === WorldClass.M || world.worldClass.id === WorldClass.K 
+                || world.worldClass.id === WorldClass.L || world.worldClass.id === WorldClass.O) {
+            core = D20.roll() > 4 ? WorldCoreType.Molten : WorldCoreType.Heavy;
+        } else if (world.worldClass.id === WorldClass.D && starSystem.gardenZoneOuterRadius < world.orbitalRadius) {
+            core = D20.roll() >= 10 ? WorldCoreType.Icy : WorldCoreType.Rocky;
+        } else if (world.diameter < 6400 && starSystem.gardenZoneOuterRadius < world.orbitalRadius) {
+            let temp = D20.roll();
+            if (temp >= 14) {
+                core = WorldCoreType.Icy
+            } else if (temp >= 8) {
+                core = WorldCoreType.Rocky
+            } else {
+                core = WorldCoreType.Molten;
+            }
+        }
+        world.coreType = core;
+
+        if (world.coreType === WorldCoreType.Heavy) {
+            world.density = ((D20.roll() + D20.roll()) - 2) * 0.03 + 1.10;
+        } else if (world.coreType === WorldCoreType.Molten) {
+            world.density = ((D20.roll() + D20.roll()) - 2) * 0.01 + 0.8;
+        } else if (world.coreType === WorldCoreType.Rocky) {
+            world.density = ((D20.roll() + D20.roll()) - 2) * 0.01 + 0.48;
+        } else if (world.coreType === WorldCoreType.Icy) {
+            world.density = ((D20.roll() + D20.roll()) - 2) * 0.01 + 0.15;
+        }
+
+        world.gravity = world.mass * (Math.pow(12750, 2) / Math.pow(world.diameter, 2));
     }
 
     rollSpectralClass() {

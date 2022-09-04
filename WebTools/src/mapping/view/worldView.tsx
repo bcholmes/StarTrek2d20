@@ -1,10 +1,14 @@
 import React from "react";
 import { IPageProperties } from "../../pages/iPageProperties";
-import { StarSystem, World, WorldClass } from "../table/star";
+import { AsteroidBeltDetails, StarSystem, World, WorldClass, WorldDetails } from "../table/star";
 
 interface IWorldViewProperties extends IPageProperties {
     world: World;
     system: StarSystem;
+}
+
+export enum WorldCoreType {
+    Heavy, Molten, Rocky, Icy
 }
 
 class WorldView extends React.Component<IWorldViewProperties, {}> {
@@ -17,7 +21,7 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
             classification += " (" + this.props.world.worldClass.description + ")";
         }
 
-        return (<div className="mb-4">
+        return (<div className="mb-5">
             
             {this.renderDesignation()}
             <div className="row">
@@ -37,14 +41,119 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
                 </div>
             </div>
             <div className="row">
+                <div className="col-md-4 view-field-label pb-2">Orbital Period</div>
+                <div className="col-md-8 text-white">
+                    <div className="view-border-bottom pb-2">
+                        {this.props.world.period.toFixed(3) + ' Earth Years'}
+                    </div>
+                </div>
+            </div>
+            {this.renderSatellites()}
+            {this.renderSize(this.props.world)}
+            {this.renderDetails(this.props.world.worldDetails)}
+            {this.renderCore(this.props.world)}
+        </div>);
+    }
+
+    renderDetails(worldDetails: WorldDetails) {
+        if (worldDetails == null) {
+            return undefined;
+        } else if (worldDetails instanceof AsteroidBeltDetails) {
+            let details = worldDetails as AsteroidBeltDetails;
+
+            let sizeDetails = details.asteroidSize == null ? undefined :
+                (<div className="row">
+                <div className="col-md-4 view-field-label pb-2">Predominant Size:</div>
+                <div className="col-md-8 text-white">
+                    <div className="view-border-bottom pb-2">
+                        {(details.asteroidSize >= 1000 ? ((details.asteroidSize / 1000).toFixed(0) + "km") : (details.asteroidSize.toFixed(0) + "m")) 
+                            + " Diameter" }
+                    </div>
+                </div>
+            </div>);
+            return sizeDetails;
+        } else {
+            return undefined;
+        }
+    }
+
+    renderSize(world: World) {
+        if (world == null) {
+            return undefined;
+        } else {
+            let diameterDetails = world.diameter == null ? undefined :
+                (<div className="row">
+                <div className="col-md-4 view-field-label pb-2">Diameter</div>
+                <div className="col-md-8 text-white">
+                    <div className="view-border-bottom pb-2">
+                        {Math.round(world.diameter).toLocaleString("en-US") + " km"}
+                    </div>
+                </div>
+            </div>);
+            let densityDetails = world.density == null ? undefined :
+                (<div className="row">
+                <div className="col-md-4 view-field-label pb-2">Density</div>
+                <div className="col-md-8 text-white">
+                    <div className="view-border-bottom pb-2">
+                        {world.density.toFixed(2) + " Earth"}
+                    </div>
+                </div>
+            </div>);
+            let massDetails = world.mass == null ? undefined :
+                (<div className="row">
+                <div className="col-md-4 view-field-label pb-2">Mass</div>
+                <div className="col-md-8 text-white">
+                    <div className="view-border-bottom pb-2">
+                        {(world.mass >= 1000 ? Math.round(world.mass).toLocaleString("en-US") : world.mass.toFixed(2)) + " Earth"}
+                    </div>
+                </div>
+            </div>);
+            let gravityDetails = world.gravity == null ? undefined :
+                (<div className="row">
+                <div className="col-md-4 view-field-label pb-2">Gravity</div>
+                <div className="col-md-8 text-white">
+                    <div className="view-border-bottom pb-2">
+                        {(world.gravity.toFixed(2)) + " G"}
+                    </div>
+                </div>
+            </div>);
+    return (<div>
+                    {diameterDetails}
+                    {densityDetails}
+                    {massDetails}
+                    {gravityDetails}
+                </div>);
+        }
+    }
+
+    renderCore(world: World) {
+        if (world.coreType == null) {
+            return undefined;
+        } else {
+            return (<div className="row">
+                <div className="col-md-4 view-field-label pb-2">Core:</div>
+                <div className="col-md-8 text-white">
+                    <div className="view-border-bottom pb-2">
+                        {WorldCoreType[world.coreType]}
+                    </div>
+                </div>
+            </div>);
+        }
+    }
+
+    renderSatellites() {
+        if (this.props.world.worldClass.id === WorldClass.AsteroidBelt) {
+            return undefined;
+        } else {
+            return (<div className="row">
                 <div className="col-md-4 view-field-label pb-2">Satellites:</div>
                 <div className="col-md-8 text-white">
                     <div className="view-border-bottom pb-2">
                         {this.props.world.numberOfSatellites}
                     </div>
                 </div>
-            </div>
-        </div>);
+            </div>);
+        }
     }
 
     renderDesignation() {

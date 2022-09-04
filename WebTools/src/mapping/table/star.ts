@@ -1,5 +1,6 @@
 import { Color } from "../../common/colour";
 import { createRandomValue } from "../../common/randomValueGenerator";
+import { WorldCoreType } from "../view/worldView";
 
 export enum SpaceRegion {
     AlphaQuadrant,
@@ -141,6 +142,7 @@ export enum SpectralClass {
 
 export enum WorldClass {
     AsteroidBelt,
+    B,
     C,
     D, 
     E,
@@ -382,6 +384,10 @@ export class StarSystem {
         }
     }
 
+    isInGardenZone(radius: number) {
+        return (this.gardenZoneInnerRadius >= radius && this.gardenZoneOuterRadius < radius)
+    }
+
     clone() {
         let result = new StarSystem(this.star);
         result.id = this.id;
@@ -428,12 +434,38 @@ export class StarSystem {
     }
 }
 
+export interface WorldDetails {
+
+}
+
+export class AsteroidBeltDetails implements WorldDetails {
+    asteroidSize: number;
+    nickelIronPercent: number;
+    carbonaceousOrIcePercent: number;
+    mixedPercent: number;
+}
+
+
 export class World {
 
     worldClass: WorldClassModel;
     orbit: number;
     numberOfSatellites: number;
     orbitalRadius: number = 0;
+    period: number;
+    worldDetails?: WorldDetails;
+    diameter?: number;
+    density?: number;
+    coreType?: WorldCoreType;
+    gravity?: number;
+
+    get mass() {
+        if (this.diameter != null && this.density != null) {
+            return (this.density * Math.pow(this.diameter / 12750, 3));
+        } else {
+            return undefined;
+        }
+    }
 
     constructor(worldClass: WorldClassModel, orbit?: number) {
         this.worldClass = worldClass;
@@ -448,6 +480,10 @@ export class World {
         return "Class: " + this.worldClass.description + "\n" +
             "Orbit: " + this.orbitLabel + "\n" +
             "Number of satellites: " + this.numberOfSatellites + "\n" +
-            "Orbital Radius: " + this.orbitalRadius.toFixed(2);
+            "Orbital Radius: " + this.orbitalRadius.toFixed(2) +
+            (this.diameter != null ? ("\nDiameter: " + Math.round(this.diameter).toLocaleString("en_US") + " km") : "") +
+            (this.density != null ? ("\nDensity: " + this.density.toFixed(3) + " Sol") : "") +
+            (this.mass != null ? ("\nMass: " + this.mass.toFixed(3) + " Sol") : "") +
+            (this.coreType != null ? ("\nCore: " + WorldCoreType[this.coreType]) : "");
     }
 }
