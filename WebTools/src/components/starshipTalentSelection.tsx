@@ -46,8 +46,9 @@ export class StarshipTalentSelectionList extends React.Component<IStarshipTalent
                 temp.splice(temp.indexOf(t.name), 1);
             }
         });
+
         // did something get deleted?
-        if (temp.length > 0) {
+        if (temp.length > 0 || this.state.selectedTalents.length > this.props.points) {
             let newValues = [...this.state.selectedTalents];
             temp.forEach(t => {
                 while (newValues.indexOf(t) >= 0) {
@@ -55,6 +56,10 @@ export class StarshipTalentSelectionList extends React.Component<IStarshipTalent
                 }
             });
 
+            while (newValues.length > this.props.points) {
+                newValues.splice(0, 1);
+            }
+    
             this.setState((state) => ({...state, selectedTalents: newValues }));
             this.invokeCallback(newValues);
         }
