@@ -127,7 +127,7 @@ export class Starship extends Construct {
         }
     }
 
-    getShields() {
+    get shields() {
         if (this.spaceframeModel && this.departments) {
             let base = this.getSystemValue(System.Structure) + this.departments[Department.Security];
             let advanced = this.getTalentSelectionList().filter(t => t.talent.name === "Advanced Shields");

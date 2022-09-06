@@ -27,6 +27,7 @@ import { Starship } from '../common/starship';
 import store from '../state/store';
 import { hasSource } from '../state/contextFunctions';
 import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
+import RegistryNumber from '../components/registryNumberGenerator';
 
 interface StarshipPageState {
     type: CharacterTypeModel
@@ -328,17 +329,25 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
             <div className="page-text-aligned">
                 To go with the name, each Federation starship has a registry number.
                 This is a four- (for games set in the Original Series era), or five-digit number (for games set in the Next Generation era), prefixed by either the letters NCC, or NX.
-                NCC is used for most ships, but NX is reserved for prototype vessels and the first ship of a class , in honor of the first Human starships able to reach warp 5. 
+                NCC is used for most ships, but NX is reserved for prototype vessels and the first ship of a class, in honor of the first Human starships able to reach warp 5. 
             </div>
-            <div className="textinput-label">REGISTRY NUMBER</div>
-            <input
-                type="text"
-                onChange={(ev) => {
-                    this._registry = (ev.target as HTMLInputElement).value;
-                    this.starship.registry = this._registry;
-                    this.forceUpdate();
-                } }
-                value={this._registry} />
+            <div className="row">
+                <div className="col-lg-9 mt-3">
+                    <div className="textinput-label">REGISTRY NUMBER</div>
+                    
+                    <input
+                        type="text"
+                        onChange={(ev) => {
+                            this._registry = (ev.target as HTMLInputElement).value;
+                            this.starship.registry = this._registry;
+                            this.forceUpdate();
+                        } }
+                        value={this._registry} />
+                </div>
+                <div className="col-lg-3 text-right mt-3">
+                    <Button className="button-small" text="Random" onClick={() => this.generateRegistryNumber()} buttonType={true}/>
+                </div>
+            </div>
         </div>);
 
         return (
@@ -475,6 +484,13 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                         onBlur={() => {this.setState((state) => ({...state, serviceYearChanging: false}))}} 
                         />
                 </div>);
+    }
+
+    generateRegistryNumber() {
+        let registryNumber = RegistryNumber.generate(this.starship.serviceYear, this.starship.type, this.starship.spaceframeModel);
+        this._registry = registryNumber;
+        this.starship.registry = registryNumber;
+        this.forceUpdate();
     }
 
     showViewPage() {

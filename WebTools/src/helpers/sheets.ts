@@ -223,8 +223,8 @@ abstract class BasicStarshipSheet extends BasicSheet {
             this.fillField(form, "Crew Total",  this.calculateCrewSupport(starship.scale));
         }
 
-        if (starship.spaceframeModel && starship.departments[Department.Security]) {
-            this.fillShields(form, this.calculateShields(starship.getSystemValue(System.Structure) + starship.departments[Department.Security], talents));
+        if (starship.spaceframeModel && starship.departments[Department.Security] && starship.shields != null) {
+            this.fillShields(form, starship.shields);
         }
 
         this.fillRefits(form, starship);

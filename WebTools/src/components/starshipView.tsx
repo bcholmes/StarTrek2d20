@@ -143,10 +143,10 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
     }
 
     renderShields() {
-        let shield = this.props.starship.getShields();
+        let shield = this.props.starship.shields;
         if (shield) {
             let iterator = [];
-            for (let i = 1; i <= 25; i++) {
+            for (let i = 1; i <= Math.max(25, Math.ceil(shield / 5) * 5); i++) {
                 iterator.push(i);
             }
 
