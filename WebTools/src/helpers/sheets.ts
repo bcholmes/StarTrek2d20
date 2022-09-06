@@ -215,7 +215,8 @@ abstract class BasicStarshipSheet extends BasicSheet {
         }
 
         if (starship.spaceframeModel) {
-            this.fillField(form, "Power Total", this.calculatePower(starship.getSystemValue(System.Engines), talents));
+            let power = starship.power;
+            this.fillField(form, "Power Total", starship.power == null ? "" : power.toString());
         }
         if (starship.scale) {
             this.fillField(form, "Resistance",  this.calculateResistance(starship.scale, talents));
@@ -254,16 +255,6 @@ abstract class BasicStarshipSheet extends BasicSheet {
         }
 
         return resistance.toString();
-    }
-
-    calculatePower(base: number, talents: string[]) {
-        var power = base;
-
-        if (talents.indexOf("Secondary Reactors") > -1) {
-            power += 5;
-        }
-
-        return power.toString();
     }
 
     fillTalents(form: PDFForm, talents: string[]) {

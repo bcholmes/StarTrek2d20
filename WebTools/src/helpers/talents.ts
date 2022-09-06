@@ -2544,13 +2544,13 @@ export class Talents {
                 "Advanced Sensor Suites",
                 "The vessel’s sensors are amongst the most sophisticated and advanced available in the fleet. Unless the ship’s Sensors have suffered one or more Breaches, whenever a character performs a Task assisted by the ship’s Sensors, they may reduce the Difficulty of the Task by one, to a minimum of 0.",
                 [new StarshipPrerequisite()],
-                5,
+                1,
                 "Starship"),
             new TalentModel(
                 "Advanced Shields",
                 "The vessel’s shields are state of the art, using developments that other cultures have not yet learned to overcome, or which simply provide greater protection for the same power expenditure. The ship’s maximum Shields are increased by 5.",
                 [new StarshipPrerequisite()],
-                1,
+                99,
                 "Starship"),
             new TalentModel(
                 "Advanced Sickbay",
@@ -2562,7 +2562,7 @@ export class Talents {
                 "Backup EPS Conduits",
                 "The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of an emergency, keeping it from being lost when the ship is damaged. Whenever the ship would lose one or more Power because of suffering damage, roll [D] for each Power lost. Each Effect rolled prevents the loss of that point of Power.",
                 [new StarshipPrerequisite()],
-                5,
+                99,
                 "Starship"),
             new TalentModel(
                 "Command Ship",
@@ -2640,7 +2640,7 @@ export class Talents {
                 "Improved Shield Recharge",
                 "The ship’s deflector shields have redundant capacitors and emitter arrays that allow the shields to be recharged and replenished much more efficiently. Whenever the Regenerate Shields Task is successful, the ship regains 3 points of Shields, plus 3 more for each Momentum spent (Repeatable), instead of the normal amount.",
                 [new StarshipPrerequisite(), new DepartmentPrerequisite(Department.Security, 3)],
-                5,
+                99,
                 "Starship"),
             new TalentModel(
                 "Improved Warp Drive",
@@ -2688,7 +2688,7 @@ export class Talents {
                 "Secondary Reactors",
                 "The ship has additional impulse and fusion reactors, that allow the ship to generate far greater quantities of energy. Increase the ship’s normal Power capacity by 5.",
                 [new StarshipPrerequisite()],
-                5,
+                99,
                 "Starship"),
             new TalentModel(
                 "Captain’s Yacht",
@@ -2736,7 +2736,7 @@ export class Talents {
                 "High-Power Tractor Beam",
                 "The ship’s tractor beam systems channel far greater quantities of power and exert much more force on the target. The ship’s tractor beam has a strength two higher than normal. Further, the ship may spend Power whenever a target attempts to escape the tractor beam to increase its strength for that attempt; the strength increases by 1 for every two Power spent.",
                 [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
-                5,
+                2,
                 "Starship"),
             new TalentModel(
                 "Independent Phaser Supply",

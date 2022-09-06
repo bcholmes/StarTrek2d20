@@ -27,6 +27,15 @@ export class Starship extends Construct {
         this.name = "";
     }
 
+    get power() {
+        let power = this.getSystemValue(System.Engines);
+        let bonus = this.getTalentSelectionList().filter(t => t.talent.name === "Secondary Reactors");
+        if (power != null && bonus.length > 0) {
+            power += (5 * bonus[0].rank);
+        }
+        return power;
+    }
+
     getAllTraits() {
         let trait = this.type === CharacterType.KlingonWarrior ? "Klingon Starship" : "Federation Starship";
         if (this.spaceframeModel) {
@@ -121,8 +130,9 @@ export class Starship extends Construct {
     getShields() {
         if (this.spaceframeModel && this.departments) {
             let base = this.getSystemValue(System.Structure) + this.departments[Department.Security];
-            if (this.getTalentNameList().indexOf("Advanced Shields") > -1) {
-                base += 5;
+            let advanced = this.getTalentSelectionList().filter(t => t.talent.name === "Advanced Shields");
+            if (advanced.length > 0) {
+                base += (5 * advanced[0].rank);
             }
             return base;
         } else {
