@@ -10,9 +10,9 @@ import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {ValueInput, Value} from '../components/valueInput';
-import { TalentSelectionList } from '../components/talentSelection';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { CharacterType } from '../common/characterType';
+import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
 
 interface IPageState {
     showExcessAttrDistribution: boolean;
@@ -76,13 +76,13 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
 
         const description = "At this stage, your character is almost complete, and needs only a few final elements and adjustments. This serves as a last chance to customize the character before play.";
 
-        let talents = TalentsHelper.getAllAvailableTalents();
+        let talents = this.filterTalentList();
 
         const talentSelection = character.workflow.currentStep().options.talentSelection
             ? (<div className="panel">
                 <div className="header-small">TALENTS</div>
-                <TalentSelectionList talents={talents} construct={character} 
-                    onSelection={talents => { this._selectedTalent = talents.length > 0 ? talents[0] : undefined; }} />
+                <SingleTalentSelectionList talents={talents} construct={character} 
+                    onSelection={talent => this._selectedTalent = talent } />
             </div>)
             : undefined;
 
@@ -131,6 +131,11 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
                 <Button text="FINISH" className="button-next" onClick={() => this.onNext() }/>
             </div>
         );
+    }
+
+    filterTalentList() {
+        return TalentsHelper.getAllAvailableTalents().filter(
+            t => !character.hasTalent(t.name) || (this._selectedTalent != null && t.name === this._selectedTalent.name) || t.rank > 1);
     }
 
     private attributesDone(done: boolean) {

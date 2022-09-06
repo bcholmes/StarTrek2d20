@@ -8,9 +8,9 @@ import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {TalentDescription} from '../components/talentDescription';
 import {ValueInput, Value} from '../components/valueInput';
-import { TalentSelectionList } from '../components/talentSelection';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
 
 export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
     private _talent: TalentViewModel;
@@ -29,8 +29,8 @@ export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
 
         const talent = career.talent.length === 1
             ? (<TalentDescription name={career.talent[0].name} description={career.talent[0].description}/>)
-            : (<TalentSelectionList talents={TalentsHelper.getAllAvailableTalents()} 
-                    construct={character} onSelection={(talents) => { this.onTalentSelected(talents) } }/>);
+            : (<SingleTalentSelectionList talents={this.filterTalentList()} 
+                    construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>);
 
         return (
             <div className="page">
@@ -52,8 +52,13 @@ export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
         );
     }
 
-    private onTalentSelected(talents: TalentViewModel[]) {
-        this._talent = talents.length > 0 ? talents[0] : undefined;
+    filterTalentList() {
+        return TalentsHelper.getAllAvailableTalents().filter(
+            t => !character.hasTalent(t.name) || (this._talent != null && t.name === this._talent.name) || t.rank > 1);
+    }
+
+    private onTalentSelected(talent: TalentViewModel) {
+        this._talent = talent;
         this.forceUpdate();
     }
 

@@ -11,7 +11,7 @@ import {Source} from "../helpers/sources";
 import {Button} from '../components/button';
 import {Refits} from "../components/refits";
 import { SmallHeader } from "../components/smallHeader";
-import {TalentSelectionList} from "../components/talentSelection";
+import {StarshipTalentSelectionList} from "../components/starshipTalentSelection";
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
 import { ModalControl } from '../components/modal';
@@ -26,6 +26,7 @@ import { marshaller } from '../helpers/marshaller';
 import { Starship } from '../common/starship';
 import store from '../state/store';
 import { hasSource } from '../state/contextFunctions';
+import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
 
 interface StarshipPageState {
     type: CharacterTypeModel
@@ -226,7 +227,6 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
             : undefined;
 
         const numAdditionalTalents = this.calculateTalents();
-        const filter = [this.state.profileTalent, ...spaceframeTalents];
         const additionalTalentOptions = numAdditionalTalents < this.starship.scale
             ? (
                 <div className="panel" style={{ marginTop: "2em" }}>
@@ -234,7 +234,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                     <div className="page-text-aligned">
                         Select {this.starship.scale - numAdditionalTalents} additional {(this.starship.scale - numAdditionalTalents === 1) ? ' talent ' : ' talents '} for your starship.
                     </div>
-                    <TalentSelectionList
+                    <StarshipTalentSelectionList
                         points={this.starship.scale - numAdditionalTalents}
                         talents={TalentsHelper.getStarshipTalents(this.starship)}
                         construct={this.starship}
@@ -395,12 +395,11 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                             <div className="page-text-aligned">
                                 Select one talent from those offered by the ship's Mission Profile.
                             </div>
-                            <TalentSelectionList
+                            <SingleTalentSelectionList
                                 talents={talents}
                                 construct={this.starship}
-                                onSelection={(talents) => {
-                                    if (talents.length > 0) {
-                                        let talent = talents[0];
+                                onSelection={(talent) => {
+                                    if (talent != null) {
                                         this.setState((state) => ({...state, profileTalent: talent.name}));
                                         this.starship.profileTalent = talent;
                                     } else {

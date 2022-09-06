@@ -11,10 +11,10 @@ import {Dialog} from '../components/dialog';
 import {ValueInput, Value} from '../components/valueInput';
 import {MajorsList} from '../components/majorsList';
 import {SkillView} from '../components/skill';
-import { TalentSelectionList } from '../components/talentSelection';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import { Header } from '../components/header';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
 
 export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties, {}> {
     private _talent: TalentViewModel;
@@ -80,8 +80,8 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelectionList talents={TalentsHelper.getAllAvailableTalents()} 
-                        construct={character} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <SingleTalentSelectionList talents={this.filterTalentList()} 
+                        construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -126,8 +126,8 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelectionList talents={TalentsHelper.getAllAvailableTalents()} 
-                        construct={character} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <SingleTalentSelectionList talents={this.filterTalentList()} 
+                        construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -176,8 +176,8 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelectionList talents={TalentsHelper.getAllAvailableTalents()} 
-                        onSelection={(talents) => { this.onTalentSelected(talents) } }
+                    <SingleTalentSelectionList talents={this.filterTalentList()} 
+                        onSelection={(talent) => { this.onTalentSelected(talent) } }
                         construct={character} />
                 </div>
                 <div className="panel">
@@ -237,8 +237,8 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelectionList talents={TalentsHelper.getAllAvailableTalents()} 
-                        construct={character} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <SingleTalentSelectionList talents={this.filterTalentList()} 
+                        construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -296,8 +296,8 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelectionList talents={TalentsHelper.getAllAvailableTalents()} 
-                        construct={character} onSelection={(talents) => { this.onTalentSelected(talents) } }/>
+                    <SingleTalentSelectionList talents={this.filterTalentList()} 
+                        construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
@@ -308,8 +308,13 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
         );
     }
 
-    private onTalentSelected(talents: TalentViewModel[]) {
-        this._talent = talents.length > 0 ? talents[0] : undefined;
+    filterTalentList() {
+        return TalentsHelper.getAllAvailableTalents().filter(
+            t => !character.hasTalent(t.name) || (this._talent != null && t.name === this._talent.name) || t.rank > 1);
+    }
+
+    private onTalentSelected(talent?: TalentViewModel) {
+        this._talent = talent;
         this.forceUpdate();
     }
 

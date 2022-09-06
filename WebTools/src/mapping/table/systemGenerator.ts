@@ -778,6 +778,8 @@ class SystemGeneration {
             core = D20.roll() > 4 ? WorldCoreType.Molten : WorldCoreType.Heavy;
         } else if (world.worldClass.id === WorldClass.D && starSystem.gardenZoneOuterRadius < world.orbitalRadius) {
             core = D20.roll() >= 10 ? WorldCoreType.Icy : WorldCoreType.Rocky;
+        } else if (world.worldClass.id === WorldClass.D) {
+            core = WorldCoreType.Rocky;
         } else if (world.diameter < 6400 && starSystem.gardenZoneOuterRadius < world.orbitalRadius) {
             let temp = D20.roll();
             if (temp >= 14) {

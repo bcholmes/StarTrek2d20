@@ -605,7 +605,7 @@ export class TalentViewModel {
     id: string;
     name: string;
     rank: number;
-    showRank: boolean;
+    hasRank: boolean;
     description: string;
     category: string;
     prerequisites: ITalentPrerequisite<Construct>[];
@@ -615,7 +615,7 @@ export class TalentViewModel {
         this.id = name;
         this.description = description;
         this.rank = rank;
-        this.showRank = showRank;
+        this.hasRank = showRank;
         this.displayName = this.constructDisplayName(name, rank, showRank, skill, category);
         this.name = name;
         this.prerequisites = prerequities;
@@ -2943,7 +2943,7 @@ export class Talents {
                     if (talent.maxRank > 1) {
                         let selections = starship.getTalentSelectionList().filter(t => t.talent.name === talent.name);
                         if (selections.length > 0) {
-                            rank = selections[0].rank;
+                            rank = selections[0].rank + 1;
                         }
                     }
 

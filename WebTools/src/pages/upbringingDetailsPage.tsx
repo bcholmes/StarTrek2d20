@@ -10,9 +10,9 @@ import {ElectiveSkillList} from '../components/electiveSkillList';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {CheckBox} from '../components/checkBox';
-import { TalentSelectionList } from '../components/talentSelection';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
 
 export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> {
     private _electiveSkills: Skill[];
@@ -31,7 +31,7 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
         var upbringing = character.upbringing;
 
         var nextPageName = character.workflow.peekNextStep().name;
-        let talents = TalentsHelper.getAllAvailableTalents();
+        let talents = this.filterTalentList()
 
         const attributes = this._accepted
             ? <div>
@@ -65,7 +65,7 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <TalentSelectionList talents={talents} onSelection={(talents) => { this.onTalentSelected(talents) } } construct={character}/>
+                    <SingleTalentSelectionList talents={talents} onSelection={(talent) => { this.onTalentSelected(talent) } } construct={character}/>
                 </div>
                 <div className="panel">
                     <div className="header-small">FOCUS</div>
@@ -81,6 +81,11 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
         );
     }
 
+    filterTalentList() {
+        return TalentsHelper.getAllAvailableTalents().filter(
+            t => !character.hasTalent(t.name) || (this._talent != null && t.name === this._talent.name) || t.rank > 1);
+    }
+
     private onAccepted(accepted: boolean) {
         this._accepted = accepted;
         this.forceUpdate();
@@ -91,8 +96,8 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
         this.forceUpdate();
     }
 
-    private onTalentSelected(talents: TalentViewModel[]) {
-        this._talent = talents.length === 0 ? undefined : talents[0];
+    private onTalentSelected(talent: TalentViewModel) {
+        this._talent = talent;
         this.forceUpdate();
     }
 

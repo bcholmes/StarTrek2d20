@@ -8,7 +8,6 @@ import { TalentsHelper, TalentViewModel, ToViewModel } from '../helpers/talents'
 import { Button } from '../components/button';
 import { CheckBox } from '../components/checkBox';
 import { Dialog } from '../components/dialog';
-import { TalentSelectionList } from '../components/talentSelection';
 import { Source } from '../helpers/sources';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { Species } from '../helpers/speciesEnum';
@@ -21,6 +20,7 @@ import { SmallHeader } from '../components/smallHeader';
 import { Header } from '../components/header';
 import { AttributeController, AttributeControllerFactory } from '../components/attributeController';
 import SpeciesAttributeComponent from '../components/speciesAttributeComponent';
+import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
 
 interface ISpeciesDetailsProperties extends IPageProperties {
     allowCrossSpeciesTalents: boolean;
@@ -114,8 +114,8 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
                     {this.renderCrossSpeciesCheckbox()}
                 </div>
                 {esotericTalentOption}
-                <TalentSelectionList talents={talents} construct={character} 
-                    onSelection={talents => this.onTalentSelected(talents.length > 0 ? talents[0] : undefined)} />
+                <SingleTalentSelectionList talents={talents} construct={character} 
+                    onSelection={talent => this.onTalentSelected(talent)} />
             </div>)
             : (<div>
                 <SmallHeader>SPECIES OPTIONS</SmallHeader>
