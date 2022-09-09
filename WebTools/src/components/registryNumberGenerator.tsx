@@ -1,5 +1,5 @@
 import { CharacterType } from "../common/characterType";
-import { Spaceframe, SpaceframeModel } from "../helpers/spaceframes";
+import { SpaceframeModel } from "../helpers/spaceframes";
 
 
 class RegistryNumberGenerator {
@@ -17,14 +17,19 @@ class RegistryNumberGenerator {
         1764: "Defiant",
         1864: "Reliant",
         2000: "Excelsior",
+        2893: "Stargazer",
         42296: "Hood",
+        53847: "Pegasus",
+        65420: "Phoenix",
         71807: "Yamato",
         71832: "Odyssey",
         71201: "Prometheus",
         74205: "Defiant",
         74656: "Voyager",
-        74913: "Prometheus"
-
+        74913: "Prometheus",
+        80102: "Titan",
+        82893: "Stargazer",
+        86505: "Zheng He"
     }
 
     generate(serviceYear: number, type: CharacterType, spaceframe: SpaceframeModel) {

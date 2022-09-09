@@ -2798,31 +2798,43 @@ export class Talents {
             new TalentModel(
                 "Docking Capacity",
                 "The station has additional ports and pylons that allow it to support a greater number of docked vessels as well as larger vessels than would normally be the case. The starbase has a number of docking ports equal to one-and-a-half times its Scale (rounding down), instead of half its Scale. The maximum Scale of any ship that may dock at the station is increased by 2.",
-                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
+                5,
+                "Starbase"),
+            new TalentModel(
+                "Drydock",
+                "A space station with this talent has facilities that can assist in construction or repair of starships, including the fabrication facilities for equipment, and limited refining capabilities for producing alloys from raw material. Space stations with this talent provide an advantage called Drydock that applies to all repairs and construction tasks involved with starships docked to it.",
+                [new StarbasePrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
                 5,
                 "Starbase"),
             new TalentModel(
                 "Enhanced Defense Grid",
                 "The station’s Shields are increased by an amount equal to half the station’s Scale.",
-                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
                 5,
                 "Starbase"),
             new TalentModel(
                 "Firebase",
                 "The station is built to defend itself and surrounding space from attack and can unleash colossal firepower. Whenever a character makes an Attack with the station, they may use the Swift Task Momentum Spend for 1 Momentum instead of the normal 2, so long as their second Task is also an Attack.",
-                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
                 1,
                 "Starbase"),
             new TalentModel(
                 "Repair Crews",
                 "With additional personnel to support repair and maintenance work, the station may prioritize repairs to a number of ships equal to its Engineering Department.",
-                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
+                1,
+                "Starbase"),
+            new TalentModel(
+                "Self-Propelled",
+                "All space stations have limited propulsive capabilities to adjust their orbit around a planetary body or move slowly through empty space to new positions. A space station with this talent has the ability to not only move through regular space, but to also move at warp speeds. The majority of space stations with this talent are self-propelled drydocks capable of assisting stranded starships or moving between star systems to where they are most needed. All Power requirements for tasks related to warp speeds are doubled to represent the bulk and mass of the station.",
+                [new StarbasePrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
                 1,
                 "Starbase"),
             new TalentModel(
                 "Sturdy Construction",
                 "When the station suffers damage, after Resistance, from an attack or hazard, it suffers a Breach if 8 or more damage is inflicted, rather than 5 or more as is normally the case.",
-                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
                 1,
                 "Starbase"),
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { IPageProperties } from "../../pages/iPageProperties";
-import { AsteroidBeltDetails, StarSystem, World, WorldClass, WorldDetails } from "../table/star";
+import { AsteroidBeltDetails, StandardWorldDetails, StarSystem, World, WorldClass, WorldDetails } from "../table/star";
 
 interface IWorldViewProperties extends IPageProperties {
     world: World;
@@ -72,6 +72,41 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
                 </div>
             </div>);
             return sizeDetails;
+        } else if (worldDetails instanceof StandardWorldDetails) {
+            let details = worldDetails as StandardWorldDetails;
+
+            let rotationDetails = details.rotationPeriod == null ? undefined :
+                    (<div className="row">
+                    <div className="col-md-4 view-field-label pb-2">Rotation</div>
+                    <div className="col-md-8 text-white">
+                        <div className="view-border-bottom pb-2">
+                            {details.rotationPeriod.toFixed(2) + " hours" + (details.retrograde ? " (retrograde)" : "")}
+                        </div>
+                    </div>
+                </div>);
+            let tidallyLocked = details.tidallyLocked ? 
+                (<div className="row">
+                    <div className="col-md-4 view-field-label pb-2">Rotation</div>
+                    <div className="col-md-8 text-white">
+                        <div className="view-border-bottom pb-2">
+                            Tidally Locked
+                        </div>
+                    </div>
+                </div>) : undefined;
+            let waterDetails = details.hydrographicPercentage == null ? undefined :
+                (<div className="row">
+                    <div className="col-md-4 view-field-label pb-2">Water coverage</div>
+                    <div className="col-md-8 text-white">
+                        <div className="view-border-bottom pb-2">
+                            {details.hydrographicPercentage.toFixed(2) + '%'}
+                        </div>
+                    </div>
+                </div>);
+            return (<div>
+                {rotationDetails}
+                {tidallyLocked}
+                {waterDetails}
+            </div>);
         } else {
             return undefined;
         }
@@ -117,7 +152,7 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
                     </div>
                 </div>
             </div>);
-    return (<div>
+        return (<div>
                     {diameterDetails}
                     {densityDetails}
                     {massDetails}

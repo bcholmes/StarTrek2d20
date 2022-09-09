@@ -117,7 +117,7 @@ class Sources {
     getSourceName(sources: Source[]) {
         let result = "";
         sources.forEach((s) => { 
-            if (s !== Source.None) {
+            if (s !== Source.None && this._sources[s].available) {
                 result = (result === "") ? this._sources[s].name : (result + ", " + this._sources[s].name);
             } 
         });

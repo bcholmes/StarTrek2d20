@@ -19,6 +19,7 @@ export class Orbit {
 
 export class Orbits {
 
+    public primaryWorldOrbit: number;
     public orbits: Orbit[] = [];
 
     between(inner: number, outer: number) {
@@ -28,19 +29,36 @@ export class Orbits {
     static createOrbits(numberOfWorlds: number, system: StarSystem) {
         let orbits = new Orbits();
         let initialOrbit = this.determineInitialOrbit(system);
+        if (initialOrbit < LuminosityTable.tenabilityRadius(system.star.luminosityValue)) {
+            initialOrbit = LuminosityTable.tenabilityRadius(system.star.luminosityValue) * 1.05;
+        }
         let bodeConstant = (D20.roll() / 4) * 0.1;
         let hasGardenZoneOrbit = false;
+
+        orbits.primaryWorldOrbit =  Math.min(numberOfWorlds, Math.ceil(D20.roll() / 4.0));
+
+        console.log("System: " + system.star.description + ". Primary world: " + orbits.primaryWorldOrbit);
+        if (orbits.primaryWorldOrbit > 1) {
+            let idealBode = (system.gardenZoneIdealRadius - initialOrbit) / (Math.pow(BLAGG_CONSTANT, orbits.primaryWorldOrbit - 1));
+
+            if (idealBode < 0.001 || system.gardenZoneIdealRadius < 0.05) {
+                console.log(">>>>>> Ideal bode is " + idealBode + " which doens't help. GZ =" + system.gardenZoneInnerRadius.toFixed(3) + " - " + system.gardenZoneOuterRadius.toFixed(3));
+                orbits.primaryWorldOrbit = 1; 
+                initialOrbit = system.gardenZoneIdealRadius;
+            } else {
+                console.log("Ideal bode: " + idealBode + " seems pretty viable. GZ =" + system.gardenZoneInnerRadius.toFixed(3) + " - " + system.gardenZoneOuterRadius.toFixed(3));
+                bodeConstant = idealBode;
+            }
+        } else {
+            initialOrbit = system.gardenZoneIdealRadius;
+        }
 
         let bodeIndex = 0;
         for (let i = 1; i <= numberOfWorlds; i++) {
 
             let orbitalRadius = this.determineRadius(bodeIndex++, initialOrbit, bodeConstant);
 
-            while (orbitalRadius < LuminosityTable.tenabilityRadius(system.star.luminosityValue)) {
-                // skip over non-viable orbits
-                orbitalRadius = this.determineRadius(bodeIndex++, initialOrbit, bodeConstant);
-            }
-            if (D20.roll() === 20 && (hasGardenZoneOrbit || !system.isInGardenZone(orbitalRadius))) {
+            if (D20.roll() === 20 && (hasGardenZoneOrbit || system.gardenZoneOuterRadius < orbitalRadius)) {
                 // consider the calculated radius to be an "empty" orbit
                 orbitalRadius = this.determineRadius(bodeIndex++, initialOrbit, bodeConstant);
             }

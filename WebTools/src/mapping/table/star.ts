@@ -445,6 +445,13 @@ export class AsteroidBeltDetails implements WorldDetails {
     mixedPercent: number;
 }
 
+export class StandardWorldDetails implements WorldDetails {
+    tidallyLocked: boolean;
+    retrograde: boolean;
+    rotationPeriod: number;
+    hydrographicPercentage: number;
+}
+
 
 export class World {
 

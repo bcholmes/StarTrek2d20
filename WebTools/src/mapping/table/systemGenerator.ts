@@ -5,7 +5,7 @@ import store from "../../state/store";
 import { WorldCoreType } from "../view/worldView";
 import { LuminosityTable } from "./luminosityTable";
 import { Orbits } from "./orbit";
-import { LuminosityClass, LuminosityClassModel, Sector, SectorCoordinates, SpectralClass, SpectralClassModel, Star, StarSystem, Range, World, WorldClass, WorldClassModel, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon, AsteroidBeltDetails } from "./star";
+import { LuminosityClass, LuminosityClassModel, Sector, SectorCoordinates, SpectralClass, SpectralClassModel, Star, StarSystem, Range, World, WorldClass, WorldClassModel, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon, AsteroidBeltDetails, StandardWorldDetails } from "./star";
 
 const BLAGG_CONSTANT = 1.7275;
 
@@ -659,25 +659,8 @@ class SystemGeneration {
 
             let worldCount = this.numberOfPlanetsTable[roll];
             let orbits = Orbits.createOrbits(worldCount, starSystem);
-            let primaryWorldOrbit =  Math.min(worldCount, Math.ceil(D20.roll() / 4.0));
+            let primaryWorldOrbit =  orbits.primaryWorldOrbit;
             
-            let primaryOrbit = orbits.orbits[primaryWorldOrbit - 1];
-            if (!starSystem.isInGardenZone(primaryOrbit.radius)) {
-                // the randomly-chosen primary world orbit is not normally in the right radius to be habitable
-                let candidates = orbits.between(starSystem.gardenZoneInnerRadius, starSystem.gardenZoneOuterRadius);
-                if (candidates.length > 0) {
-                    if (D20.roll() !== 20) {
-                        let r = Math.floor(Math.random() * candidates.length);
-                        primaryWorldOrbit = candidates[r].index;
-                        console.log(starSystem.star.description + ": This primary doesn't look habitable. Change it to: " + primaryWorldOrbit);
-                    } else {
-                        console.log(starSystem.star.description + ": This primary doesn't look habitable. Let's consider it weird");
-                    }
-                } else {
-                    console.log(starSystem.star.description + ": This primary doesn't look habitable, and the system has no viable options");
-                }
-            }
-
             let romanNumeralId = 0;
 
             for (let i = 0; i < worldCount; i++) {
@@ -716,12 +699,66 @@ class SystemGeneration {
                     this.calculateGasGiantSize(world);
                 } else {
                     this.calculateStandardPlanetSize(world, starSystem);
+                    world.worldDetails = this.deriveStandardWorldDetails(world);
                 }
 
 
                 starSystem.world.push(world);
             }
         }
+    }
+
+    deriveStandardWorldDetails(world: World) {
+        let result = new StandardWorldDetails();
+        let period = D20.roll() + D20.roll() + 5 + (world.mass / world.orbitalRadius);
+
+        if (period > 40) {
+            let specialRoll = Math.ceil(D20.roll() / 2);
+            switch (specialRoll) {
+                case 1:
+                    result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 3) * 24;
+                    result.retrograde = true;
+                    break;
+                case 2:
+                    result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 6) * 24;
+                    break;
+                case 3:
+                    result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 3) * 24;
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                    result.tidallyLocked = true;
+                    break;
+                case 7:
+                    result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 3) * 24;
+                    break;
+                case 8:
+                    result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 15) * 24;
+                    break;
+                case 9:
+                    result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 15) * 24;
+                    result.retrograde = true;
+                    break;
+                case 10:
+                    result.rotationPeriod = period;
+                    break
+            }
+        } else {
+            result.rotationPeriod = LuminosityTable.addNoiseToValue(period);
+        }
+
+        if (world.worldClass.id === WorldClass.O) {
+            result.hydrographicPercentage = Math.min(100, LuminosityTable.addNoiseToValue(D20.roll() + 80));
+        } else if (world.worldClass.id === WorldClass.K || world.worldClass.id === WorldClass.L) {
+            result.hydrographicPercentage = LuminosityTable.addNoiseToValue(D20.roll() / 2);
+        } else if (world.worldClass.id === WorldClass.M) {
+            result.hydrographicPercentage = LuminosityTable.addNoiseToValue(10 + (D20.roll() / 2) + D20.roll() + D20.roll() + D20.roll());
+        } else if (world.worldClass.id === WorldClass.H) {
+            result.hydrographicPercentage = Math.max(0, LuminosityTable.addNoiseToValue(D20.roll() / 2 - 5));
+        }
+
+        return result;
     }
 
     calculateGasGiantSize(world: World) {
