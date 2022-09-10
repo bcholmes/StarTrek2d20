@@ -1,7 +1,8 @@
 import React from "react";
 import { Color } from "../../common/colour";
 import { IPageProperties } from "../../pages/iPageProperties";
-import { Sector, StarSystem } from "../table/star";
+import { Sector } from "../table/sector";
+import { StarSystem } from "../table/starSystem";
 
 interface ISectorMapViewProperties extends IPageProperties {
     sector?: Sector;

@@ -1,4 +1,5 @@
-import { Sector, StarSystem } from "../mapping/table/star";
+import { Sector } from "../mapping/table/sector";
+import { StarSystem } from "../mapping/table/starSystem";
 import { SET_SECTOR, SET_SECTOR_NAME, SET_STAR, SET_STAR_SYSTEM_NAME } from "./starActions";
 
 interface StarState {

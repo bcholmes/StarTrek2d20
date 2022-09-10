@@ -1,6 +1,7 @@
 import { D20 } from "../../common/die";
 import { LuminosityTable } from "./luminosityTable";
-import { StarSystem, World } from "./star";
+import { World } from "./star";
+import { StarSystem } from "./starSystem";
 
 const BLAGG_CONSTANT = 1.7275;
 
@@ -29,8 +30,8 @@ export class Orbits {
     static createOrbits(numberOfWorlds: number, system: StarSystem) {
         let orbits = new Orbits();
         let initialOrbit = this.determineInitialOrbit(system);
-        if (initialOrbit < LuminosityTable.tenabilityRadius(system.star.luminosityValue)) {
-            initialOrbit = LuminosityTable.tenabilityRadius(system.star.luminosityValue) * 1.05;
+        if (initialOrbit < LuminosityTable.tenabilityRadius(system.luminosityValue)) {
+            initialOrbit = LuminosityTable.tenabilityRadius(system.luminosityValue) * 1.05;
         }
         let bodeConstant = (D20.roll() / 4) * 0.1;
         let hasGardenZoneOrbit = false;

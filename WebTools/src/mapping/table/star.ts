@@ -215,54 +215,6 @@ export class LuminosityClassModel {
     }
 }
 
-export class Sector {
-    public prefix: string;
-    public id: string;
-    public systems: StarSystem[] = [];
-    public simpleName: string;
-
-    constructor(idPrefix: string) {
-        this.prefix = idPrefix;
-        this.id = Sector.randomId(idPrefix);
-        this.simpleName = this.id;
-    }
-
-    private static randomId(prefix: string) {
-        return prefix + "-" + createRandomValue();
-    }
-    get name() {
-        if (this.simpleName != null && this.simpleName.length > 0) {
-            return this.simpleName;
-        } else {
-            return this.id;
-        }
-    }
-
-    get plainText() {
-        let systems = this.systems.map(s => s.plainText).join('\n\n');
-        return "Sector: " + this.name + "\n\n" + systems;
-    }
-}
-
-export class SectorCoordinates {
-    public x: number;
-    public y: number;
-    public z: number;
-
-    constructor(x: number, y: number, z: number) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
-
-    get description() {
-        return "" + this.x.toFixed(2) + ", " + this.y.toFixed(2) + ", " + this.z.toFixed(2);
-    }
-
-    get distanceFromOrigin() {
-        return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
-    }
-}
 
 export class Range {
     public from?: number;
@@ -358,81 +310,6 @@ export class Star {
     }
 }
 
-export class StarSystem {
-    public id: string;
-    public star: Star;
-    public companionStar?: Star;
-    public world: World[] = [];
-    public sectorCoordinates: SectorCoordinates;
-    public phenomenon: NotableSpatialPhenomenonModel;
-    public rootName: string;
-    public friendlyName: string;
-
-    constructor (star: Star) {
-        this.star = star;
-    }
-
-    get isBinary() {
-        return this.companionStar != null;
-    }
-
-    get name() {
-        if (this.friendlyName) {
-            return this.friendlyName;
-        } else {
-            return this.rootName + "-" + this.id;
-        }
-    }
-
-    isInGardenZone(radius: number) {
-        return (this.gardenZoneInnerRadius >= radius && this.gardenZoneOuterRadius < radius)
-    }
-
-    clone() {
-        let result = new StarSystem(this.star);
-        result.id = this.id;
-        result.sectorCoordinates = this.sectorCoordinates;
-        result.world = this.world;
-        result.companionStar = this.companionStar;
-        result.phenomenon = this.phenomenon;
-        result.rootName = this.rootName;
-        result.friendlyName = this.friendlyName;
-        return result;
-    }
-
-    get gardenZoneInnerRadius() {
-        if (this.star && this.star.luminosityValue) {
-            return Math.sqrt(this.star.luminosityValue) * 0.72;
-        } else {
-            return undefined;
-        }
-    }
-
-    get gardenZoneOuterRadius() {
-        if (this.star && this.star.luminosityValue) {
-            return Math.sqrt(this.star.luminosityValue) * 1.45;
-        } else {
-            return undefined;
-        }
-    }
-
-    get gardenZoneIdealRadius() {
-        if (this.star && this.star.luminosityValue) {
-            return Math.sqrt(this.star.luminosityValue);
-        } else {
-            return undefined;
-        }
-    }
-
-    get plainText() {
-        let worlds = this.world.map(w => w.plainText).join("\n\n");
-
-        return "Star System: " + this.name + "\n"
-            + "Star: " + this.star.plainText + "\n"
-            + (this.companionStar == null ? "" : ("Companion Star: " + this.companionStar.plainText)) 
-            + "\n" + worlds;
-    }
-}
 
 export interface WorldDetails {
 
@@ -440,6 +317,7 @@ export interface WorldDetails {
 
 export class AsteroidBeltDetails implements WorldDetails {
     asteroidSize: number;
+    depth: number;
     nickelIronPercent: number;
     carbonaceousOrIcePercent: number;
     mixedPercent: number;
@@ -450,6 +328,7 @@ export class StandardWorldDetails implements WorldDetails {
     retrograde: boolean;
     rotationPeriod: number;
     hydrographicPercentage: number;
+    axialTilt: number;
 }
 
 
@@ -488,7 +367,7 @@ export class World {
             "Orbit: " + this.orbitLabel + "\n" +
             "Number of satellites: " + this.numberOfSatellites + "\n" +
             "Orbital Radius: " + this.orbitalRadius.toFixed(2) +
-            (this.diameter != null ? ("\nDiameter: " + Math.round(this.diameter).toLocaleString("en_US") + " km") : "") +
+            (this.diameter != null ? ("\nDiameter: " + Math.round(this.diameter).toLocaleString("en-US") + " km") : "") +
             (this.density != null ? ("\nDensity: " + this.density.toFixed(3) + " Sol") : "") +
             (this.mass != null ? ("\nMass: " + this.mass.toFixed(3) + " Sol") : "") +
             (this.coreType != null ? ("\nCore: " + WorldCoreType[this.coreType]) : "");

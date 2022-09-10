@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "../../components/button";
 import { IPageProperties } from "../../pages/iPageProperties";
-import { StarSystem } from "../table/star";
+import { StarSystem } from "../table/starSystem";
 
 interface ISystemViewProperties extends IPageProperties {
     system?: StarSystem;
@@ -14,7 +14,7 @@ class SystemView extends React.Component<ISystemViewProperties, {}> {
         return  this.props.system ? (<tr>
             <td className="selection-header">{this.props.system.name}</td>
             <td>{this.props.system.star ? this.props.system.star.description : ""}</td>
-            <td className="text-center">{this.props.system.world ? this.props.system.world.length : ""}</td>
+            <td className="text-center">{this.props.system.worlds ? this.props.system.worlds.length : ""}</td>
             <td className="text-right">
                 <Button buttonType={true} text="View" className="button-small" onClick={() => this.props.onClick()}/>
             </td>

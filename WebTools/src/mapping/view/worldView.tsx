@@ -1,6 +1,8 @@
 import React from "react";
 import { IPageProperties } from "../../pages/iPageProperties";
-import { AsteroidBeltDetails, StandardWorldDetails, StarSystem, World, WorldClass, WorldDetails } from "../table/star";
+import { AsteroidBeltDetails, StandardWorldDetails, World, WorldClass, WorldDetails } from "../table/star";
+import { StarSystem } from "../table/starSystem";
+import { DataValueRow } from "./dataValueRow";
 
 interface IWorldViewProperties extends IPageProperties {
     world: World;
@@ -24,30 +26,9 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
         return (<div className="mb-5">
             
             {this.renderDesignation()}
-            <div className="row">
-                <div className="col-md-4 view-field-label pb-2">Classification:</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {classification}
-                    </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-4 view-field-label pb-2">Orbital Radius (AUs):</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {this.props.world.orbitalRadius.toFixed(2)}
-                    </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-4 view-field-label pb-2">Orbital Period</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {this.props.world.period.toFixed(3) + ' Earth Years'}
-                    </div>
-                </div>
-            </div>
+            <DataValueRow name="Classification:">{classification}</DataValueRow>
+            <DataValueRow name="Orbital Radius:">{this.props.world.orbitalRadius.toFixed(2) + " AUs"}</DataValueRow>
+            <DataValueRow name="Orbital Period:">{this.props.world.period.toFixed(3) + ' Earth Years'}</DataValueRow>
             {this.renderSatellites()}
             {this.renderSize(this.props.world)}
             {this.renderDetails(this.props.world.worldDetails)}
@@ -77,7 +58,7 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
 
             let rotationDetails = details.rotationPeriod == null ? undefined :
                     (<div className="row">
-                    <div className="col-md-4 view-field-label pb-2">Rotation</div>
+                    <div className="col-md-4 view-field-label pb-2">Rotation:</div>
                     <div className="col-md-8 text-white">
                         <div className="view-border-bottom pb-2">
                             {details.rotationPeriod.toFixed(2) + " hours" + (details.retrograde ? " (retrograde)" : "")}
@@ -86,7 +67,7 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
                 </div>);
             let tidallyLocked = details.tidallyLocked ? 
                 (<div className="row">
-                    <div className="col-md-4 view-field-label pb-2">Rotation</div>
+                    <div className="col-md-4 view-field-label pb-2">Rotation:</div>
                     <div className="col-md-8 text-white">
                         <div className="view-border-bottom pb-2">
                             Tidally Locked
@@ -95,16 +76,26 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
                 </div>) : undefined;
             let waterDetails = details.hydrographicPercentage == null ? undefined :
                 (<div className="row">
-                    <div className="col-md-4 view-field-label pb-2">Water coverage</div>
+                    <div className="col-md-4 view-field-label pb-2">Water coverage:</div>
                     <div className="col-md-8 text-white">
                         <div className="view-border-bottom pb-2">
                             {details.hydrographicPercentage.toFixed(2) + '%'}
                         </div>
                     </div>
                 </div>);
+            let axialTilt = details.axialTilt == null ? undefined :
+                (<div className="row">
+                    <div className="col-md-4 view-field-label pb-2">Axial Tilt:</div>
+                    <div className="col-md-8 text-white">
+                        <div className="view-border-bottom pb-2">
+                            {details.axialTilt.toFixed(2) + ' deg'}
+                        </div>
+                    </div>
+                </div>);
             return (<div>
                 {rotationDetails}
                 {tidallyLocked}
+                {axialTilt}
                 {waterDetails}
             </div>);
         } else {
@@ -117,42 +108,14 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
             return undefined;
         } else {
             let diameterDetails = world.diameter == null ? undefined :
-                (<div className="row">
-                <div className="col-md-4 view-field-label pb-2">Diameter</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {Math.round(world.diameter).toLocaleString("en-US") + " km"}
-                    </div>
-                </div>
-            </div>);
+                (<DataValueRow name="Diameter:">{Math.round(world.diameter).toLocaleString("en-US") + " km"}</DataValueRow>);
             let densityDetails = world.density == null ? undefined :
-                (<div className="row">
-                <div className="col-md-4 view-field-label pb-2">Density</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {world.density.toFixed(2) + " Earth"}
-                    </div>
-                </div>
-            </div>);
+                (<DataValueRow name="Density:">{world.density.toFixed(2) + " Earth"}</DataValueRow>);
             let massDetails = world.mass == null ? undefined :
-                (<div className="row">
-                <div className="col-md-4 view-field-label pb-2">Mass</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {(world.mass >= 1000 ? Math.round(world.mass).toLocaleString("en-US") : world.mass.toFixed(2)) + " Earth"}
-                    </div>
-                </div>
-            </div>);
+                (<DataValueRow name="Mass:">{(world.mass >= 1000 ? Math.round(world.mass).toLocaleString("en-US") : world.mass.toFixed(2)) + " Earth"}</DataValueRow>);
             let gravityDetails = world.gravity == null ? undefined :
-                (<div className="row">
-                <div className="col-md-4 view-field-label pb-2">Gravity</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {(world.gravity.toFixed(2)) + " G"}
-                    </div>
-                </div>
-            </div>);
-        return (<div>
+                (<DataValueRow name="Gravity:">{(world.gravity.toFixed(2)) + " G"}</DataValueRow>);
+            return (<div>
                     {diameterDetails}
                     {densityDetails}
                     {massDetails}
@@ -165,14 +128,7 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
         if (world.coreType == null) {
             return undefined;
         } else {
-            return (<div className="row">
-                <div className="col-md-4 view-field-label pb-2">Core:</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {WorldCoreType[world.coreType]}
-                    </div>
-                </div>
-            </div>);
+            return (<DataValueRow name="Core:">{WorldCoreType[world.coreType]}</DataValueRow>);
         }
     }
 
@@ -180,27 +136,15 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
         if (this.props.world.worldClass.id === WorldClass.AsteroidBelt) {
             return undefined;
         } else {
-            return (<div className="row">
-                <div className="col-md-4 view-field-label pb-2">Satellites:</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {this.props.world.numberOfSatellites}
-                    </div>
-                </div>
-            </div>);
+            return (<DataValueRow name="Satellites:">{this.props.world.numberOfSatellites}</DataValueRow>);
         }
     }
 
     renderDesignation() {
         if (this.props.world && this.props.world.orbit != null) {
-            return (<div className="row">
-                        <div className="col-md-4 view-field-label pb-2">Designation:</div>
-                        <div className="col-md-8 text-white">
-                            <div className="view-border-bottom pb-2">
-                                {(this.props.system.friendlyName ? this.props.system.friendlyName + ' ' : '') + this.props.world.orbitLabel}
-                            </div>
-                        </div>
-                    </div>);
+            return (<DataValueRow name="Designation:">
+                {(this.props.system.friendlyName ? this.props.system.friendlyName + ' ' : '') + this.props.world.orbitLabel}
+            </DataValueRow>);
         } else {
             return undefined;
         }

@@ -7,13 +7,14 @@ import { IPageProperties } from "../../pages/iPageProperties";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { setSectorName, setStar } from "../../state/starActions";
 import store from "../../state/store";
-import { Sector, StarSystem } from "../table/star";
 import { EditableHeader } from "../view/editableHeader";
 import LcarsDecorationLeftView from "../view/lcarsDecorationLeft";
 import LcarsDecorationRightView from "../view/lcarsDecorationRight";
 import SectorMapView from "../view/sectorMapView";
 import SystemView from "../view/systemView";
 import { Button } from "../../components/button";
+import { Sector } from "../table/sector";
+import { StarSystem } from "../table/starSystem";
 
 interface ISectorDetailsPageProperties extends IPageProperties {
     sector: Sector;

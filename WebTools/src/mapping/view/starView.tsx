@@ -2,10 +2,13 @@ import React from "react";
 import { Header } from "../../components/header";
 import { IPageProperties } from "../../pages/iPageProperties";
 import { Star } from "../table/star";
+import { CompanionType } from "../table/starSystem";
+import { DataValueRow } from "./dataValueRow";
 
 interface IStarViewProperties extends IPageProperties {
     star?: Star;
     title: string;
+    companionType?: CompanionType;
 }
 
 class StarView extends React.Component<IStarViewProperties, {}> {
@@ -13,44 +16,27 @@ class StarView extends React.Component<IStarViewProperties, {}> {
     render() {
         return  this.props.star ? (<div className="mb-4">
             <Header level={2} className="mb-4">{this.props.title}</Header>
-            <div className="row">
-                <div className="col-md-4 view-field-label pb-2">Spectral Class:</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {this.props.star ? this.props.star.description : ""}
-                    </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-4 view-field-label pb-2">Mass (Sols):</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {this.props.star ? this.props.star.mass.toFixed(2) : ""}
-                    </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-4 view-field-label pb-2">Mass (kg):</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {this.renderMassInKg()}
-                    </div>
-                </div>
-            </div>
+            <DataValueRow name="Spectral Class:">{this.props.star ? this.props.star.description : ""}</DataValueRow>
+            {this.renderCompanionType()}
+            <DataValueRow name="Mass:">{this.props.star ? (this.props.star.mass.toFixed(2) + " Sols") : ""}</DataValueRow>
+            <DataValueRow name="Mass:"><span>{this.renderMassInKg()}<span> kg</span></span></DataValueRow>
             {this.renderLuminosity()}
         </div>) : null;
     }
 
+    renderCompanionType() {
+        if (this.props.companionType == null) {
+            return undefined;
+        } else {
+            return (<DataValueRow name="Companion Type:">{this.props.companionType === CompanionType.Close ? "Close" : "Distant"}</DataValueRow>);
+        }
+    }
+
     renderLuminosity() {
         if (this.props.star.luminosityValue != null) {
-            return (<div className="row">
-                <div className="col-md-4 view-field-label pb-2">Luminosity (Sols):</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
-                        {this.props.star.luminosityValue > 1 ? this.props.star.luminosityValue.toFixed(0) : this.props.star.luminosityValue.toFixed(4)}
-                    </div>
-                </div>
-            </div>);
+            return (<DataValueRow name="Luminosity:">
+                        {(this.props.star.luminosityValue > 1 ? this.props.star.luminosityValue.toFixed(0) : this.props.star.luminosityValue.toFixed(4)) + " Sols"}
+                    </DataValueRow>);
         } else {
             return undefined;
         }

@@ -5,7 +5,9 @@ import store from "../../state/store";
 import { WorldCoreType } from "../view/worldView";
 import { LuminosityTable } from "./luminosityTable";
 import { Orbits } from "./orbit";
-import { LuminosityClass, LuminosityClassModel, Sector, SectorCoordinates, SpectralClass, SpectralClassModel, Star, StarSystem, Range, World, WorldClass, WorldClassModel, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon, AsteroidBeltDetails, StandardWorldDetails } from "./star";
+import { Sector, SectorCoordinates } from "./sector";
+import { LuminosityClass, LuminosityClassModel, SpectralClass, SpectralClassModel, Star, Range, World, WorldClass, WorldClassModel, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon, AsteroidBeltDetails, StandardWorldDetails } from "./star";
+import { CompanionType, StarSystem } from "./starSystem";
 
 const BLAGG_CONSTANT = 1.7275;
 
@@ -544,6 +546,12 @@ class SystemGeneration {
                     if (companion != null && companion instanceof Star) {
                         if ((companion as Star).mass <= star.mass) {
                             starSystem.companionStar = companion;
+
+                            if (D20.roll() <= 10) {
+                                starSystem.companionType = CompanionType.Close;
+                            } else {
+                                starSystem.companionType = CompanionType.Distant;
+                            }
                             break;
                         }
                     }
@@ -703,7 +711,7 @@ class SystemGeneration {
                 }
 
 
-                starSystem.world.push(world);
+                starSystem.worlds.push(world);
             }
         }
     }
@@ -756,6 +764,44 @@ class SystemGeneration {
             result.hydrographicPercentage = LuminosityTable.addNoiseToValue(10 + (D20.roll() / 2) + D20.roll() + D20.roll() + D20.roll());
         } else if (world.worldClass.id === WorldClass.H) {
             result.hydrographicPercentage = Math.max(0, LuminosityTable.addNoiseToValue(D20.roll() / 2 - 5));
+        }
+
+        let roll = D20.roll();
+        switch (roll) {
+        case 1:
+        case 2:
+        case 3:
+            result.axialTilt = Math.max(0, LuminosityTable.addNoiseToValue(D20.roll() / 2));
+            break;
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+            result.axialTilt = Math.max(0, LuminosityTable.addNoiseToValue(D20.roll() / 2 + 10));
+            break;
+        case 8:
+        case 9:
+        case 10:
+        case 11:
+            result.axialTilt = Math.max(0, LuminosityTable.addNoiseToValue(D20.roll() / 2 + 20));
+            break;
+        case 12:
+        case 13:
+        case 14:
+        case 15:
+            result.axialTilt = Math.max(0, LuminosityTable.addNoiseToValue(D20.roll() / 2 + 30));
+            break;
+        case 16:
+        case 17:
+        case 18:
+        case 19:
+            result.axialTilt = Math.max(0, LuminosityTable.addNoiseToValue(D20.roll() / 2 + 40));
+            break;
+
+        case 20:
+            let subRoll = Math.ceil(D20.roll() / 5) * 10 * 40;
+            result.axialTilt = Math.min(90, LuminosityTable.addNoiseToValue(D20.roll() / 2 + subRoll));
+            break;
         }
 
         return result;

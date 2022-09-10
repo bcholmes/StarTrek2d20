@@ -7,7 +7,7 @@ import {IPageProperties} from '../../pages/iPageProperties';
 import { PageIdentity } from '../../pages/pageIdentity';
 import { setStarSystemName } from '../../state/starActions';
 import store from '../../state/store';
-import { StarSystem } from '../table/star';
+import { StarSystem } from '../table/starSystem';
 import { EditableHeader } from '../view/editableHeader';
 import NotablePhenomenonView from '../view/notablePhenomenonView';
 import StarView from '../view/starView';
@@ -47,7 +47,7 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
                     <div className="col-md-6">
                         <NotablePhenomenonView phenomenon={this.props.starSystem ? this.props.starSystem.phenomenon : undefined} />
                         <StarView star={this.props.starSystem ? this.props.starSystem.star : undefined} title="Primary Star" />
-                        <StarView star={this.props.starSystem ? this.props.starSystem.companionStar : undefined} title="Companion Star" />
+                        <StarView star={this.props.starSystem ? this.props.starSystem.companionStar : undefined} title="Companion Star" companionType={this.props.starSystem.companionType} />
                     </div>
 
                     <div className="col-md-6">
@@ -65,7 +65,7 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
     }
 
     renderWorlds(title: string, from: number, to?: number) {
-        let worlds = this.props.starSystem.world.filter(w => w.orbitalRadius >= from && (to == null || w.orbitalRadius < to));
+        let worlds = this.props.starSystem.worlds.filter(w => w.orbitalRadius >= from && (to == null || w.orbitalRadius < to));
         if (worlds.length > 0) {
             let list = worlds.map((w,i) => <WorldView world={w} system={this.props.starSystem} key={'world-' + w.orbitalRadius}/>);
             return (<div>
