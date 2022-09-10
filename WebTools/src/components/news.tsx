@@ -11,6 +11,18 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220909</b>
+                <ul>
+                    <li>A few internal changes relating to Starship generation. You probably won't notice them.</li>
+                    <li>Per an enhancement request, I've added a random "registry number" generator. At the moment, there aren't a ton
+                        of constraints implemented. But the <cite>Utopia Planitia</cite> book has some guidance for what the registry
+                        numbers should look like; I'll flesh that out as I add more <cite>Utopia Planitia</cite> support.
+                    </li>
+                    <li>A problem I've long been obsessed with: generating a reasonable idea of the primary world orbit. We pretty much always want 
+                        the primary world to be in a system's "garden zone"/ecosphere, but with all the randomness in the system generation rules, 
+                        that's been hard to guarantee. I think I have an algorithm for that, now. I've also been steadily fleshing out the 
+                        data associated with generated worlds.</li>
+                </ul>
                 <b>v1.220906</b>
                 <ul>
                     <li>Two bug fixes: one related to the scale of the Vor'Cha class and one relating to the talents for Efrosians.</li>
