@@ -15,6 +15,10 @@ import SystemView from "../view/systemView";
 import { Button } from "../../components/button";
 import { Sector } from "../table/sector";
 import { StarSystem } from "../table/starSystem";
+import { PDFDocument } from "pdf-lib";
+import { PdfExporter } from "../export/pdfExporter";
+
+declare function download(bytes: any, fileName: any, contentType: any): any;
 
 interface ISectorDetailsPageProperties extends IPageProperties {
     sector: Sector;
@@ -56,10 +60,22 @@ class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}
                     </table>
                 </div>
                 <div className="mt-3">
-                    <Button onClick={() => this.copyDetailsToClipboard()} text="Copy to Clipboard" className="button-small" buttonType={true} />
+                    <Button onClick={() => this.exportPdf()} text="Export PDF" className="button-small mr-2" buttonType={true} />
+                    <Button onClick={() => this.copyDetailsToClipboard()} text="Copy to Clipboard" className="button-small mr-2" buttonType={true} />
                 </div>
             </div>)
         : null;
+    }
+
+    async exportPdf() {
+        console.log("Export");
+        const existingPdfBytes = await fetch("/static/pdf/TNG_Sector_Map.pdf").then(res => res.arrayBuffer())
+        const pdfDoc = await PDFDocument.load(existingPdfBytes)
+
+        await new PdfExporter().populate(pdfDoc, this.props.sector);
+
+        const pdfBytes = await pdfDoc.save();
+        download(pdfBytes, "Sector-" + this.props.sector.name + ".pdf", "application/pdf");
     }
 
     copyDetailsToClipboard() {

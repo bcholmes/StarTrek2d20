@@ -30,17 +30,7 @@ class SectorMapView extends React.Component<ISectorMapViewProperties, {}> {
     }
 
     renderStarSystems() {
-        let systems = [ ...this.props.sector.systems ];
-        systems.sort((a, b) => {
-            if (a.sectorCoordinates.z !== b.sectorCoordinates.z) {
-                return a.sectorCoordinates.z - b.sectorCoordinates.z;
-            } else if (a.sectorCoordinates.y !== b.sectorCoordinates.y) {
-                return a.sectorCoordinates.y - b.sectorCoordinates.y;
-            } else {
-                return a.sectorCoordinates.x - b.sectorCoordinates.x;
-            }
-        });
-
+        let systems = this.props.sector.sortedSystems;
         return systems.map((s, i) => {
 
             let z = s.sectorCoordinates.z / 20 * 0.75 + 0.25;

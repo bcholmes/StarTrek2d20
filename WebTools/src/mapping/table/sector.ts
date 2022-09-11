@@ -28,6 +28,20 @@ export class Sector {
         let systems = this.systems.map(s => s.plainText).join('\n\n');
         return "Sector: " + this.name + "\n\n" + systems;
     }
+
+    get sortedSystems() {
+        let result = [ ...this.systems ];
+        result.sort((a, b) => {
+            if (a.sectorCoordinates.z !== b.sectorCoordinates.z) {
+                return a.sectorCoordinates.z - b.sectorCoordinates.z;
+            } else if (a.sectorCoordinates.y !== b.sectorCoordinates.y) {
+                return a.sectorCoordinates.y - b.sectorCoordinates.y;
+            } else {
+                return a.sectorCoordinates.x - b.sectorCoordinates.x;
+            }
+        });
+        return result;
+    }
 }
 
 export class SectorCoordinates {

@@ -9,8 +9,6 @@ import { Sector, SectorCoordinates } from "./sector";
 import { LuminosityClass, LuminosityClassModel, SpectralClass, SpectralClassModel, Star, Range, World, WorldClass, WorldClassModel, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon, AsteroidBeltDetails, StandardWorldDetails } from "./star";
 import { CompanionType, StarSystem } from "./starSystem";
 
-const BLAGG_CONSTANT = 1.7275;
-
 class StellarMass {
     spectralClass: SpectralClass;
     luminosityClass: LuminosityClass;
