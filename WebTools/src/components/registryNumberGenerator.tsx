@@ -30,6 +30,8 @@ class RegistryNumberGenerator {
         74205: "Defiant",
         74656: "Voyager",
         74913: "Prometheus",
+        75567: "Cerritos",
+        76884: "Protostar",
         80102: "Titan",
         82893: "Stargazer",
         86505: "Zheng He"
