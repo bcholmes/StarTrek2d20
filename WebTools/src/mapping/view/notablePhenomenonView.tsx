@@ -10,7 +10,7 @@ interface INotablePhenomenonViewProperties extends IPageProperties {
 class NotablePhenomenonView extends React.Component<INotablePhenomenonViewProperties, {}> {
 
     render() {
-        return  this.props.phenomenon ? (<div className="mb-4">
+        return  this.props.phenomenon ? (<div className="mb-4 pr-3 col">
                 <Header level={2} className="mb-4">Notable Phenomenon</Header>
                 <div className="row">
                 <div className="col-md-4 view-field-label pb-2">Phenomenon:</div>

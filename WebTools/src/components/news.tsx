@@ -11,6 +11,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.220917</b>
+                <ul>
+                    <li>By popular request (well... one person requested it) I've created a 2-page Klingon character sheet.</li>
+                </ul>
                 <b>v1.220910</b>
                 <ul>
                     <li>Some small improvements to the sector generation system, including preliminary work on a 

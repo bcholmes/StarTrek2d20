@@ -43,15 +43,16 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
                     </div>
                 </div>
 
-                <div className="row mt-5">
-                    <div className="col-md-6">
+                <div>
+                    <div className="row row-cols-1 row-cols-md-2">
                         <NotablePhenomenonView phenomenon={this.props.starSystem ? this.props.starSystem.phenomenon : undefined} />
                         <StarView star={this.props.starSystem ? this.props.starSystem.star : undefined} title="Primary Star" />
                         <StarView star={this.props.starSystem ? this.props.starSystem.companionStar : undefined} title="Companion Star" companionType={this.props.starSystem.companionType} />
                     </div>
-
-                    <div className="col-md-6">
-                        <Header level={2} className="mb-4">Worlds</Header>
+                </div>
+                <div>
+                    <Header level={2} className="mb-4">Worlds</Header>
+                    <div>
                         {this.renderWorlds("Inner Zone", 0, this.props.starSystem.gardenZoneInnerRadius)}
                         {this.renderWorlds("Ecosphere", this.props.starSystem.gardenZoneInnerRadius, this.props.starSystem.gardenZoneOuterRadius)}
                         {this.renderWorlds("Outer Zone", this.props.starSystem.gardenZoneOuterRadius)}
@@ -70,7 +71,9 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
             let list = worlds.map((w,i) => <WorldView world={w} system={this.props.starSystem} key={'world-' + w.orbitalRadius}/>);
             return (<div>
                 <div className="page-text my-3">{title}</div>
-                {list}
+                <div className="row row-cols-1 row-cols-md-2">
+                    {list}
+                </div>
             </div>);
         } else {
             return undefined;

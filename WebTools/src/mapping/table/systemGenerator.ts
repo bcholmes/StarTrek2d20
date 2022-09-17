@@ -38,22 +38,22 @@ class SystemGeneration {
     ];
 
     private worldClasses: WorldClassModel[] = [
-        new WorldClassModel(WorldClass.AsteroidBelt, "Asteroid Belt"), // 0
+        new WorldClassModel(WorldClass.AsteroidBelt, "Asteroid Belt"),
         new WorldClassModel(WorldClass.B, "Geomorphic"),
         new WorldClassModel(WorldClass.C, "Icy Geoinactive"),
         new WorldClassModel(WorldClass.D, "Icy/Rocky Barren"),
         new WorldClassModel(WorldClass.E, "Geoplastic"),
-        new WorldClassModel(WorldClass.H, "Desert"), // 11
-        new WorldClassModel(WorldClass.I, "Ammonia Clouds/Gas Supergiant"), // 4
-        new WorldClassModel(WorldClass.J, "Jovian Gas Giant"), // 5
-        new WorldClassModel(WorldClass.K, "Adaptable"), // 6
-        new WorldClassModel(WorldClass.L, "Marginal"), // 7
-        new WorldClassModel(WorldClass.M, "Terrestrial"), // 8
-        new WorldClassModel(WorldClass.N, "Reducing"), // 12
-        new WorldClassModel(WorldClass.O, "Pelagic/Ocean"), // 9
-        new WorldClassModel(WorldClass.P, "Glaciated"), // 10
-        new WorldClassModel(WorldClass.T, "Gas Ultragiants"), // 15
-        new WorldClassModel(WorldClass.Y, "Demon"), // 16
+        new WorldClassModel(WorldClass.H, "Desert"),
+        new WorldClassModel(WorldClass.I, "Ammonia Clouds/Gas Supergiant"),
+        new WorldClassModel(WorldClass.J, "Jovian Gas Giant"),
+        new WorldClassModel(WorldClass.K, "Adaptable"),
+        new WorldClassModel(WorldClass.L, "Marginal"),
+        new WorldClassModel(WorldClass.M, "Terrestrial"),
+        new WorldClassModel(WorldClass.N, "Reducing"),
+        new WorldClassModel(WorldClass.O, "Pelagic/Ocean"),
+        new WorldClassModel(WorldClass.P, "Glaciated"),
+        new WorldClassModel(WorldClass.T, "Gas Ultragiants"),
+        new WorldClassModel(WorldClass.Y, "Demon"),
     ];
 
     private spectralClassTable: { [roll: number]: SpectralClassModel } = {
@@ -700,6 +700,58 @@ class SystemGeneration {
 
                     let roll = Math.ceil((D20.roll() + D20.roll()) / 2);
                     details.asteroidSize = this.asteroidSizeTable[roll];
+
+                    let maxDepth = orbits.orbits[0].radius / 2;
+                    if (i > 0) {
+                        maxDepth = (world.orbitalRadius - orbits.orbits[i-1].radius);
+                    }
+                    if (i < worldCount-1) {
+                        maxDepth = Math.min(maxDepth, (orbits.orbits[i+1].radius - world.orbitalRadius));
+                    }
+
+                    let depth = maxDepth;
+                    roll = Math.ceil((D20.roll() + D20.roll()) / 4);
+
+                    if (i < 4) {
+                        roll -= 3;
+                    } else if (i < 8) {
+                        roll -= 1;
+                    } else if (i < 12) {
+                        roll += 1;
+                    } else {
+                        roll += 2;
+                    }
+                    switch (roll) {
+                    case 1:
+                        depth = 0.01;
+                        break
+                    case 2:
+                        depth = 0.05;
+                        break
+                    case 3:
+                    case 4:
+                        depth = 0.1;
+                        break
+                    case 5:
+                    case 6:
+                        depth = 0.5;
+                        break
+                    case 7:
+                        depth = 1.0;
+                        break
+                    case 8:
+                        depth = 1.5;
+                        break
+                    case 9:
+                        depth = 2.0;
+                        break
+                    case 10:
+                        depth = 5.0;
+                        break
+                    default:
+                        depth = 10.0;
+                    }
+                    details.depth = LuminosityTable.addNoiseToValue(Math.min(maxDepth, depth));
                     world.worldDetails = details;
                 } else if (world.worldClass.isGasGiant) {
                     this.calculateGasGiantSize(world);

@@ -23,7 +23,7 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
             classification += " (" + this.props.world.worldClass.description + ")";
         }
 
-        return (<div className="mb-5">
+        return (<div className="col mb-5 pr-3">
             
             {this.renderDesignation()}
             <DataValueRow name="Classification:">{classification}</DataValueRow>
@@ -43,16 +43,16 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
             let details = worldDetails as AsteroidBeltDetails;
 
             let sizeDetails = details.asteroidSize == null ? undefined :
-                (<div className="row">
-                <div className="col-md-4 view-field-label pb-2">Predominant Size:</div>
-                <div className="col-md-8 text-white">
-                    <div className="view-border-bottom pb-2">
+                (<DataValueRow name="Predominant Size:">
                         {(details.asteroidSize >= 1000 ? ((details.asteroidSize / 1000).toFixed(0) + "km") : (details.asteroidSize.toFixed(0) + "m")) 
                             + " Diameter" }
-                    </div>
-                </div>
+                </DataValueRow>);
+            let depthDetails = details.depth == null ? undefined :
+                (<DataValueRow name="Belt width:">{details.depth.toFixed(2) + " AUs"}</DataValueRow>);
+        return (<div>
+                {sizeDetails}
+                {depthDetails}
             </div>);
-            return sizeDetails;
         } else if (worldDetails instanceof StandardWorldDetails) {
             let details = worldDetails as StandardWorldDetails;
 

@@ -97,6 +97,14 @@ export class PdfExporter {
                 borderColor: rgb(colour.red / 255.0, colour.green / 255.0, colour.blue / 255.0),
                 borderWidth: 0.75
             });
+
+            page.drawText(s.id, {
+                x: this.mapCoordinateSpaceX(s.sectorCoordinates.x) - font.widthOfTextAtSize(s.id, 8) / 2,
+                y: page.getHeight() - this.mapCoordinateSpaceY(s.sectorCoordinates.y) - (r+3) - font.heightAtSize(8),
+                font: font,
+                size: 8.0,
+                color: rgb(0x91 / 255.0,  0x79 / 255.0, 0xb7 / 255.0)
+            });
         });
 
         let currentLine = 410;
@@ -120,7 +128,7 @@ export class PdfExporter {
         page.drawText("Worlds", {
             x: 565 - bold.widthOfTextAtSize("Worlds", 12),
             y: page.getHeight() - currentLine,
-            size: 14.0,
+            size: 12.0,
             font: bold,
             color: rgb(0, 0, 0)
         });

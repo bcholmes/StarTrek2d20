@@ -14,7 +14,7 @@ interface IStarViewProperties extends IPageProperties {
 class StarView extends React.Component<IStarViewProperties, {}> {
 
     render() {
-        return  this.props.star ? (<div className="mb-4">
+        return  this.props.star ? (<div className="col mb-4 pr-3">
             <Header level={2} className="mb-4">{this.props.title}</Header>
             <DataValueRow name="Spectral Class:">{this.props.star ? this.props.star.description : ""}</DataValueRow>
             {this.renderCompanionType()}
@@ -35,7 +35,7 @@ class StarView extends React.Component<IStarViewProperties, {}> {
     renderLuminosity() {
         if (this.props.star.luminosityValue != null) {
             return (<DataValueRow name="Luminosity:">
-                        {(this.props.star.luminosityValue > 1 ? this.props.star.luminosityValue.toFixed(0) : this.props.star.luminosityValue.toFixed(4)) + " Sols"}
+                        {(this.props.star.luminosityValue > 100 ? this.props.star.luminosityValue.toFixed(0) : this.props.star.luminosityValue.toFixed(4)) + " Sols"}
                     </DataValueRow>);
         } else {
             return undefined;

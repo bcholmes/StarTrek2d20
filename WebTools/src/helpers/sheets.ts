@@ -17,6 +17,7 @@ import { Construct } from '../common/construct';
 import { Starship } from '../common/starship';
 import { staTextFieldAppearanceProvider } from './pdfTextFieldAppearance';
 import store from '../state/store';
+import { Career, CareersHelper } from './careers';
 
 class TextBlock {
     text: string;
@@ -578,7 +579,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         super.populateForm(form, construct);
 
         var upbringing = character.upbringing;
-        if (upbringing) {
+        if (upbringing != null) {
             this.fillField(form, 'Upbringing', upbringing.name + (character.acceptedUpbringing ? " (A)" : " (R)"));
         }
         this.fillField(form, 'Assignment', this.serializeAssignment(character));
@@ -991,6 +992,109 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
     }
 }
 
+class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
+
+    getName(): string {
+        return '2-Page Klingon Character Sheet'
+    }
+    getThumbnailUrl(): string {
+        return 'https://sta.bcholmes.org/static/img/sheets/STA_2_Page_Klingon_Character_Sheet.png'
+    }
+    getPdfUrl(): string {
+        return 'https://sta.bcholmes.org/static/pdf/STA_2_Page_Klingon_Character_Sheet.pdf'
+    }
+
+    async populate(pdf: PDFDocument, construct: Construct) {
+        pdf.registerFontkit(fontkit);
+        await super.populate(pdf, construct);
+        await this.fillPageTwo(pdf, construct as Character);
+
+        // pdf-lib does awful things to empty multi-line fields
+        // See: https://github.com/Hopding/pdf-lib/discussions/1196
+        const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
+        let form = pdf.getForm();
+        form.getFields().forEach(f => {
+            if (f instanceof PDFTextField) {
+                let textField = f as PDFTextField;
+                if (textField.isMultiline() && (textField.getText() == null || textField.getText().length === 0)) {
+                    textField.updateAppearances(helvetica, staTextFieldAppearanceProvider);
+                }
+            }
+        });
+    }
+
+    populateForm(form: PDFForm, construct: Construct): void {
+        super.populateForm(form, construct);
+        const character = construct as Character;
+        
+        if (character.careerEvents && character.careerEvents.length > 0) {
+            let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0]);
+            if (event1) {
+                this.fillField(form, 'Career Event 1', event1.name);
+            }
+
+            if (character.careerEvents && character.careerEvents.length > 1) {
+                let event2 = CareerEventsHelper.getCareerEvent(character.careerEvents[1]);
+                if (event2) {
+                    this.fillField(form, 'Career Event 2', event2.name);
+                }
+            }
+        }
+
+        if (character.career != null) {
+            this.fillField(form, 'Career', CareersHelper.getCareer(character.career).name);
+        }
+
+        this.fillField(form, 'House', (construct as Character).house);
+
+        // I don't know why PDF-Lib changes the font size, but let's try to 
+        // change it back.
+        this.fixFontSize(form, "Environment Details");
+        this.fixFontSize(form, "Upbringing Details");
+        this.fixFontSize(form, "Career Details");
+        this.fixFontSize(form, "Career Event 1 Details");
+        this.fixFontSize(form, "Career Event 2 Details");
+    }
+
+    formatNameWithoutPronouns(character) {
+        var result = character.name;
+        if (character.lineage) {
+            result += (", " + character.lineage);
+        }
+        return result;
+    }
+
+    fixFontSize(form: PDFForm, fieldName: string) {
+        try {
+            const field = form.getTextField(fieldName)
+            if (field) {
+                field.enableMultiline();
+                field.setFontSize(9);
+            }
+        } catch (e) {
+            // ignore it
+        }
+    }
+
+    async fillPageTwo(pdf: PDFDocument, character: Character) {
+        const page2 = pdf.getPages()[1];
+        const symbolFontBytes = await fetch("/static/font/Trek_Arrowheads.ttf").then(res => res.arrayBuffer());
+
+        const helveticaBold = await pdf.embedFont(StandardFonts.HelveticaBold);
+        const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
+        const symbolFont = await pdf.embedFont(symbolFontBytes);
+
+        const titleStyle = new FontSpecification(helveticaBold, 10);
+        const paragraphStyle = new FontSpecification(helvetica, 10);
+        const symbolStyle = new FontSpecification(symbolFont, 10);
+
+        let column1 = new Column(318, 105, 702-105, 551-318);
+        let currentColumn = column1;
+
+        this.writeRoleAndTalents(page2, character, titleStyle, paragraphStyle, symbolStyle, currentColumn);
+    }
+}
+
 class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
     getName(): string {
         return 'Landscape TNG Character Sheet'
@@ -1074,11 +1178,11 @@ class CharacterSheets {
 
     public getCharacterSheets(character: Character, era: Era = store.getState().context.era): ICharacterSheet[] {
         if (character.isKlingon()) {
-            return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet() ];
+            return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet() ];
         } else if (era === Era.NextGeneration) {
-            return [ new StandardTngCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet() ];
+            return [ new StandardTngCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageKlingonCharacterSheet() ];
         } else {
-            return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet() ];
+            return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageKlingonCharacterSheet() ];
         }
     }
 
