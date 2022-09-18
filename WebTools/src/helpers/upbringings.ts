@@ -341,11 +341,11 @@ class Upbringings {
             Upbringing.Academic,
             "Academic",
             "You’ve been surrounded by the complexities of political thought, the nuances of diplomacy, and intense study of a range of subjects and fields for your entire life. Your family is one of lawyers, civil servants, historians, diplomats, and more besides, maintaining the fabric of Empire just as the farmers feed it, the merchants keep it supplied, and the warriors protect it. The Klingon Empire is a nation often led by warriors, but it is the learned who govern it and keep it running, often without the respect such endeavors deserve.",
-            Attribute.Presence,
             Attribute.Control,
             Attribute.Reason,
             Attribute.Fitness,
-            [Skill.Command, Skill.Conn, Skill.Security],
+            Attribute.Insight,
+            [Skill.Command, Skill.Security, Skill.Science],
             "Your focus should relate to your upbringing, covering skills learned during your formative years.",
             ["Composure", "Debate", "Diplomacy", "Espionage", "Etiquette", "Interrogation", "Law", "Philosophy"]
         ),
