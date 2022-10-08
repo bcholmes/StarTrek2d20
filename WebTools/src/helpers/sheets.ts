@@ -374,10 +374,10 @@ class StandardKlingonStarshipSheet extends BasicStarshipSheet {
         return 'Klingon Starship Sheet (Landscape)'
     }
     getThumbnailUrl(): string {
-        return 'https://sta.bcholmes.org/static/img/sheets/STA_Klingon_Starship_Sheet.png'
+        return '/static/img/sheets/STA_Klingon_Starship_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/static/pdf/STA_Klingon_Starship_Sheet.pdf'
+        return '/static/pdf/STA_Klingon_Starship_Sheet_revised.pdf'
     }
 }
 
