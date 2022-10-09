@@ -2,7 +2,7 @@
 import { hasAnySource } from '../state/contextFunctions';
 import {Era} from './eras';
 import {Source} from './sources';
-import {TalentsHelper, TalentModel, TalentSelection} from './talents';
+import {TalentSelection} from './talents';
 
 export enum Spaceframe {
     Akira,
@@ -105,12 +105,6 @@ export enum Spaceframe {
 
 }
 
-export enum MissionPod {
-    CommandAndControl,
-    Sensors,
-    Weapons
-}
-
 
 export class SpaceframeModel {
     id: Spaceframe|null;
@@ -156,24 +150,6 @@ export class SpaceframeModel {
         return new SpaceframeModel(null, type, "", serviceYear, eras, 
             [ Source.None ], [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [], 
             type === CharacterType.KlingonWarrior ? [ "Klingon Starship"] : [ "Federation Starship" ]);
-    }
-}
-
-export class MissionPodViewModel {
-    id: number;
-    name: string;
-    description: string;
-    departments: number[];
-    systems: number[];
-    talents: TalentModel[];
-
-    constructor(id: number, name: string, description: string, departments: number[], systems: number[], talents: TalentModel[]) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.departments = departments;
-        this.systems = systems;
-        this.talents = talents;
     }
 }
 
@@ -1640,39 +1616,6 @@ class Spaceframes {
         //    ]),
     };
 
-    private _missionPods: { [id: number]: MissionPodViewModel } = {
-        [MissionPod.CommandAndControl]: new MissionPodViewModel(
-            MissionPod.CommandAndControl,
-            "Command & Control",
-            "The pod contains additional subspace antennae and supplementary computer cores, allowing it to serve as a command vessel for fleet actions.",
-            [1, 0, 0, 0, 0, 0],
-            [1, 1, 0, 0, 0, 0],
-            [
-                TalentsHelper.getTalent("Command Ship"),
-                TalentsHelper.getTalent("Electronic Warfare Systems")
-            ]),
-        [MissionPod.Sensors]: new MissionPodViewModel(
-            MissionPod.Sensors,
-            "Sensors",
-            "The pod contains additional sensor systems, allowing the ship to serve a range of scientific and reconnaissance roles.",
-            [0, 0, 0, 0, 1, 0],
-            [0, 0, 0, 2, 0, 0],
-            [
-                TalentsHelper.getTalent("Advanced Sensor Suites"),
-                TalentsHelper.getTalent("High Resolution Sensors")
-            ]),
-        [MissionPod.Weapons]: new MissionPodViewModel(
-            MissionPod.Weapons,
-            "Weapons",
-            "The pod contains additional torpedo launchers, phaser arrays, and targeting sensors.",
-            [0, 0, 1, 0, 0, 0],
-            [0, 0, 0, 1, 0, 1],
-            [
-                TalentsHelper.getTalent("Fast Targeting Systems"),
-                TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher")
-            ]),
-    };
-
     getSpaceframes(year: number, type: CharacterType, ignoreMaxServiceYear: boolean = false) {
         let frames: SpaceframeModel[] = [];
         for (var frame in this._frames) {
@@ -1701,37 +1644,6 @@ class Spaceframes {
             }
         }
         return result;
-    }
-
-    getMissionPodByName(name: string) {
-        let result = undefined;
-        for (let id in this._missionPods) {
-            if (MissionPod[id] === name) {
-                result = this._missionPods[id];
-                break;
-            }
-        }
-        return result;
-    }
-
-    getMissionPods() {
-        let missionPods: MissionPodViewModel[] = [];
-
-        for (var pod in this._missionPods) {
-            let p = this._missionPods[pod];
-            missionPods.push(p);
-        }
-
-        return missionPods;
-    }
-
-    getMissionPod(pod: MissionPod) {
-        if (pod == null) {
-            return null;
-        }
-
-        let model = this._missionPods[pod];
-        return model == null ? null : model;
     }
 }
 

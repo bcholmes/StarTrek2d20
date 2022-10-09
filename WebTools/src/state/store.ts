@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 import { Source } from '../helpers/sources';
 import { ADD_SOURCE, REMOVE_SOURCE, SET_ALLOW_CROSS_SPECIES_TALENTS, SET_ALLOW_ESOTERIC_TALENTS, SET_ERA, SET_SOURCES } from './contextActions';
 import star from './starReducer';
+import starshipReducer from './starshipReducer';
 
 
 const context = (state = { sources: [ Source.Core ], era: undefined , allowCrossSpeciesTalents: false, allowEsotericTalents: false }, action) => {
@@ -54,6 +55,7 @@ const context = (state = { sources: [ Source.Core ], era: undefined , allowCross
 
 const reducer = combineReducers({
     star: star, 
+    starship: starshipReducer,
     context: context
 })
 const store = configureStore(

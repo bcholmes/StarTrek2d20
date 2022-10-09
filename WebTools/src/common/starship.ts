@@ -1,6 +1,7 @@
 import { Department } from "../helpers/departments";
+import { MissionPodModel } from "../helpers/missionPods";
 import { MissionProfileModel } from "../helpers/missionProfiles";
-import { MissionPodViewModel, SpaceframeModel } from "../helpers/spaceframes";
+import { SpaceframeModel } from "../helpers/spaceframes";
 import { System } from "../helpers/systems";
 import { TalentSelection, TalentsHelper, TalentViewModel } from "../helpers/talents";
 import { Weapon } from "../helpers/weapons";
@@ -12,7 +13,7 @@ export class Starship extends Construct {
     traits: string = "";
     serviceYear?: number;
     spaceframeModel?: SpaceframeModel = undefined;
-    missionPodModel?: MissionPodViewModel;
+    missionPodModel?: MissionPodModel;
     missionProfileModel?: MissionProfileModel;
     departments: number[];
     scale: number;
@@ -232,6 +233,17 @@ export class Starship extends Construct {
                 starship.departments[i] += d;
             });
         }
+    }
+
+    private copy(): Starship {
+        let result = new Starship();
+        result.type = this.type;
+        result.name = this.name;
+        result.registry = this.registry;
+        result.traits = this.traits;
+        result.serviceYear = this.serviceYear;
+        result.spaceframeModel = this.spaceframeModel;
+        return result;
     }
 }
 

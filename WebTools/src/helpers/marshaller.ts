@@ -6,9 +6,10 @@ import { Starship } from '../common/starship';
 import { Attribute } from './attributes';
 import { allDepartments, Department } from './departments';
 import { Era } from './eras';
+import { MissionPod, MissionPodHelper } from './missionPods';
 import { MissionProfile, MissionProfileHelper } from './missionProfiles';
 import { Skill } from './skills';
-import { MissionPod, Spaceframe, SpaceframeHelper, SpaceframeModel } from './spaceframes';
+import { Spaceframe, SpaceframeHelper, SpaceframeModel } from './spaceframes';
 import { Species } from './speciesEnum';
 import { allSystems, System } from './systems';
 import { TalentSelection, TalentsHelper } from './talents';
@@ -185,7 +186,7 @@ class Marshaller {
             }
         }
         if (json.missionPod) {
-            result.missionPodModel = SpaceframeHelper.getMissionPodByName(json.missionPod.name);
+            result.missionPodModel = MissionPodHelper.getMissionPodByName(json.missionPod.name);
         }
         if (json.traits) {
             result.traits = json.traits.join(", ");

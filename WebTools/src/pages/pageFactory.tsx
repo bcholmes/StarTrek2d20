@@ -16,7 +16,7 @@ import {CareerEventPage} from './careerEventPage';
 import {CareerEventDetailsPage} from './careerEventDetailsPage';
 import {AttributesAndDisciplinesPage} from './attributesAndDisciplinesPage';
 import {FinishPage} from './finishPage';
-import {StarshipPage} from './starshipPage';
+import StarshipPage from '../starship/page/starshipPage';
 import {SupportingCharacterPage} from './supportingCharacterPage';
 import { TalentsOverviewPage } from './talentsOverviewPage';
 import { SelectionPage } from './selectionPage';
@@ -34,6 +34,8 @@ import SectorDetailsPage from '../mapping/page/sectorDetailsPage';
 import { CreditsPage } from './creditsPage';
 import SpeciesExtraDetailsPage from './speciesExtraDetailsPage';
 import { Species } from '../helpers/speciesEnum';
+import StarshipTypeSelectionPage from '../starship/page/starshipTypeSelectionPage';
+import SimpleStarshipPage from '../starship/page/simpleStarshipPage';
 
 
 export class PageFactory {
@@ -72,7 +74,9 @@ export class PageFactory {
         this.factories[PageIdentity.AttributesAndDisciplines] = () => <AttributesAndDisciplinesPage />;
         this.factories[PageIdentity.BorgImplants] = () => <BorgImplantSelection />;
         this.factories[PageIdentity.Finish] = () => <FinishPage/>;
+        this.factories[PageIdentity.SimpleStarship] = () => <SimpleStarshipPage/>;
         this.factories[PageIdentity.Starship] = () => <StarshipPage/>;
+        this.factories[PageIdentity.StarshipTypeSelection] = () => <StarshipTypeSelectionPage/>;
         this.factories[PageIdentity.SystemGeneration] = () => <SystemGenerationPage />;
         this.factories[PageIdentity.SectorDetails] = () => <SectorDetailsPage />;
         this.factories[PageIdentity.StarSystemDetails] = () => <StarSystemDetailsPage />;

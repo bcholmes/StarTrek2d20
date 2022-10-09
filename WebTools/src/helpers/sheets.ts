@@ -17,7 +17,7 @@ import { Construct } from '../common/construct';
 import { Starship } from '../common/starship';
 import { staTextFieldAppearanceProvider } from './pdfTextFieldAppearance';
 import store from '../state/store';
-import { Career, CareersHelper } from './careers';
+import { CareersHelper } from './careers';
 
 class TextBlock {
     text: string;

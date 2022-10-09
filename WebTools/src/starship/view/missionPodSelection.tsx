@@ -1,20 +1,22 @@
 import * as React from 'react';
 
-import { CheckBox } from './checkBox';
-import { System } from '../helpers/systems';
-import { Department } from '../helpers/departments';
-import { MissionPod, MissionPodViewModel, SpaceframeHelper } from '../helpers/spaceframes';
-import formatAsDelta from '../common/formatAsDelta';
+import { CheckBox } from '../../components/checkBox';
+import { System } from '../../helpers/systems';
+import { Department } from '../../helpers/departments';
+import formatAsDelta from '../../common/formatAsDelta';
+import { Starship } from '../../common/starship';
+import { MissionPod, MissionPodHelper, MissionPodModel } from '../../helpers/missionPods';
 
 interface IMissionPodSelectionProperties {
-    initialSelection?: MissionPodViewModel;
+    initialSelection?: MissionPodModel;
+    starship: Starship;
     onSelection: (s: MissionPod) => void;
 }
 
 class MissionPodSelection extends React.Component<IMissionPodSelectionProperties, {}> {
 
     render() {
-        const missionProfiles = SpaceframeHelper.getMissionPods().map((p, i) => {
+        const missionProfiles = MissionPodHelper.getMissionPods(this.props.starship).map((p, i) => {
             const talents = p.talents.map((t, ti) => {
                 if (t === null) {
                     console.log(t.name);

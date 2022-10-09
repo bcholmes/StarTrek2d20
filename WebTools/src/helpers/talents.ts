@@ -623,7 +623,7 @@ export class TalentViewModel {
 
 
     private constructDisplayName(name: string, rank: number, showRank: boolean, skill: Skill, category: string) {
-        let displayName = name + ((showRank && category !== "Starship" && category != "Starbase") ? " [Rank: " + rank + "]" : "");
+        let displayName = name + ((showRank && category !== "Starship" && category !== "Starbase") ? " [Rank: " + rank + "]" : "");
         displayName += skill !== undefined && skill !== Skill.None
             ? ` (${SkillsHelper.getSkillName(skill)})`
             : category.length > 0 ? ` (${category})` : "";

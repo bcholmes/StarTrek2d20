@@ -54,7 +54,7 @@ export class CharacterTypeModel {
     }
 
     public static getStarshipTypes() {
-        return [ CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1] ]; 
+        return [ CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1], CharacterTypeModel.TYPES[CharacterTypeModel.TYPES.length-1] ];
     }
 }
 

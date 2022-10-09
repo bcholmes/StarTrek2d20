@@ -49,7 +49,7 @@ export class PdfExporter {
         });
 
         let systems = sector.sortedSystems;
-        systems.map((s, i) => {
+        systems.forEach((s) => {
             let z = s.sectorCoordinates.z / 20 * 0.6 + 0.4;
             let baseColour = s.star.spectralClass.colour;
             let colour = baseColour.blend(new Color(255, 255, 255), 1-z);
@@ -135,7 +135,7 @@ export class PdfExporter {
 
         currentLine += 20;
 
-        sector.systems.map((s, i) => {
+        sector.systems.forEach((s) => {
             page.drawText(s.name, {
                 x: 162,
                 y: page.getHeight() - currentLine,

@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { CharacterType } from '../common/characterType';
-import formatAsDelta from '../common/formatAsDelta';
-import { CheckBox } from './checkBox';
-import { Department } from '../helpers/departments';
-import { SpaceframeHelper, SpaceframeModel } from '../helpers/spaceframes';
-import { System } from '../helpers/systems';
+import { CharacterType } from '../../common/characterType';
+import formatAsDelta from '../../common/formatAsDelta';
+import { CheckBox } from '../../components/checkBox';
+import { Department } from '../../helpers/departments';
+import { SpaceframeHelper, SpaceframeModel } from '../../helpers/spaceframes';
+import { System } from '../../helpers/systems';
 
 interface ISpaceframeSelectionProperties {
     serviceYear: number;

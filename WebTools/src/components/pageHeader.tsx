@@ -24,6 +24,10 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
             return "Era";
         } else if (this.props.page === PageIdentity.SupportingCharacter) {
             return "Supporting Character";
+        } else if (this.props.page === PageIdentity.StarshipTypeSelection) {
+            return "Starship Type";
+        } else if (this.props.page === PageIdentity.SimpleStarship) {
+            return "Starship Stats";
         } else if (this.props.page === PageIdentity.Starship) {
             return "Starship";
         } else if (this.props.page === PageIdentity.ToolSelecton) {

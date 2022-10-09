@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { CharacterType } from '../common/characterType';
-import { CheckBox } from './checkBox';
-import { Department } from '../helpers/departments';
-import { MissionProfileHelper, MissionProfileModel } from '../helpers/missionProfiles';
+import { CharacterType } from '../../common/characterType';
+import { CheckBox } from '../../components/checkBox';
+import { Department } from '../../helpers/departments';
+import { MissionProfileHelper, MissionProfileModel } from '../../helpers/missionProfiles';
 
 interface IMissionProfileSelectionProperties {
     type: CharacterType;

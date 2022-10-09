@@ -1,85 +1,84 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
-import {CharacterTypeModel} from '../common/characterType';
-import { CharacterType } from '../common/characterType';
-import {DropDownInput} from '../components/dropDownInput';
-import {Era} from '../helpers/eras';
-import {SpaceframeHelper, MissionPod, SpaceframeModel} from '../helpers/spaceframes';
-import {MissionProfileHelper, MissionProfileModel} from '../helpers/missionProfiles';
-import {TalentsHelper, TalentViewModel, ToViewModel} from "../helpers/talents";
-import {Source} from "../helpers/sources";
-import {Button} from '../components/button';
-import {Refits} from "../components/refits";
-import { SmallHeader } from "../components/smallHeader";
-import {StarshipTalentSelectionList} from "../components/starshipTalentSelection";
-import {CharacterSheetDialog} from '../components/characterSheetDialog'
-import {CharacterSheetRegistry} from '../helpers/sheets';
-import { ModalControl } from '../components/modal';
-import SpaceframeSelection from '../components/spaceframeSelection';
-import StarshipStats from '../components/starshipStats';
-import MissionProfileSelection from '../components/missionProfileSelection';
-import MissionPodSelection from '../components/missionPodSelection';
-import CustomSpaceframeForm from '../components/customSpaceframeForm';
-import { System } from '../helpers/systems';
-import { OutlineImage } from '../components/outlineImage';
-import { marshaller } from '../helpers/marshaller';
-import { Starship } from '../common/starship';
-import store from '../state/store';
-import { hasSource } from '../state/contextFunctions';
-import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
-import RegistryNumber from '../components/registryNumberGenerator';
+import {character} from '../../common/character';
+import { CharacterType } from '../../common/characterType';
+import {SpaceframeHelper, SpaceframeModel} from '../../helpers/spaceframes';
+import {MissionProfileHelper, MissionProfileModel} from '../../helpers/missionProfiles';
+import {TalentsHelper, TalentViewModel, ToViewModel} from "../../helpers/talents";
+import {Button} from '../../components/button';
+import {Refits} from "../../components/refits";
+import { SmallHeader } from "../../components/smallHeader";
+import {StarshipTalentSelectionList} from "../view/starshipTalentSelection";
+import {CharacterSheetDialog} from '../../components/characterSheetDialog'
+import {CharacterSheetRegistry} from '../../helpers/sheets';
+import { ModalControl } from '../../components/modal';
+import SpaceframeSelection from '../view/spaceframeSelection';
+import StarshipStats from '../view/starshipStats';
+import MissionProfileSelection from '../view/missionProfileSelection';
+import MissionPodSelection from '../view/missionPodSelection';
+import CustomSpaceframeForm from '../../components/customSpaceframeForm';
+import { System } from '../../helpers/systems';
+import { OutlineImage } from '../../components/outlineImage';
+import { marshaller } from '../../helpers/marshaller';
+import { Starship } from '../../common/starship';
+import store from '../../state/store';
+import { SingleTalentSelectionList } from '../../components/singleTalentSelectionList';
+import RegistryNumber from '../../components/registryNumberGenerator';
+import { MissionPod, MissionPodHelper } from '../../helpers/missionPods';
+import { connect } from 'react-redux';
+
+interface StarshipPageProperties {
+    type: CharacterType,
+    serviceYear: number
+}
 
 interface StarshipPageState {
-    type: CharacterTypeModel
     name: string
+    registry: string
     profileTalent?: string
     refitCount: number
     refits: System[]
-    serviceYearChanging: boolean
 }
 
-export class StarshipPage extends React.Component<{}, StarshipPageState> {
+class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageState> {
     private _yearInput: HTMLInputElement;
     private _talentSelection: TalentViewModel[];
     private _traits: string;
-    private _registry: string = "NCC-";
 
     private starship: Starship;
 
-    constructor(props: {}) {
+    constructor(props: StarshipPageProperties) {
         super(props);
 
         this.starship = new Starship();
+        this.starship.type = this.props.type;
+        this.starship.serviceYear = this.props.serviceYear;
         character.starship = this.starship;
-        this.starship.serviceYear = this.eraDefaultYear(store.getState().context.era);
+        character.type = this.props.type;
 
         this._talentSelection = [];
 
         this.state = {
-            type: CharacterTypeModel.getStarshipTypes()[character.type],
-            name: 'U.S.S. ',
+            name: this.props.type === CharacterType.KlingonWarrior ? 'I.K.S. ' : 'U.S.S. ',
             profileTalent: undefined,
             refitCount: 0,
             refits: [],
-            serviceYearChanging: false
+            registry: this.props.type === CharacterType.KlingonWarrior ? '' : 'NCC-'
         };
     }
 
     renderSpaceframeSection() {
-        if (!this.state.serviceYearChanging) {
-            const spaceframes = SpaceframeHelper.getSpaceframes(this.starship.serviceYear, this.state.type.type, true);
-            // if other choices have changed, then the current spaceframe might be invalid
-            if (this.starship && this.starship.spaceframeModel) {
-                if (this.starship.spaceframeModel.isCustom) {
-                    if (character.type !== this.starship.spaceframeModel.type || this.starship.serviceYear < this.starship.spaceframeModel.serviceYear) {
-                        this.starship.spaceframeModel = undefined;
-                    }
-                } else {
+        const spaceframes = SpaceframeHelper.getSpaceframes(this.props.serviceYear, this.props.type, true);
+        // if other choices have changed, then the current spaceframe might be invalid
+        if (this.starship && this.starship.spaceframeModel) {
+            if (this.starship.spaceframeModel.isCustom) {
+                if (character.type !== this.starship.spaceframeModel.type || this.props.serviceYear < this.starship.spaceframeModel.serviceYear) {
+                    this.starship.spaceframeModel = undefined;
+                }
+            } else {
 
-                    let frames = spaceframes.filter(f => f.id === this.starship.spaceframeModel.id);
-                    if (frames.length === 0) {
-                        this.starship.spaceframeModel = undefined;
-                    }
+                let frames = spaceframes.filter(f => f.id === this.starship.spaceframeModel.id);
+                if (frames.length === 0) {
+                    this.starship.spaceframeModel = undefined;
                 }
             }
         }
@@ -93,7 +92,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
             selectedSpaceframeDetails = (
                 <div className="p-0">
                     <h5 className="text-selection">{this.starship.spaceframeModel.name ? this.starship.spaceframeModel.name : "Unnamed Class"}</h5>
-                    <OutlineImage serviceYear={this.starship.serviceYear} spaceframe={this.starship.spaceframeModel} size="lg" />
+                    <OutlineImage serviceYear={this.props.serviceYear} spaceframe={this.starship.spaceframeModel} size="lg" />
                     <StarshipStats model={this.starship.spaceframeModel} type="spaceframe" />
                     <p><b className="text-selection">Talents:</b> {talentList}</p>
                 </div>
@@ -103,7 +102,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     }
 
     renderMissionProfilesSection() {
-        const profiles = MissionProfileHelper.getMissionProfiles(this.state.type.type);
+        const profiles = MissionProfileHelper.getMissionProfiles(this.props.type);
         let missionProfileModel = undefined;
         // if other choices have changed, then the current spaceframe might be invalid
         if (this.starship && this.starship.missionProfileModel !== undefined) {
@@ -129,7 +128,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
     renderMissionPodsSection() {
         if (this.starship && this.starship.spaceframeModel && this.starship.spaceframeModel.isMissionPodAvailable) {
-            const pods = SpaceframeHelper.getMissionPods();
+            const pods = MissionPodHelper.getMissionPods(this.starship);
             let missionPodModel = undefined;
             // if other choices have changed, then the current spaceframe might be invalid
             if (this.starship && this.starship.missionPodModel !== undefined) {
@@ -200,7 +199,6 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                     if (spaceframeTalents.indexOf(t.name) === -1) {
                         talents.push(ToViewModel(t));
                     } else {
-                        console.log("Already exists: " + t.name);
                         talents.push(ToViewModel(t, 2));
                     }
                 });
@@ -244,21 +242,6 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
               )
             : undefined;
 
-        let typeSelection = hasSource(Source.KlingonCore) 
-                ? (<div className="panel">
-                        <div className="header-small">Ship Type</div>
-                        <div className="page-text-aligned">
-                            Is this a Starfleet/Federation vessel, or a ship of the Klingon Empire?
-                        </div>
-                        <div>
-                            <DropDownInput
-                                items={this.getTypes() }
-                                defaultValue={this.getSelectedType()}
-                                onChange={(index) => this.selectType(index) }/>
-                        </div>
-                    </div>)
-                : undefined;
-
         const traitList = defaultTrait.map((t, i) => {
             return (
                 <li key={'trait-' + i}>
@@ -268,7 +251,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         });
     
 
-        let nameSection = character.type === CharacterType.KlingonWarrior 
+        let nameSection = this.props.type === CharacterType.KlingonWarrior 
             ?   (<div className="panel">
                     <div className="page-text-aligned">
                     <SmallHeader>Name</SmallHeader>
@@ -323,7 +306,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                         value={this.state.name} />
                 </div>);
 
-        let registrySection = character.type === CharacterType.KlingonWarrior ? undefined
+        let registrySection = this.props.type === CharacterType.KlingonWarrior ? undefined
             : (<div className="panel">
             <SmallHeader>Registry Number</SmallHeader>
             <div className="page-text-aligned">
@@ -338,11 +321,11 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
                     <input
                         type="text"
                         onChange={(ev) => {
-                            this._registry = (ev.target as HTMLInputElement).value;
-                            this.starship.registry = this._registry;
-                            this.forceUpdate();
+                            let registry = (ev.target as HTMLInputElement).value;
+                            this.starship.registry = registry;
+                            this.setState((state) => ({...state, registry: registry }));
                         } }
-                        value={this._registry} />
+                        value={this.state.registry} />
                 </div>
                 <div className="col-lg-3 text-right mt-3">
                     <Button className="button-small" text="Random" onClick={() => this.generateRegistryNumber()} buttonType={true}/>
@@ -361,8 +344,6 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
                 <div className="starship-container">
                     <div className="starship-panel">
-                        {typeSelection}
-                        {this.renderServiceYear()}
                         <br/><br/>
                         <div className="panel">
                             <div className="header-small">Spaceframe</div>
@@ -461,36 +442,11 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         );
     }
 
-
-    renderServiceYear() {
-        return (<div className="panel">
-                    <SmallHeader>Year of Service</SmallHeader>
-                    <div className="page-text-aligned">
-                        The year in which the ship exists determines available options.
-                        Choose which year you want to play in together with your GM.
-                        A default year will be filled in automatically dependent on the chosen Era.
-                    </div>
-                    <div className="textinput-label">YEAR</div>
-                    <input
-                        type="number"
-                        defaultValue={this.starship.serviceYear.toString()}
-                        ref={(el) => { this._yearInput = el; } }
-                        onChange={() => {
-                            this.starship.serviceYear = parseInt(this._yearInput.value);
-                            this.updateSystemAndDepartments();
-                            this.forceUpdate();
-                        } }
-                        onFocus={() => {this.setState((state) => ({...state, serviceYearChanging: true}))}} 
-                        onBlur={() => {this.setState((state) => ({...state, serviceYearChanging: false}))}} 
-                        />
-                </div>);
-    }
-
     generateRegistryNumber() {
-        let registryNumber = RegistryNumber.generate(this.starship.serviceYear, this.starship.type, this.starship.spaceframeModel);
-        this._registry = registryNumber;
+        let registryNumber = RegistryNumber.generate(this.props.serviceYear, this.props.type, this.starship.spaceframeModel);
         this.starship.registry = registryNumber;
-        this.forceUpdate();
+
+        this.setState((state) => ({...state, registry: registryNumber }));
     }
 
     showViewPage() {
@@ -544,7 +500,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
 
     modalContents(name: string) {
         if (name === 'spaceframes') {
-            return (<SpaceframeSelection serviceYear={this.starship.serviceYear} type={character.type} 
+            return (<SpaceframeSelection serviceYear={this.props.serviceYear} type={character.type} 
                 initialSelection={this.starship.spaceframeModel} onSelection={(s) => { this.onSpaceframeSelected(s); this.closeModal() }} />);
         } else if (name === 'customSpaceframe') {
             return (<CustomSpaceframeForm  
@@ -553,7 +509,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
             return (<MissionProfileSelection type={character.type} 
                 initialSelection={this.starship.missionProfileModel} onSelection={(m) => { this.onMissionProfileSelected(m); this.closeModal() }} />);
         } else if (name === 'missionPod') {
-            return (<MissionPodSelection 
+            return (<MissionPodSelection starship={this.starship}
                 initialSelection={this.starship.missionPodModel} onSelection={(m) => { this.onMissionPodSelected(m); this.closeModal() }} />);
         } else {
             return undefined;
@@ -564,45 +520,11 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(this.starship, store.getState().context.era), "starship", this.starship);
     }
 
-    private getTypes() {
-        return CharacterTypeModel.getStarshipTypes().map((t, i) => t.name);
-    }
-
-    private getSelectedType() {
-        return this.state.type.name;
-    }
-
     createOrReuseCustomSpaceframe() {
         if (this.starship && this.starship.spaceframeModel && this.starship.spaceframeModel.isCustom) {
             return this.starship.spaceframeModel;
         } else {
-            return SpaceframeModel.createCustomSpaceframe(character.type, this.starship.serviceYear, [ store.getState().context.era ]);
-        }
-    }
-
-    private selectType(index: number) {
-        let state = this.state;
-        character.type = CharacterTypeModel.getStarshipTypes()[index].type;
-        this.starship.type = CharacterTypeModel.getStarshipTypes()[index].type;
-        let name = state.name;
-        if (name === "U.S.S. " && this.starship.type === CharacterType.KlingonWarrior) {
-            name = "I.K.S. ";
-        }
-        this.setState({
-            ...state,
-            type: CharacterTypeModel.getStarshipTypes()[index],
-            name: name
-        });
-    }
-
-    private eraDefaultYear(era: Era) {
-        switch (era) {
-            case Era.Enterprise:
-                return 2155;
-            case Era.OriginalSeries:
-                return 2269;
-            case Era.NextGeneration:
-                return 2371;
+            return SpaceframeModel.createCustomSpaceframe(character.type, this.props.serviceYear, [ store.getState().context.era ]);
         }
     }
 
@@ -613,7 +535,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
     }
 
     private onMissionPodSelected(pod: MissionPod) {
-        this.starship.missionPodModel = SpaceframeHelper.getMissionPod(pod);
+        this.starship.missionPodModel = MissionPodHelper.getMissionPod(pod);
         this.updateSystemAndDepartments();
         this.forceUpdate();
     }
@@ -632,7 +554,7 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         let numRefits = 0;
         if (this.starship.spaceframeModel) {
             const frame = this.starship.spaceframeModel;
-            numRefits = Math.floor((this.starship.serviceYear - frame.serviceYear) / 10);
+            numRefits = Math.floor((this.props.serviceYear - frame.serviceYear) / 10);
         }
 
         this.starship.refits = [];
@@ -659,3 +581,12 @@ export class StarshipPage extends React.Component<{}, StarshipPageState> {
         return numTalents;
     }
 }
+
+function mapStateToProps(state, ownProps) {
+    return { 
+        type: state.starship.starship.type,
+        serviceYear: state.starship.starship.serviceYear
+    };
+}
+
+export default connect(mapStateToProps)(StarshipPage);

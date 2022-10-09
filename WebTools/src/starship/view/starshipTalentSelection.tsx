@@ -1,8 +1,8 @@
 ﻿import * as React from 'react';
-import {CheckBox} from './checkBox';
-import {TalentViewModel} from '../helpers/talents';
-import replaceDiceWithArrowhead from '../common/arrowhead';
-import { Construct } from '../common/construct';
+import {CheckBox} from '../../components/checkBox';
+import {TalentViewModel} from '../../helpers/talents';
+import replaceDiceWithArrowhead from '../../common/arrowhead';
+import { Construct } from '../../common/construct';
 
 interface IStarshipTalentSelectionProperties {
     talents: TalentViewModel[]

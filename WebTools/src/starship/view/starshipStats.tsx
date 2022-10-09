@@ -1,12 +1,13 @@
 import * as React from 'react';
-import formatAsDelta from '../common/formatAsDelta';
-import {Department} from '../helpers/departments';
-import { MissionProfileModel } from '../helpers/missionProfiles';
-import { MissionPodViewModel, SpaceframeModel } from '../helpers/spaceframes';
-import {System} from '../helpers/systems';
+import formatAsDelta from '../../common/formatAsDelta';
+import {Department} from '../../helpers/departments';
+import { MissionPodModel } from '../../helpers/missionPods';
+import { MissionProfileModel } from '../../helpers/missionProfiles';
+import { SpaceframeModel } from '../../helpers/spaceframes';
+import {System} from '../../helpers/systems';
 
 interface IStarshipStatsProperties {
-    model: SpaceframeModel|MissionProfileModel|MissionPodViewModel;
+    model: SpaceframeModel|MissionProfileModel|MissionPodModel;
     type: string;
 }
 
@@ -93,7 +94,7 @@ class StarshipStats extends React.Component<IStarshipStatsProperties, {}> {
     }
 
     renderAsMissionPod() {
-        let model = this.props.model as MissionPodViewModel;
+        let model = this.props.model as MissionPodModel;
         return (
             <div className="stats-block">
                 <div className="stats-row">

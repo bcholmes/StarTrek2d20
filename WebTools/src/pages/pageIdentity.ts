@@ -31,7 +31,9 @@ export enum PageIdentity {
     BorgImplants,
     Finish,
 
+    SimpleStarship,
     Starship,
+    StarshipTypeSelection,
     SupportingCharacter,
     TalentsOverview,
 
