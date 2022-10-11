@@ -12,6 +12,7 @@ import { PageIdentity } from "../../pages/pageIdentity";
 import { hasSource } from "../../state/contextFunctions";
 import { createNewStarship } from "../../state/starshipActions";
 import store from "../../state/store";
+import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 
 interface StarshipTypeSelectionPageProperties {
     era: Era
@@ -72,10 +73,11 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
 
     startWorkflow() {
         if (this.state.type != null && this.state.type.type === CharacterType.Other) {
-            store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear, true));
-            Navigation.navigateToPage(PageIdentity.SimpleStarship);
+            let workflow = ShipBuildWorkflow.createSimpleBuildWorkflow();
+            store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear, true, workflow));
+            Navigation.navigateToPage(workflow.currentStep().page);
         } else if (this.state.type != null) {
-            store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear));
+            store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear, false));
             Navigation.navigateToPage(PageIdentity.Starship);
         }
     }

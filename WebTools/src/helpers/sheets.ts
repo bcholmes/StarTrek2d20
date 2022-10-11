@@ -70,7 +70,7 @@ class Line {
 }
 
 class FontSpecification {
-    font: PDFFont; 
+    font: PDFFont;
     size: number;
 
     constructor(font: PDFFont, size: number) {
@@ -131,7 +131,7 @@ abstract class BasicSheet implements ICharacterSheet {
     }
 
     fillField(form: PDFForm, name: string, value: string) {
-        if (value) {
+        if (value != null) {
             try {
                 const field = form.getTextField(name)
                 if (field) {
@@ -204,10 +204,9 @@ abstract class BasicStarshipSheet extends BasicSheet {
 
         const talents = starship.getTalentSelectionList().map(t => t.description);
 
-        const spaceframe = starship.spaceframeModel;
-        if (spaceframe) {
-            this.fillField(form, 'Space Frame', spaceframe.name);
-            this.fillField(form, 'Scale', spaceframe.scale.toString());
+        this.fillField(form, 'Space Frame', starship.className);
+        if (starship.scale) {
+            this.fillField(form, 'Scale', starship.scale.toString());
         }
         this.fillField(form, 'Traits', starship.getAllTraits());
         const missionProfile = starship.missionProfileModel;
@@ -215,8 +214,8 @@ abstract class BasicStarshipSheet extends BasicSheet {
             this.fillField(form, 'Mission Profile', missionProfile.name);
         }
 
-        if (starship.spaceframeModel) {
-            let power = starship.power;
+        let power = starship.power;
+        if (power) {
             this.fillField(form, "Power Total", starship.power == null ? "" : power.toString());
         }
         if (starship.scale) {
@@ -224,7 +223,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
             this.fillField(form, "Crew Total",  this.calculateCrewSupport(starship.scale));
         }
 
-        if (starship.spaceframeModel && starship.departments[Department.Security] && starship.shields != null) {
+        if (starship.shields != null) {
             this.fillShields(form, starship.shields);
         }
 
@@ -305,7 +304,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
     }
 
     fillFieldWithNumber(form: PDFForm, name: string, value: number) {
-        if (value) {
+        if (value != null) {
             this.fillField(form, name, value.toString());
         }
     }
@@ -465,7 +464,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
     }
 
     fillStress(form: PDFForm, character: Character) {
-        var stress = character.stress || 0; 
+        var stress = character.stress || 0;
         if (stress === 0) {
             character.attributes.forEach( (a, i) => {
                 switch(a.attribute) {
@@ -601,7 +600,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
             }
         });
         return result;
-    }    
+    }
 
     fillWeapons(form: PDFForm, construct: Construct) {
         var weapons = construct.determineWeapons();
@@ -745,13 +744,13 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         }
 
         if (startLine) {
-            for (var t in character.talents) {   
+            for (var t in character.talents) {
                 let text = t;
 
                 const talent = TalentsHelper.getTalent(t);
                 if (talent && talent.maxRank > 1) {
                     let rank = character.talents[t];
-                    text += " [Rank: " + rank.rank + "]";                    
+                    text += " [Rank: " + rank.rank + "]";
                 }
 
                 let blocks = this.createTextBlocks(text + ":", titleStyle, symbolStyle, startLine, page);
@@ -769,7 +768,7 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
             };
         }
 
-        lines.forEach(t => 
+        lines.forEach(t =>
             this.writeTextBlock(t, page)
         );
     }
@@ -938,7 +937,7 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
     populateForm(form: PDFForm, construct: Construct): void {
         super.populateForm(form, construct);
         const character = construct as Character;
-        
+
         if (character.careerEvents && character.careerEvents.length > 0) {
             let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0]);
             if (event1) {
@@ -953,7 +952,7 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
             }
         }
 
-        // I don't know why PDF-Lib changes the font size, but let's try to 
+        // I don't know why PDF-Lib changes the font size, but let's try to
         // change it back.
         this.fixFontSize(form, "Career Event 1 description");
         this.fixFontSize(form, "Career Event 2 description");
@@ -1026,7 +1025,7 @@ class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
     populateForm(form: PDFForm, construct: Construct): void {
         super.populateForm(form, construct);
         const character = construct as Character;
-        
+
         if (character.careerEvents && character.careerEvents.length > 0) {
             let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0]);
             if (event1) {
@@ -1047,7 +1046,7 @@ class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
 
         this.fillField(form, 'House', (construct as Character).house);
 
-        // I don't know why PDF-Lib changes the font size, but let's try to 
+        // I don't know why PDF-Lib changes the font size, but let's try to
         // change it back.
         this.fixFontSize(form, "Environment Details");
         this.fixFontSize(form, "Upbringing Details");
@@ -1133,7 +1132,7 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
     populateForm(form: PDFForm, construct: Construct): void {
         let character = construct as Character;
         super.populateForm(form, construct);
-        
+
         this.fillField(form, "Pronouns", character.pronouns);
         if (character.assignedShip) {
             this.fillField(form, "Ship", character.assignedShip);

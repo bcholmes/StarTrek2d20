@@ -183,12 +183,12 @@ export class Character extends Construct {
         }
 
         if (this.type === CharacterType.Starfleet || this.type === CharacterType.Cadet) {
-            result.push(new Weapon("Phaser type-2", 3, "Charges", WeaponType.BEAM));
+            result.push(new Weapon("Phaser type-2", 3, "Charges", WeaponType.ENERGY));
         } else if (this.age.isAdult()) {
             if (this.isKlingon()) {
                 result.push(new Weapon("d’k tahg dagger", 1, "Vicious 1, Deadly, Hidden 1", WeaponType.MELEE));
             }
-            result.push(new Weapon("Disruptor Pistol", 3, "Vicious 1", WeaponType.BEAM));
+            result.push(new Weapon("Disruptor Pistol", 3, "Vicious 1", WeaponType.ENERGY));
         }
         return result;
     }

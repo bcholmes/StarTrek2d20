@@ -1,32 +1,28 @@
 import React from "react";
 import { connect } from "react-redux";
-import { navigateTo } from "../../common/navigator";
+import { navigateTo, Navigation } from "../../common/navigator";
 import { Starship } from "../../common/starship";
 import { Button } from "../../components/button";
 import { Header } from "../../components/header";
 import { Department } from "../../helpers/departments";
 import { System } from "../../helpers/systems";
 import { PageIdentity } from "../../pages/pageIdentity";
-import { changeStarshipScale, changeStarshipSimpleClassName, changeStarshipSimpleDepartment, changeStarshipSimpleSystem } from "../../state/starshipActions";
+import { changeStarshipScale, changeStarshipSimpleClassName, changeStarshipSimpleDepartment, changeStarshipSimpleSystem, nextStarshipWorkflowStep } from "../../state/starshipActions";
 import store from "../../state/store";
+import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
+import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
 import { StatControl } from "../view/statControl";
 
 interface ISimpleStarshipPageProperties {
     starship: Starship;
+    workflow: ShipBuildWorkflow;
 }
 
 class SimpleStarshipPage extends React.Component<ISimpleStarshipPageProperties, {}> {
 
     render() {
         return (<div className="page container ml-0">
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Selection)}>Home</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.StarshipTypeSelection)}>Starship Type</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">Starship Stats</li>
-                </ol>
-            </nav>
-
+            <ShipBuildingBreadcrumbs />
             <Header>Simplified Starship Creation</Header>
 
             <section className="my-5 row row-cols-1 row-cols-md-2">
@@ -175,13 +171,16 @@ class SimpleStarshipPage extends React.Component<ISimpleStarshipPageProperties, 
     }
 
     nextPage() {
-
+        let step = this.props.workflow.peekNextStep();
+        store.dispatch(nextStarshipWorkflowStep());
+        Navigation.navigateToPage(step.page);
     }
 }
 
 function mapStateToProps(state, ownProps) {
     return {
         starship: state.starship.starship,
+        workflow: state.starship.workflow
     };
 }
 

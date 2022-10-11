@@ -40,7 +40,6 @@ interface StarshipPageState {
 }
 
 class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageState> {
-    private _yearInput: HTMLInputElement;
     private _talentSelection: TalentViewModel[];
     private _traits: string;
 

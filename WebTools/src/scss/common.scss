@@ -16,6 +16,11 @@
     }
 }
 
+.container p, .container ul li {
+    color: white;
+    font-size: large;
+    font-weight: normal;
+}
 
 #mainBody {
 	width: 100%;
@@ -154,7 +159,7 @@ h5 {
 }
 
 @media screen and (min-width: 0px) and (max-width: 975px) {
-    
+
     .stats-row {
         display: block;
     }
@@ -374,22 +379,22 @@ h2.header-text {
 		flex: 1;
 		margin-left: 10px;
 	}
-			
+
 	.lcar-header-start {
 		margin-left: 0px !important;
 		border-radius: 40px 0px 0px 0px;
 	}
-			
+
 	.lcar-header-middle {
 		max-width: 150px;
 	}
-			
+
 	.lcar-header-end {
 		border-radius: 0px 40px 40px 0px;
 		max-width: 30px;
         margin-right: 10px;
 	}
-			
+
 	.page-header {
 		background: black !important;
 		color: white;
@@ -400,19 +405,19 @@ h2.header-text {
 		padding: 15px 4px;
         text-transform: uppercase;
 	}
-		
+
 .lcar-content {
     max-height: 80%;
 	flex: 1;
-			
+
 	display: flex;
 	flex-direction: row;
 }
-		
+
 	.lcar-content > div {
 		flex: 1;
 	}
-		
+
 	.lcar-content-start {
 		max-width: 150px;
 
@@ -420,17 +425,17 @@ h2.header-text {
 		flex-direction: column;
         box-sizing: content-box;
 	}
-			
+
 		.lcar-content-start > div {
 			flex: 1;
 			margin-top: 10px;
 			background: #F89B24;
 		}
-				
+
 		.lcar-content-start-top {
 			margin-top: 0px !important;
 		}
-			
+
 		.lcar-emphasis {
 			background: #CC6666 !important;
 			max-height: 150px;
@@ -438,35 +443,35 @@ h2.header-text {
             animation: fadein .5s ease;
             animation-delay: .4s !important;
 		}
-			
+
 	.lcar-content-round {
 		max-width: 30px;
 		border-radius: 20px 0px 0px 20px;
 		background: black;
 		transform: translateX(-20px);
 	}
-		
+
 .lcar-footer {
 	flex: 1;
 	max-height: 30px;
     margin-bottom: 0.75rem;
     z-index: 100;
-			
+
 	display: flex;
 	flex-direction: row;
 }
-		
+
 	.lcar-footer > div {
 		margin-left: 10px;
 		background: #F89B24;
 		flex: 1;
 	}
-		
+
 	.lcar-footer-start {
 		margin-left: 0px !important;
 		border-radius: 0px 0px 0px 40px;
 	}
-			
+
 	.lcar-footer-end {
 		max-width: 250px;
 		background: #9179B7 !important;
@@ -481,7 +486,7 @@ h2.header-text {
         font-size: 15px;
         padding: 3px 6px 3px 6px;
         text-transform: uppercase;
-        box-sizing: content-box;    
+        box-sizing: content-box;
     }
 
 .lcar-content-action {
@@ -693,7 +698,7 @@ table.aspect-list td:first-child {
 }
 
 @media screen and (min-width: 0px) and (max-width: 800px) {
-    
+
     #app {
         margin: 10px 14px 5px -20px;
     }
@@ -793,7 +798,7 @@ table.aspect-list td:first-child {
 
     table.selection-list td {
         padding: 10px;
-        font-size: x-small; 
+        font-size: x-small;
     }
 
 }

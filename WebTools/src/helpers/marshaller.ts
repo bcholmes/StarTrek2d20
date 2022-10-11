@@ -37,7 +37,7 @@ class Marshaller {
 
     toAttributeObject(attributes: CharacterAttribute[]) {
         let result = {};
-        attributes.forEach(a => { 
+        attributes.forEach(a => {
             console.log("attr: " + Attribute[a.attribute]);
             result[Attribute[a.attribute]] = a.value; });
         return result;
@@ -193,13 +193,7 @@ class Marshaller {
         }
         if (json.refits) {
             json.refits.forEach((r) => {
-                let systems = [System.Comms,
-                    System.Computer,
-                    System.Engines,
-                    System.Sensors,
-                    System.Structure,
-                    System.Weapons];
-                systems.forEach(s => {
+                allSystems().forEach(s => {
                     if (System[s] === r) {
                         result.refits.push(s);
                     }
