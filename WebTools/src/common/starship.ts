@@ -4,9 +4,20 @@ import { MissionProfileModel } from "../helpers/missionProfiles";
 import { SpaceframeModel } from "../helpers/spaceframes";
 import { System } from "../helpers/systems";
 import { TalentSelection, TalentsHelper, TalentViewModel } from "../helpers/talents";
-import { Weapon } from "../helpers/weapons";
+import { Weapon, WeaponType } from "../helpers/weapons";
 import { CharacterType } from "./characterType";
 import { Construct } from "./construct";
+
+export class SimpleStats {
+    deparments: number[];
+    systems: number[];
+    className: string = "";
+
+    constructor() {
+        this.deparments = [0, 0, 0, 0, 0, 0];
+        this.systems = [0, 0, 0, 0, 0, 0];
+    }
+}
 
 export class Starship extends Construct {
     registry: string = "";
@@ -15,17 +26,26 @@ export class Starship extends Construct {
     spaceframeModel?: SpaceframeModel = undefined;
     missionPodModel?: MissionPodModel;
     missionProfileModel?: MissionProfileModel;
-    departments: number[];
     scale: number;
     profileTalent?: TalentViewModel;
     additionalTalents: TalentViewModel[] = [];
     refits: System[] = [];
+    simpleStats: SimpleStats;
 
     constructor() {
         super();
-        this.departments = [];
         this.scale = 0;
         this.name = "";
+    }
+
+    get className() {
+        if (this.spaceframeModel != null) {
+            return this.spaceframeModel.name;
+        } else if (this.simpleStats != null) {
+            return this.simpleStats.className;
+        } else {
+            return undefined;
+        }
     }
 
     get power() {
@@ -58,6 +78,8 @@ export class Starship extends Construct {
             if (this.spaceframeModel.isMissionPodAvailable && this.missionPodModel) {
                 result += this.missionPodModel.systems[system];
             }
+        } else if (this.simpleStats != null) {
+            result = this.simpleStats.systems[system];
         }
         return result;
     }
@@ -168,39 +190,39 @@ export class Starship extends Construct {
             for (var attack of spaceframe.attacks) {
 
                 if (attack === 'Photon Torpedoes') {
-                    result.push(new Weapon(attack, 3, "High Yield"));
+                    result.push(new Weapon(attack, 3, "High Yield", WeaponType.TORPEDO));
                 } else if (attack === 'Phaser Cannons' || attack === 'Phase Cannons') {
-                    result.push(new Weapon(attack, 2, "Versatile 2", true));
+                    result.push(new Weapon(attack, 2, "Versatile 2", WeaponType.BEAM));
                 } else if (attack === 'Phaser Banks') {
-                    result.push(new Weapon(attack, 1, "Versatile 2", true));
+                    result.push(new Weapon(attack, 1, "Versatile 2", WeaponType.BEAM));
                 } else if (attack === 'Phaser Arrays') {
-                    result.push(new Weapon(attack, 0, "Versatile 2, Area or Spread", true));
+                    result.push(new Weapon(attack, 0, "Versatile 2, Area or Spread", WeaponType.BEAM));
                 } else if (attack === 'Disruptor Cannons') {
-                    result.push(new Weapon(attack, 2, "Viscious 1", true));
+                    result.push(new Weapon(attack, 2, "Viscious 1", WeaponType.BEAM));
                 } else if (attack === 'Disruptor Banks') {
-                    result.push(new Weapon(attack, 1, "Viscious 1", true));
+                    result.push(new Weapon(attack, 1, "Viscious 1", WeaponType.BEAM));
                 } else if (attack === 'Disruptor Arrays') {
-                    result.push(new Weapon(attack, 0, "Viscious 1, Area or Spread", true));
+                    result.push(new Weapon(attack, 0, "Viscious 1, Area or Spread", WeaponType.BEAM));
                 } else if (attack === 'Plasma Torpedoes') {
-                    result.push(new Weapon(attack, 3, "Persistent, Calibration"));
+                    result.push(new Weapon(attack, 3, "Persistent, Calibration", WeaponType.TORPEDO));
                 } else if (attack.indexOf('Tractor Beam') >= 0 || attack.indexOf('Grappler Cables') >= 0) {
                     let index = attack.indexOf("(Strength");
                     let index2 = attack.indexOf(")", index);
                     let strength = index >= 0 && index2 >= 0 ? attack.substr(index + "(Strength".length + 1, index2) : "0";
-                    secondary.push(new Weapon(attack.indexOf('Tractor Beam') >= 0 ? 'Tractor Beam' : 'Grappler Cables', parseInt(strength), ""));
+                    secondary.push(new Weapon(attack.indexOf('Tractor Beam') >= 0 ? 'Tractor Beam' : 'Grappler Cables', parseInt(strength), "", WeaponType.ENTANGLE));
                 }
             }
 
             if (spaceframe.attacks.indexOf('Quantum Torpedoes') >= 0 || talents.indexOf('Quantum Torpedoes') >= 0) {
-                result.push(new Weapon('Quantum Torpedoes', 4, "Vicious 1, Calibration, High Yield"));
+                result.push(new Weapon('Quantum Torpedoes', 4, "Vicious 1, Calibration, High Yield", WeaponType.TORPEDO));
             }
 
             if (spaceframe.attacks.indexOf('Spatial Torpedoes') >= 0 && talents.indexOf('Nuclear Warheads') >= 0) {
-                result.push(new Weapon('Nuclear Warheads', 3, "Vicious 1, Calibration"));
+                result.push(new Weapon('Nuclear Warheads', 3, "Vicious 1, Calibration", WeaponType.TORPEDO));
             } else if (spaceframe.attacks.indexOf('Spatial Torpedoes') >= 0) {
-                result.push(new Weapon('Spatial Torpedoes', 2, ""));
+                result.push(new Weapon('Spatial Torpedoes', 2, "", WeaponType.TORPEDO));
             } else if (spaceframe.attacks.indexOf('Nuclear Warheads') >= 0 || talents.indexOf('Nuclear Warheads') >= 0) {
-                result.push(new Weapon('Nuclear Warheads', 3, "Vicious 1, Calibration"));
+                result.push(new Weapon('Nuclear Warheads', 3, "Vicious 1, Calibration", WeaponType.TORPEDO));
             }
         }
 
@@ -211,31 +233,45 @@ export class Starship extends Construct {
         return result;
     }
 
-    static updateSystemAndDepartments(starship: Starship) {
-        if (starship.spaceframeModel !== undefined && starship.missionProfileModel !== undefined) {
-            const frame = starship.spaceframeModel;
-            const missionPod = starship.missionPodModel;
-            const profile = starship.missionProfileModel;
-
-            starship.scale = frame.scale;
+    get departments() {
+        let result = [0, 0, 0, 0, 0, 0];
+        if (this.spaceframeModel !== undefined && this.missionProfileModel !== undefined) {
+            const frame = this.spaceframeModel;
+            const missionPod = this.missionPodModel;
+            const profile = this.missionProfileModel;
 
             frame.departments.forEach((d, i) => {
-                starship.departments[i] = d;
+                result[i] = d;
             });
 
             if (missionPod) {
                 missionPod.departments.forEach((d, i) => {
-                    starship.departments[i] += d;
+                    result[i] += d;
                 });
             }
 
             profile.departments.forEach((d, i) => {
-                starship.departments[i] += d;
+                result[i] += d;
             });
+        } else if (this.simpleStats != null) {
+            result[Department.Command] = this.simpleStats.deparments[Department.Command];
+            result[Department.Conn] = this.simpleStats.deparments[Department.Conn];
+            result[Department.Security] = this.simpleStats.deparments[Department.Security];
+            result[Department.Engineering] = this.simpleStats.deparments[Department.Engineering];
+            result[Department.Science] = this.simpleStats.deparments[Department.Science];
+            result[Department.Medicine] = this.simpleStats.deparments[Department.Medicine];
+        }
+        return result;
+    }
+
+    static updateSystemAndDepartments(starship: Starship) {
+        if (starship.spaceframeModel !== undefined) {
+            const frame = starship.spaceframeModel;
+            starship.scale = frame.scale;
         }
     }
 
-    private copy(): Starship {
+    public copy(): Starship {
         let result = new Starship();
         result.type = this.type;
         result.name = this.name;
@@ -243,6 +279,15 @@ export class Starship extends Construct {
         result.traits = this.traits;
         result.serviceYear = this.serviceYear;
         result.spaceframeModel = this.spaceframeModel;
+        result.missionPodModel = this.missionPodModel;
+        result.missionProfileModel = this.missionProfileModel;
+        result.scale = this.scale;
+        if (this.simpleStats != null) {
+            result.simpleStats = new SimpleStats();
+            result.simpleStats.className = this.simpleStats.className;
+            result.simpleStats.deparments = [...this.simpleStats.deparments];
+            result.simpleStats.systems = [...this.simpleStats.systems];
+        }
         return result;
     }
 }

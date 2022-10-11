@@ -15,7 +15,7 @@ import SpaceframeSelection from '../view/spaceframeSelection';
 import StarshipStats from '../view/starshipStats';
 import MissionProfileSelection from '../view/missionProfileSelection';
 import MissionPodSelection from '../view/missionPodSelection';
-import CustomSpaceframeForm from '../../components/customSpaceframeForm';
+import CustomSpaceframeForm from '../view/customSpaceframeForm';
 import { System } from '../../helpers/systems';
 import { OutlineImage } from '../../components/outlineImage';
 import { marshaller } from '../../helpers/marshaller';
@@ -139,7 +139,7 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
                     missionPodModel = items[0];
                 }
             }
-    
+
             let details = (<div className="p-0"><h5 className="text-selection">No Selection</h5></div>);
             if (missionPodModel) {
                 let talentList = missionPodModel.talents ? missionPodModel.talents.map(t => t.name).join(", ") : "None specified";
@@ -155,7 +155,7 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
                 );
             }
             return details;
-    
+
         } else {
             this.starship.missionPodModel = undefined;
             return undefined;
@@ -166,7 +166,7 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
     render() {
         const selectedSpaceframeDetails = this.renderSpaceframeSection();
         const missionProfilesDetails = this.renderMissionProfilesSection();
-        
+
         let spaceframeTalents = [];
         let missionPodDetails = undefined;
         if (this.starship.spaceframeModel) {
@@ -249,22 +249,22 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
                 </li>
             );
         });
-    
 
-        let nameSection = this.props.type === CharacterType.KlingonWarrior 
+
+        let nameSection = this.props.type === CharacterType.KlingonWarrior
             ?   (<div className="panel">
                     <div className="page-text-aligned">
                     <SmallHeader>Name</SmallHeader>
                         Every Starship needs a name.
-                        The Empire has no universal convention for the naming of ships, often naming them after locations, brave warriors, 
-                        ancient ships, mythical figures, or even important objects from history, great beasts, or boasts relating to a 
+                        The Empire has no universal convention for the naming of ships, often naming them after locations, brave warriors,
+                        ancient ships, mythical figures, or even important objects from history, great beasts, or boasts relating to a
                         House's conquests.
-                        In many cases, these vague naming conventions overlap — a ship may be named after an ancient ship that was itself 
+                        In many cases, these vague naming conventions overlap — a ship may be named after an ancient ship that was itself
                         named after a location, for example — but this shouldn’t cause any issues.
                         The name should ideally be a single word or, more rarely, two.
                         <br/><br/>
-                        A Klingon starship's name is prefixed with I.K.S., standing for Imperial Klingon Ship, if it is not part of a 
-                        House fleet and serves the Empire as a whole. House vessels may continue to use the I.K.S. prefix, though they 
+                        A Klingon starship's name is prefixed with I.K.S., standing for Imperial Klingon Ship, if it is not part of a
+                        House fleet and serves the Empire as a whole. House vessels may continue to use the I.K.S. prefix, though they
                         may also not have any prefix at all or one made by the leader of that House.
                     </div>
                     <div className="textinput-label">NAME</div>
@@ -312,12 +312,12 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
             <div className="page-text-aligned">
                 To go with the name, each Federation starship has a registry number.
                 This is a four- (for games set in the Original Series era), or five-digit number (for games set in the Next Generation era), prefixed by either the letters NCC, or NX.
-                NCC is used for most ships, but NX is reserved for prototype vessels and the first ship of a class, in honor of the first Human starships able to reach warp 5. 
+                NCC is used for most ships, but NX is reserved for prototype vessels and the first ship of a class, in honor of the first Human starships able to reach warp 5.
             </div>
             <div className="row">
                 <div className="col-lg-9 mt-3">
                     <div className="textinput-label">REGISTRY NUMBER</div>
-                    
+
                     <input
                         type="text"
                         onChange={(ev) => {
@@ -348,7 +348,7 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
                         <div className="panel">
                             <div className="header-small">Spaceframe</div>
                             <div className="page-text-aligned">
-                                The vessel's spaceframe is its basic superstructure, core systems, operation infrastructure, 
+                                The vessel's spaceframe is its basic superstructure, core systems, operation infrastructure,
                                 and all the other elements that are common to every vessel of the same class.
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-between'}}>
@@ -500,13 +500,13 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
 
     modalContents(name: string) {
         if (name === 'spaceframes') {
-            return (<SpaceframeSelection serviceYear={this.props.serviceYear} type={character.type} 
+            return (<SpaceframeSelection serviceYear={this.props.serviceYear} type={character.type} starship={this.starship}
                 initialSelection={this.starship.spaceframeModel} onSelection={(s) => { this.onSpaceframeSelected(s); this.closeModal() }} />);
         } else if (name === 'customSpaceframe') {
-            return (<CustomSpaceframeForm  
+            return (<CustomSpaceframeForm
                 initialSelection={this.createOrReuseCustomSpaceframe()} onComplete={(s) => { this.onSpaceframeSelected(s); this.closeModal() }} />);
         } else if (name === 'missionProfile') {
-            return (<MissionProfileSelection type={character.type} 
+            return (<MissionProfileSelection type={character.type}
                 initialSelection={this.starship.missionProfileModel} onSelection={(m) => { this.onMissionProfileSelected(m); this.closeModal() }} />);
         } else if (name === 'missionPod') {
             return (<MissionPodSelection starship={this.starship}
@@ -583,7 +583,7 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
 }
 
 function mapStateToProps(state, ownProps) {
-    return { 
+    return {
         type: state.starship.starship.type,
         serviceYear: state.starship.starship.serviceYear
     };

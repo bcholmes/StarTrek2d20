@@ -14,7 +14,7 @@ import store from '../state/store';
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
 
 interface ITalentPrerequisite<T extends Construct> {
-    isPrerequisiteFulfilled(): boolean;
+    isPrerequisiteFulfilled(t: T): boolean;
     describe(): string
 }
 
@@ -27,7 +27,7 @@ class AttributePrerequisite implements ITalentPrerequisite<Character> {
         this.value = minValue;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return character.attributes[this.attribute].value >= this.value;
     }
     describe(): string {
@@ -44,7 +44,7 @@ class DisciplinePrerequisite implements ITalentPrerequisite<Character> {
         this.value = minValue;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return character.skills[this.discipline].expertise >= this.value;
     }
 
@@ -60,7 +60,7 @@ class UntrainedDisciplinePrerequisite implements ITalentPrerequisite<Character> 
         this.discipline = discipline;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return character.skills[this.discipline].expertise <= 1;
     }
     describe(): string {
@@ -79,7 +79,7 @@ class VariableDisciplinePrerequisite implements ITalentPrerequisite<Character> {
         this.value = minValue;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return character.skills[this.discipline1].expertise >= this.value ||
                character.skills[this.discipline2].expertise >= this.value;
     }
@@ -98,7 +98,7 @@ class SpeciesPrerequisite implements ITalentPrerequisite<Character> {
         this.allowCrossSelection = allowCrossSelection;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return character.species === this.species ||
                character.mixedSpecies === this.species ||
                (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
@@ -119,7 +119,7 @@ class AnySpeciesPrerequisite implements ITalentPrerequisite<Character> {
         this.allowCrossSelection = allowCrossSelection;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return character.species === this.species1 ||
                character.species === this.species2 ||
                character.mixedSpecies === this.species1 ||
@@ -140,7 +140,7 @@ class PureSpeciesPrerequisite implements ITalentPrerequisite<Character> {
         this.allowCrossSelection = allowCrossSelection;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return (character.species === this.species && character.mixedSpecies == null) ||
                (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
     }
@@ -156,7 +156,7 @@ class CareerPrerequisite implements ITalentPrerequisite<Character> {
         this.career = species;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return character.career === this.career;
     }
     describe(): string {
@@ -166,7 +166,7 @@ class CareerPrerequisite implements ITalentPrerequisite<Character> {
 
 class ChildOnlyPrerequisite implements ITalentPrerequisite<Character> {
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return false; // it's never selected by players; only automatically added for child characters
     }
     describe(): string {
@@ -176,7 +176,7 @@ class ChildOnlyPrerequisite implements ITalentPrerequisite<Character> {
 
 class MainCharacterPrerequisite implements ITalentPrerequisite<Character> {
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return true; // at the moment, only Main characters can have talents, so I think this is always true
     }
     describe(): string {
@@ -186,7 +186,7 @@ class MainCharacterPrerequisite implements ITalentPrerequisite<Character> {
 
 class CommandingAndExecutiveOfficerPrerequisite implements ITalentPrerequisite<Character> {
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         // Awkwardly, we don't know the character's role at the time that
         // they select talents. What we *do* know is that Young characters
         // don't get to be Commanding Officers or Executive Officers.
@@ -199,7 +199,7 @@ class CommandingAndExecutiveOfficerPrerequisite implements ITalentPrerequisite<C
 
 class GMsDiscretionPrerequisite implements ITalentPrerequisite<Character> {
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return store.getState().context.allowEsotericTalents;
     }
     describe(): string {
@@ -209,7 +209,7 @@ class GMsDiscretionPrerequisite implements ITalentPrerequisite<Character> {
 
 class OnlyAtCharacterCreationPrerequisite implements ITalentPrerequisite<Character> {
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return true;
     }
     describe(): string {
@@ -220,7 +220,7 @@ class OnlyAtCharacterCreationPrerequisite implements ITalentPrerequisite<Charact
 
 class SupportingCharacterPrerequisite implements ITalentPrerequisite<Character> {
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return false; // at the moment, only Main characters can have talents, so I think this is always false
     }
     describe(): string {
@@ -235,7 +235,7 @@ class CharacterTypePrerequisite implements ITalentPrerequisite<Character> {
         this.type = type;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return character.type === this.type;
     }
     describe(): string {
@@ -250,7 +250,7 @@ class NotCharacterTypePrerequisite implements ITalentPrerequisite<Character> {
         this.type = type;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return character.type !== this.type;
     }
     describe(): string {
@@ -258,17 +258,17 @@ class NotCharacterTypePrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class AnyOfPrerequisite implements ITalentPrerequisite<Character> {
-    private prerequisites: ITalentPrerequisite<Character>[];
+class AnyOfPrerequisite implements ITalentPrerequisite<Construct> {
+    private prerequisites: ITalentPrerequisite<Construct>[];
 
-    constructor(...prerequisites: ITalentPrerequisite<Character>[]) {
+    constructor(...prerequisites: ITalentPrerequisite<Construct>[]) {
         this.prerequisites = prerequisites;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Construct) {
         let result = false;
         for (let p of this.prerequisites) {
-            result = result || p.isPrerequisiteFulfilled();
+            result = result || p.isPrerequisiteFulfilled(c);
             if (result) {
                 break;
             }
@@ -281,14 +281,14 @@ class AnyOfPrerequisite implements ITalentPrerequisite<Character> {
 }
 
 
-class TalentPrerequisite implements ITalentPrerequisite<Character> {
+class TalentPrerequisite implements ITalentPrerequisite<Construct> {
     private talent: string;
 
     constructor(talent: string) {
         this.talent = talent;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Construct) {
         return character.hasTalent(this.talent);
     }
     describe(): string {
@@ -303,7 +303,7 @@ class FocusPrerequisite implements ITalentPrerequisite<Character> {
         this.focus = focus;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Character) {
         return character.focuses.indexOf(this.focus) > -1;
     }
     describe(): string {
@@ -311,14 +311,14 @@ class FocusPrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class NotTalentPrerequisite implements ITalentPrerequisite<Character> {
+class NotTalentPrerequisite implements ITalentPrerequisite<Construct> {
     private talent: string;
 
     constructor(talent: string) {
         this.talent = talent;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Construct) {
         return !character.hasTalent(this.talent);
     }
     describe(): string {
@@ -326,14 +326,14 @@ class NotTalentPrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class SourcePrerequisite implements ITalentPrerequisite<Character> {
+class SourcePrerequisite implements ITalentPrerequisite<Construct> {
     private sources: Source[];
 
     constructor(...sources: Source[]) {
         this.sources = sources;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Construct) {
         let result = false
         this.sources.forEach((s) => { result = result || store.getState().context.sources.indexOf(s) >= 0 })
         return result;
@@ -347,14 +347,14 @@ class SourcePrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class EraPrerequisite implements ITalentPrerequisite<Character> {
+class EraPrerequisite implements ITalentPrerequisite<Construct> {
     private era: Era;
 
     constructor(era: Era) {
         this.era = era;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Construct) {
         return store.getState().context.era >= this.era;
     }
     describe(): string {
@@ -362,14 +362,14 @@ class EraPrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class NotEraPrerequisite implements ITalentPrerequisite<Character> {
+class NotEraPrerequisite implements ITalentPrerequisite<Construct> {
     private eras: Era[];
 
     constructor(...eras: Era[]) {
         this.eras = eras;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Construct) {
         let result = true;
         this.eras.forEach((e) => { result = result && store.getState().context.era !== e })
         return result;
@@ -379,9 +379,9 @@ class NotEraPrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class StarshipPrerequisite implements ITalentPrerequisite<Construct> {
-    isPrerequisiteFulfilled() {
-        return character.starship != null;
+class StarshipPrerequisite implements ITalentPrerequisite<Starship> {
+    isPrerequisiteFulfilled(starship: Starship) {
+        return starship instanceof Starship;
     }
     describe(): string {
         return "";
@@ -389,7 +389,7 @@ class StarshipPrerequisite implements ITalentPrerequisite<Construct> {
 }
 
 class StarbasePrerequisite implements ITalentPrerequisite<Construct> {
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Construct) {
         return false;
     }
     describe(): string {
@@ -404,8 +404,8 @@ class ServiceYearPrerequisite implements ITalentPrerequisite<Starship> {
         this.year = year;
     }
 
-    isPrerequisiteFulfilled() {
-        return character.starship != null && character.starship.serviceYear >= this.year;
+    isPrerequisiteFulfilled(s: Starship) {
+        return s != null && s.serviceYear >= this.year;
     }
     describe(): string {
         return "";
@@ -419,8 +419,8 @@ class MaxServiceYearPrerequisite implements ITalentPrerequisite<Starship> {
         this.year = year;
     }
 
-    isPrerequisiteFulfilled() {
-        return character.starship != null && character.starship.serviceYear <= this.year;
+    isPrerequisiteFulfilled(s: Starship) {
+        return s != null && s.serviceYear <= this.year;
     }
     describe(): string {
         return "";
@@ -434,8 +434,8 @@ class SpaceframePrerequisite implements ITalentPrerequisite<Starship> {
         this.frame = frame;
     }
 
-    isPrerequisiteFulfilled() {
-        return character.starship != null && character.starship.spaceframeModel && character.starship.spaceframeModel.id === this.frame;
+    isPrerequisiteFulfilled(s: Starship) {
+        return s != null && s.spaceframeModel && s.spaceframeModel.id === this.frame;
     }
     describe(): string {
         return "";
@@ -449,7 +449,7 @@ class SpaceframesPrerequisite implements ITalentPrerequisite<Starship> {
         this.frames = frames;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(s: Starship) {
         return character.starship != null && character.starship.spaceframeModel &&
                this.frames.indexOf(character.starship.spaceframeModel.id) > -1;
     }
@@ -467,7 +467,7 @@ class DepartmentPrerequisite implements ITalentPrerequisite<Starship> {
         this.value = value;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(s: Starship) {
         return character.starship != null && character.starship.departments[this.department] >= this.value;
     }
     describe(): string {
@@ -505,27 +505,27 @@ export class TalentModel {
     isAvailableExcludingSpecies() {
         let available = true;
         this.prerequisites.forEach((p, i) => {
-            if (!(p instanceof SpeciesPrerequisite) && !(p instanceof AnySpeciesPrerequisite) && !p.isPrerequisiteFulfilled()) {
+            if (!(p instanceof SpeciesPrerequisite) && !(p instanceof AnySpeciesPrerequisite) && !p.isPrerequisiteFulfilled(character)) {
                 available = false;
             }
         });
         return available;
     }
 
-    isAvailableForServiceYear() {
+    isAvailableForServiceYear(s: Starship) {
         let available = true;
         this.prerequisites.forEach((p, i) => {
-            if (((p instanceof ServiceYearPrerequisite) || (p instanceof MaxServiceYearPrerequisite)) && !p.isPrerequisiteFulfilled()) {
+            if (((p instanceof ServiceYearPrerequisite) || (p instanceof MaxServiceYearPrerequisite)) && !p.isPrerequisiteFulfilled(s)) {
                 available = false;
             }
         });
         return available;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(c: Construct) {
         let include = true;
         this.prerequisites.forEach((p, i) => {
-            if (!p.isPrerequisiteFulfilled()) {
+            if (!p.isPrerequisiteFulfilled(c)) {
                 include = false;
             }
         });
@@ -1098,7 +1098,7 @@ export class Talents {
                 "Field Medicine",
                 "When attempting a Medicine Task, you may ignore any increase in Difficulty for working without the proper tools or equipment.",
                 [],
-                1, 
+                1,
                 "Medicine"),
             new TalentModel(
                 "First Response",
@@ -2184,8 +2184,8 @@ export class Talents {
                 [new SourcePrerequisite(Source.PicardS1), new SpeciesPrerequisite(Species.Romulan, true)],
                 1,
                 "Romulan"),
-                
-                                            
+
+
 
             // Careers
             new TalentModel(
@@ -2525,13 +2525,14 @@ export class Talents {
                 [new SourcePrerequisite(Source.DiscoveryS1S2)],
                 1,
                 "General"),
+        ];
 
-                
+    private _starshipTalents: TalentModel[] = [
             // Starships
             new TalentModel(
                 "Ablative Armor",
                 "The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures, such as those caused by energy weapons and torpedo blasts, dissipating the energy, and protecting the ship. This plating is replaced periodically. The ship’s Resistance is increased by 2.",
-                [new StarshipPrerequisite(), new ServiceYearPrerequisite(2371)],
+                [new StarshipPrerequisite(), new ServiceYearPrerequisite(2371), new SourcePrerequisite(Source.Core, Source.UtopiaPlanitia)],
                 1,
                 "Starship"),
             new TalentModel(
@@ -2874,7 +2875,10 @@ export class Talents {
         ];
 
     getTalents() {
-        return this._talents;
+        let result = [];
+        this._talents.forEach(t => result.push(t));
+        this._starshipTalents.forEach(t => result.push(t));
+        return result;
     }
 
 
@@ -2903,6 +2907,16 @@ export class Talents {
         }
 
         if (talent == null) {
+            for (let i = 0; i < this._starshipTalents.length; i++) {
+                let t = this._starshipTalents[i];
+                if (t.matches(name)) {
+                    talent = t;
+                    break;
+                }
+            }
+        }
+
+        if (talent == null) {
             for (let i = 0; i < this._specialRules.length; i++) {
                 let t = this._specialRules[i];
                 if (t.matches(name)) {
@@ -2914,14 +2928,8 @@ export class Talents {
 
         if (talent == null && name.indexOf(" [") >= 0) {
             let tempName = name.substring(0, name.indexOf(" ["));
-            for (let i = 0; i < this._talents.length; i++) {
-                let t = this._talents[i];
-                if (t.matches(tempName)) {
-                    talent = t;
-                    break;
-                }
-            }
-            }
+            talent = this.getTalent(tempName);
+        }
 
         if (talent === null) {
             console.log("Failed to find talent " + name);
@@ -2931,7 +2939,7 @@ export class Talents {
     }
 
     getAllAvailableTalents() {
-        let result = this._talents.filter(t => t.isPrerequisiteFulfilled()).map(t => ToViewModel(t));
+        let result = this._talents.filter(t => t.isPrerequisiteFulfilled(character)).map(t => ToViewModel(t));
         result.sort((a, b) => a.name.localeCompare(b.name));
         return result;
     }
@@ -2939,13 +2947,13 @@ export class Talents {
     getStarshipTalents(starship: Starship) {
         let talents: TalentViewModel[] = [];
 
-        for (let i = 0; i < this._talents.length; i++) {
-            let talent = this._talents[i];
+        for (let i = 0; i < this._starshipTalents.length; i++) {
+            let talent = this._starshipTalents[i];
             let include = talent.category === "Starship";
 
             if (include) {
                 talent.prerequisites.forEach((p, i) => {
-                    if (!p.isPrerequisiteFulfilled()) {
+                    if (!p.isPrerequisiteFulfilled(starship)) {
                         include = false;
                     }
                 });

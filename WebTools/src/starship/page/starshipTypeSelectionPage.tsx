@@ -4,6 +4,7 @@ import { CharacterType, CharacterTypeModel } from "../../common/characterType";
 import { navigateTo, Navigation } from "../../common/navigator";
 import { Button } from "../../components/button";
 import { DropDownInput } from "../../components/dropDownInput";
+import { Header } from "../../components/header";
 import { SmallHeader } from "../../components/smallHeader";
 import { Era } from "../../helpers/eras";
 import { Source } from "../../helpers/sources";
@@ -17,7 +18,7 @@ interface StarshipTypeSelectionPageProperties {
 }
 interface StarshipTypeSelectionPageState {
     type?: CharacterTypeModel;
-    serviceYear: number
+    campaignYear: number
 }
 
 class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPageProperties, StarshipTypeSelectionPageState> {
@@ -26,15 +27,15 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
         super(props);
         this.state = {
             type: CharacterTypeModel.getStarshipTypes()[0],
-            serviceYear: this.eraDefaultYear(this.props.era)
+            campaignYear: this.eraDefaultYear(this.props.era)
         }
     }
 
     render() {
-        let typeSelection = hasSource(Source.KlingonCore) 
-        ? (<div className="panel">
+        let typeSelection = hasSource(Source.KlingonCore)
+        ? (<div className="my-5">
                 <div className="header-small">Ship Type</div>
-                <div className="page-text-aligned">
+                <div className="page-text">
                     What type of starship is this?
                 </div>
                 <div>
@@ -54,7 +55,8 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                         <li className="breadcrumb-item active" aria-current="page">Starship Creation</li>
                     </ol>
                 </nav>
-            
+
+                <Header>Starship Type Selection</Header>
                 <div>
                     {typeSelection}
                     {this.renderServiceYear()}
@@ -70,31 +72,33 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
 
     startWorkflow() {
         if (this.state.type != null && this.state.type.type === CharacterType.Other) {
-            store.dispatch(createNewStarship(this.state.type.type, this.state.serviceYear));
+            store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear, true));
             Navigation.navigateToPage(PageIdentity.SimpleStarship);
         } else if (this.state.type != null) {
-            store.dispatch(createNewStarship(this.state.type.type, this.state.serviceYear));
+            store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear));
             Navigation.navigateToPage(PageIdentity.Starship);
         }
     }
 
     renderServiceYear() {
-        return (<div className="panel">
-                    <SmallHeader>Year of Service</SmallHeader>
-                    <div className="page-text-aligned">
-                        The year in which the ship exists determines available options.
-                        Choose which year you want to play in together with your GM.
-                        A default year will be filled in automatically dependent on the chosen Era.
+        return (<div>
+                    <SmallHeader>Campaign Year</SmallHeader>
+                    <div className="page-text">
+                        <p>What is the current year in your campaign? You'll probably need to consult your GM.</p>
+                        <p>A default year will be filled in automatically dependent on the chosen Era.</p>
                     </div>
-                    <div className="textinput-label">YEAR</div>
-                    <input
-                        type="number"
-                        defaultValue={this.state.serviceYear.toString()}
-                        onChange={(e) => {
-                            let value = e.target.value;
-                            this.setState((state) => ({...state, serviceYear: parseInt(value)}))
-                        } }
-                        />
+                    <div className="d-sm-flex align-items-stretch">
+                        <label htmlFor="campaignYear" className="textinput-label">YEAR</label>
+                        <input
+                            id="campaignYear"
+                            type="number"
+                            defaultValue={this.state.campaignYear.toString()}
+                            onChange={(e) => {
+                                let value = e.target.value;
+                                this.setState((state) => ({...state, campaignYear: parseInt(value)}))
+                            } }
+                            />
+                    </div>
                 </div>);
     }
 
@@ -111,7 +115,7 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
 }
 
 function mapStateToProps(state, ownProps) {
-    return { 
+    return {
         era: state.context.era
     };
 }

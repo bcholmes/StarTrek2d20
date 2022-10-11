@@ -1,60 +1,25 @@
 import * as React from 'react';
-import { character } from '../common/character';
-import { CharacterType } from '../common/characterType';
-import { Department } from '../helpers/departments';
+import { character } from '../../common/character';
+import { CharacterType } from '../../common/characterType';
+import { Department } from '../../helpers/departments';
 
-import { SpaceframeModel } from '../helpers/spaceframes';
-import { System } from '../helpers/systems';
-import { TalentsHelper } from '../helpers/talents';
-import StarshipWeaponRegistry, { Weapon } from '../helpers/weapons';
-import store from '../state/store';
-import { Button } from './button';
-import { CheckBox } from './checkBox';
-import { TalentSelection } from '../helpers/talents';
-
-interface IStatControlProperties {
-    statName: string;
-    value: number;
-    showIncrease: boolean;
-    showDecrease: boolean;
-    onIncrease: () => void;
-    onDecrease: () => void;
-}
-
-export class StatControl extends React.Component<IStatControlProperties, {}> {
-    render() {
-        const {statName, value, showDecrease, showIncrease} = this.props;
-
-        const dec = showDecrease
-            ? (<img style={{ float: "left" }} height="20" src="static/img/dec.png" onClick={ () => { this.props.onDecrease() } } alt="-"/>)
-            : undefined;
-
-        const inc = showIncrease
-            ? (<img style={{ float: "right" }} height="20" src="static/img/inc.png" onClick={ () => { this.props.onIncrease() } } alt="+"/>)
-            : undefined;
-
-        return (
-            <div className="stat">
-                <div className="stat-entry-name">
-                    {statName}
-                </div>
-                <div className="stat-entry-value">
-                    {dec}
-                    {value}
-                    {inc}
-                </div>
-            </div>
-        );
-    }
-}
+import { SpaceframeModel } from '../../helpers/spaceframes';
+import { System } from '../../helpers/systems';
+import { TalentsHelper } from '../../helpers/talents';
+import StarshipWeaponRegistry, { Weapon } from '../../helpers/weapons';
+import store from '../../state/store';
+import { Button } from '../../components/button';
+import { CheckBox } from '../../components/checkBox';
+import { TalentSelection } from '../../helpers/talents';
+import { StatControl } from './statControl';
 
 
-interface ICustomSpacefraemProperties {
+interface ICustomSpaceframeProperties {
     initialSelection: SpaceframeModel;
     onComplete: (s: SpaceframeModel) => void;
 }
 
-interface ICustomSpacefraemState {
+interface ICustomSpaceframeState {
     name: string;
     departments: number[];
     systems: number[];
@@ -63,11 +28,11 @@ interface ICustomSpacefraemState {
     weapons: string[];
     talents: string[];
 }
-class CustomSpaceframeForm extends React.Component<ICustomSpacefraemProperties, ICustomSpacefraemState> {
+class CustomSpaceframeForm extends React.Component<ICustomSpaceframeProperties, ICustomSpaceframeState> {
 
     weapons: Weapon[];
 
-    constructor(props: ICustomSpacefraemProperties) {
+    constructor(props: ICustomSpaceframeProperties) {
         super(props);
         this.state = {
             name: this.props.initialSelection.name,
@@ -104,7 +69,7 @@ class CustomSpaceframeForm extends React.Component<ICustomSpacefraemProperties, 
                                 name: value
                             });
                         } }
-                        value={this.state.name} />  
+                        value={this.state.name} />
                     <div><small><b>e.g.: </b> <i>Archer Class, Soyuz Class, etc.</i></small></div>
                 </div>
                 <div className="panel">
@@ -127,75 +92,75 @@ class CustomSpaceframeForm extends React.Component<ICustomSpacefraemProperties, 
                     <div className="page-text">Provide some base stats for this frame.</div>
 
                     <div className="stats-row">
-                        <StatControl statName="Comms" value={this.state.systems[System.Comms]} 
-                            showIncrease={this.state.systems[System.Comms] < 15} showDecrease={this.state.systems[System.Comms] > 7} 
-                            onIncrease={() => { this.setSystem(System.Comms, 1) }} 
+                        <StatControl statName="Comms" value={this.state.systems[System.Comms]}
+                            showIncrease={this.state.systems[System.Comms] < 15} showDecrease={this.state.systems[System.Comms] > 7}
+                            onIncrease={() => { this.setSystem(System.Comms, 1) }}
                             onDecrease={() => {this.setSystem(System.Comms, -1)}} />
 
-                        <StatControl statName="Engines" value={this.state.systems[System.Engines]} 
-                            showIncrease={this.state.systems[System.Engines] < 15} showDecrease={this.state.systems[System.Engines] > 7} 
-                            onIncrease={() => { this.setSystem(System.Engines, 1) }} 
+                        <StatControl statName="Engines" value={this.state.systems[System.Engines]}
+                            showIncrease={this.state.systems[System.Engines] < 15} showDecrease={this.state.systems[System.Engines] > 7}
+                            onIncrease={() => { this.setSystem(System.Engines, 1) }}
                             onDecrease={() => {this.setSystem(System.Engines, -1)}} />
 
-                        <StatControl statName="Structure" value={this.state.systems[System.Structure]} 
-                            showIncrease={this.state.systems[System.Structure] < 15} showDecrease={this.state.systems[System.Structure] > 7} 
-                            onIncrease={() => { this.setSystem(System.Structure, 1) }} 
+                        <StatControl statName="Structure" value={this.state.systems[System.Structure]}
+                            showIncrease={this.state.systems[System.Structure] < 15} showDecrease={this.state.systems[System.Structure] > 7}
+                            onIncrease={() => { this.setSystem(System.Structure, 1) }}
                             onDecrease={() => {this.setSystem(System.Structure, -1)}} />
                     </div>
 
                     <div className="stats-row">
-                        <StatControl statName="Computers" value={this.state.systems[System.Computer]} 
-                            showIncrease={this.state.systems[System.Computer] < 15} showDecrease={this.state.systems[System.Computer] > 7} 
-                            onIncrease={() => { this.setSystem(System.Computer, 1) }} 
+                        <StatControl statName="Computers" value={this.state.systems[System.Computer]}
+                            showIncrease={this.state.systems[System.Computer] < 15} showDecrease={this.state.systems[System.Computer] > 7}
+                            onIncrease={() => { this.setSystem(System.Computer, 1) }}
                             onDecrease={() => {this.setSystem(System.Computer, -1)}} />
 
-                        <StatControl statName="Sensors" value={this.state.systems[System.Sensors]} 
-                            showIncrease={this.state.systems[System.Sensors] < 15} showDecrease={this.state.systems[System.Sensors] > 7} 
-                            onIncrease={() => { this.setSystem(System.Sensors, 1) }} 
+                        <StatControl statName="Sensors" value={this.state.systems[System.Sensors]}
+                            showIncrease={this.state.systems[System.Sensors] < 15} showDecrease={this.state.systems[System.Sensors] > 7}
+                            onIncrease={() => { this.setSystem(System.Sensors, 1) }}
                             onDecrease={() => {this.setSystem(System.Sensors, -1)}} />
 
-                        <StatControl statName="Weapons" value={this.state.systems[System.Weapons]} 
-                            showIncrease={this.state.systems[System.Weapons] < 15} showDecrease={this.state.systems[System.Weapons] > 7} 
-                            onIncrease={() => { this.setSystem(System.Weapons, 1) }} 
+                        <StatControl statName="Weapons" value={this.state.systems[System.Weapons]}
+                            showIncrease={this.state.systems[System.Weapons] < 15} showDecrease={this.state.systems[System.Weapons] > 7}
+                            onIncrease={() => { this.setSystem(System.Weapons, 1) }}
                             onDecrease={() => {this.setSystem(System.Weapons, -1)}} />
                     </div>
 
                     <div className="stats-row pt-2">
-                        <StatControl statName="Command" value={this.state.departments[Department.Command]} 
-                            showIncrease={this.state.departments[Department.Command] < 5} showDecrease={this.state.departments[Department.Command] > 0} 
-                            onIncrease={() => { this.setDepartment(Department.Command, 1) }} 
+                        <StatControl statName="Command" value={this.state.departments[Department.Command]}
+                            showIncrease={this.state.departments[Department.Command] < 5} showDecrease={this.state.departments[Department.Command] > 0}
+                            onIncrease={() => { this.setDepartment(Department.Command, 1) }}
                             onDecrease={() => {this.setDepartment(Department.Command, -1)}} />
 
-                        <StatControl statName="Security" value={this.state.departments[Department.Security]} 
-                            showIncrease={this.state.departments[Department.Security] < 5} showDecrease={this.state.departments[Department.Security] > 0} 
-                            onIncrease={() => { this.setDepartment(Department.Security, 1) }} 
+                        <StatControl statName="Security" value={this.state.departments[Department.Security]}
+                            showIncrease={this.state.departments[Department.Security] < 5} showDecrease={this.state.departments[Department.Security] > 0}
+                            onIncrease={() => { this.setDepartment(Department.Security, 1) }}
                             onDecrease={() => {this.setDepartment(Department.Security, -1)}} />
 
-                        <StatControl statName="Science" value={this.state.departments[Department.Science]} 
-                            showIncrease={this.state.departments[Department.Science] < 5} showDecrease={this.state.departments[Department.Science] > 0} 
-                            onIncrease={() => { this.setDepartment(Department.Science, 1) }} 
+                        <StatControl statName="Science" value={this.state.departments[Department.Science]}
+                            showIncrease={this.state.departments[Department.Science] < 5} showDecrease={this.state.departments[Department.Science] > 0}
+                            onIncrease={() => { this.setDepartment(Department.Science, 1) }}
                             onDecrease={() => {this.setDepartment(Department.Science, -1)}} />
                     </div>
                     <div className="stats-row">
-                        <StatControl statName="Conn" value={this.state.departments[Department.Conn]} 
-                            showIncrease={this.state.departments[Department.Conn] < 5} showDecrease={this.state.departments[Department.Conn] > 0} 
-                            onIncrease={() => { this.setDepartment(Department.Conn, 1) }} 
+                        <StatControl statName="Conn" value={this.state.departments[Department.Conn]}
+                            showIncrease={this.state.departments[Department.Conn] < 5} showDecrease={this.state.departments[Department.Conn] > 0}
+                            onIncrease={() => { this.setDepartment(Department.Conn, 1) }}
                             onDecrease={() => {this.setDepartment(Department.Conn, -1)}} />
 
-                        <StatControl statName="Engineering" value={this.state.departments[Department.Engineering]} 
-                            showIncrease={this.state.departments[Department.Engineering] < 5} showDecrease={this.state.departments[Department.Engineering] > 0} 
-                            onIncrease={() => { this.setDepartment(Department.Engineering, 1) }} 
+                        <StatControl statName="Engineering" value={this.state.departments[Department.Engineering]}
+                            showIncrease={this.state.departments[Department.Engineering] < 5} showDecrease={this.state.departments[Department.Engineering] > 0}
+                            onIncrease={() => { this.setDepartment(Department.Engineering, 1) }}
                             onDecrease={() => {this.setDepartment(Department.Engineering, -1)}} />
 
-                        <StatControl statName="Medicine" value={this.state.departments[Department.Medicine]} 
-                            showIncrease={this.state.departments[Department.Medicine] < 5} showDecrease={this.state.departments[Department.Medicine] > 0} 
-                            onIncrease={() => { this.setDepartment(Department.Medicine, 1) }} 
+                        <StatControl statName="Medicine" value={this.state.departments[Department.Medicine]}
+                            showIncrease={this.state.departments[Department.Medicine] < 5} showDecrease={this.state.departments[Department.Medicine] > 0}
+                            onIncrease={() => { this.setDepartment(Department.Medicine, 1) }}
                             onDecrease={() => {this.setDepartment(Department.Medicine, -1)}} />
                    </div>
 
                     <div className="stats-row pt-2">
-                        <StatControl statName="Scale" value={this.state.scale} 
-                            showIncrease={true} showDecrease={this.state.scale > 3} 
+                        <StatControl statName="Scale" value={this.state.scale}
+                            showIncrease={true} showDecrease={this.state.scale > 3}
                             onIncrease={() => { this.setScale(1) }} onDecrease={() => {this.setScale(-1)}} />
                     </div>
                 </div>

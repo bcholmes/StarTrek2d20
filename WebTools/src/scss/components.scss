@@ -205,6 +205,10 @@ label.textinput-label {
     display: inline-block;
     padding: 5px;
 }
+
+div.align-items-stretch > label.textinput-label {
+    margin-bottom: 0;
+}
 .textinput-label {
     background-color: #DE84B7;
     color: black;

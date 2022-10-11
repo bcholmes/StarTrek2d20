@@ -11,7 +11,7 @@ import {CharacterType} from './characterType';
 import { AlliedMilitary, AlliedMilitaryType } from '../helpers/alliedMilitary';
 import { Government, GovernmentType } from '../helpers/governments';
 import AgeHelper, { Age } from '../helpers/age';
-import { Weapon } from '../helpers/weapons';
+import { Weapon, WeaponType } from '../helpers/weapons';
 import { Construct } from './construct';
 import { Starship } from './starship';
 import { SpeciesHelper } from '../helpers/species';
@@ -167,28 +167,28 @@ export class Character extends Construct {
 
     determineWeapons() {
         let result: Weapon[] = [];
-            
+
         if (this.hasTalent("Mean Right Hook")) {
-            result.push(new Weapon("Unarmed Strike", 1, "Knockdown, Non-lethal Vicious 1"));
+            result.push(new Weapon("Unarmed Strike", 1, "Knockdown, Non-lethal Vicious 1", WeaponType.MELEE));
         } else {
-            result.push(new Weapon("Unarmed Strike", 1, "Knockdown"));
+            result.push(new Weapon("Unarmed Strike", 1, "Knockdown", WeaponType.MELEE));
         }
 
         if (this.hasTalent("The Ushaan")) {
-            result.push(new Weapon("Ushaan-tor", 1, "Vicious 1"));
+            result.push(new Weapon("Ushaan-tor", 1, "Vicious 1", WeaponType.MELEE));
         }
 
         if (this.hasTalent("Warrior's Spirit")) {
-            result.push(new Weapon("Bat'leth", 3, "Vicious 1"));
+            result.push(new Weapon("Bat'leth", 3, "Vicious 1", WeaponType.MELEE));
         }
 
         if (this.type === CharacterType.Starfleet || this.type === CharacterType.Cadet) {
-            result.push(new Weapon("Phaser type-2", 3, "Charges"));
+            result.push(new Weapon("Phaser type-2", 3, "Charges", WeaponType.BEAM));
         } else if (this.age.isAdult()) {
             if (this.isKlingon()) {
-                result.push(new Weapon("d’k tahg dagger", 1, "Vicious 1, Deadly, Hidden 1"));
+                result.push(new Weapon("d’k tahg dagger", 1, "Vicious 1, Deadly, Hidden 1", WeaponType.MELEE));
             }
-            result.push(new Weapon("Disruptor Pistol", 3, "Vicious 1"));
+            result.push(new Weapon("Disruptor Pistol", 3, "Vicious 1", WeaponType.BEAM));
         }
         return result;
     }
@@ -250,7 +250,7 @@ export class Character extends Construct {
 
     get baseTraits() {
         let traits = [ ...this.traits ];
-        if (character.hasTalent("Augmented Ability (Control)") 
+        if (character.hasTalent("Augmented Ability (Control)")
                 || character.hasTalent("Augmented Ability (Daring)")
                 || character.hasTalent("Augmented Ability (Fitness)")
                 || character.hasTalent("Augmented Ability (Insight)")
@@ -348,8 +348,8 @@ export class Character extends Construct {
     }
 
     isKlingon() {
-        return this.type === CharacterType.KlingonWarrior || 
-            (this.type === CharacterType.AlliedMilitary && this.typeDetails 
+        return this.type === CharacterType.KlingonWarrior ||
+            (this.type === CharacterType.AlliedMilitary && this.typeDetails
                 && (this.typeDetails as AlliedMilitaryDetails).alliedMilitary.type === AlliedMilitaryType.KLINGON_DEFENCE_FORCE);
     }
 
@@ -465,8 +465,8 @@ export class Character extends Construct {
     }
 
     public static isSpeciesListLimited(character) {
-        return character.type === CharacterType.KlingonWarrior || (character.type === CharacterType.AlliedMilitary 
-            && character.typeDetails != null && character.typeDetails instanceof AlliedMilitaryDetails 
+        return character.type === CharacterType.KlingonWarrior || (character.type === CharacterType.AlliedMilitary
+            && character.typeDetails != null && character.typeDetails instanceof AlliedMilitaryDetails
             && (character.typeDetails as AlliedMilitaryDetails).alliedMilitary.species.length > 0);
     }
 }

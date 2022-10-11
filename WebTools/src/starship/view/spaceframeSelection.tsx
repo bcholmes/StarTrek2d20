@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { CharacterType } from '../../common/characterType';
 import formatAsDelta from '../../common/formatAsDelta';
+import { Starship } from '../../common/starship';
 import { CheckBox } from '../../components/checkBox';
 import { Department } from '../../helpers/departments';
 import { SpaceframeHelper, SpaceframeModel } from '../../helpers/spaceframes';
@@ -9,6 +10,7 @@ import { System } from '../../helpers/systems';
 
 interface ISpaceframeSelectionProperties {
     serviceYear: number;
+    starship: Starship;
     type: CharacterType;
     initialSelection?: SpaceframeModel;
     onSelection: (s: SpaceframeModel) => void;
@@ -48,7 +50,7 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
                     console.log(f.name);
                 }
 
-                return t.talent.isAvailableForServiceYear() ? (
+                return t.talent.isAvailableForServiceYear(this.props.starship) ? (
                     <div key={ti} style={{ padding: "2px" }}>{t.description}</div>
                 ) : undefined;
             });
