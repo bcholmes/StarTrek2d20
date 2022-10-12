@@ -21,10 +21,28 @@ export class SimpleStats {
 }
 
 export enum ShipBuildType {
-    POD, SHUTTLE, RUNABOUT, STARSHIP
+    POD, SHUTTLECRAFT, RUNABOUT, STARSHIP
+}
+
+export class ShipBuildTypeModel {
+    name: string;
+    type: ShipBuildType;
+
+    private static TYPES: ShipBuildTypeModel[] = [
+        new ShipBuildTypeModel("Pod", ShipBuildType.POD),
+        new ShipBuildTypeModel("Shuttlecraft", ShipBuildType.SHUTTLECRAFT),
+        new ShipBuildTypeModel("Runabout", ShipBuildType.RUNABOUT),
+        new ShipBuildTypeModel("Starship", ShipBuildType.STARSHIP)
+    ];
+
+    constructor(name: string, type: ShipBuildType) {
+        this.name = name;
+        this.type = type;
+    }
 }
 
 export class Starship extends Construct {
+    buildType: ShipBuildType = ShipBuildType.STARSHIP;
     registry: string = "";
     traits: string = "";
     serviceYear?: number;
@@ -76,6 +94,30 @@ export class Starship extends Construct {
             }
         }
         return trait;
+    }
+
+    get freeTalentSlots() {
+        if (this.buildType === ShipBuildType.STARSHIP) {
+            let numTalents = 0;
+
+            if (this.spaceframeModel !== undefined) {
+                numTalents = 1; // count the mission profile talent
+
+                this.spaceframeModel.talents.forEach(t => numTalents += t.rank);
+
+                if (this.spaceframeModel.isMissionPodAvailable) {
+                    numTalents += 2; // think about this in the context of the Fleet Carrier pod, which seems to have 3 talents
+                }
+            }
+
+            return Math.max(0, this.scale - numTalents);
+        } else if (this.buildType === ShipBuildType.POD) {
+            return 0;
+        } else if (this.buildType === ShipBuildType.SHUTTLECRAFT) {
+            return 1;
+        } else {
+            return 2;
+        }
     }
 
     getAllTraits() {

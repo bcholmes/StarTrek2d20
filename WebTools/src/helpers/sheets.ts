@@ -315,7 +315,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
 
         let dice = security + weapon.dice;
         if (weapon.isTractorOrGrappler) {
-            dice = weapon.dice;
+            dice = starship.scale - 1;
         }
         if (weapon.scaleApplies) {
             const scale = starship && starship.scale ? starship.scale : 0;

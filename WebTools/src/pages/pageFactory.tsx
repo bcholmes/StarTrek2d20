@@ -37,6 +37,7 @@ import { Species } from '../helpers/speciesEnum';
 import StarshipTypeSelectionPage from '../starship/page/starshipTypeSelectionPage';
 import SimpleStarshipPage from '../starship/page/simpleStarshipPage';
 import FinalStarshipDetailsPage from '../starship/page/finalStarshipDetailsPage';
+import StarshipTalentsPage from '../starship/page/starshipTalentsPage';
 
 
 export class PageFactory {
@@ -78,6 +79,7 @@ export class PageFactory {
         this.factories[PageIdentity.SimpleStarship] = () => <SimpleStarshipPage/>;
         this.factories[PageIdentity.Starship] = () => <StarshipPage/>;
         this.factories[PageIdentity.StarshipTypeSelection] = () => <StarshipTypeSelectionPage/>;
+        this.factories[PageIdentity.StarshipTalentSelection] = () => <StarshipTalentsPage/>;
         this.factories[PageIdentity.FinalStarshipDetails] = () => <FinalStarshipDetailsPage/>;
         this.factories[PageIdentity.SystemGeneration] = () => <SystemGenerationPage />;
         this.factories[PageIdentity.SectorDetails] = () => <SectorDetailsPage />;

@@ -121,7 +121,7 @@ export class SpaceframeModel {
     additionalTraits: string[];
     maxServiceYear: number;
 
-    constructor(id: Spaceframe|null, type: CharacterType, name: string, serviceYear: number, eras: Era[], source: Source[], systems: number[], departments: number[], 
+    constructor(id: Spaceframe|null, type: CharacterType, name: string, serviceYear: number, eras: Era[], source: Source[], systems: number[], departments: number[],
         scale: number, attacks: string[], talents: TalentSelection[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999) {
         this.id = id;
         this.type = type;
@@ -147,8 +147,8 @@ export class SpaceframeModel {
     }
 
     static createCustomSpaceframe(type: CharacterType, serviceYear: number, eras: Era[]) {
-        return new SpaceframeModel(null, type, "", serviceYear, eras, 
-            [ Source.None ], [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [], 
+        return new SpaceframeModel(null, type, "", serviceYear, eras,
+            [ Source.None ], [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [],
             type === CharacterType.KlingonWarrior ? [ "Klingon Starship"] : [ "Federation Starship" ]);
     }
 }
@@ -653,7 +653,7 @@ class Spaceframes {
             [
                 "Phaser Arrays",
                 "Photon Torpedoes",
-                "Tractor Beam (Strength 5)"
+                "Tractor Beam (Strength 4)"
             ],
             [
                 TalentSelection.selectTalent("Advanced Research Facilities"),
@@ -958,7 +958,7 @@ class Spaceframes {
             ],
             [ "Federation Starship", "Section 31 Starship" ],
             2299),
-            
+
 
 
         // Klingon Spaceframes
@@ -1210,9 +1210,9 @@ class Spaceframes {
                 TalentSelection.selectTalent("Cloaking Device"),
                 TalentSelection.selectTalent("Rugged Design")
             ],
-            [ 
-                "Klingon Starship", 
-                "Bird-of-Prey", 
+            [
+                "Klingon Starship",
+                "Bird-of-Prey",
                 "Bad Reputation"
             ],
             99999),
@@ -1234,9 +1234,9 @@ class Spaceframes {
                 TalentSelection.selectTalent("Redundant Systems [Life Support / Structure]"),
                 TalentSelection.selectTalent("Rugged Design")
             ],
-            [ 
-                "Klingon Starship", 
-                "Civilian", 
+            [
+                "Klingon Starship",
+                "Civilian",
                 "Targ-Pit"
             ]),
         [Spaceframe.KVort]: new SpaceframeModel(
@@ -1260,7 +1260,7 @@ class Spaceframes {
                 TalentSelection.selectTalent("Improved Impulse Drive"),
                 TalentSelection.selectTalent("Improved Reaction Control System")
             ],
-            [ 
+            [
                 "Klingon Starship",
                 "Bird-of-Prey"
             ],
@@ -1284,9 +1284,9 @@ class Spaceframes {
                 TalentSelection.selectTalent("Extensive Shuttlebays"),
                 TalentSelection.selectTalent("Secondary Reactors")
             ],
-            [ 
-                "Klingon Starship", 
-                "Civilian", 
+            [
+                "Klingon Starship",
+                "Civilian",
                 "Targ-Pit"
             ]),
         [Spaceframe.Toron]: new SpaceframeModel(
@@ -1306,8 +1306,8 @@ class Spaceframes {
             [
                 TalentSelection.selectTalent("Improved Reaction Control System")
             ],
-            [ 
-                "Klingon Ship", 
+            [
+                "Klingon Ship",
                 "Small Craft"
             ]),
         [Spaceframe.VorCha]: new SpaceframeModel(
@@ -1599,7 +1599,7 @@ class Spaceframes {
                 "Klingon Starship"
             ],
             2269),
-                
+
 
         //[Spaceframe.]: new SpaceframeModel(
         //    CharacterType.Starfleet,

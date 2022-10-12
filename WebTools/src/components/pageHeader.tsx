@@ -26,6 +26,10 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
             return "Supporting Character";
         } else if (this.props.page === PageIdentity.StarshipTypeSelection) {
             return "Starship Type";
+        } else if (this.props.page === PageIdentity.StarshipTalentSelection) {
+            return "Starship Talents";
+        } else if (this.props.page === PageIdentity.FinalStarshipDetails) {
+            return "Final Details";
         } else if (this.props.page === PageIdentity.SimpleStarship) {
             return "Starship Stats";
         } else if (this.props.page === PageIdentity.Starship) {
@@ -53,8 +57,8 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
                 || this.props.page === PageIdentity.ChildEducationPage
                 || this.props.page === PageIdentity.ChildEducationDetailsPage
                 || this.props.page === PageIdentity.CareerEvent1
-                || this.props.page === PageIdentity.CareerDetails 
-                || this.props.page === PageIdentity.CareerEvent1Details 
+                || this.props.page === PageIdentity.CareerDetails
+                || this.props.page === PageIdentity.CareerEvent1Details
                 || this.props.page === PageIdentity.CareerEvent2
                 || this.props.page === PageIdentity.CareerEvent2Details
                 || this.props.page === PageIdentity.AttributesAndDisciplines

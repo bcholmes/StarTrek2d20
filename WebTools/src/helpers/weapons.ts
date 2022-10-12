@@ -55,10 +55,7 @@ class StarshipWeaponList {
         new Weapon('Plasma Torpedoes', 3, "Persistent, Calibration", WeaponType.TORPEDO, [[], []]),
         new Weapon('Quantum Torpedoes', 4, "Vicious 1, Calibration, High Yield", WeaponType.TORPEDO, [[ Era.NextGeneration ], []], true),
         new Weapon('Grappler Cables', 2, "", WeaponType.ENTANGLE, [[ Era.Enterprise ], []]),
-        new Weapon('Tractor Beam', 2, "", WeaponType.ENTANGLE, [[ Era.OriginalSeries, Era.NextGeneration ], [ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ]]),
-        new Weapon('Tractor Beam', 3, "", WeaponType.ENTANGLE, [[ Era.OriginalSeries, Era.NextGeneration ], [ Era.OriginalSeries, Era.NextGeneration ]]),
-        new Weapon('Tractor Beam', 4, "", WeaponType.ENTANGLE, [[ Era.OriginalSeries, Era.NextGeneration ], [ Era.OriginalSeries, Era.NextGeneration ]]),
-        new Weapon('Tractor Beam', 5, "", WeaponType.ENTANGLE, [[ Era.NextGeneration ], []])
+        new Weapon('Tractor Beam', 0, "", WeaponType.ENTANGLE, [[ Era.OriginalSeries, Era.NextGeneration ], [ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ]]),
     ];
 
     availableWeapons(type: CharacterType, era: Era) {

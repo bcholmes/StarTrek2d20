@@ -2,12 +2,12 @@
 import {CheckBox} from '../../components/checkBox';
 import {TalentViewModel} from '../../helpers/talents';
 import replaceDiceWithArrowhead from '../../common/arrowhead';
-import { Construct } from '../../common/construct';
+import { Starship } from '../../common/starship';
 
 interface IStarshipTalentSelectionProperties {
     talents: TalentViewModel[]
     points: number;
-    construct: Construct;
+    construct: Starship;
     onSelection: (talents: TalentViewModel[]) => void;
 }
 
@@ -34,8 +34,10 @@ export class StarshipTalentSelectionList extends React.Component<IStarshipTalent
     constructor(props: IStarshipTalentSelectionProperties) {
         super(props);
 
+        let temp = this.props.construct.additionalTalents.map(t => t.name);
+
         this.state = {
-            selectedTalents: []
+            selectedTalents: [...temp]
         };
     }
 
@@ -59,7 +61,7 @@ export class StarshipTalentSelectionList extends React.Component<IStarshipTalent
             while (newValues.length > this.props.points) {
                 newValues.splice(0, 1);
             }
-    
+
             this.setState((state) => ({...state, selectedTalents: newValues }));
             this.invokeCallback(newValues);
         }
@@ -151,7 +153,7 @@ export class StarshipTalentSelectionList extends React.Component<IStarshipTalent
 
         this.setState((state) => ({
             ...state,
-            selectedTalents: allSelections 
+            selectedTalents: allSelections
         }));
     }
 

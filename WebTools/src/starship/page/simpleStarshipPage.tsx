@@ -1,12 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { navigateTo, Navigation } from "../../common/navigator";
+import { Navigation } from "../../common/navigator";
 import { Starship } from "../../common/starship";
 import { Button } from "../../components/button";
 import { Header } from "../../components/header";
 import { Department } from "../../helpers/departments";
 import { System } from "../../helpers/systems";
-import { PageIdentity } from "../../pages/pageIdentity";
 import { changeStarshipScale, changeStarshipSimpleClassName, changeStarshipSimpleDepartment, changeStarshipSimpleSystem, nextStarshipWorkflowStep } from "../../state/starshipActions";
 import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
@@ -25,7 +24,7 @@ class SimpleStarshipPage extends React.Component<ISimpleStarshipPageProperties, 
             <ShipBuildingBreadcrumbs />
             <Header>Simplified Starship Creation</Header>
 
-            <section className="my-5 row row-cols-1 row-cols-md-2">
+            <section className="my-5 row row-cols-1 row-cols-lg-2">
                 <div className="col mb-3">
                     <Header level={2}>Scale</Header>
 

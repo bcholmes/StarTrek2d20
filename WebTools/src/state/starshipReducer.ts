@@ -1,6 +1,6 @@
 import { SimpleStats, Starship } from "../common/starship";
 import { ShipBuildWorkflow } from "../starship/model/shipBuildWorkflow";
-import { CHANGE_STARSHIP_SCALE, CHANGE_STARSHIP_SIMPLE_CLASS_NAME, CHANGE_STARSHIP_SIMPLE_DEPARTMENT, CHANGE_STARSHIP_SIMPLE_SYSTEM, CREATE_NEW_STARSHIP, NEXT_STARSHIP_WORKFLOW_STEP, SET_STARSHIP_NAME, SET_STARSHIP_TRAITS } from "./starshipActions";
+import { CHANGE_STARSHIP_SCALE, CHANGE_STARSHIP_SIMPLE_CLASS_NAME, CHANGE_STARSHIP_SIMPLE_DEPARTMENT, CHANGE_STARSHIP_SIMPLE_SYSTEM, CREATE_NEW_STARSHIP, NEXT_STARSHIP_WORKFLOW_STEP, REWIND_TO_STARSHIP_WORKFLOW_STEP, SET_ADDITIONAL_TALENTS, SET_STARSHIP_NAME, SET_STARSHIP_TRAITS } from "./starshipActions";
 
 interface StarshipState {
     starship?: Starship;
@@ -61,6 +61,14 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
                 starship: s
             }
         }
+        case SET_ADDITIONAL_TALENTS: {
+            let s = state.starship.copy();
+            s.additionalTalents = [...action.payload.talents];
+            return {
+                ...state,
+                starship: s
+            }
+        }
         case CHANGE_STARSHIP_SIMPLE_SYSTEM: {
             let s = state.starship.copy();
             if (s.simpleStats == null) {
@@ -87,6 +95,18 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
             if (state.workflow) {
                 let w = new ShipBuildWorkflow(state.workflow.steps);
                 w.currentStepIndex = state.workflow.currentStepIndex + 1;
+                return {
+                    ...state,
+                    workflow: w
+                }
+            } else {
+                return
+            }
+        }
+        case REWIND_TO_STARSHIP_WORKFLOW_STEP: {
+            if (state.workflow) {
+                let w = new ShipBuildWorkflow(state.workflow.steps);
+                w.currentStepIndex = action.payload.index;
                 return {
                     ...state,
                     workflow: w

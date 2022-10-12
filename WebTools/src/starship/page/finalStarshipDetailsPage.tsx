@@ -25,7 +25,6 @@ class FinalStarshipDetailsPage extends React.Component<IFinalStarshipDetailsPage
 
                 <p>Your ship is almost complete. It just needs a few final touches.</p>
 
-
                 <div className="mt-4">
                     <Header level={2}>Traits</Header>
                     <p>
