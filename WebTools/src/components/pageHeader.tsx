@@ -32,6 +32,8 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
             return "Final Details";
         } else if (this.props.page === PageIdentity.SimpleStarship) {
             return "Starship Stats";
+        } else if (this.props.page === PageIdentity.StarshipWeaponsSelection) {
+            return "Starship Weapons";
         } else if (this.props.page === PageIdentity.Starship) {
             return "Starship";
         } else if (this.props.page === PageIdentity.ToolSelecton) {

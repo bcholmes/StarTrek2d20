@@ -9,19 +9,20 @@ import { CharacterType } from "./characterType";
 import { Construct } from "./construct";
 
 export class SimpleStats {
-    deparments: number[];
+    departments: number[];
     systems: number[];
     className: string = "";
     scale: number = 0;
+    weapons: Weapon[];
 
     constructor() {
-        this.deparments = [0, 0, 0, 0, 0, 0];
+        this.departments = [0, 0, 0, 0, 0, 0];
         this.systems = [0, 0, 0, 0, 0, 0];
     }
 }
 
 export enum ShipBuildType {
-    POD, SHUTTLECRAFT, RUNABOUT, STARSHIP
+    Pod, Shuttlecraft, Runabout, Starship
 }
 
 export class ShipBuildTypeModel {
@@ -29,20 +30,24 @@ export class ShipBuildTypeModel {
     type: ShipBuildType;
 
     private static TYPES: ShipBuildTypeModel[] = [
-        new ShipBuildTypeModel("Pod", ShipBuildType.POD),
-        new ShipBuildTypeModel("Shuttlecraft", ShipBuildType.SHUTTLECRAFT),
-        new ShipBuildTypeModel("Runabout", ShipBuildType.RUNABOUT),
-        new ShipBuildTypeModel("Starship", ShipBuildType.STARSHIP)
+        new ShipBuildTypeModel("Pod", ShipBuildType.Pod),
+        new ShipBuildTypeModel("Shuttlecraft", ShipBuildType.Shuttlecraft),
+        new ShipBuildTypeModel("Runabout", ShipBuildType.Runabout),
+        new ShipBuildTypeModel("Starship", ShipBuildType.Starship)
     ];
 
     constructor(name: string, type: ShipBuildType) {
         this.name = name;
         this.type = type;
     }
+
+    static allTypes() {
+        return ShipBuildTypeModel.TYPES;
+    }
 }
 
 export class Starship extends Construct {
-    buildType: ShipBuildType = ShipBuildType.STARSHIP;
+    buildType: ShipBuildType = ShipBuildType.Starship;
     registry: string = "";
     traits: string = "";
     serviceYear?: number;
@@ -97,7 +102,7 @@ export class Starship extends Construct {
     }
 
     get freeTalentSlots() {
-        if (this.buildType === ShipBuildType.STARSHIP) {
+        if (this.buildType === ShipBuildType.Starship) {
             let numTalents = 0;
 
             if (this.spaceframeModel !== undefined) {
@@ -111,9 +116,9 @@ export class Starship extends Construct {
             }
 
             return Math.max(0, this.scale - numTalents);
-        } else if (this.buildType === ShipBuildType.POD) {
+        } else if (this.buildType === ShipBuildType.Pod) {
             return 0;
-        } else if (this.buildType === ShipBuildType.SHUTTLECRAFT) {
+        } else if (this.buildType === ShipBuildType.Shuttlecraft) {
             return 1;
         } else {
             return 2;
@@ -314,7 +319,7 @@ export class Starship extends Construct {
                 result[i] += d;
             });
         } else if (this.simpleStats != null) {
-            allDepartments().forEach(d => result[d] = this.simpleStats.deparments[d]);
+            allDepartments().forEach(d => result[d] = this.simpleStats.departments[d]);
         }
         return result;
     }
@@ -349,7 +354,7 @@ export class Starship extends Construct {
         if (this.simpleStats != null) {
             result.simpleStats = new SimpleStats();
             result.simpleStats.className = this.simpleStats.className;
-            result.simpleStats.deparments = [...this.simpleStats.deparments];
+            result.simpleStats.departments = [...this.simpleStats.departments];
             result.simpleStats.systems = [...this.simpleStats.systems];
             result.simpleStats.scale = this.simpleStats.scale;
         }

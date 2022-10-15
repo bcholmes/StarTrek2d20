@@ -5,6 +5,14 @@ export enum WeaponType {
     MELEE, ENERGY, TORPEDO, MINE, ENTANGLE
 }
 
+export enum EnergyLoadType {
+    ANTI_PROTON, DISRUPTOR, ELECTRO_MAGNETIC_IONIC, FREE_ELECTRON, GRAVITON, PHASED_POLARON, PHASER, PHASE_PULSE, PROTON, TETRYON
+}
+
+export enum TorpedoLoadType {
+    CHRONITON, GRAVIMETRIC, NEUTRONIC, NUCLEAR, PHOTON, PHOTONIC, PLASMA, POLARON, POSITRON, QUANTUM, SPATIAL, TETRYONIC, TRANSPHASIC, TRICOBOLT
+}
+
 export class Weapon {
     name: string;
     dice: number;
@@ -29,11 +37,7 @@ export class Weapon {
     }
 
     get description() {
-        if (this.isTractorOrGrappler && this.dice) {
-            return this.name + " (Strength " + this.dice + ")";
-        } else {
-            return this.name;
-        }
+        return this.name;
     }
 
     get isTractorOrGrappler() {
@@ -43,7 +47,7 @@ export class Weapon {
 
 class StarshipWeaponList {
     readonly list: Weapon[] = [
-        new Weapon('Phase Cannons', 2, "Versatile 2", WeaponType.ENERGY, [[ Era.Enterprise ],[]]),
+        new Weapon('Phase Cannons', 2, "Versatile 1", WeaponType.ENERGY, [[ Era.Enterprise ],[]]),
         new Weapon('Phaser Cannons', 2, "Versatile 2", WeaponType.ENERGY, [[ Era.OriginalSeries, Era.NextGeneration ], []]),
         new Weapon('Phaser Banks', 1, "Versatile 2", WeaponType.ENERGY, [[ Era.OriginalSeries, Era.NextGeneration ], [ Era.OriginalSeries, Era.NextGeneration ]]),
         new Weapon('Phaser Arrays', 0, "Versatile 2, Area or Spread", WeaponType.ENERGY, [[ Era.NextGeneration ], []]),
@@ -54,7 +58,7 @@ class StarshipWeaponList {
         new Weapon('Photon Torpedoes', 3, "High Yield", WeaponType.TORPEDO, [[ Era.OriginalSeries, Era.NextGeneration ], [ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ]]),
         new Weapon('Plasma Torpedoes', 3, "Persistent, Calibration", WeaponType.TORPEDO, [[], []]),
         new Weapon('Quantum Torpedoes', 4, "Vicious 1, Calibration, High Yield", WeaponType.TORPEDO, [[ Era.NextGeneration ], []], true),
-        new Weapon('Grappler Cables', 2, "", WeaponType.ENTANGLE, [[ Era.Enterprise ], []]),
+        new Weapon('Grappler Cables', 0, "", WeaponType.ENTANGLE, [[ Era.Enterprise ], []]),
         new Weapon('Tractor Beam', 0, "", WeaponType.ENTANGLE, [[ Era.OriginalSeries, Era.NextGeneration ], [ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ]]),
     ];
 

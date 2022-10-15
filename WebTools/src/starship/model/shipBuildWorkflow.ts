@@ -29,6 +29,7 @@ export class ShipBuildWorkflow {
     public static createSimpleBuildWorkflow() {
         return new ShipBuildWorkflow([ new ShipBuildWorkflowStep("Starship Stats", PageIdentity.SimpleStarship),
             new ShipBuildWorkflowStep("Talent Selection", PageIdentity.StarshipTalentSelection),
+            new ShipBuildWorkflowStep("Weapon Selection", PageIdentity.StarshipWeaponsSelection),
             new ShipBuildWorkflowStep("Final Details", PageIdentity.FinalStarshipDetails)]);
     }
 }

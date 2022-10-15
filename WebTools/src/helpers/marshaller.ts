@@ -2,7 +2,7 @@ import base64url from 'base64url';
 import pako from 'pako';
 import { Character, CharacterAttribute, CharacterSkill } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
-import { Starship } from '../common/starship';
+import { ShipBuildType, ShipBuildTypeModel, SimpleStats, Starship } from '../common/starship';
 import { Attribute } from './attributes';
 import { allDepartments, Department } from './departments';
 import { Era } from './eras';
@@ -69,6 +69,7 @@ class Marshaller {
         let sheet = {
             "stereotype": "starship",
             "type": CharacterType[starship.type],
+            "buildType": ShipBuildType[starship.buildType],
             "year": starship.serviceYear,
             "name": starship.name,
             "registry": starship.registry,
@@ -116,6 +117,14 @@ class Marshaller {
         if (starship.refits != null) {
             starship.refits.forEach(s => sheet.refits.push(System[s]));
         }
+        if (starship.simpleStats != null) {
+            sheet['simpleStats'] = {
+                "systems": [...starship.simpleStats.systems],
+                "departments": [...starship.simpleStats.departments],
+                "className": starship.simpleStats.className,
+                "scale": starship.simpleStats.scale
+            }
+        }
         return this.encode(sheet);
     }
 
@@ -150,6 +159,11 @@ class Marshaller {
         CharacterTypeModel.getStarshipTypes().forEach(t => {
             if (CharacterType[t.type] === json.type) {
                 result.type = t.type;
+            }
+        });
+        ShipBuildTypeModel.allTypes().forEach(t => {
+            if (ShipBuildType[t.type] === json.buildType) {
+                result.buildType = t.type;
             }
         });
         if (json.spaceframe) {
@@ -210,6 +224,13 @@ class Marshaller {
             });
         }
 
+        if (json.simpleStats) {
+            result.simpleStats = new SimpleStats();
+            result.simpleStats.scale = json.simpleStats.scale;
+            result.simpleStats.className = json.simpleStats.className;
+            result.simpleStats.systems = [...json.simpleStats.systems];
+            result.simpleStats.departments = [...json.simpleStats.departments];
+        }
         Starship.updateSystemAndDepartments(result);
 
         return result;

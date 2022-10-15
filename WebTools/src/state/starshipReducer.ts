@@ -85,7 +85,7 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
             if (s.simpleStats == null) {
                 s.simpleStats = new SimpleStats();
             }
-            s.simpleStats.deparments[action.payload.department] += action.payload.delta;
+            s.simpleStats.departments[action.payload.department] += action.payload.delta;
             return {
                 ...state,
                 starship: s
