@@ -346,8 +346,7 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
         super.populate(pdf, construct);
         let starship = construct as Starship;
 
-        const spaceframe = starship.spaceframeModel;
-        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(43.5, 290.25), rgb(245.0/255, 157.0/255.0, 8.0/255.0)), spaceframe, starship.serviceYear);
+        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(43.5, 290.25), rgb(245.0/255, 157.0/255.0, 8.0/255.0)), starship);
     }
 }
 
@@ -366,8 +365,7 @@ class StandardTosStarshipSheet extends BasicStarshipSheet {
         super.populate(pdf, construct);
         let starship = construct as Starship;
 
-        const spaceframe = starship.spaceframeModel;
-        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(42.5, 243.0), rgb(237.0/255, 27.0/255.0, 47.0/255.0)), spaceframe, starship.serviceYear);
+        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(42.5, 243.0), rgb(237.0/255, 27.0/255.0, 47.0/255.0)), starship);
     }
 }
 

@@ -85,7 +85,7 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
                     </div>
 
                     <div className="mt-3">
-                        <OutlineImage serviceYear={this.props.starship.serviceYear} spaceframe={this.props.starship.spaceframeModel} size="lg" />
+                        <OutlineImage starship={this.props.starship} size="lg" />
 
                         <div className="row row-cols-1 row-cols-xl-3 mb-1">
                             <StatView name="Resistance" value={this.props.starship.scale} className="col mb-1" colourClass="red" />

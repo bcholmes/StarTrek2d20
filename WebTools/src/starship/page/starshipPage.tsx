@@ -91,7 +91,7 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
             selectedSpaceframeDetails = (
                 <div className="p-0">
                     <h5 className="text-selection">{this.starship.spaceframeModel.name ? this.starship.spaceframeModel.name : "Unnamed Class"}</h5>
-                    <OutlineImage serviceYear={this.props.serviceYear} spaceframe={this.starship.spaceframeModel} size="lg" />
+                    <OutlineImage starship={this.starship} size="lg" />
                     <StarshipStats model={this.starship.spaceframeModel} type="spaceframe" />
                     <p><b className="text-selection">Talents:</b> {talentList}</p>
                 </div>

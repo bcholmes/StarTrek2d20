@@ -67,6 +67,10 @@ export class Starship extends Construct {
         this.name = "";
     }
 
+    get isSmallCraft() {
+        return this.buildType === ShipBuildType.Pod || this.buildType === ShipBuildType.Shuttlecraft || this.buildType === ShipBuildType.Runabout;
+    }
+
     get className() {
         if (this.spaceframeModel != null) {
             return this.spaceframeModel.name;
