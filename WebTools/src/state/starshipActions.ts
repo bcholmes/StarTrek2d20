@@ -14,6 +14,7 @@ export const CHANGE_STARSHIP_SIMPLE_DEPARTMENT = "CHANGE_STARSHIP_SIMPLE_DEPARTM
 export const NEXT_STARSHIP_WORKFLOW_STEP = "NEXT_STARSHIP_WORKFLOW_STEP";
 export const REWIND_TO_STARSHIP_WORKFLOW_STEP = "REWIND_TO_STARSHIP_WORKFLOW_STEP";
 export const SET_STARSHIP_NAME = "SET_STARSHIP_NAME";
+export const SET_STARSHIP_REGISTRY = "SET_STARSHIP_REGISTRY";
 export const SET_STARSHIP_TRAITS = "SET_STARSHIP_TRAITS";
 export const SET_ADDITIONAL_TALENTS = "SET_ADDITIONAL_TALENTS";
 export const ADD_STARSHIP_WEAPON = "ADD_STARSHIP_WEAPON";
@@ -47,6 +48,14 @@ export function setStarshipName(name: string) {
     let payload = { name: name };
     return {
        type: SET_STARSHIP_NAME,
+       payload: payload
+    }
+}
+
+export function setStarshipRegistry(registry: string) {
+    let payload = { registry: registry };
+    return {
+       type: SET_STARSHIP_REGISTRY,
        payload: payload
     }
 }

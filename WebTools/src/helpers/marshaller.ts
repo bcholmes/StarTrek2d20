@@ -186,7 +186,7 @@ class Marshaller {
         result.registry = json.registry;
         result.traits = json.traits;
         result.serviceYear = json.year;
-        CharacterTypeModel.getStarshipTypes().forEach(t => {
+        CharacterTypeModel.getAllTypes().forEach(t => {
             if (CharacterType[t.type] === json.type) {
                 result.type = t.type;
             }

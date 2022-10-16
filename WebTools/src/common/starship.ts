@@ -279,7 +279,18 @@ export class Starship extends Construct {
             result = [...this.additionalWeapons];
         }
 
-        return result;
+        let names = [];
+        let weapons = [];
+        result.forEach(w => {
+            if (names.indexOf(w.description) >= 0) {
+                // skip it
+            } else {
+                names.push(w.description);
+                weapons.push(w);
+            }
+        });
+
+        return weapons;
     }
 
     get departments() {

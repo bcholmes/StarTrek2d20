@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { CharacterType } from "../../common/characterType";
 import { Starship } from "../../common/starship";
 import { Button } from "../../components/button";
 import { CharacterSheetDialog } from "../../components/characterSheetDialog";
@@ -7,7 +8,7 @@ import { Header } from "../../components/header";
 import { Era } from "../../helpers/eras";
 import { marshaller } from "../../helpers/marshaller";
 import { CharacterSheetRegistry } from "../../helpers/sheets";
-import { setStarshipName, setStarshipTraits } from "../../state/starshipActions";
+import { setStarshipName, setStarshipRegistry, setStarshipTraits } from "../../state/starshipActions";
 import store from "../../state/store";
 import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
 
@@ -57,7 +58,7 @@ class FinalStarshipDetailsPage extends React.Component<IFinalStarshipDetailsPage
                         value={this.props.starship.traits} />
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-5">
                     <Header level={2}>Name</Header>
                     <p className="page-text">
                         Every Starship needs a name.
@@ -77,6 +78,9 @@ class FinalStarshipDetailsPage extends React.Component<IFinalStarshipDetailsPage
                             value={this.props.starship.name} />
                     </div>
                 </div>
+
+                {this.renderRegistry()}
+
                 <div className="starship-panel mt-5">
                     <div className="button-container mb-3">
                         <Button text="Export to PDF" className="button-small mr-2 mb-2" onClick={() => this.showExportDialog() } buttonType={true} />
@@ -84,6 +88,27 @@ class FinalStarshipDetailsPage extends React.Component<IFinalStarshipDetailsPage
                     </div>
                 </div>
             </div>);
+    }
+
+    renderRegistry() {
+        if (this.props.starship.type !== CharacterType.KlingonWarrior) {
+            return (<div className="mt-5">
+                <Header level={2}>Registry</Header>
+                <p>
+                    Many ships have some kind of registry number to go with the name.
+                    Federation starships, for example, have a registry number that starts with NCC.
+                </p>
+                <div className="d-sm-flex align-items-stretch">
+                    <label className="textinput-label">REGISTRY</label>
+                    <input
+                        type="text"
+                        onChange={(ev) => store.dispatch(setStarshipRegistry(ev.target.value)) }
+                        value={this.props.starship.registry} />
+                </div>
+            </div>);
+        } else {
+            return undefined;
+        }
     }
 
     showViewPage() {

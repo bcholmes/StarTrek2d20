@@ -31,7 +31,7 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
         if (this.props.starship.name) {
             name = this.props.starship.name;
 
-            if (this.props.starship.type === CharacterType.Starfleet && this.props.starship.registry) {
+            if (this.props.starship.type !== CharacterType.KlingonWarrior && this.props.starship.registry) {
                 name += ' • ' + this.props.starship.registry;
             }
         } else {
