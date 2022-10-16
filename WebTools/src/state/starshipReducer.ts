@@ -1,6 +1,6 @@
 import { SimpleStats, Starship } from "../common/starship";
 import { ShipBuildWorkflow } from "../starship/model/shipBuildWorkflow";
-import { CHANGE_STARSHIP_SCALE, CHANGE_STARSHIP_SIMPLE_CLASS_NAME, CHANGE_STARSHIP_SIMPLE_DEPARTMENT, CHANGE_STARSHIP_SIMPLE_SYSTEM, CREATE_NEW_STARSHIP, NEXT_STARSHIP_WORKFLOW_STEP, REWIND_TO_STARSHIP_WORKFLOW_STEP, SET_ADDITIONAL_TALENTS, SET_STARSHIP_NAME, SET_STARSHIP_TRAITS } from "./starshipActions";
+import { ADD_STARSHIP_WEAPON, CHANGE_STARSHIP_SCALE, CHANGE_STARSHIP_SIMPLE_CLASS_NAME, CHANGE_STARSHIP_SIMPLE_DEPARTMENT, CHANGE_STARSHIP_SIMPLE_SYSTEM, CREATE_NEW_STARSHIP, NEXT_STARSHIP_WORKFLOW_STEP, REWIND_TO_STARSHIP_WORKFLOW_STEP, SET_ADDITIONAL_TALENTS, SET_STARSHIP_NAME, SET_STARSHIP_TRAITS } from "./starshipActions";
 
 interface StarshipState {
     starship?: Starship;
@@ -15,7 +15,10 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
             s.serviceYear = action.payload.serviceYear;
             if (action.payload.simple) {
                 s.simpleStats = new SimpleStats();
-                s.simpleStats.scale = 4;
+                s.simpleStats.scale = action.payload.simple.scale;
+                s.simpleStats.systems = [...action.payload.simple.systems];
+                s.simpleStats.departments = [...action.payload.simple.departments];
+                s.simpleStats.className = action.payload.simple.className;
             }
             return {
                 ...state,
@@ -64,6 +67,14 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
         case SET_ADDITIONAL_TALENTS: {
             let s = state.starship.copy();
             s.additionalTalents = [...action.payload.talents];
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case ADD_STARSHIP_WEAPON: {
+            let s = state.starship.copy();
+            s.additionalWeapons.push(action.payload.weapon);
             return {
                 ...state,
                 starship: s

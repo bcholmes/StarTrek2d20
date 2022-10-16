@@ -1,7 +1,9 @@
 import { CharacterType } from "../common/characterType";
+import { SimpleStats } from "../common/starship";
 import { Department } from "../helpers/departments";
 import { System } from "../helpers/systems";
 import { TalentViewModel } from "../helpers/talents";
+import { Weapon } from "../helpers/weapons";
 import { ShipBuildWorkflow } from "../starship/model/shipBuildWorkflow";
 
 export const CREATE_NEW_STARSHIP = "CREATE_NEW_STARSHIP";
@@ -14,8 +16,9 @@ export const REWIND_TO_STARSHIP_WORKFLOW_STEP = "REWIND_TO_STARSHIP_WORKFLOW_STE
 export const SET_STARSHIP_NAME = "SET_STARSHIP_NAME";
 export const SET_STARSHIP_TRAITS = "SET_STARSHIP_TRAITS";
 export const SET_ADDITIONAL_TALENTS = "SET_ADDITIONAL_TALENTS";
+export const ADD_STARSHIP_WEAPON = "ADD_STARSHIP_WEAPON";
 
-export function createNewStarship(type: CharacterType, serviceYear: number, simple: boolean, workflow?: ShipBuildWorkflow) {
+export function createNewStarship(type: CharacterType, serviceYear?: number, simple: SimpleStats = undefined, workflow?: ShipBuildWorkflow) {
     let payload = { type: type, serviceYear: serviceYear, simple: simple, workflow: workflow };
     return {
        type: CREATE_NEW_STARSHIP,
@@ -91,5 +94,13 @@ export function rewindToStarshipWorkflowStep(step: number) {
     return {
        type: REWIND_TO_STARSHIP_WORKFLOW_STEP,
        payload: { index: step }
+    }
+}
+
+export function addStarshipWeapon(weapon: Weapon) {
+    let payload = { weapon: weapon };
+    return {
+       type: ADD_STARSHIP_WEAPON,
+       payload: payload
     }
 }

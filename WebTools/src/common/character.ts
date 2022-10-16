@@ -169,26 +169,26 @@ export class Character extends Construct {
         let result: Weapon[] = [];
 
         if (this.hasTalent("Mean Right Hook")) {
-            result.push(new Weapon("Unarmed Strike", 1, "Knockdown, Non-lethal Vicious 1", WeaponType.MELEE));
+            result.push(Weapon.createCharacterWeapon("Unarmed Strike", 1, "Knockdown, Non-lethal Vicious 1", WeaponType.MELEE));
         } else {
-            result.push(new Weapon("Unarmed Strike", 1, "Knockdown", WeaponType.MELEE));
+            result.push(Weapon.createCharacterWeapon("Unarmed Strike", 1, "Knockdown", WeaponType.MELEE));
         }
 
         if (this.hasTalent("The Ushaan")) {
-            result.push(new Weapon("Ushaan-tor", 1, "Vicious 1", WeaponType.MELEE));
+            result.push(Weapon.createCharacterWeapon("Ushaan-tor", 1, "Vicious 1", WeaponType.MELEE));
         }
 
         if (this.hasTalent("Warrior's Spirit")) {
-            result.push(new Weapon("Bat'leth", 3, "Vicious 1", WeaponType.MELEE));
+            result.push(Weapon.createCharacterWeapon("Bat'leth", 3, "Vicious 1", WeaponType.MELEE));
         }
 
         if (this.type === CharacterType.Starfleet || this.type === CharacterType.Cadet) {
-            result.push(new Weapon("Phaser type-2", 3, "Charges", WeaponType.ENERGY));
+            result.push(Weapon.createCharacterWeapon("Phaser type-2", 3, "Charges", WeaponType.ENERGY));
         } else if (this.age.isAdult()) {
             if (this.isKlingon()) {
-                result.push(new Weapon("d’k tahg dagger", 1, "Vicious 1, Deadly, Hidden 1", WeaponType.MELEE));
+                result.push(Weapon.createCharacterWeapon("d’k tahg dagger", 1, "Vicious 1, Deadly, Hidden 1", WeaponType.MELEE));
             }
-            result.push(new Weapon("Disruptor Pistol", 3, "Vicious 1", WeaponType.ENERGY));
+            result.push(Weapon.createCharacterWeapon("Disruptor Pistol", 3, "Vicious 1", WeaponType.ENERGY));
         }
         return result;
     }

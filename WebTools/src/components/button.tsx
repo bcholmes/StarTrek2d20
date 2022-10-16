@@ -5,17 +5,24 @@ interface IButtonProperties {
     buttonType?: boolean;
     text?: string;
     className?: string;
+    onMouseOver?: () => void;
+    onMouseOut?: () => void;
 }
 
 export class Button extends React.Component<IButtonProperties, {}> {
     render() {
         return this.props.buttonType ? (
-            <button type="button" className={(this.props.className ? this.props.className : "button") + " button-title"} onClick={() => this.props.onClick()}>
+            <button type="button" className={(this.props.className ? this.props.className : "button") + " button-title"}
+                onClick={() => this.props.onClick()}
+                onMouseOver={() => { if (this.props.onMouseOver) { this.props.onMouseOver(); }}}
+                onMouseOut={() => { if (this.props.onMouseOut) { this.props.onMouseOut(); }}} >
                 {this.props.text ? this.props.text : this.props.children}
             </button>
         )
         : (
-            <div className={(this.props.className ? this.props.className : "button") + " button-title"} onClick={() => this.props.onClick()}>
+            <div className={(this.props.className ? this.props.className : "button") + " button-title"} onClick={() => this.props.onClick()}
+                onMouseOver={() => { if (this.props.onMouseOver) { this.props.onMouseOver(); }}}
+                onMouseOut={() => { if (this.props.onMouseOut) { this.props.onMouseOut(); }}} >
                 {this.props.text ? this.props.text : this.props.children}
             </div>
         )

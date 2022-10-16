@@ -13,7 +13,7 @@ export enum CharacterType {
 }
 
 export class CharacterTypeModel {
-    private static TYPES: CharacterTypeModel[] = [ 
+    private static TYPES: CharacterTypeModel[] = [
         new CharacterTypeModel("Starfleet", CharacterType.Starfleet),
         new CharacterTypeModel("Klingon Defense Force", CharacterType.KlingonWarrior),
         new CharacterTypeModel("Allied Military", CharacterType.AlliedMilitary),
@@ -24,11 +24,11 @@ export class CharacterTypeModel {
         new CharacterTypeModel("Other", CharacterType.Other)
     ];
 
-    private static TYPES_EXCEPT_OTHER: CharacterTypeModel[] = [ 
-        CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1], CharacterTypeModel.TYPES[2], CharacterTypeModel.TYPES[3], 
+    private static TYPES_EXCEPT_OTHER: CharacterTypeModel[] = [
+        CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1], CharacterTypeModel.TYPES[2], CharacterTypeModel.TYPES[3],
         CharacterTypeModel.TYPES[4], CharacterTypeModel.TYPES[5], CharacterTypeModel.TYPES[6]
     ];
-    
+
     name: string;
     type: CharacterType;
 
@@ -54,7 +54,7 @@ export class CharacterTypeModel {
     }
 
     public static getStarshipTypes() {
-        return [ CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1], CharacterTypeModel.TYPES[CharacterTypeModel.TYPES.length-1] ];
+        return [ CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1] ];
     }
 }
 

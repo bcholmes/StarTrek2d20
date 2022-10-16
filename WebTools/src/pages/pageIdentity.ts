@@ -33,6 +33,7 @@ export enum PageIdentity {
 
     SimpleStarship,
     Starship,
+    StarshipToolSelection,
     StarshipTypeSelection,
     StarshipTalentSelection,
     StarshipWeaponsSelection,

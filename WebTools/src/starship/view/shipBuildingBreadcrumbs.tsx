@@ -16,7 +16,6 @@ class ShipBuildingBreadcrumbs extends React.Component<IShipBuildingBreadcrumbsPr
         return (<nav aria-label="breadcrumb">
             <ol className="breadcrumb">
                 <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Selection)}>Home</a></li>
-                <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.StarshipTypeSelection)}>Starship Type</a></li>
                 {this.renderLinks()}
             </ol>
         </nav>);

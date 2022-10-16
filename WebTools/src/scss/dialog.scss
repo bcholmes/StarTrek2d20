@@ -122,6 +122,10 @@
   border-bottom: 1px solid #aaaaaa;
 }
 
+.modal-content select {
+  background-color: $lcars-light-pink;
+}
+
 .dialog-container .close, .modal-dialog .close {
   float: right;
   font-size: 1.5rem;

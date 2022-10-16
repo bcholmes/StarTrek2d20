@@ -123,7 +123,9 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
         if (this.state.activePage === PageIdentity.ViewSheet ||
             this.state.activePage === PageIdentity.SystemGeneration ||
             this.state.activePage === PageIdentity.Starship ||
+            this.state.activePage === PageIdentity.StarshipToolSelection ||
             this.state.activePage === PageIdentity.StarshipTypeSelection ||
+            this.state.activePage === PageIdentity.StarshipWeaponsSelection ||
             this.state.activePage === PageIdentity.StarshipTalentSelection ||
             this.state.activePage === PageIdentity.FinalStarshipDetails ||
             this.state.activePage === PageIdentity.SectorDetails ||

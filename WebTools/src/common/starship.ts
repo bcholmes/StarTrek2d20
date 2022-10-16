@@ -4,7 +4,7 @@ import { MissionProfileModel } from "../helpers/missionProfiles";
 import { SpaceframeModel } from "../helpers/spaceframes";
 import { allSystems, System } from "../helpers/systems";
 import { TalentSelection, TalentsHelper, TalentViewModel } from "../helpers/talents";
-import { Weapon, WeaponType } from "../helpers/weapons";
+import StarshipWeaponRegistry, { Weapon } from "../helpers/weapons";
 import { CharacterType } from "./characterType";
 import { Construct } from "./construct";
 
@@ -58,6 +58,7 @@ export class Starship extends Construct {
     additionalTalents: TalentViewModel[] = [];
     refits: System[] = [];
     simpleStats: SimpleStats;
+    additionalWeapons: Weapon[] = [];
 
     constructor() {
         super();
@@ -246,54 +247,37 @@ export class Starship extends Construct {
         return refitString;
     }
 
+    get weapons() {
+        return this.determineWeapons();
+    }
+
     determineWeapons(): Weapon[] {
-        var result = [];
-        var secondary = [];
+        let result = [];
         const talents = this.getTalentNameList();
         const spaceframe = this.spaceframeModel;
         if (spaceframe) {
+            let secondary = [];
             for (var attack of spaceframe.attacks) {
 
-                if (attack === 'Photon Torpedoes') {
-                    result.push(new Weapon(attack, 3, "High Yield", WeaponType.TORPEDO));
-                } else if (attack === 'Phaser Cannons' || attack === 'Phase Cannons') {
-                    result.push(new Weapon(attack, 2, "Versatile 2", WeaponType.ENERGY));
-                } else if (attack === 'Phaser Banks') {
-                    result.push(new Weapon(attack, 1, "Versatile 2", WeaponType.ENERGY));
-                } else if (attack === 'Phaser Arrays') {
-                    result.push(new Weapon(attack, 0, "Versatile 2, Area or Spread", WeaponType.ENERGY));
-                } else if (attack === 'Disruptor Cannons') {
-                    result.push(new Weapon(attack, 2, "Viscious 1", WeaponType.ENERGY));
-                } else if (attack === 'Disruptor Banks') {
-                    result.push(new Weapon(attack, 1, "Viscious 1", WeaponType.ENERGY));
-                } else if (attack === 'Disruptor Arrays') {
-                    result.push(new Weapon(attack, 0, "Viscious 1, Area or Spread", WeaponType.ENERGY));
-                } else if (attack === 'Plasma Torpedoes') {
-                    result.push(new Weapon(attack, 3, "Persistent, Calibration", WeaponType.TORPEDO));
-                } else if (attack.indexOf('Tractor Beam') >= 0 || attack.indexOf('Grappler Cables') >= 0) {
-                    let index = attack.indexOf("(Strength");
-                    let index2 = attack.indexOf(")", index);
-                    let strength = index >= 0 && index2 >= 0 ? attack.substr(index + "(Strength".length + 1, index2) : "0";
-                    secondary.push(new Weapon(attack.indexOf('Tractor Beam') >= 0 ? 'Tractor Beam' : 'Grappler Cables', parseInt(strength), "", WeaponType.ENTANGLE));
+                for (let weapon of StarshipWeaponRegistry.list) {
+                    if (weapon.description === 'Spatial Torpedoes' && talents.indexOf('Nuclear Warheads') >= 0) {
+                        // skip it
+                    } else if (attack === weapon.description) {
+                        result.push(weapon);
+                    } else if (attack.indexOf(weapon.description) >= 0) { // Tractor or Grappler
+                        secondary.push(weapon);
+                    } else if (talents.indexOf(weapon.description) >= 0) {
+                        result.push(weapon);
+                    }
                 }
             }
+            secondary.forEach(w => {
+                result.push(w);
+            });
 
-            if (spaceframe.attacks.indexOf('Quantum Torpedoes') >= 0 || talents.indexOf('Quantum Torpedoes') >= 0) {
-                result.push(new Weapon('Quantum Torpedoes', 4, "Vicious 1, Calibration, High Yield", WeaponType.TORPEDO));
-            }
-
-            if (spaceframe.attacks.indexOf('Spatial Torpedoes') >= 0 && talents.indexOf('Nuclear Warheads') >= 0) {
-                result.push(new Weapon('Nuclear Warheads', 3, "Vicious 1, Calibration", WeaponType.TORPEDO));
-            } else if (spaceframe.attacks.indexOf('Spatial Torpedoes') >= 0) {
-                result.push(new Weapon('Spatial Torpedoes', 2, "", WeaponType.TORPEDO));
-            } else if (spaceframe.attacks.indexOf('Nuclear Warheads') >= 0 || talents.indexOf('Nuclear Warheads') >= 0) {
-                result.push(new Weapon('Nuclear Warheads', 3, "Vicious 1, Calibration", WeaponType.TORPEDO));
-            }
+        } else if (this.additionalWeapons.length > 0) {
+            result = [...this.additionalWeapons];
         }
-
-        secondary.forEach(w => {
-            result.push(w);
-        });
 
         return result;
     }
@@ -351,6 +335,7 @@ export class Starship extends Construct {
         result.additionalTalents = [...this.additionalTalents];
         result.refits = [...this.refits];
         result.traits = this.traits;
+        result.additionalWeapons = [...this.additionalWeapons];
         if (this.simpleStats != null) {
             result.simpleStats = new SimpleStats();
             result.simpleStats.className = this.simpleStats.className;

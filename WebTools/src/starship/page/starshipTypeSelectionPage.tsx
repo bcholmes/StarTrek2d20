@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { CharacterType, CharacterTypeModel } from "../../common/characterType";
+import { CharacterTypeModel } from "../../common/characterType";
 import { navigateTo, Navigation } from "../../common/navigator";
 import { Button } from "../../components/button";
 import { DropDownInput } from "../../components/dropDownInput";
@@ -12,7 +12,6 @@ import { PageIdentity } from "../../pages/pageIdentity";
 import { hasSource } from "../../state/contextFunctions";
 import { createNewStarship } from "../../state/starshipActions";
 import store from "../../state/store";
-import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 
 interface StarshipTypeSelectionPageProperties {
     era: Era
@@ -72,14 +71,17 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
     }
 
     startWorkflow() {
-        if (this.state.type != null && this.state.type.type === CharacterType.Other) {
-            let workflow = ShipBuildWorkflow.createSimpleBuildWorkflow();
-            store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear, true, workflow));
-            Navigation.navigateToPage(workflow.currentStep().page);
-        } else if (this.state.type != null) {
-            store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear, false));
+//        if (this.state.type != null && this.state.type.type === CharacterType.Other) {
+//            let workflow = ShipBuildWorkflow.createSimpleBuildWorkflow();
+//            let stats = new SimpleStats();
+//            stats.systems = [7, 7, 7, 7, 7, 7];
+//            stats.scale = 4;
+//            store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear, stats, workflow));
+//            Navigation.navigateToPage(workflow.currentStep().page);
+//       } else if (this.state.type != null) {
+            store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear));
             Navigation.navigateToPage(PageIdentity.Starship);
-        }
+//        }
     }
 
     renderServiceYear() {

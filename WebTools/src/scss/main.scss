@@ -10,7 +10,7 @@ $lcars-purple: #906F9A;
 $lcars-brighter-purple: #9179B7;
 $lcars-orange: #F89B24;
 $lcars-pink: orchid;
-$lcars-dull-purple: #B5B3D8; // used for buttons
+$lcars-dull-purple: #B5B3D8; // used for buttons (or is it?)
 $lcars-light-orange: #FFCC66;
 $lcars-light-pink: #DE84B7;
 $lcars-dull-pink: #c37ba4;
@@ -27,6 +27,12 @@ $primary: $lcars-purple;
 $breadcrumb-bg: #130e1a;
 $breadcrumb-border-radius: 1rem;
 $breadcrumb-padding-x: 1.5rem;
+
+$btn-border-radius:           1.25rem;
+$btn-border-radius-lg:        1.25rem;
+$btn-border-radius-sm:        1.25rem;
+
+$btn-font-family:             lcars;
 
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';

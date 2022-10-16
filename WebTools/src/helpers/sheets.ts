@@ -195,7 +195,9 @@ abstract class BasicStarshipSheet extends BasicSheet {
     populateForm(form: PDFForm, construct: Construct) {
         let starship = construct as Starship;
         this.fillField(form, 'Name', starship.name);
-        this.fillField(form, 'Service Date', starship.serviceYear.toString());
+        if (starship.serviceYear != null) {
+            this.fillField(form, 'Service Date', starship.serviceYear.toString());
+        }
         if (starship.type === CharacterType.KlingonWarrior) {
             this.fillField(form, 'Designation', 'N/A');
         } else {
@@ -324,7 +326,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
             dice += scale;
         }
 
-        this.fillField(form, 'Weapon ' + index + ' name', weapon.name);
+        this.fillField(form, 'Weapon ' + index + ' name', weapon.description);
         this.fillField(form, 'Weapon ' + index + ' dice', "" + dice);
         this.fillField(form, 'Weapon ' + index + ' qualities', weapon.qualities);
     }

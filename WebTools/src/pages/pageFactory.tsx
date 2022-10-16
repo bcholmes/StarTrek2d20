@@ -39,6 +39,7 @@ import SimpleStarshipPage from '../starship/page/simpleStarshipPage';
 import FinalStarshipDetailsPage from '../starship/page/finalStarshipDetailsPage';
 import StarshipTalentsPage from '../starship/page/starshipTalentsPage';
 import StarshipWeaponsPage from '../starship/page/starshipWeaponsPage';
+import { SelectStarshipToolPage } from '../starship/page/selectStarshipToolPage';
 
 
 export class PageFactory {
@@ -79,6 +80,7 @@ export class PageFactory {
         this.factories[PageIdentity.Finish] = () => <FinishPage/>;
         this.factories[PageIdentity.SimpleStarship] = () => <SimpleStarshipPage/>;
         this.factories[PageIdentity.Starship] = () => <StarshipPage/>;
+        this.factories[PageIdentity.StarshipToolSelection] = () => <SelectStarshipToolPage/>;
         this.factories[PageIdentity.StarshipTypeSelection] = () => <StarshipTypeSelectionPage/>;
         this.factories[PageIdentity.StarshipTalentSelection] = () => <StarshipTalentsPage/>;
         this.factories[PageIdentity.StarshipWeaponsSelection] = () => <StarshipWeaponsPage/>;
