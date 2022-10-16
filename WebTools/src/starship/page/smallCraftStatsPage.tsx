@@ -9,10 +9,6 @@ import { BaseSimpleStarshipPage } from "./simpleStarshipPage";
 
 class SmallCraftStatsPage extends BaseSimpleStarshipPage {
 
-    constructor(props) {
-        super(props);
-    }
-
     renderHeader() {
         return (<Header>Small Craft Creation</Header>);
     }

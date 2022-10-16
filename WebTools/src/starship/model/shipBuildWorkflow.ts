@@ -36,7 +36,7 @@ export class ShipBuildWorkflow {
     }
 
     public static createSmallCraftBuildWorkflow(buildType: ShipBuildType) {
-        if (buildType == ShipBuildType.Pod) {
+        if (buildType === ShipBuildType.Pod) {
             return new ShipBuildWorkflow([ new ShipBuildWorkflowStep("Starship Type", PageIdentity.StarshipTypeSelection),
                 new ShipBuildWorkflowStep("Small Craft Stats", PageIdentity.SmallCraftStats),
                 new ShipBuildWorkflowStep("Weapon Selection", PageIdentity.StarshipWeaponsSelection),
