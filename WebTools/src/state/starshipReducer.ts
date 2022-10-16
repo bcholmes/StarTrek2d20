@@ -1,6 +1,6 @@
 import { SimpleStats, Starship } from "../common/starship";
 import { ShipBuildWorkflow } from "../starship/model/shipBuildWorkflow";
-import { ADD_STARSHIP_WEAPON, CHANGE_STARSHIP_SCALE, CHANGE_STARSHIP_SIMPLE_CLASS_NAME, CHANGE_STARSHIP_SIMPLE_DEPARTMENT, CHANGE_STARSHIP_SIMPLE_SYSTEM, CREATE_NEW_STARSHIP, NEXT_STARSHIP_WORKFLOW_STEP, REWIND_TO_STARSHIP_WORKFLOW_STEP, SET_ADDITIONAL_TALENTS, SET_STARSHIP_NAME, SET_STARSHIP_TRAITS } from "./starshipActions";
+import { ADD_STARSHIP_WEAPON, CHANGE_STARSHIP_SCALE, CHANGE_STARSHIP_SIMPLE_CLASS_NAME, CHANGE_STARSHIP_SIMPLE_DEPARTMENT, CHANGE_STARSHIP_SIMPLE_SYSTEM, CREATE_NEW_STARSHIP, DELETE_STARSHIP_WEAPON, NEXT_STARSHIP_WORKFLOW_STEP, REWIND_TO_STARSHIP_WORKFLOW_STEP, SET_ADDITIONAL_TALENTS, SET_STARSHIP_NAME, SET_STARSHIP_TRAITS } from "./starshipActions";
 
 interface StarshipState {
     starship?: Starship;
@@ -75,6 +75,16 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
         case ADD_STARSHIP_WEAPON: {
             let s = state.starship.copy();
             s.additionalWeapons.push(action.payload.weapon);
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case DELETE_STARSHIP_WEAPON: {
+            let s = state.starship.copy();
+            if (s.additionalWeapons.indexOf(action.payload.weapon) >= 0) {
+                s.additionalWeapons.splice(s.additionalWeapons.indexOf(action.payload.weapon), 1);
+            }
             return {
                 ...state,
                 starship: s

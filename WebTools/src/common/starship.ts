@@ -324,6 +324,7 @@ export class Starship extends Construct {
     public copy(): Starship {
         let result = new Starship();
         result.type = this.type;
+        result.buildType = this.buildType;
         result.name = this.name;
         result.registry = this.registry;
         result.traits = this.traits;

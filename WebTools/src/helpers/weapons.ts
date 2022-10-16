@@ -149,7 +149,7 @@ export class DeliverySystemModel {
         new DeliverySystemModel(DeliverySystem.Cannons, "Cannons", 2, 21),
         new DeliverySystemModel(DeliverySystem.Banks, "Banks", 1, 23),
         new DeliverySystemModel(DeliverySystem.Arrays, "Arrays", 0, 24, "Area or Spread"),
-        new DeliverySystemModel(DeliverySystem.Cannons, "Spinal Lance", 3, 25),
+        new DeliverySystemModel(DeliverySystem.SpinalLances, "Spinal Lance", 3, 25),
     ];
 
     type: DeliverySystem;

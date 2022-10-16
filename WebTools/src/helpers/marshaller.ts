@@ -13,6 +13,7 @@ import { Spaceframe, SpaceframeHelper, SpaceframeModel } from './spaceframes';
 import { Species } from './speciesEnum';
 import { allSystems, System } from './systems';
 import { TalentSelection, TalentsHelper } from './talents';
+import { CaptureType, CaptureTypeModel, DeliverySystem, DeliverySystemModel, EnergyLoadType, EnergyLoadTypeModel, TorpedoLoadType, TorpedoLoadTypeModel, UsageCategory, Weapon, WeaponType } from './weapons';
 
 class Marshaller {
 
@@ -125,7 +126,36 @@ class Marshaller {
                 "scale": starship.simpleStats.scale
             }
         }
+        if (starship.additionalWeapons.length > 0) {
+            sheet['additionalWeapons'] = starship.additionalWeapons.map(w => ({
+                "usageCategory": w.usageCategory == null ? null : UsageCategory[w.usageCategory],
+                "type": w.type == null ? null : WeaponType[w.type],
+                "name": w.name,
+                "baseDice": w.baseDice,
+                "loadType": this.convertLoadType(w.loadType),
+                "deliverySystem": w.deliveryType == null ? null : DeliverySystem[w.deliveryType.type],
+                "hardCodedQualities": w.hardCodedQualities
+
+            }));
+        }
         return this.encode(sheet);
+    }
+
+    private convertLoadType(loadType: EnergyLoadTypeModel|TorpedoLoadTypeModel|CaptureTypeModel) {
+        if (loadType == null) {
+            return null;
+        } else if (loadType instanceof EnergyLoadTypeModel) {
+            let temp = loadType as EnergyLoadTypeModel;
+            return EnergyLoadType[temp.type];
+        } else if (loadType instanceof TorpedoLoadTypeModel) {
+            let temp = loadType as TorpedoLoadTypeModel;
+            return TorpedoLoadType[temp.type];
+        } else if (loadType instanceof CaptureTypeModel) {
+            let temp = loadType as CaptureTypeModel;
+            return CaptureType[temp.type];
+        } else {
+            return null;
+        }
     }
 
     encode(json: any) {
@@ -231,9 +261,61 @@ class Marshaller {
             result.simpleStats.systems = [...json.simpleStats.systems];
             result.simpleStats.departments = [...json.simpleStats.departments];
         }
+
+        if (json.additionalWeapons) {
+            result.additionalWeapons = json.additionalWeapons.map(j => this.decodeAdditionalWeapon(j));
+        }
+
         Starship.updateSystemAndDepartments(result);
 
         return result;
+    }
+
+    private decodeAdditionalWeapon(json) {
+
+        let usageCategory = null;
+        [UsageCategory.Character, UsageCategory.Starship].forEach(c => { if (UsageCategory[c] === json["usageCategory"]) usageCategory = c; });
+
+        let name = json["name"];
+        let baseDice = json["baseDice"];
+        let hardCodedQualities = json["hardCodedQualities"];
+
+        let weaponType = null;
+        [WeaponType.MELEE, WeaponType.ENERGY, WeaponType.TORPEDO, WeaponType.MINE, WeaponType.CAPTURE].forEach(t => {
+            if (WeaponType[t] === json["type"]) {
+                weaponType = t;
+            }
+        });
+
+        let deliverySystem = null;
+        DeliverySystemModel.allTypes().forEach(d => {
+            if (DeliverySystem[d.type] === json["deliverySystem"]) {
+                deliverySystem = d;
+            }
+        });
+
+        let loadType = null;
+        if (weaponType === WeaponType.ENERGY) {
+            EnergyLoadTypeModel.allTypes().forEach(l => {
+                if (EnergyLoadType[l.type] === json["loadType"]) {
+                    loadType = l;
+                }
+            });
+        } else if (weaponType === WeaponType.TORPEDO) {
+            TorpedoLoadTypeModel.allTypes().forEach(l => {
+                if (TorpedoLoadType[l.type] === json["loadType"]) {
+                    loadType = l;
+                }
+            });
+        } else if (weaponType === WeaponType.CAPTURE) {
+            CaptureTypeModel.allTypes().forEach(l => {
+                if (CaptureType[l.type] === json["loadType"]) {
+                    loadType = l;
+                }
+            });
+        }
+
+        return new Weapon(usageCategory, name, baseDice, hardCodedQualities, weaponType, loadType, deliverySystem);
     }
 }
 

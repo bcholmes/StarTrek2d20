@@ -17,6 +17,7 @@ export const SET_STARSHIP_NAME = "SET_STARSHIP_NAME";
 export const SET_STARSHIP_TRAITS = "SET_STARSHIP_TRAITS";
 export const SET_ADDITIONAL_TALENTS = "SET_ADDITIONAL_TALENTS";
 export const ADD_STARSHIP_WEAPON = "ADD_STARSHIP_WEAPON";
+export const DELETE_STARSHIP_WEAPON = "DELETE_STARSHIP_WEAPON";
 
 export function createNewStarship(type: CharacterType, serviceYear?: number, simple: SimpleStats = undefined, workflow?: ShipBuildWorkflow) {
     let payload = { type: type, serviceYear: serviceYear, simple: simple, workflow: workflow };
@@ -101,6 +102,14 @@ export function addStarshipWeapon(weapon: Weapon) {
     let payload = { weapon: weapon };
     return {
        type: ADD_STARSHIP_WEAPON,
+       payload: payload
+    }
+}
+
+export function deleteStarshipWeapon(weapon: Weapon) {
+    let payload = { weapon: weapon };
+    return {
+       type: DELETE_STARSHIP_WEAPON,
        payload: payload
     }
 }
