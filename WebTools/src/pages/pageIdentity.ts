@@ -32,6 +32,7 @@ export enum PageIdentity {
     Finish,
 
     SimpleStarship,
+    SmallCraftStats,
     Starship,
     StarshipToolSelection,
     StarshipTypeSelection,

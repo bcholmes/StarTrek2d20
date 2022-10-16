@@ -222,7 +222,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
         }
         if (starship.scale) {
             this.fillField(form, "Resistance",  this.calculateResistance(starship.scale, talents));
-            this.fillField(form, "Crew Total",  this.calculateCrewSupport(starship.scale));
+            this.fillField(form, "Crew Total",  this.calculateCrewSupport(starship.crewSupport));
         }
 
         if (starship.shields != null) {
@@ -240,8 +240,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
         this.fillField(form, "Refit", starship.refitsAsString());
     }
 
-    calculateCrewSupport(scale: number) {
-        var crew = scale;
+    calculateCrewSupport(crew: number) {
         return crew.toString();
     }
 

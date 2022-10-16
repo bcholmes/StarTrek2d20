@@ -1,3 +1,4 @@
+import { ShipBuildType } from "../../common/starship";
 import { PageIdentity } from "../../pages/pageIdentity";
 
 export class ShipBuildWorkflowStep {
@@ -14,8 +15,9 @@ export class ShipBuildWorkflow {
     steps: ShipBuildWorkflowStep[];
     currentStepIndex: number = 0;
 
-    constructor(steps: ShipBuildWorkflowStep[]) {
+    constructor(steps: ShipBuildWorkflowStep[], currentStepIndex: number = 0) {
         this.steps = steps;
+        this.currentStepIndex = currentStepIndex;
     }
 
     public currentStep() {
@@ -31,5 +33,20 @@ export class ShipBuildWorkflow {
             new ShipBuildWorkflowStep("Talent Selection", PageIdentity.StarshipTalentSelection),
             new ShipBuildWorkflowStep("Weapon Selection", PageIdentity.StarshipWeaponsSelection),
             new ShipBuildWorkflowStep("Final Details", PageIdentity.FinalStarshipDetails)]);
+    }
+
+    public static createSmallCraftBuildWorkflow(buildType: ShipBuildType) {
+        if (buildType == ShipBuildType.Pod) {
+            return new ShipBuildWorkflow([ new ShipBuildWorkflowStep("Starship Type", PageIdentity.StarshipTypeSelection),
+                new ShipBuildWorkflowStep("Small Craft Stats", PageIdentity.SmallCraftStats),
+                new ShipBuildWorkflowStep("Weapon Selection", PageIdentity.StarshipWeaponsSelection),
+                new ShipBuildWorkflowStep("Final Details", PageIdentity.FinalStarshipDetails)], 1);
+        } else {
+            return new ShipBuildWorkflow([ new ShipBuildWorkflowStep("Starship Type", PageIdentity.StarshipTypeSelection),
+                new ShipBuildWorkflowStep("Small Craft Stats", PageIdentity.SmallCraftStats),
+                new ShipBuildWorkflowStep("Talent Selection", PageIdentity.StarshipTalentSelection),
+                new ShipBuildWorkflowStep("Weapon Selection", PageIdentity.StarshipWeaponsSelection),
+                new ShipBuildWorkflowStep("Final Details", PageIdentity.FinalStarshipDetails)], 1);
+        }
     }
 }

@@ -1,5 +1,5 @@
 import { CharacterType } from "../common/characterType";
-import { SimpleStats } from "../common/starship";
+import { ShipBuildType, SimpleStats } from "../common/starship";
 import { Department } from "../helpers/departments";
 import { System } from "../helpers/systems";
 import { TalentViewModel } from "../helpers/talents";
@@ -20,8 +20,9 @@ export const SET_ADDITIONAL_TALENTS = "SET_ADDITIONAL_TALENTS";
 export const ADD_STARSHIP_WEAPON = "ADD_STARSHIP_WEAPON";
 export const DELETE_STARSHIP_WEAPON = "DELETE_STARSHIP_WEAPON";
 
-export function createNewStarship(type: CharacterType, serviceYear?: number, simple: SimpleStats = undefined, workflow?: ShipBuildWorkflow) {
-    let payload = { type: type, serviceYear: serviceYear, simple: simple, workflow: workflow };
+export function createNewStarship(type: CharacterType, serviceYear?: number, simple: SimpleStats = undefined, workflow?: ShipBuildWorkflow,
+        buildType: ShipBuildType = ShipBuildType.Starship) {
+    let payload = { type: type, serviceYear: serviceYear, simple: simple, workflow: workflow, buildType: buildType };
     return {
        type: CREATE_NEW_STARSHIP,
        payload: payload

@@ -42,15 +42,15 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
             <Header>{name}</Header>
             <div className="row mt-4" style={{alignItems: "baseline"}}>
                 <div className="col-md-2 view-field-label pb-2">Space Frame:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.spaceframeModel ? this.props.starship.spaceframeModel.name : undefined}</div></div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.className ? this.props.starship.className : NBSP}</div></div>
 
                 <div className="col-md-2 view-field-label pb-2">Service Date:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.serviceYear}</div></div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.serviceYear? this.props.starship.serviceYear : NBSP}</div></div>
             </div>
 
             <div className="row" style={{alignItems: "baseline"}}>
                 <div className="col-md-2 view-field-label pb-2">Mission Profile:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.missionProfileModel ? this.props.starship.missionProfileModel.name : undefined}</div></div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.missionProfileModel ? this.props.starship.missionProfileModel.name : NBSP}</div></div>
 
                 <div className="col-md-2 view-field-label pb-2">Refits:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2 small">{this.refitAsString()}</div></div>
@@ -108,7 +108,7 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
                                 <StatView name="Power" value={this.props.starship.power} className="col" />
                             </div>
                             <div className="row row-cols-1 row-cols-1 mb-2">
-                                <StatView name="Crew" value={this.props.starship.scale} className="col" />
+                                <StatView name="Crew" value={this.props.starship.crewSupport} className="col" />
                             </div>
                         </div>
                     </div>

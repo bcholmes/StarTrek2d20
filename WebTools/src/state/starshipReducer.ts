@@ -13,6 +13,9 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
             let s = new Starship();
             s.type = action.payload.type;
             s.serviceYear = action.payload.serviceYear;
+            if (action.payload.buildType != null) {
+                s.buildType = action.payload.buildType;
+            }
             if (action.payload.simple) {
                 s.simpleStats = new SimpleStats();
                 s.simpleStats.scale = action.payload.simple.scale;

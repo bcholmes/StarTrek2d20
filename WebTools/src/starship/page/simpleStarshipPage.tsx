@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Navigation } from "../../common/navigator";
 import { Starship } from "../../common/starship";
 import { Button } from "../../components/button";
+import { Dialog } from "../../components/dialog";
 import { Header } from "../../components/header";
 import { Department } from "../../helpers/departments";
 import { System } from "../../helpers/systems";
@@ -17,12 +18,12 @@ interface ISimpleStarshipPageProperties {
     workflow: ShipBuildWorkflow;
 }
 
-class SimpleStarshipPage extends React.Component<ISimpleStarshipPageProperties, {}> {
+export class BaseSimpleStarshipPage extends React.Component<ISimpleStarshipPageProperties, {}> {
 
     render() {
         return (<div className="page container ml-0">
             <ShipBuildingBreadcrumbs />
-            <Header>Simplified Starship Creation</Header>
+            {this.renderHeader()}
 
             <section className="my-5 row row-cols-1 row-cols-lg-2">
                 <div className="col mb-3">
@@ -32,7 +33,7 @@ class SimpleStarshipPage extends React.Component<ISimpleStarshipPageProperties, 
 
                     <div className="stats-row pt-2">
                         <StatControl statName="Scale" value={this.props.starship.scale}
-                            showIncrease={this.props.starship.scale < 6} showDecrease={this.props.starship.scale > 1}
+                            showIncrease={this.canIncreaseScale()} showDecrease={this.canDecreaseScale()}
                             onIncrease={() => { this.setScale(1) }} onDecrease={() => {this.setScale(-1)}} />
                     </div>
                 </div>
@@ -56,36 +57,38 @@ class SimpleStarshipPage extends React.Component<ISimpleStarshipPageProperties, 
             <section className="my-5">
                 <Header level={2}>Systems</Header>
 
+                {this.renderSystemsText()}
+
                 <div className="stats-row mt-4">
                     <StatControl statName="Comms" value={this.getSystem(System.Comms)}
-                        showIncrease={this.getSystem(System.Comms) < 15} showDecrease={this.getSystem(System.Comms) > 0}
+                        showIncrease={this.canIncreaseSystem(System.Comms)} showDecrease={this.canDecreaseSystem(System.Comms)}
                         onIncrease={() => {this.setSystem(System.Comms, 1) }}
                         onDecrease={() => {this.setSystem(System.Comms, -1)}} />
 
                     <StatControl statName="Engines" value={this.getSystem(System.Engines)}
-                        showIncrease={this.getSystem(System.Engines) < 15} showDecrease={this.getSystem(System.Engines) > 0}
+                        showIncrease={this.canIncreaseSystem(System.Engines)} showDecrease={this.canDecreaseSystem(System.Engines)}
                         onIncrease={() => { this.setSystem(System.Engines, 1) }}
                         onDecrease={() => {this.setSystem(System.Engines, -1)}} />
 
                     <StatControl statName="Structure" value={this.getSystem(System.Structure)}
-                        showIncrease={this.getSystem(System.Structure) < 15} showDecrease={this.getSystem(System.Structure) > 0}
+                        showIncrease={this.canIncreaseSystem(System.Structure)} showDecrease={this.canDecreaseSystem(System.Structure)}
                         onIncrease={() => { this.setSystem(System.Structure, 1) }}
                         onDecrease={() => {this.setSystem(System.Structure, -1)}} />
                 </div>
 
                 <div className="stats-row">
                     <StatControl statName="Computers" value={this.getSystem(System.Computer)}
-                        showIncrease={this.getSystem(System.Computer) < 15} showDecrease={this.getSystem(System.Computer) > 0}
+                        showIncrease={this.canIncreaseSystem(System.Computer)} showDecrease={this.canDecreaseSystem(System.Computer)}
                         onIncrease={() => { this.setSystem(System.Computer, 1) }}
                         onDecrease={() => {this.setSystem(System.Computer, -1)}} />
 
                     <StatControl statName="Sensors" value={this.getSystem(System.Sensors)}
-                        showIncrease={this.getSystem(System.Sensors) < 15} showDecrease={this.getSystem(System.Sensors) > 0}
+                        showIncrease={this.canIncreaseSystem(System.Sensors)} showDecrease={this.canDecreaseSystem(System.Sensors)}
                         onIncrease={() => { this.setSystem(System.Sensors, 1) }}
                         onDecrease={() => {this.setSystem(System.Sensors, -1)}} />
 
                     <StatControl statName="Weapons" value={this.getSystem(System.Weapons)}
-                        showIncrease={this.getSystem(System.Weapons) < 15} showDecrease={this.getSystem(System.Weapons) > 0}
+                        showIncrease={this.canIncreaseSystem(System.Weapons)} showDecrease={this.canDecreaseSystem(System.Weapons)}
                         onIncrease={() => { this.setSystem(System.Weapons, 1) }}
                         onDecrease={() => {this.setSystem(System.Weapons, -1)}} />
                 </div>
@@ -93,6 +96,8 @@ class SimpleStarshipPage extends React.Component<ISimpleStarshipPageProperties, 
 
             <section className="my-5">
                 <Header level={2}>Departments</Header>
+
+                {this.renderDepartmentText()}
 
                 <div className="stats-row mt-4">
                     <StatControl statName="Command" value={this.getDepartment(Department.Command)}
@@ -135,12 +140,40 @@ class SimpleStarshipPage extends React.Component<ISimpleStarshipPageProperties, 
         </div>);
     }
 
+    renderHeader() {
+        return (<Header>Simplified Starship Creation</Header>);
+    }
+
+    renderSystemsText() {
+        return undefined;
+    }
+
+    renderDepartmentText() {
+        return undefined;
+    }
+
     canIncreaseDepartment(department: Department) {
         return this.getDepartment(department) < 5;
     }
 
     canDecreaseDepartment(department: Department) {
         return this.getDepartment(department) > 0;
+    }
+
+    canIncreaseSystem(system: System) {
+        return this.getSystem(system) < 15;
+    }
+
+    canDecreaseSystem(system: System) {
+        return this.getSystem(system) > 1;
+    }
+
+    canIncreaseScale() {
+        return this.props.starship.scale < 7;
+    }
+
+    canDecreaseScale() {
+        return this.props.starship.scale > 1;
     }
 
     getSystem(system: System) {
@@ -170,9 +203,13 @@ class SimpleStarshipPage extends React.Component<ISimpleStarshipPageProperties, 
     }
 
     nextPage() {
-        let step = this.props.workflow.peekNextStep();
-        store.dispatch(nextStarshipWorkflowStep());
-        Navigation.navigateToPage(step.page);
+        if (!(this.props.starship.className)) {
+            Dialog.show("Please provide a name for this class of ship.");
+        } else {
+            let step = this.props.workflow.peekNextStep();
+            store.dispatch(nextStarshipWorkflowStep());
+            Navigation.navigateToPage(step.page);
+        }
     }
 }
 
@@ -181,6 +218,10 @@ function mapStateToProps(state, ownProps) {
         starship: state.starship.starship,
         workflow: state.starship.workflow
     };
+}
+
+class SimpleStarshipPage extends BaseSimpleStarshipPage {
+
 }
 
 export default connect(mapStateToProps)(SimpleStarshipPage);

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { CharacterTypeModel } from "../../common/characterType";
 import { navigateTo, Navigation } from "../../common/navigator";
+import { ShipBuildType, ShipBuildTypeModel, SimpleStats } from "../../common/starship";
 import { Button } from "../../components/button";
 import { DropDownInput } from "../../components/dropDownInput";
 import { Header } from "../../components/header";
@@ -12,13 +13,16 @@ import { PageIdentity } from "../../pages/pageIdentity";
 import { hasSource } from "../../state/contextFunctions";
 import { createNewStarship } from "../../state/starshipActions";
 import store from "../../state/store";
+import { BuildPoints } from "../model/buildPoints";
+import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 
 interface StarshipTypeSelectionPageProperties {
     era: Era
 }
 interface StarshipTypeSelectionPageState {
     type?: CharacterTypeModel;
-    campaignYear: number
+    campaignYear: number;
+    buildType: ShipBuildTypeModel;
 }
 
 class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPageProperties, StarshipTypeSelectionPageState> {
@@ -27,25 +31,39 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
         super(props);
         this.state = {
             type: CharacterTypeModel.getStarshipTypes()[0],
-            campaignYear: this.eraDefaultYear(this.props.era)
+            campaignYear: this.eraDefaultYear(this.props.era),
+            buildType: ShipBuildTypeModel.allTypes()[ShipBuildType.Starship]
         }
     }
 
     render() {
         let typeSelection = hasSource(Source.KlingonCore)
-        ? (<div className="my-5">
-                <div className="header-small">Ship Type</div>
+            ? (<div className="my-5">
+                    <div className="header-small">Ship Type</div>
+                    <div className="page-text">
+                        What type of starship is this?
+                    </div>
+                    <div>
+                        <DropDownInput
+                            items={ CharacterTypeModel.getStarshipTypes().map((t, i) => t.name) }
+                            defaultValue={ this.state.type.name }
+                            onChange={(index) => this.selectType(CharacterTypeModel.getStarshipTypes()[index] ) }/>
+                    </div>
+                </div>)
+            : undefined;
+
+        let buildTypeSelection = (<div className="my-5">
+                <div className="header-small">Size Category</div>
                 <div className="page-text">
-                    What type of starship is this?
+                    How big of a vessel is it?
                 </div>
                 <div>
                     <DropDownInput
-                        items={ CharacterTypeModel.getStarshipTypes().map((t, i) => t.name) }
-                        defaultValue={ this.state.type.name }
-                        onChange={(index) => this.selectType(CharacterTypeModel.getStarshipTypes()[index] ) }/>
+                        items={ ShipBuildTypeModel.allTypes().map((t, i) => t.name) }
+                        defaultValue={ this.state.buildType.name }
+                        onChange={(index) => this.selectBuildType(ShipBuildTypeModel.allTypes()[index] ) }/>
                 </div>
-            </div>)
-        : undefined;
+            </div>);
 
         return (
             <div className="page container ml-0">
@@ -58,8 +76,9 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
 
                 <Header>Starship Type Selection</Header>
                 <div>
-                    {typeSelection}
                     {this.renderServiceYear()}
+                    {typeSelection}
+                    {buildTypeSelection}
                     <Button onClick={() => this.startWorkflow()} text='CREATE' />
                 </div>
             </div>
@@ -70,22 +89,29 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
         this.setState((state) => ({...state, type: typeModel}));
     }
 
+    selectBuildType(buildType: ShipBuildTypeModel) {
+        this.setState((state) => ({...state, buildType: buildType}));
+    }
+
     startWorkflow() {
-//        if (this.state.type != null && this.state.type.type === CharacterType.Other) {
-//            let workflow = ShipBuildWorkflow.createSimpleBuildWorkflow();
-//            let stats = new SimpleStats();
-//            stats.systems = [7, 7, 7, 7, 7, 7];
-//            stats.scale = 4;
-//            store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear, stats, workflow));
-//            Navigation.navigateToPage(workflow.currentStep().page);
-//       } else if (this.state.type != null) {
+        if (this.state.buildType != null && this.state.buildType.type !== ShipBuildType.Starship) {
+            let workflow = ShipBuildWorkflow.createSmallCraftBuildWorkflow(this.state.buildType.type);
+            let stats = new SimpleStats();
+            stats.systems = BuildPoints.allocatePointsEvenly(BuildPoints.systemPointsForType(
+                this.state.buildType.type, this.state.campaignYear, this.state.type.type));
+            stats.departments = BuildPoints.allocatePointsEvenly(BuildPoints.departmentPointsForType(
+                this.state.buildType.type));
+            stats.scale = this.state.buildType.type === ShipBuildType.Runabout ? 2 : 1;
+            store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear, stats, workflow, this.state.buildType.type));
+            Navigation.navigateToPage(workflow.currentStep().page);
+       } else if (this.state.type != null) {
             store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear));
             Navigation.navigateToPage(PageIdentity.Starship);
-//        }
+        }
     }
 
     renderServiceYear() {
-        return (<div>
+        return (<div className="my-5">
                     <SmallHeader>Campaign Year</SmallHeader>
                     <div className="page-text">
                         <p>What is the current year in your campaign? You'll probably need to consult your GM.</p>

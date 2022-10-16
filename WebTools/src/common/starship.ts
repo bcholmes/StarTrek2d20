@@ -26,19 +26,21 @@ export enum ShipBuildType {
 }
 
 export class ShipBuildTypeModel {
-    name: string;
-    type: ShipBuildType;
+    readonly name: string;
+    readonly type: ShipBuildType;
+    readonly scale: number;
 
     private static TYPES: ShipBuildTypeModel[] = [
-        new ShipBuildTypeModel("Pod", ShipBuildType.Pod),
-        new ShipBuildTypeModel("Shuttlecraft", ShipBuildType.Shuttlecraft),
-        new ShipBuildTypeModel("Runabout", ShipBuildType.Runabout),
+        new ShipBuildTypeModel("Pod", ShipBuildType.Pod, 1),
+        new ShipBuildTypeModel("Shuttlecraft", ShipBuildType.Shuttlecraft, 1),
+        new ShipBuildTypeModel("Runabout", ShipBuildType.Runabout, 1),
         new ShipBuildTypeModel("Starship", ShipBuildType.Starship)
     ];
 
-    constructor(name: string, type: ShipBuildType) {
+    constructor(name: string, type: ShipBuildType, scale: number = 0) {
         this.name = name;
         this.type = type;
+        this.scale = scale;
     }
 
     static allTypes() {
@@ -77,6 +79,9 @@ export class Starship extends Construct {
 
     get power() {
         let power = this.getSystemValue(System.Engines);
+        if (this.buildType !== ShipBuildType.Starship) {
+            power = Math.ceil(power / 2);
+        }
         let bonus = this.getTalentSelectionList().filter(t => t.talent.name === "Secondary Reactors");
         if (power != null && bonus.length > 0) {
             power += (5 * bonus[0].rank);
@@ -84,12 +89,18 @@ export class Starship extends Construct {
         return power;
     }
 
+    get resistance() {
+        return this.scale;
+    }
+
     get defaultTraits() {
         let trait = [];
-        if (this.type === CharacterType.KlingonWarrior) {
+        if (this.type === CharacterType.KlingonWarrior && this.buildType === ShipBuildType.Starship) {
             trait.push("Klingon Starship");
-        } else if (this.type === CharacterType.Starfleet) {
+        } else if (this.type === CharacterType.Starfleet && this.buildType === ShipBuildType.Starship) {
             trait.push("Federation Starship");
+        } else if (this.buildType !== ShipBuildType.Starship) {
+            trait.push("Small Craft");
         }
         if (this.spaceframeModel) {
             trait = [...this.spaceframeModel.additionalTraits];
@@ -123,6 +134,14 @@ export class Starship extends Construct {
             return 1;
         } else {
             return 2;
+        }
+    }
+
+    get crewSupport() {
+        if (this.buildType === ShipBuildType.Starship) {
+            return this.scale;
+        } else {
+            return 0;
         }
     }
 
@@ -219,6 +238,9 @@ export class Starship extends Construct {
     get shields() {
         if (this.departments) {
             let base = this.getSystemValue(System.Structure) + this.departments[Department.Security];
+            if (this.buildType !== ShipBuildType.Starship) {
+                base = this.power;
+            }
             let advanced = this.getTalentSelectionList().filter(t => t.talent.name === "Advanced Shields");
             if (advanced.length > 0) {
                 base += (5 * advanced[0].rank);
