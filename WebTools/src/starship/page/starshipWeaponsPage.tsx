@@ -89,7 +89,7 @@ class StarshipWeaponsPageProperties extends React.Component<IStarshipWeaponsPage
     }
 
     modalContents() {
-        return (<AddWeaponView onClose={() => this.closeModal()}/>)
+        return (<AddWeaponView onClose={() => this.closeModal()} serviceYear={this.props.starship.serviceYear} />)
     }
 
     confirmationContents(w: Weapon) {

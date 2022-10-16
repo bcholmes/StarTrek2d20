@@ -165,6 +165,16 @@ export class SheetOutlineOptions {
 
 class SpaceframeOutlineHelper {
 
+    getSmallCraftOutline(starship: Starship) {
+        if (this.isEnterpriseEra(starship.serviceYear)) {
+            return ENTERPRISE_ERA_SHUTTLE_ELABORATE_OUTLINE;
+        } else if (this.isTosEra(starship.serviceYear)) {
+            return TOS_ERA_SHUTTLE_ELABORATE_OUTLINE;
+        } else {
+            return TNG_ERA_SHUTTLE_ELABORATE_OUTLINE;
+        }
+    }
+
     draw(pdf: PDFDocument, options: SheetOutlineOptions, starship: Starship) {
         const outline = this.getOutline(starship);
         if (outline) {
@@ -172,13 +182,7 @@ class SpaceframeOutlineHelper {
         } else if (starship.type === CharacterType.KlingonWarrior) {
             this.drawOutline(pdf, BIRD_OF_PREY_ELABORATE_CLASS, options);
         } else if (starship.isSmallCraft) {
-            if (this.isEnterpriseEra(starship.serviceYear)) {
-                this.drawOutline(pdf, ENTERPRISE_ERA_SHUTTLE_ELABORATE_OUTLINE, options);
-            } else if (this.isTosEra(starship.serviceYear)) {
-                this.drawOutline(pdf, TOS_ERA_SHUTTLE_ELABORATE_OUTLINE, options);
-            } else {
-                this.drawOutline(pdf, TNG_ERA_SHUTTLE_ELABORATE_OUTLINE, options);
-            }
+            this.drawOutline(pdf, this.getSmallCraftOutline(starship), options);
         } else {
             this.drawOutline(pdf, this.isPreTngEra(starship.serviceYear) ? CONSTITUTION_TOS_ELABORATE_OUTLINE : GALAXY_CLASS_ELABORATE_OUTLINE, options);
         }
@@ -403,7 +407,7 @@ class SpaceframeOutlineHelper {
     }
 
     renderFullSvg(starship: Starship) {
-        const path = this.getOutline(starship);
+        const path = starship.isSmallCraft ? this.getSmallCraftOutline(starship) : this.getOutline(starship);
         return path ? '<svg width="545" height="150" viewBox="0 0 545 150" version="1.1" id="svg3666" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">'
                 + '  <g id="layer1">'
                 + '    <path style="fill:#F9AC76;stroke:none;" d="' + path + '"/>'

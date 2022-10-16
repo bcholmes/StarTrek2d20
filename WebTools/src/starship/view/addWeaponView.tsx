@@ -6,6 +6,7 @@ import { addStarshipWeapon } from "../../state/starshipActions";
 import store from "../../state/store";
 
 interface IAddWeaponViewProperties {
+    serviceYear?: number;
     onClose: () => void;
 }
 interface IAddWeaponViewState {
@@ -48,11 +49,19 @@ class AddWeaponView extends React.Component<IAddWeaponViewProperties, IAddWeapon
     }
 
     getEnergyLoadTypes() {
-        return EnergyLoadTypeModel.allTypes();
+        if (this.props.serviceYear) {
+            return EnergyLoadTypeModel.allTypesByYear(this.props.serviceYear);
+        } else {
+            return EnergyLoadTypeModel.allTypes();
+        }
     }
 
     getTorpedoLoadTypes() {
-        return TorpedoLoadTypeModel.allTypes();
+        if (this.props.serviceYear) {
+            return TorpedoLoadTypeModel.allTypesByYear(this.props.serviceYear);
+        } else {
+            return TorpedoLoadTypeModel.allTypes();
+        }
     }
 
     getCaptureTypes() {
@@ -60,7 +69,11 @@ class AddWeaponView extends React.Component<IAddWeaponViewProperties, IAddWeapon
     }
 
     getDeliverySystems() {
-        return DeliverySystemModel.allTypes();
+        if (this.props.serviceYear) {
+            return DeliverySystemModel.allTypesByYear(this.props.serviceYear);
+        } else {
+            return DeliverySystemModel.allTypes();
+        }
     }
 
     addWeapon() {

@@ -92,6 +92,14 @@ export class EnergyLoadTypeModel {
     static allTypes() {
         return EnergyLoadTypeModel.TYPES;
     }
+
+    static allTypesByYear(year: number) {
+        return this.allTypes().filter(e => year > centuryToYear(e.century));
+    }
+}
+
+const centuryToYear = (century: number) => {
+    return (century - 1) * 100;
 }
 
 export enum TorpedoLoadType {
@@ -137,6 +145,10 @@ export class TorpedoLoadTypeModel {
     static allTypes() {
         return TorpedoLoadTypeModel.TYPES;
     }
+
+    static allTypesByYear(year: number) {
+        return this.allTypes().filter(l => year > centuryToYear(l.century));
+    }
 }
 
 export enum DeliverySystem {
@@ -168,6 +180,10 @@ export class DeliverySystemModel {
 
     static allTypes() {
         return DeliverySystemModel.TYPES;
+    }
+
+    static allTypesByYear(year: number) {
+        return this.allTypes().filter(d => year > centuryToYear(d.century));
     }
 }
 
