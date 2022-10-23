@@ -3069,13 +3069,25 @@ export class Talents {
         new TalentModel(
             "Additional Propulsion System",
             "The vessel includes an additional, non-standard form of propulsion, such as Transwarp or Quantum Slipstream Drive.",
-            [new StarshipPrerequisite(), new ServiceYearPrerequisite(2272), new SourcePrerequisite(Source.KlingonCore)],
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+            1,
+            "Starship"),
+        new TalentModel(
+            "Aquarius Escort",
+            "The Aquarius escort is a small starship, about the size of a Defiant-class ship, embedded in a cocking slip at the aft of the Odyssey class. The Aquarius is an independent starship and can travel at warp, though its endurance is relatively limited and it is not designed to go on extended missions without frequent resupply. When deployed, the Aquarius can be an NPC ally starship or can be commanded by a player at the gamemaster's discretion. The Aquarius uses the stats of a Defiant-class starship, but cannot have a cloaking device. When docked, the Aquarius's power and defensive systems supplement that of the mothership, and so when deployed, the scale of the Odyssey-class ship (and all derived stats except for its number of talents) is reduced from 7 to 6.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
             1,
             "Starship"),
         new TalentModel(
             "Cloaking Device",
             "The vessel has a device that allows it to vanish from sensors. Operating the device requires a Control + Engineering task with a Difficulty of 2, assisted by the ship’s Engines + Security as this is a task from the tactical position. This task has a Power requirement of 3. If successful, the vessel gains the Cloaked trait. While cloaked, the vessel cannot attempt any attacks, nor can it be the target of an attack unless the attacker has found some way of detecting the cloaked vessel. While cloaked, a vessel’s shields are down. It requires a minor action to decloak a vessel.",
             [new StarshipPrerequisite(), new ServiceYearPrerequisite(2272), new SourcePrerequisite(Source.KlingonCore)],
+            1,
+            "Starship"),
+        new TalentModel(
+            "EXEO Holographic Core",
+            "The EXEO Holographic Core allows the ship to support a holographic life form as part of its crew. This supporting character can be from any discipline and does not count against the ship's crew support total. This holographic life form also has a primitive mobile emitter. The mobile emitter provides the EXEO with some EVA mobility, but it is not as advanced as the Doctor's 29th-centry emitter and will not function more than 100,000 kilometers away from the EXEO core itself. Unlike a standard EMH, the EXEO may improve.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
             1,
             "Starship"),
         new TalentModel(
@@ -3093,6 +3105,18 @@ export class Talents {
         new TalentModel(
             "Linked Fire Control",
             "The spaceframe gains an advantage \"Linked Fire Control\" that applies to fleet combat as determined by the gamemaster, reducing the complication range on weapons fire.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+            1,
+            "Starship"),
+        new TalentModel(
+            "Modular Mission Bay",
+            "A Pathfinder must take one talent from the list below. This talen counts against the ship's maximum number of talents, but the crew may exchange it for another on the list during a week-long layover at a Federation starbase. Advanced Research Facilities. Advanced Sickbay. Dedicated Personnel (Medicine). Dedicated Personnel (Science). Dedicated Personnel (Security). Diplomatic Suites. Extensive Shuttlebays. Improved Damage Control. Modular Laboratories.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+            1,
+            "Starship"),
+        new TalentModel(
+            "Refracting Energy Shunt",
+            "This starship can use its deflector array to temporarily absorb energy from a target vessel and channel that back into its own power reserves. Once per scene, the crew can spend 3 Momentum to reduce an enemy starship's Power by 3 and provide their own ship with 3 bonus Power, even exceeding the ship's maximum Power rating. This is executed on a Daring + Engineering task with a Difficulty of 3, and, depending on the result of the check, the gamemaster may create a complication related to the ship's Power or weapons systems.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
             1,
             "Starship"),

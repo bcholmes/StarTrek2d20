@@ -12,7 +12,7 @@ export interface IPrerequisite {
 }
 
 export class SourcePrerequisite implements IPrerequisite {
-    private sources: Source[];
+    sources: Source[];
 
     constructor(...source: Source[]) {
         this.sources = source;
@@ -37,7 +37,7 @@ export class CharacterTypePrerequisite implements IPrerequisite {
     constructor(type: CharacterType) {
         this.type = type;
     }
-    
+
     isPrerequisiteFulfilled() {
         return character.type === this.type;
     }
@@ -50,12 +50,12 @@ export class CivilianPrerequisite implements IPrerequisite {
     // characters to only one Role, so there's no point including them.
     isPrerequisiteFulfilled() {
         if (new SourcePrerequisite(Source.SciencesDivision, Source.PlayersGuide, Source.KlingonCore).isPrerequisiteFulfilled()) {
-            return character.type === CharacterType.AmbassadorDiplomat || 
+            return character.type === CharacterType.AmbassadorDiplomat ||
                 character.type === CharacterType.Civilian ||
-                (character.type === CharacterType.Starfleet 
+                (character.type === CharacterType.Starfleet
                     && (character.track === Track.UniversityAlumni
                         || character.track === Track.ResearchInternship)) ||
-                (character.type === CharacterType.KlingonWarrior 
+                (character.type === CharacterType.KlingonWarrior
                     && character.track === Track.Laborer);
         } else {
             return true;
@@ -126,7 +126,7 @@ export class EraPrerequisite implements IPrerequisite {
 
 export class ChildPrerequisite implements IPrerequisite {
     isPrerequisiteFulfilled(): boolean {
-        return character.type === CharacterType.Child || 
+        return character.type === CharacterType.Child ||
             character.age.isChild();
     }
 }

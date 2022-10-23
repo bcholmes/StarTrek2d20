@@ -1,6 +1,6 @@
 ﻿import { CharacterType } from '../common/characterType';
-import { hasAnySource } from '../state/contextFunctions';
 import {Era} from './eras';
+import { IPrerequisite, SourcePrerequisite } from './prerequisite';
 import {Source} from './sources';
 import { Spaceframe } from './spaceframeEnum';
 import {TalentSelection} from './talents';
@@ -10,8 +10,7 @@ export class SpaceframeModel {
     type: CharacterType;
     name: string;
     serviceYear: number;
-    eras: Era[];
-    source: Source[];
+    prerequisites: IPrerequisite[];
     systems: number[];
     departments: number[];
     scale: number;
@@ -26,8 +25,9 @@ export class SpaceframeModel {
         this.type = type;
         this.name = name;
         this.serviceYear = serviceYear;
-        this.eras = eras;
-        this.source = source;
+        let sourcePrerequisite = new SourcePrerequisite();
+        sourcePrerequisite.sources = source;
+        this.prerequisites = [ sourcePrerequisite ];
         this.systems = systems;
         this.departments = departments;
         this.scale = scale;
@@ -42,11 +42,23 @@ export class SpaceframeModel {
     }
 
     get isCustom() {
-        return this.id == null || (this.source.length === 1 && this.source[0] === Source.None);
+        return this.id == null;
     }
 
-    static createCustomSpaceframe(type: CharacterType, serviceYear: number, eras: Era[]) {
-        return new SpaceframeModel(null, type, "", serviceYear, eras,
+    isPrerequisiteFulfilled() {
+        if (this.prerequisites.length === 0) {
+            return true;
+        } else {
+            let result = true;
+            this.prerequisites.forEach(req => {
+                result = result && req.isPrerequisiteFulfilled();
+            });
+            return result;
+        }
+    }
+
+    static createCustomSpaceframe(type: CharacterType, serviceYear: number) {
+        return new SpaceframeModel(null, type, "", serviceYear, [],
             [ Source.None ], [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [],
             type === CharacterType.KlingonWarrior ? [ "Klingon Starship"] : [ "Federation Starship" ]);
     }
@@ -857,7 +869,375 @@ class Spaceframes {
             ],
             [ "Federation Starship", "Section 31 Starship" ],
             2299),
+        // Utopia Planitia Ships
+        [Spaceframe.JClassYClass]: new SpaceframeModel(
+            Spaceframe.JClassYClass,
+            CharacterType.Starfleet,
+            "J-Class/Y-Class",
+            2103,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [4, 4, 5, 5, 6, 4],
+            [0, 1, 0, 1, 0, 1],
+            2,
+            [
+                "Phase Cannons"
+            ],
+            [
+                TalentSelection.selectTalent("Polarized Hull Plating")
+            ],
+            [ "UESPA Civilian Starship" ],
+            2399),
+        [Spaceframe.Delta]: new SpaceframeModel(
+            Spaceframe.Delta,
+            CharacterType.Starfleet,
+            "Warp Delta",
+            2125,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [6, 5, 6, 6, 5, 5],
+            [0, 1, 1, 1, 0, 0],
+            3,
+            [
+                "Phase Cannons",
+                "Spatial Torpedoes",
+                "Grappler Cables"
+            ],
+            [
+                TalentSelection.selectTalent("Grappler Cables"),
+                TalentSelection.selectTalent("Polarized Hull Plating")
+            ],
+            [ "UESPA Starship" ],
+            2190),
+        [Spaceframe.IntrepidType]: new SpaceframeModel(
+            Spaceframe.IntrepidType,
+            CharacterType.Starfleet,
+            "Intrepid Type",
+            2152,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [6, 5, 7, 6, 5, 5],
+            [0, 1, 1, 0, 1, 0],
+            3,
+            [
+                "Phase Cannons",
+                "Spatial Torpedoes",
+                "Grappler Cables"
+            ],
+            [
+                TalentSelection.selectTalent("Grappler Cables"),
+                TalentSelection.selectTalent("Polarized Hull Plating")
+            ],
+            [ "UESPA Starship" ],
+            2190),
+        [Spaceframe.Antares]: new SpaceframeModel(
+            Spaceframe.Antares,
+            CharacterType.Starfleet,
+            "Antares",
+            2245,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [8, 6, 7, 8, 7, 6],
+            [0, 0, 0, 1, 1, 1],
+            2,
+            [
+                "Phaser Banks",
+                "Tractor Beam"
+            ],
+            [
+                TalentSelection.selectTalent("Rugged Design")
+            ],
+            [ "Federation Starship" ],
+            2315),
+        [Spaceframe.Springfield]: new SpaceframeModel(
+            Spaceframe.Springfield,
+            CharacterType.Starfleet,
+            "Springfield",
+            2352,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [10, 9, 10, 10, 8, 8],
+            [0, 0, 1, 1, 1, 0],
+            4,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam"
+            ],
+            [
+                TalentSelection.selectTalent("High-Resolution Sensors"),
+                TalentSelection.selectTalent("Rugged Design")
+            ],
+            [ "Federation Starship" ],
+            2419),
+        [Spaceframe.RavenType]: new SpaceframeModel(
+            Spaceframe.RavenType,
+            CharacterType.Starfleet,
+            "Raven Type",
+            2354,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [11, 11, 8, 11, 7, 5],
+            [0, 0, 0, 0, 2, 1],
+            2,
+            [
+                "Phaser Banks"
+            ],
+            [
+                TalentSelection.selectTalent("Advanced Sensor Suites")
+            ]),
+        [Spaceframe.Niagara]: new SpaceframeModel(
+            Spaceframe.Niagara,
+            CharacterType.Starfleet,
+            "Niagara",
+            2358,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [9, 9, 11, 10, 9, 8],
+            [0, 1, 0, 0, 1, 1],
+            2,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam",
+            ],
+            [
+                TalentSelection.selectTalent("High-Resolution Sensors"),
+                TalentSelection.selectTalent("Improved Warp Drive")
+            ]),
+        [Spaceframe.Challenger]: new SpaceframeModel(
+            Spaceframe.Challenger,
+            CharacterType.Starfleet,
+            "Challenger",
+            2360,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [8, 10, 11, 11, 8, 8],
+            [0, 1, 0, 1, 1, 0],
+            4,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam"
 
+            ],
+            [
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Redundant Systems [Sensors]")
+            ]),
+        [Spaceframe.Freedom]: new SpaceframeModel(
+            Spaceframe.Freedom,
+            CharacterType.Starfleet,
+            "Freedom",
+            2361,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [9, 9, 9, 11, 8, 10],
+            [1, 0, 1, 0, 1, 0],
+            4,
+            [
+                "Phaser Arrays",
+                "Phaser Cannons",
+                "Photon Torpedoes",
+                "Tractor Beam"
+
+            ],
+            [
+                TalentSelection.selectTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Secondary Reactors")
+            ]),
+        [Spaceframe.Prometheus]: new SpaceframeModel(
+            Spaceframe.Prometheus,
+            CharacterType.Starfleet,
+            "Prometheus",
+            2373,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [8, 9, 10, 9, 10, 11],
+            [0, 0, 2, 1, 0, 0],
+            4,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam"
+
+            ],
+            [
+                TalentSelection.selectTalent("Multi-Vector Assualt Mode"),
+                TalentSelection.selectTalent("Redundant Systems [Engines]")
+            ]),
+        [Spaceframe.Vesta]: new SpaceframeModel(
+            Spaceframe.Vesta,
+            CharacterType.Starfleet,
+            "Vesta",
+            2380,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [10, 10, 12, 10, 9, 9],
+            [0, 1, 0, 1, 1, 0],
+            6,
+            [
+                "Phaser Arrays",
+                "Phaser Cannons",
+                "Quantum Torpedoes",
+                "Tractor Beam"
+
+            ],
+            [
+                TalentSelection.selectTalent("Advanced Shields"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Secondary Reactors"),
+                TalentSelection.selectTalent("Additional Propulsion System [Burst Drive]")
+            ]),
+        [Spaceframe.Ross]: new SpaceframeModel(
+            Spaceframe.Ross,
+            CharacterType.Starfleet,
+            "Ross",
+            2381,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [9, 11, 10, 10, 10, 10],
+            [0, 0, 0, 1, 1, 1],
+            6,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam"
+
+            ],
+            [
+                TalentSelection.selectTalent("Diplomatic Suites"),
+                TalentSelection.selectTalent("Saucer Separation"),
+                TalentSelection.selectTalent("Secondary Reactors"),
+                TalentSelection.selectTalent("EXEO Holographic Core")
+            ]),
+        [Spaceframe.Inquiry]: new SpaceframeModel(
+            Spaceframe.Inquiry,
+            CharacterType.Starfleet,
+            "Inquiry",
+            2394,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [10, 11, 10, 11, 10, 9],
+            [1, 1, 0, 0, 1, 0],
+            5,
+            [
+                "Phaser Arrays",
+                "Phaser Banks",
+                "Quantum Torpedoes",
+                "Tractor Beam"
+
+            ],
+            [
+                TalentSelection.selectTalent("Ablative Armor"),
+                TalentSelection.selectTalent("Improved Power Systems"),
+                TalentSelection.selectTalent("Improved Warp Drive")
+            ]),
+        [Spaceframe.Reliant]: new SpaceframeModel(
+            Spaceframe.Reliant,
+            CharacterType.Starfleet,
+            "Reliant",
+            2397,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [10, 10, 10, 10, 10, 9],
+            [0, 1, 0, 1, 0, 1],
+            4,
+            [
+                "Phaser Arrays",
+                "Quantum Torpedoes",
+                "Tractor Beam"
+
+            ],
+            [
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("Redundant Systems"),
+                TalentSelection.selectTalent("Additional Propulsion System [Quantum Slipstream Burst Drive]")
+            ]),
+        [Spaceframe.Sutherland]: new SpaceframeModel(
+            Spaceframe.Sutherland,
+            CharacterType.Starfleet,
+            "Sutherland",
+            2398,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [9, 9, 10, 10, 10, 10],
+            [0, 1, 0, 1, 0, 1],
+            5,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam"
+
+            ],
+            [
+                TalentSelection.selectTalent("Saucer Separation")
+            ]),
+        [Spaceframe.Gagarin]: new SpaceframeModel(
+            Spaceframe.Gagarin,
+            CharacterType.Starfleet,
+            "Gagarin",
+            2398,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [9, 9, 12, 10, 9, 10],
+            [0, 1, 1, 1, 0, 0],
+            5,
+            [
+                "Phaser Arrays",
+                "Phaser Cannons",
+                "Quantum Torpedoes",
+                "Tractor Beam"
+
+            ],
+            [
+                TalentSelection.selectTalent("Improved Damage Control"),
+                TalentSelection.selectTalent("Redundant Systems"),
+                TalentSelection.selectTalent("Refracting Energy Shunt")
+            ]),
+        [Spaceframe.Odyssey]: new SpaceframeModel(
+            Spaceframe.Odyssey,
+            CharacterType.Starfleet,
+            "Odyssey",
+            2381,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [11, 11, 10, 10, 11, 10],
+            [1, 0, 1, 1, 0, 0],
+            7,
+            [
+                "Phaser Arrays",
+                "Quantum Torpedoes",
+                "Tractor Beam"
+
+            ],
+            [
+                TalentSelection.selectTalent("Command Ship"),
+                TalentSelection.selectTalent("Redundant Systems [Engines]"),
+                TalentSelection.selectTalent("Saucer Separation"),
+                TalentSelection.selectTalent("Additional Propulsion System [Quantum Slipstream Burst Drive]"),
+                TalentSelection.selectTalent("Aquarius Escort"),
+            ]),
+        [Spaceframe.Pathfinder]: new SpaceframeModel(
+            Spaceframe.Pathfinder,
+            CharacterType.Starfleet,
+            "Pathfinder",
+            2410,
+            [],
+            [ Source.UtopiaPlanitia ],
+            [9, 11, 11, 11, 9, 9],
+            [0, 1, 0, 0, 2, 0],
+            4,
+            [
+                "Phaser Arrays",
+                "Quantum Torpedoes",
+                "Tractor Beam"
+
+            ],
+            [
+                TalentSelection.selectTalent("High-Resolution Sensors"),
+                TalentSelection.selectTalent("Modular Mission Bay")
+            ]),
 
 
         // Klingon Spaceframes
@@ -1520,7 +1900,7 @@ class Spaceframes {
         for (var frame in this._frames) {
             let f = this._frames[frame];
             if (f.serviceYear <= year && (f.maxServiceYear >= year || ignoreMaxServiceYear)) {
-                if (hasAnySource(f.source) && type === f.type) {
+                if (f.isPrerequisiteFulfilled() && type === f.type) {
                     frames.push(f);
                 }
             }

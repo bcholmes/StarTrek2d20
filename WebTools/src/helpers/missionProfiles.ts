@@ -357,7 +357,18 @@ class MissionProfiles {
                 MissionProfile.ScientificAndSurvey,
                 MissionProfile.StrategicAndDiplomatic,
                 MissionProfile.Tactical,
-                MissionProfile.HouseGuard ];
+                MissionProfile.HouseGuard,
+                MissionProfile.Battlecruiser,
+                MissionProfile.ReserveFleet,
+                MissionProfile.CivilianMerchantMarine,
+                MissionProfile.ColonySupport,
+                MissionProfile.EntertainmentPleasureShip,
+                MissionProfile.EspionageIntelligence,
+                MissionProfile.Flagship,
+                MissionProfile.LogisticalQuartermaster,
+                MissionProfile.Patrol,
+                MissionProfile.Warship,
+                MissionProfile.TechnicalTestbed ];
         } else {
             keys = [ MissionProfile.StrategicAndDiplomatic,
                 MissionProfile.PathfinderAndReconaissance,
@@ -368,14 +379,23 @@ class MissionProfiles {
                 MissionProfile.MultiroleExplorer,
                 MissionProfile.ProjectEscalante,
                 MissionProfile.Battlecruiser,
-                MissionProfile.ReserveFleet ];
+                MissionProfile.ReserveFleet,
+                MissionProfile.CivilianMerchantMarine,
+                MissionProfile.ColonySupport,
+                MissionProfile.EntertainmentPleasureShip,
+                MissionProfile.EspionageIntelligence,
+                MissionProfile.Flagship,
+                MissionProfile.LogisticalQuartermaster,
+                MissionProfile.Patrol,
+                MissionProfile.Warship,
+                MissionProfile.TechnicalTestbed ];
         }
 
         for (let i in keys) {
             let n = keys[i];
             let profile = (type === CharacterType.KlingonWarrior) ? this._klingonProfiles[n] : this._profiles[n];
 
-            if (profile.isPrerequisitesFulfilled()) {
+            if (profile && profile.isPrerequisitesFulfilled()) {
                 profiles.push(profile);
             }
         }

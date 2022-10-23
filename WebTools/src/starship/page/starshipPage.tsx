@@ -523,7 +523,7 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
         if (this.starship && this.starship.spaceframeModel && this.starship.spaceframeModel.isCustom) {
             return this.starship.spaceframeModel;
         } else {
-            return SpaceframeModel.createCustomSpaceframe(character.type, this.props.serviceYear, [ store.getState().context.era ]);
+            return SpaceframeModel.createCustomSpaceframe(character.type, this.props.serviceYear);
         }
     }
 

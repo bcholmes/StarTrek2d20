@@ -246,7 +246,7 @@ class CustomSpaceframeForm extends React.Component<ICustomSpaceframeProperties, 
     }
 
     createSpaceframe() {
-        let result = SpaceframeModel.createCustomSpaceframe(this.props.initialSelection.type, this.state.serviceYear, this.props.initialSelection.eras);
+        let result = SpaceframeModel.createCustomSpaceframe(this.props.initialSelection.type, this.state.serviceYear);
         result.name = this.state.name;
         result.scale = this.state.scale;
         result.systems = this.state.systems;

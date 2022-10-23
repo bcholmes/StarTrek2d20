@@ -5,7 +5,6 @@ import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { ShipBuildType, ShipBuildTypeModel, SimpleStats, Starship } from '../common/starship';
 import { Attribute } from './attributes';
 import { allDepartments, Department } from './departments';
-import { Era } from './eras';
 import { MissionPod, MissionPodHelper } from './missionPods';
 import { MissionProfile, MissionProfileHelper } from './missionProfiles';
 import { Skill } from './skills';
@@ -199,7 +198,7 @@ class Marshaller {
         });
         if (json.spaceframe) {
             if (json.spaceframe.custom) {
-                let frame = SpaceframeModel.createCustomSpaceframe(result.type, json.spaceframe.custom.serviceYear, [Era.Enterprise, Era.NextGeneration, Era.OriginalSeries ]);
+                let frame = SpaceframeModel.createCustomSpaceframe(result.type, json.spaceframe.custom.serviceYear);
                 frame.name = json.spaceframe.custom.name;
                 frame.scale = json.spaceframe.custom.scale;
                 frame.attacks = json.spaceframe.custom.attacks;

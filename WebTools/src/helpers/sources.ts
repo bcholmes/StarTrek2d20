@@ -93,7 +93,7 @@ class Sources {
         [Source.DiscoveryS1S2]: new SourceViewModel(Source.DiscoveryS1S2, SourceType.CrewBook, "Discovery S1/S2"),
         [Source.PicardS1]: new SourceViewModel(Source.PicardS1, SourceType.CrewBook, "Picard S1"),
         [Source.DiscoveryCampaign]: new SourceViewModel(Source.DiscoveryCampaign, SourceType.CampaignBook, "Discovery Campaign"),
-        [Source.UtopiaPlanitia]: new SourceViewModel(Source.UtopiaPlanitia, SourceType.Expansion, "Utopia Planitia", false),
+        [Source.UtopiaPlanitia]: new SourceViewModel(Source.UtopiaPlanitia, SourceType.Expansion, "Utopia Planitia"),
     };
 
     getSources() {
