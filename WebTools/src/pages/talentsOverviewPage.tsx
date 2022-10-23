@@ -87,7 +87,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
                     talents.push(talent);
                 }
             }
-            
+
             return talents;
         }
     }
@@ -95,10 +95,10 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
     render() {
         const talentList = this.selectTalents();
         const talents = talentList.map((t, i) => {
-            const info = t.aliases.map((a) => {
+            const info = t.aliases.map((a, ai) => {
                 return (
-                    <p key={'talent-' + i}><i>The talent is known as </i><b>{a.name}</b><i> in the
-                    </i> {SourcesHelper.getSourceName([a.source])} <i>book.</i></p>
+                    <div className="mt-3" key={'talent-' + ai}><i>The talent is known as </i><b>{a.name}</b><i> in the
+                    </i> {SourcesHelper.getSourceName([a.source], true)} <i>book.</i></div>
                 )
             });
             let prerequsites = undefined;
@@ -202,7 +202,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
     }
 
     private loadTalents() {
-        
+
         const talentsList = TalentsHelper.getTalents();
         for (var i = 0; i < talentsList.length; i++) {
             const talent = talentsList[i];

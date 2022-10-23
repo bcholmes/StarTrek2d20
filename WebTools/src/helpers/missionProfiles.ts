@@ -136,7 +136,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Expanded Connectivity")
             ],
             "Expanded sensor footprint, Prototype",
-            "Used in the adventure \"Plague of Arias\"", 
+            "Used in the adventure \"Plague of Arias\"",
             new SourcePrerequisite(Source.TheseAreTheVoyages)),
         [MissionProfile.Battlecruiser]: new MissionProfileModel(
             MissionProfile.Battlecruiser,
@@ -150,7 +150,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher"),
             ],
             "",
-            "", 
+            "",
             new SourcePrerequisite(Source.DiscoveryCampaign, Source.UtopiaPlanitia)),
         [MissionProfile.ReserveFleet]: new MissionProfileModel(
             MissionProfile.ReserveFleet,
@@ -163,7 +163,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Secondary Reactors"),
             ],
             "",
-            "", 
+            "",
             new SourcePrerequisite(Source.DiscoveryCampaign, Source.UtopiaPlanitia)),
         [MissionProfile.CivilianMerchantMarine]: new MissionProfileModel(
             MissionProfile.CivilianMerchantMarine,
@@ -176,7 +176,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Rugged Design"),
             ],
             "",
-            "", 
+            "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
         [MissionProfile.ColonySupport]: new MissionProfileModel(
             MissionProfile.ColonySupport,
@@ -189,7 +189,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("High-Power Tractor Beam"),
             ],
             "",
-            "", 
+            "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
         [MissionProfile.EntertainmentPleasureShip]: new MissionProfileModel(
             MissionProfile.EntertainmentPleasureShip,
@@ -200,7 +200,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Diplomatic Suites"),
             ],
             "",
-            "", 
+            "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
         [MissionProfile.EspionageIntelligence]: new MissionProfileModel(
             MissionProfile.EspionageIntelligence,
@@ -213,7 +213,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Slim Sensor Silhouette"),
             ],
             "",
-            "", 
+            "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
         [MissionProfile.Flagship]: new MissionProfileModel(
             MissionProfile.Flagship,
@@ -221,12 +221,12 @@ class MissionProfiles {
             [3, 1, 3, 2, 2, 1],
             [
                 TalentsHelper.getTalent("Command Ship"),
-                TalentsHelper.getTalent("Dedicated Subspace Transceiver Arrays"),
+                TalentsHelper.getTalent("Dedicated Subspace Transceiver Array"),
                 TalentsHelper.getTalent("Diplomatic Suites"),
                 TalentsHelper.getTalent("Redundant Systems [Communications]"),
             ],
             "",
-            "", 
+            "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
         [MissionProfile.LogisticalQuartermaster]: new MissionProfileModel(
             MissionProfile.LogisticalQuartermaster,
@@ -238,7 +238,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Rugged Design"),
             ],
             "",
-            "", 
+            "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
         [MissionProfile.Patrol]: new MissionProfileModel(
             MissionProfile.Patrol,
@@ -250,7 +250,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Improved Power Systems"),
             ],
             "",
-            "", 
+            "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
         [MissionProfile.TechnicalTestBed]: new MissionProfileModel(
             MissionProfile.TechnicalTestBed,
@@ -265,9 +265,9 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Improved Warp Drive"),
             ],
             "",
-            "", 
+            "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
-                    
+
     };
 
     private _klingonProfiles: { [id: number]: MissionProfileModel } = {
@@ -365,12 +365,12 @@ class MissionProfiles {
                 MissionProfile.Tactical,
                 MissionProfile.ScientificAndSurvey,
                 MissionProfile.CrisisAndEmergencyResponse,
-                MissionProfile.MultiroleExplorer, 
+                MissionProfile.MultiroleExplorer,
                 MissionProfile.ProjectEscalante,
                 MissionProfile.Battlecruiser,
                 MissionProfile.ReserveFleet ];
         }
-        
+
         for (let i in keys) {
             let n = keys[i];
             let profile = (type === CharacterType.KlingonWarrior) ? this._klingonProfiles[n] : this._profiles[n];

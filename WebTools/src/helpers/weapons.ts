@@ -98,7 +98,7 @@ export class EnergyLoadTypeModel {
     }
 }
 
-const centuryToYear = (century: number) => {
+export const centuryToYear = (century: number) => {
     return (century - 1) * 100;
 }
 

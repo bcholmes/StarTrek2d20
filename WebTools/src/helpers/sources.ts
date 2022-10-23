@@ -29,7 +29,7 @@ export enum SourceType {
     CoreBook,
     DivisionBook,
     QuadrantBook,
-    CrewBook, 
+    CrewBook,
     CampaignBook,
     Expansion,
     Misc
@@ -68,7 +68,7 @@ class Sources {
         new SourceTypeModel(SourceType.CampaignBook, "Campaign Books"),
         new SourceTypeModel(SourceType.Expansion, "Major Expansion Books"),
         new SourceTypeModel(SourceType.Misc, "Misc/Other Books"),
-        
+
     ];
 
     private _sources: { [id: number]: SourceViewModel } = {
@@ -114,12 +114,12 @@ class Sources {
         return this.types;
     }
 
-    getSourceName(sources: Source[]) {
+    getSourceName(sources: Source[], alwaysShow: boolean = false) {
         let result = "";
-        sources.forEach((s) => { 
-            if (s !== Source.None && this._sources[s].available) {
+        sources.forEach((s) => {
+            if (s !== Source.None && (this._sources[s].available || alwaysShow)) {
                 result = (result === "") ? this._sources[s].name : (result + ", " + this._sources[s].name);
-            } 
+            }
         });
         return result;
     }

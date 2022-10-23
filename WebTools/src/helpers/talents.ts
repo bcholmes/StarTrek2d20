@@ -10,6 +10,8 @@ import { Species } from './speciesEnum';
 import { Construct } from '../common/construct';
 import { Starship } from '../common/starship';
 import store from '../state/store';
+import { centuryToYear } from './weapons';
+import { Spaceframe } from './spaceframeEnum';
 
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
 
@@ -276,6 +278,7 @@ class AnyOfPrerequisite implements ITalentPrerequisite<Construct> {
         return result;
     }
     describe(): string {
+
         return "";
     }
 }
@@ -408,7 +411,7 @@ class ServiceYearPrerequisite implements ITalentPrerequisite<Starship> {
         return s != null && s.serviceYear >= this.year;
     }
     describe(): string {
-        return "";
+        return "" + this.year + " or later";
     }
 }
 
@@ -442,6 +445,69 @@ class SpaceframePrerequisite implements ITalentPrerequisite<Starship> {
     }
 }
 
+class CenturyPrerequisite implements ITalentPrerequisite<Starship> {
+    private century: number;
+    private toCentury?: number;
+
+    constructor(century: number, toCentury?: number) {
+        this.century = century;
+    }
+
+    isPrerequisiteFulfilled(s: Starship) {
+        let year = centuryToYear(this.century);
+        if (this.toCentury == null) {
+            return s != null && s.serviceYear != null && s.serviceYear > year;
+        } else {
+            let toYear = centuryToYear(this.toCentury + 1) + 1;
+            return s != null && s.serviceYear != null && s.serviceYear > year && s.serviceYear < toYear;
+        }
+    }
+    describe(): string {
+        if (this.toCentury == null) {
+            return "" + this.addSuffix(this.century) + " century or later";
+        } else {
+            return "" + this.addSuffix(this.century) + " century to " + this.addSuffix(this.toCentury) + " century.";
+        }
+    }
+
+    addSuffix(century: number) {
+        let lastDigit = century.toString().substring(century.toString().length - 1);
+        if (lastDigit === '1') {
+            return this.century + "st";
+        } else if (lastDigit === '2') {
+            return this.century + "nd";
+        } else if (lastDigit === '3') {
+            return this.century + "rd";
+        } else {
+            return this.century + "th";
+        }
+    }
+}
+
+class AllOfPrerequisite implements ITalentPrerequisite<Construct> {
+    private prequisites: ITalentPrerequisite<Construct>[];
+
+    constructor(...prequisites: ITalentPrerequisite<Construct>[]) {
+        this.prequisites = prequisites;
+    }
+
+    isPrerequisiteFulfilled(c: Construct) {
+        if (this.prequisites.length === 0) {
+            return true;
+        } else {
+            let result = true;
+            this.prequisites.forEach(req => {
+                result = result && req.isPrerequisiteFulfilled(c);
+            });
+            return result;
+        }
+    }
+
+    describe(): string {
+        let temp = this.prequisites.map(p => "(" + p.describe() + ")");
+        return temp.join(" and ");
+    }
+}
 class SpaceframesPrerequisite implements ITalentPrerequisite<Starship> {
     private frames: number[];
 
@@ -2555,10 +2621,10 @@ export class Talents {
                 "Starship"),
             new TalentModel(
                 "Advanced Sickbay",
-                "The ship’s sickbay is extremely well-equipped, and larger than is normal for a ship of this size. The ship gains the Advanced Sickbay Advantage, which applies to all Tasks related to medicine and biology performed within the sickbay itself. This Advantage is lost if the ship’s Computers System is Disabled.",
-                [new StarshipPrerequisite(), new NotCharacterTypePrerequisite(CharacterType.KlingonWarrior)],
+                "The ship’s medical ward or sickbay is well equipped, and larger than normal for a ship of this size. The ship gains the Advanced Medical Ward or Advanced Sickbay advantage, which applies to all tasks related to medicine and biology performed within the ward or sickbay. This advantage is lost if the ship’s Computers system is disabled.",
+                [new StarshipPrerequisite()],
                 1,
-                "Starship"),
+                "Starship", new AliasModel("Advanced Medical Ward/Sickbay", Source.UtopiaPlanitia), new AliasModel("Advanced Medical Ward", Source.KlingonCore)),
             new TalentModel(
                 "Backup EPS Conduits",
                 "The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of an emergency, keeping it from being lost when the ship is damaged. Whenever the ship would lose one or more Power because of suffering damage, roll [D] for each Power lost. Each Effect rolled prevents the loss of that point of Power.",
@@ -2593,7 +2659,7 @@ export class Talents {
                 "Extensive Shuttlebays",
                 "The vessel’s shuttlebays are large, well-supplied, and able to support a larger number of active shuttle missions simultaneously. The ship may have twice as many small craft active at any one time as it would normally allow, and it may carry up to two Scale 2 small craft.",
                 [new StarshipPrerequisite()],
-                5,
+                99,
                 "Starship"),
             new TalentModel(
                 "Fast Targeting Systems",
@@ -2623,7 +2689,7 @@ export class Talents {
                 "Improved Impulse Drive",
                 "The ship’s Impulse drives are more powerful than on most ships, allowing the ship to accelerate much more quickly. When the flight controller succeeds at the Impulse, Attack Pattern, Evasive Action, or Ramming Speed Tasks, they may spend 2 Momentum to increase the Difficulty of attacks against the ship by 1 until the start of the flight controller’s next Turn, due to the ship’s rapid acceleration.",
                 [new StarshipPrerequisite()],
-                1,
+                2,
                 "Starship"),
             new TalentModel(
                 "Improved Power Systems",
@@ -2647,7 +2713,7 @@ export class Talents {
                 "Improved Warp Drive",
                 "The ship’s warp drive is more efficient, capitalizing on improved field dynamics, better control of antimatter flow rates, or some other advancement that allows the ship to expend less energy when travelling at warp. Whenever the ship spends power to go to warp, roll 1 for each Power spent; for each Effect rolled, that point of Power is not spent.",
                 [new StarshipPrerequisite()],
-                5,
+                99,
                 "Starship"),
             new TalentModel(
                 "Modular Laboratories",
@@ -2682,7 +2748,7 @@ export class Talents {
             new TalentModel(
                 "Saucer Separation",
                 "The ship is designed so that the saucer section can be separated from the engineering section, to operate as two distinct ships. Each section has the same Systems, Departments, Talents, and weapons, but their Scale is one lower than the whole ship (recalculate anything derived from Scale), and each section only has half the Power (round down) that the ship had before separation. Further, if the ship has suffered any damage, ongoing effects of that damage apply equally to both sections. The saucer section, which contains the crew quarters and recreational areas, does not have the capacity to go to warp.",
-                [new StarshipPrerequisite(), new SpaceframePrerequisite(8)],
+                [new StarshipPrerequisite(), new AnyOfPrerequisite(new SpaceframePrerequisite(Spaceframe.Galaxy), new GMsDiscretionPrerequisite())],
                 1,
                 "Starship"),
             new TalentModel(
@@ -2694,49 +2760,49 @@ export class Talents {
             new TalentModel(
                 "Captain’s Yacht",
                 "The vessel has a single additional support craft, normally mounted in a dedicated port under the saucer section of the ship. These craft, larger than most shuttles, are often used for diplomatic missions and special excursions by the commanding officer, and are often known as the Captain’s Yacht (though not always; some Intrepid-class vessels have a similar craft called an aeroshuttle). The ship has one additional Small Craft, which does not count against the number which may be active at any one time.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
                 1,
                 "Starship"),
             new TalentModel(
                 "Dedicated Personnel (Command)",
                 "The ship gains two additional Crew Support, which may only be used to establish Supporting Characters who are part of the Command department.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
                 1,
                 "Starship"),
             new TalentModel(
                 "Dedicated Personnel (Conn)",
                 "The ship gains two additional Crew Support, which may only be used to establish Supporting Characters who are part of the Conn department.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
                 1,
                 "Starship"),
             new TalentModel(
                 "Dedicated Personnel (Security)",
                 "The ship gains two additional Crew Support, which may only be used to establish Supporting Characters who are part of the Security department.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
                 1,
                 "Starship"),
             new TalentModel(
                 "Dedicated Personnel (Engineering)",
                 "The ship gains two additional Crew Support, which may only be used to establish Supporting Characters who are part of the Engineering department.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
                 1,
                 "Starship"),
             new TalentModel(
                 "Dedicated Personnel (Science)",
                 "The ship gains two additional Crew Support, which may only be used to establish Supporting Characters who are part of the Science department.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
                 1,
                 "Starship"),
             new TalentModel(
                 "Dedicated Personnel (Medicine)",
                 "The ship gains two additional Crew Support, which may only be used to establish Supporting Characters who are part of the Medicine department.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
                 1,
                 "Starship"),
             new TalentModel(
                 "High-Power Tractor Beam",
                 "The ship’s tractor beam systems channel far greater quantities of power and exert much more force on the target. The ship’s tractor beam has a strength two higher than normal. Further, the ship may spend Power whenever a target attempts to escape the tractor beam to increase its strength for that attempt; the strength increases by 1 for every two Power spent.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
                 2,
                 "Starship"),
             new TalentModel(
@@ -2748,13 +2814,13 @@ export class Talents {
             new TalentModel(
                 "Polarized Hull Plating",
                 "The ship does not have deflector shielding, but rather is equipped with layers of hull plating that can be polarized to resist attack. This functions in the same way as Shields do, with one difference: the ship suffers a Breach if four or more damage is suffered after deductions for Resistance.",
-                [new StarshipPrerequisite(), new MaxServiceYearPrerequisite(2199), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarshipPrerequisite(), new MaxServiceYearPrerequisite(2199), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
                 1,
                 "Starship"),
             new TalentModel(
                 "Grappler Cables",
                 "This precursor to tractor beams uses sturdy cables and magnetic grapplers to grab on to objects and ships. This functions as a tractor beam, but if the target breaks free, roll 1[D] — on an Effect, the cables have been Damaged and cannot be used again until repaired.",
-                [new StarshipPrerequisite(), new MaxServiceYearPrerequisite(2199), new SourcePrerequisite(Source.CommandDivision)],
+                [new StarshipPrerequisite(), new MaxServiceYearPrerequisite(2199), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
                 1,
                 "Starship"),
             new TalentModel(
@@ -2766,13 +2832,7 @@ export class Talents {
             new TalentModel(
                 "Nuclear Warheads",
                 "The vessel is equipped with nuclear warheads in addition to its spatial torpedoes.",
-                [new StarshipPrerequisite(), new MaxServiceYearPrerequisite(2199), new SpaceframesPrerequisite([5,17]), new SourcePrerequisite(Source.CommandDivision)],
-                1,
-                "Starship"),
-            new TalentModel(
-                "Advanced Medical Ward",
-                "The ship’s medical ward is extremely well-equipped, and larger than is normal for a ship of this size. The ship gains the Advanced Medical Ward Advantage, which applies to all Tasks related to medicine and biology performed within the ward itself. This Advantage is lost if the ship’s Computers System is Disabled.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.KlingonCore), new CharacterTypePrerequisite(CharacterType.KlingonWarrior)],
+                [new StarshipPrerequisite(), new MaxServiceYearPrerequisite(2199), new SpaceframesPrerequisite([Spaceframe.Daedalus, Spaceframe.NX]), new SourcePrerequisite(Source.CommandDivision)],
                 1,
                 "Starship"),
             new TalentModel(
@@ -2793,6 +2853,170 @@ export class Talents {
                 [new StarshipPrerequisite(), new SourcePrerequisite(Source.DiscoveryCampaign)],
                 1,
                 "Starship"),
+            new TalentModel(
+                "Ablative Armor Generator",
+                "The ship is fitted with a number of external replicators pre-set to materialize an outer layer of armor plating over the hull, reinforced with structural integrity fields that make it extraordinarily resilient. When the ship raises its Shields, it may deploy armor instead, by spending 3 Power. This increases the maximum Shields capacity by 5 and increases the ship’s Resistance by 3. While armor is deployed, the Modulate Shields and Regenerate Shields actions cannot be taken – the armor cannot be fine-tuned in those ways.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new CenturyPrerequisite(25)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Ablative Field Projector",
+                "The ship’s shield emitters are combined with an ablative field projector that allows its graviton field to be shared with another target in Close range. These projectors charge the target’s shields while dissipating its own. Doing so requires a Difficulty 1 Control + Security task. On a success, your ship loses 1 Shield point and the target gains 1 Shield point. This process can be repeated any number of times by spending 1 Momentum for each swap.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new CenturyPrerequisite(25)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Adaptable Energy Weapons",
+                "The ship’s weapon delivery systems are enhanced by multiparticle emitters. These emitters allow for the ship’s energy weapon capabilities to be modified when fired. If desired, before an attack is rolled, the ship’s weapon’s Stress Rating is reduced by 1[D], but the officer making the attack roll may swap out any one Stress effect for another.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new CenturyPrerequisite(24)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Advanced Emergeny Crew Holograms",
+                "The starship has the entirety of its interior spaces and some critical areas on its exterior outfitted with holoemitters, allowing the computer to project simulated personnel during emergencies. The ship has a number of holographic supporting characters (which should be pre-created) equal to half the ship’s Computers score, rounding up; their appearance and personality are determined when the ship is created. These can be activated or deactivated as a minor action, and they do not require any Crew Support to appear. They cannot operate away from the ship, and they do not improve when introduced in subsequent adventures.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new ServiceYearPrerequisite(2380)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Advanced Transporters",
+                "The ship is outfitted with dozens of transporter emitter array pads, allowing targeting scanners to lock on to their targets and destination more easily. While accurate, this system is Power intensive. The Difficulty of all transporter tasks are decreased by 1. The Power requirement of all transporter tasks is increased by 1.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new CenturyPrerequisite(24), new DepartmentPrerequisite(Department.Science, 4)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Annular Confinement Jacketing",
+                "The ship’s energy weapon emitters create an annular confinement beam around its energy beams, allowing the weapons to fire short distances at warp speeds. The ship may make an attack with its energy weapons at Close range while at warp; however, the Difficulty for the attack is increased by 2.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new CenturyPrerequisite(22, 23)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Automated Defenses",
+                "The ship’s weapons systems can automatically lock on to a target and fire. At the end of a combat round, if nobody fired a ship weapon, the ship may make an unassisted energy weapon attack using its Weapons + Security against a target. Momentum may be used and generated as normal for this attack.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new CenturyPrerequisite(23), new DepartmentPrerequisite(Department.Security, 3)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Automated Return",
+                "The ship’s computer is programmed to recognize a starbase, colony, or some other location as its home base. The shuttles on board have the same programming and recognize the ship as their home base. If the ship’s Computers system goes for 10 days without commands from the crew, it will automatically pilot the ship back to the home base at maximum impulse.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new CenturyPrerequisite(23)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Cloaked Mines",
+                "The ship’s mines are equipped with state-of-the-art cloaking technology, making them almost impossible to detect. Mines that the ship places have the Hidden 2 Weapon Quality.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new DepartmentPrerequisite(Department.Security, 3)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Cloaking Device",
+                "The vessel has a device that allows it to vanish from sensors. Operating the device requires a Control + Engineering task with a Difficulty of 2, assisted by the ship’s Engines + Security as this is a task from the tactical position. This task has a Power requirement of 3. If successful, the vessel gains the Cloaked trait. While cloaked, the vessel cannot attempt any attacks, nor can it be the target of an attack unless the attacker has found some way of detecting the cloaked vessel. While cloaked, a vessel’s shields are down. It requires a minor action to decloak a vessel.",
+                [new StarshipPrerequisite(), new AnyOfPrerequisite(
+                    new AllOfPrerequisite(new ServiceYearPrerequisite(2272), new SourcePrerequisite(Source.KlingonCore)),
+                    new AllOfPrerequisite(new GMsDiscretionPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)))],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Dedicated Subspace Transceiver Array",
+                "A starship with this talent has a section of its hull that slides away where a long, tether-like subspace transceiver array can be deployed to enhance the vessel’s communication range and clarity, even at warp. Any tasks involving sending, receiving, or intercepting subspace or standard EM communications have their Difficulty reduced by 1.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Deluxe Galley",
+                "The ship’s mess hall is equipped with top-of-the-line food preparation systems as well as vast stores of non- replicated food. Whenever the ship’s cook or chef uses their role ability while in the ship’s galley, they generate 1 additional Momentum. In addition, whenever a crew member meets with a guest of the ship in the galley, they gain the Fine Dining advantage, which comes into play with all Presence and Command tasks.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Dual Environment",
+                "The ship is outfitted with redundant system rooms that can be filled with gases or liquids that allow crew members requiring different atmospheric conditions to work side by side with the rest of the crew. In addition, passages that can be filled with the necessary liquids or gases run parallel to all passages in the ship, allowing these crew members to move freely throughout. A character who is in a redundant system room may assist others in the connected system room as if they were in the same room.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Expanded Munitions",
+                "The ship has been designed to defend itself from all manner of threats. As such, it has either additional energy delivery systems or extended storage for torpedoes or mines. The ship may add any one weapon to its profile. This talent may be taken multiple times, adding a different weapon each time. Any prerequisites for the weapon or its delivery system still apply.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Expansive Department",
+                "This talent represents a highly-focused starship with many specialists in their field working closely together to perform tasks at peak efficiency. This talent must be taken for a starship to have a department score of 6 through application of a mission profile or through game events and player actions. Starbases do not need this talent to have a department above 5. All tasks that include this Expansive Department have a target number calculated as normal. Whenever the ship assists a task using this department, or performs a task on its own using this department, the ship may re-roll a d20.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "High-Resolution Sensors",
+                "The vessel’s sensors can gain large amounts of accurate data, though they are extremely sensitive. While the vessel is not in combat, any successful task that is assisted by the ship’s Sensors gains one bonus Momentum.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Independent Phaser Supply",
+                "Common prior to the 2270s, the ship’s phasers use an independent power supply rather than drawing directly from the ship’s other power sources. Attacking with the ship’s phasers no longer has a Power requirement. However, the ship may not spend additional Power to boost the effectiveness of an attack with its energy weapons.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Multi-Vector Assualt Mode",
+                "Like the Saucer Separation talent, Multi-Vector Assault Mode changes the statistics of the ship as it splits apart into three distinct sections. Each section has the same systems and departments scores as the original fully integrated starship, but each individual section has only one third the power (divide original Power rating by 3, rounding down) that it originally hadd and each of the sections has a Scale 1 less than the original starship. Starships that wish to take this talent must also have the Redundant Systems (Propulsion) talent. All energy weapons’ Stress ratings for each section is one less due to the reduction in Scale. Separating the starship into three sections (Command and two attack sections) requires a Control + Conn task with a Difficulty of 2, assisted by the ship’s Structure + Engineering. Reconnecting the separate sections requires the same task as separation, but done twice. Sections may not disconnect or reconnect if the Structure of any section of the ship, or the ship as a whole, has been damaged or disabled.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Point Defense System",
+                "The ship is equipped with a system of small energy weapon emitters that operates independently from the main weapons systems. When a torpedo targets the ship, these emitters start firing in the direction it is traveling from, potentially destroying it before it impacts the shields or the ship’s hull. This system only works at subwarp speeds. The ship is considered to have Cover 2[D] against torpedo attacks.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new DepartmentPrerequisite(Department.Security, 3)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Regenerative Hull",
+                "The ship’s hull is infused with reverse-engineered Borg nanite technology that seeks out and repairs the hull immediately when it is damaged, often preventing a breach before it can happen. The amount of Stress needed for the ship to sustain a breach is increased by 1.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new CenturyPrerequisite(25)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Self-Replicating Mines",
+                "The ship carries mines that are capable of replicating themselves over time, allowing for a more thorough spread filling the area they’re deployed in. The Difficulty of any task made to avoid the mines does not reduce when mines are detonated.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new ServiceYearPrerequisite(2371), new DepartmentPrerequisite(Department.Security, 4)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Siphoning Shields",
+                "The vessel’s shield emitters are connected to a network of particle siphons that capture some of the energy released when hit by an energy weapon, channeling it back into the shields. When the ship is hit by an energy weapon, after Stress is rolled, roll 1[D] for each point of Shields lost, then regain a number of Shield points equal to the number of effects rolled.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Slim Sensor Silhouette",
+                "Through a combination of advanced alloys, EM shielding, and electronic countermeasures, the starship is difficult to detect via electromagnetic radiation and subspace sensors. While not a true cloaking device, these vessels can sneak into star systems entirely undetected. Like a cloaking device, utilizing the EM shielding and ECM systems on board requires a Control + Engineering task with a Difficulty of 2. If this task is successful, the maximum Power rating of the ship is reduced by 2 to represent the power usage of the systems and “running silent,” and shields are deactivated. All tasks to detect the stealthy starship have their Difficulty increased by 1. There are no restrictions on weapons fire from the ship using this talent.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Tachyon Detection Field",
+                "The ship is equipped with a field generator that projects a cloud of tachyons around it. Activating the field generator requires a Control + Engineering task with a Difficulty of 2, assisted by the ship’s Sensors + Science, and has a Power requirement of 2. The field remains active until the ship moves. While the field is active, the ship is notified of any cloaked vessels that are within or pass into Close range. The ship may attack a cloaked target within the field, though the Difficulty for the attack is increased by 2.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new CenturyPrerequisite(25), new DepartmentPrerequisite(Department.Science, 3)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Variable Geometry Warp Field",
+                "An extension of the variable pitch warp nacelles seen on the Intrepid class and the warp vector technology found on many Vulcan-designed starships, a ship with a variable geometry warp field can adjust its subspace field in highly turbulent spacetime and can continue to provide propulsive force even then. These vessels provide the advantage of Variable Geometry Warp Field in any scene involving a disadvantage related to difficulties forming or maintaining a stable warp field.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Versatile Tractor Beam",
+                "The ship has exotic particle emitters integrated with its tractor beam system. With a few simple adjustments, the tractor beam can become even more useful against ships trapped within. When the tractor beam is activated, the operator may choose to add one of the following effects: Depleting: At the end of each round a target remains within the tractor beam, it loses 1 Shield. Draining: At the end of each round a target remains within the tractor beam, it loses 1 Power.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new CenturyPrerequisite(25)],
+                1,
+                "Starship"),
+            new TalentModel(
+                "Wormhole Relay System",
+                "The ship has an additional sensor system outfitted with high-energy transceivers, verteron sensors, and neutrino sensors. These sensors, combined with field-generation devices, allow the ship to send and receive data streams through wormholes. The Difficulty of all Science tasks to send or receive data through a wormhole is reduced by 2 to a minimum of 0.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new ServiceYearPrerequisite(2371)],
+                1,
+                "Starship"),
 
 
 
@@ -2800,19 +3024,19 @@ export class Talents {
                 "Docking Capacity",
                 "The station has additional ports and pylons that allow it to support a greater number of docked vessels as well as larger vessels than would normally be the case. The starbase has a number of docking ports equal to one-and-a-half times its Scale (rounding down), instead of half its Scale. The maximum Scale of any ship that may dock at the station is increased by 2.",
                 [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
-                5,
+                99,
                 "Starbase"),
             new TalentModel(
                 "Drydock",
                 "A space station with this talent has facilities that can assist in construction or repair of starships, including the fabrication facilities for equipment, and limited refining capabilities for producing alloys from raw material. Space stations with this talent provide an advantage called Drydock that applies to all repairs and construction tasks involved with starships docked to it.",
                 [new StarbasePrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
-                5,
+                99,
                 "Starbase"),
             new TalentModel(
                 "Enhanced Defense Grid",
                 "The station’s Shields are increased by an amount equal to half the station’s Scale.",
                 [new StarbasePrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
-                5,
+                99,
                 "Starbase"),
             new TalentModel(
                 "Firebase",
@@ -2843,6 +3067,12 @@ export class Talents {
 
     private _specialRules: TalentModel[] = [
         new TalentModel(
+            "Additional Propulsion System",
+            "The vessel includes an additional, non-standard form of propulsion, such as Transwarp or Quantum Slipstream Drive.",
+            [new StarshipPrerequisite(), new ServiceYearPrerequisite(2272), new SourcePrerequisite(Source.KlingonCore)],
+            1,
+            "Starship"),
+        new TalentModel(
             "Cloaking Device",
             "The vessel has a device that allows it to vanish from sensors. Operating the device requires a Control + Engineering task with a Difficulty of 2, assisted by the ship’s Engines + Security as this is a task from the tactical position. This task has a Power requirement of 3. If successful, the vessel gains the Cloaked trait. While cloaked, the vessel cannot attempt any attacks, nor can it be the target of an attack unless the attacker has found some way of detecting the cloaked vessel. While cloaked, a vessel’s shields are down. It requires a minor action to decloak a vessel.",
             [new StarshipPrerequisite(), new ServiceYearPrerequisite(2272), new SourcePrerequisite(Source.KlingonCore)],
@@ -2858,6 +3088,12 @@ export class Talents {
             "Expanded Connectivity",
             "Extensive user-interface reworking has been done throughout the ship. Due to this any Override actions taken, where an action is taken from a different station on the bridge, can be attempted with no penalty.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.TheseAreTheVoyages)],
+            1,
+            "Starship"),
+        new TalentModel(
+            "Linked Fire Control",
+            "The spaceframe gains an advantage \"Linked Fire Control\" that applies to fleet combat as determined by the gamemaster, reducing the complication range on weapons fire.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
             1,
             "Starship"),
         new TalentModel(
