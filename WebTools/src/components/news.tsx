@@ -11,6 +11,19 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.221023</b>
+                <ul>
+                    <li>Add the new spaceframes from <cite>Utopia Planitia</cite> and make that sourcebook available so
+                        that users can select it.
+                        Note, however, that there are some important parts of the <cite>Utopia Planitia</cite> book that
+                        are not yet implemented:
+                        <ul>
+                            <li>alternative stats for previously-published spaceframes;</li>
+                            <li>new rules for creating custom spaceframes; and</li>
+                            <li>pretty much everything involving Starbases.</li>
+                        </ul>
+                    </li>
+                </ul>
                 <b>v1.221016</b>
                 <ul>
                     <li>A few minor fixes and improvements, including adding a resistance field to the Klingon starship sheet</li>
@@ -44,7 +57,7 @@ class News extends React.Component<INewsProperties, {}> {
                     <li>I've been doing some (not yet visible) work to support the new <cite>Utopia Planetia</cite> sourcebook. Some
                         long-standing questions have been resolved by <cite>Utopia Planetia</cite>, including a hotly-debated question of whether
                         or not the Luna class is meant to have a mission pod. The answer is yes, and this version of the code recognizes that.</li>
-                    <li>Jim posted a correction, on the Modiphius forums, for the "inner worlds" table of the <cite>Shackleton Expanse</cite>
+                    <li>Jim posted a correction, on the Modiphius forums, for the "inner worlds" table of the <cite>Shackleton Expanse</cite> {' '}
                         (in the printed book, the inner worlds table is a repeat of the outer worlds table.) I've plonked that table into
                         the system generator.</li>
                     <li>I continue to add more spaceframe outlines.</li>
@@ -114,27 +127,6 @@ class News extends React.Component<INewsProperties, {}> {
                     <li>Implement a bookmarkable "view" page for creations. At the moment, this view is only available for
                         ships and supporting characters, but it'll be available for main characters in the not-too-distant future.
                     </li>
-                </ul>
-                <b>v1.220323</b>
-                <ul>
-                    <li>I've been implementing some new features that I'm not yet ready to make public. But one of the things that's changed is
-                        that the code now makes a lot more use of a new library (Bootstrap) for web display. Some layout and sizes of things have
-                        shifted a bit. If you see something eggregiously bad, make noise in the Feedback area.
-                    </li>
-                </ul>
-                <b>v1.220319</b>
-                <ul>
-                    <li>Implement Child character creation from the <cite>Player's Guide</cite></li>
-                    <li>Fix a whole host of minor transcription bugs related to Talents, thanks to the diligent reporting of Felderburg.</li>
-                </ul>
-                <b>v1.220220</b>
-                <ul>
-                    <li>The complete list of Player's Guide talents are now supported.</li>
-                </ul>
-                <b>v1.220213</b>
-                <ul>
-                    <li>Even more functionality from the <cite>Player's Guide</cite> added (Civilian characters, additional roles, and some Talents)</li>
-                    <li>Add a new type of character sheet, and make certain improvements to rendering full talent text on sheets.</li>
                 </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>
