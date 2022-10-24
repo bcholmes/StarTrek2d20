@@ -349,56 +349,16 @@ class MissionProfiles {
 
     getMissionProfiles(type: CharacterType) {
         let profiles: MissionProfileModel[] = [];
-        let keys = [];
-        if (type === CharacterType.KlingonWarrior) {
-            keys = [ MissionProfile.CrisisAndEmergencyResponse,
-                MissionProfile.MultiroleExplorer,
-                MissionProfile.PathfinderAndReconaissance,
-                MissionProfile.ScientificAndSurvey,
-                MissionProfile.StrategicAndDiplomatic,
-                MissionProfile.Tactical,
-                MissionProfile.HouseGuard,
-                MissionProfile.Battlecruiser,
-                MissionProfile.ReserveFleet,
-                MissionProfile.CivilianMerchantMarine,
-                MissionProfile.ColonySupport,
-                MissionProfile.EntertainmentPleasureShip,
-                MissionProfile.EspionageIntelligence,
-                MissionProfile.Flagship,
-                MissionProfile.LogisticalQuartermaster,
-                MissionProfile.Patrol,
-                MissionProfile.Warship,
-                MissionProfile.TechnicalTestbed ];
-        } else {
-            keys = [ MissionProfile.StrategicAndDiplomatic,
-                MissionProfile.PathfinderAndReconaissance,
-                MissionProfile.TechnicalTestBed,
-                MissionProfile.Tactical,
-                MissionProfile.ScientificAndSurvey,
-                MissionProfile.CrisisAndEmergencyResponse,
-                MissionProfile.MultiroleExplorer,
-                MissionProfile.ProjectEscalante,
-                MissionProfile.Battlecruiser,
-                MissionProfile.ReserveFleet,
-                MissionProfile.CivilianMerchantMarine,
-                MissionProfile.ColonySupport,
-                MissionProfile.EntertainmentPleasureShip,
-                MissionProfile.EspionageIntelligence,
-                MissionProfile.Flagship,
-                MissionProfile.LogisticalQuartermaster,
-                MissionProfile.Patrol,
-                MissionProfile.Warship,
-                MissionProfile.TechnicalTestbed ];
-        }
-
-        for (let i in keys) {
-            let n = keys[i];
-            let profile = (type === CharacterType.KlingonWarrior) ? this._klingonProfiles[n] : this._profiles[n];
-
+        let list = (type === CharacterType.KlingonWarrior) ? this._klingonProfiles : this._profiles;
+        for (let [key, profile] of Object.entries(list)) {
             if (profile && profile.isPrerequisitesFulfilled()) {
                 profiles.push(profile);
             }
-        }
+        };
+
+        profiles.sort((p1, p2) => {
+            return p1.name.localeCompare(p2.name);
+        })
 
         return profiles;
     }

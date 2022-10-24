@@ -13,6 +13,10 @@ class News extends React.Component<INewsProperties, {}> {
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
                 <b>v1.221023</b>
                 <ul>
+                    <li>Bug fixes regarding Mission Profiles.</li>
+                </ul>
+                <b>v1.221023</b>
+                <ul>
                     <li>Add the new spaceframes from <cite>Utopia Planitia</cite> and make that sourcebook available so
                         that users can select it.
                         Note, however, that there are some important parts of the <cite>Utopia Planitia</cite> book that
