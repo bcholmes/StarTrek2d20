@@ -195,7 +195,9 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
         if (this.starship.missionProfileModel !== undefined) {
             this.starship.missionProfileModel.talents
                 .forEach(t => {
-                    if (spaceframeTalents.indexOf(t.name) === -1) {
+                    if (!t.isSourcePrerequisiteFulfilled(this.starship)) {
+                        // skip it
+                    } else if (spaceframeTalents.indexOf(t.name) === -1) {
                         talents.push(ToViewModel(t));
                     } else {
                         talents.push(ToViewModel(t, 2));
@@ -505,7 +507,7 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
             return (<CustomSpaceframeForm
                 initialSelection={this.createOrReuseCustomSpaceframe()} onComplete={(s) => { this.onSpaceframeSelected(s); this.closeModal() }} />);
         } else if (name === 'missionProfile') {
-            return (<MissionProfileSelection type={character.type}
+            return (<MissionProfileSelection type={character.type} starship={this.starship}
                 initialSelection={this.starship.missionProfileModel} onSelection={(m) => { this.onMissionProfileSelected(m); this.closeModal() }} />);
         } else if (name === 'missionPod') {
             return (<MissionPodSelection starship={this.starship}

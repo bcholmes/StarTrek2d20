@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { CharacterType } from '../../common/characterType';
+import { Starship } from '../../common/starship';
 import { CheckBox } from '../../components/checkBox';
 import { Department } from '../../helpers/departments';
 import { MissionProfileHelper, MissionProfileModel } from '../../helpers/missionProfiles';
@@ -8,15 +9,21 @@ import { MissionProfileHelper, MissionProfileModel } from '../../helpers/mission
 interface IMissionProfileSelectionProperties {
     type: CharacterType;
     initialSelection?: MissionProfileModel;
+    starship: Starship;
     onSelection: (s: MissionProfileModel) => void;
 }
 
 class MissionProfileSelection extends React.Component<IMissionProfileSelectionProperties, {}> {
 
     render() {
+        const starship = this.props.starship;
         const missionProfiles = MissionProfileHelper.getMissionProfiles(this.props.type).map((m, i) => {
             const talents = m.talents.map((t, ti) => {
-                return (<div key={ti} style={{ padding: "2px"}}>{t.name}</div>);
+                if (t.isSourcePrerequisiteFulfilled(starship)) {
+                    return (<div key={ti} style={{ padding: "2px"}}>{t.name}</div>);
+                } else {
+                    return undefined;
+                }
             });
             const notes = m.notes !== "" ? (<div className="p-1">{m.notes}</div>) : undefined;
 

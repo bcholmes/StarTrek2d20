@@ -598,6 +598,16 @@ export class TalentModel {
         return include;
     }
 
+    isSourcePrerequisiteFulfilled(c: Construct) {
+        let include = true;
+        this.prerequisites.forEach((p, i) => {
+            if (p instanceof SourcePrerequisite && !p.isPrerequisiteFulfilled(c)) {
+                include = false;
+            }
+        });
+        return include;
+    }
+
     nameForSource(source: Source) {
         let result = this.name;
         for (let a of this.aliases) {

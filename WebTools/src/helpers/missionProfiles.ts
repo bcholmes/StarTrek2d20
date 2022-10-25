@@ -23,8 +23,7 @@ export enum MissionProfile {
     Flagship,
     LogisticalQuartermaster,
     Patrol,
-    Warship,
-    TechnicalTestbed,
+    Warship
 }
 
 export class MissionProfileModel {
@@ -80,6 +79,7 @@ class MissionProfiles {
             "Technical Test-Bed",
             [1, 2, 2, 3, 2, 2],
             [
+                TalentsHelper.getTalent("Additional Propulsion System"),
                 TalentsHelper.getTalent("Advanced Shields"),
                 TalentsHelper.getTalent("Backup EPS Conduits"),
                 TalentsHelper.getTalent("High Resolution Sensors"),
@@ -251,23 +251,7 @@ class MissionProfiles {
             ],
             "",
             "",
-            new SourcePrerequisite(Source.UtopiaPlanitia)),
-        [MissionProfile.TechnicalTestBed]: new MissionProfileModel(
-            MissionProfile.TechnicalTestBed,
-            "Technical Test Bed",
-            [1, 2, 2, 3, 2, 2],
-            [
-                TalentsHelper.getTalent("Additional Propulsion System"),
-                TalentsHelper.getTalent("Advanced Shields"),
-                TalentsHelper.getTalent("Backup EPS Conduits"),
-                TalentsHelper.getTalent("High Resolution Sensors"),
-                TalentsHelper.getTalent("Improved Power Systems"),
-                TalentsHelper.getTalent("Improved Warp Drive"),
-            ],
-            "",
-            "",
-            new SourcePrerequisite(Source.UtopiaPlanitia)),
-
+            new SourcePrerequisite(Source.UtopiaPlanitia))
     };
 
     private _klingonProfiles: { [id: number]: MissionProfileModel } = {
