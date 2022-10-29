@@ -84,8 +84,8 @@ class MissionPods {
             MissionPod.AstrometricsAndNavigation,
             "Astrometrics and Navigation",
             "This pod contains sensors specifically tuned to detect, triangulate, and time distant quasar signals and map gravitic distortions. Combined with a secondary navigational defelctor, this pod allows a vessel to be highly accurate in warp and quickly ascertain its position even after travel through wormholds.",
-            [0, 0, 1, 0, 0, 0],
-            [0, 1, 0, 1, 0, 0],
+            [0, 1, 0, 0, 0, 0],
+            [0, 1, 1, 0, 0, 0],
             [
                 TalentsHelper.getTalent("Improved Warp Drive"),
                 TalentsHelper.getTalent("Advanced Sensor Suites")
@@ -95,8 +95,8 @@ class MissionPods {
             MissionPod.DefensiveShieldEnhancement,
             "Defensive Shield Enhancement",
             "This pod contains extra shield generators, structural integrity field systems, and a network of graviton emitters capable of improving the defensive field around a starship",
-            [1, 1, 0, 0, 0, 0],
             [0, 0, 0, 1, 0, 0],
+            [0, 0, 1, 0, 1, 0],
             [
                 TalentsHelper.getTalent("Advanced Shields"),
                 TalentsHelper.getTalent("Improved Shield Recharge")
@@ -106,8 +106,8 @@ class MissionPods {
             MissionPod.EmergencyRecovery,
             "Emergency Recovery",
             "The pod contains extensive and robust tractor beam emitters and graviton buffers, along with mission-adaptable cargo space to allow the vessel to act as a fleet tender, or emergency recovery starship for vessels without propulsion.",
-            [1, 1, 0, 0, 0, 0],
             [0, 1, 0, 0, 0, 0],
+            [0, 0, 1, 0, 1, 0],
             [
                 TalentsHelper.getTalent("High-Power Tractor Beam"),
                 TalentsHelper.getTalent("Redundant Systems")
@@ -117,8 +117,8 @@ class MissionPods {
             MissionPod.FieldHospital,
             "Field Hospital",
             "The pod has an isolated environment able to contain even the most virulent diseases known to Federation science, along with an independent life support system, holoemitters, medical repliators able to house hundreds of patients.",
-            [0, 0, 2, 0, 0, 0],
             [0, 0, 0, 0, 0, 1],
+            [0, 2, 0, 0, 0, 0],
             [
                 TalentsHelper.getTalent("Emergency Medical Hologram"),
                 TalentsHelper.getTalent("Advanced Sickbay")
@@ -128,8 +128,8 @@ class MissionPods {
             MissionPod.FleetCarrier,
             "Fleet Carrier",
             "The pod contains a cavernous shuttlecraft bay along with the maintenance facilities for them. It is capable of handling craft as large as runabouts.",
-            [0, 1, 0, 0, 0, 1],
             [0, 0, 1, 0, 0, 0],
+            [1, 0, 0, 0, 1, 0],
             [
                 TalentsHelper.getTalent("Extensive Shuttlebays"),
                 TalentsHelper.getTalent("Command Ship")
@@ -139,8 +139,8 @@ class MissionPods {
             MissionPod.FleetCommandSupport,
             "Fleet Command Support",
             "This is a specialized pod containing subspace communications transceivers that link into powerful sensor arrays, allowing starships in communications with the command ship to synchronize their fire systems together.",
-            [0, 0, 1, 0, 0, 1],
             [1, 0, 0, 0, 0, 0],
+            [1, 1, 0, 0, 0, 0],
             [
                 TalentsHelper.getTalent("Command Ship"),
                 TalentsHelper.getTalent("Linked Fire Control")
@@ -150,8 +150,8 @@ class MissionPods {
             MissionPod.MobileDrydock,
             "Mobile Drydock",
             "This pod contains a folded dry dock that can be unfurled and deployed for assisting in repairing other starships. Inside the remaining pod there are replicator facilities capable of disassembling asteroids and comets to produce replacement parts and hull for damaged vessels, plus a large work bee bay.",
-            [0, 1, 1, 0, 0, 0],
             [0, 0, 0, 1, 0, 0],
+            [0, 1, 0, 0, 1, 0],
             [
                 TalentsHelper.getTalent("Improved Damage Control"),
                 TalentsHelper.getTalent("Rugged Design")
@@ -161,14 +161,14 @@ class MissionPods {
             MissionPod.WarpPropulsionPod,
             "Warp Propulsion Pod",
             "The pod contains an advanced warp nacelle with paired coils, along with extra fusion reactors that can either assist the ship in maintaining a high warp velocity, or maintain a warp field after saucer separation.",
-            [2, 0, 0, 0, 0, 0],
             [0, 1, 0, 0, 0, 0],
+            [0, 0, 2, 0, 0, 0],
             [
                 TalentsHelper.getTalent("Improved Warp Drive"),
                 TalentsHelper.getTalent("Secondary Reactors")
             ],
             [ new SourcePrerequisite(Source.UtopiaPlanitia) ]),
-        
+
     };
 
     getMissionPodByName(name: string) {

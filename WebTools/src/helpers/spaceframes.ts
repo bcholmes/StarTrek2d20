@@ -995,7 +995,7 @@ class Spaceframes {
             [ Source.UtopiaPlanitia ],
             [9, 9, 11, 10, 9, 8],
             [0, 1, 0, 0, 1, 1],
-            2,
+            5,
             [
                 "Phaser Arrays",
                 "Photon Torpedoes",

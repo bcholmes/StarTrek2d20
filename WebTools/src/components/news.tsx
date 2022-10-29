@@ -11,6 +11,13 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.221028</b>
+                <ul>
+                    <li>Some <a href="https://github.com/bcholmes/StarTrek2d20/discussions/86" target="_blank" rel="noreferrer">feedback
+                        items</a> let me know about a couple of bugs, and that lead me to realize that there were some bad
+                        transcription errors in the Mission Pods. I think that they should be fixed, now, but as always,
+                        let me know if something looks hinky.</li>
+                </ul>
                 <b>v1.221025</b>
                 <ul>
                     <li>Yet another bug fix.</li>
