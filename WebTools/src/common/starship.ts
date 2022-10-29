@@ -117,6 +117,14 @@ export class Starship extends Construct {
         return trait;
     }
 
+    get numberOfTalents() {
+        let result = this.scale;
+        if (this.hasTalent("Efficiency")) {
+            result = 5;
+        }
+        return result;
+    }
+
     get freeTalentSlots() {
         if (this.buildType === ShipBuildType.Starship) {
             let numTalents = 0;
@@ -124,14 +132,14 @@ export class Starship extends Construct {
             if (this.spaceframeModel !== undefined) {
                 numTalents = 1; // count the mission profile talent
 
-                this.spaceframeModel.talents.forEach(t => numTalents += t.rank);
+                this.spaceframeModel.talents.forEach(t => numTalents += (t.talent.specialRule ? 0 : t.rank));
 
                 if (this.spaceframeModel.isMissionPodAvailable) {
                     numTalents += 2; // think about this in the context of the Fleet Carrier pod, which seems to have 3 talents
                 }
             }
 
-            return Math.max(0, this.scale - numTalents);
+            return Math.max(0, this.numberOfTalents - numTalents);
         } else if (this.buildType === ShipBuildType.Pod) {
             return 0;
         } else if (this.buildType === ShipBuildType.Shuttlecraft) {

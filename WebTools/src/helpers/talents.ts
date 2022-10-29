@@ -548,8 +548,9 @@ export class TalentModel {
     maxRank: number;
     category: string;
     aliases: AliasModel[];
+    specialRule: boolean;
 
-    constructor(name: string, desc: string, prerequisites: ITalentPrerequisite<Construct>[], maxRank: number = 1, category?: string, ...aliases: AliasModel[]) {
+    constructor(name: string, desc: string, prerequisites: ITalentPrerequisite<Construct>[], maxRank: number = 1, category?: string, specialRule: boolean = false, ...aliases: AliasModel[]) {
         this.name = name;
         this.description = desc;
         this.prerequisites = prerequisites;
@@ -565,6 +566,7 @@ export class TalentModel {
         } else {
             this.category = category;
         }
+        this.specialRule = specialRule;
         this.aliases = aliases || AliasModel[0];
     }
 
@@ -737,7 +739,7 @@ export class Talents {
                 "Supervisor",
                 "The ship’s Crew Support increases by one. This increase is cumulative if multiple Main Characters in the group select it.",
                 [],
-                1, "Command", new AliasModel("War Leader", Source.KlingonCore)),
+                1, "Command", false, new AliasModel("War Leader", Source.KlingonCore)),
             new TalentModel(
                 "Bargain",
                 "When negotiating an offer with someone during Social Conflict, you may re-roll a d20 on your next Persuade Task to convince that person. If the Social Conflict involves an Extended Task, you gain the Progression 1 benefit when you roll your Challenge Dice.",
@@ -907,7 +909,7 @@ export class Talents {
                 "Mean Right Hook",
                 "Your Unarmed Strike Attack has the Vicious 1 Damage Effect.",
                 [],
-                1, "Security", new AliasModel("Warrior’s Strike", Source.KlingonCore)),
+                1, "Security", false, new AliasModel("Warrior’s Strike", Source.KlingonCore)),
             new TalentModel(
                 "Pack Tactics",
                 "Whenever you assist another character during combat, the character you assisted gains one bonus Momentum if they succeed.",
@@ -993,7 +995,7 @@ export class Talents {
                 "A Little More Power",
                 "Whenever you succeed at an Engineering Task aboard your own ship, you may spend one Momentum to regain one spent Power.",
                 [new DisciplinePrerequisite(Skill.Engineering, 3)],
-                1, null, new AliasModel("More Power", Source.KlingonCore)),
+                1, null, false, new AliasModel("More Power", Source.KlingonCore)),
             new TalentModel(
                 "I Know My Ship",
                 "Whenever you attempt a Task to determine the source of a technical problem with your ship, add one bonus d20.",
@@ -1989,7 +1991,7 @@ export class Talents {
                 "The character has developed a degree of ability across a broad range of disciplines. When attempting a Task where more than one of the character’s Focuses apply, the character may reroll a d20.",
                 [new SourcePrerequisite(Source.DeltaQuadrant), new SpeciesPrerequisite(Species.Talaxian, true)],
                 1,
-                "Talaxian", new AliasModel("Being of Many Virtues", Source.Voyager)),
+                "Talaxian", false, new AliasModel("Being of Many Virtues", Source.Voyager)),
             new TalentModel(
                 "Infectous Nature",
                 "The character comes from a race of social beings that are outgoing, good-natured, and enjoy the company of others. This exuberance has the pleasant side effect of improving the attitude and outlooks of the people around them – regardless of whether those beings like it or not. When engaged in a Social Conflict, the character may spend 2 Momentum to improve the outlook and attitude of those around them. This provides one of two effects. The character is considered to have an Advantage in subsequent social interactions with the individual affected by this Talent. In addition, the character may choose to allow the individual to recover Stress equal to the character’s Command score.",
@@ -2181,7 +2183,7 @@ export class Talents {
                 "Kelpiens have special organs on the back of their heads called ganglia. These organs do different things depending on what stage of life the Kelpien is in, as such, this talent grants different abilities based on the character’s Vahar’ai trait. Pre-Vahar’ai: When the gamemaster spends Threat to either add a complication, or to add dice to a pool or that directly affects the character, roll 1[D]; if an effect is rolled, add 1 Momentum to the pool. Post-Vahar’ai: The character gains the following attack: Ganglia Dart (Ranged, 2[D], Piercing 1). The character’s Security is added as normal to the attack’s Stress rating.",
                 [new SourcePrerequisite(Source.DiscoveryS1S2, Source.DiscoveryCampaign), new SpeciesPrerequisite(Species.Kelpian, true)],
                 1,
-                "Kelpian", new AliasModel("Ganglia", Source.DiscoveryS1S2)),
+                "Kelpian", false, new AliasModel("Ganglia", Source.DiscoveryS1S2)),
             new TalentModel(
                 "On All Fours",
                 "Kelpiens are able to run at considerable speeds for short bursts when necessary. Whenever the character succeeds at a Sprint task, they generate 2 additional Momentum which may only be used to move additional zones.",
@@ -2634,7 +2636,7 @@ export class Talents {
                 "The ship’s medical ward or sickbay is well equipped, and larger than normal for a ship of this size. The ship gains the Advanced Medical Ward or Advanced Sickbay advantage, which applies to all tasks related to medicine and biology performed within the ward or sickbay. This advantage is lost if the ship’s Computers system is disabled.",
                 [new StarshipPrerequisite()],
                 1,
-                "Starship", new AliasModel("Advanced Medical Ward/Sickbay", Source.UtopiaPlanitia), new AliasModel("Advanced Medical Ward", Source.KlingonCore)),
+                "Starship", false, new AliasModel("Advanced Medical Ward/Sickbay", Source.UtopiaPlanitia), new AliasModel("Advanced Medical Ward", Source.KlingonCore)),
             new TalentModel(
                 "Backup EPS Conduits",
                 "The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of an emergency, keeping it from being lost when the ship is damaged. Whenever the ship would lose one or more Power because of suffering damage, roll [D] for each Power lost. Each Effect rolled prevents the loss of that point of Power.",
@@ -3081,67 +3083,115 @@ export class Talents {
             "The vessel includes an additional, non-standard form of propulsion, such as Transwarp or Quantum Slipstream Drive.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
             1,
-            "Starship"),
+            "Starship", true),
         new TalentModel(
             "Aquarius Escort",
             "The Aquarius escort is a small starship, about the size of a Defiant-class ship, embedded in a cocking slip at the aft of the Odyssey class. The Aquarius is an independent starship and can travel at warp, though its endurance is relatively limited and it is not designed to go on extended missions without frequent resupply. When deployed, the Aquarius can be an NPC ally starship or can be commanded by a player at the gamemaster's discretion. The Aquarius uses the stats of a Defiant-class starship, but cannot have a cloaking device. When docked, the Aquarius's power and defensive systems supplement that of the mothership, and so when deployed, the scale of the Odyssey-class ship (and all derived stats except for its number of talents) is reduced from 7 to 6.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
             1,
-            "Starship"),
+            "Starship", true),
         new TalentModel(
-            "Cloaking Device",
-            "The vessel has a device that allows it to vanish from sensors. Operating the device requires a Control + Engineering task with a Difficulty of 2, assisted by the ship’s Engines + Security as this is a task from the tactical position. This task has a Power requirement of 3. If successful, the vessel gains the Cloaked trait. While cloaked, the vessel cannot attempt any attacks, nor can it be the target of an attack unless the attacker has found some way of detecting the cloaked vessel. While cloaked, a vessel’s shields are down. It requires a minor action to decloak a vessel.",
-            [new StarshipPrerequisite(), new ServiceYearPrerequisite(2272), new SourcePrerequisite(Source.KlingonCore)],
+            "Backpacking",
+            "Norway-class vessels can tow cargo containers while at warp between their widely-spaced nacelles. The extra equipment and supplies this provides produces the advantage “We Have That!” in scenes where the gamemaster feels these extra supplies and parts could come in handy. While towing these cargo containers, all Conn tasks have their Difficulty and complication range increased by 1 to represent the difficulties in keeping the cargo containers secure. Failure on these tasks could be resolved by loss of the containers, or damage to the vessel.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
             1,
-            "Starship"),
+            "Starship", true),
+        new TalentModel(
+            "Constitution Saucer Separation",
+            "All Constitution-class vessels have the capability to detach their saucer section in an emergency to be used as a lifeboat. However, unlike the Saucer Separation talent, the Constitution class is unable to re-dock the detached saucer with the secondary hull outside of a drydock. Ship’s systems are halved (round down) for the saucer and the secondary hull when separated, the saucer is unable to enter warp speeds, and each section is considered a Scale 3 vessel. However the saucer is able to land on a planetary surface with extended landing legs that fold down from the ventral side of its hull. In the original series era, the saucer has both phasers and photon torpedoes, and the secondary hull has only phasers, but the opposite is true after the refit program of the 2270s.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Defiant Class Cloaking Device",
+            "The ship has a cloaking device, allowing it to vanish from view. Activating the device is a Control + Engineering task with a Difficulty of 2, assisted by the ship’s Engines + Security, performed from the tactical position. Th task has a Power requirement of 3. If successful, the vessel gains the Cloaked trait. While cloaked, the vessel cannot attack, nor can it be the target of an attack unless the attacker has found some way of detecting the cloaked ship. While cloaked, the vessel’s shields are down. It takes a minor action to decloak. Due to incompatibilities between Romulan and Federation technology, and Federation unfamiliarity with cloaking technology, any task relating to using the cloaking device has a +1 complication range.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Do No Harm",
+            "As the Olympic class is considered a non-combatant and its phaser system is seen as defensive only, any use of the ship’s phaser system outside of self-defense or as a tool automatically generates 1 Threat per scene. In addition, the characters on an Olympic-class vessel may, once per adventure, gain an extra d20 for a task involving convincing another group of the good intentions of Starfleet, the Federation, or the crew themselves due to the reputation of these hospital vessels.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Efficiency",
+            "Daedalus-class vessels are constructed with simple systems that are easily maintained, and a highly adaptable modular construction beyond what most Starfleet vessels of even the 24th century use. These vessels may have up to five talents, rather than the three its Scale would normally permit.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Excelsior Saucer Separation",
+            "All Excelsior-class vessels have the capability to detach their saucer section in an emergency to be used as a lifeboat. However, unlike the Saucer Separation talent, the Excelsior class is unable to re-dock the detached saucer with the secondary hull outside of a drydock. Ships’ systems are halved (round down) for the saucer and the secondary hull when separated, the saucer is unable to enter warp speeds, and each section is considered a Scale 4 vessel. However, the saucer is able to land on a planetary surface with extended landing legs down from the ventral side of its hull.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+            1,
+            "Starship", true),
         new TalentModel(
             "EXEO Holographic Core",
             "The EXEO Holographic Core allows the ship to support a holographic life form as part of its crew. This supporting character can be from any discipline and does not count against the ship's crew support total. This holographic life form also has a primitive mobile emitter. The mobile emitter provides the EXEO with some EVA mobility, but it is not as advanced as the Doctor's 29th-centry emitter and will not function more than 100,000 kilometers away from the EXEO core itself. Unlike a standard EMH, the EXEO may improve.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
             1,
-            "Starship"),
+            "Starship", true),
+        new TalentModel(
+            "Four-Nacelle Stability",
+            "Constellation-class vessels can generate an incredibly stable warp field by using their two standby nacelles as warp field repeaters/stabilizers. Any task that involves the warp drive for movement, or while moving, may have its Difficulty reduced by a maximum of 1 by spending 2 Power.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+            1,
+            "Starship", true),
         new TalentModel(
             "Modular Cargo Pods",
             "The modular cargo pods of the Par’tok class transport can be replaced or removed at any rudimentary spacedock as long as other pods are available and service vehicles such as shuttlecraft can assist in tractoring new pods into place. Depending on the mission assigned to the Par’tok class vessel, the performance and traits of the vessel can drastically change.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.KlingonCore)],
             1,
-            "Starship"),
+            "Starship", true),
+        new TalentModel(
+            "Ploughshares to Swords",
+            "Miranda-class vessels were originally designed to be vessels of war, and although the Starfleet Advanced Technologies Group redesigned and repurposed the vessel, aspects of the ship's martial pedigree show through. This spaceframe's phaser banks may be used as phaser cannons when at Close range, which increases their Stress rating by 1.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+            1,
+            "Starship", true),
         new TalentModel(
             "Expanded Connectivity",
             "Extensive user-interface reworking has been done throughout the ship. Due to this any Override actions taken, where an action is taken from a different station on the bridge, can be attempted with no penalty.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.TheseAreTheVoyages)],
             1,
-            "Starship"),
+            "Starship", true),
         new TalentModel(
             "Linked Fire Control",
             "The spaceframe gains an advantage \"Linked Fire Control\" that applies to fleet combat as determined by the gamemaster, reducing the complication range on weapons fire.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
             1,
-            "Starship"),
+            "Starship", true),
         new TalentModel(
             "Modular Mission Bay",
             "A Pathfinder must take one talent from the list below. This talen counts against the ship's maximum number of talents, but the crew may exchange it for another on the list during a week-long layover at a Federation starbase. Advanced Research Facilities. Advanced Sickbay. Dedicated Personnel (Medicine). Dedicated Personnel (Science). Dedicated Personnel (Security). Diplomatic Suites. Extensive Shuttlebays. Improved Damage Control. Modular Laboratories.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
             1,
-            "Starship"),
+            "Starship", true),
         new TalentModel(
             "Refracting Energy Shunt",
             "This starship can use its deflector array to temporarily absorb energy from a target vessel and channel that back into its own power reserves. Once per scene, the crew can spend 3 Momentum to reduce an enemy starship's Power by 3 and provide their own ship with 3 bonus Power, even exceeding the ship's maximum Power rating. This is executed on a Daring + Engineering task with a Difficulty of 3, and, depending on the result of the check, the gamemaster may create a complication related to the ship's Power or weapons systems.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
             1,
-            "Starship"),
+            "Starship", true),
+        new TalentModel(
+            "Steamrunner Separation",
+            "The small secondary hull can be jettisoned as a sizable emergency lifeboat. This secondary hull has limited impulse power and no capability for warp. The secondary hull has no talents or weapons, and uses the systems and departments of a Type-6 shuttle. Once detached, the primary hull is unable to enter warp and has all of its systems reduced by 2. Reattaching the secondary hull requires extensive work at a drydock facility.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+            1,
+            "Starship", true),
         new TalentModel(
             "Stealth Systems",
             "Prior to the treaty with the Romulan Star Empire and gaining access to advanced cloaking devices, the Klingon Empire used stealth systems based on reverse-engineered Hur’Q technology left behind on Qo’noS after their departure. These stealth systems include adaptive chromatic plates on the outer hull to blend into the background in the near infrared to ultraviolet wavelengths, thermal buffers and heat sinks to reduce the emissions in the far infrared, and microscale wavelength guides to absorb incoming sensor beams and prevent returns. This equipment functions in a similar way to the Cloaking Device found on page 207 of The Klingon Empire core rulebook, except it is more difficult to use, requiring a Control + Engineering task with a Difficulty of 3 rather than 2, and a Power requirement of 5 instead of 3.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.DiscoveryCampaign)],
             1,
-            "Starship"),
+            "Starship", true),
         new TalentModel(
             "Monopole Warp Field",
             "A monopole warp field results from either tightly packed warp coils or through what is referred to as “warp rings” such as early Vulcan superluminal propulsion. These fields provide excellent straight-line warp acceleration, allowing vessels to outrun or escape from pursuers with ease. If an enemy wishes to pursue a vessel with this talent, they must spend at least 2 more Power than the vessel with the talent, rather than only one more. If both vessels have this talent, treat it as though it were a normal warp pursuit. Additionally, a vessel with this talent does not need to spend Power to enter warp.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.DiscoveryCampaign)],
             1,
-            "Starship"),
+            "Starship", true),
         ];
 
     getTalents() {

@@ -5,8 +5,10 @@ import formatAsDelta from '../../common/formatAsDelta';
 import { Starship } from '../../common/starship';
 import { CheckBox } from '../../components/checkBox';
 import { Department } from '../../helpers/departments';
+import { Source } from '../../helpers/sources';
 import { SpaceframeHelper, SpaceframeModel } from '../../helpers/spaceframes';
 import { System } from '../../helpers/systems';
+import { hasAnySource } from '../../state/contextFunctions';
 
 interface ISpaceframeSelectionProperties {
     serviceYear: number;
@@ -105,6 +107,7 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
 
         return (
             <div>
+                {this.renderNotice()}
                 {overrideCheckbox}
                 <table className="selection-list w-100">
                     <thead>
@@ -119,6 +122,15 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
                     {frames}
                 </table>
             </div>);
+    }
+
+    renderNotice() {
+        if (hasAnySource([ Source.UtopiaPlanitia ])) {
+            return (<p>Note: The Utopia Planitia sourcebook has re-defined the stats for a number of previously-published
+                    spaceframes. Those redefined stats are presented, here.</p>);
+        } else {
+            return undefined;
+        }
     }
 }
 

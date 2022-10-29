@@ -1,5 +1,5 @@
 ﻿import { CharacterType } from '../common/characterType';
-import { IPrerequisite, SourcePrerequisite } from './prerequisite';
+import { IPrerequisite, NotSourcePrerequisite, SourcePrerequisite } from './prerequisite';
 import {Source} from './sources';
 import { Spaceframe } from './spaceframeEnum';
 import {TalentSelection} from './talents';
@@ -38,7 +38,8 @@ export class SpaceframeModel {
     }
 
     get isMissionPodAvailable() {
-        return this.id === Spaceframe.Nebula || this.id === Spaceframe.Luna || this.id === Spaceframe.Sutherland;
+        return this.id === Spaceframe.Nebula || this.id === Spaceframe.Luna || this.id === Spaceframe.Sutherland
+            || this.id === Spaceframe.Nebula_UP || this.id === Spaceframe.Luna_UP;
     }
 
     get isCustom() {
@@ -74,12 +75,12 @@ export class SpaceframeModel {
 
 class Spaceframes {
     private _frames: { [id: number]: SpaceframeModel } = {
-        [Spaceframe.Akira]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Akira]: new SpaceframeModel(
             Spaceframe.Akira,
             CharacterType.Starfleet,
             "Akira Class",
             2368,
-            [ Source.Core, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [9, 9, 10, 9, 11, 11],
             [0, 0, 2, 0, 0, 1],
             5,
@@ -95,12 +96,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Constellation]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Constellation]: new SpaceframeModel(
             Spaceframe.Constellation,
             CharacterType.Starfleet,
             "Constellation Class",
             2285,
-            [ Source.Core, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [8, 7, 9, 9, 8, 9],
             [0, 1, 1, 1, 0, 0],
             4,
@@ -115,12 +116,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Constitution]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Constitution]: new SpaceframeModel(
             Spaceframe.Constitution,
             CharacterType.Starfleet,
             "Constitution Class",
             2243,
-            [ Source.Core, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [7, 7, 8, 8, 8, 8],
             [1, 0, 1, 0, 1, 0],
             4,
@@ -135,12 +136,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-        [Spaceframe.Defiant]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Defiant]: new SpaceframeModel(
             Spaceframe.Defiant,
             CharacterType.Starfleet,
             "Defiant Class",
             2371,
-            [ Source.Core, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [9, 9, 10, 9, 8, 13],
             [0, 1, 2, 0, 0, 0],
             3,
@@ -157,12 +158,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Excelsior]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Excelsior]: new SpaceframeModel(
             Spaceframe.Excelsior,
             CharacterType.Starfleet,
             "Excelsior Class",
             2285,
-            [ Source.Core, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [8, 8, 9, 8, 9, 9],
             [1, 0, 0, 2, 0, 0],
             5,
@@ -196,12 +197,12 @@ class Spaceframes {
                 TalentSelection.selectTalent("Modular Laboratories"),
                 TalentSelection.selectTalent("Redundant Systems")
             ]),
-        [Spaceframe.Intrepid]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Intrepid]: new SpaceframeModel(
             Spaceframe.Intrepid,
             CharacterType.Starfleet,
             "Intrepid Class",
             2371,
-            [ Source.Core, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [10, 11, 11, 10, 8, 9],
             [0, 1, 0, 0, 2, 0],
             4,
@@ -217,12 +218,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Miranda]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Miranda]: new SpaceframeModel(
             Spaceframe.Miranda,
             CharacterType.Starfleet,
             "Miranda Class",
             2274,
-            [ Source.Core, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [8, 8, 8, 9, 8, 9],
             [1, 1, 0, 0, 1, 0],
             4,
@@ -255,12 +256,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Daedalus]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Daedalus]: new SpaceframeModel(
             Spaceframe.Daedalus,
             CharacterType.Starfleet,
             "Daedalus Class",
             2140,
-            [ Source.CommandDivision, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [6, 6, 5, 6, 8, 5],
             [0, 0, 0, 2, 1, 0],
             3,
@@ -276,12 +277,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2269),
-        [Spaceframe.NX]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.NX]: new SpaceframeModel(
             Spaceframe.NX,
             CharacterType.Starfleet,
             "NX Class",
             2151,
-            [ Source.CommandDivision, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [6, 6, 6, 6, 7, 6],
             [0, 1, 0, 1, 1, 0],
             3,
@@ -316,12 +317,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-        [Spaceframe.Oberth]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Oberth]: new SpaceframeModel(
             Spaceframe.Oberth,
             CharacterType.Starfleet,
             "Oberth Class",
             2269,
-            [ Source.CommandDivision, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [8, 9, 7, 9, 8, 7],
             [0, 1, 0, 0, 2, 0],
             3,
@@ -353,12 +354,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Centaur]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Centaur]: new SpaceframeModel(
             Spaceframe.Centaur,
             CharacterType.Starfleet,
             "Centaur Class",
             2285,
-            [ Source.CommandDivision, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [8, 8, 9, 8, 8, 9],
             [0, 2, 1, 0, 0, 0],
             4,
@@ -373,12 +374,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Ambassador]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Ambassador]: new SpaceframeModel(
             Spaceframe.Ambassador,
             CharacterType.Starfleet,
             "Ambassador Class",
             2335,
-            [ Source.CommandDivision, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [9, 9, 9, 9, 10, 9],
             [1, 1, 0, 0, 1, 0],
             5,
@@ -394,12 +395,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Nebula]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Nebula]: new SpaceframeModel(
             Spaceframe.Nebula,
             CharacterType.Starfleet,
             "Nebula Class",
             2361,
-            [ Source.CommandDivision, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [9, 10, 10, 8, 10, 9],
             [0, 0, 0, 2, 0, 0],
             5,
@@ -433,12 +434,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Olympic]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Olympic]: new SpaceframeModel(
             Spaceframe.Olympic,
             CharacterType.Starfleet,
             "Olympic Class",
             2368,
-            [ Source.CommandDivision, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [10, 10, 10, 9, 9, 7],
             [0, 0, 0, 0, 1, 2],
             4,
@@ -453,12 +454,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Steamrunner]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Steamrunner]: new SpaceframeModel(
             Spaceframe.Steamrunner,
             CharacterType.Starfleet,
             "Steamrunner Class",
             2370,
-            [ Source.CommandDivision, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [10, 9, 11, 10, 9, 10],
             [0, 1, 1, 0, 1, 0],
             4,
@@ -473,12 +474,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Norway]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Norway]: new SpaceframeModel(
             Spaceframe.Norway,
             CharacterType.Starfleet,
             "Norway Class",
             2371,
-            [ Source.CommandDivision, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [10, 9, 10, 10, 11, 9],
             [0, 0, 0, 1, 0, 2],
             4,
@@ -513,12 +514,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Sovereign]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Sovereign]: new SpaceframeModel(
             Spaceframe.Sovereign,
             CharacterType.Starfleet,
             "Sovereign Class",
             2371,
-            [ Source.CommandDivision, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [9, 11, 11, 9, 10, 10],
             [1, 0, 1, 0, 1, 0],
             6,
@@ -536,12 +537,12 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Luna]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Luna]: new SpaceframeModel(
             Spaceframe.Luna,
             CharacterType.Starfleet,
             "Luna Class",
             2372,
-            [ Source.CommandDivision, Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
             [10, 11, 10, 11, 8, 9],
             [0, 0, 0, 1, 2, 0],
             5,
@@ -1190,6 +1191,379 @@ class Spaceframes {
                 TalentSelection.selectTalent("High-Resolution Sensors"),
                 TalentSelection.selectTalent("Modular Mission Bay")
             ]),
+
+        [Spaceframe.Akira_UP]: new SpaceframeModel(
+            Spaceframe.Akira_UP,
+            CharacterType.Starfleet,
+            "Akira Class",
+            2368,
+            [ new SourcePrerequisite(Source.UtopiaPlanitia) ],
+            [9, 9, 9, 9, 10, 11],
+            [0, 0, 2, 0, 0, 1],
+            5,
+            [
+                "Phaser Arrays",
+                "Quantum Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Ablative Armor"),
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("Rapid-Fire Torpedo Launcher")
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Ambassador_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Ambassador_UP,
+            CharacterType.Starfleet,
+            "Ambassador Class",
+            2335,
+            [ Source.UtopiaPlanitia ],
+            [9, 9, 9, 9, 9, 9],
+            [1, 1, 0, 0, 1, 0],
+            5,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Saucer Separation"),
+            ],
+            [ "Federation Starship" ],
+            2369),
+        [Spaceframe.Centaur_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Centaur_UP,
+            CharacterType.Starfleet,
+            "Centaur Class",
+            2285,
+            [ Source.UtopiaPlanitia ],
+            [8, 7, 10, 8, 7, 8],
+            [0, 2, 1, 0, 0, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Constellation_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Constellation_UP,
+            CharacterType.Starfleet,
+            "Constellation Class",
+            2285,
+            [ Source.UtopiaPlanitia ],
+            [8, 7, 9, 9, 8, 7],
+            [0, 1, 1, 1, 0, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("Four-Nacelle Stability"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Constitution_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Constitution_UP,
+            CharacterType.Starfleet,
+            "Constitution Class",
+            2243,
+            [ Source.UtopiaPlanitia ],
+            [7, 7, 8, 8, 7, 7],
+            [1, 0, 1, 0, 1, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Rugged Design"),
+                TalentSelection.selectTalent("Modular Laboratories"),
+                TalentSelection.selectTalent("Constitution Saucer Separation")
+            ],
+            [ "Federation Starship" ],
+            2290),
+        [Spaceframe.Daedalus_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Daedalus_UP,
+            CharacterType.Starfleet,
+            "Daedalus Class",
+            2140,
+            [ Source.UtopiaPlanitia ],
+            [5, 5, 6, 5, 6, 6],
+            [0, 0, 0, 2, 1, 0],
+            3,
+            [
+                "Phase Cannons",
+                "Spatial Torpedoes",
+                "Grappler Cable (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Polarized Hull Plating"),
+                TalentSelection.selectTalent("Grappler Cables"),
+                TalentSelection.selectTalent("Rugged Design"),
+                TalentSelection.selectTalent("Efficiency"),
+            ],
+            [ "Federation Starship" ],
+            2269),
+        [Spaceframe.Defiant_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Defiant_UP,
+            CharacterType.Starfleet,
+            "Defiant Class",
+            2371,
+            [ Source.UtopiaPlanitia ],
+            [9, 9, 8, 9, 8, 13],
+            [0, 1, 2, 0, 0, 0],
+            3,
+            [
+                "Phaser Arrays",
+                "Phaser Cannons",
+                "Quantum Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Ablative Armor"),
+                TalentSelection.selectTalent("Cloaking Device"),
+                TalentSelection.selectTalent("Defiant Class Cloaking Device")
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Excelsior_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Excelsior_UP,
+            CharacterType.Starfleet,
+            "Excelsior Class",
+            2285,
+            [ Source.UtopiaPlanitia ],
+            [8, 8, 9, 8, 9, 8],
+            [1, 0, 0, 2, 0, 0],
+            5,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Secondary Reactors"),
+                TalentSelection.selectTalent("Excelsior Saucer Separation")
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Intrepid_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Intrepid_UP,
+            CharacterType.Starfleet,
+            "Intrepid Class",
+            2371,
+            [ Source.UtopiaPlanitia ],
+            [9, 11, 11, 10, 8, 9],
+            [0, 1, 0, 0, 2, 0],
+            4,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Advanced Sensor Suites"),
+                TalentSelection.selectTalent("Emergency Medical Hologram")
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Luna_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Luna_UP,
+            CharacterType.Starfleet,
+            "Luna Class",
+            2372,
+            [ Source.UtopiaPlanitia ],
+            [10, 10, 10, 10, 8, 8],
+            [0, 0, 0, 1, 1, 0],
+            5,
+            [
+                "Phaser Arrays",
+                "Quantum Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Advanced Research Facilities"),
+                TalentSelection.selectTalent("Advanced Sensor Suites"),
+                TalentSelection.selectTalent("Emergency Medical Hologram"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Miranda_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Miranda_UP,
+            CharacterType.Starfleet,
+            "Miranda Class",
+            2274,
+            [ Source.UtopiaPlanitia ],
+            [7, 8, 8, 8, 8, 8],
+            [1, 1, 0, 0, 1, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Extensive Shuttlebays")
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Nebula_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Nebula_UP,
+            CharacterType.Starfleet,
+            "Nebula Class",
+            2361,
+            [ Source.UtopiaPlanitia ],
+            [9, 10, 10, 8, 9, 9],
+            [0, 0, 0, 2, 0, 0],
+            5,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Saucer Separation"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Norway_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Norway_UP,
+            CharacterType.Starfleet,
+            "Norway Class",
+            2371,
+            [ Source.UtopiaPlanitia ],
+            [9, 9, 10, 10, 10, 9],
+            [0, 0, 0, 1, 0, 2],
+            4,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Advanced Sickbay"),
+                TalentSelection.selectTalent("Emergency Medical Hologram"),
+                TalentSelection.selectTalent("Backpacking"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.NX_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.NX_UP,
+            CharacterType.Starfleet,
+            "NX Class",
+            2151,
+            [ Source.UtopiaPlanitia ],
+            [5, 5, 6, 6, 6, 6],
+            [0, 1, 0, 1, 1, 0],
+            3,
+            [
+                "Phase Cannons",
+                "Spatial Torpedoes",
+                "Grappler Cable (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Polarized Hull Plating"),
+                TalentSelection.selectTalent("Grappler Cables"),
+            ],
+            [ "Federation Starship" ],
+            2170),
+        [Spaceframe.Oberth_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Oberth_UP,
+            CharacterType.Starfleet,
+            "Oberth Class",
+            2269,
+            [ Source.UtopiaPlanitia ],
+            [8, 9, 7, 9, 6, 6],
+            [0, 1, 0, 0, 2, 0],
+            3,
+            [
+                "Phaser Banks",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Olympic_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Olympic_UP,
+            CharacterType.Starfleet,
+            "Olympic Class",
+            2368,
+            [ Source.UtopiaPlanitia ],
+            [10, 11, 10, 10, 9, 6],
+            [0, 0, 0, 0, 1, 2],
+            4,
+            [
+                "Phaser Arrays",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Advanced Sickbay"),
+                TalentSelection.selectTalent("Modular Laboratories"),
+                TalentSelection.selectTalent("Dedicated Personnel (Medicine)"),
+                TalentSelection.selectTalent("Do No Harm"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Sovereign_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Sovereign_UP,
+            CharacterType.Starfleet,
+            "Sovereign Class",
+            2371,
+            [ Source.UtopiaPlanitia ],
+            [10, 9, 10, 10, 10, 10],
+            [1, 0, 1, 0, 1, 0],
+            6,
+            [
+                "Phaser Arrays",
+                "Quantum Torpedoes",
+                "Tractor Beam (Strength 5)"
+            ],
+            [
+                TalentSelection.selectTalent("Command Ship"),
+                TalentSelection.selectTalent("Emergency Medical Hologram"),
+                TalentSelection.selectTalent("Improved Warp Drive")
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Steamrunner_UP]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Steamrunner_UP,
+            CharacterType.Starfleet,
+            "Steamrunner Class",
+            2370,
+            [ Source.UtopiaPlanitia ],
+            [9, 9, 11, 10, 9, 9],
+            [0, 1, 1, 0, 1, 0],
+            4,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Advanced Sensor Suites"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Steamrunner Separation"),
+            ],
+            [ "Federation Starship" ],
+            99999),
 
 
         // Klingon Spaceframes

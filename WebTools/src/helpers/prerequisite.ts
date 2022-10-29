@@ -23,6 +23,18 @@ export class SourcePrerequisite implements IPrerequisite {
     }
 }
 
+export class NotSourcePrerequisite implements IPrerequisite {
+    sources: Source[];
+
+    constructor(...source: Source[]) {
+        this.sources = source;
+    }
+
+    isPrerequisiteFulfilled() {
+        return !hasAnySource(this.sources);
+    }
+}
+
 export class KlingonPrerequisite implements IPrerequisite {
 
     isPrerequisiteFulfilled() {

@@ -249,33 +249,35 @@ class SpaceframeOutlineHelper {
             }
         } else if (spaceframe.id === Spaceframe.Antares) {
             return ANTARES_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Akira) {
+        } else if (spaceframe.id === Spaceframe.Akira || spaceframe.id === Spaceframe.Akira_UP) {
             return AKIRA_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Ambassador) {
+        } else if (spaceframe.id === Spaceframe.Ambassador || spaceframe.id === Spaceframe.Ambassador_UP) {
             return AMBASSADOR_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Archer) {
             return ARCHER_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Cardenas) {
             return CARDENAS_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Centaur) {
+        } else if (spaceframe.id === Spaceframe.Centaur || spaceframe.id === Spaceframe.Centaur_UP) {
             return CENTAUR_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Challenger) {
             return CHALLENGER_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Cheyenne) {
             return CHEYENNE_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Constellation) {
+        } else if (spaceframe.id === Spaceframe.Constellation || spaceframe.id === Spaceframe.Constellation_UP) {
             return CONSTELLATION_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Constitution) {
-            return this.isMovieEra(starship.serviceYear) ? CONSTITUTION_MOVIE_ERA_ELABORATE_OUTLINE : CONSTITUTION_TOS_ELABORATE_OUTLINE;
+        } else if (spaceframe.id === Spaceframe.Constitution || spaceframe.id === Spaceframe.Constitution_UP) {
+            return this.isMovieEra(starship.serviceYear)
+                ? CONSTITUTION_MOVIE_ERA_ELABORATE_OUTLINE
+                : CONSTITUTION_TOS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Crossfield) {
             return CROSSFIELD_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Defiant) {
+        } else if (spaceframe.id === Spaceframe.Defiant || spaceframe.id === Spaceframe.Defiant_UP) {
             return DEFIANT_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Daedalus) {
+        } else if (spaceframe.id === Spaceframe.Daedalus || spaceframe.id === Spaceframe.Daedalus_UP) {
             return DAEDALUS_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Engle) {
             return ENGLE_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Excelsior) {
+        } else if (spaceframe.id === Spaceframe.Excelsior || spaceframe.id === Spaceframe.Excelsior_UP) {
             return EXCELSIOR_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Freedom) {
             return FREEDOM_CLASS_ELABORATE_OUTLINE;
@@ -289,19 +291,19 @@ class SpaceframeOutlineHelper {
             return HOOVER_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Inquiry) {
             return INQUIRY_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Intrepid) {
+        } else if (spaceframe.id === Spaceframe.Intrepid || spaceframe.id === Spaceframe.Intrepid_UP) {
             return INTREPID_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.IntrepidType) {
             return INTREPID_TYPE_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Luna) {
+        } else if (spaceframe.id === Spaceframe.Luna || spaceframe.id === Spaceframe.Luna_UP) {
             return LUNA_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Magee) {
             return MAGEE_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Malachowski) {
             return MALACHOWSKI_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Miranda) {
+        } else if (spaceframe.id === Spaceframe.Miranda || spaceframe.id === Spaceframe.Miranda_UP) {
             return MIRANDA_CLASS_MOVIE_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Nebula) {
+        } else if (spaceframe.id === Spaceframe.Nebula || spaceframe.id === Spaceframe.Nebula_UP) {
             return NEBULA_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.NewOrleans) {
             return NEW_ORLEANS_CLASS_ELABORATE_OUTLINE;
@@ -309,17 +311,17 @@ class SpaceframeOutlineHelper {
             return NIAGARA_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Nimitz) {
             return NIMITZ_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Norway) {
+        } else if (spaceframe.id === Spaceframe.Norway || spaceframe.id === Spaceframe.Norway_UP) {
             return NORWAY_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Nova) {
             return NOVA_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.NX) {
+        } else if (spaceframe.id === Spaceframe.NX || spaceframe.id === Spaceframe.NX_UP) {
             return NX_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Oberth) {
+        } else if (spaceframe.id === Spaceframe.Oberth || spaceframe.id === Spaceframe.Oberth_UP) {
             return OBERTH_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Odyssey) {
             return ODYSSEY_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Olympic) {
+        } else if (spaceframe.id === Spaceframe.Olympic || spaceframe.id === Spaceframe.Olympic_UP) {
             return OLYMPIC_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Prometheus) {
             return PROMETHEUS_CLASS_ELABORATE_OUTLINE;
@@ -329,13 +331,13 @@ class SpaceframeOutlineHelper {
             return SABER_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Shepard) {
             return SHEPARD_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Sovereign) {
+        } else if (spaceframe.id === Spaceframe.Sovereign || spaceframe.id === Spaceframe.Sovereign_UP) {
             return SOVEREIGN_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Soyuz) {
             return SOYUZ_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.StealthShip) {
             return STEALTH_SHIP_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Steamrunner) {
+        } else if (spaceframe.id === Spaceframe.Steamrunner || spaceframe.id === Spaceframe.Steamrunner_UP) {
             return STEAMRUNNER_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Sutherland) {
             return SUTHERLAND_CLASS_ELABORATE_OUTLINE;
