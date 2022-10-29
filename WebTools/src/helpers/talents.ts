@@ -12,15 +12,11 @@ import { Starship } from '../common/starship';
 import store from '../state/store';
 import { centuryToYear } from './weapons';
 import { Spaceframe } from './spaceframeEnum';
+import { IConstructPrerequisite, ServiceYearPrerequisite } from './prerequisite';
 
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
 
-interface ITalentPrerequisite<T extends Construct> {
-    isPrerequisiteFulfilled(t: T): boolean;
-    describe(): string
-}
-
-class AttributePrerequisite implements ITalentPrerequisite<Character> {
+class AttributePrerequisite implements IConstructPrerequisite<Character> {
     private attribute: Attribute;
     private value: number;
 
@@ -37,7 +33,7 @@ class AttributePrerequisite implements ITalentPrerequisite<Character> {
     }
 };
 
-class DisciplinePrerequisite implements ITalentPrerequisite<Character> {
+class DisciplinePrerequisite implements IConstructPrerequisite<Character> {
     discipline: Skill;
     private value: number;
 
@@ -55,7 +51,7 @@ class DisciplinePrerequisite implements ITalentPrerequisite<Character> {
     }
 };
 
-class UntrainedDisciplinePrerequisite implements ITalentPrerequisite<Character> {
+class UntrainedDisciplinePrerequisite implements IConstructPrerequisite<Character> {
     private discipline: Skill;
 
     constructor(discipline: Skill) {
@@ -70,7 +66,7 @@ class UntrainedDisciplinePrerequisite implements ITalentPrerequisite<Character> 
     }
 };
 
-class VariableDisciplinePrerequisite implements ITalentPrerequisite<Character> {
+class VariableDisciplinePrerequisite implements IConstructPrerequisite<Character> {
     private discipline1: Skill;
     private discipline2: Skill;
     private value: number;
@@ -91,7 +87,7 @@ class VariableDisciplinePrerequisite implements ITalentPrerequisite<Character> {
     }
 };
 
-class SpeciesPrerequisite implements ITalentPrerequisite<Character> {
+class SpeciesPrerequisite implements IConstructPrerequisite<Character> {
     private species: number;
     private allowCrossSelection: boolean;
 
@@ -110,7 +106,7 @@ class SpeciesPrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class AnySpeciesPrerequisite implements ITalentPrerequisite<Character> {
+class AnySpeciesPrerequisite implements IConstructPrerequisite<Character> {
     private species1: number;
     private species2: number;
     private allowCrossSelection: boolean;
@@ -133,7 +129,7 @@ class AnySpeciesPrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class PureSpeciesPrerequisite implements ITalentPrerequisite<Character> {
+class PureSpeciesPrerequisite implements IConstructPrerequisite<Character> {
     private species: number;
     private allowCrossSelection: boolean;
 
@@ -151,7 +147,7 @@ class PureSpeciesPrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class CareerPrerequisite implements ITalentPrerequisite<Character> {
+class CareerPrerequisite implements IConstructPrerequisite<Character> {
     private career: number;
 
     constructor(species: number) {
@@ -166,7 +162,7 @@ class CareerPrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class ChildOnlyPrerequisite implements ITalentPrerequisite<Character> {
+class ChildOnlyPrerequisite implements IConstructPrerequisite<Character> {
 
     isPrerequisiteFulfilled(c: Character) {
         return false; // it's never selected by players; only automatically added for child characters
@@ -176,7 +172,7 @@ class ChildOnlyPrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class MainCharacterPrerequisite implements ITalentPrerequisite<Character> {
+class MainCharacterPrerequisite implements IConstructPrerequisite<Character> {
 
     isPrerequisiteFulfilled(c: Character) {
         return true; // at the moment, only Main characters can have talents, so I think this is always true
@@ -186,7 +182,7 @@ class MainCharacterPrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class CommandingAndExecutiveOfficerPrerequisite implements ITalentPrerequisite<Character> {
+class CommandingAndExecutiveOfficerPrerequisite implements IConstructPrerequisite<Character> {
 
     isPrerequisiteFulfilled(c: Character) {
         // Awkwardly, we don't know the character's role at the time that
@@ -199,7 +195,7 @@ class CommandingAndExecutiveOfficerPrerequisite implements ITalentPrerequisite<C
     }
 }
 
-class GMsDiscretionPrerequisite implements ITalentPrerequisite<Character> {
+class GMsDiscretionPrerequisite implements IConstructPrerequisite<Character> {
 
     isPrerequisiteFulfilled(c: Character) {
         return store.getState().context.allowEsotericTalents;
@@ -209,7 +205,7 @@ class GMsDiscretionPrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class OnlyAtCharacterCreationPrerequisite implements ITalentPrerequisite<Character> {
+class OnlyAtCharacterCreationPrerequisite implements IConstructPrerequisite<Character> {
 
     isPrerequisiteFulfilled(c: Character) {
         return true;
@@ -220,7 +216,7 @@ class OnlyAtCharacterCreationPrerequisite implements ITalentPrerequisite<Charact
 }
 
 
-class SupportingCharacterPrerequisite implements ITalentPrerequisite<Character> {
+class SupportingCharacterPrerequisite implements IConstructPrerequisite<Character> {
 
     isPrerequisiteFulfilled(c: Character) {
         return false; // at the moment, only Main characters can have talents, so I think this is always false
@@ -230,7 +226,7 @@ class SupportingCharacterPrerequisite implements ITalentPrerequisite<Character> 
     }
 }
 
-class CharacterTypePrerequisite implements ITalentPrerequisite<Character> {
+class CharacterTypePrerequisite implements IConstructPrerequisite<Character> {
     private type: CharacterType;
 
     constructor(type: CharacterType) {
@@ -245,7 +241,7 @@ class CharacterTypePrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class NotCharacterTypePrerequisite implements ITalentPrerequisite<Character> {
+class NotCharacterTypePrerequisite implements IConstructPrerequisite<Character> {
     private type: CharacterType;
 
     constructor(type: CharacterType) {
@@ -260,10 +256,10 @@ class NotCharacterTypePrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class AnyOfPrerequisite implements ITalentPrerequisite<Construct> {
-    private prerequisites: ITalentPrerequisite<Construct>[];
+class AnyOfPrerequisite implements IConstructPrerequisite<Construct> {
+    private prerequisites: IConstructPrerequisite<Construct>[];
 
-    constructor(...prerequisites: ITalentPrerequisite<Construct>[]) {
+    constructor(...prerequisites: IConstructPrerequisite<Construct>[]) {
         this.prerequisites = prerequisites;
     }
 
@@ -284,7 +280,7 @@ class AnyOfPrerequisite implements ITalentPrerequisite<Construct> {
 }
 
 
-class TalentPrerequisite implements ITalentPrerequisite<Construct> {
+class TalentPrerequisite implements IConstructPrerequisite<Construct> {
     private talent: string;
 
     constructor(talent: string) {
@@ -299,7 +295,7 @@ class TalentPrerequisite implements ITalentPrerequisite<Construct> {
     }
 }
 
-class FocusPrerequisite implements ITalentPrerequisite<Character> {
+class FocusPrerequisite implements IConstructPrerequisite<Character> {
     private focus: string;
 
     constructor(focus: string) {
@@ -314,7 +310,7 @@ class FocusPrerequisite implements ITalentPrerequisite<Character> {
     }
 }
 
-class NotTalentPrerequisite implements ITalentPrerequisite<Construct> {
+class NotTalentPrerequisite implements IConstructPrerequisite<Construct> {
     private talent: string;
 
     constructor(talent: string) {
@@ -329,7 +325,7 @@ class NotTalentPrerequisite implements ITalentPrerequisite<Construct> {
     }
 }
 
-class SourcePrerequisite implements ITalentPrerequisite<Construct> {
+class SourcePrerequisite implements IConstructPrerequisite<Construct> {
     private sources: Source[];
 
     constructor(...sources: Source[]) {
@@ -350,7 +346,7 @@ class SourcePrerequisite implements ITalentPrerequisite<Construct> {
     }
 }
 
-class EraPrerequisite implements ITalentPrerequisite<Construct> {
+class EraPrerequisite implements IConstructPrerequisite<Construct> {
     private era: Era;
 
     constructor(era: Era) {
@@ -365,7 +361,7 @@ class EraPrerequisite implements ITalentPrerequisite<Construct> {
     }
 }
 
-class NotEraPrerequisite implements ITalentPrerequisite<Construct> {
+class NotEraPrerequisite implements IConstructPrerequisite<Construct> {
     private eras: Era[];
 
     constructor(...eras: Era[]) {
@@ -382,7 +378,7 @@ class NotEraPrerequisite implements ITalentPrerequisite<Construct> {
     }
 }
 
-class StarshipPrerequisite implements ITalentPrerequisite<Starship> {
+class StarshipPrerequisite implements IConstructPrerequisite<Starship> {
     isPrerequisiteFulfilled(starship: Starship) {
         return starship instanceof Starship;
     }
@@ -391,7 +387,7 @@ class StarshipPrerequisite implements ITalentPrerequisite<Starship> {
     }
 }
 
-class StarbasePrerequisite implements ITalentPrerequisite<Construct> {
+class StarbasePrerequisite implements IConstructPrerequisite<Construct> {
     isPrerequisiteFulfilled(c: Construct) {
         return false;
     }
@@ -400,22 +396,7 @@ class StarbasePrerequisite implements ITalentPrerequisite<Construct> {
     }
 }
 
-class ServiceYearPrerequisite implements ITalentPrerequisite<Starship> {
-    private year: number;
-
-    constructor(year: number) {
-        this.year = year;
-    }
-
-    isPrerequisiteFulfilled(s: Starship) {
-        return s != null && s.serviceYear >= this.year;
-    }
-    describe(): string {
-        return "" + this.year + " or later";
-    }
-}
-
-class MaxServiceYearPrerequisite implements ITalentPrerequisite<Starship> {
+class MaxServiceYearPrerequisite implements IConstructPrerequisite<Starship> {
     private year: number;
 
     constructor(year: number) {
@@ -430,7 +411,7 @@ class MaxServiceYearPrerequisite implements ITalentPrerequisite<Starship> {
     }
 }
 
-class SpaceframePrerequisite implements ITalentPrerequisite<Starship> {
+class SpaceframePrerequisite implements IConstructPrerequisite<Starship> {
     private frame: number;
 
     constructor(frame: number) {
@@ -445,7 +426,7 @@ class SpaceframePrerequisite implements ITalentPrerequisite<Starship> {
     }
 }
 
-class CenturyPrerequisite implements ITalentPrerequisite<Starship> {
+class CenturyPrerequisite implements IConstructPrerequisite<Starship> {
     private century: number;
     private toCentury?: number;
 
@@ -484,10 +465,10 @@ class CenturyPrerequisite implements ITalentPrerequisite<Starship> {
     }
 }
 
-class AllOfPrerequisite implements ITalentPrerequisite<Construct> {
-    private prequisites: ITalentPrerequisite<Construct>[];
+class AllOfPrerequisite implements IConstructPrerequisite<Construct> {
+    private prequisites: IConstructPrerequisite<Construct>[];
 
-    constructor(...prequisites: ITalentPrerequisite<Construct>[]) {
+    constructor(...prequisites: IConstructPrerequisite<Construct>[]) {
         this.prequisites = prequisites;
     }
 
@@ -508,7 +489,7 @@ class AllOfPrerequisite implements ITalentPrerequisite<Construct> {
         return temp.join(" and ");
     }
 }
-class SpaceframesPrerequisite implements ITalentPrerequisite<Starship> {
+class SpaceframesPrerequisite implements IConstructPrerequisite<Starship> {
     private frames: number[];
 
     constructor(frames: number[]) {
@@ -524,7 +505,7 @@ class SpaceframesPrerequisite implements ITalentPrerequisite<Starship> {
     }
 }
 
-class DepartmentPrerequisite implements ITalentPrerequisite<Starship> {
+class DepartmentPrerequisite implements IConstructPrerequisite<Starship> {
     private department: Department;
     private value: number;
 
@@ -544,13 +525,13 @@ class DepartmentPrerequisite implements ITalentPrerequisite<Starship> {
 export class TalentModel {
     name: string;
     description: string;
-    prerequisites: ITalentPrerequisite<Construct>[];
+    prerequisites: IConstructPrerequisite<Construct>[];
     maxRank: number;
     category: string;
     aliases: AliasModel[];
     specialRule: boolean;
 
-    constructor(name: string, desc: string, prerequisites: ITalentPrerequisite<Construct>[], maxRank: number = 1, category?: string, specialRule: boolean = false, ...aliases: AliasModel[]) {
+    constructor(name: string, desc: string, prerequisites: IConstructPrerequisite<Construct>[], maxRank: number = 1, category?: string, specialRule: boolean = false, ...aliases: AliasModel[]) {
         this.name = name;
         this.description = desc;
         this.prerequisites = prerequisites;
@@ -686,10 +667,10 @@ export class TalentViewModel {
     hasRank: boolean;
     description: string;
     category: string;
-    prerequisites: ITalentPrerequisite<Construct>[];
+    prerequisites: IConstructPrerequisite<Construct>[];
     displayName: string;
 
-    constructor(name: string, rank: number, showRank: boolean, description: string, skill: Skill, category: string, prerequities: ITalentPrerequisite<Character>[]) {
+    constructor(name: string, rank: number, showRank: boolean, description: string, skill: Skill, category: string, prerequities: IConstructPrerequisite<Character>[]) {
         this.id = name;
         this.description = description;
         this.rank = rank;

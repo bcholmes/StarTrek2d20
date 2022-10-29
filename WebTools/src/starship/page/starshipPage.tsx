@@ -66,7 +66,7 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
     }
 
     renderSpaceframeSection() {
-        const spaceframes = SpaceframeHelper.getSpaceframes(this.props.serviceYear, this.props.type, true);
+        const spaceframes = SpaceframeHelper.getSpaceframes(this.starship, true);
         // if other choices have changed, then the current spaceframe might be invalid
         if (this.starship && this.starship.spaceframeModel) {
             if (this.starship.spaceframeModel.isCustom) {

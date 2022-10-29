@@ -11,6 +11,17 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.221029</b>
+                <ul>
+                    <li>
+                        I'm continuing to add support for the various <cite>Utopia Planitia</cite> rules.
+                        In this update, I've worked through the revisions to the spaceframes (e.g. the
+                        stats for, say, the <em>Intrepid</em> class are different in <cite>Utopia Planitia</cite>
+                        versus the Core rulebook). If you have included <cite>Utopia Planitia</cite> in your
+                        list of "Sources", then you'll see these newer, revised stats. If you haven't included it,
+                        you'll see the original stats.
+                    </li>
+                </ul>
                 <b>v1.221028</b>
                 <ul>
                     <li>Some <a href="https://github.com/bcholmes/StarTrek2d20/discussions/86" target="_blank" rel="noreferrer">feedback

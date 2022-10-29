@@ -1,5 +1,7 @@
 import { character } from "../common/character";
 import { CharacterType } from "../common/characterType";
+import { Construct } from "../common/construct";
+import { Starship } from "../common/starship";
 import { hasAnySource } from "../state/contextFunctions";
 import store from "../state/store";
 import { Career } from "./careers";
@@ -11,6 +13,26 @@ export interface IPrerequisite {
     isPrerequisiteFulfilled(): boolean;
 }
 
+export interface IConstructPrerequisite<T extends Construct> {
+    isPrerequisiteFulfilled(t: T): boolean;
+    describe(): string
+}
+
+export class ServiceYearPrerequisite implements IConstructPrerequisite<Starship> {
+    private year: number;
+
+    constructor(year: number) {
+        this.year = year;
+    }
+
+    isPrerequisiteFulfilled(s: Starship) {
+        return s != null && s.serviceYear >= this.year;
+    }
+    describe(): string {
+        return "" + this.year + " or later";
+    }
+}
+
 export class SourcePrerequisite implements IPrerequisite {
     sources: Source[];
 
@@ -20,18 +42,6 @@ export class SourcePrerequisite implements IPrerequisite {
 
     isPrerequisiteFulfilled() {
         return hasAnySource(this.sources);
-    }
-}
-
-export class NotSourcePrerequisite implements IPrerequisite {
-    sources: Source[];
-
-    constructor(...source: Source[]) {
-        this.sources = source;
-    }
-
-    isPrerequisiteFulfilled() {
-        return !hasAnySource(this.sources);
     }
 }
 

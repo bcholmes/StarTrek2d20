@@ -1,15 +1,64 @@
 ﻿import { CharacterType } from '../common/characterType';
-import { IPrerequisite, NotSourcePrerequisite, SourcePrerequisite } from './prerequisite';
+import { Starship } from '../common/starship';
+import { hasAnySource } from '../state/contextFunctions';
+import { IConstructPrerequisite, ServiceYearPrerequisite } from './prerequisite';
 import {Source} from './sources';
 import { Spaceframe } from './spaceframeEnum';
 import {TalentSelection} from './talents';
+
+export class SourcePrerequisite implements IConstructPrerequisite<Starship> {
+    sources: Source[];
+
+    constructor(...source: Source[]) {
+        this.sources = source;
+    }
+
+    isPrerequisiteFulfilled(c: Starship) {
+        return hasAnySource(this.sources);
+    }
+
+    describe(): string {
+        return "";
+    }
+}
+
+export class NotSourcePrerequisite implements IConstructPrerequisite<Starship> {
+    sources: Source[];
+
+    constructor(...source: Source[]) {
+        this.sources = source;
+    }
+
+    isPrerequisiteFulfilled(c: Starship) {
+        return !hasAnySource(this.sources);
+    }
+
+    describe(): string {
+        return "";
+    }
+}
+
+class TypePrerequisite implements IConstructPrerequisite<Starship> {
+    private type: CharacterType;
+
+    constructor(type: CharacterType) {
+        this.type = type;
+    }
+
+    isPrerequisiteFulfilled(starship: Starship) {
+        return starship.type === this.type;
+    }
+    describe(): string {
+        return "";
+    }
+}
 
 export class SpaceframeModel {
     id: Spaceframe|null;
     type: CharacterType;
     name: string;
     serviceYear: number;
-    prerequisites: IPrerequisite[];
+    prerequisites: IConstructPrerequisite<Starship>[];
     systems: number[];
     departments: number[];
     scale: number;
@@ -19,7 +68,7 @@ export class SpaceframeModel {
     maxServiceYear: number;
 
     constructor(id: Spaceframe|null, type: CharacterType, name: string, serviceYear: number,
-        prerequisites: IPrerequisite[], systems: number[], departments: number[],
+        prerequisites: IConstructPrerequisite<Starship>[], systems: number[], departments: number[],
         scale: number, attacks: string[], talents: TalentSelection[],
         additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999) {
 
@@ -46,13 +95,13 @@ export class SpaceframeModel {
         return this.id == null;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(s: Starship) {
         if (this.prerequisites.length === 0) {
             return true;
         } else {
             let result = true;
             this.prerequisites.forEach(req => {
-                result = result && req.isPrerequisiteFulfilled();
+                result = result && req.isPrerequisiteFulfilled(s);
             });
             return result;
         }
@@ -62,7 +111,7 @@ export class SpaceframeModel {
         scale: number, attacks: string[], talents: TalentSelection[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999) {
         let sourcePrerequisite = new SourcePrerequisite();
         sourcePrerequisite.sources = source;
-        let prerequisites = [ sourcePrerequisite ];
+        let prerequisites = [ sourcePrerequisite, new TypePrerequisite(type), new ServiceYearPrerequisite(serviceYear) ];
         return new SpaceframeModel(id, type, name, serviceYear, prerequisites, systems, departments, scale, attacks, talents, additionalTraits, maxServiceYear );
     }
 
@@ -80,7 +129,7 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Akira Class",
             2368,
-            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia), new ServiceYearPrerequisite(2368) ],
             [9, 9, 10, 9, 11, 11],
             [0, 0, 2, 0, 0, 1],
             5,
@@ -101,7 +150,8 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Constellation Class",
             2285,
-            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2285) ],
             [8, 7, 9, 9, 8, 9],
             [0, 1, 1, 1, 0, 0],
             4,
@@ -121,7 +171,8 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Constitution Class",
             2243,
-            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2243) ],
             [7, 7, 8, 8, 8, 8],
             [1, 0, 1, 0, 1, 0],
             4,
@@ -141,7 +192,8 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Defiant Class",
             2371,
-            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2371) ],
             [9, 9, 10, 9, 8, 13],
             [0, 1, 2, 0, 0, 0],
             3,
@@ -163,7 +215,8 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Excelsior Class",
             2285,
-            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2285) ],
             [8, 8, 9, 8, 9, 9],
             [1, 0, 0, 2, 0, 0],
             5,
@@ -202,7 +255,11 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Intrepid Class",
             2371,
-            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [
+                new SourcePrerequisite(Source.Core),
+                new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2371)
+            ],
             [10, 11, 11, 10, 8, 9],
             [0, 1, 0, 0, 2, 0],
             4,
@@ -223,7 +280,9 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Miranda Class",
             2274,
-            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.Core),
+                new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2274) ],
             [8, 8, 8, 9, 8, 9],
             [1, 1, 0, 0, 1, 0],
             4,
@@ -261,7 +320,8 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Daedalus Class",
             2140,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2140) ],
             [6, 6, 5, 6, 8, 5],
             [0, 0, 0, 2, 1, 0],
             3,
@@ -282,7 +342,11 @@ class Spaceframes {
             CharacterType.Starfleet,
             "NX Class",
             2151,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [
+                new SourcePrerequisite(Source.CommandDivision),
+                new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2151)
+            ],
             [6, 6, 6, 6, 7, 6],
             [0, 1, 0, 1, 1, 0],
             3,
@@ -322,7 +386,8 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Oberth Class",
             2269,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2269) ],
             [8, 9, 7, 9, 8, 7],
             [0, 1, 0, 0, 2, 0],
             3,
@@ -359,7 +424,8 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Centaur Class",
             2285,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2285) ],
             [8, 8, 9, 8, 8, 9],
             [0, 2, 1, 0, 0, 0],
             4,
@@ -379,7 +445,8 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Ambassador Class",
             2335,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2335) ],
             [9, 9, 9, 9, 10, 9],
             [1, 1, 0, 0, 1, 0],
             5,
@@ -400,7 +467,8 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Nebula Class",
             2361,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2361) ],
             [9, 10, 10, 8, 10, 9],
             [0, 0, 0, 2, 0, 0],
             5,
@@ -439,7 +507,8 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Olympic Class",
             2368,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2268) ],
             [10, 10, 10, 9, 9, 7],
             [0, 0, 0, 0, 1, 2],
             4,
@@ -459,7 +528,8 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Steamrunner Class",
             2370,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2370) ],
             [10, 9, 11, 10, 9, 10],
             [0, 1, 1, 0, 1, 0],
             4,
@@ -479,7 +549,8 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Norway Class",
             2371,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2371) ],
             [10, 9, 10, 10, 11, 9],
             [0, 0, 0, 1, 0, 2],
             4,
@@ -519,7 +590,8 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Sovereign Class",
             2371,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2371) ],
             [9, 11, 11, 9, 10, 10],
             [1, 0, 1, 0, 1, 0],
             6,
@@ -542,7 +614,8 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Luna Class",
             2372,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2372) ],
             [10, 11, 10, 11, 8, 9],
             [0, 0, 0, 1, 2, 0],
             5,
@@ -1197,7 +1270,7 @@ class Spaceframes {
             CharacterType.Starfleet,
             "Akira Class",
             2368,
-            [ new SourcePrerequisite(Source.UtopiaPlanitia) ],
+            [ new SourcePrerequisite(Source.UtopiaPlanitia), new ServiceYearPrerequisite(2368) ],
             [9, 9, 9, 9, 10, 11],
             [0, 0, 2, 0, 0, 1],
             5,
@@ -2193,12 +2266,12 @@ class Spaceframes {
         //    ]),
     };
 
-    getSpaceframes(year: number, type: CharacterType, ignoreMaxServiceYear: boolean = false) {
+    getSpaceframes(starship: Starship, ignoreMaxServiceYear: boolean = false) {
         let frames: SpaceframeModel[] = [];
         for (var frame in this._frames) {
             let f = this._frames[frame];
-            if (f.serviceYear <= year && (f.maxServiceYear >= year || ignoreMaxServiceYear)) {
-                if (f.isPrerequisiteFulfilled() && type === f.type) {
+            if (f.serviceYear <= starship.serviceYear && (f.maxServiceYear >= starship.serviceYear || ignoreMaxServiceYear)) {
+                if (f.isPrerequisiteFulfilled(starship) && starship.type === f.type) {
                     frames.push(f);
                 }
             }
