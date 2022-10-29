@@ -1,5 +1,4 @@
 ﻿import { CharacterType } from '../common/characterType';
-import {Era} from './eras';
 import { IPrerequisite, SourcePrerequisite } from './prerequisite';
 import {Source} from './sources';
 import { Spaceframe } from './spaceframeEnum';
@@ -19,15 +18,16 @@ export class SpaceframeModel {
     additionalTraits: string[];
     maxServiceYear: number;
 
-    constructor(id: Spaceframe|null, type: CharacterType, name: string, serviceYear: number, eras: Era[], source: Source[], systems: number[], departments: number[],
-        scale: number, attacks: string[], talents: TalentSelection[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999) {
+    constructor(id: Spaceframe|null, type: CharacterType, name: string, serviceYear: number,
+        prerequisites: IPrerequisite[], systems: number[], departments: number[],
+        scale: number, attacks: string[], talents: TalentSelection[],
+        additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999) {
+
         this.id = id;
         this.type = type;
         this.name = name;
         this.serviceYear = serviceYear;
-        let sourcePrerequisite = new SourcePrerequisite();
-        sourcePrerequisite.sources = source;
-        this.prerequisites = [ sourcePrerequisite ];
+        this.prerequisites = prerequisites;
         this.systems = systems;
         this.departments = departments;
         this.scale = scale;
@@ -57,21 +57,28 @@ export class SpaceframeModel {
         }
     }
 
+    static createStandardSpaceframe(id: Spaceframe, type: CharacterType, name: string, serviceYear: number, source: Source[], systems: number[], departments: number[],
+        scale: number, attacks: string[], talents: TalentSelection[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999) {
+        let sourcePrerequisite = new SourcePrerequisite();
+        sourcePrerequisite.sources = source;
+        let prerequisites = [ sourcePrerequisite ];
+        return new SpaceframeModel(id, type, name, serviceYear, prerequisites, systems, departments, scale, attacks, talents, additionalTraits, maxServiceYear );
+    }
+
     static createCustomSpaceframe(type: CharacterType, serviceYear: number) {
-        return new SpaceframeModel(null, type, "", serviceYear, [],
-            [ Source.None ], [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [],
+        return new SpaceframeModel(null, type, "", serviceYear,
+            [ new SourcePrerequisite(Source.None) ], [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [],
             type === CharacterType.KlingonWarrior ? [ "Klingon Starship"] : [ "Federation Starship" ]);
     }
 }
 
 class Spaceframes {
     private _frames: { [id: number]: SpaceframeModel } = {
-        [Spaceframe.Akira]: new SpaceframeModel(
+        [Spaceframe.Akira]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Akira,
             CharacterType.Starfleet,
             "Akira Class",
             2368,
-            [],
             [ Source.Core, Source.UtopiaPlanitia ],
             [9, 9, 10, 9, 11, 11],
             [0, 0, 2, 0, 0, 1],
@@ -88,12 +95,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Constellation]: new SpaceframeModel(
+        [Spaceframe.Constellation]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Constellation,
             CharacterType.Starfleet,
             "Constellation Class",
             2285,
-            [],
             [ Source.Core, Source.UtopiaPlanitia ],
             [8, 7, 9, 9, 8, 9],
             [0, 1, 1, 1, 0, 0],
@@ -109,12 +115,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Constitution]: new SpaceframeModel(
+        [Spaceframe.Constitution]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Constitution,
             CharacterType.Starfleet,
             "Constitution Class",
             2243,
-            [],
             [ Source.Core, Source.UtopiaPlanitia ],
             [7, 7, 8, 8, 8, 8],
             [1, 0, 1, 0, 1, 0],
@@ -130,12 +135,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-        [Spaceframe.Defiant]: new SpaceframeModel(
+        [Spaceframe.Defiant]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Defiant,
             CharacterType.Starfleet,
             "Defiant Class",
             2371,
-            [],
             [ Source.Core, Source.UtopiaPlanitia ],
             [9, 9, 10, 9, 8, 13],
             [0, 1, 2, 0, 0, 0],
@@ -153,12 +157,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Excelsior]: new SpaceframeModel(
+        [Spaceframe.Excelsior]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Excelsior,
             CharacterType.Starfleet,
             "Excelsior Class",
             2285,
-            [],
             [ Source.Core, Source.UtopiaPlanitia ],
             [8, 8, 9, 8, 9, 9],
             [1, 0, 0, 2, 0, 0],
@@ -174,12 +177,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Galaxy]: new SpaceframeModel(
+        [Spaceframe.Galaxy]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Galaxy,
             CharacterType.Starfleet,
             "Galaxy Class",
             2359,
-            [],
             [ Source.Core, Source.UtopiaPlanitia ],
             [9, 10, 10, 9, 10, 10],
             [1, 0, 0, 0, 1, 1],
@@ -194,12 +196,11 @@ class Spaceframes {
                 TalentSelection.selectTalent("Modular Laboratories"),
                 TalentSelection.selectTalent("Redundant Systems")
             ]),
-        [Spaceframe.Intrepid]: new SpaceframeModel(
+        [Spaceframe.Intrepid]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Intrepid,
             CharacterType.Starfleet,
             "Intrepid Class",
             2371,
-            [],
             [ Source.Core, Source.UtopiaPlanitia ],
             [10, 11, 11, 10, 8, 9],
             [0, 1, 0, 0, 2, 0],
@@ -216,12 +217,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Miranda]: new SpaceframeModel(
+        [Spaceframe.Miranda]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Miranda,
             CharacterType.Starfleet,
             "Miranda Class",
             2274,
-            [],
             [ Source.Core, Source.UtopiaPlanitia ],
             [8, 8, 8, 9, 8, 9],
             [1, 1, 0, 0, 1, 0],
@@ -236,12 +236,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Nova]: new SpaceframeModel(
+        [Spaceframe.Nova]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Nova,
             CharacterType.Starfleet,
             "Nova Class",
             2368,
-            [],
             [ Source.Core, Source.UtopiaPlanitia ],
             [10, 10, 9, 10, 8, 8],
             [0, 0, 0, 1, 2, 0],
@@ -256,12 +255,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Daedalus]: new SpaceframeModel(
+        [Spaceframe.Daedalus]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Daedalus,
             CharacterType.Starfleet,
             "Daedalus Class",
             2140,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [6, 6, 5, 6, 8, 5],
             [0, 0, 0, 2, 1, 0],
@@ -278,12 +276,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2269),
-        [Spaceframe.NX]: new SpaceframeModel(
+        [Spaceframe.NX]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.NX,
             CharacterType.Starfleet,
             "NX Class",
             2151,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [6, 6, 6, 6, 7, 6],
             [0, 1, 0, 1, 1, 0],
@@ -299,12 +296,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2170),
-        [Spaceframe.Hermes]: new SpaceframeModel(
+        [Spaceframe.Hermes]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Hermes,
             CharacterType.Starfleet,
             "Hermes Class",
             2242,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [7, 6, 9, 8, 8, 6],
             [0, 2, 0, 0, 1, 0],
@@ -320,12 +316,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-        [Spaceframe.Oberth]: new SpaceframeModel(
+        [Spaceframe.Oberth]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Oberth,
             CharacterType.Starfleet,
             "Oberth Class",
             2269,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [8, 9, 7, 9, 8, 7],
             [0, 1, 0, 0, 2, 0],
@@ -340,12 +335,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Sydney]: new SpaceframeModel(
+        [Spaceframe.Sydney]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Sydney,
             CharacterType.Starfleet,
             "Sydney Class",
             2279,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [8, 8, 9, 9, 8, 7],
             [0, 2, 0, 1, 0, 0],
@@ -359,12 +353,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Centaur]: new SpaceframeModel(
+        [Spaceframe.Centaur]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Centaur,
             CharacterType.Starfleet,
             "Centaur Class",
             2285,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [8, 8, 9, 8, 8, 9],
             [0, 2, 1, 0, 0, 0],
@@ -380,12 +373,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Ambassador]: new SpaceframeModel(
+        [Spaceframe.Ambassador]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Ambassador,
             CharacterType.Starfleet,
             "Ambassador Class",
             2335,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [9, 9, 9, 9, 10, 9],
             [1, 1, 0, 0, 1, 0],
@@ -402,12 +394,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Nebula]: new SpaceframeModel(
+        [Spaceframe.Nebula]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Nebula,
             CharacterType.Starfleet,
             "Nebula Class",
             2361,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [9, 10, 10, 8, 10, 9],
             [0, 0, 0, 2, 0, 0],
@@ -422,12 +413,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.NewOrleans]: new SpaceframeModel(
+        [Spaceframe.NewOrleans]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.NewOrleans,
             CharacterType.Starfleet,
             "New Orleans Class",
             2364,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [9, 10, 10, 10, 8, 9],
             [0, 1, 0, 1, 1, 0],
@@ -443,12 +433,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Olympic]: new SpaceframeModel(
+        [Spaceframe.Olympic]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Olympic,
             CharacterType.Starfleet,
             "Olympic Class",
             2368,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [10, 10, 10, 9, 9, 7],
             [0, 0, 0, 0, 1, 2],
@@ -464,12 +453,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Steamrunner]: new SpaceframeModel(
+        [Spaceframe.Steamrunner]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Steamrunner,
             CharacterType.Starfleet,
             "Steamrunner Class",
             2370,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [10, 9, 11, 10, 9, 10],
             [0, 1, 1, 0, 1, 0],
@@ -485,12 +473,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Norway]: new SpaceframeModel(
+        [Spaceframe.Norway]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Norway,
             CharacterType.Starfleet,
             "Norway Class",
             2371,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [10, 9, 10, 10, 11, 9],
             [0, 0, 0, 1, 0, 2],
@@ -506,12 +493,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Saber]: new SpaceframeModel(
+        [Spaceframe.Saber]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Saber,
             CharacterType.Starfleet,
             "Saber",
             2371,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [10, 9, 10, 10, 8, 9],
             [0, 2, 1, 0, 0, 0],
@@ -527,12 +513,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Sovereign]: new SpaceframeModel(
+        [Spaceframe.Sovereign]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Sovereign,
             CharacterType.Starfleet,
             "Sovereign Class",
             2371,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [9, 11, 11, 9, 10, 10],
             [1, 0, 1, 0, 1, 0],
@@ -551,12 +536,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Luna]: new SpaceframeModel(
+        [Spaceframe.Luna]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Luna,
             CharacterType.Starfleet,
             "Luna Class",
             2372,
-            [],
             [ Source.CommandDivision, Source.UtopiaPlanitia ],
             [10, 11, 10, 11, 8, 9],
             [0, 0, 0, 1, 2, 0],
@@ -573,12 +557,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Archer]: new SpaceframeModel(
+        [Spaceframe.Archer]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Archer,
             CharacterType.Starfleet,
             "Archer Class",
             2258,
-            [],
             [ Source.TricorderSet, Source.UtopiaPlanitia ],
             [8, 9, 6, 7, 8, 6],
             [0, 0, 1, 2, 0, 0],
@@ -594,12 +577,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-        [Spaceframe.Walker]: new SpaceframeModel(
+        [Spaceframe.Walker]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Walker,
             CharacterType.Starfleet,
             "Walker Class",
             2195,
-            [],
             [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [6, 7, 6, 8, 6, 6],
             [0, 0, 0, 1, 1, 1],
@@ -614,13 +596,12 @@ class Spaceframes {
                 TalentSelection.selectTalent("Rugged Design")
             ],
             [ "Federation Starship" ],
-            2290),
-        [Spaceframe.Shepard]: new SpaceframeModel(
+            2265),
+        [Spaceframe.Shepard]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Shepard,
             CharacterType.Starfleet,
             "Shepard Class",
             2195,
-            [],
             [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [6, 6, 7, 7, 7, 6],
             [0, 0, 1, 1, 1, 0],
@@ -636,12 +617,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-        [Spaceframe.Magee]: new SpaceframeModel(
+        [Spaceframe.Magee]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Magee,
             CharacterType.Starfleet,
             "Magee Class",
             2198,
-            [],
             [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [7, 7, 6, 8, 6, 5],
             [0, 0, 0, 1, 2, 0],
@@ -656,12 +636,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-        [Spaceframe.Cardenas]: new SpaceframeModel(
+        [Spaceframe.Cardenas]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Cardenas,
             CharacterType.Starfleet,
             "Cardenas Class",
             2202,
-            [],
             [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [6, 6, 8, 7, 6, 7],
             [0, 1, 1, 0, 1, 0],
@@ -678,12 +657,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-        [Spaceframe.Hoover]: new SpaceframeModel(
+        [Spaceframe.Hoover]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Hoover,
             CharacterType.Starfleet,
             "Hoover Class",
             2209,
-            [],
             [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [6, 6, 7, 6, 7, 8],
             [0, 0, 1, 1, 1, 0],
@@ -698,12 +676,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-        [Spaceframe.Malachowski]: new SpaceframeModel(
+        [Spaceframe.Malachowski]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Malachowski,
             CharacterType.Starfleet,
             "Malachowski Class",
             2210,
-            [],
             [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [7, 6, 5, 6, 8, 8],
             [0, 0, 2, 1, 0, 0],
@@ -719,12 +696,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-        [Spaceframe.Engle]: new SpaceframeModel(
+        [Spaceframe.Engle]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Engle,
             CharacterType.Starfleet,
             "Engle Class",
             2224,
-            [],
             [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [7, 8, 8, 6, 6, 6],
             [0, 1, 0, 1, 0, 1],
@@ -740,12 +716,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-        [Spaceframe.Nimitz]: new SpaceframeModel(
+        [Spaceframe.Nimitz]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Nimitz,
             CharacterType.Starfleet,
             "Nimitz Class",
             2235,
-            [],
             [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [8, 7, 7, 7, 7, 7],
             [2, 0, 0, 0, 1, 0],
@@ -763,12 +738,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-        [Spaceframe.Crossfield]: new SpaceframeModel(
+        [Spaceframe.Crossfield]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Crossfield,
             CharacterType.Starfleet,
             "Crossfield Class",
             2255,
-            [],
             [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [7, 8, 8, 8, 8, 7],
             [0, 0, 0, 1, 2, 0],
@@ -785,12 +759,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-        [Spaceframe.Hiawatha]: new SpaceframeModel(
+        [Spaceframe.Hiawatha]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Hiawatha,
             CharacterType.Starfleet,
             "Hiawatha Class",
             2235,
-            [],
             [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
             [8, 8, 6, 8, 8, 5],
             [0, 0, 0, 0, 1, 2],
@@ -805,12 +778,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2290),
-        [Spaceframe.StealthShip]: new SpaceframeModel(
+        [Spaceframe.StealthShip]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.StealthShip,
             CharacterType.Starfleet,
             "Stealth Ship",
             2250,
-            [],
             [ Source.DiscoveryCampaign ],
             [8, 8, 6, 9, 6, 6],
             [0, 0, 0, 0, 3, 0],
@@ -826,12 +798,11 @@ class Spaceframes {
             ],
             [ "Federation Starship", "Section 31 Starship" ],
             2350),
-        [Spaceframe.Nimrod]: new SpaceframeModel(
+        [Spaceframe.Nimrod]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Nimrod,
             CharacterType.Starfleet,
             "Nimrod",
             2250,
-            [],
             [ Source.DiscoveryCampaign ],
             [7, 7, 8, 7, 7, 8],
             [0, 0, 1, 1, 1, 0],
@@ -847,12 +818,11 @@ class Spaceframes {
             ],
             [ "Federation Starship", "Section 31 Starship" ],
             2299),
-        [Spaceframe.Shiva]: new SpaceframeModel(
+        [Spaceframe.Shiva]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Shiva,
             CharacterType.Starfleet,
             "Shiva",
             2253,
-            [],
             [ Source.DiscoveryCampaign ],
             [9, 9, 7, 7, 6, 7],
             [1, 1, 0, 1, 0, 0],
@@ -870,12 +840,11 @@ class Spaceframes {
             [ "Federation Starship", "Section 31 Starship" ],
             2299),
         // Utopia Planitia Ships
-        [Spaceframe.JClassYClass]: new SpaceframeModel(
+        [Spaceframe.JClassYClass]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.JClassYClass,
             CharacterType.Starfleet,
             "J-Class/Y-Class",
             2103,
-            [],
             [ Source.UtopiaPlanitia ],
             [4, 4, 5, 5, 6, 4],
             [0, 1, 0, 1, 0, 1],
@@ -888,12 +857,11 @@ class Spaceframes {
             ],
             [ "UESPA Civilian Starship" ],
             2399),
-        [Spaceframe.Delta]: new SpaceframeModel(
+        [Spaceframe.Delta]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Delta,
             CharacterType.Starfleet,
             "Warp Delta",
             2125,
-            [],
             [ Source.UtopiaPlanitia ],
             [6, 5, 6, 6, 5, 5],
             [0, 1, 1, 1, 0, 0],
@@ -909,12 +877,11 @@ class Spaceframes {
             ],
             [ "UESPA Starship" ],
             2190),
-        [Spaceframe.IntrepidType]: new SpaceframeModel(
+        [Spaceframe.IntrepidType]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.IntrepidType,
             CharacterType.Starfleet,
             "Intrepid Type",
             2152,
-            [],
             [ Source.UtopiaPlanitia ],
             [6, 5, 7, 6, 5, 5],
             [0, 1, 1, 0, 1, 0],
@@ -930,12 +897,11 @@ class Spaceframes {
             ],
             [ "UESPA Starship" ],
             2190),
-        [Spaceframe.Antares]: new SpaceframeModel(
+        [Spaceframe.Antares]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Antares,
             CharacterType.Starfleet,
             "Antares",
             2245,
-            [],
             [ Source.UtopiaPlanitia ],
             [8, 6, 7, 8, 7, 6],
             [0, 0, 0, 1, 1, 1],
@@ -949,12 +915,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2315),
-        [Spaceframe.Springfield]: new SpaceframeModel(
+        [Spaceframe.Springfield]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Springfield,
             CharacterType.Starfleet,
             "Springfield",
             2352,
-            [],
             [ Source.UtopiaPlanitia ],
             [10, 9, 10, 10, 8, 8],
             [0, 0, 1, 1, 1, 0],
@@ -970,12 +935,11 @@ class Spaceframes {
             ],
             [ "Federation Starship" ],
             2419),
-        [Spaceframe.RavenType]: new SpaceframeModel(
+        [Spaceframe.RavenType]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.RavenType,
             CharacterType.Starfleet,
             "Raven Type",
             2354,
-            [],
             [ Source.UtopiaPlanitia ],
             [11, 11, 8, 11, 7, 5],
             [0, 0, 0, 0, 2, 1],
@@ -986,12 +950,11 @@ class Spaceframes {
             [
                 TalentSelection.selectTalent("Advanced Sensor Suites")
             ]),
-        [Spaceframe.Niagara]: new SpaceframeModel(
+        [Spaceframe.Niagara]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Niagara,
             CharacterType.Starfleet,
             "Niagara",
             2358,
-            [],
             [ Source.UtopiaPlanitia ],
             [9, 9, 11, 10, 9, 8],
             [0, 1, 0, 0, 1, 1],
@@ -1005,12 +968,11 @@ class Spaceframes {
                 TalentSelection.selectTalent("High-Resolution Sensors"),
                 TalentSelection.selectTalent("Improved Warp Drive")
             ]),
-        [Spaceframe.Challenger]: new SpaceframeModel(
+        [Spaceframe.Challenger]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Challenger,
             CharacterType.Starfleet,
             "Challenger",
             2360,
-            [],
             [ Source.UtopiaPlanitia ],
             [8, 10, 11, 11, 8, 8],
             [0, 1, 0, 1, 1, 0],
@@ -1025,12 +987,11 @@ class Spaceframes {
                 TalentSelection.selectTalent("Improved Warp Drive"),
                 TalentSelection.selectTalent("Redundant Systems [Sensors]")
             ]),
-        [Spaceframe.Freedom]: new SpaceframeModel(
+        [Spaceframe.Freedom]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Freedom,
             CharacterType.Starfleet,
             "Freedom",
             2361,
-            [],
             [ Source.UtopiaPlanitia ],
             [9, 9, 9, 11, 8, 10],
             [1, 0, 1, 0, 1, 0],
@@ -1046,12 +1007,11 @@ class Spaceframes {
                 TalentSelection.selectTalent("Improved Impulse Drive"),
                 TalentSelection.selectTalent("Secondary Reactors")
             ]),
-        [Spaceframe.Prometheus]: new SpaceframeModel(
+        [Spaceframe.Prometheus]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Prometheus,
             CharacterType.Starfleet,
             "Prometheus",
             2373,
-            [],
             [ Source.UtopiaPlanitia ],
             [8, 9, 10, 9, 10, 11],
             [0, 0, 2, 1, 0, 0],
@@ -1066,12 +1026,11 @@ class Spaceframes {
                 TalentSelection.selectTalent("Multi-Vector Assualt Mode"),
                 TalentSelection.selectTalent("Redundant Systems [Engines]")
             ]),
-        [Spaceframe.Vesta]: new SpaceframeModel(
+        [Spaceframe.Vesta]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Vesta,
             CharacterType.Starfleet,
             "Vesta",
             2380,
-            [],
             [ Source.UtopiaPlanitia ],
             [10, 10, 12, 10, 9, 9],
             [0, 1, 0, 1, 1, 0],
@@ -1089,12 +1048,11 @@ class Spaceframes {
                 TalentSelection.selectTalent("Secondary Reactors"),
                 TalentSelection.selectTalent("Additional Propulsion System [Burst Drive]")
             ]),
-        [Spaceframe.Ross]: new SpaceframeModel(
+        [Spaceframe.Ross]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Ross,
             CharacterType.Starfleet,
             "Ross",
             2381,
-            [],
             [ Source.UtopiaPlanitia ],
             [9, 11, 10, 10, 10, 10],
             [0, 0, 0, 1, 1, 1],
@@ -1111,12 +1069,11 @@ class Spaceframes {
                 TalentSelection.selectTalent("Secondary Reactors"),
                 TalentSelection.selectTalent("EXEO Holographic Core")
             ]),
-        [Spaceframe.Inquiry]: new SpaceframeModel(
+        [Spaceframe.Inquiry]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Inquiry,
             CharacterType.Starfleet,
             "Inquiry",
             2394,
-            [],
             [ Source.UtopiaPlanitia ],
             [10, 11, 10, 11, 10, 9],
             [1, 1, 0, 0, 1, 0],
@@ -1133,12 +1090,11 @@ class Spaceframes {
                 TalentSelection.selectTalent("Improved Power Systems"),
                 TalentSelection.selectTalent("Improved Warp Drive")
             ]),
-        [Spaceframe.Reliant]: new SpaceframeModel(
+        [Spaceframe.Reliant]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Reliant,
             CharacterType.Starfleet,
             "Reliant",
             2397,
-            [],
             [ Source.UtopiaPlanitia ],
             [10, 10, 10, 10, 10, 9],
             [0, 1, 0, 1, 0, 1],
@@ -1154,12 +1110,11 @@ class Spaceframes {
                 TalentSelection.selectTalent("Redundant Systems"),
                 TalentSelection.selectTalent("Additional Propulsion System [Quantum Slipstream Burst Drive]")
             ]),
-        [Spaceframe.Sutherland]: new SpaceframeModel(
+        [Spaceframe.Sutherland]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Sutherland,
             CharacterType.Starfleet,
             "Sutherland",
             2398,
-            [],
             [ Source.UtopiaPlanitia ],
             [9, 9, 10, 10, 10, 10],
             [0, 1, 0, 1, 0, 1],
@@ -1173,12 +1128,11 @@ class Spaceframes {
             [
                 TalentSelection.selectTalent("Saucer Separation")
             ]),
-        [Spaceframe.Gagarin]: new SpaceframeModel(
+        [Spaceframe.Gagarin]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Gagarin,
             CharacterType.Starfleet,
             "Gagarin",
             2398,
-            [],
             [ Source.UtopiaPlanitia ],
             [9, 9, 12, 10, 9, 10],
             [0, 1, 1, 1, 0, 0],
@@ -1195,12 +1149,11 @@ class Spaceframes {
                 TalentSelection.selectTalent("Redundant Systems"),
                 TalentSelection.selectTalent("Refracting Energy Shunt")
             ]),
-        [Spaceframe.Odyssey]: new SpaceframeModel(
+        [Spaceframe.Odyssey]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Odyssey,
             CharacterType.Starfleet,
             "Odyssey",
             2381,
-            [],
             [ Source.UtopiaPlanitia ],
             [11, 11, 10, 10, 11, 10],
             [1, 0, 1, 1, 0, 0],
@@ -1218,12 +1171,11 @@ class Spaceframes {
                 TalentSelection.selectTalent("Additional Propulsion System [Quantum Slipstream Burst Drive]"),
                 TalentSelection.selectTalent("Aquarius Escort"),
             ]),
-        [Spaceframe.Pathfinder]: new SpaceframeModel(
+        [Spaceframe.Pathfinder]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Pathfinder,
             CharacterType.Starfleet,
             "Pathfinder",
             2410,
-            [],
             [ Source.UtopiaPlanitia ],
             [9, 11, 11, 11, 9, 9],
             [0, 1, 0, 0, 2, 0],
@@ -1241,12 +1193,11 @@ class Spaceframes {
 
 
         // Klingon Spaceframes
-        [Spaceframe.D5]: new SpaceframeModel(
+        [Spaceframe.D5]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.D5,
             CharacterType.KlingonWarrior,
             "D5-Class Battle Cruiser",
             2146,
-            [Era.Enterprise],
             [ Source.KlingonCore ],
             [6, 7, 7, 6, 7, 8],
             [1, 0, 1, 1, 0, 0],
@@ -1263,12 +1214,11 @@ class Spaceframes {
                 "Klingon Starship"
             ],
             2279),
-        [Spaceframe.Raptor]: new SpaceframeModel(
+        [Spaceframe.Raptor]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Raptor,
             CharacterType.KlingonWarrior,
             "Raptor-class Scout",
             2146,
-            [Era.Enterprise],
             [ Source.KlingonCore ],
             [6, 6, 7, 7, 7, 6],
             [0, 1, 1, 0, 1, 0],
@@ -1286,12 +1236,11 @@ class Spaceframes {
                 "Targ-pit"
             ],
             2270),
-        [Spaceframe.VonTalk]: new SpaceframeModel(
+        [Spaceframe.VonTalk]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.VonTalk,
             CharacterType.KlingonWarrior,
             "Vo'n'Talk",
             2149,
-            [Era.Enterprise],
             [ Source.KlingonCore ],
             [6, 6, 8, 7, 6, 7],
             [0, 1, 1, 1, 0, 0],
@@ -1310,12 +1259,11 @@ class Spaceframes {
                 "Bird-of-Prey"
             ],
             2210),
-        [Spaceframe.KToch]: new SpaceframeModel(
+        [Spaceframe.KToch]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.KToch,
             CharacterType.KlingonWarrior,
             "K'Toch Scout",
             2128,
-            [Era.Enterprise, Era.OriginalSeries],
             [ Source.KlingonCore ],
             [6, 6, 5, 7, 5, 7],
             [0, 1, 0, 1, 1, 0],
@@ -1330,12 +1278,11 @@ class Spaceframes {
                 "Klingon Starship"
             ],
             2310),
-        [Spaceframe.TuYuQ]: new SpaceframeModel(
+        [Spaceframe.TuYuQ]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.TuYuQ,
             CharacterType.KlingonWarrior,
             "Tu'YuQ Exploratory Ship",
             2176,
-            [Era.Enterprise, Era.OriginalSeries],
             [ Source.KlingonCore ],
             [7, 8, 7, 7, 5, 7],
             [0, 0, 1, 0, 1, 1],
@@ -1354,12 +1301,11 @@ class Spaceframes {
                 "Bird-of-Prey"
             ],
             2299),
-        [Spaceframe.D7]: new SpaceframeModel(
+        [Spaceframe.D7]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.D7,
             CharacterType.KlingonWarrior,
             "D7-Class Battle Cruiser",
             2250,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.KlingonCore ],
             [7, 7, 8, 7, 8, 9],
             [0, 1, 2, 0, 0, 0],
@@ -1379,12 +1325,11 @@ class Spaceframes {
                 "Long-Serving (24th century)"
             ],
             2350),
-        [Spaceframe.Brel]: new SpaceframeModel(
+        [Spaceframe.Brel]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Brel,
             CharacterType.KlingonWarrior,
             "B'rel-Class Bird-of-Prey",
             2280,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.KlingonCore ],
             [8, 7, 9, 7, 7, 9],
             [0, 2, 1, 0, 0, 0],
@@ -1403,12 +1348,11 @@ class Spaceframes {
                 "Bird-of-Prey"
             ],
             99999),
-        [Spaceframe.PachNom]: new SpaceframeModel(
+        [Spaceframe.PachNom]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.PachNom,
             CharacterType.KlingonWarrior,
             "Pach'Nom Multirole Escort",
             2297,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.KlingonCore ],
             [8, 7, 8, 8, 10, 8],
             [0, 0, 1, 1, 0, 1],
@@ -1426,12 +1370,11 @@ class Spaceframes {
             [
                 "Klingon Starship"
             ]),
-        [Spaceframe.QoToch]: new SpaceframeModel(
+        [Spaceframe.QoToch]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.QoToch,
             CharacterType.KlingonWarrior,
             "Qo'Toch Heavy Fighter",
             2298,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.KlingonCore ],
             [7, 7, 6, 8, 6, 8],
             [0, 1, 1, 1, 0, 0],
@@ -1445,12 +1388,11 @@ class Spaceframes {
             [
                 "Klingon Starship"
             ]),
-        [Spaceframe.IwChaPar]: new SpaceframeModel(
+        [Spaceframe.IwChaPar]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.IwChaPar,
             CharacterType.KlingonWarrior,
             "Iw'Cha'Par Heavy Explorer",
             2295,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.KlingonCore ],
             [9, 9, 7, 8, 7, 8],
             [0, 0, 2, 0, 1, 0],
@@ -1468,12 +1410,11 @@ class Spaceframes {
                 "Klingon Starship",
                 "Bird-of-Prey"
             ]),
-        [Spaceframe.D12]: new SpaceframeModel(
+        [Spaceframe.D12]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.D12,
             CharacterType.KlingonWarrior,
             "D12-Class Bird-of-Prey",
             2315,
-            [Era.NextGeneration],
             [ Source.KlingonCore ],
             [9, 7, 9, 7, 8, 10],
             [0, 1, 2, 0, 0, 0],
@@ -1495,12 +1436,11 @@ class Spaceframes {
                 "Bad Reputation"
             ],
             99999),
-        [Spaceframe.KlingonCivilianTransport]: new SpaceframeModel(
+        [Spaceframe.KlingonCivilianTransport]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.KlingonCivilianTransport,
             CharacterType.KlingonWarrior,
             "Klingon Civilian Transport",
             2352,
-            [Era.NextGeneration],
             [ Source.KlingonCore ],
             [7, 8, 9, 8, 9, 8],
             [0, 1, 1, 0, 0, 1],
@@ -1518,12 +1458,11 @@ class Spaceframes {
                 "Civilian",
                 "Targ-Pit"
             ]),
-        [Spaceframe.KVort]: new SpaceframeModel(
+        [Spaceframe.KVort]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.KVort,
             CharacterType.KlingonWarrior,
             "K'Vort-Class Bird-of-Prey",
             2349,
-            [Era.NextGeneration],
             [ Source.KlingonCore ],
             [9, 8, 11, 8, 9, 11],
             [0, 2, 1, 0, 0, 0],
@@ -1544,12 +1483,11 @@ class Spaceframes {
                 "Bird-of-Prey"
             ],
             99999),
-        [Spaceframe.ParTok]: new SpaceframeModel(
+        [Spaceframe.ParTok]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.ParTok,
             CharacterType.KlingonWarrior,
             "Par'Tok Transport",
             2356,
-            [Era.NextGeneration],
             [ Source.KlingonCore ],
             [9, 7, 10, 8, 8, 7],
             [0, 1, 0, 2, 0, 0],
@@ -1568,12 +1506,11 @@ class Spaceframes {
                 "Civilian",
                 "Targ-Pit"
             ]),
-        [Spaceframe.Toron]: new SpaceframeModel(
+        [Spaceframe.Toron]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Toron,
             CharacterType.KlingonWarrior,
             "Toron-Class Shuttlepod",
             2357,
-            [Era.NextGeneration],
             [ Source.KlingonCore ],
             [5, 5, 7, 5, 5, 7],
             [0, 2, 1, 1, 0, 0],
@@ -1589,12 +1526,11 @@ class Spaceframes {
                 "Klingon Ship",
                 "Small Craft"
             ]),
-        [Spaceframe.VorCha]: new SpaceframeModel(
+        [Spaceframe.VorCha]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.VorCha,
             CharacterType.KlingonWarrior,
             "Vor'Cha-Class Attack Cruiser",
             2367,
-            [Era.NextGeneration],
             [ Source.KlingonCore ],
             [9, 9, 10, 9, 10, 10],
             [1, 0, 2, 0, 0, 0],
@@ -1614,12 +1550,11 @@ class Spaceframes {
                 "Klingon Starship"
             ],
             99999),
-        [Spaceframe.NeghVar]: new SpaceframeModel(
+        [Spaceframe.NeghVar]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.NeghVar,
             CharacterType.KlingonWarrior,
             "Negh'Var-Class Warship",
             2372,
-            [Era.NextGeneration],
             [ Source.KlingonCore ],
             [8, 10, 9, 8, 10, 12],
             [1, 0, 1, 1, 0, 0],
@@ -1640,12 +1575,11 @@ class Spaceframes {
                 "Klingon Starship"
             ],
             99999),
-        [Spaceframe.DiscoBirdOfPrey]: new SpaceframeModel(
+        [Spaceframe.DiscoBirdOfPrey]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.DiscoBirdOfPrey,
             CharacterType.KlingonWarrior,
             "Bird of Prey (Mid 23rd Century)",
             2233,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.DiscoveryCampaign ],
             [6, 6, 7, 8, 7, 8],
             [0, 1, 2, 0, 0, 0],
@@ -1663,12 +1597,11 @@ class Spaceframes {
                 "Klingon Starship", "Bird-Of-Prey"
             ],
             2285),
-        [Spaceframe.Qugh]: new SpaceframeModel(
+        [Spaceframe.Qugh]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Qugh,
             CharacterType.KlingonWarrior,
             "Qugh-class Destroyer",
             2130,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.DiscoveryCampaign ],
             [4, 4, 7, 5, 6, 6],
             [0, 1, 1, 1, 0, 0],
@@ -1686,12 +1619,11 @@ class Spaceframes {
                 "Klingon Starship", "Hur'q Starship"
             ],
             2260),
-        [Spaceframe.Daspu]: new SpaceframeModel(
+        [Spaceframe.Daspu]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Daspu,
             CharacterType.KlingonWarrior,
             "Daspu'-class Escort",
             2175,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.DiscoveryCampaign ],
             [6, 5, 5, 6, 7, 7],
             [0, 1, 1, 1, 0, 0],
@@ -1710,12 +1642,11 @@ class Spaceframes {
                 "Klingon Starship", "Hur'q Starship", "Targ Pit"
             ],
             2269),
-        [Spaceframe.Qoj]: new SpaceframeModel(
+        [Spaceframe.Qoj]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Qoj,
             CharacterType.KlingonWarrior,
             "Qoj-class Dreadnought",
             2225,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.DiscoveryCampaign ],
             [8, 6, 6, 7, 8, 8],
             [1, 1, 1, 0, 0, 0],
@@ -1735,12 +1666,11 @@ class Spaceframes {
                 "Klingon Starship", "Hur'q Starship"
             ],
             2269),
-        [Spaceframe.Batlh]: new SpaceframeModel(
+        [Spaceframe.Batlh]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Batlh,
             CharacterType.KlingonWarrior,
             "Batlh-class Escort",
             2203,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.DiscoveryCampaign ],
             [7, 7, 6, 7, 7, 8],
             [0, 0, 1, 1, 1, 0],
@@ -1759,12 +1689,11 @@ class Spaceframes {
                 "Klingon Starship"
             ],
             2268),
-        [Spaceframe.Chargh]: new SpaceframeModel(
+        [Spaceframe.Chargh]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Chargh,
             CharacterType.KlingonWarrior,
             "Chargh / Jach-class Battlecruiser",
             2203,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.DiscoveryCampaign ],
             [6, 7, 7, 6, 6, 8],
             [0, 0, 2, 1, 0, 0],
@@ -1783,12 +1712,11 @@ class Spaceframes {
                 "Klingon Starship"
             ],
             2269),
-        [Spaceframe.NaQjej]: new SpaceframeModel(
+        [Spaceframe.NaQjej]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.NaQjej,
             CharacterType.KlingonWarrior,
             "Na'Qjej-class Cleave Ship",
             2185,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.DiscoveryCampaign ],
             [6, 5, 6, 6, 9, 7],
             [0, 2, 0, 1, 0, 0],
@@ -1806,12 +1734,11 @@ class Spaceframes {
                 "Klingon Starship", "Doomed"
             ],
             2269),
-        [Spaceframe.Elth]: new SpaceframeModel(
+        [Spaceframe.Elth]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Elth,
             CharacterType.KlingonWarrior,
             "'Elth-class Assault Ship",
             2185,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.DiscoveryCampaign ],
             [6, 6, 8, 7, 8, 6],
             [1, 0, 1, 0, 0, 1],
@@ -1830,12 +1757,11 @@ class Spaceframes {
                 "Klingon Starship"
             ],
             2304),
-        [Spaceframe.BortasBir]: new SpaceframeModel(
+        [Spaceframe.BortasBir]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.BortasBir,
             CharacterType.KlingonWarrior,
             "Bortas bir-class Battlecruiser",
             2235,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.DiscoveryCampaign ],
             [6, 7, 7, 7, 8, 8],
             [0, 2, 1, 0, 0, 0],
@@ -1855,12 +1781,11 @@ class Spaceframes {
                 "Klingon Starship", "Hur'q Starship"
             ],
             2258),
-        [Spaceframe.Sech]: new SpaceframeModel(
+        [Spaceframe.Sech]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Sech,
             CharacterType.KlingonWarrior,
             "Sech-class Fast Frigate",
             2231,
-            [Era.OriginalSeries, Era.NextGeneration],
             [ Source.DiscoveryCampaign ],
             [7, 7, 8, 7, 7, 7],
             [0, 2, 1, 0, 0, 0],
@@ -1880,11 +1805,10 @@ class Spaceframes {
             2269),
 
 
-        //[Spaceframe.]: new SpaceframeModel(
+        //[Spaceframe.]: SpaceframeModel.createStandardSpaceframe(
         //    CharacterType.Starfleet,
         //    "",
         //    0,
-        //    [],
         //    [ Source.Core, Source.UtopiaPlanitia ],
         //    [],
         //    [],

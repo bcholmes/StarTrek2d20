@@ -334,7 +334,7 @@ class MissionProfiles {
     getMissionProfiles(type: CharacterType) {
         let profiles: MissionProfileModel[] = [];
         let list = (type === CharacterType.KlingonWarrior) ? this._klingonProfiles : this._profiles;
-        for (let [key, profile] of Object.entries(list)) {
+        for (let profile of Object.values(list)) {
             if (profile && profile.isPrerequisitesFulfilled()) {
                 profiles.push(profile);
             }
