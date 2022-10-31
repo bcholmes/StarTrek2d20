@@ -118,7 +118,7 @@ export class KobaliSpeciesAttributeController extends AttributeController {
             this.originalSpecies.attributes.forEach(a => this.selections.push(a));
         }
     }
-    
+
     isShown(attribute: Attribute) {
         return this.species.secondaryAttributes.indexOf(attribute) >= 0
             || this.originalSpecies.attributes.indexOf(attribute) >= 0
@@ -151,7 +151,7 @@ export class KobaliSpeciesAttributeController extends AttributeController {
 
 class AttributeControllerFactoryImpl {
     create(character: Character, onChanged: (done: boolean) => void = (done) => {}) {
-        if (character.species === Species.Human) {
+        if (character.species === Species.Human || character.species === Species.Hologram || character.species === Species.Borg) {
             return new HumanSpeciesAttributeController(character, onChanged);
         } else if (character.species === Species.Ktarian) {
             return new KtarianSpeciesAttributeController(character, onChanged);

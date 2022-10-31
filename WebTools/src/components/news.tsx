@@ -11,6 +11,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.221030</b>
+                <ul>
+                    <li>
+                        Another bug fix: this time relating to initial species attributes for Holographic characters.
+                    </li>
+                </ul>
                 <b>v1.221029</b>
                 <ul>
                     <li>
