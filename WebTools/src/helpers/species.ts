@@ -1396,7 +1396,7 @@ class _Species {
             "Cybernetically-enhanced characters are always mixed-species characters – their original species, and their new status as a cybernetically-enhanced individual."],
             [Attribute.Control, Attribute.Fitness, Attribute.Reason],
             "Cybernetically Enhanced",
-            "Thoughmostcyborgs still consider themselves to be members of their original species, there are some who cannot help but face the reality that every day they are alive is thanks to the machinery installed in their bodies. They embrace their reality with stoicism and with determination to prove to others that they are more than just a combination of organic and cybernetic parts but are living beings in their own rights. Some even come to fully embrace the advantages their new components can offer them and use it to leverage an advantage over others.",
+            "Though most cyborgs still consider themselves to be members of their original species, there are some who cannot help but face the reality that every day they are alive is thanks to the machinery installed in their bodies. They embrace their reality with stoicism and with determination to prove to others that they are more than just a combination of organic and cybernetic parts but are living beings in their own rights. Some even come to fully embrace the advantages their new components can offer them and use it to leverage an advantage over others.",
             "Artificial but Still Alive.",
             [TalentsHelper.getTalent("Synthetic Physiology"), TalentsHelper.getTalent("Analytical Recall")],
             "Based on the name conventions of the original species.",
