@@ -42,7 +42,7 @@ export class EnvironmentDetailsPage extends React.Component<IPageProperties, {}>
     }
 
     render() {
-        var env = EnvironmentsHelper.getEnvironment(character.environment);
+        var env = EnvironmentsHelper.getEnvironment(character.environment, character.type);
         const species = SpeciesHelper.getSpeciesByType(character.species);
         var otherSpeciesName = "";
 

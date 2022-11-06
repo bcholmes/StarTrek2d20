@@ -30,7 +30,7 @@ export class SupportingCharacterView extends React.Component<ISupportingCharacte
 
 
     render() {
-        return (<div className="container ml-0">
+        return (<div>
             <Header>{this.getRankAbbreviation() + ' ' + (this.props.character.name ? this.props.character.name : "Unnamed Character")}</Header>
             <div className="row mt-4" style={{alignItems: "baseline"}}>
                 <div className="col-md-2 view-field-label pb-2">Pronouns:</div>
@@ -126,9 +126,8 @@ export class SupportingCharacterView extends React.Component<ISupportingCharacte
         let weapons = this.props.character.determineWeapons().map((w, i) => {
             let dice = w.dice;
             dice += this.props.character.skills[Skill.Security].expertise;
-            return (<WeaponView key={'weapon-' + i} weapon={w} dice={dice} />); 
+            return (<WeaponView key={'weapon-' + i} weapon={w} dice={dice} />);
         });
         return (<div>{weapons}</div>);
     }
-
 }

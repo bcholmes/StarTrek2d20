@@ -13,6 +13,7 @@ import {CharacterSheetRegistry} from '../helpers/sheets';
 import { AlliedMilitaryType } from '../helpers/alliedMilitary';
 import replaceDiceWithArrowhead from '../common/arrowhead';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import { marshaller } from '../helpers/marshaller';
 
 
 interface IFinishPageState {
@@ -143,7 +144,7 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
         }
 
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <CharacterCreationBreadcrumbs />
                 <div className="page-text">
                     Your character is finished. Export your character to PDF, or use the "Profile" option in the left-hand bar to see the chosen options and
@@ -169,7 +170,7 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
                     <ul>
                         {character.baseTraits.map((e,i) => { return (<li key={'trait-' + i}>{e}</li>); })}
                     </ul>
-                        
+
                     <div>You can specify additional traits, here.</div>
                     <div className="textinput-label">Traits</div>
                     <input type="text" onChange={() => this.onTraitsChanged() } ref={(input) => this.traits = input}/>
@@ -181,19 +182,24 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
                 <div className="panel">
                 </div>
                 <br/>
-                <div className="button-container">
-                <Button text="Export to PDF" className="button-small" onClick={() => this.showDialog() } />
-                        <br/>
+                <div className="button-container mb-5">
+                    <Button text="Export to PDF" className="button-small mr-2" onClick={() => this.showDialog() }  buttonType={true} />
+                    <Button text="View" className="button-small mr-2" onClick={() => this.showViewPage() } buttonType={true} />
                 </div>
             </div>
         );
     }
 
+    showViewPage() {
+        const value = marshaller.encodeMainCharacter(character);
+        window.open('/view?s=' + value, "_blank");
+    }
+
     renderAssignment() {
 
-        const multiDiscipline = character.hasTalent("Multi-Discipline") 
-            ? <div>Because your character has the <b>Multi-Discipline talent</b>, you may choose <b>two roles</b>. 
-                Some options (e.g. Commanding Officer, Admiral) are excluded from the available roles.</div> 
+        const multiDiscipline = character.hasTalent("Multi-Discipline")
+            ? <div>Because your character has the <b>Multi-Discipline talent</b>, you may choose <b>two roles</b>.
+                Some options (e.g. Commanding Officer, Admiral) are excluded from the available roles.</div>
             : undefined;
 
         const roleList = this.roles.map((r, i) => {
@@ -219,10 +225,10 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
                     <tbody>
                         {roleList}
                     </tbody>
-                </table>) 
+                </table>)
             : undefined;
 
-        const roleSelection = (this.state.roleSelectionAllowed != null && !character.hasTalent("Multi-Discipline")) 
+        const roleSelection = (this.state.roleSelectionAllowed != null && !character.hasTalent("Multi-Discipline"))
             ? (<CheckBox
                 text="Allow character to have a role (GM's decision)"
                 value={this.state.roleSelectionAllowed}
@@ -231,18 +237,18 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
                 />)
             : undefined;
 
-        const job = (roles == null) 
+        const job = (roles == null)
             ? (<div>
                     <div className="textinput-label">Job</div>
                     <input type="text" onChange={(e) => this.onJobChanged(e.target.value) } value={this.state.jobAssignment || ""} />
-                </div>) 
+                </div>)
             : undefined;
 
-        const cadetNote = (roles == null && character.type === CharacterType.Cadet) 
+        const cadetNote = (roles == null && character.type === CharacterType.Cadet)
             ? (<div>Cadets do not normally have a key role and instead have a simple job assignment. Cadets might be given a role in special circumstances.</div>)
             : null;
 
-        const roleDescription = (roles != null) 
+        const roleDescription = (roles != null)
         ? (<div>
                 Select the role your character has on the starship they service.
                 This choice will be based on your highest discipline(s).
@@ -256,7 +262,7 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
             {cadetNote}
             {roleDescription}
             {roleSelection}
-            {multiDiscipline}                
+            {multiDiscipline}
             {roles}
             {job}
 
@@ -270,7 +276,7 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
     renderRank() {
         if (character.isCivilian() || character.age.isChild()) {
             return null;
-        } else if (character.type === CharacterType.AlliedMilitary && character.typeDetails 
+        } else if (character.type === CharacterType.AlliedMilitary && character.typeDetails
             && (character.typeDetails as AlliedMilitaryDetails).alliedMilitary.type === AlliedMilitaryType.OTHER) {
 
                 return (<div className="panel">

@@ -570,10 +570,10 @@ class CareerEvents {
         return character.type === CharacterType.KlingonWarrior ? this._klingonEvents : this._events;
     }
 
-    getCareerEvent(id: number): CareerEventModel {
+    getCareerEvent(id: number, type: CharacterType): CareerEventModel {
         let event = undefined;
 
-        let list = character.type === CharacterType.KlingonWarrior ? this._klingonEvents : this._events;
+        let list = type === CharacterType.KlingonWarrior ? this._klingonEvents : this._events;
         list.forEach(ev => {
             if (ev.roll === id) {
                 event = ev;
@@ -599,8 +599,8 @@ class CareerEvents {
         return event;
     }
 
-    applyCareerEvent(id: number) {
-        let event = this.getCareerEvent(id);
+    applyCareerEvent(id: number, type: CharacterType) {
+        let event = this.getCareerEvent(id, type);
         event.onApply();
     }
 

@@ -42,7 +42,7 @@ export class CareerPage extends React.Component<IPageProperties, ICareerPageStat
             );
 
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <CharacterCreationBreadcrumbs />
                 {content}
             </div>

@@ -72,15 +72,19 @@ export class CharacterSerializer {
     }
 
     public static serializeSpecies(primary: Species, secondary: Species) {
-        const mixed = secondary != null
-            ? `/${SpeciesHelper.getSpeciesByType(secondary).name}`
-            : "";
+        if (primary == null) {
+            return "";
+        } else {
+            const mixed = secondary != null
+                ? `/${SpeciesHelper.getSpeciesByType(secondary).name}`
+                : "";
 
-        return `${SpeciesHelper.getSpeciesByType(primary).name}${mixed}`;
+            return `${SpeciesHelper.getSpeciesByType(primary).name}${mixed}`;
+        }
     }
 
-    public static serializeEnvironment(environment: Environment, otherSpecies: string) {
-        let environmentModel = (environment == null /* or, implicitly, undefined */) ? undefined : EnvironmentsHelper.getEnvironment(environment);
+    public static serializeEnvironment(environment: Environment, otherSpecies: string, type: CharacterType) {
+        let environmentModel = (environment == null /* or, implicitly, undefined */) ? undefined : EnvironmentsHelper.getEnvironment(environment, type);
         if (environmentModel) {
             let result = environmentModel.name;
             if (environment === Environment.AnotherSpeciesWorld) {

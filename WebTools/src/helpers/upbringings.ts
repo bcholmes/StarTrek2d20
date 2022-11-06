@@ -391,6 +391,16 @@ class Upbringings {
             character.attributes[upbringing.attributeRebelPlus1].value += 1;
         }
     }
+
+    getUpbringingByTypeName(typeName: string, type: CharacterType) {
+        let list = this.getUpbringingList(type, false);
+        let filteredList = list.filter(u => Upbringing[u.id] === typeName);
+        if (filteredList.length === 0) {
+            list = this.getUpbringingList(type, true);
+            filteredList = list.filter(u => Upbringing[u.id] === typeName);
+        }
+        return filteredList.length === 0 ? undefined : filteredList[0];
+    }
 }
 
 export const UpbringingsHelper = new Upbringings();

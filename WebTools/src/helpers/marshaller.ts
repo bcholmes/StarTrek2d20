@@ -1,18 +1,21 @@
 import base64url from 'base64url';
 import pako from 'pako';
-import { Character, CharacterAttribute, CharacterSkill } from '../common/character';
+import { Character, CharacterAttribute, CharacterSkill, CharacterTalent } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { ShipBuildType, ShipBuildTypeModel, SimpleStats, Starship } from '../common/starship';
 import { Attribute } from './attributes';
 import { allDepartments, Department } from './departments';
+import { Environment, EnvironmentsHelper } from './environments';
 import { MissionPod, MissionPodHelper } from './missionPods';
 import { MissionProfile, MissionProfileHelper } from './missionProfiles';
 import { Skill } from './skills';
 import { Spaceframe } from './spaceframeEnum';
 import { SpaceframeHelper, SpaceframeModel } from './spaceframes';
+import { SpeciesHelper } from './species';
 import { Species } from './speciesEnum';
 import { allSystems, System } from './systems';
 import { TalentSelection, TalentsHelper } from './talents';
+import { Upbringing, UpbringingsHelper } from './upbringings';
 import { CaptureType, CaptureTypeModel, DeliverySystem, DeliverySystemModel, EnergyLoadType, EnergyLoadTypeModel, TorpedoLoadType, TorpedoLoadTypeModel, UsageCategory, Weapon, WeaponType } from './weapons';
 
 class Marshaller {
@@ -32,8 +35,56 @@ class Marshaller {
             "traits": this.parseTraits(character.additionalTraits),
             "focuses": [...character.focuses]
         };
-        console.log(JSON.stringify(sheet));
         return this.encode(sheet);
+    }
+
+    encodeMainCharacter(character: Character) {
+        let sheet = {
+            "stereotype": "mainCharacter",
+            "type": CharacterType[character.type],
+            "age": character.age ? character.age.name : undefined,
+            "environment": character.environment != null
+                ? {
+                    "id": Environment[character.environment],
+                    "otherSpeciesWorld": character.otherSpeciesWorld
+                  }
+                : undefined,
+            "upbringing": character.upbringing != null
+                ? {
+                    "id": Upbringing[character.upbringing.id],
+                    "accepted": character.acceptedUpbringing
+                  }
+                : undefined,
+            "name": character.name,
+            "pronouns": character.pronouns,
+            "lineage": character.lineage,
+            "house": character.house,
+            "role": character.role,
+            "assignedShip": character.assignedShip,
+            "jobAssignment": character.jobAssignment,
+            "careerEvents": [...character.careerEvents],
+            "rank": character.rank,
+            "species": Species[character.species],
+            "mixedSpecies": character.mixedSpecies ? Species[character.mixedSpecies] : null,
+            "attributes": this.toAttributeObject(character.attributes),
+            "disciplines": this.toSkillObject(character.skills),
+            "traits": this.parseTraits(character.additionalTraits),
+            "focuses": [...character.focuses],
+            "talents": this.toTalentList(character.talents),
+            "values": character.values
+        };
+        return this.encode(sheet);
+    }
+
+    toTalentList(talents: { [name: string]: CharacterTalent }) {
+        let result = [];
+        for (let name in talents) {
+            let talent = talents[name];
+            for (let i = 0; i < talent.rank; i++) {
+                result.push({ "name": name });
+            }
+        }
+        return result;
     }
 
     toAttributeObject(attributes: CharacterAttribute[]) {
@@ -316,6 +367,100 @@ class Marshaller {
         }
 
         return new Weapon(usageCategory, name, baseDice, hardCodedQualities, weaponType, loadType, deliverySystem);
+    }
+
+    decodeCharacter(json: any) {
+        let result = new Character();
+        let type = CharacterTypeModel.getCharacterTypeByTypeName(json.type);
+        if (type) {
+            result.type = type.type;
+        }
+        result.name = json.name;
+        result.additionalTraits = json.traits ? json.traits.join(", ") : "";
+        result.rank = json.rank;
+        result.role = json.role;
+        result.jobAssignment = json.jobAssignment;
+        result.assignedShip = json.assignedShip;
+        result.pronouns = json.pronouns;
+        if (json.careerEvents) {
+            result.careerEvents = [...json.careerEvents];
+        }
+        if (json.lineage) {
+            result.lineage = json.lineage;
+        }
+        if (json.house) {
+            result.house = json.house;
+        }
+        if (json.species != null) {
+            let speciesCode = SpeciesHelper.getSpeciesTypeByName(json.species);
+            let species = SpeciesHelper.getSpeciesByType(speciesCode);
+            if (species != null) {
+                result.species = speciesCode;
+                result.addTrait(species.trait);
+            }
+        }
+        if (json.mixedSpecies != null) {
+            let speciesCode = SpeciesHelper.getSpeciesTypeByName(json.mixedSpecies);
+            let species = SpeciesHelper.getSpeciesByType(speciesCode);
+            if (species != null) {
+                result.mixedSpecies = speciesCode;
+            }
+        }
+
+        result.focuses = [...json.focuses];
+        if (json.attributes) {
+            result.attributes.forEach(a => {
+                let value = json.attributes[Attribute[a.attribute]];
+                if (value != null) {
+                    a.value = value;
+                }
+            });
+        }
+        if (json.disciplines) {
+            result.skills.forEach(s => {
+                let value = json.disciplines[Skill[s.skill]];
+                if (value != null) {
+                    s.expertise = value;
+                }
+            });
+        }
+        if (json.values) {
+            json.values.forEach((v, i) => {
+                if (i === 0) {
+                    result.environmentValue = v;
+                } else if (i === 1) {
+                    result.trackValue = v;
+                } else if (i === 2) {
+                    result.careerValue = v;
+                } else if (i === 3) {
+                    result.finishValue = v;
+                }
+            });
+        }
+        if (json.environment) {
+            let environment = EnvironmentsHelper.getEnvironmentByTypeName(json.environment.id, result.type);
+            if (environment) {
+                result.environment = environment.id;
+                if (result.environment === Environment.AnotherSpeciesWorld) {
+                    result.otherSpeciesWorld = json.environment.otherSpeciesWorld;
+                }
+            }
+        }
+
+        if (json.upbringing) {
+            result.upbringing = UpbringingsHelper.getUpbringingByTypeName(json.upbringing.id, result.type);
+            result.acceptedUpbringing = json.upbringing.accepted;
+        }
+
+        if (json.talents) {
+            json.talents.forEach(t => {
+                let talent = TalentsHelper.getTalentViewModel(t.name);
+                if (talent) {
+                    result.addTalent(talent);
+                }
+            });
+        }
+        return result;
     }
 }
 

@@ -49,7 +49,7 @@ export class UpbringingSelection extends React.Component<IUpbringingSelectionPro
                             <div>{AttributesHelper.getAttributeName(u.attributeRebelPlus1) } +1</div>
                         </td>
                         <td>{disciplines}</td>
-                        <td><Button className="button-small" text="Select" onClick={() => { this.props.onSelection(u) } } /></td>
+                        <td className="text-right"><Button className="button-small" text="Select" onClick={() => { this.props.onSelection(u) } } buttonType={true} /></td>
                     </tr>
                 )
             }

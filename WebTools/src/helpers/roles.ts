@@ -137,7 +137,7 @@ class Roles {
             "The captain. Even if the commanding officer does not hold the rank of captain, they will be referred to as captain by their subordinates. Every ship must have a commanding officer.",
             Skill.Command,
             "The commanding officer may spend a point of Determination to grant any other character they can communicate with one point of Determination; this does not have to be linked to a Value.",
-            new SourcePrerequisite(Source.Core), 
+            new SourcePrerequisite(Source.Core),
             new NotPrerequisite(new CareersPrerequisite(Career.Young)),
             new NotPrerequisite(new EnlistedPrerequisite()),
             new NotKlingonPrerequisite(),
@@ -212,7 +212,7 @@ class Roles {
             Skill.Conn,
             "When the flight controller is required to analyze or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",
             new AnyOfPrerequisite(
-                new EraPrerequisite(Era.Enterprise, Era.NextGeneration), 
+                new EraPrerequisite(Era.Enterprise, Era.NextGeneration),
                 new NotPrerequisite(new SourcePrerequisite(Source.TricorderSet))),
             new SourcePrerequisite(Source.Core),
             new NotKlingonPrerequisite(),
@@ -530,7 +530,7 @@ class Roles {
             "When you succeed at a task to investigate a crime scene, or to question a witness or suspect, you generate one bonus Momentum. Bonus Momentum may not be saved. In addition, your knowledge of local criminal activity means that once per scene, you may create an advantage representing an informant’s information by adding 1 to Threat rather than spending 2 Momentum.",
             new SourcePrerequisite(Source.PlayersGuide),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new CivilianPrerequisite()),    
+            new CivilianPrerequisite()),
         new RoleModel(
             Role.Expert,
             "Expert",
@@ -557,7 +557,7 @@ class Roles {
             "Once per adventure, you can waive the Opportunity costs on up to three items of equip- ment being acquired by other player characters. You may even allow other player characters to obtain items that are not normally available to them (such as disruptors to a Starfleet crew, or items which are restricted or illegal), though you add 1 to Threat for each such item provided.",
             new SourcePrerequisite(Source.PlayersGuide),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new CivilianPrerequisite()),    
+            new CivilianPrerequisite()),
         new RoleModel(
             Role.PoliticalLiaison,
             "Political Liaison",
@@ -594,10 +594,10 @@ class Roles {
             new NotTalentPrerequisite("Advanced Team Dynamics"),
             new SourcePrerequisite(Source.PlayersGuide),
             new AdultPrerequisite()),
-    
 
 
-            
+
+
     ];
 
     getRoles() {
@@ -645,9 +645,9 @@ class Roles {
         return result;
     }
 
-    getRoleModelByName(role: string) {
+    getRoleModelByName(role: string, type: CharacterType) {
 
-        var list = this.getRoles();
+        var list = this._roles;
         for (var r of list) {
             if (r.name === role) {
                 return r;

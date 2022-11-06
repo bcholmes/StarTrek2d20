@@ -53,6 +53,11 @@ export class CharacterTypeModel {
         });
     }
 
+    public static getCharacterTypeByTypeName(name: String) {
+        let matches = CharacterTypeModel.TYPES.filter(t => CharacterType[t.type] === name);
+        return matches.length === 0 ? undefined : matches[0];
+    }
+
     public static getStarshipTypes() {
         return [ CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1] ];
     }

@@ -45,7 +45,7 @@ class CharacterSheetData {
     }
 
     private getEnvironmentString() {
-        let env = character.environment >= 0 ? EnvironmentsHelper.getEnvironment(character.environment).name : "None";
+        let env = character.environment >= 0 ? EnvironmentsHelper.getEnvironment(character.environment, character.type).name : "None";
 
         if (character.environment === Environment.AnotherSpeciesWorld) {
             env += ` (${character.otherSpeciesWorld})`;
@@ -124,7 +124,7 @@ export class CharacterSheet extends React.Component<ICharacterSheetProperties, {
         }
 
         let careerEvents = character.careerEvents.map((e, i) => {
-            return (<div key={i}>{CareerEventsHelper.getCareerEvent(e).name}</div>)
+            return (<div key={i}>{CareerEventsHelper.getCareerEvent(e, character.type).name}</div>)
         });
 
         let containerClass = this.props.showProfile ? "sheet-container sheet-container-visible" :  "sheet-container sheet-container-hidden";

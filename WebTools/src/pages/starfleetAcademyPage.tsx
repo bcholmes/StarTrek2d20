@@ -35,7 +35,7 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
                 <Button className="button" text="Select Training Track" onClick={() => this.showTrackForType() } />
                 <Button className="button" text="Roll Training Track" onClick={() => this.rollTrackForType() } />
             </div>)
-    
+
 
         var content = !this.state.showSelection ?
             (
@@ -53,7 +53,7 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
             );
 
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <CharacterCreationBreadcrumbs />
                 {content}
             </div>

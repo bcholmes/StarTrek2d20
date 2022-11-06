@@ -130,7 +130,6 @@ export class Character extends Construct {
     public careerValue?: string;
     public finishValue?: string;
     public focuses: string[];
-    public stress?: number;
     public typeDetails: CharacterTypeDetails;
     public workflow?: Workflow;
     public pronouns: string = '';
@@ -163,6 +162,36 @@ export class Character extends Construct {
 
     get steps() {
         return this._steps;
+    }
+
+    get stress() {
+        return this.attributes[Attribute.Fitness].value + this.skills[Skill.Security].expertise;
+    }
+
+    get values() {
+        let result = [];
+        if (this.environmentValue) {
+            result.push(this.environmentValue);
+        }
+        if (this.trackValue) {
+            result.push(this.trackValue);
+        }
+        if (this.careerValue) {
+            result.push(this.careerValue);
+        }
+        if (this.finishValue) {
+            result.push(this.finishValue);
+        }
+        return result;
+    }
+
+    getTalentNameList() {
+        let result = []
+        for (let name in this.talents) {
+            let t = this.talents[name];
+            result.push(t.rank === 1 ? name : (name + " [x" + t.rank + "]"));
+        }
+        return result;
     }
 
     determineWeapons() {
@@ -283,7 +312,7 @@ export class Character extends Construct {
     getAllTraits() {
         let traits = this.baseTraits;
         if (this.additionalTraits) {
-            traits.push(character.additionalTraits);
+            traits.push(this.additionalTraits);
         }
 
         let result = "";
@@ -436,7 +465,6 @@ export class Character extends Construct {
         this.focuses.forEach(f => {
             character.focuses.push(f);
         });
-        character.stress = this.stress;
         if (this.workflow) {
             character.workflow = this.workflow.copy();
         }

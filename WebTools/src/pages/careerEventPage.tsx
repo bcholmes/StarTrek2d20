@@ -42,7 +42,7 @@ export class CareerEventPage extends React.Component<IPageProperties, ICareerEve
             );
 
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <CharacterCreationBreadcrumbs />
                 {content}
             </div>
@@ -64,7 +64,7 @@ export class CareerEventPage extends React.Component<IPageProperties, ICareerEve
 
     private selectCareerEvent(event: number) {
         character.careerEvents.push(event);
-        CareerEventsHelper.applyCareerEvent(event);
+        CareerEventsHelper.applyCareerEvent(event, character.type);
 
         if (character.careerEvents.length === 1) {
             Navigation.navigateToPage(PageIdentity.CareerEvent1Details);

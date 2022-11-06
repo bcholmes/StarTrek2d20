@@ -27,7 +27,7 @@ export class CareerEventSelection extends React.Component<ICareerEventSelectionP
                     <td className="selection-header">{e.name}</td>
                     <td>{attributes}</td>
                     <td>{disciplines}</td>
-                    <td><Button className="button-small" text="Select" onClick={() => { this.props.onSelection(e.roll) } } /></td>
+                    <td className="text-right"><Button className="button-small" text="Select" onClick={() => { this.props.onSelection(e.roll) } } buttonType={true}/></td>
                 </tr>
             )
         });

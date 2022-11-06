@@ -1,12 +1,8 @@
 import React from "react";
-import { Character } from "../common/character";
-import { Header } from "../components/header";
 import { StarshipView } from "../components/starshipView";
 import { SupportingCharacterView } from "../components/supportingCharacterView";
-import { Attribute } from "../helpers/attributes";
 import { marshaller } from "../helpers/marshaller";
-import { Skill } from "../helpers/skills";
-import { SpeciesHelper } from "../helpers/species";
+import { MainCharacterView } from "../view/mainCharacterView";
 import { IPageProperties } from "./iPageProperties";
 
 export class ViewSheetPage extends React.Component<IPageProperties, {}> {
@@ -21,7 +17,7 @@ export class ViewSheetPage extends React.Component<IPageProperties, {}> {
         if (!json) {
             return (<div className="page text-white">Things have gone terribly, terribly wrong. We might be in the mirror universe.</div>);
         } else if (json.stereotype === "starship") {
-            return (<div className="page">
+            return (<div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -31,55 +27,25 @@ export class ViewSheetPage extends React.Component<IPageProperties, {}> {
                 <StarshipView starship={marshaller.decodeStarship(encodedSheet)}/>
             </div>);
         } else if (json.stereotype === "supportingCharacter") {
-            return (<div className="page">
+            return (<div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html">Home</a></li>
                         <li className="breadcrumb-item active" aria-current="page">View Supporting Character</li>
                     </ol>
                 </nav>
-                <SupportingCharacterView character={this.createCharacter(json)} />
+                <SupportingCharacterView character={marshaller.decodeCharacter(json)} />
             </div>);
-        } else if (json.stereotype === "character") {
-            return (<div className="page">
-                <Header>Character Sheet</Header>
+        } else if (json.stereotype === "mainCharacter") {
+            return (<div className="page container ml-0">
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">View Main Character</li>
+                    </ol>
+                </nav>
+                <MainCharacterView character={marshaller.decodeCharacter(json)} />
             </div>);
         }
-    }
-
-    createCharacter(json: any) {
-        let result = new Character();
-        result.name = json.name;
-        result.additionalTraits = json.traits ? json.traits.join(", ") : "";
-        result.rank = json.rank;
-        result.role = json.role;
-        result.pronouns = json.pronouns;
-        if (json.species != null) {
-            let speciesCode = SpeciesHelper.getSpeciesTypeByName(json.species);
-            let species = SpeciesHelper.getSpeciesByType(speciesCode);
-            if (species != null) {
-                result.species = speciesCode;
-                result.addTrait(species.trait);
-            }
-        }
-        result.focuses = [...json.focuses];
-        if (json.attributes) {
-            result.attributes.forEach(a => {
-                let value = json.attributes[Attribute[a.attribute]];
-                if (value != null) {
-                    a.value = value;
-                }
-            });
-        }
-        if (json.disciplines) {
-            result.skills.forEach(s => {
-                let value = json.disciplines[Skill[s.skill]];
-                if (value != null) {
-                    s.expertise = value;
-                }
-            });
-        }
-
-        return result;
     }
 }

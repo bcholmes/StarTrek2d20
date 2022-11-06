@@ -38,7 +38,7 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
             name = "Unnamed Starship";
         }
 
-        return (<div className="container ml-0">
+        return (<div>
             <Header>{name}</Header>
             <div className="row mt-4" style={{alignItems: "baseline"}}>
                 <div className="col-md-2 view-field-label pb-2">Space Frame:</div>

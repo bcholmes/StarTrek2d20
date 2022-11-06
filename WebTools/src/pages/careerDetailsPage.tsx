@@ -29,11 +29,11 @@ export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
 
         const talent = career.talent.length === 1
             ? (<TalentDescription name={career.talent[0].name} description={career.talent[0].description}/>)
-            : (<SingleTalentSelectionList talents={this.filterTalentList()} 
+            : (<SingleTalentSelectionList talents={this.filterTalentList()}
                     construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>);
 
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <CharacterCreationBreadcrumbs />
                 <div className="header-text"><div>{career.name}</div></div>
                 <div className="panel">

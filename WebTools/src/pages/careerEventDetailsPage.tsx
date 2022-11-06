@@ -21,7 +21,7 @@ export class CareerEventDetailsPage extends React.Component<IPageProperties, {}>
     private _skillDone: boolean;
 
     render() {
-        const event = CareerEventsHelper.getCareerEvent(character.careerEvents[character.careerEvents.length-1]);
+        const event = CareerEventsHelper.getCareerEvent(character.careerEvents[character.careerEvents.length-1], character.type);
 
         const attributes = event.attributes.length === 1
             ? (<AttributeView name={AttributesHelper.getAttributeName(event.attributes[0]) } points={1} value={character.attributes[event.attributes[0]].value}/>)
@@ -52,7 +52,7 @@ export class CareerEventDetailsPage extends React.Component<IPageProperties, {}>
         const next = this.isSecondCareerEventNeeded() ? "CAREER EVENT" : character.workflow.peekNextStep().name;
 
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <CharacterCreationBreadcrumbs />
                 <div className="header-text"><div>{event.name}</div></div>
                 <div className="panel">
@@ -86,7 +86,7 @@ export class CareerEventDetailsPage extends React.Component<IPageProperties, {}>
     }
 
     private onNext() {
-        const event = CareerEventsHelper.getCareerEvent(character.careerEvents[character.careerEvents.length - 1]);
+        const event = CareerEventsHelper.getCareerEvent(character.careerEvents[character.careerEvents.length - 1], character.type);
         if (event.attributes.length > 1) {
             if (!this._attributeDone) {
                 Dialog.show("You have not distributed your Attribute point.");

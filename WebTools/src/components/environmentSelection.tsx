@@ -29,7 +29,7 @@ export class EnvironmentSelection extends React.Component<IEnvironmentSelectionP
                     <td className="selection-header">{e.name}</td>
                     <td>{attributes}</td>
                     <td>{disciplines}</td>
-                    <td><Button className="button-small" text="Select" onClick={() => { this.props.onSelection(e.id, e.name) } } /></td>
+                    <td className="text-right"><Button className="button-small" text="Select" onClick={() => { this.props.onSelection(e.id, e.name) } } buttonType={true} /></td>
                 </tr>
             )
         });
