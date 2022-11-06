@@ -60,9 +60,6 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
         character.environmentValue = "";
         character.finishValue = "";
         character.trackValue = "";
-        character.addEquipment("Uniform");
-        character.addEquipment("Tricorder");
-        character.addEquipment("Communicator");
         this.state = {
             age: AgeHelper.getAdultAge(),
             type: CharacterTypeModel.getAllTypes()[character.type]

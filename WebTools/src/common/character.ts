@@ -108,7 +108,6 @@ export class Character extends Construct {
     public age: Age;
     public lineage?: string;
     public house?: string;
-    public equipment: string[];
     public career?: Career;
     public careerEvents: number[];
     public environment?: Environment;
@@ -133,6 +132,7 @@ export class Character extends Construct {
     public typeDetails: CharacterTypeDetails;
     public workflow?: Workflow;
     public pronouns: string = '';
+    public implants: string[];
 
     public starship?: Starship;
 
@@ -153,7 +153,7 @@ export class Character extends Construct {
         this.traits = [];
         this.focuses = [];
         this.talents = {};
-        this.equipment = [];
+        this.implants = [];
         this.careerEvents = [];
         this.age = AgeHelper.getAdultAge();
 
@@ -166,6 +166,33 @@ export class Character extends Construct {
 
     get stress() {
         return this.attributes[Attribute.Fitness].value + this.skills[Skill.Security].expertise;
+    }
+
+    get equipment() {
+        let result = [];
+        if (this.age.isChild()) {
+            result.push("Clothing");
+        } else if (this.isCivilian()) {
+            result.push("Clothing");
+        } else if (this.type === CharacterType.KlingonWarrior) {
+            result.push("Armor");
+            result.push("Communicator");
+            result.push("Tricorder");
+        } else {
+            result.push("Uniform");
+            result.push("Communicator");
+            result.push("Tricorder");
+        }
+
+        if (this.hasTalent("The Ushaan")) {
+            result.push("Ushaan-tor ice pick");
+        }
+
+        if (this.implants) {
+            this.implants.forEach(i => result.push(i));
+        }
+
+        return result;
     }
 
     get values() {
@@ -356,10 +383,6 @@ export class Character extends Construct {
         this.focuses.push(focus);
     }
 
-    addEquipment(name: string) {
-        this.equipment.push(name);
-    }
-
     isSecurityOrSeniorOfficer() {
         return (this.rank &&
                 (this.rank.toLowerCase() === "captain" ||
@@ -438,9 +461,7 @@ export class Character extends Construct {
             character.traits.push(t);
         });
         character.age = this.age;
-        this.equipment.forEach(eq => {
-            character.addEquipment(eq);
-        });
+        character.implants = this.implants;
         character.career = this.career;
         this.careerEvents.forEach(e => {
             character.careerEvents.push(e);

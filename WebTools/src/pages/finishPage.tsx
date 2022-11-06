@@ -36,20 +36,6 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
     constructor(props: IPageProperties) {
         super(props);
 
-        if (character.age.isChild()) {
-            character.addEquipment("Clothing");
-        } else if (character.isCivilian()) {
-            character.addEquipment("Clothing");
-        } else if (character.type === CharacterType.KlingonWarrior) {
-            character.addEquipment("Armor");
-            character.addEquipment("Communicator");
-            character.addEquipment("Tricorder");
-        } else {
-            character.addEquipment("Uniform");
-            character.addEquipment("Communicator");
-            character.addEquipment("Tricorder");
-        }
-
         this.roles = [];
         RolesHelper.getRoles().forEach(role => {
             this.roles.push(role);

@@ -114,7 +114,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
                     {this.renderCrossSpeciesCheckbox()}
                 </div>
                 {esotericTalentOption}
-                <SingleTalentSelectionList talents={talents} construct={character} 
+                <SingleTalentSelectionList talents={talents} construct={character}
                     onSelection={talent => this.onTalentSelected(talent)} />
             </div>)
             : (<div>
@@ -131,8 +131,8 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
             isChecked={this.props.allowCrossSpeciesTalents}
             text="Allow cross-species talents (GM's decision)"
             value={!this.props.allowCrossSpeciesTalents}
-            onChanged={() => { 
-                store.dispatch(setAllowCrossSpeciesTalents(!this.props.allowCrossSpeciesTalents)); 
+            onChanged={() => {
+                store.dispatch(setAllowCrossSpeciesTalents(!this.props.allowCrossSpeciesTalents));
             }} />);
     }
 
@@ -157,10 +157,6 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
             }
 
             character.addTalent(this._selectedTalent);
-
-            if (this._selectedTalent.name === "The Ushaan") {
-                character.addEquipment("Ushaan-tor ice pick");
-            }
         }
 
         character.workflow.next();
@@ -169,7 +165,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
 }
 
 function mapStateToProps(state, ownProps) {
-    return { 
+    return {
         allowCrossSpeciesTalents: state.context.allowCrossSpeciesTalents,
         allowEsotericTalents: state.context.allowEsotericTalents
     };

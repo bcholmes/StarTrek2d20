@@ -4,6 +4,7 @@ import { Character, CharacterAttribute, CharacterSkill, CharacterTalent } from '
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { ShipBuildType, ShipBuildTypeModel, SimpleStats, Starship } from '../common/starship';
 import { Attribute } from './attributes';
+import { Career, CareersHelper } from './careers';
 import { allDepartments, Department } from './departments';
 import { Environment, EnvironmentsHelper } from './environments';
 import { MissionPod, MissionPodHelper } from './missionPods';
@@ -62,16 +63,19 @@ class Marshaller {
             "role": character.role,
             "assignedShip": character.assignedShip,
             "jobAssignment": character.jobAssignment,
+            "career": character.career != null ? Career[character.career] : null,
             "careerEvents": [...character.careerEvents],
             "rank": character.rank,
             "species": Species[character.species],
-            "mixedSpecies": character.mixedSpecies ? Species[character.mixedSpecies] : null,
+            "mixedSpecies": character.mixedSpecies != null ? Species[character.mixedSpecies] : null,
+            "originalSpecies": character.originalSpecies != null ? Species[character.originalSpecies] : null,
             "attributes": this.toAttributeObject(character.attributes),
             "disciplines": this.toSkillObject(character.skills),
             "traits": this.parseTraits(character.additionalTraits),
             "focuses": [...character.focuses],
             "talents": this.toTalentList(character.talents),
-            "values": character.values
+            "values": character.values,
+            "implants": [...character.implants]
         };
         return this.encode(sheet);
     }
@@ -399,11 +403,23 @@ class Marshaller {
                 result.addTrait(species.trait);
             }
         }
+        if (json.career) {
+            let career = CareersHelper.getCareerByTypeName(json.career, result.type);
+            result.career = career ? career.id : undefined;
+        }
+        if (json.implants) {
+            result.implants = [...json.implants];
+        }
         if (json.mixedSpecies != null) {
             let speciesCode = SpeciesHelper.getSpeciesTypeByName(json.mixedSpecies);
-            let species = SpeciesHelper.getSpeciesByType(speciesCode);
-            if (species != null) {
+            if (speciesCode != null) {
                 result.mixedSpecies = speciesCode;
+            }
+        }
+        if (json.originalSpecies != null) {
+            let speciesCode = SpeciesHelper.getSpeciesTypeByName(json.originalSpecies);
+            if (speciesCode != null) {
+                result.originalSpecies = speciesCode;
             }
         }
 

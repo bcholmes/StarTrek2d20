@@ -98,10 +98,10 @@ class Careers {
         ),
     ];
 
-    private getBaseList() {
-        if (character.type === CharacterType.KlingonWarrior) {
+    private getBaseList(type: CharacterType) {
+        if (type === CharacterType.KlingonWarrior) {
             return this._klingonCareers;
-        } else if (character.type === CharacterType.Starfleet) {
+        } else if (type === CharacterType.Starfleet) {
             return this._careers;
         } else {
             return this._civilianCareers; // also allied military
@@ -109,7 +109,7 @@ class Careers {
     }
 
     private getList() {
-        let list = this.getBaseList();
+        let list = this.getBaseList(character.type);
         return list.filter(c => c.id !== Career.Young || !character.hasTalent(ADVANCED_TEAM_DYNAMICS));
     }
 
@@ -124,8 +124,14 @@ class Careers {
     }
 
     getCareer(career: Career) {
-        var list = this.getBaseList();
+        var list = this.getBaseList(character.type);
         return list[career];
+    }
+
+    getCareerByTypeName(typeName: string, type: CharacterType) {
+        const list = this.getBaseList(type);
+        const filtered = list.filter(c => Career[c.id] === typeName);
+        return filtered.length === 0 ? undefined : filtered[0];
     }
 
     generateCareer(): Career {

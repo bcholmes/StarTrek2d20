@@ -64,14 +64,14 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
     }
 
     render() {
-        const attributes = 
-                (<AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Customization} 
+        const attributes =
+                (<AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Customization}
                     points={this._excessAttrPoints + this._attrPoints} onDone={(done) => { this.attributesDone(done); } } />)
 
         const disciplines = !this.state.showExcessSkillDistribution
-            ? <ElectiveSkillList points={this._skillPoints} skills={character.skills.map(s => { return s.skill; }) } 
+            ? <ElectiveSkillList points={this._skillPoints} skills={character.skills.map(s => { return s.skill; }) }
                 onUpdated={(skills) => { this._skillsDone = skills.length === this._skillPoints; } } />
-            : <SkillImprovementCollection points={this._excessSkillPoints + this._skillPoints} 
+            : <SkillImprovementCollection points={this._excessSkillPoints + this._skillPoints}
                 skills={character.skills.map(s => s.skill) } onDone={(done) => { this._skillsDone = done; }} />;
 
         const description = "At this stage, your character is almost complete, and needs only a few final elements and adjustments. This serves as a last chance to customize the character before play.";
@@ -81,7 +81,7 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
         const talentSelection = character.workflow.currentStep().options.talentSelection
             ? (<div className="panel">
                 <div className="header-small">TALENTS</div>
-                <SingleTalentSelectionList talents={talents} construct={character} 
+                <SingleTalentSelectionList talents={talents} construct={character}
                     onSelection={talent => this._selectedTalent = talent } />
             </div>)
             : undefined;
@@ -89,20 +89,20 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
 
         const attributeText = this._excessAttrPoints > 0 ? (
             <div className="page-text">
-                The point total includes {this._excessAttrPoints} excess {this._excessAttrPoints > 1 ? ' Points ' : ' Point '} that could not 
+                The point total includes {this._excessAttrPoints} excess {this._excessAttrPoints > 1 ? ' Points ' : ' Point '} that could not
                 be automatically added to your attributes without exceeding maximum values.
             </div>
         ) : undefined;
 
         const disciplinesText = this._excessSkillPoints > 0 ? (
             <div className="page-text">
-                The point total includes {this._excessSkillPoints} excess {this._excessSkillPoints > 1 ? ' Points ' : ' Point '} that could not 
+                The point total includes {this._excessSkillPoints} excess {this._excessSkillPoints > 1 ? ' Points ' : ' Point '} that could not
                 be automatically added to your dsciplines without exceeding maximum values.
             </div>
         ) : undefined;
 
 
-        let value = (character.workflow.currentStep().options.valueSelection) 
+        let value = (character.workflow.currentStep().options.valueSelection)
             ? (<div className="panel">
                     <div className="header-small">VALUE</div>
                     <ValueInput value={Value.Finish}/>
@@ -160,10 +160,6 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
             }
 
             character.addTalent(this._selectedTalent);
-
-            if (this._selectedTalent.name === "The Ushaan") {
-                character.addEquipment("Ushaan-tor ice pick");
-            }
         }
 
         if (character.hasTalent("Borg Implants")) {

@@ -84,7 +84,7 @@ export class BorgImplantSelection extends React.Component<{}, {}> {
 
     private onNext() {
         this.selected.forEach(i => {
-            character.addEquipment(i);
+            character.implants.push(i);
         });
 
         Navigation.navigateToPage(PageIdentity.Finish);
