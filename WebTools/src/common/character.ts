@@ -165,7 +165,12 @@ export class Character extends Construct {
     }
 
     get stress() {
-        return this.attributes[Attribute.Fitness].value + this.skills[Skill.Security].expertise;
+        let stress = this.attributes[Attribute.Fitness].value + this.skills[Skill.Security].expertise;
+
+        if (this.hasTalent("Resolute")) {
+            stress += 3;
+        }
+        return stress;
     }
 
     get equipment() {

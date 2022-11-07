@@ -465,31 +465,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
     }
 
     fillStress(form: PDFForm, character: Character) {
-        var stress = character.stress || 0;
-        if (stress === 0) {
-            character.attributes.forEach( (a, i) => {
-                switch(a.attribute) {
-                case Attribute.Fitness:
-                    stress += a.value;
-                    break;
-                default:
-                }
-            })
-
-            character.skills.forEach( (s, i) => {
-                switch(s.skill) {
-                case Skill.Security:
-                    stress += s.expertise;
-                    break;
-                default:
-                }
-            })
-        }
-
-        if (character.hasTalent("Resolute")) {
-            stress += 3;
-        }
-
+        var stress = character.stress;
         for (var i = 1; i <= 30; i++) {
             this.fillCheckbox(form, "Stress " + i, i > stress);
         }
