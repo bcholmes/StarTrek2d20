@@ -5,12 +5,11 @@ import { Era } from "../helpers/eras";
 import { RanksHelper } from "../helpers/ranks";
 import { CharacterSheetRegistry } from "../helpers/sheets";
 import { Skill } from "../helpers/skills";
-import { SpeciesHelper } from "../helpers/species";
-import { Button } from "./button";
-import { CharacterSheetDialog } from "./characterSheetDialog";
-import { Header } from "./header";
-import { StatView } from "./StatView";
-import { WeaponView } from "./weaponView";
+import { Button } from "../components/button";
+import { CharacterSheetDialog } from "../components/characterSheetDialog";
+import { Header } from "../components/header";
+import { StatView } from "../components/StatView";
+import { WeaponView } from "../components/weaponView";
 
 interface ISupportingCharacterViewProperties {
     character: Character;
@@ -45,7 +44,7 @@ export class SupportingCharacterView extends React.Component<ISupportingCharacte
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.character.rank}</div></div>
 
                 <div className="col-md-2 view-field-label pb-2">Species:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.renderSpecies()}</div></div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.character.speciesName}</div></div>
             </div>
 
             <div className="row" style={{alignItems: "baseline"}}>
@@ -97,15 +96,6 @@ export class SupportingCharacterView extends React.Component<ISupportingCharacte
             return (rank && rank.abbreviation) ? rank.abbreviation : "";
         } else {
             return "";
-        }
-    }
-
-    renderSpecies() {
-        if (this.props.character.species) {
-            let species = SpeciesHelper.getSpeciesByType(this.props.character.species);
-            return species ? species.name : undefined;
-        } else {
-            return undefined;
         }
     }
 

@@ -1,6 +1,6 @@
 import React from "react";
-import { StarshipView } from "../components/starshipView";
-import { SupportingCharacterView } from "../components/supportingCharacterView";
+import { StarshipView } from "../view/starshipView"
+import { SupportingCharacterView } from "../view/supportingCharacterView";
 import { marshaller } from "../helpers/marshaller";
 import { MainCharacterView } from "../view/mainCharacterView";
 import { IPageProperties } from "./iPageProperties";

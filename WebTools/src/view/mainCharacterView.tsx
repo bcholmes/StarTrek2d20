@@ -37,7 +37,7 @@ export class MainCharacterView extends React.Component<IMainCharacterViewPropert
 
             <div className="row" style={{alignItems: "baseline"}}>
                 <div className="col-md-2 view-field-label pb-2">Species:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.renderSpecies()}</div></div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.character.speciesName}</div></div>
 
                 <div className="col-md-2 view-field-label pb-2">Rank:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.character.rank}</div></div>
@@ -162,14 +162,6 @@ export class MainCharacterView extends React.Component<IMainCharacterViewPropert
             result += this.props.character.assignedShip;
         }
         return result;
-    }
-
-    renderSpecies() {
-        if (this.props.character.species) {
-            return CharacterSerializer.serializeSpecies(this.props.character.species, this.props.character.mixedSpecies);
-        } else {
-            return undefined;
-        }
     }
 
     renderFocuses() {

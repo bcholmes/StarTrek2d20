@@ -5,12 +5,12 @@ import { Department } from "../helpers/departments";
 import { Era } from "../helpers/eras";
 import { CharacterSheetRegistry } from "../helpers/sheets";
 import { System } from "../helpers/systems";
-import { Button } from "./button";
-import { CharacterSheetDialog } from "./characterSheetDialog";
-import { Header } from "./header";
-import { OutlineImage } from "./outlineImage";
-import { StatView } from "./StatView";
-import { WeaponView } from "./weaponView";
+import { Button } from "../components/button";
+import { CharacterSheetDialog } from "../components/characterSheetDialog";
+import { Header } from "../components/header";
+import { OutlineImage } from "../components/outlineImage";
+import { StatView } from "../components/StatView";
+import { WeaponView } from "../components/weaponView";
 
 const NBSP = '\u00A0';
 
