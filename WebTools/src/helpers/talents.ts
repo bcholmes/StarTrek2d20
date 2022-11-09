@@ -1298,15 +1298,21 @@ export class Talents {
             new TalentModel(
                 "Empath",
                 "You can sense the emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. You cannot choose not to sense the emotions of those nearby, except for those who are resistant to telepathy. It may require effort and a Task to pick out the emotions of a specific individual in a crowd, or to block out the emotions of those nearby. Increase the Difficulty of this Task if the situation is stressful, if there are a lot of beings present, if the target has resistance to telepathy, and other relevant factors.",
-                [new SpeciesPrerequisite(Species.Betazoid, true), new EraPrerequisite(Era.NextGeneration)],
+                [new AnyOfPrerequisite(
+                    new SpeciesPrerequisite(Species.Betazoid, true),
+                    new SpeciesPrerequisite(Species.Mari, true),
+                    new SpeciesPrerequisite(Species.Deltan, true))],
                 1,
-                "Betazoid"),
+                "Various"),
             new TalentModel(
                 "Telepath",
                 "You can sense the surface thoughts and emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. Surface thoughts are whatever a creature is thinking about at that precise moment. The character cannot choose not to sense the emotions or read the surface thoughts of those nearby, except for those who are resistant to telepathy. It will require effort and a Task to pick out the emotions or thoughts of a specific individual in a crowd, to search a creature’s mind for specific thoughts or memories, or to block out the minds of those nearby. Unwilling targets may resist with an Opposed Task.",
-                [new PureSpeciesPrerequisite(Species.Betazoid, true), new EraPrerequisite(Era.NextGeneration)],
+                [new AnyOfPrerequisite(
+                    new SpeciesPrerequisite(Species.Betazoid, true),
+                    new SpeciesPrerequisite(Species.Ocampa, true)),
+                new EraPrerequisite(Era.NextGeneration)],
                 1,
-                "Betazoid"),
+                "Various"),
             new TalentModel(
                 "Cultural Flexibility",
                 "Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",
@@ -1413,12 +1419,6 @@ export class Talents {
                 "Deltan Pheromones",
                 "The character excretes a natural aphrodisiac pheromone. Whenever they attempt a Task using Presence to influence an attracted creature, they gain one bonus d20. However, they also increase their Complication Range  by 2, as the effect can be distracting or lead to unwanted consequences. This talent can be switched off, losing both the bonus and the drawback, by applying chemical suppressants.",
                 [new SpeciesPrerequisite(Species.Deltan, false), new EraPrerequisite(Era.OriginalSeries), new SourcePrerequisite(Source.BetaQuadrant)],
-                1,
-                "Deltan"),
-            new TalentModel(
-                "Empath",
-                "The Deltan can sense the emotions of most nearby living beings, and can communicate telepathically with other empaths and telepaths, as well as those with whom they are extremely familiar. Not sensing the nearby emotions is impossible, except for those who are resistant to telepathy. It may require serious effort and a Task to pick out the emotions of a specific individual in a crowd, or to block out the emotions of those nearby. Increase the Difficulty of this Task if the situation is stressful, if there are a lot of beings present, if the target has resistance to telepathy, or if the Gamemaster decides there are other relevant factors.",
-                [new SpeciesPrerequisite(Species.Deltan, true), new EraPrerequisite(Era.OriginalSeries), new SourcePrerequisite(Source.BetaQuadrant)],
                 1,
                 "Deltan"),
             new TalentModel(
@@ -1902,12 +1902,6 @@ export class Talents {
                 1,
                 "Lokirrim"),
             new TalentModel(
-                "Empath",
-                "The character can sense the emotions of most nearby living beings, and can communicate telepathically with other empaths and telepaths, as well as those with whom they are extremely familiar. Not sensing nearby emotions is impossible, except for those who are resistant to telepathy. It may require serious effort and a Task to pick out the emotions of a specific individual in a crowd, or to block out the emotions of those nearby. Increase the Difficulty of this Task if the situation is stressful, if there are a lot of beings present, if the target has resistance to telepathy, or if the Gamemaster decides there are other relevant factors.",
-                [new SourcePrerequisite(Source.DeltaQuadrant), new SpeciesPrerequisite(Species.Mari, true)],
-                1,
-                "Mari"),
-            new TalentModel(
                 "Passive Persuader",
                 "During Social Conflict, the character reduces the Difficulty of all evidence and negotiation based Tasks but increases the Difficulty of intimidation Tasks by 1.",
                 [new SourcePrerequisite(Source.DeltaQuadrant), new SpeciesPrerequisite(Species.Mari, true)],
@@ -1928,12 +1922,6 @@ export class Talents {
             new TalentModel(
                 "Quick Learner",
                 "Ocampa possess keen minds and enjoy near-perfect memories, and they take to new situations and new challenges quickly. When a character with this talent attempts a Task which they have seen at least one ally perform during this mission, you may add an additional d20 to that Task. ",
-                [new SourcePrerequisite(Source.DeltaQuadrant), new SpeciesPrerequisite(Species.Ocampa, true)],
-                1,
-                "Ocampa"),
-            new TalentModel(
-                "Empath",
-                "The character can sense the surface thoughts and emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom they are extremely familiar. Surface thoughts are whatever a creature is thinking about at that precise moment. The character cannot choose not to sense the emotions or read the surface thoughts of those nearby, except for those who are resistant to telepathy. It will require effort and a Task to pick out the emotions or thoughts of a specific individual in a crowd, to search a creature’s mind for specific thoughts or memories, or to block out the minds of those nearby. Unwilling targets may resist with an Opposed Task.",
                 [new SourcePrerequisite(Source.DeltaQuadrant), new SpeciesPrerequisite(Species.Ocampa, true)],
                 1,
                 "Ocampa"),
