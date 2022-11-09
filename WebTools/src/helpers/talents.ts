@@ -99,6 +99,7 @@ class SpeciesPrerequisite implements IConstructPrerequisite<Character> {
     isPrerequisiteFulfilled(c: Character) {
         return character.species === this.species ||
                character.mixedSpecies === this.species ||
+               character.originalSpecies === this.species ||
                (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
     }
     describe(): string {
@@ -107,22 +108,18 @@ class SpeciesPrerequisite implements IConstructPrerequisite<Character> {
 }
 
 class AnySpeciesPrerequisite implements IConstructPrerequisite<Character> {
-    private species1: number;
-    private species2: number;
+    private species: Species[];
     private allowCrossSelection: boolean;
 
-    constructor(species1: number, species2: number, allowCrossSelection: boolean) {
-        this.species1 = species1;
-        this.species2 = species2;
+    constructor(allowCrossSelection: boolean, ...species: Species[]) {
+        this.species = species;
         this.allowCrossSelection = allowCrossSelection;
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return character.species === this.species1 ||
-               character.species === this.species2 ||
-               character.mixedSpecies === this.species1 ||
-               character.mixedSpecies === this.species2 ||
-               (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
+        let result = (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
+        this.species.forEach(s => result = result || character.species === s || character.mixedSpecies === s || character.originalSpecies === s);
+        return result;
     }
     describe(): string {
         return "";
@@ -1298,21 +1295,15 @@ export class Talents {
             new TalentModel(
                 "Empath",
                 "You can sense the emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. You cannot choose not to sense the emotions of those nearby, except for those who are resistant to telepathy. It may require effort and a Task to pick out the emotions of a specific individual in a crowd, or to block out the emotions of those nearby. Increase the Difficulty of this Task if the situation is stressful, if there are a lot of beings present, if the target has resistance to telepathy, and other relevant factors.",
-                [new AnyOfPrerequisite(
-                    new SpeciesPrerequisite(Species.Betazoid, true),
-                    new SpeciesPrerequisite(Species.Mari, true),
-                    new SpeciesPrerequisite(Species.Deltan, true))],
+                [new AnySpeciesPrerequisite(true, Species.Betazoid, Species.Mari, Species.Deltan)],
                 1,
-                "Various"),
+                "Betazoid/Mari/Deltan"),
             new TalentModel(
                 "Telepath",
                 "You can sense the surface thoughts and emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. Surface thoughts are whatever a creature is thinking about at that precise moment. The character cannot choose not to sense the emotions or read the surface thoughts of those nearby, except for those who are resistant to telepathy. It will require effort and a Task to pick out the emotions or thoughts of a specific individual in a crowd, to search a creature’s mind for specific thoughts or memories, or to block out the minds of those nearby. Unwilling targets may resist with an Opposed Task.",
-                [new AnyOfPrerequisite(
-                    new SpeciesPrerequisite(Species.Betazoid, true),
-                    new SpeciesPrerequisite(Species.Ocampa, true)),
-                new EraPrerequisite(Era.NextGeneration)],
+                [new AnySpeciesPrerequisite(true, Species.Betazoid, Species.Ocampa,), new EraPrerequisite(Era.NextGeneration)],
                 1,
-                "Various"),
+                "Betazoid/Ocampa"),
             new TalentModel(
                 "Cultural Flexibility",
                 "Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",
@@ -1436,7 +1427,7 @@ export class Talents {
             new TalentModel(
                 "To Battle!",
                 "Whenever a Klingon buys additional dice for a melee attack using Threat, for each Threat added to the pool, you gain 1 bonus Momentum that can only be spent on Bonus Damage, increasing the damage of the attack by 1 per Momentum spent.",
-                [new AnySpeciesPrerequisite(Species.Klingon, Species.KlingonQuchHa, true), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
@@ -1448,19 +1439,19 @@ export class Talents {
             new TalentModel(
                 "R’uustai",
                 "This Klingon has lit candles, spoken words to honor their parents, and given their house’s sash to another, joining in a fellowship with another person, and becoming members of the same house (the original house of either party). The R’uustai Talent grants a Klingon an additional Value, which must reflect their relationship with the ritual sibling. In addition, whenever the Klingon assists, or is assisted by another, the character offering assistance may re-roll their die.",
-                [new AnySpeciesPrerequisite(Species.Klingon, Species.KlingonQuchHa, true), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
                 "Killer’s Instinct",
                 "You have shed blood, and will not hesitate to do so again. So familiar are you with the intent to kill that you can even see it in others when you look them in the eyes. When you choose to make a lethal attack, you do not add to Threat for doing so. In addition, whenever an enemy you can see attempts to make a lethal attack against you, you may add 1 to Threat to increase the Difficulty of their attack by 1, as you react to their intent.",
-                [new AnySpeciesPrerequisite(Species.Klingon, Species.KlingonQuchHa, true), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
                 "Warrior’s Spirit",
                 "You are an exemplar of what it means to be a Klingon warrior, and you will not hesitate to demonstrate your prowess to any who challenge you. When you make a melee attack, or are targeted by a melee attack, and you buy one or more d20s by adding to Threat, you may re-roll the dice pool for the task. Further, you own either a mek’leth or a bat’leth, at your discretion, and do not have to pay an Opportunity Cost to acquire it.",
-                [new AnySpeciesPrerequisite(Species.Klingon, Species.KlingonQuchHa, true), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
@@ -1538,13 +1529,13 @@ export class Talents {
             new TalentModel(
                 "Morphogenic Matrix",
                 " The character may spend 1 Momentum as a Minor Action once per Turn to assume a different form, gaining an additional Trait to reflect whatever form they have chosen, though they cannot yet mimic an individual, and they must return to a liquid state for a few hours of rest every sixteen hours. While in an alternate form, it is next to impossible (Difficulty 5) to discern the Changeling’s true nature, without separating some part of the Changeling’s substance. The character also has a Resistance of 4.",
-                [new AnySpeciesPrerequisite(Species.Changeling, 47, false), new EraPrerequisite(Era.NextGeneration), new SourcePrerequisite(Source.DS9)],
+                [new AnySpeciesPrerequisite(false, Species.Changeling, Species.ChangelingGamma), new EraPrerequisite(Era.NextGeneration), new SourcePrerequisite(Source.DS9)],
                 1,
                 "Changeling"),
             new TalentModel(
                 "Morphogenic Mastery",
                 "The Changeling may, when assuming an alternate form, assume the form of a specific individual, mimicking their appearance and personality sufficiently that even close friends may be unable to discern the truth. Further, the Changeling no longer needs to revert to a liquid state in order to rest.",
-                [new AnySpeciesPrerequisite(Species.Changeling, 47, false), new EraPrerequisite(Era.NextGeneration), new SourcePrerequisite(Source.DS9)],
+                [new AnySpeciesPrerequisite(false, Species.Changeling, Species.ChangelingGamma), new EraPrerequisite(Era.NextGeneration), new SourcePrerequisite(Source.DS9)],
                 1,
                 "Changeling"),
             new TalentModel(
