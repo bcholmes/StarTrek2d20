@@ -126,24 +126,6 @@ class AnySpeciesPrerequisite implements IConstructPrerequisite<Character> {
     }
 }
 
-class PureSpeciesPrerequisite implements IConstructPrerequisite<Character> {
-    private species: number;
-    private allowCrossSelection: boolean;
-
-    constructor(species: number, allowCrossSelection: boolean) {
-        this.species = species;
-        this.allowCrossSelection = allowCrossSelection;
-    }
-
-    isPrerequisiteFulfilled(c: Character) {
-        return (character.species === this.species && character.mixedSpecies == null) ||
-               (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
-    }
-    describe(): string {
-        return "";
-    }
-}
-
 class CareerPrerequisite implements IConstructPrerequisite<Character> {
     private career: number;
 
