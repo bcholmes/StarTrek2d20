@@ -114,6 +114,9 @@ export class MainCharacterView extends React.Component<IMainCharacterViewPropert
                     <div>
                         <Header level={2} className="mt-4">Weapons</Header>
                         {this.renderWeapons()}
+
+                        <Header level={2} className="mt-4">Equipment</Header>
+                        {this.renderEquipment()}
                     </div>
                 </div>
             </div>
@@ -167,6 +170,14 @@ export class MainCharacterView extends React.Component<IMainCharacterViewPropert
     renderFocuses() {
         if (this.props.character.focuses) {
             return this.props.character.focuses.map((f, i) => (<div className="text-white view-border-bottom py-2" key={'focus-' + i}>{f}</div>));
+        } else {
+            return undefined;
+        }
+    }
+
+    renderEquipment() {
+        if (this.props.character.equipment) {
+            return this.props.character.equipment.map((e, i) => (<div className="text-white view-border-bottom py-2" key={'equipment-' + i}>{e}</div>));
         } else {
             return undefined;
         }

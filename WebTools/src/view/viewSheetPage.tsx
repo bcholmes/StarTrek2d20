@@ -1,9 +1,9 @@
 import React from "react";
-import { StarshipView } from "../view/starshipView"
-import { SupportingCharacterView } from "../view/supportingCharacterView";
+import { StarshipView } from "./starshipView"
+import { SupportingCharacterView } from "./supportingCharacterView";
 import { marshaller } from "../helpers/marshaller";
-import { MainCharacterView } from "../view/mainCharacterView";
-import { IPageProperties } from "./iPageProperties";
+import { MainCharacterView } from "./mainCharacterView";
+import { IPageProperties } from "../pages/iPageProperties";
 
 export class ViewSheetPage extends React.Component<IPageProperties, {}> {
 
