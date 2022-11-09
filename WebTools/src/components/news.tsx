@@ -11,6 +11,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.221108</b>
+                <ul>
+                    <li>A number of bug reports have been addressed.</li>
+                </ul>
                 <b>v1.221106</b>
                 <ul>
                     <li>A minor wording bug has been fixed for Cybernetically-enhanced Individuals.</li>
@@ -129,41 +133,6 @@ class News extends React.Component<INewsProperties, {}> {
                     <li>A few tweaks to some of the reference information.</li>
                     <li>Fixed <a href="https://github.com/bcholmes/StarTrek2d20/issues/63" target="_blank" rel="noreferrer">a
                     bug report</a> regarding Klingon character generation.</li>
-                </ul>
-                <b>v1.220506</b>
-                <ul>
-                    <li>I've started working on a star sector generator based on the rules in the <cite>Shackleton Expanse</cite> book.
-                    At the moment, I consider the support to be <em>very</em> preliminary.</li>
-                </ul>
-                <b>v1.220423</b>
-                <ul>
-                    <li>Revisions to the two-page character sheet.</li>
-                </ul>
-                <b>v1.220422</b>
-                <ul>
-                    <li>Add in the Cadet type from the <i>Player's Guide</i>. We ended up having a pretty big discussion
-                        about Cadets and roles on the Modiphius forum.</li>
-                    <li>Some minor tweaks to certain workflows.</li>
-                    <li>The <i>Discovery Season 1</i> and <cite>Discovery Season 2</cite> books basically have the same
-                        rules additions, so I'm not distinguishing them as different sources. I mean, that list of
-                        sources is already long enough. So long, in fact, that (partially prompted by Felderburg), I
-                        organized it a bit.</li>
-                    <li>Add a placeholder for some not-yet-implemented sources, including the <i>Discovery Campaign</i> and the
-                        recently-announced (but still a long way off) <i>Utopia Planetia</i> book. Hey, what can I say?
-                        I am excite.</li>
-                </ul>
-                <b>v1.220409</b>
-                <ul>
-                    <li>More bug fixes.</li>
-                    <li>Add support for Kelpians from the <i>Discovery Season 1</i> source.</li>
-                </ul>
-                <b>v1.220329</b>
-                <ul>
-                    <li>Various small bug fixes.</li>
-                    <li>Add support for the <i>Archer</i> Class ship from the <cite>Tricorder Set</cite>.</li>
-                    <li>Implement a bookmarkable "view" page for creations. At the moment, this view is only available for
-                        ships and supporting characters, but it'll be available for main characters in the not-too-distant future.
-                    </li>
                 </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>
