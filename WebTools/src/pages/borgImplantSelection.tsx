@@ -6,7 +6,7 @@ import { Navigation } from '../common/navigator';
 import { character } from '../common/character';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { Header } from '../components/header';
-import { extraCharacterSteps, extraCharacterStepsNext } from './extraCharacterSteps';
+import { extraCharacterStepsNext } from './extraCharacterSteps';
 import replaceDiceWithArrowhead from '../common/arrowhead';
 
 interface Implant {

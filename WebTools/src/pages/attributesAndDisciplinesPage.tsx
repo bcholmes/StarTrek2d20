@@ -13,7 +13,7 @@ import {ValueInput, Value} from '../components/valueInput';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { CharacterType } from '../common/characterType';
 import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
-import { extraCharacterSteps, extraCharacterStepsNext } from './extraCharacterSteps';
+import { extraCharacterStepsNext } from './extraCharacterSteps';
 
 interface IPageState {
     showExcessAttrDistribution: boolean;

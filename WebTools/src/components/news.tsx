@@ -11,6 +11,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.221113</b>
+                <ul>
+                    <li>There are a couple of talents that give characters extra focuses. The app will now prompt you for those
+                        extra focuses.
+                    </li>
+                </ul>
                 <b>v1.221108</b>
                 <ul>
                     <li>A number of bug reports have been addressed.</li>
