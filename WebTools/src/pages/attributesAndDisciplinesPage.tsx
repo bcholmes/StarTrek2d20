@@ -13,6 +13,7 @@ import {ValueInput, Value} from '../components/valueInput';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { CharacterType } from '../common/characterType';
 import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
+import { extraCharacterSteps, extraCharacterStepsNext } from './extraCharacterSteps';
 
 interface IPageState {
     showExcessAttrDistribution: boolean;
@@ -162,10 +163,9 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
             character.addTalent(this._selectedTalent);
         }
 
-        if (character.hasTalent("Borg Implants")) {
-            Navigation.navigateToPage(PageIdentity.BorgImplants);
-        } else if (character.hasTalent("Visit Every Star") || character.hasTalent("Expanded Program")) {
-            Navigation.navigateToPage(PageIdentity.ExtraFocus);
+        let optionalPage = extraCharacterStepsNext(character);
+        if (optionalPage != null) {
+            Navigation.navigateToPage(optionalPage);
         } else {
             Navigation.navigateToPage(PageIdentity.Finish);
         }

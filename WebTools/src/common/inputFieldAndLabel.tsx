@@ -12,7 +12,7 @@ export class InputFieldAndLabel extends React.Component<IInputFieldAndLabelPrope
 
     render() {
         return (
-            <div className="d-sm-flex align-items-stretch mb-3">
+            <div className="d-sm-flex align-items-stretch mt-3">
                 <label htmlFor={this.props.id} className="textinput-label">{this.props.labelName}</label>
                 <input
                     id={this.props.id}

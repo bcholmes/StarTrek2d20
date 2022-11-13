@@ -14,6 +14,8 @@ import { AlliedMilitaryType } from '../helpers/alliedMilitary';
 import replaceDiceWithArrowhead from '../common/arrowhead';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { marshaller } from '../helpers/marshaller';
+import { SmallHeader } from '../components/smallHeader';
+import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 
 
 interface IFinishPageState {
@@ -117,12 +119,10 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
         let extra = (<div></div>);
         if (character.isKlingon()) {
             extra = (<div><div className="panel">
-                <div className="header-small">LINEAGE</div>
+                <SmallHeader>LINEAGE and House</SmallHeader>
                 <div className="textinput-label">Lineage</div>
                 <input type="text" onChange={() => this.onLineageChanged() } ref={(input) => this.lineage = input}/>
                 <div><small><b>Example: </b> <i>Daughter of Martok</i> or <i>Child of Koloth</i></small></div>
-            </div><div className="panel">
-                <div className="header-small">HOUSE</div>
                 <div className="textinput-label">House</div>
                 <input type="text" onChange={() => this.onHouseChanged() } ref={(input) => this.house = input}/>
                 <div><small><b>Example: </b> <i>House Duras</i> or <i>House Kor</i></small></div>
@@ -184,7 +184,7 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
     renderAssignment() {
 
         const multiDiscipline = character.hasTalent("Multi-Discipline")
-            ? <div>Because your character has the <b>Multi-Discipline talent</b>, you may choose <b>two roles</b>.
+            ? <div className="text-white">Because your character has the <b>Multi-Discipline talent</b>, you may choose <b>two roles</b>.
                 Some options (e.g. Commanding Officer, Admiral) are excluded from the available roles.</div>
             : undefined;
 
@@ -231,11 +231,11 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
             : undefined;
 
         const cadetNote = (roles == null && character.type === CharacterType.Cadet)
-            ? (<div>Cadets do not normally have a key role and instead have a simple job assignment. Cadets might be given a role in special circumstances.</div>)
+            ? (<div className="text-white">Cadets do not normally have a key role and instead have a simple job assignment. Cadets might be given a role in special circumstances.</div>)
             : null;
 
         const roleDescription = (roles != null)
-        ? (<div>
+        ? (<div className="text-white">
                 Select the role your character has on the starship they service.
                 This choice will be based on your highest discipline(s).
                 The most suitable choice will appear on top, while the other options will be available as well in case you want to create a different character.
@@ -243,8 +243,8 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
         : undefined;
 
         return (
-        <div className="panel">
-            <div className="header-small">ASSIGNMENT</div>
+        <div className="mt-3">
+            <SmallHeader>ASSIGNMENT</SmallHeader>
             {cadetNote}
             {roleDescription}
             {roleSelection}
@@ -253,8 +253,7 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
             {job}
 
             <div>
-                <div className="textinput-label">Ship</div>
-                <input type="text" onChange={(e) => this.onShipChanged(e.target.value) } value={this.state.assignedShip || ""} />
+                <InputFieldAndLabel id='ship-id' labelName='Ship' onChange={(value) => this.onShipChanged(value)} value={this.state.assignedShip || ""} />
             </div>
         </div>);
     }
