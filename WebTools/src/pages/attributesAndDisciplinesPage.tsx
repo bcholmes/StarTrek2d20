@@ -164,8 +164,9 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
 
         if (character.hasTalent("Borg Implants")) {
             Navigation.navigateToPage(PageIdentity.BorgImplants);
-        }
-        else {
+        } else if (character.hasTalent("Visit Every Star") || character.hasTalent("Expanded Program")) {
+            Navigation.navigateToPage(PageIdentity.ExtraFocus);
+        } else {
             Navigation.navigateToPage(PageIdentity.Finish);
         }
     }

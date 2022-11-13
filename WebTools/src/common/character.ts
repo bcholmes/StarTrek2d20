@@ -13,7 +13,6 @@ import { Government, GovernmentType } from '../helpers/governments';
 import AgeHelper, { Age } from '../helpers/age';
 import { Weapon, WeaponType } from '../helpers/weapons';
 import { Construct } from './construct';
-import { Starship } from './starship';
 import { SpeciesHelper } from '../helpers/species';
 
 export abstract class CharacterTypeDetails {
@@ -134,8 +133,6 @@ export class Character extends Construct {
     public pronouns: string = '';
     public implants: string[];
 
-    public starship?: Starship;
-
     constructor() {
         super();
         this.attributes.push(new CharacterAttribute(Attribute.Control, this._attributeInitialValue));
@@ -156,8 +153,6 @@ export class Character extends Construct {
         this.implants = [];
         this.careerEvents = [];
         this.age = AgeHelper.getAdultAge();
-
-        this.starship = undefined;
     }
 
     get steps() {

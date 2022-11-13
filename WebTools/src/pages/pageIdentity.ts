@@ -29,6 +29,7 @@ export enum PageIdentity {
     CareerEvent2Details,
     AttributesAndDisciplines,
     BorgImplants,
+    ExtraFocus,
     Finish,
 
     SimpleStarship,

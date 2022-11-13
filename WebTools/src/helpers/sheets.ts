@@ -355,10 +355,10 @@ class StandardTosStarshipSheet extends BasicStarshipSheet {
         return 'TOS Standard Starship Sheet (Landscape)'
     }
     getThumbnailUrl(): string {
-        return 'https://sta.bcholmes.org/static/img/sheets/TOS_Standard_Starship_Sheet.png'
+        return '/static/img/sheets/TOS_Standard_Starship_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/static/pdf/TOS_Starship_Sheet_no_outline.pdf'
+        return '/static/pdf/TOS_Starship_Sheet_no_outline.pdf'
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {

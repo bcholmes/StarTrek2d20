@@ -13,6 +13,7 @@ import {CheckBox} from '../components/checkBox';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
+import InstructionText from '../components/instructionText';
 
 export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> {
     private _electiveSkills: Skill[];
@@ -44,12 +45,10 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
               </div>
 
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <CharacterCreationBreadcrumbs />
                 <div className="header-text"><div>{upbringing.name}</div></div>
-                <div className="panel">
-                    <div className="desc-text">{upbringing.description}</div>
-                </div>
+                <InstructionText text={[upbringing.description]} />
                 <div className="panel">
                     <div>Do you <b>Accept</b> or <b>Rebel</b> against your upbringing?</div>
                     <CheckBox isChecked={this._accepted} text="Accept" value={1} onChanged={() => this.onAccepted(true)}/>
@@ -63,7 +62,7 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
                     <div className="header-small">DISCIPLINES (Select one)</div>
                     <ElectiveSkillList points={1} skills={upbringing.disciplines} onUpdated={skills => this.onElectiveSkillsSelected(skills) }/>
                 </div>
-                <div className="panel">
+                <div>
                     <div className="header-small">TALENT</div>
                     <SingleTalentSelectionList talents={talents} onSelection={(talent) => { this.onTalentSelected(talent) } } construct={character}/>
                 </div>

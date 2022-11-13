@@ -6,7 +6,6 @@ import { ShipBuildType, ShipBuildTypeModel, SimpleStats } from "../../common/sta
 import { Button } from "../../components/button";
 import { DropDownInput } from "../../components/dropDownInput";
 import { Header } from "../../components/header";
-import { SmallHeader } from "../../components/smallHeader";
 import { Era } from "../../helpers/eras";
 import { Source } from "../../helpers/sources";
 import { PageIdentity } from "../../pages/pageIdentity";
@@ -39,10 +38,8 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
     render() {
         let typeSelection = hasSource(Source.KlingonCore)
             ? (<div className="my-5">
-                    <div className="header-small">Ship Type</div>
-                    <div className="page-text">
-                        What type of starship is this?
-                    </div>
+                    <Header level={2}>Ship Type</Header>
+                    <p>What type of starship is this?</p>
                     <div>
                         <DropDownInput
                             items={ CharacterTypeModel.getStarshipTypes().map((t, i) => t.name) }
@@ -53,10 +50,8 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
             : undefined;
 
         let buildTypeSelection = (<div className="my-5">
-                <div className="header-small">Size Category</div>
-                <div className="page-text">
-                    How big of a vessel is it?
-                </div>
+                <Header level={2}>Size Category</Header>
+                <p>How big of a vessel is it?</p>
                 <div>
                     <DropDownInput
                         items={ ShipBuildTypeModel.allTypes().map((t, i) => t.name) }
@@ -112,8 +107,8 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
 
     renderServiceYear() {
         return (<div className="my-5">
-                    <SmallHeader>Campaign Year</SmallHeader>
-                    <div className="page-text">
+                    <Header level={2}>Campaign Year</Header>
+                    <div>
                         <p>What is the current year in your campaign? You'll probably need to consult your GM.</p>
                         <p>A default year will be filled in automatically dependent on the chosen Era.</p>
                     </div>

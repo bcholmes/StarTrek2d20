@@ -58,7 +58,7 @@ export class EnvironmentDetailsPage extends React.Component<IPageProperties, {}>
         var nextPageName = character.type === CharacterType.KlingonWarrior ? "CASTE" : "UPBRINGING";
 
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <CharacterCreationBreadcrumbs />
                 <div className="header-text"><div>{env.name} {otherSpeciesName}</div></div>
                 <div className="panel">

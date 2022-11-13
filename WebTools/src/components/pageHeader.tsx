@@ -53,6 +53,7 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
                 || this.props.page === PageIdentity.BorgImplants
                 || this.props.page === PageIdentity.Environment
                 || this.props.page === PageIdentity.EnvironmentDetails
+                || this.props.page === PageIdentity.ExtraFocus
                 || this.props.page === PageIdentity.Upbringing
                 || this.props.page === PageIdentity.UpbringingDetails
                 || this.props.page === PageIdentity.StarfleetAcademy

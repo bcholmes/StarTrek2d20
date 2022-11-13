@@ -41,6 +41,7 @@ import StarshipTalentsPage from '../starship/page/starshipTalentsPage';
 import StarshipWeaponsPage from '../starship/page/starshipWeaponsPage';
 import { SelectStarshipToolPage } from '../starship/page/selectStarshipToolPage';
 import SmallCraftStatsPage from '../starship/page/smallCraftStatsPage';
+import { ExtraFocusPage } from './extraFocusPage';
 
 export class PageFactory {
     private factories = {};
@@ -77,6 +78,7 @@ export class PageFactory {
         this.factories[PageIdentity.ChildEducationDetailsPage] = () => <ChildEducationDetailsPage/>;
         this.factories[PageIdentity.AttributesAndDisciplines] = () => <AttributesAndDisciplinesPage />;
         this.factories[PageIdentity.BorgImplants] = () => <BorgImplantSelection />;
+        this.factories[PageIdentity.ExtraFocus] = () => <ExtraFocusPage />;
         this.factories[PageIdentity.Finish] = () => <FinishPage/>;
         this.factories[PageIdentity.SimpleStarship] = () => <SimpleStarshipPage/>;
         this.factories[PageIdentity.SmallCraftStats] = () => <SmallCraftStatsPage/>;

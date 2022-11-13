@@ -51,8 +51,6 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
         this.starship = new Starship();
         this.starship.type = this.props.type;
         this.starship.serviceYear = this.props.serviceYear;
-        character.starship = this.starship;
-        character.type = this.props.type;
 
         this._talentSelection = [];
 

@@ -5,6 +5,7 @@ import { PageIdentity } from './pageIdentity';
 import { Navigation } from '../common/navigator';
 import { character } from '../common/character';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import { Header } from '../components/header';
 
 interface Implant {
     name: string;
@@ -51,14 +52,14 @@ export class BorgImplantSelection extends React.Component<{}, {}> {
         });
 
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <CharacterCreationBreadcrumbs />
-                <div className="header-text"><div>BORG IMPLANTS</div></div>
-                <div className="panel">
-                    <div className="desc-text">
+                <Header>BORG IMPLANTS</Header>
+                <div>
+                    <p>
                         Select up to 3 implants.
                         Each implant increases the difficulty of Medicine Tasks performed on you.
-                    </div>
+                    </p>
                     <div className="panel">
                         <table className="selection-list">
                             <tbody>
