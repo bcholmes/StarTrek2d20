@@ -1,4 +1,4 @@
-import base64url from 'base64url';
+import { Base64 } from 'js-base64';
 import pako from 'pako';
 import { Character, CharacterAttribute, CharacterSkill, CharacterTalent } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
@@ -216,14 +216,14 @@ class Marshaller {
     encode(json: any) {
         let text = JSON.stringify(json);
         let encoded = pako.deflate(new TextEncoder().encode(text));
-        let result = base64url.encode(encoded);
+        let result = Base64.encodeURI(encoded);
         return result;
     }
 
     decode(s: string) {
         if (s) {
             try {
-                let encoded = base64url.toBuffer(s);
+                let encoded = Base64.toUint8Array(s);
                 let text = new TextDecoder().decode(pako.inflate(encoded));
                 return JSON.parse(text);
             } catch (e) {
