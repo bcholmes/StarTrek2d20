@@ -398,7 +398,7 @@ class SpaceframePrerequisite implements IConstructPrerequisite<Starship> {
     }
 
     isPrerequisiteFulfilled(s: Starship) {
-        return s != null && s.spaceframeModel && s.spaceframeModel.id === this.frame;
+        return s?.spaceframeModel?.id === this.frame;
     }
     describe(): string {
         return "";
@@ -476,7 +476,7 @@ class SpaceframesPrerequisite implements IConstructPrerequisite<Starship> {
     }
 
     isPrerequisiteFulfilled(starship: Starship) {
-        return this.frames.indexOf(starship.spaceframeModel.id) > -1;
+        return starship.spaceframeModel && (this.frames.indexOf(starship.spaceframeModel.id) > -1);
     }
     describe(): string {
         return "";
