@@ -11,6 +11,14 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.221117</b>
+                <ul>
+                    <li>An important bug was reported. This update should fix that.</li>
+                    <li>I've upgraded a bunch of tools/dependencies that are used to create this app. I hit a couple of hiccups along
+                        the way, but there's always a fear that there's some hiccup in the code that I didn't spot and therefore haven't fixed.
+                        If something doesn't appear to working correctly, please send some feedback.
+                    </li>
+                </ul>
                 <b>v1.221113</b>
                 <ul>
                     <li>There are a couple of talents that give characters extra focuses. The app will now prompt you for those
