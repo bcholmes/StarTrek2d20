@@ -216,7 +216,7 @@ class Marshaller {
     encode(json: any) {
         let text = JSON.stringify(json);
         let encoded = pako.deflate(new TextEncoder().encode(text));
-        let result = Base64.encodeURI(encoded);
+        let result = Base64.fromUint8Array(encoded, true);
         return result;
     }
 
