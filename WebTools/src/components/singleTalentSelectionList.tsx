@@ -1,12 +1,13 @@
 ﻿import * as React from 'react';
 import {CheckBox} from './checkBox';
-import {TalentViewModel} from '../helpers/talents';
+import {ITalent, TalentViewModel} from '../helpers/talents';
 import replaceDiceWithArrowhead from '../common/arrowhead';
 import { Construct } from '../common/construct';
 
 interface ISingleTalentSelectionProperties {
     talents: TalentViewModel[]
     construct: Construct;
+    initialSelection?: ITalent;
     onSelection: (talent?: TalentViewModel) => void;
 }
 
@@ -20,7 +21,7 @@ export class SingleTalentSelectionList extends React.Component<ISingleTalentSele
         super(props);
 
         this.state = {
-            selection: undefined
+            selection: (this.props.initialSelection ? this.props.initialSelection.name : undefined)
         };
     }
 
@@ -36,7 +37,7 @@ export class SingleTalentSelectionList extends React.Component<ISingleTalentSele
         if (selection == null && temp != null) {
             this.setState((state) => ({
                 ...state,
-                selection: undefined 
+                selection: undefined
             }));
             this.props.onSelection(undefined);
         }
@@ -99,7 +100,7 @@ export class SingleTalentSelectionList extends React.Component<ISingleTalentSele
 
         this.setState((state) => ({
             ...state,
-            selection: selection 
+            selection: selection
         }));
     }
 }

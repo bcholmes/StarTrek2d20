@@ -500,8 +500,8 @@ class DepartmentPrerequisite implements IConstructPrerequisite<Starship> {
     }
 }
 
-export class TalentModel {
-    name: string;
+export class TalentModel implements ITalent {
+    readonly name: string;
     description: string;
     prerequisites: IConstructPrerequisite<Construct>[];
     maxRank: number;
@@ -593,6 +593,10 @@ export class TalentModel {
             return result;
         }
     }
+}
+
+export interface ITalent {
+    readonly name: string;
 }
 
 export class TalentViewModel {

@@ -1,9 +1,11 @@
 import { CharacterType } from "../common/characterType";
 import { ShipBuildType, SimpleStats } from "../common/starship";
 import { Department } from "../helpers/departments";
+import { MissionPodModel } from "../helpers/missionPods";
+import { MissionProfileModel } from "../helpers/missionProfiles";
 import { SpaceframeModel } from "../helpers/spaceframeModel";
 import { System } from "../helpers/systems";
-import { TalentViewModel } from "../helpers/talents";
+import { TalentModel, TalentViewModel } from "../helpers/talents";
 import { Weapon } from "../helpers/weapons";
 import { ShipBuildWorkflow } from "../starship/model/shipBuildWorkflow";
 
@@ -22,10 +24,15 @@ export const REWIND_TO_STARSHIP_WORKFLOW_STEP = "REWIND_TO_STARSHIP_WORKFLOW_STE
 export const SET_STARSHIP_NAME = "SET_STARSHIP_NAME";
 export const SET_STARSHIP_REGISTRY = "SET_STARSHIP_REGISTRY";
 export const SET_STARSHIP_SPACEFRAME = "SET_STARSHIP_SPACEFRAME";
+export const SET_STARSHIP_MISSION_POD = "SET_STARSHIP_MISSION_POD";
+export const SET_STARSHIP_MISSION_PROFILE = "SET_STARSHIP_MISSION_PROFILE";
+export const SET_STARSHIP_MISSION_PROFILE_TALENT = "SET_STARSHIP_MISSION_PROFILE_TALENT";
 export const SET_STARSHIP_TRAITS = "SET_STARSHIP_TRAITS";
 export const SET_ADDITIONAL_TALENTS = "SET_ADDITIONAL_TALENTS";
 export const ADD_STARSHIP_WEAPON = "ADD_STARSHIP_WEAPON";
 export const DELETE_STARSHIP_WEAPON = "DELETE_STARSHIP_WEAPON";
+export const ADD_STARSHIP_REFIT = "ADD_STARSHIP_REFIT";
+export const DELETE_STARSHIP_REFIT = "DELETE_STARSHIP_REFIT";
 
 export function createNewStarship(type: CharacterType, serviceYear?: number, simple: SimpleStats = undefined, workflow?: ShipBuildWorkflow,
         buildType: ShipBuildType = ShipBuildType.Starship) {
@@ -91,6 +98,47 @@ export function setStarshipSpaceframe(spaceframe: SpaceframeModel) {
        payload: payload
     }
 }
+
+export function setStarshipMissionProfile(missionProfile: MissionProfileModel) {
+    let payload = { missionProfile: missionProfile };
+    return {
+       type: SET_STARSHIP_MISSION_PROFILE,
+       payload: payload
+    }
+}
+
+export function setStarshipMissionProfileTalent(talent: TalentModel) {
+    let payload = { talent: talent };
+    return {
+       type: SET_STARSHIP_MISSION_PROFILE_TALENT,
+       payload: payload
+    }
+}
+
+export function setStarshipMissionPod(missionPod: MissionPodModel) {
+    let payload = { missionPod: missionPod };
+    return {
+       type: SET_STARSHIP_MISSION_POD,
+       payload: payload
+    }
+}
+
+export function addStarshipRefit(refit: System) {
+    let payload = { refit: refit };
+    return {
+       type: ADD_STARSHIP_REFIT,
+       payload: payload
+    }
+}
+
+export function deleteStarshipRefit(refit: System) {
+    let payload = { refit: refit };
+    return {
+       type: DELETE_STARSHIP_REFIT,
+       payload: payload
+    }
+}
+
 
 export function setStarshipRegistry(registry: string) {
     let payload = { registry: registry };

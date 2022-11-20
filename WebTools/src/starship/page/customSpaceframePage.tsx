@@ -1,9 +1,11 @@
 import { connect } from "react-redux";
 import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
+import { Navigation } from "../../common/navigator";
 import { Dialog } from "../../components/dialog";
 import { Header } from "../../components/header";
 import { allDepartments, Department } from "../../helpers/departments";
 import { allSystems, System } from "../../helpers/systems";
+import { PageIdentity } from "../../pages/pageIdentity";
 import { changeStarshipSpaceframeClassName, changeStarshipSpaceframeDepartment, changeStarshipSpaceframeScale, changeStarshipSpaceframeServiceYear, changeStarshipSpaceframeSystem } from "../../state/starshipActions";
 import store from "../../state/store";
 import { BuildPoints } from "../model/buildPoints";
@@ -152,12 +154,14 @@ class CustomSpaceframePage extends BaseSimpleStarshipPage {
     }
 
     nextPage(): void {
-        if (this.sumTotalSystems() < this.getSystemsPoints()) {
+        if (!(this.props.starship.className)) {
+            Dialog.show("Please provide a name for this class of ship.");
+        } else if (this.sumTotalSystems() < this.getSystemsPoints()) {
             Dialog.show("You have not distributed all the Systems Points");
         } else if (this.sumTotalDepartments() < this.getDepartmentPoints()) {
             Dialog.show("You have not distributed all the Department Points");
         } else {
-            super.nextPage();
+            Navigation.navigateToPage(PageIdentity.StarshipWeaponsSelection);
         }
     }
 }

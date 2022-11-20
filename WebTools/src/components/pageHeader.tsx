@@ -77,6 +77,14 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
             return "Sector Details";
         } else if (this.props.page === PageIdentity.SpaceframeSelection) {
             return "Spaceframe Details";
+        } else if (this.props.page === PageIdentity.CustomSpaceframe) {
+            return "Custom Spaceframe";
+        } else if (this.props.page === PageIdentity.MissionProfileSelection) {
+            return "Mission Profile";
+        } else if (this.props.page === PageIdentity.MissionPodSelection) {
+            return "Mission Pod";
+        } else if (this.props.page === PageIdentity.StarshipRefits) {
+            return "Starship Refits";
         } else if (this.props.page === PageIdentity.StarSystemDetails) {
             return "Star System Details";
         } else if (this.props.page === PageIdentity.ViewSheet) {

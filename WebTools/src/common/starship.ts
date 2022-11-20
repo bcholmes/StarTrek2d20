@@ -22,6 +22,14 @@ export class SimpleStats {
     }
 }
 
+export const refitCalculator = (starship: Starship) => {
+    if (starship?.serviceYear && starship?.spaceframeModel?.serviceYear) {
+        return Math.floor((starship.serviceYear - starship.spaceframeModel.serviceYear) / 10);
+    } else {
+        return 0;
+    }
+}
+
 export enum ShipBuildType {
     Pod, Shuttlecraft, Runabout, Starship
 }
@@ -156,6 +164,10 @@ export class Starship extends Construct {
         } else {
             return 0;
         }
+    }
+
+    get numberOfRefits() {
+        return refitCalculator(this);
     }
 
     getAllTraits() {
@@ -310,8 +322,10 @@ export class Starship extends Construct {
                 result.push(w);
             });
 
-        } else if (this.additionalWeapons.length > 0) {
-            result = [...this.additionalWeapons];
+        }
+
+        if (this.additionalWeapons.length > 0) {
+            this.additionalWeapons.forEach(w => result.push(w));
         }
 
         let names = [];

@@ -1,6 +1,6 @@
-import { TalentModel, TalentsHelper } from "./talents";
+import { ITalent, TalentModel, TalentsHelper } from "./talents";
 
-export class TalentSelection {
+export class TalentSelection implements ITalent {
     readonly talent: TalentModel;
     readonly rank: number;
     readonly qualifier?: string;
@@ -9,6 +9,10 @@ export class TalentSelection {
         this.talent = talent;
         this.rank = rank;
         this.qualifier = qualifier;
+    }
+
+    get name() {
+        return this.talent.name;
     }
 
     get description() {

@@ -44,6 +44,9 @@ import SmallCraftStatsPage from '../starship/page/smallCraftStatsPage';
 import { ExtraFocusPage } from './extraFocusPage';
 import SpaceframePage from '../starship/page/spaceframePage';
 import CustomSpaceframePage from '../starship/page/customSpaceframePage';
+import MissionProfileSelectionPage from '../starship/page/missionProfileSelectionPage';
+import MissionProfileTalentSelectionPage from '../starship/page/missionProfileTalentSelectionPage';
+import RefitsPage from '../starship/page/refitsPage';
 
 export class PageFactory {
     private factories = {};
@@ -83,10 +86,13 @@ export class PageFactory {
         this.factories[PageIdentity.ExtraFocus] = () => <ExtraFocusPage />;
         this.factories[PageIdentity.Finish] = () => <FinishPage/>;
         this.factories[PageIdentity.CustomSpaceframe] = () => <CustomSpaceframePage/>;
+        this.factories[PageIdentity.MissionProfileSelection] = () => <MissionProfileSelectionPage/>;
+        this.factories[PageIdentity.MissionProfileTalentSelection] = () => <MissionProfileTalentSelectionPage/>;
         this.factories[PageIdentity.SimpleStarship] = () => <SimpleStarshipPage/>;
         this.factories[PageIdentity.SmallCraftStats] = () => <SmallCraftStatsPage/>;
         this.factories[PageIdentity.SpaceframeSelection] = () => <SpaceframePage/>;
         this.factories[PageIdentity.Starship] = () => <StarshipPage/>;
+        this.factories[PageIdentity.StarshipRefits] = () => <RefitsPage/>;
         this.factories[PageIdentity.StarshipToolSelection] = () => <SelectStarshipToolPage/>;
         this.factories[PageIdentity.StarshipTypeSelection] = () => <StarshipTypeSelectionPage/>;
         this.factories[PageIdentity.StarshipTalentSelection] = () => <StarshipTalentsPage/>;

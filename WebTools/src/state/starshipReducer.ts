@@ -1,7 +1,6 @@
 import { SimpleStats, Starship } from "../common/starship";
-import { Spaceframe } from "../helpers/spaceframeEnum";
 import { ShipBuildWorkflow } from "../starship/model/shipBuildWorkflow";
-import { ADD_STARSHIP_WEAPON, CHANGE_STARSHIP_SCALE, CHANGE_STARSHIP_SIMPLE_CLASS_NAME, CHANGE_STARSHIP_SIMPLE_DEPARTMENT, CHANGE_STARSHIP_SIMPLE_SYSTEM, CHANGE_STARSHIP_SPACEFRAME_CLASS_NAME, CHANGE_STARSHIP_SPACEFRAME_DEPARTMENT, CHANGE_STARSHIP_SPACEFRAME_SCALE, CHANGE_STARSHIP_SPACEFRAME_SERVICE_YEAR, CHANGE_STARSHIP_SPACEFRAME_SYSTEM, CREATE_NEW_STARSHIP, DELETE_STARSHIP_WEAPON, NEXT_STARSHIP_WORKFLOW_STEP, REWIND_TO_STARSHIP_WORKFLOW_STEP, SET_ADDITIONAL_TALENTS, SET_STARSHIP_NAME, SET_STARSHIP_REGISTRY, SET_STARSHIP_SPACEFRAME, SET_STARSHIP_TRAITS } from "./starshipActions";
+import { ADD_STARSHIP_REFIT, ADD_STARSHIP_WEAPON, CHANGE_STARSHIP_SCALE, CHANGE_STARSHIP_SIMPLE_CLASS_NAME, CHANGE_STARSHIP_SIMPLE_DEPARTMENT, CHANGE_STARSHIP_SIMPLE_SYSTEM, CHANGE_STARSHIP_SPACEFRAME_CLASS_NAME, CHANGE_STARSHIP_SPACEFRAME_DEPARTMENT, CHANGE_STARSHIP_SPACEFRAME_SCALE, CHANGE_STARSHIP_SPACEFRAME_SERVICE_YEAR, CHANGE_STARSHIP_SPACEFRAME_SYSTEM, CREATE_NEW_STARSHIP, DELETE_STARSHIP_REFIT, DELETE_STARSHIP_WEAPON, NEXT_STARSHIP_WORKFLOW_STEP, REWIND_TO_STARSHIP_WORKFLOW_STEP, SET_ADDITIONAL_TALENTS, SET_STARSHIP_MISSION_POD, SET_STARSHIP_MISSION_PROFILE, SET_STARSHIP_MISSION_PROFILE_TALENT, SET_STARSHIP_NAME, SET_STARSHIP_REGISTRY, SET_STARSHIP_SPACEFRAME, SET_STARSHIP_TRAITS } from "./starshipActions";
 
 interface StarshipState {
     starship?: Starship;
@@ -99,6 +98,56 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
         case SET_STARSHIP_SPACEFRAME: {
             let s = state.starship.copy();
             s.spaceframeModel = action.payload.spaceframe;
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case SET_STARSHIP_MISSION_PROFILE: {
+            let s = state.starship.copy();
+            s.missionProfileModel = action.payload.missionProfile;
+            s.profileTalent = undefined;
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case SET_STARSHIP_MISSION_PROFILE_TALENT: {
+            let s = state.starship.copy();
+            s.profileTalent = action.payload.talent;
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case SET_STARSHIP_MISSION_POD: {
+            let s = state.starship.copy();
+            s.missionPodModel = action.payload.missionPod;
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case ADD_STARSHIP_REFIT: {
+            let s = state.starship.copy();
+            let refits = [...s.refits, action.payload.refit];
+            while (refits.length > s.numberOfRefits) {
+                refits.splice(0, 1);
+            }
+            s.refits = refits;
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case DELETE_STARSHIP_REFIT: {
+            let s = state.starship.copy();
+            let refits = [...s.refits];
+            let index = refits.indexOf(action.payload.refit);
+            if (index >= 0) {
+                refits.splice(index, 1);
+            }
+            s.refits = refits;
             return {
                 ...state,
                 starship: s

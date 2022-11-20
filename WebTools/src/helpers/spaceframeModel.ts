@@ -60,6 +60,14 @@ export class SpaceframeModel {
         }
     }
 
+    hasTalent(name: string) {
+        let result = false;
+        this.talents.forEach(t => {
+            result = result || (t.talent.name === name);
+        });
+        return result;
+    }
+
     copy() {
         return new SpaceframeModel(this.id, this.type, this.name, this.serviceYear, this.prerequisites, [...this.systems], [...this.departments],
             this.scale, [...this.attacks], [...this.talents], [...this.additionalTraits], this.maxServiceYear);
