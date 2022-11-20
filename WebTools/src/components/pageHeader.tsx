@@ -75,6 +75,8 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
             return "System Generation";
         } else if (this.props.page === PageIdentity.SectorDetails) {
             return "Sector Details";
+        } else if (this.props.page === PageIdentity.SpaceframeSelection) {
+            return "Spaceframe Details";
         } else if (this.props.page === PageIdentity.StarSystemDetails) {
             return "Star System Details";
         } else if (this.props.page === PageIdentity.ViewSheet) {

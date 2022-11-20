@@ -84,6 +84,7 @@ export class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFram
         if (this.props.activePage === PageIdentity.ViewSheet ||
             this.props.activePage === PageIdentity.SystemGeneration ||
             this.props.activePage === PageIdentity.SmallCraftStats ||
+            this.props.activePage === PageIdentity.SpaceframeSelection ||
             this.props.activePage === PageIdentity.Starship ||
             this.props.activePage === PageIdentity.StarshipToolSelection ||
             this.props.activePage === PageIdentity.StarshipTypeSelection ||

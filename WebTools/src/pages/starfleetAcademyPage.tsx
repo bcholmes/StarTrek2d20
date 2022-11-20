@@ -4,11 +4,12 @@ import { CharacterType } from '../common/characterType';
 import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
-import {Track, TracksHelper} from '../helpers/tracks';
+import {TracksHelper} from '../helpers/tracks';
 import {Button} from '../components/button';
 import {TrackSelection} from '../components/trackSelection';
 import InstructionText from '../components/instructionText';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import { Track } from '../helpers/trackEnum';
 
 interface IStarfleetAcademygPageState {
     showSelection: boolean;
@@ -62,7 +63,7 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
 
     private rollTrack(isOfficer: boolean) {
         character.enlisted = !isOfficer;
-        var track = TracksHelper.generateTrack();
+        var track = TracksHelper.instance().generateTrack();
         this.selectTrack(track);
     }
 
@@ -76,7 +77,7 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
     }
 
     private rollTrackForType() {
-        var track = TracksHelper.generateTrack();
+        var track = TracksHelper.instance().generateTrack();
         this.selectTrack(track);
     }
 
@@ -87,7 +88,7 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
 
     private selectTrack(track: Track) {
         character.track = track;
-        TracksHelper.applyTrack(character.track);
+        TracksHelper.instance().applyTrack(character.track);
         Navigation.navigateToPage(PageIdentity.StarfleetAcademyDetails);
     }
 }

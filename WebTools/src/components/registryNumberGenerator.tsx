@@ -1,5 +1,5 @@
 import { CharacterType } from "../common/characterType";
-import { SpaceframeModel } from "../helpers/spaceframes";
+import { SpaceframeModel } from "../helpers/spaceframeModel";
 
 
 class RegistryNumberGenerator {
@@ -9,7 +9,7 @@ class RegistryNumberGenerator {
     importantRegistryNumbers: { [registry: number]: string } = {
         638: "Grissom",
         1031: "Discovery",
-        1017: "Constellation", 
+        1017: "Constellation",
         1227: "Shenzhou",
         1657: "Potemkin",
         1664: "Excalibur",

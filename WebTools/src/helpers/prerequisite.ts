@@ -1,21 +1,36 @@
 import { character } from "../common/character";
 import { CharacterType } from "../common/characterType";
-import { Construct } from "../common/construct";
+import { IConstruct } from "../common/iconstruct";
 import { Starship } from "../common/starship";
 import { hasAnySource } from "../state/contextFunctions";
 import store from "../state/store";
 import { Career } from "./careers";
 import { Era } from "./eras";
 import { Source } from "./sources";
-import { Track } from "./tracks";
+import { Track } from "./trackEnum";
 
 export interface IPrerequisite {
     isPrerequisiteFulfilled(): boolean;
 }
 
-export interface IConstructPrerequisite<T extends Construct> {
+export interface IConstructPrerequisite<T extends IConstruct> {
     isPrerequisiteFulfilled(t: T): boolean;
     describe(): string
+}
+
+export class StarshipTypePrerequisite implements IConstructPrerequisite<Starship> {
+    private types: CharacterType[];
+
+    constructor(...type: CharacterType[]) {
+        this.types = type;
+    }
+
+    isPrerequisiteFulfilled(s: Starship) {
+        return this.types.indexOf(character.type) >= 0;
+    }
+    describe(): string {
+        return "";
+    }
 }
 
 export class ServiceYearPrerequisite implements IConstructPrerequisite<Starship> {

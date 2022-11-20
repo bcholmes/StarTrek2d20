@@ -1,7 +1,8 @@
 ﻿import * as React from 'react';
 import {character} from '../../common/character';
 import { CharacterType } from '../../common/characterType';
-import {SpaceframeHelper, SpaceframeModel} from '../../helpers/spaceframes';
+import {SpaceframeHelper} from '../../helpers/spaceframes';
+import {SpaceframeModel} from '../../helpers/spaceframeModel';
 import {MissionProfileHelper, MissionProfileModel} from '../../helpers/missionProfiles';
 import {TalentsHelper, TalentViewModel, ToViewModel} from "../../helpers/talents";
 import {Button} from '../../components/button';
@@ -64,7 +65,7 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
     }
 
     renderSpaceframeSection() {
-        const spaceframes = SpaceframeHelper.getSpaceframes(this.starship, true);
+        const spaceframes = SpaceframeHelper.instance().getSpaceframes(this.starship, true);
         // if other choices have changed, then the current spaceframe might be invalid
         if (this.starship && this.starship.spaceframeModel) {
             if (this.starship.spaceframeModel.isCustom) {
@@ -355,9 +356,6 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
                                 <div className="p-0">
                                     <div className="p-0">
                                         <Button className="button-small" text="Choose" onClick={() => this.showModal('spaceframes')} buttonType={true}/>
-                                    </div>
-                                    <div className="p-0 pt-2">
-                                        <Button className="button-small" text="Custom" onClick={() => this.showModal('customSpaceframe')} buttonType={true}/>
                                     </div>
                                 </div>
                             </div>

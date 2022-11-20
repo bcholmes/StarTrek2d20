@@ -4,44 +4,7 @@ import {CharacterType } from '../common/characterType';
 import {Source} from './sources';
 import { Attribute } from './attributes';
 import { hasSource } from '../state/contextFunctions';
-
-export enum Track {
-    // Core
-    Command,
-    Operations,
-    Sciences,
-
-    // Operations
-    EnlistedSecurityTraining,
-    ShipOperations,
-
-    // Sciences
-    UniversityAlumni,
-    ResearchInternship,
-
-    // Klingon Core
-    Technical,
-    EnlistedWarrior,
-    Laborer,
-
-    // Player's Guide - Allied Militaries
-    RankAndFile,
-    Officer,
-    IntelligenceTraining,
-    MilitiaAndGuerillas,
-
-    // Player's Guide - Ambassador / Diplomat
-    DiplomaticCorps,
-    HonoraryStatus,
-
-    // Player's Guide - Civilian
-    FreightAndTransport,
-    LawEnforcement,
-    Physician,
-    PoliticianOrBureaucrat,
-    ScientificOrTechnicalExpert,
-    TraderOrMerchant
-}
+import { Track } from './trackEnum';
 
 export enum ImprovementRuleType {
     AT_LEAST_ONE, MUST_INCLUDE_ALL, MAY_DECREMENT_ONE
@@ -118,7 +81,17 @@ export class TrackModel {
     }
 }
 
-class Tracks {
+export class TracksHelper {
+
+    private static _instance;
+
+    static instance() {
+        if (TracksHelper._instance == null) {
+            TracksHelper._instance = new TracksHelper();
+        }
+        return TracksHelper._instance;
+    }
+
     private _tracks: TrackModel[] = [
         new TrackModel(
             Track.Command,
@@ -232,7 +205,7 @@ class Tracks {
             true
         ),
     ];
-        
+
     private _alliedMilitaryTracks: TrackModel[] = [
         new TrackModel(
             Track.RankAndFile,
@@ -254,7 +227,7 @@ class Tracks {
             [Skill.Command, Skill.Security],
             [Skill.Conn, Skill.Engineering, Skill.Medicine, Skill.Science],
             ["Diplomacy", "Inspiration", "Strategy & Tactics", "Military Protocol", "History", "Politics", "Hand Phasers", "Disruptors", "Hand-to-Hand Combat", "Shipboard Tactical Systems"],
-            undefined, 
+            undefined,
             new SkillImprovementRule(ImprovementRuleType.MUST_INCLUDE_ALL, Skill.Command, Skill.Security)
         ),
         new TrackModel(
@@ -463,5 +436,3 @@ class Tracks {
         }
     }
 }
-
-export const TracksHelper = new Tracks();

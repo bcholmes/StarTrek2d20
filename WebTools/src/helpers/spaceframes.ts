@@ -4,7 +4,8 @@ import { hasAnySource } from '../state/contextFunctions';
 import { IConstructPrerequisite, ServiceYearPrerequisite } from './prerequisite';
 import {Source} from './sources';
 import { Spaceframe } from './spaceframeEnum';
-import {TalentSelection} from './talents';
+import { SpaceframeModel } from './spaceframeModel';
+import { TalentSelection } from './talentSelection';
 
 export class SourcePrerequisite implements IConstructPrerequisite<Starship> {
     sources: Source[];
@@ -38,91 +39,17 @@ export class NotSourcePrerequisite implements IConstructPrerequisite<Starship> {
     }
 }
 
-class TypePrerequisite implements IConstructPrerequisite<Starship> {
-    private type: CharacterType;
+export class SpaceframeHelper {
 
-    constructor(type: CharacterType) {
-        this.type = type;
-    }
+    private static _instance;
 
-    isPrerequisiteFulfilled(starship: Starship) {
-        return starship.type === this.type;
-    }
-    describe(): string {
-        return "";
-    }
-}
-
-export class SpaceframeModel {
-    id: Spaceframe|null;
-    type: CharacterType;
-    name: string;
-    serviceYear: number;
-    prerequisites: IConstructPrerequisite<Starship>[];
-    systems: number[];
-    departments: number[];
-    scale: number;
-    attacks: string[];
-    talents: TalentSelection[];
-    additionalTraits: string[];
-    maxServiceYear: number;
-
-    constructor(id: Spaceframe|null, type: CharacterType, name: string, serviceYear: number,
-        prerequisites: IConstructPrerequisite<Starship>[], systems: number[], departments: number[],
-        scale: number, attacks: string[], talents: TalentSelection[],
-        additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999) {
-
-        this.id = id;
-        this.type = type;
-        this.name = name;
-        this.serviceYear = serviceYear;
-        this.prerequisites = prerequisites;
-        this.systems = systems;
-        this.departments = departments;
-        this.scale = scale;
-        this.attacks = attacks;
-        this.talents = talents;
-        this.additionalTraits = additionalTraits;
-        this.maxServiceYear = maxServiceYear;
-    }
-
-    get isMissionPodAvailable() {
-        return this.id === Spaceframe.Nebula || this.id === Spaceframe.Luna || this.id === Spaceframe.Sutherland
-            || this.id === Spaceframe.Nebula_UP || this.id === Spaceframe.Luna_UP;
-    }
-
-    get isCustom() {
-        return this.id == null;
-    }
-
-    isPrerequisiteFulfilled(s: Starship) {
-        if (this.prerequisites.length === 0) {
-            return true;
-        } else {
-            let result = true;
-            this.prerequisites.forEach(req => {
-                result = result && req.isPrerequisiteFulfilled(s);
-            });
-            return result;
+    static instance() {
+        if (SpaceframeHelper._instance == null) {
+            SpaceframeHelper._instance = new SpaceframeHelper();
         }
+        return SpaceframeHelper._instance;
     }
 
-    static createStandardSpaceframe(id: Spaceframe, type: CharacterType, name: string, serviceYear: number, source: Source[], systems: number[], departments: number[],
-        scale: number, attacks: string[], talents: TalentSelection[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999) {
-        let sourcePrerequisite = new SourcePrerequisite();
-        sourcePrerequisite.sources = source;
-        let prerequisites = [ sourcePrerequisite, new TypePrerequisite(type), new ServiceYearPrerequisite(serviceYear) ];
-        return new SpaceframeModel(id, type, name, serviceYear, prerequisites, systems, departments, scale, attacks, talents, additionalTraits, maxServiceYear );
-    }
-
-    static createCustomSpaceframe(type: CharacterType, serviceYear: number) {
-        return new SpaceframeModel(null, type, "", serviceYear,
-            [ new SourcePrerequisite(Source.None) ], [7, 7, 7, 7, 7, 7], [0, 0, 0, 0, 0, 0], 3, [], [],
-            type === CharacterType.KlingonWarrior ? [ "Klingon Starship"] : [ "Federation Starship" ]);
-    }
-}
-
-class Spaceframes {
     private _frames: { [id: number]: SpaceframeModel } = {
         [Spaceframe.Akira]: new SpaceframeModel(
             Spaceframe.Akira,
@@ -2296,5 +2223,3 @@ class Spaceframes {
         return result;
     }
 }
-
-export const SpaceframeHelper = new Spaceframes();

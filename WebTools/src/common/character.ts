@@ -3,7 +3,7 @@ import {Skill} from '../helpers/skills';
 import {Career} from '../helpers/careers';
 import {Environment} from '../helpers/environments';
 import {Species} from '../helpers/speciesEnum';
-import {Track} from '../helpers/tracks';
+import {Track} from '../helpers/trackEnum';
 import {UpbringingModel} from '../helpers/upbringings';
 import {Workflow} from '../helpers/workflows';
 import {TalentViewModel} from '../helpers/talents';

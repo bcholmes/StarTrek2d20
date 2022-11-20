@@ -42,6 +42,8 @@ import StarshipWeaponsPage from '../starship/page/starshipWeaponsPage';
 import { SelectStarshipToolPage } from '../starship/page/selectStarshipToolPage';
 import SmallCraftStatsPage from '../starship/page/smallCraftStatsPage';
 import { ExtraFocusPage } from './extraFocusPage';
+import SpaceframePage from '../starship/page/spaceframePage';
+import CustomSpaceframePage from '../starship/page/customSpaceframePage';
 
 export class PageFactory {
     private factories = {};
@@ -80,8 +82,10 @@ export class PageFactory {
         this.factories[PageIdentity.BorgImplants] = () => <BorgImplantSelection />;
         this.factories[PageIdentity.ExtraFocus] = () => <ExtraFocusPage />;
         this.factories[PageIdentity.Finish] = () => <FinishPage/>;
+        this.factories[PageIdentity.CustomSpaceframe] = () => <CustomSpaceframePage/>;
         this.factories[PageIdentity.SimpleStarship] = () => <SimpleStarshipPage/>;
         this.factories[PageIdentity.SmallCraftStats] = () => <SmallCraftStatsPage/>;
+        this.factories[PageIdentity.SpaceframeSelection] = () => <SpaceframePage/>;
         this.factories[PageIdentity.Starship] = () => <StarshipPage/>;
         this.factories[PageIdentity.StarshipToolSelection] = () => <SelectStarshipToolPage/>;
         this.factories[PageIdentity.StarshipTypeSelection] = () => <StarshipTypeSelectionPage/>;

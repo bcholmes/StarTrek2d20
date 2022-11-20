@@ -25,6 +25,8 @@ export class BaseSimpleStarshipPage extends React.Component<ISimpleStarshipPageP
             <ShipBuildingBreadcrumbs />
             {this.renderHeader()}
 
+            {this.renderExtraSections()}
+
             <section className="my-5 row row-cols-1 row-cols-lg-2">
                 <div className="col mb-3">
                     <Header level={2}>Scale</Header>
@@ -138,6 +140,10 @@ export class BaseSimpleStarshipPage extends React.Component<ISimpleStarshipPageP
                 <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
             </section>
         </div>);
+    }
+
+    renderExtraSections() {
+        return null;
     }
 
     renderHeader() {

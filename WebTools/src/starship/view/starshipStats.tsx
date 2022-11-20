@@ -3,7 +3,7 @@ import formatAsDelta from '../../common/formatAsDelta';
 import {Department} from '../../helpers/departments';
 import { MissionPodModel } from '../../helpers/missionPods';
 import { MissionProfileModel } from '../../helpers/missionProfiles';
-import { SpaceframeModel } from '../../helpers/spaceframes';
+import { SpaceframeModel } from '../../helpers/spaceframeModel';
 import {System} from '../../helpers/systems';
 
 interface IStarshipStatsProperties {

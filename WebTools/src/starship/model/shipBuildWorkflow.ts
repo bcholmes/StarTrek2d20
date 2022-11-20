@@ -35,6 +35,13 @@ export class ShipBuildWorkflow {
             new ShipBuildWorkflowStep("Final Details", PageIdentity.FinalStarshipDetails)]);
     }
 
+    public static createStarshipBuildWorkflow() {
+        return new ShipBuildWorkflow([ new ShipBuildWorkflowStep("Starship Type", PageIdentity.StarshipTypeSelection),
+            new ShipBuildWorkflowStep("Spaceframe", PageIdentity.SpaceframeSelection),
+            new ShipBuildWorkflowStep("Talent Selection", PageIdentity.StarshipTalentSelection),
+            new ShipBuildWorkflowStep("Final Details", PageIdentity.FinalStarshipDetails)], 1);
+    }
+
     public static createSmallCraftBuildWorkflow(buildType: ShipBuildType) {
         if (buildType === ShipBuildType.Pod) {
             return new ShipBuildWorkflow([ new ShipBuildWorkflowStep("Starship Type", PageIdentity.StarshipTypeSelection),

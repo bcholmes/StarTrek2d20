@@ -6,7 +6,8 @@ import { Starship } from '../../common/starship';
 import { CheckBox } from '../../components/checkBox';
 import { Department } from '../../helpers/departments';
 import { Source } from '../../helpers/sources';
-import { SpaceframeHelper, SpaceframeModel } from '../../helpers/spaceframes';
+import { SpaceframeModel } from '../../helpers/spaceframeModel';
+import { SpaceframeHelper } from '../../helpers/spaceframes';
 import { System } from '../../helpers/systems';
 import { hasAnySource } from '../../state/contextFunctions';
 
@@ -38,7 +39,7 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
             value={!this.state.allowAllFrames}
             onChanged={(e) => { this.setState({ allowAllFrames: !this.state.allowAllFrames }); }} />);
 
-        let spaceframes = SpaceframeHelper.getSpaceframes(this.props.starship, this.state.allowAllFrames);
+        let spaceframes = SpaceframeHelper.instance().getSpaceframes(this.props.starship, this.state.allowAllFrames);
         spaceframes.sort((s1, s2) => {
             if (s1.name === s2.name) {
                 return s2.id - s1.id;

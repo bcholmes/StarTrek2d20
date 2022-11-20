@@ -3,7 +3,7 @@ import {character} from '../common/character';
 import {CharacterType} from '../common/characterType';
 import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
-import {Track, TracksHelper} from '../helpers/tracks';
+import {TracksHelper} from '../helpers/tracks';
 import {Skill} from '../helpers/skills';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovement';
 import {Button} from '../components/button';
@@ -15,6 +15,7 @@ import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import { Header } from '../components/header';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
+import { Track } from '../helpers/trackEnum';
 
 export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties, {}> {
     private _talent: TalentViewModel;
@@ -26,7 +27,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     private _skillsDone: boolean;
 
     render() {
-        const track = TracksHelper.getTrack(character.track);
+        const track = TracksHelper.instance().getTrack(character.track);
 
         if (character.track === Track.EnlistedSecurityTraining) {
             return this.renderEnlistedSecurityTrainingDetails();
@@ -80,7 +81,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <SingleTalentSelectionList talents={this.filterTalentList()} 
+                    <SingleTalentSelectionList talents={this.filterTalentList()}
                         construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
                 </div>
                 <div className="panel">
@@ -93,7 +94,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     }
 
     private renderEnlistedSecurityTrainingDetails() {
-        const track = TracksHelper.getTrack(character.track);
+        const track = TracksHelper.instance().getTrack(character.track);
 
         return (
             <div className="page">
@@ -126,7 +127,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <SingleTalentSelectionList talents={this.filterTalentList()} 
+                    <SingleTalentSelectionList talents={this.filterTalentList()}
                         construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
                 </div>
                 <div className="panel">
@@ -139,7 +140,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     }
 
     private renderShipOperationsDetails() {
-        const track = TracksHelper.getTrack(character.track);
+        const track = TracksHelper.instance().getTrack(character.track);
 
         return (
             <div className="page">
@@ -176,7 +177,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <SingleTalentSelectionList talents={this.filterTalentList()} 
+                    <SingleTalentSelectionList talents={this.filterTalentList()}
                         onSelection={(talent) => { this.onTalentSelected(talent) } }
                         construct={character} />
                 </div>
@@ -190,7 +191,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     }
 
     private renderUniversityAlumniDetails() {
-        const track = TracksHelper.getTrack(character.track);
+        const track = TracksHelper.instance().getTrack(character.track);
 
         return (
             <div className="page">
@@ -237,7 +238,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <SingleTalentSelectionList talents={this.filterTalentList()} 
+                    <SingleTalentSelectionList talents={this.filterTalentList()}
                         construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
                 </div>
                 <div className="panel">
@@ -250,7 +251,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     }
 
     private renderResearchInternshipDetails() {
-        const track = TracksHelper.getTrack(character.track);
+        const track = TracksHelper.instance().getTrack(character.track);
 
         return (
             <div className="page">
@@ -296,7 +297,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">TALENT</div>
-                    <SingleTalentSelectionList talents={this.filterTalentList()} 
+                    <SingleTalentSelectionList talents={this.filterTalentList()}
                         construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
                 </div>
                 <div className="panel">

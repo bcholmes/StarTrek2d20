@@ -1,9 +1,10 @@
 import { allDepartments, Department } from "../helpers/departments";
 import { MissionPodModel } from "../helpers/missionPods";
 import { MissionProfileModel } from "../helpers/missionProfiles";
-import { SpaceframeModel } from "../helpers/spaceframes";
+import { SpaceframeModel } from "../helpers/spaceframeModel";
 import { allSystems, System } from "../helpers/systems";
-import { TalentSelection, TalentsHelper, TalentViewModel } from "../helpers/talents";
+import { TalentsHelper, TalentViewModel } from "../helpers/talents";
+import { TalentSelection } from "../helpers/talentSelection";
 import StarshipWeaponRegistry, { Weapon } from "../helpers/weapons";
 import { CharacterType } from "./characterType";
 import { Construct } from "./construct";
@@ -327,9 +328,15 @@ export class Starship extends Construct {
         return weapons;
     }
 
+    get systems() {
+        let result = [0, 0, 0, 0, 0, 0];
+        allSystems().forEach(s => result[s] = this.getSystemValue(s));
+        return result;
+    }
+
     get departments() {
         let result = [0, 0, 0, 0, 0, 0];
-        if (this.spaceframeModel !== undefined && this.missionProfileModel !== undefined) {
+        if (this.spaceframeModel !== undefined) {
             const frame = this.spaceframeModel;
             const missionPod = this.missionPodModel;
             const profile = this.missionProfileModel;
@@ -344,9 +351,11 @@ export class Starship extends Construct {
                 });
             }
 
-            profile.departments.forEach((d, i) => {
-                result[i] += d;
-            });
+            if (this.missionProfileModel !== undefined) {
+                profile.departments.forEach((d, i) => {
+                    result[i] += d;
+                });
+            }
         } else if (this.simpleStats != null) {
             allDepartments().forEach(d => result[d] = this.simpleStats.departments[d]);
         }

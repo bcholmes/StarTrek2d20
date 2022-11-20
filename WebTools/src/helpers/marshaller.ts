@@ -11,11 +11,14 @@ import { MissionPod, MissionPodHelper } from './missionPods';
 import { MissionProfile, MissionProfileHelper } from './missionProfiles';
 import { Skill } from './skills';
 import { Spaceframe } from './spaceframeEnum';
-import { SpaceframeHelper, SpaceframeModel } from './spaceframes';
+import { SpaceframeModel } from './spaceframeModel';
+import { SpaceframeHelper } from './spaceframes';
 import { SpeciesHelper } from './species';
 import { Species } from './speciesEnum';
 import { allSystems, System } from './systems';
-import { TalentSelection, TalentsHelper } from './talents';
+import { TalentsHelper } from './talents';
+import { TalentSelection } from './talentSelection';
+import { Track } from './trackEnum';
 import { Upbringing, UpbringingsHelper } from './upbringings';
 import { CaptureType, CaptureTypeModel, DeliverySystem, DeliverySystemModel, EnergyLoadType, EnergyLoadTypeModel, TorpedoLoadType, TorpedoLoadTypeModel, UsageCategory, Weapon, WeaponType } from './weapons';
 
@@ -43,7 +46,6 @@ class Marshaller {
         let sheet = {
             "stereotype": "mainCharacter",
             "type": CharacterType[character.type],
-            "age": character.age ? character.age.name : undefined,
             "environment": character.environment != null
                 ? {
                     "id": Environment[character.environment],
@@ -57,18 +59,10 @@ class Marshaller {
                   }
                 : undefined,
             "name": character.name,
-            "pronouns": character.pronouns,
-            "lineage": character.lineage,
-            "house": character.house,
-            "role": character.role,
-            "assignedShip": character.assignedShip,
-            "jobAssignment": character.jobAssignment,
             "career": character.career != null ? Career[character.career] : null,
             "careerEvents": [...character.careerEvents],
             "rank": character.rank,
             "species": Species[character.species],
-            "mixedSpecies": character.mixedSpecies != null ? Species[character.mixedSpecies] : null,
-            "originalSpecies": character.originalSpecies != null ? Species[character.originalSpecies] : null,
             "attributes": this.toAttributeObject(character.attributes),
             "disciplines": this.toSkillObject(character.skills),
             "traits": this.parseTraits(character.additionalTraits),
@@ -77,6 +71,37 @@ class Marshaller {
             "values": character.values,
             "implants": [...character.implants]
         };
+
+        if (character.age != null) {
+            sheet["age"] = character.age.name;
+        }
+        if (character.assignedShip) {
+            sheet["assignedShip"] = character.assignedShip;
+        }
+        if (character.jobAssignment) {
+            sheet["jobAssignment"] = character.jobAssignment;
+        }
+        if (character.pronouns) {
+            sheet["pronouns"] = character.pronouns;
+        }
+        if (character.lineage) {
+            sheet["lineage"] = character.lineage;
+        }
+        if (character.house) {
+            sheet["house"] = character.house;
+        }
+        if (character.role) {
+            sheet["role"] = character.role;
+        }
+        if (character.mixedSpecies != null) {
+            sheet["mixedSpecies"] = Species[character.mixedSpecies];
+        }
+        if (character.originalSpecies != null) {
+            sheet["originalSpecies"] = Species[character.originalSpecies];
+        }
+        if (character.track != null) {
+            sheet["track"] = Track[character.track];
+        }
         return this.encode(sheet);
     }
 
@@ -271,7 +296,7 @@ class Marshaller {
                 }
                 result.spaceframeModel = frame;
             } else {
-                result.spaceframeModel = SpaceframeHelper.getSpaceframeByName(json.spaceframe.name);
+                result.spaceframeModel = SpaceframeHelper.instance().getSpaceframeByName(json.spaceframe.name);
             }
         }
         if (json.missionProfile && result.type != null) {

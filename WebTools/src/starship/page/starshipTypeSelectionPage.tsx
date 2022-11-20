@@ -8,9 +8,10 @@ import { DropDownInput } from "../../components/dropDownInput";
 import { Header } from "../../components/header";
 import { Era } from "../../helpers/eras";
 import { Source } from "../../helpers/sources";
+import { SpaceframeModel } from "../../helpers/spaceframeModel";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { hasSource } from "../../state/contextFunctions";
-import { createNewStarship } from "../../state/starshipActions";
+import { createNewStarship, setStarshipSpaceframe } from "../../state/starshipActions";
 import store from "../../state/store";
 import { BuildPoints } from "../model/buildPoints";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
@@ -92,16 +93,26 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
         if (this.state.buildType != null && this.state.buildType.type !== ShipBuildType.Starship) {
             let workflow = ShipBuildWorkflow.createSmallCraftBuildWorkflow(this.state.buildType.type);
             let stats = new SimpleStats();
+            stats.scale = this.state.buildType.type === ShipBuildType.Runabout ? 2 : 1;
             stats.systems = BuildPoints.allocatePointsEvenly(BuildPoints.systemPointsForType(
-                this.state.buildType.type, this.state.campaignYear, this.state.type.type));
+                this.state.buildType.type, this.state.campaignYear, this.state.type.type, stats.scale));
             stats.departments = BuildPoints.allocatePointsEvenly(BuildPoints.departmentPointsForType(
                 this.state.buildType.type));
-            stats.scale = this.state.buildType.type === ShipBuildType.Runabout ? 2 : 1;
             store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear, stats, workflow, this.state.buildType.type));
             Navigation.navigateToPage(workflow.currentStep().page);
        } else if (this.state.type != null) {
-            store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear));
-            Navigation.navigateToPage(PageIdentity.Starship);
+            let workflow = ShipBuildWorkflow.createStarshipBuildWorkflow();
+            store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear, undefined, workflow));
+
+            let scale = 3;
+            let systems = BuildPoints.allocatePointsEvenly(BuildPoints.systemPointsForType(
+                ShipBuildType.Starship, this.state.campaignYear, this.state.type.type, scale));
+            let departments = BuildPoints.allocatePointsEvenly(BuildPoints.departmentPointsForType(
+                ShipBuildType.Starship))
+            let spaceframe = SpaceframeModel.createCustomSpaceframe(this.state.type?.type, this.state.campaignYear, systems, departments, scale);
+            store.dispatch(setStarshipSpaceframe(spaceframe));
+
+            Navigation.navigateToPage(workflow.currentStep().page);
         }
     }
 

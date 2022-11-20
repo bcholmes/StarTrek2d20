@@ -1,6 +1,7 @@
 import { SimpleStats, Starship } from "../common/starship";
+import { Spaceframe } from "../helpers/spaceframeEnum";
 import { ShipBuildWorkflow } from "../starship/model/shipBuildWorkflow";
-import { ADD_STARSHIP_WEAPON, CHANGE_STARSHIP_SCALE, CHANGE_STARSHIP_SIMPLE_CLASS_NAME, CHANGE_STARSHIP_SIMPLE_DEPARTMENT, CHANGE_STARSHIP_SIMPLE_SYSTEM, CREATE_NEW_STARSHIP, DELETE_STARSHIP_WEAPON, NEXT_STARSHIP_WORKFLOW_STEP, REWIND_TO_STARSHIP_WORKFLOW_STEP, SET_ADDITIONAL_TALENTS, SET_STARSHIP_NAME, SET_STARSHIP_REGISTRY, SET_STARSHIP_TRAITS } from "./starshipActions";
+import { ADD_STARSHIP_WEAPON, CHANGE_STARSHIP_SCALE, CHANGE_STARSHIP_SIMPLE_CLASS_NAME, CHANGE_STARSHIP_SIMPLE_DEPARTMENT, CHANGE_STARSHIP_SIMPLE_SYSTEM, CHANGE_STARSHIP_SPACEFRAME_CLASS_NAME, CHANGE_STARSHIP_SPACEFRAME_DEPARTMENT, CHANGE_STARSHIP_SPACEFRAME_SCALE, CHANGE_STARSHIP_SPACEFRAME_SERVICE_YEAR, CHANGE_STARSHIP_SPACEFRAME_SYSTEM, CREATE_NEW_STARSHIP, DELETE_STARSHIP_WEAPON, NEXT_STARSHIP_WORKFLOW_STEP, REWIND_TO_STARSHIP_WORKFLOW_STEP, SET_ADDITIONAL_TALENTS, SET_STARSHIP_NAME, SET_STARSHIP_REGISTRY, SET_STARSHIP_SPACEFRAME, SET_STARSHIP_TRAITS } from "./starshipActions";
 
 interface StarshipState {
     starship?: Starship;
@@ -40,6 +41,42 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
                 starship: s
             }
         }
+        case CHANGE_STARSHIP_SPACEFRAME_SCALE: {
+            let s = state.starship.copy();
+            if (s?.spaceframeModel?.isCustom) {
+                let spaceframe = s.spaceframeModel.copy();
+                spaceframe.scale += action.payload.delta;
+                s.spaceframeModel = spaceframe;
+            }
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case CHANGE_STARSHIP_SPACEFRAME_SERVICE_YEAR: {
+            let s = state.starship.copy();
+            if (s?.spaceframeModel?.isCustom) {
+                let spaceframe = s.spaceframeModel.copy();
+                spaceframe.serviceYear = action.payload.serviceYear;
+                s.spaceframeModel = spaceframe;
+            }
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case CHANGE_STARSHIP_SPACEFRAME_CLASS_NAME: {
+            let s = state.starship.copy();
+            if (s?.spaceframeModel?.isCustom) {
+                let spaceframe = s.spaceframeModel.copy();
+                spaceframe.name = action.payload.className;
+                s.spaceframeModel = spaceframe;
+            }
+            return {
+                ...state,
+                starship: s
+            }
+        }
         case CHANGE_STARSHIP_SIMPLE_CLASS_NAME: {
             let s = state.starship.copy();
             if (s.simpleStats == null) {
@@ -54,6 +91,14 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
         case SET_STARSHIP_NAME: {
             let s = state.starship.copy();
             s.name = action.payload.name;
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case SET_STARSHIP_SPACEFRAME: {
+            let s = state.starship.copy();
+            s.spaceframeModel = action.payload.spaceframe;
             return {
                 ...state,
                 starship: s
@@ -112,12 +157,36 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
                 starship: s
             }
         }
+        case CHANGE_STARSHIP_SPACEFRAME_SYSTEM: {
+            let s = state.starship.copy();
+            if (s?.spaceframeModel?.isCustom) {
+                let spaceframe = s.spaceframeModel.copy();
+                spaceframe.systems[action.payload.system] += action.payload.delta;
+                s.spaceframeModel = spaceframe;
+            }
+            return {
+                ...state,
+                starship: s
+            }
+        }
         case CHANGE_STARSHIP_SIMPLE_DEPARTMENT: {
             let s = state.starship.copy();
             if (s.simpleStats == null) {
                 s.simpleStats = new SimpleStats();
             }
             s.simpleStats.departments[action.payload.department] += action.payload.delta;
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case CHANGE_STARSHIP_SPACEFRAME_DEPARTMENT: {
+            let s = state.starship.copy();
+            if (s?.spaceframeModel?.isCustom) {
+                let spaceframe = s.spaceframeModel.copy();
+                spaceframe.departments[action.payload.department] += action.payload.delta;
+                s.spaceframeModel = spaceframe;
+            }
             return {
                 ...state,
                 starship: s

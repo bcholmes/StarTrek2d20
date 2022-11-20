@@ -2,7 +2,7 @@
 import {Role, RolesHelper} from './roles';
 import {Era} from './eras';
 import {Source} from './sources';
-import {Track} from './tracks';
+import {Track} from './trackEnum';
 import {AlliedMilitaryDetails, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { AlliedMilitaryType } from './alliedMilitary';
@@ -95,7 +95,7 @@ class AlliedMilitaryPrerequisite implements IPrerequisite {
     }
 
     isPrerequisiteFulfilled() {
-        return character.type === CharacterType.AlliedMilitary 
+        return character.type === CharacterType.AlliedMilitary
             && character.typeDetails
             &&  this.types.indexOf((character.typeDetails as AlliedMilitaryDetails).alliedMilitary.type) >= 0;
     }
@@ -258,8 +258,8 @@ class Ranks {
                         new TypePrerequisite(CharacterType.Starfleet),
                         new CareersPrerequisite([Career.Experienced])
                     ),
-                    new TypePrerequisite(CharacterType.KlingonWarrior), 
-                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.KLINGON_DEFENCE_FORCE, AlliedMilitaryType.ROMULAN_STAR_EMPIRE, 
+                    new TypePrerequisite(CharacterType.KlingonWarrior),
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.KLINGON_DEFENCE_FORCE, AlliedMilitaryType.ROMULAN_STAR_EMPIRE,
                         AlliedMilitaryType.ANDORIAN_IMPERIAL_GUARD, AlliedMilitaryType.VULCAN_HIGH_COMMAND, AlliedMilitaryType.BAJORAN_MILITIA)),
             ],
             "Lt."),
@@ -281,7 +281,7 @@ class Ranks {
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
                 new RolesPrerequisite([Role.CommunicationsOfficer, Role.FlightController, Role.OperationsManager, Role.ScienceOfficer, Role.ShipsCounselor, Role.WeaponsOfficer]),
-                new AnyOfPrerequisite(new TypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior), 
+                new AnyOfPrerequisite(new TypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior),
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.KLINGON_DEFENCE_FORCE)),
             ],
             "Ens.",
@@ -529,8 +529,8 @@ class Ranks {
                 new CareersPrerequisite([Career.Veteran]),
                 new AnyOfPrerequisite(
                     new TypePrerequisite(CharacterType.KlingonWarrior),
-                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA, 
-                        AlliedMilitaryType.ANDORIAN_IMPERIAL_GUARD, 
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA,
+                        AlliedMilitaryType.ANDORIAN_IMPERIAL_GUARD,
                         AlliedMilitaryType.ROMULAN_STAR_EMPIRE,
                         AlliedMilitaryType.KLINGON_DEFENCE_FORCE)
                 )
@@ -576,7 +576,7 @@ class Ranks {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new AnyOfPrerequisite(
-                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA, 
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA,
                         AlliedMilitaryType.ROMULAN_STAR_EMPIRE, AlliedMilitaryType.KLINGON_DEFENCE_FORCE),
                     new TypePrerequisite(CharacterType.KlingonWarrior)
                 )
@@ -597,7 +597,7 @@ class Ranks {
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA, 
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA,
                     AlliedMilitaryType.ROMULAN_STAR_EMPIRE, AlliedMilitaryType.VULCAN_HIGH_COMMAND)
             ],
             "Maj."),
@@ -674,7 +674,7 @@ class Ranks {
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
             ],
             "Pvt."),
-        
+
         // Cardassian Ranks
         new RankModel(
             Rank.GrandGul,
@@ -827,7 +827,7 @@ class Ranks {
                 new CareersPrerequisite([Career.Veteran]),
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.VULCAN_HIGH_COMMAND)
             ]),
-        
+
 
         // Cadets
         new RankModel(

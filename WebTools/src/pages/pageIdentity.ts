@@ -32,8 +32,10 @@ export enum PageIdentity {
     ExtraFocus,
     Finish,
 
+    CustomSpaceframe,
     SimpleStarship,
     SmallCraftStats,
+    SpaceframeSelection,
     Starship,
     StarshipToolSelection,
     StarshipTypeSelection,

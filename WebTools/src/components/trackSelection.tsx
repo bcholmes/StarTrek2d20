@@ -2,9 +2,10 @@
 import {character} from '../common/character';
 import { CharacterType } from '../common/characterType';
 import {Window} from '../common/window';
-import {Track, TracksHelper} from '../helpers/tracks';
+import {TracksHelper} from '../helpers/tracks';
 import {SkillsHelper, Skill} from '../helpers/skills';
 import {Button} from './button';
+import { Track } from '../helpers/trackEnum';
 
 interface ITrackSelectionProperties {
     onSelection: (track: Track) => void;
@@ -14,7 +15,7 @@ interface ITrackSelectionProperties {
 export class TrackSelection extends React.Component<ITrackSelectionProperties, {}> {
 
     render() {
-        var tracks = TracksHelper.getTracks().map((t, i) => {
+        var tracks = TracksHelper.instance().getTracks().map((t, i) => {
             const disciplines = t.majorDisciplines.map((d, i) => {
                 if (character.enlisted && d === Skill.Command) return undefined;
 

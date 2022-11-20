@@ -3,14 +3,14 @@ import { character } from '../../common/character';
 import { CharacterType } from '../../common/characterType';
 import { Department } from '../../helpers/departments';
 
-import { SpaceframeModel } from '../../helpers/spaceframes';
+import { SpaceframeModel } from '../../helpers/spaceframeModel';
 import { System } from '../../helpers/systems';
 import { TalentsHelper } from '../../helpers/talents';
 import StarshipWeaponRegistry, { Weapon } from '../../helpers/weapons';
 import store from '../../state/store';
 import { Button } from '../../components/button';
 import { CheckBox } from '../../components/checkBox';
-import { TalentSelection } from '../../helpers/talents';
+import { TalentSelection } from '../../helpers/talentSelection';
 import { StatControl } from './statControl';
 
 
