@@ -276,6 +276,13 @@ export class Starship extends Construct {
         }
     }
 
+    pruneExcessTalents() {
+        if (this.freeTalentSlots < this.additionalTalents.length) {
+            let excess = this.additionalTalents.length - this.freeTalentSlots;
+            this.additionalTalents.splice(0, excess);
+        }
+    }
+
     refitsAsString() {
         let systems: System[] = allSystems();
         let refitString = "";

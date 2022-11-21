@@ -35,6 +35,7 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
                 s.simpleStats = new SimpleStats();
             }
             s.simpleStats.scale += action.payload.delta;
+            s.pruneExcessTalents();
             return {
                 ...state,
                 starship: s
@@ -47,6 +48,7 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
                 spaceframe.scale += action.payload.delta;
                 s.spaceframeModel = spaceframe;
             }
+            s.pruneExcessTalents();
             return {
                 ...state,
                 starship: s

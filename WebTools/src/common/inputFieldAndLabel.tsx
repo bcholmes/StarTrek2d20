@@ -9,6 +9,7 @@ interface IInputFieldAndLabelProperties {
     labelName: string,
     type?: string,
     value: string,
+    max?: number,
     onChange: (value: string) => void
 }
 
@@ -22,6 +23,13 @@ export class InputFieldAndLabel extends React.Component<IInputFieldAndLabelPrope
     }
 
     render() {
+        let additionalProps = {};
+        if (this.props.type === 'number' && this.props.max != null) {
+            additionalProps = {
+                max: this.props.max
+            }
+        }
+
         return (
             <div className="d-sm-flex align-items-stretch mt-3">
                 <label htmlFor={this.props.id} className="textinput-label">{this.props.labelName}</label>
@@ -38,6 +46,7 @@ export class InputFieldAndLabel extends React.Component<IInputFieldAndLabelPrope
                         this.setState((state) => ({...state, hasFocus: false}));
                         this.props.onChange(ev.target.value);
                     }}
+                    {...additionalProps}
                     defaultValue={this.props.value} />
             </div>);
     }

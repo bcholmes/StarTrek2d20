@@ -30,6 +30,7 @@ class CustomSpaceframePage extends BaseSimpleStarshipPage {
                     <p>What year did this spaceframe enter service?</p>
                     <InputFieldAndLabel type="number" value={this.props.starship?.spaceframeModel?.serviceYear?.toString() || ""}
                         onChange={(value) => this.setServiceYear(value)}
+                        max={this.props.starship.serviceYear}
                         id="serviceYear" labelName="Service Year" />
                 </div>
             </section>)
