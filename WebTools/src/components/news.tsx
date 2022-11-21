@@ -11,6 +11,13 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.221120</b>
+                <ul>
+                    <li>I've revised the handling of custom spaceframes to be in line with the rules from Utopia Planitia.
+                        This change has revised the flow of starships with custom frames to be more in line with, say, the
+                        small craft flow. The main starship flow will eventually converge on this style as well.
+                    </li>
+                </ul>
                 <b>v1.221117</b>
                 <ul>
                     <li>An important bug was reported. This update should fix that.</li>
