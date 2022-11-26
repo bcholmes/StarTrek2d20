@@ -92,12 +92,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
 
     renderTalentsSection(species: SpeciesModel) {
         let talents = [];
-        if (species.id === Species.Changeling) {
-            talents.push(ToViewModel(TalentsHelper.getTalent("Morphogenic Matrix")));
-        }
-        else {
-            talents.push(...TalentsHelper.getAllAvailableTalents());
-        }
+        talents.push(...TalentsHelper.getAllAvailableTalentsForCharacter(character));
 
         const esotericTalentOption = (hasSource(Source.PlayersGuide)) ? (<div>
                 <CheckBox

@@ -61,10 +61,15 @@ export class SingleTalentSelectionList extends React.Component<ISingleTalentSele
             if (prerequisites) {
                 prerequisites = (<div style={{ fontWeight: "bold" }}>{prerequisites}</div>);
             }
+
+            let lines = t.description.split('\n').map((l, i) => {
+                return (<div className={i === 0 ? '' : 'mt-2'} key={'d-' + i}>{replaceDiceWithArrowhead(l)}</div>);
+            })
+
             return (
                 <tr key={i}>
                     <td className="selection-header-small">{t.displayName}</td>
-                    <td>{replaceDiceWithArrowhead(t.description)} {prerequisites}</td>
+                    <td>{lines} {prerequisites}</td>
                     <td>
                         <CheckBox
                             text=""

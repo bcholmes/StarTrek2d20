@@ -310,7 +310,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     }
 
     filterTalentList() {
-        return TalentsHelper.getAllAvailableTalents().filter(
+        return TalentsHelper.getAllAvailableTalentsForCharacter(character).filter(
             t => !character.hasTalent(t.name) || (this._talent != null && t.name === this._talent.name) || t.rank > 1);
     }
 

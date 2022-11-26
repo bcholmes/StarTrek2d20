@@ -53,7 +53,7 @@ export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
     }
 
     filterTalentList() {
-        return TalentsHelper.getAllAvailableTalents().filter(
+        return TalentsHelper.getAllAvailableTalentsForCharacter(character).filter(
             t => !character.hasTalent(t.name) || (this._talent != null && t.name === this._talent.name) || t.rank > 1);
     }
 
@@ -65,12 +65,10 @@ export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
     private onNext() {
         if (!this._talent) {
             Dialog.show("You must select a Talent before proceeding.");
-            return;
+        } else {
+            character.addTalent(this._talent);
+            character.workflow.next();
+            Navigation.navigateToPage(PageIdentity.CareerEvent1);
         }
-
-        character.addTalent(this._talent);
-
-        character.workflow.next();
-        Navigation.navigateToPage(PageIdentity.CareerEvent1);
     }
 }

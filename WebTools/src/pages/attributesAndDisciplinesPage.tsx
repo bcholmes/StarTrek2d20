@@ -135,7 +135,7 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
     }
 
     filterTalentList() {
-        return TalentsHelper.getAllAvailableTalents().filter(
+        return TalentsHelper.getAllAvailableTalentsForCharacter(character).filter(
             t => !character.hasTalent(t.name) || (this._selectedTalent != null && t.name === this._selectedTalent.name) || t.rank > 1);
     }
 

@@ -38,7 +38,7 @@ class Careers {
             Career.Experienced,
             "Experienced Officer",
             "The character has several years of experience in service of Starfleet, and is enjoying a promising career.",
-            TalentsHelper.getAllAvailableTalents(),
+            [],
             "The character receives a Value, and this can be chosen freely."
         ),
         new CareerModel(
@@ -62,7 +62,7 @@ class Careers {
             Career.Experienced,
             "Experienced",
             "The character has several years of experience in service, and is enjoying a promising career.",
-            TalentsHelper.getAllAvailableTalents(),
+            [],
             "The character receives a Value, and this can be chosen freely."
         ),
         new CareerModel(
@@ -86,7 +86,7 @@ class Careers {
             Career.Experienced,
             "Experienced Warrior",
             "The character has several years of experience in service of the Empire and is enjoying a promising career. This is the default assumption for characters created using these rules.",
-            TalentsHelper.getAllAvailableTalents(),
+            [],
             "The character receives a Value, and this can be chosen freely."
         ),
         new CareerModel(

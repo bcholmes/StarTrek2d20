@@ -3168,10 +3168,27 @@ export class Talents {
         return talent;
     }
 
-    getAllAvailableTalents() {
-        let result = this._talents.filter(t => t.isPrerequisiteFulfilled(character)).map(t => ToViewModel(t));
-        result.sort((a, b) => a.name.localeCompare(b.name));
-        return result;
+    getAllAvailableTalentsForCharacter(character: Character) {
+        if (character.species === Species.Klingon && !character.hasTalent("Brak’lul")) {
+            return [this.getTalentViewModel("Brak’lul")];
+        } else if (character.species === Species.Changeling && !character.hasTalent("Morphogenic Matrix")) {
+            return [this.getTalentViewModel("Morphogenic Matrix")];
+        } else {
+            let result = this._talents.filter(t => t.isPrerequisiteFulfilled(character)).map(t => {
+                if (character.hasTalent(t.name)) {
+                    let temp = character.talents[t.name];
+                    if (temp != null && temp.rank < t.maxRank) {
+                        return ToViewModel(t, temp.rank + 1);
+                    } else {
+                        return ToViewModel(t);
+                    }
+                } else {
+                    return ToViewModel(t);
+                }
+            });
+            result.sort((a, b) => a.name.localeCompare(b.name));
+            return result;
+        }
     }
 
     getStarshipTalents(starship: Starship) {
