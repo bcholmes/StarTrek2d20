@@ -1072,7 +1072,7 @@ class _Species {
             "Ocampa",
             "Ocampa are an interesting and unique humanoid species. Their development is more closely akin to that of insects than to Humans. Long-time support, provided by the enigmatic Caretaker, has left the species in somewhat of a socially stunted state, and their society has since become entirely dependent upon the services the Caretaker provided. When separated from this welfare state, Ocampa are curious and studious learners – voraciously devouring information with incredible speed.Further still, they are capable of truly astounding psychic feats.",
             "See All that Life has to Offer",
-            [TalentsHelper.getTalent("Quick Learner"), TalentsHelper.getTalent("Telepath")],
+            [TalentsHelper.getTalent("Quick Learner"), TalentsHelper.getTalent("Telepath (Ocampa)")],
             "Ocampa tend towards one to three syllable names that use l’s, r’s, and s’s in consonant-vowel-consonant patterns. Due to their short lifespans and small population, Ocampa no longer need secondary names to denote lineage or family. As twins and triplets are fairly common, siblings often have similar-sounding names.",
             [
                 { type: "Masculine", suggestions: "Ferel, Benil, Lorlaren, Dagis, Nornan, Foren, Jerden, Dulon, Kelonal, Keggis" },

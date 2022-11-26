@@ -24,7 +24,7 @@ export class SpaceframePage extends React.Component<ISpaceframePageProperties, {
                 <p>Do you want a standard spaceframe, or a custom spaceframe?</p>
 
                 <div>
-                    <Button className="button" onClick={() => { Navigation.navigateToPage(PageIdentity.Starship); } } buttonType={true}>Standard Spaceframe</Button>
+                    <Button className="button" onClick={() => { Navigation.navigateToPage(PageIdentity.SpaceframeSelection); } } buttonType={true}>Standard Spaceframe</Button>
                 </div>
 
                 <div>

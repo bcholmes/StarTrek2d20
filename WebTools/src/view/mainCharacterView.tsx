@@ -184,7 +184,7 @@ export class MainCharacterView extends React.Component<IMainCharacterViewPropert
     }
 
     renderValues() {
-        if (this.props.character.values) {
+        if (this.props?.character?.values?.length) {
             return (<>
                 <Header level={2} className="mt-4">Values</Header>
                 {this.props.character.values.map((v, i) => (<div className="text-white view-border-bottom py-2" key={'value-' + i}>{v}</div>))}
@@ -195,7 +195,7 @@ export class MainCharacterView extends React.Component<IMainCharacterViewPropert
     }
 
     renderTalents() {
-        if (this.props.character.talents) {
+        if (this.props.character?.getTalentNameList()?.length) {
             return (<>
                 <Header level={2} className="mt-4">Talents</Header>
                 {this.props.character.getTalentNameList().map((t, i) => (<div className="text-white view-border-bottom py-2" key={'talent-' + i}>{t}</div>))}

@@ -23,11 +23,13 @@ class StarshipTalentsPage extends React.Component<ISimpleStarshipPageProperties,
             <ShipBuildingBreadcrumbs />
             <Header>Talents</Header>
             <p>Select {this.props.starship.freeTalentSlots} {(this.props.starship.freeTalentSlots === 1) ? ' talent ' : ' talents '} for your ship.</p>
-            <StarshipTalentSelectionList
-                points={this.props.starship.freeTalentSlots}
-                talents={TalentsHelper.getStarshipTalents(this.props.starship)}
-                construct={this.props.starship}
-                onSelection={(talents) => store.dispatch(setAdditionalTalents(talents))} />
+            {this.props.starship.freeTalentSlots > 0
+                ? (<StarshipTalentSelectionList
+                    points={this.props.starship.freeTalentSlots}
+                    talents={TalentsHelper.getStarshipTalents(this.props.starship)}
+                    construct={this.props.starship}
+                    onSelection={(talents) => store.dispatch(setAdditionalTalents(talents))} />)
+                : null}
             <div className="text-right">
                 <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
             </div>

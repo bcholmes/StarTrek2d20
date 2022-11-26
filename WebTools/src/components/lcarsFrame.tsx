@@ -87,6 +87,7 @@ export class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFram
             this.props.activePage === PageIdentity.MissionPodSelection ||
             this.props.activePage === PageIdentity.MissionProfileSelection ||
             this.props.activePage === PageIdentity.MissionProfileTalentSelection ||
+            this.props.activePage === PageIdentity.SpaceframeOption ||
             this.props.activePage === PageIdentity.SpaceframeSelection ||
             this.props.activePage === PageIdentity.Starship ||
             this.props.activePage === PageIdentity.StarshipRefits ||

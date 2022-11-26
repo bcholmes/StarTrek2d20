@@ -62,7 +62,7 @@ export class Starship extends Construct {
     registry: string = "";
     traits: string = "";
     serviceYear?: number;
-    spaceframeModel?: SpaceframeModel = undefined;
+    private _spaceframe?: SpaceframeModel = undefined;
     missionPodModel?: MissionPodModel;
     missionProfileModel?: MissionProfileModel;
     profileTalent?: TalentViewModel;
@@ -74,6 +74,17 @@ export class Starship extends Construct {
     constructor() {
         super();
         this.name = "";
+    }
+
+    get spaceframeModel() {
+        return this._spaceframe;
+    }
+
+    set spaceframeModel(spaceframe: SpaceframeModel) {
+        this._spaceframe = spaceframe;
+        if (!spaceframe?.isMissionPodAvailable) {
+            this.missionPodModel = undefined;
+        }
     }
 
     get isSmallCraft() {

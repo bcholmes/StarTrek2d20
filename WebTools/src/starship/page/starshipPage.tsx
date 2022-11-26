@@ -24,7 +24,7 @@ import { Starship } from '../../common/starship';
 import store from '../../state/store';
 import { SingleTalentSelectionList } from '../../components/singleTalentSelectionList';
 import RegistryNumber from '../../components/registryNumberGenerator';
-import { MissionPod, MissionPodHelper } from '../../helpers/missionPods';
+import { MissionPod, MissionPodHelper, MissionPodModel } from '../../helpers/missionPods';
 import { connect } from 'react-redux';
 
 interface StarshipPageProperties {
@@ -126,7 +126,7 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
 
     renderMissionPodsSection() {
         if (this.starship && this.starship.spaceframeModel && this.starship.spaceframeModel.isMissionPodAvailable) {
-            const pods = MissionPodHelper.getMissionPods(this.starship);
+            const pods = MissionPodHelper.instance().getMissionPods(this.starship);
             let missionPodModel = undefined;
             // if other choices have changed, then the current spaceframe might be invalid
             if (this.starship && this.starship.missionPodModel !== undefined) {
@@ -531,8 +531,8 @@ class StarshipPage extends React.Component<StarshipPageProperties, StarshipPageS
         this.forceUpdate();
     }
 
-    private onMissionPodSelected(pod: MissionPod) {
-        this.starship.missionPodModel = MissionPodHelper.getMissionPod(pod);
+    private onMissionPodSelected(pod: MissionPodModel) {
+        this.starship.missionPodModel = pod;
         this.updateSystemAndDepartments();
         this.forceUpdate();
     }

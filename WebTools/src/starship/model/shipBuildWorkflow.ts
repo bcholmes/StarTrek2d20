@@ -37,7 +37,7 @@ export class ShipBuildWorkflow {
 
     public static createStarshipBuildWorkflow() {
         return new ShipBuildWorkflow([ new ShipBuildWorkflowStep("Starship Type", PageIdentity.StarshipTypeSelection),
-            new ShipBuildWorkflowStep("Spaceframe", PageIdentity.SpaceframeSelection),
+            new ShipBuildWorkflowStep("Spaceframe", PageIdentity.SpaceframeOption),
             new ShipBuildWorkflowStep("Mission Profile", PageIdentity.MissionProfileSelection),
             new ShipBuildWorkflowStep("Talent Selection", PageIdentity.StarshipTalentSelection),
             new ShipBuildWorkflowStep("Refits", PageIdentity.StarshipRefits),

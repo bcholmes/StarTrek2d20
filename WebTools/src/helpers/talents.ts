@@ -622,10 +622,12 @@ export class TalentViewModel {
 
     private constructDisplayName(name: string, rank: number, showRank: boolean, skill: Skill, category: string) {
         let displayName = name + ((showRank && category !== "Starship" && category !== "Starbase") ? " [Rank: " + rank + "]" : "");
-        displayName += skill !== undefined && skill !== Skill.None
+        let suffix = skill !== undefined && skill !== Skill.None
             ? ` (${SkillsHelper.getSkillName(skill)})`
             : category.length > 0 ? ` (${category})` : "";
-
+        if (displayName.indexOf(suffix) < 0) {
+            displayName += suffix;
+        }
         return displayName;
     }
 }
@@ -1243,9 +1245,9 @@ export class Talents {
             new TalentModel(
                 "Telepath",
                 "You can sense the surface thoughts and emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. Surface thoughts are whatever a creature is thinking about at that precise moment. The character cannot choose not to sense the emotions or read the surface thoughts of those nearby, except for those who are resistant to telepathy. It will require effort and a Task to pick out the emotions or thoughts of a specific individual in a crowd, to search a creature’s mind for specific thoughts or memories, or to block out the minds of those nearby. Unwilling targets may resist with an Opposed Task.",
-                [new AnySpeciesPrerequisite(true, Species.Betazoid, Species.Ocampa,), new EraPrerequisite(Era.NextGeneration)],
+                [new AnySpeciesPrerequisite(true, Species.Betazoid), new EraPrerequisite(Era.NextGeneration)],
                 1,
-                "Betazoid/Ocampa"),
+                "Betazoid"),
             new TalentModel(
                 "Cultural Flexibility",
                 "Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",
@@ -1855,6 +1857,12 @@ export class Talents {
             new TalentModel(
                 "Quick Learner",
                 "Ocampa possess keen minds and enjoy near-perfect memories, and they take to new situations and new challenges quickly. When a character with this talent attempts a Task which they have seen at least one ally perform during this mission, you may add an additional d20 to that Task. ",
+                [new SourcePrerequisite(Source.DeltaQuadrant), new SpeciesPrerequisite(Species.Ocampa, true)],
+                1,
+                "Ocampa"),
+            new TalentModel(
+                "Telepath (Ocampa)",
+                "The character can sense the surface thoughts and emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom they are extremely familiar. Surface thoughts are whatever a creature is thinking about at that precise moment. The character cannot choose not to sense the emotions or read the surface thoughts of those nearby, except for those who are resistant to telepathy. It will require effort and a Task to pick out the emotions or thoughts of a specific individual in a crowd, to search a creature’s mind for specific thoughts or memories, or to block out the minds of those nearby. Unwilling targets may resist with an Opposed Task.\nWhile all Ocampa are telepathic, their short lifespan and rapid development means that a young Ocampa character may not fully develop their abilities until later in life, so it is possible to choose the Talent after character creation. Unlike other telepathic/empathic species, the Ocampa have demonstrated the ability to develop even greater psychic abilities, including precognition, mental projection, telekinesis, and the ability to manipulate matter at a subatomic level.",
                 [new SourcePrerequisite(Source.DeltaQuadrant), new SpeciesPrerequisite(Species.Ocampa, true)],
                 1,
                 "Ocampa"),

@@ -48,7 +48,17 @@ export class MissionPodModel {
     }
 }
 
-class MissionPods {
+export class MissionPodHelper {
+
+    private static _instance: MissionPodHelper;
+
+    public static instance() {
+        if (MissionPodHelper._instance == null) {
+            MissionPodHelper._instance = new MissionPodHelper();
+        }
+        return MissionPodHelper._instance;
+    }
+
     private _missionPods: { [id: number]: MissionPodModel } = {
         [MissionPod.CommandAndControl]: new MissionPodModel(
             MissionPod.CommandAndControl,
@@ -204,5 +214,3 @@ class MissionPods {
         return model == null ? null : model;
     }
 }
-
-export const MissionPodHelper = new MissionPods();

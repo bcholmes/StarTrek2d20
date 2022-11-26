@@ -30,15 +30,22 @@ class Marshaller {
             "type": CharacterType[character.type],
             "age": character.age ? character.age.name : undefined,
             "name": character.name,
-            "pronouns": character.pronouns,
             "role": character.role,
             "rank": character.rank,
             "species": Species[character.species],
             "attributes": this.toAttributeObject(character.attributes),
             "disciplines": this.toSkillObject(character.skills),
-            "traits": this.parseTraits(character.additionalTraits),
             "focuses": [...character.focuses]
         };
+
+        let additionalTraits = this.parseTraits(character.additionalTraits);
+        if (additionalTraits?.length) {
+            sheet["traits"] = additionalTraits;
+        }
+        if (character.pronouns) {
+            sheet["pronouns"] = character.pronouns;
+        }
+
         return this.encode(sheet);
     }
 
@@ -46,12 +53,6 @@ class Marshaller {
         let sheet = {
             "stereotype": "mainCharacter",
             "type": CharacterType[character.type],
-            "environment": character.environment != null
-                ? {
-                    "id": Environment[character.environment],
-                    "otherSpeciesWorld": character.otherSpeciesWorld
-                  }
-                : undefined,
             "upbringing": character.upbringing != null
                 ? {
                     "id": Upbringing[character.upbringing.id],
@@ -65,12 +66,33 @@ class Marshaller {
             "species": Species[character.species],
             "attributes": this.toAttributeObject(character.attributes),
             "disciplines": this.toSkillObject(character.skills),
-            "traits": this.parseTraits(character.additionalTraits),
             "focuses": [...character.focuses],
-            "talents": this.toTalentList(character.talents),
-            "values": character.values,
-            "implants": [...character.implants]
+            "values": character.values
         };
+
+        let talents = this.toTalentList(character.talents);
+        if (talents?.length) {
+            sheet["talents"] = talents;
+        }
+
+        let additionalTraits = this.parseTraits(character.additionalTraits);
+        if (additionalTraits?.length) {
+            sheet["traits"] = additionalTraits;
+        }
+
+        if (character.implants?.length) {
+            sheet["implants"] = [...character.implants];
+        }
+
+        if (character.environment != null) {
+            let environment = {
+                "id": Environment[character.environment]
+            };
+            if (character.otherSpeciesWorld != null) {
+                environment["otherSpeciesWorld"] = character.otherSpeciesWorld
+            }
+            sheet["environment"] = environment;
+        }
 
         if (character.age != null) {
             sheet["age"] = character.age.name;
@@ -310,7 +332,7 @@ class Marshaller {
             }
         }
         if (json.missionPod) {
-            result.missionPodModel = MissionPodHelper.getMissionPodByName(json.missionPod.name);
+            result.missionPodModel = MissionPodHelper.instance().getMissionPodByName(json.missionPod.name);
         }
         if (json.traits) {
             result.traits = json.traits.join(", ");

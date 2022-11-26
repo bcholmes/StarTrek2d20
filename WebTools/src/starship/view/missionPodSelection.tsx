@@ -10,13 +10,13 @@ import { MissionPod, MissionPodHelper, MissionPodModel } from '../../helpers/mis
 interface IMissionPodSelectionProperties {
     initialSelection?: MissionPodModel;
     starship: Starship;
-    onSelection: (s: MissionPod) => void;
+    onSelection: (s: MissionPodModel) => void;
 }
 
 class MissionPodSelection extends React.Component<IMissionPodSelectionProperties, {}> {
 
     render() {
-        const missionProfiles = MissionPodHelper.getMissionPods(this.props.starship).map((p, i) => {
+        const missionProfiles = MissionPodHelper.instance().getMissionPods(this.props.starship).map((p, i) => {
             const talents = p.talents.map((t, ti) => {
                 if (t === null) {
                     console.log(t.name);
@@ -42,7 +42,7 @@ class MissionPodSelection extends React.Component<IMissionPodSelectionProperties
                                 isChecked={this.props.initialSelection != null && this.props.initialSelection.id === p.id}
                                 text=""
                                 value={p.id}
-                                onChanged={(val) => { this.props.onSelection(p.id); } }/>
+                                onChanged={(val) => { this.props.onSelection(p); } }/>
                         </td>
                     </tr>
                     <tr>
