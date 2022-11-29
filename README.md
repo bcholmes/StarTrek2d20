@@ -13,8 +13,8 @@ To build the application, you'll need to install:
 - [NodeJS](https://nodejs.org/en/) - v10.13.0 or higher. I'm not really sure what the minimum version you'd
   need is, but just grab something recent.
 
-Node will install an important tool called the "Node Package Manager" or npm. All other dependencies will
-be installed by npm by following the "Getting Started" directions, below.
+Node will install an important tool called the "Node Package Manager" or `npm`. All other dependencies will
+be installed by `npm` by following the "Getting Started" directions, below.
 
 ### Optional Items
 
@@ -24,13 +24,13 @@ on my Mac.
 
 ## Getting Started
 
-Compiling will use webpack to generate a master script in the dist/ folder.
-
-### Without Visual Studio
-
-1. Open a command prompt in the WebTools/ folder and type ```npm install``` to install node modules.
+1. Open a command prompt in the WebTools/ folder and type ```npm install``` to install node modules,
+   including TypeScript, React, Bootstrap and more.
 2. Start the development server using the ```npm run start``` command
 3. Once the development server starts, it should automatically open http://localhost:3000 in your browser
+
+If you are making changes to the code, your browser should automatically reload, and you'll see the updates
+reflected there.
 
 ## Building the Production Version
 

@@ -24,7 +24,7 @@ import { Starship } from '../../common/starship';
 import store from '../../state/store';
 import { SingleTalentSelectionList } from '../../components/singleTalentSelectionList';
 import RegistryNumber from '../../components/registryNumberGenerator';
-import { MissionPod, MissionPodHelper, MissionPodModel } from '../../helpers/missionPods';
+import { MissionPodHelper, MissionPodModel } from '../../helpers/missionPods';
 import { connect } from 'react-redux';
 
 interface StarshipPageProperties {

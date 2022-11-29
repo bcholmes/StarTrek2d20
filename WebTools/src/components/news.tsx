@@ -11,6 +11,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.221129</b>
+                <ul>
+                    <li>Some more revisions to the starship creation process.</li>
+                    <li>Minor bug fixes.</li>
+                </ul>
                 <b>v1.221120</b>
                 <ul>
                     <li>I've revised the handling of custom spaceframes to be in line with the rules from Utopia Planitia.
@@ -148,12 +153,6 @@ class News extends React.Component<INewsProperties, {}> {
                 <ul>
                     <li>Bug fix related to Nebula-class spaceframes.</li>
                     <li>Minor changes to spaceframe outlines.</li>
-                </ul>
-                <b>v1.220526</b>
-                <ul>
-                    <li>A few tweaks to some of the reference information.</li>
-                    <li>Fixed <a href="https://github.com/bcholmes/StarTrek2d20/issues/63" target="_blank" rel="noreferrer">a
-                    bug report</a> regarding Klingon character generation.</li>
                 </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>

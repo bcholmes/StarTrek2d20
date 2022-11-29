@@ -5,7 +5,7 @@ import { System } from '../../helpers/systems';
 import { Department } from '../../helpers/departments';
 import formatAsDelta from '../../common/formatAsDelta';
 import { Starship } from '../../common/starship';
-import { MissionPod, MissionPodHelper, MissionPodModel } from '../../helpers/missionPods';
+import { MissionPodHelper, MissionPodModel } from '../../helpers/missionPods';
 
 interface IMissionPodSelectionProperties {
     initialSelection?: MissionPodModel;
