@@ -17,8 +17,8 @@ export class BuildPoints {
             let improvement = Math.floor((serviceYear - 2150) / 10);
             return base + improvement;
         } else {
-            let base = 40;
-            let improvement = Math.floor((serviceYear - 2200) / 10);
+            let base = (serviceYear > 2400) ? 60 : 40;
+            let improvement = (serviceYear > 2400) ? Math.floor((serviceYear - 2400) / 50) :  Math.floor((serviceYear - 2200) / 10);
             if (scale === 2) {
                 improvement -= 2;
             } else if (scale === 3) {

@@ -121,7 +121,7 @@ class CustomSpaceframePage extends BaseSimpleStarshipPage {
     }
 
     canIncreaseSystem(system: System) {
-        return this.sumTotalSystems() < this.getSystemsPoints() && super.canIncreaseSystem(system);
+        return this.sumTotalSystems() < this.getSystemsPoints();
     }
 
     setClassName(name: string) {

@@ -17,14 +17,16 @@ class TalentViewModel {
     aliases: AliasModel[];
     category: string;
     prerequisites: string;
+    displayName: string;
 
-    constructor(name: string, description: string, source: string, category: string, prerequisites: string, aliases: AliasModel[]) {
+    constructor(name: string, displayName: string, description: string, source: string, category: string, prerequisites: string, aliases: AliasModel[]) {
         this.name = name;
         this.description = description;
         this.source = source;
         this.category = category;
         this.prerequisites = prerequisites;
         this.aliases = aliases;
+        this.displayName = displayName;
     }
 
     matches(term) {
@@ -57,7 +59,7 @@ class TalentViewModel {
             }
         });
 
-        return new TalentViewModel(talent.name, talent.description, sourceString, category, prerequisites, talent.aliases);
+        return new TalentViewModel(talent.name, talent.displayName, talent.description, sourceString, category, prerequisites, talent.aliases);
     }
 }
 
@@ -105,17 +107,19 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
             if (t.prerequisites) {
                 prerequsites = (<div style={{ fontWeight: "bold" }}>{t.prerequisites}</div>);
             }
-            let description = replaceDiceWithArrowhead(t.description);
+            let lines = t.description.split('\n').map((l, i) => {
+                return (<div className={i === 0 ? '' : 'mt-2'} key={'d-' + i}>{replaceDiceWithArrowhead(l)}</div>);
+            });
             return (
                 <tr key={i}>
                     <td className="selection-header">
-                        {t.name}
+                        {t.displayName}
                         <div className="selection-header-small">
                             ({t.source})
                         </div>
                     </td>
                     <td className="d=none d-md-table-cell">{t.category}</td>
-                    <td>{description} {prerequsites} {info}</td>
+                    <td>{lines} {prerequsites} {info}</td>
                 </tr>
             );
         });

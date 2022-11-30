@@ -529,6 +529,19 @@ export class TalentModel implements ITalent {
         this.aliases = aliases || AliasModel[0];
     }
 
+    get displayName() {
+        if (this.category) {
+            const suffix = " (" + this.category + ")";
+            if (this.name.indexOf(suffix) >= 0) {
+                return this.name.substring(0, this.name.indexOf(suffix));
+            } else {
+                return this.name;
+            }
+        } else {
+            return this.name;
+        }
+    }
+
     isAvailableExcludingSpecies() {
         let available = true;
         this.prerequisites.forEach((p, i) => {
