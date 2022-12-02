@@ -1,6 +1,6 @@
 import React from "react";
 import { IPageProperties } from "../../pages/iPageProperties";
-import { AsteroidBeltDetails, StandardWorldDetails, World, WorldClass, WorldDetails } from "../table/star";
+import { AsteroidBeltDetails, StandardWorldDetails, World, WorldClass, WorldDetails } from "../table/world";
 import { StarSystem } from "../table/starSystem";
 import { DataValueRow } from "./dataValueRow";
 
@@ -24,7 +24,7 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
         }
 
         return (<div className="col mb-5 pr-3">
-            
+
             {this.renderDesignation()}
             <DataValueRow name="Classification:">{classification}</DataValueRow>
             <DataValueRow name="Orbital Radius:">{this.props.world.orbitalRadius.toFixed(2) + " AUs"}</DataValueRow>
@@ -44,7 +44,7 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
 
             let sizeDetails = details.asteroidSize == null ? undefined :
                 (<DataValueRow name="Predominant Size:">
-                        {(details.asteroidSize >= 1000 ? ((details.asteroidSize / 1000).toFixed(0) + "km") : (details.asteroidSize.toFixed(0) + "m")) 
+                        {(details.asteroidSize >= 1000 ? ((details.asteroidSize / 1000).toFixed(0) + "km") : (details.asteroidSize.toFixed(0) + "m"))
                             + " Diameter" }
                 </DataValueRow>);
             let depthDetails = details.depth == null ? undefined :
@@ -65,7 +65,7 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
                         </div>
                     </div>
                 </div>);
-            let tidallyLocked = details.tidallyLocked ? 
+            let tidallyLocked = details.tidallyLocked ?
                 (<div className="row">
                     <div className="col-md-4 view-field-label pb-2">Rotation:</div>
                     <div className="col-md-8 text-white">

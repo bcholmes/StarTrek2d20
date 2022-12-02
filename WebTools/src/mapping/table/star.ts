@@ -139,51 +139,10 @@ export enum SpectralClass {
     BrownDwarf,
 }
 
-export enum WorldClass {
-    AsteroidBelt,
-    B,
-    C,
-    D, 
-    E,
-    H,
-    I,
-    J,
-    K,
-    L,
-    M,
-    N,
-    O,
-    P,
-    T,
-    Y,
-}
-
-export enum RomanNumerals {
-    I,
-    II,
-    III,
-    IV,
-    V,
-    VI,
-    VII,
-    VIII,
-    IX,
-    X,
-    XI,
-    XII,
-    XIII,
-    XIV,
-    XV,
-    XVI,
-    XVII,
-    XVIII,
-    XIX,
-    XX
-}
 
 /**
  * Symbol    Class of Star                  Example
- * 0 	     Extreme, luminous supergiants 	 
+ * 0 	     Extreme, luminous supergiants
  * Ia        Luminous supergiants           Betelgeuse
  * Ib        Less luminous supergiants      Antares
  * II        Bright giants                  Canopus
@@ -237,21 +196,6 @@ export class Range {
     }
 }
 
-export class WorldClassModel {
-    public id: WorldClass;
-    public description: string;
-
-    constructor(id: WorldClass, description: string) {
-        this.id = id;
-        this.description = description;
-    }
-
-    get isGasGiant() {
-        return this.id === WorldClass.J || this.id === WorldClass.I || this.id === WorldClass.T;
-    }
-}
-
-
 export class SpectralClassModel {
 
     public id: SpectralClass;
@@ -269,7 +213,7 @@ export class SpectralClassModel {
     }
 
     get isDwarf() {
-        return (this.id === SpectralClass.WhiteDwarf || this.id === SpectralClass.BrownDwarf) || 
+        return (this.id === SpectralClass.WhiteDwarf || this.id === SpectralClass.BrownDwarf) ||
             this.id === SpectralClass.L || this.id === SpectralClass.Y || this.id === SpectralClass.T;
     }
 
@@ -310,65 +254,3 @@ export class Star {
 }
 
 
-export interface WorldDetails {
-
-}
-
-export class AsteroidBeltDetails implements WorldDetails {
-    asteroidSize: number;
-    depth: number;
-    nickelIronPercent: number;
-    carbonaceousOrIcePercent: number;
-    mixedPercent: number;
-}
-
-export class StandardWorldDetails implements WorldDetails {
-    tidallyLocked: boolean;
-    retrograde: boolean;
-    rotationPeriod: number;
-    hydrographicPercentage: number;
-    axialTilt: number;
-}
-
-
-export class World {
-
-    worldClass: WorldClassModel;
-    orbit: number;
-    numberOfSatellites: number;
-    orbitalRadius: number = 0;
-    period: number;
-    worldDetails?: WorldDetails;
-    diameter?: number;
-    density?: number;
-    coreType?: WorldCoreType;
-    gravity?: number;
-
-    get mass() {
-        if (this.diameter != null && this.density != null) {
-            return (this.density * Math.pow(this.diameter / 12750, 3));
-        } else {
-            return undefined;
-        }
-    }
-
-    constructor(worldClass: WorldClassModel, orbit?: number) {
-        this.worldClass = worldClass;
-        this.orbit = orbit;
-    }
-
-    get orbitLabel() {
-        return this.orbit == null ? undefined : RomanNumerals[this.orbit];
-    }
-
-    get plainText() {
-        return "Class: " + this.worldClass.description + "\n" +
-            "Orbit: " + this.orbitLabel + "\n" +
-            "Number of satellites: " + this.numberOfSatellites + "\n" +
-            "Orbital Radius: " + this.orbitalRadius.toFixed(2) +
-            (this.diameter != null ? ("\nDiameter: " + Math.round(this.diameter).toLocaleString("en-US") + " km") : "") +
-            (this.density != null ? ("\nDensity: " + this.density.toFixed(3) + " Sol") : "") +
-            (this.mass != null ? ("\nMass: " + this.mass.toFixed(3) + " Sol") : "") +
-            (this.coreType != null ? ("\nCore: " + WorldCoreType[this.coreType]) : "");
-    }
-}

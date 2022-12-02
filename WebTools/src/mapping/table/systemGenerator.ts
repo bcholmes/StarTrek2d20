@@ -6,8 +6,9 @@ import { WorldCoreType } from "../view/worldView";
 import { LuminosityTable } from "./luminosityTable";
 import { Orbits } from "./orbit";
 import { Sector, SectorCoordinates } from "./sector";
-import { LuminosityClass, LuminosityClassModel, SpectralClass, SpectralClassModel, Star, Range, World, WorldClass, WorldClassModel, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon, AsteroidBeltDetails, StandardWorldDetails } from "./star";
+import { LuminosityClass, LuminosityClassModel, SpectralClass, SpectralClassModel, Star, Range, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon } from "./star";
 import { CompanionType, StarSystem } from "./starSystem";
+import { AsteroidBeltDetails, StandardWorldDetails, World, WorldClass, WorldClassModel } from "./world";
 
 class StellarMass {
     spectralClass: SpectralClass;
@@ -460,8 +461,8 @@ class SystemGeneration {
         new StellarMass(SpectralClass.G, LuminosityClass.II, 6),
         new StellarMass(SpectralClass.G, LuminosityClass.III, 2.7),
         new StellarMass(SpectralClass.G, LuminosityClass.IV, 1.8),
-        new StellarMass(SpectralClass.G, LuminosityClass.V, 1.1),        
-        new StellarMass(SpectralClass.G, LuminosityClass.VI, 0.8), 
+        new StellarMass(SpectralClass.G, LuminosityClass.V, 1.1),
+        new StellarMass(SpectralClass.G, LuminosityClass.VI, 0.8),
 
         new StellarMass(SpectralClass.K, LuminosityClass.Ia, 15),
         new StellarMass(SpectralClass.K, LuminosityClass.Ib, 12),
@@ -469,7 +470,7 @@ class SystemGeneration {
         new StellarMass(SpectralClass.K, LuminosityClass.III, 3),
         new StellarMass(SpectralClass.K, LuminosityClass.IV, 2.3),
         new StellarMass(SpectralClass.K, LuminosityClass.V, 0.9),
-        new StellarMass(SpectralClass.K, LuminosityClass.VI, 0.5), 
+        new StellarMass(SpectralClass.K, LuminosityClass.VI, 0.5),
 
         new StellarMass(SpectralClass.M, LuminosityClass.Ia, 20),
         new StellarMass(SpectralClass.M, LuminosityClass.Ib, 16),
@@ -477,11 +478,11 @@ class SystemGeneration {
         new StellarMass(SpectralClass.M, LuminosityClass.III, 4),
         new StellarMass(SpectralClass.M, LuminosityClass.IV, 2),
         new StellarMass(SpectralClass.M, LuminosityClass.V, 0.3),
-        new StellarMass(SpectralClass.M, LuminosityClass.VI, 0.2), 
+        new StellarMass(SpectralClass.M, LuminosityClass.VI, 0.2),
 
-        new StellarMass(SpectralClass.L, null, 0.11), 
-        new StellarMass(SpectralClass.T, null, 0.10), 
-        new StellarMass(SpectralClass.Y, null, 0.10), 
+        new StellarMass(SpectralClass.L, null, 0.11),
+        new StellarMass(SpectralClass.T, null, 0.10),
+        new StellarMass(SpectralClass.Y, null, 0.10),
 
         new StellarMass(SpectralClass.WhiteDwarf, null, 0.8),
         new StellarMass(SpectralClass.BrownDwarf, null, 0.15),
@@ -524,9 +525,9 @@ class SystemGeneration {
 
             while (phenomenon.id !== NotableSpatialPhenomenon.RoguePlanet && star == null) {
                 star = this.generateStar();
-                if (phenomenon.id === NotableSpatialPhenomenon.TTauriStar && star != null 
+                if (phenomenon.id === NotableSpatialPhenomenon.TTauriStar && star != null
                     && [SpectralClass.F, SpectralClass.G, SpectralClass.K, SpectralClass.M].indexOf(star.spectralClass.id) >= 0) {
-                    
+
                     star = undefined;
                 }
             }
@@ -605,11 +606,11 @@ class SystemGeneration {
 
         for (let i = 0; i < this.stellarMassTable.length; i++) {
             let mass = this.stellarMassTable[i];
-            if (mass.spectralClass === spectralClass.id 
+            if (mass.spectralClass === spectralClass.id
                 && ((luminosityClass == null && mass.luminosityClass == null) || (luminosityClass != null && luminosityClass.id === mass.luminosityClass))) {
 
                 let baseMass = mass.mass;
-                
+
                 let roll = (D20.roll() - 10) / 10;
                 if (roll < 0) {
                     let delta = Math.min(baseMass / 2, 10);
@@ -666,7 +667,7 @@ class SystemGeneration {
             let worldCount = this.numberOfPlanetsTable[roll];
             let orbits = Orbits.createOrbits(worldCount, starSystem);
             let primaryWorldOrbit =  orbits.primaryWorldOrbit;
-            
+
             let romanNumeralId = 0;
 
             for (let i = 0; i < worldCount; i++) {
@@ -906,7 +907,7 @@ class SystemGeneration {
         let core = D20.roll() > 2 ? WorldCoreType.Molten : WorldCoreType.Heavy;
         if (world.worldClass.id === WorldClass.B || world.worldClass.id === WorldClass.E || world.worldClass.id === WorldClass.Y) { // also F
             core = WorldCoreType.Molten;
-        } else if (world.worldClass.id === WorldClass.M || world.worldClass.id === WorldClass.K 
+        } else if (world.worldClass.id === WorldClass.M || world.worldClass.id === WorldClass.K
                 || world.worldClass.id === WorldClass.L || world.worldClass.id === WorldClass.O) {
             core = D20.roll() > 4 ? WorldCoreType.Molten : WorldCoreType.Heavy;
         } else if (world.worldClass.id === WorldClass.D && starSystem.gardenZoneOuterRadius < world.orbitalRadius) {
@@ -940,7 +941,7 @@ class SystemGeneration {
 
     rollSpectralClass() {
         let roll1 = D20.roll();
-        
+
         if (roll1 === 20) {
             let roll2 = D20.roll();
             if (roll2 === 20) {

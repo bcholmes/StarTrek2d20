@@ -1,7 +1,7 @@
 import { D20 } from "../../common/die";
 import { LuminosityTable } from "./luminosityTable";
-import { World } from "./star";
 import { StarSystem } from "./starSystem";
+import { World } from "./world";
 
 const BLAGG_CONSTANT = 1.7275;
 
@@ -44,7 +44,7 @@ export class Orbits {
 
             if (idealBode < 0.001 || system.gardenZoneIdealRadius < 0.05) {
                 console.log(">>>>>> Ideal bode is " + idealBode + " which doens't help. GZ =" + system.gardenZoneInnerRadius.toFixed(3) + " - " + system.gardenZoneOuterRadius.toFixed(3));
-                orbits.primaryWorldOrbit = 1; 
+                orbits.primaryWorldOrbit = 1;
                 initialOrbit = system.gardenZoneIdealRadius;
             } else {
                 console.log("Ideal bode: " + idealBode + " seems pretty viable. GZ =" + system.gardenZoneInnerRadius.toFixed(3) + " - " + system.gardenZoneOuterRadius.toFixed(3));
@@ -74,7 +74,7 @@ export class Orbits {
     }
 
     static determineRadius(orbitIndex: number, initialOrbit: number, bodeConstant: number) {
-        return (orbitIndex === 0) 
+        return (orbitIndex === 0)
             ? initialOrbit
             : initialOrbit + Math.pow(BLAGG_CONSTANT, orbitIndex) * bodeConstant;
     }

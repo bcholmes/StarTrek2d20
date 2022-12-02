@@ -1,5 +1,6 @@
 import { SectorCoordinates } from "./sector";
-import { NotableSpatialPhenomenonModel, Star, World } from "./star";
+import { NotableSpatialPhenomenonModel, Star } from "./star";
+import { World } from "./world";
 
 export enum CompanionType {
     Close, Distant
@@ -86,7 +87,7 @@ export class StarSystem {
 
         return "Star System: " + this.name + "\n"
             + "Star: " + this.star.plainText
-            + (this.companionStar == null ? "" : ("\nCompanion Star: " + this.companionStar.plainText)) 
+            + (this.companionStar == null ? "" : ("\nCompanion Star: " + this.companionStar.plainText))
             + (this.companionType == null ? "" : ("\nCompanion Type: " + CompanionType[this.companionType]))
             + "\n" + worlds;
     }
