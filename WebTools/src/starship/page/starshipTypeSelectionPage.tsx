@@ -38,7 +38,7 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
 
     render() {
         let typeSelection = hasSource(Source.KlingonCore)
-            ? (<div className="my-5">
+            ? (<div className="my-3">
                     <Header level={2}>Ship Type</Header>
                     <p>What type of starship is this?</p>
                     <div>
@@ -50,7 +50,7 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                 </div>)
             : undefined;
 
-        let buildTypeSelection = (<div className="my-5">
+        let buildTypeSelection = (<div className="my-3">
                 <Header level={2}>Size Category</Header>
                 <p>How big of a vessel is it?</p>
                 <div>
@@ -73,8 +73,14 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                 <Header>Starship Type Selection</Header>
                 <div>
                     {this.renderServiceYear()}
-                    {typeSelection}
-                    {buildTypeSelection}
+                    <div className="row">
+                        <div className="col-lg-6">
+                            {typeSelection}
+                        </div>
+                        <div className="col-lg-6">
+                            {buildTypeSelection}
+                        </div>
+                    </div>
                     <Button onClick={() => this.startWorkflow()} text='CREATE' />
                 </div>
             </div>
