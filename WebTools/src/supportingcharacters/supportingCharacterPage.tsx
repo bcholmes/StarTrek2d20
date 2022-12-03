@@ -16,24 +16,22 @@ import { marshaller } from '../helpers/marshaller';
 import { Species } from '../helpers/speciesEnum';
 import store from '../state/store';
 import { hasSource } from '../state/contextFunctions';
+import { Header } from '../components/header';
+import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 
 interface ISupportingCharacterState {
     age: Age;
     type: CharacterTypeModel;
+    purpose: string;
 }
 
 export class SupportingCharacterPage extends React.Component<{}, ISupportingCharacterState> {
     private _nameElement: HTMLInputElement;
-    private _purposeElement: HTMLInputElement;
-    private _focus1Element: HTMLInputElement;
-    private _focus2Element: HTMLInputElement;
-    private _focus3Element: HTMLInputElement;
     private _attributeElement: SupportingCharacterAttributes;
     private _pronounsElement: HTMLInputElement;
 
     private _name: string;
     private _rank: string;
-    private _purpose: string;
     private _species: string;
     private _focus1: string;
     private _focus2: string;
@@ -62,14 +60,14 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
         character.trackValue = "";
         this.state = {
             age: AgeHelper.getAdultAge(),
-            type: CharacterTypeModel.getAllTypes()[character.type]
+            type: CharacterTypeModel.getAllTypes()[character.type],
+            purpose: ""
         }
     }
 
     render() {
         let ageDiv = hasSource(Source.PlayersGuide) && character.age.isChild()
-            ? (<div className="panel">
-                    <div className="header-small">Age</div>
+            ? (<div className="mt-4">
                     <div className="page-text-aligned">
                         How old is this character?
                     </div>
@@ -93,151 +91,127 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                     </ol>
                 </nav>
 
-                <div className="starship-container">
-                    <div className="starship-panel">
-                        <div className="panel">
-                            <div className="header-small">Character Type</div>
-                            <div className="page-text-aligned">
-                                Choose a character type.
-                            </div>
+                <div>
+                    <Header>Supporting Character</Header>
+
+                    <div className="row">
+                        <div className="col-12 col-lg-6 my-4">
+                            <Header level={2}>Character Type</Header>
+                            <p>Choose a character type.</p>
                             <div>
                                 <DropDownInput
                                     items={this.getTypes() }
                                     defaultValue={this.state.type.name}
                                     onChange={(index) => this.selectType(index) }/>
                             </div>
+
+                            {ageDiv}
                         </div>
-                        <div className="panel">
-                            <div className="header-small">Purpose/Department</div>
-                            <div className="page-text-aligned">
-                                First determine what purpose the Supporting Character will fill.
+                        <div className="col-12 col-lg-6 my-4">
+                            <Header level={2}>Purpose/Department</Header>
+                            <p>
+                                Determine what purpose the Supporting Character will fill.
                                 Are they an engineer, or a doctor, or a scientist, or a security officer?
-                            </div>
-                            <div className="textinput-label">DEPARTMENT</div>
-                            <input
-                                type="text"
-                                defaultValue={this._purpose}
-                                ref={(el) => { this._purposeElement = el; } }
-                                onChange={() => {
-                                    this._purpose = this._purposeElement.value;
-                                    character.role = this._purpose;
-                                    this.forceUpdate();
-                                } } />
-                        </div>
-                        {ageDiv}
-                        <div className="panel mt-3">
-                            <div className="header-small">Species &amp; Attributes</div>
-                            <div className="page-text-aligned">
-                                Secondly, assign Attribute scores and choose the character's species.
-                                The chosen species will affect the final Attribute scores.
-                                Select two different values to swap them.
-                            </div>
-                            <DropDownInput
-                                items={SpeciesHelper.getSpecies().map(s => { return s.name }) }
-                                defaultValue={this._species}
-                                onChange={(index) => this.selectSpecies(index) }/>
-                            <br/><br/>
-                            <SupportingCharacterAttributes age={this.state.age}
-                                ref={(el) => this._attributeElement = el}
-                                species={SpeciesHelper.getSpeciesByName(this._species) }
-                                onUpdate={() => { this.forceUpdate(); }}/>
-                        </div>
-                        <div className="panel mt-3">
-                            <div className="header-small">Disciplines</div>
-                            <div className="page-text-aligned">
-                                Next, assign the character's Disciplines.
-                                The highest value should match up with the department/purpose of the character.
-                                Select two different values to swap them.
-                            </div>
-                            <SupportingCharacterDisciplines age={this.state.age}
-                                onUpdate={() => { this.forceUpdate(); } }/>
+                            </p>
+                            <InputFieldAndLabel labelName="Department" value={this.state.purpose} onChange={(value) => {
+                                this.setState((state) => ({
+                                    ...state,
+                                    purpose: value}));
+                                character.role = value;
+                            }} id="department" />
                         </div>
                     </div>
-                    <br/><br/>
-                    <div className="panel">
-                        <div className="header-small">Focuses</div>
-                        <div className="page-text-aligned">
+                    <div className="mt-3">
+                        <Header level={2}>Species &amp; Attributes</Header>
+                        <p>
+                            Assign Attribute scores and choose the character's species.
+                            The chosen species will affect the final Attribute scores.
+                            Select two different values to swap them.
+                        </p>
+                        <DropDownInput
+                            items={SpeciesHelper.getSpecies().map(s => { return s.name }) }
+                            defaultValue={this._species}
+                            onChange={(index) => this.selectSpecies(index) }/>
+                        <br/><br/>
+                        <SupportingCharacterAttributes age={this.state.age}
+                            ref={(el) => this._attributeElement = el}
+                            species={SpeciesHelper.getSpeciesByName(this._species) }
+                            onUpdate={() => { this.forceUpdate(); }}/>
+                    </div>
+                    <div className="my-5">
+                        <Header level={2}>Disciplines</Header>
+                        <p>
+                            Assign the character's Disciplines.
+                            The highest value should match up with the department/purpose of the character.
+                            Select two different values to swap them.
+                        </p>
+                        <SupportingCharacterDisciplines age={this.state.age}
+                            onUpdate={() => { this.forceUpdate(); } }/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12 col-lg-6 my-3">
+                        <Header level={2}>Focuses</Header>
+                        <p>
                             Choose three Focuses for the character.
                             At least one should reflect the department/purpose of the character.
-                        </div>
-                        <div>
-                            <div className="textinput-label">FOCUS 1</div>
-                            <input
-                                type="text"
-                                defaultValue={this._focus1}
-                                ref={(el) => { this._focus1Element = el; } }
-                                onChange={() => {
-                                    this._focus1 = this._focus1Element.value;
+                        </p>
+                        <div className="mb-2">
+                            <InputFieldAndLabel labelName="Focus 1" value={this._focus1}
+                                id="focus1" onChange={(value) => {
+                                    this._focus1 = value;
                                     this.onFocusChanged();
-                                } } />
+                                }} />
                         </div>
-                        <div>
-                            <div className="textinput-label">FOCUS 2</div>
-                            <input
-                                type="text"
-                                defaultValue={this._focus2}
-                                ref={(el) => { this._focus2Element = el; } }
-                                onChange={() => {
-                                    this._focus2 = this._focus2Element.value;
+                        <div className="mb-2">
+                            <InputFieldAndLabel labelName="Focus 2" value={this._focus2}
+                                id="focus2" onChange={(value) => {
+                                    this._focus2 = value;
                                     this.onFocusChanged();
-                                } } />
+                                }} />
                         </div>
-                        <div>
-                            <div className="textinput-label">FOCUS 3</div>
-                            <input
-                                type="text"
-                                defaultValue={this._focus3}
-                                ref={(el) => { this._focus3Element = el; } }
-                                onChange={() => {
-                                    this._focus3 = this._focus3Element.value;
+                        <div className="mb-2">
+                            <InputFieldAndLabel labelName="Focus 3" value={this._focus3}
+                                id="focus3" onChange={(value) => {
+                                    this._focus3 = value;
                                     this.onFocusChanged();
-                                } } />
+                                }} />
                         </div>
                     </div>
-                    <br/><br/>
-                    <div className="panel">
-                        <div className="header-small">Name &amp; Rank</div>
-                        <div className="page-text-aligned">
+                    <div className="col-12 col-lg-6 my-3">
+                        <Header level={2}>Name &amp; Rank</Header>
+                        <p>
                             Give the character an appropriate name and rank.
                             Supporting Characters should never have a rank above Lieutenant
                             and may often be enlisted personnel rather than officers.
-                        </div>
+                        </p>
                         <div style={{borderBottom:"1px solid rgba(128, 128, 128, 0.4)", marginBottom:"10px",paddingBottom:"18px"}}>
                             <DropDownInput
                                 items={this.getRanks() }
                                 defaultValue={this._rank}
                                 onChange={(index) => this.selectRank(index) }/>
                         </div>
-                        <div>
-                            <div className="textinput-label">NAME</div>
-                            <input
-                                type="text"
-                                defaultValue={this._name}
-                                ref={(el) => { this._nameElement = el; } }
-                                onChange={() => {
-                                    this._name = this._nameElement.value;
+                        <div className="mb-2">
+                            <InputFieldAndLabel labelName="Name" value={this._name}
+                                id="name" onChange={(value) => {
+                                    this._name = value;
                                     character.name = this._name;
                                     this.forceUpdate();
-                                } } />
+                                }} />
                         </div>
-                        <div>
-                            <div className="textinput-label">PRONOUNS</div>
-                            <input
-                                type="text"
-                                defaultValue={this._pronouns}
-                                ref={(el) => { this._pronounsElement = el; } }
-                                onChange={() => {
-                                    this._pronouns = this._pronounsElement.value;
+                        <div className="mb-2">
+                            <InputFieldAndLabel labelName="Pronouns" value={this._pronouns}
+                                id="pronouns" onChange={(value) => {
+                                    this._pronouns = value;
                                     character.pronouns = this._pronouns;
                                     this.forceUpdate();
-                                } } />
+                                }} />
                         </div>
                     </div>
-                    <br/>
-                    <div className="button-container">
-                        <Button text="Export to PDF" className="button-small mr-2 mb-2" onClick={() => this.showDialog() } buttonType={true} />
-                        <Button text="View" className="button-small mr-2 mb-2" onClick={() => this.showViewPage() } buttonType={true} />
-                    </div>
+                </div>
+                <div className="button-container mt-4">
+                    <Button text="Export to PDF" className="button-small mr-2 mb-2" onClick={() => this.showDialog() } buttonType={true} />
+                    <Button text="View" className="button-small mr-2 mb-2" onClick={() => this.showViewPage() } buttonType={true} />
                 </div>
             </div>
         );

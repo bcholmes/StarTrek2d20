@@ -17,7 +17,7 @@ import {CareerEventDetailsPage} from './careerEventDetailsPage';
 import {AttributesAndDisciplinesPage} from './attributesAndDisciplinesPage';
 import {FinishPage} from './finishPage';
 import StarshipPage from '../starship/page/starshipPage';
-import {SupportingCharacterPage} from './supportingCharacterPage';
+import {SupportingCharacterPage} from '../supportingcharacters/supportingCharacterPage';
 import { TalentsOverviewPage } from './talentsOverviewPage';
 import { SelectionPage } from './selectionPage';
 import { BorgImplantSelection } from './borgImplantSelection';
