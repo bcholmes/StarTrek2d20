@@ -2743,7 +2743,7 @@ export class Talents {
             new TalentModel(
                 "Independent Phaser Supply",
                 "The ship’s phasers use an independent power supply, rather than drawing directly from the ship’s other power sources. Attacking with the ship’s phasers no longer has a Power Requirement. However, the ship may not spend additional Power to boost the effectiveness of an attack with the phasers.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.DiscoveryCampaign)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.DiscoveryCampaign, Source.UtopiaPlanitia)],
                 1,
                 "Starship"),
             new TalentModel(
@@ -2883,12 +2883,6 @@ export class Talents {
             new TalentModel(
                 "High-Resolution Sensors",
                 "The vessel’s sensors can gain large amounts of accurate data, though they are extremely sensitive. While the vessel is not in combat, any successful task that is assisted by the ship’s Sensors gains one bonus Momentum.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
-                1,
-                "Starship"),
-            new TalentModel(
-                "Independent Phaser Supply",
-                "Common prior to the 2270s, the ship’s phasers use an independent power supply rather than drawing directly from the ship’s other power sources. Attacking with the ship’s phasers no longer has a Power requirement. However, the ship may not spend additional Power to boost the effectiveness of an attack with its energy weapons.",
                 [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
                 1,
                 "Starship"),
