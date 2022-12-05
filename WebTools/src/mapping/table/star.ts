@@ -1,5 +1,4 @@
 import { Color } from "../../common/colour";
-import { WorldCoreType } from "../view/worldView";
 
 export enum SpaceRegion {
     AlphaQuadrant,

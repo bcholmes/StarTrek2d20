@@ -83,11 +83,13 @@ export class StandardWorldDetails extends WorldDetails {
     axialTilt: number;
 
     plainText() {
-        return "\nRotation: " + this.tidallyLocked ? ("Tidally Locked") : (this.rotationPeriod.toFixed(2) + " hours" + (this.retrograde ? " (Retrograde)" : "")) +
-            "\nWater Coverage: " + this.hydrographicPercentage.toFixed(2) + '%';
+        return (this.hydrographicPercentage != null ? "\nWater Coverage: " + this.hydrographicPercentage.toFixed(2) + '%' : "") +
+            (this.rotationPeriod ? ("\nRotation: " + (this.tidallyLocked
+                ? "Tidally Locked"
+                : (this.rotationPeriod.toFixed(2) + " hours" + (this.retrograde ? " (Retrograde)" : "")))) : "") +
+            (this.axialTilt != null ? "\nAxial Tilt: " + this.axialTilt.toFixed(2) + " deg" : "");
     }
 }
-
 
 export class World {
 
@@ -128,7 +130,7 @@ export class World {
             (this.diameter != null ? ("\nDiameter: " + Math.round(this.diameter).toLocaleString("en-US") + " km") : "") +
             (this.density != null ? ("\nDensity: " + this.density.toFixed(3) + " Earth") : "") +
             (this.mass != null ? ("\nMass: " + this.mass.toFixed(3) + " Earth") : "") +
-            (this.gravity != null ? ("\nGravity: " + this.gravity.toFixed(3) + " G") : "" ) +
+            (this.gravity != null ? ("\nGravity: " + this.gravity.toFixed(2) + " G") : "" ) +
             (this.worldDetails != null ? this.worldDetails.plainText() : "") +
             (this.coreType != null ? ("\nCore: " + WorldCoreType[this.coreType]) : "");
     }
