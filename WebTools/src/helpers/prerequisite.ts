@@ -26,7 +26,7 @@ export class StarshipTypePrerequisite implements IConstructPrerequisite<Starship
     }
 
     isPrerequisiteFulfilled(s: Starship) {
-        return this.types.indexOf(character.type) >= 0;
+        return this.types.indexOf(s.type) >= 0;
     }
     describe(): string {
         return "";
