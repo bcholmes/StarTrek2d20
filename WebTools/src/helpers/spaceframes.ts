@@ -969,6 +969,26 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("High-Resolution Sensors"),
                 TalentSelection.selectTalent("Improved Warp Drive")
             ]),
+        [Spaceframe.Cheyenne]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Cheyenne,
+            CharacterType.Starfleet,
+            "Cheyenne",
+            2350,
+            [ Source.UtopiaPlanitia ],
+            [9, 9, 10, 9, 9, 9],
+            [0, 2, 0, 1, 0, 0],
+            4,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam"
+
+            ],
+            [
+                TalentSelection.selectTalent("Improved Reaction Control System"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Secondary Reactors")
+            ]),
         [Spaceframe.Challenger]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Challenger,
             CharacterType.Starfleet,
