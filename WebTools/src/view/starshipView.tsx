@@ -179,7 +179,6 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
             }
             if (!w.isTractorOrGrappler && this.props.starship.departments) {
                 dice += this.props.starship.departments[Department.Security];
-                console.log("Security " + this.props.starship.departments[Department.Security]);
             }
             return (<WeaponView key={'weapon-' + i} weapon={w} dice={dice} />);
         });

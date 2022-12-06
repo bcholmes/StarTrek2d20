@@ -11,6 +11,7 @@ import Governments, { GovernmentType } from '../helpers/governments';
 import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
 import store from '../state/store';
 import { hasSource } from '../state/contextFunctions';
+import { Header } from '../components/header';
 
 interface ICharacterTypePageState {
     type: CharacterType,
@@ -36,29 +37,28 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
                 return (<option value={t.type} key={'type-' + t.type}>{t.name}</option>);
             });
 
-            const other = this.state.alliedMilitary === AlliedMilitaryType.OTHER 
-                ? (<div className="panel">
-                    <div className="page-text">
+            const other = this.state.alliedMilitary === AlliedMilitaryType.OTHER
+                ? (<>
+                    <p className="mt-4">
                         What's the name of this military?
-                    </div>
-                    <input value={this.state.otherName} onChange={(e) => { 
+                    </p>
+                    <input value={this.state.otherName} onChange={(e) => {
                         let value = e.target.value;
-                        this.setState(state => ({ ...state, otherName: value }) ); 
+                        this.setState(state => ({ ...state, otherName: value }) );
                     } }/>
-                </div>)
+                </>)
                 : null;
 
-            return (<div className="panel">
-                    <div className="header-small">Allied Military</div>
-                    <div className="page-text">
+            return (<>
+                    <p className="mt-4">
                         What military does this character represent?
-                    </div>
+                    </p>
                     <select onChange={(e) => this.selectAlliedMilitaryType(e.target.value)} value={this.state.alliedMilitary}>
                         <option>Choose...</option>
                         {types}
                     </select>
                     {other}
-                  </div>);
+                  </>);
         } else {
             return null;
         }
@@ -71,29 +71,28 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
                 return (<option value={t.type} key={'gov-' + t.type}>{t.name}</option>);
             });
 
-            const other = this.state.government === GovernmentType.OTHER 
-                ? (<div className="panel">
-                    <div className="page-text">
+            const other = this.state.government === GovernmentType.OTHER
+                ? (<>
+                    <p className="mt-4">
                         What's the name of this government?
-                    </div>
-                    <input value={this.state.otherName} onChange={(e) => { 
+                    </p>
+                    <input value={this.state.otherName} onChange={(e) => {
                         let value = e.target.value;
-                        this.setState(state => ({ ...state, otherName: value }) ); 
+                        this.setState(state => ({ ...state, otherName: value }) );
                     } }/>
-                </div>)
+                </>)
                 : null;
 
-            return (<div className="panel">
-                    <div className="header-small">Government</div>
-                    <div className="page-text">
+            return (<>
+                    <p className="mt-4">
                         What government does this character represent?
-                    </div>
+                    </p>
                     <select onChange={(e) => this.selectGovernmentType(e.target.value)} value={this.state.government}>
                         <option>Choose...</option>
                         {types}
                     </select>
                     {other}
-                  </div>);
+                  </>);
         } else {
             return null;
         }
@@ -109,24 +108,18 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
         });
 
         return (
-            <div className="page">
-                <div className="container ml-0">
-                    <CharacterCreationBreadcrumbs />
-                    <div className="panel">
-                        <div className="header-small">Character Type</div>
-                        <div className="page-text">
-                            What type of character is this?
-                        </div>
-                        <select onChange={(e) => this.selectType(e.target.value)} value={this.state.type}>
-                            {types}
-                        </select>
-                    </div>
+            <div className="page container ml-0">
+                <CharacterCreationBreadcrumbs />
+                <Header level={1}>Character Type</Header>
+                <p>What type of character is this?</p>
+                <select onChange={(e) => this.selectType(e.target.value)} value={this.state.type}>
+                    {types}
+                </select>
 
-                    {alliedMilitary}
-                    {governments}
+                {alliedMilitary}
+                {governments}
 
-                    <Button onClick={() => this.startWorkflow()} text='CREATE' />
-                </div>
+                <Button onClick={() => this.startWorkflow()} text='CREATE' />
             </div>
         );
     }

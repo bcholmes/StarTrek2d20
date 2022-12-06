@@ -266,14 +266,6 @@ abstract class BasicStarshipSheet extends BasicSheet {
         }
     }
 
-    calculateShields(base: number, talents: string[]) {
-        var shields = base;
-        if (talents.indexOf("Advanced Shields") > -1) {
-            shields += 5;
-        }
-        return shields;
-    }
-
     fillShields(form: PDFForm, shields: number) {
         for (var i = 1; i <= 30; i++) {
             this.fillCheckbox(form, "Shields " + i, i > shields);
@@ -336,10 +328,10 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
         return 'TNG Standard Starship Sheet (Landscape)'
     }
     getThumbnailUrl(): string {
-        return 'https://sta.bcholmes.org/static/img/sheets/TNG_Standard_Starship_Sheet.png'
+        return '/static/img/sheets/TNG_Standard_Starship_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/static/pdf/TNG_Standard_Starship_Sheet_no_outline.pdf'
+        return '/static/pdf/TNG_Standard_Starship_Sheet_no_outline.pdf'
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {

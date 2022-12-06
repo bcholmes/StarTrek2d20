@@ -355,7 +355,6 @@ class MissionProfiles {
         let list = (type === CharacterType.KlingonWarrior) ? this._klingonProfiles : this._profiles;
         let result = null;
         for (let id in list) {
-            console.log("Compare " + profile + " to " + MissionProfile[id]);
             if (profile === MissionProfile[id]) {
                 result = list[id];
                 break;
