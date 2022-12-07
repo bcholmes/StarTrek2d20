@@ -232,7 +232,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
         this.fillRefits(form, starship);
         this.fillSystems(form, starship);
         this.fillDepartments(form, starship);
-        this.fillTalents(form, talents);
+        this.fillTalents(form, starship);
         this.fillWeapons(form, construct);
     }
 
@@ -258,10 +258,32 @@ abstract class BasicStarshipSheet extends BasicSheet {
         return resistance.toString();
     }
 
-    fillTalents(form: PDFForm, talents: string[]) {
+    isSpecialRuleSectionAvailable(form: PDFForm) {
+        try {
+            form.getTextField("Special Rule 1");
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    fillTalents(form: PDFForm, starship: Starship) {
+        let talents = starship.getTalentSelectionList().map(t => t.description);
+        let specialRules = [];
+        if (this.isSpecialRuleSectionAvailable(form)) {
+            talents = starship.getTalentSelectionList().filter(t => !t.talent.specialRule).map(t => t.description);
+            specialRules = starship.getTalentSelectionList().filter(t => t.talent.specialRule).map(t => t.description);
+        }
+
         let i = 1;
-        for (var t of talents) {
+        for (let t of talents) {
             this.fillField(form, 'Talent ' + i, t);
+            i++;
+        }
+
+        i = 1;
+        for (let s of specialRules) {
+            this.fillField(form, 'Special Rule ' + i, s);
             i++;
         }
     }
