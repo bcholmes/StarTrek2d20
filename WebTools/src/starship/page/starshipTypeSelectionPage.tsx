@@ -8,10 +8,9 @@ import { DropDownInput } from "../../components/dropDownInput";
 import { Header } from "../../components/header";
 import { Era } from "../../helpers/eras";
 import { Source } from "../../helpers/sources";
-import { SpaceframeModel } from "../../helpers/spaceframeModel";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { hasSource } from "../../state/contextFunctions";
-import { createNewStarship, setStarshipSpaceframe } from "../../state/starshipActions";
+import { createNewStarship } from "../../state/starshipActions";
 import store from "../../state/store";
 import { BuildPoints } from "../model/buildPoints";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
@@ -109,14 +108,6 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
        } else if (this.state.type != null) {
             let workflow = ShipBuildWorkflow.createStarshipBuildWorkflow();
             store.dispatch(createNewStarship(this.state.type.type, this.state.campaignYear, undefined, workflow));
-
-            let scale = 3;
-            let systems = BuildPoints.allocatePointsEvenly(BuildPoints.systemPointsForType(
-                ShipBuildType.Starship, this.state.campaignYear, this.state.type.type, scale));
-            let departments = BuildPoints.allocatePointsEvenly(BuildPoints.departmentPointsForType(
-                ShipBuildType.Starship))
-            let spaceframe = SpaceframeModel.createCustomSpaceframe(this.state.type?.type, this.state.campaignYear, systems, departments, scale);
-            store.dispatch(setStarshipSpaceframe(spaceframe));
 
             Navigation.navigateToPage(workflow.currentStep().page);
         }
