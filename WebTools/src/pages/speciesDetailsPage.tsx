@@ -53,13 +53,19 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
                     <Header>{character.speciesName}</Header>
                     <InstructionText text={species.description} />
 
-                    <SmallHeader>ATTRIBUTES {selectDesc}</SmallHeader>
-                    <div className="panel">
-                        <SpeciesAttributeComponent controller={this.attributesController} />
-                    </div>
+                    <div className="row">
+                        <div className="col-12 col-lg-6 my-4">
+                            <Header level={2}>ATTRIBUTES {selectDesc}</Header>
+                            <div className="mt-4">
+                                <SpeciesAttributeComponent controller={this.attributesController} />
+                            </div>
 
-                    <InstructionText text={this.attributesController.instructions} />
-                    {this.renderTraitSection(species)}
+                            <InstructionText text={this.attributesController.instructions} />
+                        </div>
+                        <div className="col-12 col-lg-6 my-4">
+                            {this.renderTraitSection(species)}
+                        </div>
+                    </div>
                     {this.renderTalentsSection(species)}
                     <Button text="ENVIRONMENT" className="button-next" onClick={() => this.onNext()} />
                 </div>
@@ -81,8 +87,8 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
             )
             : undefined;
 
-        return (<div className="my-4">
-                <SmallHeader>TRAIT</SmallHeader>
+        return (<div>
+                <Header level={2}>TRAIT</Header>
                 <div className="text-white my-3"><b>{species.trait}</b></div>
                 <div className="text-white">{species.traitDescription}</div>
                 {mixedTrait}
@@ -103,7 +109,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
 
         return talents.length > 0 && character.workflow.currentStep().options.talentSelection
             ? (<div>
-                <SmallHeader>TALENTS</SmallHeader>
+                <Header level={2}>TALENTS</Header>
                 <div>
                     {this.renderCrossSpeciesCheckbox()}
                 </div>
@@ -112,7 +118,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
                     onSelection={talent => this.onTalentSelected(talent)} />
             </div>)
             : (<div>
-                <SmallHeader>SPECIES OPTIONS</SmallHeader>
+                <Header level={2}>SPECIES OPTIONS</Header>
                 <div>
                     {this.renderCrossSpeciesCheckbox()}
                 </div>

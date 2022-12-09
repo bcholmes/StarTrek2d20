@@ -3,7 +3,7 @@ import { navigateTo } from "../common/navigator";
 import { PageIdentity } from "../pages/pageIdentity";
 import AppVersion from "./appVersion";
 import { CharacterSheet } from "./characterSheet";
-import { History } from "./history";
+import History, { HistoryType } from "./history";
 import News from "./news";
 import { PageHeader } from "./pageHeader";
 import { RandomLcarsReadout } from "./randomLcarsReadout";
@@ -45,7 +45,7 @@ export class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFram
                         <div className="lcar-content-action">
                             <div id="history-button" className="lcar-content-history" onClick={ () => this.toggleHistory() }>History</div>
                             <div id="history-container" className="history-container-hidden">
-                                <History showHistory={this.state.showHistory} />
+                                <History showHistory={this.state.showHistory} type={this.isStarshipPage() ? HistoryType.Starship : HistoryType.Character} />
                             </div>
                         </div>
                         <div className="lcar-content-action">
@@ -80,10 +80,8 @@ export class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFram
         ];
     }
 
-    isProfileSupportedForPage() {
-        if (this.props.activePage === PageIdentity.ViewSheet ||
-            this.props.activePage === PageIdentity.SystemGeneration ||
-            this.props.activePage === PageIdentity.SmallCraftStats ||
+    isStarshipPage() {
+        if (this.props.activePage === PageIdentity.SmallCraftStats ||
             this.props.activePage === PageIdentity.MissionPodSelection ||
             this.props.activePage === PageIdentity.MissionProfileSelection ||
             this.props.activePage === PageIdentity.MissionProfileTalentSelection ||
@@ -96,9 +94,19 @@ export class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFram
             this.props.activePage === PageIdentity.StarshipWeaponsSelection ||
             this.props.activePage === PageIdentity.StarshipTalentSelection ||
             this.props.activePage === PageIdentity.FinalStarshipDetails ||
+            this.props.activePage === PageIdentity.SimpleStarship) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    isProfileSupportedForPage() {
+        if (this.props.activePage === PageIdentity.ViewSheet ||
+            this.props.activePage === PageIdentity.SystemGeneration ||
             this.props.activePage === PageIdentity.SectorDetails ||
             this.props.activePage === PageIdentity.StarSystemDetails ||
-            this.props.activePage === PageIdentity.SimpleStarship) {
+            this.isStarshipPage()) {
             return false;
         } else {
             return true;

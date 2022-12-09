@@ -1,18 +1,40 @@
 ﻿import * as React from 'react';
+import { connect } from 'react-redux';
 import {character} from '../common/character';
 import { CharacterType } from '../common/characterType';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from '../pages/pageIdentity';
+import { ShipBuildWorkflow, ShipBuildWorkflowStep } from '../starship/model/shipBuildWorkflow';
+import { rewindToStarshipWorkflowStep } from '../state/starshipActions';
+import store from '../state/store';
 
-interface IHistoryProperties {
-    showHistory: boolean;
+export enum HistoryType {
+    Character, Starship
 }
 
 
-export class History extends React.Component<IHistoryProperties, {}> {
+interface IHistoryProperties {
+    showHistory: boolean;
+    type: HistoryType;
+    workflow: ShipBuildWorkflow;
+}
+
+
+class History extends React.Component<IHistoryProperties, {}> {
 
     render() {
-        const pages = character.steps.length > 0
+
+        return (
+            <div className={this.props.showHistory ? 'history history-visible' : 'history history-hidden'}>
+                {this.props.type === HistoryType.Starship
+                    ? this.renderStarshipHistory()
+                    : this.renderCharacterHistory()}
+            </div>);
+    }
+
+
+    renderCharacterHistory() {
+        return character.steps.length > 0
             ? character.steps.map((step, i) => {
                 const name = this.getPageName(step.page);
                 if (name.length > 0) {
@@ -26,12 +48,31 @@ export class History extends React.Component<IHistoryProperties, {}> {
                 }
             })
             : <div>No history.</div>;
-
-            return (
-                <div className={this.props.showHistory ? 'history history-visible' : 'history history-hidden'}>
-                    {pages}
-                </div>);
     }
+
+    renderStarshipHistory() {
+        return (<>
+            <div className="history-item" key='pre-0' onClick={() => this.goToPage(PageIdentity.Era)}>Era</div>
+            <div className="history-item" key='pre-1' onClick={() => this.goToPage(PageIdentity.ToolSelecton)}>Registry</div>
+            {this.props.workflow?.steps.map((s, i) => {
+                if (i < this.props.workflow.currentStepIndex) {
+                    return (<div className="history-item" key={'ship-' + i} onClick={() => this.goToStep(s, i)}>{s.name}</div>);
+                } else {
+                    return undefined;
+                }
+            })}
+        </>);
+    }
+
+    goToStep(step: ShipBuildWorkflowStep, stepNumber: number) {
+        const history = document.getElementsByClassName("history")[0];
+        history.classList.remove("history-visible");
+        history.classList.add("history-hidden");
+
+        store.dispatch(rewindToStarshipWorkflowStep(stepNumber));
+        Navigation.navigateToPage(step.page);
+    }
+
 
     private goToPage(page: PageIdentity) {
         const history = document.getElementsByClassName("history")[0];
@@ -74,3 +115,11 @@ export class History extends React.Component<IHistoryProperties, {}> {
         return "";
     }
 }
+
+function mapStateToProps(state, ownProps) {
+    return {
+        workflow: state.starship.workflow
+    };
+}
+
+export default connect(mapStateToProps)(History);
