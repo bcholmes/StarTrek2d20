@@ -23,8 +23,21 @@ export class SimpleStats {
 }
 
 export const refitCalculator = (starship: Starship) => {
-    if (starship?.serviceYear && starship?.spaceframeModel?.serviceYear) {
-        return Math.floor((starship.serviceYear - starship.spaceframeModel.serviceYear) / 10);
+    if (starship.buildType === ShipBuildType.Starship && starship?.serviceYear && starship?.spaceframeModel?.serviceYear) {
+        if (starship.serviceYear >= 2400 && starship.spaceframeModel.serviceYear >= 2400) {
+            return Math.floor((starship.serviceYear - starship.spaceframeModel.serviceYear) / 50);
+        } else if (starship.serviceYear < 2400 && starship.spaceframeModel.serviceYear < 2400) {
+            return Math.floor((starship.serviceYear - starship.spaceframeModel.serviceYear) / 10);
+        } else if (starship.serviceYear > starship.spaceframeModel.serviceYear) {
+            let remainder = starship.spaceframeModel.serviceYear % 10;
+            let inflectionYear = 2400 + (remainder === 0 ? 0 : (remainder - 10));
+            let result = Math.floor((starship.serviceYear - inflectionYear) / 50)
+                + Math.floor((inflectionYear - starship.spaceframeModel.serviceYear) / 10);
+            return result;
+        } else {
+            return 0;
+        }
+
     } else {
         return 0;
     }
