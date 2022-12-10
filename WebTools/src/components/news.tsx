@@ -11,6 +11,19 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.221210</b>
+                <ul>
+                    <li>Modiphius recently updated their PDF sheets for characters and starships. I'd previously brought in the
+                        new sheets for the Klingon starship, but I've also made revisions for the TOS Starship and TNG Starship sheets.
+                        My versions of the sheets aren't identical to the Modiphius versions for various complicated reasons, but the
+                        new versions are fairly consistent with the published versions. At the moment, this only relates to Starship sheets;
+                        character sheets will follow at a later time.
+                    </li>
+                    <li>An important change in the sheets is that "Special Rules" &mdash; a concept that's now more formalized in <cite>Utopia
+                        Planitia</cite> &mdash; have their own place on the sheet, rather than being mixed in with the list of talents. I've
+                        updated the Starship view screen to replicate this behaviour.</li>
+                    <li>I've addressed a few improvement requests.</li>
+                </ul>
                 <b>v1.221207</b>
                 <ul>
                     <li>Some revisions to the Klingon Starship sheet, in line with some updates to the standard character sheets.</li>
