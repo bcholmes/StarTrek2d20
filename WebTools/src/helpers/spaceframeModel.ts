@@ -40,8 +40,7 @@ export class SpaceframeModel {
     }
 
     get isMissionPodAvailable() {
-        return this.id === Spaceframe.Nebula || this.id === Spaceframe.Luna || this.id === Spaceframe.Sutherland
-            || this.id === Spaceframe.Nebula_UP || this.id === Spaceframe.Luna_UP;
+        return this.id === Spaceframe.Nebula || this.id === Spaceframe.Luna || this.hasTalent("Mission Pod");
     }
 
     get isCustom() {

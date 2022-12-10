@@ -1147,7 +1147,8 @@ export class SpaceframeHelper {
 
             ],
             [
-                TalentSelection.selectTalent("Saucer Separation")
+                TalentSelection.selectTalent("Saucer Separation"),
+                TalentSelection.selectTalent("Mission Pod"),
             ]),
         [Spaceframe.Gagarin]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Gagarin,
@@ -1420,6 +1421,7 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Advanced Research Facilities"),
                 TalentSelection.selectTalent("Advanced Sensor Suites"),
                 TalentSelection.selectTalent("Emergency Medical Hologram"),
+                TalentSelection.selectTalent("Mission Pod"),
             ],
             [ "Federation Starship" ],
             99999),
@@ -1458,6 +1460,7 @@ export class SpaceframeHelper {
             ],
             [
                 TalentSelection.selectTalent("Saucer Separation"),
+                TalentSelection.selectTalent("Mission Pod"),
             ],
             [ "Federation Starship" ],
             99999),

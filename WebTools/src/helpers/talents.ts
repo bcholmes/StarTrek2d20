@@ -3098,6 +3098,12 @@ export class Talents {
             1,
             "Starship", true),
         new TalentModel(
+            "Mission Pod",
+            "Ships of this class have a mission pod. This mission pod provides two talents to the vessel that count toward the maximum normally allowed, but the entire mission pod (and all of its benefits) may be swapped out as if it were a single talent. If equipping a mission pod results in a talent being taken twice, a new talent may be chosen.",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+            1,
+            "Starship", true),
+        new TalentModel(
             "Stealth Systems",
             "Prior to the treaty with the Romulan Star Empire and gaining access to advanced cloaking devices, the Klingon Empire used stealth systems based on reverse-engineered Hur’Q technology left behind on Qo’noS after their departure. These stealth systems include adaptive chromatic plates on the outer hull to blend into the background in the near infrared to ultraviolet wavelengths, thermal buffers and heat sinks to reduce the emissions in the far infrared, and microscale wavelength guides to absorb incoming sensor beams and prevent returns. This equipment functions in a similar way to the Cloaking Device found on page 207 of The Klingon Empire core rulebook, except it is more difficult to use, requiring a Control + Engineering task with a Difficulty of 3 rather than 2, and a Power requirement of 5 instead of 3.",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.DiscoveryCampaign)],
