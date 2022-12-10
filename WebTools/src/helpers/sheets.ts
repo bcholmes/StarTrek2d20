@@ -284,7 +284,11 @@ abstract class BasicStarshipSheet extends BasicSheet {
 
         i = 1;
         for (let s of specialRules) {
-            this.fillField(form, 'Special Rule ' + i, s);
+            if (s === "Mission Pod" && starship.missionPodModel != null) {
+                this.fillField(form, 'Special Rule ' + i, s + ": " + starship.missionPodModel.name);
+            } else {
+                this.fillField(form, 'Special Rule ' + i, s);
+            }
             i++;
         }
     }
