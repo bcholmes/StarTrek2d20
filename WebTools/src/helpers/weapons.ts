@@ -334,7 +334,7 @@ class StarshipWeaponList {
             DeliverySystemModel.allTypes()[DeliverySystem.Banks],
             [[], [Era.NextGeneration]]),
         Weapon.createStarshipWeapon('Spatial Torpedoes', WeaponType.TORPEDO,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Disruptor],
+            TorpedoLoadTypeModel.allTypes()[TorpedoLoadType.Spatial],
             undefined,
             [[ Era.Enterprise ], []]),
         Weapon.createStarshipWeapon('Nuclear Warheads', WeaponType.TORPEDO,

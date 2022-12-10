@@ -124,6 +124,7 @@ abstract class BasicSheet implements ICharacterSheet {
     }
     async populate(pdf: PDFDocument, construct: Construct) {
         const form = pdf.getForm();
+        pdf.setTitle(construct.name);
         this.populateForm(form, construct);
     }
 
@@ -166,7 +167,7 @@ abstract class BasicSheet implements ICharacterSheet {
         const security = this.findSecurityValue(construct) || 0;
 
         this.fillField(form, 'Weapon ' + index + ' name', weapon.name);
-        this.fillField(form, 'Weapon ' + index + ' dice', "" + (security + weapon.dice));
+        this.fillField(form, 'Weapon ' + index + ' dice', (weapon.dice == null) ? "" : ("" + (security + weapon.dice)));
         this.fillField(form, 'Weapon ' + index + ' qualities', weapon.qualities);
     }
 
@@ -372,14 +373,14 @@ class StandardTosStarshipSheet extends BasicStarshipSheet {
         return '/static/img/sheets/TOS_Standard_Starship_Sheet.png'
     }
     getPdfUrl(): string {
-        return '/static/pdf/TOS_Starship_Sheet_no_outline.pdf'
+        return '/static/pdf/STA_TOS_Starship_Sheet.pdf'
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {
         super.populate(pdf, construct);
         let starship = construct as Starship;
 
-        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(42.5, 243.0), rgb(237.0/255, 27.0/255.0, 47.0/255.0)), starship);
+        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(32, 240.0), rgb(237.0/255, 27.0/255.0, 47.0/255.0), 0.85), starship);
     }
 }
 
@@ -409,6 +410,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
     }
     async populate(pdf: PDFDocument, construct: Construct) {
         const form = pdf.getForm();
+        pdf.setTitle(construct.name);
         this.populateForm(form, construct);
     }
 
@@ -599,7 +601,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
 
         weapons.forEach( (w, i) => {
             this.fillField(form, 'Weapon ' + (i+1) + ' name', w.name);
-            this.fillField(form, 'Weapon ' + (i+1) + ' dice', "" + (security + w.dice));
+            this.fillField(form, 'Weapon ' + (i+1) + ' dice', (w.dice == null) ? "" : ("" + (security + w.dice)));
             this.fillField(form, 'Weapon ' + (i+1) + ' qualities', w.qualities);
         });
     }

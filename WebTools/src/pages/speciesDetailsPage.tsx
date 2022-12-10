@@ -15,7 +15,6 @@ import { setAllowCrossSpeciesTalents, setAllowEsotericTalents } from '../state/c
 import { connect } from 'react-redux';
 import { hasSource } from '../state/contextFunctions';
 import InstructionText from '../components/instructionText';
-import { SmallHeader } from '../components/smallHeader';
 import { Header } from '../components/header';
 import { AttributeController, AttributeControllerFactory } from '../components/attributeController';
 import SpeciesAttributeComponent from '../components/speciesAttributeComponent';

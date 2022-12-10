@@ -22,6 +22,10 @@ export class SimpleStats {
     }
 }
 
+export enum ShipBuildType {
+    Pod, Shuttlecraft, Runabout, Starship
+}
+
 export const refitCalculator = (starship: Starship) => {
     if (starship.buildType === ShipBuildType.Starship && starship?.serviceYear && starship?.spaceframeModel?.serviceYear) {
         if (starship.serviceYear >= 2400 && starship.spaceframeModel.serviceYear >= 2400) {
@@ -41,10 +45,6 @@ export const refitCalculator = (starship: Starship) => {
     } else {
         return 0;
     }
-}
-
-export enum ShipBuildType {
-    Pod, Shuttlecraft, Runabout, Starship
 }
 
 export class ShipBuildTypeModel {
