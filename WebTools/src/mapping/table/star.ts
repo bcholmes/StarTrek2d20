@@ -238,6 +238,10 @@ export class Star {
         this.mass = mass;
     }
 
+    get massInKgs() { // times 10^30
+        return (1.98847 * this.mass);
+    }
+
     get description() {
         if (this.spectralClass.id === SpectralClass.WhiteDwarf || this.spectralClass.id === SpectralClass.BrownDwarf) {
             return this.spectralClass.description;
@@ -248,7 +252,10 @@ export class Star {
         }
     }
     get plainText() {
-        return this.description;
+        return this.description +
+            "\nMass: " + this.mass.toFixed(2) + " Sols" +
+            "\nMass: " + this.massInKgs.toFixed(4) + " x10^30 kg" +
+            (this.luminosityValue ? ("\nLuminosity: " + (this.luminosityValue > 100 ? this.luminosityValue.toFixed(0) : this.luminosityValue.toFixed(4)) + " Sols") : "");
     }
 }
 

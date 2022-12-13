@@ -71,7 +71,7 @@ export class AsteroidBeltDetails extends WorldDetails {
 
     plainText() {
         return (this.depth != null ? "\nBelt Width: " + this.depth.toFixed(2) + " AUs" : "") +
-            (this.asteroidSize != null ? "\nPredominant Size: " + this.depth + "m Diameter" : "");
+            (this.asteroidSize != null ? "\nPredominant Size: " + (this.asteroidSize >= 1000 ? ((this.asteroidSize / 1000).toFixed(0) + "km") : (this.asteroidSize.toFixed(0) + "m")) + " Diameter" : "");
     }
 }
 
@@ -83,11 +83,11 @@ export class StandardWorldDetails extends WorldDetails {
     axialTilt: number;
 
     plainText() {
-        return (this.hydrographicPercentage != null ? "\nWater Coverage: " + this.hydrographicPercentage.toFixed(2) + '%' : "") +
-            (this.rotationPeriod ? ("\nRotation: " + (this.tidallyLocked
+        return (this.rotationPeriod ? ("\nRotation: " + (this.tidallyLocked
                 ? "Tidally Locked"
                 : (this.rotationPeriod.toFixed(2) + " hours" + (this.retrograde ? " (Retrograde)" : "")))) : "") +
-            (this.axialTilt != null ? "\nAxial Tilt: " + this.axialTilt.toFixed(2) + " deg" : "");
+            (this.axialTilt != null ? "\nAxial Tilt: " + this.axialTilt.toFixed(2) + " deg" : "") +
+            (this.hydrographicPercentage != null ? "\nWater Coverage: " + this.hydrographicPercentage.toFixed(2) + '%' : "");
     }
 }
 
@@ -122,14 +122,16 @@ export class World {
     }
 
     get plainText() {
-        return "Class: " + this.worldClass.description +
-            (this.orbitLabel ? "\nDesignation: " + this.orbitLabel : "") +
+        return (this.orbitLabel ? "\nDesignation: " + this.orbitLabel : "") +
+            (this.worldClass ? "\nClassification: " +  (this.worldClass.id === WorldClass.AsteroidBelt
+                ? "Asteroid Belt"
+                : ("Class " + WorldClass[this.worldClass.id] + " (" + this.worldClass.description + ")")) : "") +
             (this.worldClass.id !== WorldClass.AsteroidBelt ? "\nNumber of satellites: " + this.numberOfSatellites : "") +
             "\nOrbital Radius: " + this.orbitalRadius.toFixed(2) + " AUs" +
             "\nOrbital Period: " + this.period.toFixed(3) + " Earth Years" +
             (this.diameter != null ? ("\nDiameter: " + Math.round(this.diameter).toLocaleString("en-US") + " km") : "") +
-            (this.density != null ? ("\nDensity: " + this.density.toFixed(3) + " Earth") : "") +
-            (this.mass != null ? ("\nMass: " + this.mass.toFixed(3) + " Earth") : "") +
+            (this.density != null ? ("\nDensity: " + this.density.toFixed(2) + " Earth") : "") +
+            (this.mass != null ? ("\nMass: " + this.mass.toFixed(2) + " Earth") : "") +
             (this.gravity != null ? ("\nGravity: " + this.gravity.toFixed(2) + " G") : "" ) +
             (this.worldDetails != null ? this.worldDetails.plainText() : "") +
             (this.coreType != null ? ("\nCore: " + WorldCoreType[this.coreType]) : "");

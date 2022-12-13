@@ -11,6 +11,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.221213</b>
+                <ul>
+                    <li>Minor improvements to the sector mapping copy-to-clipboard function.</li>
+                </ul>
                 <b>v1.221210</b>
                 <ul>
                     <li>Modiphius recently updated their PDF sheets for characters and starships. I'd previously brought in the
@@ -179,11 +183,6 @@ class News extends React.Component<INewsProperties, {}> {
                 <ul>
                     <li>Now supporting the <cite>Discovery Campaign</cite> sourcebook.</li>
                     <li>More revisions to spaceframe outlines.</li>
-                </ul>
-                <b>v1.220609</b>
-                <ul>
-                    <li>Bug fix related to Nebula-class spaceframes.</li>
-                    <li>Minor changes to spaceframe outlines.</li>
                 </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>
