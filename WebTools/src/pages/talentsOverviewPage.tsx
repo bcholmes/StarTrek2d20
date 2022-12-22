@@ -236,20 +236,17 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
                     const talent = talents[i];
                     if (talent.category === category) {
                         this._talents[category].push(TalentViewModel.from(talent, category));
+                    } else if (talent.category.indexOf("/") >= 0) {
+                        let c = talent.category.split('/');
+                        if (c.indexOf(category) >= 0) {
+                            this._talents[category].push(TalentViewModel.from(talent, category));
+                        }
                     }
                 }
             }
 
             this._talents[category].sort((a, b) => a.name.localeCompare(b.name));
         }
-    }
-
-    private getSource(talent: string) {
-        return SourcesHelper.getSourceName(TalentsHelper.getSourceForTalent(talent));
-    }
-
-    private prerequisitesToString(pre: {}[]) {
-        return "";
     }
 
     private onCategoryChanged(index: number) {
