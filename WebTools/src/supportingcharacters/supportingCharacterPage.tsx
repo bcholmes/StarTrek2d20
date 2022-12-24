@@ -23,15 +23,14 @@ interface ISupportingCharacterState {
     age: Age;
     type: CharacterTypeModel;
     purpose: string;
+    rank: string;
+    showRank: boolean;
 }
 
 export class SupportingCharacterPage extends React.Component<{}, ISupportingCharacterState> {
-    private _nameElement: HTMLInputElement;
     private _attributeElement: SupportingCharacterAttributes;
-    private _pronounsElement: HTMLInputElement;
 
     private _name: string;
-    private _rank: string;
     private _species: string;
     private _focus1: string;
     private _focus2: string;
@@ -61,7 +60,9 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
         this.state = {
             age: AgeHelper.getAdultAge(),
             type: CharacterTypeModel.getAllTypes()[character.type],
-            purpose: ""
+            purpose: "",
+            rank: character.rank,
+            showRank: true
         }
     }
 
@@ -185,12 +186,15 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                             Supporting Characters should never have a rank above Lieutenant
                             and may often be enlisted personnel rather than officers.
                         </p>
-                        <div style={{borderBottom:"1px solid rgba(128, 128, 128, 0.4)", marginBottom:"10px",paddingBottom:"18px"}}>
-                            <DropDownInput
-                                items={this.getRanks() }
-                                defaultValue={this._rank}
-                                onChange={(index) => this.selectRank(index) }/>
-                        </div>
+                        {this.state.showRank
+                            ?
+                                (<div style={{borderBottom:"1px solid rgba(128, 128, 128, 0.4)", marginBottom:"10px",paddingBottom:"18px"}}>
+                                    <DropDownInput
+                                        items={this.getRanks() }
+                                        defaultValue={this.state.rank}
+                                        onChange={(index) => this.selectRank(index) }/>
+                                </div>)
+                            : null}
                         <div className="mb-2">
                             <InputFieldAndLabel labelName="Name" value={this._name}
                                 id="name" onChange={(value) => {
@@ -289,12 +293,14 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
 
     private selectRank(index: number) {
         const ranks = this.getRanks();
-        this._rank = ranks[index];
-
-        character.rank = ranks[index];
-
-        this.forceUpdate();
+        this.selectRankName(ranks[index]);
     }
+
+    private selectRankName(rank: string) {
+        this.setState(state => ({...state, rank: rank}));
+        character.rank = rank;
+    }
+
 
     private selectType(index: number) {
         let type = CharacterTypeModel.getAllTypes()[index];
@@ -309,10 +315,33 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
             character.age = age;
         }
 
+        let showRank = true;
+        let rank = character.rank;
+
+        if (type.type === CharacterType.Child
+            || type.type === CharacterType.AmbassadorDiplomat
+            || type.type === CharacterType.Civilian
+            || type.type === CharacterType.Tribble) {
+
+            showRank = false;
+            character.rank = "";
+            rank = "";
+        } else if (character.type === CharacterType.Cadet) {
+            rank = RanksHelper.getRank(Rank.CadetFourthClass).name;
+            character.rank = rank;
+        } else {
+            if (rank === "") {
+                rank = RanksHelper.getRank(Rank.Lieutenant).name;
+                character.rank = rank;
+            }
+        }
+
         this.setState((state) => ({
             ...state,
             age: age,
-            type: type
+            type: type,
+            showRank: showRank,
+            rank: rank
         }));
     }
 

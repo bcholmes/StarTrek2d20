@@ -895,7 +895,8 @@ class Ranks {
     }
 
     getRank(rank: Rank) {
-        return this._ranks[rank];
+        let ranks = this._ranks.filter(r => r.id === rank);
+        return ranks?.length ? ranks[0] : null;
     }
 
     getRankByName(name: string) {
