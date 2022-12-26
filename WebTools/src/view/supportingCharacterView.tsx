@@ -1,6 +1,4 @@
 import React from "react";
-import { Character } from "../common/character";
-import { Attribute } from "../helpers/attributes";
 import { Era } from "../helpers/eras";
 import { RanksHelper } from "../helpers/ranks";
 import { CharacterSheetRegistry } from "../helpers/sheets";
@@ -8,14 +6,11 @@ import { Skill } from "../helpers/skills";
 import { Button } from "../components/button";
 import { CharacterSheetDialog } from "../components/characterSheetDialog";
 import { Header } from "../components/header";
-import { StatView } from "../components/StatView";
 import { WeaponView } from "../components/weaponView";
+import { BaseCharacterView } from "./baseCharacterView";
+import { withTranslation } from 'react-i18next';
 
-interface ISupportingCharacterViewProperties {
-    character: Character;
-}
-
-export class SupportingCharacterView extends React.Component<ISupportingCharacterViewProperties, {}> {
+class SupportingCharacterView extends BaseCharacterView {
 
     componentDidMount() {
         if (this.props.character.name) {
@@ -29,6 +24,7 @@ export class SupportingCharacterView extends React.Component<ISupportingCharacte
 
 
     render() {
+        const { t } = this.props;
         return (<div>
             <Header>{this.getRankAbbreviation() + ' ' + (this.props.character.name ? this.props.character.name : "Unnamed Character")}</Header>
             <div className="row mt-4" style={{alignItems: "baseline"}}>
@@ -54,38 +50,30 @@ export class SupportingCharacterView extends React.Component<ISupportingCharacte
 
             <div className="row">
                 <div className="col-xl-6 mt-4">
-                    <Header level={2}>Systems</Header>
-
-                    <div className="row row-cols-1 row-cols-md-3 mt-3">
-                        <StatView name="Control" value={this.props.character.attributes ? this.props.character.attributes[Attribute.Control].value : undefined} className="col mb-1" />
-                        <StatView name="Fitness" value={this.props.character.attributes ? this.props.character.attributes[Attribute.Fitness].value : undefined} className="col mb-1" />
-                        <StatView name="Presence" value={this.props.character.attributes ? this.props.character.attributes[Attribute.Presence].value : undefined} className="col mb-1" />
-                        <StatView name="Daring" value={this.props.character.attributes ? this.props.character.attributes[Attribute.Daring].value : undefined} className="col mb-1" />
-                        <StatView name="Insight" value={this.props.character.attributes ? this.props.character.attributes[Attribute.Insight].value : undefined} className="col mb-1" />
-                        <StatView name="Reason" value={this.props.character.attributes ? this.props.character.attributes[Attribute.Reason].value : undefined} className="col mb-1" />
-                    </div>
-
-                    <Header level={2} className="mt-4">Departments</Header>
-                    <div className="row row-cols-1 row-cols-md-3 mt-3">
-                        <StatView name="Command" value={this.props.character.skills ? this.props.character.skills[Skill.Command].expertise : undefined} className="col mb-1" />
-                        <StatView name="Security" value={this.props.character.skills ? this.props.character.skills[Skill.Security].expertise : undefined} className="col mb-1" />
-                        <StatView name="Science" value={this.props.character.skills ? this.props.character.skills[Skill.Science].expertise : undefined} className="col mb-1" />
-                        <StatView name="Conn" value={this.props.character.skills ? this.props.character.skills[Skill.Conn].expertise : undefined} className="col mb-1" />
-                        <StatView name="Engineering" value={this.props.character.skills ? this.props.character.skills[Skill.Engineering].expertise : undefined} className="col mb-1" />
-                        <StatView name="Medicine" value={this.props.character.skills ? this.props.character.skills[Skill.Medicine].expertise : undefined} className="col mb-1" />
-                    </div>
-
+                    {this.renderStats()}
                 </div>
                 <div className="col-xl-6">
-                    <Header level={2} className="mt-4">Focuses</Header>
-                    {this.renderFocuses()}
-                    <Header level={2} className="mt-4">Weapons</Header>
+                    <div className="row">
+
+                        <div className="col-xl-6 mt-4">
+                            <Header level={2}>{t('Construct.other.stress')}</Header>
+                            {this.renderStress()}
+                        </div>
+
+                        <div className="col-xl-6 mt-4">
+                            <Header level={2}>{t('Construct.other.focuses')}</Header>
+                            {this.renderFocuses()}
+                        </div>
+
+                    </div>
+
+                    <Header level={2} className="mt-4">{t('Construct.other.weapons')}</Header>
                     {this.renderWeapons()}
                 </div>
             </div>
 
             <div className="button-container mt-5 mb-3">
-                <Button text="Export to PDF" className="button-small" onClick={() => this.showExportDialog() } buttonType={true}/>
+                <Button text={t('Common.button.exportPdf')} className="button-small" onClick={() => this.showExportDialog() } buttonType={true}/>
             </div>
        </div>);
     }
@@ -96,14 +84,6 @@ export class SupportingCharacterView extends React.Component<ISupportingCharacte
             return (rank && rank.abbreviation) ? rank.abbreviation : "";
         } else {
             return "";
-        }
-    }
-
-    renderFocuses() {
-        if (this.props.character.focuses) {
-            return this.props.character.focuses.map((f, i) => (<div className="text-white view-border-bottom py-2" key={'focus-' + i}>{f}</div>));
-        } else {
-            return undefined;
         }
     }
 
@@ -121,3 +101,5 @@ export class SupportingCharacterView extends React.Component<ISupportingCharacte
         return (<div>{weapons}</div>);
     }
 }
+
+export default withTranslation()(SupportingCharacterView);

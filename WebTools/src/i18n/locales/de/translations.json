@@ -9,14 +9,52 @@
     "Home.characterButton": "CHARAKTERE & RAUMSCHIFFE",
     "Home.talentsButton": "Talente im Überblick",
 
+    "ViewPage.viewSupportingCharacter": "Nebencharakter anzeigen",
+    "ViewPage.viewMainCharacter": "Hauptcharakter anzeigen",
+    "ViewPage.viewStarship": "Raumschiff ansehen",
+    "ViewPage.errorMessage": "Die Dinge sind schrecklich, schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.",
+
     "Common.button.select": "Auswählen",
     "Common.button.selectAll": "Alle auswählen",
     "Common.button.selectNone": "Wählen Sie Keine",
+    "Common.button.exportPdf": "Als PDF exportieren",
+
+    "Construct.other.assignment": "Zuweisung",
+    "Construct.other.attributes": "Attribute",
+    "Construct.other.disciplines": "Disziplinen",
+    "Construct.other.environment": "Umwelt",
+    "Construct.other.equipment": "Ausrüstung",
+    "Construct.other.focuses": "Konzentriert sich",
+    "Construct.other.name": "Name",
+    "Construct.other.pronouns": "Pronomen",
+    "Construct.other.rank": "Rang",
+    "Construct.other.species": "Spezies",
+    "Construct.other.stress": "Stress",
+    "Construct.other.talents": "Begabungen",
+    "Construct.other.traits": "Charakterzüge",
+    "Construct.other.upbringing": "Erziehung",
+    "Construct.other.weapons": "Waffen",
+    "Construct.other.values": "Werte",
+
+    "Construct.attribute.control": "Steuerung",
+    "Construct.attribute.daring": "Gewagt",
+    "Construct.attribute.fitness": "Fitness",
+    "Construct.attribute.insight": "Einblick",
+    "Construct.attribute.presence": "Anwesenheit",
+    "Construct.attribute.reason": "Grund",
+
+    "Construct.discipline.command": "Befehl",
+    "Construct.discipline.conn": "Steuerung",
+    "Construct.discipline.security": "Sicherheit",
+    "Construct.discipline.engineering": "Ingenieurwesen",
+    "Construct.discipline.science": "Wissenschaft",
+    "Construct.discipline.medicine": "Medizin",
 
     "Page.title.home": "Homepage",
     "Page.title.era": "Ära",
     "Page.title.talentsOverview": "Talente im Überblick",
     "Page.title.creditsPage": "Kredite",
+    "Page.title.viewSheet": "Blatt anzeigen",
 
     "Page.breadcrumb.characterCreation": "Charaktererstellung"
 

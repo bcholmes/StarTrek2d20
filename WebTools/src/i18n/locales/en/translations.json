@@ -1,6 +1,7 @@
 {
     "LanguageNotice.title": "Hello There!",
     "LanguageNotice.text": "We're experimenting with some initial support for national languages. We're in a very preliminary stage, but we hope to be able to support more languages, soon.",
+    "LanguageNotice.useEnglish": "Use English instead",
 
     "Lcars.copyright": "STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.",
     "Lcars.credits": "Credits",
@@ -9,14 +10,52 @@
     "Home.characterButton": "Characters & Starships",
     "Home.talentsButton": "Talents Overview",
 
+    "ViewPage.viewSupportingCharacter": "View Supporting Character",
+    "ViewPage.viewMainCharacter": "View Main Character",
+    "ViewPage.viewStarship": "View Starship",
+    "ViewPage.errorMessage": "Things have gone terribly, terribly wrong. We might be in the mirror universe.",
+
     "Common.button.select": "Select",
     "Common.button.selectAll": "Select All",
     "Common.button.selectNone": "Select None",
+    "Common.button.exportPdf": "Export to PDF",
+
+    "Construct.other.assignment": "Assignment",
+    "Construct.other.attributes": "Attributes",
+    "Construct.other.disciplines": "Disciplines",
+    "Construct.other.environment": "Environment",
+    "Construct.other.equipment": "Equipment",
+    "Construct.other.focuses": "Focuses",
+    "Construct.other.name": "Name",
+    "Construct.other.pronouns": "Pronouns",
+    "Construct.other.rank": "Rank",
+    "Construct.other.species": "Species",
+    "Construct.other.stress": "Stress",
+    "Construct.other.talents": "Talents",
+    "Construct.other.traits": "Traits",
+    "Construct.other.upbringing": "Upbringing",
+    "Construct.other.values": "Values",
+    "Construct.other.weapons": "Weapons",
+
+    "Construct.attribute.control": "Control",
+    "Construct.attribute.daring": "Daring",
+    "Construct.attribute.fitness": "Fitness",
+    "Construct.attribute.insight": "Insight",
+    "Construct.attribute.presence": "Presence",
+    "Construct.attribute.reason": "Reason",
+
+    "Construct.discipline.command": "Command",
+    "Construct.discipline.conn": "Conn",
+    "Construct.discipline.security": "Security",
+    "Construct.discipline.engineering": "Engineering",
+    "Construct.discipline.science": "Science",
+    "Construct.discipline.medicine": "Medicine",
 
     "Page.title.home": "Home",
     "Page.title.era": "Era",
     "Page.title.talentsOverview": "Talents Overview",
     "Page.title.creditsPage": "Credits",
+    "Page.title.viewSheet": "View Sheet",
 
     "Page.breadcrumb.characterCreation": "Character Creation"
 

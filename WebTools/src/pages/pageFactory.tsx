@@ -26,7 +26,7 @@ import { CharacterTypePage } from './characterTypePage';
 import { SimpleCareerPage } from './simpleCareerPage';
 import { ChildEducationPage } from './childEducationPage';
 import { ChildEducationDetailsPage } from './childEducationDetailsPage';
-import { ViewSheetPage } from '../view/viewSheetPage';
+import ViewSheetPage from '../view/viewSheetPage';
 import { CadetSeniorityPage } from './cadetSeniorityPage';
 import { SystemGenerationPage } from '../mapping/page/systemGenerationPage';
 import StarSystemDetailsPage from '../mapping/page/starSystemDetailsPage';

@@ -2,6 +2,7 @@
 import { character } from '../common/character';
 import { PageIdentity } from '../pages/pageIdentity';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import { makeKey } from '../common/translationKey';
 
 interface IPageHeaderProperties extends WithTranslation {
     page: PageIdentity;
@@ -17,15 +18,11 @@ class PageHeader extends React.Component<IPageHeaderProperties, {}> {
     }
 
     getTitle() {
-        let key = PageIdentity[this.props.page];
-        key = key.substring(0, 1).toLowerCase() + key.substring(1);
-
+        let key = makeKey('Page.title.', PageIdentity[this.props.page]);
         const { t } = this.props;
-        if (this.props.page === PageIdentity.Home
-                || this.props.page === PageIdentity.TalentsOverview
-                || this.props.page === PageIdentity.Era
-                || this.props.page === PageIdentity.CreditsPage) {
-            return t('Page.title.' + key);
+
+        if (key !== t(key)) {
+            return t(key);
         } else if (this.props.page === PageIdentity.SupportingCharacter) {
             return "Supporting Character";
         } else if (this.props.page === PageIdentity.StarshipToolSelection) {

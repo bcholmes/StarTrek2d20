@@ -9,14 +9,52 @@
     "Home.characterButton": "Personnages et vaisseaux spatiaux",
     "Home.talentsButton": "Vue d'ensemble des talents",
 
+    "ViewPage.viewSupportingCharacter": "Voir le personnage secondaire",
+    "ViewPage.viewMainCharacter": "Voir le personnage principal",
+    "ViewPage.viewStarship": "Voir le vaisseau spatial",
+    "ViewPage.errorMessage": "Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir.",
+
     "Common.button.select": "Choisir",
     "Common.button.selectAll": "Sélectionner tout",
     "Common.button.selectNone": "Sélectionnez Aucun",
+    "Common.button.exportPdf": "Exporter au format PDF",
+
+    "Construct.other.assignment": "Mission",
+    "Construct.other.attributes": "Attributs",
+    "Construct.other.disciplines": "Disciplines",
+    "Construct.other.environment": "Environnement",
+    "Construct.other.equipment": "Équipement",
+    "Construct.other.focuses": "Foyers",
+    "Construct.other.name": "Nom",
+    "Construct.other.pronouns": "Pronoms",
+    "Construct.other.rank": "Rang",
+    "Construct.other.species": "Espèce",
+    "Construct.other.stress": "Stress",
+    "Construct.other.talents": "Talents",
+    "Construct.other.traits": "Traits",
+    "Construct.other.upbringing": "Élevage",
+    "Construct.other.weapons": "Armes",
+    "Construct.other.values": "Valeurs",
+
+    "Construct.attribute.control": "Contrôle",
+    "Construct.attribute.daring": "Audacieux",
+    "Construct.attribute.fitness": "Aptitude",
+    "Construct.attribute.insight": "Perspicacité",
+    "Construct.attribute.presence": "Présence",
+    "Construct.attribute.reason": "Raison",
+
+    "Construct.discipline.command": "Commander",
+    "Construct.discipline.conn": "Pilotage",
+    "Construct.discipline.security": "Sécurité",
+    "Construct.discipline.engineering": "Ingénierie",
+    "Construct.discipline.science": "Science",
+    "Construct.discipline.medicine": "Médecine",
 
     "Page.title.home": "Page d'accueil",
     "Page.title.era": "Ère",
     "Page.title.talentsOverview": "Vue d'ensemble des talents",
     "Page.title.creditsPage": "Crédits",
+    "Page.title.viewSheet": "Voir la feuille",
 
     "Page.breadcrumb.characterCreation": "Création de personnages"
 

@@ -9,14 +9,52 @@
     "Home.characterButton": "Personajes y naves espaciales",
     "Home.talentsButton": "Descripción general de talentos",
 
+    "ViewPage.viewSupportingCharacter": "Ver personaje secundario",
+    "ViewPage.viewMainCharacter": "Ver personaje principal",
+    "ViewPage.viewStarship": "Ver nave espacial",
+    "ViewPage.errorMessage": "Las cosas han ido terriblemente, terriblemente mal. Podríamos estar en el universo espejo.",
+
     "Common.button.select": "Escoger",
     "Common.button.selectAll": "Seleccionar todo",
     "Common.button.selectNone": "Seleccionar Ninguno",
+    "Common.button.exportPdf": "Exportar a PDF",
+
+    "Construct.other.assignment": "Asignación",
+    "Construct.other.attributes": "Atributos",
+    "Construct.other.disciplines": "Disciplinas",
+    "Construct.other.environment": "Medio ambiente",
+    "Construct.other.equipment": "Equipo",
+    "Construct.other.focuses": "Atenciónes",
+    "Construct.other.name": "Nombre",
+    "Construct.other.pronouns": "Pronombres",
+    "Construct.other.rank": "Rango",
+    "Construct.other.species": "Especie",
+    "Construct.other.stress": "Estrés",
+    "Construct.other.talents": "Talentos",
+    "Construct.other.traits": "Rasgos",
+    "Construct.other.upbringing": "Cría",
+    "Construct.other.values": "Valores",
+    "Construct.other.weapons": "Armas",
+
+    "Construct.attribute.control": "Control",
+    "Construct.attribute.daring": "Atrevido",
+    "Construct.attribute.fitness": "Aptitud",
+    "Construct.attribute.insight": "Visión",
+    "Construct.attribute.presence": "Presencia",
+    "Construct.attribute.reason": "Razón",
+
+    "Construct.discipline.command": "Mandar",
+    "Construct.discipline.conn": "Pilotaje",
+    "Construct.discipline.security": "Seguridad",
+    "Construct.discipline.engineering": "Ingeniería",
+    "Construct.discipline.science": "Ciencia",
+    "Construct.discipline.medicine": "Medicina",
 
     "Page.title.home": "Página principal",
     "Page.title.era": "Era",
     "Page.title.talentsOverview": "Descripción general de talentos",
     "Page.title.creditsPage": "Créditos",
+    "Page.title.viewSheet": "Ver hoja",
 
     "Page.breadcrumb.characterCreation": "Creación de personajes"
 

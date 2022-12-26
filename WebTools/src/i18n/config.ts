@@ -44,6 +44,7 @@ const staDetector = {
     }
 };
 
+const localStorageKey = 'settings.language';
 const supportedLanguages = ['en', 'en-CA', 'en-US', 'es', 'de', 'fr'];
 
 const languageDetector = new LanguageDetector();
@@ -56,9 +57,27 @@ export const getNavigatorLanguage = () => {
 
 export const isEnglishDefault = () => {
     let language = getNavigatorLanguage();
-    console.log(language);
     return language.indexOf('en') === 0;
 }
+
+export const overrideLanguage = (language: string) => {
+    if (supportedLanguages.indexOf(language) >= 0) {
+        window.localStorage.setItem(localStorageKey, language);
+        i18n.changeLanguage(language);
+    }
+}
+
+export const clearLanguageOverride = () => {
+    window.localStorage.removeItem(localStorageKey);
+    i18n.changeLanguage();
+}
+
+
+export const isLanguageOverridePresent = () => {
+    let value = window.localStorage.getItem(localStorageKey);
+    return value === 'en';
+}
+
 
 i18n.use(initReactI18next)
     .use(languageDetector)
@@ -86,11 +105,12 @@ i18n.use(initReactI18next)
             }
         },
         detection: {
-            order: ["staDetector"],
+            order: ['localStorage', "staDetector"],
+            lookupLocalStorage: localStorageKey
         },
         ns: ['translations'],
         defaultNS: 'translations',
-        debug: true
+        debug: false
     });
 
 export default i18n;

@@ -1,11 +1,11 @@
 import React from "react";
 import { StarshipView } from "./starshipView"
-import { SupportingCharacterView } from "./supportingCharacterView";
+import SupportingCharacterView from "./supportingCharacterView";
 import { marshaller } from "../helpers/marshaller";
-import { MainCharacterView } from "./mainCharacterView";
-import { IPageProperties } from "../pages/iPageProperties";
+import MainCharacterView from "./mainCharacterView";
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-export class ViewSheetPage extends React.Component<IPageProperties, {}> {
+class ViewSheetPage extends React.Component<WithTranslation, {}> {
 
     render() {
         let url = new URL(window.location.href);
@@ -14,14 +14,16 @@ export class ViewSheetPage extends React.Component<IPageProperties, {}> {
 
         let json = marshaller.decode(encodedSheet);
 
+        const { t } = this.props;
+
         if (!json) {
-            return (<div className="page text-white">Things have gone terribly, terribly wrong. We might be in the mirror universe.</div>);
+            return (<div className="page text-white">{t('ViewPage.errorMessage')}</div>);
         } else if (json.stereotype === "starship") {
             return (<div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">View Starship</li>
+                    <li className="breadcrumb-item"><a href="index.html">{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewStarship')}</li>
                     </ol>
                 </nav>
                 <StarshipView starship={marshaller.decodeStarship(encodedSheet)}/>
@@ -30,8 +32,8 @@ export class ViewSheetPage extends React.Component<IPageProperties, {}> {
             return (<div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">View Supporting Character</li>
+                        <li className="breadcrumb-item"><a href="index.html">{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewSupportingCharacter')}</li>
                     </ol>
                 </nav>
                 <SupportingCharacterView character={marshaller.decodeCharacter(json)} />
@@ -40,8 +42,8 @@ export class ViewSheetPage extends React.Component<IPageProperties, {}> {
             return (<div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">View Main Character</li>
+                    <li className="breadcrumb-item"><a href="index.html">{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewMainCharacter')}</li>
                     </ol>
                 </nav>
                 <MainCharacterView character={marshaller.decodeCharacter(json)} />
@@ -49,3 +51,5 @@ export class ViewSheetPage extends React.Component<IPageProperties, {}> {
         }
     }
 }
+
+export default withTranslation()(ViewSheetPage);
