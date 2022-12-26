@@ -1,5 +1,5 @@
 {
-  "version": "1.221224",
+  "version": "1.221225",
   "name": "startrek",
   "author": "Christoffer Lundberg",
   "contributors": [
@@ -19,11 +19,14 @@
     "buffer": "6.0.3",
     "copy-to-clipboard": "3.3.1",
     "es6-promise": "^3.2.1",
+    "i18next": "^22.4.6",
+    "i18next-browser-languagedetector": "^7.0.1",
     "js-base64": "3.7.2",
     "pako": "2.0.4",
     "pdf-lib": "1.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-i18next": "^12.1.1",
     "react-redux": "7.2.8",
     "react-scripts": "5.0.1",
     "systemjs": "^0.19.27",

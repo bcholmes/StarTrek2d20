@@ -1,0 +1,12 @@
+{
+    "LanguageNotice.title": "Hello There!",
+    "LanguageNotice.text": "We're experimenting with some initial support for national languages. We're in a very preliminary stage, but we hope to be able to support more languages, soon.",
+
+    "Home.selection": "Select tool.",
+    "Home.characterButton": "Characters & Starships",
+    "Home.talentsButton": "Talents Overview",
+
+
+    "Page.title.home": "Home"
+
+}

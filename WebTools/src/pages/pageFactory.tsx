@@ -19,7 +19,7 @@ import {FinishPage} from './finishPage';
 import StarshipPage from '../starship/page/starshipPage';
 import {SupportingCharacterPage} from '../supportingcharacters/supportingCharacterPage';
 import { TalentsOverviewPage } from './talentsOverviewPage';
-import { SelectionPage } from './selectionPage';
+import SelectionPage from './selectionPage';
 import { BorgImplantSelection } from './borgImplantSelection';
 import { PageIdentity } from './pageIdentity';
 import { CharacterTypePage } from './characterTypePage';

@@ -1,12 +1,13 @@
 ﻿import * as React from 'react';
 import { character } from '../common/character';
 import { PageIdentity } from '../pages/pageIdentity';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-interface IPageHeaderProperties {
+interface IPageHeaderProperties extends WithTranslation {
     page: PageIdentity;
 }
 
-export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
+class PageHeader extends React.Component<IPageHeaderProperties, {}> {
     render() {
         const title = this.getTitle();
 
@@ -16,8 +17,9 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
     }
 
     getTitle() {
+        const { t } = this.props;
         if (this.props.page === PageIdentity.Selection) {
-            return "Home";
+            return t('Page.title.home');
         } else if (this.props.page === PageIdentity.TalentsOverview) {
             return "Talents Overview";
         } else if (this.props.page === PageIdentity.Era) {
@@ -98,3 +100,5 @@ export class PageHeader extends React.Component<IPageHeaderProperties, {}> {
         }
     }
 }
+
+export default withTranslation()(PageHeader);

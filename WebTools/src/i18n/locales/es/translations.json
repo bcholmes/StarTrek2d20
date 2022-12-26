@@ -1,0 +1,11 @@
+{
+    "LanguageNotice.title": "¡Hola!",
+    "LanguageNotice.text": "Estamos experimentando con algún soporte inicial para los idiomas nacionales. Estamos en una etapa muy preliminar, pero esperamos poder soportar más idiomas, pronto.",
+
+    "Home.selection": "Seleccione la herramienta.",
+    "Home.characterButton": "Personajes y naves espaciales",
+    "Home.talentsButton": "VISIÓN GENERAL DE TALENTOS",
+
+    "Page.title.home": "Página principal"
+
+}

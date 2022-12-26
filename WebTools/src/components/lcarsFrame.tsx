@@ -5,7 +5,7 @@ import AppVersion from "./appVersion";
 import { CharacterSheet } from "./characterSheet";
 import History, { HistoryType } from "./history";
 import News from "./news";
-import { PageHeader } from "./pageHeader";
+import PageHeader from "./pageHeader";
 import { RandomLcarsReadout } from "./randomLcarsReadout";
 
 interface ILcarsFrameState {
@@ -70,7 +70,7 @@ export class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFram
                         TM &amp; &copy; 2022 CBS Studios Inc. STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.
                     </div>
                     <div className="col-md-2 text-right pr-4">
-                        <a href="./index.html" className="text-primary" onClick={(e) => navigateTo(e, PageIdentity.CreditsPage)} style={{ paddingRight: "10px"}}>About</a>
+                        <a href="./index.html" className="text-primary" onClick={(e) => navigateTo(e, PageIdentity.CreditsPage)}>About</a>
                     </div>
                 </div>
             </div>,
