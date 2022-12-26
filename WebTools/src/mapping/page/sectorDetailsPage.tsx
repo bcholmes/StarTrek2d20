@@ -27,11 +27,11 @@ interface ISectorDetailsPageProperties extends IPageProperties {
 class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}> {
 
     render() {
-        return this.props.sector 
+        return this.props.sector
         ?   (<div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Selection)}>Home</a></li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>Home</a></li>
                         <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SystemGeneration)}>System Generation</a></li>
                         <li className="breadcrumb-item active" aria-current="page">Sector Details</li>
                     </ol>
@@ -95,7 +95,7 @@ class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}
 }
 
 function mapStateToProps(state, ownProps) {
-    return { 
+    return {
         sector: state.star.sector
     };
 }

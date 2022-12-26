@@ -9,7 +9,7 @@ import {Dialog} from '../components/dialog';
 import {TalentDescription} from '../components/talentDescription';
 import {ValueInput, Value} from '../components/valueInput';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
-import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
 
 export class CareerDetailsPage extends React.Component<IPageProperties, {}> {

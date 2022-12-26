@@ -3,7 +3,7 @@ import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
-import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import InstructionText from '../components/instructionText';
 
 export class CadetSeniorityPage extends React.Component<{}, {}> {

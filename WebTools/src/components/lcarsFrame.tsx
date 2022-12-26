@@ -7,6 +7,7 @@ import History, { HistoryType } from "./history";
 import News from "./news";
 import PageHeader from "./pageHeader";
 import { RandomLcarsReadout } from "./randomLcarsReadout";
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 interface ILcarsFrameState {
     showNews: boolean;
@@ -14,11 +15,11 @@ interface ILcarsFrameState {
     showProfile: boolean;
 }
 
-interface ILcarsFrameProperties {
+interface ILcarsFrameProperties extends WithTranslation {
     activePage: PageIdentity;
 }
 
-export class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState> {
+class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState> {
 
     constructor(props) {
         super(props);
@@ -30,6 +31,7 @@ export class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFram
     }
 
     render() {
+        const { t } = this.props;
         return [
             <div className="lcar-container" key="main-container">
                 <div className="lcar-header">
@@ -67,10 +69,10 @@ export class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFram
                 </div>
                 <div className="row">
                     <div className="col-md-8 offset-md-2 text-primary text-center">
-                        TM &amp; &copy; 2022 CBS Studios Inc. STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.
+                        TM &amp; &copy; 2022 CBS Studios Inc. {t('Lcars.copyright')}
                     </div>
                     <div className="col-md-2 text-right pr-4">
-                        <a href="./index.html" className="text-primary" onClick={(e) => navigateTo(e, PageIdentity.CreditsPage)}>About</a>
+                        <a href="./index.html" className="text-primary" onClick={(e) => navigateTo(e, PageIdentity.CreditsPage)}>{t('Lcars.credits')}</a>
                     </div>
                 </div>
             </div>,
@@ -146,3 +148,5 @@ export class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFram
     }
 
 }
+
+export default withTranslation()(LcarsFrame)

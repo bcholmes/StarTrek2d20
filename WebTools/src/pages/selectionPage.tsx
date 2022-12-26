@@ -1,6 +1,5 @@
 ﻿import * as React from 'react';
 import { Navigation } from '../common/navigator';
-import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import { Button } from '../components/button';
 import LanguageNotice from '../components/languageNotice';

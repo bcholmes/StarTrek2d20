@@ -2,20 +2,22 @@ import React from "react";
 import { navigateTo } from "../common/navigator";
 import { Header } from "../components/header";
 import { PageIdentity } from "./pageIdentity";
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-export class CreditsPage extends React.Component<{}, {}> {
+class CreditsPage extends React.Component<WithTranslation, {}> {
 
     render() {
+        const { t } = this.props;
         return (
             <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Selection)}>Home</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Credits</li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">{t('Page.title.creditsPage')}</li>
                     </ol>
                 </nav>
 
-                <Header className="my-4">Credits</Header>
+                <Header className="my-4">{t('Page.title.creditsPage')}</Header>
                 <p>
                     Firstly, the <cite>Star Trek Adventures</cite> rules have been created and developed by Modiphius Entertainment. STA is a
                     great game, and Modiphius has been very cool about supporting this character generator (I mean, to some extent, this
@@ -120,3 +122,4 @@ export class CreditsPage extends React.Component<{}, {}> {
     }
 }
 
+export default withTranslation()(CreditsPage);

@@ -2,11 +2,22 @@
     "LanguageNotice.title": "Hello There!",
     "LanguageNotice.text": "We're experimenting with some initial support for national languages. We're in a very preliminary stage, but we hope to be able to support more languages, soon.",
 
+    "Lcars.copyright": "STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.",
+    "Lcars.credits": "Credits",
+
     "Home.selection": "Select tool.",
     "Home.characterButton": "Characters & Starships",
     "Home.talentsButton": "Talents Overview",
 
+    "Common.button.select": "Select",
+    "Common.button.selectAll": "Select All",
+    "Common.button.selectNone": "Select None",
 
-    "Page.title.home": "Home"
+    "Page.title.home": "Home",
+    "Page.title.era": "Era",
+    "Page.title.talentsOverview": "Talents Overview",
+    "Page.title.creditsPage": "Credits",
+
+    "Page.breadcrumb.characterCreation": "Character Creation"
 
 }

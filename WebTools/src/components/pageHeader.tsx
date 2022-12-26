@@ -17,13 +17,15 @@ class PageHeader extends React.Component<IPageHeaderProperties, {}> {
     }
 
     getTitle() {
+        let key = PageIdentity[this.props.page];
+        key = key.substring(0, 1).toLowerCase() + key.substring(1);
+
         const { t } = this.props;
-        if (this.props.page === PageIdentity.Selection) {
-            return t('Page.title.home');
-        } else if (this.props.page === PageIdentity.TalentsOverview) {
-            return "Talents Overview";
-        } else if (this.props.page === PageIdentity.Era) {
-            return "Era";
+        if (this.props.page === PageIdentity.Home
+                || this.props.page === PageIdentity.TalentsOverview
+                || this.props.page === PageIdentity.Era
+                || this.props.page === PageIdentity.CreditsPage) {
+            return t('Page.title.' + key);
         } else if (this.props.page === PageIdentity.SupportingCharacter) {
             return "Supporting Character";
         } else if (this.props.page === PageIdentity.StarshipToolSelection) {
@@ -93,8 +95,6 @@ class PageHeader extends React.Component<IPageHeaderProperties, {}> {
             return "Star System Details";
         } else if (this.props.page === PageIdentity.ViewSheet) {
             return "View Sheet";
-        } else if (this.props.page === PageIdentity.CreditsPage) {
-            return "Credits";
         } else {
             return "";
         }

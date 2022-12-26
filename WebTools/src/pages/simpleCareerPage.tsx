@@ -8,7 +8,7 @@ import {ValueInput, Value} from '../components/valueInput';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import InstructionText from '../components/instructionText';
 import { Header } from '../components/header';
-import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 
 interface ISimpleCareerPageProperties extends IPageProperties {
     talent: string;

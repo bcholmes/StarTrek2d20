@@ -1,6 +1,6 @@
 
 export enum PageIdentity {
-    Selection,
+    Home,
     Era,
     ToolSelecton,
     CharacterType,

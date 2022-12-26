@@ -4,14 +4,14 @@ import {Source, SourcesHelper} from '../helpers/sources';
 import {character} from '../common/character';
 import {navigateTo, Navigation} from '../common/navigator';
 import {Window} from '../common/window';
-import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
 import store from '../state/store';
 import { addSource, removeSource, setEra, setSources } from '../state/contextActions';
 import { connect } from 'react-redux';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-interface IEraSelectionPageProperties extends IPageProperties {
+interface IEraSelectionPageProperties extends WithTranslation {
     sources: Source[]
 }
 
@@ -28,6 +28,7 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
     }
 
     renderSources() {
+        const { t } = this.props;
         let hasUnavailableSources = false;
 
         const sources = SourcesHelper.getTypes().map(t => {
@@ -53,8 +54,8 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
                 {note}
             </div>
             <div className="d-flex flex-wrap">
-                <div className="source source-emphasis" onClick={() => { this.toggleSources(true); } }>Select All</div>
-                <div className="source source-emphasis" onClick={() => { this.toggleSources(false); } }>Select None</div>
+                <div className="source source-emphasis" onClick={() => { this.toggleSources(true); } }>{t('Common.button.selectAll')}</div>
+                <div className="source source-emphasis" onClick={() => { this.toggleSources(false); } }>{t('Common.button.selectNone')}</div>
             </div>
             <div className="d-flex flex-wrap mt-3 mb-3">
                 {sources}
@@ -64,12 +65,13 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
 
 
     render() {
+        const { t } = this.props;
 
         const eras = ErasHelper.getEras().map((e, i) => {
             return (
                 <tr key={i} onClick={() => { if (Window.isCompact()) this.eraSelected(e.id); }}>
                     <td className="selection-header">{e.name}</td>
-                    <td className="text-right"><Button buttonType={true} className="button-small" text="Select" onClick={() => { this.eraSelected(e.id) }} /></td>
+                    <td className="text-right"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { this.eraSelected(e.id) }} /></td>
                 </tr>
             );
         });
@@ -78,8 +80,8 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
             <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Selection)}>Home</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Character/Starship Creation</li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">{t('Page.title.era')}</li>
                     </ol>
                 </nav>
                 {this.renderSources()}
@@ -128,9 +130,9 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
 }
 
 function mapStateToProps(state, ownProps) {
-    return { 
+    return {
         sources: state.context.sources
     };
 }
 
-export default connect(mapStateToProps)(EraSelectionPage);
+export default connect(mapStateToProps)(withTranslation()(EraSelectionPage));

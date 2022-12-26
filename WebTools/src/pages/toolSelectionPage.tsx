@@ -16,7 +16,7 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
                 <div className="container ml-0">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
-                            <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Selection)}>Home</a></li>
+                            <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>Home</a></li>
                             <li className="breadcrumb-item active" aria-current="page">Character/Starship Creation</li>
                         </ol>
                     </nav>

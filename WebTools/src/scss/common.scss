@@ -399,10 +399,13 @@ h2.header-text {
 		color: white;
 		text-align: right;
 		max-width: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
         font-family: lcars;
 		font-size: x-large;
-		padding: 15px 4px;
         text-transform: uppercase;
+        line-height: 1;
 	}
 
 .lcar-content {

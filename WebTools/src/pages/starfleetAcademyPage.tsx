@@ -8,7 +8,7 @@ import {TracksHelper} from '../helpers/tracks';
 import {Button} from '../components/button';
 import {TrackSelection} from '../components/trackSelection';
 import InstructionText from '../components/instructionText';
-import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { Track } from '../helpers/trackEnum';
 
 interface IStarfleetAcademygPageState {

@@ -8,7 +8,7 @@ import {Button} from '../components/button';
 import {SpeciesSelection} from '../components/speciesSelection';
 import {MixedSpeciesSelection} from '../components/mixedSpeciesSelection';
 import { Source } from '../helpers/sources';
-import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { Species } from '../helpers/speciesEnum';
 import InstructionText from '../components/instructionText';
 import { Era } from '../helpers/eras';

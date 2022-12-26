@@ -4,7 +4,7 @@ import { CharacterType } from "../common/characterType";
 import { InputFieldAndLabel } from "../common/inputFieldAndLabel";
 import { Navigation } from "../common/navigator";
 import { Button } from "../components/button";
-import { CharacterCreationBreadcrumbs } from "../components/characterCreationBreadcrumbs";
+import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { Dialog } from "../components/dialog";
 import { Header } from "../components/header";
 import { extraCharacterStepsNext } from "./extraCharacterSteps";

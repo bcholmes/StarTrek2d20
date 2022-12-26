@@ -3,9 +3,9 @@ import {character} from './common/character';
 import { Events, EventIdentity } from './common/eventChannel';
 import { PageFactory } from './pages/pageFactory';
 import { PageIdentity } from './pages/pageIdentity';
+import LcarsFrame from './components/lcarsFrame';
 
 import './scss/main.scss';
-import { LcarsFrame } from './components/lcarsFrame';
 
 interface IAppState {
     activePage: PageIdentity;
@@ -19,7 +19,7 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
 
         let url = new URL(window.location.href);
         this.state = {
-            activePage: url.pathname === "/view" ? PageIdentity.ViewSheet : PageIdentity.Selection
+            activePage: url.pathname === "/view" ? PageIdentity.ViewSheet : PageIdentity.Home
         };
         this.pageFactory = new PageFactory();
     }

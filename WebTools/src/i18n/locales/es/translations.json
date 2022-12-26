@@ -2,10 +2,22 @@
     "LanguageNotice.title": "¡Hola!",
     "LanguageNotice.text": "Estamos experimentando con algún soporte inicial para los idiomas nacionales. Estamos en una etapa muy preliminar, pero esperamos poder soportar más idiomas, pronto.",
 
+    "Lcars.copyright": "STAR TREK y las marcas y logotipos relacionados son marcas comerciales de CBS Studios Inc. Todos los derechos reservados.",
+    "Lcars.credits": "Créditos",
+
     "Home.selection": "Seleccione la herramienta.",
     "Home.characterButton": "Personajes y naves espaciales",
-    "Home.talentsButton": "VISIÓN GENERAL DE TALENTOS",
+    "Home.talentsButton": "Descripción general de talentos",
 
-    "Page.title.home": "Página principal"
+    "Common.button.select": "Escoger",
+    "Common.button.selectAll": "Seleccionar todo",
+    "Common.button.selectNone": "Seleccionar Ninguno",
+
+    "Page.title.home": "Página principal",
+    "Page.title.era": "Era",
+    "Page.title.talentsOverview": "Descripción general de talentos",
+    "Page.title.creditsPage": "Créditos",
+
+    "Page.breadcrumb.characterCreation": "Creación de personajes"
 
 }

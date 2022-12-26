@@ -11,7 +11,7 @@ import {AttributeView} from '../components/attribute';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovement';
 import {SkillView} from '../components/skill';
 import {ElectiveSkillList} from '../components/electiveSkillList';
-import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { CharacterType } from '../common/characterType';
 
 export class CareerEventDetailsPage extends React.Component<IPageProperties, {}> {

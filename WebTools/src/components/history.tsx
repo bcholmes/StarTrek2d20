@@ -7,13 +7,14 @@ import {PageIdentity} from '../pages/pageIdentity';
 import { ShipBuildWorkflow, ShipBuildWorkflowStep } from '../starship/model/shipBuildWorkflow';
 import { rewindToStarshipWorkflowStep } from '../state/starshipActions';
 import store from '../state/store';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 export enum HistoryType {
     Character, Starship
 }
 
 
-interface IHistoryProperties {
+interface IHistoryProperties extends WithTranslation {
     showHistory: boolean;
     type: HistoryType;
     workflow: ShipBuildWorkflow;
@@ -84,9 +85,15 @@ class History extends React.Component<IHistoryProperties, {}> {
     }
 
     private getPageName(page: PageIdentity) {
+        const { t } = this.props;
+
+        let key = PageIdentity[page];
+        key = 'Page.title.' + key.substring(0, 1).toLowerCase() + key.substring(1);
+
         switch (page) {
-            case PageIdentity.Selection: return "Tool Selection";
-            case PageIdentity.Era: return "Era";
+            case PageIdentity.Home:
+            case PageIdentity.Era:
+                return t(key);
             case PageIdentity.ToolSelecton: return "Registry";
             case PageIdentity.Species: return "Species";
             case PageIdentity.KobaliExtraSpeciesDetails: return "Species Extra Details";
@@ -122,4 +129,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(History);
+export default connect(mapStateToProps)(withTranslation()(History));

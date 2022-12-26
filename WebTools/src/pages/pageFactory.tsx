@@ -18,7 +18,7 @@ import {AttributesAndDisciplinesPage} from './attributesAndDisciplinesPage';
 import {FinishPage} from './finishPage';
 import StarshipPage from '../starship/page/starshipPage';
 import {SupportingCharacterPage} from '../supportingcharacters/supportingCharacterPage';
-import { TalentsOverviewPage } from './talentsOverviewPage';
+import TalentsOverviewPage from './talentsOverviewPage';
 import SelectionPage from './selectionPage';
 import { BorgImplantSelection } from './borgImplantSelection';
 import { PageIdentity } from './pageIdentity';
@@ -31,7 +31,7 @@ import { CadetSeniorityPage } from './cadetSeniorityPage';
 import { SystemGenerationPage } from '../mapping/page/systemGenerationPage';
 import StarSystemDetailsPage from '../mapping/page/starSystemDetailsPage';
 import SectorDetailsPage from '../mapping/page/sectorDetailsPage';
-import { CreditsPage } from './creditsPage';
+import CreditsPage from './creditsPage';
 import SpeciesExtraDetailsPage from './speciesExtraDetailsPage';
 import { Species } from '../helpers/speciesEnum';
 import StarshipTypeSelectionPage from '../starship/page/starshipTypeSelectionPage';
@@ -56,7 +56,7 @@ export class PageFactory {
     constructor() {
         this.factories = {};
 
-        this.factories[PageIdentity.Selection] = () => <SelectionPage />;
+        this.factories[PageIdentity.Home] = () => <SelectionPage />;
         this.factories[PageIdentity.Era] = () => <EraSelectionPage/>;
         this.factories[PageIdentity.ToolSelecton] = () => <ToolSelectionPage/>;
         this.factories[PageIdentity.CharacterType] = () => <CharacterTypePage/>;

@@ -12,7 +12,7 @@ import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
 import { AlliedMilitaryType } from '../helpers/alliedMilitary';
 import replaceDiceWithArrowhead from '../common/arrowhead';
-import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { marshaller } from '../helpers/marshaller';
 import { SmallHeader } from '../components/smallHeader';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';

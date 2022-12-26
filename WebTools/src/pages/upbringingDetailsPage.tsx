@@ -11,7 +11,7 @@ import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {CheckBox} from '../components/checkBox';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
-import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
 import InstructionText from '../components/instructionText';
 

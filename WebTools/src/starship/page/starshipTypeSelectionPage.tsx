@@ -64,7 +64,7 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
             <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Selection)}>Home</a></li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>Home</a></li>
                         <li className="breadcrumb-item active" aria-current="page">Starship Creation</li>
                     </ol>
                 </nav>

@@ -1,7 +1,7 @@
 import React from "react";
 import { character } from "../common/character";
 import { Navigation } from "../common/navigator";
-import { CharacterCreationBreadcrumbs } from "../components/characterCreationBreadcrumbs";
+import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { Header } from "../components/header";
 import InstructionText from "../components/instructionText";
 import { SimpleSpeciesSelection } from "../components/simpleSpeciesSelection";
@@ -25,7 +25,7 @@ export class SpeciesExtraDetailsPage extends React.Component<ISpeciesExtraDetail
                 <InstructionText text={this.getInstructions()} />
 
                 <div className="mt-4">
-                    <SimpleSpeciesSelection onSelection={(species) => this.selectOriginalSpecies(species)} 
+                    <SimpleSpeciesSelection onSelection={(species) => this.selectOriginalSpecies(species)}
                         species={SpeciesHelper.getPrimarySpecies(character.type, true)} />
                 </div>
             </div>
@@ -34,7 +34,7 @@ export class SpeciesExtraDetailsPage extends React.Component<ISpeciesExtraDetail
 
     getInstructions() {
         if (this.props.species === Species.Kobali) {
-            return ["The Kobali collect the corpses of other species and use an advanced from of genetic engineering to modify " 
+            return ["The Kobali collect the corpses of other species and use an advanced from of genetic engineering to modify "
                 + "these deceased individuals, converting them into Kobali.", "The species of the original body can be selected below."];
         } else if (this.props.species === Species.CyberneticallyEnhanced) {
             return ["Before being cybernetically enhanced, this individual was a member of another species. Please select that species, below."];

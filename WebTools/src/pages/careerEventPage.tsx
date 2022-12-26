@@ -7,7 +7,7 @@ import {CareerEventsHelper} from '../helpers/careerEvents';
 import {Button} from '../components/button';
 import {CareerEventSelection} from '../components/careerEventSelection';
 import InstructionText from '../components/instructionText';
-import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 
 interface ICareerEventPageState {
     showSelection: boolean;

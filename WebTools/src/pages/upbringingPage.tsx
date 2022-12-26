@@ -9,7 +9,7 @@ import {UpbringingSelection} from '../components/upbringingSelection';
 import InstructionText from '../components/instructionText';
 import { Source } from '../helpers/sources';
 import { CheckBox } from '../components/checkBox';
-import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { hasSource } from '../state/contextFunctions';
 
 interface IUpbringingPageState {
@@ -36,11 +36,11 @@ export class UpbringingPage extends React.Component<IPageProperties, IUpbringing
 
         let showAlt = (hasSource(Source.PlayersGuide)) ? (<CheckBox isChecked={this.state.showAlternates} value={'alternates'} text="Allow alternate Upbringings (GM's decision)" onChanged={val => { this.setState(state => ({...state, showAlternates: !state.showAlternates}) ) }} />) : null;
 
-        let alt = (this.state.showAlternates) 
+        let alt = (this.state.showAlternates)
                 ? (<div className="pl-2 pr-2">
                     <Button className="button" text={'Select Alternate ' + character.workflow.currentStep().name} onClick={() => this.showAlternateUpbringings()} />
                     <Button className="button" text={'Roll Alternate ' + character.workflow.currentStep().name} onClick={() => this.rollAlternateUpbringing()} />
-                   </div>) 
+                   </div>)
                 : null;
 
         var content = !this.state.showSelection ?

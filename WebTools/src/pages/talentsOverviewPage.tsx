@@ -9,6 +9,7 @@ import replaceDiceWithArrowhead from '../common/arrowhead';
 import { Species } from '../helpers/speciesEnum';
 import { navigateTo } from '../common/navigator';
 import { PageIdentity } from './pageIdentity';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 class TalentViewModel {
     name: string;
@@ -63,7 +64,7 @@ class TalentViewModel {
     }
 }
 
-export class TalentsOverviewPage extends React.Component<{}, {}> {
+class TalentsOverviewPage extends React.Component<WithTranslation, {}> {
     static ALL: string = "All";
     private _categories: string[] = [];
     private _category: string = "";
@@ -71,7 +72,7 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
     private _talents: { [category: string]: TalentViewModel[] } = {};
     private _search: string = '';
 
-    constructor(props: {}) {
+    constructor(props) {
         super(props);
 
         this.setupCategories();
@@ -124,12 +125,14 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
             );
         });
 
+        const { t } = this.props;
+
         return (
             <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Selection)}>Home</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">Talents Overview</li>
+                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
+                    <li className="breadcrumb-item active" aria-current="page">{t('Page.title.talentsOverview')}</li>
                     </ol>
                 </nav>
                 <div className="float-top">
@@ -255,3 +258,5 @@ export class TalentsOverviewPage extends React.Component<{}, {}> {
         this.forceUpdate();
     }
 }
+
+export default withTranslation()(TalentsOverviewPage)

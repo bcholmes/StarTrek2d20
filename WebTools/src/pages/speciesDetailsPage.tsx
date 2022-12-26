@@ -9,7 +9,7 @@ import { Button } from '../components/button';
 import { CheckBox } from '../components/checkBox';
 import { Dialog } from '../components/dialog';
 import { Source } from '../helpers/sources';
-import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import store from '../state/store';
 import { setAllowCrossSpeciesTalents, setAllowEsotericTalents } from '../state/contextActions';
 import { connect } from 'react-redux';

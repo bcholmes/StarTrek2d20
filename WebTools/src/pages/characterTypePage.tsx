@@ -8,7 +8,7 @@ import {WorkflowsHelper} from '../helpers/workflows';
 import AllyHelper, { AlliedMilitaryType } from '../helpers/alliedMilitary';
 import { Source } from '../helpers/sources';
 import Governments, { GovernmentType } from '../helpers/governments';
-import { CharacterCreationBreadcrumbs } from '../components/characterCreationBreadcrumbs';
+import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import store from '../state/store';
 import { hasSource } from '../state/contextFunctions';
 import { Header } from '../components/header';
