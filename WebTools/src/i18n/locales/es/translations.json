@@ -1,6 +1,7 @@
 {
     "LanguageNotice.title": "¡Hola!",
     "LanguageNotice.text": "Estamos experimentando con algún soporte inicial para los idiomas nacionales. Estamos en una etapa muy preliminar, pero esperamos poder soportar más idiomas, pronto.",
+    "LanguageNotice.useEnglish": "Usar inglés",
 
     "Lcars.copyright": "STAR TREK y las marcas y logotipos relacionados son marcas comerciales de CBS Studios Inc. Todos los derechos reservados.",
     "Lcars.credits": "Créditos",

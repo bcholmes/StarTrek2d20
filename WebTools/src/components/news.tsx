@@ -11,6 +11,14 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.221227</b>
+                <ul>
+                    <li>Make it possible for non-English users to revert to using the site in English, if they wish to.</li>
+                    <li>Add more support for viewing pages in other languages. It'll take a while before the majority of
+                        pages are translated. And because I'm using automated translation methods, the translations might
+                        not be perfect; I welcome all corrections.
+                    </li>
+                </ul>
                 <b>v1.221226</b>
                 <ul>
                     <li>Initial ground work for supporting national Languages.</li>
@@ -186,11 +194,6 @@ class News extends React.Component<INewsProperties, {}> {
                 <ul>
                     <li>Some additional spaceframe outline revisions</li>
                     <li>Minor work improving the star sector functionality.</li>
-                </ul>
-                <b>v1.220626</b>
-                <ul>
-                    <li>Now supporting the <cite>Discovery Campaign</cite> sourcebook.</li>
-                    <li>More revisions to spaceframe outlines.</li>
                 </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>
