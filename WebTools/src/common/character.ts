@@ -212,6 +212,14 @@ export class Character extends Construct {
         return result;
     }
 
+    get nameAndFullRank() {
+        if (this.rank) {
+            return this.rank + " " + this.name;
+        } else {
+            return this.name;
+        }
+    }
+
     getTalentNameList() {
         let result = []
         for (let name in this.talents) {

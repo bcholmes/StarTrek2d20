@@ -85,6 +85,14 @@ h5 {
     text-overflow: ellipsis;
 }
 
+.stat-name.stat-name-sm {
+    padding: 3px;
+    width: 80px;
+    border-radius: 10px 0 0 10px;
+    height: 18px;
+    font-size: 10px;
+}
+
 .stat-entry-name {
     color: white;
     box-sizing: border-box;
@@ -127,7 +135,12 @@ h5 {
     line-height: normal;
 }
 
-
+.stat-value.stat-value-sm {
+    padding: 3px;
+    width: 22px;
+    height: 18px;
+    font-size: 10px;
+}
 .stat-entry-value {
     box-sizing: border-box;
     display: inline-block;

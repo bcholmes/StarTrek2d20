@@ -56,4 +56,6 @@ export enum PageIdentity {
 
     CreditsPage,
     ViewSheet,
+
+    GamemasterTrackerPage
 }

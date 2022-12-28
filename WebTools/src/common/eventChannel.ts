@@ -29,6 +29,10 @@ export class EventChannel {
             this.listeners[id] = [handler];
         }
     }
+
+    removeAllListeners() {
+        this.listeners = {};
+    }
 }
 
 export const Events = new EventChannel();

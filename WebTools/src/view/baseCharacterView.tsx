@@ -6,6 +6,8 @@ import { StatView } from "../components/StatView";
 import { makeKey } from "../common/translationKey";
 import { Attribute } from "../helpers/attributes";
 import { Skill } from "../helpers/skills";
+import { WeaponView } from "../components/weaponView";
+import { RanksHelper } from "../helpers/ranks";
 
 export interface ICharacterViewProperties extends WithTranslation {
     character: Character;
@@ -72,4 +74,31 @@ export abstract class BaseCharacterView extends React.Component<ICharacterViewPr
             return undefined;
         }
     }
+
+    renderWeapons() {
+        const { t, character } = this.props;
+        if (character.determineWeapons().length) {
+            let weapons = character.determineWeapons().map((w, i) => {
+                let dice = w.dice;
+                dice += character.skills[Skill.Security].expertise;
+                return (<WeaponView key={'weapon-' + i} weapon={w} dice={dice} />);
+            });
+            return (<>
+                    <Header level={2} className="mt-4">{t('Construct.other.weapons')}</Header>
+                    <div>{weapons}</div>
+                </>);
+        } else {
+            return null;
+        }
+    }
+
+    getRankAbbreviation() {
+        if (this.props.character.rank) {
+            let rank = RanksHelper.getRankByName(this.props.character.rank);
+            return (rank && rank.abbreviation) ? rank.abbreviation : "";
+        } else {
+            return "";
+        }
+    }
+
 }

@@ -15,10 +15,21 @@
     "ViewPage.viewStarship": "View Starship",
     "ViewPage.errorMessage": "Things have gone terribly, terribly wrong. We might be in the mirror universe.",
 
+    "GMTracker.title": "Tracker",
+    "GMTracker.instruction": "Use this tool to manage various NPCs in your game.",
+    "GMTracker.addCharacterModalTitle": "Add Character",
+
+    "AddCharacterView.instruction": "Paste in the URL for a character.",
+    "AddCharacterView.errorMessage": "This url does not look valid.",
+    "AddCharacterView.errorCharacterType": "Whoops! We only support characters, at the moment. Not starships.",
+    "AddCharacterView.characterPrefix": "Character: ",
+
     "Common.button.select": "Select",
     "Common.button.selectAll": "Select All",
     "Common.button.selectNone": "Select None",
     "Common.button.exportPdf": "Export to PDF",
+    "Common.button.ok": "OK",
+    "Common.button.add": "Add",
 
     "Construct.other.assignment": "Assignment",
     "Construct.other.attributes": "Attributes",
@@ -56,6 +67,7 @@
     "Page.title.talentsOverview": "Talents Overview",
     "Page.title.creditsPage": "Credits",
     "Page.title.viewSheet": "View Sheet",
+    "Page.title.gamemasterTrackerPage": "Tracking",
 
     "Page.breadcrumb.characterCreation": "Character Creation"
 
