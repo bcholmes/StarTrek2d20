@@ -15,10 +15,21 @@
     "ViewPage.viewStarship": "Ver nave espacial",
     "ViewPage.errorMessage": "Las cosas han ido terriblemente, terriblemente mal. Podríamos estar en el universo espejo.",
 
+    "GMTracker.title": "Rastreador",
+    "GMTracker.instruction": "Usa esta herramienta para administrar varios NPC en tu juego.",
+    "GMTracker.addCharacterModalTitle": "Agregar carácter",
+
+    "AddCharacterView.instruction": "Pegue la URL de un carácter.",
+    "AddCharacterView.errorMessage": "Esta URL no parece válida.",
+    "AddCharacterView.errorCharacterType": "¡Gritos! Solo admitimos personajes, por el momento. No naves espaciales.",
+    "AddCharacterView.characterPrefix": "Carácter: ",
+
     "Common.button.select": "Escoger",
     "Common.button.selectAll": "Seleccionar todo",
     "Common.button.selectNone": "Seleccionar Ninguno",
     "Common.button.exportPdf": "Exportar a PDF",
+    "Common.button.ok": "De acuerdo",
+    "Common.button.add": "Agregar",
 
     "Construct.other.assignment": "Asignación",
     "Construct.other.attributes": "Atributos",

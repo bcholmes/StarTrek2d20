@@ -15,10 +15,21 @@
     "ViewPage.viewStarship": "Voir le vaisseau spatial",
     "ViewPage.errorMessage": "Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir.",
 
+    "GMTracker.title": "Pisteur",
+    "GMTracker.instruction": "Utilisez cet outil pour gérer divers PNJ dans votre jeu.",
+    "GMTracker.addCharacterModalTitle": "Ajouter un caractère",
+
+    "AddCharacterView.instruction": "Collez l'URL d'un caractère.",
+    "AddCharacterView.errorMessage": "Cette URL ne semble pas valide.",
+    "AddCharacterView.errorCharacterType": "Nous ne supportons que les personnages, pour le moment. Pas des vaisseaux spatiaux.",
+    "AddCharacterView.characterPrefix": "Personnage: ",
+
     "Common.button.select": "Choisir",
     "Common.button.selectAll": "Sélectionner tout",
     "Common.button.selectNone": "Sélectionnez Aucun",
     "Common.button.exportPdf": "Exporter au format PDF",
+    "Common.button.ok": "D'accord",
+    "Common.button.add": "Ajouter",
 
     "Construct.other.assignment": "Mission",
     "Construct.other.attributes": "Attributs",

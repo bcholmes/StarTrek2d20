@@ -33,7 +33,6 @@ class AddCharacterView extends React.Component<IAddCharacterProperties, IAddChar
                 <div>
                     <textarea name="url" className="form-control w-100" style={{minHeight: "10rem"}}
                         onChange={(e) => this.parseCharacter(e.target.value)}>
-
                     </textarea>
                 </div>
 
@@ -59,6 +58,11 @@ class AddCharacterView extends React.Component<IAddCharacterProperties, IAddChar
                 if (json == null) {
                     this.setState((state) => ({...state, enabled: false,
                         message: t('AddCharacterView.errorMessage'),
+                        characterString: undefined
+                    }));
+                } else if (json.stereotype !== "supportingCharacter" && json.stereotype !== "mainCharacter") {
+                    this.setState((state) => ({...state, enabled: false,
+                        message: t('AddCharacterView.errorCharacterType'),
                         characterString: undefined
                     }));
                 } else {

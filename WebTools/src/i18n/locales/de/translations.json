@@ -15,10 +15,21 @@
     "ViewPage.viewStarship": "Raumschiff ansehen",
     "ViewPage.errorMessage": "Die Dinge sind schrecklich, schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.",
 
+    "GMTracker.title": "Aufspürer",
+    "GMTracker.instruction": "Benutze dieses Tool, um verschiedene NPCs in deinem Spiel zu verwalten.",
+    "GMTracker.addCharacterModalTitle": "Charakter hinzufügen",
+
+    "AddCharacterView.instruction": "Fügen Sie die URL für ein Zeichen ein.",
+    "AddCharacterView.errorMessage": "Diese URL sieht nicht gültig aus.",
+    "AddCharacterView.errorCharacterType": "Hoppla! Wir unterstützen im Moment nur Charaktere. Keine Raumschiffe.",
+    "AddCharacterView.characterPrefix": "Zeichen: ",
+
     "Common.button.select": "Auswählen",
     "Common.button.selectAll": "Alle auswählen",
     "Common.button.selectNone": "Wählen Sie Keine",
     "Common.button.exportPdf": "Als PDF exportieren",
+    "Common.button.ok": "Okay",
+    "Common.button.add": "Hinzufügen",
 
     "Construct.other.assignment": "Zuweisung",
     "Construct.other.attributes": "Attribute",

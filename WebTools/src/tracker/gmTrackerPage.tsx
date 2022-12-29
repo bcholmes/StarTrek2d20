@@ -39,7 +39,7 @@ class GMTrackerPage extends React.Component<IGMTrackerPageProperties, {}> {
                             <Button buttonType={true} className="btn btn-link btn-lg" onClick={() => this.showAddModal()}><i className="bi bi-plus-circle"></i></Button>
                         </div>
 
-                        {this.props.characters.map((c, i) => <GmCharacterView character={c} key={'character-' + i}/>)}
+                        {this.props.characters.map((c, i) => <GmCharacterView tracking={c} key={'character-' + c.id}/>)}
 
                     </div>
                 </div>

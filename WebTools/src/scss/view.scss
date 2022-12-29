@@ -63,6 +63,11 @@
     height: 24px;
     border-radius: 12px;
 }
+.empty-pill.compact {
+    width: calc(20% - 0.25rem);
+    margin-right: 0.25rem;
+    height: 20px;
+}
 .empty-pill.solid {
     background-color: $lcars-purple;
 }
