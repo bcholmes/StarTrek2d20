@@ -105,6 +105,8 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
 
     isProfileSupportedForPage() {
         if (this.props.activePage === PageIdentity.ViewSheet ||
+            this.props.activePage === PageIdentity.GamemasterTrackerPage ||
+            this.props.activePage === PageIdentity.TalentsOverview ||
             this.props.activePage === PageIdentity.SystemGeneration ||
             this.props.activePage === PageIdentity.SectorDetails ||
             this.props.activePage === PageIdentity.StarSystemDetails ||

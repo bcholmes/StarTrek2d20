@@ -1,4 +1,5 @@
 ﻿import * as React from 'react';
+import { withRouter, RouteComponentProps } from "react-router";
 import { DropDownInput } from "../components/dropDownInput";
 import { AliasModel } from "../helpers/aliases";
 import { Skill, SkillsHelper } from "../helpers/skills";
@@ -64,7 +65,12 @@ class TalentViewModel {
     }
 }
 
-class TalentsOverviewPage extends React.Component<WithTranslation, {}> {
+interface ITalentsOverviewPageProperties extends WithTranslation {
+    history: RouteComponentProps["history"];
+}
+
+
+class TalentsOverviewPage extends React.Component<ITalentsOverviewPageProperties, {}> {
     static ALL: string = "All";
     private _categories: string[] = [];
     private _category: string = "";
@@ -131,7 +137,7 @@ class TalentsOverviewPage extends React.Component<WithTranslation, {}> {
             <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
+                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => this.goToHome(e)}>{t('Page.title.home')}</a></li>
                     <li className="breadcrumb-item active" aria-current="page">{t('Page.title.talentsOverview')}</li>
                     </ol>
                 </nav>
@@ -152,6 +158,14 @@ class TalentsOverviewPage extends React.Component<WithTranslation, {}> {
                 </div>
             </div>
         );
+    }
+
+    goToHome(e: React.MouseEvent<HTMLAnchorElement>) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const { history } = this.props;
+        history.push("/");
     }
 
     private searchChanged(event) {
@@ -259,4 +273,4 @@ class TalentsOverviewPage extends React.Component<WithTranslation, {}> {
     }
 }
 
-export default withTranslation()(TalentsOverviewPage)
+export default withTranslation()(withRouter(TalentsOverviewPage))

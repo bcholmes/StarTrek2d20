@@ -88,7 +88,7 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
                     <div className="col-md-4 view-field-label pb-2">Axial Tilt:</div>
                     <div className="col-md-8 text-white">
                         <div className="view-border-bottom pb-2">
-                            {details.axialTilt.toFixed(2) + ' deg'}
+                            {details.axialTilt.toFixed(2)}&deg;
                         </div>
                     </div>
                 </div>);

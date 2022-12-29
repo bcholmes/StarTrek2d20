@@ -5,13 +5,17 @@ import GMTrackerPage from './tracker/gmTrackerPage';
 import { Provider } from "react-redux";
 import store from './state/store';
 import './i18n/config';
+import TalentsOverviewMainPage from './pages/talentsOverviewMainPage';
+import ViewSheetPage from './view/viewSheetPage';
 
 ReactDOM.render(
     <Provider store={store}>
         <Router>
             <Switch>
-            <Route path="/gmtracker" component={GMTrackerPage} />
-            <Route path="/" component={CharacterCreationApp} />
+                <Route path="/gmtracker" component={GMTrackerPage} />
+                <Route path="/talents" component={TalentsOverviewMainPage} />
+                <Route path="/view" component={ViewSheetPage} />
+                <Route path="/" component={CharacterCreationApp} />
             </Switch>
         </Router>
     </Provider>,

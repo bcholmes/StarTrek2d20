@@ -17,9 +17,8 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
     constructor(props) {
         super(props);
 
-        let url = new URL(window.location.href);
         this.state = {
-            activePage: url.pathname === "/view" ? PageIdentity.ViewSheet : PageIdentity.Home
+            activePage: PageIdentity.Home
         };
         this.pageFactory = new PageFactory();
     }
@@ -33,6 +32,10 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
         Events.listen(EventIdentity.HistoryBack, (page: any) => {
             this.activatePage(page as PageIdentity, true);
         });
+    }
+
+    componentWillUnmount(): void {
+        Events.removeAllListeners();
     }
 
     private activatePage(page: PageIdentity, isHistory: boolean) {

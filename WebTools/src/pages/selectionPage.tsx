@@ -1,4 +1,5 @@
 ﻿import * as React from 'react';
+import { withRouter, RouteComponentProps } from "react-router";
 import { Navigation } from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import { Button } from '../components/button';
@@ -11,7 +12,11 @@ enum Tool {
     TalentsOverview,
 }
 
-class SelectionPage extends React.Component<WithTranslation, {}> {
+interface ISelectionPageProperties extends WithTranslation {
+    history: RouteComponentProps["history"];
+}
+
+class SelectionPage extends React.Component<ISelectionPageProperties, {}> {
 
     render() {
         const { t } = this.props;
@@ -47,10 +52,11 @@ class SelectionPage extends React.Component<WithTranslation, {}> {
                 Navigation.navigateToPage(PageIdentity.Era);
                 break;
             case Tool.TalentsOverview:
-                Navigation.navigateToPage(PageIdentity.TalentsOverview);
+                const { history } = this.props;
+                history.push("/talents");
                 break;
         }
     }
 }
 
-export default withTranslation()(SelectionPage);
+export default withTranslation()(withRouter(SelectionPage));
