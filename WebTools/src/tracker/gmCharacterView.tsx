@@ -26,8 +26,8 @@ class GMCharacterView extends React.Component<IGMCharacterViewProperties, {}> {
         return (<div className="mb-2">
             <Header level={2}>{getNameAndShortRankOf(character)}</Header>
             <div className="text-white">{character.speciesName}{this.renderJob()}</div>
-            <div className="row">
-                <div className="col-lg-5 mb-2">
+            <div className="d-lg-flex justify-content-between">
+                <div className="mb-2" style={{width: "380px"}}>
                     <div className="row row-cols-1 row-cols-md-3 mt-1">
                         <StatView name={t(makeKey('Construct.attribute.', Attribute[Attribute.Control]))} value={character.attributes ? character.attributes[Attribute.Control].value : undefined} className="col mb-1" size="sm"/>
                         <StatView name={t(makeKey('Construct.attribute.', Attribute[Attribute.Fitness]))} value={character.attributes ? character.attributes[Attribute.Fitness].value : undefined} className="col mb-1" size="sm" />
@@ -47,13 +47,11 @@ class GMCharacterView extends React.Component<IGMCharacterViewProperties, {}> {
                     </div>
                 </div>
 
-                <div className="col-lg-3 mb-2">
-                    <div style={{maxWidth: "180px"}}>
-                        {this.renderStress()}
-                    </div>
+                <div className="mb-2" style={{ width: "180px"}}>
+                    {this.renderStress()}
                 </div>
 
-                <div className="col-lg-4 mb-2">
+                <div className="mb-2" style={{width: "300px"}}>
                     <textarea className="w-100 h-100" placeholder="Notes..." onChange={(e) => this.changeNotes(e.target.value)} value={tracking.notes}></textarea>
                 </div>
             </div>

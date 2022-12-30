@@ -1,7 +1,7 @@
 import React from "react";
 import { Attribute, AttributesHelper } from "../helpers/attributes";
 import { AttributeController } from "./attributeController";
-import { AttributeImprovement } from "./attributeImprovement";
+import AttributeImprovement from "./attributeImprovement";
 
 interface ISpeciesAttributeComponentsProperties {
     controller: AttributeController
@@ -27,17 +27,17 @@ class SpeciesAttributeComponent extends React.Component<ISpeciesAttributeCompone
 
     renderSpeciesAttribute(attribute: Attribute) {
         if (this.props.controller.isEditable(attribute)) {
-            return <AttributeImprovement attribute={attribute} 
-                onIncrease={() => { this.props.controller.onIncrease(attribute)}} 
+            return <AttributeImprovement attribute={attribute}
+                onIncrease={() => { this.props.controller.onIncrease(attribute)}}
                 onDecrease={() => { this.props.controller.onDecrease(attribute)}}
-                value={this.props.controller.getValue(attribute)} 
-                showIncrease={this.props.controller.canIncrease(attribute)} 
-                showDecrease={this.props.controller.canDecrease(attribute)} 
+                value={this.props.controller.getValue(attribute)}
+                showIncrease={this.props.controller.canIncrease(attribute)}
+                showDecrease={this.props.controller.canDecrease(attribute)}
                 key={'attribute-' + attribute} />
         } else {
-            return (<AttributeImprovement attribute={attribute} 
+            return (<AttributeImprovement attribute={attribute}
                 onIncrease={() => { }} onDecrease={() => { }}
-                value={this.props.controller.getValue(attribute)} 
+                value={this.props.controller.getValue(attribute)}
                 showIncrease={false}  showDecrease={false} key={'attribute-' + attribute} />);
         }
     }

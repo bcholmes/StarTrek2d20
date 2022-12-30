@@ -5,7 +5,7 @@ import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {TracksHelper} from '../helpers/tracks';
 import {Skill} from '../helpers/skills';
-import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovement';
+import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovementCollection';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {ValueInput, Value} from '../components/valueInput';

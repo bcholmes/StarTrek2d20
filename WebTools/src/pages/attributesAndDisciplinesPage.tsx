@@ -3,7 +3,7 @@ import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
-import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovement';
+import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovementCollection';
 import {SkillImprovementCollection} from '../components/skillImprovement';
 import {ElectiveSkillList} from '../components/electiveSkillList';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';

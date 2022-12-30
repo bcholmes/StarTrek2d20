@@ -1,11 +1,10 @@
 ﻿import * as React from 'react';
 import {Character, character} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {SpeciesHelper} from '../helpers/species';
 import {Button} from '../components/button';
-import {SpeciesSelection} from '../components/speciesSelection';
+import SpeciesSelection from '../components/speciesSelection';
 import {MixedSpeciesSelection} from '../components/mixedSpeciesSelection';
 import { Source } from '../helpers/sources';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
@@ -14,14 +13,15 @@ import InstructionText from '../components/instructionText';
 import { Era } from '../helpers/eras';
 import store from '../state/store';
 import { hasSource } from '../state/contextFunctions';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 interface ISpeciesPageState {
     showSelection: boolean;
     showMixedSelection: boolean;
 }
 
-export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageState> {
-    constructor(props: IPageProperties) {
+class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
+    constructor(props: WithTranslation) {
         super(props);
 
         this.state = {
@@ -31,6 +31,7 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
     }
 
     render() {
+
         const rollAlpha = hasSource(Source.AlphaQuadrant) && this.isRollAvailable()
             ? <Button className="button" text="Roll Alpha Species" onClick={() => this.rollAlphaSpecies()} />
             : undefined;
@@ -177,3 +178,5 @@ export class SpeciesPage extends React.Component<IPageProperties, ISpeciesPageSt
         Navigation.navigateToPage(PageIdentity.SpeciesDetails);
     }
 }
+
+export default withTranslation()(SpeciesPage);

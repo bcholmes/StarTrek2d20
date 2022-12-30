@@ -3,13 +3,15 @@ import { Character, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Window } from '../common/window';
 import { SpeciesHelper } from '../helpers/species';
-import { AttributesHelper } from '../helpers/attributes';
+import { Attribute } from '../helpers/attributes';
 import { Button } from './button';
 import { CheckBox } from './checkBox';
 import { Species } from '../helpers/speciesEnum';
 import { Header } from './header';
+import { withTranslation, WithTranslation } from 'react-i18next';
+import { makeKey } from '../common/translationKey';
 
-interface ISpeciesSelectionProperties {
+interface ISpeciesSelectionProperties extends WithTranslation {
     onSelection: (species: Species) => void;
     onCancel: () => void;
 }
@@ -18,7 +20,7 @@ interface ISpeciesSelectionPageState {
     allowAllSpecies: boolean
 }
 
-export class SpeciesSelection extends React.Component<ISpeciesSelectionProperties, ISpeciesSelectionPageState> {
+class SpeciesSelection extends React.Component<ISpeciesSelectionProperties, ISpeciesSelectionPageState> {
     constructor(props: ISpeciesSelectionProperties) {
         super(props);
         this.state = {
@@ -27,11 +29,13 @@ export class SpeciesSelection extends React.Component<ISpeciesSelectionPropertie
     }
 
     render() {
+        const { t } = this.props;
+
         let overrideCheckbox = (Character.isSpeciesListLimited(character)) ? (<CheckBox
             isChecked={this.state.allowAllSpecies}
             text="Allow any species (GM's decision)"
             value={!this.state.allowAllSpecies}
-            onChanged={() => { let val = this.state.allowAllSpecies; this.setState({ allowAllSpecies: !val }); }} />) 
+            onChanged={() => { let val = this.state.allowAllSpecies; this.setState({ allowAllSpecies: !val }); }} />)
             : undefined
 
 
@@ -45,7 +49,7 @@ export class SpeciesSelection extends React.Component<ISpeciesSelectionPropertie
                     </div>
                 )
                 : s.attributes.map((a, i) => {
-                    return <div key={i}>{AttributesHelper.getAttributeName(a)}</div>;
+                    return <div key={i}>{t(makeKey('Construct.attribute.', Attribute[a])) }</div>;
                 });
 
             const talents = s.id === Species.Changeling
@@ -59,7 +63,7 @@ export class SpeciesSelection extends React.Component<ISpeciesSelectionPropertie
                     <td className="selection-header">{s.name}</td>
                     <td>{attributes}</td>
                     <td>{talents}</td>
-                    <td className="text-right"><Button buttonType={true} className="button-small" text="Select" onClick={() => { this.props.onSelection(s.id) }} /></td>
+                    <td className="text-right"><Button buttonType={true} className="button-small"onClick={() => { this.props.onSelection(s.id) }} >{t('Common.button.select')}</Button></td>
                 </tr>
             );
         });
@@ -72,7 +76,7 @@ export class SpeciesSelection extends React.Component<ISpeciesSelectionPropertie
                     <thead>
                         <tr>
                             <td></td>
-                            <td><b>Attributes</b></td>
+                            <td><b>{t('Construct.other.attributes')}</b></td>
                             <td><b>Talent Options</b></td>
                             <td></td>
                         </tr>
@@ -86,3 +90,5 @@ export class SpeciesSelection extends React.Component<ISpeciesSelectionPropertie
         );
     }
 }
+
+export default withTranslation()(SpeciesSelection);

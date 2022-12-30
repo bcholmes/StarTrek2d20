@@ -4,8 +4,8 @@ import {CharacterType, CharacterTypeModel } from '../common/characterType';
 import {CharacterSerializer} from '../common/characterSerializer';
 import {SpeciesHelper} from '../helpers/species';
 import {DropDownInput} from '../components/dropDownInput';
-import {SupportingCharacterAttributes} from '../components/supportingCharacterAttributes';
-import {SupportingCharacterDisciplines} from '../components/supportingCharacterDisciplines';
+import SupportingCharacterAttributes from '../components/supportingCharacterAttributes';
+import SupportingCharacterDisciplines from '../components/supportingCharacterDisciplines';
 import {Rank, RanksHelper} from '../helpers/ranks';
 import {Button} from '../components/button';
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
@@ -28,7 +28,6 @@ interface ISupportingCharacterState {
 }
 
 export class SupportingCharacterPage extends React.Component<{}, ISupportingCharacterState> {
-    private _attributeElement: SupportingCharacterAttributes;
 
     private _name: string;
     private _species: string;
@@ -135,7 +134,6 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                             onChange={(index) => this.selectSpecies(index) }/>
                         <br/><br/>
                         <SupportingCharacterAttributes age={this.state.age}
-                            ref={(el) => this._attributeElement = el}
                             species={SpeciesHelper.getSpeciesByName(this._species) }
                             onUpdate={() => { this.forceUpdate(); }}/>
                     </div>
@@ -248,8 +246,6 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
         this._species = species[index].name;
 
         character.species = species[index].id;
-
-        this._attributeElement.species = character.species;
 
         this.forceUpdate();
     }

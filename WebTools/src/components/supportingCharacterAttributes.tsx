@@ -1,10 +1,12 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {SpeciesHelper, SpeciesModel} from '../helpers/species';
-import {Attribute, AttributesHelper} from '../helpers/attributes';
+import {Attribute} from '../helpers/attributes';
 import {CheckBox} from './checkBox';
 import { Age } from '../helpers/age';
 import { Species } from '../helpers/speciesEnum';
+import { withTranslation, WithTranslation } from 'react-i18next';
+import { makeKey } from '../common/translationKey';
 
 interface IValueProperties {
     index: number;
@@ -26,12 +28,12 @@ class Value extends React.Component<IValueProperties, {}> {
         );
     }
 
-    private toggleSelection() {        
+    private toggleSelection() {
         this.props.onSelect(this.props.isSelected ? -1 : this.props.index);
     }
 }
 
-interface IAttributeProperties {
+interface IAttributeProperties extends WithTranslation {
     species: Species;
     age: Age;
     onUpdate: () => void;
@@ -43,7 +45,7 @@ interface IAttributeState {
     checkedValues: number[];
 }
 
-export class SupportingCharacterAttributes extends React.Component<IAttributeProperties, IAttributeState> {
+class SupportingCharacterAttributes extends React.Component<IAttributeProperties, IAttributeState> {
     private _species: SpeciesModel;
 
     constructor(props: IAttributeProperties) {
@@ -77,6 +79,7 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
     }
 
     render() {
+        const { t } = this.props;
         const attributes = [Attribute.Control, Attribute.Daring, Attribute.Fitness, Attribute.Insight, Attribute.Presence, Attribute.Reason].map((a, i) => {
             const val = this.props.age.attributes[this.state.assignedValues[a]];
 
@@ -84,7 +87,7 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
                 const speciesHasAttribute = this._species.attributes.indexOf(a) > -1;
                 return (
                     <tr key={i}>
-                        <td className="selection-header">{AttributesHelper.getAttributeName(a) }</td>
+                        <td className="selection-header">{t(makeKey('Construct.attribute.', Attribute[a]))}</td>
                         <td>
                             <Value
                                 index={a}
@@ -100,7 +103,7 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
                 const isChecked = this.state.checkedValues.indexOf(a) > -1;
                 return (
                     <tr key={i}>
-                        <td className="selection-header">{AttributesHelper.getAttributeName(a) }</td>
+                        <td className="selection-header">{t(makeKey('Construct.attribute.', Attribute[a]))}</td>
                         <td>
                             <Value
                                 index={a}
@@ -135,7 +138,7 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
                 }
 
                 return (<tr key={i}>
-                    <td className="selection-header">{AttributesHelper.getAttributeName(a) }</td>
+                    <td className="selection-header">{t(makeKey('Construct.attribute.', Attribute[a]))}</td>
                     <td>
                         <Value
                             index={a}
@@ -220,13 +223,13 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
             this.setState({
                 ...this.state,
                 checkedValues: checkedValues
-            });    
+            });
         } else {
             checkedValues.splice(checkedValues.indexOf(attribute), 1);
             this.setState({
                 ...this.state,
                 checkedValues: checkedValues
-            });    
+            });
         }
 
         this.updateCharacterAttributes(this.state.assignedValues, checkedValues);
@@ -248,3 +251,5 @@ export class SupportingCharacterAttributes extends React.Component<IAttributePro
         this.props.onUpdate();
     }
 }
+
+export default withTranslation()(SupportingCharacterAttributes);

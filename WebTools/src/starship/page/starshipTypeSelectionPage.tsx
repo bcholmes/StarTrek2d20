@@ -7,6 +7,7 @@ import { Button } from "../../components/button";
 import { DropDownInput } from "../../components/dropDownInput";
 import { Header } from "../../components/header";
 import { Era } from "../../helpers/eras";
+import ServiceYear from "../../helpers/serviceYear";
 import { Source } from "../../helpers/sources";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { hasSource } from "../../state/contextFunctions";
@@ -131,6 +132,9 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                                 this.setState((state) => ({...state, campaignYear: parseInt(value)}))
                             } }
                             />
+                    </div>
+                    <div className="small text-white mt-2" style={{maxWidth: "365px"}}>
+                        {ServiceYear.instance().getTextHint(this.state.campaignYear)}
                     </div>
                 </div>);
     }

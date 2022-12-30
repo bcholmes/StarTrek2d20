@@ -1,7 +1,9 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import { Age } from '../helpers/age';
-import {Skill, SkillsHelper} from '../helpers/skills';
+import { Skill } from '../helpers/skills';
+import { withTranslation, WithTranslation } from 'react-i18next';
+import { makeKey } from '../common/translationKey';
 
 interface IValueProperties {
     index: number;
@@ -28,7 +30,7 @@ class Value extends React.Component<IValueProperties, {}> {
     }
 }
 
-interface IProperties {
+interface IProperties extends WithTranslation {
     age: Age;
     onUpdate: () => void;
 }
@@ -38,7 +40,7 @@ interface IDisciplinesState {
     selectedValue?: number;
 }
 
-export class SupportingCharacterDisciplines extends React.Component<IProperties, IDisciplinesState> {
+class SupportingCharacterDisciplines extends React.Component<IProperties, IDisciplinesState> {
 
     constructor(props: IProperties) {
         super(props);
@@ -57,12 +59,13 @@ export class SupportingCharacterDisciplines extends React.Component<IProperties,
     }
 
     render() {
+        const { t } = this.props;
         const disciplines = [Skill.Command, Skill.Conn, Skill.Engineering, Skill.Security, Skill.Science, Skill.Medicine].map((s, i) => {
             const val = this.props.age.disciplines[this.state.assignedValues[s]];
 
             return (
                 <tr key={i}>
-                    <td className="selection-header">{SkillsHelper.getSkillName(s) }</td>
+                    <td className="selection-header">{t(makeKey('Construct.discipline.', Skill[s]))}</td>
                     <td>
                         <Value
                             index={s}
@@ -130,3 +133,5 @@ export class SupportingCharacterDisciplines extends React.Component<IProperties,
         this.props.onUpdate();
     }
 }
+
+export default withTranslation()(SupportingCharacterDisciplines)

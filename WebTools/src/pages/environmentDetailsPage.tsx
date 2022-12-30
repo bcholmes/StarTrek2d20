@@ -7,7 +7,7 @@ import {PageIdentity} from './pageIdentity';
 import {Environment, EnvironmentsHelper } from '../helpers/environments';
 import {SpeciesHelper } from '../helpers/species';
 import {Skill} from '../helpers/skills';
-import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovement';
+import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovementCollection';
 import {ElectiveSkillList} from '../components/electiveSkillList';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
