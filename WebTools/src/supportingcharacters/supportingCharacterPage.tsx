@@ -260,7 +260,7 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
     private getRanks() {
         var result = [];
 
-        const ranks = RanksHelper.getRanks(true)
+        const ranks = RanksHelper.instance().getRanks(true)
             .filter(r => r.id !== Rank.Captain &&
                          r.id !== Rank.Commander &&
                          r.id !== Rank.LieutenantCommander);
@@ -327,11 +327,11 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
             character.rank = "";
             rank = "";
         } else if (character.type === CharacterType.Cadet) {
-            rank = RanksHelper.getRank(Rank.CadetFourthClass).name;
+            rank = RanksHelper.instance().getRank(Rank.CadetFourthClass).name;
             character.rank = rank;
         } else {
             if (rank === "") {
-                rank = RanksHelper.getRank(Rank.Lieutenant).name;
+                rank = RanksHelper.instance().getRank(Rank.Lieutenant).name;
                 character.rank = rank;
             }
         }

@@ -34,8 +34,12 @@ class SelectionPage extends React.Component<ISelectionPageProperties, {}> {
                             {t('Home.selection')}
                         </p>
                         <div className="button-container">
-                            <Button text={t('Home.characterButton')} className="button" onClick={() => { this.selectTool(Tool.CharacterGenerator); }} />
-                            <Button text={t('Home.talentsButton')} className="button" onClick={() => { this.selectTool(Tool.TalentsOverview); }} />
+                            <div>
+                                <Button text={t('Home.characterButton')} buttonType={true} className="button" onClick={() => { this.selectTool(Tool.CharacterGenerator); }} />
+                            </div>
+                            <div>
+                                <Button text={t('Home.talentsButton')} buttonType={true} className="button" onClick={() => { this.selectTool(Tool.TalentsOverview); }} />
+                            </div>
                         </div>
                     </div>
                     <div className="col-md-4">

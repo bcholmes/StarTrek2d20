@@ -213,7 +213,17 @@ class RankModel {
     }
 }
 
-class Ranks {
+export class RanksHelper {
+
+    private static _instance;
+
+    static instance() {
+        if (RanksHelper._instance == null) {
+            RanksHelper._instance = new RanksHelper();
+        }
+        return RanksHelper._instance;
+    }
+
     private _ranks: RankModel[] = [
         new RankModel(
             Rank.Captain,
@@ -950,4 +960,13 @@ class Ranks {
     }
 }
 
-export const RanksHelper = new Ranks();
+export const getNameAndShortRankOf = (character) => {
+    if (character.rank) {
+        let rank = RanksHelper.instance().getRankByName(character.rank);
+        let abbreviation = (rank && rank.abbreviation) ? rank.abbreviation : "";
+        return abbreviation + " " + character.name;
+    } else {
+        return character.name;
+    }
+}
+

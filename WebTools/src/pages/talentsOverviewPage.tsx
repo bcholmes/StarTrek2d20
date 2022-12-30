@@ -8,8 +8,6 @@ import { SourcesHelper } from "../helpers/sources";
 import { SpeciesHelper } from "../helpers/species";
 import replaceDiceWithArrowhead from '../common/arrowhead';
 import { Species } from '../helpers/speciesEnum';
-import { navigateTo } from '../common/navigator';
-import { PageIdentity } from './pageIdentity';
 import { withTranslation, WithTranslation } from 'react-i18next';
 
 class TalentViewModel {

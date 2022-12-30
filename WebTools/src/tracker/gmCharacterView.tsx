@@ -6,6 +6,7 @@ import { Header } from "../components/header";
 import { StatView } from "../components/StatView";
 import { Attribute } from "../helpers/attributes";
 import { marshaller } from "../helpers/marshaller";
+import { getNameAndShortRankOf } from "../helpers/ranks";
 import { Skill } from "../helpers/skills";
 import { removeGMTrackedCharacter, setGMTrackedCharacterNotes, setGMTrackedCharacterStress } from "../state/gmTrackerActions";
 import store from "../state/store";
@@ -23,7 +24,8 @@ class GMCharacterView extends React.Component<IGMCharacterViewProperties, {}> {
         const character = this.props.tracking?.character;
 
         return (<div className="mb-2">
-            <Header level={2}>{character.nameAndFullRank}</Header>
+            <Header level={2}>{getNameAndShortRankOf(character)}</Header>
+            <div className="text-white">{character.speciesName}{this.renderJob()}</div>
             <div className="row">
                 <div className="col-lg-5 mb-2">
                     <div className="row row-cols-1 row-cols-md-3 mt-1">
@@ -66,6 +68,27 @@ class GMCharacterView extends React.Component<IGMCharacterViewProperties, {}> {
                 </div>
             </div>
         </div>)
+    }
+
+    renderJob() {
+        let result = "";
+        const { character } = this.props.tracking;
+        if (character.role) {
+            result += character.role;
+        }
+        if (character.jobAssignment) {
+            if (result.length) {
+                result += ", ";
+            }
+            result += character.jobAssignment;
+        }
+        if (character.assignedShip) {
+            if (result.length) {
+                result += ", ";
+            }
+            result += character.assignedShip;
+        }
+        return (result.length) ? ", " + result : "";
     }
 
     renderStress() {

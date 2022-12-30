@@ -8,6 +8,7 @@ import { CharacterSerializer } from "../common/characterSerializer";
 import { CharacterType } from "../common/characterType";
 import { withTranslation } from 'react-i18next';
 import { BaseCharacterView } from "./baseCharacterView";
+import { getNameAndShortRankOf } from "../helpers/ranks";
 
 class MainCharacterView extends BaseCharacterView {
 
@@ -69,7 +70,7 @@ class MainCharacterView extends BaseCharacterView {
     renderTopFields() {
         const { t, character } = this.props;
         return (<>
-            <Header className="mb-4">{this.getRankAbbreviation() + ' ' + (character.name ? character.name : "Unnamed Character")}</Header>
+            <Header className="mb-4">{(character.name ? getNameAndShortRankOf(character) : "Unnamed Character")}</Header>
 
             {this.renderKlingonFields()}
 

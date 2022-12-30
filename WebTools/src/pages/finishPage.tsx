@@ -401,7 +401,7 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
     private getRanks() {
         this.ranks = [];
 
-        RanksHelper.getRanks(false).forEach(rank => {
+        RanksHelper.instance().getRanks(false).forEach(rank => {
             if (rank.tiers > 1) {
                 for (var i = 0; i < rank.tiers; i++) {
                     const tier = i + 1;

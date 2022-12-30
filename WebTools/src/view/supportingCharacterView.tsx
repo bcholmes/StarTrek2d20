@@ -6,6 +6,7 @@ import { CharacterSheetDialog } from "../components/characterSheetDialog";
 import { Header } from "../components/header";
 import { BaseCharacterView } from "./baseCharacterView";
 import { withTranslation } from 'react-i18next';
+import { getNameAndShortRankOf } from "../helpers/ranks";
 
 class SupportingCharacterView extends BaseCharacterView {
 
@@ -55,7 +56,7 @@ class SupportingCharacterView extends BaseCharacterView {
     renderTopFields() {
         const { t, character } = this.props;
         return (<>
-            <Header>{this.getRankAbbreviation() + ' ' + (character.name ? character.name : "Unnamed Character")}</Header>
+            <Header>{(character.name ? getNameAndShortRankOf(character) : "Unnamed Character")}</Header>
             <div className="row mt-4" style={{alignItems: "baseline"}}>
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.pronouns')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.pronouns ? character.pronouns  : undefined}</div></div>

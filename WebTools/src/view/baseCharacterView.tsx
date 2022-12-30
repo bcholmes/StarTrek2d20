@@ -7,7 +7,6 @@ import { makeKey } from "../common/translationKey";
 import { Attribute } from "../helpers/attributes";
 import { Skill } from "../helpers/skills";
 import { WeaponView } from "../components/weaponView";
-import { RanksHelper } from "../helpers/ranks";
 
 export interface ICharacterViewProperties extends WithTranslation {
     character: Character;
@@ -91,14 +90,4 @@ export abstract class BaseCharacterView extends React.Component<ICharacterViewPr
             return null;
         }
     }
-
-    getRankAbbreviation() {
-        if (this.props.character.rank) {
-            let rank = RanksHelper.getRankByName(this.props.character.rank);
-            return (rank && rank.abbreviation) ? rank.abbreviation : "";
-        } else {
-            return "";
-        }
-    }
-
 }
