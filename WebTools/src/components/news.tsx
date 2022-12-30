@@ -11,6 +11,14 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.221229</b>
+                <ul>
+                    <li>I've revised some internal page handling so that particular URLs are more straight-forwardly accessible (for
+                        example, <a href="https://sta.bcholmes.org/talents" rel="noreferrer" target="_blank">this link</a> opens up the
+                        talents page).</li>
+                    <li>I continue to work on the <a href="https://sta.bcholmes.org/gmtracker" rel="noreferrer" target="_blank">sekrit
+                        new feature</a>. Don't click on that link! Anything could happen.</li>
+                </ul>
                 <b>v1.221228</b>
                 <ul>
                     <li>I've started working on a new feature that's not yet visible. The changes are mostly internal.</li>
