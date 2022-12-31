@@ -1,34 +1,7 @@
 ﻿import * as React from 'react';
 import {Character, character} from '../common/character';
-import {Skill, SkillsHelper} from '../helpers/skills';
-import {CheckBox} from '../components/checkBox';
-
-interface IElectiveSkillProperties {
-    skill: Skill;
-    isSelected: boolean;
-    showCheckBox?: boolean;
-    onSelected: (val: any) => void;
-}
-
-class ElectiveSkill extends React.Component<IElectiveSkillProperties, {}> {
-    render() {
-        const {skill, onSelected, isSelected, showCheckBox} = this.props;
-
-        const skillExpertise = character.skills[skill].expertise;
-
-        const checkBox = showCheckBox
-            ? <CheckBox value={skill} onChanged={val => onSelected(val) } isChecked={isSelected} />
-            : undefined;
-
-        return (
-                    <tr>
-                        <td className="skill-name" style={{ width: "250px" }}>{SkillsHelper.getSkillName(skill) }</td>
-                        <td className="skill-expertise pr-2">{skillExpertise}</td>
-                        <td className="pt-2">{checkBox}</td>
-                    </tr>
-        );
-    }
-}
+import {Skill} from '../helpers/skills';
+import ElectiveSkill from './electiveSkill';
 
 interface IElectiveSkillListProperties {
     skills: Skill[];

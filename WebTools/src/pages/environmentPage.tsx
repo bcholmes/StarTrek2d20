@@ -5,7 +5,7 @@ import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {Environment, EnvironmentsHelper} from '../helpers/environments';
 import {Button} from '../components/button';
-import {EnvironmentSelection} from '../components/environmentSelection';
+import EnvironmentSelection from '../components/environmentSelection';
 import InstructionText from '../components/instructionText';
 import { Source } from '../helpers/sources';
 import { CheckBox } from '../components/checkBox';

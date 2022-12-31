@@ -9,7 +9,7 @@ import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {AttributeView} from '../components/attribute';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovementCollection';
-import {SkillView} from '../components/skill';
+import SkillView from '../components/skill';
 import {ElectiveSkillList} from '../components/electiveSkillList';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { CharacterType } from '../common/characterType';

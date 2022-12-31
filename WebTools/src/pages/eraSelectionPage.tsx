@@ -45,12 +45,11 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
             </div>)
         });
 
-        const note = hasUnavailableSources ? " Some sources are not yet implemented; check back soon!" : "";
+        const note = hasUnavailableSources ? t('EraSelectionPage.sourceNote') : "";
 
         return (<div>
             <div className="page-text">
-                Select sources.
-                Ask your GM which are available.
+                {t('EraSelectionPage.sourceInstruction')}
                 {note}
             </div>
             <div className="d-flex flex-wrap">
@@ -86,8 +85,7 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
                 </nav>
                 {this.renderSources()}
                 <div className="page-text mt-5">
-                    Select which Era to play in.
-                    Ask your GM which Era to choose.
+                    {t('EraSelectionPage.eraInstruction')}
                 </div>
                 <table className="selection-list">
                     <tbody>

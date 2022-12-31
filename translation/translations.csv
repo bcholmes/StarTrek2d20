@@ -4,6 +4,9 @@ LanguageNotice.text,"We're experimenting with some initial support for national 
 LanguageNotice.useEnglish,Use English instead,Englisch verwenden,Usar inglés,Utiliser l'anglais
 Lcars.copyright,STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.,STAR TREK und zugehörige Marken und Logos sind Marken von CBS Studios Inc. Alle Rechte vorbehalten.,STAR TREK y las marcas y logotipos relacionados son marcas comerciales de CBS Studios Inc. Todos los derechos reservados.,STAR TREK et les marques et logos associés sont des marques de commerce de CBS Studios Inc. Tous droits réservés.
 Lcars.credits,Credits,Kredite,Créditos,Crédits
+EraSelectionPage.sourceInstruction,Select sources. Ask your GM which are available.,"Wählen Sie Quellen aus. Fragen Sie Ihren GM, welche verfügbar sind.",Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.,Sélectionnez les sources. Demandez à votre GM lesquels sont disponibles.
+EraSelectionPage.sourceNote,Some sources are not yet implemented; check back soon!,Einige Quellen sind noch nicht implementiert; Schauen Sie bald wieder vorbei!,Algunas fuentes aún no se han aplicado; ¡Vuelve pronto!,Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!
+EraSelectionPage.eraInstruction,Select which Era to play in. Ask your GM which Era to choose.,"Wählen Sie aus, in welcher Ära gespielt werden soll. Fragen Sie Ihren GM, welche Ära Sie wählen sollen.",Selecciona en qué Era jugar. Pregúntale a tu GM qué Era elegir.,Sélectionnez l'ère dans laquelle jouer. Demandez à votre MJ quelle ère choisir.
 Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sélectionnez l'outil.
 Home.characterButton,Characters & Starships,CHARAKTERE & RAUMSCHIFFE,Personajes y naves espaciales,Personnages et vaisseaux spatiaux
 Home.talentsButton,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
@@ -24,6 +27,7 @@ Common.button.selectNone,Select None,Wählen Sie Keine,Seleccionar Ninguno,Séle
 Common.button.exportPdf,Export to PDF,Als PDF exportieren,Exportar a PDF,Exporter au format PDF
 Common.button.ok,OK,Okay,De acuerdo,D'accord
 Common.button.add,Add,Hinzufügen,Agregar,Ajouter
+Common.button.cancel,Cancel,Abbrechen,Cancelar,Annuler
 Construct.other.assignment,Assignment,Zuweisung,Asignación,Mission
 Construct.other.attributes,Attributes,Attribute,Atributos,Attributs
 Construct.other.disciplines,Disciplines,Disziplinen,Disciplinas,Disciplines

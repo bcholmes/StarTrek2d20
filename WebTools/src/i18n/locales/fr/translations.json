@@ -6,6 +6,10 @@
     "Lcars.copyright": "STAR TREK et les marques et logos associés sont des marques de commerce de CBS Studios Inc. Tous droits réservés.",
     "Lcars.credits": "Crédits",
 
+    "EraSelectionPage.sourceInstruction": "Sélectionnez les sources. Demandez à votre GM lesquels sont disponibles.",
+    "EraSelectionPage.sourceNote": "Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!",
+    "EraSelectionPage.eraInstruction": "Sélectionnez l'ère dans laquelle jouer. Demandez à votre MJ quelle ère choisir.",
+
     "Home.selection": "Sélectionnez l'outil.",
     "Home.characterButton": "Personnages et vaisseaux spatiaux",
     "Home.talentsButton": "Vue d'ensemble des talents",
@@ -30,6 +34,7 @@
     "Common.button.exportPdf": "Exporter au format PDF",
     "Common.button.ok": "D'accord",
     "Common.button.add": "Ajouter",
+    "Common.button.cancel": "Annuler",
 
     "Construct.other.assignment": "Mission",
     "Construct.other.attributes": "Attributs",

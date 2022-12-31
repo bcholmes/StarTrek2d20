@@ -1,17 +1,20 @@
 ﻿import * as React from 'react';
-import {Character, character} from '../common/character';
-import {Skill, SkillsHelper} from '../helpers/skills';
+import {character} from '../common/character';
+import {Skill} from '../helpers/skills';
+import { SkillImprovementCollection } from './skillImprovementCollection';
+import { withTranslation, WithTranslation } from 'react-i18next';
+import { makeKey } from '../common/translationKey';
 
-interface ISkillImprovementProperties {
+interface ISkillImprovementProperties extends WithTranslation {
     controller: SkillImprovementCollection;
     skill: Skill;
     showIncrease: boolean;
     showDecrease: boolean;
 }
 
-export class SkillImprovement extends React.Component<ISkillImprovementProperties, {}> {
+class SkillImprovement extends React.Component<ISkillImprovementProperties, {}> {
     render() {
-        const {skill, showDecrease, showIncrease} = this.props;
+        const {skill, showDecrease, showIncrease, t } = this.props;
 
         const expertise = character.skills[skill].expertise;
 
@@ -28,7 +31,7 @@ export class SkillImprovement extends React.Component<ISkillImprovementPropertie
                 <tbody>
                     <tr>
                         <td style={{ width: "250px" }}>
-                            <div className="skill-name">{SkillsHelper.getSkillName(skill) }</div>
+                            <div className="skill-name">{t(makeKey('Construct.discipline.', Skill[skill])) }</div>
                         </td>
                         <td style={{ width: "30px" }}>{dec}</td>
                         <th style={{ width: "60px" }}>{expertise}</th>
@@ -48,111 +51,4 @@ export class SkillImprovement extends React.Component<ISkillImprovementPropertie
     }
 }
 
-interface ISkillImprovementCollectionProperties {
-    points: number;
-    skills: Skill[];
-    onDone?: (done: boolean) => void;
-}
-
-class SkillContainer {
-    skill: Skill;
-    value: number;
-
-    constructor(skill: Skill, value: number) {
-        this.skill = skill;
-        this.value = value;
-    }
-}
-
-interface ISkillImprovementCollectionState {
-    allocatedPoints: number;
-}
-
-export class SkillImprovementCollection extends React.Component<ISkillImprovementCollectionProperties, ISkillImprovementCollectionState> {
-    private _skills: SkillContainer[];
-    private initialValues: number[];
-
-    constructor(props: ISkillImprovementCollectionProperties) {
-        super(props);
-
-        this._skills = [];
-        this.initialValues = character.skills.map(s => s.expertise);
-
-        for (var i = 0; i < character.skills.length; i++) {
-            this._skills.push(new SkillContainer(i, character.skills[i].expertise));
-        }
-
-        this.state = {
-            allocatedPoints: 0
-        };
-    }
-
-    showDecrease(skill: Skill) {
-        return character.skills[skill].expertise > this.initialValues[skill];
-    }
-
-    showIncrease(skill: Skill) {
-        return this.state.allocatedPoints < this.props.points && character.skills[skill].expertise < this.calculateMax() && 
-            ((character.skills[skill].expertise - this.initialValues[skill]) < (this.props.points - 1));
-    }
-
-
-    render() {
-        const skills = this._skills.map((s, i) => {
-            return (
-                <SkillImprovement
-                    key={i}
-                    controller={this}
-                    skill={s.skill}
-                    showDecrease={this.showDecrease(s.skill)}
-                    showIncrease={this.showIncrease(s.skill)}/>
-            )
-        });
-
-        return (
-            <div>
-                <div>{skills}</div>
-            </div>
-        );
-    }
-
-    onDecrease(skill: Skill) {
-        let points = this.state.allocatedPoints;
-        points--;
-
-        character.skills[skill].expertise--;
-
-        this._skills.forEach((container, i) => {
-            if (container.skill === skill) {
-                container.value--;
-            }
-        });
-
-        this.setState(state => ({ ...state, allocatedPoints: points }));
-    }
-
-    onIncrease(skill: Skill) {
-        let points = this.state.allocatedPoints;
-        points++;
-
-        character.skills[skill].expertise++;
-
-        this._skills.forEach((container, i) => {
-            if (container.skill === skill) {
-                container.value++;
-            }
-        });
-
-        this.props.onDone(points === this.props.points);
-
-        this.setState(state => ({ ...state, allocatedPoints: points }));
-    }
-
-    calculateMax() {
-        if (character.hasMaxedAttribute()) {
-            return Math.min(Character.maxDiscipline(character), 4);
-        } else {
-            return Character.maxDiscipline(character);
-        }
-    }
-}
+export default withTranslation()(SkillImprovement);

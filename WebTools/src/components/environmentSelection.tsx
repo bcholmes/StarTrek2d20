@@ -1,26 +1,29 @@
 ﻿import * as React from 'react';
 import {Window} from '../common/window';
 import {Environment, EnvironmentsHelper} from '../helpers/environments';
-import {AttributesHelper} from '../helpers/attributes';
-import {SkillsHelper} from '../helpers/skills';
+import {Attribute} from '../helpers/attributes';
+import {Skill} from '../helpers/skills';
 import {Button} from './button';
+import { withTranslation, WithTranslation } from 'react-i18next';
+import { makeKey } from '../common/translationKey';
 
-interface IEnvironmentSelectionProperties {
+interface IEnvironmentSelectionProperties extends WithTranslation {
     alternate: boolean;
     onSelection: (env: Environment, name: string) => void;
     onCancel: () => void;
 }
 
-export class EnvironmentSelection extends React.Component<IEnvironmentSelectionProperties, {}> {
+class EnvironmentSelection extends React.Component<IEnvironmentSelectionProperties, {}> {
     render() {
+        const { t } = this.props;
         let environments = this.props.alternate ? EnvironmentsHelper.getAlternateEnvironments() : EnvironmentsHelper.getEnvironments();
         var envs = environments.map((e, i) => {
             const attributes = e.attributes.map((a, i) => {
-                return <div key={'attr-' + i}>{AttributesHelper.getAttributeName(a) }</div>;
+                return <div key={'attr-' + i}>{t(makeKey('Construct.attribute.', Attribute[a])) }</div>;
             });
 
             const disciplines = e.disciplines.map((d, i) => {
-                return <div key={'skill-' + i}>{SkillsHelper.getSkillName(d)}</div>;
+                return <div key={'skill-' + i}>{t(makeKey('Construct.discipline.', Skill[d]))}</div>;
             });
 
             return (
@@ -29,7 +32,9 @@ export class EnvironmentSelection extends React.Component<IEnvironmentSelectionP
                     <td className="selection-header">{e.name}</td>
                     <td>{attributes}</td>
                     <td>{disciplines}</td>
-                    <td className="text-right"><Button className="button-small" text="Select" onClick={() => { this.props.onSelection(e.id, e.name) } } buttonType={true} /></td>
+                    <td className="text-right">
+                        <Button className="button-small" onClick={() => { this.props.onSelection(e.id, e.name) } } buttonType={true} >{t('Common.button.select')}</Button>
+                    </td>
                 </tr>
             )
         });
@@ -41,8 +46,8 @@ export class EnvironmentSelection extends React.Component<IEnvironmentSelectionP
                     <thead>
                         <tr>
                             <td></td>
-                            <td><b>Attributes</b></td>
-                            <td><b>Disciplines</b></td>
+                            <td><b>{t('Construct.other.attributes')} </b></td>
+                            <td><b>{t('Construct.other.disciplines')}</b></td>
                             <td></td>
                         </tr>
                     </thead>
@@ -50,8 +55,10 @@ export class EnvironmentSelection extends React.Component<IEnvironmentSelectionP
                         {envs}
                     </tbody>
                 </table>
-                <Button text="Cancel" className="button button-cancel" onClick={() => this.props.onCancel() }/>
+                <Button className="button button-cancel" onClick={() => this.props.onCancel() }>{t('Common.button.cancel')}</Button>
             </div>
         );
     }
 }
+
+export default withTranslation()(EnvironmentSelection);

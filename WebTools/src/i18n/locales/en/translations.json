@@ -6,6 +6,10 @@
     "Lcars.copyright": "STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.",
     "Lcars.credits": "Credits",
 
+    "EraSelectionPage.sourceInstruction": "Select sources. Ask your GM which are available.",
+    "EraSelectionPage.sourceNote": "Some sources are not yet implemented; check back soon!",
+    "EraSelectionPage.eraInstruction": "Select which Era to play in. Ask your GM which Era to choose.",
+
     "Home.selection": "Select tool.",
     "Home.characterButton": "Characters & Starships",
     "Home.talentsButton": "Talents Overview",
@@ -30,6 +34,7 @@
     "Common.button.exportPdf": "Export to PDF",
     "Common.button.ok": "OK",
     "Common.button.add": "Add",
+    "Common.button.cancel": "Cancel",
 
     "Construct.other.assignment": "Assignment",
     "Construct.other.attributes": "Attributes",

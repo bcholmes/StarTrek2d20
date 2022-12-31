@@ -21,19 +21,21 @@ const convertDataToTranslations = async (data) => {
         for (let j = 1; j < data.length; j++) {
             const row = data[j];
             const key = row[0];
-            const value = row[i+1];
+            const value = i+1 < row.length ? row[i+1] : null;
 
-            let prefix = key.substring(0, key.lastIndexOf('.'));
+            if (value) {
+                let prefix = key.substring(0, key.lastIndexOf('.'));
 
-            if (j > 1) {
-                stream.write(",");
+                if (j > 1) {
+                    stream.write(",");
+                }
+                if (previousPrefix !== null && previousPrefix !== prefix) {
+                    stream.write("\n");
+                }
+                stream.write("\n    \"" + key + "\": \"" + value + "\"");
+
+                previousPrefix = prefix;
             }
-            if (previousPrefix !== null && previousPrefix !== prefix) {
-                stream.write("\n");
-            }
-            stream.write("\n    \"" + key + "\": \"" + value + "\"");
-
-            previousPrefix = prefix;
         }
 
         stream.write("\n}\n");
