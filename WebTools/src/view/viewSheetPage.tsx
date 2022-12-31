@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter, RouteComponentProps } from "react-router";
 import { withTranslation, WithTranslation } from 'react-i18next';
-import { StarshipView } from "./starshipView"
+import StarshipView from "./starshipView"
 import SupportingCharacterView from "./supportingCharacterView";
 import { marshaller } from "../helpers/marshaller";
 import MainCharacterView from "./mainCharacterView";

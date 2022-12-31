@@ -14,6 +14,7 @@ ViewPage.viewSupportingCharacter,View Supporting Character,Nebencharakter anzeig
 ViewPage.viewMainCharacter,View Main Character,Hauptcharakter anzeigen,Ver personaje principal,Voir le personnage principal
 ViewPage.viewStarship,View Starship,Raumschiff ansehen,Ver nave espacial,Voir le vaisseau spatial
 ViewPage.errorMessage,"Things have gone terribly, terribly wrong. We might be in the mirror universe.","Die Dinge sind schrecklich, schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.","Las cosas han ido terriblemente, terriblemente mal. Podríamos estar en el universo espejo.","Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir."
+ViewPage.unnamedStarship,Unnamed Starship,Unbenanntes Raumschiff,Nave espacial sin nombre,Vaisseau sans nom
 GMTracker.title,Tracker,Aufspürer,Rastreador,Pisteur
 GMTracker.instruction,Use this tool to manage various NPCs in your game.,"Benutze dieses Tool, um verschiedene NPCs in deinem Spiel zu verwalten.",Usa esta herramienta para administrar varios NPC en tu juego.,Utilisez cet outil pour gérer divers PNJ dans votre jeu.
 GMTracker.addCharacterModalTitle,Add Character,Charakter hinzufügen,Agregar carácter,Ajouter un caractère
@@ -30,15 +31,27 @@ Common.button.add,Add,Hinzufügen,Agregar,Ajouter
 Common.button.cancel,Cancel,Abbrechen,Cancelar,Annuler
 Construct.other.assignment,Assignment,Zuweisung,Asignación,Mission
 Construct.other.attributes,Attributes,Attribute,Atributos,Attributs
+Construct.other.crew,Crew,Mannschaft,Tripulación,Équipage
+Construct.other.departments,Departments,Abteilungen,Departamentos,Ministères
 Construct.other.disciplines,Disciplines,Disziplinen,Disciplinas,Disciplines
 Construct.other.environment,Environment,Umwelt,Medio ambiente,Environnement
 Construct.other.equipment,Equipment,Ausrüstung,Equipo,Équipement
 Construct.other.focuses,Focuses,Konzentriert sich,Atenciónes,Foyers
+Construct.other.missionProfile,Mission Profile,Missionsprofil,Perfil de la misión,Profil de la mission
 Construct.other.name,Name,Name,Nombre,Nom
 Construct.other.pronouns,Pronouns,Pronomen,Pronombres,Pronoms
+Construct.other.power,Power,Macht,Poder,Pouvoir
 Construct.other.rank,Rank,Rang,Rango,Rang
+Construct.other.refits,Refits,Umbauten,Refits,Réaménagements
+Construct.other.resistance,Resistance,Widerstand,Resistencia,Résistance
+Construct.other.scale,Scale,Maßstab,Escama,Écaille
+Construct.other.serviceDate,Service Date,Service-Datum,Fecha de servicio,Date de signification
+Construct.other.shields,Shields,Schilde,Escudos,Boucliers
+Construct.other.spaceFrame,Space Frame,Raumfachwerk,Malla espacial,Cadre spatial
+Construct.other.specialRules,Special Rules,Besondere Regeln,Reglas especiales,Règles spéciales
 Construct.other.species,Species,Spezies,Especie,Espèce
 Construct.other.stress,Stress,Stress,Estrés,Stress
+Construct.other.systems,Systems,Systeme,Sistemas,Systèmes
 Construct.other.talents,Talents,Begabungen,Talentos,Talents
 Construct.other.traits,Traits,Charakterzüge,Rasgos,Traits
 Construct.other.upbringing,Upbringing,Erziehung,Cría,Élevage
@@ -56,6 +69,18 @@ Construct.discipline.security,Security,Sicherheit,Seguridad,Sécurité
 Construct.discipline.engineering,Engineering,Ingenieurwesen,Ingeniería,Ingénierie
 Construct.discipline.science,Science,Wissenschaft,Ciencia,Science
 Construct.discipline.medicine,Medicine,Medizin,Medicina,Médecine
+Construct.department.command,Command,Befehl,Mandar,Commander
+Construct.department.conn,Conn,Steuerung,Pilotaje,Pilotage
+Construct.department.security,Security,Sicherheit,Seguridad,Sécurité
+Construct.department.engineering,Engineering,Ingenieurwesen,Ingeniería,Ingénierie
+Construct.department.science,Science,Wissenschaft,Ciencia,Science
+Construct.department.medicine,Medicine,Medizin,Medicina,Médecine
+Construct.system.comms,Comms,Kommunikation,Comunicación,Valeurs de communication
+Construct.system.computer,Computer,Computer,Ordenador,Ordinateur
+Construct.system.engines,Engines,Motoren,Motores,Moteur
+Construct.system.sensors,Sensors,Sensoren,Sensores,Capteurs
+Construct.system.structure,Structure,Struktur,Estructura,Structure
+Construct.system.weapons,Weapons,Waffen,Armas,Armes
 Page.title.home,Home,Homepage,Página principal,Page d'accueil
 Page.title.era,Era,Ära,Era,Ère
 Page.title.talentsOverview,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents

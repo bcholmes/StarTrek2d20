@@ -11,14 +11,16 @@ import { Header } from "../components/header";
 import { OutlineImage } from "../components/outlineImage";
 import { StatView } from "../components/StatView";
 import { WeaponView } from "../components/weaponView";
+import { withTranslation, WithTranslation } from 'react-i18next';
+import { makeKey } from "../common/translationKey";
 
 const NBSP = '\u00A0';
 
-interface IStarshipViewProperties {
+interface IStarshipViewProperties extends WithTranslation {
     starship: Starship;
 }
 
-export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
+class StarshipView extends React.Component<IStarshipViewProperties, {}> {
 
     componentDidMount() {
         if (this.props.starship.name) {
@@ -27,6 +29,8 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
     }
 
     render() {
+        const { t } = this.props;
+
         let name = "";
         if (this.props.starship.name) {
             name = this.props.starship.name;
@@ -35,61 +39,61 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
                 name += ' • ' + this.props.starship.registry;
             }
         } else {
-            name = "Unnamed Starship";
+            name = t('ViewPage.unnamedStarship');
         }
 
         return (<div>
             <Header>{name}</Header>
             <div className="row mt-4" style={{alignItems: "baseline"}}>
-                <div className="col-md-2 view-field-label pb-2">Space Frame:</div>
+                <div className="col-md-2 view-field-label pb-2">{t('Construct.other.spaceFrame')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.className ? this.props.starship.className : NBSP}</div></div>
 
-                <div className="col-md-2 view-field-label pb-2">Service Date:</div>
+                <div className="col-md-2 view-field-label pb-2">{t('Construct.other.serviceDate')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.serviceYear? this.props.starship.serviceYear : NBSP}</div></div>
             </div>
 
             <div className="row" style={{alignItems: "baseline"}}>
-                <div className="col-md-2 view-field-label pb-2">Mission Profile:</div>
+                <div className="col-md-2 view-field-label pb-2">{t('Construct.other.missionProfile')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.missionProfileModel ? this.props.starship.missionProfileModel.name : NBSP}</div></div>
 
-                <div className="col-md-2 view-field-label pb-2">Refits:</div>
+                <div className="col-md-2 view-field-label pb-2">{t('Construct.other.refits')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2 small">{this.refitAsString()}</div></div>
             </div>
 
             <div className="row" style={{alignItems: "baseline"}}>
-                <div className="col-md-2 view-field-label pb-2">Traits:</div>
+                <div className="col-md-2 view-field-label pb-2">{t('Construct.other.traits')}:</div>
                 <div className="col-md-10 text-white"><div className="view-border-bottom pb-2">{this.getAllTraits()}</div></div>
             </div>
 
             <div className="row">
                 <div className="col-xl-6 mt-4">
-                    <Header level={2}>Systems</Header>
+                    <Header level={2}>{t('Construct.other.systems')}</Header>
 
                     <div className="row row-cols-1 row-cols-md-3 mt-3">
-                        <StatView showZero={true} name="Comms" value={this.props.starship.getSystemValue(System.Comms)} className="col mb-1" />
-                        <StatView showZero={true} name="Engines" value={this.props.starship.getSystemValue(System.Engines)} className="col mb-1" />
-                        <StatView showZero={true} name="Structure" value={this.props.starship.getSystemValue(System.Structure)} className="col mb-1" />
-                        <StatView showZero={true} name="Computers" value={this.props.starship.getSystemValue(System.Computer)} className="col mb-1" />
-                        <StatView showZero={true} name="Sensors" value={this.props.starship.getSystemValue(System.Sensors)} className="col mb-1" />
-                        <StatView showZero={true} name="Weapons" value={this.props.starship.getSystemValue(System.Weapons)} className="col mb-1" />
+                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Comms]))} value={this.props.starship.getSystemValue(System.Comms)} className="col mb-1" />
+                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Engines]))} value={this.props.starship.getSystemValue(System.Engines)} className="col mb-1" />
+                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Structure]))} value={this.props.starship.getSystemValue(System.Structure)} className="col mb-1" />
+                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Computer]))} value={this.props.starship.getSystemValue(System.Computer)} className="col mb-1" />
+                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Sensors]))} value={this.props.starship.getSystemValue(System.Sensors)} className="col mb-1" />
+                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Weapons]))} value={this.props.starship.getSystemValue(System.Weapons)} className="col mb-1" />
                     </div>
 
-                    <Header level={2} className="mt-4">Departments</Header>
+                    <Header level={2} className="mt-4">{t('Construct.other.departments')}</Header>
                     <div className="row row-cols-1 row-cols-md-3 mt-3">
-                        <StatView showZero={true} name="Command" value={this.props.starship.departments ? this.props.starship.departments[Department.Command] : undefined} className="col mb-1" />
-                        <StatView showZero={true} name="Security" value={this.props.starship.departments ? this.props.starship.departments[Department.Security] : undefined} className="col mb-1" />
-                        <StatView showZero={true} name="Science" value={this.props.starship.departments ? this.props.starship.departments[Department.Science] : undefined} className="col mb-1" />
-                        <StatView showZero={true} name="Conn" value={this.props.starship.departments ? this.props.starship.departments[Department.Conn] : undefined} className="col mb-1" />
-                        <StatView showZero={true} name="Engineering" value={this.props.starship.departments ? this.props.starship.departments[Department.Engineering] : undefined} className="col mb-1" />
-                        <StatView showZero={true} name="Medicine" value={this.props.starship.departments ? this.props.starship.departments[Department.Medicine] : undefined} className="col mb-1" />
+                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Command]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Command] : undefined} className="col mb-1" />
+                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Security]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Security] : undefined} className="col mb-1" />
+                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Science]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Science] : undefined} className="col mb-1" />
+                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Conn]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Conn] : undefined} className="col mb-1" />
+                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Engineering]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Engineering] : undefined} className="col mb-1" />
+                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Medicine]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Medicine] : undefined} className="col mb-1" />
                     </div>
 
                     <div className="mt-3">
                         <OutlineImage starship={this.props.starship} size="lg" />
 
                         <div className="row row-cols-1 row-cols-xl-3 mb-1">
-                            <StatView showZero={true} name="Resistance" value={this.props.starship.scale} className="col mb-1" colourClass="red" />
-                            <StatView showZero={true} name="Scale" value={this.props.starship.scale} className="col mb-1" colourClass="red" />
+                            <StatView showZero={true} name={t('Construct.other.resistance')} value={this.props.starship.resistance} className="col mb-1" colourClass="red" />
+                            <StatView showZero={true} name={t('Construct.other.scale')} value={this.props.starship.scale} className="col mb-1" colourClass="red" />
                         </div>
                     </div>
                     {this.renderTalentNames()}
@@ -98,26 +102,26 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
                 <div className="col-xl-6 mt-4">
                     <div className="row">
                         <div className="col-xl-6">
-                            <Header level={2}>Shields</Header>
+                            <Header level={2}>{t('Construct.other.shields')}</Header>
                             {this.renderShields()}
                         </div>
                         <div className="col-xl-6">
-                            <Header level={2}>Power / Crew</Header>
+                            <Header level={2}>{t('Construct.other.power')} / {t('Construct.other.crew')}</Header>
                             <div className="row row-cols-1 row-cols-1 mb-1 mt-3">
-                                <StatView showZero={true} name="Power" value={this.props.starship.power} className="col" />
+                                <StatView showZero={true} name={t('Construct.other.power')} value={this.props.starship.power} className="col" />
                             </div>
                             <div className="row row-cols-1 row-cols-1 mb-2">
-                                <StatView showZero={true} name="Crew" value={this.props.starship.crewSupport} className="col" />
+                                <StatView showZero={true} name={t('Construct.other.crew')} value={this.props.starship.crewSupport} className="col" />
                             </div>
                         </div>
                     </div>
-                    <Header level={2} className="mt-4">Weapons</Header>
+                    <Header level={2} className="mt-4">{t('Construct.other.weapons')}</Header>
                     {this.renderWeapons()}
                 </div>
             </div>
 
             <div className="button-container mt-5 mb-3">
-                <Button text="Export to PDF" className="button-small" onClick={() => this.showExportDialog() } buttonType={true}/>
+                <Button className="button-small" onClick={() => this.showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
             </div>
        </div>);
     }
@@ -137,19 +141,20 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
     }
 
     renderTalentNames() {
+        const { t } = this.props;
         let talentNames = this.props.starship.getTalentSelectionList().filter(t => !t.talent.specialRule).map(t => t.description);
         let specialRuleNames = this.props.starship.getTalentSelectionList().filter(t => t.talent.specialRule).map(t => t.description);
 
         return (<>
                 {talentNames?.length
                     ? (<>
-                        <Header level={2} className="mt-4">Talents</Header>
+                        <Header level={2} className="mt-4">{t('Construct.other.talents')}</Header>
                         {talentNames.map((t, i) => (<div className="text-white view-border-bottom py-2" key={'talent-' + i}>{t}</div>))}
                     </>)
                     : null}
                 {specialRuleNames?.length
                     ? (<>
-                        <Header level={2} className="mt-4">Special Rules</Header>
+                        <Header level={2} className="mt-4">{t('Construct.other.specialRules')}</Header>
                         {specialRuleNames.map((t, i) => (<div className="text-white view-border-bottom py-2" key={'special-' + i}>
                             {t === "Mission Pod" && this.props.starship?.missionPodModel ? (t + ": " + this.props.starship.missionPodModel.name) : t}
                             </div>))}
@@ -202,3 +207,5 @@ export class StarshipView extends React.Component<IStarshipViewProperties, {}> {
     }
 
 }
+
+export default withTranslation()(StarshipView);
