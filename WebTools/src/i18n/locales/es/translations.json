@@ -32,10 +32,12 @@
     "Common.button.select": "Escoger",
     "Common.button.selectAll": "Seleccionar todo",
     "Common.button.selectNone": "Seleccionar Ninguno",
+    "Common.button.exportJson": "Exportar a JSON",
     "Common.button.exportPdf": "Exportar a PDF",
     "Common.button.ok": "De acuerdo",
     "Common.button.add": "Agregar",
     "Common.button.cancel": "Cancelar",
+    "Common.button.next": "Próximo",
 
     "Construct.other.assignment": "Asignación",
     "Construct.other.attributes": "Atributos",

@@ -32,10 +32,12 @@
     "Common.button.select": "Select",
     "Common.button.selectAll": "Select All",
     "Common.button.selectNone": "Select None",
+    "Common.button.exportJson": "Export to JSON",
     "Common.button.exportPdf": "Export to PDF",
     "Common.button.ok": "OK",
     "Common.button.add": "Add",
     "Common.button.cancel": "Cancel",
+    "Common.button.next": "Next",
 
     "Construct.other.assignment": "Assignment",
     "Construct.other.attributes": "Attributes",

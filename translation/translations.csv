@@ -25,10 +25,12 @@ AddCharacterView.characterPrefix,Character:,Zeichen:,Carácter:,Personnage:
 Common.button.select,Select,Auswählen,Escoger,Choisir
 Common.button.selectAll,Select All,Alle auswählen,Seleccionar todo,Sélectionner tout
 Common.button.selectNone,Select None,Wählen Sie Keine,Seleccionar Ninguno,Sélectionnez Aucun
+Common.button.exportJson,Export to JSON,Export nach JSON,Exportar a JSON,Exporter au format JSON
 Common.button.exportPdf,Export to PDF,Als PDF exportieren,Exportar a PDF,Exporter au format PDF
 Common.button.ok,OK,Okay,De acuerdo,D'accord
 Common.button.add,Add,Hinzufügen,Agregar,Ajouter
 Common.button.cancel,Cancel,Abbrechen,Cancelar,Annuler
+Common.button.next,Next,Nächster,Próximo,Prochain
 Construct.other.assignment,Assignment,Zuweisung,Asignación,Mission
 Construct.other.attributes,Attributes,Attribute,Atributos,Attributs
 Construct.other.crew,Crew,Mannschaft,Tripulación,Équipage

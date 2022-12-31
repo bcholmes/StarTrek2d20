@@ -48,7 +48,7 @@ export class SelectStarshipToolPage extends React.Component<{}, IStarshipToolPag
                                     onMouseOut={() => this.setState((state) => ({...state, showStandardDescription: false}))}
                                 >Standard Build</Button>
                             </div>
-                            <p className={this.state.showStandardDescription ? 'mb-0' : 'd-none'}>Use the standard Starship
+                            <p className={this.state.showStandardDescription ? 'd-none d-lg-block mb-0' : 'd-none'}>Use the standard Starship
                                 creation process(es), as outlined in the rulebooks. E.g.: starships choose a Spaceframe, Mission Profile, etc.
                             </p>
                         </div>
@@ -59,7 +59,7 @@ export class SelectStarshipToolPage extends React.Component<{}, IStarshipToolPag
                                     onMouseOut={() => this.setState((state) => ({...state, showSimplifiedDescription: false}))}
                                 >Simplified Build</Button>
                             </div>
-                            <p className={this.state.showSimplifiedDescription ? 'mb-0' : 'd-none'}>
+                            <p className={this.state.showSimplifiedDescription ? 'd-none d-lg-block mb-0' : 'd-none'}>
                                 This is a good option for transcribing a set of stats, say from an online source or other other reference.
                             </p>
                         </div>

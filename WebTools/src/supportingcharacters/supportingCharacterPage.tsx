@@ -3,7 +3,7 @@ import {character } from '../common/character';
 import {CharacterType, CharacterTypeModel } from '../common/characterType';
 import {CharacterSerializer} from '../common/characterSerializer';
 import {SpeciesHelper} from '../helpers/species';
-import {DropDownInput} from '../components/dropDownInput';
+import {DropDownElement, DropDownInput} from '../components/dropDownInput';
 import SupportingCharacterAttributes from '../components/supportingCharacterAttributes';
 import SupportingCharacterDisciplines from '../components/supportingCharacterDisciplines';
 import {Rank, RanksHelper} from '../helpers/ranks';
@@ -25,12 +25,13 @@ interface ISupportingCharacterState {
     purpose: string;
     rank: string;
     showRank: boolean;
+    species: Species;
+    customSpeciesName?: string;
 }
 
 export class SupportingCharacterPage extends React.Component<{}, ISupportingCharacterState> {
 
     private _name: string;
-    private _species: string;
     private _focus1: string;
     private _focus2: string;
     private _focus3: string;
@@ -43,8 +44,6 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
         if (profileButton !== undefined) {
             profileButton.style.display = "none";
         }
-
-        this._species = "Human";
 
         [10, 9, 9, 8, 8, 7].forEach((v, i) => {
             character.attributes[i].value = v;
@@ -61,8 +60,16 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
             type: CharacterTypeModel.getAllTypes()[character.type],
             purpose: "",
             rank: character.rank,
-            showRank: true
+            showRank: true,
+            species: Species.Human
         }
+    }
+
+    getSpeciesList() {
+        let speciesList = SpeciesHelper.getSpecies().map(s => { return new DropDownElement(s.id, s.name) });
+        speciesList.push(new DropDownElement(Species.Custom, "Custom/Other"));
+
+        return speciesList;
     }
 
     render() {
@@ -79,8 +86,6 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                     </div>
                 </div>)
             : null;
-
-
 
         return (
             <div className="page container ml-0">
@@ -128,14 +133,27 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                             The chosen species will affect the final Attribute scores.
                             Select two different values to swap them.
                         </p>
-                        <DropDownInput
-                            items={SpeciesHelper.getSpecies().map(s => { return s.name }) }
-                            defaultValue={this._species}
-                            onChange={(index) => this.selectSpecies(index) }/>
-                        <br/><br/>
-                        <SupportingCharacterAttributes age={this.state.age}
-                            species={SpeciesHelper.getSpeciesByName(this._species) }
-                            onUpdate={() => { this.forceUpdate(); }}/>
+                        <div className="mb-2">
+                            <DropDownInput
+                                items={this.getSpeciesList()}
+                                defaultValue={this.state.species}
+                                onChange={(index) => this.selectSpecies(index) }/>
+                        </div>
+                        {this.state.species === Species.Custom
+                        ? (<div className="mb-2">
+                             <InputFieldAndLabel labelName="Species" value={this.state.customSpeciesName || ''}
+                                id="speciesName" onChange={(value) => {
+                                    console.log("change " + value);
+                                    character.customSpeciesName = value;
+                                    this.setState((state) => ({...state, customSpeciesName: value}))
+                                }} />
+                        </div>)
+                        : null}
+                        <div className="my-3">
+                            <SupportingCharacterAttributes age={this.state.age}
+                                species={this.state.species}
+                                onUpdate={() => { this.forceUpdate(); }}/>
+                        </div>
                     </div>
                     <div className="my-5">
                         <Header level={2}>Disciplines</Header>
@@ -242,12 +260,12 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
     }
 
     private selectSpecies(index: number) {
-        const species = SpeciesHelper.getSpecies();
-        this._species = species[index].name;
+        const species = this.getSpeciesList();
+        let selection = species[index].value as Species;
 
-        character.species = species[index].id;
+        character.species = selection;
 
-        this.forceUpdate();
+        this.setState((state) => ({...state, species: selection}));
     }
 
     private getTypes() {

@@ -1511,6 +1511,9 @@ class _Species {
                 break;
             }
         }
+        if (result === undefined && name === Species[Species.Custom]) {
+            result = Species.Custom;
+        }
         return result;
     }
 

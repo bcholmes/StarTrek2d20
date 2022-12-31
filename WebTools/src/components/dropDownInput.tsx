@@ -1,9 +1,20 @@
 ﻿import * as React from 'react';
 
 interface IDropDownInputProperties {
-    items: any[];
+    items: string[]|DropDownElement[];
     defaultValue: any;
     onChange: (index: number) => void;
+}
+
+export class DropDownElement {
+
+    readonly name: string;
+    readonly value: number;
+
+    constructor(value: number, name: string) {
+        this.value = value;
+        this.name = name;
+    }
 }
 
 export class DropDownInput extends React.Component<IDropDownInputProperties, {}> {
@@ -11,7 +22,12 @@ export class DropDownInput extends React.Component<IDropDownInputProperties, {}>
         const {items, defaultValue, onChange} = this.props;
 
         const options = items.map((item, i) => {
-            return <option key={i} value={item}>{item}</option>
+            if (item instanceof DropDownElement) {
+                let element = item as DropDownElement;
+                return <option key={i} value={element.value}>{element.name}</option>
+            } else {
+                return <option key={i} value={item}>{item}</option>
+            }
         });
 
         return (

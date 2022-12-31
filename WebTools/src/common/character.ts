@@ -117,6 +117,7 @@ export class Character extends Construct {
     public assignedShip?: string;
     public secondaryRole?: string;
     public species?: Species;
+    public customSpeciesName?: string;
     public mixedSpecies?: Species;
     public originalSpecies?: Species;
     public track?: Track;
@@ -297,6 +298,8 @@ export class Character extends Construct {
     get speciesName() {
         if (this.species == null) {
             return "";
+        } else if (this.species === Species.Custom) {
+            return this.customSpeciesName || "";
         } else {
             let species = SpeciesHelper.getSpeciesByType(this.species);
             let result = species.name;
@@ -314,24 +317,27 @@ export class Character extends Construct {
 
     get baseTraits() {
         let traits = [ ...this.traits ];
-        if (character.hasTalent("Augmented Ability (Control)")
-                || character.hasTalent("Augmented Ability (Daring)")
-                || character.hasTalent("Augmented Ability (Fitness)")
-                || character.hasTalent("Augmented Ability (Insight)")
-                || character.hasTalent("Augmented Ability (Presence)")
-                || character.hasTalent("Augmented Ability (Reason)")
-                || character.hasTalent("Augmented Ability")) {
+        if (this.species === Species.Custom && this.customSpeciesName) {
+            traits.push(this.customSpeciesName);
+        }
+        if (this.hasTalent("Augmented Ability (Control)")
+                || this.hasTalent("Augmented Ability (Daring)")
+                || this.hasTalent("Augmented Ability (Fitness)")
+                || this.hasTalent("Augmented Ability (Insight)")
+                || this.hasTalent("Augmented Ability (Presence)")
+                || this.hasTalent("Augmented Ability (Reason)")
+                || this.hasTalent("Augmented Ability")) {
             traits.push("Augment");
         }
-        if (character.hasTalent("Joined")) {
+        if (this.hasTalent("Joined")) {
             traits.push("Symbiont");
         }
-        if (character.hasTalent("Sensory Replacement")) {
+        if (this.hasTalent("Sensory Replacement")) {
             traits.push("Artificial Sense");
         }
-        if (character.role === 'Ambassador') {
-            if (character.type === CharacterType.AmbassadorDiplomat && character.typeDetails) {
-                let details = character.typeDetails as GovernmentDetails;
+        if (this.role === 'Ambassador') {
+            if (this.type === CharacterType.AmbassadorDiplomat && this.typeDetails) {
+                let details = this.typeDetails as GovernmentDetails;
                 traits.push(details.getName() ? details.getName() + " Ambassador" : "Ambassador");
             } else {
                 traits.push("Ambassador");
