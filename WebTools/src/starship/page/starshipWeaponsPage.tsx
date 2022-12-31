@@ -27,7 +27,7 @@ class StarshipWeaponsPageProperties extends React.Component<IStarshipWeaponsPage
                 <div className="d-flex mb-3 mt-4">
                     <p className="mr-auto mb-0">This ship has the following weapons:</p>
                     <div className="text-right">
-                        <Button buttonType={true} className="button button-small mt-0" onClick={() => this.showModal()}>Add Weapon</Button>
+                        <Button buttonType={true} className="btn btn-link mt-0" onClick={() => this.showModal()}><i className="bi bi-plus-circle"></i></Button>
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@ class StarshipWeaponsPageProperties extends React.Component<IStarshipWeaponsPage
                     <td className="selection-header">{w.description}</td>
                     <td><p className="m-0">{w.dice}</p></td>
                     <td><p className="m-0">{w.qualities}</p></td>
-                    <td className="text-right"><Button buttonType={true} className="button-small" onClick={() => { this.confirmRemove(w) }} >Delete</Button></td>
+                    <td className="text-right"><Button buttonType={true} className="btn btn-link text-danger" onClick={() => { this.confirmRemove(w) }} ><i className="bi bi-trash"></i></Button></td>
                 </tr>))}
             </tbody>);
         }

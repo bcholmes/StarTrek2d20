@@ -72,6 +72,11 @@
     "Page.title.talentsOverview": "Talente im Überblick",
     "Page.title.creditsPage": "Kredite",
     "Page.title.viewSheet": "Blatt anzeigen",
+    "Page.title.supportingCharacter": "Nebencharakter",
+    "Page.title.characterType": "Zeichentyp",
+    "Page.title.systemGeneration": "Sternsystem-Generation",
+    "Page.title.sectorDetails": "Branchendetails",
+    "Page.title.starSystemDetails": "Details zum Sternensystem",
     "Page.title.gamemasterTrackerPage": "Verfolgung",
 
     "Page.breadcrumb.characterCreation": "Charaktererstellung"

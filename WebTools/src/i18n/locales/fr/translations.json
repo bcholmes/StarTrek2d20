@@ -72,6 +72,11 @@
     "Page.title.talentsOverview": "Vue d'ensemble des talents",
     "Page.title.creditsPage": "Crédits",
     "Page.title.viewSheet": "Voir la feuille",
+    "Page.title.supportingCharacter": "Personnage secondaire",
+    "Page.title.characterType": "Type de personnage",
+    "Page.title.systemGeneration": "Génération du système stellaire",
+    "Page.title.sectorDetails": "Détails du secteur",
+    "Page.title.starSystemDetails": "Détails du système stellaire",
     "Page.title.gamemasterTrackerPage": "Pistage",
 
     "Page.breadcrumb.characterCreation": "Création de personnages"

@@ -90,8 +90,6 @@ class PageHeader extends React.Component<IPageHeaderProperties, {}> {
             return "Starship Refits";
         } else if (this.props.page === PageIdentity.StarSystemDetails) {
             return "Star System Details";
-        } else if (this.props.page === PageIdentity.ViewSheet) {
-            return "View Sheet";
         } else {
             return "";
         }

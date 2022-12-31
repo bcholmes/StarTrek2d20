@@ -72,6 +72,11 @@
     "Page.title.talentsOverview": "Talents Overview",
     "Page.title.creditsPage": "Credits",
     "Page.title.viewSheet": "View Sheet",
+    "Page.title.supportingCharacter": "Supporting Character",
+    "Page.title.characterType": "Character Type",
+    "Page.title.systemGeneration": "System Generation",
+    "Page.title.sectorDetails": "Sector Details",
+    "Page.title.starSystemDetails": "Star System Details",
     "Page.title.gamemasterTrackerPage": "Tracking",
 
     "Page.breadcrumb.characterCreation": "Character Creation"
