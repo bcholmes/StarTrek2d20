@@ -22,7 +22,7 @@
     "AddCharacterView.instruction": "Pegue la URL de un carácter.",
     "AddCharacterView.errorMessage": "Esta URL no parece válida.",
     "AddCharacterView.errorCharacterType": "¡Gritos! Solo admitimos personajes, por el momento. No naves espaciales.",
-    "AddCharacterView.characterPrefix": "Carácter: ",
+    "AddCharacterView.characterPrefix": "Carácter:",
 
     "Common.button.select": "Escoger",
     "Common.button.selectAll": "Seleccionar todo",
@@ -70,5 +70,4 @@
     "Page.title.gamemasterTrackerPage": "Seguimiento",
 
     "Page.breadcrumb.characterCreation": "Creación de personajes"
-
 }

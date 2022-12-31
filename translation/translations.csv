@@ -1,0 +1,61 @@
+Language,en,de,es,fr
+LanguageNotice.title,Hello There!,Hallo,¡Hola!,Salut!
+LanguageNotice.text,"We're experimenting with some initial support for national languages. We're in a very preliminary stage, but we hope to be able to support more languages, soon.","Wir experimentieren mit einer anfänglichen Unterstützung für Landessprachen. Wir befinden uns in einem sehr frühen Stadium, aber wir hoffen, bald weitere Sprachen unterstützen zu können.","Estamos experimentando con algún soporte inicial para los idiomas nacionales. Estamos en una etapa muy preliminar, pero esperamos poder soportar más idiomas, pronto.","Nous expérimentons un soutien initial pour les langues nationales. Nous sommes dans une phase très préliminaire, mais nous espérons être en mesure de prendre en charge plus de langues, bientôt."
+LanguageNotice.useEnglish,Use English instead,Englisch verwenden,Usar inglés,Utiliser l'anglais
+Lcars.copyright,STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.,STAR TREK und zugehörige Marken und Logos sind Marken von CBS Studios Inc. Alle Rechte vorbehalten.,STAR TREK y las marcas y logotipos relacionados son marcas comerciales de CBS Studios Inc. Todos los derechos reservados.,STAR TREK et les marques et logos associés sont des marques de commerce de CBS Studios Inc. Tous droits réservés.
+Lcars.credits,Credits,Kredite,Créditos,Crédits
+Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sélectionnez l'outil.
+Home.characterButton,Characters & Starships,CHARAKTERE & RAUMSCHIFFE,Personajes y naves espaciales,Personnages et vaisseaux spatiaux
+Home.talentsButton,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
+ViewPage.viewSupportingCharacter,View Supporting Character,Nebencharakter anzeigen,Ver personaje secundario,Voir le personnage secondaire
+ViewPage.viewMainCharacter,View Main Character,Hauptcharakter anzeigen,Ver personaje principal,Voir le personnage principal
+ViewPage.viewStarship,View Starship,Raumschiff ansehen,Ver nave espacial,Voir le vaisseau spatial
+ViewPage.errorMessage,"Things have gone terribly, terribly wrong. We might be in the mirror universe.","Die Dinge sind schrecklich, schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.","Las cosas han ido terriblemente, terriblemente mal. Podríamos estar en el universo espejo.","Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir."
+GMTracker.title,Tracker,Aufspürer,Rastreador,Pisteur
+GMTracker.instruction,Use this tool to manage various NPCs in your game.,"Benutze dieses Tool, um verschiedene NPCs in deinem Spiel zu verwalten.",Usa esta herramienta para administrar varios NPC en tu juego.,Utilisez cet outil pour gérer divers PNJ dans votre jeu.
+GMTracker.addCharacterModalTitle,Add Character,Charakter hinzufügen,Agregar carácter,Ajouter un caractère
+AddCharacterView.instruction,Paste in the URL for a character.,Fügen Sie die URL für ein Zeichen ein.,Pegue la URL de un carácter.,Collez l'URL d'un caractère.
+AddCharacterView.errorMessage,This url does not look valid.,Diese URL sieht nicht gültig aus.,Esta URL no parece válida.,Cette URL ne semble pas valide.
+AddCharacterView.errorCharacterType,"Whoops! We only support characters, at the moment. Not starships.",Hoppla! Wir unterstützen im Moment nur Charaktere. Keine Raumschiffe.,"¡Gritos! Solo admitimos personajes, por el momento. No naves espaciales.","Nous ne supportons que les personnages, pour le moment. Pas des vaisseaux spatiaux."
+AddCharacterView.characterPrefix,Character:,Zeichen:,Carácter:,Personnage:
+Common.button.select,Select,Auswählen,Escoger,Choisir
+Common.button.selectAll,Select All,Alle auswählen,Seleccionar todo,Sélectionner tout
+Common.button.selectNone,Select None,Wählen Sie Keine,Seleccionar Ninguno,Sélectionnez Aucun
+Common.button.exportPdf,Export to PDF,Als PDF exportieren,Exportar a PDF,Exporter au format PDF
+Common.button.ok,OK,Okay,De acuerdo,D'accord
+Common.button.add,Add,Hinzufügen,Agregar,Ajouter
+Construct.other.assignment,Assignment,Zuweisung,Asignación,Mission
+Construct.other.attributes,Attributes,Attribute,Atributos,Attributs
+Construct.other.disciplines,Disciplines,Disziplinen,Disciplinas,Disciplines
+Construct.other.environment,Environment,Umwelt,Medio ambiente,Environnement
+Construct.other.equipment,Equipment,Ausrüstung,Equipo,Équipement
+Construct.other.focuses,Focuses,Konzentriert sich,Atenciónes,Foyers
+Construct.other.name,Name,Name,Nombre,Nom
+Construct.other.pronouns,Pronouns,Pronomen,Pronombres,Pronoms
+Construct.other.rank,Rank,Rang,Rango,Rang
+Construct.other.species,Species,Spezies,Especie,Espèce
+Construct.other.stress,Stress,Stress,Estrés,Stress
+Construct.other.talents,Talents,Begabungen,Talentos,Talents
+Construct.other.traits,Traits,Charakterzüge,Rasgos,Traits
+Construct.other.upbringing,Upbringing,Erziehung,Cría,Élevage
+Construct.other.values,Values,Werte,Valores,Valeurs
+Construct.other.weapons,Weapons,Waffen,Armas,Armes
+Construct.attribute.control,Control,Steuerung,Control,Contrôle
+Construct.attribute.daring,Daring,Gewagt,Atrevido,Audacieux
+Construct.attribute.fitness,Fitness,Fitness,Aptitud,Aptitude
+Construct.attribute.insight,Insight,Einblick,Visión,Perspicacité
+Construct.attribute.presence,Presence,Anwesenheit,Presencia,Présence
+Construct.attribute.reason,Reason,Grund,Razón,Raison
+Construct.discipline.command,Command,Befehl,Mandar,Commander
+Construct.discipline.conn,Conn,Steuerung,Pilotaje,Pilotage
+Construct.discipline.security,Security,Sicherheit,Seguridad,Sécurité
+Construct.discipline.engineering,Engineering,Ingenieurwesen,Ingeniería,Ingénierie
+Construct.discipline.science,Science,Wissenschaft,Ciencia,Science
+Construct.discipline.medicine,Medicine,Medizin,Medicina,Médecine
+Page.title.home,Home,Homepage,Página principal,Page d'accueil
+Page.title.era,Era,Ära,Era,Ère
+Page.title.talentsOverview,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
+Page.title.creditsPage,Credits,Kredite,Créditos,Crédits
+Page.title.viewSheet,View Sheet,Blatt anzeigen,Ver hoja,Voir la feuille
+Page.title.gamemasterTrackerPage,Tracking,Verfolgung,Seguimiento,Pistage
+Page.breadcrumb.characterCreation,Character Creation,Charaktererstellung,Creación de personajes,Création de personnages

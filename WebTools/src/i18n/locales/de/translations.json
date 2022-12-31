@@ -22,7 +22,7 @@
     "AddCharacterView.instruction": "Fügen Sie die URL für ein Zeichen ein.",
     "AddCharacterView.errorMessage": "Diese URL sieht nicht gültig aus.",
     "AddCharacterView.errorCharacterType": "Hoppla! Wir unterstützen im Moment nur Charaktere. Keine Raumschiffe.",
-    "AddCharacterView.characterPrefix": "Zeichen: ",
+    "AddCharacterView.characterPrefix": "Zeichen:",
 
     "Common.button.select": "Auswählen",
     "Common.button.selectAll": "Alle auswählen",
@@ -45,8 +45,8 @@
     "Construct.other.talents": "Begabungen",
     "Construct.other.traits": "Charakterzüge",
     "Construct.other.upbringing": "Erziehung",
-    "Construct.other.weapons": "Waffen",
     "Construct.other.values": "Werte",
+    "Construct.other.weapons": "Waffen",
 
     "Construct.attribute.control": "Steuerung",
     "Construct.attribute.daring": "Gewagt",
@@ -70,5 +70,4 @@
     "Page.title.gamemasterTrackerPage": "Verfolgung",
 
     "Page.breadcrumb.characterCreation": "Charaktererstellung"
-
 }

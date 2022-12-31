@@ -68,7 +68,7 @@ class AddCharacterView extends React.Component<IAddCharacterProperties, IAddChar
                 } else {
                     let character = marshaller.decodeCharacter(json);
                     this.setState((state) => ({...state, enabled: true,
-                        message: t('AddCharacterView.characterPrefix')  + character.name,
+                        message: t('AddCharacterView.characterPrefix') + ' ' + character.name,
                         characterString: encodedSheet
                     }));
                 }

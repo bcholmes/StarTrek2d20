@@ -22,7 +22,7 @@
     "AddCharacterView.instruction": "Paste in the URL for a character.",
     "AddCharacterView.errorMessage": "This url does not look valid.",
     "AddCharacterView.errorCharacterType": "Whoops! We only support characters, at the moment. Not starships.",
-    "AddCharacterView.characterPrefix": "Character: ",
+    "AddCharacterView.characterPrefix": "Character:",
 
     "Common.button.select": "Select",
     "Common.button.selectAll": "Select All",
@@ -70,5 +70,4 @@
     "Page.title.gamemasterTrackerPage": "Tracking",
 
     "Page.breadcrumb.characterCreation": "Character Creation"
-
 }

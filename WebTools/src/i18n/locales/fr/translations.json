@@ -22,7 +22,7 @@
     "AddCharacterView.instruction": "Collez l'URL d'un caractère.",
     "AddCharacterView.errorMessage": "Cette URL ne semble pas valide.",
     "AddCharacterView.errorCharacterType": "Nous ne supportons que les personnages, pour le moment. Pas des vaisseaux spatiaux.",
-    "AddCharacterView.characterPrefix": "Personnage: ",
+    "AddCharacterView.characterPrefix": "Personnage:",
 
     "Common.button.select": "Choisir",
     "Common.button.selectAll": "Sélectionner tout",
@@ -45,8 +45,8 @@
     "Construct.other.talents": "Talents",
     "Construct.other.traits": "Traits",
     "Construct.other.upbringing": "Élevage",
-    "Construct.other.weapons": "Armes",
     "Construct.other.values": "Valeurs",
+    "Construct.other.weapons": "Armes",
 
     "Construct.attribute.control": "Contrôle",
     "Construct.attribute.daring": "Audacieux",
@@ -70,5 +70,4 @@
     "Page.title.gamemasterTrackerPage": "Pistage",
 
     "Page.breadcrumb.characterCreation": "Création de personnages"
-
 }
