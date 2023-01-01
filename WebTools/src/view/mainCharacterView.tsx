@@ -9,6 +9,10 @@ import { CharacterType } from "../common/characterType";
 import { withTranslation } from 'react-i18next';
 import { BaseCharacterView } from "./baseCharacterView";
 import { getNameAndShortRankOf } from "../helpers/ranks";
+import { Construct } from "../common/construct";
+import { marshaller } from "../helpers/marshaller";
+
+declare function download(bytes: any, fileName: any, contentType: any): any;
 
 class MainCharacterView extends BaseCharacterView {
 
@@ -62,7 +66,8 @@ class MainCharacterView extends BaseCharacterView {
             </div>
 
             <div className="button-container mt-5 mb-3">
-                <Button text={t('Common.button.exportPdf')} className="button-small" onClick={() => this.showExportDialog() } buttonType={true}/>
+                <Button className="button-small mr-3" onClick={() => this.showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
+                <Button className="button-small mr-3" onClick={() => this.exportToJson(this.props.character, 'character') } buttonType={true}>{t('Common.button.exportJson')}</Button>
             </div>
        </div>);
     }
@@ -175,6 +180,14 @@ class MainCharacterView extends BaseCharacterView {
 
     private showExportDialog() {
         CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(this.props.character, Era.NextGeneration), "character", this.props.character);
+    }
+
+    exportToJson(construct: Construct, suffix: string) {
+        const json = marshaller.encodeMainCharacterAsJson(this.props.character);
+        const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
+
+        var escaped = construct.name.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_');
+        download(jsonBytes, escaped + '-'  + suffix + ".json", "application/json");
     }
 }
 

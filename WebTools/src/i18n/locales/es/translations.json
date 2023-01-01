@@ -29,6 +29,12 @@
     "AddCharacterView.errorCharacterType": "¡Gritos! Solo admitimos personajes, por el momento. No naves espaciales.",
     "AddCharacterView.characterPrefix": "Carácter:",
 
+    "StarshipToolSelection.instruction": "Seleccione una opción",
+    "StarshipToolSelection.standardBuild": "Construcción estándar",
+    "StarshipToolSelection.standardBuildDescription": "El proceso estándar de creación de Starship sigue los pasos de compilación descritos en los libros de reglas. Por ejemplo: las naves espaciales eligen un marco espacial, un perfil de misión, etc.",
+    "StarshipToolSelection.simplifiedBuild": "Compilación simplificada",
+    "StarshipToolSelection.simplifiedBuildDescription": "La compilación simplificada es una buena opción para transcribir un conjunto de estadísticas, por ejemplo, de una fuente en línea u otra referencia.",
+
     "Common.button.select": "Escoger",
     "Common.button.selectAll": "Seleccionar todo",
     "Common.button.selectNone": "Seleccionar Ninguno",
@@ -106,6 +112,7 @@
     "Page.title.systemGeneration": "Generación del Sistema Estelar",
     "Page.title.sectorDetails": "Detalles del sector",
     "Page.title.starSystemDetails": "Detalles del sistema Star",
+    "Page.title.starshipToolSelection": "Herramientas de naves espaciales",
     "Page.title.gamemasterTrackerPage": "Seguimiento",
 
     "Page.breadcrumb.characterCreation": "Creación de personajes"

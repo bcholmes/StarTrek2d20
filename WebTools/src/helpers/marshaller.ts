@@ -60,6 +60,10 @@ class Marshaller {
     }
 
     encodeMainCharacter(character: Character) {
+        return this.encode(this.encodeMainCharacterAsJson(character));
+    }
+
+    encodeMainCharacterAsJson(character: Character) {
         let sheet = {
             "stereotype": "mainCharacter",
             "type": CharacterType[character.type],
@@ -142,7 +146,7 @@ class Marshaller {
         if (character.track != null) {
             sheet["track"] = Track[character.track];
         }
-        return this.encode(sheet);
+        return sheet;
     }
 
     toTalentList(talents: { [name: string]: CharacterTalent }) {

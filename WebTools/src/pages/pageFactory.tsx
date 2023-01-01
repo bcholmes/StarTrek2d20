@@ -39,7 +39,7 @@ import SimpleStarshipPage from '../starship/page/simpleStarshipPage';
 import FinalStarshipDetailsPage from '../starship/page/finalStarshipDetailsPage';
 import StarshipTalentsPage from '../starship/page/starshipTalentsPage';
 import StarshipWeaponsPage from '../starship/page/starshipWeaponsPage';
-import { SelectStarshipToolPage } from '../starship/page/selectStarshipToolPage';
+import SelectStarshipToolPage from '../starship/page/selectStarshipToolPage';
 import SmallCraftStatsPage from '../starship/page/smallCraftStatsPage';
 import { ExtraFocusPage } from './extraFocusPage';
 import SpaceframePage from '../starship/page/spaceframePage';

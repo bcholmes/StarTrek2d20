@@ -29,6 +29,12 @@
     "AddCharacterView.errorCharacterType": "Hoppla! Wir unterstützen im Moment nur Charaktere. Keine Raumschiffe.",
     "AddCharacterView.characterPrefix": "Zeichen:",
 
+    "StarshipToolSelection.instruction": "Wählen Sie eine Option",
+    "StarshipToolSelection.standardBuild": "Standardausführung",
+    "StarshipToolSelection.standardBuildDescription": "Der Standard-Raumschiff-Erstellungsprozess folgt den Build-Schritten, wie in den Regelwerken beschrieben. Z.B.: Raumschiffe wählen einen Spaceframe, ein Missionsprofil usw.",
+    "StarshipToolSelection.simplifiedBuild": "Vereinfachter Aufbau",
+    "StarshipToolSelection.simplifiedBuildDescription": "Der vereinfachte Build ist eine gute Option zum Transkribieren einer Reihe von Statistiken, Z. B. aus einer Online-Quelle oder einer anderen Referenz.",
+
     "Common.button.select": "Auswählen",
     "Common.button.selectAll": "Alle auswählen",
     "Common.button.selectNone": "Wählen Sie Keine",
@@ -106,6 +112,7 @@
     "Page.title.systemGeneration": "Sternsystem-Generation",
     "Page.title.sectorDetails": "Branchendetails",
     "Page.title.starSystemDetails": "Details zum Sternensystem",
+    "Page.title.starshipToolSelection": "Raumschiff-Werkzeuge",
     "Page.title.gamemasterTrackerPage": "Verfolgung",
 
     "Page.breadcrumb.characterCreation": "Charaktererstellung"

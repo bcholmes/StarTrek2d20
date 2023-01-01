@@ -22,6 +22,11 @@ AddCharacterView.instruction,Paste in the URL for a character.,Fügen Sie die UR
 AddCharacterView.errorMessage,This url does not look valid.,Diese URL sieht nicht gültig aus.,Esta URL no parece válida.,Cette URL ne semble pas valide.
 AddCharacterView.errorCharacterType,"Whoops! We only support characters, at the moment. Not starships.",Hoppla! Wir unterstützen im Moment nur Charaktere. Keine Raumschiffe.,"¡Gritos! Solo admitimos personajes, por el momento. No naves espaciales.","Nous ne supportons que les personnages, pour le moment. Pas des vaisseaux spatiaux."
 AddCharacterView.characterPrefix,Character:,Zeichen:,Carácter:,Personnage:
+StarshipToolSelection.instruction,Select an option,Wählen Sie eine Option,Seleccione una opción,Sélectionnez une option
+StarshipToolSelection.standardBuild,Standard Build,Standardausführung,Construcción estándar,Construction standard
+StarshipToolSelection.standardBuildDescription,"The standard Starship creation process follows the build steps as outlined in the rulebooks. E.g.: starships choose a Spaceframe, Mission Profile, etc.","Der Standard-Raumschiff-Erstellungsprozess folgt den Build-Schritten, wie in den Regelwerken beschrieben. Z.B.: Raumschiffe wählen einen Spaceframe, ein Missionsprofil usw.","El proceso estándar de creación de Starship sigue los pasos de compilación descritos en los libros de reglas. Por ejemplo: las naves espaciales eligen un marco espacial, un perfil de misión, etc.","Le processus standard de création de Starship suit les étapes de construction décrites dans les livres de règles. Par exemple: les vaisseaux spatiaux choisissent une trame spatiale, un profil de mission, etc."
+StarshipToolSelection.simplifiedBuild,Simplified Build,Vereinfachter Aufbau,Compilación simplificada,Construction simplifiée
+StarshipToolSelection.simplifiedBuildDescription,"The Simplified build is a good option for transcribing a set of stats, say from an online source or other other reference.","Der vereinfachte Build ist eine gute Option zum Transkribieren einer Reihe von Statistiken, Z. B. aus einer Online-Quelle oder einer anderen Referenz.","La compilación simplificada es una buena opción para transcribir un conjunto de estadísticas, por ejemplo, de una fuente en línea u otra referencia.","La version simplifiée est une bonne option pour transcrire un ensemble de statistiques, par exemple à partir d'une source en ligne ou d'une autre référence."
 Common.button.select,Select,Auswählen,Escoger,Choisir
 Common.button.selectAll,Select All,Alle auswählen,Seleccionar todo,Sélectionner tout
 Common.button.selectNone,Select None,Wählen Sie Keine,Seleccionar Ninguno,Sélectionnez Aucun
@@ -93,5 +98,6 @@ Page.title.characterType,Character Type,Zeichentyp,Tipo de carácter,Type de per
 Page.title.systemGeneration,System Generation,Sternsystem-Generation,Generación del Sistema Estelar,Génération du système stellaire
 Page.title.sectorDetails,Sector Details,Branchendetails,Detalles del sector,Détails du secteur
 Page.title.starSystemDetails,Star System Details,Details zum Sternensystem,Detalles del sistema Star,Détails du système stellaire
+Page.title.starshipToolSelection,Starship Tool Selection,Raumschiff-Werkzeuge,Herramientas de naves espaciales,Outils de vaisseau spatial
 Page.title.gamemasterTrackerPage,Tracking,Verfolgung,Seguimiento,Pistage
 Page.breadcrumb.characterCreation,Character Creation,Charaktererstellung,Creación de personajes,Création de personnages

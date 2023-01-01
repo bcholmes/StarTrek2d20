@@ -29,6 +29,12 @@
     "AddCharacterView.errorCharacterType": "Nous ne supportons que les personnages, pour le moment. Pas des vaisseaux spatiaux.",
     "AddCharacterView.characterPrefix": "Personnage:",
 
+    "StarshipToolSelection.instruction": "Sélectionnez une option",
+    "StarshipToolSelection.standardBuild": "Construction standard",
+    "StarshipToolSelection.standardBuildDescription": "Le processus standard de création de Starship suit les étapes de construction décrites dans les livres de règles. Par exemple: les vaisseaux spatiaux choisissent une trame spatiale, un profil de mission, etc.",
+    "StarshipToolSelection.simplifiedBuild": "Construction simplifiée",
+    "StarshipToolSelection.simplifiedBuildDescription": "La version simplifiée est une bonne option pour transcrire un ensemble de statistiques, par exemple à partir d'une source en ligne ou d'une autre référence.",
+
     "Common.button.select": "Choisir",
     "Common.button.selectAll": "Sélectionner tout",
     "Common.button.selectNone": "Sélectionnez Aucun",
@@ -106,6 +112,7 @@
     "Page.title.systemGeneration": "Génération du système stellaire",
     "Page.title.sectorDetails": "Détails du secteur",
     "Page.title.starSystemDetails": "Détails du système stellaire",
+    "Page.title.starshipToolSelection": "Outils de vaisseau spatial",
     "Page.title.gamemasterTrackerPage": "Pistage",
 
     "Page.breadcrumb.characterCreation": "Création de personnages"

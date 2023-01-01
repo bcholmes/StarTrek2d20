@@ -29,6 +29,12 @@
     "AddCharacterView.errorCharacterType": "Whoops! We only support characters, at the moment. Not starships.",
     "AddCharacterView.characterPrefix": "Character:",
 
+    "StarshipToolSelection.instruction": "Select an option",
+    "StarshipToolSelection.standardBuild": "Standard Build",
+    "StarshipToolSelection.standardBuildDescription": "The standard Starship creation process follows the build steps as outlined in the rulebooks. E.g.: starships choose a Spaceframe, Mission Profile, etc.",
+    "StarshipToolSelection.simplifiedBuild": "Simplified Build",
+    "StarshipToolSelection.simplifiedBuildDescription": "The Simplified build is a good option for transcribing a set of stats, say from an online source or other other reference.",
+
     "Common.button.select": "Select",
     "Common.button.selectAll": "Select All",
     "Common.button.selectNone": "Select None",
@@ -106,6 +112,7 @@
     "Page.title.systemGeneration": "System Generation",
     "Page.title.sectorDetails": "Sector Details",
     "Page.title.starSystemDetails": "Star System Details",
+    "Page.title.starshipToolSelection": "Starship Tool Selection",
     "Page.title.gamemasterTrackerPage": "Tracking",
 
     "Page.breadcrumb.characterCreation": "Character Creation"

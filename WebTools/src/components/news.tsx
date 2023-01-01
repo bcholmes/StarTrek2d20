@@ -11,6 +11,14 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.221231</b>
+                <ul>
+                    <li>Again, I'm still plugging away on translation</li>
+                    <li>I've retooled a particular Starship page because someone raised a concern about hover events and misbehaviour on a touch device.</li>
+                    <li>I've introduced a mechanism to download characters as JSON files. This is probably not helpful to you unless you're a developer.
+                        But it could assist integration between the Character Creator and other gaming tools like Virtual Table Tops. You can access
+                        the download function from the view page for a character.</li>
+                </ul>
                 <b>v1.221230</b>
                 <ul>
                     <li>More work on translations, plus a few minor updates.</li>

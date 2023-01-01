@@ -8,61 +8,42 @@ import { PageIdentity } from "../../pages/pageIdentity";
 import { createNewStarship } from "../../state/starshipActions";
 import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-interface IStarshipToolPageState {
-    showStandardDescription: boolean;
-    showSimplifiedDescription: boolean;
-}
-
-export class SelectStarshipToolPage extends React.Component<{}, IStarshipToolPageState> {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            showStandardDescription: false,
-            showSimplifiedDescription: false
-        }
-    }
+class SelectStarshipToolPage extends React.Component<WithTranslation, {}> {
 
     render() {
+        const { t } = this.props;
         return (
             <div className="page">
                 <div className="container ml-0">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
-                            <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>Home</a></li>
-                            <li className="breadcrumb-item active" aria-current="page">Starship Tool Selection</li>
+                            <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
+                            <li className="breadcrumb-item active" aria-current="page">{t('Page.title.starshipToolSelection')}</li>
                         </ol>
                     </nav>
 
-                    <Header>Starship Tool Selection</Header>
+                    <Header>{t('Page.title.starshipToolSelection')}</Header>
 
-                    <div className="page-text">
-                        Select an option
+                    <p>{t('StarshipToolSelection.instruction')}</p>
+
+                    <div className="d-flex mt-3">
+                        <div className="mr-5">
+                            <Button className="button mt-0" onClick={() => { this.goToPage(PageIdentity.StarshipTypeSelection); } }
+                            >{t('StarshipToolSelection.standardBuild')}</Button>
+                        </div>
+                        <p className="d-none d-lg-block">{t('StarshipToolSelection.standardBuildDescription')}
+                        </p>
                     </div>
-                    <div className="button-container">
-                        <div className="d-flex align-items-center my-4">
-                            <div className="mr-5">
-                                <Button className="button mt-0" onClick={() => { this.goToPage(PageIdentity.StarshipTypeSelection); } }
-                                    onMouseOver={() => this.setState((state) => ({...state, showStandardDescription: true}))}
-                                    onMouseOut={() => this.setState((state) => ({...state, showStandardDescription: false}))}
-                                >Standard Build</Button>
-                            </div>
-                            <p className={this.state.showStandardDescription ? 'd-none d-lg-block mb-0' : 'd-none'}>Use the standard Starship
-                                creation process(es), as outlined in the rulebooks. E.g.: starships choose a Spaceframe, Mission Profile, etc.
-                            </p>
+                    <div className="d-flex mt-4">
+                        <div className="mr-5">
+                            <Button className="button mt-0" onClick={() => { this.startSimplifiedWorkflow(); } }
+                            >{t('StarshipToolSelection.simplifiedBuild')}</Button>
                         </div>
-                        <div className="d-flex align-items-center my-4">
-                            <div className="mr-5">
-                                <Button className="button mt-0" onClick={() => { this.startSimplifiedWorkflow(); } }
-                                    onMouseOver={() => this.setState((state) => ({...state, showSimplifiedDescription: true}))}
-                                    onMouseOut={() => this.setState((state) => ({...state, showSimplifiedDescription: false}))}
-                                >Simplified Build</Button>
-                            </div>
-                            <p className={this.state.showSimplifiedDescription ? 'd-none d-lg-block mb-0' : 'd-none'}>
-                                This is a good option for transcribing a set of stats, say from an online source or other other reference.
-                            </p>
-                        </div>
+                        <p className="d-none d-lg-block">
+                            {t('StarshipToolSelection.simplifiedBuildDescription')}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -83,3 +64,5 @@ export class SelectStarshipToolPage extends React.Component<{}, IStarshipToolPag
         Navigation.navigateToPage(page);
     }
 }
+
+export default withTranslation()(SelectStarshipToolPage);
