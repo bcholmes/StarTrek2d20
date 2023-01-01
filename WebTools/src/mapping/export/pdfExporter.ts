@@ -4,7 +4,6 @@ import { Sector } from "../table/sector";
 import { Color } from "../../common/colour";
 import { CompanionType, StarSystem } from "../table/starSystem";
 import { AsteroidBeltDetails, StandardWorldDetails, World, WorldClass, WorldCoreType } from "../table/world";
-import star from "../../state/starReducer";
 
 const BULLET = '\u2022';
 
@@ -12,6 +11,7 @@ export class PdfExporter {
 
     static LCARS_ORANGE = rgb(249.0 / 255.0, 157.0 / 255.0, 37.0 / 255.0);
     static LCARS_PURPLE = rgb(138.0 / 255.0, 113.0 / 255.0, 167.0 / 255.0);
+    static LCARS_PINK = rgb(213.0 / 255.0, 150.0 / 255.0, 179.0 / 255.0);
     static LCARS_BLACK = rgb(0, 0, 0);
 
     async populate(pdf: PDFDocument, sector: Sector) {
@@ -108,7 +108,7 @@ export class PdfExporter {
 
             currentLine += lineHeight;
             this.addLabelAndValue(page, "Companion Type:",
-                system.companionType == CompanionType.Close ? "Close" : "Distant", font, light, 377, currentLine);
+                system.companionType === CompanionType.Close ? "Close" : "Distant", font, light, 377, currentLine);
 
             currentLine += lineHeight;
             this.addLabelAndValue(page, "Mass:",
@@ -413,7 +413,6 @@ export class PdfExporter {
         this.addLcarsHeaderToPage(page, text, font);
 
         text = "Notable Systems".toUpperCase();
-        let width = font.widthOfTextAtSize(text, 18.0);
 
         page.drawText(text, {
             x: 162,
@@ -473,12 +472,13 @@ export class PdfExporter {
                 borderWidth: 0.75
             });
 
-            page.drawText(s.id, {
-                x: this.mapCoordinateSpaceX(s.sectorCoordinates.x) - font.widthOfTextAtSize(s.id, 8) / 2,
+            let sectorText = s.friendlyName ? s.friendlyName.toLocaleUpperCase() : s.id;
+            page.drawText(sectorText, {
+                x: this.mapCoordinateSpaceX(s.sectorCoordinates.x) - font.widthOfTextAtSize(sectorText, 8) / 2,
                 y: page.getHeight() - this.mapCoordinateSpaceY(s.sectorCoordinates.y) - (r+3) - font.heightAtSize(8),
                 font: font,
                 size: 8.0,
-                color: rgb(0x91 / 255.0,  0x79 / 255.0, 0xb7 / 255.0)
+                color: PdfExporter.LCARS_PURPLE
             });
         });
 
@@ -489,7 +489,7 @@ export class PdfExporter {
             y: page.getHeight() - currentLine,
             size: 12.0,
             font: bold,
-            color: rgb(0, 0, 0)
+            color: PdfExporter.LCARS_BLACK
         });
 
         page.drawText("Primary Star", {
@@ -497,7 +497,7 @@ export class PdfExporter {
             y: page.getHeight() - currentLine,
             size: 12.0,
             font: bold,
-            color: rgb(0, 0, 0)
+            color: PdfExporter.LCARS_BLACK
         });
 
         page.drawText("Worlds", {
@@ -505,7 +505,7 @@ export class PdfExporter {
             y: page.getHeight() - currentLine,
             size: 12.0,
             font: bold,
-            color: rgb(0, 0, 0)
+            color: PdfExporter.LCARS_BLACK
         });
 
         currentLine += 20;
@@ -516,7 +516,7 @@ export class PdfExporter {
                 y: page.getHeight() - currentLine,
                 size: 16.0,
                 font: bold,
-                color: rgb(213.0 / 255.0, 150.0 / 255.0, 179.0 / 255.0)
+                color: PdfExporter.LCARS_PINK
             });
 
             page.drawText(s.star.description, {
@@ -524,7 +524,7 @@ export class PdfExporter {
                 y: page.getHeight() - currentLine,
                 size: 14.0,
                 font: light,
-                color: rgb(0, 0, 0)
+                color: PdfExporter.LCARS_BLACK
             });
 
             page.drawText("" + s.worlds.length, {
