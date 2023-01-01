@@ -128,8 +128,14 @@ class GMCharacterView extends React.Component<IGMCharacterViewProperties, {}> {
 
     viewCharacter() {
         const { tracking } = this.props;
-        const value = marshaller.encodeMainCharacter(tracking?.character);
-        window.open('/view?s=' + value, "_blank");
+
+        if (tracking?.character?.upbringing == null && tracking?.character?.environment == null) {
+            const value = marshaller.encodeSupportingCharacter(tracking?.character);
+            window.open('/view?s=' + value, "_blank");
+        } else {
+            const value = marshaller.encodeMainCharacter(tracking?.character);
+            window.open('/view?s=' + value, "_blank");
+        }
     }
 
     removeCharacter() {

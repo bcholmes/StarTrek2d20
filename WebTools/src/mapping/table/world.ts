@@ -1,4 +1,6 @@
-import { WorldCoreType } from "../view/worldView";
+export enum WorldCoreType {
+    Heavy, Molten, Rocky, Icy
+}
 
 export enum WorldClass {
     AsteroidBelt,

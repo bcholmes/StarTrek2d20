@@ -69,7 +69,7 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
                 </div>
                 <div className="row">
                     <div className="col-md-8 offset-md-2 text-primary text-center">
-                        TM &amp; &copy; 2022 CBS Studios Inc. {t('Lcars.copyright')}
+                        TM &amp; &copy; 2023 CBS Studios Inc. {t('Lcars.copyright')}
                     </div>
                     <div className="col-md-2 text-right pr-4">
                         <a href="./index.html" className="text-primary" onClick={(e) => navigateTo(e, PageIdentity.CreditsPage)}>{t('Lcars.credits')}</a>

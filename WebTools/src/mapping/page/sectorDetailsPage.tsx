@@ -39,9 +39,13 @@ class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}
 
                 <EditableHeader prefix="Sector" text={this.props.sector.name} onChange={(text) => this.setSectorName(text)}/>
                 <div className="d-flex justify-content-center">
-                    <LcarsDecorationLeftView />
+                    <div className="d-md-block d-none">
+                        <LcarsDecorationLeftView />
+                    </div>
                     <SectorMapView sector={this.props.sector} onClick={(s) => this.showSystem(s) } />
-                    <LcarsDecorationRightView />
+                    <div className="d-md-block d-none">
+                        <LcarsDecorationRightView />
+                    </div>
                 </div>
                 <Header level={2} className="mb-5 mt-4">Notable Systems</Header>
                 <div>
@@ -68,7 +72,6 @@ class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}
     }
 
     async exportPdf() {
-        console.log("Export");
         const existingPdfBytes = await fetch("/static/pdf/TNG_Sector_Map.pdf").then(res => res.arrayBuffer())
         const pdfDoc = await PDFDocument.load(existingPdfBytes)
 

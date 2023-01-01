@@ -1,6 +1,6 @@
 import React from "react";
 import { IPageProperties } from "../../pages/iPageProperties";
-import { AsteroidBeltDetails, StandardWorldDetails, World, WorldClass, WorldDetails } from "../table/world";
+import { AsteroidBeltDetails, StandardWorldDetails, World, WorldClass, WorldCoreType, WorldDetails } from "../table/world";
 import { StarSystem } from "../table/starSystem";
 import { DataValueRow } from "./dataValueRow";
 
@@ -9,9 +9,6 @@ interface IWorldViewProperties extends IPageProperties {
     system: StarSystem;
 }
 
-export enum WorldCoreType {
-    Heavy, Molten, Rocky, Icy
-}
 
 class WorldView extends React.Component<IWorldViewProperties, {}> {
 

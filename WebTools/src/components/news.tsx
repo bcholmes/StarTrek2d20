@@ -11,6 +11,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230101</b>
+                <ul>
+                    <li>Happy New Year! I've finally gotten around to expanding the PDF export functionality for sectors, so that
+                        you can now get all of the system data as well.</li>
+                </ul>
                 <b>v1.221231</b>
                 <ul>
                     <li>Again, I'm still plugging away on translation</li>

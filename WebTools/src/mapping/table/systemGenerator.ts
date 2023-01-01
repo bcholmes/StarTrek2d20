@@ -2,13 +2,12 @@ import { Color } from "../../common/colour";
 import { D20, D6 } from "../../common/die";
 import { setSector, setStar } from "../../state/starActions";
 import store from "../../state/store";
-import { WorldCoreType } from "../view/worldView";
 import { LuminosityTable } from "./luminosityTable";
 import { Orbits } from "./orbit";
 import { Sector, SectorCoordinates } from "./sector";
 import { LuminosityClass, LuminosityClassModel, SpectralClass, SpectralClassModel, Star, Range, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon } from "./star";
 import { CompanionType, StarSystem } from "./starSystem";
-import { AsteroidBeltDetails, StandardWorldDetails, World, WorldClass, WorldClassModel } from "./world";
+import { AsteroidBeltDetails, StandardWorldDetails, World, WorldClass, WorldClassModel, WorldCoreType } from "./world";
 
 class StellarMass {
     spectralClass: SpectralClass;
