@@ -52,6 +52,17 @@ class CreditsPage extends React.Component<WithTranslation, {}> {
                     hear the faint buzzing.
                 </p>
 
+                <p>
+                    Recently, I've started making the app support more languages than just English: initial support for German, Spanish and French exist, but it'll
+                    take a bit of time to make the whole app multi-lingual. A few folks have been helpful in this process, including the following:
+                </p>
+
+                <p className="mx-4"><b>French:</b> <a href="https://forums.modiphius.com/u/betatester/summary" target="_blank" rel="noreferrer">betatester</a></p>
+
+                <p>
+                    If you can help, let me know, and I'd welcome any input you can provide.
+                </p>
+
                 <Header className="my-4" level={2}>Asked Questions, Possibly Frequently</Header>
 
                 <p>
