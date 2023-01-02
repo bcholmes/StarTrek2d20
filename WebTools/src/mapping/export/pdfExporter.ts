@@ -199,7 +199,7 @@ export class PdfExporter {
         } else {
             page.drawText("No Worlds", {
                 x: 162,
-                y: currentLine,
+                y: page.getHeight() - currentLine,
                 size: 14.0,
                 font: bold,
                 color: PdfExporter.LCARS_BLACK

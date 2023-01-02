@@ -93,7 +93,7 @@ class SupportingCharacterView extends BaseCharacterView {
         const json = marshaller.encodeSupportingCharacterAsJson(this.props.character);
         const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
 
-        var escaped = construct.name.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_');
+        var escaped = construct.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') ?? "sta";
         download(jsonBytes, escaped + '-'  + suffix + ".json", "application/json");
     }
 }
