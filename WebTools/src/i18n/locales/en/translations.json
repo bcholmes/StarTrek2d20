@@ -5,6 +5,10 @@
 
     "Lcars.copyright": "STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.",
     "Lcars.credits": "Credits",
+    "Lcars.feedback": "Feedback",
+    "Lcars.history": "History",
+    "Lcars.news": "News",
+    "Lcars.profile": "Profile",
 
     "EraSelectionPage.sourceInstruction": "Select sources. Ask your GM which are available.",
     "EraSelectionPage.sourceNote": "Some sources are not yet implemented; check back soon!",
@@ -34,6 +38,12 @@
     "StarshipToolSelection.standardBuildDescription": "The standard Starship creation process follows the build steps as outlined in the rulebooks. E.g.: starships choose a Spaceframe, Mission Profile, etc.",
     "StarshipToolSelection.simplifiedBuild": "Simplified Build",
     "StarshipToolSelection.simplifiedBuildDescription": "The Simplified build is a good option for transcribing a set of stats, say from an online source or other other reference.",
+
+    "ToolSelection.instruction": "What do you want to create?",
+    "ToolSelection.mainCharacter": "Main Character",
+    "ToolSelection.supportingCharacter": "Supporting Character",
+    "ToolSelection.starship": "Starship",
+    "ToolSelection.spaceSector": "Space Sector",
 
     "Common.button.select": "Select",
     "Common.button.selectAll": "Select All",
@@ -113,6 +123,7 @@
     "Page.title.sectorDetails": "Sector Details",
     "Page.title.starSystemDetails": "Star System Details",
     "Page.title.starshipToolSelection": "Starship Tool Selection",
+    "Page.title.toolSelection": "Tool Selection",
     "Page.title.gamemasterTrackerPage": "Tracking",
 
     "Page.breadcrumb.characterCreation": "Character Creation"

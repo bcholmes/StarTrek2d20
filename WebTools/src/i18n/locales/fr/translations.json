@@ -35,6 +35,11 @@
     "StarshipToolSelection.simplifiedBuild": "Construction simplifiée",
     "StarshipToolSelection.simplifiedBuildDescription": "La version simplifiée est une bonne option pour transcrire un ensemble de statistiques, par exemple à partir d'une source en ligne ou d'une autre référence.",
 
+    "ToolSelection.mainCharacter": "Personnage principal",
+    "ToolSelection.supportingCharacter": "Personnage secondaire",
+    "ToolSelection.starship": "Vaisseau spatial",
+    "ToolSelection.spaceSector": "Secteur spatial",
+
     "Common.button.select": "Choisir",
     "Common.button.selectAll": "Sélectionner tout",
     "Common.button.selectNone": "Sélectionnez Aucun",

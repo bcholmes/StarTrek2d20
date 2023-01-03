@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import EraSelectionPage from './eraSelectionPage';
-import {ToolSelectionPage} from './toolSelectionPage';
+import ToolSelectionPage from './toolSelectionPage';
 import SpeciesPage from './speciesPage';
 import SpeciesDetailsPage from './speciesDetailsPage';
 import {EnvironmentPage} from './environmentPage';
@@ -58,7 +58,7 @@ export class PageFactory {
 
         this.factories[PageIdentity.Home] = () => <SelectionPage />;
         this.factories[PageIdentity.Era] = () => <EraSelectionPage/>;
-        this.factories[PageIdentity.ToolSelecton] = () => <ToolSelectionPage/>;
+        this.factories[PageIdentity.ToolSelection] = () => <ToolSelectionPage/>;
         this.factories[PageIdentity.CharacterType] = () => <CharacterTypePage/>;
         this.factories[PageIdentity.Species] = () => <SpeciesPage/>;
         this.factories[PageIdentity.KobaliExtraSpeciesDetails] = () => <SpeciesExtraDetailsPage species={Species.Kobali} />;

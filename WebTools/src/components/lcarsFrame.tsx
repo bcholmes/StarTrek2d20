@@ -45,18 +45,18 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
                     <div className="lcar-content-start">
                         <div className="lcar-content-start-top"></div>
                         <div className="lcar-content-action">
-                            <div id="history-button" className="lcar-content-history" onClick={ () => this.toggleHistory() }>History</div>
+                            <div id="history-button" className="lcar-content-history" onClick={ () => this.toggleHistory() }>{t('Lcars.history')}</div>
                             <div id="history-container" className="history-container-hidden">
                                 <History showHistory={this.state.showHistory} type={this.isStarshipPage() ? HistoryType.Starship : HistoryType.Character} />
                             </div>
                         </div>
                         <div className="lcar-content-action">
-                            <div id="profile-button" className={'lcar-content-profile ' + (this.isProfileSupportedForPage() ? '' : 'd-none')} onClick={ () => this.toggleProfile() }>Profile</div>
+                            <div id="profile-button" className={'lcar-content-profile ' + (this.isProfileSupportedForPage() ? '' : 'd-none')} onClick={ () => this.toggleProfile() }>{t('Lcars.profile')}</div>
                             <CharacterSheet showProfile={this.state.showProfile}/>
                         </div>
-                        <div className="lcar-content-feedback" onClick={ () => this.showFeedbackPage() }>Feedback</div>
+                        <div className="lcar-content-feedback" onClick={ () => this.showFeedbackPage() }>{t('Lcars.feedback')}</div>
                         <div className="lcar-content-news" onClick={() => this.showNews()}>
-                            <div id="news-button" className="lcar-news">News</div>
+                            <div id="news-button" className="lcar-news">{t('Lcars.news')}</div>
                         </div>
                         <div></div>
                     </div>

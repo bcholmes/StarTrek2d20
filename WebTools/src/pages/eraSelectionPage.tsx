@@ -119,7 +119,7 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
 
     private eraSelected(era: Era) {
         store.dispatch(setEra(era));
-        Navigation.navigateToPage(PageIdentity.ToolSelecton);
+        Navigation.navigateToPage(PageIdentity.ToolSelection);
     }
 
     hasSource(source: Source) {

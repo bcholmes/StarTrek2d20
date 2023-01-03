@@ -8,6 +8,7 @@ import { ShipBuildWorkflow, ShipBuildWorkflowStep } from '../starship/model/ship
 import { rewindToStarshipWorkflowStep } from '../state/starshipActions';
 import store from '../state/store';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import { makeKey } from '../common/translationKey';
 
 export enum HistoryType {
     Character, Starship
@@ -54,7 +55,7 @@ class History extends React.Component<IHistoryProperties, {}> {
     renderStarshipHistory() {
         return (<>
             <div className="history-item" key='pre-0' onClick={() => this.goToPage(PageIdentity.Era)}>Era</div>
-            <div className="history-item" key='pre-1' onClick={() => this.goToPage(PageIdentity.ToolSelecton)}>Registry</div>
+            <div className="history-item" key='pre-1' onClick={() => this.goToPage(PageIdentity.ToolSelection)}>Registry</div>
             {this.props.workflow?.steps.map((s, i) => {
                 if (i < this.props.workflow.currentStepIndex) {
                     return (<div className="history-item" key={'ship-' + i} onClick={() => this.goToStep(s, i)}>{s.name}</div>);
@@ -87,14 +88,13 @@ class History extends React.Component<IHistoryProperties, {}> {
     private getPageName(page: PageIdentity) {
         const { t } = this.props;
 
-        let key = PageIdentity[page];
-        key = 'Page.title.' + key.substring(0, 1).toLowerCase() + key.substring(1);
+        let key = makeKey('Page.title.', PageIdentity[page]);
 
         switch (page) {
             case PageIdentity.Home:
             case PageIdentity.Era:
+            case PageIdentity.ToolSelection:;
                 return t(key);
-            case PageIdentity.ToolSelecton: return "Registry";
             case PageIdentity.Species: return "Species";
             case PageIdentity.KobaliExtraSpeciesDetails: return "Species Extra Details";
             case PageIdentity.SpeciesDetails: return "Species Details";

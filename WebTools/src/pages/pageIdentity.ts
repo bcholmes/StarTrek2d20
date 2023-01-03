@@ -2,7 +2,7 @@
 export enum PageIdentity {
     Home,
     Era,
-    ToolSelecton,
+    ToolSelection,
     CharacterType,
     Species,
     SpeciesDetails,

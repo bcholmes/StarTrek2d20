@@ -4,7 +4,10 @@
     "LanguageNotice.useEnglish": "Englisch verwenden",
 
     "Lcars.copyright": "STAR TREK und zugehörige Marken und Logos sind Marken von CBS Studios Inc. Alle Rechte vorbehalten.",
-    "Lcars.credits": "Kredite",
+    "Lcars.credits": "Danksagungen",
+    "Lcars.history": "Verlauf",
+    "Lcars.news": "News",
+    "Lcars.profile": "Profil",
 
     "EraSelectionPage.sourceInstruction": "Wählen Sie Quellen aus. Fragen Sie Ihren GM, welche verfügbar sind.",
     "EraSelectionPage.sourceNote": "Einige Quellen sind noch nicht implementiert; Schauen Sie bald wieder vorbei!",
@@ -34,6 +37,11 @@
     "StarshipToolSelection.standardBuildDescription": "Der Standard-Raumschiff-Erstellungsprozess folgt den Build-Schritten, wie in den Regelwerken beschrieben. Z.B.: Raumschiffe wählen einen Spaceframe, ein Missionsprofil usw.",
     "StarshipToolSelection.simplifiedBuild": "Vereinfachter Aufbau",
     "StarshipToolSelection.simplifiedBuildDescription": "Der vereinfachte Build ist eine gute Option zum Transkribieren einer Reihe von Statistiken, Z. B. aus einer Online-Quelle oder einer anderen Referenz.",
+
+    "ToolSelection.mainCharacter": "Hauptfigur",
+    "ToolSelection.supportingCharacter": "Nebencharakter",
+    "ToolSelection.starship": "Sternenschiff",
+    "ToolSelection.spaceSector": "Raumfahrtsektor",
 
     "Common.button.select": "Auswählen",
     "Common.button.selectAll": "Alle auswählen",
@@ -74,12 +82,12 @@
     "Construct.other.values": "Werte",
     "Construct.other.weapons": "Waffen",
 
-    "Construct.attribute.control": "Steuerung",
-    "Construct.attribute.daring": "Gewagt",
-    "Construct.attribute.fitness": "Fitness",
-    "Construct.attribute.insight": "Einblick",
-    "Construct.attribute.presence": "Anwesenheit",
-    "Construct.attribute.reason": "Grund",
+    "Construct.attribute.control": "Kommando",
+    "Construct.attribute.daring": "Flugkontrolle",
+    "Construct.attribute.fitness": "Sicherheit",
+    "Construct.attribute.insight": "Technik",
+    "Construct.attribute.presence": "Wissenschaft",
+    "Construct.attribute.reason": "Medizin",
 
     "Construct.discipline.command": "Befehl",
     "Construct.discipline.conn": "Steuerung",
@@ -88,10 +96,10 @@
     "Construct.discipline.science": "Wissenschaft",
     "Construct.discipline.medicine": "Medizin",
 
-    "Construct.department.command": "Befehl",
-    "Construct.department.conn": "Steuerung",
+    "Construct.department.command": "Kommando",
+    "Construct.department.conn": "Flugkontrolle",
     "Construct.department.security": "Sicherheit",
-    "Construct.department.engineering": "Ingenieurwesen",
+    "Construct.department.engineering": "Technik",
     "Construct.department.science": "Wissenschaft",
     "Construct.department.medicine": "Medizin",
 

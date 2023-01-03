@@ -7,17 +7,19 @@ import {Button} from '../components/button';
 import {Source} from '../helpers/sources';
 import {WorkflowsHelper} from '../helpers/workflows';
 import { hasSource } from '../state/contextFunctions';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-export class ToolSelectionPage extends React.Component<{}, {}> {
+class ToolSelectionPage extends React.Component<WithTranslation, {}> {
 
     render() {
+        const { t } = this.props;
         return (
             <div className="page">
                 <div className="container ml-0">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
-                            <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>Home</a></li>
-                            <li className="breadcrumb-item active" aria-current="page">Character/Starship Creation</li>
+                            <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
+                            <li className="breadcrumb-item active" aria-current="page">{t('Page.title.toolSelection')}</li>
                         </ol>
                     </nav>
 
@@ -25,9 +27,9 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
                         What do you want to create?
                     </div>
                     <div className="button-container">
-                        <Button className="button" text="Main Character" onClick={() => { this.startStarfleetWorkflow(); } } />
-                        <Button className="button" text="Supporting Character" onClick={() => { this.goToPage(PageIdentity.SupportingCharacter); } } />
-                        <Button className="button" text="Starship" onClick={() => { this.goToPage(PageIdentity.StarshipToolSelection); } } />
+                        <Button className="button" onClick={() => { this.startStarfleetWorkflow(); } } >{t('ToolSelection.mainCharacter')}</Button>
+                        <Button className="button" onClick={() => { this.goToPage(PageIdentity.SupportingCharacter); } } >{t('ToolSelection.supportingCharacter')}</Button>
+                        <Button className="button" onClick={() => { this.goToPage(PageIdentity.StarshipToolSelection); } } >{t('ToolSelection.starship')}</Button>
                         {this.renderSystemGenerationButton()}
                     </div>
                 </div>
@@ -36,8 +38,9 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
     }
 
     renderSystemGenerationButton() {
+        const { t } = this.props;
         if (hasSource(Source.ShackletonExpanse)) {
-            return (<Button className="button" text="Space Sector" onClick={() => { this.goToPage(PageIdentity.SystemGeneration); } } />);
+            return (<Button className="button" onClick={() => { this.goToPage(PageIdentity.SystemGeneration); } } >{t('ToolSelection.spaceSector')}</Button>);
         } else {
             return undefined;
         }
@@ -58,3 +61,5 @@ export class ToolSelectionPage extends React.Component<{}, {}> {
         Navigation.navigateToPage(page);
     }
 }
+
+export default withTranslation()(ToolSelectionPage);

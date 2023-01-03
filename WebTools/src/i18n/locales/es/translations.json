@@ -35,6 +35,11 @@
     "StarshipToolSelection.simplifiedBuild": "Compilación simplificada",
     "StarshipToolSelection.simplifiedBuildDescription": "La compilación simplificada es una buena opción para transcribir un conjunto de estadísticas, por ejemplo, de una fuente en línea u otra referencia.",
 
+    "ToolSelection.mainCharacter": "Personaje principal",
+    "ToolSelection.supportingCharacter": "Personaje secundario",
+    "ToolSelection.starship": "Nave estelar",
+    "ToolSelection.spaceSector": "Sector espacial",
+
     "Common.button.select": "Escoger",
     "Common.button.selectAll": "Seleccionar todo",
     "Common.button.selectNone": "Seleccionar Ninguno",
