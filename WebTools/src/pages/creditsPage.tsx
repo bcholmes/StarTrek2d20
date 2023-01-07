@@ -39,7 +39,7 @@ class CreditsPage extends React.Component<WithTranslation, {}> {
                     Unfortunately, Christoffer no longer had time to devote to this tool, so back around June 2020, {' '}
                     <a href="https://forums.modiphius.com/t/looking-for-developer-to-take-over-the-online-character-tool/11028" target="_blank" rel="noreferrer">he
                     posted a request to the Modiphius forums</a> looking for someone to take over
-                    the development. Forum user {' '} <a href="https://forums.modiphius.com/u/misterx/summary" target="_blank" rel="noreferrer">Mister X</a> {' '} was
+                    the development. Forum user {' '} <a href="https://forums.modiphius.com/u/misterx/summary" target="_blank" rel="noreferrer">MisterX</a> {' '} was
                     the one who first prompted Christoffer to {' '} <a href="https://github.com/azjerei/StarTrek2d20" target="_blank" rel="noreferrer">open
                     source the code</a> {' '} to make it possible for others to contribute.
                 </p>
@@ -58,6 +58,7 @@ class CreditsPage extends React.Component<WithTranslation, {}> {
                 </p>
 
                 <p className="mx-4"><b>French:</b> <a href="https://forums.modiphius.com/u/betatester/summary" target="_blank" rel="noreferrer">betatester</a></p>
+                <p className="mx-4"><b>German:</b> <a href="https://forums.modiphius.com/u/misterx/summary" target="_blank" rel="noreferrer">MisterX</a></p>
 
                 <p>
                     If you can help, let me know, and I'd welcome any input you can provide.

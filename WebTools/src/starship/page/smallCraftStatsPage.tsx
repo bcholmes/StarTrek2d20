@@ -5,12 +5,14 @@ import { allDepartments, Department } from "../../helpers/departments";
 import { allSystems, System } from "../../helpers/systems";
 import { BuildPoints } from "../model/buildPoints";
 import { BaseSimpleStarshipPage } from "./simpleStarshipPage";
+import { withTranslation } from 'react-i18next';
 
 
 class SmallCraftStatsPage extends BaseSimpleStarshipPage {
 
     renderHeader() {
-        return (<Header>Small Craft Creation</Header>);
+        const { t } = this.props;
+        return (<Header>{t('Page.title.smallCraftStats')}</Header>);
     }
 
     canIncreaseScale(): boolean {
@@ -75,4 +77,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(SmallCraftStatsPage);
+export default withTranslation()(connect(mapStateToProps)(SmallCraftStatsPage));

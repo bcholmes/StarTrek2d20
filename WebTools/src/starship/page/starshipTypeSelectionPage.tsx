@@ -15,8 +15,10 @@ import { createNewStarship } from "../../state/starshipActions";
 import store from "../../state/store";
 import { BuildPoints } from "../model/buildPoints";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
+import { withTranslation, WithTranslation } from 'react-i18next';
+import InstructionText from "../../components/instructionText";
 
-interface StarshipTypeSelectionPageProperties {
+interface StarshipTypeSelectionPageProperties extends WithTranslation {
     era: Era
 }
 interface StarshipTypeSelectionPageState {
@@ -37,10 +39,11 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
     }
 
     render() {
+        const { t } = this.props;
         let typeSelection = hasSource(Source.KlingonCore)
             ? (<div className="my-3">
-                    <Header level={2}>Ship Type</Header>
-                    <p>What type of starship is this?</p>
+                    <Header level={2}>{t('StarshipTypeSelection.shipPolity')}</Header>
+                    <p>{t('StarshipTypeSelection.whatShipPolity')}</p>
                     <div>
                         <DropDownInput
                             items={ CharacterTypeModel.getStarshipTypes().map((t, i) => t.name) }
@@ -51,8 +54,8 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
             : undefined;
 
         let buildTypeSelection = (<div className="my-3">
-                <Header level={2}>Size Category</Header>
-                <p>How big of a vessel is it?</p>
+                <Header level={2}>{t('StarshipTypeSelection.shipBuildType')}</Header>
+                <p>{t('StarshipTypeSelection.whatShipBuildType')}</p>
                 <div>
                     <DropDownInput
                         items={ ShipBuildTypeModel.allTypes().map((t, i) => t.name) }
@@ -65,12 +68,12 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
             <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>Home</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Starship Creation</li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">{t('Page.breadcrumb.starshipCreation')}</li>
                     </ol>
                 </nav>
 
-                <Header>Starship Type Selection</Header>
+                <Header>{t('Page.title.starshipTypeSelection')}</Header>
                 <div>
                     {this.renderServiceYear()}
                     <div className="row">
@@ -115,14 +118,14 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
     }
 
     renderServiceYear() {
+        const { t } = this.props;
         return (<div className="my-5">
                     <Header level={2}>Campaign Year</Header>
                     <div>
-                        <p>What is the current year in your campaign? You'll probably need to consult your GM.</p>
-                        <p>A default year will be filled in automatically dependent on the chosen Era.</p>
+                        <InstructionText text={t('StarshipTypeSelection.instruction')} />
                     </div>
                     <div className="d-sm-flex align-items-stretch">
-                        <label htmlFor="campaignYear" className="textinput-label">YEAR</label>
+                        <label htmlFor="campaignYear" className="textinput-label">{t('StarshipTypeSelection.year')}</label>
                         <input
                             id="campaignYear"
                             type="number"
@@ -157,4 +160,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(StarshipTypeSelectionPage);
+export default withTranslation()(connect(mapStateToProps)(StarshipTypeSelectionPage));

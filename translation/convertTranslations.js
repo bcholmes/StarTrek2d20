@@ -32,7 +32,7 @@ const convertDataToTranslations = async (data) => {
                 if (previousPrefix !== null && previousPrefix !== prefix) {
                     stream.write("\n");
                 }
-                stream.write("\n    \"" + key + "\": \"" + value + "\"");
+                stream.write("\n    \"" + key + "\": \"" + value.replaceAll('\n', '\\n') + "\"");
 
                 previousPrefix = prefix;
             }

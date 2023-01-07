@@ -10,6 +10,7 @@ import { changeStarshipSpaceframeClassName, changeStarshipSpaceframeDepartment, 
 import store from "../../state/store";
 import { BuildPoints } from "../model/buildPoints";
 import { BaseSimpleStarshipPage } from "./simpleStarshipPage";
+import { withTranslation } from 'react-i18next';
 
 class SystemValue {
     system: System;
@@ -24,14 +25,15 @@ class SystemValue {
 class CustomSpaceframePage extends BaseSimpleStarshipPage {
 
     renderExtraSections() {
+        const { t } = this.props;
         return (<section className="my-5 row row-cols-1 row-cols-lg-2">
                 <div className="col mb-3">
-                    <Header level={2}>Service Year</Header>
-                    <p>What year did this spaceframe enter service?</p>
+                    <Header level={2}>{t('Construct.other.serviceDate')}</Header>
+                    <p>{t('StarshipPage.whatYear')}</p>
                     <InputFieldAndLabel type="number" value={this.props.starship?.spaceframeModel?.serviceYear?.toString() || ""}
                         onChange={(value) => this.setServiceYear(value)}
                         max={this.props.starship.serviceYear}
-                        id="serviceYear" labelName="Service Year" />
+                        id="serviceYear" labelName={t('Construct.other.serviceDate')} />
                 </div>
             </section>)
     }
@@ -81,7 +83,8 @@ class CustomSpaceframePage extends BaseSimpleStarshipPage {
     }
 
     renderHeader() {
-        return (<Header>Custom Spaceframe Creation</Header>);
+        const { t } = this.props;
+        return (<Header>{t('Page.title.customSpaceframe')}</Header>);
     }
 
     canDecreaseScale() {
@@ -174,4 +177,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(CustomSpaceframePage);
+export default withTranslation()(connect(mapStateToProps)(CustomSpaceframePage));

@@ -31,6 +31,19 @@ StarshipToolSelection.standardBuild,Standard Build,Standardausführung,Construcc
 StarshipToolSelection.standardBuildDescription,"The standard Starship creation process follows the build steps as outlined in the rulebooks. E.g.: starships choose a Spaceframe, Mission Profile, etc.","Der Standard-Raumschiff-Erstellungsprozess folgt den Build-Schritten, wie in den Regelwerken beschrieben. Z.B.: Raumschiffe wählen einen Spaceframe, ein Missionsprofil usw.","El proceso estándar de creación de Starship sigue los pasos de compilación descritos en los libros de reglas. Por ejemplo: las naves espaciales eligen un marco espacial, un perfil de misión, etc.","Le processus standard de création d'un Vaisseau suit les étapes de construction décrites dans les livres de règles. Par exemple: les vaisseaux spatiaux choisissent une trame spatiale, un profil de mission, etc."
 StarshipToolSelection.simplifiedBuild,Simplified Build,Vereinfachter Aufbau,Compilación simplificada,Construction simplifiée
 StarshipToolSelection.simplifiedBuildDescription,"The Simplified build is a good option for transcribing a set of stats, say from an online source or other other reference.","Der vereinfachte Build ist eine gute Option zum Transkribieren einer Reihe von Statistiken, Z. B. aus einer Online-Quelle oder einer anderen Referenz.","La compilación simplificada es una buena opción para transcribir un conjunto de estadísticas, por ejemplo, de una fuente en línea u otra referencia.","La version simplifiée est une bonne option pour transcrire un ensemble de statistiques, par exemple à partir d'une source en ligne ou d'une autre référence."
+StarshipTypeSelection.campaignYear,Campaign Year,,,
+StarshipTypeSelection.instruction,"What is the current year in your campaign? You'll probably need to consult your GM.
+
+A default year will be filled in automatically dependent on the chosen Era.",,,
+StarshipTypeSelection.year,Year,,,
+StarshipTypeSelection.shipPolity,Ship Type,,,
+StarshipTypeSelection.whatShipPolity,What type of starship is this?,,,
+StarshipTypeSelection.shipBuildType,Ship Size,,,
+StarshipTypeSelection.whatShipBuildType,How big of a vessel is it?,,,
+StarshipPage.whatScale,How large is this ship?,,,
+StarshipPage.whatClass,What's the name of the ship's class?,,,
+StarshipPage.whatYear,What year did this spaceframe enter service?,,,
+StarshipPage.class,Class,,,
 ToolSelection.instruction,What do you want to create?,,,
 ToolSelection.mainCharacter,Main Character,Hauptfigur,Personaje principal,Personnage principal
 ToolSelection.supportingCharacter,Supporting Character,Nebencharakter,Personaje secundario,Personnage secondaire
@@ -50,9 +63,9 @@ Construct.other.attributes,Attributes,Attribute,Atributos,Attributs
 Construct.other.crew,Crew,Mannschaft,Tripulación,Équipage
 Construct.other.departments,Departments,Abteilungen,Departamentos,Departements
 Construct.other.disciplines,Disciplines,Disziplinen,Disciplinas,Disciplines
-Construct.other.environment,Environment,Umwelt,Medio ambiente,Environnement
-Construct.other.equipment,Equipment,Ausrüstung,Equipo,Équipement
-Construct.other.focuses,Focuses,Konzentriert sich,Atenciónes,Spécialités
+Construct.other.environment,Environment,Herkunft,Medio ambiente,Environnement
+Construct.other.equipment,Equipment,Sonstige Ausrüstung,Equipo,Équipement
+Construct.other.focuses,Focuses,Fokusse,Atenciónes,Spécialités
 Construct.other.missionProfile,Mission Profile,Missionsprofil,Perfil de la misión,Profil de mission
 Construct.other.name,Name,Name,Nombre,Nom
 Construct.other.pronouns,Pronouns,Pronomen,Pronombres,Pronoms
@@ -66,23 +79,23 @@ Construct.other.shields,Shields,Schilde,Escudos,Boucliers
 Construct.other.spaceFrame,Space Frame,Raumfachwerk,Malla espacial,Armature
 Construct.other.specialRules,Special Rules,Besondere Regeln,Reglas especiales,Règles spéciales
 Construct.other.species,Species,Spezies,Especie,Espèce
-Construct.other.stress,Stress,Stress,Estrés,Stress
+Construct.other.stress,Stress,Anstrengung,Estrés,Stress
 Construct.other.systems,Systems,Systeme,Sistemas,Systèmes
-Construct.other.talents,Talents,Begabungen,Talentos,Talents
+Construct.other.talents,Talents,Talente,Talentos,Talents
 Construct.other.traits,Traits,Charakterzüge,Rasgos,Traits
 Construct.other.upbringing,Upbringing,Erziehung,Cría,Education
-Construct.other.values,Values,Werte,Valores,Valeurs
+Construct.other.values,Values,Überzeugungen,Valores,Valeurs
 Construct.other.weapons,Weapons,Waffen,Armas,Armes
-Construct.attribute.control,Control,Kommando,Control,Contrôle
-Construct.attribute.daring,Daring,Flugkontrolle,Atrevido,Audace
-Construct.attribute.fitness,Fitness,Sicherheit,Aptitud,Forme Physique
-Construct.attribute.insight,Insight,Technik,Visión,Perspicacité
-Construct.attribute.presence,Presence,Wissenschaft,Presencia,Présence
-Construct.attribute.reason,Reason,Medizin,Razón,Raison
-Construct.discipline.command,Command,Befehl,Mandar,Commandement
-Construct.discipline.conn,Conn,Steuerung,Pilotaje,Pilotage
+Construct.attribute.control,Control,Konzentration,Control,Contrôle
+Construct.attribute.daring,Daring,Wagemut,Atrevido,Audace
+Construct.attribute.fitness,Fitness,Fitness,Aptitud,Forme Physique
+Construct.attribute.insight,Insight,Gespür,Visión,Perspicacité
+Construct.attribute.presence,Presence,Ausstrahlung,Presencia,Présence
+Construct.attribute.reason,Reason,Verstand,Razón,Raison
+Construct.discipline.command,Command,Kommando,Mandar,Commandement
+Construct.discipline.conn,Conn,Flugkontrolle,Pilotaje,Pilotage
 Construct.discipline.security,Security,Sicherheit,Seguridad,Sécurité
-Construct.discipline.engineering,Engineering,Ingenieurwesen,Ingeniería,Ingénierie
+Construct.discipline.engineering,Engineering,Technik,Ingeniería,Ingénierie
 Construct.discipline.science,Science,Wissenschaft,Ciencia,Science
 Construct.discipline.medicine,Medicine,Medizin,Medicina,Médecine
 Construct.department.command,Command,Kommando,Mandar,Commandement
@@ -110,4 +123,17 @@ Page.title.starSystemDetails,Star System Details,Details zum Sternensystem,Detal
 Page.title.starshipToolSelection,Starship Tool Selection,Raumschiff-Werkzeuge,Herramientas de naves espaciales,Outils de vaisseau spatial
 Page.title.toolSelection,Tool Selection,,,
 Page.title.gamemasterTrackerPage,Tracking,Verfolgung,Seguimiento,Suivi
+Page.title.customSpaceframe,Custom Spaceframe Creation,,,
+Page.title.finalStarshipDetails,Final Starship Details,,,
+Page.title.missionPodSelection,Mission Pod Selection,,,
+Page.title.missionProfileSelection,Mission Profile Selection,,,
+Page.title.missionProfileTalentSelection,Mission Profile Talent,,,
+Page.title.simpleStarship,Simplified Starship Creation,,,
+Page.title.smallCraftStats,Small Craft Stats,,,
+Page.title.spaceframeOption,Spaceframe Option,,,
+Page.title.spaceframeSelection,Spaceframe,,,
+Page.title.starshipTalentSelection,Starship Talents,,,
+Page.title.starshipTypeSelection,Starship Type,,,
+Page.title.starshipWeaponsSelection,Starship Weapons,,,
 Page.breadcrumb.characterCreation,Character Creation,Charaktererstellung,Creación de personajes,Création de personnages
+Page.breadcrumb.starshipCreation,Starship Creation,,,

@@ -39,6 +39,19 @@
     "StarshipToolSelection.simplifiedBuild": "Simplified Build",
     "StarshipToolSelection.simplifiedBuildDescription": "The Simplified build is a good option for transcribing a set of stats, say from an online source or other other reference.",
 
+    "StarshipTypeSelection.campaignYear": "Campaign Year",
+    "StarshipTypeSelection.instruction": "What is the current year in your campaign? You'll probably need to consult your GM.\n\nA default year will be filled in automatically dependent on the chosen Era.",
+    "StarshipTypeSelection.year": "Year",
+    "StarshipTypeSelection.shipPolity": "Ship Type",
+    "StarshipTypeSelection.whatShipPolity": "What type of starship is this?",
+    "StarshipTypeSelection.shipBuildType": "Ship Size",
+    "StarshipTypeSelection.whatShipBuildType": "How big of a vessel is it?",
+
+    "StarshipPage.whatScale": "How large is this ship?",
+    "StarshipPage.whatClass": "What's the name of the ship's class?",
+    "StarshipPage.whatYear": "What year did this spaceframe enter service?",
+    "StarshipPage.class": "Class",
+
     "ToolSelection.instruction": "What do you want to create?",
     "ToolSelection.mainCharacter": "Main Character",
     "ToolSelection.supportingCharacter": "Supporting Character",
@@ -125,6 +138,19 @@
     "Page.title.starshipToolSelection": "Starship Tool Selection",
     "Page.title.toolSelection": "Tool Selection",
     "Page.title.gamemasterTrackerPage": "Tracking",
+    "Page.title.customSpaceframe": "Custom Spaceframe Creation",
+    "Page.title.finalStarshipDetails": "Final Starship Details",
+    "Page.title.missionPodSelection": "Mission Pod Selection",
+    "Page.title.missionProfileSelection": "Mission Profile Selection",
+    "Page.title.missionProfileTalentSelection": "Mission Profile Talent",
+    "Page.title.simpleStarship": "Simplified Starship Creation",
+    "Page.title.smallCraftStats": "Small Craft Stats",
+    "Page.title.spaceframeOption": "Spaceframe Option",
+    "Page.title.spaceframeSelection": "Spaceframe",
+    "Page.title.starshipTalentSelection": "Starship Talents",
+    "Page.title.starshipTypeSelection": "Starship Type",
+    "Page.title.starshipWeaponsSelection": "Starship Weapons",
 
-    "Page.breadcrumb.characterCreation": "Character Creation"
+    "Page.breadcrumb.characterCreation": "Character Creation",
+    "Page.breadcrumb.starshipCreation": "Starship Creation"
 }
