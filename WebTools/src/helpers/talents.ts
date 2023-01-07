@@ -13,6 +13,7 @@ import store from '../state/store';
 import { centuryToYear } from './weapons';
 import { Spaceframe } from './spaceframeEnum';
 import { IConstructPrerequisite, ServiceYearPrerequisite } from './prerequisite';
+import { NotSourcePrerequisite } from './spaceframes';
 
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
 
@@ -2659,7 +2660,7 @@ export class Talents {
             new TalentModel(
                 "Quantum Torpedoes",
                 "The vessel has been equipped with the latest in ship-to-ship munitions: the quantum torpedoes. The ship has quantum torpedoes in addition to any other form of torpedo it carries.",
-                [new StarshipPrerequisite(), new ServiceYearPrerequisite(2371)],
+                [new StarshipPrerequisite(), new ServiceYearPrerequisite(2371), new NotSourcePrerequisite(Source.UtopiaPlanitia)],
                 1,
                 "Starship"),
             new TalentModel(

@@ -55,22 +55,22 @@ class CustomSpeciesDetailsPage extends React.Component<ICustomSpeciesDetailsProp
     }
 
     render() {
-        const selectDesc = "(Select three)";
         const { t } = this.props;
+        const selectDesc = t('SpeciesDetails.selectThree');
 
         return (
             <div className="page">
                 <div className="container ml-0">
                     <CharacterCreationBreadcrumbs />
-                    <Header>Custom Species</Header>
-                    <InstructionText text={"Choose a species name"} />
+                    <Header>{t('Page.title.customSpeciesDetails')}</Header>
+                    <InstructionText text={t('CustomSpeciesDetails.instruction')} />
                     <InputFieldAndLabel labelName={t('CustomSpeciesDetails.speciesName')} id="speciesName"
                         onChange={(value) => this.setSpeciesName(value)} value={this.state.speciesName} />
 
 
                     <div className="row">
                         <div className="col-12 col-lg-6 my-4">
-                            <Header level={2}>ATTRIBUTES {selectDesc}</Header>
+                            <Header level={2}>{t('Construct.other.attributes')} {selectDesc}</Header>
                             <div className="mt-4">
                                 <SpeciesAttributeComponent controller={this.controller} />
                             </div>
@@ -78,35 +78,36 @@ class CustomSpeciesDetailsPage extends React.Component<ICustomSpeciesDetailsProp
                             <InstructionText text={this.controller.instructions} />
                         </div>
                         <div className="col-12 col-lg-6 my-4">
-                            <Header level={2}>Trait</Header>
+                            <Header level={2}>{t('Construct.other.trait')}</Header>
                             <p className="mt-3"><b>{this.state.speciesName || "Custom Species"}</b></p>
-                            <p>Each species gets a species-specific trait that may provide additional benefits
-                                in special circumstances.
-                            </p>
+                            <p>{t('CustomSpeciesDetails.speciesTrait')}</p>
                         </div>
                     </div>
                     {this.renderTalentsSection()}
-                    <Button text="ENVIRONMENT" className="button-next" onClick={() => this.onNext()} />
+                    <div className="text-right">
+                        <Button text={t('Common.button.next')} className="button-next" onClick={() => this.onNext()} buttonType={true} />
+                    </div>
                 </div>
             </div>
         );
     }
 
     renderTalentsSection() {
+        const { t } = this.props;
         let talents = [];
         talents.push(...TalentsHelper.getAllAvailableTalentsForCharacter(character));
 
         const esotericTalentOption = (hasSource(Source.PlayersGuide)) ? (<div>
                 <CheckBox
                     isChecked={this.props.allowEsotericTalents}
-                    text="Allow esoterric talents (GM's decision)"
+                    text={t('SpeciesDetails.allowEsoteric')}
                     value={!this.props.allowEsotericTalents}
                     onChanged={() => { store.dispatch(setAllowEsotericTalents(!this.props.allowEsotericTalents));  }} />
             </div>) : undefined;
 
         return talents.length > 0 && character.workflow.currentStep().options.talentSelection
             ? (<div>
-                <Header level={2}>TALENTS</Header>
+                <Header level={2}>{t('Construct.other.talents')}</Header>
                 <div>
                     {this.renderCrossSpeciesCheckbox()}
                 </div>
@@ -115,7 +116,7 @@ class CustomSpeciesDetailsPage extends React.Component<ICustomSpeciesDetailsProp
                     onSelection={talent => this.onTalentSelected(talent)} />
             </div>)
             : (<div>
-                <Header level={2}>SPECIES OPTIONS</Header>
+                <Header level={2}>{t('SpeciesDetails.options')}</Header>
                 <div>
                     {this.renderCrossSpeciesCheckbox()}
                 </div>
@@ -129,9 +130,10 @@ class CustomSpeciesDetailsPage extends React.Component<ICustomSpeciesDetailsProp
     }
 
     private renderCrossSpeciesCheckbox() {
+        const { t } = this.props;
         return (<CheckBox
             isChecked={this.props.allowCrossSpeciesTalents}
-            text="Allow cross-species talents (GM's decision)"
+            text={t('SpeciesDetails.allowCrossSpecies')}
             value={!this.props.allowCrossSpeciesTalents}
             onChanged={() => {
                 store.dispatch(setAllowCrossSpeciesTalents(!this.props.allowCrossSpeciesTalents));
@@ -147,8 +149,9 @@ class CustomSpeciesDetailsPage extends React.Component<ICustomSpeciesDetailsProp
     }
 
     private onNext() {
+        const { t } = this.props;
         if (!this.state.speciesName) {
-            Dialog.show("Please provide a name for this species.");
+            Dialog.show(t('CustomSpeciesDetails.speciesNameWarning'));
             return;
         }
 

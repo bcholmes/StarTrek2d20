@@ -34,6 +34,14 @@
     "AddCharacterView.characterPrefix": "Character:",
 
     "CustomSpeciesDetails.speciesName": "Name",
+    "CustomSpeciesDetails.instruction": "What's the name of this species?",
+    "CustomSpeciesDetails.speciesTrait": "Each species gets a species-specific trait that may provide additional benefits in special circumstances.",
+    "CustomSpeciesDetails.speciesNameWarning": "Please provide a name for this species.",
+
+    "SpeciesDetails.options": "Species Options",
+    "SpeciesDetails.selectThree": "(Select three)",
+    "SpeciesDetails.allowCrossSpecies": "Allow cross-species talents (GM's decision)",
+    "SpeciesDetails.allowEsoteric": "Allow esoterric talents (GM's decision)",
 
     "StarshipToolSelection.instruction": "Select an option",
     "StarshipToolSelection.standardBuild": "Standard Build",
@@ -94,6 +102,7 @@
     "Construct.other.stress": "Stress",
     "Construct.other.systems": "Systems",
     "Construct.other.talents": "Talents",
+    "Construct.other.trait": "Trait",
     "Construct.other.traits": "Traits",
     "Construct.other.upbringing": "Upbringing",
     "Construct.other.values": "Values",

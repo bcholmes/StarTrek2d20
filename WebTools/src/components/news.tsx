@@ -11,6 +11,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230107</b>
+                <ul>
+                    <li>Another translation pass. Over time, we'll add more and more national language capability.</li>
+                    <li>I've added a bit of support for custom species. At the moment, that doesn't mean much other than "you can type the name of a species".</li>
+                </ul>
                 <b>v1.230101</b>
                 <ul>
                     <li>Happy New Year! I've finally gotten around to expanding the PDF export functionality for sectors, so that
@@ -218,11 +223,6 @@ class News extends React.Component<INewsProperties, {}> {
                     <li>More spaceframe outline revisions</li>
                     <li>Minor formatting changes.</li>
                     <li>Some prep for the Picard Crew book.</li>
-                </ul>
-                <b>v1.220703</b>
-                <ul>
-                    <li>Some additional spaceframe outline revisions</li>
-                    <li>Minor work improving the star sector functionality.</li>
                 </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>

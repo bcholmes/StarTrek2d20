@@ -105,6 +105,7 @@ class Column {
 }
 
 export interface ICharacterSheet {
+    getLanguage(): string;
     getName(): string;
     getThumbnailUrl(): string;
     getPdfUrl(): string;
@@ -113,6 +114,9 @@ export interface ICharacterSheet {
 }
 
 abstract class BasicSheet implements ICharacterSheet {
+    getLanguage(): string {
+        return "en";
+    }
     getName(): string {
         throw new Error('Method not implemented.');
     }
@@ -662,6 +666,22 @@ class StandardTngCharacterSheet extends BasicFullCharacterSheet {
     }
 }
 
+class StandardGermanCharacterSheet extends BasicFullCharacterSheet {
+    getLanguage(): string {
+        return "de";
+    }
+    getName(): string {
+        return 'German TNG Character Sheet (A4)'
+    }
+    getThumbnailUrl(): string {
+        return '/static/img/sheets/TNG_StarTrek_de_Charakter.png'
+    }
+    getPdfUrl(): string {
+        return '/static/pdf/TNG_StarTrek_de_Charakter.pdf'
+    }
+}
+
+
 class StandardTosCharacterSheet extends BasicFullCharacterSheet {
     getName(): string {
         return 'TOS Character Sheet (Landscape)'
@@ -1164,21 +1184,21 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
 class CharacterSheets {
     public getSupportingCharacterSheet(c: Character, era: Era = store.getState().context.era): ICharacterSheet[] {
         if (c.isKlingon()) {
-            return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
+            return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new StandardTosCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
         } else if (era === Era.NextGeneration) {
-            return [ new StandardTngCharacterSheet(), new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet(), new KlingonCharacterSheet()  ];
+            return [ new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),  new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet(), new KlingonCharacterSheet()  ];
         } else {
-            return [ new StandardTosCharacterSheet(), new StandardTngCharacterSheet(), new HalfPageSupportingCharacterSheet(), new KlingonCharacterSheet() ];
+            return [ new StandardTosCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),  new HalfPageSupportingCharacterSheet(), new KlingonCharacterSheet() ];
         }
     }
 
     public getCharacterSheets(character: Character, era: Era = store.getState().context.era): ICharacterSheet[] {
         if (character.isKlingon()) {
-            return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet() ];
+            return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),  new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet() ];
         } else if (era === Era.NextGeneration) {
-            return [ new StandardTngCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageKlingonCharacterSheet() ];
+            return [ new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageKlingonCharacterSheet() ];
         } else {
-            return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageKlingonCharacterSheet() ];
+            return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageKlingonCharacterSheet() ];
         }
     }
 

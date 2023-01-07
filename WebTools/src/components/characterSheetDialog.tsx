@@ -5,6 +5,7 @@ import {Button} from './button';
 import { ModalControl } from './modal';
 import { character } from '../common/character';
 import { Construct } from '../common/construct';
+import { getNavigatorLanguage } from '../i18n/config';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -29,7 +30,7 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
         const selection = this.state['selection'];
 
         const sheetList = sheets.map((s, i) => {
-            const selected = (s.getName() === selection.getName()) ? "sheet-selection-item selected" : "sheet-selection-item"; 
+            const selected = (s.getName() === selection.getName()) ? "sheet-selection-item selected" : "sheet-selection-item";
             const overlay = (s.getName() === selection.getName()) ? <img className="overlay" src="./static/img/check.png" alt="checkmark" /> : undefined;
             return (
                 <div className={selected} onClick={(e) => { e.stopPropagation(); this.selectTemplate(s); } } key={'character-sheet-' + i}>
@@ -74,7 +75,7 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
             // Trigger the browser to download the PDF document
             download(pdfBytes, sheet.createFileName(this.props.suffix, this.props.construct), "application/pdf");
         }
-        
+
         CharacterSheetDialog.hide();
     }
 }
@@ -82,8 +83,11 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
 class CharacterSheetDialogControl {
 
     show(sheets: ICharacterSheet[], suffix: string, c: Construct = character) {
+        let browserLanguage = getNavigatorLanguage();
+        let filteredSheets = sheets.filter(s => s.getLanguage() === "en" || browserLanguage.indexOf(s.getLanguage()) === 0);
+
         ModalControl.show("lg", () => {}, React.createElement(_CharacterSheetDialog, {
-            sheets: sheets,
+            sheets: filteredSheets,
             suffix: suffix,
             construct: c
         }), "Choose Template" )
