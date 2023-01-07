@@ -33,6 +33,8 @@
     "AddCharacterView.errorCharacterType": "Whoops! We only support characters, at the moment. Not starships.",
     "AddCharacterView.characterPrefix": "Character:",
 
+    "CustomSpeciesDetails.speciesName": "Name",
+
     "StarshipToolSelection.instruction": "Select an option",
     "StarshipToolSelection.standardBuild": "Standard Build",
     "StarshipToolSelection.standardBuildDescription": "The standard Starship creation process follows the build steps as outlined in the rulebooks. E.g.: starships choose a Spaceframe, Mission Profile, etc.",
@@ -129,6 +131,7 @@
     "Page.title.era": "Era",
     "Page.title.talentsOverview": "Talents Overview",
     "Page.title.creditsPage": "Credits",
+    "Page.title.customSpeciesDetails": "Custom Species Details",
     "Page.title.viewSheet": "View Sheet",
     "Page.title.supportingCharacter": "Supporting Character",
     "Page.title.characterType": "Character Type",

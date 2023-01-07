@@ -1,8 +1,9 @@
-﻿import {Attribute} from './attributes';
+﻿import {Attribute, AttributesHelper} from './attributes';
 import {Skill} from './skills';
 import {SpeciesHelper} from './species';
 import {character } from '../common/character';
 import { CharacterType } from '../common/characterType';
+import { Species } from './speciesEnum';
 
 export enum Environment {
     // Core
@@ -43,7 +44,7 @@ class EnvironmentViewModel extends EnvironmentModel {
         this.id = id;
 
         if (base.id === Environment.Homeworld) {
-            const speciesAttributes = SpeciesHelper.getSpeciesByType(character.species).attributes;
+            const speciesAttributes = character.species === Species.Custom ? AttributesHelper.getAllAttributes() : SpeciesHelper.getSpeciesByType(character.species).attributes;
             this.attributes = speciesAttributes;
         }
     }

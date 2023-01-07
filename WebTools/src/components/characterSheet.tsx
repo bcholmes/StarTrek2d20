@@ -2,7 +2,6 @@
 import {character} from '../common/character';
 import {Attribute} from '../helpers/attributes';
 import {Skill} from '../helpers/skills';
-import {SpeciesHelper} from '../helpers/species';
 import {EnvironmentsHelper, Environment} from '../helpers/environments';
 import {TracksHelper} from '../helpers/tracks';
 import {CareersHelper} from '../helpers/careers';
@@ -36,12 +35,7 @@ class CharacterSheetData {
     }
 
     private getSpeciesString() {
-        var species = character.species >= 0 ? SpeciesHelper.getSpeciesByType(character.species).name : "None"
-        if (character.mixedSpecies >= 0) {
-            species += `/${SpeciesHelper.getSpeciesByType(character.mixedSpecies).name}`;
-        }
-
-        return species;
+        return character.speciesName || "None";
     }
 
     private getEnvironmentString() {

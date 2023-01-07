@@ -8,11 +8,12 @@ import { Species } from './speciesEnum';
 import store from '../state/store';
 import { hasAnySource, hasSource } from '../state/contextFunctions';
 
-
 class NameModel {
     type: string;
     suggestions: string;
 }
+
+export const ANY_NAMES = [ { type: "any", suggestions: "anything"} as NameModel ]
 
 export class SpeciesModel {
     id: Species;

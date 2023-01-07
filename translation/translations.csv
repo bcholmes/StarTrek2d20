@@ -26,6 +26,7 @@ AddCharacterView.instruction,Paste in the URL for a character.,Fügen Sie die UR
 AddCharacterView.errorMessage,This url does not look valid.,Diese URL sieht nicht gültig aus.,Esta URL no parece válida.,Cette URL ne semble pas valide.
 AddCharacterView.errorCharacterType,"Whoops! We only support characters, at the moment. Not starships.",Hoppla! Wir unterstützen im Moment nur Charaktere. Keine Raumschiffe.,"¡Gritos! Solo admitimos personajes, por el momento. No naves espaciales.","Nous ne supportons que les personnages, pour le moment. Pas des vaisseaux spatiaux."
 AddCharacterView.characterPrefix,Character:,Zeichen:,Carácter:,Personnage:
+CustomSpeciesDetails.speciesName,Name,,,
 StarshipToolSelection.instruction,Select an option,Wählen Sie eine Option,Seleccione una opción,Sélectionnez une option
 StarshipToolSelection.standardBuild,Standard Build,Standardausführung,Construcción estándar,Construction standard
 StarshipToolSelection.standardBuildDescription,"The standard Starship creation process follows the build steps as outlined in the rulebooks. E.g.: starships choose a Spaceframe, Mission Profile, etc.","Der Standard-Raumschiff-Erstellungsprozess folgt den Build-Schritten, wie in den Regelwerken beschrieben. Z.B.: Raumschiffe wählen einen Spaceframe, ein Missionsprofil usw.","El proceso estándar de creación de Starship sigue los pasos de compilación descritos en los libros de reglas. Por ejemplo: las naves espaciales eligen un marco espacial, un perfil de misión, etc.","Le processus standard de création d'un Vaisseau suit les étapes de construction décrites dans les livres de règles. Par exemple: les vaisseaux spatiaux choisissent une trame spatiale, un profil de mission, etc."
@@ -114,6 +115,7 @@ Page.title.home,Home,Homepage,Página principal,Page d'accueil
 Page.title.era,Era,Ära,Era,Ère
 Page.title.talentsOverview,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
 Page.title.creditsPage,Credits,Kredite,Créditos,Crédits
+Page.title.customSpeciesDetails,Custom Species Details,,,
 Page.title.viewSheet,View Sheet,Blatt anzeigen,Ver hoja,Voir la feuille
 Page.title.supportingCharacter,Supporting Character,Nebencharakter,Personaje secundario,Personnage secondaire
 Page.title.characterType,Character Type,Zeichentyp,Tipo de carácter,Type de personnage

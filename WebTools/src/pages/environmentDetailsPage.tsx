@@ -14,6 +14,7 @@ import {Dialog} from '../components/dialog';
 import {ValueInput, Value} from '../components/valueInput';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { Species } from '../helpers/speciesEnum';
+import { AttributesHelper } from '../helpers/attributes';
 
 export class EnvironmentDetailsPage extends React.Component<IPageProperties, {}> {
     private _electiveSkills: Skill[];
@@ -34,22 +35,20 @@ export class EnvironmentDetailsPage extends React.Component<IPageProperties, {}>
                 }
 
                 character.otherSpeciesWorld = SpeciesHelper.getSpeciesByType(this._otherSpecies).name;
-            }
-            else {
+            } else {
                 this._otherSpecies = SpeciesHelper.getSpeciesByName(character.otherSpeciesWorld);
             }
         }
     }
 
     render() {
-        var env = EnvironmentsHelper.getEnvironment(character.environment, character.type);
-        const species = SpeciesHelper.getSpeciesByType(character.species);
+        let env = EnvironmentsHelper.getEnvironment(character.environment, character.type);
         var otherSpeciesName = "";
 
         if (character.environment === Environment.Homeworld) {
-            env.attributes = species.attributes;
-        }
-        else if (character.environment === Environment.AnotherSpeciesWorld) {
+            const speciesAttributes = character.species === Species.Custom ? AttributesHelper.getAllAttributes() : SpeciesHelper.getSpeciesByType(character.species).attributes;
+            env.attributes = speciesAttributes;
+        } else if (character.environment === Environment.AnotherSpeciesWorld) {
             const otherSpecies = SpeciesHelper.getSpeciesByType(this._otherSpecies);
             env.attributes = otherSpecies.attributes;
             otherSpeciesName = `(${otherSpecies.name})`;

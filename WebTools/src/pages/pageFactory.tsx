@@ -49,6 +49,7 @@ import MissionProfileTalentSelectionPage from '../starship/page/missionProfileTa
 import RefitsPage from '../starship/page/refitsPage';
 import SpaceframeSelectionPage from '../starship/page/spaceframeSelectionPage';
 import MissionPodSelectionPage from '../starship/page/missionPodSelectionPage';
+import CustomSpeciesDetailsPage from './customSpeciesDetailsPage';
 
 export class PageFactory {
     private factories = {};
@@ -66,6 +67,7 @@ export class PageFactory {
         this.factories[PageIdentity.LiberatedBorgSpeciesExtraDetails] = () => <SpeciesExtraDetailsPage species={Species.LiberatedBorg} />;
         this.factories[PageIdentity.CyberneticallyEnhancedSpeciesExtraDetails] = () => <SpeciesExtraDetailsPage species={Species.CyberneticallyEnhanced} />;
         this.factories[PageIdentity.SpeciesDetails] = () => <SpeciesDetailsPage/>;
+        this.factories[PageIdentity.CustomSpeciesDetails] = () => <CustomSpeciesDetailsPage/>;
         this.factories[PageIdentity.Environment] = () => <EnvironmentPage/>;
         this.factories[PageIdentity.EnvironmentDetails] = () => <EnvironmentDetailsPage/>;
         this.factories[PageIdentity.Upbringing] = () => <UpbringingPage/>;

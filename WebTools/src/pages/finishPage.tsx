@@ -5,7 +5,7 @@ import {IPageProperties} from './iPageProperties';
 import {Button} from '../components/button';
 import {CheckBox} from '../components/checkBox';
 import {ValueInput, Value} from '../components/valueInput';
-import {SpeciesHelper} from '../helpers/species';
+import {ANY_NAMES, SpeciesHelper} from '../helpers/species';
 import {RanksHelper} from '../helpers/ranks';
 import {RolesHelper, RoleModel} from '../helpers/roles';
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
@@ -101,12 +101,12 @@ export class FinishPage extends React.Component<IPageProperties, IFinishPageStat
     render() {
         const species = SpeciesHelper.getSpeciesByType(character.species);
 
-        const nameDescription = species.nameDescription;
+        const nameDescription = species == null ? "Custom species might have any naming protocol." : species.nameDescription;
 
-        const nameSuggestions = species.nameSuggestions;
+        const nameSuggestions = species?.nameSuggestions ?? ANY_NAMES;
         let names = [];
 
-        nameSuggestions.forEach(n => {
+        nameSuggestions?.forEach(n => {
             names.push(`${n.type}: ${n.suggestions}`);
         });
 

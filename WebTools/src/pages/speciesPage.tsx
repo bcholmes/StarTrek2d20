@@ -59,6 +59,7 @@ class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
                         <div className="col">
                             <Button className="button" text="Select Species" onClick={() => this.showSpecies() } />
                             <Button className="button" text="Select Mixed Species" onClick={() => this.showMixedSpecies() }/>
+                            <Button className="button" text="Select Custom Species" onClick={() => this.showCustomSpecies() }/>
                         </div>
                         <div className="col">
                             {this.isRollAvailable() ? (<Button className="button" text="Roll Core Species" onClick={() => this.rollSpecies()} />) : undefined }
@@ -139,6 +140,11 @@ class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
             showSelection: true,
             showMixedSelection: false
         });
+    }
+
+    private showCustomSpecies() {
+        character.species = Species.Custom;
+        Navigation.navigateToPage(PageIdentity.CustomSpeciesDetails);
     }
 
     private hideSpecies() {

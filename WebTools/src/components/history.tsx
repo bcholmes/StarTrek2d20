@@ -93,7 +93,9 @@ class History extends React.Component<IHistoryProperties, {}> {
         switch (page) {
             case PageIdentity.Home:
             case PageIdentity.Era:
-            case PageIdentity.ToolSelection:;
+            case PageIdentity.ToolSelection:
+            case PageIdentity.CharacterType:
+            case PageIdentity.CustomSpeciesDetails:
                 return t(key);
             case PageIdentity.Species: return "Species";
             case PageIdentity.KobaliExtraSpeciesDetails: return "Species Extra Details";
