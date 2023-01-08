@@ -16,7 +16,6 @@ import {CareerEventPage} from './careerEventPage';
 import {CareerEventDetailsPage} from './careerEventDetailsPage';
 import {AttributesAndDisciplinesPage} from './attributesAndDisciplinesPage';
 import FinishPage from './finishPage';
-import StarshipPage from '../starship/page/starshipPage';
 import {SupportingCharacterPage} from '../supportingcharacters/supportingCharacterPage';
 import TalentsOverviewPage from './talentsOverviewPage';
 import SelectionPage from './selectionPage';
@@ -97,7 +96,6 @@ export class PageFactory {
         this.factories[PageIdentity.SmallCraftStats] = () => <SmallCraftStatsPage/>;
         this.factories[PageIdentity.SpaceframeOption] = () => <SpaceframePage/>;
         this.factories[PageIdentity.SpaceframeSelection] = () => <SpaceframeSelectionPage/>;
-        this.factories[PageIdentity.Starship] = () => <StarshipPage/>;
         this.factories[PageIdentity.StarshipRefits] = () => <RefitsPage/>;
         this.factories[PageIdentity.StarshipToolSelection] = () => <SelectStarshipToolPage/>;
         this.factories[PageIdentity.StarshipTypeSelection] = () => <StarshipTypeSelectionPage/>;

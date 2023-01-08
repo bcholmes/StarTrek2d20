@@ -5,7 +5,7 @@ import { refitCalculator, Starship } from "../../common/starship";
 import { Button } from "../../components/button";
 import { Dialog } from "../../components/dialog";
 import { Header } from "../../components/header";
-import { Refits } from "../../components/refits";
+import Refits from "../../components/refits";
 import { System } from "../../helpers/systems";
 import { addStarshipRefit, deleteStarshipRefit, nextStarshipWorkflowStep } from "../../state/starshipActions";
 import store from "../../state/store";

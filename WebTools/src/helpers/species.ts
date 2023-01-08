@@ -1430,20 +1430,26 @@ class _Species {
         //    []),
     };
 
+    getAllSpecies() {
+        let result = [];
+        for (let archetype in this._species) {
+            let spec = this._species[archetype];
+            result.push(spec);
+        }
+        return result;
+    }
+
     getSpecies() {
         var species: SpeciesModel[] = [];
         for (var archetype in this._species) {
             var spec = this._species[archetype];
-            let n = parseInt(archetype);
 
-            const hasEra = (spec.eras.indexOf(store.getState().context.era) > -1) || (n === Species.Klingon && character.type === CharacterType.KlingonWarrior);
+            const hasEra = (spec.eras.indexOf(store.getState().context.era) > -1) || (spec.id === Species.Klingon && character.type === CharacterType.KlingonWarrior);
             const isSourceAvailable = hasAnySource(spec.sources);
 
-            if (hasEra && isSourceAvailable && !this.ignoreSpecies(n)) {
+            if (hasEra && isSourceAvailable && !this.ignoreSpecies(spec.id)) {
                 species.push(spec);
             }
-
-            n++;
         }
 
         return species.sort((a, b) => {

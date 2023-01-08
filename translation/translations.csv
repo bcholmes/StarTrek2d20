@@ -1,101 +1,101 @@
 Language,en,de,es,fr
-LanguageNotice.title,Hello There!,Hallo,¡Hola!,Salut!
-LanguageNotice.text,"We're experimenting with some initial support for national languages. We're in a very preliminary stage, but we hope to be able to support more languages, soon.","Wir experimentieren mit einer anfänglichen Unterstützung für Landessprachen. Wir befinden uns in einem sehr frühen Stadium, aber wir hoffen, bald weitere Sprachen unterstützen zu können.","Estamos experimentando con algún soporte inicial para los idiomas nacionales. Estamos en una etapa muy preliminar, pero esperamos poder soportar más idiomas, pronto.","Nous expérimentons un soutien initial pour les langues nationales. Nous sommes dans une phase très préliminaire, mais nous espérons être en mesure de prendre en charge plus de langues, bientôt."
+LanguageNotice.title,Hello There!,Hallo!,¡Hola!,Salut!
+LanguageNotice.text,"We're experimenting with some initial support for national languages. We're in a very preliminary stage, but we hope to be able to support more languages, soon.","Wir experimentieren mit einer grundlegenden Unterstützung für Landessprachen. Wir befinden uns in einem sehr frühen Stadium, aber wir hoffen, bald weitere Sprachen unterstützen zu können.","Estamos experimentando con algún soporte inicial para los idiomas nacionales. Estamos en una etapa muy preliminar, pero esperamos poder soportar más idiomas, pronto.","Nous expérimentons un soutien initial pour les langues nationales. Nous sommes dans une phase très préliminaire, mais nous espérons être en mesure de prendre en charge plus de langues, bientôt."
 LanguageNotice.useEnglish,Use English instead,Englisch verwenden,Usar inglés,Utiliser l'anglais
 Lcars.copyright,STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.,STAR TREK und zugehörige Marken und Logos sind Marken von CBS Studios Inc. Alle Rechte vorbehalten.,STAR TREK y las marcas y logotipos relacionados son marcas comerciales de CBS Studios Inc. Todos los derechos reservados.,STAR TREK et les marques et logos associés sont des marques commerciales de CBS Studios Inc. Tous droits réservés.
 Lcars.credits,Credits,Danksagungen,Créditos,Crédits
-Lcars.feedback,Feedback,,,
+Lcars.feedback,Feedback,Feedback,,
 Lcars.history,History,Verlauf,,
 Lcars.news,News,News,,
 Lcars.profile,Profile,Profil,,
-EraSelectionPage.sourceInstruction,Select sources. Ask your GM which are available.,"Wählen Sie Quellen aus. Fragen Sie Ihren GM, welche verfügbar sind.",Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.,Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.
-EraSelectionPage.sourceNote,Some sources are not yet implemented; check back soon!,Einige Quellen sind noch nicht implementiert; Schauen Sie bald wieder vorbei!,Algunas fuentes aún no se han aplicado; ¡Vuelve pronto!,Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!
-EraSelectionPage.eraInstruction,Select which Era to play in. Ask your GM which Era to choose.,"Wählen Sie aus, in welcher Ära gespielt werden soll. Fragen Sie Ihren GM, welche Ära Sie wählen sollen.",Selecciona en qué Era jugar. Pregúntale a tu GM qué Era elegir.,Sélectionnez l'ère dans laquelle jouer. Demandez à votre MJ quelle ère choisir.
+EraSelectionPage.sourceInstruction,Select sources. Ask your GM which are available.,"Wählen Sie Quellen aus. Fragen Sie Ihren SL, welche verfügbar sind.",Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.,Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.
+EraSelectionPage.sourceNote,Some sources are not yet implemented; check back soon!,Einige Quellen sind noch nicht implementiert; schauen Sie bald wieder vorbei!,Algunas fuentes aún no se han aplicado; ¡Vuelve pronto!,Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!
+EraSelectionPage.eraInstruction,Select which Era to play in. Ask your GM which Era to choose.,"Wählen Sie aus, in welcher Ära gespielt werden soll. Fragen Sie Ihren SL, welche Ära Sie wählen sollen.",Selecciona en qué Era jugar. Pregúntale a tu GM qué Era elegir.,Sélectionnez l'ère dans laquelle jouer. Demandez à votre MJ quelle ère choisir.
 Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sélectionnez l'outil.
-Home.characterButton,Characters & Starships,CHARAKTERE & RAUMSCHIFFE,Personajes y naves espaciales,Personnages et vaisseaux spatiaux
+Home.characterButton,Characters & Starships,Charaktere & Raumschiffe,Personajes y naves espaciales,Personnages et vaisseaux spatiaux
 Home.talentsButton,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
 ViewPage.viewSupportingCharacter,View Supporting Character,Nebencharakter anzeigen,Ver personaje secundario,Voir le personnage secondaire
 ViewPage.viewMainCharacter,View Main Character,Hauptcharakter anzeigen,Ver personaje principal,Voir le personnage principal
 ViewPage.viewStarship,View Starship,Raumschiff ansehen,Ver nave espacial,Voir le vaisseau spatial
 ViewPage.errorMessage,"Things have gone terribly, terribly wrong. We might be in the mirror universe.","Die Dinge sind schrecklich, schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.","Las cosas han ido terriblemente, terriblemente mal. Podríamos estar en el universo espejo.","Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir."
 ViewPage.unnamedStarship,Unnamed Starship,Unbenanntes Raumschiff,Nave espacial sin nombre,Vaisseau sans nom
-GMTracker.title,Tracker,Aufspürer,Rastreador,Suivi
-GMTracker.instruction,Use this tool to manage various NPCs in your game.,"Benutze dieses Tool, um verschiedene NPCs in deinem Spiel zu verwalten.",Usa esta herramienta para administrar varios NPC en tu juego.,Utilisez cet outil pour gérer divers PNJ dans votre jeu.
+GMTracker.title,Tracker,NSC-Verwaltung,Rastreador,Suivi
+GMTracker.instruction,Use this tool to manage various NPCs in your game.,"Benutze dieses Tool, um verschiedene NSC in deinem Spiel zu verwalten.",Usa esta herramienta para administrar varios NPC en tu juego.,Utilisez cet outil pour gérer divers PNJ dans votre jeu.
 GMTracker.addCharacterModalTitle,Add Character,Charakter hinzufügen,Agregar carácter,Ajouter un personnage
-AddCharacterView.instruction,Paste in the URL for a character.,Fügen Sie die URL für ein Zeichen ein.,Pegue la URL de un carácter.,Collez l'URL d'un personnage.
+AddCharacterView.instruction,Paste in the URL for a character.,Fügen Sie die URL für einen Charakter ein.,Pegue la URL de un carácter.,Collez l'URL d'un personnage.
 AddCharacterView.errorMessage,This url does not look valid.,Diese URL sieht nicht gültig aus.,Esta URL no parece válida.,Cette URL ne semble pas valide.
 AddCharacterView.errorCharacterType,"Whoops! We only support characters, at the moment. Not starships.",Hoppla! Wir unterstützen im Moment nur Charaktere. Keine Raumschiffe.,"¡Gritos! Solo admitimos personajes, por el momento. No naves espaciales.","Nous ne supportons que les personnages, pour le moment. Pas des vaisseaux spatiaux."
-AddCharacterView.characterPrefix,Character:,Zeichen:,Carácter:,Personnage:
-CustomSpeciesDetails.speciesName,Name,,,
-CustomSpeciesDetails.instruction,What's the name of this species?,,,
-CustomSpeciesDetails.speciesTrait,Each species gets a species-specific trait that may provide additional benefits in special circumstances.,,,
-CustomSpeciesDetails.speciesNameWarning,Please provide a name for this species.,,,
-SpeciesDetails.options,Species Options,,,
-SpeciesDetails.selectThree,(Select three),,,
-SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),,,
-SpeciesDetails.allowEsoteric,Allow esoterric talents (GM's decision),,,
+AddCharacterView.characterPrefix,Character:,Charakter:,Carácter:,Personnage:
+CustomSpeciesDetails.speciesName,Name,Name,,
+CustomSpeciesDetails.instruction,What's the name of this species?,Wie lautet der Name dieser Spezis?,,
+CustomSpeciesDetails.speciesTrait,Each species gets a species-specific trait that may provide additional benefits in special circumstances.,"Jede Spezies erhält ein bestimmtest Talent, das in bestimmten Situationen zusätzliche Vorteile verleihen kann.",,
+CustomSpeciesDetails.speciesNameWarning,Please provide a name for this species.,Bitte einen Namen für diese Spezies angeben.,,
+SpeciesDetails.options,Species Options,Spezies Optionen,,
+SpeciesDetails.selectThree,(Select three),(drei wählen),,
+SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),Spezis-übergreifende Talente erlauben (SL-Entscheid),,
+SpeciesDetails.allowEsoteric,Allow esoterric talents (GM's decision),Esoterische Talente erlauben (SL-Entscheid),,
 StarshipToolSelection.instruction,Select an option,Wählen Sie eine Option,Seleccione una opción,Sélectionnez une option
-StarshipToolSelection.standardBuild,Standard Build,Standardausführung,Construcción estándar,Construction standard
-StarshipToolSelection.standardBuildDescription,"The standard Starship creation process follows the build steps as outlined in the rulebooks. E.g.: starships choose a Spaceframe, Mission Profile, etc.","Der Standard-Raumschiff-Erstellungsprozess folgt den Build-Schritten, wie in den Regelwerken beschrieben. Z.B.: Raumschiffe wählen einen Spaceframe, ein Missionsprofil usw.","El proceso estándar de creación de Starship sigue los pasos de compilación descritos en los libros de reglas. Por ejemplo: las naves espaciales eligen un marco espacial, un perfil de misión, etc.","Le processus standard de création d'un Vaisseau suit les étapes de construction décrites dans les livres de règles. Par exemple: les vaisseaux spatiaux choisissent une trame spatiale, un profil de mission, etc."
-StarshipToolSelection.simplifiedBuild,Simplified Build,Vereinfachter Aufbau,Compilación simplificada,Construction simplifiée
-StarshipToolSelection.simplifiedBuildDescription,"The Simplified build is a good option for transcribing a set of stats, say from an online source or other other reference.","Der vereinfachte Build ist eine gute Option zum Transkribieren einer Reihe von Statistiken, Z. B. aus einer Online-Quelle oder einer anderen Referenz.","La compilación simplificada es una buena opción para transcribir un conjunto de estadísticas, por ejemplo, de una fuente en línea u otra referencia.","La version simplifiée est une bonne option pour transcrire un ensemble de statistiques, par exemple à partir d'une source en ligne ou d'une autre référence."
-StarshipTypeSelection.campaignYear,Campaign Year,,,
+StarshipToolSelection.standardBuild,Standard Build,Standard Erstellung,Construcción estándar,Construction standard
+StarshipToolSelection.standardBuildDescription,"The standard Starship creation process follows the build steps as outlined in the rulebooks. E.g.: starships choose a Spaceframe, Mission Profile, etc.","Der Standardprozess zur Raumschiff-Erstellung folgt den Erstellungsschritten, wie in den Regelwerken beschrieben. Z.B.: Spaceframe auswählen, ein Missionsprofil usw.","El proceso estándar de creación de Starship sigue los pasos de compilación descritos en los libros de reglas. Por ejemplo: las naves espaciales eligen un marco espacial, un perfil de misión, etc.","Le processus standard de création d'un Vaisseau suit les étapes de construction décrites dans les livres de règles. Par exemple: les vaisseaux spatiaux choisissent une trame spatiale, un profil de mission, etc."
+StarshipToolSelection.simplifiedBuild,Simplified Build,Vereinfachte Erstellung,Compilación simplificada,Construction simplifiée
+StarshipToolSelection.simplifiedBuildDescription,"The Simplified build is a good option for transcribing a set of stats, say from an online source or other other reference.","Die vereinfachte Erstellung ist eine gute Option zum Übernehmen einer Reihe von Statistiken, z.B. aus einer Online-Quelle oder einer anderen Referenz.","La compilación simplificada es una buena opción para transcribir un conjunto de estadísticas, por ejemplo, de una fuente en línea u otra referencia.","La version simplifiée est une bonne option pour transcrire un ensemble de statistiques, par exemple à partir d'une source en ligne ou d'une autre référence."
+StarshipTypeSelection.campaignYear,Campaign Year,Kampagnenjahr,,
 StarshipTypeSelection.instruction,"What is the current year in your campaign? You'll probably need to consult your GM.
 
-A default year will be filled in automatically dependent on the chosen Era.",,,
-StarshipTypeSelection.year,Year,,,
-StarshipTypeSelection.shipPolity,Ship Type,,,
-StarshipTypeSelection.whatShipPolity,What type of starship is this?,,,
-StarshipTypeSelection.shipBuildType,Ship Size,,,
-StarshipTypeSelection.whatShipBuildType,How big of a vessel is it?,,,
-StarshipPage.whatScale,How large is this ship?,,,
-StarshipPage.whatClass,What's the name of the ship's class?,,,
-StarshipPage.whatYear,What year did this spaceframe enter service?,,,
-StarshipPage.class,Class,,,
-ToolSelection.instruction,What do you want to create?,,,
-ToolSelection.mainCharacter,Main Character,Hauptfigur,Personaje principal,Personnage principal
+A default year will be filled in automatically dependent on the chosen Era.",Was ist das aktuelle Jahr in der Kampagne? Das müsste im Zweifelsfalle der/die SL wissen. Eine Voreinstellung wird abhängig von der Ära der Kampagne automatisch eingetragen.,,
+StarshipTypeSelection.year,Year,Jahr,,
+StarshipTypeSelection.shipPolity,Ship Type,Schiffstyp,,
+StarshipTypeSelection.whatShipPolity,What type of starship is this?,Welcher Typ Raumschiff ist es?,,
+StarshipTypeSelection.shipBuildType,Ship Size,Schiffsgröße,,
+StarshipTypeSelection.whatShipBuildType,How big of a vessel is it?,Welche Große hat das Schiff?,,
+StarshipPage.whatScale,How large is this ship?,Wie groß ist das Schiff?,,
+StarshipPage.whatClass,What's the name of the ship's class?,Wie lautet der Name der Schiffsklasse?,,
+StarshipPage.whatYear,What year did this spaceframe enter service?,In welchem Jahr ist diese Schiffsklasse in Dienst gestellt worden?,,
+StarshipPage.class,Class,Klasse,,
+ToolSelection.instruction,What do you want to create?,Was soll erstellt werden?,,
+ToolSelection.mainCharacter,Main Character,Hauptcharakter,Personaje principal,Personnage principal
 ToolSelection.supportingCharacter,Supporting Character,Nebencharakter,Personaje secundario,Personnage secondaire
-ToolSelection.starship,Starship,Sternenschiff,Nave estelar,Vaisseau spatial
-ToolSelection.spaceSector,Space Sector,Raumfahrtsektor,Sector espacial,Secteur spatial
+ToolSelection.starship,Starship,Raumschiff,Nave estelar,Vaisseau spatial
+ToolSelection.spaceSector,Space Sector,Raumsektor,Sector espacial,Secteur spatial
 Common.button.select,Select,Auswählen,Escoger,Choisir
 Common.button.selectAll,Select All,Alle auswählen,Seleccionar todo,Sélectionner tout
-Common.button.selectNone,Select None,Wählen Sie Keine,Seleccionar Ninguno,Sélectionnez Aucun
-Common.button.exportJson,Export to JSON,Export nach JSON,Exportar a JSON,Exporter au format JSON
+Common.button.selectNone,Select None,Nichts auswählen,Seleccionar Ninguno,Sélectionnez Aucun
+Common.button.exportJson,Export to JSON,Als JSON exportieren,Exportar a JSON,Exporter au format JSON
 Common.button.exportPdf,Export to PDF,Als PDF exportieren,Exportar a PDF,Exporter au format PDF
-Common.button.ok,OK,Okay,De acuerdo,D'accord
+Common.button.ok,OK,OK,De acuerdo,D'accord
 Common.button.add,Add,Hinzufügen,Agregar,Ajouter
 Common.button.cancel,Cancel,Abbrechen,Cancelar,Annuler
-Common.button.next,Next,Nächster,Próximo,Prochain
-Common.button.view,View,,,
+Common.button.next,Next,Weiter,Próximo,Prochain
+Common.button.view,View,Anzeigen,,
 Construct.other.assignment,Assignment,Zuweisung,Asignación,Mission
 Construct.other.attributes,Attributes,Attribute,Atributos,Attributs
-Construct.other.crew,Crew,Mannschaft,Tripulación,Équipage
+Construct.other.crew,Crew,Crew,Tripulación,Équipage
 Construct.other.departments,Departments,Abteilungen,Departamentos,Departements
-Construct.other.determination,Determination,,,
+Construct.other.determination,Determination,Entschlossenheit,,
 Construct.other.disciplines,Disciplines,Disziplinen,Disciplinas,Disciplines
 Construct.other.environment,Environment,Herkunft,Medio ambiente,Environnement
-Construct.other.equipment,Equipment,Sonstige Ausrüstung,Equipo,Équipement
+Construct.other.equipment,Equipment,Ausrüstung,Equipo,Équipement
 Construct.other.focuses,Focuses,Fokusse,Atenciónes,Spécialités
 Construct.other.missionProfile,Mission Profile,Missionsprofil,Perfil de la misión,Profil de mission
 Construct.other.name,Name,Name,Nombre,Nom
 Construct.other.pronouns,Pronouns,Pronomen,Pronombres,Pronoms
-Construct.other.power,Power,Macht,Poder,Puissance
+Construct.other.power,Power,Energie,Poder,Puissance
 Construct.other.rank,Rank,Rang,Rango,Rang
-Construct.other.refits,Refits,Umbauten,Refits,Mises à jour
+Construct.other.refits,Refits,Nachrüstungen,Refits,Mises à jour
 Construct.other.resistance,Resistance,Widerstand,Resistencia,Résistance
-Construct.other.scale,Scale,Maßstab,Escama,Echelle
-Construct.other.serviceDate,Service Date,Service-Datum,Fecha de servicio,Date de mise en service
+Construct.other.scale,Scale,Schiffsgröeße,Escama,Echelle
+Construct.other.serviceDate,Service Date,Indienststellung,Fecha de servicio,Date de mise en service
 Construct.other.shields,Shields,Schilde,Escudos,Boucliers
-Construct.other.spaceFrame,Space Frame,Raumfachwerk,Malla espacial,Armature
+Construct.other.spaceFrame,Space Frame,Schiffsklasse,Malla espacial,Armature
 Construct.other.specialRules,Special Rules,Besondere Regeln,Reglas especiales,Règles spéciales
 Construct.other.species,Species,Spezies,Especie,Espèce
 Construct.other.stress,Stress,Anstrengung,Estrés,Stress
 Construct.other.systems,Systems,Systeme,Sistemas,Systèmes
 Construct.other.talents,Talents,Talente,Talentos,Talents
-Construct.other.trait,Trait,,,
-Construct.other.traits,Traits,Charakterzüge,Rasgos,Traits
+Construct.other.trait,Trait,Merkmal,,
+Construct.other.traits,Traits,Merkmale,Rasgos,Traits
 Construct.other.upbringing,Upbringing,Erziehung,Cría,Education
-Construct.other.value,Value,,,
+Construct.other.value,Value,Überzeugung,,
 Construct.other.values,Values,Überzeugungen,Valores,Valeurs
 Construct.other.weapons,Weapons,Waffen,Armas,Armes
 Construct.attribute.control,Control,Konzentration,Control,Contrôle
@@ -118,36 +118,36 @@ Construct.department.science,Science,Wissenschaft,Ciencia,Science
 Construct.department.medicine,Medicine,Medizin,Medicina,Médecine
 Construct.system.comms,Comms,Kommunikation,Comunicación,Communications
 Construct.system.computer,Computer,Computer,Ordenador,Ordinateur
-Construct.system.engines,Engines,Motoren,Motores,Moteur
+Construct.system.engines,Engines,Antrieb,Motores,Moteur
 Construct.system.sensors,Sensors,Sensoren,Sensores,Capteurs
-Construct.system.structure,Structure,Struktur,Estructura,Structure
+Construct.system.structure,Structure,Hülle,Estructura,Structure
 Construct.system.weapons,Weapons,Waffen,Armas,Armes
 Page.title.home,Home,Homepage,Página principal,Page d'accueil
 Page.title.era,Era,Ära,Era,Ère
 Page.title.talentsOverview,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
-Page.title.creditsPage,Credits,Kredite,Créditos,Crédits
-Page.title.finish,Finishing Touches,,,
-Page.title.customSpeciesDetails,Custom Species Details,,,
-Page.title.viewSheet,View Sheet,Blatt anzeigen,Ver hoja,Voir la feuille
+Page.title.creditsPage,Credits,Danksagungen,Créditos,Crédits
+Page.title.finish,Finishing Touches,Feinschliff,,
+Page.title.customSpeciesDetails,Custom Species Details,Details einer eigenen Spezies,,
+Page.title.viewSheet,View Sheet,Bogen anzeigen,Ver hoja,Voir la feuille
 Page.title.supportingCharacter,Supporting Character,Nebencharakter,Personaje secundario,Personnage secondaire
-Page.title.characterType,Character Type,Zeichentyp,Tipo de carácter,Type de personnage
-Page.title.systemGeneration,System Generation,Sternsystem-Generation,Generación del Sistema Estelar,Génération du système stellaire
-Page.title.sectorDetails,Sector Details,Branchendetails,Detalles del sector,Détails du secteur
+Page.title.characterType,Character Type,Charakter-Typ,Tipo de carácter,Type de personnage
+Page.title.systemGeneration,System Generation,Sternsystem-Erstellung,Generación del Sistema Estelar,Génération du système stellaire
+Page.title.sectorDetails,Sector Details,Sektor Details,Detalles del sector,Détails du secteur
 Page.title.starSystemDetails,Star System Details,Details zum Sternensystem,Detalles del sistema Star,Détails du système stellaire
-Page.title.starshipToolSelection,Starship Tool Selection,Raumschiff-Werkzeuge,Herramientas de naves espaciales,Outils de vaisseau spatial
-Page.title.toolSelection,Tool Selection,,,
-Page.title.gamemasterTrackerPage,Tracking,Verfolgung,Seguimiento,Suivi
-Page.title.customSpaceframe,Custom Spaceframe Creation,,,
-Page.title.finalStarshipDetails,Final Starship Details,,,
-Page.title.missionPodSelection,Mission Pod Selection,,,
-Page.title.missionProfileSelection,Mission Profile Selection,,,
-Page.title.missionProfileTalentSelection,Mission Profile Talent,,,
-Page.title.simpleStarship,Simplified Starship Creation,,,
-Page.title.smallCraftStats,Small Craft Stats,,,
-Page.title.spaceframeOption,Spaceframe Option,,,
-Page.title.spaceframeSelection,Spaceframe,,,
-Page.title.starshipTalentSelection,Starship Talents,,,
-Page.title.starshipTypeSelection,Starship Type,,,
-Page.title.starshipWeaponsSelection,Starship Weapons,,,
+Page.title.starshipToolSelection,Starship Tool Selection,Werkzeug-Auswahl Raumschiff,Herramientas de naves espaciales,Outils de vaisseau spatial
+Page.title.toolSelection,Tool Selection,Werkzeug-Auswahl,,
+Page.title.gamemasterTrackerPage,Tracking,NSC-Verwaltung,Seguimiento,Suivi
+Page.title.customSpaceframe,Custom Spaceframe Creation,Eigene Klasse erstellen,,
+Page.title.finalStarshipDetails,Final Starship Details,Letzte Raumschiff-Details,,
+Page.title.missionPodSelection,Mission Pod Selection,Auswahl Missionspod,,
+Page.title.missionProfileSelection,Mission Profile Selection,Auswahl Missionsprofil,,
+Page.title.missionProfileTalentSelection,Mission Profile Talent,Auswahl Missionsprofil-Talent,,
+Page.title.simpleStarship,Simplified Starship Creation,Vereinfachte Raumschifferstellung,,
+Page.title.smallCraftStats,Small Craft Stats,Begleitschiff-Werte,,
+Page.title.spaceframeOption,Spaceframe Option,Schiffsklassen-Optionen,,
+Page.title.spaceframeSelection,Spaceframe,Schiffsklasse,,
+Page.title.starshipTalentSelection,Starship Talents,Raumschiff Talente,,
+Page.title.starshipTypeSelection,Starship Type,Raumschiff-Typ,,
+Page.title.starshipWeaponsSelection,Starship Weapons,Schiffswaffen,,
 Page.breadcrumb.characterCreation,Character Creation,Charaktererstellung,Creación de personajes,Création de personnages
-Page.breadcrumb.starshipCreation,Starship Creation,,,
+Page.breadcrumb.starshipCreation,Starship Creation,Raumschifferstellung,,

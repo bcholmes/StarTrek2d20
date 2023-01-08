@@ -10,6 +10,7 @@ import { WeaponView } from "../components/weaponView";
 
 export interface ICharacterViewProperties extends WithTranslation {
     character: Character;
+    showButtons?: boolean;
 }
 
 export abstract class BaseCharacterView extends React.Component<ICharacterViewProperties, {}> {

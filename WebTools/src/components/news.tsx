@@ -11,6 +11,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230108</b>
+                <ul>
+                    <li>Today's updates are mostly behind-the-scenes, but one visible change is the redesign of the final page of the
+                        character creation workflow; it had become something of an ugly page, and I wanted to improve it.</li>
+                    <li>Also &mdash; you guessed it &mdash; translation stuff.</li>
+                </ul>
                 <b>v1.230107</b>
                 <ul>
                     <li>Another translation pass. Over time, we'll add more and more national language capability.</li>

@@ -44,7 +44,7 @@ export class BaseSimpleStarshipPage extends React.Component<ISimpleStarshipPageP
                 </div>
 
                 <div className="col mb-3">
-                    <Header level={2}>Class</Header>
+                    <Header level={2}>{t('StarshipPage.class')}</Header>
 
                     <p className="page-text mw-100">{t('StarshipPage.whatClass')}</p>
 

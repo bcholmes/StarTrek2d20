@@ -19,6 +19,8 @@
     border: 2px solid #906F9A;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .attribute-value {
@@ -32,6 +34,7 @@
     border: 2px solid #906F9A;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    overflow: hidden;
 }
     .attribute-value > img {
         margin-right: 5px;

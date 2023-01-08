@@ -41,7 +41,6 @@ export enum PageIdentity {
     SmallCraftStats,
     SpaceframeOption,
     SpaceframeSelection,
-    Starship,
     StarshipRefits,
     StarshipToolSelection,
     StarshipTypeSelection,
@@ -58,5 +57,6 @@ export enum PageIdentity {
     CreditsPage,
     ViewSheet,
 
-    GamemasterTrackerPage
+    GamemasterTrackerPage,
+    XmlViewer
 }

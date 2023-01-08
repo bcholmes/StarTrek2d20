@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { Character, CharacterAttribute, CharacterSkill, CharacterTalent } from '../common/character';
+import { Character, CharacterAttribute, CharacterSkill, CharacterTalent, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { ShipBuildType, ShipBuildTypeModel, SimpleStats, Starship } from '../common/starship';
 import { Attribute } from './attributes';
@@ -67,10 +67,10 @@ class Marshaller {
         let sheet = {
             "stereotype": "mainCharacter",
             "type": CharacterType[character.type],
-            "upbringing": character.upbringing != null
+            "upbringing": character.upbringingStep != null
                 ? {
-                    "id": Upbringing[character.upbringing.id],
-                    "accepted": character.acceptedUpbringing
+                    "id": Upbringing[character.upbringingStep.upbringing?.id],
+                    "accepted": character.upbringingStep.acceptedUpbringing
                   }
                 : undefined,
             "name": character.name,
@@ -566,8 +566,8 @@ class Marshaller {
         }
 
         if (json.upbringing) {
-            result.upbringing = UpbringingsHelper.getUpbringingByTypeName(json.upbringing.id, result.type);
-            result.acceptedUpbringing = json.upbringing.accepted;
+            let step = new UpbringingStep(UpbringingsHelper.getUpbringingByTypeName(json.upbringing.id, result.type), json.upbringing.accepted);
+            result.upbringingStep = step;
         }
 
         if (json.talents) {

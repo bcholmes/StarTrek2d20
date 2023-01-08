@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {character, UpbringingStep} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
@@ -99,7 +99,7 @@ export class UpbringingPage extends React.Component<IPageProperties, IUpbringing
     }
 
     private selectUpbringing(upbringing: UpbringingModel) {
-        character.upbringing = upbringing;
+        character.upbringingStep = new UpbringingStep(upbringing);
         Navigation.navigateToPage(PageIdentity.UpbringingDetails);
     }
 }

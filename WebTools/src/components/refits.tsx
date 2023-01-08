@@ -1,18 +1,21 @@
 ﻿import * as React from 'react';
 import {System} from '../helpers/systems';
 import {Starship} from '../common/starship';
+import { withTranslation, WithTranslation } from 'react-i18next';
+import { makeKey } from '../common/translationKey';
 
 interface IRefitImprovementProperties {
     controller: Refits;
     system: System;
     value: number;
+    name: string;
     showIncrease: boolean;
     showDecrease: boolean;
 }
 
 export class Refit extends React.Component<IRefitImprovementProperties, {}> {
     render() {
-        const {system, value, showDecrease, showIncrease} = this.props;
+        const {system, value, name, showDecrease, showIncrease} = this.props;
 
         const dec = showDecrease
             ? (<img style={{ float: "left" }} height="20" src="static/img/dec.png" onClick={ () => { this.onDecrease() } } alt="-"/>)
@@ -25,7 +28,7 @@ export class Refit extends React.Component<IRefitImprovementProperties, {}> {
         return (
             <div>
                 <div className="attribute-container">
-                    {System[system]}
+                    {name}
                 </div>
                 <div className="attribute-value">
                     {dec}
@@ -45,7 +48,7 @@ export class Refit extends React.Component<IRefitImprovementProperties, {}> {
     }
 }
 
-interface IRefitsProperties {
+interface IRefitsProperties extends WithTranslation {
     starship: Starship;
     points: number;
     refits: System[]
@@ -53,16 +56,18 @@ interface IRefitsProperties {
     onDecrease?: (system: System) => void;
 }
 
-export class Refits extends React.Component<IRefitsProperties, {}> {
+class Refits extends React.Component<IRefitsProperties, {}> {
     private _absoluteMax: number = 12;
 
     render() {
+        const {t} = this.props;
         const systems: System[] = [ System.Comms, System.Computer, System.Engines, System.Sensors, System.Structure, System.Weapons ];
         const attributes = systems.map((a, i) => {
             return <Refit
                 key={i}
                 controller={this}
                 system={a}
+                name={t(makeKey('Construct.system.', System[a]))}
                 value={this.currentValue(a)}
                 showIncrease={this.showIncrease(a)}
                 showDecrease={this.showDecrease(a)} />
@@ -97,3 +102,5 @@ export class Refits extends React.Component<IRefitsProperties, {}> {
         this.forceUpdate();
     }
 }
+
+export default withTranslation()(Refits);

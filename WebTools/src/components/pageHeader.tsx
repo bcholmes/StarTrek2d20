@@ -39,8 +39,6 @@ class PageHeader extends React.Component<IPageHeaderProperties, {}> {
             return "Small Craft Stats";
         } else if (this.props.page === PageIdentity.StarshipWeaponsSelection) {
             return "Starship Weapons";
-        } else if (this.props.page === PageIdentity.Starship) {
-            return "Starship";
         } else if (this.props.page === PageIdentity.ToolSelection) {
             return "Registry";
         } else if (this.props.page === PageIdentity.CharacterType) {

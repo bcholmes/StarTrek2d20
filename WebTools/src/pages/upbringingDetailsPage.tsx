@@ -29,9 +29,9 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
     }
 
     render() {
-        var upbringing = character.upbringing;
+        let upbringing = character.upbringingStep?.upbringing;
 
-        var nextPageName = character.workflow.peekNextStep().name;
+        let nextPageName = character.workflow.peekNextStep().name;
         let talents = this.filterTalentList()
 
         const attributes = this._accepted
@@ -119,9 +119,9 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
 
         character.addFocus(focus);
         character.addTalent(this._talent);
-        character.acceptedUpbringing = this._accepted;
+        character.upbringingStep.acceptedUpbringing = this._accepted;
 
-        UpbringingsHelper.applyUpbringing(character.upbringing, this._accepted);
+        UpbringingsHelper.applyUpbringing(character.upbringingStep.upbringing, this._accepted);
         character.workflow.next();
         Navigation.navigateToPage(character.workflow.currentStep().page);
     }

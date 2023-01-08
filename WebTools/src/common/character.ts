@@ -82,7 +82,7 @@ export class CharacterTalent {
     }
 }
 
-class Step {
+class Memento {
     page: number;
     character: Character;
 
@@ -92,12 +92,22 @@ class Step {
     }
 }
 
+export class UpbringingStep {
+    public readonly upbringing: UpbringingModel;
+    public acceptedUpbringing: boolean;
+
+    constructor(upbringing: UpbringingModel, accepted: boolean = true) {
+        this.upbringing = upbringing;
+        this.acceptedUpbringing = accepted;
+    }
+}
+
 export class Character extends Construct {
 
     public static ABSOLUTE_MAX_ATTRIBUTE = 12;
 
     private _attributeInitialValue: number = 7;
-    private _steps: Step[];
+    private _steps: Memento[];
 
     public attributes: CharacterAttribute[] = [];
     public skills: CharacterSkill[] = [];
@@ -121,8 +131,7 @@ export class Character extends Construct {
     public mixedSpecies?: Species;
     public originalSpecies?: Species;
     public track?: Track;
-    public upbringing?: UpbringingModel;
-    public acceptedUpbringing?: boolean;
+    public upbringingStep?: UpbringingStep;
     public enlisted?: boolean;
     public environmentValue?: string;
     public trackValue?: string;
@@ -281,7 +290,7 @@ export class Character extends Construct {
     saveStep(page: number) {
         if (!this._steps.some(s => s.page === page)) {
             const copy = this.copy();
-            this._steps.push(new Step(page, copy));
+            this._steps.push(new Memento(page, copy));
         }
     }
 
@@ -456,7 +465,7 @@ export class Character extends Construct {
         character.type = this.type;
         character.typeDetails = this.typeDetails;
         this._steps.forEach(s => {
-            character.steps.push(new Step(s.page, s.character));
+            character.steps.push(new Memento(s.page, s.character));
         });
         this.attributes.forEach(a => {
             character.attributes[a.attribute].attribute = a.attribute;
@@ -490,8 +499,10 @@ export class Character extends Construct {
         character.mixedSpecies = this.mixedSpecies;
         character.originalSpecies = this.originalSpecies;
         character.track = this.track;
-        character.upbringing = this.upbringing;
-        character.acceptedUpbringing = this.acceptedUpbringing;
+        if (this.upbringingStep) {
+            character.upbringingStep = new UpbringingStep(this.upbringingStep.upbringing);
+            character.upbringingStep.acceptedUpbringing = this.upbringingStep.acceptedUpbringing;
+        }
         character.enlisted = this.enlisted;
         character.environmentValue = this.environmentValue;
         character.trackValue = this.trackValue;

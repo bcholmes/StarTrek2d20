@@ -12,6 +12,12 @@
     }
 }
 
+p {
+    color: white;
+    font-size: large;
+    font-weight: normal;
+}
+
 .container p, .container ul li {
     color: white;
     font-size: large;
@@ -348,7 +354,6 @@ a:hover {
     background-color: #FFCC66;
     font-family: lcars;
     font-size: 40px;
-    max-width: 90%;
     text-transform: uppercase;
     border-radius: 20px;
     padding-left: 30px;
@@ -366,15 +371,12 @@ h2.header-text {
     line-height: 30px;
 }
 
-.container .header-text {
-    max-width: 100%;
+.header-text > div {
+    background: black;
+    color: white;
+    display: inline-block;
+    padding: 0px 10px;
 }
-    .header-text > div {
-        background: black;
-        color: white;
-        display: inline-block;
-        padding: 0px 10px;
-    }
 
 .header-text-small {
 

@@ -65,10 +65,12 @@ class MainCharacterView extends BaseCharacterView {
                 </div>
             </div>
 
-            <div className="button-container mt-5 mb-3">
-                <Button className="button-small mr-3" onClick={() => this.showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
-                <Button className="button-small mr-3" onClick={() => this.exportToJson(this.props.character, 'character') } buttonType={true}>{t('Common.button.exportJson')}</Button>
-            </div>
+            {(this.props.showButtons == null || this.props.showButtons === true)
+                ? (<div className="button-container mt-5 mb-3">
+                        <Button className="button-small mr-3" onClick={() => this.showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
+                        <Button className="button-small mr-3" onClick={() => this.exportToJson(this.props.character, 'character') } buttonType={true}>{t('Common.button.exportJson')}</Button>
+                    </div>)
+                : null}
        </div>);
     }
 
@@ -90,7 +92,7 @@ class MainCharacterView extends BaseCharacterView {
             <div className="row" style={{alignItems: "baseline"}}>
 
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.upbringing')}:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.upbringing ? (character.upbringing?.name + (character.acceptedUpbringing ? " (A)" : " (R)")) : ""}</div></div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.upbringingStep ? (character.upbringingStep.upbringing?.name + (character.upbringingStep.acceptedUpbringing ? " (A)" : " (R)")) : ""}</div></div>
 
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.environment')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{CharacterSerializer.serializeEnvironment(character.environment, character.otherSpeciesWorld, character.type)}</div></div>

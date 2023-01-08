@@ -24,7 +24,7 @@ class CharacterSheetData {
     private _data: SectionContent[] = [
         new SectionContent("SPECIES", this.getSpeciesString()),
         new SectionContent("ENVIRONMENT", this.getEnvironmentString()),
-        new SectionContent("UPBRINGING", character.upbringing ? character.upbringing.name + (character.acceptedUpbringing ? "(A)" : "(R)") : "None"),
+        new SectionContent("UPBRINGING", character.upbringingStep ? character.upbringingStep?.upbringing?.name + (character.upbringingStep?.acceptedUpbringing ? "(A)" : "(R)") : "None"),
         new SectionContent("TRAINING", character.track >= 0 ? TracksHelper.instance().getTrack(character.track).name : "None"),
         new SectionContent("CAREER", character.career >= 0 ? CareersHelper.getCareer(character.career).name : "None"),
         new SectionContent("TRAITS", character.traits.join(", "))

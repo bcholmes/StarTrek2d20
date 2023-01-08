@@ -1,5 +1,5 @@
 import React from "react";
-import { navigateTo } from "../common/navigator";
+import { withRouter, RouteComponentProps } from "react-router";
 import { PageIdentity } from "../pages/pageIdentity";
 import AppVersion from "./appVersion";
 import { CharacterSheet } from "./characterSheet";
@@ -16,6 +16,7 @@ interface ILcarsFrameState {
 }
 
 interface ILcarsFrameProperties extends WithTranslation {
+    history: RouteComponentProps["history"];
     activePage: PageIdentity;
 }
 
@@ -72,7 +73,7 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
                         TM &amp; &copy; 2023 CBS Studios Inc. {t('Lcars.copyright')}
                     </div>
                     <div className="col-md-2 text-right pr-4">
-                        <a href="./index.html" className="text-primary" onClick={(e) => navigateTo(e, PageIdentity.CreditsPage)}>{t('Lcars.credits')}</a>
+                        <a href="./index.html" className="text-primary" onClick={(e) => this.goToCredits(e)}>{t('Lcars.credits')}</a>
                     </div>
                 </div>
             </div>,
@@ -89,7 +90,6 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
             this.props.activePage === PageIdentity.MissionProfileTalentSelection ||
             this.props.activePage === PageIdentity.SpaceframeOption ||
             this.props.activePage === PageIdentity.SpaceframeSelection ||
-            this.props.activePage === PageIdentity.Starship ||
             this.props.activePage === PageIdentity.StarshipRefits ||
             this.props.activePage === PageIdentity.StarshipToolSelection ||
             this.props.activePage === PageIdentity.StarshipTypeSelection ||
@@ -149,6 +149,14 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
         })
     }
 
+    goToCredits(e: React.MouseEvent<HTMLAnchorElement>) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const { history } = this.props;
+        history.push("/credits");
+    }
+
 }
 
-export default withTranslation()(LcarsFrame)
+export default withTranslation()(withRouter(LcarsFrame))
