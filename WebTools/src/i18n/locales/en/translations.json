@@ -82,6 +82,7 @@
     "Construct.other.attributes": "Attributes",
     "Construct.other.crew": "Crew",
     "Construct.other.departments": "Departments",
+    "Construct.other.determination": "Determination",
     "Construct.other.disciplines": "Disciplines",
     "Construct.other.environment": "Environment",
     "Construct.other.equipment": "Equipment",
@@ -105,6 +106,7 @@
     "Construct.other.trait": "Trait",
     "Construct.other.traits": "Traits",
     "Construct.other.upbringing": "Upbringing",
+    "Construct.other.value": "Value",
     "Construct.other.values": "Values",
     "Construct.other.weapons": "Weapons",
 
@@ -140,6 +142,7 @@
     "Page.title.era": "Era",
     "Page.title.talentsOverview": "Talents Overview",
     "Page.title.creditsPage": "Credits",
+    "Page.title.finish": "Finishing Touches",
     "Page.title.customSpeciesDetails": "Custom Species Details",
     "Page.title.viewSheet": "View Sheet",
     "Page.title.supportingCharacter": "Supporting Character",

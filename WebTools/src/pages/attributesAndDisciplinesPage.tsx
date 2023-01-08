@@ -9,7 +9,7 @@ import {ElectiveSkillList} from '../components/electiveSkillList';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
-import {ValueInput, Value} from '../components/valueInput';
+import ValueInput, {Value} from '../components/valueInput';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { CharacterType } from '../common/characterType';
 import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';

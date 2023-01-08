@@ -1,7 +1,9 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import { CharacterType } from '../common/characterType';
+import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 import {CareersHelper} from '../helpers/careers';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 export enum Value {
     Environment,
@@ -10,17 +12,16 @@ export enum Value {
     Finish
 }
 
-interface IValueInputProperties {
+interface IValueInputProperties extends WithTranslation{
     value: Value;
     text?: string;
     onChange?: () => void;
 }
 
-export class ValueInput extends React.Component<IValueInputProperties, {}> {
-    private textInput: HTMLInputElement;
+class ValueInput extends React.Component<IValueInputProperties, {}> {
 
     render() {
-        const {text} = this.props;
+        const {text, t} = this.props;
 
         let description = "";
 
@@ -51,15 +52,13 @@ export class ValueInput extends React.Component<IValueInputProperties, {}> {
 
         return (
             <div>
-                <div className="pb-3">{description}</div>
-                <div className="textinput-label">VALUE</div>
-                <input type="text" onChange={() => this.onValueChanged() } ref={(input) => this.textInput = input} value={text} />
+                <InputFieldAndLabel labelName={t('Construct.other.value')} id={'value-' + this.props.value} value={text} onChange={(value) => this.onValueChanged(value) } />
+                <div className="text-white py-1">{description}</div>
             </div>
         );
     }
 
-    private onValueChanged() {
-        const value = this.textInput.value;
+    private onValueChanged(value: string) {
 
         switch (this.props.value) {
             case Value.Environment:
@@ -81,3 +80,5 @@ export class ValueInput extends React.Component<IValueInputProperties, {}> {
         }
     }
 }
+
+export default withTranslation()(ValueInput);

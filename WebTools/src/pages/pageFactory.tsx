@@ -15,7 +15,7 @@ import {CareerDetailsPage} from './careerDetailsPage';
 import {CareerEventPage} from './careerEventPage';
 import {CareerEventDetailsPage} from './careerEventDetailsPage';
 import {AttributesAndDisciplinesPage} from './attributesAndDisciplinesPage';
-import {FinishPage} from './finishPage';
+import FinishPage from './finishPage';
 import StarshipPage from '../starship/page/starshipPage';
 import {SupportingCharacterPage} from '../supportingcharacters/supportingCharacterPage';
 import TalentsOverviewPage from './talentsOverviewPage';

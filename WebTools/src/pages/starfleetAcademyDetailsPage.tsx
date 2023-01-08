@@ -8,7 +8,7 @@ import {Skill} from '../helpers/skills';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovementCollection';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
-import {ValueInput, Value} from '../components/valueInput';
+import ValueInput, {Value} from '../components/valueInput';
 import {MajorsList} from '../components/majorsList';
 import SkillView from '../components/skill';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';

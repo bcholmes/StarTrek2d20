@@ -4,7 +4,7 @@ import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {Button} from '../components/button';
 import {TalentDescription} from '../components/talentDescription';
-import {ValueInput, Value} from '../components/valueInput';
+import ValueInput, {Value} from '../components/valueInput';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import InstructionText from '../components/instructionText';
 import { Header } from '../components/header';

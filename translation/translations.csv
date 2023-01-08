@@ -66,10 +66,12 @@ Common.button.ok,OK,Okay,De acuerdo,D'accord
 Common.button.add,Add,Hinzufügen,Agregar,Ajouter
 Common.button.cancel,Cancel,Abbrechen,Cancelar,Annuler
 Common.button.next,Next,Nächster,Próximo,Prochain
+Common.button.view,,,,
 Construct.other.assignment,Assignment,Zuweisung,Asignación,Mission
 Construct.other.attributes,Attributes,Attribute,Atributos,Attributs
 Construct.other.crew,Crew,Mannschaft,Tripulación,Équipage
 Construct.other.departments,Departments,Abteilungen,Departamentos,Departements
+Construct.other.determination,Determination,,,
 Construct.other.disciplines,Disciplines,Disziplinen,Disciplinas,Disciplines
 Construct.other.environment,Environment,Herkunft,Medio ambiente,Environnement
 Construct.other.equipment,Equipment,Sonstige Ausrüstung,Equipo,Équipement
@@ -93,6 +95,7 @@ Construct.other.talents,Talents,Talente,Talentos,Talents
 Construct.other.trait,Trait,,,
 Construct.other.traits,Traits,Charakterzüge,Rasgos,Traits
 Construct.other.upbringing,Upbringing,Erziehung,Cría,Education
+Construct.other.value,Value,,,
 Construct.other.values,Values,Überzeugungen,Valores,Valeurs
 Construct.other.weapons,Weapons,Waffen,Armas,Armes
 Construct.attribute.control,Control,Konzentration,Control,Contrôle
@@ -123,6 +126,7 @@ Page.title.home,Home,Homepage,Página principal,Page d'accueil
 Page.title.era,Era,Ära,Era,Ère
 Page.title.talentsOverview,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
 Page.title.creditsPage,Credits,Kredite,Créditos,Crédits
+Page.title.finish,Finishing Touches,,,
 Page.title.customSpeciesDetails,Custom Species Details,,,
 Page.title.viewSheet,View Sheet,Blatt anzeigen,Ver hoja,Voir la feuille
 Page.title.supportingCharacter,Supporting Character,Nebencharakter,Personaje secundario,Personnage secondaire

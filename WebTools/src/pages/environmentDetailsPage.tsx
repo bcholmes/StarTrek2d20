@@ -11,7 +11,7 @@ import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from
 import {ElectiveSkillList} from '../components/electiveSkillList';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
-import {ValueInput, Value} from '../components/valueInput';
+import ValueInput, {Value} from '../components/valueInput';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { Species } from '../helpers/speciesEnum';
 import { AttributesHelper } from '../helpers/attributes';

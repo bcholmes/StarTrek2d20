@@ -6,7 +6,7 @@ import { ChildAttributeImprovementCollection } from '../components/childAttribut
 import { ChildSkillList } from '../components/childSkillList';
 import { Dialog } from '../components/dialog';
 import { Header } from '../components/header';
-import { Value, ValueInput } from '../components/valueInput';
+import ValueInput, { Value } from '../components/valueInput';
 import { IPageProperties } from './iPageProperties';
 
 interface IEducationDetailsState {
@@ -32,7 +32,7 @@ export class ChildEducationDetailsPage extends React.Component<IPageProperties, 
 
     render() {
 
-        let focuses = character.age.options.numberOfFocuses === 1 
+        let focuses = character.age.options.numberOfFocuses === 1
             ? (<div className="panel">
                 <div className="header-small">FOCUS</div>
                 <div>{character.age.options.focusText}</div>
