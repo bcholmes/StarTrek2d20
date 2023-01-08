@@ -22,6 +22,9 @@ You might want to install an IDE. The original developer of this codebase used V
 Community Edition (which only runs on Windoze). I tend to us [VS Code](https://code.visualstudio.com/)
 on my Mac.
 
+Some of the files in this repo (such as the Visual Studio solution file -- .sln) date back to the
+original developer's IDE. I haven't touched those files since I started maintaining this project.
+
 ## Getting Started
 
 1. Open a command prompt in the WebTools/ folder and type ```npm install``` to install node modules,
@@ -34,11 +37,20 @@ reflected there.
 
 ## Building the Production Version
 
-1. Open a command prompt in the WebTools/ folder and type ```npm install``` to install node modules.
-2. Build the assets using the ```npm run build``` command
+1. If you're building a new version to deploy to a server, you should open up the package.json file and
+   manually update the version number. I keep the version number in sync with
+   the current date. You should probably also update the news.tsx, provding some text description of
+   what's changed since the last version. If you're just trying things out, you can skip this step.
+2. Open a command prompt in the WebTools/ folder and type ```npm install``` to install node modules.
+3. Build the assets using the ```npm run build``` command
 
 The build process creates a series of files in the WebTools/build folder. Upload the contents of the
 WebTools/build folder to a web server, and you're done.
 
 ## Contributing
 Contributions are welcome. Use a PR to get your changes into the master branch.
+
+### Translations
+I can especially use some help with translating text to support
+[languages other than English](./translation/README.md). If that's your skillset,
+I'd really value assistance there.
