@@ -1,13 +1,13 @@
 Language,en,de,es,fr
 LanguageNotice.title,Hello There!,Hallo!,¡Hola!,Salut!
-LanguageNotice.text,"We're experimenting with some initial support for national languages. We're in a very preliminary stage, but we hope to be able to support more languages, soon.","Wir experimentieren mit einer grundlegenden Unterstützung für Landessprachen. Wir befinden uns in einem sehr frühen Stadium, aber wir hoffen, bald weitere Sprachen unterstützen zu können.","Estamos experimentando con algún soporte inicial para los idiomas nacionales. Estamos en una etapa muy preliminar, pero esperamos poder soportar más idiomas, pronto.","Nous expérimentons un soutien initial pour les langues nationales. Nous sommes dans une phase très préliminaire, mais nous espérons être en mesure de prendre en charge plus de langues, bientôt."
+LanguageNotice.text,"We're experimenting with some initial support for national languages. We're in a very preliminary stage, but we hope to be able to support more languages, soon.","Wir experimentieren mit einer grundlegenden Unterstützung für Landessprachen. Wir befinden uns in einem sehr frühen Stadium, aber wir hoffen, bald weitere Sprachen unterstützen zu können.","Estamos experimentando con algún soporte inicial para los idiomas nacionales. Estamos en una etapa muy preliminar, pero esperamos poder soportar más idiomas, pronto.",Salut!
 LanguageNotice.useEnglish,Use English instead,Englisch verwenden,Usar inglés,Utiliser l'anglais
 Lcars.copyright,STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.,STAR TREK und zugehörige Marken und Logos sind Marken von CBS Studios Inc. Alle Rechte vorbehalten.,STAR TREK y las marcas y logotipos relacionados son marcas comerciales de CBS Studios Inc. Todos los derechos reservados.,STAR TREK et les marques et logos associés sont des marques commerciales de CBS Studios Inc. Tous droits réservés.
 Lcars.credits,Credits,Danksagungen,Créditos,Crédits
-Lcars.feedback,Feedback,Feedback,,
-Lcars.history,History,Verlauf,,
-Lcars.news,News,News,,
-Lcars.profile,Profile,Profil,,
+Lcars.feedback,Feedback,Feedback,,Votre Avis
+Lcars.history,History,Verlauf,,Historique
+Lcars.news,News,News,,Actualités
+Lcars.profile,Profile,Profil,,Profil
 EraSelectionPage.sourceInstruction,Select sources. Ask your GM which are available.,"Wählen Sie Quellen aus. Fragen Sie Ihren SL, welche verfügbar sind.",Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.,Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.
 EraSelectionPage.sourceNote,Some sources are not yet implemented; check back soon!,Einige Quellen sind noch nicht implementiert; schauen Sie bald wieder vorbei!,Algunas fuentes aún no se han aplicado; ¡Vuelve pronto!,Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!
 EraSelectionPage.eraInstruction,Select which Era to play in. Ask your GM which Era to choose.,"Wählen Sie aus, in welcher Ära gespielt werden soll. Fragen Sie Ihren SL, welche Ära Sie wählen sollen.",Selecciona en qué Era jugar. Pregúntale a tu GM qué Era elegir.,Sélectionnez l'ère dans laquelle jouer. Demandez à votre MJ quelle ère choisir.
@@ -26,33 +26,35 @@ AddCharacterView.instruction,Paste in the URL for a character.,Fügen Sie die UR
 AddCharacterView.errorMessage,This url does not look valid.,Diese URL sieht nicht gültig aus.,Esta URL no parece válida.,Cette URL ne semble pas valide.
 AddCharacterView.errorCharacterType,"Whoops! We only support characters, at the moment. Not starships.",Hoppla! Wir unterstützen im Moment nur Charaktere. Keine Raumschiffe.,"¡Gritos! Solo admitimos personajes, por el momento. No naves espaciales.","Nous ne supportons que les personnages, pour le moment. Pas des vaisseaux spatiaux."
 AddCharacterView.characterPrefix,Character:,Charakter:,Carácter:,Personnage:
-CustomSpeciesDetails.speciesName,Name,Name,,
-CustomSpeciesDetails.instruction,What's the name of this species?,Wie lautet der Name dieser Spezis?,,
+CustomSpeciesDetails.speciesName,Name,Name,,Nom
+CustomSpeciesDetails.instruction,What's the name of this species?,Wie lautet der Name dieser Spezis?,,Quel est le nom de cette espèce?
 CustomSpeciesDetails.speciesTrait,Each species gets a species-specific trait that may provide additional benefits in special circumstances.,"Jede Spezies erhält ein bestimmtest Talent, das in bestimmten Situationen zusätzliche Vorteile verleihen kann.",,
-CustomSpeciesDetails.speciesNameWarning,Please provide a name for this species.,Bitte einen Namen für diese Spezies angeben.,,
-SpeciesDetails.options,Species Options,Spezies Optionen,,
-SpeciesDetails.selectThree,(Select three),(drei wählen),,
-SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),Spezis-übergreifende Talente erlauben (SL-Entscheid),,
-SpeciesDetails.allowEsoteric,Allow esoterric talents (GM's decision),Esoterische Talente erlauben (SL-Entscheid),,
+CustomSpeciesDetails.speciesNameWarning,Please provide a name for this species.,Bitte einen Namen für diese Spezies angeben.,,Merci de fournir un nom pour cette espèce
+SpeciesDetails.options,Species Options,Spezies Optionen,,Option d'espèce
+SpeciesDetails.selectThree,(Select three),(drei wählen),,(Choisir trois)
+SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),Spezis-übergreifende Talente erlauben (SL-Entscheid),,Autoriser les talents inter-espèces (Decision du GM)
+SpeciesDetails.allowEsoteric,Allow esoterric talents (GM's decision),Esoterische Talente erlauben (SL-Entscheid),,Autoriser les talents ésoteriques (Decision du GM)
 StarshipToolSelection.instruction,Select an option,Wählen Sie eine Option,Seleccione una opción,Sélectionnez une option
-StarshipToolSelection.standardBuild,Standard Build,Standard Erstellung,Construcción estándar,Construction standard
+StarshipToolSelection.standardBuild,Standard Build,Standard Erstellung,Construcción estándar,Construction Standard
 StarshipToolSelection.standardBuildDescription,"The standard Starship creation process follows the build steps as outlined in the rulebooks. E.g.: starships choose a Spaceframe, Mission Profile, etc.","Der Standardprozess zur Raumschiff-Erstellung folgt den Erstellungsschritten, wie in den Regelwerken beschrieben. Z.B.: Spaceframe auswählen, ein Missionsprofil usw.","El proceso estándar de creación de Starship sigue los pasos de compilación descritos en los libros de reglas. Por ejemplo: las naves espaciales eligen un marco espacial, un perfil de misión, etc.","Le processus standard de création d'un Vaisseau suit les étapes de construction décrites dans les livres de règles. Par exemple: les vaisseaux spatiaux choisissent une trame spatiale, un profil de mission, etc."
-StarshipToolSelection.simplifiedBuild,Simplified Build,Vereinfachte Erstellung,Compilación simplificada,Construction simplifiée
+StarshipToolSelection.simplifiedBuild,Simplified Build,Vereinfachte Erstellung,Compilación simplificada,Construction Simplifiée
 StarshipToolSelection.simplifiedBuildDescription,"The Simplified build is a good option for transcribing a set of stats, say from an online source or other other reference.","Die vereinfachte Erstellung ist eine gute Option zum Übernehmen einer Reihe von Statistiken, z.B. aus einer Online-Quelle oder einer anderen Referenz.","La compilación simplificada es una buena opción para transcribir un conjunto de estadísticas, por ejemplo, de una fuente en línea u otra referencia.","La version simplifiée est une bonne option pour transcrire un ensemble de statistiques, par exemple à partir d'une source en ligne ou d'une autre référence."
-StarshipTypeSelection.campaignYear,Campaign Year,Kampagnenjahr,,
+StarshipTypeSelection.campaignYear,Campaign Year,Kampagnenjahr,,Année de Campagne
 StarshipTypeSelection.instruction,"What is the current year in your campaign? You'll probably need to consult your GM.
 
-A default year will be filled in automatically dependent on the chosen Era.",Was ist das aktuelle Jahr in der Kampagne? Das müsste im Zweifelsfalle der/die SL wissen. Eine Voreinstellung wird abhängig von der Ära der Kampagne automatisch eingetragen.,,
-StarshipTypeSelection.year,Year,Jahr,,
-StarshipTypeSelection.shipPolity,Ship Type,Schiffstyp,,
-StarshipTypeSelection.whatShipPolity,What type of starship is this?,Welcher Typ Raumschiff ist es?,,
-StarshipTypeSelection.shipBuildType,Ship Size,Schiffsgröße,,
-StarshipTypeSelection.whatShipBuildType,How big of a vessel is it?,Welche Große hat das Schiff?,,
-StarshipPage.whatScale,How large is this ship?,Wie groß ist das Schiff?,,
-StarshipPage.whatClass,What's the name of the ship's class?,Wie lautet der Name der Schiffsklasse?,,
-StarshipPage.whatYear,What year did this spaceframe enter service?,In welchem Jahr ist diese Schiffsklasse in Dienst gestellt worden?,,
-StarshipPage.class,Class,Klasse,,
-ToolSelection.instruction,What do you want to create?,Was soll erstellt werden?,,
+A default year will be filled in automatically dependent on the chosen Era.",Was ist das aktuelle Jahr in der Kampagne? Das müsste im Zweifelsfalle der/die SL wissen. Eine Voreinstellung wird abhängig von der Ära der Kampagne automatisch eingetragen.,,"Quelle est l'année de votre campagne?
+
+Vous devez probablement consulter votre GM. Une année par défaut est renseignée en fonction de l'ère choisie"
+StarshipTypeSelection.year,Year,Jahr,,Année
+StarshipTypeSelection.shipPolity,Ship Type,Schiffstyp,,Type de Vaisseau
+StarshipTypeSelection.whatShipPolity,What type of starship is this?,Welcher Typ Raumschiff ist es?,,Quel est le type de vaisseau?
+StarshipTypeSelection.shipBuildType,Ship Size,Schiffsgröße,,Taille du Vaisseau
+StarshipTypeSelection.whatShipBuildType,How big of a vessel is it?,Welche Große hat das Schiff?,,Quel est la taille du vaisseau?
+StarshipPage.whatScale,How large is this ship?,Wie groß ist das Schiff?,,Quel est la largeur du vaisseau
+StarshipPage.whatClass,What's the name of the ship's class?,Wie lautet der Name der Schiffsklasse?,,Quel est le nom de la classe du vaisseau?
+StarshipPage.whatYear,What year did this spaceframe enter service?,In welchem Jahr ist diese Schiffsklasse in Dienst gestellt worden?,,Quel est la date de la mise en service de la classe de vaisseau
+StarshipPage.class,Class,Klasse,Clase,Classe
+ToolSelection.instruction,What do you want to create?,Was soll erstellt werden?,¿Qué quieres crear?,Que voulez vous créer?
 ToolSelection.mainCharacter,Main Character,Hauptcharakter,Personaje principal,Personnage principal
 ToolSelection.supportingCharacter,Supporting Character,Nebencharakter,Personaje secundario,Personnage secondaire
 ToolSelection.starship,Starship,Raumschiff,Nave estelar,Vaisseau spatial
@@ -66,12 +68,12 @@ Common.button.ok,OK,OK,De acuerdo,D'accord
 Common.button.add,Add,Hinzufügen,Agregar,Ajouter
 Common.button.cancel,Cancel,Abbrechen,Cancelar,Annuler
 Common.button.next,Next,Weiter,Próximo,Prochain
-Common.button.view,View,Anzeigen,,
+Common.button.view,View,Anzeigen,Vista,Vue
 Construct.other.assignment,Assignment,Zuweisung,Asignación,Mission
 Construct.other.attributes,Attributes,Attribute,Atributos,Attributs
 Construct.other.crew,Crew,Crew,Tripulación,Équipage
 Construct.other.departments,Departments,Abteilungen,Departamentos,Departements
-Construct.other.determination,Determination,Entschlossenheit,,
+Construct.other.determination,Determination,Entschlossenheit,Determinación,Détermination
 Construct.other.disciplines,Disciplines,Disziplinen,Disciplinas,Disciplines
 Construct.other.environment,Environment,Herkunft,Medio ambiente,Environnement
 Construct.other.equipment,Equipment,Ausrüstung,Equipo,Équipement
@@ -86,16 +88,16 @@ Construct.other.resistance,Resistance,Widerstand,Resistencia,Résistance
 Construct.other.scale,Scale,Schiffsgröeße,Escama,Echelle
 Construct.other.serviceDate,Service Date,Indienststellung,Fecha de servicio,Date de mise en service
 Construct.other.shields,Shields,Schilde,Escudos,Boucliers
-Construct.other.spaceFrame,Space Frame,Schiffsklasse,Malla espacial,Armature
+Construct.other.spaceFrame,Space Frame,Schiffsklasse,Malla espacial,Modèle de Vaisseau
 Construct.other.specialRules,Special Rules,Besondere Regeln,Reglas especiales,Règles spéciales
 Construct.other.species,Species,Spezies,Especie,Espèce
 Construct.other.stress,Stress,Anstrengung,Estrés,Stress
 Construct.other.systems,Systems,Systeme,Sistemas,Systèmes
 Construct.other.talents,Talents,Talente,Talentos,Talents
-Construct.other.trait,Trait,Merkmal,,
+Construct.other.trait,Trait,Merkmal,Rasgo,Trait
 Construct.other.traits,Traits,Merkmale,Rasgos,Traits
 Construct.other.upbringing,Upbringing,Erziehung,Cría,Education
-Construct.other.value,Value,Überzeugung,,
+Construct.other.value,Value,Überzeugung,,Valeur
 Construct.other.values,Values,Überzeugungen,Valores,Valeurs
 Construct.other.weapons,Weapons,Waffen,Armas,Armes
 Construct.attribute.control,Control,Konzentration,Control,Contrôle
@@ -126,8 +128,8 @@ Page.title.home,Home,Homepage,Página principal,Page d'accueil
 Page.title.era,Era,Ära,Era,Ère
 Page.title.talentsOverview,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
 Page.title.creditsPage,Credits,Danksagungen,Créditos,Crédits
-Page.title.finish,Finishing Touches,Feinschliff,,
-Page.title.customSpeciesDetails,Custom Species Details,Details einer eigenen Spezies,,
+Page.title.finish,Finishing Touches,Feinschliff,,Touches Finales
+Page.title.customSpeciesDetails,Custom Species Details,Details einer eigenen Spezies,,Détails de Race Personalisé
 Page.title.viewSheet,View Sheet,Bogen anzeigen,Ver hoja,Voir la feuille
 Page.title.supportingCharacter,Supporting Character,Nebencharakter,Personaje secundario,Personnage secondaire
 Page.title.characterType,Character Type,Charakter-Typ,Tipo de carácter,Type de personnage
@@ -135,51 +137,51 @@ Page.title.systemGeneration,System Generation,Sternsystem-Erstellung,Generación
 Page.title.sectorDetails,Sector Details,Sektor Details,Detalles del sector,Détails du secteur
 Page.title.starSystemDetails,Star System Details,Details zum Sternensystem,Detalles del sistema Star,Détails du système stellaire
 Page.title.starshipToolSelection,Starship Tool Selection,Werkzeug-Auswahl Raumschiff,Herramientas de naves espaciales,Outils de vaisseau spatial
-Page.title.toolSelection,Tool Selection,Werkzeug-Auswahl,,
+Page.title.toolSelection,Tool Selection,Werkzeug-Auswahl,,Selection d'Outil
 Page.title.gamemasterTrackerPage,Tracking,NSC-Verwaltung,Seguimiento,Suivi
-Page.title.customSpaceframe,Custom Spaceframe Creation,Eigene Klasse erstellen,,
-Page.title.finalStarshipDetails,Final Starship Details,Letzte Raumschiff-Details,,
-Page.title.missionPodSelection,Mission Pod Selection,Auswahl Missionspod,,
-Page.title.missionProfileSelection,Mission Profile Selection,Auswahl Missionsprofil,,
-Page.title.missionProfileTalentSelection,Mission Profile Talent,Auswahl Missionsprofil-Talent,,
-Page.title.simpleStarship,Simplified Starship Creation,Vereinfachte Raumschifferstellung,,
-Page.title.smallCraftStats,Small Craft Stats,Begleitschiff-Werte,,
-Page.title.spaceframeOption,Spaceframe Option,Schiffsklassen-Optionen,,
-Page.title.spaceframeSelection,Spaceframe,Schiffsklasse,,
-Page.title.starshipTalentSelection,Starship Talents,Raumschiff Talente,,
-Page.title.starshipTypeSelection,Starship Type,Raumschiff-Typ,,
-Page.title.starshipWeaponsSelection,Starship Weapons,Schiffswaffen,,
+Page.title.customSpaceframe,Custom Spaceframe Creation,Eigene Klasse erstellen,,Création de Modèle de Vaiseau
+Page.title.finalStarshipDetails,Final Starship Details,Letzte Raumschiff-Details,,Détails Finaux du Vaisseau
+Page.title.missionPodSelection,Mission Pod Selection,Auswahl Missionspod,,Selection des Nacelles de Mission
+Page.title.missionProfileSelection,Mission Profile Selection,Auswahl Missionsprofil,,Selection du Profil de Mission
+Page.title.missionProfileTalentSelection,Mission Profile Talent,Auswahl Missionsprofil-Talent,,Talent du Profil de mission
+Page.title.simpleStarship,Simplified Starship Creation,Vereinfachte Raumschifferstellung,,Creation de Vaisseau Simplifiée
+Page.title.smallCraftStats,Small Craft Stats,Begleitschiff-Werte,,Navette
+Page.title.spaceframeOption,Spaceframe Option,Schiffsklassen-Optionen,,Option de Modèle
+Page.title.spaceframeSelection,Spaceframe,Schiffsklasse,,Modèle de Vaisseau
+Page.title.starshipTalentSelection,Starship Talents,Raumschiff Talente,,Talents de Vaisseau
+Page.title.starshipTypeSelection,Starship Type,Raumschiff-Typ,,Type de Vaisseau
+Page.title.starshipWeaponsSelection,Starship Weapons,Schiffswaffen,,Armes de Vaisseau
 Page.breadcrumb.characterCreation,Character Creation,Charaktererstellung,Creación de personajes,Création de personnages
-Page.breadcrumb.starshipCreation,Starship Creation,Raumschifferstellung,,
-Source.type.coreBook,Core Rulebooks,,,
-Source.type.divisionBook,Division Books,,,
-Source.type.quadrantBook,Quadrant Books,,,
-Source.type.crewBook,Crew Books,,,
-Source.type.campaignBook,Campaign Books,,,
-Source.type.expansion,Major Expansion Books,,,
-Source.type.misc,Misc/Other Books,,,
-Source.book.core,Core,,,
-Source.book.alphaQuadrant,Alpha Quadrant,,,
-Source.book.betaQuadrant,Beta Quadrant,,,
-Source.book.gammaQuadrant,Gamma Quadrant,,,
-Source.book.deltaQuadrant,Delta Quadrant,,,
-Source.book.commandDivision,Command Division,,,
-Source.book.operationsDivision,Operations Division,,,
-Source.book.sciencesDivision,Sciences Division,,,
-Source.book.tng,TNG,,,
-Source.book.ds9,DS9,,,
-Source.book.voyager,Voyager,,,
-Source.book.theseAreTheVoyages,These are the Voy,,,
-Source.book.tribblePlayerCharacter,Tribble Player Char,,,
-Source.book.klingonCore,Klingon Core,,,
-Source.book.shackletonExpanse,Shackleton Expanse,,,
-Source.book.idwYearFive,IDW Year Five,,,
-Source.book.playersGuide,Player's Guide,,,
-Source.book.tricorderSet,Tricorder Set,,,
-Source.book.discoveryS1S2,Discovery S1/S2,,,
-Source.book.discoveryCampaign,Picard S1,,,
-Source.book.picardS1,Discovery Campaign,,,
-Source.book.utopiaPlanitia,Utopia Planitia,,,
-Era.name.enterprise,Enterprise (22nd century),,,
-Era.name.originalSeries,Original Series (23rd century),,,
-Era.name.nextGeneration,Next Generation (24th century),,,
+Page.breadcrumb.starshipCreation,Starship Creation,Raumschifferstellung,,Règles de Base
+Source.type.coreBook,Core Rulebooks,,,Livres de Règles 
+Source.type.divisionBook,Division Books,,,Livres des Divisions
+Source.type.quadrantBook,Quadrant Books,,,Livres des Quadrants
+Source.type.crewBook,Crew Books,,,Lives d'Equipages
+Source.type.campaignBook,Campaign Books,,,Livres de Campagne
+Source.type.expansion,Major Expansion Books,,,Livres d'Extensions
+Source.type.misc,Misc/Other Books,,,Divers/Autres
+Source.book.core,Core,,,Règles de Base
+Source.book.alphaQuadrant,Alpha Quadrant,,,Quadrant Alpha
+Source.book.betaQuadrant,Beta Quadrant,,,Quadrant Bêta
+Source.book.gammaQuadrant,Gamma Quadrant,,,Quadrant Gamma
+Source.book.deltaQuadrant,Delta Quadrant,,,Quadrant Delta
+Source.book.commandDivision,Command Division,,,Division: Commandement
+Source.book.operationsDivision,Operations Division,,,Division: Opérations
+Source.book.sciencesDivision,Sciences Division,,,Division: Science
+Source.book.tng,TNG,,,TNG
+Source.book.ds9,DS9,,,DS9
+Source.book.voyager,Voyager,,,Voyager
+Source.book.theseAreTheVoyages,These are the Voy,,,These are the Voy
+Source.book.tribblePlayerCharacter,Tribble Player Char,,,Tribule PDF
+Source.book.klingonCore,Klingon Core,,,Klingon
+Source.book.shackletonExpanse,Shackleton Expanse,,,Etendue Shakleton
+Source.book.idwYearFive,IDW Year Five,,,IDW Année Cinq
+Source.book.playersGuide,Player's Guide,,,Guide du Joueur
+Source.book.tricorderSet,Tricorder Set,,,Kit Tricorder
+Source.book.discoveryS1S2,Discovery S1/S2,,,Discovery S1/S2
+Source.book.discoveryCampaign,Picard S1,,,Picard S1
+Source.book.picardS1,Discovery Campaign,,,Campagne Discovery
+Source.book.utopiaPlanitia,Utopia Planitia,,,Utopia Planitia
+Era.name.enterprise,Enterprise (22nd century),,,Enterprise (22ème Siècle)
+Era.name.originalSeries,Original Series (23rd century),,,Serie Originale (23ème Siècle)
+Era.name.nextGeneration,Next Generation (24th century),,,Nouvelle Génération (24ème Siècle)

@@ -31,6 +31,10 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
         };
     }
 
+    componentDidMount(): void {
+        document.title = "STAR TREK ADVENTURES";
+    }
+
     render() {
         const { t } = this.props;
         return [

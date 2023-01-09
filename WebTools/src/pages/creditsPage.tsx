@@ -138,7 +138,8 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
                             </p>
 
                             <p>
-                                Send me a PR, or raise a Github issue or start a Github discussion. Or post about it on the Modiphius Forums.
+                                Send me a {' '} <a href="https://docs.github.com/en/pull-requests" target="_blank" rel="noreferrer">PR</a>,
+                                or raise a Github issue or start a Github discussion. Or post about it on the Modiphius Forums.
                             </p>
 
                             <p className="mt-5">

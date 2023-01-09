@@ -35,6 +35,9 @@
     "StarshipToolSelection.simplifiedBuild": "Compilación simplificada",
     "StarshipToolSelection.simplifiedBuildDescription": "La compilación simplificada es una buena opción para transcribir un conjunto de estadísticas, por ejemplo, de una fuente en línea u otra referencia.",
 
+    "StarshipPage.class": "Clase",
+
+    "ToolSelection.instruction": "¿Qué quieres crear?",
     "ToolSelection.mainCharacter": "Personaje principal",
     "ToolSelection.supportingCharacter": "Personaje secundario",
     "ToolSelection.starship": "Nave estelar",
@@ -49,11 +52,13 @@
     "Common.button.add": "Agregar",
     "Common.button.cancel": "Cancelar",
     "Common.button.next": "Próximo",
+    "Common.button.view": "Vista",
 
     "Construct.other.assignment": "Asignación",
     "Construct.other.attributes": "Atributos",
     "Construct.other.crew": "Tripulación",
     "Construct.other.departments": "Departamentos",
+    "Construct.other.determination": "Determinación",
     "Construct.other.disciplines": "Disciplinas",
     "Construct.other.environment": "Medio ambiente",
     "Construct.other.equipment": "Equipo",
@@ -74,6 +79,7 @@
     "Construct.other.stress": "Estrés",
     "Construct.other.systems": "Sistemas",
     "Construct.other.talents": "Talentos",
+    "Construct.other.trait": "Rasgo",
     "Construct.other.traits": "Rasgos",
     "Construct.other.upbringing": "Cría",
     "Construct.other.values": "Valores",
