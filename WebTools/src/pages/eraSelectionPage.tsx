@@ -36,11 +36,11 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
                 hasUnavailableSources = hasUnavailableSources || !s.available;
                 const className = s.available ? (this.hasSource(s.id) ? "source source-selected" : "source") : "source unavailable";
                 return (
-                    <div key={s.id} className={className} onClick={() => { if (s.available) { this.sourceChanged(s.id); } } }>{s.name}</div>
+                    <div key={s.id} className={className} onClick={() => { if (s.available) { this.sourceChanged(s.id); } } }>{s.localizedName}</div>
                 );
             });
             return (<div key={'source-type-' + t.type}>
-                <div className="text-white small text-center">{t.name}</div>
+                <div className="text-white small text-center" style={{overflow: 'hidden', textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{t.localizedName}</div>
                 {list}
             </div>)
         });
@@ -69,7 +69,7 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
         const eras = ErasHelper.getEras().map((e, i) => {
             return (
                 <tr key={i} onClick={() => { if (Window.isCompact()) this.eraSelected(e.id); }}>
-                    <td className="selection-header">{e.name}</td>
+                    <td className="selection-header">{e.localizedName}</td>
                     <td className="text-right"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { this.eraSelected(e.id) }} /></td>
                 </tr>
             );

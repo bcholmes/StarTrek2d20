@@ -44,7 +44,7 @@ class EnvironmentViewModel extends EnvironmentModel {
         this.id = id;
 
         if (base.id === Environment.Homeworld) {
-            const speciesAttributes = character.species === Species.Custom ? AttributesHelper.getAllAttributes() : SpeciesHelper.getSpeciesByType(character.species).attributes;
+            const speciesAttributes = (character.species == null || character.species === Species.Custom) ? AttributesHelper.getAllAttributes() : SpeciesHelper.getSpeciesByType(character.species).attributes;
             this.attributes = speciesAttributes;
         }
     }

@@ -15,7 +15,7 @@ interface IRefitImprovementProperties {
 
 export class Refit extends React.Component<IRefitImprovementProperties, {}> {
     render() {
-        const {system, value, name, showDecrease, showIncrease} = this.props;
+        const {value, name, showDecrease, showIncrease} = this.props;
 
         const dec = showDecrease
             ? (<img style={{ float: "left" }} height="20" src="static/img/dec.png" onClick={ () => { this.onDecrease() } } alt="-"/>)

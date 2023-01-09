@@ -10,6 +10,7 @@ import { Skill, SkillsHelper } from "../../helpers/skills";
 import { SpeciesHelper } from "../../helpers/species";
 import { Species } from "../../helpers/speciesEnum";
 import { UpbringingsHelper } from "../../helpers/upbringings";
+import { EnvironmentsHelper } from "../../helpers/environments";
 
 interface IXmlFormatViewerState {
     character?: Character;
@@ -123,13 +124,19 @@ class XmlFormatViewerPage extends React.Component<{}, IXmlFormatViewerState> {
                     }
                 });
 
+                let environmentName = c.environment?._text;
+                EnvironmentsHelper.getEnvironments().forEach(e => {
+                    if (environmentName.toLowerCase() === e.name.toLocaleLowerCase()) {
+                        character.environment = e.id;
+                    }
+                });
 
-
-                this.setState((state) => ({...state, character: character}));
+                this.setState((state) => ({...state, character: character, messages: null}));
             } else {
                 this.setState((state) => ({...state, character: null, messages: [ "This does not look like a valid XML character" ]}));
             }
         } catch (e) {
+            console.log(e);
             this.setState((state) => ({...state, character: null, messages: [ "This does not look like valid XML" ]}));
         }
     }

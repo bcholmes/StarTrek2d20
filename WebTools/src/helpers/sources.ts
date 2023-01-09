@@ -1,4 +1,7 @@
-﻿export enum Source {
+﻿import i18n from 'i18next';
+import { makeKey } from '../common/translationKey';
+
+export enum Source {
     Core,
     AlphaQuadrant,
     BetaQuadrant,
@@ -43,6 +46,10 @@ class SourceTypeModel {
         this.type = type;
         this.name = name;
     }
+
+    get localizedName() {
+        return i18n.t(makeKey('Source.type.', SourceType[this.type]));
+    }
 }
 
 class SourceViewModel {
@@ -57,6 +64,11 @@ class SourceViewModel {
         this.name = name;
         this.available = available;
     }
+
+    get localizedName() {
+        return i18n.t(makeKey('Source.book.', Source[this.id]));
+    }
+
 }
 
 class Sources {

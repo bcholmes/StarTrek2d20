@@ -666,6 +666,9 @@ table.aspect-list td:first-child {
     cursor: pointer;
     opacity: 0.8;
     line-height: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
     .source:hover {
         opacity: 1.0;

@@ -1,11 +1,15 @@
 import React from "react";
-import { navigateTo } from "../common/navigator";
+import { withRouter, RouteComponentProps } from "react-router";
 import { Header } from "../components/header";
 import { PageIdentity } from "./pageIdentity";
 import { withTranslation, WithTranslation } from 'react-i18next';
 import LcarsFrame from "../components/lcarsFrame";
 
-class CreditsPage extends React.Component<WithTranslation, {}> {
+interface ICreditsPageProperties extends WithTranslation {
+    history: RouteComponentProps["history"];
+}
+
+class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
 
     render() {
         const { t } = this.props;
@@ -15,7 +19,7 @@ class CreditsPage extends React.Component<WithTranslation, {}> {
                         <div className="page container ml-0">
                             <nav aria-label="breadcrumb">
                                 <ol className="breadcrumb">
-                                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
+                                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => this.goToHome(e)}>{t('Page.title.home')}</a></li>
                                     <li className="breadcrumb-item active" aria-current="page">{t('Page.title.creditsPage')}</li>
                                 </ol>
                             </nav>
@@ -103,7 +107,22 @@ class CreditsPage extends React.Component<WithTranslation, {}> {
                             </p>
 
                             <p>
-                                You should click on the News item on the left-hand LCARS bar.
+                                At the high level, the following stuff has been added:
+                            </p>
+
+                            <ul>
+                                <li>Support for the Klingon Core book has been added.</li>
+                                <li>Support for the Player's Guide &mdash; including new character types, talents, roles and lifepath options &mdash; has been added.</li>
+                                <li>Additional source books have added new species and talents, including the Discovery Campaign book, the Shackleton Expanse book and more</li>
+                                <li>The app can now create a space sector, using rules from the Shackleton Expanse book.</li>
+                                <li>You can view characters and starships using a bookmarkable URL, so that you can come back to the character later.</li>
+                                <li>Support for a number of different types of character and starship sheets, including some that display the Talent text and
+                                    starship sheets that show a visual representation of well-known ship classes.
+                                </li>
+                                <li>Initial work to support national languages (including French, Spanish and German)</li>
+                            </ul>
+                            <p>
+                                Want more details? You should click on the News item on the left-hand LCARS bar.
                             </p>
 
                             <p className="mt-5">
@@ -136,6 +155,14 @@ class CreditsPage extends React.Component<WithTranslation, {}> {
                     </div>
                 </LcarsFrame>);
     }
+
+    goToHome(e: React.MouseEvent<HTMLAnchorElement>) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const { history } = this.props;
+        history.push("/");
+    }
 }
 
-export default withTranslation()(CreditsPage);
+export default withTranslation()(withRouter(CreditsPage));
