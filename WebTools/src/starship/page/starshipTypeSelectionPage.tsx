@@ -120,7 +120,7 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
     renderServiceYear() {
         const { t } = this.props;
         return (<div className="my-5">
-                    <Header level={2}>Campaign Year</Header>
+                    <Header level={2}>{t('StarshipTypeSelection.campaignYear')}</Header>
                     <div>
                         <InstructionText text={t('StarshipTypeSelection.instruction')} />
                     </div>

@@ -8,6 +8,7 @@ import {Source} from '../helpers/sources';
 import {WorkflowsHelper} from '../helpers/workflows';
 import { hasSource } from '../state/contextFunctions';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import InstructionText from '../components/instructionText';
 
 class ToolSelectionPage extends React.Component<WithTranslation, {}> {
 
@@ -23,9 +24,8 @@ class ToolSelectionPage extends React.Component<WithTranslation, {}> {
                         </ol>
                     </nav>
 
-                    <div className="page-text">
-                        What do you want to create?
-                    </div>
+                    <InstructionText text={t('ToolSelection.instruction')} />
+
                     <div className="button-container">
                         <Button className="button" onClick={() => { this.startStarfleetWorkflow(); } } >{t('ToolSelection.mainCharacter')}</Button>
                         <Button className="button" onClick={() => { this.goToPage(PageIdentity.SupportingCharacter); } } >{t('ToolSelection.supportingCharacter')}</Button>

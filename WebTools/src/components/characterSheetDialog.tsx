@@ -1,4 +1,5 @@
 import * as React from 'react';
+import i18n from 'i18next';
 import { PDFDocument } from 'pdf-lib'
 import { ICharacterSheet } from '../helpers/sheets';
 import {Button} from './button';
@@ -38,7 +39,7 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
                         {s.getName()}
                     </div>
                     <div className="sheet-selection-item-thumbnail">
-                        <img className="thumbnail" src={s.getThumbnailUrl()} alt="Thumbnail" />
+                        <img className="thumbnail" src={s.getThumbnailUrl()} alt={i18n.t('CharacterSheetDialog.thumbnail')} />
                         {overlay}
                     </div>
                 </div>
@@ -51,7 +52,7 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
                     {sheetList}
                 </div>
                 <div className="button-container-centered">
-                    <Button text="Export to PDF" className="button" onClick={() => { this.exportPdf() } } />
+                    <Button text={i18n.t('Common.button.exportPdf')} className="button" onClick={() => { this.exportPdf() } } />
                 </div>
             </div>
         );
@@ -90,7 +91,7 @@ class CharacterSheetDialogControl {
             sheets: filteredSheets,
             suffix: suffix,
             construct: c
-        }), "Choose Template" )
+        }), i18n.t('CharacterSheetDialog.title') )
     }
 
     hide() {

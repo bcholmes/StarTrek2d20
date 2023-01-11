@@ -16,7 +16,7 @@ import {CareerEventPage} from './careerEventPage';
 import {CareerEventDetailsPage} from './careerEventDetailsPage';
 import {AttributesAndDisciplinesPage} from './attributesAndDisciplinesPage';
 import FinishPage from './finishPage';
-import {SupportingCharacterPage} from '../supportingcharacters/supportingCharacterPage';
+import SupportingCharacterPage from '../supportingcharacters/supportingCharacterPage';
 import TalentsOverviewPage from './talentsOverviewPage';
 import SelectionPage from './selectionPage';
 import { BorgImplantSelection } from './borgImplantSelection';

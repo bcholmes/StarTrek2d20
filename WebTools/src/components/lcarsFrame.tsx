@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter, RouteComponentProps } from "react-router";
 import { PageIdentity } from "../pages/pageIdentity";
 import AppVersion from "./appVersion";
-import { CharacterSheet } from "./characterSheet";
+import CharacterSheet from "./characterSheet";
 import History, { HistoryType } from "./history";
 import News from "./news";
 import PageHeader from "./pageHeader";

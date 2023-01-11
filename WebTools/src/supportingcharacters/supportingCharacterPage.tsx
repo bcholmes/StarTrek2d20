@@ -18,6 +18,7 @@ import store from '../state/store';
 import { hasSource } from '../state/contextFunctions';
 import { Header } from '../components/header';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 interface ISupportingCharacterState {
     age: Age;
@@ -29,7 +30,7 @@ interface ISupportingCharacterState {
     customSpeciesName?: string;
 }
 
-export class SupportingCharacterPage extends React.Component<{}, ISupportingCharacterState> {
+class SupportingCharacterPage extends React.Component<WithTranslation, ISupportingCharacterState> {
 
     private _name: string;
     private _focus1: string;
@@ -37,7 +38,7 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
     private _focus3: string;
     private _pronouns: string = "";
 
-    constructor(props: {}) {
+    constructor(props) {
         super(props);
 
         const profileButton = document.getElementById("profile-button");
@@ -73,10 +74,11 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
     }
 
     render() {
+        const { t } = this.props;
         let ageDiv = hasSource(Source.PlayersGuide) && character.age.isChild()
             ? (<div className="mt-4">
                     <div className="page-text-aligned">
-                        How old is this character?
+                        {t('SupportingCharacter.howOld')}
                     </div>
                     <div>
                         <DropDownInput
@@ -91,18 +93,18 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
             <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Supporting Character Creation</li>
+                        <li className="breadcrumb-item"><a href="index.html">{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">{t('Page.breadcrumb.supportingCharacterCreation')}</li>
                     </ol>
                 </nav>
 
                 <div>
-                    <Header>Supporting Character</Header>
+                    <Header>{t('Page.title.supportingCharacter')}</Header>
 
                     <div className="row">
                         <div className="col-12 col-lg-6 my-4">
-                            <Header level={2}>Character Type</Header>
-                            <p>Choose a character type.</p>
+                            <Header level={2}>{t('Construct.other.characterType')}</Header>
+                            <p>{t('SupportingCharacter.whatType')}</p>
                             <div>
                                 <DropDownInput
                                     items={this.getTypes() }
@@ -113,25 +115,22 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                             {ageDiv}
                         </div>
                         <div className="col-12 col-lg-6 my-4">
-                            <Header level={2}>Purpose/Department</Header>
+                            <Header level={2}>{t('SupportingCharacter.purposeOrDepartment')}</Header>
                             <p>
-                                Determine what purpose the Supporting Character will fill.
-                                Are they an engineer, or a doctor, or a scientist, or a security officer?
+                                {t('SupportingCharacter.whatPurpose')}
                             </p>
-                            <InputFieldAndLabel labelName="Department" value={this.state.purpose} onChange={(value) => {
+                            <InputFieldAndLabel labelName={t('Construct.other.purpose')} value={this.state.purpose} onChange={(value) => {
                                 this.setState((state) => ({
                                     ...state,
                                     purpose: value}));
                                 character.role = value;
-                            }} id="department" />
+                            }} id="purpose" />
                         </div>
                     </div>
                     <div className="mt-3">
-                        <Header level={2}>Species &amp; Attributes</Header>
+                        <Header level={2}>{t('SupportingCharacter.speciesAndAttributes')}</Header>
                         <p>
-                            Assign Attribute scores and choose the character's species.
-                            The chosen species will affect the final Attribute scores.
-                            Select two different values to swap them.
+                            {t('SupportingCharacter.speciesAndAttributesInstruction')}
                         </p>
                         <div className="mb-2">
                             <DropDownInput
@@ -141,7 +140,7 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                         </div>
                         {this.state.species === Species.Custom
                         ? (<div className="mb-2">
-                             <InputFieldAndLabel labelName="Species" value={this.state.customSpeciesName || ''}
+                             <InputFieldAndLabel labelName={t('Construct.other.species')} value={this.state.customSpeciesName || ''}
                                 id="speciesName" onChange={(value) => {
                                     console.log("change " + value);
                                     character.customSpeciesName = value;
@@ -156,11 +155,9 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                         </div>
                     </div>
                     <div className="my-5">
-                        <Header level={2}>Disciplines</Header>
+                        <Header level={2}>{t('Construct.other.disciplines')}</Header>
                         <p>
-                            Assign the character's Disciplines.
-                            The highest value should match up with the department/purpose of the character.
-                            Select two different values to swap them.
+                            {t('SupportingCharacter.disciplineInstruction')}
                         </p>
                         <SupportingCharacterDisciplines age={this.state.age}
                             onUpdate={() => { this.forceUpdate(); } }/>
@@ -168,27 +165,26 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                 </div>
                 <div className="row">
                     <div className="col-12 col-lg-6 my-3">
-                        <Header level={2}>Focuses</Header>
+                        <Header level={2}>{t('Construct.other.focuses')}</Header>
                         <p>
-                            Choose three Focuses for the character.
-                            At least one should reflect the department/purpose of the character.
+                            {t('SupportingCharacter.focusInstruction')}
                         </p>
                         <div className="mb-2">
-                            <InputFieldAndLabel labelName="Focus 1" value={this._focus1}
+                            <InputFieldAndLabel labelName={t('Construct.other.focus1')} value={this._focus1}
                                 id="focus1" onChange={(value) => {
                                     this._focus1 = value;
                                     this.onFocusChanged();
                                 }} />
                         </div>
                         <div className="mb-2">
-                            <InputFieldAndLabel labelName="Focus 2" value={this._focus2}
+                            <InputFieldAndLabel labelName={t('Construct.other.focus2')} value={this._focus2}
                                 id="focus2" onChange={(value) => {
                                     this._focus2 = value;
                                     this.onFocusChanged();
                                 }} />
                         </div>
                         <div className="mb-2">
-                            <InputFieldAndLabel labelName="Focus 3" value={this._focus3}
+                            <InputFieldAndLabel labelName={t('Construct.other.focus3')} value={this._focus3}
                                 id="focus3" onChange={(value) => {
                                     this._focus3 = value;
                                     this.onFocusChanged();
@@ -196,11 +192,9 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                         </div>
                     </div>
                     <div className="col-12 col-lg-6 my-3">
-                        <Header level={2}>Name &amp; Rank</Header>
+                        <Header level={2}>{t('SupportingCharacter.nameAndRank')}</Header>
                         <p>
-                            Give the character an appropriate name and rank.
-                            Supporting Characters should never have a rank above Lieutenant
-                            and may often be enlisted personnel rather than officers.
+                            {t('SupportingCharacter.nameAndRankInstruction')}
                         </p>
                         {this.state.showRank
                             ?
@@ -212,7 +206,7 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                                 </div>)
                             : null}
                         <div className="mb-2">
-                            <InputFieldAndLabel labelName="Name" value={this._name}
+                            <InputFieldAndLabel labelName={t('Construct.other.name')} value={this._name}
                                 id="name" onChange={(value) => {
                                     this._name = value;
                                     character.name = this._name;
@@ -220,7 +214,7 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                                 }} />
                         </div>
                         <div className="mb-2">
-                            <InputFieldAndLabel labelName="Pronouns" value={this._pronouns}
+                            <InputFieldAndLabel labelName={t('Construct.other.pronouns')} value={this._pronouns}
                                 id="pronouns" onChange={(value) => {
                                     this._pronouns = value;
                                     character.pronouns = this._pronouns;
@@ -230,8 +224,8 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
                     </div>
                 </div>
                 <div className="button-container mt-4">
-                    <Button text="Export to PDF" className="button-small mr-2 mb-2" onClick={() => this.showDialog() } buttonType={true} />
-                    <Button text="View" className="button-small mr-2 mb-2" onClick={() => this.showViewPage() } buttonType={true} />
+                    <Button text={t('Common.button.exportPdf')} className="button-small mr-2 mb-2" onClick={() => this.showDialog() } buttonType={true} />
+                    <Button text={t('Common.button.view')} className="button-small mr-2 mb-2" onClick={() => this.showViewPage() } buttonType={true} />
                 </div>
             </div>
         );
@@ -256,7 +250,7 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
     }
 
     private populateAdditionalFields() {
-        character.traits = [ CharacterSerializer.serializeSpecies(character.species, character.mixedSpecies) ];
+        character.traits = [ character.speciesName ];
     }
 
     private selectSpecies(index: number) {
@@ -369,3 +363,5 @@ export class SupportingCharacterPage extends React.Component<{}, ISupportingChar
         this.forceUpdate();
     }
 }
+
+export default withTranslation()(SupportingCharacterPage);

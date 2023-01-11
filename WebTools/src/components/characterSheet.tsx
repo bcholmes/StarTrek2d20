@@ -1,4 +1,5 @@
 ﻿import * as React from 'react';
+import i18n from 'i18next';
 import {character} from '../common/character';
 import {Attribute} from '../helpers/attributes';
 import {Skill} from '../helpers/skills';
@@ -9,6 +10,7 @@ import {TalentsHelper} from '../helpers/talents';
 import {CareerEventsHelper} from '../helpers/careerEvents';
 import {Era} from '../helpers/eras';
 import store from '../state/store';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 class SectionContent {
     name: string;
@@ -22,12 +24,12 @@ class SectionContent {
 
 class CharacterSheetData {
     private _data: SectionContent[] = [
-        new SectionContent("SPECIES", this.getSpeciesString()),
-        new SectionContent("ENVIRONMENT", this.getEnvironmentString()),
-        new SectionContent("UPBRINGING", character.upbringingStep ? character.upbringingStep?.upbringing?.name + (character.upbringingStep?.acceptedUpbringing ? "(A)" : "(R)") : "None"),
-        new SectionContent("TRAINING", character.track >= 0 ? TracksHelper.instance().getTrack(character.track).name : "None"),
-        new SectionContent("CAREER", character.career >= 0 ? CareersHelper.getCareer(character.career).name : "None"),
-        new SectionContent("TRAITS", character.traits.join(", "))
+        new SectionContent(i18n.t('Construct.other.species'), this.getSpeciesString()),
+        new SectionContent(i18n.t('Construct.other.environment'), this.getEnvironmentString()),
+        new SectionContent(i18n.t('Construct.other.upbringing'), character.upbringingStep ? character.upbringingStep?.upbringing?.name + (character.upbringingStep?.acceptedUpbringing ? "(A)" : "(R)") : i18n.t('Common.text.none')),
+        new SectionContent(i18n.t('Construct.other.training'), character.track >= 0 ? TracksHelper.instance().getTrack(character.track).name : i18n.t('Common.text.none')),
+        new SectionContent(i18n.t('Construct.other.career'), character.career >= 0 ? CareersHelper.getCareer(character.career).name : i18n.t('Common.text.none')),
+        new SectionContent(i18n.t('Construct.other.traits'), character.traits.join(", "))
     ];
 
     get dataSection() {
@@ -35,11 +37,11 @@ class CharacterSheetData {
     }
 
     private getSpeciesString() {
-        return character.speciesName || "None";
+        return character.speciesName || i18n.t('Common.text.none');
     }
 
     private getEnvironmentString() {
-        let env = character.environment >= 0 ? EnvironmentsHelper.getEnvironment(character.environment, character.type).name : "None";
+        let env = character.environment >= 0 ? EnvironmentsHelper.getEnvironment(character.environment, character.type).name : i18n.t('Common.text.none');
 
         if (character.environment === Environment.AnotherSpeciesWorld) {
             env += ` (${character.otherSpeciesWorld})`;
@@ -49,14 +51,16 @@ class CharacterSheetData {
     }
 }
 
-interface ICharacterSheetProperties {
+interface ICharacterSheetProperties extends WithTranslation {
     showProfile: boolean;
 }
 
-export class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
+class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
     private _sheetData: CharacterSheetData;
 
     render() {
+        const { t } = this.props;
+
         this._sheetData = new CharacterSheetData();
 
         const data = this._sheetData.dataSection.map((s, i) => {
@@ -86,10 +90,10 @@ export class CharacterSheet extends React.Component<ICharacterSheetProperties, {
         let characterTalents = [];
 
         for (var talent in character.talents) {
-            var t = character.talents[talent];
-            var tt = TalentsHelper.getTalent(talent);
+            let tal = character.talents[talent];
+            let tt = TalentsHelper.getTalent(talent);
             if (tt && tt.maxRank > 1) {
-                characterTalents.push(talent + " [Rank: " + t.rank + "]");
+                characterTalents.push(talent + " [Rank: " + tal.rank + "]");
             } else {
                 characterTalents.push(talent);
             }
@@ -126,7 +130,7 @@ export class CharacterSheet extends React.Component<ICharacterSheetProperties, {
         return (
             <div id="character-sheet">
                 <div id="character-sheet" className={this.props.showProfile ? 'sheet-visible' : 'sheet-hidden'}>
-                    <div className="sheet-bg" id="sheet-bg" style={{ display: this.props.showProfile ? '' : 'none' }}></div>
+                    <div className="sheet-bg" id="sheet-bg" style={{ display: this.props.showProfile ? '' : i18n.t('Common.text.none') }}></div>
                     <div className={containerClass} id="sheet-container">
                         <div className="sheet-panel">
                             <table className="sheet-section">
@@ -139,61 +143,61 @@ export class CharacterSheet extends React.Component<ICharacterSheetProperties, {
                             <table className="sheet-section">
                                 <tbody>
                                     <tr>
-                                        <td className="bg-darker">CONTROL</td>
+                                        <td className="bg-darker">{t('Construct.attribute.control')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.attributes[Attribute.Control].value}
                                         </td>
-                                        <td className="bg-darker">DARING</td>
+                                        <td className="bg-darker">{t('Construct.attribute.daring')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.attributes[Attribute.Daring].value}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="bg-darker">FITNESS</td>
+                                        <td className="bg-darker">{t('Construct.attribute.fitness')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.attributes[Attribute.Fitness].value}
                                         </td>
-                                        <td className="bg-darker">INSIGHT</td>
+                                        <td className="bg-darker">{t('Construct.attribute.insight')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.attributes[Attribute.Insight].value}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="bg-darker">PRESENCE</td>
+                                        <td className="bg-darker">{t('Construct.attribute.presence')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.attributes[Attribute.Presence].value}
                                         </td>
-                                        <td className="bg-darker">REASON</td>
+                                        <td className="bg-darker">{t('Construct.attribute.reason')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.attributes[Attribute.Reason].value}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="bg-darkest">COMMAND</td>
+                                        <td className="bg-darkest">{t('Construct.discipline.command')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.skills[Skill.Command].expertise}
                                         </td>
-                                        <td className="bg-darkest">CONN</td>
+                                        <td className="bg-darkest">{t('Construct.discipline.conn')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.skills[Skill.Conn].expertise}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="bg-darkest">SECURITY</td>
+                                        <td className="bg-darkest">{t('Construct.discipline.security')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.skills[Skill.Security].expertise}
                                         </td>
-                                        <td className="bg-darkest">ENGINEERING</td>
+                                        <td className="bg-darkest">{t('Construct.discipline.engineering')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.skills[Skill.Engineering].expertise}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="bg-darkest">SCIENCE</td>
+                                        <td className="bg-darkest">{t('Construct.discipline.science')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.skills[Skill.Science].expertise}
                                         </td>
-                                        <td className="bg-darkest">MEDICINE</td>
+                                        <td className="bg-darkest">{t('Construct.discipline.medicine')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.skills[Skill.Medicine].expertise}
                                         </td>
@@ -205,7 +209,7 @@ export class CharacterSheet extends React.Component<ICharacterSheetProperties, {
                             <table className="sheet-section">
                                 <tbody>
                                     <tr>
-                                        <td className="bg-dark">VALUES</td>
+                                        <td className="bg-dark">{t('Construct.other.values')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark">
                                             {values}
                                         </td>
@@ -217,7 +221,7 @@ export class CharacterSheet extends React.Component<ICharacterSheetProperties, {
                             <table className="sheet-section">
                                 <tbody>
                                     <tr>
-                                        <td className="bg-dark">FOCUSES</td>
+                                        <td className="bg-dark">{t('Construct.other.focuses')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark">
                                             {focuses}
                                         </td>
@@ -229,7 +233,7 @@ export class CharacterSheet extends React.Component<ICharacterSheetProperties, {
                             <table className="sheet-section">
                                 <tbody>
                                     <tr>
-                                        <td className="bg-dark">TALENTS</td>
+                                        <td className="bg-dark">{t('Construct.other.talents')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark">
                                             {talents}
                                         </td>
@@ -241,7 +245,7 @@ export class CharacterSheet extends React.Component<ICharacterSheetProperties, {
                             <table className="sheet-section">
                                 <tbody>
                                     <tr>
-                                        <td className="bg-dark">EQUIPMENT</td>
+                                        <td className="bg-dark">{t('Construct.other.equipment')}</td>
                                         <td className="bg-light border-dark text-dark">
                                             {equipment}
                                         </td>
@@ -253,7 +257,7 @@ export class CharacterSheet extends React.Component<ICharacterSheetProperties, {
                             <table className="sheet-section">
                                 <tbody>
                                     <tr>
-                                        <td className="bg-dark">CAREER EVENTS</td>
+                                        <td className="bg-dark">{t('Construct.other.careerEvents')}</td>
                                         <td className="bg-light border-dark text-dark">
                                             {careerEvents}
                                         </td>
@@ -268,3 +272,5 @@ export class CharacterSheet extends React.Component<ICharacterSheetProperties, {
         );
     }
 }
+
+export default withTranslation()(CharacterSheet);
