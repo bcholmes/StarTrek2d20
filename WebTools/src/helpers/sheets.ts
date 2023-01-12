@@ -128,7 +128,9 @@ abstract class BasicSheet implements ICharacterSheet {
     }
     async populate(pdf: PDFDocument, construct: Construct) {
         const form = pdf.getForm();
-        pdf.setTitle(construct.name);
+        if (construct.name) {
+            pdf.setTitle(construct.name);
+        }
         this.populateForm(form, construct);
     }
 
@@ -418,7 +420,9 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
     }
     async populate(pdf: PDFDocument, construct: Construct) {
         const form = pdf.getForm();
-        pdf.setTitle(construct.name);
+        if (construct.name) {
+            pdf.setTitle(construct.name);
+        }
         this.populateForm(form, construct);
     }
 
@@ -482,7 +486,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
 
     formatName(character: Character) {
         let name = this.formatNameWithoutPronouns(character);
-        if (character.pronouns.length > 0) {
+        if (character?.pronouns?.length > 0) {
             name += " (" + character.pronouns + ")";
         }
         return name;

@@ -53,6 +53,7 @@ class CharacterSheetData {
 
 interface ICharacterSheetProperties extends WithTranslation {
     showProfile: boolean;
+    close: () => void;
 }
 
 class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
@@ -66,7 +67,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
         const data = this._sheetData.dataSection.map((s, i) => {
             return (
                 <tr key={i}>
-                    <td className="bg-dark">{s.name}</td>
+                    <td className="bg-dark text-uppercase">{s.name}</td>
                     <td className="bg-light border-dark text-dark">{s.value}</td>
                 </tr>
             )
@@ -130,7 +131,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
         return (
             <div id="character-sheet">
                 <div id="character-sheet" className={this.props.showProfile ? 'sheet-visible' : 'sheet-hidden'}>
-                    <div className="sheet-bg" id="sheet-bg" style={{ display: this.props.showProfile ? '' : i18n.t('Common.text.none') }}></div>
+                    <div className="sheet-bg" id="sheet-bg" style={{ display: this.props.showProfile ? '' : i18n.t('Common.text.none') }} onClick={() => this.props.close()}></div>
                     <div className={containerClass} id="sheet-container">
                         <div className="sheet-panel">
                             <table className="sheet-section">
@@ -143,61 +144,61 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                             <table className="sheet-section">
                                 <tbody>
                                     <tr>
-                                        <td className="bg-darker">{t('Construct.attribute.control')}</td>
+                                        <td className="bg-darker text-uppercase">{t('Construct.attribute.control')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.attributes[Attribute.Control].value}
                                         </td>
-                                        <td className="bg-darker">{t('Construct.attribute.daring')}</td>
+                                        <td className="bg-darker text-uppercase">{t('Construct.attribute.daring')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.attributes[Attribute.Daring].value}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="bg-darker">{t('Construct.attribute.fitness')}</td>
+                                        <td className="bg-darker text-uppercase">{t('Construct.attribute.fitness')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.attributes[Attribute.Fitness].value}
                                         </td>
-                                        <td className="bg-darker">{t('Construct.attribute.insight')}</td>
+                                        <td className="bg-darker text-uppercase">{t('Construct.attribute.insight')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.attributes[Attribute.Insight].value}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="bg-darker">{t('Construct.attribute.presence')}</td>
+                                        <td className="bg-darker text-uppercase">{t('Construct.attribute.presence')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.attributes[Attribute.Presence].value}
                                         </td>
-                                        <td className="bg-darker">{t('Construct.attribute.reason')}</td>
+                                        <td className="bg-darker text-uppercase">{t('Construct.attribute.reason')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.attributes[Attribute.Reason].value}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="bg-darkest">{t('Construct.discipline.command')}</td>
+                                        <td className="bg-darkest text-uppercase">{t('Construct.discipline.command')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.skills[Skill.Command].expertise}
                                         </td>
-                                        <td className="bg-darkest">{t('Construct.discipline.conn')}</td>
+                                        <td className="bg-darkest text-uppercase">{t('Construct.discipline.conn')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.skills[Skill.Conn].expertise}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="bg-darkest">{t('Construct.discipline.security')}</td>
+                                        <td className="bg-darkest text-uppercase">{t('Construct.discipline.security')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.skills[Skill.Security].expertise}
                                         </td>
-                                        <td className="bg-darkest">{t('Construct.discipline.engineering')}</td>
+                                        <td className="bg-darkest text-uppercase">{t('Construct.discipline.engineering')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.skills[Skill.Engineering].expertise}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="bg-darkest">{t('Construct.discipline.science')}</td>
+                                        <td className="bg-darkest text-uppercase">{t('Construct.discipline.science')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.skills[Skill.Science].expertise}
                                         </td>
-                                        <td className="bg-darkest">{t('Construct.discipline.medicine')}</td>
+                                        <td className="bg-darkest text-uppercase">{t('Construct.discipline.medicine')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark text-center">
                                             {character.skills[Skill.Medicine].expertise}
                                         </td>
@@ -209,7 +210,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                             <table className="sheet-section">
                                 <tbody>
                                     <tr>
-                                        <td className="bg-dark">{t('Construct.other.values')}</td>
+                                        <td className="bg-dark text-uppercase">{t('Construct.other.values')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark">
                                             {values}
                                         </td>
@@ -221,7 +222,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                             <table className="sheet-section">
                                 <tbody>
                                     <tr>
-                                        <td className="bg-dark">{t('Construct.other.focuses')}</td>
+                                        <td className="bg-dark text-uppercase">{t('Construct.other.focuses')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark">
                                             {focuses}
                                         </td>
@@ -233,7 +234,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                             <table className="sheet-section">
                                 <tbody>
                                     <tr>
-                                        <td className="bg-dark">{t('Construct.other.talents')}</td>
+                                        <td className="bg-dark text-uppercase">{t('Construct.other.talents')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark">
                                             {talents}
                                         </td>
@@ -245,7 +246,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                             <table className="sheet-section">
                                 <tbody>
                                     <tr>
-                                        <td className="bg-dark">{t('Construct.other.equipment')}</td>
+                                        <td className="bg-dark text-uppercase">{t('Construct.other.equipment')}</td>
                                         <td className="bg-light border-dark text-dark">
                                             {equipment}
                                         </td>
@@ -257,7 +258,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                             <table className="sheet-section">
                                 <tbody>
                                     <tr>
-                                        <td className="bg-dark">{t('Construct.other.careerEvents')}</td>
+                                        <td className="bg-dark text-uppercase">{t('Construct.other.careerEvents')}</td>
                                         <td className="bg-light border-dark text-dark">
                                             {careerEvents}
                                         </td>

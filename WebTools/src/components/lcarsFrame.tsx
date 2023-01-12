@@ -57,7 +57,7 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
                         </div>
                         <div className="lcar-content-action">
                             <div id="profile-button" className={'lcar-content-profile ' + (this.isProfileSupportedForPage() ? '' : 'd-none')} onClick={ () => this.toggleProfile() }>{t('Lcars.profile')}</div>
-                            <CharacterSheet showProfile={this.state.showProfile}/>
+                            <CharacterSheet showProfile={this.state.showProfile} close={() => this.setState((state) => ({...state, showProfile: false }))}/>
                         </div>
                         <div className="lcar-content-feedback" onClick={ () => this.showFeedbackPage() }>{t('Lcars.feedback')}</div>
                         <div className="lcar-content-news" onClick={() => this.showNews()}>
@@ -128,6 +128,8 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
     toggleHistory() {
         this.setState({
             ...this.state,
+            showNews: false,
+            showProfile: false,
             showHistory: !this.state.showHistory
         })
     }
@@ -135,6 +137,8 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
     toggleProfile() {
         this.setState({
             ...this.state,
+            showHistory: false,
+            showNews: false,
             showProfile: !this.state.showProfile
         })
     }
@@ -142,6 +146,8 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
     showNews() {
         this.setState({
             ...this.state,
+            showHistory: false,
+            showProfile: false,
             showNews: true
         })
     }
