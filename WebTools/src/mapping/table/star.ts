@@ -242,6 +242,14 @@ export class Star {
         return (1.98847 * this.mass);
     }
 
+    get designation() {
+        if (this.spectralClass.id === SpectralClass.WhiteDwarf || this.spectralClass.id === SpectralClass.BrownDwarf) {
+            return this.spectralClass.description;
+        } else {
+            return this.spectralClass.description + this.subClass + (this.luminosityClass != null ? (LuminosityClass[this.luminosityClass.id]) : "");
+        }
+    }
+
     get description() {
         if (this.spectralClass.id === SpectralClass.WhiteDwarf || this.spectralClass.id === SpectralClass.BrownDwarf) {
             return this.spectralClass.description;

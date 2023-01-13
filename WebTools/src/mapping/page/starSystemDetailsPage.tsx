@@ -11,6 +11,7 @@ import { StarSystem } from '../table/starSystem';
 import { EditableHeader } from '../view/editableHeader';
 import NotablePhenomenonView from '../view/notablePhenomenonView';
 import StarView from '../view/starView';
+import SystemMapLowerView from '../view/systemMapLowerView';
 import WorldView from '../view/worldView';
 
 interface IStarSystemDetailsPageProperties extends IPageProperties {
@@ -34,13 +35,17 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
 
                 <EditableHeader prefix="System" text={this.props.starSystem.name} onChange={(text) => store.dispatch(setStarSystemName(text))}/>
 
-                <div className="row mt-5">
+                <div className="row my-4">
                     <div className="col-md-2 view-field-label pb-2">Coordinates:</div>
                     <div className="col-md-4 text-white">
                         <div className="view-border-bottom pb-2">
                             {this.props.starSystem ? this.props.starSystem.sectorCoordinates.description : ""}
                         </div>
                     </div>
+                </div>
+
+                <div className="my-4 d-none d-md-block">
+                    <SystemMapLowerView system={this.props.starSystem} />
                 </div>
 
                 <div>
@@ -50,7 +55,7 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
                         <StarView star={this.props.starSystem ? this.props.starSystem.companionStar : undefined} title="Companion Star" companionType={this.props.starSystem.companionType} />
                     </div>
                 </div>
-                <div>
+                <div className="mt-5">
                     <Header level={2} className="mb-4">Worlds</Header>
                     <div>
                         {this.renderWorlds("Inner Zone", 0, this.props.starSystem.gardenZoneInnerRadius)}
@@ -98,7 +103,7 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
 }
 
 function mapStateToProps(state, ownProps) {
-    return { 
+    return {
         starSystem: state.star.starSystem
     };
 }
