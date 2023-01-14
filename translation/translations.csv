@@ -26,8 +26,8 @@ AddCharacterView.instruction,Paste in the URL for a character.,Fügen Sie die UR
 AddCharacterView.errorMessage,This url does not look valid.,Diese URL sieht nicht gültig aus.,Esta URL no parece válida.,Cette URL ne semble pas valide.
 AddCharacterView.errorCharacterType,"Whoops! We only support characters, at the moment. Not starships.",Hoppla! Wir unterstützen im Moment nur Charaktere. Keine Raumschiffe.,"¡Gritos! Solo admitimos personajes, por el momento. No naves espaciales.","Nous ne supportons que les personnages, pour le moment. Pas des vaisseaux spatiaux."
 AddCharacterView.characterPrefix,Character:,Charakter:,Carácter:,Personnage:
-CharacterSheetDialog.title,Choose Template,,,
-CharacterSheetDialog.thumbnail,Thumbnail,,,
+CharacterSheetDialog.title,Choose Template,,,Choisir un Modèle
+CharacterSheetDialog.thumbnail,Thumbnail,,,Vignette
 CustomSpeciesDetails.speciesName,Name,Name,,Nom
 CustomSpeciesDetails.instruction,What's the name of this species?,Wie lautet der Name dieser Spezis?,,Quel est le nom de cette espèce?
 CustomSpeciesDetails.speciesTrait,Each species gets a species-specific trait that may provide additional benefits in special circumstances.,"Jede Spezies erhält ein bestimmtest Talent, das in bestimmten Situationen zusätzliche Vorteile verleihen kann.",,
@@ -56,16 +56,16 @@ StarshipPage.whatScale,How large is this ship?,Wie groß ist das Schiff?,,Quel e
 StarshipPage.whatClass,What's the name of the ship's class?,Wie lautet der Name der Schiffsklasse?,,Quel est le nom de la classe du vaisseau?
 StarshipPage.whatYear,What year did this spaceframe enter service?,In welchem Jahr ist diese Schiffsklasse in Dienst gestellt worden?,,Quel est la date de la mise en service de la classe de vaisseau
 StarshipPage.class,Class,Klasse,Clase,Classe
-SupportingCharacter.whatType,Choose a character type.,,,
-SupportingCharacter.howOld,How old is this character?,,,
-SupportingCharacter.purposeOrDepartment,Purpose/Department,,,
-SupportingCharacter.whatPurpose,"Determine what purpose the Supporting Character will fill. Are they an engineer, or a doctor, or a scientist, or a security officer?",,,
-SupportingCharacter.speciesAndAttributes,Species & Attributes,,,
-SupportingCharacter.speciesAndAttributesInstruction,Assign Attribute scores and choose the character's species. The chosen species will affect the final Attribute scores. Select two different values to swap them.,,,
-SupportingCharacter.disciplineInstruction,Assign the character's Disciplines. The highest value should match up with the department/purpose of the character. Select two different values to swap them.,,,
-SupportingCharacter.focusInstruction,Choose three Focuses for the character. At least one should reflect the department/purpose of the character.,,,
-SupportingCharacter.nameAndRank,Name & Rank,,,
-SupportingCharacter.nameAndRankInstruction,Give the character an appropriate name and rank. Supporting Characters should never have a rank above Lieutenant and may often be enlisted personnel rather than officers.,,,
+SupportingCharacter.whatType,Choose a character type.,,,Choisir un type de personnage
+SupportingCharacter.howOld,How old is this character?,,,Quel est l'âge de votre personnage
+SupportingCharacter.purposeOrDepartment,Purpose/Department,,,Rôle/Département
+SupportingCharacter.whatPurpose,"Determine what purpose the Supporting Character will fill. Are they an engineer, or a doctor, or a scientist, or a security officer?",,,"Determine quel rôle le personnage remplira. Sera-t'il un ingénieur, ou un docteur, ou un scientifique, ou un officier de sécurité?"
+SupportingCharacter.speciesAndAttributes,Species & Attributes,,,Espèce et Attributs
+SupportingCharacter.speciesAndAttributesInstruction,Assign Attribute scores and choose the character's species. The chosen species will affect the final Attribute scores. Select two different values to swap them.,,,Assignez les scores d'Attributs et choisissez l'espèce du personnage. L'espèce choisie influera sur les valeurs finales des attributs.
+SupportingCharacter.disciplineInstruction,Assign the character's Disciplines. The highest value should match up with the department/purpose of the character. Select two different values to swap them.,,,Assignez les Disciplines de votre personnage. La plus haute valeur devrait corresponddre au département/rôle de votre personnage
+SupportingCharacter.focusInstruction,Choose three Focuses for the character. At least one should reflect the department/purpose of the character.,,,Choisissez trois Spécialités pour votre personnage. Au moins un devrait représenter le département rôle de votre personnage.
+SupportingCharacter.nameAndRank,Name & Rank,,,Nom & Rang
+SupportingCharacter.nameAndRankInstruction,Give the character an appropriate name and rank. Supporting Characters should never have a rank above Lieutenant and may often be enlisted personnel rather than officers.,,,Donnez au personnage un nom et un grade approprié. Les personnages secondaires ne peuvent pas avoir un grade supérieur à Lieutenant et sont très sonvant du personnel enrôlé plutôt que des officiers.
 ToolSelection.instruction,What do you want to create?,Was soll erstellt werden?,¿Qué quieres crear?,Que voulez vous créer?
 ToolSelection.mainCharacter,Main Character,Hauptcharakter,Personaje principal,Personnage principal
 ToolSelection.supportingCharacter,Supporting Character,Nebencharakter,Personaje secundario,Personnage secondaire
@@ -81,13 +81,13 @@ Common.button.add,Add,Hinzufügen,Agregar,Ajouter
 Common.button.cancel,Cancel,Abbrechen,Cancelar,Annuler
 Common.button.next,Next,Weiter,Próximo,Prochain
 Common.button.view,View,Anzeigen,Vista,Vue
-Common.text.none,None,,,
+Common.text.none,None,,,Aucun
 Construct.other.assignment,Assignment,Zuweisung,Asignación,Mission
 Construct.other.attributes,Attributes,Attribute,Atributos,Attributs
-Construct.other.career,Career,,,
-Construct.other.careerEvent1,Career Event 1,,,
-Construct.other.careerEvent2,Career Event 2,,,
-Construct.other.careerEvents,Career Events,,,
+Construct.other.career,Career,,,Carrière
+Construct.other.careerEvent1,Career Event 1,,,Evénement de Carrière 1
+Construct.other.careerEvent2,Career Event 2,,,Evénement de Carrière 2
+Construct.other.careerEvents,Career Events,,,Evénements de Carrière
 Construct.other.characterType,Character Type,Charakter-Typ,Tipo de carácter,Type de personnage
 Construct.other.crew,Crew,Crew,Tripulación,Équipage
 Construct.other.departments,Departments,Abteilungen,Departamentos,Departements
@@ -95,17 +95,17 @@ Construct.other.determination,Determination,Entschlossenheit,Determinación,Dét
 Construct.other.disciplines,Disciplines,Disziplinen,Disciplinas,Disciplines
 Construct.other.environment,Environment,Herkunft,Medio ambiente,Environnement
 Construct.other.equipment,Equipment,Ausrüstung,Equipo,Équipement
-Construct.other.focus,Focus,,,
-Construct.other.focus1,Focus 1,,,
-Construct.other.focus2,Focus 2,,,
-Construct.other.focus3,Focus 3,,,
+Construct.other.focus,Focus,,,Spécialités
+Construct.other.focus1,Focus 1,,,Spécialité 1
+Construct.other.focus2,Focus 2,,,Spécialité 2
+Construct.other.focus3,Focus 3,,,Spécialité 3
 Construct.other.focuses,Focuses,Fokusse,Atenciónes,Spécialités
-Construct.other.job,Job,,,
+Construct.other.job,Job,,,Travail
 Construct.other.missionProfile,Mission Profile,Missionsprofil,Perfil de la misión,Profil de mission
 Construct.other.name,Name,Name,Nombre,Nom
 Construct.other.pronouns,Pronouns,Pronomen,Pronombres,Pronoms
 Construct.other.power,Power,Energie,Poder,Puissance
-Construct.other.purpose,Purpose,,,
+Construct.other.purpose,Purpose,,,Energie
 Construct.other.rank,Rank,Rang,Rango,Rang
 Construct.other.refits,Refits,Nachrüstungen,Refits,Mises à jour
 Construct.other.resistance,Resistance,Widerstand,Resistencia,Résistance
@@ -118,7 +118,7 @@ Construct.other.species,Species,Spezies,Especie,Espèce
 Construct.other.stress,Stress,Anstrengung,Estrés,Stress
 Construct.other.systems,Systems,Systeme,Sistemas,Systèmes
 Construct.other.talents,Talents,Talente,Talentos,Talents
-Construct.other.training,Training,,,
+Construct.other.training,Training,,,Formation
 Construct.other.trait,Trait,Merkmal,Rasgo,Trait
 Construct.other.traits,Traits,Merkmale,Rasgos,Traits
 Construct.other.upbringing,Upbringing,Erziehung,Cría,Education
@@ -178,7 +178,7 @@ Page.title.starshipTypeSelection,Starship Type,Raumschiff-Typ,,Type de Vaisseau
 Page.title.starshipWeaponsSelection,Starship Weapons,Schiffswaffen,,Armes de Vaisseau
 Page.breadcrumb.characterCreation,Character Creation,Charaktererstellung,Creación de personajes,Création de personnages
 Page.breadcrumb.starshipCreation,Starship Creation,Raumschifferstellung,,Règles de Base
-Page.breadcrumb.supportingCharacterCreation,Supporting Character Creation,,,
+Page.breadcrumb.supportingCharacterCreation,Supporting Character Creation,,,Création de Personnage Secondaire
 Source.type.coreBook,Core Rulebooks,,,Livres de Règles 
 Source.type.divisionBook,Division Books,,,Livres des Divisions
 Source.type.quadrantBook,Quadrant Books,,,Livres des Quadrants

@@ -1,5 +1,5 @@
 {
-  "version": "1.230113",
+  "version": "1.230114",
   "name": "startrek",
   "author": "Christoffer Lundberg",
   "contributors": [
@@ -8,12 +8,12 @@
       "url": "https://blog.bcholmes.org"
     },
     {
-      "name": "Felderburg",
-      "url": "https://forums.modiphius.com/u/felderburg/summary"
-    },
-    {
       "name": "betatester",
       "url": "https://forums.modiphius.com/u/betatester/summary"
+    },
+    {
+      "name": "Felderburg",
+      "url": "https://forums.modiphius.com/u/felderburg/summary"
     },
     {
       "name": "MisterX",
