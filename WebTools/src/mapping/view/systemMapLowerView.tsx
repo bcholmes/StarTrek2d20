@@ -24,11 +24,16 @@ class SystemMapLowerView extends React.Component<ISystemMapLowerViewProperties, 
         if (system.companionStar) {
             if (system.companionType === CompanionType.Close) {
                 let r2 = Math.max(2, Math.sqrt(system.companionStar?.spectralClass?.radius?.midpoint * 200));
-                star2 = (<g>
-                    <circle cx={35 + r} cy="110px" r={r2} fill="url(#companionStarRadialGradient)" stroke="black" strokeWidth={0.5} />
-                    <text x={35 + r} y={110 + Math.max(r2, r) + 20} fontSize={16} fontFamily="lcars" fill="white" textAnchor="middle">{system.companionStar?.designation?.toLocaleUpperCase()}</text>
-                    <text x={35 + r} y={110 + Math.max(r2, r) + 36} fontSize={16} fontFamily="lcars" fill="white" textAnchor="middle">{system.companionStar?.spectralClass?.colourDescription?.toLocaleUpperCase()}</text>
-                </g>)
+                star2 = system?.companionStar?.spectralClass?.isDwarf
+                    ? (<g>
+                        <circle cx={35 + r} cy="110px" r={r2} fill="url(#companionStarRadialGradient)" stroke="black" strokeWidth={0.5} />
+                        <text x={35 + r} y={110 + Math.max(r, r2) + 20} fontSize={14} fontFamily="lcars" fill="white" textAnchor="middle">{system.companionStar?.designation.toLocaleUpperCase()}</text>
+                    </g>)
+                    : (<g>
+                        <circle cx={35 + r} cy="110px" r={r2} fill="url(#companionStarRadialGradient)" stroke="black" strokeWidth={0.5} />
+                        <text x={35 + r} y={110 + Math.max(r2, r) + 20} fontSize={16} fontFamily="lcars" fill="white" textAnchor="middle">{system.companionStar?.designation?.toLocaleUpperCase()}</text>
+                        <text x={35 + r} y={110 + Math.max(r2, r) + 36} fontSize={16} fontFamily="lcars" fill="white" textAnchor="middle">{system.companionStar?.spectralClass?.colourDescription?.toLocaleUpperCase()}</text>
+                    </g>)
                 companionGradient = (<radialGradient id="companionStarRadialGradient" xlinkHref="#companionStarLinearGradient"
                 cx={35+r-(0.4*r2)} cy={110-(0.4*r2)} fx={35+r-(0.4*r2)} fy={110-(0.4*r2)}  r={r2}
                 gradientUnits="userSpaceOnUse" />);
@@ -150,7 +155,7 @@ class SystemMapLowerView extends React.Component<ISystemMapLowerViewProperties, 
                     <path d="M 15 200 A 15 15 0 0 0 0 215 A 15 15 0 0 0 15 230 L 15 200 z " fill="#F9AC76" />
                     <circle cx="35px" cy="110px" r={r} fill="url(#primaryStarRadialGradient)" />
                     {system?.star?.spectralClass?.isDwarf
-                    ? (<text x="35px" y={110 - r - 12} fontSize={14} fontFamily="lcars" fill="white" textAnchor="middle">{system.star?.designation}</text>)
+                    ? (<text x="35px" y={110 - r - 12} fontSize={14} fontFamily="lcars" fill="white" textAnchor="middle">{system.star?.designation.toLocaleUpperCase()}</text>)
                     : (<>
                         <text x="35px" y={110 - r - 26} fontSize={16} fontFamily="lcars" fill="white" textAnchor="middle">{system.star?.designation?.toLocaleUpperCase()}</text>
                         <text x="35px" y={110 - r - 12} fontSize={14} fontFamily="lcars" fill="white" textAnchor="middle">{system.star?.spectralClass?.colourDescription?.toLocaleUpperCase()}</text>
