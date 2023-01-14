@@ -1,6 +1,6 @@
 import { D20 } from "../../common/die";
 import { LuminosityTable } from "./luminosityTable";
-import { StarSystem } from "./starSystem";
+import { CompanionType, StarSystem } from "./starSystem";
 import { World } from "./world";
 
 const BLAGG_CONSTANT = 1.7275;
@@ -38,20 +38,22 @@ export class Orbits {
 
         orbits.primaryWorldOrbit =  Math.min(numberOfWorlds, Math.ceil(D20.roll() / 4.0));
 
-        console.log("System: " + system.star.description + ". Primary world: " + orbits.primaryWorldOrbit);
         if (orbits.primaryWorldOrbit > 1) {
             let idealBode = (system.gardenZoneIdealRadius - initialOrbit) / (Math.pow(BLAGG_CONSTANT, orbits.primaryWorldOrbit - 1));
 
             if (idealBode < 0.001 || system.gardenZoneIdealRadius < 0.05) {
-                console.log(">>>>>> Ideal bode is " + idealBode + " which doens't help. GZ =" + system.gardenZoneInnerRadius.toFixed(3) + " - " + system.gardenZoneOuterRadius.toFixed(3));
                 orbits.primaryWorldOrbit = 1;
                 initialOrbit = system.gardenZoneIdealRadius;
+
+                let orderOfMagnitude = Math.max(0, Math.floor(Math.log(system.gardenZoneIdealRadius) / Math.log(10)));
+                bodeConstant = D20.roll() / 10 * Math.pow(10, orderOfMagnitude);
             } else {
-                console.log("Ideal bode: " + idealBode + " seems pretty viable. GZ =" + system.gardenZoneInnerRadius.toFixed(3) + " - " + system.gardenZoneOuterRadius.toFixed(3));
                 bodeConstant = idealBode;
             }
         } else {
             initialOrbit = system.gardenZoneIdealRadius;
+            let orderOfMagnitude = Math.max(0, Math.round(Math.log(system.gardenZoneIdealRadius) / Math.log(10)));
+            bodeConstant = D20.roll() / 10 * Math.pow(10, orderOfMagnitude);
         }
 
         let bodeIndex = 0;
@@ -70,6 +72,12 @@ export class Orbits {
 
             orbits.orbits.push(Orbit.createStandardOrbit(i, orbitalRadius));
         }
+
+        if (system.companionStar != null && system.companionType === CompanionType.Distant) {
+            let orbitalRadius = this.determineRadius(bodeIndex + 2, initialOrbit, bodeConstant);
+            system.companionOrbitalRadius = orbitalRadius;
+        }
+
         return orbits;
     }
 

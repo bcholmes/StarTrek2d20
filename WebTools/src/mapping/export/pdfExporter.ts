@@ -111,6 +111,13 @@ export class PdfExporter {
                 system.companionType === CompanionType.Close ? "Close" : "Distant", font, light, 377, currentLine);
 
             currentLine += lineHeight;
+            if (system.companionOrbitalRadius != null) {
+                this.addLabelAndValue(page, "Orbital Radius:",
+                    system.companionOrbitalRadius.toFixed(2) + " AUs",
+                    font, light, 377, currentLine);
+                currentLine += lineHeight;
+            }
+
             this.addLabelAndValue(page, "Mass:",
                 system.companionStar.mass.toFixed(2) + " Sols", font, light, 377, currentLine);
 
@@ -427,6 +434,10 @@ export class PdfExporter {
             let z = s.sectorCoordinates.z / 20 * 0.6 + 0.4;
             let baseColour = s.star.spectralClass.colour;
             let colour = baseColour.blend(new Color(255, 255, 255), 1-z);
+            let borderColour = colour;
+            if (colour.isApproximatelyWhite) {
+                borderColour = Color.from("#666666").blend(new Color(255, 255, 255), 1-z);
+            }
 
             let r = Math.max(1, Math.sqrt(s.star.spectralClass.radius.midpoint * 35));
 
@@ -435,6 +446,10 @@ export class PdfExporter {
 
                 let baseColour2 = s.companionStar.spectralClass.colour;
                 let colour2 = baseColour2.blend(new Color(255, 255, 255), 1-z);
+                let borderColour2 = colour2;
+                if (colour2.isApproximatelyWhite) {
+                    borderColour2 = Color.from("#666666").blend(new Color(255, 255, 255), 1-z);
+                }
 
                 let r2 = Math.max(1, Math.sqrt(s.companionStar.spectralClass.radius.midpoint * 35));
 
@@ -445,14 +460,18 @@ export class PdfExporter {
                     x: this.mapCoordinateSpaceX(s.sectorCoordinates.x) - r1/2,
                     y: page.getHeight() - this.mapCoordinateSpaceY(s.sectorCoordinates.y) + r1/2,
                     size: r1,
-                    color: rgb(colour.red / 255.0, colour.green / 255.0, colour.blue / 255.0)
+                    color: rgb(colour.red / 255.0, colour.green / 255.0, colour.blue / 255.0),
+                    borderColor: rgb(borderColour.red / 255.0, borderColour.green / 255.0, borderColour.blue / 255.0),
+                    borderWidth: 0.4
                 });
 
                 page.drawCircle({
                     x: this.mapCoordinateSpaceX(s.sectorCoordinates.x) + r2/2,
                     y: page.getHeight() - this.mapCoordinateSpaceY(s.sectorCoordinates.y) - r2/2,
                     size: r2,
-                    color: rgb(colour2.red / 255.0, colour2.green / 255.0, colour2.blue / 255.0)
+                    color: rgb(colour2.red / 255.0, colour2.green / 255.0, colour2.blue / 255.0),
+                    borderColor: rgb(borderColour2.red / 255.0, borderColour2.green / 255.0, borderColour2.blue / 255.0),
+                    borderWidth: 0.4
                 });
 
             } else {
@@ -460,7 +479,9 @@ export class PdfExporter {
                     x: this.mapCoordinateSpaceX(s.sectorCoordinates.x),
                     y: page.getHeight() - this.mapCoordinateSpaceY(s.sectorCoordinates.y),
                     size: r,
-                    color: rgb(colour.red / 255.0, colour.green / 255.0, colour.blue / 255.0)
+                    color: rgb(colour.red / 255.0, colour.green / 255.0, colour.blue / 255.0),
+                    borderColor: rgb(borderColour.red / 255.0, borderColour.green / 255.0, borderColour.blue / 255.0),
+                    borderWidth: 0.4
                 });
             }
 
@@ -468,7 +489,7 @@ export class PdfExporter {
                 x: this.mapCoordinateSpaceX(s.sectorCoordinates.x),
                 y: page.getHeight() - this.mapCoordinateSpaceY(s.sectorCoordinates.y),
                 size: r + 3,
-                borderColor: rgb(colour.red / 255.0, colour.green / 255.0, colour.blue / 255.0),
+                borderColor: rgb(borderColour.red / 255.0, borderColour.green / 255.0, borderColour.blue / 255.0),
                 borderWidth: 0.75
             });
 

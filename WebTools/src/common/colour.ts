@@ -20,6 +20,18 @@ export class Color {
         return "#" + this.leftPad(this.red.toString(16)) + this.leftPad(this.green.toString(16)) + this.leftPad(this.blue.toString(16));
     }
 
+    get luminance() {
+        return (0.299 * this.red + 0.587 * this.green + 0.114 * this.blue)/255;
+    }
+
+    get isDark() {
+        return this.luminance <= 0.5;
+    }
+
+    get isApproximatelyWhite() {
+        return this.luminance > 0.92;
+    }
+
     private leftPad(h: string) {
         return ("00" + h).slice(-2);
     }

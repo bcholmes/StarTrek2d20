@@ -11,6 +11,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230113</b>
+                <ul>
+                    <li>More testing with the star system diagram made me aware of a couple of minor bugs in the sector creation rules.
+                        Those bugs should now be resolved.</li>
+                </ul>
                 <b>v1.230112</b>
                 <ul>
                     <li>Some improvements to the star system page.</li>

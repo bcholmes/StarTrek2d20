@@ -11,18 +11,9 @@ class LcarsDecorationLeftView extends React.Component<IPageProperties, {}> {
                 viewBox="0 0 120 450"
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg">
-            
+
             <g
                 id="layer1">
-                <rect
-                fill="#774466"
-                strokeWidth="1.94841"
-                stroke="none"
-                id="rect5334"
-                width="5.4200778"
-                height="0.49273437"
-                x="97.168266"
-                y="261.41177" />
                 <path
                 style={{fill: "#f89b24" }}
                 d="M 94.837756,24.999995 C 76.430736,24.812947 57.93341,43.792845 57.398426,58.44833 V 83.361911 H 72.529045 V 105.6478 H 85.969076 V 70.292913 C 85.301306,56.445472 99.124056,45.958737 110.35752,46.205128 V 24.999995 Z"

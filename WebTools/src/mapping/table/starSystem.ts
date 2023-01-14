@@ -11,6 +11,7 @@ export class StarSystem {
     public star: Star;
     public companionStar?: Star;
     public companionType?: CompanionType;
+    public companionOrbitalRadius?: number;
     public worlds: World[] = [];
     public sectorCoordinates: SectorCoordinates;
     public phenomenon: NotableSpatialPhenomenonModel;

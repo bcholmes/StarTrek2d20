@@ -1,11 +1,23 @@
 {
-  "version": "1.230112",
+  "version": "1.230113",
   "name": "startrek",
   "author": "Christoffer Lundberg",
   "contributors": [
     {
       "name": "BC Holmes",
       "url": "https://blog.bcholmes.org"
+    },
+    {
+      "name": "Felderburg",
+      "url": "https://forums.modiphius.com/u/felderburg/summary"
+    },
+    {
+      "name": "betatester",
+      "url": "https://forums.modiphius.com/u/betatester/summary"
+    },
+    {
+      "name": "MisterX",
+      "url": "https://forums.modiphius.com/u/misterx/summary"
     }
   ],
   "license": "ISC",

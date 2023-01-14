@@ -849,9 +849,13 @@ class SystemGeneration {
             break;
 
         case 20:
-            let subRoll = Math.ceil(D20.roll() / 5) * 10 * 40;
+            let subRoll = Math.ceil(D20.roll() / 5) * 10 + 40;
             result.axialTilt = Math.min(90, LuminosityTable.addNoiseToValue(D20.roll() / 2 + subRoll));
             break;
+        }
+
+        if (D20.roll() <= 10) {
+            result.axialTilt = -result.axialTilt;
         }
 
         return result;

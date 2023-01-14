@@ -52,7 +52,8 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
                     <div className="row row-cols-1 row-cols-md-2">
                         <NotablePhenomenonView phenomenon={this.props.starSystem ? this.props.starSystem.phenomenon : undefined} />
                         <StarView star={this.props.starSystem ? this.props.starSystem.star : undefined} title="Primary Star" />
-                        <StarView star={this.props.starSystem ? this.props.starSystem.companionStar : undefined} title="Companion Star" companionType={this.props.starSystem.companionType} />
+                        <StarView star={this.props.starSystem ? this.props.starSystem.companionStar : undefined} title="Companion Star"
+                            companionType={this.props.starSystem.companionType} orbitalRadius={this.props.starSystem.companionOrbitalRadius}/>
                     </div>
                 </div>
                 <div className="mt-5">
