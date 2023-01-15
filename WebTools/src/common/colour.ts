@@ -2,22 +2,30 @@ export class Color {
     red: number; // 0 - 255
     green: number;
     blue: number;
+    alpha: number; // 0 - 1
 
-    constructor(red: number, green: number, blue: number) {
+    constructor(red: number, green: number, blue: number, alpha: number = 1) {
         this.red = red;
         this.green = green;
         this.blue = blue;
+        this.alpha = alpha;
     }
 
     blend(color: Color, ratio: number) {
         return new Color(
             Math.round(this.red * (1-ratio) + color.red * ratio),
             Math.round(this.green * (1-ratio) + color.green * ratio),
-            Math.round(this.blue * (1-ratio) + color.blue * ratio));
+            Math.round(this.blue * (1-ratio) + color.blue * ratio),
+            Math.round(this.alpha * (1-ratio) + color.alpha * ratio));
     }
 
     asHex() {
-        return "#" + this.leftPad(this.red.toString(16)) + this.leftPad(this.green.toString(16)) + this.leftPad(this.blue.toString(16));
+        return "#" + this.leftPad(this.red.toString(16)) + this.leftPad(this.green.toString(16)) + this.leftPad(this.blue.toString(16))
+            + (this.alpha === 1 ? "" : this.leftPad((this.alpha * 255).toString(16)));
+    }
+
+    withAlpha(alpha: number) {
+        return new Color(this.red, this.green, this.blue, alpha);
     }
 
     get luminance() {

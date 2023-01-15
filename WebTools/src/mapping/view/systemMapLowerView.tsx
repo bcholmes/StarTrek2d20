@@ -21,22 +21,39 @@ class SystemMapLowerView extends React.Component<ISystemMapLowerViewProperties, 
 
         let star2 = null;
         let companionGradient = null;
+
         if (system.companionStar) {
             if (system.companionType === CompanionType.Close) {
                 let r2 = Math.max(2, Math.sqrt(system.companionStar?.spectralClass?.radius?.midpoint * 200));
+
+                const coronaR = r2 + 4;
+                const coronaRStop = r2 / coronaR;
+
                 star2 = system?.companionStar?.spectralClass?.isDwarf
                     ? (<g>
+                        <circle cx={35 + r} cy="110px" r={coronaR} fill="url(#companionStarCoronaRadialGradient)" />
                         <circle cx={35 + r} cy="110px" r={r2} fill="url(#companionStarRadialGradient)" stroke="black" strokeWidth={0.5} />
                         <text x={35 + r} y={110 + Math.max(r, r2) + 20} fontSize={14} fontFamily="lcars" fill="white" textAnchor="middle">{system.companionStar?.designation.toLocaleUpperCase()}</text>
                     </g>)
                     : (<g>
+                        <circle cx={35 + r} cy="110px" r={coronaR} fill="url(#companionStarCoronaRadialGradient)" />
                         <circle cx={35 + r} cy="110px" r={r2} fill="url(#companionStarRadialGradient)" stroke="black" strokeWidth={0.5} />
                         <text x={35 + r} y={110 + Math.max(r2, r) + 20} fontSize={16} fontFamily="lcars" fill="white" textAnchor="middle">{system.companionStar?.designation?.toLocaleUpperCase()}</text>
                         <text x={35 + r} y={110 + Math.max(r2, r) + 36} fontSize={16} fontFamily="lcars" fill="white" textAnchor="middle">{system.companionStar?.spectralClass?.colourDescription?.toLocaleUpperCase()}</text>
                     </g>)
-                companionGradient = (<radialGradient id="companionStarRadialGradient" xlinkHref="#companionStarLinearGradient"
-                cx={35+r-(0.4*r2)} cy={110-(0.4*r2)} fx={35+r-(0.4*r2)} fy={110-(0.4*r2)}  r={r2}
-                gradientUnits="userSpaceOnUse" />);
+                companionGradient = (<>
+                        <linearGradient id="companionStarCoronaLinearGradient">
+                            <stop stopColor={system.companionStar.spectralClass?.colour?.asHex()} offset={0} />
+                            <stop stopColor={system.companionStar.spectralClass?.colour?.asHex()} offset={coronaRStop.toFixed(2)} />
+                            <stop stopColor={system.companionStar.spectralClass?.colour?.withAlpha(0).asHex()} offset={1} />
+                        </linearGradient>
+                        <radialGradient id="companionStarRadialGradient" xlinkHref="#companionStarLinearGradient"
+                            cx={35+r-(0.4*r2)} cy={110-(0.4*r2)} fx={35+r-(0.4*r2)} fy={110-(0.4*r2)}  r={r2}
+                            gradientUnits="userSpaceOnUse" />
+                        <radialGradient id="companionStarCoronaRadialGradient" xlinkHref="#companionStarCoronaLinearGradient"
+                            cx={35 + r} cy={110} fx={35 + r} fy={110} r={coronaR}
+                            gradientUnits="userSpaceOnUse" />
+                    </>);
             }
         }
 
@@ -128,9 +145,17 @@ class SystemMapLowerView extends React.Component<ISystemMapLowerViewProperties, 
         const companionColour = system.companionStar ? system.companionStar.spectralClass.colour.blend(new Color(255, 255, 255), 0.5) : null;
         const darkerCompanionColour = system.companionStar ? system.companionStar.spectralClass.colour.blend(new Color(0, 0, 0), 0.5) : null;
 
+        const coronaR = r + 5;
+        const coronaRStop = r / coronaR;
+
         return (<div className="starSystemLowerView">
                 <svg viewBox="0 0 1110 230" xmlns="<http://www.w3.org/2000/svg>">
                     <defs>
+                        <linearGradient id="primaryStarCoronaLinearGradient">
+                            <stop stopColor={system.star.spectralClass?.colour?.asHex()} offset={0} />
+                            <stop stopColor={system.star.spectralClass?.colour?.asHex()} offset={coronaRStop.toFixed(2)} />
+                            <stop stopColor={system.star.spectralClass?.colour?.withAlpha(0).asHex()} offset={1} />
+                        </linearGradient>
                         <linearGradient id="primaryStarLinearGradient">
                             <stop stopColor={starColour.asHex()} offset={0} />
                             <stop stopColor={darkerStarColour.asHex()} offset={1} />
@@ -146,6 +171,9 @@ class SystemMapLowerView extends React.Component<ISystemMapLowerViewProperties, 
                         <radialGradient id="primaryStarRadialGradient" xlinkHref="#primaryStarLinearGradient"
                             cx={35-(0.4*r)} cy={110-(0.4*r)} fx={35-(0.4*r)} fy={110-(0.4*r)}  r={r}
                             gradientUnits="userSpaceOnUse" />
+                        <radialGradient id="primaryStarCoronaRadialGradient" xlinkHref="#primaryStarCoronaLinearGradient"
+                            cx={35} cy={110} fx={35} fy={110}  r={coronaR}
+                            gradientUnits="userSpaceOnUse" />
                         {companionGradient}
                         {worldGradients}
                     </defs>
@@ -153,7 +181,8 @@ class SystemMapLowerView extends React.Component<ISystemMapLowerViewProperties, 
                     <path d="m 1025,80 v 96.71484 c 0.2996,18.56303 -4.3922,22.90266 -19.0273,23.28516 H 975 v 30 h 89.5605 c 32.0849,0.3825 45.7564,-14.25583 45.4395,-45 V 80 Z" fill="#F9AC76" />
                     <path d="m 1025,30 v 40 h 85 V 30 Z" fill="#9999FF" />
                     <path d="M 15 200 A 15 15 0 0 0 0 215 A 15 15 0 0 0 15 230 L 15 200 z " fill="#F9AC76" />
-                    <circle cx="35px" cy="110px" r={r} fill="url(#primaryStarRadialGradient)" />
+                    <circle cx="35px" cy="110px" r={coronaR} fill="url(#primaryStarCoronaRadialGradient)" />
+                    <circle cx="35px" cy="110px" r={r} fill="url(#primaryStarRadialGradient)" stroke="black" strokeWidth={0.5} />
                     {system?.star?.spectralClass?.isDwarf
                     ? (<text x="35px" y={110 - r - 12} fontSize={14} fontFamily="lcars" fill="white" textAnchor="middle">{system.star?.designation.toLocaleUpperCase()}</text>)
                     : (<>

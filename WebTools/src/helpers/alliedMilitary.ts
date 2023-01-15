@@ -1,6 +1,6 @@
 import { Era } from "./eras";
 import { Species } from "./speciesEnum";
-import i18next, { t } from "i18next";
+import i18next from "i18next";
 import { makeKey } from "../common/translationKey";
 
 export enum AlliedMilitaryType {
@@ -28,7 +28,7 @@ export class AlliedMilitary {
     }
 
     get localizedName() {
-        return t(makeKey('AlliedMilitaryType.name.', AlliedMilitaryType[this.type]));
+        return i18next.t(makeKey('AlliedMilitaryType.name.', AlliedMilitaryType[this.type]));
     }
 }
 
