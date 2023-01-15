@@ -68,7 +68,7 @@ SupportingCharacter.whatPurpose,"Determine what purpose the Supporting Character
 SupportingCharacter.speciesAndAttributes,Species & Attributes,,,Espèce et Attributs
 SupportingCharacter.speciesAndAttributesInstruction,Assign Attribute scores and choose the character's species. The chosen species will affect the final Attribute scores. Select two different values to swap them.,,,Assignez les scores d'Attributs et choisissez l'espèce du personnage. L'espèce choisie influera sur les valeurs finales des attributs.
 SupportingCharacter.disciplineInstruction,Assign the character's Disciplines. The highest value should match up with the department/purpose of the character. Select two different values to swap them.,,,Assignez les Disciplines de votre personnage. La plus haute valeur devrait corresponddre au département/rôle de votre personnage
-SupportingCharacter.focusInstruction,Choose three Focuses for the character. At least one should reflect the department/purpose of the character.,,,Choisissez trois Spécialités pour votre personnage. Au moins un devrait représenter le département rôle de votre personnage.
+SupportingCharacter.focusInstruction,Choose three Focuses for the character. At least one should reflect the department/purpose of the character.,,,Choisissez trois Spécialités pour votre personnage. Au moins un devrait représenter le département/rôle de votre personnage.
 SupportingCharacter.nameAndRank,Name & Rank,,,Nom & Rang
 SupportingCharacter.nameAndRankInstruction,Give the character an appropriate name and rank. Supporting Characters should never have a rank above Lieutenant and may often be enlisted personnel rather than officers.,,,Donnez au personnage un nom et un grade approprié. Les personnages secondaires ne peuvent pas avoir un grade supérieur à Lieutenant et sont très sonvant du personnel enrôlé plutôt que des officiers.
 ToolSelection.instruction,What do you want to create?,Was soll erstellt werden?,¿Qué quieres crear?,Que voulez vous créer?
@@ -111,9 +111,9 @@ Construct.other.job,Job,,,Travail
 Construct.other.missionProfile,Mission Profile,Missionsprofil,Perfil de la misión,Profil de mission
 Construct.other.name,Name,Name,Nombre,Nom
 Construct.other.pronouns,Pronouns,Pronomen,Pronombres,Pronoms
-Construct.other.power,Power,Energie,Poder,Puissance
-Construct.other.purpose,Purpose,,,Energie
-Construct.other.rank,Rank,Rang,Rango,Rang
+Construct.other.power,Power,Energie,Poder,Energie
+Construct.other.purpose,Purpose,,,Rôle
+Construct.other.rank,Rank,Rang,Rango,Grade
 Construct.other.refits,Refits,Nachrüstungen,Refits,Mises à jour
 Construct.other.resistance,Resistance,Widerstand,Resistencia,Résistance
 Construct.other.reprimands,Reprimands,,,Réprimandes
@@ -238,7 +238,7 @@ GovernmentType.name.tellarite,Tellarite,,,Tellarite
 GovernmentType.name.vulcan,Vulcan,,,Vulcain
 GovernmentType.name.other,Other,,,Autre
 AlliedMilitaryType.name.maco,MACO,,,MACO
-AlliedMilitaryType.name.andorianImperialGuard,Andorian Imperial Guard,,,Garde Impériale Romulienne 
+AlliedMilitaryType.name.andorianImperialGuard,Andorian Imperial Guard,,,Garde Impériale Andorienne 
 AlliedMilitaryType.name.vulcanHighCommand,Vulcan High Command,,,Haut Commandement Vulcain
 AlliedMilitaryType.name.klingonDefenceForce,Klingon Defense Force,,,Forces de Défense Klingones
 AlliedMilitaryType.name.romulanStarEmpire,Romulan Star Empire,,,Empire Stellaire Romulien
