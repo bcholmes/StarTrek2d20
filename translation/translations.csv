@@ -32,11 +32,11 @@ CustomSpeciesDetails.speciesName,Name,Name,,Nom
 CustomSpeciesDetails.instruction,What's the name of this species?,Wie lautet der Name dieser Spezis?,,Quel est le nom de cette espèce?
 CustomSpeciesDetails.speciesTrait,Each species gets a species-specific trait that may provide additional benefits in special circumstances.,"Jede Spezies erhält ein bestimmtest Talent, das in bestimmten Situationen zusätzliche Vorteile verleihen kann.",,
 CustomSpeciesDetails.speciesNameWarning,Please provide a name for this species.,Bitte einen Namen für diese Spezies angeben.,,Merci de fournir un nom pour cette espèce
-CharacterTypePage.whatType,What type of character is this?,,,
-CharacterTypePage.whatGovernment,What government does this character represent?,,,
-CharacterTypePage.otherGovernmentName,What's the name of this government?,,,
-CharacterTypePage.whatMilitary,What military does this character represent?,,,
-CharacterTypePage.otherMilitaryName,What's the name of this military?,,,
+CharacterTypePage.whatType,What type of character is this?,,,Quel type de personnage?
+CharacterTypePage.whatGovernment,What government does this character represent?,,,Quel gouvernement ce personnage représente?
+CharacterTypePage.otherGovernmentName,What's the name of this government?,,,Quel est le nom du gouvernement?
+CharacterTypePage.whatMilitary,What military does this character represent?,,,Quelle armée ce personnage représente?
+CharacterTypePage.otherMilitaryName,What's the name of this military?,,,Quel est le nom de l'armée?
 SpeciesDetails.options,Species Options,Spezies Optionen,,Option d'espèce
 SpeciesDetails.selectThree,(Select three),(drei wählen),,(Choisir trois)
 SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),Spezis-übergreifende Talente erlauben (SL-Entscheid),,Autoriser les talents inter-espèces (Decision du GM)
@@ -84,11 +84,11 @@ Common.button.exportPdf,Export to PDF,Als PDF exportieren,Exportar a PDF,Exporte
 Common.button.ok,OK,OK,De acuerdo,D'accord
 Common.button.add,Add,Hinzufügen,Agregar,Ajouter
 Common.button.cancel,Cancel,Abbrechen,Cancelar,Annuler
-Common.button.create,Create,,,
+Common.button.create,Create,,,Créer
 Common.button.next,Next,Weiter,Próximo,Prochain
 Common.button.view,View,Anzeigen,Vista,Vue
 Common.text.none,None,,,Aucun
-Common.select.choose,Choose...,,,
+Common.select.choose,Choose...,,,Choisir
 Construct.other.assignment,Assignment,Zuweisung,Asignación,Mission
 Construct.other.attributes,Attributes,Attribute,Atributos,Attributs
 Construct.other.career,Career,,,Carrière
@@ -116,8 +116,8 @@ Construct.other.purpose,Purpose,,,Energie
 Construct.other.rank,Rank,Rang,Rango,Rang
 Construct.other.refits,Refits,Nachrüstungen,Refits,Mises à jour
 Construct.other.resistance,Resistance,Widerstand,Resistencia,Résistance
-Construct.other.reprimands,Reprimands,,,
-Construct.other.reputation,Reputation,,,
+Construct.other.reprimands,Reprimands,,,Réprimandes
+Construct.other.reputation,Reputation,,,Réputation
 Construct.other.scale,Scale,Schiffsgröeße,Escama,Echelle
 Construct.other.serviceDate,Service Date,Indienststellung,Fecha de servicio,Date de mise en service
 Construct.other.shields,Shields,Schilde,Escudos,Boucliers
@@ -220,28 +220,28 @@ Source.book.utopiaPlanitia,Utopia Planitia,,,Utopia Planitia
 Era.name.enterprise,Enterprise (22nd century),,,Enterprise (22ème Siècle)
 Era.name.originalSeries,Original Series (23rd century),,,Serie Originale (23ème Siècle)
 Era.name.nextGeneration,Next Generation (24th century),,,Nouvelle Génération (24ème Siècle)
-CharacterType.name.starfleet,Starfleet,,,
-CharacterType.name.klingonWarrior,Klingon Defense Force,,,
-CharacterType.name.civilian,Civilian,,,
-CharacterType.name.alliedMilitary,Allied Military,,,
-CharacterType.name.ambassadorDiplomat,Ambassador / Diplomat,,,
-CharacterType.name.cadet,Cadet,,,
-CharacterType.name.child,Child,,,
-CharacterType.name.other,Other,,,
-GovernmentType.name.andorian,Andorian,,,
-GovernmentType.name.bajoran,Bajoran,,,
-GovernmentType.name.cardassian,Cardassian,,,
-GovernmentType.name.federation,Federation,,,
-GovernmentType.name.klingon,Klingon,,,
-GovernmentType.name.romulan,Romulan,,,
-GovernmentType.name.tellarite,Tellarite,,,
-GovernmentType.name.vulcan,Vulcan,,,
-GovernmentType.name.other,Other,,,
-AlliedMilitaryType.name.maco,MACO,,,
-AlliedMilitaryType.name.andorianImperialGuard,Andorian Imperial Guard,,,
-AlliedMilitaryType.name.vulcanHighCommand,Vulcan High Command,,,
-AlliedMilitaryType.name.klingonDefenceForce,Klingon Defense Force,,,
-AlliedMilitaryType.name.romulanStarEmpire,Romulan Star Empire,,,
-AlliedMilitaryType.name.bajoranMilitia,Bajoran Militia,,,
-AlliedMilitaryType.name.cardassianUnion,Cardassian Union,,,
-AlliedMilitaryType.name.other,Other,,,
+CharacterType.name.starfleet,Starfleet,,,Starfleet
+CharacterType.name.klingonWarrior,Klingon Defense Force,,,Forces de Défense Klingones
+CharacterType.name.civilian,Civilian,,,Civil
+CharacterType.name.alliedMilitary,Allied Military,,,Armée Alliée
+CharacterType.name.ambassadorDiplomat,Ambassador / Diplomat,,,Ambassadeur/Diplomate
+CharacterType.name.cadet,Cadet,,,Cadet
+CharacterType.name.child,Child,,,Enfant
+CharacterType.name.other,Other,,,Autre
+GovernmentType.name.andorian,Andorian,,,Andorien
+GovernmentType.name.bajoran,Bajoran,,,Bajoran
+GovernmentType.name.cardassian,Cardassian,,,Cardassien
+GovernmentType.name.federation,Federation,,,Fédération
+GovernmentType.name.klingon,Klingon,,,Klingon
+GovernmentType.name.romulan,Romulan,,,Romulien
+GovernmentType.name.tellarite,Tellarite,,,Tellarite
+GovernmentType.name.vulcan,Vulcan,,,Vulcain
+GovernmentType.name.other,Other,,,Autre
+AlliedMilitaryType.name.maco,MACO,,,MACO
+AlliedMilitaryType.name.andorianImperialGuard,Andorian Imperial Guard,,,Garde Impériale Romulienne 
+AlliedMilitaryType.name.vulcanHighCommand,Vulcan High Command,,,Haut Commandement Vulcain
+AlliedMilitaryType.name.klingonDefenceForce,Klingon Defense Force,,,Forces de Défense Klingones
+AlliedMilitaryType.name.romulanStarEmpire,Romulan Star Empire,,,Empire Stellaire Romulien
+AlliedMilitaryType.name.bajoranMilitia,Bajoran Militia,,,Forces de Sécurité Bajoranes
+AlliedMilitaryType.name.cardassianUnion,Cardassian Union,,,Union Cardassienne
+AlliedMilitaryType.name.other,Other,,,Autre

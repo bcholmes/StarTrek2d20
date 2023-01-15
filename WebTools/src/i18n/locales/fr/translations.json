@@ -40,6 +40,12 @@
     "CustomSpeciesDetails.instruction": "Quel est le nom de cette espèce?",
     "CustomSpeciesDetails.speciesNameWarning": "Merci de fournir un nom pour cette espèce",
 
+    "CharacterTypePage.whatType": "Quel type de personnage?",
+    "CharacterTypePage.whatGovernment": "Quel gouvernement ce personnage représente?",
+    "CharacterTypePage.otherGovernmentName": "Quel est le nom du gouvernement?",
+    "CharacterTypePage.whatMilitary": "Quelle armée ce personnage représente?",
+    "CharacterTypePage.otherMilitaryName": "Quel est le nom de l'armée?",
+
     "SpeciesDetails.options": "Option d'espèce",
     "SpeciesDetails.selectThree": "(Choisir trois)",
     "SpeciesDetails.allowCrossSpecies": "Autoriser les talents inter-espèces (Decision du GM)",
@@ -89,10 +95,13 @@
     "Common.button.ok": "D'accord",
     "Common.button.add": "Ajouter",
     "Common.button.cancel": "Annuler",
+    "Common.button.create": "Créer",
     "Common.button.next": "Prochain",
     "Common.button.view": "Vue",
 
     "Common.text.none": "Aucun",
+
+    "Common.select.choose": "Choisir",
 
     "Construct.other.assignment": "Mission",
     "Construct.other.attributes": "Attributs",
@@ -121,6 +130,8 @@
     "Construct.other.rank": "Rang",
     "Construct.other.refits": "Mises à jour",
     "Construct.other.resistance": "Résistance",
+    "Construct.other.reprimands": "Réprimandes",
+    "Construct.other.reputation": "Réputation",
     "Construct.other.scale": "Echelle",
     "Construct.other.serviceDate": "Date de mise en service",
     "Construct.other.shields": "Boucliers",
@@ -231,5 +242,33 @@
 
     "Era.name.enterprise": "Enterprise (22ème Siècle)",
     "Era.name.originalSeries": "Serie Originale (23ème Siècle)",
-    "Era.name.nextGeneration": "Nouvelle Génération (24ème Siècle)"
+    "Era.name.nextGeneration": "Nouvelle Génération (24ème Siècle)",
+
+    "CharacterType.name.starfleet": "Starfleet",
+    "CharacterType.name.klingonWarrior": "Forces de Défense Klingones",
+    "CharacterType.name.civilian": "Civil",
+    "CharacterType.name.alliedMilitary": "Armée Alliée",
+    "CharacterType.name.ambassadorDiplomat": "Ambassadeur/Diplomate",
+    "CharacterType.name.cadet": "Cadet",
+    "CharacterType.name.child": "Enfant",
+    "CharacterType.name.other": "Autre",
+
+    "GovernmentType.name.andorian": "Andorien",
+    "GovernmentType.name.bajoran": "Bajoran",
+    "GovernmentType.name.cardassian": "Cardassien",
+    "GovernmentType.name.federation": "Fédération",
+    "GovernmentType.name.klingon": "Klingon",
+    "GovernmentType.name.romulan": "Romulien",
+    "GovernmentType.name.tellarite": "Tellarite",
+    "GovernmentType.name.vulcan": "Vulcain",
+    "GovernmentType.name.other": "Autre",
+
+    "AlliedMilitaryType.name.maco": "MACO",
+    "AlliedMilitaryType.name.andorianImperialGuard": "Garde Impériale Romulienne ",
+    "AlliedMilitaryType.name.vulcanHighCommand": "Haut Commandement Vulcain",
+    "AlliedMilitaryType.name.klingonDefenceForce": "Forces de Défense Klingones",
+    "AlliedMilitaryType.name.romulanStarEmpire": "Empire Stellaire Romulien",
+    "AlliedMilitaryType.name.bajoranMilitia": "Forces de Sécurité Bajoranes",
+    "AlliedMilitaryType.name.cardassianUnion": "Union Cardassienne",
+    "AlliedMilitaryType.name.other": "Autre"
 }
