@@ -24,7 +24,7 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
             profileButton.style.display = "";
         }
 
-        character.saveStep(PageIdentity.Era);
+        character.saveMemento(PageIdentity.Era);
     }
 
     renderSources() {

@@ -107,8 +107,10 @@ export class Character extends Construct {
     public static ABSOLUTE_MAX_ATTRIBUTE = 12;
 
     private _attributeInitialValue: number = 7;
-    private _steps: Memento[];
+    private _mementos: Memento[];
 
+    public reputation = 10;
+    public reprimands = 0;
     public attributes: CharacterAttribute[] = [];
     public skills: CharacterSkill[] = [];
     public traits: string[];
@@ -156,7 +158,7 @@ export class Character extends Construct {
             this.skills.push(new CharacterSkill(i, 1, 0));
         }
 
-        this._steps = [];
+        this._mementos = [];
         this.traits = [];
         this.focuses = [];
         this.talents = {};
@@ -165,8 +167,8 @@ export class Character extends Construct {
         this.age = AgeHelper.getAdultAge();
     }
 
-    get steps() {
-        return this._steps;
+    get mementos() {
+        return this._mementos;
     }
 
     get stress() {
@@ -267,6 +269,10 @@ export class Character extends Construct {
         return result;
     }
 
+    get resistance() {
+        return this.calculateResistance();
+    }
+
     calculateResistance() {
         let result = 0;
         if (this.isKlingon()) {
@@ -287,18 +293,18 @@ export class Character extends Construct {
         return result;
     }
 
-    saveStep(page: number) {
-        if (!this._steps.some(s => s.page === page)) {
+    saveMemento(page: number) {
+        if (!this._mementos.some(s => s.page === page)) {
             const copy = this.copy();
-            this._steps.push(new Memento(page, copy));
+            this._mementos.push(new Memento(page, copy));
         }
     }
 
     goToStep(page: number) {
-        for (var i = this._steps.length - 1; i >= 0; i--) {
-            if (this._steps[i].page === page) {
-                character = this._steps[i].character;
-                character.saveStep(page);
+        for (let i = this._mementos.length - 1; i >= 0; i--) {
+            if (this._mementos[i].page === page) {
+                character = this._mementos[i].character;
+                character.saveMemento(page);
                 break;
             }
         }
@@ -425,7 +431,7 @@ export class Character extends Construct {
     isKlingon() {
         return this.type === CharacterType.KlingonWarrior ||
             (this.type === CharacterType.AlliedMilitary && this.typeDetails
-                && (this.typeDetails as AlliedMilitaryDetails).alliedMilitary.type === AlliedMilitaryType.KLINGON_DEFENCE_FORCE);
+                && (this.typeDetails as AlliedMilitaryDetails).alliedMilitary.type === AlliedMilitaryType.KlingonDefenceForce);
     }
 
     hasMaxedAttribute() {
@@ -464,8 +470,8 @@ export class Character extends Construct {
 
         character.type = this.type;
         character.typeDetails = this.typeDetails;
-        this._steps.forEach(s => {
-            character.steps.push(new Memento(s.page, s.character));
+        this._mementos.forEach(s => {
+            character._mementos.push(new Memento(s.page, s.character));
         });
         this.attributes.forEach(a => {
             character.attributes[a.attribute].attribute = a.attribute;
@@ -539,9 +545,10 @@ export class Character extends Construct {
     }
 
     public static isSpeciesListLimited(character) {
-        return character.type === CharacterType.KlingonWarrior || (character.type === CharacterType.AlliedMilitary
-            && character.typeDetails != null && character.typeDetails instanceof AlliedMilitaryDetails
-            && (character.typeDetails as AlliedMilitaryDetails).alliedMilitary.species.length > 0);
+        return character.type === CharacterType.KlingonWarrior ||
+            (character.type === CharacterType.AlliedMilitary
+                && character.typeDetails != null && character.typeDetails instanceof AlliedMilitaryDetails
+                && (character.typeDetails as AlliedMilitaryDetails).alliedMilitary?.species?.length > 0);
     }
 }
 

@@ -41,6 +41,12 @@
     "CustomSpeciesDetails.speciesTrait": "Each species gets a species-specific trait that may provide additional benefits in special circumstances.",
     "CustomSpeciesDetails.speciesNameWarning": "Please provide a name for this species.",
 
+    "CharacterTypePage.whatType": "What type of character is this?",
+    "CharacterTypePage.whatGovernment": "What government does this character represent?",
+    "CharacterTypePage.otherGovernmentName": "What's the name of this government?",
+    "CharacterTypePage.whatMilitary": "What military does this character represent?",
+    "CharacterTypePage.otherMilitaryName": "What's the name of this military?",
+
     "SpeciesDetails.options": "Species Options",
     "SpeciesDetails.selectThree": "(Select three)",
     "SpeciesDetails.allowCrossSpecies": "Allow cross-species talents (GM's decision)",
@@ -90,10 +96,13 @@
     "Common.button.ok": "OK",
     "Common.button.add": "Add",
     "Common.button.cancel": "Cancel",
+    "Common.button.create": "Create",
     "Common.button.next": "Next",
     "Common.button.view": "View",
 
     "Common.text.none": "None",
+
+    "Common.select.choose": "Choose...",
 
     "Construct.other.assignment": "Assignment",
     "Construct.other.attributes": "Attributes",
@@ -122,6 +131,8 @@
     "Construct.other.rank": "Rank",
     "Construct.other.refits": "Refits",
     "Construct.other.resistance": "Resistance",
+    "Construct.other.reprimands": "Reprimands",
+    "Construct.other.reputation": "Reputation",
     "Construct.other.scale": "Scale",
     "Construct.other.serviceDate": "Service Date",
     "Construct.other.shields": "Shields",
@@ -232,5 +243,33 @@
 
     "Era.name.enterprise": "Enterprise (22nd century)",
     "Era.name.originalSeries": "Original Series (23rd century)",
-    "Era.name.nextGeneration": "Next Generation (24th century)"
+    "Era.name.nextGeneration": "Next Generation (24th century)",
+
+    "CharacterType.name.starfleet": "Starfleet",
+    "CharacterType.name.klingonWarrior": "Klingon Defense Force",
+    "CharacterType.name.civilian": "Civilian",
+    "CharacterType.name.alliedMilitary": "Allied Military",
+    "CharacterType.name.ambassadorDiplomat": "Ambassador / Diplomat",
+    "CharacterType.name.cadet": "Cadet",
+    "CharacterType.name.child": "Child",
+    "CharacterType.name.other": "Other",
+
+    "GovernmentType.name.andorian": "Andorian",
+    "GovernmentType.name.bajoran": "Bajoran",
+    "GovernmentType.name.cardassian": "Cardassian",
+    "GovernmentType.name.federation": "Federation",
+    "GovernmentType.name.klingon": "Klingon",
+    "GovernmentType.name.romulan": "Romulan",
+    "GovernmentType.name.tellarite": "Tellarite",
+    "GovernmentType.name.vulcan": "Vulcan",
+    "GovernmentType.name.other": "Other",
+
+    "AlliedMilitaryType.name.maco": "MACO",
+    "AlliedMilitaryType.name.andorianImperialGuard": "Andorian Imperial Guard",
+    "AlliedMilitaryType.name.vulcanHighCommand": "Vulcan High Command",
+    "AlliedMilitaryType.name.klingonDefenceForce": "Klingon Defense Force",
+    "AlliedMilitaryType.name.romulanStarEmpire": "Romulan Star Empire",
+    "AlliedMilitaryType.name.bajoranMilitia": "Bajoran Militia",
+    "AlliedMilitaryType.name.cardassianUnion": "Cardassian Union",
+    "AlliedMilitaryType.name.other": "Other"
 }

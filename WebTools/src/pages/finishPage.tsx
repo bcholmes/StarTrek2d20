@@ -291,7 +291,7 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
         if (character.isCivilian() || character.age.isChild()) {
             return null;
         } else if (character.type === CharacterType.AlliedMilitary && character.typeDetails
-            && (character.typeDetails as AlliedMilitaryDetails).alliedMilitary.type === AlliedMilitaryType.OTHER) {
+            && (character.typeDetails as AlliedMilitaryDetails).alliedMilitary.type === AlliedMilitaryType.Other) {
 
                 return (<div>
                         <Header level={2}>{t('Construct.other.rank')}</Header>

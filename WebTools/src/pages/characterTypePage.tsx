@@ -12,6 +12,7 @@ import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcr
 import store from '../state/store';
 import { hasSource } from '../state/contextFunctions';
 import { Header } from '../components/header';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 interface ICharacterTypePageState {
     type: CharacterType,
@@ -20,7 +21,7 @@ interface ICharacterTypePageState {
     otherName: string
 }
 
-export class CharacterTypePage extends React.Component<{}, ICharacterTypePageState> {
+class CharacterTypePage extends React.Component<WithTranslation, ICharacterTypePageState> {
 
     constructor(props) {
         super(props);
@@ -31,16 +32,17 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
     }
 
     renderAlliedMilitaryList() {
+        const { t } = this.props;
         if (this.state.type === CharacterType.AlliedMilitary) {
 
             const types = AllyHelper.selectOptions(store.getState().context.era, !hasSource(Source.KlingonCore)).map(t => {
-                return (<option value={t.type} key={'type-' + t.type}>{t.name}</option>);
+                return (<option value={t.type} key={'type-' + t.type}>{t.localizedName}</option>);
             });
 
-            const other = this.state.alliedMilitary === AlliedMilitaryType.OTHER
+            const other = this.state.alliedMilitary === AlliedMilitaryType.Other
                 ? (<>
                     <p className="mt-4">
-                        What's the name of this military?
+                        {t('CharacterTypePage.otherMilitaryName')}
                     </p>
                     <input value={this.state.otherName} onChange={(e) => {
                         let value = e.target.value;
@@ -51,10 +53,10 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
 
             return (<>
                     <p className="mt-4">
-                        What military does this character represent?
+                        {t('CharacterTypePage.whatMilitary')}
                     </p>
                     <select onChange={(e) => this.selectAlliedMilitaryType(e.target.value)} value={this.state.alliedMilitary}>
-                        <option>Choose...</option>
+                        <option>{t('Common.select.choose')}</option>
                         {types}
                     </select>
                     {other}
@@ -65,16 +67,17 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
     }
 
     renderGovernmentsList() {
+        const { t } = this.props;
         if (this.state.type === CharacterType.AmbassadorDiplomat) {
 
             const types = Governments.selectOptions(store.getState().context.era).map(t => {
-                return (<option value={t.type} key={'gov-' + t.type}>{t.name}</option>);
+                return (<option value={t.type} key={'gov-' + t.type}>{t.localizedName}</option>);
             });
 
             const other = this.state.government === GovernmentType.OTHER
                 ? (<>
                     <p className="mt-4">
-                        What's the name of this government?
+                        {t('CharacterTypePage.otherGovernmentName')}
                     </p>
                     <input value={this.state.otherName} onChange={(e) => {
                         let value = e.target.value;
@@ -85,10 +88,10 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
 
             return (<>
                     <p className="mt-4">
-                        What government does this character represent?
+                        {t('CharacterTypePage.whatGovernment')}
                     </p>
                     <select onChange={(e) => this.selectGovernmentType(e.target.value)} value={this.state.government}>
-                        <option>Choose...</option>
+                        <option>{t('Common.select.choose')}</option>
                         {types}
                     </select>
                     {other}
@@ -100,18 +103,19 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
 
 
     render() {
+        const { t } = this.props;
         const alliedMilitary = this.renderAlliedMilitaryList();
         const governments = this.renderGovernmentsList();
 
         const types = CharacterTypeModel.getAllTypesExceptOther(store.getState().context.sources).map(t => {
-            return (<option value={t.type} key={'type-' + t.type}>{t.name}</option>);
+            return (<option value={t.type} key={'type-' + t.type}>{t.localizedName}</option>);
         });
 
         return (
             <div className="page container ml-0">
                 <CharacterCreationBreadcrumbs />
-                <Header level={1}>Character Type</Header>
-                <p>What type of character is this?</p>
+                <Header level={1}>{t('Page.title.characterType')}</Header>
+                <p>{t('CharacterTypePage.whatType')}</p>
                 <select onChange={(e) => this.selectType(e.target.value)} value={this.state.type}>
                     {types}
                 </select>
@@ -119,7 +123,7 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
                 {alliedMilitary}
                 {governments}
 
-                <Button onClick={() => this.startWorkflow()} text='CREATE' />
+                <Button onClick={() => this.startWorkflow()}>{t('Common.button.create')}</Button>
             </div>
         );
     }
@@ -163,3 +167,5 @@ export class CharacterTypePage extends React.Component<{}, ICharacterTypePageSta
         Navigation.navigateToPage(page);
     }
 }
+
+export default withTranslation()(CharacterTypePage);

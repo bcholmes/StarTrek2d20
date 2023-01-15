@@ -11,6 +11,7 @@ import { BaseCharacterView } from "./baseCharacterView";
 import { getNameAndShortRankOf } from "../helpers/ranks";
 import { Construct } from "../common/construct";
 import { marshaller } from "../helpers/marshaller";
+import { StatView } from "../components/StatView";
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -72,6 +73,18 @@ class MainCharacterView extends BaseCharacterView {
                     </div>)
                 : null}
        </div>);
+    }
+
+    renderStats() {
+        const {character, t} = this.props;
+        return (<>
+            {super.renderStats()}
+            <div className="row row-cols-1 row-cols-md-3 mt-3">
+                <StatView name={t('Construct.other.resistance')} value={character.resistance} className="col mb-1" colourClass="pink" showZero={true}/>
+                <StatView name={t('Construct.other.reputation')} value={character.reputation} className="col mb-1" colourClass="pink" showZero={true}/>
+                <StatView name={t('Construct.other.reprimands')} value={character.reprimands} className="col mb-1" colourClass="red" showZero={true}/>
+            </div>
+        </>)
     }
 
     renderTopFields() {

@@ -21,7 +21,7 @@ import TalentsOverviewPage from './talentsOverviewPage';
 import SelectionPage from './selectionPage';
 import { BorgImplantSelection } from './borgImplantSelection';
 import { PageIdentity } from './pageIdentity';
-import { CharacterTypePage } from './characterTypePage';
+import CharacterTypePage from './characterTypePage';
 import { SimpleCareerPage } from './simpleCareerPage';
 import { ChildEducationPage } from './childEducationPage';
 import { ChildEducationDetailsPage } from './childEducationDetailsPage';

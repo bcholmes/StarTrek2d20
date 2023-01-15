@@ -36,8 +36,8 @@ class History extends React.Component<IHistoryProperties, {}> {
 
 
     renderCharacterHistory() {
-        return character.steps.length > 0
-            ? character.steps.map((step, i) => {
+        return character.mementos.length > 0
+            ? character.mementos.map((step, i) => {
                 const name = this.getPageName(step.page);
                 if (name.length > 0) {
                     return (

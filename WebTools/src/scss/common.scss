@@ -128,6 +128,10 @@ h5 {
     background-color: #CC6666;
     color: white;
 }
+.stat-name.pink, .stat-value.pink {
+    background-color: $lcars-dull-pink;
+    color: white;
+}
 
 .stat-value {
     display: inline-block;

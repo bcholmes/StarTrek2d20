@@ -1,4 +1,6 @@
 import { Era } from "./eras";
+import i18next from "i18next";
+import { makeKey } from "../common/translationKey";
 
 export enum GovernmentType {
     FEDERATION,
@@ -21,6 +23,10 @@ export class Government {
         this.name = name;
         this.type = type;
         this.eras = era;
+    }
+
+    get localizedName() {
+        return i18next.t(makeKey('GovernmentType.name.', GovernmentType[this.type]));
     }
 }
 

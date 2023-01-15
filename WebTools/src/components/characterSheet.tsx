@@ -131,7 +131,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
         return (
             <div id="character-sheet">
                 <div id="character-sheet" className={this.props.showProfile ? 'sheet-visible' : 'sheet-hidden'}>
-                    <div className="sheet-bg" id="sheet-bg" style={{ display: this.props.showProfile ? '' : i18n.t('Common.text.none') }} onClick={() => this.props.close()}></div>
+                    <div className="sheet-bg" id="sheet-bg" style={{ display: this.props.showProfile ? '' : "none" }} onClick={() => this.props.close()}></div>
                     <div className={containerClass} id="sheet-container">
                         <div className="sheet-panel">
                             <table className="sheet-section">

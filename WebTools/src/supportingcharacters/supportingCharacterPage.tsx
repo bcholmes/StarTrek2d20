@@ -262,7 +262,7 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
     }
 
     private getTypes() {
-        return CharacterTypeModel.getAllTypes().map((t, i) => t.name);
+        return CharacterTypeModel.getAllTypes().map((t, i) => t.localizedName);
     }
     private getRanks() {
         var result = [];

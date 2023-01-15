@@ -242,7 +242,7 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Experienced, Career.Veteran]),
                 new NotRolesPrerequisite([Role.Admiral]),
-                new NotPrerequisite(new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.CARDASSIAN_UNION))
+                new NotPrerequisite(new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco, AlliedMilitaryType.CardassianUnion))
             ],
             "Cmdr.",
             1),
@@ -269,8 +269,8 @@ export class RanksHelper {
                         new CareersPrerequisite([Career.Experienced])
                     ),
                     new TypePrerequisite(CharacterType.KlingonWarrior),
-                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.KLINGON_DEFENCE_FORCE, AlliedMilitaryType.ROMULAN_STAR_EMPIRE,
-                        AlliedMilitaryType.ANDORIAN_IMPERIAL_GUARD, AlliedMilitaryType.VULCAN_HIGH_COMMAND, AlliedMilitaryType.BAJORAN_MILITIA)),
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.KlingonDefenceForce, AlliedMilitaryType.RomulanStarEmpire,
+                        AlliedMilitaryType.AndorianImperialGuard, AlliedMilitaryType.VulcanHighCommand, AlliedMilitaryType.BajoranMilitia)),
             ],
             "Lt."),
         new RankModel(
@@ -292,7 +292,7 @@ export class RanksHelper {
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
                 new RolesPrerequisite([Role.CommunicationsOfficer, Role.FlightController, Role.OperationsManager, Role.ScienceOfficer, Role.ShipsCounselor, Role.WeaponsOfficer]),
                 new AnyOfPrerequisite(new TypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior),
-                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.KLINGON_DEFENCE_FORCE)),
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.KlingonDefenceForce)),
             ],
             "Ens.",
             1),
@@ -457,7 +457,7 @@ export class RanksHelper {
                 new RolesPrerequisite([Role.Admiral]),
                 new AnyOfPrerequisite(
                     new TypePrerequisite(CharacterType.Starfleet),
-                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.ROMULAN_STAR_EMPIRE)
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.RomulanStarEmpire)
                 )
             ],
             "Adm",
@@ -539,10 +539,10 @@ export class RanksHelper {
                 new CareersPrerequisite([Career.Veteran]),
                 new AnyOfPrerequisite(
                     new TypePrerequisite(CharacterType.KlingonWarrior),
-                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA,
-                        AlliedMilitaryType.ANDORIAN_IMPERIAL_GUARD,
-                        AlliedMilitaryType.ROMULAN_STAR_EMPIRE,
-                        AlliedMilitaryType.KLINGON_DEFENCE_FORCE)
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco, AlliedMilitaryType.BajoranMilitia,
+                        AlliedMilitaryType.AndorianImperialGuard,
+                        AlliedMilitaryType.RomulanStarEmpire,
+                        AlliedMilitaryType.KlingonDefenceForce)
                 )
             ],
             "Gen."),
@@ -553,7 +553,7 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CareersPrerequisite([Career.Veteran]),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco)
             ],
             "Lt.Gen."),
         new RankModel(
@@ -563,7 +563,7 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CareersPrerequisite([Career.Veteran]),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco)
             ],
             "Maj.Gen."),
         new RankModel(
@@ -575,7 +575,7 @@ export class RanksHelper {
                 new CareersPrerequisite([Career.Veteran]),
                 new AnyOfPrerequisite(
                     new TypePrerequisite(CharacterType.KlingonWarrior),
-                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.KLINGON_DEFENCE_FORCE)
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco, AlliedMilitaryType.KlingonDefenceForce)
                 )
             ],
             "Brig."),
@@ -586,8 +586,8 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new AnyOfPrerequisite(
-                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA,
-                        AlliedMilitaryType.ROMULAN_STAR_EMPIRE, AlliedMilitaryType.KLINGON_DEFENCE_FORCE),
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco, AlliedMilitaryType.BajoranMilitia,
+                        AlliedMilitaryType.RomulanStarEmpire, AlliedMilitaryType.KlingonDefenceForce),
                     new TypePrerequisite(CharacterType.KlingonWarrior)
                 )
             ],
@@ -598,7 +598,7 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco)
             ],
             "Lt.Col."),
         new RankModel(
@@ -607,8 +607,8 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA,
-                    AlliedMilitaryType.ROMULAN_STAR_EMPIRE, AlliedMilitaryType.VULCAN_HIGH_COMMAND)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco, AlliedMilitaryType.BajoranMilitia,
+                    AlliedMilitaryType.RomulanStarEmpire, AlliedMilitaryType.VulcanHighCommand)
             ],
             "Maj."),
         new RankModel(
@@ -617,7 +617,7 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO, AlliedMilitaryType.BAJORAN_MILITIA)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco, AlliedMilitaryType.BajoranMilitia)
             ],
             "Capt."),
         new RankModel(
@@ -626,7 +626,7 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.BAJORAN_MILITIA)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.BajoranMilitia)
             ],
             "Lt."),
         new RankModel(
@@ -635,7 +635,7 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco)
             ],
             "1st.Lt."),
         new RankModel(
@@ -644,7 +644,7 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco)
             ],
             "2nd.Lt."),
         new RankModel(
@@ -653,7 +653,7 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco)
             ],
             "Sgt."),
         new RankModel(
@@ -662,7 +662,7 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco)
             ],
             "Sgt."),
         new RankModel(
@@ -671,7 +671,7 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco)
             ],
             "Cpl."),
         new RankModel(
@@ -681,7 +681,7 @@ export class RanksHelper {
                 new SourcePrerequisite(Source.PlayersGuide),
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite([Career.Young]),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.MACO)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco)
             ],
             "Pvt."),
 
@@ -693,7 +693,7 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CareersPrerequisite([Career.Veteran]),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CardassianUnion)
             ]),
         new RankModel(
             Rank.Legate,
@@ -702,7 +702,7 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CareersPrerequisite([Career.Veteran]),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CardassianUnion)
             ]),
         new RankModel(
             Rank.Jagul,
@@ -710,7 +710,7 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CardassianUnion)
             ]),
         new RankModel(
             Rank.Gul,
@@ -718,7 +718,7 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CardassianUnion)
             ],
             "Gul"),
         new RankModel(
@@ -727,7 +727,7 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CardassianUnion)
             ]),
         new RankModel(
             Rank.Glinn,
@@ -736,7 +736,7 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Young, Career.Experienced]),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CardassianUnion)
             ]),
         new RankModel(
             Rank.Gil,
@@ -745,7 +745,7 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Young]),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CardassianUnion)
             ]),
         new RankModel(
             Rank.Gil,
@@ -753,7 +753,7 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CardassianUnion)
             ]),
         new RankModel(
             Rank.Garresh,
@@ -762,7 +762,7 @@ export class RanksHelper {
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite([Career.Young]),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CARDASSIAN_UNION)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.CardassianUnion)
             ]),
 
         new RankModel(
@@ -771,7 +771,7 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.ANDORIAN_IMPERIAL_GUARD)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.AndorianImperialGuard)
             ]),
 
         // Romulan Star Empire
@@ -781,7 +781,7 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.ROMULAN_STAR_EMPIRE, AlliedMilitaryType.VULCAN_HIGH_COMMAND)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.RomulanStarEmpire, AlliedMilitaryType.VulcanHighCommand)
             ]),
         new RankModel(
             Rank.SubLieutenant,
@@ -789,7 +789,7 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.ROMULAN_STAR_EMPIRE, AlliedMilitaryType.VULCAN_HIGH_COMMAND)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.RomulanStarEmpire, AlliedMilitaryType.VulcanHighCommand)
             ]),
         new RankModel(
             Rank.Centurion, // Junior officer
@@ -798,7 +798,7 @@ export class RanksHelper {
                 new SourcePrerequisite(Source.PlayersGuide),
                 new OfficerPrerequisite(),
                 new CareersPrerequisite([Career.Young]),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.ROMULAN_STAR_EMPIRE)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.RomulanStarEmpire)
             ]),
         new RankModel(
             Rank.Centurion, // Enlisted
@@ -806,7 +806,7 @@ export class RanksHelper {
             [
                 new SourcePrerequisite(Source.PlayersGuide),
                 new EnlistedPrerequisite(),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.ROMULAN_STAR_EMPIRE)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.RomulanStarEmpire)
             ]),
         new RankModel(
             Rank.Uhlan,
@@ -815,7 +815,7 @@ export class RanksHelper {
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CareersPrerequisite([Career.Young]),
                 new EnlistedPrerequisite(),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.ROMULAN_STAR_EMPIRE)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.RomulanStarEmpire)
             ]),
 
         // Vulcan High Command
@@ -826,7 +826,7 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CareersPrerequisite([Career.Veteran]),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.VULCAN_HIGH_COMMAND)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.VulcanHighCommand)
             ]),
         new RankModel(
             Rank.FleetCommander,
@@ -835,7 +835,7 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CareersPrerequisite([Career.Veteran]),
-                new AlliedMilitaryPrerequisite(AlliedMilitaryType.VULCAN_HIGH_COMMAND)
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.VulcanHighCommand)
             ]),
 
 

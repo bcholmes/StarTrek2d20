@@ -27,7 +27,7 @@ class AttributePrerequisite implements IConstructPrerequisite<Character> {
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return character.attributes[this.attribute].value >= this.value;
+        return c.attributes[this.attribute].value >= this.value;
     }
     describe(): string {
         return "Requires " + Attribute[this.attribute] + " " + this.value + "+";
@@ -44,7 +44,7 @@ class DisciplinePrerequisite implements IConstructPrerequisite<Character> {
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return character.skills[this.discipline].expertise >= this.value;
+        return c.skills[this.discipline].expertise >= this.value;
     }
 
     describe(): string {
@@ -60,7 +60,7 @@ class UntrainedDisciplinePrerequisite implements IConstructPrerequisite<Characte
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return character.skills[this.discipline].expertise <= 1;
+        return c.skills[this.discipline].expertise <= 1;
     }
     describe(): string {
         return "Requires " + Skill[this.discipline] + " <= 1";
@@ -79,8 +79,8 @@ class VariableDisciplinePrerequisite implements IConstructPrerequisite<Character
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return character.skills[this.discipline1].expertise >= this.value ||
-               character.skills[this.discipline2].expertise >= this.value;
+        return c.skills[this.discipline1].expertise >= this.value ||
+               c.skills[this.discipline2].expertise >= this.value;
     }
     describe(): string {
         return "Requires " + Skill[this.discipline1] + " " + this.value + "+ or "
@@ -98,9 +98,9 @@ class SpeciesPrerequisite implements IConstructPrerequisite<Character> {
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return character.species === this.species ||
-               character.mixedSpecies === this.species ||
-               character.originalSpecies === this.species ||
+        return c.species === this.species ||
+               c.mixedSpecies === this.species ||
+               c.originalSpecies === this.species ||
                (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
     }
     describe(): string {
@@ -119,7 +119,7 @@ class AnySpeciesPrerequisite implements IConstructPrerequisite<Character> {
 
     isPrerequisiteFulfilled(c: Character) {
         let result = (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
-        this.species.forEach(s => result = result || character.species === s || character.mixedSpecies === s || character.originalSpecies === s);
+        this.species.forEach(s => result = result || c.species === s || c.mixedSpecies === s || c.originalSpecies === s);
         return result;
     }
     describe(): string {
@@ -135,7 +135,7 @@ class CareerPrerequisite implements IConstructPrerequisite<Character> {
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return character.career === this.career;
+        return c.career === this.career;
     }
     describe(): string {
         return "Only available to " + (this.career === 0 ? "Young" : "Veteran") + " characters";
@@ -168,7 +168,7 @@ class CommandingAndExecutiveOfficerPrerequisite implements IConstructPrerequisit
         // Awkwardly, we don't know the character's role at the time that
         // they select talents. What we *do* know is that Young characters
         // don't get to be Commanding Officers or Executive Officers.
-        return !character.isYoung();
+        return !c.isYoung();
     }
     describe(): string {
         return "Commanding Officer or Executive Officer only";
@@ -214,7 +214,7 @@ class CharacterTypePrerequisite implements IConstructPrerequisite<Character> {
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return character.type === this.type;
+        return c.type === this.type;
     }
     describe(): string {
         return "";
@@ -229,7 +229,7 @@ class NotCharacterTypePrerequisite implements IConstructPrerequisite<Character> 
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return character.type !== this.type;
+        return c.type !== this.type;
     }
     describe(): string {
         return "";
@@ -268,7 +268,7 @@ class TalentPrerequisite implements IConstructPrerequisite<Construct> {
     }
 
     isPrerequisiteFulfilled(c: Construct) {
-        return character.hasTalent(this.talent);
+        return c.hasTalent(this.talent);
     }
     describe(): string {
         return "Requires \"" + this.talent + "\" Talent";
@@ -283,7 +283,7 @@ class FocusPrerequisite implements IConstructPrerequisite<Character> {
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return character.focuses.indexOf(this.focus) > -1;
+        return c.focuses.indexOf(this.focus) > -1;
     }
     describe(): string {
         return "Requires \"" + this.focus + "\" Focus";
@@ -298,7 +298,7 @@ class NotTalentPrerequisite implements IConstructPrerequisite<Construct> {
     }
 
     isPrerequisiteFulfilled(c: Construct) {
-        return !character.hasTalent(this.talent);
+        return !c.hasTalent(this.talent);
     }
     describe(): string {
         return "Conflicts with \"" + this.talent + "\" Talent";
@@ -646,9 +646,9 @@ export class TalentViewModel {
     }
 }
 
-export function ToViewModel(talent: TalentModel, rank: number = 1): TalentViewModel {
+export function ToViewModel(talent: TalentModel, rank: number = 1, type: CharacterType = character.type): TalentViewModel {
     let name = talent.name;
-    if (character.type === CharacterType.KlingonWarrior) {
+    if (type === CharacterType.KlingonWarrior) {
         name = talent.nameForSource(Source.KlingonCore);
     }
     return new TalentViewModel(name, rank, talent.maxRank > 1, talent.description, undefined, talent.category, talent.prerequisites);
@@ -3133,7 +3133,7 @@ export class Talents {
             let rank = character.hasTalent(talent.name)
                 ? character.talents[talent.name].rank + 1
                 : 1;
-            return ToViewModel(talent, rank);
+            return ToViewModel(talent, rank, character.type);
         } else {
             return null;
         }
@@ -3192,12 +3192,12 @@ export class Talents {
                 if (character.hasTalent(t.name)) {
                     let temp = character.talents[t.name];
                     if (temp != null && temp.rank < t.maxRank) {
-                        return ToViewModel(t, temp.rank + 1);
+                        return ToViewModel(t, temp.rank + 1, character.type);
                     } else {
-                        return ToViewModel(t);
+                        return ToViewModel(t, 1, character.type);
                     }
                 } else {
-                    return ToViewModel(t);
+                    return ToViewModel(t, 1, character.type);
                 }
             });
             result.sort((a, b) => a.name.localeCompare(b.name));
@@ -3228,7 +3228,7 @@ export class Talents {
                         }
                     }
 
-                    talents.push(ToViewModel(talent, rank));
+                    talents.push(ToViewModel(talent, rank, starship.type));
                 }
             }
         }

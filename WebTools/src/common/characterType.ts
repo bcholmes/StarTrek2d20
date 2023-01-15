@@ -1,4 +1,6 @@
 import { Source } from "../helpers/sources";
+import i18next from "i18next";
+import { makeKey } from "./translationKey";
 
 export enum CharacterType {
     Starfleet = 0,
@@ -35,6 +37,10 @@ export class CharacterTypeModel {
     constructor(name: string, type: CharacterType) {
         this.name = name;
         this.type = type;
+    }
+
+    get localizedName() {
+        return i18next.t(makeKey('CharacterType.name.', CharacterType[this.type]));
     }
 
     public static getAllTypes() {

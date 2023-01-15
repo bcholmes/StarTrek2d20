@@ -53,7 +53,7 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
         })
 
         if (!isHistory) {
-            character.saveStep(this.state.activePage);
+            character.saveMemento(this.state.activePage);
         }
     }
 
