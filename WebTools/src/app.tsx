@@ -13,14 +13,12 @@ interface IAppState {
 
 export class CharacterCreationApp extends React.Component<{}, IAppState> {
 
-    private pageFactory: PageFactory;
     constructor(props) {
         super(props);
 
         this.state = {
             activePage: PageIdentity.Home
         };
-        this.pageFactory = new PageFactory();
     }
 
     componentDidMount() {
@@ -32,6 +30,8 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
         Events.listen(EventIdentity.HistoryBack, (page: any) => {
             this.activatePage(page as PageIdentity, true);
         });
+
+        document.title = "STAR TREK ADVENTURES";
     }
 
     componentWillUnmount(): void {
@@ -58,7 +58,7 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
     }
 
     render() {
-        const page = this.pageFactory.createPage(this.state.activePage);
+        const page = PageFactory.instance.createPage(this.state.activePage);
 
         return (<LcarsFrame activePage={this.state.activePage}>
                 <div id="app">{page}</div>

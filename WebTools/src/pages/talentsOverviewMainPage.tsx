@@ -5,6 +5,10 @@ import TalentsOverviewPage from "./talentsOverviewPage";
 
 class TalentsOverviewMainPage extends React.Component<{}, {}> {
 
+    componentDidMount() {
+        document.title = "Talents Overview - STAR TREK ADVENTURES";
+    }
+
     render() {
         return (<LcarsFrame activePage={PageIdentity.GamemasterTrackerPage}>
                 <div id="app">

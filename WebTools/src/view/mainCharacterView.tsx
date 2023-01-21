@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router";
 import { Era } from "../helpers/eras";
 import { CharacterSheetRegistry } from "../helpers/sheets";
 import { Button } from "../components/button";
@@ -12,6 +13,8 @@ import { getNameAndShortRankOf } from "../helpers/ranks";
 import { Construct } from "../common/construct";
 import { marshaller } from "../helpers/marshaller";
 import { StatView } from "../components/StatView";
+import store from "../state/store";
+import { setCharacter } from "../state/characterActions";
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -67,9 +70,14 @@ class MainCharacterView extends BaseCharacterView {
             </div>
 
             {(this.props.showButtons == null || this.props.showButtons === true)
-                ? (<div className="button-container mt-5 mb-3">
-                        <Button className="button-small mr-3" onClick={() => this.showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
-                        <Button className="button-small mr-3" onClick={() => this.exportToJson(this.props.character, 'character') } buttonType={true}>{t('Common.button.exportJson')}</Button>
+                ? (<div className="d-flex justify-content-between">
+                        <div className="mt-5 mb-3">
+                            <Button className="button-small mr-3" onClick={() => this.showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
+                            <Button className="button-small mr-3" onClick={() => this.exportToJson(this.props.character, 'character') } buttonType={true}>{t('Common.button.exportJson')}</Button>
+                        </div>
+                        <div className="mt-5 mb-3">
+                            <Button className="button-small mr-3" onClick={() => this.navigateToModification() } buttonType={true}>{t('Common.button.modify')}</Button>
+                        </div>
                     </div>)
                 : null}
        </div>);
@@ -85,6 +93,12 @@ class MainCharacterView extends BaseCharacterView {
                 <StatView name={t('Construct.other.reprimands')} value={character.reprimands} className="col mb-1" colourClass="red" showZero={true}/>
             </div>
         </>)
+    }
+
+    navigateToModification() {
+        const { history, character } = this.props;
+        store.dispatch(setCharacter(character));
+        history.push("/modify");
     }
 
     renderTopFields() {
@@ -108,7 +122,7 @@ class MainCharacterView extends BaseCharacterView {
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.upbringingStep ? (character.upbringingStep.upbringing?.name + (character.upbringingStep.acceptedUpbringing ? " (A)" : " (R)")) : ""}</div></div>
 
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.environment')}:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{CharacterSerializer.serializeEnvironment(character.environment, character.otherSpeciesWorld, character.type)}</div></div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{CharacterSerializer.serializeEnvironment(character.environmentStep?.environment, character.environmentStep?.otherSpeciesWorld, character.type)}</div></div>
             </div>
 
             <div className="row" style={{alignItems: "baseline"}}>
@@ -206,4 +220,4 @@ class MainCharacterView extends BaseCharacterView {
     }
 }
 
-export default withTranslation()(MainCharacterView);
+export default withTranslation()(withRouter(MainCharacterView));

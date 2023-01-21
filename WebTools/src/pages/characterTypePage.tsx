@@ -74,7 +74,7 @@ class CharacterTypePage extends React.Component<WithTranslation, ICharacterTypeP
                 return (<option value={t.type} key={'gov-' + t.type}>{t.localizedName}</option>);
             });
 
-            const other = this.state.government === GovernmentType.OTHER
+            const other = this.state.government === GovernmentType.Other
                 ? (<>
                     <p className="mt-4">
                         {t('CharacterTypePage.otherGovernmentName')}

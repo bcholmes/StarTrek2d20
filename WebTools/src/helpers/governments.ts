@@ -3,15 +3,15 @@ import i18next from "i18next";
 import { makeKey } from "../common/translationKey";
 
 export enum GovernmentType {
-    FEDERATION,
-    ANDORIAN,
-    VULCAN,
-    TELLARITE,
-    KLINGON,
-    ROMULAN,
-    BAJORAN,
-    CARDASSIAN,
-    OTHER
+    Federation,
+    Andorian,
+    Vulcan,
+    Tellarite,
+    Klingon,
+    Romulan,
+    Bajoran,
+    Cardassian,
+    Other
 }
 
 export class Government {
@@ -32,16 +32,16 @@ export class Government {
 
 class _Governments {
     options: Government[] = [
-        new Government("Andorian",GovernmentType.ANDORIAN, Era.Enterprise),
-        new Government("Bajoran", GovernmentType.BAJORAN, Era.NextGeneration),
-        new Government("Cardassian", GovernmentType.CARDASSIAN, Era.NextGeneration),
-        new Government("Federation", GovernmentType.FEDERATION, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
-        new Government("Klingon",GovernmentType.KLINGON, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
-        new Government("Romulan", GovernmentType.ROMULAN, Era.OriginalSeries, Era.NextGeneration),
-        new Government("Tellarite", GovernmentType.TELLARITE, Era.Enterprise),
-        new Government("Vulcan", GovernmentType.VULCAN, Era.Enterprise),
+        new Government("Andorian",GovernmentType.Andorian, Era.Enterprise),
+        new Government("Bajoran", GovernmentType.Bajoran, Era.NextGeneration),
+        new Government("Cardassian", GovernmentType.Cardassian, Era.NextGeneration),
+        new Government("Federation", GovernmentType.Federation, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
+        new Government("Klingon",GovernmentType.Klingon, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
+        new Government("Romulan", GovernmentType.Romulan, Era.OriginalSeries, Era.NextGeneration),
+        new Government("Tellarite", GovernmentType.Tellarite, Era.Enterprise),
+        new Government("Vulcan", GovernmentType.Vulcan, Era.Enterprise),
 
-        new Government("Other", GovernmentType.OTHER, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration)
+        new Government("Other", GovernmentType.Other, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration)
     ];
 
     selectOptions(era: Era) {

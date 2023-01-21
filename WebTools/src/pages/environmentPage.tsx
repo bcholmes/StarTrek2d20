@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {character, EnvironmentStep} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
@@ -97,11 +97,10 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
     }
 
     private selectEnvironment(env: Environment, name: string) {
-        character.environment = env;
-
-        var n = name.indexOf("Another Species' World");
-        if (n > -1) {
-            character.otherSpeciesWorld = name.substring(name.indexOf("(") + 1, name.indexOf(")"));
+       if (env === Environment.AnotherSpeciesWorld) {
+            character.environmentStep = new EnvironmentStep(env, name.substring(name.indexOf("(") + 1, name.indexOf(")")));
+        } else {
+            character.environmentStep = new EnvironmentStep(env);
         }
 
         Navigation.navigateToPage(PageIdentity.EnvironmentDetails);

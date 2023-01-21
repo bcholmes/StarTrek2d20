@@ -57,7 +57,7 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
                         </div>
                         <div className="lcar-content-action">
                             <div id="profile-button" className={'lcar-content-profile ' + (this.isProfileSupportedForPage() ? '' : 'd-none')} onClick={ () => this.toggleProfile() }>{t('Lcars.profile')}</div>
-                            <CharacterSheet showProfile={this.state.showProfile} close={() => this.setState((state) => ({...state, showProfile: false }))}/>
+                            <CharacterSheet showProfile={this.state.showProfile} close={() => this.setState((state) => ({...state, showProfile: false }))} isModify={this.isModifyPage()}/>
                         </div>
                         <div className="lcar-content-feedback" onClick={ () => this.showFeedbackPage() }>{t('Lcars.feedback')}</div>
                         <div className="lcar-content-news" onClick={() => this.showNews()}>
@@ -105,6 +105,10 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
         } else {
             return false;
         }
+    }
+
+    isModifyPage() {
+        return this.props.activePage === PageIdentity.ModificationTypeSelection;
     }
 
     isProfileSupportedForPage() {

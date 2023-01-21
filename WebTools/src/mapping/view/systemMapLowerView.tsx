@@ -197,8 +197,8 @@ class SystemMapLowerView extends React.Component<ISystemMapLowerViewProperties, 
     }
 
     renderTrackers(orbits: number[], offset: number) {
-        if (orbits?.length) {
-            const { system } = this.props;
+        const { system } = this.props;
+        if (orbits?.length && system?.worlds?.length) {
             let inner = this.calculateOrbitX(system.gardenZoneInnerRadius, orbits);
             let outer = this.calculateOrbitX(system.gardenZoneOuterRadius, orbits);
 

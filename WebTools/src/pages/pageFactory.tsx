@@ -51,6 +51,16 @@ import MissionPodSelectionPage from '../starship/page/missionPodSelectionPage';
 import CustomSpeciesDetailsPage from './customSpeciesDetailsPage';
 
 export class PageFactory {
+
+    private static _instance;
+
+    static get instance() {
+        if (PageFactory._instance == null) {
+            PageFactory._instance = new PageFactory();
+        }
+        return PageFactory._instance;
+    }
+
     private factories = {};
 
     constructor() {

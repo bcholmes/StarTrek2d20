@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router";
 import { Era } from "../helpers/eras";
 import { CharacterSheetRegistry } from "../helpers/sheets";
 import { Button } from "../components/button";
@@ -98,4 +99,4 @@ class SupportingCharacterView extends BaseCharacterView {
     }
 }
 
-export default withTranslation()(SupportingCharacterView);
+export default withTranslation()(withRouter(SupportingCharacterView));

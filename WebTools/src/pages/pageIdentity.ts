@@ -58,5 +58,8 @@ export enum PageIdentity {
     ViewSheet,
 
     GamemasterTrackerPage,
-    XmlViewer
+    XmlViewer,
+
+    ModificationTypeSelection,
+
 }

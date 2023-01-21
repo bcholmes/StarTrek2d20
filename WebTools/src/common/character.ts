@@ -42,7 +42,7 @@ export class GovernmentDetails extends CharacterTypeDetails {
     }
 
     getName() {
-        if (this.government && this.government.type === GovernmentType.OTHER && this.name) {
+        if (this.government && this.government.type === GovernmentType.Other && this.name) {
             return this.name;
         } else if (this.government) {
             return this.government.name;
@@ -65,12 +65,10 @@ export class CharacterAttribute {
 export class CharacterSkill {
     skill: Skill;
     expertise: number;
-    focus: number;
 
-    constructor(skill: Skill, expertise: number, focus: number) {
+    constructor(skill: Skill, expertise: number) {
         this.skill = skill;
         this.expertise = expertise;
-        this.focus = focus;
     }
 }
 
@@ -102,6 +100,16 @@ export class UpbringingStep {
     }
 }
 
+export class EnvironmentStep {
+    public readonly environment: Environment;
+    public readonly otherSpeciesWorld?: string;
+
+    constructor(environment: Environment, otherSpeciesWorld?: string) {
+        this.environment = environment;
+        this.otherSpeciesWorld = otherSpeciesWorld;
+    }
+}
+
 export class Character extends Construct {
 
     public static ABSOLUTE_MAX_ATTRIBUTE = 12;
@@ -121,8 +129,6 @@ export class Character extends Construct {
     public house?: string;
     public career?: Career;
     public careerEvents: number[];
-    public environment?: Environment;
-    public otherSpeciesWorld?: string;
     public rank?: string;
     public role?: string;
     public jobAssignment?: string;
@@ -133,6 +139,7 @@ export class Character extends Construct {
     public mixedSpecies?: Species;
     public originalSpecies?: Species;
     public track?: Track;
+    public environmentStep?: EnvironmentStep;
     public upbringingStep?: UpbringingStep;
     public enlisted?: boolean;
     public environmentValue?: string;
@@ -155,7 +162,7 @@ export class Character extends Construct {
         this.attributes.push(new CharacterAttribute(Attribute.Reason, this._attributeInitialValue));
 
         for (var i = 0; i <= Skill.Medicine; i++) {
-            this.skills.push(new CharacterSkill(i, 1, 0));
+            this.skills.push(new CharacterSkill(i, 1));
         }
 
         this._mementos = [];
@@ -194,6 +201,17 @@ export class Character extends Construct {
             result.push("Uniform");
             result.push("Communicator");
             result.push("Tricorder");
+        }
+
+        if (this.role === "Chief Medical Officer" ||
+            this.role === "Head Nurse" ||
+            this.role === "Chief Surgeon" ||
+            this.role === "Physician's Assistant" ||
+            this.role === "Anesthesiologist" ||
+            this.role === "Ship's Doctor" ||
+            this.role === "Surgeon (HaqwI’)") {
+
+            result.push("MedKit");
         }
 
         if (this.hasTalent("The Ushaan")) {
@@ -480,7 +498,6 @@ export class Character extends Construct {
         this.skills.forEach(s => {
             character.skills[s.skill].skill = s.skill;
             character.skills[s.skill].expertise = s.expertise;
-            character.skills[s.skill].focus = s.focus;
         });
         for (var talent in this.talents) {
             const t = this.talents[talent];
@@ -497,8 +514,9 @@ export class Character extends Construct {
         });
         character.jobAssignment = this.jobAssignment;
         character.assignedShip = this.assignedShip;
-        character.environment = this.environment;
-        character.otherSpeciesWorld = this.otherSpeciesWorld;
+        if (this.environmentStep) {
+            character.environmentStep = new EnvironmentStep(this.environmentStep.environment, this.environmentStep.otherSpeciesWorld);
+        }
         character.rank = this.rank;
         character.role = this.role;
         character.species = this.species;

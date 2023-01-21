@@ -1,4 +1,5 @@
 import React from "react";
+import { RouteComponentProps } from "react-router";
 import { Character } from "../common/character";
 import { WithTranslation } from 'react-i18next';
 import { Header } from "../components/header";
@@ -11,6 +12,7 @@ import { WeaponView } from "../components/weaponView";
 export interface ICharacterViewProperties extends WithTranslation {
     character: Character;
     showButtons?: boolean;
+    history: RouteComponentProps["history"];
 }
 
 export abstract class BaseCharacterView extends React.Component<ICharacterViewProperties, {}> {

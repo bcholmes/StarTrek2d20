@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { Character, CharacterAttribute, CharacterSkill, CharacterTalent, UpbringingStep } from '../common/character';
+import { Character, CharacterAttribute, CharacterSkill, CharacterTalent, EnvironmentStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { ShipBuildType, ShipBuildTypeModel, SimpleStats, Starship } from '../common/starship';
 import { Attribute } from './attributes';
@@ -112,12 +112,12 @@ class Marshaller {
             sheet["implants"] = [...character.implants];
         }
 
-        if (character.environment != null) {
+        if (character.environmentStep != null) {
             let environment = {
-                "id": Environment[character.environment]
+                "id": Environment[character.environmentStep.environment]
             };
-            if (character.otherSpeciesWorld != null) {
-                environment["otherSpeciesWorld"] = character.otherSpeciesWorld
+            if (character.environmentStep.otherSpeciesWorld != null) {
+                environment["otherSpeciesWorld"] = character.environmentStep.otherSpeciesWorld
             }
             sheet["environment"] = environment;
         }
@@ -558,9 +558,10 @@ class Marshaller {
         if (json.environment) {
             let environment = EnvironmentsHelper.getEnvironmentByTypeName(json.environment.id, result.type);
             if (environment) {
-                result.environment = environment.id;
-                if (result.environment === Environment.AnotherSpeciesWorld) {
-                    result.otherSpeciesWorld = json.environment.otherSpeciesWorld;
+                if (environment.id === Environment.AnotherSpeciesWorld) {
+                    result.environmentStep = new EnvironmentStep(environment.id, json.environment.otherSpeciesWorld);
+                } else {
+                    result.environmentStep = new EnvironmentStep(environment.id);
                 }
             }
         }

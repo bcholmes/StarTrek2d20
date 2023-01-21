@@ -9,11 +9,13 @@ import TalentsOverviewMainPage from './pages/talentsOverviewMainPage';
 import ViewSheetPage from './view/viewSheetPage';
 import XmlFormatViewerPage from './vtt/page/xmlFormatViewerPage';
 import CreditsPage from './pages/creditsPage';
+import ModificationTypeSelectionPage from './modify/page/modificationTypeSelection';
 
 ReactDOM.render(
     <Provider store={store}>
         <Router>
             <Switch>
+                <Route path="/modify" component={ModificationTypeSelectionPage} />
                 <Route path="/xmlviewer" component={XmlFormatViewerPage} />
                 <Route path="/credits" component={CreditsPage} />
                 <Route path="/gmtracker" component={GMTrackerPage} />

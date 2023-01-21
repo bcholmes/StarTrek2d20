@@ -27,28 +27,19 @@ export class EnvironmentDetailsPage extends React.Component<IPageProperties, {}>
         this._electiveSkills = [];
         this._otherSpecies = null;
 
-        if (character.environment === Environment.AnotherSpeciesWorld) {
-            if (character.otherSpeciesWorld === undefined) {
-                this._otherSpecies = SpeciesHelper.generateSpecies();
-                while (this._otherSpecies === character.species) {
-                    this._otherSpecies = SpeciesHelper.generateSpecies();
-                }
-
-                character.otherSpeciesWorld = SpeciesHelper.getSpeciesByType(this._otherSpecies).name;
-            } else {
-                this._otherSpecies = SpeciesHelper.getSpeciesByName(character.otherSpeciesWorld);
-            }
+        if (character.environmentStep?.environment === Environment.AnotherSpeciesWorld) {
+            this._otherSpecies = SpeciesHelper.getSpeciesByName(character.environmentStep?.otherSpeciesWorld);
         }
     }
 
     render() {
-        let env = EnvironmentsHelper.getEnvironment(character.environment, character.type);
+        let env = EnvironmentsHelper.getEnvironment(character.environmentStep?.environment, character.type);
         var otherSpeciesName = "";
 
-        if (character.environment === Environment.Homeworld) {
+        if (character.environmentStep?.environment === Environment.Homeworld) {
             const speciesAttributes = character.species === Species.Custom ? AttributesHelper.getAllAttributes() : SpeciesHelper.getSpeciesByType(character.species).attributes;
             env.attributes = speciesAttributes;
-        } else if (character.environment === Environment.AnotherSpeciesWorld) {
+        } else if (character.environmentStep?.environment === Environment.AnotherSpeciesWorld) {
             const otherSpecies = SpeciesHelper.getSpeciesByType(this._otherSpecies);
             env.attributes = otherSpecies.attributes;
             otherSpeciesName = `(${otherSpecies.name})`;

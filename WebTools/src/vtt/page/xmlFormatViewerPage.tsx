@@ -3,7 +3,7 @@ import { Header } from "../../components/header";
 import LcarsFrame from "../../components/lcarsFrame";
 import { PageIdentity } from "../../pages/pageIdentity";
 import convert from "xml-js"
-import { Character, UpbringingStep } from "../../common/character";
+import { Character, EnvironmentStep, UpbringingStep } from "../../common/character";
 import MainCharacterView from "../../view/mainCharacterView";
 import { Attribute, AttributesHelper } from "../../helpers/attributes";
 import { Skill, SkillsHelper } from "../../helpers/skills";
@@ -127,7 +127,7 @@ class XmlFormatViewerPage extends React.Component<{}, IXmlFormatViewerState> {
                 let environmentName = c.environment?._text;
                 EnvironmentsHelper.getEnvironments().forEach(e => {
                     if (environmentName.toLowerCase() === e.name.toLocaleLowerCase()) {
-                        character.environment = e.id;
+                        character.environmentStep = new EnvironmentStep(e.id);
                     }
                 });
 
