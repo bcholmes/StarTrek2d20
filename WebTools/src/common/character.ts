@@ -90,9 +90,23 @@ class Memento {
     }
 }
 
+export class SpeciesStep {
+    public readonly species: Species;
+    public mixedSpecies: Species;
+    public originalSpecies: Species;
+    public customSpeciesName: string;
+    public attributes: Attribute[];
+
+    constructor(species: Species) {
+        this.species = species;
+    }
+}
+
 export class UpbringingStep {
     public readonly upbringing: UpbringingModel;
     public acceptedUpbringing: boolean;
+    public attributes: Attribute[];
+    public disciplines: Skill[];
 
     constructor(upbringing: UpbringingModel, accepted: boolean = true) {
         this.upbringing = upbringing;
@@ -134,11 +148,8 @@ export class Character extends Construct {
     public jobAssignment?: string;
     public assignedShip?: string;
     public secondaryRole?: string;
-    public species?: Species;
-    public customSpeciesName?: string;
-    public mixedSpecies?: Species;
-    public originalSpecies?: Species;
     public track?: Track;
+    public speciesStep?: SpeciesStep;
     public environmentStep?: EnvironmentStep;
     public upbringingStep?: UpbringingStep;
     public enlisted?: boolean;
@@ -329,19 +340,19 @@ export class Character extends Construct {
     }
 
     get speciesName() {
-        if (this.species == null) {
+        if (this.speciesStep == null) {
             return "";
-        } else if (this.species === Species.Custom) {
-            return this.customSpeciesName || "";
+        } else if (this.speciesStep.species === Species.Custom) {
+            return this.speciesStep.customSpeciesName || "";
         } else {
-            let species = SpeciesHelper.getSpeciesByType(this.species);
+            let species = SpeciesHelper.getSpeciesByType(this.speciesStep.species);
             let result = species.name;
-            if (this.mixedSpecies != null) {
-                let mixedSpecies = SpeciesHelper.getSpeciesByType(this.mixedSpecies);
+            if (this.speciesStep.mixedSpecies != null) {
+                let mixedSpecies = SpeciesHelper.getSpeciesByType(this.speciesStep.mixedSpecies);
                 result += (" / " + mixedSpecies.name);
             }
-            if (this.originalSpecies != null) {
-                let orginalSpecies = SpeciesHelper.getSpeciesByType(this.originalSpecies);
+            if (this.speciesStep.originalSpecies != null) {
+                let orginalSpecies = SpeciesHelper.getSpeciesByType(this.speciesStep.originalSpecies);
                 result += (" (originally " + orginalSpecies.name + ")");
             }
             return result;
@@ -350,8 +361,8 @@ export class Character extends Construct {
 
     get baseTraits() {
         let traits = [ ...this.traits ];
-        if (this.species === Species.Custom && this.customSpeciesName) {
-            traits.push(this.customSpeciesName);
+        if (this.speciesStep?.species === Species.Custom && this.speciesStep?.customSpeciesName) {
+            traits.push(this.speciesStep.customSpeciesName);
         }
         if (this.hasTalent("Augmented Ability (Control)")
                 || this.hasTalent("Augmented Ability (Daring)")
@@ -519,9 +530,12 @@ export class Character extends Construct {
         }
         character.rank = this.rank;
         character.role = this.role;
-        character.species = this.species;
-        character.mixedSpecies = this.mixedSpecies;
-        character.originalSpecies = this.originalSpecies;
+        if (character.speciesStep != null) {
+            character.speciesStep = new SpeciesStep(this.speciesStep.species);
+            character.speciesStep.mixedSpecies = this.speciesStep.mixedSpecies;
+            character.speciesStep.originalSpecies = this.speciesStep.originalSpecies;
+            character.speciesStep.customSpeciesName = this.speciesStep.customSpeciesName;
+        }
         character.track = this.track;
         if (this.upbringingStep) {
             character.upbringingStep = new UpbringingStep(this.upbringingStep.upbringing);

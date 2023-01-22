@@ -125,7 +125,7 @@ class CustomSpeciesDetailsPage extends React.Component<ICustomSpeciesDetailsProp
     }
 
     setSpeciesName(name: string) {
-        character.customSpeciesName = name;
+        character.speciesStep.customSpeciesName = name;
         this.setState((state) => ({...state, speciesName: name}));
     }
 

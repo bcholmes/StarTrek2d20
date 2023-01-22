@@ -120,6 +120,13 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
         character.addFocus(focus);
         character.addTalent(this._talent);
         character.upbringingStep.acceptedUpbringing = this._accepted;
+        let upbringing = character.upbringingStep?.upbringing;
+        if (this._accepted) {
+            character.upbringingStep.attributes = [upbringing.attributeAcceptPlus2, upbringing.attributeAcceptPlus2, upbringing.attributeAcceptPlus1];
+        } else {
+            character.upbringingStep.attributes = [upbringing.attributeRebelPlus2, upbringing.attributeRebelPlus2, upbringing.attributeRebelPlus1];
+        }
+        character.upbringingStep.disciplines = [...this._electiveSkills]
 
         UpbringingsHelper.applyUpbringing(character.upbringingStep.upbringing, this._accepted);
         character.workflow.next();

@@ -9,7 +9,7 @@ import TalentsOverviewMainPage from './pages/talentsOverviewMainPage';
 import ViewSheetPage from './view/viewSheetPage';
 import XmlFormatViewerPage from './vtt/page/xmlFormatViewerPage';
 import CreditsPage from './pages/creditsPage';
-import ModificationTypeSelectionPage from './modify/page/modificationTypeSelection';
+import ModificationTypeSelectionPage from './modify/page/modificationTypeSelectionPage';
 
 ReactDOM.render(
     <Provider store={store}>

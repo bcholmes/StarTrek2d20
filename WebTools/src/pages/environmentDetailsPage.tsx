@@ -37,7 +37,7 @@ export class EnvironmentDetailsPage extends React.Component<IPageProperties, {}>
         var otherSpeciesName = "";
 
         if (character.environmentStep?.environment === Environment.Homeworld) {
-            const speciesAttributes = character.species === Species.Custom ? AttributesHelper.getAllAttributes() : SpeciesHelper.getSpeciesByType(character.species).attributes;
+            const speciesAttributes = character.speciesStep?.species === Species.Custom ? AttributesHelper.getAllAttributes() : SpeciesHelper.getSpeciesByType(character.speciesStep.species).attributes;
             env.attributes = speciesAttributes;
         } else if (character.environmentStep?.environment === Environment.AnotherSpeciesWorld) {
             const otherSpecies = SpeciesHelper.getSpeciesByType(this._otherSpecies);

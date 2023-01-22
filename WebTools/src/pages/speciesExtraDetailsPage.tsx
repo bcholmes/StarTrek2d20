@@ -45,11 +45,11 @@ export class SpeciesExtraDetailsPage extends React.Component<ISpeciesExtraDetail
 
     selectOriginalSpecies(species: SpeciesModel) {
         if (this.props.species === Species.CyberneticallyEnhanced) {
-            character.mixedSpecies = species.id;
-            SpeciesHelper.applySpecies(character.species, species.id);
+            character.speciesStep.mixedSpecies = species.id;
+            SpeciesHelper.applySpecies(character.speciesStep.species, species.id);
         } else {
-            character.originalSpecies = species.id;
-            SpeciesHelper.applySpecies(character.species, undefined, species.id);
+            character.speciesStep.originalSpecies = species.id;
+            SpeciesHelper.applySpecies(character.speciesStep.species, undefined, species.id);
         }
         Navigation.navigateToPage(PageIdentity.SpeciesDetails);
     }

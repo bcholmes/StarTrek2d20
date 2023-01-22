@@ -12,7 +12,7 @@ export abstract class AttributeController {
 
     constructor(character: Character, onChanged: (done: boolean) => void) {
         this.character = character;
-        this.species = SpeciesHelper.getSpeciesByType(character.species);
+        this.species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
         this.onChanged = onChanged;
     }
 
@@ -47,6 +47,7 @@ export abstract class AttributeController {
         if (this.selections.indexOf(attribute) < 0) {
             this.selections.push(attribute);
             this.character.attributes[attribute].value += 1;
+            this.character.speciesStep.attributes = [...this.selections];
             this.onChanged(this.selections.length === 3);
         }
     }
@@ -54,6 +55,7 @@ export abstract class AttributeController {
         if (this.selections.indexOf(attribute) >= 0) {
             this.selections.splice(this.selections.indexOf(attribute), 1);
             this.character.attributes[attribute].value -= 1;
+            this.character.speciesStep.attributes = [...this.selections];
             this.onChanged(this.selections.length === 3);
         }
     }
@@ -68,6 +70,7 @@ export class StandardSpeciesAttributeController extends AttributeController {
     constructor(character: Character, onChanged: (done: boolean) => void) {
         super(character, onChanged);
         this.species.attributes.forEach(a => this.selections.push(a));
+        this.character.speciesStep.attributes = [...this.selections];
     }
 
     isShown(attribute: Attribute) {
@@ -96,6 +99,7 @@ export class KtarianSpeciesAttributeController extends AttributeController {
     constructor(character: Character, onChanged: (done: boolean) => void) {
         super(character, onChanged);
         this.species.attributes.forEach(a => this.selections.push(a));
+        this.character.speciesStep.attributes = [...this.selections];
     }
 
     isShown(attribute: Attribute) {
@@ -113,10 +117,11 @@ export class KobaliSpeciesAttributeController extends AttributeController {
 
     constructor(character: Character, onChanged: (done: boolean) => void) {
         super(character, onChanged);
-        this.originalSpecies = SpeciesHelper.getSpeciesByType(character.originalSpecies);
+        this.originalSpecies = SpeciesHelper.getSpeciesByType(character.speciesStep.originalSpecies);
         if (this.originalSpecies.attributes.length <= 3) {
             this.originalSpecies.attributes.forEach(a => this.selections.push(a));
         }
+        this.character.speciesStep.attributes = [...this.selections];
     }
 
     isShown(attribute: Attribute) {
@@ -151,11 +156,11 @@ export class KobaliSpeciesAttributeController extends AttributeController {
 
 class AttributeControllerFactoryImpl {
     create(character: Character, onChanged: (done: boolean) => void = (done) => {}) {
-        if (character.species === Species.Human || character.species === Species.Hologram || character.species === Species.Borg) {
+        if (character.speciesStep?.species === Species.Human || character.speciesStep?.species === Species.Hologram || character.speciesStep?.species === Species.Borg) {
             return new HumanSpeciesAttributeController(character, onChanged);
-        } else if (character.species === Species.Ktarian) {
+        } else if (character.speciesStep?.species === Species.Ktarian) {
             return new KtarianSpeciesAttributeController(character, onChanged);
-        } else if (character.species === Species.Kobali) {
+        } else if (character.speciesStep?.species === Species.Kobali) {
             return new KobaliSpeciesAttributeController(character, onChanged);
         } else {
             return new StandardSpeciesAttributeController(character, onChanged);

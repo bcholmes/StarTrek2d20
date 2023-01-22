@@ -37,6 +37,8 @@ CharacterTypePage.whatGovernment,What government does this character represent?,
 CharacterTypePage.otherGovernmentName,What's the name of this government?,,,Quel est le nom du gouvernement?
 CharacterTypePage.whatMilitary,What military does this character represent?,,,Quelle armée ce personnage représente?
 CharacterTypePage.otherMilitaryName,What's the name of this military?,,,Quel est le nom de l'armée?
+ModificationTypeSelectionPage.instruction,Please select the modification that you want to apply to this character:,,,
+ModificationTypeSelectionPage.whatMilestoneType,What kind of milestone is being applied?,,,
 SpeciesDetails.options,Species Options,Spezies Optionen,,Option d'espèce
 SpeciesDetails.selectThree,(Select three),(drei wählen),,(Choisir trois)
 SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),Spezis-übergreifende Talente erlauben (SL-Entscheid),,Autoriser les talents inter-espèces (Decision du GM)
@@ -85,6 +87,7 @@ Common.button.ok,OK,OK,De acuerdo,D'accord
 Common.button.add,Add,Hinzufügen,Agregar,Ajouter
 Common.button.cancel,Cancel,Abbrechen,Cancelar,Annuler
 Common.button.create,Create,,,Créer
+Common.button.modify,Modify,,,
 Common.button.next,Next,Weiter,Próximo,Prochain
 Common.button.view,View,Anzeigen,Vista,Vue
 Common.text.none,None,,,Aucun
@@ -185,6 +188,7 @@ Page.title.spaceframeSelection,Spaceframe,Schiffsklasse,,Modèle de Vaisseau
 Page.title.starshipTalentSelection,Starship Talents,Raumschiff Talente,,Talents de Vaisseau
 Page.title.starshipTypeSelection,Starship Type,Raumschiff-Typ,,Type de Vaisseau
 Page.title.starshipWeaponsSelection,Starship Weapons,Schiffswaffen,,Armes de Vaisseau
+Page.title.modificationTypeSelection,ModificationType,,,
 Page.breadcrumb.characterCreation,Character Creation,Charaktererstellung,Creación de personajes,Création de personnages
 Page.breadcrumb.starshipCreation,Starship Creation,Raumschifferstellung,,Règles de Base
 Page.breadcrumb.supportingCharacterCreation,Supporting Character Creation,,,Création de Personnage Secondaire
@@ -245,3 +249,6 @@ AlliedMilitaryType.name.romulanStarEmpire,Romulan Star Empire,,,Empire Stellaire
 AlliedMilitaryType.name.bajoranMilitia,Bajoran Militia,,,Forces de Sécurité Bajoranes
 AlliedMilitaryType.name.cardassianUnion,Cardassian Union,,,Union Cardassienne
 AlliedMilitaryType.name.other,Other,,,Autre
+ModificationType.name.reputation,Reputation,,,
+ModificationType.name.promotion,Promotion,,,
+ModificationType.name.milestone,Milestone,,,

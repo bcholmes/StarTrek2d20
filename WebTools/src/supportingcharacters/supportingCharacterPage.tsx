@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character } from '../common/character';
+import {character, SpeciesStep } from '../common/character';
 import {CharacterType, CharacterTypeModel } from '../common/characterType';
 import {SpeciesHelper} from '../helpers/species';
 import {DropDownElement, DropDownInput} from '../components/dropDownInput';
@@ -49,7 +49,7 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
             character.attributes[i].value = v;
         });
 
-        character.species = Species.Human;
+        character.speciesStep = new SpeciesStep(Species.Human);
         character.rank = "Lieutenant";
         character.careerValue = "";
         character.environmentValue = "";
@@ -141,8 +141,7 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
                         ? (<div className="mb-2">
                              <InputFieldAndLabel labelName={t('Construct.other.species')} value={this.state.customSpeciesName || ''}
                                 id="speciesName" onChange={(value) => {
-                                    console.log("change " + value);
-                                    character.customSpeciesName = value;
+                                    character.speciesStep.customSpeciesName = value;
                                     this.setState((state) => ({...state, customSpeciesName: value}))
                                 }} />
                         </div>)
@@ -256,7 +255,7 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
         const species = this.getSpeciesList();
         let selection = species[index].value as Species;
 
-        character.species = selection;
+        character.speciesStep = new SpeciesStep(selection);
 
         this.setState((state) => ({...state, species: selection}));
     }

@@ -98,9 +98,9 @@ class SpeciesPrerequisite implements IConstructPrerequisite<Character> {
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return c.species === this.species ||
-               c.mixedSpecies === this.species ||
-               c.originalSpecies === this.species ||
+        return c.speciesStep?.species === this.species ||
+               c.speciesStep?.mixedSpecies === this.species ||
+               c.speciesStep?.originalSpecies === this.species ||
                (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
     }
     describe(): string {
@@ -119,7 +119,7 @@ class AnySpeciesPrerequisite implements IConstructPrerequisite<Character> {
 
     isPrerequisiteFulfilled(c: Character) {
         let result = (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
-        this.species.forEach(s => result = result || c.species === s || c.mixedSpecies === s || c.originalSpecies === s);
+        this.species.forEach(s => result = result || c.speciesStep?.species === s || c.speciesStep?.mixedSpecies === s || c.speciesStep?.originalSpecies === s);
         return result;
     }
     describe(): string {
@@ -3183,9 +3183,9 @@ export class Talents {
     }
 
     getAllAvailableTalentsForCharacter(character: Character) {
-        if (character.species === Species.Klingon && !character.hasTalent("Brak’lul")) {
+        if (character.speciesStep?.species === Species.Klingon && !character.hasTalent("Brak’lul")) {
             return [this.getTalentViewModel("Brak’lul")];
-        } else if (character.species === Species.Changeling && !character.hasTalent("Morphogenic Matrix")) {
+        } else if (character.speciesStep?.species === Species.Changeling && !character.hasTalent("Morphogenic Matrix")) {
             return [this.getTalentViewModel("Morphogenic Matrix")];
         } else {
             let result = this._talents.filter(t => t.isPrerequisiteFulfilled(character)).map(t => {

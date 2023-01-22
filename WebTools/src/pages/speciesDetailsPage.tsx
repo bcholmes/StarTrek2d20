@@ -42,7 +42,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
     }
 
     render() {
-        let species = SpeciesHelper.getSpeciesByType(character.species);
+        let species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
         const selectDesc = species.attributes.length > 3 ? "(Select three)" : "";
 
         return (
@@ -73,8 +73,8 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
     }
 
     renderTraitSection(species: SpeciesModel) {
-        let mixed = character.mixedSpecies != null
-            ? SpeciesHelper.getSpeciesByType(character.mixedSpecies)
+        let mixed = character.speciesStep?.mixedSpecies != null
+            ? SpeciesHelper.getSpeciesByType(character.speciesStep?.mixedSpecies)
             : null;
 
         const mixedTrait = mixed != null

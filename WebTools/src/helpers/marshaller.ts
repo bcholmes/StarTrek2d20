@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { Character, CharacterAttribute, CharacterSkill, CharacterTalent, EnvironmentStep, UpbringingStep } from '../common/character';
+import { Character, CharacterAttribute, CharacterSkill, CharacterTalent, EnvironmentStep, SpeciesStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { ShipBuildType, ShipBuildTypeModel, SimpleStats, Starship } from '../common/starship';
 import { Attribute } from './attributes';
@@ -35,18 +35,22 @@ class Marshaller {
             "age": character.age ? character.age.name : undefined,
             "name": character.name,
             "role": character.role,
-            "species": { "primary": Species[character.species]},
             "attributes": this.toAttributeObject(character.attributes),
             "disciplines": this.toSkillObject(character.skills),
             "focuses": [...character.focuses]
         };
 
-        if (character.rank) {
-            sheet["rank"] = character.rank;
+        if (character.speciesStep) {
+            sheet["species"] = { "primary": Species[character.speciesStep.species]};
+
+            if (character.speciesStep.customSpeciesName && character.speciesStep.species === Species.Custom) {
+                sheet["species"]["customName"] = character.speciesStep.customSpeciesName;
+            }
+
         }
 
-        if (character.customSpeciesName && character.species === Species.Custom) {
-            sheet["species"]["customName"] = character.customSpeciesName;
+        if (character.rank) {
+            sheet["rank"] = character.rank;
         }
 
         let additionalTraits = this.parseTraits(character.additionalTraits);
@@ -76,7 +80,6 @@ class Marshaller {
             "name": character.name,
             "career": character.career != null ? Career[character.career] : null,
             "careerEvents": [...character.careerEvents],
-            "species": { "primary": Species[character.species] },
             "attributes": this.toAttributeObject(character.attributes),
             "disciplines": this.toSkillObject(character.skills),
             "focuses": [...character.focuses],
@@ -87,15 +90,20 @@ class Marshaller {
             sheet["rank"] = character.rank;
         }
 
-        if (character.customSpeciesName && character.species === Species.Custom) {
-            sheet["species"]["customName"] = character.customSpeciesName;
-        }
+        if (character.speciesStep) {
+            sheet["species"] = { "primary": Species[character.speciesStep.species]};
 
-        if (character.mixedSpecies != null) {
-            sheet["species"]["mixed"] = Species[character.mixedSpecies];
-        }
-        if (character.originalSpecies != null) {
-            sheet["species"]["original"] = Species[character.originalSpecies];
+            if (character.speciesStep.customSpeciesName && character.speciesStep.species === Species.Custom) {
+                sheet["species"]["customName"] = character.speciesStep.customSpeciesName;
+            }
+
+            if (character.speciesStep.mixedSpecies != null) {
+                sheet["species"]["mixed"] = Species[character.speciesStep.mixedSpecies];
+            }
+            if (character.speciesStep.originalSpecies != null) {
+                sheet["species"]["original"] = Species[character.speciesStep.originalSpecies];
+            }
+
         }
 
         let talents = this.toTalentList(character.talents);
@@ -469,20 +477,20 @@ class Marshaller {
 
                 let species = SpeciesHelper.getSpeciesByType(speciesCode);
                 if (species != null) {
-                    result.species = speciesCode;
+                    result.speciesStep = new SpeciesStep(speciesCode);
                     result.addTrait(species.trait);
-                }
 
-                if (json.mixedSpecies != null) {
-                    let speciesCode = SpeciesHelper.getSpeciesTypeByName(json.mixedSpecies);
-                    if (speciesCode != null) {
-                        result.mixedSpecies = speciesCode;
+                    if (json.mixedSpecies != null) {
+                        let speciesCode = SpeciesHelper.getSpeciesTypeByName(json.mixedSpecies);
+                        if (speciesCode != null) {
+                            result.speciesStep.mixedSpecies = speciesCode;
+                        }
                     }
-                }
-                if (json.originalSpecies != null) {
-                    let speciesCode = SpeciesHelper.getSpeciesTypeByName(json.originalSpecies);
-                    if (speciesCode != null) {
-                        result.originalSpecies = speciesCode;
+                    if (json.originalSpecies != null) {
+                        let speciesCode = SpeciesHelper.getSpeciesTypeByName(json.originalSpecies);
+                        if (speciesCode != null) {
+                            result.speciesStep.originalSpecies = speciesCode;
+                        }
                     }
                 }
             } else {
@@ -491,31 +499,32 @@ class Marshaller {
                     let speciesCode = SpeciesHelper.getSpeciesTypeByName(speciesBlock.primary);
 
                     if (speciesCode === Species.Custom) {
-                        result.species = speciesCode;
+                        result.speciesStep = new SpeciesStep(speciesCode);
                         if (speciesBlock.customName) {
-                            result.customSpeciesName = speciesBlock.customName;
+                            result.speciesStep.customSpeciesName = speciesBlock.customName;
                         }
                     } else {
                         let species = SpeciesHelper.getSpeciesByType(speciesCode);
                         if (species != null) {
-                            result.species = speciesCode;
+                            result.speciesStep = new SpeciesStep(speciesCode);
                             result.addTrait(species.trait);
+                        }
+                    }
+
+                    if (speciesBlock.mixed != null) {
+                        let speciesCode = SpeciesHelper.getSpeciesTypeByName(speciesBlock.mixed);
+                        if (speciesCode != null) {
+                            result.speciesStep.mixedSpecies = speciesCode;
+                        }
+                    }
+                    if (speciesBlock.original != null) {
+                        let speciesCode = SpeciesHelper.getSpeciesTypeByName(speciesBlock.original);
+                        if (speciesCode != null) {
+                            result.speciesStep.originalSpecies = speciesCode;
                         }
                     }
                 }
 
-                if (speciesBlock.mixed != null) {
-                    let speciesCode = SpeciesHelper.getSpeciesTypeByName(speciesBlock.mixed);
-                    if (speciesCode != null) {
-                        result.mixedSpecies = speciesCode;
-                    }
-                }
-                if (speciesBlock.original != null) {
-                    let speciesCode = SpeciesHelper.getSpeciesTypeByName(speciesBlock.original);
-                    if (speciesCode != null) {
-                        result.originalSpecies = speciesCode;
-                    }
-                }
             }
         }
         if (json.career) {

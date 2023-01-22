@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {Character, character} from '../common/character';
+import {Character, character, SpeciesStep} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import {SpeciesHelper} from '../helpers/species';
@@ -143,7 +143,7 @@ class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
     }
 
     private showCustomSpecies() {
-        character.species = Species.Custom;
+        character.speciesStep = new SpeciesStep(Species.Custom);
         Navigation.navigateToPage(PageIdentity.CustomSpeciesDetails);
     }
 
@@ -162,7 +162,7 @@ class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
     }
 
     private selectSpecies(species: Species) {
-        character.species = species;
+        character.speciesStep = new SpeciesStep(species);
         if (species === Species.Kobali) {
             Navigation.navigateToPage(PageIdentity.KobaliExtraSpeciesDetails);
         } else if (species === Species.Borg) {
@@ -178,8 +178,8 @@ class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
     }
 
     private selectMixedSpecies(primary: Species, secondary: Species) {
-        character.species = primary;
-        character.mixedSpecies = secondary;
+        character.speciesStep = new SpeciesStep(primary);
+        character.speciesStep.mixedSpecies = secondary;
         SpeciesHelper.applySpecies(primary, secondary);
         Navigation.navigateToPage(PageIdentity.SpeciesDetails);
     }

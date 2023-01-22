@@ -118,7 +118,7 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
     render() {
         const { t } = this.props;
 
-        const species = SpeciesHelper.getSpeciesByType(character.species);
+        const species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
 
         const nameDescription = species == null ? "Custom species might have any naming protocol." : species.nameDescription;
 

@@ -9,6 +9,7 @@ import { PageIdentity } from "../../pages/pageIdentity";
 import { Button } from "../../components/button";
 import { DropDownInput, DropDownElement  } from "../../components/dropDownInput";
 import Modifications, { ModificationType } from "../model/modificationType";
+import Milestones, { MilestoneType } from "../model/milestoneType";
 
 interface ModificationTypeSelectionPageProperties extends WithTranslation {
     character?: Character;
@@ -18,6 +19,7 @@ interface ModificationTypeSelectionPageProperties extends WithTranslation {
 
 interface ModificationTypeSelectionPageState {
     modificationType?: ModificationType;
+    milestoneType?: MilestoneType;
 }
 
 class ModificationTypeSelectionPage extends React.Component<ModificationTypeSelectionPageProperties, ModificationTypeSelectionPageState> {
@@ -44,12 +46,23 @@ class ModificationTypeSelectionPage extends React.Component<ModificationTypeSele
                         </nav>
 
                         <Header>{t('Page.title.modificationTypeSelection')}</Header>
-                        <p>Please select the modification that you want to apply to this character:</p>
+                        <p>{t('ModificationTypeSelectionPage.instruction')}</p>
 
                         <div>
-                            <DropDownInput items={this.getModificationTypes()} onChange={(index) => {}} defaultValue={this.state.modificationType}/>
+                            <DropDownInput items={this.getModificationTypes()} onChange={(index) => this.setState((state) => ({
+                                ...state,
+                                modificationType: Modifications.instance.getItems()[index].type
+                            }))} defaultValue={this.state.modificationType}/>
                         </div>
 
+                        {this.state.modificationType === ModificationType.Milestone
+                        ?  (<div className="my-4">
+                                <p>{t('ModificationTypeSelectionPage.whatMilestoneType')}</p>
+                                <div>
+                                    <DropDownInput items={this.getMilestoneTypes()} onChange={(index) => {}} defaultValue={this.state.milestoneType}/>
+                                </div>
+                            </div>)
+                        : null}
                         <div className="my-4 text-right">
                             <Button buttonType={true} className="btn btn-primary btn-sm" onClick={() => {}}>Next</Button>
                         </div>
@@ -60,6 +73,10 @@ class ModificationTypeSelectionPage extends React.Component<ModificationTypeSele
 
     getModificationTypes() {
         return Modifications.instance.getItems().map(t => new DropDownElement(t.type, t.name));
+    }
+
+    getMilestoneTypes() {
+        return Milestones.instance.getItems().map(t => new DropDownElement(t.type, t.name));
     }
 
     goToHome(e: React.MouseEvent<HTMLAnchorElement>) {

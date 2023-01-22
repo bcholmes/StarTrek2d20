@@ -3,7 +3,7 @@ import { Header } from "../../components/header";
 import LcarsFrame from "../../components/lcarsFrame";
 import { PageIdentity } from "../../pages/pageIdentity";
 import convert from "xml-js"
-import { Character, EnvironmentStep, UpbringingStep } from "../../common/character";
+import { Character, EnvironmentStep, SpeciesStep, UpbringingStep } from "../../common/character";
 import MainCharacterView from "../../view/mainCharacterView";
 import { Attribute, AttributesHelper } from "../../helpers/attributes";
 import { Skill, SkillsHelper } from "../../helpers/skills";
@@ -84,12 +84,12 @@ class XmlFormatViewerPage extends React.Component<{}, IXmlFormatViewerState> {
                 SpeciesHelper.getAllSpecies().forEach(s => {
                     if (speciesName === s.name) {
                         console.log(speciesName);
-                        character.species = s.id;
+                        character.speciesStep = new SpeciesStep(s.id);
                     }
                 });
-                if (character.species == null) {
-                    character.species = Species.Custom;
-                    character.customSpeciesName = speciesName;
+                if (character.speciesStep == null) {
+                    character.speciesStep = new SpeciesStep(Species.Custom);
+                    character.speciesStep.customSpeciesName = speciesName;
                 }
 
                 let notes = c.notes;

@@ -47,6 +47,9 @@
     "CharacterTypePage.whatMilitary": "What military does this character represent?",
     "CharacterTypePage.otherMilitaryName": "What's the name of this military?",
 
+    "ModificationTypeSelectionPage.instruction": "Please select the modification that you want to apply to this character:",
+    "ModificationTypeSelectionPage.whatMilestoneType": "What kind of milestone is being applied?",
+
     "SpeciesDetails.options": "Species Options",
     "SpeciesDetails.selectThree": "(Select three)",
     "SpeciesDetails.allowCrossSpecies": "Allow cross-species talents (GM's decision)",
@@ -97,6 +100,7 @@
     "Common.button.add": "Add",
     "Common.button.cancel": "Cancel",
     "Common.button.create": "Create",
+    "Common.button.modify": "Modify",
     "Common.button.next": "Next",
     "Common.button.view": "View",
 
@@ -205,6 +209,7 @@
     "Page.title.starshipTalentSelection": "Starship Talents",
     "Page.title.starshipTypeSelection": "Starship Type",
     "Page.title.starshipWeaponsSelection": "Starship Weapons",
+    "Page.title.modificationTypeSelection": "ModificationType",
 
     "Page.breadcrumb.characterCreation": "Character Creation",
     "Page.breadcrumb.starshipCreation": "Starship Creation",
@@ -271,5 +276,9 @@
     "AlliedMilitaryType.name.romulanStarEmpire": "Romulan Star Empire",
     "AlliedMilitaryType.name.bajoranMilitia": "Bajoran Militia",
     "AlliedMilitaryType.name.cardassianUnion": "Cardassian Union",
-    "AlliedMilitaryType.name.other": "Other"
+    "AlliedMilitaryType.name.other": "Other",
+
+    "ModificationType.name.reputation": "Reputation",
+    "ModificationType.name.promotion": "Promotion",
+    "ModificationType.name.milestone": "Milestone"
 }
