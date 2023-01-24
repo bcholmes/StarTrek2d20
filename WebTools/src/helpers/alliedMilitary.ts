@@ -35,7 +35,7 @@ class _AllyHelper {
                 Era.NextGeneration),
         new AlliedMilitary("Cardassian Union", AlliedMilitaryType.CARDASSIAN_UNION, [Species.Cardassian], 
                 Era.NextGeneration),
-        new AlliedMilitary("Dominion", AlliedMilitaryType.Dominion, [Species.JemHadar], Era.NextGeneration),
+        new AlliedMilitary("Dominion", AlliedMilitaryType.DOMINION, [Species.JemHadar], Era.NextGeneration),
         new AlliedMilitary("Klingon Defence Force",AlliedMilitaryType.KLINGON_DEFENCE_FORCE, [Species.KlingonExt, Species.Klingon, Species.KlingonQuchHa], 
                 Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
         new AlliedMilitary("MACO", AlliedMilitaryType.MACO, [Species.Human], Era.Enterprise),
