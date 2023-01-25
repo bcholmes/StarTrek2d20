@@ -11,6 +11,7 @@ export enum AlliedMilitaryType {
     RomulanStarEmpire,
     BajoranMilitia,
     CardassianUnion,
+    Dominion,
     Other
 }
 
@@ -40,6 +41,7 @@ class _AllyHelper {
                 Era.NextGeneration),
         new AlliedMilitary("Cardassian Union", AlliedMilitaryType.CardassianUnion, [Species.Cardassian],
                 Era.NextGeneration),
+        new AlliedMilitary("Dominion", AlliedMilitaryType.Dominion, [Species.JemHadar], Era.NextGeneration),
         new AlliedMilitary("Klingon Defence Force",AlliedMilitaryType.KlingonDefenceForce, [Species.KlingonExt, Species.Klingon, Species.KlingonQuchHa],
                 Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
         new AlliedMilitary("MACO", AlliedMilitaryType.Maco, [Species.Human], Era.Enterprise),

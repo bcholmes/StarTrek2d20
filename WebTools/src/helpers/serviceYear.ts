@@ -74,6 +74,8 @@ class ServiceYear {
         2400: "After the events of the first season of Star Trek: Picard",
         2401: "Second season of Star Trek: Picard",
         2402: "After the events of season two of Star Trek: Picard",
+        2409: "After the events of season two of Star Trek: Picard; events of Star Trek Online begin",
+        2410: "After the events of season two of Star Trek: Picard",
         3069: "The Burn destroys much of the galaxy's dilithium",
         3070: "After the events of the Burn",
         3188: "Third season of Star Trek: Discovery. Michael Burnham arrives in 32nd century",
