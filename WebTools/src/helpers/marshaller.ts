@@ -90,6 +90,10 @@ class Marshaller {
             sheet["rank"] = character.rank;
         }
 
+        if (character.reputation != null && character.reputation !== 10) {
+            sheet["reputation"] = character.reputation;
+        }
+
         if (character.speciesStep) {
             sheet["species"] = { "primary": Species[character.speciesStep.species]};
 
@@ -533,6 +537,9 @@ class Marshaller {
         }
         if (json.implants) {
             result.implants = [...json.implants];
+        }
+        if (json.reputation != null) {
+            result.reputation = json.reputation;
         }
         result.focuses = [...json.focuses];
         if (json.attributes) {

@@ -50,6 +50,10 @@
     "ModificationTypeSelectionPage.instruction": "Please select the modification that you want to apply to this character:",
     "ModificationTypeSelectionPage.whatMilestoneType": "What kind of milestone is being applied?",
 
+    "ReputationChangePage.instruction": "Adjust the character's reputation as appropriate.",
+
+    "ModificationCompletePage.instruction": "The character has been modified. You can view the revised character, or make another modification.\n\nYou might want to save the URL for the revised character.",
+
     "SpeciesDetails.options": "Species Options",
     "SpeciesDetails.selectThree": "(Select three)",
     "SpeciesDetails.allowCrossSpecies": "Allow cross-species talents (GM's decision)",
@@ -209,7 +213,9 @@
     "Page.title.starshipTalentSelection": "Starship Talents",
     "Page.title.starshipTypeSelection": "Starship Type",
     "Page.title.starshipWeaponsSelection": "Starship Weapons",
-    "Page.title.modificationTypeSelection": "ModificationType",
+    "Page.title.modificationTypeSelection": "Modification Type",
+    "Page.title.reputationChange": "Reputation Change",
+    "Page.title.modificationComplete": "Modification Completed",
 
     "Page.breadcrumb.characterCreation": "Character Creation",
     "Page.breadcrumb.starshipCreation": "Starship Creation",
@@ -280,5 +286,9 @@
 
     "ModificationType.name.reputation": "Reputation",
     "ModificationType.name.promotion": "Promotion",
-    "ModificationType.name.milestone": "Milestone"
+    "ModificationType.name.milestone": "Milestone",
+
+    "MilestoneType.name.normal": "Normal Milestone",
+    "MilestoneType.name.spotlight": "Spotlight Milestone",
+    "MilestoneType.name.arc": "Arc Milestone"
 }

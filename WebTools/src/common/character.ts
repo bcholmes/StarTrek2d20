@@ -494,7 +494,7 @@ export class Character extends Construct {
         });
     }
 
-    private copy(): Character {
+    public copy(): Character {
         var character = new Character();
 
         character.type = this.type;
@@ -525,22 +525,25 @@ export class Character extends Construct {
         });
         character.jobAssignment = this.jobAssignment;
         character.assignedShip = this.assignedShip;
-        if (this.environmentStep) {
-            character.environmentStep = new EnvironmentStep(this.environmentStep.environment, this.environmentStep.otherSpeciesWorld);
-        }
         character.rank = this.rank;
         character.role = this.role;
-        if (character.speciesStep != null) {
+        if (this.speciesStep) {
             character.speciesStep = new SpeciesStep(this.speciesStep.species);
             character.speciesStep.mixedSpecies = this.speciesStep.mixedSpecies;
             character.speciesStep.originalSpecies = this.speciesStep.originalSpecies;
             character.speciesStep.customSpeciesName = this.speciesStep.customSpeciesName;
+            if (this.speciesStep.attributes?.length) {
+                character.speciesStep.attributes = [...this.speciesStep.attributes];
+            }
         }
-        character.track = this.track;
+        if (this.environmentStep) {
+            character.environmentStep = new EnvironmentStep(this.environmentStep.environment, this.environmentStep.otherSpeciesWorld);
+        }
         if (this.upbringingStep) {
             character.upbringingStep = new UpbringingStep(this.upbringingStep.upbringing);
             character.upbringingStep.acceptedUpbringing = this.upbringingStep.acceptedUpbringing;
         }
+        character.track = this.track;
         character.enlisted = this.enlisted;
         character.environmentValue = this.environmentValue;
         character.trackValue = this.trackValue;
@@ -552,7 +555,9 @@ export class Character extends Construct {
         if (this.workflow) {
             character.workflow = this.workflow.copy();
         }
-
+        character.pronouns = this.pronouns;
+        character.name = this.name;
+        character.additionalTraits = this.additionalTraits;
         return character;
     }
 

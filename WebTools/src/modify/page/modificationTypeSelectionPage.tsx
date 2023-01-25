@@ -4,12 +4,12 @@ import { withRouter, RouteComponentProps } from "react-router";
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { Character } from "../../common/character";
 import { Header } from "../../components/header";
-import LcarsFrame from "../../components/lcarsFrame";
-import { PageIdentity } from "../../pages/pageIdentity";
 import { Button } from "../../components/button";
 import { DropDownInput, DropDownElement  } from "../../components/dropDownInput";
 import Modifications, { ModificationType } from "../model/modificationType";
 import Milestones, { MilestoneType } from "../model/milestoneType";
+import { navigateTo } from "../../common/navigator";
+import { PageIdentity } from "../../pages/pageIdentity";
 
 interface ModificationTypeSelectionPageProperties extends WithTranslation {
     character?: Character;
@@ -26,57 +26,57 @@ class ModificationTypeSelectionPage extends React.Component<ModificationTypeSele
 
     constructor(props) {
         super(props);
-        this.state = {};
-    }
-
-    componentDidMount() {
-        document.title = "Modify Character - STAR TREK ADVENTURES";
+        this.state = {
+            modificationType: ModificationType.Reputation
+        };
     }
 
     render() {
         const { t } = this.props;
-        return (<LcarsFrame activePage={PageIdentity.ModificationTypeSelection}>
-                <div id="app">
-                    <div className="page container ml-0">
-                        <nav aria-label="breadcrumb">
-                            <ol className="breadcrumb">
-                                <li className="breadcrumb-item"><a href="index.html" onClick={(e) => this.goToHome(e)}>{t('Page.title.home')}</a></li>
-                                <li className="breadcrumb-item active" aria-current="page">{t('Page.title.modificationTypeSelection')}</li>
-                            </ol>
-                        </nav>
+        return (<div className="page container ml-0">
+                    <nav aria-label="breadcrumb">
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="index.html" onClick={(e) => this.goToHome(e)}>{t('Page.title.home')}</a></li>
+                            <li className="breadcrumb-item active" aria-current="page">{t('Page.title.modificationTypeSelection')}</li>
+                        </ol>
+                    </nav>
 
-                        <Header>{t('Page.title.modificationTypeSelection')}</Header>
-                        <p>{t('ModificationTypeSelectionPage.instruction')}</p>
+                    <Header>{t('Page.title.modificationTypeSelection')}</Header>
+                    <p>{t('ModificationTypeSelectionPage.instruction')}</p>
 
-                        <div>
-                            <DropDownInput items={this.getModificationTypes()} onChange={(index) => this.setState((state) => ({
-                                ...state,
-                                modificationType: Modifications.instance.getItems()[index].type
-                            }))} defaultValue={this.state.modificationType}/>
-                        </div>
-
-                        {this.state.modificationType === ModificationType.Milestone
-                        ?  (<div className="my-4">
-                                <p>{t('ModificationTypeSelectionPage.whatMilestoneType')}</p>
-                                <div>
-                                    <DropDownInput items={this.getMilestoneTypes()} onChange={(index) => {}} defaultValue={this.state.milestoneType}/>
-                                </div>
-                            </div>)
-                        : null}
-                        <div className="my-4 text-right">
-                            <Button buttonType={true} className="btn btn-primary btn-sm" onClick={() => {}}>Next</Button>
-                        </div>
+                    <div>
+                        <DropDownInput items={this.getModificationTypes()} onChange={(index) => this.setState((state) => ({
+                            ...state,
+                            modificationType: Modifications.instance.getItems()[index].type
+                        }))} defaultValue={this.state.modificationType}/>
                     </div>
-                </div>
-            </LcarsFrame>);
+
+                    {this.state.modificationType === ModificationType.Milestone
+                    ?  (<div className="my-4">
+                            <p>{t('ModificationTypeSelectionPage.whatMilestoneType')}</p>
+                            <div>
+                                <DropDownInput items={this.getMilestoneTypes()} onChange={(index) => {}} defaultValue={this.state.milestoneType}/>
+                            </div>
+                        </div>)
+                    : null}
+                    <div className="my-4 text-right">
+                        <Button buttonType={true} className="btn btn-primary btn-sm" onClick={() => this.nextPage()}>Next</Button>
+                    </div>
+                </div>);
     }
 
     getModificationTypes() {
-        return Modifications.instance.getItems().map(t => new DropDownElement(t.type, t.name));
+        return Modifications.instance.getItems().map(t => new DropDownElement(t.type, t.localizedName));
     }
 
     getMilestoneTypes() {
-        return Milestones.instance.getItems().map(t => new DropDownElement(t.type, t.name));
+        return Milestones.instance.getItems().map(t => new DropDownElement(t.type, t.localizedName));
+    }
+
+    nextPage() {
+        if (this.state.modificationType === ModificationType.Reputation) {
+            navigateTo(null, PageIdentity.ReputationChange);
+        }
     }
 
     goToHome(e: React.MouseEvent<HTMLAnchorElement>) {
@@ -90,7 +90,7 @@ class ModificationTypeSelectionPage extends React.Component<ModificationTypeSele
 
 function mapStateToProps(state, ownProps) {
     return {
-        character: state.character.character,
+        character: state.character.currentCharacter,
         isModified: state.character.isModified
     };
 }

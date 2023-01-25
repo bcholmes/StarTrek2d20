@@ -24,7 +24,7 @@ class SectionContent {
 
 class CharacterSheetData {
 
-    readonly character;
+    readonly character: Character;
     private _data: SectionContent[];
 
 
@@ -49,10 +49,10 @@ class CharacterSheetData {
     }
 
     private getEnvironmentString() {
-        let env = this.character.environment >= 0 ? EnvironmentsHelper.getEnvironment(this.character.environment, this.character.type).name : i18n.t('Common.text.none');
+        let env = this.character.environmentStep ? EnvironmentsHelper.getEnvironment(this.character.environmentStep.environment, this.character.type).name : i18n.t('Common.text.none');
 
-        if (this.character.environment === Environment.AnotherSpeciesWorld) {
-            env += ` (${this.character.otherSpeciesWorld})`;
+        if (this.character.environmentStep?.environment === Environment.AnotherSpeciesWorld) {
+            env += ` (${this.character.environmentStep?.otherSpeciesWorld})`;
         }
 
         return env;

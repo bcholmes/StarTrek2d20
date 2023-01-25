@@ -61,5 +61,6 @@ export enum PageIdentity {
     XmlViewer,
 
     ModificationTypeSelection,
-
+    ReputationChange,
+    ModificationCompletePage
 }
