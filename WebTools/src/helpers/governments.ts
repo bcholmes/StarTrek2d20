@@ -9,6 +9,7 @@ export enum GovernmentType {
     ROMULAN,
     BAJORAN,
     CARDASSIAN,
+    DOMINION,
     OTHER
 }
 
@@ -29,6 +30,7 @@ class _Governments {
         new Government("Andorian",GovernmentType.ANDORIAN, Era.Enterprise),
         new Government("Bajoran", GovernmentType.BAJORAN, Era.NextGeneration),
         new Government("Cardassian", GovernmentType.CARDASSIAN, Era.NextGeneration),
+        new Government("Dominion", GovernmentType.DOMINION, Era.NextGeneration),
         new Government("Federation", GovernmentType.FEDERATION, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
         new Government("Klingon",GovernmentType.KLINGON, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
         new Government("Romulan", GovernmentType.ROMULAN, Era.OriginalSeries, Era.NextGeneration),
