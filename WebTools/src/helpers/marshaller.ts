@@ -9,6 +9,7 @@ import { allDepartments, Department } from './departments';
 import { Environment, EnvironmentsHelper } from './environments';
 import { MissionPod, MissionPodHelper } from './missionPods';
 import { MissionProfile, MissionProfileHelper } from './missionProfiles';
+import { RanksHelper } from './ranks';
 import { Skill } from './skills';
 import { Spaceframe } from './spaceframeEnum';
 import { SpaceframeModel } from './spaceframeModel';
@@ -18,7 +19,7 @@ import { Species } from './speciesEnum';
 import { allSystems, System } from './systems';
 import { TalentsHelper } from './talents';
 import { TalentSelection } from './talentSelection';
-import { Track } from './trackEnum';
+import { getAllTracks, Track } from './trackEnum';
 import { Upbringing, UpbringingsHelper } from './upbringings';
 import { CaptureType, CaptureTypeModel, DeliverySystem, DeliverySystemModel, EnergyLoadType, EnergyLoadTypeModel, TorpedoLoadType, TorpedoLoadTypeModel, UsageCategory, Weapon, WeaponType } from './weapons';
 
@@ -108,6 +109,13 @@ class Marshaller {
                 sheet["species"]["original"] = Species[character.speciesStep.originalSpecies];
             }
 
+        }
+
+        if (character.track != null) {
+            sheet["training"] = {
+                "track": Track[character.track],
+                "enlisted": character.enlisted
+            }
         }
 
         let talents = this.toTalentList(character.talents);
@@ -540,6 +548,20 @@ class Marshaller {
         }
         if (json.reputation != null) {
             result.reputation = json.reputation;
+        }
+        if (json.training != null) {
+            let trackAsString = json.training.track;
+            getAllTracks().forEach(t => {
+                if (Track[t] === trackAsString) {
+                    result.track = t;
+                }
+            });
+            result.enlisted = json.training.enlisted;
+        } else {
+            let rank = result.rank == null ? null : RanksHelper.instance().getRankByName(result.rank);
+            if (rank) {
+                result.enlisted = rank.isEnlisted;
+            }
         }
         result.focuses = [...json.focuses];
         if (json.attributes) {

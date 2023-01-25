@@ -265,7 +265,7 @@ export class Character extends Construct {
         let result = []
         for (let name in this.talents) {
             let t = this.talents[name];
-            result.push(t.rank === 1 ? name : (name + " [x" + t.rank + "]"));
+            result.push(t.rank === 1 ? name : (name + " [Rank " + t.rank + "]"));
         }
         return result;
     }
@@ -590,3 +590,10 @@ export class Character extends Construct {
 }
 
 export let character = new Character();
+
+export const setGlobalCharacter = (c: Character) => {
+    if (c) {
+        character = c;
+    }
+}
+

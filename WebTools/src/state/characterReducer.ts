@@ -1,5 +1,5 @@
 import { Character } from "../common/character";
-import { MODIFY_CHARACTER_REPUTATION, SET_CHARACTER } from "./characterActions";
+import { MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -20,6 +20,15 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         case MODIFY_CHARACTER_REPUTATION: {
             let temp = state.currentCharacter.copy();
             temp.reputation += action.payload.delta;
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case MODIFY_CHARACTER_RANK: {
+            let temp = state.currentCharacter.copy();
+            temp.rank = action.payload.rank;
             return {
                 ...state,
                 currentCharacter: temp,

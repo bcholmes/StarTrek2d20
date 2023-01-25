@@ -52,6 +52,7 @@ import CustomSpeciesDetailsPage from './customSpeciesDetailsPage';
 import ModificationTypeSelectionPage from '../modify/page/modificationTypeSelectionPage';
 import ReputationChangePage from '../modify/page/reputationChangePage';
 import ModificationCompletePage from '../modify/page/modificationCompletePage';
+import PromotionPage from '../modify/page/promotionPage';
 
 export class PageFactory {
 
@@ -124,6 +125,7 @@ export class PageFactory {
         this.factories[PageIdentity.CreditsPage] = () => <CreditsPage />;
         this.factories[PageIdentity.ModificationTypeSelection] = () => <ModificationTypeSelectionPage />;
         this.factories[PageIdentity.ReputationChange] = () => <ReputationChangePage />;
+        this.factories[PageIdentity.Promotion] = () => <PromotionPage />;
         this.factories[PageIdentity.ModificationCompletePage] = () => <ModificationCompletePage />;
     }
 

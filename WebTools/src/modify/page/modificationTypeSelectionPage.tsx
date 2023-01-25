@@ -76,6 +76,8 @@ class ModificationTypeSelectionPage extends React.Component<ModificationTypeSele
     nextPage() {
         if (this.state.modificationType === ModificationType.Reputation) {
             navigateTo(null, PageIdentity.ReputationChange);
+        } else if (this.state.modificationType === ModificationType.Promotion) {
+            navigateTo(null, PageIdentity.Promotion);
         }
     }
 

@@ -39,7 +39,7 @@ class Modifications {
     }
 
     getItems() {
-        return this.items;
+        return [this.items[0], this.items[2]];
     }
 }
 

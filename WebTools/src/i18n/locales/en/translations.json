@@ -50,6 +50,8 @@
     "ModificationTypeSelectionPage.instruction": "Please select the modification that you want to apply to this character:",
     "ModificationTypeSelectionPage.whatMilestoneType": "What kind of milestone is being applied?",
 
+    "PromotionPage.instruction": "Select a new rank for this character.",
+
     "ReputationChangePage.instruction": "Adjust the character's reputation as appropriate.",
 
     "ModificationCompletePage.instruction": "The character has been modified. You can view the revised character, or make another modification.\n\nYou might want to save the URL for the revised character.",
@@ -215,6 +217,7 @@
     "Page.title.starshipWeaponsSelection": "Starship Weapons",
     "Page.title.modificationTypeSelection": "Modification Type",
     "Page.title.reputationChange": "Reputation Change",
+    "Page.title.promotion": "Promotion",
     "Page.title.modificationComplete": "Modification Completed",
 
     "Page.breadcrumb.characterCreation": "Character Creation",
@@ -268,6 +271,7 @@
     "GovernmentType.name.andorian": "Andorian",
     "GovernmentType.name.bajoran": "Bajoran",
     "GovernmentType.name.cardassian": "Cardassian",
+    "GovernmentType.name.dominion": "Dominion",
     "GovernmentType.name.federation": "Federation",
     "GovernmentType.name.klingon": "Klingon",
     "GovernmentType.name.romulan": "Romulan",
@@ -282,6 +286,7 @@
     "AlliedMilitaryType.name.romulanStarEmpire": "Romulan Star Empire",
     "AlliedMilitaryType.name.bajoranMilitia": "Bajoran Militia",
     "AlliedMilitaryType.name.cardassianUnion": "Cardassian Union",
+    "AlliedMilitaryType.name.dominion": "Dominion",
     "AlliedMilitaryType.name.other": "Other",
 
     "ModificationType.name.reputation": "Reputation",

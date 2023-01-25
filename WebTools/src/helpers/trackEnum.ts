@@ -36,3 +36,11 @@ export enum Track {
     ScientificOrTechnicalExpert,
     TraderOrMerchant
 }
+
+export const getAllTracks = () => {
+    let result = [];
+    for (let i = Track.Command; i <= Track.TraderOrMerchant; i++) {
+        result.push(i);
+    }
+    return result;
+}

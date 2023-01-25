@@ -101,17 +101,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
             return (<div key={i}>{f}</div>);
         });
 
-        let characterTalents = [];
-
-        for (var talent in c.talents) {
-            let tal = character.talents[talent];
-            let tt = TalentsHelper.getTalent(talent);
-            if (tt && tt.maxRank > 1) {
-                characterTalents.push(talent + " [Rank: " + tal.rank + "]");
-            } else {
-                characterTalents.push(talent);
-            }
-        }
+        let characterTalents = c.getTalentNameList();
 
         const talents = characterTalents.map((t, i) => {
             return (<div key={i}>{t}</div>)

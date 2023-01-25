@@ -11,6 +11,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230124</b>
+                <ul>
+                    <li>Some internal changes relating to sources. The creator should remember your preferences on sources.</li>
+                    <li>Initial work on modification of characters. This is very preliminary, and has some key limitations at the moment.</li>
+                    <li>Accepted a contribution to allow "Dominion" to be a Government type and Allied Military type for players who want to play Dominion characters.</li>
+                </ul>
                 <b>v1.230115</b>
                 <ul>
                     <li>A few more bug fixes.</li>

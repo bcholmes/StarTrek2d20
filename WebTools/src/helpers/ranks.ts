@@ -3,7 +3,7 @@ import {Role, RolesHelper} from './roles';
 import {Era} from './eras';
 import {Source} from './sources';
 import {Track} from './trackEnum';
-import {AlliedMilitaryDetails, character } from '../common/character';
+import {AlliedMilitaryDetails, Character, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { AlliedMilitaryType } from './alliedMilitary';
 import { AllOfPrerequisite, AnyOfPrerequisite, CharacterTypePrerequisite, EnlistedPrerequisite, EraPrerequisite, IPrerequisite, NotPrerequisite, SourcePrerequisite, TypePrerequisite } from './prerequisite';
@@ -210,6 +210,10 @@ class RankModel {
         this.name = name;
         this.prerequisites = prerequisites;
         this.tiers = tiers;
+    }
+
+    get isEnlisted() {
+        return this.prerequisites.filter(p => p instanceof EnlistedPrerequisite).length > 0;
     }
 }
 
@@ -960,7 +964,7 @@ export class RanksHelper {
     }
 }
 
-export const getNameAndShortRankOf = (character) => {
+export const getNameAndShortRankOf = (character: Character) => {
     if (character.rank) {
         let rank = RanksHelper.instance().getRankByName(character.rank);
         let abbreviation = (rank && rank.abbreviation) ? rank.abbreviation : "";

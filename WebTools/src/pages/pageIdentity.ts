@@ -62,5 +62,6 @@ export enum PageIdentity {
 
     ModificationTypeSelection,
     ReputationChange,
+    Promotion,
     ModificationCompletePage
 }

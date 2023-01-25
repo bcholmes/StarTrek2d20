@@ -39,6 +39,7 @@ CharacterTypePage.whatMilitary,What military does this character represent?,,,Qu
 CharacterTypePage.otherMilitaryName,What's the name of this military?,,,Quel est le nom de l'armée?
 ModificationTypeSelectionPage.instruction,Please select the modification that you want to apply to this character:,,,
 ModificationTypeSelectionPage.whatMilestoneType,What kind of milestone is being applied?,,,
+PromotionPage.instruction,Select a new rank for this character.,,,
 ReputationChangePage.instruction,Adjust the character's reputation as appropriate.,,,
 ModificationCompletePage.instruction,"The character has been modified. You can view the revised character, or make another modification.
 
@@ -194,6 +195,7 @@ Page.title.starshipTypeSelection,Starship Type,Raumschiff-Typ,,Type de Vaisseau
 Page.title.starshipWeaponsSelection,Starship Weapons,Schiffswaffen,,Armes de Vaisseau
 Page.title.modificationTypeSelection,Modification Type,,,
 Page.title.reputationChange,Reputation Change,,,
+Page.title.promotion,Promotion,,,
 Page.title.modificationComplete,Modification Completed,,,
 Page.breadcrumb.characterCreation,Character Creation,Charaktererstellung,Creación de personajes,Création de personnages
 Page.breadcrumb.starshipCreation,Starship Creation,Raumschifferstellung,,Règles de Base
@@ -241,6 +243,7 @@ CharacterType.name.other,Other,,,Autre
 GovernmentType.name.andorian,Andorian,,,Andorien
 GovernmentType.name.bajoran,Bajoran,,,Bajoran
 GovernmentType.name.cardassian,Cardassian,,,Cardassien
+GovernmentType.name.dominion,Dominion,,,
 GovernmentType.name.federation,Federation,,,Fédération
 GovernmentType.name.klingon,Klingon,,,Klingon
 GovernmentType.name.romulan,Romulan,,,Romulien
@@ -254,6 +257,7 @@ AlliedMilitaryType.name.klingonDefenceForce,Klingon Defense Force,,,Forces de D�
 AlliedMilitaryType.name.romulanStarEmpire,Romulan Star Empire,,,Empire Stellaire Romulien
 AlliedMilitaryType.name.bajoranMilitia,Bajoran Militia,,,Forces de Sécurité Bajoranes
 AlliedMilitaryType.name.cardassianUnion,Cardassian Union,,,Union Cardassienne
+AlliedMilitaryType.name.dominion,Dominion,,,
 AlliedMilitaryType.name.other,Other,,,Autre
 ModificationType.name.reputation,Reputation,,,
 ModificationType.name.promotion,Promotion,,,
