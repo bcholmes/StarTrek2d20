@@ -41,13 +41,15 @@ class RegistryNumberGenerator {
         2151: 1,
         2264: 1850,
         2285: 2000,
+        2326: 2890,
         2360: 71800,
         2370: 74000,
         2371: 74600,
         2380: 75500,
         2385: 76800,
         2400: 82900,
-        2409: 97000
+        2409: 97000,
+        2450: 120000 // ??? Maybe ????
     }
 
     generate(serviceYear: number, type: CharacterType, spaceframe: SpaceframeModel) {
