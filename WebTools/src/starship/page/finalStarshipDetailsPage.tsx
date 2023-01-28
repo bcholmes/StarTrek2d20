@@ -5,6 +5,7 @@ import { Starship } from "../../common/starship";
 import { Button } from "../../components/button";
 import { CharacterSheetDialog } from "../../components/characterSheetDialog";
 import { Header } from "../../components/header";
+import RegistryNumber from "../../components/registryNumberGenerator";
 import { Era } from "../../helpers/eras";
 import { marshaller } from "../../helpers/marshaller";
 import { CharacterSheetRegistry } from "../../helpers/sheets";
@@ -18,6 +19,17 @@ interface IFinalStarshipDetailsPageProperties {
 }
 
 class FinalStarshipDetailsPage extends React.Component<IFinalStarshipDetailsPageProperties, {}> {
+
+    constructor(props) {
+        super(props);
+
+        if (this.props.starship.type === CharacterType.Starfleet) {
+            let registry = RegistryNumber.generate(this.props.starship.serviceYear,
+                this.props.starship.type,
+                this.props.starship.spaceframeModel);
+            store.dispatch(setStarshipRegistry(registry));
+        }
+    }
 
     render() {
         return (<div className="page container ml-0">

@@ -37,6 +37,19 @@ class RegistryNumberGenerator {
         86505: "Zheng He"
     }
 
+    serviceYearRegistryNumbers: { [year: number]: number } = {
+        2151: 1,
+        2264: 1850,
+        2285: 2000,
+        2360: 71800,
+        2370: 74000,
+        2371: 74600,
+        2380: 75500,
+        2385: 76800,
+        2400: 82900,
+        2409: 97000
+    }
+
     generate(serviceYear: number, type: CharacterType, spaceframe: SpaceframeModel) {
         let numberOfDigits = 5;
         if (serviceYear < 2220) {
@@ -45,10 +58,28 @@ class RegistryNumberGenerator {
             numberOfDigits = 4;
         }
 
+        let lower = 0;
+        let upper = 999999;
+
+
+        let keys = Object.keys(this.serviceYearRegistryNumbers);
+        keys.sort();
+
+        for (let key of keys) {
+            let year = parseInt(key);
+            if (serviceYear > year) {
+                lower = this.serviceYearRegistryNumbers[key];
+            }
+            if (year > serviceYear) {
+                upper = this.serviceYearRegistryNumbers[key];
+                break;
+            }
+        }
+
         let result = null;
         while (result == null) {
-            let temp = this.generateRandom(numberOfDigits);
-            if (this.importantRegistryNumbers[parseInt(temp)] == null) {
+            let temp = Math.floor(Math.random() * (upper - lower)) + lower;
+            if (this.importantRegistryNumbers[temp] == null) {
                 result = temp;
             }
         }
