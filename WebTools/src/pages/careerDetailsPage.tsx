@@ -18,14 +18,14 @@ export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
     constructor(props: IPageProperties) {
         super(props);
 
-        const career = CareersHelper.getCareer(character.career);
+        const career = CareersHelper.instance.getCareer(character.career);
         if (career.talent.length === 1) {
             this._talent = career.talent[0];
         }
     }
 
     render() {
-        const career = CareersHelper.getCareer(character.career);
+        const career = CareersHelper.instance.getCareer(character.career);
 
         const talent = career.talent.length === 1
             ? (<TalentDescription name={career.talent[0].name} description={career.talent[0].description}/>)

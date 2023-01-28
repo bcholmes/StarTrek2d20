@@ -266,7 +266,7 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
     private getRanks() {
         var result = [];
 
-        const ranks = RanksHelper.instance().getRanks(true)
+        const ranks = RanksHelper.instance().getRanks(character, true)
             .filter(r => r.id !== Rank.Captain &&
                          r.id !== Rank.Commander &&
                          r.id !== Rank.LieutenantCommander);

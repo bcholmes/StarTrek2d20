@@ -29,7 +29,6 @@ class MissionProfileSelectionPage extends React.Component<IMissionProfileSelecti
             <MissionProfileSelection
                 initialSelection={this.props.starship.missionProfileModel}
                 starship={this.props.starship}
-                type={this.props.starship.type}
                 onSelection={(profile) => store.dispatch(setStarshipMissionProfile(profile))} />
             <div className="text-right">
                 <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>

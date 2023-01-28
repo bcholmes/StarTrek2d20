@@ -3,11 +3,12 @@ import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
-import {Career, CareersHelper} from '../helpers/careers';
+import {CareersHelper} from '../helpers/careers';
 import {Button} from '../components/button';
 import {CareerSelection} from '../components/careerSelection';
 import InstructionText from '../components/instructionText';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
+import { Career } from '../helpers/careerEnum';
 
 interface ICareerPageState {
     showSelection: boolean;
@@ -50,7 +51,7 @@ export class CareerPage extends React.Component<IPageProperties, ICareerPageStat
     }
 
     private rollCareer() {
-        var career = CareersHelper.generateCareer();
+        var career = CareersHelper.instance.generateCareer();
         this.selectCareer(career);
     }
 
@@ -64,7 +65,7 @@ export class CareerPage extends React.Component<IPageProperties, ICareerPageStat
 
     private selectCareer(career: Career) {
         character.career = career;
-        CareersHelper.applyCareer(character.career);
+        CareersHelper.instance.applyCareer(character.career);
         Navigation.navigateToPage(PageIdentity.CareerDetails);
     }
 }

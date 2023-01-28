@@ -1,5 +1,6 @@
 ﻿import { CharacterType } from '../common/characterType';
-import { IPrerequisite, SourcePrerequisite } from './prerequisite';
+import { Starship } from '../common/starship';
+import { IConstructPrerequisite, SourcePrerequisite } from './prerequisite';
 import { Source } from './sources';
 import {TalentsHelper, TalentModel} from './talents';
 
@@ -33,9 +34,9 @@ export class MissionProfileModel {
     talents: TalentModel[];
     traits: string;
     notes: string;
-    prerequisites: IPrerequisite[];
+    prerequisites: IConstructPrerequisite<Starship>[];
 
-    constructor(id: MissionProfile, name: string, departments: number[], talents: TalentModel[], traits: string = "", notes: string = "", ...prerequisites: IPrerequisite[]) {
+    constructor(id: MissionProfile, name: string, departments: number[], talents: TalentModel[], traits: string = "", notes: string = "", ...prerequisites: IConstructPrerequisite<Starship>[]) {
         this.id = id;
         this.name = name;
         this.departments = departments;
@@ -44,10 +45,10 @@ export class MissionProfileModel {
         this.prerequisites = prerequisites;
     }
 
-    public isPrerequisitesFulfilled() {
+    public isPrerequisitesFulfilled(starship) {
         let result = true;
         this.prerequisites.forEach(p => {
-            result = result && p.isPrerequisiteFulfilled();
+            result = result && p.isPrerequisiteFulfilled(starship);
         });
         return result;
     }
@@ -331,11 +332,11 @@ class MissionProfiles {
         //    []),
     };
 
-    getMissionProfiles(type: CharacterType) {
+    getMissionProfiles(starship: Starship) {
         let profiles: MissionProfileModel[] = [];
-        let list = (type === CharacterType.KlingonWarrior) ? this._klingonProfiles : this._profiles;
+        let list = (starship.type === CharacterType.KlingonWarrior) ? this._klingonProfiles : this._profiles;
         for (let profile of Object.values(list)) {
-            if (profile && profile.isPrerequisitesFulfilled()) {
+            if (profile && profile.isPrerequisitesFulfilled(starship)) {
                 profiles.push(profile);
             }
         };

@@ -39,7 +39,7 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
         super(props);
 
         this.roles = [];
-        RolesHelper.getRoles().forEach(role => {
+        RolesHelper.getRoles(character).forEach(role => {
             this.roles.push(role);
         });
 
@@ -431,7 +431,7 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
     private getRanks() {
         this.ranks = [];
 
-        RanksHelper.instance().getRanks(false).forEach(rank => {
+        RanksHelper.instance().getRanks(character, false).forEach(rank => {
             if (rank.tiers > 1) {
                 for (var i = 0; i < rank.tiers; i++) {
                     const tier = i + 1;

@@ -1,7 +1,8 @@
 ﻿import * as React from 'react';
 import { character } from '../common/character';
 import {Window} from '../common/window';
-import {Career, CareersHelper} from '../helpers/careers';
+import { Career } from '../helpers/careerEnum';
+import {CareersHelper} from '../helpers/careers';
 import { ADVANCED_TEAM_DYNAMICS } from '../helpers/talents';
 import {Button} from './button';
 
@@ -15,7 +16,7 @@ export class CareerSelection extends React.Component<ICareerSelectionProperties,
 
         let message = (character.hasTalent(ADVANCED_TEAM_DYNAMICS)) ? (<div className="page-text">Your character has a Talent ("{ADVANCED_TEAM_DYNAMICS}") that precludes Young characters</div>) : undefined;
 
-        var careers = CareersHelper.getCareers().map((c, i) => {
+        var careers = CareersHelper.instance.getCareers().map((c, i) => {
             const talent = c.talent.length === 1
                 ? c.talent[0].name
                 : "One talent of choice";

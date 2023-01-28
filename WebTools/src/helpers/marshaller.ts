@@ -4,7 +4,8 @@ import { Character, CharacterAttribute, CharacterSkill, CharacterTalent, Environ
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { ShipBuildType, ShipBuildTypeModel, SimpleStats, Starship } from '../common/starship';
 import { Attribute } from './attributes';
-import { Career, CareersHelper } from './careers';
+import { Career } from './careerEnum';
+import { CareersHelper } from './careers';
 import { allDepartments, Department } from './departments';
 import { Environment, EnvironmentsHelper } from './environments';
 import { MissionPod, MissionPodHelper } from './missionPods';
@@ -540,7 +541,7 @@ class Marshaller {
             }
         }
         if (json.career) {
-            let career = CareersHelper.getCareerByTypeName(json.career, result.type);
+            let career = CareersHelper.instance.getCareerByTypeName(json.career, result.type);
             result.career = career ? career.id : undefined;
         }
         if (json.implants) {

@@ -1,9 +1,9 @@
 ﻿import {Skill} from './skills';
 import {Source} from './sources';
-import {Character, character} from '../common/character';
+import {Character} from '../common/character';
 import { CharacterType } from '../common/characterType';
-import { AdultPrerequisite, AllOfPrerequisite, AnyOfPrerequisite, CareersPrerequisite, ChildPrerequisite, CivilianPrerequisite, EnlistedPrerequisite, EraPrerequisite, IPrerequisite, KlingonPrerequisite, NotPrerequisite, SourcePrerequisite, TypePrerequisite } from './prerequisite';
-import { Career } from './careers';
+import { AdultPrerequisite, AllOfPrerequisite, AnyOfPrerequisite, CadetPrerequisite, CareersPrerequisite, CharacterTypePrerequisite, ChildPrerequisite, CivilianPrerequisite, EnlistedPrerequisite, EraPrerequisite, IConstructPrerequisite, KlingonPrerequisite, NotPrerequisite, SourcePrerequisite } from './prerequisite';
+import { Career } from './careerEnum';
 import { Era } from './eras';
 
 export enum Role {
@@ -63,26 +63,32 @@ export enum Role {
  * We want there to be roles for Klingon characters if the Klingon Core rulebook is not
  * in play.
  */
-class NotKlingonPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled(): boolean {
-        if (new SourcePrerequisite(Source.KlingonCore).isPrerequisiteFulfilled()) {
-            return !(new KlingonPrerequisite().isPrerequisiteFulfilled());
+class NotKlingonPrerequisite implements IConstructPrerequisite<Character> {
+    isPrerequisiteFulfilled(character: Character): boolean {
+        if (new SourcePrerequisite(Source.KlingonCore).isPrerequisiteFulfilled(character)) {
+            return !(new KlingonPrerequisite().isPrerequisiteFulfilled(character));
         } else {
             return true;
         }
     }
+    describe(): string {
+        return "";
+    }
 }
 
-class MilitaryPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled(): boolean {
+class MilitaryPrerequisite implements IConstructPrerequisite<Character> {
+    isPrerequisiteFulfilled(character: Character): boolean {
         return character.type === CharacterType.Starfleet ||
             character.type === CharacterType.KlingonWarrior ||
             character.type === CharacterType.AlliedMilitary ||
             character.type === CharacterType.Cadet;
     }
+    describe(): string {
+        return "";
+    }
 }
 
-class NotTalentPrerequisite implements IPrerequisite {
+class NotTalentPrerequisite implements IConstructPrerequisite<Character> {
 
     private talent: string;
 
@@ -90,16 +96,14 @@ class NotTalentPrerequisite implements IPrerequisite {
         this.talent = talent;
     }
 
-    isPrerequisiteFulfilled(): boolean {
+    isPrerequisiteFulfilled(character: Character): boolean {
         return !character.hasTalent(this.talent);
+    }
+    describe(): string {
+        return "";
     }
 }
 
-class CadetPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled(): boolean {
-        return character.type === CharacterType.Cadet;
-    }
-}
 
 export class RoleModel {
     id: Role;
@@ -107,9 +111,9 @@ export class RoleModel {
     description: string;
     department: Skill;
     ability: string;
-    prerequisites: IPrerequisite[];
+    prerequisites: IConstructPrerequisite<Character>[];
 
-    constructor(id: Role, name: string, description: string, department: Skill, ability: string, ...prerequisites: IPrerequisite[]) {
+    constructor(id: Role, name: string, description: string, department: Skill, ability: string, ...prerequisites: IConstructPrerequisite<Character>[]) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -121,7 +125,7 @@ export class RoleModel {
     isPrerequisitesFilled(character: Character) {
         let valid = true;
         this.prerequisites.forEach(req => {
-            if (!req.isPrerequisiteFulfilled()) {
+            if (!req.isPrerequisiteFulfilled(character)) {
                 valid = false;
             }
         });
@@ -299,7 +303,7 @@ class Roles {
             "Once per mission, an intelligence officer may create an Advantage without requiring a Task or spending any resources. This Advantage reflects some detail or insight the officer learned in an intelligence report.",
             new SourcePrerequisite(Source.CommandDivision),
             new NotKlingonPrerequisite(),
-            new TypePrerequisite(CharacterType.Starfleet),
+            new CharacterTypePrerequisite(CharacterType.Starfleet),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
@@ -474,8 +478,8 @@ class Roles {
             new AnyOfPrerequisite(
                 new AllOfPrerequisite(
                     new EraPrerequisite(Era.Enterprise),
-                    new TypePrerequisite(CharacterType.Starfleet)),
-                new TypePrerequisite(CharacterType.AlliedMilitary))
+                    new CharacterTypePrerequisite(CharacterType.Starfleet)),
+                new CharacterTypePrerequisite(CharacterType.AlliedMilitary))
             ),
         new RoleModel(
             Role.Bartender,
@@ -600,8 +604,8 @@ class Roles {
 
     ];
 
-    getRoles() {
-        var departments = this.determineHighestDiscipline();
+    getRoles(character: Character) {
+        var departments = this.determineHighestDiscipline(character);
         var roles: RoleModel[] = [];
         var list = this._roles;
         for (var r of list) {
@@ -633,18 +637,6 @@ class Roles {
         return temp;
     }
 
-    getRole(role: Role) {
-        let result = undefined;
-        let roles = this.getRoles();
-        for (var r of roles) {
-            if (r.id === role) {
-                result = r;
-                break;
-            }
-        }
-        return result;
-    }
-
     getRoleModelByName(role: string, type: CharacterType) {
 
         var list = this._roles;
@@ -659,7 +651,7 @@ class Roles {
 
     getRoleByName(role: string) {
 
-        var list = this.getRoles();
+        var list = this._roles;
         for (var r of list) {
             if (r.name === role) {
                 return r.id;
@@ -669,7 +661,7 @@ class Roles {
         return undefined;
     }
 
-    private determineHighestDiscipline() {
+    private determineHighestDiscipline(character: Character) {
         var skills = [];
         character.skills.forEach(s => {
             skills.push(s);

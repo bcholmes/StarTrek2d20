@@ -1,5 +1,5 @@
 import { Starship } from "../common/starship";
-import { IPrerequisite, SourcePrerequisite } from "./prerequisite";
+import { IConstructPrerequisite, SourcePrerequisite } from "./prerequisite";
 import { Source } from "./sources";
 import { TalentModel, TalentsHelper } from "./talents";
 
@@ -27,9 +27,9 @@ export class MissionPodModel {
     departments: number[];
     systems: number[];
     talents: TalentModel[];
-    prerequisites: IPrerequisite[];
+    prerequisites: IConstructPrerequisite<Starship>[];
 
-    constructor(id: number, name: string, description: string, departments: number[], systems: number[], talents: TalentModel[], prerequisites: IPrerequisite[] = []) {
+    constructor(id: number, name: string, description: string, departments: number[], systems: number[], talents: TalentModel[], prerequisites: IConstructPrerequisite<Starship>[] = []) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -42,7 +42,7 @@ export class MissionPodModel {
     public isPrerequisitesFulfilled(starship: Starship) {
         let result = true;
         this.prerequisites.forEach(p => {
-            result = result && p.isPrerequisiteFulfilled();
+            result = result && p.isPrerequisiteFulfilled(starship);
         });
         return result;
     }

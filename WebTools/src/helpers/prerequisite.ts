@@ -1,21 +1,58 @@
-import { character } from "../common/character";
+import { Character } from "../common/character";
 import { CharacterType } from "../common/characterType";
+import { Construct } from "../common/construct";
 import { IConstruct } from "../common/iconstruct";
 import { Starship } from "../common/starship";
-import { hasAnySource } from "../state/contextFunctions";
 import store from "../state/store";
-import { Career } from "./careers";
+import { Career } from "./careerEnum";
 import { Era } from "./eras";
 import { Source } from "./sources";
 import { Track } from "./trackEnum";
 
-export interface IPrerequisite {
-    isPrerequisiteFulfilled(): boolean;
-}
 
 export interface IConstructPrerequisite<T extends IConstruct> {
     isPrerequisiteFulfilled(t: T): boolean;
     describe(): string
+}
+
+export class CadetPrerequisite implements IConstructPrerequisite<Character> {
+    isPrerequisiteFulfilled(character: Character): boolean {
+        return character.type === CharacterType.Cadet;
+    }
+    describe(): string {
+        return "";
+    }
+}
+
+export class OfficerPrerequisite implements IConstructPrerequisite<Character> {
+    isPrerequisiteFulfilled(character: Character) {
+        return !character.enlisted && !character.isCivilian();
+    }
+
+    describe(): string {
+        return "";
+    }
+}
+
+export class SourcePrerequisite implements IConstructPrerequisite<Construct> {
+    private sources: Source[];
+
+    constructor(...sources: Source[]) {
+        this.sources = sources;
+    }
+
+    isPrerequisiteFulfilled(c: Construct) {
+        let result = false
+        this.sources.forEach((s) => { result = result || store.getState().context.sources.indexOf(s) >= 0 })
+        return result;
+    }
+
+    getSources() {
+        return this.sources;
+    }
+    describe(): string {
+        return "";
+    }
 }
 
 export class StarshipTypePrerequisite implements IConstructPrerequisite<Starship> {
@@ -48,45 +85,22 @@ export class ServiceYearPrerequisite implements IConstructPrerequisite<Starship>
     }
 }
 
-export class SourcePrerequisite implements IPrerequisite {
-    sources: Source[];
+export class KlingonPrerequisite implements IConstructPrerequisite<Character> {
 
-    constructor(...source: Source[]) {
-        this.sources = source;
-    }
-
-    isPrerequisiteFulfilled() {
-        return hasAnySource(this.sources);
-    }
-}
-
-export class KlingonPrerequisite implements IPrerequisite {
-
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(character: Character) {
         return character.isKlingon();
     }
-}
-
-export class CharacterTypePrerequisite implements IPrerequisite {
-
-    private type: CharacterType;
-
-    constructor(type: CharacterType) {
-        this.type = type;
-    }
-
-    isPrerequisiteFulfilled() {
-        return character.type === this.type;
+    describe(): string {
+        return "";
     }
 }
 
-
-export class CivilianPrerequisite implements IPrerequisite {
+export class CivilianPrerequisite implements IConstructPrerequisite<Character> {
 
     // arguably, a Child character is a Civilian, but the Roles restrict Child
     // characters to only one Role, so there's no point including them.
-    isPrerequisiteFulfilled() {
-        if (new SourcePrerequisite(Source.SciencesDivision, Source.PlayersGuide, Source.KlingonCore).isPrerequisiteFulfilled()) {
+    isPrerequisiteFulfilled(character: Character) {
+        if (new SourcePrerequisite(Source.SciencesDivision, Source.PlayersGuide, Source.KlingonCore).isPrerequisiteFulfilled(character)) {
             return character.type === CharacterType.AmbassadorDiplomat ||
                 character.type === CharacterType.Civilian ||
                 (character.type === CharacterType.Starfleet
@@ -98,110 +112,140 @@ export class CivilianPrerequisite implements IPrerequisite {
             return true;
         }
     }
+    describe(): string {
+        return "";
+    }
 }
 
-export class NotPrerequisite implements IPrerequisite {
-    private prereq: IPrerequisite;
+export class NotPrerequisite implements IConstructPrerequisite<Character> {
+    private prereq: IConstructPrerequisite<Character>;
 
-    constructor(prereq: IPrerequisite) {
+    constructor(prereq: IConstructPrerequisite<Character>) {
         this.prereq = prereq;
     }
-    isPrerequisiteFulfilled(): boolean {
-        return !this.prereq.isPrerequisiteFulfilled();
+    isPrerequisiteFulfilled(character: Character): boolean {
+        return !this.prereq.isPrerequisiteFulfilled(character);
+    }
+    describe(): string {
+        return "";
     }
 }
 
-export class AnyOfPrerequisite implements IPrerequisite {
-    private _prequisites: IPrerequisite[];
+export class AnyOfPrerequisite implements IConstructPrerequisite<Character> {
+    private _prequisites: IConstructPrerequisite<Character>[];
 
-    constructor(...prequisites: IPrerequisite[]) {
+    constructor(...prequisites: IConstructPrerequisite<Character>[]) {
         this._prequisites = prequisites;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(character: Character) {
         if (this._prequisites.length === 0) {
             return true;
         } else {
             var result = false;
             this._prequisites.forEach(req => {
-                result = result || req.isPrerequisiteFulfilled();
+                result = result || req.isPrerequisiteFulfilled(character);
             });
             return result;
         }
     }
+    describe(): string {
+        return "";
+    }
 }
 
-export class CareersPrerequisite implements IPrerequisite {
+export class CareersPrerequisite implements IConstructPrerequisite<Character> {
     private _careers: Career[];
 
     constructor(...careers: Career[]) {
         this._careers = careers;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(character: Character) {
         return this._careers.indexOf(character.career) > -1;
     }
-}
-
-export class EnlistedPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled() {
-        return character.enlisted;
+    describe(): string {
+        return "Only available to " + this._careers.map(c => Career[c]).join(', ') + " characters";
     }
 }
 
-export class EraPrerequisite implements IPrerequisite {
+export class EnlistedPrerequisite implements IConstructPrerequisite<Character> {
+    isPrerequisiteFulfilled(character: Character) {
+        return character.enlisted;
+    }
+    describe(): string {
+        return "";
+    }
+}
+
+export class EraPrerequisite implements IConstructPrerequisite<Construct> {
     private eras: Era[];
 
     constructor(...era: Era[]) {
         this.eras = era;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(construct: Construct) {
         return this.eras.indexOf(store.getState().context.era) >= 0;
+    }
+    describe(): string {
+        return "";
     }
 }
 
-export class ChildPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled(): boolean {
+export class ChildPrerequisite implements IConstructPrerequisite<Character> {
+    isPrerequisiteFulfilled(character: Character): boolean {
         return character.type === CharacterType.Child ||
             character.age.isChild();
     }
-}
-
-export class AdultPrerequisite implements IPrerequisite {
-    isPrerequisiteFulfilled(): boolean {
-        return character.age.isAdult();
+    describe(): string {
+        return "";
     }
 }
 
-export class TypePrerequisite implements IPrerequisite {
+export class AdultPrerequisite implements IConstructPrerequisite<Character> {
+    isPrerequisiteFulfilled(character: Character): boolean {
+        return character.age.isAdult();
+    }
+    describe(): string {
+        return "";
+    }
+}
+
+export class CharacterTypePrerequisite implements IConstructPrerequisite<Character> {
     private types: CharacterType[];
 
     constructor(...type: CharacterType[]) {
         this.types = type;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(character: Character) {
         return this.types.indexOf(character.type) >= 0;
+    }
+    describe(): string {
+        return "";
     }
 }
 
-export class AllOfPrerequisite implements IPrerequisite {
-    private prequisites: IPrerequisite[];
+export class AllOfPrerequisite implements IConstructPrerequisite<Character> {
+    private prequisites: IConstructPrerequisite<Character>[];
 
-    constructor(...prequisites: IPrerequisite[]) {
+    constructor(...prequisites: IConstructPrerequisite<Character>[]) {
         this.prequisites = prequisites;
     }
 
-    isPrerequisiteFulfilled() {
+    isPrerequisiteFulfilled(character: Character) {
         if (this.prequisites.length === 0) {
             return true;
         } else {
             let result = true;
             this.prequisites.forEach(req => {
-                result = result && req.isPrerequisiteFulfilled();
+                result = result && req.isPrerequisiteFulfilled(character);
             });
             return result;
         }
+    }
+    describe(): string {
+        return "";
     }
 }

@@ -12,8 +12,9 @@ import { Starship } from '../common/starship';
 import store from '../state/store';
 import { centuryToYear } from './weapons';
 import { Spaceframe } from './spaceframeEnum';
-import { IConstructPrerequisite, ServiceYearPrerequisite } from './prerequisite';
+import { CareersPrerequisite, IConstructPrerequisite, ServiceYearPrerequisite, SourcePrerequisite } from './prerequisite';
 import { NotSourcePrerequisite } from './spaceframes';
+import { Career } from './careerEnum';
 
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
 
@@ -124,21 +125,6 @@ class AnySpeciesPrerequisite implements IConstructPrerequisite<Character> {
     }
     describe(): string {
         return "";
-    }
-}
-
-class CareerPrerequisite implements IConstructPrerequisite<Character> {
-    private career: number;
-
-    constructor(species: number) {
-        this.career = species;
-    }
-
-    isPrerequisiteFulfilled(c: Character) {
-        return c.career === this.career;
-    }
-    describe(): string {
-        return "Only available to " + (this.career === 0 ? "Young" : "Veteran") + " characters";
     }
 }
 
@@ -302,27 +288,6 @@ class NotTalentPrerequisite implements IConstructPrerequisite<Construct> {
     }
     describe(): string {
         return "Conflicts with \"" + this.talent + "\" Talent";
-    }
-}
-
-class SourcePrerequisite implements IConstructPrerequisite<Construct> {
-    private sources: Source[];
-
-    constructor(...sources: Source[]) {
-        this.sources = sources;
-    }
-
-    isPrerequisiteFulfilled(c: Construct) {
-        let result = false
-        this.sources.forEach((s) => { result = result || store.getState().context.sources.indexOf(s) >= 0 })
-        return result;
-    }
-
-    getSources() {
-        return this.sources;
-    }
-    describe(): string {
-        return "";
     }
 }
 
@@ -1385,31 +1350,31 @@ export class Talents {
             new TalentModel(
                 "To Battle!",
                 "Whenever a Klingon buys additional dice for a melee attack using Threat, for each Threat added to the pool, you gain 1 bonus Momentum that can only be spent on Bonus Damage, increasing the damage of the attack by 1 per Momentum spent.",
-                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
                 "Brak’lul",
                 "Various physiological redundancies mean that wounds that would kill other humanoid species don’t affect Klingons as badly. The character gains +2 Resistance against all Non-lethal attacks. In addition, whenever the Klingon is target of a First Aid Task, reduce the Difficulty of that Task by 1, to a minimum of 1.",
-                [new SpeciesPrerequisite(Species.Klingon, false), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
                 "R’uustai",
                 "This Klingon has lit candles, spoken words to honor their parents, and given their house’s sash to another, joining in a fellowship with another person, and becoming members of the same house (the original house of either party). The R’uustai Talent grants a Klingon an additional Value, which must reflect their relationship with the ritual sibling. In addition, whenever the Klingon assists, or is assisted by another, the character offering assistance may re-roll their die.",
-                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
                 "Killer’s Instinct",
                 "You have shed blood, and will not hesitate to do so again. So familiar are you with the intent to kill that you can even see it in others when you look them in the eyes. When you choose to make a lethal attack, you do not add to Threat for doing so. In addition, whenever an enemy you can see attempts to make a lethal attack against you, you may add 1 to Threat to increase the Difficulty of their attack by 1, as you react to their intent.",
-                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new SourcePrerequisite(Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
                 "Warrior’s Spirit",
                 "You are an exemplar of what it means to be a Klingon warrior, and you will not hesitate to demonstrate your prowess to any who challenge you. When you make a melee attack, or are targeted by a melee attack, and you buy one or more d20s by adding to Threat, you may re-roll the dice pool for the task. Further, you own either a mek’leth or a bat’leth, at your discretion, and do not have to pay an Opportunity Cost to acquire it.",
-                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.KlingonWarrior), new EraPrerequisite(Era.NextGeneration)), new SourcePrerequisite(Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new SourcePrerequisite(Source.KlingonCore)],
                 1,
                 "Klingon"),
             new TalentModel(
@@ -2193,13 +2158,13 @@ export class Talents {
             new TalentModel(
                 "Untapped Potential",
                 "The character is inexperienced, but talented and with a bright future in Starfleet. The character may not have or increase any Attribute above 11, or any Discipline above 4 while they have this Talent (and may have to adjust Attributes and Disciplines accordingly at the end of character creation). Whenever the character succeeds at a Task for which they bought one or more additional dice with either Momentum or Threat, they may roll 1[D]. The character receives bonus Momentum equal to the roll, and adds one point to Threat if an Effect is rolled. The character cannot gain any higher rank than lieutenant (junior grade) while they possess this Talent.",
-                [new CareerPrerequisite(0)],
+                [new CareersPrerequisite(Career.Young)],
                 1,
                 "Career"),
             new TalentModel(
                 "Veteran",
                 "The character is wise and experienced, and draws upon inner reserves of willpower and determination in a more measured and considered way. Whenever the character spends a point of Determination, roll 1[D]. If an Effect is rolled, immediately regain that spent point of Determination. The character has a rank of at least Lieutenant Commander.",
-                [new CareerPrerequisite(2)],
+                [new CareersPrerequisite(Career.Veteran)],
                 1,
                 "Career"),
             // Other

@@ -6,7 +6,6 @@ import {Skill} from '../helpers/skills';
 import {EnvironmentsHelper, Environment} from '../helpers/environments';
 import {TracksHelper} from '../helpers/tracks';
 import {CareersHelper} from '../helpers/careers';
-import {TalentsHelper} from '../helpers/talents';
 import {CareerEventsHelper} from '../helpers/careerEvents';
 import {Era} from '../helpers/eras';
 import store from '../state/store';
@@ -35,7 +34,7 @@ class CharacterSheetData {
             new SectionContent(i18n.t('Construct.other.environment'), this.getEnvironmentString()),
             new SectionContent(i18n.t('Construct.other.upbringing'), this.character.upbringingStep ? this.character.upbringingStep?.upbringing?.name + (this.character.upbringingStep?.acceptedUpbringing ? "(A)" : "(R)") : i18n.t('Common.text.none')),
             new SectionContent(i18n.t('Construct.other.training'), this.character.track >= 0 ? TracksHelper.instance().getTrack(this.character.track).name : i18n.t('Common.text.none')),
-            new SectionContent(i18n.t('Construct.other.career'), this.character.career >= 0 ? CareersHelper.getCareer(this.character.career).name : i18n.t('Common.text.none')),
+            new SectionContent(i18n.t('Construct.other.career'), this.character.career >= 0 ? CareersHelper.instance.getCareer(this.character.career).name : i18n.t('Common.text.none')),
             new SectionContent(i18n.t('Construct.other.traits'), this.character.traits.join(", "))
         ];
     }

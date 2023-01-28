@@ -1,13 +1,8 @@
 ﻿import {TalentViewModel, TalentsHelper, ToViewModel, ADVANCED_TEAM_DYNAMICS} from './talents';
 import {character } from '../common/character';
 import { CharacterType } from '../common/characterType';
+import { Career } from './careerEnum';
 
-export enum Career {
-    // Core
-    Young,
-    Experienced,
-    Veteran
-}
 
 export class CareerModel {
     id: Career;
@@ -25,7 +20,16 @@ export class CareerModel {
     }
 }
 
-class Careers {
+export class CareersHelper {
+    private static _instance: CareersHelper;
+
+    static get instance() {
+        if (CareersHelper._instance == null) {
+            CareersHelper._instance = new CareersHelper();
+        }
+        return CareersHelper._instance;
+    }
+
     private _careers: CareerModel[] = [
         new CareerModel(
             Career.Young,
@@ -143,5 +147,3 @@ class Careers {
     applyCareer(career: Career) {
     }
 }
-
-export const CareersHelper = new Careers();

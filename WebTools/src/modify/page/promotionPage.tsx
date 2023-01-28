@@ -28,7 +28,7 @@ class PromotionPage extends React.Component<IPromotionPageProperties, IPromotion
 
         // temporary change to support the ranks, which still expect there
         // to be a global character object
-        setGlobalCharacter(this.props.character);
+//        setGlobalCharacter(this.props.character);
 
         this.state = {
             rank: this.props.character?.rank
@@ -62,7 +62,7 @@ class PromotionPage extends React.Component<IPromotionPageProperties, IPromotion
     }
 
     getRanks() {
-        return RanksHelper.instance().getRanks(false).map(r => r.name);
+        return RanksHelper.instance().getRanks(this.props.character, false).map(r => r.name);
     }
 
     nextPage() {

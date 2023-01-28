@@ -1,6 +1,6 @@
 ﻿import {Attribute} from '../helpers/attributes';
 import {Skill} from '../helpers/skills';
-import {Career} from '../helpers/careers';
+import {Career} from '../helpers/careerEnum';
 import {Environment} from '../helpers/environments';
 import {Species} from '../helpers/speciesEnum';
 import {Track} from '../helpers/trackEnum';
@@ -454,7 +454,7 @@ export class Character extends Construct {
     }
 
     isCivilian() {
-        return this.type === CharacterType.AmbassadorDiplomat || this.type === CharacterType.Civilian;
+        return this.type === CharacterType.AmbassadorDiplomat || this.type === CharacterType.Civilian || this.type === CharacterType.Child;
     }
 
     isKlingon() {
