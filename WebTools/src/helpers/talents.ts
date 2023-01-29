@@ -192,21 +192,6 @@ class SupportingCharacterPrerequisite implements IConstructPrerequisite<Characte
     }
 }
 
-class CharacterTypePrerequisite implements IConstructPrerequisite<Character> {
-    private type: CharacterType;
-
-    constructor(type: CharacterType) {
-        this.type = type;
-    }
-
-    isPrerequisiteFulfilled(c: Character) {
-        return c.type === this.type;
-    }
-    describe(): string {
-        return "";
-    }
-}
-
 class NotCharacterTypePrerequisite implements IConstructPrerequisite<Character> {
     private type: CharacterType;
 

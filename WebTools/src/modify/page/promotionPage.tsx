@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from "react-router";
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { Header } from "../../components/header";
-import { Character, setGlobalCharacter } from "../../common/character";
+import { Character } from "../../common/character";
 import { navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Button } from "../../components/button";
@@ -25,10 +25,6 @@ class PromotionPage extends React.Component<IPromotionPageProperties, IPromotion
 
     constructor(props) {
         super(props);
-
-        // temporary change to support the ranks, which still expect there
-        // to be a global character object
-//        setGlobalCharacter(this.props.character);
 
         this.state = {
             rank: this.props.character?.rank
