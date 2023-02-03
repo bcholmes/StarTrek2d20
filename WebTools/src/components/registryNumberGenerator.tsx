@@ -53,16 +53,8 @@ class RegistryNumberGenerator {
     }
 
     generate(serviceYear: number, type: CharacterType, spaceframe: SpaceframeModel) {
-        let numberOfDigits = 5;
-        if (serviceYear < 2220) {
-            numberOfDigits = 3;
-        } else if (serviceYear < 2300) {
-            numberOfDigits = 4;
-        }
-
         let lower = 0;
         let upper = 999999;
-
 
         let keys = Object.keys(this.serviceYearRegistryNumbers);
         keys.sort();

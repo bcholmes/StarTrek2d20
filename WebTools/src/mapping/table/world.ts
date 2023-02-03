@@ -1,4 +1,4 @@
-import { D20, D6 } from "../../common/die";
+import { D20 } from "../../common/die";
 
 export enum WorldCoreType {
     Heavy, Molten, Rocky, Icy
