@@ -473,6 +473,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
 
         this.fillAttributes(form, character);
         this.fillSkills(form, character);
+        this.fillExtras(form, character);
         this.fillStress(form, character);
     }
 
@@ -490,6 +491,12 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
             name += " (" + character.pronouns + ")";
         }
         return name;
+    }
+
+    fillExtras(form: PDFForm, character: Character) {
+        this.fillField(form, 'Resistance', "" + character.resistance);
+        this.fillField(form, 'Reputation', "" + character.reputation);
+        this.fillField(form, 'Reprimands', "" + character.reprimands);
     }
 
     fillStress(form: PDFForm, character: Character) {
@@ -663,10 +670,10 @@ class StandardTngCharacterSheet extends BasicFullCharacterSheet {
         return 'Standard TNG Character Sheet'
     }
     getThumbnailUrl(): string {
-        return 'https://sta.bcholmes.org/static/img/sheets/TNG_Standard_Character_Sheet.png'
+        return '/static/img/sheets/TNG_Standard_Character_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/static/pdf/TNG_Standard_Character_Sheet.pdf'
+        return '/static/pdf/TNG_Standard_Character_Sheet.pdf'
     }
 }
 
@@ -1172,8 +1179,6 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
                 }
             }
         }
-
-        this.fillField(form, "Resistance", "" + character.calculateResistance());
     }
 
     serializeAssignment(character: Character): string {

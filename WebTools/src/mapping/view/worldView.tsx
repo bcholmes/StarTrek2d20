@@ -1,6 +1,6 @@
 import React from "react";
 import { IPageProperties } from "../../pages/iPageProperties";
-import { AsteroidBeltDetails, StandardWorldDetails, World, WorldClass, WorldCoreType, WorldDetails } from "../table/world";
+import { AsteroidBeltDetails, GasGiantDetails, StandardWorldDetails, World, WorldClass, WorldCoreType, WorldDetails } from "../table/world";
 import { StarSystem } from "../table/starSystem";
 import { DataValueRow } from "./dataValueRow";
 
@@ -130,8 +130,27 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
     }
 
     renderSatellites() {
-        if (this.props.world.worldClass.id === WorldClass.AsteroidBelt) {
+        let { world } = this.props;
+        if (world.worldClass.id === WorldClass.AsteroidBelt) {
             return undefined;
+        } else if (world?.worldClass.isGasGiant && world?.worldDetails instanceof GasGiantDetails) {
+            let details = world.worldDetails as GasGiantDetails;
+            let satellites = "None";
+            if ((details.giantMoons ?? 0) === 0 && (details.largeMoons ?? 0) === 0 && (details.mediumMoons ?? 0) === 0 && (details.smallMoons ?? 0) === 0 && (details.moonlets ?? 0) !== 0) {
+                satellites = details.moonlets + " moonlets";
+            } else if ((details.giantMoons ?? 0) === 0 && (details.largeMoons ?? 0) === 0 && (details.mediumMoons ?? 0) === 0 && (details.smallMoons ?? 0) !== 0) {
+                satellites = details.smallMoons + " small moons, " + details.moonlets + " moonlets";
+            } else if ((details.giantMoons ?? 0) === 0 && (details.largeMoons ?? 0) === 0 && (details.mediumMoons ?? 0) !== 0) {
+                satellites = details.mediumMoons + " medium moons, " + details.smallMoons + " small moons, " + details.moonlets + " moonlets";
+            } else if ((details.giantMoons ?? 0) === 0 && (details.largeMoons ?? 0) !== 0) {
+                satellites = details.largeMoons + " large moons, " + details.mediumMoons + " medium moons, " + details.smallMoons + " small moons, " + details.moonlets + " moonlets";
+            } else if ((details.giantMoons ?? 0) !== 0) {
+                satellites = details.giantMoons + " giant moons, " + details.largeMoons + " large moons, " + details.mediumMoons + " medium moons, " + details.smallMoons + " small moons, " + details.moonlets + " moonlets";
+            }
+            return (<>
+                <DataValueRow name="Satellites:">{satellites}</DataValueRow>
+                <DataValueRow name="Ring:">{details.ring ? details.ring : "None"}</DataValueRow>
+            </>);
         } else {
             return (<DataValueRow name="Satellites:">{this.props.world.numberOfSatellites}</DataValueRow>);
         }

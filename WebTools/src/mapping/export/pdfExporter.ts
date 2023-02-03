@@ -242,9 +242,11 @@ export class PdfExporter {
         currentLine += lineHeight;
 
         if (world.worldClass.id !== WorldClass.AsteroidBelt) {
-            this.addLabelAndValue(page, "Num. Satellites:",
-                world.numberOfSatellites.toFixed(0), font, light, startColumn, currentLine);
-            currentLine += lineHeight;
+            if (world.numberOfSatellites != null) {
+                this.addLabelAndValue(page, "Num. Satellites:",
+                    world.numberOfSatellites.toFixed(0), font, light, startColumn, currentLine);
+                currentLine += lineHeight;
+            }
 
             this.addLabelAndValue(page, "Diameter:",
                 Math.round(world.diameter).toLocaleString("en-US") + " km", font, light, startColumn, currentLine);

@@ -7,7 +7,7 @@ import { Orbits } from "./orbit";
 import { Sector, SectorCoordinates } from "./sector";
 import { LuminosityClass, LuminosityClassModel, SpectralClass, SpectralClassModel, Star, Range, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon } from "./star";
 import { CompanionType, StarSystem } from "./starSystem";
-import { AsteroidBeltDetails, StandardWorldDetails, World, WorldClass, WorldClassModel, WorldCoreType } from "./world";
+import { AsteroidBeltDetails, GasGiantDetails, StandardWorldDetails, World, WorldClass, WorldClassModel, WorldCoreType } from "./world";
 
 class StellarMass {
     spectralClass: SpectralClass;
@@ -154,6 +154,33 @@ class SystemGeneration {
         18: 10,
         19: 10,
         20: 11
+    }
+
+    private gasGiantSatellitesTable: { [roll: number] : (gasGiant: World) => void } = {
+
+        1: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBasicDistributionOfMoons(gasGiant) },
+        2: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBasicDistributionOfMoons(gasGiant) },
+        3: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBasicDistributionOfMoons(gasGiant) },
+        4: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBasicDistributionOfMoons(gasGiant) },
+        5: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBasicDistributionOfMoons(gasGiant) },
+        6: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBasicDistributionOfMoons(gasGiant) },
+        7: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBasicDistributionOfMoons(gasGiant) },
+        8: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBasicDistributionOfMoons(gasGiant) },
+        9: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBasicDistributionOfMoons(gasGiant) },
+        10: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBasicDistributionOfMoons(gasGiant) },
+        11: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createFaintRing(gasGiant) },
+        12: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createFaintRing(gasGiant) },
+        13: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createFaintRing(gasGiant) },
+        14: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createFaintRing(gasGiant) },
+        15: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createFaintRing(gasGiant) },
+        16: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBrightRing(gasGiant) },
+        17: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBrightRing(gasGiant) },
+        18: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createAsteroidBelt(gasGiant) },
+        19: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createOortBelt(gasGiant) },
+        20: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createTwiceAsManyWorlds(gasGiant) },
+        21: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBasicDistributionOfMoonsWithEcosphere(gasGiant) },
+        22: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBasicDistributionOfMoonsWithEcosphere(gasGiant) },
+        23: (gasGiant: World) => { gasGiant.worldDetails = GasGiantDetails.createBasicDistributionOfMoonsWithEcosphere(gasGiant) }
     }
 
     private notablePhenomenonTable: { [roll: number]: NotableSpatialPhenomenonModel[]}[] = [
@@ -688,7 +715,6 @@ class SystemGeneration {
                 if (worldType.id === WorldClass.AsteroidBelt) {
                     world.numberOfSatellites = 0;
                 } else if (worldType.isGasGiant) {
-                    world.numberOfSatellites = Math.ceil(D20.roll() / 4);
                 } else {
                     world.numberOfSatellites = this.numberOfMoonsTable[D20.roll()];
                 }
@@ -754,6 +780,13 @@ class SystemGeneration {
                     details.depth = LuminosityTable.addNoiseToValue(Math.min(maxDepth, depth));
                     world.worldDetails = details;
                 } else if (world.worldClass.isGasGiant) {
+                    let detailsRoll = D20.roll();
+                    if (world.worldClass.id === WorldClass.J) {
+                        detailsRoll += 2
+                    } else if (world.worldClass.id === WorldClass.T || world.worldClass.id === WorldClass.I) {
+                        detailsRoll += 3
+                    }
+                    this.gasGiantSatellitesTable[detailsRoll](world);
                     this.calculateGasGiantSize(world);
                 } else {
                     this.calculateStandardPlanetSize(world, starSystem);
