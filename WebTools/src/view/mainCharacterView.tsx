@@ -76,7 +76,7 @@ class MainCharacterView extends BaseCharacterView {
                             <Button className="button-small mr-3" onClick={() => this.exportToJson(this.props.character, 'character') } buttonType={true}>{t('Common.button.exportJson')}</Button>
                         </div>
                         <div className="mt-5 mb-3">
-                            <Button className="button-small mr-3" onClick={() => this.navigateToModification() } buttonType={true}>{t('Common.button.modify')}</Button>
+                            <Button className="button-small" onClick={() => this.navigateToModification() } buttonType={true}>{t('Common.button.modify')}</Button>
                         </div>
                     </div>)
                 : null}
