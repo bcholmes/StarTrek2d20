@@ -135,21 +135,10 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
             return undefined;
         } else if (world?.worldClass.isGasGiant && world?.worldDetails instanceof GasGiantDetails) {
             let details = world.worldDetails as GasGiantDetails;
-            let satellites = "None";
-            if ((details.giantMoons ?? 0) === 0 && (details.largeMoons ?? 0) === 0 && (details.mediumMoons ?? 0) === 0 && (details.smallMoons ?? 0) === 0 && (details.moonlets ?? 0) !== 0) {
-                satellites = details.moonlets + " moonlets";
-            } else if ((details.giantMoons ?? 0) === 0 && (details.largeMoons ?? 0) === 0 && (details.mediumMoons ?? 0) === 0 && (details.smallMoons ?? 0) !== 0) {
-                satellites = details.smallMoons + " small moons, " + details.moonlets + " moonlets";
-            } else if ((details.giantMoons ?? 0) === 0 && (details.largeMoons ?? 0) === 0 && (details.mediumMoons ?? 0) !== 0) {
-                satellites = details.mediumMoons + " medium moons, " + details.smallMoons + " small moons, " + details.moonlets + " moonlets";
-            } else if ((details.giantMoons ?? 0) === 0 && (details.largeMoons ?? 0) !== 0) {
-                satellites = details.largeMoons + " large moons, " + details.mediumMoons + " medium moons, " + details.smallMoons + " small moons, " + details.moonlets + " moonlets";
-            } else if ((details.giantMoons ?? 0) !== 0) {
-                satellites = details.giantMoons + " giant moons, " + details.largeMoons + " large moons, " + details.mediumMoons + " medium moons, " + details.smallMoons + " small moons, " + details.moonlets + " moonlets";
-            }
+            let satellites = details.satelliteDetails;
             return (<>
                 <DataValueRow name="Satellites:">{satellites}</DataValueRow>
-                <DataValueRow name="Ring:">{details.ring ? details.ring : "None"}</DataValueRow>
+                <DataValueRow name="Ring:">{details.ring?.name ?? "None"}</DataValueRow>
             </>);
         } else {
             return (<DataValueRow name="Satellites:">{this.props.world.numberOfSatellites}</DataValueRow>);

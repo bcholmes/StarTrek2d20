@@ -9,6 +9,9 @@ const BULLET = '\u2022';
 
 export class PdfExporter {
 
+    static COLUMN_ONE = 162;
+    static COLUMN_TWO = 377;
+
     static LCARS_ORANGE = rgb(249.0 / 255.0, 157.0 / 255.0, 37.0 / 255.0);
     static LCARS_PURPLE = rgb(138.0 / 255.0, 113.0 / 255.0, 167.0 / 255.0);
     static LCARS_PINK = rgb(213.0 / 255.0, 150.0 / 255.0, 179.0 / 255.0);
@@ -59,30 +62,30 @@ export class PdfExporter {
         this.addLabelAndValue(page, "Coordinates:",
             "" + system.sectorCoordinates.x.toFixed(2) + ", "
             + system.sectorCoordinates.y.toFixed(2) + ", "
-            + system.sectorCoordinates.z.toFixed(2), font, light, 162, currentLine);
+            + system.sectorCoordinates.z.toFixed(2), font, light, PdfExporter.COLUMN_ONE, currentLine);
 
 
         currentLine += 25 + lineHeight;
         let blockLine = currentLine;
 
         if (system.star) {
-            this.addPillHeader(page, "Primary Star", font, currentLine, 162, 361);
+            this.addPillHeader(page, "Primary Star", font, currentLine, PdfExporter.COLUMN_ONE, 361);
 
             currentLine += 20;
 
             this.addLabelAndValue(page, "Spectral Class:",
-                system.star.description, font, light, 162, currentLine);
+                system.star.description, font, light, PdfExporter.COLUMN_ONE, currentLine);
 
             currentLine += lineHeight;
             this.addLabelAndValue(page, "Mass:",
-                system.star.mass.toFixed(2) + " Sols", font, light, 162, currentLine);
+                system.star.mass.toFixed(2) + " Sols", font, light, PdfExporter.COLUMN_ONE, currentLine);
 
             currentLine += lineHeight;
             this.addLabelAndValue(page, "Mass:",
-                system.star.massInKgs.toFixed(4) + " x 10    kg", font, light, 162, currentLine);
+                system.star.massInKgs.toFixed(4) + " x 10    kg", font, light, PdfExporter.COLUMN_ONE, currentLine);
             let offset = light.widthOfTextAtSize(system.star.massInKgs.toFixed(4) + " x 10", 10.0);
             page.drawText("30" , {
-                x: 162 + 66 + offset,
+                x: PdfExporter.COLUMN_ONE + 66 + offset,
                 y: page.getHeight() - currentLine + 4,
                 size: 6.0,
                 font: light,
@@ -93,40 +96,40 @@ export class PdfExporter {
             if (system.star.luminosityValue != null) {
                 this.addLabelAndValue(page, "Luminosity:",
                     (system.star.luminosityValue > 100 ? system.star.luminosityValue.toFixed(0) :  system.star.luminosityValue.toFixed(4)) + " Sols",
-                    font, light, 162, currentLine);
+                    font, light, PdfExporter.COLUMN_ONE, currentLine);
             }
         }
 
         if (system.companionStar) {
             currentLine = blockLine;
-            this.addPillHeader(page, "Companion Star", font, currentLine, 377, 576);
+            this.addPillHeader(page, "Companion Star", font, currentLine, PdfExporter.COLUMN_TWO, 576);
 
             currentLine += 20;
 
             this.addLabelAndValue(page, "Spectral Class:",
-                system.companionStar.description, font, light, 377, currentLine);
+                system.companionStar.description, font, light, PdfExporter.COLUMN_TWO, currentLine);
 
             currentLine += lineHeight;
             this.addLabelAndValue(page, "Companion Type:",
-                system.companionType === CompanionType.Close ? "Close" : "Distant", font, light, 377, currentLine);
+                system.companionType === CompanionType.Close ? "Close" : "Distant", font, light, PdfExporter.COLUMN_TWO, currentLine);
 
             currentLine += lineHeight;
             if (system.companionOrbitalRadius != null) {
                 this.addLabelAndValue(page, "Orbital Radius:",
                     system.companionOrbitalRadius.toFixed(2) + " AUs",
-                    font, light, 377, currentLine);
+                    font, light, PdfExporter.COLUMN_TWO, currentLine);
                 currentLine += lineHeight;
             }
 
             this.addLabelAndValue(page, "Mass:",
-                system.companionStar.mass.toFixed(2) + " Sols", font, light, 377, currentLine);
+                system.companionStar.mass.toFixed(2) + " Sols", font, light, PdfExporter.COLUMN_TWO, currentLine);
 
             currentLine += lineHeight;
             this.addLabelAndValue(page, "Mass:",
-                system.companionStar.massInKgs.toFixed(4) + " x 10    kg", font, light, 377, currentLine);
+                system.companionStar.massInKgs.toFixed(4) + " x 10    kg", font, light, PdfExporter.COLUMN_TWO, currentLine);
             let offset = light.widthOfTextAtSize(system.companionStar.massInKgs.toFixed(4) + " x 10", 10.0);
             page.drawText("30" , {
-                x: 377 + 66 + offset,
+                x: PdfExporter.COLUMN_TWO + 66 + offset,
                 y: page.getHeight() - currentLine + 4,
                 size: 6.0,
                 font: light,
@@ -137,12 +140,12 @@ export class PdfExporter {
             if (system.companionStar.luminosityValue != null) {
                 this.addLabelAndValue(page, "Luminosity:",
                     system.companionStar.luminosityValue > 100 ? system.companionStar.luminosityValue.toFixed(0) :  system.companionStar.luminosityValue.toFixed(4),
-                    font, light, 377, currentLine);
+                    font, light, PdfExporter.COLUMN_TWO, currentLine);
             }
         }
 
         currentLine += 25 + lineHeight;
-        this.addPillHeader(page, "Worlds", font, currentLine, 162, 576);
+        this.addPillHeader(page, "Worlds", font, currentLine, PdfExporter.COLUMN_ONE, 576);
         currentLine += 20;
 
         if (system.worlds?.length) {
@@ -160,13 +163,9 @@ export class PdfExporter {
                 let title = titles[i];
                 let titleWritten = false;
 
-                let rowCount = Math.ceil(worlds.length / 2);
-                for (let j = 0; j < rowCount; j++) {
+                for (let j = 0; j < worlds.length; j++) {
 
-                    let numberOfLines = this.numberOfLinesToRepresentWorld(worlds[j * 2]);
-                    if ((j * 2 + 1) < worlds.length) {
-                        numberOfLines = Math.max(this.numberOfLinesToRepresentWorld(worlds[j * 2 + 1]), numberOfLines);
-                    }
+                    let numberOfLines = Math.ceil(this.numberOfLinesToRepresentWorld(worlds[j]) / 2);
 
                     let rowHeight = lineHeight * numberOfLines + (titleWritten ? 0 : 20);
                     let baseLine = currentLine;
@@ -183,7 +182,7 @@ export class PdfExporter {
 
                     if (!titleWritten) {
                         page.drawText(title, {
-                            x: 162,
+                            x: PdfExporter.COLUMN_ONE,
                             y: page.getHeight() - currentLine,
                             size: 14.0,
                             font: bold,
@@ -193,19 +192,15 @@ export class PdfExporter {
                         titleWritten = true;
                     }
 
-                    this.writeWorld(page, system, worlds[j * 2], font, light, 162, currentLine, lineHeight);
+                    this.writeWorld(page, system, worlds[j], font, light, currentLine, lineHeight);
 
-                    if ((j * 2 + 1) < worlds.length) {
-                        this.writeWorld(page, system, worlds[j * 2 + 1], font, light, 377, currentLine, lineHeight);
-                    }
-
-                    currentLine = baseLine + rowHeight + lineHeight;
+                    currentLine = baseLine + rowHeight + lineHeight + lineHeight;
                 }
             }
 
         } else {
             page.drawText("No Worlds", {
-                x: 162,
+                x: PdfExporter.COLUMN_ONE,
                 y: page.getHeight() - currentLine,
                 size: 14.0,
                 font: bold,
@@ -215,56 +210,67 @@ export class PdfExporter {
 
     }
 
-    writeWorld(page: PDFPage, system: StarSystem, world: World, font: PDFFont, light: PDFFont, startColumn: number, currentLine: number, lineHeight: number) {
+    writeWorld(page: PDFPage, system: StarSystem, world: World, font: PDFFont, light: PDFFont, currentLine: number, lineHeight: number) {
+        let columnNumber = 0;
         if (world.orbit != null) {
             this.addLabelAndValue(page, "Designation:",
-                (system.friendlyName != null ? system.friendlyName + ' ' : '') + world.orbitLabel, font, light, startColumn, currentLine);
-            currentLine += lineHeight;
+                (system.friendlyName != null ? system.friendlyName + ' ' : '') + world.orbitLabel, font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+            columnNumber = (columnNumber + 1) % 2;
+            currentLine += columnNumber === 0 ? lineHeight : 0;
         }
 
         if (world.worldClass.id === WorldClass.AsteroidBelt) {
             this.addLabelAndValue(page, "Classification:",
-                world.worldClass.description, font, light, startColumn, currentLine);
-            currentLine += lineHeight;
+                world.worldClass.description, font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+            columnNumber = (columnNumber + 1) % 2;
+            currentLine += columnNumber === 0 ? lineHeight : 0;
         } else {
             this.addLabelAndValue(page, "Classification:",
                 "Class " + WorldClass[world.worldClass.id] + " (" + world.worldClass.description + ")",
-                font, light, startColumn, currentLine);
-            currentLine += lineHeight;
+                font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+            columnNumber = (columnNumber + 1) % 2;
+            currentLine += columnNumber === 0 ? lineHeight : 0;
         }
 
         this.addLabelAndValue(page, "Orbital Radius:",
-            world.orbitalRadius.toFixed(2) + " AUs", font, light, startColumn, currentLine);
-        currentLine += lineHeight;
+            world.orbitalRadius.toFixed(2) + " AUs", font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+        columnNumber = (columnNumber + 1) % 2;
+        currentLine += columnNumber === 0 ? lineHeight : 0;
 
         this.addLabelAndValue(page, "Orbital Period:",
-            world.period.toFixed(3) + ' Earth Years', font, light, startColumn, currentLine);
-        currentLine += lineHeight;
+            world.period.toFixed(3) + ' Earth Years', font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+        columnNumber = (columnNumber + 1) % 2;
+        currentLine += columnNumber === 0 ? lineHeight : 0;
 
         if (world.worldClass.id !== WorldClass.AsteroidBelt) {
             if (world.numberOfSatellites != null) {
                 this.addLabelAndValue(page, "Num. Satellites:",
-                    world.numberOfSatellites.toFixed(0), font, light, startColumn, currentLine);
-                currentLine += lineHeight;
+                    world.numberOfSatellites.toFixed(0), font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+                columnNumber = (columnNumber + 1) % 2;
+                currentLine += columnNumber === 0 ? lineHeight : 0;
             }
 
             this.addLabelAndValue(page, "Diameter:",
-                Math.round(world.diameter).toLocaleString("en-US") + " km", font, light, startColumn, currentLine);
-            currentLine += lineHeight;
+                Math.round(world.diameter).toLocaleString("en-US") + " km", font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+            columnNumber = (columnNumber + 1) % 2;
+            currentLine += columnNumber === 0 ? lineHeight : 0;
 
             this.addLabelAndValue(page, "Density:",
-            world.density.toFixed(2) + " Earth", font, light, startColumn, currentLine);
-            currentLine += lineHeight;
+            world.density.toFixed(2) + " Earth", font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+            columnNumber = (columnNumber + 1) % 2;
+            currentLine += columnNumber === 0 ? lineHeight : 0;
 
             this.addLabelAndValue(page, "Mass:",
                 (world.mass >= 1000 ? Math.round(world.mass).toLocaleString("en-US") : world.mass.toFixed(2)) + " Earth",
-                font, light, startColumn, currentLine);
-            currentLine += lineHeight;
+                font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+            columnNumber = (columnNumber + 1) % 2;
+            currentLine += columnNumber === 0 ? lineHeight : 0;
 
             if (world.gravity != null) {
                 this.addLabelAndValue(page, "Gravity:",
-                    (world.gravity.toFixed(2)) + " G", font, light, startColumn, currentLine);
-                currentLine += lineHeight;
+                    (world.gravity.toFixed(2)) + " G", font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+                columnNumber = (columnNumber + 1) % 2;
+                currentLine += columnNumber === 0 ? lineHeight : 0;
             }
 
             if (world.worldDetails != null && world.worldDetails instanceof StandardWorldDetails) {
@@ -272,43 +278,50 @@ export class PdfExporter {
 
                 if (details.rotationPeriod != null) {
                     this.addLabelAndValue(page, "Rotation:",
-                        details.rotationPeriod.toFixed(2) + " hours" + (details.retrograde ? " (retrograde)" : ""), font, light, startColumn, currentLine);
-                    currentLine += lineHeight;
+                        details.rotationPeriod.toFixed(2) + " hours" + (details.retrograde ? " (retrograde)" : ""), font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+                    columnNumber = (columnNumber + 1) % 2;
+                    currentLine += columnNumber === 0 ? lineHeight : 0;
                 } else if (details.tidallyLocked) {
                     this.addLabelAndValue(page, "Rotation:",
-                        "Tidally Locked", font, light, startColumn, currentLine);
-                    currentLine += lineHeight;
+                        "Tidally Locked", font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+                    columnNumber = (columnNumber + 1) % 2;
+                    currentLine += columnNumber === 0 ? lineHeight : 0;
                 }
 
                 if (details.hydrographicPercentage) {
                     this.addLabelAndValue(page, "Water coverage:",
-                        details.hydrographicPercentage.toFixed(2) + '%', font, light, startColumn, currentLine);
-                    currentLine += lineHeight;
+                        details.hydrographicPercentage.toFixed(2) + '%', font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+                    columnNumber = (columnNumber + 1) % 2;
+                    currentLine += columnNumber === 0 ? lineHeight : 0;
                 }
 
                 if (details.axialTilt) {
                     this.addLabelAndValue(page, "Axial Tilt:",
-                        details.axialTilt.toFixed(2) + '\u00b0', font, light, startColumn, currentLine);
-                    currentLine += lineHeight;
+                        details.axialTilt.toFixed(2) + '\u00b0', font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+                    columnNumber = (columnNumber + 1) % 2;
+                    currentLine += columnNumber === 0 ? lineHeight : 0;
                 }
             }
 
             if (world.coreType != null) {
                 this.addLabelAndValue(page, "Core:",
-                    WorldCoreType[world.coreType], font, light, startColumn, currentLine);
-                currentLine += lineHeight;
+                    WorldCoreType[world.coreType], font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+                columnNumber = (columnNumber + 1) % 2;
+                currentLine += columnNumber === 0 ? lineHeight : 0;
             }
 
         } else if (world.worldDetails != null && world.worldDetails instanceof AsteroidBeltDetails) {
             let details = world.worldDetails as AsteroidBeltDetails;
             this.addLabelAndValue(page, "Predominant Size:",
                 (details.asteroidSize >= 1000 ? ((details.asteroidSize / 1000).toFixed(0) + "km") : (details.asteroidSize.toFixed(0) + "m"))
-                + " Diameter", font, light, startColumn, currentLine);
-            currentLine += lineHeight;
+                + " Diameter", font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+            columnNumber = (columnNumber + 1) % 2;
+            currentLine += columnNumber === 0 ? lineHeight : 0;
 
             this.addLabelAndValue(page, "Belt Width:",
-                details.depth.toFixed(2) + " AUs", font, light, startColumn, currentLine);
-            currentLine += lineHeight;
+                details.depth.toFixed(2) + " AUs", font, light, columnNumber === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
+            columnNumber = (columnNumber + 1) % 2;
+            currentLine += columnNumber === 0 ? lineHeight : 0;
         }
     }
 
@@ -424,7 +437,7 @@ export class PdfExporter {
         text = "Notable Systems".toUpperCase();
 
         page.drawText(text, {
-            x: 162,
+            x: PdfExporter.COLUMN_ONE,
             y: page.getHeight() - 390,
             size: 18.0,
             font: font,
@@ -508,7 +521,7 @@ export class PdfExporter {
         let currentLine = 410;
 
         page.drawText("System Identifier", {
-            x: 162,
+            x: PdfExporter.COLUMN_ONE,
             y: page.getHeight() - currentLine,
             size: 12.0,
             font: bold,
@@ -535,7 +548,7 @@ export class PdfExporter {
 
         sector.systems.forEach((s) => {
             page.drawText(s.name, {
-                x: 162,
+                x: PdfExporter.COLUMN_ONE,
                 y: page.getHeight() - currentLine,
                 size: 16.0,
                 font: bold,

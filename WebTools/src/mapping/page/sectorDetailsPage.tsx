@@ -65,7 +65,6 @@ class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}
                 </div>
                 <div className="mt-3">
                     <Button onClick={() => this.exportPdf()} text="Export PDF" className="button-small mr-2" buttonType={true} />
-                    <Button onClick={() => this.copyDetailsToClipboard()} text="Copy to Clipboard" className="button-small mr-2" buttonType={true} />
                 </div>
             </div>)
         : null;

@@ -46,6 +46,46 @@ export enum RomanNumerals {
     XX
 }
 
+export enum RingType {
+    None,
+    Faint,
+    Spectacular,
+    OortCloud,
+    AsteroidBelt
+}
+
+export class RingTypeModel {
+    id: RingType;
+    name: string;
+
+    private static types: RingTypeModel[];
+
+    constructor(id: RingType, name: string) {
+        this.id = id;
+        this.name = name;
+    }
+
+    static getTypes() {
+        if (this.types == null) {
+            this.types = [
+                new RingTypeModel(RingType.None, "None"),
+                new RingTypeModel(RingType.Faint, "Faint ring"),
+                new RingTypeModel(RingType.Spectacular, "Spectacular ring"),
+                new RingTypeModel(RingType.OortCloud, "Oort Belt of slush balls"),
+                new RingTypeModel(RingType.AsteroidBelt, "Asteroid Belt of small moons and moonlets"),
+            ];
+        }
+        return this.types;
+    }
+
+    static getType(type: RingType) {
+        return this.getTypes()[type];
+    }
+    static getTypeNone() {
+        return this.getTypes()[0];
+    }
+}
+
 export class WorldClassModel {
     public id: WorldClass;
     public description: string;
@@ -86,7 +126,7 @@ export class GasGiantDetails extends WorldDetails {
     largeMoons?: number;
     giantMoons?: number;
 
-    ring?: string = "None";
+    ring?: RingTypeModel = RingTypeModel.getTypeNone();
 
     ecosphere: boolean;
 
@@ -120,7 +160,7 @@ export class GasGiantDetails extends WorldDetails {
 
     public static createFaintRing(gasGiant: World) {
         let result = this.createBasicDistributionOfMoons(gasGiant);
-        result.ring = "Faint Ring";
+        result.ring = RingTypeModel.getType(RingType.Faint);
         return result;
     }
 
@@ -136,20 +176,41 @@ export class GasGiantDetails extends WorldDetails {
 
     public static createBrightRing(gasGiant: World) {
         let result = this.createBasicDistributionOfMoons(gasGiant);
-        result.ring = "Spectacular Ring";
+        result.ring = RingTypeModel.getType(RingType.Spectacular);
         return result;
     }
 
     public static createOortBelt(gasGiant: World) {
         let result = this.createBasicDistributionOfMoons(gasGiant);
-        result.ring = "Oort Belt of slush balls";
+        result.ring = RingTypeModel.getType(RingType.OortCloud);
         return result;
     }
 
     public static createAsteroidBelt(gasGiant: World) {
         let result = this.createBasicDistributionOfMoons(gasGiant);
-        result.ring = "Asteroid Belt of small moons and moonlets";
+        result.moonlets = undefined;
+        result.smallMoons = undefined;
+        result.ring = RingTypeModel.getType(RingType.AsteroidBelt);
         return result;
+    }
+
+    public get satelliteDetails() {
+        if ((this.giantMoons ?? 0) === 0 && (this.largeMoons ?? 0) === 0 && (this.mediumMoons ?? 0) === 0 && (this.smallMoons ?? 0) === 0 && (this.moonlets ?? 0) !== 0) {
+            return this.moonlets + " moonlets";
+        } else if ((this.giantMoons ?? 0) === 0 && (this.largeMoons ?? 0) === 0 && (this.mediumMoons ?? 0) === 0 && (this.smallMoons ?? 0) !== 0) {
+            return this.smallMoons + " small moons, " + this.moonlets + " moonlets";
+        } else if ((this.giantMoons ?? 0) === 0 && (this.largeMoons ?? 0) === 0 && (this.mediumMoons ?? 0) !== 0) {
+            return this.mediumMoons + " medium moons" +
+                (this.ring?.id !== RingType.AsteroidBelt ? ", " + this.smallMoons + " small moons, " + this.moonlets + " moonlets" : "");
+        } else if ((this.giantMoons ?? 0) === 0 && (this.largeMoons ?? 0) !== 0) {
+            return this.largeMoons + " large moons, " + this.mediumMoons + " medium moons" +
+                (this.ring?.id !== RingType.AsteroidBelt ? ", " + this.smallMoons + " small moons, " + this.moonlets + " moonlets" : "");
+        } else if ((this.giantMoons ?? 0) !== 0) {
+            return this.giantMoons + " giant moons, " + this.largeMoons + " large moons, " + this.mediumMoons + " medium moons" +
+                (this.ring?.id !== RingType.AsteroidBelt ? ", " + this.smallMoons + " small moons, " + this.moonlets + " moonlets" : "");
+        } else {
+            return "None";
+        }
     }
 }
 
