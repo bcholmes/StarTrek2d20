@@ -27,7 +27,8 @@ class ModificationTypeSelectionPage extends React.Component<ModificationTypeSele
     constructor(props) {
         super(props);
         this.state = {
-            modificationType: ModificationType.Reputation
+            modificationType: ModificationType.Reputation,
+            milestoneType: MilestoneType.NormalMilestone
         };
     }
 
@@ -55,7 +56,10 @@ class ModificationTypeSelectionPage extends React.Component<ModificationTypeSele
                     ?  (<div className="my-4">
                             <p>{t('ModificationTypeSelectionPage.whatMilestoneType')}</p>
                             <div>
-                                <DropDownInput items={this.getMilestoneTypes()} onChange={(index) => {}} defaultValue={this.state.milestoneType}/>
+                                <DropDownInput items={this.getMilestoneTypes()} onChange={(index) => this.setState((state) => ({
+                                    ...state,
+                                    milestoneType: Milestones.instance.getItems()[index].type
+                                }))} defaultValue={this.state.milestoneType}/>
                             </div>
                         </div>)
                     : null}
@@ -78,6 +82,8 @@ class ModificationTypeSelectionPage extends React.Component<ModificationTypeSele
             navigateTo(null, PageIdentity.ReputationChange);
         } else if (this.state.modificationType === ModificationType.Promotion) {
             navigateTo(null, PageIdentity.Promotion);
+        } else if (this.state.modificationType === ModificationType.Milestone && this.state.milestoneType === MilestoneType.NormalMilestone) {
+            navigateTo(null, PageIdentity.NormalMilestone);
         }
     }
 

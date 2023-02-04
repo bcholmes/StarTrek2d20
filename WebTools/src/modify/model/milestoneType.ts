@@ -2,9 +2,9 @@ import i18next from "i18next";
 import { makeKey } from "../../common/translationKey";
 
 export enum MilestoneType {
-    Normal,
-    Spotlight,
-    Arc,
+    NormalMilestone,
+    SpotlightMilestone,
+    ArcMilestone,
 }
 
 export class MilestoneModel {
@@ -26,9 +26,9 @@ class Milestones {
     static _instance: Milestones;
 
     private items: MilestoneModel[] = [
-        new MilestoneModel(MilestoneType.Normal, "Normal Milestone"),
-        new MilestoneModel(MilestoneType.Spotlight, "Spotlight Milestone"),
-        new MilestoneModel(MilestoneType.Arc, "Arc Milestone"),
+        new MilestoneModel(MilestoneType.NormalMilestone, "Normal Milestone"),
+        new MilestoneModel(MilestoneType.SpotlightMilestone, "Spotlight Milestone"),
+        new MilestoneModel(MilestoneType.ArcMilestone, "Arc Milestone"),
     ];
 
     static get instance() {
@@ -39,7 +39,7 @@ class Milestones {
     }
 
     getItems() {
-        return this.items;
+        return [ this.items[0] ];
     }
 }
 

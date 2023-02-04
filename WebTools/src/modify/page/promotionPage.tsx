@@ -37,7 +37,7 @@ class PromotionPage extends React.Component<IPromotionPageProperties, IPromotion
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="index.html" onClick={(e) => this.goToHome(e)}>{t('Page.title.home')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.ReputationChange)}>{t('Page.title.modificationTypeSelection')}</a></li>
+                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.ModificationTypeSelection)}>{t('Page.title.modificationTypeSelection')}</a></li>
                     <li className="breadcrumb-item active" aria-current="page">{t('Page.title.promotion')}</li>
                 </ol>
             </nav>

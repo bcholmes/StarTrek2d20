@@ -1,5 +1,5 @@
 import { Character } from "../common/character";
-import { MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER } from "./characterActions";
+import { APPLY_NORMAL_MILESTONE_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -29,6 +29,16 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         case MODIFY_CHARACTER_RANK: {
             let temp = state.currentCharacter.copy();
             temp.rank = action.payload.rank;
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case APPLY_NORMAL_MILESTONE_DISCIPLINE: {
+            let temp = state.currentCharacter.copy();
+            temp.skills[action.payload.decrease].expertise -= 1;
+            temp.skills[action.payload.increase].expertise += 1;
             return {
                 ...state,
                 currentCharacter: temp,

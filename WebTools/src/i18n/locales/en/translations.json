@@ -54,6 +54,8 @@
 
     "ReputationChangePage.instruction": "Adjust the character's reputation as appropriate.",
 
+    "MilestonePage.instruction": "Select what type of modification you want to apply for this milestone.",
+
     "ModificationCompletePage.instruction": "The character has been modified. You can view the revised character, or make another modification.\n\nYou might want to save the URL for the revised character.",
 
     "SpeciesDetails.options": "Species Options",
@@ -218,6 +220,7 @@
     "Page.title.modificationTypeSelection": "Modification Type",
     "Page.title.reputationChange": "Reputation Change",
     "Page.title.promotion": "Promotion",
+    "Page.title.normalMilestone": "Normal Milestone",
     "Page.title.modificationComplete": "Modification Completed",
 
     "Page.breadcrumb.characterCreation": "Character Creation",
@@ -293,7 +296,7 @@
     "ModificationType.name.promotion": "Promotion",
     "ModificationType.name.milestone": "Milestone",
 
-    "MilestoneType.name.normal": "Normal Milestone",
-    "MilestoneType.name.spotlight": "Spotlight Milestone",
-    "MilestoneType.name.arc": "Arc Milestone"
+    "MilestoneType.name.normalMilestone": "Normal Milestone",
+    "MilestoneType.name.spotlightMilestone": "Spotlight Milestone",
+    "MilestoneType.name.arcMilestone": "Arc Milestone"
 }

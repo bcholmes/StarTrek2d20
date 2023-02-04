@@ -37,13 +37,16 @@ CharacterTypePage.whatGovernment,What government does this character represent?,
 CharacterTypePage.otherGovernmentName,What's the name of this government?,,,Quel est le nom du gouvernement?
 CharacterTypePage.whatMilitary,What military does this character represent?,,,Quelle armée ce personnage représente?
 CharacterTypePage.otherMilitaryName,What's the name of this military?,,,Quel est le nom de l'armée?
-ModificationTypeSelectionPage.instruction,Please select the modification that you want to apply to this character:,,,
-ModificationTypeSelectionPage.whatMilestoneType,What kind of milestone is being applied?,,,
-PromotionPage.instruction,Select a new rank for this character.,,,
-ReputationChangePage.instruction,Adjust the character's reputation as appropriate.,,,
+ModificationTypeSelectionPage.instruction,Please select the modification that you want to apply to this character:,,,Selectionnez la modification que vous voulez appliquer à ce personnage
+ModificationTypeSelectionPage.whatMilestoneType,What kind of milestone is being applied?,,,Quel genre de jalon d'expérience est appliqué?
+PromotionPage.instruction,Select a new rank for this character.,,,Selectionnez un nouveau grade pour ce personnage
+ReputationChangePage.instruction,Adjust the character's reputation as appropriate.,,,Ajustez la réputation du personnage le cas échéant
+MilestonePage.instruction,Select what type of modification you want to apply for this milestone.,,,
 ModificationCompletePage.instruction,"The character has been modified. You can view the revised character, or make another modification.
 
-You might want to save the URL for the revised character.",,,
+You might want to save the URL for the revised character.",,,"Le personnage a été modifié. Vous pouvez voir le personnage modifié ou faire une autre modification
+ 
+Vous pouvez vouloir sauvegarder l'URL pour le personnage modifié"
 SpeciesDetails.options,Species Options,Spezies Optionen,,Option d'espèce
 SpeciesDetails.selectThree,(Select three),(drei wählen),,(Choisir trois)
 SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),Spezis-übergreifende Talente erlauben (SL-Entscheid),,Autoriser les talents inter-espèces (Decision du GM)
@@ -92,7 +95,7 @@ Common.button.ok,OK,OK,De acuerdo,D'accord
 Common.button.add,Add,Hinzufügen,Agregar,Ajouter
 Common.button.cancel,Cancel,Abbrechen,Cancelar,Annuler
 Common.button.create,Create,,,Créer
-Common.button.modify,Modify,,,
+Common.button.modify,Modify,,,Modifier
 Common.button.next,Next,Weiter,Próximo,Prochain
 Common.button.view,View,Anzeigen,Vista,Vue
 Common.text.none,None,,,Aucun
@@ -193,10 +196,11 @@ Page.title.spaceframeSelection,Spaceframe,Schiffsklasse,,Modèle de Vaisseau
 Page.title.starshipTalentSelection,Starship Talents,Raumschiff Talente,,Talents de Vaisseau
 Page.title.starshipTypeSelection,Starship Type,Raumschiff-Typ,,Type de Vaisseau
 Page.title.starshipWeaponsSelection,Starship Weapons,Schiffswaffen,,Armes de Vaisseau
-Page.title.modificationTypeSelection,Modification Type,,,
-Page.title.reputationChange,Reputation Change,,,
-Page.title.promotion,Promotion,,,
-Page.title.modificationComplete,Modification Completed,,,
+Page.title.modificationTypeSelection,Modification Type,,,Type de modification
+Page.title.reputationChange,Reputation Change,,,Changer la Réputation
+Page.title.promotion,Promotion,,,Promotion
+Page.title.normalMilestone,Normal Milestone,,,Jalon Normal
+Page.title.modificationComplete,Modification Completed,,,Modification Effectuée
 Page.breadcrumb.characterCreation,Character Creation,Charaktererstellung,Creación de personajes,Création de personnages
 Page.breadcrumb.starshipCreation,Starship Creation,Raumschifferstellung,,Règles de Base
 Page.breadcrumb.supportingCharacterCreation,Supporting Character Creation,,,Création de Personnage Secondaire
@@ -243,7 +247,7 @@ CharacterType.name.other,Other,,,Autre
 GovernmentType.name.andorian,Andorian,,,Andorien
 GovernmentType.name.bajoran,Bajoran,,,Bajoran
 GovernmentType.name.cardassian,Cardassian,,,Cardassien
-GovernmentType.name.dominion,Dominion,,,
+GovernmentType.name.dominion,Dominion,,,Dominion
 GovernmentType.name.federation,Federation,,,Fédération
 GovernmentType.name.klingon,Klingon,,,Klingon
 GovernmentType.name.romulan,Romulan,,,Romulien
@@ -257,11 +261,11 @@ AlliedMilitaryType.name.klingonDefenceForce,Klingon Defense Force,,,Forces de D�
 AlliedMilitaryType.name.romulanStarEmpire,Romulan Star Empire,,,Empire Stellaire Romulien
 AlliedMilitaryType.name.bajoranMilitia,Bajoran Militia,,,Forces de Sécurité Bajoranes
 AlliedMilitaryType.name.cardassianUnion,Cardassian Union,,,Union Cardassienne
-AlliedMilitaryType.name.dominion,Dominion,,,
+AlliedMilitaryType.name.dominion,Dominion,,,Dominion
 AlliedMilitaryType.name.other,Other,,,Autre
-ModificationType.name.reputation,Reputation,,,
-ModificationType.name.promotion,Promotion,,,
-ModificationType.name.milestone,Milestone,,,
-MilestoneType.name.normal,Normal Milestone,,,
-MilestoneType.name.spotlight,Spotlight Milestone,,,
-MilestoneType.name.arc,Arc Milestone,,,
+ModificationType.name.reputation,Reputation,,,Réputation
+ModificationType.name.promotion,Promotion,,,Promotion
+ModificationType.name.milestone,Milestone,,,Jalon d'Expérience
+MilestoneType.name.normalMilestone,Normal Milestone,,,Jalon Normal
+MilestoneType.name.spotlightMilestone,Spotlight Milestone,,,Jalon Sous les Projecteurs
+MilestoneType.name.arcMilestone,Arc Milestone,,,Jalon Arc de Personnage

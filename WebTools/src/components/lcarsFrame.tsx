@@ -111,6 +111,7 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
         return this.props.activePage === PageIdentity.ModificationTypeSelection ||
             this.props.activePage === PageIdentity.Promotion ||
             this.props.activePage === PageIdentity.ReputationChange ||
+            this.props.activePage === PageIdentity.NormalMilestone ||
             this.props.activePage === PageIdentity.ModificationCompletePage;
     }
 

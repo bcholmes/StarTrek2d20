@@ -46,6 +46,15 @@
     "CharacterTypePage.whatMilitary": "Quelle armée ce personnage représente?",
     "CharacterTypePage.otherMilitaryName": "Quel est le nom de l'armée?",
 
+    "ModificationTypeSelectionPage.instruction": "Selectionnez la modification que vous voulez appliquer à ce personnage",
+    "ModificationTypeSelectionPage.whatMilestoneType": "Quel genre de jalon d'expérience est appliqué?",
+
+    "PromotionPage.instruction": "Selectionnez un nouveau grade pour ce personnage",
+
+    "ReputationChangePage.instruction": "Ajustez la réputation du personnage le cas échéant",
+
+    "ModificationCompletePage.instruction": "Le personnage a été modifié. Vous pouvez voir le personnage modifié ou faire une autre modification\n \nVous pouvez vouloir sauvegarder l'URL pour le personnage modifié",
+
     "SpeciesDetails.options": "Option d'espèce",
     "SpeciesDetails.selectThree": "(Choisir trois)",
     "SpeciesDetails.allowCrossSpecies": "Autoriser les talents inter-espèces (Decision du GM)",
@@ -96,6 +105,7 @@
     "Common.button.add": "Ajouter",
     "Common.button.cancel": "Annuler",
     "Common.button.create": "Créer",
+    "Common.button.modify": "Modifier",
     "Common.button.next": "Prochain",
     "Common.button.view": "Vue",
 
@@ -204,6 +214,11 @@
     "Page.title.starshipTalentSelection": "Talents de Vaisseau",
     "Page.title.starshipTypeSelection": "Type de Vaisseau",
     "Page.title.starshipWeaponsSelection": "Armes de Vaisseau",
+    "Page.title.modificationTypeSelection": "Type de modification",
+    "Page.title.reputationChange": "Changer la Réputation",
+    "Page.title.promotion": "Promotion",
+    "Page.title.normalMilestone": "Jalon Normal",
+    "Page.title.modificationComplete": "Modification Effectuée",
 
     "Page.breadcrumb.characterCreation": "Création de personnages",
     "Page.breadcrumb.starshipCreation": "Règles de Base",
@@ -256,6 +271,7 @@
     "GovernmentType.name.andorian": "Andorien",
     "GovernmentType.name.bajoran": "Bajoran",
     "GovernmentType.name.cardassian": "Cardassien",
+    "GovernmentType.name.dominion": "Dominion",
     "GovernmentType.name.federation": "Fédération",
     "GovernmentType.name.klingon": "Klingon",
     "GovernmentType.name.romulan": "Romulien",
@@ -270,5 +286,14 @@
     "AlliedMilitaryType.name.romulanStarEmpire": "Empire Stellaire Romulien",
     "AlliedMilitaryType.name.bajoranMilitia": "Forces de Sécurité Bajoranes",
     "AlliedMilitaryType.name.cardassianUnion": "Union Cardassienne",
-    "AlliedMilitaryType.name.other": "Autre"
+    "AlliedMilitaryType.name.dominion": "Dominion",
+    "AlliedMilitaryType.name.other": "Autre",
+
+    "ModificationType.name.reputation": "Réputation",
+    "ModificationType.name.promotion": "Promotion",
+    "ModificationType.name.milestone": "Jalon d'Expérience",
+
+    "MilestoneType.name.normalMilestone": "Jalon Normal",
+    "MilestoneType.name.spotlightMilestone": "Jalon Sous les Projecteurs",
+    "MilestoneType.name.arcMilestone": "Jalon Arc de Personnage"
 }
