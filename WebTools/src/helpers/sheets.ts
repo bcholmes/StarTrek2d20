@@ -937,10 +937,10 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
         return '2-Page TNG Character Sheet'
     }
     getThumbnailUrl(): string {
-        return 'https://sta.bcholmes.org/static/img/sheets/TNG_2_Page_Character_Sheet.png'
+        return '/static/img/sheets/TNG_2_Page_Character_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/static/pdf/TNG_2_Page_Character_Sheet_new.pdf'
+        return '/static/pdf/TNG_2_Page_Character_Sheet_new.pdf'
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {
@@ -1025,10 +1025,10 @@ class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
         return '2-Page Klingon Character Sheet'
     }
     getThumbnailUrl(): string {
-        return 'https://sta.bcholmes.org/static/img/sheets/STA_2_Page_Klingon_Character_Sheet.png'
+        return '/static/img/sheets/STA_2_Page_Klingon_Character_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/static/pdf/STA_2_Page_Klingon_Character_Sheet.pdf'
+        return '/static/pdf/STA_2_Page_Klingon_Character_Sheet.pdf'
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {
@@ -1127,10 +1127,10 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
         return 'Landscape TNG Character Sheet'
     }
     getThumbnailUrl(): string {
-        return 'https://sta.bcholmes.org/static/img/sheets/TNG_Landscape_Character_Sheet.png'
+        return '/static/img/sheets/TNG_Landscape_Character_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/static/pdf/TNG_Landscape_Character_Sheet.pdf'
+        return '/static/pdf/TNG_Landscape_Character_Sheet.pdf'
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {
