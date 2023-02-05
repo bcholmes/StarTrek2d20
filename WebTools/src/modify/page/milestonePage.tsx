@@ -4,7 +4,7 @@ import { withRouter, RouteComponentProps } from "react-router";
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { Header } from "../../components/header";
 import { Character } from "../../common/character";
-import { navigateTo, Navigator } from "../../common/navigator";
+import { navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Button } from "../../components/button";
 import { DropDownInput } from "../../components/dropDownInput";
@@ -15,7 +15,9 @@ import InstructionText from "../../components/instructionText";
 import { StatControl } from "../../starship/view/statControl";
 import { Dialog } from "../../components/dialog";
 import store from "../../state/store";
-import { applyNormalMilestoneDiscipline } from "../../state/characterActions";
+import { applyNormalMilestoneDiscipline, applyNormalMilestoneFocus } from "../../state/characterActions";
+import { CheckBox } from "../../components/checkBox";
+import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
 
 interface IMilestonePageProperties extends WithTranslation {
     milestoneType: MilestoneType,
@@ -26,7 +28,9 @@ interface IMilestonePageProperties extends WithTranslation {
 interface IMilestonePageState {
     normalOption: number,
     normalDisciplineDecrease?: Skill,
-    normalDisciplineIncrease?: Skill
+    normalDisciplineIncrease?: Skill,
+    normalDeletedFocus?: string,
+    normalAddedFocus?: string
 }
 
 class MilestonePage extends React.Component<IMilestonePageProperties, IMilestonePageState> {
@@ -110,8 +114,51 @@ class MilestonePage extends React.Component<IMilestonePageProperties, IMilestone
                 </div>
             </>);
         } else {
-            return null;
+            const focuses = this.props.character.focuses.map((f, i) => {
+                return (
+                    <tr key={i}>
+                        <td>{f}</td>
+                        <td>
+                            <CheckBox
+                                text=""
+                                value={t.name}
+                                isChecked={this.state.normalDeletedFocus === f}
+                                onChanged={() => {
+                                    this.selectNormalDeletedFocus(f);
+                                } }/>
+                        </td>
+                    </tr>
+                );
+            });
+
+            return (
+                <div className="row">
+                    <div className="col-md-6">
+                        <Header level={2}>Replace Focus</Header>
+                        <p>Select one of the following focuses to remove.</p>
+                        <table className="selection-list">
+                            <tbody>
+                                {focuses}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="col-md-6">
+                        <Header level={2}>New Focus</Header>
+                        <p>Choose a new, replacement focus.</p>
+
+                        <InputFieldAndLabel id="newFocus" labelName={t('Construct.other.focus')}
+                            value={this.state.normalAddedFocus || ""}
+                            onChange={(focus) => this.setState((state) => ({...state, normalAddedFocus: focus }))} />
+                    </div>
+                </div>);
         }
+    }
+
+    selectNormalDeletedFocus(focus: string) {
+        this.setState((state) => ({
+            ...state,
+            normalDeletedFocus: focus
+        }));
     }
 
     canIncreaseSkill(skill: Skill) {
@@ -206,7 +253,12 @@ class MilestonePage extends React.Component<IMilestonePageProperties, IMilestone
                 navigateTo(null, PageIdentity.ModificationCompletePage);
             }
         } else {
-            Dialog.show("Weird!");
+            if (!this.state.normalDeletedFocus || !this.state.normalAddedFocus) {
+                Dialog.show("Please specify which focus you want to replace, and what the new focus is.");
+            } else {
+                store.dispatch(applyNormalMilestoneFocus(this.state.normalDeletedFocus, this.state.normalAddedFocus));
+                navigateTo(null, PageIdentity.ModificationCompletePage);
+            }
         }
     }
 

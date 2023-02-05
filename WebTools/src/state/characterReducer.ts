@@ -1,5 +1,5 @@
 import { Character } from "../common/character";
-import { APPLY_NORMAL_MILESTONE_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER } from "./characterActions";
+import { APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -39,6 +39,19 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
             let temp = state.currentCharacter.copy();
             temp.skills[action.payload.decrease].expertise -= 1;
             temp.skills[action.payload.increase].expertise += 1;
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case APPLY_NORMAL_MILESTONE_FOCUS: {
+            let temp = state.currentCharacter.copy();
+            let index = temp.focuses.indexOf(action.payload.removeFocus);
+            if (index >= 0) {
+                temp.focuses.splice(index, 1);
+            }
+            temp.focuses.push(action.payload.addFocus);
             return {
                 ...state,
                 currentCharacter: temp,

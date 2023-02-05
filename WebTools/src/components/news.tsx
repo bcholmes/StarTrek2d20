@@ -11,6 +11,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230204</b>
+                <ul>
+                    <li>Minor revisions to the sector generator.</li>
+                    <li>Support for Normal Milestones in the modify flow.</li>
+                    <li>Some revisions to the standard character sheet.</li>
+                </ul>
                 <b>v1.230124</b>
                 <ul>
                     <li>Some internal changes relating to sources. The creator should remember your preferences on sources.</li>
@@ -256,12 +262,6 @@ class News extends React.Component<INewsProperties, {}> {
                 <b>v1.220805</b>
                 <ul>
                     <li>Minor bug fixes.</li>
-                </ul>
-                <b>v1.220726</b>
-                <ul>
-                    <li>More spaceframe outline revisions</li>
-                    <li>Minor formatting changes.</li>
-                    <li>Some prep for the Picard Crew book.</li>
                 </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>
