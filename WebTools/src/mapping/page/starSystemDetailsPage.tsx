@@ -12,6 +12,7 @@ import { EditableHeader } from '../view/editableHeader';
 import NotablePhenomenonView from '../view/notablePhenomenonView';
 import StarView from '../view/starView';
 import SystemMapLowerView from '../view/systemMapLowerView';
+import SystemMapUpperView from '../view/systemMapUpperView';
 import WorldView from '../view/worldView';
 
 interface IStarSystemDetailsPageProperties extends IPageProperties {
@@ -45,6 +46,7 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
                 </div>
 
                 <div className="my-4 d-none d-md-block">
+                    <SystemMapUpperView system={this.props.starSystem} />
                     <SystemMapLowerView system={this.props.starSystem} />
                 </div>
 

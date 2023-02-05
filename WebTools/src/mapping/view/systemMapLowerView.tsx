@@ -1,16 +1,10 @@
 import React from "react";
 import { Color } from "../../common/colour";
-import { CompanionType, StarSystem } from "../table/starSystem";
+import { CompanionType } from "../table/starSystem";
 import { AsteroidBeltDetails, StandardWorldDetails, WorldClass } from "../table/world";
+import { SystemMapView } from "./systemMapView";
 
-interface ISystemMapLowerViewProperties {
-    system: StarSystem;
-}
-
-class SystemMapLowerView extends React.Component<ISystemMapLowerViewProperties, {}> {
-
-    static START_X = 90;
-    static DISPLAY_WIDTH = 970 - SystemMapLowerView.START_X;
+class SystemMapLowerView extends SystemMapView {
 
     render() {
         const { system } = this.props;
@@ -57,20 +51,7 @@ class SystemMapLowerView extends React.Component<ISystemMapLowerViewProperties, 
             }
         }
 
-        let orbits = system.worlds?.map(w => w.orbitalRadius) ?? [];
-        if (system.gardenZoneInnerRadius) {
-            orbits.push(system.gardenZoneInnerRadius);
-        }
-        if (system.gardenZoneOuterRadius) {
-            orbits.push(system.gardenZoneOuterRadius);
-        }
-        orbits = orbits.sort((a, b) => {
-            if (a === b) {
-                return 0;
-            } else {
-                return a < b ? -1 : 1;
-            }
-        });
+        let orbits = this.findAllOrbits();
 
         let maxWorldDiameter = 50000;
         system.worlds?.filter(w => w.diameter != null).forEach(w => maxWorldDiameter = Math.max(w.diameter, maxWorldDiameter));
@@ -225,17 +206,7 @@ class SystemMapLowerView extends React.Component<ISystemMapLowerViewProperties, 
         }
     }
 
-    calculateOrbitX(orbitInAus: number, orbits: number[]) {
-        if (orbits?.length) {
-            let firstOrbitInAus = orbits[0];
-            let firstOrbit = Math.log1p(firstOrbitInAus);
-            let lastOrbit = Math.log1p(orbits[orbits.length - 1]);
 
-            return SystemMapLowerView.START_X + (SystemMapLowerView.DISPLAY_WIDTH) / (lastOrbit - firstOrbit) * (Math.log1p(orbitInAus) - firstOrbit);
-        } else {
-            return 0;
-        }
-    }
 }
 
 export default SystemMapLowerView;
