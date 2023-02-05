@@ -4,6 +4,12 @@
     width: 450px;
 }
 
+@media screen and (min-width: 0px) and (max-width: 768px) {
+    .sectorMap {
+        height: auto;
+    }
+}
+
 .lcars-decoration-left, .lcars-decoration-right {
     height: 450px;
     width: 125px;
