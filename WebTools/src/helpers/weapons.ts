@@ -64,7 +64,7 @@ export enum EnergyLoadType {
 export class EnergyLoadTypeModel {
     static readonly TYPES = [
         new EnergyLoadTypeModel(EnergyLoadType.AntiProton,           "Antiproton Beam",        "",                      "High Yield",  25),
-        new EnergyLoadTypeModel(EnergyLoadType.Disruptor,            "Disruptor",              "Viscious",              "",            23),
+        new EnergyLoadTypeModel(EnergyLoadType.Disruptor,            "Disruptor",              "Vicious",               "",            23),
         new EnergyLoadTypeModel(EnergyLoadType.ElectroMagneticIonic, "Electro-Magnetic/Ionic", "Dampening, Piercing 1", "",            22),
         new EnergyLoadTypeModel(EnergyLoadType.FreeElectron,         "Free Electron Laser",    "",                      "",            21),
         new EnergyLoadTypeModel(EnergyLoadType.Graviton,             "Graviton",               "Piercing 1",            "Devastating", 23),
