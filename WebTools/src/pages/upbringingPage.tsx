@@ -91,7 +91,7 @@ export class UpbringingPage extends React.Component<IPageProperties, IUpbringing
     }
 
     private showUpbringings() {
-        this.setState((state) => ({ ...state, showSelection: true }));
+        this.setState((state) => ({ ...state, showSelection: true, alternate: false }));
     }
 
     private hideUpbringings() {

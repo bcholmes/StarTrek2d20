@@ -106,16 +106,17 @@ class SystemMapUpperView extends SystemMapView {
                     }
                 }
 
-                let arcs = allX.map(x1 => {
+                let arcs = allX.map((x1, index) => {
                     let y1 = this.calculateThirtyDegreeY(x1);
                     let radiusY1 = this.calculateArcRadiusY(x1 - 35, y1 - 35);
                     let radiusX1 = radiusY1 * 5;
 
-                    return (<g key={'arc=' + i}><path d={this.createArcPath(radiusX1, radiusY1)}
+                    return (<path d={this.createArcPath(radiusX1, radiusY1)}
                         stroke="#ffffff" strokeWidth={2}
                         clipPath="url(#clipPath)" fill="none"
                         strokeDasharray={this.createRandomDashPattern()}
-                        strokeDashoffset={0}/></g>)
+                        strokeDashoffset={0}
+                        key={'segment-' + i + '-' + index}/>)
                 });
 
                 return (<g key={'arc=' + i}><path d={this.createArcPath(radiusX, radiusY)}
