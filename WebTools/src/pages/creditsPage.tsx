@@ -152,6 +152,28 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
                                 Second, adding stuff to the generator takes work, and I do it as time allows. I can't always turn new features
                                 around immediately.
                             </p>
+
+                            <p className="mt-5">
+                                <strong>Aren't you supposed to show some intrusive prompt about cookies? Like, for {' '}
+                                <a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation" target="_blank" rel="noreferrer">GDPR</a>,
+                                and all that?</strong>
+                            </p>
+
+                            <p>This site doesn't use cookies, and we don't track you.</p>
+
+                            <p>That includes these considerations:</p>
+
+                            <ul>
+                                <li className="text-white">The site does not collect analytics.</li>
+                                <li className="text-white">No fonts, images, JavaScript or other things are downloaded from an external server,
+                                so there should be no third-party tracking.</li>
+                            </ul>
+
+                            <p className="mt-5">
+                                <strong>But how do you make money?</strong>
+                            </p>
+
+                            <p>I don't. I'm okay with that. It's a labour of love for me.</p>
                         </div>
                     </div>
                 </LcarsFrame>);
