@@ -7,6 +7,7 @@ import {IPageProperties} from '../../pages/iPageProperties';
 import { PageIdentity } from '../../pages/pageIdentity';
 import { setStarSystemName } from '../../state/starActions';
 import store from '../../state/store';
+import { PdfExporter } from '../export/pdfExporter';
 import { StarSystem } from '../table/starSystem';
 import { EditableHeader } from '../view/editableHeader';
 import NotablePhenomenonView from '../view/notablePhenomenonView';
@@ -14,6 +15,8 @@ import StarView from '../view/starView';
 import SystemMapLowerView from '../view/systemMapLowerView';
 import SystemMapUpperView from '../view/systemMapUpperView';
 import WorldView from '../view/worldView';
+
+declare function download(bytes: any, fileName: any, contentType: any): any;
 
 interface IStarSystemDetailsPageProperties extends IPageProperties {
     starSystem?: StarSystem;
@@ -68,7 +71,8 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
                 </div>
 
                 <div>
-                    <Button buttonType={true} text="Back to Sector" onClick={() => navigateTo(null, PageIdentity.SectorDetails) } />
+                    <Button buttonType={true} className="mr-2 btn btn-primary btn-sm" text="Back to Sector" onClick={() => navigateTo(null, PageIdentity.SectorDetails) } />
+                    <Button onClick={() => this.exportPdf()} text="Export PDF" className="btn btn-primary btn-sm mr-2" buttonType={true} />
                 </div>
             </div>);
     }
@@ -103,6 +107,13 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
         Navigation.navigateToPage(PageIdentity.SystemGeneration);
     }
 
+    async exportPdf() {
+
+        let pdfDoc = await new PdfExporter().createStarSystemPdf(this.props.starSystem);
+
+        const pdfBytes = await pdfDoc.save();
+        download(pdfBytes, "System-" + this.props.starSystem.name + ".pdf", "application/pdf");
+    }
 }
 
 function mapStateToProps(state, ownProps) {

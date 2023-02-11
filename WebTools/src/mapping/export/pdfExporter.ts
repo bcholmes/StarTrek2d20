@@ -36,7 +36,30 @@ export class PdfExporter {
         for (let i = 0; i < systems.length; i++) {
             await this.populateSystemPage(pdf, lcarsFont, openSansLight, openSansBold, systems[i], blankPagePdf);
         }
+    }
 
+    async createStarSystemPdf(system: StarSystem) {
+        let pdf = await PDFDocument.create();
+        pdf.registerFontkit(fontkit);
+        const lcarsFontBytes = await fetch("/static/font/lcars_font.TTF").then(res => res.arrayBuffer());
+        const boldFontBytes = await fetch("/static/font/OpenSansCondensed-Bold.ttf").then(res => res.arrayBuffer());
+        const lightFontBytes = await fetch("/static/font/OpenSansCondensed-Light.ttf").then(res => res.arrayBuffer());
+
+        const existingPdfBytes = await fetch("/static/pdf/TNG_System_Map.pdf").then(res => res.arrayBuffer())
+        const blankPagePdf = await PDFDocument.load(existingPdfBytes)
+
+        const lcarsFont = await pdf.embedFont(lcarsFontBytes);
+        const openSansBold = await pdf.embedFont(boldFontBytes);
+        const openSansLight = await pdf.embedFont(lightFontBytes);
+
+        await this.populateSystemPage(pdf, lcarsFont, openSansLight, openSansBold, system, blankPagePdf);
+
+        this.paginate(pdf, openSansLight);
+
+        return pdf;
+    }
+
+    paginate(pdf: PDFDocument, openSansLight: PDFFont) {
         for (let i = 0; i < pdf.getPageCount(); i++) {
             const page = pdf.getPage(i);
             page.drawText("" + (i + 1), {
@@ -47,6 +70,7 @@ export class PdfExporter {
                 color: PdfExporter.LCARS_PURPLE
             });
         }
+
     }
 
 

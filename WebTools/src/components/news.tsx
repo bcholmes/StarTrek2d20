@@ -268,10 +268,6 @@ class News extends React.Component<INewsProperties, {}> {
                         the system generator.</li>
                     <li>I continue to add more spaceframe outlines.</li>
                 </ul>
-                <b>v1.220805</b>
-                <ul>
-                    <li>Minor bug fixes.</li>
-                </ul>
                 <div className="button-container-centered">
                     <div className="button" onClick={ () => this.props.onClose() }>
                         OK
