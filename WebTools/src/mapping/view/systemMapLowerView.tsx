@@ -65,7 +65,7 @@ class SystemMapLowerView extends SystemMapView {
 
             return (<radialGradient id={'worldRadialGradient' + i} xlinkHref="#worldLinearGradient"
                 cx={orbitalX-(0.4*r)} cy={110-(0.4*r)} fx={orbitalX-(0.4*r)} fy={110-(0.4*r)}  r={r}
-                gradientUnits="userSpaceOnUse" />)
+                gradientUnits="userSpaceOnUse" key={'radialWorldGradien-' + i}/>)
         });
 
         let worlds = system.worlds?.map((w, i) => {

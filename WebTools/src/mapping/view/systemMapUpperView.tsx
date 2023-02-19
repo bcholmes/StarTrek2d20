@@ -72,7 +72,7 @@ class SystemMapUpperView extends SystemMapView {
             let x = this.calculateOrbitX(w.orbitalRadius, orbits);
             let y1 = this.calculateThirtyDegreeY(x);
             let y2 = 620;
-            return (<path d={'M' + x.toFixed(2) + ',' + y1.toFixed(2) + ' L '+ x.toFixed(2) + ',' + y2} stroke="#888888" />);
+            return (<path d={'M' + x.toFixed(2) + ',' + y1.toFixed(2) + ' L '+ x.toFixed(2) + ',' + y2} stroke="#888888" key={'line-' + i}/>);
         });
 
         let worldGradients = system.worlds?.filter(w => w.worldClass.id !== WorldClass.AsteroidBelt).map((w, i) =>{
@@ -82,7 +82,7 @@ class SystemMapUpperView extends SystemMapView {
 
             return (<radialGradient id={'worldRadialGradientUp' + i} xlinkHref="#worldLinearGradientUp"
                 cx={orbitalX-(0.4*r)} cy={y-(0.4*r)} fx={orbitalX-(0.4*r)} fy={y-(0.4*r)}  r={r}
-                gradientUnits="userSpaceOnUse" />)
+                gradientUnits="userSpaceOnUse" key={'radialWorldGradientUp-' + i} />)
         });
 
         let orbitalArcs = system.worlds?.map((w, i) =>{

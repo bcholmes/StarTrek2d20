@@ -5,24 +5,29 @@ import GMTrackerPage from './tracker/gmTrackerPage';
 import { Provider } from "react-redux";
 import store from './state/store';
 import './i18n/config';
-import TalentsOverviewMainPage from './pages/talentsOverviewMainPage';
 import ViewSheetPage from './view/viewSheetPage';
 import XmlFormatViewerPage from './vtt/page/xmlFormatViewerPage';
-import CreditsPage from './pages/creditsPage';
 import ModificationFramePage from './modify/page/modificationFramePage';
+import React, { Suspense } from 'react';
+import LoadingPage from './pages/loadingPage';
+
+const CreditsPage = React.lazy(() => import('./pages/creditsPage'));
+const TalentsOverviewMainPage = React.lazy(() => import('./pages/talentsOverviewMainPage'));
 
 ReactDOM.render(
     <Provider store={store}>
         <Router>
+            <Suspense fallback={<LoadingPage />}>
             <Switch>
-                <Route path="/modify" component={ModificationFramePage} />
-                <Route path="/xmlviewer" component={XmlFormatViewerPage} />
-                <Route path="/credits" component={CreditsPage} />
-                <Route path="/gmtracker" component={GMTrackerPage} />
-                <Route path="/talents" component={TalentsOverviewMainPage} />
-                <Route path="/view" component={ViewSheetPage} />
-                <Route path="/" component={CharacterCreationApp} />
+                    <Route path="/modify" component={ModificationFramePage} />
+                    <Route path="/xmlviewer" component={XmlFormatViewerPage} />
+                    <Route path="/gmtracker" component={GMTrackerPage} />
+                    <Route path="/talents" component={TalentsOverviewMainPage} />
+                    <Route path="/view" component={ViewSheetPage} />
+                    <Route path="/credits" component={CreditsPage} />
+                    <Route path="/" component={CharacterCreationApp} />
             </Switch>
+            </Suspense>
         </Router>
     </Provider>,
     document.getElementById("mainBody")
