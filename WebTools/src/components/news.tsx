@@ -11,6 +11,21 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230220</b>
+                <ul>
+                    <li>A few minor enhancements.</li>
+                    <li>I've broken up the app into some sub-parts. What does that mean? Well, for a while, the
+                        process of "building" the application has complained to me about the app being very large
+                        (although I haven't really noticed any problem loading the application). Now, I'm trying to
+                        trim down the size of the main application, and load in optional portions as needed. You
+                        might notice more "loading" indicators &mdash; for example, some buttons might briefly
+                        display a spinner while some part of the application is loading.
+                    </li>
+                    <li>The primary motivation for handling the above relates to adding a quick utility for
+                        creating NPCs, which introduced a non-trivial amount of data. At the moment, NPC
+                        generation is fairly basic; I'll add more functionality later.
+                    </li>
+                </ul>
                 <b>v1.230208</b>
                 <ul>
                     <li>Two minor bug fixes.</li>
