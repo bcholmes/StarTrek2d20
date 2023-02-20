@@ -85,6 +85,12 @@ h1 .btn-link {
     text-transform: uppercase;
 }
 
+.button-column {
+
+    button {
+        display: block;
+    }
+}
 .button-container-centered {
 
     .button, .button-small {

@@ -64,6 +64,10 @@ export class CharacterTypeModel {
         return matches.length === 0 ? undefined : matches[0];
     }
 
+    public static getNpcCharacterTypes() {
+        return [ CharacterTypeModel.TYPES[0] ];
+    }
+
     public static getStarshipTypes() {
         return [ CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1] ];
     }

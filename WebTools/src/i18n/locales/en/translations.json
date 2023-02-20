@@ -98,6 +98,7 @@
     "ToolSelection.supportingCharacter": "Supporting Character",
     "ToolSelection.starship": "Starship",
     "ToolSelection.spaceSector": "Space Sector",
+    "ToolSelection.randomNpc": "Random NPC",
 
     "Common.button.select": "Select",
     "Common.button.selectAll": "Select All",
@@ -222,6 +223,7 @@
     "Page.title.promotion": "Promotion",
     "Page.title.normalMilestone": "Normal Milestone",
     "Page.title.modificationComplete": "Modification Completed",
+    "Page.title.npcConfiguration": "Random NPC Configuration",
 
     "Page.breadcrumb.characterCreation": "Character Creation",
     "Page.breadcrumb.starshipCreation": "Starship Creation",

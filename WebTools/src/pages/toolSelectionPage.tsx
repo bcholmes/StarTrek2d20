@@ -9,8 +9,16 @@ import {WorkflowsHelper} from '../helpers/workflows';
 import { hasSource } from '../state/contextFunctions';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import InstructionText from '../components/instructionText';
+import { PageFactory } from './pageFactory';
+import { LoadingButton } from '../common/loadingButton';
 
-class ToolSelectionPage extends React.Component<WithTranslation, {}> {
+interface IToolSelectionPageState {
+    loadingNpc?: boolean;
+    loadingStarship?: boolean;
+    loadingSystem?: boolean;
+}
+
+class ToolSelectionPage extends React.Component<WithTranslation, IToolSelectionPageState> {
 
     render() {
         const { t } = this.props;
@@ -26,11 +34,16 @@ class ToolSelectionPage extends React.Component<WithTranslation, {}> {
 
                     <InstructionText text={t('ToolSelection.instruction')} />
 
-                    <div className="button-container">
-                        <Button className="button" onClick={() => { this.startStarfleetWorkflow(); } } >{t('ToolSelection.mainCharacter')}</Button>
-                        <Button className="button" onClick={() => { this.goToPage(PageIdentity.SupportingCharacter); } } >{t('ToolSelection.supportingCharacter')}</Button>
-                        <Button className="button" onClick={() => { this.goToPage(PageIdentity.StarshipToolSelection); } } >{t('ToolSelection.starship')}</Button>
-                        {this.renderSystemGenerationButton()}
+                    <div className="row">
+                        <div className="col-md-6 button-column">
+                            <Button className="button mt-4" onClick={() => { this.startStarfleetWorkflow(); } } >{t('ToolSelection.mainCharacter')}</Button>
+                            <Button className="button mt-4" onClick={() => { this.goToPage(PageIdentity.SupportingCharacter); } } >{t('ToolSelection.supportingCharacter')}</Button>
+                            <LoadingButton onClick={() => { this.loadStarshipAndGoToPage(); } } loading={this.state?.loadingStarship}>{t('ToolSelection.starship')}</LoadingButton>
+                            {this.renderSystemGenerationButton()}
+                        </div>
+                        <div className="col-md-6 button-column">
+                            <LoadingButton onClick={() => { this.loadNpcAndGoToPage(); } } loading={this.state?.loadingNpc}>{t('ToolSelection.randomNpc')}</LoadingButton>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,7 +53,7 @@ class ToolSelectionPage extends React.Component<WithTranslation, {}> {
     renderSystemGenerationButton() {
         const { t } = this.props;
         if (hasSource(Source.ShackletonExpanse)) {
-            return (<Button className="button" onClick={() => { this.goToPage(PageIdentity.SystemGeneration); } } >{t('ToolSelection.spaceSector')}</Button>);
+            return (<LoadingButton onClick={() => { this.loadSystemAndGoToPage(); } } loading={this.state?.loadingSystem}>{t('ToolSelection.spaceSector')}</LoadingButton>);
         } else {
             return undefined;
         }
@@ -56,6 +69,29 @@ class ToolSelectionPage extends React.Component<WithTranslation, {}> {
         }
     }
 
+    loadSystemAndGoToPage() {
+        this.setState((state) => ({...state, loadingSystem: true}));
+        PageFactory.instance.loadSystemGenerationFactory(() => {
+            this.setState((state) => ({...state, loadingSystem: false}));
+            this.goToPage(PageIdentity.SystemGeneration);
+        });
+    }
+
+    loadStarshipAndGoToPage() {
+        this.setState((state) => ({...state, loadingStarship: true}));
+        PageFactory.instance.loadStarshipFactory(() => {
+            this.setState((state) => ({...state, loadingStarship: false}));
+            this.goToPage(PageIdentity.StarshipToolSelection);
+        });
+    }
+
+    loadNpcAndGoToPage() {
+        this.setState((state) => ({...state, loadingNpc: true}));
+        PageFactory.instance.loadNpcFactory(() => {
+            this.setState((state) => ({...state, loadingNpc: false}));
+            this.goToPage(PageIdentity.NpcConfiguration);
+        });
+    }
 
     private goToPage(page: PageIdentity) {
         Navigation.navigateToPage(page);

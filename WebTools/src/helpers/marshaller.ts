@@ -36,7 +36,6 @@ class Marshaller {
             "type": CharacterType[character.type],
             "age": character.age ? character.age.name : undefined,
             "name": character.name,
-            "role": character.role,
             "attributes": this.toAttributeObject(character.attributes),
             "disciplines": this.toSkillObject(character.skills),
             "focuses": [...character.focuses]
@@ -48,7 +47,13 @@ class Marshaller {
             if (character.speciesStep.customSpeciesName && character.speciesStep.species === Species.Custom) {
                 sheet["species"]["customName"] = character.speciesStep.customSpeciesName;
             }
+        }
 
+        if (character.role != null) {
+            sheet["role"] = character.role;
+        }
+        if (character.jobAssignment != null) {
+            sheet["jobAssignment"] = character.jobAssignment;
         }
 
         if (character.rank) {

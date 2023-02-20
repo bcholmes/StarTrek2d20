@@ -86,6 +86,7 @@ ToolSelection.mainCharacter,Main Character,Hauptcharakter,Personaje principal,Pe
 ToolSelection.supportingCharacter,Supporting Character,Nebencharakter,Personaje secundario,Personnage secondaire
 ToolSelection.starship,Starship,Raumschiff,Nave estelar,Vaisseau spatial
 ToolSelection.spaceSector,Space Sector,Raumsektor,Sector espacial,Secteur spatial
+ToolSelection.randomNpc,Random NPC,,,
 Common.button.select,Select,Auswählen,Escoger,Choisir
 Common.button.selectAll,Select All,Alle auswählen,Seleccionar todo,Sélectionner tout
 Common.button.selectNone,Select None,Nichts auswählen,Seleccionar Ninguno,Sélectionnez Aucun
@@ -201,6 +202,7 @@ Page.title.reputationChange,Reputation Change,,,Changer la Réputation
 Page.title.promotion,Promotion,,,Promotion
 Page.title.normalMilestone,Normal Milestone,,,Jalon Normal
 Page.title.modificationComplete,Modification Completed,,,Modification Effectuée
+Page.title.npcConfiguration,Random NPC Configuration,,,
 Page.breadcrumb.characterCreation,Character Creation,Charaktererstellung,Creación de personajes,Création de personnages
 Page.breadcrumb.starshipCreation,Starship Creation,Raumschifferstellung,,Règles de Base
 Page.breadcrumb.supportingCharacterCreation,Supporting Character Creation,,,Création de Personnage Secondaire

@@ -16,7 +16,7 @@ export class NameGenerator {
 
     createName(species: SpeciesModel) {
 
-        let result = "";
+        let result = { name: "", pronouns: "" };
         for (let name of names) {
             if (name.species === species.name) {
 
@@ -55,12 +55,25 @@ export class NameGenerator {
                             firstNameString = firstName.variants[Math.floor(Math.random() * firstName.variants.length)];
                         }
                     }
-                    result = (firstNameString != null ? firstNameString + " " : "") + lastName.name;
+                    result = {
+                        name: (firstNameString != null ? firstNameString + " " : "") + lastName.name,
+                        pronouns: this.derivePronouns(firstName.gender)
+                    }
                 }
                 break;
             }
         }
 
         return result;
+    }
+
+    private derivePronouns(gender: string) {
+        if (gender === "Male") {
+            return D20.roll() === 20 ? "they/them" : "he/him";
+        } else if (gender === "Female") {
+            return D20.roll() === 20 ? "they/them" : "she/her";
+        } else {
+            return D20.roll() >= 18 ? "they/them" : (D20.roll() <= 10 ? "he/him" : "she/her");
+        }
     }
 }

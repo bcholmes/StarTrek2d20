@@ -26,26 +26,9 @@ import { ChildEducationPage } from './childEducationPage';
 import { ChildEducationDetailsPage } from './childEducationDetailsPage';
 import ViewSheetPage from '../view/viewSheetPage';
 import { CadetSeniorityPage } from './cadetSeniorityPage';
-import { SystemGenerationPage } from '../mapping/page/systemGenerationPage';
-import StarSystemDetailsPage from '../mapping/page/starSystemDetailsPage';
-import SectorDetailsPage from '../mapping/page/sectorDetailsPage';
 import SpeciesExtraDetailsPage from './speciesExtraDetailsPage';
 import { Species } from '../helpers/speciesEnum';
-import StarshipTypeSelectionPage from '../starship/page/starshipTypeSelectionPage';
-import SimpleStarshipPage from '../starship/page/simpleStarshipPage';
-import FinalStarshipDetailsPage from '../starship/page/finalStarshipDetailsPage';
-import StarshipTalentsPage from '../starship/page/starshipTalentsPage';
-import StarshipWeaponsPage from '../starship/page/starshipWeaponsPage';
-import SelectStarshipToolPage from '../starship/page/selectStarshipToolPage';
-import SmallCraftStatsPage from '../starship/page/smallCraftStatsPage';
 import { ExtraFocusPage } from './extraFocusPage';
-import SpaceframePage from '../starship/page/spaceframePage';
-import CustomSpaceframePage from '../starship/page/customSpaceframePage';
-import MissionProfileSelectionPage from '../starship/page/missionProfileSelectionPage';
-import MissionProfileTalentSelectionPage from '../starship/page/missionProfileTalentSelectionPage';
-import RefitsPage from '../starship/page/refitsPage';
-import SpaceframeSelectionPage from '../starship/page/spaceframeSelectionPage';
-import MissionPodSelectionPage from '../starship/page/missionPodSelectionPage';
 import CustomSpeciesDetailsPage from './customSpeciesDetailsPage';
 import ModificationTypeSelectionPage from '../modify/page/modificationTypeSelectionPage';
 import ReputationChangePage from '../modify/page/reputationChangePage';
@@ -53,6 +36,10 @@ import ModificationCompletePage from '../modify/page/modificationCompletePage';
 import PromotionPage from '../modify/page/promotionPage';
 import MilestonePage from '../modify/page/milestonePage';
 import { MilestoneType } from '../modify/model/milestoneType';
+
+export interface IPageFactoryRegistry {
+    findFactory(page: PageIdentity);
+}
 
 export class PageFactory {
 
@@ -66,6 +53,7 @@ export class PageFactory {
     }
 
     private factories = {};
+    private pageFactories = {};
 
     constructor() {
         this.factories = {};
@@ -102,23 +90,6 @@ export class PageFactory {
         this.factories[PageIdentity.BorgImplants] = () => <BorgImplantSelection />;
         this.factories[PageIdentity.ExtraFocus] = () => <ExtraFocusPage />;
         this.factories[PageIdentity.Finish] = () => <FinishPage/>;
-        this.factories[PageIdentity.CustomSpaceframe] = () => <CustomSpaceframePage/>;
-        this.factories[PageIdentity.MissionPodSelection] = () => <MissionPodSelectionPage/>;
-        this.factories[PageIdentity.MissionProfileSelection] = () => <MissionProfileSelectionPage/>;
-        this.factories[PageIdentity.MissionProfileTalentSelection] = () => <MissionProfileTalentSelectionPage/>;
-        this.factories[PageIdentity.SimpleStarship] = () => <SimpleStarshipPage/>;
-        this.factories[PageIdentity.SmallCraftStats] = () => <SmallCraftStatsPage/>;
-        this.factories[PageIdentity.SpaceframeOption] = () => <SpaceframePage/>;
-        this.factories[PageIdentity.SpaceframeSelection] = () => <SpaceframeSelectionPage/>;
-        this.factories[PageIdentity.StarshipRefits] = () => <RefitsPage/>;
-        this.factories[PageIdentity.StarshipToolSelection] = () => <SelectStarshipToolPage/>;
-        this.factories[PageIdentity.StarshipTypeSelection] = () => <StarshipTypeSelectionPage/>;
-        this.factories[PageIdentity.StarshipTalentSelection] = () => <StarshipTalentsPage/>;
-        this.factories[PageIdentity.StarshipWeaponsSelection] = () => <StarshipWeaponsPage/>;
-        this.factories[PageIdentity.FinalStarshipDetails] = () => <FinalStarshipDetailsPage/>;
-        this.factories[PageIdentity.SystemGeneration] = () => <SystemGenerationPage />;
-        this.factories[PageIdentity.SectorDetails] = () => <SectorDetailsPage />;
-        this.factories[PageIdentity.StarSystemDetails] = () => <StarSystemDetailsPage />;
         this.factories[PageIdentity.SupportingCharacter] = () => <SupportingCharacterPage />;
         this.factories[PageIdentity.ViewSheet] = () => <ViewSheetPage />;
         this.factories[PageIdentity.ModificationTypeSelection] = () => <ModificationTypeSelectionPage />;
@@ -129,7 +100,17 @@ export class PageFactory {
     }
 
     createPage(page: PageIdentity) {
-        const factory = this.factories[page];
+        let factory = this.factories[page];
+
+        for (let key of Object.keys(this.pageFactories)) {
+            let pageFactory = this.pageFactories[key];
+            let temp = pageFactory.findFactory(page);
+            if (temp != null) {
+                factory = temp;
+                break;
+            }
+        }
+
         if (!factory) {
             console.error(`Unable to find a page factory for ${PageIdentity[page]}`);
         }
@@ -139,11 +120,38 @@ export class PageFactory {
         return factory ? factory() : undefined;
     }
 
-    isFullscreen(page: PageIdentity) {
-        if (page === PageIdentity.Finish) {
-            return true;
+    loadSystemGenerationFactory(completion: () => void = () => {}) {
+        if (this.pageFactories["system"] == null) {
+            import('../mapping/page/systemPageFactory').then(({SystemPageFactory}) => {
+                this.pageFactories["system"] = SystemPageFactory.instance;
+                completion();
+            });
+        } else {
+            completion();
         }
-
-        return false;
     }
+
+
+    loadStarshipFactory(completion: () => void = () => {}) {
+        if (this.pageFactories["starship"] == null) {
+            import('../starship/page/starshipPageFactory').then(({StarshipPageFactory}) => {
+                this.pageFactories["starship"] = StarshipPageFactory.instance;
+                completion();
+            });
+        } else {
+            completion();
+        }
+    }
+
+    loadNpcFactory(completion: () => void = () => {}) {
+        if (this.pageFactories["npc"] == null) {
+            import('../npc/page/npcPageFactory').then(({NpcPageFactory}) => {
+                this.pageFactories["npc"] = NpcPageFactory.instance;
+                completion();
+            });
+        } else {
+            completion();
+        }
+    }
+
 }

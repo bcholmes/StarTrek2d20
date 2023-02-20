@@ -35,12 +35,12 @@ export abstract class BaseCharacterView extends React.Component<ICharacterViewPr
 
             <Header level={2} className="mt-4">{t('Construct.other.disciplines')}</Header>
             <div className="row row-cols-1 row-cols-md-3 mt-3">
-                <StatView name={t(makeKey('Construct.discipline.', Skill[Skill.Command]))} value={character.skills ? character.skills[Skill.Command].expertise : undefined} className="col mb-1" />
-                <StatView name={t(makeKey('Construct.discipline.', Skill[Skill.Security]))} value={character.skills ? character.skills[Skill.Security].expertise : undefined} className="col mb-1" />
-                <StatView name={t(makeKey('Construct.discipline.', Skill[Skill.Science]))} value={character.skills ? character.skills[Skill.Science].expertise : undefined} className="col mb-1" />
-                <StatView name={t(makeKey('Construct.discipline.', Skill[Skill.Conn]))} value={character.skills ? character.skills[Skill.Conn].expertise : undefined} className="col mb-1" />
-                <StatView name={t(makeKey('Construct.discipline.', Skill[Skill.Engineering]))} value={character.skills ? character.skills[Skill.Engineering].expertise : undefined} className="col mb-1" />
-                <StatView name={t(makeKey('Construct.discipline.', Skill[Skill.Medicine]))} value={character.skills ? character.skills[Skill.Medicine].expertise : undefined} className="col mb-1" />
+                <StatView name={t(makeKey('Construct.discipline.', Skill[Skill.Command]))} value={character.skills ? character.skills[Skill.Command].expertise : undefined} className="col mb-1" showZero={true} />
+                <StatView name={t(makeKey('Construct.discipline.', Skill[Skill.Security]))} value={character.skills ? character.skills[Skill.Security].expertise : undefined} className="col mb-1" showZero={true} />
+                <StatView name={t(makeKey('Construct.discipline.', Skill[Skill.Science]))} value={character.skills ? character.skills[Skill.Science].expertise : undefined} className="col mb-1" showZero={true} />
+                <StatView name={t(makeKey('Construct.discipline.', Skill[Skill.Conn]))} value={character.skills ? character.skills[Skill.Conn].expertise : undefined} className="col mb-1" showZero={true} />
+                <StatView name={t(makeKey('Construct.discipline.', Skill[Skill.Engineering]))} value={character.skills ? character.skills[Skill.Engineering].expertise : undefined} className="col mb-1" showZero={true} />
+                <StatView name={t(makeKey('Construct.discipline.', Skill[Skill.Medicine]))} value={character.skills ? character.skills[Skill.Medicine].expertise : undefined} className="col mb-1" showZero={true} />
             </div>
 
         </>)

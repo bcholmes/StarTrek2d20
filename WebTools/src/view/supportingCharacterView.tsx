@@ -68,7 +68,7 @@ class SupportingCharacterView extends BaseCharacterView {
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.pronouns ? character.pronouns  : undefined}</div></div>
 
                 <div className="col-md-2 view-field-label pb-2">Department:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.role}</div></div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.role == null ? character.jobAssignment : character.role}</div></div>
             </div>
 
             <div className="row" style={{alignItems: "baseline"}}>

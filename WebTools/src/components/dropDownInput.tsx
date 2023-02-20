@@ -9,9 +9,9 @@ interface IDropDownInputProperties {
 export class DropDownElement {
 
     readonly name: string;
-    readonly value: number;
+    readonly value: number|string;
 
-    constructor(value: number, name: string) {
+    constructor(value: number|string, name: string) {
         this.value = value;
         this.name = name;
     }

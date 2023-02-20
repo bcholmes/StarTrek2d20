@@ -6,8 +6,6 @@ import { PageIdentity } from './pages/pageIdentity';
 import LcarsFrame from './components/lcarsFrame';
 
 import './scss/main.scss';
-import { SpeciesHelper } from './helpers/species';
-import { Species } from './helpers/speciesEnum';
 
 interface IAppState {
     activePage: PageIdentity;
@@ -21,8 +19,6 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
         this.state = {
             activePage: PageIdentity.Home
         };
-
-        import('./npc/nameGenerator').then(({NameGenerator}) => { console.log(NameGenerator.instance.createName(SpeciesHelper.getSpeciesByType(Species.Human))); } );
     }
 
     componentDidMount() {

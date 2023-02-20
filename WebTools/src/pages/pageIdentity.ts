@@ -64,5 +64,7 @@ export enum PageIdentity {
     ReputationChange,
     Promotion,
     NormalMilestone,
-    ModificationCompletePage
+    ModificationCompletePage,
+
+    NpcConfiguration
 }
