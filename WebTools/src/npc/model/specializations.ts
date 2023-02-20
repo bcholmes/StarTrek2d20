@@ -74,7 +74,7 @@ export class Specializations {
                 "Subspace Communications Technology"],
                 ["Dilithium Inspection", "Specialized Engineering Equipment", "Emergency Protocols", "Holodeck Repair",
                 "Communciations Systems", "Equipment Diagnostics", "Away Team Equipment Repair", "EVA Operations",
-                "Leading-Edge Engineering Advances", "Subspace Theory", "Alternative Propultion Theory"],
+                "Leading-Edge Engineering Advances", "Subspace Theory", "Alternative Propulsion Theory"],
                 0.1),
             new SpecializationModel(Specialization.MedicalDoctor, "Medical Doctor",
                 [Attribute.Presence, Attribute.Insight, Attribute.Control],
