@@ -47,23 +47,7 @@ export class NpcGenerator {
         character.speciesStep = new SpeciesStep(species.id);
         character.jobAssignment = specialization.name;
 
-        let attributes = AttributesHelper.getAllAttributes();
-        let attributePoints = NpcTypes.attributePoints(NpcType.Notable);
-        let chances = [20, 14, 8];
-
-        for (let i = 0; i < attributePoints.length; i++) {
-            let a = attributes[Math.floor(Math.random() * attributes.length)];
-            if (i < specialization.primaryAttributes.length && i < chances.length && D20.roll() <= chances[i]) {
-                let temp = specialization.primaryAttributes[Math.floor(Math.random() * specialization.primaryAttributes.length)];
-                if (attributes.indexOf(temp) >= 0) {
-                    a = temp;
-                }
-            }
-            character.attributes[a].value = attributePoints[i];
-            attributes.splice(attributes.indexOf(a), 1);
-        }
-
-        // TODO: apply species attribute bumps
+        NpcGenerator.assignAttributes(character, species, specialization);
 
         let disciplines = SkillsHelper.getSkills();
         let disciplinePoints = NpcTypes.disciplinePoints(NpcType.Notable);
@@ -84,26 +68,67 @@ export class NpcGenerator {
         character.career = careers[Math.floor(Math.random() * careers.length)];
         character.enlisted = (Math.random() < specialization.officerProbability) ? false : true;
 
-        let ranks = RanksHelper.instance().getRanks(character);
-        if (specialization.id === Specialization.Admin) {
-            ranks = ranks.filter(r => r.id !== Rank.Crewman && r.id !== Rank.Specialist);
-        } else {
-            ranks = ranks.filter(r => r.id !== Rank.Yeoman);
+        NpcGenerator.assignRank(character, specialization);
+        NpcGenerator.assignFocuses(character, specialization);
+
+        return character;
+    }
+
+    static assignAttributes(character: Character, species: SpeciesModel, specialization: SpecializationModel) {
+        let attributes = AttributesHelper.getAllAttributes();
+        let attributePoints = NpcTypes.attributePoints(NpcType.Notable);
+        let chances = [20, 14, 8];
+
+        for (let i = 0; i < attributePoints.length; i++) {
+            let a = attributes[Math.floor(Math.random() * attributes.length)];
+            if (i < specialization.primaryAttributes.length && i < chances.length && D20.roll() <= chances[i]) {
+                let temp = specialization.primaryAttributes[Math.floor(Math.random() * specialization.primaryAttributes.length)];
+                if (attributes.indexOf(temp) >= 0) {
+                    a = temp;
+                }
+            }
+            character.attributes[a].value = attributePoints[i];
+            attributes.splice(attributes.indexOf(a), 1);
         }
 
-        if (ranks.length > 0) {
-            let rank = ranks[Math.floor(Math.random() * ranks.length)];
-            if (specialization.id === Specialization.MedicalDoctor && rank.id === Rank.Ensign) {
-                character.jobAssignment = specialization.name + " (Resident)";
-            }
-            if (rank.tiers > 1) {
-                let tier = Math.ceil(Math.random() * rank.tiers);
-                RanksHelper.instance().applyRank(character, rank.id, tier);
-            } else {
-                RanksHelper.instance().applyRank(character, rank.id, 1);
+        let hasMax = character.hasMaxedAttribute();
+        let speciesAttributes = [];
+        if (species.attributes.length <= 3) {
+            for (let i = 0; i < species.attributes.length; i++) {
+                let attr = species.attributes[i];
+                if (character.attributes[attr].value < 12 &&
+                    (!hasMax || character.attributes[attr].value < 11)) {
+
+                    speciesAttributes.push();
+                }
             }
         }
 
+        // when adding species attributes, we need to worry about
+        // major NPCs who can have a lot of points already allocated;
+        // if a species attribute would raise an attribute above the
+        // maximums, treat it as if one of the original point
+        // spend was in another attribute and the species point
+        // can be applied.
+        let allAttributes = AttributesHelper.getAllAttributes();
+        while (speciesAttributes.length < 3) {
+
+            let attr = allAttributes[Math.floor(Math.random() * allAttributes.length)];
+            if (speciesAttributes.indexOf(attr) >= 0) {
+                // already have this one. skip it.
+            } else if (character.attributes[attr].value < 12 &&
+                (!hasMax || character.attributes[attr].value < 11)) {
+
+                speciesAttributes.push(attr);
+            }
+        }
+
+        for (let i = 0; i < speciesAttributes.length; i++) {
+            character.attributes[speciesAttributes[i]].value += 1;
+        }
+    }
+
+    static assignFocuses(character: Character, specialization: SpecializationModel) {
         let numberOfFocuses = NpcTypes.numberOfFocuses(NpcType.Notable);
         let primaryChances = [20, 12, 8, 6, 4, 2];
         let secondaryChances = [17, 15, 11, 9, 6, 3];
@@ -125,8 +150,28 @@ export class NpcGenerator {
                 }
             }
         }
+    }
 
-        return character;
+    static assignRank(character: Character, specialization: SpecializationModel) {
+        let ranks = RanksHelper.instance().getRanks(character);
+        if (specialization.id === Specialization.Admin) {
+            ranks = ranks.filter(r => r.id !== Rank.Crewman && r.id !== Rank.Specialist);
+        } else {
+            ranks = ranks.filter(r => r.id !== Rank.Yeoman);
+        }
+
+        if (ranks.length > 0) {
+            let rank = ranks[Math.floor(Math.random() * ranks.length)];
+            if (specialization.id === Specialization.MedicalDoctor && rank.id === Rank.Ensign) {
+                character.jobAssignment = specialization.name + " (Resident)";
+            }
+            if (rank.tiers > 1) {
+                let tier = Math.ceil(Math.random() * rank.tiers);
+                RanksHelper.instance().applyRank(character, rank.id, tier);
+            } else {
+                RanksHelper.instance().applyRank(character, rank.id, 1);
+            }
+        }
     }
 
 }

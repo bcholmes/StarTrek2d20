@@ -56,7 +56,7 @@ export class Specializations {
                 "Test Pilot", "Dogfighting", "Astrogation", "Attack Maneuvers"],
                 ["High Warp Maneuvers", "Warp Trail Identification", "High Gravity Maneuvers", "Starship Landing Procedures", "Stellar Systems",
                 "Spacecraft Identification", "Emergency Landing Procedures", "Spacedock Protocols", "Racing", "Watercraft", "Zero-G Operations",
-                "EVA Protocols", "Lifeboat Protocols"], 0.9),
+                "EVA Protocols", "Lifeboat Protocols"], 0.7),
             new SpecializationModel(Specialization.HangarDeck, "Hangar Deck",
                 [Attribute.Daring, Attribute.Control],
                 Skill.Conn,
