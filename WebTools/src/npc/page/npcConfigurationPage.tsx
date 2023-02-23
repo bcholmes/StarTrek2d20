@@ -11,6 +11,7 @@ import { SpeciesHelper, SpeciesModel } from '../../helpers/species';
 import { Species } from '../../helpers/speciesEnum';
 import { PageIdentity } from '../../pages/pageIdentity';
 import { NpcGenerator } from '../model/npcGenerator';
+import { NpcType } from '../model/npcType';
 import { SpecializationModel, Specializations } from '../model/specializations';
 
 interface INpcConfigurationPageState {
@@ -119,7 +120,8 @@ class NpcConfigurationPage extends React.Component<WithTranslation, INpcConfigur
     }
 
     createNpc() {
-        let character = NpcGenerator.createNpc(this.state.selectedType.type, this.state.selectedSpecies, this.state.selectedSpecialization);
+        let character = NpcGenerator.createNpc(NpcType.Notable, this.state.selectedType.type,
+            this.state.selectedSpecies, this.state.selectedSpecialization);
 
         const value = marshaller.encodeSupportingCharacter(character);
         window.open('/view?s=' + value, "_blank");

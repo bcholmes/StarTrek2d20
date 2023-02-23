@@ -21,21 +21,23 @@ const recreationSkills = [ "Holodeck Simulations", "Dixie Hill Adventures",
     "Meditation", "Kal-toh", "Taoism", "Target Practice", "Airboating", "Dog Training",
     "Horseback Riding", "Bolian Comedy", "Sushi Preparation", "Theology and Alien Superbeings",
     "Mining", "Animal Husbandry", "Flirting", "Antiques", "Hiking", "The Teachings of Surak",
-    "Skydiving", "Pastry Chef", "Anbo-jyutsu" ];
+    "Skydiving", "Pastry Chef", "Anbo-jyutsu", "Flotter Stories", "Cocktails", "Merchant Ships",
+    "Appraisal", "The Ferengi Rules of Acquisition", "Interpretive Dance" ];
 
 const starfleetSkills = ["Starfleet Protocols", "Worlds of the Federation", "Starship Emergency Protocols",
     "Tricoders", "History of the Federation", "The Missions of Adm. Archer and the NX-01",
     "Early Starfleet History", "Starfleet General Orders", "The Missions of Commodore Decker",
     "Starship Identification", "Androids and Synthetic Life", "Holodeck Programming", "Federation Wars",
-    "Battle Tactics of Captain Garth", "Federation Species"];
+    "Battle Tactics of Captain Garth", "Federation Species", "Tactical Use of Logic Puzzles for Defeating AIs",
+    "First Contact Protocols", "The Prime Directive", "Abandon Ship Procedures", "Space Suits", "Zero-G Operations"];
 
 
 
 export class NpcGenerator {
 
-    static createNpc(type: CharacterType, species: SpeciesModel, specialization: SpecializationModel) {
+    static createNpc(npcType: NpcType, characterType: CharacterType, species: SpeciesModel, specialization: SpecializationModel) {
         let character = new Character();
-        character.type = type;
+        character.type = characterType;
         if (specialization == null) {
             let specializations = Specializations.instance.getSpecializations();
             specialization = specializations[Math.floor(Math.random() * specializations.length)];
@@ -47,10 +49,10 @@ export class NpcGenerator {
         character.speciesStep = new SpeciesStep(species.id);
         character.jobAssignment = specialization.name;
 
-        NpcGenerator.assignAttributes(character, species, specialization);
+        NpcGenerator.assignAttributes(npcType, character, species, specialization);
 
         let disciplines = SkillsHelper.getSkills();
-        let disciplinePoints = NpcTypes.disciplinePoints(NpcType.Notable);
+        let disciplinePoints = NpcTypes.disciplinePoints(npcType);
 
         for (let i = 0; i < disciplinePoints.length; i++) {
             let a = disciplines[Math.floor(Math.random() * disciplines.length)];
@@ -69,14 +71,14 @@ export class NpcGenerator {
         character.enlisted = (Math.random() < specialization.officerProbability) ? false : true;
 
         NpcGenerator.assignRank(character, specialization);
-        NpcGenerator.assignFocuses(character, specialization);
+        NpcGenerator.assignFocuses(npcType, character, specialization);
 
         return character;
     }
 
-    static assignAttributes(character: Character, species: SpeciesModel, specialization: SpecializationModel) {
+    static assignAttributes(npcType: NpcType, character: Character, species: SpeciesModel, specialization: SpecializationModel) {
         let attributes = AttributesHelper.getAllAttributes();
-        let attributePoints = NpcTypes.attributePoints(NpcType.Notable);
+        let attributePoints = NpcTypes.attributePoints(npcType);
         let chances = [20, 14, 8];
 
         for (let i = 0; i < attributePoints.length; i++) {
@@ -128,8 +130,8 @@ export class NpcGenerator {
         }
     }
 
-    static assignFocuses(character: Character, specialization: SpecializationModel) {
-        let numberOfFocuses = NpcTypes.numberOfFocuses(NpcType.Notable);
+    static assignFocuses(npcType: NpcType, character: Character, specialization: SpecializationModel) {
+        let numberOfFocuses = NpcTypes.numberOfFocuses(npcType);
         let primaryChances = [20, 12, 8, 6, 4, 2];
         let secondaryChances = [17, 15, 11, 9, 6, 3];
 
