@@ -101,7 +101,7 @@ export class NpcGenerator {
                 if (character.attributes[attr].value < 12 &&
                     (!hasMax || character.attributes[attr].value < 11)) {
 
-                    speciesAttributes.push();
+                    speciesAttributes.push(attr);
                 }
             }
         }

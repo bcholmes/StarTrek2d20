@@ -1,11 +1,13 @@
 import React from 'react';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
 import { CharacterTypeModel } from '../../common/characterType';
 import { navigateTo } from '../../common/navigator';
 import { Button } from '../../components/button';
 import { DropDownElement, DropDownInput } from '../../components/dropDownInput';
 import { Header } from '../../components/header';
 import InstructionText from '../../components/instructionText';
+import { Era } from '../../helpers/eras';
 import { marshaller } from '../../helpers/marshaller';
 import { SpeciesHelper, SpeciesModel } from '../../helpers/species';
 import { Species } from '../../helpers/speciesEnum';
@@ -14,20 +16,23 @@ import { NpcGenerator } from '../model/npcGenerator';
 import { NpcType } from '../model/npcType';
 import { SpecializationModel, Specializations } from '../model/specializations';
 
+interface INpcConfigurationPageProperties extends WithTranslation {
+    era: Era;
+}
+
 interface INpcConfigurationPageState {
     selectedType: CharacterTypeModel;
-    selectedSpecies: SpeciesModel;
+    selectedSpecies?: Species;
     selectedSpecialization?: SpecializationModel;
 }
 
-class NpcConfigurationPage extends React.Component<WithTranslation, INpcConfigurationPageState> {
+class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperties, INpcConfigurationPageState> {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            selectedType: CharacterTypeModel.getNpcCharacterTypes()[0],
-            selectedSpecies: SpeciesHelper.getSpeciesByType(Species.Human)
+            selectedType: CharacterTypeModel.getNpcCharacterTypes()[0]
         }
     }
 
@@ -67,9 +72,9 @@ class NpcConfigurationPage extends React.Component<WithTranslation, INpcConfigur
 
                         <div className="mt-4">
                             <DropDownInput
-                                items={ this.getSpeciesList().map(t => new DropDownElement(t.id, t.name )) }
-                                defaultValue={ this.state.selectedSpecies }
-                                onChange={(index) => this.selectSpecies(this.getSpeciesList()[index] ) }/>
+                                items={ this.getSpeciesDropDownList() }
+                                defaultValue={ this.state.selectedSpecies ?? "" }
+                                onChange={(index) => this.selectSpecies(index) }/>
                         </div>
                     </div>
 
@@ -99,8 +104,15 @@ class NpcConfigurationPage extends React.Component<WithTranslation, INpcConfigur
     }
 
     getSpeciesList() {
-        let list = [ SpeciesHelper.getSpeciesByType(Species.Human) ];
-        return list;
+        const list = [ Species.Andorian, Species.Bajoran, Species.Betazoid, Species.Denobulan, Species.Human, Species.Tellarite, Species.Trill, Species.Vulcan ];
+        let result = list.map(s => SpeciesHelper.getSpeciesByType(s)).filter(s => s.eras.indexOf(this.props.era) >= 0);
+        return result;
+    }
+
+    getSpeciesDropDownList() {
+        let result = [ new DropDownElement("", "Any Major Species")];
+        this.getSpeciesList().forEach(s => result.push(new DropDownElement(s.id, s.name)));
+        return result;
     }
 
     selectSpecialization(index: number) {
@@ -115,17 +127,30 @@ class NpcConfigurationPage extends React.Component<WithTranslation, INpcConfigur
         this.setState((state) => ({...state, selectedType: type }));
     }
 
-    selectSpecies(species: SpeciesModel) {
-        this.setState((state) => ({...state, selectedSpecies: species }));
+    selectSpecies(index: number) {
+        if (index > 0) {
+            this.setState((state) => ({...state, selectedSpecies: this.getSpeciesList()[index-1].id }));
+        } else {
+            this.setState((state) => ({...state, selectedSpecies: undefined }));
+        }
     }
 
     createNpc() {
+        let species = this.state.selectedSpecies != null
+            ? this.state.selectedSpecies
+            : SpeciesHelper.generateSpecies();
         let character = NpcGenerator.createNpc(NpcType.Notable, this.state.selectedType.type,
-            this.state.selectedSpecies, this.state.selectedSpecialization);
+            SpeciesHelper.getSpeciesByType(species), this.state.selectedSpecialization);
 
         const value = marshaller.encodeSupportingCharacter(character);
         window.open('/view?s=' + value, "_blank");
     }
 }
 
-export default withTranslation()(NpcConfigurationPage);
+function mapStateToProps(state, ownProps) {
+    return {
+        era: state.context.era
+    };
+}
+
+export default withTranslation()(connect(mapStateToProps)(NpcConfigurationPage));
