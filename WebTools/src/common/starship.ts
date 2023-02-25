@@ -7,7 +7,7 @@ import { TalentsHelper, TalentViewModel } from "../helpers/talents";
 import { TalentSelection } from "../helpers/talentSelection";
 import StarshipWeaponRegistry, { Weapon } from "../helpers/weapons";
 import { CharacterType } from "./characterType";
-import { Construct } from "./construct";
+import { Construct, Stereotype } from "./construct";
 
 export class SimpleStats {
     departments: number[];
@@ -85,7 +85,7 @@ export class Starship extends Construct {
     additionalWeapons: Weapon[] = [];
 
     constructor() {
-        super();
+        super(Stereotype.Starship);
         this.name = "";
     }
 

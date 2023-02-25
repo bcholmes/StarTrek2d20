@@ -7,7 +7,7 @@ import {Department} from './departments';
 import {Source} from './sources';
 import {Era} from './eras';
 import { Species } from './speciesEnum';
-import { Construct } from '../common/construct';
+import { Construct, Stereotype } from '../common/construct';
 import { Starship } from '../common/starship';
 import store from '../state/store';
 import { centuryToYear } from './weapons';
@@ -141,7 +141,7 @@ class ChildOnlyPrerequisite implements IConstructPrerequisite<Character> {
 class MainCharacterPrerequisite implements IConstructPrerequisite<Character> {
 
     isPrerequisiteFulfilled(c: Character) {
-        return true; // at the moment, only Main characters can have talents, so I think this is always true
+        return c.stereotype === Stereotype.MainCharacter;
     }
     describe(): string {
         return "Main Character only";
@@ -581,6 +581,7 @@ export class TalentViewModel {
         this.displayName = this.constructDisplayName(name, rank, showRank, skill, category);
         this.name = name;
         this.prerequisites = prerequities;
+        this.category = category;
     }
 
 
@@ -609,7 +610,7 @@ export class Talents {
             new TalentModel(
                 "Advisor",
                 "Whenever you assist another character using your Command Discipline, the character being assisted may re-roll one d20.",
-                [new DisciplinePrerequisite(Skill.Command, 2)],
+                [new DisciplinePrerequisite(Skill.Command, 2), new MainCharacterPrerequisite()],
                 1),
             new TalentModel(
                 "Defuse the Tension",
@@ -905,7 +906,7 @@ export class Talents {
             new TalentModel(
                 "Experimental Device",
                 "You have designed and constructed a new piece of equipment that is either a brand new invention or is heavily modified from its original to the point of being barely recognizable. In either case, the device performs a function that you determine when you select this Talent. When used appropriately, it automatically provides you an Advantage. However, its experimental nature means there are lingering design bugs that sometimes plagues its function. Increase the Complication Range of any Task by 2 when using this device. This Talent may be selected multiple times with a different device for each selection.",
-                [new DisciplinePrerequisite(Skill.Engineering, 4), new SourcePrerequisite(Source.OperationsDivision)],
+                [new DisciplinePrerequisite(Skill.Engineering, 4), new SourcePrerequisite(Source.OperationsDivision), new MainCharacterPrerequisite()],
                 10),
             new TalentModel(
                 "Exploit Engineering Flaw",
@@ -2276,7 +2277,7 @@ export class Talents {
             new TalentModel(
                 "Personal Effects",
                 "The character possesses some significant and uncommon item or device which is not part of Starfleet’s standard issue, but which is nevertheless useful for missions. The character may select one item with an Opportunity Cost of 2, or two items with an Opportunity Cost of 1 each. Neither items may have an Escalation Cost greater than 1.",
-                [],
+                [new MainCharacterPrerequisite()],
                 10,
                 "General"),
             new TalentModel(
@@ -2474,7 +2475,7 @@ export class Talents {
             new TalentModel(
                 "Menagerie",
                 "When in your private lab, you automatically receive the advantage: Weapons and Monsters. Increase the complication range of any task by 2 when the advantage is active.",
-                [new SourcePrerequisite(Source.DiscoveryS1S2)],
+                [new SourcePrerequisite(Source.DiscoveryS1S2), new GMsDiscretionPrerequisite()],
                 1,
                 "General"),
         ];

@@ -1,11 +1,13 @@
 import { Character, SpeciesStep } from "../../common/character";
 import { CharacterType } from "../../common/characterType";
+import { Stereotype } from "../../common/construct";
 import { D20 } from "../../common/die";
 import { AttributesHelper } from "../../helpers/attributes";
 import { Career } from "../../helpers/careerEnum";
 import { RanksHelper, Rank } from "../../helpers/ranks";
-import { SkillsHelper } from "../../helpers/skills";
+import { Skill, SkillsHelper } from "../../helpers/skills";
 import { SpeciesModel } from "../../helpers/species";
+import { TalentsHelper, ToViewModel } from "../../helpers/talents";
 import { NameGenerator } from "../nameGenerator";
 import { NpcType, NpcTypes } from "./npcType";
 import { Specialization, SpecializationModel, Specializations } from "./specializations";
@@ -22,21 +24,58 @@ const recreationSkills = [ "Holodeck Simulations", "Dixie Hill Adventures",
     "Horseback Riding", "Bolian Comedy", "Sushi Preparation", "Theology and Alien Superbeings",
     "Mining", "Animal Husbandry", "Flirting", "Antiques", "Hiking", "The Teachings of Surak",
     "Skydiving", "Pastry Chef", "Anbo-jyutsu", "Flotter Stories", "Cocktails", "Merchant Ships",
-    "Appraisal", "The Ferengi Rules of Acquisition", "Interpretive Dance" ];
+    "Appraisal", "The Ferengi Rules of Acquisition", "Interpretive Dance",
+    "The Plays of Anton Chekhov", "Pre-Raphaelite Painters", "Andorian Electronic Dance Music",
+    "Gourmet Raktajino Barista", "Karaoke", "Tongo", "Galeo-Manado Wrestling",
+    "Andorian Clans of the Pre-Industrial Period", "Risan Vacation Activities" ];
 
 const starfleetSkills = ["Starfleet Protocols", "Worlds of the Federation", "Starship Emergency Protocols",
     "Tricoders", "History of the Federation", "The Missions of Adm. Archer and the NX-01",
     "Early Starfleet History", "Starfleet General Orders", "The Missions of Commodore Decker",
     "Starship Identification", "Androids and Synthetic Life", "Holodeck Programming", "Federation Wars",
     "Battle Tactics of Captain Garth", "Federation Species", "Tactical Use of Logic Puzzles for Defeating AIs",
-    "First Contact Protocols", "The Prime Directive", "Abandon Ship Procedures", "Space Suits", "Zero-G Operations"];
+    "First Contact Protocols", "The Prime Directive", "Abandon Ship Procedures", "Space Suits",
+    "Zero-G Operations"];
 
+
+
+const starfleetValues = [
+    "I am so close to promotion, I can taste it.",
+    "Risk is our business!",
+    "The Prime Directive is our highest law.",
+    "I saw things in the war... horrible, horrible things",
+    "The crew is my family.",
+    "Loyal to my commanding officer",
+    "I have my orders.",
+    "The chain of command is essential",
+    "Starfleet rules are rigid, but necessary",
+    "Seek out new life and new civilizations",
+    "Infinite Diversity in Infinite Combinations",
+    "It's the Prime Directive, not the Only Directive"
+];
+
+const generalValues = [
+    "Mentally, I'm already on leave to Risa!",
+    "I have a special someone back home.",
+    "Looking for love in all the wrong places",
+    "I can't wait to get back to my holonovel",
+    "That which does not kill me makes me stranger!",
+    "I'm not doing the non-corporeal body-stealing alien thing again!",
+    "My word is my bond",
+    "Life of the party!",
+    "Show-off",
+    "Braggart",
+    "Teller of Tall-Tales",
+    "A Vulcan, a Romulan, and a Klingon walk into a bar...",
+    "Exceptionally dedicated"
+];
 
 
 export class NpcGenerator {
 
     static createNpc(npcType: NpcType, characterType: CharacterType, species: SpeciesModel, specialization: SpecializationModel) {
         let character = new Character();
+        character.stereotype = Stereotype.Npc;
         character.type = characterType;
         if (specialization == null) {
             let specializations = Specializations.instance.getSpecializations();
@@ -72,8 +111,51 @@ export class NpcGenerator {
 
         NpcGenerator.assignRank(character, specialization);
         NpcGenerator.assignFocuses(npcType, character, specialization);
+        NpcGenerator.assignValues(npcType, character, specialization);
+        NpcGenerator.assignTalents(npcType, character, species, specialization);
 
         return character;
+    }
+
+    static assignTalents(npcType: NpcType, character: Character, species: SpeciesModel, specialization: SpecializationModel) {
+        let numberOfTalents = NpcTypes.numberOfTalents(npcType);
+
+        for (let i = 0; i < numberOfTalents; i++) {
+            let done = false;
+            let n = 0;
+            while (!done) {
+                let talentList = TalentsHelper.getAllAvailableTalentsForCharacter(character);
+                let specializationSkill = Skill[specialization.primaryDiscipline];
+                let roll = D20.roll();
+                if (roll < 7) {
+                    // go for species talents
+                    talentList = species.talents.map(t => ToViewModel(t, 1, character.type));
+                } else if (roll < 14) {
+                    talentList = talentList.filter(t => t.category === specializationSkill);
+                } else {
+                    talentList = talentList.filter(t => {
+                        if (t.name.indexOf("Bold:") === 0 || t.name.indexOf("Cautious:") === 0
+                            || t.name.indexOf("Collaboration:") === 0) {
+                            return t.name.indexOf(specializationSkill) >= 0;
+                        } else {
+                            return t.category === "" || t.category === "General";
+                        }
+                    });
+                }
+
+                if (talentList.length) {
+                    let talent = talentList[Math.floor(Math.random() * talentList.length)];
+                    if (!character.hasTalent(talent.name) || talent.hasRank) {
+                        character.addTalent(talent);
+                        done = true;
+                    }
+                }
+
+                if (n++ > 100) {
+                    break;
+                }
+            }
+        }
     }
 
     static assignAttributes(npcType: NpcType, character: Character, species: SpeciesModel, specialization: SpecializationModel) {
@@ -127,6 +209,30 @@ export class NpcGenerator {
 
         for (let i = 0; i < speciesAttributes.length; i++) {
             character.attributes[speciesAttributes[i]].value += 1;
+        }
+    }
+
+    static assignValues(npcType: NpcType, character: Character, specialization: SpecializationModel) {
+        let count = NpcTypes.numberOfValues(npcType);
+        for (let i = 0; i < count; i++) {
+            let done = false;
+            while (!done) {
+                let roll = D20.roll();
+                let values = specialization.values;
+                if (roll <= 6) {
+                    values = generalValues;
+                } else if (roll <= 12) {
+                    values = starfleetValues;
+                }
+
+                if (values.length > 0) {
+                    let value = values[Math.floor(Math.random() * values.length)];
+                    if (character.values.indexOf(value) < 0) {
+                        character.addValue(value);
+                        done = true;
+                    }
+                }
+            }
         }
     }
 

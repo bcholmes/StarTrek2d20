@@ -13,7 +13,7 @@ import { Construct } from "../common/construct";
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
-class SupportingCharacterView extends BaseCharacterView {
+class NpcView extends BaseCharacterView {
 
     componentDidMount() {
         if (this.props.character.name) {
@@ -34,6 +34,7 @@ class SupportingCharacterView extends BaseCharacterView {
                     {this.renderStats()}
 
                     {this.renderValues()}
+                    {this.renderTalents()}
                 </div>
                 <div className="col-xl-6">
                     <div className="row">
@@ -89,11 +90,11 @@ class SupportingCharacterView extends BaseCharacterView {
     }
 
     private showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet(this.props.character, Era.NextGeneration), "sta-character", this.props.character);
+        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(this.props.character, Era.NextGeneration), "sta-npc", this.props.character);
     }
 
     exportToJson(construct: Construct, suffix: string) {
-        const json = marshaller.encodeSimpleCharacterAsJson("supportingCharacter", this.props.character);
+        const json = marshaller.encodeSimpleCharacterAsJson("npc", this.props.character);
         const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
 
         var escaped = construct.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') ?? "sta";
@@ -101,4 +102,4 @@ class SupportingCharacterView extends BaseCharacterView {
     }
 }
 
-export default withTranslation()(withRouter(SupportingCharacterView));
+export default withTranslation()(withRouter(NpcView));

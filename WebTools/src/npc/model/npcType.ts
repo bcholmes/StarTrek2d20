@@ -62,4 +62,24 @@ export class NpcTypes {
             return distribution[D20.roll() - 1];
         }
     }
+
+    static numberOfValues(type: NpcType) {
+        if (type === NpcType.Minor) {
+            return 0;
+        } else if (type === NpcType.Notable) {
+            return 1;
+        } else {
+            return 4;
+        }
+    }
+
+    static numberOfTalents(type: NpcType) {
+        if (type === NpcType.Minor) {
+            return D20.roll() > 10 ? 1 : 2;
+        } else if (type === NpcType.Notable) {
+            return D20.roll() > 10 ? 2 : 3;
+        } else {
+            return 4;
+        }
+    }
 }

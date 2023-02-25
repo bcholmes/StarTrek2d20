@@ -183,32 +183,8 @@ class MainCharacterView extends BaseCharacterView {
         }
     }
 
-    renderValues() {
-        const { t } = this.props;
-        if (this.props?.character?.values?.length) {
-            return (<>
-                <Header level={2} className="mt-4">{t('Construct.other.values')}</Header>
-                {this.props.character.values.map((v, i) => (<div className="text-white view-border-bottom py-2" key={'value-' + i}>{v}</div>))}
-                </>);
-        } else {
-            return undefined;
-        }
-    }
-
-    renderTalents() {
-        const { t } = this.props;
-        if (this.props.character?.getTalentNameList()?.length) {
-            return (<>
-                <Header level={2} className="mt-4">{t('Construct.other.talents')}</Header>
-                {this.props.character.getTalentNameList().map((t, i) => (<div className="text-white view-border-bottom py-2" key={'talent-' + i}>{t}</div>))}
-                </>);
-        } else {
-            return undefined;
-        }
-    }
-
     private showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(this.props.character, Era.NextGeneration), "character", this.props.character);
+        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(this.props.character, Era.NextGeneration), "sta-character", this.props.character);
     }
 
     exportToJson(construct: Construct, suffix: string) {

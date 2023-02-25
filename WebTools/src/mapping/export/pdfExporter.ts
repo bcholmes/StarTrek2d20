@@ -1,4 +1,4 @@
-import { PDFDocument, PDFFont, PDFPage, rgb } from "pdf-lib";
+import { PDFDocument, PDFFont, PDFPage, RGB, rgb } from "pdf-lib";
 import fontkit from '@pdf-lib/fontkit'
 import { Sector } from "../table/sector";
 import { Color } from "../../common/colour";
@@ -6,6 +6,34 @@ import { CompanionType, StarSystem } from "../table/starSystem";
 import { AsteroidBeltDetails, StandardWorldDetails, World, WorldClass, WorldCoreType } from "../table/world";
 
 const BULLET = '\u2022';
+
+class TextBlock {
+    text: string;
+    fontSize: number;
+    font: PDFFont;
+    height: number;
+    width: number;
+    color: RGB;
+
+    constructor(text: string, fontSize: number, font: PDFFont, color: RGB) {
+        this.text = text;
+        this.font = font;
+        this.fontSize = fontSize;
+        this.color = color;
+        this.height = this.font.heightAtSize(fontSize);
+        this.width = this.font.widthOfTextAtSize(text, fontSize);
+    }
+
+    writeOnPage(page: PDFPage, column: number, currentLine: number) {
+        page.drawText(this.text, {
+            x: column,
+            y: page.getHeight() - currentLine,
+            size: this.fontSize,
+            font: this.font,
+            color: this.color
+        });
+    }
+}
 
 export class PdfExporter {
 
@@ -70,9 +98,7 @@ export class PdfExporter {
                 color: PdfExporter.LCARS_PURPLE
             });
         }
-
     }
-
 
     async populateSystemPage(pdf: PDFDocument, font: PDFFont, light: PDFFont, bold: PDFFont, system: StarSystem, blankPagePdf: PDFDocument) {
         let [ page ] = await pdf.copyPages(blankPagePdf, [0]);
@@ -416,22 +442,8 @@ export class PdfExporter {
     }
 
     async addLabelAndValue(page: PDFPage, label: string, value: string, font: PDFFont, light: PDFFont, startColumn: number, currentLine: number) {
-        page.drawText(label.toLocaleUpperCase(), {
-            x: startColumn,
-            y: page.getHeight() - currentLine,
-            size: 12.0,
-            font: font,
-            color: PdfExporter.LCARS_PURPLE
-        });
-
-        page.drawText(value , {
-            x: startColumn + 66,
-            y: page.getHeight() - currentLine,
-            size: 10.0,
-            font: light,
-            color: PdfExporter.LCARS_BLACK
-        });
-
+        new TextBlock(label.toLocaleUpperCase(), 12.0, font, PdfExporter.LCARS_PURPLE).writeOnPage(page, startColumn, currentLine);
+        new TextBlock(value, 10.0, light, PdfExporter.LCARS_BLACK).writeOnPage(page, startColumn + 65, currentLine);
     }
 
     async addLcarsHeaderToPage(page: PDFPage, text: string, font: PDFFont) {

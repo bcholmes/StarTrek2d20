@@ -29,9 +29,7 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
             showHistory: false,
             showProfile: false
         };
-    }
 
-    componentDidMount(): void {
         document.title = "STAR TREK ADVENTURES";
     }
 

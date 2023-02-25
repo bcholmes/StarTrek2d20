@@ -142,7 +142,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         let character = NpcGenerator.createNpc(NpcType.Notable, this.state.selectedType.type,
             SpeciesHelper.getSpeciesByType(species), this.state.selectedSpecialization);
 
-        const value = marshaller.encodeSupportingCharacter(character);
+        const value = marshaller.encodeNpc(character);
         window.open('/view?s=' + value, "_blank");
     }
 }

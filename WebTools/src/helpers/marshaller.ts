@@ -1,7 +1,8 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { Character, CharacterAttribute, CharacterSkill, CharacterTalent, EnvironmentStep, SpeciesStep, UpbringingStep } from '../common/character';
+import { character, Character, CharacterAttribute, CharacterSkill, CharacterTalent, EnvironmentStep, SpeciesStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
+import { Stereotype } from '../common/construct';
 import { ShipBuildType, ShipBuildTypeModel, SimpleStats, Starship } from '../common/starship';
 import { Attribute } from './attributes';
 import { Career } from './careerEnum';
@@ -27,12 +28,17 @@ import { CaptureType, CaptureTypeModel, DeliverySystem, DeliverySystemModel, Ene
 class Marshaller {
 
     encodeSupportingCharacter(character: Character) {
-        return this.encode(this.encodeSupportingCharacterAsJson(character));
+        return this.encode(this.encodeSimpleCharacterAsJson("supportingCharacter", character));
     }
 
-    encodeSupportingCharacterAsJson(character: Character) {
+    encodeNpc(character: Character) {
+        return this.encode(this.encodeSimpleCharacterAsJson("npc", character));
+    }
+
+
+    encodeSimpleCharacterAsJson(stereotype: string, character: Character) {
         let sheet = {
-            "stereotype": "supportingCharacter",
+            "stereotype": stereotype,
             "type": CharacterType[character.type],
             "age": character.age ? character.age.name : undefined,
             "name": character.name,
@@ -67,6 +73,16 @@ class Marshaller {
         if (character.pronouns) {
             sheet["pronouns"] = character.pronouns;
         }
+
+        if (character.values?.length) {
+            sheet["values"] = character.values
+        }
+
+        let talents = this.toTalentList(character.talents);
+        if (talents?.length) {
+            sheet["talents"] = talents;
+        }
+
         return sheet;
     }
 
@@ -469,6 +485,11 @@ class Marshaller {
 
     decodeCharacter(json: any) {
         let result = new Character();
+        if (json["stereotype"] === "npc") {
+            character.stereotype = Stereotype.Npc;
+        } else if (json["stereotype"] === "supportingCharacter") {
+            character.stereotype = Stereotype.SupportingCharacter;
+        }
         let type = CharacterTypeModel.getCharacterTypeByTypeName(json.type);
         if (type) {
             result.type = type.type;
@@ -587,16 +608,8 @@ class Marshaller {
             });
         }
         if (json.values) {
-            json.values.forEach((v, i) => {
-                if (i === 0) {
-                    result.environmentValue = v;
-                } else if (i === 1) {
-                    result.trackValue = v;
-                } else if (i === 2) {
-                    result.careerValue = v;
-                } else if (i === 3) {
-                    result.finishValue = v;
-                }
+            json.values.forEach(v => {
+                result.addValue(v);
             });
         }
         if (json.environment) {

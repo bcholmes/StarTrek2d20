@@ -12,7 +12,7 @@ import { AlliedMilitary, AlliedMilitaryType } from '../helpers/alliedMilitary';
 import { Government, GovernmentType } from '../helpers/governments';
 import AgeHelper, { Age } from '../helpers/age';
 import { Weapon, WeaponType } from '../helpers/weapons';
-import { Construct } from './construct';
+import { Construct, Stereotype } from './construct';
 import { SpeciesHelper } from '../helpers/species';
 
 export abstract class CharacterTypeDetails {
@@ -164,7 +164,7 @@ export class Character extends Construct {
     public implants: string[];
 
     constructor() {
-        super();
+        super(Stereotype.MainCharacter);
         this.attributes.push(new CharacterAttribute(Attribute.Control, this._attributeInitialValue));
         this.attributes.push(new CharacterAttribute(Attribute.Daring, this._attributeInitialValue));
         this.attributes.push(new CharacterAttribute(Attribute.Fitness, this._attributeInitialValue));
@@ -220,7 +220,10 @@ export class Character extends Construct {
             this.role === "Physician's Assistant" ||
             this.role === "Anesthesiologist" ||
             this.role === "Ship's Doctor" ||
-            this.role === "Surgeon (HaqwI’)") {
+            this.role === "Surgeon (HaqwI’)" ||
+            this.jobAssignment === "Medical Doctor" ||
+            this.jobAssignment === "Nurse" ||
+            this.jobAssignment === "Medic") {
 
             result.push("MedKit");
         }
@@ -471,6 +474,18 @@ export class Character extends Construct {
     hasMaxedSkill() {
         const max = 5;
         return this.skills.some(s => s.expertise === max);
+    }
+
+    addValue(value: string) {
+        if (this.environmentValue == null) {
+            this.environmentValue = value;
+        } else if (this.trackValue == null) {
+            this.trackValue = value;
+        } else if (this.careerValue == null) {
+            this.careerValue = value;
+        } else if (this.finishValue == null) {
+            this.finishValue = value;
+        }
     }
 
     update() {
