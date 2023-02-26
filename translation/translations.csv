@@ -15,6 +15,7 @@ Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sél
 Home.characterButton,Characters & Starships,Charaktere & Raumschiffe,Personajes y naves espaciales,Personnages et vaisseaux spatiaux
 Home.talentsButton,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
 ViewPage.viewSupportingCharacter,View Supporting Character,Nebencharakter anzeigen,Ver personaje secundario,Voir le personnage secondaire
+ViewPage.viewNpc,View NPC,,,
 ViewPage.viewMainCharacter,View Main Character,Hauptcharakter anzeigen,Ver personaje principal,Voir le personnage principal
 ViewPage.viewStarship,View Starship,Raumschiff ansehen,Ver nave espacial,Voir le vaisseau spatial
 ViewPage.errorMessage,"Things have gone terribly, terribly wrong. We might be in the mirror universe.","Die Dinge sind schrecklich, schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.","Las cosas han ido terriblemente, terriblemente mal. Podríamos estar en el universo espejo.","Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir."

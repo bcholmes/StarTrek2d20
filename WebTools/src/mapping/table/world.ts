@@ -117,6 +117,17 @@ export class AsteroidBeltDetails extends WorldDetails {
         return (this.depth != null ? "\nBelt Width: " + this.depth.toFixed(2) + " AUs" : "") +
             (this.asteroidSize != null ? "\nPredominant Size: " + (this.asteroidSize >= 1000 ? ((this.asteroidSize / 1000).toFixed(0) + "km") : (this.asteroidSize.toFixed(0) + "m")) + " Diameter" : "");
     }
+
+    get attributeList() {
+        let result = [];
+        if (this.asteroidSize != null) {
+            result.push(new WorldAttribute("Predominant Size", (this.asteroidSize >= 1000 ? ((this.asteroidSize / 1000).toFixed(0) + "km") : (this.asteroidSize.toFixed(0) + "m")) + " Diameter"));
+        }
+        if (this.depth != null) {
+            result.push(new WorldAttribute("Belt Width", this.depth.toFixed(2) + " AUs"));
+        }
+        return result;
+    }
 }
 
 export class GasGiantDetails extends WorldDetails {
@@ -212,6 +223,14 @@ export class GasGiantDetails extends WorldDetails {
             return "None";
         }
     }
+
+    get attributeList() {
+        let result = [];
+        if (this.ring != null) {
+            result.push(new WorldAttribute("Ring", this.ring.name));
+        }
+        return result;
+    }
 }
 
 export class StandardWorldDetails extends WorldDetails {
@@ -227,6 +246,32 @@ export class StandardWorldDetails extends WorldDetails {
                 : (this.rotationPeriod.toFixed(2) + " hours" + (this.retrograde ? " (Retrograde)" : "")))) : "") +
             (this.axialTilt != null ? "\nAxial Tilt: " + this.axialTilt.toFixed(2) + " deg" : "") +
             (this.hydrographicPercentage != null ? "\nWater Coverage: " + this.hydrographicPercentage.toFixed(2) + '%' : "");
+    }
+
+    get attributeList() {
+        let result = [];
+        if (this.tidallyLocked != null) {
+            result.push(new WorldAttribute("Rotation", "Tidally Locked"));
+        } else if (this.rotationPeriod) {
+            result.push(new WorldAttribute("Rotation", this.rotationPeriod.toFixed(2) + " hours" + (this.retrograde ? " (Retrograde)" : "")));
+        }
+        if (this.axialTilt != null) {
+            result.push(new WorldAttribute("Axial Tilt", this.axialTilt.toFixed(2) + '\u{b0}'));
+        }
+        if (this.hydrographicPercentage != null) {
+            result.push(new WorldAttribute("Water Coverage", this.hydrographicPercentage.toFixed(2) + '%'));
+        }
+        return result;
+    }
+}
+
+export class WorldAttribute {
+    readonly name: string;
+    readonly value: string;
+
+    constructor(name: string, value: string) {
+        this.name = name;
+        this.value = value;
     }
 }
 
@@ -270,9 +315,50 @@ export class World {
             "\nOrbital Period: " + this.period.toFixed(3) + " Earth Years" +
             (this.diameter != null ? ("\nDiameter: " + Math.round(this.diameter).toLocaleString("en-US") + " km") : "") +
             (this.density != null ? ("\nDensity: " + this.density.toFixed(2) + " Earth") : "") +
-            (this.mass != null ? ("\nMass: " + this.mass.toFixed(2) + " Earth") : "") +
+            (this.mass != null ? ("\nMass: " + (this.mass >= 1000 ? Math.round(this.mass).toLocaleString("en-US") : this.mass.toFixed(2)) + " Earth") : "") +
             (this.gravity != null ? ("\nGravity: " + this.gravity.toFixed(2) + " G") : "" ) +
             (this.worldDetails != null ? this.worldDetails.plainText() : "") +
             (this.coreType != null ? ("\nCore: " + WorldCoreType[this.coreType]) : "");
+    }
+
+    get attributeList() {
+        let result = [];
+        if (this.orbitLabel != null) {
+            result.push(new WorldAttribute("Designation", this.orbitLabel));
+        }
+
+        if (this.worldClass.id === WorldClass.AsteroidBelt) {
+            result.push(new WorldAttribute("Classification", "Asteroid Belt"));
+        } else {
+            result.push(new WorldAttribute("Classification", "Class " + WorldClass[this.worldClass.id] + " (" + this.worldClass.description + ")"));
+        }
+
+        result.push(new WorldAttribute("Orbital Radius", this.orbitalRadius.toFixed(2) + " AUs"));
+        result.push(new WorldAttribute("Orbital Period", this.period.toFixed(3) + " Earth Years"));
+        if (this.numberOfSatellites != null) {
+            result.push(new WorldAttribute("Satellites", this.numberOfSatellites.toFixed(0)));
+        }
+        if (this.diameter != null) {
+            result.push(new WorldAttribute("Diameter", Math.round(this.diameter).toLocaleString("en-US") + " km"));
+        }
+        if (this.density != null) {
+            result.push(new WorldAttribute("Density", this.density.toFixed(2) + " Earth"));
+        }
+        if (this.mass != null) {
+            result.push(new WorldAttribute("Mass", this.mass.toFixed(2) + " Earth"));
+        }
+        if (this.gravity != null) {
+            result.push(new WorldAttribute("Gravity", this.gravity.toFixed(2) + " G"));
+        }
+
+        if (this.worldDetails != null) {
+            this.worldDetails.attributeList?.forEach(a => result.push(a));
+        }
+
+        if (this.coreType != null) {
+            result.push(new WorldAttribute("Core", WorldCoreType[this.coreType]));
+        }
+
+        return result;
     }
 }

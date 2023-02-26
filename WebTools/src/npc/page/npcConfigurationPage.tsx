@@ -9,7 +9,7 @@ import { Header } from '../../components/header';
 import InstructionText from '../../components/instructionText';
 import { Era } from '../../helpers/eras';
 import { marshaller } from '../../helpers/marshaller';
-import { SpeciesHelper, SpeciesModel } from '../../helpers/species';
+import { SpeciesHelper } from '../../helpers/species';
 import { Species } from '../../helpers/speciesEnum';
 import { PageIdentity } from '../../pages/pageIdentity';
 import { NpcGenerator } from '../model/npcGenerator';
