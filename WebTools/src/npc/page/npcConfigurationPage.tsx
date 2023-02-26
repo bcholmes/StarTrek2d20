@@ -13,7 +13,7 @@ import { SpeciesHelper } from '../../helpers/species';
 import { Species } from '../../helpers/speciesEnum';
 import { PageIdentity } from '../../pages/pageIdentity';
 import { NpcGenerator } from '../model/npcGenerator';
-import { NpcType } from '../model/npcType';
+import { NpcType, NpcTypes } from '../model/npcType';
 import { SpecializationModel, Specializations } from '../model/specializations';
 
 interface INpcConfigurationPageProperties extends WithTranslation {
@@ -21,6 +21,7 @@ interface INpcConfigurationPageProperties extends WithTranslation {
 }
 
 interface INpcConfigurationPageState {
+    selectedNpcType: NpcType;
     selectedType: CharacterTypeModel;
     selectedSpecies?: Species;
     selectedSpecialization?: SpecializationModel;
@@ -32,6 +33,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         super(props);
 
         this.state = {
+            selectedNpcType: NpcType.Notable,
             selectedType: CharacterTypeModel.getNpcCharacterTypes()[0]
         }
     }
@@ -56,19 +58,17 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                 </div>
 
                 <div className="row">
-                    <div className="col-lg-4 my-4">
-                        <Header level={2}>Type</Header>
+                    <div className="col-md-6 my-4">
+                        <Header level={2}>NPC Type</Header>
 
-                        <div className="mt-4">
+                        <div className="my-4">
                             <DropDownInput
-                                items={ CharacterTypeModel.getNpcCharacterTypes().map(t => new DropDownElement(t.type, t.localizedName )) }
-                                defaultValue={ this.state.selectedType.type }
-                                onChange={(index) => this.selectType(CharacterTypeModel.getNpcCharacterTypes()[index] ) }/>
+                                items={ NpcTypes.getNpcTypes().map(t => new DropDownElement(t.type, t.name)) }
+                                defaultValue={ this.state.selectedNpcType }
+                                onChange={(index) => this.setState((state) => ({...state, selectedNpcType: NpcTypes.getNpcTypes()[index].type })) }/>
                         </div>
-                    </div>
 
-                    <div className="col-lg-4 my-4">
-                        <Header level={2}>Species</Header>
+                        <Header level={2} className="mt-5">Species</Header>
 
                         <div className="mt-4">
                             <DropDownInput
@@ -76,10 +76,20 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                                 defaultValue={ this.state.selectedSpecies ?? "" }
                                 onChange={(index) => this.selectSpecies(index) }/>
                         </div>
+
                     </div>
 
-                    <div className="col-lg-4 my-4">
-                        <Header level={2}>Specialization</Header>
+                    <div className="col-md-6 my-4">
+                        <Header level={2}>Type</Header>
+
+                        <div className="my-4">
+                            <DropDownInput
+                                items={ CharacterTypeModel.getNpcCharacterTypes().map(t => new DropDownElement(t.type, t.localizedName )) }
+                                defaultValue={ this.state.selectedType.type }
+                                onChange={(index) => this.selectType(CharacterTypeModel.getNpcCharacterTypes()[index] ) }/>
+                        </div>
+
+                        <Header level={2} className="mt-5">Specialization</Header>
 
                         <div className="mt-4">
                             <DropDownInput
@@ -139,7 +149,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         let species = this.state.selectedSpecies != null
             ? this.state.selectedSpecies
             : SpeciesHelper.generateSpecies();
-        let character = NpcGenerator.createNpc(NpcType.Notable, this.state.selectedType.type,
+        let character = NpcGenerator.createNpc(this.state.selectedNpcType, this.state.selectedType.type,
             SpeciesHelper.getSpeciesByType(species), this.state.selectedSpecialization);
 
         const value = marshaller.encodeNpc(character);

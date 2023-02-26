@@ -6,7 +6,23 @@ export enum NpcType {
     Major
 }
 
+export class NpcTypeModel {
+    type: NpcType;
+    name: string;
+
+    constructor(type: NpcType, name: string) {
+        this.type = type;
+        this.name = name;
+    }
+}
+
 export class NpcTypes {
+
+    static getNpcTypes() {
+        return [ new NpcTypeModel(NpcType.Minor, "Minor NPC"),
+            new NpcTypeModel(NpcType.Notable, "Notable NPC"),
+            new NpcTypeModel(NpcType.Major, "Major NPC")];
+    }
 
     static attributePoints(type: NpcType) {
         if (type === NpcType.Minor) {
