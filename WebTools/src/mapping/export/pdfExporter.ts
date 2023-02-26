@@ -3,8 +3,18 @@ import fontkit from '@pdf-lib/fontkit'
 import { Sector } from "../table/sector";
 import { Color } from "../../common/colour";
 import { CompanionType, StarSystem } from "../table/starSystem";
+import { createRandomValue } from "../../common/randomValueGenerator";
+import { AsteroidBeltDetails, WorldClass } from "../table/world";
 
 const BULLET = '\u2022';
+
+const PIXELS_TO_POINTS_RATIO = 0.75;
+
+enum TextAlignment {
+    Left,
+    Center,
+    Right
+}
 
 class TextBlock {
     text: string[];
@@ -45,15 +55,35 @@ class TextBlock {
         return this.text.length * this.font.heightAtSize(this.fontSize);
     }
 
-    writeOnPage(page: PDFPage, column: number, currentLine: number) {
+    writeOnPage(page: PDFPage, column: number, currentLine: number, alignment: TextAlignment = TextAlignment.Left) {
         this.text.forEach(t => {
-            page.drawText(t, {
-                x: column,
-                y: page.getHeight() - currentLine,
-                size: this.fontSize,
-                font: this.font,
-                color: this.color
-            });
+            if (alignment === TextAlignment.Center) {
+                let width = this.font.widthOfTextAtSize(t, this.fontSize);
+                page.drawText(t, {
+                    x: column - (width / 2),
+                    y: page.getHeight() - currentLine,
+                    size: this.fontSize,
+                    font: this.font,
+                    color: this.color
+                });
+            } else if (alignment === TextAlignment.Right) {
+                let width = this.font.widthOfTextAtSize(t, this.fontSize);
+                page.drawText(t, {
+                    x: column - width,
+                    y: page.getHeight() - currentLine,
+                    size: this.fontSize,
+                    font: this.font,
+                    color: this.color
+                });
+            } else {
+                page.drawText(t, {
+                    x: column,
+                    y: page.getHeight() - currentLine,
+                    size: this.fontSize,
+                    font: this.font,
+                    color: this.color
+                });
+            }
             currentLine += this.font.heightAtSize(this.fontSize);
         });
     }
@@ -123,8 +153,11 @@ export class PdfExporter {
     static COLUMN_TWO_END = 576;
 
     static LCARS_ORANGE = rgb(249.0 / 255.0, 157.0 / 255.0, 37.0 / 255.0);
+    static LCARS_LIGHT_ORANGE = rgb(250.0 / 255.0, 172.0 / 255.0, 118.0 / 255.0);
     static LCARS_PURPLE = rgb(138.0 / 255.0, 113.0 / 255.0, 167.0 / 255.0);
+    static LCARS_LIGHT_PURPLE = rgb(183.0 / 255.0, 179.0 / 255.0, 217.0 / 255.0);
     static LCARS_PINK = rgb(213.0 / 255.0, 150.0 / 255.0, 179.0 / 255.0);
+    static LCARS_WHITE = rgb(1, 1, 1);
     static LCARS_BLACK = rgb(0, 0, 0);
 
     async populate(pdf: PDFDocument, sector: Sector) {
@@ -197,7 +230,9 @@ export class PdfExporter {
             + system.sectorCoordinates.z.toFixed(2), font, light, PdfExporter.COLUMN_ONE, currentLine);
 
 
-        currentLine += 25 + lineHeight;
+        this.renderPlanetsLower(page, font, system);
+
+        currentLine = 215;
         let blockLine = currentLine;
 
         if (system.star) {
@@ -343,7 +378,232 @@ export class PdfExporter {
 
     }
 
-    async addPillHeader(page: PDFPage, headerText: string, font: PDFFont, currentLine: number, start: number, end: number) {
+    renderPlanetsLower(page: PDFPage, font: PDFFont, system: StarSystem) {
+        page.moveTo(0, page.getHeight());
+        page.drawSvgPath("m 530,119.70117 v 38.10352 C 529.96263,165.71786 527.7739,168 520.875,168 H 515 v 12 h 15 30 c 10.75081,1e-5 16.2373,-8.28387 16,-20 v -40.29883 z", {
+            color: PdfExporter.LCARS_LIGHT_ORANGE,
+            borderWidth: 0
+        });
+        page.drawSvgPath("m 530,99 v 18.70117 h 46 V 99 Z", {
+            color: PdfExporter.LCARS_LIGHT_PURPLE,
+            borderWidth: 0
+        });
+        page.drawSvgPath("m 168,180.0000 c -3.31371,0 -6,-2.68629 -6,-6 0,-3.31371 2.68629,-6 6,-6", {
+            color: PdfExporter.LCARS_LIGHT_ORANGE,
+            borderWidth: 0
+        });
+
+        new TextBlock(createRandomValue(6), 9, font, PdfExporter.LCARS_BLACK).writeOnPage(page, 533, 114);
+
+        let r = Math.max(2, Math.sqrt(system.star?.spectralClass?.radius?.midpoint * 60));
+        let starColor = rgb(system.star.spectralClass.colour.red / 255.0,
+                system.star.spectralClass.colour.green / 255.0,
+                system.star.spectralClass.colour.blue / 255.0);
+        let borderColor = system.star.spectralClass.colour.isApproximatelyWhite ? PdfExporter.LCARS_BLACK : PdfExporter.LCARS_WHITE;
+        page.drawCircle({
+            x: PdfExporter.COLUMN_ONE + 15,
+            y: page.getHeight() - 132.5,
+            size: r,
+            color: starColor,
+            borderColor: borderColor,
+            borderWidth: 0.1
+        });
+        if (system.star.spectralClass.isDwarf) {
+            new TextBlock(system.star.designation.toLocaleUpperCase(), 8, font, PdfExporter.LCARS_BLACK)
+                .writeOnPage(page, PdfExporter.COLUMN_ONE + 15, 132.5 - r - 2, TextAlignment.Center);
+        } else {
+            new TextBlock(system.star.designation.toLocaleUpperCase(), 8, font, PdfExporter.LCARS_BLACK)
+                .writeOnPage(page, PdfExporter.COLUMN_ONE + 15, 132.5 - r - 10, TextAlignment.Center);
+            new TextBlock(system.star.spectralClass.colourDescription.toLocaleUpperCase(), 8, font, PdfExporter.LCARS_BLACK)
+                .writeOnPage(page, PdfExporter.COLUMN_ONE + 15, 132.5 - r - 2, TextAlignment.Center);
+        }
+
+        if (system.companionStar && system.companionType === CompanionType.Close) {
+            let r2 = Math.max(2, Math.sqrt(system.companionStar?.spectralClass?.radius?.midpoint * 60));
+            let starColor2 = rgb(system.companionStar.spectralClass.colour.red / 255.0,
+                    system.companionStar.spectralClass.colour.green / 255.0,
+                    system.companionStar.spectralClass.colour.blue / 255.0);
+            let borderColor2 = system.companionStar.spectralClass.colour.isApproximatelyWhite ? PdfExporter.LCARS_BLACK : PdfExporter.LCARS_WHITE;
+
+            page.drawCircle({
+                x: PdfExporter.COLUMN_ONE + 15 + r,
+                y: page.getHeight() - 132.5,
+                size: r2,
+                color: starColor2,
+                borderColor: borderColor2,
+                borderWidth: 0.1
+            });
+        }
+
+        let orbits = this.findAllOrbits(system);
+        let maxWorldDiameter = 50000;
+        system.worlds?.filter(w => w.diameter != null).forEach(w => maxWorldDiameter = Math.max(w.diameter, maxWorldDiameter));
+        let smallWorldDiameter = 5000;
+        system.worlds?.filter(w => w.diameter != null).forEach(w => smallWorldDiameter = Math.min(w.diameter, smallWorldDiameter));
+        let factor = 10 / Math.sqrt(maxWorldDiameter / 1000 - smallWorldDiameter / 1000);
+
+        system.worlds?.forEach((w, i) => {
+            let r = Math.max(2, w.diameter == null ? 10 : (Math.sqrt(w.diameter / 1000 - smallWorldDiameter / 1000) * factor));
+            let orbitalX = this.calculateOrbitX(w.orbitalRadius, orbits);
+            let prevOrbitalX = (i === 0) ? PdfExporter.COLUMN_ONE :
+                (this.calculateOrbitX(system.worlds[i-1].orbitalRadius, orbits) + 1);
+            let auWidth = (orbitalX - 1) - (prevOrbitalX);
+
+            if (auWidth > 0) {
+                page.drawSvgPath("M " + prevOrbitalX.toFixed(2) + ",85 V 97 h " + auWidth.toFixed(2) + " V 85 z", {
+                    color: PdfExporter.LCARS_LIGHT_ORANGE,
+                    borderWidth: 0
+                });
+                let label = new TextBlock(w.orbitalRadius.toFixed(2) + " AU", 8, font, PdfExporter.LCARS_BLACK);
+                if (auWidth > label.width + 6) {
+                    label.writeOnPage(page, orbitalX - 4, 94, TextAlignment.Right);
+                }
+            }
+
+            if (w.worldClass.id === WorldClass.AsteroidBelt) {
+
+                if (w.worldDetails instanceof AsteroidBeltDetails) {
+                    let details = w.worldDetails as AsteroidBeltDetails;
+                    let innermostRadius = w.orbitalRadius - (details.depth / 2);
+                    page.drawCircle({
+                        x: this.calculateOrbitX(innermostRadius, orbits),
+                        y: page.getHeight() - 130.5,
+                        size: 0.5,
+                        color: PdfExporter.LCARS_PURPLE
+                    });
+
+                    let innerMidRadius = w.orbitalRadius - (details.depth / 4);
+                    page.drawCircle({
+                        x: this.calculateOrbitX(innerMidRadius, orbits),
+                        y: page.getHeight() - 134.5,
+                        size: 0.5,
+                        color: PdfExporter.LCARS_PURPLE
+                    });
+
+                    let outermostRadius = w.orbitalRadius + (details.depth / 2);
+                    page.drawCircle({
+                        x: this.calculateOrbitX(outermostRadius, orbits),
+                        y: page.getHeight() - 133.5,
+                        size: 1,
+                        color: PdfExporter.LCARS_PURPLE
+                    });
+
+                    let outerMidRadius = w.orbitalRadius + (details.depth / 4);
+                    page.drawCircle({
+                        x: this.calculateOrbitX(outerMidRadius, orbits),
+                        y: page.getHeight() - 130.5,
+                        size: 0.75,
+                        color: PdfExporter.LCARS_PURPLE
+                    });
+                }
+
+                page.drawCircle({
+                    x: orbitalX,
+                    y: page.getHeight() - 132.5,
+                    size: 1.5,
+                    color: PdfExporter.LCARS_PURPLE
+                });
+
+                new TextBlock("Asteroid Belt", 7, font, PdfExporter.LCARS_BLACK)
+                    .writeOnPage(page, orbitalX, (i % 2 === 0) ? 132.5 - 5 : (132.5 + 10), TextAlignment.Center);
+            } else {
+                page.drawCircle({
+                    x: orbitalX,
+                    y: page.getHeight() - 132.5,
+                    size: r,
+                    color: PdfExporter.LCARS_PURPLE
+                });
+
+                new TextBlock('CLASS ' + WorldClass[w.worldClass.id], 7, font, PdfExporter.LCARS_BLACK)
+                        .writeOnPage(page, orbitalX, (i % 2 === 0) ? 132.5 - r - 11 : (132.5 + r + 10), TextAlignment.Center);
+                new TextBlock(w.worldClass.description, 7, font, PdfExporter.LCARS_BLACK)
+                        .writeOnPage(page, orbitalX, (i % 2 === 0) ? 132.5 - r - 4 : (132.5 + r + 17), TextAlignment.Center);
+            }
+        });
+
+        if (system.worlds?.length) {
+            let x = this.calculateOrbitX(system.worlds[system.worlds.length - 1].orbitalRadius, orbits) + 1;
+            page.drawSvgPath("M " + x.toFixed(2) + ",85 H 576 V 97 H " + x.toFixed(2) + " z", {
+                color: PdfExporter.LCARS_LIGHT_ORANGE,
+                borderWidth: 0
+            });
+        } else {
+            page.drawSvgPath("M 162,85 H 576 V 97 H 162 z", {
+                color: PdfExporter.LCARS_LIGHT_ORANGE,
+                borderWidth: 0
+            });
+        }
+
+        if (orbits.length && system.gardenZoneInnerRadius && system.gardenZoneOuterRadius) {
+            let innerX = this.calculateOrbitX(system.gardenZoneInnerRadius, orbits);
+            let outerX = this.calculateOrbitX(system.gardenZoneOuterRadius, orbits);
+            page.drawSvgPath("M 167.999,180.000 V 168 H" + (innerX - 1).toFixed(2) + " V 180 z", {
+                color: PdfExporter.LCARS_LIGHT_ORANGE,
+                borderWidth: 0
+            });
+            let innerText = new TextBlock("INNER ZONE", 6, font, PdfExporter.LCARS_BLACK);
+            if (innerText.width < (innerX - 6 - 168)) {
+                innerText.writeOnPage(page, innerX - 4, 176, TextAlignment.Right);
+            }
+
+            page.drawSvgPath("M " + (innerX +1).toFixed(2) + ",180.000 V 168 h"
+                + (outerX - 1 - (innerX + 1)).toFixed(2) + " V 180 z", {
+                color: PdfExporter.LCARS_PINK,
+                borderWidth: 0
+            });
+            let ecoText = new TextBlock("ECOSPHERE", 6, font, PdfExporter.LCARS_BLACK);
+            if (ecoText.width < (outerX - innerX - 8)) {
+                ecoText.writeOnPage(page, (outerX - innerX) / 2 + innerX, 176, TextAlignment.Center);
+            }
+
+            page.drawSvgPath("M " + (outerX +1).toFixed(2) + ",180.000 V 168 H 515.001 V 180 z", {
+                color: PdfExporter.LCARS_LIGHT_ORANGE,
+                borderWidth: 0
+            });
+            let outerText = new TextBlock("OUTER ZONE", 6, font, PdfExporter.LCARS_BLACK);
+            if (outerText.width < (530 - outerX - 6)) {
+                outerText.writeOnPage(page, outerX + 4, 176, TextAlignment.Left);
+            }
+
+        } else {
+            page.drawSvgPath("M 167.999,180.000 H 515.001 V 168 H 168 z", {
+                color: PdfExporter.LCARS_LIGHT_ORANGE,
+                borderWidth: 0
+            });
+        }
+    }
+
+    findAllOrbits(system: StarSystem) {
+        let orbits = system.worlds?.map(w => w.orbitalRadius) ?? [];
+        if (system.gardenZoneInnerRadius) {
+            orbits.push(system.gardenZoneInnerRadius);
+        }
+        if (system.gardenZoneOuterRadius) {
+            orbits.push(system.gardenZoneOuterRadius);
+        }
+        orbits = orbits.sort((a, b) => {
+            if (a === b) {
+                return 0;
+            } else {
+                return a < b ? -1 : 1;
+            }
+        });
+        return orbits;
+    }
+
+    calculateOrbitX(orbitInAus: number, orbits: number[]) {
+        if (orbits?.length) {
+            let firstOrbitInAus = orbits[0];
+            let firstOrbit = Math.log1p(firstOrbitInAus);
+            let lastOrbit = Math.log1p(orbits[orbits.length - 1]);
+
+            return PdfExporter.COLUMN_ONE + 40 + (514 - 40 - PdfExporter.COLUMN_ONE) / (lastOrbit - firstOrbit) * (Math.log1p(orbitInAus) - firstOrbit);
+        } else {
+            return 0;
+        }
+    }
+
+    addPillHeader(page: PDFPage, headerText: string, font: PDFFont, currentLine: number, start: number, end: number) {
         let lineHeight = 18;
         let textWidth = font.widthOfTextAtSize(headerText.toUpperCase(), 18);
         let r = lineHeight / 2;
@@ -392,7 +652,7 @@ export class PdfExporter {
         });
     }
 
-    async addLabelAndValue(page: PDFPage, label: string, value: string, font: PDFFont, light: PDFFont, startColumn: number, currentLine: number) {
+    addLabelAndValue(page: PDFPage, label: string, value: string, font: PDFFont, light: PDFFont, startColumn: number, currentLine: number) {
         new TextBlock(label.toLocaleUpperCase(), 12.0, font, PdfExporter.LCARS_PURPLE).writeOnPage(page, startColumn, currentLine);
         new TextBlock(value, 10.0, light, PdfExporter.LCARS_BLACK).writeOnPage(page, startColumn + 65, currentLine);
     }

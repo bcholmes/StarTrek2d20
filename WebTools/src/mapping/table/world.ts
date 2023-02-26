@@ -353,7 +353,7 @@ export class World {
             this.worldDetails.attributeList?.forEach(a => result.push(a));
         }
 
-        if (this.numberOfSatellites != null) {
+        if (this.numberOfSatellites != null && this.worldClass.id !== WorldClass.AsteroidBelt) {
             result.push(new WorldAttribute("Satellites", this.numberOfSatellites.toFixed(0)));
         }
         if (this.coreType != null) {
