@@ -57,9 +57,10 @@ export class NameGenerator {
                             firstNameString = firstName.variants[Math.floor(Math.random() * firstName.variants.length)];
                         }
                     }
+                    let pronouns = this.derivePronouns(firstName.gender);
                     result = {
-                        name: this.combineParts(firstNameString, lastName.name, species),
-                        pronouns: this.derivePronouns(firstName.gender)
+                        name: this.combineParts(firstNameString, lastName.name, species, pronouns),
+                        pronouns: pronouns
                     }
                     found = true;
                 }
@@ -87,21 +88,34 @@ export class NameGenerator {
                 firstName = parts[Math.floor(Math.random() * parts.length)].trim();
             }
 
+            let pronouns = this.derivePronouns(gender);
             result = {
-                name: this.combineParts(firstName, lastName, species),
-                pronouns: this.derivePronouns(gender)
+                name: this.combineParts(firstName, lastName, species, pronouns),
+                pronouns: pronouns
             }
         }
 
         return result;
     }
 
-    private combineParts(firstName: string, lastName: string, species: SpeciesModel) {
+    private combineParts(firstName: string, lastName: string, species: SpeciesModel, pronouns: string) {
         if (species.id === Species.Bajoran) {
             return (lastName ? lastName : "") + ((firstName && lastName) ? " " : "") + (firstName ? firstName : "");
+        } else if (species.id === Species.Andorian) {
+            let clanNamePrefix = this.determineAndorianPrefix(pronouns);
+            return (firstName ? firstName : "") + ((firstName && lastName) ? " " : "") + (lastName ? clanNamePrefix + lastName : "");
         } else {
             return (firstName ? firstName : "") + ((firstName && lastName) ? " " : "") + (lastName ? lastName : "");
+        }
+    }
 
+    private determineAndorianPrefix(pronouns: string) {
+        if (pronouns === "he/him") {
+            return D20.roll() > 10 ? "th'" : "ch'";
+        } else if (pronouns === "she/her") {
+            return D20.roll() > 10 ? "sh'" : "zh'";
+        } else if (pronouns === "they/them") {
+            return D20.roll() > 10 ? "zh'" : "ch'";
         }
     }
 
