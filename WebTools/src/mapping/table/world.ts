@@ -226,6 +226,7 @@ export class GasGiantDetails extends WorldDetails {
 
     get attributeList() {
         let result = [];
+        result.push(new WorldAttribute("Satellites", this.satelliteDetails));
         if (this.ring != null) {
             result.push(new WorldAttribute("Ring", this.ring.name));
         }
@@ -335,9 +336,6 @@ export class World {
 
         result.push(new WorldAttribute("Orbital Radius", this.orbitalRadius.toFixed(2) + " AUs"));
         result.push(new WorldAttribute("Orbital Period", this.period.toFixed(3) + " Earth Years"));
-        if (this.numberOfSatellites != null) {
-            result.push(new WorldAttribute("Satellites", this.numberOfSatellites.toFixed(0)));
-        }
         if (this.diameter != null) {
             result.push(new WorldAttribute("Diameter", Math.round(this.diameter).toLocaleString("en-US") + " km"));
         }
@@ -355,6 +353,9 @@ export class World {
             this.worldDetails.attributeList?.forEach(a => result.push(a));
         }
 
+        if (this.numberOfSatellites != null) {
+            result.push(new WorldAttribute("Satellites", this.numberOfSatellites.toFixed(0)));
+        }
         if (this.coreType != null) {
             result.push(new WorldAttribute("Core", WorldCoreType[this.coreType]));
         }

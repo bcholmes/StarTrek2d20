@@ -7,29 +7,54 @@ import { CompanionType, StarSystem } from "../table/starSystem";
 const BULLET = '\u2022';
 
 class TextBlock {
-    text: string;
+    text: string[];
     fontSize: number;
     font: PDFFont;
-    height: number;
     width: number;
     color: RGB;
 
-    constructor(text: string, fontSize: number, font: PDFFont, color: RGB) {
-        this.text = text;
+    constructor(text: string, fontSize: number, font: PDFFont, color: RGB, maxWidth?: number) {
         this.font = font;
         this.fontSize = fontSize;
         this.color = color;
-        this.height = this.font.heightAtSize(fontSize);
         this.width = this.font.widthOfTextAtSize(text, fontSize);
+        if (maxWidth == null || this.width < maxWidth) {
+            this.text = [ text ];
+        } else {
+            this.text = []
+            let parts = text.split(' ');
+            let currentText = "";
+            parts.forEach(p => {
+                if (this.font.widthOfTextAtSize(currentText + " " + p, this.fontSize) > maxWidth) {
+                    this.text.push(currentText);
+                    currentText = p;
+                } else if (currentText.length) {
+                    currentText += " " + p;
+                } else {
+                    currentText = p;
+                }
+            });
+            if (currentText.length) {
+                this.text.push(currentText);
+            }
+            this.width = maxWidth;
+        }
+    }
+
+    get height() {
+        return this.text.length * this.font.heightAtSize(this.fontSize);
     }
 
     writeOnPage(page: PDFPage, column: number, currentLine: number) {
-        page.drawText(this.text, {
-            x: column,
-            y: page.getHeight() - currentLine,
-            size: this.fontSize,
-            font: this.font,
-            color: this.color
+        this.text.forEach(t => {
+            page.drawText(t, {
+                x: column,
+                y: page.getHeight() - currentLine,
+                size: this.fontSize,
+                font: this.font,
+                color: this.color
+            });
+            currentLine += this.font.heightAtSize(this.fontSize);
         });
     }
 }
@@ -54,34 +79,38 @@ class AttributeDataValue {
 }
 
 class AttributeTwoColumnBlock {
-    attributes: AttributeDataValue[];
+    column1: AttributeDataValue[] = [];
+    column2: AttributeDataValue[] = [];
 
     constructor(attributes: AttributeDataValue[]) {
-        this.attributes = attributes;
+
+        attributes.forEach((a, i) => {
+            if (i >= Math.ceil(attributes.length / 2)) {
+                this.column2.push(a);
+            } else {
+                this.column1.push(a);
+            }
+        });
     }
 
     get height() {
-        let result = 0;
-        for (let i = 0; i < this.attributes.length; i += 2) {
-            let height = this.attributes[i].height;
-            if (i < (this.attributes.length -1)) {
-                height = Math.max(this.attributes[i+1].height, height);
-            }
-            result += height;
-        }
-        return result;
+        let col1Height = 0;
+        let col2Height = 0;
+        this.column1.forEach(a => col1Height += a.height);
+        this.column2.forEach(a => col2Height += a.height);
+        return Math.max(col1Height, col2Height);
     }
 
     writeOnPage(page: PDFPage, currentLine: number) {
-        let previousHeight = 0;
-        this.attributes.forEach((a, i) => {
-            a.writeOnPage(page, i % 2 === 0 ? PdfExporter.COLUMN_ONE : PdfExporter.COLUMN_TWO, currentLine);
-            if (i % 2 === 1 || i === (this.attributes.length - 1)) {
-                currentLine += Math.max(previousHeight, a.height);
-                previousHeight = 0;
-            } else {
-                previousHeight = a.height;
-            }
+        let line = currentLine;
+        this.column1.forEach((a, i) => {
+            a.writeOnPage(page, PdfExporter.COLUMN_ONE, line);
+            line += a.height;
+        });
+        line = currentLine;
+        this.column2.forEach((a, i) => {
+            a.writeOnPage(page, PdfExporter.COLUMN_TWO, line);
+            line += a.height;
         });
     }
 }
@@ -90,6 +119,8 @@ export class PdfExporter {
 
     static COLUMN_ONE = 162;
     static COLUMN_TWO = 377;
+    static COLUMN_ONE_END = 361;
+    static COLUMN_TWO_END = 576;
 
     static LCARS_ORANGE = rgb(249.0 / 255.0, 157.0 / 255.0, 37.0 / 255.0);
     static LCARS_PURPLE = rgb(138.0 / 255.0, 113.0 / 255.0, 167.0 / 255.0);
@@ -270,7 +301,7 @@ export class PdfExporter {
                     if (attributes.length) {
                         let block = new AttributeTwoColumnBlock(attributes.map(a => new AttributeDataValue(
                             new TextBlock(a.name.toLocaleUpperCase() + ":", 12.0, font, PdfExporter.LCARS_PURPLE),
-                            new TextBlock(a.value, 10.0, light, PdfExporter.LCARS_BLACK))));
+                            new TextBlock(a.value, 10.0, light, PdfExporter.LCARS_BLACK, 134))));
 
 
                         if ((currentLine + block.height) > (page.getHeight() - 36 - lineHeight)) {
