@@ -19,7 +19,7 @@ be installed by `npm` by following the "Getting Started" directions, below.
 ### Optional Items
 
 You might want to install an IDE. The original developer of this codebase used Visual Studio 2019
-Community Edition (which only runs on Windoze). I tend to us [VS Code](https://code.visualstudio.com/)
+Community Edition (which only runs on Windoze). I tend to use [VS Code](https://code.visualstudio.com/)
 on my Mac.
 
 Some of the files in this repo (such as the Visual Studio solution file -- .sln) date back to the
