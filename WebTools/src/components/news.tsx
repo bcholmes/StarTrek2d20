@@ -11,6 +11,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230227</b>
+                <ul>
+                    <li>A few more updates to both the NPC Generator and the Star System PDF Exporter.</li>
+                </ul>
                 <b>v1.230226</b>
                 <ul>
                     <li>More fleshing out of the NPC generator.</li>
