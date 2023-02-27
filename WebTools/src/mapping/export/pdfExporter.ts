@@ -443,7 +443,7 @@ export class PdfExporter {
         let factor = 10 / Math.sqrt(maxWorldDiameter / 1000 - smallWorldDiameter / 1000);
 
         system.worlds?.forEach((w, i) => {
-            let r = Math.max(2, w.diameter == null ? 10 : (Math.sqrt(w.diameter / 1000 - smallWorldDiameter / 1000) * factor));
+            let r = Math.max(1, w.diameter == null ? 10 : (Math.sqrt(w.diameter / 1500 - smallWorldDiameter / 1500) * factor));
             let orbitalX = this.calculateOrbitX(w.orbitalRadius, orbits);
             let prevOrbitalX = (i === 0) ? PdfExporter.COLUMN_ONE :
                 (this.calculateOrbitX(system.worlds[i-1].orbitalRadius, orbits) + 1);
@@ -575,6 +575,18 @@ export class PdfExporter {
 
     findAllOrbits(system: StarSystem) {
         let orbits = system.worlds?.map(w => w.orbitalRadius) ?? [];
+        if (system.worlds?.length && system.worlds[0].worldClass.id === WorldClass.AsteroidBelt) {
+            let belt = system.worlds[0];
+            if (belt.worldDetails instanceof AsteroidBeltDetails) {
+                orbits.push(belt.orbitalRadius - ((belt.worldDetails as AsteroidBeltDetails).depth / 2));
+            }
+        }
+        if (system.worlds?.length && system.worlds[system.worlds.length - 1].worldClass.id === WorldClass.AsteroidBelt) {
+            let belt = system.worlds[system.worlds.length - 1];
+            if (belt.worldDetails instanceof AsteroidBeltDetails) {
+                orbits.push(belt.orbitalRadius + ((belt.worldDetails as AsteroidBeltDetails).depth / 2));
+            }
+        }
         if (system.gardenZoneInnerRadius) {
             orbits.push(system.gardenZoneInnerRadius);
         }

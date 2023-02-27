@@ -1,5 +1,6 @@
 import React from "react";
 import { StarSystem } from "../table/starSystem";
+import { AsteroidBeltDetails, WorldClass } from "../table/world";
 
 export interface ISystemMapViewProperties {
     system: StarSystem;
@@ -13,6 +14,18 @@ export class SystemMapView extends React.Component<ISystemMapViewProperties, {}>
     findAllOrbits() {
         let { system } = this.props;
         let orbits = system.worlds?.map(w => w.orbitalRadius) ?? [];
+        if (system.worlds?.length && system.worlds[0].worldClass.id === WorldClass.AsteroidBelt) {
+            let belt = system.worlds[0];
+            if (belt.worldDetails instanceof AsteroidBeltDetails) {
+                orbits.push(belt.orbitalRadius - ((belt.worldDetails as AsteroidBeltDetails).depth / 2));
+            }
+        }
+        if (system.worlds?.length && system.worlds[system.worlds.length - 1].worldClass.id === WorldClass.AsteroidBelt) {
+            let belt = system.worlds[system.worlds.length - 1];
+            if (belt.worldDetails instanceof AsteroidBeltDetails) {
+                orbits.push(belt.orbitalRadius + ((belt.worldDetails as AsteroidBeltDetails).depth / 2));
+            }
+        }
         if (system.gardenZoneInnerRadius) {
             orbits.push(system.gardenZoneInnerRadius);
         }
