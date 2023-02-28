@@ -2,9 +2,12 @@
 
 This branch contains the code that supports the Star Trek Adventures character creator version found at
 https://sta.bcholmes.org . This is an alternative (and possibly temporary) version of [the main character
-generator app](https://sta.modiphiusapps.hostinguk.org/). Why does an alternative version exist? I wanted to
-make some additional features available a bit faster than it was taking to get pull requests processed (and
-deployed) on the original codebase.
+generator app](https://sta.modiphiusapps.hostinguk.org/).
+
+Why does an alternative version exist? I wanted to make some additional features available a bit faster
+than it was taking to get pull requests processed (and deployed) on the original codebase. 300 commits
+later, it might be time to accept that the original repo has been abandoned, and that this version
+is now the primary one.
 
 ## Prerequisites
 

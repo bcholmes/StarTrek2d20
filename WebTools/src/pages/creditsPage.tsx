@@ -95,14 +95,6 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
                             </p>
 
                             <p className="mt-5">
-                                <strong>Why isn't there a "Buy Me a Coffee" link?</strong>
-                            </p>
-
-                            <p>
-                                I can't imagine anything people want less than that.
-                            </p>
-
-                            <p className="mt-5">
                                 <strong>What's been changed?</strong>
                             </p>
 
@@ -143,6 +135,15 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
                             </p>
 
                             <p className="mt-5">
+                                <strong>Can I see the code?</strong>
+                            </p>
+
+                            <p>
+                                It's on {' '} <a href="https://github.com/bcholmes/StarTrek2d20/tree/sta-complete" target="_blank" rel="noreferrer">GitHub</a>.
+                                Notice that the majority of the code is on a branch: sta-complete.
+                            </p>
+
+                            <p className="mt-5">
                                 <strong>Book X came out yesterday; why isn't it reflected in the creator app?</strong>
                             </p>
 
@@ -168,6 +169,14 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
                                 <li className="text-white">No fonts, images, JavaScript or other things are downloaded from an external server,
                                 so there should be no third-party tracking.</li>
                             </ul>
+
+                            <p className="mt-5">
+                                <strong>Why isn't there a "Buy Me a Coffee" link?</strong>
+                            </p>
+
+                            <p>
+                                I can't imagine anything people want less than that.
+                            </p>
 
                             <p className="mt-5">
                                 <strong>But how do you make money?</strong>
