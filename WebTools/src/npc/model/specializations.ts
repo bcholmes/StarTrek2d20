@@ -132,7 +132,8 @@ export class Specializations {
                 "If you ask us to leave, we'll leave. But we hope for a different outcome.",
                 "We have great things to learn from our differences.",
                 "We wish to create an open channel for communication.",
-                "Every once in a while we meet a truly alien species; it's a profound learning experience."
+                "Every once in a while we meet a truly alien species; it's a profound learning experience.",
+                "I envy you, taking these first steps into a new frontier."
                 ],
                 0.3),
             new SpecializationModel(Specialization.Jag, "Judge Advocate General's Office",

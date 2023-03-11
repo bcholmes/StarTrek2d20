@@ -21,6 +21,7 @@ export enum WorldClass {
     P,
     T,
     Y,
+    ArtificialPlanet,
 }
 
 export enum RomanNumerals {
@@ -288,6 +289,7 @@ export class World {
     density?: number;
     coreType?: WorldCoreType;
     gravity?: number;
+    notes?: string;
 
     get mass() {
         if (this.diameter != null && this.density != null) {
@@ -330,8 +332,14 @@ export class World {
 
         if (this.worldClass.id === WorldClass.AsteroidBelt) {
             result.push(new WorldAttribute("Classification", "Asteroid Belt"));
+        } else if (this.worldClass.id === WorldClass.ArtificialPlanet) {
+            result.push(new WorldAttribute("Classification", "Artificial Planet"));
         } else {
             result.push(new WorldAttribute("Classification", "Class " + WorldClass[this.worldClass.id] + " (" + this.worldClass.description + ")"));
+        }
+
+        if (this.notes != null) {
+            result.push(new WorldAttribute("Notes", this.notes));
         }
 
         result.push(new WorldAttribute("Orbital Radius", this.orbitalRadius.toFixed(2) + " AUs"));

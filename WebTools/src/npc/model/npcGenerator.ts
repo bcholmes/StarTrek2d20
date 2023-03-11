@@ -6,6 +6,7 @@ import { AttributesHelper } from "../../helpers/attributes";
 import { Career } from "../../helpers/careerEnum";
 import { RanksHelper, Rank } from "../../helpers/ranks";
 import { Skill, SkillsHelper } from "../../helpers/skills";
+import { Species } from "../../helpers/speciesEnum";
 import { SpeciesModel } from "../../helpers/species";
 import { TalentsHelper, ToViewModel } from "../../helpers/talents";
 import { NameGenerator } from "../nameGenerator";
@@ -51,7 +52,8 @@ const starfleetValues = [
     "Starfleet rules are rigid, but necessary",
     "Seek out new life and new civilizations",
     "Infinite Diversity in Infinite Combinations",
-    "It's the Prime Directive, not the Only Directive"
+    "It's the Prime Directive, not the Only Directive",
+    "Please. Let us help you."
 ];
 
 const generalValues = [
@@ -62,13 +64,104 @@ const generalValues = [
     "That which does not kill me makes me stranger!",
     "I'm not doing the non-corporeal body-stealing alien thing again!",
     "My word is my bond",
-    "Life of the party!",
     "Show-off",
     "Braggart",
     "Teller of Tall-Tales",
     "A Vulcan, a Romulan, and a Klingon walk into a bar...",
-    "Exceptionally dedicated"
+    "Exceptionally dedicated",
+    "Everyone deserves a shot at a second chance",
+    "Violence is the last refuge of the incompetent."
 ];
+
+const speciesSpecificValues: { [species : number ]: string[]} = {
+    [ Species.Vulcan ] : [
+        "Logic is the beginning of wisdom",
+        "One can start with irrational premises and still use logical processes",
+        "There are always possibilities",
+        "Greater precision can't hurt",
+        "You must control your passions; they will be your undoing",
+        "May we together become greater than the sum of both of us",
+        "Vulcans believe that peace should not depend on force.",
+        "I wish to spend this time in contemplative meditation.",
+        "Music has fascinating mathematical properties",
+        "Fascinating",
+        "Live long and prosper"
+    ],
+    [ Species.Andorian ] : [
+        "My blood flows with ice like my Andorian ancestors!",
+        "My people are a very violent people",
+        "The Vulcans say that the desert teaches one the meaning of endurance, but it's the ice that forges real strength",
+        "The honour of my clan demands it!",
+        "I'll take your blood to Andoria... to the Wall of Heroes!",
+        "I come from one of the great clans of Andoria!",
+        "My grandmother in her dotage was a greater warrior than you!",
+        "Passion! Exhilaration! Excellence! These are the vital components of life!"
+    ],
+    [ Species.Human ] : [
+        "You only live once!",
+        "Live fast and die hard!",
+        "Life of the party!",
+        "Humanity has had its ugly chapters. We try to learn, to make amends, and to grow.",
+        "To strive, to seek, to find, and not to yield.",
+        "To err is human...",
+        "sic itur ad astra",
+        "The potential to make yourself a better person... that is what it is to be Human... to make yourself more than you are."
+    ],
+    [ Species.Tellarite ] : [
+        "If it cannot stand up to scrutiny, it should be torn down",
+        "Enough with the flowery words; say what you really mean!",
+        "Speak plainly!",
+        "We're not a patient people.",
+        "I'm told this ship is the pride of Starfleet. I find it small and unimpressive.",
+        "Let's consider all sides of this argument",
+        "I listened to your point of view, now you should listen to mine!",
+        "You're being seduced by wishful thinking! Practicality, not hope, is what we need!"
+    ],
+    [ Species.Bajoran ] : [
+        "Walk with the Prophets",
+        "The Prophets teach patience",
+        "You have a strong pagh",
+        "I was a soldier, trying to free my world!",
+        "That's the thing about faith. If you don't have it, you can't understand it. And if you do, no explanation is necessary.",
+        "I'll probably never fully forgive the Cardassians",
+        "The Bajorans were a peaceful people before the Cardassians came.",
+        "I did things. Things that had to be done. I'm not going to beat myself up over that."
+    ],
+    [ Species.Denobulan ] : [
+        "I think it all sounds rather exciting, don't you?",
+        "I'm excited to tell you that my significant other finds you very attractive",
+        "Family relations can be extremely complicated",
+        "If you're going to try to embrace new worlds, you must try to embrace new ideas",
+        "Ah. A new species. Delightful music and wonderful food.",
+        "Are you going to finish eating that...?",
+        "Communication is the foundation of understanding",
+        "Infinite patience yields immediate results",
+        "The health of the individual is the health of the community",
+        "Curiosity is the spark of progress"
+    ],
+    [ Species.Trill ] : [
+        "The protection of the symbionts is essential to the protection of Trill culture",
+        "Those who join with the symbionts are performing our society's most sacred duty",
+        "Even if we aren't joined, we should embody the highest standards of behaviour",
+        "If you want to know who you are, it's important to know who you've been",
+        "The past is never truly gone",
+        "Individuality is strengthened by unity",
+        "The pursuit of knowledge is a lifelong journey",
+        "Balance is key",
+        "Trust is earned, not given"
+    ],
+    [ Species.Betazoid ] : [
+        "To know oneself is to know others",
+        "Honesty is the highest form of respect",
+        "Thoughts have power",
+        "Peace begins within",
+        "All life is precious",
+        "Compassion is the highest form of wisdom",
+        "We are all one",
+        "Seek to understand before seeking to be understood",
+        "The heart is the truest compass"
+    ]
+}
 
 
 export class NpcGenerator {
@@ -219,13 +312,15 @@ export class NpcGenerator {
             while (!done) {
                 let roll = D20.roll();
                 let values = specialization.values;
-                if (roll <= 6) {
+                if (roll < 6) {
                     values = generalValues;
-                } else if (roll <= 12) {
+                } else if (roll < 11) {
                     values = starfleetValues;
+                } else if (roll < 16) {
+                    values = speciesSpecificValues[character.speciesStep.species];
                 }
 
-                if (values.length > 0) {
+                if (values?.length) {
                     let value = values[Math.floor(Math.random() * values.length)];
                     if (character.values.indexOf(value) < 0) {
                         character.addValue(value);

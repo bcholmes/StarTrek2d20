@@ -3,9 +3,9 @@ import { D20, D6 } from "../../common/die";
 import { setSector, setStar } from "../../state/starActions";
 import store from "../../state/store";
 import { LuminosityTable } from "./luminosityTable";
-import { Orbits } from "./orbit";
+import { Orbit, Orbits } from "./orbit";
 import { Sector, SectorCoordinates } from "./sector";
-import { LuminosityClass, LuminosityClassModel, SpectralClass, SpectralClassModel, Star, Range, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon } from "./star";
+import { LuminosityClass, LuminosityClassModel, SpectralClass, SpectralClassModel, Star, Range, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon, SpaceRegion } from "./star";
 import { CompanionType, StarSystem } from "./starSystem";
 import { AsteroidBeltDetails, GasGiantDetails, StandardWorldDetails, World, WorldClass, WorldClassModel, WorldCoreType } from "./world";
 
@@ -18,6 +18,16 @@ class StellarMass {
         this.spectralClass = spectralClass;
         this.luminosityClass = luminosityClass;
         this.mass = mass;
+    }
+}
+
+class GeneralPlanetaryType {
+    worldClass: WorldClassModel;
+    notes?: string;
+
+    constructor(worldClass: WorldClassModel, notes?: string) {
+        this.worldClass = worldClass;
+        this.notes = notes;
     }
 }
 
@@ -54,6 +64,7 @@ class SystemGeneration {
         new WorldClassModel(WorldClass.P, "Glaciated"),
         new WorldClassModel(WorldClass.T, "Gas Ultragiants"),
         new WorldClassModel(WorldClass.Y, "Demon"),
+        new WorldClassModel(WorldClass.ArtificialPlanet, "Artificial Planet"),
     ];
 
     private spectralClassTable: { [roll: number]: SpectralClassModel } = {
@@ -315,6 +326,50 @@ class SystemGeneration {
         ( (starSystem) => starSystem.isBinary ? -3 : 0 ),
     ];
 
+    // from the Core rulebook, p. 307
+    private generalPlanetaryType: { [roll: number]: GeneralPlanetaryType } = {
+
+        2: new GeneralPlanetaryType(this.worldClasses[WorldClass.ArtificialPlanet], "Non-obvious"),
+        3: new GeneralPlanetaryType(this.worldClasses[WorldClass.ArtificialPlanet], "Non-obvious"),
+        4: new GeneralPlanetaryType(this.worldClasses[WorldClass.ArtificialPlanet], "Non-obvious"),
+        5: new GeneralPlanetaryType(this.worldClasses[WorldClass.ArtificialPlanet], "Non-obvious"),
+        6: new GeneralPlanetaryType(this.worldClasses[WorldClass.D]),
+        7: new GeneralPlanetaryType(this.worldClasses[WorldClass.D]),
+        8: new GeneralPlanetaryType(this.worldClasses[WorldClass.D]),
+        9: new GeneralPlanetaryType(this.worldClasses[WorldClass.H]),
+        10: new GeneralPlanetaryType(this.worldClasses[WorldClass.H]),
+        11: new GeneralPlanetaryType(this.worldClasses[WorldClass.L], "Land life has not yet evolved"),
+        12: new GeneralPlanetaryType(this.worldClasses[WorldClass.L], "Land life has not yet evolved"),
+        13: new GeneralPlanetaryType(this.worldClasses[WorldClass.L], "Land life has not yet evolved"),
+        14: new GeneralPlanetaryType(this.worldClasses[WorldClass.O], "Water world with only small islands"),
+        15: new GeneralPlanetaryType(this.worldClasses[WorldClass.O], "Water world with only small islands"),
+        16: new GeneralPlanetaryType(this.worldClasses[WorldClass.O], "Water world with only small islands"),
+        17: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Verdant jungle world"),
+        18: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Verdant jungle world"),
+        19: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Verdant jungle world"),
+        20: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Temperate world — like Earth"),
+        21: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Temperate world — like Earth"),
+        22: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Temperate world — like Earth"),
+        23: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Dry hot world — like Vulcan"),
+        24: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Dry hot world — like Vulcan"),
+        25: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Dry hot world — like Vulcan"),
+        26: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Ice age world"),
+        27: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Ice age world"),
+        28: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Ice age world"),
+        29: new GeneralPlanetaryType(this.worldClasses[WorldClass.L], "Marginally habitable world"),
+        30: new GeneralPlanetaryType(this.worldClasses[WorldClass.L], "Marginally habitable world"),
+        31: new GeneralPlanetaryType(this.worldClasses[WorldClass.K], "Neptune-like"),
+        32: new GeneralPlanetaryType(this.worldClasses[WorldClass.K], "Mars-like"),
+        33: new GeneralPlanetaryType(this.worldClasses[WorldClass.K], "Mars-like"),
+        34: new GeneralPlanetaryType(this.worldClasses[WorldClass.Y]),
+        35: new GeneralPlanetaryType(this.worldClasses[WorldClass.Y]),
+        36: new GeneralPlanetaryType(this.worldClasses[WorldClass.ArtificialPlanet], "Obvious"),
+        37: new GeneralPlanetaryType(this.worldClasses[WorldClass.ArtificialPlanet], "Obvious"),
+        38: new GeneralPlanetaryType(this.worldClasses[WorldClass.J]),
+        39: new GeneralPlanetaryType(this.worldClasses[WorldClass.J]),
+        40: new GeneralPlanetaryType(this.worldClasses[WorldClass.T]),
+    }
+
     private innerWorldTable: { [roll: number]: WorldClassModel[] } = {
         1: [ this.worldClasses[WorldClass.Y] ], // Y
         2: [ this.worldClasses[WorldClass.B] ], // B
@@ -518,7 +573,7 @@ class SystemGeneration {
         let count = this.notableSystemsTable[D20.roll()];
         let sector = new Sector(region.prefix);
         for (let i = 0; i < count; i++) {
-            let system = this.generateStarSystem(sectorType);
+            let system = this.generateStarSystem(region, sectorType);
             if (system) {
                 sector.systems.push(system);
             }
@@ -542,7 +597,7 @@ class SystemGeneration {
 
     }
 
-    generateStarSystem(sectorType?: SpecialSectors) {
+    generateStarSystem(region: SpaceRegionModel, sectorType?: SpecialSectors) {
         let star = this.generateStar();
         let phenomenon = undefined;
 
@@ -583,7 +638,7 @@ class SystemGeneration {
                 }
             }
 
-            this.generateSystem(starSystem);
+            this.generateSystem(region, starSystem);
             return starSystem;
         } else {
             return undefined;
@@ -683,7 +738,33 @@ class SystemGeneration {
         return worldType;
     }
 
-    generateSystem(starSystem: StarSystem) {
+    createBasicWorld(isPrimaryWorld: boolean, orbit: Orbit, romanNumeral: number, region: SpaceRegionModel, starSystem: StarSystem) {
+        if (region.id !== SpaceRegion.ShackletonExpanse && (isPrimaryWorld || (orbit.radius < starSystem.gardenZoneOuterRadius && orbit.radius >= starSystem.gardenZoneInnerRadius))) {
+
+            let roll = D20.roll() + D20.roll();
+            let type = this.generalPlanetaryType[roll];
+
+            let world = new World(type.worldClass, type.worldClass.id === WorldClass.AsteroidBelt ? undefined : romanNumeral);
+            world.notes = type.notes;
+            return world;
+        } else {
+
+            let table = this.innerWorldTable;
+            if (isPrimaryWorld) {
+                table = this.primaryWorldTable;
+            } else if (orbit.radius > starSystem.gardenZoneOuterRadius) {
+                table = this.outerWorldTable;
+            } else if (orbit.radius >= starSystem.gardenZoneInnerRadius) {
+                table = this.primaryWorldTable;
+            }
+
+            let worldType = this.rollWorldType(table);
+
+            return new World(worldType, worldType.id === WorldClass.AsteroidBelt ? undefined : romanNumeral);
+        }
+    }
+
+    generateSystem(region: SpaceRegionModel, starSystem: StarSystem) {
 
         if (!starSystem.star.spectralClass.isDwarf) {
             let roll = D20.roll();
@@ -699,24 +780,14 @@ class SystemGeneration {
             for (let i = 0; i < worldCount; i++) {
 
                 let orbit = orbits.orbits[i];
-
-                let table = this.innerWorldTable;
-                if (i === (primaryWorldOrbit-1)) {
-                    table = this.primaryWorldTable;
-                } else if (orbit.radius > starSystem.gardenZoneOuterRadius) {
-                    table = this.outerWorldTable;
-                } else if (orbit.radius >= starSystem.gardenZoneInnerRadius) {
-                    table = this.primaryWorldTable;
-                }
-
-                let worldType = this.rollWorldType(table);
-
-                let world = new World(worldType, worldType.id === WorldClass.AsteroidBelt ? undefined : romanNumeralId++);
-                if (worldType.id === WorldClass.AsteroidBelt) {
+                let world = this.createBasicWorld(i === (primaryWorldOrbit-1), orbit, romanNumeralId, region, starSystem);
+                if (world.worldClass.id === WorldClass.AsteroidBelt) {
                     world.numberOfSatellites = 0;
-                } else if (worldType.isGasGiant) {
                 } else {
-                    world.numberOfSatellites = this.numberOfMoonsTable[D20.roll()];
+                    romanNumeralId++;
+                    if (!world.worldClass.isGasGiant) {
+                        world.numberOfSatellites = this.numberOfMoonsTable[D20.roll()];
+                    }
                 }
                 world.orbitalRadius = orbit.radius;
                 world.period = Math.sqrt(Math.pow(world.orbitalRadius, 3) / starSystem.star.mass);
@@ -779,6 +850,7 @@ class SystemGeneration {
                     }
                     details.depth = LuminosityTable.addNoiseToValue(Math.min(maxDepth, depth));
                     world.worldDetails = details;
+                } else if (world.worldClass.id === WorldClass.ArtificialPlanet) {
                 } else if (world.worldClass.isGasGiant) {
                     let detailsRoll = D20.roll();
                     if (world.worldClass.id === WorldClass.J) {
