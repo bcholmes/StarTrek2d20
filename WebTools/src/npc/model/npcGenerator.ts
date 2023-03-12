@@ -13,6 +13,18 @@ import { NameGenerator } from "../nameGenerator";
 import { NpcType, NpcTypes } from "./npcType";
 import { Specialization, SpecializationModel, Specializations } from "./specializations";
 
+class RankWithTier {
+    readonly name: string;
+    readonly rank: Rank;
+    readonly tier?: number;
+
+    constructor(name: string, rank: Rank, tier?: number) {
+        this.name = name;
+        this.rank = rank;
+        this.tier = tier;
+    }
+}
+
 const recreationSkills = [ "Holodeck Simulations", "Dixie Hill Adventures",
     "Model Ship Building", "Bolian Neo-Metal Bands", "Early Human Spaceflight",
     "Oil Painting", "Camping", "Survival", "Gourmet Cooking", "Bajoran Spirituality",
@@ -357,23 +369,31 @@ export class NpcGenerator {
 
     static assignRank(character: Character, specialization: SpecializationModel) {
         let ranks = RanksHelper.instance().getRanks(character);
-        if (specialization.id === Specialization.Admin) {
-            ranks = ranks.filter(r => r.id !== Rank.Crewman && r.id !== Rank.Specialist);
-        } else {
-            ranks = ranks.filter(r => r.id !== Rank.Yeoman);
+        ranks = ranks.filter(r => r.id !== Rank.Yeoman);
+
+        let rankList = [];
+        for (const rank of ranks) {
+            if (rank.tiers > 1) {
+                for (let i = 1; i <= rank.tiers; i++) {
+                    rankList.push(new RankWithTier(rank.name, rank.id, i));
+                }
+            } else {
+                rankList.push(new RankWithTier(rank.name, rank.id));
+            }
         }
 
-        if (ranks.length > 0) {
-            let rank = ranks[Math.floor(Math.random() * ranks.length)];
-            if (specialization.id === Specialization.MedicalDoctor && rank.id === Rank.Ensign) {
+        if (rankList.length > 0) {
+            // by using a logarithmic scale, I'm biasing the random values in favour
+            // of the ranks at the higher end of the list (which are the more junior ranks)
+            let maxValue = Math.pow(Math.E, rankList.length + 1);
+            let random = Math.log1p(Math.random() * maxValue);
+            let index = Math.min(rankList.length - 1, Math.max(0, Math.floor(random)));
+            let rank = rankList[index];
+
+            if (specialization.id === Specialization.MedicalDoctor && rank.rank === Rank.Ensign) {
                 character.jobAssignment = specialization.name + " (Resident)";
             }
-            if (rank.tiers > 1) {
-                let tier = Math.ceil(Math.random() * rank.tiers);
-                RanksHelper.instance().applyRank(character, rank.id, tier);
-            } else {
-                RanksHelper.instance().applyRank(character, rank.id, 1);
-            }
+            RanksHelper.instance().applyRank(character, rank.rank, rank.tier == null ? 1 : rank.tier);
         }
     }
 

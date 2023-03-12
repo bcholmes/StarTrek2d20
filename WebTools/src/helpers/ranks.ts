@@ -859,23 +859,13 @@ export class RanksHelper {
 
         // Cadets
         new RankModel(
-            Rank.CadetFourthClass,  // first year cadet
-            "Cadet, fourth class",
+            Rank.CadetFirstClass, // fourth-year cadet
+            "Cadet, first class",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CharacterTypePrerequisite(CharacterType.Cadet),
-                new NoCareerEventsPrerequisite(),
-            ],
-            "Cdt."),
-        new RankModel(
-            Rank.CadetThirdClass, // second-year cadet
-            "Cadet, third class",
-            [
-                new OfficerPrerequisite(),
-                new SourcePrerequisite(Source.PlayersGuide),
-                new CharacterTypePrerequisite(CharacterType.Cadet),
-                new NoCareerEventsPrerequisite(),
+                new HasCareerEventsPrerequisite(),
             ],
             "Cdt."),
         new RankModel(
@@ -889,13 +879,23 @@ export class RanksHelper {
             ],
             "Cdt."),
         new RankModel(
-            Rank.CadetFirstClass, // fourth-year cadet
-            "Cadet, first class",
+            Rank.CadetThirdClass, // second-year cadet
+            "Cadet, third class",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CharacterTypePrerequisite(CharacterType.Cadet),
-                new HasCareerEventsPrerequisite(),
+                new NoCareerEventsPrerequisite(),
+            ],
+            "Cdt."),
+        new RankModel(
+            Rank.CadetFourthClass,  // first year cadet
+            "Cadet, fourth class",
+            [
+                new OfficerPrerequisite(),
+                new SourcePrerequisite(Source.PlayersGuide),
+                new CharacterTypePrerequisite(CharacterType.Cadet),
+                new NoCareerEventsPrerequisite(),
             ],
             "Cdt."),
         ];
