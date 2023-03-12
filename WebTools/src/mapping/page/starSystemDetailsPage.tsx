@@ -78,9 +78,9 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
     }
 
     renderWorlds(title: string, from: number, to?: number) {
-        let worlds = this.props.starSystem.worlds.filter(w => w.orbitalRadius >= from && (to == null || w.orbitalRadius < to));
+        let worlds = this.props.starSystem.worldsAndSatelliteWorlds.filter(w => w.orbitalRadius >= from && (to == null || w.orbitalRadius < to));
         if (worlds.length > 0) {
-            let list = worlds.map((w,i) => <WorldView world={w} system={this.props.starSystem} key={'world-' + w.orbitalRadius}/>);
+            let list = worlds.map((w,i) => <WorldView world={w} system={this.props.starSystem} key={'world-' + w.orbitId}/>);
             return (<div>
                 <div className="page-text my-3">{title}</div>
                 <div className="row row-cols-1 row-cols-md-2">

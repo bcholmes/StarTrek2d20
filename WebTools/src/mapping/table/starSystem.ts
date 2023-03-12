@@ -1,6 +1,6 @@
 import { SectorCoordinates } from "./sector";
 import { NotableSpatialPhenomenonModel, Star } from "./star";
-import { World } from "./world";
+import { GasGiantDetails, World } from "./world";
 
 export enum CompanionType {
     Close, Distant
@@ -91,5 +91,17 @@ export class StarSystem {
             + (this.companionStar == null ? "" : ("\nCompanion Star: " + this.companionStar.plainText))
             + (this.companionType == null ? "" : ("\nCompanion Type: " + CompanionType[this.companionType]))
             + "\n" + worlds;
+    }
+
+    get worldsAndSatelliteWorlds() {
+        let result = [];
+        this.worlds.forEach(w => {
+            result.push(w);
+            if (w.worldDetails != null && w.worldDetails instanceof GasGiantDetails) {
+                let details = w.worldDetails as GasGiantDetails;
+                details.ecosphereWorlds.forEach(e => result.push(e));
+            }
+        });
+        return result;
     }
 }

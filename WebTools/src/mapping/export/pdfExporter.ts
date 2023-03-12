@@ -114,11 +114,17 @@ class AttributeTwoColumnBlock {
 
     constructor(attributes: AttributeDataValue[]) {
 
+        let totalHeight = 0;
+        attributes.forEach(a => totalHeight += a.height);
+        let firstColumnHeight = 0;
         attributes.forEach((a, i) => {
-            if (i >= Math.ceil(attributes.length / 2)) {
+            if (firstColumnHeight > (totalHeight / 2)) {
+                this.column2.push(a);
+            } else if (firstColumnHeight + (a.height / 2) > (totalHeight / 2)) {
                 this.column2.push(a);
             } else {
                 this.column1.push(a);
+                firstColumnHeight += a.height;
             }
         });
     }
@@ -179,6 +185,8 @@ export class PdfExporter {
         for (let i = 0; i < systems.length; i++) {
             await this.populateSystemPage(pdf, lcarsFont, openSansLight, openSansBold, systems[i], blankPagePdf);
         }
+
+        this.paginate(pdf, openSansLight);
     }
 
     async createStarSystemPdf(system: StarSystem) {
@@ -317,9 +325,9 @@ export class PdfExporter {
 
         if (system.worlds?.length) {
 
-            let innerWorlds = system.worlds.filter(w => w.orbitalRadius < system.gardenZoneInnerRadius);
-            let ecosphereWorlds = system.worlds.filter(w => w.orbitalRadius >= system.gardenZoneInnerRadius && w.orbitalRadius < system.gardenZoneOuterRadius);
-            let outerWorlds = system.worlds.filter(w => w.orbitalRadius >= system.gardenZoneOuterRadius);
+            let innerWorlds = system.worldsAndSatelliteWorlds.filter(w => w.orbitalRadius < system.gardenZoneInnerRadius);
+            let ecosphereWorlds = system.worldsAndSatelliteWorlds.filter(w => w.orbitalRadius >= system.gardenZoneInnerRadius && w.orbitalRadius < system.gardenZoneOuterRadius);
+            let outerWorlds = system.worldsAndSatelliteWorlds.filter(w => w.orbitalRadius >= system.gardenZoneOuterRadius);
 
             let titles = ["Inner Worlds", "Ecosphere", "Outer Worlds"];
             let worldLists = [innerWorlds, ecosphereWorlds, outerWorlds];

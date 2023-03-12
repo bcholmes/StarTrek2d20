@@ -1,5 +1,7 @@
 import { D20 } from "../../common/die";
 
+const ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
+
 export enum WorldCoreType {
     Heavy, Molten, Rocky, Icy
 }
@@ -137,6 +139,8 @@ export class GasGiantDetails extends WorldDetails {
     mediumMoons?: number;
     largeMoons?: number;
     giantMoons?: number;
+
+    ecosphereWorlds: World[] = [];
 
     ring?: RingTypeModel = RingTypeModel.getTypeNone();
 
@@ -279,17 +283,29 @@ export class WorldAttribute {
 
 export class World {
 
+    orbitNumber: number;
     worldClass: WorldClassModel;
     orbit: number;
+    satelliteOrbit?: number;
     numberOfSatellites: number;
     orbitalRadius: number = 0;
+    satelliteOrbitalRadius?: number;
     period: number;
     worldDetails?: AsteroidBeltDetails|StandardWorldDetails|GasGiantDetails;
     diameter?: number;
     density?: number;
     coreType?: WorldCoreType;
     gravity?: number;
-    notes?: string;
+    notes: string[] = [];
+    features: string[] = [];
+
+    get isSatellite() {
+        return this.satelliteOrbit != null;
+    }
+
+    get orbitId() {
+        return '' + this.orbitNumber + (this.satelliteOrbit == null ? '' : (ALPHABET.charAt(this.satelliteOrbit)));
+    }
 
     get mass() {
         if (this.diameter != null && this.density != null) {
@@ -305,7 +321,7 @@ export class World {
     }
 
     get orbitLabel() {
-        return this.orbit == null ? undefined : RomanNumerals[this.orbit];
+        return this.orbit == null ? undefined : (RomanNumerals[this.orbit] + (this.satelliteOrbit == null ? '' : (ALPHABET.charAt(this.satelliteOrbit))));
     }
 
     get plainText() {
@@ -338,12 +354,22 @@ export class World {
             result.push(new WorldAttribute("Classification", "Class " + WorldClass[this.worldClass.id] + " (" + this.worldClass.description + ")"));
         }
 
-        if (this.notes != null) {
-            result.push(new WorldAttribute("Notes", this.notes));
+        if (this.notes?.length) {
+            result.push(new WorldAttribute("Notes", this.notes.join(', ')));
         }
 
-        result.push(new WorldAttribute("Orbital Radius", this.orbitalRadius.toFixed(2) + " AUs"));
-        result.push(new WorldAttribute("Orbital Period", this.period.toFixed(3) + " Earth Years"));
+        if (this.isSatellite) {
+            result.push(new WorldAttribute("Orbital Radius", Math.round(this.satelliteOrbitalRadius).toLocaleString("en-US") + " km"));
+            if (this.period != null) {
+                result.push(new WorldAttribute("Orbital Period", this.period.toFixed(3) + " Earth Years"));
+            }
+        } else {
+            result.push(new WorldAttribute("Orbital Radius", this.orbitalRadius.toFixed(2) + " AUs"));
+            if (this.period != null) {
+                result.push(new WorldAttribute("Orbital Period", this.period.toFixed(3) + " Earth Years"));
+            }
+        }
+
         if (this.diameter != null) {
             result.push(new WorldAttribute("Diameter", Math.round(this.diameter).toLocaleString("en-US") + " km"));
         }
@@ -368,6 +394,9 @@ export class World {
             result.push(new WorldAttribute("Core", WorldCoreType[this.coreType]));
         }
 
+        if (this.features?.length) {
+            result.push(new WorldAttribute("Features", this.features.join(", ")));
+        }
         return result;
     }
 }

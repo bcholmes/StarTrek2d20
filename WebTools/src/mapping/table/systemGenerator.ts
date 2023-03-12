@@ -508,6 +508,81 @@ class SystemGeneration {
         20: 500000,
     }
 
+    private planetaryFeaturesOfInterest = (roll: number) => {
+        switch (roll) {
+            case 1:
+            case 2:
+                return "Exceedingly dangerous animal or plant life";
+            case 3:
+            case 4:
+                return "Peaceful primitive inhabitants";
+            case 5:
+            case 6:
+                return "Warlike primitive inhabitants";
+            case 7:
+                return "Peaceful technological inhabitants";
+            case 8:
+            case 9:
+                return "Warlike technological inhabitants";
+            case 10:
+            case 11:
+                return "Transcendent inhabitants of great power";
+            case 12:
+            case 13:
+                return "Ancient ruins or artifacts";
+            case 14:
+            case 15:
+                return "Off-world visitors";
+            case 16:
+            case 17:
+                return "Crashed spacecraft";
+            case 18:
+                return "Local conditions that limit or prohibit transporter use";
+            case 19:
+            case 20:
+            default:
+                return "Dangerous natural phenomena";
+        }
+    }
+
+    private planetaryDetails = (roll: number) => {
+        switch (roll) {
+            case 1:
+                return "Opaque or partially opaque atmosphere (fog, smoke, opaque gasses, swarms of air-plankton)"
+            case 2:
+                return "Perpetual darkness";
+            case 3:
+                return "Perpetual dim light"
+            case 4:
+                return "Many huge animals (anywhere from the size of a large dinosaur to the size of a large starship)";
+            case 5:
+                return "Most animals (and perhaps also plants) are well camouflaged and difficult to notice"
+            case 6:
+                return "The air is filled with floating and flying creatures of all sizes";
+            case 7:
+            case 8:
+            case 9:
+                return "Earth-like vegetation and animals";
+            case 10:
+            case 11:
+            case 12:
+                return "Most life-forms are unusually colored (blue, purple, bright red, monochromatic...)";
+            case 13:
+            case 14:
+                return "Most life-forms have more or fewer than 4 limbs, perhaps 3, maybe 6, 8 or even more";
+            case 15:
+            case 16:
+                return "Gelid or blobby life-forms";
+            case 17:
+            case 18:
+                return "Animate plants, sessile animals, or no distinction between plants and animals";
+            case 19:
+            case 20:
+            default:
+                return "Crystalline life-forms";
+        }
+    }
+
     private stellarMassTable: StellarMass[] = [
         new StellarMass(SpectralClass.O, LuminosityClass.Ia, 70),
         new StellarMass(SpectralClass.O, LuminosityClass.Ib, 60),
@@ -745,7 +820,22 @@ class SystemGeneration {
             let type = this.generalPlanetaryType[roll];
 
             let world = new World(type.worldClass, type.worldClass.id === WorldClass.AsteroidBelt ? undefined : romanNumeral);
-            world.notes = type.notes;
+            if (type.notes) {
+                world.notes.push(type.notes);
+            }
+            world.orbitalRadius = orbit.radius;
+            world.orbitNumber = orbit.index;
+
+            if (isPrimaryWorld && world.worldClass.id !== WorldClass.D && !world.worldClass.isGasGiant) {
+                world.features.push(this.planetaryFeaturesOfInterest(D20.roll()));
+                let feature2 = this.planetaryFeaturesOfInterest(D20.roll());
+                if (world.features.indexOf(feature2) < 0) {
+                    world.features.push(feature2);
+                }
+
+                world.features.push(this.planetaryDetails(D20.roll()));
+            }
+
             return world;
         } else {
 
@@ -760,7 +850,10 @@ class SystemGeneration {
 
             let worldType = this.rollWorldType(table);
 
-            return new World(worldType, worldType.id === WorldClass.AsteroidBelt ? undefined : romanNumeral);
+            let world = new World(worldType, worldType.id === WorldClass.AsteroidBelt ? undefined : romanNumeral);
+            world.orbitalRadius = orbit.radius;
+            world.orbitNumber = orbit.index;
+            return world;
         }
     }
 
@@ -789,7 +882,6 @@ class SystemGeneration {
                         world.numberOfSatellites = this.numberOfMoonsTable[D20.roll()];
                     }
                 }
-                world.orbitalRadius = orbit.radius;
                 world.period = Math.sqrt(Math.pow(world.orbitalRadius, 3) / starSystem.star.mass);
 
                 if (world.worldClass.id === WorldClass.AsteroidBelt) {
@@ -860,55 +952,84 @@ class SystemGeneration {
                     }
                     this.gasGiantSatellitesTable[detailsRoll](world);
                     this.calculateGasGiantSize(world);
+                    let details = world.worldDetails as GasGiantDetails;
+                    if (details.ecosphere) {
+                        details.ecosphereWorlds = [ this.createSatelliteWorld(world, orbit, starSystem, region) ];
+                    }
                 } else {
                     this.calculateStandardPlanetSize(world, starSystem);
                     world.worldDetails = this.deriveStandardWorldDetails(world);
                 }
-
 
                 starSystem.worlds.push(world);
             }
         }
     }
 
+    createSatelliteWorld(gasGiant: World, orbit: Orbit, starSystem: StarSystem, region: SpaceRegionModel) {
+        let details = gasGiant.worldDetails as GasGiantDetails;
+        let moonWorld = this.createBasicWorld(true, orbit, gasGiant.orbit, region, starSystem);
+        let done = false;
+        while (!done) {
+            if (moonWorld.worldClass.id !== WorldClass.ArtificialPlanet && !moonWorld.worldClass.isGasGiant) {
+                if (details.giantMoons > 0) {
+                    moonWorld.satelliteOrbit = Math.floor(Math.random() * details.giantMoons);
+                } else {
+                    moonWorld.satelliteOrbit = Math.floor(Math.random() * details.largeMoons);
+                }
+                moonWorld.notes.push("Satellite world orbiting in gas giant's ecosphere");
+                this.calculateStandardPlanetSize(moonWorld, starSystem);
+                moonWorld.worldDetails = this.deriveStandardWorldDetails(moonWorld);
+
+                let orbitalRadius = (D20.roll() + D20.roll()) * 10 + D20.roll();
+                moonWorld.satelliteOrbitalRadius = orbitalRadius * gasGiant.diameter;
+                moonWorld.period = Math.sqrt((Math.pow(moonWorld.satelliteOrbitalRadius / 400000, 3) * 793.64) / gasGiant.mass) / 365.25;
+                done = true;
+            }
+        }
+        return moonWorld;
+    }
+
     deriveStandardWorldDetails(world: World) {
         let result = new StandardWorldDetails();
-        let period = D20.roll() + D20.roll() + 5 + (world.mass / world.orbitalRadius);
+        if (world.orbitalRadius != null) {
+            let period = D20.roll() + D20.roll() + 5 + (world.mass / world.orbitalRadius);
 
-        if (period > 40) {
-            let specialRoll = Math.ceil(D20.roll() / 2);
-            switch (specialRoll) {
-                case 1:
-                    result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 3) * 24;
-                    result.retrograde = true;
-                    break;
-                case 2:
-                    result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 6) * 24;
-                    break;
-                case 3:
-                    result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 3) * 24;
-                    break;
-                case 4:
-                case 5:
-                case 6:
-                    result.tidallyLocked = true;
-                    break;
-                case 7:
-                    result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 3) * 24;
-                    break;
-                case 8:
-                    result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 15) * 24;
-                    break;
-                case 9:
-                    result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 15) * 24;
-                    result.retrograde = true;
-                    break;
-                case 10:
-                    result.rotationPeriod = period;
-                    break
+            if (period > 40) {
+                let specialRoll = Math.ceil(D20.roll() / 2);
+                switch (specialRoll) {
+                    case 1:
+                        result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 3) * 24;
+                        result.retrograde = true;
+                        break;
+                    case 2:
+                        result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 6) * 24;
+                        break;
+                    case 3:
+                        result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 3) * 24;
+                        break;
+                    case 4:
+                    case 5:
+                    case 6:
+                        result.tidallyLocked = true;
+                        break;
+                    case 7:
+                        result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 3) * 24;
+                        break;
+                    case 8:
+                        result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 15) * 24;
+                        break;
+                    case 9:
+                        result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 15) * 24;
+                        result.retrograde = true;
+                        break;
+                    case 10:
+                        result.rotationPeriod = period;
+                        break
+                }
+            } else {
+                result.rotationPeriod = LuminosityTable.addNoiseToValue(period);
             }
-        } else {
-            result.rotationPeriod = LuminosityTable.addNoiseToValue(period);
         }
 
         if (world.worldClass.id === WorldClass.O) {
