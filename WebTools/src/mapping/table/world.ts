@@ -129,6 +129,13 @@ export class AsteroidBeltDetails extends WorldDetails {
         if (this.depth != null) {
             result.push(new WorldAttribute("Belt Width", this.depth.toFixed(2) + " AUs"));
         }
+
+        if (this.nickelIronPercent > 0) {
+            result.push(new WorldAttribute("Inner Belt", (this.nickelIronPercent * this.depth).toFixed(2) + " AUs (nickel-iron)"));
+        }
+        result.push(new WorldAttribute("Mixed Belt", (this.mixedPercent * this.depth).toFixed(2) + " AUs (Mixed)"));
+        result.push(new WorldAttribute("Outer Belt", (this.carbonaceousOrIcePercent * this.depth).toFixed(2) + " AUs (carbonaceous and/or ice)"));
+
         return result;
     }
 }

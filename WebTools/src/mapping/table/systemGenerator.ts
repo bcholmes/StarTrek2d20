@@ -9,6 +9,10 @@ import { LuminosityClass, LuminosityClassModel, SpectralClass, SpectralClassMode
 import { CompanionType, StarSystem } from "./starSystem";
 import { AsteroidBeltDetails, GasGiantDetails, StandardWorldDetails, World, WorldClass, WorldClassModel, WorldCoreType } from "./world";
 
+enum AsteroidBeltZone {
+    Nickel, Mixed, CarbonaceousOrIce
+}
+
 class StellarMass {
     spectralClass: SpectralClass;
     luminosityClass: LuminosityClass;
@@ -583,6 +587,139 @@ class SystemGeneration {
         }
     }
 
+    private asteroidBeltZoneDominance = (roll: number) => {
+        switch (roll) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                return AsteroidBeltZone.Nickel;
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+                return AsteroidBeltZone.Mixed;
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+            case 20:
+                return AsteroidBeltZone.CarbonaceousOrIce;
+        }
+    }
+
+    private asteroidBeltZoneDepths = (zone: AsteroidBeltZone, roll: number) => {
+        switch (zone) {
+            case AsteroidBeltZone.Nickel:
+                switch (roll) {
+                    case 1:
+                    case 2:
+                    case 3:
+                        return { nZone: 40, mZone: 30, cZone: 30};
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 10:
+                        return { nZone: 40, mZone: 40, cZone: 20};
+
+                    case 11:
+                    case 12:
+                    case 13:
+                    case 14:
+                        return { nZone: 50, mZone: 40, cZone: 10};
+                    case 15:
+                    case 16:
+                        return { nZone: 50, mZone: 30, cZone: 20};
+                    case 17:
+                    case 18:
+                        return { nZone: 60, mZone: 30, cZone: 10};
+                    case 19:
+                    case 20:
+                    default:
+                        return { nZone: 60, mZone: 20, cZone: 20};
+                }
+
+            case AsteroidBeltZone.Mixed:
+                switch (roll) {
+                    case 1:
+                    case 2:
+                    case 3:
+                        return { nZone: 20, mZone: 50, cZone: 30};
+                    case 4:
+                    case 5:
+                    case 6:
+                        return { nZone: 30, mZone: 50, cZone: 20};
+
+                    case 7:
+                    case 8:
+                    case 9:
+                        return { nZone: 20, mZone: 60, cZone: 20};
+                    case 10:
+                    case 11:
+                        return { nZone: 30, mZone: 60, cZone: 10};
+                    case 12:
+                    case 13:
+                        return { nZone: 10, mZone: 70, cZone: 20};
+                    case 14:
+                    case 15:
+                        return { nZone: 20, mZone: 70, cZone: 10};
+                    case 16:
+                    case 17:
+                        return { nZone: 10, mZone: 80, cZone: 10};
+                    case 18:
+                    case 19:
+                        return { nZone: 0, mZone: 80, cZone: 20};
+                    case 20:
+                    default:
+                        return { nZone: 0, mZone: 90, cZone: 10};
+                }
+
+            case AsteroidBeltZone.CarbonaceousOrIce:
+                switch (roll) {
+                    case 1:
+                    case 2:
+                    case 3:
+                        return { nZone: 20, mZone: 30, cZone: 50};
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 10:
+                        return { nZone: 10, mZone: 30, cZone: 60};
+
+                    case 11:
+                    case 12:
+                    case 13:
+                    case 14:
+                        return { nZone: 10, mZone: 20, cZone: 70};
+                    case 15:
+                    case 16:
+                        return { nZone: 10, mZone: 10, cZone: 80};
+                    case 17:
+                    case 18:
+                        return { nZone: 0, mZone: 20, cZone: 80};
+                    case 19:
+                    case 20:
+                    default:
+                        return { nZone: 0, mZone: 10, cZone: 90};
+                }
+
+            default:
+        }
+    }
+
     private stellarMassTable: StellarMass[] = [
         new StellarMass(SpectralClass.O, LuminosityClass.Ia, 70),
         new StellarMass(SpectralClass.O, LuminosityClass.Ib, 60),
@@ -941,6 +1078,17 @@ class SystemGeneration {
                         depth = 10.0;
                     }
                     details.depth = LuminosityTable.addNoiseToValue(Math.min(maxDepth, depth));
+                    let zoneRoll = D20.roll();
+                    if (orbit.radius >= starSystem.gardenZoneInnerRadius && orbit.radius < starSystem.gardenZoneOuterRadius) {
+                        zoneRoll = Math.max(1, zoneRoll - 5);
+                    } else if (orbit.radius >= starSystem.gardenZoneOuterRadius) {
+                        zoneRoll = Math.min(20, zoneRoll + 5);
+                    }
+                    let zone = this.asteroidBeltZoneDominance(zoneRoll)
+                    let { nZone, mZone, cZone } = this.asteroidBeltZoneDepths(zone, D20.roll());
+                    details.nickelIronPercent = nZone / 100.0;
+                    details.mixedPercent = mZone / 100.0;
+                    details.carbonaceousOrIcePercent = cZone / 100.0;
                     world.worldDetails = details;
                 } else if (world.worldClass.id === WorldClass.ArtificialPlanet) {
                 } else if (world.worldClass.isGasGiant) {
