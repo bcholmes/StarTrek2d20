@@ -40,7 +40,8 @@ const recreationSkills = [ "Holodeck Simulations", "Dixie Hill Adventures",
     "Appraisal", "The Ferengi Rules of Acquisition", "Interpretive Dance",
     "The Plays of Anton Chekhov", "Pre-Raphaelite Painters", "Andorian Electronic Dance Music",
     "Gourmet Raktajino Barista", "Karaoke", "Tongo", "Galeo-Manado Wrestling",
-    "Andorian Clans of the Pre-Industrial Period", "Risan Vacation Activities" ];
+    "Andorian Clans of the Pre-Industrial Period", "Risan Vacation Activities",
+    "Trashy Romance Novels", "Parrises squares" ];
 
 const starfleetSkills = ["Starfleet Protocols", "Worlds of the Federation", "Starship Emergency Protocols",
     "Tricoders", "History of the Federation", "The Missions of Adm. Archer and the NX-01",
@@ -65,7 +66,9 @@ const starfleetValues = [
     "Seek out new life and new civilizations",
     "Infinite Diversity in Infinite Combinations",
     "It's the Prime Directive, not the Only Directive",
-    "Please. Let us help you."
+    "Please. Let us help you.",
+    "Starfleet is the only family I've ever needed.",
+    "My team has my back"
 ];
 
 const generalValues = [
@@ -211,7 +214,7 @@ export class NpcGenerator {
             Career.Experienced, Career.Experienced, Career.Experienced, Career.Experienced, Career.Experienced, Career.Experienced,
             Career.Experienced, Career.Veteran, Career.Veteran];
 
-        character.career = careers[Math.floor(Math.random() * careers.length)];
+        character.career = specialization.id === Specialization.Admiral ? Career.Veteran : careers[Math.floor(Math.random() * careers.length)];
         character.enlisted = (Math.random() < specialization.officerProbability) ? false : true;
 
         NpcGenerator.assignRank(character, specialization);
@@ -368,7 +371,9 @@ export class NpcGenerator {
     }
 
     static assignRank(character: Character, specialization: SpecializationModel) {
-        let ranks = RanksHelper.instance().getRanks(character);
+        let ranks = specialization.id === Specialization.Admiral
+            ? RanksHelper.instance().getAdmiralRanks(character)
+            : RanksHelper.instance().getRanks(character);
         ranks = ranks.filter(r => r.id !== Rank.Yeoman);
 
         let rankList = [];

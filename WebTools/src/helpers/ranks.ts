@@ -415,6 +415,45 @@ export class RanksHelper {
             "Crew.",
             3),
         new RankModel(
+            Rank.FleetAdmiral,
+            "Fleet Admiral",
+            [
+                new OfficerPrerequisite(),
+                new CareersPrerequisite(Career.Veteran),
+                new SourcePrerequisite(Source.CommandDivision),
+                new RolesPrerequisite([Role.Admiral]),
+                new CharacterTypePrerequisite(CharacterType.Starfleet)
+            ],
+            "Adm.",
+            1),
+        new RankModel(
+            Rank.Admiral,
+            "Admiral",
+            [
+                new OfficerPrerequisite(),
+                new CareersPrerequisite(Career.Veteran),
+                new SourcePrerequisite(Source.CommandDivision, Source.PlayersGuide),
+                new RolesPrerequisite([Role.Admiral]),
+                new AnyOfPrerequisite(
+                    new CharacterTypePrerequisite(CharacterType.Starfleet),
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.RomulanStarEmpire)
+                )
+            ],
+            "Adm.",
+            1),
+        new RankModel(
+            Rank.ViceAdmiral,
+            "Vice-Admiral",
+            [
+                new OfficerPrerequisite(),
+                new CareersPrerequisite(Career.Veteran),
+                new SourcePrerequisite(Source.CommandDivision, Source.PlayersGuide),
+                new RolesPrerequisite([Role.Admiral]),
+                new CharacterTypePrerequisite(CharacterType.Starfleet)
+            ],
+            "Adm.",
+            1),
+        new RankModel(
             Rank.RearAdmiral,
             "Rear Admiral",
             [
@@ -438,10 +477,10 @@ export class RanksHelper {
                 new RolesPrerequisite([Role.Admiral]),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "Adm.",
+            "RAdm.",
             1),
         new RankModel(
-            Rank.RearAdmiral,
+            Rank.RearAdmiralUpper,
             "Rear Admiral, Upper Half",
             [
                 new OfficerPrerequisite(),
@@ -451,46 +490,7 @@ export class RanksHelper {
                 new RolesPrerequisite([Role.Admiral]),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "Adm",
-            1),
-        new RankModel(
-            Rank.ViceAdmiral,
-            "Vice-Admiral",
-            [
-                new OfficerPrerequisite(),
-                new CareersPrerequisite(Career.Veteran),
-                new SourcePrerequisite(Source.CommandDivision, Source.PlayersGuide),
-                new RolesPrerequisite([Role.Admiral]),
-                new CharacterTypePrerequisite(CharacterType.Starfleet)
-            ],
-            "Adm",
-            1),
-        new RankModel(
-            Rank.ViceAdmiral,
-            "Admiral",
-            [
-                new OfficerPrerequisite(),
-                new CareersPrerequisite(Career.Veteran),
-                new SourcePrerequisite(Source.CommandDivision, Source.PlayersGuide),
-                new RolesPrerequisite([Role.Admiral]),
-                new AnyOfPrerequisite(
-                    new CharacterTypePrerequisite(CharacterType.Starfleet),
-                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.RomulanStarEmpire)
-                )
-            ],
-            "Adm",
-            1),
-        new RankModel(
-            Rank.ViceAdmiral,
-            "Fleet Admiral",
-            [
-                new OfficerPrerequisite(),
-                new CareersPrerequisite(Career.Veteran),
-                new SourcePrerequisite(Source.CommandDivision),
-                new RolesPrerequisite([Role.Admiral]),
-                new CharacterTypePrerequisite(CharacterType.Starfleet)
-            ],
-            "Adm",
+            "RAdm",
             1),
         new RankModel(
             Rank.Commodore,
@@ -975,6 +975,10 @@ export class RanksHelper {
         }
 
         return result;
+    }
+
+    getAdmiralRanks() {
+        return [this.getRank(Rank.Admiral), this.getRank(Rank.ViceAdmiral), this.getRank(Rank.RearAdmiral)];
     }
 }
 
