@@ -1,4 +1,4 @@
-import { D20 } from "../../common/die";
+import { addNoiseToValue } from "./noise";
 import { LuminosityClass, SpectralClass, Star } from "./star";
 
 class LuminosityCrossReference {
@@ -132,13 +132,13 @@ class LuminosityTableImpl {
 
         let exactMatch = this.selectOption(options, star.subClass);
         if (exactMatch != null) {
-            return this.addNoiseToValue(exactMatch.luminosity);
+            return addNoiseToValue(exactMatch.luminosity);
         } else {
             let o9 = this.selectOption(options, 9);
             if (o9 == null) {
                 let o5 = this.selectOption(options, 5);
                 let o0 = this.selectOption(options, 0);
-                
+
                 let delta = o0.luminosity - o5.luminosity;
 
                 let o9Value = o5.luminosity - (0.67) * delta;
@@ -151,10 +151,10 @@ class LuminosityTableImpl {
             }
 
             if (star.subClass === 9) {
-                return this.addNoiseToValue(o9.luminosity);
+                return addNoiseToValue(o9.luminosity);
             } else {
                 let result = this.interpolateSelection(options, star.subClass);
-                return this.addNoiseToValue(result);
+                return addNoiseToValue(result);
             }
         }
     }
@@ -189,15 +189,7 @@ class LuminosityTableImpl {
         }
 
         let ratio =  1- ((subClass - lower.subSpectralClass) / (upper.subSpectralClass - lower.subSpectralClass));
-        return this.addNoiseToValue(lower.luminosity + (upper.luminosity - lower.luminosity) * ratio);
-    }
-
-    addNoiseToValue(value: number) {
-        let roll1 = (D20.roll() - 10) * 0.001;
-        let roll2 = (D20.roll() - 10) * (D20.roll() === 20 ? 0.05 : 0.01);
-
-        let variance = roll1 + roll2;
-        return value + (variance * value);
+        return addNoiseToValue(lower.luminosity + (upper.luminosity - lower.luminosity) * ratio);
     }
 
     tenabilityRadius(luminosityValue: number) {

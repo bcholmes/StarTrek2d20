@@ -297,6 +297,7 @@ export class World {
     numberOfSatellites: number;
     orbitalRadius: number = 0;
     satelliteOrbitalRadius?: number;
+    orbitalEccentricity?: number;
     period: number;
     worldDetails?: AsteroidBeltDetails|StandardWorldDetails|GasGiantDetails;
     diameter?: number;
@@ -375,6 +376,9 @@ export class World {
             if (this.period != null) {
                 result.push(new WorldAttribute("Orbital Period", this.period.toFixed(3) + " Earth Years"));
             }
+        }
+        if (this.orbitalEccentricity != null) {
+            result.push(new WorldAttribute("Eccentricity", this.orbitalEccentricity.toFixed(3)));
         }
 
         if (this.diameter != null) {

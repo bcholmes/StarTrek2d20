@@ -3,6 +3,7 @@ import { D20, D6 } from "../../common/die";
 import { setSector, setStar } from "../../state/starActions";
 import store from "../../state/store";
 import { LuminosityTable } from "./luminosityTable";
+import { addNoiseToValue } from "./noise";
 import { Orbit, Orbits } from "./orbit";
 import { Sector, SectorCoordinates } from "./sector";
 import { LuminosityClass, LuminosityClassModel, SpectralClass, SpectralClassModel, Star, Range, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon, SpaceRegion } from "./star";
@@ -720,6 +721,66 @@ class SystemGeneration {
         }
     }
 
+    private orbitalEccentricity = () => {
+        let roll = D20.roll();
+        switch (roll) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+                return 0.0;
+            case 11:
+            case 12:
+                return 0.005;
+            case 13:
+            case 14:
+                return 0.010;
+            case 15:
+            case 16:
+                return 0.015;
+            case 17:
+            case 18:
+                return 0.020;
+            case 19:
+            case 20:
+            default:
+                switch (D20.roll()) {
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                        return 0.025;
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                        return 0.050;
+                    case 9:
+                    case 10:
+                    case 11:
+                    case 12:
+                        return 0.100;
+                    case 13:
+                    case 14:
+                    case 15:
+                    case 16:
+                        return 0.200;
+                    case 17:
+                    case 18:
+                    case 19:
+                    case 20:
+                    default:
+                        return 0.250;
+                }
+        }
+    }
+
     private stellarMassTable: StellarMass[] = [
         new StellarMass(SpectralClass.O, LuminosityClass.Ia, 70),
         new StellarMass(SpectralClass.O, LuminosityClass.Ib, 60),
@@ -962,6 +1023,7 @@ class SystemGeneration {
             }
             world.orbitalRadius = orbit.radius;
             world.orbitNumber = orbit.index;
+            world.orbitalEccentricity = addNoiseToValue(this.orbitalEccentricity(), 100);
 
             if (isPrimaryWorld && world.worldClass.id !== WorldClass.D && !world.worldClass.isGasGiant) {
                 world.features.push(this.planetaryFeaturesOfInterest(D20.roll()));
@@ -990,6 +1052,7 @@ class SystemGeneration {
             let world = new World(worldType, worldType.id === WorldClass.AsteroidBelt ? undefined : romanNumeral);
             world.orbitalRadius = orbit.radius;
             world.orbitNumber = orbit.index;
+            world.orbitalEccentricity = this.orbitalEccentricity();
             return world;
         }
     }
@@ -1077,7 +1140,7 @@ class SystemGeneration {
                     default:
                         depth = 10.0;
                     }
-                    details.depth = LuminosityTable.addNoiseToValue(Math.min(maxDepth, depth));
+                    details.depth = addNoiseToValue(Math.min(maxDepth, depth));
                     let zoneRoll = D20.roll();
                     if (orbit.radius >= starSystem.gardenZoneInnerRadius && orbit.radius < starSystem.gardenZoneOuterRadius) {
                         zoneRoll = Math.max(1, zoneRoll - 5);
@@ -1147,14 +1210,14 @@ class SystemGeneration {
                 let specialRoll = Math.ceil(D20.roll() / 2);
                 switch (specialRoll) {
                     case 1:
-                        result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 3) * 24;
+                        result.rotationPeriod = addNoiseToValue(D20.roll() * 3) * 24;
                         result.retrograde = true;
                         break;
                     case 2:
-                        result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 6) * 24;
+                        result.rotationPeriod = addNoiseToValue(D20.roll() * 6) * 24;
                         break;
                     case 3:
-                        result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 3) * 24;
+                        result.rotationPeriod = addNoiseToValue(D20.roll() * 3) * 24;
                         break;
                     case 4:
                     case 5:
@@ -1162,13 +1225,13 @@ class SystemGeneration {
                         result.tidallyLocked = true;
                         break;
                     case 7:
-                        result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 3) * 24;
+                        result.rotationPeriod = addNoiseToValue(D20.roll() * 3) * 24;
                         break;
                     case 8:
-                        result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 15) * 24;
+                        result.rotationPeriod = addNoiseToValue(D20.roll() * 15) * 24;
                         break;
                     case 9:
-                        result.rotationPeriod = LuminosityTable.addNoiseToValue(D20.roll() * 15) * 24;
+                        result.rotationPeriod = addNoiseToValue(D20.roll() * 15) * 24;
                         result.retrograde = true;
                         break;
                     case 10:
@@ -1176,18 +1239,18 @@ class SystemGeneration {
                         break
                 }
             } else {
-                result.rotationPeriod = LuminosityTable.addNoiseToValue(period);
+                result.rotationPeriod = addNoiseToValue(period);
             }
         }
 
         if (world.worldClass.id === WorldClass.O) {
-            result.hydrographicPercentage = Math.min(100, LuminosityTable.addNoiseToValue(D20.roll() + 80));
+            result.hydrographicPercentage = Math.min(100, addNoiseToValue(D20.roll() + 80));
         } else if (world.worldClass.id === WorldClass.K || world.worldClass.id === WorldClass.L) {
-            result.hydrographicPercentage = LuminosityTable.addNoiseToValue(D20.roll() / 2);
+            result.hydrographicPercentage = addNoiseToValue(D20.roll() / 2);
         } else if (world.worldClass.id === WorldClass.M) {
-            result.hydrographicPercentage = LuminosityTable.addNoiseToValue(10 + (D20.roll() / 2) + D20.roll() + D20.roll() + D20.roll());
+            result.hydrographicPercentage = addNoiseToValue(10 + (D20.roll() / 2) + D20.roll() + D20.roll() + D20.roll());
         } else if (world.worldClass.id === WorldClass.H) {
-            result.hydrographicPercentage = Math.max(0, LuminosityTable.addNoiseToValue(D20.roll() / 2 - 5));
+            result.hydrographicPercentage = Math.max(0, addNoiseToValue(D20.roll() / 2 - 5));
         }
 
         let roll = D20.roll();
@@ -1195,36 +1258,36 @@ class SystemGeneration {
         case 1:
         case 2:
         case 3:
-            result.axialTilt = Math.max(0, LuminosityTable.addNoiseToValue(D20.roll() / 2));
+            result.axialTilt = Math.max(0, addNoiseToValue(D20.roll() / 2));
             break;
         case 4:
         case 5:
         case 6:
         case 7:
-            result.axialTilt = Math.max(0, LuminosityTable.addNoiseToValue(D20.roll() / 2 + 10));
+            result.axialTilt = Math.max(0, addNoiseToValue(D20.roll() / 2 + 10));
             break;
         case 8:
         case 9:
         case 10:
         case 11:
-            result.axialTilt = Math.max(0, LuminosityTable.addNoiseToValue(D20.roll() / 2 + 20));
+            result.axialTilt = Math.max(0, addNoiseToValue(D20.roll() / 2 + 20));
             break;
         case 12:
         case 13:
         case 14:
         case 15:
-            result.axialTilt = Math.max(0, LuminosityTable.addNoiseToValue(D20.roll() / 2 + 30));
+            result.axialTilt = Math.max(0, addNoiseToValue(D20.roll() / 2 + 30));
             break;
         case 16:
         case 17:
         case 18:
         case 19:
-            result.axialTilt = Math.max(0, LuminosityTable.addNoiseToValue(D20.roll() / 2 + 40));
+            result.axialTilt = Math.max(0, addNoiseToValue(D20.roll() / 2 + 40));
             break;
 
         case 20:
             let subRoll = Math.ceil(D20.roll() / 5) * 10 + 40;
-            result.axialTilt = Math.min(90, LuminosityTable.addNoiseToValue(D20.roll() / 2 + subRoll));
+            result.axialTilt = Math.min(90, addNoiseToValue(D20.roll() / 2 + subRoll));
             break;
         }
 
@@ -1254,8 +1317,8 @@ class SystemGeneration {
         let roll = D20.roll() + D20.roll();
 
         let diameter = (roll - 2) * delta + minimumDiameter;
-        world.diameter = LuminosityTable.addNoiseToValue(diameter);
-        world.density = LuminosityTable.addNoiseToValue((D20.roll() + D20.roll()) / 2  * 0.01 + 0.1);
+        world.diameter = addNoiseToValue(diameter);
+        world.density = addNoiseToValue((D20.roll() + D20.roll()) / 2  * 0.01 + 0.1);
     }
 
     calculateStandardPlanetSize(world: World, starSystem: StarSystem) {
@@ -1279,7 +1342,7 @@ class SystemGeneration {
         let delta = (maximumDiameter - minimumDiameter) / (40 - 1);
         let roll = D20.roll() + D20.roll();
         let diameter = (roll - 2) * delta + minimumDiameter;
-        world.diameter = LuminosityTable.addNoiseToValue(diameter);
+        world.diameter = addNoiseToValue(diameter);
 
         let core = D20.roll() > 2 ? WorldCoreType.Molten : WorldCoreType.Heavy;
         if (world.worldClass.id === WorldClass.B || world.worldClass.id === WorldClass.E || world.worldClass.id === WorldClass.Y) { // also F
