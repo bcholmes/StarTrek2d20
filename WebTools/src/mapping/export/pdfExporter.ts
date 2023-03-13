@@ -441,6 +441,16 @@ export class PdfExporter {
                 borderColor: borderColor2,
                 borderWidth: 0.1
             });
+
+            if (system.companionStar.spectralClass.isDwarf) {
+                new TextBlock(system.star.designation.toLocaleUpperCase(), 8, font, PdfExporter.LCARS_BLACK)
+                    .writeOnPage(page, PdfExporter.COLUMN_ONE + 15 + r, 132.5 + r2 + 10, TextAlignment.Center);
+            } else {
+                new TextBlock(system.companionStar.designation.toLocaleUpperCase(), 8, font, PdfExporter.LCARS_BLACK)
+                    .writeOnPage(page, PdfExporter.COLUMN_ONE + 15 + r, 132.5 + r2 + 8, TextAlignment.Center);
+                new TextBlock(system.star.spectralClass.colourDescription.toLocaleUpperCase(), 8, font, PdfExporter.LCARS_BLACK)
+                    .writeOnPage(page, PdfExporter.COLUMN_ONE + 15 + r, 132.5 + r2 + 16, TextAlignment.Center);
+            }
         }
 
         let orbits = this.findAllOrbits(system);

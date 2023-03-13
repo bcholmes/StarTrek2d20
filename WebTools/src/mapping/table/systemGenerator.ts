@@ -1192,7 +1192,7 @@ class SystemGeneration {
                 this.calculateStandardPlanetSize(moonWorld, starSystem);
                 moonWorld.worldDetails = this.deriveStandardWorldDetails(moonWorld);
 
-                let orbitalRadius = (D20.roll() + D20.roll()) * 10 + D20.roll();
+                let orbitalRadius = (D20.roll() * D20.roll() / 4) + D20.roll();
                 moonWorld.satelliteOrbitalRadius = orbitalRadius * gasGiant.diameter;
                 moonWorld.period = Math.sqrt((Math.pow(moonWorld.satelliteOrbitalRadius / 400000, 3) * 793.64) / gasGiant.mass) / 365.25;
                 done = true;

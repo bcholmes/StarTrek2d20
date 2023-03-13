@@ -178,7 +178,7 @@ export class Specializations {
                 "Sorry. The winds have shifted, my friend. And you're no longer in fashion.",
                 "We leave no one behind",
                 "My contact risked everything to get us this data. I can't abandon them.",
-                "If you're blown, you walk away. Doesn't matter is the job isn't done.",
+                "If you're blown, you walk away. Doesn't matter if the job isn't done.",
                 "What do you do when an operation goes bad? Not much to do, but smile and try to stay alive.",
                 "Spies go to bars for the same reason people go to libraries: full of information if you know where to ask.",
                 "We all have things we have to leave behind.",
