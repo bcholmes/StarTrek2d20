@@ -40,13 +40,16 @@ export class Orbits {
 
         if (orbits.primaryWorldOrbit > 1) {
             let idealBode = (system.gardenZoneIdealRadius - initialOrbit) / (Math.pow(BLAGG_CONSTANT, orbits.primaryWorldOrbit - 1));
-
             if (idealBode < 0.001 || system.gardenZoneIdealRadius < 0.05) {
-                orbits.primaryWorldOrbit = 1;
-                initialOrbit = system.gardenZoneIdealRadius;
+                if (D20.roll() > 10) {
+                    // let the orbit be in an unusual place
+                } else {
+                    orbits.primaryWorldOrbit = 1;
+                    initialOrbit = system.gardenZoneIdealRadius;
 
-                let orderOfMagnitude = Math.max(0, Math.floor(Math.log(system.gardenZoneIdealRadius) / Math.log(10)));
-                bodeConstant = D20.roll() / 10 * Math.pow(10, orderOfMagnitude);
+                    let orderOfMagnitude = Math.max(0, Math.floor(Math.log(system.gardenZoneIdealRadius) / Math.log(10)));
+                    bodeConstant = D20.roll() / 10 * Math.pow(10, orderOfMagnitude);
+                }
             } else {
                 bodeConstant = idealBode;
             }

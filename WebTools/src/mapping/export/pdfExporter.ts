@@ -8,8 +8,6 @@ import { AsteroidBeltDetails, WorldClass } from "../table/world";
 
 const BULLET = '\u2022';
 
-const PIXELS_TO_POINTS_RATIO = 0.75;
-
 enum TextAlignment {
     Left,
     Center,

@@ -41,7 +41,7 @@ const recreationSkills = [ "Holodeck Simulations", "Dixie Hill Adventures",
     "The Plays of Anton Chekhov", "Pre-Raphaelite Painters", "Andorian Electronic Dance Music",
     "Gourmet Raktajino Barista", "Karaoke", "Tongo", "Galeo-Manado Wrestling",
     "Andorian Clans of the Pre-Industrial Period", "Risan Vacation Activities",
-    "Trashy Romance Novels", "Parrises squares" ];
+    "Trashy Romance Novels", "Parrises squares", "Neo-Sevrin Philosophy" ];
 
 const starfleetSkills = ["Starfleet Protocols", "Worlds of the Federation", "Starship Emergency Protocols",
     "Tricoders", "History of the Federation", "The Missions of Adm. Archer and the NX-01",

@@ -1011,19 +1011,16 @@ class SystemGeneration {
         return worldType;
     }
 
-    createBasicWorld(isPrimaryWorld: boolean, orbit: Orbit, romanNumeral: number, region: SpaceRegionModel, starSystem: StarSystem) {
-        if (region.id !== SpaceRegion.ShackletonExpanse && (isPrimaryWorld || (orbit.radius < starSystem.gardenZoneOuterRadius && orbit.radius >= starSystem.gardenZoneInnerRadius))) {
+    createBasicWorld(isPrimaryWorld: boolean, orbit: Orbit, romanNumeral: number, region: SpaceRegionModel, starSystem: StarSystem, useCoreTable: boolean = false) {
+        if (region.id !== SpaceRegion.ShackletonExpanse && (isPrimaryWorld || useCoreTable || (orbit.radius < starSystem.gardenZoneOuterRadius && orbit.radius >= starSystem.gardenZoneInnerRadius))) {
 
             let roll = D20.roll() + D20.roll();
             let type = this.generalPlanetaryType[roll];
 
-            let world = new World(type.worldClass, type.worldClass.id === WorldClass.AsteroidBelt ? undefined : romanNumeral);
+            let world = this.createBasicWorldAttributes(type.worldClass, orbit, romanNumeral, starSystem);
             if (type.notes) {
                 world.notes.push(type.notes);
             }
-            world.orbitalRadius = orbit.radius;
-            world.orbitNumber = orbit.index;
-            world.orbitalEccentricity = addNoiseToValue(this.orbitalEccentricity(), 100);
 
             if (isPrimaryWorld && world.worldClass.id !== WorldClass.D && !world.worldClass.isGasGiant) {
                 world.features.push(this.planetaryFeaturesOfInterest(D20.roll()));
@@ -1049,12 +1046,17 @@ class SystemGeneration {
 
             let worldType = this.rollWorldType(table);
 
-            let world = new World(worldType, worldType.id === WorldClass.AsteroidBelt ? undefined : romanNumeral);
-            world.orbitalRadius = orbit.radius;
-            world.orbitNumber = orbit.index;
-            world.orbitalEccentricity = this.orbitalEccentricity();
-            return world;
+            return this.createBasicWorldAttributes(worldType, orbit, romanNumeral, starSystem);
         }
+    }
+
+    createBasicWorldAttributes(worldType: WorldClassModel, orbit: Orbit, romanNumeral: number, starSystem: StarSystem) {
+        let world = new World(worldType, worldType.id === WorldClass.AsteroidBelt ? undefined : romanNumeral);
+        world.orbitalRadius = orbit.radius;
+        world.orbitNumber = orbit.index;
+        world.orbitalEccentricity = Math.abs(addNoiseToValue(this.orbitalEccentricity(), 10));
+        world.period = Math.sqrt(Math.pow(world.orbitalRadius, 3) / starSystem.star.mass);
+        return world;
     }
 
     generateSystem(region: SpaceRegionModel, starSystem: StarSystem) {
@@ -1073,113 +1075,134 @@ class SystemGeneration {
             for (let i = 0; i < worldCount; i++) {
 
                 let orbit = orbits.orbits[i];
-                let world = this.createBasicWorld(i === (primaryWorldOrbit-1), orbit, romanNumeralId, region, starSystem);
-                if (world.worldClass.id === WorldClass.AsteroidBelt) {
-                    world.numberOfSatellites = 0;
-                } else {
+                let world = null;
+                if (i === (primaryWorldOrbit-1) && orbit.radius > starSystem.gardenZoneOuterRadius) {
+                    let roll = D20.roll();
+                    let worldClass = this.worldClasses[WorldClass.J];
+                    if (roll >= 9) {
+                        worldClass = this.worldClasses[WorldClass.I];
+                    } else if (roll > 16) {
+                        worldClass = this.worldClasses[WorldClass.T];
+                    }
+                    world = this.createBasicWorldAttributes(worldClass, orbit, romanNumeralId, starSystem);
+                    this.createGasGiantDetails(world, orbit, starSystem, region, true);
                     romanNumeralId++;
-                    if (!world.worldClass.isGasGiant) {
-                        world.numberOfSatellites = this.numberOfMoonsTable[D20.roll()];
-                    }
-                }
-                world.period = Math.sqrt(Math.pow(world.orbitalRadius, 3) / starSystem.star.mass);
-
-                if (world.worldClass.id === WorldClass.AsteroidBelt) {
-                    let details = new AsteroidBeltDetails();
-
-                    let roll = Math.ceil((D20.roll() + D20.roll()) / 2);
-                    details.asteroidSize = this.asteroidSizeTable[roll];
-
-                    let maxDepth = orbits.orbits[0].radius / 2;
-                    if (i > 0) {
-                        maxDepth = (world.orbitalRadius - orbits.orbits[i-1].radius);
-                    }
-                    if (i < worldCount-1) {
-                        maxDepth = Math.min(maxDepth, (orbits.orbits[i+1].radius - world.orbitalRadius));
-                    }
-
-                    let depth = maxDepth;
-                    roll = Math.ceil((D20.roll() + D20.roll()) / 4);
-
-                    if (i < 4) {
-                        roll -= 3;
-                    } else if (i < 8) {
-                        roll -= 1;
-                    } else if (i < 12) {
-                        roll += 1;
-                    } else {
-                        roll += 2;
-                    }
-                    switch (roll) {
-                    case 1:
-                        depth = 0.01;
-                        break
-                    case 2:
-                        depth = 0.05;
-                        break
-                    case 3:
-                    case 4:
-                        depth = 0.1;
-                        break
-                    case 5:
-                    case 6:
-                        depth = 0.5;
-                        break
-                    case 7:
-                        depth = 1.0;
-                        break
-                    case 8:
-                        depth = 1.5;
-                        break
-                    case 9:
-                        depth = 2.0;
-                        break
-                    case 10:
-                        depth = 5.0;
-                        break
-                    default:
-                        depth = 10.0;
-                    }
-                    details.depth = addNoiseToValue(Math.min(maxDepth, depth));
-                    let zoneRoll = D20.roll();
-                    if (orbit.radius >= starSystem.gardenZoneInnerRadius && orbit.radius < starSystem.gardenZoneOuterRadius) {
-                        zoneRoll = Math.max(1, zoneRoll - 5);
-                    } else if (orbit.radius >= starSystem.gardenZoneOuterRadius) {
-                        zoneRoll = Math.min(20, zoneRoll + 5);
-                    }
-                    let zone = this.asteroidBeltZoneDominance(zoneRoll)
-                    let { nZone, mZone, cZone } = this.asteroidBeltZoneDepths(zone, D20.roll());
-                    details.nickelIronPercent = nZone / 100.0;
-                    details.mixedPercent = mZone / 100.0;
-                    details.carbonaceousOrIcePercent = cZone / 100.0;
-                    world.worldDetails = details;
-                } else if (world.worldClass.id === WorldClass.ArtificialPlanet) {
-                } else if (world.worldClass.isGasGiant) {
-                    let detailsRoll = D20.roll();
-                    if (world.worldClass.id === WorldClass.J) {
-                        detailsRoll += 2
-                    } else if (world.worldClass.id === WorldClass.T || world.worldClass.id === WorldClass.I) {
-                        detailsRoll += 3
-                    }
-                    this.gasGiantSatellitesTable[detailsRoll](world);
-                    this.calculateGasGiantSize(world);
-                    let details = world.worldDetails as GasGiantDetails;
-                    if (details.ecosphere) {
-                        details.ecosphereWorlds = [ this.createSatelliteWorld(world, orbit, starSystem, region) ];
-                    }
                 } else {
-                    this.calculateStandardPlanetSize(world, starSystem);
-                    world.worldDetails = this.deriveStandardWorldDetails(world);
+                    world = this.createBasicWorld(i === (primaryWorldOrbit-1), orbit, romanNumeralId, region, starSystem);
+                    if (world.worldClass.id === WorldClass.AsteroidBelt) {
+                        world.numberOfSatellites = 0;
+                    } else {
+                        romanNumeralId++;
+                        if (!world.worldClass.isGasGiant) {
+                            world.numberOfSatellites = this.numberOfMoonsTable[D20.roll()];
+                        }
+                    }
+
+                    if (world.worldClass.id === WorldClass.AsteroidBelt) {
+                        let details = new AsteroidBeltDetails();
+
+                        let roll = Math.ceil((D20.roll() + D20.roll()) / 2);
+                        details.asteroidSize = this.asteroidSizeTable[roll];
+
+                        let maxDepth = orbits.orbits[0].radius / 2;
+                        if (i > 0) {
+                            maxDepth = (world.orbitalRadius - orbits.orbits[i-1].radius);
+                        }
+                        if (i < worldCount-1) {
+                            maxDepth = Math.min(maxDepth, (orbits.orbits[i+1].radius - world.orbitalRadius));
+                        }
+
+                        let depth = maxDepth;
+                        roll = Math.ceil((D20.roll() + D20.roll()) / 4);
+
+                        if (i < 4) {
+                            roll -= 3;
+                        } else if (i < 8) {
+                            roll -= 1;
+                        } else if (i < 12) {
+                            roll += 1;
+                        } else {
+                            roll += 2;
+                        }
+                        switch (roll) {
+                        case 1:
+                            depth = 0.01;
+                            break
+                        case 2:
+                            depth = 0.05;
+                            break
+                        case 3:
+                        case 4:
+                            depth = 0.1;
+                            break
+                        case 5:
+                        case 6:
+                            depth = 0.5;
+                            break
+                        case 7:
+                            depth = 1.0;
+                            break
+                        case 8:
+                            depth = 1.5;
+                            break
+                        case 9:
+                            depth = 2.0;
+                            break
+                        case 10:
+                            depth = 5.0;
+                            break
+                        default:
+                            depth = 10.0;
+                        }
+                        details.depth = addNoiseToValue(Math.min(maxDepth, depth));
+                        let zoneRoll = D20.roll();
+                        if (orbit.radius >= starSystem.gardenZoneInnerRadius && orbit.radius < starSystem.gardenZoneOuterRadius) {
+                            zoneRoll = Math.max(1, zoneRoll - 5);
+                        } else if (orbit.radius >= starSystem.gardenZoneOuterRadius) {
+                            zoneRoll = Math.min(20, zoneRoll + 5);
+                        }
+                        let zone = this.asteroidBeltZoneDominance(zoneRoll)
+                        let { nZone, mZone, cZone } = this.asteroidBeltZoneDepths(zone, D20.roll());
+                        details.nickelIronPercent = nZone / 100.0;
+                        details.mixedPercent = mZone / 100.0;
+                        details.carbonaceousOrIcePercent = cZone / 100.0;
+                        world.worldDetails = details;
+                    } else if (world.worldClass.id === WorldClass.ArtificialPlanet) {
+                    } else if (world.worldClass.isGasGiant) {
+                        this.createGasGiantDetails(world, orbit, starSystem, region);
+                    } else {
+                        this.calculateStandardPlanetSize(world, starSystem);
+                        world.worldDetails = this.deriveStandardWorldDetails(world);
+                    }
                 }
+
+
 
                 starSystem.worlds.push(world);
             }
         }
     }
 
-    createSatelliteWorld(gasGiant: World, orbit: Orbit, starSystem: StarSystem, region: SpaceRegionModel) {
+    createGasGiantDetails(world: World, orbit: Orbit, starSystem: StarSystem, region: SpaceRegionModel, forceEcosphere: boolean = false) {
+        let detailsRoll = D20.roll();
+        if (orbit.radius < starSystem.gardenZoneInnerRadius) {
+            // don't modify the result; we don't want a ecosphere world
+        } else if (world.worldClass.id === WorldClass.J) {
+            detailsRoll += 2
+        } else if (world.worldClass.id === WorldClass.T || world.worldClass.id === WorldClass.I) {
+            detailsRoll += 3
+        }
+        this.gasGiantSatellitesTable[forceEcosphere ? 23 : detailsRoll](world);
+        this.calculateGasGiantSize(world);
+        let details = world.worldDetails as GasGiantDetails;
+        if (details.ecosphere) {
+            details.ecosphereWorlds = [ this.createSatelliteWorld(world, orbit, starSystem, region, forceEcosphere) ];
+        }
+    }
+
+    createSatelliteWorld(gasGiant: World, orbit: Orbit, starSystem: StarSystem, region: SpaceRegionModel, isPrimary: boolean) {
         let details = gasGiant.worldDetails as GasGiantDetails;
-        let moonWorld = this.createBasicWorld(true, orbit, gasGiant.orbit, region, starSystem);
+        let moonWorld = this.createBasicWorld(isPrimary, orbit, gasGiant.orbit, region, starSystem, true);
         let done = false;
         while (!done) {
             if (moonWorld.worldClass.id !== WorldClass.ArtificialPlanet && !moonWorld.worldClass.isGasGiant) {

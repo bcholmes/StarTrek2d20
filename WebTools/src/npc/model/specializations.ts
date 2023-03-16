@@ -198,7 +198,7 @@ export class Specializations {
                 ["Guaging Reactions", "Jury Selection", "Performance", "Famous Cases", "History of Federation Law", "Legal Jurisdictions",
                 "Sneaky Legal Maneuvers", "The Writings of Sam Cogley", "Evaluating Testimony", "Argument Weakness Detection", "Forensics",
                 "Investigative Methods", "The Prime Directive in Depth", "Klingon Law", "Cardassian Law", "Romulan Law", "Sheliak Law",
-                "Expert Testimony Preparation"],
+                "Expert Testimony Preparation", "Rulings of the Tribunal of Alpha III"],
                 ["Everyone deserves a fair defense",
                 "Sometimes some very good people do some very bad things.",
                 "If you wear the uniform, you agree to abide by the highest standards.",
