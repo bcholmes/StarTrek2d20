@@ -17,8 +17,10 @@ export class StatView extends React.Component<IStatViewProperties, {}> {
             : (<div className={'stat-value ' + (this.props.colourClass ? this.props.colourClass : 'purple') + (this.props.size === 'sm' ? ' stat-value-sm' : '')}>&nbsp;</div>);
 
         return (<div className={this.props.className}>
-            <div className={'stat-name ' + (this.props.colourClass ? this.props.colourClass : 'purple') + (this.props.size === 'sm' ? ' stat-name-sm' : '')}>{this.props.name}</div>
-            {value}
+            <div className="stat-pill">
+                <div className={'stat-name ' + (this.props.colourClass ? this.props.colourClass : 'purple') + (this.props.size === 'sm' ? ' stat-name-sm' : '')}>{this.props.name}</div>
+                {value}
+            </div>
         </div>);
     }
 }

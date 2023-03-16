@@ -74,6 +74,42 @@ h5 {
 	transition: all .2s ease;
 }
 /* ---- Stats Block ----- */
+.stat-pill {
+    display: flex;
+    align-items: stretch;
+
+    .stat-name {
+        padding-top: 2px;
+        padding-bottom: 2px;
+        font-family: lcars;
+        font-size: 16px;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+
+    .stat-value {
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 975px) {
+    .stat-pill {
+        .stat-name {
+            font-size: 14px;
+        }
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 768px) {
+    .stat-pill {
+        .stat-name {
+            font-size: 13px;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+    }
+}
 .stat-name {
     display: inline-block;
     padding: 4px;
@@ -727,7 +763,7 @@ table.aspect-list td:first-child {
     font-size: x-small;
 }
 
-@media screen and (min-width: 0px) and (max-width: 800px) {
+@media screen and (min-width: 0px) and (max-width: 768px) {
 
     #app {
         margin: 10px 14px 5px -20px;
