@@ -19,6 +19,7 @@ interface IHistoryProperties extends WithTranslation {
     showHistory: boolean;
     type: HistoryType;
     workflow: ShipBuildWorkflow;
+    close: () => void;
 }
 
 
@@ -26,12 +27,14 @@ class History extends React.Component<IHistoryProperties, {}> {
 
     render() {
 
-        return (
-            <div className={this.props.showHistory ? 'history history-visible' : 'history history-hidden'}>
-                {this.props.type === HistoryType.Starship
-                    ? this.renderStarshipHistory()
-                    : this.renderCharacterHistory()}
-            </div>);
+        return (<>
+                <div className="sheet-bg" style={{ display: this.props.showHistory ? 'block' : "none" }} onClick={() => this.props.close()}></div>
+                <div className={this.props.showHistory ? 'history history-visible' : 'history history-hidden'}>
+                    {this.props.type === HistoryType.Starship
+                        ? this.renderStarshipHistory()
+                        : this.renderCharacterHistory()}
+                </div>
+            </>);
     }
 
 

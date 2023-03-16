@@ -50,7 +50,8 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
                         <div className="lcar-content-action">
                             <div id="history-button" className="lcar-content-history" onClick={ () => this.toggleHistory() }>{t('Lcars.history')}</div>
                             <div id="history-container" className="history-container-hidden">
-                                <History showHistory={this.state.showHistory} type={this.isStarshipPage() ? HistoryType.Starship : HistoryType.Character} />
+                                <History showHistory={this.state.showHistory} type={this.isStarshipPage() ? HistoryType.Starship : HistoryType.Character}
+                                    close={() => this.setState((state) => ({...state, showHistory: false }))} />
                             </div>
                         </div>
                         <div className="lcar-content-action">
