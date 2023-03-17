@@ -23,7 +23,7 @@ const convertDataToTranslations = async (data) => {
             const key = row[0];
             const value = i+1 < row.length ? row[i+1] : null;
 
-            if (value) {
+            if (value && value !== "(NOT YET TRANSLATED)") {
                 let prefix = key.substring(0, key.lastIndexOf('.'));
 
                 if (j > 1) {

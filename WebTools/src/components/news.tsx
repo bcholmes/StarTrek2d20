@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Button } from './button';
 import Modal from './modal';
 
 interface INewsProperties {
@@ -11,6 +12,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230316</b>
+                <ul>
+                    <li>A couple of minor enhancements.</li>
+                    <li>Still more tweaks to the NPC Generator and the Sector Generator.</li>
+                    <li>Some additional German translations.</li>
+                </ul>
                 <b>v1.230312</b>
                 <ul>
                     <li>More tweaks to the NPC Generator and the Sector Generator.</li>
@@ -272,10 +279,8 @@ class News extends React.Component<INewsProperties, {}> {
                 <ul>
                     <li>By popular request (well... one person requested it) I've created a 2-page Klingon character sheet.</li>
                 </ul>
-                <div className="button-container-centered">
-                    <div className="button" onClick={ () => this.props.onClose() }>
-                        OK
-                    </div>
+                <div className="text-center">
+                    <Button buttonType={true} className="btn btn-primary" onClick={ () => this.props.onClose() }>OK</Button>
                 </div>
             </Modal>
         );

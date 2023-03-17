@@ -1,4 +1,5 @@
 import { D20 } from "../../common/die";
+import i18next from "i18next";
 
 const ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
 
@@ -124,16 +125,16 @@ export class AsteroidBeltDetails extends WorldDetails {
     get attributeList() {
         let result = [];
         if (this.asteroidSize != null) {
-            result.push(new WorldAttribute("Predominant Size", (this.asteroidSize >= 1000 ? ((this.asteroidSize / 1000).toFixed(0) + "km") : (this.asteroidSize.toFixed(0) + "m")) + " Diameter"));
+            result.push(new WorldAttribute(i18next.t("World.attribute.predominantSize"), (this.asteroidSize >= 1000 ? ((this.asteroidSize / 1000).toFixed(0) + "km") : (this.asteroidSize.toFixed(0) + "m")) + " Diameter"));
         }
         if (this.depth != null) {
-            result.push(new WorldAttribute("Belt Width", this.depth.toFixed(2) + " AUs"));
+            result.push(new WorldAttribute(i18next.t("World.attribute.beltWidth"), this.depth.toFixed(2) + " AUs"));
         }
 
         if (this.nickelIronPercent > 0) {
             result.push(new WorldAttribute("Inner Belt", (this.nickelIronPercent * this.depth).toFixed(2) + " AUs (nickel-iron)"));
         }
-        result.push(new WorldAttribute("Mixed Belt", (this.mixedPercent * this.depth).toFixed(2) + " AUs (Mixed)"));
+        result.push(new WorldAttribute("Mixed Belt", (this.mixedPercent * this.depth).toFixed(2) + " AUs (mixed)"));
         result.push(new WorldAttribute("Outer Belt", (this.carbonaceousOrIcePercent * this.depth).toFixed(2) + " AUs (carbonaceous and/or ice)"));
 
         return result;
@@ -238,9 +239,9 @@ export class GasGiantDetails extends WorldDetails {
 
     get attributeList() {
         let result = [];
-        result.push(new WorldAttribute("Satellites", this.satelliteDetails));
+        result.push(new WorldAttribute(i18next.t("World.attribute.satellites"), this.satelliteDetails));
         if (this.ring != null) {
-            result.push(new WorldAttribute("Ring", this.ring.name));
+            result.push(new WorldAttribute(i18next.t("World.attribute.ring"), this.ring.name));
         }
         return result;
     }
@@ -264,15 +265,15 @@ export class StandardWorldDetails extends WorldDetails {
     get attributeList() {
         let result = [];
         if (this.tidallyLocked != null) {
-            result.push(new WorldAttribute("Rotation", "Tidally Locked"));
+            result.push(new WorldAttribute(i18next.t("World.attribute.rotation"), i18next.t("World.attribute.tidallyLocked")));
         } else if (this.rotationPeriod) {
-            result.push(new WorldAttribute("Rotation", this.rotationPeriod.toFixed(2) + " hours" + (this.retrograde ? " (Retrograde)" : "")));
+            result.push(new WorldAttribute(i18next.t("World.attribute.rotation"), this.rotationPeriod.toFixed(2) + " hours" + (this.retrograde ? " (" + i18next.t("World.attribute.retrograde") + ")" : "")));
         }
         if (this.axialTilt != null) {
-            result.push(new WorldAttribute("Axial Tilt", this.axialTilt.toFixed(2) + '\u{b0}'));
+            result.push(new WorldAttribute(i18next.t("World.attribute.axialTilt"), this.axialTilt.toFixed(2) + '\u{b0}'));
         }
         if (this.hydrographicPercentage != null) {
-            result.push(new WorldAttribute("Water Coverage", this.hydrographicPercentage.toFixed(2) + '%'));
+            result.push(new WorldAttribute(i18next.t("World.attribute.waterCoverage"), this.hydrographicPercentage.toFixed(2) + '%'));
         }
         return result;
     }
@@ -351,47 +352,47 @@ export class World {
     get attributeList() {
         let result = [];
         if (this.orbitLabel != null) {
-            result.push(new WorldAttribute("Designation", this.orbitLabel));
+            result.push(new WorldAttribute(i18next.t("World.attribute.designation"), this.orbitLabel));
         }
 
         if (this.worldClass.id === WorldClass.AsteroidBelt) {
-            result.push(new WorldAttribute("Classification", "Asteroid Belt"));
+            result.push(new WorldAttribute(i18next.t("World.attribute.classification"), "Asteroid Belt"));
         } else if (this.worldClass.id === WorldClass.ArtificialPlanet) {
-            result.push(new WorldAttribute("Classification", "Artificial Planet"));
+            result.push(new WorldAttribute(i18next.t("World.attribute.classification"), "Artificial Planet"));
         } else {
-            result.push(new WorldAttribute("Classification", "Class " + WorldClass[this.worldClass.id] + " (" + this.worldClass.description + ")"));
+            result.push(new WorldAttribute(i18next.t("World.attribute.classification"), "Class " + WorldClass[this.worldClass.id] + " (" + this.worldClass.description + ")"));
         }
 
         if (this.notes?.length) {
-            result.push(new WorldAttribute("Notes", this.notes.join(', ')));
+            result.push(new WorldAttribute(i18next.t("World.attribute.notes"), this.notes.join(', ')));
         }
 
         if (this.isSatellite) {
-            result.push(new WorldAttribute("Orbital Radius", Math.round(this.satelliteOrbitalRadius).toLocaleString("en-US") + " km"));
+            result.push(new WorldAttribute(i18next.t("World.attribute.orbitalRadius"), Math.round(this.satelliteOrbitalRadius).toLocaleString("en-US") + " km"));
             if (this.period != null) {
-                result.push(new WorldAttribute("Orbital Period", this.period.toFixed(3) + " Earth Years"));
+                result.push(new WorldAttribute(i18next.t("World.attribute.orbitalPeriod"), this.period.toFixed(3) + " Earth Years"));
             }
         } else {
-            result.push(new WorldAttribute("Orbital Radius", this.orbitalRadius.toFixed(2) + " AUs"));
+            result.push(new WorldAttribute(i18next.t("World.attribute.orbitalRadius"), this.orbitalRadius.toFixed(2) + " AUs"));
             if (this.period != null) {
-                result.push(new WorldAttribute("Orbital Period", this.period.toFixed(3) + " Earth Years"));
+                result.push(new WorldAttribute(i18next.t("World.attribute.orbitalPeriod"), this.period.toFixed(3) + " Earth Years"));
             }
         }
         if (this.orbitalEccentricity != null) {
-            result.push(new WorldAttribute("Eccentricity", this.orbitalEccentricity.toFixed(3)));
+            result.push(new WorldAttribute(i18next.t("World.attribute.eccentricity"), this.orbitalEccentricity.toFixed(3)));
         }
 
         if (this.diameter != null) {
-            result.push(new WorldAttribute("Diameter", Math.round(this.diameter).toLocaleString("en-US") + " km"));
+            result.push(new WorldAttribute(i18next.t("World.attribute.diameter"), Math.round(this.diameter).toLocaleString("en-US") + " km"));
         }
         if (this.density != null) {
-            result.push(new WorldAttribute("Density", this.density.toFixed(2) + " Earth"));
+            result.push(new WorldAttribute(i18next.t("World.attribute.density"), this.density.toFixed(2) + " Earth"));
         }
         if (this.mass != null) {
-            result.push(new WorldAttribute("Mass", this.mass.toFixed(2) + " Earth"));
+            result.push(new WorldAttribute(i18next.t("World.attribute.mass"), (this.mass > 1000 ? Math.round(this.mass).toLocaleString("en-US") : this.mass.toFixed(2)) + " Earth"));
         }
         if (this.gravity != null) {
-            result.push(new WorldAttribute("Gravity", this.gravity.toFixed(2) + " G"));
+            result.push(new WorldAttribute(i18next.t("World.attribute.gravity"), this.gravity.toFixed(2) + " G"));
         }
 
         if (this.worldDetails != null) {
@@ -399,14 +400,14 @@ export class World {
         }
 
         if (this.numberOfSatellites != null && this.worldClass.id !== WorldClass.AsteroidBelt) {
-            result.push(new WorldAttribute("Satellites", this.numberOfSatellites.toFixed(0)));
+            result.push(new WorldAttribute(i18next.t("World.attribute.satellites"), this.numberOfSatellites.toFixed(0)));
         }
         if (this.coreType != null) {
-            result.push(new WorldAttribute("Core", WorldCoreType[this.coreType]));
+            result.push(new WorldAttribute(i18next.t("World.attribute.core"), WorldCoreType[this.coreType]));
         }
 
         if (this.features?.length) {
-            result.push(new WorldAttribute("Features", this.features.join(", ")));
+            result.push(new WorldAttribute(i18next.t("World.attribute.features"), this.features.join(", ")));
         }
         return result;
     }

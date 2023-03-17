@@ -301,5 +301,27 @@
 
     "MilestoneType.name.normalMilestone": "Normal Milestone",
     "MilestoneType.name.spotlightMilestone": "Spotlight Milestone",
-    "MilestoneType.name.arcMilestone": "Arc Milestone"
+    "MilestoneType.name.arcMilestone": "Arc Milestone",
+
+    "World.attribute.designation": "Designation",
+    "World.attribute.classification": "Classification",
+    "World.attribute.notes": "Notes",
+    "World.attribute.orbitalRadius": "Orbital Radius",
+    "World.attribute.orbitalPeriod": "Orbital Period",
+    "World.attribute.eccentricity": "Eccentricity",
+    "World.attribute.diameter": "Diameter",
+    "World.attribute.density": "Density",
+    "World.attribute.mass": "Mass",
+    "World.attribute.gravity": "Gravity",
+    "World.attribute.satellites": "Satellites",
+    "World.attribute.core": "Core",
+    "World.attribute.features": "Features",
+    "World.attribute.rotation": "Rotation",
+    "World.attribute.tidallyLocked": "Tidally Locked",
+    "World.attribute.retrograde": "Retrograde",
+    "World.attribute.axialTilt": "Axial Tilt",
+    "World.attribute.waterCoverage": "Water Coverage",
+    "World.attribute.ring": "Ring",
+    "World.attribute.beltWidth": "Belt Width",
+    "World.attribute.predominantSize": "Predominant Size"
 }
