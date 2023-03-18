@@ -65,8 +65,8 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
                             </p>
 
                             <p className="mx-4"><b>French:</b> <a href="https://forums.modiphius.com/u/betatester/summary" target="_blank" rel="noreferrer">betatester</a></p>
-                            <p className="mx-4"><b>German:</b> <a href="https://forums.modiphius.com/u/misterx/summary" target="_blank" rel="noreferrer">MisterX</a></p>
-
+                            <p className="mx-4"><b>German:</b> <a href="https://forums.modiphius.com/u/misterx/summary" target="_blank" rel="noreferrer">MisterX</a>, {' '}
+                                <a href="http://www.daniel-joedemann.de/" target="_blank" rel="noreferrer">Daniel Jödemann</a></p>
                             <p>
                                 If you can help, let me know, and I'd welcome any input you can provide.
                             </p>

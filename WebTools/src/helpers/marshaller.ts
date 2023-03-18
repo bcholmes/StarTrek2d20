@@ -4,6 +4,7 @@ import { character, Character, CharacterAttribute, CharacterSkill, CharacterTale
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { ShipBuildType, ShipBuildTypeModel, SimpleStats, Starship } from '../common/starship';
+import AgeHelper from './age';
 import { Attribute } from './attributes';
 import { Career } from './careerEnum';
 import { CareersHelper } from './careers';
@@ -509,6 +510,9 @@ class Marshaller {
         }
         if (json.house) {
             result.house = json.house;
+        }
+        if (json.age) {
+            result.age = AgeHelper.getAge(json.age);
         }
         if (json.species != null) {
             if (typeof json.species === 'string') { // backward compatibility

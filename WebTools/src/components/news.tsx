@@ -12,6 +12,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230318</b>
+                <ul>
+                    <li>Minor bug fixes.</li>
+                </ul>
                 <b>v1.230316</b>
                 <ul>
                     <li>A couple of minor enhancements.</li>
@@ -274,10 +278,6 @@ class News extends React.Component<INewsProperties, {}> {
                 <ul>
                     <li>A few minor fixes and improvements, including adding a resistance field to the Klingon starship sheet</li>
                     <li>A number of changes to the Starship generation process, mostly as pre-work for supporting <cite>Utopia Planitia</cite>.</li>
-                </ul>
-                <b>v1.220917</b>
-                <ul>
-                    <li>By popular request (well... one person requested it) I've created a 2-page Klingon character sheet.</li>
                 </ul>
                 <div className="text-center">
                     <Button buttonType={true} className="btn btn-primary" onClick={ () => this.props.onClose() }>OK</Button>

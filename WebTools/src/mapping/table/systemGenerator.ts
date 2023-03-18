@@ -1219,6 +1219,8 @@ class SystemGeneration {
                 moonWorld.satelliteOrbitalRadius = orbitalRadius * gasGiant.diameter;
                 moonWorld.period = Math.sqrt((Math.pow(moonWorld.satelliteOrbitalRadius / 400000, 3) * 793.64) / gasGiant.mass) / 365.25;
                 done = true;
+            } else {
+                moonWorld = this.createBasicWorld(isPrimary, orbit, gasGiant.orbit, region, starSystem, true);
             }
         }
         return moonWorld;

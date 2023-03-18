@@ -290,15 +290,34 @@ export class Character extends Construct {
             result.push(Weapon.createCharacterWeapon("Bat'leth", 3, "Vicious 1", WeaponType.MELEE));
         }
 
-        if (this.type === CharacterType.Starfleet || this.type === CharacterType.Cadet) {
+        if (this.type === CharacterType.Starfleet || this.type === CharacterType.Cadet ||
+            this.isBajoranMilitia() || this.isCardassianUnion()) {
             result.push(Weapon.createCharacterWeapon("Phaser type-2", 3, "Charges", WeaponType.ENERGY));
         } else if (this.age.isAdult()) {
             if (this.isKlingon()) {
                 result.push(Weapon.createCharacterWeapon("d’k tahg dagger", 1, "Vicious 1, Deadly, Hidden 1", WeaponType.MELEE));
             }
-            result.push(Weapon.createCharacterWeapon("Disruptor Pistol", 3, "Vicious 1", WeaponType.ENERGY));
+            if (this.type !== CharacterType.Child && this.type !== CharacterType.Civilian) {
+                result.push(Weapon.createCharacterWeapon("Disruptor Pistol", 3, "Vicious 1", WeaponType.ENERGY));
+            }
         }
         return result;
+    }
+
+    isBajoranMilitia() {
+        if (this.type === CharacterType.AlliedMilitary && this.typeDetails != null && this.typeDetails instanceof AlliedMilitaryDetails) {
+            return (this.typeDetails as AlliedMilitaryDetails).alliedMilitary?.type === AlliedMilitaryType.BajoranMilitia;
+        } else {
+            return false;
+        }
+    }
+
+    isCardassianUnion() {
+        if (this.type === CharacterType.AlliedMilitary && this.typeDetails != null && this.typeDetails instanceof AlliedMilitaryDetails) {
+            return (this.typeDetails as AlliedMilitaryDetails).alliedMilitary?.type === AlliedMilitaryType.CardassianUnion;
+        } else {
+            return false;
+        }
     }
 
     get resistance() {

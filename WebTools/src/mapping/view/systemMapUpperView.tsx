@@ -208,11 +208,28 @@ class SystemMapUpperView extends SystemMapView {
         return dashNumbers.join(',');
     }
 
+    calculateArcY(x: number, radiusX: number, radiusY: number) {
+        let ySquared = radiusY * radiusY * (1 - (x * x / (radiusX * radiusX)));
+        return Math.sqrt(ySquared);
+    }
+
+    calculateArcX(y: number, radiusX: number, radiusY: number) {
+        let xSquared = radiusX * radiusX * (1 - (y * y / (radiusY * radiusY)));
+        return Math.sqrt(xSquared);
+    }
+
     createArcPath(radiusX: number, radiusY: number ) {
-        return 'M ' + (35 - radiusX).toFixed(2) + " 35"
-                    + ' A ' + radiusX.toFixed(2) + "," + radiusY.toFixed(2) + " 0 0 0 35," + (radiusY + 35).toFixed(2)
-                    + ' A ' + radiusX.toFixed(2) + "," + radiusY.toFixed(2) + " 0 0 0 " + (radiusX + 35).toFixed(2) + ', 35'
-                    + ' A ' + radiusX.toFixed(2) + "," + radiusY.toFixed(2) + " 0 0 0 35," + (35 - radiusY).toFixed(2);
+        let y = Math.abs(this.calculateArcY(7 - 35, radiusX, radiusY));
+        let y2 = 9;
+        let x2 = Math.abs(this.calculateArcX(y2 - 35, radiusX, radiusY)) + 35;
+
+        if (x2 > 1006) {
+            x2 = 1006;
+            y2 = Math.abs(this.calculateArcY(x2 - 35, radiusX, radiusY)) + 35;
+        }
+
+        return 'M ' + (7).toFixed(2) + " " + (y + 35).toFixed(2)
+                    + ' A ' + radiusX.toFixed(2) + "," + radiusY.toFixed(2) + " 0 0 0 " + (x2).toFixed(2) + ', ' + (y2).toFixed(2);
     }
 
     calculateArcRadiusY(x, y) {

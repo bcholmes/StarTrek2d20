@@ -9,11 +9,15 @@
 }
 
 .attribute-container {
+    font-family: lcars;
+    text-transform: uppercase;
+    font-size: 18px;
     display: inline-block;
     width: 100px;
+    height: 35px;
     background-color: #906F9A;
     color: white;
-    padding: 5px;
+    padding: 2px 3px 3px 3px;
     margin: 2px;
     text-align: right;
     border: 2px solid #906F9A;
@@ -27,8 +31,9 @@
     display: inline-block;
     background-color: black;
     color: white;
-    padding: 5px;
+    padding: 6px 5px;
     width: 100px;
+    height: 35px;
     text-align: center;
     margin: 2px;
     border: 2px solid #906F9A;
