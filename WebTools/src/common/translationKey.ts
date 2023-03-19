@@ -1,7 +1,7 @@
-export const makeKey = (prefix: string, key: string) => {
-    let suffix = key.substring(0, 1).toLowerCase() + key.substring(1);
+export const makeKey = (prefix: string, key: string, suffix: string = "") => {
+    let middle = key.substring(0, 1).toLowerCase() + key.substring(1);
     if (key.toLocaleUpperCase() === key) {
-        suffix = key.toLocaleLowerCase();
+        middle = key.toLocaleLowerCase();
     }
-    return prefix + suffix;
+    return prefix + middle + suffix;
 }

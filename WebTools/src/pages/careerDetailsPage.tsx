@@ -1,9 +1,8 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
-import {CareersHelper} from '../helpers/careers';
+import {CareerModel, CareersHelper} from '../helpers/careers';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {TalentDescription} from '../components/talentDescription';
@@ -11,11 +10,13 @@ import ValueInput, {Value} from '../components/valueInput';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
+import { withTranslation, WithTranslation } from 'react-i18next';
+import { Header } from '../components/header';
 
-export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
+class CareerDetailsPage extends React.Component<WithTranslation, {}> {
     private _talent: TalentViewModel;
 
-    constructor(props: IPageProperties) {
+    constructor(props) {
         super(props);
 
         const career = CareersHelper.instance.getCareer(character.career);
@@ -25,31 +26,54 @@ export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
     }
 
     render() {
+        const { t } = this.props;
         const career = CareersHelper.instance.getCareer(character.career);
-
-        const talent = career.talent.length === 1
-            ? (<TalentDescription name={career.talent[0].name} description={career.talent[0].description}/>)
-            : (<SingleTalentSelectionList talents={this.filterTalentList()}
-                    construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>);
 
         return (
             <div className="page container ml-0">
                 <CharacterCreationBreadcrumbs />
-                <div className="header-text"><div>{career.name}</div></div>
-                <div className="panel">
-                    <div className="desc-text">{career.description}</div>
+
+                <Header>{career.localizedName}</Header>
+                <p>{career.localizedDescription}</p>
+
+                {this.renderMainBody(career)}
+
+                <div className="text-right">
+                    <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary" onClick={() => this.onNext() }/>
                 </div>
-                <div className="panel">
-                    <div className="header-small">VALUE</div>
-                    <ValueInput value={Value.Career}/>
-                </div>
-                <div className="panel">
-                    <div className="header-small">TALENT</div>
-                    {talent}
-                </div>
-                <Button text="CAREER EVENT" className="button-next" onClick={() => this.onNext() }/>
             </div>
         );
+    }
+
+    renderMainBody(career: CareerModel) {
+        const { t } = this.props;
+
+        if (career.talent.length === 1) {
+            return (<div className="row">
+                <div className="col-md-6 my-3">
+                    <Header level={2}>{t('Construct.other.value')}</Header>
+                    <ValueInput value={Value.Career}/>
+                </div>
+
+                <div className="col-md-6 my-3">
+                    <Header level={2}>{t('Construct.other.talent')}</Header>
+                    <TalentDescription name={career.talent[0].name} description={career.talent[0].description}/>
+                </div>
+            </div>);
+        } else {
+            return (<>
+            <div className="my-3">
+                <Header level={2}>{t('Construct.other.value')}</Header>
+                <ValueInput value={Value.Career}/>
+                </div>
+
+                <div className="my-3">
+                <Header level={2}>{t('Construct.other.talent')}</Header>
+                <SingleTalentSelectionList talents={this.filterTalentList()}
+                    construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
+                </div>
+            </>);
+        }
     }
 
     filterTalentList() {
@@ -72,3 +96,5 @@ export class CareerDetailsPage extends React.Component<IPageProperties, {}> {
         }
     }
 }
+
+export default withTranslation()(CareerDetailsPage);

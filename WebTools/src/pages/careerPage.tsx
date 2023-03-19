@@ -1,21 +1,21 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {CareersHelper} from '../helpers/careers';
 import {Button} from '../components/button';
-import {CareerSelection} from '../components/careerSelection';
+import CareerSelection from '../components/careerSelection';
 import InstructionText from '../components/instructionText';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { Career } from '../helpers/careerEnum';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 interface ICareerPageState {
     showSelection: boolean;
 }
 
-export class CareerPage extends React.Component<IPageProperties, ICareerPageState> {
-    constructor(props: IPageProperties) {
+class CareerPage extends React.Component<WithTranslation, ICareerPageState> {
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -24,13 +24,14 @@ export class CareerPage extends React.Component<IPageProperties, ICareerPageStat
     }
 
     render() {
+        const { t } = this.props;
         var content = !this.state.showSelection ?
             (
                 <div>
                     <InstructionText text={character.workflow.currentStep().description} />
                     <div className="button-container">
-                        <Button className="button" text="Select Career" onClick={() => this.showCareer() } />
-                        <Button className="button" text="Roll Career" onClick={() => this.rollCareer() } />
+                        <Button className="button" text={t('CareerSelectionPage.selectCareer')} onClick={() => this.showCareer() } />
+                        <Button className="button" text={t('CareerSelectionPage.rollCareer')} onClick={() => this.rollCareer() } />
                     </div>
                 </div>
             )
@@ -69,3 +70,5 @@ export class CareerPage extends React.Component<IPageProperties, ICareerPageStat
         Navigation.navigateToPage(PageIdentity.CareerDetails);
     }
 }
+
+export default withTranslation()(CareerPage);

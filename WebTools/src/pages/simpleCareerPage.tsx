@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {IPageProperties} from './iPageProperties';
 import {Button} from '../components/button';
 import {TalentDescription} from '../components/talentDescription';
 import ValueInput, {Value} from '../components/valueInput';
@@ -9,12 +8,13 @@ import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import InstructionText from '../components/instructionText';
 import { Header } from '../components/header';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-interface ISimpleCareerPageProperties extends IPageProperties {
+interface ISimpleCareerPageProperties extends WithTranslation {
     talent: string;
 }
 
-export class SimpleCareerPage extends React.Component<ISimpleCareerPageProperties, {}> {
+class SimpleCareerPage extends React.Component<ISimpleCareerPageProperties, {}> {
 
     talent: TalentViewModel;
 
@@ -25,22 +25,25 @@ export class SimpleCareerPage extends React.Component<ISimpleCareerPagePropertie
     }
 
     render() {
+        const { t } = this.props;
         return (
             <div className="page">
                 <CharacterCreationBreadcrumbs />
-                <Header>Career</Header>
-                <div className="panel">
-                    <InstructionText text={character.workflow.currentStep().description} />
+                <Header>{t('Page.title.career')}</Header>
+                <InstructionText text={character.workflow.currentStep().description} />
+                <div className="row">
+                    <div className="col-12 col-md-6">
+                        <Header level={2}>{t('Construct.other.value')}</Header>
+                        <ValueInput value={Value.Career}/>
+                    </div>
+                    <div className="col-12 col-md-6">
+                        <Header level={2}>{t('Construct.other.talent')}</Header>
+                        <TalentDescription name={this.talent.name} description={this.talent.description} />
+                    </div>
                 </div>
-                <div className="panel">
-                    <div className="header-small">VALUE</div>
-                    <ValueInput value={Value.Career}/>
+                <div className="text-right">
+                    <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary" onClick={() => this.onNext() }/>
                 </div>
-                <div className="panel">
-                    <div className="header-small">TALENT</div>
-                    <TalentDescription name={this.talent.name} description={this.talent.description} />
-                </div>
-                <Button text={character.workflow.peekNextStep().name} className="button-next" onClick={() => this.onNext() }/>
             </div>
         );
     }
@@ -52,3 +55,5 @@ export class SimpleCareerPage extends React.Component<ISimpleCareerPagePropertie
         Navigation.navigateToPage(character.workflow.currentStep().page);
     }
 }
+
+export default withTranslation()(SimpleCareerPage);

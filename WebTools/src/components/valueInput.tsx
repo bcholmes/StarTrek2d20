@@ -42,7 +42,7 @@ class ValueInput extends React.Component<IValueInputProperties, {}> {
                 if (character.age.isChild() || character.type === CharacterType.Cadet) {
                     description = "The character receives a value, which must reflect their inexperience and naïveté in some way.";
                 } else {
-                    description = CareersHelper.instance.getCareer(character.career).valueDescription;
+                    description = CareersHelper.instance.getCareer(character.career).localizedValueDescription;
                 }
                 break;
             case Value.Finish:

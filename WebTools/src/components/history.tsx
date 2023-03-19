@@ -74,6 +74,7 @@ class History extends React.Component<IHistoryProperties, {}> {
         history.classList.remove("history-visible");
         history.classList.add("history-hidden");
 
+        this.props.close();
         store.dispatch(rewindToStarshipWorkflowStep(stepNumber));
         Navigation.navigateToPage(step.page);
     }
@@ -84,6 +85,7 @@ class History extends React.Component<IHistoryProperties, {}> {
         history.classList.remove("history-visible");
         history.classList.add("history-hidden");
 
+        this.props.close();
         character.goToStep(page);
         Navigation.navigateToHistoryPage(page);
     }

@@ -1069,7 +1069,7 @@ class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
         }
 
         if (character.career != null) {
-            this.fillField(form, 'Career', CareersHelper.instance.getCareer(character.career).name);
+            this.fillField(form, 'Career', CareersHelper.instance.getCareer(character.career).localizedName);
         }
 
         this.fillField(form, 'House', (construct as Character).house);

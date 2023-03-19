@@ -72,12 +72,13 @@ class _AgeHelper {
     }
 
     getAge(name: string) {
+        let result = null;
         this.ages.forEach(a => {
             if (a.name === name) {
-                return a;
+                result = a;
             }
         });
-        return null;
+        return result;
     }
 }
 

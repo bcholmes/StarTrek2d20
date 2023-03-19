@@ -34,7 +34,7 @@ export class BaseSimpleStarshipPage extends React.Component<ISimpleStarshipPageP
                 <div className="col mb-3">
                     <Header level={2}>{t('Construct.other.scale')}</Header>
 
-                    <p className="page-text">{t('StarshipPage.whatScale')}</p>
+                    <p>{t('StarshipPage.whatScale')}</p>
 
                     <div className="stats-row pt-2">
                         <StatControl statName={t('Construct.other.scale')} value={this.props.starship.scale}
@@ -46,7 +46,7 @@ export class BaseSimpleStarshipPage extends React.Component<ISimpleStarshipPageP
                 <div className="col mb-3">
                     <Header level={2}>{t('StarshipPage.class')}</Header>
 
-                    <p className="page-text mw-100">{t('StarshipPage.whatClass')}</p>
+                    <p>{t('StarshipPage.whatClass')}</p>
 
                     <div className="d-sm-flex align-items-stretch">
                         <label htmlFor="shipClassName" className="textinput-label">{t('StarshipPage.class')}</label>

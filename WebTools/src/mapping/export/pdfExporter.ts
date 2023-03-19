@@ -102,7 +102,7 @@ class AttributeDataValue {
 
     writeOnPage(page: PDFPage, column: number, currentLine: number) {
         this.label.writeOnPage(page, column, currentLine);
-        this.value.writeOnPage(page, column + 65, currentLine);
+        this.value.writeOnPage(page, column + 68, currentLine);
     }
 }
 
@@ -341,8 +341,8 @@ export class PdfExporter {
                     let attributes = worlds[j].attributeList;
                     if (attributes.length) {
                         let block = new AttributeTwoColumnBlock(attributes.map(a => new AttributeDataValue(
-                            new TextBlock(a.name.toLocaleUpperCase() + ":", 12.0, font, PdfExporter.LCARS_PURPLE),
-                            new TextBlock(a.value, 10.0, light, PdfExporter.LCARS_BLACK, 134))));
+                            new TextBlock(a.name.toLocaleUpperCase() + ":", 12.0, font, PdfExporter.LCARS_PURPLE, 68),
+                            new TextBlock(a.value, 10.0, light, PdfExporter.LCARS_BLACK, 131))));
 
 
                         if ((currentLine + block.height) > (page.getHeight() - 36 - lineHeight)) {

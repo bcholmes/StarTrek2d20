@@ -5,26 +5,29 @@ import { Career } from '../helpers/careerEnum';
 import {CareersHelper} from '../helpers/careers';
 import { ADVANCED_TEAM_DYNAMICS } from '../helpers/talents';
 import {Button} from './button';
+import { Header } from './header';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-interface ICareerSelectionProperties {
+interface ICareerSelectionProperties extends WithTranslation {
     onSelection: (career: Career) => void;
     onCancel: () => void;
 }
 
-export class CareerSelection extends React.Component<ICareerSelectionProperties, {}> {
+class CareerSelection extends React.Component<ICareerSelectionProperties, {}> {
     render() {
+        const { t } = this.props;
 
-        let message = (character.hasTalent(ADVANCED_TEAM_DYNAMICS)) ? (<div className="page-text">Your character has a Talent ("{ADVANCED_TEAM_DYNAMICS}") that precludes Young characters</div>) : undefined;
+        let message = (character.hasTalent(ADVANCED_TEAM_DYNAMICS)) ? (<div className="page-text">{t('CareerSelectionPage.exclusionText')}</div>) : undefined;
 
         var careers = CareersHelper.instance.getCareers().map((c, i) => {
             const talent = c.talent.length === 1
                 ? c.talent[0].name
-                : "One talent of choice";
+                : t('CareerSelectionPage.selectOneTalent');
 
             return (
                 <tr key={i}
                     onClick={() => { if (Window.isCompact()) this.props.onSelection(c.id); } }>
-                    <td className="selection-header">{c.name}</td>
+                    <td className="selection-header">{c.localizedName}</td>
                     <td>{talent}</td>
                     <td><Button className="button-small" text="Select" onClick={() => { this.props.onSelection(c.id) } } /></td>
                 </tr>
@@ -33,13 +36,13 @@ export class CareerSelection extends React.Component<ICareerSelectionProperties,
 
         return (
             <div>
-                <div className="header-text"><div>SELECT CAREER</div></div>
+                <Header>{t('CareerSelectionPage.title')}</Header>
                 {message}
                 <table className="selection-list">
                     <thead>
                         <tr>
                             <td></td>
-                            <td><b>Talent</b></td>
+                            <td><b>{t('Construct.other.talent')}</b></td>
                             <td></td>
                         </tr>
                     </thead>
@@ -47,8 +50,10 @@ export class CareerSelection extends React.Component<ICareerSelectionProperties,
                         {careers}
                     </tbody>
                 </table>
-                <Button text="Cancel" className="button button-cancel" onClick={() => this.props.onCancel() }/>
+                <Button text={t('Common.button.cancel')} className="button button-cancel" onClick={() => this.props.onCancel() }/>
             </div>
         );
     }
 }
+
+export default withTranslation()(CareerSelection);

@@ -44,9 +44,9 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
             (
                 <div>
                     <InstructionText text={character.workflow.currentStep().description} />
-                    <div className="page-text">
+                    <p>
                         Either select or roll your Environment.
-                    </div>
+                    </p>
                     {showAlt}
                     <div className="row row-cols-md-2">
                         <div className="pl-2 pr-2">

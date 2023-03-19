@@ -34,6 +34,12 @@
     "AddCharacterView.errorCharacterType": "Whoops! We only support characters, at the moment. Not starships.",
     "AddCharacterView.characterPrefix": "Character:",
 
+    "CareerSelectionPage.title": "Select Career",
+    "CareerSelectionPage.selectCareer": "Select Career",
+    "CareerSelectionPage.rollCareer": "Roll Career",
+    "CareerSelectionPage.exclusionText": "Your character has a Talent (\"Advanced Team Dynamics\") that precludes Young characters",
+    "CareerSelectionPage.selectOneTalent": "One talent of choice",
+
     "CharacterSheetDialog.title": "Choose Template",
     "CharacterSheetDialog.thumbnail": "Thumbnail",
 
@@ -155,6 +161,7 @@
     "Construct.other.species": "Species",
     "Construct.other.stress": "Stress",
     "Construct.other.systems": "Systems",
+    "Construct.other.talent": "Talent",
     "Construct.other.talents": "Talents",
     "Construct.other.training": "Training",
     "Construct.other.trait": "Trait",
@@ -195,6 +202,7 @@
     "Page.title.home": "Home",
     "Page.title.era": "Era",
     "Page.title.talentsOverview": "Talents Overview",
+    "Page.title.career": "Career",
     "Page.title.creditsPage": "Credits",
     "Page.title.finish": "Finishing Touches",
     "Page.title.customSpeciesDetails": "Custom Species Details",
@@ -273,6 +281,42 @@
     "CharacterType.name.cadet": "Cadet",
     "CharacterType.name.child": "Child",
     "CharacterType.name.other": "Other",
+
+    "CareerType.core.young.name": "Young Officer",
+    "CareerType.core.young.description": "The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.",
+    "CareerType.core.young.valueInstruction": "The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.",
+
+    "CareerType.core.experienced.name": "Experienced Officer",
+    "CareerType.core.experienced.description": "The character has several years of experience in service of Starfleet, and is enjoying a promising career.",
+    "CareerType.core.experienced.valueInstruction": "The character receives a Value, and this can be chosen freely.",
+
+    "CareerType.core.veteran.name": "Veteran Officer",
+    "CareerType.core.veteran.description": "The character has decades of experience in the service of Starfleet, and has served on many ships, and starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.",
+    "CareerType.core.veteran.valueInstruction": "The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",
+
+    "CareerType.civilian.young.name": "Young Officer",
+    "CareerType.civilian.young.description": "The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.",
+    "CareerType.civilian.young.valueInstruction": "The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.",
+
+    "CareerType.civilian.experienced.name": "Experienced Officer",
+    "CareerType.civilian.experienced.description": "The character has several years of experience in service, and is enjoying a promising career.",
+    "CareerType.civilian.experienced.valueInstruction": "The character receives a Value, and this can be chosen freely.",
+
+    "CareerType.civilian.veteran.name": "Veteran Officer",
+    "CareerType.civilian.veteran.description": "The character has decades of experience in the service, and has served on many ships, worlds, and/or starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.",
+    "CareerType.civilian.veteran.valueInstruction": "The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",
+
+    "CareerType.klingon.young.name": "Young Warrior",
+    "CareerType.klingon.young.description": "The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.",
+    "CareerType.klingon.young.valueInstruction": "The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.",
+
+    "CareerType.klingon.experienced.name": "Experienced Warrior",
+    "CareerType.klingon.experienced.description": "The character has several years of experience in service of the Empire and is enjoying a promising career. This is the default assumption for characters created using these rules.",
+    "CareerType.klingon.experienced.valueInstruction": "The character receives a Value, and this can be chosen freely.",
+
+    "CareerType.klingon.veteran.name": "Veteran Warrior",
+    "CareerType.klingon.veteran.description": "The character has decades of experience in the service of the Empire, and has served on many ships and space stations. The character’s judgement and opinions are highly regarded by subordinates, peers, and even superiors.",
+    "CareerType.klingon.veteran.valueInstruction": "The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",
 
     "GovernmentType.name.andorian": "Andorian",
     "GovernmentType.name.bajoran": "Bajoran",

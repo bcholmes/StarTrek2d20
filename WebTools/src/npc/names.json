@@ -715,6 +715,14 @@
                 ]
             },
             {
+                "name": "Aata",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Aathreya",
                 "gender": "Male",
                 "type": "FirstName",
@@ -2617,6 +2625,17 @@
             },
             {
                 "name": "Adelina",
+                "variants": [
+                    "Lina"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Adelina",
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
@@ -4067,6 +4086,14 @@
                 ]
             },
             {
+                "name": "Ahere",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Ahernisha",
                 "gender": "Male",
                 "type": "FirstName",
@@ -4083,6 +4110,14 @@
                 ]
             },
             {
+                "name": "Ahika",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Ahmad",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -4096,6 +4131,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Japanese"
+                ]
+            },
+            {
+                "name": "Ahorangi",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -4136,6 +4179,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Ahurewa",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -4257,6 +4308,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Irish"
+                ]
+            },
+            {
+                "name": "Aihe",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -4511,6 +4570,22 @@
                 ]
             },
             {
+                "name": "Aio",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Airini",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Airlie",
                 "gender": "Female",
                 "type": "FirstName",
@@ -4679,6 +4754,22 @@
                 ]
             },
             {
+                "name": "Aka",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Akahata",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Akalmasa",
                 "gender": "Male",
                 "type": "FirstName",
@@ -4767,6 +4858,14 @@
                 ]
             },
             {
+                "name": "Akenehi",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Akhil",
                 "gender": "Male",
                 "type": "FirstName",
@@ -4852,6 +4951,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Akona",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -5354,12 +5461,54 @@
                 ]
             },
             {
+                "name": "Aleksandr",
+                "variants": [
+                    "Alexander",
+                    "Sasha",
+                    "Sanya"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Aleksandra",
+                "variants": [
+                    "Alexandra",
+                    "Sasha",
+                    "Sanya"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Aleksandra",
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
                     "German",
                     "Polish"
+                ]
+            },
+            {
+                "name": "Alekseev",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Alekseeva",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -5446,6 +5595,17 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Alexey",
+                "variants": [
+                    "Lyosha"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -7021,6 +7181,14 @@
                 ]
             },
             {
+                "name": "Amahau",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Amalasand",
                 "gender": "Female",
                 "type": "FirstName",
@@ -7325,6 +7493,14 @@
                 ]
             },
             {
+                "name": "Ametihita",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Ami",
                 "gender": "Male",
                 "type": "FirstName",
@@ -7394,6 +7570,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Afghan"
+                ]
+            },
+            {
+                "name": "Amiria",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -7476,7 +7660,8 @@
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
-                    "Spanish"
+                    "Spanish",
+                    "Māori"
                 ]
             },
             {
@@ -7496,11 +7681,27 @@
                 ]
             },
             {
+                "name": "Anahera",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Anahi",
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Anahira",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -7569,6 +7770,17 @@
                 ]
             },
             {
+                "name": "Anastasia",
+                "variants": [
+                    "Nastya"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Anastasie",
                 "gender": "Female",
                 "type": "FirstName",
@@ -7607,6 +7819,17 @@
                 "type": "FirstName",
                 "tags": [
                     "Italian"
+                ]
+            },
+            {
+                "name": "Anatoly",
+                "variants": [
+                    "Tolya"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -7669,6 +7892,22 @@
                 ]
             },
             {
+                "name": "Andreev",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Andreeva",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Andreo",
                 "gender": "Male",
                 "type": "FirstName",
@@ -7694,6 +7933,17 @@
                 "tags": [
                     "Common",
                     "Ghanaian"
+                ]
+            },
+            {
+                "name": "Andrey",
+                "variants": [
+                    "Andrusha"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -7761,6 +8011,14 @@
                 ]
             },
             {
+                "name": "Anewa",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Ang",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -7813,6 +8071,17 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Angelina",
+                "variants": [
+                    "Gyela"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -7944,6 +8213,17 @@
                 "type": "FirstName",
                 "tags": [
                     "Common"
+                ]
+            },
+            {
+                "name": "Anna",
+                "variants": [
+                    "Anya"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -8451,6 +8731,14 @@
                 ]
             },
             {
+                "name": "Aoatea",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Aodh",
                 "gender": "Male",
                 "type": "FirstName",
@@ -8507,6 +8795,30 @@
                 ]
             },
             {
+                "name": "Apera",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Aperahama",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Aperira",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Apolline",
                 "gender": "Female",
                 "type": "FirstName",
@@ -8544,6 +8856,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Ghanaian"
+                ]
+            },
+            {
+                "name": "Aputa",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -8651,6 +8971,30 @@
                 ]
             },
             {
+                "name": "Aramoana",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Aranga",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Arapeta",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Araseli",
                 "gender": "Female",
                 "type": "FirstName",
@@ -8664,6 +9008,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Japanese"
+                ]
+            },
+            {
+                "name": "Arataki",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -8827,6 +9179,14 @@
                 ]
             },
             {
+                "name": "Ari",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Aria",
                 "gender": "Female",
                 "type": "FirstName",
@@ -8883,11 +9243,46 @@
                 ]
             },
             {
+                "name": "Arihi",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Arihia",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Arikiwi",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Arilda",
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Arina",
+                "variants": [
+                    "Arisha"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -9305,11 +9700,35 @@
                 ]
             },
             {
+                "name": "Aroha",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Aroldo",
                 "gender": "Male",
                 "type": "FirstName",
                 "tags": [
                     "Italian"
+                ]
+            },
+            {
+                "name": "Arona",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Aronui",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -9334,6 +9753,14 @@
                 "type": "LastName",
                 "tags": [
                     "Pakistani"
+                ]
+            },
+            {
+                "name": "Arorangi",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -9450,6 +9877,17 @@
                 "tags": [
                     "Italian",
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Artyom",
+                "variants": [
+                    "Tyoma"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -9829,6 +10267,14 @@
                 ]
             },
             {
+                "name": "Ataahua",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Atafah",
                 "gender": "Female",
                 "type": "FirstName",
@@ -9842,6 +10288,30 @@
                 "type": "FirstName",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Atama",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Atarangi",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Atawhai",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -10887,6 +11357,22 @@
                 "type": "FirstName",
                 "tags": [
                     "Pakistani"
+                ]
+            },
+            {
+                "name": "Awhireinga",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Awi",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -13693,6 +14179,22 @@
                 ]
             },
             {
+                "name": "Belov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Belova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Beltran",
                 "gender": "Male",
                 "type": "FirstName",
@@ -13707,6 +14209,22 @@
                 "tags": [
                     "German",
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Belyaev",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Belyaeva",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -16410,6 +16928,17 @@
                 "type": "FirstName",
                 "tags": [
                     "Scandinavian"
+                ]
+            },
+            {
+                "name": "Boris",
+                "variants": [
+                    "Borya"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -26418,6 +26947,17 @@
                 ]
             },
             {
+                "name": "Danyl",
+                "variants": [
+                    "Danya"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Danzig",
                 "gender": "Male",
                 "type": "FirstName",
@@ -26528,6 +27068,17 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Daria",
+                "variants": [
+                    "Dasha"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -27596,6 +28147,17 @@
                 ]
             },
             {
+                "name": "Denis",
+                "variants": [
+                    "Deniska"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Denisa",
                 "gender": "Female",
                 "type": "FirstName",
@@ -28443,6 +29005,17 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Dmitry",
+                "variants": [
+                    "Dima"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -32521,6 +33094,14 @@
                 ]
             },
             {
+                "name": "Emere",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Emeri",
                 "gender": "Male",
                 "type": "FirstName",
@@ -33561,6 +34142,14 @@
                 ]
             },
             {
+                "name": "Epa",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Epstein",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -33778,6 +34367,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Erihapeti",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -34271,6 +34868,14 @@
                 "tags": [
                     "German",
                     "Scandinavian"
+                ]
+            },
+            {
+                "name": "Eruera",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -34846,6 +35451,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Etera",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -39013,6 +39626,22 @@
                 ]
             },
             {
+                "name": "Fyodorov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Fyodorova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Gabbie",
                 "gender": "Female",
                 "type": "FirstName",
@@ -39416,6 +40045,17 @@
                 "type": "FirstName",
                 "tags": [
                     "Italian"
+                ]
+            },
+            {
+                "name": "Galina",
+                "variants": [
+                    "Galya"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -40340,6 +40980,17 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Gennady",
+                "variants": [
+                    "Gyena"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -42410,6 +43061,22 @@
                 "gender": "Unisex",
                 "tags": [
                     "Jewish"
+                ]
+            },
+            {
+                "name": "Golubev",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Golubeva",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -44532,6 +45199,22 @@
                 ]
             },
             {
+                "name": "Gusev",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Guseva",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Gushiken",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -44875,6 +45558,22 @@
                 ]
             },
             {
+                "name": "Haeata",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Haeatatanga",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Haedda",
                 "gender": "Male",
                 "type": "FirstName",
@@ -44931,6 +45630,14 @@
                 ]
             },
             {
+                "name": "Hahana",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Hahn",
                 "gender": "Male",
                 "type": "FirstName",
@@ -44955,6 +45662,14 @@
                 ]
             },
             {
+                "name": "Hahona",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Hai",
                 "gender": "Female",
                 "type": "FirstName",
@@ -44976,6 +45691,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Japanese"
+                ]
+            },
+            {
+                "name": "Haimona",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -45178,7 +45901,8 @@
                 "type": "FirstName",
                 "tags": [
                     "Japanese",
-                    "Spanish"
+                    "Spanish",
+                    "Māori"
                 ]
             },
             {
@@ -45432,6 +46156,22 @@
                 "type": "LastName",
                 "tags": [
                     "Scandinavian"
+                ]
+            },
+            {
+                "name": "Harata",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Harawira",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -45872,6 +46612,30 @@
                 ]
             },
             {
+                "name": "Hau",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Hauku",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Haumiatiketike",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Havard",
                 "gender": "Male",
                 "type": "FirstName",
@@ -46153,6 +46917,14 @@
                 ]
             },
             {
+                "name": "Heeni",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Heeraman",
                 "gender": "Male",
                 "type": "FirstName",
@@ -46198,6 +46970,14 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Hehu",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -46350,6 +47130,14 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Heketoro",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -46783,6 +47571,22 @@
                 "type": "FirstName",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Henare",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Henare",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -47708,11 +48512,35 @@
                 ]
             },
             {
+                "name": "Hine",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Hinesh",
                 "gender": "Male",
                 "type": "FirstName",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Hinewai",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Hira",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -47972,6 +48800,14 @@
                 ]
             },
             {
+                "name": "Hoana",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Hoang",
                 "gender": "Male",
                 "type": "FirstName",
@@ -48049,6 +48885,30 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Hohepa",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Hohepa",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Hokaka",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -48263,6 +49123,14 @@
                 ]
             },
             {
+                "name": "Horowai",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Horsa",
                 "gender": "Male",
                 "type": "FirstName",
@@ -48372,6 +49240,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Chinese"
+                ]
+            },
+            {
+                "name": "Huatare",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -48562,6 +49438,14 @@
                 ]
             },
             {
+                "name": "Huihana",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Hukaymah",
                 "gender": "Female",
                 "type": "FirstName",
@@ -48706,6 +49590,14 @@
                 ]
             },
             {
+                "name": "Hunapo",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Hunfredo",
                 "gender": "Male",
                 "type": "FirstName",
@@ -48744,6 +49636,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "British"
+                ]
+            },
+            {
+                "name": "Hunu",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -48883,6 +49783,14 @@
                 ]
             },
             {
+                "name": "Iarere",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Ibad ur Rehman",
                 "gender": "Male",
                 "type": "FirstName",
@@ -48964,6 +49872,38 @@
                 ]
             },
             {
+                "name": "Iehohapata",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Ieni",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Ietepere",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Ietoro",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Igarashi",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -49005,11 +49945,51 @@
                 ]
             },
             {
+                "name": "Ihaia",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Ihaka",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Ihapera",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Ihu",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Iida",
                 "type": "LastName",
                 "gender": "Unisex",
                 "tags": [
                     "Japanese"
+                ]
+            },
+            {
+                "name": "Ikaroa",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -49085,6 +50065,33 @@
                 "tags": [
                     "German",
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Ilya",
+                "variants": [
+                    "Ilyusha"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Ilyin",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Ilyina",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -49178,6 +50185,14 @@
                 ]
             },
             {
+                "name": "Inia",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Inigo",
                 "gender": "Male",
                 "type": "FirstName",
@@ -49194,6 +50209,22 @@
                 ]
             },
             {
+                "name": "Iorama",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Iorangi",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Iosefina",
                 "gender": "Female",
                 "type": "FirstName",
@@ -49202,11 +50233,27 @@
                 ]
             },
             {
+                "name": "Iotama",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Iracema",
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Iraia",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -49232,6 +50279,25 @@
                 "type": "FirstName",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Irina",
+                "variants": [
+                    "Ira"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Irirangi",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -49491,11 +50557,38 @@
                 ]
             },
             {
+                "name": "Ivan",
+                "variants": [
+                    "Vanya"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Ivano",
                 "gender": "Male",
                 "type": "FirstName",
                 "tags": [
                     "Italian"
+                ]
+            },
+            {
+                "name": "Ivanov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Ivanova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -49535,7 +50628,8 @@
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
-                    "Japanese"
+                    "Japanese",
+                    "Māori"
                 ]
             },
             {
@@ -49544,6 +50638,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Japanese"
+                ]
+            },
+            {
+                "name": "Iwi",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -53087,6 +54189,30 @@
                 ]
             },
             {
+                "name": "Kaheru",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Kahikatea",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Kahikatoa",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Kahlan",
                 "gender": "Female",
                 "type": "FirstName",
@@ -53119,6 +54245,46 @@
                 ]
             },
             {
+                "name": "Kahu",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Kahuiwi",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Kahukura",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Kai",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Kaia",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Kaida",
                 "gender": "Female",
                 "type": "FirstName",
@@ -53140,6 +54306,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Irish"
+                ]
+            },
+            {
+                "name": "Kaihautu",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -53357,6 +54531,14 @@
                 "type": "LastName",
                 "tags": [
                     "Pakistani"
+                ]
+            },
+            {
+                "name": "Kakarauri",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -53652,7 +54834,8 @@
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
-                    "Japanese"
+                    "Japanese",
+                    "Māori"
                 ]
             },
             {
@@ -54051,6 +55234,14 @@
                 ]
             },
             {
+                "name": "Katarine",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Katayama",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -54155,6 +55346,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Kauri",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -55792,6 +56991,14 @@
                 ]
             },
             {
+                "name": "Kiri",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Kirika",
                 "gender": "Female",
                 "type": "FirstName",
@@ -55800,11 +57007,46 @@
                 ]
             },
             {
+                "name": "Kirill",
+                "variants": [
+                    "Kirusha"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Kiritopa",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Kirtenya",
                 "gender": "Male",
                 "type": "FirstName",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Kiselyov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Kiselyova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -56137,6 +57379,22 @@
                 ]
             },
             {
+                "name": "Komarov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Komarova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Kona",
                 "gender": "Male",
                 "type": "FirstName",
@@ -56169,11 +57427,38 @@
                 ]
             },
             {
+                "name": "Konstantin",
+                "variants": [
+                    "Kostya"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Koppel",
                 "type": "LastName",
                 "gender": "Unisex",
                 "tags": [
                     "Jewish"
+                ]
+            },
+            {
+                "name": "Kora",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Koraka",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -56330,6 +57615,22 @@
                 ]
             },
             {
+                "name": "Kovalyov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Kovalyova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Kowalczyk",
                 "gender": "Unisex",
                 "type": "LastName",
@@ -56351,6 +57652,22 @@
                 "type": "LastName",
                 "tags": [
                     "Polish"
+                ]
+            },
+            {
+                "name": "Kozlov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Kozlova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -56621,6 +57938,18 @@
             },
             {
                 "name": "Ksenia",
+                "variants": [
+                    "Ksyusha",
+                    "Xenia"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Ksenia",
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
@@ -56849,6 +58178,38 @@
                 "type": "FirstName",
                 "tags": [
                     "Ghanaian"
+                ]
+            },
+            {
+                "name": "Kuzmin",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Kuzmina",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Kuznetsov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Kuznetsova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -58221,6 +59582,22 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Lebedev",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Lebedeva",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -61131,6 +62508,17 @@
                 ]
             },
             {
+                "name": "Ludmila",
+                "variants": [
+                    "Lyuda"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Ludo",
                 "gender": "Male",
                 "type": "FirstName",
@@ -61839,6 +63227,25 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Lyubov",
+                "variants": [
+                    "Lyuba"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Maaka",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -62827,6 +64234,14 @@
                 ]
             },
             {
+                "name": "Mahuika",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Mahvash",
                 "gender": "Female",
                 "type": "FirstName",
@@ -62848,6 +64263,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Japanese"
+                ]
+            },
+            {
+                "name": "Maia",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -63084,6 +64507,30 @@
                 ]
             },
             {
+                "name": "Makareta",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Makarov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Makarova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Makenzi",
                 "gender": "Female",
                 "type": "FirstName",
@@ -63161,6 +64608,18 @@
                 "type": "FirstName",
                 "tags": [
                     "Japanese"
+                ]
+            },
+            {
+                "name": "Maksim",
+                "variants": [
+                    "Maxim",
+                    "Max"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -63524,6 +64983,22 @@
                 "type": "FirstName",
                 "tags": [
                     "Japanese"
+                ]
+            },
+            {
+                "name": "Manaaki",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Manaia",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -64003,6 +65478,14 @@
                 ]
             },
             {
+                "name": "Marama",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Marappan",
                 "gender": "Male",
                 "type": "FirstName",
@@ -64115,6 +65598,14 @@
                 ]
             },
             {
+                "name": "Marcellin",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Marcellina",
                 "gender": "Female",
                 "type": "FirstName",
@@ -64127,7 +65618,8 @@
                 "gender": "Male",
                 "type": "FirstName",
                 "tags": [
-                    "Spanish"
+                    "Spanish",
+                    "Māori"
                 ]
             },
             {
@@ -64504,6 +65996,18 @@
             },
             {
                 "name": "Maria",
+                "variants": [
+                    "Masha",
+                    "Marusya"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Maria",
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
@@ -64791,6 +66295,14 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Marina",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -65985,6 +67497,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Jewish"
+                ]
+            },
+            {
+                "name": "Matiu",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -67428,6 +68948,14 @@
                 ]
             },
             {
+                "name": "Mere",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Merel",
                 "gender": "Female",
                 "type": "FirstName",
@@ -67882,6 +69410,14 @@
                 ]
             },
             {
+                "name": "Mikaere",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Mikan",
                 "gender": "Female",
                 "type": "FirstName",
@@ -67903,6 +69439,33 @@
                 "type": "FirstName",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Mikhail",
+                "variants": [
+                    "Misha"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Mikhailov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Mikhailova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -69693,6 +71256,22 @@
                 ]
             },
             {
+                "name": "Morozov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Morozova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Morrigan",
                 "gender": "Female",
                 "type": "FirstName",
@@ -70132,6 +71711,17 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Nadezhda",
+                "variants": [
+                    "Nadya"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -71248,6 +72838,17 @@
                 "tags": [
                     "Italian",
                     "French"
+                ]
+            },
+            {
+                "name": "Natalia",
+                "variants": [
+                    "Natasha"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -72748,6 +74349,30 @@
                 ]
             },
             {
+                "name": "Ngaio",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Ngaire",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Ngata",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Ngo",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -73150,6 +74775,14 @@
                 ]
             },
             {
+                "name": "Nikau",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Nikhila",
                 "gender": "Female",
                 "type": "FirstName",
@@ -73166,11 +74799,62 @@
                 ]
             },
             {
+                "name": "Nikita",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Nikitin",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Nikitina",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Niko",
                 "gender": "Male",
                 "type": "FirstName",
                 "tags": [
                     "Japanese"
+                ]
+            },
+            {
+                "name": "Nikolaev",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Nikolaeva",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Nikolai",
+                "variants": [
+                    "Kolya"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -74497,6 +76181,22 @@
                 ]
             },
             {
+                "name": "Novikov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Novikova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Nowak",
                 "gender": "Unisex",
                 "type": "LastName",
@@ -74694,6 +76394,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Japanese"
+                ]
+            },
+            {
+                "name": "Nyree",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -75533,6 +77241,17 @@
                 ]
             },
             {
+                "name": "Oleg",
+                "variants": [
+                    "Olezhek"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Olek",
                 "gender": "Male",
                 "type": "FirstName",
@@ -76139,6 +77858,22 @@
                 "type": "FirstName",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Orlov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Orlova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -77131,6 +78866,14 @@
                 ]
             },
             {
+                "name": "Pania",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Pansy",
                 "gender": "Female",
                 "type": "FirstName",
@@ -77193,6 +78936,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Irish"
+                ]
+            },
+            {
+                "name": "Parata",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -77635,6 +79386,22 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Pavlov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Pavlova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -78246,6 +80013,30 @@
                 "tags": [
                     "German",
                     "French"
+                ]
+            },
+            {
+                "name": "Petrov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Petrova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Pewhairangi",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -78941,6 +80732,17 @@
                 ]
             },
             {
+                "name": "Polina",
+                "variants": [
+                    "Polya"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Polissena",
                 "gender": "Female",
                 "type": "FirstName",
@@ -79018,6 +80820,22 @@
                 "type": "LastName",
                 "tags": [
                     "Polish"
+                ]
+            },
+            {
+                "name": "Popov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Popova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -79099,6 +80917,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "British"
+                ]
+            },
+            {
+                "name": "Pounamu",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -80184,6 +82010,14 @@
                 ]
             },
             {
+                "name": "Purta",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Purva",
                 "gender": "Female",
                 "type": "FirstName",
@@ -80325,6 +82159,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Puta",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -81540,6 +83382,14 @@
                 ]
             },
             {
+                "name": "Rangi",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Ranielle",
                 "gender": "Female",
                 "type": "FirstName",
@@ -81561,6 +83411,14 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Rapata",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -81739,6 +83597,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Polish"
+                ]
+            },
+            {
+                "name": "Rawiri",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -82684,6 +84550,14 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Rewi",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -84742,6 +86616,17 @@
                 ]
             },
             {
+                "name": "Roman",
+                "variants": [
+                    "Roma"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Romana",
                 "gender": "Female",
                 "type": "FirstName",
@@ -84945,6 +86830,14 @@
                 ]
             },
             {
+                "name": "Rongo",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Ronja",
                 "gender": "Female",
                 "type": "FirstName",
@@ -84998,6 +86891,14 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Ropata",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -86302,6 +88203,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Japanese"
+                ]
+            },
+            {
+                "name": "Ruru",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -88672,6 +90581,22 @@
                 ]
             },
             {
+                "name": "Semyonov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Semyonova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Sen",
                 "gender": "Female",
                 "type": "FirstName",
@@ -88783,6 +90708,17 @@
                 "type": "FirstName",
                 "tags": [
                     "Italian"
+                ]
+            },
+            {
+                "name": "Sergey",
+                "variants": [
+                    "Seryozha"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -90612,6 +92548,22 @@
                 ]
             },
             {
+                "name": "Sidorov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Sidorova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Siegbert",
                 "gender": "Male",
                 "type": "FirstName",
@@ -91443,6 +93395,22 @@
                 ]
             },
             {
+                "name": "Smirnov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Smirnova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Smith",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -91574,6 +93542,17 @@
             },
             {
                 "name": "Sofia",
+                "variants": [
+                    "Sonya"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Sofia",
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
@@ -91598,6 +93577,22 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Sokolov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Sokolova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -91734,6 +93729,22 @@
                 "type": "FirstName",
                 "tags": [
                     "Jewish"
+                ]
+            },
+            {
+                "name": "Solovyov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Solovyova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -92312,6 +94323,22 @@
                 ]
             },
             {
+                "name": "Stepanov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Stepanova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Stephan",
                 "variants": [
                     "Steve"
@@ -92771,6 +94798,17 @@
                 "type": "FirstName",
                 "tags": [
                     "Scandinavian"
+                ]
+            },
+            {
+                "name": "Svetlana",
+                "variants": [
+                    "Sveta"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -93833,6 +95871,14 @@
                 ]
             },
             {
+                "name": "Tanemahuta",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Taney",
                 "gender": "Female",
                 "type": "FirstName",
@@ -93846,6 +95892,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Chinese"
+                ]
+            },
+            {
+                "name": "Tangaroa",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -93942,6 +95996,22 @@
                 "gender": "Unisex",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Tarasov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Tarasova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -94089,6 +96159,17 @@
                 ]
             },
             {
+                "name": "Tatiana",
+                "variants": [
+                    "Tania"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Tatienne",
                 "gender": "Female",
                 "type": "FirstName",
@@ -94126,6 +96207,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Italian"
+                ]
+            },
+            {
+                "name": "Taumata",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -94198,6 +96287,14 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Tawera",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -94279,6 +96376,22 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Tayn",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
+                "name": "Te Wiata",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -95150,7 +97263,8 @@
                 "gender": "Unisex",
                 "type": "FirstName",
                 "tags": [
-                    "Spanish"
+                    "Spanish",
+                    "Māori"
                 ]
             },
             {
@@ -95493,6 +97607,14 @@
                 ]
             },
             {
+                "name": "Tipene",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Tipp",
                 "gender": "Male",
                 "type": "FirstName",
@@ -95595,6 +97717,22 @@
                 "tags": [
                     "Italian",
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Titov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Titova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -96998,6 +99136,14 @@
                 ]
             },
             {
+                "name": "Tui",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Tula",
                 "gender": "Female",
                 "type": "FirstName",
@@ -97109,6 +99255,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Scandinavian"
+                ]
+            },
+            {
+                "name": "Turei",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -97920,6 +100074,22 @@
                 ]
             },
             {
+                "name": "Vassiliev",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Vassilieva",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Vasuki",
                 "gender": "Male",
                 "type": "FirstName",
@@ -98045,6 +100215,14 @@
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Vera",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
                     "Spanish"
                 ]
             },
@@ -98146,6 +100324,28 @@
                 ]
             },
             {
+                "name": "Victor",
+                "variants": [
+                    "Vitya"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Victoria",
+                "variants": [
+                    "Vika"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Victoria",
                 "gender": "Female",
                 "type": "FirstName",
@@ -98218,6 +100418,22 @@
                 "type": "FirstName",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Vinogradov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Vinogradova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -98303,6 +100519,18 @@
                 ]
             },
             {
+                "name": "Vladimir",
+                "variants": [
+                    "Vova",
+                    "Volodya"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Vogel",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -98343,6 +100571,22 @@
                 ]
             },
             {
+                "name": "Volkov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Volkova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Voshon",
                 "gender": "Male",
                 "type": "FirstName",
@@ -98372,6 +100616,17 @@
                 "type": "FirstName",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Vyacheslav",
+                "variants": [
+                    "Slava"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -98455,6 +100710,14 @@
                 ]
             },
             {
+                "name": "Waerea",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Wafaa",
                 "gender": "Female",
                 "type": "FirstName",
@@ -98476,6 +100739,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Jewish"
+                ]
+            },
+            {
+                "name": "Waititi",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -98716,6 +100987,14 @@
                 ]
             },
             {
+                "name": "Watene",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Watkins",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -98844,11 +101123,27 @@
                 ]
             },
             {
+                "name": "Wetere",
+                "type": "LastName",
+                "gender": "Unisex",
+                "tags": [
+                    "Māori"
+                ]
+            },
+            {
                 "name": "Whelan",
                 "gender": "Unisex",
                 "type": "LastName",
                 "tags": [
                     "Irish"
+                ]
+            },
+            {
+                "name": "Whina",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -98890,6 +101185,14 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Wikitoria",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -99021,6 +101324,14 @@
                 "type": "LastName",
                 "tags": [
                     "Scandinavian"
+                ]
+            },
+            {
+                "name": "Wiremu",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Māori"
                 ]
             },
             {
@@ -99731,6 +102042,22 @@
                 ]
             },
             {
+                "name": "Yegorov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Yegorova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Yehowada",
                 "gender": "Female",
                 "type": "FirstName",
@@ -99768,6 +102095,43 @@
                 "type": "FirstName",
                 "tags": [
                     "Jewish"
+                ]
+            },
+            {
+                "name": "Yekaterina",
+                "variants": [
+                    "Ekaterina",
+                    "Katya"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Yelena",
+                "variants": [
+                    "Elena",
+                    "Lena"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Yelizaveta",
+                "variants": [
+                    "Liza",
+                    "Veta",
+                    "Elizaveta"
+                ],
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -99848,6 +102212,17 @@
                 "type": "FirstName",
                 "tags": [
                     "African-American"
+                ]
+            },
+            {
+                "name": "Yevgeny",
+                "variants": [
+                    "Zhenya"
+                ],
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Russian"
                 ]
             },
             {
@@ -100321,6 +102696,22 @@
                 ]
             },
             {
+                "name": "Zaitsev",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Zaitseva",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
                 "name": "Zakai",
                 "gender": "Male",
                 "type": "FirstName",
@@ -100334,6 +102725,22 @@
                 "type": "FirstName",
                 "tags": [
                     "Afghan"
+                ]
+            },
+            {
+                "name": "Zakharov",
+                "type": "LastName",
+                "gender": "Male",
+                "tags": [
+                    "Russian"
+                ]
+            },
+            {
+                "name": "Zakharova",
+                "type": "LastName",
+                "gender": "Female",
+                "tags": [
+                    "Russian"
                 ]
             },
             {

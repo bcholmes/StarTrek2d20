@@ -512,7 +512,10 @@ class Marshaller {
             result.house = json.house;
         }
         if (json.age) {
-            result.age = AgeHelper.getAge(json.age);
+            let age = AgeHelper.getAge(json.age);
+            if (age) {
+                result.age = age;
+            }
         }
         if (json.species != null) {
             if (typeof json.species === 'string') { // backward compatibility

@@ -48,10 +48,10 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
         const note = hasUnavailableSources ? t('EraSelectionPage.sourceNote') : "";
 
         return (<div>
-            <div className="page-text">
+            <p>
                 {t('EraSelectionPage.sourceInstruction')}
                 {note}
-            </div>
+            </p>
             <div className="d-flex flex-wrap">
                 <div className="source source-emphasis" onClick={() => { this.toggleSources(true); } }>{t('Common.button.selectAll')}</div>
                 <div className="source source-emphasis" onClick={() => { this.toggleSources(false); } }>{t('Common.button.selectNone')}</div>
@@ -84,9 +84,9 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
                     </ol>
                 </nav>
                 {this.renderSources()}
-                <div className="page-text mt-5">
+                <p className="mt-5">
                     {t('EraSelectionPage.eraInstruction')}
-                </div>
+                </p>
                 <table className="selection-list">
                     <tbody>
                         {eras}
