@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import Backend from "i18next-http-backend";
 
 // we're creating a custom detector because we want it to default to
 // a region-less version of the locale if the region-specific version
@@ -80,37 +81,21 @@ export const isLanguageOverridePresent = () => {
 
 
 i18n.use(initReactI18next)
+    .use(Backend)
     .use(languageDetector)
     .init({
         fallbackLng: 'en',
         supportedLngs: supportedLanguages,
-        resources: {
-            'en-CA': {
-                translations: require('./locales/en/translations.json')
-            },
-            'en-US': {
-                translations: require('./locales/en/translations.json')
-            },
-            en: {
-                translations: require('./locales/en/translations.json')
-            },
-            es: {
-                translations: require('./locales/es/translations.json')
-            },
-            de: {
-                translations: require('./locales/de/translations.json')
-            },
-            fr: {
-                translations: require('./locales/fr/translations.json')
-            }
-        },
         detection: {
             order: ['localStorage', "staDetector"],
             lookupLocalStorage: localStorageKey
         },
         ns: ['translations'],
         defaultNS: 'translations',
-        debug: false
+        debug: false,
+        react: {
+            useSuspense: false
+        }
     });
 
 export default i18n;

@@ -69,7 +69,7 @@ class PageHeader extends React.Component<IPageHeaderProperties, {}> {
                 || this.props.page === PageIdentity.CareerEvent2Details
                 || this.props.page === PageIdentity.AttributesAndDisciplines
                 || this.props.page === PageIdentity.Finish) {
-            return character.workflow.currentStep().name;
+            return character.workflow?.currentStep()?.name || "";
         } else if (this.props.page === PageIdentity.SystemGeneration) {
             return "System Generation";
         } else if (this.props.page === PageIdentity.SectorDetails) {

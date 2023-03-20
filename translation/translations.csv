@@ -267,13 +267,13 @@ CareerType.core.experienced.valueInstruction,"The character receives a Value, an
 CareerType.core.veteran.name,Veteran Officer,,,
 CareerType.core.veteran.description,"The character has decades of experience in the service of Starfleet, and has served on many ships, and starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.",,,
 CareerType.core.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",,,
-CareerType.civilian.young.name,Young Officer,,,
+CareerType.civilian.young.name,Young,,,
 CareerType.civilian.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,,,
 CareerType.civilian.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.",,,
-CareerType.civilian.experienced.name,Experienced Officer,,,
+CareerType.civilian.experienced.name,Experienced,,,
 CareerType.civilian.experienced.description,"The character has several years of experience in service, and is enjoying a promising career.",,,
 CareerType.civilian.experienced.valueInstruction,"The character receives a Value, and this can be chosen freely.",,,
-CareerType.civilian.veteran.name,Veteran Officer,,,
+CareerType.civilian.veteran.name,Veteran,,,
 CareerType.civilian.veteran.description,"The character has decades of experience in the service, and has served on many ships, worlds, and/or starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.",,,
 CareerType.civilian.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",,,
 CareerType.klingon.young.name,Young Warrior,,,
@@ -310,6 +310,8 @@ ModificationType.name.milestone,Milestone,Meilenstein,,Jalon d'Expérience
 MilestoneType.name.normalMilestone,Normal Milestone,Regulärer Meilenstein,,Jalon Normal
 MilestoneType.name.spotlightMilestone,Spotlight Milestone,Rampenlicht-Meilenstein,,Jalon Sous les Projecteurs
 MilestoneType.name.arcMilestone,Arc Milestone,Handlungsbogen-Meilenstein,,Jalon Arc de Personnage
+World.class.description,Class {{class}},,,
+World.class.fullDescription,Class {{class}} ({{definition}}),,,
 World.attribute.designation,Designation,Bezeichnung,,
 World.attribute.classification,Classification,Klasse,,
 World.attribute.notes,Notes,Anmerkungen,,

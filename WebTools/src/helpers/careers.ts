@@ -7,17 +7,15 @@ import { makeKey } from '../common/translationKey';
 
 
 export class CareerModel {
-    id: Career;
-    key: string;
-    name: string;
-    private description: string;
-    talent: TalentViewModel[];
+    readonly id: Career;
+    private key: string;
+    private name: string;
+    readonly talent: TalentViewModel[];
 
-    constructor(id: Career, key: string, name: string, description: string, talent: TalentViewModel[], valueDescription: string) {
+    constructor(id: Career, key: string, name: string, talent: TalentViewModel[]) {
         this.id = id;
         this.key = key;
         this.name = name;
-        this.description = description;
         this.talent = talent;
     }
 
@@ -49,25 +47,19 @@ export class CareersHelper {
             Career.Young,
             "core",
             "Young Officer",
-            "The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.",
-            [ToViewModel(TalentsHelper.getTalent("Untapped Potential"))],
-            "The character receives a Value, which must reflect the character’s inexperience and naïveté in some way."
+            [ToViewModel(TalentsHelper.getTalent("Untapped Potential"))]
         ),
         new CareerModel(
             Career.Experienced,
             "core",
             "Experienced Officer",
-            "The character has several years of experience in service of Starfleet, and is enjoying a promising career.",
-            [],
-            "The character receives a Value, and this can be chosen freely."
+            []
         ),
         new CareerModel(
             Career.Veteran,
             "core",
             "Veteran Officer",
-            "The character has decades of experience in the service of Starfleet, and has served on many ships, and starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.",
-            [ToViewModel(TalentsHelper.getTalent("Veteran"))],
-            "The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career."
+            [ToViewModel(TalentsHelper.getTalent("Veteran"))]
         ),
     ];
 
@@ -76,25 +68,19 @@ export class CareersHelper {
             Career.Young,
             "civilian",
             "Young",
-            "The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.",
-            [ToViewModel(TalentsHelper.getTalent("Untapped Potential"))],
-            "The character receives a Value, which must reflect the character’s inexperience and naïveté in some way."
+            [ToViewModel(TalentsHelper.getTalent("Untapped Potential"))]
         ),
         new CareerModel(
             Career.Experienced,
             "civilian",
             "Experienced",
-            "The character has several years of experience in service, and is enjoying a promising career.",
-            [],
-            "The character receives a Value, and this can be chosen freely."
+            []
         ),
         new CareerModel(
             Career.Veteran,
             "civilian",
             "Veteran",
-            "The character has decades of experience in the service, and has served on many ships, worlds, and/or starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.",
-            [ToViewModel(TalentsHelper.getTalent("Veteran"))],
-            "The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career."
+            [ToViewModel(TalentsHelper.getTalent("Veteran"))]
         ),
     ];
 
@@ -103,25 +89,19 @@ export class CareersHelper {
             Career.Young,
             "klingon",
             "Young Warrior",
-            "The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.",
-            [ToViewModel(TalentsHelper.getTalent("Untapped Potential"))],
-            "The character receives a Value, which must reflect the character’s inexperience and naïveté in some way."
+            [ToViewModel(TalentsHelper.getTalent("Untapped Potential"))]
         ),
         new CareerModel(
             Career.Experienced,
             "klingon",
             "Experienced Warrior",
-            "The character has several years of experience in service of the Empire and is enjoying a promising career. This is the default assumption for characters created using these rules.",
-            [],
-            "The character receives a Value, and this can be chosen freely."
+            []
         ),
         new CareerModel(
             Career.Veteran,
             "klingon",
             "Veteran Warrior",
-            "The character has decades of experience in the service of the Empire, and has served on many ships and space stations. The character’s judgement and opinions are highly regarded by subordinates, peers, and even superiors.",
-            [ToViewModel(TalentsHelper.getTalent("Veteran"))],
-            "The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career."
+            [ToViewModel(TalentsHelper.getTalent("Veteran"))]
         ),
     ];
 

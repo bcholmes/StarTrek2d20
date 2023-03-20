@@ -360,7 +360,11 @@ export class World {
         } else if (this.worldClass.id === WorldClass.ArtificialPlanet) {
             result.push(new WorldAttribute(i18next.t("World.attribute.classification"), "Artificial Planet"));
         } else {
-            result.push(new WorldAttribute(i18next.t("World.attribute.classification"), "Class " + WorldClass[this.worldClass.id] + " (" + this.worldClass.description + ")"));
+            result.push(new WorldAttribute(i18next.t("World.attribute.classification"), i18next.t('World.class.fullDescription', {
+                class: WorldClass[this.worldClass.id],
+                definition: this.worldClass.description,
+                interpolation: { escapeValue: false }
+            })));
         }
 
         if (this.notes?.length) {

@@ -18,7 +18,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router>
             <Suspense fallback={<LoadingPage />}>
-            <Switch>
+                <Switch>
                     <Route path="/modify" component={ModificationFramePage} />
                     <Route path="/xmlviewer" component={XmlFormatViewerPage} />
                     <Route path="/gmtracker" component={GMTrackerPage} />
@@ -26,7 +26,7 @@ ReactDOM.render(
                     <Route path="/view" component={ViewSheetPage} />
                     <Route path="/credits" component={CreditsPage} />
                     <Route path="/" component={CharacterCreationApp} />
-            </Switch>
+                </Switch>
             </Suspense>
         </Router>
     </Provider>,

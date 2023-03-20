@@ -12,6 +12,14 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230319</b>
+                <ul>
+                    <li>A bunch more German translations.</li>
+                    <li>A few subtle bug fixes.</li>
+                    <li>As the translation files have been growing quite a bit, I'm at a place where I want to load the translations on-demand,
+                        rather than automatically load all languages for all people. It's hard to imagine anyone using more than 2 languages
+                        (if you include English as a fall-back), so there's no point in having all languages available for all people.</li>
+                </ul>
                 <b>v1.230318</b>
                 <ul>
                     <li>Minor bug fixes.</li>
