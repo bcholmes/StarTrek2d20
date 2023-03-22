@@ -2,7 +2,7 @@
 import {character, SpeciesStep } from '../common/character';
 import {CharacterType, CharacterTypeModel } from '../common/characterType';
 import {SpeciesHelper} from '../helpers/species';
-import {DropDownElement, DropDownInput} from '../components/dropDownInput';
+import {DropDownElement, DropDownInput, DropDownSelect} from '../components/dropDownInput';
 import SupportingCharacterAttributes from '../components/supportingCharacterAttributes';
 import SupportingCharacterDisciplines from '../components/supportingCharacterDisciplines';
 import {Rank, RanksHelper} from '../helpers/ranks';
@@ -105,10 +105,10 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
                             <Header level={2}>{t('Construct.other.characterType')}</Header>
                             <p>{t('SupportingCharacter.whatType')}</p>
                             <div>
-                                <DropDownInput
+                                <DropDownSelect
                                     items={this.getTypes() }
-                                    defaultValue={this.state.type.name}
-                                    onChange={(index) => this.selectType(index) }/>
+                                    defaultValue={this.state.type.type}
+                                    onChange={(index) => this.selectType(index as number) }/>
                             </div>
 
                             {ageDiv}
@@ -261,7 +261,7 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
     }
 
     private getTypes() {
-        return CharacterTypeModel.getAllTypes().map((t, i) => t.localizedName);
+        return CharacterTypeModel.getAllTypes().map((t, i) => new DropDownElement(t.type, t.localizedName));
     }
     private getRanks() {
         var result = [];
@@ -308,8 +308,8 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
     }
 
 
-    private selectType(index: number) {
-        let type = CharacterTypeModel.getAllTypes()[index];
+    private selectType(characterType: number) {
+        let type = CharacterTypeModel.getByType(characterType);
         character.type = type.type;
         let age = this.state.age;
 

@@ -6,6 +6,12 @@ interface IDropDownInputProperties {
     onChange: (index: number) => void;
 }
 
+interface IDropDownSelectProperties {
+    items: DropDownElement[];
+    defaultValue: any;
+    onChange: (index: string|number) => void;
+}
+
 export class DropDownElement {
 
     readonly name: string;
@@ -32,6 +38,22 @@ export class DropDownInput extends React.Component<IDropDownInputProperties, {}>
 
         return (
             <select value={defaultValue} onChange={e => onChange((e.target as HTMLSelectElement).selectedIndex) }>
+                {options}
+            </select>
+        );
+    }
+}
+
+export class DropDownSelect extends React.Component<IDropDownSelectProperties, {}> {
+    render() {
+        const {items, defaultValue, onChange} = this.props;
+
+        const options = items.map((item, i) => {
+            return <option key={i} value={item.value}>{item.name}</option>
+        });
+
+        return (
+            <select value={defaultValue} onChange={e => onChange(items[(e.target as HTMLSelectElement).selectedIndex].value)}>
                 {options}
             </select>
         );

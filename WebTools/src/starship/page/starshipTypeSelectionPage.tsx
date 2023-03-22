@@ -4,7 +4,7 @@ import { CharacterTypeModel } from "../../common/characterType";
 import { navigateTo, Navigation } from "../../common/navigator";
 import { ShipBuildType, ShipBuildTypeModel, SimpleStats } from "../../common/starship";
 import { Button } from "../../components/button";
-import { DropDownInput } from "../../components/dropDownInput";
+import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
 import { Header } from "../../components/header";
 import { Era } from "../../helpers/eras";
 import ServiceYear from "../../helpers/serviceYear";
@@ -45,10 +45,10 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                     <Header level={2}>{t('StarshipTypeSelection.shipPolity')}</Header>
                     <p>{t('StarshipTypeSelection.whatShipPolity')}</p>
                     <div>
-                        <DropDownInput
-                            items={ CharacterTypeModel.getStarshipTypes().map((t, i) => t.name) }
-                            defaultValue={ this.state.type.name }
-                            onChange={(index) => this.selectType(CharacterTypeModel.getStarshipTypes()[index] ) }/>
+                        <DropDownSelect
+                            items={ CharacterTypeModel.getStarshipTypes().map((t, i) => new DropDownElement(t.type, t.localizedName)) }
+                            defaultValue={ this.state.type.type }
+                            onChange={(index) => this.selectType(CharacterTypeModel.getByType(index as number)) }/>
                     </div>
                 </div>)
             : undefined;
@@ -57,10 +57,10 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                 <Header level={2}>{t('StarshipTypeSelection.shipBuildType')}</Header>
                 <p>{t('StarshipTypeSelection.whatShipBuildType')}</p>
                 <div>
-                    <DropDownInput
-                        items={ ShipBuildTypeModel.allTypes().map((t, i) => t.name) }
-                        defaultValue={ this.state.buildType.name }
-                        onChange={(index) => this.selectBuildType(ShipBuildTypeModel.allTypes()[index] ) }/>
+                    <DropDownSelect
+                        items={ ShipBuildTypeModel.allTypes().map((t, i) => new DropDownElement(t.type, t.name)) }
+                        defaultValue={ this.state.buildType.type }
+                        onChange={(type) => this.selectBuildType(ShipBuildTypeModel.allTypes()[type as number] ) }/>
                 </div>
             </div>);
 

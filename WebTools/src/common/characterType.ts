@@ -47,6 +47,11 @@ export class CharacterTypeModel {
         return CharacterTypeModel.TYPES;
     }
 
+    public static getByType(type: CharacterType) {
+        return CharacterTypeModel.TYPES[type];
+    }
+
+
     public static getAllTypesExceptOther(sources: Source[]) {
         return this.TYPES_EXCEPT_OTHER.filter(t => {
             if (t.type === CharacterType.KlingonWarrior) {

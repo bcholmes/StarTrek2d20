@@ -55,7 +55,7 @@ export class ShipBuildTypeModel {
     private static TYPES: ShipBuildTypeModel[] = [
         new ShipBuildTypeModel("Pod", ShipBuildType.Pod, 1),
         new ShipBuildTypeModel("Shuttlecraft", ShipBuildType.Shuttlecraft, 1),
-        new ShipBuildTypeModel("Runabout", ShipBuildType.Runabout, 1),
+        new ShipBuildTypeModel("Runabout", ShipBuildType.Runabout, 2),
         new ShipBuildTypeModel("Starship", ShipBuildType.Starship)
     ];
 
