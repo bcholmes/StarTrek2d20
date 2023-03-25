@@ -230,6 +230,8 @@ Page.title.simpleStarship,Simplified Starship Creation,Vereinfachte Raumschiffer
 Page.title.smallCraftStats,Small Craft Stats,Shuttle-Werte,,Navette
 Page.title.spaceframeOption,Spaceframe Option,Schiffsklassen-Optionen,,Option de Modèle
 Page.title.spaceframeSelection,Spaceframe,Schiffsklasse,,Modèle de Vaisseau
+Page.title.species,Species,,,
+Page.title.speciesDetails,Species Details,,,
 Page.title.starshipTalentSelection,Starship Talents,Raumschiff-Talente,,Talents de Vaisseau
 Page.title.starshipTypeSelection,Starship Type,Raumschiff-Typ,,Type de Vaisseau
 Page.title.starshipWeaponsSelection,Starship Weapons,Raumschiffwaffen,,Armes de Vaisseau
@@ -385,6 +387,22 @@ Value.starfleetTraining.text,"The character gains a single Value, which should r
 Value.childEducation.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Education.",,,
 Value.otherTraining.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Training.",,,
 Value.final.text,"The character receives one final Value. This might reflect the Career Events rolled in Step Six, or it may represent some other element of the character. This Value might be a relationship, connecting the character to another character in the crew, or to another organization or culture in some way.",,,
+Weapon.common.name,Name/Type,,,
+Weapon.common.qualities,Qualities,,,
+Weapon.personal.phaser2.name,Phaser type-2,,,
+Weapon.personal.strike.name,Unarmed Strike,,,
+Weapon.personal.batleth.name,Bat'leth,,,
+Weapon.personal.dktahg.name,d’k tahg dagger,,,
+Weapon.personal.ushaantor.name,Ushaan-tor,,,
+Weapon.personal.disruptor.name,Disruptor Pistol,,,
+Weapon.quality.knockdown.name,Knockdown,,,
+Weapon.quality.charges.name,Charges,,,
+Weapon.quality.vicious.name,Vicious {{rank}},,,
+Weapon.quality.deadly.name,Deadly,,,
+Weapon.quality.hidden.name,Hidden {{rank}},,,
+Weapon.quality.piercing.name,Piercing {{rank}},,,
+Weapon.quality.intense.name,Intense,,,
+Weapon.quality.area.name,Area,,,
 World.attribute.designation,Designation,Bezeichnung,,
 World.attribute.classification,Classification,Klasse,,
 World.attribute.notes,Notes,Anmerkungen,,

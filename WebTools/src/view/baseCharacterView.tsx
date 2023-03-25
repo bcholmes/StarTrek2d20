@@ -7,7 +7,7 @@ import { StatView } from "../components/StatView";
 import { makeKey } from "../common/translationKey";
 import { Attribute } from "../helpers/attributes";
 import { Skill } from "../helpers/skills";
-import { WeaponView } from "../components/weaponView";
+import WeaponView from "../components/weaponView";
 
 export interface ICharacterViewProperties extends WithTranslation {
     character: Character;

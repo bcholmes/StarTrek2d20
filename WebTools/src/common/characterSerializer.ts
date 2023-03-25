@@ -4,6 +4,7 @@ import {SpeciesHelper} from '../helpers/species';
 import {EnvironmentsHelper, Environment} from '../helpers/environments';
 import {Skill} from '../helpers/skills';
 import { Species } from '../helpers/speciesEnum';
+import i18next from 'i18next';
 
 export interface ICharacterData {
     name: string;
@@ -86,9 +87,9 @@ export class CharacterSerializer {
     public static serializeEnvironment(environment: Environment, otherSpecies: string, type: CharacterType) {
         let environmentModel = (environment == null /* or, implicitly, undefined */) ? undefined : EnvironmentsHelper.getEnvironment(environment, type);
         if (environmentModel) {
-            let result = environmentModel.name;
+            let result = environmentModel.localizedName;
             if (environment === Environment.AnotherSpeciesWorld) {
-                result += ` (${otherSpecies})`;
+                result = i18next.t('Environment.special.name', { name: result, species: otherSpecies, interpolation: { escapeValue: false } })
             }
             return result;
         } else {

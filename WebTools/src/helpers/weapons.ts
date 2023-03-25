@@ -294,8 +294,8 @@ export class Weapon {
         return this.type === WeaponType.CAPTURE;
     }
 
-    static createCharacterWeapon(name: string, dice: number, qualities: string, type: WeaponType) {
-        return new Weapon(UsageCategory.Character, name, dice, qualities, type);
+    static createCharacterWeapon(name: string, dice: number, qualities: string[], type: WeaponType) {
+        return new Weapon(UsageCategory.Character, name, dice, qualities.join(', '), type);
     }
 
     static createStarshipWeapon(name: string, type: WeaponType,

@@ -26,6 +26,8 @@
     text-align: right;
     text-transform: uppercase;
     width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .pill-left-sm {
@@ -49,6 +51,8 @@
     border-bottom-right-radius: 12px;
     line-height: normal;
     width: calc(100% - 120px - 0.25rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .pill-right-sm {

@@ -658,10 +658,10 @@ class HalfPageSupportingCharacterSheet extends BasicShortCharacterSheet {
         return 'Half-Page Supporting Character Sheet'
     }
     getThumbnailUrl(): string {
-        return 'https://sta.bcholmes.org/static/img/sheets/TNG_Supporting_Character_Half_Page.png'
+        return '/static/img/sheets/TNG_Supporting_Character_Half_Page.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/static/pdf/TNG_Supporting_Character_Half_Page.pdf'
+        return '/static/pdf/TNG_Supporting_Character_Half_Page.pdf'
     }
 }
 
@@ -698,10 +698,10 @@ class StandardTosCharacterSheet extends BasicFullCharacterSheet {
         return 'TOS Character Sheet (Landscape)'
     }
     getThumbnailUrl(): string {
-        return 'https://sta.bcholmes.org/static/img/sheets/TOS_Standard_Character_Sheet.png'
+        return '/static/img/sheets/TOS_Standard_Character_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/static/pdf/TOS_Standard_Character_Sheet.pdf'
+        return '/static/pdf/TOS_Standard_Character_Sheet.pdf'
     }
 }
 
@@ -711,10 +711,10 @@ class KlingonCharacterSheet extends BasicFullCharacterSheet {
         return 'Klingon Character Sheet'
     }
     getThumbnailUrl(): string {
-        return 'https://sta.bcholmes.org/static/img/sheets/STA_Klingon_Character_Sheet.png'
+        return '/static/img/sheets/STA_Klingon_Character_Sheet.png'
     }
     getPdfUrl(): string {
-        return 'https://sta.bcholmes.org/static/pdf/STA_Klingon_Character_Sheet.pdf'
+        return '/static/pdf/STA_Klingon_Character_Sheet.pdf'
     }
 
     populateForm(form: PDFForm, construct: Construct) {

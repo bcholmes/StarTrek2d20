@@ -15,25 +15,27 @@ import StarView from '../view/starView';
 import SystemMapLowerView from '../view/systemMapLowerView';
 import SystemMapUpperView from '../view/systemMapUpperView';
 import WorldView from '../view/worldView';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
-interface IStarSystemDetailsPageProperties extends IPageProperties {
+interface IStarSystemDetailsPageProperties extends WithTranslation {
     starSystem?: StarSystem;
 }
 
 class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProperties, {}> {
 
     render() {
+        const { t } = this.props;
 
         return (
             <div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SystemGeneration)}>System Generation</a></li>
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SectorDetails)}>Sector Details</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Star</li>
+                        <li className="breadcrumb-item"><a href="index.html">{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SystemGeneration)}>{t('Page.title.systemGeneration')}</a></li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SectorDetails)}>{t('Page.title.sectorDetails')}</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">{t('Page.title.starSystemDetails')}</li>
                     </ol>
                 </nav>
 
@@ -62,17 +64,17 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
                     </div>
                 </div>
                 <div className="mt-5">
-                    <Header level={2} className="mb-4">Worlds</Header>
+                    <Header level={2} className="mb-4">{t('StarSystem.common.worlds')}</Header>
                     <div>
-                        {this.renderWorlds("Inner Zone", 0, this.props.starSystem.gardenZoneInnerRadius)}
-                        {this.renderWorlds("Ecosphere", this.props.starSystem.gardenZoneInnerRadius, this.props.starSystem.gardenZoneOuterRadius)}
-                        {this.renderWorlds("Outer Zone", this.props.starSystem.gardenZoneOuterRadius)}
+                        {this.renderWorlds(t('StarSystem.common.innerZone'), 0, this.props.starSystem.gardenZoneInnerRadius)}
+                        {this.renderWorlds(t('StarSystem.common.ecosphere'), this.props.starSystem.gardenZoneInnerRadius, this.props.starSystem.gardenZoneOuterRadius)}
+                        {this.renderWorlds(t('StarSystem.common.outerZone'), this.props.starSystem.gardenZoneOuterRadius)}
                     </div>
                 </div>
 
                 <div>
                     <Button buttonType={true} className="mr-2 btn btn-primary btn-sm" text="Back to Sector" onClick={() => navigateTo(null, PageIdentity.SectorDetails) } />
-                    <Button onClick={() => this.exportPdf()} text="Export PDF" className="btn btn-primary btn-sm mr-2" buttonType={true} />
+                    <Button onClick={() => this.exportPdf()} text={t('Common.button.exportPdf')} className="btn btn-primary btn-sm mr-2" buttonType={true} />
                 </div>
             </div>);
     }
@@ -89,15 +91,6 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
             </div>);
         } else {
             return undefined;
-        }
-    }
-
-    renderTitle() {
-        let result = "Star System";
-        if (this.props.starSystem) {
-            return result + ' • ' + this.props.starSystem.name;
-        } else {
-            return result;
         }
     }
 
@@ -122,4 +115,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(StarSystemDetailsPage);
+export default withTranslation()(connect(mapStateToProps)(StarSystemDetailsPage));

@@ -10,7 +10,7 @@ import { CharacterSheetDialog } from "../components/characterSheetDialog";
 import { Header } from "../components/header";
 import { OutlineImage } from "../components/outlineImage";
 import { StatView } from "../components/StatView";
-import { WeaponView } from "../components/weaponView";
+import WeaponView from "../components/weaponView";
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { makeKey } from "../common/translationKey";
 

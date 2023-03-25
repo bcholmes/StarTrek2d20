@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
 import { character } from '../common/character';
 import { Navigation } from '../common/navigator';
-import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import { SpeciesHelper, SpeciesModel } from '../helpers/species';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
@@ -19,8 +18,9 @@ import { Header } from '../components/header';
 import { AttributeController, AttributeControllerFactory } from '../components/attributeController';
 import SpeciesAttributeComponent from '../components/speciesAttributeComponent';
 import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-interface ISpeciesDetailsProperties extends IPageProperties {
+interface ISpeciesDetailsProperties extends WithTranslation {
     allowCrossSpeciesTalents: boolean;
     allowEsotericTalents: boolean;
 }
@@ -42,8 +42,9 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
     }
 
     render() {
+        const { t } = this.props;
         let species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
-        const selectDesc = species.attributes.length > 3 ? "(Select three)" : "";
+        const selectDesc = species.attributes.length > 3 ? '(' + t('SpeciesDetails.selectThree') + ')' : "";
 
         return (
             <div className="page">
@@ -54,7 +55,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
 
                     <div className="row">
                         <div className="col-12 col-lg-6 my-4">
-                            <Header level={2}>ATTRIBUTES {selectDesc}</Header>
+                            <Header level={2}>{t('Construct.other.attributes')} {selectDesc}</Header>
                             <div className="mt-4">
                                 <SpeciesAttributeComponent controller={this.attributesController} />
                             </div>
@@ -66,13 +67,16 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
                         </div>
                     </div>
                     {this.renderTalentsSection(species)}
-                    <Button text="ENVIRONMENT" className="button-next" onClick={() => this.onNext()} />
+                    <div className="text-right mt-4">
+                        <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary" onClick={() => this.onNext()} />
+                    </div>
                 </div>
             </div>
         );
     }
 
     renderTraitSection(species: SpeciesModel) {
+        const { t } = this.props;
         let mixed = character.speciesStep?.mixedSpecies != null
             ? SpeciesHelper.getSpeciesByType(character.speciesStep?.mixedSpecies)
             : null;
@@ -87,7 +91,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
             : undefined;
 
         return (<div>
-                <Header level={2}>TRAIT</Header>
+                <Header level={2}>{t('Construct.other.trait')}</Header>
                 <div className="text-white my-3"><b>{species.trait}</b></div>
                 <div className="text-white">{species.traitDescription}</div>
                 {mixedTrait}
@@ -95,13 +99,14 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
     }
 
     renderTalentsSection(species: SpeciesModel) {
+        const { t } = this.props;
         let talents = [];
         talents.push(...TalentsHelper.getAllAvailableTalentsForCharacter(character));
 
         const esotericTalentOption = (hasSource(Source.PlayersGuide)) ? (<div>
                 <CheckBox
                     isChecked={this.props.allowEsotericTalents}
-                    text="Allow esoterric talents (GM's decision)"
+                    text={t('SpeciesDetails.allowEsoteric')}
                     value={!this.props.allowEsotericTalents}
                     onChanged={() => { store.dispatch(setAllowEsotericTalents(!this.props.allowEsotericTalents));  }} />
             </div>) : undefined;
@@ -117,7 +122,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
                     onSelection={talent => this.onTalentSelected(talent)} />
             </div>)
             : (<div>
-                <Header level={2}>SPECIES OPTIONS</Header>
+                <Header level={2}>{t('SpeciesDetails.options')}</Header>
                 <div>
                     {this.renderCrossSpeciesCheckbox()}
                 </div>
@@ -126,9 +131,10 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
     }
 
     private renderCrossSpeciesCheckbox() {
+        const { t } = this.props;
         return (<CheckBox
             isChecked={this.props.allowCrossSpeciesTalents}
-            text="Allow cross-species talents (GM's decision)"
+            text={t('SpeciesDetails.allowCrossSpecies')}
             value={!this.props.allowCrossSpeciesTalents}
             onChanged={() => {
                 store.dispatch(setAllowCrossSpeciesTalents(!this.props.allowCrossSpeciesTalents));
@@ -170,4 +176,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(SpeciesDetailsPage);
+export default withTranslation()(connect(mapStateToProps)(SpeciesDetailsPage));
