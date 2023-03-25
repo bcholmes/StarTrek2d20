@@ -11,6 +11,8 @@ import { Source } from '../helpers/sources';
 import { CheckBox } from '../components/checkBox';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { hasSource } from '../state/contextFunctions';
+import { withTranslation, WithTranslation } from 'react-i18next';
+import { Header } from '../components/header';
 
 interface IEnvironmentPageState {
     showSelection: boolean;
@@ -18,8 +20,8 @@ interface IEnvironmentPageState {
     showAlternates: boolean;
 }
 
-export class EnvironmentPage extends React.Component<IPageProperties, IEnvironmentPageState> {
-    constructor(props: IPageProperties) {
+class EnvironmentPage extends React.Component<WithTranslation, IEnvironmentPageState> {
+    constructor(props: WithTranslation) {
         super(props);
 
         this.state = {
@@ -30,12 +32,14 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
     }
 
     render() {
-        let showAlt = (hasSource(Source.PlayersGuide)) ? (<CheckBox isChecked={this.state.showAlternates} value={'alternates'} text="Allow alternate Environments (GM's decision)" onChanged={val => { this.setState(state => ({...state, showAlternates: !state.showAlternates}) ) }} />) : null;
+        const { t } = this.props;
+
+        let showAlt = (hasSource(Source.PlayersGuide)) ? (<CheckBox isChecked={this.state.showAlternates} value={'alternates'} text={t('EnvironmentPage.showAlt')} onChanged={val => { this.setState(state => ({...state, showAlternates: !state.showAlternates}) ) }} />) : null;
 
         let alt = (this.state.showAlternates)
                 ? (<div className="pl-2 pr-2">
-                    <Button className="button" text="Select Alternate Environment" onClick={() => this.showAlternateEnvironments()} />
-                    <Button className="button" text="Roll Alternate Environment" onClick={() => this.rollAlternateEnvironment()} />
+                    <Button className="button" text={t('EnvironmentPage.button.selectAltEnvironment')} onClick={() => this.showAlternateEnvironments()} />
+                    <Button className="button" text={t('EnvironmentPage.button.rollAltEnvironment')} onClick={() => this.rollAlternateEnvironment()} />
                    </div>)
                 : null;
 
@@ -45,13 +49,13 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
                 <div>
                     <InstructionText text={character.workflow.currentStep().description} />
                     <p>
-                        Either select or roll your Environment.
+                        {t('EnvironmentPage.simple.instruction')}
                     </p>
                     {showAlt}
                     <div className="row row-cols-md-2">
                         <div className="pl-2 pr-2">
-                            <Button className="button" text="Select Environment" onClick={() => this.showEnvironments() } />
-                            <Button className="button" text="Roll Environment" onClick={() => this.rollEnvironment() } />
+                            <Button className="button" text={t('EnvironmentPage.button.selectEnvironment')} onClick={() => this.showEnvironments() } />
+                            <Button className="button" text={t('EnvironmentPage.button.rollEnvironment')} onClick={() => this.rollEnvironment() } />
                         </div>
                         {alt}
                     </div>
@@ -61,13 +65,15 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
                 <EnvironmentSelection
                     alternate={this.state.alternate}
                     onSelection={(env, name) => this.selectEnvironment(env, name) }
-                    onCancel={() => this.hideEnvironments() } />
+                    onCancel={() => this.hideEnvironments() }
+                    character={character} />
             );
 
         return (
             <div className="page">
                 <div className="container ml-0">
                     <CharacterCreationBreadcrumbs />
+                    <Header>{t('Page.title.environment')}</Header>
                     {content}
                 </div>
             </div>
@@ -106,3 +112,5 @@ export class EnvironmentPage extends React.Component<IPageProperties, IEnvironme
         Navigation.navigateToPage(PageIdentity.EnvironmentDetails);
     }
 }
+
+export default withTranslation()(EnvironmentPage);

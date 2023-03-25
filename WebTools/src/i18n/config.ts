@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import Backend from "i18next-http-backend";
+import resourcesToBackend from 'i18next-resources-to-backend';
 
 // we're creating a custom detector because we want it to default to
 // a region-less version of the locale if the region-specific version
@@ -81,7 +81,7 @@ export const isLanguageOverridePresent = () => {
 
 
 i18n.use(initReactI18next)
-    .use(Backend)
+    .use(resourcesToBackend((language, namespace) => import(`./locales/${language}/${namespace}.json`)))
     .use(languageDetector)
     .init({
         fallbackLng: 'en',

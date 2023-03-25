@@ -151,18 +151,18 @@ class SupportingCharacterAttributes extends React.Component<IAttributeProperties
         });
 
         const checkValue = this.props.species === Species.Custom || this._species.attributes.length !== 3
-            ? <td>Select</td>
+            ? <td>{t('Common.text.select')}</td>
             : undefined;
 
         return (
             <table className="selection-list">
                 <thead>
                     <tr>
-                        <td>Attribute</td>
-                        <td>Value</td>
+                        <td>{t('Construct.other.attribute')}</td>
+                        <td>{t('SupportingCharacter.numericalValue')}</td>
                         {checkValue}
-                        <td>Species Bonus</td>
-                        <td>Total</td>
+                        <td>{t('SupportingCharacter.speciesBonus')}</td>
+                        <td>{t('Common.text.total')}</td>
                     </tr>
                 </thead>
                 <tbody>

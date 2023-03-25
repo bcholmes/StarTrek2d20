@@ -125,7 +125,7 @@ class XmlFormatViewerPage extends React.Component<{}, IXmlFormatViewerState> {
                 });
 
                 let environmentName = c.environment?._text;
-                EnvironmentsHelper.getEnvironments().forEach(e => {
+                EnvironmentsHelper.getEnvironments(character.type).forEach(e => {
                     if (environmentName.toLowerCase() === e.name.toLocaleLowerCase()) {
                         character.environmentStep = new EnvironmentStep(e.id);
                     }

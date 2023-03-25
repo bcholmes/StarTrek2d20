@@ -6,19 +6,21 @@ import {Skill} from '../helpers/skills';
 import {Button} from './button';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { makeKey } from '../common/translationKey';
+import { Character } from '../common/character';
 
 interface IEnvironmentSelectionProperties extends WithTranslation {
     alternate: boolean;
+    character: Character;
     onSelection: (env: Environment, name: string) => void;
     onCancel: () => void;
 }
 
 class EnvironmentSelection extends React.Component<IEnvironmentSelectionProperties, {}> {
     render() {
-        const { t } = this.props;
-        let environments = this.props.alternate ? EnvironmentsHelper.getAlternateEnvironments() : EnvironmentsHelper.getEnvironments();
+        const { t, character } = this.props;
+        let environments = this.props.alternate ? EnvironmentsHelper.getAlternateEnvironments() : EnvironmentsHelper.getEnvironments(character.type);
         var envs = environments.map((e, i) => {
-            const attributes = e.attributes.map((a, i) => {
+            const attributes = e.getAttributesForCharacter(character).map((a, i) => {
                 return <div key={'attr-' + i}>{t(makeKey('Construct.attribute.', Attribute[a])) }</div>;
             });
 
@@ -41,7 +43,6 @@ class EnvironmentSelection extends React.Component<IEnvironmentSelectionProperti
 
         return (
             <div>
-                <div className="header-text"><div>SELECT ENVIRONMENT</div></div>
                 <table className="selection-list">
                     <thead>
                         <tr>

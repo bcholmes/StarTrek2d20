@@ -81,8 +81,8 @@ class SupportingCharacterDisciplines extends React.Component<IProperties, IDisci
             <table className="selection-list">
                 <thead>
                     <tr>
-                        <td>Discipline</td>
-                        <td>Value</td>
+                        <td>{t('Construct.other.discipline')}</td>
+                        <td>{t('SupportingCharacter.numericalValue')}</td>
                     </tr>
                 </thead>
                 <tbody>

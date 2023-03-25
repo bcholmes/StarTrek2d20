@@ -13,7 +13,7 @@ const convertDataToTranslations = async (data) => {
     for (let i = 0; i < languages.length; i++) {
         console.log(i + " " + languages[i]);
 
-        let stream = await fs.createWriteStream(directory + '/WebTools/public/locales/' + languages[i] + '/translations.json');
+        let stream = await fs.createWriteStream(directory + '/WebTools/src/i18n/locales/' + languages[i] + '/translations.json');
         stream.write("{");
 
         let previousPrefix = null;
