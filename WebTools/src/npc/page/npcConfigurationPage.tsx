@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { CharacterTypeModel } from '../../common/characterType';
 import { navigateTo } from '../../common/navigator';
 import { Button } from '../../components/button';
-import { DropDownElement, DropDownInput } from '../../components/dropDownInput';
+import { DropDownElement, DropDownInput, DropDownSelect } from '../../components/dropDownInput';
 import { Header } from '../../components/header';
 import InstructionText from '../../components/instructionText';
 import { Era } from '../../helpers/eras';
@@ -62,10 +62,10 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                         <Header level={2}>NPC Type</Header>
 
                         <div className="my-4">
-                            <DropDownInput
-                                items={ NpcTypes.getNpcTypes().map(t => new DropDownElement(t.type, t.name)) }
+                            <DropDownSelect
+                                items={ NpcTypes.getNpcTypes().map(t => new DropDownElement(t.type, t.localizedName)) }
                                 defaultValue={ this.state.selectedNpcType }
-                                onChange={(index) => this.setState((state) => ({...state, selectedNpcType: NpcTypes.getNpcTypes()[index].type })) }/>
+                                onChange={(type) => this.setState((state) => ({...state, selectedNpcType: type as number })) }/>
                         </div>
 
                         <Header level={2} className="mt-5">Species</Header>

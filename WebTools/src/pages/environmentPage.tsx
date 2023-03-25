@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
 import {character, EnvironmentStep} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {Environment, EnvironmentsHelper} from '../helpers/environments';
 import {Button} from '../components/button';

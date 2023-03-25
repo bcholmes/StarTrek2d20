@@ -1,7 +1,7 @@
 ﻿import {Attribute, AttributesHelper} from './attributes';
 import {Skill} from './skills';
 import {SpeciesHelper} from './species';
-import {Character, character } from '../common/character';
+import {Character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Species } from './speciesEnum';
 import i18next from 'i18next';

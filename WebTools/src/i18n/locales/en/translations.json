@@ -61,6 +61,9 @@
     "EnvironmentPage.button.selectAltEnvironment": "Select Alternate Environment",
     "EnvironmentPage.button.rollAltEnvironment": "Roll Alternate Environment",
 
+    "EnvironmentPage.error.attributes": "You must select 1 Attribute to improve before proceeding.",
+    "EnvironmentPage.error.disciplines": "You must select 1 Discipline to improve before proceeding.",
+
     "EnvironmentPage.simple.instruction": "Either select or roll your Environment.",
 
     "EnvironmentPage.starfleet.instruction": "Regardless of their species, Starfleet officers come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.",
@@ -147,6 +150,7 @@
 
     "Common.text.none": "None",
     "Common.text.select": "Select",
+    "Common.text.selectOne": "Select one",
     "Common.text.total": "Total",
 
     "Common.select.choose": "Choose...",
@@ -433,6 +437,29 @@
     "MilestoneType.name.normalMilestone": "Normal Milestone",
     "MilestoneType.name.spotlightMilestone": "Spotlight Milestone",
     "MilestoneType.name.arcMilestone": "Arc Milestone",
+
+    "NpcType.minor.name": "Minor NPC",
+
+    "NpcType.notable.name": "Notable NPC",
+
+    "NpcType.major.name": "Major NPC",
+
+    "StarSystem.common.innerZone": "Inner Zone",
+    "StarSystem.common.ecosphere": "Ecosphere",
+    "StarSystem.common.outerZone": "Outer Zone",
+    "StarSystem.common.worlds": "Worlds",
+    "StarSystem.common.primaryStar": "Primary Star",
+    "StarSystem.common.companionStar": "Companion Star",
+
+    "Value.environment.text": "This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.",
+
+    "Value.starfleetTraining.text": "The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their time at the Academy.",
+
+    "Value.childEducation.text": "The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Education.",
+
+    "Value.otherTraining.text": "The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Training.",
+
+    "Value.final.text": "The character receives one final Value. This might reflect the Career Events rolled in Step Six, or it may represent some other element of the character. This Value might be a relationship, connecting the character to another character in the crew, or to another organization or culture in some way.",
 
     "World.attribute.designation": "Designation",
     "World.attribute.classification": "Classification",

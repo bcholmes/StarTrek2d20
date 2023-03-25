@@ -4,6 +4,7 @@ import { CharacterType } from '../common/characterType';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 import {CareersHelper} from '../helpers/careers';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import { Career } from '../helpers/careerEnum';
 
 export enum Value {
     Environment,
@@ -27,26 +28,26 @@ class ValueInput extends React.Component<IValueInputProperties, {}> {
 
         switch (this.props.value) {
             case Value.Environment:
-                description = "This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.";
+                description = t('Value.environment.text');
                 break;
             case Value.Track:
                 if (character.type === CharacterType.Starfleet) {
-                    description = "The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their time at the Academy."
+                    description = t('Value.starfleetTraining.text')
                 } else if (character.age.isChild()) {
-                    description = "The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Education."
+                    description = t('Value.childEducation.text')
                 } else {
-                    description = "The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Training."
+                    description = t('Value.otherTraining.text')
                 }
                 break;
             case Value.Career:
                 if (character.age.isChild() || character.type === CharacterType.Cadet) {
-                    description = "The character receives a value, which must reflect their inexperience and naïveté in some way.";
+                    description = CareersHelper.instance.getCareer(Career.Young).localizedDescription;
                 } else {
                     description = CareersHelper.instance.getCareer(character.career).localizedValueDescription;
                 }
                 break;
             case Value.Finish:
-                description = "The character receives one final Value. This might reflect the Career Events rolled in Step Six, or it may represent some other element of the character. This Value might be a relationship, connecting the character to another character in the crew, or to another organization or culture in some way.";
+                description = t('Value.final.text');
                 break;
         }
 

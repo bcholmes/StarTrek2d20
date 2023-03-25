@@ -1,4 +1,6 @@
 import { D20 } from "../../common/die";
+import i18next from 'i18next';
+import { makeKey } from '../../common/translationKey';
 
 export enum NpcType {
     Minor,
@@ -13,6 +15,10 @@ export class NpcTypeModel {
     constructor(type: NpcType, name: string) {
         this.type = type;
         this.name = name;
+    }
+
+    get localizedName() {
+        return i18next.t(makeKey('NpcType.', NpcType[this.type], ".name"));
     }
 }
 

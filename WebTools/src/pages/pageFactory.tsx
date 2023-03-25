@@ -5,7 +5,7 @@ import ToolSelectionPage from './toolSelectionPage';
 import SpeciesPage from './speciesPage';
 import SpeciesDetailsPage from './speciesDetailsPage';
 import EnvironmentPage from './environmentPage';
-import {EnvironmentDetailsPage} from './environmentDetailsPage';
+import EnvironmentDetailsPage from './environmentDetailsPage';
 import {UpbringingPage} from './upbringingPage';
 import {UpbringingDetailsPage} from './upbringingDetailsPage';
 import {StarfleetAcademyPage} from './starfleetAcademyPage';
