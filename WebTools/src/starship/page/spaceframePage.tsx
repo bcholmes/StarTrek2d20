@@ -11,28 +11,27 @@ import store from "../../state/store";
 import { BuildPoints } from "../model/buildPoints";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-interface ISpaceframePageProperties {
+interface ISpaceframePageProperties extends WithTranslation {
     starship: Starship;
     workflow: ShipBuildWorkflow;
 }
 
-export class SpaceframePage extends React.Component<ISpaceframePageProperties, {}> {
+class SpaceframePage extends React.Component<ISpaceframePageProperties, {}> {
 
     render() {
+        const { t } = this.props;
         return (
             <div className="page container ml-0">
                 <ShipBuildingBreadcrumbs />
-                <Header>Spaceframe Selection</Header>
+                <Header>{t('Page.title.spaceframeOption')}</Header>
 
-                <p>Do you want a standard spaceframe, or a custom spaceframe?</p>
+                <p>{t('SpaceframeOptionPage.text')}</p>
 
-                <div>
-                    <Button className="button" onClick={() => this.navigateToSpaceframeSelection() } buttonType={true}>Standard Spaceframe</Button>
-                </div>
-
-                <div>
-                    <Button className="button" onClick={() => this.navigateToCustomSpaceframe() } buttonType={true}>Custom Spaceframe</Button>
+                <div className="button-column">
+                    <Button className="button" onClick={() => this.navigateToSpaceframeSelection() } buttonType={true}>{t('SpaceframeOptionPage.button.standardSpaceframe')}</Button>
+                    <Button className="button" onClick={() => this.navigateToCustomSpaceframe() } buttonType={true}>{t('SpaceframeOptionPage.button.customSpaceframe')}</Button>
                 </div>
             </div>
         );
@@ -62,4 +61,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(SpaceframePage);
+export default withTranslation()(connect(mapStateToProps)(SpaceframePage));

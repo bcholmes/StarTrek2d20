@@ -23,7 +23,7 @@ class FinalStarshipDetailsPage extends React.Component<IFinalStarshipDetailsPage
     constructor(props) {
         super(props);
 
-        if (this.props.starship.type === CharacterType.Starfleet && this.props.starship.serviceYear && this.props.starship.registry == null) {
+        if (this.props.starship.type === CharacterType.Starfleet && this.props.starship.serviceYear && (this.props.starship.registry == null || this.props.starship.registry.length === 0)) {
             let registry = RegistryNumber.generate(this.props.starship.serviceYear,
                 this.props.starship.type,
                 this.props.starship.spaceframeModel);

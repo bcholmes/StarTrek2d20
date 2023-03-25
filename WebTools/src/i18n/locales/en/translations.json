@@ -91,6 +91,11 @@
 
     "ModificationCompletePage.instruction": "The character has been modified. You can view the revised character, or make another modification.\n\nYou might want to save the URL for the revised character.",
 
+    "SpaceframeOptionPage.text": "Do you want a standard spaceframe, or a custom spaceframe?",
+
+    "SpaceframeOptionPage.button.standardSpaceframe": "Standard Spaceframe",
+    "SpaceframeOptionPage.button.customSpaceframe": "Custom Spaceframe",
+
     "SpeciesDetails.options": "Species Options",
     "SpeciesDetails.selectThree": "(Select three)",
     "SpeciesDetails.allowCrossSpecies": "Allow cross-species talents (GM's decision)",
@@ -446,11 +451,20 @@
 
     "NpcType.major.name": "Major NPC",
 
+    "ShipBuildType.pod.name": "Pod",
+
+    "ShipBuildType.shuttle.name": "Shuttle",
+
+    "ShipBuildType.runabout.name": "Runabout",
+
+    "ShipBuildType.starship.name": "Starship",
+
     "StarSystem.common.coordinates": "Coordinates",
     "StarSystem.common.innerZone": "Inner Zone",
     "StarSystem.common.ecosphere": "Ecosphere",
     "StarSystem.common.outerZone": "Outer Zone",
     "StarSystem.common.worlds": "Worlds",
+    "StarSystem.common.noWorlds": "No worlds",
     "StarSystem.common.primaryStar": "Primary Star",
     "StarSystem.common.companionStar": "Companion Star",
 

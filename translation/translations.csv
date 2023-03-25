@@ -70,6 +70,9 @@ You might want to save the URL for the revised character.","Der Charakter wurde 
 Es ist ratsam, die URL des überarbeiteten Charakters zu speichern.",,"Le personnage a été modifié. Vous pouvez voir le personnage modifié ou faire une autre modification
  
 Vous pouvez vouloir sauvegarder l'URL pour le personnage modifié"
+SpaceframeOptionPage.text,"Do you want a standard spaceframe, or a custom spaceframe?",,,
+SpaceframeOptionPage.button.standardSpaceframe,Standard Spaceframe,,,
+SpaceframeOptionPage.button.customSpaceframe,Custom Spaceframe,,,
 SpeciesDetails.options,Species Options,Spezies-Optionen,,Option d'espèce
 SpeciesDetails.selectThree,(Select three),(Drei auswählen),,(Choisir trois)
 SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),Spezies-übergreifende Talente erlauben (Entscheidung liegt bei der Spielleitung),,Autoriser les talents inter-espèces (Decision du GM)
@@ -376,11 +379,16 @@ MilestoneType.name.arcMilestone,Arc Milestone,Handlungsbogen-Meilenstein,,Jalon 
 NpcType.minor.name,Minor NPC,,,
 NpcType.notable.name,Notable NPC,,,
 NpcType.major.name,Major NPC,,,
+ShipBuildType.pod.name,Pod,,,
+ShipBuildType.shuttle.name,Shuttle,,,
+ShipBuildType.runabout.name,Runabout,,,
+ShipBuildType.starship.name,Starship,,,
 StarSystem.common.coordinates,Coordinates,,,
 StarSystem.common.innerZone,Inner Zone,,,
 StarSystem.common.ecosphere,Ecosphere,,,
 StarSystem.common.outerZone,Outer Zone,,,
 StarSystem.common.worlds,Worlds,,,
+StarSystem.common.noWorlds,No worlds,,,
 StarSystem.common.primaryStar,Primary Star,,,
 StarSystem.common.companionStar,Companion Star,,,
 Value.environment.text,"This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.",,,

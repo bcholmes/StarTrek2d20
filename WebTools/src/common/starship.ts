@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import { allDepartments, Department } from "../helpers/departments";
 import { MissionPodModel } from "../helpers/missionPods";
 import { MissionProfileModel } from "../helpers/missionProfiles";
@@ -8,6 +9,7 @@ import { TalentSelection } from "../helpers/talentSelection";
 import StarshipWeaponRegistry, { Weapon } from "../helpers/weapons";
 import { CharacterType } from "./characterType";
 import { Construct, Stereotype } from "./construct";
+import { makeKey } from "./translationKey";
 
 export class SimpleStats {
     departments: number[];
@@ -67,6 +69,13 @@ export class ShipBuildTypeModel {
 
     static allTypes() {
         return ShipBuildTypeModel.TYPES;
+    }
+
+    static getByType(type: ShipBuildType) {
+        return ShipBuildTypeModel.TYPES[type];
+    }
+    get localizedName() {
+        return i18next.t(makeKey("ShipBuildType.", ShipBuildType[this.type], ".name"));
     }
 }
 

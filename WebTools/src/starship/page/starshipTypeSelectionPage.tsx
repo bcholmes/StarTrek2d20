@@ -58,9 +58,9 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                 <p>{t('StarshipTypeSelection.whatShipBuildType')}</p>
                 <div>
                     <DropDownSelect
-                        items={ ShipBuildTypeModel.allTypes().map((t, i) => new DropDownElement(t.type, t.name)) }
+                        items={ ShipBuildTypeModel.allTypes().map((t, i) => new DropDownElement(t.type, t.localizedName)) }
                         defaultValue={ this.state.buildType.type }
-                        onChange={(type) => this.selectBuildType(ShipBuildTypeModel.allTypes()[type as number] ) }/>
+                        onChange={(type) => this.selectBuildType(ShipBuildTypeModel.getByType(type as number)) }/>
                 </div>
             </div>);
 
@@ -84,7 +84,7 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                             {buildTypeSelection}
                         </div>
                     </div>
-                    <Button onClick={() => this.startWorkflow()} text='CREATE' />
+                    <Button onClick={() => this.startWorkflow()} text={t('Common.button.create')} />
                 </div>
             </div>
         );

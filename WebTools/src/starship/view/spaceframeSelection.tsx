@@ -10,8 +10,10 @@ import { SpaceframeModel } from '../../helpers/spaceframeModel';
 import { SpaceframeHelper } from '../../helpers/spaceframes';
 import { System } from '../../helpers/systems';
 import { hasAnySource } from '../../state/contextFunctions';
+import { withTranslation, WithTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
-interface ISpaceframeSelectionProperties {
+interface ISpaceframeSelectionProperties extends WithTranslation {
     serviceYear: number;
     starship: Starship;
     type: CharacterType;
@@ -33,6 +35,8 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
     }
 
     render() {
+        const { t } = this.props;
+
         let overrideCheckbox =(<CheckBox
             isChecked={this.state.allowAllFrames}
             text="Ignore end-of-service date (GM's decision)"
@@ -62,11 +66,11 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
                 <tbody key={i}>
                     <tr>
                         <td className="selection-header" rowSpan={4}>{f.name}</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Comms</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{i18next.t('Construct.system.comms')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{f.systems[System.Comms]}</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Engines</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{i18next.t('Construct.system.engines')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{f.systems[System.Engines]}</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Structure</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{i18next.t('Construct.system.structure')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{f.systems[System.Structure]}</td>
                         <td className="d=none d-md-table-cell" style={{ verticalAlign: "top", textAlign: "center" }} rowSpan={4}>{f.scale}</td>
                         <td className="d=none d-md-table-cell" style={{ verticalAlign: "top" }} rowSpan={4}>{talents}</td>
@@ -79,27 +83,27 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
                         </td>
                     </tr>
                     <tr>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Computers</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{i18next.t('Construct.system.computer')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{f.systems[System.Computer]}</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Sensors</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{i18next.t('Construct.system.sensors')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{f.systems[System.Sensors]}</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Weapons</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{i18next.t('Construct.system.weapons')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{f.systems[System.Weapons]}</td>
                     </tr>
                     <tr>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Command</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{i18next.t('Construct.department.command')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{formatAsDelta(f.departments[Department.Command])}</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Security</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{i18next.t('Construct.department.security')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{formatAsDelta(f.departments[Department.Security])}</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Science</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{i18next.t('Construct.department.science')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{formatAsDelta(f.departments[Department.Science])}</td>
                     </tr>
                     <tr>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Conn</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{i18next.t('Construct.department.conn')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{formatAsDelta(f.departments[Department.Conn])}</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Engineering</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{i18next.t('Construct.department.engineering')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{formatAsDelta(f.departments[Department.Engineering])}</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Medicine</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{i18next.t('Construct.department.medicine')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{formatAsDelta(f.departments[Department.Medicine])}</td>
                     </tr>
                 </tbody>
@@ -115,8 +119,8 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
                         <tr>
                             <td></td>
                             <td className="d=none d-md-table-cell" colSpan={6}>Stats</td>
-                            <td className="d=none d-md-table-cell">Scale</td>
-                            <td className="d=none d-md-table-cell">Talents</td>
+                            <td className="d=none d-md-table-cell">{t('Construct.other.scale')}</td>
+                            <td className="d=none d-md-table-cell">{t('Construct.other.talents')}</td>
                             <td></td>
                         </tr>
                     </thead>
@@ -135,4 +139,4 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
     }
 }
 
-export default SpaceframeSelection;
+export default withTranslation()(SpaceframeSelection);
