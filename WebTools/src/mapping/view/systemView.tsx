@@ -1,10 +1,10 @@
 import React from "react";
 import { Window } from "../../common/window";
 import { Button } from "../../components/button";
-import { IPageProperties } from "../../pages/iPageProperties";
 import { StarSystem } from "../table/starSystem";
+import { withTranslation, WithTranslation } from "react-i18next";
 
-interface ISystemViewProperties extends IPageProperties {
+interface ISystemViewProperties extends WithTranslation {
     system?: StarSystem;
     onClick: {() : void }
 }
@@ -12,15 +12,16 @@ interface ISystemViewProperties extends IPageProperties {
 class SystemView extends React.Component<ISystemViewProperties, {}> {
 
     render() {
+        const { t } = this.props;
         return  this.props.system ? (<tr  onClick={() => { if (Window.isCompact()) this.props.onClick(); }}>
             <td className="selection-header">{this.props.system.name}</td>
             <td>{this.props.system.star ? this.props.system.star.description : ""}</td>
             <td className="text-center">{this.props.system.worlds ? this.props.system.worlds.length : ""}</td>
             <td className="text-right">
-                <Button buttonType={true} text="View" className="button-small" onClick={() => this.props.onClick()}/>
+                <Button buttonType={true} text={t('Common.button.view')} className="button-small" onClick={() => this.props.onClick()}/>
             </td>
         </tr>) : null;
     }
 }
 
-export default SystemView;
+export default withTranslation()(SystemView);

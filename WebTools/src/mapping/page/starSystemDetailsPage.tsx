@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { navigateTo, Navigation } from '../../common/navigator';
 import { Button } from '../../components/button';
 import { Header } from '../../components/header';
-import {IPageProperties} from '../../pages/iPageProperties';
 import { PageIdentity } from '../../pages/pageIdentity';
 import { setStarSystemName } from '../../state/starActions';
 import store from '../../state/store';
@@ -42,7 +41,7 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
                 <EditableHeader prefix="System" text={this.props.starSystem.name} onChange={(text) => store.dispatch(setStarSystemName(text))}/>
 
                 <div className="row my-4">
-                    <div className="col-md-2 view-field-label pb-2">Coordinates:</div>
+                    <div className="col-md-2 view-field-label pb-2">{t('StarSystem.common.coordinates') + ":"}</div>
                     <div className="col-md-4 text-white">
                         <div className="view-border-bottom pb-2">
                             {this.props.starSystem ? this.props.starSystem.sectorCoordinates.description : ""}
@@ -58,8 +57,8 @@ class StarSystemDetailsPage extends React.Component<IStarSystemDetailsPageProper
                 <div>
                     <div className="row row-cols-1 row-cols-md-2">
                         <NotablePhenomenonView phenomenon={this.props.starSystem ? this.props.starSystem.phenomenon : undefined} />
-                        <StarView star={this.props.starSystem ? this.props.starSystem.star : undefined} title="Primary Star" />
-                        <StarView star={this.props.starSystem ? this.props.starSystem.companionStar : undefined} title="Companion Star"
+                        <StarView star={this.props.starSystem ? this.props.starSystem.star : undefined} title={t('StarSystem.common.primaryStar')} />
+                        <StarView star={this.props.starSystem ? this.props.starSystem.companionStar : undefined} title={t('StarSystem.common.companionStar')}
                             companionType={this.props.starSystem.companionType} orbitalRadius={this.props.starSystem.companionOrbitalRadius}/>
                     </div>
                 </div>

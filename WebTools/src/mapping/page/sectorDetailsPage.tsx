@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import copy from "copy-to-clipboard";
 import { navigateTo, Navigation } from "../../common/navigator";
 import { Header } from "../../components/header";
-import { IPageProperties } from "../../pages/iPageProperties";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { setSectorName, setStar } from "../../state/starActions";
 import store from "../../state/store";
@@ -17,23 +16,25 @@ import { Sector } from "../table/sector";
 import { StarSystem } from "../table/starSystem";
 import { PDFDocument } from "pdf-lib";
 import { PdfExporter } from "../export/pdfExporter";
+import { withTranslation, WithTranslation } from "react-i18next";
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
-interface ISectorDetailsPageProperties extends IPageProperties {
+interface ISectorDetailsPageProperties extends WithTranslation {
     sector: Sector;
 }
 
 class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}> {
 
     render() {
+        const { t } = this.props;
         return this.props.sector
         ?   (<div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>Home</a></li>
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SystemGeneration)}>System Generation</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Sector Details</li>
+                        <li className="breadcrumb-item"><a href="index.html">{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SystemGeneration)}>{t('Page.title.systemGeneration')}</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">{t('Page.title.sectorDetails')}</li>
                     </ol>
                 </nav>
 
@@ -53,8 +54,8 @@ class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}
                         <thead>
                             <tr>
                                 <td>System Identifier</td>
-                                <td>Primary Star</td>
-                                <td>Worlds</td>
+                                <td>{t('StarSystem.common.primaryStar')}</td>
+                                <td className="text-center">{t('StarSystem.common.worlds')}</td>
                                 <td></td>
                             </tr>
                         </thead>
@@ -64,7 +65,7 @@ class SectorDetailsPage extends React.Component<ISectorDetailsPageProperties, {}
                     </table>
                 </div>
                 <div className="mt-3">
-                    <Button onClick={() => this.exportPdf()} text="Export PDF" className="button-small mr-2" buttonType={true} />
+                    <Button onClick={() => this.exportPdf()} text={t('Common.button.exportPdf')} className="button-small mr-2" buttonType={true} />
                 </div>
             </div>)
         : null;
@@ -102,4 +103,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(SectorDetailsPage);
+export default withTranslation()(connect(mapStateToProps)(SectorDetailsPage));

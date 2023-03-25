@@ -5,6 +5,7 @@ import { Color } from "../../common/colour";
 import { CompanionType, StarSystem } from "../table/starSystem";
 import { createRandomValue } from "../../common/randomValueGenerator";
 import { AsteroidBeltDetails, WorldClass } from "../table/world";
+import i18next from "i18next";
 
 const BULLET = '\u2022';
 
@@ -230,7 +231,7 @@ export class PdfExporter {
         let lineHeight = font.heightAtSize(12, { descender: true });
         let currentLine = 60 + lineHeight;
 
-        this.addLabelAndValue(page, "Coordinates:",
+        this.addLabelAndValue(page, i18next.t('StarSystem.common.coordinates'),
             "" + system.sectorCoordinates.x.toFixed(2) + ", "
             + system.sectorCoordinates.y.toFixed(2) + ", "
             + system.sectorCoordinates.z.toFixed(2), font, light, PdfExporter.COLUMN_ONE, currentLine);
@@ -242,7 +243,7 @@ export class PdfExporter {
         let blockLine = currentLine;
 
         if (system.star) {
-            this.addPillHeader(page, "Primary Star", font, currentLine, PdfExporter.COLUMN_ONE, 361);
+            this.addPillHeader(page, i18next.t('StarSystem.common.primaryStar'), font, currentLine, PdfExporter.COLUMN_ONE, 361);
 
             currentLine += 20;
 
@@ -275,7 +276,7 @@ export class PdfExporter {
 
         if (system.companionStar) {
             currentLine = blockLine;
-            this.addPillHeader(page, "Companion Star", font, currentLine, PdfExporter.COLUMN_TWO, 576);
+            this.addPillHeader(page, i18next.t('StarSystem.common.companionStar'), font, currentLine, PdfExporter.COLUMN_TWO, 576);
 
             currentLine += 20;
 
@@ -318,7 +319,7 @@ export class PdfExporter {
         }
 
         currentLine += 25 + lineHeight;
-        this.addPillHeader(page, "Worlds", font, currentLine, PdfExporter.COLUMN_ONE, 576);
+        this.addPillHeader(page, i18next.t('StarSystem.common.worlds'), font, currentLine, PdfExporter.COLUMN_ONE, 576);
         currentLine += 20;
 
         if (system.worlds?.length) {
@@ -327,7 +328,7 @@ export class PdfExporter {
             let ecosphereWorlds = system.worldsAndSatelliteWorlds.filter(w => w.orbitalRadius >= system.gardenZoneInnerRadius && w.orbitalRadius < system.gardenZoneOuterRadius);
             let outerWorlds = system.worldsAndSatelliteWorlds.filter(w => w.orbitalRadius >= system.gardenZoneOuterRadius);
 
-            let titles = ["Inner Worlds", "Ecosphere", "Outer Worlds"];
+            let titles = [i18next.t('StarSystem.common.innerZone'), i18next.t('StarSystem.common.ecosphere'), i18next.t('StarSystem.common.outerZone')];
             let worldLists = [innerWorlds, ecosphereWorlds, outerWorlds];
 
             for (let i = 0; i < titles.length; i++) {
@@ -803,7 +804,7 @@ export class PdfExporter {
             color: PdfExporter.LCARS_BLACK
         });
 
-        page.drawText("Primary Star", {
+        page.drawText(i18next.t('StarSystem.common.primaryStar'), {
             x: 300,
             y: page.getHeight() - currentLine,
             size: 12.0,
@@ -811,8 +812,8 @@ export class PdfExporter {
             color: PdfExporter.LCARS_BLACK
         });
 
-        page.drawText("Worlds", {
-            x: 565 - bold.widthOfTextAtSize("Worlds", 12),
+        page.drawText(i18next.t('StarSystem.common.worlds'), {
+            x: 565 - bold.widthOfTextAtSize(i18next.t('StarSystem.common.worlds'), 12),
             y: page.getHeight() - currentLine,
             size: 12.0,
             font: bold,

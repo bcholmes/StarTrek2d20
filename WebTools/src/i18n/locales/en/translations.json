@@ -446,6 +446,7 @@
 
     "NpcType.major.name": "Major NPC",
 
+    "StarSystem.common.coordinates": "Coordinates",
     "StarSystem.common.innerZone": "Inner Zone",
     "StarSystem.common.ecosphere": "Ecosphere",
     "StarSystem.common.outerZone": "Outer Zone",
@@ -465,6 +466,8 @@
 
     "Weapon.common.name": "Name/Type",
     "Weapon.common.qualities": "Qualities",
+
+    "Weapon.personal.phaser1.name": "Phaser type-1",
 
     "Weapon.personal.phaser2.name": "Phaser type-2",
 
