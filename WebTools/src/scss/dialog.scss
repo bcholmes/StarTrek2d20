@@ -190,13 +190,18 @@
       max-width: 90%;
   }
 
-  .modal-dialog.sheet-selection-item {
+  .modal-dialog .sheet-selection-item {
     padding: 12px;
     width: 166px;
   }
+
+  .modal-dialog .sheet-selection-item  .sheet-selection-item-thumbnail {
+    width: 140px;
+    height: 183px;
+  }
+
   .modal-dialog .sheet-selection-item  .sheet-selection-item-thumbnail img.thumbnail {
     width: 140px;
-    height: 186px;
   }
 
   .modal-dialog .sheet-selection-item  .sheet-selection-item-name {
