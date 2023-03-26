@@ -879,7 +879,24 @@
                 "gender": "Male",
                 "type": "FirstName",
                 "tags": [
-                    "French"
+                    "French",
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Abdoul",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Abdoulaye",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -1474,11 +1491,27 @@
                 ]
             },
             {
+                "name": "Ablaye",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Aboagye",
                 "gender": "Male",
                 "type": "FirstName",
                 "tags": [
                     "Ghanaian"
+                ]
+            },
+            {
+                "name": "Abou",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -1576,6 +1609,14 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Aby",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -2167,6 +2208,14 @@
                     "Jewish",
                     "Common",
                     "French"
+                ]
+            },
+            {
+                "name": "Adama",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -4259,7 +4308,8 @@
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
-                    "Italian"
+                    "Italian",
+                    "Senegalese"
                 ]
             },
             {
@@ -4663,6 +4713,22 @@
                 "type": "FirstName",
                 "tags": [
                     "Irish"
+                ]
+            },
+            {
+                "name": "Aissata",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Aissatou",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -5121,6 +5187,14 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Alassane",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -5855,6 +5929,22 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Aliou",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Alioune",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -7011,6 +7101,14 @@
                 ]
             },
             {
+                "name": "Aly",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Alyana",
                 "gender": "Female",
                 "type": "FirstName",
@@ -7178,6 +7276,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Amadou",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -7549,6 +7655,14 @@
                 ]
             },
             {
+                "name": "Aminata",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Aminda",
                 "gender": "Female",
                 "type": "FirstName",
@@ -7634,7 +7748,8 @@
                 "type": "FirstName",
                 "tags": [
                     "German",
-                    "French"
+                    "French",
+                    "Senegalese"
                 ]
             },
             {
@@ -8533,6 +8648,14 @@
                 ]
             },
             {
+                "name": "Anta",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Antek",
                 "gender": "Male",
                 "type": "FirstName",
@@ -8960,6 +9083,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Arame",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -10147,6 +10278,14 @@
                 ]
             },
             {
+                "name": "Assane",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Asser",
                 "gender": "Male",
                 "type": "FirstName",
@@ -10216,6 +10355,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Scandinavian"
+                ]
+            },
+            {
+                "name": "Astou",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -11256,6 +11403,14 @@
                 ]
             },
             {
+                "name": "Awa",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Awad",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -11852,6 +12007,14 @@
             },
             {
                 "name": "Ba",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Ba",
                 "type": "LastName",
                 "gender": "Unisex",
                 "tags": [
@@ -11880,6 +12043,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Japanese"
+                ]
+            },
+            {
+                "name": "Babacar",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -11992,6 +12163,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Afghan"
+                ]
+            },
+            {
+                "name": "Badji",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -12336,6 +12515,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Italian"
+                ]
+            },
+            {
+                "name": "Balde",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -13428,6 +13615,14 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Bassirou",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -16065,6 +16260,14 @@
                 ]
             },
             {
+                "name": "Bineta",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Binh",
                 "gender": "Unisex",
                 "type": "FirstName",
@@ -16086,6 +16289,22 @@
                 "type": "FirstName",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Binta",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Bintou",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -17011,6 +17230,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Ghanaian"
+                ]
+            },
+            {
+                "name": "Boubacar",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -19686,6 +19913,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Camara",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -22923,6 +23158,14 @@
                 ]
             },
             {
+                "name": "Cheikh",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Chela",
                 "gender": "Female",
                 "type": "FirstName",
@@ -24101,6 +24344,14 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Cisse",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -25739,6 +25990,14 @@
                 ]
             },
             {
+                "name": "Coumba",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Courey",
                 "gender": "Male",
                 "type": "FirstName",
@@ -26256,6 +26515,14 @@
                 ]
             },
             {
+                "name": "Daba",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Dabora",
                 "gender": "Female",
                 "type": "FirstName",
@@ -26707,6 +26974,14 @@
                 ]
             },
             {
+                "name": "Dame",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Dametta",
                 "gender": "Male",
                 "type": "FirstName",
@@ -26963,6 +27238,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Jewish"
+                ]
+            },
+            {
+                "name": "Daouda",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -28043,6 +28326,14 @@
                 ]
             },
             {
+                "name": "Demba",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Demetra",
                 "gender": "Female",
                 "type": "FirstName",
@@ -28479,11 +28770,35 @@
                 ]
             },
             {
+                "name": "Dia",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Diagne",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Diahann",
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Diallo",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -28559,6 +28874,14 @@
                 ]
             },
             {
+                "name": "Diao",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Diarmaid",
                 "gender": "Male",
                 "type": "FirstName",
@@ -28580,6 +28903,22 @@
                 "type": "FirstName",
                 "tags": [
                     "Irish"
+                ]
+            },
+            {
+                "name": "Diatta",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Diaw",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -28671,6 +29010,14 @@
                 ]
             },
             {
+                "name": "Diedhiou",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Diedre",
                 "gender": "Male",
                 "type": "FirstName",
@@ -28701,6 +29048,14 @@
                 "tags": [
                     "Italian",
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Dieng",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -28789,6 +29144,22 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Dieye",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Dieynaba",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -28920,6 +29291,14 @@
                 ]
             },
             {
+                "name": "Dione",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Dionicio",
                 "gender": "Male",
                 "type": "FirstName",
@@ -28952,11 +29331,27 @@
                 ]
             },
             {
+                "name": "Diop",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Dior",
                 "gender": "Unisex",
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Diouf",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -29005,6 +29400,22 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Djibril",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Djiby",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -29723,6 +30134,14 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Drame",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -31845,6 +32264,14 @@
                 ]
             },
             {
+                "name": "El",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Elaf",
                 "gender": "Male",
                 "type": "FirstName",
@@ -32049,6 +32476,14 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Elhadji",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -36493,11 +36928,27 @@
                 ]
             },
             {
+                "name": "Fall",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Falon",
                 "gender": "Male",
                 "type": "FirstName",
                 "tags": [
                     "Irish"
+                ]
+            },
+            {
+                "name": "Fama",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -36717,11 +37168,36 @@
                 ]
             },
             {
+                "name": "Fatimata",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Fatou",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Fatoumata",
                 "gender": "Female",
                 "type": "FirstName",
                 "tags": [
-                    "French"
+                    "French",
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Faty",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -36820,6 +37296,14 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Faye",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -40667,6 +41151,14 @@
                 ]
             },
             {
+                "name": "Gaye",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Gaylord",
                 "gender": "Male",
                 "type": "FirstName",
@@ -43212,7 +43704,8 @@
                 "gender": "Male",
                 "type": "FirstName",
                 "tags": [
-                    "Hindi"
+                    "Hindi",
+                    "Senegalese"
                 ]
             },
             {
@@ -44202,6 +44695,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Gueye",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -46665,6 +47166,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Hawa",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -49807,11 +50316,27 @@
                 ]
             },
             {
+                "name": "Ibra",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Ibrahim",
                 "type": "LastName",
                 "gender": "Unisex",
                 "tags": [
                     "Afghan"
+                ]
+            },
+            {
+                "name": "Ibrahima",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -49869,6 +50394,14 @@
                 "tags": [
                     "German",
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Idrissa",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -50506,6 +51039,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Jewish"
+                ]
+            },
+            {
+                "name": "Issa",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -53981,6 +54522,14 @@
                 ]
             },
             {
+                "name": "Ka",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Kaameh",
                 "gender": "Female",
                 "type": "FirstName",
@@ -54763,6 +55312,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Kane",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -55669,6 +56226,14 @@
                 ]
             },
             {
+                "name": "Kebe",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Kedzierski",
                 "gender": "Unisex",
                 "type": "LastName",
@@ -56356,6 +56921,30 @@
                 ]
             },
             {
+                "name": "Khadidiatou",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Khadim",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Khady",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Khair",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -56497,6 +57086,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Khoudia",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -58690,6 +59287,14 @@
                 "type": "FirstName",
                 "tags": [
                     "African-American"
+                ]
+            },
+            {
+                "name": "Lamine",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -61388,6 +61993,14 @@
             },
             {
                 "name": "Lo",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Lo",
                 "type": "LastName",
                 "gender": "Unisex",
                 "tags": [
@@ -63013,6 +63626,14 @@
             },
             {
                 "name": "Ly",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Ly",
                 "type": "LastName",
                 "gender": "Unisex",
                 "tags": [
@@ -63985,6 +64606,14 @@
                 ]
             },
             {
+                "name": "Magatte",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Magd",
                 "gender": "Female",
                 "type": "FirstName",
@@ -64103,6 +64732,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Irish"
+                ]
+            },
+            {
+                "name": "Maguette",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -64319,6 +64956,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Irish"
+                ]
+            },
+            {
+                "name": "Maimouna",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -64751,6 +65396,14 @@
                 ]
             },
             {
+                "name": "Malick",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Malik",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -64946,6 +65599,14 @@
                 ]
             },
             {
+                "name": "Mamadou",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Mamaine",
                 "gender": "Female",
                 "type": "FirstName",
@@ -64959,6 +65620,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Irish"
+                ]
+            },
+            {
+                "name": "Mame",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -65039,6 +65708,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Polish"
+                ]
+            },
+            {
+                "name": "Mane",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -65778,6 +66455,14 @@
                 ]
             },
             {
+                "name": "Mareme",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Mareo",
                 "gender": "Male",
                 "type": "FirstName",
@@ -66044,6 +66729,14 @@
                 ]
             },
             {
+                "name": "Mariama",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Marian",
                 "gender": "Female",
                 "type": "FirstName",
@@ -66157,7 +66850,8 @@
                 "tags": [
                     "Common",
                     "French",
-                    "German"
+                    "German",
+                    "Senegalese"
                 ]
             },
             {
@@ -66174,6 +66868,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Italian"
+                ]
+            },
+            {
+                "name": "Marieme",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -66906,6 +67608,7 @@
             },
             {
                 "name": "Martin",
+                "variants": ["Marty"],
                 "gender": "Male",
                 "type": "FirstName",
                 "tags": [
@@ -67663,6 +68366,14 @@
                 ]
             },
             {
+                "name": "Maty",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Matylda",
                 "gender": "Female",
                 "type": "FirstName",
@@ -68120,6 +68831,38 @@
                 "gender": "Unisex",
                 "tags": [
                     "Italian"
+                ]
+            },
+            {
+                "name": "Mbaye",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Mbaye",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Mbene",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Mbengue",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -68841,6 +69584,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Mendy",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -70532,6 +71283,14 @@
                 ]
             },
             {
+                "name": "Modou",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Moe",
                 "gender": "Female",
                 "type": "FirstName",
@@ -71095,6 +71854,14 @@
                 ]
             },
             {
+                "name": "Mor",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Mora",
                 "gender": "Female",
                 "type": "FirstName",
@@ -71368,6 +72135,14 @@
                 ]
             },
             {
+                "name": "Mouhamadou",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Moulin",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -71381,6 +72156,22 @@
                 "type": "FirstName",
                 "tags": [
                     "Pakistani"
+                ]
+            },
+            {
+                "name": "Moussa",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Moustapha",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -73885,6 +74676,54 @@
                 ]
             },
             {
+                "name": "Ndao",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Ndeye",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Ndiaga",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Ndiaye",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Ndour",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Ndoye",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Ne",
                 "gender": "Female",
                 "type": "FirstName",
@@ -74386,6 +75225,22 @@
                 "type": "FirstName",
                 "tags": [
                     "Vietnamese"
+                ]
+            },
+            {
+                "name": "Ngom",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Ngone",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -75888,6 +76743,14 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Nogaye",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -77474,6 +78337,14 @@
                 ]
             },
             {
+                "name": "Omar",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Ombretta",
                 "gender": "Female",
                 "type": "FirstName",
@@ -78455,6 +79326,46 @@
                 ]
             },
             {
+                "name": "Oumar",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Oumou",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Oumy",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Ousmane",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Ousseynou",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Outacite",
                 "gender": "Unisex",
                 "type": "FirstName",
@@ -78911,7 +79822,16 @@
                 "gender": "Male",
                 "type": "FirstName",
                 "tags": [
-                    "Italian"
+                    "Italian",
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Pape",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -79578,6 +80498,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Spanish"
+                ]
+            },
+            {
+                "name": "Penda",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -83148,6 +84076,22 @@
                 ]
             },
             {
+                "name": "Ramata",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Ramatoulaye",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Rambert",
                 "gender": "Male",
                 "type": "FirstName",
@@ -86487,6 +87431,14 @@
                 ]
             },
             {
+                "name": "Rokhaya",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Rokilda",
                 "gender": "Female",
                 "type": "FirstName",
@@ -88687,6 +89639,14 @@
                 ]
             },
             {
+                "name": "Sadio",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Sadowski",
                 "gender": "Unisex",
                 "type": "LastName",
@@ -88748,6 +89708,14 @@
                 "gender": "Unisex",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Sagna",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -88951,6 +89919,22 @@
                 ]
             },
             {
+                "name": "Saliou",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Sall",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Salma",
                 "gender": "Female",
                 "type": "FirstName",
@@ -89144,6 +90128,22 @@
                 ]
             },
             {
+                "name": "Samb",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Samba",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Samuel",
                 "gender": "Male",
                 "type": "FirstName",
@@ -89285,6 +90285,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Italian"
+                ]
+            },
+            {
+                "name": "Sane",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -89614,6 +90622,14 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Sarr",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -90340,6 +91356,14 @@
                 ]
             },
             {
+                "name": "Seck",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Sedehanna",
                 "gender": "Female",
                 "type": "FirstName",
@@ -90622,6 +91646,14 @@
                 ]
             },
             {
+                "name": "Sene",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Sengupta",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -90752,6 +91784,14 @@
                 "type": "FirstName",
                 "tags": [
                     "German"
+                ]
+            },
+            {
+                "name": "Serigne",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -90936,6 +91976,22 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Seye",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
+                "name": "Seynabou",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -92564,6 +93620,14 @@
                 ]
             },
             {
+                "name": "Sidy",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Siegbert",
                 "gender": "Male",
                 "type": "FirstName",
@@ -93501,6 +94565,14 @@
                 ]
             },
             {
+                "name": "Soda",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Sodhi",
                 "gender": "Male",
                 "type": "FirstName",
@@ -93577,6 +94649,14 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Sokhna",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -94001,6 +95081,14 @@
                 ]
             },
             {
+                "name": "Souleymane",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Souma",
                 "gender": "Male",
                 "type": "FirstName",
@@ -94023,6 +95111,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Hindi"
+                ]
+            },
+            {
+                "name": "Sow",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -94876,6 +95972,14 @@
                 ]
             },
             {
+                "name": "Sy",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Syaoran",
                 "type": "FirstName",
                 "gender": "Male",
@@ -94913,6 +96017,14 @@
                 "type": "FirstName",
                 "tags": [
                     "French"
+                ]
+            },
+            {
+                "name": "Sylla",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -97003,6 +98115,14 @@
                 ]
             },
             {
+                "name": "Thiam",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Thibaud",
                 "gender": "Male",
                 "type": "FirstName",
@@ -97032,6 +98152,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Vietnamese"
+                ]
+            },
+            {
+                "name": "Thierno",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -98321,6 +99449,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Japanese"
+                ]
+            },
+            {
+                "name": "Toure",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {
@@ -100702,6 +101838,14 @@
                 ]
             },
             {
+                "name": "Wade",
+                "gender": "Unisex",
+                "type": "LastName",
+                "tags": [
+                    "Senegalese"
+                ]
+            },
+            {
                 "name": "Wadhawan",
                 "type": "LastName",
                 "gender": "Unisex",
@@ -101607,6 +102751,14 @@
                 "type": "FirstName",
                 "tags": [
                     "Ghanaian"
+                ]
+            },
+            {
+                "name": "Yacine",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Senegalese"
                 ]
             },
             {

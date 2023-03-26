@@ -1,11 +1,13 @@
+import i18next from 'i18next';
 import * as React from 'react';
 
 import { Starship } from '../../common/starship';
 import { CheckBox } from '../../components/checkBox';
 import { Department } from '../../helpers/departments';
 import { MissionProfileHelper, MissionProfileModel } from '../../helpers/missionProfiles';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-interface IMissionProfileSelectionProperties {
+interface IMissionProfileSelectionProperties extends WithTranslation {
     initialSelection?: MissionProfileModel;
     starship: Starship;
     onSelection: (s: MissionProfileModel) => void;
@@ -14,6 +16,8 @@ interface IMissionProfileSelectionProperties {
 class MissionProfileSelection extends React.Component<IMissionProfileSelectionProperties, {}> {
 
     render() {
+        const { t } = this.props;
+
         const starship = this.props.starship;
         const missionProfiles = MissionProfileHelper.getMissionProfiles(this.props.starship).map((m, i) => {
             const talents = m.talents.map((t, ti) => {
@@ -29,11 +33,11 @@ class MissionProfileSelection extends React.Component<IMissionProfileSelectionPr
                 <tbody key={i}>
                     <tr>
                         <td className="" rowSpan={2}><div className="selection-header">{m.name}</div> {notes}</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Command</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{t('Construct.department.command')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{m.departments[Department.Command]}</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Security</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{t('Construct.department.security')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{m.departments[Department.Security]}</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Science</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{t('Construct.department.science')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{m.departments[Department.Science]}</td>
                         <td className="d=none d-md-table-cell" style={{ verticalAlign: "top", paddingLeft: "0.75rem" }} rowSpan={2}><div style={{minHeight: "80px" }}>{talents}</div></td>
                         <td rowSpan={2}>
@@ -45,11 +49,11 @@ class MissionProfileSelection extends React.Component<IMissionProfileSelectionPr
                         </td>
                     </tr>
                     <tr>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Conn</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{t('Construct.department.conn')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{m.departments[Department.Conn]}</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Engineering</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{t('Construct.department.engineering')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{m.departments[Department.Engineering]}</td>
-                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>Medicine</td>
+                        <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{t('Construct.department.medicine')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{m.departments[Department.Medicine]}</td>
                     </tr>
                 </tbody>
@@ -62,7 +66,7 @@ class MissionProfileSelection extends React.Component<IMissionProfileSelectionPr
                     <thead>
                         <tr>
                             <th></th>
-                            <th className="d=none d-md-table-cell" style={{ textAlign: "left"}} colSpan={6}>Departments</th>
+                            <th className="d=none d-md-table-cell" style={{ textAlign: "left"}} colSpan={6}>{t('Construct.other.departments')}</th>
                             <th className="d=none d-md-table-cell" style={{ textAlign: "left",  paddingLeft: "0.75rem"}}>Talent options</th>
                             <th></th>
                         </tr>
@@ -74,4 +78,4 @@ class MissionProfileSelection extends React.Component<IMissionProfileSelectionPr
 
 }
 
-export default MissionProfileSelection;
+export default withTranslation()(MissionProfileSelection);

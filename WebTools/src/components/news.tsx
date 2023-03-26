@@ -12,6 +12,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230326</b>
+                <ul>
+                    <li>I've added a new 2-page character sheet, with some player helper text.</li>
+                </ul>
                 <b>v1.230324</b>
                 <ul>
                     <li>More work on translations.</li>

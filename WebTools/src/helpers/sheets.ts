@@ -1019,6 +1019,99 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
     }
 }
 
+class TwoPageTngLandscapeCharacterSheet extends BaseTextCharacterSheet {
+    getName(): string {
+        return '2-Page TNG Character Sheet (Landscape)'
+    }
+    getThumbnailUrl(): string {
+        return '/static/img/sheets/TNG_Two_Page_Landscape_Character_Sheet.png'
+    }
+    getPdfUrl(): string {
+        return '/static/pdf/TNG_Two_Page_Landscape_Character_Sheet.pdf'
+    }
+
+    async populate(pdf: PDFDocument, construct: Construct) {
+        pdf.registerFontkit(fontkit);
+        await super.populate(pdf, construct);
+
+        // pdf-lib does awful things to empty multi-line fields
+        // See: https://github.com/Hopding/pdf-lib/discussions/1196
+        let form = pdf.getForm();
+        form.getFields().forEach(f => {
+            if (f instanceof PDFTextField) {
+                let textField = f as PDFTextField;
+                if (textField.isMultiline() && (textField.getText() == null || textField.getText().length === 0)) {
+                    textField.updateAppearances(helvetica, staTextFieldAppearanceProvider);
+                }
+            }
+        });
+
+        const page = pdf.getPages()[0];
+
+        const symbolFontBytes = await fetch("/static/font/Trek_Arrowheads.ttf").then(res => res.arrayBuffer());
+
+        const helveticaBold = await pdf.embedFont(StandardFonts.HelveticaBold);
+        const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
+        const symbolFont = await pdf.embedFont(symbolFontBytes);
+
+        const titleStyle = new FontSpecification(helveticaBold, 8);
+        const paragraphStyle = new FontSpecification(helvetica, 8);
+        const symbolStyle = new FontSpecification(symbolFont, 8);
+
+        let currentColumn = new Column(573, 45, 563-45, 757-573);
+
+        this.writeRoleAndTalents(page, construct as Character, titleStyle, paragraphStyle, symbolStyle, currentColumn);
+    }
+
+    populateForm(form: PDFForm, construct: Construct): void {
+        super.populateForm(form, construct);
+        const character = construct as Character;
+
+        this.fillField(form, "Pronouns", character.pronouns);
+        if (character.careerEvents && character.careerEvents.length > 0) {
+            let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0], character.type);
+            if (event1) {
+                this.fillField(form, 'Career Event 1', event1.name);
+            }
+
+            if (character.careerEvents && character.careerEvents.length > 1) {
+                let event2 = CareerEventsHelper.getCareerEvent(character.careerEvents[1], character.type);
+                if (event2) {
+                    this.fillField(form, 'Career Event 2', event2.name);
+                }
+            }
+        }
+
+        this.fillField(form, "Sprint", "" + (character.attributes[Attribute.Fitness].value + character.skills[Skill.Security].expertise));
+        this.fillField(form, "First Aid", "" + (character.attributes[Attribute.Daring].value + character.skills[Skill.Medicine].expertise));
+        this.fillField(form, "Ranged Attack", "" + (character.attributes[Attribute.Control].value + character.skills[Skill.Security].expertise));
+        this.fillField(form, "Melee Attack", "" + (character.attributes[Attribute.Daring].value + character.skills[Skill.Security].expertise));
+    }
+
+    fillName(form: PDFForm, character: Character) {
+        this.fillField(form, 'Name', this.formatNameWithoutPronouns(character));
+    }
+
+    fillCheckbox(form: PDFForm, name: string, value: boolean) {
+        try {
+            const field = form.getCheckBox(name);
+            this.fillCheckboxValue(form, field, value);
+        } catch (e) {
+            // ignore it
+        }
+    }
+
+    fillCheckboxValue(form: PDFForm, field: PDFCheckBox, value: boolean) {
+        if (field) {
+            if (value) {
+                form.removeField(field);
+            } else {
+                field.uncheck();
+            }
+        }
+    }
+}
+
 class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
 
     getName(): string {
@@ -1038,8 +1131,8 @@ class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
 
         // pdf-lib does awful things to empty multi-line fields
         // See: https://github.com/Hopding/pdf-lib/discussions/1196
-        const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
         let form = pdf.getForm();
+        const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
         form.getFields().forEach(f => {
             if (f instanceof PDFTextField) {
                 let textField = f as PDFTextField;
@@ -1048,6 +1141,7 @@ class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
                 }
             }
         });
+
     }
 
     populateForm(form: PDFForm, construct: Construct): void {
@@ -1124,7 +1218,7 @@ class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
 
 class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
     getName(): string {
-        return 'Landscape TNG Character Sheet'
+        return 'TNG Character Sheet (Landscape)'
     }
     getThumbnailUrl(): string {
         return '/static/img/sheets/TNG_Landscape_Character_Sheet.png'
@@ -1203,11 +1297,11 @@ class CharacterSheets {
 
     public getCharacterSheets(character: Character, era: Era = store.getState().context.era): ICharacterSheet[] {
         if (character.isKlingon()) {
-            return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),  new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet() ];
+            return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),  new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(),  new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet() ];
         } else if (era === Era.NextGeneration) {
-            return [ new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageKlingonCharacterSheet() ];
+            return [ new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageKlingonCharacterSheet() ];
         } else {
-            return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageKlingonCharacterSheet() ];
+            return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageKlingonCharacterSheet() ];
         }
     }
 

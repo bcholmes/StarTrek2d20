@@ -9,7 +9,7 @@ export enum Era {
 
 class EraModel {
     id: Era;
-    name: string;
+    private name: string;
 
     constructor(id: Era, name: string) {
         this.id = id;
