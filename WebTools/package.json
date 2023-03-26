@@ -1,5 +1,5 @@
 {
-  "version": "1.230320",
+  "version": "1.230325",
   "name": "startrek",
   "author": "Christoffer Lundberg",
   "contributors": [
@@ -18,6 +18,10 @@
     {
       "name": "MisterX",
       "url": "https://forums.modiphius.com/u/misterx/summary"
+    },
+    {
+      "name": "Daniel Jödemann",
+      "url": "http://www.daniel-joedemann.de/"
     }
   ],
   "license": "ISC",

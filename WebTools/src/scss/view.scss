@@ -28,6 +28,7 @@
     width: 120px;
     overflow: hidden;
     text-overflow: ellipsis;
+    vertical-align: bottom;
 }
 
 .pill-left-sm {
@@ -53,6 +54,7 @@
     width: calc(100% - 120px - 0.25rem);
     overflow: hidden;
     text-overflow: ellipsis;
+    vertical-align: bottom;
 }
 
 .pill-right-sm {
