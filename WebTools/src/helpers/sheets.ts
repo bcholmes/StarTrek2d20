@@ -677,6 +677,37 @@ class StandardTngCharacterSheet extends BasicFullCharacterSheet {
     }
 }
 
+class RomulanCharacterSheet extends BasicFullCharacterSheet {
+    getName(): string {
+        return 'Romulan Character Sheet'
+    }
+    getThumbnailUrl(): string {
+        return '/static/img/sheets/STA_Romulan_Character_Sheet_v1.3.png'
+    }
+    getPdfUrl(): string {
+        return '/static/pdf/STA_Romulan_Character_Sheet_v1.3.pdf'
+    }
+
+    fillCheckbox(form: PDFForm, name: string, value: boolean) {
+        try {
+            const field = form.getCheckBox(name);
+            this.fillCheckboxValue(form, field, value);
+        } catch (e) {
+            // ignore it
+        }
+    }
+
+    fillCheckboxValue(form: PDFForm, field: PDFCheckBox, value: boolean) {
+        if (field) {
+            if (value) {
+                form.removeField(field);
+            } else {
+                field.uncheck();
+            }
+        }
+    }
+}
+
 class StandardGermanCharacterSheet extends BasicFullCharacterSheet {
     getLanguage(): string {
         return "de";
@@ -1297,11 +1328,17 @@ class CharacterSheets {
 
     public getCharacterSheets(character: Character, era: Era = store.getState().context.era): ICharacterSheet[] {
         if (character.isKlingon()) {
-            return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),  new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(),  new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet() ];
+            return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),
+                new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(),  new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(),
+                new RomulanCharacterSheet() ];
         } else if (era === Era.NextGeneration) {
-            return [ new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageKlingonCharacterSheet() ];
+            return [ new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(),
+                new LandscapeTngCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageKlingonCharacterSheet(),
+                new RomulanCharacterSheet() ];
         } else {
-            return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageKlingonCharacterSheet() ];
+            return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),
+                new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageKlingonCharacterSheet(),
+                new RomulanCharacterSheet() ];
         }
     }
 

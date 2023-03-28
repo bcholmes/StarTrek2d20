@@ -326,7 +326,7 @@
 
     "CareerType.core.young.name": "Young Officer",
     "CareerType.core.young.description": "The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.",
-    "CareerType.core.young.valueInstruction": "The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.",
+    "CareerType.core.young.valueInstruction": "The character receives a Value, which must reflect the character’s inexperience and naivete in some way.",
 
     "CareerType.core.experienced.name": "Experienced Officer",
     "CareerType.core.experienced.description": "The character has several years of experience in service of Starfleet, and is enjoying a promising career.",
@@ -494,6 +494,8 @@
     "Weapon.personal.ushaantor.name": "Ushaan-tor",
 
     "Weapon.personal.disruptor.name": "Disruptor Pistol",
+
+    "Weapon.quality.nonlethal.name": "Non-lethal",
 
     "Weapon.quality.knockdown.name": "Knockdown",
 

@@ -15,7 +15,7 @@ Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sél
 Home.characterButton,Characters & Starships,Charaktere & Raumschiffe,Personajes y naves espaciales,Personnages et vaisseaux spatiaux
 Home.talentsButton,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
 ViewPage.viewSupportingCharacter,View Supporting Character,Nebencharakter anzeigen,Ver personaje secundario,Voir le personnage secondaire
-ViewPage.viewNpc,View NPC,NSC anzeigen,,
+ViewPage.viewNpc,View NPC,NSC anzeigen,,Voir PNJ
 ViewPage.viewMainCharacter,View Main Character,Hauptfigur anzeigen,Ver personaje principal,Voir le personnage principal
 ViewPage.viewStarship,View Starship,Raumschiff ansehen,Ver nave espacial,Voir le vaisseau spatial
 ViewPage.errorMessage,"Things have gone terribly, terribly wrong. We might be in the mirror universe.",Etwas ist ganz schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.,"Las cosas han ido terriblemente, terriblemente mal. Podríamos estar en el universo espejo.","Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir."
@@ -27,11 +27,11 @@ AddCharacterView.instruction,Paste in the URL for a character.,Fügen Sie die UR
 AddCharacterView.errorMessage,This url does not look valid.,Diese URL sieht nicht gültig aus.,Esta URL no parece válida.,Cette URL ne semble pas valide.
 AddCharacterView.errorCharacterType,"Whoops! We only support characters, at the moment. Not starships.",Hoppla! Wir unterstützen im Moment nur Charaktere. Keine Raumschiffe.,"¡Gritos! Solo admitimos personajes, por el momento. No naves espaciales.","Nous ne supportons que les personnages, pour le moment. Pas des vaisseaux spatiaux."
 AddCharacterView.characterPrefix,Character:,Charakter:,Carácter:,Personnage:
-CareerSelectionPage.title,Select Career,,,
-CareerSelectionPage.selectCareer,Select Career,,,
-CareerSelectionPage.rollCareer,Roll Career,,,
-CareerSelectionPage.exclusionText,"Your character has a Talent (""Advanced Team Dynamics"") that precludes Young characters",,,
-CareerSelectionPage.selectOneTalent,One talent of choice,,,
+CareerSelectionPage.title,Select Career,,,Choisir une Carrière
+CareerSelectionPage.selectCareer,Select Career,,,Choisir une Carrière
+CareerSelectionPage.rollCareer,Roll Career,,,Carrière Aléatoire
+CareerSelectionPage.exclusionText,"Your character has a Talent (""Advanced Team Dynamics"") that precludes Young characters",,,"Votre personnage a le talent ""Dynamyque de Groupe Avancée"" qui empêche les personnages ""Jeunes"""
+CareerSelectionPage.selectOneTalent,One talent of choice,,,Un talent au choix
 CharacterSheetDialog.title,Choose Template,Vorlage auswählen,,Choisir un Modèle
 CharacterSheetDialog.thumbnail,Thumbnail,Portraitfoto,,Vignette
 CustomSpeciesDetails.speciesName,Name,Name,,Nom
@@ -43,21 +43,21 @@ CharacterTypePage.whatGovernment,What government does this character represent?,
 CharacterTypePage.otherGovernmentName,What's the name of this government?,Wie lautet der Name dieser Regierung?,,Quel est le nom du gouvernement?
 CharacterTypePage.whatMilitary,What military does this character represent?,Welches Militär repräsentiert dieser Charakter?,,Quelle armée ce personnage représente?
 CharacterTypePage.otherMilitaryName,What's the name of this military?,Wie lautet der Name dieses Militärs?,,Quel est le nom de l'armée?
-EnvironmentPage.showAlt,Allow alternate Environments (GM's decision),,,
-EnvironmentPage.button.selectEnvironment,Select Environment,,,
-EnvironmentPage.button.rollEnvironment,Roll Environment,,,
-EnvironmentPage.button.selectAltEnvironment,Select Alternate Environment,,,
-EnvironmentPage.button.rollAltEnvironment,Roll Alternate Environment,,,
-EnvironmentPage.error.attributes,You must select 1 Attribute to improve before proceeding.,,,
-EnvironmentPage.error.disciplines,You must select 1 Discipline to improve before proceeding.,,,
-EnvironmentPage.simple.instruction,Either select or roll your Environment.,,,
-EnvironmentPage.starfleet.instruction,"Regardless of their species, Starfleet officers come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.",,,
-EnvironmentPage.klingon.instruction,"The Klingon Empire is vast and expands with each new conquest. Thus, Klingons come from many different worlds, from the likes of Qo’noS and Khitomer in the heart of the Empire, to border colonies that may have only been claimed in the last generation. Further, as a culture which has been spacefaring for centuries, countless Klingons are raised in space, aboard starbases and transport ships across the Empire.",,,
-EnvironmentPage.civilian.instruction,"Regardless of their species, people come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.",,,
-EnvironmentPage.ambassador.instruction,"Regardless of their species, diplomats come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.",,,
-EnvironmentPage.cadet.instruction,"Regardless of their species, Starfleet cadets come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.",,,
-EnvironmentPage.child.instruction,"Regardless of their species, children come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.",,,
-EnvironmentPage.alliedMilitary.instruction,"Regardless of their species, military officers and ratings come from many places, across many types of worlds.",,,
+EnvironmentPage.showAlt,Allow alternate Environments (GM's decision),,,Autoriser les Environements alternatifs (Décision du MJ)
+EnvironmentPage.button.selectEnvironment,Select Environment,,,Choisir Environnement
+EnvironmentPage.button.rollEnvironment,Roll Environment,,,Environement Aléatoire
+EnvironmentPage.button.selectAltEnvironment,Select Alternate Environment,,,Choisir un Environnement Alternatif
+EnvironmentPage.button.rollAltEnvironment,Roll Alternate Environment,,,Environement Alternatif Aléatoire
+EnvironmentPage.error.attributes,You must select 1 Attribute to improve before proceeding.,,,Vous devez choisir 1 Attribut à améliorer avant de continuer
+EnvironmentPage.error.disciplines,You must select 1 Discipline to improve before proceeding.,,,Vous devez choisir 1 Discipline à améliorer avant de continuer
+EnvironmentPage.simple.instruction,Either select or roll your Environment.,,,Choisisez ou tirez au sort votre Environnement
+EnvironmentPage.starfleet.instruction,"Regardless of their species, Starfleet officers come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.",,,"Indépendamment de leur espèce, les officiers de Starfleet viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau."
+EnvironmentPage.klingon.instruction,"The Klingon Empire is vast and expands with each new conquest. Thus, Klingons come from many different worlds, from the likes of Qo’noS and Khitomer in the heart of the Empire, to border colonies that may have only been claimed in the last generation. Further, as a culture which has been spacefaring for centuries, countless Klingons are raised in space, aboard starbases and transport ships across the Empire.",,,"L'Empire Klingon est vaste et s'étend avec chaque nouvelle conquète. Ainsi les Klingons viennent de nombreux mondes,des mondes comme Qo’noS ou Khitomer au cœur de l'Empire, aux colonies frontières qui peuvent avoir été revendiqués depuis juste une génération. De plus, en tant que culture voyageant dans l'espace depuis des siècles, d'innombrables Klingons sont élevés dans l'espace, dans des bases spatiales et des vaisseaux de transport à travers l'Empire."
+EnvironmentPage.civilian.instruction,"Regardless of their species, people come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.",,,"Indépendamment de leur espèce, les gens viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau."
+EnvironmentPage.ambassador.instruction,"Regardless of their species, diplomats come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.",,,"Indépendamment de leur espèce, les diplomates viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau."
+EnvironmentPage.cadet.instruction,"Regardless of their species, Starfleet cadets come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.",,,"Indépendamment de leur espèce, les cadets de Starfleet viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau."
+EnvironmentPage.child.instruction,"Regardless of their species, children come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.",,,"Indépendamment de leur espèce, les enfants viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau."
+EnvironmentPage.alliedMilitary.instruction,"Regardless of their species, military officers and ratings come from many places, across many types of worlds.",,,"Indépendamment de leur espèce, les officiers militaires viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau."
 ModificationTypeSelectionPage.instruction,Please select the modification that you want to apply to this character:,Wählen Sie die gewünschte Änderung an Ihrem Charakter aus,,Selectionnez la modification que vous voulez appliquer à ce personnage
 ModificationTypeSelectionPage.whatMilestoneType,What kind of milestone is being applied?,Welche Art Meilenstein wird angewandt?,,Quel genre de jalon d'expérience est appliqué?
 PromotionPage.instruction,Select a new rank for this character.,Wählen Sie einen neuen Rang für diesen Charakter,,Selectionnez un nouveau grade pour ce personnage
@@ -70,9 +70,9 @@ You might want to save the URL for the revised character.","Der Charakter wurde 
 Es ist ratsam, die URL des überarbeiteten Charakters zu speichern.",,"Le personnage a été modifié. Vous pouvez voir le personnage modifié ou faire une autre modification
  
 Vous pouvez vouloir sauvegarder l'URL pour le personnage modifié"
-SpaceframeOptionPage.text,"Do you want a standard spaceframe, or a custom spaceframe?",,,
-SpaceframeOptionPage.button.standardSpaceframe,Standard Spaceframe,,,
-SpaceframeOptionPage.button.customSpaceframe,Custom Spaceframe,,,
+SpaceframeOptionPage.text,"Do you want a standard spaceframe, or a custom spaceframe?",,,Voulez vous un modèle standart ou un modèle personalisé?
+SpaceframeOptionPage.button.standardSpaceframe,Standard Spaceframe,,,Modèle Standart
+SpaceframeOptionPage.button.customSpaceframe,Custom Spaceframe,,,Modèle personnalisé
 SpeciesDetails.options,Species Options,Spezies-Optionen,,Option d'espèce
 SpeciesDetails.selectThree,(Select three),(Drei auswählen),,(Choisir trois)
 SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),Spezies-übergreifende Talente erlauben (Entscheidung liegt bei der Spielleitung),,Autoriser les talents inter-espèces (Decision du GM)
@@ -109,14 +109,14 @@ SupportingCharacter.disciplineInstruction,Assign the character's Disciplines. Th
 SupportingCharacter.focusInstruction,Choose three Focuses for the character. At least one should reflect the department/purpose of the character.,Wählen Sie drei Fokusse für den Charakter. Zumindest einer davon sollte die Abteilung bzw. den Zweck des Charakters widerspiegeln.,,Choisissez trois Spécialités pour votre personnage. Au moins un devrait représenter le département/rôle de votre personnage.
 SupportingCharacter.nameAndRank,Name & Rank,Name & Rang,,Nom & Rang
 SupportingCharacter.nameAndRankInstruction,Give the character an appropriate name and rank. Supporting Characters should never have a rank above Lieutenant and may often be enlisted personnel rather than officers.,Geben Sie dem Charakter einen passenden Namen und Rang. Nebencharaktere sollten keinen höheren Rang als Lieutenant haben und sind oftmals sogar Mannschaftsdienstgrade anstatt von Offizieren.,,Donnez au personnage un nom et un grade approprié. Les personnages secondaires ne peuvent pas avoir un grade supérieur à Lieutenant et sont très sonvant du personnel enrôlé plutôt que des officiers.
-SupportingCharacter.numericalValue,Value,,,
-SupportingCharacter.speciesBonus,Species Bonus,,,
+SupportingCharacter.numericalValue,Value,,,Valeur
+SupportingCharacter.speciesBonus,Species Bonus,,,Bonus d'Espèce
 ToolSelection.instruction,What do you want to create?,Was soll erschaffen werden?,¿Qué quieres crear?,Que voulez vous créer?
 ToolSelection.mainCharacter,Main Character,Hauptfigur,Personaje principal,Personnage principal
 ToolSelection.supportingCharacter,Supporting Character,Nebencharakter,Personaje secundario,Personnage secondaire
 ToolSelection.starship,Starship,Raumschiff,Nave estelar,Vaisseau spatial
 ToolSelection.spaceSector,Space Sector,Raumsektor,Sector espacial,Secteur spatial
-ToolSelection.randomNpc,Random NPC,Zufälliger NSC,,
+ToolSelection.randomNpc,Random NPC,Zufälliger NSC,,PNJ aléatoire
 Common.button.select,Select,Auswählen,Escoger,Choisir
 Common.button.selectAll,Select All,Alles auswählen,Seleccionar todo,Sélectionner tout
 Common.button.selectNone,Select None,Auswahl aufheben,Seleccionar Ninguno,Sélectionnez Aucun
@@ -130,12 +130,12 @@ Common.button.modify,Modify,Anpassen,,Modifier
 Common.button.next,Next,Weiter,Próximo,Prochain
 Common.button.view,View,Anzeigen,Vista,Vue
 Common.text.none,None,Keine Auswahl,,Aucun
-Common.text.select,Select,,,
-Common.text.selectOne,Select one,,,
-Common.text.total,Total,,,
+Common.text.select,Select,,,Selectionnez
+Common.text.selectOne,Select one,,,Selectionnez en un
+Common.text.total,Total,,,Total
 Common.select.choose,Choose...,Wählen Sie aus ...,,Choisir
 Construct.other.assignment,Assignment,Position,Asignación,Mission
-Construct.other.attribute,Attribute,,,
+Construct.other.attribute,Attribute,,,Attribut
 Construct.other.attributes,Attributes,Attribute,Atributos,Attributs
 Construct.other.career,Career,Karriere,,Carrière
 Construct.other.careerEvent1,Career Event 1,Karriereereignis 1,,Evénement de Carrière 1
@@ -145,7 +145,7 @@ Construct.other.characterType,Character Type,Art des Charakters,Tipo de carácte
 Construct.other.crew,Crew,Crew,Tripulación,Équipage
 Construct.other.departments,Departments,Abteilungen,Departamentos,Departements
 Construct.other.determination,Determination,Entschlossenheit,Determinación,Détermination
-Construct.other.discipline,Discipline,,,
+Construct.other.discipline,Discipline,,,Discipline
 Construct.other.disciplines,Disciplines,Disziplinen,Disciplinas,Disciplines
 Construct.other.environment,Environment,Herkunft,Medio ambiente,Environnement
 Construct.other.equipment,Equipment,Ausrüstung,Equipo,Équipement
@@ -173,7 +173,7 @@ Construct.other.specialRules,Special Rules,Spezialregeln,Reglas especiales,Règl
 Construct.other.species,Species,Spezies,Especie,Espèce
 Construct.other.stress,Stress,Anstrengung,Estrés,Stress
 Construct.other.systems,Systems,Systeme,Sistemas,Systèmes
-Construct.other.talent,Talent,,,
+Construct.other.talent,Talent,,,Talent
 Construct.other.talents,Talents,Talente,Talentos,Talents
 Construct.other.training,Training,Ausbildung,,Formation
 Construct.other.trait,Trait,Merkmal,Rasgo,Trait
@@ -209,10 +209,10 @@ Construct.system.weapons,Weapons,Waffen,Armas,Armes
 Page.title.home,Home,Startseite,Página principal,Page d'accueil
 Page.title.era,Era,Ära,Era,Ère
 Page.title.talentsOverview,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
-Page.title.career,Career,,,
+Page.title.career,Career,,,Carrière
 Page.title.creditsPage,Credits,Danksagungen,Créditos,Crédits
-Page.title.environment,Environment,,,
-Page.title.environmentDetails,Environment Details,,,
+Page.title.environment,Environment,,,Environnement
+Page.title.environmentDetails,Environment Details,,,Détails de l'Environnement
 Page.title.finish,Finishing Touches,Feinschliff,,Touches Finales
 Page.title.customSpeciesDetails,Custom Species Details,Details zur selbst erschaffenen Spezies,,Détails de Race Personalisé
 Page.title.viewSheet,View Sheet,Bogen anzeigen,Ver hoja,Voir la feuille
@@ -233,8 +233,8 @@ Page.title.simpleStarship,Simplified Starship Creation,Vereinfachte Raumschiffer
 Page.title.smallCraftStats,Small Craft Stats,Shuttle-Werte,,Navette
 Page.title.spaceframeOption,Spaceframe Option,Schiffsklassen-Optionen,,Option de Modèle
 Page.title.spaceframeSelection,Spaceframe,Schiffsklasse,,Modèle de Vaisseau
-Page.title.species,Species,,,
-Page.title.speciesDetails,Species Details,,,
+Page.title.species,Species,,,Espèce
+Page.title.speciesDetails,Species Details,,,Détail de l'Espèce
 Page.title.starshipTalentSelection,Starship Talents,Raumschiff-Talente,,Talents de Vaisseau
 Page.title.starshipTypeSelection,Starship Type,Raumschiff-Typ,,Type de Vaisseau
 Page.title.starshipWeaponsSelection,Starship Weapons,Raumschiffwaffen,,Armes de Vaisseau
@@ -243,7 +243,7 @@ Page.title.reputationChange,Reputation Change,Änderung des Ansehens,,Changer la
 Page.title.promotion,Promotion,Beförderung,,Promotion
 Page.title.normalMilestone,Normal Milestone,Regulärer Meilenstein,,Jalon Normal
 Page.title.modificationComplete,Modification Completed,Änderung abgeschlossen,,Modification Effectuée
-Page.title.npcConfiguration,Random NPC Configuration,Anpassung zufälliger NSCs,,
+Page.title.npcConfiguration,Random NPC Configuration,Anpassung zufälliger NSCs,,Configuration des PNJ Aléatoires
 Page.breadcrumb.characterCreation,Character Creation,Charaktererschaffung,Creación de personajes,Création de personnages
 Page.breadcrumb.starshipCreation,Starship Creation,Raumschifferschaffung,,Règles de Base
 Page.breadcrumb.supportingCharacterCreation,Supporting Character Creation,Erschaffung von Nebencharakteren,,Création de Personnage Secondaire
@@ -287,70 +287,70 @@ CharacterType.name.ambassadorDiplomat,Ambassador / Diplomat,Botschafter / Diplom
 CharacterType.name.cadet,Cadet,Kadetten,,Cadet
 CharacterType.name.child,Child,Kinder,,Enfant
 CharacterType.name.other,Other,Andere,,Autre
-CareerType.core.young.name,Young Officer,,,
-CareerType.core.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,,,
-CareerType.core.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.",,,
-CareerType.core.experienced.name,Experienced Officer,,,
-CareerType.core.experienced.description,"The character has several years of experience in service of Starfleet, and is enjoying a promising career.",,,
-CareerType.core.experienced.valueInstruction,"The character receives a Value, and this can be chosen freely.",,,
-CareerType.core.veteran.name,Veteran Officer,,,
-CareerType.core.veteran.description,"The character has decades of experience in the service of Starfleet, and has served on many ships, and starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.",,,
-CareerType.core.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",,,
-CareerType.civilian.young.name,Young,,,
-CareerType.civilian.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,,,
-CareerType.civilian.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.",,,
-CareerType.civilian.experienced.name,Experienced,,,
-CareerType.civilian.experienced.description,"The character has several years of experience in service, and is enjoying a promising career.",,,
-CareerType.civilian.experienced.valueInstruction,"The character receives a Value, and this can be chosen freely.",,,
-CareerType.civilian.veteran.name,Veteran,,,
-CareerType.civilian.veteran.description,"The character has decades of experience in the service, and has served on many ships, worlds, and/or starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.",,,
-CareerType.civilian.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",,,
-CareerType.klingon.young.name,Young Warrior,,,
-CareerType.klingon.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,,,
-CareerType.klingon.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.",,,
-CareerType.klingon.experienced.name,Experienced Warrior,,,
-CareerType.klingon.experienced.description,The character has several years of experience in service of the Empire and is enjoying a promising career. This is the default assumption for characters created using these rules.,,,
-CareerType.klingon.experienced.valueInstruction,"The character receives a Value, and this can be chosen freely.",,,
-CareerType.klingon.veteran.name,Veteran Warrior,,,
-CareerType.klingon.veteran.description,"The character has decades of experience in the service of the Empire, and has served on many ships and space stations. The character’s judgement and opinions are highly regarded by subordinates, peers, and even superiors.",,,
-CareerType.klingon.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",,,
-Environment.common.homeworld.name,Homeworld,,,
-Environment.common.homeworld.description,"The character comes from the world that birthed their civilization, and has been surrounded by cultural and spiritual legacies their entire life. Species homeworlds are often utopian and idyllic, serving as the platonic ideal of that species’ culture. They also exemplify aspects of a culture’s most revered traditions, and serve as the heart of that civilization’s legal and political landscape.",,,
-Environment.common.busyColony.name,Busy Colony,,,
-Environment.common.busyColony.description,"The character comes from one of their culture’s oldest or most prosperous colonies, which may be another world within their home system — such as Luna or Mars for Humans — or one of the first worlds colonized after the culture achieved interstellar flight. These colonies often develop a fiercely independent outlook, often having developed with little direct aid from their homeworld, and a sense of pride that accompanies being amongst the first of their kind to tame another world.",,,
-Environment.common.isolatedColony.name,Isolated Colony,,,
-Environment.common.isolatedColony.description,"The character comes from a colony that is isolated from broader galactic society. Worlds like the Vulcan monastery on P’Jem use the vast distances between star systems as an opportunity for contemplative isolation, while others are settled because they present unique research opportunities. The cultures of these colonies tend to focus on learning and introspection.",,,
-Environment.common.frontierColony.name,Frontier Colony,,,
-Environment.common.frontierColony.description,"The character comes from a colony located on the fringes of known space, either on the edge of uncharted space or on the border with another civilization. Frontier colonists tend to be hardy and determined, even stubborn, and well-prepared for the dangers that their home may pose.",,,
-Environment.common.starshipOrStarbase.name,Starship or Starbase,,,
-Environment.common.starshipOrStarbase.description,"The character grew up in space, travelling aboard a starship or living aboard a space station or starbase. While they’re unlikely to have lived aboard a Starfleet vessel — only some of them carry families — many freighters, transports, and other civilian vessels have a tradition of family or generational crews, and many officers with families take postings to starbases rather than ships. Those raised in space learn the ins-and-outs of shipboard life as children, and many are groomed for leadership, or learn to fly a shuttle in their formative years.",,,
-Environment.common.anotherSpeciesWorld.name,Another Species' World,,,
-Environment.common.anotherSpeciesWorld.description,"The character grew up amongst another species. They might have lived amongst a small enclave of their own kind, or they may have been orphaned by some manner of disaster and raised by aliens. Whatever the situation, the character has unique perspectives on their own species and on those they were raised alongside.",,,
-Environment.klingon.homeworld.name,Qo'noS,,,
-Environment.klingon.homeworld.description,"You hail from the Klingon homeworld of Qo’noS, often called Kronos by outsiders, and you’ve been surrounded by the cultural and spiritual legacies of Kahless and the Empire for your entire life. The oldest and most revered of Klingon traditions came from your homeworld, and they are a defining part of your upbringing.",,,
-Environment.klingon.busyColony.name,Busy Colony,,,
-Environment.klingon.busyColony.description,"You come from one of the Empire’s oldest or most prosperous colonies. These colonies often have a fiercely independent outlook, having developed with little aid from the Empire in their earliest days, and the pride that accompanies being amongst the first of their kind to tame an alien world still remains in the descendants of those first settlers.",,,
-Environment.klingon.isolatedColony.name,Isolated Colony,,,
-Environment.klingon.isolatedColony.description,"You come from a colony isolated from the rest of the Empire, and from the wider Galaxy. Worlds like Boreth use this isolation as an opportunity for spirituality and contemplation, while others are settled because they present unique opportunities to perform research far from the scrutiny and politicking of the core worlds. Even in the Empire, these worlds emphasize learning and introspection.",,,
-Environment.klingon.frontierColony.name,Frontier Colony,,,
-Environment.klingon.frontierColony.description,"You come from a colony located on the fringes of the Empire, either on the edge of explored space or on the border with the Federation or the Romulan Empire. Your world may even have been claimed from one of those rival powers during a conflict in previous generations. Frontier colonies tend to produce determined people, stubborn and well-prepared for the dangers their home may present, and entirely willing to fight to keep what they have settled.",,,
-Environment.klingon.starshipOrStarbase.name,Starship or Starbase,,,
-Environment.klingon.starshipOrStarbase.description,"You grew up in space, travelling aboard a starship or living aboard a space station. You won’t have been raised aboard a warship, but many freighters, transports, and other civilian vessels have a tradition of family or generational crews. Those raised in space learn the ways of shipboard life as children, and many take to a spacefaring life easily as a result.",,,
-Environment.klingon.anotherSpeciesWorld.name,Another Species' World,,,
-Environment.klingon.anotherSpeciesWorld.description,"You grew up amongst non-Klingons. Perhaps you were part of a Klingon enclave overseeing a conquered world, or you were raised amongst exiles, or orphaned during a battle or disaster and raised by aliens. You might have been raised in the Empire, or you may be an outsider to it. Whatever the situation, you have chosen to serve the Empire and prove that you are as Klingon as anyone born on Qo’noS, even if you may have different perspectives on Klingon culture and tradition.",,,
-Environment.alternate.utopianParadise.name,Utopian Paradise,,,
-Environment.alternate.utopianParadise.description,"You were raised in an environment of peace, prosperity, and abundance. There was no war on your world, nor any poverty, homelessness, hunger, or crime. You knew of those things only from studies of history and you have never really been able to understand how a society could produce such destructive inequality. You have always had access to the resources to not merely survive, but to thrive in whatever endeavors you chose to pursue.",,,
-Environment.alternate.cosmopolitan.name,Cosmopolitan,,,
-Environment.alternate.cosmopolitan.description,"You were raised in environments of trade or diplomacy, and the intermingling of different communities and cultures. The unfamiliar has always been familiar to you, and you had become familiar with dozens of cultures from distant worlds long before you were an adult. The frenetic pace of life and the basic need to revel in differences between groups and individuals have stayed with you as simple facts of existence in this big Galaxy.",,,
-Environment.alternate.rigorousDiscipline.name,Rigorous Discipline,,,
-Environment.alternate.rigorousDiscipline.description,"You have always been surrounded by notions of duty and purpose, and your childhood was a strict one, aimed at preparing you to take on a specific role or to achieve a specific goal. This meant relatively little personal freedom, but it instilled within you a powerful sense of what you were capable of when pushed to succeed.",,,
-Environment.alternate.ascetismAndIntrospection.name,Ascetism and Introspection,,,
-Environment.alternate.ascetismAndIntrospection.description,"Your life was a simple one, lacking in many of the luxuries that prosperous worlds take for granted. This was not because of a lack, but rather a choice – a belief amongst those you grew up with that external and material abundance can distract from self-knowledge and personal growth.",,,
-Environment.alternate.struggleAndHardship.name,Struggle and Hardship,,,
-Environment.alternate.struggleAndHardship.description,"For one reason or another, your world was one with few available resources. Worlds on the frontier, as well as isolated outposts, are often places of hardship where continued survival is difficult, while other worlds struggle in the wake of natural or ecological disasters, the aftermath of war, or societal collapse that leaves basic infrastructure in ruins. Some seek out worlds such as this, where “honest toil” is held as a virtue, while others find themselves in lives of daily struggle through no choice of their own and seek to either better their world or escape it.",,,
-Environment.alternate.occupationOrWar.name,Occupation or War,,,
-Environment.alternate.occupationOrWar.description,"Though the Federation’s members no longer war amongst themselves, warfare is still a part of the Galaxy. Local or planetary conflicts afflict many independent worlds, and interstellar conflicts ranging from border skirmishes to sector-spanning wars are something which all civilizations must prepare to face. Worlds ravaged by war, or even occupied by a hostile nation, are difficult places to live, often forcing people to adapt to horrific conditions and life-or-death decisions.",,,
-Environment.special.name,{{name}} ({{species}}),,,
+CareerType.core.young.name,Young Officer,,,Jeune Officier
+CareerType.core.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,,,Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.
+CareerType.core.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naivete in some way.",,,"Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage."
+CareerType.core.experienced.name,Experienced Officer,,,Officier Expérimenté
+CareerType.core.experienced.description,"The character has several years of experience in service of Starfleet, and is enjoying a promising career.",,,"The character has several years of experience au service de Starfleet, et jouit d'une carrière prometteuse."
+CareerType.core.experienced.valueInstruction,"The character receives a Value, and this can be chosen freely.",,,"Le personnage reçoit une Valueur, qui peut être choisie librement."
+CareerType.core.veteran.name,Veteran Officer,,,Officier Vétéran
+CareerType.core.veteran.description,"The character has decades of experience in the service of Starfleet, and has served on many ships, and starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.",,,"Le personnage a des dizaines d'années d'expérience au service de Starfleet, et a servi sur de nombreux vaisseaux et bases spatiales. Le jugement et les opinions du personnage sont prisés par ses subordonés, ses pairs, et même ses supérieurs."
+CareerType.core.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",,,"Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière."
+CareerType.civilian.young.name,Young,,,Jeune
+CareerType.civilian.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,,,Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.
+CareerType.civilian.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.",,,"Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage."
+CareerType.civilian.experienced.name,Experienced,,,Expérimenté
+CareerType.civilian.experienced.description,"The character has several years of experience in service, and is enjoying a promising career.",,,"The character has several years of experience en service, et jouit d'une carrière prometteuse."
+CareerType.civilian.experienced.valueInstruction,"The character receives a Value, and this can be chosen freely.",,,"Le personnage reçoit une Valueur, qui peut être choisie librement."
+CareerType.civilian.veteran.name,Veteran,,,Vétéran
+CareerType.civilian.veteran.description,"The character has decades of experience in the service, and has served on many ships, worlds, and/or starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.",,,"Le personnage a des dizaines d'années d'expérience dans le service, et a servi sur de nombreux vaisseaux et bases spatiales. Le jugement et les opinions du personnage sont prisés par ses subordonés, ses pairs, et même ses supérieurs."
+CareerType.civilian.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",,,"Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière."
+CareerType.klingon.young.name,Young Warrior,,,Jeune Guerrier
+CareerType.klingon.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,,,Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.
+CareerType.klingon.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.",,,"Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage."
+CareerType.klingon.experienced.name,Experienced Warrior,,,Guerrier Expérimenté
+CareerType.klingon.experienced.description,The character has several years of experience in service of the Empire and is enjoying a promising career. This is the default assumption for characters created using these rules.,,,The character has several years of experience au service de l'Empire et jouit d'une carrière prometteuse. C'est l'option par défaut pour des personnages crées par ces règles.
+CareerType.klingon.experienced.valueInstruction,"The character receives a Value, and this can be chosen freely.",,,"Le personnage reçoit une Valueur, qui peut être choisie librement."
+CareerType.klingon.veteran.name,Veteran Warrior,,,Guerrier Vétéran
+CareerType.klingon.veteran.description,"The character has decades of experience in the service of the Empire, and has served on many ships and space stations. The character’s judgement and opinions are highly regarded by subordinates, peers, and even superiors.",,,"Le personnage a des dizaines d'années d'expérience au service de l'Empire, et a servi sur de nombreux vaisseaux et bases spatiales. Le jugement et les opinions du personnage sont prisés par ses subordonés, ses pairs, et même ses supérieurs."
+CareerType.klingon.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",,,"Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière."
+Environment.common.homeworld.name,Homeworld,,,Planète natale
+Environment.common.homeworld.description,"The character comes from the world that birthed their civilization, and has been surrounded by cultural and spiritual legacies their entire life. Species homeworlds are often utopian and idyllic, serving as the platonic ideal of that species’ culture. They also exemplify aspects of a culture’s most revered traditions, and serve as the heart of that civilization’s legal and political landscape.",,,"Le personnage vient du monde qui a vu naître leur civilisation,et a été entouré toute sa vie par leurs héritages culturels et spirituels. Les mondes natals sont souvent utopiques et idylliques, servant comme idéal platonique de la culture de leur espèce. Ils illustrent également les aspects des traditions les plus vénérées d'une culture et constituent le cœur du paysage juridique et politique de cette civilisation."
+Environment.common.busyColony.name,Busy Colony,,,Colonie Animée
+Environment.common.busyColony.description,"The character comes from one of their culture’s oldest or most prosperous colonies, which may be another world within their home system — such as Luna or Mars for Humans — or one of the first worlds colonized after the culture achieved interstellar flight. These colonies often develop a fiercely independent outlook, often having developed with little direct aid from their homeworld, and a sense of pride that accompanies being amongst the first of their kind to tame another world.",,,"Le personnage vient de l'une des colonies les plus anciennes ou les plus prospères de leur culture, qui peut être un autre monde au sein de leur système d'origine - comme Luna ou Mars pour les humains - ou l'un des premiers mondes colonisés après que la culture ait réalisé un vol interstellaire.Ces colonies développent souvent une vision farouchement indépendante, s'étant souvent développée avec peu d'aide directe de leur monde d'origine, et un sentiment de fierté qui accompagne le fait d'être parmi les premiers de leur espèce à apprivoiser un autre monde."
+Environment.common.isolatedColony.name,Isolated Colony,,,Colonie Isolée
+Environment.common.isolatedColony.description,"The character comes from a colony that is isolated from broader galactic society. Worlds like the Vulcan monastery on P’Jem use the vast distances between star systems as an opportunity for contemplative isolation, while others are settled because they present unique research opportunities. The cultures of these colonies tend to focus on learning and introspection.",,,"Le personnage vient d'une colonie isolée de la société galactique au sens large. Des mondes comme le monastère vulcain de P'Jem utilisent les vastes distances entre les systèmes stellaires comme une opportunité d'isolement contemplatif, tandis que d'autres sont installés parce qu'ils présentent des opportunités de recherche uniques. Les cultures de ces colonies ont tendance à se concentrer sur l'apprentissage et l'introspection."
+Environment.common.frontierColony.name,Frontier Colony,,,Colonie Frontière
+Environment.common.frontierColony.description,"The character comes from a colony located on the fringes of known space, either on the edge of uncharted space or on the border with another civilization. Frontier colonists tend to be hardy and determined, even stubborn, and well-prepared for the dangers that their home may pose.",,,"Le personnage vient d'une colonie située en marge de l'espace connu, soit en bordure d'un espace inexploré, soit à la frontière avec une autre civilisation. Les colons frontaliers ont tendance à être robustes et déterminés, voire têtus, et bien préparés aux dangers que leur maison peut présenter."
+Environment.common.starshipOrStarbase.name,Starship or Starbase,,,Vaisseau ou Base Stellaire
+Environment.common.starshipOrStarbase.description,"The character grew up in space, travelling aboard a starship or living aboard a space station or starbase. While they’re unlikely to have lived aboard a Starfleet vessel — only some of them carry families — many freighters, transports, and other civilian vessels have a tradition of family or generational crews, and many officers with families take postings to starbases rather than ships. Those raised in space learn the ins-and-outs of shipboard life as children, and many are groomed for leadership, or learn to fly a shuttle in their formative years.",,,"Le personnage a grandi dans l'espace, voyageant à bord d'un vaisseau spatial ou vivant à bord d'une station spatiale ou d'une base stellaire. Bien qu'il soit peu probable qu'ils aient vécu à bord d'un navire de Starfleet - seuls certains d'entre eux transportent des familles - de nombreux cargos, transports et autres navires civils ont une tradition d'équipages familiaux ou générationnels, et de nombreux officiers avec des familles sont affectés à des bases stellaires plutôt qu'à des navires. . Ceux qui ont grandi dans l'espace apprennent les tenants et les aboutissants de la vie à bord d'un navire dans leur enfance, et beaucoup sont préparés au commandement ou apprennent à piloter une navette au cours de leurs années de formation."
+Environment.common.anotherSpeciesWorld.name,Another Species' World,,,Monde d'une autre Espèce
+Environment.common.anotherSpeciesWorld.description,"The character grew up amongst another species. They might have lived amongst a small enclave of their own kind, or they may have been orphaned by some manner of disaster and raised by aliens. Whatever the situation, the character has unique perspectives on their own species and on those they were raised alongside.",,,"Le personnage a grandi parmi une autre espèce. Ils ont peut-être vécu dans une petite enclave de leur propre espèce, ou ils peuvent avoir été rendus orphelins par une catastrophe et élevés par des extraterrestres. Quelle que soit la situation, le personnage a des perspectives uniques sur sa propre espèce et sur celles avec lesquelles il a été élevé."
+Environment.klingon.homeworld.name,Qo'noS,,,Qo'noS
+Environment.klingon.homeworld.description,"You hail from the Klingon homeworld of Qo’noS, often called Kronos by outsiders, and you’ve been surrounded by the cultural and spiritual legacies of Kahless and the Empire for your entire life. The oldest and most revered of Klingon traditions came from your homeworld, and they are a defining part of your upbringing.",,,"Vous êtes originaire du monde natal klingon de Qo'noS, souvent appelé Kronos par les étrangers, et vous avez été entouré par l'héritage culturel et spirituel de Kahless et de l'Empire toute votre vie. Les traditions klingonnes les plus anciennes et les plus vénérées viennent de votre monde natal, et elles font partie intégrante de votre éducation."
+Environment.klingon.busyColony.name,Busy Colony,,,Colonie Animée
+Environment.klingon.busyColony.description,"You come from one of the Empire’s oldest or most prosperous colonies. These colonies often have a fiercely independent outlook, having developed with little aid from the Empire in their earliest days, and the pride that accompanies being amongst the first of their kind to tame an alien world still remains in the descendants of those first settlers.",,,"Vous venez de l'une des colonies les plus anciennes ou les plus prospères de l'Empire. Ces colonies ont souvent une vision farouchement indépendante, s'étant développées avec peu d'aide de l'Empire à leurs débuts, et la fierté qui accompagne le fait d'être parmi les premiers du genre à apprivoiser un monde extraterrestre demeure chez les descendants de ces premiers colons."
+Environment.klingon.isolatedColony.name,Isolated Colony,,,Colonie Isolée
+Environment.klingon.isolatedColony.description,"You come from a colony isolated from the rest of the Empire, and from the wider Galaxy. Worlds like Boreth use this isolation as an opportunity for spirituality and contemplation, while others are settled because they present unique opportunities to perform research far from the scrutiny and politicking of the core worlds. Even in the Empire, these worlds emphasize learning and introspection.",,,"Vous venez d'une colonie isolée du reste de l'Empire et de la galaxie au sens large. Des mondes comme Boreth utilisent cet isolement comme une opportunité de spiritualité et de contemplation, tandis que d'autres sont installés parce qu'ils présentent des opportunités uniques pour effectuer des recherches loin de l'examen minutieux et de la politique des mondes centraux. Même dans l'Empire, ces mondes mettent l'accent sur l'apprentissage et l'introspection."
+Environment.klingon.frontierColony.name,Frontier Colony,,,Colonie Frontière
+Environment.klingon.frontierColony.description,"You come from a colony located on the fringes of the Empire, either on the edge of explored space or on the border with the Federation or the Romulan Empire. Your world may even have been claimed from one of those rival powers during a conflict in previous generations. Frontier colonies tend to produce determined people, stubborn and well-prepared for the dangers their home may present, and entirely willing to fight to keep what they have settled.",,,"Vous venez d'une colonie située en marge de l'Empire, soit à la lisière de l'espace exploré, soit à la frontière avec la Fédération ou l'Empire romulien. Votre monde a peut-être même été revendiqué à l'une de ces puissances rivales lors d'un conflit au cours des générations précédentes. Les colonies frontalières ont tendance à produire des gens déterminés, têtus et bien préparés aux dangers que leur maison peut présenter, et entièrement disposés à se battre pour conserver ce qu'ils ont établi."
+Environment.klingon.starshipOrStarbase.name,Starship or Starbase,,,Vaisseau ou Base Stellaire
+Environment.klingon.starshipOrStarbase.description,"You grew up in space, travelling aboard a starship or living aboard a space station. You won’t have been raised aboard a warship, but many freighters, transports, and other civilian vessels have a tradition of family or generational crews. Those raised in space learn the ways of shipboard life as children, and many take to a spacefaring life easily as a result.",,,"Vous avez grandi dans l'espace, voyageant à bord d'un vaisseau spatial ou vivant à bord d'une station spatiale. Vous n'aurez pas été élevé à bord d'un navire de guerre, mais de nombreux cargos, transports et autres navires civils ont une tradition d'équipages familiaux ou générationnels. Ceux qui ont grandi dans l'espace apprennent les modes de vie à bord d'un navire lorsqu'ils sont enfants, et beaucoup s'adaptent facilement à une vie dans l'espace."
+Environment.klingon.anotherSpeciesWorld.name,Another Species' World,,,Monde d'une autre Espèce
+Environment.klingon.anotherSpeciesWorld.description,"You grew up amongst non-Klingons. Perhaps you were part of a Klingon enclave overseeing a conquered world, or you were raised amongst exiles, or orphaned during a battle or disaster and raised by aliens. You might have been raised in the Empire, or you may be an outsider to it. Whatever the situation, you have chosen to serve the Empire and prove that you are as Klingon as anyone born on Qo’noS, even if you may have different perspectives on Klingon culture and tradition.",,,"Vous avez grandi parmi des non-Klingons. Peut-être avez-vous fait partie d'une enclave klingonne supervisant un monde conquis, ou avez-vous été élevé parmi des exilés, ou orphelin lors d'une bataille ou d'un désastre et élevé par des extraterrestres. Vous avez peut-être été élevé dans l'Empire ou vous y êtes peut-être étranger. Quelle que soit la situation, vous avez choisi de servir l'Empire et de prouver que vous êtes aussi Klingon que n'importe qui né sur Qo'noS, même si vous pouvez avoir des perspectives différentes sur la culture et la tradition Klingon."
+Environment.alternate.utopianParadise.name,Utopian Paradise,,,Paradis Utopique
+Environment.alternate.utopianParadise.description,"You were raised in an environment of peace, prosperity, and abundance. There was no war on your world, nor any poverty, homelessness, hunger, or crime. You knew of those things only from studies of history and you have never really been able to understand how a society could produce such destructive inequality. You have always had access to the resources to not merely survive, but to thrive in whatever endeavors you chose to pursue.",,,"Vous avez été élevé dans un environnement de paix, de prospérité et d'abondance. Il n'y avait pas de guerre contre votre monde, ni de pauvreté, de sans-abrisme, de faim ou de crime. Vous ne connaissiez ces choses que par des études d'histoire et vous n'avez jamais vraiment été en mesure de comprendre comment une société pouvait produire une inégalité aussi destructrice. Vous avez toujours eu accès aux ressources non seulement pour survivre, mais pour prospérer dans toutes les entreprises que vous avez choisies de poursuivre."
+Environment.alternate.cosmopolitan.name,Cosmopolitan,,,Cosmopolite
+Environment.alternate.cosmopolitan.description,"You were raised in environments of trade or diplomacy, and the intermingling of different communities and cultures. The unfamiliar has always been familiar to you, and you had become familiar with dozens of cultures from distant worlds long before you were an adult. The frenetic pace of life and the basic need to revel in differences between groups and individuals have stayed with you as simple facts of existence in this big Galaxy.",,,"Vous avez été élevé dans des environnements de commerce ou de diplomatie, et le brassage de différentes communautés et cultures. L'inconnu vous a toujours été familier et vous vous êtes familiarisé avec des dizaines de cultures de mondes lointains bien avant d'être adulte. Le rythme effréné de la vie et le besoin fondamental de se délecter des différences entre les groupes et les individus sont restés avec vous comme de simples parts de l'existence dans cette grande Galaxie."
+Environment.alternate.rigorousDiscipline.name,Rigorous Discipline,,,Discipline Rigoureuse
+Environment.alternate.rigorousDiscipline.description,"You have always been surrounded by notions of duty and purpose, and your childhood was a strict one, aimed at preparing you to take on a specific role or to achieve a specific goal. This meant relatively little personal freedom, but it instilled within you a powerful sense of what you were capable of when pushed to succeed.",,,"Vous avez toujours été entouré de notions de devoir et de but, et votre enfance a été stricte, visant à vous préparer à assumer un rôle précis ou à atteindre un objectif précis. Cela signifiait relativement peu de liberté personnelle, mais cela inculquait en vous un puissant sentiment de ce dont vous étiez capable lorsque vous étiez poussé à réussir."
+Environment.alternate.ascetismAndIntrospection.name,Ascetism and Introspection,,,Ascétisme et introspection
+Environment.alternate.ascetismAndIntrospection.description,"Your life was a simple one, lacking in many of the luxuries that prosperous worlds take for granted. This was not because of a lack, but rather a choice – a belief amongst those you grew up with that external and material abundance can distract from self-knowledge and personal growth.",,,"Votre vie était simple, manquant de nombreux luxes que les mondes prospères tiennent pour acquis. Ce n'était pas à cause d'un manque, mais plutôt d'un choix - une croyance parmi ceux avec qui vous avez grandi que l'abondance extérieure et matérielle peut détourner l'attention de la connaissance de soi et de la croissance personnelle."
+Environment.alternate.struggleAndHardship.name,Struggle and Hardship,,,Lutte et Difficultés
+Environment.alternate.struggleAndHardship.description,"For one reason or another, your world was one with few available resources. Worlds on the frontier, as well as isolated outposts, are often places of hardship where continued survival is difficult, while other worlds struggle in the wake of natural or ecological disasters, the aftermath of war, or societal collapse that leaves basic infrastructure in ruins. Some seek out worlds such as this, where “honest toil” is held as a virtue, while others find themselves in lives of daily struggle through no choice of their own and seek to either better their world or escape it.",,,"Pour une raison ou une autre, votre monde en était un avec peu de ressources disponibles. Les mondes à la frontière, ainsi que les avant-postes isolés, sont souvent des lieux difficiles où la survie continue est difficile, tandis que d'autres mondes luttent à la suite de catastrophes naturelles ou écologiques, des conséquences d'une guerre ou d'un effondrement sociétal qui laisse les infrastructures de base en ruines. Certains recherchent des mondes comme celui-ci, où le ""travail honnête"" est considéré comme une vertu, tandis que d'autres se retrouvent dans une vie de lutte quotidienne sans choix personnel et cherchent soit à améliorer leur monde, soit à y échapper."
+Environment.alternate.occupationOrWar.name,Occupation or War,,,Occupation ou Guerre
+Environment.alternate.occupationOrWar.description,"Though the Federation’s members no longer war amongst themselves, warfare is still a part of the Galaxy. Local or planetary conflicts afflict many independent worlds, and interstellar conflicts ranging from border skirmishes to sector-spanning wars are something which all civilizations must prepare to face. Worlds ravaged by war, or even occupied by a hostile nation, are difficult places to live, often forcing people to adapt to horrific conditions and life-or-death decisions.",,,"Bien que les membres de la Fédération ne se font plus la guerre entre eux, la guerre fait toujours partie de la Galaxie. Les conflits locaux ou planétaires affligent de nombreux mondes indépendants, et les conflits interstellaires allant des escarmouches frontalières aux guerres sectorielles sont quelque chose que toutes les civilisations doivent se préparer à affronter. Les mondes ravagés par la guerre, ou même occupés par une nation hostile, sont des endroits difficiles à vivre, obligeant souvent les gens à s'adapter à des conditions horribles et à des décisions de vie ou de mort."
+Environment.special.name,{{name}} ({{species}}),,,{{name}} ({{species}})
 GovernmentType.name.andorian,Andorian,Andorianer,,Andorien
 GovernmentType.name.bajoran,Bajoran,Bajoraner,,Bajoran
 GovernmentType.name.cardassian,Cardassian,Cardassianer,,Cardassien
@@ -376,63 +376,64 @@ ModificationType.name.milestone,Milestone,Meilenstein,,Jalon d'Expérience
 MilestoneType.name.normalMilestone,Normal Milestone,Regulärer Meilenstein,,Jalon Normal
 MilestoneType.name.spotlightMilestone,Spotlight Milestone,Rampenlicht-Meilenstein,,Jalon Sous les Projecteurs
 MilestoneType.name.arcMilestone,Arc Milestone,Handlungsbogen-Meilenstein,,Jalon Arc de Personnage
-NpcType.minor.name,Minor NPC,,,
-NpcType.notable.name,Notable NPC,,,
-NpcType.major.name,Major NPC,,,
-ShipBuildType.pod.name,Pod,,,
-ShipBuildType.shuttle.name,Shuttle,,,
-ShipBuildType.runabout.name,Runabout,,,
-ShipBuildType.starship.name,Starship,,,
-StarSystem.common.coordinates,Coordinates,,,
-StarSystem.common.innerZone,Inner Zone,,,
-StarSystem.common.ecosphere,Ecosphere,,,
-StarSystem.common.outerZone,Outer Zone,,,
-StarSystem.common.worlds,Worlds,,,
-StarSystem.common.noWorlds,No worlds,,,
-StarSystem.common.primaryStar,Primary Star,,,
-StarSystem.common.companionStar,Companion Star,,,
-Value.environment.text,"This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.",,,
-Value.starfleetTraining.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their time at the Academy.",,,
-Value.childEducation.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Education.",,,
-Value.otherTraining.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Training.",,,
-Value.final.text,"The character receives one final Value. This might reflect the Career Events rolled in Step Six, or it may represent some other element of the character. This Value might be a relationship, connecting the character to another character in the crew, or to another organization or culture in some way.",,,
-Weapon.common.name,Name/Type,,,
-Weapon.common.qualities,Qualities,,,
-Weapon.personal.phaser1.name,Phaser type-1,,,
-Weapon.personal.phaser2.name,Phaser type-2,,,
-Weapon.personal.strike.name,Unarmed Strike,,,
-Weapon.personal.batleth.name,Bat'leth,,,
-Weapon.personal.dktahg.name,d’k tahg dagger,,,
-Weapon.personal.ushaantor.name,Ushaan-tor,,,
-Weapon.personal.disruptor.name,Disruptor Pistol,,,
-Weapon.quality.knockdown.name,Knockdown,,,
-Weapon.quality.charges.name,Charges,,,
-Weapon.quality.vicious.name,Vicious {{rank}},,,
-Weapon.quality.deadly.name,Deadly,,,
-Weapon.quality.hidden.name,Hidden {{rank}},,,
-Weapon.quality.piercing.name,Piercing {{rank}},,,
-Weapon.quality.intense.name,Intense,,,
-Weapon.quality.area.name,Area,,,
-World.attribute.designation,Designation,Bezeichnung,,
-World.attribute.classification,Classification,Klasse,,
-World.attribute.notes,Notes,Anmerkungen,,
-World.attribute.orbitalRadius,Orbital Radius,Orbitaler Radius,,
-World.attribute.orbitalPeriod,Orbital Period,Umlaufdauer,,
-World.attribute.eccentricity,Eccentricity,Exzentrik,,
-World.attribute.diameter,Diameter,Durchmesser,,
-World.attribute.density,Density,Dichter,,
-World.attribute.mass,Mass,Masse,,
-World.attribute.gravity,Gravity,Schwerkraft,,
-World.attribute.satellites,Satellites,Satelliten,,
-World.attribute.core,Core,Kern,,
-World.attribute.features,Features,Eigenarten,,
-World.attribute.rotation,Rotation,Umdrehung,,
-World.attribute.tidallyLocked,Tidally Locked,Rotiert gebunden,,
-World.attribute.retrograde,Retrograde,Planetenschleife,,
-World.attribute.axialTilt,Axial Tilt,Achsenneigung,,
-World.attribute.waterCoverage,Water Coverage,Oberflächenwasser,,
-World.attribute.ring,Ring,Ring,,
-World.attribute.beltWidth,Belt Width,Durchmesser des Gürtels,,
-World.attribute.predominantSize,Predominant Size,Typische Größe,,
-World.class.description,Class {{class}},,,
-World.class.fullDescription,Class {{class}} ({{definition}}),,,
+NpcType.minor.name,Minor NPC,,,PNJ Mineur
+NpcType.notable.name,Notable NPC,,,PNJ Notable
+NpcType.major.name,Major NPC,,,PNJ Majeur
+ShipBuildType.pod.name,Pod,,,Nacelle
+ShipBuildType.shuttle.name,Shuttle,,,Navette
+ShipBuildType.runabout.name,Runabout,,,Runabout
+ShipBuildType.starship.name,Starship,,,Vaisseau
+StarSystem.common.coordinates,Coordinates,,,Coordonnées
+StarSystem.common.innerZone,Inner Zone,,,Zone Intérieure
+StarSystem.common.ecosphere,Ecosphere,,,Ecosphère
+StarSystem.common.outerZone,Outer Zone,,,Zone Extérieure
+StarSystem.common.worlds,Worlds,,,Mondes
+StarSystem.common.noWorlds,No worlds,,,Pas de mondes
+StarSystem.common.primaryStar,Primary Star,,,Etoile Primaire
+StarSystem.common.companionStar,Companion Star,,,Etoile Binaire
+Value.environment.text,"This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.",,,Cette valeur doit refléter l'environnement et la culture dans lesquels le personnage a été élevé. C'est une bonne occasion d'examiner comment le personnage perçoit sa propre culture et comment il se rattache- ou peut-être ne se rattache pas - aux philosophies et aux traditions de son peuple.
+Value.starfleetTraining.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their time at the Academy.",,,"Le personnage gagne une valeur unique, qui devrait refléter certains aspects des croyances du personnage qui se sont développées pendant son séjour à l'Académie."
+Value.childEducation.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Education.",,,"Le personnage gagne une valeur unique, qui devrait refléter certains aspects des croyances du personnage qui se sont développées au cours de son Education."
+Value.otherTraining.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Training.",,,"Le personnage gagne une valeur unique, qui devrait refléter certains aspects des croyances du personnage qui se sont développées au cours de son Entraînement."
+Value.final.text,"The character receives one final Value. This might reflect the Career Events rolled in Step Six, or it may represent some other element of the character. This Value might be a relationship, connecting the character to another character in the crew, or to another organization or culture in some way.",,,"Le personnage reçoit une valeur finale. Cela peut refléter les événements de carrière lancés à l'étape six, ou cela peut représenter un autre élément du personnage. Cette valeur peut être une relation, reliant le personnage à un autre personnage de l'équipage, ou à une autre organisation ou culture d'une manière ou d'une autre."
+Weapon.common.name,Name/Type,,,Nom/Type
+Weapon.common.qualities,Qualities,,,Qualités
+Weapon.personal.phaser1.name,Phaser type-1,,,Phaser type-1
+Weapon.personal.phaser2.name,Phaser type-2,,,Phaser type-2
+Weapon.personal.strike.name,Unarmed Strike,,,Frappe à mains nues
+Weapon.personal.batleth.name,Bat'leth,,,Bat'leth
+Weapon.personal.dktahg.name,d’k tahg dagger,,,Dague d’k tahg
+Weapon.personal.ushaantor.name,Ushaan-tor,,,Ushaan-tor
+Weapon.personal.disruptor.name,Disruptor Pistol,,,Pistolet Disrupteur
+Weapon.quality.nonlethal.name,Non-lethal,,,Non-létal
+Weapon.quality.knockdown.name,Knockdown,,,Renversement
+Weapon.quality.charges.name,Charges,,,Charges
+Weapon.quality.vicious.name,Vicious {{rank}},,,Vicieux {{rank}}
+Weapon.quality.deadly.name,Deadly,,,Mortel
+Weapon.quality.hidden.name,Hidden {{rank}},,,Caché {{rank}}
+Weapon.quality.piercing.name,Piercing {{rank}},,,Perçant {{rank}}
+Weapon.quality.intense.name,Intense,,,Intense
+Weapon.quality.area.name,Area,,,Aire
+World.attribute.designation,Designation,Bezeichnung,,Designation
+World.attribute.classification,Classification,Klasse,,Classification
+World.attribute.notes,Notes,Anmerkungen,,Notes
+World.attribute.orbitalRadius,Orbital Radius,Orbitaler Radius,,Rayon Orbital
+World.attribute.orbitalPeriod,Orbital Period,Umlaufdauer,,Periode Orbital
+World.attribute.eccentricity,Eccentricity,Exzentrik,,Eccentricité
+World.attribute.diameter,Diameter,Durchmesser,,Diametre
+World.attribute.density,Density,Dichter,,Densité
+World.attribute.mass,Mass,Masse,,Masse
+World.attribute.gravity,Gravity,Schwerkraft,,Gravité
+World.attribute.satellites,Satellites,Satelliten,,Satellites
+World.attribute.core,Core,Kern,,Noyau
+World.attribute.features,Features,Eigenarten,,Caractéristiques
+World.attribute.rotation,Rotation,Umdrehung,,Rotation
+World.attribute.tidallyLocked,Tidally Locked,Rotiert gebunden,,Rotation synchrone
+World.attribute.retrograde,Retrograde,Planetenschleife,,Retrograde
+World.attribute.axialTilt,Axial Tilt,Achsenneigung,,Inclinaison Axiale
+World.attribute.waterCoverage,Water Coverage,Oberflächenwasser,,Water Coverage
+World.attribute.ring,Ring,Ring,,Anneau
+World.attribute.beltWidth,Belt Width,Durchmesser des Gürtels,,Largeur de la Ceinture
+World.attribute.predominantSize,Predominant Size,Typische Größe,,Taille Predominante
+World.class.description,Class {{class}},,,Classe {{class}}
+World.class.fullDescription,Class {{class}} ({{definition}}),,,Class {{class}} ({{definition}})

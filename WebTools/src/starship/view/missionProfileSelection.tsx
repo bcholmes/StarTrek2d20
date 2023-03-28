@@ -1,4 +1,3 @@
-import i18next from 'i18next';
 import * as React from 'react';
 
 import { Starship } from '../../common/starship';
