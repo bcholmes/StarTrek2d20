@@ -152,17 +152,20 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
                                 onUpdate={() => { this.forceUpdate(); }}/>
                         </div>
                     </div>
-                    <div className="my-5">
-                        <Header level={2}>{t('Construct.other.disciplines')}</Header>
-                        <p>
-                            {t('SupportingCharacter.disciplineInstruction')}
-                        </p>
-                        <SupportingCharacterDisciplines age={this.state.age}
-                            onUpdate={() => { this.forceUpdate(); } }/>
-                    </div>
                 </div>
                 <div className="row">
                     <div className="col-12 col-lg-6 my-3">
+
+                        <div className="mt-2 mb-5">
+                            <Header level={2}>{t('Construct.other.disciplines')}</Header>
+                            <p>
+                                {t('SupportingCharacter.disciplineInstruction')}
+                            </p>
+                            <SupportingCharacterDisciplines age={this.state.age}
+                                onUpdate={() => { this.forceUpdate(); } }/>
+                        </div>
+                    </div>
+                    <div className="col-12 col-lg-6 mt-4 mb-5">
                         <Header level={2}>{t('Construct.other.focuses')}</Header>
                         <p>
                             {t('SupportingCharacter.focusInstruction')}
@@ -188,9 +191,7 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
                                     this.onFocusChanged();
                                 }} />
                         </div>
-                    </div>
-                    <div className="col-12 col-lg-6 my-3">
-                        <Header level={2}>{t('SupportingCharacter.nameAndRank')}</Header>
+                        <Header level={2} className="mt-5">{t('SupportingCharacter.nameAndRank')}</Header>
                         <p>
                             {t('SupportingCharacter.nameAndRankInstruction')}
                         </p>
