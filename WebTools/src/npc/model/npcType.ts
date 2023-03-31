@@ -47,7 +47,7 @@ export class NpcTypes {
                     }
                 }
             }
-            result.sort();
+            result.sort().reverse();
             return result;
         }
     }
@@ -69,7 +69,7 @@ export class NpcTypes {
                     }
                 }
             }
-            result.sort();
+            result.sort().reverse();
             return result;
         }
     }

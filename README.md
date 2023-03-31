@@ -1,7 +1,7 @@
 # StarTrek2d20
 
 This branch contains the code that supports the Star Trek Adventures character creator version found at
-https://sta.bcholmes.org . This is an alternative (and possibly temporary) version of [the main character
+https://sta.bcholmes.org . This is an alternative (and possibly temporary) version of [the original character
 generator app](https://sta.modiphiusapps.hostinguk.org/).
 
 Why does an alternative version exist? I wanted to make some additional features available a bit faster
