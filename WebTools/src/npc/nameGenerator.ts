@@ -59,7 +59,7 @@ export class NameGenerator {
                     }
                     let pronouns = this.derivePronouns(firstName.gender);
                     result = {
-                        name: this.combineParts(firstNameString, lastName.name, species, pronouns),
+                        name: this.combineParts(firstNameString, lastName.name, species, pronouns, name.names),
                         pronouns: pronouns
                     }
                     found = true;
@@ -98,15 +98,54 @@ export class NameGenerator {
         return result;
     }
 
-    private combineParts(firstName: string, lastName: string, species: SpeciesModel, pronouns: string) {
+    private combineParts(firstName: string, lastName: string, species: SpeciesModel, pronouns: string, names: [] = []) {
+        let parts = []
+
         if (species.id === Species.Bajoran) {
-            return (lastName ? lastName : "") + ((firstName && lastName) ? " " : "") + (firstName ? firstName : "");
+            if (lastName) {
+                parts.push(lastName);
+            }
+            if (firstName) {
+                parts.push(firstName);
+            }
         } else if (species.id === Species.Andorian) {
             let clanNamePrefix = this.determineAndorianPrefix(pronouns);
-            return (firstName ? firstName : "") + ((firstName && lastName) ? " " : "") + (lastName ? clanNamePrefix + lastName : "");
+
+            if (firstName) {
+                parts.push(firstName);
+            }
+
+            if (lastName) {
+                if (clanNamePrefix) {
+                    parts.push(clanNamePrefix + lastName);
+                } else {
+                    parts.push(lastName);
+                }
+            }
+        } else if (species.id === Species.Tellarite && D20.roll() <= 5) {
+            let interstitials = names.filter(n => n['type'] === 'Interstitial');
+            let interstitial = interstitials[Math.floor(Math.random() * interstitials.length)];
+
+            if (firstName) {
+                parts.push(firstName);
+            }
+            if (interstitial) {
+                parts.push(interstitial["name"]);
+            }
+            if (lastName) {
+                parts.push(lastName);
+            }
+
         } else {
-            return (firstName ? firstName : "") + ((firstName && lastName) ? " " : "") + (lastName ? lastName : "");
+            if (firstName) {
+                parts.push(firstName);
+            }
+
+            if (lastName) {
+                parts.push(lastName);
+            }
         }
+        return parts.join(" ");
     }
 
     private determineAndorianPrefix(pronouns: string) {
