@@ -46,7 +46,7 @@ const staDetector = {
 };
 
 const localStorageKey = 'settings.language';
-const supportedLanguages = ['en', 'en-CA', 'en-US', 'es', 'de', 'fr'];
+const supportedLanguages = ['en', 'es', 'de', 'fr'];
 
 const languageDetector = new LanguageDetector();
 languageDetector.addDetector(staDetector);
