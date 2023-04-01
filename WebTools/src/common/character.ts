@@ -113,6 +113,10 @@ export class UpbringingStep {
         this.upbringing = upbringing;
         this.acceptedUpbringing = accepted;
     }
+
+    get description() {
+        return this.upbringing.name + (this.acceptedUpbringing ? " (A)" : " (R)");
+    }
 }
 
 export class EnvironmentStep {

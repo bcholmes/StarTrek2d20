@@ -10,8 +10,6 @@ import { CharacterType } from "../common/characterType";
 import { withTranslation } from 'react-i18next';
 import { BaseCharacterView } from "./baseCharacterView";
 import { getNameAndShortRankOf } from "../helpers/ranks";
-import { Construct } from "../common/construct";
-import { marshaller } from "../helpers/marshaller";
 import { StatView } from "../components/StatView";
 import store from "../state/store";
 import { setCharacter } from "../state/characterActions";
@@ -119,7 +117,7 @@ class MainCharacterView extends BaseCharacterView {
             <div className="row" style={{alignItems: "baseline"}}>
 
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.upbringing')}:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.upbringingStep ? (character.upbringingStep.upbringing?.name + (character.upbringingStep.acceptedUpbringing ? " (A)" : " (R)")) : ""}</div></div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.upbringingStep ? character.upbringingStep.description : ""}</div></div>
 
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.environment')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{CharacterSerializer.serializeEnvironment(character.environmentStep?.environment, character.environmentStep?.otherSpeciesWorld, character.type)}</div></div>

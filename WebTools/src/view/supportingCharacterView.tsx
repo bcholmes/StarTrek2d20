@@ -8,9 +8,6 @@ import { Header } from "../components/header";
 import { BaseCharacterView } from "./baseCharacterView";
 import { withTranslation } from 'react-i18next';
 import { getNameAndShortRankOf } from "../helpers/ranks";
-import { marshaller } from "../helpers/marshaller";
-import { Construct } from "../common/construct";
-import { FoundryVttExporter } from "../vtt/foundryVttExporter";
 
 class SupportingCharacterView extends BaseCharacterView {
 

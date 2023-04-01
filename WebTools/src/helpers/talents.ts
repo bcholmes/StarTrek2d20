@@ -18,6 +18,8 @@ import { Career } from './careerEnum';
 
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
 
+export const CHALLENGE_DICE_NOTATION = "[D]";
+
 class AttributePrerequisite implements IConstructPrerequisite<Character> {
     private attribute: Attribute;
     private value: number;

@@ -123,9 +123,7 @@ export abstract class BaseCharacterView extends React.Component<ICharacterViewPr
         }
     }
 
-
     exportToJson(construct: Construct, suffix: string) {
-//        const json = marshaller.encodeSimpleCharacterAsJson("supportingCharacter", this.props.character);
         const json = FoundryVttExporter.instance.exportCharacter(this.props.character);
         const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
 

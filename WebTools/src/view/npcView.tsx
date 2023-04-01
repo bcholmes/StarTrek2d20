@@ -8,10 +8,6 @@ import { Header } from "../components/header";
 import { BaseCharacterView } from "./baseCharacterView";
 import { withTranslation } from 'react-i18next';
 import { getNameAndShortRankOf } from "../helpers/ranks";
-import { marshaller } from "../helpers/marshaller";
-import { Construct } from "../common/construct";
-
-declare function download(bytes: any, fileName: any, contentType: any): any;
 
 class NpcView extends BaseCharacterView {
 

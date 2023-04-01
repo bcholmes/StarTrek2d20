@@ -1,7 +1,9 @@
 import { Character } from "../common/character";
 import { CharacterSerializer } from "../common/characterSerializer";
 import { Attribute, AttributesHelper } from "../helpers/attributes";
+import { RolesHelper } from "../helpers/roles";
 import { SkillsHelper, Skill } from "../helpers/skills";
+import { CHALLENGE_DICE_NOTATION, TalentModel, TalentsHelper } from "../helpers/talents";
 
 export class FoundryVttExporter {
 
@@ -84,6 +86,11 @@ export class FoundryVttExporter {
         }
         result.system["species"] = character.speciesName;
 
+        if (character.upbringingStep) {
+            result.system["upbringing"] = character.upbringingStep?.description;
+        } else {
+            result.system["upbringing"] = "";
+        }
 
         character.values?.forEach(v => {
             result.items.push({
@@ -139,6 +146,140 @@ export class FoundryVttExporter {
                 }
               },)
         });
+
+        character.equipment?.forEach(e => {
+            result.items.push({
+                "name": e,
+                "type": "item",
+                "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
+                "system": {
+                  "description": "",
+                  "quantity": 1,
+                  "opportunity": 0,
+                  "escalation": 0
+                },
+                "effects": [],
+                "folder": null,
+                "sort": 0,
+                "ownership": {
+                  "default": 0,
+                  "xuN9JpdcyRd60ZEJ": 3
+                },
+                "flags": {},
+                "_stats": {
+                  "systemId": "sta",
+                  "systemVersion": "1.1.9",
+                  "coreVersion": "10.291",
+                  "createdTime": now,
+                  "modifiedTime": now,
+                  "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+                }
+            })
+        });
+
+        if (character.role != null) {
+            let role = RolesHelper.getRoleModelByName(character.role, character.type);
+            if (role) {
+                result.items.push({
+                    "name": role.name,
+                    "type": "talent",
+                    "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
+                    "system": {
+                      "description": "<p>" + role.description + "</p>",
+                      "talenttype": {
+                        "typeenum": "general",
+                        "description": "",
+                        "minimum": 0
+                      }
+                    },
+                    "effects": [],
+                    "flags": {},
+                    "_stats": {
+                      "systemId": "sta",
+                      "systemVersion": "1.1.9",
+                      "coreVersion": "10.291",
+                      "createdTime": now,
+                      "modifiedTime": now,
+                      "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+                    },
+                    "folder": null,
+                    "sort": 0,
+                    "ownership": {
+                      "default": 0,
+                      "xuN9JpdcyRd60ZEJ": 3
+                    }
+                });
+            }
+        }
+
+        Object.keys(character.talents).forEach(key => {
+            let characterTalent = character.talents[key];
+            let talent = TalentsHelper.getTalent(key);
+            if (talent) {
+                result.items.push({
+                    "name": talent.displayName + (talent.maxRank > 1 ? " [x" + characterTalent.rank + "]" : ""),
+                    "type": "talent",
+                    "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
+                    "system": {
+                      "description": this.convertDescription(talent),
+                      "talenttype": {
+                        "typeenum": this.determineTalentType(talent),
+                        "description": "",
+                        "minimum": 0
+                      }
+                    },
+                    "effects": [],
+                    "flags": {},
+                    "_stats": {
+                      "systemId": "sta",
+                      "systemVersion": "1.1.9",
+                      "coreVersion": "10.291",
+                      "createdTime": now,
+                      "modifiedTime": now,
+                      "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+                    },
+                    "folder": null,
+                    "sort": 0,
+                    "ownership": {
+                      "default": 0,
+                      "xuN9JpdcyRd60ZEJ": 3
+                    }
+                });
+            }
+
+        });
+
         return result;
+    }
+
+    determineTalentType(talent: TalentModel) {
+        console.log("Category : " + talent.category);
+
+        if (talent.category == null || talent.category === "Esoteric" || talent.category === "General"
+                || talent.category === "Career" || talent.category === "Starship" || talent.category === "Starbase" || talent.category === "") {
+            return "general";
+        } else if (SkillsHelper.toSkill(talent.category) !== Skill.None) {
+            return "discipline";
+        } else {
+            return "species";
+        }
+    }
+
+    convertDescription(talent: TalentModel) {
+        let description = talent.description.replace(CHALLENGE_DICE_NOTATION, "CD");
+
+        let prerequisites = undefined;
+        talent.prerequisites.forEach((p) => {
+            let desc = p.describe();
+            if (desc) {
+                if (prerequisites == null) {
+                    prerequisites = desc;
+                } else {
+                    prerequisites += (", " + desc);
+                }
+            }
+        });
+
+        return description.split("\n").map(d => "<p>" + d + "</p>") + (prerequisites ? "<p><strong>" + prerequisites + "</strong></p>" : "");
     }
 }
