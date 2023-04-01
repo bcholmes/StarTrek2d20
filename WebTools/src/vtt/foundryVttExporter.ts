@@ -24,6 +24,7 @@ export class FoundryVttExporter {
             "img": "icons/svg/mystery-man.svg",
             "system": {
                 "notes": "",
+                "assignment": character.assignment,
                 "attributes": {
                 },
                 "determination": {
@@ -36,7 +37,7 @@ export class FoundryVttExporter {
                 "rank": character.rank ?? "",
                 "reputation": character.reputation,
                 "stress": {
-                    "value": 0,
+                    "value": character.stress,
                     "max": character.stress
                 },
                 "traits": character.getAllTraits()
@@ -221,28 +222,28 @@ export class FoundryVttExporter {
                     "type": "talent",
                     "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
                     "system": {
-                      "description": this.convertDescription(talent),
-                      "talenttype": {
-                        "typeenum": this.determineTalentType(talent),
-                        "description": "",
-                        "minimum": 0
-                      }
+                        "description": this.convertDescription(talent),
+                        "talenttype": {
+                            "typeenum": this.determineTalentType(talent),
+                            "description": this.determineTalentRequirement(talent),
+                            "minimum": 0
+                        }
                     },
                     "effects": [],
                     "flags": {},
                     "_stats": {
-                      "systemId": "sta",
-                      "systemVersion": "1.1.9",
-                      "coreVersion": "10.291",
-                      "createdTime": now,
-                      "modifiedTime": now,
-                      "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+                        "systemId": "sta",
+                        "systemVersion": "1.1.9",
+                        "coreVersion": "10.291",
+                        "createdTime": now,
+                        "modifiedTime": now,
+                        "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
                     },
                     "folder": null,
                     "sort": 0,
                     "ownership": {
-                      "default": 0,
-                      "xuN9JpdcyRd60ZEJ": 3
+                        "default": 0,
+                        "xuN9JpdcyRd60ZEJ": 3
                     }
                 });
             }
@@ -252,9 +253,17 @@ export class FoundryVttExporter {
         return result;
     }
 
-    determineTalentType(talent: TalentModel) {
-        console.log("Category : " + talent.category);
+    determineTalentRequirement(talent: TalentModel) {
+        if (this.determineTalentType(talent) === "general") {
+            return "";
+        } else if (this.determineTalentType(talent) === "discipline") {
+            return talent.category.toLowerCase();
+        } else {
+            return talent.category;
+        }
+    }
 
+    determineTalentType(talent: TalentModel) {
         if (talent.category == null || talent.category === "Esoteric" || talent.category === "General"
                 || talent.category === "Career" || talent.category === "Starship" || talent.category === "Starbase" || talent.category === "") {
             return "general";

@@ -52,7 +52,7 @@ class SupportingCharacterView extends BaseCharacterView {
 
             <div className="button-container mt-5 mb-3">
                 <Button className="button-small mr-3" onClick={() => this.showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
-                <Button className="button-small mr-3" onClick={() => this.exportToJson(this.props.character, 'character') } buttonType={true}>{t('Common.button.exportVtt')}</Button>
+                <Button className="button-small mr-3" onClick={() => this.showVttExportDialog() } buttonType={true}>{t('Common.button.exportVtt')}</Button>
             </div>
        </div>);
     }

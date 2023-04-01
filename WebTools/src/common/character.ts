@@ -190,6 +190,23 @@ export class Character extends Construct {
         this.age = AgeHelper.getAdultAge();
     }
 
+    get assignment() {
+        let result = "";
+        if (this.role) {
+            result = this.role;
+        } else if (this.jobAssignment) {
+            result = this.jobAssignment;
+        }
+
+        if (this.assignedShip) {
+            if (result) {
+                result += ", ";
+            }
+            result += this.assignedShip;
+        }
+        return result;
+    }
+
     get mementos() {
         return this._mementos;
     }
