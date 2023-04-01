@@ -57,7 +57,7 @@ class NpcView extends BaseCharacterView {
 
             <div className="button-container mt-5 mb-3">
                 <Button className="button-small mr-3" onClick={() => this.showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
-                <Button className="button-small mr-3" onClick={() => this.exportToJson(this.props.character, 'character') } buttonType={true}>{t('Common.button.exportJson')}</Button>
+                <Button className="button-small mr-3" onClick={() => this.exportToJson(this.props.character, 'character') } buttonType={true}>{t('Common.button.exportVtt')}</Button>
             </div>
        </div>);
     }
@@ -91,14 +91,6 @@ class NpcView extends BaseCharacterView {
 
     private showExportDialog() {
         CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(this.props.character, Era.NextGeneration), "sta-npc", this.props.character);
-    }
-
-    exportToJson(construct: Construct, suffix: string) {
-        const json = marshaller.encodeSimpleCharacterAsJson("npc", this.props.character);
-        const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
-
-        var escaped = construct.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') ?? "sta";
-        download(jsonBytes, escaped + '-'  + suffix + ".json", "application/json");
     }
 }
 

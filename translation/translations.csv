@@ -121,6 +121,7 @@ Common.button.select,Select,Auswählen,Escoger,Choisir
 Common.button.selectAll,Select All,Alles auswählen,Seleccionar todo,Sélectionner tout
 Common.button.selectNone,Select None,Auswahl aufheben,Seleccionar Ninguno,Sélectionnez Aucun
 Common.button.exportJson,Export to JSON,Als JSON exportieren,Exportar a JSON,Exporter au format JSON
+Common.button.exportVtt,Export for VTT,,,
 Common.button.exportPdf,Export to PDF,Als PDF exportieren,Exportar a PDF,Exporter au format PDF
 Common.button.ok,OK,OK,De acuerdo,D'accord
 Common.button.add,Add,Hinzufügen,Agregar,Ajouter
@@ -418,7 +419,7 @@ World.attribute.designation,Designation,Bezeichnung,,Designation
 World.attribute.classification,Classification,Klasse,,Classification
 World.attribute.notes,Notes,Anmerkungen,,Notes
 World.attribute.orbitalRadius,Orbital Radius,Orbitaler Radius,,Rayon Orbital
-World.attribute.orbitalPeriod,Orbital Period,Umlaufdauer,,Periode Orbital
+World.attribute.orbitalPeriod,Orbital Period,Umlaufdauer,,Periode Orbitale
 World.attribute.eccentricity,Eccentricity,Exzentrik,,Eccentricité
 World.attribute.diameter,Diameter,Durchmesser,,Diametre
 World.attribute.density,Density,Dichter,,Densité
@@ -431,7 +432,7 @@ World.attribute.rotation,Rotation,Umdrehung,,Rotation
 World.attribute.tidallyLocked,Tidally Locked,Rotiert gebunden,,Rotation synchrone
 World.attribute.retrograde,Retrograde,Planetenschleife,,Retrograde
 World.attribute.axialTilt,Axial Tilt,Achsenneigung,,Inclinaison Axiale
-World.attribute.waterCoverage,Water Coverage,Oberflächenwasser,,Water Coverage
+World.attribute.waterCoverage,Water Coverage,Oberflächenwasser,,Couverture Hydrique
 World.attribute.ring,Ring,Ring,,Anneau
 World.attribute.beltWidth,Belt Width,Durchmesser des Gürtels,,Largeur de la Ceinture
 World.attribute.predominantSize,Predominant Size,Typische Größe,,Taille Predominante

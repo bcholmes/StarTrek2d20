@@ -73,7 +73,7 @@ class MainCharacterView extends BaseCharacterView {
                 ? (<div className="d-flex justify-content-between">
                         <div className="mt-5 mb-3">
                             <Button className="button-small mr-3" onClick={() => this.showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
-                            <Button className="button-small mr-3" onClick={() => this.exportToJson(this.props.character, 'character') } buttonType={true}>{t('Common.button.exportJson')}</Button>
+                            <Button className="button-small mr-3" onClick={() => this.exportToJson(this.props.character, 'character') } buttonType={true}>{t('Common.button.exportVtt')}</Button>
                         </div>
                         <div className="mt-5 mb-3">
                             <Button className="button-small" onClick={() => this.navigateToModification() } buttonType={true}>{t('Common.button.modify')}</Button>
@@ -185,14 +185,6 @@ class MainCharacterView extends BaseCharacterView {
 
     private showExportDialog() {
         CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(this.props.character, Era.NextGeneration), "sta-character", this.props.character);
-    }
-
-    exportToJson(construct: Construct, suffix: string) {
-        const json = marshaller.encodeMainCharacterAsJson(this.props.character);
-        const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
-
-        var escaped = construct.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') ?? "sta";
-        download(jsonBytes, escaped + '-' + suffix + ".json", "application/json");
     }
 }
 

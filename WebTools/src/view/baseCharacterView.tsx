@@ -8,6 +8,10 @@ import { makeKey } from "../common/translationKey";
 import { Attribute } from "../helpers/attributes";
 import { Skill } from "../helpers/skills";
 import WeaponView from "../components/weaponView";
+import { Construct } from "../common/construct";
+import { FoundryVttExporter } from "../vtt/foundryVttExporter";
+
+declare function download(bytes: any, fileName: any, contentType: any): any;
 
 export interface ICharacterViewProperties extends WithTranslation {
     character: Character;
@@ -117,5 +121,15 @@ export abstract class BaseCharacterView extends React.Component<ICharacterViewPr
         } else {
             return undefined;
         }
+    }
+
+
+    exportToJson(construct: Construct, suffix: string) {
+//        const json = marshaller.encodeSimpleCharacterAsJson("supportingCharacter", this.props.character);
+        const json = FoundryVttExporter.instance.exportCharacter(this.props.character);
+        const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
+
+        var escaped = construct.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') ?? "sta";
+        download(jsonBytes, escaped + '-'  + suffix + ".json", "application/json");
     }
 }
