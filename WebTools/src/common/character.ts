@@ -506,8 +506,8 @@ export class Character extends Construct {
                  this.rank.toLowerCase() === "commander" ||
                  this.rank.toLowerCase() === "lieutenant commander" ||
                  this.rank.toLowerCase().indexOf("admiral") >= 0 ||
-                 (this.role !== undefined && this.role!.toLowerCase() === "chief of security")) ||
-                 (this.jobAssignment?.toLowerCase() === "security"));
+                 (this.role !== undefined && this.role!.toLowerCase() === "chief of security"))) ||
+                 (this.jobAssignment?.toLowerCase() === "security");
     }
 
     isYoung() {

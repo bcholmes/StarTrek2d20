@@ -221,6 +221,7 @@ export class Weapon {
     loadType?: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel;
     deliveryType?: DeliverySystemModel;
     weaponQualities: WeaponQuality[];
+    hands?: number;
 
     constructor(usage: UsageCategory, name: string, dice: number, type: WeaponType,
             loadType?: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel,
@@ -338,9 +339,10 @@ export class Weapon {
         return this.type === WeaponType.CAPTURE;
     }
 
-    static createCharacterWeapon(name: string, dice: number, qualities: WeaponQuality[], type: WeaponType) {
+    static createCharacterWeapon(name: string, dice: number, qualities: WeaponQuality[], type: WeaponType, hands: number = 1) {
         let result = new Weapon(UsageCategory.Character, name, dice, type);
         result.weaponQualities = qualities;
+        result.hands = hands;
         return result;
     }
 
@@ -449,7 +451,7 @@ export class PersonalWeapons {
     }
 
     get batLeth() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.batleth.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], WeaponType.MELEE);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.batleth.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], WeaponType.MELEE, 2);
     }
 
     get dkTagh() {

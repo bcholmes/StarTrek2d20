@@ -45,7 +45,7 @@ class _AllyHelper {
         new AlliedMilitary("Klingon Defence Force",AlliedMilitaryType.KlingonDefenceForce, [Species.KlingonExt, Species.Klingon, Species.KlingonQuchHa],
                 Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
         new AlliedMilitary("MACO", AlliedMilitaryType.Maco, [Species.Human], Era.Enterprise),
-        new AlliedMilitary("Romulan Star Empire", AlliedMilitaryType.RomulanStarEmpire, [Species.RomulanExt, Species.Romulan],
+        new AlliedMilitary("Romulan Star Empire", AlliedMilitaryType.RomulanStarEmpire, [Species.RomulanExt, Species.Romulan, Species.Reman],
                 Era.OriginalSeries, Era.NextGeneration),
         new AlliedMilitary("Vulcan High Command", AlliedMilitaryType.VulcanHighCommand, [Species.Vulcan], Era.Enterprise),
 

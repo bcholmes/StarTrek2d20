@@ -37,7 +37,7 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
                     onChange={(t) => this.selectVttType(t as number)} />
 
                 <div className="mt-5 text-right">
-                    <Button buttonType={true} className="btn btn-primary" onClick={() => this.exportToFoundryVtt() } >Export</Button>
+                    <Button buttonType={true} className="btn btn-primary" onClick={() => this.export() } >Export</Button>
                 </div>
             </div>
         );

@@ -263,7 +263,7 @@ export class FoundryVttExporter {
                   "description": "",
                   "damage": w.baseDice,
                   "range": w.type === WeaponType.ENERGY ? "Ranged" : "Melee",
-                  "hands": 1,
+                  "hands": w.hands ?? 1,
                   "qualities": {
                     "area": false,
                     "intense": false,
