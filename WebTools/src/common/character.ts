@@ -11,10 +11,9 @@ import {CharacterType} from './characterType';
 import { AlliedMilitary, AlliedMilitaryType } from '../helpers/alliedMilitary';
 import { Government, GovernmentType } from '../helpers/governments';
 import AgeHelper, { Age } from '../helpers/age';
-import { Weapon, WeaponType } from '../helpers/weapons';
+import { Weapon, PersonalWeapons } from '../helpers/weapons';
 import { Construct, Stereotype } from './construct';
 import { SpeciesHelper } from '../helpers/species';
-import i18next from 'i18next';
 
 export abstract class CharacterTypeDetails {
 }
@@ -299,32 +298,28 @@ export class Character extends Construct {
         let result: Weapon[] = [];
 
         if (this.hasTalent("Mean Right Hook")) {
-            result.push(Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1,
-                [i18next.t('Weapon.quality.knockdown.name'), i18next.t('Weapon.quality.vicious.name', {rank: "1" })],
-                WeaponType.MELEE));
+            result.push(PersonalWeapons.instance.unarmedStrikeMean);
         } else {
-            result.push(Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [i18next.t('Weapon.quality.knockdown.name')], WeaponType.MELEE));
+            result.push(PersonalWeapons.instance.unarmedStrike);
         }
 
         if (this.hasTalent("The Ushaan")) {
-            result.push(Weapon.createCharacterWeapon(i18next.t('Weapon.personal.ushaantor.name'), 1, [i18next.t('Weapon.quality.vicious.name', {rank: "1" })], WeaponType.MELEE));
+            result.push(PersonalWeapons.instance.ushaanTor);
         }
 
         if (this.hasTalent("Warrior's Spirit")) {
-            result.push(Weapon.createCharacterWeapon(i18next.t('Weapon.personal.batleth.name'), 3, [i18next.t('Weapon.quality.vicious.name', {rank: "1" })], WeaponType.MELEE));
+            result.push(PersonalWeapons.instance.batLeth);
         }
 
         if (this.type === CharacterType.Starfleet || this.type === CharacterType.Cadet ||
             this.isBajoranMilitia() || this.isCardassianUnion()) {
-            result.push(Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser2.name'), 3, [i18next.t('Weapon.quality.charges.name')], WeaponType.ENERGY));
+            result.push(PersonalWeapons.instance.phaser2);
         } else if (this.age.isAdult()) {
             if (this.isKlingon()) {
-                result.push(Weapon.createCharacterWeapon(i18next.t('Weapon.personal.dktahg.name'), 1,
-                    [i18next.t('Weapon.quality.vicious.name', {rank: "1" }), i18next.t('Weapon.quality.deadly.name'), i18next.t('Weapon.quality.hidden.name', {rank: "1" })],
-                    WeaponType.MELEE));
+                result.push(PersonalWeapons.instance.dkTagh);
             }
             if (this.type !== CharacterType.Child && this.type !== CharacterType.Civilian) {
-                result.push(Weapon.createCharacterWeapon(i18next.t('Weapon.personal.disruptor.name'), 3, [i18next.t('Weapon.quality.vicious.name', {rank: "1" })], WeaponType.ENERGY));
+                result.push(PersonalWeapons.instance.disruptorPistol);
             }
         }
         return result;

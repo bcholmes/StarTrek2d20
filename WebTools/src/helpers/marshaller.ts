@@ -299,8 +299,7 @@ class Marshaller {
                 "name": w.name,
                 "baseDice": w.baseDice,
                 "loadType": this.convertLoadType(w.loadType),
-                "deliverySystem": w.deliveryType == null ? null : DeliverySystem[w.deliveryType.type],
-                "hardCodedQualities": w.hardCodedQualities
+                "deliverySystem": w.deliveryType == null ? null : DeliverySystem[w.deliveryType.type]
 
             }));
         }
@@ -444,7 +443,6 @@ class Marshaller {
 
         let name = json["name"];
         let baseDice = json["baseDice"];
-        let hardCodedQualities = json["hardCodedQualities"];
 
         let weaponType = null;
         [WeaponType.MELEE, WeaponType.ENERGY, WeaponType.TORPEDO, WeaponType.MINE, WeaponType.CAPTURE].forEach(t => {
@@ -481,7 +479,7 @@ class Marshaller {
             });
         }
 
-        return new Weapon(usageCategory, name, baseDice, hardCodedQualities, weaponType, loadType, deliverySystem);
+        return new Weapon(usageCategory, name, baseDice, weaponType, loadType, deliverySystem);
     }
 
     decodeCharacter(json: any) {

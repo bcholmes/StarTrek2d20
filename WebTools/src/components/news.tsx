@@ -12,6 +12,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230401</b>
+                <ul>
+                    <li>Initial experimental work to support exporting characters to virutal table tops.
+                        At the moment, only Foundry VTT is supported. I'll get around to others in the future.</li>
+                </ul>
                 <b>v1.230331</b>
                 <ul>
                     <li>Bug fixes.</li>

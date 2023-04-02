@@ -14,8 +14,6 @@ import { StatView } from "../components/StatView";
 import store from "../state/store";
 import { setCharacter } from "../state/characterActions";
 
-declare function download(bytes: any, fileName: any, contentType: any): any;
-
 class MainCharacterView extends BaseCharacterView {
 
     componentDidMount() {

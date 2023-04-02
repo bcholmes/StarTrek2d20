@@ -1,5 +1,29 @@
+import i18next from "i18next";
 import { CharacterType } from "../common/characterType";
+import { makeKey } from "../common/translationKey";
 import { Era } from "./eras";
+
+export enum Quality {
+    NonLethal, Knockdown, Vicious, Charges, Hidden, Deadly
+}
+
+export class WeaponQuality {
+    readonly quality: Quality;
+    readonly rank?: number;
+
+    constructor(quality: Quality, rank?: number) {
+        this.quality = quality;
+        this.rank = rank;
+    }
+
+    get localizedDescription() {
+        if (this.rank != null) {
+            return i18next.t(makeKey("Weapon.quality.", Quality[this.quality], ".name"), {rank: this.rank});
+        } else {
+            return i18next.t(makeKey("Weapon.quality.", Quality[this.quality], ".name"));
+        }
+    }
+}
 
 export enum UsageCategory {
     Character, Starship
@@ -191,14 +215,14 @@ export class Weapon {
     usageCategory: UsageCategory;
     name: string;
     readonly baseDice: number;
-    hardCodedQualities: string;
     type: WeaponType;
     eras: Era[][];
     requiresTalent: boolean;
     loadType?: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel;
     deliveryType?: DeliverySystemModel;
+    weaponQualities: WeaponQuality[];
 
-    constructor(usage: UsageCategory, name: string, dice: number, qualities: string, type: WeaponType,
+    constructor(usage: UsageCategory, name: string, dice: number, type: WeaponType,
             loadType?: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel,
             deliveryType?: DeliverySystemModel,
             eras: Era[][] = [[ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ],[ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ]],
@@ -206,12 +230,32 @@ export class Weapon {
         this.usageCategory = usage;
         this.name = name;
         this.baseDice = dice;
-        this.hardCodedQualities = qualities;
         this.type = type;
         this.eras = eras;
         this.requiresTalent = requiresTalent;
         this.loadType = loadType;
         this.deliveryType = deliveryType;
+        this.weaponQualities = [];
+    }
+
+    isQualityPresent(quality: Quality) {
+        let result = false;
+        this.weaponQualities.forEach(q => {
+            if (q.quality === quality) {
+                result = true;
+            }
+        });
+        return result;
+    }
+
+    getRankForQuality(quality: Quality) {
+        let result = 0;
+        this.weaponQualities.forEach(q => {
+            if (q.quality === quality) {
+                result = q.rank || 0;
+            }
+        });
+        return result;
     }
 
     get scaleApplies() {
@@ -248,7 +292,7 @@ export class Weapon {
 
     get qualities() {
         if (this.usageCategory === UsageCategory.Character) {
-            return this.hardCodedQualities;
+            return this.weaponQualities.map(q => q.localizedDescription).join(", ");
         } else {
             let result = "";
             if (this.loadType != null && this.loadType instanceof EnergyLoadTypeModel) {
@@ -294,8 +338,10 @@ export class Weapon {
         return this.type === WeaponType.CAPTURE;
     }
 
-    static createCharacterWeapon(name: string, dice: number, qualities: string[], type: WeaponType) {
-        return new Weapon(UsageCategory.Character, name, dice, qualities.join(', '), type);
+    static createCharacterWeapon(name: string, dice: number, qualities: WeaponQuality[], type: WeaponType) {
+        let result = new Weapon(UsageCategory.Character, name, dice, type);
+        result.weaponQualities = qualities;
+        return result;
     }
 
     static createStarshipWeapon(name: string, type: WeaponType,
@@ -303,7 +349,7 @@ export class Weapon {
         deliveryType?: DeliverySystemModel,
         eras: Era[][] = [[ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ],[ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ]],
         requiresTalent: boolean = false) {
-        return new Weapon(UsageCategory.Starship, name, 0, "", type, loadType, deliveryType, eras, requiresTalent);
+        return new Weapon(UsageCategory.Starship, name, 0, type, loadType, deliveryType, eras, requiresTalent);
     }
 }
 
@@ -378,3 +424,48 @@ class StarshipWeaponList {
 const StarshipWeaponRegistry = new StarshipWeaponList();
 
 export default StarshipWeaponRegistry;
+
+export class PersonalWeapons {
+    private static _instance;
+
+    get unarmedStrike() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown)], WeaponType.MELEE);
+    }
+
+    get unarmedStrikeMean() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.Vicious, 1)], WeaponType.MELEE);
+    }
+
+    get phaser1() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser1.name'), 2, [new WeaponQuality(Quality.Charges)], WeaponType.ENERGY);
+    }
+
+    get phaser2() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser2.name'), 3, [new WeaponQuality(Quality.Charges)], WeaponType.ENERGY);
+    }
+
+    get ushaanTor() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.ushaantor.name'), 1, [new WeaponQuality(Quality.Vicious, 1)], WeaponType.MELEE);
+    }
+
+    get batLeth() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.batleth.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], WeaponType.MELEE);
+    }
+
+    get dkTagh() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.dktahg.name'), 1,
+            [new WeaponQuality(Quality.Vicious, 1), new WeaponQuality(Quality.Deadly), new WeaponQuality(Quality.Hidden, 1)],
+            WeaponType.MELEE);
+    }
+
+    get disruptorPistol() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.disruptor.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], WeaponType.ENERGY);
+    }
+
+    static get instance() {
+        if (PersonalWeapons._instance == null) {
+            PersonalWeapons._instance = new PersonalWeapons();
+        }
+        return PersonalWeapons._instance;
+    }
+}

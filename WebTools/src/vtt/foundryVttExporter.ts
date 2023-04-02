@@ -4,6 +4,7 @@ import { Attribute, AttributesHelper } from "../helpers/attributes";
 import { RolesHelper } from "../helpers/roles";
 import { SkillsHelper, Skill } from "../helpers/skills";
 import { CHALLENGE_DICE_NOTATION, TalentModel, TalentsHelper } from "../helpers/talents";
+import { Quality, WeaponType } from "../helpers/weapons";
 
 export class FoundryVttExporter {
 
@@ -248,6 +249,55 @@ export class FoundryVttExporter {
                 });
             }
 
+        });
+
+        character.determineWeapons().forEach(w => {
+            result.items.push({
+                "name": w.name,
+                "type": "characterweapon",
+                "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
+                "effects": [],
+                "folder": null,
+                "sort": 0,
+                "system": {
+                  "description": "",
+                  "damage": w.baseDice,
+                  "range": w.type === WeaponType.ENERGY ? "Ranged" : "Melee",
+                  "hands": 1,
+                  "qualities": {
+                    "area": false,
+                    "intense": false,
+                    "knockdown": w.isQualityPresent(Quality.Knockdown),
+                    "accurate": false,
+                    "charge": w.isQualityPresent(Quality.Charges),
+                    "cumbersome": false,
+                    "deadly": w.isQualityPresent(Quality.Deadly),
+                    "debilitating": false,
+                    "grenade": false,
+                    "inaccurate": false,
+                    "nonlethal": w.isQualityPresent(Quality.NonLethal),
+                    "hiddenx": w.getRankForQuality(Quality.Hidden),
+                    "piercingx": 0,
+                    "viciousx": w.getRankForQuality(Quality.Vicious),
+                    "opportunity": 0,
+                    "escalation": 0
+                  },
+                  "opportunity": null,
+                  "escalation": null
+                },
+                "ownership": {
+                  "default": 0,
+                  "xuN9JpdcyRd60ZEJ": 3
+                },
+                "_stats": {
+                  "systemId": "sta",
+                  "systemVersion": "1.1.9",
+                  "coreVersion": "10.291",
+                  "createdTime": now,
+                  "modifiedTime": now,
+                  "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+                }
+            });
         });
 
         return result;
