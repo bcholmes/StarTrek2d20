@@ -269,7 +269,7 @@ export class FoundryVttExporter {
                     "intense": false,
                     "knockdown": w.isQualityPresent(Quality.Knockdown),
                     "accurate": false,
-                    "charge": w.isQualityPresent(Quality.Charges),
+                    "charge": w.isQualityPresent(Quality.Charge),
                     "cumbersome": false,
                     "deadly": w.isQualityPresent(Quality.Deadly),
                     "debilitating": false,

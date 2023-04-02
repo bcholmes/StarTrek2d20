@@ -122,7 +122,7 @@ export class PageFactory {
 
     loadSystemGenerationFactory(completion: () => void = () => {}) {
         if (this.pageFactories["system"] == null) {
-            import('../mapping/page/systemPageFactory').then(({SystemPageFactory}) => {
+            import(/* webpackChunkName: 'sector' */'../mapping/page/systemPageFactory').then(({SystemPageFactory}) => {
                 this.pageFactories["system"] = SystemPageFactory.instance;
                 completion();
             });
@@ -134,7 +134,7 @@ export class PageFactory {
 
     loadStarshipFactory(completion: () => void = () => {}) {
         if (this.pageFactories["starship"] == null) {
-            import('../starship/page/starshipPageFactory').then(({StarshipPageFactory}) => {
+            import(/* webpackChunkName: 'starship' */'../starship/page/starshipPageFactory').then(({StarshipPageFactory}) => {
                 this.pageFactories["starship"] = StarshipPageFactory.instance;
                 completion();
             });
@@ -145,7 +145,7 @@ export class PageFactory {
 
     loadNpcFactory(completion: () => void = () => {}) {
         if (this.pageFactories["npc"] == null) {
-            import('../npc/page/npcPageFactory').then(({NpcPageFactory}) => {
+            import(/* webpackChunkName: 'npc' */ '../npc/page/npcPageFactory').then(({NpcPageFactory}) => {
                 this.pageFactories["npc"] = NpcPageFactory.instance;
                 completion();
             });

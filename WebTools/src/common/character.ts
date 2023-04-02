@@ -249,6 +249,10 @@ export class Character extends Construct {
             result.push("MedKit");
         }
 
+        if (this.isEngineer()) {
+            result.push("Engineering Kit");
+        }
+
         if (this.hasTalent("The Ushaan")) {
             result.push("Ushaan-tor ice pick");
         }
@@ -311,8 +315,15 @@ export class Character extends Construct {
             result.push(PersonalWeapons.instance.batLeth);
         }
 
-        if (this.type === CharacterType.Starfleet || this.type === CharacterType.Cadet ||
-            this.isBajoranMilitia() || this.isCardassianUnion()) {
+        if (this.type === CharacterType.Starfleet) {
+            if (this.isSecurityOrSeniorOfficer()) {
+                result.push(PersonalWeapons.instance.phaser2);
+            } else {
+                result.push(PersonalWeapons.instance.phaser1);
+            }
+        } else if (this.type === CharacterType.Cadet) {
+            result.push(PersonalWeapons.instance.phaser1);
+        } else if (this.isBajoranMilitia() || this.isCardassianUnion()) {
             result.push(PersonalWeapons.instance.phaser2);
         } else if (this.age.isAdult()) {
             if (this.isKlingon()) {
@@ -484,12 +495,19 @@ export class Character extends Construct {
         this.focuses.push(focus);
     }
 
+    isEngineer() {
+        return this.role?.toLowerCase() === "chief engineer" || this.role?.toLowerCase() === "engineering officer (jonpin)"
+            || (this.jobAssignment && this.jobAssignment?.toLowerCase().indexOf("engineer") >= 0);
+    }
+
     isSecurityOrSeniorOfficer() {
         return (this.rank &&
                 (this.rank.toLowerCase() === "captain" ||
                  this.rank.toLowerCase() === "commander" ||
                  this.rank.toLowerCase() === "lieutenant commander" ||
-                 (this.role !== undefined && this.role!.toLowerCase() === "chief of security")));
+                 this.rank.toLowerCase().indexOf("admiral") >= 0 ||
+                 (this.role !== undefined && this.role!.toLowerCase() === "chief of security")) ||
+                 (this.jobAssignment?.toLowerCase() === "security"));
     }
 
     isYoung() {

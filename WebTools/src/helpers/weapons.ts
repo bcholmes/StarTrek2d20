@@ -4,7 +4,7 @@ import { makeKey } from "../common/translationKey";
 import { Era } from "./eras";
 
 export enum Quality {
-    NonLethal, Knockdown, Vicious, Charges, Hidden, Deadly
+    NonLethal, Knockdown, Vicious, Charge, Hidden, Deadly
 }
 
 export class WeaponQuality {
@@ -429,19 +429,19 @@ export class PersonalWeapons {
     private static _instance;
 
     get unarmedStrike() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown)], WeaponType.MELEE);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.NonLethal)], WeaponType.MELEE);
     }
 
     get unarmedStrikeMean() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.Vicious, 1)], WeaponType.MELEE);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.NonLethal), new WeaponQuality(Quality.Vicious, 1)], WeaponType.MELEE);
     }
 
     get phaser1() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser1.name'), 2, [new WeaponQuality(Quality.Charges)], WeaponType.ENERGY);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser1.name'), 2, [new WeaponQuality(Quality.Charge), new WeaponQuality(Quality.Hidden, 1)], WeaponType.ENERGY);
     }
 
     get phaser2() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser2.name'), 3, [new WeaponQuality(Quality.Charges)], WeaponType.ENERGY);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser2.name'), 3, [new WeaponQuality(Quality.Charge)], WeaponType.ENERGY);
     }
 
     get ushaanTor() {

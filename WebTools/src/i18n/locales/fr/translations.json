@@ -492,11 +492,11 @@
 
     "Weapon.personal.disruptor.name": "Pistolet Disrupteur",
 
-    "Weapon.quality.nonlethal.name": "Non-létal",
+    "Weapon.quality.nonLethal.name": "Non-létal",
 
     "Weapon.quality.knockdown.name": "Renversement",
 
-    "Weapon.quality.charges.name": "Charges",
+    "Weapon.quality.charge.name": "Charges",
 
     "Weapon.quality.vicious.name": "Vicieux {{rank}}",
 

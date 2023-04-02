@@ -121,6 +121,7 @@ Common.button.select,Select,Auswählen,Escoger,Choisir
 Common.button.selectAll,Select All,Alles auswählen,Seleccionar todo,Sélectionner tout
 Common.button.selectNone,Select None,Auswahl aufheben,Seleccionar Ninguno,Sélectionnez Aucun
 Common.button.exportJson,Export to JSON,Als JSON exportieren,Exportar a JSON,Exporter au format JSON
+Common.button.export,Export,,,
 Common.button.exportVtt,Export for VTT,,,
 Common.button.exportPdf,Export to PDF,Als PDF exportieren,Exportar a PDF,Exporter au format PDF
 Common.button.ok,OK,OK,De acuerdo,D'accord
@@ -406,9 +407,9 @@ Weapon.personal.batleth.name,Bat'leth,,,Bat'leth
 Weapon.personal.dktahg.name,d’k tahg dagger,,,Dague d’k tahg
 Weapon.personal.ushaantor.name,Ushaan-tor,,,Ushaan-tor
 Weapon.personal.disruptor.name,Disruptor Pistol,,,Pistolet Disrupteur
-Weapon.quality.nonlethal.name,Non-lethal,,,Non-létal
+Weapon.quality.nonLethal.name,Non-lethal,,,Non-létal
 Weapon.quality.knockdown.name,Knockdown,,,Renversement
-Weapon.quality.charges.name,Charges,,,Charges
+Weapon.quality.charge.name,Charge,,,Charges
 Weapon.quality.vicious.name,Vicious {{rank}},,,Vicieux {{rank}}
 Weapon.quality.deadly.name,Deadly,,,Mortel
 Weapon.quality.hidden.name,Hidden {{rank}},,,Caché {{rank}}

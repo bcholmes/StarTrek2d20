@@ -144,6 +144,7 @@
     "Common.button.selectAll": "Select All",
     "Common.button.selectNone": "Select None",
     "Common.button.exportJson": "Export to JSON",
+    "Common.button.export": "Export",
     "Common.button.exportVtt": "Export for VTT",
     "Common.button.exportPdf": "Export to PDF",
     "Common.button.ok": "OK",
@@ -496,11 +497,11 @@
 
     "Weapon.personal.disruptor.name": "Disruptor Pistol",
 
-    "Weapon.quality.nonlethal.name": "Non-lethal",
+    "Weapon.quality.nonLethal.name": "Non-lethal",
 
     "Weapon.quality.knockdown.name": "Knockdown",
 
-    "Weapon.quality.charges.name": "Charges",
+    "Weapon.quality.charge.name": "Charge",
 
     "Weapon.quality.vicious.name": "Vicious {{rank}}",
 

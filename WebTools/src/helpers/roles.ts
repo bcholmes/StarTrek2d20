@@ -433,7 +433,7 @@ class Roles {
             Role.ChiefMedicalOfficer,
             "Surgeon (HaqwI’)",
             "Every Klingon vessel includes a physician of some kind, and though they are not customarily officers, they are nevertheless well- respected: every warrior aboard a vessel will owe life or limb to the surgeon’s care. Even outside of battle, the surgeon is kept busy tending to injuries sustained in training, brawling, or other common activities. Klingon medicine is primarily focused on getting the patient back into action as quickly as possible, commonly using stimulants and pain suppressants and quickly mending broken bones and flesh wounds to send injured crew back to their posts in minutes. Only the most severe injuries may require lengthy care, and a Klingon surgeon may perform triage with a ruthlessness that would shock a Federation doctor.",
-            Skill.Engineering,
+            Skill.Medicine,
             "When a surgeon succeeds at a Medicine task to stabilize an injured character, they need only spend 1 Momentum rather than 2 to get the patient back on their feet and able to act again.",
             new SourcePrerequisite(Source.KlingonCore),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
