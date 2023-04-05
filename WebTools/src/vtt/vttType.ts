@@ -20,7 +20,7 @@ export class VttTypes {
     private static _instance: VttTypes;
 
     private readonly types: VttTypeModel[] = [
-        new VttTypeModel(VttType.Foundry, "Fountry VTT")
+        new VttTypeModel(VttType.Foundry, "Foundry VTT")
     ];
 
     static get instance() {

@@ -2841,7 +2841,7 @@ export class Talents {
                 1,
                 "Starship"),
             new TalentModel(
-                "Multi-Vector Assualt Mode",
+                "Multi-Vector Assault Mode",
                 "Like the Saucer Separation talent, Multi-Vector Assault Mode changes the statistics of the ship as it splits apart into three distinct sections. Each section has the same systems and departments scores as the original fully integrated starship, but each individual section has only one third the power (divide original Power rating by 3, rounding down) that it originally hadd and each of the sections has a Scale 1 less than the original starship. Starships that wish to take this talent must also have the Redundant Systems (Propulsion) talent. All energy weapons’ Stress ratings for each section is one less due to the reduction in Scale.\nSeparating the starship into three sections (Command and two attack sections) requires a Control + Conn task with a Difficulty of 2, assisted by the ship’s Structure + Engineering. Reconnecting the separate sections requires the same task as separation, but done twice. Sections may not disconnect or reconnect if the Structure of any section of the ship, or the ship as a whole, has been damaged or disabled.",
                 [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
                 1,
@@ -3126,6 +3126,11 @@ export class Talents {
         if (talent == null && name.indexOf(" [") >= 0) {
             let tempName = name.substring(0, name.indexOf(" ["));
             talent = this.getTalent(tempName);
+        }
+
+        // backward compatibility for a past spelling mistake
+        if (talent === null && name === "Multi-Vector Assualt Mode") {
+            talent = this.getTalent("Multi-Vector Assault Mode");
         }
 
         if (talent === null) {

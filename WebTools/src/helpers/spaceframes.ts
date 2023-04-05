@@ -1044,7 +1044,7 @@ export class SpaceframeHelper {
 
             ],
             [
-                TalentSelection.selectTalent("Multi-Vector Assualt Mode"),
+                TalentSelection.selectTalent("Multi-Vector Assault Mode"),
                 TalentSelection.selectTalent("Redundant Systems [Engines]")
             ]),
         [Spaceframe.Vesta]: SpaceframeModel.createStandardSpaceframe(
