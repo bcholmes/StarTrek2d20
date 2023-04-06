@@ -12,6 +12,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230405</b>
+                <ul>
+                    <li>I've elaborated the VTT support so that I can support exporting starships to Foundry.</li>
+                    <li>Some spelling fixes.</li>
+                </ul>
                 <b>v1.230402</b>
                 <ul>
                     <li>Minor revisions inspired by the Foundry VTT changes.</li>

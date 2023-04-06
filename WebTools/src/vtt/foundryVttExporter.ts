@@ -6,7 +6,7 @@ import { RolesHelper } from "../helpers/roles";
 import { SkillsHelper, Skill } from "../helpers/skills";
 import { Department, allDepartments } from "../helpers/departments";
 import { CHALLENGE_DICE_NOTATION, TalentModel, TalentsHelper } from "../helpers/talents";
-import { Quality, WeaponType } from "../helpers/weapons";
+import { Quality, WeaponRange, WeaponType } from "../helpers/weapons";
 import { allSystems, System } from "../helpers/systems";
 
 export class FoundryVttExporter {
@@ -127,6 +127,51 @@ export class FoundryVttExporter {
                     "xuN9JpdcyRd60ZEJ": 3
                 }
             });
+        });
+
+        starship.determineWeapons().forEach(w => {
+            if (w.type !== WeaponType.CAPTURE) {
+                result.items.push({
+                    "name": w.name,
+                    "type": "starshipweapon",
+                    "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
+                    "effects": [],
+                    "folder": null,
+                    "sort": 0,
+                    "system": {
+                        "description": "",
+                        "damage": w.dice,
+                        "range": w.range != null ? WeaponRange[w.range].toLowerCase() : null,
+                        "qualities": {
+                        "area": w.isQualityPresent(Quality.Area),
+                        "spread": false,
+                        "dampening": w.isQualityPresent(Quality.Dampening),
+                        "calibration": w.isQualityPresent(Quality.Calibration),
+                        "devastating": w.isQualityPresent(Quality.Devastating),
+                        "highyield": w.isQualityPresent(Quality.HighYield),
+                        "persistentx": w.isQualityPresent(Quality.PersistentX) ? starship.scale : 0,
+                        "piercingx": w.getRankForQuality(Quality.Piercing),
+                        "viciousx": w.getRankForQuality(Quality.Vicious),
+                        "hiddenx": w.getRankForQuality(Quality.Hidden),
+                        "versatilex": w.getRankForQuality(Quality.Versatile)
+                        },
+                        "opportunity": null,
+                        "escalation": null
+                    },
+                    "ownership": {
+                    "default": 0,
+                    "xuN9JpdcyRd60ZEJ": 3
+                    },
+                    "_stats": {
+                    "systemId": "sta",
+                    "systemVersion": "1.1.9",
+                    "coreVersion": "10.291",
+                    "createdTime": now,
+                    "modifiedTime": now,
+                    "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+                    }
+                });
+            }
         });
 
         return result;
@@ -377,7 +422,7 @@ export class FoundryVttExporter {
                 "sort": 0,
                 "system": {
                   "description": "",
-                  "damage": w.baseDice,
+                  "damage": w.dice,
                   "range": w.type === WeaponType.ENERGY ? "Ranged" : "Melee",
                   "hands": w.hands ?? 1,
                   "qualities": {
