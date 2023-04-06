@@ -1,10 +1,13 @@
 import { Character } from "../common/character";
 import { CharacterSerializer } from "../common/characterSerializer";
+import { Starship } from "../common/starship";
 import { Attribute, AttributesHelper } from "../helpers/attributes";
 import { RolesHelper } from "../helpers/roles";
 import { SkillsHelper, Skill } from "../helpers/skills";
+import { Department, allDepartments } from "../helpers/departments";
 import { CHALLENGE_DICE_NOTATION, TalentModel, TalentsHelper } from "../helpers/talents";
 import { Quality, WeaponType } from "../helpers/weapons";
+import { allSystems, System } from "../helpers/systems";
 
 export class FoundryVttExporter {
 
@@ -17,10 +20,123 @@ export class FoundryVttExporter {
         return FoundryVttExporter._instance;
     }
 
+    exportStarship(starship: Starship) {
+        let now = Date.now();
+
+        let result = {
+            "name": starship.name || "Unnamed Starship",
+            "type": "starship",
+            "img": "systems/sta/assets/icons/ship_icon.png",
+            "system": {
+                "notes": "",
+                "crew": {
+                    "value": starship.crewSupport,
+                    "max": starship.crewSupport
+                },
+                "departments": {
+                },
+                "designation": starship.registry ?? "",
+                "missionprofile": starship.missionProfileModel?.name ?? "",
+                "power": {
+                  "value": starship.power,
+                  "max": starship.power
+                },
+                "refit": starship.refitsAsString(),
+                "resistance": starship.resistance,
+                "scale": starship.scale,
+                "shields": {
+                  "value": starship.shields,
+                  "max": starship.shields
+                },
+                "servicedate": starship.serviceYear ?? "",
+                "spaceframe": starship.className ?? "",
+                "systems": {
+                },
+                "traits": starship.getAllTraits()
+            },
+            "items": [],
+            "effects": [],
+            "flags": {
+              "exportSource": {
+                "world": "sta-bcholmes-org",
+                "system": "sta",
+                "coreVersion": "10.291",
+                "systemVersion": "1.1.9"
+              }
+            },
+            "_stats": {
+              "systemId": "sta",
+              "systemVersion": "1.1.9",
+              "coreVersion": "10.291",
+              "createdTime": now,
+              "modifiedTime": now,
+              "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        }
+
+        allDepartments().forEach(d => {
+            let name = Department[d].toLowerCase();
+            result.system.departments[name] = {
+                "label": "sta.actor.starship.department." + name,
+                "value": ("" + starship.departments[d]),
+                "selected": false
+            };
+        });
+
+        allSystems().forEach(s => {
+            let name = System[s].toLowerCase();
+            if (s === System.Comms) {
+                name = "communications";
+            } else if (s === System.Computer) {
+                name = "computers";
+            }
+            result.system.systems[name] = {
+                "label": "sta.actor.starship.system." + name,
+                "value": ("" + starship.systems[s]),
+                "selected": false
+            };
+        });
+
+        Object.values(starship.getTalentSelectionList()).forEach(t => {
+            result.items.push({
+                "name": t.talent.displayName + ((t.talent.maxRank > 1 && t.rank > 1) ? " [x" + t.rank + "]" : ""),
+                "type": "talent",
+                "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
+                "system": {
+                    "description": this.convertDescription(t.talent),
+                    "talenttype": {
+                        "typeenum": "general",
+                        "description": "",
+                        "minimum": 0
+                    }
+                },
+                "effects": [],
+                "flags": {},
+                "_stats": {
+                    "systemId": "sta",
+                    "systemVersion": "1.1.9",
+                    "coreVersion": "10.291",
+                    "createdTime": now,
+                    "modifiedTime": now,
+                    "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+                },
+                "folder": null,
+                "sort": 0,
+                "ownership": {
+                    "default": 0,
+                    "xuN9JpdcyRd60ZEJ": 3
+                }
+            });
+        });
+
+        return result;
+    }
+
+
     exportCharacter(character: Character) {
         let now = Date.now();
         let result = {
-            "name": character.name ?? "Unnamed Character",
+            "name": character.name || "Unnamed Character",
             "type": "character",
             "img": "icons/svg/mystery-man.svg",
             "system": {

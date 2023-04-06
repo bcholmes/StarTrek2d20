@@ -407,15 +407,24 @@ Weapon.personal.batleth.name,Bat'leth,,,Bat'leth
 Weapon.personal.dktahg.name,d’k tahg dagger,,,Dague d’k tahg
 Weapon.personal.ushaantor.name,Ushaan-tor,,,Ushaan-tor
 Weapon.personal.disruptor.name,Disruptor Pistol,,,Pistolet Disrupteur
-Weapon.quality.nonLethal.name,Non-lethal,,,Non-létal
-Weapon.quality.knockdown.name,Knockdown,,,Renversement
-Weapon.quality.charge.name,Charge,,,Charges
-Weapon.quality.vicious.name,Vicious {{rank}},,,Vicieux {{rank}}
-Weapon.quality.deadly.name,Deadly,,,Mortel
-Weapon.quality.hidden.name,Hidden {{rank}},,,Caché {{rank}}
-Weapon.quality.piercing.name,Piercing {{rank}},,,Perçant {{rank}}
-Weapon.quality.intense.name,Intense,,,Intense
 Weapon.quality.area.name,Area,,,Aire
+Weapon.quality.charge.name,Charge,,,Charges
+Weapon.quality.calibration.name,Calibration,,,
+Weapon.quality.dampening.name,Dampening,,,
+Weapon.quality.deadly.name,Deadly,,,Mortel
+Weapon.quality.depleting.name,Depleting,,,
+Weapon.quality.devastating.name,Devastating,,,
+Weapon.quality.highYield.name,High Yield,,,
+Weapon.quality.hidden.name,Hidden {{rank}},,,Caché {{rank}}
+Weapon.quality.intense.name,Intense,,,Intense
+Weapon.quality.jamming.name,Jamming,,,
+Weapon.quality.knockdown.name,Knockdown,,,Renversement
+Weapon.quality.nonLethal.name,Non-lethal,,,Non-létal
+Weapon.quality.piercing.name,Piercing {{rank}},,,Perçant {{rank}}
+Weapon.quality.persistentX.name,Persistent X,,,
+Weapon.quality.slowing.name,Slowing,,,
+Weapon.quality.versatile.name,Versatile {{rank}},,,
+Weapon.quality.vicious.name,Vicious {{rank}},,,Vicieux {{rank}}
 World.attribute.designation,Designation,Bezeichnung,,Designation
 World.attribute.classification,Classification,Klasse,,Classification
 World.attribute.notes,Notes,Anmerkungen,,Notes

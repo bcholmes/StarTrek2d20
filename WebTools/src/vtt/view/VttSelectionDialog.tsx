@@ -1,5 +1,7 @@
 import React from "react";
 import { Character } from "../../common/character";
+import { Construct } from "../../common/construct";
+import { Starship } from "../../common/starship";
 import { Button } from "../../components/button";
 import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
 import { ModalControl } from "../../components/modal";
@@ -9,7 +11,7 @@ import { VttType, VttTypes } from "../vttType";
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
 interface IVttSelectionModalProperties {
-    character: Character;
+    construct: Construct;
 }
 
 interface IVttSelectionModalState {
@@ -51,19 +53,33 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
     }
 
     export() {
-        if (this.state.vttType === VttType.Foundry) {
-            this.exportToFoundryVtt();
+        if (this.props.construct instanceof Character) {
+            if (this.state.vttType === VttType.Foundry) {
+                this.exportCharacterToFoundryVtt(this.props.construct as Character);
+            }
         }
-
+        if (this.props.construct instanceof Starship) {
+            if (this.state.vttType === VttType.Foundry) {
+                this.exportStarshipToFoundryVtt(this.props.construct as Starship);
+            }
+        }
         VttSelectionDialog.instance.hide();
     }
 
-    exportToFoundryVtt() {
-        const json = FoundryVttExporter.instance.exportCharacter(this.props.character);
+    exportCharacterToFoundryVtt(character: Character) {
+        const json = FoundryVttExporter.instance.exportCharacter(character);
         const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
 
-        var escaped = this.props.character.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') ?? "sta";
-        download(jsonBytes, escaped + "-sta.json", "application/json");
+        const escaped = character.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') || "sta-character";
+        download(jsonBytes, escaped + "-foundry-vtt.json", "application/json");
+    }
+
+    exportStarshipToFoundryVtt(starship: Starship) {
+        const json = FoundryVttExporter.instance.exportStarship(starship);
+        const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
+
+        const escaped = starship.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') || "sta-starship";
+        download(jsonBytes, escaped + "-foundry-vtt.json", "application/json");
     }
 }
 
@@ -78,9 +94,9 @@ export class VttSelectionDialog {
         return VttSelectionDialog._instance;
     }
 
-    show(character: Character) {
+    show(construct: Construct) {
         ModalControl.show("lg", () => {}, React.createElement(VttSelectionModal, {
-            character: character
+            construct: construct
         }), "Virtual Table Top");
     }
 

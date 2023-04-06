@@ -375,6 +375,11 @@ export class NpcGenerator {
             ? RanksHelper.instance().getAdmiralRanks(character)
             : RanksHelper.instance().getRanks(character);
         ranks = ranks.filter(r => r.id !== Rank.Yeoman);
+        if (character.enlisted) {
+            ranks = ranks.filter(r => r.id !== Rank.Specialist && r.id !== Rank.ChiefSpecialist
+                && r.id !== Rank.MasterChiefSpecialist
+                && r.id !== Rank.SeniorChiefSpecialist);
+        }
 
         let rankList = [];
         for (const rank of ranks) {

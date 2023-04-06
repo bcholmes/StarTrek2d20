@@ -4,7 +4,8 @@ import { makeKey } from "../common/translationKey";
 import { Era } from "./eras";
 
 export enum Quality {
-    NonLethal, Knockdown, Vicious, Charge, Hidden, Deadly
+    Area, Calibration, Charge, Dampening, Deadly, Depleting, Devastating, Hidden, HighYield,
+    Intense, Jamming, Knockdown, NonLethal, PersistentX, Piercing, Slowing, Versatile, Vicious
 }
 
 export class WeaponQuality {
@@ -87,29 +88,27 @@ export enum EnergyLoadType {
 
 export class EnergyLoadTypeModel {
     static readonly TYPES = [
-        new EnergyLoadTypeModel(EnergyLoadType.AntiProton,           "Antiproton Beam",        "",                      "High Yield",  25),
-        new EnergyLoadTypeModel(EnergyLoadType.Disruptor,            "Disruptor",              "Vicious",               "",            23),
-        new EnergyLoadTypeModel(EnergyLoadType.ElectroMagneticIonic, "Electro-Magnetic/Ionic", "Dampening, Piercing 1", "",            22),
-        new EnergyLoadTypeModel(EnergyLoadType.FreeElectron,         "Free Electron Laser",    "",                      "",            21),
-        new EnergyLoadTypeModel(EnergyLoadType.Graviton,             "Graviton",               "Piercing 1",            "Devastating", 23),
-        new EnergyLoadTypeModel(EnergyLoadType.PhasedPolaron,        "Phased Polaron Beam",    "Piercing 2",            "",            24),
-        new EnergyLoadTypeModel(EnergyLoadType.Phaser,               "Phaser",                 "",                      "Versatile 2", 23),
-        new EnergyLoadTypeModel(EnergyLoadType.PhasePulse,           "Phase / Pulse",          "",                      "Versatile 1", 22),
-        new EnergyLoadTypeModel(EnergyLoadType.Proton,               "Proton Beam",            "Persistent X",          "",            25),
-        new EnergyLoadTypeModel(EnergyLoadType.Tetryon,              "Tetryon",                "Depleting",             "",            25)
+        new EnergyLoadTypeModel(EnergyLoadType.AntiProton,           "Antiproton Beam",        [],                                                    [new WeaponQuality(Quality.HighYield)],  25),
+        new EnergyLoadTypeModel(EnergyLoadType.Disruptor,            "Disruptor",              [new WeaponQuality(Quality.Vicious, 1)],               [],            23),
+        new EnergyLoadTypeModel(EnergyLoadType.ElectroMagneticIonic, "Electro-Magnetic/Ionic", [new WeaponQuality(Quality.Dampening), new WeaponQuality(Quality.Piercing, 1)], [],            22),
+        new EnergyLoadTypeModel(EnergyLoadType.FreeElectron,         "Free Electron Laser",    [],                                                    [],            21),
+        new EnergyLoadTypeModel(EnergyLoadType.Graviton,             "Graviton",               [new WeaponQuality(Quality.Piercing, 1)],              [new WeaponQuality(Quality.Devastating)], 23),
+        new EnergyLoadTypeModel(EnergyLoadType.PhasedPolaron,        "Phased Polaron Beam",    [new WeaponQuality(Quality.Piercing, 2)],              [],            24),
+        new EnergyLoadTypeModel(EnergyLoadType.Phaser,               "Phaser",                 [],                                                    [new WeaponQuality(Quality.Versatile, 2)], 23),
+        new EnergyLoadTypeModel(EnergyLoadType.PhasePulse,           "Phase / Pulse",          [],                                                    [new WeaponQuality(Quality.Versatile, 1)], 22),
+        new EnergyLoadTypeModel(EnergyLoadType.Proton,               "Proton Beam",            [new WeaponQuality(Quality.PersistentX)],              [],            25),
+        new EnergyLoadTypeModel(EnergyLoadType.Tetryon,              "Tetryon",                [new WeaponQuality(Quality.Depleting)],                [],            25)
     ];
 
     readonly type: EnergyLoadType;
     readonly description: string;
-    readonly effect: string;
-    readonly quality: string;
+    readonly _weaponQualities: WeaponQuality[];
     readonly century: number;
 
-    constructor(type: EnergyLoadType, description: string, effect: string, quality: string, century: number) {
+    constructor(type: EnergyLoadType, description: string, effect: WeaponQuality[], quality: WeaponQuality[], century: number) {
         this.type = type;
         this.description = description;
-        this.effect = effect;
-        this.quality = quality;
+        this._weaponQualities = quality.concat(effect);
         this.century = century;
     }
 
@@ -119,6 +118,11 @@ export class EnergyLoadTypeModel {
 
     static allTypesByYear(year: number) {
         return this.allTypes().filter(e => year > centuryToYear(e.century));
+    }
+
+    get qualities() {
+        let result = this._weaponQualities.map(q => q.localizedDescription);
+        return result.join(", ");
     }
 }
 
@@ -297,16 +301,7 @@ export class Weapon {
         } else {
             let result = "";
             if (this.loadType != null && this.loadType instanceof EnergyLoadTypeModel) {
-                let energyLoadType = this.loadType as EnergyLoadTypeModel;
-                if (energyLoadType.effect) {
-                    result += energyLoadType.effect;
-                }
-                if (energyLoadType.quality) {
-                    if (result.length > 0) {
-                        result += ", ";
-                    }
-                    result += energyLoadType.quality;
-                }
+                result = (this.loadType as EnergyLoadTypeModel).qualities;
             } else if (this.loadType != null && this.loadType instanceof TorpedoLoadTypeModel) {
                 let torpedoLoadType = this.loadType as TorpedoLoadTypeModel;
                 if (torpedoLoadType.effect) {

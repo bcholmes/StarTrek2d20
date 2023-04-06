@@ -497,23 +497,41 @@
 
     "Weapon.personal.disruptor.name": "Disruptor Pistol",
 
-    "Weapon.quality.nonLethal.name": "Non-lethal",
-
-    "Weapon.quality.knockdown.name": "Knockdown",
+    "Weapon.quality.area.name": "Area",
 
     "Weapon.quality.charge.name": "Charge",
 
-    "Weapon.quality.vicious.name": "Vicious {{rank}}",
+    "Weapon.quality.calibration.name": "Calibration",
+
+    "Weapon.quality.dampening.name": "Dampening",
 
     "Weapon.quality.deadly.name": "Deadly",
 
-    "Weapon.quality.hidden.name": "Hidden {{rank}}",
+    "Weapon.quality.depleting.name": "Depleting",
 
-    "Weapon.quality.piercing.name": "Piercing {{rank}}",
+    "Weapon.quality.devastating.name": "Devastating",
+
+    "Weapon.quality.highYield.name": "High Yield",
+
+    "Weapon.quality.hidden.name": "Hidden {{rank}}",
 
     "Weapon.quality.intense.name": "Intense",
 
-    "Weapon.quality.area.name": "Area",
+    "Weapon.quality.jamming.name": "Jamming",
+
+    "Weapon.quality.knockdown.name": "Knockdown",
+
+    "Weapon.quality.nonLethal.name": "Non-lethal",
+
+    "Weapon.quality.piercing.name": "Piercing {{rank}}",
+
+    "Weapon.quality.persistentX.name": "Persistent X",
+
+    "Weapon.quality.slowing.name": "Slowing",
+
+    "Weapon.quality.versatile.name": "Versatile {{rank}}",
+
+    "Weapon.quality.vicious.name": "Vicious {{rank}}",
 
     "World.attribute.designation": "Designation",
     "World.attribute.classification": "Classification",

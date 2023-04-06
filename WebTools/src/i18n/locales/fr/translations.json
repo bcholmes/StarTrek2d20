@@ -492,23 +492,23 @@
 
     "Weapon.personal.disruptor.name": "Pistolet Disrupteur",
 
-    "Weapon.quality.nonLethal.name": "Non-létal",
-
-    "Weapon.quality.knockdown.name": "Renversement",
+    "Weapon.quality.area.name": "Aire",
 
     "Weapon.quality.charge.name": "Charges",
-
-    "Weapon.quality.vicious.name": "Vicieux {{rank}}",
 
     "Weapon.quality.deadly.name": "Mortel",
 
     "Weapon.quality.hidden.name": "Caché {{rank}}",
 
-    "Weapon.quality.piercing.name": "Perçant {{rank}}",
-
     "Weapon.quality.intense.name": "Intense",
 
-    "Weapon.quality.area.name": "Aire",
+    "Weapon.quality.knockdown.name": "Renversement",
+
+    "Weapon.quality.nonLethal.name": "Non-létal",
+
+    "Weapon.quality.piercing.name": "Perçant {{rank}}",
+
+    "Weapon.quality.vicious.name": "Vicieux {{rank}}",
 
     "World.attribute.designation": "Designation",
     "World.attribute.classification": "Classification",

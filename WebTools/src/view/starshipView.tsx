@@ -13,6 +13,7 @@ import { StatView } from "../components/StatView";
 import WeaponView from "../components/weaponView";
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { makeKey } from "../common/translationKey";
+import { VttSelectionDialog } from "../vtt/view/VttSelectionDialog";
 
 const NBSP = '\u00A0';
 
@@ -121,7 +122,8 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
             </div>
 
             <div className="button-container mt-5 mb-3">
-                <Button className="button-small" onClick={() => this.showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
+                <Button className="button-small mr-3" onClick={() => this.showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
+                <Button className="button-small mr-3" onClick={() => this.showVttExportDialog() } buttonType={true}>{t('Common.button.exportVtt')}</Button>
             </div>
        </div>);
     }
@@ -206,6 +208,9 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
         return (<div>{weapons}</div>);
     }
 
+    showVttExportDialog() {
+        VttSelectionDialog.instance.show(this.props.starship);
+    }
 }
 
 export default withTranslation()(StarshipView);
