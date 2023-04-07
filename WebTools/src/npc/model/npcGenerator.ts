@@ -68,7 +68,8 @@ const starfleetValues = [
     "It's the Prime Directive, not the Only Directive",
     "Please. Let us help you.",
     "Starfleet is the only family I've ever needed.",
-    "My team has my back"
+    "My team has my back",
+    "Work the problem"
 ];
 
 const generalValues = [

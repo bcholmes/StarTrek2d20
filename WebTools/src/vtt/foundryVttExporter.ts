@@ -1,6 +1,6 @@
 import { Character } from "../common/character";
 import { CharacterSerializer } from "../common/characterSerializer";
-import { Starship } from "../common/starship";
+import { ShipBuildType, Starship } from "../common/starship";
 import { Attribute, AttributesHelper } from "../helpers/attributes";
 import { RolesHelper } from "../helpers/roles";
 import { SkillsHelper, Skill } from "../helpers/skills";
@@ -8,6 +8,17 @@ import { Department, allDepartments } from "../helpers/departments";
 import { CHALLENGE_DICE_NOTATION, TalentModel, TalentsHelper } from "../helpers/talents";
 import { Quality, WeaponRange, WeaponType } from "../helpers/weapons";
 import { allSystems, System } from "../helpers/systems";
+import { Spaceframe } from "../helpers/spaceframeEnum";
+
+const DEFAULT_STARSHIP_ICON = "systems/sta/assets/icons/ship_icon.png";
+
+export class FoundryVttExporterOptions {
+    isStaCompendiumUsed: boolean;
+
+    constructor(isStaCompendiumUsed: boolean = false) {
+        this.isStaCompendiumUsed = isStaCompendiumUsed;
+    }
+}
 
 export class FoundryVttExporter {
 
@@ -20,13 +31,13 @@ export class FoundryVttExporter {
         return FoundryVttExporter._instance;
     }
 
-    exportStarship(starship: Starship) {
+    exportStarship(starship: Starship, options: FoundryVttExporterOptions) {
         let now = Date.now();
 
         let result = {
             "name": starship.name || "Unnamed Starship",
             "type": "starship",
-            "img": "systems/sta/assets/icons/ship_icon.png",
+            "img": this.determineStarshipIcon(starship, options),
             "system": {
                 "notes": "",
                 "crew": {
@@ -178,7 +189,45 @@ export class FoundryVttExporter {
     }
 
 
-    exportCharacter(character: Character) {
+    determineStarshipIcon(starship: Starship, options: FoundryVttExporterOptions) {
+        if (options.isStaCompendiumUsed) {
+            if (starship.buildType === ShipBuildType.Runabout) {
+                return "modules/sta-compendia/assets/ships/starfleet/danube-runabout-token.webp";
+            } else if (starship.spaceframeModel?.id === Spaceframe.Intrepid ||
+                starship.spaceframeModel?.id === Spaceframe.Intrepid_UP) {
+                return "modules/sta-compendia/assets/ships/starfleet/intrepid-token.webp";
+            } else if (starship.spaceframeModel?.id === Spaceframe.Constitution ||
+                starship.spaceframeModel?.id === Spaceframe.Constitution_UP) {
+                return "modules/sta-compendia/assets/ships/starfleet/constitution-token.webp";
+            } else if (starship.spaceframeModel?.id === Spaceframe.Constellation ||
+                starship.spaceframeModel?.id === Spaceframe.Constellation_UP) {
+                return "modules/sta-compendia/assets/ships/starfleet/constellation-token.webp";
+            } else if (starship.spaceframeModel?.id === Spaceframe.Galaxy) {
+                return "modules/sta-compendia/assets/ships/starfleet/galaxy-token.webp";
+            } else if (starship.spaceframeModel?.id === Spaceframe.Akira ||
+                starship.spaceframeModel?.id === Spaceframe.Akira_UP) {
+                return "modules/sta-compendia/assets/ships/starfleet/akira-token.webp";
+            } else if (starship.spaceframeModel?.id === Spaceframe.Defiant ||
+                starship.spaceframeModel?.id === Spaceframe.Defiant_UP) {
+                return "modules/sta-compendia/assets/ships/starfleet/defiant-token.webp";
+            } else if (starship.spaceframeModel?.id === Spaceframe.Excelsior ||
+                starship.spaceframeModel?.id === Spaceframe.Excelsior_UP) {
+                return "modules/sta-compendia/assets/ships/starfleet/excelsior-token.webp";
+            } else if (starship.spaceframeModel?.id === Spaceframe.Miranda ||
+                starship.spaceframeModel?.id === Spaceframe.Miranda_UP) {
+                return "modules/sta-compendia/assets/ships/starfleet/miranda-token.webp";
+            } else if (starship.spaceframeModel?.id === Spaceframe.Nova) {
+                return "modules/sta-compendia/assets/ships/starfleet/nova-token.webp";
+            } else {
+                return DEFAULT_STARSHIP_ICON;
+            }
+        } else {
+            return DEFAULT_STARSHIP_ICON;
+        }
+    }
+
+
+    exportCharacter(character: Character, options: FoundryVttExporterOptions) {
         let now = Date.now();
         let result = {
             "name": character.name || "Unnamed Character",

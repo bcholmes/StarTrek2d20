@@ -135,6 +135,8 @@ Common.text.none,None,Keine Auswahl,,Aucun
 Common.text.select,Select,,,Selectionnez
 Common.text.selectOne,Select one,,,Selectionnez en un
 Common.text.total,Total,,,Total
+Common.text.yes,Yes,,,
+Common.text.no,No,,,
 Common.select.choose,Choose...,Wählen Sie aus ...,,Choisir
 Construct.other.assignment,Assignment,Position,Asignación,Mission
 Construct.other.attribute,Attribute,,,Attribut

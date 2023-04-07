@@ -71,30 +71,30 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
                     <Header level={2}>{t('Construct.other.systems')}</Header>
 
                     <div className="row row-cols-1 row-cols-md-3 mt-3">
-                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Comms]))} value={this.props.starship.getSystemValue(System.Comms)} className="col mb-1" />
-                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Engines]))} value={this.props.starship.getSystemValue(System.Engines)} className="col mb-1" />
-                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Structure]))} value={this.props.starship.getSystemValue(System.Structure)} className="col mb-1" />
-                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Computer]))} value={this.props.starship.getSystemValue(System.Computer)} className="col mb-1" />
-                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Sensors]))} value={this.props.starship.getSystemValue(System.Sensors)} className="col mb-1" />
-                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Weapons]))} value={this.props.starship.getSystemValue(System.Weapons)} className="col mb-1" />
+                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Comms]))} value={this.props.starship.getSystemValue(System.Comms)} className="col mb-2" />
+                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Engines]))} value={this.props.starship.getSystemValue(System.Engines)} className="col mb-2" />
+                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Structure]))} value={this.props.starship.getSystemValue(System.Structure)} className="col mb-2" />
+                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Computer]))} value={this.props.starship.getSystemValue(System.Computer)} className="col mb-2" />
+                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Sensors]))} value={this.props.starship.getSystemValue(System.Sensors)} className="col mb-2" />
+                        <StatView showZero={true} name={t(makeKey('Construct.system.', System[System.Weapons]))} value={this.props.starship.getSystemValue(System.Weapons)} className="col mb-2" />
                     </div>
 
                     <Header level={2} className="mt-4">{t('Construct.other.departments')}</Header>
                     <div className="row row-cols-1 row-cols-md-3 mt-3">
-                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Command]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Command] : undefined} className="col mb-1" />
-                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Security]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Security] : undefined} className="col mb-1" />
-                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Science]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Science] : undefined} className="col mb-1" />
-                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Conn]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Conn] : undefined} className="col mb-1" />
-                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Engineering]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Engineering] : undefined} className="col mb-1" />
-                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Medicine]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Medicine] : undefined} className="col mb-1" />
+                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Command]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Command] : undefined} className="col mb-2" />
+                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Security]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Security] : undefined} className="col mb-2" />
+                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Science]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Science] : undefined} className="col mb-2" />
+                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Conn]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Conn] : undefined} className="col mb-2" />
+                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Engineering]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Engineering] : undefined} className="col mb-2" />
+                        <StatView showZero={true} name={t(makeKey('Construct.department.', Department[Department.Medicine]))} value={this.props.starship.departments ? this.props.starship.departments[Department.Medicine] : undefined} className="col mb-2" />
                     </div>
 
                     <div className="mt-3">
                         <OutlineImage starship={this.props.starship} size="lg" />
 
-                        <div className="row row-cols-1 row-cols-xl-3 mb-1">
-                            <StatView showZero={true} name={t('Construct.other.resistance')} value={this.props.starship.resistance} className="col mb-1" colourClass="red" />
-                            <StatView showZero={true} name={t('Construct.other.scale')} value={this.props.starship.scale} className="col mb-1" colourClass="red" />
+                        <div className="row row-cols-1 row-cols-xl-3 mb-2">
+                            <StatView showZero={true} name={t('Construct.other.resistance')} value={this.props.starship.resistance} className="col mb-2" colourClass="red" />
+                            <StatView showZero={true} name={t('Construct.other.scale')} value={this.props.starship.scale} className="col mb-2" colourClass="red" />
                         </div>
                     </div>
                     {this.renderTalentNames()}

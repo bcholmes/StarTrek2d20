@@ -14,7 +14,7 @@ export class OutlineImage extends React.Component<IOutlineImageProperties, {}> {
         let height = this.props.size === 'lg' ? (84 * 1.8) : 84;
         if (this.props.starship) {
             const svg = SpaceframeOutline.renderFullSvg(this.props.starship);
-            return svg ? (<div className='d-none d-md-block text-center'><img src={'data:image/svg+xml;base64,' + Buffer.from(svg, 'utf8').toString('base64')} alt={this.props.starship.className} width={width} height={height} style={{maxWidth: "100%"}}/></div>) : null;
+            return svg ? (<div className='d-none d-md-block text-center mb-3'><img src={'data:image/svg+xml;base64,' + Buffer.from(svg, 'utf8').toString('base64')} alt={this.props.starship.className} width={width} height={height} style={{maxWidth: "100%"}}/></div>) : null;
         } else {
             return null;
         }

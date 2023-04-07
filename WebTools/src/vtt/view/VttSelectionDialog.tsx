@@ -5,8 +5,9 @@ import { Starship } from "../../common/starship";
 import { Button } from "../../components/button";
 import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
 import { ModalControl } from "../../components/modal";
-import { FoundryVttExporter } from "../foundryVttExporter";
+import { FoundryVttExporter, FoundryVttExporterOptions } from "../foundryVttExporter";
 import { VttType, VttTypes } from "../vttType";
+import i18next from 'i18next';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -16,6 +17,7 @@ interface IVttSelectionModalProperties {
 
 interface IVttSelectionModalState {
     vttType: VttType
+    foundryCompendium?: boolean
 }
 
 class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IVttSelectionModalState> {
@@ -38,11 +40,34 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
                     items={VttTypes.instance.getTypes().map(t => new DropDownElement(t.type, t.name))}
                     onChange={(t) => this.selectVttType(t as number)} />
 
-                <div className="mt-5 text-right">
+                {this.renderVttSpecificSettings()}
+
+                <div className="mt-5 text-center">
                     <Button buttonType={true} className="btn btn-primary" onClick={() => this.export() } >Export</Button>
                 </div>
             </div>
         );
+    }
+
+    renderVttSpecificSettings() {
+        if (this.state.vttType === VttType.Foundry) {
+            return (<div className="mt-4">
+                <p>Do you use the Foundry STA Compendia?</p>
+                <DropDownSelect defaultValue={this.state.foundryCompendium ? "Y" : "N"}
+                    items={this.getFoundryCompendiumOptions()}
+                    onChange={(yesNo) => this.setState(state => ({...state, foundryCompendium: (yesNo === "Y" ? true : false)}))} />
+
+            </div>)
+        } else {
+            return undefined;
+        }
+    }
+
+    getFoundryCompendiumOptions() {
+        return [
+            new DropDownElement("Y", i18next.t('Common.text.yes')),
+            new DropDownElement("N", i18next.t('Common.text.no'))
+        ]
     }
 
     selectVttType(t: VttType) {
@@ -67,7 +92,7 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
     }
 
     exportCharacterToFoundryVtt(character: Character) {
-        const json = FoundryVttExporter.instance.exportCharacter(character);
+        const json = FoundryVttExporter.instance.exportCharacter(character, new FoundryVttExporterOptions(this.state.foundryCompendium));
         const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
 
         const escaped = character.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') || "sta-character";
@@ -75,7 +100,7 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
     }
 
     exportStarshipToFoundryVtt(starship: Starship) {
-        const json = FoundryVttExporter.instance.exportStarship(starship);
+        const json = FoundryVttExporter.instance.exportStarship(starship, new FoundryVttExporterOptions(this.state.foundryCompendium));
         const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
 
         const escaped = starship.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') || "sta-starship";
