@@ -46,6 +46,13 @@ const recreationSkills = [ "Holodeck Simulations", "Dixie Hill Adventures",
     "Andorian Clans of the Pre-Industrial Period", "Risan Vacation Activities",
     "Trashy Romance Novels", "Parrises squares", "Neo-Sevrin Philosophy" ];
 
+const klingonRecreationSkills = ["The teachings of Kahless", "The accomplishments of Kahless",
+    "Klingon Chancellors and Emperors", "The various locales of Q'onos", "Mok'bara",
+    "B'aht Qul", "Bat'leth Tournament Rules", "Klingon Opera", "The Rituals and Stories of the Klingon Afterlife",
+    "The Hur'Q", "Targ raising and training", "The legends of Sarpek the Fearless", "Gourmet gagh", "The demands of honour",
+    "Bloodwine making", "Klingon Spirituality", "Culinary arts", "Famous honourable deaths",
+    "Organians and their meddlesome ways"];
+
 const starfleetSkills = ["Starfleet Protocols", "Worlds of the Federation", "Starship Emergency Protocols",
     "Tricoders", "History of the Federation", "The Missions of Adm. Archer and the NX-01",
     "Early Starfleet History", "Starfleet General Orders", "The Missions of Commodore Decker",
@@ -54,43 +61,78 @@ const starfleetSkills = ["Starfleet Protocols", "Worlds of the Federation", "Sta
     "First Contact Protocols", "The Prime Directive", "Abandon Ship Procedures", "Space Suits",
     "Zero-G Operations"];
 
+const klingonKdfSkills = ["KDF Protocols", "Worlds of the Klingon Empire", "Starship Emergency Protocols",
+    "Tricorders", "History of the Empire", "The Accomplishments of Koloth", "Early Klingon History",
+    "The Missions of Captain Kor", "Protocols for Challenging a Superior", "Starship Identification",
+    "Battle Tactics of General Korrd", "Conquered species", "Weaknesses of the Federation", "Enemies of the Empire",
+    "Abandon Ship Procedures", "Space suits", "Zero-G Operations", "The strategies of famous Starfleet captains"]
 
 
-const starfleetValues = [
-    "I am so close to promotion, I can taste it.",
-    "Risk is our business!",
-    "The Prime Directive is our highest law.",
-    "I saw things in the war... horrible, horrible things",
-    "The crew is my family.",
-    "Loyal to my commanding officer",
-    "I have my orders.",
-    "The chain of command is essential",
-    "Starfleet rules are rigid, but necessary",
-    "Seek out new life and new civilizations",
-    "Infinite Diversity in Infinite Combinations",
-    "It's the Prime Directive, not the Only Directive",
-    "Please. Let us help you.",
-    "Starfleet is the only family I've ever needed.",
-    "My team has my back",
-    "Work the problem"
-];
+const typeSpecificValues: { [type : number ]: string[]} = {
+    [ NpcCharacterType.Starfleet ] : [
+        "I am so close to promotion, I can taste it.",
+        "Risk is our business!",
+        "The Prime Directive is our highest law.",
+        "I saw things in the war... horrible, horrible things",
+        "The crew is my family.",
+        "Loyal to my commanding officer",
+        "I have my orders.",
+        "The chain of command is essential",
+        "Starfleet rules are rigid, but necessary",
+        "Seek out new life and new civilizations",
+        "Infinite Diversity in Infinite Combinations",
+        "It's the Prime Directive, not the Only Directive",
+        "Please. Let us help you.",
+        "Starfleet is the only family I've ever needed.",
+        "My team has my back",
+        "Work the problem"
+    ],
+    [ NpcCharacterType.KlingonDefenseForces ] : [
+        "My honour is in protecting the Empire",
+        "If I must choose between personal dishonour and failing the Empire, I choose the former.",
+        "If my crew dies, it will be honourably!",
+        "A Klingon without honour is as good as dead",
+        "Klingons do not take prisoners. But I offer you a blade, so that you may take your own life.",
+        "It is foolish to give my word to a foe with no honour.",
+        "I do not seek to lead, but will take that role if honour demands it.",
+        "I see you have forgotten the first time we met. I assure you that I have not forgotten."
+    ]
+}
 
-const generalValues = [
-    "Mentally, I'm already on leave to Risa!",
-    "I have a special someone back home.",
-    "Looking for love in all the wrong places",
-    "I can't wait to get back to my holonovel",
-    "That which does not kill me makes me stranger!",
-    "I'm not doing the non-corporeal body-stealing alien thing again!",
-    "My word is my bond",
-    "Show-off",
-    "Braggart",
-    "Teller of Tall-Tales",
-    "A Vulcan, a Romulan, and a Klingon walk into a bar...",
-    "Exceptionally dedicated",
-    "Everyone deserves a shot at a second chance",
-    "Violence is the last refuge of the incompetent."
-];
+const typeSpecificGeneralValues: { [type : number ]: string[]} = {
+    [ NpcCharacterType.Starfleet ] : [
+        "Mentally, I'm already on leave to Risa!",
+        "I have a special someone back home.",
+        "Looking for love in all the wrong places",
+        "I can't wait to get back to my holonovel",
+        "That which does not kill me makes me stranger!",
+        "I'm not doing the non-corporeal body-stealing alien thing again!",
+        "My word is my bond",
+        "Show-off",
+        "Braggart",
+        "Teller of Tall-Tales",
+        "A Vulcan, a Romulan, and a Klingon walk into a bar...",
+        "Exceptionally dedicated",
+        "Everyone deserves a shot at a second chance",
+        "Violence is the last refuge of the incompetent."
+    ],
+    [ NpcCharacterType.KlingonDefenseForces ] : [
+        "Overflowing with bravado",
+        "Blowhard",
+        "I don't need to be sober to defeat you.",
+        "Test me and you'll taste my d'k tahg",
+        "Victory is life",
+        "The enemy of my enemy is my friend",
+        "The enemy of my enemy is my friend. For now.",
+        "Great deeds require great risks",
+        "Duty and loyalty are sacred",
+        "They will sing songs of glory for my accomplishments",
+        "I'm tired of all this peace. A warrior needs a good war every now and then.",
+        "Always it is the brave ones who die. The soldiers.",
+        "Today we conquer! Oh, if someday we are defeated... well... war has its fortunes. Good and bad.",
+        "It would have been glorious."
+    ]
+}
 
 const speciesSpecificValues: { [species : number ]: string[]} = {
     [ Species.Vulcan ] : [
@@ -179,6 +221,25 @@ const speciesSpecificValues: { [species : number ]: string[]} = {
         "We are all one",
         "Seek to understand before seeking to be understood",
         "The heart is the truest compass"
+    ],
+    [ Species.Klingon ] : [
+        "My family carries a great shame; it is my burden to redeem them",
+        "Back-stabbing is for cowards. I will stab you in the chest, while you watch!",
+        "Glory to you. And to your House.",
+        "Honor is more important than life itself",
+        "The strong survive and the weak perish",
+        "Death is not to be feared, but embraced",
+        "The path to enlightenment is through struggle",
+        "Revenge is a dish best served cold",
+        "Respect is earned, not given",
+        "Family is everything",
+        "A Klingon's word is their bond",
+        "My targ is my trusty companion, but I will kill it if it bites me.",
+        "Wisdom comes from experience",
+        "Suffering is a test of character",
+        "Klingons do not procrastinate",
+        "What is that furry thing, and why does it make that noise? Get it away from me.",
+        "I don't trust people who smile too much."
     ]
 }
 
@@ -349,11 +410,13 @@ export class NpcGenerator {
                 let roll = D20.roll();
                 let values = specialization.values;
                 if (roll < 6) {
-                    values = generalValues;
+                    values = typeSpecificGeneralValues[specialization.type];
                 } else if (roll < 11) {
-                    values = starfleetValues;
+                    values = typeSpecificValues[specialization.type];
                 } else if (roll < 16) {
-                    values = speciesSpecificValues[character.speciesStep.species];
+                    values = speciesSpecificValues[character.speciesStep.species === Species.KlingonQuchHa
+                        ? Species.Klingon
+                        : character.speciesStep.species];
                 }
 
                 if (values?.length) {
@@ -374,6 +437,9 @@ export class NpcGenerator {
 
         for (let i = 0; i < numberOfFocuses; i++) {
             let focuses = (D20.roll() > 10) ? starfleetSkills : recreationSkills;
+            if (specialization.type === NpcCharacterType.KlingonDefenseForces) {
+                focuses = (D20.roll() > 10) ? klingonKdfSkills : klingonRecreationSkills;
+            }
             if (D20.roll() <= primaryChances[i]) {
                 focuses = specialization.primaryFocuses;
             } else if (D20.roll() <= secondaryChances[i]) {
@@ -395,7 +461,7 @@ export class NpcGenerator {
         let ranks = specialization.id === Specialization.Admiral
             ? RanksHelper.instance().getAdmiralRanks(character)
             : RanksHelper.instance().getSortedRanks(character);
-        console.log(ranks.map(r => r.name));
+
         ranks = ranks.filter(r => r.id !== Rank.Yeoman);
         if (character.enlisted) {
             ranks = ranks.filter(r => r.id !== Rank.Specialist && r.id !== Rank.ChiefSpecialist

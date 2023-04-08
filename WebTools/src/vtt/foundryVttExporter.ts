@@ -11,6 +11,7 @@ import { allSystems, System } from "../helpers/systems";
 import { Spaceframe } from "../helpers/spaceframeEnum";
 
 const DEFAULT_STARSHIP_ICON = "systems/sta/assets/icons/ship_icon.png";
+const DEFAULT_EQUIPMENT_ICON = "systems/sta/assets/icons/voyagercombadgeicon.svg";
 
 export class FoundryVttExporterOptions {
     isStaCompendiumUsed: boolean;
@@ -360,10 +361,10 @@ export class FoundryVttExporter {
         });
 
         character.equipment?.forEach(e => {
-            result.items.push({
+            let item = {
                 "name": e,
-                "type": "item",
-                "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
+                "type": e === "Armor" ? "armor" : "item",
+                "img": this.determineItemIcon(e, options),
                 "system": {
                   "description": "",
                   "quantity": 1,
@@ -386,7 +387,12 @@ export class FoundryVttExporter {
                   "modifiedTime": now,
                   "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
                 }
-            })
+            };
+
+            if (item.type === "armor") {
+                item.system["protection"] = 1;
+            }
+            result.items.push(item);
         });
 
         if (character.role != null) {
@@ -511,6 +517,22 @@ export class FoundryVttExporter {
         });
 
         return result;
+    }
+
+    determineItemIcon(item: string, options: FoundryVttExporterOptions) {
+        if (options.isStaCompendiumUsed) {
+            if (item === "Tricorder") {
+                return "modules/sta-compendia/assets/icons/items-core/tricorder.webp";
+            } else if (item === "MedKit") {
+                return "modules/sta-compendia/assets/icons/items-core/medkit.webp";
+            } else if (item === "Engineering Kit") {
+                return "modules/sta-compendia/assets/icons/items-core/engineering_kit.webp";
+            } else {
+                return DEFAULT_EQUIPMENT_ICON;
+            }
+        } else {
+            return DEFAULT_EQUIPMENT_ICON;
+        }
     }
 
     determineTalentRequirement(talent: TalentModel) {

@@ -1,6 +1,6 @@
 import { Character } from "../common/character";
 import { CharacterType } from "../common/characterType";
-import { Construct } from "../common/construct";
+import { Construct, Stereotype } from "../common/construct";
 import { IConstruct } from "../common/iconstruct";
 import { Starship } from "../common/starship";
 import store from "../state/store";
@@ -33,6 +33,18 @@ export class OfficerPrerequisite implements IConstructPrerequisite<Character> {
         return "";
     }
 }
+
+export class MainCharacterPrerequisite implements IConstructPrerequisite<Character> {
+
+    isPrerequisiteFulfilled(c: Character) {
+        return c.stereotype === Stereotype.MainCharacter;
+    }
+    describe(): string {
+        return "Main Character only";
+    }
+}
+
+
 
 export class SourcePrerequisite implements IConstructPrerequisite<Construct> {
     private sources: Source[];

@@ -7,12 +7,12 @@ import {Department} from './departments';
 import {Source} from './sources';
 import {Era} from './eras';
 import { Species } from './speciesEnum';
-import { Construct, Stereotype } from '../common/construct';
+import { Construct } from '../common/construct';
 import { Starship } from '../common/starship';
 import store from '../state/store';
 import { centuryToYear } from './weapons';
 import { Spaceframe } from './spaceframeEnum';
-import { CareersPrerequisite, IConstructPrerequisite, ServiceYearPrerequisite, SourcePrerequisite } from './prerequisite';
+import { CareersPrerequisite, IConstructPrerequisite, MainCharacterPrerequisite, ServiceYearPrerequisite, SourcePrerequisite } from './prerequisite';
 import { NotSourcePrerequisite } from './spaceframes';
 import { Career } from './careerEnum';
 import { hasAnySource } from '../state/contextFunctions';
@@ -138,16 +138,6 @@ class ChildOnlyPrerequisite implements IConstructPrerequisite<Character> {
     }
     describe(): string {
         return "Child characters only";
-    }
-}
-
-class MainCharacterPrerequisite implements IConstructPrerequisite<Character> {
-
-    isPrerequisiteFulfilled(c: Character) {
-        return c.stereotype === Stereotype.MainCharacter;
-    }
-    describe(): string {
-        return "Main Character only";
     }
 }
 

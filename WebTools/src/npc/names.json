@@ -110490,6 +110490,30 @@
                 ]
             },
             {
+                "name": "Bu'kaH",
+                "gender": "Female",
+                "type": "FirstName",
+                "tags": [
+                    "Klingon"
+                ]
+            },
+            {
+                "name": "Kell",
+                "gender": "Unisex",
+                "type": "FirstName",
+                "tags": [
+                    "Klingon"
+                ]
+            },
+            {
+                "name": "Ja'rod",
+                "gender": "Male",
+                "type": "FirstName",
+                "tags": [
+                    "Klingon"
+                ]
+            },
+            {
                 "name": "Talij",
                 "gender": "Female",
                 "type": "FirstName",

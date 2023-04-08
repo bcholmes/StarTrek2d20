@@ -6,7 +6,7 @@ import {Track} from './trackEnum';
 import {AlliedMilitaryDetails, Character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { AlliedMilitaryType } from './alliedMilitary';
-import { AllOfPrerequisite, AnyOfPrerequisite, CareersPrerequisite, CharacterTypePrerequisite, EnlistedPrerequisite, EraPrerequisite, IConstructPrerequisite, NotPrerequisite, OfficerPrerequisite, SourcePrerequisite } from './prerequisite';
+import { AllOfPrerequisite, AnyOfPrerequisite, CareersPrerequisite, CharacterTypePrerequisite, EnlistedPrerequisite, EraPrerequisite, IConstructPrerequisite, MainCharacterPrerequisite, NotPrerequisite, OfficerPrerequisite, SourcePrerequisite } from './prerequisite';
 import store from '../state/store';
 
 export enum Rank {
@@ -259,7 +259,10 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
-                new RolesPrerequisite([Role.CommandingOfficer, Role.Adjutant])
+                new AnyOfPrerequisite(
+                    new NotPrerequisite(new MainCharacterPrerequisite()),
+                    new RolesPrerequisite([Role.CommandingOfficer, Role.Adjutant])
+                )
             ],
             "Capt.",
             1),

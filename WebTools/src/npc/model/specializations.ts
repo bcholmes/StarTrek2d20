@@ -374,14 +374,18 @@ export class Specializations {
                 ["Hand-to-Hand Combat", "Melee Weapons", "Disruptors", "Ground Combat Tactics", "Starship Weapons"],
                 ["Rousing speech-making", "Explosives", "Survival", "Armor and Protective Gear", "Tales of Glorious Battle!",
                 "Tactical Analysis", "Special Operations Training"],
-                ["It will be glorious!",
-                "Glorious battle!",
-                "Today is a good day to die",
-                "Qapla' (Success)",
-                "Hab SoSlI' Quch! (Your mother has a smooth forehead)",
-                "nuqDaq 'oH tach'e' (Where's the bar?)",
-                "jagh yIbuStaH (Concentrate on the Enemy)",
-                "wo’ batlhvaD (For the honour of the Empire!)"], 0.6),
+                [
+                    "It will be glorious!",
+                    "Glorious battle!",
+                    "Today is a good day to die",
+                    "Qapla' (Success)",
+                    "Hab SoSlI' Quch! (Your mother has a smooth forehead)",
+                    "nuqDaq 'oH tach'e' (Where's the bar?)",
+                    "jagh yIbuStaH (Concentrate on the Enemy)",
+                    "wo’ batlhvaD (For the honour of the Empire!)",
+                    "Shooting space garbage is no test of a warrior's mettle. I need a target that fights back.",
+                    "Peace was never an option!"
+                ], 0.6),
 
             ];
     }
