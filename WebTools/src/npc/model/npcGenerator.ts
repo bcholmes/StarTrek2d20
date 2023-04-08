@@ -7,11 +7,14 @@ import { Career } from "../../helpers/careerEnum";
 import { RanksHelper, Rank } from "../../helpers/ranks";
 import { Skill, SkillsHelper } from "../../helpers/skills";
 import { Species } from "../../helpers/speciesEnum";
-import { SpeciesModel } from "../../helpers/species";
+import { SpeciesHelper, SpeciesModel } from "../../helpers/species";
 import { TalentsHelper, ToViewModel } from "../../helpers/talents";
 import { NameGenerator } from "../nameGenerator";
 import { NpcType, NpcTypes } from "./npcType";
 import { Specialization, SpecializationModel, Specializations } from "./specializations";
+import { NpcCharacterType } from "./npcCharacterType";
+import { hasAnySource } from "../../state/contextFunctions";
+import { Source } from "../../helpers/sources";
 
 class RankWithTier {
     readonly name: string;
@@ -182,16 +185,16 @@ const speciesSpecificValues: { [species : number ]: string[]} = {
 
 export class NpcGenerator {
 
-    static createNpc(npcType: NpcType, characterType: CharacterType, species: SpeciesModel, specialization: SpecializationModel) {
+    static createNpc(npcType: NpcType, characterType: NpcCharacterType, species: SpeciesModel, specialization: SpecializationModel) {
         let character = new Character();
         character.stereotype = Stereotype.Npc;
-        character.type = characterType;
+        NpcGenerator.assignCharacterType(character, characterType);
         if (specialization == null) {
-            let specializations = Specializations.instance.getSpecializations();
+            let specializations = Specializations.instance.getSpecializations(characterType);
             specialization = specializations[Math.floor(Math.random() * specializations.length)];
         }
 
-        let {name, pronouns} = NameGenerator.instance.createName(species);
+        let {name, pronouns} = NameGenerator.instance.createName(species.id === Species.KlingonQuchHa ? SpeciesHelper.getSpeciesByType(Species.Klingon) : species);
         character.name = name;
         character.pronouns = pronouns;
         character.speciesStep = new SpeciesStep(species.id);
@@ -226,42 +229,59 @@ export class NpcGenerator {
         return character;
     }
 
+    static assignCharacterType(character: Character, characterType: NpcCharacterType) {
+        switch (characterType) {
+            case NpcCharacterType.Starfleet:
+                character.type = CharacterType.Starfleet;
+                break;
+            case NpcCharacterType.KlingonDefenseForces:
+                character.type = CharacterType.KlingonWarrior;
+                break;
+            default:
+        }
+    }
+
     static assignTalents(npcType: NpcType, character: Character, species: SpeciesModel, specialization: SpecializationModel) {
         let numberOfTalents = NpcTypes.numberOfTalents(npcType);
 
         for (let i = 0; i < numberOfTalents; i++) {
             let done = false;
             let n = 0;
-            while (!done) {
-                let talentList = TalentsHelper.getAllAvailableTalentsForCharacter(character);
-                let specializationSkill = Skill[specialization.primaryDiscipline];
-                let roll = D20.roll();
-                if (roll < 7) {
-                    // go for species talents
-                    talentList = species.talents.map(t => ToViewModel(t, 1, character.type));
-                } else if (roll < 14) {
-                    talentList = talentList.filter(t => t.category === specializationSkill);
-                } else {
-                    talentList = talentList.filter(t => {
-                        if (t.name.indexOf("Bold:") === 0 || t.name.indexOf("Cautious:") === 0
-                            || t.name.indexOf("Collaboration:") === 0) {
-                            return t.name.indexOf(specializationSkill) >= 0;
-                        } else {
-                            return t.category === "" || t.category === "General";
-                        }
-                    });
-                }
 
-                if (talentList.length) {
-                    let talent = talentList[Math.floor(Math.random() * talentList.length)];
-                    if (!character.hasTalent(talent.name) || talent.hasRank) {
-                        character.addTalent(talent);
-                        done = true;
+            if (i === 0 && species.id === Species.Klingon && hasAnySource([Source.KlingonCore, Source.BetaQuadrant])) {
+                character.addTalent(ToViewModel(TalentsHelper.getTalent("Brak'lul")));
+            } else {
+                while (!done) {
+                    let talentList = TalentsHelper.getAllAvailableTalentsForCharacter(character);
+                    let specializationSkill = Skill[specialization.primaryDiscipline];
+                    let roll = D20.roll();
+                    if (roll < 7) {
+                        // go for species talents
+                        talentList = species.talents.map(t => ToViewModel(t, 1, character.type));
+                    } else if (roll < 14) {
+                        talentList = talentList.filter(t => t.category === specializationSkill);
+                    } else {
+                        talentList = talentList.filter(t => {
+                            if (t.name.indexOf("Bold:") === 0 || t.name.indexOf("Cautious:") === 0
+                                || t.name.indexOf("Collaboration:") === 0) {
+                                return t.name.indexOf(specializationSkill) >= 0;
+                            } else {
+                                return t.category === "" || t.category === "General";
+                            }
+                        });
                     }
-                }
 
-                if (n++ > 100) {
-                    break;
+                    if (talentList.length) {
+                        let talent = talentList[Math.floor(Math.random() * talentList.length)];
+                        if (!character.hasTalent(talent.name) || talent.hasRank) {
+                            character.addTalent(talent);
+                            done = true;
+                        }
+                    }
+
+                    if (n++ > 100) {
+                        break;
+                    }
                 }
             }
         }
@@ -374,7 +394,8 @@ export class NpcGenerator {
     static assignRank(character: Character, specialization: SpecializationModel) {
         let ranks = specialization.id === Specialization.Admiral
             ? RanksHelper.instance().getAdmiralRanks(character)
-            : RanksHelper.instance().getRanks(character);
+            : RanksHelper.instance().getSortedRanks(character);
+        console.log(ranks.map(r => r.name));
         ranks = ranks.filter(r => r.id !== Rank.Yeoman);
         if (character.enlisted) {
             ranks = ranks.filter(r => r.id !== Rank.Specialist && r.id !== Rank.ChiefSpecialist

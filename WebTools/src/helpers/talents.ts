@@ -15,6 +15,7 @@ import { Spaceframe } from './spaceframeEnum';
 import { CareersPrerequisite, IConstructPrerequisite, ServiceYearPrerequisite, SourcePrerequisite } from './prerequisite';
 import { NotSourcePrerequisite } from './spaceframes';
 import { Career } from './careerEnum';
+import { hasAnySource } from '../state/contextFunctions';
 
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
 
@@ -3141,7 +3142,8 @@ export class Talents {
     }
 
     getAllAvailableTalentsForCharacter(character: Character) {
-        if (character.speciesStep?.species === Species.Klingon && !character.hasTalent("Brak’lul")) {
+        if (character.speciesStep?.species === Species.Klingon && !character.hasTalent("Brak’lul")
+                && hasAnySource([Source.KlingonCore, Source.BetaQuadrant])) {
             return [this.getTalentViewModel("Brak’lul")];
         } else if (character.speciesStep?.species === Species.Changeling && !character.hasTalent("Morphogenic Matrix")) {
             return [this.getTalentViewModel("Morphogenic Matrix")];

@@ -214,12 +214,14 @@ class NotEraPrerequisite implements IConstructPrerequisite<Character> {
 class RankModel {
     id: Rank;
     name: string;
+    level: string;
     prerequisites: IConstructPrerequisite<Character>[];
     tiers: number;
     abbreviation?: string;
 
-    constructor(id: Rank, name: string, prerequisites: IConstructPrerequisite<Character>[], abbreviation?: string, tiers: number = 1) {
+    constructor(id: Rank, name: string, level: string, prerequisites: IConstructPrerequisite<Character>[], abbreviation?: string, tiers: number = 1) {
         this.id = id;
+        this.level = level;
         this.abbreviation = abbreviation;
         this.name = name;
         this.prerequisites = prerequisites;
@@ -228,6 +230,14 @@ class RankModel {
 
     get isEnlisted() {
         return this.prerequisites.filter(p => p instanceof EnlistedPrerequisite).length > 0;
+    }
+
+    get levelValue() {
+        if (this.level.length > 1) {
+            return parseInt(this.level.substring(1));
+        } else {
+            return 0;
+        }
     }
 }
 
@@ -245,7 +255,7 @@ export class RanksHelper {
     private _ranks: RankModel[] = [
         new RankModel(
             Rank.Captain,
-            "Captain",
+            "Captain", "O6",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
@@ -255,7 +265,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.Commander,
-            "Commander",
+            "Commander", "O5",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
@@ -266,7 +276,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.LieutenantCommander,
-            "Lieutenant Commander",
+            "Lieutenant Commander", "O4",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
@@ -277,7 +287,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.Lieutenant,
-            "Lieutenant",
+            "Lieutenant", "O3",
             [
                 new OfficerPrerequisite(),
                 new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer]),
@@ -293,7 +303,7 @@ export class RanksHelper {
             "Lt."),
         new RankModel(
             Rank.LieutenantJunior,
-            "Lieutenant (Junior Grade)",
+            "Lieutenant (Junior Grade)", "O2",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
@@ -304,7 +314,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.Ensign,
-            "Ensign",
+            "Ensign", "O1",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
@@ -316,7 +326,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.MasterChiefPettyOfficer,
-            "Master Chief Petty Officer",
+            "Master Chief Petty Officer", "E9",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
@@ -326,7 +336,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.MasterChiefSpecialist,
-            "Master Chief Specialist",
+            "Master Chief Specialist", "E9",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
@@ -336,7 +346,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.SeniorChiefPettyOfficer,
-            "Senior Chief Petty Officer",
+            "Senior Chief Petty Officer", "E8",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
@@ -346,7 +356,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.SeniorChiefSpecialist,
-            "Senior Chief Specialist",
+            "Senior Chief Specialist", "E8",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
@@ -356,7 +366,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.ChiefPettyOfficer,
-            "Chief Petty Officer",
+            "Chief Petty Officer", "E7",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
@@ -366,7 +376,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.ChiefSpecialist,
-            "Chief Specialist",
+            "Chief Specialist", "E7",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
@@ -376,7 +386,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.PettyOfficer,
-            "Petty Officer",
+            "Petty Officer", "E6",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
@@ -386,7 +396,7 @@ export class RanksHelper {
             3),
         new RankModel(
             Rank.Specialist,
-            "Specialist",
+            "Specialist", "E3",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
@@ -396,7 +406,7 @@ export class RanksHelper {
             3),
         new RankModel(
             Rank.Yeoman,
-            "Yeoman",
+            "Yeoman", "E2",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
@@ -406,7 +416,7 @@ export class RanksHelper {
             3),
         new RankModel(
             Rank.Crewman,
-            "Crewman",
+            "Crewman", "E1",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
@@ -416,7 +426,7 @@ export class RanksHelper {
             3),
         new RankModel(
             Rank.FleetAdmiral,
-            "Fleet Admiral",
+            "Fleet Admiral", "O11",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Veteran),
@@ -428,7 +438,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.Admiral,
-            "Admiral",
+            "Admiral", "O10",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Veteran),
@@ -443,7 +453,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.ViceAdmiral,
-            "Vice-Admiral",
+            "Vice-Admiral", "O9",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Veteran),
@@ -455,7 +465,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.RearAdmiral,
-            "Rear Admiral",
+            "Rear Admiral", "O8",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Veteran),
@@ -468,7 +478,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.RearAdmiralLower,
-            "Rear Admiral, Lower Half",
+            "Rear Admiral, Lower Half",  "O7",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Veteran),
@@ -481,7 +491,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.RearAdmiralUpper,
-            "Rear Admiral, Upper Half",
+            "Rear Admiral, Upper Half", "O8",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Veteran),
@@ -494,7 +504,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.Commodore,
-            "Commodore",
+            "Commodore", "O7",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Veteran),
@@ -506,7 +516,7 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.FleetCaptain,
-            "Fleet Captain",
+            "Fleet Captain",  "O7",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.CommandDivision),
@@ -517,13 +527,13 @@ export class RanksHelper {
             1),
         new RankModel(
             Rank.Civilian,
-            "Civilian",
+            "Civilian", "",
             [
                 new AnyOfPrerequisite(new RolesPrerequisite([Role.DiplomaticAttache]), new TrackPrerequisite(Track.Laborer))
             ]),
         new RankModel(
             Rank.Sergeant,
-            "Sergeant (bu')",
+            "Sergeant (bu')", "E5",
             [
                 new EnlistedPrerequisite(),
                 new NotTrackPrerequisite(Track.Laborer),
@@ -532,7 +542,7 @@ export class RanksHelper {
             "bu'"),
         new RankModel(
             Rank.Corporal,
-            "Corporal (Da')",
+            "Corporal (Da')", "E4",
             [
                 new EnlistedPrerequisite(),
                 new NotTrackPrerequisite(Track.Laborer),
@@ -541,7 +551,7 @@ export class RanksHelper {
             "Da'"),
         new RankModel(
             Rank.Bekk,
-            "Bekk (beq)",
+            "Bekk (beq)", "E1",
             [
                 new EnlistedPrerequisite(),
                 new NotTrackPrerequisite(Track.Laborer),
@@ -550,7 +560,7 @@ export class RanksHelper {
             "beq"),
         new RankModel(
             Rank.General,
-            "General",
+            "General", "O10",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -566,7 +576,7 @@ export class RanksHelper {
             "Gen."),
         new RankModel(
             Rank.LieutenantGeneral,
-            "Lieutenant General",
+            "Lieutenant General", "O9",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -576,7 +586,7 @@ export class RanksHelper {
             "Lt.Gen."),
         new RankModel(
             Rank.MajorGeneral,
-            "Major General",
+            "Major General", "O8",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -586,7 +596,7 @@ export class RanksHelper {
             "Maj.Gen."),
         new RankModel(
             Rank.Brigadier,
-            "Brigadier",
+            "Brigadier", "O7",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -599,9 +609,10 @@ export class RanksHelper {
             "Brig."),
         new RankModel(
             Rank.Colonel,
-            "Colonel",
+            "Colonel", "O6",
             [
                 new OfficerPrerequisite(),
+                new CareersPrerequisite(Career.Veteran),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new AnyOfPrerequisite(
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco, AlliedMilitaryType.BajoranMilitia,
@@ -612,7 +623,7 @@ export class RanksHelper {
             "Col"),
         new RankModel(
             Rank.LieutenantColonel,
-            "Lieutenant Colonel",
+            "Lieutenant Colonel", "O5",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -621,7 +632,7 @@ export class RanksHelper {
             "Lt.Col."),
         new RankModel(
             Rank.Major,
-            "Major",
+            "Major", "O4",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -631,7 +642,7 @@ export class RanksHelper {
             "Maj."),
         new RankModel(
             Rank.Captain,
-            "Captain",
+            "Captain", "O3",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -640,7 +651,7 @@ export class RanksHelper {
             "Capt."),
         new RankModel(
             Rank.Lieutenant,
-            "Lieutenant",
+            "Lieutenant", "O2",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -649,7 +660,7 @@ export class RanksHelper {
             "Lt."),
         new RankModel(
             Rank.FirstLieutenant,
-            "First Lieutenant",
+            "First Lieutenant", "O2",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -658,7 +669,7 @@ export class RanksHelper {
             "1st.Lt."),
         new RankModel(
             Rank.SecondLieutenant,
-            "Second Lieutenant",
+            "Second Lieutenant", "O1",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -667,7 +678,7 @@ export class RanksHelper {
             "2nd.Lt."),
         new RankModel(
             Rank.MasterSergeant,
-            "Master Sergeant",
+            "Master Sergeant", "E8",
             [
                 new EnlistedPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -676,7 +687,7 @@ export class RanksHelper {
             "Sgt."),
         new RankModel(
             Rank.Sergeant,
-            "Sergeant",
+            "Sergeant", "E5",
             [
                 new EnlistedPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -685,7 +696,7 @@ export class RanksHelper {
             "Sgt."),
         new RankModel(
             Rank.Corporal,
-            "Corporal",
+            "Corporal", "E4",
             [
                 new EnlistedPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -694,7 +705,7 @@ export class RanksHelper {
             "Cpl."),
         new RankModel(
             Rank.Private,
-            "Private",
+            "Private", "E1",
             [
                 new SourcePrerequisite(Source.PlayersGuide),
                 new EnlistedPrerequisite(),
@@ -706,7 +717,7 @@ export class RanksHelper {
         // Cardassian Ranks
         new RankModel(
             Rank.GrandGul,
-            "Grand Gul",
+            "Grand Gul", "O10",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -715,7 +726,7 @@ export class RanksHelper {
             ]),
         new RankModel(
             Rank.Legate,
-            "Legate",
+            "Legate", "O8",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -724,7 +735,7 @@ export class RanksHelper {
             ]),
         new RankModel(
             Rank.Jagul,
-            "Jagul",
+            "Jagul", "O6",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -732,7 +743,7 @@ export class RanksHelper {
             ]),
         new RankModel(
             Rank.Gul,
-            "Gul",
+            "Gul", "O5",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -741,7 +752,7 @@ export class RanksHelper {
             "Gul"),
         new RankModel(
             Rank.Dal,
-            "Dal / Dalin",
+            "Dal / Dalin", "O3",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -749,7 +760,7 @@ export class RanksHelper {
             ]),
         new RankModel(
             Rank.Glinn,
-            "Glinn / Gil",
+            "Glinn / Gil", "O2",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
@@ -758,7 +769,7 @@ export class RanksHelper {
             ]),
         new RankModel(
             Rank.Gil,
-            "Gil",
+            "Gil", "O1",
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Young),
@@ -767,7 +778,7 @@ export class RanksHelper {
             ]),
         new RankModel(
             Rank.Gil,
-            "Gil",
+            "Gil", "E5",
             [
                 new EnlistedPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -775,7 +786,7 @@ export class RanksHelper {
             ]),
         new RankModel(
             Rank.Garresh,
-            "Garresh / Gorr",
+            "Garresh / Gorr", "E1",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young),
@@ -785,7 +796,7 @@ export class RanksHelper {
 
         new RankModel(
             Rank.Trooper,
-            "Trooper",
+            "Trooper", "E1",
             [
                 new EnlistedPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -795,7 +806,7 @@ export class RanksHelper {
         // Romulan Star Empire
         new RankModel(
             Rank.SubCommander,
-            "Sub-Commander",
+            "Sub-Commander", "O4",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -803,7 +814,7 @@ export class RanksHelper {
             ]),
         new RankModel(
             Rank.SubLieutenant,
-            "Sub-Lieutenant",
+            "Sub-Lieutenant", "O2",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -811,7 +822,7 @@ export class RanksHelper {
             ]),
         new RankModel(
             Rank.Centurion, // Junior officer
-            "Centurion",
+            "Centurion", "O1",
             [
                 new SourcePrerequisite(Source.PlayersGuide),
                 new OfficerPrerequisite(),
@@ -820,7 +831,7 @@ export class RanksHelper {
             ]),
         new RankModel(
             Rank.Centurion, // Enlisted
-            "Centurion",
+            "Centurion", "E4",
             [
                 new SourcePrerequisite(Source.PlayersGuide),
                 new EnlistedPrerequisite(),
@@ -828,7 +839,7 @@ export class RanksHelper {
             ]),
         new RankModel(
             Rank.Uhlan,
-            "Uhlan",
+            "Uhlan", "E1",
             [
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CareersPrerequisite(Career.Young),
@@ -839,7 +850,7 @@ export class RanksHelper {
         // Vulcan High Command
         new RankModel(
             Rank.Administrator,
-            "Administrator",
+            "Administrator", "O10",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -848,7 +859,7 @@ export class RanksHelper {
             ]),
         new RankModel(
             Rank.FleetCommander,
-            "Fleet Commander",
+            "Fleet Commander", "O6",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -860,7 +871,7 @@ export class RanksHelper {
         // Cadets
         new RankModel(
             Rank.CadetFirstClass, // fourth-year cadet
-            "Cadet, first class",
+            "Cadet, first class", "C4",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -870,7 +881,7 @@ export class RanksHelper {
             "Cdt."),
         new RankModel(
             Rank.CadetSecondClass, // third-year cadet
-            "Cadet, second class",
+            "Cadet, second class", "C3",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -880,7 +891,7 @@ export class RanksHelper {
             "Cdt."),
         new RankModel(
             Rank.CadetThirdClass, // second-year cadet
-            "Cadet, third class",
+            "Cadet, third class", "C2",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -890,7 +901,7 @@ export class RanksHelper {
             "Cdt."),
         new RankModel(
             Rank.CadetFourthClass,  // first year cadet
-            "Cadet, fourth class",
+            "Cadet, fourth class", "C1",
             [
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
@@ -921,6 +932,17 @@ export class RanksHelper {
         }
         return ranks;
     }
+
+    getSortedRanks(character: Character, ignorePrerequisites?: boolean) {
+        let result = this.getRanks(character, ignorePrerequisites);
+
+        result.sort((r1, r2) => {
+            return r2.levelValue - r1.levelValue;
+        });
+
+        return result;
+    }
+
 
     getRank(rank: Rank) {
         let ranks = this._ranks.filter(r => r.id === rank);

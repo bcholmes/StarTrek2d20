@@ -23,13 +23,17 @@ export class NameGenerator {
             if (name.species === species.name) {
 
                 let lastNames = name.names.filter(n => n.type === 'LastName');
+                let lastName = null;
                 if (lastNames.length > 0) {
                     let r = Math.floor(Math.random() * lastNames.length);
-                    let lastName = lastNames[r];
-
-                    let firstNames = name.names
-                        .filter(n => n.type === 'FirstName')
-                        .filter(n => {
+                    lastName = lastNames[r];
+                }
+                let firstNames = name.names
+                    .filter(n => n.type === 'FirstName')
+                    .filter(n => {
+                        if (lastName == null) {
+                            return true;
+                        } else {
                             let ok = (n.gender === lastName.gender || n.gender === 'Unisex' || lastName.gender === 'Unisex');
                             if (ok) {
                                 let found = (n.tags.indexOf("Common") >= 0);
@@ -43,27 +47,27 @@ export class NameGenerator {
                             } else {
                                 return ok;
                             }
-                        });
-                    let firstName = null;
-                    if (firstNames.length > 0) {
-                        let r = Math.floor(Math.random() * firstNames.length);
-                        firstName = firstNames[r];
-                    }
-
-                    let firstNameString = null;
-                    if (firstName != null) {
-                        firstNameString = firstName.name;
-                        if (firstName.variants && D20.roll() <= 10) {
-                            firstNameString = firstName.variants[Math.floor(Math.random() * firstName.variants.length)];
                         }
-                    }
-                    let pronouns = this.derivePronouns(firstName.gender);
-                    result = {
-                        name: this.combineParts(firstNameString, lastName.name, species, pronouns, name.names),
-                        pronouns: pronouns
-                    }
-                    found = true;
+                    });
+                let firstName = null;
+                if (firstNames.length > 0) {
+                    let r = Math.floor(Math.random() * firstNames.length);
+                    firstName = firstNames[r];
                 }
+
+                let firstNameString = null;
+                if (firstName != null) {
+                    firstNameString = firstName.name;
+                    if (firstName.variants && D20.roll() <= 10) {
+                        firstNameString = firstName.variants[Math.floor(Math.random() * firstName.variants.length)];
+                    }
+                }
+                let pronouns = this.derivePronouns(firstName.gender);
+                result = {
+                    name: this.combineParts(firstNameString, lastName?.name, species, pronouns, name.names),
+                    pronouns: pronouns
+                }
+                found = true;
                 break;
             }
         }

@@ -33,4 +33,9 @@ export class VttTypes {
     public getTypes() {
         return this.types;
     }
+
+    getTypeByTypeName(name: string) {
+        let results = this.types.filter(t => VttType[t.type] === name);
+        return results.length === 1 ? results[0] : null;
+    }
 }

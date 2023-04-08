@@ -1212,7 +1212,10 @@ class _Species {
             "",
             [TalentsHelper.getTalent("Cruel"), TalentsHelper.getTalent("Superior Ambition"), TalentsHelper.getTalent("To Battle!"), TalentsHelper.getTalent("R'uustai"), TalentsHelper.getTalent("Warrior's Spirit"), TalentsHelper.getTalent("Killer's Instinct")],
             "",
-            []),
+            [
+                { type: "Male", suggestions: "Be'etor, Cheng, Mogh, Qeng, Torgh" },
+                { type: "Female", suggestions: "a'Setbur, HuS, lurSa, Mara" }
+            ]),
         [Species.Akaru]: new SpeciesModel(
             Species.Akaru,
             "Akaru",

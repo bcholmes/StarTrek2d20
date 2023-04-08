@@ -1,7 +1,6 @@
 import React from 'react';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
-import { CharacterTypeModel } from '../../common/characterType';
 import { navigateTo } from '../../common/navigator';
 import { Button } from '../../components/button';
 import { DropDownElement, DropDownInput, DropDownSelect } from '../../components/dropDownInput';
@@ -12,9 +11,10 @@ import { marshaller } from '../../helpers/marshaller';
 import { SpeciesHelper } from '../../helpers/species';
 import { Species } from '../../helpers/speciesEnum';
 import { PageIdentity } from '../../pages/pageIdentity';
+import { NpcCharacterType, NpcCharacterTypeModel, NpcCharacterTypes } from '../model/npcCharacterType';
 import { NpcGenerator } from '../model/npcGenerator';
 import { NpcType, NpcTypes } from '../model/npcType';
-import { SpecializationModel, Specializations } from '../model/specializations';
+import { Specialization, SpecializationModel, Specializations } from '../model/specializations';
 
 interface INpcConfigurationPageProperties extends WithTranslation {
     era: Era;
@@ -22,7 +22,7 @@ interface INpcConfigurationPageProperties extends WithTranslation {
 
 interface INpcConfigurationPageState {
     selectedNpcType: NpcType;
-    selectedType: CharacterTypeModel;
+    selectedType: NpcCharacterTypeModel;
     selectedSpecies?: Species;
     selectedSpecialization?: SpecializationModel;
 }
@@ -34,7 +34,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
 
         this.state = {
             selectedNpcType: NpcType.Notable,
-            selectedType: CharacterTypeModel.getNpcCharacterTypes()[0]
+            selectedType: NpcCharacterTypes.instance.types[0]
         }
     }
 
@@ -83,19 +83,19 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                         <Header level={2}>Type</Header>
 
                         <div className="my-4">
-                            <DropDownInput
-                                items={ CharacterTypeModel.getNpcCharacterTypes().map(t => new DropDownElement(t.type, t.localizedName )) }
+                            <DropDownSelect
+                                items={ NpcCharacterTypes.instance.types.map(t => new DropDownElement(t.type, t.localizedName )) }
                                 defaultValue={ this.state.selectedType.type }
-                                onChange={(index) => this.selectType(CharacterTypeModel.getNpcCharacterTypes()[index] ) }/>
+                                onChange={(type) => this.selectType(NpcCharacterTypes.instance.types[type as number] ) }/>
                         </div>
 
                         <Header level={2} className="mt-5">Specialization</Header>
 
                         <div className="mt-4">
-                            <DropDownInput
+                            <DropDownSelect
                                 items={ this.getSpecializations() }
                                 defaultValue={ this.state.selectedSpecialization?.id }
-                                onChange={(index) => this.selectSpecialization(index) }/>
+                                onChange={(specialization) => this.selectSpecialization(specialization) }/>
                         </div>
                     </div>
                 </div>
@@ -109,14 +109,19 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
 
     getSpecializations() {
         let result = [ new DropDownElement(null, "Any Specialization")];
-        Specializations.instance.getSpecializations().forEach(s => result.push(new DropDownElement(s.id, s.name)));
+        Specializations.instance.getSpecializations(this.state.selectedType.type).forEach(s => result.push(new DropDownElement(s.id, s.name)));
         return result;
     }
 
     getSpeciesList() {
-        const list = [ Species.Andorian, Species.Bajoran, Species.Betazoid, Species.Denobulan, Species.Human, Species.Tellarite, Species.Trill, Species.Vulcan ];
-        let result = list.map(s => SpeciesHelper.getSpeciesByType(s)).filter(s => s.eras.indexOf(this.props.era) >= 0);
-        return result;
+        if (this.state.selectedType.type === NpcCharacterType.KlingonDefenseForces) {
+            const list = this.props.era === Era.NextGeneration ? [ Species.Klingon ] : [ Species.Klingon, Species.KlingonQuchHa ];
+            return list.map(s => SpeciesHelper.getSpeciesByType(s));
+        } else {
+            const list = [ Species.Andorian, Species.Bajoran, Species.Betazoid, Species.Denobulan, Species.Human, Species.Tellarite, Species.Trill, Species.Vulcan ];
+            let result = list.map(s => SpeciesHelper.getSpeciesByType(s)).filter(s => s.eras.indexOf(this.props.era) >= 0);
+            return result;
+        }
     }
 
     getSpeciesDropDownList() {
@@ -125,15 +130,15 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         return result;
     }
 
-    selectSpecialization(index: number) {
-        if (index ===  0) {
+    selectSpecialization(type: Specialization|string) {
+        if (type == null || type === "") {
             this.setState((state) => ({...state, selectedSpecialization: null }));
         } else {
-            this.setState((state) => ({...state, selectedSpecialization: Specializations.instance.getSpecializations()[index-1] }));
+            this.setState((state) => ({...state, selectedSpecialization: Specializations.instance.getSpecialization(type as Specialization) }));
         }
     }
 
-    selectType(type: CharacterTypeModel) {
+    selectType(type: NpcCharacterTypeModel) {
         this.setState((state) => ({...state, selectedType: type }));
     }
 
@@ -145,10 +150,19 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         }
     }
 
+    randomSpecies() {
+        if (this.state.selectedType.type === NpcCharacterType.KlingonDefenseForces) {
+            let list = this.getSpeciesList();
+            return list[Math.floor(Math.random() * list.length)].id;
+        } else {
+            return SpeciesHelper.generateSpecies();
+        }
+    }
+
     createNpc() {
         let species = this.state.selectedSpecies != null
             ? this.state.selectedSpecies
-            : SpeciesHelper.generateSpecies();
+            : this.randomSpecies();
         let character = NpcGenerator.createNpc(this.state.selectedNpcType, this.state.selectedType.type,
             SpeciesHelper.getSpeciesByType(species), this.state.selectedSpecialization);
 

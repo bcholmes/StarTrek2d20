@@ -1,5 +1,6 @@
 import { Attribute } from "../../helpers/attributes";
 import { Skill } from "../../helpers/skills";
+import { NpcCharacterType } from "./npcCharacterType";
 
 export enum Specialization {
     Admiral,
@@ -15,12 +16,15 @@ export enum Specialization {
     ScienceTech,
     Scientist,
     Engineer,
-    IntelligenceOfficer
+    IntelligenceOfficer,
+
+    KlingonWarrior
 }
 
 export class SpecializationModel {
 
     id: Specialization;
+    type: NpcCharacterType;
     name: string;
     primaryAttributes: Attribute[];
     primaryDiscipline: Skill;
@@ -29,10 +33,11 @@ export class SpecializationModel {
     values: string[];
     officerProbability: number;
 
-    constructor(id: Specialization, name: string, primaryAttributes: Attribute[], primaryDiscipline: Skill,
+    constructor(id: Specialization, type: NpcCharacterType, name: string, primaryAttributes: Attribute[], primaryDiscipline: Skill,
         primaryFocuses: string[], secondaryFocuses: string[], values: string[],
         officerProbability: number = 0) {
         this.id = id;
+        this.type = type;
         this.name = name;
         this.primaryAttributes = primaryAttributes;
         this.primaryDiscipline = primaryDiscipline;
@@ -57,7 +62,7 @@ export class Specializations {
 
     constructor() {
         this.specializations = [
-            new SpecializationModel(Specialization.Admiral, "Admiralty",
+            new SpecializationModel(Specialization.Admiral, NpcCharacterType.Starfleet, "Admiralty",
                 [Attribute.Control, Attribute.Presence, Attribute.Reason],
                 Skill.Command,
                 ["Fleet Tactics", "Mission Assignment", "Personnel Allocation", "Ship Capabilities", "Starship Assignment", "Starfleet Protocols",
@@ -81,7 +86,7 @@ export class Specializations {
                 "A declaration of war is a sign of failure",
                 "Ensure the successful completion of the mission. All other considerations are secondary. Your crew is expendable."],
                 1),
-            new SpecializationModel(Specialization.Conn, "Conn",
+            new SpecializationModel(Specialization.Conn, NpcCharacterType.Starfleet, "Conn",
                 [Attribute.Daring, Attribute.Control],
                 Skill.Conn,
                 ["Helm Operations", "Small Craft Operations", "Evasive Maneuvers", "Precision Flying", "Shuttle Maintenance", "Warp Field Theory",
@@ -102,7 +107,7 @@ export class Specializations {
                     "'Almost' kicked out of the Academy is the same as 'not kicked out'."
                 ],
                 0.7),
-            new SpecializationModel(Specialization.Counselor, "Counselor",
+            new SpecializationModel(Specialization.Counselor, NpcCharacterType.Starfleet, "Counselor",
                 [Attribute.Insight, Attribute.Reason, Attribute.Control],
                 Skill.Medicine,
                 ["Psychology", "Grief Counseling", "Group Therapy", "Conversation and Listening", "Negotiation", "Psychiatry",
@@ -124,7 +129,7 @@ export class Specializations {
                     "A pint cannot hold a quart; if it's holding a pint, it's doing the best it can."
                 ],
                 0.95),
-            new SpecializationModel(Specialization.HangarDeck, "Hangar Deck",
+            new SpecializationModel(Specialization.HangarDeck, NpcCharacterType.Starfleet, "Hangar Deck",
                 [Attribute.Daring, Attribute.Control],
                 Skill.Conn,
                 ["Shuttle Maintenance", "Shuttle Piloting", "Work Bee Specialist", "Stevedore", "Shuttle Docking Procedures", "Call Signals",
@@ -138,7 +143,7 @@ export class Specializations {
                 "I'm sure that'll buff out.",
                 "The shuttles exist to serve the mission; if the mission succeeds but the shuttle is lost... that's still success."],
                 0.15),
-            new SpecializationModel(Specialization.Engineer, "Engineer",
+            new SpecializationModel(Specialization.Engineer, NpcCharacterType.Starfleet, "Engineer",
                 [Attribute.Reason, Attribute.Control, Attribute.Insight],
                 Skill.Engineering,
                 ["Warp Drive Maintenance", "Damage Control", "Anti-matter Containment", "Shield Maintenance", "Weapon System Repair",
@@ -163,7 +168,7 @@ export class Specializations {
                 "It doesn't have to be perfect; it has to be ready on time.",
                 "Perfect is the enemy of good."],
                 0.1),
-            new SpecializationModel(Specialization.FirstContactSpecialist, "First Contact Specialist",
+            new SpecializationModel(Specialization.FirstContactSpecialist, NpcCharacterType.Starfleet, "First Contact Specialist",
                 [Attribute.Presence, Attribute.Control, Attribute.Insight],
                 Skill.Command,
                 ["Cultural Studies", "Negotiation", "Diplomacy", "Psychology", "Xenopsycholody", "Governance",
@@ -180,7 +185,7 @@ export class Specializations {
                 "I envy you, taking these first steps into a new frontier."
                 ],
                 0.3),
-            new SpecializationModel(Specialization.IntelligenceOfficer, "Intelligence",
+            new SpecializationModel(Specialization.IntelligenceOfficer, NpcCharacterType.Starfleet, "Intelligence",
                 [Attribute.Daring, Attribute.Presence, Attribute.Insight],
                 Skill.Security,
                 ["Infiltration", "Intelligence Analysis", "Building Underground Networks", "Undercover Ops", "Signals Intelligence",
@@ -205,7 +210,7 @@ export class Specializations {
                 "There's nothing quite like the feeling that you get in the pit of your stomach when you begin to suspect your intelligence on an operation may have been wrong.",
                 "Officially, I was never here."],
                 0.6),
-            new SpecializationModel(Specialization.Jag, "Judge Advocate General's Office",
+            new SpecializationModel(Specialization.Jag, NpcCharacterType.Starfleet, "Judge Advocate General's Office",
                 [Attribute.Presence, Attribute.Control, Attribute.Insight],
                 Skill.Command,
                 ["Starfleet Protocols", "Federation Laws", "Legal Procedures", "Starfleet Rules and Regulations", "Legal Arguments", "Case Law",
@@ -226,7 +231,7 @@ export class Specializations {
                 "With the first link, the chain is forged. The first speech censored... the first thought forbidden... the first freedom denied — chains us all irrevocably.'",
                 "We think we've come so far. Torture of heretics, burning of witches, it's all ancient history. And then, before you can blink an eye, suddenly, it threatens to start all over again."],
                 0.5),
-            new SpecializationModel(Specialization.MedicalDoctor, "Medical Doctor",
+            new SpecializationModel(Specialization.MedicalDoctor, NpcCharacterType.Starfleet, "Medical Doctor",
                 [Attribute.Presence, Attribute.Insight, Attribute.Control],
                 Skill.Medicine,
                 ["Surgery", "Immunology", "Pharmacology", "Orthopedics", "Reconstructive Surgery", "Medical Equipment Specialist",
@@ -253,7 +258,7 @@ export class Specializations {
                 "You put your research ahead of your patients' lives. And as far as I'm concerned, that's a violation of our most sacred trust.",
                 "I'm just an old country doctor."],
                 1),
-            new SpecializationModel(Specialization.Nurse, "Nurse",
+            new SpecializationModel(Specialization.Nurse, NpcCharacterType.Starfleet, "Nurse",
                 [Attribute.Presence, Attribute.Insight, Attribute.Control],
                 Skill.Medicine,
                 ["Post-operative Treatment", "Surgical Nursing", "Patient Aftercare",
@@ -283,7 +288,7 @@ export class Specializations {
                 "I'm a nurse. What's your superpower?",
                 "Remember, I'm a nurse. You're going to have to say a lot to gross me out."],
                 0.15),
-            new SpecializationModel(Specialization.ScienceTech, "Science Technician",
+            new SpecializationModel(Specialization.ScienceTech, NpcCharacterType.Starfleet, "Science Technician",
                 [Attribute.Reason, Attribute.Insight, Attribute.Control],
                 Skill.Science,
                 ["Astrophysics", "Sensors", "Biology", "History", "Sociology", "Library Science", "Xenobiology", "Chemistry", "Terraforming",
@@ -299,7 +304,7 @@ export class Specializations {
                 "Experimentation is the foundation of progress.",
                 "80% of my job is herding the scientists and keeping them on track.",
                 "Sometimes scientific breakthrough is about doing the repetitive stuff over and over again."]),
-            new SpecializationModel(Specialization.Scientist, "Scientist",
+            new SpecializationModel(Specialization.Scientist, NpcCharacterType.Starfleet, "Scientist",
                 [Attribute.Reason, Attribute.Insight, Attribute.Control],
                 Skill.Science,
                 ["Astrophysics", "Sensors", "Biology", "History", "Sociology", "Library Science", "Xenobiology", "Chemistry", "Terraforming",
@@ -325,7 +330,7 @@ export class Specializations {
                 "It's math. Beautiful, beautiful math.",
                 "Yes, this advance could be abused or weaponized. But I can't let that stop me."],
                 0.9),
-            new SpecializationModel(Specialization.Security, "Security",
+            new SpecializationModel(Specialization.Security, NpcCharacterType.Starfleet, "Security",
                 [Attribute.Fitness, Attribute.Daring, Attribute.Control],
                 Skill.Security,
                 ["Hand Phasers", "Ground Combat Tactics", "Martial Arts", "Hand-to-Hand Combat", "Shipboard Weapons", "Starship Combat Tactics",
@@ -351,7 +356,7 @@ export class Specializations {
                 "By the book. It exists for a good reason.",
                 "We should not dismiss the possibility of hostile intent."],
                 0.1),
-            new SpecializationModel(Specialization.Admin, "Yeoman",
+            new SpecializationModel(Specialization.Admin, NpcCharacterType.Starfleet, "Yeoman",
                 [Attribute.Reason, Attribute.Insight, Attribute.Control],
                 Skill.Command,
                 ["Administrative Procedures", "Starfleet Reports", "Equipment Ordering Procedures", "Planning", "PADD Operation"],
@@ -363,10 +368,31 @@ export class Specializations {
                 "This ship would fall apart without me",
                 "Missions fail when we don't have the right stuff.",
                 "It sounds silly, but I just think the universe is better when organized."]),
-        ];
+            new SpecializationModel(Specialization.KlingonWarrior, NpcCharacterType.KlingonDefenseForces, "Klingon Warrior",
+                [Attribute.Fitness, Attribute.Daring, Attribute.Presence],
+                Skill.Security,
+                ["Hand-to-Hand Combat", "Melee Weapons", "Disruptors", "Ground Combat Tactics", "Starship Weapons"],
+                ["Rousing speech-making", "Explosives", "Survival", "Armor and Protective Gear", "Tales of Glorious Battle!",
+                "Tactical Analysis", "Special Operations Training"],
+                ["It will be glorious!",
+                "Glorious battle!",
+                "Today is a good day to die",
+                "Qapla' (Success)",
+                "Hab SoSlI' Quch! (Your mother has a smooth forehead)",
+                "nuqDaq 'oH tach'e' (Where's the bar?)",
+                "jagh yIbuStaH (Concentrate on the Enemy)",
+                "wo’ batlhvaD (For the honour of the Empire!)"], 0.6),
+
+            ];
     }
 
-    getSpecializations() {
-        return this.specializations;
+    getSpecializations(type: NpcCharacterType) {
+        return this.specializations.filter(s => s.type === type);
     }
+
+    getSpecialization(specialization: Specialization) {
+        let specializations = this.specializations.filter(s => s.id === specialization);
+        return specializations?.length === 1 ? specializations[0] : null;
+    }
+
 }

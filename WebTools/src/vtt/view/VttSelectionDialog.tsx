@@ -25,8 +25,16 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
     constructor(props) {
         super(props);
 
+        let dataJson = window.localStorage.getItem("settings.vttOptions");
+        let data = {};
+        try {
+            data = (dataJson) ? JSON.parse(dataJson) : {};
+        } catch (e) {
+            // ignore
+        }
         this.state = {
-            vttType: VttType.Foundry
+            vttType: VttTypes.instance.getTypeByTypeName(data["vttType"])?.type ?? VttType.Foundry,
+            foundryCompendium: data["foundryCompendium"] || false
         }
     }
 
@@ -55,7 +63,7 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
                 <p>Do you use the Foundry STA Compendia?</p>
                 <DropDownSelect defaultValue={this.state.foundryCompendium ? "Y" : "N"}
                     items={this.getFoundryCompendiumOptions()}
-                    onChange={(yesNo) => this.setState(state => ({...state, foundryCompendium: (yesNo === "Y" ? true : false)}))} />
+                    onChange={(yesNo) => this.selectFoundryCompendium(yesNo === "Y" ? true : false)} />
 
             </div>)
         } else {
@@ -70,11 +78,27 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
         ]
     }
 
+    selectFoundryCompendium(foundryCompendium: boolean) {
+        this.setState((state) => {
+            let newState = {
+                ...state,
+                foundryCompendium: foundryCompendium
+            };
+            this.persistVtt(newState);
+            return newState;
+        });
+
+    }
+
     selectVttType(t: VttType) {
-        this.setState((state) => ({
-            ...state,
-            vttType: t
-        }));
+        this.setState((state) => {
+            let newState = {
+                ...state,
+                vttType: t
+            };
+            this.persistVtt(newState);
+            return newState;
+        });
     }
 
     export() {
@@ -105,6 +129,14 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
 
         const escaped = starship.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') || "sta-starship";
         download(jsonBytes, escaped + "-foundry-vtt.json", "application/json");
+    }
+
+    persistVtt(state: IVttSelectionModalState) {
+        let data = {
+            vttType: VttType[state.vttType],
+            foundryCompendium: state.foundryCompendium
+        }
+        window.localStorage.setItem("settings.vttOptions", JSON.stringify(data));
     }
 }
 
