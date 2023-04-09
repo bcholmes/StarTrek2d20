@@ -1,6 +1,6 @@
 
 export enum VttType {
-    Foundry, FantasyGrounds, Roll20
+    FantasyGrounds, Foundry, Roll20
 }
 
 
@@ -20,6 +20,7 @@ export class VttTypes {
     private static _instance: VttTypes;
 
     private readonly types: VttTypeModel[] = [
+        new VttTypeModel(VttType.FantasyGrounds, "Fantasy Grounds"),
         new VttTypeModel(VttType.Foundry, "Foundry VTT")
     ];
 

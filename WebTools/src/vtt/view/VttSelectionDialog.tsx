@@ -8,6 +8,7 @@ import { ModalControl } from "../../components/modal";
 import { FoundryVttExporter, FoundryVttExporterOptions } from "../foundryVttExporter";
 import { VttType, VttTypes } from "../vttType";
 import i18next from 'i18next';
+import { FantasyGroupsVttExporter } from "../fantasyGroundsVttExport";
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -51,7 +52,8 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
                 {this.renderVttSpecificSettings()}
 
                 <div className="mt-5 text-center">
-                    <Button buttonType={true} className="btn btn-primary" onClick={() => this.export() } >Export</Button>
+                    <Button buttonType={true} className="btn btn-primary" onClick={() => this.export() }
+                        enabled={this.state.vttType !== VttType.FantasyGrounds || this.props.construct instanceof Character} >Export</Button>
                 </div>
             </div>
         );
@@ -105,6 +107,8 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
         if (this.props.construct instanceof Character) {
             if (this.state.vttType === VttType.Foundry) {
                 this.exportCharacterToFoundryVtt(this.props.construct as Character);
+            } else if (this.state.vttType === VttType.FantasyGrounds) {
+                this.exportCharacterToFantasyGrounds(this.props.construct as Character);
             }
         }
         if (this.props.construct instanceof Starship) {
@@ -121,6 +125,12 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
 
         const escaped = character.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') || "sta-character";
         download(jsonBytes, escaped + "-foundry-vtt.json", "application/json");
+    }
+
+    exportCharacterToFantasyGrounds(character: Character) {
+        const xml = FantasyGroupsVttExporter.instance.exportCharacter(character);
+        const escaped = character.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') || "sta-character";
+        download(new TextEncoder().encode(xml), escaped + "-fantasy-grounds.xml", "application/xml");
     }
 
     exportStarshipToFoundryVtt(starship: Starship) {

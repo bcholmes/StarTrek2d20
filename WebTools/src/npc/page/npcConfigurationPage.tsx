@@ -3,7 +3,7 @@ import { withTranslation, WithTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { navigateTo } from '../../common/navigator';
 import { Button } from '../../components/button';
-import { DropDownElement, DropDownInput, DropDownSelect } from '../../components/dropDownInput';
+import { DropDownElement, DropDownSelect } from '../../components/dropDownInput';
 import { Header } from '../../components/header';
 import InstructionText from '../../components/instructionText';
 import { Era } from '../../helpers/eras';
@@ -71,10 +71,10 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                         <Header level={2} className="mt-5">Species</Header>
 
                         <div className="mt-4">
-                            <DropDownInput
+                            <DropDownSelect
                                 items={ this.getSpeciesDropDownList() }
                                 defaultValue={ this.state.selectedSpecies ?? "" }
-                                onChange={(index) => this.selectSpecies(index) }/>
+                                onChange={(species) => this.selectSpecies(species) }/>
                         </div>
 
                     </div>
@@ -125,7 +125,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
     }
 
     getSpeciesDropDownList() {
-        let result = [ new DropDownElement("", "Any Major Species")];
+        let result = [ new DropDownElement(null, "Any Major Species")];
         this.getSpeciesList().forEach(s => result.push(new DropDownElement(s.id, s.name)));
         return result;
     }
@@ -139,14 +139,14 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
     }
 
     selectType(type: NpcCharacterTypeModel) {
-        this.setState((state) => ({...state, selectedType: type }));
+        this.setState((state) => ({...state, selectedType: type, selectedSpecies: null, selectedSpecialization: null }));
     }
 
-    selectSpecies(index: number) {
-        if (index > 0) {
-            this.setState((state) => ({...state, selectedSpecies: this.getSpeciesList()[index-1].id }));
-        } else {
+    selectSpecies(species: Species|string) {
+        if (species == null || species === "") {
             this.setState((state) => ({...state, selectedSpecies: undefined }));
+        } else {
+            this.setState((state) => ({...state, selectedSpecies: species as Species }));
         }
     }
 

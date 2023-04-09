@@ -6,7 +6,7 @@ import { RolesHelper } from "../helpers/roles";
 import { SkillsHelper, Skill } from "../helpers/skills";
 import { Department, allDepartments } from "../helpers/departments";
 import { CHALLENGE_DICE_NOTATION, TalentModel, TalentsHelper } from "../helpers/talents";
-import { Quality, WeaponRange, WeaponType } from "../helpers/weapons";
+import { PersonalWeapons, Quality, Weapon, WeaponRange, WeaponType } from "../helpers/weapons";
 import { allSystems, System } from "../helpers/systems";
 import { Spaceframe } from "../helpers/spaceframeEnum";
 
@@ -113,7 +113,7 @@ export class FoundryVttExporter {
             result.items.push({
                 "name": t.talent.displayName + ((t.talent.maxRank > 1 && t.rank > 1) ? " [x" + t.rank + "]" : ""),
                 "type": "talent",
-                "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
+                "img": DEFAULT_EQUIPMENT_ICON,
                 "system": {
                     "description": this.convertDescription(t.talent),
                     "talenttype": {
@@ -146,7 +146,7 @@ export class FoundryVttExporter {
                 result.items.push({
                     "name": w.name,
                     "type": "starshipweapon",
-                    "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
+                    "img": DEFAULT_EQUIPMENT_ICON,
                     "effects": [],
                     "folder": null,
                     "sort": 0,
@@ -219,6 +219,14 @@ export class FoundryVttExporter {
                 return "modules/sta-compendia/assets/ships/starfleet/miranda-token.webp";
             } else if (starship.spaceframeModel?.id === Spaceframe.Nova) {
                 return "modules/sta-compendia/assets/ships/starfleet/nova-token.webp";
+            } else if (starship.spaceframeModel?.id === Spaceframe.Brel) {
+                return "modules/sta-compendia/assets/ships/klingon/b-rel-token.webp";
+            } else if (starship.spaceframeModel?.id === Spaceframe.D7) {
+                return "modules/sta-compendia/assets/ships/klingon/d7-battle-cruiser-token.webp";
+            } else if (starship.spaceframeModel?.id === Spaceframe.KVort) {
+                return "modules/sta-compendia/assets/ships/klingon/k-vort-token.webp";
+            } else if (starship.spaceframeModel?.id === Spaceframe.VorCha) {
+                return "modules/sta-compendia/assets/ships/klingon/vor-cha-token.webp";
             } else {
                 return DEFAULT_STARSHIP_ICON;
             }
@@ -309,7 +317,7 @@ export class FoundryVttExporter {
             result.items.push({
                 "name": v,
                 "type": "value",
-                "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
+                "img": DEFAULT_EQUIPMENT_ICON,
                 "system": {
                   "description": "",
                   "used": false
@@ -337,7 +345,7 @@ export class FoundryVttExporter {
             result.items.push({
                 "name": f,
                 "type": "focus",
-                "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
+                "img": DEFAULT_EQUIPMENT_ICON,
                 "system": {
                   "description": ""
                 },
@@ -401,7 +409,7 @@ export class FoundryVttExporter {
                 result.items.push({
                     "name": role.name,
                     "type": "talent",
-                    "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
+                    "img": DEFAULT_EQUIPMENT_ICON,
                     "system": {
                       "description": "<p>" + role.description + "</p>",
                       "talenttype": {
@@ -437,7 +445,7 @@ export class FoundryVttExporter {
                 result.items.push({
                     "name": talent.displayName + (talent.maxRank > 1 ? " [x" + characterTalent.rank + "]" : ""),
                     "type": "talent",
-                    "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
+                    "img": DEFAULT_EQUIPMENT_ICON,
                     "system": {
                         "description": this.convertDescription(talent),
                         "talenttype": {
@@ -493,7 +501,7 @@ export class FoundryVttExporter {
                     "inaccurate": false,
                     "nonlethal": w.isQualityPresent(Quality.NonLethal),
                     "hiddenx": w.getRankForQuality(Quality.Hidden),
-                    "piercingx": 0,
+                    "piercingx": w.getRankForQuality(Quality.Piercing),
                     "viciousx": w.getRankForQuality(Quality.Vicious),
                     "opportunity": 0,
                     "escalation": 0
@@ -527,6 +535,24 @@ export class FoundryVttExporter {
                 return "modules/sta-compendia/assets/icons/items-core/medkit.webp";
             } else if (item === "Engineering Kit") {
                 return "modules/sta-compendia/assets/icons/items-core/engineering_kit.webp";
+            } else {
+                return DEFAULT_EQUIPMENT_ICON;
+            }
+        } else {
+            return DEFAULT_EQUIPMENT_ICON;
+        }
+    }
+
+    determineWeaponIcon(weapon: Weapon, options: FoundryVttExporterOptions, character: Character) {
+        if (options.isStaCompendiumUsed) {
+            if (weapon.name === PersonalWeapons.instance.unarmedStrike.name) {
+                return "modules/sta-compendia/assets/icons/weapons-core/unarmed-strike.webp";
+            } else if (weapon.name === PersonalWeapons.instance.phaser1.name) {
+                return "modules/sta-compendia/assets/icons/weapons-core/phaser-type-1.webp";
+            } else if (weapon.name === PersonalWeapons.instance.phaser2.name) {
+                return "modules/sta-compendia/assets/icons/weapons-core/phaser-type-2.webp";
+            } else if (weapon.name === PersonalWeapons.instance.batLeth.name) {
+                return "modules/sta-compendia/assets/icons/weapons-core/bat-leth.webp";
             } else {
                 return DEFAULT_EQUIPMENT_ICON;
             }
