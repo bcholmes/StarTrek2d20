@@ -1,5 +1,5 @@
 ﻿import {TalentViewModel, TalentsHelper, ToViewModel, ADVANCED_TEAM_DYNAMICS} from './talents';
-import {character } from '../common/character';
+import {Character, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Career } from './careerEnum';
 import i18next from 'i18next';
@@ -130,8 +130,8 @@ export class CareersHelper {
         return careers;
     }
 
-    getCareer(career: Career) {
-        var list = this.getBaseList(character.type);
+    getCareer(career: Career, c: Character = character) {
+        var list = this.getBaseList(c.type);
         return list[career];
     }
 

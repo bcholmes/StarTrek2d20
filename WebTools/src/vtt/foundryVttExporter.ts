@@ -585,18 +585,7 @@ export class FoundryVttExporter {
     convertDescription(talent: TalentModel) {
         let description = talent.description.replace(CHALLENGE_DICE_NOTATION, "CD");
 
-        let prerequisites = undefined;
-        talent.prerequisites.forEach((p) => {
-            let desc = p.describe();
-            if (desc) {
-                if (prerequisites == null) {
-                    prerequisites = desc;
-                } else {
-                    prerequisites += (", " + desc);
-                }
-            }
-        });
-
+        let prerequisites = talent.requirement;
         return description.split("\n").map(d => "<p>" + d + "</p>") + (prerequisites ? "<p><strong>" + prerequisites + "</strong></p>" : "");
     }
 }

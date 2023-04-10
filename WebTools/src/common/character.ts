@@ -193,6 +193,9 @@ export class Character extends Construct {
         let result = "";
         if (this.role) {
             result = this.role;
+            if (this.secondaryRole) {
+                result = result + " / " + this.secondaryRole;
+            }
         } else if (this.jobAssignment) {
             result = this.jobAssignment;
         }

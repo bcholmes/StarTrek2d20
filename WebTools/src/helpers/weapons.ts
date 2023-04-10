@@ -233,6 +233,8 @@ export class Weapon {
     requiresTalent: boolean;
     loadType?: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel;
     deliveryType?: DeliverySystemModel;
+    qualities: WeaponQuality[];
+    effects: WeaponQuality[];
     _weaponQualities: WeaponQuality[];
     hands?: number;
 
@@ -339,7 +341,7 @@ export class Weapon {
         }
     }
 
-    get qualities() {
+    get effectsAndQualities() {
         if (this.usageCategory === UsageCategory.Character) {
             return this.weaponQualities.map(q => q.localizedDescription).join(", ");
         } else {

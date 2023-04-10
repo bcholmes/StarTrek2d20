@@ -58,7 +58,7 @@ class StarshipWeaponsPageProperties extends React.Component<IStarshipWeaponsPage
                 {this.props.starship.weapons.map((w, i) => (<tr key={'weapon-' + i}>
                     <td className="selection-header">{w.description}</td>
                     <td><p className="m-0">{w.dice}</p></td>
-                    <td><p className="m-0">{w.qualities}</p></td>
+                    <td><p className="m-0">{w.effectsAndQualities}</p></td>
                     <td className="text-right"><Button buttonType={true} className="btn btn-link text-danger" onClick={() => { this.confirmRemove(w) }} ><i className="bi bi-trash"></i></Button></td>
                 </tr>))}
             </tbody>);

@@ -30,7 +30,7 @@ class WeaponView extends React.Component<IWeaponViewProperties, {}> {
                     </div>
                     <div className="col-xl-12 mb-2">
                         <div className="pill-left">{t('Weapon.common.qualities') + ':'}</div>
-                        <div className="pill-right">{this.props.weapon.qualities ? this.props.weapon.qualities : '\u00A0'}</div>
+                        <div className="pill-right">{this.props.weapon.effectsAndQualities ? this.props.weapon.effectsAndQualities : '\u00A0'}</div>
                     </div>
                 </div>)
         } else {

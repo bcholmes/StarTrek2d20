@@ -174,7 +174,7 @@ abstract class BasicSheet implements ICharacterSheet {
 
         this.fillField(form, 'Weapon ' + index + ' name', weapon.name);
         this.fillField(form, 'Weapon ' + index + ' dice', (weapon.dice == null) ? "" : ("" + (security + weapon.dice)));
-        this.fillField(form, 'Weapon ' + index + ' qualities', weapon.qualities);
+        this.fillField(form, 'Weapon ' + index + ' qualities', weapon.effectsAndQualities);
     }
 
     fillCheckbox(form: PDFForm, name: string, value: boolean) {
@@ -352,7 +352,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
 
         this.fillField(form, 'Weapon ' + index + ' name', weapon.description);
         this.fillField(form, 'Weapon ' + index + ' dice', "" + dice);
-        this.fillField(form, 'Weapon ' + index + ' qualities', weapon.qualities);
+        this.fillField(form, 'Weapon ' + index + ' qualities', weapon.effectsAndQualities);
     }
 }
 
@@ -440,17 +440,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
     }
 
     serializeBasicAssignment(character: Character) {
-        if (character.role != null) {
-            var result = character.role;
-            if (character.secondaryRole) {
-                result = result + " / " + character.secondaryRole;
-            }
-            return result;
-        } else if (character.jobAssignment != null) {
-            return character.jobAssignment;
-        } else {
-            return "";
-        }
+        return character.assignment;
     }
 
 
@@ -621,7 +611,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         weapons.forEach( (w, i) => {
             this.fillField(form, 'Weapon ' + (i+1) + ' name', w.name);
             this.fillField(form, 'Weapon ' + (i+1) + ' dice', (w.dice == null) ? "" : ("" + (security + w.dice)));
-            this.fillField(form, 'Weapon ' + (i+1) + ' qualities', w.qualities);
+            this.fillField(form, 'Weapon ' + (i+1) + ' qualities', w.effectsAndQualities);
         });
     }
 

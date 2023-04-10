@@ -550,6 +550,21 @@ export class TalentModel implements ITalent {
             return result;
         }
     }
+
+    get requirement() {
+        let prerequisites = undefined;
+        this.prerequisites.forEach((p) => {
+            let desc = p.describe();
+            if (desc) {
+                if (prerequisites == null) {
+                    prerequisites = desc;
+                } else {
+                    prerequisites += (", " + desc);
+                }
+            }
+        });
+        return prerequisites;
+    }
 }
 
 export interface ITalent {

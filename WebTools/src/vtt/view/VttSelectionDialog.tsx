@@ -123,13 +123,13 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
         const json = FoundryVttExporter.instance.exportCharacter(character, new FoundryVttExporterOptions(this.state.foundryCompendium));
         const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
 
-        const escaped = character.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') || "sta-character";
+        const escaped = this.sanitizeName(character.name, "sta-character");
         download(jsonBytes, escaped + "-foundry-vtt.json", "application/json");
     }
 
     exportCharacterToFantasyGrounds(character: Character) {
         const xml = FantasyGroupsVttExporter.instance.exportCharacter(character);
-        const escaped = character.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') || "sta-character";
+        const escaped = this.sanitizeName(character.name, "sta-character");
         download(new TextEncoder().encode(xml), escaped + "-fantasy-grounds.xml", "application/xml");
     }
 
@@ -137,8 +137,12 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
         const json = FoundryVttExporter.instance.exportStarship(starship, new FoundryVttExporterOptions(this.state.foundryCompendium));
         const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
 
-        const escaped = starship.name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') || "sta-starship";
+        const escaped = this.sanitizeName(starship.name, "sta-starship");
         download(jsonBytes, escaped + "-foundry-vtt.json", "application/json");
+    }
+
+    sanitizeName(name: string, defaultName: string) {
+        return name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') || defaultName;
     }
 
     persistVtt(state: IVttSelectionModalState) {

@@ -48,6 +48,10 @@ class Marshaller {
             "focuses": [...character.focuses]
         };
 
+        if (character.career != null) {
+            sheet["career"] = Career[character.career];
+        }
+
         if (character.speciesStep) {
             sheet["species"] = { "primary": Species[character.speciesStep.species]};
 
