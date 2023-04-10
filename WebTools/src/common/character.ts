@@ -14,6 +14,7 @@ import AgeHelper, { Age } from '../helpers/age';
 import { Weapon, PersonalWeapons } from '../helpers/weapons';
 import { Construct, Stereotype } from './construct';
 import { SpeciesHelper } from '../helpers/species';
+import { TrackModel } from '../helpers/tracks';
 
 export abstract class CharacterTypeDetails {
 }
@@ -189,7 +190,7 @@ export class Character extends Construct {
         this.age = AgeHelper.getAdultAge();
     }
 
-    get assignment() {
+    get assignmentWithoutShip() {
         let result = "";
         if (this.role) {
             result = this.role;
@@ -199,6 +200,11 @@ export class Character extends Construct {
         } else if (this.jobAssignment) {
             result = this.jobAssignment;
         }
+        return result;
+    }
+
+    get assignment() {
+        let result = this.assignmentWithoutShip;
 
         if (this.assignedShip) {
             if (result) {

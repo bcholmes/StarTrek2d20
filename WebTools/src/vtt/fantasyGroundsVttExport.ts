@@ -6,6 +6,9 @@ import { CHALLENGE_DICE_NOTATION, TalentsHelper } from "../helpers/talents";
 import { CareersHelper } from "../helpers/careers";
 import { CharacterType } from "../common/characterType";
 import { Rank, RanksHelper } from "../helpers/ranks";
+import { CharacterSerializer } from "../common/characterSerializer";
+import { TracksHelper } from "../helpers/tracks";
+import { CareerEventsHelper } from "../helpers/careerEvents";
 
 export class FantasyGroupsVttExporter {
 
@@ -38,8 +41,10 @@ export class FantasyGroupsVttExporter {
                     }]
                 },
                 this.convertCareer(character),
+                this.convertCareerEvents(character),
                 this.convertCareerLink(character),
                 this.convertDisciplines(character),
+                this.convertEnvironment(character),
                 {
                     "name": "environmentlink",
                     "type": "element",
@@ -219,7 +224,7 @@ export class FantasyGroupsVttExporter {
                     "type": "element",
                     "elements": [{
                         "type":"text",
-                        "text": character.assignment
+                        "text": character.assignmentWithoutShip
                     }]
                 },
                 {
@@ -259,13 +264,7 @@ export class FantasyGroupsVttExporter {
                     },
                     "type": "element"
                 },
-                {
-                    "name": "training",
-                    "attributes": {
-                        "type": "string"
-                    },
-                    "type": "element"
-                },
+                this.convertTraining(character),
                 {
                     "name": "traininglink",
                     "type": "element",
@@ -280,6 +279,7 @@ export class FantasyGroupsVttExporter {
                         "name": "recordname"
                     }]
                 },
+                this.convertUpbringing(character),
                 {
                     "name": "upbringinglink",
                     "type": "element",
@@ -297,6 +297,7 @@ export class FantasyGroupsVttExporter {
             ]
         }
 
+        characterNode.elements = characterNode.elements.filter(e => e != null);
 
         let result = {
             "declaration":{"attributes":{"version":"1.0","encoding":"utf-8"}},
@@ -435,10 +436,71 @@ export class FantasyGroupsVttExporter {
                 ]
             }
         } else {
+            return null;
+        }
+    }
+
+    convertUpbringing(character: Character) {
+        let upbringing = character.upbringingStep?.upbringing;
+        if (upbringing) {
             return {
-                "name": "career",
-                "type": "element"
+                "name": "upbringing",
+                "type": "element",
+                "attributes": {
+                    "type": "string"
+                },
+                "elements": [
+                    {
+                        "type": "text",
+                        "text": upbringing.name
+                    }
+                ]
             }
+        } else {
+            return null;
+        }
+    }
+
+    convertTraining(character: Character) {
+        let training = character.track ? TracksHelper.instance().getTrack(character.track, character) : null;
+        if (training) {
+            return {
+                "name": "training",
+                "type": "element",
+                "attributes": {
+                    "type": "string"
+                },
+                "elements": [
+                    {
+                        "type": "text",
+                        "text": training.name
+                    }
+                ]
+            }
+        } else {
+            return null;
+        }
+    }
+
+    convertEnvironment(character: Character) {
+        let environment = character.environmentStep ? CharacterSerializer.serializeEnvironment(character.environmentStep.environment,
+            character.environmentStep.otherSpeciesWorld, character.type) : null;
+        if (environment) {
+            return {
+                "name": "environment",
+                "type": "element",
+                "attributes": {
+                    "type": "string"
+                },
+                "elements": [
+                    {
+                        "type": "text",
+                        "text": environment
+                    }
+                ]
+            }
+        } else {
+            return null;
         }
     }
 
@@ -464,11 +526,14 @@ export class FantasyGroupsVttExporter {
                         rankNumber = 6;
                         break;
                     case Rank.Captain:
+                    case Rank.FleetCaptain:
                         rankNumber = 7;
                         break;
                     case Rank.Commodore:
+                    case Rank.RearAdmiralLower:
                         rankNumber = 8;
                         break;
+                    case Rank.RearAdmiralUpper:
                     case Rank.RearAdmiral:
                     case Rank.ViceAdmiral:
                     case Rank.Admiral:
@@ -495,10 +560,7 @@ export class FantasyGroupsVttExporter {
                 }
             }
         }
-        return {
-            "name": "rank",
-            "type": "element"
-        };
+        return null;
     }
 
     convertAttributes(character: Character) {
@@ -752,7 +814,195 @@ export class FantasyGroupsVttExporter {
             });
         });
 
+        if (character.rank != null && this.convertRank(character) == null) {
+            result.elements.push({
+                "name": this.createNumberedId(index++),
+                "type": "element",
+                "elements": [
+                    {
+                        "name": "name",
+                        "type": "element",
+                        "attributes": {
+                            "type": "string"
+                        },
+                        "elements": [{
+                            "type": "text",
+                            "text": "Rank: " + character.rank
+                        }]
+                    },{
+                        "name": "text",
+                        "type": "element",
+                        "attributes": {
+                            "type": "formattedtext"
+                        },
+                        "elements": [{
+                            "name": "p",
+                            "type": "element"
+                        }]
+                    }
+                ]
+            });
+        }
+
         return result;
+    }
+
+
+    convertCareerEvents(character: Character) {
+        if (character.careerEvents?.length) {
+            let result = {
+                "name": "careerevent",
+                "type": "element",
+                "elements": []
+            }
+
+            let index = 1;
+            character.careerEvents.forEach(e => {
+                let event = CareerEventsHelper.getCareerEvent(e, character.type);
+                if (event) {
+                    let key = this.createNumberedId(index++);
+                    result.elements.push({
+                        "name": key,
+                        "type": "element",
+                        "elements": [
+                            {
+                                "name": "attributes",
+                                "type": "element",
+                                "elements": [
+                                    {
+                                        "name": this.createNumberedId(1),
+                                        "type": "element",
+                                        "elements": [
+                                            {
+                                                "name": "name",
+                                                "type": "element",
+                                                "attributes": {
+                                                    "type": "string"
+                                                },
+                                                "elements": [{
+                                                    "type": "text",
+                                                    "text": event.attributes.length === 1 ? Attribute[event.attributes[0]].toLowerCase() : "any"
+                                                }]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            this.convertToFormattedText("desc", null, event.description),
+                            {
+                                "name": "disciplines",
+                                "type": "element",
+                                "elements": [
+                                    {
+                                        "name": this.createNumberedId(1),
+                                        "type": "element",
+                                        "elements": [
+                                            {
+                                                "name": "name",
+                                                "type": "element",
+                                                "attributes": {
+                                                    "type": "string"
+                                                },
+                                                "elements": [{
+                                                    "type": "text",
+                                                    "text": event.disciplines.length === 1 ? Skill[event.disciplines[0]].toLowerCase() : "any"
+                                                }]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "focus",
+                                "type": "element",
+                                "attributes": {
+                                    "type": "number"
+                                },
+                                "elements": [{
+                                    "type": "text",
+                                    "text": "1"
+                                }]
+                            },
+                            {
+                                "name": "link",
+                                "type": "element",
+                                "attributes": {
+                                    "type": "windowreference"
+                                },
+                                "elements": [
+                                    {
+                                        "name": "class",
+                                        "type": "element",
+                                        "elements": [{
+                                            "type": "text",
+                                            "text": "careerevent"
+                                        }]
+                                    },
+                                    {
+                                        "name": "recordname",
+                                        "type": "element",
+                                        "elements": [{
+                                            "type": "text",
+                                            "text": "....careerevent." + key
+                                        }]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "locked",
+                                "type": "element",
+                                "attributes": {
+                                    "type": "number"
+                                },
+                                "elements": [{
+                                    "type": "text",
+                                    "text": "0"
+                                }]
+                            },
+                            {
+                                "name": "name",
+                                "type": "element",
+                                "attributes": {
+                                    "type": "string"
+                                },
+                                "elements": [{
+                                    "type": "text",
+                                    "text": event.name
+                                }]
+                            },
+                            {
+                                "name": "trait",
+                                "type": "element",
+                                "attributes": {
+                                    "type": "number"
+                                },
+                                "elements": [{
+                                    "type": "text",
+                                    "text": event.traitDescription ? "1" : "0"
+                                }]
+                            },
+                            {
+                                "name": "value",
+                                "type": "element",
+                                "attributes": {
+                                    "type": "number"
+                                },
+                                "elements": [{
+                                    "type": "text",
+                                    "text": "0"
+                                }]
+                            }
+                        ]
+                    })
+                }
+            });
+
+
+            return result;
+
+        } else {
+            return null;
+        }
     }
 
 

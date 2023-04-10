@@ -1,5 +1,5 @@
 ﻿import {Skill} from './skills';
-import {character } from '../common/character';
+import {Character, character } from '../common/character';
 import {CharacterType } from '../common/characterType';
 import {Source} from './sources';
 import { Attribute } from './attributes';
@@ -379,8 +379,8 @@ export class TracksHelper {
         });
     }
 
-    getTrack(track: Track) {
-        let list = this.chooseList(character.type);
+    getTrack(track: Track, c: Character = character) {
+        let list = this.chooseList(c.type);
         let result = null;
         for (let t of list) {
             if (t.id === track) {
