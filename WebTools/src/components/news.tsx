@@ -12,6 +12,13 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230410</b>
+                <ul>
+                    <li>VTT Export now supports characters in Fantasy Grounds format. At the moment, all characters are treated as
+                        "Main" characters, as far as loading them in to Fantasy Grounds is concerned (the import format for
+                        NPC characters is slightly different). Starships are not currently supported.
+                    </li>
+                </ul>
                 <b>v1.230408</b>
                 <ul>
                     <li>Some additional work on NPCs and VTT Export.</li>

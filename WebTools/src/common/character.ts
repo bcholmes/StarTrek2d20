@@ -14,7 +14,6 @@ import AgeHelper, { Age } from '../helpers/age';
 import { Weapon, PersonalWeapons } from '../helpers/weapons';
 import { Construct, Stereotype } from './construct';
 import { SpeciesHelper } from '../helpers/species';
-import { TrackModel } from '../helpers/tracks';
 
 export abstract class CharacterTypeDetails {
 }

@@ -9,6 +9,7 @@ import { Rank, RanksHelper } from "../helpers/ranks";
 import { CharacterSerializer } from "../common/characterSerializer";
 import { TracksHelper } from "../helpers/tracks";
 import { CareerEventsHelper } from "../helpers/careerEvents";
+import { WeaponQuality, WeaponType } from "../helpers/weapons";
 
 export class FantasyGroupsVttExporter {
 
@@ -20,7 +21,6 @@ export class FantasyGroupsVttExporter {
         }
         return FantasyGroupsVttExporter._instance;
     }
-
 
     exportCharacter(character: Character) {
 
@@ -116,7 +116,7 @@ export class FantasyGroupsVttExporter {
                 {
                     "name": "inventorylist",
                     "type": "element",
-                    "elements": this.convertEquipment(character)
+                    "elements": this.convertWeaponsAndEquipment(character)
                 },
                 {
                     "name": "milestones",
@@ -316,6 +316,256 @@ export class FantasyGroupsVttExporter {
         };
 
         return convert.js2xml(result, { spaces: 2 });
+    }
+
+    convertWeaponsAndEquipment(character: Character) {
+        let equipment = this.convertEquipment(character);
+        let weapons = this.convertWeapons(character, equipment.length);
+        return equipment.concat(weapons);
+    }
+
+    convertWeapons(character: Character, start: number = 0) {
+        let result = [];
+        character.determineWeapons().forEach((w, i) => {
+            let weapon = {
+                "name": this.createNumberedId(start + i + 1),
+                "type": "element",
+                "elements": [
+                    {
+                        "name": "area",
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": 0
+                            }
+                        ]
+                    },
+                    {
+                        "name": "category",
+                        "attributes": {
+                            "type": "string"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Weapon"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "cost",
+                        "attributes": {
+                            "type": "string"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Standard Issue"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "count",
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": 1
+                            }
+                        ]
+                    },
+                    w.effects?.length ? {
+                        "name": "damageeffects",
+                        "attributes": {
+                            "type": "string"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": w.effects.map(q => q.description).join(", ")
+                            }
+                        ]
+                    } : null,
+                    {
+                        "name": "damagerating",
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": w.dice
+                            }
+                        ]
+                    },
+                    this.convertWeaponAttributes("dmgeffect", w.effects),
+                    {
+                        "name": "intense",
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": 0
+                            }
+                        ]
+                    },
+                    {
+                        "name": "locked",
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": 0
+                            }
+                        ]
+                    },
+                    {
+                        "name": "name",
+                        "attributes": {
+                            "type": "string"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": w.name
+                            }
+                        ]
+                    },
+                    this.convertToFormattedText("notes", w.name, null),
+                    {
+                        "name": "piercing",
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": 0
+                            }
+                        ]
+                    },
+                    w.qualities?.length ? {
+                        "name": "qualities",
+                        "attributes": {
+                            "type": "string"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": w.qualities.map(q => q.description).join(", ")
+                            }
+                        ]
+                    } : null,
+                    w.hands ? {
+                        "name": "size",
+                        "attributes": {
+                            "type": "string"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": w.hands + "h"
+                            }
+                        ]
+                    } : null,
+                    w.type === WeaponType.ENERGY ?
+                    {
+                        "name": "type",
+                        "attributes": {
+                            "type": "string"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "ranged"
+                            }
+                        ]
+                    } : null,
+                    {
+                        "name": "viscious",
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": 0
+                            }
+                        ]
+                    },
+                    this.convertWeaponAttributes("weapquality", w.qualities)
+                ]
+            }
+            weapon.elements = weapon.elements.filter(e => e != null);
+            result.push(weapon);
+        });
+
+        return result;
+    }
+
+    convertWeaponAttributes(tagName: string, attributes: WeaponQuality[]) {
+        let index = 1;
+        let result = {
+            "name": tagName,
+            "type": "element",
+            "elements": []
+        };
+
+        attributes.forEach(q => {
+            result.elements.push({
+                "name": this.createNumberedId(index++),
+                "type": "element",
+                "elements": [
+                    {
+                        "name": "name",
+                        "type": "element",
+                        "attributes": {
+                            "type": "string"
+                        },
+                        "elements": [{
+                            "type": "text",
+                            "text": q.qualityName
+                        }]
+                    },
+                    {
+                        "name": "rank",
+                        "type": "element",
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "elements": [{
+                            "type": "text",
+                            "text": q.rank ?? 1
+                        }]
+                    }
+                ]
+            });
+        })
+
+        return result;
     }
 
     convertDisciplines(character: Character) {

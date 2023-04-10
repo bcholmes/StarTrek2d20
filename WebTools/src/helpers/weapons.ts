@@ -17,6 +17,31 @@ export class WeaponQuality {
         this.rank = rank;
     }
 
+    // Non-localized, to use in export to vtt
+    get qualityName() {
+        switch (this.quality) {
+            case Quality.NonLethal:
+                return "Non-Lethal";
+
+            case Quality.HighYield:
+                return "High Yield";
+
+            case Quality.PersistentX:
+                return "Persistent X";
+
+            default:
+                return Quality[this.quality];
+        }
+    }
+
+    get description() {
+        if (this.rank != null) {
+            return this.qualityName + " " + this.rank;
+        } else {
+            return this.qualityName;
+        }
+    }
+
     get localizedDescription() {
         if (this.rank != null) {
             return i18next.t(makeKey("Weapon.quality.", Quality[this.quality], ".name"), {rank: this.rank});
@@ -235,7 +260,6 @@ export class Weapon {
     deliveryType?: DeliverySystemModel;
     qualities: WeaponQuality[];
     effects: WeaponQuality[];
-    _weaponQualities: WeaponQuality[];
     hands?: number;
 
     constructor(usage: UsageCategory, name: string, dice: number, type: WeaponType,
@@ -251,7 +275,6 @@ export class Weapon {
         this.requiresTalent = requiresTalent;
         this.loadType = loadType;
         this.deliveryType = deliveryType;
-        this._weaponQualities = [];
     }
 
     get range() {
@@ -279,7 +302,7 @@ export class Weapon {
 
     get weaponQualities() {
         if (this.usageCategory === UsageCategory.Character) {
-            return this._weaponQualities;
+            return this.effects.concat(this.qualities);
         } else if (this.loadType instanceof EnergyLoadTypeModel) {
             return (this.loadType as EnergyLoadTypeModel)._weaponQualities;
         } else if (this.loadType instanceof TorpedoLoadTypeModel) {
@@ -369,9 +392,10 @@ export class Weapon {
         return this.type === WeaponType.CAPTURE;
     }
 
-    static createCharacterWeapon(name: string, dice: number, qualities: WeaponQuality[], type: WeaponType, hands: number = 1) {
+    static createCharacterWeapon(name: string, dice: number, effects: WeaponQuality[], qualities: WeaponQuality[], type: WeaponType, hands: number = 1) {
         let result = new Weapon(UsageCategory.Character, name, dice, type);
-        result._weaponQualities = qualities;
+        result.qualities = qualities;
+        result.effects = effects;
         result.hands = hands;
         return result;
     }
@@ -461,37 +485,37 @@ export class PersonalWeapons {
     private static _instance;
 
     get unarmedStrike() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.NonLethal)], WeaponType.MELEE);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown)], [new WeaponQuality(Quality.NonLethal)], WeaponType.MELEE);
     }
 
     get unarmedStrikeMean() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.NonLethal), new WeaponQuality(Quality.Vicious, 1)], WeaponType.MELEE);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.Vicious, 1)], [new WeaponQuality(Quality.NonLethal)], WeaponType.MELEE);
     }
 
     get phaser1() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser1.name'), 2, [new WeaponQuality(Quality.Charge), new WeaponQuality(Quality.Hidden, 1)], WeaponType.ENERGY);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser1.name'), 2, [], [new WeaponQuality(Quality.Charge), new WeaponQuality(Quality.Hidden, 1)], WeaponType.ENERGY);
     }
 
     get phaser2() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser2.name'), 3, [new WeaponQuality(Quality.Charge)], WeaponType.ENERGY);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser2.name'), 3, [], [new WeaponQuality(Quality.Charge)], WeaponType.ENERGY);
     }
 
     get ushaanTor() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.ushaantor.name'), 1, [new WeaponQuality(Quality.Vicious, 1)], WeaponType.MELEE);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.ushaantor.name'), 1, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.MELEE);
     }
 
     get batLeth() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.batleth.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], WeaponType.MELEE, 2);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.batleth.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.MELEE, 2);
     }
 
     get dkTagh() {
         return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.dktahg.name'), 1,
-            [new WeaponQuality(Quality.Vicious, 1), new WeaponQuality(Quality.Deadly), new WeaponQuality(Quality.Hidden, 1)],
+            [new WeaponQuality(Quality.Vicious, 1)], [new WeaponQuality(Quality.Deadly), new WeaponQuality(Quality.Hidden, 1)],
             WeaponType.MELEE);
     }
 
     get disruptorPistol() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.disruptor.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], WeaponType.ENERGY);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.disruptor.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.ENERGY);
     }
 
     static get instance() {
