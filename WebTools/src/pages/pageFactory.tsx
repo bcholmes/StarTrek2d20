@@ -24,7 +24,6 @@ import CharacterTypePage from './characterTypePage';
 import SimpleCareerPage from './simpleCareerPage';
 import { ChildEducationPage } from './childEducationPage';
 import { ChildEducationDetailsPage } from './childEducationDetailsPage';
-import ViewSheetPage from '../view/viewSheetPage';
 import { CadetSeniorityPage } from './cadetSeniorityPage';
 import SpeciesExtraDetailsPage from './speciesExtraDetailsPage';
 import { Species } from '../helpers/speciesEnum';
@@ -91,7 +90,6 @@ export class PageFactory {
         this.factories[PageIdentity.ExtraFocus] = () => <ExtraFocusPage />;
         this.factories[PageIdentity.Finish] = () => <FinishPage/>;
         this.factories[PageIdentity.SupportingCharacter] = () => <SupportingCharacterPage />;
-        this.factories[PageIdentity.ViewSheet] = () => <ViewSheetPage />;
         this.factories[PageIdentity.ModificationTypeSelection] = () => <ModificationTypeSelectionPage />;
         this.factories[PageIdentity.ReputationChange] = () => <ReputationChangePage />;
         this.factories[PageIdentity.Promotion] = () => <PromotionPage />;

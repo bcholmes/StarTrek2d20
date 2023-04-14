@@ -10,6 +10,7 @@ import { CharacterSerializer } from "../common/characterSerializer";
 import { TracksHelper } from "../helpers/tracks";
 import { CareerEventsHelper } from "../helpers/careerEvents";
 import { WeaponQuality, WeaponType } from "../helpers/weapons";
+import { Upbringing } from "../helpers/upbringings";
 
 export class FantasyGroupsVttExporter {
 
@@ -280,20 +281,8 @@ export class FantasyGroupsVttExporter {
                     }]
                 },
                 this.convertUpbringing(character),
-                {
-                    "name": "upbringinglink",
-                    "type": "element",
-                    "attributes": {
-                        "type": "windowreference"
-                    },
-                    "elements": [{
-                        "type": "element",
-                        "name": "class"
-                    },{
-                        "type": "element",
-                        "name": "recordname"
-                    }]
-                }
+                this.convertUpbringingLink(character)
+
             ]
         }
 
@@ -316,6 +305,49 @@ export class FantasyGroupsVttExporter {
         };
 
         return convert.js2xml(result, { spaces: 2 });
+    }
+
+    convertUpbringingLink(character: Character) {
+
+        let implementedUpbringings = [Upbringing.MilitaryOrExploration, Upbringing.BusinessOrTrade,
+            Upbringing.AgricultureOrRural, Upbringing.ScienceAndTechnology, Upbringing.ArtisticAndCreative,
+            Upbringing.DiplomacyAndPolitics];
+        if (character.upbringingStep && implementedUpbringings.indexOf(character.upbringingStep.upbringing.id) >= 0) {
+            return {
+                "name": "upbringinglink",
+                "type": "element",
+                "attributes": {
+                    "type": "windowreference"
+                },
+                "elements": [{
+                    "type": "element",
+                    "name": "class",
+                    "elements": [{ "type": "text", "text": "upbringing"}]
+                },{
+                    "type": "element",
+                    "name": "recordname",
+                    "elements": [{
+                        "type": "text",
+                        "text": "reference.upbringing." + this.createNumberedId(character.upbringingStep.upbringing.id + 1)
+                            + "@Star Trek Adventures Core Rulebook"}]
+                }]
+            }
+        } else {
+            return {
+                "name": "upbringinglink",
+                "type": "element",
+                "attributes": {
+                    "type": "windowreference"
+                },
+                "elements": [{
+                    "type": "element",
+                    "name": "class"
+                },{
+                    "type": "element",
+                    "name": "recordname"
+                }]
+            }
+        }
     }
 
     convertWeaponsAndEquipment(character: Character) {
