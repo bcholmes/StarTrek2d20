@@ -118,7 +118,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
             const list = this.props.era === Era.NextGeneration ? [ Species.Klingon ] : [ Species.Klingon, Species.KlingonQuchHa ];
             return list.map(s => SpeciesHelper.getSpeciesByType(s));
         } else {
-            const list = [ Species.Andorian, Species.Bajoran, Species.Betazoid, Species.Denobulan, Species.Human, Species.Tellarite, Species.Trill, Species.Vulcan ];
+            const list = [ Species.Andorian, Species.Bajoran, Species.Betazoid, Species.Bolian, Species.Denobulan, Species.Human, Species.Tellarite, Species.Trill, Species.Vulcan ];
             let result = list.map(s => SpeciesHelper.getSpeciesByType(s)).filter(s => s.eras.indexOf(this.props.era) >= 0);
             return result;
         }

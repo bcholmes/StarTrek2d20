@@ -240,6 +240,18 @@ const speciesSpecificValues: { [species : number ]: string[]} = {
         "Klingons do not procrastinate",
         "What is that furry thing, and why does it make that noise? Get it away from me.",
         "I don't trust people who smile too much."
+    ],
+    [ Species.Bolian ] : [
+        "Cleanliness is next to godliness",
+        "Unity through diversity",
+        "Honesty is the best policy",
+        "Family comes first",
+        "A sound mind in a sound body",
+        "Respect for authority",
+        "Service to others",
+        "Hard work pays off",
+        "Peace through negotiation",
+        "A well-rounded education is a boon"
     ]
 }
 
@@ -462,12 +474,10 @@ export class NpcGenerator {
             ? RanksHelper.instance().getAdmiralRanks(character)
             : RanksHelper.instance().getSortedRanks(character);
 
-        ranks = ranks.filter(r => r.id !== Rank.Yeoman);
-        if (character.enlisted) {
-            ranks = ranks.filter(r => r.id !== Rank.Specialist && r.id !== Rank.ChiefSpecialist
-                && r.id !== Rank.MasterChiefSpecialist
-                && r.id !== Rank.SeniorChiefSpecialist);
-        }
+        ranks = ranks.filter(r => r.id !== Rank.Yeoman && r.id !== Rank.Specialist
+            && r.id !== Rank.ChiefSpecialist
+            && r.id !== Rank.MasterChiefSpecialist
+            && r.id !== Rank.SeniorChiefSpecialist);
 
         let rankList = [];
         for (const rank of ranks) {
