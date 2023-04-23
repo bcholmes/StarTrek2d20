@@ -23,7 +23,7 @@ SOFTWARE.
 */
 
 // This class includes code originating with https://github.com/niksudan/alien-namegen
-// The alien-namegen codebase is distributed until the MIT license, and is
+// The alien-namegen codebase is distributed under the MIT license, and is
 // Copyright (c) 2023 Nik Sudan
 class AlienNameGenerator {
 
