@@ -12,6 +12,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230422</b>
+                <ul>
+                    <li>Very minor tweaks and improvements.</li>
+                </ul>
                 <b>v1.230410</b>
                 <ul>
                     <li>VTT Export now supports characters in Fantasy Grounds format. At the moment, all characters are treated as

@@ -2,6 +2,7 @@ import { Color } from "../../common/colour";
 import { D20, D6 } from "../../common/die";
 import { setSector, setStar } from "../../state/starActions";
 import store from "../../state/store";
+import AlienNameGenerator from "../util/alienNameGenerator";
 import { LuminosityTable } from "./luminosityTable";
 import { addNoiseToValue } from "./noise";
 import { Orbit, Orbits } from "./orbit";
@@ -1031,6 +1032,9 @@ class SystemGeneration {
 
                 world.features.push(this.planetaryDetails(D20.roll()));
             }
+            if (isPrimaryWorld) {
+                world.name = AlienNameGenerator.generateName();
+            }
 
             return world;
         } else {
@@ -1046,7 +1050,11 @@ class SystemGeneration {
 
             let worldType = this.rollWorldType(table);
 
-            return this.createBasicWorldAttributes(worldType, orbit, romanNumeral, starSystem);
+            let world = this.createBasicWorldAttributes(worldType, orbit, romanNumeral, starSystem);
+            if (isPrimaryWorld) {
+                world.name = AlienNameGenerator.generateName();
+            }
+            return world;
         }
     }
 

@@ -291,6 +291,7 @@ export class WorldAttribute {
 
 export class World {
 
+    name?: string;
     orbitNumber: number;
     worldClass: WorldClassModel;
     orbit: number;
@@ -353,6 +354,9 @@ export class World {
         let result = [];
         if (this.orbitLabel != null) {
             result.push(new WorldAttribute(i18next.t("World.attribute.designation"), this.orbitLabel));
+        }
+        if (this.name != null) {
+            result.push(new WorldAttribute("Name", this.name));
         }
 
         if (this.worldClass.id === WorldClass.AsteroidBelt) {
