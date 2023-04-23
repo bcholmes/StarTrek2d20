@@ -251,7 +251,8 @@ const speciesSpecificValues: { [species : number ]: string[]} = {
         "Service to others",
         "Hard work pays off",
         "Peace through negotiation",
-        "A well-rounded education is a boon"
+        "A well-rounded education is a boon",
+        "It's not just warp cores, any engine makes for a cheerful baby"
     ]
 }
 
