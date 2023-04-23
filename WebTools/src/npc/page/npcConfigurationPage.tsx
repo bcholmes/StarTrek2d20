@@ -15,6 +15,8 @@ import { NpcCharacterType, NpcCharacterTypeModel, NpcCharacterTypes } from '../m
 import { NpcGenerator } from '../model/npcGenerator';
 import { NpcType, NpcTypes } from '../model/npcType';
 import { Specialization, SpecializationModel, Specializations } from '../model/specializations';
+import { hasAnySource } from '../../state/contextFunctions';
+import { Source } from '../../helpers/sources';
 
 interface INpcConfigurationPageProperties extends WithTranslation {
     era: Era;
@@ -85,8 +87,8 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                         <div className="my-4">
                             <DropDownSelect
                                 items={ NpcCharacterTypes.instance.types.map(t => new DropDownElement(t.type, t.localizedName )) }
-                                defaultValue={ this.state.selectedType.type }
-                                onChange={(type) => this.selectType(NpcCharacterTypes.instance.types[type as number] ) }/>
+                                defaultValue={ this.state.selectedType?.type ?? "" }
+                                onChange={(type) => this.selectType(NpcCharacterTypes.instance.getType(type as NpcCharacterType) ) }/>
                         </div>
 
                         <Header level={2} className="mt-5">Specialization</Header>
@@ -94,7 +96,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                         <div className="mt-4">
                             <DropDownSelect
                                 items={ this.getSpecializations() }
-                                defaultValue={ this.state.selectedSpecialization?.id }
+                                defaultValue={ this.state.selectedSpecialization?.id ?? "" }
                                 onChange={(specialization) => this.selectSpecialization(specialization) }/>
                         </div>
                     </div>
@@ -109,14 +111,18 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
 
     getSpecializations() {
         let result = [ new DropDownElement(null, "Any Specialization")];
-        Specializations.instance.getSpecializations(this.state.selectedType.type).forEach(s => result.push(new DropDownElement(s.id, s.name)));
+        Specializations.instance.getSpecializations(this.state.selectedType.type)
+            .filter(s => (s.type !== NpcCharacterType.Ferengi || this.props.era === Era.NextGeneration) && hasAnySource([Source.DS9, Source.AlphaQuadrant]))
+            .forEach(s => result.push(new DropDownElement(s.id, s.name)));
         return result;
     }
 
     getSpeciesList() {
-        if (this.state.selectedType.type === NpcCharacterType.KlingonDefenseForces) {
+        if (this.state.selectedType?.type === NpcCharacterType.KlingonDefenseForces) {
             const list = this.props.era === Era.NextGeneration ? [ Species.Klingon ] : [ Species.Klingon, Species.KlingonQuchHa ];
             return list.map(s => SpeciesHelper.getSpeciesByType(s));
+        } else if (this.state.selectedType?.type === NpcCharacterType.Ferengi) {
+            return [ SpeciesHelper.getSpeciesByType(Species.Ferengi)];
         } else {
             const list = [ Species.Andorian, Species.Bajoran, Species.Betazoid, Species.Bolian, Species.Denobulan, Species.Human, Species.Tellarite, Species.Trill, Species.Vulcan ];
             let result = list.map(s => SpeciesHelper.getSpeciesByType(s)).filter(s => s.eras.indexOf(this.props.era) >= 0);
@@ -151,7 +157,8 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
     }
 
     randomSpecies() {
-        if (this.state.selectedType.type === NpcCharacterType.KlingonDefenseForces) {
+        if (this.state.selectedType.type === NpcCharacterType.KlingonDefenseForces ||
+            this.state.selectedType.type === NpcCharacterType.Ferengi) {
             let list = this.getSpeciesList();
             return list[Math.floor(Math.random() * list.length)].id;
         } else {

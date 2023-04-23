@@ -440,7 +440,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
     }
 
     serializeBasicAssignment(character: Character) {
-        return character.assignment;
+        return character.assignmentWithoutShip;
     }
 
 

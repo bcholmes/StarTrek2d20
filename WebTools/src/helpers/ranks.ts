@@ -83,6 +83,9 @@ export enum Rank {
     CadetThirdClass,
     CadetSecondClass,
     CadetFirstClass,
+
+    // not specified
+    DaiMon,
 }
 
 
@@ -211,15 +214,15 @@ class NotEraPrerequisite implements IConstructPrerequisite<Character> {
     }
 }
 
-class RankModel {
-    id: Rank;
+export class RankModel {
+    id: Rank|null;
     name: string;
     level: string;
     prerequisites: IConstructPrerequisite<Character>[];
     tiers: number;
     abbreviation?: string;
 
-    constructor(id: Rank, name: string, level: string, prerequisites: IConstructPrerequisite<Character>[], abbreviation?: string, tiers: number = 1) {
+    constructor(id: Rank|null, name: string, level: string, prerequisites: IConstructPrerequisite<Character>[], abbreviation?: string, tiers: number = 1) {
         this.id = id;
         this.level = level;
         this.abbreviation = abbreviation;
@@ -912,6 +915,15 @@ export class RanksHelper {
                 new NoCareerEventsPrerequisite(),
             ],
             "Cdt."),
+
+        new RankModel(
+            Rank.DaiMon,
+            "DaiMon", "O5",
+            [
+                new OfficerPrerequisite(),
+                new NotPrerequisite(new CharacterTypePrerequisite(CharacterType.Starfleet))
+            ],
+            "DaiMon"),
         ];
 
     getRanks(character: Character, ignorePrerequisites?: boolean) {

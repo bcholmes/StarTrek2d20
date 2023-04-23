@@ -18,7 +18,12 @@ export enum Specialization {
     Engineer,
     IntelligenceOfficer,
 
-    KlingonWarrior
+    KlingonWarrior,
+    KlingonWeaponsOfficer,
+    KlingonMedic,
+
+    FerengiMerchant,
+    FerengiDaiMon,
 }
 
 export class SpecializationModel {
@@ -381,11 +386,98 @@ export class Specializations {
                     "Qapla' (Success)",
                     "Hab SoSlI' Quch! (Your mother has a smooth forehead)",
                     "nuqDaq 'oH tach'e' (Where's the bar?)",
-                    "jagh yIbuStaH (Concentrate on the Enemy)",
                     "wo’ batlhvaD (For the honour of the Empire!)",
-                    "Shooting space garbage is no test of a warrior's mettle. I need a target that fights back.",
+                    "The Empire used to choke the quadrant with fear, power, but now?! We've lost our way.",
                     "Peace was never an option!"
                 ], 0.6),
+            new SpecializationModel(Specialization.KlingonWeaponsOfficer, NpcCharacterType.KlingonDefenseForces, "Klingon Weapons Officer",
+                [Attribute.Control, Attribute.Daring, Attribute.Presence],
+                Skill.Security,
+                ["Starship Weapons", "Tactical Analysis", "Starship Shields", "Starship Combat Tactics"],
+                ["Torpedo Spread Patterns", "Defensive Tactics", "Emergency Weapon Repair", "Security Scans", "Situational Analysis"],
+                [
+                    "Qapla' (Success)",
+                    "Peace was never an option!",
+                    "Press on! We have the tactical advantage!",
+                    "Shooting space garbage is no test of a warrior's mettle. I need a target that fights back.",
+                    "A clear suicide mission with no advantage offers no glory",
+                    "It was a lucky shot!",
+                    "Mines are not an honourable weapon",
+                    "Bravery and a tactical plan works better than bravery alone",
+                    "jagh yIbuStaH (Concentrate on the Enemy)"
+                ], 0.5),
+            new SpecializationModel(Specialization.KlingonMedic, NpcCharacterType.KlingonDefenseForces, "Klingon Medic",
+                [Attribute.Control, Attribute.Insight, Attribute.Reason],
+                Skill.Medicine,
+                [
+                    "Surgery", "Immunology", "Pharmacology", "Orthopedics", "Reconstructive Surgery", "Medical Equipment Specialist",
+                    "First Aid", "Diagnosis", "Medical Safety Protocols", "Medical Tricorders and Sensors",
+                    "Infectious Diseases", "Xenobiology", "Esoteric Medicine", "Neurology"
+                ],
+                [
+                    "Triage and Prioritization", "Treatment Plans", "Infectious Disease Control", "Parasites",
+                    "Personal Safety Equipment", "Physiology", "Medical Risk Management", "The Nervous System",
+                    "Cardiothoracics", "Pediatrics", "Trauma Medicine", "Prosthetics", "Quarantine Procedures",
+                    "Medical Experimentation", "Medical Research", "Outbreak Protocols", "History of Medicine",
+                    "Pathology", "Autopsy", "Cryogenics", "Medical Biofilters", "Genetics", "Cloning",
+                    "Genetic Augmentation", "Degenerative Diseases", "Veterinarian Medicine"
+                ],
+                [
+                    "Good news! It will leave a glorious scar!",
+                    "Embrace the pain! It means you're not dead yet!",
+                    "Stop whimpering like a wounded animal!",
+                    "Healthy body, healthy heart, honourable living",
+                    "There's no glory in dying in a hospital bed",
+                    "When conventional treatments aren't working, it's time to try the unconventional.",
+                    "If I need to drug you to get you to sit still, I will",
+                    "I cannot help you further. But Kahless awaits you Sto-vo-kor, my friend.",
+                    "Take your medicine as ordered or wake up on the barge to Gre'thor.",
+                    "I've seen too many young warriors die before their time"
+                ], 0.95),
+            new SpecializationModel(Specialization.FerengiMerchant, NpcCharacterType.Ferengi, "Ferengi Merchant",
+                [Attribute.Control, Attribute.Insight, Attribute.Presence],
+                Skill.Command,
+                [
+                    "Business", "Appraisal", "Negotiation", "Bargaining", "Finance", "Opportunistic Insight"
+                ],
+                [
+                    "Warehousing", "Schmoozing", "Listening", "Information Gathering", "Gambling Businesses"
+                ],
+                [
+                    "The lobes don't lie.",
+                    "Trust the lobes",
+                    "I can smell profit",
+                    "Believe in the Great Material Continuum",
+                    "You drive a hard bargain... but I'll raise my price by two percent.",
+                    "The Rules of Acquisition aren't a casual playbook.",
+                    "My greed has to be a shining light to everyone, a testament to the rewards of avarice.",
+                    "It's never too early to suck up to the boss!",
+                    "That's the problem with your species: you don't know how to negotiate!",
+                    "In a year, I'll have my own moon"
+                ], 0.0),
+            new SpecializationModel(Specialization.FerengiDaiMon, NpcCharacterType.Ferengi, "Ferengi DaiMon",
+                [Attribute.Control, Attribute.Daring, Attribute.Presence],
+                Skill.Command,
+                [
+                    "Trade Agreements", "Negotiation", "Bargaining", "Opportunistic Insight", "Intergalactic Trade Law",
+                    "Starship Tactics", "Aggressive Stances"
+                ],
+                [
+                    "Starship Combat Tactics", "Defensive Strategies", "Astrogation", "Capitalistic Diplomacy",
+                    "Prospecting"
+                ],
+                [
+                    "We are prepared to leave this world to you, for the standard finder's fee.",
+                    "Ferengi interests must be protected",
+                    "We are willing to destroy your ship at a net loss, because the example of our strength is profitable.",
+                    "To seek out new markets, and new opportunities. To boldly go where no merchant has gone before!",
+                    "The Ferengi Trade By-Laws do not recognize your jurisdiction, here.",
+                    "There is no profit for you to interfere with our mission",
+                    "Ferengi values don't just sound good: they actually work. That's the secret of our success",
+                    "Taxes go against the very foundation of free enterprise! That's why it's called 'free'!",
+                    "I won't preside over the demise of Ferengi civilization! The line has to be drawn here! This far, and no further!",
+                    "There's nothing beyond greed! Greed is the purest and most noble of emotions!"
+                ], 1.0),
 
             ];
     }

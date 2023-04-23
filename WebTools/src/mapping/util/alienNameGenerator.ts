@@ -94,7 +94,7 @@ class AlienNameGenerator {
         return `${name.charAt(0).toUpperCase()}${name.slice(1)}`;
     };
 
-    static generateName() {
+    static generatePlanetName() {
         let name = '';
         const maxNames = Math.random() > 0.2 ? 2 : 1;
         for (let i = 0; i < maxNames; i++) {

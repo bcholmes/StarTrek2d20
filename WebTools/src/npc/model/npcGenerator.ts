@@ -1,4 +1,4 @@
-import { Character, SpeciesStep } from "../../common/character";
+import { AlliedMilitaryDetails, Character, SpeciesStep } from "../../common/character";
 import { CharacterType } from "../../common/characterType";
 import { Stereotype } from "../../common/construct";
 import { D20 } from "../../common/die";
@@ -15,6 +15,8 @@ import { Specialization, SpecializationModel, Specializations } from "./speciali
 import { NpcCharacterType } from "./npcCharacterType";
 import { hasAnySource } from "../../state/contextFunctions";
 import { Source } from "../../helpers/sources";
+import { AlliedMilitaryType } from "../../helpers/alliedMilitary";
+import AllyHelper from "../../helpers/alliedMilitary";
 
 class RankWithTier {
     readonly name: string;
@@ -28,45 +30,77 @@ class RankWithTier {
     }
 }
 
-const recreationSkills = [ "Holodeck Simulations", "Dixie Hill Adventures",
-    "Model Ship Building", "Bolian Neo-Metal Bands", "Early Human Spaceflight",
-    "Oil Painting", "Camping", "Survival", "Gourmet Cooking", "Bajoran Spirituality",
-    "Klingon Chancellors", "Ice Fishing", "Musical Instrument", "Barbeque Grilling",
-    "History of the Human Civil Rights Movement", "Classical Jazz", "The Sacred Texts of Betazed",
-    "Games of Chance", "Spy Holonovels", "White Water Rafting", "The Human Beatnik Era",
-    "Borg Threat Assessment", "The History of Romulan Coups", "The Bajoran Age of Sail",
-    "Water Vessels", "Historical Re-enactment", "Whiskey Tasting", "Wine Making", "Darts",
-    "Meditation", "Kal-toh", "Taoism", "Target Practice", "Airboating", "Dog Training",
-    "Horseback Riding", "Bolian Comedy", "Sushi Preparation", "Theology and Alien Superbeings",
-    "Mining", "Animal Husbandry", "Flirting", "Antiques", "Hiking", "The Teachings of Surak",
-    "Skydiving", "Pastry Chef", "Anbo-jyutsu", "Flotter Stories", "Cocktails", "Merchant Ships",
-    "Appraisal", "The Ferengi Rules of Acquisition", "Interpretive Dance",
-    "The Plays of Anton Chekhov", "Pre-Raphaelite Painters", "Andorian Electronic Dance Music",
-    "Gourmet Raktajino Barista", "Karaoke", "Tongo", "Galeo-Manado Wrestling",
-    "Andorian Clans of the Pre-Industrial Period", "Risan Vacation Activities",
-    "Trashy Romance Novels", "Parrises squares", "Neo-Sevrin Philosophy" ];
+const recreationSkills: { [type: number ]: string[] } = {
 
-const klingonRecreationSkills = ["The teachings of Kahless", "The accomplishments of Kahless",
-    "Klingon Chancellors and Emperors", "The various locales of Q'onos", "Mok'bara",
-    "B'aht Qul", "Bat'leth Tournament Rules", "Klingon Opera", "The Rituals and Stories of the Klingon Afterlife",
-    "The Hur'Q", "Targ raising and training", "The legends of Sarpek the Fearless", "Gourmet gagh", "The demands of honour",
-    "Bloodwine making", "Klingon Spirituality", "Culinary arts", "Famous honourable deaths",
-    "Organians and their meddlesome ways"];
+    [ NpcCharacterType.Starfleet] : [
+        "Holodeck Simulations", "Dixie Hill Adventures",
+        "Model Ship Building", "Bolian Neo-Metal Bands", "Early Human Spaceflight",
+        "Oil Painting", "Camping", "Survival", "Gourmet Cooking", "Bajoran Spirituality",
+        "Klingon Chancellors", "Ice Fishing", "Musical Instrument", "Barbeque Grilling",
+        "History of the Human Civil Rights Movement", "Classical Jazz", "The Sacred Texts of Betazed",
+        "Games of Chance", "Spy Holonovels", "White Water Rafting", "The Human Beatnik Era",
+        "Borg Threat Assessment", "The History of Romulan Coups", "The Bajoran Age of Sail",
+        "Water Vessels", "Historical Re-enactment", "Whiskey Tasting", "Wine Making", "Darts",
+        "Meditation", "Kal-toh", "Taoism", "Target Practice", "Airboating", "Dog Training",
+        "Horseback Riding", "Bolian Comedy", "Sushi Preparation", "Theology and Alien Superbeings",
+        "Mining", "Animal Husbandry", "Flirting", "Antiques", "Hiking", "The Teachings of Surak",
+        "Skydiving", "Pastry Chef", "Anbo-jyutsu", "Flotter Stories", "Cocktails", "Merchant Ships",
+        "Appraisal", "The Ferengi Rules of Acquisition", "Interpretive Dance",
+        "The Plays of Anton Chekhov", "Pre-Raphaelite Painters", "Andorian Electronic Dance Music",
+        "Gourmet Raktajino Barista", "Karaoke", "Tongo", "Galeo-Manado Wrestling",
+        "Andorian Clans of the Pre-Industrial Period", "Risan Vacation Activities",
+        "Trashy Romance Novels", "Parrises squares", "Neo-Sevrin Philosophy"
+    ],
+    [NpcCharacterType.KlingonDefenseForces] : ["The teachings of Kahless", "The accomplishments of Kahless",
+        "Klingon Chancellors and Emperors", "The various locales of Q'onos", "Mok'bara",
+        "B'aht Qul", "Bat'leth Tournament Rules", "Klingon Opera", "The Rituals and Stories of the Klingon Afterlife",
+        "The Hur'Q", "Targ raising and training", "The legends of Sarpek the Fearless", "Gourmet gagh", "The demands of honour",
+        "Bloodwine making", "Klingon Spirituality", "Culinary arts", "Famous honourable deaths",
+        "Organians and their meddlesome ways"
+    ],
+    [NpcCharacterType.Ferengi] : [
+        "Tongo",
+        "Global Tongo Championship betting",
+        "Dabo",
+        "Oo-mox",
+        "Holosuite adventures",
+        "Sexy holosuite adventures",
+        "Lokar bean preparation",
+        "Gourmet slug liver",
+        "Oyster toad",
+        "Puree of beetle",
+        "Tube grub farming",
+        "Slug-o-cola",
+        "Stardrifter afficionado"
+    ]
+}
 
-const starfleetSkills = ["Starfleet Protocols", "Worlds of the Federation", "Starship Emergency Protocols",
-    "Tricoders", "History of the Federation", "The Missions of Adm. Archer and the NX-01",
-    "Early Starfleet History", "Starfleet General Orders", "The Missions of Commodore Decker",
-    "Starship Identification", "Androids and Synthetic Life", "Holodeck Programming", "Federation Wars",
-    "Battle Tactics of Captain Garth", "Federation Species", "Tactical Use of Logic Puzzles for Defeating AIs",
-    "First Contact Protocols", "The Prime Directive", "Abandon Ship Procedures", "Space Suits",
-    "Zero-G Operations"];
 
-const klingonKdfSkills = ["KDF Protocols", "Worlds of the Klingon Empire", "Starship Emergency Protocols",
-    "Tricorders", "History of the Empire", "The Accomplishments of Koloth", "Early Klingon History",
-    "The Missions of Captain Kor", "Protocols for Challenging a Superior", "Starship Identification",
-    "Battle Tactics of General Korrd", "Conquered species", "Weaknesses of the Federation", "Enemies of the Empire",
-    "Abandon Ship Procedures", "Space suits", "Zero-G Operations", "The strategies of famous Starfleet captains"]
+const careerSkills: { [type: number ]: string[] } = {
 
+    [ NpcCharacterType.Starfleet] : ["Starfleet Protocols", "Worlds of the Federation", "Starship Emergency Protocols",
+        "Tricoders", "History of the Federation", "The Missions of Adm. Archer and the NX-01",
+        "Early Starfleet History", "Starfleet General Orders", "The Missions of Commodore Decker",
+        "Starship Identification", "Androids and Synthetic Life", "Holodeck Programming", "Federation Wars",
+        "Battle Tactics of Captain Garth", "Federation Species", "Tactical Use of Logic Puzzles for Defeating AIs",
+        "First Contact Protocols", "The Prime Directive", "Abandon Ship Procedures", "Space Suits",
+        "Zero-G Operations"
+    ],
+    [NpcCharacterType.KlingonDefenseForces] : [
+        "KDF Protocols", "Worlds of the Klingon Empire", "Starship Emergency Protocols",
+        "Tricorders", "History of the Empire", "The Accomplishments of Koloth", "Early Klingon History",
+        "The Missions of Captain Kor", "Protocols for Challenging a Superior", "Starship Identification",
+        "Battle Tactics of General Korrd", "Conquered species", "Weaknesses of the Federation", "Enemies of the Empire",
+        "Abandon Ship Procedures", "Space suits", "Zero-G Operations", "The strategies of famous Starfleet captains"
+    ],
+    [NpcCharacterType.Ferengi] : [
+        "Valuation",
+        "Business Opportunities",
+        "Merchant Trade Routes",
+        "The Rules of Acquisition",
+        "The Protocols of the Ferengi Trade Authority"
+    ]
+}
 
 const typeSpecificValues: { [type : number ]: string[]} = {
     [ NpcCharacterType.Starfleet ] : [
@@ -96,6 +130,8 @@ const typeSpecificValues: { [type : number ]: string[]} = {
         "It is foolish to give my word to a foe with no honour.",
         "I do not seek to lead, but will take that role if honour demands it.",
         "I see you have forgotten the first time we met. I assure you that I have not forgotten."
+    ],
+    [ NpcCharacterType.Ferengi ] : [
     ]
 }
 
@@ -131,6 +167,8 @@ const typeSpecificGeneralValues: { [type : number ]: string[]} = {
         "Always it is the brave ones who die. The soldiers.",
         "Today we conquer! Oh, if someday we are defeated... well... war has its fortunes. Good and bad.",
         "It would have been glorious."
+    ],
+    [ NpcCharacterType.Ferengi ] : [
     ]
 }
 
@@ -253,6 +291,29 @@ const speciesSpecificValues: { [species : number ]: string[]} = {
         "Peace through negotiation",
         "A well-rounded education is a boon",
         "It's not just warp cores, any engine makes for a cheerful baby"
+    ],
+    [ Species.Ferengi ] : [
+        "Once you have their money, you never give it back.",
+        "Never spend more for an acquisition than you have to.",
+        "Never allow family to stand in the way of opportunity.",
+        "Keep your ears open.",
+        "Opportunity plus instinct equals profit.",
+        "Greed is eternal.",
+        "A deal is a deal.",
+        "A contract is a contract is a contract... but only between Ferengi.",
+        "A Ferengi without profit is no Ferengi at all.",
+        "Never place friendship above profit.",
+        "A wise person can hear profit in the wind.",
+        "Nothing is more important than your health... except for your money.",
+        "Never make fun of a Ferengi's mother.",
+        "It never hurts to suck up to the boss.",
+        "War is good for business.",
+        "Peace is good for business.",
+        "Expand or die.",
+        "Don't trust a man wearing a better suit than your own.",
+        "The bigger the smile, the sharper the knife.",
+        "Good customers are as rare as latinum. Treasure them.",
+        "Free advice is seldom cheap."
     ]
 }
 
@@ -262,11 +323,11 @@ export class NpcGenerator {
     static createNpc(npcType: NpcType, characterType: NpcCharacterType, species: SpeciesModel, specialization: SpecializationModel) {
         let character = new Character();
         character.stereotype = Stereotype.Npc;
-        NpcGenerator.assignCharacterType(character, characterType);
         if (specialization == null) {
             let specializations = Specializations.instance.getSpecializations(characterType);
             specialization = specializations[Math.floor(Math.random() * specializations.length)];
         }
+        NpcGenerator.assignCharacterType(character, characterType, specialization);
 
         let {name, pronouns} = NameGenerator.instance.createName(species.id === Species.KlingonQuchHa ? SpeciesHelper.getSpeciesByType(Species.Klingon) : species);
         character.name = name;
@@ -291,11 +352,18 @@ export class NpcGenerator {
         let careers = [Career.Young, Career.Young, Career.Young, Career.Young, Career.Young, Career.Young, Career.Young,
             Career.Experienced, Career.Experienced, Career.Experienced, Career.Experienced, Career.Experienced, Career.Experienced,
             Career.Experienced, Career.Veteran, Career.Veteran];
+        if (specialization.id === Specialization.Admiral) {
+            careers = [ Career.Veteran ];
+        } else if (specialization.id === Specialization.FerengiDaiMon) {
+            careers = [ Career.Experienced, Career.Experienced, Career.Experienced, Career.Veteran ];
+        }
 
-        character.career = specialization.id === Specialization.Admiral ? Career.Veteran : careers[Math.floor(Math.random() * careers.length)];
+        character.career = careers[Math.floor(Math.random() * careers.length)];
         character.enlisted = (Math.random() < specialization.officerProbability) ? false : true;
 
-        NpcGenerator.assignRank(character, specialization);
+        if (!character.isCivilian()) {
+            NpcGenerator.assignRank(character, specialization);
+        }
         NpcGenerator.assignFocuses(npcType, character, specialization);
         NpcGenerator.assignValues(npcType, character, specialization);
         NpcGenerator.assignTalents(npcType, character, species, specialization);
@@ -303,13 +371,21 @@ export class NpcGenerator {
         return character;
     }
 
-    static assignCharacterType(character: Character, characterType: NpcCharacterType) {
+    private static assignCharacterType(character: Character, characterType: NpcCharacterType, specialization: SpecializationModel) {
         switch (characterType) {
             case NpcCharacterType.Starfleet:
                 character.type = CharacterType.Starfleet;
                 break;
             case NpcCharacterType.KlingonDefenseForces:
                 character.type = CharacterType.KlingonWarrior;
+                break;
+            case NpcCharacterType.Ferengi:
+                if (specialization.id === Specialization.FerengiMerchant) {
+                    character.type = CharacterType.Civilian;
+                } else {
+                    character.type = CharacterType.AlliedMilitary;
+                    character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(AlliedMilitaryType.Other), "Ferengi");
+                }
                 break;
             default:
         }
@@ -449,10 +525,9 @@ export class NpcGenerator {
         let secondaryChances = [17, 15, 11, 9, 6, 3];
 
         for (let i = 0; i < numberOfFocuses; i++) {
-            let focuses = (D20.roll() > 10) ? starfleetSkills : recreationSkills;
-            if (specialization.type === NpcCharacterType.KlingonDefenseForces) {
-                focuses = (D20.roll() > 10) ? klingonKdfSkills : klingonRecreationSkills;
-            }
+            let focuses = (D20.roll() > 10)
+                ? careerSkills[specialization.type]
+                : recreationSkills[specialization.type];
             if (D20.roll() <= primaryChances[i]) {
                 focuses = specialization.primaryFocuses;
             } else if (D20.roll() <= secondaryChances[i]) {
@@ -471,9 +546,13 @@ export class NpcGenerator {
     }
 
     static assignRank(character: Character, specialization: SpecializationModel) {
-        let ranks = specialization.id === Specialization.Admiral
-            ? RanksHelper.instance().getAdmiralRanks(character)
-            : RanksHelper.instance().getSortedRanks(character);
+        let ranks = RanksHelper.instance().getSortedRanks(character);
+        if (specialization.id === Specialization.Admiral) {
+            ranks = RanksHelper.instance().getAdmiralRanks(character);
+        } else if (specialization.id === Specialization.FerengiDaiMon) {
+            ranks = [ RanksHelper.instance().getRank(Rank.DaiMon) ];
+        }
+
 
         ranks = ranks.filter(r => r.id !== Rank.Yeoman && r.id !== Rank.Specialist
             && r.id !== Rank.ChiefSpecialist

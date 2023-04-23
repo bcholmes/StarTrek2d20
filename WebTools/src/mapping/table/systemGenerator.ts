@@ -1033,7 +1033,7 @@ class SystemGeneration {
                 world.features.push(this.planetaryDetails(D20.roll()));
             }
             if (isPrimaryWorld) {
-                world.name = AlienNameGenerator.generateName();
+                world.name = AlienNameGenerator.generatePlanetName();
             }
 
             return world;
@@ -1052,7 +1052,7 @@ class SystemGeneration {
 
             let world = this.createBasicWorldAttributes(worldType, orbit, romanNumeral, starSystem);
             if (isPrimaryWorld) {
-                world.name = AlienNameGenerator.generateName();
+                world.name = AlienNameGenerator.generatePlanetName();
             }
             return world;
         }

@@ -63,21 +63,7 @@ export class FantasyGroupsVttExporter {
                 {
                     "name": "focuslist",
                     "type": "element",
-                    "elements": [{
-                        "type": "element",
-                        "name": "id-00001",
-                        "elements": [{
-                            "name": "name",
-                            "type": "element",
-                            "attributes": {
-                                "type": "string"
-                            },
-                            "elements": [{
-                                "type":"text",
-                                "text": character.focuses?.join("\\n") ?? ""
-                            }]
-                        }]
-                    }]
+                    "elements": this.convertFocuses(character)
                 },
                 {
                     "name": "hp",
@@ -348,6 +334,26 @@ export class FantasyGroupsVttExporter {
                 }]
             }
         }
+    }
+
+    convertFocuses(character: Character) {
+        return character.focuses?.map((f, i) => {
+            return {
+                "type": "element",
+                "name": this.createNumberedId(i+1),
+                "elements": [{
+                    "name": "name",
+                    "type": "element",
+                    "attributes": {
+                        "type": "string"
+                    },
+                    "elements": [{
+                        "type":"text",
+                        "text": f
+                    }]
+                }]
+            }
+        }) ?? [];
     }
 
     convertWeaponsAndEquipment(character: Character) {
