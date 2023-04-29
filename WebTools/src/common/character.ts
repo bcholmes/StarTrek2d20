@@ -14,8 +14,15 @@ import AgeHelper, { Age } from '../helpers/age';
 import { Weapon, PersonalWeapons } from '../helpers/weapons';
 import { Construct, Stereotype } from './construct';
 import { SpeciesHelper } from '../helpers/species';
+import { Specialization } from '../npc/model/specializations';
 
 export abstract class CharacterTypeDetails {
+}
+
+export enum Division {
+    Command,
+    Science,
+    Operations
 }
 
 export class AlliedMilitaryDetails extends CharacterTypeDetails {
@@ -225,6 +232,24 @@ export class Character extends Construct {
             stress += 3;
         }
         return stress;
+    }
+
+    get division() {
+        if (this.type !== CharacterType.Starfleet) {
+            return null;
+        } else if (this.track != null) {
+            if (this.track === Track.Command) {
+                return Division.Command;
+            } else if (this.track === Track.Operations) {
+                return Division.Operations
+            } else if (this.track === Track.Sciences) {
+                return Division.Science;
+            } else {
+                return null;
+            }
+        } else {
+            return null; // figure out from specialization?
+        }
     }
 
     get equipment() {

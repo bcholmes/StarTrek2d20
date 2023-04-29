@@ -10,7 +10,7 @@ const tag = "Kenyan";
 const convertDataToNames = async (data) => {
     let directory = __dirname.substring(0, __dirname.lastIndexOf('/'));
 
-    let nameBuffer = fs.readFileSync(directory + "/WebTools/src/npc/names.json");
+    let nameBuffer = fs.readFileSync(directory + "/WebTools/src/npc/names-human.json");
     let names = JSON.parse(nameBuffer.toString());
 
     for (let i = 0; i < data.length; i++) {
@@ -32,14 +32,14 @@ const convertDataToNames = async (data) => {
                 gender = "Unisex";
             }
 
-            let existingNames = names[0].names.filter(n => n.name === name && n.gender === gender && n.type === type);
+            let existingNames = names.filter(n => n.name === name && n.gender === gender && n.type === type);
             if (existingNames.length > 0) {
                 let existingName = existingNames[0];
                 if (existingName.tags.indexOf(tag) < 0) {
                     existingName.tags.push(tag);
                 }
             } else {
-                names[0].names.push({
+                names.push({
                     name: name,
                     gender: gender,
                     type: type,
@@ -48,7 +48,7 @@ const convertDataToNames = async (data) => {
             }
         }
 
-        names[0].names.sort((n1, n2) => {
+        names.sort((n1, n2) => {
             if (n1.name === n2.name) {
                 return n1.type.localeCompare(n2.type);
             } else {
@@ -56,7 +56,7 @@ const convertDataToNames = async (data) => {
             }
         });
     }
-    fs.writeFileSync(directory + "/WebTools/src/npc/names.json", JSON.stringify(names, null, "    "));
+    fs.writeFileSync(directory + "/WebTools/src/npc/names-human.json", JSON.stringify(names, null, "    "));
 }
 
 const parser = parse({delimiter: ','}, function(err, data){
