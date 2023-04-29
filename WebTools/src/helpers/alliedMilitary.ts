@@ -12,6 +12,7 @@ export enum AlliedMilitaryType {
     BajoranMilitia,
     CardassianUnion,
     Dominion,
+    FerengiMilitary,
     Other
 }
 
@@ -42,6 +43,7 @@ class _AllyHelper {
         new AlliedMilitary("Cardassian Union", AlliedMilitaryType.CardassianUnion, [Species.Cardassian],
                 Era.NextGeneration),
         new AlliedMilitary("Dominion", AlliedMilitaryType.Dominion, [Species.JemHadar], Era.NextGeneration),
+        new AlliedMilitary("Ferengi", AlliedMilitaryType.FerengiMilitary, [Species.Ferengi], Era.NextGeneration),
         new AlliedMilitary("Klingon Defence Force",AlliedMilitaryType.KlingonDefenceForce, [Species.KlingonExt, Species.Klingon, Species.KlingonQuchHa],
                 Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
         new AlliedMilitary("MACO", AlliedMilitaryType.Maco, [Species.Human], Era.Enterprise),

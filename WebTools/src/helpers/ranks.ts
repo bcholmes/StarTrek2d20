@@ -921,7 +921,7 @@ export class RanksHelper {
             "DaiMon", "O5",
             [
                 new OfficerPrerequisite(),
-                new NotPrerequisite(new CharacterTypePrerequisite(CharacterType.Starfleet))
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.FerengiMilitary)
             ],
             "DaiMon"),
         ];

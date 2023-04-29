@@ -30,12 +30,12 @@ class EnvironmentSelection extends React.Component<IEnvironmentSelectionProperti
 
             return (
                 <tr key={i}
-                    onClick={() => { if (Window.isCompact()) this.props.onSelection(e.id, e.name); }}>
-                    <td className="selection-header">{e.name}</td>
+                    onClick={() => { if (Window.isCompact()) this.props.onSelection(e.id, e.localizedName); }}>
+                    <td className="selection-header">{e.localizedName}</td>
                     <td>{attributes}</td>
                     <td>{disciplines}</td>
                     <td className="text-right">
-                        <Button className="button-small" onClick={() => { this.props.onSelection(e.id, e.name) } } buttonType={true} >{t('Common.button.select')}</Button>
+                        <Button className="button-small" onClick={() => { this.props.onSelection(e.id, e.localizedName) } } buttonType={true} >{t('Common.button.select')}</Button>
                     </td>
                 </tr>
             )

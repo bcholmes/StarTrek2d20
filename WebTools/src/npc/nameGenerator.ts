@@ -2,7 +2,32 @@ import { D20 } from "../common/die";
 import { SpeciesModel } from "../helpers/species";
 import { Species } from "../helpers/speciesEnum";
 
-const names = require('./names.json')
+//const namesOrig = require('./names.json')
+
+
+const names = [
+    {
+        "species": "Human",
+        "names": require('./names-human.json')
+    },
+    {
+        "species": "Ferengi",
+        "names": require('./names-ferengi.json')
+    },
+    {
+        "species": "Klingon",
+        "names": require('./names-klingon.json')
+    },
+    {
+        "species": "Tellarite",
+        "names": require('./names-tellarite.json')
+    },
+    {
+        "species": "Vulcan",
+        "names": require('./names-vulcan.json')
+    },
+
+];
 
 export class NameGenerator {
 

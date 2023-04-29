@@ -45,13 +45,13 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
             </div>)
         });
 
-        const note = hasUnavailableSources ? t('EraSelectionPage.sourceNote') : "";
+        const note = hasUnavailableSources ? (<p>{t('EraSelectionPage.sourceNote')}</p>)  : undefined;
 
         return (<div>
             <p>
                 {t('EraSelectionPage.sourceInstruction')}
-                {note}
             </p>
+            {note}
             <div className="d-flex flex-wrap">
                 <div className="source source-emphasis" onClick={() => { this.toggleSources(true); } }>{t('Common.button.selectAll')}</div>
                 <div className="source source-emphasis" onClick={() => { this.toggleSources(false); } }>{t('Common.button.selectNone')}</div>

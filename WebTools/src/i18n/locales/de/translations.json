@@ -317,6 +317,38 @@
     "CharacterType.name.child": "Kinder",
     "CharacterType.name.other": "Andere",
 
+    "CareerType.core.young.name": "Grünschnabel",
+    "CareerType.core.young.description": "Der Charakter wird durch das Potential und weniger die Fähigkeiten definiert. Das rohe Talent und die Erwartungen an das Universum müssen noch durch die Realität abgeschwächt werden.",
+    "CareerType.core.young.valueInstruction": "Der Charakter erhält eine Überzeugung, welche die Unerfahrenheit und Naivität in irgendeiner Art widerspiegelt.",
+
+    "CareerType.core.experienced.name": "Erfahrener Offizier",
+    "CareerType.core.experienced.description": "Der Charakter hat mehrere Jahre Erfahrung im Dienst der Sternenflotte und freut sich auf eine vielversprechende Karriere.",
+    "CareerType.core.experienced.valueInstruction": "Der Charakter erhält eine frei wählbare Überzeugung.",
+
+    "CareerType.core.veteran.name": "Veteran",
+    "CareerType.core.veteran.description": "Der Charakter blickt auf eine jahrzehntelange Erfahrung im Dienst der Sternenflotte zurück und hat bereits auf vielen Schiffen und Sternenbasen gedient. Urteilsvermögen und Meinungen werden von Untergebenen, Gleichrangigen und selbst Vorgesetzten hoch geschätzt.",
+    "CareerType.core.veteran.valueInstruction": "Der Charakter erhält eine Überzeugung, welche die Jahre an Erfahrung und die in der langen Karriere geformten Wertvorstellungen widerspiegelt.",
+
+    "Environment.common.homeworld.name": "Heimatwelt",
+    "Environment.common.homeworld.description": "Der Charakter stammt von der Heimatwelt seiner oder ihrer Zivilisation und ist umgeben von dem kulturellen sowie spirituellen Erbe seines oder ihres Volkes aufgewachsen. Heimatwelten spiegeln oft die Ideale ihres Volkes wider und sind äußerst utopisch und idyllisch. Sie sind Horte der Tradition und sind die Zentren des wirtschaftlichen und politischen Lebens ihrer Zivilisation.",
+
+    "Environment.common.busyColony.name": "Geschäftige Kolonie",
+    "Environment.common.busyColony.description": "Der Charakter stammt von einer der älteren oder reichsten Kolonien seines oder ihres Volkes, etwa eine der anderen Welten im Heimatsystem (wie Luna oder Mars für Menschen) oder eine der ersten gegründeten Kolonien nach Entwicklung des interstellaren Raumflugs. Diese Kolonien haben sich oft eine gewisse Unabhängigkeit bewahrt, haben sich mit wenig direkter Hilfe von der Heimatwelt entwickelt und ziehen Stolz daraus, als erste eine neue Welt gezähmt zu haben.",
+
+    "Environment.common.isolatedColony.name": "Isolierte Kolonie",
+    "Environment.common.isolatedColony.description": "Der Charakter stammt aus einer abgelegenen Kolonie, die wenig Kontakt zur breiteren galaktischen Gesellschaft hat. Welten wie der vulkanische Klosterplanet P’Jem machen sich die weite Entfernung zwischen den Sternensystemen zunutze, um in Abgeschiedenheit und Isolation über die Welt zu sinnieren, während andere isolierte Welten aus wissenschaftlichen Gründen von Forschungsteams besiedelt wurden. Auf all diesen Welten tendieren die Bewohner dazu, Lernen und Introspektive in den Fokus zu setzen.",
+
+    "Environment.common.frontierColony.name": "Grenzwelt",
+    "Environment.common.frontierColony.description": "Der Charakter stammt von einer Kolonie am Rande des bekannten Raums oder im Grenzgebiet der Föderation (oder seines oder ihres Heimatreiches). Bewohner von Grenzwelten sind oft abgehärtet und entschlossen bis hin zur Sturheit. Sie sind auf alle Gefahren, die ihre oft ungezähmten Heimatwelten bieten, bestens vorbereitet.",
+
+    "Environment.common.starshipOrStarbase.name": "Sternenbasis oder Raumschiff",
+    "Environment.common.starshipOrStarbase.description": "Der Charakter ist im Weltraum aufgewachsen, entweder an Bord eines Raumschiffs oder auf einer Sternenbasis. Während er oder sie nicht unbedingt auf einem Sternenflottenschiff aufgewachsen ist (nur wenige Schiffe haben Familien an Bord), gibt es doch viele Frachter, Transportschiffe und andere zivile Raumschiffe, die von ganzen Familien betrieben werden und auf denen verschiedene Generationen Seite an Seite leben und arbeiten. Viele Sternenflottenoffiziere nehmen hingegen Posten auf Sternenbasen an, wenn sie Kinder kriegen. Wer im Weltraum aufwächst, für den geht das Leben an Bord von Schiffen ins Blut über und oft lernen solche Kinder schon früh, ein Shuttle zu fliegen oder den Wert der Kommandokette.",
+
+    "Environment.common.anotherSpeciesWorld.name": "Welt einer anderen Soezies",
+    "Environment.common.anotherSpeciesWorld.description": "Der Charakter ist unter Angehörigen einer anderen Spezies aufgewachsen. Er oder sie mag in einer Enklave seiner oder ihrer eigenen Spezies aufgewachsen sein oder aber als Waisenkind nach irgendeiner Art von Katastrophe von der fremden Spezies aufgezogen worden sein. Unabhängig von der Situation hat der Charakter eine ganz eigene Sichtweise auf seine oder ihre eigene Spezies und auf jene, die ihn oder sie aufgezogen hat.",
+
+    "Environment.special.name": "{{name}} ({{species}})",
+
     "GovernmentType.name.andorian": "Andorianer",
     "GovernmentType.name.bajoran": "Bajoraner",
     "GovernmentType.name.cardassian": "Cardassianer",
@@ -346,6 +378,86 @@
     "MilestoneType.name.spotlightMilestone": "Rampenlicht-Meilenstein",
     "MilestoneType.name.arcMilestone": "Handlungsbogen-Meilenstein",
 
+    "NpcType.minor.name": "Einfacher NSC",
+
+    "NpcType.notable.name": "Bedeutender NSC",
+
+    "NpcType.major.name": "Herausragender NSC",
+
+    "ShipBuildType.pod.name": "Kleines Shuttle",
+
+    "ShipBuildType.shuttle.name": "Shuttle",
+
+    "ShipBuildType.runabout.name": "Runabout",
+
+    "ShipBuildType.starship.name": "Raumschiff",
+
+    "StarSystem.common.coordinates": "Koordinaten",
+    "StarSystem.common.innerZone": "Innere Zone",
+    "StarSystem.common.ecosphere": "Ökosphäre",
+    "StarSystem.common.outerZone": "Äußere Zone",
+    "StarSystem.common.worlds": "Welten",
+    "StarSystem.common.noWorlds": "Keine Welten",
+    "StarSystem.common.primaryStar": "Hauptstern",
+    "StarSystem.common.companionStar": "Begleitstern",
+
+    "Value.environment.text": "Diese Überzeugung sollte die Herkunft und die Kultur des Charakters, in der er oder sie aufgewachsen ist, widerspiegeln. Dies ist eine gute Gelegenheit, sich darüber Gedanken zu machen, wie der Charakter seine oder ihre eigene Kultur sieht und wie er oder sie zu den Philosophien und Traditionen der Vorfahren steht.",
+
+    "Value.starfleetTraining.text": "Ihr Charakter erhält eine Überzeugung, die auf irgendeine Weise auf der Akademie geformte Wertvorstellungen oder gemachte Erfahrungen widerspiegeln sollte.",
+
+    "Value.childEducation.text": "Ihr Charakter erhält eine Überzeugung, die auf irgendeine Weise während der Ausbildung geformte Wertvorstellungen oder gemachte Erfahrungen widerspiegeln sollte.",
+
+    "Value.otherTraining.text": "Ihr Charakter erhält eine Überzeugung, die auf irgendeine Weise während des Trainings geformte Wertvorstellungen oder gemachte Erfahrungen widerspiegeln sollte.",
+
+    "Value.final.text": "Der Charakter erhält eine letzte Überzeugung. Diese kann mit einem der Karriereereignisse aus Schritt 6 zusammenhängen, aber auch völlig frei gewählt sein. Die Überzeugung kann auch eine Beziehung sein, die den Charakter mit einem anderen Charakter in der Crew, einer Organisation oder einer Kultur verbindet.",
+
+    "Weapon.common.name": "Name/Typ",
+    "Weapon.common.qualities": "Eigenschaften",
+
+    "Weapon.personal.phaser1.name": "Phaser, Typ 1",
+
+    "Weapon.personal.phaser2.name": "Phaser, Typ 2",
+
+    "Weapon.personal.strike.name": "Unbewaffneter Angriff",
+
+    "Weapon.personal.batleth.name": "Bat'leth",
+
+    "Weapon.personal.dktahg.name": "D'k tahg Dolch",
+
+    "Weapon.personal.ushaantor.name": "Ushaan-tor",
+
+    "Weapon.personal.disruptor.name": "Disruptorpistole",
+
+    "Weapon.quality.area.name": "Flächendeckend",
+
+    "Weapon.quality.charge.name": "Aufladbar",
+
+    "Weapon.quality.calibration.name": "Kalibrierung",
+
+    "Weapon.quality.dampening.name": "Energiesenkend",
+
+    "Weapon.quality.deadly.name": "Letal",
+
+    "Weapon.quality.devastating.name": "Zerstörerisch",
+
+    "Weapon.quality.highYield.name": "Hohe Durchschlagskraft",
+
+    "Weapon.quality.hidden.name": "Unauffällig {{rank}}",
+
+    "Weapon.quality.intense.name": "Intensiv",
+
+    "Weapon.quality.knockdown.name": "Niederwerfend",
+
+    "Weapon.quality.nonLethal.name": "Nicht-tödlich",
+
+    "Weapon.quality.piercing.name": "Durchdringend {{rank}}",
+
+    "Weapon.quality.persistentX.name": "Anhaltend X",
+
+    "Weapon.quality.versatile.name": "Vielseitig {{rank}}",
+
+    "Weapon.quality.vicious.name": "Verheerend {{rank}}",
+
     "World.attribute.designation": "Bezeichnung",
     "World.attribute.classification": "Klasse",
     "World.attribute.notes": "Anmerkungen",
@@ -353,7 +465,7 @@
     "World.attribute.orbitalPeriod": "Umlaufdauer",
     "World.attribute.eccentricity": "Exzentrik",
     "World.attribute.diameter": "Durchmesser",
-    "World.attribute.density": "Dichter",
+    "World.attribute.density": "Dichte",
     "World.attribute.mass": "Masse",
     "World.attribute.gravity": "Schwerkraft",
     "World.attribute.satellites": "Satelliten",
@@ -366,5 +478,8 @@
     "World.attribute.waterCoverage": "Oberflächenwasser",
     "World.attribute.ring": "Ring",
     "World.attribute.beltWidth": "Durchmesser des Gürtels",
-    "World.attribute.predominantSize": "Typische Größe"
+    "World.attribute.predominantSize": "Typische Größe",
+
+    "World.class.description": "Klasse {{class}}",
+    "World.class.fullDescription": "Klasse {{class}} ({{definition}})"
 }
