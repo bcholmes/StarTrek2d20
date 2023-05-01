@@ -10,6 +10,7 @@ import { Species } from '../helpers/speciesEnum';
 import { Header } from './header';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { makeKey } from '../common/translationKey';
+import { SourcesHelper } from '../helpers/sources';
 
 interface ISpeciesSelectionProperties extends WithTranslation {
     onSelection: (species: Species) => void;
@@ -57,11 +58,13 @@ class SpeciesSelection extends React.Component<ISpeciesSelectionProperties, ISpe
                 : s.talents.map((t, i) => {
                     return t.isAvailableExcludingSpecies() ? <div key={i}>{t.name}</div> : <span key={i}></span>;
                 });
+            const sources = SourcesHelper.getSourceName(s.sources);
 
             return (
                 <tr key={i} onClick={() => { if (Window.isCompact()) this.props.onSelection(s.id); }}>
                     <td className="selection-header">{s.name}</td>
                     <td>{attributes}</td>
+                    <td className="d-xs-hidden d-md-table-cell">{sources}</td>
                     <td>{talents}</td>
                     <td className="text-right"><Button buttonType={true} className="button-small"onClick={() => { this.props.onSelection(s.id) }} >{t('Common.button.select')}</Button></td>
                 </tr>
@@ -77,6 +80,7 @@ class SpeciesSelection extends React.Component<ISpeciesSelectionProperties, ISpe
                         <tr>
                             <td></td>
                             <td><b>{t('Construct.other.attributes')}</b></td>
+                            <td className="d-xs-hidden d-md-table-cell">Book</td>
                             <td><b>Talent Options</b></td>
                             <td></td>
                         </tr>
