@@ -172,6 +172,7 @@ Construct.other.reputation,Reputation,Ansehen,,Réputation
 Construct.other.scale,Scale,Schiffsgröße,Escama,Echelle
 Construct.other.serviceDate,Service Date,Indienststellung,Fecha de servicio,Date de mise en service
 Construct.other.shields,Shields,Schilde,Escudos,Boucliers
+Construct.other.sources,Sources,,,
 Construct.other.spaceFrame,Space Frame,Schiffsklasse,Malla espacial,Modèle de Vaisseau
 Construct.other.specialRules,Special Rules,Spezialregeln,Reglas especiales,Règles spéciales
 Construct.other.species,Species,Spezies,Especie,Espèce
@@ -179,6 +180,7 @@ Construct.other.stress,Stress,Anstrengung,Estrés,Stress
 Construct.other.systems,Systems,Systeme,Sistemas,Systèmes
 Construct.other.talent,Talent,Talent,,Talent
 Construct.other.talents,Talents,Talente,Talentos,Talents
+Construct.other.talentOptions,Talent Options,,,
 Construct.other.training,Training,Ausbildung,,Formation
 Construct.other.trait,Trait,Merkmal,Rasgo,Trait
 Construct.other.traits,Traits,Merkmale,Rasgos,Traits
