@@ -12,6 +12,7 @@ import LoadingPage from './pages/loadingPage';
 const CreditsPage = React.lazy(() => import('./pages/creditsPage'));
 const TalentsOverviewMainPage = React.lazy(() => import('./pages/talentsOverviewMainPage'));
 const ViewSheetPage = React.lazy(() => import(/* webpackChunkName: 'view' */ './view/viewSheetPage'));
+const TokenCreationPage = React.lazy(() => import(/* webpackChunkName: 'token' */ './token/tokenCreationPage'));
 
 ReactDOM.render(
     <Provider store={store}>
@@ -23,6 +24,7 @@ ReactDOM.render(
                     <Route path="/talents" component={TalentsOverviewMainPage} />
                     <Route path="/view" component={ViewSheetPage} />
                     <Route path="/credits" component={CreditsPage} />
+                    <Route path="/token" component={TokenCreationPage} />
                     <Route path="/" component={CharacterCreationApp} />
                 </Switch>
             </Suspense>

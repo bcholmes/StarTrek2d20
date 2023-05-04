@@ -66,5 +66,6 @@ export enum PageIdentity {
     NormalMilestone,
     ModificationCompletePage,
 
-    NpcConfiguration
+    NpcConfiguration,
+    TokenCreationPage
 }

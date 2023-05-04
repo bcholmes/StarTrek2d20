@@ -19,7 +19,6 @@
     }
 
 .btn {
-    border-radius: 20px;
     text-align: right;
     font-family: lcars;
     font-size: x-large;
@@ -39,9 +38,22 @@ h1 .btn-link {
     min-width: 150px;
 }
 
+.btn-group .btn {
+    min-width: auto;
+    text-transform: uppercase;
+}
+
+.btn-group .btn-sm {
+    font-size: large;
+}
+
 .btn-primary {
     background-color: rgba(181, 179, 216, .8);
     color: black;
+}
+
+.btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active {
+    background-color: $lcars-orange;
 }
 
 .btn-primary:hover {
@@ -129,6 +141,10 @@ h1 .btn-link {
     bottom: 8px;
     left: 5px;
     color: white;
+}
+
+.checkbox-text.disabled {
+    color: grey;
 }
 
 .die {
@@ -310,9 +326,13 @@ div.align-items-stretch > label.textinput-label {
 }
 
 @media screen and (min-width: 0px) and (max-width: 800px) {
-    .button {
+    .button, .btn {
         font-size: large;
         max-width: 150px;
+    }
+
+    .btn-group .btn-sm {
+        font-size: 14px;
     }
 
     .button-small {

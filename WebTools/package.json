@@ -33,6 +33,7 @@
     "bootstrap": "^4.6.2",
     "bootstrap-icons": "1.10.2",
     "buffer": "6.0.3",
+    "canvg": "4.0.1",
     "copy-to-clipboard": "3.3.1",
     "es6-promise": "^3.2.1",
     "i18next": "^22.4.6",

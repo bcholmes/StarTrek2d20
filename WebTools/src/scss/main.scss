@@ -18,6 +18,7 @@ $lcars-very-light-pink: #f7bbdd;
 
 $primary: $lcars-purple;
 $danger: $lcars-salmon;
+$info: #F9AC76;
 
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
@@ -44,10 +45,12 @@ $btn-font-family:             lcars;
 @import '~bootstrap/scss/reboot';
 
 @import '~bootstrap/scss/breadcrumb';
+@import '~bootstrap/scss/button-group';
 @import '~bootstrap/scss/grid';
 @import '~bootstrap/scss/type';
 @import '~bootstrap/scss/buttons';
 @import '~bootstrap/scss/spinners';
+@import '~bootstrap/scss/utilities/borders';
 @import '~bootstrap/scss/utilities/display';
 @import '~bootstrap/scss/utilities/flex';
 @import '~bootstrap/scss/utilities/screenreaders';

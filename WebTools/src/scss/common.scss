@@ -327,6 +327,11 @@ input[type=checkbox]:checked {
     border: 2px solid #906F9A;
 }
 
+input[type="checkbox"]:disabled {
+    background-color: black;
+    border: 2px solid grey;
+}
+
 .modal-content input[type=radio],
 .modal-content input[type=checkbox] {
     border: 2px solid #B5B3D8;
