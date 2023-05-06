@@ -2,9 +2,6 @@ import { D20 } from "../common/die";
 import { SpeciesModel } from "../helpers/species";
 import { Species } from "../helpers/speciesEnum";
 
-//const namesOrig = require('./names.json')
-
-
 const names = [
     {
         "species": "Human",

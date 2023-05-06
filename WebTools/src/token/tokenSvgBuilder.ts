@@ -1,4 +1,10 @@
+import EarCatalog from "./model/earCatalog";
+import EyeCatalog from "./model/eyeCatalog";
+import HeadCatalog from "./model/headCatalog";
+import MouthCatalog from "./model/mouthCatalog";
+import NoseCatalog from "./model/noseCatalog";
 import { Token } from "./model/token";
+import UniformCatalog from "./model/uniformCatalog";
 
 
 export class TokenSvgBuilder {
@@ -14,14 +20,19 @@ export class TokenSvgBuilder {
                 </defs>
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">`
 
-        + "<g id=\"g2423\"" + (rounded ? " clip-path=\"url(#clipPath)\"" : "") + " >" +
-            `<rect width="400px" height="400px" x="0" y="0" fill="white"/>
-            <path d="M6.276301,174.16917 L0.052602,162.35457 L47.276301,81.218689 L94.5,0.0828121 L108,0.0849218 L121.5,0.0870316 L168.73244,81.214871 L215.96488,162.34271 L209.23244,174.14367 L202.5,185.94463 L107.5,185.9642 L12.5,185.98377 L6.276301,174.16917 Z M147.27389,136.66345 C146.29825,134.82835 136.95815,118.6368 126.5181,100.68223 L107.53621,68.037562 L106.11737,70.768781 C105.33701,72.270952 99.20536,82.95 92.49148,94.5 C85.7776,106.05 77.08307,121.0125 73.17032,127.75 L66.05622,140 L107.552,140 L149.04778,140 L147.27389,136.66345 Z" id="path2415" fill="#46AFC6"></path>
-            <path d="M14.562349,183.54519 C15.446999,182.19504 33.630252,151.27491 54.96958,114.8338 C76.3089,78.392677 94.21638,48.427872 94.76398,48.245341 L95.7596,47.913466 L101.3798,57.513086 C108.44606,69.582666 110.19331,63.998455 86.67806,104.5 L66.35702,139.5 L93.10772,139.76594 C107.8206,139.91221 132.26222,139.91221 147.42242,139.76594 L174.98643,139.5 L135.37424,71.021741 C113.58753,33.358698 95.54244,1.971198 95.27404,1.2717407 L94.78602,0 L108.14301,0.0435158 L121.5,0.0870316 L168.73244,81.214871 L215.96488,162.34271 L209.23244,174.14367 L202.5,185.94463 L107.72695,185.97232 L12.953894,186 L14.562349,183.54519 Z" id="path2413" fill="#3498AD"></path>
-            <path d="M14.562349,183.54519 C15.446999,182.19504 33.630252,151.27491 54.96958,114.8338 C76.3089,78.392677 94.21638,48.427872 94.76398,48.245341 L95.7596,47.913466 L101.45024,57.633391 L107.14087,67.353317 L106.68069,69.113026 C106.4276,70.080866 94.4709,91.09461 80.11026,115.81024 C65.74962,140.52586 54,161.02685 54,161.36799 L54,161.98824 L134.94617,162.24412 L215.89234,162.5 L209.19617,174.22069 L202.5,185.94137 L107.72695,185.97069 L12.953894,186 L14.562349,183.54519 Z" id="path2411" fill="#2B7B8C"></path>
-        </g>`
+        + "<g id=\"background\"" + (rounded ? " clip-path=\"url(#clipPath)\"" : "") + " >" +
+            `<rect width="400px" height="400px" x="0" y="0" fill="white"/>` +
+            "<g"  + (rounded ? " transform=\"translate(-60,0)\"" : "") + ">" +
+            HeadCatalog.instance.getHead() +
+            UniformCatalog.instance.getBody(token) +
+            MouthCatalog.instance.getMouth() +
+            NoseCatalog.instance.getNose() +
+            EarCatalog.instance.getEar(token.species) +
+            EyeCatalog.instance.getEyes(token) +
+            "</g>" +
+        "</g>"
 
-        + (fancyBorder ? "<circle cx=\"200px\" cy=\"200px\" r=\"195px\" stroke=\"#aaaaaa\" stroke-width=\"10px\" />" : "")
+        + (fancyBorder ? "<circle cx=\"200px\" cy=\"200px\" r=\"190px\" stroke=\"" + token.divisionColor + "\" stroke-width=\"20px\" />" : "")
 
         + `</g>
         </svg>`;

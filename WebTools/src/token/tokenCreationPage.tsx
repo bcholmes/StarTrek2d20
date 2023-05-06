@@ -41,7 +41,7 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
     constructor(props) {
         super(props);
         this.state = {
-            tab: Tab.Body,
+            tab: Tab.Species,
             rounded: false,
             bordered: false
         }
@@ -126,7 +126,7 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
             case Tab.Body:
                 return (<UniformSelectionView />);
             default:
-                return null;
+                return (<div className="mt-4"><p>Not yet available.</p></div>);
         }
     }
 
