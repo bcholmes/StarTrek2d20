@@ -34,6 +34,21 @@ h1 .btn-link {
     min-width: 250px;
 }
 
+.btn.btn-swatch {
+    padding: 0;
+    min-width: auto;
+}
+
+.btn-swatch:not(:disabled):not(.disabled) {
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+}
+
+.btn-swatch:not(:disabled):not(.disabled).active {
+    border-color: $lcars-orange !important;
+}
+
 .btn.btn-sm {
     min-width: 150px;
 }

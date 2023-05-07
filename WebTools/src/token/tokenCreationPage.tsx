@@ -12,6 +12,10 @@ import { TokenSvgBuilder } from './tokenSvgBuilder';
 import { Token } from './model/token';
 import { connect } from 'react-redux';
 import { CheckBox } from '../components/checkBox';
+import NoseSelectionView from './view/noseSelectionView';
+import MouthSelectionView from './view/mouthSelectionView';
+import HairSelectionView from './view/hairSelectionView';
+import HeadSelectionView from './view/headSelectionView';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -125,6 +129,14 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
                 return (<SpeciesSelectionView />);
             case Tab.Body:
                 return (<UniformSelectionView />);
+            case Tab.Head:
+                return (<HeadSelectionView />);
+            case Tab.Mouth:
+                return (<MouthSelectionView />);
+            case Tab.Nose:
+                return (<NoseSelectionView />);
+            case Tab.Hair:
+                return (<HairSelectionView />);
             default:
                 return (<div className="mt-4"><p>Not yet available.</p></div>);
         }

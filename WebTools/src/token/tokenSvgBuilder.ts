@@ -1,8 +1,10 @@
 import EarCatalog from "./model/earCatalog";
 import EyeCatalog from "./model/eyeCatalog";
+import HairCatalog from "./model/hairCatalog";
 import HeadCatalog from "./model/headCatalog";
 import MouthCatalog from "./model/mouthCatalog";
 import NoseCatalog from "./model/noseCatalog";
+import RankIndicatorCatalog from "./model/rankIndicatorCatalog";
 import { Token } from "./model/token";
 import UniformCatalog from "./model/uniformCatalog";
 
@@ -23,11 +25,13 @@ export class TokenSvgBuilder {
         + "<g id=\"background\"" + (rounded ? " clip-path=\"url(#clipPath)\"" : "") + " >" +
             `<rect width="400px" height="400px" x="0" y="0" fill="white"/>` +
             "<g"  + (rounded ? " transform=\"translate(-60,0)\"" : "") + ">" +
-            HeadCatalog.instance.getHead() +
+            HeadCatalog.instance.getHead(token) +
             UniformCatalog.instance.getBody(token) +
+            RankIndicatorCatalog.instance.getRankIndicator(token) +
             MouthCatalog.instance.getMouth() +
             NoseCatalog.instance.getNose() +
-            EarCatalog.instance.getEar(token.species) +
+            HairCatalog.instance.getHair(token) +
+            EarCatalog.instance.getEar(token) +
             EyeCatalog.instance.getEyes(token) +
             "</g>" +
         "</g>"

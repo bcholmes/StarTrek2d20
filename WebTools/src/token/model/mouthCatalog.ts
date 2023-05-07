@@ -1,4 +1,6 @@
 import { Species } from "../../helpers/speciesEnum";
+import { MouthType } from "./mouthTypeEnum";
+import Swatch from "./swatch";
 
 const ThinLip = `<g xmlns="http://www.w3.org/2000/svg" >
     <path d="m 310.89893,203.1216 c 3.44,0.45867 10.964,-0.32 13.852,-2.224 2.888,-1.90399 0.208,-0.504 0,0 -0.208,0.504 -0.0933,7.384 -10.18267,7.04 -10.09067,-0.344 -18.116,-8.14133 -18.116,-8.14133 0,0 11.00667,2.86667 14.44667,3.32533" style="opacity:0.199997;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path9769"/>
@@ -13,6 +15,10 @@ class MouthCatalog {
 
     private static _instance: MouthCatalog;
 
+    swatches = [
+        new Swatch(MouthType.ThinLip, "Thin Lip", MouthCatalog.decorateSwatch(ThinLip))
+    ];
+
     public static get instance() {
         if (MouthCatalog._instance == null) {
             MouthCatalog._instance = new MouthCatalog();
@@ -24,6 +30,14 @@ class MouthCatalog {
         return ThinLip;
     }
 
+    private static decorateSwatch(svg: string) {
+        let result = `<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g transform="translate(-255, -140)">`
+            + svg
+            + `</g>
+            </svg>`;
+        return result;
+    }
 }
 
 export default MouthCatalog;

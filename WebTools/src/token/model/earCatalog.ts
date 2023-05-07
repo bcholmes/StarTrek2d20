@@ -1,4 +1,6 @@
 import { Species } from "../../helpers/speciesEnum";
+import SpeciesColors from "./speciesColors";
+import { Token } from "./token";
 
 const HumanEar = `<g xmlns="http://www.w3.org/2000/svg" id="HumanEar">
     <path d="m 215.13853,129.23107 c 0,0 -3.36134,-7.508 -5.37867,-9.076 -2.01733,-1.56933 -6.724,-2.35333 -9.63733,0.112 -2.91333,2.46534 -9.076,10.98134 -8.18,14.56667 0.896,3.58667 5.71467,11.20533 7.732,14.344 2.01733,3.13733 5.82666,11.20533 7.732,13.78267 1.90533,2.57733 3.69733,4.37066 6.612,3.69733 2.91333,-0.672 4.25733,-0.784 5.93866,-2.91333 0.38934,-0.49334 0.28134,-1.47734 0.276,-2.05467 -0.0133,-1.37467 -0.156,-2.75067 -0.30666,-4.11467 -0.0613,-0.56 0.0427,-1.25333 -0.128,-1.788 -0.30534,-0.96 -1.124,-1.72933 -1.672,-2.55866 -0.62134,-0.93734 -1.16,-1.94134 -1.44667,-3.036 -0.44533,-1.69334 -0.264,-3.47867 -0.15467,-5.22667 0.16934,-2.70933 0.15734,-5.43067 -0.0867,-8.13467 -0.124,-1.38266 -0.33334,-2.74666 -0.55867,-4.11466 -0.192,-1.16267 -0.25333,-2.39467 -0.74133,-3.48534" style="fill:#cd976d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path6713"/>
@@ -33,11 +35,11 @@ class EarCatalog {
         return EarCatalog._instance;
     }
 
-    getEar(species: Species) {
-        if (species === Species.Vulcan) {
-            return VulcanEar;
+    getEar(token: Token) {
+        if (token.species === Species.Vulcan) {
+            return VulcanEar.replace(SpeciesColors.DEFAULT_SKIN_COLOR, token.skinColor);
         } else {
-            return HumanEar;
+            return HumanEar.replace(SpeciesColors.DEFAULT_SKIN_COLOR, token.skinColor);
         }
     }
 
