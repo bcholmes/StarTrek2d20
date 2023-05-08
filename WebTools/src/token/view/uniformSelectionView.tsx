@@ -11,7 +11,7 @@ import { withTranslation, WithTranslation } from 'react-i18next';
 import { connect } from "react-redux";
 import { Token } from "../model/token";
 
-interface IUniformSelectionViewProperties {
+interface IUniformSelectionViewProperties extends WithTranslation {
     token: Token;
 }
 
@@ -28,9 +28,10 @@ class UniformSelectionView extends React.Component<IUniformSelectionViewProperti
             <ColorSelection colors={DivisionColors.getColors(era)} onSelection={(c) => store.dispatch(setTokenDivisionColor(c))} />
 
             <p className="mt-4">Rank:</p>
-            <div className="d-flex" style={{gap: "0.5rem"}}>
+            <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
             {RankIndicatorCatalog.instance.tngSwatches.map(s => <SwatchButton svg={s.svg} title={s.name}
                 onClick={() => store.dispatch(setTokenRank(s.id))} active={this.props.token.rankIndicator === s.id}
+                token={this.props.token}
                 key={'rank-swatch-' + s.id }/>)}
             </div>
         </div>);

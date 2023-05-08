@@ -1,5 +1,5 @@
 import { Species } from "../../helpers/speciesEnum";
-import SpeciesColors from "./speciesColors";
+import SpeciesColors from "./speciesOptions";
 import { Token } from "./token";
 
 const HumanEar = `<g xmlns="http://www.w3.org/2000/svg" id="HumanEar">

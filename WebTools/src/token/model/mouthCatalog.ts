@@ -1,4 +1,3 @@
-import { Species } from "../../helpers/speciesEnum";
 import { MouthType } from "./mouthTypeEnum";
 import Swatch from "./swatch";
 
