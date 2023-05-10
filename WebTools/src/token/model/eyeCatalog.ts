@@ -38,7 +38,7 @@ class EyeCatalog {
     }
 
     getEyes(token: Token) {
-        return VulcanEyes;
+        return VulcanEyes.replace(/\#756860/g, token.eyeColor);
     }
 
 }

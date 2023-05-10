@@ -16,6 +16,7 @@ import NoseSelectionView from './view/noseSelectionView';
 import MouthSelectionView from './view/mouthSelectionView';
 import HairSelectionView from './view/hairSelectionView';
 import HeadSelectionView from './view/headSelectionView';
+import EyeSelectionView from './view/eyeSelectionView';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -135,6 +136,8 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
                 return (<MouthSelectionView />);
             case Tab.Nose:
                 return (<NoseSelectionView />);
+            case Tab.Eyes:
+                return (<EyeSelectionView />);
             case Tab.Hair:
                 return (<HairSelectionView />);
             default:

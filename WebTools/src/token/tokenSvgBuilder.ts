@@ -25,11 +25,11 @@ export class TokenSvgBuilder {
         + "<g id=\"background\"" + (rounded ? " clip-path=\"url(#clipPath)\"" : "") + " >" +
             `<rect width="400px" height="400px" x="0" y="0" fill="white"/>` +
             "<g"  + (rounded ? " transform=\"translate(-60,0)\"" : "") + ">" +
-            HeadCatalog.instance.getHead(token) +
             UniformCatalog.instance.getBody(token) +
+            HeadCatalog.instance.getHead(token) +
             RankIndicatorCatalog.instance.getRankIndicator(token) +
-            MouthCatalog.instance.getMouth() +
-            NoseCatalog.instance.getNose() +
+            MouthCatalog.instance.getMouth(token) +
+            NoseCatalog.instance.getNose(token) +
             HairCatalog.instance.getHair(token) +
             EarCatalog.instance.getEar(token) +
             EyeCatalog.instance.getEyes(token) +

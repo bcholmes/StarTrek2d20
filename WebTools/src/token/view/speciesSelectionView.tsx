@@ -23,7 +23,7 @@ class SpeciesSelectionView extends React.Component<ISpeciesSelectionProperties, 
     }
 
     speciesList() {
-        return [Species.Deltan, Species.Human, Species.Orion, Species.Vulcan].map(s => new DropDownElement(s, SpeciesHelper.getSpeciesByType(s).name));
+        return [Species.Bajoran, Species.Deltan, Species.Human, Species.Orion, Species.Vulcan].map(s => new DropDownElement(s, SpeciesHelper.getSpeciesByType(s).name));
     }
 }
 

@@ -17,8 +17,17 @@ class SpeciesOptions {
         }
     }
 
+    static getEyeColors(species: Species) {
+        if (species === Species.Betazoid) {
+            return [];
+        } else {
+            return ["#e1bbc3", "#8bb5db", "#4079c0", "#b4b8b9", "#8e9796", "#758a9d", "#88967d", "#6e9d4d", "#aa6925", "#863603", "#56220c", "#3f0c08", "#280000"];
+        }
+    }
+
+
     static getHairColors(species: Species) {
-        return ["#fdf2dc", "#fae9b5", "#f0c882", "#f9c861", "#e9a63d", "#e9a63d", "#e38732", "#913c13", "#430c05", "#4e0300", "#811002",
+        return ["#fdf2dc", "#fae9b5", "#f0c882", "#f9c861", "#e9a63d", "#e38732", "#913c13", "#430c05", "#4e0300", "#811002",
             "#ba260a", "#230703", "#220c01", "#200100", "#0b0704", "#391201", "#722707", "#2a2a2a", "#383838", "#37261e", "#706f74", "#a78c6f",
             "#f1eae4", "#f4f3f1", "#e1ddda",
 

@@ -1,4 +1,4 @@
 
 export enum HairType {
-    Bald, BowlCutHair, StylishHair
+    Bald, BowlCutHair, StylishHair, SidePart, ShortAfro
 }

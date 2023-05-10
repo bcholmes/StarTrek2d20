@@ -1,4 +1,9 @@
 
 export enum NoseType {
-    StraightBasic
+    StraightBasic,
+    Convex,
+    SmallBulb,
+    Broad,
+    LongNarrow,
+    HighBridge
 }

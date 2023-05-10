@@ -2,11 +2,13 @@ import { Species } from "../helpers/speciesEnum";
 import { DivisionColors } from "../token/model/divisionColors";
 import { HairType } from "../token/model/hairTypeEnum";
 import { HeadType } from "../token/model/headTypeEnum";
+import { MouthType } from "../token/model/mouthTypeEnum";
+import { NoseType } from "../token/model/noseTypeEnum";
 import { RankIndicator } from "../token/model/rankIndicatorEnum";
 import SpeciesOptions from "../token/model/speciesOptions";
 import { Token } from "../token/model/token";
 import { UniformEra } from "../token/model/uniformEra";
-import { SET_TOKEN_DIVISION_COLOR, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES } from "./tokenActions";
+import { SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EYE_COLOR, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES } from "./tokenActions";
 
 const initialState = {
     species: Species.Human,
@@ -15,7 +17,10 @@ const initialState = {
     headType: HeadType.StandardMale,
     rankIndicator: RankIndicator.None,
     hairType: HairType.Bald,
-    hairColor: SpeciesOptions.DEFAULT_HAIR_COLOR
+    hairColor: SpeciesOptions.DEFAULT_HAIR_COLOR,
+    eyeColor: SpeciesOptions.getEyeColors(Species.Human)[0],
+    noseType: NoseType.StraightBasic,
+    mouthType: MouthType.Mouth2
 }
 
 const token = (state: Token = initialState, action) => {
@@ -57,6 +62,21 @@ const token = (state: Token = initialState, action) => {
         return {
             ...state,
             headType: action.payload.headType
+        }
+    case SET_TOKEN_NOSE_TYPE:
+        return {
+            ...state,
+            noseType: action.payload.noseType
+        }
+    case SET_TOKEN_MOUTH_TYPE:
+        return {
+            ...state,
+            mouthType: action.payload.mouthType
+        }
+    case SET_TOKEN_EYE_COLOR:
+        return {
+            ...state,
+            eyeColor: action.payload.color
         }
     case SET_TOKEN_HAIR_COLOR:
         return {
