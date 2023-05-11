@@ -1,6 +1,7 @@
 import { Species } from "../../helpers/speciesEnum";
 import { HairType } from "./hairTypeEnum";
 import { ReferenceHead } from "./headCatalog";
+import SpeciesOptions from "./speciesOptions";
 import Swatch from "./swatch";
 import { Token } from "./token";
 
@@ -46,13 +47,13 @@ class HairCatalog {
     private static _instance: HairCatalog;
 
     swatches = [
-        new Swatch(HairType.Bald, "Bald", (token) => HairCatalog.decorateSwatch("", token.hairColor)),
-        new Swatch(HairType.BowlCutHair, "Bowl Cut", (token) => HairCatalog.decorateSwatch(BowlCutHair, token.hairColor)),
-        new Swatch(HairType.StylishHair, "Stylish Short", (token) => HairCatalog.decorateSwatch(StylishShortHair, token.hairColor)),
-        new Swatch(HairType.SidePart, "Side Part", (token) => HairCatalog.decorateSwatch(SidePart, token.hairColor)),
-        new Swatch(HairType.ShortAfro, "Short Curly", (token) => HairCatalog.decorateSwatch(ShortAfro, token.hairColor)),
-        new Swatch(HairType.Balding, "Balding", (token) => HairCatalog.decorateSwatch(BaldingHair, token.hairColor)),
-//        new Swatch(HairType.StyledCurly, "Styled Curly", (token) => HairCatalog.decorateSwatch(CurlyHair, token.hairColor)),
+        new Swatch(HairType.Bald, "Bald", (token) => HairCatalog.decorateSwatch("", token)),
+        new Swatch(HairType.BowlCutHair, "Bowl Cut", (token) => HairCatalog.decorateSwatch(BowlCutHair, token)),
+        new Swatch(HairType.StylishHair, "Stylish Short", (token) => HairCatalog.decorateSwatch(StylishShortHair, token)),
+        new Swatch(HairType.SidePart, "Side Part", (token) => HairCatalog.decorateSwatch(SidePart, token)),
+        new Swatch(HairType.ShortAfro, "Short Curly", (token) => HairCatalog.decorateSwatch(ShortAfro, token)),
+        new Swatch(HairType.Balding, "Balding", (token) => HairCatalog.decorateSwatch(BaldingHair, token)),
+//        new Swatch(HairType.StyledCurly, "Styled Curly", (token) => HairCatalog.decorateSwatch(CurlyHair, token)),
     ];
 
     public static get instance() {
@@ -91,11 +92,11 @@ class HairCatalog {
         }
     }
 
-    private static decorateSwatch(svg: string, color: string) {
+    private static decorateSwatch(svg: string, token: Token) {
         let result = `<svg viewBox="0 0 280 280" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g transform="translate(-130, 20)">`
-            + ReferenceHead
-            + svg.replace("#383838", color)
+            + ReferenceHead.replace(SpeciesOptions.DEFAULT_SKIN_COLOR, token.skinColor)
+            + svg.replace("#383838", token.hairColor)
             + `</g>
             </svg>`;
         return result;

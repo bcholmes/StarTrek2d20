@@ -191,13 +191,13 @@ class EyeCatalog {
         } else if (token.eyeType === EyeType.Eye6) {
             result = Eye6;
         }
-        return result.replace(/\#756860/g, token.eyeColor);
+        return result.replace(/#756860/g, token.eyeColor);
     }
 
     private static decorateSwatch(svg: string, token: Token) {
         let result = `<svg viewBox="0 0 110 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g transform="translate(-250, -75)">`
-                + svg.replace(/\#756860/g, token.eyeColor)
+                + svg.replace(/#756860/g, token.eyeColor)
             + `</g>
             </svg>`;
         return result;
