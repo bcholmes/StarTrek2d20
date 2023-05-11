@@ -1,5 +1,5 @@
 import { Species } from "../../helpers/speciesEnum";
-import { HairType } from "./hairTypeEnum";
+import { HairType, allHairTypes } from "./hairTypeEnum";
 
 
 class SpeciesOptions {
@@ -40,7 +40,7 @@ class SpeciesOptions {
         if (species === Species.Deltan) {
             return [ HairType.Bald ];
         } else {
-            return [ HairType.Bald, HairType.BowlCutHair, HairType.StylishHair ];
+            return allHairTypes;
         }
     }
 }

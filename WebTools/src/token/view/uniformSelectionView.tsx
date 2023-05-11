@@ -4,12 +4,13 @@ import ColorSelection from "./colorSelection";
 import { DivisionColors } from "../model/divisionColors";
 import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
 import store from "../../state/store";
-import { setTokenDivisionColor, setTokenRank } from "../../state/tokenActions";
+import { setTokenBodyType, setTokenDivisionColor, setTokenRank } from "../../state/tokenActions";
 import RankIndicatorCatalog from "../model/rankIndicatorCatalog";
 import SwatchButton from "./swatchButton";
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { connect } from "react-redux";
 import { Token } from "../model/token";
+import UniformCatalog from "../model/uniformCatalog";
 
 interface IUniformSelectionViewProperties extends WithTranslation {
     token: Token;
@@ -19,6 +20,7 @@ class UniformSelectionView extends React.Component<IUniformSelectionViewProperti
 
     render() {
         const era = UniformEra.DominionWar;
+        const { token } = this.props;
 
         return (<div className="mt-4">
             <p>Uniform type:</p>
@@ -30,9 +32,16 @@ class UniformSelectionView extends React.Component<IUniformSelectionViewProperti
             <p className="mt-4">Rank:</p>
             <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
             {RankIndicatorCatalog.instance.tngSwatches.map(s => <SwatchButton svg={s.svg} title={s.name}
-                onClick={() => store.dispatch(setTokenRank(s.id))} active={this.props.token.rankIndicator === s.id}
-                token={this.props.token}
-                key={'rank-swatch-' + s.id }/>)}
+                onClick={() => store.dispatch(setTokenRank(s.id))}
+                active={token.rankIndicator === s.id}
+                token={token} key={'rank-swatch-' + s.id }/>)}
+            </div>
+
+            <p className="mt-4">Body Type:</p>
+            <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
+            {UniformCatalog.instance.getSwatches(UniformEra.DominionWar).map(s => <SwatchButton svg={s.svg} title={s.name} size="lg"
+                onClick={() => store.dispatch(setTokenBodyType(s.id)) }
+                active={token.bodyType === s.id} token={token} key={'body-swatch-' + s.id }/>)}
             </div>
         </div>);
     }

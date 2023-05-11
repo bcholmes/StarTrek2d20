@@ -1,4 +1,6 @@
 import { Species } from "../helpers/speciesEnum";
+import { BodyType } from "../token/model/bodyTypeEnum";
+import { EyeType } from "../token/model/eyeTypeEnum";
 import { HairType } from "../token/model/hairTypeEnum";
 import { HeadType } from "../token/model/headTypeEnum";
 import { MouthType } from "../token/model/mouthTypeEnum";
@@ -15,6 +17,8 @@ export const SET_TOKEN_HEAD_TYPE = 'SET_TOKEN_HEAD_TYPE';
 export const SET_TOKEN_EYE_COLOR = 'SET_TOKEN_EYE_COLOR';
 export const SET_TOKEN_NOSE_TYPE = 'SET_TOKEN_NOSE_TYPE';
 export const SET_TOKEN_MOUTH_TYPE = 'SET_TOKEN_MOUTH_TYPE';
+export const SET_TOKEN_BODY_TYPE = 'SET_TOKEN_BODY_TYPE';
+export const SET_TOKEN_EYE_TYPE = 'SET_TOKEN_EYE_TYPE';
 
 export function setTokenSpecies(species: Species) {
     let payload = { species: species };
@@ -88,10 +92,26 @@ export function setTokenMouthType(mouthType: MouthType) {
     }
 }
 
+export function setTokenEyeType(eyeType: EyeType) {
+    let payload = { eyeType: eyeType };
+    return {
+       type: SET_TOKEN_EYE_TYPE,
+       payload: payload
+    }
+}
+
 export function setTokenNoseType(noseType: NoseType) {
     let payload = { noseType: noseType };
     return {
        type: SET_TOKEN_NOSE_TYPE,
+       payload: payload
+    }
+}
+
+export function setTokenBodyType(type: BodyType) {
+    let payload = { type: type };
+    return {
+       type: SET_TOKEN_BODY_TYPE,
        payload: payload
     }
 }

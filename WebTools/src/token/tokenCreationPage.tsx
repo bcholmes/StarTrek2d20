@@ -97,14 +97,14 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
                                         onClick={() => this.selectTab(Tab.Body)}>Body</button>
                                     <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Head ? "active" : "")}
                                         onClick={() => this.selectTab(Tab.Head)}>Head</button>
+                                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Hair ? "active" : "")}
+                                        onClick={() => this.selectTab(Tab.Hair)}>Hair</button>
                                     <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Mouth ? "active" : "")}
                                         onClick={() => this.selectTab(Tab.Mouth)}>Mouth</button>
                                     <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Nose ? "active" : "")}
                                         onClick={() => this.selectTab(Tab.Nose)}>Nose</button>
                                     <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Eyes ? "active" : "")}
                                         onClick={() => this.selectTab(Tab.Eyes)}>Eyes</button>
-                                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Hair ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Hair)}>Hair</button>
                                     <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Extras ? "active" : "")}
                                         onClick={() => this.selectTab(Tab.Extras)}>Extras</button>
                                 </div>
