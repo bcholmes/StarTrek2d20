@@ -5,12 +5,13 @@ import { EyeType } from "../token/model/eyeTypeEnum";
 import { HairType } from "../token/model/hairTypeEnum";
 import { HeadType } from "../token/model/headTypeEnum";
 import { MouthType } from "../token/model/mouthTypeEnum";
+import { NasoLabialFoldType } from "../token/model/nasoLabialFoldTypeEnum";
 import { NoseType } from "../token/model/noseTypeEnum";
 import { RankIndicator } from "../token/model/rankIndicatorEnum";
 import SpeciesOptions from "../token/model/speciesOptions";
 import { Token } from "../token/model/token";
 import { UniformEra } from "../token/model/uniformEra";
-import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EYE_COLOR, SET_TOKEN_EYE_TYPE, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES } from "./tokenActions";
+import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EYE_COLOR, SET_TOKEN_EYE_TYPE, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NASO_LABIAL_FOLD_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES } from "./tokenActions";
 
 const initialState = {
     species: Species.Human,
@@ -18,14 +19,15 @@ const initialState = {
     skinColor: SpeciesOptions.DEFAULT_SKIN_COLOR,
     headType: HeadType.StandardMale,
     rankIndicator: RankIndicator.None,
-    hairType: HairType.Bald,
+    hairType: HairType.DeLeve,
     hairColor: SpeciesOptions.DEFAULT_HAIR_COLOR,
-    eyeColor: SpeciesOptions.getEyeColors(Species.Human)[0],
-    eyeType: EyeType.Eye1,
+    eyeColor: SpeciesOptions.getDefaultEyeColor(Species.Human),
+    eyeType: EyeType.Eye3,
     noseType: NoseType.StraightBasic,
     mouthType: MouthType.Mouth2,
     uniformEra: UniformEra.DominionWar,
-    bodyType: BodyType.Body1
+    bodyType: BodyType.Body1,
+    nasoLabialFold: NasoLabialFoldType.None
 }
 
 const token = (state: Token = initialState, action) => {
@@ -41,8 +43,15 @@ const token = (state: Token = initialState, action) => {
         if (hairTypes.indexOf(hairType) < 0) {
             hairType = hairTypes[0];
         }
+
+        let eyeColor = state.eyeColor;
+        let speciesEyeColours = SpeciesOptions.getEyeColors(action.payload.species);
+        if (speciesEyeColours.indexOf(eyeColor) < 0) {
+            eyeColor = speciesEyeColours[Math.floor(speciesEyeColours.length / 2)];
+        }
         return {
             ...state,
+            eyeColor: eyeColor,
             hairType: hairType,
             skinColor: skinColor,
             species: action.payload.species
@@ -72,6 +81,11 @@ const token = (state: Token = initialState, action) => {
         return {
             ...state,
             noseType: action.payload.noseType
+        }
+    case SET_TOKEN_NASO_LABIAL_FOLD_TYPE:
+        return {
+            ...state,
+            nasoLabialFold: action.payload.type
         }
     case SET_TOKEN_BODY_TYPE:
         return {

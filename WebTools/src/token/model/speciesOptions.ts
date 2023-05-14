@@ -6,6 +6,7 @@ class SpeciesOptions {
 
     // default in the sense that "the drawing was originally created using this skin colour"
     static DEFAULT_SKIN_COLOR = "#cd976d";
+    static DEFAULT_SKIN_COLOR_REGEX = /#cd976d/g;
 
     static DEFAULT_HAIR_COLOR = "#383838";
 
@@ -19,12 +20,16 @@ class SpeciesOptions {
 
     static getEyeColors(species: Species) {
         if (species === Species.Betazoid) {
-            return [];
+            return ["#111111"];
         } else {
             return ["#e1bbc3", "#8bb5db", "#4079c0", "#b4b8b9", "#8e9796", "#758a9d", "#88967d", "#6e9d4d", "#aa6925", "#863603", "#56220c", "#3f0c08", "#280000"];
         }
     }
 
+    static getDefaultEyeColor(species: Species) {
+        let colours = SpeciesOptions.getEyeColors(species);
+        return colours[Math.floor(colours.length / 2)];
+    }
 
     static getHairColors(species: Species) {
         return ["#fdf2dc", "#fae9b5", "#f0c882", "#f9c861", "#e9a63d", "#e38732", "#913c13", "#430c05", "#4e0300", "#811002",

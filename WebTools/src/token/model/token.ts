@@ -4,6 +4,7 @@ import { EyeType } from "./eyeTypeEnum";
 import { HairType } from "./hairTypeEnum";
 import { HeadType } from "./headTypeEnum";
 import { MouthType } from "./mouthTypeEnum";
+import { NasoLabialFoldType } from "./nasoLabialFoldTypeEnum";
 import { NoseType } from "./noseTypeEnum";
 import { RankIndicator } from "./rankIndicatorEnum";
 import { UniformEra } from "./uniformEra";
@@ -15,6 +16,7 @@ export interface Token {
     headType: HeadType;
     rankIndicator: RankIndicator;
     noseType: NoseType;
+    nasoLabialFold: NasoLabialFoldType;
     hairType: HairType;
     uniformEra: UniformEra;
     bodyType: BodyType;

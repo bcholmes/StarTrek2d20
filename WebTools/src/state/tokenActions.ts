@@ -4,6 +4,7 @@ import { EyeType } from "../token/model/eyeTypeEnum";
 import { HairType } from "../token/model/hairTypeEnum";
 import { HeadType } from "../token/model/headTypeEnum";
 import { MouthType } from "../token/model/mouthTypeEnum";
+import { NasoLabialFoldType } from "../token/model/nasoLabialFoldTypeEnum";
 import { NoseType } from "../token/model/noseTypeEnum";
 import { RankIndicator } from "../token/model/rankIndicatorEnum";
 
@@ -15,6 +16,7 @@ export const SET_TOKEN_HAIR_TYPE = 'SET_TOKEN_HAIR_TYPE';
 export const SET_TOKEN_HAIR_COLOR = 'SET_TOKEN_HAIR_COLOR';
 export const SET_TOKEN_HEAD_TYPE = 'SET_TOKEN_HEAD_TYPE';
 export const SET_TOKEN_EYE_COLOR = 'SET_TOKEN_EYE_COLOR';
+export const SET_TOKEN_NASO_LABIAL_FOLD_TYPE = 'SET_TOKEN_NASO_LABIAL_FOLD_TYPE';
 export const SET_TOKEN_NOSE_TYPE = 'SET_TOKEN_NOSE_TYPE';
 export const SET_TOKEN_MOUTH_TYPE = 'SET_TOKEN_MOUTH_TYPE';
 export const SET_TOKEN_BODY_TYPE = 'SET_TOKEN_BODY_TYPE';
@@ -112,6 +114,14 @@ export function setTokenBodyType(type: BodyType) {
     let payload = { type: type };
     return {
        type: SET_TOKEN_BODY_TYPE,
+       payload: payload
+    }
+}
+
+export function setTokenNasoLabialFoldType(type: NasoLabialFoldType) {
+    let payload = { type: type };
+    return {
+       type: SET_TOKEN_NASO_LABIAL_FOLD_TYPE,
        payload: payload
     }
 }

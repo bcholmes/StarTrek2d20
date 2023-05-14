@@ -1,8 +1,9 @@
 import EarCatalog from "./model/earCatalog";
 import EyeCatalog from "./model/eyeCatalog";
-import HairCatalog from "./model/hairCatalog";
+import HairCatalog, { HairElement } from "./model/hairCatalog";
 import HeadCatalog from "./model/headCatalog";
 import MouthCatalog from "./model/mouthCatalog";
+import NasoLabialFoldCatalog from "./model/nasoLabialFoldCatalog";
 import NoseCatalog from "./model/noseCatalog";
 import RankIndicatorCatalog from "./model/rankIndicatorCatalog";
 import { Token } from "./model/token";
@@ -25,13 +26,16 @@ export class TokenSvgBuilder {
         + "<g id=\"background\"" + (rounded ? " clip-path=\"url(#clipPath)\"" : "") + " >" +
             `<rect width="400px" height="400px" x="0" y="0" fill="white"/>` +
             "<g"  + (rounded ? " transform=\"translate(-60,0)\"" : "") + ">" +
+            HairCatalog.instance.getHair(token, HairElement.BehindHead) +
             UniformCatalog.instance.getBody(token) +
             HeadCatalog.instance.getHead(token) +
             RankIndicatorCatalog.instance.getRankIndicator(token) +
             MouthCatalog.instance.getMouth(token) +
+            NasoLabialFoldCatalog.instance.getNasoLabialFold(token) +
             NoseCatalog.instance.getNose(token) +
-            HairCatalog.instance.getHair(token) +
+            HairCatalog.instance.getHair(token, HairElement.BehindEars) +
             EarCatalog.instance.getEar(token) +
+            HairCatalog.instance.getHair(token, HairElement.CoveringEars) +
             EyeCatalog.instance.getEyes(token) +
             "</g>" +
         "</g>"

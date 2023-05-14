@@ -5,5 +5,6 @@ export enum EyeType {
     Eye3,
     Eye4,
     Eye5,
-    Eye6
+    Eye6,
+    Eye7
 }
