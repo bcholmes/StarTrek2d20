@@ -17,6 +17,8 @@ import MouthSelectionView from './view/mouthSelectionView';
 import HairSelectionView from './view/hairSelectionView';
 import HeadSelectionView from './view/headSelectionView';
 import EyeSelectionView from './view/eyeSelectionView';
+import { RankIndicator } from './model/rankIndicatorEnum';
+import { DivisionColors } from './model/divisionColors';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -169,9 +171,9 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
             height: 400,
             svg: TokenSvgBuilder.createSvg(this.props.token, this.state.rounded, this.state.bordered && this.state.rounded)
         }).then((png) => {
-
-            download(png, "token.png", "image/png");
-
+            let division = DivisionColors.getDivision(this.props.token.uniformEra, this.props.token.divisionColor);
+            let name = "token-" + (division != null ? (division + "-") : "") + RankIndicator[this.props.token.rankIndicator] + ".png";
+            download(png, name, "image/png");
         });
     }
 

@@ -179,7 +179,7 @@ class UniformCatalog {
         new Swatch(BodyType.Body2, "Heftier Body", (token) => UniformCatalog.decorateSwatch(DominionWarBody2, BodyType.Body2, token)),
         new Swatch(BodyType.Body3, "Slighter Body", (token) => UniformCatalog.decorateSwatch(DominionWarBody3, BodyType.Body3, token)),
         new Swatch(BodyType.Body4, "Muscular Body", (token) => UniformCatalog.decorateSwatch(DominionWarBody4, BodyType.Body4, token)),
-        new Swatch(BodyType.Body5, "Average", (token) => UniformCatalog.decorateSwatch(DominionWarBody4, BodyType.Body5, token)),
+        new Swatch(BodyType.Body5, "Average", (token) => UniformCatalog.decorateSwatch(DominionWarBody5, BodyType.Body5, token)),
     ];
 
     public static get instance() {
