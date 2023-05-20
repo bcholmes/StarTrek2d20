@@ -37,12 +37,13 @@ class SpeciesOptions {
             "#f1eae4", "#f4f3f1", "#e1ddda",
 
             "#d0c7e2", "#bcb8db", "#8180bc", "#6d6aaf", "#514fa3", "#352f8f", "#3d387a",
-            "#f8edf3", "#f2d7e0", "#e8c2cf", "#dea9bb", "#dca7b9", "#d6a1b3", "#a67a89"
+            "#f8edf3", "#f2d7e0", "#e8c2cf", "#dea9bb", "#dca7b9", "#d6a1b3", "#a67a89",
+            "#91f086", "#48bf53", "#11823b", "#004d25", "#02231c", "#c9df8a", "#77ab59", "#36802d", "#234d20"
         ];
     }
 
     static getHairTypes(species: Species) {
-        if (species === Species.Deltan) {
+        if (species === Species.Deltan || species === Species.Bolian) {
             return [ HairType.Bald ];
         } else {
             return allHairTypes;
