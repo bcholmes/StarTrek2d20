@@ -26,6 +26,12 @@ const SubtleNasoLabial = `<g>
     <path style="fill:#000000;fill-opacity:0.2;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 327.36647,171.74306 c 0,0 3.16486,5.41198 4.01493,7.37068 0.85007,1.9587 2.15728,5.75274 2.15728,5.75274 0,0 0.85043,-2.66246 -10e-6,-4.67409 -0.85044,-2.01163 -6.1722,-8.44933 -6.1722,-8.44933 z" id="path33736"/>
 </g>`
 
+const CherubicNasoLabial = `<g>
+    <path style="fill:#000000;fill-opacity:0.2;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 278.59873,180.95541 c 0,0 3.0991,-0.21357 4.3949,-0.38216 1.2958,-0.16859 2.78549,-0.28559 4.01274,-0.63694 1.22725,-0.35135 2.36357,-0.82127 3.3121,-1.40128 0.94853,-0.58001 1.65584,-1.27982 2.35669,-1.97452 0.70085,-0.6947 1.06392,-1.18408 1.84713,-2.16561 0.78321,-0.98153 2.80255,-3.75796 2.80255,-3.75796 0,0 -1.02571,2.48542 -1.78344,3.82166 -0.75773,1.33624 -1.51461,2.5027 -2.67516,3.56688 -1.16055,1.06418 -2.20023,1.84159 -3.75796,2.35668 -1.55773,0.51509 -3.92579,0.94623 -5.5414,0.95542 -1.61561,0.009 -4.96815,-0.38217 -4.96815,-0.38217 z" id="path2"/>
+    <path style="fill:#000000;fill-opacity:0.2;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 326.65059,172.91448 c 0,0 1.17909,2.39274 2.07553,3.51864 0.89644,1.1259 2.20396,2.67134 3.2484,3.43949 1.04444,0.76815 1.83326,1.05764 2.73886,1.33758 0.9056,0.27994 2.70154,0.29208 2.70154,0.29208 0,0 -1.75301,-0.42253 -2.63785,-0.80164 -0.88484,-0.37911 -1.54458,-0.64755 -2.5587,-1.40127 -1.01412,-0.75372 -2.25624,-2.27018 -3.16605,-3.29345 -0.90981,-1.02327 -2.40173,-3.09143 -2.40173,-3.09143 z" id="path3"/>
+    <path style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 297.19745,170.76433 c 0,0 -1.52838,2.27924 -2.42038,3.3758 -0.89201,1.09656 -1.95655,2.34342 -2.92994,3.18471 -0.97339,0.84129 -2.80254,1.91083 -2.80254,1.91083 0,0 1.97643,-0.89045 2.99363,-1.71975 1.0172,-0.8293 2.07087,-2.18126 2.92994,-3.3121 0.85906,-1.13084 2.22929,-3.43949 2.22929,-3.43949 z" id="path4"/>
+    <path style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 326.66532,172.85833 c 0,0 0.70882,1.34664 1.171,2.07178 0.46218,0.72514 1.48628,2.20689 1.48628,2.20689 0,0 -1.16632,-1.42554 -1.62139,-2.16185 -0.45507,-0.73631 -1.03589,-2.11682 -1.03589,-2.11682 z" id="path5"/>
+</g>`;
 
 class NasoLabialFoldCatalog {
 
@@ -35,6 +41,7 @@ class NasoLabialFoldCatalog {
         new Swatch(NasoLabialFoldType.None, "None", NasoLabialFoldCatalog.decorateSwatch("")),
         new Swatch(NasoLabialFoldType.Subtle, "Subtle", NasoLabialFoldCatalog.decorateSwatch(SubtleNasoLabial)),
         new Swatch(NasoLabialFoldType.Meaney, "Subtle, Wide", NasoLabialFoldCatalog.decorateSwatch(MeaneyNasoLabial)),
+        new Swatch(NasoLabialFoldType.Cherubic, "Cherubic", NasoLabialFoldCatalog.decorateSwatch(CherubicNasoLabial)),
         new Swatch(NasoLabialFoldType.Nimoy, "Haughty", NasoLabialFoldCatalog.decorateSwatch(NimoyNasoLabial)),
         new Swatch(NasoLabialFoldType.Lewis, "Pronounced", NasoLabialFoldCatalog.decorateSwatch(LewisNasoLabial)),
 //        new Swatch(MouthType.Mouth3, "Medium Lip Frowning", NasoLabialFoldCatalog.decorateSwatch(MediumLip2)),
@@ -55,6 +62,8 @@ class NasoLabialFoldCatalog {
             return NimoyNasoLabial;
         } else if (token.nasoLabialFold === NasoLabialFoldType.Subtle) {
             return SubtleNasoLabial;
+        } else if (token.nasoLabialFold === NasoLabialFoldType.Cherubic) {
+            return CherubicNasoLabial;
         } else if (token.nasoLabialFold === NasoLabialFoldType.Meaney) {
             return MeaneyNasoLabial;
         } else if (token.nasoLabialFold === NasoLabialFoldType.Lewis) {

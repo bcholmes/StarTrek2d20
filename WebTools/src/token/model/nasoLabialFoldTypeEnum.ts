@@ -1,5 +1,5 @@
 
 
 export enum NasoLabialFoldType {
-    None, Subtle, Nimoy, Meaney, Lewis
+    None, Subtle, Cherubic, Nimoy, Meaney, Lewis
 }

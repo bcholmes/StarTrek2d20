@@ -39,10 +39,10 @@ export class TokenSvgBuilder {
             MouthCatalog.instance.getMouth(token) +
             NasoLabialFoldCatalog.instance.getNasoLabialFold(token) +
             NoseCatalog.instance.getNose(token) +
+            EyeCatalog.instance.getEyes(token) +
             HairCatalog.instance.getHair(token, HairElement.BehindEars) +
             EarCatalog.instance.getEar(token) +
             HairCatalog.instance.getHair(token, HairElement.CoveringEars) +
-            EyeCatalog.instance.getEyes(token) +
             "</g>" +
         "</g>"
 
