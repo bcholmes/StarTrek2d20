@@ -23,7 +23,7 @@ class EyeSelectionView extends React.Component<IEyeSelectionViewProperties, {}> 
 
             <p className="mt-4">Eye Style:</p>
             <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-            {EyeCatalog.instance.swatches.map(s => <SwatchButton svg={s.svg} title={s.name}
+            {EyeCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.name}
                 onClick={() => store.dispatch(setTokenEyeType(s.id))} active={this.props.token.eyeType === s.id}
                 token={this.props.token}
                 key={'eye-swatch-' + s.id }/>)}
