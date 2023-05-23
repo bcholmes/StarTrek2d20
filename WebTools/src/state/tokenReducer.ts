@@ -11,7 +11,7 @@ import { RankIndicator } from "../token/model/rankIndicatorEnum";
 import SpeciesOptions from "../token/model/speciesOptions";
 import { Token } from "../token/model/token";
 import { UniformEra } from "../token/model/uniformEra";
-import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EYE_COLOR, SET_TOKEN_EYE_TYPE, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NASO_LABIAL_FOLD_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES } from "./tokenActions";
+import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EYE_COLOR, SET_TOKEN_EYE_TYPE, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_LIPSTICK_COLOR, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NASO_LABIAL_FOLD_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES } from "./tokenActions";
 
 const initialState = {
     species: Species.Human,
@@ -27,7 +27,8 @@ const initialState = {
     mouthType: MouthType.Mouth2,
     uniformEra: UniformEra.DominionWar,
     bodyType: BodyType.Body1,
-    nasoLabialFold: NasoLabialFoldType.None
+    nasoLabialFold: NasoLabialFoldType.None,
+    lipstickColor: SpeciesOptions.DEFAULT_LIPSTICK_COLOR
 }
 
 const token = (state: Token = initialState, action) => {
@@ -111,6 +112,11 @@ const token = (state: Token = initialState, action) => {
         return {
             ...state,
             hairColor: action.payload.color
+        }
+    case SET_TOKEN_LIPSTICK_COLOR:
+        return {
+            ...state,
+            lipstickColor: action.payload.color
         }
     case SET_TOKEN_SKIN_COLOR:
         return {

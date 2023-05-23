@@ -24,4 +24,5 @@ export interface Token {
     eyeColor: string;
     eyeType: EyeType;
     mouthType: MouthType;
+    lipstickColor: string;
 }

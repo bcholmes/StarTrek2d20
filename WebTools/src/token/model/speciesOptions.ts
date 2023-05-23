@@ -10,6 +10,8 @@ class SpeciesOptions {
 
     static DEFAULT_HAIR_COLOR = "#383838";
 
+    static DEFAULT_LIPSTICK_COLOR = "#a9777a";
+
     static getSkinColors(species: Species) {
         if (species === Species.Orion) {
             return ["#a2b152", "#8e932f", "#8f8f0b", "#838218", "#7a863a", "#6f7f36", "#6b764c", "#697543", "#5d6937", "#5a6135", "#4c4c1a", "#414b26"];
@@ -40,6 +42,15 @@ class SpeciesOptions {
             "#f8edf3", "#f2d7e0", "#e8c2cf", "#dea9bb", "#dca7b9", "#d6a1b3", "#a67a89",
             "#c9df8a", "#77ab59", "#11823b", "#36802d", "#234d20", "#004d25", "#02231c",
         ];
+    }
+
+    static getLipstickColors(species: Species) {
+        return ["#a9777a", "#8f575a", "#783d53", "#852d67", "#81152b",
+            "#e1272a", "#c5232e", "#e02d40", "#9e2632", "#95242a",
+            "#c77f70", "#e45e69", "#ce5c56", "#c24853", "#e92154",
+            "#e595bf", "#ef4b8c", "#e856bb", "#ac4f7e", "#be2d70",
+            "#c36f93", "#ca6a85", "#cd5d89", "#a63f5c", "#ad4f5d",
+            "#de928f", "#ec909b", "#e2889e", "#d67788", "#c89898"];
     }
 
     static getHairTypes(species: Species) {

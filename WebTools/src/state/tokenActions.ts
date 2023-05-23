@@ -21,6 +21,7 @@ export const SET_TOKEN_NOSE_TYPE = 'SET_TOKEN_NOSE_TYPE';
 export const SET_TOKEN_MOUTH_TYPE = 'SET_TOKEN_MOUTH_TYPE';
 export const SET_TOKEN_BODY_TYPE = 'SET_TOKEN_BODY_TYPE';
 export const SET_TOKEN_EYE_TYPE = 'SET_TOKEN_EYE_TYPE';
+export const SET_TOKEN_LIPSTICK_COLOR = 'SET_TOKEN_LIPSTICK_COLOR';
 
 export function setTokenSpecies(species: Species) {
     let payload = { species: species };
@@ -66,6 +67,14 @@ export function setTokenHairColor(color: string) {
     let payload = { color: color };
     return {
        type: SET_TOKEN_HAIR_COLOR,
+       payload: payload
+    }
+}
+
+export function setTokenLipstickColor(color: string) {
+    let payload = { color: color };
+    return {
+       type: SET_TOKEN_LIPSTICK_COLOR,
        payload: payload
     }
 }
