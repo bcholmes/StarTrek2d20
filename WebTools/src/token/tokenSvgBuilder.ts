@@ -1,5 +1,6 @@
 import EarCatalog from "./model/earCatalog";
 import EyeCatalog from "./model/eyeCatalog";
+import FacialHairCatalog from "./model/facialHairCatalog";
 import HairCatalog, { HairElement } from "./model/hairCatalog";
 import HeadCatalog from "./model/headCatalog";
 import MouthCatalog from "./model/mouthCatalog";
@@ -34,10 +35,11 @@ export class TokenSvgBuilder {
             "<g"  + (rounded ? " transform=\"translate(-60,0)\"" : "") + ">" +
             HairCatalog.instance.getHair(token, HairElement.BehindHead) +
             UniformCatalog.instance.getBody(token) +
-            HeadCatalog.instance.getHead(token) +
             RankIndicatorCatalog.instance.getRankIndicator(token) +
-            MouthCatalog.instance.getMouth(token) +
+            HeadCatalog.instance.getHead(token) +
             NasoLabialFoldCatalog.instance.getNasoLabialFold(token) +
+            FacialHairCatalog.instance.getFacialHair(token) +
+            MouthCatalog.instance.getMouth(token) +
             NoseCatalog.instance.getNose(token) +
             EyeCatalog.instance.getEyes(token) +
             HairCatalog.instance.getHair(token, HairElement.BehindEars) +

@@ -2,6 +2,7 @@ import { Species } from "../helpers/speciesEnum";
 import { BodyType } from "../token/model/bodyTypeEnum";
 import { DivisionColors } from "../token/model/divisionColors";
 import { EyeType } from "../token/model/eyeTypeEnum";
+import { FacialHairType } from "../token/model/facialHairEnum";
 import { HairType } from "../token/model/hairTypeEnum";
 import { HeadType } from "../token/model/headTypeEnum";
 import { MouthType } from "../token/model/mouthTypeEnum";
@@ -11,7 +12,7 @@ import { RankIndicator } from "../token/model/rankIndicatorEnum";
 import SpeciesOptions from "../token/model/speciesOptions";
 import { Token } from "../token/model/token";
 import { UniformEra } from "../token/model/uniformEra";
-import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EYE_COLOR, SET_TOKEN_EYE_TYPE, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_LIPSTICK_COLOR, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NASO_LABIAL_FOLD_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES } from "./tokenActions";
+import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EYE_COLOR, SET_TOKEN_EYE_TYPE, SET_TOKEN_FACIAL_HAIR_TYPE, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_LIPSTICK_COLOR, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NASO_LABIAL_FOLD_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES } from "./tokenActions";
 
 const initialState = {
     species: Species.Human,
@@ -28,7 +29,8 @@ const initialState = {
     uniformEra: UniformEra.DominionWar,
     bodyType: BodyType.Body1,
     nasoLabialFold: NasoLabialFoldType.None,
-    lipstickColor: SpeciesOptions.DEFAULT_LIPSTICK_COLOR
+    lipstickColor: SpeciesOptions.DEFAULT_LIPSTICK_COLOR,
+    facialHairType: []
 }
 
 const token = (state: Token = initialState, action) => {
@@ -102,6 +104,11 @@ const token = (state: Token = initialState, action) => {
         return {
             ...state,
             mouthType: action.payload.mouthType
+        }
+    case SET_TOKEN_FACIAL_HAIR_TYPE:
+        return {
+            ...state,
+            facialHairType: action.payload.types
         }
     case SET_TOKEN_EYE_COLOR:
         return {

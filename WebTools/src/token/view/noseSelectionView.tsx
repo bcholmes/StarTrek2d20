@@ -18,7 +18,7 @@ class NoseSelectionView extends React.Component<INoseSelectionViewProperties, {}
         return (<>
         <p className="mt-4">Nose:</p>
         <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-        {NoseCatalog.instance.swatches.map(s => <SwatchButton svg={s.svg} title={s.name}
+        {NoseCatalog.instance.getSwatches(this.props.token).map(s => <SwatchButton svg={s.svg} title={s.name}
             onClick={() => store.dispatch(setTokenNoseType(s.id))} active={this.props.token.noseType === s.id}
             token={this.props.token}
             key={'nose-swatch-' + s.id }/>)}

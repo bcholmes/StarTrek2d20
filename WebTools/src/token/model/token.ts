@@ -1,6 +1,7 @@
 import { Species } from "../../helpers/speciesEnum";
 import { BodyType } from "./bodyTypeEnum";
 import { EyeType } from "./eyeTypeEnum";
+import { FacialHairType } from "./facialHairEnum";
 import { HairType } from "./hairTypeEnum";
 import { HeadType } from "./headTypeEnum";
 import { MouthType } from "./mouthTypeEnum";
@@ -25,4 +26,5 @@ export interface Token {
     eyeType: EyeType;
     mouthType: MouthType;
     lipstickColor: string;
+    facialHairType: FacialHairType[];
 }

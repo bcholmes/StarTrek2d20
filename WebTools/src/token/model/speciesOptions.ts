@@ -9,12 +9,15 @@ class SpeciesOptions {
     static DEFAULT_SKIN_COLOR_REGEX = /#cd976d/g;
 
     static DEFAULT_HAIR_COLOR = "#383838";
+    static DEFAULT_HAIR_COLOR_REGEX = /#383838/g;
 
     static DEFAULT_LIPSTICK_COLOR = "#a9777a";
 
     static getSkinColors(species: Species) {
         if (species === Species.Orion) {
             return ["#a2b152", "#8e932f", "#8f8f0b", "#838218", "#7a863a", "#6f7f36", "#6b764c", "#697543", "#5d6937", "#5a6135", "#4c4c1a", "#414b26"];
+        } else if (species === Species.Bolian) {
+            return ["#a7b2df", "#87acda", "#5883a6", "#5772b7", "#385f8d"]; // "#597986",
         } else {
             return ["#F8E0DE", "#F4D5CA", "#CEB29C", "#CAA18B", SpeciesOptions.DEFAULT_SKIN_COLOR, "#AB7D5C", "#9B7A57", "#8C644A", "#704A35", "#53382D", "#473028"];
         }
