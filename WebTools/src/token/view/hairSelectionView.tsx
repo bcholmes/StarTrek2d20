@@ -7,7 +7,7 @@ import HairCatalog from "../model/hairCatalog";
 import store from "../../state/store";
 import { setTokenHairColor, setTokenHairType } from "../../state/tokenActions";
 import ColorSelection from "./colorSelection";
-import SpeciesOptions from "../model/speciesOptions";
+import SpeciesRestrictions from "../model/speciesRestrictions";
 
 interface IHairSelectionViewProperties extends WithTranslation {
     token: Token;
@@ -19,7 +19,7 @@ class HairSelectionView extends React.Component<IHairSelectionViewProperties, {}
         const { token } = this.props;
         return (<>
             <p className="mt-4">Hair Color:</p>
-            <ColorSelection colors={SpeciesOptions.getHairColors(token.species)} onSelection={(c) => store.dispatch(setTokenHairColor(c))} />
+            <ColorSelection colors={SpeciesRestrictions.getHairColors(token.species)} onSelection={(c) => store.dispatch(setTokenHairColor(c))} />
 
             <p className="mt-4">Hair Style:</p>
             <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>

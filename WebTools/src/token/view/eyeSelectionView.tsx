@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import store from "../../state/store";
 import { setTokenEyeColor, setTokenEyeType } from "../../state/tokenActions";
 import ColorSelection from "./colorSelection";
-import SpeciesOptions from "../model/speciesOptions";
+import SpeciesRestrictions from "../model/speciesRestrictions";
 import EyeCatalog from "../model/eyeCatalog";
 import SwatchButton from "./swatchButton";
 
@@ -19,7 +19,7 @@ class EyeSelectionView extends React.Component<IEyeSelectionViewProperties, {}> 
         const { token } = this.props;
         return (<>
             <p className="mt-4">Eye Color:</p>
-            <ColorSelection colors={SpeciesOptions.getEyeColors(token.species)} onSelection={(c) => store.dispatch(setTokenEyeColor(c))} />
+            <ColorSelection colors={SpeciesRestrictions.getEyeColors(token.species)} onSelection={(c) => store.dispatch(setTokenEyeColor(c))} />
 
             <p className="mt-4">Eye Style:</p>
             <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>

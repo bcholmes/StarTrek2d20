@@ -9,46 +9,48 @@ import { MouthType } from "../token/model/mouthTypeEnum";
 import { NasoLabialFoldType } from "../token/model/nasoLabialFoldTypeEnum";
 import { NoseType } from "../token/model/noseTypeEnum";
 import { RankIndicator } from "../token/model/rankIndicatorEnum";
-import SpeciesOptions from "../token/model/speciesOptions";
+import { SpeciesOption } from "../token/model/speciesOptionEnum";
+import SpeciesRestrictions from "../token/model/speciesRestrictions";
 import { Token } from "../token/model/token";
 import { UniformEra } from "../token/model/uniformEra";
-import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EYE_COLOR, SET_TOKEN_EYE_TYPE, SET_TOKEN_FACIAL_HAIR_TYPE, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_LIPSTICK_COLOR, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NASO_LABIAL_FOLD_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES } from "./tokenActions";
+import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EYE_COLOR, SET_TOKEN_EYE_TYPE, SET_TOKEN_FACIAL_HAIR_TYPE, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_LIPSTICK_COLOR, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NASO_LABIAL_FOLD_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES, SET_TOKEN_SPECIES_OPTION } from "./tokenActions";
 
 const initialState = {
     species: Species.Human,
     divisionColor: DivisionColors.getColors(UniformEra.DominionWar)[0],
-    skinColor: SpeciesOptions.DEFAULT_SKIN_COLOR,
+    skinColor: SpeciesRestrictions.DEFAULT_SKIN_COLOR,
     headType: HeadType.StandardMale,
     rankIndicator: RankIndicator.None,
     hairType: HairType.DeLeve,
-    hairColor: SpeciesOptions.DEFAULT_HAIR_COLOR,
-    eyeColor: SpeciesOptions.getDefaultEyeColor(Species.Human),
+    hairColor: SpeciesRestrictions.DEFAULT_HAIR_COLOR,
+    eyeColor: SpeciesRestrictions.getDefaultEyeColor(Species.Human),
     eyeType: EyeType.Eye3,
     noseType: NoseType.StraightBasic,
     mouthType: MouthType.Mouth2,
     uniformEra: UniformEra.DominionWar,
     bodyType: BodyType.Body1,
     nasoLabialFold: NasoLabialFoldType.None,
-    lipstickColor: SpeciesOptions.DEFAULT_LIPSTICK_COLOR,
-    facialHairType: []
+    lipstickColor: SpeciesRestrictions.DEFAULT_LIPSTICK_COLOR,
+    facialHairType: [],
+    speciesOption: SpeciesOption.Option1
 }
 
 const token = (state: Token = initialState, action) => {
     switch (action.type) {
     case SET_TOKEN_SPECIES: {
         let skinColor = state.skinColor;
-        let palette = SpeciesOptions.getSkinColors(action.payload.species);
+        let palette = SpeciesRestrictions.getSkinColors(action.payload.species);
         if (palette.indexOf(skinColor) < 0) {
             skinColor = palette[Math.floor(palette.length / 2)];
         }
         let hairType = state.hairType;
-        let hairTypes = SpeciesOptions.getHairTypes(action.payload.species);
+        let hairTypes = SpeciesRestrictions.getHairTypes(action.payload.species);
         if (hairTypes.indexOf(hairType) < 0) {
             hairType = hairTypes[0];
         }
 
         let eyeColor = state.eyeColor;
-        let speciesEyeColours = SpeciesOptions.getEyeColors(action.payload.species);
+        let speciesEyeColours = SpeciesRestrictions.getEyeColors(action.payload.species);
         if (speciesEyeColours.indexOf(eyeColor) < 0) {
             eyeColor = speciesEyeColours[Math.floor(speciesEyeColours.length / 2)];
         }
@@ -129,6 +131,11 @@ const token = (state: Token = initialState, action) => {
         return {
             ...state,
             skinColor: action.payload.color
+        }
+    case SET_TOKEN_SPECIES_OPTION:
+        return {
+            ...state,
+            speciesOption: action.payload.option
         }
     default:
         return state;

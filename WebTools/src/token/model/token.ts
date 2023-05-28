@@ -8,6 +8,7 @@ import { MouthType } from "./mouthTypeEnum";
 import { NasoLabialFoldType } from "./nasoLabialFoldTypeEnum";
 import { NoseType } from "./noseTypeEnum";
 import { RankIndicator } from "./rankIndicatorEnum";
+import { SpeciesOption } from "./speciesOptionEnum";
 import { UniformEra } from "./uniformEra";
 
 export interface Token {
@@ -27,4 +28,5 @@ export interface Token {
     mouthType: MouthType;
     lipstickColor: string;
     facialHairType: FacialHairType[];
+    speciesOption: SpeciesOption;
 }

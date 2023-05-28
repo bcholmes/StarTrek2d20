@@ -1,6 +1,6 @@
 import EarCatalog from "./model/earCatalog";
 import EyeCatalog from "./model/eyeCatalog";
-import FacialHairCatalog from "./model/facialHairCatalog";
+import FacialHairCatalog, { FacialHairPlacement } from "./model/facialHairCatalog";
 import HairCatalog, { HairElement } from "./model/hairCatalog";
 import HeadCatalog from "./model/headCatalog";
 import MouthCatalog from "./model/mouthCatalog";
@@ -38,8 +38,9 @@ export class TokenSvgBuilder {
             RankIndicatorCatalog.instance.getRankIndicator(token) +
             HeadCatalog.instance.getHead(token) +
             NasoLabialFoldCatalog.instance.getNasoLabialFold(token) +
-            FacialHairCatalog.instance.getFacialHair(token) +
+            FacialHairCatalog.instance.getFacialHair(token, FacialHairPlacement.Chin) +
             MouthCatalog.instance.getMouth(token) +
+            FacialHairCatalog.instance.getFacialHair(token, FacialHairPlacement.UpperLip) +
             NoseCatalog.instance.getNose(token) +
             EyeCatalog.instance.getEyes(token) +
             HairCatalog.instance.getHair(token, HairElement.BehindEars) +
@@ -56,6 +57,7 @@ export class TokenSvgBuilder {
 
     private static createBorder(token: Token) {
         return "<circle cx=\"200px\" cy=\"200px\" r=\"190px\" stroke=\"" + token.divisionColor + "\" stroke-width=\"20px\" />"
+            + "<circle cx=\"200px\" cy=\"200px\" r=\"180px\" stroke=\"black\" stroke-width=\"2px\" />"
             + RankIndicatorCatalog.instance.getBorderRankIndicator(token)
             + DominionWarCommbadge;
     }

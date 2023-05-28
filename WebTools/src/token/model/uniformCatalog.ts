@@ -1,5 +1,5 @@
 import { BodyType } from "./bodyTypeEnum";
-import SpeciesOptions from "./speciesOptions";
+import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
 import { Token } from "./token";
 import { UniformEra } from "./uniformEra";
@@ -236,7 +236,7 @@ class UniformCatalog {
             result = DominionWarBody6;
         }
 
-        return result.replace(DefaultRed, token.divisionColor).replace(SpeciesOptions.DEFAULT_SKIN_COLOR, token.skinColor);
+        return result.replace(DefaultRed, token.divisionColor).replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR, token.skinColor);
     }
 
     getSwatches(uniformEra: UniformEra) {
@@ -252,7 +252,7 @@ class UniformCatalog {
                 </defs>
                 <g clip-path="url(#clipPath` + type + `">
                     <g transform="translate(-70, -130)">`
-                    + svg.replace(DefaultRed, token.divisionColor).replace(SpeciesOptions.DEFAULT_SKIN_COLOR, token.skinColor)
+                    + svg.replace(DefaultRed, token.divisionColor).replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR, token.skinColor)
                 + `</g>
                 </g>
             </svg>`;

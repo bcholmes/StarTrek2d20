@@ -19,6 +19,8 @@ import HeadSelectionView from './view/headSelectionView';
 import EyeSelectionView from './view/eyeSelectionView';
 import { RankIndicator } from './model/rankIndicatorEnum';
 import { DivisionColors } from './model/divisionColors';
+import { SpeciesHelper } from '../helpers/species';
+import { Species } from '../helpers/speciesEnum';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -172,7 +174,9 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
             svg: TokenSvgBuilder.createSvg(this.props.token, this.state.rounded, this.state.bordered && this.state.rounded)
         }).then((png) => {
             let division = DivisionColors.getDivision(this.props.token.uniformEra, this.props.token.divisionColor);
-            let name = "token-" + (division != null ? (division + "-") : "") + RankIndicator[this.props.token.rankIndicator] + ".png";
+            let species = SpeciesHelper.getSpeciesByType(this.props.token.species);
+            let speciesName = species.name.replace(/[ ()’\']/g, "");
+            let name = "token-" + speciesName + "-" + (division != null ? (division + "-") : "") + RankIndicator[this.props.token.rankIndicator] + ".png";
             download(png, name, "image/png");
         });
     }

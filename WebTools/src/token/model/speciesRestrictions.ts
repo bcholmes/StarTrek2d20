@@ -2,7 +2,7 @@ import { Species } from "../../helpers/speciesEnum";
 import { HairType, allHairTypes } from "./hairTypeEnum";
 
 
-class SpeciesOptions {
+class SpeciesRestrictions {
 
     // default in the sense that "the drawing was originally created using this skin colour"
     static DEFAULT_SKIN_COLOR = "#cd976d";
@@ -17,9 +17,9 @@ class SpeciesOptions {
         if (species === Species.Orion) {
             return ["#a2b152", "#8e932f", "#8f8f0b", "#838218", "#7a863a", "#6f7f36", "#6b764c", "#697543", "#5d6937", "#5a6135", "#4c4c1a", "#414b26"];
         } else if (species === Species.Bolian) {
-            return ["#a7b2df", "#87acda", "#5883a6", "#5772b7", "#385f8d"]; // "#597986",
+            return ["#97c3f2", "#87acda", "#5883a6", "#5772b7", "#0665b3", "#385f8d"]; // "#597986",
         } else {
-            return ["#F8E0DE", "#F4D5CA", "#CEB29C", "#CAA18B", SpeciesOptions.DEFAULT_SKIN_COLOR, "#AB7D5C", "#9B7A57", "#8C644A", "#704A35", "#53382D", "#473028"];
+            return ["#F8E0DE", "#F4D5CA", "#CEB29C", "#CAA18B", SpeciesRestrictions.DEFAULT_SKIN_COLOR, "#AB7D5C", "#9B7A57", "#8C644A", "#704A35", "#53382D", "#473028"];
         }
     }
 
@@ -32,13 +32,13 @@ class SpeciesOptions {
     }
 
     static getDefaultEyeColor(species: Species) {
-        let colours = SpeciesOptions.getEyeColors(species);
+        let colours = SpeciesRestrictions.getEyeColors(species);
         return colours[Math.floor(colours.length / 2)];
     }
 
     static getHairColors(species: Species) {
         return ["#fdf2dc", "#fae9b5", "#f0c882", "#f9c861", "#e9a63d", "#e38732", "#913c13", "#430c05", "#4e0300", "#811002",
-            "#ba260a", "#230703", "#391201", "#722707", "#202020", "#2a2a2a", "#383838", "#37261e", "#706f74", "#a78c6f",
+            "#ba260a", "#230703", "#391201", "#722707", "#202020", "#2a2a2a", SpeciesRestrictions.DEFAULT_HAIR_COLOR, "#37261e", "#706f74", "#a78c6f",
             "#f1eae4", "#f4f3f1", "#e1ddda",
 
             "#d0c7e2", "#bcb8db", "#8180bc", "#6d6aaf", "#514fa3", "#352f8f", "#3d387a",
@@ -65,4 +65,4 @@ class SpeciesOptions {
     }
 }
 
-export default SpeciesOptions;
+export default SpeciesRestrictions;

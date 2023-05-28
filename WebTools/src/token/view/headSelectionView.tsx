@@ -3,7 +3,7 @@ import { Token } from "../model/token";
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { connect } from "react-redux";
 import ColorSelection from "./colorSelection";
-import SpeciesOptions from "../model/speciesOptions";
+import SpeciesRestrictions from "../model/speciesRestrictions";
 import store from "../../state/store";
 import { setTokenHeadType, setTokenSkinColor } from "../../state/tokenActions";
 import HeadCatalog from "../model/headCatalog";
@@ -20,7 +20,7 @@ class HeadSelectionView extends React.Component<IHeadSelectionViewProperties, {}
 
         return (<>
             <p className="mt-4">Skin Color:</p>
-            <ColorSelection colors={SpeciesOptions.getSkinColors(token.species)} onSelection={(c) => store.dispatch(setTokenSkinColor(c))} />
+            <ColorSelection colors={SpeciesRestrictions.getSkinColors(token.species)} onSelection={(c) => store.dispatch(setTokenSkinColor(c))} />
 
             <p className="mt-4">Head Shape:</p>
             <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>

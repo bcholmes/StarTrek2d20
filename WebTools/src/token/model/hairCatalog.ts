@@ -1,7 +1,7 @@
 import { Species } from "../../helpers/speciesEnum";
 import { HairType } from "./hairTypeEnum";
 import { ReferenceHead, SimpleNeck } from "./headCatalog";
-import SpeciesOptions from "./speciesOptions";
+import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
 import { Token } from "./token";
 
@@ -439,8 +439,8 @@ class HairCatalog {
                 <g clip-path="url(#hairClipPath` + hair.id + `">
                     <g transform="translate(-130, 10)">`
                         + (hair.backSvg?.replace(/#383838/g, token.hairColor) ?? "")
-                        + SimpleNeck.replace(SpeciesOptions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor)
-                        + ReferenceHead.replace(SpeciesOptions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor)
+                        + SimpleNeck.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor)
+                        + ReferenceHead.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor)
                         + hair.frontSvg.replace(/#383838/g, token.hairColor)
                 +  `</g>
                 </g>

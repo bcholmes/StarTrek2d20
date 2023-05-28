@@ -1,5 +1,5 @@
 import { Species } from "../../helpers/speciesEnum";
-import SpeciesColors from "./speciesOptions";
+import SpeciesColors from "./speciesRestrictions";
 import { Token } from "./token";
 
 const HumanEar = `<g>

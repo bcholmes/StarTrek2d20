@@ -8,8 +8,10 @@ import { MouthType } from "../token/model/mouthTypeEnum";
 import { NasoLabialFoldType } from "../token/model/nasoLabialFoldTypeEnum";
 import { NoseType } from "../token/model/noseTypeEnum";
 import { RankIndicator } from "../token/model/rankIndicatorEnum";
+import { SpeciesOption } from "../token/model/speciesOptionEnum";
 
 export const SET_TOKEN_SPECIES = 'SET_TOKEN_SPECIES';
+export const SET_TOKEN_SPECIES_OPTION = 'SET_TOKEN_SPECIES_OPTION';
 export const SET_TOKEN_DIVISION_COLOR = 'SET_TOKEN_DIVISION_COLOR';
 export const SET_TOKEN_SKIN_COLOR = 'SET_TOKEN_SKIN_COLOR';
 export const SET_TOKEN_RANK = 'SET_TOKEN_RANK';
@@ -141,6 +143,14 @@ export function setTokenNasoLabialFoldType(type: NasoLabialFoldType) {
     let payload = { type: type };
     return {
        type: SET_TOKEN_NASO_LABIAL_FOLD_TYPE,
+       payload: payload
+    }
+}
+
+export function setTokenSpeciesOption(option: SpeciesOption) {
+    let payload = { option: option };
+    return {
+       type: SET_TOKEN_SPECIES_OPTION,
        payload: payload
     }
 }
