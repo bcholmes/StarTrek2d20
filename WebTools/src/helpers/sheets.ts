@@ -672,10 +672,10 @@ class RomulanCharacterSheet extends BasicFullCharacterSheet {
         return 'Romulan Character Sheet'
     }
     getThumbnailUrl(): string {
-        return '/static/img/sheets/STA_Romulan_Character_Sheet_v1.3.png'
+        return '/static/img/sheets/Romulan.Char.Sheet_v2_1.page_fillable.png'
     }
     getPdfUrl(): string {
-        return '/static/pdf/STA_Romulan_Character_Sheet_v1.3.pdf'
+        return '/static/pdf/Romulan.Char.Sheet_v2_1.page_fillable.pdf'
     }
 
     fillCheckbox(form: PDFForm, name: string, value: boolean) {
@@ -683,6 +683,7 @@ class RomulanCharacterSheet extends BasicFullCharacterSheet {
             const field = form.getCheckBox(name);
             this.fillCheckboxValue(form, field, value);
         } catch (e) {
+            console.log(e);
             // ignore it
         }
     }
