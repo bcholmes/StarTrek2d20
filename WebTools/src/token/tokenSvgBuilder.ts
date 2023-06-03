@@ -1,4 +1,5 @@
 import EarCatalog from "./model/earCatalog";
+import EyeBrowCatalog from "./model/eyeBrowCatalog";
 import EyeCatalog from "./model/eyeCatalog";
 import FacialHairCatalog, { FacialHairPlacement } from "./model/facialHairCatalog";
 import HairCatalog, { HairElement } from "./model/hairCatalog";
@@ -6,6 +7,7 @@ import HeadCatalog from "./model/headCatalog";
 import MouthCatalog from "./model/mouthCatalog";
 import NasoLabialFoldCatalog from "./model/nasoLabialFoldCatalog";
 import NoseCatalog from "./model/noseCatalog";
+import ProstheticCatalog, { ProstheticPlacement } from "./model/prostheticCatalog";
 import RankIndicatorCatalog from "./model/rankIndicatorCatalog";
 import { Token } from "./model/token";
 import UniformCatalog from "./model/uniformCatalog";
@@ -34,6 +36,7 @@ export class TokenSvgBuilder {
             `<rect width="400px" height="400px" x="0" y="0" fill="white"/>` +
             "<g"  + (rounded ? " transform=\"translate(-60,0)\"" : "") + ">" +
             HairCatalog.instance.getHair(token, HairElement.BehindHead) +
+            ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.VeryBack) +
             UniformCatalog.instance.getBody(token) +
             RankIndicatorCatalog.instance.getRankIndicator(token) +
             HeadCatalog.instance.getHead(token) +
@@ -41,11 +44,13 @@ export class TokenSvgBuilder {
             FacialHairCatalog.instance.getFacialHair(token, FacialHairPlacement.Chin) +
             MouthCatalog.instance.getMouth(token) +
             FacialHairCatalog.instance.getFacialHair(token, FacialHairPlacement.UpperLip) +
-            NoseCatalog.instance.getNose(token) +
             EyeCatalog.instance.getEyes(token) +
+            NoseCatalog.instance.getNose(token) +
+            EyeBrowCatalog.instance.getEyeBrows(token) +
             HairCatalog.instance.getHair(token, HairElement.BehindEars) +
             EarCatalog.instance.getEar(token) +
             HairCatalog.instance.getHair(token, HairElement.CoveringEars) +
+            ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.VeryFront) +
             "</g>" +
         "</g>"
 

@@ -2,7 +2,6 @@ import { Species } from "../helpers/speciesEnum";
 import { BodyType } from "../token/model/bodyTypeEnum";
 import { DivisionColors } from "../token/model/divisionColors";
 import { EyeType } from "../token/model/eyeTypeEnum";
-import { FacialHairType } from "../token/model/facialHairEnum";
 import { HairType } from "../token/model/hairTypeEnum";
 import { HeadType } from "../token/model/headTypeEnum";
 import { MouthType } from "../token/model/mouthTypeEnum";
@@ -38,15 +37,27 @@ const initialState = {
 const token = (state: Token = initialState, action) => {
     switch (action.type) {
     case SET_TOKEN_SPECIES: {
+        let newSpecies = action.payload.species;
         let skinColor = state.skinColor;
-        let palette = SpeciesRestrictions.getSkinColors(action.payload.species);
+        let palette = SpeciesRestrictions.getSkinColors(newSpecies);
         if (palette.indexOf(skinColor) < 0) {
             skinColor = palette[Math.floor(palette.length / 2)];
         }
+        let hairColour = state.hairColor;
+        let hairColours = SpeciesRestrictions.getHairColors(newSpecies);
+        if (hairColours.indexOf(hairColour) < 0) {
+            hairColour = hairColours[0];
+        }
+
         let hairType = state.hairType;
-        let hairTypes = SpeciesRestrictions.getHairTypes(action.payload.species);
+        let hairTypes = SpeciesRestrictions.getHairTypes(newSpecies);
         if (hairTypes.indexOf(hairType) < 0) {
             hairType = hairTypes[0];
+        }
+
+        let facialHairType = state.facialHairType;
+        if (!SpeciesRestrictions.isFacialHairSupportedFor(newSpecies)) {
+            facialHairType = [];
         }
 
         let eyeColor = state.eyeColor;
@@ -58,7 +69,9 @@ const token = (state: Token = initialState, action) => {
             ...state,
             eyeColor: eyeColor,
             hairType: hairType,
+            hairColor: hairColour,
             skinColor: skinColor,
+            facialHairType: facialHairType,
             species: action.payload.species
         }
     }

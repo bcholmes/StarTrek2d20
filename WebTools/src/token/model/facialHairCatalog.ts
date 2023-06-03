@@ -1,5 +1,5 @@
 import { FacialHairCategory, FacialHairType } from "./facialHairEnum";
-import MouthCatalog, { DefaultLip } from "./mouthCatalog";
+import { DefaultLip } from "./mouthCatalog";
 import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
 import { Token } from "./token";

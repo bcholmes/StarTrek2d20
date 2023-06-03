@@ -1,5 +1,4 @@
 import { Species } from "../../helpers/speciesEnum";
-import { FacialHairType } from "./facialHairEnum";
 import { MouthType } from "./mouthTypeEnum";
 import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
@@ -164,7 +163,7 @@ class MouthCatalog {
             result = LipstickDownwardLips;
         }
 
-        return result.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor) .replace(/#c14242/g, token.lipstickColor) + philtrum;
+        return result.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor).replace(/#c14242/g, token.lipstickColor) + philtrum;
     }
 
     getSwatches(token: Token) {

@@ -59,6 +59,7 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
                                 hear the faint buzzing.
                             </p>
 
+                            <Header className="my-4" level={2}>Internationalization</Header>
                             <p>
                                 Recently, I've started making the app support more languages than just English: initial support for German, Spanish and French exist, but it'll
                                 take a bit of time to make the whole app multi-lingual. A few folks have been helpful in this process, including the following:
@@ -69,6 +70,14 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
                                 <a href="http://www.daniel-joedemann.de/" target="_blank" rel="noreferrer">Daniel Jödemann</a></p>
                             <p>
                                 If you can help, let me know, and I'd welcome any input you can provide.
+                            </p>
+
+                            <Header className="my-4" level={2}>Token Art</Header>
+
+                            <p>Many of the art images used in the token generator were commissioned from
+                                <a href="http://kacurtis.com/" target="_blank" rel="noreferrer">Keith Curtis</a> (no SSL).
+                                I've sought out work from Keith multiple times; he's a reliable guy.
+                                The terms of the commission allow me to treat these images as open source.
                             </p>
 
                             <Header className="my-4" level={2}>Asked Questions, Possibly Frequently</Header>

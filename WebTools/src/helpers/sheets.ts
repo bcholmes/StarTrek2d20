@@ -683,7 +683,6 @@ class RomulanCharacterSheet extends BasicFullCharacterSheet {
             const field = form.getCheckBox(name);
             this.fillCheckboxValue(form, field, value);
         } catch (e) {
-            console.log(e);
             // ignore it
         }
     }

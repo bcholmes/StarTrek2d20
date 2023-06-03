@@ -9,7 +9,7 @@ import { setTokenFacialHairTypes, setTokenLipstickColor, setTokenMouthType } fro
 import ColorSelection from "./colorSelection";
 import SpeciesRestrictions from "../model/speciesRestrictions";
 import FacialHairCatalog, { FacialHairPlacement } from "../model/facialHairCatalog";
-import { FacialHairCategory, FacialHairType } from "../model/facialHairEnum";
+import { FacialHairType } from "../model/facialHairEnum";
 
 interface IMouthSelectionViewProperties extends WithTranslation {
     token: Token;
@@ -31,23 +31,35 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
             <p className="mt-4">Lipstick Color:</p>
             <ColorSelection colors={SpeciesRestrictions.getLipstickColors(token.species)} onSelection={(c) => store.dispatch(setTokenLipstickColor(c))} />
 
-            <p className="mt-4">Moustache:</p>
-            <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-            {FacialHairCatalog.instance.getSwatches(token, FacialHairPlacement.UpperLip).map(s => <SwatchButton svg={s.svg} title={s.name}
-                onClick={() => this.addFacialHairType(token, s.id)} active={this.getMoustacheType(token) === s.id}
-                token={token}
-                key={'facial-hair-swatch-' + s.id }/>)}
-            </div>
+            {this.renderFacialHair()}
 
-            <p className="mt-4">Beard:</p>
-            <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-            {FacialHairCatalog.instance.getSwatches(token, FacialHairPlacement.Chin).map(s => <SwatchButton svg={s.svg} title={s.name}
-                onClick={() => this.addFacialHairType(token, s.id)} active={this.getBeardTypes(token).indexOf(s.id) >= 0}
-                token={token}
-                key={'facial-hair-swatch-' + s.id }/>)}
-            </div>
 
         </>);
+    }
+
+    renderFacialHair() {
+        const { token } = this.props;
+        if (SpeciesRestrictions.isFacialHairSupportedFor(token.species)) {
+            return (<>
+                <p className="mt-4">Moustache:</p>
+                <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
+                {FacialHairCatalog.instance.getSwatches(token, FacialHairPlacement.UpperLip).map(s => <SwatchButton svg={s.svg} title={s.name}
+                    onClick={() => this.addFacialHairType(token, s.id)} active={this.getMoustacheType(token) === s.id}
+                    token={token}
+                    key={'facial-hair-swatch-' + s.id }/>)}
+                </div>
+
+                <p className="mt-4">Beard:</p>
+                <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
+                {FacialHairCatalog.instance.getSwatches(token, FacialHairPlacement.Chin).map(s => <SwatchButton svg={s.svg} title={s.name}
+                    onClick={() => this.addFacialHairType(token, s.id)} active={this.getBeardTypes(token).indexOf(s.id) >= 0}
+                    token={token}
+                    key={'facial-hair-swatch-' + s.id }/>)}
+                </div>
+            </>);
+        } else {
+            return null;
+        }
     }
 
     addFacialHairType(token: Token, type: FacialHairType) {

@@ -16,6 +16,8 @@ class SpeciesRestrictions {
     static getSkinColors(species: Species) {
         if (species === Species.Orion) {
             return ["#a2b152", "#8e932f", "#8f8f0b", "#838218", "#7a863a", "#6f7f36", "#6b764c", "#697543", "#5d6937", "#5a6135", "#4c4c1a", "#414b26"];
+        } else if (species === Species.Andorian) {
+            return ["#bbb6c7", "#b0c2cc", "#a9d8f4", "#7ca9e0", "#919bd5", "#6e87bf", "#3e8fb8", "#0068a5"];
         } else if (species === Species.Bolian) {
             return ["#97c3f2", "#87acda", "#5883a6", "#5772b7", "#0665b3", "#385f8d"]; // "#597986",
         } else {
@@ -37,14 +39,19 @@ class SpeciesRestrictions {
     }
 
     static getHairColors(species: Species) {
-        return ["#fdf2dc", "#fae9b5", "#f0c882", "#f9c861", "#e9a63d", "#e38732", "#913c13", "#430c05", "#4e0300", "#811002",
-            "#ba260a", "#230703", "#391201", "#722707", "#202020", "#2a2a2a", SpeciesRestrictions.DEFAULT_HAIR_COLOR, "#37261e", "#706f74", "#a78c6f",
-            "#f1eae4", "#f4f3f1", "#e1ddda",
+        if (species === Species.Andorian) {
+            return ["#fdf2dc", "#f8edf3", "#bbbbbb", "#dddddd" ];
+        } else {
 
-            "#d0c7e2", "#bcb8db", "#8180bc", "#6d6aaf", "#514fa3", "#352f8f", "#3d387a",
-            "#f8edf3", "#f2d7e0", "#e8c2cf", "#dea9bb", "#dca7b9", "#d6a1b3", "#a67a89",
-            "#c9df8a", "#77ab59", "#11823b", "#36802d", "#234d20", "#004d25", "#02231c",
-        ];
+            return ["#fdf2dc", "#fae9b5", "#f0c882", "#f9c861", "#e9a63d", "#e38732", "#913c13", "#430c05", "#4e0300", "#811002",
+                "#ba260a", "#230703", "#391201", "#722707", "#202020", "#2a2a2a", SpeciesRestrictions.DEFAULT_HAIR_COLOR, "#37261e", "#706f74", "#a78c6f",
+                "#f1eae4", "#f4f3f1", "#e1ddda",
+
+                "#d0c7e2", "#bcb8db", "#8180bc", "#6d6aaf", "#514fa3", "#352f8f", "#3d387a",
+                "#f8edf3", "#f2d7e0", "#e8c2cf", "#dea9bb", "#dca7b9", "#d6a1b3", "#a67a89",
+                "#c9df8a", "#77ab59", "#11823b", "#36802d", "#234d20", "#004d25", "#02231c",
+            ];
+        }
     }
 
     static getLipstickColors(species: Species) {
@@ -62,6 +69,10 @@ class SpeciesRestrictions {
         } else {
             return allHairTypes;
         }
+    }
+
+    static isFacialHairSupportedFor(species: Species) {
+        return species !== Species.Deltan && species !== Species.Bolian;
     }
 }
 

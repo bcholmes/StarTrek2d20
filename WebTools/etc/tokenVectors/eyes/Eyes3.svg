@@ -8,7 +8,7 @@
    height="400"
    viewBox="0 0 400 400"
    sodipodi:docname="Eyes3.svg"
-   inkscape:version="1.3-alpha (95f74fb, 2023-03-31)"
+   inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -25,15 +25,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="8.34386"
-     inkscape:cx="308.61016"
-     inkscape:cy="140.94196"
+     inkscape:zoom="24.805306"
+     inkscape:cx="274.53804"
+     inkscape:cy="130.19392"
      inkscape:window-width="1929"
      inkscape:window-height="1097"
      inkscape:window-x="2249"
-     inkscape:window-y="180"
+     inkscape:window-y="152"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g4">
+     inkscape:current-layer="layer1">
     <inkscape:page
        x="0"
        y="0"
@@ -120,7 +120,7 @@
      inkscape:groupmode="layer"
      id="layer1"
      inkscape:label="Standard Brows"
-     style="display:none">
+     style="display:inline">
     <path
        id="path193172"
        style="opacity:0.199997;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333"
@@ -131,13 +131,20 @@
        d="m 323.73426,135.75334 c 0,0 4.244,-4.95067 10.256,-5.48133 z m -24.29307,0.8876 c 0,0 -4.52266,-4.84133 -7.87333,-5.67733 -3.35067,-0.83467 -12.732,-1.50267 -14.74133,-0.66667 0,0 11.39066,-0.168 13.904,1.66933 2.512,1.836 9.716,6.344 8.71066,4.67467" />
     <path
        id="path193270"
-       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333"
+       style="fill:#383838;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333"
        d="m 307.79226,123.96867 c 0,0 -1.78667,3.572 -3.572,4.86267 -1.78667,1.29067 -11.716,-2.86133 -17.07467,-3.85333 -5.35866,-0.992 -23.37333,2.96266 -27.54133,5.64133 0,0 8.724,-5.848 12.19733,-7.73333 3.47334,-1.88534 14.48934,-2.16267 18.65734,-0.872 4.168,1.28933 12.412,1.75866 13.90133,1.75866 1.488,0 3.432,0.196 3.432,0.196 m 15.64373,4.09907 c 2.268,-2.268 4.26267,-3.90267 10.10267,-5.03333 5.83866,-1.12934 10.85066,-2.744 12.54533,-0.672 1.696,2.072 1.46133,2.12666 0.14267,3.63333 -1.31867,1.50667 -3.01334,0.94133 -4.332,-0.376 -1.31867,-1.31867 -4.52134,0.188 -9.41733,0.94133 -4.89734,0.75334 -12.432,4.89734 -9.04134,1.50667" />
+    <path
+       id="path29812"
+       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 304.22026,128.83134 c -1.78667,1.29067 -11.716,-2.86133 -17.07467,-3.85333 -5.35866,-0.992 -23.37333,2.96266 -27.54133,5.64133 0,0 8.724,-5.848 12.19733,-7.73333 3.47334,-1.88534 14.48934,-2.16267 18.65734,-0.872 4.168,1.28933 12.412,1.75866 13.90133,1.75866 1.488,0 3.432,0.196 3.432,0.196 0,0 -1.78667,3.572 -3.572,4.86267 z m 29.3184,-5.79693 c 5.83866,-1.12934 10.85066,-2.744 12.54533,-0.672 1.696,2.072 1.46133,2.12666 0.14267,3.63333 -1.31867,1.50667 -3.01334,0.94133 -4.332,-0.376 -1.31867,-1.31867 -4.52134,0.188 -9.41733,0.94133 -4.89734,0.75334 -12.432,4.89734 -9.04134,1.50667 2.268,-2.268 4.26267,-3.90267 10.10267,-5.03333 z"
+       sodipodi:nodetypes="cscscsccccscccc" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="g4"
-     inkscape:label="Vulcan Brows">
+     inkscape:label="Vulcan Brows"
+     sodipodi:insensitive="true"
+     style="display:none">
     <path
        id="path2"
        style="opacity:0.199997;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333"
