@@ -1,5 +1,6 @@
 import { Species } from "../../helpers/speciesEnum";
 import { HairType, allHairTypes } from "./hairTypeEnum";
+import { SpeciesOption } from "./speciesOptionEnum";
 
 
 class SpeciesRestrictions {
@@ -73,6 +74,18 @@ class SpeciesRestrictions {
 
     static isFacialHairSupportedFor(species: Species) {
         return species !== Species.Deltan && species !== Species.Bolian;
+    }
+
+    static isOptionsSupportedFor(species: Species) {
+        return species === Species.Bolian;
+    }
+
+    static getSpeciesOptions(species: Species) {
+        if (species === Species.Bolian) {
+            return [SpeciesOption.Option1, SpeciesOption.Option2];
+        } else {
+            return [SpeciesOption.Option1];
+        }
     }
 }
 

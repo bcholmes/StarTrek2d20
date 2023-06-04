@@ -7,19 +7,45 @@ import { SpeciesHelper } from '../../helpers/species';
 import { DropDownSelect } from '../../components/dropDownInput';
 import { connect } from 'react-redux';
 import store from '../../state/store';
-import { setTokenSpecies } from '../../state/tokenActions';
+import { setTokenSpecies, setTokenSpeciesOption } from '../../state/tokenActions';
+import { Token } from '../model/token';
+import SpeciesRestrictions from '../model/speciesRestrictions';
+import SpeciesOptionCatalog from '../model/speciesOptionCatalog';
+import SwatchButton from './swatchButton';
 
 interface ISpeciesSelectionProperties extends WithTranslation{
-    species: Species;
+    token: Token;
 }
 
 class SpeciesSelectionView extends React.Component<ISpeciesSelectionProperties, {}> {
 
     render() {
+        const { token } = this.props;
         return (
             <div className="mt-4">
-                <DropDownSelect items={this.speciesList()} defaultValue={this.props.species} onChange={(s) => store.dispatch(setTokenSpecies(s as Species))} />
+                <DropDownSelect items={this.speciesList()} defaultValue={token.species} onChange={(s) => store.dispatch(setTokenSpecies(s as Species))} />
+
+                {this.renderOptions()}
             </div>);
+    }
+
+    renderOptions() {
+        const { token } = this.props;
+
+        if (SpeciesRestrictions.isOptionsSupportedFor(token.species)) {
+            return (<>
+                <p className="mt-4">Options:</p>
+
+                <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
+                    {SpeciesOptionCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.name} size="lg"
+                        onClick={() => store.dispatch(setTokenSpeciesOption(s.id))} active={token.speciesOption === s.id}
+                        token={token}
+                        key={'species-option-swatch-' + s.id }/>)}
+                </div>
+            </>)
+        } else {
+            return null;
+        }
     }
 
     speciesList() {
@@ -32,7 +58,7 @@ class SpeciesSelectionView extends React.Component<ISpeciesSelectionProperties, 
 
 function mapStateToProps(state, ownProps) {
     return {
-        species: state.token.species
+        token: state.token
     };
 }
 

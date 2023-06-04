@@ -65,6 +65,11 @@ const token = (state: Token = initialState, action) => {
         if (speciesEyeColours.indexOf(eyeColor) < 0) {
             eyeColor = speciesEyeColours[Math.floor(speciesEyeColours.length / 2)];
         }
+        let option = state.speciesOption;
+        let options = SpeciesRestrictions.getSpeciesOptions(newSpecies);
+        if (options.indexOf(option) < 0) {
+            option = SpeciesOption.Option1;
+        }
         return {
             ...state,
             eyeColor: eyeColor,
@@ -72,7 +77,8 @@ const token = (state: Token = initialState, action) => {
             hairColor: hairColour,
             skinColor: skinColor,
             facialHairType: facialHairType,
-            species: action.payload.species
+            species: action.payload.species,
+            speciesOption: option
         }
     }
     case SET_TOKEN_UNIFORM_ERA:
