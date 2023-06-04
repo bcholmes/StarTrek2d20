@@ -12,7 +12,7 @@ import { SpeciesOption } from "../token/model/speciesOptionEnum";
 import SpeciesRestrictions from "../token/model/speciesRestrictions";
 import { Token } from "../token/model/token";
 import { UniformEra } from "../token/model/uniformEra";
-import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EYE_COLOR, SET_TOKEN_EYE_TYPE, SET_TOKEN_FACIAL_HAIR_TYPE, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_LIPSTICK_COLOR, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NASO_LABIAL_FOLD_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES, SET_TOKEN_SPECIES_OPTION } from "./tokenActions";
+import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EYE_COLOR, SET_TOKEN_EYE_TYPE, SET_TOKEN_FACIAL_HAIR_TYPE, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_LIPSTICK_COLOR, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NASO_LABIAL_FOLD_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES, SET_TOKEN_SPECIES_OPTION, SET_TOKEN_UNIFORM_ERA } from "./tokenActions";
 
 const initialState = {
     species: Species.Human,
@@ -75,6 +75,21 @@ const token = (state: Token = initialState, action) => {
             species: action.payload.species
         }
     }
+    case SET_TOKEN_UNIFORM_ERA:
+        let colour = state.divisionColor;
+        let colourOptions = DivisionColors.getColors(state.uniformEra);
+        let newColourOptions = DivisionColors.getColors(action.payload.era);
+        let index = colourOptions.indexOf(colour);
+        if (index >= 0 && index < newColourOptions.length) {
+            colour = newColourOptions[index];
+        } else {
+            colour = newColourOptions[0];
+        }
+        return {
+            ...state,
+            divisionColor: colour,
+            uniformEra: action.payload.era
+        }
     case SET_TOKEN_DIVISION_COLOR:
         return {
             ...state,

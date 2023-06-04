@@ -9,9 +9,11 @@ import { NasoLabialFoldType } from "../token/model/nasoLabialFoldTypeEnum";
 import { NoseType } from "../token/model/noseTypeEnum";
 import { RankIndicator } from "../token/model/rankIndicatorEnum";
 import { SpeciesOption } from "../token/model/speciesOptionEnum";
+import { UniformEra } from "../token/model/uniformEra";
 
 export const SET_TOKEN_SPECIES = 'SET_TOKEN_SPECIES';
 export const SET_TOKEN_SPECIES_OPTION = 'SET_TOKEN_SPECIES_OPTION';
+export const SET_TOKEN_UNIFORM_ERA = 'SET_TOKEN_UNIFORM_ERA';
 export const SET_TOKEN_DIVISION_COLOR = 'SET_TOKEN_DIVISION_COLOR';
 export const SET_TOKEN_SKIN_COLOR = 'SET_TOKEN_SKIN_COLOR';
 export const SET_TOKEN_RANK = 'SET_TOKEN_RANK';
@@ -31,6 +33,14 @@ export function setTokenSpecies(species: Species) {
     let payload = { species: species };
     return {
        type: SET_TOKEN_SPECIES,
+       payload: payload
+    }
+}
+
+export function setUniformEra(era: UniformEra) {
+    let payload = { era: era };
+    return {
+       type: SET_TOKEN_UNIFORM_ERA,
        payload: payload
     }
 }

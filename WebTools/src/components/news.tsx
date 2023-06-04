@@ -272,42 +272,7 @@ class News extends React.Component<INewsProperties, {}> {
                 <ul>
                     <li>Minor bug fixes.</li>
                 </ul>
-                <b>v1.221202</b>
-                <ul>
-                    <li>Some look-and-feel changes to some starship pages and the supporting character page.</li>
-                    <li>A bug fix for starship creation and build points.</li>
-                    <li>Minor changes to system generation.</li>
-                </ul>
-                <b>v1.221129</b>
-                <ul>
-                    <li>Some more revisions to the starship creation process.</li>
-                    <li>Minor bug fixes.</li>
-                </ul>
-                <b>v1.221120</b>
-                <ul>
-                    <li>I've revised the handling of custom spaceframes to be in line with the rules from Utopia Planitia.
-                        This change has revised the flow of starships with custom frames to be more in line with, say, the
-                        small craft flow. The main starship flow will eventually converge on this style as well.
-                    </li>
-                </ul>
-                <b>v1.221117</b>
-                <ul>
-                    <li>An important bug was reported. This update should fix that.</li>
-                    <li>I've upgraded a bunch of tools/dependencies that are used to create this app. I hit a couple of hiccups along
-                        the way, but there's always a fear that there's some hiccup in the code that I didn't spot and therefore haven't fixed.
-                        If something doesn't appear to working correctly, please send some feedback.
-                    </li>
-                </ul>
-                <b>v1.221113</b>
-                <ul>
-                    <li>There are a couple of talents that give characters extra focuses. The app will now prompt you for those
-                        extra focuses.
-                    </li>
-                </ul>
-                <b>v1.221108</b>
-                <ul>
-                    <li>A number of bug reports have been addressed.</li>
-                </ul>
+
                 <div className="text-center">
                     <Button buttonType={true} className="btn btn-primary" onClick={ () => this.props.onClose() }>OK</Button>
                 </div>

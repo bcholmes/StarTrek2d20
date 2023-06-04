@@ -1,5 +1,5 @@
 export enum UniformEra {
-    DominionWar
+    OriginalSeries, DominionWar
 }
 
 export class UniformEraModel {
@@ -17,7 +17,8 @@ export class UniformEraHelper {
     private static _instance: UniformEraHelper;
 
     types = [
-        new UniformEraModel(UniformEra.DominionWar, "Dominion War")
+        new UniformEraModel(UniformEra.OriginalSeries, "Original Series"),
+        new UniformEraModel(UniformEra.DominionWar, "Dominion War"),
     ]
 
     static get instance() {

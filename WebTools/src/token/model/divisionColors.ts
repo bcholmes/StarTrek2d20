@@ -4,7 +4,11 @@ import { UniformEra } from "./uniformEra";
 export class DivisionColors {
 
     static getColors(era: UniformEra) {
-        return [ "#B12542", "#30787E", "#D5934C"];
+        if (era === UniformEra.OriginalSeries) {
+            return [ "#d1bd7f", "#8495a5", "#cf1f35"];
+        } else {
+            return [ "#B12542", "#30787E", "#D5934C"];
+        }
     }
 
     static getDivision(era: UniformEra, color: string) {
