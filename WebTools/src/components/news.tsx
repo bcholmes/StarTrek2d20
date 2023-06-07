@@ -12,6 +12,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230604</b>
+                <ul>
+                    <li>Minor, mostly non-visible changes.</li>
+                </ul>
                 <b>v1.230603</b>
                 <ul>
                     <li>Added a new version of the Romulan character sheet, created and updated by Felderburg.</li>
@@ -197,80 +201,6 @@ class News extends React.Component<INewsProperties, {}> {
                 <ul>
                     <li>Another translation pass. Over time, we'll add more and more national language capability.</li>
                     <li>I've added a bit of support for custom species. At the moment, that doesn't mean much other than "you can type the name of a species".</li>
-                </ul>
-                <b>v1.230101</b>
-                <ul>
-                    <li>Happy New Year! I've finally gotten around to expanding the PDF export functionality for sectors, so that
-                        you can now get all of the system data as well.</li>
-                </ul>
-                <b>v1.221231</b>
-                <ul>
-                    <li>Again, I'm still plugging away on translation</li>
-                    <li>I've retooled a particular Starship page because someone raised a concern about hover events and misbehaviour on a touch device.</li>
-                    <li>I've introduced a mechanism to download characters as JSON files. This is probably not helpful to you unless you're a developer.
-                        But it could assist integration between the Character Creator and other gaming tools like Virtual Table Tops. You can access
-                        the download function from the view page for a character.</li>
-                </ul>
-                <b>v1.221230</b>
-                <ul>
-                    <li>More work on translations, plus a few minor updates.</li>
-                </ul>
-                <b>v1.221229</b>
-                <ul>
-                    <li>I've revised some internal page handling so that particular URLs are more straight-forwardly accessible (for
-                        example, <a href="https://sta.bcholmes.org/talents" rel="noreferrer" target="_blank">this link</a> opens up the
-                        talents page).</li>
-                    <li>I continue to work on the <a href="https://sta.bcholmes.org/gmtracker" rel="noreferrer" target="_blank">sekrit
-                        new feature</a>. Don't click on that link! Anything could happen.</li>
-                </ul>
-                <b>v1.221228</b>
-                <ul>
-                    <li>I've started working on a new feature that's not yet visible. The changes are mostly internal.</li>
-                </ul>
-                <b>v1.221227</b>
-                <ul>
-                    <li>Make it possible for non-English users to revert to using the site in English, if they wish to.</li>
-                    <li>Add more support for viewing pages in other languages. It'll take a while before the majority of
-                        pages are translated. And because I'm using automated translation methods, the translations might
-                        not be perfect; I welcome all corrections.
-                    </li>
-                </ul>
-                <b>v1.221226</b>
-                <ul>
-                    <li>Initial ground work for supporting national Languages.</li>
-                </ul>
-                <b>v1.221224</b>
-                <ul>
-                    <li>Minor bug fixes.</li>
-                </ul>
-                <b>v1.221213</b>
-                <ul>
-                    <li>Minor improvements to the sector mapping copy-to-clipboard function.</li>
-                </ul>
-                <b>v1.221210</b>
-                <ul>
-                    <li>Modiphius recently updated their PDF sheets for characters and starships. I'd previously brought in the
-                        new sheets for the Klingon starship, but I've also made revisions for the TOS Starship and TNG Starship sheets.
-                        My versions of the sheets aren't identical to the Modiphius versions for various complicated reasons, but the
-                        new versions are fairly consistent with the published versions. At the moment, this only relates to Starship sheets;
-                        character sheets will follow at a later time.
-                    </li>
-                    <li>An important change in the sheets is that "Special Rules" &mdash; a concept that's now more formalized in <cite>Utopia
-                        Planitia</cite> &mdash; have their own place on the sheet, rather than being mixed in with the list of talents. I've
-                        updated the Starship view screen to replicate this behaviour.</li>
-                    <li>I've addressed a few improvement requests.</li>
-                </ul>
-                <b>v1.221207</b>
-                <ul>
-                    <li>Some revisions to the Klingon Starship sheet, in line with some updates to the standard character sheets.</li>
-                </ul>
-                <b>v1.221206</b>
-                <ul>
-                    <li>More bug fixes.</li>
-                </ul>
-                <b>v1.221205</b>
-                <ul>
-                    <li>Minor bug fixes.</li>
                 </ul>
 
                 <div className="text-center">

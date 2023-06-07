@@ -58,6 +58,7 @@ export class TokenSvgBuilder {
             UniformCatalog.instance.getBody(token) +
             RankIndicatorCatalog.instance.getRankIndicator(token) +
             HeadCatalog.instance.getHead(token) +
+            ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.BaseHead) +
             NasoLabialFoldCatalog.instance.getNasoLabialFold(token) +
             FacialHairCatalog.instance.getFacialHair(token, FacialHairPlacement.Chin) +
             MouthCatalog.instance.getMouth(token) +

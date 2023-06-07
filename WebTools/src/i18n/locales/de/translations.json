@@ -195,6 +195,7 @@
     "Construct.other.scale": "Schiffsgröße",
     "Construct.other.serviceDate": "Indienststellung",
     "Construct.other.shields": "Schilde",
+    "Construct.other.sources": "Quellen",
     "Construct.other.spaceFrame": "Schiffsklasse",
     "Construct.other.specialRules": "Spezialregeln",
     "Construct.other.species": "Spezies",
@@ -202,6 +203,7 @@
     "Construct.other.systems": "Systeme",
     "Construct.other.talent": "Talent",
     "Construct.other.talents": "Talente",
+    "Construct.other.talentOptions": "Talentoptionen",
     "Construct.other.training": "Ausbildung",
     "Construct.other.trait": "Merkmal",
     "Construct.other.traits": "Merkmale",
@@ -276,6 +278,7 @@
     "Page.title.normalMilestone": "Regulärer Meilenstein",
     "Page.title.modificationComplete": "Änderung abgeschlossen",
     "Page.title.npcConfiguration": "Anpassung zufälliger NSCs",
+    "Page.title.tokenCreationPage": "Tokenerschaffung",
 
     "Page.breadcrumb.characterCreation": "Charaktererschaffung",
     "Page.breadcrumb.starshipCreation": "Raumschifferschaffung",
@@ -344,7 +347,7 @@
     "Environment.common.starshipOrStarbase.name": "Sternenbasis oder Raumschiff",
     "Environment.common.starshipOrStarbase.description": "Der Charakter ist im Weltraum aufgewachsen, entweder an Bord eines Raumschiffs oder auf einer Sternenbasis. Während er oder sie nicht unbedingt auf einem Sternenflottenschiff aufgewachsen ist (nur wenige Schiffe haben Familien an Bord), gibt es doch viele Frachter, Transportschiffe und andere zivile Raumschiffe, die von ganzen Familien betrieben werden und auf denen verschiedene Generationen Seite an Seite leben und arbeiten. Viele Sternenflottenoffiziere nehmen hingegen Posten auf Sternenbasen an, wenn sie Kinder kriegen. Wer im Weltraum aufwächst, für den geht das Leben an Bord von Schiffen ins Blut über und oft lernen solche Kinder schon früh, ein Shuttle zu fliegen oder den Wert der Kommandokette.",
 
-    "Environment.common.anotherSpeciesWorld.name": "Welt einer anderen Soezies",
+    "Environment.common.anotherSpeciesWorld.name": "Welt einer anderen Spezies",
     "Environment.common.anotherSpeciesWorld.description": "Der Charakter ist unter Angehörigen einer anderen Spezies aufgewachsen. Er oder sie mag in einer Enklave seiner oder ihrer eigenen Spezies aufgewachsen sein oder aber als Waisenkind nach irgendeiner Art von Katastrophe von der fremden Spezies aufgezogen worden sein. Unabhängig von der Situation hat der Charakter eine ganz eigene Sichtweise auf seine oder ihre eigene Spezies und auf jene, die ihn oder sie aufgezogen hat.",
 
     "Environment.special.name": "{{name}} ({{species}})",
@@ -440,7 +443,7 @@
 
     "Weapon.quality.devastating.name": "Zerstörerisch",
 
-    "Weapon.quality.highYield.name": "Hohe Durchschlagskraft",
+    "Weapon.quality.highYield.name": "Hochenergetisch",
 
     "Weapon.quality.hidden.name": "Unauffällig {{rank}}",
 

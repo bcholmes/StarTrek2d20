@@ -10,6 +10,7 @@ import { withTranslation, WithTranslation } from 'react-i18next';
 enum Tool {
     CharacterGenerator,
     TalentsOverview,
+    TokenCreator
 }
 
 interface ISelectionPageProperties extends WithTranslation {
@@ -33,13 +34,10 @@ class SelectionPage extends React.Component<ISelectionPageProperties, {}> {
                         <p className="mt-3">
                             {t('Home.selection')}
                         </p>
-                        <div className="button-container">
-                            <div>
-                                <Button text={t('Home.characterButton')} buttonType={true} className="button" onClick={() => { this.selectTool(Tool.CharacterGenerator); }} />
-                            </div>
-                            <div>
-                                <Button text={t('Home.talentsButton')} buttonType={true} className="button" onClick={() => { this.selectTool(Tool.TalentsOverview); }} />
-                            </div>
+                        <div className="button-column">
+                            <Button text={t('Home.characterButton')} buttonType={true} className="button" onClick={() => { this.selectTool(Tool.CharacterGenerator); }} />
+                            <Button text={t('Home.talentsButton')} buttonType={true} className="button" onClick={() => { this.selectTool(Tool.TalentsOverview); }} />
+                            <Button text={t('Home.tokenCreator')} buttonType={true} className="button" onClick={() => { this.selectTool(Tool.TokenCreator); }} />
                         </div>
                     </div>
                     <div className="col-md-4">
@@ -55,10 +53,16 @@ class SelectionPage extends React.Component<ISelectionPageProperties, {}> {
             case Tool.CharacterGenerator:
                 Navigation.navigateToPage(PageIdentity.Era);
                 break;
-            case Tool.TalentsOverview:
+            case Tool.TalentsOverview: {
                 const { history } = this.props;
                 history.push("/talents");
                 break;
+            }
+            case Tool.TokenCreator: {
+                const { history } = this.props;
+                history.push("/token");
+                break;
+            }
         }
     }
 }

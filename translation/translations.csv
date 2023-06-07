@@ -14,6 +14,7 @@ EraSelectionPage.eraInstruction,Select which Era to play in. Ask your GM which E
 Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sélectionnez l'outil.
 Home.characterButton,Characters & Starships,Charaktere & Raumschiffe,Personajes y naves espaciales,Personnages et vaisseaux spatiaux
 Home.talentsButton,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
+Home.tokenCreator,Tokens,,,
 ViewPage.viewSupportingCharacter,View Supporting Character,Nebencharakter anzeigen,Ver personaje secundario,Voir le personnage secondaire
 ViewPage.viewNpc,View NPC,NSC anzeigen,,Voir PNJ
 ViewPage.viewMainCharacter,View Main Character,Hauptfigur anzeigen,Ver personaje principal,Voir le personnage principal
@@ -172,7 +173,7 @@ Construct.other.reputation,Reputation,Ansehen,,Réputation
 Construct.other.scale,Scale,Schiffsgröße,Escama,Echelle
 Construct.other.serviceDate,Service Date,Indienststellung,Fecha de servicio,Date de mise en service
 Construct.other.shields,Shields,Schilde,Escudos,Boucliers
-Construct.other.sources,Sources,,,
+Construct.other.sources,Sources,Quellen,,
 Construct.other.spaceFrame,Space Frame,Schiffsklasse,Malla espacial,Modèle de Vaisseau
 Construct.other.specialRules,Special Rules,Spezialregeln,Reglas especiales,Règles spéciales
 Construct.other.species,Species,Spezies,Especie,Espèce
@@ -180,7 +181,7 @@ Construct.other.stress,Stress,Anstrengung,Estrés,Stress
 Construct.other.systems,Systems,Systeme,Sistemas,Systèmes
 Construct.other.talent,Talent,Talent,,Talent
 Construct.other.talents,Talents,Talente,Talentos,Talents
-Construct.other.talentOptions,Talent Options,,,
+Construct.other.talentOptions,Talent Options,Talentoptionen,,
 Construct.other.training,Training,Ausbildung,,Formation
 Construct.other.trait,Trait,Merkmal,Rasgo,Trait
 Construct.other.traits,Traits,Merkmale,Rasgos,Traits
@@ -250,7 +251,7 @@ Page.title.promotion,Promotion,Beförderung,,Promotion
 Page.title.normalMilestone,Normal Milestone,Regulärer Meilenstein,,Jalon Normal
 Page.title.modificationComplete,Modification Completed,Änderung abgeschlossen,,Modification Effectuée
 Page.title.npcConfiguration,Random NPC Configuration,Anpassung zufälliger NSCs,,Configuration des PNJ Aléatoires
-Page.title.tokenCreationPage,Token Creation,,,
+Page.title.tokenCreationPage,Token Creation,Tokenerschaffung,,
 Page.breadcrumb.characterCreation,Character Creation,Charaktererschaffung,Creación de personajes,Création de personnages
 Page.breadcrumb.starshipCreation,Starship Creation,Raumschifferschaffung,,Règles de Base
 Page.breadcrumb.supportingCharacterCreation,Supporting Character Creation,Erschaffung von Nebencharakteren,,Création de Personnage Secondaire
@@ -332,7 +333,7 @@ Environment.common.frontierColony.name,Frontier Colony,Grenzwelt,,Colonie Fronti
 Environment.common.frontierColony.description,"The character comes from a colony located on the fringes of known space, either on the edge of uncharted space or on the border with another civilization. Frontier colonists tend to be hardy and determined, even stubborn, and well-prepared for the dangers that their home may pose.","Der Charakter stammt von einer Kolonie am Rande des bekannten Raums oder im Grenzgebiet der Föderation (oder seines oder ihres Heimatreiches). Bewohner von Grenzwelten sind oft abgehärtet und entschlossen bis hin zur Sturheit. Sie sind auf alle Gefahren, die ihre oft ungezähmten Heimatwelten bieten, bestens vorbereitet.",,"Le personnage vient d'une colonie située en marge de l'espace connu, soit en bordure d'un espace inexploré, soit à la frontière avec une autre civilisation. Les colons frontaliers ont tendance à être robustes et déterminés, voire têtus, et bien préparés aux dangers que leur maison peut présenter."
 Environment.common.starshipOrStarbase.name,Starship or Starbase,Sternenbasis oder Raumschiff,,Vaisseau ou Base Stellaire
 Environment.common.starshipOrStarbase.description,"The character grew up in space, travelling aboard a starship or living aboard a space station or starbase. While they’re unlikely to have lived aboard a Starfleet vessel — only some of them carry families — many freighters, transports, and other civilian vessels have a tradition of family or generational crews, and many officers with families take postings to starbases rather than ships. Those raised in space learn the ins-and-outs of shipboard life as children, and many are groomed for leadership, or learn to fly a shuttle in their formative years.","Der Charakter ist im Weltraum aufgewachsen, entweder an Bord eines Raumschiffs oder auf einer Sternenbasis. Während er oder sie nicht unbedingt auf einem Sternenflottenschiff aufgewachsen ist (nur wenige Schiffe haben Familien an Bord), gibt es doch viele Frachter, Transportschiffe und andere zivile Raumschiffe, die von ganzen Familien betrieben werden und auf denen verschiedene Generationen Seite an Seite leben und arbeiten. Viele Sternenflottenoffiziere nehmen hingegen Posten auf Sternenbasen an, wenn sie Kinder kriegen. Wer im Weltraum aufwächst, für den geht das Leben an Bord von Schiffen ins Blut über und oft lernen solche Kinder schon früh, ein Shuttle zu fliegen oder den Wert der Kommandokette.",,"Le personnage a grandi dans l'espace, voyageant à bord d'un vaisseau spatial ou vivant à bord d'une station spatiale ou d'une base stellaire. Bien qu'il soit peu probable qu'ils aient vécu à bord d'un navire de Starfleet - seuls certains d'entre eux transportent des familles - de nombreux cargos, transports et autres navires civils ont une tradition d'équipages familiaux ou générationnels, et de nombreux officiers avec des familles sont affectés à des bases stellaires plutôt qu'à des navires. . Ceux qui ont grandi dans l'espace apprennent les tenants et les aboutissants de la vie à bord d'un navire dans leur enfance, et beaucoup sont préparés au commandement ou apprennent à piloter une navette au cours de leurs années de formation."
-Environment.common.anotherSpeciesWorld.name,Another Species' World,Welt einer anderen Soezies,,Monde d'une autre Espèce
+Environment.common.anotherSpeciesWorld.name,Another Species' World,Welt einer anderen Spezies,,Monde d'une autre Espèce
 Environment.common.anotherSpeciesWorld.description,"The character grew up amongst another species. They might have lived amongst a small enclave of their own kind, or they may have been orphaned by some manner of disaster and raised by aliens. Whatever the situation, the character has unique perspectives on their own species and on those they were raised alongside.","Der Charakter ist unter Angehörigen einer anderen Spezies aufgewachsen. Er oder sie mag in einer Enklave seiner oder ihrer eigenen Spezies aufgewachsen sein oder aber als Waisenkind nach irgendeiner Art von Katastrophe von der fremden Spezies aufgezogen worden sein. Unabhängig von der Situation hat der Charakter eine ganz eigene Sichtweise auf seine oder ihre eigene Spezies und auf jene, die ihn oder sie aufgezogen hat.",,"Le personnage a grandi parmi une autre espèce. Ils ont peut-être vécu dans une petite enclave de leur propre espèce, ou ils peuvent avoir été rendus orphelins par une catastrophe et élevés par des extraterrestres. Quelle que soit la situation, le personnage a des perspectives uniques sur sa propre espèce et sur celles avec lesquelles il a été élevé."
 Environment.klingon.homeworld.name,Qo'noS,,,Qo'noS
 Environment.klingon.homeworld.description,"You hail from the Klingon homeworld of Qo’noS, often called Kronos by outsiders, and you’ve been surrounded by the cultural and spiritual legacies of Kahless and the Empire for your entire life. The oldest and most revered of Klingon traditions came from your homeworld, and they are a defining part of your upbringing.",,,"Vous êtes originaire du monde natal klingon de Qo'noS, souvent appelé Kronos par les étrangers, et vous avez été entouré par l'héritage culturel et spirituel de Kahless et de l'Empire toute votre vie. Les traditions klingonnes les plus anciennes et les plus vénérées viennent de votre monde natal, et elles font partie intégrante de votre éducation."
@@ -421,7 +422,7 @@ Weapon.quality.dampening.name,Dampening,Energiesenkend,,
 Weapon.quality.deadly.name,Deadly,Letal,,Mortel
 Weapon.quality.depleting.name,Depleting,,,
 Weapon.quality.devastating.name,Devastating,Zerstörerisch,,
-Weapon.quality.highYield.name,High Yield,Hohe Durchschlagskraft,,
+Weapon.quality.highYield.name,High Yield,Hochenergetisch,,
 Weapon.quality.hidden.name,Hidden {{rank}},Unauffällig {{rank}},,Caché {{rank}}
 Weapon.quality.intense.name,Intense,Intensiv,,Intense
 Weapon.quality.jamming.name,Jamming,,,

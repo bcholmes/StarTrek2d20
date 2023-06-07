@@ -1,4 +1,6 @@
 import { Species } from "../../helpers/speciesEnum";
+import { KlingonForehead1, KlingonForehead2, KlingonForehead3 } from "./speciesOptionCatalog";
+import { SpeciesOption } from "./speciesOptionEnum";
 import SpeciesRestrictions from "./speciesRestrictions";
 import { Token } from "./token";
 
@@ -23,7 +25,7 @@ const AndorianAntennaFront = `<g>
 </g>`;
 
 export enum ProstheticPlacement {
-    VeryBack, VeryFront
+    VeryBack, BaseHead, VeryFront
 }
 
 class ProstheticCatalog {
@@ -46,6 +48,19 @@ class ProstheticCatalog {
                     return AndorianAntennaFront.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
                 default:
                     return "";
+            }
+        } else if (token.species === Species.Klingon) {
+            if (placement === ProstheticPlacement.BaseHead) {
+                switch (token.speciesOption) {
+                    case SpeciesOption.Option1:
+                        return KlingonForehead1.replace(SpeciesRestrictions.DEFAULT_HAIR_COLOR_REGEX, token.skinColor);
+                    case SpeciesOption.Option2:
+                        return KlingonForehead2.replace(SpeciesRestrictions.DEFAULT_HAIR_COLOR_REGEX, token.skinColor);
+                    case SpeciesOption.Option3:
+                        return KlingonForehead3.replace(SpeciesRestrictions.DEFAULT_HAIR_COLOR_REGEX, token.skinColor);
+                    default:
+                        return "";
+                }
             }
         } else {
             return "";

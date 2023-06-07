@@ -77,12 +77,14 @@ class SpeciesRestrictions {
     }
 
     static isOptionsSupportedFor(species: Species) {
-        return species === Species.Bolian;
+        return this.getSpeciesOptions(species).length > 1;
     }
 
     static getSpeciesOptions(species: Species) {
         if (species === Species.Bolian) {
             return [SpeciesOption.Option1, SpeciesOption.Option2];
+        } else if (species === Species.Klingon) {
+            return [SpeciesOption.Option1, SpeciesOption.Option2, SpeciesOption.Option3];
         } else {
             return [SpeciesOption.Option1];
         }
