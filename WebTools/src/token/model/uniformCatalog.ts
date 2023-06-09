@@ -283,17 +283,17 @@ class UniformCatalog {
     private static _instance: UniformCatalog;
 
     private dominionWarSwatches = [
-        new Swatch(BodyType.Body1, "Average Male", (token) => UniformCatalog.decorateSwatch(DominionWarBody1, BodyType.Body1, token)),
+        new Swatch(BodyType.AverageMale, "Average Male", (token) => UniformCatalog.decorateSwatch(DominionWarBody1, BodyType.AverageMale, token)),
 //        new Swatch(BodyType.Body2, "Heftier Body", (token) => UniformCatalog.decorateSwatch(DominionWarBody2, BodyType.Body2, token)),
 //        new Swatch(BodyType.Body3, "Slighter Body", (token) => UniformCatalog.decorateSwatch(DominionWarBody3, BodyType.Body3, token)),
 //        new Swatch(BodyType.Body4, "Muscular Body", (token) => UniformCatalog.decorateSwatch(DominionWarBody4, BodyType.Body4, token)),
-        new Swatch(BodyType.Body6, "Average Female", (token) => UniformCatalog.decorateSwatch(DominionWarFemaleBody, BodyType.Body6, token)),
+        new Swatch(BodyType.AverageFemale, "Average Female", (token) => UniformCatalog.decorateSwatch(DominionWarFemaleBody, BodyType.AverageFemale, token)),
 //        new Swatch(BodyType.Body5, "Average", (token) => UniformCatalog.decorateSwatch(DominionWarBody5, BodyType.Body5, token)),
     ];
 
     private originalSeriesSwatches = [
-        new Swatch(BodyType.Body1, "Average Male", (token) => UniformCatalog.decorateSwatch(OriginalSeriesAverageMale, BodyType.Body1, token)),
-        new Swatch(BodyType.Body6, "Average Female", (token) => UniformCatalog.decorateSwatch(OriginalSeriesAverageFemale, BodyType.Body6, token)),
+        new Swatch(BodyType.AverageMale, "Average Male", (token) => UniformCatalog.decorateSwatch(OriginalSeriesAverageMale, BodyType.AverageMale, token)),
+        new Swatch(BodyType.AverageFemale, "Average Female", (token) => UniformCatalog.decorateSwatch(OriginalSeriesAverageFemale, BodyType.AverageFemale, token)),
     ];
 
     public static get instance() {
@@ -310,7 +310,7 @@ class UniformCatalog {
         if (token.uniformEra === UniformEra.OriginalSeries) {
             let division = DivisionColors.getDivision(token.uniformEra, token.divisionColor);
             switch (token.bodyType) {
-                case BodyType.Body1:
+                case BodyType.AverageMale:
                     result = OriginalSeriesAverageMale;
                     if (division === Division[Division.Command]) {
                         result += OriginalSeriesMaleBodyCommandSymbol;
@@ -320,7 +320,7 @@ class UniformCatalog {
                         result += OriginalSeriesMaleBodyEngineeringSymbol;
                     }
                     break;
-                case BodyType.Body6:
+                case BodyType.AverageFemale:
                     result = OriginalSeriesAverageFemale;
                     if (division === Division[Division.Command]) {
                         result += OriginalSeriesFemaleBodyCommandSymbol;
@@ -335,10 +335,10 @@ class UniformCatalog {
 
             if (token.species === Species.Bolian) {
                 switch (token.bodyType) {
-                    case BodyType.Body1:
+                    case BodyType.AverageMale:
                         seam = OriginalSeriesMaleBodyBolianRidge;
                         break;
-                    case BodyType.Body6:
+                    case BodyType.AverageFemale:
                         seam = OriginalSeriesFemaleBolianRidge;
                         break;
                     default:
@@ -358,7 +358,7 @@ class UniformCatalog {
                 result = DominionWarBody4;
             } else if (token.bodyType === BodyType.Body5) {
                 result = DominionWarBody5;
-            } else if (token.bodyType === BodyType.Body6) {
+            } else if (token.bodyType === BodyType.AverageFemale) {
                 result = DominionWarFemaleBody;
                 if (token.species === Species.Bolian) {
                     seam = DominionWarFemaleBodyBolianRidge;

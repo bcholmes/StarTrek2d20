@@ -1,6 +1,8 @@
 import { Division } from "../common/character";
 import { DivisionColors } from "./model/divisionColors";
 import EarCatalog from "./model/earCatalog";
+import ExtrasCatalog from "./model/extrasCatalog";
+import { ExtraCategory } from "./model/extrasTypeEnum";
 import EyeBrowCatalog from "./model/eyeBrowCatalog";
 import EyeCatalog from "./model/eyeCatalog";
 import FacialHairCatalog, { FacialHairPlacement } from "./model/facialHairCatalog";
@@ -68,6 +70,7 @@ export class TokenSvgBuilder {
             EyeBrowCatalog.instance.getEyeBrows(token) +
             HairCatalog.instance.getHair(token, HairElement.BehindEars) +
             EarCatalog.instance.getEar(token) +
+            ExtrasCatalog.instance.getExtras(token, ExtraCategory.Ear) +
             HairCatalog.instance.getHair(token, HairElement.CoveringEars) +
             ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.VeryFront) +
             "</g>" +

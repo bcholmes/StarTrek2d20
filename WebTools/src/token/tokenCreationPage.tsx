@@ -20,6 +20,7 @@ import EyeSelectionView from './view/eyeSelectionView';
 import { RankIndicator } from './model/rankIndicatorEnum';
 import { DivisionColors } from './model/divisionColors';
 import { SpeciesHelper } from '../helpers/species';
+import ExtrasSelectionView from './view/extrasSelectionView';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -143,6 +144,8 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
                 return (<EyeSelectionView />);
             case Tab.Hair:
                 return (<HairSelectionView />);
+            case Tab.Extras:
+                return (<ExtrasSelectionView />);
             default:
                 return (<div className="mt-4"><p>Not yet available.</p></div>);
         }

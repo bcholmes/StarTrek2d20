@@ -1,4 +1,5 @@
 import { Species } from "../../helpers/speciesEnum";
+import { ExtraType } from "./extrasTypeEnum";
 import { HairType, allHairTypes } from "./hairTypeEnum";
 import { SpeciesOption } from "./speciesOptionEnum";
 
@@ -78,6 +79,14 @@ class SpeciesRestrictions {
 
     static isOptionsSupportedFor(species: Species) {
         return this.getSpeciesOptions(species).length > 1;
+    }
+
+    static isExtraAvailableFor(extra: ExtraType, species: Species) {
+        if (extra === ExtraType.BajoranEarring) {
+            return species === Species.Bajoran;
+        } else {
+            return true;
+        }
     }
 
     static getSpeciesOptions(species: Species) {

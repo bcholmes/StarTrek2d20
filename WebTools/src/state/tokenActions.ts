@@ -1,5 +1,6 @@
 import { Species } from "../helpers/speciesEnum";
 import { BodyType } from "../token/model/bodyTypeEnum";
+import { ExtraType } from "../token/model/extrasTypeEnum";
 import { EyeType } from "../token/model/eyeTypeEnum";
 import { FacialHairType } from "../token/model/facialHairEnum";
 import { HairType } from "../token/model/hairTypeEnum";
@@ -28,6 +29,7 @@ export const SET_TOKEN_BODY_TYPE = 'SET_TOKEN_BODY_TYPE';
 export const SET_TOKEN_EYE_TYPE = 'SET_TOKEN_EYE_TYPE';
 export const SET_TOKEN_LIPSTICK_COLOR = 'SET_TOKEN_LIPSTICK_COLOR';
 export const SET_TOKEN_FACIAL_HAIR_TYPE = 'SET_TOKEN_FACIAL_HAIR_TYPE';
+export const SET_TOKEN_EXTRAS_TYPE = 'SET_TOKEN_EXTRAS_TYPE';
 
 export function setTokenSpecies(species: Species) {
     let payload = { species: species };
@@ -145,6 +147,14 @@ export function setTokenFacialHairTypes(types: FacialHairType[]) {
     let payload = { types: types };
     return {
        type: SET_TOKEN_FACIAL_HAIR_TYPE,
+       payload: payload
+    }
+}
+
+export function setTokenExtrasTypes(types: ExtraType[]) {
+    let payload = { types: types };
+    return {
+       type: SET_TOKEN_EXTRAS_TYPE,
        payload: payload
     }
 }

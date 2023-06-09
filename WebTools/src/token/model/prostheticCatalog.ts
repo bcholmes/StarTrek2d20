@@ -53,11 +53,11 @@ class ProstheticCatalog {
             if (placement === ProstheticPlacement.BaseHead) {
                 switch (token.speciesOption) {
                     case SpeciesOption.Option1:
-                        return KlingonForehead1.replace(SpeciesRestrictions.DEFAULT_HAIR_COLOR_REGEX, token.skinColor);
+                        return KlingonForehead1.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
                     case SpeciesOption.Option2:
-                        return KlingonForehead2.replace(SpeciesRestrictions.DEFAULT_HAIR_COLOR_REGEX, token.skinColor);
+                        return KlingonForehead2.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
                     case SpeciesOption.Option3:
-                        return KlingonForehead3.replace(SpeciesRestrictions.DEFAULT_HAIR_COLOR_REGEX, token.skinColor);
+                        return KlingonForehead3.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
                     default:
                         return "";
                 }

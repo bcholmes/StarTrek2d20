@@ -12,7 +12,7 @@ import { SpeciesOption } from "../token/model/speciesOptionEnum";
 import SpeciesRestrictions from "../token/model/speciesRestrictions";
 import { Token } from "../token/model/token";
 import { UniformEra } from "../token/model/uniformEra";
-import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EYE_COLOR, SET_TOKEN_EYE_TYPE, SET_TOKEN_FACIAL_HAIR_TYPE, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_LIPSTICK_COLOR, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NASO_LABIAL_FOLD_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES, SET_TOKEN_SPECIES_OPTION, SET_TOKEN_UNIFORM_ERA } from "./tokenActions";
+import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EXTRAS_TYPE, SET_TOKEN_EYE_COLOR, SET_TOKEN_EYE_TYPE, SET_TOKEN_FACIAL_HAIR_TYPE, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_LIPSTICK_COLOR, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NASO_LABIAL_FOLD_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES, SET_TOKEN_SPECIES_OPTION, SET_TOKEN_UNIFORM_ERA } from "./tokenActions";
 
 const initialState = {
     species: Species.Human,
@@ -27,11 +27,12 @@ const initialState = {
     noseType: NoseType.StraightBasic,
     mouthType: MouthType.Mouth2,
     uniformEra: UniformEra.DominionWar,
-    bodyType: BodyType.Body1,
+    bodyType: BodyType.AverageMale,
     nasoLabialFold: NasoLabialFoldType.None,
     lipstickColor: SpeciesRestrictions.DEFAULT_LIPSTICK_COLOR,
     facialHairType: [],
-    speciesOption: SpeciesOption.Option1
+    speciesOption: SpeciesOption.Option1,
+    extras: []
 }
 
 const token = (state: Token = initialState, action) => {
@@ -145,6 +146,11 @@ const token = (state: Token = initialState, action) => {
         return {
             ...state,
             facialHairType: action.payload.types
+        }
+    case SET_TOKEN_EXTRAS_TYPE:
+        return {
+            ...state,
+            extras: action.payload.types
         }
     case SET_TOKEN_EYE_COLOR:
         return {
