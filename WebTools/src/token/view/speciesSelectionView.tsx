@@ -13,7 +13,7 @@ import SpeciesRestrictions from '../model/speciesRestrictions';
 import SpeciesOptionCatalog from '../model/speciesOptionCatalog';
 import SwatchButton from './swatchButton';
 
-interface ISpeciesSelectionProperties extends WithTranslation{
+interface ISpeciesSelectionProperties extends WithTranslation {
     token: Token;
 }
 
@@ -30,11 +30,11 @@ class SpeciesSelectionView extends React.Component<ISpeciesSelectionProperties, 
     }
 
     renderOptions() {
-        const { token } = this.props;
+        const { t, token } = this.props;
 
         if (SpeciesRestrictions.isOptionsSupportedFor(token.species)) {
             return (<>
-                <p className="mt-4">Options:</p>
+                <p className="mt-4">{t('TokenCreator.section.species.options')}:</p>
 
                 <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
                     {SpeciesOptionCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.name} size="lg"

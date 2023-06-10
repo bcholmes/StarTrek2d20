@@ -16,12 +16,12 @@ interface IEyeSelectionViewProperties extends WithTranslation {
 class EyeSelectionView extends React.Component<IEyeSelectionViewProperties, {}> {
 
     render() {
-        const { token } = this.props;
+        const { t, token } = this.props;
         return (<>
-            <p className="mt-4">Eye Color:</p>
+            <p className="mt-4">{t('TokenCreator.section.eyes.colour')}:</p>
             <ColorSelection colors={SpeciesRestrictions.getEyeColors(token.species)} onSelection={(c) => store.dispatch(setTokenEyeColor(c))} />
 
-            <p className="mt-4">Eye Style:</p>
+            <p className="mt-4">{t('TokenCreator.section.eyes.style')}:</p>
             <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
             {EyeCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.name}
                 onClick={() => store.dispatch(setTokenEyeType(s.id))} active={this.props.token.eyeType === s.id}

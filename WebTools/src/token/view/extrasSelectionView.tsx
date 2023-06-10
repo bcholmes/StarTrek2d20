@@ -15,8 +15,9 @@ interface IExtraSelectionViewProperties extends WithTranslation {
 class ExtraSelectionView extends React.Component<IExtraSelectionViewProperties, {}> {
 
     render() {
+        const { t } = this.props;
         return (<>
-        <p className="mt-4">Ears:</p>
+        <p className="mt-4">{t('TokenCreator.section.extras.ears')}:</p>
         <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
         {ExtrasCatalog.instance.getSwatches(this.props.token, ExtraCategory.Ear).map(s => <SwatchButton svg={s.svg} title={s.name}
             onClick={() => this.addExtra(s.id)} active={this.props.token.extras.indexOf(s.id) >= 0 || (s.id === ExtraType.None && !this.isExtraCategoryPresent(ExtraCategory.Ear))}

@@ -1,3 +1,6 @@
+import i18next from "i18next";
+import { makeKey } from "../../common/translationKey";
+
 export enum UniformEra {
     OriginalSeries, DominionWar
 }
@@ -9,6 +12,10 @@ export class UniformEraModel {
     constructor(id: UniformEra, name: string) {
         this.id = id;
         this.name = name;
+    }
+
+    get localizedName() {
+        return i18next.t(makeKey('UniformEra.', UniformEra[this.id]));
     }
 }
 

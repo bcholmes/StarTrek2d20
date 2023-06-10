@@ -46,7 +46,7 @@ class UniformSelectionView extends React.Component<IUniformSelectionViewProperti
     }
 
     uniformErasList() {
-        return UniformEraHelper.instance.types.map(u => new DropDownElement(u.id, u.name));
+        return UniformEraHelper.instance.types.map(u => new DropDownElement(u.id, u.localizedName));
     }
 }
 

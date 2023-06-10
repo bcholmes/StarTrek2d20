@@ -16,13 +16,13 @@ interface IHeadSelectionViewProperties extends WithTranslation {
 class HeadSelectionView extends React.Component<IHeadSelectionViewProperties, {}> {
 
     render() {
-        const { token } = this.props;
+        const { t, token } = this.props;
 
         return (<>
-            <p className="mt-4">Skin Color:</p>
+            <p className="mt-4">{t('TokenCreator.section.head.colour')}:</p>
             <ColorSelection colors={SpeciesRestrictions.getSkinColors(token.species)} onSelection={(c) => store.dispatch(setTokenSkinColor(c))} />
 
-            <p className="mt-4">Head Shape:</p>
+            <p className="mt-4">{t('TokenCreator.section.head.shape')}:</p>
             <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
             {HeadCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.name} size="lg"
                 onClick={() => store.dispatch(setTokenHeadType(s.id))} active={token.headType === s.id}

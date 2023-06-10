@@ -450,7 +450,7 @@
 
     "ShipBuildType.pod.name": "Nacelle",
 
-    "ShipBuildType.shuttle.name": "Navette",
+    "ShipBuildType.shuttlecraft.name": "Navette",
 
     "ShipBuildType.runabout.name": "Runabout",
 

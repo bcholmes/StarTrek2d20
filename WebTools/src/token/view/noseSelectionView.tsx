@@ -15,8 +15,9 @@ interface INoseSelectionViewProperties extends WithTranslation {
 class NoseSelectionView extends React.Component<INoseSelectionViewProperties, {}> {
 
     render() {
+        const { t } = this.props;
         return (<>
-        <p className="mt-4">Nose:</p>
+        <p className="mt-4">{t('TokenCreator.section.nose.shape')}:</p>
         <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
         {NoseCatalog.instance.getSwatches(this.props.token).map(s => <SwatchButton svg={s.svg} title={s.name}
             onClick={() => store.dispatch(setTokenNoseType(s.id))} active={this.props.token.noseType === s.id}
@@ -24,7 +25,7 @@ class NoseSelectionView extends React.Component<INoseSelectionViewProperties, {}
             key={'nose-swatch-' + s.id }/>)}
         </div>
 
-        <p className="mt-4">Naso-Labial Folds:</p>
+        <p className="mt-4">{t('TokenCreator.section.nose.nasoLabial')}:</p>
         <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
         {NasoLabialFoldCatalog.instance.swatches.map(s => <SwatchButton svg={s.svg} title={s.name}
             onClick={() => store.dispatch(setTokenNasoLabialFoldType(s.id))} active={this.props.token.nasoLabialFold === s.id}

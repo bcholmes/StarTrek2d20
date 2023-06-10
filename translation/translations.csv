@@ -15,6 +15,34 @@ Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sél
 Home.characterButton,Characters & Starships,Charaktere & Raumschiffe,Personajes y naves espaciales,Personnages et vaisseaux spatiaux
 Home.talentsButton,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
 Home.tokenCreator,Tokens,,,
+TokenCreator.option.rounded,Rounded,,,
+TokenCreator.option.bordered,Bordered,,,
+TokenCreator.section.species,Species,,,
+TokenCreator.section.species.options,Options,,,
+TokenCreator.section.body,Body,,,
+TokenCreator.section.body.uniform,Uniform Type,,,
+TokenCreator.section.body.colour,Division Color,,,
+TokenCreator.section.body.rank,Rank,,,
+TokenCreator.section.body.type,Body Type,,,
+TokenCreator.section.head,Head,,,
+TokenCreator.section.head.colour,Skin Color,,,
+TokenCreator.section.head.shape,Head Shape,,,
+TokenCreator.section.hair,Hair,,,
+TokenCreator.section.hair.colour,Hair Color,,,
+TokenCreator.section.hair.style,Hair Style,,,
+TokenCreator.section.mouth,Mouth,,,
+TokenCreator.section.mouth.shape,Mouth,,,
+TokenCreator.section.mouth.colour,Lipstick Color,,,
+TokenCreator.section.mouth.moustache,Moustache,,,
+TokenCreator.section.mouth.beard,Beard,,,
+TokenCreator.section.nose,Nose,,,
+TokenCreator.section.nose.shape,Nose Shape,,,
+TokenCreator.section.nose.nasoLabial,Naso-Labial Folds,,,
+TokenCreator.section.eyes,Eyes,,,
+TokenCreator.section.eyes.style,Eye Style,,,
+TokenCreator.section.eyes.colour,Eye Color,,,
+TokenCreator.section.extras,Extras,,,
+TokenCreator.section.extras.ears,Ears,,,
 ViewPage.viewSupportingCharacter,View Supporting Character,Nebencharakter anzeigen,Ver personaje secundario,Voir le personnage secondaire
 ViewPage.viewNpc,View NPC,NSC anzeigen,,Voir PNJ
 ViewPage.viewMainCharacter,View Main Character,Hauptfigur anzeigen,Ver personaje principal,Voir le personnage principal
@@ -390,7 +418,7 @@ NpcType.minor.name,Minor NPC,Einfacher NSC,,PNJ Mineur
 NpcType.notable.name,Notable NPC,Bedeutender NSC,,PNJ Notable
 NpcType.major.name,Major NPC,Herausragender NSC,,PNJ Majeur
 ShipBuildType.pod.name,Pod,Kleines Shuttle,,Nacelle
-ShipBuildType.shuttle.name,Shuttle,Shuttle,,Navette
+ShipBuildType.shuttlecraft.name,Shuttle,Shuttle,,Navette
 ShipBuildType.runabout.name,Runabout,Runabout,,Runabout
 ShipBuildType.starship.name,Starship,Raumschiff,,Vaisseau
 StarSystem.common.coordinates,Coordinates,Koordinaten,,Coordonnées
@@ -401,6 +429,8 @@ StarSystem.common.worlds,Worlds,Welten,,Mondes
 StarSystem.common.noWorlds,No worlds,Keine Welten,,Pas de mondes
 StarSystem.common.primaryStar,Primary Star,Hauptstern,,Etoile Primaire
 StarSystem.common.companionStar,Companion Star,Begleitstern,,Etoile Binaire
+UniformEra.originalSeries,Original Series,,,
+UniformEra.dominionWar,Dominion War,,,
 Value.environment.text,"This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.","Diese Überzeugung sollte die Herkunft und die Kultur des Charakters, in der er oder sie aufgewachsen ist, widerspiegeln. Dies ist eine gute Gelegenheit, sich darüber Gedanken zu machen, wie der Charakter seine oder ihre eigene Kultur sieht und wie er oder sie zu den Philosophien und Traditionen der Vorfahren steht.",,Cette valeur doit refléter l'environnement et la culture dans lesquels le personnage a été élevé. C'est une bonne occasion d'examiner comment le personnage perçoit sa propre culture et comment il se rattache- ou peut-être ne se rattache pas - aux philosophies et aux traditions de son peuple.
 Value.starfleetTraining.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their time at the Academy.","Ihr Charakter erhält eine Überzeugung, die auf irgendeine Weise auf der Akademie geformte Wertvorstellungen oder gemachte Erfahrungen widerspiegeln sollte.",,"Le personnage gagne une valeur unique, qui devrait refléter certains aspects des croyances du personnage qui se sont développées pendant son séjour à l'Académie."
 Value.childEducation.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Education.","Ihr Charakter erhält eine Überzeugung, die auf irgendeine Weise während der Ausbildung geformte Wertvorstellungen oder gemachte Erfahrungen widerspiegeln sollte.",,"Le personnage gagne une valeur unique, qui devrait refléter certains aspects des croyances du personnage qui se sont développées au cours de son Education."

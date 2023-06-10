@@ -19,6 +19,51 @@
     "Home.talentsButton": "Talents Overview",
     "Home.tokenCreator": "Tokens",
 
+    "TokenCreator.option.rounded": "Rounded",
+    "TokenCreator.option.bordered": "Bordered",
+
+    "TokenCreator.section.species": "Species",
+
+    "TokenCreator.section.species.options": "Options",
+
+    "TokenCreator.section.body": "Body",
+
+    "TokenCreator.section.body.uniform": "Uniform Type",
+    "TokenCreator.section.body.colour": "Division Color",
+    "TokenCreator.section.body.rank": "Rank",
+    "TokenCreator.section.body.type": "Body Type",
+
+    "TokenCreator.section.head": "Head",
+
+    "TokenCreator.section.head.colour": "Skin Color",
+    "TokenCreator.section.head.shape": "Head Shape",
+
+    "TokenCreator.section.hair": "Hair",
+
+    "TokenCreator.section.hair.colour": "Hair Color",
+    "TokenCreator.section.hair.style": "Hair Style",
+
+    "TokenCreator.section.mouth": "Mouth",
+
+    "TokenCreator.section.mouth.shape": "Mouth",
+    "TokenCreator.section.mouth.colour": "Lipstick Color",
+    "TokenCreator.section.mouth.moustache": "Moustache",
+    "TokenCreator.section.mouth.beard": "Beard",
+
+    "TokenCreator.section.nose": "Nose",
+
+    "TokenCreator.section.nose.shape": "Nose Shape",
+    "TokenCreator.section.nose.nasoLabial": "Naso-Labial Folds",
+
+    "TokenCreator.section.eyes": "Eyes",
+
+    "TokenCreator.section.eyes.style": "Eye Style",
+    "TokenCreator.section.eyes.colour": "Eye Color",
+
+    "TokenCreator.section.extras": "Extras",
+
+    "TokenCreator.section.extras.ears": "Ears",
+
     "ViewPage.viewSupportingCharacter": "View Supporting Character",
     "ViewPage.viewNpc": "View NPC",
     "ViewPage.viewMainCharacter": "View Main Character",
@@ -463,7 +508,7 @@
 
     "ShipBuildType.pod.name": "Pod",
 
-    "ShipBuildType.shuttle.name": "Shuttle",
+    "ShipBuildType.shuttlecraft.name": "Shuttle",
 
     "ShipBuildType.runabout.name": "Runabout",
 
@@ -477,6 +522,9 @@
     "StarSystem.common.noWorlds": "No worlds",
     "StarSystem.common.primaryStar": "Primary Star",
     "StarSystem.common.companionStar": "Companion Star",
+
+    "UniformEra.originalSeries": "Original Series",
+    "UniformEra.dominionWar": "Dominion War",
 
     "Value.environment.text": "This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.",
 

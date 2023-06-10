@@ -84,33 +84,33 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
                                 <div className="mt-3">
                                     <CheckBox value="rounded" isChecked={rounded}
                                         onChanged={(val) => { this.setState((state) => ({...state, rounded: !state.rounded })) }}
-                                        text="Rounded" />
+                                        text={t('TokenCreator.option.rounded')} />
                                 </div>
                                 <div>
                                     <CheckBox value="fancy" isChecked={bordered && rounded}
                                         onChanged={(val) => { this.setState((state) => ({...state, bordered: !state.bordered })) }}
-                                        text="Bordered" disabled={ !rounded } />
+                                        text={t('TokenCreator.option.bordered')} disabled={ !rounded } />
                                 </div>
                             </div>
 
                             <div className="col-lg-8 mt-4">
                                 <div className="btn-group w-100" role="group" aria-label="Avatar part types">
                                     <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Species ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Species)}>Species</button>
+                                        onClick={() => this.selectTab(Tab.Species)}>{t('TokenCreator.section.species')}</button>
                                     <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Body ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Body)}>Body</button>
+                                        onClick={() => this.selectTab(Tab.Body)}>{t('TokenCreator.section.body')}</button>
                                     <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Head ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Head)}>Head</button>
+                                        onClick={() => this.selectTab(Tab.Head)}>{t('TokenCreator.section.head')}</button>
                                     <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Hair ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Hair)}>Hair</button>
+                                        onClick={() => this.selectTab(Tab.Hair)}>{t('TokenCreator.section.hair')}</button>
                                     <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Mouth ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Mouth)}>Mouth</button>
+                                        onClick={() => this.selectTab(Tab.Mouth)}>{t('TokenCreator.section.mouth')}</button>
                                     <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Nose ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Nose)}>Nose</button>
+                                        onClick={() => this.selectTab(Tab.Nose)}>{t('TokenCreator.section.nose')}</button>
                                     <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Eyes ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Eyes)}>Eyes</button>
+                                        onClick={() => this.selectTab(Tab.Eyes)}>{t('TokenCreator.section.eyes')}</button>
                                     <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Extras ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Extras)}>Extras</button>
+                                        onClick={() => this.selectTab(Tab.Extras)}>{t('TokenCreator.section.extras')}</button>
                                 </div>
                                 {this.renderTab()}
                             </div>

@@ -18,9 +18,9 @@ interface IMouthSelectionViewProperties extends WithTranslation {
 class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, {}> {
 
     render() {
-        const { token } = this.props;
+        const { t, token } = this.props;
         return (<>
-            <p className="mt-4">Mouth:</p>
+            <p className="mt-4">{t('TokenCreator.section.mouth.shape')}:</p>
             <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
             {MouthCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.name}
                 onClick={() => store.dispatch(setTokenMouthType(s.id))} active={s.id === token.mouthType}
@@ -28,7 +28,7 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
                 key={'mouth-swatch-' + s.id }/>)}
             </div>
 
-            <p className="mt-4">Lipstick Color:</p>
+            <p className="mt-4">{t('TokenCreator.section.mouth.colour')}:</p>
             <ColorSelection colors={SpeciesRestrictions.getLipstickColors(token.species)} onSelection={(c) => store.dispatch(setTokenLipstickColor(c))} />
 
             {this.renderFacialHair()}
@@ -38,10 +38,10 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
     }
 
     renderFacialHair() {
-        const { token } = this.props;
+        const { t, token } = this.props;
         if (SpeciesRestrictions.isFacialHairSupportedFor(token.species)) {
             return (<>
-                <p className="mt-4">Moustache:</p>
+                <p className="mt-4">{t('TokenCreator.section.mouth.moustache')}:</p>
                 <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
                 {FacialHairCatalog.instance.getSwatches(token, FacialHairPlacement.UpperLip).map(s => <SwatchButton svg={s.svg} title={s.name}
                     onClick={() => this.addFacialHairType(token, s.id)} active={this.getMoustacheType(token) === s.id}
