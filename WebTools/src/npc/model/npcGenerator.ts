@@ -49,7 +49,8 @@ const recreationSkills: { [type: number ]: string[] } = {
         "The Plays of Anton Chekhov", "Pre-Raphaelite Painters", "Andorian Electronic Dance Music",
         "Gourmet Raktajino Barista", "Karaoke", "Tongo", "Galeo-Manado Wrestling",
         "Andorian Clans of the Pre-Industrial Period", "Risan Vacation Activities",
-        "Trashy Romance Novels", "Parrises squares", "Neo-Sevrin Philosophy"
+        "Trashy Romance Novels", "Parrises squares", "Neo-Sevrin Philosophy",
+        "Protocols of the Orion Syndicate", "V'tosh ka'tur Ideology"
     ],
     [NpcCharacterType.KlingonDefenseForces] : ["The teachings of Kahless", "The accomplishments of Kahless",
         "Klingon Chancellors and Emperors", "The various locales of Q'onos", "Mok'bara",
@@ -71,7 +72,9 @@ const recreationSkills: { [type: number ]: string[] } = {
         "Puree of beetle",
         "Tube grub farming",
         "Slug-o-cola",
-        "Stardrifter afficionado"
+        "Stardrifter afficionado",
+        "Schmoozing",
+        "Bars and Diners"
     ]
 }
 
@@ -98,7 +101,11 @@ const careerSkills: { [type: number ]: string[] } = {
         "Business Opportunities",
         "Merchant Trade Routes",
         "The Rules of Acquisition",
-        "The Protocols of the Ferengi Trade Authority"
+        "The Protocols of the Ferengi Trade Authority",
+        "Unionization Threat Analysis",
+        "Subtle Billing Surcharges",
+        "Trade Authority Bureaucracy",
+        "Energy Whips"
     ]
 }
 
