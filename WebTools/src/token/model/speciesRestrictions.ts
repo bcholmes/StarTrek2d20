@@ -66,7 +66,7 @@ class SpeciesRestrictions {
     }
 
     static getHairTypes(species: Species) {
-        if (species === Species.Deltan || species === Species.Bolian) {
+        if (this.isBald(species)) {
             return [ HairType.Bald ];
         } else {
             return allHairTypes;
@@ -84,9 +84,21 @@ class SpeciesRestrictions {
     static isExtraAvailableFor(extra: ExtraType, species: Species) {
         if (extra === ExtraType.BajoranEarring) {
             return species === Species.Bajoran;
+        } else if (extra === ExtraType.SimpleEarring) {
+            return species !== Species.Bolian; // Bolians have weird ears
         } else {
             return true;
         }
+    }
+
+    static isBald(species: Species) {
+        return species === Species.Bolian || species === Species.Deltan || species === Species.Saurian;
+    }
+
+    static isTallForeheaded(species: Species) {
+        return species === Species.Denobulan || species === Species.Klingon
+            || species === Species.Tellarite || species === Species.Efrosian
+            || species === Species.Ktarian;
     }
 
     static getSpeciesOptions(species: Species) {

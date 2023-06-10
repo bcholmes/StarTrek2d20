@@ -7,7 +7,7 @@ import { HeadType } from "../token/model/headTypeEnum";
 import { MouthType } from "../token/model/mouthTypeEnum";
 import { NasoLabialFoldType } from "../token/model/nasoLabialFoldTypeEnum";
 import { NoseType } from "../token/model/noseTypeEnum";
-import { RankIndicator } from "../token/model/rankIndicatorEnum";
+import { RankIndicator, isEnlistedRank } from "../token/model/rankIndicatorEnum";
 import { SpeciesOption } from "../token/model/speciesOptionEnum";
 import SpeciesRestrictions from "../token/model/speciesRestrictions";
 import { Token } from "../token/model/token";
@@ -92,8 +92,13 @@ const token = (state: Token = initialState, action) => {
         } else {
             colour = newColourOptions[0];
         }
+        let rank = state.rankIndicator;
+        if (action.payload.era === UniformEra.OriginalSeries && isEnlistedRank(rank)) {
+            rank = RankIndicator.None;
+        }
         return {
             ...state,
+            rankIndicator: rank,
             divisionColor: colour,
             uniformEra: action.payload.era
         }
