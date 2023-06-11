@@ -71,6 +71,7 @@ const token = (state: Token = initialState, action) => {
         if (options.indexOf(option) < 0) {
             option = SpeciesOption.Option1;
         }
+        let extras = state.extras.filter(e => SpeciesRestrictions.isExtraAvailableFor(e, newSpecies));
         return {
             ...state,
             eyeColor: eyeColor,
@@ -79,7 +80,8 @@ const token = (state: Token = initialState, action) => {
             skinColor: skinColor,
             facialHairType: facialHairType,
             species: action.payload.species,
-            speciesOption: option
+            speciesOption: option,
+            extras: extras
         }
     }
     case SET_TOKEN_UNIFORM_ERA:

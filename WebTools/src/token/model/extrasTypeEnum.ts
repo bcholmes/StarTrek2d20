@@ -1,6 +1,6 @@
 
 export enum ExtraType {
-    None, BajoranEarring, SimpleEarring
+    None, BajoranEarring, SimpleEarring, HoopEarring
 }
 
 export enum ExtraCategory {

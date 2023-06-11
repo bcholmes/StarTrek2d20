@@ -84,7 +84,7 @@ class SpeciesRestrictions {
     static isExtraAvailableFor(extra: ExtraType, species: Species) {
         if (extra === ExtraType.BajoranEarring) {
             return species === Species.Bajoran;
-        } else if (extra === ExtraType.SimpleEarring) {
+        } else if (extra === ExtraType.SimpleEarring || extra === ExtraType.HoopEarring) {
             return species !== Species.Bolian; // Bolians have weird ears
         } else {
             return true;

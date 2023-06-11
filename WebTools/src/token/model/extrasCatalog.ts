@@ -1,4 +1,5 @@
 import { Species } from "../../helpers/speciesEnum";
+import EarCatalog from "./earCatalog";
 import { ExtraCategory, ExtraType } from "./extrasTypeEnum";
 import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
@@ -24,7 +25,12 @@ const SimpleEarring = `<g>
     <circle style="fill:#959595;stroke:#000000;stroke-width:0.5;stroke-miterlimit:40" id="path102376" cx="213.81355" cy="160.08475" r="1.7796611"/>
     <path id="circle102378" style="fill:#ffffff;stroke:none;stroke-width:0.5;stroke-miterlimit:40;fill-opacity:0.2" d="M 213.81445 158.30469 A 1.7796611 1.7796611 0 0 0 212.0332 160.08398 A 1.7796611 1.7796611 0 0 0 212.14453 160.6875 A 1.7796611 1.7796611 0 0 1 213.89844 159.19531 A 1.7796611 1.7796611 0 0 1 215.56836 160.36133 A 1.7796611 1.7796611 0 0 0 215.59375 160.08398 A 1.7796611 1.7796611 0 0 0 213.81445 158.30469 z "/>
     <circle style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:40" id="circle102383" cx="213.81355" cy="160.08475" r="1.7796611"/>
-</g>`
+</g>`;
+
+const HoopEarring = `<g>
+    <path id="ellipse939" style="fill:#878787;fill-opacity:1;stroke:#000000;stroke-width:0.660782;stroke-miterlimit:40" d="m 213.54539,160.62286 c 3.88503,0.17977 6.33276,5.56324 6.33276,13.15763 0,7.59439 -2.4229,13.07288 -6.24801,13.07288 -3.82511,0 -6.84123,-5.47849 -6.84123,-13.07288 0,-2.86312 0.7549,-5.1632 1.50901,-7.36473 -0.28844,-0.53337 -1.11486,-0.82329 -1.59156,-0.69176 -0.90568,2.34523 -1.61536,5.10406 -1.61536,8.05649 0,8.52532 4.05713,15.43646 8.53914,15.43646 4.48202,1e-5 8.11542,-6.91113 8.11542,-15.43646 0,-8.52533 -3.6334,-15.43646 -8.11542,-15.43646 -0.37652,0.53191 -0.34254,1.65704 -0.0848,2.27883 z"/>
+    <path style="color:#000000;fill:#ffffff;-inkscape-stroke:none;fill-opacity:0.30000001" d="m 218.84375,163.41309 c 0,0 1.67685,4.19303 1.80664,9.74707 0.12925,5.53131 -1.86719,11.19628 -1.86719,11.19628 0,0 2.70241,-5.47737 2.56836,-11.21386 -0.13352,-5.71375 -2.50781,-9.72949 -2.50781,-9.72949 z" id="path2653"/>
+</g>`;
 
 
 class ExtraItem {
@@ -50,7 +56,8 @@ class ExtrasCatalog {
     private items = [
         new ExtraItem(ExtraType.None, ExtraCategory.Ear, "None", ""),
         new ExtraItem(ExtraType.BajoranEarring, ExtraCategory.Ear, "Bajoran Earring", BajoranEarring),
-        new ExtraItem(ExtraType.SimpleEarring, ExtraCategory.Ear, "Simple Stud Earring", SimpleEarring)
+        new ExtraItem(ExtraType.SimpleEarring, ExtraCategory.Ear, "Simple Stud Earring", SimpleEarring),
+        new ExtraItem(ExtraType.HoopEarring, ExtraCategory.Ear, "Hoop Earring", HoopEarring)
     ]
 
     public static get instance() {
@@ -76,9 +83,17 @@ class ExtrasCatalog {
 
     static decorateSwatch(item: ExtraItem, token: Token) {
         return `<svg viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <g transform="translate(-160, -115)">`
-            + item.svg
-            + `</g>
+                <defs>
+                    <clipPath id="extraClipPath-` + item.id + `">
+                        <circle cx="40" cy="40" r="40" fill="#ffffff" />
+                    </clipPath>
+                </defs>
+                <g clip-path="url(#extraClipPath-` + item.id + `">
+                <g transform="translate(-165, -115)">`
+                + EarCatalog.instance.getEar(token)
+                + item.svg
+                + `</g>
+                </g>
             </svg>`;
     }
 }
