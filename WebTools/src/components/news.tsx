@@ -14,6 +14,15 @@ class News extends React.Component<INewsProperties, {}> {
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
                 <b>v1.230604</b>
                 <ul>
+                    <li>A bug fix.</li>
+                    <li>The mostly non-visible changes I've talked about recently are now visible. In short, I've added a basic token creator
+                        to the app, to create character tokens. The initial version is limited, but support for more options are
+                        underway. Special thanks to <a href="http://kacurtis.com/" target="_blank" rel="noreferrer">Keith Curtis</a> for
+                        the art assets.
+                    </li>
+                </ul>
+                <b>v1.230604</b>
+                <ul>
                     <li>Minor, mostly non-visible changes.</li>
                 </ul>
                 <b>v1.230603</b>
