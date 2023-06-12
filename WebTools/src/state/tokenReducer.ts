@@ -16,7 +16,7 @@ import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EXTRAS_TYPE, S
 
 const initialState = {
     species: Species.Human,
-    divisionColor: DivisionColors.getColors(UniformEra.DominionWar)[0],
+    divisionColor: DivisionColors.getColors(UniformEra.DominionWar)[0].color,
     skinColor: SpeciesRestrictions.DEFAULT_SKIN_COLOR,
     headType: HeadType.StandardMale,
     rankIndicator: RankIndicator.None,
@@ -86,13 +86,12 @@ const token = (state: Token = initialState, action) => {
     }
     case SET_TOKEN_UNIFORM_ERA:
         let colour = state.divisionColor;
-        let colourOptions = DivisionColors.getColors(state.uniformEra);
         let newColourOptions = DivisionColors.getColors(action.payload.era);
-        let index = colourOptions.indexOf(colour);
+        let index = DivisionColors.indexOf(state.uniformEra, colour);
         if (index >= 0 && index < newColourOptions.length) {
-            colour = newColourOptions[index];
+            colour = newColourOptions[index].color;
         } else {
-            colour = newColourOptions[0];
+            colour = newColourOptions[0].color;
         }
         let rank = state.rankIndicator;
         if (action.payload.era === UniformEra.OriginalSeries && isEnlistedRank(rank)) {

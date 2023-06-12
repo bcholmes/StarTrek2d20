@@ -313,6 +313,9 @@ Source.book.discoveryCampaign,Discovery Campaign,(NOT YET TRANSLATED),,Campagne 
 Source.book.picardS1,Picard S1,(NOT YET TRANSLATED),,Picard S1
 Source.book.utopiaPlanitia,Utopia Planitia,(NOT YET TRANSLATED),,Utopia Planitia
 Source.book.lowerDecksCampaign,Lower Decks,(NOT YET TRANSLATED),,
+Division.command,Command,,,
+Division.science,Science,,,
+Division.operations,Operations,,,
 Era.name.enterprise,Enterprise (22nd century),Enterprise (22. Jahrhundert),,Enterprise (22ème Siècle)
 Era.name.originalSeries,Original Series (23rd century),Originalserie (23. Jahrhundert),,Serie Originale (23ème Siècle)
 Era.name.nextGeneration,Next Generation (24th century),Das Nächste Jahrhundert (24. Jahrhundert),,Nouvelle Génération (24ème Siècle)

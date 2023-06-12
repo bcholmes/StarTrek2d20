@@ -12,7 +12,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
-                <b>v1.230604</b>
+                <b>v1.230611</b>
+                <ul>
+                    <li>Some cosmetic improvements to the Token Generator.</li>
+                </ul>
+                <b>v1.230610</b>
                 <ul>
                     <li>A bug fix.</li>
                     <li>The mostly non-visible changes I've talked about recently are now visible. In short, I've added a basic token creator

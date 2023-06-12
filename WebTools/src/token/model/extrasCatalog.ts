@@ -1,4 +1,3 @@
-import { Species } from "../../helpers/speciesEnum";
 import EarCatalog from "./earCatalog";
 import { ExtraCategory, ExtraType } from "./extrasTypeEnum";
 import SpeciesRestrictions from "./speciesRestrictions";

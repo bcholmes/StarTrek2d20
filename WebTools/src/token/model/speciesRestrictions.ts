@@ -68,6 +68,9 @@ class SpeciesRestrictions {
     static getHairTypes(species: Species) {
         if (this.isBald(species)) {
             return [ HairType.Bald ];
+        } else if (species === Species.Andorian) {
+            // the corn rows don't look right with the Antennae
+            return allHairTypes.filter(h => h !== HairType.CornRows);
         } else {
             return allHairTypes;
         }

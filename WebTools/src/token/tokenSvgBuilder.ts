@@ -48,8 +48,9 @@ export class TokenSvgBuilder {
                 <defs>
                     <clipPath id="clipPath">
                         <circle cx="200px" cy="200px" r="200px" fill="#ffffff" />
-                    </clipPath>
-                </defs>
+                    </clipPath>`
+                + HairCatalog.instance.getDefinitions(token.hairType, token)
+                + `</defs>
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">`
 
         + "<g id=\"background\"" + (rounded ? " clip-path=\"url(#clipPath)\"" : "") + " >" +

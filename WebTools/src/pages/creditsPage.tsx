@@ -33,7 +33,7 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
                                 the current STA Project Manager, has been unendingly patient with my many irritating questions.
                             </p>
 
-                            <p>Of course, <cite>Star Trek</cite>, itself, is licensed from CBS Studios, Inc., who own the property and trademarks.</p>
+                            <p>Modiphius, of course, licenses <cite>Star Trek</cite> from CBS Studios, Inc., who own the property and trademarks.</p>
 
                             <p>
                                 The original version of this character generator was created by {' '}

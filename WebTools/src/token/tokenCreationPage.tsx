@@ -91,6 +91,10 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
                                         onChanged={(val) => { this.setState((state) => ({...state, bordered: !state.bordered })) }}
                                         text={t('TokenCreator.option.bordered')} disabled={ !rounded } />
                                 </div>
+
+                                <div className="mt-4">
+                                    <Button buttonType={true} className='btn btn-primary btn-sm' onClick={() => this.exportPng()}>{t('Common.button.export')}</Button>
+                                </div>
                             </div>
 
                             <div className="col-lg-8 mt-4">
@@ -116,9 +120,6 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
                             </div>
                         </div>
 
-                        <div className="mt-4">
-                            <Button buttonType={true} className='btn btn-primary btn-sm' onClick={() => this.exportPng()}>{t('Common.button.export')}</Button>
-                        </div>
                     </div>
                 </div>
             </LcarsFrame>)

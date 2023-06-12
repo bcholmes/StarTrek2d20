@@ -365,6 +365,10 @@
     "Source.book.utopiaPlanitia": "Utopia Planitia",
     "Source.book.lowerDecksCampaign": "Lower Decks",
 
+    "Division.command": "Command",
+    "Division.science": "Science",
+    "Division.operations": "Operations",
+
     "Era.name.enterprise": "Enterprise (22nd century)",
     "Era.name.originalSeries": "Original Series (23rd century)",
     "Era.name.nextGeneration": "Next Generation (24th century)",
