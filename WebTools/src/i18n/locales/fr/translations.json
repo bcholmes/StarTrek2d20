@@ -308,10 +308,6 @@
     "Source.book.picardS1": "Picard S1",
     "Source.book.utopiaPlanitia": "Utopia Planitia",
 
-    "Era.name.enterprise": "Enterprise (22ème Siècle)",
-    "Era.name.originalSeries": "Serie Originale (23ème Siècle)",
-    "Era.name.nextGeneration": "Nouvelle Génération (24ème Siècle)",
-
     "CharacterType.name.starfleet": "Starfleet",
     "CharacterType.name.klingonWarrior": "Forces de Défense Klingones",
     "CharacterType.name.civilian": "Civil",
@@ -433,6 +429,10 @@
     "AlliedMilitaryType.name.cardassianUnion": "Union Cardassienne",
     "AlliedMilitaryType.name.dominion": "Dominion",
     "AlliedMilitaryType.name.other": "Autre",
+
+    "Era.name.enterprise": "Enterprise (22ème Siècle)",
+    "Era.name.originalSeries": "Serie Originale (23ème Siècle)",
+    "Era.name.nextGeneration": "Nouvelle Génération (24ème Siècle)",
 
     "ModificationType.name.reputation": "Réputation",
     "ModificationType.name.promotion": "Promotion",

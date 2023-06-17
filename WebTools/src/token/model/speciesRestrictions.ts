@@ -1,6 +1,6 @@
 import { Species } from "../../helpers/speciesEnum";
 import { ExtraType } from "./extrasTypeEnum";
-import { HairType, allHairTypes } from "./hairTypeEnum";
+import { HairType, allHairTypes, isTallForeheadHair } from "./hairTypeEnum";
 import { SpeciesOption } from "./speciesOptionEnum";
 
 
@@ -14,6 +14,8 @@ class SpeciesRestrictions {
     static DEFAULT_HAIR_COLOR_REGEX = /#383838/g;
 
     static DEFAULT_LIPSTICK_COLOR = "#a9777a";
+
+    static DEFAULT_EYE_COLOR_REGEX = /#754324/g;
 
     static getSkinColors(species: Species) {
         if (species === Species.Orion) {
@@ -41,7 +43,7 @@ class SpeciesRestrictions {
     }
 
     static getHairColors(species: Species) {
-        if (species === Species.Andorian) {
+        if (species === Species.Andorian || species === Species.Efrosian) {
             return ["#fdf2dc", "#f8edf3", "#bbbbbb", "#dddddd" ];
         } else {
 
@@ -71,8 +73,18 @@ class SpeciesRestrictions {
         } else if (species === Species.Andorian) {
             // the corn rows don't look right with the Antennae
             return allHairTypes.filter(h => h !== HairType.CornRows);
+        } else if (this.isTallForeheaded(species)) {
+            return allHairTypes.filter(h => isTallForeheadHair(h));
         } else {
             return allHairTypes;
+        }
+    }
+
+    static getDefaultHairType(species: Species) {
+        if (species === Species.Efrosian) {
+            return HairType.HighForeheadEfrosianStyle;
+        } else {
+            return this.getHairTypes(species)[0];
         }
     }
 
@@ -89,6 +101,10 @@ class SpeciesRestrictions {
             return species === Species.Bajoran;
         } else if (extra === ExtraType.SimpleEarring || extra === ExtraType.HoopEarring) {
             return species !== Species.Bolian; // Bolians have weird ears
+        } else if (extra === ExtraType.RisanSymbol) {
+            return species === Species.Risian;
+        } else if (extra === ExtraType.SmallBindi) {
+            return species === Species.Human;
         } else {
             return true;
         }

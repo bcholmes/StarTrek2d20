@@ -1,5 +1,8 @@
+import { makeKey } from "../../common/translationKey";
 import EarCatalog from "./earCatalog";
 import { ExtraCategory, ExtraType } from "./extrasTypeEnum";
+import { Eye2StandardBrows } from "./eyeBrowCatalog";
+import { Eye2 } from "./eyeCatalog";
 import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
 import { Token } from "./token";
@@ -31,6 +34,14 @@ const HoopEarring = `<g>
     <path style="color:#000000;fill:#ffffff;-inkscape-stroke:none;fill-opacity:0.30000001" d="m 218.84375,163.41309 c 0,0 1.67685,4.19303 1.80664,9.74707 0.12925,5.53131 -1.86719,11.19628 -1.86719,11.19628 0,0 2.70241,-5.47737 2.56836,-11.21386 -0.13352,-5.71375 -2.50781,-9.72949 -2.50781,-9.72949 z" id="path2653"/>
 </g>`;
 
+const SmallBindi = `<ellipse style="fill:#821c2b;fill-opacity:1;stroke:#000000;stroke-width:0.500001;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="path6783" cx="315.79523" cy="121.07501" rx="2.7118647" ry="3.2203395"/>`;
+
+const RisanSymbol = `<g>
+    <ellipse style="fill:#dcd18e;fill-opacity:1;stroke:#000000;stroke-width:0.715546;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="ellipse8365" cx="315.79523" cy="113.95172" rx="7.1894622" ry="6.9182663"/>
+    <path style="color:#000000;fill:#000000;stroke-width:1.43109;stroke-miterlimit:40;-inkscape-stroke:none" d="m 312.8373,115.7618 -0.0504,-0.0419 0.0252,0.0252 z" id="path8891"/>
+    <path style="color:#000000;fill:#845a17;fill-opacity:1;stroke-width:1.35581;stroke-miterlimit:40;-inkscape-stroke:none" d="m 312.15686,110.03725 c -0.29922,0.21666 -0.60727,0.58817 -0.85797,1.06981 -0.2507,0.48165 -0.43693,1.07322 -0.43693,1.71594 0,1.23957 0.5271,2.65613 1.75035,3.4213 0.9793,0.61225 2.20669,0.57462 3.24389,0.57462 1.13873,0 2.33468,0.17889 3.35774,-0.5958 1.03486,-0.78367 1.63385,-2.21465 1.63385,-3.40012 0,-1.23224 -0.69991,-2.31216 -1.72388,-3.02143 -0.13696,-0.10791 -0.32175,-0.15999 -0.56668,-0.16153 -0.22272,-0.001 -0.3972,0.10819 -0.54552,0.2595 -0.14829,0.15139 -0.2671,0.36843 -0.26744,0.62494 6.5e-4,0.47993 0.37995,0.88716 0.85796,0.88711 0.10075,-6e-5 0.1774,-0.0764 0.27011,-0.1112 0.42615,0.45122 0.70703,0.96205 0.70703,1.52262 0,0.33007 -0.13109,0.83396 -0.34425,1.2949 -0.21309,0.46095 -0.51283,0.88378 -0.78647,1.09101 -0.26958,0.20413 -0.59493,0.29294 -1.02481,0.32836 -0.42987,0.0354 -0.95326,0.0129 -1.56764,0.0129 -1.03085,0 -2.069,-0.0683 -2.56862,-0.38133 l -0.006,-0.003 c -0.73946,-0.46256 -1.14925,-1.47773 -1.14925,-2.34354 0,-0.5846 0.3022,-1.11717 0.76529,-1.58089 0.093,0.0351 0.17162,0.10848 0.27275,0.10862 0.47801,6e-5 0.85732,-0.40716 0.85797,-0.8871 -3.3e-4,-0.23998 -0.0912,-0.45135 -0.22244,-0.60906 -0.13137,-0.15771 -0.30561,-0.2768 -0.55132,-0.28161 -0.24572,-0.006 -0.57925,0.0882 -1.0983,0.46402 z" id="path8877"/>
+    <path id="path8546" style="color:#000000;fill:#845a17;fill-opacity:1;stroke-width:1.80043;-inkscape-stroke:none" d="m 312.69064,117.02906 a 0.8719825,0.91558157 0 0 0 -0.87208,0.9143 0.8719825,0.91558157 0 0 0 0.87208,0.91779 0.8719825,0.91558157 0 0 0 0.87209,-0.91779 0.8719825,0.91558157 0 0 0 0,-0.0143 h 4.62062 a 0.8719825,0.91558157 0 0 0 0,0.0143 0.8719825,0.91558157 0 0 0 0.8721,0.91779 0.8719825,0.91558157 0 0 0 0.87207,-0.91779 0.8719825,0.91558157 0 0 0 -0.61187,-0.87209 v -0.0422 h -0.21803 -0.0422 -6.32262 a 0.8719825,0.91558157 0 0 0 -0.0422,0 z"/>
+</g>`;
 
 class ExtraItem {
 
@@ -56,7 +67,11 @@ class ExtrasCatalog {
         new ExtraItem(ExtraType.None, ExtraCategory.Ear, "None", ""),
         new ExtraItem(ExtraType.BajoranEarring, ExtraCategory.Ear, "Bajoran Earring", BajoranEarring),
         new ExtraItem(ExtraType.SimpleEarring, ExtraCategory.Ear, "Simple Stud Earring", SimpleEarring),
-        new ExtraItem(ExtraType.HoopEarring, ExtraCategory.Ear, "Hoop Earring", HoopEarring)
+        new ExtraItem(ExtraType.HoopEarring, ExtraCategory.Ear, "Hoop Earring", HoopEarring),
+
+        new ExtraItem(ExtraType.None, ExtraCategory.Forehead, "None", ""),
+        new ExtraItem(ExtraType.SmallBindi, ExtraCategory.Forehead, "Small Bindi", SmallBindi),
+        new ExtraItem(ExtraType.RisanSymbol, ExtraCategory.Forehead, "Risan Symbol", RisanSymbol)
     ]
 
     public static get instance() {
@@ -73,7 +88,7 @@ class ExtrasCatalog {
     getSwatches(token: Token, category: ExtraCategory) {
         return this.items
             .filter(i => (category === i.category) && (SpeciesRestrictions.isExtraAvailableFor(i.id, token.species)))
-            .map(i => new Swatch(i.id, i.name, (token) => ExtrasCatalog.decorateSwatch(i, token)));
+            .map(i => new Swatch(i.id, i.name, (token) => ExtrasCatalog.decorateSwatch(i, token), makeKey("ExtraType.", ExtraType[i.id])));
     }
 
     isInCategory(type: ExtraType, category: ExtraCategory) {
@@ -81,19 +96,36 @@ class ExtrasCatalog {
     }
 
     static decorateSwatch(item: ExtraItem, token: Token) {
-        return `<svg viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <defs>
-                    <clipPath id="extraClipPath-` + item.id + `">
-                        <circle cx="40" cy="40" r="40" fill="#ffffff" />
-                    </clipPath>
-                </defs>
-                <g clip-path="url(#extraClipPath-` + item.id + `">
-                <g transform="translate(-165, -115)">`
-                + EarCatalog.instance.getEar(token)
-                + item.svg
-                + `</g>
-                </g>
-            </svg>`;
+        if (item.category === ExtraCategory.Ear) {
+            return `<svg viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <clipPath id="extraClipPath-` + item.category + "-" +  + item.id + `">
+                            <circle cx="40" cy="40" r="40" fill="#ffffff" />
+                        </clipPath>
+                    </defs>
+                    <g clip-path="url(#extraClipPath-` + item.id + `">
+                    <g transform="translate(-165, -115)">`
+                    + EarCatalog.instance.getEar(token)
+                    + item.svg
+                    + `</g>
+                    </g>
+                </svg>`;
+        } else {
+            return `<svg viewBox="0 0 110 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <clipPath id="extraClipPath-` + item.category + "-" + item.id + `">
+                            <circle cx="55" cy="55" r="55" fill="#ffffff" />
+                        </clipPath>
+                    </defs>
+                    <g clip-path="url(#extraClipPath-` + item.id + `">
+                        <g transform="translate(-250, -70)">`
+                        + Eye2StandardBrows.replace(SpeciesRestrictions.DEFAULT_HAIR_COLOR_REGEX, token.hairColor)
+                        + Eye2.replace(SpeciesRestrictions.DEFAULT_EYE_COLOR_REGEX, token.eyeColor)
+                        + item.svg
+                    + `</g>
+                    </g>
+                </svg>`;
+        }
     }
 }
 

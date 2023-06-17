@@ -17,6 +17,52 @@
     "Home.selection": "Werkzeug auswählen.",
     "Home.characterButton": "Charaktere & Raumschiffe",
     "Home.talentsButton": "Talente im Überblick",
+    "Home.tokenCreator": "Token",
+
+    "TokenCreator.option.rounded": "Abgerundet",
+    "TokenCreator.option.bordered": "Eingerahmt",
+
+    "TokenCreator.section.species": "Spezies",
+
+    "TokenCreator.section.species.options": "Optionen",
+
+    "TokenCreator.section.body": "Körper",
+
+    "TokenCreator.section.body.uniform": "Uniformtyp",
+    "TokenCreator.section.body.colour": "Abteilungsfarbe",
+    "TokenCreator.section.body.rank": "Rang",
+    "TokenCreator.section.body.type": "Körpertyp",
+
+    "TokenCreator.section.head": "Kopf",
+
+    "TokenCreator.section.head.colour": "Hautfarbe",
+    "TokenCreator.section.head.shape": "Kopfform",
+
+    "TokenCreator.section.hair": "Haar",
+
+    "TokenCreator.section.hair.colour": "Haarfarbe",
+    "TokenCreator.section.hair.style": "Frisur",
+
+    "TokenCreator.section.mouth": "Mund",
+
+    "TokenCreator.section.mouth.shape": "Mundform",
+    "TokenCreator.section.mouth.colour": "Lippenstiftfarbe",
+    "TokenCreator.section.mouth.moustache": "Schnurrbart",
+    "TokenCreator.section.mouth.beard": "Bart",
+
+    "TokenCreator.section.nose": "Nase",
+
+    "TokenCreator.section.nose.shape": "Nasenform",
+    "TokenCreator.section.nose.nasoLabial": "Nasenlippenfurche",
+
+    "TokenCreator.section.eyes": "Augen",
+
+    "TokenCreator.section.eyes.style": "Augenstil",
+    "TokenCreator.section.eyes.colour": "Augenfarbe",
+
+    "TokenCreator.section.extras": "Extras",
+
+    "TokenCreator.section.extras.ears": "Ohren",
 
     "ViewPage.viewSupportingCharacter": "Nebencharakter anzeigen",
     "ViewPage.viewNpc": "NSC anzeigen",
@@ -307,10 +353,6 @@
     "Source.book.klingonCore": "Klingonisches Grundregelwerk",
     "Source.book.shackletonExpanse": "Shackleton-Ausdehnung",
 
-    "Era.name.enterprise": "Enterprise (22. Jahrhundert)",
-    "Era.name.originalSeries": "Originalserie (23. Jahrhundert)",
-    "Era.name.nextGeneration": "Das Nächste Jahrhundert (24. Jahrhundert)",
-
     "CharacterType.name.starfleet": "Sternenflotte",
     "CharacterType.name.klingonWarrior": "Klingonische Verteidigungsstreitmacht",
     "CharacterType.name.civilian": "Zivilisten",
@@ -373,6 +415,14 @@
     "AlliedMilitaryType.name.dominion": "Dominion",
     "AlliedMilitaryType.name.other": "Andere",
 
+    "Division.command": "Kommando",
+    "Division.science": "Wissenschaft",
+    "Division.operations": "Operative",
+
+    "Era.name.enterprise": "Enterprise (22. Jahrhundert)",
+    "Era.name.originalSeries": "Originalserie (23. Jahrhundert)",
+    "Era.name.nextGeneration": "Das Nächste Jahrhundert (24. Jahrhundert)",
+
     "ModificationType.name.reputation": "Ansehen",
     "ModificationType.name.promotion": "Beförderung",
     "ModificationType.name.milestone": "Meilenstein",
@@ -403,6 +453,9 @@
     "StarSystem.common.noWorlds": "Keine Welten",
     "StarSystem.common.primaryStar": "Hauptstern",
     "StarSystem.common.companionStar": "Begleitstern",
+
+    "UniformEra.originalSeries": "Originalserie",
+    "UniformEra.dominionWar": "Dominionkrieg",
 
     "Value.environment.text": "Diese Überzeugung sollte die Herkunft und die Kultur des Charakters, in der er oder sie aufgewachsen ist, widerspiegeln. Dies ist eine gute Gelegenheit, sich darüber Gedanken zu machen, wie der Charakter seine oder ihre eigene Kultur sieht und wie er oder sie zu den Philosophien und Traditionen der Vorfahren steht.",
 

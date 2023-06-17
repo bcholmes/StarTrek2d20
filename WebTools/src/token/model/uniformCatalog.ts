@@ -283,17 +283,17 @@ class UniformCatalog {
     private static _instance: UniformCatalog;
 
     private dominionWarSwatches = [
-        new Swatch(BodyType.AverageMale, "Average Male", (token) => UniformCatalog.decorateSwatch(DominionWarBody1, BodyType.AverageMale, token)),
+        new Swatch(BodyType.AverageMale, "Average Male", (token) => UniformCatalog.decorateSwatch(DominionWarBody1, BodyType.AverageMale, token), "BodyType.averageMale"),
 //        new Swatch(BodyType.Body2, "Heftier Body", (token) => UniformCatalog.decorateSwatch(DominionWarBody2, BodyType.Body2, token)),
 //        new Swatch(BodyType.Body3, "Slighter Body", (token) => UniformCatalog.decorateSwatch(DominionWarBody3, BodyType.Body3, token)),
 //        new Swatch(BodyType.Body4, "Muscular Body", (token) => UniformCatalog.decorateSwatch(DominionWarBody4, BodyType.Body4, token)),
-        new Swatch(BodyType.AverageFemale, "Average Female", (token) => UniformCatalog.decorateSwatch(DominionWarFemaleBody, BodyType.AverageFemale, token)),
+        new Swatch(BodyType.AverageFemale, "Average Female", (token) => UniformCatalog.decorateSwatch(DominionWarFemaleBody, BodyType.AverageFemale, token), "BodyType.averageFemale"),
 //        new Swatch(BodyType.Body5, "Average", (token) => UniformCatalog.decorateSwatch(DominionWarBody5, BodyType.Body5, token)),
     ];
 
     private originalSeriesSwatches = [
-        new Swatch(BodyType.AverageMale, "Average Male", (token) => UniformCatalog.decorateSwatch(OriginalSeriesAverageMale, BodyType.AverageMale, token)),
-        new Swatch(BodyType.AverageFemale, "Average Female", (token) => UniformCatalog.decorateSwatch(OriginalSeriesAverageFemale, BodyType.AverageFemale, token)),
+        new Swatch(BodyType.AverageMale, "Average Male", (token) => UniformCatalog.decorateSwatch(OriginalSeriesAverageMale, BodyType.AverageMale, token), "BodyType.averageMale"),
+        new Swatch(BodyType.AverageFemale, "Average Female", (token) => UniformCatalog.decorateSwatch(OriginalSeriesAverageFemale, BodyType.AverageFemale, token), "BodyType.averageFemale"),
     ];
 
     public static get instance() {

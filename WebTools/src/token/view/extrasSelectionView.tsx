@@ -4,7 +4,7 @@ import { withTranslation, WithTranslation } from 'react-i18next';
 import { connect } from "react-redux";
 import SwatchButton from "./swatchButton";
 import ExtrasCatalog from "../model/extrasCatalog";
-import { ExtraCategory, ExtraType } from "../model/extrasTypeEnum";
+import { ExtraCategory, ExtraType, getExtraCategory } from "../model/extrasTypeEnum";
 import store from "../../state/store";
 import { setTokenExtrasTypes } from "../../state/tokenActions";
 
@@ -19,11 +19,21 @@ class ExtraSelectionView extends React.Component<IExtraSelectionViewProperties, 
         return (<>
         <p className="mt-4">{t('TokenCreator.section.extras.ears')}:</p>
         <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-        {ExtrasCatalog.instance.getSwatches(this.props.token, ExtraCategory.Ear).map(s => <SwatchButton svg={s.svg} title={s.name}
-            onClick={() => this.addExtra(s.id)} active={this.props.token.extras.indexOf(s.id) >= 0 || (s.id === ExtraType.None && !this.isExtraCategoryPresent(ExtraCategory.Ear))}
+        {ExtrasCatalog.instance.getSwatches(this.props.token, ExtraCategory.Ear).map(s => <SwatchButton svg={s.svg} title={s.localizedName}
+            onClick={() => this.addExtra(s.id, ExtraCategory.Ear)} active={this.props.token.extras.indexOf(s.id) >= 0 || (s.id === ExtraType.None && !this.isExtraCategoryPresent(ExtraCategory.Ear))}
             token={this.props.token}
             key={'extra-swatch-ear-' + s.id }/>)}
         </div>
+
+        <p className="mt-4">{t('TokenCreator.section.extras.forehead')}:</p>
+        <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
+        {ExtrasCatalog.instance.getSwatches(this.props.token, ExtraCategory.Forehead).map(s => <SwatchButton svg={s.svg} title={s.localizedName}
+            onClick={() => this.addExtra(s.id, ExtraCategory.Forehead)}
+            active={this.props.token.extras.indexOf(s.id) >= 0 || (s.id === ExtraType.None && !this.isExtraCategoryPresent(ExtraCategory.Forehead))}
+            token={this.props.token}
+            key={'extra-swatch-forehead-' + s.id }/>)}
+        </div>
+
 
         </>)
     }
@@ -32,8 +42,12 @@ class ExtraSelectionView extends React.Component<IExtraSelectionViewProperties, 
         return this.props.token.extras.filter(i => ExtrasCatalog.instance.isInCategory(i, category)).length > 0;
     }
 
-    addExtra(extraType: ExtraType) {
-        store.dispatch(setTokenExtrasTypes(extraType === ExtraType.None ? [] : [ extraType ]));
+    addExtra(extraType: ExtraType, category: ExtraCategory) {
+        let current = this.props.token.extras.filter(e => getExtraCategory(e) !== category);
+        if (extraType !== ExtraType.None) {
+            current.push(extraType);
+        }
+        store.dispatch(setTokenExtrasTypes(current));
     }
 }
 

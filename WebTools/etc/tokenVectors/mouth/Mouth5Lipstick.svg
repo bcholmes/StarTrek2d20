@@ -25,15 +25,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="1.475"
-     inkscape:cx="190.84746"
-     inkscape:cy="200"
+     inkscape:zoom="4.17193"
+     inkscape:cx="318.43775"
+     inkscape:cy="163.95289"
      inkscape:window-width="1440"
      inkscape:window-height="810"
      inkscape:window-x="2206"
-     inkscape:window-y="141"
+     inkscape:window-y="113"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g41479">
+     inkscape:current-layer="layer7">
     <inkscape:page
        x="0"
        y="0"
@@ -50,10 +50,6 @@
        style="opacity:0.199997;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333"
        id="path47609" />
     <path
-       d="m 312.76986,181.44561 c -0.54667,1.308 -1.06133,2.63733 -1.45867,3.98533 -0.40933,1.39333 -0.08,3.04933 1.564,3.69333 -0.0333,-0.012 -0.28666,-0.67333 -0.336,-0.75866 -0.66666,-1.12934 -0.432,-2.81734 -0.25733,-4.04 0.12533,-0.88267 0.14,-2.04667 0.488,-2.88"
-       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333"
-       id="path47619" />
-    <path
        d="m 293.30933,197.30254 c 0,0 6.276,7.68266 20.84666,7.68266 8.57734,0 13.31334,-5.83066 12.43734,-7.09733 -0.87734,-1.268 -11.988,-4.28933 -11.988,-4.28933 z"
        style="fill:#c14242;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333"
        id="path47623" />
@@ -69,5 +65,14 @@
        d="m 289.85066,197.97134 c 1.30533,1.224 1.85867,0.0467 4.404,-0.0813 8.46667,-0.424 11.99067,-2.03867 19.57467,-2.03867 9.472,0 10.84533,2.16267 12.31333,2.73333 1.468,0.57067 2.368,0.284 1.472,-0.69466 -0.89733,-0.97867 -5.648,-2.85467 -13.54,-2.85467 -9.416,0 -12.08533,1.74133 -19.98267,1.876 -0.90133,0.0147 -5.18266,0.17733 -4.24133,1.06"
        style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333"
        id="path47647" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="Philtrum">
+    <path
+       d="m 312.76986,181.44561 c -0.54667,1.308 -1.06133,2.63733 -1.45867,3.98533 -0.40933,1.39333 -0.08,3.04933 1.564,3.69333 -0.0333,-0.012 -0.28666,-0.67333 -0.336,-0.75866 -0.66666,-1.12934 -0.432,-2.81734 -0.25733,-4.04 0.12533,-0.88267 0.14,-2.04667 0.488,-2.88"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333"
+       id="path47619" />
   </g>
 </svg>

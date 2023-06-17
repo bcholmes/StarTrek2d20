@@ -53,7 +53,7 @@ const token = (state: Token = initialState, action) => {
         let hairType = state.hairType;
         let hairTypes = SpeciesRestrictions.getHairTypes(newSpecies);
         if (hairTypes.indexOf(hairType) < 0) {
-            hairType = hairTypes[0];
+            hairType = SpeciesRestrictions.getDefaultHairType(newSpecies);
         }
 
         let facialHairType = state.facialHairType;

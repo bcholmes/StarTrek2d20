@@ -14,35 +14,36 @@ EraSelectionPage.eraInstruction,Select which Era to play in. Ask your GM which E
 Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sélectionnez l'outil.
 Home.characterButton,Characters & Starships,Charaktere & Raumschiffe,Personajes y naves espaciales,Personnages et vaisseaux spatiaux
 Home.talentsButton,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
-Home.tokenCreator,Tokens,,,
-TokenCreator.option.rounded,Rounded,,,
-TokenCreator.option.bordered,Bordered,,,
-TokenCreator.section.species,Species,,,
-TokenCreator.section.species.options,Options,,,
-TokenCreator.section.body,Body,,,
-TokenCreator.section.body.uniform,Uniform Type,,,
-TokenCreator.section.body.colour,Division Color,,,
-TokenCreator.section.body.rank,Rank,,,
-TokenCreator.section.body.type,Body Type,,,
-TokenCreator.section.head,Head,,,
-TokenCreator.section.head.colour,Skin Color,,,
-TokenCreator.section.head.shape,Head Shape,,,
-TokenCreator.section.hair,Hair,,,
-TokenCreator.section.hair.colour,Hair Color,,,
-TokenCreator.section.hair.style,Hair Style,,,
-TokenCreator.section.mouth,Mouth,,,
-TokenCreator.section.mouth.shape,Mouth,,,
-TokenCreator.section.mouth.colour,Lipstick Color,,,
-TokenCreator.section.mouth.moustache,Moustache,,,
-TokenCreator.section.mouth.beard,Beard,,,
-TokenCreator.section.nose,Nose,,,
-TokenCreator.section.nose.shape,Nose Shape,,,
-TokenCreator.section.nose.nasoLabial,Naso-Labial Folds,,,
-TokenCreator.section.eyes,Eyes,,,
-TokenCreator.section.eyes.style,Eye Style,,,
-TokenCreator.section.eyes.colour,Eye Color,,,
-TokenCreator.section.extras,Extras,,,
-TokenCreator.section.extras.ears,Ears,,,
+Home.tokenCreator,Tokens,Token,,
+TokenCreator.option.rounded,Rounded,Abgerundet,,
+TokenCreator.option.bordered,Bordered,Eingerahmt,,
+TokenCreator.section.species,Species,Spezies,,
+TokenCreator.section.species.options,Options,Optionen,,
+TokenCreator.section.body,Body,Körper,,
+TokenCreator.section.body.uniform,Uniform Type,Uniformtyp,,
+TokenCreator.section.body.colour,Division Color,Abteilungsfarbe,,
+TokenCreator.section.body.rank,Rank,Rang,,
+TokenCreator.section.body.type,Body Type,Körpertyp,,
+TokenCreator.section.head,Head,Kopf,,
+TokenCreator.section.head.colour,Skin Color,Hautfarbe,,
+TokenCreator.section.head.shape,Head Shape,Kopfform,,
+TokenCreator.section.hair,Hair,Haar,,
+TokenCreator.section.hair.colour,Hair Color,Haarfarbe,,
+TokenCreator.section.hair.style,Hair Style,Frisur,,
+TokenCreator.section.mouth,Mouth,Mund,,
+TokenCreator.section.mouth.shape,Mouth,Mundform,,
+TokenCreator.section.mouth.colour,Lipstick Color,Lippenstiftfarbe,,
+TokenCreator.section.mouth.moustache,Moustache,Schnurrbart,,
+TokenCreator.section.mouth.beard,Beard,Bart,,
+TokenCreator.section.nose,Nose,Nase,,
+TokenCreator.section.nose.shape,Nose Shape,Nasenform,,
+TokenCreator.section.nose.nasoLabial,Naso-Labial Folds,Nasenlippenfurche,,
+TokenCreator.section.eyes,Eyes,Augen,,
+TokenCreator.section.eyes.style,Eye Style,Augenstil,,
+TokenCreator.section.eyes.colour,Eye Color,Augenfarbe,,
+TokenCreator.section.extras,Extras,Extras,,
+TokenCreator.section.extras.ears,Ears,Ohren,,
+TokenCreator.section.extras.forehead,Forehead,,,
 ViewPage.viewSupportingCharacter,View Supporting Character,Nebencharakter anzeigen,Ver personaje secundario,Voir le personnage secondaire
 ViewPage.viewNpc,View NPC,NSC anzeigen,,Voir PNJ
 ViewPage.viewMainCharacter,View Main Character,Hauptfigur anzeigen,Ver personaje principal,Voir le personnage principal
@@ -313,12 +314,6 @@ Source.book.discoveryCampaign,Discovery Campaign,(NOT YET TRANSLATED),,Campagne 
 Source.book.picardS1,Picard S1,(NOT YET TRANSLATED),,Picard S1
 Source.book.utopiaPlanitia,Utopia Planitia,(NOT YET TRANSLATED),,Utopia Planitia
 Source.book.lowerDecksCampaign,Lower Decks,(NOT YET TRANSLATED),,
-Division.command,Command,,,
-Division.science,Science,,,
-Division.operations,Operations,,,
-Era.name.enterprise,Enterprise (22nd century),Enterprise (22. Jahrhundert),,Enterprise (22ème Siècle)
-Era.name.originalSeries,Original Series (23rd century),Originalserie (23. Jahrhundert),,Serie Originale (23ème Siècle)
-Era.name.nextGeneration,Next Generation (24th century),Das Nächste Jahrhundert (24. Jahrhundert),,Nouvelle Génération (24ème Siècle)
 CharacterType.name.starfleet,Starfleet,Sternenflotte,,Starfleet
 CharacterType.name.klingonWarrior,Klingon Defense Force,Klingonische Verteidigungsstreitmacht,,Forces de Défense Klingones
 CharacterType.name.civilian,Civilian,Zivilisten,,Civil
@@ -411,6 +406,20 @@ AlliedMilitaryType.name.cardassianUnion,Cardassian Union,Cardassianische Union,,
 AlliedMilitaryType.name.dominion,Dominion,Dominion,,Dominion
 AlliedMilitaryType.name.ferengiMilitary,Ferengi Military,,,
 AlliedMilitaryType.name.other,Other,Andere,,Autre
+BodyType.averageMale,Average Male,,,
+BodyType.averageFemale,Average Female,,,
+Division.command,Command,Kommando,,
+Division.science,Science,Wissenschaft,,
+Division.operations,Operations,Operative,,
+Era.name.enterprise,Enterprise (22nd century),Enterprise (22. Jahrhundert),,Enterprise (22ème Siècle)
+Era.name.originalSeries,Original Series (23rd century),Originalserie (23. Jahrhundert),,Serie Originale (23ème Siècle)
+Era.name.nextGeneration,Next Generation (24th century),Das Nächste Jahrhundert (24. Jahrhundert),,Nouvelle Génération (24ème Siècle)
+ExtraType.none,None,,,
+ExtraType.bajoranEarring,Bajoran Earring,,,
+ExtraType.simpleEarring,Simple Stud Earring,,,
+ExtraType.hoopEarring,Hoop Earring,,,
+ExtraType.smallBindi,Small Bindi,,,
+ExtraType.risanSymbol,Risan Symbol,,,
 ModificationType.name.reputation,Reputation,Ansehen,,Réputation
 ModificationType.name.promotion,Promotion,Beförderung,,Promotion
 ModificationType.name.milestone,Milestone,Meilenstein,,Jalon d'Expérience
@@ -420,6 +429,38 @@ MilestoneType.name.arcMilestone,Arc Milestone,Handlungsbogen-Meilenstein,,Jalon 
 NpcType.minor.name,Minor NPC,Einfacher NSC,,PNJ Mineur
 NpcType.notable.name,Notable NPC,Bedeutender NSC,,PNJ Notable
 NpcType.major.name,Major NPC,Herausragender NSC,,PNJ Majeur
+Rank.captain.name,Captain,,,
+Rank.captain.abbrev,Capt.,,,
+Rank.commander.name,Commander,,,
+Rank.commander.abbrev,Cmdr.,,,
+Rank.lieutenantCommander.name,Lt. Commander,,,
+Rank.lieutenantCommander.abbrev,LCdr.,,,
+Rank.lieutenant.name,Lieutenant,,,
+Rank.lieutenant.abbrev,Lt.,,,
+Rank.lieutenantJG.name,Lieutenant J.G.,,,
+Rank.lieutenantJG.abbrev,Lt. (J.G.),,,
+Rank.ensign.name,Ensign,,,
+Rank.ensign.abbrev,Ens.,,,
+Rank.none.name,None,,,
+Rank.none.abbrev,,,,
+Rank.masterChiefPettyOfficer.name,Master Chief Petty Officer,,,
+Rank.masterChiefPettyOfficer.abbrev,Chief,,,
+Rank.seniorChiefPettyOfficer.name,Senior Chief Petty Officer,,,
+Rank.seniorChiefPettyOfficer.abbrev,Chief,,,
+Rank.chiefPettyOfficer.name,Chief Petty Officer,,,
+Rank.chiefPettyOfficer.abbrev,Chief,,,
+Rank.pettyOfficer1stClass.name,Petty Officer 1st Class,,,
+Rank.pettyOfficer1stClass.abbrev,P.O.,,,
+Rank.pettyOfficer2ndClass.name,Petty Officer 2nd Class,,,
+Rank.pettyOfficer2ndClass.abbrev,P.O.,,,
+Rank.pettyOfficer3rdClass.name,Petty Officer 3rd Class,,,
+Rank.pettyOfficer3rdClass.abbrev,P.O.,,,
+Rank.crewman1stClass.name,Crewman 1st Class,,,
+Rank.crewman1stClass.abbrev,Crew.,,,
+Rank.crewman2ndClass.name,Crewman 2nd Class,,,
+Rank.crewman2ndClass.abbrev,Crew.,,,
+Rank.crewman3rdClass.name,Crewman 3rd Class,,,
+Rank.crewman3rdClass.abbrev,Crew.,,,
 ShipBuildType.pod.name,Pod,Kleines Shuttle,,Nacelle
 ShipBuildType.shuttlecraft.name,Shuttle,Shuttle,,Navette
 ShipBuildType.runabout.name,Runabout,Runabout,,Runabout
@@ -432,8 +473,8 @@ StarSystem.common.worlds,Worlds,Welten,,Mondes
 StarSystem.common.noWorlds,No worlds,Keine Welten,,Pas de mondes
 StarSystem.common.primaryStar,Primary Star,Hauptstern,,Etoile Primaire
 StarSystem.common.companionStar,Companion Star,Begleitstern,,Etoile Binaire
-UniformEra.originalSeries,Original Series,,,
-UniformEra.dominionWar,Dominion War,,,
+UniformEra.originalSeries,Original Series,Originalserie,,
+UniformEra.dominionWar,Dominion War,Dominionkrieg,,
 Value.environment.text,"This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.","Diese Überzeugung sollte die Herkunft und die Kultur des Charakters, in der er oder sie aufgewachsen ist, widerspiegeln. Dies ist eine gute Gelegenheit, sich darüber Gedanken zu machen, wie der Charakter seine oder ihre eigene Kultur sieht und wie er oder sie zu den Philosophien und Traditionen der Vorfahren steht.",,Cette valeur doit refléter l'environnement et la culture dans lesquels le personnage a été élevé. C'est une bonne occasion d'examiner comment le personnage perçoit sa propre culture et comment il se rattache- ou peut-être ne se rattache pas - aux philosophies et aux traditions de son peuple.
 Value.starfleetTraining.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their time at the Academy.","Ihr Charakter erhält eine Überzeugung, die auf irgendeine Weise auf der Akademie geformte Wertvorstellungen oder gemachte Erfahrungen widerspiegeln sollte.",,"Le personnage gagne une valeur unique, qui devrait refléter certains aspects des croyances du personnage qui se sont développées pendant son séjour à l'Académie."
 Value.childEducation.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Education.","Ihr Charakter erhält eine Überzeugung, die auf irgendeine Weise während der Ausbildung geformte Wertvorstellungen oder gemachte Erfahrungen widerspiegeln sollte.",,"Le personnage gagne une valeur unique, qui devrait refléter certains aspects des croyances du personnage qui se sont développées au cours de son Education."

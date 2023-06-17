@@ -63,6 +63,7 @@
     "TokenCreator.section.extras": "Extras",
 
     "TokenCreator.section.extras.ears": "Ears",
+    "TokenCreator.section.extras.forehead": "Forehead",
 
     "ViewPage.viewSupportingCharacter": "View Supporting Character",
     "ViewPage.viewNpc": "View NPC",
@@ -365,14 +366,6 @@
     "Source.book.utopiaPlanitia": "Utopia Planitia",
     "Source.book.lowerDecksCampaign": "Lower Decks",
 
-    "Division.command": "Command",
-    "Division.science": "Science",
-    "Division.operations": "Operations",
-
-    "Era.name.enterprise": "Enterprise (22nd century)",
-    "Era.name.originalSeries": "Original Series (23rd century)",
-    "Era.name.nextGeneration": "Next Generation (24th century)",
-
     "CharacterType.name.starfleet": "Starfleet",
     "CharacterType.name.klingonWarrior": "Klingon Defense Force",
     "CharacterType.name.civilian": "Civilian",
@@ -496,6 +489,24 @@
     "AlliedMilitaryType.name.ferengiMilitary": "Ferengi Military",
     "AlliedMilitaryType.name.other": "Other",
 
+    "BodyType.averageMale": "Average Male",
+    "BodyType.averageFemale": "Average Female",
+
+    "Division.command": "Command",
+    "Division.science": "Science",
+    "Division.operations": "Operations",
+
+    "Era.name.enterprise": "Enterprise (22nd century)",
+    "Era.name.originalSeries": "Original Series (23rd century)",
+    "Era.name.nextGeneration": "Next Generation (24th century)",
+
+    "ExtraType.none": "None",
+    "ExtraType.bajoranEarring": "Bajoran Earring",
+    "ExtraType.simpleEarring": "Simple Stud Earring",
+    "ExtraType.hoopEarring": "Hoop Earring",
+    "ExtraType.smallBindi": "Small Bindi",
+    "ExtraType.risanSymbol": "Risan Symbol",
+
     "ModificationType.name.reputation": "Reputation",
     "ModificationType.name.promotion": "Promotion",
     "ModificationType.name.milestone": "Milestone",
@@ -509,6 +520,53 @@
     "NpcType.notable.name": "Notable NPC",
 
     "NpcType.major.name": "Major NPC",
+
+    "Rank.captain.name": "Captain",
+    "Rank.captain.abbrev": "Capt.",
+
+    "Rank.commander.name": "Commander",
+    "Rank.commander.abbrev": "Cmdr.",
+
+    "Rank.lieutenantCommander.name": "Lt. Commander",
+    "Rank.lieutenantCommander.abbrev": "LCdr.",
+
+    "Rank.lieutenant.name": "Lieutenant",
+    "Rank.lieutenant.abbrev": "Lt.",
+
+    "Rank.lieutenantJG.name": "Lieutenant J.G.",
+    "Rank.lieutenantJG.abbrev": "Lt. (J.G.)",
+
+    "Rank.ensign.name": "Ensign",
+    "Rank.ensign.abbrev": "Ens.",
+
+    "Rank.none.name": "None",
+
+    "Rank.masterChiefPettyOfficer.name": "Master Chief Petty Officer",
+    "Rank.masterChiefPettyOfficer.abbrev": "Chief",
+
+    "Rank.seniorChiefPettyOfficer.name": "Senior Chief Petty Officer",
+    "Rank.seniorChiefPettyOfficer.abbrev": "Chief",
+
+    "Rank.chiefPettyOfficer.name": "Chief Petty Officer",
+    "Rank.chiefPettyOfficer.abbrev": "Chief",
+
+    "Rank.pettyOfficer1stClass.name": "Petty Officer 1st Class",
+    "Rank.pettyOfficer1stClass.abbrev": "P.O.",
+
+    "Rank.pettyOfficer2ndClass.name": "Petty Officer 2nd Class",
+    "Rank.pettyOfficer2ndClass.abbrev": "P.O.",
+
+    "Rank.pettyOfficer3rdClass.name": "Petty Officer 3rd Class",
+    "Rank.pettyOfficer3rdClass.abbrev": "P.O.",
+
+    "Rank.crewman1stClass.name": "Crewman 1st Class",
+    "Rank.crewman1stClass.abbrev": "Crew.",
+
+    "Rank.crewman2ndClass.name": "Crewman 2nd Class",
+    "Rank.crewman2ndClass.abbrev": "Crew.",
+
+    "Rank.crewman3rdClass.name": "Crewman 3rd Class",
+    "Rank.crewman3rdClass.abbrev": "Crew.",
 
     "ShipBuildType.pod.name": "Pod",
 

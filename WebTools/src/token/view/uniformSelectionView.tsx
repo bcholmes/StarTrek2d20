@@ -19,24 +19,29 @@ interface IUniformSelectionViewProperties extends WithTranslation {
 class UniformSelectionView extends React.Component<IUniformSelectionViewProperties, {}> {
 
     render() {
-        const { token } = this.props;
+        const { t, token } = this.props;
 
         return (<div className="mt-4">
-            <p>Uniform type:</p>
-            <DropDownSelect items={this.uniformErasList()} defaultValue={token.uniformEra} onChange={(e) => store.dispatch(setUniformEra(e as UniformEra))} />
+            <div className="row align-items-start">
+                <div className="col-lg-6 mb-3">
+                    <p>{t('TokenCreator.section.body.uniform')}:</p>
+                    <DropDownSelect items={this.uniformErasList()} defaultValue={token.uniformEra} onChange={(e) => store.dispatch(setUniformEra(e as UniformEra))} />
+                </div>
+                <div className="col-lg-6 mb-3">
+                    <p>{t('TokenCreator.section.body.colour')}:</p>
+                    <ColorSelection colors={DivisionColors.getColors(token.uniformEra)} onSelection={(c) => store.dispatch(setTokenDivisionColor(c))} />
+                </div>
+            </div>
 
-            <p className="mt-4">Division colors:</p>
-            <ColorSelection colors={DivisionColors.getColors(token.uniformEra)} onSelection={(c) => store.dispatch(setTokenDivisionColor(c))} />
-
-            <p className="mt-4">Rank:</p>
+            <p className="mt-4">{t('TokenCreator.section.body.rank')}:</p>
             <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-            {RankIndicatorCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.name}
+            {RankIndicatorCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.localizedName}
                 onClick={() => store.dispatch(setTokenRank(s.id))}
                 active={token.rankIndicator === s.id}
                 token={token} key={'rank-swatch-' + s.id }/>)}
             </div>
 
-            <p className="mt-4">Body Type:</p>
+            <p className="mt-4">{t('TokenCreator.section.body.type')}:</p>
             <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
             {UniformCatalog.instance.getSwatches(token.uniformEra).map(s => <SwatchButton svg={s.svg} title={s.name} size="lg"
                 onClick={() => store.dispatch(setTokenBodyType(s.id)) }

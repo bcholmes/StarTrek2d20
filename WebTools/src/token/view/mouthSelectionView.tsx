@@ -49,7 +49,7 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
                     key={'facial-hair-swatch-' + s.id }/>)}
                 </div>
 
-                <p className="mt-4">Beard:</p>
+                <p className="mt-4">{t('TokenCreator.section.mouth.beard')}:</p>
                 <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
                 {FacialHairCatalog.instance.getSwatches(token, FacialHairPlacement.Chin).map(s => <SwatchButton svg={s.svg} title={s.name}
                     onClick={() => this.addFacialHairType(token, s.id)} active={this.getBeardTypes(token).indexOf(s.id) >= 0}
