@@ -10,35 +10,35 @@ import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import MissionPodSelection from "../view/missionPodSelection";
 import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-interface IMissionPodSelectionPageProperties {
+interface IMissionPodSelectionPageProperties extends WithTranslation{
     starship: Starship;
     workflow: ShipBuildWorkflow;
 }
 
 class MissionPodSelectionPage extends React.Component<IMissionPodSelectionPageProperties, {}> {
     render() {
+        const { t } = this.props;
         return (<div className="page container ml-0">
             <ShipBuildingBreadcrumbs />
-            <Header>Mission Pod</Header>
-            <p>Certain spaceframes have the ability to be fitted with a since mission pod, chosen
-                from the list below. The talents provided by the pod may not be swapped out normally,
-                but the entire mission pod (and all its benefits) may be swapped out as if it were
-                a single talent.
+            <Header>{t('Page.title.missionPodSelection')}</Header>
+            <p>{t('MissionPodSelectionPage.text')}
             </p>
             <MissionPodSelection
                 initialSelection={this.props.starship.missionPodModel}
                 starship={this.props.starship}
                 onSelection={(missionPod) => store.dispatch(setStarshipMissionPod(missionPod))} />
             <div className="text-right">
-                <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
+                <Button buttonType={true} onClick={() => this.nextPage()}>{t('Common.button.next')}</Button>
             </div>
         </div>);
     }
 
     nextPage() {
+        const { t } = this.props;
         if (this.props.starship.missionPodModel == null) {
-            Dialog.show("Please select a mission pod before proceeding.");
+            Dialog.show(t('MissionPodSelectionPage.errorNoSelection'));
         } else {
             let step = this.props.workflow.peekNextStep();
             store.dispatch(nextStarshipWorkflowStep());
@@ -54,4 +54,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(MissionPodSelectionPage);
+export default withTranslation()(connect(mapStateToProps)(MissionPodSelectionPage));

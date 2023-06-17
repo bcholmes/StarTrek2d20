@@ -39,7 +39,7 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
 
         let overrideCheckbox =(<CheckBox
             isChecked={this.state.allowAllFrames}
-            text="Ignore end-of-service date (GM's decision)"
+            text={t('SpaceframeSelectionPage.ignoreEndOfService')}
             value={!this.state.allowAllFrames}
             onChanged={(e) => { this.setState({ allowAllFrames: !this.state.allowAllFrames }); }} />);
 
@@ -118,7 +118,7 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
                     <thead>
                         <tr>
                             <td></td>
-                            <td className="d=none d-md-table-cell" colSpan={6}>Stats</td>
+                            <td className="d=none d-md-table-cell" colSpan={6}>{t('Construct.other.stats')}</td>
                             <td className="d=none d-md-table-cell">{t('Construct.other.scale')}</td>
                             <td className="d=none d-md-table-cell">{t('Construct.other.talents')}</td>
                             <td></td>
@@ -130,9 +130,9 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
     }
 
     renderNotice() {
+        const { t } = this.props;
         if (hasAnySource([ Source.UtopiaPlanitia ])) {
-            return (<p>Note: The Utopia Planitia sourcebook has re-defined the stats for a number of previously-published
-                    spaceframes. Those redefined stats are presented, here.</p>);
+            return (<p>{t('SpaceframeSelectionPage.note')}</p>);
         } else {
             return undefined;
         }

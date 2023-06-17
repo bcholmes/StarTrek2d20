@@ -11,24 +11,21 @@ import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
 import SpaceframeSelection from "../view/spaceframeSelection";
+import { withTranslation, WithTranslation } from 'react-i18next';
+import InstructionText from "../../components/instructionText";
 
-interface ISpaceframeSelectionPageProperties {
+interface ISpaceframeSelectionPageProperties extends WithTranslation {
     starship: Starship;
     workflow: ShipBuildWorkflow;
 }
 
 class SpaceframeSelectionPage extends React.Component<ISpaceframeSelectionPageProperties, {}> {
     render() {
+        const { t } = this.props;
         return (<div className="page container ml-0">
             <ShipBuildingBreadcrumbs />
-            <Header>Spaceframe</Header>
-            <p>
-                The Spaceframe is the ship’s basic structure and infrastructure, and the foundation
-                upon which everything else will be laid. At this stage, the Players select a single
-                class, which provides the basic Systems for the ship, as well as its Scale, and
-                its weaponry. Different classes enter and leave service at different dates, so
-                the campaign year determines availability.
-            </p>
+            <Header>{t('Page.title.spaceframeSelection')}</Header>
+            <InstructionText text={t('SpaceframeSelectionPage.text')} />
             <SpaceframeSelection
                 initialSelection={this.props.starship.spaceframeModel}
                 starship={this.props.starship}
@@ -36,7 +33,7 @@ class SpaceframeSelectionPage extends React.Component<ISpaceframeSelectionPagePr
                 type={this.props.starship.type}
                 onSelection={(spaceframe) => store.dispatch(setStarshipSpaceframe(spaceframe))} />
             <div className="text-right">
-                <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
+                <Button buttonType={true} onClick={() => this.nextPage()}>{t('Common.button.next')}</Button>
             </div>
         </div>);
     }
@@ -61,4 +58,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(SpaceframeSelectionPage);
+export default withTranslation()(connect(mapStateToProps)(SpaceframeSelectionPage));

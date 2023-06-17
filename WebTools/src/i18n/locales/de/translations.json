@@ -125,16 +125,16 @@
 
     "EnvironmentPage.alliedMilitary.instruction": "Unabhängig von ihrer Spezies stammen Militär-Offiziere von vielen Orten auf vielen Welten.",
 
+    "MilestonePage.instruction": "Wählen Sie die gewünschte Änderung, die Sie mit diesem Meilenstein vornehmen möchten",
+
+    "ModificationCompletePage.instruction": "Der Charakter wurde geändert. Sie können sich nun den geänderten Charakter ansehen oder eine weitere Änderung vornehmen.\n\nEs ist ratsam, die URL des überarbeiteten Charakters zu speichern.",
+
     "ModificationTypeSelectionPage.instruction": "Wählen Sie die gewünschte Änderung an Ihrem Charakter aus",
     "ModificationTypeSelectionPage.whatMilestoneType": "Welche Art Meilenstein wird angewandt?",
 
     "PromotionPage.instruction": "Wählen Sie einen neuen Rang für diesen Charakter",
 
     "ReputationChangePage.instruction": "Passen Sie das Ansehen des Charakters an, wenn nötig",
-
-    "MilestonePage.instruction": "Wählen Sie die gewünschte Änderung, die Sie mit diesem Meilenstein vornehmen möchten",
-
-    "ModificationCompletePage.instruction": "Der Charakter wurde geändert. Sie können sich nun den geänderten Charakter ansehen oder eine weitere Änderung vornehmen.\n\nEs ist ratsam, die URL des überarbeiteten Charakters zu speichern.",
 
     "SpaceframeOptionPage.button.standardSpaceframe": "Standard-Schiffsklasse",
     "SpaceframeOptionPage.button.customSpaceframe": "Eigene Schiffsklasse",

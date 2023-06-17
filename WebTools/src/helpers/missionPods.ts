@@ -1,7 +1,9 @@
+import i18next from "i18next";
 import { Starship } from "../common/starship";
 import { IConstructPrerequisite, SourcePrerequisite } from "./prerequisite";
 import { Source } from "./sources";
 import { TalentModel, TalentsHelper } from "./talents";
+import { makeKey } from "../common/translationKey";
 
 
 export enum MissionPod {
@@ -45,6 +47,10 @@ export class MissionPodModel {
             result = result && p.isPrerequisiteFulfilled(starship);
         });
         return result;
+    }
+
+    get localizedName() {
+        return i18next.t(makeKey('MissionPod.',MissionPod[this.id]));
     }
 }
 

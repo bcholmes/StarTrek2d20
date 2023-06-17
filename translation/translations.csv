@@ -88,11 +88,11 @@ EnvironmentPage.ambassador.instruction,"Regardless of their species, diplomats c
 EnvironmentPage.cadet.instruction,"Regardless of their species, Starfleet cadets come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.","Unabhängig von ihrer Spezies stammen Sternenflotten-Kadetten von vielen Orten auf vielen Welten. Während viele Menschen (beispielsweise) auf der Erde geboren wurden, gibt es so viele, die auf kolonisierten Welten geboren werden, auf Raumstationen oder auf Raumschiffen.",,"Indépendamment de leur espèce, les cadets de Starfleet viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau."
 EnvironmentPage.child.instruction,"Regardless of their species, children come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.","Unabhängig von ihrer Spezies stammen Kinder von vielen Orten auf vielen Welten. Während viele Menschen (beispielsweise) auf der Erde geboren wurden, gibt es so viele, die auf kolonisierten Welten geboren werden, auf Raumstationen oder auf Raumschiffen.",,"Indépendamment de leur espèce, les enfants viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau."
 EnvironmentPage.alliedMilitary.instruction,"Regardless of their species, military officers and ratings come from many places, across many types of worlds.",Unabhängig von ihrer Spezies stammen Militär-Offiziere von vielen Orten auf vielen Welten.,,"Indépendamment de leur espèce, les officiers militaires viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau."
-ModificationTypeSelectionPage.instruction,Please select the modification that you want to apply to this character:,Wählen Sie die gewünschte Änderung an Ihrem Charakter aus,,Selectionnez la modification que vous voulez appliquer à ce personnage
-ModificationTypeSelectionPage.whatMilestoneType,What kind of milestone is being applied?,Welche Art Meilenstein wird angewandt?,,Quel genre de jalon d'expérience est appliqué?
-PromotionPage.instruction,Select a new rank for this character.,Wählen Sie einen neuen Rang für diesen Charakter,,Selectionnez un nouveau grade pour ce personnage
-ReputationChangePage.instruction,Adjust the character's reputation as appropriate.,"Passen Sie das Ansehen des Charakters an, wenn nötig",,Ajustez la réputation du personnage le cas échéant
 MilestonePage.instruction,Select what type of modification you want to apply for this milestone.,"Wählen Sie die gewünschte Änderung, die Sie mit diesem Meilenstein vornehmen möchten",,
+MissionPodSelectionPage.text,"Certain spaceframes have the ability to be fitted with a since mission pod, chosen from the list below. The talents provided by the pod may not be swapped out normally, but the entire mission pod (and all its benefits) may be swapped out as if it were a single talent.",,,
+MissionPodSelectionPage.errorNoSelection,Please select a mission pod before proceeding.,,,
+MissionProfileSelectionPage.text,"A mission profile is what makes one starship different from another in her same class. It determines the specialized equipment that is installed before venturing into the unknown, the priority in personnel that Starfleet gives the vessel, and its overall mission goal. All spaceframes have a mission profile.",,,
+MissionProfileSelectionPage.errorNoSelection,Please select a mission profile before proceeding.,,,
 ModificationCompletePage.instruction,"The character has been modified. You can view the revised character, or make another modification.
 
 You might want to save the URL for the revised character.","Der Charakter wurde geändert. Sie können sich nun den geänderten Charakter ansehen oder eine weitere Änderung vornehmen.
@@ -100,9 +100,16 @@ You might want to save the URL for the revised character.","Der Charakter wurde 
 Es ist ratsam, die URL des überarbeiteten Charakters zu speichern.",,"Le personnage a été modifié. Vous pouvez voir le personnage modifié ou faire une autre modification
  
 Vous pouvez vouloir sauvegarder l'URL pour le personnage modifié"
+ModificationTypeSelectionPage.instruction,Please select the modification that you want to apply to this character:,Wählen Sie die gewünschte Änderung an Ihrem Charakter aus,,Selectionnez la modification que vous voulez appliquer à ce personnage
+ModificationTypeSelectionPage.whatMilestoneType,What kind of milestone is being applied?,Welche Art Meilenstein wird angewandt?,,Quel genre de jalon d'expérience est appliqué?
+PromotionPage.instruction,Select a new rank for this character.,Wählen Sie einen neuen Rang für diesen Charakter,,Selectionnez un nouveau grade pour ce personnage
+ReputationChangePage.instruction,Adjust the character's reputation as appropriate.,"Passen Sie das Ansehen des Charakters an, wenn nötig",,Ajustez la réputation du personnage le cas échéant
 SpaceframeOptionPage.text,"Do you want a standard spaceframe, or a custom spaceframe?",,,Voulez vous un modèle standart ou un modèle personalisé?
 SpaceframeOptionPage.button.standardSpaceframe,Standard Spaceframe,Standard-Schiffsklasse,,Modèle Standart
 SpaceframeOptionPage.button.customSpaceframe,Custom Spaceframe,Eigene Schiffsklasse,,Modèle personnalisé
+SpaceframeSelectionPage.text,"The Spaceframe is the ship’s basic structure and infrastructure, and the foundation upon which everything else will be laid. At this stage, the Players select a single class, which provides the basic Systems for the ship, as well as its Scale, and its weaponry. Different classes enter and leave service at different dates, so the campaign year determines availability.",,,
+SpaceframeSelectionPage.note,"Note: The Utopia Planitia sourcebook has re-defined the stats for a number of previously-published spaceframes. Those redefined stats are presented, here.",,,
+SpaceframeSelectionPage.ignoreEndOfService,Ignore end-of-service date (GM's decision),,,
 SpeciesDetails.options,Species Options,Spezies-Optionen,,Option d'espèce
 SpeciesDetails.selectThree,(Select three),(Drei auswählen),,(Choisir trois)
 SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),Spezies-übergreifende Talente erlauben (Entscheidung liegt bei der Spielleitung),,Autoriser les talents inter-espèces (Decision du GM)
@@ -206,6 +213,7 @@ Construct.other.sources,Sources,Quellen,,
 Construct.other.spaceFrame,Space Frame,Schiffsklasse,Malla espacial,Modèle de Vaisseau
 Construct.other.specialRules,Special Rules,Spezialregeln,Reglas especiales,Règles spéciales
 Construct.other.species,Species,Spezies,Especie,Espèce
+Construct.other.stats,Stats,,,
 Construct.other.stress,Stress,Anstrengung,Estrés,Stress
 Construct.other.systems,Systems,Systeme,Sistemas,Systèmes
 Construct.other.talent,Talent,Talent,,Talent
@@ -426,6 +434,41 @@ ModificationType.name.milestone,Milestone,Meilenstein,,Jalon d'Expérience
 MilestoneType.name.normalMilestone,Normal Milestone,Regulärer Meilenstein,,Jalon Normal
 MilestoneType.name.spotlightMilestone,Spotlight Milestone,Rampenlicht-Meilenstein,,Jalon Sous les Projecteurs
 MilestoneType.name.arcMilestone,Arc Milestone,Handlungsbogen-Meilenstein,,Jalon Arc de Personnage
+MissionPod.commandAndControl,Command & Control,,,
+MissionPod.sensors,Sensors,,,
+MissionPod.weapons,Weapons,,,
+MissionPod.astrometricsAndNavigation,Astrometrics and Navigation,,,
+MissionPod.defensiveShieldEnhancement,Defensive Shield Enhancement,,,
+MissionPod.emergencyRecovery,Emergency Recovery,,,
+MissionPod.fieldHospital,Field Hospital,,,
+MissionPod.fleetCarrier,Fleet Carrier,,,
+MissionPod.fleetCommandSupport,Fleet Command Support,,,
+MissionPod.mobileDrydock,Mobile Drydock,,,
+MissionPod.warpPropulsionPod,Warp Propulsion Pod,,,
+MissionProfile.default.strategicAndDiplomatic,Strategic and Diplomatic Operations,,,
+MissionProfile.default.pathfinderAndReconaissance,Pathfinder and Reconnaissance Operations,,,
+MissionProfile.default.technicalTestBed,Technical Test-Bed,,,
+MissionProfile.default.tactical,Tactical Operations,,,
+MissionProfile.default.scientificAndSurvey,Scientific and Survey Operations,,,
+MissionProfile.default.crisisAndEmergencyResponse,Crisis and Emergency Response,,,
+MissionProfile.default.multiroleExplorer,Multirole Explorer,,,
+MissionProfile.default.projectEscalante,Project Escalante,,,
+MissionProfile.default.battlecruiser,Battlecruiser,,,
+MissionProfile.default.reserveFleet,Reserve Fleet,,,
+MissionProfile.default.civilianMerchantMarine,Civilian Merchant Marine,,,
+MissionProfile.default.colonySupport,Colony Support,,,
+MissionProfile.default.entertainmentPleasureShip,Entertainment/Pleasure Ship,,,
+MissionProfile.default.espionageIntelligence,Espionage/Intelligence,,,
+MissionProfile.default.flagship,Flagship,,,
+MissionProfile.default.logisticalQuartermaster,Logistical/Quartermaster,,,
+MissionProfile.default.patrol,Patrol,,,
+MissionProfile.klingon.crisisAndEmergencyResponse,Crisis Response and Interception,,,
+MissionProfile.klingon.multiroleExplorer,Multirole Battle Cruiser,,,
+MissionProfile.klingon.pathfinderAndReconaissance,Intelligence and Reconnaissance Operations,,,
+MissionProfile.klingon.scientificAndSurvey,Scientific and Survey Operations,,,
+MissionProfile.klingon.strategicAndDiplomatic,Strategic and Diplomatic Operations,,,
+MissionProfile.klingon.houseGuard,House Guard,,,
+MissionProfile.klingon.warship,Warship,,,
 NpcType.minor.name,Minor NPC,Einfacher NSC,,PNJ Mineur
 NpcType.notable.name,Notable NPC,Bedeutender NSC,,PNJ Notable
 NpcType.major.name,Major NPC,Herausragender NSC,,PNJ Majeur

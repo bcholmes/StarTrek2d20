@@ -127,6 +127,16 @@
 
     "EnvironmentPage.alliedMilitary.instruction": "Regardless of their species, military officers and ratings come from many places, across many types of worlds.",
 
+    "MilestonePage.instruction": "Select what type of modification you want to apply for this milestone.",
+
+    "MissionPodSelectionPage.text": "Certain spaceframes have the ability to be fitted with a since mission pod, chosen from the list below. The talents provided by the pod may not be swapped out normally, but the entire mission pod (and all its benefits) may be swapped out as if it were a single talent.",
+    "MissionPodSelectionPage.errorNoSelection": "Please select a mission pod before proceeding.",
+
+    "MissionProfileSelectionPage.text": "A mission profile is what makes one starship different from another in her same class. It determines the specialized equipment that is installed before venturing into the unknown, the priority in personnel that Starfleet gives the vessel, and its overall mission goal. All spaceframes have a mission profile.",
+    "MissionProfileSelectionPage.errorNoSelection": "Please select a mission profile before proceeding.",
+
+    "ModificationCompletePage.instruction": "The character has been modified. You can view the revised character, or make another modification.\n\nYou might want to save the URL for the revised character.",
+
     "ModificationTypeSelectionPage.instruction": "Please select the modification that you want to apply to this character:",
     "ModificationTypeSelectionPage.whatMilestoneType": "What kind of milestone is being applied?",
 
@@ -134,14 +144,14 @@
 
     "ReputationChangePage.instruction": "Adjust the character's reputation as appropriate.",
 
-    "MilestonePage.instruction": "Select what type of modification you want to apply for this milestone.",
-
-    "ModificationCompletePage.instruction": "The character has been modified. You can view the revised character, or make another modification.\n\nYou might want to save the URL for the revised character.",
-
     "SpaceframeOptionPage.text": "Do you want a standard spaceframe, or a custom spaceframe?",
 
     "SpaceframeOptionPage.button.standardSpaceframe": "Standard Spaceframe",
     "SpaceframeOptionPage.button.customSpaceframe": "Custom Spaceframe",
+
+    "SpaceframeSelectionPage.text": "The Spaceframe is the ship’s basic structure and infrastructure, and the foundation upon which everything else will be laid. At this stage, the Players select a single class, which provides the basic Systems for the ship, as well as its Scale, and its weaponry. Different classes enter and leave service at different dates, so the campaign year determines availability.",
+    "SpaceframeSelectionPage.note": "Note: The Utopia Planitia sourcebook has re-defined the stats for a number of previously-published spaceframes. Those redefined stats are presented, here.",
+    "SpaceframeSelectionPage.ignoreEndOfService": "Ignore end-of-service date (GM's decision)",
 
     "SpeciesDetails.options": "Species Options",
     "SpeciesDetails.selectThree": "(Select three)",
@@ -249,6 +259,7 @@
     "Construct.other.spaceFrame": "Space Frame",
     "Construct.other.specialRules": "Special Rules",
     "Construct.other.species": "Species",
+    "Construct.other.stats": "Stats",
     "Construct.other.stress": "Stress",
     "Construct.other.systems": "Systems",
     "Construct.other.talent": "Talent",
@@ -514,6 +525,44 @@
     "MilestoneType.name.normalMilestone": "Normal Milestone",
     "MilestoneType.name.spotlightMilestone": "Spotlight Milestone",
     "MilestoneType.name.arcMilestone": "Arc Milestone",
+
+    "MissionPod.commandAndControl": "Command & Control",
+    "MissionPod.sensors": "Sensors",
+    "MissionPod.weapons": "Weapons",
+    "MissionPod.astrometricsAndNavigation": "Astrometrics and Navigation",
+    "MissionPod.defensiveShieldEnhancement": "Defensive Shield Enhancement",
+    "MissionPod.emergencyRecovery": "Emergency Recovery",
+    "MissionPod.fieldHospital": "Field Hospital",
+    "MissionPod.fleetCarrier": "Fleet Carrier",
+    "MissionPod.fleetCommandSupport": "Fleet Command Support",
+    "MissionPod.mobileDrydock": "Mobile Drydock",
+    "MissionPod.warpPropulsionPod": "Warp Propulsion Pod",
+
+    "MissionProfile.default.strategicAndDiplomatic": "Strategic and Diplomatic Operations",
+    "MissionProfile.default.pathfinderAndReconaissance": "Pathfinder and Reconnaissance Operations",
+    "MissionProfile.default.technicalTestBed": "Technical Test-Bed",
+    "MissionProfile.default.tactical": "Tactical Operations",
+    "MissionProfile.default.scientificAndSurvey": "Scientific and Survey Operations",
+    "MissionProfile.default.crisisAndEmergencyResponse": "Crisis and Emergency Response",
+    "MissionProfile.default.multiroleExplorer": "Multirole Explorer",
+    "MissionProfile.default.projectEscalante": "Project Escalante",
+    "MissionProfile.default.battlecruiser": "Battlecruiser",
+    "MissionProfile.default.reserveFleet": "Reserve Fleet",
+    "MissionProfile.default.civilianMerchantMarine": "Civilian Merchant Marine",
+    "MissionProfile.default.colonySupport": "Colony Support",
+    "MissionProfile.default.entertainmentPleasureShip": "Entertainment/Pleasure Ship",
+    "MissionProfile.default.espionageIntelligence": "Espionage/Intelligence",
+    "MissionProfile.default.flagship": "Flagship",
+    "MissionProfile.default.logisticalQuartermaster": "Logistical/Quartermaster",
+    "MissionProfile.default.patrol": "Patrol",
+
+    "MissionProfile.klingon.crisisAndEmergencyResponse": "Crisis Response and Interception",
+    "MissionProfile.klingon.multiroleExplorer": "Multirole Battle Cruiser",
+    "MissionProfile.klingon.pathfinderAndReconaissance": "Intelligence and Reconnaissance Operations",
+    "MissionProfile.klingon.scientificAndSurvey": "Scientific and Survey Operations",
+    "MissionProfile.klingon.strategicAndDiplomatic": "Strategic and Diplomatic Operations",
+    "MissionProfile.klingon.houseGuard": "House Guard",
+    "MissionProfile.klingon.warship": "Warship",
 
     "NpcType.minor.name": "Minor NPC",
 

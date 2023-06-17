@@ -11,20 +11,20 @@ import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import MissionProfileSelection from "../view/missionProfileSelection";
 import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-interface IMissionProfileSelectionPageProperties {
+interface IMissionProfileSelectionPageProperties extends WithTranslation {
     starship: Starship;
     workflow: ShipBuildWorkflow;
 }
 
 class MissionProfileSelectionPage extends React.Component<IMissionProfileSelectionPageProperties, {}> {
     render() {
+        const { t } = this.props;
         return (<div className="page container ml-0">
             <ShipBuildingBreadcrumbs />
-            <Header>Mission Profile</Header>
-            <p>A mission profile is what makes one starship different from another in her same class. It determines the
-                specialized equipment that is installed before venturing into the unknown, the priority in personnel that
-                Starfleet gives the vessel, and its overall mission goal. All spaceframes have a mission profile.
+            <Header>{t('Page.title.missionProfileSelection')}</Header>
+            <p>{t('MissionProfileSelectionPage.text')}
             </p>
             <MissionProfileSelection
                 initialSelection={this.props.starship.missionProfileModel}
@@ -37,8 +37,9 @@ class MissionProfileSelectionPage extends React.Component<IMissionProfileSelecti
     }
 
     nextPage() {
+        const { t } = this.props;
         if (this.props.starship.missionProfileModel == null) {
-            Dialog.show("Please select a mission profile before proceeding.");
+            Dialog.show(t('MissionProfileSelectionPage.errorNoSelection'));
         } else {
             Navigation.navigateToPage(PageIdentity.MissionProfileTalentSelection);
         }
@@ -52,4 +53,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(MissionProfileSelectionPage);
+export default withTranslation()(connect(mapStateToProps)(MissionProfileSelectionPage));
