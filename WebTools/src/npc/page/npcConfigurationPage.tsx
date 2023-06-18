@@ -132,7 +132,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
 
     getSpeciesDropDownList() {
         let result = [ new DropDownElement(null, "Any Major Species")];
-        this.getSpeciesList().forEach(s => result.push(new DropDownElement(s.id, s.name)));
+        this.getSpeciesList().forEach(s => result.push(new DropDownElement(s.id, s.localizedName)));
         return result;
     }
 

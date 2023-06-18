@@ -54,7 +54,7 @@ class SpeciesSelectionView extends React.Component<ISpeciesSelectionProperties, 
             //Species.Klingon,
             Species.Orion, Species.Risian,
             //Species.Tellarite,
-            Species.Trill, Species.Vulcan].map(s => new DropDownElement(s, SpeciesHelper.getSpeciesByType(s).name));
+            Species.Trill, Species.Vulcan].map(s => new DropDownElement(s, SpeciesHelper.getSpeciesByType(s).localizedName));
     }
 }
 

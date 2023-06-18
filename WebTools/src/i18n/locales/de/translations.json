@@ -394,17 +394,6 @@
 
     "Environment.special.name": "{{name}} ({{species}})",
 
-    "GovernmentType.name.andorian": "Andorianer",
-    "GovernmentType.name.bajoran": "Bajoraner",
-    "GovernmentType.name.cardassian": "Cardassianer",
-    "GovernmentType.name.dominion": "Dominion",
-    "GovernmentType.name.federation": "Föderation",
-    "GovernmentType.name.klingon": "Klingonen",
-    "GovernmentType.name.romulan": "Romulaner",
-    "GovernmentType.name.tellarite": "Tellariten",
-    "GovernmentType.name.vulcan": "Vulkanier",
-    "GovernmentType.name.other": "Andere",
-
     "AlliedMilitaryType.name.maco": "MACO",
     "AlliedMilitaryType.name.andorianImperialGuard": "Andorianische Imperial Garde",
     "AlliedMilitaryType.name.vulcanHighCommand": "Vulkanisches Oberkommando",
@@ -422,6 +411,17 @@
     "Era.name.enterprise": "Enterprise (22. Jahrhundert)",
     "Era.name.originalSeries": "Originalserie (23. Jahrhundert)",
     "Era.name.nextGeneration": "Das Nächste Jahrhundert (24. Jahrhundert)",
+
+    "GovernmentType.name.andorian": "Andorianer",
+    "GovernmentType.name.bajoran": "Bajoraner",
+    "GovernmentType.name.cardassian": "Cardassianer",
+    "GovernmentType.name.dominion": "Dominion",
+    "GovernmentType.name.federation": "Föderation",
+    "GovernmentType.name.klingon": "Klingonen",
+    "GovernmentType.name.romulan": "Romulaner",
+    "GovernmentType.name.tellarite": "Tellariten",
+    "GovernmentType.name.vulcan": "Vulkanier",
+    "GovernmentType.name.other": "Andere",
 
     "ModificationType.name.reputation": "Ansehen",
     "ModificationType.name.promotion": "Beförderung",

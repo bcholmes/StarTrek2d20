@@ -394,16 +394,6 @@ Environment.alternate.struggleAndHardship.description,"For one reason or another
 Environment.alternate.occupationOrWar.name,Occupation or War,,,Occupation ou Guerre
 Environment.alternate.occupationOrWar.description,"Though the Federation’s members no longer war amongst themselves, warfare is still a part of the Galaxy. Local or planetary conflicts afflict many independent worlds, and interstellar conflicts ranging from border skirmishes to sector-spanning wars are something which all civilizations must prepare to face. Worlds ravaged by war, or even occupied by a hostile nation, are difficult places to live, often forcing people to adapt to horrific conditions and life-or-death decisions.",,,"Bien que les membres de la Fédération ne se font plus la guerre entre eux, la guerre fait toujours partie de la Galaxie. Les conflits locaux ou planétaires affligent de nombreux mondes indépendants, et les conflits interstellaires allant des escarmouches frontalières aux guerres sectorielles sont quelque chose que toutes les civilisations doivent se préparer à affronter. Les mondes ravagés par la guerre, ou même occupés par une nation hostile, sont des endroits difficiles à vivre, obligeant souvent les gens à s'adapter à des conditions horribles et à des décisions de vie ou de mort."
 Environment.special.name,{{name}} ({{species}}),{{name}} ({{species}}),,{{name}} ({{species}})
-GovernmentType.name.andorian,Andorian,Andorianer,,Andorien
-GovernmentType.name.bajoran,Bajoran,Bajoraner,,Bajoran
-GovernmentType.name.cardassian,Cardassian,Cardassianer,,Cardassien
-GovernmentType.name.dominion,Dominion,Dominion,,Dominion
-GovernmentType.name.federation,Federation,Föderation,,Fédération
-GovernmentType.name.klingon,Klingon,Klingonen,,Klingon
-GovernmentType.name.romulan,Romulan,Romulaner,,Romulien
-GovernmentType.name.tellarite,Tellarite,Tellariten,,Tellarite
-GovernmentType.name.vulcan,Vulcan,Vulkanier,,Vulcain
-GovernmentType.name.other,Other,Andere,,Autre
 AlliedMilitaryType.name.maco,MACO,MACO,,MACO
 AlliedMilitaryType.name.andorianImperialGuard,Andorian Imperial Guard,Andorianische Imperial Garde,,Garde Impériale Andorienne 
 AlliedMilitaryType.name.vulcanHighCommand,Vulcan High Command,Vulkanisches Oberkommando,,Haut Commandement Vulcain
@@ -428,6 +418,26 @@ ExtraType.simpleEarring,Simple Stud Earring,,,
 ExtraType.hoopEarring,Hoop Earring,,,
 ExtraType.smallBindi,Small Bindi,,,
 ExtraType.risanSymbol,Risan Symbol,,,
+GovernmentType.name.andorian,Andorian,Andorianer,,Andorien
+GovernmentType.name.bajoran,Bajoran,Bajoraner,,Bajoran
+GovernmentType.name.cardassian,Cardassian,Cardassianer,,Cardassien
+GovernmentType.name.dominion,Dominion,Dominion,,Dominion
+GovernmentType.name.federation,Federation,Föderation,,Fédération
+GovernmentType.name.klingon,Klingon,Klingonen,,Klingon
+GovernmentType.name.romulan,Romulan,Romulaner,,Romulien
+GovernmentType.name.tellarite,Tellarite,Tellariten,,Tellarite
+GovernmentType.name.vulcan,Vulcan,Vulkanier,,Vulcain
+GovernmentType.name.other,Other,Andere,,Autre
+HeadType.averageAngular,"Average, Angular",,,
+HeadType.squareJawed,Square Jawed,,,
+HeadType.roundedNarrow,"Rounded, Narrow",,,
+HeadType.roundedAverage,"Rounded, Average",,,
+HeadType.softerNarrow,"Softer, Narrow Jaw",,,
+HeadType.pointedDelicate,"Pointed, Delicate Jaw",,,
+HeadType.rectangular,Rectangular with Pointed Jaw,,,
+HeadType.elfin,"Elfin, Petite Jaw",,,
+HeadType.pillShaped,"Pill-Shaped, Heavy",,,
+HeadType.roundedHeavy,"Rounded, Heavy",,,
 ModificationType.name.reputation,Reputation,Ansehen,,Réputation
 ModificationType.name.promotion,Promotion,Beförderung,,Promotion
 ModificationType.name.milestone,Milestone,Meilenstein,,Jalon d'Expérience
@@ -508,6 +518,23 @@ ShipBuildType.pod.name,Pod,Kleines Shuttle,,Nacelle
 ShipBuildType.shuttlecraft.name,Shuttle,Shuttle,,Navette
 ShipBuildType.runabout.name,Runabout,Runabout,,Runabout
 ShipBuildType.starship.name,Starship,Raumschiff,,Vaisseau
+Species.andorian.name,Andorian,,,
+Species.bajoran.name,Bajoran,,,
+Species.betazoid.name,Betazoid,,,
+Species.bolian.name,Bolian,,,
+Species.deltan.name,Deltan,,,
+Species.denobulan.name,Denobulan,,,
+Species.efrosian.name,Efrosian,,,
+Species.ferengi.name,Ferengi,,,
+Species.human.name,Human,,,
+Species.klingon.name,Klingon,,,
+Species.klingonQuchHa.name,Klingon (QuchHa’),,,
+Species.orion.name,Orion,,,
+Species.risian.name,Risian,,,
+Species.romulan.name,Romulan,,,
+Species.tellarite.name,Tellarite,,,
+Species.trill.name,Trill,,,
+Species.vulcan.name,Vulcan,,,
 StarSystem.common.coordinates,Coordinates,Koordinaten,,Coordonnées
 StarSystem.common.innerZone,Inner Zone,Innere Zone,,Zone Intérieure
 StarSystem.common.ecosphere,Ecosphere,Ökosphäre,,Ecosphère

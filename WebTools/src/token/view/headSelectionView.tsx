@@ -24,7 +24,7 @@ class HeadSelectionView extends React.Component<IHeadSelectionViewProperties, {}
 
             <p className="mt-4">{t('TokenCreator.section.head.shape')}:</p>
             <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-            {HeadCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.name} size="lg"
+            {HeadCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.localizedName} size="lg"
                 onClick={() => store.dispatch(setTokenHeadType(s.id))} active={token.headType === s.id}
                 token={token}
                 key={'head-swatch-' + s.id }/>)}

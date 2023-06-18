@@ -7,6 +7,8 @@ import { Source } from '../helpers/sources';
 import { Species } from './speciesEnum';
 import store from '../state/store';
 import { hasAnySource, hasSource } from '../state/contextFunctions';
+import { makeKey } from '../common/translationKey';
+import i18next from 'i18next';
 
 class NameModel {
     type: string;
@@ -47,6 +49,12 @@ export class SpeciesModel {
         this.sources = sources;
         this.secondaryAttributes = secondaryAttributes;
         this.isMixedSpeciesAllowed = isMixedSpeciesAllowed;
+    }
+
+    get localizedName() {
+        const key = makeKey('Species.', Species[this.id], ".name");
+        const localized = i18next.t(key);
+        return key === localized ? this.name : localized;
     }
 }
 
@@ -1456,7 +1464,7 @@ class _Species {
         }
 
         return species.sort((a, b) => {
-            return a.name.localeCompare(b.name);
+            return a.localizedName.localeCompare(b.localizedName);
         });
     }
 
@@ -1480,13 +1488,13 @@ class _Species {
             }
 
             return species.sort((a, b) => {
-                return a.name.localeCompare(b.name);
+                return a.localizedName.localeCompare(b.localizedName);
             });
         } else if (Character.isSpeciesListLimited(character) && character.typeDetails != null) {
             let alliedMilitary = (character.typeDetails as AlliedMilitaryDetails).alliedMilitary;
             let species = alliedMilitary.species.map(s => this._species[s]).filter(s => hasAnySource(s.sources) && !this.ignoreSpecies(s.id));
             return species.sort((a, b) => {
-                return a.name.localeCompare(b.name);
+                return a.localizedName.localeCompare(b.localizedName);
             });
         } else {
             let candidates = this.getSpecies();

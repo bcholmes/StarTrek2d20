@@ -478,17 +478,6 @@
 
     "Environment.special.name": "{{name}} ({{species}})",
 
-    "GovernmentType.name.andorian": "Andorian",
-    "GovernmentType.name.bajoran": "Bajoran",
-    "GovernmentType.name.cardassian": "Cardassian",
-    "GovernmentType.name.dominion": "Dominion",
-    "GovernmentType.name.federation": "Federation",
-    "GovernmentType.name.klingon": "Klingon",
-    "GovernmentType.name.romulan": "Romulan",
-    "GovernmentType.name.tellarite": "Tellarite",
-    "GovernmentType.name.vulcan": "Vulcan",
-    "GovernmentType.name.other": "Other",
-
     "AlliedMilitaryType.name.maco": "MACO",
     "AlliedMilitaryType.name.andorianImperialGuard": "Andorian Imperial Guard",
     "AlliedMilitaryType.name.vulcanHighCommand": "Vulcan High Command",
@@ -517,6 +506,28 @@
     "ExtraType.hoopEarring": "Hoop Earring",
     "ExtraType.smallBindi": "Small Bindi",
     "ExtraType.risanSymbol": "Risan Symbol",
+
+    "GovernmentType.name.andorian": "Andorian",
+    "GovernmentType.name.bajoran": "Bajoran",
+    "GovernmentType.name.cardassian": "Cardassian",
+    "GovernmentType.name.dominion": "Dominion",
+    "GovernmentType.name.federation": "Federation",
+    "GovernmentType.name.klingon": "Klingon",
+    "GovernmentType.name.romulan": "Romulan",
+    "GovernmentType.name.tellarite": "Tellarite",
+    "GovernmentType.name.vulcan": "Vulcan",
+    "GovernmentType.name.other": "Other",
+
+    "HeadType.averageAngular": "Average, Angular",
+    "HeadType.squareJawed": "Square Jawed",
+    "HeadType.roundedNarrow": "Rounded, Narrow",
+    "HeadType.roundedAverage": "Rounded, Average",
+    "HeadType.softerNarrow": "Softer, Narrow Jaw",
+    "HeadType.pointedDelicate": "Pointed, Delicate Jaw",
+    "HeadType.rectangular": "Rectangular with Pointed Jaw",
+    "HeadType.elfin": "Elfin, Petite Jaw",
+    "HeadType.pillShaped": "Pill-Shaped, Heavy",
+    "HeadType.roundedHeavy": "Rounded, Heavy",
 
     "ModificationType.name.reputation": "Reputation",
     "ModificationType.name.promotion": "Promotion",
@@ -624,6 +635,40 @@
     "ShipBuildType.runabout.name": "Runabout",
 
     "ShipBuildType.starship.name": "Starship",
+
+    "Species.andorian.name": "Andorian",
+
+    "Species.bajoran.name": "Bajoran",
+
+    "Species.betazoid.name": "Betazoid",
+
+    "Species.bolian.name": "Bolian",
+
+    "Species.deltan.name": "Deltan",
+
+    "Species.denobulan.name": "Denobulan",
+
+    "Species.efrosian.name": "Efrosian",
+
+    "Species.ferengi.name": "Ferengi",
+
+    "Species.human.name": "Human",
+
+    "Species.klingon.name": "Klingon",
+
+    "Species.klingonQuchHa.name": "Klingon (QuchHa’)",
+
+    "Species.orion.name": "Orion",
+
+    "Species.risian.name": "Risian",
+
+    "Species.romulan.name": "Romulan",
+
+    "Species.tellarite.name": "Tellarite",
+
+    "Species.trill.name": "Trill",
+
+    "Species.vulcan.name": "Vulcan",
 
     "StarSystem.common.coordinates": "Coordinates",
     "StarSystem.common.innerZone": "Inner Zone",
