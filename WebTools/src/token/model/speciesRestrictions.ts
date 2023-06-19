@@ -118,9 +118,10 @@ class SpeciesRestrictions {
     }
 
     static isTallForeheaded(species: Species) {
-        return species === Species.Denobulan || species === Species.Klingon
+        return species === Species.Klingon
             || species === Species.Tellarite || species === Species.Efrosian
             || species === Species.Ktarian;
+            // species === Species.Denobulan ||
     }
 
     static getSpeciesOptions(species: Species) {
