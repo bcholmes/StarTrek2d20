@@ -43,6 +43,8 @@ const RisanSymbol = `<g>
     <path id="path8546" style="color:#000000;fill:#845a17;fill-opacity:1;stroke-width:1.80043;-inkscape-stroke:none" d="m 312.69064,117.02906 a 0.8719825,0.91558157 0 0 0 -0.87208,0.9143 0.8719825,0.91558157 0 0 0 0.87208,0.91779 0.8719825,0.91558157 0 0 0 0.87209,-0.91779 0.8719825,0.91558157 0 0 0 0,-0.0143 h 4.62062 a 0.8719825,0.91558157 0 0 0 0,0.0143 0.8719825,0.91558157 0 0 0 0.8721,0.91779 0.8719825,0.91558157 0 0 0 0.87207,-0.91779 0.8719825,0.91558157 0 0 0 -0.61187,-0.87209 v -0.0422 h -0.21803 -0.0422 -6.32262 a 0.8719825,0.91558157 0 0 0 -0.0422,0 z"/>
 </g>`;
 
+const InuitTattoo = `<path style="color:#000000;fill:#09053a;fill-opacity:0.6;-inkscape-stroke:none" d="m 323.69747,74.849668 c -2.49394,9.144448 -5.20736,16.986711 -9.07052,25.728462 -6.30287,-8.988794 -13.54854,-17.649432 -21.41869,-25.672406 l -1.68177,0.03046 c 8.70515,9.417271 16.91879,18.928672 23.42663,28.306006 4.18292,-9.841416 7.72638,-19.893541 10.08204,-28.425787 z m 4.88867,-0.641907 c -4.04346,12.664418 -8.35915,24.459736 -14.01192,36.102789 -7.8424,-12.724144 -18.16148,-24.513551 -29.06559,-35.648033 l -1.78441,0.08731 c 11.88094,12.599202 22.42215,25.501933 31.03164,38.658373 6.05955,-13.01011 11.52601,-27.349903 15.3418,-39.246087 z"/>`;
+
 class ExtraItem {
 
     readonly id: ExtraType;
@@ -71,7 +73,8 @@ class ExtrasCatalog {
 
         new ExtraItem(ExtraType.None, ExtraCategory.Forehead, "None", ""),
         new ExtraItem(ExtraType.SmallBindi, ExtraCategory.Forehead, "Small Bindi", SmallBindi),
-        new ExtraItem(ExtraType.RisanSymbol, ExtraCategory.Forehead, "Risan Symbol", RisanSymbol)
+        new ExtraItem(ExtraType.RisanSymbol, ExtraCategory.Forehead, "Risan Symbol", RisanSymbol),
+        new ExtraItem(ExtraType.InuitTattoo, ExtraCategory.Forehead, "Inuit Tattoo", InuitTattoo)
     ]
 
     public static get instance() {

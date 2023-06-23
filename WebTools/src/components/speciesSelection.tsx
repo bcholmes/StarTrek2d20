@@ -44,8 +44,8 @@ class SpeciesSelection extends React.Component<ISpeciesSelectionProperties, ISpe
             const attributes = s.id === Species.Ktarian
                 ? (
                     <div key={'species-' + s.id}>
-                        <div>Control</div>
-                        <div>Reason</div>
+                        <div>{t('Construct.attribute.control')}</div>
+                        <div>{t('Construct.attribute.reason')}</div>
                         <div>Fitness or Presence</div>
                     </div>
                 )
@@ -73,7 +73,7 @@ class SpeciesSelection extends React.Component<ISpeciesSelectionProperties, ISpe
 
         return (
             <div>
-                <Header className="mb-4">SELECT SPECIES</Header>
+                <Header className="mb-4">{t('SpeciesPage.selectSpecies')}</Header>
                 {overrideCheckbox}
                 <table className="selection-list">
                     <thead>

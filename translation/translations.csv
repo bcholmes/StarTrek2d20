@@ -114,6 +114,19 @@ SpeciesDetails.options,Species Options,Spezies-Optionen,,Option d'espèce
 SpeciesDetails.selectThree,(Select three),(Drei auswählen),,(Choisir trois)
 SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),Spezies-übergreifende Talente erlauben (Entscheidung liegt bei der Spielleitung),,Autoriser les talents inter-espèces (Decision du GM)
 SpeciesDetails.allowEsoteric,Allow esoterric talents (GM's decision),Esoterische Talente erlauben (Entscheidung liegt bei der Spielleitung),,Autoriser les talents ésoteriques (Decision du GM)
+SpeciesPage.selectSpecies,Select Species,,,
+SpeciesPage.selectMixedSpecies,Select Mixed Species,,,
+SpeciesPage.selectCustomSpecies,Select Custom Species,,,
+SpeciesPage.rollCoreSpecies,Roll Core Species,,,
+SpeciesPage.rollAlphaSpecies,Roll Alpha Species,,,
+SpeciesPage.rollBetaSpecies,Roll Beta Species,,,
+SpeciesPage.rollGammaSpecies,Roll Gamma Species,,,
+SpeciesPage.rollDeltaSpecies,Roll Delta Species,,,
+SpeciesPage.text,"To what species do you belong? You may also create a character of mixed species, gaining benefits from both.
+
+Either select or roll your Species.",,,
+SpeciesPage.textNoRoll,"To what species do you belong? You may also create a character of mixed species, gaining benefits from both.",,,
+SpeciesPage.mixedSpeciesNote,"Select two species. You will gain Traits from both species and may select from both species' Talents, but only the primary species gives you attribute bonuses.",,,
 StarshipToolSelection.instruction,Select an option,Wählen Sie eine Option,Seleccione una opción,Sélectionnez une option
 StarshipToolSelection.standardBuild,Standard Build,Standardprozess,Construcción estándar,Construction Standard
 StarshipToolSelection.standardBuildDescription,"The standard Starship creation process follows the build steps as outlined in the rulebooks. E.g.: starships choose a Spaceframe, Mission Profile, etc.","Der Standardprozess zur Raumschiff-Erschaffung folgt den Schritten, die in den Regelwerken beschrieben sind (zum Beispiel Klasse auswählen, ein Missionsprofil usw.)","El proceso estándar de creación de Starship sigue los pasos de compilación descritos en los libros de reglas. Por ejemplo: las naves espaciales eligen un marco espacial, un perfil de misión, etc.","Le processus standard de création d'un Vaisseau suit les étapes de construction décrites dans les livres de règles. Par exemple: les vaisseaux spatiaux choisissent une trame spatiale, un profil de mission, etc."
@@ -409,6 +422,12 @@ BodyType.averageFemale,Average Female,,,
 Division.command,Command,Kommando,,
 Division.science,Science,Wissenschaft,,
 Division.operations,Operations,Operative,,
+Division.monsterMaroon.command,Command,,,
+Division.monsterMaroon.science,Science,,,
+Division.monsterMaroon.helmEngineering,Helm/Engineering,,,
+Division.monsterMaroon.medical,Medical,,,
+Division.monsterMaroon.security,Security,,,
+Division.monsterMaroon.trainee,Trainee,,,
 Era.name.enterprise,Enterprise (22nd century),Enterprise (22. Jahrhundert),,Enterprise (22ème Siècle)
 Era.name.originalSeries,Original Series (23rd century),Originalserie (23. Jahrhundert),,Serie Originale (23ème Siècle)
 Era.name.nextGeneration,Next Generation (24th century),Das Nächste Jahrhundert (24. Jahrhundert),,Nouvelle Génération (24ème Siècle)
@@ -418,6 +437,7 @@ ExtraType.simpleEarring,Simple Stud Earring,,,
 ExtraType.hoopEarring,Hoop Earring,,,
 ExtraType.smallBindi,Small Bindi,,,
 ExtraType.risanSymbol,Risan Symbol,,,
+ExtraType.inuitTattoo,Inuit Tattoo,,,
 GovernmentType.name.andorian,Andorian,Andorianer,,Andorien
 GovernmentType.name.bajoran,Bajoran,Bajoraner,,Bajoran
 GovernmentType.name.cardassian,Cardassian,Cardassianer,,Cardassien
@@ -544,6 +564,7 @@ StarSystem.common.noWorlds,No worlds,Keine Welten,,Pas de mondes
 StarSystem.common.primaryStar,Primary Star,Hauptstern,,Etoile Primaire
 StarSystem.common.companionStar,Companion Star,Begleitstern,,Etoile Binaire
 UniformEra.originalSeries,Original Series,Originalserie,,
+UniformEra.monsterMaroon,The Wrath of Khan,,,
 UniformEra.dominionWar,Dominion War,Dominionkrieg,,
 Value.environment.text,"This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.","Diese Überzeugung sollte die Herkunft und die Kultur des Charakters, in der er oder sie aufgewachsen ist, widerspiegeln. Dies ist eine gute Gelegenheit, sich darüber Gedanken zu machen, wie der Charakter seine oder ihre eigene Kultur sieht und wie er oder sie zu den Philosophien und Traditionen der Vorfahren steht.",,Cette valeur doit refléter l'environnement et la culture dans lesquels le personnage a été élevé. C'est une bonne occasion d'examiner comment le personnage perçoit sa propre culture et comment il se rattache- ou peut-être ne se rattache pas - aux philosophies et aux traditions de son peuple.
 Value.starfleetTraining.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their time at the Academy.","Ihr Charakter erhält eine Überzeugung, die auf irgendeine Weise auf der Akademie geformte Wertvorstellungen oder gemachte Erfahrungen widerspiegeln sollte.",,"Le personnage gagne une valeur unique, qui devrait refléter certains aspects des croyances du personnage qui se sont développées pendant son séjour à l'Académie."

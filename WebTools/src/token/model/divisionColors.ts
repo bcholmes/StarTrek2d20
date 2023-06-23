@@ -10,6 +10,13 @@ export class DivisionColors {
             return [ new NamedColor(i18next.t("Division.command"), "#d1bd7f"),
                 new NamedColor(i18next.t("Division.science"), "#718aa3"),
                 new NamedColor(i18next.t("Division.operations"), "#cf1f35")];
+        } else if (era === UniformEra.MonsterMaroon) {
+            return [ new NamedColor(i18next.t("Division.monsterMaroon.command"), "#f9f9f9"),
+                new NamedColor(i18next.t("Division.monsterMaroon.science"), "#99b6c6"),
+                new NamedColor(i18next.t("Division.monsterMaroon.helmEngineering"), "#f3b807"),
+                new NamedColor(i18next.t("Division.monsterMaroon.medical"), "#7cba54"),
+                new NamedColor(i18next.t("Division.monsterMaroon.security"), "#2e4722"),
+                new NamedColor(i18next.t("Division.monsterMaroon.trainee"), "#cf130b")];
         } else {
             return [ new NamedColor(i18next.t("Division.command"), "#B12542"),
                 new NamedColor(i18next.t("Division.science"), "#30787E"),
@@ -19,7 +26,12 @@ export class DivisionColors {
 
     static getDivision(era: UniformEra, color: string) {
         let index = this.indexOf(era, color);
-        return (index >= 0) ? Division[index] : null;
+        if (era === UniformEra.MonsterMaroon) {
+            let colours = ["Command", "Science", "HelmEngineering", "Medical", "Security", "Trainee"];
+            return index >= 0 ? colours[index] : null;
+        } else {
+            return (index >= 0) ? Division[index] : null;
+        }
     }
 
     static indexOf(era: UniformEra, color: string) {

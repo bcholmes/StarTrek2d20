@@ -4,7 +4,7 @@ export enum ExtraType {
 
     BajoranEarring, SimpleEarring, HoopEarring,
 
-    SmallBindi, RisanSymbol
+    SmallBindi, RisanSymbol, InuitTattoo
 }
 
 export enum ExtraCategory {

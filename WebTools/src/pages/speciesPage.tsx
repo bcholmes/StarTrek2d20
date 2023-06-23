@@ -32,20 +32,22 @@ class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
 
     render() {
 
+        const { t } = this.props;
+
         const rollAlpha = hasSource(Source.AlphaQuadrant) && this.isRollAvailable()
-            ? <Button className="button" text="Roll Alpha Species" onClick={() => this.rollAlphaSpecies()} />
+            ? <Button className="button" text={t('SpeciesPage.rollAlphaSpecies')} onClick={() => this.rollAlphaSpecies()} />
             : undefined;
 
         const rollBeta = hasSource(Source.BetaQuadrant) && this.isRollAvailable()
-            ? <Button className="button" text="Roll Beta Species" onClick={() => this.rollBetaSpecies()} />
+            ? <Button className="button" text={t('SpeciesPage.rollBetaSpecies')} onClick={() => this.rollBetaSpecies()} />
             : undefined;
 
         const rollGamma = store.getState().context.era === Era.NextGeneration && hasSource(Source.GammaQuadrant) && this.isRollAvailable()
-            ? <Button className="button" text="Roll Gamma Species" onClick={() => this.rollGammaSpecies()} />
+            ? <Button className="button" text={t('SpeciesPage.rollGammaSpecies')} onClick={() => this.rollGammaSpecies()} />
             : undefined;
 
         const rollDelta = store.getState().context.era === Era.NextGeneration && hasSource(Source.DeltaQuadrant) && this.isRollAvailable()
-            ? <Button className="button" text="Roll Delta Species" onClick={() => this.rollDeltaSpecies()} />
+            ? <Button className="button" text={t('SpeciesPage.rollDeltaSpecies')} onClick={() => this.rollDeltaSpecies()} />
             : undefined;
 
 
@@ -53,16 +55,16 @@ class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
             (
                 <div>
                     <div className="page-text">
-                        <InstructionText text={character.workflow.currentStep().description} />
+                        <InstructionText text={character.workflow.currentStep().localizedDescription} />
                     </div>
                     <div className="row row-cols-md-2">
                         <div className="col">
-                            <Button className="button" text="Select Species" onClick={() => this.showSpecies() } />
-                            <Button className="button" text="Select Mixed Species" onClick={() => this.showMixedSpecies() }/>
-                            <Button className="button" text="Select Custom Species" onClick={() => this.showCustomSpecies() }/>
+                            <Button className="button" text={t('SpeciesPage.selectSpecies')} onClick={() => this.showSpecies() } />
+                            <Button className="button" text={t('SpeciesPage.selectMixedSpecies')} onClick={() => this.showMixedSpecies() }/>
+                            <Button className="button" text={t('SpeciesPage.selectCustomSpecies')} onClick={() => this.showCustomSpecies() }/>
                         </div>
                         <div className="col">
-                            {this.isRollAvailable() ? (<Button className="button" text="Roll Core Species" onClick={() => this.rollSpecies()} />) : undefined }
+                            {this.isRollAvailable() ? (<Button className="button" text={t('SpeciesPage.rollCoreSpecies')} onClick={() => this.rollSpecies()} />) : undefined }
                             {rollAlpha}
                             {rollBeta}
                             {rollGamma}
@@ -81,11 +83,7 @@ class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
                   )
                 : (
                     <div>
-                        <div>
-                            Select two species.
-                            You will gain Traits from both species and may select from both species' Talents,
-                            but only the primary species gives you attribute bonuses.
-                        </div>
+                        <InstructionText text={t('SpeciesPage.mixedSpeciesNote')} />
                         <MixedSpeciesSelection
                             onSelection={(primary, secondary) => this.selectMixedSpecies(primary, secondary) }
                             onCancel={() => this.hideSpecies() } />

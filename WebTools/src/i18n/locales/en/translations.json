@@ -158,6 +158,18 @@
     "SpeciesDetails.allowCrossSpecies": "Allow cross-species talents (GM's decision)",
     "SpeciesDetails.allowEsoteric": "Allow esoterric talents (GM's decision)",
 
+    "SpeciesPage.selectSpecies": "Select Species",
+    "SpeciesPage.selectMixedSpecies": "Select Mixed Species",
+    "SpeciesPage.selectCustomSpecies": "Select Custom Species",
+    "SpeciesPage.rollCoreSpecies": "Roll Core Species",
+    "SpeciesPage.rollAlphaSpecies": "Roll Alpha Species",
+    "SpeciesPage.rollBetaSpecies": "Roll Beta Species",
+    "SpeciesPage.rollGammaSpecies": "Roll Gamma Species",
+    "SpeciesPage.rollDeltaSpecies": "Roll Delta Species",
+    "SpeciesPage.text": "To what species do you belong? You may also create a character of mixed species, gaining benefits from both.\n\nEither select or roll your Species.",
+    "SpeciesPage.textNoRoll": "To what species do you belong? You may also create a character of mixed species, gaining benefits from both.",
+    "SpeciesPage.mixedSpeciesNote": "Select two species. You will gain Traits from both species and may select from both species' Talents, but only the primary species gives you attribute bonuses.",
+
     "StarshipToolSelection.instruction": "Select an option",
     "StarshipToolSelection.standardBuild": "Standard Build",
     "StarshipToolSelection.standardBuildDescription": "The standard Starship creation process follows the build steps as outlined in the rulebooks. E.g.: starships choose a Spaceframe, Mission Profile, etc.",
@@ -496,6 +508,13 @@
     "Division.science": "Science",
     "Division.operations": "Operations",
 
+    "Division.monsterMaroon.command": "Command",
+    "Division.monsterMaroon.science": "Science",
+    "Division.monsterMaroon.helmEngineering": "Helm/Engineering",
+    "Division.monsterMaroon.medical": "Medical",
+    "Division.monsterMaroon.security": "Security",
+    "Division.monsterMaroon.trainee": "Trainee",
+
     "Era.name.enterprise": "Enterprise (22nd century)",
     "Era.name.originalSeries": "Original Series (23rd century)",
     "Era.name.nextGeneration": "Next Generation (24th century)",
@@ -506,6 +525,7 @@
     "ExtraType.hoopEarring": "Hoop Earring",
     "ExtraType.smallBindi": "Small Bindi",
     "ExtraType.risanSymbol": "Risan Symbol",
+    "ExtraType.inuitTattoo": "Inuit Tattoo",
 
     "GovernmentType.name.andorian": "Andorian",
     "GovernmentType.name.bajoran": "Bajoran",
@@ -680,6 +700,7 @@
     "StarSystem.common.companionStar": "Companion Star",
 
     "UniformEra.originalSeries": "Original Series",
+    "UniformEra.monsterMaroon": "The Wrath of Khan",
     "UniformEra.dominionWar": "Dominion War",
 
     "Value.environment.text": "This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.",
