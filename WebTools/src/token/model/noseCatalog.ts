@@ -169,22 +169,21 @@ const DenobulanNoseAppliance = `<g>
 </g>`
 
 
-
 class NoseCatalog {
 
     private static _instance: NoseCatalog;
 
     private swatches = [
-        new Swatch(NoseType.StraightBasic, "Straight/Basic", (token) => NoseCatalog.decorateSwatch(Nose1, token)),
-        new Swatch(NoseType.Convex, "Convex", (token) => NoseCatalog.decorateSwatch(Nose2, token)),
-        new Swatch(NoseType.SmallBulb, "Small Bulb", (token) => NoseCatalog.decorateSwatch(Nose3, token)),
-        new Swatch(NoseType.Broad, "Broad", (token) => NoseCatalog.decorateSwatch(Nose4, token)),
-        new Swatch(NoseType.LongNarrow, "Long Narrow", (token) => NoseCatalog.decorateSwatch(Nose5, token)),
-        new Swatch(NoseType.HighBridge, "High Bridge", (token) => NoseCatalog.decorateSwatch(Nose6, token)),
-        new Swatch(NoseType.Bulbous, "Bulbous", (token) => NoseCatalog.decorateSwatch(Nose7, token)),
-        new Swatch(NoseType.SmallFlat, "Small, Flat", (token) => NoseCatalog.decorateSwatch(Nose8, token)),
-        new Swatch(NoseType.SmallUpTurned, "Small, Up-turned", (token) => NoseCatalog.decorateSwatch(Nose9, token)),
-        new Swatch(NoseType.Hawk, "Hawk", (token) => NoseCatalog.decorateSwatch(Nose10, token)),
+        new Swatch(NoseType.StraightBasic, "Straight/Basic", (token) => NoseCatalog.decorateSwatch(Nose1, token), "NoseType.straightBasic"),
+        new Swatch(NoseType.Convex, "Convex", (token) => NoseCatalog.decorateSwatch(Nose2, token), "NoseType.convex"),
+        new Swatch(NoseType.SmallBulb, "Small Bulb", (token) => NoseCatalog.decorateSwatch(Nose3, token), "NoseType.smallBulb"),
+        new Swatch(NoseType.Broad, "Broad", (token) => NoseCatalog.decorateSwatch(Nose4, token), "NoseType.broad"),
+        new Swatch(NoseType.LongNarrow, "Long Narrow", (token) => NoseCatalog.decorateSwatch(Nose5, token), "NoseType.longNarrow"),
+        new Swatch(NoseType.HighBridge, "High Bridge", (token) => NoseCatalog.decorateSwatch(Nose6, token), "NoseType.highBridge"),
+        new Swatch(NoseType.Bulbous, "Bulbous", (token) => NoseCatalog.decorateSwatch(Nose7, token), "NoseType.bulbous"),
+        new Swatch(NoseType.SmallFlat, "Small, Flat", (token) => NoseCatalog.decorateSwatch(Nose8, token), "NoseType.smallFlat"),
+        new Swatch(NoseType.SmallUpTurned, "Small, Up-turned", (token) => NoseCatalog.decorateSwatch(Nose9, token), "NoseType.smallUpTurned"),
+        new Swatch(NoseType.Hawk, "Hawk", (token) => NoseCatalog.decorateSwatch(Nose10, token), "NoseType.hawk"),
     ];
 
     public static get instance() {

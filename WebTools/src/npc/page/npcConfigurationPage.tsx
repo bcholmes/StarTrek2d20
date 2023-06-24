@@ -56,12 +56,12 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                 <Header>{t('Page.title.npcConfiguration')}</Header>
 
                 <div className="my-4">
-                    <InstructionText text={"Specify what kind of NPC you're trying to create."} />
+                    <InstructionText text={t('NpcConfigurationPage.text')} />
                 </div>
 
                 <div className="row">
                     <div className="col-md-6 my-4">
-                        <Header level={2}>NPC Type</Header>
+                        <Header level={2}>{t('NpcConfigurationPage.npcType')}</Header>
 
                         <div className="my-4">
                             <DropDownSelect
@@ -70,7 +70,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                                 onChange={(type) => this.setState((state) => ({...state, selectedNpcType: type as number })) }/>
                         </div>
 
-                        <Header level={2} className="mt-5">Species</Header>
+                        <Header level={2} className="mt-5">{t('Construct.other.species')}</Header>
 
                         <div className="mt-4">
                             <DropDownSelect
@@ -82,7 +82,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                     </div>
 
                     <div className="col-md-6 my-4">
-                        <Header level={2}>Type</Header>
+                        <Header level={2}>{t('Construct.other.characterType')}</Header>
 
                         <div className="my-4">
                             <DropDownSelect
@@ -91,7 +91,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                                 onChange={(type) => this.selectType(NpcCharacterTypes.instance.getType(type as NpcCharacterType) ) }/>
                         </div>
 
-                        <Header level={2} className="mt-5">Specialization</Header>
+                        <Header level={2} className="mt-5">{t('NpcConfigurationPage.specialization')}</Header>
 
                         <div className="mt-4">
                             <DropDownSelect
@@ -110,7 +110,8 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
     }
 
     getSpecializations() {
-        let result = [ new DropDownElement(null, "Any Specialization")];
+        const { t } = this.props;
+        let result = [ new DropDownElement(null, t('NpcConfigurationPage.option.anySpecialization'))];
         Specializations.instance.getSpecializations(this.state.selectedType.type)
             .filter(s => (s.type !== NpcCharacterType.Ferengi || this.props.era === Era.NextGeneration) && hasAnySource([Source.DS9, Source.AlphaQuadrant]))
             .forEach(s => result.push(new DropDownElement(s.id, s.name)));
@@ -131,7 +132,8 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
     }
 
     getSpeciesDropDownList() {
-        let result = [ new DropDownElement(null, "Any Major Species")];
+        const { t } = this.props;
+        let result = [ new DropDownElement(null, t('NpcConfigurationPage.option.anyMajorSpecies'))];
         this.getSpeciesList().forEach(s => result.push(new DropDownElement(s.id, s.localizedName)));
         return result;
     }
@@ -148,7 +150,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         this.setState((state) => ({...state, selectedType: type, selectedSpecies: null, selectedSpecialization: null }));
     }
 
-    selectSpecies(species: Species|string) {
+    selectSpecies(species: Species|string|null) {
         if (species == null || species === "") {
             this.setState((state) => ({...state, selectedSpecies: undefined }));
         } else {

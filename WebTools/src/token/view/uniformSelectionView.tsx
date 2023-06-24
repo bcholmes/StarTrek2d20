@@ -43,7 +43,7 @@ class UniformSelectionView extends React.Component<IUniformSelectionViewProperti
 
             <p className="mt-4">{t('TokenCreator.section.body.type')}:</p>
             <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-            {UniformCatalog.instance.getSwatches(token.uniformEra).map(s => <SwatchButton svg={s.svg} title={s.name} size="lg"
+            {UniformCatalog.instance.getSwatches(token.uniformEra).map(s => <SwatchButton svg={s.svg} title={s.localizedName} size="lg"
                 onClick={() => store.dispatch(setTokenBodyType(s.id)) }
                 active={token.bodyType === s.id} token={token} key={'body-swatch-' + s.id }/>)}
             </div>

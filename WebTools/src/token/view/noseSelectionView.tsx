@@ -19,7 +19,7 @@ class NoseSelectionView extends React.Component<INoseSelectionViewProperties, {}
         return (<>
         <p className="mt-4">{t('TokenCreator.section.nose.shape')}:</p>
         <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-        {NoseCatalog.instance.getSwatches(this.props.token).map(s => <SwatchButton svg={s.svg} title={s.name}
+        {NoseCatalog.instance.getSwatches(this.props.token).map(s => <SwatchButton svg={s.svg} title={s.localizedName}
             onClick={() => store.dispatch(setTokenNoseType(s.id))} active={this.props.token.noseType === s.id}
             token={this.props.token}
             key={'nose-swatch-' + s.id }/>)}
@@ -27,7 +27,7 @@ class NoseSelectionView extends React.Component<INoseSelectionViewProperties, {}
 
         <p className="mt-4">{t('TokenCreator.section.nose.nasoLabial')}:</p>
         <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-        {NasoLabialFoldCatalog.instance.swatches.map(s => <SwatchButton svg={s.svg} title={s.name}
+        {NasoLabialFoldCatalog.instance.swatches.map(s => <SwatchButton svg={s.svg} title={s.localizedName}
             onClick={() => store.dispatch(setTokenNasoLabialFoldType(s.id))} active={this.props.token.nasoLabialFold === s.id}
             token={this.props.token}
             key={'naso-labial-swatch-' + s.id }/>)}

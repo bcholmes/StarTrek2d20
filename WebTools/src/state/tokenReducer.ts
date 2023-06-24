@@ -18,7 +18,7 @@ const initialState = {
     species: Species.Human,
     divisionColor: DivisionColors.getColors(UniformEra.DominionWar)[0].color,
     skinColor: SpeciesRestrictions.DEFAULT_SKIN_COLOR,
-    headType: HeadType.AverageAngular,
+    headType: HeadType.SofterNarrow,
     rankIndicator: RankIndicator.None,
     hairType: HairType.DeLeve,
     hairColor: SpeciesRestrictions.DEFAULT_HAIR_COLOR,

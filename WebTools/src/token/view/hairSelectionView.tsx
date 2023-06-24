@@ -23,7 +23,7 @@ class HairSelectionView extends React.Component<IHairSelectionViewProperties, {}
 
             <p className="mt-4">{t('TokenCreator.section.hair.style')}:</p>
             <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-            {HairCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.name} size="lg"
+            {HairCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.localizedName} size="lg"
                 onClick={() => store.dispatch(setTokenHairType(s.id))} active={token.hairType === s.id}
                 token={token}
                 key={'hair-swatch-' + s.id }/>)}

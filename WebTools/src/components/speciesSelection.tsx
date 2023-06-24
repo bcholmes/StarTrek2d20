@@ -62,7 +62,7 @@ class SpeciesSelection extends React.Component<ISpeciesSelectionProperties, ISpe
 
             return (
                 <tr key={i} onClick={() => { if (Window.isCompact()) this.props.onSelection(s.id); }}>
-                    <td className="selection-header">{s.name}</td>
+                    <td className="selection-header">{s.localizedName}</td>
                     <td>{attributes}</td>
                     <td className="d-none d-md-table-cell">{sources}</td>
                     <td>{talents}</td>

@@ -1,3 +1,4 @@
+import { makeKey } from "../../common/translationKey";
 import { HairType } from "./hairTypeEnum";
 import { ReferenceHead, SimpleNeck } from "./headCatalog";
 import SpeciesRestrictions from "./speciesRestrictions";
@@ -591,7 +592,7 @@ class HairCatalog {
         let hairTypes = SpeciesRestrictions.getHairTypes(token.species);
         return this.items
             .filter(i => hairTypes.indexOf(i.id) >= 0)
-            .map(i => new Swatch(i.id, i.name, (token) => HairCatalog.decorateSwatch(i, token)));
+            .map(i => new Swatch(i.id, i.name, (token) => HairCatalog.decorateSwatch(i, token), makeKey("HairType.", HairType[i.id])));
     }
 
     private static decorateSwatch(hair: HairItem, token: Token) {

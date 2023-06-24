@@ -22,7 +22,7 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
         return (<>
             <p className="mt-4">{t('TokenCreator.section.mouth.shape')}:</p>
             <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-            {MouthCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.name}
+            {MouthCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.localizedName}
                 onClick={() => store.dispatch(setTokenMouthType(s.id))} active={s.id === token.mouthType}
                 token={token}
                 key={'mouth-swatch-' + s.id }/>)}

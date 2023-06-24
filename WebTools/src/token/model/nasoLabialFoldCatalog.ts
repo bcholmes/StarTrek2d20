@@ -38,16 +38,12 @@ class NasoLabialFoldCatalog {
     private static _instance: NasoLabialFoldCatalog;
 
     swatches = [
-        new Swatch(NasoLabialFoldType.None, "None", NasoLabialFoldCatalog.decorateSwatch("")),
-        new Swatch(NasoLabialFoldType.Subtle, "Subtle", NasoLabialFoldCatalog.decorateSwatch(SubtleNasoLabial)),
-        new Swatch(NasoLabialFoldType.Meaney, "Subtle, Wide", NasoLabialFoldCatalog.decorateSwatch(MeaneyNasoLabial)),
-        new Swatch(NasoLabialFoldType.Cherubic, "Cherubic", NasoLabialFoldCatalog.decorateSwatch(CherubicNasoLabial)),
-        new Swatch(NasoLabialFoldType.Nimoy, "Haughty", NasoLabialFoldCatalog.decorateSwatch(NimoyNasoLabial)),
-        new Swatch(NasoLabialFoldType.Lewis, "Pronounced", NasoLabialFoldCatalog.decorateSwatch(LewisNasoLabial)),
-//        new Swatch(MouthType.Mouth3, "Medium Lip Frowning", NasoLabialFoldCatalog.decorateSwatch(MediumLip2)),
-//        new Swatch(MouthType.Mouth4, "Fuller Lip", NasoLabialFoldCatalog.decorateSwatch(FullerLip)),
-//        new Swatch(MouthType.Mouth5, "Fairly Full Lip", NasoLabialFoldCatalog.decorateSwatch(FullerLip2)),
-//        new Swatch(MouthType.Mouth6, "Broad, Full Lip", NasoLabialFoldCatalog.decorateSwatch(FullerLip3)),
+        new Swatch(NasoLabialFoldType.None, "None", NasoLabialFoldCatalog.decorateSwatch(""), "NasoLabialFoldType.none"),
+        new Swatch(NasoLabialFoldType.Subtle, "Subtle", NasoLabialFoldCatalog.decorateSwatch(SubtleNasoLabial), "NasoLabialFoldType.subtle"),
+        new Swatch(NasoLabialFoldType.Meaney, "Subtle, Wide", NasoLabialFoldCatalog.decorateSwatch(MeaneyNasoLabial), "NasoLabialFoldType.meaney"),
+        new Swatch(NasoLabialFoldType.Cherubic, "Cherubic", NasoLabialFoldCatalog.decorateSwatch(CherubicNasoLabial), "NasoLabialFoldType.cherubic"),
+        new Swatch(NasoLabialFoldType.Nimoy, "Haughty", NasoLabialFoldCatalog.decorateSwatch(NimoyNasoLabial), "NasoLabialFoldType.nimoy"),
+        new Swatch(NasoLabialFoldType.Lewis, "Pronounced", NasoLabialFoldCatalog.decorateSwatch(LewisNasoLabial), "NasoLabialFoldType.lewis"),
     ];
 
     public static get instance() {

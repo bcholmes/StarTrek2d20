@@ -184,35 +184,35 @@ class MouthCatalog {
     getSwatches(token: Token) {
         if (token.species === Species.Tellarite) {
             return [
-                new Swatch(MouthType.Mouth1, "Thin Lip", (token) => MouthCatalog.decorateSwatch(TellariteMouth1, token)),
-                new Swatch(MouthType.Mouth2, "Medium Lip", (token) => MouthCatalog.decorateSwatch(MediumLip + StandardPhiltrum, token)),
-                new Swatch(MouthType.Mouth3, "Medium Lip Frowning", (token) => MouthCatalog.decorateSwatch(MediumLip2 + StandardPhiltrum, token)),
-                new Swatch(MouthType.Mouth4, "Slightly Fuller Lip", (token) => MouthCatalog.decorateSwatch(DefaultLip + StandardPhiltrum, token)),
-                new Swatch(MouthType.Mouth5, "Fairly Full Lip", (token) => MouthCatalog.decorateSwatch(FullerLip2 + PronouncedPhiltrum, token)),
-                new Swatch(MouthType.Mouth6, "Broad, Full Lip", (token) => MouthCatalog.decorateSwatch(FullerLip3 + PronouncedPhiltrum, token)),
+                new Swatch(MouthType.Mouth1, "Thin Lip", (token) => MouthCatalog.decorateSwatch(TellariteMouth1, token), "MouthType.mouth1"),
+                new Swatch(MouthType.Mouth2, "Medium Lip", (token) => MouthCatalog.decorateSwatch(MediumLip + StandardPhiltrum, token), "MouthType.mouth2"),
+                new Swatch(MouthType.Mouth3, "Medium Lip Frowning", (token) => MouthCatalog.decorateSwatch(MediumLip2 + StandardPhiltrum, token), "MouthType.mouth3"),
+                new Swatch(MouthType.Mouth4, "Slightly Fuller Lip", (token) => MouthCatalog.decorateSwatch(DefaultLip + StandardPhiltrum, token), "MouthType.mouth4"),
+                new Swatch(MouthType.Mouth5, "Fairly Full Lip", (token) => MouthCatalog.decorateSwatch(FullerLip2 + PronouncedPhiltrum, token), "MouthType.mouth5"),
+                new Swatch(MouthType.Mouth6, "Broad, Full Lip", (token) => MouthCatalog.decorateSwatch(FullerLip3 + PronouncedPhiltrum, token), "MouthType.mouth6"),
 
-                new Swatch(MouthType.Mouth1Lipstick, "Lipstick, Classic Hollywood Starlet",(token) =>  MouthCatalog.decorateSwatch(LipstickStarlet + PronouncedPhiltrum, token)),
-                new Swatch(MouthType.Mouth2Lipstick, "Lipstick, Fuller Pout", (token) => MouthCatalog.decorateSwatch(LipstickFullLipped, token)),
-                new Swatch(MouthType.Mouth3Lipstick, "Lipstick, Prominent Upper Lip", (token) => MouthCatalog.decorateSwatch(LipstickProminentUpperLip, token)),
-                new Swatch(MouthType.Mouth4Lipstick, "Lipstick, Thin Lip", (token) => MouthCatalog.decorateSwatch(LipstickThinLipped, token)),
-                new Swatch(MouthType.Mouth5Lipstick, "Lipstick, Downward-pointing", (token) => MouthCatalog.decorateSwatch(LipstickDownwardLips + StandardPhiltrum, token)),
-                new Swatch(MouthType.Mouth6Lipstick, "Lipstick, Pronounced Cupid's Bow", (token) => MouthCatalog.decorateSwatch(LipstickPronouncedCupidsBow + CurvedPhiltrum, token)),
+                new Swatch(MouthType.Mouth1Lipstick, "Lipstick, Classic Hollywood Starlet",(token) =>  MouthCatalog.decorateSwatch(LipstickStarlet + PronouncedPhiltrum, token), "MouthType.mouth1Lipstick"),
+                new Swatch(MouthType.Mouth2Lipstick, "Lipstick, Fuller Pout", (token) => MouthCatalog.decorateSwatch(LipstickFullLipped, token), "MouthType.mouth2Lipstick"),
+                new Swatch(MouthType.Mouth3Lipstick, "Lipstick, Prominent Upper Lip", (token) => MouthCatalog.decorateSwatch(LipstickProminentUpperLip, token), "MouthType.mouth3Lipstick"),
+                new Swatch(MouthType.Mouth4Lipstick, "Lipstick, Thin Lip", (token) => MouthCatalog.decorateSwatch(LipstickThinLipped, token), "MouthType.mouth4Lipstick"),
+                new Swatch(MouthType.Mouth5Lipstick, "Lipstick, Downward-pointing", (token) => MouthCatalog.decorateSwatch(LipstickDownwardLips + StandardPhiltrum, token), "MouthType.mouth5Lipstick"),
+                new Swatch(MouthType.Mouth6Lipstick, "Lipstick, Pronounced Cupid's Bow", (token) => MouthCatalog.decorateSwatch(LipstickPronouncedCupidsBow + CurvedPhiltrum, token), "MouthType.mouth6Lipstick"),
             ]
         } else {
             return [
-                new Swatch(MouthType.Mouth1, "Thin Lip", (token) => MouthCatalog.decorateSwatch(ThinLip + StandardPhiltrum, token)),
-                new Swatch(MouthType.Mouth2, "Medium Lip", (token) => MouthCatalog.decorateSwatch(MediumLip + StandardPhiltrum, token)),
-                new Swatch(MouthType.Mouth3, "Medium Lip Frowning", (token) => MouthCatalog.decorateSwatch(MediumLip2 + StandardPhiltrum, token)),
-                new Swatch(MouthType.Mouth4, "Slightly Fuller Lip", (token) => MouthCatalog.decorateSwatch(DefaultLip + StandardPhiltrum, token)),
-                new Swatch(MouthType.Mouth5, "Fairly Full Lip", (token) => MouthCatalog.decorateSwatch(FullerLip2 + PronouncedPhiltrum, token)),
-                new Swatch(MouthType.Mouth6, "Broad, Full Lip", (token) => MouthCatalog.decorateSwatch(FullerLip3 + PronouncedPhiltrum, token)),
+                new Swatch(MouthType.Mouth1, "Thin Lip", (token) => MouthCatalog.decorateSwatch(ThinLip + StandardPhiltrum, token), "MouthType.mouth1"),
+                new Swatch(MouthType.Mouth2, "Medium Lip", (token) => MouthCatalog.decorateSwatch(MediumLip + StandardPhiltrum, token), "MouthType.mouth2"),
+                new Swatch(MouthType.Mouth3, "Medium Lip Frowning", (token) => MouthCatalog.decorateSwatch(MediumLip2 + StandardPhiltrum, token), "MouthType.mouth3"),
+                new Swatch(MouthType.Mouth4, "Slightly Fuller Lip", (token) => MouthCatalog.decorateSwatch(DefaultLip + StandardPhiltrum, token), "MouthType.mouth4"),
+                new Swatch(MouthType.Mouth5, "Fairly Full Lip", (token) => MouthCatalog.decorateSwatch(FullerLip2 + PronouncedPhiltrum, token), "MouthType.mouth5"),
+                new Swatch(MouthType.Mouth6, "Broad, Full Lip", (token) => MouthCatalog.decorateSwatch(FullerLip3 + PronouncedPhiltrum, token), "MouthType.mouth6"),
 
-                new Swatch(MouthType.Mouth1Lipstick, "Lipstick, Classic Hollywood Starlet",(token) =>  MouthCatalog.decorateSwatch(LipstickStarlet + PronouncedPhiltrum, token)),
-                new Swatch(MouthType.Mouth2Lipstick, "Lipstick, Fuller Pout", (token) => MouthCatalog.decorateSwatch(LipstickFullLipped, token)),
-                new Swatch(MouthType.Mouth3Lipstick, "Lipstick, Prominent Upper Lip", (token) => MouthCatalog.decorateSwatch(LipstickProminentUpperLip, token)),
-                new Swatch(MouthType.Mouth4Lipstick, "Lipstick, Thin Lip", (token) => MouthCatalog.decorateSwatch(LipstickThinLipped + StandardPhiltrum, token)),
-                new Swatch(MouthType.Mouth5Lipstick, "Lipstick, Downward-pointing", (token) => MouthCatalog.decorateSwatch(LipstickDownwardLips + StandardPhiltrum, token)),
-                new Swatch(MouthType.Mouth6Lipstick, "Lipstick, Pronounced Cupid's Bow", (token) => MouthCatalog.decorateSwatch(LipstickPronouncedCupidsBow + CurvedPhiltrum, token)),
+                new Swatch(MouthType.Mouth1Lipstick, "Lipstick, Classic Hollywood Starlet",(token) =>  MouthCatalog.decorateSwatch(LipstickStarlet + PronouncedPhiltrum, token), "MouthType.mouth1Lipstick"),
+                new Swatch(MouthType.Mouth2Lipstick, "Lipstick, Fuller Pout", (token) => MouthCatalog.decorateSwatch(LipstickFullLipped, token), "MouthType.mouth2Lipstick"),
+                new Swatch(MouthType.Mouth3Lipstick, "Lipstick, Prominent Upper Lip", (token) => MouthCatalog.decorateSwatch(LipstickProminentUpperLip, token), "MouthType.mouth3Lipstick"),
+                new Swatch(MouthType.Mouth4Lipstick, "Lipstick, Thin Lip", (token) => MouthCatalog.decorateSwatch(LipstickThinLipped + StandardPhiltrum, token), "MouthType.mouth4Lipstick"),
+                new Swatch(MouthType.Mouth5Lipstick, "Lipstick, Downward-pointing", (token) => MouthCatalog.decorateSwatch(LipstickDownwardLips + StandardPhiltrum, token), "MouthType.mouth5Lipstick"),
+                new Swatch(MouthType.Mouth6Lipstick, "Lipstick, Pronounced Cupid's Bow", (token) => MouthCatalog.decorateSwatch(LipstickPronouncedCupidsBow + CurvedPhiltrum, token), "MouthType.mouth6Lipstick"),
             ]
         }
     }

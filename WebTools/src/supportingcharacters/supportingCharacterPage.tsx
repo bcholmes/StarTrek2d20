@@ -66,8 +66,9 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
     }
 
     getSpeciesList() {
-        let speciesList = SpeciesHelper.getSpecies().map(s => { return new DropDownElement(s.id, s.name) });
-        speciesList.push(new DropDownElement(Species.Custom, "Custom/Other"));
+        const { t } = this.props;
+        let speciesList = SpeciesHelper.getSpecies().map(s => { return new DropDownElement(s.id, s.localizedName) });
+        speciesList.push(new DropDownElement(Species.Custom, t('Species.other.name')));
 
         return speciesList;
     }
@@ -132,10 +133,10 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
                             {t('SupportingCharacter.speciesAndAttributesInstruction')}
                         </p>
                         <div className="mb-2">
-                            <DropDownInput
+                            <DropDownSelect
                                 items={this.getSpeciesList()}
                                 defaultValue={this.state.species}
-                                onChange={(index) => this.selectSpecies(index) }/>
+                                onChange={(index) => this.selectSpecies(index as Species) }/>
                         </div>
                         {this.state.species === Species.Custom
                         ? (<div className="mb-2">
@@ -252,12 +253,8 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
         character.traits = [ character.speciesName ];
     }
 
-    private selectSpecies(index: number) {
-        const species = this.getSpeciesList();
-        let selection = species[index].value as Species;
-
+    private selectSpecies(selection: Species) {
         character.speciesStep = new SpeciesStep(selection);
-
         this.setState((state) => ({...state, species: selection}));
     }
 

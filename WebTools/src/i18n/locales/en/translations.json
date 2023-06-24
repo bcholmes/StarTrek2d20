@@ -19,6 +19,13 @@
     "Home.talentsButton": "Talents Overview",
     "Home.tokenCreator": "Tokens",
 
+    "NpcConfigurationPage.option.anyMajorSpecies": "Any Major Species",
+    "NpcConfigurationPage.option.anySpecialization": "Any Specialization",
+
+    "NpcConfigurationPage.npcType": "NPC Type",
+    "NpcConfigurationPage.specialization": "Specialization",
+    "NpcConfigurationPage.text": "Specify what kind of NPC you're trying to create.",
+
     "TokenCreator.option.rounded": "Rounded",
     "TokenCreator.option.bordered": "Bordered",
 
@@ -129,7 +136,7 @@
 
     "MilestonePage.instruction": "Select what type of modification you want to apply for this milestone.",
 
-    "MissionPodSelectionPage.text": "Certain spaceframes have the ability to be fitted with a since mission pod, chosen from the list below. The talents provided by the pod may not be swapped out normally, but the entire mission pod (and all its benefits) may be swapped out as if it were a single talent.",
+    "MissionPodSelectionPage.text": "Certain spaceframes have the ability to be fitted with a single mission pod, chosen from the list below. The talents provided by the pod may not be swapped out normally, but the entire mission pod (and all its benefits) may be swapped out as if it were a single talent.",
     "MissionPodSelectionPage.errorNoSelection": "Please select a mission pod before proceeding.",
 
     "MissionProfileSelectionPage.text": "A mission profile is what makes one starship different from another in her same class. It determines the specialized equipment that is installed before venturing into the unknown, the priority in personnel that Starfleet gives the vessel, and its overall mission goal. All spaceframes have a mission profile.",
@@ -538,6 +545,28 @@
     "GovernmentType.name.vulcan": "Vulcan",
     "GovernmentType.name.other": "Other",
 
+    "HairType.bald": "Bald",
+    "HairType.bowlCutHair": "Bowl Cut",
+    "HairType.stylishHair": "Stylish Short",
+    "HairType.sidePart": "Side Part",
+    "HairType.shortAfro": "Short Curly",
+    "HairType.veryShortAfro": "Very Short Curly",
+    "HairType.pulledBackPonyTail": "Pulled Back Pony Tail",
+    "HairType.balding": "Balding",
+    "HairType.receding": "Receding",
+    "HairType.deLeve": "The \"de Leve\"-Style Shave",
+    "HairType.mediumLengthFemaleSidePart": "Medium Length Side Part",
+    "HairType.mediumMaleCenterPart": "Medium Length Center Part",
+    "HairType.mediumLengthFemaleStraight": "Medium Length Straight",
+    "HairType.chinLengthCombBack": "Chin Length Straight Comb Back",
+    "HairType.shortTeasedOverEyeStyle": "Short, Teased, Over-Eye",
+    "HairType.feminineDreadStyle": "Feminine Dread Style",
+    "HairType.shoulderLengthMostlyStraight": "Shoulder Length Mostly Straight",
+    "HairType.shoulderLengthBob": "Shoulder Length Bob",
+    "HairType.cornRows": "Corn Rows",
+    "HairType.highForeheadEfrosianStyle": "Efrosian-style Mane",
+    "HairType.pinnedUpHairWithPart": "Pinned Up Hair with Part",
+
     "HeadType.averageAngular": "Average, Angular",
     "HeadType.squareJawed": "Square Jawed",
     "HeadType.roundedNarrow": "Rounded, Narrow",
@@ -594,6 +623,37 @@
     "MissionProfile.klingon.strategicAndDiplomatic": "Strategic and Diplomatic Operations",
     "MissionProfile.klingon.houseGuard": "House Guard",
     "MissionProfile.klingon.warship": "Warship",
+
+    "MouthType.mouth1": "Thin Lip",
+    "MouthType.mouth2": "Medium Lip",
+    "MouthType.mouth3": "Medium Lip Frowning",
+    "MouthType.mouth4": "Smaller",
+    "MouthType.mouth5": "Fairly Full Lip",
+    "MouthType.mouth6": "Broad, Full Lip",
+    "MouthType.mouth1Lipstick": "Lipstick, Classic Hollywood Starlet",
+    "MouthType.mouth2Lipstick": "Lipstick, Fuller Pout",
+    "MouthType.mouth3Lipstick": "Lipstick, Prominent Upper Lip",
+    "MouthType.mouth4Lipstick": "Lipstick, Thin Lip",
+    "MouthType.mouth5Lipstick": "Lipstick, Downward-pointing",
+    "MouthType.mouth6Lipstick": "Lipstick, Pronounced Cupid's Bow",
+
+    "NasoLabialFoldType.none": "None",
+    "NasoLabialFoldType.subtle": "Subtle",
+    "NasoLabialFoldType.cherubic": "Cherubic",
+    "NasoLabialFoldType.nimoy": "Haughty",
+    "NasoLabialFoldType.meaney": "Subtle, Wide",
+    "NasoLabialFoldType.lewis": "Pronounced",
+
+    "NoseType.straightBasic": "Straight/Basic",
+    "NoseType.convex": "Convex",
+    "NoseType.smallBulb": "Small Bulb",
+    "NoseType.broad": "Broad",
+    "NoseType.longNarrow": "Long Narrow",
+    "NoseType.highBridge": "High Bridge",
+    "NoseType.bulbous": "Bulbous",
+    "NoseType.smallFlat": "Small, Flat",
+    "NoseType.smallUpTurned": "Small, Up-turned",
+    "NoseType.hawk": "Hawk",
 
     "NpcType.minor.name": "Minor NPC",
 
@@ -679,6 +739,8 @@
     "Species.klingonQuchHa.name": "Klingon (QuchHa’)",
 
     "Species.orion.name": "Orion",
+
+    "Species.other.name": "Custom/Other",
 
     "Species.risian.name": "Risian",
 

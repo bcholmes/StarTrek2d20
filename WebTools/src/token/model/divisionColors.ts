@@ -12,10 +12,10 @@ export class DivisionColors {
                 new NamedColor(i18next.t("Division.operations"), "#cf1f35")];
         } else if (era === UniformEra.MonsterMaroon) {
             return [ new NamedColor(i18next.t("Division.monsterMaroon.command"), "#f9f9f9"),
-                new NamedColor(i18next.t("Division.monsterMaroon.science"), "#99b6c6"),
-                new NamedColor(i18next.t("Division.monsterMaroon.helmEngineering"), "#f3b807"),
-                new NamedColor(i18next.t("Division.monsterMaroon.medical"), "#7cba54"),
-                new NamedColor(i18next.t("Division.monsterMaroon.security"), "#2e4722"),
+                new NamedColor(i18next.t("Division.monsterMaroon.science"), "#819bc9"),
+                new NamedColor(i18next.t("Division.monsterMaroon.helmEngineering"), "#e8a232"),
+                new NamedColor(i18next.t("Division.monsterMaroon.medical"), "#85a774"),
+                new NamedColor(i18next.t("Division.monsterMaroon.security"), "#2e4a22"),
                 new NamedColor(i18next.t("Division.monsterMaroon.trainee"), "#cf130b")];
         } else {
             return [ new NamedColor(i18next.t("Division.command"), "#B12542"),
