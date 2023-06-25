@@ -1,5 +1,5 @@
 {
-  "version": "1.230618",
+  "version": "1.230624",
   "name": "startrek",
   "author": "Christoffer Lundberg",
   "contributors": [
@@ -22,6 +22,10 @@
     {
       "name": "Daniel Jödemann",
       "url": "http://www.daniel-joedemann.de/"
+    },
+    {
+      "name": "Keith Curtis",
+      "url": "http://kacurtis.com/"
     }
   ],
   "license": "ISC",

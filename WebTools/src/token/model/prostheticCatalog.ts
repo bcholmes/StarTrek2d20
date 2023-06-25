@@ -70,6 +70,7 @@ class ProstheticCatalog {
                     return AndorianAntennaBack.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
                 case ProstheticPlacement.VeryFront:
                     switch (token.hairType) {
+                        case HairType.SidePart:
                         case HairType.BowlCutHair:
                         case HairType.MediumLengthFemaleSidePart:
                         case HairType.MediumMaleCenterPart:

@@ -12,6 +12,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230624</b>
+                <ul>
+                    <li>German translation has been pretty active, lately, and this update includes more German.</li>
+                    <li>I've heard you: you want Monster Maroon uniforms.</li>
+                </ul>
                 <b>v1.230618</b>
                 <ul>
                     <li>This fix contains some minor changes to the Token Generator. Don't worry, bigger updates are coming down the pipe soon.</li>
