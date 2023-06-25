@@ -9,7 +9,7 @@ import {TalentDescription} from '../components/talentDescription';
 import ValueInput, {Value} from '../components/valueInput';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
-import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
+import SingleTalentSelectionList from '../components/singleTalentSelectionList';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { Header } from '../components/header';
 

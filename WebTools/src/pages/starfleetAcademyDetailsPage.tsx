@@ -14,7 +14,7 @@ import SkillView from '../components/skill';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import { Header } from '../components/header';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
-import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
+import SingleTalentSelectionList from '../components/singleTalentSelectionList';
 import { Track } from '../helpers/trackEnum';
 
 export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties, {}> {

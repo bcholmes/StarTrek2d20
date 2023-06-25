@@ -16,7 +16,7 @@ import InstructionText from '../components/instructionText';
 import { Header } from '../components/header';
 import { AttributeController } from '../components/attributeController';
 import SpeciesAttributeComponent from '../components/speciesAttributeComponent';
-import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
+import SingleTalentSelectionList from '../components/singleTalentSelectionList';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { Attribute } from '../helpers/attributes';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';

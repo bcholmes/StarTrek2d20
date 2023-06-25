@@ -12,7 +12,7 @@ import {Dialog} from '../components/dialog';
 import ValueInput, {Value} from '../components/valueInput';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { CharacterType } from '../common/characterType';
-import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
+import SingleTalentSelectionList from '../components/singleTalentSelectionList';
 import { extraCharacterStepsNext } from './extraCharacterSteps';
 
 interface IPageState {

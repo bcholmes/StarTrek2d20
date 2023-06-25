@@ -17,7 +17,7 @@ import InstructionText from '../components/instructionText';
 import { Header } from '../components/header';
 import { AttributeController, AttributeControllerFactory } from '../components/attributeController';
 import SpeciesAttributeComponent from '../components/speciesAttributeComponent';
-import { SingleTalentSelectionList } from '../components/singleTalentSelectionList';
+import SingleTalentSelectionList from '../components/singleTalentSelectionList';
 import { withTranslation, WithTranslation } from 'react-i18next';
 
 interface ISpeciesDetailsProperties extends WithTranslation {
@@ -113,7 +113,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
 
         return talents.length > 0 && character.workflow.currentStep().options.talentSelection
             ? (<div>
-                <Header level={2}>TALENTS</Header>
+                <Header level={2}>{t('Construct.other.talents')}</Header>
                 <div>
                     {this.renderCrossSpeciesCheckbox()}
                 </div>

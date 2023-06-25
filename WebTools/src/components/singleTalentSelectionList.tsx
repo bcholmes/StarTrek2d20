@@ -3,8 +3,9 @@ import {CheckBox} from './checkBox';
 import {ITalent, TalentViewModel} from '../helpers/talents';
 import replaceDiceWithArrowhead from '../common/arrowhead';
 import { Construct } from '../common/construct';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-interface ISingleTalentSelectionProperties {
+interface ISingleTalentSelectionProperties extends WithTranslation {
     talents: TalentViewModel[]
     construct: Construct;
     initialSelection?: ITalent;
@@ -15,7 +16,7 @@ interface ISingleTalentSelectionState {
     selection?: string
 }
 
-export class SingleTalentSelectionList extends React.Component<ISingleTalentSelectionProperties, ISingleTalentSelectionState> {
+class SingleTalentSelectionList extends React.Component<ISingleTalentSelectionProperties, ISingleTalentSelectionState> {
 
     constructor(props: ISingleTalentSelectionProperties) {
         super(props);
@@ -44,9 +45,9 @@ export class SingleTalentSelectionList extends React.Component<ISingleTalentSele
     }
 
     render() {
-        const talentList = this.props.talents;
+        const { talents } = this.props;
 
-        const talents = talentList.map((t, i) => {
+        const talentList = talents.map((t, i) => {
             let prerequisites = undefined;
             t.prerequisites.forEach((p) => {
                 let desc = p.describe();
@@ -86,7 +87,7 @@ export class SingleTalentSelectionList extends React.Component<ISingleTalentSele
         return (
             <table className="selection-list">
                 <tbody>
-                    {talents}
+                    {talentList}
                 </tbody>
             </table>
         );
@@ -109,3 +110,5 @@ export class SingleTalentSelectionList extends React.Component<ISingleTalentSele
         }));
     }
 }
+
+export default withTranslation()(SingleTalentSelectionList);
