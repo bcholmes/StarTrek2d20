@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from "react-router";
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { Header } from "../../components/header";
-import { Character } from "../../common/character";
+import { Character, CharacterRank } from "../../common/character";
 import { navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Button } from "../../components/button";
 import store from "../../state/store";
 import { modifyCharacterRank } from "../../state/characterActions";
-import { RanksHelper } from "../../helpers/ranks";
-import { DropDownInput } from "../../components/dropDownInput";
+import { Rank, RanksHelper } from "../../helpers/ranks";
+import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
 
 interface IPromotionPageProperties extends WithTranslation {
     character?: Character;
@@ -18,7 +18,8 @@ interface IPromotionPageProperties extends WithTranslation {
 }
 
 interface IPromotionPageState {
-    rank?: string
+    rank?: Rank
+    rankName?: string
 }
 
 class PromotionPage extends React.Component<IPromotionPageProperties, IPromotionPageState> {
@@ -27,7 +28,8 @@ class PromotionPage extends React.Component<IPromotionPageProperties, IPromotion
         super(props);
 
         this.state = {
-            rank: this.props.character?.rank
+            rank: this.props.character?.rank?.id,
+            rankName: this.props.character?.rank?.name
         };
     }
 
@@ -45,10 +47,15 @@ class PromotionPage extends React.Component<IPromotionPageProperties, IPromotion
             <Header>{t('Page.title.promotion')}</Header>
             <p>{t('PromotionPage.instruction')}</p>
 
-            <DropDownInput items={this.getRanks()} onChange={(index) => this.setState((state) => ({
+            <DropDownSelect items={this.getRanks()} onChange={(id) => {
+                    let allRanks = RanksHelper.instance().getRanks(this.props.character, false);
+                    let rank = allRanks.filter(r => r.id === id)[0];
+                    this.setState((state) => ({
                             ...state,
-                            rank: this.getRanks()[index]
-                        }))} defaultValue={this.state.rank || ""}/>
+                            rank: rank.id,
+                            rankName: rank.name
+                        }))}}
+                        defaultValue={this.state.rank || ""}/>
 
             <div className="mt-4 text-right">
                 <Button buttonType={true} onClick={() => this.nextPage()} className="btn btn-primary btn-sm">{t('Common.button.next')}</Button>
@@ -58,11 +65,11 @@ class PromotionPage extends React.Component<IPromotionPageProperties, IPromotion
     }
 
     getRanks() {
-        return RanksHelper.instance().getRanks(this.props.character, false).map(r => r.name);
+        return RanksHelper.instance().getRanks(this.props.character, false).map(r => new DropDownElement(r.id, r.name));
     }
 
     nextPage() {
-        store.dispatch(modifyCharacterRank(this.state.rank));
+        store.dispatch(modifyCharacterRank(new CharacterRank(this.state.rankName, this.state.rank)));
         navigateTo(null, PageIdentity.ModificationCompletePage);
     }
 

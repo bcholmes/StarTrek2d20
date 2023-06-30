@@ -21,6 +21,7 @@ export const getExtraCategory = (extraType: ExtraType) => {
 
         case ExtraType.SmallBindi:
         case ExtraType.RisanSymbol:
+        case ExtraType.InuitTattoo:
         default:
             return ExtraCategory.Forehead;
     }

@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character, SpeciesStep } from '../common/character';
+import {character, CharacterRank, SpeciesStep } from '../common/character';
 import {CharacterType, CharacterTypeModel } from '../common/characterType';
 import {SpeciesHelper} from '../helpers/species';
 import {DropDownElement, DropDownInput, DropDownSelect} from '../components/dropDownInput';
@@ -23,7 +23,7 @@ interface ISupportingCharacterState {
     age: Age;
     type: CharacterTypeModel;
     purpose: string;
-    rank: string;
+    rank?: Rank;
     showRank: boolean;
     species: Species;
     customSpeciesName?: string;
@@ -50,7 +50,7 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
         });
 
         character.speciesStep = new SpeciesStep(Species.Human);
-        character.rank = "Lieutenant";
+        character.rank = new CharacterRank("Lieutenant", Rank.Lieutenant);
         character.careerValue = "";
         character.environmentValue = "";
         character.finishValue = "";
@@ -59,7 +59,7 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
             age: AgeHelper.getAdultAge(),
             type: CharacterTypeModel.getAllTypes()[character.type],
             purpose: "",
-            rank: character.rank,
+            rank: character.rank?.id,
             showRank: true,
             species: Species.Human
         }
@@ -199,10 +199,10 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
                         {this.state.showRank
                             ?
                                 (<div style={{borderBottom:"1px solid rgba(128, 128, 128, 0.4)", marginBottom:"10px",paddingBottom:"18px"}}>
-                                    <DropDownInput
+                                    <DropDownSelect
                                         items={this.getRanks() }
                                         defaultValue={this.state.rank}
-                                        onChange={(index) => this.selectRank(index) }/>
+                                        onChange={(rank) => this.selectRank(rank as Rank) }/>
                                 </div>)
                             : null}
                         <div className="mb-2">
@@ -267,44 +267,23 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
         const ranks = RanksHelper.instance().getRanks(character, true)
             .filter(r => r.id !== Rank.Captain &&
                          r.id !== Rank.Commander &&
-                         r.id !== Rank.LieutenantCommander);
+                         r.id !== Rank.LtCommander);
 
         ranks.forEach(r => {
-            if (r.tiers === 1) {
-                result.push(r.name);
-            }
-            else {
-                for (var i = 0; i < r.tiers; i++) {
-                    result.push(`${r.name} ${this.tierToString(i)} Class`);
-                }
-            }
+            result.push(new DropDownElement(r.id, r.localizedName));
         });
 
         return result;
     }
 
-    private tierToString(tier: number) {
-        var tierStr = "";
-
-        switch (tier) {
-            case 0: tierStr = "1st"; break;
-            case 1: tierStr = "2nd"; break;
-            case 2: tierStr = "3rd"; break;
+    private selectRank(rank: Rank) {
+        const ranks = RanksHelper.instance().getRanks(character, true).filter(r => r.id === rank);
+        if (ranks.length) {
+            let characterRank = new CharacterRank(ranks[0].name, ranks[0].id);
+            this.setState(state => ({...state, rank: rank}));
+            character.rank = characterRank;
         }
-
-        return tierStr;
     }
-
-    private selectRank(index: number) {
-        const ranks = this.getRanks();
-        this.selectRankName(ranks[index]);
-    }
-
-    private selectRankName(rank: string) {
-        this.setState(state => ({...state, rank: rank}));
-        character.rank = rank;
-    }
-
 
     private selectType(characterType: number) {
         let type = CharacterTypeModel.getByType(characterType);
@@ -328,15 +307,15 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
             || type.type === CharacterType.Tribble) {
 
             showRank = false;
-            character.rank = "";
-            rank = "";
+            character.rank = null;
+            rank = null;
         } else if (character.type === CharacterType.Cadet) {
-            rank = RanksHelper.instance().getRank(Rank.CadetFourthClass).name;
-            character.rank = rank;
+            rank = RanksHelper.instance().getRank(Rank.CadetFourthClass);
+            character.rank = new CharacterRank(rank.name, rank.id);
         } else {
-            if (rank === "") {
-                rank = RanksHelper.instance().getRank(Rank.Lieutenant).name;
-                character.rank = rank;
+            if (rank === null) {
+                rank = RanksHelper.instance().getRank(Rank.Lieutenant);
+                character.rank = new CharacterRank(rank.name, rank.id);
             }
         }
 
@@ -345,7 +324,7 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
             age: age,
             type: type,
             showRank: showRank,
-            rank: rank
+            rank: rank?.id
         }));
     }
 

@@ -3,19 +3,21 @@ import {Role, RolesHelper} from './roles';
 import {Era} from './eras';
 import {Source} from './sources';
 import {Track} from './trackEnum';
-import {AlliedMilitaryDetails, Character } from '../common/character';
+import {AlliedMilitaryDetails, Character, CharacterRank } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { AlliedMilitaryType } from './alliedMilitary';
 import { AllOfPrerequisite, AnyOfPrerequisite, CareersPrerequisite, CharacterTypePrerequisite, EnlistedPrerequisite, EraPrerequisite, IConstructPrerequisite, MainCharacterPrerequisite, NotPrerequisite, OfficerPrerequisite, SourcePrerequisite } from './prerequisite';
 import store from '../state/store';
+import { makeKey } from '../common/translationKey';
+import i18next from 'i18next';
 
 export enum Rank {
     // Core
     Captain,
     Commander,
-    LieutenantCommander,
+    LtCommander,
     Lieutenant,
-    LieutenantJunior,
+    LieutenantJG,
     Ensign,
     MasterChiefPettyOfficer,
     MasterChiefSpecialist,
@@ -23,10 +25,18 @@ export enum Rank {
     SeniorChiefSpecialist,
     ChiefPettyOfficer,
     ChiefSpecialist,
-    PettyOfficer,
-    Specialist,
-    Yeoman,
-    Crewman,
+    PettyOfficer1stClass,
+    PettyOfficer2ndClass,
+    PettyOfficer3rdClass,
+    Specialist1stClass,
+    Specialist2ndClass,
+    Specialist3rdClass,
+    Yeoman1stClass,
+    Yeoman2ndClass,
+    Yeoman3rdClass,
+    Crewman1stClass,
+    Crewman2ndClass,
+    Crewman3rdClass,
 
     // Command
     RearAdmiral,
@@ -219,16 +229,14 @@ export class RankModel {
     name: string;
     level: string;
     prerequisites: IConstructPrerequisite<Character>[];
-    tiers: number;
     abbreviation?: string;
 
-    constructor(id: Rank|null, name: string, level: string, prerequisites: IConstructPrerequisite<Character>[], abbreviation?: string, tiers: number = 1) {
+    constructor(id: Rank|null, name: string, level: string, prerequisites: IConstructPrerequisite<Character>[], abbreviation?: string) {
         this.id = id;
         this.level = level;
         this.abbreviation = abbreviation;
         this.name = name;
         this.prerequisites = prerequisites;
-        this.tiers = tiers;
     }
 
     get isEnlisted() {
@@ -241,6 +249,18 @@ export class RankModel {
         } else {
             return 0;
         }
+    }
+
+    get localizedName() {
+        let key = makeKey("Rank.", Rank[this.id], ".name");
+        let result = i18next.t(key);
+        return key === result ? this.name : result;
+    }
+
+    get localizedAbbreviation() {
+        let key = makeKey("Rank.", Rank[this.id], ".abbrev");
+        let result = i18next.t(key);
+        return key === result ? this.abbreviation : result;
     }
 }
 
@@ -267,8 +287,7 @@ export class RanksHelper {
                     new RolesPrerequisite([Role.CommandingOfficer, Role.Adjutant])
                 )
             ],
-            "Capt.",
-            1),
+            "Capt."),
         new RankModel(
             Rank.Commander,
             "Commander", "O5",
@@ -278,10 +297,9 @@ export class RanksHelper {
                 new NotRolesPrerequisite([Role.Admiral]),
                 new NotPrerequisite(new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco, AlliedMilitaryType.CardassianUnion))
             ],
-            "Cmdr.",
-            1),
+            "Cmdr."),
         new RankModel(
-            Rank.LieutenantCommander,
+            Rank.LtCommander,
             "Lieutenant Commander", "O4",
             [
                 new OfficerPrerequisite(),
@@ -289,8 +307,7 @@ export class RanksHelper {
                 new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer]),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "LCdr.",
-            1),
+            "LCdr."),
         new RankModel(
             Rank.Lieutenant,
             "Lieutenant", "O3",
@@ -308,7 +325,7 @@ export class RanksHelper {
             ],
             "Lt."),
         new RankModel(
-            Rank.LieutenantJunior,
+            Rank.LieutenantJG,
             "Lieutenant (Junior Grade)", "O2",
             [
                 new OfficerPrerequisite(),
@@ -316,8 +333,7 @@ export class RanksHelper {
                 new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer]),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "Lt. (J.G.)",
-            1),
+            "Lt. (J.G.)"),
         new RankModel(
             Rank.Ensign,
             "Ensign", "O1",
@@ -328,8 +344,7 @@ export class RanksHelper {
                 new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior),
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.KlingonDefenceForce)),
             ],
-            "Ens.",
-            1),
+            "Ens."),
         new RankModel(
             Rank.MasterChiefPettyOfficer,
             "Master Chief Petty Officer", "E9",
@@ -338,8 +353,7 @@ export class RanksHelper {
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "MCPO",
-            1),
+            "MCPO"),
         new RankModel(
             Rank.MasterChiefSpecialist,
             "Master Chief Specialist", "E9",
@@ -348,8 +362,7 @@ export class RanksHelper {
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "MCSP",
-            1),
+            "MCSP"),
         new RankModel(
             Rank.SeniorChiefPettyOfficer,
             "Senior Chief Petty Officer", "E8",
@@ -358,8 +371,7 @@ export class RanksHelper {
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "SCPO",
-            1),
+            "SCPO"),
         new RankModel(
             Rank.SeniorChiefSpecialist,
             "Senior Chief Specialist", "E8",
@@ -368,8 +380,7 @@ export class RanksHelper {
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "SCSP",
-            1),
+            "SCSP"),
         new RankModel(
             Rank.ChiefPettyOfficer,
             "Chief Petty Officer", "E7",
@@ -378,8 +389,7 @@ export class RanksHelper {
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "Chief",
-            1),
+            "Chief"),
         new RankModel(
             Rank.ChiefSpecialist,
             "Chief Specialist", "E7",
@@ -388,48 +398,115 @@ export class RanksHelper {
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "Chief",
-            1),
+            "Chief"),
         new RankModel(
-            Rank.PettyOfficer,
-            "Petty Officer", "E6",
+            Rank.PettyOfficer1stClass,
+            "Petty Officer 1st Class", "E6",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "P.O.",
-            3),
+            "P.O."),
         new RankModel(
-            Rank.Specialist,
-            "Specialist", "E3",
+            Rank.PettyOfficer2ndClass,
+            "Petty Officer 2nd Class", "E5",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "SP",
-            3),
+            "P.O."),
         new RankModel(
-            Rank.Yeoman,
-            "Yeoman", "E2",
+            Rank.PettyOfficer3rdClass,
+            "Petty Officer 3rd Class", "E4",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "Yeo",
-            3),
+            "P.O."),
         new RankModel(
-            Rank.Crewman,
-            "Crewman", "E1",
+            Rank.Specialist1stClass,
+            "Specialist 1st Class", "E3",
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "Crew.",
-            3),
+            "SP"),
+        new RankModel(
+            Rank.Specialist2ndClass,
+            "Specialist 2nd Class", "E2",
+            [
+                new EnlistedPrerequisite(),
+                new CareersPrerequisite(Career.Young, Career.Experienced),
+                new CharacterTypePrerequisite(CharacterType.Starfleet)
+            ],
+            "SP"),
+        new RankModel(
+            Rank.Specialist3rdClass,
+            "Specialist 3rd Class", "E1",
+            [
+                new EnlistedPrerequisite(),
+                new CareersPrerequisite(Career.Young, Career.Experienced),
+                new CharacterTypePrerequisite(CharacterType.Starfleet)
+            ],
+            "SP"),
+        new RankModel(
+            Rank.Yeoman1stClass,
+            "Yeoman 1st Class", "E2",
+            [
+                new EnlistedPrerequisite(),
+                new CareersPrerequisite(Career.Young, Career.Experienced),
+                new CharacterTypePrerequisite(CharacterType.Starfleet)
+            ],
+            "Yeo"),
+        new RankModel(
+            Rank.Yeoman2ndClass,
+            "Yeoman 2nd Class", "E2",
+            [
+                new EnlistedPrerequisite(),
+                new CareersPrerequisite(Career.Young, Career.Experienced),
+                new CharacterTypePrerequisite(CharacterType.Starfleet)
+            ],
+            "Yeo"),
+        new RankModel(
+            Rank.Yeoman3rdClass,
+            "Yeoman 3rd Class", "E2",
+            [
+                new EnlistedPrerequisite(),
+                new CareersPrerequisite(Career.Young, Career.Experienced),
+                new CharacterTypePrerequisite(CharacterType.Starfleet)
+            ],
+            "Yeo"),
+        new RankModel(
+            Rank.Crewman1stClass,
+            "Crewman 1st Class", "E3",
+            [
+                new EnlistedPrerequisite(),
+                new CareersPrerequisite(Career.Young, Career.Experienced),
+                new CharacterTypePrerequisite(CharacterType.Starfleet)
+            ],
+            "Crew."),
+        new RankModel(
+            Rank.Crewman3rdClass,
+            "Crewman 2nd Class", "E2",
+            [
+                new EnlistedPrerequisite(),
+                new CareersPrerequisite(Career.Young, Career.Experienced),
+                new CharacterTypePrerequisite(CharacterType.Starfleet)
+            ],
+            "Crew."),
+        new RankModel(
+            Rank.Crewman3rdClass,
+            "Crewman 3rd Class", "E1",
+            [
+                new EnlistedPrerequisite(),
+                new CareersPrerequisite(Career.Young, Career.Experienced),
+                new CharacterTypePrerequisite(CharacterType.Starfleet)
+            ],
+            "Crew."),
         new RankModel(
             Rank.FleetAdmiral,
             "Fleet Admiral", "O11",
@@ -440,8 +517,7 @@ export class RanksHelper {
                 new RolesPrerequisite([Role.Admiral]),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "Adm.",
-            1),
+            "Adm."),
         new RankModel(
             Rank.Admiral,
             "Admiral", "O10",
@@ -455,8 +531,7 @@ export class RanksHelper {
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.RomulanStarEmpire)
                 )
             ],
-            "Adm.",
-            1),
+            "Adm."),
         new RankModel(
             Rank.ViceAdmiral,
             "Vice-Admiral", "O9",
@@ -467,8 +542,7 @@ export class RanksHelper {
                 new RolesPrerequisite([Role.Admiral]),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "Adm.",
-            1),
+            "Adm."),
         new RankModel(
             Rank.RearAdmiral,
             "Rear Admiral", "O8",
@@ -480,8 +554,7 @@ export class RanksHelper {
                 new RolesPrerequisite([Role.Admiral]),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "Adm.",
-            1),
+            "Adm."),
         new RankModel(
             Rank.RearAdmiralLower,
             "Rear Admiral, Lower Half",  "O7",
@@ -493,8 +566,7 @@ export class RanksHelper {
                 new RolesPrerequisite([Role.Admiral]),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "RAdm.",
-            1),
+            "RAdm."),
         new RankModel(
             Rank.RearAdmiralUpper,
             "Rear Admiral, Upper Half", "O8",
@@ -506,8 +578,7 @@ export class RanksHelper {
                 new RolesPrerequisite([Role.Admiral]),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "RAdm",
-            1),
+            "RAdm"),
         new RankModel(
             Rank.Commodore,
             "Commodore", "O7",
@@ -518,8 +589,7 @@ export class RanksHelper {
                 new RolesPrerequisite([Role.CommandingOfficer]),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "Comm",
-            1),
+            "Comm"),
         new RankModel(
             Rank.FleetCaptain,
             "Fleet Captain",  "O7",
@@ -529,8 +599,7 @@ export class RanksHelper {
                 new RolesPrerequisite([Role.CommandingOfficer]),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
             ],
-            "Fl. Capt.",
-            1),
+            "Fl. Capt."),
         new RankModel(
             Rank.Civilian,
             "Civilian", "",
@@ -958,7 +1027,6 @@ export class RanksHelper {
         return result;
     }
 
-
     getRank(rank: Rank) {
         let ranks = this._ranks.filter(r => r.id === rank);
         return ranks?.length ? ranks[0] : null;
@@ -970,48 +1038,14 @@ export class RanksHelper {
             if (r.name === name) {
                 return r;
             }
-            if (r.tiers > 1) {
-                for (let i = 1; i <= r.tiers; i++) {
-                    let tieredName = r.name + " " + this.tierToString(i) + " Class";
-                    if (tieredName === name) {
-                        return r;
-                    }
-                    tieredName = r.name + " " + this.tierToString(i) + " class";
-                    if (tieredName === name) {
-                        return r;
-                    }
-                }
-            }
         }
 
         return null;
     }
 
-    applyRank(character: Character, rank: Rank, tier: number) {
+    applyRank(character: Character, rank: Rank) {
         const r = this.getRank(rank);
-        character.rank = r.name;
-
-        if (r.tiers > 1) {
-            character.rank += ` ${this.tierToString(tier)} Class`;
-        }
-    }
-
-    private tierToString(tier: number) {
-        let result = "";
-
-        switch (tier) {
-            case 1:
-                result = "1st";
-                break;
-            case 2:
-                result = "2nd";
-                break;
-            case 3:
-                result = "3rd";
-                break;
-        }
-
-        return result;
+        character.rank = new CharacterRank(r.name, r.id);
     }
 
     getAdmiralRanks() {
@@ -1021,8 +1055,8 @@ export class RanksHelper {
 
 export const getNameAndShortRankOf = (character: Character) => {
     if (character.rank) {
-        let rank = RanksHelper.instance().getRankByName(character.rank);
-        let abbreviation = (rank && rank.abbreviation) ? rank.abbreviation : "";
+        let rank = (character.rank.id != null) ? RanksHelper.instance().getRank(character.rank.id) : RanksHelper.instance().getRankByName(character.rank?.name);
+        let abbreviation = (rank && rank.localizedAbbreviation) ? rank.localizedAbbreviation : "";
         return abbreviation + " " + character.name;
     } else {
         return character.name;

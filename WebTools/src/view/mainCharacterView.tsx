@@ -19,7 +19,7 @@ class MainCharacterView extends BaseCharacterView {
     componentDidMount() {
         if (this.props.character.name) {
             if (this.props.character.rank) {
-                document.title = this.props.character.rank + " " + this.props.character.name + " - STAR TREK ADVENTURES";
+                document.title = this.props.character.rank?.localizedName + " " + this.props.character.name + " - STAR TREK ADVENTURES";
             } else {
                 document.title = this.props.character.name + " - STAR TREK ADVENTURES";
             }
@@ -109,7 +109,7 @@ class MainCharacterView extends BaseCharacterView {
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.speciesName}</div></div>
 
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.rank')}:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.rank}</div></div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.rank?.localizedName}</div></div>
             </div>
 
             <div className="row" style={{alignItems: "baseline"}}>

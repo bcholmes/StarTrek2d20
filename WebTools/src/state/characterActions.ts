@@ -1,4 +1,4 @@
-import { Character } from "../common/character";
+import { Character, CharacterRank } from "../common/character";
 import { Skill } from "../helpers/skills";
 export const SET_CHARACTER = 'SET_CHARACTER';
 export const MODIFY_CHARACTER_REPUTATION = 'MODIFY_CHARACTER_REPUTATION';
@@ -22,7 +22,7 @@ export function modifyCharacterReputation(delta: number) {
     }
 }
 
-export function modifyCharacterRank(rank: string) {
+export function modifyCharacterRank(rank: CharacterRank) {
     let payload = { rank: rank };
     return {
        type: MODIFY_CHARACTER_RANK,

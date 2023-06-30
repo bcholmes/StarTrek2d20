@@ -106,7 +106,7 @@ class SpeciesRestrictions {
             return species !== Species.Bolian; // Bolians have weird ears
         } else if (extra === ExtraType.RisanSymbol) {
             return species === Species.Risian;
-        } else if (extra === ExtraType.SmallBindi) {
+        } else if (extra === ExtraType.SmallBindi || extra === ExtraType.InuitTattoo) {
             return species === Species.Human;
         } else {
             return true;

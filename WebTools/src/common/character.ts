@@ -14,6 +14,9 @@ import AgeHelper, { Age } from '../helpers/age';
 import { Weapon, PersonalWeapons } from '../helpers/weapons';
 import { Construct, Stereotype } from './construct';
 import { SpeciesHelper } from '../helpers/species';
+import { Rank } from '../helpers/ranks';
+import { makeKey } from './translationKey';
+import i18next from 'i18next';
 
 export abstract class CharacterTypeDetails {
 }
@@ -75,6 +78,26 @@ export class CharacterSkill {
     constructor(skill: Skill, expertise: number) {
         this.skill = skill;
         this.expertise = expertise;
+    }
+}
+
+export class CharacterRank {
+    readonly name: string;
+    readonly id?: Rank;
+
+    constructor(name: string, id?: Rank) {
+        this.name = name;
+        this.id = id;
+    }
+
+    get localizedName() {
+        if (this.id != null) {
+            let key = makeKey("Rank.", Rank[this.id], ".name");
+            let result = i18next.t(key);
+            return key === result ? this.name : result;
+        } else {
+            return this.name;
+        }
     }
 }
 
@@ -153,7 +176,7 @@ export class Character extends Construct {
     public house?: string;
     public career?: Career;
     public careerEvents: number[];
-    public rank?: string;
+    public rank?: CharacterRank;
     public role?: string;
     public jobAssignment?: string;
     public assignedShip?: string;
@@ -533,11 +556,12 @@ export class Character extends Construct {
     }
 
     isSecurityOrSeniorOfficer() {
+        console.log(this.rank);
         return (this.rank &&
-                (this.rank.toLowerCase() === "captain" ||
-                 this.rank.toLowerCase() === "commander" ||
-                 this.rank.toLowerCase() === "lieutenant commander" ||
-                 this.rank.toLowerCase().indexOf("admiral") >= 0 ||
+                (this.rank?.name?.toLowerCase() === "captain" ||
+                 this.rank?.name?.toLowerCase() === "commander" ||
+                 this.rank?.name?.toLowerCase() === "lieutenant commander" ||
+                 this.rank?.name?.toLowerCase().indexOf("admiral") >= 0 ||
                  (this.role !== undefined && this.role!.toLowerCase() === "chief of security"))) ||
                  (this.jobAssignment?.toLowerCase() === "security");
     }

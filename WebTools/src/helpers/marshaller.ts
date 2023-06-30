@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { character, Character, CharacterAttribute, CharacterSkill, CharacterTalent, EnvironmentStep, SpeciesStep, UpbringingStep } from '../common/character';
+import { character, Character, CharacterAttribute, CharacterRank, CharacterSkill, CharacterTalent, EnvironmentStep, SpeciesStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { ShipBuildType, ShipBuildTypeModel, SimpleStats, Starship } from '../common/starship';
@@ -68,7 +68,10 @@ class Marshaller {
         }
 
         if (character.rank) {
-            sheet["rank"] = character.rank;
+            sheet["rank"] = {
+                name: character.rank?.name,
+                id: character.rank?.id
+            }
         }
 
         let additionalTraits = this.parseTraits(character.additionalTraits);
@@ -115,7 +118,10 @@ class Marshaller {
         };
 
         if (character.rank) {
-            sheet["rank"] = character.rank;
+            sheet["rank"] = {
+                name: character.rank?.name,
+                id: character.rank?.id
+            }
         }
 
         if (character.reputation != null && character.reputation !== 10) {
@@ -499,7 +505,14 @@ class Marshaller {
         }
         result.name = json.name;
         result.additionalTraits = json.traits ? json.traits.join(", ") : "";
-        result.rank = json.rank;
+        let rank = json.rank;
+        if (rank) {
+            if (typeof rank === "string") {
+                result.rank = new CharacterRank(rank as string);
+            } else if (rank.name) {
+                result.rank = new CharacterRank(rank.name, rank.id);
+            }
+        }
         result.role = json.role;
         result.jobAssignment = json.jobAssignment;
         result.assignedShip = json.assignedShip;
@@ -594,7 +607,7 @@ class Marshaller {
             });
             result.enlisted = json.training.enlisted;
         } else {
-            let rank = result.rank == null ? null : RanksHelper.instance().getRankByName(result.rank);
+            let rank = result.rank == null ? null : RanksHelper.instance().getRankByName(result.rank?.name);
             if (rank) {
                 result.enlisted = rank.isEnlisted;
             }

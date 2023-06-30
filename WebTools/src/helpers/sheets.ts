@@ -444,12 +444,16 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
     }
 
 
+    fillRank(form: PDFForm, character: Character) {
+        this.fillField(form, 'Rank', character.rank?.name);
+    }
+
     populateForm(form: PDFForm, construct: Construct) {
         let character = construct as Character;
         this.fillName(form, character);
         this.fillField(form, 'Department', this.serializeAssignment(character));
         this.fillField(form, 'Purpose', this.serializeAssignment(character));
-        this.fillField(form, 'Rank', character.rank);
+        this.fillRank(form, character);
         this.fillField(form, 'Species', character.speciesName);
         let traits = character.baseTraits;
         if (character.additionalTraits) {
@@ -710,6 +714,10 @@ class StandardGermanCharacterSheet extends BasicFullCharacterSheet {
     }
     getPdfUrl(): string {
         return '/static/pdf/TNG_StarTrek_de_Charakter.pdf'
+    }
+
+    fillRank(form: PDFForm, character: Character) {
+        this.fillField(form, 'Rank', character.rank?.localizedName);
     }
 }
 

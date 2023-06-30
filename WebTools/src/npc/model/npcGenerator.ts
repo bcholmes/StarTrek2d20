@@ -561,7 +561,12 @@ export class NpcGenerator {
         }
 
 
-        ranks = ranks.filter(r => r.id !== Rank.Yeoman && r.id !== Rank.Specialist
+        ranks = ranks.filter(r => r.id !== Rank.Yeoman1stClass
+            && r.id !== Rank.Yeoman2ndClass
+            && r.id !== Rank.Yeoman3rdClass
+            && r.id !== Rank.Specialist1stClass
+            && r.id !== Rank.Specialist2ndClass
+            && r.id !== Rank.Specialist3rdClass
             && r.id !== Rank.ChiefSpecialist
             && r.id !== Rank.MasterChiefSpecialist
             && r.id !== Rank.SeniorChiefSpecialist);

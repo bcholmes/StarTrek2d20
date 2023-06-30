@@ -28,7 +28,7 @@ class ViewSheetPage extends React.Component<IViewSheetPageProperties, {}> {
     modifyTitle(construct: Construct) {
         if (construct.name) {
             if (construct instanceof Character && (construct as Character).rank) {
-                document.title = (construct as Character).rank + " " + construct.name + " - STAR TREK ADVENTURES";
+                document.title = (construct as Character).rank?.localizedName + " " + construct.name + " - STAR TREK ADVENTURES";
             } else {
                 document.title = construct.name + " - STAR TREK ADVENTURES";
             }

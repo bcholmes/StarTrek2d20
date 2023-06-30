@@ -794,20 +794,20 @@ export class FantasyGroupsVttExporter {
 
     convertRank(character: Character) {
         if (character.rank != null && character.type === CharacterType.Starfleet) {
-            let rank = RanksHelper.instance().getRankByName(character.rank);
+            let rank = RanksHelper.instance().getRankByName(character.rank.name);
             if (rank) {
                 let rankNumber = undefined;
                 switch (rank.id) {
                     case Rank.Ensign:
                         rankNumber = 2;
                         break;
-                    case Rank.LieutenantJunior:
+                    case Rank.LieutenantJG:
                         rankNumber = 3;
                         break;
                     case Rank.Lieutenant:
                         rankNumber = 4;
                         break;
-                    case Rank.LieutenantCommander:
+                    case Rank.LtCommander:
                         rankNumber = 5;
                         break;
                     case Rank.Commander:

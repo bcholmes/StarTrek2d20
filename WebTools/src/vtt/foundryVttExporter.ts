@@ -254,7 +254,7 @@ export class FoundryVttExporter {
                 "disciplines": {
                 },
                 "milestones": "",
-                "rank": character.rank ?? "",
+                "rank": character.rank?.name ?? "",
                 "reputation": character.reputation,
                 "stress": {
                     "value": character.stress,

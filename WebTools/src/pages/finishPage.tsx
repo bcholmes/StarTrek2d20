@@ -1,11 +1,11 @@
 ﻿import * as React from 'react';
-import {AlliedMilitaryDetails, character} from '../common/character';
+import {AlliedMilitaryDetails, CharacterRank, character} from '../common/character';
 import {CharacterType} from '../common/characterType';
 import {Button} from '../components/button';
 import {CheckBox} from '../components/checkBox';
 import ValueInput, {Value} from '../components/valueInput';
 import {ANY_NAMES, SpeciesHelper} from '../helpers/species';
-import {RanksHelper} from '../helpers/ranks';
+import {RankModel, RanksHelper} from '../helpers/ranks';
 import {RolesHelper, RoleModel} from '../helpers/roles';
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
@@ -30,7 +30,7 @@ interface IFinishPageState {
 }
 
 class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
-    private ranks: string[];
+    private ranks: RankModel[];
     private roles: RoleModel[];
     private role: string;
     private secondaryRole: string;
@@ -59,7 +59,7 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
         if (!character.isCivilian()) {
             character.rank = this.ranks[0];
         } else {
-            character.rank = '';
+            character.rank = undefined;
         }
     }
 
@@ -296,7 +296,7 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
                 return (<div>
                         <Header level={2}>{t('Construct.other.rank')}</Header>
                         <div>What is your character's rank?</div>
-                        <InputFieldAndLabel labelName={t('Construct.other.rank')} id="rank" value={character.rank}
+                        <InputFieldAndLabel labelName={t('Construct.other.rank')} id="rank" value={character?.rank?.name}
                             onChange={(value) => this.onSelectRank(value) } />
                     </div>
            );
@@ -308,10 +308,10 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
                         <td>
                             <CheckBox
                                 text=""
-                                value={r}
-                                isChecked={character.rank === r}
+                                value={r.id}
+                                isChecked={character.rank?.id === r.id}
                                 onChanged={(val) => {
-                                    this.onSelectRank(val);
+                                    this.onSelectRank(r);
                                 } }/>
                         </td>
                     </tr>
@@ -400,9 +400,13 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
         this.setState((state) => ({...state, house: value}));
     }
 
-    private onSelectRank(rank: string) {
-        character.rank = rank;
-        this.forceUpdate();
+    private onSelectRank(rank: RankModel|string) {
+        if (typeof rank === "string") {
+            character.rank = new CharacterRank(rank as string);
+        } else {
+            character.rank = new CharacterRank(rank.name, rank.id);
+            this.forceUpdate();
+        }
     }
 
     private onSelectRole(role: string) {
@@ -429,24 +433,12 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
     }
 
     private getRanks() {
-        this.ranks = [];
-
-        RanksHelper.instance().getRanks(character, false).forEach(rank => {
-            if (rank.tiers > 1) {
-                for (var i = 0; i < rank.tiers; i++) {
-                    const tier = i + 1;
-                    this.ranks.push(`${rank.name} ${tier}${tier === 1 ? "st" : tier === 2 ? "nd" : "rd"} class`);
-                }
-            }
-            else {
-                this.ranks.push(rank.name);
-            }
-        });
+        this.ranks = RanksHelper.instance().getRanks(character, false);
 
         if (!character.isCivilian() || character.age.isChild()) {
-            character.rank = this.ranks[0];
+            character.rank = new CharacterRank(this.ranks[0].name, this.ranks[0].id);
         } else {
-            character.rank = '';
+            character.rank = undefined;
         }
     }
 }
