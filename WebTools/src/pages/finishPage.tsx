@@ -304,7 +304,7 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
             const ranks = this.ranks.map((r, i) => {
                 return (
                     <tr key={i}>
-                        <td className="selection-header-small">{r}</td>
+                        <td className="selection-header-small">{r.localizedName}</td>
                         <td>
                             <CheckBox
                                 text=""
