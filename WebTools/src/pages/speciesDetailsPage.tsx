@@ -51,7 +51,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
                 <div className="container ml-0">
                     <CharacterCreationBreadcrumbs />
                     <Header>{character.speciesName}</Header>
-                    <InstructionText text={species.description} />
+                    <InstructionText text={species.localizedDescription} />
 
                     <div className="row">
                         <div className="col-12 col-lg-6 my-4">
@@ -84,16 +84,16 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
         const mixedTrait = mixed != null
             ? (
                 <div>
-                    <div className="text-white my-3"><b>{mixed.trait}</b></div>
-                    <div className="text-white">{mixed.traitDescription}</div>
+                    <div className="text-white my-3"><b>{mixed.localizedTrait}</b></div>
+                    <div className="text-white">{mixed.localizedTraitDescription}</div>
                 </div>
             )
             : undefined;
 
         return (<div>
                 <Header level={2}>{t('Construct.other.trait')}</Header>
-                <div className="text-white my-3"><b>{species.trait}</b></div>
-                <div className="text-white">{species.traitDescription}</div>
+                <div className="text-white my-3"><b>{species.localizedTrait}</b></div>
+                <div className="text-white">{species.localizedTraitDescription}</div>
                 {mixedTrait}
             </div>);
     }

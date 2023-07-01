@@ -556,7 +556,6 @@ export class Character extends Construct {
     }
 
     isSecurityOrSeniorOfficer() {
-        console.log(this.rank);
         return (this.rank &&
                 (this.rank?.name?.toLowerCase() === "captain" ||
                  this.rank?.name?.toLowerCase() === "commander" ||

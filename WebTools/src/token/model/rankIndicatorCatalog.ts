@@ -521,7 +521,7 @@ class RankIndicatorCatalog {
         new Swatch(RankIndicator.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(TngEnsignRankPip, RankIndicator.Ensign, token), "Rank.ensign.name"),
         new Swatch(RankIndicator.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(TngLtJGRankPip, RankIndicator.LieutenantJG, token), "Rank.lieutenantJG.name"),
         new Swatch(RankIndicator.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(TngLtRankPip, RankIndicator.Lieutenant, token), "Rank.lieutenant.name"),
-        new Swatch(RankIndicator.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(TngLcdrRankPip, RankIndicator.LtCommander, token), "Rank.lieutenantCommander.name"),
+        new Swatch(RankIndicator.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(TngLcdrRankPip, RankIndicator.LtCommander, token), "Rank.ltCommander.name"),
         new Swatch(RankIndicator.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(TngCmdrRankPip, RankIndicator.Commander, token), "Rank.commander.name"),
         new Swatch(RankIndicator.Captain, "Captain", (token) => RankIndicatorCatalog.decorateSwatch(TngCaptainRankPip, RankIndicator.Captain, token), "Rank.captain.name"),
 
@@ -542,7 +542,7 @@ class RankIndicatorCatalog {
         new Swatch(RankIndicator.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(TosEnsign, RankIndicator.Ensign, token), "Rank.ensign.name"),
         new Swatch(RankIndicator.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(TosLieutenantJG, RankIndicator.LieutenantJG, token), "Rank.lieutenantJG.name"),
         new Swatch(RankIndicator.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(TosLieutenant, RankIndicator.Lieutenant, token), "Rank.lieutenant.name"),
-        new Swatch(RankIndicator.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(TosLtCommander, RankIndicator.LtCommander, token), "Rank.lieutenantCommander.name"),
+        new Swatch(RankIndicator.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(TosLtCommander, RankIndicator.LtCommander, token), "Rank.ltCommander.name"),
         new Swatch(RankIndicator.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(TosCommander, RankIndicator.Commander, token), "Rank.commander.name"),
         new Swatch(RankIndicator.Captain, "Captain", (token) => RankIndicatorCatalog.decorateSwatch(TosCaptain, RankIndicator.Captain, token), "Rank.captain.name")
     ];
@@ -552,7 +552,7 @@ class RankIndicatorCatalog {
         new Swatch(RankIndicator.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonEnsignBorder, RankIndicator.Ensign, token, MonsterMaroonEnsignBorderGradient), "Rank.ensign.name"),
         new Swatch(RankIndicator.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonLieutenantJGBorder, RankIndicator.LieutenantJG, token, MonsterMaroonLieutenantJGBorderGradient), "Rank.lieutenantJG.name"),
         new Swatch(RankIndicator.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonLieutenantBorder, RankIndicator.Lieutenant, token, MonsterMaroonLieutenantBorderGradient), "Rank.lieutenant.name"),
-        new Swatch(RankIndicator.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonLtCommanderBorder, RankIndicator.LtCommander, token, MonsterMaroonLtCommanderBorderGradient), "Rank.lieutenantCommander.name"),
+        new Swatch(RankIndicator.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonLtCommanderBorder, RankIndicator.LtCommander, token, MonsterMaroonLtCommanderBorderGradient), "Rank.ltCommander.name"),
         new Swatch(RankIndicator.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonCommanderBorder, RankIndicator.Commander, token, MonsterMaroonCommanderBorderGradient), "Rank.commander.name"),
         new Swatch(RankIndicator.Captain, "Captain", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonCaptainBorder, RankIndicator.Captain, token, MonsterMaroonCaptainBorderGradient), "Rank.captain.name")
     ];

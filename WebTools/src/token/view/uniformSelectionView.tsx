@@ -28,8 +28,12 @@ class UniformSelectionView extends React.Component<IUniformSelectionViewProperti
                     <DropDownSelect items={this.uniformErasList()} defaultValue={token.uniformEra} onChange={(e) => store.dispatch(setUniformEra(e as UniformEra))} />
                 </div>
                 <div className="col-lg-6 mb-3">
-                    <p>{t('TokenCreator.section.body.colour')}:</p>
-                    <ColorSelection colors={DivisionColors.getColors(token.uniformEra)} onSelection={(c) => store.dispatch(setTokenDivisionColor(c))} />
+                    {DivisionColors.isDivisionColorsSupported(token.uniformEra) ?
+                    (<>
+                        <p>{t('TokenCreator.section.body.colour')}:</p>
+                        <ColorSelection colors={DivisionColors.getColors(token.uniformEra)} onSelection={(c) => store.dispatch(setTokenDivisionColor(c))} />
+                    </>)
+                    : undefined}
                 </div>
             </div>
 

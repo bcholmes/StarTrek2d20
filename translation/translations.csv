@@ -15,11 +15,11 @@ Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sél
 Home.characterButton,Characters & Starships,Charaktere & Raumschiffe,Personajes y naves espaciales,Personnages et vaisseaux spatiaux
 Home.talentsButton,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
 Home.tokenCreator,Tokens,Token,,
-NpcConfigurationPage.option.anyMajorSpecies,Any Major Species,,,
-NpcConfigurationPage.option.anySpecialization,Any Specialization,,,
-NpcConfigurationPage.npcType,NPC Type,,,
-NpcConfigurationPage.specialization,Specialization,,,
-NpcConfigurationPage.text,Specify what kind of NPC you're trying to create.,,,
+NpcConfigurationPage.option.anyMajorSpecies,Any Major Species,Jede bedeutende Spezies,,
+NpcConfigurationPage.option.anySpecialization,Any Specialization,Jede Spezialisierung,,
+NpcConfigurationPage.npcType,NPC Type,NPC Typ,,
+NpcConfigurationPage.specialization,Specialization,Spezialisierung,,
+NpcConfigurationPage.text,Specify what kind of NPC you're trying to create.,"Lege fest, welche Art NPC du erstellen möchtest.",,
 TokenCreator.option.rounded,Rounded,Abgerundet,,
 TokenCreator.option.bordered,Bordered,Eingerahmt,,
 TokenCreator.section.species,Species,Spezies,,
@@ -359,22 +359,22 @@ CareerType.core.experienced.valueInstruction,"The character receives a Value, an
 CareerType.core.veteran.name,Veteran Officer,Veteran,,Officier Vétéran
 CareerType.core.veteran.description,"The character has decades of experience in the service of Starfleet, and has served on many ships, and starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.","Der Charakter blickt auf eine jahrzehntelange Erfahrung im Dienst der Sternenflotte zurück und hat bereits auf vielen Schiffen und Sternenbasen gedient. Urteilsvermögen und Meinungen werden von Untergebenen, Gleichrangigen und selbst Vorgesetzten hoch geschätzt.",,"Le personnage a des dizaines d'années d'expérience au service de Starfleet, et a servi sur de nombreux vaisseaux et bases spatiales. Le jugement et les opinions du personnage sont prisés par ses subordonés, ses pairs, et même ses supérieurs."
 CareerType.core.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.","Der Charakter erhält eine Überzeugung, welche die Jahre an Erfahrung und die in der langen Karriere geformten Wertvorstellungen widerspiegelt.",,"Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière."
-CareerType.civilian.young.name,Young,,,Jeune
+CareerType.civilian.young.name,Young,Jung,,Jeune
 CareerType.civilian.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,,,Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.
 CareerType.civilian.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.",,,"Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage."
-CareerType.civilian.experienced.name,Experienced,,,Expérimenté
+CareerType.civilian.experienced.name,Experienced,Erfahren,,Expérimenté
 CareerType.civilian.experienced.description,"The character has several years of experience in service, and is enjoying a promising career.",,,"The character has several years of experience en service, et jouit d'une carrière prometteuse."
-CareerType.civilian.experienced.valueInstruction,"The character receives a Value, and this can be chosen freely.",,,"Le personnage reçoit une Valueur, qui peut être choisie librement."
-CareerType.civilian.veteran.name,Veteran,,,Vétéran
+CareerType.civilian.experienced.valueInstruction,"The character receives a Value, and this can be chosen freely.",Der Charakter erhält einen Wert und kann diesen frei wählen.,,"Le personnage reçoit une Valueur, qui peut être choisie librement."
+CareerType.civilian.veteran.name,Veteran,Veteran,,Vétéran
 CareerType.civilian.veteran.description,"The character has decades of experience in the service, and has served on many ships, worlds, and/or starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.",,,"Le personnage a des dizaines d'années d'expérience dans le service, et a servi sur de nombreux vaisseaux et bases spatiales. Le jugement et les opinions du personnage sont prisés par ses subordonés, ses pairs, et même ses supérieurs."
 CareerType.civilian.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",,,"Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière."
-CareerType.klingon.young.name,Young Warrior,,,Jeune Guerrier
+CareerType.klingon.young.name,Young Warrior,Junger Krieger,,Jeune Guerrier
 CareerType.klingon.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,,,Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.
 CareerType.klingon.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.",,,"Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage."
-CareerType.klingon.experienced.name,Experienced Warrior,,,Guerrier Expérimenté
+CareerType.klingon.experienced.name,Experienced Warrior,Erfahrener Krieger,,Guerrier Expérimenté
 CareerType.klingon.experienced.description,The character has several years of experience in service of the Empire and is enjoying a promising career. This is the default assumption for characters created using these rules.,,,The character has several years of experience au service de l'Empire et jouit d'une carrière prometteuse. C'est l'option par défaut pour des personnages crées par ces règles.
-CareerType.klingon.experienced.valueInstruction,"The character receives a Value, and this can be chosen freely.",,,"Le personnage reçoit une Valueur, qui peut être choisie librement."
-CareerType.klingon.veteran.name,Veteran Warrior,,,Guerrier Vétéran
+CareerType.klingon.experienced.valueInstruction,"The character receives a Value, and this can be chosen freely.",Der Charakter erhält einen Wert und kann diesen frei wählen.,,"Le personnage reçoit une Valueur, qui peut être choisie librement."
+CareerType.klingon.veteran.name,Veteran Warrior,Kriegsveteran,,Guerrier Vétéran
 CareerType.klingon.veteran.description,"The character has decades of experience in the service of the Empire, and has served on many ships and space stations. The character’s judgement and opinions are highly regarded by subordinates, peers, and even superiors.",,,"Le personnage a des dizaines d'années d'expérience au service de l'Empire, et a servi sur de nombreux vaisseaux et bases spatiales. Le jugement et les opinions du personnage sont prisés par ses subordonés, ses pairs, et même ses supérieurs."
 CareerType.klingon.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",,,"Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière."
 Environment.common.homeworld.name,Homeworld,Heimatwelt,,Planète natale
@@ -455,8 +455,8 @@ GovernmentType.name.romulan,Romulan,Romulaner,,Romulien
 GovernmentType.name.tellarite,Tellarite,Tellariten,,Tellarite
 GovernmentType.name.vulcan,Vulcan,Vulkanier,,Vulcain
 GovernmentType.name.other,Other,Andere,,Autre
-HairType.bald,Bald,,,
-HairType.bowlCutHair,Bowl Cut,,,
+HairType.bald,Bald,Glatze,,
+HairType.bowlCutHair,Bowl Cut,Topfschnitt,,
 HairType.stylishHair,Stylish Short,,,
 HairType.sidePart,Side Part,,,
 HairType.shortAfro,Short Curly,,,
@@ -496,13 +496,13 @@ MilestoneType.name.arcMilestone,Arc Milestone,Handlungsbogen-Meilenstein,,Jalon 
 MissionPod.commandAndControl,Command & Control,Kommando & Kontrolle,,
 MissionPod.sensors,Sensors,Sensoren,,
 MissionPod.weapons,Weapons,Waffen,,
-MissionPod.astrometricsAndNavigation,Astrometrics and Navigation,,,
-MissionPod.defensiveShieldEnhancement,Defensive Shield Enhancement,,,
-MissionPod.emergencyRecovery,Emergency Recovery,,,
-MissionPod.fieldHospital,Field Hospital,,,
-MissionPod.fleetCarrier,Fleet Carrier,,,
+MissionPod.astrometricsAndNavigation,Astrometrics and Navigation,Astrometrie und Navigation,,
+MissionPod.defensiveShieldEnhancement,Defensive Shield Enhancement,Defensive Schildverbesserung,,
+MissionPod.emergencyRecovery,Emergency Recovery,Notfallwiederherstellung,,
+MissionPod.fieldHospital,Field Hospital,Feldlatzarett,,
+MissionPod.fleetCarrier,Fleet Carrier,Flottenträger,,
 MissionPod.fleetCommandSupport,Fleet Command Support,,,
-MissionPod.mobileDrydock,Mobile Drydock,,,
+MissionPod.mobileDrydock,Mobile Drydock,Mobiles Trockendock,,
 MissionPod.warpPropulsionPod,Warp Propulsion Pod,,,
 MissionProfile.default.strategicAndDiplomatic,Strategic and Diplomatic Operations,Strategische und diplomatische Operationen,,
 MissionProfile.default.pathfinderAndReconaissance,Pathfinder and Reconnaissance Operations,Aufklärungsoperationen,,
@@ -513,14 +513,14 @@ MissionProfile.default.crisisAndEmergencyResponse,Crisis and Emergency Response,
 MissionProfile.default.multiroleExplorer,Multirole Explorer,Multifunktions-Erkundungsschiff,,
 MissionProfile.default.projectEscalante,Project Escalante,Projekt Escalante,,
 MissionProfile.default.battlecruiser,Battlecruiser,,,
-MissionProfile.default.reserveFleet,Reserve Fleet,,,
+MissionProfile.default.reserveFleet,Reserve Fleet,Reserveflotte,,
 MissionProfile.default.civilianMerchantMarine,Civilian Merchant Marine,,,
 MissionProfile.default.colonySupport,Colony Support,,,
 MissionProfile.default.entertainmentPleasureShip,Entertainment/Pleasure Ship,,,
 MissionProfile.default.espionageIntelligence,Espionage/Intelligence,,,
-MissionProfile.default.flagship,Flagship,,,
-MissionProfile.default.logisticalQuartermaster,Logistical/Quartermaster,,,
-MissionProfile.default.patrol,Patrol,,,
+MissionProfile.default.flagship,Flagship,Flaggschiff,,
+MissionProfile.default.logisticalQuartermaster,Logistical/Quartermaster,Quartiermeister,,
+MissionProfile.default.patrol,Patrol,Patrouille,,
 MissionProfile.klingon.crisisAndEmergencyResponse,Crisis Response and Interception,,,
 MissionProfile.klingon.multiroleExplorer,Multirole Battle Cruiser,,,
 MissionProfile.klingon.pathfinderAndReconaissance,Intelligence and Reconnaissance Operations,,,
@@ -563,8 +563,8 @@ Rank.captain.name,Captain,Captain,,
 Rank.captain.abbrev,Capt.,Capt.,,
 Rank.commander.name,Commander,Commander,,
 Rank.commander.abbrev,Cmdr.,Cmdr.,,
-Rank.lieutenantCommander.name,Lt. Commander,Lt. Commander,,
-Rank.lieutenantCommander.abbrev,LCdr.,LCdr.,,
+Rank.ltCommander.name,Lt. Commander,Lt. Commander,,
+Rank.ltCommander.abbrev,LCdr.,LCdr.,,
 Rank.lieutenant.name,Lieutenant,Lieutenant,,
 Rank.lieutenant.abbrev,Lt.,Lt.,,
 Rank.lieutenantJG.name,Lieutenant J.G.,Lieutenant J.G.,,
@@ -596,7 +596,15 @@ ShipBuildType.shuttlecraft.name,Shuttle,Shuttle,,Navette
 ShipBuildType.runabout.name,Runabout,Runabout,,Runabout
 ShipBuildType.starship.name,Starship,Raumschiff,,Vaisseau
 Species.andorian.name,Andorian,Andorianer,,
+Species.andorian.aboutNames,"Andorian names tend to be somewhat harsh-sounding, and have a personal name followed by a clan name. Amongst some Andorians, it’s common to begin the clan name with a gender-specific prefix: 'zh' or 'sh' for females, and 'ch' or 'th' for males. This is placed before the family name, separated by an apostrophe. Longer or more complicated Andorian names are commonly shortened, especially when dealing with other species. Examples: Ishrelia zh’Azonan (female), Atheth th’Zynes(male)",,,
+Species.andorian.description,"An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the United Federation of Planets since its foundation, having been firm allies of Humanity for several years beforehand. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor-duels known as Ushaan, using razorsharp ice-mining tools.",,,
+Species.andorian.exampleValue,Proud Son/Daughter of Andoria,,,
+Species.andorian.traitDescription,"This trait may reduce the Difficulty of Tasks to resist extreme cold, or Tasks impacted by extremely low temperatures. Their antennae aid in balance and spatial awareness; a lost antenna can be debilitating until it regrows. Andorians also have a high metabolism, meaning, amongst other things, that they tire more quickly than Humans; this also makes them more vulnerable to infection from certain types of injury. Before the Federation, Andorians and Vulcans had numerous disputes; though these issues are largely considered to be ancient history, Andorians and Vulcans don’t always get along.",,,
 Species.bajoran.name,Bajoran,Bajoraner,,
+Species.bajoran.aboutNames,"Bajoran names begin with the family name, followed by a personal name. The individual names are normally short — rarely more than two syllables — and with a soft or melodic sound. Bajor Is traditionally matriarchal, with children taking their mother’s family name. Examples: Reil Yesa (female), Latara Gel (male)",,,
+Species.bajoran.description,"A spiritual, dauntless people from the planet Bajor, the Bajorans have lost much after decades of occupation by the Cardassian Union. Many Bajorans were scattered across the Alpha Quadrant during the occupation, while those who remained on Bajor often acted as insurgents or toiled in labor camps under Cardassian rule. The occupation ended a few years ago, but the scars it left will take generations to heal. Bajor is not a member of the Federation, but many Bajorans scattered by the diaspora have found their way into Starfleet. Bajoran culture places a strong belief in the Prophets, celestial beings who are said to have watched over Bajor for millennia; modern religious doctrine states that the Bajoran Wormhole is the Prophets’ Celestial Temple.",,,
+Species.bajoran.exampleValue,Faith in the Prophets,,,
+Species.bajoran.traitDescription,"For obvious reasons, Bajorans tend to be hostile towards Cardassians, and resentful of those who are dismissive of, or turned a blind eye to, the suffering of the Bajoran people. While not all Bajorans are spiritual or religious to the same degree, most have a cultural understanding of the Prophets’ place in Bajoran society.",,,
 Species.betazoid.name,Betazoid,Betazoiden,,
 Species.bolian.name,Bolian,Bolianer,,
 Species.deltan.name,Deltan,Deltaner,,
@@ -604,6 +612,10 @@ Species.denobulan.name,Denobulan,Denobulaner,,
 Species.efrosian.name,Efrosian,Efrosianer,,
 Species.ferengi.name,Ferengi,Ferengi,,
 Species.human.name,Human,Menschen,,
+Species.human.aboutNames,"Human names vary wildly, and rather than make sweeping generalizations here, it’s better that Players seek out other sources for names, considering the vast range of languages, cultures, and traditions Humanity encompasses.",,,
+Species.human.description,"Originating on the planet Earth in the Sol system, Humans are a resilient, diverse, and adaptable species, who developed from fractious, warring nations on the brink of mutual annihilation to a united, peaceful society in less than a century, and managed to forge alliances between former enemies within a century of achieving interstellar space flight. Earth is a founder and pivotal member of the United Federation of Planets, and many of the Federation’s institutions can be found on Earth. Humans often exhibit a dichotomy in their nature — being both driven to strong emotion and careful reason — and while they have largely grown beyond their warlike and divisive past, their drive and capacity for aggression are as much a part of their success as their curiosity and analytical minds.",,,
+Species.human.exampleValue,The Drive for Exploration,,,
+Species.human.traitDescription,"Humans are adaptable and resilient, and their resolve and ambition often allow them to resist great hardship and triumph despite great adversity. However, Humans can also be reckless and stubborn, irrational, and unpredictable.",,,
 Species.klingon.name,Klingon,Klingonen,,
 Species.klingonQuchHa.name,Klingon (QuchHa’),Klingonen (QuchHa'),,
 Species.orion.name,Orion,Orioner,,
@@ -621,7 +633,10 @@ StarSystem.common.worlds,Worlds,Welten,,Mondes
 StarSystem.common.noWorlds,No worlds,Keine Welten,,Pas de mondes
 StarSystem.common.primaryStar,Primary Star,Hauptstern,,Etoile Primaire
 StarSystem.common.companionStar,Companion Star,Begleitstern,,Etoile Binaire
+UniformEra.enterprise,Enterprise,,,
 UniformEra.originalSeries,Original Series,Originalserie,,
+UniformEra.originalSeriesKlingon,Klingon (Original Series),,,
+UniformEra.klingon,Klingon Armor,,,
 UniformEra.monsterMaroon,The Wrath of Khan,Der Zorn des Khan,,
 UniformEra.dominionWar,Dominion War,Dominionkrieg,,
 Value.environment.text,"This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.","Diese Überzeugung sollte die Herkunft und die Kultur des Charakters, in der er oder sie aufgewachsen ist, widerspiegeln. Dies ist eine gute Gelegenheit, sich darüber Gedanken zu machen, wie der Charakter seine oder ihre eigene Kultur sieht und wie er oder sie zu den Philosophien und Traditionen der Vorfahren steht.",,Cette valeur doit refléter l'environnement et la culture dans lesquels le personnage a été élevé. C'est une bonne occasion d'examiner comment le personnage perçoit sa propre culture et comment il se rattache- ou peut-être ne se rattache pas - aux philosophies et aux traditions de son peuple.
@@ -643,7 +658,7 @@ Weapon.quality.charge.name,Charge,Aufladbar,,Charges
 Weapon.quality.calibration.name,Calibration,Kalibrierung,,
 Weapon.quality.dampening.name,Dampening,Energiesenkend,,
 Weapon.quality.deadly.name,Deadly,Letal,,Mortel
-Weapon.quality.depleting.name,Depleting,,,
+Weapon.quality.depleting.name,Depleting,Erschöpfend,,
 Weapon.quality.devastating.name,Devastating,Zerstörerisch,,
 Weapon.quality.highYield.name,High Yield,Hochenergetisch,,
 Weapon.quality.hidden.name,Hidden {{rank}},Unauffällig {{rank}},,Caché {{rank}}
@@ -653,7 +668,7 @@ Weapon.quality.knockdown.name,Knockdown,Niederwerfend,,Renversement
 Weapon.quality.nonLethal.name,Non-lethal,Nicht-tödlich,,Non-létal
 Weapon.quality.piercing.name,Piercing {{rank}},Durchdringend {{rank}},,Perçant {{rank}}
 Weapon.quality.persistentX.name,Persistent X,Anhaltend X,,
-Weapon.quality.slowing.name,Slowing,,,
+Weapon.quality.slowing.name,Slowing,Verlangsamend,,
 Weapon.quality.versatile.name,Versatile {{rank}},Vielseitig {{rank}},,
 Weapon.quality.vicious.name,Vicious {{rank}},Verheerend {{rank}},,Vicieux {{rank}}
 World.attribute.designation,Designation,Bezeichnung,,Designation

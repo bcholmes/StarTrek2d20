@@ -19,6 +19,13 @@
     "Home.talentsButton": "Talente im Überblick",
     "Home.tokenCreator": "Token",
 
+    "NpcConfigurationPage.option.anyMajorSpecies": "Jede bedeutende Spezies",
+    "NpcConfigurationPage.option.anySpecialization": "Jede Spezialisierung",
+
+    "NpcConfigurationPage.npcType": "NPC Typ",
+    "NpcConfigurationPage.specialization": "Spezialisierung",
+    "NpcConfigurationPage.text": "Lege fest, welche Art NPC du erstellen möchtest.",
+
     "TokenCreator.option.rounded": "Abgerundet",
     "TokenCreator.option.bordered": "Eingerahmt",
 
@@ -400,6 +407,20 @@
     "CareerType.core.veteran.description": "Der Charakter blickt auf eine jahrzehntelange Erfahrung im Dienst der Sternenflotte zurück und hat bereits auf vielen Schiffen und Sternenbasen gedient. Urteilsvermögen und Meinungen werden von Untergebenen, Gleichrangigen und selbst Vorgesetzten hoch geschätzt.",
     "CareerType.core.veteran.valueInstruction": "Der Charakter erhält eine Überzeugung, welche die Jahre an Erfahrung und die in der langen Karriere geformten Wertvorstellungen widerspiegelt.",
 
+    "CareerType.civilian.young.name": "Jung",
+
+    "CareerType.civilian.experienced.name": "Erfahren",
+    "CareerType.civilian.experienced.valueInstruction": "Der Charakter erhält einen Wert und kann diesen frei wählen.",
+
+    "CareerType.civilian.veteran.name": "Veteran",
+
+    "CareerType.klingon.young.name": "Junger Krieger",
+
+    "CareerType.klingon.experienced.name": "Erfahrener Krieger",
+    "CareerType.klingon.experienced.valueInstruction": "Der Charakter erhält einen Wert und kann diesen frei wählen.",
+
+    "CareerType.klingon.veteran.name": "Kriegsveteran",
+
     "Environment.common.homeworld.name": "Heimatwelt",
     "Environment.common.homeworld.description": "Der Charakter stammt von der Heimatwelt seiner oder ihrer Zivilisation und ist umgeben von dem kulturellen sowie spirituellen Erbe seines oder ihres Volkes aufgewachsen. Heimatwelten spiegeln oft die Ideale ihres Volkes wider und sind äußerst utopisch und idyllisch. Sie sind Horte der Tradition und sind die Zentren des wirtschaftlichen und politischen Lebens ihrer Zivilisation.",
 
@@ -467,6 +488,9 @@
     "GovernmentType.name.vulcan": "Vulkanier",
     "GovernmentType.name.other": "Andere",
 
+    "HairType.bald": "Glatze",
+    "HairType.bowlCutHair": "Topfschnitt",
+
     "HeadType.averageAngular": "Gewöhnlich, kantig",
     "HeadType.squareJawed": "Quadratischer Kiefer",
     "HeadType.roundedNarrow": "Abgerundet, schmal",
@@ -489,6 +513,12 @@
     "MissionPod.commandAndControl": "Kommando & Kontrolle",
     "MissionPod.sensors": "Sensoren",
     "MissionPod.weapons": "Waffen",
+    "MissionPod.astrometricsAndNavigation": "Astrometrie und Navigation",
+    "MissionPod.defensiveShieldEnhancement": "Defensive Schildverbesserung",
+    "MissionPod.emergencyRecovery": "Notfallwiederherstellung",
+    "MissionPod.fieldHospital": "Feldlatzarett",
+    "MissionPod.fleetCarrier": "Flottenträger",
+    "MissionPod.mobileDrydock": "Mobiles Trockendock",
 
     "MissionProfile.default.strategicAndDiplomatic": "Strategische und diplomatische Operationen",
     "MissionProfile.default.pathfinderAndReconaissance": "Aufklärungsoperationen",
@@ -498,6 +528,10 @@
     "MissionProfile.default.crisisAndEmergencyResponse": "Krisen- und Notfallreaktionsoperationen",
     "MissionProfile.default.multiroleExplorer": "Multifunktions-Erkundungsschiff",
     "MissionProfile.default.projectEscalante": "Projekt Escalante",
+    "MissionProfile.default.reserveFleet": "Reserveflotte",
+    "MissionProfile.default.flagship": "Flaggschiff",
+    "MissionProfile.default.logisticalQuartermaster": "Quartiermeister",
+    "MissionProfile.default.patrol": "Patrouille",
 
     "NpcType.minor.name": "Einfacher NSC",
 
@@ -511,8 +545,8 @@
     "Rank.commander.name": "Commander",
     "Rank.commander.abbrev": "Cmdr.",
 
-    "Rank.lieutenantCommander.name": "Lt. Commander",
-    "Rank.lieutenantCommander.abbrev": "LCdr.",
+    "Rank.ltCommander.name": "Lt. Commander",
+    "Rank.ltCommander.abbrev": "LCdr.",
 
     "Rank.lieutenant.name": "Lieutenant",
     "Rank.lieutenant.abbrev": "Lt.",
@@ -644,6 +678,8 @@
 
     "Weapon.quality.deadly.name": "Letal",
 
+    "Weapon.quality.depleting.name": "Erschöpfend",
+
     "Weapon.quality.devastating.name": "Zerstörerisch",
 
     "Weapon.quality.highYield.name": "Hochenergetisch",
@@ -659,6 +695,8 @@
     "Weapon.quality.piercing.name": "Durchdringend {{rank}}",
 
     "Weapon.quality.persistentX.name": "Anhaltend X",
+
+    "Weapon.quality.slowing.name": "Verlangsamend",
 
     "Weapon.quality.versatile.name": "Vielseitig {{rank}}",
 

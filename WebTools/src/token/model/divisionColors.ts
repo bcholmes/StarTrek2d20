@@ -17,6 +17,10 @@ export class DivisionColors {
                 new NamedColor(i18next.t("Division.monsterMaroon.medical"), "#85a774"),
                 new NamedColor(i18next.t("Division.monsterMaroon.security"), "#2e4a22"),
                 new NamedColor(i18next.t("Division.monsterMaroon.trainee"), "#cf130b")];
+        } else if (era === UniformEra.Enterprise) {
+            return [ new NamedColor(i18next.t("Division.command"), "#D5934C"),
+                new NamedColor(i18next.t("Division.science"), "#30787E"),
+                new NamedColor(i18next.t("Division.operations"), "#B12542")];
         } else {
             return [ new NamedColor(i18next.t("Division.command"), "#B12542"),
                 new NamedColor(i18next.t("Division.science"), "#30787E"),
@@ -32,6 +36,10 @@ export class DivisionColors {
         } else {
             return (index >= 0) ? Division[index] : null;
         }
+    }
+
+    static isDivisionColorsSupported(era: UniformEra) {
+        return era !== UniformEra.Klingon && era !== UniformEra.OriginalSeriesKlingon;
     }
 
     static indexOf(era: UniformEra, color: string) {

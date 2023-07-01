@@ -56,6 +56,36 @@ export class SpeciesModel {
         const localized = i18next.t(key);
         return key === localized ? this.name : localized;
     }
+
+    get localizedTrait() {
+        const key = makeKey('Species.', Species[this.id], ".trait");
+        const localized = i18next.t(key);
+        return key === localized ? this.localizedName : localized;
+    }
+
+    get localizedDescription() {
+        const key = makeKey('Species.', Species[this.id], ".description");
+        const localized = i18next.t(key);
+        return key === localized ? this.description : localized;
+    }
+
+    get localizedNameDescription() {
+        const key = makeKey('Species.', Species[this.id], ".aboutNames");
+        const localized = i18next.t(key);
+        return key === localized ? this.nameDescription : localized;
+    }
+
+    get localizedTraitDescription() {
+        const key = makeKey('Species.', Species[this.id], ".traitDescription");
+        const localized = i18next.t(key);
+        return key === localized ? this.traitDescription : localized;
+    }
+
+    get localizedExampleValue() {
+        const key = makeKey('Species.', Species[this.id], ".exampleValue");
+        const localized = i18next.t(key);
+        return key === localized ? this.exampleValue : localized;
+    }
 }
 
 class _Species {
