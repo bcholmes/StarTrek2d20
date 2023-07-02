@@ -49,6 +49,7 @@ TokenCreator.section.eyes.colour,Eye Color,Augenfarbe,,
 TokenCreator.section.extras,Extras,Extras,,
 TokenCreator.section.extras.ears,Ears,Ohren,,
 TokenCreator.section.extras.forehead,Forehead,Stirn,,
+TokenCreator.section.extras.headwear,Headwear,,,
 ViewPage.viewSupportingCharacter,View Supporting Character,Nebencharakter anzeigen,Ver personaje secundario,Voir le personnage secondaire
 ViewPage.viewNpc,View NPC,NSC anzeigen,,Voir PNJ
 ViewPage.viewMainCharacter,View Main Character,Hauptfigur anzeigen,Ver personaje principal,Voir le personnage principal
@@ -443,8 +444,9 @@ ExtraType.bajoranEarring,Bajoran Earring,Bajoranischer Ohrring,,
 ExtraType.simpleEarring,Simple Stud Earring,Einfacher Ohrstecker,,
 ExtraType.hoopEarring,Hoop Earring,Kreolen-Ohrring,,
 ExtraType.smallBindi,Small Bindi,Kleines Bindi,,
-ExtraType.risanSymbol,Risan Symbol,Risanisches Symbol,,
+ExtraType.risanSymbol,Risian Symbol,Risanisches Symbol,,
 ExtraType.inuitTattoo,Inuit Tattoo,Inuit-Tattoo,,
+ExtraType.ferengiHeadFlap,Ferengi Head Flap,,,
 GovernmentType.name.andorian,Andorian,Andorianer,,Andorien
 GovernmentType.name.bajoran,Bajoran,Bajoraner,,Bajoran
 GovernmentType.name.cardassian,Cardassian,Cardassianer,,Cardassien

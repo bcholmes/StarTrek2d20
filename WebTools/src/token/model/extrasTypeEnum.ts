@@ -4,11 +4,13 @@ export enum ExtraType {
 
     BajoranEarring, SimpleEarring, HoopEarring,
 
-    SmallBindi, RisanSymbol, InuitTattoo
+    SmallBindi, RisanSymbol, InuitTattoo,
+
+    FerengiHeadFlap
 }
 
 export enum ExtraCategory {
-    Ear, Forehead
+    Ear, Forehead, Headwear
 }
 
 export const getExtraCategory = (extraType: ExtraType) => {
@@ -18,6 +20,9 @@ export const getExtraCategory = (extraType: ExtraType) => {
         case ExtraType.SimpleEarring:
         case ExtraType.HoopEarring:
             return ExtraCategory.Ear;
+
+        case ExtraType.FerengiHeadFlap:
+            return ExtraCategory.Headwear;
 
         case ExtraType.SmallBindi:
         case ExtraType.RisanSymbol:

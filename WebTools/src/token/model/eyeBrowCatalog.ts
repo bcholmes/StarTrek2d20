@@ -339,7 +339,7 @@ class EyeBrowCatalog {
 
     getBrow(eyeType: EyeType, species: Species, skinColor: string) {
         let brow = "";
-        if (species === Species.Vulcan) {
+        if (species === Species.Vulcan || species === Species.Romulan) {
             switch (eyeType) {
                 case EyeType.Eye1:
                     brow = Eye1VulcanBrows;

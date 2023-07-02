@@ -53,7 +53,7 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
                 <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
                 {FacialHairCatalog.instance.getSwatches(token, FacialHairPlacement.Chin).map(s => <SwatchButton svg={s.svg} title={s.name}
                     onClick={() => this.addFacialHairType(token, s.id)} active={this.getBeardTypes(token).indexOf(s.id) >= 0}
-                    token={token}
+                    token={token} size="lg"
                     key={'facial-hair-swatch-' + s.id }/>)}
                 </div>
             </>);
@@ -80,7 +80,7 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
     }
 
     getBeardTypes(token: Token) {
-        let types = token.facialHairType.filter(f => FacialHairCatalog.instance.getPlacementFor(f) === FacialHairPlacement.Chin);
+        let types = token.facialHairType.filter(f => FacialHairCatalog.instance.getPlacementFor(f) !== FacialHairPlacement.UpperLip);
         return types?.length ? types : [ FacialHairType.NoBeard ];
     }
 

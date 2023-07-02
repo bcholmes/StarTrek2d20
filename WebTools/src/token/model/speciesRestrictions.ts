@@ -1,6 +1,7 @@
 import { Species } from "../../helpers/speciesEnum";
 import { ExtraType } from "./extrasTypeEnum";
 import { HairType, allHairTypes, isTallForeheadHair } from "./hairTypeEnum";
+import { NoseType } from "./noseTypeEnum";
 import { SpeciesOption } from "./speciesOptionEnum";
 
 
@@ -105,11 +106,13 @@ class SpeciesRestrictions {
         if (extra === ExtraType.BajoranEarring) {
             return species === Species.Bajoran;
         } else if (extra === ExtraType.SimpleEarring || extra === ExtraType.HoopEarring) {
-            return species !== Species.Bolian; // Bolians have weird ears
+            return species !== Species.Bolian && species !== Species.Ferengi; // Bolians have weird ears
         } else if (extra === ExtraType.RisanSymbol) {
             return species === Species.Risian;
         } else if (extra === ExtraType.SmallBindi || extra === ExtraType.InuitTattoo) {
             return species === Species.Human;
+        } else if (extra === ExtraType.FerengiHeadFlap) {
+            return species === Species.Ferengi;
         } else {
             return true;
         }
@@ -134,8 +137,27 @@ class SpeciesRestrictions {
             return [SpeciesOption.Option1, SpeciesOption.Option2, SpeciesOption.Option3];
         } else if (species === Species.Klingon) {
             return [SpeciesOption.Option1, SpeciesOption.Option2, SpeciesOption.Option3, SpeciesOption.Option4, SpeciesOption.Option5];
+        } else if (species === Species.Romulan) {
+            return [SpeciesOption.Option1, SpeciesOption.Option2];
         } else {
             return [SpeciesOption.Option1];
+        }
+    }
+
+    static getNoseTypes(species: Species) {
+        if (species === Species.Tellarite || species === Species.Ferengi) {
+            return [ NoseType.StraightBasic ];
+        } else {
+            return [NoseType.StraightBasic,
+                NoseType.Convex,
+                NoseType.SmallBulb,
+                NoseType.Broad,
+                NoseType.LongNarrow,
+                NoseType.HighBridge,
+                NoseType.Bulbous,
+                NoseType.SmallFlat,
+                NoseType.SmallUpTurned,
+                NoseType.Hawk];
         }
     }
 }

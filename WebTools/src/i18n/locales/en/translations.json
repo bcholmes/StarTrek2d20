@@ -71,6 +71,7 @@
 
     "TokenCreator.section.extras.ears": "Ears",
     "TokenCreator.section.extras.forehead": "Forehead",
+    "TokenCreator.section.extras.headwear": "Headwear",
 
     "ViewPage.viewSupportingCharacter": "View Supporting Character",
     "ViewPage.viewNpc": "View NPC",
@@ -531,8 +532,9 @@
     "ExtraType.simpleEarring": "Simple Stud Earring",
     "ExtraType.hoopEarring": "Hoop Earring",
     "ExtraType.smallBindi": "Small Bindi",
-    "ExtraType.risanSymbol": "Risan Symbol",
+    "ExtraType.risanSymbol": "Risian Symbol",
     "ExtraType.inuitTattoo": "Inuit Tattoo",
+    "ExtraType.ferengiHeadFlap": "Ferengi Head Flap",
 
     "GovernmentType.name.andorian": "Andorian",
     "GovernmentType.name.bajoran": "Bajoran",

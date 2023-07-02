@@ -50,10 +50,12 @@ class SpeciesSelectionView extends React.Component<ISpeciesSelectionProperties, 
 
     speciesList() {
         return [Species.Andorian, Species.Bajoran, Species.Betazoid, Species.Bolian, Species.Deltan, Species.Denobulan,
-            Species.Efrosian, Species.Ferengi, Species.Human,
-            Species.Klingon, Species.KlingonQuchHa,
-            Species.Orion, Species.Risian, Species.Tellarite,
-            Species.Trill, Species.Vulcan].map(s => new DropDownElement(s, SpeciesHelper.getSpeciesByType(s).localizedName));
+                Species.Efrosian, Species.Ferengi, Species.Human,
+                Species.Klingon, Species.KlingonQuchHa,
+                Species.Orion, Species.Risian, Species.Romulan, Species.Tellarite,
+                Species.Trill, Species.Vulcan
+            ].map(s => new DropDownElement(s, SpeciesHelper.getSpeciesByType(s).localizedName))
+            .sort((d1, d2) => d1.name.localeCompare(d2.name));
     }
 }
 

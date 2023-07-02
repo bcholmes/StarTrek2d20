@@ -1,6 +1,6 @@
 import { Species } from "../../helpers/speciesEnum";
-import { BolianEar, FerengiEar1, FerengiEar2, FerengiEar3, StandardEar } from "./earCatalog";
-import { BolianSeam, BolianStripes, FerengiCheekAppliances, FerengiForehead, ReferenceHead, SimpleNeck } from "./headCatalog";
+import { BolianEar, FerengiEar1, FerengiEar2, FerengiEar3, StandardEar, VulcanEar } from "./earCatalog";
+import { BolianSeam, BolianStripes, FerengiCheekAppliances, FerengiForehead, ReferenceHead, RomulanForehead, SimpleNeck } from "./headCatalog";
 import { SpeciesOption } from "./speciesOptionEnum";
 import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
@@ -223,6 +223,11 @@ class SpeciesOptionCatalog {
                 new Swatch(SpeciesOption.Option2, "Small Lobes", (token) => SpeciesOptionCatalog.instance.decorateSwatch(SpeciesOption.Option2, token)),
                 new Swatch(SpeciesOption.Option3, "Large Lobes", (token) => SpeciesOptionCatalog.instance.decorateSwatch(SpeciesOption.Option3, token))
             ];
+        } else if (token.species === Species.Romulan) {
+            return [
+                new Swatch(SpeciesOption.Option1, "\"Northern\"", (token) => SpeciesOptionCatalog.instance.decorateSwatch(SpeciesOption.Option1, token)),
+                new Swatch(SpeciesOption.Option2, "Other", (token) => SpeciesOptionCatalog.instance.decorateSwatch(SpeciesOption.Option2, token))
+            ];
         } else if (token.species === Species.Klingon) {
             return [
                 new Swatch(SpeciesOption.Option1, "Klingon Forehead 1", (token) => SpeciesOptionCatalog.instance.decorateSwatch(SpeciesOption.Option1, token)),
@@ -251,6 +256,21 @@ class SpeciesOptionCatalog {
                         + BolianSeam.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor)
                         + (option !== SpeciesOption.Option1 ? BolianStripes : "")
                         + BolianEar.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor)
+                +  `</g>
+                </g>
+            </svg>`;
+        } else if (token.species === Species.Romulan) {
+            return `<svg viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs>
+                    <clipPath id="speciesOptionPath` + option + `">
+                        <circle cx="100" cy="100" r="100" fill="#ffffff" />
+                    </clipPath>
+                </defs>
+                <g clip-path="url(#speciesOptionPath` + option + `">
+                    <g transform="translate(-170, 10)">`
+                        + ReferenceHead.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor)
+                        + (option === SpeciesOption.Option1 ? RomulanForehead : "")
+                        + VulcanEar.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor)
                 +  `</g>
                 </g>
             </svg>`;

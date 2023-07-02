@@ -82,6 +82,14 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
                                 The terms of the commission allow me to treat these images as open source.
                             </p>
 
+                            <p>
+                                The <em>Enterprise</em>-era Starfleet logo originated as a vector drawing on {' '}
+                                <a href="https://commons.wikimedia.org/wiki/File:Starfleet_Shoulder_Patch.svg" target="_blank" rel="noreferrer">Wikimedia
+                                Commons</a>. It was created by user Shisma, and released under the Creative Commons
+                                Attribution 3.0 Unported license. I've made a number of modifications to the image to
+                                make it a bit more screen-accurate.
+                            </p>
+
                             <Header className="my-4" level={2}>Asked Questions, Possibly Frequently</Header>
 
                             <p>

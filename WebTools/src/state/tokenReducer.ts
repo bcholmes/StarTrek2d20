@@ -56,6 +56,12 @@ const token = (state: Token = initialState, action) => {
             hairType = SpeciesRestrictions.getDefaultHairType(newSpecies);
         }
 
+        let noseType = state.noseType;
+        let noseTypes = SpeciesRestrictions.getNoseTypes(newSpecies);
+        if (noseTypes.indexOf(noseType) < 0) {
+            noseType = noseTypes[0];
+        }
+
         let facialHairType = state.facialHairType;
         if (!SpeciesRestrictions.isFacialHairSupportedFor(newSpecies)) {
             facialHairType = [];
@@ -77,6 +83,7 @@ const token = (state: Token = initialState, action) => {
             eyeColor: eyeColor,
             hairType: hairType,
             hairColor: hairColour,
+            noseType: noseType,
             skinColor: skinColor,
             facialHairType: facialHairType,
             species: action.payload.species,

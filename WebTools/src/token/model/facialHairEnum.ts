@@ -1,9 +1,10 @@
 
 export enum FacialHairType {
 
-    NoMoustache, NoBeard, SoulPatch, BasicMoustache, GeneralChangMoustache, PencilMoustache
+    NoMoustache, NoBeard, SoulPatch, BasicMoustache, GeneralChangMoustache, PencilMoustache,
+    LargeBeard1, LargeBeard2
 }
 
 export enum FacialHairCategory {
-    NoMoustache, Moustache, Beard, Both
+    Moustache, Beard, Both
 }
