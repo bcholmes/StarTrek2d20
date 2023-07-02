@@ -24,7 +24,9 @@ class SpeciesRestrictions {
             return ["#bbb6c7", "#b0c2cc", "#a9d8f4", "#7ca9e0", "#919bd5", "#6e87bf", "#3e8fb8", "#0068a5"];
         } else if (species === Species.Bolian) {
             return ["#97c3f2", "#87acda", "#5883a6", "#5772b7", "#0665b3", "#385f8d"]; // "#597986",
-        } else if (species === Species.Efrosian || species === Species.Ferengi) {
+        } else if (species === Species.Ferengi) {
+            return ["#c98e61"];
+        } else if (species === Species.Efrosian) {
 //            return ["#ffd9c6", "#feb582", "#f8a271", "#ff8740", "#d7580b", "#d13703", "#b72001", "#822601"];
             return ["#ffd9c6", "#d8b092", "#e1ad88", "#d69972", "#c57b51", "#b06e46", "#9e603b", "#834b2b", "#70432c"];
         } else {
@@ -92,7 +94,7 @@ class SpeciesRestrictions {
     }
 
     static isFacialHairSupportedFor(species: Species) {
-        return species !== Species.Deltan && species !== Species.Bolian;
+        return !this.isBald(species);
     }
 
     static isOptionsSupportedFor(species: Species) {
@@ -114,7 +116,8 @@ class SpeciesRestrictions {
     }
 
     static isBald(species: Species) {
-        return species === Species.Bolian || species === Species.Deltan || species === Species.Saurian;
+        return species === Species.Bolian || species === Species.Ferengi
+            || species === Species.Deltan || species === Species.Saurian;
     }
 
     static isTallForeheaded(species: Species) {
@@ -127,8 +130,10 @@ class SpeciesRestrictions {
     static getSpeciesOptions(species: Species) {
         if (species === Species.Bolian) {
             return [SpeciesOption.Option1, SpeciesOption.Option2];
-        } else if (species === Species.Klingon) {
+        } else if (species === Species.Ferengi) {
             return [SpeciesOption.Option1, SpeciesOption.Option2, SpeciesOption.Option3];
+        } else if (species === Species.Klingon) {
+            return [SpeciesOption.Option1, SpeciesOption.Option2, SpeciesOption.Option3, SpeciesOption.Option4, SpeciesOption.Option5];
         } else {
             return [SpeciesOption.Option1];
         }
