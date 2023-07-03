@@ -439,10 +439,17 @@ class EyeCatalog {
 
     private static decorateSwatch(eyeType: EyeType, token: Token) {
         let result = `<svg viewBox="0 0 110 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g transform="translate(-250, -75)">`
-                + EyeBrowCatalog.instance.getBrow(eyeType, token.species, "#f8f9fa")
-                + EyeCatalog.instance.getEyeAndNoseEdge(eyeType, token.species).replace(/#754324/g, token.eyeColor)
-            + `</g>
+                <defs>
+                    <clipPath id="eyeType` + eyeType + `">
+                        <circle cx="55" cy="55" r="55" fill="#ffffff" />
+                    </clipPath>
+                </defs>
+                <g clip-path="url(#eyeType` + eyeType + `">
+                    <g transform="translate(-250, -75)">`
+                    + EyeBrowCatalog.instance.getBrow(eyeType, token.species, "#f8f9fa")
+                    + EyeCatalog.instance.getEyeAndNoseEdge(eyeType, token.species).replace(/#754324/g, token.eyeColor)
+                + `</g>
+                </g>
             </svg>`;
         return result;
     }
