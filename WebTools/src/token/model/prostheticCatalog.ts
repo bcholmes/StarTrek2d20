@@ -71,6 +71,7 @@ class ProstheticCatalog {
                 case ProstheticPlacement.VeryFront:
                     switch (token.hairType) {
                         case HairType.SidePart:
+                        case HairType.TousledSidePart:
                         case HairType.BowlCutHair:
                         case HairType.MediumLengthFemaleSidePart:
                         case HairType.MediumMaleCenterPart:
