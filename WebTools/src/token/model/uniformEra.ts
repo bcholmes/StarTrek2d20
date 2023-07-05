@@ -28,6 +28,7 @@ export class UniformEraHelper {
         new UniformEraModel(UniformEra.OriginalSeries, "Original Series"),
         new UniformEraModel(UniformEra.OriginalSeriesKlingon, "Klingon (Original Series)"),
         new UniformEraModel(UniformEra.MonsterMaroon, "The Wrath of Khan and Later Movies"),
+        new UniformEraModel(UniformEra.Klingon, "Klingon Armour"),
         new UniformEraModel(UniformEra.DominionWar, "Dominion War"),
     ]
 
