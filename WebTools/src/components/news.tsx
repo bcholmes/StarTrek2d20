@@ -12,6 +12,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230705</b>
+                <ul>
+                    <li>A number of additional updates to the token generator.</li>
+                </ul>
                 <b>v1.230624</b>
                 <ul>
                     <li>German translation has been pretty active, lately, and this update includes more German.</li>

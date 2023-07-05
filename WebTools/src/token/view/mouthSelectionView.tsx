@@ -65,9 +65,12 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
     addFacialHairType(token: Token, type: FacialHairType) {
         let newTypes = [];
         let placement = FacialHairCatalog.instance.getPlacementFor(type);
-        token.facialHairType.filter(t => FacialHairCatalog.instance.getPlacementFor(t) !== placement).forEach(t => newTypes.push(t));
+        token.facialHairType.filter(t => {
+            let p = FacialHairCatalog.instance.getPlacementFor(t);
+            return p !== placement && p !== FacialHairPlacement.Both && placement !== FacialHairPlacement.Both;
+        }).forEach(t => newTypes.push(t));
 
-        if (type !== FacialHairType.NoBeard && type !== FacialHairType.NoMoustache && newTypes.indexOf(type) < 0) {
+        if (type !== FacialHairType.None && newTypes.indexOf(type) < 0) {
             newTypes.push(type);
         }
 
@@ -76,12 +79,12 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
 
     getMoustacheType(token: Token) {
         let type = token.facialHairType.filter(f => FacialHairCatalog.instance.getPlacementFor(f) === FacialHairPlacement.UpperLip);
-        return type?.length ? type[0] : FacialHairType.NoMoustache;
+        return type?.length ? type[0] : FacialHairType.None;
     }
 
     getBeardTypes(token: Token) {
         let types = token.facialHairType.filter(f => FacialHairCatalog.instance.getPlacementFor(f) !== FacialHairPlacement.UpperLip);
-        return types?.length ? types : [ FacialHairType.NoBeard ];
+        return types?.length ? types : [ FacialHairType.None ];
     }
 
 }
