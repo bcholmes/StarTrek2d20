@@ -156,13 +156,13 @@ class EarCatalog {
             switch (token.speciesOption) {
 
                 case SpeciesOption.Option3:
-                    return FerengiEar3.Back.replace(SpeciesColors.DEFAULT_SKIN_COLOR, token.skinColor);
+                    return FerengiEar3.Back.replace(SpeciesColors.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
                 case SpeciesOption.Option2:
-                    return FerengiEar2.Back.replace(SpeciesColors.DEFAULT_SKIN_COLOR, token.skinColor);
+                    return FerengiEar2.Back.replace(SpeciesColors.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
 
                 case SpeciesOption.Option1:
                 default:
-                    return FerengiEar1.Back.replace(SpeciesColors.DEFAULT_SKIN_COLOR, token.skinColor);
+                    return FerengiEar1.Back.replace(SpeciesColors.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
             }
         } else {
             return "";
@@ -182,15 +182,15 @@ class EarCatalog {
             switch (token.speciesOption) {
 
                 case SpeciesOption.Option3:
-                    return FerengiEar3.Front.replace(SpeciesColors.DEFAULT_SKIN_COLOR, token.skinColor);
+                    return FerengiEar3.Front.replace(SpeciesColors.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
                 case SpeciesOption.Option2:
-                    return FerengiEar2.Front.replace(SpeciesColors.DEFAULT_SKIN_COLOR, token.skinColor);
+                    return FerengiEar2.Front.replace(SpeciesColors.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
                 case SpeciesOption.Option1:
                 default:
-                    return FerengiEar1.Front.replace(SpeciesColors.DEFAULT_SKIN_COLOR, token.skinColor);
+                    return FerengiEar1.Front.replace(SpeciesColors.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
             }
         } else {
-            return StandardEar.replace(SpeciesColors.DEFAULT_SKIN_COLOR, token.skinColor);
+            return StandardEar.replace(SpeciesColors.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
         }
     }
 

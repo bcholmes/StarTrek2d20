@@ -26,10 +26,10 @@ class SpeciesRestrictions {
         } else if (species === Species.Bolian) {
             return ["#97c3f2", "#87acda", "#5883a6", "#5772b7", "#0665b3", "#385f8d"]; // "#597986",
         } else if (species === Species.Ferengi) {
-            return ["#c98e61"];
+            return ["#d18352"];
         } else if (species === Species.Efrosian) {
 //            return ["#ffd9c6", "#feb582", "#f8a271", "#ff8740", "#d7580b", "#d13703", "#b72001", "#822601"];
-            return ["#ffd9c6", "#d8b092", "#e1ad88", "#d69972", "#c57b51", "#b06e46", "#9e603b", "#834b2b", "#70432c"];
+            return ["#ffd9c6", "#d8b092", "#e1ad88", "#d69972", "#d18352", "#b06e46", "#9e603b", "#834b2b", "#70432c"];
         } else {
             return ["#F8E0DE", "#F4D5CA", "#F2C8B8", "#E1BA93", "#dcbda1", "#CEB29C", "#CAA18B", SpeciesRestrictions.DEFAULT_SKIN_COLOR, "#AB7D5C", "#9B7A57", "#9b6b43", "#8C644A", "#704A35", "#53382D", "#473028"];
         }

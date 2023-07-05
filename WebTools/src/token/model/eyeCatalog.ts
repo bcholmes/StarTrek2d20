@@ -428,7 +428,7 @@ class EyeCatalog {
                 new Swatch(EyeType.Eye5, "Heavy Brow", (token) => EyeCatalog.decorateSwatch(EyeType.Eye5, token)),
                 new Swatch(EyeType.Eye6, "Older", (token) => EyeCatalog.decorateSwatch(EyeType.Eye6, token)),
                 new Swatch(EyeType.Eye7, "Feminine", (token) => EyeCatalog.decorateSwatch(EyeType.Eye7, token)),
-                new Swatch(EyeType.Eye8, "Feminine, Round Brows", (token) => EyeCatalog.decorateSwatch(EyeType.Eye8, token)),
+                new Swatch(EyeType.Eye8, "Feminine, Thicker Lashes", (token) => EyeCatalog.decorateSwatch(EyeType.Eye8, token)),
                 new Swatch(EyeType.Eye9, "Feminine, Round Brows", (token) => EyeCatalog.decorateSwatch(EyeType.Eye9, token)),
                 new Swatch(EyeType.Eye10, "Feminine, Heavier Brows", (token) => EyeCatalog.decorateSwatch(EyeType.Eye10, token)),
                 new Swatch(EyeType.Eye11, "Feminine, Cat-like", (token) => EyeCatalog.decorateSwatch(EyeType.Eye11, token)),
