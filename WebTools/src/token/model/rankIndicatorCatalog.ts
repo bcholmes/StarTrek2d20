@@ -998,11 +998,19 @@ class RankIndicatorCatalog {
                     return "";
             }
         } else if (token.uniformEra === UniformEra.OriginalSeriesKlingon) {
-            switch (token.rankIndicator) {
-                case RankIndicator.Captain:
-                    return KlingonRanks.InsigniaTos.Captain;
-                default:
-                    return "";
+            let borderRank = this.getBorderRankIndicator(token);
+            if (token.bodyType === BodyType.AverageMale) {
+                return `<g transform="matrix(0.18836329,0,0,0.18836329,146.95423,199.86901)">`
+                        + borderRank +
+                    `</g><g transform="matrix(0.15346879,0,0,0.16820895,289.72087,206.74823)">`
+                        + borderRank +
+                `</g>`;
+            } else {
+                return `<g transform="matrix(0.18836329,0,0,0.18836329,128.32409,255.21148)">`
+                        + borderRank +
+                    `</g><g transform="matrix(0.15346879,0,0,0.16820895,322.04964,246.74823)">`
+                        + borderRank +
+                `</g>`;
             }
 
         } else if (token.uniformEra === UniformEra.Klingon) {

@@ -36,24 +36,24 @@
     "TokenCreator.section.body": "Body",
 
     "TokenCreator.section.body.uniform": "Uniform Type",
-    "TokenCreator.section.body.colour": "Division Color",
+    "TokenCreator.section.body.colour": "Division Colour",
     "TokenCreator.section.body.rank": "Rank",
     "TokenCreator.section.body.type": "Body Type",
 
     "TokenCreator.section.head": "Head",
 
-    "TokenCreator.section.head.colour": "Skin Color",
+    "TokenCreator.section.head.colour": "Skin Colour",
     "TokenCreator.section.head.shape": "Head Shape",
 
     "TokenCreator.section.hair": "Hair",
 
-    "TokenCreator.section.hair.colour": "Hair Color",
+    "TokenCreator.section.hair.colour": "Hair Colour",
     "TokenCreator.section.hair.style": "Hair Style",
 
     "TokenCreator.section.mouth": "Mouth",
 
     "TokenCreator.section.mouth.shape": "Mouth",
-    "TokenCreator.section.mouth.colour": "Lipstick Color",
+    "TokenCreator.section.mouth.colour": "Lipstick Colour",
     "TokenCreator.section.mouth.moustache": "Moustache",
     "TokenCreator.section.mouth.beard": "Beard",
 
@@ -65,7 +65,7 @@
     "TokenCreator.section.eyes": "Eyes",
 
     "TokenCreator.section.eyes.style": "Eye Style",
-    "TokenCreator.section.eyes.colour": "Eye Color",
+    "TokenCreator.section.eyes.colour": "Eye Colour",
 
     "TokenCreator.section.extras": "Extras",
 
@@ -779,7 +779,7 @@
     "UniformEra.enterprise": "Enterprise",
     "UniformEra.originalSeries": "Original Series",
     "UniformEra.originalSeriesKlingon": "Klingon (Original Series)",
-    "UniformEra.klingon": "Klingon Armor",
+    "UniformEra.klingon": "Klingon Armour",
     "UniformEra.monsterMaroon": "The Wrath of Khan",
     "UniformEra.dominionWar": "Dominion War",
 
