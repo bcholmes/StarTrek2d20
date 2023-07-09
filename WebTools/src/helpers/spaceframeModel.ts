@@ -1,5 +1,7 @@
+import i18next from "i18next";
 import { CharacterType } from "../common/characterType";
 import { Starship } from "../common/starship";
+import { makeKey } from "../common/translationKey";
 import { IConstructPrerequisite, ServiceYearPrerequisite, StarshipTypePrerequisite } from "./prerequisite";
 import { Source } from "./sources";
 import { Spaceframe } from "./spaceframeEnum";
@@ -65,6 +67,19 @@ export class SpaceframeModel {
             result = result || (t.talent.name === name);
         });
         return result;
+    }
+
+    get localizedName() {
+        if (this.id != null) {
+            let key = makeKey('Spaceframe.', Spaceframe[this.id]);
+            if (key.indexOf("_UP") >= 0) {
+                key = key.substring(key.indexOf("_UP"));
+            }
+            let local = i18next.t(key);
+            return local === key ? this.name : local;
+        } else {
+            return this.name;
+        }
     }
 
     copy() {

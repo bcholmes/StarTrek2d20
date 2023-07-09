@@ -44,7 +44,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
     render() {
         const { t } = this.props;
         let species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
-        const selectDesc = species.attributes.length > 3 ? '(' + t('SpeciesDetails.selectThree') + ')' : "";
+        const selectDesc = species.attributes.length > 3 ? t('SpeciesDetails.selectThree') : "";
 
         return (
             <div className="page">

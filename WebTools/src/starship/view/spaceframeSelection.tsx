@@ -45,10 +45,10 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
 
         let spaceframes = SpaceframeHelper.instance().getSpaceframes(this.props.starship, this.state.allowAllFrames);
         spaceframes.sort((s1, s2) => {
-            if (s1.name === s2.name) {
+            if (s1.localizedName === s2.localizedName) {
                 return s2.id - s1.id;
             } else {
-                return s1.name.localeCompare(s2.name);
+                return s1.localizedName.localeCompare(s2.localizedName);
             }
         })
         const frames = spaceframes.map((f, i) => {
@@ -65,7 +65,7 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
             return (
                 <tbody key={i}>
                     <tr>
-                        <td className="selection-header" rowSpan={4}>{f.name}</td>
+                        <td className="selection-header" rowSpan={4}>{f.localizedName}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{i18next.t('Construct.system.comms')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{f.systems[System.Comms]}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{i18next.t('Construct.system.engines')}</td>

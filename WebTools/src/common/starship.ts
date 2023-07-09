@@ -123,6 +123,14 @@ export class Starship extends Construct {
         }
     }
 
+    get localizedClassName() {
+        if (this.spaceframeModel != null) {
+            return this.spaceframeModel.localizedName;
+        } else {
+            return this.className;
+        }
+    }
+
     get power() {
         let power = this.getSystemValue(System.Engines);
         if (this.buildType !== ShipBuildType.Starship) {

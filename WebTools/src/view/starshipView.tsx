@@ -47,7 +47,7 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
             <Header>{name}</Header>
             <div className="row mt-4" style={{alignItems: "baseline"}}>
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.spaceFrame')}:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.className ? this.props.starship.className : NBSP}</div></div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.localizedClassName ? this.props.starship.localizedClassName : NBSP}</div></div>
 
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.serviceDate')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.serviceYear? this.props.starship.serviceYear : NBSP}</div></div>
@@ -55,7 +55,7 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
 
             <div className="row" style={{alignItems: "baseline"}}>
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.missionProfile')}:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.missionProfileModel ? this.props.starship.missionProfileModel.name : NBSP}</div></div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.missionProfileModel ? this.props.starship.missionProfileModel.localizedName : NBSP}</div></div>
 
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.refits')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2 small">{this.refitAsString()}</div></div>
