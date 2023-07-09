@@ -17,10 +17,10 @@ import MouthSelectionView from './view/mouthSelectionView';
 import HairSelectionView from './view/hairSelectionView';
 import HeadSelectionView from './view/headSelectionView';
 import EyeSelectionView from './view/eyeSelectionView';
-import { RankIndicator } from './model/rankIndicatorEnum';
 import { DivisionColors } from './model/divisionColors';
 import { SpeciesHelper } from '../helpers/species';
 import ExtrasSelectionView from './view/extrasSelectionView';
+import { Rank } from '../helpers/ranks';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -179,7 +179,7 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
             let division = DivisionColors.getDivision(this.props.token.uniformEra, this.props.token.divisionColor);
             let species = SpeciesHelper.getSpeciesByType(this.props.token.species);
             let speciesName = species.name.replace(/[ ()’']/g, "");
-            let name = "token-" + speciesName + "-" + (division != null ? (division + "-") : "") + RankIndicator[this.props.token.rankIndicator] + ".png";
+            let name = "token-" + speciesName + "-" + (division != null ? (division + "-") : "") + Rank[this.props.token.rankIndicator] + ".png";
             download(png, name, "image/png");
         });
     }

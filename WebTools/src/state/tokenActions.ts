@@ -1,3 +1,4 @@
+import { Rank } from "../helpers/ranks";
 import { Species } from "../helpers/speciesEnum";
 import { BodyType } from "../token/model/bodyTypeEnum";
 import { ExtraType } from "../token/model/extrasTypeEnum";
@@ -8,9 +9,9 @@ import { HeadType } from "../token/model/headTypeEnum";
 import { MouthType } from "../token/model/mouthTypeEnum";
 import { NasoLabialFoldType } from "../token/model/nasoLabialFoldTypeEnum";
 import { NoseType } from "../token/model/noseTypeEnum";
-import { RankIndicator } from "../token/model/rankIndicatorEnum";
 import { SpeciesOption } from "../token/model/speciesOptionEnum";
 import { UniformEra } from "../token/model/uniformEra";
+import { UniformVariantType } from "../token/model/uniformVariantTypeEnum";
 
 export const SET_TOKEN_SPECIES = 'SET_TOKEN_SPECIES';
 export const SET_TOKEN_SPECIES_OPTION = 'SET_TOKEN_SPECIES_OPTION';
@@ -26,6 +27,7 @@ export const SET_TOKEN_NASO_LABIAL_FOLD_TYPE = 'SET_TOKEN_NASO_LABIAL_FOLD_TYPE'
 export const SET_TOKEN_NOSE_TYPE = 'SET_TOKEN_NOSE_TYPE';
 export const SET_TOKEN_MOUTH_TYPE = 'SET_TOKEN_MOUTH_TYPE';
 export const SET_TOKEN_BODY_TYPE = 'SET_TOKEN_BODY_TYPE';
+export const SET_TOKEN_UNIFORM_VARIANT_TYPE = 'SET_TOKEN_UNIFORM_VARIANT_TYPE';
 export const SET_TOKEN_EYE_TYPE = 'SET_TOKEN_EYE_TYPE';
 export const SET_TOKEN_LIPSTICK_COLOR = 'SET_TOKEN_LIPSTICK_COLOR';
 export const SET_TOKEN_FACIAL_HAIR_TYPE = 'SET_TOKEN_FACIAL_HAIR_TYPE';
@@ -55,7 +57,7 @@ export function setTokenDivisionColor(color: string) {
     }
 }
 
-export function setTokenRank(rank: RankIndicator) {
+export function setTokenRank(rank: Rank) {
     let payload = { rank: rank };
     return {
        type: SET_TOKEN_RANK,
@@ -139,6 +141,14 @@ export function setTokenBodyType(type: BodyType) {
     let payload = { type: type };
     return {
        type: SET_TOKEN_BODY_TYPE,
+       payload: payload
+    }
+}
+
+export function setTokenUniformVariantType(type: UniformVariantType) {
+    let payload = { type: type };
+    return {
+       type: SET_TOKEN_UNIFORM_VARIANT_TYPE,
        payload: payload
     }
 }

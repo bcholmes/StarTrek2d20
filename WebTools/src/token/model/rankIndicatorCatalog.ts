@@ -1,9 +1,11 @@
+import { Rank } from "../../helpers/ranks";
 import { BodyType } from "./bodyTypeEnum";
-import { RankIndicator, isEnlistedRank } from "./rankIndicatorEnum";
+import { isEnlistedRank } from "./rankIndicatorEnum";
 import Swatch from "./swatch";
 import { Token } from "./token";
 import { DefaultRed } from "./uniformCatalog";
 import { UniformEra } from "./uniformEra";
+import { UniformVariantType } from "./uniformVariantTypeEnum";
 
 const TngEnsignRankPip = `<g id="g18710">
     <path d="m 237.47786,247.46707 c -2.32533,0 -4.20933,1.884 -4.20933,4.20933 0,2.32534 1.884,4.20934 4.20933,4.20934 2.32533,0 4.20933,-1.884 4.20933,-4.20934 0,-2.32533 -1.884,-4.20933 -4.20933,-4.20933" style="fill:#fbb03b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path19242"/>
@@ -881,69 +883,69 @@ class RankIndicatorCatalog {
     private static _instance: RankIndicatorCatalog;
 
     private tngSwatches = [
-        new Swatch(RankIndicator.None, "None", (token) => RankIndicatorCatalog.decorateSwatch("", RankIndicator.None, token), "Rank.none.name"),
-        new Swatch(RankIndicator.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(TngEnsignRankPip, RankIndicator.Ensign, token), "Rank.ensign.name"),
-        new Swatch(RankIndicator.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(TngLtJGRankPip, RankIndicator.LieutenantJG, token), "Rank.lieutenantJG.name"),
-        new Swatch(RankIndicator.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(TngLtRankPip, RankIndicator.Lieutenant, token), "Rank.lieutenant.name"),
-        new Swatch(RankIndicator.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(TngLcdrRankPip, RankIndicator.LtCommander, token), "Rank.ltCommander.name"),
-        new Swatch(RankIndicator.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(TngCmdrRankPip, RankIndicator.Commander, token), "Rank.commander.name"),
-        new Swatch(RankIndicator.Captain, "Captain", (token) => RankIndicatorCatalog.decorateSwatch(TngCaptainRankPip, RankIndicator.Captain, token), "Rank.captain.name"),
+        new Swatch(Rank.None, "None", (token) => RankIndicatorCatalog.decorateSwatch("", Rank.None, token), "Rank.none.name"),
+        new Swatch(Rank.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(TngEnsignRankPip, Rank.Ensign, token), "Rank.ensign.name"),
+        new Swatch(Rank.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(TngLtJGRankPip, Rank.LieutenantJG, token), "Rank.lieutenantJG.name"),
+        new Swatch(Rank.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(TngLtRankPip, Rank.Lieutenant, token), "Rank.lieutenant.name"),
+        new Swatch(Rank.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(TngLcdrRankPip, Rank.LtCommander, token), "Rank.ltCommander.name"),
+        new Swatch(Rank.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(TngCmdrRankPip, Rank.Commander, token), "Rank.commander.name"),
+        new Swatch(Rank.Captain, "Captain", (token) => RankIndicatorCatalog.decorateSwatch(TngCaptainRankPip, Rank.Captain, token), "Rank.captain.name"),
 
-        new Swatch(RankIndicator.Crewman3rdClass, "Crewman 3rd Class", (token) => RankIndicatorCatalog.decorateSwatch(TngCrewman3rd, RankIndicator.Crewman3rdClass, token), "Rank.crewman3rdClass.name"),
-        new Swatch(RankIndicator.Crewman2ndClass, "Crewman 2nd Class", (token) => RankIndicatorCatalog.decorateSwatch(TngCrewman2nd, RankIndicator.Crewman2ndClass, token), "Rank.crewman2ndClass.name"),
-        new Swatch(RankIndicator.Crewman1stClass, "Crewman 1st Class", (token) => RankIndicatorCatalog.decorateSwatch(TngCrewman1st, RankIndicator.Crewman1stClass, token), "Rank.crewman1stClass.name"),
-        new Swatch(RankIndicator.PettyOfficer3rdClass, "Petty Officer 3rd Class", (token) => RankIndicatorCatalog.decorateSwatch(TngPettyOfficer3rdClass, RankIndicator.PettyOfficer3rdClass, token), "Rank.pettyOfficer3rdClass.name"),
-        new Swatch(RankIndicator.PettyOfficer2ndClass, "Petty Officer 2nd Class", (token) => RankIndicatorCatalog.decorateSwatch(TngPettyOfficer2ndClass, RankIndicator.PettyOfficer2ndClass, token), "Rank.pettyOfficer2ndClass.name"),
-        new Swatch(RankIndicator.PettyOfficer1stClass, "Petty Officer 1st Class", (token) => RankIndicatorCatalog.decorateSwatch(TngPettyOfficer1stClass, RankIndicator.PettyOfficer1stClass, token), "Rank.pettyOfficer1stClass.name"),
-        new Swatch(RankIndicator.ChiefPettyOfficer, "Chief Petty Officer", (token) => RankIndicatorCatalog.decorateSwatch(TngChiefPettyOfficer, RankIndicator.ChiefPettyOfficer, token), "Rank.chiefPettyOfficer.name"),
-        new Swatch(RankIndicator.SeniorChiefPettyOfficer, "Senior Chief Petty Officer", (token) => RankIndicatorCatalog.decorateSwatch(TngSeniorChiefPettyOfficer, RankIndicator.SeniorChiefPettyOfficer, token), "Rank.seniorChiefPettyOfficer.name"),
-        new Swatch(RankIndicator.MasterChiefPettyOfficer, "Master Chief Petty Officer", (token) => RankIndicatorCatalog.decorateSwatch(TngMasterChiefPettyOfficer, RankIndicator.MasterChiefPettyOfficer, token), "Rank.masterChiefPettyOfficer.name")
+        new Swatch(Rank.Crewman3rdClass, "Crewman 3rd Class", (token) => RankIndicatorCatalog.decorateSwatch(TngCrewman3rd, Rank.Crewman3rdClass, token), "Rank.crewman3rdClass.name"),
+        new Swatch(Rank.Crewman2ndClass, "Crewman 2nd Class", (token) => RankIndicatorCatalog.decorateSwatch(TngCrewman2nd, Rank.Crewman2ndClass, token), "Rank.crewman2ndClass.name"),
+        new Swatch(Rank.Crewman1stClass, "Crewman 1st Class", (token) => RankIndicatorCatalog.decorateSwatch(TngCrewman1st, Rank.Crewman1stClass, token), "Rank.crewman1stClass.name"),
+        new Swatch(Rank.PettyOfficer3rdClass, "Petty Officer 3rd Class", (token) => RankIndicatorCatalog.decorateSwatch(TngPettyOfficer3rdClass, Rank.PettyOfficer3rdClass, token), "Rank.pettyOfficer3rdClass.name"),
+        new Swatch(Rank.PettyOfficer2ndClass, "Petty Officer 2nd Class", (token) => RankIndicatorCatalog.decorateSwatch(TngPettyOfficer2ndClass, Rank.PettyOfficer2ndClass, token), "Rank.pettyOfficer2ndClass.name"),
+        new Swatch(Rank.PettyOfficer1stClass, "Petty Officer 1st Class", (token) => RankIndicatorCatalog.decorateSwatch(TngPettyOfficer1stClass, Rank.PettyOfficer1stClass, token), "Rank.pettyOfficer1stClass.name"),
+        new Swatch(Rank.ChiefPettyOfficer, "Chief Petty Officer", (token) => RankIndicatorCatalog.decorateSwatch(TngChiefPettyOfficer, Rank.ChiefPettyOfficer, token), "Rank.chiefPettyOfficer.name"),
+        new Swatch(Rank.SeniorChiefPettyOfficer, "Senior Chief Petty Officer", (token) => RankIndicatorCatalog.decorateSwatch(TngSeniorChiefPettyOfficer, Rank.SeniorChiefPettyOfficer, token), "Rank.seniorChiefPettyOfficer.name"),
+        new Swatch(Rank.MasterChiefPettyOfficer, "Master Chief Petty Officer", (token) => RankIndicatorCatalog.decorateSwatch(TngMasterChiefPettyOfficer, Rank.MasterChiefPettyOfficer, token), "Rank.masterChiefPettyOfficer.name")
 
     ];
 
     private enterpriseSwatches = [
-        new Swatch(RankIndicator.None, "None", (token) => RankIndicatorCatalog.decorateSwatch("", RankIndicator.None, token), "Rank.none.name"),
-        new Swatch(RankIndicator.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.Ensign, RankIndicator.Ensign, token), "Rank.ensign.name"),
-        new Swatch(RankIndicator.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.LieutenantJG, RankIndicator.LieutenantJG, token), "Rank.lieutenantJG.name"),
-        new Swatch(RankIndicator.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.Lieutenant, RankIndicator.Lieutenant, token), "Rank.lieutenant.name"),
-        new Swatch(RankIndicator.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.LtCommander, RankIndicator.LtCommander, token), "Rank.ltCommander.name"),
-        new Swatch(RankIndicator.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.Commander, RankIndicator.Commander, token), "Rank.commander.name"),
-        new Swatch(RankIndicator.Captain, "Captain", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.Captain, RankIndicator.Captain, token), "Rank.captain.name"),
+        new Swatch(Rank.None, "None", (token) => RankIndicatorCatalog.decorateSwatch("", Rank.None, token), "Rank.none.name"),
+        new Swatch(Rank.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.Ensign, Rank.Ensign, token), "Rank.ensign.name"),
+        new Swatch(Rank.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.LieutenantJG, Rank.LieutenantJG, token), "Rank.lieutenantJG.name"),
+        new Swatch(Rank.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.Lieutenant, Rank.Lieutenant, token), "Rank.lieutenant.name"),
+        new Swatch(Rank.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.LtCommander, Rank.LtCommander, token), "Rank.ltCommander.name"),
+        new Swatch(Rank.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.Commander, Rank.Commander, token), "Rank.commander.name"),
+        new Swatch(Rank.Captain, "Captain", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.Captain, Rank.Captain, token), "Rank.captain.name"),
 
-        new Swatch(RankIndicator.Crewman3rdClass, "Crewman 3rd Class", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.CrewmanThirdClass, RankIndicator.Crewman3rdClass, token), "Rank.crewman3rdClass.name"),
-        new Swatch(RankIndicator.Crewman2ndClass, "Crewman 2nd Class", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.CrewmanSecondClass, RankIndicator.Crewman2ndClass, token), "Rank.crewman2ndClass.name"),
-        new Swatch(RankIndicator.Crewman1stClass, "Crewman 1st Class", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.CrewmanFirstClass, RankIndicator.Crewman1stClass, token), "Rank.crewman1stClass.name"),
+        new Swatch(Rank.Crewman3rdClass, "Crewman 3rd Class", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.CrewmanThirdClass, Rank.Crewman3rdClass, token), "Rank.crewman3rdClass.name"),
+        new Swatch(Rank.Crewman2ndClass, "Crewman 2nd Class", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.CrewmanSecondClass, Rank.Crewman2ndClass, token), "Rank.crewman2ndClass.name"),
+        new Swatch(Rank.Crewman1stClass, "Crewman 1st Class", (token) => RankIndicatorCatalog.decorateSwatch(Enterprise.Border.CrewmanFirstClass, Rank.Crewman1stClass, token), "Rank.crewman1stClass.name"),
 
     ];
 
     private tosSwatches = [
-        new Swatch(RankIndicator.None, "None", (token) => RankIndicatorCatalog.decorateSwatch("", RankIndicator.None, token), "Rank.none.name"),
-        new Swatch(RankIndicator.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(TosEnsign, RankIndicator.Ensign, token), "Rank.ensign.name"),
-        new Swatch(RankIndicator.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(TosLieutenantJG, RankIndicator.LieutenantJG, token), "Rank.lieutenantJG.name"),
-        new Swatch(RankIndicator.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(TosLieutenant, RankIndicator.Lieutenant, token), "Rank.lieutenant.name"),
-        new Swatch(RankIndicator.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(TosLtCommander, RankIndicator.LtCommander, token), "Rank.ltCommander.name"),
-        new Swatch(RankIndicator.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(TosCommander, RankIndicator.Commander, token), "Rank.commander.name"),
-        new Swatch(RankIndicator.Captain, "Captain", (token) => RankIndicatorCatalog.decorateSwatch(TosCaptain, RankIndicator.Captain, token), "Rank.captain.name")
+        new Swatch(Rank.None, "None", (token) => RankIndicatorCatalog.decorateSwatch("", Rank.None, token), "Rank.none.name"),
+        new Swatch(Rank.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(TosEnsign, Rank.Ensign, token), "Rank.ensign.name"),
+        new Swatch(Rank.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(TosLieutenantJG, Rank.LieutenantJG, token), "Rank.lieutenantJG.name"),
+        new Swatch(Rank.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(TosLieutenant, Rank.Lieutenant, token), "Rank.lieutenant.name"),
+        new Swatch(Rank.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(TosLtCommander, Rank.LtCommander, token), "Rank.ltCommander.name"),
+        new Swatch(Rank.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(TosCommander, Rank.Commander, token), "Rank.commander.name"),
+        new Swatch(Rank.Captain, "Captain", (token) => RankIndicatorCatalog.decorateSwatch(TosCaptain, Rank.Captain, token), "Rank.captain.name")
     ];
 
     private monsterMaroonSwatches = [
-        new Swatch(RankIndicator.None, "None", (token) => RankIndicatorCatalog.decorateSwatch("", RankIndicator.None, token), "Rank.none.name"),
-        new Swatch(RankIndicator.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonEnsignBorder, RankIndicator.Ensign, token, MonsterMaroonEnsignBorderGradient), "Rank.ensign.name"),
-        new Swatch(RankIndicator.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonLieutenantJGBorder, RankIndicator.LieutenantJG, token, MonsterMaroonLieutenantJGBorderGradient), "Rank.lieutenantJG.name"),
-        new Swatch(RankIndicator.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonLieutenantBorder, RankIndicator.Lieutenant, token, MonsterMaroonLieutenantBorderGradient), "Rank.lieutenant.name"),
-        new Swatch(RankIndicator.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonLtCommanderBorder, RankIndicator.LtCommander, token, MonsterMaroonLtCommanderBorderGradient), "Rank.ltCommander.name"),
-        new Swatch(RankIndicator.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonCommanderBorder, RankIndicator.Commander, token, MonsterMaroonCommanderBorderGradient), "Rank.commander.name"),
-        new Swatch(RankIndicator.Captain, "Captain", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonCaptainBorder, RankIndicator.Captain, token, MonsterMaroonCaptainBorderGradient), "Rank.captain.name")
+        new Swatch(Rank.None, "None", (token) => RankIndicatorCatalog.decorateSwatch("", Rank.None, token), "Rank.none.name"),
+        new Swatch(Rank.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonEnsignBorder, Rank.Ensign, token, MonsterMaroonEnsignBorderGradient), "Rank.ensign.name"),
+        new Swatch(Rank.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonLieutenantJGBorder, Rank.LieutenantJG, token, MonsterMaroonLieutenantJGBorderGradient), "Rank.lieutenantJG.name"),
+        new Swatch(Rank.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonLieutenantBorder, Rank.Lieutenant, token, MonsterMaroonLieutenantBorderGradient), "Rank.lieutenant.name"),
+        new Swatch(Rank.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonLtCommanderBorder, Rank.LtCommander, token, MonsterMaroonLtCommanderBorderGradient), "Rank.ltCommander.name"),
+        new Swatch(Rank.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonCommanderBorder, Rank.Commander, token, MonsterMaroonCommanderBorderGradient), "Rank.commander.name"),
+        new Swatch(Rank.Captain, "Captain", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonCaptainBorder, Rank.Captain, token, MonsterMaroonCaptainBorderGradient), "Rank.captain.name")
     ];
 
     private klingonSwatches = [
-        new Swatch(RankIndicator.None, "None", (token) => RankIndicatorCatalog.decorateSwatch("", RankIndicator.None, token), "Rank.none.name"),
-        new Swatch(RankIndicator.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.Ensign, RankIndicator.Ensign, token), "Rank.ensign.name"),
-        new Swatch(RankIndicator.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.LieutenantJG, RankIndicator.LieutenantJG, token), "Rank.lieutenantJG.name"),
-        new Swatch(RankIndicator.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.Lieutenant, RankIndicator.Lieutenant, token), "Rank.lieutenant.name"),
-        new Swatch(RankIndicator.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.LtCommander, RankIndicator.LtCommander, token), "Rank.ltCommander.name"),
-        new Swatch(RankIndicator.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.Commander, RankIndicator.Commander, token), "Rank.commander.name"),
-        new Swatch(RankIndicator.Captain, "Captain (HoD)", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.Captain, RankIndicator.Captain, token), "Rank.captain.name")
+        new Swatch(Rank.None, "None", (token) => RankIndicatorCatalog.decorateSwatch("", Rank.None, token), "Rank.none.name"),
+        new Swatch(Rank.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.Ensign, Rank.Ensign, token), "Rank.ensign.name"),
+        new Swatch(Rank.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.LieutenantJG, Rank.LieutenantJG, token), "Rank.lieutenantJG.name"),
+        new Swatch(Rank.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.Lieutenant, Rank.Lieutenant, token), "Rank.lieutenant.name"),
+        new Swatch(Rank.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.LtCommander, Rank.LtCommander, token), "Rank.ltCommander.name"),
+        new Swatch(Rank.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.Commander, Rank.Commander, token), "Rank.commander.name"),
+        new Swatch(Rank.Captain, "Captain (HoD)", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.Captain, Rank.Captain, token), "Rank.captain.name")
     ];
 
 
@@ -958,41 +960,45 @@ class RankIndicatorCatalog {
         if (token.uniformEra === UniformEra.OriginalSeries) {
             return "";
         } else if (token.uniformEra === UniformEra.MonsterMaroon) {
-            switch (token.rankIndicator) {
-                case RankIndicator.Ensign:
-                    return MonsterMaroonEnsign;
-                case RankIndicator.LieutenantJG:
-                    return MonsterMaroonLieutenantJG;
-                case RankIndicator.Lieutenant:
-                    return MonsterMaroonLieutenant;
-                case RankIndicator.LtCommander:
-                    return MonsterMaroonLtCommander;
-                case RankIndicator.Commander:
-                    return MonsterMaroonCommander;
-                case RankIndicator.Captain:
-                    return MonsterMaroonCaptain;
-                default:
-                    return "";
+            if (token.variant === UniformVariantType.Base) {
+                switch (token.rankIndicator) {
+                    case Rank.Ensign:
+                        return MonsterMaroonEnsign;
+                    case Rank.LieutenantJG:
+                        return MonsterMaroonLieutenantJG;
+                    case Rank.Lieutenant:
+                        return MonsterMaroonLieutenant;
+                    case Rank.LtCommander:
+                        return MonsterMaroonLtCommander;
+                    case Rank.Commander:
+                        return MonsterMaroonCommander;
+                    case Rank.Captain:
+                        return MonsterMaroonCaptain;
+                    default:
+                        return "";
+                }
+            } else {
+                return "";
             }
         } else if (token.uniformEra === UniformEra.Enterprise) {
             switch (token.rankIndicator) {
-                case RankIndicator.Crewman3rdClass:
+                case Rank.Crewman3rdClass:
                     return Enterprise.Insignia.CrewmanThirdClass;
-                case RankIndicator.Crewman2ndClass:
+                case Rank.Crewman2ndClass:
                     return Enterprise.Insignia.CrewmanSecondClass;
-                case RankIndicator.Crewman1stClass:
+                case Rank.Crewman1stClass:
                     return Enterprise.Insignia.CrewmanFirstClass;
-                case RankIndicator.Ensign:
+                case Rank.Ensign:
                     return Enterprise.Insignia.Ensign;
-                case RankIndicator.LieutenantJG:
+                case Rank.LieutenantJG:
                     return Enterprise.Insignia.LieutenantJG;
-                case RankIndicator.Lieutenant:
+                case Rank.Lieutenant:
                     return Enterprise.Insignia.Lieutenant;
-                case RankIndicator.LtCommander:
+                case Rank.LtCommander:
                     return Enterprise.Insignia.LtCommander;
-                case RankIndicator.Commander:
+                case Rank.Commander:
                     return Enterprise.Insignia.Commander;
-                case RankIndicator.Captain:
+                case Rank.Captain:
                     return Enterprise.Insignia.Captain;
                 default:
                     return "";
@@ -1030,36 +1036,36 @@ class RankIndicatorCatalog {
             }
         } else {
             switch (token.rankIndicator) {
-                case RankIndicator.Ensign:
+                case Rank.Ensign:
                     return TngEnsignRankPip;
-                case RankIndicator.LieutenantJG:
+                case Rank.LieutenantJG:
                     return TngLtJGRankPip;
-                case RankIndicator.Lieutenant:
+                case Rank.Lieutenant:
                     return TngLtRankPip;
-                case RankIndicator.LtCommander:
+                case Rank.LtCommander:
                     return TngLcdrRankPip;
-                case RankIndicator.Commander:
+                case Rank.Commander:
                     return TngCmdrRankPip;
-                case RankIndicator.Captain:
+                case Rank.Captain:
                     return TngCaptainRankPip;
 
-                case RankIndicator.Crewman3rdClass:
+                case Rank.Crewman3rdClass:
                     return TngCrewman3rd;
-                case RankIndicator.Crewman2ndClass:
+                case Rank.Crewman2ndClass:
                     return TngCrewman2nd;
-                case RankIndicator.Crewman1stClass:
+                case Rank.Crewman1stClass:
                     return TngCrewman1st;
-                case RankIndicator.PettyOfficer3rdClass:
+                case Rank.PettyOfficer3rdClass:
                     return TngPettyOfficer3rdClass;
-                case RankIndicator.PettyOfficer2ndClass:
+                case Rank.PettyOfficer2ndClass:
                     return TngPettyOfficer2ndClass;
-                case RankIndicator.PettyOfficer1stClass:
+                case Rank.PettyOfficer1stClass:
                     return TngPettyOfficer1stClass;
-                case RankIndicator.ChiefPettyOfficer:
+                case Rank.ChiefPettyOfficer:
                     return TngChiefPettyOfficer;
-                case RankIndicator.SeniorChiefPettyOfficer:
+                case Rank.SeniorChiefPettyOfficer:
                     return TngSeniorChiefPettyOfficer;
-                case RankIndicator.MasterChiefPettyOfficer:
+                case Rank.MasterChiefPettyOfficer:
                     return TngMasterChiefPettyOfficer;
 
                 default:
@@ -1070,27 +1076,27 @@ class RankIndicatorCatalog {
 
     getBorderRankDefinitions(token: Token, bordered: boolean) {
         if (token.uniformEra === UniformEra.MonsterMaroon) {
-            if (token.rankIndicator === RankIndicator.Ensign) {
+            if (token.rankIndicator === Rank.Ensign) {
                 return MonsterMaroonSilverMetalGradient +
                     MonsterMaroonEnsignGradient +
                     (bordered ? MonsterMaroonEnsignBorderGradient : "");
-            } else if (token.rankIndicator === RankIndicator.LieutenantJG) {
+            } else if (token.rankIndicator === Rank.LieutenantJG) {
                 return MonsterMaroonSilverMetalGradient +
                     MonsterMaroonLieutenantJGGradient +
                     (bordered ? MonsterMaroonLieutenantJGBorderGradient : "");
-            } else if (token.rankIndicator === RankIndicator.Lieutenant) {
+            } else if (token.rankIndicator === Rank.Lieutenant) {
                 return MonsterMaroonSilverMetalGradient +
                     MonsterMaroonLieutenantGradient +
                     (bordered ? MonsterMaroonLieutenantBorderGradient : "");
-            } else if (token.rankIndicator === RankIndicator.LtCommander) {
+            } else if (token.rankIndicator === Rank.LtCommander) {
                 return MonsterMaroonSilverMetalGradient +
                     MonsterMaroonLtCommanderGradient +
                     (bordered ? MonsterMaroonLtCommanderBorderGradient : "");
-            } else if (token.rankIndicator === RankIndicator.Commander) {
+            } else if (token.rankIndicator === Rank.Commander) {
                 return MonsterMaroonSilverMetalGradient +
                     MonsterMaroonCommanderGradient +
                     (bordered ? MonsterMaroonCommanderBorderGradient : "");
-            } else if (token.rankIndicator === RankIndicator.Captain) {
+            } else if (token.rankIndicator === Rank.Captain) {
                 return MonsterMaroonSilverMetalGradient +
                     MonsterMaroonCaptainGradient +
                     (bordered ? MonsterMaroonCaptainBorderGradient : "");
@@ -1105,17 +1111,17 @@ class RankIndicatorCatalog {
     getBorderRankIndicator(token: Token) {
         if (token.uniformEra === UniformEra.OriginalSeries) {
             switch (token.rankIndicator) {
-                case RankIndicator.Ensign:
+                case Rank.Ensign:
                     return TosEnsignRankBorder.replace(DefaultRed, token.divisionColor);
-                case RankIndicator.LieutenantJG:
+                case Rank.LieutenantJG:
                     return TosLieutenantJGBorder.replace(DefaultRed, token.divisionColor);
-                case RankIndicator.Lieutenant:
+                case Rank.Lieutenant:
                     return TosLieutenantBorder.replace(DefaultRed, token.divisionColor);
-                case RankIndicator.LtCommander:
+                case Rank.LtCommander:
                     return TosLtCommanderBorder.replace(DefaultRed, token.divisionColor);
-                case RankIndicator.Commander:
+                case Rank.Commander:
                     return TosCommanderBorder.replace(DefaultRed, token.divisionColor);
-                case RankIndicator.Captain:
+                case Rank.Captain:
                     return TosCaptainBorder.replace(DefaultRed, token.divisionColor);
                 default:
                     return "";
@@ -1124,25 +1130,25 @@ class RankIndicatorCatalog {
             let strap = MonsterMaroonBorderStrap.replace(DefaultRed, token.divisionColor);
             let rank = "";
             switch (token.rankIndicator) {
-                case RankIndicator.Ensign:
+                case Rank.Ensign:
                     rank = MonsterMaroonEnsignBorder;
                     break;
-                case RankIndicator.LieutenantJG:
+                case Rank.LieutenantJG:
                     rank = MonsterMaroonLieutenantJGBorder;
                     break;
-                case RankIndicator.Lieutenant:
+                case Rank.Lieutenant:
                     rank = MonsterMaroonLieutenantBorder;
                     break;
-                case RankIndicator.LtCommander:
+                case Rank.LtCommander:
                     rank = MonsterMaroonLtCommanderBorder;
                     break;
-                case RankIndicator.Commander:
+                case Rank.Commander:
                     rank = MonsterMaroonCommanderBorder;
                     break;
-                case RankIndicator.Captain:
+                case Rank.Captain:
                     rank = MonsterMaroonCaptainBorder;
                     break;
-                case RankIndicator.None:
+                case Rank.None:
                 default:
                     strap = "";
                     rank = "";
@@ -1150,75 +1156,75 @@ class RankIndicatorCatalog {
             return strap + rank;
         } else if (token.uniformEra === UniformEra.Enterprise) {
             switch (token.rankIndicator) {
-                case RankIndicator.Captain:
+                case Rank.Captain:
                     return Enterprise.Border.Captain;
-                case RankIndicator.Commander:
+                case Rank.Commander:
                     return Enterprise.Border.Commander;
-                case RankIndicator.LtCommander:
+                case Rank.LtCommander:
                     return Enterprise.Border.LtCommander;
-                case RankIndicator.Lieutenant:
+                case Rank.Lieutenant:
                     return Enterprise.Border.Lieutenant;
-                case RankIndicator.LieutenantJG:
+                case Rank.LieutenantJG:
                     return Enterprise.Border.LieutenantJG;
-                case RankIndicator.Ensign:
+                case Rank.Ensign:
                     return Enterprise.Border.Ensign;
-                case RankIndicator.Crewman1stClass:
+                case Rank.Crewman1stClass:
                     return Enterprise.Border.CrewmanFirstClass;
-                case RankIndicator.Crewman2ndClass:
+                case Rank.Crewman2ndClass:
                     return Enterprise.Border.CrewmanSecondClass;
-                case RankIndicator.Crewman3rdClass:
+                case Rank.Crewman3rdClass:
                     return Enterprise.Border.CrewmanThirdClass;
                 default:
                     return "";
             }
         } else if (token.uniformEra === UniformEra.OriginalSeriesKlingon || token.uniformEra === UniformEra.Klingon) {
             switch (token.rankIndicator) {
-                case RankIndicator.Captain:
+                case Rank.Captain:
                     return KlingonRanks.Border.Captain;
-                case RankIndicator.Commander:
+                case Rank.Commander:
                     return KlingonRanks.Border.Commander;
-                case RankIndicator.LtCommander:
+                case Rank.LtCommander:
                     return KlingonRanks.Border.LtCommander;
-                case RankIndicator.Lieutenant:
+                case Rank.Lieutenant:
                     return KlingonRanks.Border.Lieutenant;
-                case RankIndicator.LieutenantJG:
+                case Rank.LieutenantJG:
                     return KlingonRanks.Border.LieutenantJG;
-                case RankIndicator.Ensign:
+                case Rank.Ensign:
                     return KlingonRanks.Border.Ensign;
                 default:
                     return "";
             }
         } else {
             switch (token.rankIndicator) {
-                case RankIndicator.Ensign:
+                case Rank.Ensign:
                     return TngEnsignRankPipBorder;
-                case RankIndicator.LieutenantJG:
+                case Rank.LieutenantJG:
                     return TngLtJgRankPipBorder;
-                case RankIndicator.Lieutenant:
+                case Rank.Lieutenant:
                     return TngLtRankPipBorder;
-                case RankIndicator.LtCommander:
+                case Rank.LtCommander:
                     return TngLcdrRankPipBorder;
-                case RankIndicator.Commander:
+                case Rank.Commander:
                     return TngCmdrRankPipBorder;
-                case RankIndicator.Captain:
+                case Rank.Captain:
                     return TngCaptainRankPipBorder;
-                case RankIndicator.Crewman3rdClass:
+                case Rank.Crewman3rdClass:
                     return TngCrewman3rdBorder;
-                case RankIndicator.Crewman2ndClass:
+                case Rank.Crewman2ndClass:
                     return TngCrewman2ndBorder;
-                case RankIndicator.Crewman1stClass:
+                case Rank.Crewman1stClass:
                     return TngCrewman1stBorder;
-                case RankIndicator.PettyOfficer3rdClass:
+                case Rank.PettyOfficer3rdClass:
                     return TngPettyOfficer3rdClassBorder;
-                case RankIndicator.PettyOfficer2ndClass:
+                case Rank.PettyOfficer2ndClass:
                     return TngPettyOfficer2ndClassBorder;
-                case RankIndicator.PettyOfficer1stClass:
+                case Rank.PettyOfficer1stClass:
                     return TngPettyOfficer1stClassBorder;
-                case RankIndicator.ChiefPettyOfficer:
+                case Rank.ChiefPettyOfficer:
                     return TngChiefPettyOfficerBorder;
-                case RankIndicator.SeniorChiefPettyOfficer:
+                case Rank.SeniorChiefPettyOfficer:
                     return TngSeniorChiefPettyOfficerBorder;
-                case RankIndicator.MasterChiefPettyOfficer:
+                case Rank.MasterChiefPettyOfficer:
                     return TngMasterChiefPettyOfficerBorder;
                 default:
                     return "";
@@ -1240,7 +1246,7 @@ class RankIndicatorCatalog {
         }
     }
 
-    private static decorateSwatch(svg: string, rankIndicator: RankIndicator, token: Token, gradient: string = "") {
+    private static decorateSwatch(svg: string, rankIndicator: Rank, token: Token, gradient: string = "") {
         if (token.uniformEra === UniformEra.OriginalSeries) {
             return `<svg viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <defs>
@@ -1255,7 +1261,7 @@ class RankIndicatorCatalog {
             + </g>
             </svg>`;
         } else if (token.uniformEra === UniformEra.MonsterMaroon) {
-            let gradientKey = 'rank' + RankIndicator[rankIndicator] + "Gradient";
+            let gradientKey = 'rank' + Rank[rankIndicator] + "Gradient";
             return `<svg viewBox="0 0 130 130" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <defs>`
                 + MonsterMaroonSilverMetalGradient.replace(new RegExp("silverMetalGradient", 'g'), "silverMetalGradient" + rankIndicator)

@@ -96,6 +96,7 @@ export enum Rank {
 
     // not specified
     DaiMon,
+    None
 }
 
 

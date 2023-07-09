@@ -1,3 +1,4 @@
+import { Rank } from "../helpers/ranks";
 import { Species } from "../helpers/speciesEnum";
 import { BodyType } from "../token/model/bodyTypeEnum";
 import { DivisionColors } from "../token/model/divisionColors";
@@ -7,19 +8,21 @@ import { HeadType } from "../token/model/headTypeEnum";
 import { MouthType } from "../token/model/mouthTypeEnum";
 import { NasoLabialFoldType } from "../token/model/nasoLabialFoldTypeEnum";
 import { NoseType } from "../token/model/noseTypeEnum";
-import { RankIndicator, isEnlistedRank } from "../token/model/rankIndicatorEnum";
+import { isEnlistedRank } from "../token/model/rankIndicatorEnum";
 import { SpeciesOption } from "../token/model/speciesOptionEnum";
 import SpeciesRestrictions from "../token/model/speciesRestrictions";
 import { Token } from "../token/model/token";
 import { UniformEra } from "../token/model/uniformEra";
-import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EXTRAS_TYPE, SET_TOKEN_EYE_COLOR, SET_TOKEN_EYE_TYPE, SET_TOKEN_FACIAL_HAIR_TYPE, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_LIPSTICK_COLOR, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NASO_LABIAL_FOLD_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES, SET_TOKEN_SPECIES_OPTION, SET_TOKEN_UNIFORM_ERA } from "./tokenActions";
+import UniformVariantRestrictions from "../token/model/uniformVariantRestrictions";
+import { UniformVariantType } from "../token/model/uniformVariantTypeEnum";
+import { SET_TOKEN_BODY_TYPE, SET_TOKEN_DIVISION_COLOR, SET_TOKEN_EXTRAS_TYPE, SET_TOKEN_EYE_COLOR, SET_TOKEN_EYE_TYPE, SET_TOKEN_FACIAL_HAIR_TYPE, SET_TOKEN_HAIR_COLOR, SET_TOKEN_HAIR_TYPE, SET_TOKEN_HEAD_TYPE, SET_TOKEN_LIPSTICK_COLOR, SET_TOKEN_MOUTH_TYPE, SET_TOKEN_NASO_LABIAL_FOLD_TYPE, SET_TOKEN_NOSE_TYPE, SET_TOKEN_RANK, SET_TOKEN_SKIN_COLOR, SET_TOKEN_SPECIES, SET_TOKEN_SPECIES_OPTION, SET_TOKEN_UNIFORM_ERA, SET_TOKEN_UNIFORM_VARIANT_TYPE } from "./tokenActions";
 
 const initialState = {
     species: Species.Human,
     divisionColor: DivisionColors.getColors(UniformEra.DominionWar)[0].color,
     skinColor: SpeciesRestrictions.DEFAULT_SKIN_COLOR,
     headType: HeadType.SofterNarrow,
-    rankIndicator: RankIndicator.None,
+    rankIndicator: Rank.None,
     hairType: HairType.DeLeve,
     hairColor: SpeciesRestrictions.DEFAULT_HAIR_COLOR,
     eyeColor: SpeciesRestrictions.getDefaultEyeColor(Species.Human),
@@ -32,7 +35,8 @@ const initialState = {
     lipstickColor: SpeciesRestrictions.DEFAULT_LIPSTICK_COLOR,
     facialHairType: [],
     speciesOption: SpeciesOption.Option1,
-    extras: []
+    extras: [],
+    variant: UniformVariantType.Base
 }
 
 const token = (state: Token = initialState, action) => {
@@ -78,6 +82,13 @@ const token = (state: Token = initialState, action) => {
             option = SpeciesOption.Option1;
         }
         let extras = state.extras.filter(e => SpeciesRestrictions.isExtraAvailableFor(e, newSpecies));
+
+        let variant = state.variant;
+        let variants = UniformVariantRestrictions.getAvailableVariants(state.uniformEra, state.bodyType, newSpecies, state.divisionColor);
+        if (variants.indexOf(variant) < 0) {
+            variant = UniformVariantType.Base;
+        }
+
         return {
             ...state,
             eyeColor: eyeColor,
@@ -88,10 +99,11 @@ const token = (state: Token = initialState, action) => {
             facialHairType: facialHairType,
             species: action.payload.species,
             speciesOption: option,
-            extras: extras
+            extras: extras,
+            variant: variant
         }
     }
-    case SET_TOKEN_UNIFORM_ERA:
+    case SET_TOKEN_UNIFORM_ERA: {
         let colour = state.divisionColor;
         let newColourOptions = DivisionColors.getColors(action.payload.era);
         let index = DivisionColors.indexOf(state.uniformEra, colour);
@@ -101,20 +113,38 @@ const token = (state: Token = initialState, action) => {
             colour = newColourOptions[0].color;
         }
         let rank = state.rankIndicator;
-        if (action.payload.era === UniformEra.OriginalSeries && isEnlistedRank(rank)) {
-            rank = RankIndicator.None;
+        if ((action.payload.era === UniformEra.OriginalSeries || action.payload.era === UniformEra.MonsterMaroon
+            || action.payload.era === UniformEra.Klingon || action.payload.era === UniformEra.OriginalSeriesKlingon)
+            && isEnlistedRank(rank)) {
+            rank = Rank.None;
         }
+        let variant = state.variant;
+        let variants = UniformVariantRestrictions.getAvailableVariants(action.payload.era, state.bodyType, state.species, colour);
+        if (variants.indexOf(variant) < 0) {
+            variant = UniformVariantType.Base;
+        }
+
         return {
             ...state,
             rankIndicator: rank,
             divisionColor: colour,
-            uniformEra: action.payload.era
+            uniformEra: action.payload.era,
+            variant: variant
         }
-    case SET_TOKEN_DIVISION_COLOR:
+    }
+    case SET_TOKEN_DIVISION_COLOR: {
+        let variant = state.variant;
+        let variants = UniformVariantRestrictions.getAvailableVariants(action.payload.era, state.bodyType, state.species, action.payload.color);
+        if (variants.indexOf(variant) < 0) {
+            variant = UniformVariantType.Base;
+        }
+
         return {
             ...state,
-            divisionColor: action.payload.color
+            divisionColor: action.payload.color,
+            variant: variant
         }
+    }
     case SET_TOKEN_RANK:
         return {
             ...state,
@@ -140,10 +170,21 @@ const token = (state: Token = initialState, action) => {
             ...state,
             nasoLabialFold: action.payload.type
         }
-    case SET_TOKEN_BODY_TYPE:
+    case SET_TOKEN_BODY_TYPE: {
+        let variant = state.variant;
+        let variants = UniformVariantRestrictions.getAvailableVariants(action.payload.era, action.payload.type, state.species, state.divisionColor);
+        if (variants.indexOf(variant) < 0) {
+            variant = UniformVariantType.Base;
+        }
         return {
             ...state,
             bodyType: action.payload.type
+        }
+    }
+    case SET_TOKEN_UNIFORM_VARIANT_TYPE:
+        return {
+            ...state,
+            variant: action.payload.type
         }
     case SET_TOKEN_EYE_TYPE:
         return {

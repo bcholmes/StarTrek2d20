@@ -4,13 +4,14 @@ import ColorSelection from "./colorSelection";
 import { DivisionColors } from "../model/divisionColors";
 import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
 import store from "../../state/store";
-import { setTokenBodyType, setTokenDivisionColor, setTokenRank, setUniformEra } from "../../state/tokenActions";
+import { setTokenBodyType, setTokenDivisionColor, setTokenRank, setTokenUniformVariantType, setUniformEra } from "../../state/tokenActions";
 import RankIndicatorCatalog from "../model/rankIndicatorCatalog";
 import SwatchButton from "./swatchButton";
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { connect } from "react-redux";
 import { Token } from "../model/token";
 import UniformCatalog from "../model/uniformCatalog";
+import UniformVariantRestrictions from "../model/uniformVariantRestrictions";
 
 interface IUniformSelectionViewProperties extends WithTranslation {
     token: Token;
@@ -51,7 +52,25 @@ class UniformSelectionView extends React.Component<IUniformSelectionViewProperti
                 onClick={() => store.dispatch(setTokenBodyType(s.id)) }
                 active={token.bodyType === s.id} token={token} key={'body-swatch-' + s.id }/>)}
             </div>
+
+            {this.renderVariants()}
         </div>);
+    }
+
+    renderVariants() {
+        const { t, token } = this.props;
+        if (UniformVariantRestrictions.isVariantOptionsAvailable(token)) {
+            return (<>
+                <p className="mt-4">{t('TokenCreator.section.body.uniformVariant')}:</p>
+                <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
+                {UniformCatalog.instance.getUniformVariantSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.localizedName} size="lg"
+                    onClick={() => store.dispatch(setTokenUniformVariantType(s.id)) }
+                    active={token.variant === s.id} token={token} key={'variant-swatch-' + s.id }/>)}
+                </div>
+            </>);
+        } else {
+            return null;
+        }
     }
 
     uniformErasList() {

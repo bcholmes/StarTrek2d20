@@ -1,3 +1,4 @@
+import { Rank } from "../../helpers/ranks";
 import { Species } from "../../helpers/speciesEnum";
 import { BodyType } from "./bodyTypeEnum";
 import { ExtraType } from "./extrasTypeEnum";
@@ -8,16 +9,16 @@ import { HeadType } from "./headTypeEnum";
 import { MouthType } from "./mouthTypeEnum";
 import { NasoLabialFoldType } from "./nasoLabialFoldTypeEnum";
 import { NoseType } from "./noseTypeEnum";
-import { RankIndicator } from "./rankIndicatorEnum";
 import { SpeciesOption } from "./speciesOptionEnum";
 import { UniformEra } from "./uniformEra";
+import { UniformVariantType } from "./uniformVariantTypeEnum";
 
 export interface Token {
     species: Species;
     divisionColor: string;
     skinColor: string;
     headType: HeadType;
-    rankIndicator: RankIndicator;
+    rankIndicator: Rank;
     noseType: NoseType;
     nasoLabialFold: NasoLabialFoldType;
     hairType: HairType;
@@ -31,4 +32,5 @@ export interface Token {
     facialHairType: FacialHairType[];
     speciesOption: SpeciesOption;
     extras: ExtraType[];
+    variant: UniformVariantType;
 }

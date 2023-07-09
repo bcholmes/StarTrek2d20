@@ -9,7 +9,7 @@ import { setTokenFacialHairTypes, setTokenLipstickColor, setTokenMouthType } fro
 import ColorSelection from "./colorSelection";
 import SpeciesRestrictions from "../model/speciesRestrictions";
 import FacialHairCatalog, { FacialHairPlacement } from "../model/facialHairCatalog";
-import { FacialHairType } from "../model/facialHairEnum";
+import { FacialHairCategory, FacialHairType } from "../model/facialHairEnum";
 
 interface IMouthSelectionViewProperties extends WithTranslation {
     token: Token;
@@ -44,7 +44,7 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
                 <p className="mt-4">{t('TokenCreator.section.mouth.moustache')}:</p>
                 <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
                 {FacialHairCatalog.instance.getSwatches(token, FacialHairPlacement.UpperLip).map(s => <SwatchButton svg={s.svg} title={s.name}
-                    onClick={() => this.addFacialHairType(token, s.id)} active={this.getMoustacheType(token) === s.id}
+                    onClick={() => this.addFacialHairType(token, s.id, FacialHairPlacement.UpperLip)} active={this.getMoustacheType(token) === s.id}
                     token={token}
                     key={'facial-hair-swatch-' + s.id }/>)}
                 </div>
@@ -52,7 +52,7 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
                 <p className="mt-4">{t('TokenCreator.section.mouth.beard')}:</p>
                 <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
                 {FacialHairCatalog.instance.getSwatches(token, FacialHairPlacement.Chin).map(s => <SwatchButton svg={s.svg} title={s.name}
-                    onClick={() => this.addFacialHairType(token, s.id)} active={this.getBeardTypes(token).indexOf(s.id) >= 0}
+                    onClick={() => this.addFacialHairType(token, s.id, FacialHairPlacement.Chin)} active={this.getBeardTypes(token).indexOf(s.id) >= 0}
                     token={token} size="lg"
                     key={'facial-hair-swatch-' + s.id }/>)}
                 </div>
@@ -62,18 +62,20 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
         }
     }
 
-    addFacialHairType(token: Token, type: FacialHairType) {
+    addFacialHairType(token: Token, type: FacialHairType, placement: FacialHairPlacement) {
         let newTypes = [];
-        let placement = FacialHairCatalog.instance.getPlacementFor(type);
+        if (type !== FacialHairType.None) {
+            placement = FacialHairCatalog.instance.getPlacementFor(type);
+        }
         token.facialHairType.filter(t => {
             let p = FacialHairCatalog.instance.getPlacementFor(t);
-            return p !== placement && p !== FacialHairPlacement.Both && placement !== FacialHairPlacement.Both;
+            return (placement === FacialHairPlacement.UpperLip && p === FacialHairPlacement.Chin) ||
+                (placement === FacialHairPlacement.Chin && p === FacialHairPlacement.UpperLip);
         }).forEach(t => newTypes.push(t));
 
-        if (type !== FacialHairType.None && newTypes.indexOf(type) < 0) {
+        if (type !== FacialHairType.None) {
             newTypes.push(type);
         }
-
         store.dispatch(setTokenFacialHairTypes(newTypes));
     }
 

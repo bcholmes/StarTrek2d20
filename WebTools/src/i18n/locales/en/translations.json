@@ -39,6 +39,7 @@
     "TokenCreator.section.body.colour": "Division Colour",
     "TokenCreator.section.body.rank": "Rank",
     "TokenCreator.section.body.type": "Body Type",
+    "TokenCreator.section.body.uniformVariant": "Uniform Variant",
 
     "TokenCreator.section.head": "Head",
 

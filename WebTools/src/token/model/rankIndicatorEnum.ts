@@ -1,34 +1,16 @@
-export enum RankIndicator {
-    None,
-    Ensign,
-    LieutenantJG,
-    Lieutenant,
-    LtCommander,
-    Commander,
-    Captain,
+import { Rank } from "../../helpers/ranks";
 
-    Crewman3rdClass,
-    Crewman2ndClass,
-    Crewman1stClass,
-    PettyOfficer3rdClass,
-    PettyOfficer2ndClass,
-    PettyOfficer1stClass,
-    ChiefPettyOfficer,
-    SeniorChiefPettyOfficer,
-    MasterChiefPettyOfficer,
-}
-
-export const isEnlistedRank = (rank: RankIndicator) => {
+export const isEnlistedRank = (rank: Rank) => {
     switch (rank) {
-        case RankIndicator.Crewman3rdClass:
-        case RankIndicator.Crewman2ndClass:
-        case RankIndicator.Crewman1stClass:
-        case RankIndicator.PettyOfficer3rdClass:
-        case RankIndicator.PettyOfficer2ndClass:
-        case RankIndicator.PettyOfficer1stClass:
-        case RankIndicator.ChiefPettyOfficer:
-        case RankIndicator.SeniorChiefPettyOfficer:
-        case RankIndicator.MasterChiefPettyOfficer:
+        case Rank.Crewman3rdClass:
+        case Rank.Crewman2ndClass:
+        case Rank.Crewman1stClass:
+        case Rank.PettyOfficer3rdClass:
+        case Rank.PettyOfficer2ndClass:
+        case Rank.PettyOfficer1stClass:
+        case Rank.ChiefPettyOfficer:
+        case Rank.SeniorChiefPettyOfficer:
+        case Rank.MasterChiefPettyOfficer:
             return true;
         default:
             return false;
