@@ -25,6 +25,7 @@ export enum Source {
     PicardS1,
     UtopiaPlanitia,
     LowerDecksCampaign,
+    CaptainsLog,
 
     None
 }
@@ -108,6 +109,7 @@ class Sources {
         [Source.DiscoveryCampaign]: new SourceViewModel(Source.DiscoveryCampaign, SourceType.CampaignBook, "Discovery Campaign"),
         [Source.UtopiaPlanitia]: new SourceViewModel(Source.UtopiaPlanitia, SourceType.Expansion, "Utopia Planitia"),
         [Source.LowerDecksCampaign]: new SourceViewModel(Source.LowerDecksCampaign, SourceType.CampaignBook, "Lower Decks Campaign", false),
+        [Source.CaptainsLog]: new SourceViewModel(Source.CaptainsLog, SourceType.CoreBook, "CaptainsLog", false),
     };
 
     getSources() {

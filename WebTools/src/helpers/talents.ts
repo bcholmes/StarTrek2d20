@@ -521,6 +521,8 @@ export class TalentModel implements ITalent {
         this.prerequisites.forEach((p, i) => {
             if (p instanceof SourcePrerequisite && !p.isPrerequisiteFulfilled(c)) {
                 include = false;
+            } else if (p instanceof NotSourcePrerequisite && c instanceof Starship && !p.isPrerequisiteFulfilled(c as Starship)) {
+                include = false;
             }
         });
         return include;

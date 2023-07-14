@@ -31,7 +31,7 @@ class MissionProfileSelection extends React.Component<IMissionProfileSelectionPr
             return (
                 <tbody key={i}>
                     <tr>
-                        <td className="" rowSpan={2}><div className="selection-header">{m.name}</div> {notes}</td>
+                        <td className="" rowSpan={2}><div className="selection-header">{m.localizedName}</div> {notes}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{t('Construct.department.command')}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "center" }}>{m.departments[Department.Command]}</td>
                         <td className="d=none d-md-table-cell" style={{ textAlign: "right" }}>{t('Construct.department.security')}</td>

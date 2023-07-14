@@ -12,3 +12,4 @@ WebTools/src/**/*.js
 /WebTools/obj/Debug
 /WebTools/obj/Release
 .DS_Store
+.vscode/

@@ -271,7 +271,23 @@ class MissionProfiles {
             undefined,
             "",
             "",
-            new SourcePrerequisite(Source.UtopiaPlanitia))
+            new SourcePrerequisite(Source.UtopiaPlanitia)),
+        [MissionProfile.Warship]: new MissionProfileModel(
+            MissionProfile.Warship,
+            "Warship",
+            [2, 2, 3, 3, 1, 1],
+            [
+                TalentsHelper.getTalent("Ablative Armor"),
+                TalentsHelper.getTalent("Fast Targeting Systems"),
+                TalentsHelper.getTalent("Improved Damage Control"),
+                TalentsHelper.getTalent("Expanded Munitions"),
+                TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher")
+            ],
+            undefined,
+            "",
+            "",
+            new SourcePrerequisite(Source.UtopiaPlanitia)),
+
     };
 
     private _klingonProfiles: { [id: number]: MissionProfileModel } = {
@@ -329,8 +345,8 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Rugged Design")
             ],
             CharacterType.KlingonWarrior),
-        [MissionProfile.Tactical]: new MissionProfileModel(
-            MissionProfile.Tactical,
+        [MissionProfile.Warship]: new MissionProfileModel(
+            MissionProfile.Warship,
             "Warship",
             [2, 2, 3, 3, 1, 1],
             [
@@ -338,7 +354,8 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Fast Targeting Systems"),
                 TalentsHelper.getTalent("Improved Damage Control"),
                 TalentsHelper.getTalent("Quantum Torpedoes"),
-                TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher")
+                TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher"),
+                TalentsHelper.getTalent("Expanded Munitions")
             ],
             CharacterType.KlingonWarrior),
         [MissionProfile.HouseGuard]: new MissionProfileModel(
@@ -375,7 +392,11 @@ class MissionProfiles {
     }
 
     getMissionProfile(profile: MissionProfile, type: CharacterType) {
-        return (type === CharacterType.KlingonWarrior) ? this._klingonProfiles[profile] : this._profiles[profile];
+        if (type === CharacterType.KlingonWarrior && profile === MissionProfile.Tactical) {
+            return this.getMissionProfile(MissionProfile.Warship, type); // backward compatibility
+        } else {
+            return (type === CharacterType.KlingonWarrior) ? this._klingonProfiles[profile] : this._profiles[profile];
+        }
     }
 
     getMissionProfileByName(profile: string, type: CharacterType) {

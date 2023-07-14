@@ -9,7 +9,7 @@ import { setTokenFacialHairTypes, setTokenLipstickColor, setTokenMouthType } fro
 import ColorSelection from "./colorSelection";
 import SpeciesRestrictions from "../model/speciesRestrictions";
 import FacialHairCatalog, { FacialHairPlacement } from "../model/facialHairCatalog";
-import { FacialHairCategory, FacialHairType } from "../model/facialHairEnum";
+import { FacialHairType } from "../model/facialHairEnum";
 
 interface IMouthSelectionViewProperties extends WithTranslation {
     token: Token;
