@@ -251,31 +251,31 @@ export class MineTypeModel {
     readonly type: MineType;
     readonly description: string;
     readonly dice: number;
-    readonly effect: string;
+    readonly _weaponEffects: WeaponQuality[];
     readonly _weaponQualities: WeaponQuality[];
     readonly century: number;
 
     static readonly TYPES = [
-        new MineTypeModel(MineType.Blackout,    "Blackout",    1, "", [ new WeaponQuality(Quality.Jamming) ],             23),
-        new MineTypeModel(MineType.Blade,       "Blade",       2, "Piercing 2", [],                                       22),
-        new MineTypeModel(MineType.Chroniton,   "Chroniton",   2, "", [ new WeaponQuality(Quality.Slowing) ],             25),
-        new MineTypeModel(MineType.Gravimetric, "Gravimetric", 2, "Piercing 1", [ new WeaponQuality(Quality.HighYield) ], 24),
-        new MineTypeModel(MineType.Neutronic,   "Neutronic",   3, "Dampening", [],                                        25),
-        new MineTypeModel(MineType.Nuclear,     "Nuclear",     2, "Vicious 1", [],                                        20),
-        new MineTypeModel(MineType.Photon,      "Photon",      2, "", [ new WeaponQuality(Quality.HighYield) ],           23),
-        new MineTypeModel(MineType.Photonic,    "Photonic",    1, "", [ new WeaponQuality(Quality.HighYield) ],           22),
-        new MineTypeModel(MineType.Plasma,      "Plasma",      2, "Persistent 4", [],                                     23),
-        new MineTypeModel(MineType.Polaron,     "Polaron",     2, "Piercing 2", [],                                       24),
-        new MineTypeModel(MineType.Positron,    "Positron",    2, "Dampening", [],                                        24),
-        new MineTypeModel(MineType.Quantum,     "Quantum",     3, "Vicious 1", [ new WeaponQuality(Quality.HighYield) ],  24),
-        new MineTypeModel(MineType.Tetryonic,   "Tetryonic",   1, "Depleting", [ new WeaponQuality(Quality.HighYield) ],  24),
+        new MineTypeModel(MineType.Blackout,    "Blackout",    1, [], [ new WeaponQuality(Quality.Jamming) ],             23),
+        new MineTypeModel(MineType.Blade,       "Blade",       2, [ new WeaponQuality(Quality.Piercing, 2) ], [],                                       22),
+        new MineTypeModel(MineType.Chroniton,   "Chroniton",   2, [], [ new WeaponQuality(Quality.Slowing) ],             25),
+        new MineTypeModel(MineType.Gravimetric, "Gravimetric", 2, [ new WeaponQuality(Quality.Piercing, 1) ], [ new WeaponQuality(Quality.HighYield) ], 24),
+        new MineTypeModel(MineType.Neutronic,   "Neutronic",   3, [ new WeaponQuality(Quality.Dampening) ], [],                                        25),
+        new MineTypeModel(MineType.Nuclear,     "Nuclear",     2, [ new WeaponQuality(Quality.Vicious, 1) ], [],                                        20),
+        new MineTypeModel(MineType.Photon,      "Photon",      2, [], [ new WeaponQuality(Quality.HighYield) ],           23),
+        new MineTypeModel(MineType.Photonic,    "Photonic",    1, [], [ new WeaponQuality(Quality.HighYield) ],           22),
+        new MineTypeModel(MineType.Plasma,      "Plasma",      2, [ new WeaponQuality(Quality.PersistentX, 4) ], [],                                     23),
+        new MineTypeModel(MineType.Polaron,     "Polaron",     2, [ new WeaponQuality(Quality.Piercing, 2) ], [],                                       24),
+        new MineTypeModel(MineType.Positron,    "Positron",    2, [ new WeaponQuality(Quality.Piercing, 2) ], [],                                        24),
+        new MineTypeModel(MineType.Quantum,     "Quantum",     3, [ new WeaponQuality(Quality.Vicious, 1) ], [ new WeaponQuality(Quality.HighYield) ],  24),
+        new MineTypeModel(MineType.Tetryonic,   "Tetryonic",   1, [ new WeaponQuality(Quality.Depleting) ], [ new WeaponQuality(Quality.HighYield) ],  24),
     ];
 
-    constructor(type: MineType, description: string, dice: number, effect: string, quality: WeaponQuality[], century: number) {
+    constructor(type: MineType, description: string, dice: number, effect:  WeaponQuality[], quality: WeaponQuality[], century: number) {
         this.type = type;
         this.description = description;
         this.dice = dice;
-        this.effect = effect;
+        this._weaponEffects = effect;
         this._weaponQualities = quality;
         this.century = century;
     }
@@ -297,6 +297,11 @@ export class MineTypeModel {
         if (qualities) {
             result.push(qualities);
         }
+        return result.join(", ");
+    }
+
+    get effect() {
+        let result = this._weaponEffects.map(q => q.localizedDescription);
         return result.join(", ");
     }
 

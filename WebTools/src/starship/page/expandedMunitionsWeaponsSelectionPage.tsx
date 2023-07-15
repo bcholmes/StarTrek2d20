@@ -5,7 +5,6 @@ import { ShipTalentDetailSelection, Starship } from "../../common/starship";
 import { Button } from "../../components/button";
 import { Header } from "../../components/header";
 import { ModalControl } from "../../components/modal";
-import { Weapon } from "../../helpers/weapons";
 import { addStarshipTalentDetailSelection, nextStarshipWorkflowStep, removeStarshipTalentDetailSelection } from "../../state/starshipActions";
 import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";

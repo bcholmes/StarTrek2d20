@@ -6,7 +6,7 @@ import { Button } from "../../components/button";
 import { Dialog } from "../../components/dialog";
 import { Header } from "../../components/header";
 import { TalentsHelper } from "../../helpers/talents";
-import { nextStarshipWorkflowStep, removeAllStarshipTalentDetailSelection, removeStarshipTalentDetailSelection, setAdditionalTalents } from "../../state/starshipActions";
+import { nextStarshipWorkflowStep, removeAllStarshipTalentDetailSelection, setAdditionalTalents } from "../../state/starshipActions";
 import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
