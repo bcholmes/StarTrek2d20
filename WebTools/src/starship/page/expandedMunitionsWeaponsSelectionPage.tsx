@@ -75,9 +75,13 @@ class ExpandedMunitionsWeaponsSelectionPage extends React.Component<IExpandedMun
     }
 
     nextPage() {
-        let step = this.props.workflow.peekNextStep();
-        store.dispatch(nextStarshipWorkflowStep());
-        Navigation.navigateToPage(step.page);
+        if (this.props.starship.talentDetailSelections.length < this.numberOfWeapons()) {
+            Dialog.show("You have not specified all of the additional weapons");
+        } else {
+            let step = this.props.workflow.peekNextStep();
+            store.dispatch(nextStarshipWorkflowStep());
+            Navigation.navigateToPage(step.page);
+        }
     }
 
     closeModal() {

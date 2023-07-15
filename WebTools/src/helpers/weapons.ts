@@ -83,6 +83,7 @@ export class WeaponTypeModel {
     static allStarshipTypes() {
         return [ WeaponTypeModel.TYPES[WeaponType.ENERGY],
             WeaponTypeModel.TYPES[WeaponType.TORPEDO],
+            WeaponTypeModel.TYPES[WeaponType.MINE],
             WeaponTypeModel.TYPES[WeaponType.CAPTURE] ];
     }
 }
@@ -149,6 +150,10 @@ export class EnergyLoadTypeModel {
         return this.allTypes().filter(e => year > centuryToYear(e.century));
     }
 
+
+    get effectAndQualities() {
+        return this.qualities;
+    }
     get qualities() {
         let result = this._weaponQualities.map(q => q.localizedDescription);
         return result.join(", ");
@@ -207,6 +212,94 @@ export class TorpedoLoadTypeModel {
         return this.allTypes().filter(l => year > centuryToYear(l.century));
     }
 
+    get effectAndQualities() {
+        let result = [];
+        if (this.effect) {
+            result.push(this.effect);
+        }
+        let qualities = this.qualities;
+        if (qualities) {
+            result.push(qualities);
+        }
+        return result.join(", ");
+    }
+
+    get qualities() {
+        let result = this._weaponQualities.map(q => q.localizedDescription);
+        return result.join(", ");
+    }
+}
+
+export enum MineType {
+    Blackout,
+    Blade,
+    Chroniton,
+    Gravimetric,
+    Neutronic,
+    Nuclear,
+    Photon,
+    Photonic,
+    Plasma,
+    Polaron,
+    Positron,
+    Quantum,
+    Tetryonic
+}
+
+export class MineTypeModel {
+
+    readonly type: MineType;
+    readonly description: string;
+    readonly dice: number;
+    readonly effect: string;
+    readonly _weaponQualities: WeaponQuality[];
+    readonly century: number;
+
+    static readonly TYPES = [
+        new MineTypeModel(MineType.Blackout,    "Blackout",    1, "", [ new WeaponQuality(Quality.Jamming) ],             23),
+        new MineTypeModel(MineType.Blade,       "Blade",       2, "Piercing 2", [],                                       22),
+        new MineTypeModel(MineType.Chroniton,   "Chroniton",   2, "", [ new WeaponQuality(Quality.Slowing) ],             25),
+        new MineTypeModel(MineType.Gravimetric, "Gravimetric", 2, "Piercing 1", [ new WeaponQuality(Quality.HighYield) ], 24),
+        new MineTypeModel(MineType.Neutronic,   "Neutronic",   3, "Dampening", [],                                        25),
+        new MineTypeModel(MineType.Nuclear,     "Nuclear",     2, "Vicious 1", [],                                        20),
+        new MineTypeModel(MineType.Photon,      "Photon",      2, "", [ new WeaponQuality(Quality.HighYield) ],           23),
+        new MineTypeModel(MineType.Photonic,    "Photonic",    1, "", [ new WeaponQuality(Quality.HighYield) ],           22),
+        new MineTypeModel(MineType.Plasma,      "Plasma",      2, "Persistent 4", [],                                     23),
+        new MineTypeModel(MineType.Polaron,     "Polaron",     2, "Piercing 2", [],                                       24),
+        new MineTypeModel(MineType.Positron,    "Positron",    2, "Dampening", [],                                        24),
+        new MineTypeModel(MineType.Quantum,     "Quantum",     3, "Vicious 1", [ new WeaponQuality(Quality.HighYield) ],  24),
+        new MineTypeModel(MineType.Tetryonic,   "Tetryonic",   1, "Depleting", [ new WeaponQuality(Quality.HighYield) ],  24),
+    ];
+
+    constructor(type: MineType, description: string, dice: number, effect: string, quality: WeaponQuality[], century: number) {
+        this.type = type;
+        this.description = description;
+        this.dice = dice;
+        this.effect = effect;
+        this._weaponQualities = quality;
+        this.century = century;
+    }
+
+    static allTypes() {
+        return MineTypeModel.TYPES;
+    }
+
+    static allTypesByYear(year: number) {
+        return this.allTypes().filter(l => year > centuryToYear(l.century));
+    }
+
+    get effectAndQualities() {
+        let result = [];
+        if (this.effect) {
+            result.push(this.effect);
+        }
+        let qualities = this.qualities;
+        if (qualities) {
+            result.push(qualities);
+        }
+        return result.join(", ");
+    }
+
     get qualities() {
         let result = this._weaponQualities.map(q => q.localizedDescription);
         return result.join(", ");
@@ -256,14 +349,14 @@ export class Weapon {
     type: WeaponType;
     eras: Era[][];
     requiresTalent: boolean;
-    loadType?: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel;
+    loadType?: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel|MineTypeModel;
     deliveryType?: DeliverySystemModel;
     qualities: WeaponQuality[];
     effects: WeaponQuality[];
     hands?: number;
 
     constructor(usage: UsageCategory, name: string, dice: number, type: WeaponType,
-            loadType?: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel,
+            loadType?: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel|MineTypeModel,
             deliveryType?: DeliverySystemModel,
             eras: Era[][] = [[ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ],[ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ]],
             requiresTalent: boolean = false) {
@@ -359,6 +452,8 @@ export class Weapon {
             return this.loadType.description + " " + this.deliveryType.description;
         } else if (this.type === WeaponType.TORPEDO) {
             return this.loadType.description + " Torpedoes";
+        } else if (this.type === WeaponType.MINE) {
+            return this.loadType.description + " Mines";
         } else {
             return this.loadType.description;
         }
@@ -373,7 +468,10 @@ export class Weapon {
                 result = (this.loadType as EnergyLoadTypeModel).qualities;
             } else if (this.loadType != null && this.loadType instanceof TorpedoLoadTypeModel) {
                 let torpedoLoadType = this.loadType as TorpedoLoadTypeModel;
-                result = torpedoLoadType.qualities;
+                result = torpedoLoadType.effectAndQualities;
+            } else if (this.loadType != null && this.loadType instanceof MineTypeModel) {
+                let torpedoLoadType = this.loadType as MineTypeModel;
+                result = torpedoLoadType.effectAndQualities;
             }
 
             if (this.deliveryType != null) {
@@ -401,7 +499,7 @@ export class Weapon {
     }
 
     static createStarshipWeapon(name: string, type: WeaponType,
-        loadType: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel,
+        loadType: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel|MineTypeModel,
         deliveryType?: DeliverySystemModel,
         eras: Era[][] = [[ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ],[ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ]],
         requiresTalent: boolean = false) {

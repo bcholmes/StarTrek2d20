@@ -24,7 +24,7 @@ import { TalentsHelper } from './talents';
 import { TalentSelection } from './talentSelection';
 import { getAllTracks, Track } from './trackEnum';
 import { Upbringing, UpbringingsHelper } from './upbringings';
-import { CaptureType, CaptureTypeModel, DeliverySystem, DeliverySystemModel, EnergyLoadType, EnergyLoadTypeModel, TorpedoLoadType, TorpedoLoadTypeModel, UsageCategory, Weapon, WeaponType } from './weapons';
+import { CaptureType, CaptureTypeModel, DeliverySystem, DeliverySystemModel, EnergyLoadType, EnergyLoadTypeModel, MineType, MineTypeModel, TorpedoLoadType, TorpedoLoadTypeModel, UsageCategory, Weapon, WeaponType } from './weapons';
 
 class Marshaller {
 
@@ -324,7 +324,7 @@ class Marshaller {
         };
     }
 
-    private convertLoadType(loadType: EnergyLoadTypeModel|TorpedoLoadTypeModel|CaptureTypeModel) {
+    private convertLoadType(loadType: EnergyLoadTypeModel|TorpedoLoadTypeModel|CaptureTypeModel|MineTypeModel) {
         if (loadType == null) {
             return null;
         } else if (loadType instanceof EnergyLoadTypeModel) {
@@ -336,6 +336,9 @@ class Marshaller {
         } else if (loadType instanceof CaptureTypeModel) {
             let temp = loadType as CaptureTypeModel;
             return CaptureType[temp.type];
+        } else if (loadType instanceof MineTypeModel) {
+            let temp = loadType as MineTypeModel;
+            return MineType[temp.type];
         } else {
             return null;
         }
@@ -499,6 +502,12 @@ class Marshaller {
         } else if (weaponType === WeaponType.CAPTURE) {
             CaptureTypeModel.allTypes().forEach(l => {
                 if (CaptureType[l.type] === json["loadType"]) {
+                    loadType = l;
+                }
+            });
+        } else if (weaponType === WeaponType.MINE) {
+            MineTypeModel.allTypes().forEach(l => {
+                if (MineType[l.type] === json["loadType"]) {
                     loadType = l;
                 }
             });

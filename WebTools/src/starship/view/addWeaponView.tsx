@@ -1,9 +1,7 @@
 import React from "react";
 import { Button } from "../../components/button";
-import { DropDownInput } from "../../components/dropDownInput";
-import { CaptureTypeModel, DeliverySystemModel, EnergyLoadTypeModel, TorpedoLoadTypeModel, Weapon, WeaponType, WeaponTypeModel } from "../../helpers/weapons";
-import { addStarshipWeapon } from "../../state/starshipActions";
-import store from "../../state/store";
+import { DropDownElement, DropDownInput, DropDownSelect } from "../../components/dropDownInput";
+import { CaptureTypeModel, DeliverySystemModel, EnergyLoadTypeModel, MineType, MineTypeModel, TorpedoLoadTypeModel, Weapon, WeaponType, WeaponTypeModel } from "../../helpers/weapons";
 
 interface IAddWeaponViewProperties {
     serviceYear?: number;
@@ -12,7 +10,7 @@ interface IAddWeaponViewProperties {
 }
 interface IAddWeaponViewState {
     weaponType: WeaponTypeModel;
-    loadType: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel;
+    loadType: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel|MineTypeModel;
     deliverySystem: DeliverySystemModel;
 }
 
@@ -36,12 +34,14 @@ class AddWeaponView extends React.Component<IAddWeaponViewProperties, IAddWeapon
             load = this.getTorpedoLoadTypes()[0];
         } else if (type.type === WeaponType.CAPTURE && !(load instanceof CaptureTypeModel)) {
             load = this.getCaptureTypes()[0];
+        } else if (type.type === WeaponType.MINE && !(load instanceof MineTypeModel)) {
+            load = this.getMineTypes()[0];
         }
 
         this.setState((state) => ({...state, weaponType: type, loadType: load }));
     }
 
-    selectLoadType(type: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel) {
+    selectLoadType(type: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel|MineTypeModel) {
         this.setState((state) => ({...state, loadType: type }));
     }
 
@@ -63,6 +63,19 @@ class AddWeaponView extends React.Component<IAddWeaponViewProperties, IAddWeapon
         } else {
             return TorpedoLoadTypeModel.allTypes();
         }
+    }
+
+    getMineTypes() {
+        if (this.props.serviceYear) {
+            return MineTypeModel.allTypesByYear(this.props.serviceYear);
+        } else {
+            return MineTypeModel.allTypes();
+        }
+    }
+
+    getMineTypeById(type: MineType) {
+        let types = MineTypeModel.allTypes().filter(t => t.type === type);
+        return types?.length ? types[0] : null;
     }
 
     getCaptureTypes() {
@@ -113,6 +126,14 @@ class AddWeaponView extends React.Component<IAddWeaponViewProperties, IAddWeapon
                     items={ this.getCaptureTypes().map(t => t.description) }
                     defaultValue={ this.state.loadType.description }
                     onChange={(index) => this.selectLoadType(this.getCaptureTypes()[index] ) }/>
+            </div>);
+        } else if (this.state.weaponType != null && this.state.weaponType.type === WeaponType.MINE) {
+            load = (<div className="mt-4">
+                <p>What type of technology is used as the mine's load?</p>
+                <DropDownSelect
+                    items={ this.getMineTypes().map(t => new DropDownElement(t.type, t.description)) }
+                    defaultValue={ this.state.loadType.type }
+                    onChange={(type) => this.selectLoadType(this.getMineTypeById(type as MineType) ) }/>
             </div>);
         }
 
