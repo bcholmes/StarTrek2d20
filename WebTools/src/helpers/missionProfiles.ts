@@ -105,7 +105,8 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Fast Targeting Systems"),
                 TalentsHelper.getTalent("Improved Damage Control"),
                 TalentsHelper.getTalent("Quantum Torpedoes"),
-                TalentsHelper.getTalent("Improved Impulse Drive")
+                TalentsHelper.getTalent("Improved Impulse Drive"),
+                TalentsHelper.getTalent("Expanded Munitions")
             ]),
         [MissionProfile.ScientificAndSurvey]: new MissionProfileModel(
             MissionProfile.ScientificAndSurvey,

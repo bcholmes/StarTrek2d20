@@ -3,7 +3,7 @@ import pako from 'pako';
 import { character, Character, CharacterAttribute, CharacterRank, CharacterSkill, CharacterTalent, EnvironmentStep, SpeciesStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
-import { ShipBuildType, ShipBuildTypeModel, SimpleStats, Starship } from '../common/starship';
+import { ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
 import AgeHelper from './age';
 import { Attribute } from './attributes';
 import { Career } from './careerEnum';
@@ -303,17 +303,25 @@ class Marshaller {
             }
         }
         if (starship.additionalWeapons.length > 0) {
-            sheet['additionalWeapons'] = starship.additionalWeapons.map(w => ({
-                "usageCategory": w.usageCategory == null ? null : UsageCategory[w.usageCategory],
-                "type": w.type == null ? null : WeaponType[w.type],
-                "name": w.name,
-                "baseDice": w.baseDice,
-                "loadType": this.convertLoadType(w.loadType),
-                "deliverySystem": w.deliveryType == null ? null : DeliverySystem[w.deliveryType.type]
-
+            sheet['additionalWeapons'] = starship.additionalWeapons.map(w => this.encodeWeapon(w));
+        }
+        if (starship.talentDetailSelections) {
+            sheet['talentDetails'] = starship.talentDetailSelections.map(s => ({
+                weapon: this.encodeWeapon(s.weapon)
             }));
         }
         return this.encode(sheet);
+    }
+
+    private encodeWeapon(w: Weapon) {
+        return {
+            "usageCategory": w.usageCategory == null ? null : UsageCategory[w.usageCategory],
+            "type": w.type == null ? null : WeaponType[w.type],
+            "name": w.name,
+            "baseDice": w.baseDice,
+            "loadType": this.convertLoadType(w.loadType),
+            "deliverySystem": w.deliveryType == null ? null : DeliverySystem[w.deliveryType.type]
+        };
     }
 
     private convertLoadType(loadType: EnergyLoadTypeModel|TorpedoLoadTypeModel|CaptureTypeModel) {
@@ -438,7 +446,14 @@ class Marshaller {
         }
 
         if (json.additionalWeapons) {
-            result.additionalWeapons = json.additionalWeapons.map(j => this.decodeAdditionalWeapon(j));
+            result.additionalWeapons = json.additionalWeapons.map(j => this.decodeWeapon(j));
+        }
+
+        if (json.talentDetails) {
+            result.talentDetailSelections = json.talentDetails.map(detail => {
+                let w = detail.weapon;
+                return new ShipTalentDetailSelection(this.decodeWeapon(w));
+            });
         }
 
         Starship.updateSystemAndDepartments(result);
@@ -446,7 +461,7 @@ class Marshaller {
         return result;
     }
 
-    private decodeAdditionalWeapon(json) {
+    private decodeWeapon(json) {
 
         let usageCategory = null;
         [UsageCategory.Character, UsageCategory.Starship].forEach(c => { if (UsageCategory[c] === json["usageCategory"]) usageCategory = c; });

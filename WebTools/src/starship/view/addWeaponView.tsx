@@ -7,6 +7,7 @@ import store from "../../state/store";
 
 interface IAddWeaponViewProperties {
     serviceYear?: number;
+    addWeapon: (Weapon) => void;
     onClose: () => void;
 }
 interface IAddWeaponViewState {
@@ -79,10 +80,10 @@ class AddWeaponView extends React.Component<IAddWeaponViewProperties, IAddWeapon
     addWeapon() {
         if (this.state.weaponType.type === WeaponType.ENERGY) {
             let weapon = Weapon.createStarshipWeapon('', this.state.weaponType.type, this.state.loadType, this.state.deliverySystem);
-            store.dispatch(addStarshipWeapon(weapon));
+            this.props.addWeapon(weapon);
         } else {
             let weapon = Weapon.createStarshipWeapon('', this.state.weaponType.type, this.state.loadType);
-            store.dispatch(addStarshipWeapon(weapon));
+            this.props.addWeapon(weapon);
         }
         this.props.onClose();
     }

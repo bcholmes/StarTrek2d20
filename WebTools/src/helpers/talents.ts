@@ -2834,7 +2834,7 @@ export class Talents {
                 "Expanded Munitions",
                 "The ship has been designed to defend itself from all manner of threats. As such, it has either additional energy delivery systems or extended storage for torpedoes or mines. The ship may add any one weapon to its profile. This talent may be taken multiple times, adding a different weapon each time. Any prerequisites for the weapon or its delivery system still apply.",
                 [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
-                1,
+                999,
                 "Starship"),
             new TalentModel(
                 "Expansive Department",

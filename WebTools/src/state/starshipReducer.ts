@@ -1,6 +1,6 @@
 import { SimpleStats, Starship } from "../common/starship";
 import { ShipBuildWorkflow } from "../starship/model/shipBuildWorkflow";
-import { ADD_STARSHIP_REFIT, ADD_STARSHIP_WEAPON, CHANGE_STARSHIP_SCALE, CHANGE_STARSHIP_SIMPLE_CLASS_NAME, CHANGE_STARSHIP_SIMPLE_DEPARTMENT, CHANGE_STARSHIP_SIMPLE_SYSTEM, CHANGE_STARSHIP_SPACEFRAME_CLASS_NAME, CHANGE_STARSHIP_SPACEFRAME_DEPARTMENT, CHANGE_STARSHIP_SPACEFRAME_SCALE, CHANGE_STARSHIP_SPACEFRAME_SERVICE_YEAR, CHANGE_STARSHIP_SPACEFRAME_SYSTEM, CREATE_NEW_STARSHIP, DELETE_STARSHIP_REFIT, DELETE_STARSHIP_WEAPON, NEXT_STARSHIP_WORKFLOW_STEP, REWIND_TO_STARSHIP_WORKFLOW_STEP, SET_ADDITIONAL_TALENTS, SET_STARSHIP_MISSION_POD, SET_STARSHIP_MISSION_PROFILE, SET_STARSHIP_MISSION_PROFILE_TALENT, SET_STARSHIP_NAME, SET_STARSHIP_REGISTRY, SET_STARSHIP_SPACEFRAME, SET_STARSHIP_TRAITS } from "./starshipActions";
+import { ADD_STARSHIP_REFIT, ADD_STARSHIP_TALENT_SELECTION, ADD_STARSHIP_WEAPON, CHANGE_STARSHIP_SCALE, CHANGE_STARSHIP_SIMPLE_CLASS_NAME, CHANGE_STARSHIP_SIMPLE_DEPARTMENT, CHANGE_STARSHIP_SIMPLE_SYSTEM, CHANGE_STARSHIP_SPACEFRAME_CLASS_NAME, CHANGE_STARSHIP_SPACEFRAME_DEPARTMENT, CHANGE_STARSHIP_SPACEFRAME_SCALE, CHANGE_STARSHIP_SPACEFRAME_SERVICE_YEAR, CHANGE_STARSHIP_SPACEFRAME_SYSTEM, CREATE_NEW_STARSHIP, DELETE_STARSHIP_REFIT, DELETE_STARSHIP_WEAPON, NEXT_STARSHIP_WORKFLOW_STEP, REMOVE_ALL_STARSHIP_TALENT_SELECTION, REMOVE_STARSHIP_TALENT_SELECTION, REWIND_TO_STARSHIP_WORKFLOW_STEP, SET_ADDITIONAL_TALENTS, SET_STARSHIP_MISSION_POD, SET_STARSHIP_MISSION_PROFILE, SET_STARSHIP_MISSION_PROFILE_TALENT, SET_STARSHIP_NAME, SET_STARSHIP_REGISTRY, SET_STARSHIP_SPACEFRAME, SET_STARSHIP_TRAITS } from "./starshipActions";
 
 interface StarshipState {
     starship?: Starship;
@@ -182,6 +182,33 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
         case ADD_STARSHIP_WEAPON: {
             let s = state.starship.copy();
             s.additionalWeapons.push(action.payload.weapon);
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case ADD_STARSHIP_TALENT_SELECTION: {
+            let s = state.starship.copy();
+            s.talentDetailSelections.push(action.payload.selection);
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case REMOVE_STARSHIP_TALENT_SELECTION: {
+            let s = state.starship.copy();
+            let index = s.talentDetailSelections.indexOf(action.payload.selection);
+            if (index >= 0) {
+                s.talentDetailSelections.splice(index, 1);
+            }
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case REMOVE_ALL_STARSHIP_TALENT_SELECTION: {
+            let s = state.starship.copy();
+            s.talentDetailSelections = [];
             return {
                 ...state,
                 starship: s

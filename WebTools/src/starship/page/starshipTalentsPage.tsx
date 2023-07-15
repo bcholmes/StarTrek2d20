@@ -6,11 +6,12 @@ import { Button } from "../../components/button";
 import { Dialog } from "../../components/dialog";
 import { Header } from "../../components/header";
 import { TalentsHelper } from "../../helpers/talents";
-import { nextStarshipWorkflowStep, setAdditionalTalents } from "../../state/starshipActions";
+import { nextStarshipWorkflowStep, removeAllStarshipTalentDetailSelection, removeStarshipTalentDetailSelection, setAdditionalTalents } from "../../state/starshipActions";
 import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
 import { StarshipTalentSelectionList } from "../view/starshipTalentSelection";
+import { PageIdentity } from "../../pages/pageIdentity";
 
 interface ISimpleStarshipPageProperties {
     starship: Starship;
@@ -39,11 +40,18 @@ class StarshipTalentsPage extends React.Component<ISimpleStarshipPageProperties,
     nextPage() {
         if (this.props.starship.freeTalentSlots > this.props.starship.additionalTalents.length) {
             Dialog.show("Please select " + this.props.starship.freeTalentSlots + ((this.props.starship.freeTalentSlots === 1) ? ' talent ' : ' talents ') + " before proceeding.");
+        } else if (this.isExpandedMunitionsPresent()) {
+            Navigation.navigateToPage(PageIdentity.ExpandedMunitionsWeaponsSelection);
         } else {
+            store.dispatch(removeAllStarshipTalentDetailSelection());
             let step = this.props.workflow.peekNextStep();
             store.dispatch(nextStarshipWorkflowStep());
             Navigation.navigateToPage(step.page);
         }
+    }
+
+    isExpandedMunitionsPresent() {
+        return this.props.starship.hasTalent("Expanded Munitions");
     }
 }
 

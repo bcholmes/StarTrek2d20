@@ -6,7 +6,7 @@ import { Button } from "../../components/button";
 import { Header } from "../../components/header";
 import { ModalControl } from "../../components/modal";
 import { Weapon } from "../../helpers/weapons";
-import { deleteStarshipWeapon, nextStarshipWorkflowStep } from "../../state/starshipActions";
+import { addStarshipWeapon, deleteStarshipWeapon, nextStarshipWorkflowStep } from "../../state/starshipActions";
 import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import AddWeaponView from "../view/addWeaponView";
@@ -89,7 +89,7 @@ class StarshipWeaponsPageProperties extends React.Component<IStarshipWeaponsPage
     }
 
     modalContents() {
-        return (<AddWeaponView onClose={() => this.closeModal()} serviceYear={this.props.starship.serviceYear} />)
+        return (<AddWeaponView onClose={() => this.closeModal()} serviceYear={this.props.starship.serviceYear} addWeapon={(weapon) => store.dispatch(addStarshipWeapon(weapon))}/>)
     }
 
     confirmationContents(w: Weapon) {

@@ -49,6 +49,14 @@ export const refitCalculator = (starship: Starship) => {
     }
 }
 
+export class ShipTalentDetailSelection {
+    readonly weapon: Weapon;
+
+    constructor(weapon: Weapon) {
+        this.weapon = weapon;
+    }
+}
+
 export class ShipBuildTypeModel {
     readonly name: string;
     readonly type: ShipBuildType;
@@ -92,6 +100,7 @@ export class Starship extends Construct {
     refits: System[] = [];
     simpleStats: SimpleStats;
     additionalWeapons: Weapon[] = [];
+    talentDetailSelections: ShipTalentDetailSelection[] = [];
 
     constructor() {
         super(Stereotype.Starship);
@@ -376,6 +385,12 @@ export class Starship extends Construct {
             this.additionalWeapons.forEach(w => result.push(w));
         }
 
+        this.talentDetailSelections?.forEach(s => {
+            if (s.weapon) {
+                result.push(s.weapon)
+            }
+        });
+
         let names = [];
         let weapons = [];
         result.forEach(w => {
@@ -460,6 +475,7 @@ export class Starship extends Construct {
             result.simpleStats.systems = [...this.simpleStats.systems];
             result.simpleStats.scale = this.simpleStats.scale;
         }
+        result.talentDetailSelections = [...this.talentDetailSelections];
         return result;
     }
 }

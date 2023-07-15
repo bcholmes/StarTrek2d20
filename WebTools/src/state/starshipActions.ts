@@ -1,5 +1,5 @@
 import { CharacterType } from "../common/characterType";
-import { ShipBuildType, SimpleStats } from "../common/starship";
+import { ShipBuildType, ShipTalentDetailSelection, SimpleStats } from "../common/starship";
 import { Department } from "../helpers/departments";
 import { MissionPodModel } from "../helpers/missionPods";
 import { MissionProfileModel } from "../helpers/missionProfiles";
@@ -32,6 +32,9 @@ export const SET_ADDITIONAL_TALENTS = "SET_ADDITIONAL_TALENTS";
 export const ADD_STARSHIP_WEAPON = "ADD_STARSHIP_WEAPON";
 export const DELETE_STARSHIP_WEAPON = "DELETE_STARSHIP_WEAPON";
 export const ADD_STARSHIP_REFIT = "ADD_STARSHIP_REFIT";
+export const ADD_STARSHIP_TALENT_SELECTION = "ADD_STARSHIP_TALENT_SELECTION";
+export const REMOVE_STARSHIP_TALENT_SELECTION = "REMOVE_STARSHIP_TALENT_SELECTION";
+export const REMOVE_ALL_STARSHIP_TALENT_SELECTION = "REMOVE_ALL_STARSHIP_TALENT_SELECTION";
 export const DELETE_STARSHIP_REFIT = "DELETE_STARSHIP_REFIT";
 
 export function createNewStarship(type: CharacterType, serviceYear?: number, simple: SimpleStats = undefined, workflow?: ShipBuildWorkflow,
@@ -128,6 +131,28 @@ export function addStarshipRefit(refit: System) {
     return {
        type: ADD_STARSHIP_REFIT,
        payload: payload
+    }
+}
+
+export function addStarshipTalentDetailSelection(selection: ShipTalentDetailSelection) {
+    let payload = { selection: selection };
+    return {
+       type: ADD_STARSHIP_TALENT_SELECTION,
+       payload: payload
+    }
+}
+
+export function removeStarshipTalentDetailSelection(selection: ShipTalentDetailSelection) {
+    let payload = { selection: selection };
+    return {
+       type: REMOVE_STARSHIP_TALENT_SELECTION,
+       payload: payload
+    }
+}
+export function removeAllStarshipTalentDetailSelection() {
+    return {
+       type: REMOVE_STARSHIP_TALENT_SELECTION,
+       payload: {}
     }
 }
 
