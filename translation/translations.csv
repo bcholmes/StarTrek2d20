@@ -463,6 +463,7 @@ GovernmentType.name.vulcan,Vulcan,Vulkanier,,Vulcain
 GovernmentType.name.other,Other,Andere,,Autre
 HairType.bald,Bald,Glatze,,
 HairType.bowlCutHair,Bowl Cut,Topfschnitt,,
+HairType.chinLengthBob,Chin Length Bob,,,
 HairType.stylishHair,Stylish Short,,,
 HairType.sidePart,Side Part,,,
 HairType.shortAfro,Short Curly,,,
