@@ -144,6 +144,18 @@ export class MonsterMaroonUniformPack {
         ];
     }
 
+    getRankSwatches() {
+        return [];
+    }
+
+    getRankIndicator(token: Token) {
+        return "";
+    }
+
+    getRankBorderIndicator(token: Token) {
+        return "";
+    }
+
     getUniformAndVariantBody(token: Token) {
         let neck = "";
         let seam = "";

@@ -1,9 +1,13 @@
 import { Rank } from "../../helpers/ranks";
 import { BodyType } from "./bodyTypeEnum";
 import { EnterpriseUniformPack } from "./enterpriseUniformPack";
+import { KlingonArmorUniformPack } from "./klingonArmorUniformPack";
+import { MonsterMaroonUniformPack } from "./monsterMaroonUniformPack";
 import { isEnlistedRank } from "./rankIndicatorEnum";
 import Swatch from "./swatch";
 import { Token } from "./token";
+import { TosKlingonUniformPack } from "./tosKlingonUniformPack";
+import { TosUniformPack } from "./tosUniformPack";
 import { DefaultRed } from "./uniformCatalog";
 import { UniformEra } from "./uniformEra";
 import { UniformVariantType } from "./uniformVariantTypeEnum";
@@ -244,142 +248,6 @@ const TngCrewman3rdBorder = `<g>
     <path id="path152310" style="fill:#a1b7cc;fill-opacity:1;stroke:#000000;stroke-width:0.596538px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 87.859195,357.93478 -4.611423,6.89663 -3.655036,-2.53617 3.977177,-5.73176 0.779918,-17.79545 4.323022,-6.23018 3.655036,2.53617 -3.631338,5.23335 z"/>
 </g>`;
 
-const TosEnsign = `<g>
-    <rect style="opacity:1;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect16540" width="126.25761" height="30.247616" x="195.43486" y="222.39742" transform="rotate(34.627047)"/>
-</g>`;
-
-const TosLieutenantJG = `<g>
-    <rect style="opacity:1;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect13231" width="126.25761" height="30.247616" x="195.43486" y="222.39742" transform="rotate(34.627047)"/>
-    <path id="path13233" style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.45;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 96.348815,374.29165 1.20648,0.831 4.107635,0.18509 c 1.46002,0.0755 2.15153,-0.0982 2.91449,-1.09012 l 2.75357,-3.99771 -6.00035,-0.27072 c -1.380165,-0.15891 -2.037985,0.18426 -2.932765,1.36755 z m 5.556905,-8.0677 5.89863,0.26518 c 1.41516,0.0483 2.18905,-0.25034 2.88193,-1.14051 l 2.72015,-3.9492 -6.33071,-0.28564 c -1.30378,-0.0518 -1.90011,0.47864 -2.64347,1.44211 z m 6.07545,-8.82048 6.15941,0.2769 c 1.20942,0.10771 1.93319,-0.26923 2.72907,-1.30894 l 2.20445,-3.20048 -0.94848,-0.65329 -5.03368,-0.22705 c -1.04005,-0.10919 -1.77994,0.27708 -2.36458,1.12587 z"/>
-    <rect style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect13235" width="126.25761" height="30.247616" x="195.43486" y="222.39742" transform="rotate(34.627047)"/>
-</g>`;
-
-const TosLieutenant = `<g>
-    <rect style="opacity:1;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect11251" width="126.25761" height="30.247616" x="195.43486" y="222.39742" transform="rotate(34.627047)"/>
-    <g id="g11261" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-240.46769,291.99762)">
-        <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect11253" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
-        <path id="path11255" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z"/>
-        <path id="path11257" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z"/>
-        <path id="path11259" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z"/>
-    </g>
-    <rect style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect11263" width="126.25761" height="30.247616" x="195.43486" y="222.39742" transform="rotate(34.627047)"/>
-</g>`;
-
-const TosLtCommander = `<g>
-    <rect style="opacity:1;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect8478" width="126.25761" height="30.247616" x="195.43486" y="222.39742" transform="rotate(34.627047)"/>
-    <path id="path8480" style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.45;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 88.610365,368.75659 1.20648,0.831 4.107634,0.18509 c 1.46002,0.0755 2.15153,-0.0982 2.91449,-1.09012 l 2.753569,-3.99771 -6.000349,-0.27072 c -1.380164,-0.15891 -2.037984,0.18426 -2.932764,1.36755 z m 5.556904,-8.0677 5.898631,0.26518 c 1.41516,0.0483 2.18905,-0.25034 2.88193,-1.14051 l 2.72015,-3.9492 -6.330712,-0.28564 c -1.303779,-0.0518 -1.900109,0.47864 -2.643469,1.44211 z m 6.075451,-8.82048 6.15941,0.2769 c 1.20942,0.10771 1.93319,-0.26923 2.72907,-1.30894 l 2.20445,-3.20048 -0.94848,-0.65329 -5.03368,-0.22705 c -1.04005,-0.10919 -1.77994,0.27708 -2.36458,1.12587 z"/>
-    <g id="g8490" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-240.46769,291.99762)">
-        <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect8482" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
-        <path id="path8484" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z"/>
-        <path id="path8486" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z"/>
-        <path id="path8488" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z"/>
-    </g>
-    <rect style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect8492" width="126.25761" height="30.247616" x="195.43486" y="222.39742" transform="rotate(34.627047)"/>
-</g>`;
-
-const TosCommander = `<g>
-    <rect style="opacity:1;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect6554" width="126.25761" height="30.247616" x="195.43486" y="222.39742" transform="rotate(34.627047)"/>
-    <g id="g6564" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-240.46769,291.99762)">
-        <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect6556" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
-        <path id="path6558" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z"/>
-        <path id="path6560" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z"/>
-        <path id="path6562" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z"/>
-    </g>
-    <g id="g6574" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-250.05558,285.5258)">
-        <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect6566" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
-        <path id="path6568" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z"/>
-        <path id="path6570" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z"/>
-        <path id="path6572" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z"/>
-    </g>
-    <rect style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect6576" width="126.25761" height="30.247616" x="195.43486" y="222.39742" transform="rotate(34.627047)"/>
-</g>`;
-
-const TosCaptain = `<g>
-    <rect style="opacity:1;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect4774" width="126.25761" height="30.247616" x="195.43486" y="222.39742" transform="rotate(34.627047)"/>
-    <path id="path4776" style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.45;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 88.610365,368.75659 1.20648,0.831 4.107634,0.18509 c 1.46002,0.0755 2.15153,-0.0982 2.91449,-1.09012 l 2.753569,-3.99771 -6.000349,-0.27072 c -1.380164,-0.15891 -2.037984,0.18426 -2.932764,1.36755 z m 5.556904,-8.0677 5.898631,0.26518 c 1.41516,0.0483 2.18905,-0.25034 2.88193,-1.14051 l 2.72015,-3.9492 -6.330712,-0.28564 c -1.303779,-0.0518 -1.900109,0.47864 -2.643469,1.44211 z m 6.075451,-8.82048 6.15941,0.2769 c 1.20942,0.10771 1.93319,-0.26923 2.72907,-1.30894 l 2.20445,-3.20048 -0.94848,-0.65329 -5.03368,-0.22705 c -1.04005,-0.10919 -1.77994,0.27708 -2.36458,1.12587 z"/>
-    <g id="g4786" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-240.46769,291.99762)">
-        <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect4778" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
-        <path id="path4780" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z"/>
-        <path id="path4782" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z"/>
-        <path id="path4784" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z"/>
-    </g>
-    <g id="g4796" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-258.20528,279.77306)">
-        <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect4788" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
-        <path id="path4790" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z"/>
-        <path id="path4792" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z"/>
-        <path id="path4794" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z"/>
-    </g>
-    <rect style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect4798" width="126.25761" height="30.247616" x="195.43486" y="222.39742" transform="rotate(34.627047)"/>
-</g>`
-
-const TosEnsignRankBorder = `<g>
-    <rect style="opacity:1;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:#ffd59c;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect34812" width="126.25761" height="30.247616" x="195.43486" y="222.39742" rx="4" ry="4" transform="rotate(34.627047)"/>
-</g>`;
-
-const TosLieutenantJGBorder = `<g>
-    <rect style="opacity:1;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:#ffd59c;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect34812" width="126.25761" height="30.247616" x="195.43486" y="222.39742" rx="4" ry="4" transform="rotate(34.627047)"/>
-    <path id="rect45766" style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.45;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 95.390026,373.33286 1.20648,0.831 4.107634,0.18509 c 1.46002,0.0755 2.15153,-0.0982 2.91449,-1.09012 l 2.75357,-3.99771 -6.00035,-0.27072 c -1.380164,-0.15891 -2.037984,0.18426 -2.932764,1.36755 z m 5.556904,-8.0677 5.89863,0.26518 c 1.41516,0.0483 2.18905,-0.25034 2.88193,-1.14051 l 2.72015,-3.9492 -6.33071,-0.28564 c -1.30378,-0.0518 -1.90011,0.47864 -2.64347,1.44211 z m 6.07545,-8.82048 6.15941,0.2769 c 1.20942,0.10771 1.93319,-0.26923 2.72907,-1.30894 l 2.20445,-3.20048 -0.94848,-0.65329 -5.03368,-0.22705 c -1.04005,-0.10919 -1.77994,0.27708 -2.36458,1.12587 z"/>
-    <rect style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffd59c;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect47378" width="126.25761" height="30.247616" x="195.43486" y="222.39742" rx="4" ry="4" transform="rotate(34.627047)"/>
-</g>`;
-
-const TosLieutenantBorder = `<g>
-    <rect style="opacity:1;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:#ffd59c;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect34812" width="126.25761" height="30.247616" x="195.43486" y="222.39742" rx="4" ry="4" transform="rotate(34.627047)"/>
-    <g id="g51917" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-240.46769,291.99762)">
-        <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect50013" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
-        <path id="rect51906" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z"/>
-        <path id="path51909" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z"/>
-        <path id="path51911" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z"/>
-    </g>
-    <rect style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffd59c;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect47378" width="126.25761" height="30.247616" x="195.43486" y="222.39742" rx="4" ry="4" transform="rotate(34.627047)"/>
-</g>`;
-
-const TosLtCommanderBorder = `<g>
-    <rect style="opacity:1;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:#ffd59c;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect34812" width="126.25761" height="30.247616" x="195.43486" y="222.39742" rx="4" ry="4" transform="rotate(34.627047)"/>
-    <path id="rect45766" style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.45;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 88.610365,368.75659 1.20648,0.831 4.107634,0.18509 c 1.46002,0.0755 2.15153,-0.0982 2.91449,-1.09012 l 2.753569,-3.99771 -6.000349,-0.27072 c -1.380164,-0.15891 -2.037984,0.18426 -2.932764,1.36755 z m 5.556904,-8.0677 5.898631,0.26518 c 1.41516,0.0483 2.18905,-0.25034 2.88193,-1.14051 l 2.72015,-3.9492 -6.330712,-0.28564 c -1.303779,-0.0518 -1.900109,0.47864 -2.643469,1.44211 z m 6.075451,-8.82048 6.15941,0.2769 c 1.20942,0.10771 1.93319,-0.26923 2.72907,-1.30894 l 2.20445,-3.20048 -0.94848,-0.65329 -5.03368,-0.22705 c -1.04005,-0.10919 -1.77994,0.27708 -2.36458,1.12587 z"/>
-    <g id="g51917" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-240.46769,291.99762)">
-        <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect50013" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
-        <path id="rect51906" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z"/>
-        <path id="path51909" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z"/>
-        <path id="path51911" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z"/>
-    </g>
-    <rect style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffd59c;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect47378" width="126.25761" height="30.247616" x="195.43486" y="222.39742" rx="4" ry="4" transform="rotate(34.627047)"/>
-</g>`;
-
-const TosCommanderBorder = `<g>
-    <rect style="opacity:1;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:#ffd59c;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect34812" width="126.25761" height="30.247616" x="195.43486" y="222.39742" rx="4" ry="4" transform="rotate(34.627047)"/>
-    <g id="g51917" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-240.46769,291.99762)">
-        <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect50013" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
-        <path id="rect51906" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z"/>
-        <path id="path51909" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z"/>
-        <path id="path51911" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z"/>
-    </g>
-    <g id="g865" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-250.05558,285.5258)">
-        <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect857" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
-        <path id="path859" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z"/>
-        <path id="path861" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z"/>
-        <path id="path863" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z"/>
-    </g>
-    <rect style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffd59c;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect47378" width="126.25761" height="30.247616" x="195.43486" y="222.39742" rx="4" ry="4" transform="rotate(34.627047)"/>
-</g>`;
-
-const TosCaptainBorder = `<g>
-    <rect style="opacity:1;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:#ffd59c;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect34812" width="126.25761" height="30.247616" x="195.43486" y="222.39742" rx="4" ry="4" transform="rotate(34.627047)"/>
-    <path id="rect45766" style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.45;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 88.610365,368.75659 1.20648,0.831 4.107634,0.18509 c 1.46002,0.0755 2.15153,-0.0982 2.91449,-1.09012 l 2.753569,-3.99771 -6.000349,-0.27072 c -1.380164,-0.15891 -2.037984,0.18426 -2.932764,1.36755 z m 5.556904,-8.0677 5.898631,0.26518 c 1.41516,0.0483 2.18905,-0.25034 2.88193,-1.14051 l 2.72015,-3.9492 -6.330712,-0.28564 c -1.303779,-0.0518 -1.900109,0.47864 -2.643469,1.44211 z m 6.075451,-8.82048 6.15941,0.2769 c 1.20942,0.10771 1.93319,-0.26923 2.72907,-1.30894 l 2.20445,-3.20048 -0.94848,-0.65329 -5.03368,-0.22705 c -1.04005,-0.10919 -1.77994,0.27708 -2.36458,1.12587 z"/>
-    <g id="g51917" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-240.46769,291.99762)">
-        <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect50013" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
-        <path id="rect51906" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z"/>
-        <path id="path51909" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z"/>
-        <path id="path51911" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z"/>
-    </g>
-    <g id="g2559" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-258.20528,279.77306)">
-        <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect2551" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
-        <path id="path2553" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z"/>
-        <path id="path2555" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z"/>
-        <path id="path2557" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z"/>
-    </g>
-    <rect style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffd59c;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect47378" width="126.25761" height="30.247616" x="195.43486" y="222.39742" rx="4" ry="4" transform="rotate(34.627047)"/>
-</g>`;
-
 const MonsterMaroonEnsign = `<g>
     <path style="fill:url(#rankEnsignGradient);fill-opacity:1;stroke:#000000;stroke-width:0.616;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1" d="m 147.97498,301.17001 13.38147,7.47618 3.1192,-14.96097 -5.8279,2.64357 2.7087,12.3174 -7.34293,-10.21529 z" id="path71458"/>
     <path style="fill:#d9a14b;fill-opacity:1;stroke:#000000;stroke-width:0.616;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1" d="m 154.01122,298.49181 7.34523,10.15438 -2.711,-12.25649 c -0.81024,1.92403 -2.56945,2.81182 -4.63423,2.10211 z" id="path71460" />
@@ -516,52 +384,6 @@ const MonsterMaroonCaptainBorderGradient = `<linearGradient xlink:href="#silverM
 <linearGradient xlink:href="#silverMetalGradient" xmlns:xlink="http://www.w3.org/1999/xlink" id="rankCaptainGradientBorderB" x1="17.425951" y1="229.55769" x2="47.402425" y2="229.55769" gradientUnits="userSpaceOnUse"/>
 <linearGradient xlink:href="#silverMetalGradient" xmlns:xlink="http://www.w3.org/1999/xlink" id="rankCaptainGradientBorderC" x1="37.628781" y1="318.67825" x2="67.603143" y2="318.67825" gradientUnits="userSpaceOnUse"/>`;
 
-
-
-const KlingonRanks = {
-    Border: {
-        Captain: `<g>
-                <path style="opacity:1;fill:#c7b791;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" d="m 79.424528,305.81758 -2.482449,14.76869 -6.932502,-7.00811 0.761477,9.07293 -11.285341,-5.8254 6.568865,10.89471 -9.287139,-0.22322 7.503158,5.99099 -14.783094,3.80019 14.768692,2.48246 -7.008108,6.9325 9.072918,-0.76148 -5.82539,11.28534 10.894701,-6.56886 -0.223221,9.28714 5.991005,-7.50317 3.800185,14.78309 2.48245,-14.76868 6.932501,7.00811 -0.761478,-9.07293 11.285342,5.82539 -6.568864,-10.8947 9.287144,0.22322 -7.503164,-5.99099 14.783094,-3.80019 -14.768692,-2.48246 7.008112,-6.9325 -9.072921,0.76148 5.825395,-11.28534 -10.894708,6.56886 0.223223,-9.28714 -5.991006,7.50317 z" id="path235636"/>
-                <path style="opacity:1;fill:#c7b791;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3.0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" d="m 80.191406,290.52148 a 46,46 0 0 0 -46,46 46,46 0 0 0 46,46 46,46 0 0 0 46.000004,-46 46,46 0 0 0 -46.000004,-46 z m 0,9.69727 a 36.301369,36.301369 0 0 1 36.300784,36.30273 36.301369,36.301369 0 0 1 -36.300784,36.30079 36.301369,36.301369 0 0 1 -36.300781,-36.30079 36.301369,36.301369 0 0 1 36.300781,-36.30273 z" id="path230388"/>
-            </g>`,
-        Commander: `<g>
-                <path style="opacity:1;fill:#c7b791;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3.0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" d="m 80.191406,290.52148 a 46,46 0 0 0 -46,46 46,46 0 0 0 46,46 46,46 0 0 0 46.000004,-46 46,46 0 0 0 -46.000004,-46 z m 0,9.69727 a 36.301369,36.301369 0 0 1 36.300784,36.30273 36.301369,36.301369 0 0 1 -36.300784,36.30079 36.301369,36.301369 0 0 1 -36.300781,-36.30079 36.301369,36.301369 0 0 1 36.300781,-36.30273 z" id="path236391"/>
-                <path style="fill:#c7b791;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1" d="m 71.780822,321.64384 c 0,0 12.111581,-9.57549 17.534246,-6.0274 5.422665,3.54809 3.813178,13.32055 1.643836,20.27397 -2.169342,6.95342 -6.770627,16.80776 -14.79452,18.08219 -8.023893,1.27443 -14.826789,-5.00563 -19.82004,-11.56762 -4.993251,-6.56199 -7.886448,-23.51464 -7.886448,-23.51464 -1.746912,2.73905 -2.740398,5.68359 -3.596899,9.45004 0,0 5.256755,19.6089 9.673319,26.53438 4.416564,6.92548 6.930212,11.40329 13.604617,14.50679 6.674405,3.1035 26.107642,-0.0665 26.107642,-0.0665 l 17.501005,-51.01968 c 0,0 -3.74995,-8.79204 -17.240799,-14.88853 -13.490853,-6.09649 -24.984216,-1.55566 -24.984216,-1.55566 z" id="path236395" sodipodi:nodetypes="czzzzcczzcczcc" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"/>
-            </g>`,
-        LtCommander: `<g>
-                <path style="opacity:1;fill:#c7b791;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3.0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" d="m 80.191406,290.52148 a 46,46 0 0 0 -46,46 46,46 0 0 0 46,46 46,46 0 0 0 46.000004,-46 46,46 0 0 0 -46.000004,-46 z m 0,9.69727 a 36.301369,36.301369 0 0 1 36.300784,36.30273 36.301369,36.301369 0 0 1 -36.300784,36.30079 36.301369,36.301369 0 0 1 -36.300781,-36.30079 36.301369,36.301369 0 0 1 36.300781,-36.30273 z" id="path242411"/>
-                <path style="fill:#c7b791;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" d="m 44.899694,345.15705 27.155101,-22.96527 c 0.273973,11.59817 -1.09589,23.74429 -4.109589,35.61644 l 57.808214,-29.0411 c -1.36986,-6.57534 -3.28767,-11.50685 -6.57534,-17.26027 l -34.246573,20 5.462833,-25.10862 c 1.724555,-1.08576 4.408252,-2.37537 5.415826,-2.62766 -4.658967,-2.3833 -10.145841,-3.87696 -18.970586,-3.65708 -8.824745,0.21988 -17.508319,6.69011 -20.159064,9.00928 5.921714,-1.21638 10.260123,-2.77574 15.100306,-1.99948 l -27.138481,21.54697 c -1.607909,5.29403 -1.191411,10.96721 0.257353,16.48679 z" id="path242417" sodipodi:nodetypes="cccccccczcccc" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"/>
-            </g>`,
-
-        Lieutenant: `<g>
-                <path style="opacity:1;fill:#c7b791;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3.0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" d="m 80.191406,290.52148 a 46,46 0 0 0 -46,46 46,46 0 0 0 46,46 46,46 0 0 0 46.000004,-46 46,46 0 0 0 -46.000004,-46 z m 0,9.69727 a 36.301369,36.301369 0 0 1 36.300784,36.30273 36.301369,36.301369 0 0 1 -36.300784,36.30079 36.301369,36.301369 0 0 1 -36.300781,-36.30079 36.301369,36.301369 0 0 1 36.300781,-36.30273 z" id="path243145"/>
-                <path style="fill:#c7b791;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1" d="m 45.616438,325.20548 33.287672,16.02739 20.958904,26.0274 c 3.150686,-2.19178 5.890416,-4.79452 8.493156,-7.9452 L 87.808219,334.52055 115.75343,307.26028 c -4.15526,-4.52055 -7.48859,-7.39726 -12.19179,-10.41096 L 76.575343,328.49315 50.410959,315.61644 c -2.328767,3.379 -3.424658,5.6621 -4.794521,9.58904 z" id="path243151" sodipodi:nodetypes="cccccccccc" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"/>
-            </g>`,
-
-        LieutenantJG: `<g>
-                <path style="opacity:1;fill:#c7b791;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3.0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" d="m 80.191406,290.52148 a 46,46 0 0 0 -46,46 46,46 0 0 0 46,46 46,46 0 0 0 46.000004,-46 46,46 0 0 0 -46.000004,-46 z m 0,9.69727 a 36.301369,36.301369 0 0 1 36.300784,36.30273 36.301369,36.301369 0 0 1 -36.300784,36.30079 36.301369,36.301369 0 0 1 -36.300781,-36.30079 36.301369,36.301369 0 0 1 36.300781,-36.30273 z" id="path243896"/>
-                <path style="fill:#c7b791;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1" d="m 34.650651,330.21723 80.417839,-23.91586 c 3.70837,3.98503 5.67318,8.35751 8.21918,13.69863 l -21.91781,6.57534 -18.630134,46.09102 c -4.524743,0.14118 -6.91848,-0.20196 -11.249496,-1.12628 L 81.643836,346.30137 46.575342,367.12329 C 43.60865,364.49151 41.610597,361.56913 40,358.35616 l 40.547945,-25.20548 -45.446213,11.86107 c -1.054424,-5.90014 -0.849617,-9.47556 -0.451081,-14.79452 z" id="path243902" sodipodi:nodetypes="cccccccccccc" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"/>
-            </g>`,
-
-        Ensign: `<g>
-                <path style="opacity:1;fill:#c7b791;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3.0;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" d="m 80.191406,290.52148 a 46,46 0 0 0 -46,46 46,46 0 0 0 46,46 46,46 0 0 0 46.000004,-46 46,46 0 0 0 -46.000004,-46 z m 0,9.69727 a 36.301369,36.301369 0 0 1 36.300784,36.30273 36.301369,36.301369 0 0 1 -36.300784,36.30079 36.301369,36.301369 0 0 1 -36.300781,-36.30079 36.301369,36.301369 0 0 1 36.300781,-36.30273 z" id="path243924"/>
-                <path style="fill:#c7b791;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1" d="m 44.557414,343.867 64.123926,-43.39505 c 4.50465,3.24637 6.42033,5.16988 9.61589,10.01308 0,0 -2.35662,-0.0955 -10.93875,6.91176 -8.582124,7.00724 -33.257564,64.73147 -33.257564,64.73147 -6.909628,-0.5166 -11.300794,-2.29245 -16.660598,-5.9087 l 19.275925,-39.5205 -27.703088,18.21043 c -2.453886,-3.4871 -3.35795,-6.58675 -4.455741,-11.04249 z" id="path243930" sodipodi:nodetypes="ccczccccc" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"/>
-            </g>`
-    },
-
-    InsigniaTos: {
-        Captain: `<g>
-                <path style="fill:#c7b791;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.320547;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" d="m 161.69488,257.4767 -0.4544,2.7033 -1.26894,-1.28278 0.13938,1.66073 -2.06569,-1.06629 1.20238,1.99419 -1.69994,-0.0409 1.37339,1.09661 -2.70592,0.69559 2.70329,0.4544 -1.28278,1.26894 1.66072,-0.13939 -1.06629,2.0657 1.9942,-1.20238 -0.0409,1.69994 1.09661,-1.3734 0.69559,2.70593 0.45439,-2.70329 1.26895,1.28278 -0.13939,-1.66073 2.0657,1.06629 -1.20238,-1.99419 1.69994,0.0409 -1.3734,-1.09661 2.70593,-0.69559 -2.70329,-0.4544 1.28277,-1.26894 -1.66072,0.13938 1.06629,-2.06569 -1.99419,1.20238 0.0409,-1.69994 -1.09661,1.3734 z" id="path249881"/>
-                <path style="fill:#c7b791;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.34778;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" d="m 161.83525,254.67687 a 8.4199453,8.4199453 0 0 0 -8.41995,8.41995 8.4199453,8.4199453 0 0 0 8.41995,8.41994 8.4199453,8.4199453 0 0 0 8.41994,-8.41994 8.4199453,8.4199453 0 0 0 -8.41994,-8.41995 z m 0,1.77501 a 6.6446859,6.6446859 0 0 1 6.64458,6.64494 6.6446859,6.6446859 0 0 1 -6.64458,6.64458 6.6446859,6.6446859 0 0 1 -6.64458,-6.64458 6.6446859,6.6446859 0 0 1 6.64458,-6.64494 z" id="path249883"/>
-                <path style="fill:#c7b791;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.28803;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" d="m 301.14456,258.30417 -0.4083,2.42908 -1.14022,-1.15266 0.12525,1.49227 -1.85615,-0.95814 1.0804,1.79191 -1.52749,-0.0367 1.23408,0.98536 -2.43144,0.62503 2.42907,0.4083 -1.15266,1.14022 1.49227,-0.12525 -0.95813,1.85615 1.7919,-1.0804 -0.0368,1.52748 0.98537,-1.23407 0.62502,2.43144 0.4083,-2.42907 1.14022,1.15266 -0.12525,-1.49227 1.85616,0.95813 -1.08041,-1.7919 1.52749,0.0367 -1.23408,-0.98536 2.43144,-0.62503 -2.42907,-0.40831 1.15266,-1.14021 -1.49227,0.12524 0.95813,-1.85614 -1.7919,1.0804 0.0367,-1.52749 -0.98536,1.23408 z" id="path249891"/>
-                <path style="fill:#c7b791;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.312501;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" d="m 301.27069,255.78836 a 7.5658098,7.5658098 0 0 0 -7.56581,7.56582 7.5658098,7.5658098 0 0 0 7.56581,7.5658 7.5658098,7.5658098 0 0 0 7.56581,-7.5658 7.5658098,7.5658098 0 0 0 -7.56581,-7.56582 z m 0,1.59495 a 5.970636,5.970636 0 0 1 5.97054,5.97087 5.970636,5.970636 0 0 1 -5.97054,5.97054 5.970636,5.970636 0 0 1 -5.97054,-5.97054 5.970636,5.970636 0 0 1 5.97054,-5.97087 z" id="path249893"/>
-            </g>`
-    }
-}
-
-
-
-
 class RankIndicatorCatalog {
 
     private static _instance: RankIndicatorCatalog;
@@ -587,16 +409,6 @@ class RankIndicatorCatalog {
 
     ];
 
-    private tosSwatches = [
-        new Swatch(Rank.None, "None", (token) => RankIndicatorCatalog.decorateSwatch("", Rank.None, token), "Rank.none.name"),
-        new Swatch(Rank.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(TosEnsign, Rank.Ensign, token), "Rank.ensign.name"),
-        new Swatch(Rank.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(TosLieutenantJG, Rank.LieutenantJG, token), "Rank.lieutenantJG.name"),
-        new Swatch(Rank.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(TosLieutenant, Rank.Lieutenant, token), "Rank.lieutenant.name"),
-        new Swatch(Rank.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(TosLtCommander, Rank.LtCommander, token), "Rank.ltCommander.name"),
-        new Swatch(Rank.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(TosCommander, Rank.Commander, token), "Rank.commander.name"),
-        new Swatch(Rank.Captain, "Captain", (token) => RankIndicatorCatalog.decorateSwatch(TosCaptain, Rank.Captain, token), "Rank.captain.name")
-    ];
-
     private monsterMaroonSwatches = [
         new Swatch(Rank.None, "None", (token) => RankIndicatorCatalog.decorateSwatch("", Rank.None, token), "Rank.none.name"),
         new Swatch(Rank.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonEnsignBorder, Rank.Ensign, token, MonsterMaroonEnsignBorderGradient), "Rank.ensign.name"),
@@ -606,17 +418,6 @@ class RankIndicatorCatalog {
         new Swatch(Rank.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonCommanderBorder, Rank.Commander, token, MonsterMaroonCommanderBorderGradient), "Rank.commander.name"),
         new Swatch(Rank.Captain, "Captain", (token) => RankIndicatorCatalog.decorateSwatch(MonsterMaroonCaptainBorder, Rank.Captain, token, MonsterMaroonCaptainBorderGradient), "Rank.captain.name")
     ];
-
-    private klingonSwatches = [
-        new Swatch(Rank.None, "None", (token) => RankIndicatorCatalog.decorateSwatch("", Rank.None, token), "Rank.none.name"),
-        new Swatch(Rank.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.Ensign, Rank.Ensign, token), "Rank.ensign.name"),
-        new Swatch(Rank.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.LieutenantJG, Rank.LieutenantJG, token), "Rank.lieutenantJG.name"),
-        new Swatch(Rank.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.Lieutenant, Rank.Lieutenant, token), "Rank.lieutenant.name"),
-        new Swatch(Rank.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.LtCommander, Rank.LtCommander, token), "Rank.ltCommander.name"),
-        new Swatch(Rank.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.Commander, Rank.Commander, token), "Rank.commander.name"),
-        new Swatch(Rank.Captain, "Captain (HoD)", (token) => RankIndicatorCatalog.decorateSwatch(KlingonRanks.Border.Captain, Rank.Captain, token), "Rank.captain.name")
-    ];
-
 
     public static get instance() {
         if (RankIndicatorCatalog._instance == null) {
@@ -650,38 +451,11 @@ class RankIndicatorCatalog {
                 return "";
             }
         } else if (token.uniformEra === UniformEra.Enterprise) {
-            return new EnterpriseUniformPack().getRankIndicator(token);
+            return this.getUniformPack(token.uniformEra).getRankIndicator(token);
         } else if (token.uniformEra === UniformEra.OriginalSeriesKlingon) {
-            let borderRank = this.getBorderRankIndicator(token);
-            if (token.bodyType === BodyType.AverageMale) {
-                return `<g transform="matrix(0.18836329,0,0,0.18836329,146.95423,199.86901)">`
-                        + borderRank +
-                    `</g><g transform="matrix(0.15346879,0,0,0.16820895,289.72087,206.74823)">`
-                        + borderRank +
-                `</g>`;
-            } else {
-                return `<g transform="matrix(0.18836329,0,0,0.18836329,128.32409,255.21148)">`
-                        + borderRank +
-                    `</g><g transform="matrix(0.15346879,0,0,0.16820895,322.04964,246.74823)">`
-                        + borderRank +
-                `</g>`;
-            }
-
+            return this.getUniformPack(token.uniformEra).getRankIndicator(token);
         } else if (token.uniformEra === UniformEra.Klingon) {
-            let borderRank = this.getBorderRankIndicator(token);
-            if (token.bodyType === BodyType.AverageMale) {
-                return `<g transform="matrix(0.23133638,0.01820657,0,0.23134511,227.66287,170.48374)">`
-                        + borderRank +
-                    `</g><g transform="matrix(0.09227919,-0.00604831,0,0.21724297,268.77182,176.95177)">`
-                        + borderRank +
-                `</g>`;
-            } else {
-                return `<g transform="matrix(0.27326447,0.02684523,-0.0370136,0.26993717,215.0807,151.83316)">`
-                        + borderRank +
-                    `</g><g transform="matrix(0.10916856,-0.08025211,0.10512724,0.21861227,238.49637,180.18806)">`
-                        + borderRank +
-                `</g>`;
-            }
+            return this.getUniformPack(token.uniformEra).getRankIndicator(token);
         } else {
             switch (token.rankIndicator) {
                 case Rank.Ensign:
@@ -758,22 +532,7 @@ class RankIndicatorCatalog {
 
     getBorderRankIndicator(token: Token) {
         if (token.uniformEra === UniformEra.OriginalSeries) {
-            switch (token.rankIndicator) {
-                case Rank.Ensign:
-                    return TosEnsignRankBorder.replace(DefaultRed, token.divisionColor);
-                case Rank.LieutenantJG:
-                    return TosLieutenantJGBorder.replace(DefaultRed, token.divisionColor);
-                case Rank.Lieutenant:
-                    return TosLieutenantBorder.replace(DefaultRed, token.divisionColor);
-                case Rank.LtCommander:
-                    return TosLtCommanderBorder.replace(DefaultRed, token.divisionColor);
-                case Rank.Commander:
-                    return TosCommanderBorder.replace(DefaultRed, token.divisionColor);
-                case Rank.Captain:
-                    return TosCaptainBorder.replace(DefaultRed, token.divisionColor);
-                default:
-                    return "";
-            }
+            return this.getUniformPack(token.uniformEra).getRankBorderIndicator(token);
         } else if (token.uniformEra === UniformEra.MonsterMaroon) {
             let strap = MonsterMaroonBorderStrap.replace(DefaultRed, token.divisionColor);
             let rank = "";
@@ -803,24 +562,9 @@ class RankIndicatorCatalog {
             }
             return strap + rank;
         } else if (token.uniformEra === UniformEra.Enterprise) {
-            return new EnterpriseUniformPack().getRankBorderIndicator(token);
+            return this.getUniformPack(token.uniformEra).getRankBorderIndicator(token);
         } else if (token.uniformEra === UniformEra.OriginalSeriesKlingon || token.uniformEra === UniformEra.Klingon) {
-            switch (token.rankIndicator) {
-                case Rank.Captain:
-                    return KlingonRanks.Border.Captain;
-                case Rank.Commander:
-                    return KlingonRanks.Border.Commander;
-                case Rank.LtCommander:
-                    return KlingonRanks.Border.LtCommander;
-                case Rank.Lieutenant:
-                    return KlingonRanks.Border.Lieutenant;
-                case Rank.LieutenantJG:
-                    return KlingonRanks.Border.LieutenantJG;
-                case Rank.Ensign:
-                    return KlingonRanks.Border.Ensign;
-                default:
-                    return "";
-            }
+            return  this.getUniformPack(token.uniformEra).getRankBorderIndicator(token);
         } else {
             switch (token.rankIndicator) {
                 case Rank.Ensign:
@@ -859,15 +603,31 @@ class RankIndicatorCatalog {
         }
     }
 
+    getUniformPack(era: UniformEra) {
+        if (era === UniformEra.MonsterMaroon) {
+            return new MonsterMaroonUniformPack();
+        } else if (era === UniformEra.Enterprise) {
+            return new EnterpriseUniformPack();
+        } else if (era === UniformEra.Klingon) {
+            return new KlingonArmorUniformPack();
+        } else if (era === UniformEra.OriginalSeriesKlingon) {
+            return new TosKlingonUniformPack();
+        } else if (era === UniformEra.OriginalSeries) {
+            return new TosUniformPack();
+        } else {
+            return null;
+        }
+    }
+
     getSwatches(token: Token) {
         if (token.uniformEra === UniformEra.OriginalSeries) {
-            return this.tosSwatches;
+            return this.getUniformPack(token.uniformEra).getRankSwatches();
         } else if (token.uniformEra === UniformEra.MonsterMaroon) {
             return this.monsterMaroonSwatches;
         } else if (token.uniformEra === UniformEra.Enterprise) {
-            return new EnterpriseUniformPack().getRankSwatches();
+            return this.getUniformPack(token.uniformEra).getRankSwatches();
         } else if (token.uniformEra === UniformEra.OriginalSeriesKlingon || token.uniformEra === UniformEra.Klingon) {
-            return this.klingonSwatches;
+            return this.getUniformPack(token.uniformEra).getRankSwatches();
         } else {
             return this.tngSwatches;
         }
@@ -901,12 +661,6 @@ class RankIndicatorCatalog {
         } else if (token.uniformEra === UniformEra.Enterprise) {
             return `<svg viewBox="0 0 175 175" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g transform="translate(5, -260)">`
-                    + svg
-                    + `</g>
-                </svg>`;
-        } else if (token.uniformEra === UniformEra.Klingon || token.uniformEra === UniformEra.OriginalSeriesKlingon) {
-            return `<svg viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g transform="translate(-5, -260)">`
                     + svg
                     + `</g>
                 </svg>`;
