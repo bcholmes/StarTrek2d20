@@ -2147,6 +2147,108 @@ export class Talents {
                 [new SourcePrerequisite(Source.PicardS1), new SpeciesPrerequisite(Species.Romulan, true)],
                 1,
                 "Romulan"),
+            new TalentModel(
+                "Residual Strange Energies",
+                "The Ancient Ones’ strange energies that have permeated the planet have morphed your genetics, giving you the ability to change objects into other things. Once per mission, you may turn one non-living, simple object into another. Both objects must be able to be held in your hand.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Apergosian, true)],
+                1,
+                "Apergosian"),
+            new TalentModel(
+                "Number Sense",
+                "You have a mastery of what numbers mean, not just mathematically, but philosophically too. Whenever you attempt a task without using a computer that involves analyzing numbers, you may reduce the Difficulty by 1.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Apergosian, true)],
+                1,
+                "Apergosian"),
+            new TalentModel(
+                "Three-Dimensional Thinking",
+                "You possess a knack for navigating which terrestrial species tend to lack, and can easily lend this grasp of maneuverability to starship piloting. When you attempt a task utilizing your Conn discipline, the complication range associated with that task is always considered to be one less (2 instead of 3, 0 instead of 1 and so on).",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Cetacean, true)],
+                1,
+                "Cetacean"),
+            new TalentModel(
+                "Song of the Ocean",
+                "Your bio-sonar capabilities allow for communication across great distances. Even without technological assistance, you may freely communicate with any other species which possesses bio-sonar sensory communication, even across the vacuum of space, up to a distance of 100 kilometers.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Cetacean, true)],
+                1,
+                "Cetacean"),
+            new TalentModel(
+                "Thickened Carapace",
+                "You have been bred to have an exoskeleton that can absorb tremendous force. This selective breeding process is typically used to create new warriors. Your Resistance is increased to 2.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Clicket, true)],
+                1,
+                "Clicket"),
+            new TalentModel(
+                "Communication Pheromones",
+                "While all Clickets can communicate using clicks from their mouthparts, some have evolved a secondary ability to communicate using scent. These pheromones are subtle and usually require antennae structures for biological organisms to recognize. The Difficulty of tasks to understand this language is increased by 1 unless there is an organism with antennae performing the task.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Clicket, true)],
+                1,
+                "Clicket"),
+            new TalentModel(
+                "Enhanced Thrusters",
+                "Many Exocomps have been known to create structural upgrades to themselves to help be better at the job they are assigned to. Often this can take the form of more efficient and powerful thrusters to increase their maneuverability and flight duration. You may reduce the Difficulty of tasks to avoid falling or floating debris by 1.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Exocomp, true)],
+                1,
+                "Exocomp"),
+            new TalentModel(
+                "Extra Power Supply",
+                "Some Exocomps install an additional power supply in order to accomplish multiple tasks at the same time. You may ignore the opportunity cost of up to three pieces of equipment per scene.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Exocomp, true)],
+                1,
+                "Exocomp"),
+            new TalentModel(
+                "Carnivorous Reptilian Physiology",
+                "You tower over most other humanoid species, and possess thick armored skin, dense muscles and bones, and razor-sharp teeth and talons. You have a Resistance of 2, and your unarmed attacks lose the Non-Lethal quality and gain Vicious 1 instead. Gorn characters must select this talent during character creation.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Gorn, true)],
+                1,
+                "Gorn"),
+            new TalentModel(
+                "Throw Anything",
+                "When a Gorn with extreme might gets into a fight, anything can be a weapon as long as it isn’t too heavy or bolted down. Once per combat encounter, you can make the following attack if a sufficient-sized object is in your zone: Thrown Object: 3[CD] + Security, Knockdown.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Gorn, true), new AttributePrerequisite(Attribute.Fitness, 10)],
+                1,
+                "Gorn"),
+            new TalentModel(
+                "Gorn Royal Bloodline",
+                "The blood of the royal family runs through your veins. When dealing with social conflicts involving Gorn politics, you are considered to have the Gorn Royal Family advantage.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Gorn, true)],
+                1,
+                "Gorn"),
+            new TalentModel(
+                "Resolution-Bound",
+                "From birth, you were taught the societal importance of The Resolution. You embrace the idea and use it as a guide for planning your life’s work. This dedication to your plan means you will do whatever it takes to ensure your legacy is fulfilled before The Resolution. Whenever you cite a value connected to your legacy and spend a point of Determination on Perfect Opportunity, you may also reroll one dice from that pool.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Kaelon, true)],
+                1,
+                "Kaelon"),
+            new TalentModel(
+                "Evolved Telebellum",
+                "Over time, the telebellum of some Kaelons has become a much more powerful defense against psychic probes. In addition to being immune to telepathic and empathic reading, you know exactly who attempted to read you and where that person is located.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Kaelon, true)],
+                1,
+                "Kaelon"),
+            new TalentModel(
+                "Make It Go",
+                "You are great at patching things up and fixing them regardless of the difficulties the solution may cause later. When attempting an Engineering task, you may increase the complication range by 1 or more. If you do, you may reduce the Difficulty of the task by 1, to a minimum of 1 for each complication range increase you make.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Pakled, true)],
+                1,
+                "Pakled"),
+            new TalentModel(
+                "Too Stubborn to Die",
+                "Your body is capable of shrugging off even the most debilitating injuries. If you would be killed, you may spend 1 point of Determination to remain alive but injured.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Pakled, true)],
+                1,
+                "Pakled"),
+            new TalentModel(
+                "Learn From the Past",
+                "Tamarians use stories from the past and mythology to teach lessons about the future. You are exceptionally adept at remembering the stories of your people’s past. When you succeed at a task to recall events you are familiar with, you generate 1 additional point of Momentum which must be spent on the Obtain Information Momentum spend.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Tamarian, true)],
+                1,
+                "Tamarian"),
+            new TalentModel(
+                "Storyteller",
+                "Tamarian teachers use stories to pass on knowledge to younger children. Known as Storytellers, these Tamarians are experts at weaving body motions, words, and music into lessons that young generations will cherish and use all their lives. Once per mission, at the start of a scene with an away team, you may spend ten minutes telling your team a story from the past that is applicable to their current situation. When the story ends, you may roll 1[CD] and add the result to the Momentum pool.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Tamarian, true)],
+                1,
+                "Tamarian"),
 
 
 

@@ -609,8 +609,8 @@ class _Species {
             [
                 { type: "Sample Names", suggestions: "Adreltosh, Brielar, D’Nesh, Kotho, Navaar, Prasad, Savarah, Shretsh" }
             ]),
-        [Species.Gorn]: new SpeciesModel(
-            Species.Gorn,
+        [Species.GornExt]: new SpeciesModel(
+            Species.GornExt,
             "Gorn",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
             [Source.BetaQuadrant],
@@ -1457,6 +1457,120 @@ class _Species {
             [TalentsHelper.getTalent("Guile and Cunning"), TalentsHelper.getTalent("Wary")],
             "Romulan names are personal and wrapped up in secrecy. Romulans tend to have a single name they use openly, a private name they use amongst family, and a true name used only with those they give their hearts to.",
             [{ type: "Sample Names", suggestions: "Alidar, Ayel, Bidran, Bochra, Chulak, D’Tan, Donatra, Hiren, Kabath, Karina, Kimara, Koval, Laris, Letant, Lovok, M’ret, Mendak, Mirok, N’Raj, N’Vek, Neral, Pardek, Rakal, Rekar, Setal, Sirol, T’Rul, Taibak, Tal, Tal’aura, Taris, Telek, Tenqem, Tokath, Toreth, Valdore, Vrax, Zhaban"}], [], false),
+        [Species.Apergosian]: new SpeciesModel(
+            Species.Apergosian,
+            "Apergosian",
+            [Era.NextGeneration],
+            [Source.LowerDecksCampaign],
+            ["Apergosians are bipedal humanoids with orange skin and hair. They also have rectangular pupils that grant them greater depth perception and focus with their peripheral vision.",
+            "The species treats numbers with reverence and respect, always looking to find perfect numbers that future generations could be proud of. This passion for numbers leads many Apergosians to pursue mathematics and the philosophical impact of number sense.",
+            "Before the Apergosians inherited their planet, it was inhabited by a people they refer to  as the Ancient Ones. These deific creatures used something the Apergosians refer to as “strange energies” to build cities, create art, and manipulate physics. Some Apergosians have combined the idea of the Ancient Ones and the concept of numbers into a faith many Apergosians prescribe to."],
+            [Attribute.Control, Attribute.Presence, Attribute.Reason],
+            "Apergosian",
+            "Apergosians have great peripheral vision due to their rectangular pupils. Because of this trait, Apergosians reduce the Difficulty of opposed tasks that rely on sight by 1.",
+            "Numbers are More than a Quantity",
+            [TalentsHelper.getTalent("Residual Strange Energies"), TalentsHelper.getTalent("Number Sense")],
+            "All Apergosians use names similar to those found on Earth, with first names identifying an individual and surnames representing their family.",
+            [{ type: "Sample Names", suggestions: "Jenza Furth, Mighal Lamtur, Ezzery Vath, Borba Grondo"}]),
+        [Species.Cetacean]: new SpeciesModel(
+            Species.Cetacean,
+            "Cetacean",
+            [Era.NextGeneration],
+            [Source.LowerDecksCampaign],
+            ["Native to Earth, the cetaceans are one of numerous species indigenous to the planet. For much of the species’ history, they lacked means of verbal communication with land-dwelling life-forms on the planet, a situation which may have continued perpetually if humanity had not developed universal translator technology. As one of the first species to benefit from the advent of extra-species communication, cetaceans were able to foster a better working relationship with the land-dwelling Humans.",
+            "Cetaceans are somewhat rare in the Federation, in no small part due to much of the Academy’s facilities still being tailored for terrestrial species, often lacking aquatic capabilities. Despite this, cetacean species have found themselves valued contributors to starships; their sensory capabilities and instinctive understanding of navigating three-dimensional locations often finds their contributions to both navigation and communications vital. Despite this, few cetacean species ever care to leave the comfort of their environmental chambers — when a cetacean lives their entire life in three dimensions, trying to move in two can cause excessive nausea even in the most adventurous-minded."],
+            [Attribute.Daring, Attribute.Insight, Attribute.Reason],
+            "Cetacean",
+            "This cetacean species possesses fins and a tail, a smooth skin which reduces friction while swimming, and a layer of blubber which regulates internal temperature in cold liquid environments. Although quick and agile in water, cetaceans are generally lacking in hind legs, requiring adaptive suits to navigate outside of liquid- based environments. Although they typically dwell in water, they require air to breathe and circulate oxygen through their body before expelling it from a nostril-like blowhole located on their back.",
+            "Our Work Can be Fun and Rewarding if We Have the Right Attitude",
+            [TalentsHelper.getTalent("Three-Dimensional Thinking"), TalentsHelper.getTalent("Song of the Ocean")],
+            "Cetaceans tend to possess two names; one which is transmitted to other cetacean species via sonar communication and is therefore unpronounceable by most terrestrial species, and a ‘given name’ which is typically given by their closest non-cetacean friends.",
+            [{ type: "Sample Names", suggestions: "Kimolu, Matt, Regis, Jogani, Nickie"}]),
+        [Species.Clicket]: new SpeciesModel(
+            Species.Clicket,
+            "Clicket",
+            [Era.NextGeneration],
+            [Source.LowerDecksCampaign],
+            ["Formally a member of the Klingon Star Empire, Clickets are an insectoid race who despise gratitude. In fact, the species often see gratitude as an insult and even as an act of war.",
+            "After decades of being insulted when the Klingons called them “Honorable,” the Clickets formulated a plan to leave their disrespectful masters. The Clickets used the distractions of the Klingon and Dominion Wars to build ships and find a suitable home elsewhere. Knowing how stubborn the Clickets were, the Klingons decided to let them leave without interfering so they didn’t have to deal with the exhausting war declarations that came every time the species was complimented."],
+            [Attribute.Insight, Attribute.Fitness, Attribute.Presence],
+            "Clicket",
+            "Clickets live together in colonies on ships which they refer to as nests. Their exoskeleton is resilient and must be shed once a year. The gamemaster may rule that this means a Clicket has Resistance 1, or avoids dangers that would pierce a softer-skinned creature’s flesh.",
+            "Gratitude Shows Us We Can’t be Successful on our Own",
+            [TalentsHelper.getTalent("Thickened Carapace"), TalentsHelper.getTalent("Communication Pheromones")],
+            "Clicket names are usual a series of clicks and chirps. The initial clicks represent the individual’s nest and the chirps that follow are associated with each individual Clicket. Starfleet’s universal translator has converted the clicks and chirps into letters and syllables.",
+            [{ type: "Sample Names", suggestions: "Chk-trall, Krv-lill, Vrv-Jykk, Brk-Chuun, Mrd-Vikk"}]),
+        [Species.Exocomp]: new SpeciesModel(
+            Species.Exocomp,
+            "Exocomp",
+            [Era.NextGeneration],
+            [Source.LowerDecksCampaign],
+            ["Originally designed as self-directing maintenance workers, Exocomps eventually evolved to sentience by rewriting their own codes to become more efficient. The process of recognizing the Exocomps’ sentience took a while, but it eventually became clear that they were making logical choices to survive and eventually even developed personalities.",
+            "Exocomps come prefabricated with micro- replicators which they use to create the tools and attachments they need to complete a job. A by-product of this system is the ability to create new circuit pathways that effectively give Exocomps the ability to create memories and learn new skills.",
+            "Through interactions with Starfleet, Exocomps were eventually recognized as sentient artificial life-forms who were even able to create and understand both family structures and friendship. Though they are still trying to understand the concept of humanoid emotions, some have formed a bond with other Exocomps that are so strong, they create the parts for new Exocomps together and assemble it as a new life-form. Many engineers and scientists believe this is how the Exocomps solved the problem of reproduction and breeding, moving them even closer to true living organisms."],
+            [Attribute.Control, Attribute.Fitness, Attribute.Reason],
+            "Exocomp",
+            "Exocomps are technological life-forms who can crawl across the ground or hover for short periods of time. They are experts at repairing damage. With a built-in micro-replicator, Exocomps are rarely caught without a tool they need. The gamemaster may rule that this means an Exocomp never suffers a penalty for lacking the right tools, or may waive the Opportunity cost of specialized equipment.",
+            "Always Use a Sufficiently Adequate Tool",
+            [TalentsHelper.getTalent("Enhanced Thrusters"), TalentsHelper.getTalent("Extra Power Supply")],
+            "",
+            []),
+        [Species.Gorn]: new SpeciesModel(
+            Species.Gorn,
+            "Gorn",
+            [Era.NextGeneration],
+            [Source.LowerDecksCampaign],
+            ["A race of bipedal reptiloids with faceted eyes, the Gorn are organized under a Hegemony ruled by a king or a queen. Gorn are extremely durable due to their rubbery skin and thick bone structure. Equipped with claws and a mouth filled with backwards-curved teeth, Gorn are a formidable adversary on the field of battle."],
+            [Attribute.Daring, Attribute.Fitness, Attribute.Insight],
+            "Gorn",
+            "Gorn are tall, powerfully- muscled, and can often overpower members of other humanoid species. They are believed to be obligate carnivores, and many species tend to react to the presence of Gorn with an instinctive fear or revulsion which is difficult to overcome. For their part, Gorn tend to have little regard for how others react to them.",
+            " I Will Protect My Crew as though They are My Family",
+            [TalentsHelper.getTalent("Carnivorous Reptilian Physiology"), TalentsHelper.getTalent("Throw Anything"), TalentsHelper.getTalent("Gorn Royal Bloodline")],
+            "Gorn typically use single names that are hard and raspy. Usually using multiple of the same letter in a row, these names are given to a Gorn shortly after their clutch hatches.",
+            [{ type: "Sample Names", suggestions: "Ssar, Kraassk, S’tazzan, Trrusk, V’karrn"}]),
+        [Species.Kaelon]: new SpeciesModel(
+            Species.Kaelon,
+            "Kaelon",
+            [Era.NextGeneration],
+            [Source.LowerDecksCampaign],
+            ["The Kaelons are a bipedal, humanoid species hailing from Kaelon II. Appearing Human but having dark lines on the sides of their heads, Kaelons were also immune to telepathic and empathic intrusions. Primarily isolationists, Kaelons knew little about surrounding space and cultures.",
+            "Most Kaelons participated in a social practice known as The Resolution. This practice required Kaelons to ritualistically end their lives when they reached the age of sixty. This practice was designed to keep their society going as caring for the elderly became a tremendous burden. Those that do not partake in The Resolution are usually ostracized along with their family."],
+            [Attribute.Daring, Attribute.Insight, Attribute.Reason],
+            "Kaelon",
+            "Kaelons possess an organ called a telebellum attached to their brains that makes them immune to telekinetic and empathic reading. This structure manifests as dark lines beneath their skin on both sides of their head.",
+            "I Must Complete My Work Before The Resolution",
+            [TalentsHelper.getTalent("Resolution-Bound"), TalentsHelper.getTalent("Evolved Telebellum")],
+            "Masculine Kaelon names usually use a consonant followed by an apostrophe and the rest of the name. This naming convention is related to their family name and the consonant is often removed forever if the male is ostracized. Feminine names are often two syllables and short, typically ending with a vowel.",
+            [{ type: "Sample Names", suggestions: "Sara, Tara, Colo, Rina, Bulu, B’trist, T’shin, R’Lars, Trist, Shin, Lars"}]),
+        [Species.Pakled]: new SpeciesModel(
+            Species.Pakled,
+            "Pakled",
+            [Era.NextGeneration],
+            [Source.LowerDecksCampaign],
+            ["Pakleds are a corpulent, bipedal species who have eyebrows that swoop up their foreheads and skin flaps beneath their eyes. There is still much being learned about Pakled physiology which somehow allows them to survive the vacuum of space. A Pakled is adept at processing information, though this can take extended periods of time and multiple inputs before the information is fully processed.",
+            "Pakleds seek to make themselves strong and powerful, typically adapting and combining the technologies of other species together to help them do so. Adapting the technology takes many attempts and failures before it works, but once these adaptations work, they are surprisingly successful."],
+            [Attribute.Daring, Attribute.Fitness, Attribute.Insight],
+            "Pakled",
+            "For reasons unknown to themselves or the Federation, Pakleds are immune to the effects of vacuum. The medical mystery still baffles the greatest xenobiologists.",
+            "Pakleds are Strong",
+            [TalentsHelper.getTalent("Make It Go"), TalentsHelper.getTalent("Too Stubborn to Die")],
+            "Pakleds take short, aggressive names that represent their power.",
+            [{ type: "Sample Names", suggestions: "Grunog, Trendur, Morgug, Rangorg, Dendinor, Frondog"}]),
+        [Species.Tamarian]: new SpeciesModel(
+            Species.Tamarian,
+            "Tamarian",
+            [Era.NextGeneration],
+            [Source.LowerDecksCampaign],
+            ["Tamarians are bipedal humanoids with long nostrils and ear holes on the sides of their heads. A bony ridge runs from the top of their nose and over the top of their heads. Two smaller ridges usually run along the side of their heads, over their ear holes. Tamarians are hairless and have thick, milky-white blood. Their thumbs are long in proportion to the rest of their fingers and have a sucker-like tip on the end.",
+            "Tamarians have a complex language that uses historical and mythological metaphors to describe their feelings and to explain their actions. This language shows a tremendous connection to the stories and actions of their ancestors. In addition, Tamarians participate in sleeping rituals and death rituals that pay homage to their ancestors. These rituals include objects that Tamarians carry with them, including a ceremonial dagger."],
+            [Attribute.Control, Attribute.Insight, Attribute.Presence],
+            "Tamarian",
+            "The tips of Tamarian thumbs act like a sucker and helps to maintain a tight grip on objects, especially their ritual daggers. Unless they choose otherwise, Tamarians cannot be disarmed.",
+            "Kazi’s Children, Their Faces Wet",
+            [TalentsHelper.getTalent("Learn From the Past"), TalentsHelper.getTalent("Storyteller")],
+            "Because of their attachments to names and events, no two Tamarians have ever had the same name. This practice ensures that there isn’t confusion about whose actions are referenced in their language. Typically, a Tamarian’s name is two syllables though there have been three and four syllable names throughout their history and mythology.",
+            [{ type: "Sample Names", suggestions: "Varlok, Trayshun, Rinduk, Shileez, Grandor, Norak"}]),
+
         //[Species.Romulan]: new SpeciesModel(
         //    "",
         //    [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration],
@@ -1704,6 +1818,12 @@ class _Species {
 
         if (hasAnySource([Source.DS9, Source.AlphaQuadrant])) {
             if (species === Species.FerengiExt) {
+                return true;
+            }
+        }
+
+        if (hasAnySource([Source.LowerDecksCampaign])) {
+            if (species === Species.GornExt) {
                 return true;
             }
         }

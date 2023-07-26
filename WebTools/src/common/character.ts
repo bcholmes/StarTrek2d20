@@ -428,6 +428,12 @@ export class Character extends Construct {
         if (this.hasTalent("Hardened Hide")) {
             result += 2;
         }
+        if (this.hasTalent("Thickened Carapace")) {
+            result += 2;
+        }
+        if (this.hasTalent("Carnivorous Reptilian Physiology")) {
+            result += 2;
+        }
         return result;
     }
 

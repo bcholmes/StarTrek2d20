@@ -33,7 +33,7 @@ export enum Species {
     Zakdorn,
     Reman,
     Orion,
-    Gorn,
+    GornExt,
     // DS9
     Changeling,
     Ferengi,
@@ -107,6 +107,15 @@ export enum Species {
     Kobali,
     Romulan,
 
+    // Lower Decks
+    Apergosian,
+    Cetacean,
+    Clicket,
+    Exocomp,
+    Gorn,
+    Kaelon,
+    Pakled,
+    Tamarian,
 
 
     Custom,
