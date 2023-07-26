@@ -297,13 +297,17 @@ class NoseCatalog {
             return result + seam;
         } else if (token.species === Species.Denobulan) {
             return result + DenobulanNoseAppliance.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
+        } else if (SpeciesRestrictions.isRubberHeaded(token.species)) {
+            return "";
         } else {
             return result;
         }
     }
 
     public getSwatches(token: Token) {
-        if (token.species === Species.Tellarite) {
+        if (SpeciesRestrictions.isRubberHeaded(token.species)) {
+            return [];
+        } else if (token.species === Species.Tellarite) {
             return [new Swatch(NoseType.StraightBasic, "Standard Tellarite Nose", (token) => NoseCatalog.decorateSwatch(TellariteNose1, token)) ];
         } else if (token.species === Species.Ferengi) {
             return [new Swatch(NoseType.StraightBasic, "Standard Ferengi Nose", (token) => NoseCatalog.decorateSwatch(FerengiNose, token)) ];

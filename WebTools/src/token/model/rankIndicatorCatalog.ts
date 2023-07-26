@@ -1,5 +1,4 @@
 import { Rank } from "../../helpers/ranks";
-import { BodyType } from "./bodyTypeEnum";
 import { EnterpriseUniformPack } from "./enterpriseUniformPack";
 import { KlingonArmorUniformPack } from "./klingonArmorUniformPack";
 import { MonsterMaroonUniformPack } from "./monsterMaroonUniformPack";

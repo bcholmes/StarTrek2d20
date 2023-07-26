@@ -84,7 +84,7 @@ const token = (state: Token = initialState, action) => {
         let extras = state.extras.filter(e => SpeciesRestrictions.isExtraAvailableFor(e, newSpecies));
 
         let variant = state.variant;
-        let variants = UniformVariantRestrictions.getAvailableVariants(state.uniformEra, state.bodyType, newSpecies, state.divisionColor);
+        let variants = UniformVariantRestrictions.getAvailableVariants(state.uniformEra, state.bodyType, newSpecies, state.divisionColor, state.rankIndicator);
         if (variants.indexOf(variant) < 0) {
             variant = UniformVariantType.Base;
         }
@@ -119,7 +119,7 @@ const token = (state: Token = initialState, action) => {
             rank = Rank.None;
         }
         let variant = state.variant;
-        let variants = UniformVariantRestrictions.getAvailableVariants(action.payload.era, state.bodyType, state.species, colour);
+        let variants = UniformVariantRestrictions.getAvailableVariants(action.payload.era, state.bodyType, state.species, colour, rank);
         if (variants.indexOf(variant) < 0) {
             variant = UniformVariantType.Base;
         }
@@ -134,7 +134,7 @@ const token = (state: Token = initialState, action) => {
     }
     case SET_TOKEN_DIVISION_COLOR: {
         let variant = state.variant;
-        let variants = UniformVariantRestrictions.getAvailableVariants(action.payload.era, state.bodyType, state.species, action.payload.color);
+        let variants = UniformVariantRestrictions.getAvailableVariants(action.payload.era, state.bodyType, state.species, action.payload.color, state.rankIndicator);
         if (variants.indexOf(variant) < 0) {
             variant = UniformVariantType.Base;
         }
@@ -145,11 +145,18 @@ const token = (state: Token = initialState, action) => {
             variant: variant
         }
     }
-    case SET_TOKEN_RANK:
+    case SET_TOKEN_RANK: {
+        let variant = state.variant;
+        let variants = UniformVariantRestrictions.getAvailableVariants(action.payload.era, state.bodyType, state.species, state.divisionColor, action.payload.rank);
+        if (variants.indexOf(variant) < 0) {
+            variant = UniformVariantType.Base;
+        }
         return {
             ...state,
+            variant: variant,
             rankIndicator: action.payload.rank
         }
+    }
     case SET_TOKEN_HAIR_TYPE:
         return {
             ...state,
@@ -172,7 +179,7 @@ const token = (state: Token = initialState, action) => {
         }
     case SET_TOKEN_BODY_TYPE: {
         let variant = state.variant;
-        let variants = UniformVariantRestrictions.getAvailableVariants(action.payload.era, action.payload.type, state.species, state.divisionColor);
+        let variants = UniformVariantRestrictions.getAvailableVariants(action.payload.era, action.payload.type, state.species, state.divisionColor, state.rankIndicator);
         if (variants.indexOf(variant) < 0) {
             variant = UniformVariantType.Base;
         }

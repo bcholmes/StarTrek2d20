@@ -19,22 +19,26 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
 
     render() {
         const { t, token } = this.props;
-        return (<>
-            <p className="mt-4">{t('TokenCreator.section.mouth.shape')}:</p>
-            <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-            {MouthCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.localizedName}
-                onClick={() => store.dispatch(setTokenMouthType(s.id))} active={s.id === token.mouthType}
-                token={token}
-                key={'mouth-swatch-' + s.id }/>)}
-            </div>
+        if (SpeciesRestrictions.isRubberHeaded(token.species)) {
+            return (<p className="mt-4">No selections available.</p>);
+        } else {
+            return (<>
+                <p className="mt-4">{t('TokenCreator.section.mouth.shape')}:</p>
+                <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
+                {MouthCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.localizedName}
+                    onClick={() => store.dispatch(setTokenMouthType(s.id))} active={s.id === token.mouthType}
+                    token={token}
+                    key={'mouth-swatch-' + s.id }/>)}
+                </div>
 
-            <p className="mt-4">{t('TokenCreator.section.mouth.colour')}:</p>
-            <ColorSelection colors={SpeciesRestrictions.getLipstickColors(token.species)} onSelection={(c) => store.dispatch(setTokenLipstickColor(c))} />
+                <p className="mt-4">{t('TokenCreator.section.mouth.colour')}:</p>
+                <ColorSelection colors={SpeciesRestrictions.getLipstickColors(token.species)} onSelection={(c) => store.dispatch(setTokenLipstickColor(c))} />
 
-            {this.renderFacialHair()}
+                {this.renderFacialHair()}
 
 
-        </>);
+            </>);
+        }
     }
 
     renderFacialHair() {

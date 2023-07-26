@@ -1,7 +1,5 @@
-import { Division } from "../../common/character";
 import { Species } from "../../helpers/speciesEnum";
 import { BodyType } from "./bodyTypeEnum";
-import { DivisionColors } from "./divisionColors";
 import { EnterpriseUniformPack } from "./enterpriseUniformPack";
 import { MonsterMaroonUniformPack } from "./monsterMaroonUniformPack";
 import SpeciesRestrictions from "./speciesRestrictions";

@@ -39,6 +39,7 @@
     "TokenCreator.section.body.colour": "Abteilungsfarbe",
     "TokenCreator.section.body.rank": "Rang",
     "TokenCreator.section.body.type": "Körpertyp",
+    "TokenCreator.section.body.uniformVariant": "Uniformvariante",
 
     "TokenCreator.section.head": "Kopf",
 
@@ -71,6 +72,7 @@
 
     "TokenCreator.section.extras.ears": "Ohren",
     "TokenCreator.section.extras.forehead": "Stirn",
+    "TokenCreator.section.extras.headwear": "Kopfbedeckung",
 
     "ViewPage.viewSupportingCharacter": "Nebencharakter anzeigen",
     "ViewPage.viewNpc": "NSC anzeigen",
@@ -158,6 +160,7 @@
     "SpaceframeSelectionPage.text": "Die Klasse bestimmt die grundlegende Struktur und Infrastruktur des Schiffs, sowie das Fundament, auf dem alles andere aufbaut. Während dieses Schritts wählen die Spieler eine einzelne Klasse, die die grundlegenden Systeme des Schiffs, seine Schiffsgröße und seine Bewaffnung bereitstellt. Verschiedene Klassen werden zu unterschiedlichen Zeit in und außer Dienst gestellt, das Kampagnenjahr bestimmt also die Verfügbarkeit.",
     "SpaceframeSelectionPage.note": "Hinweis: Das Utopia Planitia Quellenbuch hat die Werte von einigen bereits vorher veröffentlichten Schiffsklassen neu festgelegt. Diese neuen Werte werden hier angezeigt.",
     "SpaceframeSelectionPage.ignoreEndOfService": "Das Datum der Außerdienststellung ignorieren (Entscheidung liegt bei der Spielleitung)",
+    "SpaceframeSelectionPage.error": "Bitte wählen Sie eine Schiffsklasse um fortzufahren.",
 
     "SpeciesDetails.options": "Spezies-Optionen",
     "SpeciesDetails.selectThree": "(Drei auswählen)",
@@ -231,6 +234,7 @@
     "Common.button.view": "Anzeigen",
 
     "Common.text.none": "Keine Auswahl",
+    "Common.text.search": "Suchen...",
     "Common.text.select": "Wähle",
     "Common.text.selectOne": "Wählen Sie eine(n/s)",
     "Common.text.total": "Insgesamt",
@@ -476,6 +480,7 @@
     "ExtraType.smallBindi": "Kleines Bindi",
     "ExtraType.risanSymbol": "Risanisches Symbol",
     "ExtraType.inuitTattoo": "Inuit-Tattoo",
+    "ExtraType.ferengiHeadFlap": "Ferengi-Kopftuch",
 
     "GovernmentType.name.andorian": "Andorianer",
     "GovernmentType.name.bajoran": "Bajoraner",
@@ -586,6 +591,42 @@
     "Rank.crewman3rdClass.name": "Crewman 3rd Class",
     "Rank.crewman3rdClass.abbrev": "Crew.",
 
+    "Spaceframe.akira": "Akira-Klasse",
+    "Spaceframe.ambassador": "Ambassador-Klasse",
+    "Spaceframe.archer": "Archer-Klasse",
+    "Spaceframe.cardenas": "Cardenas-Klasse",
+    "Spaceframe.centaur": "Centaur-Klasse",
+    "Spaceframe.constellation": "Constellation-Klasse",
+    "Spaceframe.constitution": "Constitution-Klasse",
+    "Spaceframe.crossfield": "Crossfield-Klasse",
+    "Spaceframe.daedalus": "Daedalus-Klasse",
+    "Spaceframe.defiant": "Defiant-Klasse",
+    "Spaceframe.engle": "Engle-Klasse",
+    "Spaceframe.excelsior": "Excelsior-Klasse",
+    "Spaceframe.galaxy": "Galaxy-Klasse",
+    "Spaceframe.hermes": "Hermes-Klasse",
+    "Spaceframe.hiawatha": "Hiawatha-Klasse",
+    "Spaceframe.hoover": "Hoover-Klasse",
+    "Spaceframe.intrepid": "Intrepid-Klasse",
+    "Spaceframe.luna": "Luna-Klasse",
+    "Spaceframe.magee": "Magee-Klasse",
+    "Spaceframe.malachowski": "Malachowski-Klasse",
+    "Spaceframe.miranda": "Miranda-Klasse",
+    "Spaceframe.nebula": "Nebula-Klasse",
+    "Spaceframe.newOrleans": "New Orleans-Klasse",
+    "Spaceframe.nimitz": "Nimitz-Klasse",
+    "Spaceframe.norway": "Norway-Klasse",
+    "Spaceframe.nova": "Nova-Klasse",
+    "Spaceframe.nX": "NX-Klasse",
+    "Spaceframe.oberth": "Oberth-Klasse",
+    "Spaceframe.olympic": "Olympic-Klasse",
+    "Spaceframe.saber": "Saber-Klasse",
+    "Spaceframe.shepard": "Shepard-Klasse",
+    "Spaceframe.sovereign": "Sovereign-Klasse",
+    "Spaceframe.steamrunner": "Steamrunner-Klasse",
+    "Spaceframe.sydney": "Sydney-Klasse",
+    "Spaceframe.walker": "Walker-Klasse",
+
     "ShipBuildType.pod.name": "Kleines Shuttle",
 
     "ShipBuildType.shuttlecraft.name": "Shuttle",
@@ -637,7 +678,10 @@
     "StarSystem.common.primaryStar": "Hauptstern",
     "StarSystem.common.companionStar": "Begleitstern",
 
+    "UniformEra.enterprise": "Enterprise",
     "UniformEra.originalSeries": "Originalserie",
+    "UniformEra.originalSeriesKlingon": "Klingonen (Originalserie)",
+    "UniformEra.klingon": "Klingonische Rüstung",
     "UniformEra.monsterMaroon": "Der Zorn des Khan",
     "UniformEra.dominionWar": "Dominionkrieg",
 

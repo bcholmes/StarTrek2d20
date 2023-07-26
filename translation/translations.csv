@@ -29,7 +29,7 @@ TokenCreator.section.body.uniform,Uniform Type,Uniformtyp,,
 TokenCreator.section.body.colour,Division Colour,Abteilungsfarbe,,
 TokenCreator.section.body.rank,Rank,Rang,,
 TokenCreator.section.body.type,Body Type,Körpertyp,,
-TokenCreator.section.body.uniformVariant,Uniform Variant,,,
+TokenCreator.section.body.uniformVariant,Uniform Variant,Uniformvariante,,
 TokenCreator.section.head,Head,Kopf,,
 TokenCreator.section.head.colour,Skin Colour,Hautfarbe,,
 TokenCreator.section.head.shape,Head Shape,Kopfform,,
@@ -50,7 +50,7 @@ TokenCreator.section.eyes.colour,Eye Colour,Augenfarbe,,
 TokenCreator.section.extras,Extras,Extras,,
 TokenCreator.section.extras.ears,Ears,Ohren,,
 TokenCreator.section.extras.forehead,Forehead,Stirn,,
-TokenCreator.section.extras.headwear,Headwear,,,
+TokenCreator.section.extras.headwear,Headwear,Kopfbedeckung,,
 ViewPage.viewSupportingCharacter,View Supporting Character,Nebencharakter anzeigen,Ver personaje secundario,Voir le personnage secondaire
 ViewPage.viewNpc,View NPC,NSC anzeigen,,Voir PNJ
 ViewPage.viewMainCharacter,View Main Character,Hauptfigur anzeigen,Ver personaje principal,Voir le personnage principal
@@ -117,7 +117,7 @@ SpaceframeOptionPage.button.customSpaceframe,Custom Spaceframe,Eigene Schiffskla
 SpaceframeSelectionPage.text,"The Spaceframe is the ship’s basic structure and infrastructure, and the foundation upon which everything else will be laid. At this stage, the Players select a single class, which provides the basic Systems for the ship, as well as its Scale, and its weaponry. Different classes enter and leave service at different dates, so the campaign year determines availability.","Die Klasse bestimmt die grundlegende Struktur und Infrastruktur des Schiffs, sowie das Fundament, auf dem alles andere aufbaut. Während dieses Schritts wählen die Spieler eine einzelne Klasse, die die grundlegenden Systeme des Schiffs, seine Schiffsgröße und seine Bewaffnung bereitstellt. Verschiedene Klassen werden zu unterschiedlichen Zeit in und außer Dienst gestellt, das Kampagnenjahr bestimmt also die Verfügbarkeit.",,
 SpaceframeSelectionPage.note,"Note: The Utopia Planitia sourcebook has re-defined the stats for a number of previously-published spaceframes. Those redefined stats are presented, here.",Hinweis: Das Utopia Planitia Quellenbuch hat die Werte von einigen bereits vorher veröffentlichten Schiffsklassen neu festgelegt. Diese neuen Werte werden hier angezeigt.,,
 SpaceframeSelectionPage.ignoreEndOfService,Ignore end-of-service date (GM's decision),Das Datum der Außerdienststellung ignorieren (Entscheidung liegt bei der Spielleitung),,
-SpaceframeSelectionPage.error,Please select a spaceframe before proceeding.,,,
+SpaceframeSelectionPage.error,Please select a spaceframe before proceeding.,Bitte wählen Sie eine Schiffsklasse um fortzufahren.,,
 SpeciesDetails.options,Species Options,Spezies-Optionen,,Option d'espèce
 SpeciesDetails.selectThree,(Select three),(Drei auswählen),,(Choisir trois)
 SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),Spezies-übergreifende Talente erlauben (Entscheidung liegt bei der Spielleitung),,Autoriser les talents inter-espèces (Decision du GM)
@@ -192,7 +192,7 @@ Common.button.modify,Modify,Anpassen,,Modifier
 Common.button.next,Next,Weiter,Próximo,Prochain
 Common.button.view,View,Anzeigen,Vista,Vue
 Common.text.none,None,Keine Auswahl,,Aucun
-Common.text.search,Search...,,,
+Common.text.search,Search...,Suchen...,,
 Common.text.select,Select,Wähle,,Selectionnez
 Common.text.selectOne,Select one,Wählen Sie eine(n/s),,Selectionnez en un
 Common.text.total,Total,Insgesamt,,Total
@@ -346,7 +346,7 @@ Source.book.discoveryCampaign,Discovery Campaign,(NOT YET TRANSLATED),,Campagne 
 Source.book.picardS1,Picard S1,(NOT YET TRANSLATED),,Picard S1
 Source.book.utopiaPlanitia,Utopia Planitia,(NOT YET TRANSLATED),,Utopia Planitia
 Source.book.lowerDecksCampaign,Lower Decks,(NOT YET TRANSLATED),,
-Source.book.captainsLog,Captain's Log,,,
+Source.book.captainsLog,Captain's Log,(NOT YET TRANSLATED),,
 CharacterType.name.starfleet,Starfleet,Sternenflotte,,Starfleet
 CharacterType.name.klingonWarrior,Klingon Defense Force,Klingonische Verteidigungsstreitmacht,,Forces de Défense Klingones
 CharacterType.name.civilian,Civilian,Zivilisten,,Civil
@@ -439,6 +439,7 @@ Division.monsterMaroon.science,Science,Wissenschaft,,
 Division.monsterMaroon.helmEngineering,Helm/Engineering,Steuer/Technik,,
 Division.monsterMaroon.medical,Medical,Medizin,,
 Division.monsterMaroon.security,Security,Sicherheit,,
+Division.monsterMaroon.specialServices,Special Services,,,
 Division.monsterMaroon.trainee,Trainee,Rekrut,,
 Era.name.enterprise,Enterprise (22nd century),Enterprise (22. Jahrhundert),,Enterprise (22ème Siècle)
 Era.name.originalSeries,Original Series (23rd century),Originalserie (23. Jahrhundert),,Serie Originale (23ème Siècle)
@@ -450,7 +451,7 @@ ExtraType.hoopEarring,Hoop Earring,Kreolen-Ohrring,,
 ExtraType.smallBindi,Small Bindi,Kleines Bindi,,
 ExtraType.risanSymbol,Risian Symbol,Risanisches Symbol,,
 ExtraType.inuitTattoo,Inuit Tattoo,Inuit-Tattoo,,
-ExtraType.ferengiHeadFlap,Ferengi Head Flap,,,
+ExtraType.ferengiHeadFlap,Ferengi Head Flap,Ferengi-Kopftuch,,
 GovernmentType.name.andorian,Andorian,Andorianer,,Andorien
 GovernmentType.name.bajoran,Bajoran,Bajoraner,,Bajoran
 GovernmentType.name.cardassian,Cardassian,Cardassianer,,Cardassien
@@ -599,41 +600,41 @@ Rank.crewman2ndClass.name,Crewman 2nd Class,Crewman 2nd Class,,
 Rank.crewman2ndClass.abbrev,Crew.,Crew.,,
 Rank.crewman3rdClass.name,Crewman 3rd Class,Crewman 3rd Class,,
 Rank.crewman3rdClass.abbrev,Crew.,Crew.,,
-Spaceframe.akira,Akira Class,,,
-Spaceframe.ambassador,Ambassador Class,,,
-Spaceframe.archer,Archer Class,,,
-Spaceframe.cardenas,Cardenas Class,,,
-Spaceframe.centaur,Centaur Class,,,
-Spaceframe.constellation,Constellation Class,,,
-Spaceframe.constitution,Constitution Class,,,
-Spaceframe.crossfield,Crossfield Class,,,
-Spaceframe.daedalus,Daedalus Class,,,
-Spaceframe.defiant,Defiant Class,,,
-Spaceframe.engle,Engle Class,,,
-Spaceframe.excelsior,Excelsior Class,,,
-Spaceframe.galaxy,Galaxy Class,,,
-Spaceframe.hermes,Hermes Class,,,
-Spaceframe.hiawatha,Hiawatha Class,,,
-Spaceframe.hoover,Hoover Class,,,
-Spaceframe.intrepid,Intrepid Class,,,
-Spaceframe.luna,Luna Class,,,
-Spaceframe.magee,Magee Class,,,
-Spaceframe.malachowski,Malachowski Class,,,
-Spaceframe.miranda,Miranda Class,,,
-Spaceframe.nebula,Nebula Class,,,
-Spaceframe.newOrleans,New Orleans Class,,,
-Spaceframe.nimitz,Nimitz Class,,,
-Spaceframe.norway,Norway Class,,,
-Spaceframe.nova,Nova Class,,,
-Spaceframe.nX,NX Class,,,
-Spaceframe.oberth,Oberth Class,,,
-Spaceframe.olympic,Olympic Class,,,
-Spaceframe.saber,Saber Class,,,
-Spaceframe.shepard,Shepard Class,,,
-Spaceframe.sovereign,Sovereign Class,,,
-Spaceframe.steamrunner,Steamrunner Class,,,
-Spaceframe.sydney,Sydney Class,,,
-Spaceframe.walker,Walker Class,,,
+Spaceframe.akira,Akira Class,Akira-Klasse,,
+Spaceframe.ambassador,Ambassador Class,Ambassador-Klasse,,
+Spaceframe.archer,Archer Class,Archer-Klasse,,
+Spaceframe.cardenas,Cardenas Class,Cardenas-Klasse,,
+Spaceframe.centaur,Centaur Class,Centaur-Klasse,,
+Spaceframe.constellation,Constellation Class,Constellation-Klasse,,
+Spaceframe.constitution,Constitution Class,Constitution-Klasse,,
+Spaceframe.crossfield,Crossfield Class,Crossfield-Klasse,,
+Spaceframe.daedalus,Daedalus Class,Daedalus-Klasse,,
+Spaceframe.defiant,Defiant Class,Defiant-Klasse,,
+Spaceframe.engle,Engle Class,Engle-Klasse,,
+Spaceframe.excelsior,Excelsior Class,Excelsior-Klasse,,
+Spaceframe.galaxy,Galaxy Class,Galaxy-Klasse,,
+Spaceframe.hermes,Hermes Class,Hermes-Klasse,,
+Spaceframe.hiawatha,Hiawatha Class,Hiawatha-Klasse,,
+Spaceframe.hoover,Hoover Class,Hoover-Klasse,,
+Spaceframe.intrepid,Intrepid Class,Intrepid-Klasse,,
+Spaceframe.luna,Luna Class,Luna-Klasse,,
+Spaceframe.magee,Magee Class,Magee-Klasse,,
+Spaceframe.malachowski,Malachowski Class,Malachowski-Klasse,,
+Spaceframe.miranda,Miranda Class,Miranda-Klasse,,
+Spaceframe.nebula,Nebula Class,Nebula-Klasse,,
+Spaceframe.newOrleans,New Orleans Class,New Orleans-Klasse,,
+Spaceframe.nimitz,Nimitz Class,Nimitz-Klasse,,
+Spaceframe.norway,Norway Class,Norway-Klasse,,
+Spaceframe.nova,Nova Class,Nova-Klasse,,
+Spaceframe.nX,NX Class,NX-Klasse,,
+Spaceframe.oberth,Oberth Class,Oberth-Klasse,,
+Spaceframe.olympic,Olympic Class,Olympic-Klasse,,
+Spaceframe.saber,Saber Class,Saber-Klasse,,
+Spaceframe.shepard,Shepard Class,Shepard-Klasse,,
+Spaceframe.sovereign,Sovereign Class,Sovereign-Klasse,,
+Spaceframe.steamrunner,Steamrunner Class,Steamrunner-Klasse,,
+Spaceframe.sydney,Sydney Class,Sydney-Klasse,,
+Spaceframe.walker,Walker Class,Walker-Klasse,,
 ShipBuildType.pod.name,Pod,Kleines Shuttle,,Nacelle
 ShipBuildType.shuttlecraft.name,Shuttle,Shuttle,,Navette
 ShipBuildType.runabout.name,Runabout,Runabout,,Runabout
@@ -696,10 +697,10 @@ StarSystem.common.worlds,Worlds,Welten,,Mondes
 StarSystem.common.noWorlds,No worlds,Keine Welten,,Pas de mondes
 StarSystem.common.primaryStar,Primary Star,Hauptstern,,Etoile Primaire
 StarSystem.common.companionStar,Companion Star,Begleitstern,,Etoile Binaire
-UniformEra.enterprise,Enterprise,,,
+UniformEra.enterprise,Enterprise,Enterprise,,
 UniformEra.originalSeries,Original Series,Originalserie,,
-UniformEra.originalSeriesKlingon,Klingon (Original Series),,,
-UniformEra.klingon,Klingon Armour,,,
+UniformEra.originalSeriesKlingon,Klingon (Original Series),Klingonen (Originalserie),,
+UniformEra.klingon,Klingon Armour,Klingonische Rüstung,,
 UniformEra.monsterMaroon,The Wrath of Khan,Der Zorn des Khan,,
 UniformEra.dominionWar,Dominion War,Dominionkrieg,,
 Value.environment.text,"This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.","Diese Überzeugung sollte die Herkunft und die Kultur des Charakters, in der er oder sie aufgewachsen ist, widerspiegeln. Dies ist eine gute Gelegenheit, sich darüber Gedanken zu machen, wie der Charakter seine oder ihre eigene Kultur sieht und wie er oder sie zu den Philosophien und Traditionen der Vorfahren steht.",,Cette valeur doit refléter l'environnement et la culture dans lesquels le personnage a été élevé. C'est une bonne occasion d'examiner comment le personnage perçoit sa propre culture et comment il se rattache- ou peut-être ne se rattache pas - aux philosophies et aux traditions de son peuple.

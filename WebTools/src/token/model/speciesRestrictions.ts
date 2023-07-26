@@ -27,6 +27,8 @@ class SpeciesRestrictions {
             return ["#97c3f2", "#87acda", "#5883a6", "#5772b7", "#0665b3", "#385f8d"]; // "#597986",
         } else if (species === Species.Ferengi) {
             return ["#d18352"];
+        } else if (species === Species.Saurian) {
+            return ["#de898a", "#ca7882", "#b6677a", "#a77e86", "#989591", "#626163", "#7c6a61", "#603f31"];
         } else if (species === Species.Efrosian) {
 //            return ["#ffd9c6", "#feb582", "#f8a271", "#ff8740", "#d7580b", "#d13703", "#b72001", "#822601"];
             return ["#ffd9c6", "#d8b092", "#e1ad88", "#d69972", "#d18352", "#b06e46", "#9e603b", "#834b2b", "#70432c"];
@@ -36,7 +38,7 @@ class SpeciesRestrictions {
     }
 
     static getEyeColors(species: Species) {
-        if (species === Species.Betazoid) {
+        if (species === Species.Betazoid || species === Species.Saurian) {
             return ["#111111"];
         } else {
             return ["#e1bbc3", "#8bb5db", "#4079c0", "#b4b8b9", "#8e9796", "#758a9d", "#88967d", "#6e9d4d", "#aa6925", "#863603", "#56220c", "#3f0c08", "#280000"];
@@ -74,7 +76,7 @@ class SpeciesRestrictions {
     }
 
     static getHairTypes(species: Species) {
-        if (this.isBald(species)) {
+        if (this.isBald(species) || SpeciesRestrictions.isRubberHeaded(species)) {
             return [ HairType.Bald ];
         } else if (species === Species.Andorian) {
             // the corn rows don't look right with the Antennae
@@ -128,6 +130,10 @@ class SpeciesRestrictions {
             || species === Species.Tellarite || species === Species.Efrosian
             || species === Species.Ktarian;
             // species === Species.Denobulan ||
+    }
+
+    static isRubberHeaded(species: Species) {
+        return species === Species.Saurian || species === Species.Caitian;
     }
 
     static getSpeciesOptions(species: Species) {

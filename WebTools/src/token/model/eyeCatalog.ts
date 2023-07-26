@@ -354,7 +354,9 @@ class EyeCatalog {
     }
 
     private getEyeAndNoseEdge(eyeType: EyeType, species: Species) {
-        if (species === Species.Tellarite) {
+        if (SpeciesRestrictions.isRubberHeaded(species)) {
+            return "";
+        } else if (species === Species.Tellarite) {
             switch (eyeType) {
                 case EyeType.Eye1:
                     return Tellarite.eye1;
@@ -414,7 +416,9 @@ class EyeCatalog {
     }
 
     getSwatches(token: Token) {
-        if (token.species === Species.Tellarite) {
+        if (SpeciesRestrictions.isRubberHeaded(token.species)) {
+            return [];
+        } else if (token.species === Species.Tellarite) {
             return [
                 new Swatch(EyeType.Eye1, "Vulcan-esque Angled Brows", (token) => EyeCatalog.decorateSwatch(EyeType.Eye1, token)),
                 new Swatch(EyeType.Eye2, "Standard Brow", (token) => EyeCatalog.decorateSwatch(EyeType.Eye2, token)),

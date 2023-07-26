@@ -1,5 +1,6 @@
 import { Species } from "../../helpers/speciesEnum";
 import { SpeciesOption } from "./speciesOptionEnum";
+import SpeciesRestrictions from "./speciesRestrictions";
 import SpeciesColors from "./speciesRestrictions";
 import { Token } from "./token";
 
@@ -170,7 +171,9 @@ class EarCatalog {
     }
 
     getEar(token: Token) {
-        if (token.species === Species.Vulcan || token.species === Species.Romulan) {
+        if (SpeciesRestrictions.isRubberHeaded(token.species)) {
+            return "";
+        } else if (token.species === Species.Vulcan || token.species === Species.Romulan) {
             return VulcanEar.replace(SpeciesColors.DEFAULT_SKIN_COLOR, token.skinColor);
         } else if (token.species === Species.Denobulan) {
             return DenobulanEar.replace(SpeciesColors.DEFAULT_SKIN_COLOR, token.skinColor);
