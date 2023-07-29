@@ -131,6 +131,10 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
                                     starship sheets that show a visual representation of well-known ship classes.
                                 </li>
                                 <li>Initial work to support national languages (including French, Spanish and German)</li>
+                                <li>The app can generate random NPCs.</li>
+                                <li>When viewing a particular character or starship, you can export the character in a format recognized by Fantasy Grounds or Foundry VTT.</li>
+                                <li>The app includes a token generator, which allows you to create a likeness for your character and export it for use in,
+                                    for example, your favourite Virtual Table Top.</li>
                             </ul>
                             <p>
                                 Want more details? You should click on the News item on the left-hand LCARS bar.
@@ -207,9 +211,11 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
                 </LcarsFrame>);
     }
 
-    goToHome(e: React.MouseEvent<HTMLAnchorElement>) {
-        e.preventDefault();
-        e.stopPropagation();
+    goToHome(e?: React.MouseEvent<HTMLAnchorElement>) {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
 
         const { history } = this.props;
         history.push("/");

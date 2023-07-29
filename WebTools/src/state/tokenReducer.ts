@@ -179,13 +179,14 @@ const token = (state: Token = initialState, action) => {
         }
     case SET_TOKEN_BODY_TYPE: {
         let variant = state.variant;
-        let variants = UniformVariantRestrictions.getAvailableVariants(action.payload.era, action.payload.type, state.species, state.divisionColor, state.rankIndicator);
+        let variants = UniformVariantRestrictions.getAvailableVariants(state.uniformEra, action.payload.type, state.species, state.divisionColor, state.rankIndicator);
         if (variants.indexOf(variant) < 0) {
             variant = UniformVariantType.Base;
         }
         return {
             ...state,
-            bodyType: action.payload.type
+            bodyType: action.payload.type,
+            variant: variant
         }
     }
     case SET_TOKEN_UNIFORM_VARIANT_TYPE:

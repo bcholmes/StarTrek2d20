@@ -12,6 +12,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230728</b>
+                <ul>
+                    <li>Lower Decks! Lower Decks!</li>
+                </ul>
                 <b>v1.230716</b>
                 <ul>
                     <li>A few bug fixes related to Starships.</li>
@@ -189,50 +193,6 @@ class News extends React.Component<INewsProperties, {}> {
                     <li>Minor revisions to the sector generator.</li>
                     <li>Support for Normal Milestones in the modify flow.</li>
                     <li>Some revisions to the standard character sheet.</li>
-                </ul>
-                <b>v1.230124</b>
-                <ul>
-                    <li>Some internal changes relating to sources. The creator should remember your preferences on sources.</li>
-                    <li>Initial work on modification of characters. This is very preliminary, and has some key limitations at the moment.</li>
-                    <li>Accepted a contribution to allow "Dominion" to be a Government type and Allied Military type for players who want to play Dominion characters.</li>
-                </ul>
-                <b>v1.230115</b>
-                <ul>
-                    <li>A few more bug fixes.</li>
-                    <li>More translation work, especially for French support.</li>
-                </ul>
-                <b>v1.230114</b>
-                <ul>
-                    <li>More translation work and minor bug fixes.</li>
-                </ul>
-                <b>v1.230113</b>
-                <ul>
-                    <li>More testing with the star system diagram made me aware of a couple of minor bugs in the sector creation rules.
-                        Those bugs should now be resolved.</li>
-                </ul>
-                <b>v1.230112</b>
-                <ul>
-                    <li>Some improvements to the star system page.</li>
-                </ul>
-                <b>v1.230111</b>
-                <ul>
-                    <li>PDF export bug fix.</li>
-                </ul>
-                <b>v1.230109</b>
-                <ul>
-                    <li>Additional French translations.</li>
-                    <li>Minor navigation fix involving the credits page.</li>
-                </ul>
-                <b>v1.230108</b>
-                <ul>
-                    <li>Today's updates are mostly behind-the-scenes, but one visible change is the redesign of the final page of the
-                        character creation workflow; it had become something of an ugly page, and I wanted to improve it.</li>
-                    <li>Also &mdash; you guessed it &mdash; translation stuff.</li>
-                </ul>
-                <b>v1.230107</b>
-                <ul>
-                    <li>Another translation pass. Over time, we'll add more and more national language capability.</li>
-                    <li>I've added a bit of support for custom species. At the moment, that doesn't mean much other than "you can type the name of a species".</li>
                 </ul>
 
                 <div className="text-center">
