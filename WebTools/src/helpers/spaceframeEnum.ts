@@ -105,6 +105,13 @@ export enum Spaceframe {
     VorCha,
     NeghVar,
 
+    // Lower Decks
+    California,
+    Osler,
+    Obena,
+    Parliament,
+    TKalat,
+    Ganashia,
 
     // Discovery
     DiscoBirdOfPrey,

@@ -21,4 +21,16 @@ export class KlingonArmorUniformPack extends BaseKlingonUniformPack {
             `</g>`;
         }
     }
+
+    getUniformSwatches() {
+        return [];
+    }
+
+    getUniformAndVariantBody(token: Token) {
+        return "";
+    }
+
+    getUniformVariantSwatches(token: Token) {
+        return [];
+    }
 }

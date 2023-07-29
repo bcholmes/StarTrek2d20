@@ -51,7 +51,7 @@ class StarshipTalentsPage extends React.Component<ISimpleStarshipPageProperties,
     }
 
     isExpandedMunitionsPresent() {
-        return this.props.starship.hasTalent("Expanded Munitions");
+        return this.props.starship.hasNonSpaceframeTalent("Expanded Munitions");
     }
 }
 

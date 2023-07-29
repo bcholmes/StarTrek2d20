@@ -2799,6 +2799,12 @@ export class Talents {
                 1,
                 "Starship"),
             new TalentModel(
+                "Dedicated Personnel",
+                "The ship gains two additional Crew Support, which may only be used to establish Supporting Characters.",
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
+                1,
+                "Starship"),
+            new TalentModel(
                 "High-Power Tractor Beam",
                 "The ship’s tractor beam systems channel far greater quantities of power and exert much more force on the target. The ship’s tractor beam has a strength two higher than normal. Further, the ship may spend Power whenever a target attempts to escape the tractor beam to increase its strength for that attempt; the strength increases by 1 for every two Power spent.",
                 [new StarshipPrerequisite(), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],

@@ -53,7 +53,7 @@ class ExpandedMunitionsWeaponsSelectionPage extends React.Component<IExpandedMun
     }
 
     numberOfWeapons() {
-        return this.props.starship.getTalentSelectionList().filter(t => t.talent.name === "Expanded Munitions").length;
+        return this.props.starship.getNonSpaceframeTalentSelectionList().filter(t => t.talent.name === "Expanded Munitions").length;
     }
 
     renderWeapons() {

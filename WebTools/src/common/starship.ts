@@ -270,6 +270,26 @@ export class Starship extends Construct {
         return talents;
     }
 
+    getNonSpaceframeTalentSelectionList() {
+        let talents: Map<string, TalentSelection> = new Map();
+        if (this.profileTalent) {
+            this.addTalent(new TalentSelection(TalentsHelper.getTalent(this.profileTalent.name)), talents);
+        }
+
+        this.additionalTalents.forEach(t => {
+            this.addTalent(new TalentSelection(TalentsHelper.getTalent(t.name)), talents);
+        });
+        if (this.missionPodModel) {
+            this.missionPodModel.talents.forEach(t => {
+                this.addTalent(new TalentSelection(t), talents);
+            });
+        }
+
+        let result: TalentSelection[] = [];
+        talents.forEach((value: TalentSelection) => result.push(value));
+        return result;
+    }
+
     getTalentSelectionList() {
         let talents: Map<string, TalentSelection> = new Map();
         if (this.spaceframeModel) {
@@ -294,6 +314,11 @@ export class Starship extends Construct {
         let result: TalentSelection[] = [];
         talents.forEach((value: TalentSelection) => result.push(value));
         return result;
+    }
+
+    hasNonSpaceframeTalent(talentName: string) {
+        let talents = this.getNonSpaceframeTalentSelectionList().filter(t => t.talent.name === talentName);
+        return talents.length > 0;
     }
 
     hasTalent(talentName: string) {

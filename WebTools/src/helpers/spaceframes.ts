@@ -1408,7 +1408,7 @@ export class SpaceframeHelper {
             CharacterType.Starfleet,
             "Luna Class",
             2372,
-            [ Source.UtopiaPlanitia ],
+            [ Source.UtopiaPlanitia, Source.LowerDecksCampaign ],
             [10, 10, 10, 10, 8, 8],
             [0, 0, 0, 1, 1, 0],
             5,
@@ -1587,8 +1587,132 @@ export class SpaceframeHelper {
             ],
             [ "Federation Starship" ],
             99999),
-
-
+        [Spaceframe.California]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.California,
+            CharacterType.Starfleet,
+            "California Class",
+            2370, // not really specified
+            [ Source.LowerDecksCampaign ],
+            [10, 10, 8, 9, 10, 8],
+            [0, 0, 0, 1, 1, 1],
+            4,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Dedicated Personnel"),
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Osler]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Osler,
+            CharacterType.Starfleet,
+            "Osler Class",
+            2377,
+            [ Source.LowerDecksCampaign ],
+            [9, 9, 11, 9, 8, 10],
+            [0, 1, 1, 1, 0, 0],
+            3,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Slim Sensor Silhouette"),
+            ],
+            [ "Federation Starship", "Andorian Starship" ],
+            99999),
+        [Spaceframe.Obena]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Obena,
+            CharacterType.Starfleet,
+            "Obena Class",
+            2381,
+            [ Source.LowerDecksCampaign ],
+            [9, 9, 12, 10, 10, 9],
+            [0, 1, 0, 1, 1, 0],
+            5,
+            [
+                "Phaser Arrays",
+                "Quantum Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Secondary Reactors"),
+                TalentSelection.selectTalent("Additional Propulsion System [Quantum Slipstream Burst Drive]"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Parliament]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Parliament,
+            CharacterType.Starfleet,
+            "Parliament Class",
+            2380,
+            [ Source.LowerDecksCampaign ],
+            [9, 9, 11, 10, 11, 9],
+            [1, 0, 0, 2, 0, 0],
+            5,
+            [
+                "Phaser Arrays",
+                "Quantum Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Hull Integrity"),
+                TalentSelection.selectTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Secondary Reactors"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.TKalat]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.TKalat,
+            CharacterType.Starfleet,
+            "T'Kalat Class",
+            2375,
+            [ Source.LowerDecksCampaign ],
+            [9, 10, 10, 12, 9, 9],
+            [0, 0, 0, 1, 2, 0],
+            6,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 5)"
+            ],
+            [
+                TalentSelection.selectTalent("Advanced Research Facilities"),
+                TalentSelection.selectTalent("Advanced Sensor Suites"),
+                TalentSelection.selectTalent("Advanced Sickbay"),
+                TalentSelection.selectTalent("High Resolution Sensors"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Ganashia]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Ganashia,
+            CharacterType.Starfleet,
+            "Ganashia Class",
+            2378,
+            [ Source.LowerDecksCampaign ],
+            [9, 9, 10, 11, 10, 9],
+            [1, 1, 0, 1, 0, 0],
+            5,
+            [
+                "Phaser Arrays",
+                "Phaser Cannons",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Expanded Munitions [Phaser Cannons]"),
+                TalentSelection.selectTalent("Improved Hull Integrity"),
+                TalentSelection.selectTalent("Improved Power Systems")
+            ],
+            [ "Federation Starship" ],
+            99999),
         // Klingon Spaceframes
         [Spaceframe.D5]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.D5,
