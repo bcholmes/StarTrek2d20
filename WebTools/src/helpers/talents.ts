@@ -2203,7 +2203,7 @@ export class Talents {
                 "Gorn"),
             new TalentModel(
                 "Throw Anything",
-                "When a Gorn with extreme might gets into a fight, anything can be a weapon as long as it isn’t too heavy or bolted down. Once per combat encounter, you can make the following attack if a sufficient-sized object is in your zone: Thrown Object: 3[CD] + Security, Knockdown.",
+                "When a Gorn with extreme might gets into a fight, anything can be a weapon as long as it isn’t too heavy or bolted down. Once per combat encounter, you can make the following attack if a sufficient-sized object is in your zone: Thrown Object: 3[D] + Security, Knockdown.",
                 [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Gorn, true), new AttributePrerequisite(Attribute.Fitness, 10)],
                 1,
                 "Gorn"),
@@ -2245,7 +2245,7 @@ export class Talents {
                 "Tamarian"),
             new TalentModel(
                 "Storyteller",
-                "Tamarian teachers use stories to pass on knowledge to younger children. Known as Storytellers, these Tamarians are experts at weaving body motions, words, and music into lessons that young generations will cherish and use all their lives. Once per mission, at the start of a scene with an away team, you may spend ten minutes telling your team a story from the past that is applicable to their current situation. When the story ends, you may roll 1[CD] and add the result to the Momentum pool.",
+                "Tamarian teachers use stories to pass on knowledge to younger children. Known as Storytellers, these Tamarians are experts at weaving body motions, words, and music into lessons that young generations will cherish and use all their lives. Once per mission, at the start of a scene with an away team, you may spend ten minutes telling your team a story from the past that is applicable to their current situation. When the story ends, you may roll 1[D] and add the result to the Momentum pool.",
                 [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Tamarian, true)],
                 1,
                 "Tamarian"),

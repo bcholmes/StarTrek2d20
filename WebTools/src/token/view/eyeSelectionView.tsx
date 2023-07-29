@@ -21,14 +21,17 @@ class EyeSelectionView extends React.Component<IEyeSelectionViewProperties, {}> 
             <p className="mt-4">{t('TokenCreator.section.eyes.colour')}:</p>
             <ColorSelection colors={SpeciesRestrictions.getEyeColors(token.species)} onSelection={(c) => store.dispatch(setTokenEyeColor(c))} />
 
-            <p className="mt-4">{t('TokenCreator.section.eyes.style')}:</p>
-            <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-            {EyeCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.name}
-                onClick={() => store.dispatch(setTokenEyeType(s.id))} active={this.props.token.eyeType === s.id}
-                token={this.props.token}
-                key={'eye-swatch-' + s.id }/>)}
-            </div>
-        </>)
+            {SpeciesRestrictions.isRubberHeaded(token.species) ? null :
+            (<>
+                <p className="mt-4">{t('TokenCreator.section.eyes.style')}:</p>
+                <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
+                {EyeCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.name}
+                    onClick={() => store.dispatch(setTokenEyeType(s.id))} active={this.props.token.eyeType === s.id}
+                    token={this.props.token}
+                    key={'eye-swatch-' + s.id }/>)}
+                </div>
+            </>)}
+        </>);
     }
 }
 

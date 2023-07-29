@@ -108,7 +108,9 @@ class SpeciesRestrictions {
         if (extra === ExtraType.BajoranEarring) {
             return species === Species.Bajoran;
         } else if (extra === ExtraType.SimpleEarring || extra === ExtraType.HoopEarring) {
-            return species !== Species.Bolian && species !== Species.Ferengi; // Bolians have weird ears
+            return species !== Species.Bolian
+                && !this.isRubberHeaded(species)
+                && species !== Species.Ferengi; // Bolians have weird ears
         } else if (extra === ExtraType.RisanSymbol) {
             return species === Species.Risian;
         } else if (extra === ExtraType.SmallBindi || extra === ExtraType.InuitTattoo) {
