@@ -1,13 +1,6 @@
 import { Rank } from "../../helpers/ranks";
-import { DominionWarUniformPack } from "./dominionWarUniformPack";
-import { EnterpriseUniformPack } from "./enterpriseUniformPack";
-import { KlingonArmorUniformPack } from "./klingonArmorUniformPack";
-import { MonsterMaroonUniformPack } from "./monsterMaroonUniformPack";
 import { isEnlistedRank } from "./rankHelper";
 import { Token } from "./token";
-import { TosKlingonUniformPack } from "./tosKlingonUniformPack";
-import { TosUniformPack } from "./tosUniformPack";
-import { DefaultRed } from "./uniformCatalog";
 import { UniformEra } from "./uniformEra";
 import UniformPackCollection from "./uniformPackCollection";
 

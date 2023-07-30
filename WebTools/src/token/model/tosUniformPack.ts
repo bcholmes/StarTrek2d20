@@ -3,7 +3,6 @@ import { Rank } from "../../helpers/ranks";
 import { Species } from "../../helpers/speciesEnum";
 import { BodyType } from "./bodyTypeEnum";
 import { DivisionColors } from "./divisionColors";
-import RankIndicatorCatalog from "./rankIndicatorCatalog";
 import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
 import { Token } from "./token";
