@@ -340,4 +340,8 @@ export abstract class BaseTngEraUniformPack {
                 return "";
         }
     }
+
+    getRankBorderDefinitions(token: Token, bordered: boolean) {
+        return "";
+    }
 }

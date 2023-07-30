@@ -721,6 +721,7 @@
     "Spaceframe.akira": "Akira Class",
     "Spaceframe.ambassador": "Ambassador Class",
     "Spaceframe.archer": "Archer Class",
+    "Spaceframe.california": "California Class",
     "Spaceframe.cardenas": "Cardenas Class",
     "Spaceframe.centaur": "Centaur Class",
     "Spaceframe.constellation": "Constellation Class",
@@ -731,6 +732,7 @@
     "Spaceframe.engle": "Engle Class",
     "Spaceframe.excelsior": "Excelsior Class",
     "Spaceframe.galaxy": "Galaxy Class",
+    "Spaceframe.ganashia": "Ganashia Class",
     "Spaceframe.hermes": "Hermes Class",
     "Spaceframe.hiawatha": "Hiawatha Class",
     "Spaceframe.hoover": "Hoover Class",
@@ -745,13 +747,17 @@
     "Spaceframe.norway": "Norway Class",
     "Spaceframe.nova": "Nova Class",
     "Spaceframe.nX": "NX Class",
+    "Spaceframe.obena": "Obena Class",
     "Spaceframe.oberth": "Oberth Class",
     "Spaceframe.olympic": "Olympic Class",
+    "Spaceframe.osler": "Osler Class",
+    "Spaceframe.parliament": "Parliament Class",
     "Spaceframe.saber": "Saber Class",
     "Spaceframe.shepard": "Shepard Class",
     "Spaceframe.sovereign": "Sovereign Class",
     "Spaceframe.steamrunner": "Steamrunner Class",
     "Spaceframe.sydney": "Sydney Class",
+    "Spaceframe.tKalat": "T'Kalat Class",
     "Spaceframe.walker": "Walker Class",
 
     "ShipBuildType.pod.name": "Pod",
@@ -768,11 +774,15 @@
     "Species.andorian.exampleValue": "Proud Son/Daughter of Andoria",
     "Species.andorian.traitDescription": "This trait may reduce the Difficulty of Tasks to resist extreme cold, or Tasks impacted by extremely low temperatures. Their antennae aid in balance and spatial awareness; a lost antenna can be debilitating until it regrows. Andorians also have a high metabolism, meaning, amongst other things, that they tire more quickly than Humans; this also makes them more vulnerable to infection from certain types of injury. Before the Federation, Andorians and Vulcans had numerous disputes; though these issues are largely considered to be ancient history, Andorians and Vulcans don’t always get along.",
 
+    "Species.ardanan.name": "Ardanan",
+
     "Species.bajoran.name": "Bajoran",
     "Species.bajoran.aboutNames": "Bajoran names begin with the family name, followed by a personal name. The individual names are normally short — rarely more than two syllables — and with a soft or melodic sound. Bajor Is traditionally matriarchal, with children taking their mother’s family name. Examples: Reil Yesa (female), Latara Gel (male)",
     "Species.bajoran.description": "A spiritual, dauntless people from the planet Bajor, the Bajorans have lost much after decades of occupation by the Cardassian Union. Many Bajorans were scattered across the Alpha Quadrant during the occupation, while those who remained on Bajor often acted as insurgents or toiled in labor camps under Cardassian rule. The occupation ended a few years ago, but the scars it left will take generations to heal. Bajor is not a member of the Federation, but many Bajorans scattered by the diaspora have found their way into Starfleet. Bajoran culture places a strong belief in the Prophets, celestial beings who are said to have watched over Bajor for millennia; modern religious doctrine states that the Bajoran Wormhole is the Prophets’ Celestial Temple.",
     "Species.bajoran.exampleValue": "Faith in the Prophets",
     "Species.bajoran.traitDescription": "For obvious reasons, Bajorans tend to be hostile towards Cardassians, and resentful of those who are dismissive of, or turned a blind eye to, the suffering of the Bajoran people. While not all Bajorans are spiritual or religious to the same degree, most have a cultural understanding of the Prophets’ place in Bajoran society.",
+
+    "Species.benzite.name": "Benzite",
 
     "Species.betazoid.name": "Betazoid",
     "Species.betazoid.aboutNames": "Betazoid names tend to have at least two syllables and a melodic sound, with a personal name followed by a family name; of these, the family name tends to have a harder sound. Betazoids are traditionally matriarchal, with children taking their mother’s family name.",
@@ -781,6 +791,8 @@
     "Species.betazoid.traitDescription": "All Betazoids are telepathic to varying degrees, and even when not actively using their abilities, they are highly perceptive of others around them, but also highly sensitive to telepathic disturbances and mental assaults. They have little familiarity with lies and deception, due to their open culture and ability to read the thoughts and emotions of others. As they are sensitive to the minds of other living beings, they tend not to be comfortable around animals, for fear of losing themselves in the minds of wild creatures.",
 
     "Species.bolian.name": "Bolian",
+
+    "Species.chelon.name": "Rigellian Chelon",
 
     "Species.deltan.name": "Deltan",
 
@@ -800,6 +812,8 @@
     "Species.human.exampleValue": "The Drive for Exploration",
     "Species.human.traitDescription": "Humans are adaptable and resilient, and their resolve and ambition often allow them to resist great hardship and triumph despite great adversity. However, Humans can also be reckless and stubborn, irrational, and unpredictable.",
 
+    "Species.jelna.name": "Rigellian Jelna",
+
     "Species.klingon.name": "Klingon",
 
     "Species.klingonQuchHa.name": "Klingon (QuchHa’)",
@@ -809,6 +823,8 @@
     "Species.other.name": "Custom/Other",
 
     "Species.risian.name": "Risian",
+
+    "Species.reman.name": "Reman",
 
     "Species.romulan.name": "Romulan",
 
@@ -829,6 +845,16 @@
     "Species.vulcan.description": "The Vulcans are a stoic, rational people. Widely claimed to be emotionless, in truth the Vulcans feel deeply and intensely, to their own detriment. Their stoicism comes from a culture of logic and self- discipline, where emotions are analyzed and dissected to rob them of their potency, so that they cannot overwhelm or control the individual. Vulcans embrace science and reason, but their lives are not purely devoted to logic: they also have a deeply philosophical side, with art and music as vital to their culture as logic. They are also an intensely private people, with many aspects of their culture — such as the rites of pon farr — which are not discussed amongst outsiders.",
     "Species.vulcan.exampleValue": "The Needs of the Many Outweighs the Needs of the Few, or the One",
     "Species.vulcan.traitDescription": "Due to the harsh, arid, high-gravity world they come from, Vulcans are naturally resistant to extreme heat and dehydration; they are also extremely strong, with keen auditory and olfactory senses. They are also telepathic, though this takes training to properly manifest, and they learn mental discipline and emotional control from childhood. However, this control takes regular meditation to maintain, and their controlled nature and desire for privacy can distance them from others, and make interactions awkward.",
+
+    "Species.xindiArboreal.name": "Xindi-Arboreal",
+
+    "Species.xindiPrimate.name": "Xindi-Primate",
+
+    "Species.xindiReptilian.name": "Xindi-Reptilian",
+
+    "Species.xindiInsectoid.name": "Xindi-Insectoid",
+
+    "Species.zakdorn.name": "Zakdorn",
 
     "StarSystem.common.coordinates": "Coordinates",
     "StarSystem.common.innerZone": "Inner Zone",

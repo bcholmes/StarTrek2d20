@@ -288,5 +288,9 @@ export class TosUniformPack {
                 return "";
         }
     }
+
+    getRankBorderDefinitions(token: Token, bordered: boolean) {
+        return "";
+    }
 }
 

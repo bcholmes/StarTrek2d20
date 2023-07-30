@@ -213,14 +213,14 @@ abstract class BasicStarshipSheet extends BasicSheet {
 
         const talents = starship.getTalentSelectionList().map(t => t.description);
 
-        this.fillField(form, 'Space Frame', starship.className);
+        this.fillField(form, 'Space Frame', starship.localizedClassName);
         if (starship.scale) {
             this.fillField(form, 'Scale', starship.scale.toString());
         }
         this.fillField(form, 'Traits', starship.getAllTraits());
         const missionProfile = starship.missionProfileModel;
         if (missionProfile) {
-            this.fillField(form, 'Mission Profile', missionProfile.name);
+            this.fillField(form, 'Mission Profile', missionProfile.localizedName);
         }
 
         let power = starship.power;

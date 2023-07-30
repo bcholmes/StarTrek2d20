@@ -73,7 +73,7 @@ export class SpaceframeModel {
         if (this.id != null) {
             let key = makeKey('Spaceframe.', Spaceframe[this.id]);
             if (key.indexOf("_UP") >= 0) {
-                key = key.substring(key.indexOf("_UP"));
+                key = key.substring(0, key.indexOf("_UP"));
             }
             let local = i18next.t(key);
             return local === key ? this.name : local;

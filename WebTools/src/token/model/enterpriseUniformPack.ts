@@ -542,6 +542,10 @@ export class EnterpriseUniformPack {
         }
     }
 
+    getRankBorderDefinitions(token: Token, bordered: boolean) {
+        return "";
+    }
+
     getUniformAndVariantBody(token: Token) {
         let neck = "";
         let seam = "";
