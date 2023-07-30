@@ -256,13 +256,13 @@ export class TosUniformPack {
 
     getRankSwatches() {
         return [
-            new Swatch(Rank.None, "None", (token) => RankIndicatorCatalog.decorateSwatch("", Rank.None, token), "Rank.none.name"),
-            new Swatch(Rank.Ensign, "Ensign", (token) => RankIndicatorCatalog.decorateSwatch(TosEnsign, Rank.Ensign, token), "Rank.ensign.name"),
-            new Swatch(Rank.LieutenantJG, "Lieutenant J.G.", (token) => RankIndicatorCatalog.decorateSwatch(TosLieutenantJG, Rank.LieutenantJG, token), "Rank.lieutenantJG.name"),
-            new Swatch(Rank.Lieutenant, "Lieutenant", (token) => RankIndicatorCatalog.decorateSwatch(TosLieutenant, Rank.Lieutenant, token), "Rank.lieutenant.name"),
-            new Swatch(Rank.LtCommander, "Lt. Commander", (token) => RankIndicatorCatalog.decorateSwatch(TosLtCommander, Rank.LtCommander, token), "Rank.ltCommander.name"),
-            new Swatch(Rank.Commander, "Commander", (token) => RankIndicatorCatalog.decorateSwatch(TosCommander, Rank.Commander, token), "Rank.commander.name"),
-            new Swatch(Rank.Captain, "Captain", (token) => RankIndicatorCatalog.decorateSwatch(TosCaptain, Rank.Captain, token), "Rank.captain.name")
+            new Swatch(Rank.None, "None", (token) => TosUniformPack.decorateRankSwatch("", Rank.None, token), "Rank.none.name"),
+            new Swatch(Rank.Ensign, "Ensign", (token) => TosUniformPack.decorateRankSwatch(TosEnsign, Rank.Ensign, token), "Rank.ensign.name"),
+            new Swatch(Rank.LieutenantJG, "Lieutenant J.G.", (token) => TosUniformPack.decorateRankSwatch(TosLieutenantJG, Rank.LieutenantJG, token), "Rank.lieutenantJG.name"),
+            new Swatch(Rank.Lieutenant, "Lieutenant", (token) => TosUniformPack.decorateRankSwatch(TosLieutenant, Rank.Lieutenant, token), "Rank.lieutenant.name"),
+            new Swatch(Rank.LtCommander, "Lt. Commander", (token) => TosUniformPack.decorateRankSwatch(TosLtCommander, Rank.LtCommander, token), "Rank.ltCommander.name"),
+            new Swatch(Rank.Commander, "Commander", (token) => TosUniformPack.decorateRankSwatch(TosCommander, Rank.Commander, token), "Rank.commander.name"),
+            new Swatch(Rank.Captain, "Captain", (token) => TosUniformPack.decorateRankSwatch(TosCaptain, Rank.Captain, token), "Rank.captain.name")
         ];
     }
 
@@ -291,6 +291,21 @@ export class TosUniformPack {
 
     getRankBorderDefinitions(token: Token, bordered: boolean) {
         return "";
+    }
+
+    static decorateRankSwatch(svg: string, rankIndicator: Rank, token: Token) {
+        return `<svg viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+                <clipPath id="rankClipPath` + rankIndicator + `">
+                    <circle cx="40" cy="40" r="40" fill="#ffffff" />
+                </clipPath>
+            </defs>
+            <g clip-path="url(#rankClipPath` + rankIndicator + `">
+                <g transform="translate(-65, -318)">`
+        + svg.replace(DefaultRed, token.divisionColor)
+        + `</g>
+        + </g>
+        </svg>`;
     }
 }
 

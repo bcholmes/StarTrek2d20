@@ -113,9 +113,7 @@ const token = (state: Token = initialState, action) => {
             colour = newColourOptions[0].color;
         }
         let rank = state.rankIndicator;
-        if ((action.payload.era === UniformEra.OriginalSeries || action.payload.era === UniformEra.MonsterMaroon
-            || action.payload.era === UniformEra.Klingon || action.payload.era === UniformEra.OriginalSeriesKlingon)
-            && isEnlistedRank(rank)) {
+        if (!UniformVariantRestrictions.isRankSupported(rank, action.payload.era)) {
             rank = Rank.None;
         }
         let variant = state.variant;
