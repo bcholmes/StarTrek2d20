@@ -2,13 +2,14 @@ import { Character } from "../common/character";
 import { CharacterSerializer } from "../common/characterSerializer";
 import { ShipBuildType, Starship } from "../common/starship";
 import { Attribute, AttributesHelper } from "../helpers/attributes";
-import { RolesHelper } from "../helpers/roles";
+import { Role, RoleModel, RolesHelper } from "../helpers/roles";
 import { SkillsHelper, Skill } from "../helpers/skills";
 import { Department, allDepartments } from "../helpers/departments";
 import { CHALLENGE_DICE_NOTATION, TalentModel, TalentsHelper } from "../helpers/talents";
-import { PersonalWeapons, Quality, Weapon, WeaponRange, WeaponType } from "../helpers/weapons";
+import { DeliverySystem, EnergyLoadType, PersonalWeapons, Quality, TorpedoLoadType, Weapon, WeaponRange, WeaponType } from "../helpers/weapons";
 import { allSystems, System } from "../helpers/systems";
 import { Spaceframe } from "../helpers/spaceframeEnum";
+import { Species } from "../helpers/speciesEnum";
 
 const DEFAULT_STARSHIP_ICON = "systems/sta/assets/icons/ship_icon.png";
 const DEFAULT_EQUIPMENT_ICON = "systems/sta/assets/icons/voyagercombadgeicon.svg";
@@ -113,7 +114,7 @@ export class FoundryVttExporter {
             result.items.push({
                 "name": t.talent.displayName + ((t.talent.maxRank > 1 && t.rank > 1) ? " [x" + t.rank + "]" : ""),
                 "type": "talent",
-                "img": DEFAULT_EQUIPMENT_ICON,
+                "img": this.determineTalentIcon(t.talent, options),
                 "system": {
                     "description": this.convertDescription(t.talent),
                     "talenttype": {
@@ -146,7 +147,7 @@ export class FoundryVttExporter {
                 result.items.push({
                     "name": w.name,
                     "type": "starshipweapon",
-                    "img": DEFAULT_EQUIPMENT_ICON,
+                    "img": this.determineStarshipWeaponIcon(w, options),
                     "effects": [],
                     "folder": null,
                     "sort": 0,
@@ -235,6 +236,47 @@ export class FoundryVttExporter {
         }
     }
 
+    determineStarshipWeaponIcon(weapon: Weapon, options: FoundryVttExporterOptions) {
+        if (options.isStaCompendiumUsed) {
+            let filename = '';
+            if (weapon.type === WeaponType.ENERGY) {
+                if (weapon.loadType.type === EnergyLoadType.Disruptor) {
+                    filename = "weapon-disruptor";
+                } else if (weapon.loadType.type === EnergyLoadType.Phaser) {
+                    filename = "weapon-phaser";
+                } else if (weapon.loadType.type === EnergyLoadType.PhasedPolaron) {
+                    filename = "weapon-polaron";
+                }
+                if (filename !== '') {
+                    if (weapon.deliveryType.type === DeliverySystem.Arrays) {
+                        filename += "-array";
+                    } else if (weapon.deliveryType.type === DeliverySystem.Banks) {
+                        filename += "-bank";
+                    } else if (weapon.deliveryType.type === DeliverySystem.Cannons) {
+                        filename += "-cannon";
+                    }
+                    return "modules/sta-compendia/assets/icons/starshipweapons-core/" + filename + ".svg";
+                } else {
+                    return DEFAULT_EQUIPMENT_ICON;
+                }
+            } else if (weapon.type === WeaponType.TORPEDO) {
+                if (weapon.loadType.type === TorpedoLoadType.Photon) {
+                    return "modules/sta-compendia/assets/icons/starshipweapons-core/weapon-photon-torpedo.svg";
+                } else if (weapon.loadType.type === TorpedoLoadType.Plasma) {
+                    return "modules/sta-compendia/assets/icons/starshipweapons-core/weapon-plasma-torpedo.svg";
+                } else if (weapon.loadType.type === TorpedoLoadType.Quantum) {
+                    return "modules/sta-compendia/assets/icons/starshipweapons-core/weapon-quantum-torpedo.svg";
+                } else {
+                    return DEFAULT_EQUIPMENT_ICON;
+                }
+            } else {
+                return DEFAULT_EQUIPMENT_ICON;
+            }
+        } else {
+            return DEFAULT_EQUIPMENT_ICON;
+        }
+    }
+
 
     exportCharacter(character: Character, options: FoundryVttExporterOptions) {
         let now = Date.now();
@@ -317,7 +359,7 @@ export class FoundryVttExporter {
             result.items.push({
                 "name": v,
                 "type": "value",
-                "img": DEFAULT_EQUIPMENT_ICON,
+                "img": this.determineValueIcon(v, options),
                 "system": {
                   "description": "",
                   "used": false
@@ -345,7 +387,7 @@ export class FoundryVttExporter {
             result.items.push({
                 "name": f,
                 "type": "focus",
-                "img": DEFAULT_EQUIPMENT_ICON,
+                "img": this.determineFocusIcon(f, options),
                 "system": {
                   "description": ""
                 },
@@ -409,7 +451,7 @@ export class FoundryVttExporter {
                 result.items.push({
                     "name": role.name,
                     "type": "talent",
-                    "img": DEFAULT_EQUIPMENT_ICON,
+                    "img": this.determineRoleIcon(role, options),
                     "system": {
                       "description": "<p>" + role.description + "</p>",
                       "talenttype": {
@@ -445,7 +487,7 @@ export class FoundryVttExporter {
                 result.items.push({
                     "name": talent.displayName + (talent.maxRank > 1 ? " [x" + characterTalent.rank + "]" : ""),
                     "type": "talent",
-                    "img": DEFAULT_EQUIPMENT_ICON,
+                    "img": this.determineTalentIcon(talent, options),
                     "system": {
                         "description": this.convertDescription(talent),
                         "talenttype": {
@@ -479,7 +521,7 @@ export class FoundryVttExporter {
             result.items.push({
                 "name": w.name,
                 "type": "characterweapon",
-                "img": "systems/sta/assets/icons/voyagercombadgeicon.svg",
+                "img": this.determineWeaponIcon(w, options, character),
                 "effects": [],
                 "folder": null,
                 "sort": 0,
@@ -527,17 +569,73 @@ export class FoundryVttExporter {
         return result;
     }
 
+    determineFocusIcon(focus: string, options: FoundryVttExporterOptions) {
+        if (options.isStaCompendiumUsed) {
+            return "modules/sta-compendia/assets/icons/focuses-core/focus-core.svg";
+        } else {
+            return DEFAULT_EQUIPMENT_ICON;
+        }
+    }
+
     determineItemIcon(item: string, options: FoundryVttExporterOptions) {
         if (options.isStaCompendiumUsed) {
-            if (item === "Tricorder") {
+            if (item === "Communicator") {
+                return "modules/sta-compendia/assets/icons/items-core/communicator.webp";
+            } else if (item === "Tricorder") {
                 return "modules/sta-compendia/assets/icons/items-core/tricorder.webp";
             } else if (item === "MedKit") {
                 return "modules/sta-compendia/assets/icons/items-core/medkit.webp";
             } else if (item === "Engineering Kit") {
                 return "modules/sta-compendia/assets/icons/items-core/engineering_kit.webp";
             } else {
+                return "modules/sta-compendia/assets/icons/items-core/placeholder.webp";
+            }
+        } else {
+            return DEFAULT_EQUIPMENT_ICON;
+        }
+    }
+
+    determineRoleIcon(role: RoleModel, options: FoundryVttExporterOptions) {
+        if (options.isStaCompendiumUsed) {
+            if (role.id === Role.ChiefEngineer) {
+                return "modules/sta-compendia/assets/icons/roles-core/role-chief-engineer.svg";
+            } else if (role.id === Role.ChiefMedicalOfficer) {
+                return "modules/sta-compendia/assets/icons/roles-core/role-chief-medical-officer.svg";
+            } else if (role.id === Role.ChiefOfSecurity) {
+                return "modules/sta-compendia/assets/icons/roles-core/role-chief-of-security.svg";
+            } else if (role.id === Role.CommandingOfficer) {
+                return "modules/sta-compendia/assets/icons/roles-core/role-commanding-officer.svg";
+            } else if (role.id === Role.CommunicationsOfficer) {
+                return "modules/sta-compendia/assets/icons/roles-core/role-communications-officer.svg";
+            } else if (role.id === Role.ExecutiveOfficer) {
+                return "modules/sta-compendia/assets/icons/roles-core/role-executive-officer.svg";
+            } else if (role.id === Role.FlightController) {
+                return "modules/sta-compendia/assets/icons/roles-core/role-flight-controller.svg";
+            } else if (role.id === Role.OperationsManager) {
+                return "modules/sta-compendia/assets/icons/roles-core/role-operations-manager.svg";
+            } else if (role.id === Role.ScienceOfficer) {
+                return "modules/sta-compendia/assets/icons/roles-core/role-science-officer.svg";
+            } else if (role.id === Role.ShipsCounselor) {
+                return "modules/sta-compendia/assets/icons/roles-core/role-ships-counsellor.svg";
+            } else {
                 return DEFAULT_EQUIPMENT_ICON;
             }
+        } else {
+            return DEFAULT_EQUIPMENT_ICON;
+        }
+    }
+
+    determineTalentIcon(talent: TalentModel, options: FoundryVttExporterOptions) {
+        if (options.isStaCompendiumUsed) {
+            return "modules/sta-compendia/assets/icons/talents-core/talent-core.svg";
+        } else {
+            return DEFAULT_EQUIPMENT_ICON;
+        }
+    }
+
+    determineValueIcon(value: string, options: FoundryVttExporterOptions) {
+        if (options.isStaCompendiumUsed) {
+            return "modules/sta-compendia/assets/icons/values-core/value-core.svg";
         } else {
             return DEFAULT_EQUIPMENT_ICON;
         }
@@ -553,8 +651,14 @@ export class FoundryVttExporter {
                 return "modules/sta-compendia/assets/icons/weapons-core/phaser-type-2.webp";
             } else if (weapon.name === PersonalWeapons.instance.batLeth.name) {
                 return "modules/sta-compendia/assets/icons/weapons-core/bat-leth.webp";
+            } else if (weapon.name === PersonalWeapons.instance.disruptorPistol.name) {
+                if (character.speciesStep.species === Species.Romulan) {
+                    return "modules/sta-compendia/assets/icons/weapons-core/romulan-disruptor-pistol.webp";
+                } else if(character.speciesStep.species === Species.Klingon) {
+                    return "modules/sta-compendia/assets/icons/weapons-core/klingon-disruptor-pistol.webp";
+                }
             } else {
-                return DEFAULT_EQUIPMENT_ICON;
+                return "modules/sta-compendia/assets/icons/items-core/placeholder.webp";
             }
         } else {
             return DEFAULT_EQUIPMENT_ICON;
