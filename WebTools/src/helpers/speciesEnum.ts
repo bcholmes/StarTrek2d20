@@ -96,7 +96,7 @@ export enum Species {
     Tribble,
 
     // Discovery
-    Kelpian,
+    Kelpien,
     Barzan,
     Osnullus,
     Xahean,

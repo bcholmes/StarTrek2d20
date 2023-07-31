@@ -1363,15 +1363,15 @@ class _Species {
             [TalentsHelper.getTalent("Crystalline Telepathy"), TalentsHelper.getTalent("Immune to Vacuum"), TalentsHelper.getTalent("Radiation Burst")],
             "Tholian names are usually unpronounceable by non-Tholians.",
             []),
-        [Species.Kelpian]: new SpeciesModel(
-            Species.Kelpian,
-            "Kelpian",
+        [Species.Kelpien]: new SpeciesModel(
+            Species.Kelpien,
+            "Kelpien",
             [Era.OriginalSeries, Era.NextGeneration],
             [Source.DiscoveryS1S2, Source.DiscoveryCampaign],
             ["A sentient humanoid species indigenous to the planet Kaminar, Kelpiens live in an agrarian society. Elders are the leaders of the Kelpien culture, passing down knowledge and history through stories. One of these stories speaks of The Great Balance, a belief that by culling members of their species, the Kelpiens would have peace with the Ba’ul; a powerful species that would hunt their people to extinction if the Kaminar population got out of hand. This meant that when a Kelpien started going through their physiological change known as Vahar’ai, they would be brought in front of the All-Seeing Eye and culled, releasing them from the pain and threat of mental instability, as well as keeping the Great Balance in check.",
             "Commander Saru discovered that the Vahar’ai was actually a natural physical change that made his people expert hunters. The culling and the Great Balance were both lies forced unto the Kelpiens by the Ba’ul. Eventually, the crew of U.S.S. Discovery helped the Kelpiens rise up against the Ba’ul and break free of the lies they had been told for generations."],
             [Attribute.Control, Attribute.Fitness, Attribute.Insight],
-            "Kelpian",
+            "Kelpien",
             "The Kelpiens are a bipedal species that are adapted to living on land and in the water. Kelpiens are able to run at considerable speeds for short bursts and can see into the ultraviolet and infrared spectrums of light. Pre-Vahar’ai / Post-Vahar’ai. When created, choose one of these two traits. If Pre-Vahar’ai is chosen, and your character ever experiences the changes that come with Vahar’ai, the trait is replaced by the Post-Vahar’ai trait.",
             "The Great Balance Must Be Achieved",
             [TalentsHelper.getTalent("Threat Ganglia"), TalentsHelper.getTalent("On All Fours")],
@@ -1675,6 +1675,9 @@ class _Species {
         }
         if (result === undefined && name === Species[Species.Custom]) {
             result = Species.Custom;
+        }
+        if (result === undefined && name === "Kelpian") { // backward compatibility for spelling mistake
+            result = Species.Kelpien;
         }
         return result;
     }

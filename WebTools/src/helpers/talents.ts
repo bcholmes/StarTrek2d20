@@ -2066,15 +2066,15 @@ export class Talents {
             new TalentModel(
                 "Threat Ganglia",
                 "Kelpiens have special organs on the back of their heads called ganglia. These organs do different things depending on what stage of life the Kelpien is in, as such, this talent grants different abilities based on the character’s Vahar’ai trait. Pre-Vahar’ai: When the gamemaster spends Threat to either add a complication, or to add dice to a pool or that directly affects the character, roll 1[D]; if an effect is rolled, add 1 Momentum to the pool. Post-Vahar’ai: The character gains the following attack: Ganglia Dart (Ranged, 2[D], Piercing 1). The character’s Security is added as normal to the attack’s Stress rating.",
-                [new SourcePrerequisite(Source.DiscoveryS1S2, Source.DiscoveryCampaign), new SpeciesPrerequisite(Species.Kelpian, true)],
+                [new SourcePrerequisite(Source.DiscoveryS1S2, Source.DiscoveryCampaign), new SpeciesPrerequisite(Species.Kelpien, true)],
                 1,
                 "Kelpian", false, new AliasModel("Ganglia", Source.DiscoveryS1S2)),
             new TalentModel(
                 "On All Fours",
                 "Kelpiens are able to run at considerable speeds for short bursts when necessary. Whenever the character succeeds at a Sprint task, they generate 2 additional Momentum which may only be used to move additional zones.",
-                [new SourcePrerequisite(Source.DiscoveryS1S2, Source.DiscoveryCampaign), new SpeciesPrerequisite(Species.Kelpian, true)],
+                [new SourcePrerequisite(Source.DiscoveryS1S2, Source.DiscoveryCampaign), new SpeciesPrerequisite(Species.Kelpien, true)],
                 1,
-                Species[Species.Kelpian]),
+                Species[Species.Kelpien]),
             new TalentModel(
                 "Expert Quartermaster",
                 "The Barzan have long had to make do with less, and this has taught them to be especially considerate of all resources at their command. When needing a rare element or device to accomplish an action, a Barzan may reroll a d20 in their task roll to determine if another element or device can be used in its stead. The Barzan are also aware of most of the alternate uses any piece of personal equipment they possess can do should the need arise, such as substituting a tricorder’s memory module to repair a terminal.",
