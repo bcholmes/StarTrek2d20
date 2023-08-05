@@ -12,6 +12,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230804</b>
+                <ul>
+                    <li>Lower Decks spaceframes</li>
+                    <li>Small improvements to Token generation (particularly enlisted uniforms for Monster Maroon uniforms).</li>
+                    <li>Michael Prangenberg contributed some improvements to the Foundry VTT export.</li>
+                </ul>
                 <b>v1.230728</b>
                 <ul>
                     <li>Lower Decks! Lower Decks!</li>
