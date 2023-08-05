@@ -26,7 +26,8 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
 
                             <Header className="my-4">{t('Page.title.creditsPage')}</Header>
                             <p>
-                                Firstly, the <cite>Star Trek Adventures</cite> rules have been created and developed by Modiphius Entertainment. STA is a
+                                Firstly, the <a href="https://www.modiphius.net/pages/star-trek-adventures" target="_blank" rel="noreferrer"><cite>Star Trek
+                                Adventures</cite></a> rules have been created and developed by Modiphius Entertainment. STA is a
                                 great game, and Modiphius has been very cool about supporting this character generator (I mean, to some extent, this
                                 app makes some of their core rules available for free on the Intertubes). {' '}
                                 <a href="https://forums.modiphius.com/u/modiphius-jim/summary" target="_blank" rel="noreferrer">Jim Johnson</a>, for example,
@@ -67,7 +68,8 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
 
                             <p className="mx-4"><b>French:</b> <a href="https://forums.modiphius.com/u/betatester/summary" target="_blank" rel="noreferrer">betatester</a></p>
                             <p className="mx-4"><b>German:</b> <a href="https://forums.modiphius.com/u/misterx/summary" target="_blank" rel="noreferrer">MisterX</a>, {' '}
-                                <a href="http://www.daniel-joedemann.de/" target="_blank" rel="noreferrer">Daniel Jödemann</a></p>
+                                <a href="http://www.daniel-joedemann.de/" target="_blank" rel="noreferrer">Daniel Jödemann</a>, {' '}
+                                <a href="https://github.com/mprangenberg" target="_blank" rel="noreferrer">Michael Prangenberg</a></p>
                             <p>
                                 If you can help, let me know, and I'd welcome any input you can provide.
                             </p>

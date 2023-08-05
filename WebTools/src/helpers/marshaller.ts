@@ -36,8 +36,7 @@ class Marshaller {
         return this.encode(this.encodeSimpleCharacterAsJson("npc", character));
     }
 
-
-    encodeSimpleCharacterAsJson(stereotype: string, character: Character) {
+    private encodeSimpleCharacterAsJson(stereotype: string, character: Character) {
         let sheet = {
             "stereotype": stereotype,
             "type": CharacterType[character.type],
@@ -95,12 +94,12 @@ class Marshaller {
     }
 
     encodeMainCharacter(character: Character) {
-        return this.encode(this.encodeMainCharacterAsJson(character));
+        return this.encode(this.encodeFullCharacterAsJson(character, "mainCharacter"));
     }
 
-    encodeMainCharacterAsJson(character: Character) {
+    private encodeFullCharacterAsJson(character: Character, stereotype: string) {
         let sheet = {
-            "stereotype": "mainCharacter",
+            "stereotype": stereotype,
             "type": CharacterType[character.type],
             "upbringing": character.upbringingStep != null
                 ? {
@@ -141,7 +140,6 @@ class Marshaller {
             if (character.speciesStep.originalSpecies != null) {
                 sheet["species"]["original"] = Species[character.speciesStep.originalSpecies];
             }
-
         }
 
         if (character.track != null) {
@@ -522,6 +520,8 @@ class Marshaller {
             character.stereotype = Stereotype.Npc;
         } else if (json["stereotype"] === "supportingCharacter") {
             character.stereotype = Stereotype.SupportingCharacter;
+        } else if (json["stereotype"] === "soloCharacter") {
+            character.stereotype = Stereotype.SoloCharacter;
         }
         let type = CharacterTypeModel.getCharacterTypeByTypeName(json.type);
         if (type) {

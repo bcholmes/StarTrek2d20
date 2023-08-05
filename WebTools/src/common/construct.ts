@@ -4,6 +4,7 @@ import { IConstruct } from "./iconstruct";
 
 export enum Stereotype {
     MainCharacter,
+    SoloCharacter,
     SupportingCharacter,
     Npc,
     Starship
