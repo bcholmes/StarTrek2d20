@@ -8,7 +8,6 @@ import { HeadType } from "../token/model/headTypeEnum";
 import { MouthType } from "../token/model/mouthTypeEnum";
 import { NasoLabialFoldType } from "../token/model/nasoLabialFoldTypeEnum";
 import { NoseType } from "../token/model/noseTypeEnum";
-import { isEnlistedRank } from "../token/model/rankHelper";
 import { SpeciesOption } from "../token/model/speciesOptionEnum";
 import SpeciesRestrictions from "../token/model/speciesRestrictions";
 import { Token } from "../token/model/token";
