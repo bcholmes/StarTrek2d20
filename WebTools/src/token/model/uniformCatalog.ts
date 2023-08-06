@@ -244,18 +244,11 @@ class UniformCatalog {
     }
 
     getBody(token: Token) {
-        let result = "";
-        let seam = "";
-        let neck = "";
-
-        if (token.uniformEra === UniformEra.OriginalSeries) {
-            return this.getUniformPack(token.uniformEra).getUniformAndVariantBody(token);
-        } else if (token.uniformEra === UniformEra.Enterprise) {
-            return this.getUniformPack(token.uniformEra).getUniformAndVariantBody(token);
-        } else if (token.uniformEra === UniformEra.OriginalSeriesKlingon) {
-            return this.getUniformPack(token.uniformEra).getUniformAndVariantBody(token);
-        } else if (token.uniformEra === UniformEra.Klingon) {
-            switch (token.bodyType) {
+        if (token.uniformEra === UniformEra.Klingon) {
+            let result = "";
+            let seam = "";
+            let neck = "";
+                switch (token.bodyType) {
                 case BodyType.AverageMale:
                     neck = KlingonArmour.averageMaleNeck;
                     result = KlingonArmour.averageMaleBody;
@@ -278,28 +271,17 @@ class UniformCatalog {
                 }
             }
 
-        } else if (token.uniformEra === UniformEra.MonsterMaroon) {
-            return this.getUniformPack(token.uniformEra).getUniformAndVariantBody(token);
+            return (neck + result + seam).replace(DefaultRed, token.divisionColor).replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
         } else {
-            return this.getUniformPack(UniformEra.DominionWar).getUniformAndVariantBody(token);
+            return this.getUniformPack(token.uniformEra).getUniformAndVariantBody(token);
         }
-
-        return (neck + result + seam).replace(DefaultRed, token.divisionColor).replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
     }
 
     getSwatches(uniformEra: UniformEra) {
-        if (uniformEra === UniformEra.OriginalSeries) {
-            return this.getUniformPack(uniformEra).getUniformSwatches();
-        } else if (uniformEra === UniformEra.Enterprise) {
-            return this.getUniformPack(UniformEra.Enterprise).getUniformSwatches();
-        } else if (uniformEra === UniformEra.OriginalSeriesKlingon) {
-            return this.getUniformPack(uniformEra).getUniformSwatches();;
-        } else if (uniformEra === UniformEra.Klingon) {
-            return this.klingonSwatches;
-        } else if (uniformEra === UniformEra.MonsterMaroon) {
+        if (uniformEra === UniformEra.MonsterMaroon) {
             return this.getUniformPack(UniformEra.MonsterMaroon).getUniformSwatches();
         } else {
-            return this.getUniformPack(UniformEra.DominionWar).getUniformSwatches();
+            return this.getUniformPack(uniformEra).getUniformSwatches();
         }
     }
 

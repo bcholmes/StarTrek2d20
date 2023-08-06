@@ -1,6 +1,7 @@
 import { DominionWarUniformPack } from "./dominionWarUniformPack";
 import { EnterpriseUniformPack } from "./enterpriseUniformPack";
 import { KlingonArmorUniformPack } from "./klingonArmorUniformPack";
+import { LowerDecksUniformPack } from "./lowerDecksUniformPack";
 import { MonsterMaroonUniformPack } from "./monsterMaroonUniformPack";
 import { TosKlingonUniformPack } from "./tosKlingonUniformPack";
 import { TosUniformPack } from "./tosUniformPack";
@@ -40,6 +41,8 @@ export default class UniformPackCollection {
             return new TosKlingonUniformPack();
         } else if (era === UniformEra.Klingon) {
             return new KlingonArmorUniformPack();
+        } else if (era === UniformEra.LowerDecks) {
+            return new LowerDecksUniformPack();
         } else {
             return new DominionWarUniformPack();
         }

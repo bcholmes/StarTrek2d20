@@ -23,6 +23,10 @@ export class DivisionColors {
             return [ new NamedColor(i18next.t("Division.command"), "#D5934C"),
                 new NamedColor(i18next.t("Division.science"), "#30787E"),
                 new NamedColor(i18next.t("Division.operations"), "#B12542")];
+        } else if (era === UniformEra.LowerDecks) {
+            return [ new NamedColor(i18next.t("Division.command"), "#e23d41"),
+                new NamedColor(i18next.t("Division.science"), "#2d8ad7"),
+                new NamedColor(i18next.t("Division.operations"), "#ecbf28")];
         } else {
             return [ new NamedColor(i18next.t("Division.command"), "#B12542"),
                 new NamedColor(i18next.t("Division.science"), "#30787E"),

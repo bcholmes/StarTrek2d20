@@ -2249,7 +2249,36 @@ export class Talents {
                 [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Tamarian, true)],
                 1,
                 "Tamarian"),
-
+            new TalentModel(
+                "Hyper Agile",
+                "The Difficulty to hit the Kzinti in ranged combat is increased by 1.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Kzinti, false)],
+                1,
+                "Kzinti"),
+            new TalentModel(
+                "Pathfinder",
+                "The Kzinti may reduce the Difficulty of tasks to navigate unknown regions of space with a ship it is piloting by 1. If they do, the complication range of the roll is increased by 1.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Kzinti, false)],
+                1,
+                "Kzinti"),
+            new TalentModel(
+                "Telepathy (Anabaj)",
+                "The Anabaj can sense the surface thoughts and emotions of most living beings nearby and can communicate telepathically with other empaths and telepaths.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Anabaj, false)],
+                1,
+                "Anabaj"),
+            new TalentModel(
+                "Embed Egg",
+                "As an action, a female Anabaj may embed its eggs in another humanoid’s throat. This action may only be performed if the humanoid is unconscious. The eggs require a Difficulty 3 Control + Medicine task to be removed safely.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Anabaj, false)],
+                1,
+                "Anabaj"),
+            new TalentModel(
+                "Alluring Vision",
+                "The Anabaj looks like a humanoid species that the person observing it feels comforting. The observer may attempt a Difficulty 2 Presence + Command task to ignore this effect.",
+                [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Anabaj, false)],
+                1,
+                "Anabaj"),
 
 
             // Careers

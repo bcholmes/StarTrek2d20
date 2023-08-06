@@ -116,6 +116,8 @@ export enum Species {
     Kaelon,
     Pakled,
     Tamarian,
+    Kzinti,
+    Anabaj,
 
 
     Custom,

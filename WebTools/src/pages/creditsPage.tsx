@@ -85,12 +85,27 @@ class CreditsPage extends React.Component<ICreditsPageProperties, {}> {
                             </p>
 
                             <p>
+                                I've built the token borders essentially from scratch, but I'd be lying if I didn't
+                                acknowledge the inspiration and design ideas from token borders created by <a href="https://www.reddit.com/user/Buford_TheOldMan"
+                                target="_blank" rel="noreferrer">Buford_TheOldMan</a> and <a href="https://forums.modiphius.com/u/felderburg/summary"
+                                target="_blank" rel="noreferrer">Felderburg</a>.
+                            </p>
+
+                            <p>
                                 The <em>Enterprise</em>-era Starfleet logo originated as a vector drawing on {' '}
                                 <a href="https://commons.wikimedia.org/wiki/File:Starfleet_Shoulder_Patch.svg" target="_blank" rel="noreferrer">Wikimedia
                                 Commons</a>. It was created by user Shisma, and released under the Creative Commons
                                 Attribution 3.0 Unported license. I've made a number of modifications to the image to
                                 make it a bit more screen-accurate.
                             </p>
+
+                            <Header className="my-4" level={2}>Contact</Header>
+
+                            <p>I'm on <a href="https://tech.lgbt/@bcholmes" target="_blank" rel="noreferrer">Mastodon</a>,
+                                Discord and the <a href="https://forums.modiphius.com/u/bcholmes" target="_blank" rel="noreferrer">Modiphius Forums</a>.
+                                You can also find me on <a href="https://github.com/bcholmes" target="_blank" rel="noreferrer">GitHub</a>.</p>
+
+                            <p>I use <a href="https://www.facebook.com/profile.php?id=100002491590474" target="_blank" rel="noreferrer">Facebook</a>, but only rarely.</p>
 
                             <Header className="my-4" level={2}>Asked Questions, Possibly Frequently</Header>
 

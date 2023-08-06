@@ -2,7 +2,7 @@ import i18next from "i18next";
 import { makeKey } from "../../common/translationKey";
 
 export enum UniformEra {
-    Enterprise, OriginalSeries, OriginalSeriesKlingon, Klingon, MonsterMaroon, DominionWar
+    Enterprise, OriginalSeries, OriginalSeriesKlingon, Klingon, MonsterMaroon, DominionWar, LowerDecks
 }
 
 export class UniformEraModel {
@@ -30,6 +30,7 @@ export class UniformEraHelper {
         new UniformEraModel(UniformEra.MonsterMaroon, "The Wrath of Khan and Later Movies"),
         new UniformEraModel(UniformEra.Klingon, "Klingon Armour"),
         new UniformEraModel(UniformEra.DominionWar, "Dominion War"),
+        new UniformEraModel(UniformEra.LowerDecks, "Lower Decks"),
     ]
 
     static get instance() {
