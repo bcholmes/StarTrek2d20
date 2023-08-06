@@ -165,7 +165,9 @@ class SpeciesRestrictions {
                 NoseType.Bulbous,
                 NoseType.SmallFlat,
                 NoseType.SmallUpTurned,
-                NoseType.Hawk];
+                NoseType.Hawk,
+                NoseType.BroadFlat
+            ];
         }
     }
 }

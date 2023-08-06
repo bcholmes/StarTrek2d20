@@ -9,5 +9,6 @@ export enum NoseType {
     Bulbous,
     SmallFlat,
     SmallUpTurned,
-    Hawk
+    Hawk,
+    BroadFlat
 }
