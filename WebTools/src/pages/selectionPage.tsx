@@ -6,6 +6,7 @@ import { Button } from '../components/button';
 import LanguageNotice from '../components/languageNotice';
 import { isEnglishDefault } from '../i18n/config';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import { Header } from '../components/header';
 
 enum Tool {
     CharacterGenerator,
@@ -41,6 +42,22 @@ class SelectionPage extends React.Component<ISelectionPageProperties, {}> {
                         </div>
                     </div>
                     <div className="col-md-4">
+                        <div className="mt-5">
+                            <Header level={2}>Anniversary</Header>
+                            <p>
+                                This URL went live on August 14th, 2021, and has undergone
+                                many, many updates over the last two years; I look forward to making many
+                                more updates in the years to come. I hope you've been enjoying the
+                                tool, and I hope that it's been useful for your game!
+                            </p>
+                            <p>
+                                Don't forget to support <a href="https://www.modiphius.net/pages/star-trek-adventures" target="_blank" rel="noreferrer"><cite>Star
+                                Trek Adventures</cite></a> by picking up a cool book or two, if that's viable for you. And don't forget to check out
+                                the cool, free stuff at <a href="https://continuingmissionsta.com/" target="_blank" rel="noreferrer">Continuing Missions</a>.
+                                And of course, go boldly, and embrace the principles of Infinite Diversity in Infinite Combinations.
+                            </p>
+                            <p className='text-right'>- BC</p>
+                        </div>
                         {isEnglishDefault() ? undefined : (<LanguageNotice />) }
                     </div>
                 </div>

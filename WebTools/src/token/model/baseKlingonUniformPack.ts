@@ -71,6 +71,10 @@ export abstract class BaseKlingonUniformPack {
         return "";
     }
 
+    getBorderColor(token: Token) {
+        return "#ca0001";
+    }
+
     static decorateSwatch(svg: string, rankIndicator: Rank, token: Token) {
         return `<svg viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g transform="translate(-5, -260)">`

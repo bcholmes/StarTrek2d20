@@ -17,15 +17,16 @@ export default class UniformVariantRestrictions {
             if (bodyType === BodyType.AverageFemale && "Medical" === DivisionColors.getDivision(uniformEra, divisionColor)) {
                 result.push(UniformVariantType.Variant1); // medical whites
             }
-            return result;
         } else if (uniformEra === UniformEra.OriginalSeriesKlingon) {
             if (bodyType === BodyType.AverageMale && rank === Rank.Captain) {
                 result.push(UniformVariantType.Variant1); // Klingon sash
             }
-            return result;
-        } else {
-            return result;
+        } else if (uniformEra === UniformEra.OriginalSeries) {
+            if (DivisionColors.getDivision(uniformEra, divisionColor) === "Command" && rank === Rank.Captain) {
+                result.push(UniformVariantType.Variant1);
+            }
         }
+        return result;
     }
 
     static isVariantOptionsAvailable(token: Token) {

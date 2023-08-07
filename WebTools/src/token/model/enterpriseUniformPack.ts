@@ -575,6 +575,10 @@ export class EnterpriseUniformPack {
         return (neck + result + seam).replace(DefaultRed, token.divisionColor).replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
     }
 
+    getBorderColor(token: Token) {
+        return token.divisionColor;
+    }
+
     getUniformVariantSwatches(token: Token) {
         return [];
     }

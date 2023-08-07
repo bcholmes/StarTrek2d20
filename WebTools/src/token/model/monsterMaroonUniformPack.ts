@@ -609,6 +609,12 @@ export class MonsterMaroonUniformPack {
         return result;
     }
 
+
+    getBorderColor(token: Token) {
+        return "#700000";
+    }
+
+
     static decorateRankSwatch(svg: string, rankIndicator: Rank, token: Token, gradient: string = "") {
         let gradientKey = 'rank' + Rank[rankIndicator] + "Gradient";
             return `<svg viewBox="0 0 130 130" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

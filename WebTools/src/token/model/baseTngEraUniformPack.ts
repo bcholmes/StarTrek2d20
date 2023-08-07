@@ -391,4 +391,8 @@ export abstract class BaseTngEraUniformPack {
             return result;
         }
     }
+
+    getBorderColor(token: Token) {
+        return token.divisionColor;
+    }
 }

@@ -16,6 +16,7 @@ import RankIndicatorCatalog from "./model/rankIndicatorCatalog";
 import { Token } from "./model/token";
 import UniformCatalog from "./model/uniformCatalog";
 import { UniformEra } from "./model/uniformEra";
+import UniformPackCollection from "./model/uniformPackCollection";
 
 
 const DominionWarCommbadge = `<g id="g6426">
@@ -211,13 +212,7 @@ export class TokenSvgBuilder {
     }
 
     private static getBorderColor(token: Token) {
-        if (token.uniformEra === UniformEra.MonsterMaroon) {
-            return "#700000";
-        } else if (token.uniformEra === UniformEra.Klingon || token.uniformEra === UniformEra.OriginalSeriesKlingon) {
-            return "#ca0001";
-        } else {
-            return token.divisionColor;
-        }
+        return UniformPackCollection.instance.getUniformPack(token.uniformEra).getBorderColor(token);
     }
 
     private static getDelta(token: Token) {
