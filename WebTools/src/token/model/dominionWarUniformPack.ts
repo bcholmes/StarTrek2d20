@@ -5,6 +5,7 @@ import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
 import { Token } from "./token";
 import UniformCatalog, { DefaultRed } from "./uniformCatalog";
+import { IUniformPack } from "./uniformPack";
 
 const DominionWarMaleBody = `<g>
     <path d="m 213.63253,151.29441 -13.54934,47.14666 c 0,0 12.42667,24.85333 21.464,31.49067 9.03734,6.636 24.148,15.816 35.02134,17.228 l 3.67066,3.67066 2.82534,-2.824 5.224,-2.25866 3.81333,-10.87467 18.428,-23.08667 z" style="fill:#cd976d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path171974"/>
@@ -81,7 +82,7 @@ const DominionWarMaleBodyBolianRidge = `<g>
 </g>`;
 
 
-export class DominionWarUniformPack extends BaseTngEraUniformPack {
+export class DominionWarUniformPack extends BaseTngEraUniformPack implements IUniformPack {
 
     getUniformSwatches() {
         return [

@@ -2,6 +2,16 @@ import { Rank } from "../../helpers/ranks";
 import Swatch from "./swatch";
 import { Token } from "./token";
 
+const KlingonEmblem = `<g>
+    <path d="m 373.45807,351.99135 a 41.83528,41.83528 0 1 1 -83.67056,0 41.83528,41.83528 0 1 1 83.67056,0 z" id="path3776" style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.14577;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+    <path d="m 330.85306,244.55243 c -9.35023,79.77438 -15.10278,90.43185 -19.3116,98.00633 l 19.57981,29.64634 19.15067,-30.39736 c -13.694,-31.63095 -16.46781,-77.06389 -19.41888,-97.25531 z" id="path2996" style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.424834;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+    <path d="m 310.13754,344.31597 c -2.46403,3.5564 -11.39819,6.95986 -14.30232,8.83751 -13.7848,8.91248 -19.84054,21.02468 -18.08635,39.41655 24.30164,-18.93619 32.01041,-19.76316 51.75232,-18.04907 z" id="path2998" style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.424834;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+    <path d="m 352.13104,344.3658 -20.27177,30.43259 c 15.17995,9.33983 34.50863,5.32124 49.54797,-0.51248 5.76549,-2.23641 9.97556,-4.54083 15.64547,-8.13331 -15.52819,-1.56136 -34.83441,-8.46899 -44.92167,-21.7868 z" id="path3000" style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.424834;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+    <path d="m 330.85125,255.20636 c -4.52899,31.01353 -7.72649,69.59959 -17.31901,86.88207 l 17.60024,26.40036 16.99333,-27.159 c -11.97748,-31.38728 -13.11695,-57.94322 -17.27456,-86.12343 z" id="path3770" style="fill:#ca0001;fill-opacity:1;stroke:none;stroke-width:1.20024"/>
+    <path d="m 279.31799,388.82009 c -1.28172,-17.0609 8.00386,-28.5166 17.77753,-34.06 4.91726,-2.78896 11.24,-6.56837 12.49184,-7.28539 l 16.68987,25.18655 c -20.56795,-3.29948 -33.5328,5.69319 -46.95924,16.15884 z" id="path3772" style="fill:#ca0001;fill-opacity:1;stroke:none;stroke-width:1.20024"/>
+    <path d="m 352.14656,347.32298 c 0,0 -10.9976,17.25184 -17.22092,27.00726 15.9009,9.55306 43.57768,0.9825 56.82145,-7.13114 -21.50581,-4.21757 -32.53244,-11.89755 -39.60053,-19.87612 z" id="path3774" style="fill:#ca0001;fill-opacity:1;stroke:none;stroke-width:1.20024"/>
+</g>`;
+
 const KlingonRanks = {
     Border: {
         Captain: `<g>
@@ -81,5 +91,9 @@ export abstract class BaseKlingonUniformPack {
                     + svg
                     + `</g>
                 </svg>`;
+    }
+
+    getBorderLogo(token: Token): string {
+        return KlingonEmblem;
     }
 }

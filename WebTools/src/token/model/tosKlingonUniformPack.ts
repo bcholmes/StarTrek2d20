@@ -6,6 +6,7 @@ import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
 import { Token } from "./token";
 import UniformCatalog, { BaseFemaleBolianNeckRidge, BaseMaleBodyBolianNeckRidge, DefaultRed } from "./uniformCatalog";
+import { IUniformPack } from "./uniformPack";
 import { UniformVariantType } from "./uniformVariantTypeEnum";
 
 const OriginalSeriesKlingon = {
@@ -181,7 +182,7 @@ const sash = `<g>
 </g>`;
 
 
-export class TosKlingonUniformPack extends BaseKlingonUniformPack {
+export class TosKlingonUniformPack extends BaseKlingonUniformPack implements IUniformPack {
 
     getUniformSwatches() {
         return [

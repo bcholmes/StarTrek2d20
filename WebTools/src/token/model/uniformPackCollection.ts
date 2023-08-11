@@ -6,10 +6,12 @@ import { MonsterMaroonUniformPack } from "./monsterMaroonUniformPack";
 import { TosKlingonUniformPack } from "./tosKlingonUniformPack";
 import { TosUniformPack } from "./tosUniformPack";
 import { UniformEra } from "./uniformEra";
+import { IUniformPack } from "./uniformPack";
+import { VoyagerUniformPack } from "./voyagerUniformPack";
 
 export default class UniformPackCollection {
 
-    uniformPacks: { [era: number]: EnterpriseUniformPack|DominionWarUniformPack|KlingonArmorUniformPack|TosKlingonUniformPack|MonsterMaroonUniformPack|TosUniformPack } = {};
+    uniformPacks: { [era: number]: IUniformPack } = {};
 
     private static _instance: UniformPackCollection;
 
@@ -43,6 +45,8 @@ export default class UniformPackCollection {
             return new KlingonArmorUniformPack();
         } else if (era === UniformEra.LowerDecks) {
             return new LowerDecksUniformPack();
+        } else if (era === UniformEra.VoyagerDS9) {
+            return new VoyagerUniformPack();
         } else {
             return new DominionWarUniformPack();
         }

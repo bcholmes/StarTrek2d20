@@ -4,6 +4,7 @@ import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
 import { Token } from "./token";
 import UniformCatalog, { DefaultRed } from "./uniformCatalog";
+import { IUniformPack } from "./uniformPack";
 
 const LowerDeckUniforms = {
     averageMale: `<g>
@@ -48,7 +49,7 @@ const LowerDeckUniforms = {
 }
 
 
-export class LowerDecksUniformPack extends BaseTngEraUniformPack {
+export class LowerDecksUniformPack extends BaseTngEraUniformPack implements IUniformPack {
 
     getUniformSwatches() {
         return [

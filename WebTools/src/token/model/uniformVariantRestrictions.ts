@@ -35,6 +35,7 @@ export default class UniformVariantRestrictions {
 
     static isRankSupported(rankIndicator: Rank, uniformEra: UniformEra) {
         switch (uniformEra) {
+            case UniformEra.VoyagerDS9:
             case UniformEra.DominionWar:
             case UniformEra.LowerDecks:
                 return [
