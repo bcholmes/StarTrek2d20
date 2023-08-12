@@ -1,6 +1,7 @@
 import { Species } from "../../helpers/speciesEnum";
 import { ExtraType } from "./extrasTypeEnum";
 import { HairType, allHairTypes, isTallForeheadHair } from "./hairTypeEnum";
+import { HeadType } from "./headTypeEnum";
 import { NoseType } from "./noseTypeEnum";
 import { SpeciesOption } from "./speciesOptionEnum";
 
@@ -29,6 +30,10 @@ class SpeciesRestrictions {
             return ["#d18352"];
         } else if (species === Species.Saurian) {
             return ["#de898a", "#ca7882", "#b6677a", "#a77e86", "#989591", "#626163", "#7c6a61", "#603f31"];
+        } else if (species === Species.Caitian) {
+            return ["#fdf2dc", "#fae9b5", "#f0c882", "#f9c861", "#e9a63d", "#e38732", "#913c13", "#430c05", "#4e0300", "#811002",
+            "#391201", "#722707", SpeciesRestrictions.DEFAULT_HAIR_COLOR, "#37261e", "#706f74", "#a78c6f",
+            "#f1eae4", "#f4f3f1", "#e1ddda"];
         } else if (species === Species.Efrosian) {
 //            return ["#ffd9c6", "#feb582", "#f8a271", "#ff8740", "#d7580b", "#d13703", "#b72001", "#822601"];
             return ["#ffd9c6", "#d8b092", "#e1ad88", "#d69972", "#d18352", "#b06e46", "#9e603b", "#834b2b", "#70432c"];
@@ -37,11 +42,30 @@ class SpeciesRestrictions {
         }
     }
 
+    static getHeadTypes(species: Species) {
+        if (species === Species.Caitian) {
+            return [HeadType.SquareJawed, HeadType.RoundedAverage, HeadType.PointedDelicate ];
+        } else if (this.isRubberHeaded(species)) {
+            return [HeadType.RoundedNarrow ];
+        } else {
+            return [ HeadType.AverageAngular,
+                HeadType.SquareJawed,
+                HeadType.RoundedNarrow,
+                HeadType.RoundedAverage,
+                HeadType.SofterNarrow,
+                HeadType.PointedDelicate,
+                HeadType.Rectangular,
+                HeadType.Elfin,
+                HeadType.PillShaped,
+                HeadType.RoundedHeavy ]
+        }
+    }
+
     static getEyeColors(species: Species) {
         if (species === Species.Betazoid || species === Species.Saurian) {
             return ["#111111"];
         } else {
-            return ["#e1bbc3", "#8bb5db", "#4079c0", "#b4b8b9", "#8e9796", "#758a9d", "#88967d", "#6e9d4d", "#aa6925", "#863603", "#56220c", "#3f0c08", "#280000"];
+            return ["#e1bbc3", "#8bb5db", "#4079c0", "#b4b8b9", "#8e9796", "#758a9d", "#88967d", "#6e9d4d", "#aa6925", "#863603", "#56220c", "#3f0c08", "#280000", "#fdd089", "#fbb03b"];
         }
     }
 
@@ -97,7 +121,7 @@ class SpeciesRestrictions {
     }
 
     static isFacialHairSupportedFor(species: Species) {
-        return !this.isBald(species);
+        return !this.isBald(species) && !this.isRubberHeaded(species);
     }
 
     static isOptionsSupportedFor(species: Species) {

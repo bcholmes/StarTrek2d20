@@ -1,8 +1,6 @@
 import { Rank } from "../../helpers/ranks";
-import { Species } from "../../helpers/speciesEnum";
-import { BodyType } from "./bodyTypeEnum";
+import { BaseNeckProvider } from "./baseNeckProvider";
 import RankIndicatorCatalog from "./rankIndicatorCatalog";
-import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
 import { Token } from "./token";
 
@@ -250,36 +248,7 @@ const TngCrewman3rdBorder: string = `<g>
 </g>`;
 
 
-export const TngEraFemaleBodyBolianRidge = `<g>
-    <path style="fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1" d="m 260.11976,248.62275 16.76647,-47.90419" id="path1746"/>
-    <path style="color:#000000;fill:#000000;fill-opacity:0.2;-inkscape-stroke:none" d="m 273.8747,199.19782 -16.76758,47.90429 1.7902,0.83818 16.76758,-47.90429 z" id="path1748"/>
-</g>`;
-
-export const TngEraMaleBodyBolianRidge = `<g>
-    <path style="display:inline;fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1" d="m 260.11976,248.62275 23.2919,-42.7347" id="path1746"/>
-    <path style="color:#000000;display:inline;fill:#000000;fill-opacity:0.2;-inkscape-stroke:none" d="m 280.56961,203.94359 -23.46249,43.15852 1.7902,0.83818 23.12351,-42.81954 z" id="path1748"/>
-</g>`;
-
-
-const TngNecks = {
-    averageMale: `<g>
-            <path d="m 213.63253,151.29441 -13.54934,47.14666 c 0,0 12.42667,24.85333 21.464,31.49067 9.03734,6.636 24.148,15.816 35.02134,17.228 l 3.67066,3.67066 2.82534,-2.824 5.224,-2.25866 4.3151,-10.28435 17.92623,-23.67699 z" style="display:inline;fill:#cd976d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path171974" />
-            <path d="m 200.08306,198.44081 c 0,0 12.86667,21.57066 17.836,27.06399 4.96933,5.49334 32.696,1.83067 40.54267,4.18534 6.33866,1.90133 13.09866,2.66533 15.47066,2.89066 l 16.59734,-20.79333 -76.89734,-60.49333 z" style="display:inline;opacity:0.199997;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path171984"/>
-            <path d="m 211.64493,149.52841 c -1.01067,4.99733 -6.2,23.82533 -7.36934,28.788 -0.956,4.064 -1.95733,8.11866 -3.072,12.14266 -0.516,1.85867 -1.07466,3.70267 -1.63333,5.54934 -0.18666,0.616 -0.95466,1.86266 -0.88133,2.47466 0.02,0.16934 0.80667,2.38267 1.11067,1.93733 3.68799,-5.38666 5.03733,-14.18666 7.12666,-20.38133 1.49067,-4.41866 7.06133,-22.68666 8.552,-27.104 0,0 -3.83333,-3.40666 -3.83333,-3.40666" style="display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path171994"/>
-            <path d="m 293.27599,213.31907 c -2.83733,2.044 -16.28266,19.912 -18.592,22.53067 -1.87866,2.13066 -4.41733,10.85066 -7.52933,10.948 -2.104,0.0653 -1.74133,-3.72534 -1.19333,-5.332 0.26266,-0.76934 21.288,-30.90934 21.288,-30.90934 0,0 6.02666,2.76267 6.02666,2.76267" style="display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path171998"/>
-        </g>`,
-
-    averageFemale: `<g>
-            <path d="m 213.63253,151.29441 -5.49067,30.848 -9.21193,18.45217 c 0,0 13.57993,22.69982 22.61726,29.33716 9.03734,6.636 24.148,15.816 35.02134,17.228 l 3.67066,0.60693 2.82534,0.23973 5.224,-2.25866 1.832,-12.39334 13.08133,-27.18533 z" style="fill:#cd976d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path283414" />
-            <path d="m 199.16985,199.75598 c 0,0 11.14568,18.87824 18.74974,25.74882 16.89748,4.64849 35.91739,5.03279 53.5,5.14934 l 11.78267,-24.48534 -69.56933,-54.87466 -5.69867,31.472 z" style="opacity:0.199997;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path283424" />
-            <path d="m 211.64493,149.52841 c -1.01067,4.99733 -2.99139,25.24509 -4.128,30.15333 -1.11614,3.58085 -2.42213,8.10992 -4.32571,11.82632 -1.90358,3.7164 -2.7377,5.49633 -4.27987,8.42311 l 2.35504,3.10823 c 4.22257,-7.93797 7.1452,-15.38433 8.95587,-21.62566 1.29067,-4.45067 3.76533,-24.06133 5.256,-28.47867 l -3.83333,-3.40666" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path283434" />
-            <path d="m 285.86613,207.63814 c -2.232,2.508 -11.62934,23.48 -13.308,26.58266 -1.36534,2.52267 -2.372,12.41734 -5.128,12.788 -1.86267,0.25067 -2.084,-3.988 -1.828,-5.81866 0.124,-0.87467 14.504,-36.10934 14.504,-36.10934 0,0 5.76,2.55734 5.76,2.55734" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path283438"/>
-        </g>`
-}
-
-
-
-export abstract class BaseTngEraUniformPack {
+export abstract class BaseTngEraUniformPack extends BaseNeckProvider {
 
     getRankSwatches() {
         return [
@@ -383,21 +352,6 @@ export abstract class BaseTngEraUniformPack {
         return "";
     }
 
-    protected getNeck(body: BodyType, skinColor: string, species?: Species) {
-        if (body === BodyType.AverageMale) {
-            let result = TngNecks.averageMale.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, skinColor);
-            if (species === Species.Bolian) {
-                result += TngEraMaleBodyBolianRidge
-            }
-            return result;
-        } else {
-            let result = TngNecks.averageFemale.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, skinColor);
-            if (species === Species.Bolian) {
-                result += TngEraFemaleBodyBolianRidge
-            }
-            return result;
-        }
-    }
 
     getBorderColor(token: Token) {
         return token.divisionColor;
@@ -406,5 +360,4 @@ export abstract class BaseTngEraUniformPack {
     getBorderLogo(token: Token): string {
         return DominionWarCommbadge;
     }
-
 }

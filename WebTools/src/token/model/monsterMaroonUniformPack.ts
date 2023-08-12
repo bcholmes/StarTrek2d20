@@ -1,5 +1,5 @@
 import { Rank } from "../../helpers/ranks";
-import { Species } from "../../helpers/speciesEnum";
+import { BaseNeckProvider } from "./baseNeckProvider";
 import { BodyType } from "./bodyTypeEnum";
 import { DivisionColors } from "./divisionColors";
 import { isEnlistedRank } from "./rankHelper";
@@ -19,20 +19,6 @@ const TwokDelta = `<g>
 </g>`;
 
 const MonsterMaroon = {
-
-    averageMaleNeck: `<g>
-            <path d="m 213.63253,151.29441 -13.54934,47.14666 c 0,0 12.42667,24.85333 21.464,31.49067 9.03734,6.636 24.148,15.816 35.02134,17.228 l 3.8804,0.52463 2.6156,0.32203 5.224,-2.25866 3.81333,-10.87467 18.428,-23.08667 z" style="fill:#cd976d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path171974" />
-            <path d="m 200.08306,198.44081 c 0,0 12.86667,21.57066 17.836,27.06399 4.96933,5.49334 32.696,1.83067 40.54267,4.18534 6.33866,1.90133 13.09866,2.66533 15.47066,2.89066 l 16.59734,-20.79333 -76.89734,-60.49333 z" style="opacity:0.199997;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path171984"/>
-            <path d="m 211.64493,149.52841 c -1.01067,4.99733 -6.2,23.82533 -7.36934,28.788 -0.956,4.064 -1.95733,8.11866 -3.072,12.14266 -0.516,1.85867 -1.07466,3.70267 -1.63333,5.54934 -0.18666,0.616 -0.95466,1.86266 -0.88133,2.47466 0.02,0.16934 0.80667,2.38267 1.11067,1.93733 3.68799,-5.38666 5.03733,-14.18666 7.12666,-20.38133 1.49067,-4.41866 7.06133,-22.68666 8.552,-27.104 0,0 -3.83333,-3.40666 -3.83333,-3.40666" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path171994"/>
-            <path d="m 293.27599,213.31907 c -2.83733,2.044 -16.28266,19.912 -18.592,22.53067 -1.87866,2.13066 -4.41733,10.85066 -7.52933,10.948 -2.104,0.0653 -1.74133,-3.72534 -1.19333,-5.332 0.26266,-0.76934 21.288,-30.90934 21.288,-30.90934 0,0 6.02666,2.76267 6.02666,2.76267" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path171998"/>
-        </g>`,
-
-    averageFemaleNeck: `<g>
-            <path d="m 213.63253,151.29441 -5.49067,30.848 -9.21193,18.45217 c 0,0 13.57993,22.69982 22.61726,29.33716 9.03734,6.636 24.148,15.816 35.02134,17.228 l 3.72976,0.53827 2.76624,0.30839 5.224,-2.25866 1.832,-12.39334 13.08133,-27.18533 z" style="fill:#cd976d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path283414"/>
-            <path d="m 199.16985,199.75598 c 0,0 11.14568,18.87824 18.74974,25.74882 16.89748,4.64849 35.91739,5.03279 53.5,5.14934 l 11.78267,-24.48534 -69.56933,-54.87466 -5.69867,31.472 z" style="opacity:0.199997;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path283424"/>
-            <path d="m 285.86613,207.63814 c -2.232,2.508 -11.62934,23.48 -13.308,26.58266 -1.36534,2.52267 -2.372,12.41734 -5.128,12.788 -1.86267,0.25067 -2.084,-3.988 -1.828,-5.81866 0.124,-0.87467 14.504,-36.10934 14.504,-36.10934 0,0 5.76,2.55734 5.76,2.55734" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path283438"/>
-            <path d="m 211.64493,149.52841 c -1.01067,4.99733 -2.99139,25.24509 -4.128,30.15333 -1.11614,3.58085 -2.42213,8.10992 -4.32571,11.82632 -1.90358,3.7164 -2.7377,5.49633 -4.27987,8.42311 l 2.35504,3.10823 c 4.22257,-7.93797 7.1452,-15.38433 8.95587,-21.62566 1.29067,-4.45067 3.76533,-24.06133 5.256,-28.47867 l -3.83333,-3.40666" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path283434"/>
-        </g>`,
 
     averageMaleBody: `<g>
             <path id="path171958" style="fill:#700000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" d="m 181.13583,206.19342 -0.44833,0.31439 -6.27734,0.46485 -40.91407,21.15429 -38.587887,22.54883 -11.855469,6.04297 -9.730693,5.01297 -4.171628,3.95066 -11.118579,2.44635 C 49.577549,274.23242 45.03131,281.3706 41.979324,296.78464 36.789734,326.88771 29.181408,369.89668 23.993266,400 l 361.696184,-0.0332 -1.00976,-30.86133 -0.86914,-26.57227 c -1.52533,-11.00266 -3.12611,-48.21866 -5.45544,-55.79065 -1.69696,-5.51514 -4.68362,-13.12031 -8.14841,-14.73888 -2.23035,-1.04191 -5.12686,0.38157 -7.51529,1.91821 -8.15467,-4.88133 -35.08884,-19.29515 -45.54883,-21.61915 -10.46133,-2.32533 -26.81507,-12.73545 -37.03906,-17.07812 l -7.53321,-1.63867 4.76953,8.01172 -0.29882,2.28711 c 0,0 4.83976,12.76166 6.25976,16.73632 1.42,3.976 -3.40625,11.07227 -3.40625,11.07227 l -14.29297,5.23633 -26.8125,-4.84766 -5.50195,-3.14453 c 0,0 -13.86836,-9.16877 -36.01367,-28.19141 -22.14665,-19.02398 -15.72461,-34.06836 -15.72461,-34.06836 z" />
@@ -203,19 +189,9 @@ const MonsterMaroon = {
             <path style="fill:#d30000;fill-opacity:1;stroke:none;stroke-width:0.528597" d="m 341.00082,365.93336 c -0.75117,-4.14387 -1.57027,-8.2848 -2.19973,-12.43135 -0.19242,-1.26757 -0.38247,-2.53523 -0.55986,-3.80247 -0.0897,-0.64065 -0.0848,-1.40225 -0.42496,-2.01882 -0.57306,-1.03879 -1.60705,-0.88249 -2.50175,-0.76605 -0.31802,0.0414 -1.05397,0.27353 -1.26518,-0.16367 -0.18764,-0.38843 0.27557,-0.83775 0.4877,-1.06828 0.57275,-0.62239 0.98875,-1.36662 1.08237,-2.2464 0.40739,-3.82821 -4.31664,-7.32678 -7.85614,-5.63519 -2.71784,1.29892 -2.92736,4.994 -0.45703,7.3721 0.64976,0.62551 1.36532,0.95231 2.13987,1.3767 0.25659,0.1406 0.71715,0.39552 0.76329,0.70082 0.0674,0.44576 -0.70192,0.41969 -1.01361,0.46025 -0.85091,0.11075 -1.87171,0.16851 -1.90144,1.17537 -0.0317,1.07502 1.05152,2.59505 1.55702,3.61811 1.32229,2.67614 2.56188,5.37696 3.81433,8.07297 0.38961,0.83866 0.77035,1.68199 1.13775,2.52645 0.12498,0.28729 0.26094,0.84755 0.52968,1.05581 0.43882,0.3404 1.40734,0.41661 1.92654,0.55024 1.57949,0.40652 3.15901,0.84296 4.74115,1.22341 M 322.85798,345.3155 c -0.34926,-1.11347 -0.54628,-3.0244 -1.73651,-3.72473 -1.25183,-0.73657 -2.74192,-0.3319 -3.95552,-0.17396 l -8.64137,1.12464 -2.46895,0.32133 c -0.44262,0.0576 -0.92156,0.082 -1.20006,0.41759 -0.81313,0.97994 0.76174,2.26619 1.48483,3.0386 0.24387,0.26052 0.6605,0.88606 1.01379,0.98135 0.34278,0.0925 0.84591,-0.0772 1.17309,-0.11973 l 2.791,-0.36324 4.56221,-0.59375 6.97749,-0.9081 m 16.79966,-2.18641 6.9775,-0.9081 4.56221,-0.59375 2.79099,-0.36324 c 0.32718,-0.0426 0.89308,-0.0121 1.15324,-0.18302 0.26814,-0.17617 0.27506,-0.85684 0.34278,-1.15791 0.2008,-0.89265 0.87685,-2.47185 -0.46314,-3.17157 -0.45895,-0.23966 -0.915,-0.14233 -1.35761,-0.0847 l -2.46896,0.32133 -8.64136,1.12464 c -1.1929,0.15525 -2.78561,0.15272 -3.50231,1.10726 -0.72411,0.9644 0.24418,2.75348 0.60666,3.90908 m -31.79173,4.79256 2.59398,2.77358 1.0472,1.063 1.16351,-0.0953 2.95202,-0.3842 11.21766,-1.45993 c -0.24103,-0.60439 -0.56867,-1.17745 -1.13294,-1.59919 -0.98316,-0.73482 -2.22366,-1.084 -2.65197,-2.2748 l -15.18946,1.97686 m 31.98912,-4.16327 c 0.31653,1.18026 -0.57133,1.80052 -1.03623,2.70023 -0.28817,0.55768 -0.26813,1.15933 -0.11678,1.8164 l 11.21767,-1.45993 2.95201,-0.3842 1.1297,-0.20312 0.32435,-1.2415 0.71875,-3.20473 -15.18947,1.97685 m -27.73846,8.63162 c 0.75506,1.12874 2.51673,1.18364 3.66285,1.34767 3.20631,0.45887 6.42834,0.95551 9.63431,1.50665 0.95848,0.16478 1.91849,0.29646 2.87712,0.44564 0.34803,0.0542 0.85813,0.18102 1.07012,-0.10969 0.21941,-0.30091 -0.0934,-0.8147 -0.24973,-1.14464 -0.45549,-0.96148 -0.9323,-1.91697 -1.40285,-2.87402 -0.1212,-0.24655 -0.35644,-1.04554 -0.67774,-1.09525 -0.44873,-0.0694 -1.01342,0.11454 -1.44214,0.17034 l -3.11304,0.40515 -10.35889,1.34817 m 41.70394,-5.42761 -10.35889,1.34817 -3.11304,0.40515 c -0.42873,0.0558 -1.06,0.0275 -1.43169,0.20368 -0.26303,0.12469 -0.005,0.97346 0.0388,1.23298 0.16953,0.99961 0.27845,1.99898 0.4451,2.99868 0.0555,0.33298 0.0796,0.84851 0.45091,1.06387 0.37059,0.21491 0.76421,-0.0296 1.05228,-0.16654 0.79379,-0.37734 1.59105,-0.74911 2.38326,-1.12886 2.6517,-1.2711 5.28913,-2.57324 7.97002,-3.79919 0.95962,-0.43882 2.54771,-0.92615 2.56323,-2.15796 m -10.80855,25.20451 c 0.15223,0.48553 0.16678,1.60071 0.56644,1.97909 0.71761,0.67936 1.75487,0.14371 2.27121,-0.23444 1.21748,-0.89165 1.41937,-2.52426 0.68332,-4.0041 -0.95533,-1.92069 -3.08575,-2.75296 -5.02397,-3.24448 -2.8849,-0.7316 -5.96474,-1.28401 -8.78468,-2.35995 -0.48886,-0.18652 -1.08692,-0.40926 -1.44647,-0.81583 -0.95735,-1.08255 0.12717,-1.92418 1.10487,-2.05417 l -1.11161,-2.47527 c -1.04835,0.1391 -2.08188,0.65399 -2.60382,1.48725 -0.96471,1.54014 -0.24365,3.91735 1.43597,5.2146 1.3249,1.02329 3.1387,1.42558 4.67757,1.81584 2.53772,0.64355 5.15438,1.18201 7.66484,1.99558 1.01002,0.32732 2.63044,1.65941 1.36808,2.40243 -0.23698,0.13948 -0.52068,0.23355 -0.80178,0.29345 m -2.33503,-11.54043 c 0.38362,-0.0497 0.7806,-0.0559 1.18411,0.035 1.00942,0.22721 2.11044,1.22386 1.50436,2.16257 -0.36057,0.55846 -1.4403,0.80433 -2.15947,0.73565 l 0.52121,2.55211 c 0.85,0.0412 1.75459,-0.15797 2.48186,-0.45828 0.65494,-0.27045 1.20526,-0.68306 1.55526,-1.26815 1.07631,-1.79926 0.0907,-4.39655 -2.03968,-5.61914 -0.80516,-0.46206 -1.76052,-0.6816 -2.62991,-0.72609 -0.21877,-0.0112 -0.68958,-0.0938 -0.82852,0.076 -0.10793,0.13192 0.0211,0.47869 0.0497,0.647 0.1049,0.61564 0.17114,1.25226 0.36103,1.86338 m 4.73061,20.78054 c 0.8421,-0.11173 1.65104,-0.46017 2.0985,-1.11581 0.88423,-1.29565 0.0825,-3.20831 -1.27901,-4.28532 -1.0862,-0.85925 -2.44477,-1.14568 -3.71008,-1.49895 -2.04247,-0.57024 -4.16056,-1.09272 -6.16596,-1.84762 -0.46113,-0.17359 -1.06828,-0.41156 -1.39026,-0.80912 -0.75031,-0.92644 0.49427,-1.48346 1.20093,-1.57543 -0.16034,-0.5112 -0.4177,-1.60242 -0.85049,-1.99671 -0.823,-0.74977 -1.97885,0.0616 -2.45664,0.53637 -1.03969,1.03302 -1.09159,2.87491 -0.0404,4.24304 1.15891,1.50828 3.02424,2.08438 4.74561,2.56498 1.37619,0.38423 2.74691,0.80767 4.121,1.20541 0.96749,0.28006 2.50863,0.45801 3.24096,1.25829 0.5088,0.55601 -0.17193,0.543 -0.17526,0.95799 -0.006,0.68964 0.44282,1.66707 0.66108,2.36288 m -9.32209,-12.97813 c 0.44547,0.86256 0.7732,1.80397 1.11892,2.69265 0.15007,0.38571 0.27223,0.99398 0.56501,1.32429 0.25215,0.28449 0.99746,0.36785 1.34165,0.46395 1.19636,0.33402 2.46799,0.86739 3.67589,1.03305 -0.21978,-0.95361 -0.44022,-1.90689 -0.66877,-2.8604 -0.0719,-0.2997 -0.0743,-0.83351 -0.2737,-1.09834 -0.21621,-0.28718 -1.11897,-0.37211 -1.44781,-0.45583 -1.42636,-0.3631 -2.87745,-0.83653 -4.31119,-1.09937 m 4.54519,13.59982 c -0.16525,-0.52683 -0.37627,-1.04338 -0.54695,-1.56628 -0.078,-0.2383 -0.11874,-0.61317 -0.29825,-0.81795 -0.28118,-0.32075 -0.97091,0.0484 -1.21285,-0.40692 -0.22142,-0.41672 0.48705,-0.69111 0.77848,-0.7539 -0.14128,-0.45041 -0.34947,-1.5813 -0.7494,-1.9007 -1.08039,-0.86285 -2.21907,0.25229 -2.5615,1.02163 -0.75715,1.70106 0.51321,3.73693 2.54669,4.31996 0.68414,0.19615 1.38995,0.18926 2.04378,0.10416 m -1.1991,-5.24757 c 0.58633,1.86925 1.35723,3.72098 2.02633,5.57657 0.7065,1.95929 1.27152,3.95416 2.02671,5.90401 0.14956,0.3862 0.30625,0.80868 0.63262,1.11848 0.63814,0.60576 1.74514,0.64721 2.26047,0.10705 0.73044,-0.76565 -0.0698,-2.08628 -0.27355,-3.04017 -0.4432,-2.07532 -1.18601,-4.14745 -1.68657,-6.22119 -0.17297,-0.71652 -0.47552,-1.44591 -0.56227,-2.16469 z" id="path2"/>
             <path style="fill:#d30000;stroke-width:0.528597;fill-opacity:1" id="path1" d=""/>
             <path style="fill:#000000;fill-opacity:0.2;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 181.11754,312.13873 24.27745,-3.08285 14.25819,1.54142 24.66281,18.88247 34.29673,28.90173 c 0,0 -8.80113,-3.94777 -16.18498,-8.8632 -7.38385,-4.91543 -19.55535,-14.72819 -28.51637,-20.42389 -8.96102,-5.6957 -17.69275,-9.05139 -25.43353,-11.56069 -7.74078,-2.5093 -27.3603,-5.39499 -27.3603,-5.39499 z" id="path12"/>
-        </g>`
+        </g>`,
+
 }
-
-
-const femaleBodyBolianRidge = `<g>
-    <path style="fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1" d="m 260.11976,248.62275 16.76647,-47.90419" id="path1746"/>
-    <path style="color:#000000;fill:#000000;fill-opacity:0.2;-inkscape-stroke:none" d="m 273.8747,199.19782 -16.76758,47.90429 1.7902,0.83818 16.76758,-47.90429 z" id="path1748"/>
-</g>`;
-
-const maleBodyBolianRidge = `<g>
-    <path style="display:inline;fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1" d="m 260.11976,248.62275 23.2919,-42.7347" id="path1746"/>
-    <path style="color:#000000;display:inline;fill:#000000;fill-opacity:0.2;-inkscape-stroke:none" d="m 280.56961,203.94359 -23.46249,43.15852 1.7902,0.83818 23.12351,-42.81954 z" id="path1748"/>
-</g>`;
 
 const MonsterMaroonEnsign = `<g>
     <path style="fill:url(#rankEnsignGradient);fill-opacity:1;stroke:#000000;stroke-width:0.616;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1" d="m 147.97498,301.17001 13.38147,7.47618 3.1192,-14.96097 -5.8279,2.64357 2.7087,12.3174 -7.34293,-10.21529 z" id="path71458"/>
@@ -408,14 +384,12 @@ const SeniorChiefPettyOfficerRank = `<g>
     <path id="path41" style="fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1" d="M 37.175674,308.42771 14.827098,289.82572 M 43.676417,303.31818 31.562568,277.00806 M 41.330885,305.03372 25.1747,281.65418 m 14.183055,25.09001 -19.313897,-21.13146"/>
 </g>`;
 
-export class MonsterMaroonUniformPack implements IUniformPack {
-
-
+export class MonsterMaroonUniformPack extends BaseNeckProvider implements IUniformPack {
 
     getUniformSwatches() {
         return [
-            new Swatch(BodyType.AverageMale, "Average Male", (token) => MonsterMaroonUniformPack.decorateUniformSwatch(MonsterMaroon.averageMaleNeck + (this.isEnlisted(token) ? MonsterMaroon.averageMaleBodyEnlisted : MonsterMaroon.averageMaleBody), BodyType.AverageMale, token), "BodyType.averageMale"),
-            new Swatch(BodyType.AverageFemale, "Average Female", (token) => MonsterMaroonUniformPack.decorateUniformSwatch(MonsterMaroon.averageFemaleNeck + (this.isEnlisted(token) ? MonsterMaroon.averageFemaleEnlistedBody : MonsterMaroon.averageFemaleBody), BodyType.AverageFemale, token), "BodyType.averageFemale"),
+            new Swatch(BodyType.AverageMale, "Average Male", (token) => MonsterMaroonUniformPack.decorateUniformSwatch(this.getNeck(BodyType.AverageMale, token.skinColor) + (this.isEnlisted(token) ? MonsterMaroon.averageMaleBodyEnlisted : MonsterMaroon.averageMaleBody), BodyType.AverageMale, token), "BodyType.averageMale"),
+            new Swatch(BodyType.AverageFemale, "Average Female", (token) => MonsterMaroonUniformPack.decorateUniformSwatch(this.getNeck(BodyType.AverageFemale, token.skinColor) + (this.isEnlisted(token) ? MonsterMaroon.averageFemaleEnlistedBody : MonsterMaroon.averageFemaleBody), BodyType.AverageFemale, token), "BodyType.averageFemale"),
         ];
     }
 
@@ -556,17 +530,11 @@ export class MonsterMaroonUniformPack implements IUniformPack {
     }
 
     getUniformAndVariantBody(token: Token) {
-        let neck = "";
-        let seam = "";
         let result = "";
-        if (token.species === Species.Bolian) {
-            seam = token.bodyType === BodyType.AverageMale ? maleBodyBolianRidge : femaleBodyBolianRidge;
-        }
+        let neck = this.getNeck(token.bodyType, token.skinColor, token.species)
         if (token.bodyType === BodyType.AverageMale) {
-            neck = MonsterMaroon.averageMaleNeck;
             result = this.isEnlisted(token) ? MonsterMaroon.averageMaleBodyEnlisted : MonsterMaroon.averageMaleBody;
         } else {
-            neck = MonsterMaroon.averageFemaleNeck;
             switch (token.variant) {
                 case UniformVariantType.Variant1:
                     result = MonsterMaroon.averageFemaleMedicalBody;
@@ -576,15 +544,15 @@ export class MonsterMaroonUniformPack implements IUniformPack {
                     result = this.isEnlisted(token) ? MonsterMaroon.averageFemaleEnlistedBody : MonsterMaroon.averageFemaleBody;
             }
         }
-        let finalResult = (neck + seam + result).replace(DefaultRed, token.divisionColor).replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
+        let finalResult = (neck + result).replace(DefaultRed, token.divisionColor).replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
         return DivisionColors.getDivision(UniformEra.MonsterMaroon, token.divisionColor) === "Trainee" ? finalResult.replace(/#2d2d2d/g, token.divisionColor) : finalResult;
     }
 
     getUniformVariantSwatches(token: Token) {
         if (token.bodyType === BodyType.AverageFemale && DivisionColors.getDivision(UniformEra.MonsterMaroon, token.divisionColor) === "Medical") {
             return [
-                new Swatch(UniformVariantType.Base, "Base", (token) => UniformCatalog.decorateSwatch(MonsterMaroon.averageFemaleNeck + (this.isEnlisted(token) ? MonsterMaroon.averageFemaleEnlistedBody : MonsterMaroon.averageFemaleBody), 100000 + UniformVariantType.Base, token)),
-                new Swatch(UniformVariantType.Variant1, "Medical", (token) => UniformCatalog.decorateSwatch(MonsterMaroon.averageFemaleNeck + MonsterMaroon.averageFemaleMedicalBody, 100000 + UniformVariantType.Variant1, token)),
+                new Swatch(UniformVariantType.Base, "Base", (token) => UniformCatalog.decorateSwatch(this.getNeck(BodyType.AverageFemale, token.skinColor) + (this.isEnlisted(token) ? MonsterMaroon.averageFemaleEnlistedBody : MonsterMaroon.averageFemaleBody), 100000 + UniformVariantType.Base, token)),
+                new Swatch(UniformVariantType.Variant1, "Medical", (token) => UniformCatalog.decorateSwatch(this.getNeck(BodyType.AverageFemale, token.skinColor) + MonsterMaroon.averageFemaleMedicalBody, 100000 + UniformVariantType.Variant1, token)),
             ];
         } else {
             return [];

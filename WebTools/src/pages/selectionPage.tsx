@@ -52,7 +52,7 @@ class SelectionPage extends React.Component<ISelectionPageProperties, {}> {
                             </p>
                             <p>
                                 Don't forget to support <a href="https://www.modiphius.net/pages/star-trek-adventures" target="_blank" rel="noreferrer"><cite>Star
-                                Trek Adventures</cite></a> by picking up a cool book or two, if that's viable for you. And don't forget to check out
+                                Trek Adventures</cite></a> by picking up a cool book or two, if that's viable for you. Also: check out
                                 the cool, free stuff at <a href="https://continuingmissionsta.com/" target="_blank" rel="noreferrer">Continuing Missions</a>.
                                 And of course, go boldly, and embrace the principles of Infinite Diversity in Infinite Combinations.
                             </p>

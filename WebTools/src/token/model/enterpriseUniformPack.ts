@@ -1,5 +1,5 @@
 import { Rank } from "../../helpers/ranks";
-import { Species } from "../../helpers/speciesEnum";
+import { BaseNeckProvider } from "./baseNeckProvider";
 import { BodyType } from "./bodyTypeEnum"
 import RankIndicatorCatalog from "./rankIndicatorCatalog";
 import SpeciesRestrictions from "./speciesRestrictions";
@@ -101,18 +101,6 @@ const EnterpriseEraStarfleetLogo = `<g>
     <circle fill="#ffffff" cx="358.62598" cy="324.56168" r="1.1421422" id="circle1508" style="stroke-width:0.235396"/>
 </g>`;
 
-const BolianRidge =  {
-    Male: `<g>
-            <path style="display:inline;fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1" d="m 260.11976,248.62275 23.2919,-42.7347" id="path1746"/>
-            <path style="color:#000000;display:inline;fill:#000000;fill-opacity:0.2;-inkscape-stroke:none" d="m 280.56961,203.94359 -23.46249,43.15852 1.7902,0.83818 23.12351,-42.81954 z" id="path1748"/>
-        </g>`,
-
-    Female: `<g>
-            <path id="path34966" style="color:#000000;fill:#000000;fill-opacity:0.2;-inkscape-stroke:none" d="M 273.97266 200.25391 C 273.97266 200.25391 270.25838 210.29755 266.31836 221.11523 C 262.37834 231.93292 258.2257 243.4769 257.30273 246.64258 C 255.4757 252.90912 255.44099 259.20324 256.75586 264.11328 C 257.10618 265.42148 258.11153 267.53495 259.43359 270.0625 C 260.75566 272.59005 262.39161 275.5007 263.98828 278.25977 C 266.75284 283.03698 269.03927 286.7722 269.69922 287.84766 C 268.40833 287.67373 267.24805 287.42188 267.24805 287.42188 C 267.24805 287.42188 270.30012 290.03155 271.41211 290.32031 C 272.5241 290.60907 272.20857 290.67635 273.22461 290.13867 C 274.24065 289.60099 276.48242 286.24609 276.48242 286.24609 C 276.48242 286.24609 273.9928 287.73165 272.4082 287.9668 C 272.20515 287.99693 271.96963 288.00915 271.71289 288.00977 C 271.62475 287.86668 268.69796 283.11486 265.56055 277.69336 C 263.96811 274.94161 262.33442 272.04151 261.02344 269.53516 C 259.71245 267.02879 258.72067 264.88491 258.42773 263.79102 C 257.16956 259.09263 257.19137 252.95363 258.96875 246.85742 C 259.84798 243.84174 264.02392 232.2074 267.96289 221.39258 C 271.90186 210.57776 275.61523 200.53516 275.61523 200.53516 L 273.97266 200.25391 z "/>
-            <path style="color:#000000;fill:#000000;-inkscape-stroke:none" d="m 276.30859,200.91016 c 0,0 -3.80869,10.17677 -7.81836,21.17382 -2.00483,5.49853 -4.05928,11.20109 -5.71484,15.94336 -1.65556,4.74228 -2.90671,8.49876 -3.32422,10.20118 -1.61875,6.60056 -1.71563,10.19872 -0.41211,15.0664 0.34935,1.30456 1.34462,3.44195 2.6543,6.00586 1.30968,2.56391 2.92925,5.52203 4.50976,8.33008 3.16103,5.6161 6.35222,10.37283 6.35222,10.37283 l 0.2832,-0.12956 c 0,0 -2.67321,-5.0033 -5.82639,-10.60547 -1.57659,-2.80108 -3.13075,-5.87923 -4.43012,-8.42296 -1.29937,-2.54373 -2.28421,-4.71299 -2.57812,-5.81054 -1.26954,-4.74076 -1.18358,-8.03794 0.41796,-14.56836 0.38757,-1.58033 1.64396,-5.37467 3.29688,-10.10938 1.65292,-4.7347 3.707,-10.43557 5.71094,-15.93164 4.00787,-10.99213 7.81445,-21.16406 7.81445,-21.16406 z" id="path34964"/>
-        </g>`
-}
-
 const EnterpriseUniforms = {
     averageMaleBody: `<g>
         <path d="m 111.68226,386.34427 c 0.096,0.27733 0.20934,0.552 0.27334,0.83333 -0.0667,-0.28933 -0.15867,-0.56667 -0.27334,-0.83333" style="opacity:0.199997;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path12393"/>
@@ -171,13 +159,6 @@ const EnterpriseUniforms = {
         <path d="m 382.33079,331.62787 -0.29067,1.576 0.44534,1.61866 -0.79467,-0.35066 -0.48933,1.26 -0.2,-1.79334 -0.748,-0.83999 0.67066,-0.75734 0.028,-1.77866 0.61334,1.324 z" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path12711"/>
     </g>`,
 
-    averageMaleNeck: `<g>
-        <path d="m 213.63253,151.29441 -13.54934,47.14666 c 0,0 -9.09866,12.312 -5.11733,20.18133 3.30934,6.54134 11.664,13.756 15.768,16.768 9.03733,6.63734 27.30133,15.592 38.17467,17.004 l 11.33066,-1.564 2.82534,-2.824 5.224,-2.25866 3.81333,-10.87467 18.428,-23.08667 z" style="fill:#cd976d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path12419"/>
-        <path d="m 200.08306,198.44081 c 0,0 -8.332,14.43066 -4.03466,22.58666 1.244,2.35867 7.89599,7.77733 9.01066,9.00933 1.99467,2.20534 15.87467,-2.31466 23.512,-1.91333 11.39067,0.59733 25.19333,0.15733 29.89067,1.56667 6.33866,1.90133 13.09866,2.66533 15.47066,2.89066 l 16.59734,-20.79333 -76.89734,-60.49333 z" style="opacity:0.199997;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path12429"/>
-        <path d="m 211.64493,149.52841 c -1.01067,4.99733 -6.2,23.82533 -7.36934,28.788 -0.956,4.064 -1.95733,8.11866 -3.072,12.14266 -0.516,1.85867 -1.07466,3.70267 -1.63333,5.54934 -0.18666,0.616 -0.95466,1.86266 -0.88133,2.47466 0.02,0.16934 0.80667,2.38267 1.11067,1.93733 3.68799,-5.38666 5.03733,-14.18666 7.12666,-20.38133 1.49067,-4.41866 7.06133,-22.68666 8.552,-27.104 0,0 -3.83333,-3.40666 -3.83333,-3.40666" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path12439"/>
-        <path d="m 293.27599,213.31907 c -2.83733,2.044 -16.052,19.912 -18.06133,22.53067 -1.636,2.13066 -3.84533,10.85066 -6.55467,10.948 -1.83066,0.0653 -1.51466,-3.72534 -1.03733,-5.332 0.228,-0.76934 19.62667,-30.90934 19.62667,-30.90934 0,0 6.02666,2.76267 6.02666,2.76267" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path12443"/>
-    </g>`,
-
     averageFemaleBody: `<g>
         <path d="M 274.87986,337.10187 C 268.25853,326.4552 249.83853,297.1832 241.12119,283.33654 l -0.52666,-40.17334 c 2.12133,0.43334 4.416,0.83467 7.09733,1.24 3.084,0.468 5.83867,0.792 8.41333,0.988 0.43067,0.0333 0.86534,0.052 1.296,0.0693 2.23467,0.0947 3.55334,0.21466 4.48134,1.58533 0,0 1.56666,2.31467 1.596,2.35867 -1.14,-1.68534 5.65866,-5.88667 6.384,-6.588 1.564,-1.51067 2.69333,-0.644 3.204,1.3 0.39866,1.51733 0.39066,3.09333 0.90666,4.55066 0.648,1.828 1.98134,3.34267 2.71734,5.13334 0.89466,2.18133 1.23066,4.54533 1.87466,6.65066 1.11734,3.65734 1.00667,8.03067 1.19867,11.936 0.144,2.944 0.75467,5.64667 0.47467,8.592 -0.26667,2.82 -0.512,5.64134 -0.77067,8.46267 -0.54,5.88533 -1.084,11.76933 -1.63733,17.65333 -0.88667,9.45067 -1.756,18.90534 -2.76934,28.344 -0.06,0.55467 -0.12,1.10933 -0.18133,1.66267" style="fill:#1f1f1f;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path21535"/>
         <path d="m 261.86173,257.1536 c 0,2.528 -2.04934,4.57734 -4.57734,4.57734 -2.528,0 -4.57733,-2.04934 -4.57733,-4.57734 0,-2.528 2.04933,-4.57733 4.57733,-4.57733 2.528,0 4.57734,2.04933 4.57734,4.57733" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path21539"/>
@@ -231,13 +212,6 @@ const EnterpriseUniforms = {
         <path d="m 204.83626,339.8588 -8.452,0.15867 0.064,3.39866 8.452,-0.15866 z m 1.736,4.70267 -11.74533,0.22133 -0.11467,-6.068 11.74667,-0.22133 z" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path21791"/>
         <path d="m 274.69986,335.23187 -0.55067,-3.63333 -3.608,0.308 0.54934,3.63333 -2.00534,0.17066 1.952,12.888 7.62134,-0.65066 -1.952,-12.88667 z" style="fill:#dfdfdf;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path21795"/>
         <path d="m 277.89186,347.34707 -6.28667,0.536 -1.75333,-11.57067 0.672,-0.0587 0.33333,2.19467 c 0.048,0.31467 0.31334,0.54667 0.62267,0.58533 -0.28933,0.0907 -0.48,0.36 -0.432,0.676 l 0.98267,6.484 c 0.0547,0.364 0.39733,0.632 0.76666,0.60134 l 3.608,-0.308 c 0.368,-0.032 0.62134,-0.35067 0.56667,-0.71467 l -0.98267,-6.48533 c -0.048,-0.31467 -0.31333,-0.54534 -0.62266,-0.58534 0.28933,-0.0893 0.48,-0.36 0.432,-0.67466 l -0.332,-2.19467 0.672,-0.0573 z m -6.584,-14.83867 2.27467,-0.19466 0.78266,5.16933 -2.27466,0.19333 z m 3.448,7.55067 0.78267,5.16933 -2.27467,0.19333 -0.78267,-5.168 z m 1.85067,-5.656 -1.34,0.11333 -0.45067,-2.97466 c -0.0547,-0.364 -0.39733,-0.632 -0.76667,-0.60134 l -3.608,0.308 c -0.368,0.032 -0.62133,0.352 -0.56666,0.71467 l 0.45066,2.97466 -1.34,0.11467 c -0.368,0.032 -0.62133,0.352 -0.56666,0.71467 l 1.952,12.888 c 0.056,0.364 0.39866,0.63333 0.76666,0.60133 l 7.62134,-0.65067 c 0.368,-0.0307 0.62133,-0.35066 0.56666,-0.71466 l -1.952,-12.888 c -0.056,-0.36267 -0.39866,-0.632 -0.76666,-0.6" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path21799"/>
-    </g>`,
-
-    averageFemaleNeck: `<g>
-        <path d="m 213.63253,151.29441 -5.49067,30.848 -7.176,16.536 c 0,0 11.544,24.61599 20.58133,31.25333 9.03734,6.636 24.148,15.816 35.02134,17.228 l 3.67066,3.67066 2.82534,-2.824 5.224,-2.25866 1.832,-12.39334 13.08133,-27.18533 z" style="fill:#cd976d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path21507"/>
-        <path d="m 200.96626,198.67814 c 0,0 11.984,21.33333 16.95333,26.82666 4.96934,5.492 32.69467,1.83067 40.54134,4.18534 6.34,1.90133 10.816,0.91466 12.95866,0.964 l 11.78267,-24.48534 -69.56933,-54.87466 -5.69867,31.472 z" style="opacity:0.199997;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path21517"/>
-        <path d="m 285.86613,207.63814 c -2.232,2.508 -11.62934,23.48 -13.308,26.58266 -1.36534,2.52267 -2.372,12.41734 -5.128,12.788 -1.86267,0.25067 -2.084,-3.988 -1.828,-5.81866 0.124,-0.87467 14.504,-36.10934 14.504,-36.10934 0,0 5.76,2.55734 5.76,2.55734" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path21527"/>
-        <path d="m 211.64493,149.52841 c -1.01067,4.99733 -3.35067,25.12533 -4.128,30.15333 -0.51734,3.34133 -1.74934,6.54133 -3.84667,10.988 -1.13333,2.404 -2.55733,3.41333 -3.16,5.17867 -0.20133,0.58933 -1.02533,1.72933 -0.948,2.348 0.0213,0.172 0.85733,2.48266 1.184,2.07999 3.96,-4.87733 7.66533,-12.62133 9.476,-18.86266 1.29067,-4.45067 3.76533,-24.06133 5.256,-28.47867 0,0 -3.83333,-3.40666 -3.83333,-3.40666" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path21531"/>
     </g>`
 }
 
@@ -560,12 +534,12 @@ const EnterpriseInsignia = {
 
 
 
-export class EnterpriseUniformPack implements IUniformPack {
+export class EnterpriseUniformPack extends BaseNeckProvider implements IUniformPack {
 
     getUniformSwatches() {
         return [
-            new Swatch(BodyType.AverageMale, "Average Male", (token) => UniformCatalog.decorateSwatch(EnterpriseUniforms.averageMaleNeck + EnterpriseUniforms.averageMaleBody, BodyType.AverageMale, token), "BodyType.averageMale"),
-            new Swatch(BodyType.AverageFemale, "Average Female", (token) => UniformCatalog.decorateSwatch(EnterpriseUniforms.averageFemaleNeck + EnterpriseUniforms.averageFemaleBody, BodyType.AverageFemale, token), "BodyType.averageFemale"),
+            new Swatch(BodyType.AverageMale, "Average Male", (token) => UniformCatalog.decorateSwatch(this.getNeck(BodyType.AverageMale, token.skinColor) + EnterpriseUniforms.averageMaleBody, BodyType.AverageMale, token), "BodyType.averageMale"),
+            new Swatch(BodyType.AverageFemale, "Average Female", (token) => UniformCatalog.decorateSwatch(this.getNeck(BodyType.AverageFemale, token.skinColor) + EnterpriseUniforms.averageFemaleBody, BodyType.AverageFemale, token), "BodyType.averageFemale"),
         ];
     }
 
@@ -641,32 +615,18 @@ export class EnterpriseUniformPack implements IUniformPack {
     }
 
     getUniformAndVariantBody(token: Token) {
-        let neck = "";
-        let seam = "";
         let result = "";
+        let neck = this.getNeck(token.bodyType, token.skinColor, token.species)
         switch (token.bodyType) {
             case BodyType.AverageMale:
-                neck = EnterpriseUniforms.averageMaleNeck;
                 result = EnterpriseUniforms.averageMaleBody;
                 break;
             case BodyType.AverageFemale:
             default:
-                neck = EnterpriseUniforms.averageFemaleNeck;
                 result = EnterpriseUniforms.averageFemaleBody;
         }
 
-        if (token.species === Species.Bolian) {
-            switch (token.bodyType) {
-                case BodyType.AverageMale:
-                    neck += BolianRidge.Male;
-                    break;
-                case BodyType.AverageFemale:
-                    neck += BolianRidge.Female;
-                    break;
-                default:
-            }
-        }
-        return (neck + result + seam).replace(DefaultRed, token.divisionColor).replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
+        return (neck + result).replace(DefaultRed, token.divisionColor).replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
     }
 
     getBorderColor(token: Token) {

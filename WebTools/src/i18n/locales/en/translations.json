@@ -44,6 +44,7 @@
     "TokenCreator.section.head": "Head",
 
     "TokenCreator.section.head.colour": "Skin Colour",
+    "TokenCreator.section.head.furColour": "Fur Colour",
     "TokenCreator.section.head.shape": "Head Shape",
 
     "TokenCreator.section.hair": "Hair",
