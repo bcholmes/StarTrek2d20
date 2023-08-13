@@ -65,7 +65,7 @@ class SpeciesRestrictions {
         if (species === Species.Betazoid || species === Species.Saurian) {
             return ["#111111"];
         } else {
-            return ["#e1bbc3", "#8bb5db", "#4079c0", "#b4b8b9", "#8e9796", "#758a9d", "#88967d", "#6e9d4d", "#aa6925", "#863603", "#56220c", "#3f0c08", "#280000", "#fdd089", "#fbb03b"];
+            return ["#e1bbc3", "#8bb5db", "#4079c0", "#b4b8b9", "#8e9796", "#758a9d", "#88967d", "#6e9d4d", "#fdd089", "#fbb03b", "#aa6925", "#863603", "#56220c", "#3f0c08", "#280000"];
         }
     }
 

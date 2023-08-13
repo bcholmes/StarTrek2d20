@@ -26,7 +26,7 @@ class ElectiveSkill extends React.Component<IElectiveSkillProperties, {}> {
                     <tr>
                         <td className="skill-name text-white" style={{ width: "250px" }}>{t(makeKey('Construct.discipline.', Skill[skill])) }</td>
                         <td className="skill-expertise pr-2 text-white">{skillExpertise}</td>
-                        <td className="pt-2">{checkBox}</td>
+                        <td className="pt-2 text-right">{checkBox}</td>
                     </tr>
         );
     }

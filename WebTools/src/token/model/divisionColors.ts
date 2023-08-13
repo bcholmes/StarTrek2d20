@@ -49,7 +49,7 @@ export class DivisionColors {
     }
 
     static isDivisionColorsSupported(era: UniformEra) {
-        return era !== UniformEra.Klingon && era !== UniformEra.OriginalSeriesKlingon;
+        return era !== UniformEra.Klingon && era !== UniformEra.OriginalSeriesKlingon && era !== UniformEra.Civilian;
     }
 
     static indexOf(era: UniformEra, color: string) {

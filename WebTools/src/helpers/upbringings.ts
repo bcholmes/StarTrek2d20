@@ -1,5 +1,7 @@
-﻿import {character} from '../common/character';
+﻿import i18next from 'i18next';
+import {character} from '../common/character';
 import { CharacterType } from '../common/characterType';
+import { makeKey } from '../common/translationKey';
 import {Attribute} from './attributes';
 import {Skill} from './skills';
 
@@ -35,8 +37,9 @@ export class UpbringingModel {
     disciplines: Skill[];
     focusDescription: string;
     focusSuggestions: string[];
+    keyPrefix: string
 
-    constructor(id: Upbringing, name: string, description: string, attributesAcceptPlus2: Attribute, attributesAcceptPlus1: Attribute, attributesRebelPlus2: Attribute, attributesRebelPlus1: Attribute, disciplines: Skill[], focusDescription: string, focusSuggestions: string[]) {
+    constructor(id: Upbringing, name: string, description: string, attributesAcceptPlus2: Attribute, attributesAcceptPlus1: Attribute, attributesRebelPlus2: Attribute, attributesRebelPlus1: Attribute, disciplines: Skill[], focusDescription: string, focusSuggestions: string[], keyPrefix?: string) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -47,6 +50,13 @@ export class UpbringingModel {
         this.disciplines = disciplines;
         this.focusDescription = focusDescription;
         this.focusSuggestions = focusSuggestions;
+        this.keyPrefix = keyPrefix;
+    }
+
+    get localizedName() {
+        let key = makeKey(this.keyPrefix, Upbringing[this.id], ".name");
+        let result = i18next.t(key);
+        return result === key ? this.name : result;
     }
 }
 
@@ -62,7 +72,8 @@ class Upbringings {
             Attribute.Insight,
             [Skill.Command, Skill.Conn, Skill.Engineering, Skill.Medicine, Skill.Science, Skill.Security],
             "The character’s Focus should relate to their connection to Starfleet, covering skills learned during the character’s formative years.",
-            ["Astronavigation","Composure", "Extra-Vehicular Activity", "Hand-to-Hand Combat","Hand Phasers","Small Craft", "Starfleet Protocol", "Starship Recognition", "History"]
+            ["Astronavigation","Composure", "Extra-Vehicular Activity", "Hand-to-Hand Combat","Hand Phasers","Small Craft", "Starfleet Protocol", "Starship Recognition", "History"],
+            "Upbringing.starfleet."
         ),
         new UpbringingModel(
             Upbringing.BusinessOrTrade,
@@ -74,7 +85,8 @@ class Upbringings {
             Attribute.Reason,
             [Skill.Command, Skill.Engineering, Skill.Science],
             "The character’s Focus should relate to the nature of their family’s business, covering skills that are valuable during trade, or which were useful to the family business in other ways.",
-            ["Finances", "Geology", "Linguistics", "Manufacturing", "Metallurgy", "Negotiation", "Survey"]
+            ["Finances", "Geology", "Linguistics", "Manufacturing", "Metallurgy", "Negotiation", "Survey"],
+            "Upbringing.starfleet."
         ),
         new UpbringingModel(
             Upbringing.AgricultureOrRural,
@@ -86,7 +98,8 @@ class Upbringings {
             Attribute.Presence,
             [Skill.Conn, Skill.Medicine, Skill.Security],
             "The character’s Focus should relate to the character’s rural lifestyle, and the skills they learned there.",
-            ["Animal Handling", "Athletics", "Emergency Medicine", "Endurance", "Ground Vehicles", "Infectious Diseases", "Navigation", "Toxicology"]
+            ["Animal Handling", "Athletics", "Emergency Medicine", "Endurance", "Ground Vehicles", "Infectious Diseases", "Navigation", "Toxicology"],
+            "Upbringing.starfleet."
         ),
         new UpbringingModel(
             Upbringing.ScienceAndTechnology,

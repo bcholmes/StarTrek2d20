@@ -7,7 +7,7 @@ import SpeciesDetailsPage from './speciesDetailsPage';
 import EnvironmentPage from './environmentPage';
 import EnvironmentDetailsPage from './environmentDetailsPage';
 import {UpbringingPage} from './upbringingPage';
-import {UpbringingDetailsPage} from './upbringingDetailsPage';
+import UpbringingDetailsPage from './upbringingDetailsPage';
 import {StarfleetAcademyPage} from './starfleetAcademyPage';
 import {StarfleetAcademyDetailsPage} from './starfleetAcademyDetailsPage';
 import CareerPage from './careerPage';

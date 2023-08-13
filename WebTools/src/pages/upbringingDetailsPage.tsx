@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {IPageProperties} from './iPageProperties';
 import {UpbringingsHelper} from '../helpers/upbringings';
 import {AttributesHelper} from '../helpers/attributes';
 import {Skill} from '../helpers/skills';
@@ -14,24 +13,34 @@ import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import SingleTalentSelectionList from '../components/singleTalentSelectionList';
 import InstructionText from '../components/instructionText';
+import { Header } from '../components/header';
+import { withTranslation, WithTranslation } from 'react-i18next';
+import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 
-export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> {
+interface IUpbringingDetailsPageState {
+    focus: string;
+}
+
+class UpbringingDetailsPage extends React.Component<WithTranslation, IUpbringingDetailsPageState> {
     private _electiveSkills: Skill[];
     private _talent: TalentViewModel;
     private _accepted: boolean;
-    private _focus: HTMLInputElement;
 
-    constructor(props: IPageProperties) {
+    constructor(props: WithTranslation) {
         super(props);
 
         this._electiveSkills = [];
         this._accepted = true;
+
+        this.state = {
+            focus: ''
+        };
     }
 
     render() {
+        const { t } = this.props;
         let upbringing = character.upbringingStep?.upbringing;
 
-        let nextPageName = character.workflow.peekNextStep().name;
         let talents = this.filterTalentList()
 
         const attributes = this._accepted
@@ -47,35 +56,40 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
         return (
             <div className="page container ml-0">
                 <CharacterCreationBreadcrumbs />
-                <div className="header-text"><div>{upbringing.name}</div></div>
-                <InstructionText text={[upbringing.description]} />
-                <div className="panel">
-                    <div>Do you <b>Accept</b> or <b>Rebel</b> against your upbringing?</div>
-                    <CheckBox isChecked={this._accepted} text="Accept" value={1} onChanged={() => this.onAccepted(true)}/>
-                    <CheckBox isChecked={!this._accepted} text="Rebel" value={0} onChanged={() => this.onAccepted(false)}/>
+                <Header>{upbringing.localizedName}</Header>
+                <InstructionText text={upbringing.description} />
+                <div className="row">
+                    <div className="col-md-6 my-3">
+                        <p>{t('UpbringingDetailPage.text')}</p>
+                        <CheckBox isChecked={this._accepted} text={t('UpbringingDetailPage.text.accept')} value={1} onChanged={() => this.onAccepted(true)}/>
+                        <CheckBox isChecked={!this._accepted} text={t('UpbringingDetailPage.text.reject')} value={0} onChanged={() => this.onAccepted(false)}/>
+                    </div>
+                    <div className="col-md-6 my-3">
+                        <Header level={2}>{t('Construct.other.attributes')}</Header>
+                        {attributes}
+                    </div>
                 </div>
-                <div className="panel">
-                    <div className="header-small">ATTRIBUTES</div>
-                    {attributes}
-                </div>
-                <div className="panel">
-                    <div className="header-small">DISCIPLINES (Select one)</div>
-                    <ElectiveSkillList points={1} skills={upbringing.disciplines} onUpdated={skills => this.onElectiveSkillsSelected(skills) }/>
+                <div className="row">
+                    <div className="col-md-6 my-3">
+                        <Header level={2}>{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</Header>
+                        <ElectiveSkillList points={1} skills={upbringing.disciplines} onUpdated={skills => this.onElectiveSkillsSelected(skills) }/>
+                    </div>
+                    <div className="my-3 col-md-6">
+                        <Header level={2}>{t('Construct.other.focus')}</Header>
+                        <p>{upbringing.focusDescription}</p>
+                        <InputFieldAndLabel id="focus" labelName={t('Construct.other.focus')}
+                            value={this.state.focus}
+                            onChange={(v) => this.setState((state) => ({...state, focus: v}))} />
+                        <div className="mt-3 text-white"><b>{t('Common.text.suggestions')}:</b> {upbringing.focusSuggestions.join(", ")}</div>
+                    </div>
                 </div>
                 <div>
-                    <div className="header-small">TALENT</div>
+                    <Header level={2}>{t('Construct.other.talent')}</Header>
                     <SingleTalentSelectionList talents={talents} onSelection={(talent) => { this.onTalentSelected(talent) } } construct={character}/>
                 </div>
-                <div className="panel">
-                    <div className="header-small">FOCUS</div>
-                    <div>{upbringing.focusDescription}</div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus = input; } } />
-                    </div>
-                    <div><b>Suggestions:</b> {upbringing.focusSuggestions.join(", ")}</div>
+                <div className="text-right">
+                    <Button buttonType={true} className="button-next" onClick={() => this.onNext() }>{t('Common.button.next')}</Button>
                 </div>
-                <Button text={nextPageName} className="button-next" onClick={() => this.onNext() }/>
             </div>
         );
     }
@@ -101,19 +115,20 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
     }
 
     private onNext() {
+        const { t } = this.props;
         if (this._electiveSkills.length !== 1) {
-            Dialog.show("You must select 1 Discipline to improve before proceeding.");
+            Dialog.show(t('UpbringingDetailPage.error.discipline'));
             return;
         }
 
         if (!this._talent) {
-            Dialog.show("You must select a talent before proceeding.");
+            Dialog.show(t('UpbringingDetailPage.error.talent'));
             return;
         }
 
-        var focus = this._focus.value;
+        var focus = this.state.focus;
         if (!focus || focus.length === 0) {
-            Dialog.show("You need to type in a Focus. Choose from the suggestions if you cannot come up with your own.");
+            Dialog.show(t('UpbringingDetailPage.error.focus'));
             return;
         }
 
@@ -133,3 +148,5 @@ export class UpbringingDetailsPage extends React.Component<IPageProperties, {}> 
         Navigation.navigateToPage(character.workflow.currentStep().page);
     }
 }
+
+export default withTranslation()(UpbringingDetailsPage)

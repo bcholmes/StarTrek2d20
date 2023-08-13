@@ -160,6 +160,12 @@ StarshipPage.whatScale,How large is this ship?,Welche Schiffsgröße hat das Sch
 StarshipPage.whatClass,What's the name of the ship's class?,Wie lautet der Name der Schiffsklasse?,,Quel est le nom de la classe du vaisseau?
 StarshipPage.whatYear,What year did this spaceframe enter service?,In welchem Jahr wurde diese Schiffsklasse in Dienst gestellt?,,Quel est la date de la mise en service de la classe de vaisseau
 StarshipPage.class,Class,Klasse,Clase,Classe
+UpbringingDetailPage.text,Do you Accept or Rebel against your upbringing?,,,
+UpbringingDetailPage.text.accept,Accept,,,
+UpbringingDetailPage.text.reject,Reject,,,
+UpbringingDetailPage.error.discipline,You must select 1 Discipline to improve before proceeding.,,,
+UpbringingDetailPage.error.talent,You must select a talent before proceeding.,,,
+UpbringingDetailPage.error.focus,You need to type in a Focus. Choose from the suggestions if you cannot come up with your own.,,,
 SupportingCharacter.whatType,Choose a character type.,Wählen Sie die Art des Charakters.,,Choisir un type de personnage
 SupportingCharacter.howOld,How old is this character?,Wie alt ist dieser Charakter?,,Quel est l'âge de votre personnage
 SupportingCharacter.purposeOrDepartment,Purpose/Department,Zweck oder Abteilung,,Rôle/Département
@@ -196,6 +202,7 @@ Common.text.none,None,Keine Auswahl,,Aucun
 Common.text.search,Search...,Suchen...,,
 Common.text.select,Select,Wähle,,Selectionnez
 Common.text.selectOne,Select one,Wählen Sie eine(n/s),,Selectionnez en un
+Common.text.suggestions,Suggestions,,,
 Common.text.total,Total,Insgesamt,,Total
 Common.text.yes,Yes,Ja,,
 Common.text.no,No,Nein,,
@@ -715,6 +722,7 @@ StarSystem.common.worlds,Worlds,Welten,,Mondes
 StarSystem.common.noWorlds,No worlds,Keine Welten,,Pas de mondes
 StarSystem.common.primaryStar,Primary Star,Hauptstern,,Etoile Primaire
 StarSystem.common.companionStar,Companion Star,Begleitstern,,Etoile Binaire
+UniformEra.civilian,Civilian,,,
 UniformEra.enterprise,Enterprise,Enterprise,,
 UniformEra.originalSeries,Original Series,Originalserie,,
 UniformEra.originalSeriesKlingon,Klingon (Original Series),Klingonen (Originalserie),,
@@ -723,6 +731,12 @@ UniformEra.monsterMaroon,The Wrath of Khan,Der Zorn des Khan,,
 UniformEra.dominionWar,Dominion War,Dominionkrieg,,
 UniformEra.lowerDecks,Lower Decks,,,
 UniformEra.voyagerDS9,Voyager/DS9,,,
+Upbringing.starfleet.militaryOrExploration.name,Starfleet,,,
+Upbringing.starfleet.businessOrTrade.name,Business or Trade,,,
+Upbringing.starfleet.agricultureOrRural.name,Agriculture or Rural,,,
+Upbringing.starfleet.scienceAndTechnology.name,Science and Technology,,,
+Upbringing.starfleet.artisticAndCreative.name,Artistic and Creative,,,
+Upbringing.starfleet.diplomacy and Politics.name,Diplomacy and Politics,,,
 Value.environment.text,"This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.","Diese Überzeugung sollte die Herkunft und die Kultur des Charakters, in der er oder sie aufgewachsen ist, widerspiegeln. Dies ist eine gute Gelegenheit, sich darüber Gedanken zu machen, wie der Charakter seine oder ihre eigene Kultur sieht und wie er oder sie zu den Philosophien und Traditionen der Vorfahren steht.",,Cette valeur doit refléter l'environnement et la culture dans lesquels le personnage a été élevé. C'est une bonne occasion d'examiner comment le personnage perçoit sa propre culture et comment il se rattache- ou peut-être ne se rattache pas - aux philosophies et aux traditions de son peuple.
 Value.starfleetTraining.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their time at the Academy.","Ihr Charakter erhält eine Überzeugung, die auf irgendeine Weise auf der Akademie geformte Wertvorstellungen oder gemachte Erfahrungen widerspiegeln sollte.",,"Le personnage gagne une valeur unique, qui devrait refléter certains aspects des croyances du personnage qui se sont développées pendant son séjour à l'Académie."
 Value.childEducation.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Education.","Ihr Charakter erhält eine Überzeugung, die auf irgendeine Weise während der Ausbildung geformte Wertvorstellungen oder gemachte Erfahrungen widerspiegeln sollte.",,"Le personnage gagne une valeur unique, qui devrait refléter certains aspects des croyances du personnage qui se sont développées au cours de son Education."

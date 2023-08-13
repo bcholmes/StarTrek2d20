@@ -200,6 +200,15 @@
     "StarshipPage.whatYear": "What year did this spaceframe enter service?",
     "StarshipPage.class": "Class",
 
+    "UpbringingDetailPage.text": "Do you Accept or Rebel against your upbringing?",
+
+    "UpbringingDetailPage.text.accept": "Accept",
+    "UpbringingDetailPage.text.reject": "Reject",
+
+    "UpbringingDetailPage.error.discipline": "You must select 1 Discipline to improve before proceeding.",
+    "UpbringingDetailPage.error.talent": "You must select a talent before proceeding.",
+    "UpbringingDetailPage.error.focus": "You need to type in a Focus. Choose from the suggestions if you cannot come up with your own.",
+
     "SupportingCharacter.whatType": "Choose a character type.",
     "SupportingCharacter.howOld": "How old is this character?",
     "SupportingCharacter.purposeOrDepartment": "Purpose/Department",
@@ -239,6 +248,7 @@
     "Common.text.search": "Search...",
     "Common.text.select": "Select",
     "Common.text.selectOne": "Select one",
+    "Common.text.suggestions": "Suggestions",
     "Common.text.total": "Total",
     "Common.text.yes": "Yes",
     "Common.text.no": "No",
@@ -867,6 +877,7 @@
     "StarSystem.common.primaryStar": "Primary Star",
     "StarSystem.common.companionStar": "Companion Star",
 
+    "UniformEra.civilian": "Civilian",
     "UniformEra.enterprise": "Enterprise",
     "UniformEra.originalSeries": "Original Series",
     "UniformEra.originalSeriesKlingon": "Klingon (Original Series)",
@@ -875,6 +886,18 @@
     "UniformEra.dominionWar": "Dominion War",
     "UniformEra.lowerDecks": "Lower Decks",
     "UniformEra.voyagerDS9": "Voyager/DS9",
+
+    "Upbringing.starfleet.militaryOrExploration.name": "Starfleet",
+
+    "Upbringing.starfleet.businessOrTrade.name": "Business or Trade",
+
+    "Upbringing.starfleet.agricultureOrRural.name": "Agriculture or Rural",
+
+    "Upbringing.starfleet.scienceAndTechnology.name": "Science and Technology",
+
+    "Upbringing.starfleet.artisticAndCreative.name": "Artistic and Creative",
+
+    "Upbringing.starfleet.diplomacy and Politics.name": "Diplomacy and Politics",
 
     "Value.environment.text": "This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.",
 

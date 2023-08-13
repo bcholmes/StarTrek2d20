@@ -1,3 +1,4 @@
+import { CivilianOutfitUniformPack } from "./civilianOutfitUniformPack";
 import { DominionWarUniformPack } from "./dominionWarUniformPack";
 import { EnterpriseUniformPack } from "./enterpriseUniformPack";
 import { KlingonArmorUniformPack } from "./klingonArmorUniformPack";
@@ -47,6 +48,8 @@ export default class UniformPackCollection {
             return new LowerDecksUniformPack();
         } else if (era === UniformEra.VoyagerDS9) {
             return new VoyagerUniformPack();
+        } else if (era === UniformEra.Civilian) {
+            return new CivilianOutfitUniformPack();
         } else {
             return new DominionWarUniformPack();
         }

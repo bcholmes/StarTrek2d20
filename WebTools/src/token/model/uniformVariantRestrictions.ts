@@ -56,6 +56,10 @@ export default class UniformVariantRestrictions {
                         Rank.None, Rank.Ensign, Rank.LieutenantJG, Rank.LieutenantJG, Rank.LtCommander, Rank.Commander, Rank.Captain,
                         Rank.Crewman3rdClass, Rank.Crewman2ndClass, Rank.Crewman1stClass
                     ].indexOf(rankIndicator) >= 0;
+
+            case UniformEra.Civilian:
+                return [ Rank.None ];
+
             default:
                 return [
                         Rank.None, Rank.Ensign, Rank.LieutenantJG, Rank.LieutenantJG, Rank.LtCommander, Rank.Commander, Rank.Captain
