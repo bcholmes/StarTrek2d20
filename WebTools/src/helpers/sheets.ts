@@ -356,6 +356,25 @@ abstract class BasicStarshipSheet extends BasicSheet {
     }
 }
 
+class CaptainsLogStarshipSheet extends BasicStarshipSheet {
+    getName(): string {
+        return 'Captain\'s Log Half-Page Sheet'
+    }
+    getThumbnailUrl(): string {
+        return '/static/img/sheets/STA_Captain\'s_Log_Half-Page_Starship.png'
+    }
+    getPdfUrl(): string {
+        return '/static/pdf/STA_Captain\'s_Log_Half-Page_Starship.pdf'
+    }
+
+    async populate(pdf: PDFDocument, construct: Construct) {
+        super.populate(pdf, construct);
+        let starship = construct as Starship;
+
+        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(314.0, 216), rgb(119.0/255, 117.0/255.0, 90.0/255.0), 0.6, 1), starship);
+    }
+}
+
 class StandardTngStarshipSheet extends BasicStarshipSheet {
     getName(): string {
         return 'TNG Standard Starship Sheet (Landscape)'
@@ -1344,9 +1363,9 @@ class CharacterSheets {
         if (starship.type === CharacterType.KlingonWarrior) {
             return [ new StandardKlingonStarshipSheet(), new StandardTngStarshipSheet(), new StandardTosStarshipSheet() ];
         } else if (era === Era.NextGeneration) {
-            return [ new StandardTngStarshipSheet(), new StandardTosStarshipSheet(), new StandardKlingonStarshipSheet() ];
+            return [ new StandardTngStarshipSheet(), new StandardTosStarshipSheet(), new StandardKlingonStarshipSheet(), new CaptainsLogStarshipSheet() ];
         } else {
-            return [ new StandardTosStarshipSheet(), new StandardTngStarshipSheet(), new StandardKlingonStarshipSheet() ];
+            return [ new StandardTosStarshipSheet(), new StandardTngStarshipSheet(), new StandardKlingonStarshipSheet(), new CaptainsLogStarshipSheet() ];
         }
     }
 }

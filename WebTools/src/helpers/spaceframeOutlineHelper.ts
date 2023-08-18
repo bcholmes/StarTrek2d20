@@ -175,11 +175,13 @@ export class SheetOutlineOptions {
     outlineLocation: XYLocation;
     outlineColor: RGB;
     outlineScale: number;
+    readonly borderWidth: number;
 
-    constructor(outlineLocation: XYLocation, outlineColor: RGB, outlineScale: number = 1.0) {
+    constructor(outlineLocation: XYLocation, outlineColor: RGB, outlineScale: number = 1.0, borderWidth: number = 1.6) {
         this.outlineLocation = outlineLocation;
         this.outlineColor = outlineColor;
         this.outlineScale = outlineScale;
+        this.borderWidth = borderWidth;
     }
 }
 
@@ -451,7 +453,7 @@ class SpaceframeOutlineHelper {
     drawOutline(pdf: PDFDocument, outline: string, options: SheetOutlineOptions) {
         const page = pdf.getPage(0);
         page.moveTo(options.outlineLocation.x, page.getHeight() - options.outlineLocation.y);
-        page.drawSvgPath(outline, { borderColor: options.outlineColor, borderWidth: 1.6 / options.outlineScale, scale: PIXELS_TO_POINTS_RATIO * options.outlineScale })
+        page.drawSvgPath(outline, { borderColor: options.outlineColor, borderWidth: options.borderWidth / options.outlineScale, scale: PIXELS_TO_POINTS_RATIO * options.outlineScale })
     }
 
     renderFullSvg(starship: Starship) {
