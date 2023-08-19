@@ -6,7 +6,6 @@ import { Button } from '../components/button';
 import LanguageNotice from '../components/languageNotice';
 import { isEnglishDefault } from '../i18n/config';
 import { withTranslation, WithTranslation } from 'react-i18next';
-import { Header } from '../components/header';
 
 enum Tool {
     CharacterGenerator,

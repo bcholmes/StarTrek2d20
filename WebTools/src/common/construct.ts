@@ -3,8 +3,8 @@ import { CharacterType } from "./characterType";
 import { IConstruct } from "./iconstruct";
 
 export enum Stereotype {
-    MainCharacter,
-    SoloCharacter,
+    Main,
+    Solo,
     SupportingCharacter,
     Npc,
     Starship

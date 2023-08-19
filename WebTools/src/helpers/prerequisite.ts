@@ -37,7 +37,7 @@ export class OfficerPrerequisite implements IConstructPrerequisite<Character> {
 export class MainCharacterPrerequisite implements IConstructPrerequisite<Character> {
 
     isPrerequisiteFulfilled(c: Character) {
-        return c.stereotype === Stereotype.MainCharacter;
+        return c.stereotype === Stereotype.Main;
     }
     describe(): string {
         return "Main Character only";

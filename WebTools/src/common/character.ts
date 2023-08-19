@@ -197,7 +197,7 @@ export class Character extends Construct {
     public implants: string[];
 
     constructor() {
-        super(Stereotype.MainCharacter);
+        super(Stereotype.Main);
         this.attributes.push(new CharacterAttribute(Attribute.Control, this._attributeInitialValue));
         this.attributes.push(new CharacterAttribute(Attribute.Daring, this._attributeInitialValue));
         this.attributes.push(new CharacterAttribute(Attribute.Fitness, this._attributeInitialValue));
