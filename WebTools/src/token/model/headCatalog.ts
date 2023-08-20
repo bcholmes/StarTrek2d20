@@ -579,7 +579,7 @@ class HeadCatalog {
             } else {
                 return result;
             }
-        } else if (token.species === Species.Bolian) {
+        } else if (token.species === Species.Bolian || token.species === Species.Benzite) {
             let chinSeam = Head1BolianSeamChin;
             switch (token.headType) {
                 case HeadType.AverageAngular:
@@ -614,9 +614,15 @@ class HeadCatalog {
                     break;
                 default:
             }
-            return result + chinSeam.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor)
+            result += chinSeam.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor)
                 + (token.speciesOption !== SpeciesOption.Option1 ? BolianStripes : "")
                 + BolianSeam.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
+
+            if (token.species === Species.Benzite) {
+                result += BenziteHead.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor).replace(SpeciesRestrictions.DEFAULT_EYE_COLOR_REGEX, token.eyeColor);
+            }
+
+            return result;
         } else if (token.species === Species.Caitian) {
             let result = CaitiaHead3;
             switch (token.headType) {
@@ -632,8 +638,6 @@ class HeadCatalog {
             return result.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor).replace(/#fbb03b/g, token.eyeColor);
         } else if (token.species === Species.Tellarite) {
             return result + TellariteForehead;
-        } else if (token.species === Species.Benzite) {
-            return result + BenziteHead.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor).replace(SpeciesRestrictions.DEFAULT_EYE_COLOR_REGEX, token.eyeColor);;
         } else {
             return result;
         }
