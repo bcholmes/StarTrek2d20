@@ -119,6 +119,15 @@ export enum Species {
     Kzinti,
     Anabaj,
 
+    // Captain's Log
+    Aenar,
+    Bynar,
+    Doopler,
+    Horta,
+    Illyrian,
+    Kazon,
+    Suliban,
+
 
     Custom,
 };

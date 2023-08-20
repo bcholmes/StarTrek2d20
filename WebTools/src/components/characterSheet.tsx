@@ -7,9 +7,10 @@ import {EnvironmentsHelper, Environment} from '../helpers/environments';
 import {TracksHelper} from '../helpers/tracks';
 import {CareersHelper} from '../helpers/careers';
 import {CareerEventsHelper} from '../helpers/careerEvents';
-import {Era} from '../helpers/eras';
+import {Era, ErasHelper} from '../helpers/eras';
 import store from '../state/store';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
 
 class SectionContent {
     name: string;
@@ -59,6 +60,7 @@ class CharacterSheetData {
 }
 
 interface ICharacterSheetProperties extends WithTranslation {
+    era?: Era;
     showProfile: boolean;
     isModify?: boolean;
     close: () => void;
@@ -128,6 +130,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
         });
 
         let containerClass = this.props.showProfile ? "sheet-container sheet-container-visible" :  "sheet-container sheet-container-hidden";
+        const era = this.props.era == null ? null : ErasHelper.getEra(this.props.era);
 
         return (
             <div id="character-sheet">
@@ -267,6 +270,18 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                                 </tbody>
                             </table>
                         </div>
+
+                        <div className="sheet-panel">
+                            <table className="sheet-section">
+                                <tbody>
+                                    <tr>
+                                        <td className="bg-darker text-uppercase">{t('Construct.other.era')}:</td>
+                                        <td className="bg-light border-dark-nopadding text-dark">{era?.localizedName ?? ""}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                         <br />
                     </div>
                 </div>
@@ -275,4 +290,10 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
     }
 }
 
-export default withTranslation()(CharacterSheet);
+function mapStateToProps(state, ownProps) {
+    return {
+        era: state.context.era,
+    };
+}
+
+export default withTranslation()(connect(mapStateToProps)(CharacterSheet));

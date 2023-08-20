@@ -274,6 +274,7 @@
     "Construct.other.disciplines": "Disciplines",
     "Construct.other.environment": "Environment",
     "Construct.other.equipment": "Equipment",
+    "Construct.other.era": "Era",
     "Construct.other.focus": "Focus",
     "Construct.other.focus1": "Focus 1",
     "Construct.other.focus2": "Focus 2",
@@ -787,6 +788,9 @@
 
     "ShipBuildType.starship.name": "Starship",
 
+    "Species.aenar.name": "Aenar",
+    "Species.aenar.description": "The Aenar were a subspecies of Andorians who were on the verge of extinction by the mid-22nd century. They had two antennae and no skin or hair pigmentation. Their most distinctive trait was their telepathic abilities, which included reading minds and psychically projecting themselves into the minds of other humanoids.",
+
     "Species.andorian.name": "Andorian",
     "Species.andorian.aboutNames": "Andorian names tend to be somewhat harsh-sounding, and have a personal name followed by a clan name. Amongst some Andorians, it’s common to begin the clan name with a gender-specific prefix: 'zh' or 'sh' for females, and 'ch' or 'th' for males. This is placed before the family name, separated by an apostrophe. Longer or more complicated Andorian names are commonly shortened, especially when dealing with other species. Examples: Ishrelia zh’Azonan (female), Atheth th’Zynes(male)",
     "Species.andorian.description": "An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the United Federation of Planets since its foundation, having been firm allies of Humanity for several years beforehand. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor-duels known as Ushaan, using razorsharp ice-mining tools.",
@@ -811,6 +815,9 @@
 
     "Species.bolian.name": "Bolian",
 
+    "Species.bynar.name": "Bynar",
+    "Species.bynar.description": "Over time their interconnection with their world’s master computer has grown to the point that their language and thought patterns have become as close to binary as is possible for organic beings. In fact, their very lives depend on this interaction with their master computer, as well as with one another. They are shorter in height than most humanoids, genderless with lilac skin and enlarged skulls, and usually operate in pairs.",
+
     "Species.chelon.name": "Rigellian Chelon",
 
     "Species.deltan.name": "Deltan",
@@ -821,9 +828,15 @@
     "Species.denobulan.exampleValue": "Safety in Numbers",
     "Species.denobulan.traitDescription": "Denobulans have a robust immune system, but a vulnerability to various forms of radiation poisoning. They are naturally adept climbers, scuttling up sheer walls like some forms of terrestrial lizard. Denobulans do not need to sleep, but must hibernate for several days each year, becoming disoriented if kept awake during this period.",
 
+    "Species.doopler.name": "Doopler",
+    "Species.doopler.description": "A humanoid species known for involuntarily duplicating themselves (dooplercating) as a defense mechanism against uncomfortable emotions such as embarrassment. Once a Doopler gains control\nof their emotions, they can re-merge back into one being (de-dooplercating).",
+
     "Species.efrosian.name": "Efrosian",
 
     "Species.ferengi.name": "Ferengi",
+
+    "Species.horta.name": "Horta",
+    "Species.horta.name": "The Horta is a highly intelligent, silicon-based species capable of tunneling through solid rock.",
 
     "Species.human.name": "Human",
     "Species.human.aboutNames": "Human names vary wildly, and rather than make sweeping generalizations here, it’s better that Players seek out other sources for names, considering the vast range of languages, cultures, and traditions Humanity encompasses.",
@@ -831,7 +844,12 @@
     "Species.human.exampleValue": "The Drive for Exploration",
     "Species.human.traitDescription": "Humans are adaptable and resilient, and their resolve and ambition often allow them to resist great hardship and triumph despite great adversity. However, Humans can also be reckless and stubborn, irrational, and unpredictable.",
 
+    "Species.illyrian.name": "Illyrian",
+    "Species.illyrian.description": "A spacefaring humanoid species that utilizes genetic engineering to adapt their bodies to the new planets they settle, rather than changing the planet to suit themselves.",
+
     "Species.jelna.name": "Rigellian Jelna",
+
+    "Species.kazon.name": "An aggressive warrior species from the Delta Quadrant divided into eighteen different sects that war over resources. They have intricate head ridges and thick, coral-shaped hair.",
 
     "Species.klingon.name": "Klingon",
 
@@ -846,6 +864,9 @@
     "Species.reman.name": "Reman",
 
     "Species.romulan.name": "Romulan",
+
+    "Species.suliban.name": "Suliban",
+    "Species.suliban.description": "The Sulibans’ distinguishing physical characteristic is their mottled, greenish-tinted skin. Most of them are nomadic. One faction of Suliban are members of the Cabal and can alter their DNA and restructure their skeletons, giving them unique chameleon-like, shapeshifting abilities and enhanced senses.",
 
     "Species.tellarite.name": "Tellarite",
     "Species.tellarite.aboutNames": "Tellarite names have considerable variation, but all tend to be composed of harsh, even guttural sounds. Tellarite names consist of a personal name and a family name, though the family name is often a compound, indicating that the family name is a patronym or matronym (the name of a father or mother, respectively), toponym(derived from a place) or similar — in this way, these prefixes are similar to “O’”, “Mc“, “von”, and similar elements in some Human names. Examples: Pola jav Brin (female), Tuk glasch Khutohk (male)",

@@ -32,6 +32,10 @@ class Eras {
         [Era.Discovery32]: new EraModel(Era.Discovery32, "Discovery (32nd century)")
     };
 
+    getBasicEras() {
+        return [ this._eras[Era.Enterprise], this._eras[Era.OriginalSeries], this._eras[Era.NextGeneration]];
+    }
+
     getEras() {
         let eras: EraModel[] = [];
         for (let era in this._eras) {
@@ -40,6 +44,10 @@ class Eras {
         }
 
         return eras;
+    }
+
+    getEra(era: Era) {
+        return this._eras[era];
     }
 }
 

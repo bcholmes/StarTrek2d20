@@ -225,6 +225,7 @@ Construct.other.discipline,Discipline,Disziplin,,Discipline
 Construct.other.disciplines,Disciplines,Disziplinen,Disciplinas,Disciplines
 Construct.other.environment,Environment,Herkunft,Medio ambiente,Environnement
 Construct.other.equipment,Equipment,Ausrüstung,Equipo,Équipement
+Construct.other.era,Era,Ära,Era,Ère
 Construct.other.focus,Focus,Fokus,,Spécialités
 Construct.other.focus1,Focus 1,Fokus 1,,Spécialité 1
 Construct.other.focus2,Focus 2,Fokus 2,,Spécialité 2
@@ -660,6 +661,8 @@ ShipBuildType.pod.name,Pod,Kleines Shuttle,,Nacelle
 ShipBuildType.shuttlecraft.name,Shuttle,Shuttle,,Navette
 ShipBuildType.runabout.name,Runabout,Runabout,,Runabout
 ShipBuildType.starship.name,Starship,Raumschiff,,Vaisseau
+Species.aenar.name,Aenar,,,
+Species.aenar.description,"The Aenar were a subspecies of Andorians who were on the verge of extinction by the mid-22nd century. They had two antennae and no skin or hair pigmentation. Their most distinctive trait was their telepathic abilities, which included reading minds and psychically projecting themselves into the minds of other humanoids.",,,
 Species.andorian.name,Andorian,Andorianer,,
 Species.andorian.aboutNames,"Andorian names tend to be somewhat harsh-sounding, and have a personal name followed by a clan name. Amongst some Andorians, it’s common to begin the clan name with a gender-specific prefix: 'zh' or 'sh' for females, and 'ch' or 'th' for males. This is placed before the family name, separated by an apostrophe. Longer or more complicated Andorian names are commonly shortened, especially when dealing with other species. Examples: Ishrelia zh’Azonan (female), Atheth th’Zynes(male)",,,
 Species.andorian.description,"An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the United Federation of Planets since its foundation, having been firm allies of Humanity for several years beforehand. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor-duels known as Ushaan, using razorsharp ice-mining tools.",,,
@@ -678,6 +681,8 @@ Species.betazoid.description,"The peaceful Betazoid people hail from the idyllic
 Species.betazoid.exampleValue,Compassion Through Understanding,,,
 Species.betazoid.traitDescription,"All Betazoids are telepathic to varying degrees, and even when not actively using their abilities, they are highly perceptive of others around them, but also highly sensitive to telepathic disturbances and mental assaults. They have little familiarity with lies and deception, due to their open culture and ability to read the thoughts and emotions of others. As they are sensitive to the minds of other living beings, they tend not to be comfortable around animals, for fear of losing themselves in the minds of wild creatures.",,,
 Species.bolian.name,Bolian,Bolianer,,
+Species.bynar.name,Bynar,,,
+Species.bynar.description,"Over time their interconnection with their world’s master computer has grown to the point that their language and thought patterns have become as close to binary as is possible for organic beings. In fact, their very lives depend on this interaction with their master computer, as well as with one another. They are shorter in height than most humanoids, genderless with lilac skin and enlarged skulls, and usually operate in pairs.",,,
 Species.chelon.name,Rigellian Chelon,,,
 Species.deltan.name,Deltan,Deltaner,,
 Species.denobulan.name,Denobulan,Denobulaner,,
@@ -685,14 +690,22 @@ Species.denobulan.aboutNames,"Denobulans tend to only have a single name — an 
 Species.denobulan.description,"Hailing from the planet Denobula, Denobulans are a gregarious, inquisitive people who have been allies of Humanity since the 2130s. Though Denobula was not one of the founders of the Federation, the Denobulans joined soon after. Denobulans are a sociable people, with distinctive expressive features, who are used to living in close, communal conditions, and whose extended family groups are large and complex — a Denobulan may have several spouses, each of whom may have several partners of their own, and dozens of children between them. Culturally, they are intellectually curious, perceptive, and interested in a wide range of philosophies, though their scholarly nature, large families, and gregarious nature means that relatively few of them venture far from their homeworld.",,,
 Species.denobulan.exampleValue,Safety in Numbers,,,
 Species.denobulan.traitDescription,"Denobulans have a robust immune system, but a vulnerability to various forms of radiation poisoning. They are naturally adept climbers, scuttling up sheer walls like some forms of terrestrial lizard. Denobulans do not need to sleep, but must hibernate for several days each year, becoming disoriented if kept awake during this period.",,,
+Species.doopler.name,Doopler,,,
+Species.doopler.description,"A humanoid species known for involuntarily duplicating themselves (dooplercating) as a defense mechanism against uncomfortable emotions such as embarrassment. Once a Doopler gains control
+of their emotions, they can re-merge back into one being (de-dooplercating).",,,
 Species.efrosian.name,Efrosian,Efrosianer,,
 Species.ferengi.name,Ferengi,Ferengi,,
+Species.horta.name,Horta,,,
+Species.horta.name,"The Horta is a highly intelligent, silicon-based species capable of tunneling through solid rock.",,,
 Species.human.name,Human,Menschen,,
 Species.human.aboutNames,"Human names vary wildly, and rather than make sweeping generalizations here, it’s better that Players seek out other sources for names, considering the vast range of languages, cultures, and traditions Humanity encompasses.",,,
 Species.human.description,"Originating on the planet Earth in the Sol system, Humans are a resilient, diverse, and adaptable species, who developed from fractious, warring nations on the brink of mutual annihilation to a united, peaceful society in less than a century, and managed to forge alliances between former enemies within a century of achieving interstellar space flight. Earth is a founder and pivotal member of the United Federation of Planets, and many of the Federation’s institutions can be found on Earth. Humans often exhibit a dichotomy in their nature — being both driven to strong emotion and careful reason — and while they have largely grown beyond their warlike and divisive past, their drive and capacity for aggression are as much a part of their success as their curiosity and analytical minds.",,,
 Species.human.exampleValue,The Drive for Exploration,,,
 Species.human.traitDescription,"Humans are adaptable and resilient, and their resolve and ambition often allow them to resist great hardship and triumph despite great adversity. However, Humans can also be reckless and stubborn, irrational, and unpredictable.",,,
+Species.illyrian.name,Illyrian,,,
+Species.illyrian.description,"A spacefaring humanoid species that utilizes genetic engineering to adapt their bodies to the new planets they settle, rather than changing the planet to suit themselves.",,,
 Species.jelna.name,Rigellian Jelna,,,
+Species.kazon.name,"An aggressive warrior species from the Delta Quadrant divided into eighteen different sects that war over resources. They have intricate head ridges and thick, coral-shaped hair.",,,
 Species.klingon.name,Klingon,Klingonen,,
 Species.klingonQuchHa.name,Klingon (QuchHa’),Klingonen (QuchHa'),,
 Species.orion.name,Orion,Orioner,,
@@ -700,6 +713,8 @@ Species.other.name,Custom/Other,,,
 Species.risian.name,Risian,Risaner,,
 Species.reman.name,Reman,,,
 Species.romulan.name,Romulan,Romulaner,,
+Species.suliban.name,Suliban,,,
+Species.suliban.description,"The Sulibans’ distinguishing physical characteristic is their mottled, greenish-tinted skin. Most of them are nomadic. One faction of Suliban are members of the Cabal and can alter their DNA and restructure their skeletons, giving them unique chameleon-like, shapeshifting abilities and enhanced senses.",,,
 Species.tellarite.name,Tellarite,Tellariten,,
 Species.tellarite.aboutNames,"Tellarite names have considerable variation, but all tend to be composed of harsh, even guttural sounds. Tellarite names consist of a personal name and a family name, though the family name is often a compound, indicating that the family name is a patronym or matronym (the name of a father or mother, respectively), toponym(derived from a place) or similar — in this way, these prefixes are similar to “O’”, “Mc“, “von”, and similar elements in some Human names. Examples: Pola jav Brin (female), Tuk glasch Khutohk (male)",,,
 Species.tellarite.description,"The stout, hirsute Tellarite species comes from Tellar Prime, a temperate planet in the Alpha Quadrant. Theirs is a culture noted for being abrasive and argumentative, with a stubborn pride, quick tempers, and little patience. However, this is only a superficial view: while Tellarites are argumentative, it comes from a sense of intellectual honesty and rigorous skepticism. To a Tellarite, no idea, concept, or person is beyond challenge or analysis, and any notion that cannot stand up to scrutiny is an unworthy one. Tellarites revel in debates, and tend to greet one another with criticisms, complaints, and even insults; failing to respond in kind is poorly- regarded, as it displays a weakness of character and an unwillingness to confront flaws.",,,
