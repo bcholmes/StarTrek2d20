@@ -10,13 +10,14 @@
     "Lcars.news": "Actualités",
     "Lcars.profile": "Profil",
 
-    "EraSelectionPage.sourceInstruction": "Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.",
-    "EraSelectionPage.sourceNote": "Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!",
     "EraSelectionPage.eraInstruction": "Sélectionnez l'ère dans laquelle jouer. Demandez à votre MJ quelle ère choisir.",
 
     "Home.selection": "Sélectionnez l'outil.",
     "Home.characterButton": "Personnages et vaisseaux spatiaux",
     "Home.talentsButton": "Vue d'ensemble des talents",
+
+    "SourceSelectionPage.sourceInstruction": "Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.",
+    "SourceSelectionPage.sourceNote": "Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!",
 
     "ViewPage.viewSupportingCharacter": "Voir le personnage secondaire",
     "ViewPage.viewNpc": "Voir PNJ",

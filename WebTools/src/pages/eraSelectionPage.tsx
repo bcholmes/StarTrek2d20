@@ -23,45 +23,7 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
         if (profileButton !== undefined) {
             profileButton.style.display = "";
         }
-
-        character.saveMemento(PageIdentity.Era);
     }
-
-    renderSources() {
-        const { t } = this.props;
-        let hasUnavailableSources = false;
-
-        const sources = SourcesHelper.getTypes().map(t => {
-            const list = SourcesHelper.getSourcesByType(t.type).map((s, i) => {
-                hasUnavailableSources = hasUnavailableSources || !s.available;
-                const className = s.available ? (this.hasSource(s.id) ? "source source-selected" : "source") : "source unavailable";
-                return (
-                    <div key={s.id} className={className} onClick={() => { if (s.available) { this.sourceChanged(s.id); } } }>{s.localizedName}</div>
-                );
-            });
-            return (<div key={'source-type-' + t.type}>
-                <div className="text-white small text-center" style={{overflow: 'hidden', textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{t.localizedName}</div>
-                {list}
-            </div>)
-        });
-
-        const note = hasUnavailableSources ? (<p>{t('EraSelectionPage.sourceNote')}</p>)  : undefined;
-
-        return (<div>
-            <p>
-                {t('EraSelectionPage.sourceInstruction')}
-            </p>
-            {note}
-            <div className="d-flex flex-wrap">
-                <div className="source source-emphasis" onClick={() => { this.toggleSources(true); } }>{t('Common.button.selectAll')}</div>
-                <div className="source source-emphasis" onClick={() => { this.toggleSources(false); } }>{t('Common.button.selectNone')}</div>
-            </div>
-            <div className="d-flex flex-wrap mt-3 mb-3">
-                {sources}
-            </div>
-        </div>);
-    }
-
 
     render() {
         const { t } = this.props;
@@ -83,7 +45,6 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
                         <li className="breadcrumb-item active" aria-current="page">{t('Page.title.era')}</li>
                     </ol>
                 </nav>
-                {this.renderSources()}
                 <p className="mt-5">
                     {t('EraSelectionPage.eraInstruction')}
                 </p>
@@ -94,27 +55,6 @@ class EraSelectionPage extends React.Component<IEraSelectionPageProperties, {}> 
                 </table>
             </div>
         );
-    }
-
-    private sourceChanged(source: Source) {
-        if (source === Source.Core) {
-            // do nothing
-        } else if (this.hasSource(source)) {
-            store.dispatch(removeSource(source));
-        } else {
-            store.dispatch(addSource(source));
-        }
-
-        this.forceUpdate();
-    }
-
-    private toggleSources(selectAll: boolean) {
-        if (selectAll) {
-            let sources = SourcesHelper.getSources().filter(s => s.available).map(s => s.id);
-            store.dispatch(setSources(sources));
-        } else {
-            store.dispatch(setSources([ Source.Core ]));
-        }
     }
 
     private eraSelected(era: Era) {

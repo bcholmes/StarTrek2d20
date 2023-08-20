@@ -467,13 +467,17 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
         this.fillField(form, 'Rank', character.rank?.name);
     }
 
+    fillSpecies(form: PDFForm, character: Character) {
+        this.fillField(form, 'Species', character.rank?.name);
+    }
+
     populateForm(form: PDFForm, construct: Construct) {
         let character = construct as Character;
         this.fillName(form, character);
         this.fillField(form, 'Department', this.serializeAssignment(character));
         this.fillField(form, 'Purpose', this.serializeAssignment(character));
         this.fillRank(form, character);
-        this.fillField(form, 'Species', character.speciesName);
+        this.fillSpecies(form, character);
         let traits = character.baseTraits;
         if (character.additionalTraits) {
             traits.push(character.additionalTraits);
@@ -737,6 +741,10 @@ class StandardGermanCharacterSheet extends BasicFullCharacterSheet {
 
     fillRank(form: PDFForm, character: Character) {
         this.fillField(form, 'Rank', character.rank?.localizedName);
+    }
+
+    fillSpecies(form: PDFForm, character: Character) {
+        this.fillField(form, 'Species', character.localizedSpeciesName);
     }
 }
 

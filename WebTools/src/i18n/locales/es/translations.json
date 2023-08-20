@@ -6,13 +6,14 @@
     "Lcars.copyright": "STAR TREK y las marcas y logotipos relacionados son marcas comerciales de CBS Studios Inc. Todos los derechos reservados.",
     "Lcars.credits": "Créditos",
 
-    "EraSelectionPage.sourceInstruction": "Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.",
-    "EraSelectionPage.sourceNote": "Algunas fuentes aún no se han aplicado; ¡Vuelve pronto!",
     "EraSelectionPage.eraInstruction": "Selecciona en qué Era jugar. Pregúntale a tu GM qué Era elegir.",
 
     "Home.selection": "Seleccione la herramienta.",
     "Home.characterButton": "Personajes y naves espaciales",
     "Home.talentsButton": "Descripción general de talentos",
+
+    "SourceSelectionPage.sourceInstruction": "Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.",
+    "SourceSelectionPage.sourceNote": "Algunas fuentes aún no se han aplicado; ¡Vuelve pronto!",
 
     "ViewPage.viewSupportingCharacter": "Ver personaje secundario",
     "ViewPage.viewMainCharacter": "Ver personaje principal",

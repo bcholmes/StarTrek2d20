@@ -39,19 +39,19 @@ class _AllyHelper {
         new AlliedMilitary("Andorian Imperial Guard", AlliedMilitaryType.AndorianImperialGuard, [Species.Andorian],
                 Era.Enterprise),
         new AlliedMilitary("Bajoran Militia", AlliedMilitaryType.BajoranMilitia, [Species.Bajoran],
-                Era.NextGeneration),
+                Era.NextGeneration, Era.PicardProdigy),
         new AlliedMilitary("Cardassian Union", AlliedMilitaryType.CardassianUnion, [Species.Cardassian],
-                Era.NextGeneration),
-        new AlliedMilitary("Dominion", AlliedMilitaryType.Dominion, [Species.JemHadar], Era.NextGeneration),
-        new AlliedMilitary("Ferengi", AlliedMilitaryType.FerengiMilitary, [Species.Ferengi], Era.NextGeneration),
+                Era.NextGeneration, Era.PicardProdigy),
+        new AlliedMilitary("Dominion", AlliedMilitaryType.Dominion, [Species.JemHadar], Era.NextGeneration, Era.PicardProdigy),
+        new AlliedMilitary("Ferengi", AlliedMilitaryType.FerengiMilitary, [Species.Ferengi], Era.NextGeneration, Era.PicardProdigy),
         new AlliedMilitary("Klingon Defence Force",AlliedMilitaryType.KlingonDefenceForce, [Species.KlingonExt, Species.Klingon, Species.KlingonQuchHa],
-                Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
+                Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32),
         new AlliedMilitary("MACO", AlliedMilitaryType.Maco, [Species.Human], Era.Enterprise),
         new AlliedMilitary("Romulan Star Empire", AlliedMilitaryType.RomulanStarEmpire, [Species.RomulanExt, Species.Romulan, Species.Reman],
                 Era.OriginalSeries, Era.NextGeneration),
         new AlliedMilitary("Vulcan High Command", AlliedMilitaryType.VulcanHighCommand, [Species.Vulcan], Era.Enterprise),
 
-        new AlliedMilitary("Other", AlliedMilitaryType.Other, [], Era.Enterprise, Era.OriginalSeries, Era.NextGeneration)
+        new AlliedMilitary("Other", AlliedMilitaryType.Other, [], Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32)
     ]
 
     selectOptions(era: Era, includeKlingon: boolean) {

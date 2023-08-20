@@ -35,6 +35,7 @@ import ModificationCompletePage from '../modify/page/modificationCompletePage';
 import PromotionPage from '../modify/page/promotionPage';
 import MilestonePage from '../modify/page/milestonePage';
 import { MilestoneType } from '../modify/model/milestoneType';
+import SourceSelectionPage from './sourceSelectionPage';
 
 export interface IPageFactoryRegistry {
     findFactory(page: PageIdentity);
@@ -58,6 +59,7 @@ export class PageFactory {
         this.factories = {};
 
         this.factories[PageIdentity.Home] = () => <SelectionPage />;
+        this.factories[PageIdentity.SourceSelection] = () => <SourceSelectionPage/>;
         this.factories[PageIdentity.Era] = () => <EraSelectionPage/>;
         this.factories[PageIdentity.ToolSelection] = () => <ToolSelectionPage/>;
         this.factories[PageIdentity.CharacterType] = () => <CharacterTypePage/>;

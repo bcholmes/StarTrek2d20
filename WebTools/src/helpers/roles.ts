@@ -2,7 +2,7 @@
 import {Source} from './sources';
 import {Character} from '../common/character';
 import { CharacterType } from '../common/characterType';
-import { AdultPrerequisite, AllOfPrerequisite, AnyOfPrerequisite, CadetPrerequisite, CareersPrerequisite, CharacterTypePrerequisite, ChildPrerequisite, CivilianPrerequisite, EnlistedPrerequisite, EraPrerequisite, IConstructPrerequisite, KlingonPrerequisite, NotPrerequisite, SourcePrerequisite } from './prerequisite';
+import { AdultPrerequisite, AllOfPrerequisite, AnyOfPrerequisite, CadetPrerequisite, CareersPrerequisite, CharacterTypePrerequisite, ChildPrerequisite, CivilianPrerequisite, EnlistedPrerequisite, AnyEraPrerequisite, IConstructPrerequisite, KlingonPrerequisite, NotPrerequisite, SourcePrerequisite } from './prerequisite';
 import { Career } from './careerEnum';
 import { Era } from './eras';
 
@@ -216,7 +216,7 @@ class Roles {
             Skill.Conn,
             "When the flight controller is required to analyze or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",
             new AnyOfPrerequisite(
-                new EraPrerequisite(Era.Enterprise, Era.NextGeneration),
+                new AnyEraPrerequisite(Era.Enterprise, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32),
                 new NotPrerequisite(new SourcePrerequisite(Source.TricorderSet))),
             new SourcePrerequisite(Source.Core),
             new NotKlingonPrerequisite(),
@@ -229,7 +229,7 @@ class Roles {
             Skill.Conn,
             "You reduce the Difficulty of any task to translate or understand an unfamiliar language by 2, to a minimum of 0.",
             new SourcePrerequisite(Source.TricorderSet),
-            new EraPrerequisite(Era.OriginalSeries),
+            new AnyEraPrerequisite(Era.OriginalSeries),
             new NotKlingonPrerequisite(),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
@@ -477,7 +477,7 @@ class Roles {
             new NotTalentPrerequisite("Advanced Team Dynamics"),
             new AnyOfPrerequisite(
                 new AllOfPrerequisite(
-                    new EraPrerequisite(Era.Enterprise),
+                    new AnyEraPrerequisite(Era.Enterprise),
                     new CharacterTypePrerequisite(CharacterType.Starfleet)),
                 new CharacterTypePrerequisite(CharacterType.AlliedMilitary))
             ),

@@ -6,7 +6,7 @@ import {Track} from './trackEnum';
 import {AlliedMilitaryDetails, Character, CharacterRank } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { AlliedMilitaryType } from './alliedMilitary';
-import { AllOfPrerequisite, AnyOfPrerequisite, CareersPrerequisite, CharacterTypePrerequisite, EnlistedPrerequisite, EraPrerequisite, IConstructPrerequisite, MainCharacterPrerequisite, NotPrerequisite, OfficerPrerequisite, SourcePrerequisite } from './prerequisite';
+import { AllOfPrerequisite, AnyOfPrerequisite, CareersPrerequisite, CharacterTypePrerequisite, EnlistedPrerequisite, AnyEraPrerequisite, IConstructPrerequisite, MainCharacterPrerequisite, NotPrerequisite, OfficerPrerequisite, SourcePrerequisite } from './prerequisite';
 import store from '../state/store';
 import { makeKey } from '../common/translationKey';
 import i18next from 'i18next';
@@ -562,7 +562,7 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Veteran),
-                new EraPrerequisite(Era.NextGeneration),
+                new AnyEraPrerequisite(Era.NextGeneration, Era.PicardProdigy, Era.Discovery32),
                 new SourcePrerequisite(Source.CommandDivision, Source.PlayersGuide),
                 new RolesPrerequisite([Role.Admiral]),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)
@@ -574,7 +574,7 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Veteran),
-                new EraPrerequisite(Era.NextGeneration),
+                new AnyEraPrerequisite(Era.NextGeneration, Era.PicardProdigy, Era.Discovery32),
                 new SourcePrerequisite(Source.CommandDivision, Source.PlayersGuide),
                 new RolesPrerequisite([Role.Admiral]),
                 new CharacterTypePrerequisite(CharacterType.Starfleet)

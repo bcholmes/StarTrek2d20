@@ -50,7 +50,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
             <div className="page">
                 <div className="container ml-0">
                     <CharacterCreationBreadcrumbs />
-                    <Header>{character.speciesName}</Header>
+                    <Header>{character.localizedSpeciesName}</Header>
                     <InstructionText text={species.localizedDescription} />
 
                     <div className="row">

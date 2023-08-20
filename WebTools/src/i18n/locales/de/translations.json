@@ -10,8 +10,6 @@
     "Lcars.news": "Neuigkeiten",
     "Lcars.profile": "Bogen",
 
-    "EraSelectionPage.sourceInstruction": "Wählen Sie die verfügbaren Quellen aus. Fragen Sie, wenn nötig, Ihre Spielleitung, welche zur Verfügung stehen.",
-    "EraSelectionPage.sourceNote": "Einige Quellen sind noch nicht verfügbar - schauen Sie bald wieder vorbei!",
     "EraSelectionPage.eraInstruction": "Wählen Sie aus, in welcher Ära gespielt wird. Fragen Sie, wenn nötig, Ihre Spielleitung, welche Ära Sie wählen sollen.",
 
     "Home.selection": "Werkzeug auswählen.",
@@ -25,6 +23,9 @@
     "NpcConfigurationPage.npcType": "NPC Typ",
     "NpcConfigurationPage.specialization": "Spezialisierung",
     "NpcConfigurationPage.text": "Lege fest, welche Art NPC du erstellen möchtest.",
+
+    "SourceSelectionPage.sourceInstruction": "Wählen Sie die verfügbaren Quellen aus. Fragen Sie, wenn nötig, Ihre Spielleitung, welche zur Verfügung stehen.",
+    "SourceSelectionPage.sourceNote": "Einige Quellen sind noch nicht verfügbar - schauen Sie bald wieder vorbei!",
 
     "TokenCreator.option.rounded": "Abgerundet",
     "TokenCreator.option.bordered": "Eingerahmt",

@@ -51,7 +51,7 @@ class SelectionPage extends React.Component<ISelectionPageProperties, {}> {
     private selectTool(tool: Tool) {
         switch (tool) {
             case Tool.CharacterGenerator:
-                Navigation.navigateToPage(PageIdentity.Era);
+                Navigation.navigateToPage(PageIdentity.SourceSelection);
                 break;
             case Tool.TalentsOverview: {
                 const { history } = this.props;

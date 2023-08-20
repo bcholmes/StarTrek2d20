@@ -4,7 +4,9 @@ import { makeKey } from "../common/translationKey";
 export enum Era {
     Enterprise,
     OriginalSeries,
-    NextGeneration
+    NextGeneration,
+    PicardProdigy,
+    Discovery32
 }
 
 class EraModel {
@@ -25,7 +27,9 @@ class Eras {
     private _eras: { [id: number]: EraModel } = {
         [Era.Enterprise]: new EraModel(Era.Enterprise, "Enterprise (mid-22nd century)"),
         [Era.OriginalSeries]: new EraModel(Era.OriginalSeries, "Original Series (mid-23rd century)"),
-        [Era.NextGeneration]: new EraModel(Era.NextGeneration, "Next Generation (mid-24th century)")
+        [Era.NextGeneration]: new EraModel(Era.NextGeneration, "Next Generation (mid-24th century)"),
+        [Era.PicardProdigy]: new EraModel(Era.PicardProdigy, "Picard/Prodigy (late 24th, early 25th century)"),
+        [Era.Discovery32]: new EraModel(Era.Discovery32, "Discovery (32nd century)")
     };
 
     getEras() {

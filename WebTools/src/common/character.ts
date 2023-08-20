@@ -474,6 +474,26 @@ export class Character extends Construct {
         }
     }
 
+    get localizedSpeciesName() {
+        if (this.speciesStep == null) {
+            return "";
+        } else if (this.speciesStep.species === Species.Custom) {
+            return this.speciesStep.customSpeciesName || "";
+        } else {
+            let species = SpeciesHelper.getSpeciesByType(this.speciesStep.species);
+            if (this.speciesStep.mixedSpecies != null) {
+                let mixedSpecies = SpeciesHelper.getSpeciesByType(this.speciesStep.mixedSpecies);
+                return i18next.t('Species.mixedSpecies.text', {"primarySpecies": species.localizedName, "secondarySpecies": mixedSpecies.localizedName});
+            }
+            if (this.speciesStep.originalSpecies != null) {
+                let originalSpecies = SpeciesHelper.getSpeciesByType(this.speciesStep.originalSpecies);
+                return i18next.t('Species.formerSpecies.text', {"primarySpecies": species.localizedName, "otherSpecies": originalSpecies.localizedName});
+            } else {
+                return species.localizedName;
+            }
+        }
+    }
+
     get baseTraits() {
         let traits = [ ...this.traits ];
         if (this.speciesStep?.species === Species.Custom && this.speciesStep?.customSpeciesName) {

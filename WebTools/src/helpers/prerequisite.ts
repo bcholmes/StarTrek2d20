@@ -190,7 +190,7 @@ export class EnlistedPrerequisite implements IConstructPrerequisite<Character> {
     }
 }
 
-export class EraPrerequisite implements IConstructPrerequisite<Construct> {
+export class AnyEraPrerequisite implements IConstructPrerequisite<Construct> {
     private eras: Era[];
 
     constructor(...era: Era[]) {

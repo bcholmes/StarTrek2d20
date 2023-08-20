@@ -150,6 +150,10 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                 return 2269;
             case Era.NextGeneration:
                 return 2371;
+            case Era.PicardProdigy:
+                return 2400;
+            case Era.Discovery32:
+                return 3190;
         }
     }
 }

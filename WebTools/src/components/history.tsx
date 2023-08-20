@@ -95,38 +95,38 @@ class History extends React.Component<IHistoryProperties, {}> {
 
         let key = makeKey('Page.title.', PageIdentity[page]);
 
-        switch (page) {
-            case PageIdentity.Home:
-            case PageIdentity.Era:
-            case PageIdentity.ToolSelection:
-            case PageIdentity.CharacterType:
-            case PageIdentity.CustomSpeciesDetails:
-                return t(key);
-            case PageIdentity.Species: return "Species";
-            case PageIdentity.KobaliExtraSpeciesDetails: return "Species Extra Details";
-            case PageIdentity.SpeciesDetails: return "Species Details";
-            case PageIdentity.Environment: return "Environment";
-            case PageIdentity.EnvironmentDetails: return "Environment Details";
-            case PageIdentity.Upbringing: return character.type === CharacterType.KlingonWarrior ? "Caste" : "Upbringing";
-            case PageIdentity.UpbringingDetails: return character.type === CharacterType.KlingonWarrior ? "Caste Details" : "Upbringing Details";
-            case PageIdentity.ChildEducationPage: return "Education";
-            case PageIdentity.ChildEducationDetailsPage: return "Education Details";
-            case PageIdentity.StarfleetAcademy: return character.type === CharacterType.Starfleet ? "Starfleet Academy" : "Training";
-            case PageIdentity.StarfleetAcademyDetails: return character.type === CharacterType.Starfleet ? "Starfleet Academy Details" : "Training Details";
-            case PageIdentity.ChildCareer: return "Career";
-            case PageIdentity.CadetCareer: return "Career";
-            case PageIdentity.CadetSeniority: return "Cadet Seniority";
-            case PageIdentity.Career: return "Career";
-            case PageIdentity.CareerDetails: return "Career Details";
-            case PageIdentity.CareerEvent1: return "Career Event 1";
-            case PageIdentity.CareerEvent1Details: return "Career Event 1 Details";
-            case PageIdentity.CareerEvent2: return "Career Event 2";
-            case PageIdentity.CareerEvent2Details: return "Career Event 2 Details";
-            case PageIdentity.AttributesAndDisciplines: return "Attributes & Disciplines";
-            case PageIdentity.Finish: return "Finish";
-        }
+        let text = t(key);
+        if (text === key) {
 
-        return "";
+            switch (page) {
+                case PageIdentity.KobaliExtraSpeciesDetails: return "Species Extra Details";
+                case PageIdentity.SpeciesDetails: return "Species Details";
+                case PageIdentity.Environment: return "Environment";
+                case PageIdentity.EnvironmentDetails: return "Environment Details";
+                case PageIdentity.Upbringing: return character.type === CharacterType.KlingonWarrior ? "Caste" : "Upbringing";
+                case PageIdentity.UpbringingDetails: return character.type === CharacterType.KlingonWarrior ? "Caste Details" : "Upbringing Details";
+                case PageIdentity.ChildEducationPage: return "Education";
+                case PageIdentity.ChildEducationDetailsPage: return "Education Details";
+                case PageIdentity.StarfleetAcademy: return character.type === CharacterType.Starfleet ? "Starfleet Academy" : "Training";
+                case PageIdentity.StarfleetAcademyDetails: return character.type === CharacterType.Starfleet ? "Starfleet Academy Details" : "Training Details";
+                case PageIdentity.ChildCareer: return "Career";
+                case PageIdentity.CadetCareer: return "Career";
+                case PageIdentity.CadetSeniority: return "Cadet Seniority";
+                case PageIdentity.Career: return "Career";
+                case PageIdentity.CareerDetails: return "Career Details";
+                case PageIdentity.CareerEvent1: return "Career Event 1";
+                case PageIdentity.CareerEvent1Details: return "Career Event 1 Details";
+                case PageIdentity.CareerEvent2: return "Career Event 2";
+                case PageIdentity.CareerEvent2Details: return "Career Event 2 Details";
+                case PageIdentity.AttributesAndDisciplines: return "Attributes & Disciplines";
+                case PageIdentity.Finish: return "Finish";
+                default:
+                    return "";
+            }
+
+        } else {
+            return text;
+        }
     }
 }
 

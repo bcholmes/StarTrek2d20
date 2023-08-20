@@ -59,7 +59,7 @@ class TalentViewModel {
             }
         });
 
-        return new TalentViewModel(talent.name, talent.displayName, talent.description, sourceString, category, prerequisites, talent.aliases);
+        return new TalentViewModel(talent.name, talent.localizedDisplayName, talent.description, sourceString, category, prerequisites, talent.aliases);
     }
 }
 

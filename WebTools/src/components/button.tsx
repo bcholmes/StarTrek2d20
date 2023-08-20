@@ -12,6 +12,7 @@ interface IButtonProperties {
 
 export class Button extends React.Component<IButtonProperties, {}> {
     render() {
+        console.log("Enabled = " + this.props.enabled);
         return this.props.buttonType ? (
             <button type="button" className={(this.props.className ? this.props.className : "button") + " button-title"}
                 onClick={() => this.props.onClick()}

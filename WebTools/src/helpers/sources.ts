@@ -68,7 +68,9 @@ class SourceViewModel {
     }
 
     get localizedName() {
-        return i18n.t(makeKey('Source.book.', Source[this.id]));
+        let key = makeKey('Source.book.', Source[this.id]);
+        let result = i18n.t(key);
+        return result === key ? this.name : result;
     }
 
 }

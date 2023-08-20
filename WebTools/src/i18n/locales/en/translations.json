@@ -10,8 +10,6 @@
     "Lcars.news": "News",
     "Lcars.profile": "Profile",
 
-    "EraSelectionPage.sourceInstruction": "Select sources. Ask your GM which are available.",
-    "EraSelectionPage.sourceNote": "Some sources are not yet implemented; check back soon!",
     "EraSelectionPage.eraInstruction": "Select which Era to play in. Ask your GM which Era to choose.",
 
     "Home.selection": "Select tool.",
@@ -25,6 +23,12 @@
     "NpcConfigurationPage.npcType": "NPC Type",
     "NpcConfigurationPage.specialization": "Specialization",
     "NpcConfigurationPage.text": "Specify what kind of NPC you're trying to create.",
+
+    "SourceSelectionPage.sourceInstruction": "Select sources. Ask your GM which are available.",
+    "SourceSelectionPage.gameTypeInstruction": "What type of game are you playing?",
+    "SourceSelectionPage.sourceNote": "Some sources are not yet implemented; check back soon!",
+    "SourceSelectionPage.standardGameType": "Standard RPG Rules",
+    "SourceSelectionPage.soloGameType": "Solo RPG using the Captain's Log Rules",
 
     "TokenCreator.option.rounded": "Rounded",
     "TokenCreator.option.bordered": "Bordered",
@@ -360,6 +364,7 @@
     "Page.title.missionProfileTalentSelection": "Mission Profile Talent",
     "Page.title.simpleStarship": "Simplified Starship Creation",
     "Page.title.smallCraftStats": "Small Craft Stats",
+    "Page.title.sourceSelection": "Sources",
     "Page.title.spaceframeOption": "Spaceframe Option",
     "Page.title.spaceframeSelection": "Spaceframe",
     "Page.title.species": "Species",
@@ -542,6 +547,8 @@
     "Era.name.enterprise": "Enterprise (22nd century)",
     "Era.name.originalSeries": "Original Series (23rd century)",
     "Era.name.nextGeneration": "Next Generation (24th century)",
+    "Era.name.picardProdigy": "Picard/Prodigy (late 24th century, early 25th century)",
+    "Era.name.discovery32": "Discovery (32nd century)",
 
     "ExtraType.none": "None",
     "ExtraType.bajoranEarring": "Bajoran Earring",
@@ -868,6 +875,10 @@
 
     "Species.zakdorn.name": "Zakdorn",
 
+    "Species.mixedSpecies.text": "{{primarySpecies}} / {{secondarySpecies}}",
+
+    "Species.formerSpecies.text": "{{primarySpecies}} (originally {{otherSpecies}})",
+
     "StarSystem.common.coordinates": "Coordinates",
     "StarSystem.common.innerZone": "Inner Zone",
     "StarSystem.common.ecosphere": "Ecosphere",
@@ -876,6 +887,202 @@
     "StarSystem.common.noWorlds": "No worlds",
     "StarSystem.common.primaryStar": "Primary Star",
     "StarSystem.common.companionStar": "Companion Star",
+
+    "Talent.ablativeArmor": "Ablative Armor",
+
+    "Talent.ablativeArmor.soloDescription": "The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures, such as those caused by energy weapons and torpedo blasts, dissipating the energy and protecting the ship. This plating is replaced periodically.",
+
+    "Talent.ablativeFieldProjector": "Ablative Field Projector",
+
+    "Talent.ablativeFieldProjector.soloDescription": "The ship’s shield emitters are combined with an ablative field projector that allows its graviton field to be shared with another target in close range. Complications could mean shield failure or power loss to key systems.",
+
+    "Talent.adaptableEnergyWeapon": "Adaptable Energy Weapon",
+
+    "Talent.adaptableEnergyWeapon.soloDescription": "The ship’s weapon delivery systems are enhanced by multiparticle emitters. These emitters allow for the ship’s energy weapon capabilities to be modified when fired. This could create distinct advantages during a battle.",
+
+    "Talent.advancedEmergencyCrewHolograms": "Advanced Emergency Crew Holograms",
+
+    "Talent.advancedEmergencyCrewHolograms.soloDescription": "The starship has the entirety of its interior spaces and some critical areas on its exterior outfitted with holoemitters, allowing the computer to project simulated personnel during emergencies. They cannot operate away from the ship.",
+
+    "Talent.advancedSickbay": "Advanced Sickbay",
+
+    "Talent.advancedSickbay.soloDescription": "The ship’s medical ward or sickbay is well equipped, and larger than normal for a ship of this size.",
+
+    "Talent.advancedResearchFacilities": "Advanced Research Facilities",
+
+    "Talent.advancedResearchFacilities.soloDescription": "The vessel is equipped with additional laboratories and long-term research facilities, which allow the crew to study phenomena over a protracted period, and thus generate a wealth of useful information.",
+
+    "Talent.advancedSensorSuites": "Advanced Sensor Suites",
+
+    "Talent.advancedSensorSuites.soloDescription": "The vessel’s sensors are among the most sophisticated and advanced available in the fleet.",
+
+    "Talent.advancedShields": "Advanced Shields",
+
+    "Talent.advancedShields.soloDescription": "The vessel’s shields are state-of-the-art, using developments that other cultures have not yet learned to overcome, or which simply provide greater protection for the same power expenditure.",
+
+    "Talent.advancedTransporters": "Advanced Transporters",
+
+    "Talent.advancedTransporters.soloDescription": "The ship is outfitted with dozens of transporter emitter array pads, allowing targeting scanners to lock on to their targets and destination more easily.",
+
+    "Talent.automatedDefenses": "Automated Defenses",
+
+    "Talent.automatedDefenses.soloDescription": "The ship’s weapons systems can automatically lock on to a target and fire even if the crew is incapacitated or unavailable.",
+
+    "Talent.backupEPSConduits": "Backup EPS Conduits",
+
+    "Talent.backupEPSConduits.soloDescription": "The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of emergency, keeping it from being lost when the ship is damaged.",
+
+    "Talent.captainsYacht": "Captain's Yacht",
+
+    "Talent.captainsYacht.soloDescription": "The vessel has a single additional support craft, normally mounted in a dedicated port under the saucer section of the ship. These craft, larger\nthan most shuttles, are often used for diplomatic missions and special excursions by the commanding officer and are often known as the Captain’s Yacht.",
+
+    "Talent.cloakedMines": "Cloaked Mines",
+
+    "Talent.cloakedMines.soloDescription": "The ship’s mines are equipped with state-of- the-art cloaking technology, making them almost impossible to detect.",
+
+    "Talent.cloakingDevice": "Cloaking Device",
+
+    "Talent.cloakingDevice.soloDescription": "The vessel has a device that allows it to vanish from sensors. While cloaked, the vessel cannot attempt any attacks, nor can it be the target of an attack unless the attacker finds some way of detecting the cloaked vessel. While cloaked, a vessel’s shields are down.",
+
+    "Talent.commandShip": "Command Ship",
+
+    "Talent.commandShip.soloDescription": "The ship has command and control systems allowing it to coordinate easily with allies during a crisis.",
+
+    "Talent.dedicatedSubspaceTranceiverArray": "Dedicated Subspace Tranceiver Array",
+
+    "Talent.dedicatedSubspaceTranceiverArray.soloDescription": "A starship with this talent has a section of its hull that slides away where a long, tether-like subspace transceiver array can be deployed to enhance the vessel’s communication range and clarity, even at warp.",
+
+    "Talent.deluxeGalley": "Deluxe Galley",
+
+    "Talent.deluxeGalley.soloDescription": "The ship’s mess hall is equipped with top-of-the- line food preparation systems as well as vast stores of non-replicated food.",
+
+    "Talent.diplomaticSuites": "Diplomatic Suites",
+
+    "Talent.diplomaticSuites.soloDescription": "The ship has numerous high-quality staterooms for hosting VIPs, as well as briefing rooms and other facilities that allow the ship to serve as a neutral ground for diplomatic summits, trade negotiations, and similar functions.",
+
+    "Talent.dualEnvironment": "Dual Environment",
+
+    "Talent.dualEnvironment.soloDescription": "The ship is outfitted with redundant system rooms that can be filled with gases or liquids that allow crew members requiring different atmospheric conditions to work side by side with the rest of the crew. In addition, passages that can be filled with the necessary liquids or gases run parallel to all passages in the ship, allowing these crew members to move freely throughout.",
+
+    "Talent.electronicWarfareSystems": "Electronic Warfare Systems",
+
+    "Talent.electronicWarfareSystems.soloDescription": "The ship’s communications systems have been specially designed to intercept and disrupt enemy communications in battle.",
+
+    "Talent.emergencyMedicalHologram": "Emergency Medical Hologram",
+
+    "Talent.emergencyMedicalHologram.soloDescription": "The ship’s sickbay is equipped with holoemitters and a state-of-the-art holographic doctor, able to assist medical personnel during emergencies. This character cannot go into any location not equipped with holoemitters.",
+
+    "Talent.extensiveShuttlebays": "Extensive Shuttlebays",
+
+    "Talent.extensiveShuttlebays.soloDescription": "The vessel’s shuttlebays are large, well-supplied, and able to support a larger number of active shuttle missions simultaneously.",
+
+    "Talent.fastTargetingSystems": "Fast Targeting Systems",
+
+    "Talent.fastTargetingSystems.soloDescription": "The ship’s targeting systems can lock weapons on target much faster and more accurately than other ships of its class, giving it an edge in battle.",
+
+    "Talent.highResolutionSensors": "High-Resolution Sensors",
+
+    "Talent.highResolutionSensors.soloDescription": "The vessel’s sensors can gain large amounts of accurate data, though they are extremely sensitive.",
+
+    "Talent.highPowerTractorBeam": "High-Power Tractor Beam",
+
+    "Talent.highPowerTractorBeam.soloDescription": "The ship’s tractor beam systems channel far greater quantities of power and exert much more force on the target.",
+
+    "Talent.improvedDamageControl": "Improved Damage Control",
+
+    "Talent.improvedDamageControl.soloDescription": "The ship has more efficient damage reporting systems, and better-trained teams of technicians, allowing the crew to respond more quickly to damage during a crisis.",
+
+    "Talent.improvedHullIntegrity": "Improved Hull Integrity",
+
+    "Talent.improvedHullIntegrity.soloDescription": "The ship’s hull has been reinforced to hold together better under stress and damage.",
+
+    "Talent.improvedImpulseDrive": "Improved Impulse Drive",
+
+    "Talent.improvedImpulseDrive.soloDescription": "The ship’s Impulse drives are more powerful than on most ships, allowing the ship to accelerate much more quickly.",
+
+    "Talent.improvedPowerSystems": "Improved Power Systems",
+
+    "Talent.improvedPowerSystems.soloDescription": "The ship’s power systems are extremely efficient, allowing power to be redirected and rerouted from different systems very quickly.",
+
+    "Talent.improvedReactionControlSystem": "Improved Reaction Control System",
+
+    "Talent.improvedReactionControlSystem.soloDescription": "The ship’s maneuvering thrusters operate with greater precision, allowing the ship to adjust its course more carefully.",
+
+    "Talent.improvedShieldRecharge": "Improved Shield Recharge",
+
+    "Talent.improvedShieldRecharge.soloDescription": "The ship’s deflector shields have redundant capacitors and emitter arrays that allow the shields to be recharged and replenished much more efficiently.",
+
+    "Talent.improvedWarpDrive": "Improved Warp Drive",
+
+    "Talent.improvedWarpDrive.soloDescription": "The ship’s warp drive is more efficient, capitalizing on improved field dynamics, better control of antimatter flow rates, or some other advancement that allows the ship to expend less energy when traveling at warp.",
+
+    "Talent.independentPhaserSupply": "Independent Phaser Supply",
+
+    "Talent.independentPhaserSupply.soloDescription": "The ship’s phasers use an independent power supply, rather than drawing directly from the ship’s other power sources.",
+
+    "Talent.modularLaboratories": "Modular Laboratories",
+
+    "Talent.modularLaboratories.soloDescription": "The ship has considerable numbers of empty, multi- purpose compartments that can be converted to laboratories as and when required.",
+
+    "Talent.multiVectorAssaultMode": "Multi-Vector Assault Mode",
+
+    "Talent.multiVectorAssaultMode.soloDescription": "The vessel can split apart into three distinct sections. Each section has the same systems and departments scores as the original fully integrated starship, but each individual section has less power than when the ship is integrated. Use this in narration to create interesting advantages or complications.",
+
+    "Talent.pointDefenseSystem": "Point Defense System",
+
+    "Talent.pointDefenseSystem.soloDescription": "The ship is equipped with a system of small energy weapon emitters that operates independently from the main weapons systems. When a torpedo targets the ship, these emitters start firing in the direction it is traveling from, potentially destroying it before it impacts the shields or the ship’s hull. This system only works at subwarp speeds.",
+
+    "Talent.quantumTorpedoes": "Quantum Torpedoes",
+
+    "Talent.quantumTorpedoes.soloDescription": "The vessel has been equipped with the latest in ship-to-ship munitions: quantum torpedoes. The ship has quantum torpedoes in addition to any other form of torpedo it carries.",
+
+    "Talent.rapidFireTorpedoLauncher": "Rapid-Fire Torpedo Launcher",
+
+    "Talent.rapidFireTorpedoLauncher.soloDescription": "The vessel’s torpedo launchers have been redesigned to allow the ship to fire multiple torpedoes much more quickly and accurately.",
+
+    "Talent.regenerativeHull": "Regenerative Hull",
+
+    "Talent.regenerativeHull.soloDescription": "The ship’s hull is infused with reverse-engineered Borg nanite technology that seeks out and repairs the hull immediately when it is damaged, often preventing a breach before it can happen.",
+
+    "Talent.ruggedDesign": "Rugged Design",
+
+    "Talent.ruggedDesign.soloDescription": "The ship is designed with the frontier in mind, with a durable construction and easy access to critical systems that allow repairs to be made easily.",
+
+    "Talent.saucerSeparation": "Saucer Separation",
+
+    "Talent.saucerSeparation.soloDescription": "The ship is designed so that the saucer section can be separated from the engineering section, to operate as two distinct ships. Each section has the same Systems and Departments, as well as the same weapons. The saucer section, which contains the crew quarters and recreational areas, does not have the capacity to go to warp.",
+
+    "Talent.secondaryReactors": "Secondary Reactors",
+
+    "Talent.secondaryReactors.soloDescription": "The ship has additional impulse and fusion reactors, that allow the ship to generate far greater quantities of energy.",
+
+    "Talent.selfReplicatingMines": "Self-Replicating Mines",
+
+    "Talent.selfReplicatingMines.soloDescription": "The ship carries mines that are capable of replicating themselves over time, allowing for a more thorough spread filling the area they’re deployed in. Note that Starfleet does not normally utilize mines.",
+
+    "Talent.siphoningShields": "Siphoning Shields",
+
+    "Talent.siphoningShields.soloDescription": "The vessel’s shield emitters are connected to a network of particle siphons that capture some of the energy released when hit by an energy weapon, channeling it back into the shields.",
+
+    "Talent.slimSensorSilhouette": "Slim Sensor Silhouette",
+
+    "Talent.slimSensorSilhouette.soloDescription": "This ship is designed to present a minimal sensor return to a searching ship’s sensors through advanced hull plating, jamming, and passive subspace baffles.",
+
+    "Talent.tachyonDetectionField": "Tachyon Detection Field",
+
+    "Talent.tachyonDetectionField.soloDescription": "The ship is equipped with a field generator that projects a cloud of tachyons around it. While the field is active, the ship is notified of any cloaked vessels that are within or pass into close range.",
+
+    "Talent.variableGeometryWarpField": "Variable Geometry Warp Field",
+
+    "Talent.variableGeometryWarpField.soloDescription": "An extension of the variable pitch warp nacelles seen on the Intrepid-class and the warp vector technology found on many Vulcan-designed starships, a ship with a variable geometry warp field can adjust its subspace field in highly turbulent spacetime and can continue to provide propulsive force even then.",
+
+    "Talent.versatileTractorBeam": "Versatile Tractor Beam",
+
+    "Talent.versatileTractorBeam.soloDescription": "The ship has exotic particle emitters integrated with its tractor beam system. With a few simple adjustments, the tractor beam can become even more useful against ships trapped within. The tractor beam can even deplete energy from a vessel trapped in its field.",
+
+    "Talent.wormholeRelaySystem": "Wormhold Relay System",
+
+    "Talent.wormholeRelaySystem.soloDescription": "The ship has an additional sensor system outfitted with high-energy transceivers, verteron sensors, and neutrino sensors. These sensors, combined with field-generation devices, allow the ship to send and receive data streams through wormholes.",
 
     "UniformEra.civilian": "Civilian",
     "UniformEra.enterprise": "Enterprise",

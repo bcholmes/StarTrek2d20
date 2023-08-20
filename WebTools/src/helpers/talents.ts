@@ -16,6 +16,7 @@ import { CareersPrerequisite, IConstructPrerequisite, MainCharacterPrerequisite,
 import { NotSourcePrerequisite } from './spaceframes';
 import { Career } from './careerEnum';
 import { hasAnySource } from '../state/contextFunctions';
+import i18next from 'i18next';
 
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
 
@@ -484,6 +485,43 @@ export class TalentModel implements ITalent {
         } else {
             return this.name;
         }
+    }
+
+    get localizedDisplayName() {
+        let name = this.localizedName;
+        if (this.category) {
+            const suffix = " (" + this.category + ")";
+            if (name.indexOf(suffix) >= 0) {
+                return name.substring(0, name.indexOf(suffix));
+            } else {
+                return name;
+            }
+        } else {
+            return name;
+        }
+    }
+
+    get rootKey() {
+        let result = "";
+        for (let i = 0; i < this.name.length; i++) {
+            const c = this.name.charAt(i);
+            if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(c) >= 0) {
+                result += c;
+            }
+        }
+        return result.length > 0 ? result.substring(0, 1).toLocaleLowerCase() + result.substring(1) : result;
+    }
+
+    get localizedName() {
+        let key = "Talent." + this.rootKey;
+        let result = i18next.t(key);
+        return result === key ? this.name : result;
+    }
+
+    get localizedSoloDescription() { // for Starship talents, this is the short, abbreviated description of the talent
+        let key = "Talent." + this.rootKey + ".soloDescription";
+        let result = i18next.t(key);
+        return result === key ? "" : result;
     }
 
     isAvailableExcludingSpecies() {
@@ -2626,13 +2664,13 @@ export class Talents {
             new TalentModel(
                 "Ablative Armor",
                 "The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures, such as those caused by energy weapons and torpedo blasts, dissipating the energy, and protecting the ship. This plating is replaced periodically. The ship’s Resistance is increased by 2.",
-                [new StarshipPrerequisite(), new ServiceYearPrerequisite(2371), new SourcePrerequisite(Source.Core, Source.UtopiaPlanitia)],
+                [new StarshipPrerequisite(), new ServiceYearPrerequisite(2371), new SourcePrerequisite(Source.Core, Source.UtopiaPlanitia, Source.CaptainsLog)],
                 1,
                 "Starship"),
             new TalentModel(
                 "Advanced Research Facilities",
                 "The vessel is equipped with additional laboratories and long-term research facilities, which allow the crew to study phenomena over a protracted period, and thus generate a wealth of useful information. Whenever a character on board the ship attempts a Task to perform research, and they are assisted by the ship’s Computers + Science, the character gains one bonus Momentum, which must be used for the Obtain Information Momentum Spend.",
-                [new StarshipPrerequisite(), new DepartmentPrerequisite(Department.Science, 3)],
+                [new StarshipPrerequisite(), new DepartmentPrerequisite(Department.Science, 3), new SourcePrerequisite(Source.Core, Source.CaptainsLog)],
                 1,
                 "Starship"),
             new TalentModel(
@@ -2650,9 +2688,9 @@ export class Talents {
             new TalentModel(
                 "Advanced Sickbay",
                 "The ship’s medical ward or sickbay is well equipped, and larger than normal for a ship of this size. The ship gains the Advanced Medical Ward or Advanced Sickbay advantage, which applies to all tasks related to medicine and biology performed within the ward or sickbay. This advantage is lost if the ship’s Computers system is disabled.",
-                [new StarshipPrerequisite()],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core, Source.CaptainsLog)],
                 1,
-                "Starship", false, new AliasModel("Advanced Medical Ward/Sickbay", Source.UtopiaPlanitia), new AliasModel("Advanced Medical Ward", Source.KlingonCore)),
+                "Starship", false, new AliasModel("Advanced Medical Ward/Sickbay", Source.UtopiaPlanitia), new AliasModel("Advanced Medical Ward/Sickbay", Source.CaptainsLog), new AliasModel("Advanced Medical Ward", Source.KlingonCore)),
             new TalentModel(
                 "Backup EPS Conduits",
                 "The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of an emergency, keeping it from being lost when the ship is damaged. Whenever the ship would lose one or more Power because of suffering damage, roll [D] for each Power lost. Each Effect rolled prevents the loss of that point of Power.",
@@ -2896,13 +2934,13 @@ export class Talents {
             new TalentModel(
                 "Ablative Field Projector",
                 "The ship’s shield emitters are combined with an ablative field projector that allows its graviton field to be shared with another target in Close range. These projectors charge the target’s shields while dissipating its own. Doing so requires a Difficulty 1 Control + Security task. On a success, your ship loses 1 Shield point and the target gains 1 Shield point. This process can be repeated any number of times by spending 1 Momentum for each swap.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new CenturyPrerequisite(25)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia, Source.CaptainsLog), new CenturyPrerequisite(25)],
                 1,
                 "Starship"),
             new TalentModel(
                 "Adaptable Energy Weapons",
                 "The ship’s weapon delivery systems are enhanced by multiparticle emitters. These emitters allow for the ship’s energy weapon capabilities to be modified when fired. If desired, before an attack is rolled, the ship’s weapon’s Stress Rating is reduced by 1[D], but the officer making the attack roll may swap out any one Stress effect for another.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new CenturyPrerequisite(24)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia, Source.CaptainsLog), new CenturyPrerequisite(24)],
                 1,
                 "Starship"),
             new TalentModel(

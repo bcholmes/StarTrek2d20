@@ -34,16 +34,16 @@ export class Government {
 class _Governments {
     options: Government[] = [
         new Government("Andorian",GovernmentType.Andorian, Era.Enterprise),
-        new Government("Bajoran", GovernmentType.Bajoran, Era.NextGeneration),
-        new Government("Cardassian", GovernmentType.Cardassian, Era.NextGeneration),
-        new Government("Dominion", GovernmentType.Dominion, Era.NextGeneration),
-        new Government("Federation", GovernmentType.Federation, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
-        new Government("Klingon",GovernmentType.Klingon, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration),
-        new Government("Romulan", GovernmentType.Romulan, Era.OriginalSeries, Era.NextGeneration),
+        new Government("Bajoran", GovernmentType.Bajoran, Era.NextGeneration, Era.PicardProdigy),
+        new Government("Cardassian", GovernmentType.Cardassian, Era.NextGeneration, Era.PicardProdigy),
+        new Government("Dominion", GovernmentType.Dominion, Era.NextGeneration, Era.PicardProdigy),
+        new Government("Federation", GovernmentType.Federation, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32),
+        new Government("Klingon",GovernmentType.Klingon, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32),
+        new Government("Romulan", GovernmentType.Romulan, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy),
         new Government("Tellarite", GovernmentType.Tellarite, Era.Enterprise),
         new Government("Vulcan", GovernmentType.Vulcan, Era.Enterprise),
 
-        new Government("Other", GovernmentType.Other, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration)
+        new Government("Other", GovernmentType.Other, Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32)
     ];
 
     selectOptions(era: Era) {

@@ -79,7 +79,7 @@ export class MixedSpeciesSelection extends React.Component<IMixedSpeciesSelectio
                 <tr key={i}
                     style={{ backgroundColor: rowBackground }}
                     onClick={() => { if (Window.isCompact()) { this._secondary = s.id; this.forceUpdate(); } } }>
-                    <td className="selection-header">{s.name}</td>
+                    <td className="selection-header">{s.localizedName}</td>
                     <td>{attributes}</td>
                     <td>{talents}</td>
                     <td>{checkbox}</td>
