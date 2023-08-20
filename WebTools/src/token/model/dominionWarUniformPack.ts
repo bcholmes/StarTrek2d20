@@ -66,8 +66,8 @@ export class DominionWarUniformPack extends BaseTngEraUniformPack implements IUn
 
     getUniformSwatches() {
         return [
-            new Swatch(BodyType.AverageMale, "Average Male", (token) => UniformCatalog.decorateSwatch(this.getNeck(token.bodyType, token.skinColor) + DominionWarMaleBody, BodyType.AverageMale, token), "BodyType.averageMale"),
-            new Swatch(BodyType.AverageFemale, "Average Female", (token) => UniformCatalog.decorateSwatch(this.getNeck(token.bodyType, token.skinColor) + DominionWarFemaleBody, BodyType.AverageFemale, token), "BodyType.averageFemale"),
+            new Swatch(BodyType.AverageMale, "Average Male", (token) => UniformCatalog.decorateSwatch(this.getNeck(BodyType.AverageMale, token.skinColor) + DominionWarMaleBody, BodyType.AverageMale, token), "BodyType.averageMale"),
+            new Swatch(BodyType.AverageFemale, "Average Female", (token) => UniformCatalog.decorateSwatch(this.getNeck(BodyType.AverageFemale, token.skinColor) + DominionWarFemaleBody, BodyType.AverageFemale, token), "BodyType.averageFemale"),
         ];
     }
 

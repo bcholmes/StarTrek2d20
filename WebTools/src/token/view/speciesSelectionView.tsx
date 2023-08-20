@@ -49,7 +49,7 @@ class SpeciesSelectionView extends React.Component<ISpeciesSelectionProperties, 
     }
 
     speciesList() {
-        return [Species.Andorian, Species.Bajoran, Species.Betazoid, Species.Bolian, Species.Caitian,
+        return [Species.Andorian, Species.Bajoran, Species.Benzite, Species.Betazoid, Species.Bolian, Species.Caitian,
                 Species.Deltan, Species.Denobulan, Species.Efrosian, Species.Ferengi, Species.Human,
                 Species.Klingon, Species.KlingonQuchHa,
                 Species.Orion, Species.Risian,

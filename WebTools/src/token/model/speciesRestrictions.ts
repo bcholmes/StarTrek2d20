@@ -24,6 +24,8 @@ class SpeciesRestrictions {
             return ["#a2b152", "#8e932f", "#8f8f0b", "#838218", "#7a863a", "#6f7f36", "#6b764c", "#697543", "#5d6937", "#5a6135", "#4c4c1a", "#414b26"];
         } else if (species === Species.Andorian) {
             return ["#bbb6c7", "#b0c2cc", "#a9d8f4", "#7ca9e0", "#919bd5", "#6e87bf", "#3e8fb8", "#0068a5"];
+        } else if (species === Species.Benzite) {
+            return ["#b0c2cc", "#a9d8f4", "#7ca9e0", "#919bd5", "#6e87bf", "#3e8fb8"];
         } else if (species === Species.Bolian) {
             return ["#97c3f2", "#87acda", "#5883a6", "#5772b7", "#0665b3", "#385f8d"]; // "#597986",
         } else if (species === Species.Ferengi) {
@@ -45,7 +47,7 @@ class SpeciesRestrictions {
     static getHeadTypes(species: Species) {
         if (species === Species.Caitian) {
             return [HeadType.SquareJawed, HeadType.RoundedAverage, HeadType.PointedDelicate ];
-        } else if (this.isRubberHeaded(species)) {
+        } else if (this.isRubberHeaded(species) && species !== Species.Benzite) {
             return [HeadType.RoundedNarrow ];
         } else {
             return [ HeadType.AverageAngular,
@@ -159,7 +161,7 @@ class SpeciesRestrictions {
     }
 
     static isRubberHeaded(species: Species) {
-        return species === Species.Saurian || species === Species.Caitian;
+        return species === Species.Saurian || species === Species.Caitian || species === Species.Benzite;
     }
 
     static getSpeciesOptions(species: Species) {
