@@ -25,6 +25,9 @@ export default class UniformVariantRestrictions {
             if (DivisionColors.getDivision(uniformEra, divisionColor) === "Command" && rank === Rank.Captain) {
                 result.push(UniformVariantType.Variant1);
             }
+            if (bodyType === BodyType.AverageMale) {
+                result.push(UniformVariantType.Variant2);
+            }
         }
         return result;
     }

@@ -613,7 +613,7 @@ class _Species {
             Species.GornExt,
             "Gorn",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.BetaQuadrant, Source.CaptainsLog],
+            [Source.BetaQuadrant],
             ["A bipedal, reptilian species from the Beta quadrant, who have a civilization — the Gorn Hegemony — far from Federation Space. First encountered by Starfleet in 2267, the Gorn are technologically advanced to a level comparable to the Federation and other Beta Quadrant powers in most regards. Even a century after first contact, there is relatively little contact between the Gorn Hegemony and the Federation."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Reason],
             "Gorn",
@@ -1003,7 +1003,7 @@ class _Species {
         [Species.Ankari]: new SpeciesModel(
             Species.Ankari,
             "Ankari",
-            [Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
             [Source.DeltaQuadrant],
             ["The Ankari are a reptilian-humanoid species native to the Delta Quadrant. While warp capable, they prefer to use a form of FTL drive, believed to phase their craft into a parallel realm – similar to, but distinct from, subspace. This realm is also home to a unique nucleogenic lifeform, whose bodies contain significant amounts of nucleogenic energy. Much like traditional subspace/warp-based civilizations, most forms of Ankari technology interface with this nucleogenic realm. As this technology is so rare, few species can accurately detect or track Ankari vessels. Despite this strategic advantage, the Ankari are not a warlike people. Their relationship with the interdimensional beings, whom the Ankari consider heralds of good fortune, has created a unique cultural dynamic. While technologically and scientifically advanced, the Ankari are traditionally a deeply spiritual people and the interdimensional beings factor heavily in that belief system. The Ankari are welcoming of strangers and are open to trade, often celebrating the conclusion of successful endeavors with a summoning to bid their new allies good fortune."],
             [Attribute.Fitness, Attribute.Insight, Attribute.Presence],
@@ -1021,7 +1021,7 @@ class _Species {
         [Species.Jye]: new SpeciesModel(
             Species.Jye,
             "Jye",
-            [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
             [Source.DeltaQuadrant],
             ["Across numerous sectors, the Jye are renowned for their superb administrative and organizational abilities – which they offer to other cultures for a price. Jye can be found throughout the quadrant, usually under the employ of a host species, struggling with some problem that is beyond their ability or desire to address. The Jye believe this to be the greatest export their species has to offer, and take great strides to ensure that any circumstance they’ve been retained on results in a satisfactory outcome for their employers. The Jye believe that they have a sworn duty to uphold the contracts they have been assigned to, and will work tirelessly to ensure that these business arrangements are properly governed and result in successful outcomes to the satisfaction of the employing government or culture. For the most part, the Jye are an unremarkable humanoid species, with pale skin sporting lavender spots and little to no facial hair. Due to their role as administrators and organizers, the Jye are not often exposed to manual labor or exercise."],
             [Attribute.Control, Attribute.Presence, Attribute.Reason],
@@ -1052,7 +1052,7 @@ class _Species {
         [Species.Lokirrim]: new SpeciesModel(
             Species.Lokirrim,
             "Lokirrim",
-            [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
             [Source.DeltaQuadrant],
             ["Few other species possess the technical acumen with holograms to match the Lokirrim. For centuries, they developed and utilized detailed holographic programs to perform countless tasks – effectively creating a taskspecific servitor race. As their holograms became increasing sophisticated, with ever evolving mental capacity, it was inevitable that a conflict would erupt. And so it did. For decades, the Lokirrim have been engaged in an ongoing civil war against their creations. The photonic insurgency has been devastating for the Lokirrim, which have become totally dependent on their creations to perform the numerous hazardous or menial tasks necessary for modern life. Unfortunately, Lokirrim photonics were not satisfied with escaping their circumstances. The insurgency has struck at Lokirrim society, using everything from civil disobedience to terror attacks to attempt to force the liberation of all photonics. The rebellion has left most Lokirrim resentful of photonic life, as they have watched their society teeter on the brink of disaster and seen many loved ones lost to the attacks carried out by their former servants. Many willingly joined the Lokirrim naval forces to track down and destroy not only those holograms that originated on Lokirr, but any independent holograms, as the Lokirrim view them as a danger to all organic life."],
             [Attribute.Daring, Attribute.Insight, Attribute.Reason],
@@ -1086,7 +1086,7 @@ class _Species {
         [Species.Monean]: new SpeciesModel(
             Species.Monean,
             "Monean",
-            [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
             [Source.DeltaQuadrant],
             ["Having lost their original homeworld, the Moneans were a nomadic people for generations. Centuries ago, however, they discovered a unique planetary body, an artificial world composed entirely of water. Upon this world, the Moneans settled and built an entire civilization in the shallow region near the planet’s surface. While they have created this underwater realm, most Moneans continue to live aboard their starships and only occasionally venture into the depths of their new home. Exploration of the Waters, the name the Moneans have given their adopted world, has been hampered by the crushing depths of the ocean. The Moneans only have the barest of understanding of the origin of this unique planetoid. Monean government reflects their aquatic origin, having been named the Maritime Supremacy. They maintain a reasonably powerful fleet of starships, though despite this, the Moneans have not ventured beyond more than a few hundred light-years. Ancient navigational charts have long since become outdated, and the Monean origin world has long since faded into myth."],
             [Attribute.Control, Attribute.Fitness, Attribute.Reason],
@@ -1139,7 +1139,7 @@ class _Species {
         [Species.Sikarian]: new SpeciesModel(
             Species.Sikarian,
             "Sikarian",
-            [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
             [Source.DeltaQuadrant, Source.CaptainsLog],
             ["One of the oldest and most technologically advanced species in the Delta Quadrant, the Sikarians have enjoyed hundreds of years of peace and prosperity. Warm and welcoming, the Sikarians are renowned through the region as one of the most hospitable civilizations, and deeply enjoy guests and visitors to their world. Despite their advanced capabilities, the Sikarians do not claim a large domain and instead can be found on a handful of colonies outside of their homeworld. While they maintain a small, yet powerful, fleet, they primarily rely on their advanced transporter technology, called a trajectory, to travel between destinations. Similar to the Federation, the Sikarians maintain strict rules regarding the sharing of technology and non-interference with other cultures. While this has served to cause some amount of friction between the Sikarians and their neighbors, technology like the spatial trajector relies exclusively on the unique characteristics of their homeworld and simply will not function elsewhere. Despite this, the Sikarians are a generous people, and will openly provide aid to those in need – so long as such aid remains within the provisions of the Sikarian Canon – the name given to Sikarian law."],
             [Attribute.Control, Attribute.Reason, Attribute.Presence],
@@ -1157,7 +1157,7 @@ class _Species {
         [Species.Talaxian]: new SpeciesModel(
             Species.Talaxian,
             "Talaxian",
-            [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
             [Source.DeltaQuadrant, Source.CaptainsLog],
             ["Resilient and reliable, the Talaxians have become one of the most widely recognizable and dispersed species in the Delta Quadrant. Talaxians have been warp capable for millennia, and during this time they have encountered countless species and traveled to nearly all corners of the quadrant. Talaxians have a reputation for being sociable, good natured travelers who enjoy the company of others. Unlike other species that have been warp capable for such an extended time, Talaxians are not known for their technological capabilities – which can vary wildly from group to group. Like many species in the quadrant, Talaxians do not boast a significant military presence or large empire, though this may be due to the war between them and the Haakonian Order – a conflict that left both sides exhausted. Unfortunately, the war ended with the surrender of the Talaxian government following the detonation of a weapon of mass destruction on a Talaxian moon."],
             [Attribute.Control, Attribute.Presence, Attribute.Insight],
@@ -1174,7 +1174,7 @@ class _Species {
         [Species.Turei]: new SpeciesModel(
             Species.Turei,
             "Turei",
-            [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
             [Source.DeltaQuadrant],
             ["Long ago, the Vaadwaur were the undisputed masters of their region of space. But like all great empires, eventually those that they had dominated rose up and overthrew them. The foremost member of the alliance that defeated the dreaded Vaadwaur was the Turei. The Turei lost no time in filling the vacuum left by the Vaadwaur, and while they would never become as powerful or as feared, the Turei laid claim to the vast network of subspace corridors that had given their ancestral enemies their strategic edge – Underspace. For nearly a thousand years, the Turei have controlled this important territory, using it in a similar way to the Vaadwaur, with perhaps less conquest. Today, the Turei are an insular culture and protect the Underspace, and therefore their livelihood, with aggressiveness and determination. Their control of Underspace has provided them with prosperity and military supremacy on all worlds that connect to it and they jealously guard it. Vessels which stumble into Underspace through anomalies or by navigational mishaps can expect to be intercepted almost immediately and have all records of Underspace purged from their computers."],
             [Attribute.Control, Attribute.Daring, Attribute.Reason],
@@ -1192,7 +1192,7 @@ class _Species {
         [Species.Kobali]: new SpeciesModel(
             Species.Kobali,
             "Kobali",
-            [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
             [Source.DeltaQuadrant],
             ["The Kobali are an interesting and unique species native to the Delta Quadrant. Unlike other species, the Kobali do not procreate or breed. Instead, the Kobali collect the corpses of other species and use an advanced from of genetic engineering to modify these deceased individuals, converting them into Kobali – and bringing them back to life. Culturally, Kobali are insular, though they are not openly hostile to those they encounter."],
             [],
@@ -1519,9 +1519,11 @@ class _Species {
             Species.Gorn,
             "Gorn",
             [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.LowerDecksCampaign],
+            [Source.LowerDecksCampaign, Source.CaptainsLog],
             ["A race of bipedal reptiloids with faceted eyes, the Gorn are organized under a Hegemony ruled by a king or a queen. Gorn are extremely durable due to their rubbery skin and thick bone structure. Equipped with claws and a mouth filled with backwards-curved teeth, Gorn are a formidable adversary on the field of battle."],
-            [Attribute.Daring, Attribute.Fitness, Attribute.Insight],
+            // Jim Johnson confirmed that the Lower Decks book has a typo: whereas it says that the third attribute
+            // is "Insight", it should be "Reason", to be consistent with the Beta Quadrant and Captain's Log books.
+            [Attribute.Daring, Attribute.Fitness, Attribute.Reason],
             "Gorn",
             "Gorn are tall, powerfully- muscled, and can often overpower members of other humanoid species. They are believed to be obligate carnivores, and many species tend to react to the presence of Gorn with an instinctive fear or revulsion which is difficult to overcome. For their part, Gorn tend to have little regard for how others react to them.",
             " I Will Protect My Crew as though They are My Family",
