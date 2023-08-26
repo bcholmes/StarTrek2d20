@@ -61,7 +61,7 @@ export default class UniformVariantRestrictions {
                     ].indexOf(rankIndicator) >= 0;
 
             case UniformEra.Civilian:
-                return [ Rank.None ];
+                return [ Rank.None ].indexOf(rankIndicator) >= 0;
 
             default:
                 return [
