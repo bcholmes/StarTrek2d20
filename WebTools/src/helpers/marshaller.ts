@@ -520,8 +520,8 @@ class Marshaller {
             character.stereotype = Stereotype.Npc;
         } else if (json["stereotype"] === "supportingCharacter") {
             character.stereotype = Stereotype.SupportingCharacter;
-        } else if (json["stereotype"] === "solo") {
-            character.stereotype = Stereotype.Solo;
+        } else if (json["stereotype"] === "soloCharacter") {
+            character.stereotype = Stereotype.SoloCharacter;
         }
         let type = CharacterTypeModel.getCharacterTypeByTypeName(json.type);
         if (type) {

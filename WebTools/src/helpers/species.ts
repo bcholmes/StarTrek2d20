@@ -69,6 +69,12 @@ export class SpeciesModel {
         return key === localized ? this.description : localized;
     }
 
+    get localizedSoloDescription() {
+        const key = makeKey('Species.', Species[this.id], ".soloDescription");
+        const localized = i18next.t(key);
+        return key === localized ? this.description : localized;
+    }
+
     get localizedNameDescription() {
         const key = makeKey('Species.', Species[this.id], ".aboutNames");
         const localized = i18next.t(key);

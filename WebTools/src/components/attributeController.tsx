@@ -3,7 +3,18 @@ import { Attribute } from "../helpers/attributes";
 import { SpeciesHelper, SpeciesModel } from "../helpers/species";
 import { Species } from "../helpers/speciesEnum";
 
-export abstract class AttributeController {
+export interface IAttributeController {
+    isShown(attribute: Attribute): boolean;
+    isEditable(attribute: Attribute): boolean;
+    getValue(attribute: Attribute): number;
+    canIncrease(attribute: Attribute): boolean;
+    canDecrease(attribute: Attribute): boolean;
+    onIncrease(attribute: Attribute): void;
+    onDecrease(attribute: Attribute): void;
+    get instructions(): string[];
+}
+
+export abstract class AttributeController implements IAttributeController {
 
     character: Character;
     species: SpeciesModel;

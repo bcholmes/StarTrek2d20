@@ -258,6 +258,7 @@
     "Common.button.next": "Next",
     "Common.button.view": "View",
 
+    "Common.text.description": "Description",
     "Common.text.none": "None",
     "Common.text.search": "Search...",
     "Common.text.select": "Select",
@@ -805,46 +806,83 @@
     "Species.andorian.name": "Andorian",
     "Species.andorian.aboutNames": "Andorian names tend to be somewhat harsh-sounding, and have a personal name followed by a clan name. Amongst some Andorians, it’s common to begin the clan name with a gender-specific prefix: 'zh' or 'sh' for females, and 'ch' or 'th' for males. This is placed before the family name, separated by an apostrophe. Longer or more complicated Andorian names are commonly shortened, especially when dealing with other species. Examples: Ishrelia zh’Azonan (female), Atheth th’Zynes(male)",
     "Species.andorian.description": "An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the United Federation of Planets since its foundation, having been firm allies of Humanity for several years beforehand. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor-duels known as Ushaan, using razorsharp ice-mining tools.",
+    "Species.andorian.soloDescription": "An aggressive, passionate people from a frozen moon. Founding member of the Federation. Blue-skinned, pale-haired in appearance, with antennae. Their antennae aid in balance and spatial awareness; a lost antenna can be debilitating until it regrows. Andorians also have a high metabolism, meaning, among other things, that they tire more quickly than Humans; this also makes them more vulnerable to infection from certain types of injury.",
     "Species.andorian.exampleValue": "Proud Son/Daughter of Andoria",
     "Species.andorian.traitDescription": "This trait may reduce the Difficulty of Tasks to resist extreme cold, or Tasks impacted by extremely low temperatures. Their antennae aid in balance and spatial awareness; a lost antenna can be debilitating until it regrows. Andorians also have a high metabolism, meaning, amongst other things, that they tire more quickly than Humans; this also makes them more vulnerable to infection from certain types of injury. Before the Federation, Andorians and Vulcans had numerous disputes; though these issues are largely considered to be ancient history, Andorians and Vulcans don’t always get along.",
 
+    "Species.arbazan.name": "Arbazan",
+    "Species.arbazan.soloDescription": "Like many Humanoid species within the Federation, the Arbazan are physically similar to Humans, though the forward portion of their skulls have slightly raised plates that reinforce their brows. Arbazan have been Federation members since shortly after its founding and are found throughout Federation space, often serving as ambassadors, attaches, advisors, and negotiators – though there have also been several well-known scientific discoveries and engineering advancements by dedicated Arbazan.",
+
     "Species.ardanan.name": "Ardanan",
+    "Species.ardanan.soloDescription": "Ardana natives are hardy individuals, whose duality of art and culture, and resource mining and management, make them excellent all-rounders. The Ardanans are a people of both stout endurance and cultural excellence.",
+
+    "Species.aurelian.name": "Aurelian",
+    "Species.aurelian.soloDescription": "An avian people encountered early in Federation history. Renowned for their study of history and science, they occasionally surmount their claustrophobia to serve on Starfleet vessels. Aurelians are taller than Humans and sport wings and feathers of varying colors.",
 
     "Species.bajoran.name": "Bajoran",
     "Species.bajoran.aboutNames": "Bajoran names begin with the family name, followed by a personal name. The individual names are normally short — rarely more than two syllables — and with a soft or melodic sound. Bajor Is traditionally matriarchal, with children taking their mother’s family name. Examples: Reil Yesa (female), Latara Gel (male)",
     "Species.bajoran.description": "A spiritual, dauntless people from the planet Bajor, the Bajorans have lost much after decades of occupation by the Cardassian Union. Many Bajorans were scattered across the Alpha Quadrant during the occupation, while those who remained on Bajor often acted as insurgents or toiled in labor camps under Cardassian rule. The occupation ended a few years ago, but the scars it left will take generations to heal. Bajor is not a member of the Federation, but many Bajorans scattered by the diaspora have found their way into Starfleet. Bajoran culture places a strong belief in the Prophets, celestial beings who are said to have watched over Bajor for millennia; modern religious doctrine states that the Bajoran Wormhole is the Prophets’ Celestial Temple.",
     "Species.bajoran.exampleValue": "Faith in the Prophets",
+    "Species.bajoran.soloDescription": "A spiritual, dauntless people who suffered under Cardassian occupation. They worship celestial beings residing in the Bajoran wormhole. They are much like Humans in appearance, with nose ridges and often wear an elaborate earring on their right ear.",
     "Species.bajoran.traitDescription": "For obvious reasons, Bajorans tend to be hostile towards Cardassians, and resentful of those who are dismissive of, or turned a blind eye to, the suffering of the Bajoran people. While not all Bajorans are spiritual or religious to the same degree, most have a cultural understanding of the Prophets’ place in Bajoran society.",
 
+    "Species.barzan.name": "Barzan",
+    "Species.barzan.soloDescription": "A diligent, determined people from a resource-poor world. Joined the Federation in the 25th century, though individuals were known to serve in Starfleet prior. Very similar to Humans in appearance, with unique forehead ridges and often equipped with a specialized breathing apparatus.",
+
     "Species.benzite.name": "Benzite",
+    "Species.benzite.soloDescription": "Benzite physiology gives this species’ skin a hairless blue-to-green complexion. The Benzite skull has a thick protrusion that extends over the brow and nose, with two facial tendrils above the lip. A Benzite’s average body temperature is several degrees lower than an average, warm-blooded Humanoid, though the Benzites themselves are not cold-blooded. Until 2370, most Benzites in Starfleet had trouble breathing a standard nitrogen/oxygen atmosphere and relied on breathing apparatus.",
 
     "Species.betazoid.name": "Betazoid",
     "Species.betazoid.aboutNames": "Betazoid names tend to have at least two syllables and a melodic sound, with a personal name followed by a family name; of these, the family name tends to have a harder sound. Betazoids are traditionally matriarchal, with children taking their mother’s family name.",
     "Species.betazoid.description": "The peaceful Betazoid people hail from the idyllic, verdant world Betazed. The world is a valued member of the Federation, and its people can be found across Federation space, including Starfleet. Betazoids appear almost identical to Humans, but differ in one major way: they are naturally telepathic, developing mental abilities during adolescence. The potency of this ability varies between individuals, but it has resulted in a culture where honesty and directness are fundamental: it is difficult to keep secrets when everyone around you can read minds.",
     "Species.betazoid.exampleValue": "Compassion Through Understanding",
+    "Species.betazoid.soloDescription": "Betazoids appear almost identical to Humans, but differ in one major way: they are naturally telepathic, developing mental abilities during adolescence. All Betazoids are telepathic to varying degrees, and even when not actively using their abilities, they are highly perceptive of others around them, but also sensitive to telepathic disturbances and mental assaults. They have little familiarity with lies and deception, due to their open culture and ability to read the thoughts and emotions of others. As they are sensitive to the minds of other living beings, they tend not to be comfortable around animals, for fear of losing themselves in the minds of wild creatures.",
     "Species.betazoid.traitDescription": "All Betazoids are telepathic to varying degrees, and even when not actively using their abilities, they are highly perceptive of others around them, but also highly sensitive to telepathic disturbances and mental assaults. They have little familiarity with lies and deception, due to their open culture and ability to read the thoughts and emotions of others. As they are sensitive to the minds of other living beings, they tend not to be comfortable around animals, for fear of losing themselves in the minds of wild creatures.",
 
     "Species.bolian.name": "Bolian",
+    "Species.bolian.soloDescription": "Identified by a cartilaginous ridge that extends vertically down their head, past the center of the face to the chest, with skin color ranging from light blues to dark greens and muted purples with darker banding across the head. They are predominantly bald, though some females are known to have hair. Bolians are an understanding, hospitable species, often forward-facing in their duties in customer relations or diplomatic service.",
 
     "Species.bynar.name": "Bynar",
     "Species.bynar.description": "Over time their interconnection with their world’s master computer has grown to the point that their language and thought patterns have become as close to binary as is possible for organic beings. In fact, their very lives depend on this interaction with their master computer, as well as with one another. They are shorter in height than most humanoids, genderless with lilac skin and enlarged skulls, and usually operate in pairs.",
 
+    "Species.caitian.name": "Caitian",
+    "Species.caitian.soloDescription": "A catlike people equally devoted to martial as well as artistic and philosophical pursuits. Solidly established within the Federation, with extensive representation at all levels of Starfleet. Bipedal, slightly smaller than Humans, with prehensile tails.",
+
+    "Species.cardassian.name": "Cardassian",
+    "Species.cardassian.soloDescription": "A much-feared people known for devotion to their state and a sense of superiority. Often adversaries of Starfleet and other civilizations, though personal alliances have been formed during times of war, and societal cooperation witnessed in far-future times of scarcity. Grey-skinned humanoids with ridges on their neck and forehead.",
+
+    "Species.changeling.name": "Changeling",
+    "Species.changeling.soloDescription": "A Changeling is naturally a gelatinous, morphogenic, orange-brown fluid, which can adopt the form and structure of any solid object, including other living creatures and diffuse substances like fog. While they cannot become energy, a Changeling’s ability to assume other forms is limited more by skill and experience than by physical capacity: it is theorized that they transfer mass to and from subspace to change size and density. Many Changelings find themselves persecuted by “solids” for their shapeshifting ability, and often crave a sense of order and justice in the universe, with a rigid attitude at odds with their fluid forms.",
+
     "Species.chelon.name": "Rigellian Chelon",
 
     "Species.deltan.name": "Deltan",
+    "Species.deltan.soloDescription": "Deltans are beautiful individuals, with powerful empathic abilities and heightened sensuality. The pheromones they excrete are a natural aphrodisiac in most species throughout the Federation, and while serving aboard Starfleet they must be very careful with their natural physiology, using chemical suppressants to cancel the effect.",
 
     "Species.denobulan.name": "Denobulan",
     "Species.denobulan.aboutNames": "Denobulans tend to only have a single name — an individual Denobulan may be part of several overlapping families. Some Denobulans may use the name of one of their spouses as an impromptu surname, however; this is often to indicate association to species that may not understand Denobulan families. Denobulan names tend to be short and hard-sounding, particularly male names.",
     "Species.denobulan.description": "Hailing from the planet Denobula, Denobulans are a gregarious, inquisitive people who have been allies of Humanity since the 2130s. Though Denobula was not one of the founders of the Federation, the Denobulans joined soon after. Denobulans are a sociable people, with distinctive expressive features, who are used to living in close, communal conditions, and whose extended family groups are large and complex — a Denobulan may have several spouses, each of whom may have several partners of their own, and dozens of children between them. Culturally, they are intellectually curious, perceptive, and interested in a wide range of philosophies, though their scholarly nature, large families, and gregarious nature means that relatively few of them venture far from their homeworld.",
     "Species.denobulan.exampleValue": "Safety in Numbers",
+    "Species.denobulan.soloDescription": "A gregarious, inquisitive people allied with humanity since the 2130s. Often at ease encountering new cultures and collaborating within large social groups. Robust physiology, similar to Humans in appearance, with facial ridges.",
     "Species.denobulan.traitDescription": "Denobulans have a robust immune system, but a vulnerability to various forms of radiation poisoning. They are naturally adept climbers, scuttling up sheer walls like some forms of terrestrial lizard. Denobulans do not need to sleep, but must hibernate for several days each year, becoming disoriented if kept awake during this period.",
 
     "Species.doopler.name": "Doopler",
     "Species.doopler.description": "A humanoid species known for involuntarily duplicating themselves (dooplercating) as a defense mechanism against uncomfortable emotions such as embarrassment. Once a Doopler gains control\nof their emotions, they can re-merge back into one being (de-dooplercating).",
 
+    "Species.edosian.name": "Edosian",
+    "Species.edosian.soloDescription": "A long-lived, meticulous, and reflective people. Loosely allied with the Federation, with service in Starfleet rare but not unknown. Tripedal and three- limbed, more stable and capable of multi-tasking than Humans, even if a bit slower.",
+
     "Species.efrosian.name": "Efrosian",
+    "Species.efrosian.soloDescription": "A musical people from a frozen world devoted to history. Often sought as helm officers and navigators, as well as translators and communications officers thanks to their emphasis on linguistics and oral tradition. Notable in appearance for intense tufts of hair and mustaches.",
 
     "Species.ferengi.name": "Ferengi",
+    "Species.ferengi.soloDescription": "An enterprising people devoted to applying their considerable technology toward the acquisition of wealth. Encountered by Starfleet in 2364 and forming a wide variety of relationships to the Federation, being organized as a collection of private businesses. Possessed of large, sensitive ears which supply an acute sense of hearing and the lobes for business acumen.",
+
+    "Species.gorn.name": "Gorn",
+    "Species.gorn.soloDescription": "Gorn are large and powerfully-built, even more so than other famously-mighty species such as the Klingons or Nausicaans. They are many times stronger than a Human being, and resilient enough to ignore massive blunt force trauma or even short periods in hard vacuum. However, Gorn are not especially agile or fast. Gorn are ectothermic – cold- blooded – with their body temperature varying by external factors, and thus favor warm environments where they can be most active and effective.",
+
+    "Species.hologram.name": "Hologram",
+    "Species.hologram.soloDescription": "Holograms can be programmed to any specification, though the nature of their holomatrix means that they are essentially impervious to direct physical harm – they can allow energy and objects to pass through them at will. However, they are unable to go anywhere that lacks holographic emitters that can project their image and forcefields, and those emitters can be damaged even if the holograms themselves cannot. Holograms also tend not to receive much respect or consideration from flesh- and-blood people, who may see them as tools at best or annoyances at worst. While the majority of holograms are no more sentient than a character in a holo-novel, under the right circumstances, they can become self-aware and deserve the same rights as any biological sentient life-form. Holograms may also have a second species trait, reflecting the species they were designed to emulate.",
 
     "Species.horta.name": "Horta",
     "Species.horta.description": "The Horta is a highly intelligent, silicon-based species capable of tunneling through solid rock.",
@@ -860,10 +898,17 @@
 
     "Species.jelna.name": "Rigellian Jelna",
 
+    "Species.jemHadar.name": "Jem'Hadar",
+    "Species.jemHadar.soloDescription": "Individual Jem’Hadar are physically powerful, and far stronger and more resilient than Humans. They also have exceptionally keen eyesight, and act utterly without fear or hesitation in battle. They do not regard death with any apprehension, and are extremely aggressive, limited only by their absolute obedience to the Founders and the Vorta.",
+
     "Species.kazon.name": "Kazon",
     "Species.kazon.description": "An aggressive warrior species from the Delta Quadrant divided into eighteen different sects that war over resources. They have intricate head ridges and thick, coral-shaped hair.",
 
+    "Species.kelpien.name": "Kelpien",
+    "Species.kelpien.soloDescription": "An empathetic people kept in check by the technologically advanced Ba’ul who share their homeworld. Initially prohibited from contact with other civilizations, notable individuals managed to join Starfleet, and the ensuing centuries brought both species of Kaminar into the Federation. Tall and lanky, with keen eyesight, a capacity for sprinting, and sensitive ganglia on their heads which become capable of shooting barbs once they mature through vahar’ai.",
+
     "Species.klingon.name": "Klingon",
+    "Species.klingon.soloDescription": "A proud, warrior species centered in the Beta Quadrant. There is a great redundancy in Klingon organs, with two livers, multiple stomachs, three lungs, and an eight-chambered heart. Their skeletal structure also has several redundancies that mitigate injuries that would prove fatal to other humanoids.",
 
     "Species.klingonQuchHa.name": "Klingon (QuchHa’)",
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { Attribute, AttributesHelper } from "../helpers/attributes";
-import { AttributeController } from "./attributeController";
+import { IAttributeController } from "./attributeController";
 import AttributeImprovement from "./attributeImprovement";
 
 interface ISpeciesAttributeComponentsProperties {
-    controller: AttributeController
+    controller: IAttributeController
 }
 
 interface ISpeciesAttributeComponentsState {

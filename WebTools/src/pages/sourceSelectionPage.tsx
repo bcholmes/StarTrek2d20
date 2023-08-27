@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Source, SourcesHelper} from '../helpers/sources';
-import {character} from '../common/character';
+import {Character, character} from '../common/character';
 import {Navigation, navigateTo} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import store from '../state/store';
@@ -11,6 +11,7 @@ import { Window } from '../common/window';
 import { Button } from '../components/button';
 import { PageFactory } from './pageFactory';
 import { LoadingButton } from '../common/loadingButton';
+import { setCharacter } from '../state/characterActions';
 
 interface ISourceSelectionPageProperties extends WithTranslation {
     sources: Source[]
@@ -111,6 +112,7 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
 
     selectSoloRules() {
         this.setState((state) => ({...state, soloLoading: true}));
+        store.dispatch(setCharacter(Character.createSoloCharacter()));
         PageFactory.instance.loadCaptainsLogFactory(() => {
                 this.setState((state) => ({...state, soloLoading: false}));
                 Navigation.navigateToPage(PageIdentity.SoloConstructType);

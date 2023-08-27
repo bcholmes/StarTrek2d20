@@ -74,4 +74,6 @@ export enum PageIdentity {
     SoloConstructType,
     SoloCharacterEra,
     SoloSpecies,
+    SoloSpeciesDetails,
+
 }

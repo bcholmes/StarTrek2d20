@@ -1,4 +1,4 @@
-﻿import {Attribute} from '../helpers/attributes';
+﻿import {Attribute, AttributesHelper} from '../helpers/attributes';
 import {Skill} from '../helpers/skills';
 import {Career} from '../helpers/careerEnum';
 import {Environment} from '../helpers/environments';
@@ -166,7 +166,7 @@ export class Character extends Construct {
 
     public reputation = 10;
     public reprimands = 0;
-    public attributes: CharacterAttribute[] = [];
+    public _attributes: CharacterAttribute[] = [];
     public skills: CharacterSkill[] = [];
     public traits: string[];
     public additionalTraits: string;
@@ -197,13 +197,13 @@ export class Character extends Construct {
     public implants: string[];
 
     constructor() {
-        super(Stereotype.Main);
-        this.attributes.push(new CharacterAttribute(Attribute.Control, this._attributeInitialValue));
-        this.attributes.push(new CharacterAttribute(Attribute.Daring, this._attributeInitialValue));
-        this.attributes.push(new CharacterAttribute(Attribute.Fitness, this._attributeInitialValue));
-        this.attributes.push(new CharacterAttribute(Attribute.Insight, this._attributeInitialValue));
-        this.attributes.push(new CharacterAttribute(Attribute.Presence, this._attributeInitialValue));
-        this.attributes.push(new CharacterAttribute(Attribute.Reason, this._attributeInitialValue));
+        super(Stereotype.MainCharacter);
+        this._attributes.push(new CharacterAttribute(Attribute.Control, this._attributeInitialValue));
+        this._attributes.push(new CharacterAttribute(Attribute.Daring, this._attributeInitialValue));
+        this._attributes.push(new CharacterAttribute(Attribute.Fitness, this._attributeInitialValue));
+        this._attributes.push(new CharacterAttribute(Attribute.Insight, this._attributeInitialValue));
+        this._attributes.push(new CharacterAttribute(Attribute.Presence, this._attributeInitialValue));
+        this._attributes.push(new CharacterAttribute(Attribute.Reason, this._attributeInitialValue));
 
         for (var i = 0; i <= Skill.Medicine; i++) {
             this.skills.push(new CharacterSkill(i, 1));
@@ -245,6 +245,17 @@ export class Character extends Construct {
 
     get mementos() {
         return this._mementos;
+    }
+
+    get attributes() {
+        if (this.stereotype === Stereotype.SoloCharacter) {
+            let result = [];
+            AttributesHelper.getAllAttributes().forEach(a => result.push(new CharacterAttribute(a, 7)));
+            this.speciesStep?.attributes?.forEach(a => result[a].value = result[a].value + 1);
+            return result;
+        } else {
+            return this._attributes;
+        }
     }
 
     get stress() {
@@ -652,13 +663,14 @@ export class Character extends Construct {
         var character = new Character();
 
         character.type = this.type;
+        character.stereotype = this.stereotype;
         character.typeDetails = this.typeDetails;
         this._mementos.forEach(s => {
             character._mementos.push(new Memento(s.page, s.character));
         });
-        this.attributes.forEach(a => {
-            character.attributes[a.attribute].attribute = a.attribute;
-            character.attributes[a.attribute].value = a.value;
+        this._attributes.forEach(a => {
+            character._attributes[a.attribute].attribute = a.attribute;
+            character._attributes[a.attribute].value = a.value;
         });
         this.skills.forEach(s => {
             character.skills[s.skill].skill = s.skill;
@@ -740,6 +752,12 @@ export class Character extends Construct {
             (character.type === CharacterType.AlliedMilitary
                 && character.typeDetails != null && character.typeDetails instanceof AlliedMilitaryDetails
                 && (character.typeDetails as AlliedMilitaryDetails).alliedMilitary?.species?.length > 0);
+    }
+
+    public static createSoloCharacter() {
+        let result = new Character();
+        result.stereotype = Stereotype.SoloCharacter;
+        return result;
     }
 }
 

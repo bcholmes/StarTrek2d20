@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { navigateTo } from "../../common/navigator";
+import { Navigation, navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
-import { SpeciesHelper } from "../../helpers/species";
+import { SpeciesHelper, SpeciesModel } from "../../helpers/species";
 import { connect } from "react-redux";
 import { Species } from "../../helpers/speciesEnum";
 import { makeKey } from "../../common/translationKey";
@@ -11,12 +11,19 @@ import { Window } from "../../common/window";
 import { Button } from "../../components/button";
 import { useState } from "react";
 import { SpeciesRandomTable } from "../table/speciesRandomTable";
+import store from "../../state/store";
+import { setCharacterSpecies } from "../../state/characterActions";
 
 
 const SoloSpeciesPage = ({era}) => {
 
-    const selectSpecies = (species: Species) => {
-
+    const selectSpecies = (species: SpeciesModel) => {
+        if (species.attributes?.length === 3) {
+            store.dispatch(setCharacterSpecies(species.id, species.attributes));
+        } else {
+            store.dispatch(setCharacterSpecies(species.id));
+        }
+        Navigation.navigateToPage(PageIdentity.SoloSpeciesDetails);
     }
 
     const { t } = useTranslation();
@@ -43,7 +50,7 @@ const SoloSpeciesPage = ({era}) => {
             <tr key={i} onClick={() => { if (Window.isCompact()) selectSpecies(s.id); }}>
                 <td className="selection-header">{s.localizedName}</td>
                 <td>{attributes}</td>
-                <td className="text-right"><Button buttonType={true} className="button-small"onClick={() => { selectSpecies(s.id) }} >{t('Common.button.select')}</Button></td>
+                <td className="text-right"><Button buttonType={true} className="button-small"onClick={() => { selectSpecies(s) }} >{t('Common.button.select')}</Button></td>
             </tr>
         );
     });

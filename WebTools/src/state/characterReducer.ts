@@ -1,5 +1,5 @@
-import { Character } from "../common/character";
-import { APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER } from "./characterActions";
+import { Character, SpeciesStep } from "../common/character";
+import { APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_SPECIES } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -15,6 +15,18 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 ...state,
                 currentCharacter: temp,
                 isModified: false
+            }
+        }
+        case SET_CHARACTER_SPECIES: {
+            let temp = state.currentCharacter.copy();
+            temp.speciesStep = new SpeciesStep(action.payload.species);
+            if (action.payload.attributes) {
+                temp.speciesStep.attributes = action.payload.attributes;
+            }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
             }
         }
         case MODIFY_CHARACTER_REPUTATION: {

@@ -4,8 +4,16 @@ import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
 import InstructionText from "../../components/instructionText";
 import { Button } from "../../components/button";
+import store from "../../state/store";
+import { setCharacter } from "../../state/characterActions";
+import { Character } from "../../common/character";
 
 const SoloConstructTypePage = () => {
+
+    const createCharacter = () => {
+        store.dispatch(setCharacter(Character.createSoloCharacter()));
+        goToPage(PageIdentity.SoloCharacterEra);
+    }
 
     const goToPage = (page: PageIdentity) => {
         Navigation.navigateToPage(page);
@@ -26,7 +34,7 @@ const SoloConstructTypePage = () => {
                 <InstructionText text={t('SoloConstructTypePage.instruction')} />
 
                 <div className="button-column">
-                    <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => goToPage(PageIdentity.SoloCharacterEra) } >{t('SoloConstructTypePage.character')}</Button>
+                    <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => createCharacter() } >{t('SoloConstructTypePage.character')}</Button>
                     <Button buttonType={true} className="btn btn-primary mt-4" enabled={false} onClick={() => {  } } >{t('SoloConstructTypePage.starship')}</Button>
                 </div>
             </div>

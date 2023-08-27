@@ -12,6 +12,7 @@ import store from '../state/store';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { CharacterTypeModel } from '../common/characterType';
+import { Stereotype } from '../common/construct';
 
 class SectionContent {
     name: string;
@@ -63,7 +64,7 @@ class CharacterSheetData {
 interface ICharacterSheetProperties extends WithTranslation {
     era?: Era;
     showProfile: boolean;
-    isModify?: boolean;
+    storeBased?: boolean;
     close: () => void;
 }
 
@@ -73,7 +74,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
     render() {
         const { t } = this.props;
         let c = character;
-        if (this.props.isModify && store.getState().character.currentCharacter) {
+        if (this.props.storeBased && store.getState().character.currentCharacter) {
             c = store.getState().character.currentCharacter;
         }
 
@@ -258,18 +259,19 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                                 </tbody>
                             </table>
                         </div>
-                        <div className="sheet-panel">
-                            <table className="sheet-section">
-                                <tbody>
-                                    <tr>
-                                        <td className="bg-dark text-uppercase">{t('Construct.other.talents')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark">
-                                            {talents}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        {c.stereotype === Stereotype.SoloCharacter ? undefined :
+                            (<div className="sheet-panel">
+                                <table className="sheet-section">
+                                    <tbody>
+                                        <tr>
+                                            <td className="bg-dark text-uppercase">{t('Construct.other.talents')}</td>
+                                            <td className="bg-light border-dark-nopadding text-dark">
+                                                {talents}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>)}
                         <div className="sheet-panel">
                             <table className="sheet-section">
                                 <tbody>

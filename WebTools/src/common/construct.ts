@@ -8,8 +8,8 @@ export enum ConstructType {
 }
 
 export enum Stereotype {
-    Main,
-    Solo,
+    MainCharacter,
+    SoloCharacter,
     SupportingCharacter,
     Npc,
     Starship
