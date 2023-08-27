@@ -72,5 +72,6 @@ export enum PageIdentity {
     TokenCreationPage,
 
     SoloConstructType,
-    SoloCharacterEra
+    SoloCharacterEra,
+    SoloSpecies,
 }

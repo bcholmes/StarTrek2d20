@@ -4,7 +4,6 @@ import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
 import InstructionText from "../../components/instructionText";
 import { Button } from "../../components/button";
-import { LoadingButton } from "../../common/loadingButton";
 
 const SoloConstructTypePage = () => {
 
@@ -33,7 +32,6 @@ const SoloConstructTypePage = () => {
             </div>
         </div>
     );
-
 
 }
 

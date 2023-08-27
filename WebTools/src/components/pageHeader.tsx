@@ -23,6 +23,10 @@ class PageHeader extends React.Component<IPageHeaderProperties, {}> {
 
         if (key !== t(key)) {
             return t(key);
+        } else if (this.props.page === PageIdentity.SoloCharacterEra) {
+            return t('Page.title.era');
+        } else if (this.props.page === PageIdentity.SoloSpecies) {
+            return t('Page.title.species');
         } else if (this.props.page === PageIdentity.SupportingCharacter) {
             return "Supporting Character";
         } else if (this.props.page === PageIdentity.StarshipToolSelection) {

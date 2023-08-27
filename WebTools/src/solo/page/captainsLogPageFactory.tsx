@@ -3,6 +3,7 @@ import { IPageFactoryRegistry } from "../../pages/pageFactory";
 import { PageIdentity } from "../../pages/pageIdentity";
 import SoloConstructTypePage from "./soloConstructTypePage";
 import SoloEraSelectionPage from "./soloEraSelectionPage";
+import SoloSpeciesPage from "./soloSpeciesPage";
 
 export class CaptainsLogPageFactory implements IPageFactoryRegistry {
 
@@ -22,6 +23,7 @@ export class CaptainsLogPageFactory implements IPageFactoryRegistry {
 
         this.factories[PageIdentity.SoloConstructType] = () => <SoloConstructTypePage />;
         this.factories[PageIdentity.SoloCharacterEra] = () => <SoloEraSelectionPage type={ConstructType.Character} />;
+        this.factories[PageIdentity.SoloSpecies] = () => <SoloSpeciesPage />;
     }
 
     findFactory(page: PageIdentity) {

@@ -145,7 +145,7 @@ class _Species {
             Species.Denobulan,
             "Denobulan",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.Core],
+            [Source.Core, Source.CaptainsLog],
             ["Hailing from the planet Denobula, Denobulans are a gregarious, inquisitive people who have been allies of Humanity since the 2130s. Though Denobula was not one of the founders of the Federation, the Denobulans joined soon after. Denobulans are a sociable people, with distinctive expressive features, who are used to living in close, communal conditions, and whose extended family groups are large and complex — a Denobulan may have several spouses, each of whom may have several partners of their own, and dozens of children between them. Culturally, they are intellectually curious, perceptive, and interested in a wide range of philosophies, though their scholarly nature, large families, and gregarious nature means that relatively few of them venture far from their homeworld."],
             [Attribute.Fitness, Attribute.Insight, Attribute.Reason],
             "Denobulan",
@@ -1407,7 +1407,7 @@ class _Species {
             Species.Xahean,
             "Xahean",
             [Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.DiscoveryCampaign],
+            [Source.DiscoveryCampaign, Source.CaptainsLog],
             ["Believing themselves to have been created at the exact moment their world was, the Xaheans are a species who have achieved a great level of technological advancement in a short amount of time. Capable of manipulating technology instinctively and possessing numerous self-defense mechanisms such as spines and the ability to render themselves almost invisible, the Xaheans have recently begun to experiment with dilithium crystals and warp technology. Their culture is currently at odds with their most principal beliefs ever sincethey discovered the power of dilithium; once dedicated to the belief of balance in all things, they now have become obsessed with advancing themselves technologically and commercially to the point of inflicting damage upon their homeworld. The appointment of their new queen may bring hope that balance can be restored to the Xahean way of life."],
             [Attribute.Control, Attribute.Insight, Attribute.Reason],
             "Xahean",
@@ -1634,6 +1634,58 @@ class _Species {
             ["A humanoid species known for involuntarily duplicating themselves (dooplercating) as a defense mechanism against uncomfortable emotions such as embarrassment. Once a Doopler gains control of their emotions, they can re-merge back into one being (de-dooplercating)."],
             [Attribute.Fitness, Attribute.Presence, Attribute.Insight],
             "Doopler",
+            "",
+            "",
+            [],
+            "",
+            []),
+        [Species.Horta]: new SpeciesModel(
+            Species.Horta,
+            "Horta",
+            [Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Source.CaptainsLog],
+            ["The Horta is a highly intelligent, silicon-based species capable of tunneling through solid rock."],
+            [Attribute.Fitness, Attribute.Presence, Attribute.Reason],
+            "Horta",
+            "",
+            "",
+            [],
+            "",
+            []),
+        [Species.Illyrian]: new SpeciesModel(
+            Species.Illyrian,
+            "Illyrian",
+            [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Source.CaptainsLog],
+            ["A spacefaring humanoid species that utilizes genetic engineering to adapt their bodies to the new planets they settle, rather than changing the planet to suit themselves."],
+            [Attribute.Daring, Attribute.Fitness, Attribute.Reason],
+            "Illyrian",
+            "",
+            "",
+            [],
+            "",
+            []),
+        [Species.Kazon]: new SpeciesModel(
+            Species.Kazon,
+            "Kazon",
+            [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Source.CaptainsLog],
+            ["An aggressive warrior species from the Delta Quadrant divided into eighteen different sects that war over resources. They have intricate head ridges and thick, coral-shaped hair."],
+            [Attribute.Daring, Attribute.Fitness, Attribute.Presence],
+            "Kazon",
+            "",
+            "",
+            [],
+            "",
+            []),
+        [Species.Suliban]: new SpeciesModel(
+            Species.Suliban,
+            "Suliban",
+            [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Source.CaptainsLog],
+            ["The Sulibans’ distinguishing physical characteristic is their mottled, greenish-tinted skin. Most of them are nomadic. One faction of Suliban are members of the Cabal and can alter their DNA and restructure their skeletons, giving them unique chameleon-like, shapeshifting abilities and enhanced senses."],
+            [Attribute.Control, Attribute.Daring, Attribute.Fitness],
+            "Suliban",
             "",
             "",
             [],
@@ -2173,6 +2225,19 @@ class _Species {
             let roll = Math.floor(Math.random() * quadrantSpecies.length);
             return quadrantSpecies[roll].id;
         }
+    }
+
+    getCaptainsLogSpecies() {
+        let result = [];
+        for (let id in this._species) {
+            const species = this._species[id];
+            if (species.sources.indexOf(Source.CaptainsLog) >= 0) {
+                result.push(species);
+            }
+        }
+        return result.sort((a, b) => {
+            return a.localizedName.localeCompare(b.localizedName);
+        });
     }
 }
 

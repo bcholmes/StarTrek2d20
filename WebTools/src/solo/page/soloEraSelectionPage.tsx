@@ -18,7 +18,7 @@ const SoloEraSelectionPage = ({type: ConstructType}) => {
 
     const eraSelected = (era: Era)=> {
         store.dispatch(setEra(era));
-        Navigation.navigateToPage(PageIdentity.ToolSelection);
+        Navigation.navigateToPage(PageIdentity.SoloSpecies);
     }
 
     const toTableRow = (e: EraModel, i: number) => {

@@ -33,7 +33,7 @@ export const eraRandomTable = () => {
                 break;
             default:
                 roll = D20.roll();
-            }
+        }
     }
     return era;
 }

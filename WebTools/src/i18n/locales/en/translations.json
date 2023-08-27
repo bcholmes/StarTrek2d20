@@ -164,6 +164,8 @@
 
     "SoloEraSelectionPage.instruction": "Select an era for your character or have one chosen randomly.",
 
+    "SoloSpeciesPage.instruction": "Select a species for your character or have one chosen randomly.",
+
     "SpaceframeOptionPage.text": "Do you want a standard spaceframe, or a custom spaceframe?",
 
     "SpaceframeOptionPage.button.standardSpaceframe": "Standard Spaceframe",
@@ -845,7 +847,7 @@
     "Species.ferengi.name": "Ferengi",
 
     "Species.horta.name": "Horta",
-    "Species.horta.name": "The Horta is a highly intelligent, silicon-based species capable of tunneling through solid rock.",
+    "Species.horta.description": "The Horta is a highly intelligent, silicon-based species capable of tunneling through solid rock.",
 
     "Species.human.name": "Human",
     "Species.human.aboutNames": "Human names vary wildly, and rather than make sweeping generalizations here, it’s better that Players seek out other sources for names, considering the vast range of languages, cultures, and traditions Humanity encompasses.",
@@ -858,7 +860,8 @@
 
     "Species.jelna.name": "Rigellian Jelna",
 
-    "Species.kazon.name": "An aggressive warrior species from the Delta Quadrant divided into eighteen different sects that war over resources. They have intricate head ridges and thick, coral-shaped hair.",
+    "Species.kazon.name": "Kazon",
+    "Species.kazon.description": "An aggressive warrior species from the Delta Quadrant divided into eighteen different sects that war over resources. They have intricate head ridges and thick, coral-shaped hair.",
 
     "Species.klingon.name": "Klingon",
 
