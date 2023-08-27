@@ -115,6 +115,10 @@ ModificationTypeSelectionPage.instruction,Please select the modification that yo
 ModificationTypeSelectionPage.whatMilestoneType,What kind of milestone is being applied?,Welche Art Meilenstein wird angewandt?,,Quel genre de jalon d'expérience est appliqué?
 PromotionPage.instruction,Select a new rank for this character.,Wählen Sie einen neuen Rang für diesen Charakter,,Selectionnez un nouveau grade pour ce personnage
 ReputationChangePage.instruction,Adjust the character's reputation as appropriate.,"Passen Sie das Ansehen des Charakters an, wenn nötig",,Ajustez la réputation du personnage le cas échéant
+SoloConstructTypePage.character,Character,,,
+SoloConstructTypePage.instruction,"Are you creating a character, or a starship?",,,
+SoloConstructTypePage.starship,Starship,,,
+SoloEraSelectionPage.instruction,Select an era for your character or have one chosen randomly.,,,
 SpaceframeOptionPage.text,"Do you want a standard spaceframe, or a custom spaceframe?",Möchten Sie eine Standard-Schiffsklasse oder eine eigene Schiffsklasse?,,Voulez vous un modèle standart ou un modèle personalisé?
 SpaceframeOptionPage.button.standardSpaceframe,Standard Spaceframe,Standard-Schiffsklasse,,Modèle Standart
 SpaceframeOptionPage.button.customSpaceframe,Custom Spaceframe,Eigene Schiffsklasse,,Modèle personnalisé
@@ -187,9 +191,11 @@ ToolSelection.supportingCharacter,Supporting Character,Nebencharakter,Personaje 
 ToolSelection.starship,Starship,Raumschiff,Nave estelar,Vaisseau spatial
 ToolSelection.spaceSector,Space Sector,Raumsektor,Sector espacial,Secteur spatial
 ToolSelection.randomNpc,Random NPC,Zufälliger NSC,,PNJ aléatoire
+Common.button.random,Random,,,
 Common.button.select,Select,Auswählen,Escoger,Choisir
 Common.button.selectAll,Select All,Alles auswählen,Seleccionar todo,Sélectionner tout
 Common.button.selectNone,Select None,Auswahl aufheben,Seleccionar Ninguno,Sélectionnez Aucun
+Common.button.showAll,Show Alll,,,
 Common.button.exportJson,Export to JSON,Als JSON exportieren,Exportar a JSON,Exporter au format JSON
 Common.button.export,Export,Export,,
 Common.button.exportVtt,Export for VTT,Für VTT exportieren,,
@@ -311,6 +317,7 @@ Page.title.missionProfileSelection,Mission Profile Selection,Auswahl Missionspro
 Page.title.missionProfileTalentSelection,Mission Profile Talent,Auswahl Missionsprofil-Talent,,Talent du Profil de mission
 Page.title.simpleStarship,Simplified Starship Creation,Vereinfachte Raumschifferschaffung,,Creation de Vaisseau Simplifiée
 Page.title.smallCraftStats,Small Craft Stats,Shuttle-Werte,,Navette
+Page.title.soloConstructType,Tool Selection,Werkzeug-Auswahl,,Selection d'Outil
 Page.title.sourceSelection,Sources,,,
 Page.title.spaceframeOption,Spaceframe Option,Schiffsklassen-Optionen,,Option de Modèle
 Page.title.spaceframeSelection,Spaceframe,Schiffsklasse,,Modèle de Vaisseau

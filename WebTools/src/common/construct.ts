@@ -2,6 +2,11 @@ import { Weapon } from "../helpers/weapons";
 import { CharacterType } from "./characterType";
 import { IConstruct } from "./iconstruct";
 
+export enum ConstructType {
+    Character,
+    Starship
+}
+
 export enum Stereotype {
     Main,
     Solo,

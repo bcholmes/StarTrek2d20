@@ -9,13 +9,19 @@ import { connect } from 'react-redux';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { Window } from '../common/window';
 import { Button } from '../components/button';
+import { PageFactory } from './pageFactory';
+import { LoadingButton } from '../common/loadingButton';
 
-interface IEraSelectionPageProperties extends WithTranslation {
+interface ISourceSelectionPageProperties extends WithTranslation {
     sources: Source[]
 }
 
-class SourceSelectionPage extends React.Component<IEraSelectionPageProperties, {}> {
-    constructor(props: IEraSelectionPageProperties) {
+interface ISourceSelectionPageState {
+    soloLoading: boolean;
+}
+
+class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties, ISourceSelectionPageState> {
+    constructor(props: ISourceSelectionPageProperties) {
         super(props);
 
         const profileButton = document.getElementById("profile-button");
@@ -24,6 +30,9 @@ class SourceSelectionPage extends React.Component<IEraSelectionPageProperties, {
         }
 
         character.saveMemento(PageIdentity.SourceSelection);
+        this.state = {
+            soloLoading: false
+        }
     }
 
     renderSources() {
@@ -86,8 +95,8 @@ class SourceSelectionPage extends React.Component<IEraSelectionPageProperties, {
                         <tr onClick={() => { if (Window.isCompact() && this.hasSource(Source.CaptainsLog)) this.selectSoloRules(); }}>
                             <td className="selection-header">{t('SourceSelectionPage.soloGameType')}</td>
                             <td className="text-right">
-                                <Button buttonType={true} className="btn btn-sm btn-primary" text={t('Common.button.select')} onClick={() => { this.selectSoloRules() }}
-                                    enabled={this.hasSource(Source.CaptainsLog)} />
+                                <LoadingButton loading={this.state.soloLoading} className="btn-sm"  onClick={() => { this.selectSoloRules() }}
+                                    enabled={this.hasSource(Source.CaptainsLog)} >{t('Common.button.select')}</LoadingButton>
                             </td>
                         </tr>
                     </tbody>
@@ -101,6 +110,12 @@ class SourceSelectionPage extends React.Component<IEraSelectionPageProperties, {
     }
 
     selectSoloRules() {
+        this.setState((state) => ({...state, soloLoading: true}));
+        PageFactory.instance.loadCaptainsLogFactory(() => {
+                this.setState((state) => ({...state, soloLoading: false}));
+                Navigation.navigateToPage(PageIdentity.SoloConstructType);
+            }
+        )
     }
 
     private sourceChanged(source: Source) {

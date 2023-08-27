@@ -158,6 +158,12 @@
 
     "ReputationChangePage.instruction": "Adjust the character's reputation as appropriate.",
 
+    "SoloConstructTypePage.character": "Character",
+    "SoloConstructTypePage.instruction": "Are you creating a character, or a starship?",
+    "SoloConstructTypePage.starship": "Starship",
+
+    "SoloEraSelectionPage.instruction": "Select an era for your character or have one chosen randomly.",
+
     "SpaceframeOptionPage.text": "Do you want a standard spaceframe, or a custom spaceframe?",
 
     "SpaceframeOptionPage.button.standardSpaceframe": "Standard Spaceframe",
@@ -233,9 +239,11 @@
     "ToolSelection.spaceSector": "Space Sector",
     "ToolSelection.randomNpc": "Random NPC",
 
+    "Common.button.random": "Random",
     "Common.button.select": "Select",
     "Common.button.selectAll": "Select All",
     "Common.button.selectNone": "Select None",
+    "Common.button.showAll": "Show Alll",
     "Common.button.exportJson": "Export to JSON",
     "Common.button.export": "Export",
     "Common.button.exportVtt": "Export for VTT",
@@ -365,6 +373,7 @@
     "Page.title.missionProfileTalentSelection": "Mission Profile Talent",
     "Page.title.simpleStarship": "Simplified Starship Creation",
     "Page.title.smallCraftStats": "Small Craft Stats",
+    "Page.title.soloConstructType": "Tool Selection",
     "Page.title.sourceSelection": "Sources",
     "Page.title.spaceframeOption": "Spaceframe Option",
     "Page.title.spaceframeSelection": "Spaceframe",

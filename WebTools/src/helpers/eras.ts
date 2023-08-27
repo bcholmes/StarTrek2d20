@@ -9,7 +9,7 @@ export enum Era {
     Discovery32
 }
 
-class EraModel {
+export class EraModel {
     id: Era;
     private name: string;
 

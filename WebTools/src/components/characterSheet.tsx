@@ -11,6 +11,7 @@ import {Era, ErasHelper} from '../helpers/eras';
 import store from '../state/store';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
+import { CharacterTypeModel } from '../common/characterType';
 
 class SectionContent {
     name: string;
@@ -140,6 +141,29 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                         <div className="sheet-panel">
                             <table className="sheet-section">
                                 <tbody>
+                                <tr>
+                                        <td className="bg-dark text-uppercase">{t('Construct.other.characterType')}</td>
+                                        <td className="bg-light border-dark-nopadding text-dark">
+                                            {CharacterTypeModel.getByType(c.type)?.localizedName}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className="sheet-panel">
+                            <table className="sheet-section">
+                                <tbody>
+                                    <tr>
+                                        <td className="bg-darker text-uppercase">{t('Construct.other.era')}:</td>
+                                        <td className="bg-light border-dark-nopadding text-dark">{era?.localizedName ?? ""}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div className="sheet-panel">
+                            <table className="sheet-section">
+                                <tbody>
                                     {data}
                                 </tbody>
                             </table>
@@ -266,17 +290,6 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                                         <td className="bg-light border-dark text-dark">
                                             {careerEvents}
                                         </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div className="sheet-panel">
-                            <table className="sheet-section">
-                                <tbody>
-                                    <tr>
-                                        <td className="bg-darker text-uppercase">{t('Construct.other.era')}:</td>
-                                        <td className="bg-light border-dark-nopadding text-dark">{era?.localizedName ?? ""}</td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -154,4 +154,14 @@ export class PageFactory {
         }
     }
 
+    loadCaptainsLogFactory(completion: () => void = () => {}) {
+        if (this.pageFactories["captainsLog"] == null) {
+            import(/* webpackChunkName: 'captainsLog' */ '../solo/page/captainsLogPageFactory').then(({CaptainsLogPageFactory}) => {
+                this.pageFactories["captainsLog"] = CaptainsLogPageFactory.instance;
+                completion();
+            });
+        } else {
+            completion();
+        }
+    }
 }

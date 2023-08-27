@@ -9,14 +9,6 @@ import { setEra } from '../state/contextActions';
 import { withTranslation, WithTranslation } from 'react-i18next';
 
 class EraSelectionPage extends React.Component<WithTranslation, {}> {
-    constructor(props: WithTranslation) {
-        super(props);
-
-        const profileButton = document.getElementById("profile-button");
-        if (profileButton !== undefined) {
-            profileButton.style.display = "";
-        }
-    }
 
     render() {
         const { t } = this.props;

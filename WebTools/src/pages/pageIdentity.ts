@@ -69,5 +69,8 @@ export enum PageIdentity {
     ModificationCompletePage,
 
     NpcConfiguration,
-    TokenCreationPage
+    TokenCreationPage,
+
+    SoloConstructType,
+    SoloCharacterEra
 }
