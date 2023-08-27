@@ -9,17 +9,23 @@ import { makeKey } from "../../common/translationKey";
 import { Attribute } from "../../helpers/attributes";
 import { Window } from "../../common/window";
 import { Button } from "../../components/button";
+import { useState } from "react";
+import { SpeciesRandomTable } from "../table/speciesRandomTable";
 
 
-const SoloSpeciesPage = ({era: Era}) => {
+const SoloSpeciesPage = ({era}) => {
 
     const selectSpecies = (species: Species) => {
 
     }
 
     const { t } = useTranslation();
+    const [randomSpecies, setRandomSpecies] = useState(null);
 
     let speciesList = SpeciesHelper.getCaptainsLogSpecies();
+    if (randomSpecies) {
+        speciesList = [SpeciesHelper.getSpeciesByType(randomSpecies)];
+    }
     let speciesRows = speciesList.map((s,i) => {
         const attributes = s.id === Species.Ktarian
             ? (
@@ -57,6 +63,11 @@ const SoloSpeciesPage = ({era: Era}) => {
             <p className="mt-3">
                 {t('SoloSpeciesPage.instruction')}
             </p>
+
+            <div className="my-4">
+                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSpecies( SpeciesRandomTable(era)) }>{t('Common.button.random')}</Button>
+                {randomSpecies != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSpecies(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+            </div>
 
             <table className="selection-list">
                     <thead>

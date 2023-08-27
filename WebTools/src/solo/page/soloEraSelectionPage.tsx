@@ -9,9 +9,9 @@ import { navigateTo, Navigation } from '../../common/navigator';
 import { PageIdentity } from '../../pages/pageIdentity';
 import { setEra } from '../../state/contextActions';
 import store from '../../state/store';
-import { eraRandomTable } from '../eraRandomTable';
+import { eraRandomTable } from '../table/eraRandomTable';
 
-const SoloEraSelectionPage = ({type: ConstructType}) => {
+const SoloEraSelectionPage = ({type}) => {
 
     const { t } = useTranslation();
     const [randomEra, setRandomEra] = useState(null);
@@ -47,16 +47,16 @@ const SoloEraSelectionPage = ({type: ConstructType}) => {
             <p className="mt-5">
                 {t('SoloEraSelectionPage.instruction')}
             </p>
+            <div className="my-4">
+                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEra( eraRandomTable()) }>{t('Common.button.random')}</Button>
+                {randomEra != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEra(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+            </div>
             <table className="selection-list">
                 <tbody>
                     {eras}
                 </tbody>
             </table>
 
-            <div className="mt-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEra( eraRandomTable()) }>{t('Common.button.random')}</Button>
-                {randomEra != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEra(null)} >{t('Common.button.showAll')}</Button>) : undefined}
-            </div>
         </div>
     );
 }
