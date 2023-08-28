@@ -3,23 +3,11 @@ import { Attribute, AttributesHelper } from "../helpers/attributes";
 import { IAttributeController } from "./attributeController";
 import AttributeImprovement from "./attributeImprovement";
 
-interface ISpeciesAttributeComponentsProperties {
+interface IAttributeComponentsProperties {
     controller: IAttributeController
 }
 
-interface ISpeciesAttributeComponentsState {
-    allocatedPoints: number;
-}
-
-class SpeciesAttributeComponent extends React.Component<ISpeciesAttributeComponentsProperties, ISpeciesAttributeComponentsState> {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            allocatedPoints: 0
-        }
-    }
+class AttributeComponent extends React.Component<IAttributeComponentsProperties, {}> {
 
     render() {
         return AttributesHelper.getAllAttributes().filter(a => this.props.controller.isShown(a)).map(a => this.renderSpeciesAttribute(a));
@@ -43,4 +31,4 @@ class SpeciesAttributeComponent extends React.Component<ISpeciesAttributeCompone
     }
 }
 
-export default SpeciesAttributeComponent;
+export default AttributeComponent;

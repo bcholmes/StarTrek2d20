@@ -16,7 +16,7 @@ import { hasSource } from '../state/contextFunctions';
 import InstructionText from '../components/instructionText';
 import { Header } from '../components/header';
 import { AttributeController, AttributeControllerFactory } from '../components/attributeController';
-import SpeciesAttributeComponent from '../components/speciesAttributeComponent';
+import AttributeComponent from '../components/attributeComponent';
 import SingleTalentSelectionList from '../components/singleTalentSelectionList';
 import { withTranslation, WithTranslation } from 'react-i18next';
 
@@ -57,7 +57,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
                         <div className="col-12 col-lg-6 my-4">
                             <Header level={2}>{t('Construct.other.attributes')} {selectDesc}</Header>
                             <div className="mt-4">
-                                <SpeciesAttributeComponent controller={this.attributesController} />
+                                <AttributeComponent controller={this.attributesController} />
                             </div>
 
                             <InstructionText text={this.attributesController.instructions} />

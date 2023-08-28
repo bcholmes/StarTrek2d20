@@ -53,6 +53,12 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     attributes.splice(temp.speciesStep.attributes.indexOf(action.payload.attribute), 1);
                     temp.speciesStep.attributes = attributes;
                 }
+            } else if (action.payload.context === StepContext.Environment && temp.environmentStep) {
+                if (action.payload.increase) {
+                    temp.environmentStep.attribute = action.payload.attribute;
+                } else if (temp.environmentStep.attribute === action.payload.attribute) {
+                    temp.environmentStep.attribute = undefined;
+                }
             }
             return {
                 ...state,

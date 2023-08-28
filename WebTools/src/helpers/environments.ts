@@ -24,7 +24,7 @@ export enum Environment {
     OccupationOrWar,
 }
 
-class EnvironmentModel {
+export class EnvironmentModel {
     id: Environment;
     key: string;
     name: string;

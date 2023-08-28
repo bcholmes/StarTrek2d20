@@ -88,7 +88,7 @@ export class CharacterSerializer {
         let environmentModel = (environment == null /* or, implicitly, undefined */) ? undefined : EnvironmentsHelper.getEnvironment(environment, type);
         if (environmentModel) {
             let result = environmentModel.localizedName;
-            if (environment === Environment.AnotherSpeciesWorld) {
+            if (environment === Environment.AnotherSpeciesWorld && otherSpecies != null) {
                 result = i18next.t('Environment.special.name', { name: result, species: otherSpecies, interpolation: { escapeValue: false } })
             }
             return result;

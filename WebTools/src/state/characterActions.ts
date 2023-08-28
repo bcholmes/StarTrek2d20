@@ -34,7 +34,7 @@ export function setCharacterSpecies(species: Species, attributes: Attribute[] = 
     }
 }
 
-export function setCharacterEnvironment(environment: Environment, otherSpecies?: Species) {
+export function setCharacterEnvironment(environment: Environment, otherSpecies?: string) {
     let payload = { environment: environment, otherSpecies: otherSpecies };
     return {
        type: SET_CHARACTER_ENVIRONMENT,

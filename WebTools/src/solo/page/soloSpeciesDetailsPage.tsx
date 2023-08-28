@@ -9,7 +9,7 @@ import InstructionText from "../../components/instructionText";
 import { IAttributeController } from "../../components/attributeController";
 import { Character } from "../../common/character";
 import { Attribute } from "../../helpers/attributes";
-import SpeciesAttributeComponent from "../../components/speciesAttributeComponent";
+import AttributeComponent from "../../components/attributeComponent";
 import { Button } from "../../components/button";
 import store from "../../state/store";
 import { StepContext, modifyCharacterAttribute } from "../../state/characterActions";
@@ -79,7 +79,7 @@ const SoloSpeciesDetailsPage = ({character}) => {
 
                 <div className="col-md-6 mt-3">
                     <Header level={2} className="mb-4">{t('Construct.other.attributes')}</Header>
-                    <SpeciesAttributeComponent controller={controller} />
+                    <AttributeComponent controller={controller} />
                 </div>
             </div>
 

@@ -53,7 +53,7 @@ class CharacterSheetData {
     private getEnvironmentString() {
         let env = this.character.environmentStep ? EnvironmentsHelper.getEnvironment(this.character.environmentStep.environment, this.character.type).name : i18n.t('Common.text.none');
 
-        if (this.character.environmentStep?.environment === Environment.AnotherSpeciesWorld) {
+        if (this.character.environmentStep?.environment === Environment.AnotherSpeciesWorld && this.character.environmentStep?.otherSpeciesWorld != null) {
             env += ` (${this.character.environmentStep?.otherSpeciesWorld})`;
         }
 

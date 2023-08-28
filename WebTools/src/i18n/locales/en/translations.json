@@ -162,6 +162,8 @@
     "SoloConstructTypePage.instruction": "Are you creating a character, or a starship?",
     "SoloConstructTypePage.starship": "Starship",
 
+    "SoloEnvironmentDetailsPage.speciesText": "Which species' world did the character experience?",
+
     "SoloEnvironmentPage.instruction": "In choosing your character's environment, you'll select either a setting or a condition. Each offers different storytelling prompts, but both provide the same type of benefits to your character.\n\nYou may also randomly determine one of those options.",
     "SoloEnvironmentPage.settings": "Settings",
     "SoloEnvironmentPage.conditions": "Conditions",

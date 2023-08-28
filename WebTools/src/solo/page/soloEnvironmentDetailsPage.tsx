@@ -3,9 +3,90 @@ import { Header } from "../../components/header";
 import { navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
+import { Environment, EnvironmentModel, EnvironmentsHelper } from "../../helpers/environments";
+import { CharacterType } from "../../common/characterType";
+import ValueInput from "../../components/valueInput";
+import { Button } from "../../components/button";
+import { IAttributeController } from "../../components/attributeController";
+import { Character } from "../../common/character";
+import { Attribute } from "../../helpers/attributes";
+import store from "../../state/store";
+import { StepContext, modifyCharacterAttribute, setCharacterEnvironment } from "../../state/characterActions";
+import AttributeComponent from "../../components/attributeComponent";
+import InstructionText from "../../components/instructionText";
+import { SpeciesHelper } from "../../helpers/species";
+import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
 
-const SoloEnvironmentDetailsPage = ({character}) => {
+interface ISoloEnvironmentDetailsProperties {
+    character: Character;
+}
+
+class SoloEnvironmentAttributeController implements IAttributeController {
+
+    readonly character: Character;
+    readonly attributes: Attribute[];
+
+    constructor(character: Character, attributes: Attribute[]) {
+        this.character = character;
+        this.attributes = attributes;
+    }
+
+    isShown(attribute: Attribute) {
+        return this.attributes.indexOf(attribute) >= 0;
+    }
+    isEditable(attribute: Attribute): boolean {
+        return this.isShown(attribute);
+    }
+    getValue(attribute: Attribute): number {
+        return this.character.attributes[attribute].value;
+    }
+    canIncrease(attribute: Attribute): boolean {
+        return this.isEditable(attribute) && this.character.environmentStep?.attribute == null;
+    }
+    canDecrease(attribute: Attribute): boolean {
+        return this.isEditable(attribute) && this.character.environmentStep?.attribute === attribute;
+    }
+    onIncrease(attribute: Attribute): void {
+        store.dispatch(modifyCharacterAttribute(attribute, StepContext.Environment));
+    }
+    onDecrease(attribute: Attribute): void {
+        store.dispatch(modifyCharacterAttribute(attribute, StepContext.Environment, false));
+    }
+    get instructions() {
+        return []
+    }
+}
+
+const SoloEnvironmentDetailsPage: React.FC<ISoloEnvironmentDetailsProperties> = ({character}) => {
     const { t } = useTranslation();
+
+    const environment = EnvironmentsHelper.getEnvironment(character.environmentStep?.environment, CharacterType.Starfleet);
+    let attributes = environment.attributes;
+    if (environment.id === Environment.Homeworld) {
+        let species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
+        attributes = species.attributes;
+    } else if (environment.id === Environment.AnotherSpeciesWorld && character.environmentStep?.otherSpeciesWorld) {
+        let speciesId = SpeciesHelper.getSpeciesByName(character.environmentStep?.otherSpeciesWorld);
+        let species = SpeciesHelper.getSpeciesByType(speciesId)
+        attributes = species?.attributes;
+    }
+
+    const controller = new SoloEnvironmentAttributeController(character, attributes);
+
+    const selectOtherSpecies = (s: string) => {
+        store.dispatch(setCharacterEnvironment(Environment.AnotherSpeciesWorld, s));
+    }
+
+    const navigateToNextStep = () => {
+
+    }
+
+    const isSpeciesSelectionNeeded = () => {
+        return environment.id === Environment.AnotherSpeciesWorld && character.environmentStep?.otherSpeciesWorld == null;
+    }
+
+    let speciesList = SpeciesHelper.getCaptainsLogSpecies().filter(s => s.id !== character.speciesStep?.species).map(s => new DropDownElement(s.name, s.localizedName));
+    speciesList.unshift(new DropDownElement("", t('Common.text.select')));
 
     return (
         <div className="page container ml-0">
@@ -19,7 +100,39 @@ const SoloEnvironmentDetailsPage = ({character}) => {
                     <li className="breadcrumb-item active" aria-current="page">{t('Page.title.environment')}</li>
                 </ol>
             </nav>
-            <Header>{t('Page.title.environmentDetails')}</Header>;
+
+            <Header>{environment.localizedName}</Header>
+                <p>{environment.localizedDescription}</p>
+                <div className="row">
+                    {environment.id === Environment.AnotherSpeciesWorld
+                    ? (<div className="col-md-6 my-3">
+                        <Header level={2} className="mb-3">{t('Construct.other.species')}</Header>
+                        <InstructionText text={t('SoloEnvironmentDetailsPage.speciesText')} />
+
+                        <div className="mt-3">
+                            <DropDownSelect items={speciesList} defaultValue={character.environmentStep?.otherSpeciesWorld ?? ""}
+                                onChange={s => {if (s !== "") {selectOtherSpecies(s as string)} }} />
+                        </div>
+                    </div>)
+                    : undefined}
+
+                    <div className="col-md-6 my-3">
+                        <Header level={2} className="mb-3">{t('Construct.other.attributes')} ({t('Common.text.selectOne')})</Header>
+                        {isSpeciesSelectionNeeded()
+                            ? undefined
+                            : (<AttributeComponent controller={controller} />)}
+                    </div>
+                    <div className="col-md-6 my-3">
+                        <Header level={2} className="mb-3">{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</Header>
+                    </div>
+                    <div className="col-md-6 my-3">
+                        <Header level={2} className="mb-3">{t('Construct.other.value')}</Header>
+
+                    </div>
+                </div>
+                <div className='text-right mt-4'>
+                    <Button text={t('Common.button.next')} buttonType={true} className="btn btn-primary" onClick={() => navigateToNextStep() }/>
+                </div>
         </div>);
 
 }
