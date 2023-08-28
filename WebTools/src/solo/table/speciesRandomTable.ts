@@ -5,7 +5,7 @@ import { Species } from "../../helpers/speciesEnum";
 export const SpeciesRandomTable = (era: Era) => {
 
     let tables = [EnterpriseSpeciesRandomTable, OriginalSeriesSpeciesRandomTable, NextGenerationSpeciesRandomTable];
-    let table = tables[Math.max(tables.length - 1, Math.floor(Math.random() * era))];
+    let table = tables[Math.min(tables.length - 1, Math.floor(Math.random() * (era + 1)))];
 
     return table();
 }

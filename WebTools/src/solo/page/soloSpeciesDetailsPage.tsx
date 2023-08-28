@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { navigateTo } from "../../common/navigator"
+import { Navigation, navigateTo } from "../../common/navigator"
 import { Header } from "../../components/header"
 import { PageIdentity } from "../../pages/pageIdentity"
 import { connect } from "react-redux";
@@ -11,6 +11,8 @@ import { Character } from "../../common/character";
 import { Attribute } from "../../helpers/attributes";
 import SpeciesAttributeComponent from "../../components/speciesAttributeComponent";
 import { Button } from "../../components/button";
+import store from "../../state/store";
+import { StepContext, modifyCharacterAttribute } from "../../state/characterActions";
 
 class SoloSpeciesAttributeController implements IAttributeController {
 
@@ -32,16 +34,16 @@ class SoloSpeciesAttributeController implements IAttributeController {
         return this.character.attributes[attribute].value;
     }
     canIncrease(attribute: Attribute): boolean {
-        return false;
+        return this.isEditable(attribute) && this.character.speciesStep?.attributes?.length < 3 && this.character.speciesStep?.attributes?.indexOf(attribute) < 0;
     }
     canDecrease(attribute: Attribute): boolean {
-        return false;
+        return this.isEditable(attribute) && this.character.speciesStep?.attributes?.indexOf(attribute) >= 0;
     }
     onIncrease(attribute: Attribute): void {
-
+        store.dispatch(modifyCharacterAttribute(attribute, StepContext.Species));
     }
     onDecrease(attribute: Attribute): void {
-
+        store.dispatch(modifyCharacterAttribute(attribute, StepContext.Species, false));
     }
     get instructions() {
         return []
@@ -82,7 +84,7 @@ const SoloSpeciesDetailsPage = ({character}) => {
             </div>
 
             <div className="text-right mt-4">
-                <Button buttonType={true} onClick={() => {}} className="btn btn-primary">{t('Common.button.next')}</Button>
+                <Button buttonType={true} onClick={() => Navigation.navigateToPage(PageIdentity.SoloEnvironment)} className="btn btn-primary">{t('Common.button.next')}</Button>
             </div>
         </div>
     )

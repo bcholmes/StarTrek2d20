@@ -27,6 +27,12 @@ class PageHeader extends React.Component<IPageHeaderProperties, {}> {
             return t('Page.title.era');
         } else if (this.props.page === PageIdentity.SoloSpecies) {
             return t('Page.title.species');
+        } else if (this.props.page === PageIdentity.SoloSpeciesDetails) {
+            return t('Page.title.speciesDetails');
+        } else if (this.props.page === PageIdentity.SoloEnvironment) {
+            return t('Page.title.environment');
+        } else if (this.props.page === PageIdentity.SoloEnvironmentDetails) {
+            return t('Page.title.environmentDetails');
         } else if (this.props.page === PageIdentity.SupportingCharacter) {
             return "Supporting Character";
         } else if (this.props.page === PageIdentity.StarshipToolSelection) {

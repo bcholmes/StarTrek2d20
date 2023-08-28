@@ -30,7 +30,7 @@ const SoloSpeciesPage = ({era}) => {
     const [randomSpecies, setRandomSpecies] = useState(null);
 
     let speciesList = SpeciesHelper.getCaptainsLogSpecies();
-    if (randomSpecies) {
+    if (randomSpecies != null) {
         speciesList = [SpeciesHelper.getSpeciesByType(randomSpecies)];
     }
     let speciesRows = speciesList.map((s,i) => {

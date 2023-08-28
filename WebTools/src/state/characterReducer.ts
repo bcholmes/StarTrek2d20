@@ -1,5 +1,5 @@
-import { Character, SpeciesStep } from "../common/character";
-import { APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_SPECIES } from "./characterActions";
+import { Character, EnvironmentStep, SpeciesStep } from "../common/character";
+import { APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_SPECIES, StepContext } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -22,6 +22,37 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
             temp.speciesStep = new SpeciesStep(action.payload.species);
             if (action.payload.attributes) {
                 temp.speciesStep.attributes = action.payload.attributes;
+            }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case SET_CHARACTER_ENVIRONMENT: {
+            let temp = state.currentCharacter.copy();
+            temp.environmentStep = new EnvironmentStep(action.payload.environment, action.payload.otherSpecies);
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case MODIFY_CHARACTER_ATTRIBUTE: {
+            let temp = state.currentCharacter.copy();
+            if (action.payload.context === StepContext.Species && temp.speciesStep) {
+                if (action.payload.increase) {
+                    temp.speciesStep.attributes.push(action.payload.attribute);
+                    if (temp.speciesStep.attributes.length > 3) {
+                        let attributes = [...temp.speciesStep.attributes];
+                        attributes.splice(0, attributes.length - 3);
+                        temp.speciesStep.attributes = attributes;
+                    }
+                } else if (temp.speciesStep.attributes.indexOf(action.payload.attribute) >= 0) {
+                    let attributes = [...temp.speciesStep.attributes];
+                    attributes.splice(temp.speciesStep.attributes.indexOf(action.payload.attribute), 1);
+                    temp.speciesStep.attributes = attributes;
+                }
             }
             return {
                 ...state,

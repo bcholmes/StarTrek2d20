@@ -197,6 +197,23 @@ class Environments {
         ),
     };
 
+    getEnvironmentSettings() {
+        let result = [];
+        for (let environment in this._environments) {
+            result.push(this._environments[environment]);
+        }
+
+        return result;
+    }
+
+    getEnvironmentSettingByType(environment: Environment) {
+        return this._environments[environment];
+    }
+
+    getEnvironmentConditionByType(environment: Environment) {
+        return this._alternateEnvironments[environment];
+    }
+
     getEnvironments(type: CharacterType) {
         let environments: EnvironmentModel[] = [];
         let environmentList = type === CharacterType.KlingonWarrior ? this._klingonEnvironments : this._environments;
@@ -224,7 +241,7 @@ class Environments {
         return environments;
     }
 
-    getAlternateEnvironments() {
+    getEnvironmentConditions() {
         let environments: EnvironmentModel[] = [];
         let environmentList = this._alternateEnvironments;
         for (var environment in environmentList) {
@@ -233,7 +250,7 @@ class Environments {
         }
 
         environments = environments.sort((a, b) => {
-            return a.name.localeCompare(b.name);
+            return a.localizedName.localeCompare(b.localizedName);
         });
         return environments;
     }

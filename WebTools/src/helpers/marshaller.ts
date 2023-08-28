@@ -57,6 +57,10 @@ class Marshaller {
             if (character.speciesStep.customSpeciesName && character.speciesStep.species === Species.Custom) {
                 sheet["species"]["customName"] = character.speciesStep.customSpeciesName;
             }
+
+            if (character.speciesStep.attributes) {
+                sheet["species"]["stats"] = character.speciesStep.attributes.map(a => Attribute[a]);
+            }
         }
 
         if (character.role != null) {
@@ -139,6 +143,10 @@ class Marshaller {
             }
             if (character.speciesStep.originalSpecies != null) {
                 sheet["species"]["original"] = Species[character.speciesStep.originalSpecies];
+            }
+
+            if (character.speciesStep.attributes) {
+                sheet["species"]["stats"] = character.speciesStep.attributes.map(a => Attribute[a]);
             }
         }
 

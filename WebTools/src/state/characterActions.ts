@@ -1,5 +1,6 @@
 import { Character, CharacterRank } from "../common/character";
 import { Attribute } from "../helpers/attributes";
+import { Environment } from "../helpers/environments";
 import { Skill } from "../helpers/skills";
 import { Species } from "../helpers/speciesEnum";
 export const SET_CHARACTER = 'SET_CHARACTER';
@@ -8,7 +9,14 @@ export const MODIFY_CHARACTER_RANK = 'MODIFY_CHARACTER_RANK';
 export const APPLY_NORMAL_MILESTONE_DISCIPLINE = 'APPLY_NORMAL_MILESTONE_DISCIPLINE';
 export const APPLY_NORMAL_MILESTONE_FOCUS = 'APPLY_NORMAL_MILESTONE_FOCUS';
 export const SET_CHARACTER_SPECIES = 'SET_CHARACTER_SPECIES';
+export const SET_CHARACTER_ENVIRONMENT = 'SET_CHARACTER_ENVIRONMENT';
+export const MODIFY_CHARACTER_ATTRIBUTE = 'MODIFY_CHARACTER_ATTRIBUTE';
 
+export enum StepContext {
+    Species,
+    Upbringing,
+    Environment
+}
 
 export function setCharacter(character: Character) {
     let payload = { character: character };
@@ -25,6 +33,23 @@ export function setCharacterSpecies(species: Species, attributes: Attribute[] = 
        payload: payload
     }
 }
+
+export function setCharacterEnvironment(environment: Environment, otherSpecies?: Species) {
+    let payload = { environment: environment, otherSpecies: otherSpecies };
+    return {
+       type: SET_CHARACTER_ENVIRONMENT,
+       payload: payload
+    }
+}
+
+export function modifyCharacterAttribute(attribute: Attribute, context: StepContext, increase: boolean = true) {
+    let payload = { attribute: attribute, context: context, increase: increase };
+    return {
+       type: MODIFY_CHARACTER_ATTRIBUTE,
+       payload: payload
+    }
+}
+
 export function modifyCharacterReputation(delta: number) {
     let payload = { delta: delta };
     return {

@@ -118,6 +118,12 @@ ReputationChangePage.instruction,Adjust the character's reputation as appropriat
 SoloConstructTypePage.character,Character,,,
 SoloConstructTypePage.instruction,"Are you creating a character, or a starship?",,,
 SoloConstructTypePage.starship,Starship,,,
+SoloEnvironmentPage.instruction,"In choosing your character's environment, you'll select either a setting or a condition. Each offers different storytelling prompts, but both provide the same type of benefits to your character.
+
+You may also randomly determine one of those options.",,,
+SoloEnvironmentPage.settings,Settings,,,
+SoloEnvironmentPage.conditions,Conditions,,,
+SoloEnvironmentPage.anotherSpeciesWorld.attributeText,Based on species.,,,
 SoloEraSelectionPage.instruction,Select an era for your character or have one chosen randomly.,,,
 SoloSpeciesPage.instruction,Select a species for your character or have one chosen randomly.,,,
 SpaceframeOptionPage.text,"Do you want a standard spaceframe, or a custom spaceframe?",Möchten Sie eine Standard-Schiffsklasse oder eine eigene Schiffsklasse?,,Voulez vous un modèle standart ou un modèle personalisé?

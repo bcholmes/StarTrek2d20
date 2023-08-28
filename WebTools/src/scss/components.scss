@@ -53,6 +53,10 @@ h1 .btn-link {
     min-width: 150px;
 }
 
+.btn.btn-sm.btn-primary {
+    line-height: 1.2;
+}
+
 .btn-group .btn {
     min-width: auto;
     text-transform: uppercase;

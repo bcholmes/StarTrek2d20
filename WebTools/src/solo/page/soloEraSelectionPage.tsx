@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ConstructType } from '../../common/construct';
 import { Era, EraModel, ErasHelper } from '../../helpers/eras';
 import { Window } from '../../common/window';
 import { Button } from '../../components/button';

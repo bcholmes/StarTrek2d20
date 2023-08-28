@@ -18,7 +18,7 @@ interface IEnvironmentSelectionProperties extends WithTranslation {
 class EnvironmentSelection extends React.Component<IEnvironmentSelectionProperties, {}> {
     render() {
         const { t, character } = this.props;
-        let environments = this.props.alternate ? EnvironmentsHelper.getAlternateEnvironments() : EnvironmentsHelper.getEnvironments(character.type);
+        let environments = this.props.alternate ? EnvironmentsHelper.getEnvironmentConditions() : EnvironmentsHelper.getEnvironments(character.type);
         var envs = environments.map((e, i) => {
             const attributes = e.getAttributesForCharacter(character).map((a, i) => {
                 return <div key={'attr-' + i}>{t(makeKey('Construct.attribute.', Attribute[a])) }</div>;

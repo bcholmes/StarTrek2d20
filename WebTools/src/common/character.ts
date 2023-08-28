@@ -128,6 +128,7 @@ export class SpeciesStep {
 
     constructor(species: Species) {
         this.species = species;
+        this.attributes = [];
     }
 }
 
@@ -150,6 +151,8 @@ export class UpbringingStep {
 export class EnvironmentStep {
     public readonly environment: Environment;
     public readonly otherSpeciesWorld?: string;
+    public attribute?: Attribute;
+    public discipline?: Skill;
 
     constructor(environment: Environment, otherSpeciesWorld?: string) {
         this.environment = environment;
@@ -252,6 +255,9 @@ export class Character extends Construct {
             let result = [];
             AttributesHelper.getAllAttributes().forEach(a => result.push(new CharacterAttribute(a, 7)));
             this.speciesStep?.attributes?.forEach(a => result[a].value = result[a].value + 1);
+            if (this.environmentStep?.attribute != null) {
+                result[this.environmentStep.attribute].value = result[this.environmentStep.attribute].value + 1;
+            }
             return result;
         } else {
             return this._attributes;
