@@ -3,11 +3,11 @@ import { Attribute, AttributesHelper } from "../helpers/attributes";
 import { IAttributeController } from "./attributeController";
 import AttributeImprovement from "./attributeImprovement";
 
-interface IAttributeComponentsProperties {
+interface IAttributeListComponentsProperties {
     controller: IAttributeController
 }
 
-class AttributeComponent extends React.Component<IAttributeComponentsProperties, {}> {
+class AttributeListComponent extends React.Component<IAttributeListComponentsProperties, {}> {
 
     render() {
         return AttributesHelper.getAllAttributes().filter(a => this.props.controller.isShown(a)).map(a => this.renderSpeciesAttribute(a));
@@ -31,4 +31,4 @@ class AttributeComponent extends React.Component<IAttributeComponentsProperties,
     }
 }
 
-export default AttributeComponent;
+export default AttributeListComponent;

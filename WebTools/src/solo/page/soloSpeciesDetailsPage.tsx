@@ -9,10 +9,12 @@ import InstructionText from "../../components/instructionText";
 import { IAttributeController } from "../../components/attributeController";
 import { Character } from "../../common/character";
 import { Attribute } from "../../helpers/attributes";
-import AttributeComponent from "../../components/attributeComponent";
+import AttributeComponent from "../../components/attributeListComponent";
 import { Button } from "../../components/button";
 import store from "../../state/store";
 import { StepContext, modifyCharacterAttribute } from "../../state/characterActions";
+import { ISoloCharacterProperties } from "./soloCharacterProperties";
+import { Dialog } from "../../components/dialog";
 
 class SoloSpeciesAttributeController implements IAttributeController {
 
@@ -51,12 +53,20 @@ class SoloSpeciesAttributeController implements IAttributeController {
 }
 
 
-const SoloSpeciesDetailsPage = ({character}) => {
+const SoloSpeciesDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
 
     const species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
     const controller = new SoloSpeciesAttributeController(character, species);
+
+    const navigateToNextPage = () => {
+        if (character.speciesStep?.attributes?.length !== 3) {
+            Dialog.show(t('SoloSpeciesPage.errorAttributes'));
+        } else {
+            Navigation.navigateToPage(PageIdentity.SoloEnvironment);
+        }
+    }
 
     return (
         <div className="page container ml-0">
@@ -78,13 +88,13 @@ const SoloSpeciesDetailsPage = ({character}) => {
                 </div>
 
                 <div className="col-md-6 mt-3">
-                    <Header level={2} className="mb-4">{t('Construct.other.attributes')}</Header>
+                    <Header level={2} className="mb-4">{t('Construct.other.attributes') + (species.attributes?.length > 3 ? ' ' + t('SpeciesDetails.selectThree') : "")} </Header>
                     <AttributeComponent controller={controller} />
                 </div>
             </div>
 
             <div className="text-right mt-4">
-                <Button buttonType={true} onClick={() => Navigation.navigateToPage(PageIdentity.SoloEnvironment)} className="btn btn-primary">{t('Common.button.next')}</Button>
+                <Button buttonType={true} onClick={() => navigateToNextPage()} className="btn btn-primary">{t('Common.button.next')}</Button>
             </div>
         </div>
     )

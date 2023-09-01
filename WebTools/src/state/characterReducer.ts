@@ -1,5 +1,5 @@
 import { Character, EnvironmentStep, SpeciesStep } from "../common/character";
-import { APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_SPECIES, StepContext } from "./characterActions";
+import { APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_SPECIES, StepContext } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -31,7 +31,16 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         }
         case SET_CHARACTER_ENVIRONMENT: {
             let temp = state.currentCharacter.copy();
+            let originalStep = temp.environmentStep;
             temp.environmentStep = new EnvironmentStep(action.payload.environment, action.payload.otherSpecies);
+            if (originalStep) {
+                if (originalStep.environment === temp.environmentStep.environment) {
+                    temp.environmentStep.discipline = originalStep.discipline;
+                    if (originalStep.otherSpeciesWorld === temp.environmentStep.otherSpeciesWorld) {
+                        temp.environmentStep.attribute = originalStep.attribute;
+                    }
+                }
+            }
             return {
                 ...state,
                 currentCharacter: temp,
@@ -58,6 +67,21 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.environmentStep.attribute = action.payload.attribute;
                 } else if (temp.environmentStep.attribute === action.payload.attribute) {
                     temp.environmentStep.attribute = undefined;
+                }
+            }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case MODIFY_CHARACTER_DISCIPLINE: {
+            let temp = state.currentCharacter.copy();
+            if (action.payload.context === StepContext.Environment && temp.environmentStep) {
+                if (action.payload.increase) {
+                    temp.environmentStep.discipline = action.payload.discipline;
+                } else if (temp.environmentStep.discipline === action.payload.discipline) {
+                    temp.environmentStep.discipline = undefined;
                 }
             }
             return {

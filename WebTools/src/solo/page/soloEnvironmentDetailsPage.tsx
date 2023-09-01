@@ -3,23 +3,22 @@ import { Header } from "../../components/header";
 import { navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
-import { Environment, EnvironmentModel, EnvironmentsHelper } from "../../helpers/environments";
+import { Environment, EnvironmentsHelper } from "../../helpers/environments";
 import { CharacterType } from "../../common/characterType";
-import ValueInput from "../../components/valueInput";
 import { Button } from "../../components/button";
 import { IAttributeController } from "../../components/attributeController";
 import { Character } from "../../common/character";
 import { Attribute } from "../../helpers/attributes";
 import store from "../../state/store";
-import { StepContext, modifyCharacterAttribute, setCharacterEnvironment } from "../../state/characterActions";
-import AttributeComponent from "../../components/attributeComponent";
+import { StepContext, modifyCharacterAttribute, modifyCharacterDiscipline, setCharacterEnvironment } from "../../state/characterActions";
+import AttributeListComponent from "../../components/attributeListComponent";
 import InstructionText from "../../components/instructionText";
 import { SpeciesHelper } from "../../helpers/species";
 import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
-
-interface ISoloEnvironmentDetailsProperties {
-    character: Character;
-}
+import DisciplineListComponent, { IDisciplineController } from "../../components/disciplineListComponent";
+import { Skill } from "../../helpers/skills";
+import SoloValueInput from "../component/soloValueInput";
+import { ISoloCharacterProperties } from "./soloCharacterProperties";
 
 class SoloEnvironmentAttributeController implements IAttributeController {
 
@@ -57,7 +56,41 @@ class SoloEnvironmentAttributeController implements IAttributeController {
     }
 }
 
-const SoloEnvironmentDetailsPage: React.FC<ISoloEnvironmentDetailsProperties> = ({character}) => {
+class SoloEnvironmentDisciplineController implements IDisciplineController {
+
+    readonly character: Character;
+    readonly disciplines: Skill[];
+
+    constructor(character: Character, disciplines: Skill[]) {
+        this.character = character;
+        this.disciplines = disciplines;
+        console.log(disciplines);
+    }
+
+    isShown(discipline: Skill) {
+        return this.disciplines.indexOf(discipline) >= 0;
+    }
+    isEditable(discipline: Skill): boolean {
+        return this.isShown(discipline);
+    }
+    getValue(discipline: Skill): number {
+        return this.character.skills[discipline].expertise;
+    }
+    canIncrease(discipline: Skill): boolean {
+        return this.isEditable(discipline) && this.character.environmentStep?.discipline == null;
+    }
+    canDecrease(discipline: Skill): boolean {
+        return this.isEditable(discipline) && this.character.environmentStep?.discipline === discipline;
+    }
+    onIncrease(discipline: Skill): void {
+        store.dispatch(modifyCharacterDiscipline(discipline, StepContext.Environment));
+    }
+    onDecrease(discipline: Skill): void {
+        store.dispatch(modifyCharacterDiscipline(discipline, StepContext.Environment, false));
+    }
+}
+
+const SoloEnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
     const { t } = useTranslation();
 
     const environment = EnvironmentsHelper.getEnvironment(character.environmentStep?.environment, CharacterType.Starfleet);
@@ -72,6 +105,7 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloEnvironmentDetailsProperties> = 
     }
 
     const controller = new SoloEnvironmentAttributeController(character, attributes);
+    const disciplineController = new SoloEnvironmentDisciplineController(character, environment.disciplines);
 
     const selectOtherSpecies = (s: string) => {
         store.dispatch(setCharacterEnvironment(Environment.AnotherSpeciesWorld, s));
@@ -120,14 +154,17 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloEnvironmentDetailsProperties> = 
                         <Header level={2} className="mb-3">{t('Construct.other.attributes')} ({t('Common.text.selectOne')})</Header>
                         {isSpeciesSelectionNeeded()
                             ? undefined
-                            : (<AttributeComponent controller={controller} />)}
+                            : (<AttributeListComponent controller={controller} />)}
                     </div>
                     <div className="col-md-6 my-3">
                         <Header level={2} className="mb-3">{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</Header>
+
+                        <DisciplineListComponent controller={disciplineController} />
                     </div>
                     <div className="col-md-6 my-3">
                         <Header level={2} className="mb-3">{t('Construct.other.value')}</Header>
 
+                        <SoloValueInput textDescription={t('Value.environment.text')} onValueChanged={(string) => {}}/>
                     </div>
                 </div>
                 <div className='text-right mt-4'>

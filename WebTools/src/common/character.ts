@@ -1,5 +1,5 @@
 ﻿import {Attribute, AttributesHelper} from '../helpers/attributes';
-import {Skill} from '../helpers/skills';
+import {Skill, SkillsHelper} from '../helpers/skills';
 import {Career} from '../helpers/careerEnum';
 import {Environment} from '../helpers/environments';
 import {Species} from '../helpers/speciesEnum';
@@ -170,7 +170,7 @@ export class Character extends Construct {
     public reputation = 10;
     public reprimands = 0;
     public _attributes: CharacterAttribute[] = [];
-    public skills: CharacterSkill[] = [];
+    public _skills: CharacterSkill[] = [];
     public traits: string[];
     public additionalTraits: string;
     public talents: { [name: string]: CharacterTalent };
@@ -209,7 +209,7 @@ export class Character extends Construct {
         this._attributes.push(new CharacterAttribute(Attribute.Reason, this._attributeInitialValue));
 
         for (var i = 0; i <= Skill.Medicine; i++) {
-            this.skills.push(new CharacterSkill(i, 1));
+            this._skills.push(new CharacterSkill(i, 1));
         }
 
         this._mementos = [];
@@ -261,6 +261,19 @@ export class Character extends Construct {
             return result;
         } else {
             return this._attributes;
+        }
+    }
+
+    get skills() {
+        if (this.stereotype === Stereotype.SoloCharacter) {
+            let result = [];
+            SkillsHelper.getSkills().forEach(s => result.push(new CharacterSkill(s, 1)));
+            if (this.environmentStep?.discipline != null) {
+                result[this.environmentStep.discipline].expertise = result[this.environmentStep.discipline].expertise + 1;
+            }
+            return result;
+        } else {
+            return this._skills;
         }
     }
 
@@ -658,7 +671,7 @@ export class Character extends Construct {
             }
         });
 
-        this.skills.forEach(s => {
+        this._skills.forEach(s => {
             if (s.expertise > maxDiscipline) {
                 s.expertise = maxDiscipline;
             }
@@ -678,9 +691,9 @@ export class Character extends Construct {
             character._attributes[a.attribute].attribute = a.attribute;
             character._attributes[a.attribute].value = a.value;
         });
-        this.skills.forEach(s => {
-            character.skills[s.skill].skill = s.skill;
-            character.skills[s.skill].expertise = s.expertise;
+        this._skills.forEach(s => {
+            character._skills[s.skill].skill = s.skill;
+            character._skills[s.skill].expertise = s.expertise;
         });
         for (var talent in this.talents) {
             const t = this.talents[talent];
@@ -710,6 +723,8 @@ export class Character extends Construct {
         }
         if (this.environmentStep) {
             character.environmentStep = new EnvironmentStep(this.environmentStep.environment, this.environmentStep.otherSpeciesWorld);
+            character.environmentStep.attribute = this.environmentStep.attribute;
+            character.environmentStep.discipline = this.environmentStep.discipline;
         }
         if (this.upbringingStep) {
             character.upbringingStep = new UpbringingStep(this.upbringingStep.upbringing);

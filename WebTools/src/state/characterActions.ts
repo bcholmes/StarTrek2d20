@@ -11,11 +11,16 @@ export const APPLY_NORMAL_MILESTONE_FOCUS = 'APPLY_NORMAL_MILESTONE_FOCUS';
 export const SET_CHARACTER_SPECIES = 'SET_CHARACTER_SPECIES';
 export const SET_CHARACTER_ENVIRONMENT = 'SET_CHARACTER_ENVIRONMENT';
 export const MODIFY_CHARACTER_ATTRIBUTE = 'MODIFY_CHARACTER_ATTRIBUTE';
+export const MODIFY_CHARACTER_DISCIPLINE = 'MODIFY_CHARACTER_DISCIPLINE';
 
 export enum StepContext {
     Species,
+    Environment,
     Upbringing,
-    Environment
+    Training,
+    Career,
+    CareerEvent1,
+    CareerEvent2
 }
 
 export function setCharacter(character: Character) {
@@ -46,6 +51,14 @@ export function modifyCharacterAttribute(attribute: Attribute, context: StepCont
     let payload = { attribute: attribute, context: context, increase: increase };
     return {
        type: MODIFY_CHARACTER_ATTRIBUTE,
+       payload: payload
+    }
+}
+
+export function modifyCharacterDiscipline(discipline: Skill, context: StepContext, increase: boolean = true) {
+    let payload = { discipline: discipline, context: context, increase: increase };
+    return {
+       type: MODIFY_CHARACTER_DISCIPLINE,
        payload: payload
     }
 }
