@@ -772,7 +772,7 @@ export class FantasyGroupsVttExporter {
 
     convertEnvironment(character: Character) {
         let environment = character.environmentStep ? CharacterSerializer.serializeEnvironment(character.environmentStep.environment,
-            character.environmentStep.otherSpeciesWorld, character.type) : null;
+            character.environmentStep.otherSpecies, character.type) : null;
         if (environment) {
             return {
                 "name": "environment",

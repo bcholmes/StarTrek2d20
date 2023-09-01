@@ -150,13 +150,13 @@ export class UpbringingStep {
 
 export class EnvironmentStep {
     public readonly environment: Environment;
-    public readonly otherSpeciesWorld?: string;
+    public readonly otherSpecies?: Species;
     public attribute?: Attribute;
     public discipline?: Skill;
 
-    constructor(environment: Environment, otherSpeciesWorld?: string) {
+    constructor(environment: Environment, otherSpecies?: Species) {
         this.environment = environment;
-        this.otherSpeciesWorld = otherSpeciesWorld;
+        this.otherSpecies = otherSpecies;
     }
 }
 
@@ -722,7 +722,7 @@ export class Character extends Construct {
             }
         }
         if (this.environmentStep) {
-            character.environmentStep = new EnvironmentStep(this.environmentStep.environment, this.environmentStep.otherSpeciesWorld);
+            character.environmentStep = new EnvironmentStep(this.environmentStep.environment, this.environmentStep.otherSpecies);
             character.environmentStep.attribute = this.environmentStep.attribute;
             character.environmentStep.discipline = this.environmentStep.discipline;
         }

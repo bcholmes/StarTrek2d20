@@ -84,12 +84,13 @@ export class CharacterSerializer {
         }
     }
 
-    public static serializeEnvironment(environment: Environment, otherSpecies: string, type: CharacterType) {
+    public static serializeEnvironment(environment: Environment, otherSpecies: Species, type: CharacterType) {
         let environmentModel = (environment == null /* or, implicitly, undefined */) ? undefined : EnvironmentsHelper.getEnvironment(environment, type);
         if (environmentModel) {
             let result = environmentModel.localizedName;
             if (environment === Environment.AnotherSpeciesWorld && otherSpecies != null) {
-                result = i18next.t('Environment.special.name', { name: result, species: otherSpecies, interpolation: { escapeValue: false } })
+                let other = SpeciesHelper.getSpeciesByType(otherSpecies);
+                result = i18next.t('Environment.special.name', { name: result, species: other.localizedName, interpolation: { escapeValue: false } })
             }
             return result;
         } else {

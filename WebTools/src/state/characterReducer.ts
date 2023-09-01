@@ -36,7 +36,7 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
             if (originalStep) {
                 if (originalStep.environment === temp.environmentStep.environment) {
                     temp.environmentStep.discipline = originalStep.discipline;
-                    if (originalStep.otherSpeciesWorld === temp.environmentStep.otherSpeciesWorld) {
+                    if (originalStep.otherSpecies === temp.environmentStep.otherSpecies) {
                         temp.environmentStep.attribute = originalStep.attribute;
                     }
                 }

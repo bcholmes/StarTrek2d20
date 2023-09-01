@@ -611,7 +611,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
             this.fillField(form, 'Upbringing', character.upbringingStep.description);
         }
         this.fillField(form, 'Assignment', this.serializeAssignment(character));
-        this.fillField(form, 'Environment', CharacterSerializer.serializeEnvironment(character.environmentStep?.environment, character.environmentStep?.otherSpeciesWorld, character.type));
+        this.fillField(form, 'Environment', CharacterSerializer.serializeEnvironment(character.environmentStep?.environment, character.environmentStep?.otherSpecies, character.type));
 
         this.fillValues(form, character);
         this.fillTalents(form, character);

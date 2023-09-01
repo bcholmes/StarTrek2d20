@@ -28,7 +28,7 @@ class EnvironmentDetailsPage extends React.Component<WithTranslation, {}> {
         this._otherSpecies = null;
 
         if (character.environmentStep?.environment === Environment.AnotherSpeciesWorld) {
-            this._otherSpecies = SpeciesHelper.getSpeciesByName(character.environmentStep?.otherSpeciesWorld);
+            this._otherSpecies = SpeciesHelper.getSpeciesByType(character.environmentStep?.otherSpecies)?.id;
         }
     }
 

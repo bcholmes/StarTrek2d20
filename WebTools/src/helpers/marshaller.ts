@@ -175,8 +175,8 @@ class Marshaller {
             let environment = {
                 "id": Environment[character.environmentStep.environment]
             };
-            if (character.environmentStep.otherSpeciesWorld != null) {
-                environment["otherSpeciesWorld"] = character.environmentStep.otherSpeciesWorld
+            if (character.environmentStep.otherSpecies != null) {
+                environment["otherSpecies"] = Species[character.environmentStep.otherSpecies];
             }
             sheet["environment"] = environment;
         }
@@ -670,7 +670,13 @@ class Marshaller {
             let environment = EnvironmentsHelper.getEnvironmentByTypeName(json.environment.id, result.type);
             if (environment) {
                 if (environment.id === Environment.AnotherSpeciesWorld) {
-                    result.environmentStep = new EnvironmentStep(environment.id, json.environment.otherSpeciesWorld);
+                    if (json.environment.otherSpeciesWorld) {
+                        result.environmentStep = new EnvironmentStep(environment.id, SpeciesHelper.getSpeciesByName(json.environment.otherSpeciesWorld));
+                    } else if (json.environment.otherSpecies) {
+                        result.environmentStep = new EnvironmentStep(environment.id,  SpeciesHelper.getSpeciesTypeByName(json.environment.otherSpecies));
+                    } else {
+                        result.environmentStep = new EnvironmentStep(environment.id);
+                    }
                 } else {
                     result.environmentStep = new EnvironmentStep(environment.id);
                 }

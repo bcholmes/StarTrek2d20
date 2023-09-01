@@ -13,6 +13,7 @@ import { withTranslation, WithTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
+import { CharacterSerializer } from '../common/characterSerializer';
 
 class SectionContent {
     name: string;
@@ -53,8 +54,8 @@ class CharacterSheetData {
     private getEnvironmentString() {
         let env = this.character.environmentStep ? EnvironmentsHelper.getEnvironment(this.character.environmentStep.environment, this.character.type).name : i18n.t('Common.text.none');
 
-        if (this.character.environmentStep?.environment === Environment.AnotherSpeciesWorld && this.character.environmentStep?.otherSpeciesWorld != null) {
-            env += ` (${this.character.environmentStep?.otherSpeciesWorld})`;
+        if (this.character.environmentStep?.environment === Environment.AnotherSpeciesWorld && this.character.environmentStep?.otherSpecies != null) {
+            env = CharacterSerializer.serializeEnvironment(this.character.environmentStep.environment, this.character.environmentStep.otherSpecies, this.character.type);
         }
 
         return env;

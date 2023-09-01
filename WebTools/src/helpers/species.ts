@@ -1778,17 +1778,14 @@ class _Species {
     }
 
     getSpeciesByName(name: string) {
-        var n = 0;
-
         for (var sp in this._species) {
             var spec = this._species[sp];
 
             if (spec.name === name) {
-                return n;
+                return spec.id;
             }
-
-            n++;
         }
+        return undefined;
     }
 
     getSpeciesTypeByName(name: string) {

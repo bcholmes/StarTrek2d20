@@ -7,11 +7,13 @@ import {Button} from './button';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { makeKey } from '../common/translationKey';
 import { Character } from '../common/character';
+import { Species } from '../helpers/speciesEnum';
+import { SpeciesHelper } from '../helpers/species';
 
 interface IEnvironmentSelectionProperties extends WithTranslation {
     alternate: boolean;
     character: Character;
-    onSelection: (env: Environment, name: string) => void;
+    onSelection: (env: Environment, speciesId?: Species) => void;
     onCancel: () => void;
 }
 
@@ -28,14 +30,20 @@ class EnvironmentSelection extends React.Component<IEnvironmentSelectionProperti
                 return <div key={'skill-' + i}>{t(makeKey('Construct.discipline.', Skill[d]))}</div>;
             });
 
+            // this is kind of awful...
+            let otherSpeciesWorldName = e.name.indexOf("(") >= 0 ? e.name.substring(e.name.indexOf("(") + 1, e.name.indexOf(")")) : undefined;
+            let otherSpecies = otherSpeciesWorldName ? SpeciesHelper.getSpeciesByName(otherSpeciesWorldName) : undefined;
+
+            console.log("--", otherSpeciesWorldName, otherSpecies);
+
             return (
                 <tr key={i}
-                    onClick={() => { if (Window.isCompact()) this.props.onSelection(e.id, e.localizedName); }}>
+                    onClick={() => { if (Window.isCompact()) this.props.onSelection(e.id, otherSpecies); }}>
                     <td className="selection-header">{e.localizedName}</td>
                     <td>{attributes}</td>
                     <td>{disciplines}</td>
                     <td className="text-right">
-                        <Button className="button-small" onClick={() => { this.props.onSelection(e.id, e.localizedName) } } buttonType={true} >{t('Common.button.select')}</Button>
+                        <Button className="button-small" onClick={() => { this.props.onSelection(e.id, otherSpecies) } } buttonType={true} >{t('Common.button.select')}</Button>
                     </td>
                 </tr>
             )

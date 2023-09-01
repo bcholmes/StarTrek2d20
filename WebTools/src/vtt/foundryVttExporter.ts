@@ -343,7 +343,7 @@ export class FoundryVttExporter {
         });
 
         if (character.environmentStep) {
-            result.system["environment"] = CharacterSerializer.serializeEnvironment(character.environmentStep?.environment, character.environmentStep?.otherSpeciesWorld, character.type);
+            result.system["environment"] = CharacterSerializer.serializeEnvironment(character.environmentStep?.environment, character.environmentStep?.otherSpecies, character.type);
         } else {
             result.system["environment"] = "";
         }

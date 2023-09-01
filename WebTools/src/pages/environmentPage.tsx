@@ -12,6 +12,7 @@ import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcr
 import { hasSource } from '../state/contextFunctions';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { Header } from '../components/header';
+import { Species } from '../helpers/speciesEnum';
 
 interface IEnvironmentPageState {
     showSelection: boolean;
@@ -63,7 +64,7 @@ class EnvironmentPage extends React.Component<WithTranslation, IEnvironmentPageS
             : (
                 <EnvironmentSelection
                     alternate={this.state.alternate}
-                    onSelection={(env, name) => this.selectEnvironment(env, name) }
+                    onSelection={(env, speciesId) => this.selectEnvironment(env, speciesId) }
                     onCancel={() => this.hideEnvironments() }
                     character={character} />
             );
@@ -81,12 +82,12 @@ class EnvironmentPage extends React.Component<WithTranslation, IEnvironmentPageS
 
     private rollEnvironment() {
         let env = EnvironmentsHelper.generateEnvironment();
-        this.selectEnvironment(env, "");
+        this.selectEnvironment(env);
     }
 
     private rollAlternateEnvironment() {
         let env = EnvironmentsHelper.generateAlternateEnvironment();
-        this.selectEnvironment(env, "");
+        this.selectEnvironment(env);
     }
 
     private showEnvironments() {
@@ -101,9 +102,9 @@ class EnvironmentPage extends React.Component<WithTranslation, IEnvironmentPageS
         this.setState({ showSelection: false });
     }
 
-    private selectEnvironment(env: Environment, name: string) {
+    private selectEnvironment(env: Environment, id?: Species) {
        if (env === Environment.AnotherSpeciesWorld) {
-            character.environmentStep = new EnvironmentStep(env, name.substring(name.indexOf("(") + 1, name.indexOf(")")));
+            character.environmentStep = new EnvironmentStep(env, id);
         } else {
             character.environmentStep = new EnvironmentStep(env);
         }

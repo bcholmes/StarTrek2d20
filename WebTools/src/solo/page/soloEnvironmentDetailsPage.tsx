@@ -19,6 +19,7 @@ import DisciplineListComponent, { IDisciplineController } from "../../components
 import { Skill } from "../../helpers/skills";
 import SoloValueInput from "../component/soloValueInput";
 import { ISoloCharacterProperties } from "./soloCharacterProperties";
+import { Species } from "../../helpers/speciesEnum";
 
 class SoloEnvironmentAttributeController implements IAttributeController {
 
@@ -98,16 +99,15 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({charact
     if (environment.id === Environment.Homeworld) {
         let species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
         attributes = species.attributes;
-    } else if (environment.id === Environment.AnotherSpeciesWorld && character.environmentStep?.otherSpeciesWorld) {
-        let speciesId = SpeciesHelper.getSpeciesByName(character.environmentStep?.otherSpeciesWorld);
-        let species = SpeciesHelper.getSpeciesByType(speciesId)
+    } else if (environment.id === Environment.AnotherSpeciesWorld && character.environmentStep?.otherSpecies) {
+        let species = SpeciesHelper.getSpeciesByType(character.environmentStep?.otherSpecies);
         attributes = species?.attributes;
     }
 
     const controller = new SoloEnvironmentAttributeController(character, attributes);
     const disciplineController = new SoloEnvironmentDisciplineController(character, environment.disciplines);
 
-    const selectOtherSpecies = (s: string) => {
+    const selectOtherSpecies = (s: Species) => {
         store.dispatch(setCharacterEnvironment(Environment.AnotherSpeciesWorld, s));
     }
 
@@ -116,10 +116,10 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({charact
     }
 
     const isSpeciesSelectionNeeded = () => {
-        return environment.id === Environment.AnotherSpeciesWorld && character.environmentStep?.otherSpeciesWorld == null;
+        return environment.id === Environment.AnotherSpeciesWorld && character.environmentStep?.otherSpecies == null;
     }
 
-    let speciesList = SpeciesHelper.getCaptainsLogSpecies().filter(s => s.id !== character.speciesStep?.species).map(s => new DropDownElement(s.name, s.localizedName));
+    let speciesList = SpeciesHelper.getCaptainsLogSpecies().filter(s => s.id !== character.speciesStep?.species).map(s => new DropDownElement(s.id, s.localizedName));
     speciesList.unshift(new DropDownElement("", t('Common.text.select')));
 
     return (
@@ -144,8 +144,8 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({charact
                         <InstructionText text={t('SoloEnvironmentDetailsPage.speciesText')} />
 
                         <div className="mt-3">
-                            <DropDownSelect items={speciesList} defaultValue={character.environmentStep?.otherSpeciesWorld ?? ""}
-                                onChange={s => {if (s !== "") {selectOtherSpecies(s as string)} }} />
+                            <DropDownSelect items={speciesList} defaultValue={character.environmentStep?.otherSpecies ?? ""}
+                                onChange={s => {if (s !== "") {selectOtherSpecies(s as Species)} }} />
                         </div>
                     </div>)
                     : undefined}
