@@ -1,5 +1,5 @@
-import { Character, EnvironmentStep, SpeciesStep } from "../common/character";
-import { APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_SPECIES, StepContext } from "./characterActions";
+import { Character, EnvironmentStep, SpeciesStep, UpbringingStep } from "../common/character";
+import { APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FOCUS, SET_CHARACTER_SPECIES, StepContext } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -47,6 +47,21 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 isModified: true
             }
         }
+        case SET_CHARACTER_EARLY_OUTLOOK: {
+            let temp = state.currentCharacter.copy();
+            let originalStep = temp.upbringingStep;
+            temp.upbringingStep = new UpbringingStep(action.payload.earlyOutlook, action.payload.accepted);
+            if (originalStep) {
+                if (originalStep.upbringing?.id === temp.upbringingStep.upbringing?.id) {
+                    temp.upbringingStep.discipline = originalStep.discipline;
+                }
+            }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
         case MODIFY_CHARACTER_ATTRIBUTE: {
             let temp = state.currentCharacter.copy();
             if (action.payload.context === StepContext.Species && temp.speciesStep) {
@@ -75,6 +90,17 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 isModified: true
             }
         }
+        case SET_CHARACTER_FOCUS: {
+            let temp = state.currentCharacter.copy();
+            if (action.payload.context === StepContext.EarlyOutlook && temp.upbringingStep) {
+                temp.upbringingStep.focus = action.payload.focus;
+            }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
         case MODIFY_CHARACTER_DISCIPLINE: {
             let temp = state.currentCharacter.copy();
             if (action.payload.context === StepContext.Environment && temp.environmentStep) {
@@ -82,6 +108,12 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.environmentStep.discipline = action.payload.discipline;
                 } else if (temp.environmentStep.discipline === action.payload.discipline) {
                     temp.environmentStep.discipline = undefined;
+                }
+            } else if (action.payload.context === StepContext.EarlyOutlook && temp.upbringingStep) {
+                if (action.payload.increase) {
+                    temp.upbringingStep.discipline = action.payload.discipline;
+                } else if (temp.upbringingStep.discipline === action.payload.discipline) {
+                    temp.upbringingStep.discipline = undefined;
                 }
             }
             return {

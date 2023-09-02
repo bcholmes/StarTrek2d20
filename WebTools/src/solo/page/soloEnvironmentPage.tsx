@@ -68,7 +68,9 @@ const SoloEnvironmentPage = ({character}) => {
 
         return (<>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSetting( EnvironmentSettingRandomTable()) }>{t('Common.button.random')}</Button>
+                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSetting( EnvironmentSettingRandomTable()) }>
+                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                </Button>
                 {randomSetting != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSetting(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
 
@@ -98,7 +100,9 @@ const SoloEnvironmentPage = ({character}) => {
 
         return (<>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomCondition( EnvironmentConditionRandomTable()) }>{t('Common.button.random')}</Button>
+                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomCondition( EnvironmentConditionRandomTable()) }>
+                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                </Button>
                 {randomCondition != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomCondition(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
 
@@ -130,11 +134,11 @@ const SoloEnvironmentPage = ({character}) => {
                     <li className="breadcrumb-item active" aria-current="page">{t('Page.title.environment')}</li>
                 </ol>
             </nav>
-            <Header>{t('Page.title.environment')}</Header>;
+            <Header>{t('Page.title.environment')}</Header>
 
             <InstructionText text={t('SoloEnvironmentPage.instruction')} />
 
-            <div className="btn-group w-100" role="group" aria-label="Avatar part types">
+            <div className="btn-group w-100" role="group" aria-label="Environment types">
                 <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === EnvironmentTab.Settings ? "active" : "")}
                     onClick={() => setTab(EnvironmentTab.Settings)}>{t('SoloEnvironmentPage.settings')}</button>
                 <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === EnvironmentTab.Conditions ? "active" : "")}

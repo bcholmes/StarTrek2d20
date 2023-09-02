@@ -3,7 +3,7 @@ import {character, UpbringingStep} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
-import {UpbringingModel, UpbringingsHelper} from '../helpers/upbringings';
+import {EarlyOutlookModel, UpbringingsHelper} from '../helpers/upbringings';
 import {Button} from '../components/button';
 import {UpbringingSelection} from '../components/upbringingSelection';
 import InstructionText from '../components/instructionText';
@@ -98,7 +98,7 @@ export class UpbringingPage extends React.Component<IPageProperties, IUpbringing
         this.setState((state) => ({ ...state, showSelection: false }));
     }
 
-    private selectUpbringing(upbringing: UpbringingModel) {
+    private selectUpbringing(upbringing: EarlyOutlookModel) {
         character.upbringingStep = new UpbringingStep(upbringing);
         Navigation.navigateToPage(PageIdentity.UpbringingDetails);
     }

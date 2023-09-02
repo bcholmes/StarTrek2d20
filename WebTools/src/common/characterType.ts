@@ -73,6 +73,10 @@ export class CharacterTypeModel {
         return [ CharacterTypeModel.TYPES[0] ];
     }
 
+    public static getSoloCharacterTypes() {
+        return [ CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[2], CharacterTypeModel.TYPES[3], CharacterTypeModel.TYPES[4] ];
+    }
+
     public static getStarshipTypes() {
         return [ CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1] ];
     }

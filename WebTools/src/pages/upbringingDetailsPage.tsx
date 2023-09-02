@@ -22,14 +22,14 @@ interface IUpbringingDetailsPageState {
 }
 
 class UpbringingDetailsPage extends React.Component<WithTranslation, IUpbringingDetailsPageState> {
-    private _electiveSkills: Skill[];
+    private _electiveSkills?: Skill;
     private _talent: TalentViewModel;
     private _accepted: boolean;
 
     constructor(props: WithTranslation) {
         super(props);
 
-        this._electiveSkills = [];
+        this._electiveSkills = null;
         this._accepted = true;
 
         this.state = {
@@ -105,7 +105,7 @@ class UpbringingDetailsPage extends React.Component<WithTranslation, IUpbringing
     }
 
     private onElectiveSkillsSelected(skills: Skill[]) {
-        this._electiveSkills = skills;
+        this._electiveSkills = skills ? skills[0] : undefined;
         this.forceUpdate();
     }
 
@@ -116,7 +116,7 @@ class UpbringingDetailsPage extends React.Component<WithTranslation, IUpbringing
 
     private onNext() {
         const { t } = this.props;
-        if (this._electiveSkills.length !== 1) {
+        if (this._electiveSkills != null) {
             Dialog.show(t('UpbringingDetailPage.error.discipline'));
             return;
         }
@@ -135,13 +135,7 @@ class UpbringingDetailsPage extends React.Component<WithTranslation, IUpbringing
         character.addFocus(focus);
         character.addTalent(this._talent);
         character.upbringingStep.acceptedUpbringing = this._accepted;
-        let upbringing = character.upbringingStep?.upbringing;
-        if (this._accepted) {
-            character.upbringingStep.attributes = [upbringing.attributeAcceptPlus2, upbringing.attributeAcceptPlus2, upbringing.attributeAcceptPlus1];
-        } else {
-            character.upbringingStep.attributes = [upbringing.attributeRebelPlus2, upbringing.attributeRebelPlus2, upbringing.attributeRebelPlus1];
-        }
-        character.upbringingStep.disciplines = [...this._electiveSkills]
+        character.upbringingStep.discipline = this._electiveSkills;
 
         UpbringingsHelper.applyUpbringing(character.upbringingStep.upbringing, this._accepted);
         character.workflow.next();

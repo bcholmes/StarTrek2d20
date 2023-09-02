@@ -19,10 +19,10 @@ NpcConfigurationPage.npcType,NPC Type,NPC Typ,,
 NpcConfigurationPage.specialization,Specialization,Spezialisierung,,
 NpcConfigurationPage.text,Specify what kind of NPC you're trying to create.,"Lege fest, welche Art NPC du erstellen möchtest.",,
 SourceSelectionPage.sourceInstruction,Select sources. Ask your GM which are available.,"Wählen Sie die verfügbaren Quellen aus. Fragen Sie, wenn nötig, Ihre Spielleitung, welche zur Verfügung stehen.",Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.,Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.
-SourceSelectionPage.gameTypeInstruction,What type of game are you playing?,,,
+SourceSelectionPage.gameTypeInstruction,What type of game are you playing?,Welche Art von Spiel spielst du?,,
 SourceSelectionPage.sourceNote,Some sources are not yet implemented; check back soon!,Einige Quellen sind noch nicht verfügbar - schauen Sie bald wieder vorbei!,Algunas fuentes aún no se han aplicado; ¡Vuelve pronto!,Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!
-SourceSelectionPage.standardGameType,Standard RPG Rules,,,
-SourceSelectionPage.soloGameType,Solo RPG using the Captain's Log Rules,,,
+SourceSelectionPage.standardGameType,Standard RPG Rules,Standard Rollenspielregeln,,
+SourceSelectionPage.soloGameType,Solo RPG using the Captain's Log Rules,Solo Rollenspiel mit den Captain's Log Regeln,,
 TokenCreator.option.rounded,Rounded,Abgerundet,,
 TokenCreator.option.bordered,Bordered,Eingerahmt,,
 TokenCreator.section.species,Species,Spezies,,
@@ -35,7 +35,7 @@ TokenCreator.section.body.type,Body Type,Körpertyp,,
 TokenCreator.section.body.uniformVariant,Uniform Variant,Uniformvariante,,
 TokenCreator.section.head,Head,Kopf,,
 TokenCreator.section.head.colour,Skin Colour,Hautfarbe,,
-TokenCreator.section.head.furColour,Fur Colour,,,
+TokenCreator.section.head.furColour,Fur Colour,Fellfarbe,,
 TokenCreator.section.head.shape,Head Shape,Kopfform,,
 TokenCreator.section.hair,Hair,Haar,,
 TokenCreator.section.hair.colour,Hair Colour,Haarfarbe,,
@@ -115,17 +115,24 @@ ModificationTypeSelectionPage.instruction,Please select the modification that yo
 ModificationTypeSelectionPage.whatMilestoneType,What kind of milestone is being applied?,Welche Art Meilenstein wird angewandt?,,Quel genre de jalon d'expérience est appliqué?
 PromotionPage.instruction,Select a new rank for this character.,Wählen Sie einen neuen Rang für diesen Charakter,,Selectionnez un nouveau grade pour ce personnage
 ReputationChangePage.instruction,Adjust the character's reputation as appropriate.,"Passen Sie das Ansehen des Charakters an, wenn nötig",,Ajustez la réputation du personnage le cas échéant
-SoloConstructTypePage.character,Character,,,
-SoloConstructTypePage.instruction,"Are you creating a character, or a starship?",,,
-SoloConstructTypePage.starship,Starship,,,
-SoloEnvironmentDetailsPage.speciesText,Which species' world did the character experience?,,,
+SoloConstructTypePage.character,Character,Charakter,,
+SoloConstructTypePage.instruction,"Are you creating a character, or a starship?",Erstellst du einen Charakter oder ein Raumschiff?,,
+SoloConstructTypePage.starship,Starship,Raumschiff,,
+SoloEarlyOutlookPage.instruction,"Driving them into their education and career, your character formed an early outlook that shaped them in many ways. You may choose from three approaches of how to determine the impact of this outlook. The first is to select their upbringing, and determine whether they accepted or rebelled against it. The second – applying to Klingon characters or those raised in a Klingon household – is to select their caste, and whether they accepted or rejected its expectations. The last option is to simply choose an aspiration which drove your character onto their journey, and whether they pursued or gave up on it.
+
+Choose the approach that makes the most sense for your character and storytelling style. Once the approach is chosen, you may select or randomly determine the specific option within that approach.",,,
+SoloEarlyOutlookPage.upbringings,Upbringings,,,
+SoloEarlyOutlookPage.castes,Castes,,,
+SoloEarlyOutlookPage.aspirations,Aspirations,,,
+SoloEnvironmentDetailsPage.speciesText,Which species' did the character grow up amongst?,Unter welchen Spezies ist der Charakter aufgewachsen?,,
 SoloEnvironmentPage.instruction,"In choosing your character's environment, you'll select either a setting or a condition. Each offers different storytelling prompts, but both provide the same type of benefits to your character.
 
 You may also randomly determine one of those options.",,,
-SoloEnvironmentPage.settings,Settings,,,
-SoloEnvironmentPage.conditions,Conditions,,,
+SoloEnvironmentPage.settings,Settings,Einstellungen,,
+SoloEnvironmentPage.conditions,Conditions,Bedingungen,,
 SoloEnvironmentPage.anotherSpeciesWorld.attributeText,Based on species.,,,
 SoloEraSelectionPage.instruction,Select an era for your character or have one chosen randomly.,,,
+SoloSpeciesPage.errorAttributes,Please select 3 attributes.,Bitte wähle 3 Attribute.,,
 SoloSpeciesPage.instruction,Select a species for your character or have one chosen randomly.,,,
 SpaceframeOptionPage.text,"Do you want a standard spaceframe, or a custom spaceframe?",Möchten Sie eine Standard-Schiffsklasse oder eine eigene Schiffsklasse?,,Voulez vous un modèle standart ou un modèle personalisé?
 SpaceframeOptionPage.button.standardSpaceframe,Standard Spaceframe,Standard-Schiffsklasse,,Modèle Standart
@@ -175,12 +182,12 @@ StarshipPage.whatScale,How large is this ship?,Welche Schiffsgröße hat das Sch
 StarshipPage.whatClass,What's the name of the ship's class?,Wie lautet der Name der Schiffsklasse?,,Quel est le nom de la classe du vaisseau?
 StarshipPage.whatYear,What year did this spaceframe enter service?,In welchem Jahr wurde diese Schiffsklasse in Dienst gestellt?,,Quel est la date de la mise en service de la classe de vaisseau
 StarshipPage.class,Class,Klasse,Clase,Classe
-UpbringingDetailPage.text,Do you Accept or Rebel against your upbringing?,,,
-UpbringingDetailPage.text.accept,Accept,,,
-UpbringingDetailPage.text.reject,Reject,,,
-UpbringingDetailPage.error.discipline,You must select 1 Discipline to improve before proceeding.,,,
-UpbringingDetailPage.error.talent,You must select a talent before proceeding.,,,
-UpbringingDetailPage.error.focus,You need to type in a Focus. Choose from the suggestions if you cannot come up with your own.,,,
+UpbringingDetailPage.text,Do you Accept or Rebel against your upbringing?,Akzeptierst du deine Erziehung oder rebellierst du dagegen?,,
+UpbringingDetailPage.text.accept,Accept,Akzeptieren,,
+UpbringingDetailPage.text.reject,Reject,Zurückweisen,,
+UpbringingDetailPage.error.discipline,You must select 1 Discipline to improve before proceeding.,Du musst 1 Disziplin zum verbessern auswählen um fortzufahren.,,
+UpbringingDetailPage.error.talent,You must select a talent before proceeding.,Du musst ein Talent wählen um fortzufahren.,,
+UpbringingDetailPage.error.focus,You need to type in a Focus. Choose from the suggestions if you cannot come up with your own.,"Du musst einen Fokus eingeben. Wähle aus den Vorschlägen, falls du dir keinen ausdenken kannst.",,
 SupportingCharacter.whatType,Choose a character type.,Wählen Sie die Art des Charakters.,,Choisir un type de personnage
 SupportingCharacter.howOld,How old is this character?,Wie alt ist dieser Charakter?,,Quel est l'âge de votre personnage
 SupportingCharacter.purposeOrDepartment,Purpose/Department,Zweck oder Abteilung,,Rôle/Département
@@ -199,11 +206,11 @@ ToolSelection.supportingCharacter,Supporting Character,Nebencharakter,Personaje 
 ToolSelection.starship,Starship,Raumschiff,Nave estelar,Vaisseau spatial
 ToolSelection.spaceSector,Space Sector,Raumsektor,Sector espacial,Secteur spatial
 ToolSelection.randomNpc,Random NPC,Zufälliger NSC,,PNJ aléatoire
-Common.button.random,Random,,,
+Common.button.random,Random,Zufällig,,
 Common.button.select,Select,Auswählen,Escoger,Choisir
 Common.button.selectAll,Select All,Alles auswählen,Seleccionar todo,Sélectionner tout
 Common.button.selectNone,Select None,Auswahl aufheben,Seleccionar Ninguno,Sélectionnez Aucun
-Common.button.showAll,Show Alll,,,
+Common.button.showAll,Show Alll,Alle anzeigen,,
 Common.button.exportJson,Export to JSON,Als JSON exportieren,Exportar a JSON,Exporter au format JSON
 Common.button.export,Export,Export,,
 Common.button.exportVtt,Export for VTT,Für VTT exportieren,,
@@ -215,12 +222,12 @@ Common.button.create,Create,Erschaffen,,Créer
 Common.button.modify,Modify,Anpassen,,Modifier
 Common.button.next,Next,Weiter,Próximo,Prochain
 Common.button.view,View,Anzeigen,Vista,Vue
-Common.text.description,Description,,,
+Common.text.description,Description,Beschreibung,,
 Common.text.none,None,Keine Auswahl,,Aucun
 Common.text.search,Search...,Suchen...,,
 Common.text.select,Select,Wähle,,Selectionnez
 Common.text.selectOne,Select one,Wählen Sie eine(n/s),,Selectionnez en un
-Common.text.suggestions,Suggestions,,,
+Common.text.suggestions,Suggestions,Vorschläge,,
 Common.text.total,Total,Insgesamt,,Total
 Common.text.yes,Yes,Ja,,
 Common.text.no,No,Nein,,
@@ -315,6 +322,7 @@ Page.title.supportingCharacter,Supporting Character,Nebencharakter,Personaje sec
 Page.title.characterType,Character Type,Art des Charakters,Tipo de carácter,Type de personnage
 Page.title.systemGeneration,System Generation,System-Erschaffung,Generación del Sistema Estelar,Génération du système stellaire
 Page.title.sectorDetails,Sector Details,Sektordetails,Detalles del sector,Détails du secteur
+Page.title.soloEarlyOutlook,Early Outlook,,,
 Page.title.starSystemDetails,Star System Details,Details zum Sternensystem,Detalles del sistema Star,Détails du système stellaire
 Page.title.starshipToolSelection,Starship Tool Selection,Auswahl der Raumschiff-Erschaffung,Herramientas de naves espaciales,Outils de vaisseau spatial
 Page.title.toolSelection,Tool Selection,Werkzeug-Auswahl,,Selection d'Outil
@@ -327,7 +335,7 @@ Page.title.missionProfileTalentSelection,Mission Profile Talent,Auswahl Missions
 Page.title.simpleStarship,Simplified Starship Creation,Vereinfachte Raumschifferschaffung,,Creation de Vaisseau Simplifiée
 Page.title.smallCraftStats,Small Craft Stats,Shuttle-Werte,,Navette
 Page.title.soloConstructType,Tool Selection,Werkzeug-Auswahl,,Selection d'Outil
-Page.title.sourceSelection,Sources,,,
+Page.title.sourceSelection,Sources,Quellen,,
 Page.title.spaceframeOption,Spaceframe Option,Schiffsklassen-Optionen,,Option de Modèle
 Page.title.spaceframeSelection,Spaceframe,Schiffsklasse,,Modèle de Vaisseau
 Page.title.species,Species,Spezies,,Espèce
@@ -473,8 +481,8 @@ Division.monsterMaroon.trainee,Trainee,Rekrut,,
 Era.name.enterprise,Enterprise (22nd century),Enterprise (22. Jahrhundert),,Enterprise (22ème Siècle)
 Era.name.originalSeries,Original Series (23rd century),Originalserie (23. Jahrhundert),,Serie Originale (23ème Siècle)
 Era.name.nextGeneration,Next Generation (24th century),Das Nächste Jahrhundert (24. Jahrhundert),,Nouvelle Génération (24ème Siècle)
-Era.name.picardProdigy,"Picard/Prodigy (late 24th century, early 25th century)",,,
-Era.name.discovery32,Discovery (32nd century),,,
+Era.name.picardProdigy,"Picard/Prodigy (late 24th century, early 25th century)","Picard/Prodigy (spätes 24., frühes 25. Jahrhundert)",,
+Era.name.discovery32,Discovery (32nd century),Discovery (32. Jahrhundert),,
 ExtraType.none,None,Nichts,,
 ExtraType.bajoranEarring,Bajoran Earring,Bajoranischer Ohrring,,
 ExtraType.simpleEarring,Simple Stud Earring,Einfacher Ohrstecker,,
@@ -635,7 +643,7 @@ Rank.crewman3rdClass.abbrev,Crew.,Crew.,,
 Spaceframe.akira,Akira Class,Akira-Klasse,,
 Spaceframe.ambassador,Ambassador Class,Ambassador-Klasse,,
 Spaceframe.archer,Archer Class,Archer-Klasse,,
-Spaceframe.california,California Class,,,
+Spaceframe.california,California Class,California-Klasse,,
 Spaceframe.cardenas,Cardenas Class,Cardenas-Klasse,,
 Spaceframe.centaur,Centaur Class,Centaur-Klasse,,
 Spaceframe.constellation,Constellation Class,Constellation-Klasse,,
@@ -646,7 +654,7 @@ Spaceframe.defiant,Defiant Class,Defiant-Klasse,,
 Spaceframe.engle,Engle Class,Engle-Klasse,,
 Spaceframe.excelsior,Excelsior Class,Excelsior-Klasse,,
 Spaceframe.galaxy,Galaxy Class,Galaxy-Klasse,,
-Spaceframe.ganashia,Ganashia Class,,,
+Spaceframe.ganashia,Ganashia Class,Ganashia-Klasse,,
 Spaceframe.hermes,Hermes Class,Hermes-Klasse,,
 Spaceframe.hiawatha,Hiawatha Class,Hiawatha-Klasse,,
 Spaceframe.hoover,Hoover Class,Hoover-Klasse,,
@@ -661,17 +669,17 @@ Spaceframe.nimitz,Nimitz Class,Nimitz-Klasse,,
 Spaceframe.norway,Norway Class,Norway-Klasse,,
 Spaceframe.nova,Nova Class,Nova-Klasse,,
 Spaceframe.nX,NX Class,NX-Klasse,,
-Spaceframe.obena,Obena Class,,,
+Spaceframe.obena,Obena Class,Obena-Klasse,,
 Spaceframe.oberth,Oberth Class,Oberth-Klasse,,
 Spaceframe.olympic,Olympic Class,Olympic-Klasse,,
-Spaceframe.osler,Osler Class,,,
-Spaceframe.parliament,Parliament Class,,,
+Spaceframe.osler,Osler Class,Osler-Klasse,,
+Spaceframe.parliament,Parliament Class,Parliament-Klasse,,
 Spaceframe.saber,Saber Class,Saber-Klasse,,
 Spaceframe.shepard,Shepard Class,Shepard-Klasse,,
 Spaceframe.sovereign,Sovereign Class,Sovereign-Klasse,,
 Spaceframe.steamrunner,Steamrunner Class,Steamrunner-Klasse,,
 Spaceframe.sydney,Sydney Class,Sydney-Klasse,,
-Spaceframe.tKalat,T'Kalat Class,,,
+Spaceframe.tKalat,T'Kalat Class,T'Kalat-Klasse,,
 Spaceframe.walker,Walker Class,Walker-Klasse,,
 ShipBuildType.pod.name,Pod,Kleines Shuttle,,Nacelle
 ShipBuildType.shuttlecraft.name,Shuttle,Shuttle,,Navette
@@ -759,7 +767,7 @@ Species.klingon.name,Klingon,Klingonen,,
 Species.klingon.soloDescription,"A proud, warrior species centered in the Beta Quadrant. There is a great redundancy in Klingon organs, with two livers, multiple stomachs, three lungs, and an eight-chambered heart. Their skeletal structure also has several redundancies that mitigate injuries that would prove fatal to other humanoids.",,,
 Species.klingonQuchHa.name,Klingon (QuchHa’),Klingonen (QuchHa'),,
 Species.orion.name,Orion,Orioner,,
-Species.other.name,Custom/Other,,,
+Species.other.name,Custom/Other,Benutzerdefiniert/Andere,,
 Species.risian.name,Risian,Risaner,,
 Species.reman.name,Reman,,,
 Species.romulan.name,Romulan,Romulaner,,
@@ -894,15 +902,15 @@ Talent.versatileTractorBeam,Versatile Tractor Beam,,,
 Talent.versatileTractorBeam.soloDescription,"The ship has exotic particle emitters integrated with its tractor beam system. With a few simple adjustments, the tractor beam can become even more useful against ships trapped within. The tractor beam can even deplete energy from a vessel trapped in its field.",,,
 Talent.wormholeRelaySystem,Wormhold Relay System,,,
 Talent.wormholeRelaySystem.soloDescription,"The ship has an additional sensor system outfitted with high-energy transceivers, verteron sensors, and neutrino sensors. These sensors, combined with field-generation devices, allow the ship to send and receive data streams through wormholes.",,,
-UniformEra.civilian,Civilian,,,
+UniformEra.civilian,Civilian,Zivilist,,
 UniformEra.enterprise,Enterprise,Enterprise,,
 UniformEra.originalSeries,Original Series,Originalserie,,
 UniformEra.originalSeriesKlingon,Klingon (Original Series),Klingonen (Originalserie),,
 UniformEra.klingon,Klingon Armour,Klingonische Rüstung,,
 UniformEra.monsterMaroon,The Wrath of Khan,Der Zorn des Khan,,
 UniformEra.dominionWar,Dominion War,Dominionkrieg,,
-UniformEra.lowerDecks,Lower Decks,,,
-UniformEra.voyagerDS9,Voyager/DS9,,,
+UniformEra.lowerDecks,Lower Decks,Lower Decks,,
+UniformEra.voyagerDS9,Voyager/DS9,Voyager/DS9,,
 Upbringing.starfleet.militaryOrExploration.name,Starfleet,,,
 Upbringing.starfleet.businessOrTrade.name,Business or Trade,,,
 Upbringing.starfleet.agricultureOrRural.name,Agriculture or Rural,,,

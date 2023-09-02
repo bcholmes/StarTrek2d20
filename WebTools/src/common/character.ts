@@ -4,7 +4,7 @@ import {Career} from '../helpers/careerEnum';
 import {Environment} from '../helpers/environments';
 import {Species} from '../helpers/speciesEnum';
 import {Track} from '../helpers/trackEnum';
-import {UpbringingModel} from '../helpers/upbringings';
+import {EarlyOutlookModel} from '../helpers/upbringings';
 import {Workflow} from '../helpers/workflows';
 import {TalentViewModel} from '../helpers/talents';
 import {CharacterType} from './characterType';
@@ -133,14 +133,20 @@ export class SpeciesStep {
 }
 
 export class UpbringingStep {
-    public readonly upbringing: UpbringingModel;
+    public readonly upbringing: EarlyOutlookModel;
     public acceptedUpbringing: boolean;
-    public attributes: Attribute[];
-    public disciplines: Skill[];
+    public discipline: Skill;
+    public focus: string;
 
-    constructor(upbringing: UpbringingModel, accepted: boolean = true) {
+    constructor(upbringing: EarlyOutlookModel, accepted: boolean = true) {
         this.upbringing = upbringing;
         this.acceptedUpbringing = accepted;
+    }
+
+    get attributes() {
+        return this.acceptedUpbringing
+                ? [ this.upbringing.attributeAcceptPlus2, this.upbringing.attributeAcceptPlus1 ]
+                : [ this.upbringing.attributeRebelPlus2, this.upbringing.attributeRebelPlus1 ];
     }
 
     get description() {
@@ -258,18 +264,31 @@ export class Character extends Construct {
             if (this.environmentStep?.attribute != null) {
                 result[this.environmentStep.attribute].value = result[this.environmentStep.attribute].value + 1;
             }
+            if (this.upbringingStep != null) {
+                let earlyOutlook = this.upbringingStep.upbringing;
+                if (this.upbringingStep.acceptedUpbringing) {
+                    result[earlyOutlook.attributeAcceptPlus2].value = result[earlyOutlook.attributeAcceptPlus2].value + 2;
+                    result[earlyOutlook.attributeAcceptPlus1].value = result[earlyOutlook.attributeAcceptPlus1].value + 1;
+                } else {
+                    result[earlyOutlook.attributeRebelPlus2].value = result[earlyOutlook.attributeRebelPlus2].value + 2;
+                    result[earlyOutlook.attributeRebelPlus1].value = result[earlyOutlook.attributeRebelPlus1].value + 1;
+                }
+            }
             return result;
         } else {
             return this._attributes;
         }
     }
 
-    get skills() {
+    get skills(): CharacterSkill[] {
         if (this.stereotype === Stereotype.SoloCharacter) {
             let result = [];
             SkillsHelper.getSkills().forEach(s => result.push(new CharacterSkill(s, 1)));
             if (this.environmentStep?.discipline != null) {
                 result[this.environmentStep.discipline].expertise = result[this.environmentStep.discipline].expertise + 1;
+            }
+            if (this.upbringingStep?.discipline != null) {
+                result[this.upbringingStep.discipline].expertise = result[this.upbringingStep.discipline].expertise + 1;
             }
             return result;
         } else {
@@ -729,6 +748,8 @@ export class Character extends Construct {
         if (this.upbringingStep) {
             character.upbringingStep = new UpbringingStep(this.upbringingStep.upbringing);
             character.upbringingStep.acceptedUpbringing = this.upbringingStep.acceptedUpbringing;
+            character.upbringingStep.discipline = this.upbringingStep.discipline;
+            character.upbringingStep.focus = this.upbringingStep.focus;
         }
         character.track = this.track;
         character.enlisted = this.enlisted;

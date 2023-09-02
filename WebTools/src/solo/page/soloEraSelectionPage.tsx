@@ -47,7 +47,9 @@ const SoloEraSelectionPage = ({type}) => {
                 {t('SoloEraSelectionPage.instruction')}
             </p>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEra( eraRandomTable()) }>{t('Common.button.random')}</Button>
+                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEra( eraRandomTable()) }>
+                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                </Button>
                 {randomEra != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEra(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
             <table className="selection-list">

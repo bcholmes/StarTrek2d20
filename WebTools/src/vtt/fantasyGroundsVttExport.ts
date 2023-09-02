@@ -10,7 +10,7 @@ import { CharacterSerializer } from "../common/characterSerializer";
 import { TracksHelper } from "../helpers/tracks";
 import { CareerEventsHelper } from "../helpers/careerEvents";
 import { WeaponQuality, WeaponType } from "../helpers/weapons";
-import { Upbringing } from "../helpers/upbringings";
+import { EarlyOutlook } from "../helpers/upbringings";
 
 export class FantasyGroupsVttExporter {
 
@@ -295,9 +295,9 @@ export class FantasyGroupsVttExporter {
 
     convertUpbringingLink(character: Character) {
 
-        let implementedUpbringings = [Upbringing.MilitaryOrExploration, Upbringing.BusinessOrTrade,
-            Upbringing.AgricultureOrRural, Upbringing.ScienceAndTechnology, Upbringing.ArtisticAndCreative,
-            Upbringing.DiplomacyAndPolitics];
+        let implementedUpbringings = [EarlyOutlook.MilitaryOrExploration, EarlyOutlook.BusinessOrTrade,
+            EarlyOutlook.AgricultureOrRural, EarlyOutlook.ScienceAndTechnology, EarlyOutlook.ArtisticAndCreative,
+            EarlyOutlook.DiplomacyAndPolitics];
         if (character.upbringingStep && implementedUpbringings.indexOf(character.upbringingStep.upbringing.id) >= 0) {
             return {
                 "name": "upbringinglink",

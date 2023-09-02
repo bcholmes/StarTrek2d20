@@ -162,7 +162,12 @@
     "SoloConstructTypePage.instruction": "Are you creating a character, or a starship?",
     "SoloConstructTypePage.starship": "Starship",
 
-    "SoloEnvironmentDetailsPage.speciesText": "Which species' world did the character experience?",
+    "SoloEarlyOutlookPage.instruction": "Driving them into their education and career, your character formed an early outlook that shaped them in many ways. You may choose from three approaches of how to determine the impact of this outlook. The first is to select their upbringing, and determine whether they accepted or rebelled against it. The second – applying to Klingon characters or those raised in a Klingon household – is to select their caste, and whether they accepted or rejected its expectations. The last option is to simply choose an aspiration which drove your character onto their journey, and whether they pursued or gave up on it.\n\nChoose the approach that makes the most sense for your character and storytelling style. Once the approach is chosen, you may select or randomly determine the specific option within that approach.",
+    "SoloEarlyOutlookPage.upbringings": "Upbringings",
+    "SoloEarlyOutlookPage.castes": "Castes",
+    "SoloEarlyOutlookPage.aspirations": "Aspirations",
+
+    "SoloEnvironmentDetailsPage.speciesText": "Which species' did the character grow up amongst?",
 
     "SoloEnvironmentPage.instruction": "In choosing your character's environment, you'll select either a setting or a condition. Each offers different storytelling prompts, but both provide the same type of benefits to your character.\n\nYou may also randomly determine one of those options.",
     "SoloEnvironmentPage.settings": "Settings",
@@ -172,6 +177,7 @@
 
     "SoloEraSelectionPage.instruction": "Select an era for your character or have one chosen randomly.",
 
+    "SoloSpeciesPage.errorAttributes": "Please select 3 attributes.",
     "SoloSpeciesPage.instruction": "Select a species for your character or have one chosen randomly.",
 
     "SpaceframeOptionPage.text": "Do you want a standard spaceframe, or a custom spaceframe?",
@@ -373,6 +379,7 @@
     "Page.title.characterType": "Character Type",
     "Page.title.systemGeneration": "System Generation",
     "Page.title.sectorDetails": "Sector Details",
+    "Page.title.soloEarlyOutlook": "Early Outlook",
     "Page.title.starSystemDetails": "Star System Details",
     "Page.title.starshipToolSelection": "Starship Tool Selection",
     "Page.title.toolSelection": "Tool Selection",

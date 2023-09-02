@@ -23,7 +23,7 @@ import { allSystems, System } from './systems';
 import { TalentsHelper } from './talents';
 import { TalentSelection } from './talentSelection';
 import { getAllTracks, Track } from './trackEnum';
-import { Upbringing, UpbringingsHelper } from './upbringings';
+import { EarlyOutlook, UpbringingsHelper } from './upbringings';
 import { CaptureType, CaptureTypeModel, DeliverySystem, DeliverySystemModel, EnergyLoadType, EnergyLoadTypeModel, MineType, MineTypeModel, TorpedoLoadType, TorpedoLoadTypeModel, UsageCategory, Weapon, WeaponType } from './weapons';
 
 class Marshaller {
@@ -107,7 +107,7 @@ class Marshaller {
             "type": CharacterType[character.type],
             "upbringing": character.upbringingStep != null
                 ? {
-                    "id": Upbringing[character.upbringingStep.upbringing?.id],
+                    "id": EarlyOutlook[character.upbringingStep.upbringing?.id],
                     "accepted": character.upbringingStep.acceptedUpbringing
                   }
                 : undefined,

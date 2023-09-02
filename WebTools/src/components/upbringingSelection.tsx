@@ -1,20 +1,20 @@
 ﻿import * as React from 'react';
 import {character} from '../common/character';
 import {Window} from '../common/window';
-import {UpbringingModel, UpbringingsHelper} from '../helpers/upbringings';
+import {EarlyOutlookModel, UpbringingsHelper} from '../helpers/upbringings';
 import {AttributesHelper} from '../helpers/attributes';
 import {SkillsHelper} from '../helpers/skills';
 import {Button} from './button';
 
 interface IUpbringingSelectionProperties {
     alternate: boolean;
-    onSelection: (upbringing: UpbringingModel) => void;
+    onSelection: (upbringing: EarlyOutlookModel) => void;
     onCancel: () => void;
 }
 
 export class UpbringingSelection extends React.Component<IUpbringingSelectionProperties, {}> {
     render() {
-        var upbringings = UpbringingsHelper.getUpbringings(this.props.alternate).map((u, i) => {
+        var upbringings = UpbringingsHelper.getAllUpbringings(this.props.alternate).map((u, i) => {
             const disciplines = u.disciplines.map((d, i) => {
                 return <div key={i}>{SkillsHelper.getSkillName(d) }</div>;
             });

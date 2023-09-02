@@ -25,7 +25,10 @@
     "NpcConfigurationPage.text": "Lege fest, welche Art NPC du erstellen möchtest.",
 
     "SourceSelectionPage.sourceInstruction": "Wählen Sie die verfügbaren Quellen aus. Fragen Sie, wenn nötig, Ihre Spielleitung, welche zur Verfügung stehen.",
+    "SourceSelectionPage.gameTypeInstruction": "Welche Art von Spiel spielst du?",
     "SourceSelectionPage.sourceNote": "Einige Quellen sind noch nicht verfügbar - schauen Sie bald wieder vorbei!",
+    "SourceSelectionPage.standardGameType": "Standard Rollenspielregeln",
+    "SourceSelectionPage.soloGameType": "Solo Rollenspiel mit den Captain's Log Regeln",
 
     "TokenCreator.option.rounded": "Abgerundet",
     "TokenCreator.option.bordered": "Eingerahmt",
@@ -45,6 +48,7 @@
     "TokenCreator.section.head": "Kopf",
 
     "TokenCreator.section.head.colour": "Hautfarbe",
+    "TokenCreator.section.head.furColour": "Fellfarbe",
     "TokenCreator.section.head.shape": "Kopfform",
 
     "TokenCreator.section.hair": "Haar",
@@ -153,6 +157,17 @@
 
     "ReputationChangePage.instruction": "Passen Sie das Ansehen des Charakters an, wenn nötig",
 
+    "SoloConstructTypePage.character": "Charakter",
+    "SoloConstructTypePage.instruction": "Erstellst du einen Charakter oder ein Raumschiff?",
+    "SoloConstructTypePage.starship": "Raumschiff",
+
+    "SoloEnvironmentDetailsPage.speciesText": "Unter welchen Spezies ist der Charakter aufgewachsen?",
+
+    "SoloEnvironmentPage.settings": "Einstellungen",
+    "SoloEnvironmentPage.conditions": "Bedingungen",
+
+    "SoloSpeciesPage.errorAttributes": "Bitte wähle 3 Attribute.",
+
     "SpaceframeOptionPage.text": "Möchten Sie eine Standard-Schiffsklasse oder eine eigene Schiffsklasse?",
 
     "SpaceframeOptionPage.button.standardSpaceframe": "Standard-Schiffsklasse",
@@ -199,6 +214,15 @@
     "StarshipPage.whatYear": "In welchem Jahr wurde diese Schiffsklasse in Dienst gestellt?",
     "StarshipPage.class": "Klasse",
 
+    "UpbringingDetailPage.text": "Akzeptierst du deine Erziehung oder rebellierst du dagegen?",
+
+    "UpbringingDetailPage.text.accept": "Akzeptieren",
+    "UpbringingDetailPage.text.reject": "Zurückweisen",
+
+    "UpbringingDetailPage.error.discipline": "Du musst 1 Disziplin zum verbessern auswählen um fortzufahren.",
+    "UpbringingDetailPage.error.talent": "Du musst ein Talent wählen um fortzufahren.",
+    "UpbringingDetailPage.error.focus": "Du musst einen Fokus eingeben. Wähle aus den Vorschlägen, falls du dir keinen ausdenken kannst.",
+
     "SupportingCharacter.whatType": "Wählen Sie die Art des Charakters.",
     "SupportingCharacter.howOld": "Wie alt ist dieser Charakter?",
     "SupportingCharacter.purposeOrDepartment": "Zweck oder Abteilung",
@@ -219,9 +243,11 @@
     "ToolSelection.spaceSector": "Raumsektor",
     "ToolSelection.randomNpc": "Zufälliger NSC",
 
+    "Common.button.random": "Zufällig",
     "Common.button.select": "Auswählen",
     "Common.button.selectAll": "Alles auswählen",
     "Common.button.selectNone": "Auswahl aufheben",
+    "Common.button.showAll": "Alle anzeigen",
     "Common.button.exportJson": "Als JSON exportieren",
     "Common.button.export": "Export",
     "Common.button.exportVtt": "Für VTT exportieren",
@@ -234,10 +260,12 @@
     "Common.button.next": "Weiter",
     "Common.button.view": "Anzeigen",
 
+    "Common.text.description": "Beschreibung",
     "Common.text.none": "Keine Auswahl",
     "Common.text.search": "Suchen...",
     "Common.text.select": "Wähle",
     "Common.text.selectOne": "Wählen Sie eine(n/s)",
+    "Common.text.suggestions": "Vorschläge",
     "Common.text.total": "Insgesamt",
     "Common.text.yes": "Ja",
     "Common.text.no": "Nein",
@@ -351,6 +379,7 @@
     "Page.title.simpleStarship": "Vereinfachte Raumschifferschaffung",
     "Page.title.smallCraftStats": "Shuttle-Werte",
     "Page.title.soloConstructType": "Werkzeug-Auswahl",
+    "Page.title.sourceSelection": "Quellen",
     "Page.title.spaceframeOption": "Schiffsklassen-Optionen",
     "Page.title.spaceframeSelection": "Schiffsklasse",
     "Page.title.species": "Spezies",
@@ -475,6 +504,8 @@
     "Era.name.enterprise": "Enterprise (22. Jahrhundert)",
     "Era.name.originalSeries": "Originalserie (23. Jahrhundert)",
     "Era.name.nextGeneration": "Das Nächste Jahrhundert (24. Jahrhundert)",
+    "Era.name.picardProdigy": "Picard/Prodigy (spätes 24., frühes 25. Jahrhundert)",
+    "Era.name.discovery32": "Discovery (32. Jahrhundert)",
 
     "ExtraType.none": "Nichts",
     "ExtraType.bajoranEarring": "Bajoranischer Ohrring",
@@ -597,6 +628,7 @@
     "Spaceframe.akira": "Akira-Klasse",
     "Spaceframe.ambassador": "Ambassador-Klasse",
     "Spaceframe.archer": "Archer-Klasse",
+    "Spaceframe.california": "California-Klasse",
     "Spaceframe.cardenas": "Cardenas-Klasse",
     "Spaceframe.centaur": "Centaur-Klasse",
     "Spaceframe.constellation": "Constellation-Klasse",
@@ -607,6 +639,7 @@
     "Spaceframe.engle": "Engle-Klasse",
     "Spaceframe.excelsior": "Excelsior-Klasse",
     "Spaceframe.galaxy": "Galaxy-Klasse",
+    "Spaceframe.ganashia": "Ganashia-Klasse",
     "Spaceframe.hermes": "Hermes-Klasse",
     "Spaceframe.hiawatha": "Hiawatha-Klasse",
     "Spaceframe.hoover": "Hoover-Klasse",
@@ -621,13 +654,17 @@
     "Spaceframe.norway": "Norway-Klasse",
     "Spaceframe.nova": "Nova-Klasse",
     "Spaceframe.nX": "NX-Klasse",
+    "Spaceframe.obena": "Obena-Klasse",
     "Spaceframe.oberth": "Oberth-Klasse",
     "Spaceframe.olympic": "Olympic-Klasse",
+    "Spaceframe.osler": "Osler-Klasse",
+    "Spaceframe.parliament": "Parliament-Klasse",
     "Spaceframe.saber": "Saber-Klasse",
     "Spaceframe.shepard": "Shepard-Klasse",
     "Spaceframe.sovereign": "Sovereign-Klasse",
     "Spaceframe.steamrunner": "Steamrunner-Klasse",
     "Spaceframe.sydney": "Sydney-Klasse",
+    "Spaceframe.tKalat": "T'Kalat-Klasse",
     "Spaceframe.walker": "Walker-Klasse",
 
     "ShipBuildType.pod.name": "Kleines Shuttle",
@@ -662,6 +699,8 @@
 
     "Species.orion.name": "Orioner",
 
+    "Species.other.name": "Benutzerdefiniert/Andere",
+
     "Species.risian.name": "Risaner",
 
     "Species.romulan.name": "Romulaner",
@@ -681,12 +720,15 @@
     "StarSystem.common.primaryStar": "Hauptstern",
     "StarSystem.common.companionStar": "Begleitstern",
 
+    "UniformEra.civilian": "Zivilist",
     "UniformEra.enterprise": "Enterprise",
     "UniformEra.originalSeries": "Originalserie",
     "UniformEra.originalSeriesKlingon": "Klingonen (Originalserie)",
     "UniformEra.klingon": "Klingonische Rüstung",
     "UniformEra.monsterMaroon": "Der Zorn des Khan",
     "UniformEra.dominionWar": "Dominionkrieg",
+    "UniformEra.lowerDecks": "Lower Decks",
+    "UniformEra.voyagerDS9": "Voyager/DS9",
 
     "Value.environment.text": "Diese Überzeugung sollte die Herkunft und die Kultur des Charakters, in der er oder sie aufgewachsen ist, widerspiegeln. Dies ist eine gute Gelegenheit, sich darüber Gedanken zu machen, wie der Charakter seine oder ihre eigene Kultur sieht und wie er oder sie zu den Philosophien und Traditionen der Vorfahren steht.",
 

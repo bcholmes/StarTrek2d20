@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { Header } from "../../components/header";
-import { navigateTo } from "../../common/navigator";
+import { Navigation, navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
 import { Environment, EnvironmentsHelper } from "../../helpers/environments";
@@ -65,7 +65,6 @@ class SoloEnvironmentDisciplineController implements IDisciplineController {
     constructor(character: Character, disciplines: Skill[]) {
         this.character = character;
         this.disciplines = disciplines;
-        console.log(disciplines);
     }
 
     isShown(discipline: Skill) {
@@ -112,7 +111,8 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({charact
     }
 
     const navigateToNextStep = () => {
-
+        // TODO: check for selections...
+        Navigation.navigateToPage(PageIdentity.SoloEarlyOutlook);
     }
 
     const isSpeciesSelectionNeeded = () => {

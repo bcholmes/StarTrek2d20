@@ -3,20 +3,23 @@ import { Attribute } from "../helpers/attributes";
 import { Environment } from "../helpers/environments";
 import { Skill } from "../helpers/skills";
 import { Species } from "../helpers/speciesEnum";
+import { EarlyOutlookModel } from "../helpers/upbringings";
 export const SET_CHARACTER = 'SET_CHARACTER';
 export const MODIFY_CHARACTER_REPUTATION = 'MODIFY_CHARACTER_REPUTATION';
 export const MODIFY_CHARACTER_RANK = 'MODIFY_CHARACTER_RANK';
 export const APPLY_NORMAL_MILESTONE_DISCIPLINE = 'APPLY_NORMAL_MILESTONE_DISCIPLINE';
 export const APPLY_NORMAL_MILESTONE_FOCUS = 'APPLY_NORMAL_MILESTONE_FOCUS';
 export const SET_CHARACTER_SPECIES = 'SET_CHARACTER_SPECIES';
+export const SET_CHARACTER_FOCUS = 'SET_CHARACTER_FOCUS';
 export const SET_CHARACTER_ENVIRONMENT = 'SET_CHARACTER_ENVIRONMENT';
+export const SET_CHARACTER_EARLY_OUTLOOK = 'SET_CHARACTER_EARLY_OUTLOOK';
 export const MODIFY_CHARACTER_ATTRIBUTE = 'MODIFY_CHARACTER_ATTRIBUTE';
 export const MODIFY_CHARACTER_DISCIPLINE = 'MODIFY_CHARACTER_DISCIPLINE';
 
 export enum StepContext {
     Species,
     Environment,
-    Upbringing,
+    EarlyOutlook,
     Training,
     Career,
     CareerEvent1,
@@ -43,6 +46,22 @@ export function setCharacterEnvironment(environment: Environment, otherSpecies?:
     let payload = { environment: environment, otherSpecies: otherSpecies };
     return {
        type: SET_CHARACTER_ENVIRONMENT,
+       payload: payload
+    }
+}
+
+export function setCharacterEarlyOutlook(earlyOutlook: EarlyOutlookModel, accepted: boolean = true) {
+    let payload = { earlyOutlook: earlyOutlook, accepted: accepted };
+    return {
+       type: SET_CHARACTER_EARLY_OUTLOOK,
+       payload: payload
+    }
+}
+
+export function setCharacterFocus(focus: string, context: StepContext, index: number = 0) {
+    let payload = { focus: focus, context: context };
+    return {
+       type: SET_CHARACTER_FOCUS,
        payload: payload
     }
 }

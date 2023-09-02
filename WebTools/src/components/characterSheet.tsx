@@ -36,7 +36,7 @@ class CharacterSheetData {
         this._data = [
             new SectionContent(i18n.t('Construct.other.species'), this.getSpeciesString()),
             new SectionContent(i18n.t('Construct.other.environment'), this.getEnvironmentString()),
-            new SectionContent(i18n.t('Construct.other.upbringing'), this.character.upbringingStep ? this.character.upbringingStep?.upbringing?.name + (this.character.upbringingStep?.acceptedUpbringing ? "(A)" : "(R)") : i18n.t('Common.text.none')),
+            new SectionContent(i18n.t('Construct.other.upbringing'), this.character.upbringingStep ? this.character.upbringingStep?.description : i18n.t('Common.text.none')),
             new SectionContent(i18n.t('Construct.other.training'), this.character.track != null ? TracksHelper.instance().getTrack(this.character.track).name : i18n.t('Common.text.none')),
             new SectionContent(i18n.t('Construct.other.career'), this.character.career != null ? CareersHelper.instance.getCareer(this.character.career).localizedName : i18n.t('Common.text.none')),
             new SectionContent(i18n.t('Construct.other.traits'), this.character.traits.join(", "))
