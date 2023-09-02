@@ -74,7 +74,9 @@ export class CharacterTypeModel {
     }
 
     public static getSoloCharacterTypes() {
-        return [ CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[2], CharacterTypeModel.TYPES[3], CharacterTypeModel.TYPES[4] ];
+        return [ CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[2], CharacterTypeModel.TYPES[3], CharacterTypeModel.TYPES[4] ].sort((c1, c2) =>
+            c1.localizedName.localeCompare(c2.localizedName)
+        );
     }
 
     public static getStarshipTypes() {

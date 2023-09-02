@@ -1,40 +1,39 @@
 import React, { useState } from "react";
 import { ISoloCharacterProperties } from "./soloCharacterProperties";
-import { useTranslation } from "react-i18next";
-import { CharacterType, CharacterTypeModel } from "../../common/characterType";
-import store from "../../state/store";
-import { Window } from "../../common/window";
-import { Button } from "../../components/button";
-import { Navigation, navigateTo } from "../../common/navigator";
-import { PageIdentity } from "../../pages/pageIdentity";
-import { EducationCategoryRandomTable } from "../table/educationRandomTable";
 import { connect } from "react-redux";
 import { Header } from "../../components/header";
-import { setCharacterType } from "../../state/characterActions";
+import { navigateTo } from "../../common/navigator";
+import { PageIdentity } from "../../pages/pageIdentity";
+import { useTranslation } from "react-i18next";
+import { CharacterType } from "../../common/characterType";
+import { makeKey } from "../../common/translationKey";
+import { Track } from "../../helpers/trackEnum";
+import { TrackModel, TracksHelper } from "../../helpers/tracks";
+import { Button } from "../../components/button";
+import { Window } from "../../common/window";
+import { EducationTrackRandomTable } from "../table/educationRandomTable";
 
-
-const SoloEducationTypePage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const SoloEducationPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
-    const [randomType, setRandomType] = useState(null);
+    const [randomTrack, setRandomTrack] = useState(null);
 
-    const typeSelected = (type: CharacterType)=> {
-        store.dispatch(setCharacterType(type));
-        Navigation.navigateToPage(PageIdentity.SoloEducationPage);
+    const trackSelected = (track: Track)=> {
     }
 
-    const toTableRow = (type: CharacterTypeModel, i: number) => {
+    const toTableRow = (track: TrackModel, i: number) => {
         return (
-            <tr key={i} onClick={() => { if (Window.isCompact()) typeSelected(type.type); }}>
-                <td className="selection-header">{type.localizedName}</td>
-                <td className="text-right"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { typeSelected(type.type) }} /></td>
+            <tr key={i} onClick={() => { if (Window.isCompact()) trackSelected(track.id); }}>
+                <td className="selection-header">{track.localizedName}</td>
+                <td className="text-right"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { trackSelected(track.id) }} /></td>
             </tr>
         );
     }
 
-    const types = randomType != null
-        ? toTableRow(CharacterTypeModel.getByType(randomType), 0)
-        : CharacterTypeModel.getSoloCharacterTypes().map((e, i) => toTableRow(e, i));
+    const types = randomTrack != null
+        ? toTableRow(TracksHelper.instance().getSoloTrack(randomTrack), 0)
+        : TracksHelper.instance().getSoloTracks(character.type).map((e, i) => toTableRow(e, i));
+
 
     return (
         <div className="page container ml-0">
@@ -50,26 +49,23 @@ const SoloEducationTypePage: React.FC<ISoloCharacterProperties> = ({character}) 
                     <li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloEducation')}</li>
                 </ol>
             </nav>
-            <Header>{t('Page.title.soloEducationType')}</Header>
+            <Header>{t(makeKey('SoloEducationPage.type.', CharacterType[character.type]))}</Header>
             <p className="mt-3">
-                {t('SoloEducationTypePage.instruction')}
+                {t(makeKey('SoloEducationPage.instruction.', CharacterType[character.type]))}
             </p>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomType( EducationCategoryRandomTable()) }>
+                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomTrack( EducationTrackRandomTable(character.type)) }>
                     <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
                 </Button>
-                {randomType != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomType(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                {randomTrack != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomTrack(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
             <table className="selection-list">
                 <tbody>
                     {types}
                 </tbody>
             </table>
-
-        </div>
-    );
+        </div>);
 }
-
 
 function mapStateToProps(state, ownProps) {
     return {
@@ -77,4 +73,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(SoloEducationTypePage);
+export default connect(mapStateToProps)(SoloEducationPage);

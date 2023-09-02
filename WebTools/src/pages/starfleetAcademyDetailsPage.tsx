@@ -27,18 +27,18 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     private _skillsDone: boolean;
 
     render() {
-        const track = TracksHelper.instance().getTrack(character.track);
+        const track = TracksHelper.instance().getTrack(character.educationStep?.track);
 
-        if (character.track === Track.EnlistedSecurityTraining) {
+        if (character.educationStep?.track === Track.EnlistedSecurityTraining) {
             return this.renderEnlistedSecurityTrainingDetails();
         }
-        else if (character.track === Track.ShipOperations) {
+        else if (character.educationStep?.track === Track.ShipOperations) {
             return this.renderShipOperationsDetails();
         }
-        else if (character.track === Track.UniversityAlumni) {
+        else if (character.educationStep?.track === Track.UniversityAlumni) {
             return this.renderUniversityAlumniDetails();
         }
-        else if (character.track === Track.ResearchInternship) {
+        else if (character.educationStep?.track === Track.ResearchInternship) {
             return this.renderResearchInternshipDetails();
         }
 
@@ -94,7 +94,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     }
 
     private renderEnlistedSecurityTrainingDetails() {
-        const track = TracksHelper.instance().getTrack(character.track);
+        const track = TracksHelper.instance().getTrack(character.educationStep?.track);
 
         return (
             <div className="page">
@@ -140,7 +140,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     }
 
     private renderShipOperationsDetails() {
-        const track = TracksHelper.instance().getTrack(character.track);
+        const track = TracksHelper.instance().getTrack(character.educationStep?.track);
 
         return (
             <div className="page">
@@ -191,7 +191,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     }
 
     private renderUniversityAlumniDetails() {
-        const track = TracksHelper.instance().getTrack(character.track);
+        const track = TracksHelper.instance().getTrack(character.educationStep?.track);
 
         return (
             <div className="page">
@@ -251,7 +251,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     }
 
     private renderResearchInternshipDetails() {
-        const track = TracksHelper.instance().getTrack(character.track);
+        const track = TracksHelper.instance().getTrack(character.educationStep?.track);
 
         return (
             <div className="page">
@@ -321,10 +321,10 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
 
     private onNext() {
         const ignoresDisciplineRequirements =
-            character.track === Track.EnlistedSecurityTraining ||
-            character.track === Track.ShipOperations ||
-            character.track === Track.ResearchInternship ||
-            character.track === Track.UniversityAlumni;
+            character.educationStep?.track === Track.EnlistedSecurityTraining ||
+            character.educationStep?.track === Track.ShipOperations ||
+            character.educationStep?.track === Track.ResearchInternship ||
+            character.educationStep?.track === Track.UniversityAlumni;
 
         if (!this._attributesDone) {
             Dialog.show("You have not distributed all Attribute points.");

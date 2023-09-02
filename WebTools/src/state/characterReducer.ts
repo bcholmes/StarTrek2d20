@@ -1,5 +1,5 @@
 import { Character, EnvironmentStep, SpeciesStep, UpbringingStep } from "../common/character";
-import { APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FOCUS, SET_CHARACTER_SPECIES, StepContext } from "./characterActions";
+import { APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FOCUS, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, StepContext } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -55,6 +55,7 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 if (originalStep.upbringing?.id === temp.upbringingStep.upbringing?.id) {
                     temp.upbringingStep.discipline = originalStep.discipline;
                 }
+                temp.upbringingStep.focus = originalStep.focus;
             }
             return {
                 ...state,
@@ -84,6 +85,33 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.environmentStep.attribute = undefined;
                 }
             }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case SET_CHARACTER_TYPE: {
+            let temp = state.currentCharacter.copy();
+            temp.type = action.payload.type;
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case SET_CHARACTER_NAME: {
+            let temp = state.currentCharacter.copy();
+            temp.name = action.payload.name;
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case SET_CHARACTER_PRONOUNS: {
+            let temp = state.currentCharacter.copy();
+            temp.pronouns = action.payload.pronouns;
             return {
                 ...state,
                 currentCharacter: temp,

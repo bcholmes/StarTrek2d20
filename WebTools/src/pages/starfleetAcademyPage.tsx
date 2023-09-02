@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {EducationStep, character} from '../common/character';
 import { CharacterType } from '../common/characterType';
 import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
@@ -48,7 +48,7 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
             : (
                 <div>
                     <TrackSelection
-                        onSelection={(env) => this.selectTrack(env) }
+                        onSelection={(env) => this.selectTrack(env, true) }
                         onCancel={() => this.hideTracks() } />
                 </div>
             );
@@ -62,13 +62,11 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
     }
 
     private rollTrack(isOfficer: boolean) {
-        character.enlisted = !isOfficer;
         var track = TracksHelper.instance().generateTrack();
-        this.selectTrack(track);
+        this.selectTrack(track, isOfficer);
     }
 
     private showTracks(isOfficer: boolean) {
-        character.enlisted = !isOfficer;
         this.setState({ showSelection: true });
     }
 
@@ -78,17 +76,16 @@ export class StarfleetAcademyPage extends React.Component<IPageProperties, IStar
 
     private rollTrackForType() {
         var track = TracksHelper.instance().generateTrack();
-        this.selectTrack(track);
+        this.selectTrack(track, true);
     }
 
     private hideTracks() {
-        character.enlisted = false;
         this.setState({ showSelection: false });
     }
 
-    private selectTrack(track: Track) {
-        character.track = track;
-        TracksHelper.instance().applyTrack(character.track);
+    private selectTrack(track: Track, isOfficer: boolean) {
+        character.educationStep = new EducationStep(track, !isOfficer);
+        TracksHelper.instance().applyTrack(track);
         Navigation.navigateToPage(PageIdentity.StarfleetAcademyDetails);
     }
 }

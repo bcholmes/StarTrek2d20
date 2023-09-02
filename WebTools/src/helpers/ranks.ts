@@ -149,7 +149,7 @@ class TrackPrerequisite implements IConstructPrerequisite<Character> {
     }
 
     isPrerequisiteFulfilled(character: Character) {
-        return this._track === character.track;
+        return this._track === character.educationStep?.track;
     }
 
     describe(): string {
@@ -165,7 +165,7 @@ class NotTrackPrerequisite implements IConstructPrerequisite<Character> {
     }
 
     isPrerequisiteFulfilled(character: Character) {
-        return this._track !== character.track;
+        return this._track !== character.educationStep?.track;
     }
     describe(): string {
         return "";

@@ -166,6 +166,26 @@ export class EnvironmentStep {
     }
 }
 
+export class EducationStep {
+    public readonly track: Track;
+    public enlisted: boolean;
+    public attributes: Attribute[];
+    public primaryDiscipline: Skill;
+    public disciplines: Skill[];
+    public decrementDiscipline: Skill;
+
+    constructor(track: Track, enlisted: boolean = false) {
+        this.track = track;
+        this.enlisted = enlisted;
+        this.attributes = [];
+        this.disciplines = [];
+    }
+}
+
+export class NpcGenerationStep {
+    public enlisted: boolean;
+}
+
 export class Character extends Construct {
 
     public static ABSOLUTE_MAX_ATTRIBUTE = 12;
@@ -190,11 +210,6 @@ export class Character extends Construct {
     public jobAssignment?: string;
     public assignedShip?: string;
     public secondaryRole?: string;
-    public track?: Track;
-    public speciesStep?: SpeciesStep;
-    public environmentStep?: EnvironmentStep;
-    public upbringingStep?: UpbringingStep;
-    public enlisted?: boolean;
     public environmentValue?: string;
     public trackValue?: string;
     public careerValue?: string;
@@ -204,6 +219,13 @@ export class Character extends Construct {
     public workflow?: Workflow;
     public pronouns: string = '';
     public implants: string[];
+
+    // steps
+    public educationStep?: EducationStep;
+    public speciesStep?: SpeciesStep;
+    public environmentStep?: EnvironmentStep;
+    public upbringingStep?: UpbringingStep;
+    public npcGenerationStep?: NpcGenerationStep;
 
     constructor() {
         super(Stereotype.MainCharacter);
@@ -225,6 +247,14 @@ export class Character extends Construct {
         this.implants = [];
         this.careerEvents = [];
         this.age = AgeHelper.getAdultAge();
+    }
+
+    get enlisted() {
+        if (this.stereotype === Stereotype.Npc && this.npcGenerationStep) {
+            return this.npcGenerationStep.enlisted;
+        } else {
+            return this.educationStep?.enlisted || false;
+        }
     }
 
     get assignmentWithoutShip() {
@@ -308,12 +338,12 @@ export class Character extends Construct {
     get division() {
         if (this.type !== CharacterType.Starfleet) {
             return null;
-        } else if (this.track != null) {
-            if (this.track === Track.Command) {
+        } else if (this.educationStep?.track != null) {
+            if (this.educationStep?.track === Track.Command) {
                 return Division.Command;
-            } else if (this.track === Track.Operations) {
+            } else if (this.educationStep?.track === Track.Operations) {
                 return Division.Operations
-            } else if (this.track === Track.Sciences) {
+            } else if (this.educationStep?.track === Track.Sciences) {
                 return Division.Science;
             } else {
                 return null;
@@ -751,8 +781,13 @@ export class Character extends Construct {
             character.upbringingStep.discipline = this.upbringingStep.discipline;
             character.upbringingStep.focus = this.upbringingStep.focus;
         }
-        character.track = this.track;
-        character.enlisted = this.enlisted;
+        if (this.educationStep) {
+            character.educationStep = new EducationStep(this.educationStep.track, this.educationStep.enlisted);
+            character.educationStep.attributes = [...this.educationStep.attributes];
+            character.educationStep.disciplines = [...this.educationStep.disciplines];
+            character.educationStep.primaryDiscipline = this.educationStep.primaryDiscipline;
+            character.educationStep.decrementDiscipline = this.educationStep.decrementDiscipline;
+        }
         character.environmentValue = this.environmentValue;
         character.trackValue = this.trackValue;
         character.careerValue = this.careerValue;

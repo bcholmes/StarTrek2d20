@@ -10,6 +10,7 @@ import SoloSpeciesPage from "./soloSpeciesPage";
 import SoloEarlyOutlookPage from "./soloEarlyOutlookPage";
 import SoloEarlyOutlookDetailsPage from "./soloEarlyOutlookDetailsPage";
 import SoloEducationTypePage from "./soloEducationTypePage";
+import SoloEducationPage from "./soloEducationPage";
 
 export class CaptainsLogPageFactory implements IPageFactoryRegistry {
 
@@ -36,6 +37,7 @@ export class CaptainsLogPageFactory implements IPageFactoryRegistry {
         this.factories[PageIdentity.SoloEarlyOutlook] = () => <SoloEarlyOutlookPage />;
         this.factories[PageIdentity.SoloEarlyOutlookDetails] = () => <SoloEarlyOutlookDetailsPage />;
         this.factories[PageIdentity.SoloEducationTypePage] = () => <SoloEducationTypePage />;
+        this.factories[PageIdentity.SoloEducationPage] = () => <SoloEducationPage />;
     }
 
     findFactory(page: PageIdentity) {

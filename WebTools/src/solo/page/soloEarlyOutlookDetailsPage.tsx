@@ -65,6 +65,8 @@ const SoloEarlyOutlookDetailsPage: React.FC<ISoloCharacterProperties> = ({charac
     const navigateToNextPage = () => {
         if (character.upbringingStep?.discipline == null) {
             Dialog.show(t('SoloEarlyOutlookDetailsPage.errorDiscipline'));
+        } else if (!character.upbringingStep?.focus) {
+            Dialog.show(t('SoloEarlyOutlookDetailsPage.errorFocus'));
         } else {
             Navigation.navigateToPage(PageIdentity.SoloEducationTypePage);
         }

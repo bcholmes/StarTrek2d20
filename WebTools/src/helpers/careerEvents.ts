@@ -623,8 +623,8 @@ class CareerEvents {
     }
 
     private fieldCommission() {
-        if (character.enlisted) {
-            character.enlisted = false;
+        if (character.enlisted && character.educationStep) {
+            character.educationStep.enlisted = false;
         }
     }
 

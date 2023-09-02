@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { character, Character, CharacterAttribute, CharacterRank, CharacterSkill, CharacterTalent, EnvironmentStep, SpeciesStep, UpbringingStep } from '../common/character';
+import { character, Character, CharacterAttribute, CharacterRank, CharacterSkill, CharacterTalent, EducationStep, EnvironmentStep, NpcGenerationStep, SpeciesStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -150,10 +150,10 @@ class Marshaller {
             }
         }
 
-        if (character.track != null) {
+        if (character.educationStep != null) {
             sheet["training"] = {
-                "track": Track[character.track],
-                "enlisted": character.enlisted
+                "track": Track[character.educationStep?.track],
+                "enlisted": character.educationStep?.enlisted
             }
         }
 
@@ -202,8 +202,8 @@ class Marshaller {
         if (character.role) {
             sheet["role"] = character.role;
         }
-        if (character.track != null) {
-            sheet["track"] = Track[character.track];
+        if (character.educationStep != null) {
+            sheet["track"] = Track[character.educationStep.track];
         }
         return sheet;
     }
@@ -634,14 +634,14 @@ class Marshaller {
             let trackAsString = json.training.track;
             getAllTracks().forEach(t => {
                 if (Track[t] === trackAsString) {
-                    result.track = t;
+                    result.educationStep = new EducationStep(t, json.training.enlisted || false);
                 }
             });
-            result.enlisted = json.training.enlisted;
         } else {
             let rank = result.rank == null ? null : RanksHelper.instance().getRankByName(result.rank?.name);
-            if (rank) {
-                result.enlisted = rank.isEnlisted;
+            if (rank && result.stereotype === Stereotype.Npc) {
+                result.npcGenerationStep = new NpcGenerationStep();
+                result.npcGenerationStep.enlisted = rank.isEnlisted;
             }
         }
         result.focuses = [...json.focuses];

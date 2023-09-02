@@ -79,6 +79,10 @@ export class TrackModel {
         this.skillsRule = skillsRule;
         this.enlisted = enlisted;
     }
+
+    get localizedName() {
+        return this.name;
+    }
 }
 
 export class TracksHelper {
@@ -379,6 +383,24 @@ export class TracksHelper {
         });
     }
 
+    getSoloTracks(type: CharacterType) {
+        if (type === CharacterType.Starfleet) {
+            return [this._tracks[0], this._tracks[1], this._tracks[2]];
+        } else if (type === CharacterType.AlliedMilitary) {
+            return this._alliedMilitaryTracks;
+        } else if (type === CharacterType.AmbassadorDiplomat) {
+            return this._ambassardorTracks;
+        } else {
+            return this._civilianTracks;
+        }
+    }
+
+    getSoloTrack(track: Track) {
+        const tracks = [this._tracks, this._alliedMilitaryTracks, this._ambassardorTracks, this._civilianTracks];
+        let result = tracks.map(list => list.filter(t => t.id === track)).filter(list => list.length > 0).map(list => list[0]);
+        return result ? result[0] : undefined;
+    }
+
     getTrack(track: Track, c: Character = character) {
         let list = this.chooseList(c.type);
         let result = null;
@@ -432,7 +454,7 @@ export class TracksHelper {
                 break;
         }
         if (model.enlisted) {
-            character.enlisted = true;
+            character.educationStep.enlisted = true;
         }
     }
 }

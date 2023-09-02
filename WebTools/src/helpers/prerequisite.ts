@@ -116,10 +116,10 @@ export class CivilianPrerequisite implements IConstructPrerequisite<Character> {
             return character.type === CharacterType.AmbassadorDiplomat ||
                 character.type === CharacterType.Civilian ||
                 (character.type === CharacterType.Starfleet
-                    && (character.track === Track.UniversityAlumni
-                        || character.track === Track.ResearchInternship)) ||
+                    && (character.educationStep?.track === Track.UniversityAlumni
+                        || character.educationStep?.track === Track.ResearchInternship)) ||
                 (character.type === CharacterType.KlingonWarrior
-                    && character.track === Track.Laborer);
+                    && character.educationStep?.track === Track.Laborer);
         } else {
             return true;
         }

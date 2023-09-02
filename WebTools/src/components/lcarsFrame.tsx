@@ -123,7 +123,10 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
             this.props.activePage === PageIdentity.SoloEnvironment ||
             this.props.activePage === PageIdentity.SoloEnvironmentDetails ||
             this.props.activePage === PageIdentity.SoloEarlyOutlook ||
-            this.props.activePage === PageIdentity.SoloEarlyOutlookDetails;
+            this.props.activePage === PageIdentity.SoloEarlyOutlookDetails ||
+            this.props.activePage === PageIdentity.SoloEducationTypePage ||
+            this.props.activePage === PageIdentity.SoloEducationPage ||
+            this.props.activePage === PageIdentity.SoloEducationDetailsPage;
     }
 
     isProfileSupportedForPage() {

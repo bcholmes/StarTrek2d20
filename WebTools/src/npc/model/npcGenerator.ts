@@ -1,4 +1,4 @@
-import { AlliedMilitaryDetails, Character, SpeciesStep } from "../../common/character";
+import { AlliedMilitaryDetails, Character, NpcGenerationStep, SpeciesStep } from "../../common/character";
 import { CharacterType } from "../../common/characterType";
 import { Stereotype } from "../../common/construct";
 import { D20 } from "../../common/die";
@@ -366,7 +366,8 @@ export class NpcGenerator {
         }
 
         character.career = careers[Math.floor(Math.random() * careers.length)];
-        character.enlisted = (Math.random() < specialization.officerProbability) ? false : true;
+        character.npcGenerationStep = new NpcGenerationStep();
+        character.npcGenerationStep.enlisted = (Math.random() < specialization.officerProbability) ? false : true;
 
         if (!character.isCivilian()) {
             NpcGenerator.assignRank(character, specialization);

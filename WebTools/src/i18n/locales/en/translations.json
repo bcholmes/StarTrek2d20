@@ -167,6 +167,21 @@
     "SoloEarlyOutlookPage.castes": "Castes",
     "SoloEarlyOutlookPage.aspirations": "Aspirations",
 
+    "SoloEarlyOutlookDetailsPage.errorDiscipline": "Please select a discipline.",
+    "SoloEarlyOutlookDetailsPage.errorFocus": "Please select a focus.",
+
+    "SoloEducationPage.instruction.alliedMilitary": "Outside of Starfleet, the Milky Way Galaxy hosts many other security and military organizations. Instead of a Starfleet or Klingon officer, you might choose to build a Captain’s Log story around a Bajoran freedom fighter, a member of the Andorian Imperial Guard, or a radically candid warrior of the Qowat Milat.\n\nAs an alternative to attending Starfleet Academy, to select the type of military training your character has received, choose from the options in the following table, or randomly select one.",
+    "SoloEducationPage.instruction.ambassadorDiplomat": "Ambassadorial characters are often found accompanying Starfleet vessels, and in other groups and situations conducive to telling exciting stories. These characters don’t necessarily have Starfleet training, but by necessity they are well-trained and well-informed, and quite capable of taking part in dangerous missions when necessary.\n\nDiplomat characters do not necessarily hold an active Starfleet rank or other military rank (though many well-known diplomats are retired Starfleet military).\n\nTo select your character’s diplomatic training, choose one of the types in the following table or randomly select one.",
+    "SoloEducationPage.instruction.civilian": "Civilian characters are known to become involved in adventures great and small throughout the Star Trek universe, from ambassador Sarek’s strategic negotiations to the discovery of the U.S.S. Protostar by a roguish Dal R’El. Building a Captain’s Log story around a civilian character offers a chance to shine a light on life outside of Starfleet.\n\nCivilian characters hold no Starfleet rank or other military rank, though they may be granted an honorary rank.\n\nTo select your character’s civilian training, choose one of the types in the following matrix, or randomly select one.",
+    "SoloEducationPage.instruction.starfleet": "The years spent at Starfleet Academy are some of the most memorable and definitive of an officer’s life, shaping the direction of their career going forward. For those who pass the grueling entrance examinations, the Academy takes four years, covering a mixture of intense training, academic studies, and practical experiences. Much of this takes place within the main Starfleet Academy campus in San Francisco on Earth, but other campuses and annexes exist across the Federation, and a cadet may spend time at any of these before they graduate.\n\nA graduate of the Academy receives a commission as a Starfleet officer, with the rank of ensign, after which they may wait several weeks, or even months, for their first assignment. Some cadets – particularly those pursuing a doctorate – choose a path that requires an additional year or two of training and study, and instead graduate at the rank of lieutenant (junior grade).\n\nYou may choose your character’s Academy track, or randomly select it.",
+
+    "SoloEducationPage.type.starfleet": "Starfleet Academy",
+    "SoloEducationPage.type.civilian": "Civilian Career Training",
+    "SoloEducationPage.type.alliedMilitary": "Allied Military Training",
+    "SoloEducationPage.type.ambassadorDiplomat": "Diplomatic Training",
+
+    "SoloEducationTypePage.instruction": "Some characters will have received their education at Starfleet Academy. Others may have received theirs on the streets of a busy commercial colony, traveling among the stars, or within the societal structure of another civilization.",
+
     "SoloEnvironmentDetailsPage.speciesText": "Which species' did the character grow up amongst?",
 
     "SoloEnvironmentPage.instruction": "In choosing your character's environment, you'll select either a setting or a condition. Each offers different storytelling prompts, but both provide the same type of benefits to your character.\n\nYou may also randomly determine one of those options.",
@@ -380,6 +395,7 @@
     "Page.title.systemGeneration": "System Generation",
     "Page.title.sectorDetails": "Sector Details",
     "Page.title.soloEarlyOutlook": "Early Outlook",
+    "Page.title.soloEarlyOutlookDetails": "Early Outlook Details",
     "Page.title.starSystemDetails": "Star System Details",
     "Page.title.starshipToolSelection": "Starship Tool Selection",
     "Page.title.toolSelection": "Tool Selection",
