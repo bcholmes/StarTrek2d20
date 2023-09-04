@@ -105,6 +105,27 @@ export class CareersHelper {
         ),
     ];
 
+    private _soloCareerLengths: CareerModel[] = [
+        new CareerModel(
+            Career.Young,
+            "solo",
+            "Novice",
+            [ToViewModel(TalentsHelper.getTalent("Untapped Potential"))]
+        ),
+        new CareerModel(
+            Career.Experienced,
+            "solo",
+            "Experienced",
+            []
+        ),
+        new CareerModel(
+            Career.Veteran,
+            "solo",
+            "Veteran",
+            [ToViewModel(TalentsHelper.getTalent("Veteran"))]
+        ),
+    ];
+
     private getBaseList(type: CharacterType) {
         if (type === CharacterType.KlingonWarrior) {
             return this._klingonCareers;
@@ -128,6 +149,15 @@ export class CareersHelper {
         }
 
         return careers;
+    }
+
+    getSoloCareerLength(careerLength: Career) {
+        let result = this._soloCareerLengths.filter(c => c.id === careerLength);
+        return result ? result[0] : undefined;
+    }
+
+    getSoloCareerLengths() {
+        return this._soloCareerLengths;
     }
 
     getCareer(career: Career, c: Character = character) {

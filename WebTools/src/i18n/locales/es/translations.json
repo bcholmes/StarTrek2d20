@@ -116,18 +116,18 @@
     "Construct.system.structure": "Estructura",
     "Construct.system.weapons": "Armas",
 
-    "Page.title.home": "Página principal",
-    "Page.title.era": "Era",
-    "Page.title.talentsOverview": "Descripción general de talentos",
-    "Page.title.creditsPage": "Créditos",
-    "Page.title.viewSheet": "Ver hoja",
-    "Page.title.supportingCharacter": "Personaje secundario",
     "Page.title.characterType": "Tipo de carácter",
-    "Page.title.systemGeneration": "Generación del Sistema Estelar",
+    "Page.title.creditsPage": "Créditos",
+    "Page.title.era": "Era",
+    "Page.title.gamemasterTrackerPage": "Seguimiento",
+    "Page.title.home": "Página principal",
     "Page.title.sectorDetails": "Detalles del sector",
     "Page.title.starSystemDetails": "Detalles del sistema Star",
     "Page.title.starshipToolSelection": "Herramientas de naves espaciales",
-    "Page.title.gamemasterTrackerPage": "Seguimiento",
+    "Page.title.supportingCharacter": "Personaje secundario",
+    "Page.title.systemGeneration": "Generación del Sistema Estelar",
+    "Page.title.talentsOverview": "Descripción general de talentos",
+    "Page.title.viewSheet": "Ver hoja",
 
     "Page.breadcrumb.characterCreation": "Creación de personajes"
 }

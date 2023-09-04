@@ -83,6 +83,10 @@ export class TrackModel {
     get localizedName() {
         return this.name;
     }
+
+    get localizedDescription() {
+        return this.description;
+    }
 }
 
 export class TracksHelper {

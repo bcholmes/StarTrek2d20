@@ -11,6 +11,8 @@ import SoloEarlyOutlookPage from "./soloEarlyOutlookPage";
 import SoloEarlyOutlookDetailsPage from "./soloEarlyOutlookDetailsPage";
 import SoloEducationTypePage from "./soloEducationTypePage";
 import SoloEducationPage from "./soloEducationPage";
+import SoloEducationDetailsPage from "./soloEducationDetailsPage";
+import SoloCareerLengthPage from "./soloCareerLengthPage";
 
 export class CaptainsLogPageFactory implements IPageFactoryRegistry {
 
@@ -38,6 +40,8 @@ export class CaptainsLogPageFactory implements IPageFactoryRegistry {
         this.factories[PageIdentity.SoloEarlyOutlookDetails] = () => <SoloEarlyOutlookDetailsPage />;
         this.factories[PageIdentity.SoloEducationTypePage] = () => <SoloEducationTypePage />;
         this.factories[PageIdentity.SoloEducationPage] = () => <SoloEducationPage />;
+        this.factories[PageIdentity.SoloEducationDetailsPage] = () => <SoloEducationDetailsPage />;
+        this.factories[PageIdentity.SoloCareerLengthPage] = () => <SoloCareerLengthPage />;
     }
 
     findFactory(page: PageIdentity) {

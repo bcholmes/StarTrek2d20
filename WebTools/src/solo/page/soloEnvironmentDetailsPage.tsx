@@ -10,7 +10,7 @@ import { IAttributeController } from "../../components/attributeController";
 import { Character } from "../../common/character";
 import { Attribute } from "../../helpers/attributes";
 import store from "../../state/store";
-import { StepContext, modifyCharacterAttribute, modifyCharacterDiscipline, setCharacterEnvironment } from "../../state/characterActions";
+import { StepContext, modifyCharacterAttribute, modifyCharacterDiscipline, setCharacterEnvironment, setCharacterValue } from "../../state/characterActions";
 import AttributeListComponent from "../../components/attributeListComponent";
 import InstructionText from "../../components/instructionText";
 import { SpeciesHelper } from "../../helpers/species";
@@ -164,7 +164,7 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({charact
                     <div className="col-md-6 my-3">
                         <Header level={2} className="mb-3">{t('Construct.other.value')}</Header>
 
-                        <SoloValueInput textDescription={t('Value.environment.text')} onValueChanged={(string) => {}}/>
+                        <SoloValueInput textDescription={t('Value.environment.text')} onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Environment))}}/>
                     </div>
                 </div>
                 <div className='text-right mt-4'>

@@ -491,7 +491,7 @@ export class RanksHelper {
             ],
             "Crew."),
         new RankModel(
-            Rank.Crewman3rdClass,
+            Rank.Crewman2ndClass,
             "Crewman 2nd Class", "E2",
             [
                 new EnlistedPrerequisite(),

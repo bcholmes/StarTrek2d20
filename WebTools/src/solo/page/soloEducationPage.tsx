@@ -2,30 +2,33 @@ import React, { useState } from "react";
 import { ISoloCharacterProperties } from "./soloCharacterProperties";
 import { connect } from "react-redux";
 import { Header } from "../../components/header";
-import { navigateTo } from "../../common/navigator";
+import { Navigation, navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
 import { CharacterType } from "../../common/characterType";
 import { makeKey } from "../../common/translationKey";
-import { Track } from "../../helpers/trackEnum";
 import { TrackModel, TracksHelper } from "../../helpers/tracks";
 import { Button } from "../../components/button";
 import { Window } from "../../common/window";
 import { EducationTrackRandomTable } from "../table/educationRandomTable";
+import store from "../../state/store";
+import { setCharacterEducation } from "../../state/characterActions";
 
 const SoloEducationPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
     const [randomTrack, setRandomTrack] = useState(null);
 
-    const trackSelected = (track: Track)=> {
+    const trackSelected = (track: TrackModel)=> {
+        store.dispatch(setCharacterEducation(track.id, track.enlisted));
+        Navigation.navigateToPage(PageIdentity.SoloEducationDetailsPage);
     }
 
     const toTableRow = (track: TrackModel, i: number) => {
         return (
-            <tr key={i} onClick={() => { if (Window.isCompact()) trackSelected(track.id); }}>
+            <tr key={i} onClick={() => { if (Window.isCompact()) trackSelected(track); }}>
                 <td className="selection-header">{track.localizedName}</td>
-                <td className="text-right"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { trackSelected(track.id) }} /></td>
+                <td className="text-right"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { trackSelected(track) }} /></td>
             </tr>
         );
     }

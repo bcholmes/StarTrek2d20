@@ -4,6 +4,7 @@ import { Attribute } from "../helpers/attributes";
 import { Environment } from "../helpers/environments";
 import { Skill } from "../helpers/skills";
 import { Species } from "../helpers/speciesEnum";
+import { Track } from "../helpers/trackEnum";
 import { EarlyOutlookModel } from "../helpers/upbringings";
 export const SET_CHARACTER = 'SET_CHARACTER';
 export const MODIFY_CHARACTER_REPUTATION = 'MODIFY_CHARACTER_REPUTATION';
@@ -12,8 +13,10 @@ export const APPLY_NORMAL_MILESTONE_DISCIPLINE = 'APPLY_NORMAL_MILESTONE_DISCIPL
 export const APPLY_NORMAL_MILESTONE_FOCUS = 'APPLY_NORMAL_MILESTONE_FOCUS';
 export const SET_CHARACTER_SPECIES = 'SET_CHARACTER_SPECIES';
 export const SET_CHARACTER_FOCUS = 'SET_CHARACTER_FOCUS';
+export const SET_CHARACTER_VALUE = 'SET_CHARACTER_VALUE';
 export const SET_CHARACTER_NAME = 'SET_CHARACTER_NAME';
 export const SET_CHARACTER_PRONOUNS = 'SET_CHARACTER_PRONOUNS';
+export const SET_CHARACTER_EDUCATION = 'SET_CHARACTER_EDUCATION';
 export const SET_CHARACTER_ENVIRONMENT = 'SET_CHARACTER_ENVIRONMENT';
 export const SET_CHARACTER_EARLY_OUTLOOK = 'SET_CHARACTER_EARLY_OUTLOOK';
 export const MODIFY_CHARACTER_ATTRIBUTE = 'MODIFY_CHARACTER_ATTRIBUTE';
@@ -27,7 +30,8 @@ export enum StepContext {
     Education,
     Career,
     CareerEvent1,
-    CareerEvent2
+    CareerEvent2,
+    FinishingTouches
 }
 
 export function setCharacter(character: Character) {
@@ -54,6 +58,14 @@ export function setCharacterEnvironment(environment: Environment, otherSpecies?:
     }
 }
 
+export function setCharacterEducation(track: Track, enlisted: boolean = false) {
+    let payload = { track: track, enlisted: enlisted };
+    return {
+       type: SET_CHARACTER_EDUCATION,
+       payload: payload
+    }
+}
+
 export function setCharacterEarlyOutlook(earlyOutlook: EarlyOutlookModel, accepted: boolean = true) {
     let payload = { earlyOutlook: earlyOutlook, accepted: accepted };
     return {
@@ -66,6 +78,14 @@ export function setCharacterFocus(focus: string, context: StepContext, index: nu
     let payload = { focus: focus, context: context };
     return {
        type: SET_CHARACTER_FOCUS,
+       payload: payload
+    }
+}
+
+export function setCharacterValue(value: string, context: StepContext) {
+    let payload = { value: value, context: context };
+    return {
+       type: SET_CHARACTER_VALUE,
        payload: payload
     }
 }
@@ -102,8 +122,8 @@ export function modifyCharacterAttribute(attribute: Attribute, context: StepCont
     }
 }
 
-export function modifyCharacterDiscipline(discipline: Skill, context: StepContext, increase: boolean = true) {
-    let payload = { discipline: discipline, context: context, increase: increase };
+export function modifyCharacterDiscipline(discipline: Skill, context: StepContext, increase: boolean = true, primaryDisciplines: Skill[] = []) {
+    let payload = { discipline: discipline, context: context, increase: increase, primaryDisciplines: primaryDisciplines };
     return {
        type: MODIFY_CHARACTER_DISCIPLINE,
        payload: payload

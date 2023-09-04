@@ -1,5 +1,5 @@
-import { Character, EnvironmentStep, SpeciesStep, UpbringingStep } from "../common/character";
-import { APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FOCUS, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, StepContext } from "./characterActions";
+import { Character, EducationStep, EnvironmentStep, SpeciesStep, UpbringingStep } from "../common/character";
+import { APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FOCUS, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -23,6 +23,15 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
             if (action.payload.attributes) {
                 temp.speciesStep.attributes = action.payload.attributes;
             }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case SET_CHARACTER_EDUCATION: {
+            let temp = state.currentCharacter.copy();
+            temp.educationStep = new EducationStep(action.payload.track, action.payload.enlisted);
             return {
                 ...state,
                 currentCharacter: temp,
@@ -84,6 +93,12 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 } else if (temp.environmentStep.attribute === action.payload.attribute) {
                     temp.environmentStep.attribute = undefined;
                 }
+            } else if (action.payload.context === StepContext.Education && temp.educationStep) {
+                if (action.payload.increase) {
+                    temp.educationStep.attributes.push(action.payload.attribute)
+                } else if (temp.educationStep.attributes.indexOf(action.payload.attribute) >= 0) {
+                    temp.educationStep.attributes.splice(temp.educationStep.attributes.indexOf(action.payload.attribute), 1);
+                }
             }
             return {
                 ...state,
@@ -118,10 +133,27 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 isModified: true
             }
         }
+        case SET_CHARACTER_VALUE: {
+            let temp = state.currentCharacter.copy();
+            if (action.payload.context === StepContext.Environment) {
+                temp.environmentValue = action.payload.value;
+            } else if (action.payload.context === StepContext.Education) {
+                temp.trackValue = action.payload.value;
+            } else if (action.payload.context === StepContext.Career) {
+                temp.careerValue = action.payload.value;
+            }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
         case SET_CHARACTER_FOCUS: {
             let temp = state.currentCharacter.copy();
             if (action.payload.context === StepContext.EarlyOutlook && temp.upbringingStep) {
                 temp.upbringingStep.focus = action.payload.focus;
+            } else if (action.payload.context === StepContext.Education && temp.educationStep && action.payload.index <= 2) {
+                temp.educationStep.focuses[action.payload.index] = action.payload.focus;
             }
             return {
                 ...state,
@@ -131,6 +163,7 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         }
         case MODIFY_CHARACTER_DISCIPLINE: {
             let temp = state.currentCharacter.copy();
+            const discipline = action.payload.discipline;
             if (action.payload.context === StepContext.Environment && temp.environmentStep) {
                 if (action.payload.increase) {
                     temp.environmentStep.discipline = action.payload.discipline;
@@ -142,6 +175,34 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.upbringingStep.discipline = action.payload.discipline;
                 } else if (temp.upbringingStep.discipline === action.payload.discipline) {
                     temp.upbringingStep.discipline = undefined;
+                }
+            } else if (action.payload.context === StepContext.Education && temp.educationStep) {
+                if (action.payload.increase) {
+                    if (action.payload.primaryDisciplines.length > 0) {
+                        temp.educationStep.primaryDiscipline = discipline;
+                        action.payload.primaryDisciplines.forEach(d => {
+                            if (temp.educationStep.disciplines.indexOf(d) >= 0) {
+                                temp.educationStep.disciplines.splice(temp.educationStep.disciplines.indexOf(d), 1);
+                            }
+                        });
+                    } else if (temp.educationStep.decrementDiscipline === discipline) {
+                        temp.educationStep.decrementDiscipline = null;
+                    } else {
+                        temp.educationStep.disciplines.push(discipline);
+                    }
+                } else {
+                    if (temp.educationStep.primaryDiscipline === discipline) {
+                        temp.educationStep.primaryDiscipline = null;
+                        action.payload.primaryDisciplines.forEach(d => {
+                            if (temp.educationStep.disciplines.indexOf(d) >= 0) {
+                                temp.educationStep.disciplines.splice(temp.educationStep.disciplines.indexOf(d), 1);
+                            }
+                        });
+                    } else if (temp.educationStep.disciplines.indexOf(discipline) >= 0) {
+                        temp.educationStep.disciplines.splice(temp.educationStep.disciplines.indexOf(discipline), 1);
+                    } else {
+                        temp.educationStep.decrementDiscipline = discipline;
+                    }
                 }
             }
             return {

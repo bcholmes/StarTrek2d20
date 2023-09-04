@@ -173,12 +173,14 @@ export class EducationStep {
     public primaryDiscipline: Skill;
     public disciplines: Skill[];
     public decrementDiscipline: Skill;
+    public focuses: string[];
 
     constructor(track: Track, enlisted: boolean = false) {
         this.track = track;
         this.enlisted = enlisted;
         this.attributes = [];
         this.disciplines = [];
+        this.focuses = ["", "", ""];
     }
 }
 
@@ -304,6 +306,8 @@ export class Character extends Construct {
                     result[earlyOutlook.attributeRebelPlus1].value = result[earlyOutlook.attributeRebelPlus1].value + 1;
                 }
             }
+            this.educationStep?.attributes?.forEach(a => result[a].value = result[a].value + 1);
+
             return result;
         } else {
             return this._attributes;
@@ -320,6 +324,13 @@ export class Character extends Construct {
             if (this.upbringingStep?.discipline != null) {
                 result[this.upbringingStep.discipline].expertise = result[this.upbringingStep.discipline].expertise + 1;
             }
+            if (this.educationStep?.primaryDiscipline != null) {
+                result[this.educationStep.primaryDiscipline].expertise = result[this.educationStep.primaryDiscipline].expertise + 2;
+            }
+            if (this.educationStep?.decrementDiscipline != null) {
+                result[this.educationStep.decrementDiscipline].expertise = result[this.educationStep.decrementDiscipline].expertise - 1;
+            }
+            this.educationStep?.disciplines?.forEach(d => result[d].expertise = result[d].expertise + 1);
             return result;
         } else {
             return this._skills;
@@ -787,6 +798,7 @@ export class Character extends Construct {
             character.educationStep.disciplines = [...this.educationStep.disciplines];
             character.educationStep.primaryDiscipline = this.educationStep.primaryDiscipline;
             character.educationStep.decrementDiscipline = this.educationStep.decrementDiscipline;
+            character.educationStep.focuses = [...this.educationStep.focuses];
         }
         character.environmentValue = this.environmentValue;
         character.trackValue = this.trackValue;
