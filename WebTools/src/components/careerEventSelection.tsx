@@ -4,15 +4,17 @@ import {CareerEventsHelper} from '../helpers/careerEvents';
 import {AttributesHelper} from '../helpers/attributes';
 import {SkillsHelper} from '../helpers/skills';
 import {Button} from './button';
+import { CharacterType } from '../common/characterType';
 
 interface ICareerEventSelectionProperties {
+    characterType: CharacterType;
     onSelection: (event: number) => void;
     onCancel: () => void;
 }
 
 export class CareerEventSelection extends React.Component<ICareerEventSelectionProperties, {}> {
     render() {
-        var events = CareerEventsHelper.getCareerEvents().map((e, i) => {
+        var events = CareerEventsHelper.getCareerEvents(this.props.characterType).map((e, i) => {
             const attributes = e.attributes.map((a, i) => {
                 return <div key={i}>{AttributesHelper.getAttributeName(a) }</div>
             });

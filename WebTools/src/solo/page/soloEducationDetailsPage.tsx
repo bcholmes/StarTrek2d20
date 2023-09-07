@@ -147,7 +147,7 @@ const SoloEducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character
         } else if (!character.trackValue) {
             Dialog.show(t("SoloEducationDetailsPage.errorValue"));
         } else {
-            Navigation.navigateToPage(PageIdentity.SoloCareerLengthPage);
+            Navigation.navigateToPage(PageIdentity.SoloCareerLength);
         }
     }
 

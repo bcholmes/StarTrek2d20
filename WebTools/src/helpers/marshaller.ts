@@ -644,7 +644,7 @@ class Marshaller {
                 result.npcGenerationStep.enlisted = rank.isEnlisted;
             }
         }
-        result.focuses = [...json.focuses];
+        result._focuses = [...json.focuses];
         if (json.attributes) {
             result.attributes.forEach(a => {
                 let value = json.attributes[Attribute[a.attribute]];

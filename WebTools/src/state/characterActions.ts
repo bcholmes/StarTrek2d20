@@ -1,6 +1,7 @@
 import { Character, CharacterRank } from "../common/character";
 import { CharacterType } from "../common/characterType";
 import { Attribute } from "../helpers/attributes";
+import { Career } from "../helpers/careerEnum";
 import { Environment } from "../helpers/environments";
 import { Skill } from "../helpers/skills";
 import { Species } from "../helpers/speciesEnum";
@@ -19,6 +20,7 @@ export const SET_CHARACTER_PRONOUNS = 'SET_CHARACTER_PRONOUNS';
 export const SET_CHARACTER_EDUCATION = 'SET_CHARACTER_EDUCATION';
 export const SET_CHARACTER_ENVIRONMENT = 'SET_CHARACTER_ENVIRONMENT';
 export const SET_CHARACTER_EARLY_OUTLOOK = 'SET_CHARACTER_EARLY_OUTLOOK';
+export const SET_CHARACTER_CAREER_LENGTH = 'SET_CHARACTER_CAREER_LENGTH';
 export const MODIFY_CHARACTER_ATTRIBUTE = 'MODIFY_CHARACTER_ATTRIBUTE';
 export const MODIFY_CHARACTER_DISCIPLINE = 'MODIFY_CHARACTER_DISCIPLINE';
 export const SET_CHARACTER_TYPE = 'SET_CHARACTER_TYPE';
@@ -75,7 +77,7 @@ export function setCharacterEarlyOutlook(earlyOutlook: EarlyOutlookModel, accept
 }
 
 export function setCharacterFocus(focus: string, context: StepContext, index: number = 0) {
-    let payload = { focus: focus, context: context };
+    let payload = { focus: focus, context: context, index: index };
     return {
        type: SET_CHARACTER_FOCUS,
        payload: payload
@@ -110,6 +112,14 @@ export function setCharacterType(type: CharacterType) {
     let payload = { type: type };
     return {
        type: SET_CHARACTER_TYPE,
+       payload: payload
+    }
+}
+
+export function setCharacterCareerLength(careerLength: Career) {
+    let payload = { careerLength: careerLength };
+    return {
+       type: SET_CHARACTER_CAREER_LENGTH,
        payload: payload
     }
 }

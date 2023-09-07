@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { navigateTo } from "../../common/navigator";
+import { Navigation, navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
 import InstructionText from "../../components/instructionText";
@@ -10,6 +10,8 @@ import { CareerModel, CareersHelper } from "../../helpers/careers";
 import { Window } from "../../common/window";
 import { Button } from "../../components/button";
 import { CareerLengthRandomTable } from "../table/careerLengthRandomTable";
+import store from "../../state/store";
+import { setCharacterCareerLength } from "../../state/characterActions";
 
 const SoloCareerLengthPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
@@ -17,6 +19,8 @@ const SoloCareerLengthPage: React.FC<ISoloCharacterProperties> = ({character}) =
     const [randomLength, setRandomLength] = useState(null);
 
     const careerLengthSelected = (careerLength: CareerModel)=> {
+        store.dispatch(setCharacterCareerLength(careerLength.id));
+        Navigation.navigateToPage(PageIdentity.SoloCareerLengthDetails);
     }
 
     const toTableRow = (careerLength: CareerModel, i: number) => {
@@ -34,8 +38,6 @@ const SoloCareerLengthPage: React.FC<ISoloCharacterProperties> = ({character}) =
         ? toTableRow(CareersHelper.instance.getSoloCareerLength(randomLength), 0)
         : CareersHelper.instance.getSoloCareerLengths().map((c, i) => toTableRow(c, i));
 
-
-
     return (
         <div className="page container ml-0">
             <nav aria-label="breadcrumb">
@@ -52,7 +54,7 @@ const SoloCareerLengthPage: React.FC<ISoloCharacterProperties> = ({character}) =
                 </ol>
             </nav>
             <Header>{t('Page.title.soloCareerLength')}</Header>
-            <InstructionText text={t('SoloCareerLengthPage.instruction')} />
+            <InstructionText text={t('SoloCareerLength.instruction')} />
             <div className="my-4">
                 <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomLength( CareerLengthRandomTable()) }>
                     <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { Header } from "../../components/header";
-import { navigateTo } from "../../common/navigator";
+import { Navigation, navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../components/button";
@@ -9,6 +9,9 @@ import { StepContext, setCharacterValue } from "../../state/characterActions";
 import SoloValueInput from "../component/soloValueInput";
 import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "./soloCharacterProperties";
 import { CareersHelper } from "../../helpers/careers";
+import { Dialog } from "../../components/dialog";
+import { makeKey } from "../../common/translationKey";
+import { Career } from "../../helpers/careerEnum";
 
 const SoloCareerLengthDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
     const { t } = useTranslation();
@@ -16,6 +19,11 @@ const SoloCareerLengthDetailsPage: React.FC<ISoloCharacterProperties> = ({charac
     const careerLength = CareersHelper.instance.getSoloCareerLength(character.career);
 
     const navigateToNextStep = () => {
+        if (!character.careerValue) {
+            Dialog.show(t("SoloCareerLengthDetailsPage.errorValue"));
+        } else {
+            Navigation.navigateToPage(PageIdentity.SoloCareerEvent1);
+        }
     }
 
     return (
@@ -37,7 +45,7 @@ const SoloCareerLengthDetailsPage: React.FC<ISoloCharacterProperties> = ({charac
                     <div className="col-md-6 my-3">
                         <Header level={2} className="mb-3">{t('Construct.other.value')}</Header>
 
-                        <SoloValueInput textDescription={careerLength.localizedValueDescription} onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Career))}}/>
+                        <SoloValueInput textDescription={t(makeKey('Value.careerLength.', Career[careerLength.id], '.text'))} onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Career))}}/>
                     </div>
                 </div>
                 <div className='text-right mt-4'>

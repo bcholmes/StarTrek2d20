@@ -226,17 +226,21 @@ class AnyOfPrerequisite implements IConstructPrerequisite<Construct> {
 
 
 class TalentPrerequisite implements IConstructPrerequisite<Construct> {
-    private talent: string;
+    private talent: string[];
 
-    constructor(talent: string) {
+    constructor(...talent: string[]) {
         this.talent = talent;
     }
 
     isPrerequisiteFulfilled(c: Construct) {
-        return c.hasTalent(this.talent);
+        let result = false;
+        this.talent.forEach(t =>
+            result = result || c.hasTalent(t)
+        );
+        return result;
     }
     describe(): string {
-        return "Requires \"" + this.talent + "\" Talent";
+        return "Requires \"" + this.talent.join('" or "') + "\" Talent";
     }
 }
 
@@ -2642,7 +2646,7 @@ export class Talents {
             new TalentModel(
                 "Telepathic Projection",
                 "Your telepathic ability is more potent than most, and you are quite accustomed to projecting your thoughts into other minds. You can send your thoughts into the minds of other creatures – other than those immune to telepathy – even if those creatures are not telepathic themselves. You can “hear” their responses by reading their minds as normal. You are also capable of using this ability offensively, overwhelming a target’s mind with pain-inducing psychic noise. This requires a Presence + Security task with a Difficulty of 2 (increasing by 1 for each range category beyond Close), and inflicting [D] Stress equal to your Presence, with the Intense effect.",
-                [new SourcePrerequisite(Source.PlayersGuide), new TalentPrerequisite("Telepath"),  new GMsDiscretionPrerequisite()],
+                [new SourcePrerequisite(Source.PlayersGuide), new TalentPrerequisite("Telepath", "Telepath (Ocampa)", "Telepathy (Anabaj)"),  new GMsDiscretionPrerequisite()],
                 1,
                 "Esoteric"),
             new TalentModel(

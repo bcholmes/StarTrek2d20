@@ -37,7 +37,8 @@ export class CareerEventPage extends React.Component<IPageProperties, ICareerEve
                 <div>
                     <CareerEventSelection
                         onSelection={(event) => this.selectCareerEvent(event) }
-                        onCancel={() => this.hideCareerEvent() } />
+                        onCancel={() => this.hideCareerEvent() }
+                        characterType={character.type}/>
                 </div>
             );
 
@@ -50,7 +51,7 @@ export class CareerEventPage extends React.Component<IPageProperties, ICareerEve
     }
 
     private rollCareerEvent() {
-        var event = CareerEventsHelper.generateEvent();
+        var event = CareerEventsHelper.generateEvent(character.type);
         this.selectCareerEvent(event.roll);
     }
 

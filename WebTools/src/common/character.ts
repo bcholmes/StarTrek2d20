@@ -216,7 +216,7 @@ export class Character extends Construct {
     public trackValue?: string;
     public careerValue?: string;
     public finishValue?: string;
-    public focuses: string[];
+    public _focuses: string[];
     public typeDetails: CharacterTypeDetails;
     public workflow?: Workflow;
     public pronouns: string = '';
@@ -244,7 +244,7 @@ export class Character extends Construct {
 
         this._mementos = [];
         this.traits = [];
-        this.focuses = [];
+        this._focuses = [];
         this.talents = {};
         this.implants = [];
         this.careerEvents = [];
@@ -663,7 +663,22 @@ export class Character extends Construct {
     }
 
     addFocus(focus: string) {
-        this.focuses.push(focus);
+        this._focuses.push(focus);
+    }
+
+    get focuses() {
+        if (this.stereotype === Stereotype.SoloCharacter) {
+            let result = [];
+            if (this.upbringingStep?.focus) {
+                result.push(this.upbringingStep.focus);
+            }
+            if (this.educationStep) {
+                this.educationStep.focuses.filter(f => f?.length).forEach(f => result.push(f));
+            }
+            return result;
+        } else {
+            return this._focuses;
+        }
     }
 
     isEngineer() {
@@ -804,8 +819,8 @@ export class Character extends Construct {
         character.trackValue = this.trackValue;
         character.careerValue = this.careerValue;
         character.finishValue = this.finishValue;
-        this.focuses.forEach(f => {
-            character.focuses.push(f);
+        this._focuses.forEach(f => {
+            character._focuses.push(f);
         });
         if (this.workflow) {
             character.workflow = this.workflow.copy();

@@ -358,6 +358,10 @@
     "CareerType.klingon.veteran.description": "Le personnage a des dizaines d'années d'expérience au service de l'Empire, et a servi sur de nombreux vaisseaux et bases spatiales. Le jugement et les opinions du personnage sont prisés par ses subordonés, ses pairs, et même ses supérieurs.",
     "CareerType.klingon.veteran.valueInstruction": "Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière.",
 
+    "CareerType.solo.experienced.name": "Expérimenté",
+
+    "CareerType.solo.veteran.name": "Vétéran",
+
     "Environment.common.homeworld.name": "Planète natale",
     "Environment.common.homeworld.description": "Le personnage vient du monde qui a vu naître leur civilisation,et a été entouré toute sa vie par leurs héritages culturels et spirituels. Les mondes natals sont souvent utopiques et idylliques, servant comme idéal platonique de la culture de leur espèce. Ils illustrent également les aspects des traditions les plus vénérées d'une culture et constituent le cœur du paysage juridique et politique de cette civilisation.",
 
@@ -477,6 +481,12 @@
     "Value.childEducation.text": "Le personnage gagne une valeur unique, qui devrait refléter certains aspects des croyances du personnage qui se sont développées au cours de son Education.",
 
     "Value.otherTraining.text": "Le personnage gagne une valeur unique, qui devrait refléter certains aspects des croyances du personnage qui se sont développées au cours de son Entraînement.",
+
+    "Value.careerLength.young.text": "Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage.",
+
+    "Value.careerLength.experienced.text": "Le personnage reçoit une Valueur, qui peut être choisie librement.",
+
+    "Value.careerLength.veteran.text": "Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière.",
 
     "Value.final.text": "Le personnage reçoit une valeur finale. Cela peut refléter les événements de carrière lancés à l'étape six, ou cela peut représenter un autre élément du personnage. Cette valeur peut être une relation, reliant le personnage à un autre personnage de l'équipage, ou à une autre organisation ou culture d'une manière ou d'une autre.",
 

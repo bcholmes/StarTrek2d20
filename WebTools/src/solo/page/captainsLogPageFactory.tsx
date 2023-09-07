@@ -13,6 +13,9 @@ import SoloEducationTypePage from "./soloEducationTypePage";
 import SoloEducationPage from "./soloEducationPage";
 import SoloEducationDetailsPage from "./soloEducationDetailsPage";
 import SoloCareerLengthPage from "./soloCareerLengthPage";
+import SoloCareerEventPage from "./soloCareerEventPage";
+import { StepContext } from "../../state/characterActions";
+import SoloCareerLengthDetailsPage from "./soloCareerLengthDetailsPage";
 
 export class CaptainsLogPageFactory implements IPageFactoryRegistry {
 
@@ -41,7 +44,10 @@ export class CaptainsLogPageFactory implements IPageFactoryRegistry {
         this.factories[PageIdentity.SoloEducationTypePage] = () => <SoloEducationTypePage />;
         this.factories[PageIdentity.SoloEducationPage] = () => <SoloEducationPage />;
         this.factories[PageIdentity.SoloEducationDetailsPage] = () => <SoloEducationDetailsPage />;
-        this.factories[PageIdentity.SoloCareerLengthPage] = () => <SoloCareerLengthPage />;
+        this.factories[PageIdentity.SoloCareerLength] = () => <SoloCareerLengthPage />;
+        this.factories[PageIdentity.SoloCareerLengthDetails] = () => <SoloCareerLengthDetailsPage />;
+        this.factories[PageIdentity.SoloCareerEvent1] = () => <SoloCareerEventPage context={StepContext.CareerEvent1} />;
+        this.factories[PageIdentity.SoloCareerEvent2] = () => <SoloCareerEventPage context={StepContext.CareerEvent2} />;
     }
 
     findFactory(page: PageIdentity) {

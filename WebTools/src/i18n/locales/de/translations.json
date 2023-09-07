@@ -459,6 +459,12 @@
 
     "CareerType.klingon.veteran.name": "Kriegsveteran",
 
+    "CareerType.solo.young.description": "Der Charakter wird durch das Potential und weniger die Fähigkeiten definiert. Das rohe Talent und die Erwartungen an das Universum müssen noch durch die Realität abgeschwächt werden.",
+
+    "CareerType.solo.experienced.name": "Erfahren",
+
+    "CareerType.solo.veteran.name": "Veteran",
+
     "Environment.common.homeworld.name": "Heimatwelt",
     "Environment.common.homeworld.description": "Der Charakter stammt von der Heimatwelt seiner oder ihrer Zivilisation und ist umgeben von dem kulturellen sowie spirituellen Erbe seines oder ihres Volkes aufgewachsen. Heimatwelten spiegeln oft die Ideale ihres Volkes wider und sind äußerst utopisch und idyllisch. Sie sind Horte der Tradition und sind die Zentren des wirtschaftlichen und politischen Lebens ihrer Zivilisation.",
 
@@ -739,6 +745,12 @@
     "Value.childEducation.text": "Ihr Charakter erhält eine Überzeugung, die auf irgendeine Weise während der Ausbildung geformte Wertvorstellungen oder gemachte Erfahrungen widerspiegeln sollte.",
 
     "Value.otherTraining.text": "Ihr Charakter erhält eine Überzeugung, die auf irgendeine Weise während des Trainings geformte Wertvorstellungen oder gemachte Erfahrungen widerspiegeln sollte.",
+
+    "Value.careerLength.young.text": "Der Charakter erhält eine Überzeugung, welche die Unerfahrenheit und Naivität in irgendeiner Art widerspiegelt.",
+
+    "Value.careerLength.experienced.text": "Der Charakter erhält eine frei wählbare Überzeugung.",
+
+    "Value.careerLength.veteran.text": "Der Charakter erhält eine Überzeugung, welche die Jahre an Erfahrung und die in der langen Karriere geformten Wertvorstellungen widerspiegelt.",
 
     "Value.final.text": "Der Charakter erhält eine letzte Überzeugung. Diese kann mit einem der Karriereereignisse aus Schritt 6 zusammenhängen, aber auch völlig frei gewählt sein. Die Überzeugung kann auch eine Beziehung sein, die den Charakter mit einem anderen Charakter in der Crew, einer Organisation oder einer Kultur verbindet.",
 

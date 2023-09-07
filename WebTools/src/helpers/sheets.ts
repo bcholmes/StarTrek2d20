@@ -468,7 +468,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
     }
 
     fillSpecies(form: PDFForm, character: Character) {
-        this.fillField(form, 'Species', character.rank?.name);
+        this.fillField(form, 'Species', character.speciesName);
     }
 
     populateForm(form: PDFForm, construct: Construct) {

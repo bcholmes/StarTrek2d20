@@ -3,7 +3,7 @@ import {Attribute} from './attributes';
 import {Character, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 
-class CareerEventModel {
+export class CareerEventModel {
     name: string;
     description: string;
     attributes: Attribute[];
@@ -566,8 +566,16 @@ class CareerEvents {
         ),
     ];
 
-    getCareerEvents() {
-        return character.type === CharacterType.KlingonWarrior ? this._klingonEvents : this._events;
+    getSoloCareerEvents() {
+        let result = [];
+        for (let i = 0; i < 20; i++) {
+            result.push(this._events[i]);
+        }
+        return result;
+    }
+
+    getCareerEvents(type: CharacterType) {
+        return type === CharacterType.KlingonWarrior ? this._klingonEvents : this._events;
     }
 
     getCareerEvent(id: number, type: CharacterType): CareerEventModel {
@@ -584,11 +592,11 @@ class CareerEvents {
         return event;
     }
 
-    generateEvent(): CareerEventModel {
+    generateEvent(type: CharacterType): CareerEventModel {
         var roll = Math.floor(Math.random() * 20) + 1;
         let event = undefined;
 
-        let list = character.type === CharacterType.KlingonWarrior ? this._klingonEvents : this._events;
+        let list = type === CharacterType.KlingonWarrior ? this._klingonEvents : this._events;
         list.forEach(ev => {
             if (ev.roll === roll) {
                 event = ev;

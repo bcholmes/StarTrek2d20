@@ -171,8 +171,8 @@
     "SoloEarlyOutlookDetailsPage.errorFocus": "Please select a focus.",
 
     "SoloEducationDetailsPage.selectThree": "(Select three)",
-    "SoloEducationDetailsPage.primaryDiscipline": "Primary",
-    "SoloEducationDetailsPage.secondaryDiscipline": "Secondary",
+    "SoloEducationDetailsPage.primaryDiscipline": "Primary Discipline",
+    "SoloEducationDetailsPage.secondaryDiscipline": "Secondary Disciplines",
 
     "SoloEducationPage.instruction.alliedMilitary": "Outside of Starfleet, the Milky Way Galaxy hosts many other security and military organizations. Instead of a Starfleet or Klingon officer, you might choose to build a Captain’s Log story around a Bajoran freedom fighter, a member of the Andorian Imperial Guard, or a radically candid warrior of the Qowat Milat.\n\nAs an alternative to attending Starfleet Academy, to select the type of military training your character has received, choose from the options in the following table, or randomly select one.",
     "SoloEducationPage.instruction.ambassadorDiplomat": "Ambassadorial characters are often found accompanying Starfleet vessels, and in other groups and situations conducive to telling exciting stories. These characters don’t necessarily have Starfleet training, but by necessity they are well-trained and well-informed, and quite capable of taking part in dangerous missions when necessary.\n\nDiplomat characters do not necessarily hold an active Starfleet rank or other military rank (though many well-known diplomats are retired Starfleet military).\n\nTo select your character’s diplomatic training, choose one of the types in the following table or randomly select one.",
@@ -187,6 +187,9 @@
     "SoloEducationTypePage.instruction": "Some characters will have received their education at Starfleet Academy. Others may have received theirs on the streets of a busy commercial colony, traveling among the stars, or within the societal structure of another civilization.",
 
     "SoloEnvironmentDetailsPage.speciesText": "Which species' did the character grow up amongst?",
+    "SoloEnvironmentDetailsPage.errorAttribute": "Please select an attribute.",
+    "SoloEnvironmentDetailsPage.errorDiscipline": "Please select a discipline.",
+    "SoloEnvironmentDetailsPage.errorValue": "Please select a value.",
 
     "SoloEnvironmentPage.instruction": "In choosing your character's environment, you'll select either a setting or a condition. Each offers different storytelling prompts, but both provide the same type of benefits to your character.\n\nYou may also randomly determine one of those options.",
     "SoloEnvironmentPage.settings": "Settings",
@@ -402,6 +405,9 @@
     "Page.title.sectorDetails": "Sector Details",
     "Page.title.simpleStarship": "Simplified Starship Creation",
     "Page.title.smallCraftStats": "Small Craft Stats",
+    "Page.title.soloCareerEvent": "Career Event",
+    "Page.title.soloCareerEventDetails": "Career Event Details",
+    "Page.title.soloCareerLength": "Career Length",
     "Page.title.soloConstructType": "Tool Selection",
     "Page.title.soloEarlyOutlook": "Early Outlook",
     "Page.title.soloEarlyOutlookDetails": "Early Outlook Details",
@@ -510,6 +516,15 @@
     "CareerType.klingon.veteran.name": "Veteran Warrior",
     "CareerType.klingon.veteran.description": "The character has decades of experience in the service of the Empire, and has served on many ships and space stations. The character’s judgement and opinions are highly regarded by subordinates, peers, and even superiors.",
     "CareerType.klingon.veteran.valueInstruction": "The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",
+
+    "CareerType.solo.young.name": "Novice",
+    "CareerType.solo.young.description": "Your character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like has not yet been tempered by reality.",
+
+    "CareerType.solo.experienced.name": "Experienced",
+    "CareerType.solo.experienced.description": "Your character has several years of experience and is enjoying a promising career.",
+
+    "CareerType.solo.veteran.name": "Veteran",
+    "CareerType.solo.veteran.description": "Your character has decades of experience and has served on many ships and starbases. Their judgement and opinions are highly regarded by subordinates, peers, and even superiors.",
 
     "Environment.common.homeworld.name": "Homeworld",
     "Environment.common.homeworld.description": "The character comes from the world that birthed their civilization, and has been surrounded by cultural and spiritual legacies their entire life. Species homeworlds are often utopian and idyllic, serving as the platonic ideal of that species’ culture. They also exemplify aspects of a culture’s most revered traditions, and serve as the heart of that civilization’s legal and political landscape.",
@@ -1227,6 +1242,12 @@
     "Value.childEducation.text": "The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Education.",
 
     "Value.otherTraining.text": "The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Training.",
+
+    "Value.careerLength.young.text": "The character receives a Value, which must reflect the character’s inexperience and naivete in some way.",
+
+    "Value.careerLength.experienced.text": "The character receives a Value, and this can be chosen freely.",
+
+    "Value.careerLength.veteran.text": "The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",
 
     "Value.final.text": "The character receives one final Value. This might reflect the Career Events rolled in Step Six, or it may represent some other element of the character. This Value might be a relationship, connecting the character to another character in the crew, or to another organization or culture in some way.",
 

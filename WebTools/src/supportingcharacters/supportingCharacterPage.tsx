@@ -329,7 +329,7 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
     }
 
     private onFocusChanged() {
-        character.focuses = [];
+        character._focuses = [];
 
         character.addFocus(this._focus1);
         character.addFocus(this._focus2);

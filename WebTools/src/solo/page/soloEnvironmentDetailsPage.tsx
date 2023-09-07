@@ -20,6 +20,7 @@ import { Skill } from "../../helpers/skills";
 import SoloValueInput from "../component/soloValueInput";
 import { ISoloCharacterProperties } from "./soloCharacterProperties";
 import { Species } from "../../helpers/speciesEnum";
+import { Dialog } from "../../components/dialog";
 
 class SoloEnvironmentAttributeController implements IAttributeController {
 
@@ -111,8 +112,15 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({charact
     }
 
     const navigateToNextStep = () => {
-        // TODO: check for selections...
-        Navigation.navigateToPage(PageIdentity.SoloEarlyOutlook);
+        if (character.environmentStep.attribute == null) {
+            Dialog.show(t('SoloEnvironmentDetailsPage.errorAttribute'));
+        } else if (character.environmentStep.discipline == null) {
+            Dialog.show(t('SoloEnvironmentDetailsPage.errorDiscipline'));
+        } else if (character.environmentValue == null) {
+            Dialog.show(t('SoloEnvironmentDetailsPage.errorValue'));
+        } else {
+            Navigation.navigateToPage(PageIdentity.SoloEarlyOutlook);
+        }
     }
 
     const isSpeciesSelectionNeeded = () => {
