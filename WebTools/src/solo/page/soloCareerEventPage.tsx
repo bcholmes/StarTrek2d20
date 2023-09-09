@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { navigateTo } from "../../common/navigator";
+import { Navigation, navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
 import InstructionText from "../../components/instructionText";
@@ -8,11 +8,12 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Window } from "../../common/window";
 import { Button } from "../../components/button";
-import { StepContext } from "../../state/characterActions";
+import { StepContext, addCharacterCareerEvent } from "../../state/characterActions";
 import { CareerEventModel, CareerEventsHelper } from "../../helpers/careerEvents";
 import { CharacterType } from "../../common/characterType";
 import { AttributesHelper } from "../../helpers/attributes";
 import { SkillsHelper } from "../../helpers/skills";
+import store from "../../state/store";
 
 interface ISoloCareerEventProperties extends ISoloCharacterProperties {
     context: StepContext;
@@ -24,6 +25,10 @@ const SoloCareerEventPage: React.FC<ISoloCareerEventProperties> = ({character, c
     const [randomEvent, setRandomEvent] = useState(null);
 
     const careerEventSelected = (careerEvent: CareerEventModel)=> {
+        store.dispatch(addCharacterCareerEvent(careerEvent.roll, careerEvent.attributes?.length === 1 ? careerEvent.attributes[0] : undefined,
+            careerEvent.disciplines?.length === 1 ? careerEvent.disciplines[0] : undefined));
+
+        Navigation.navigateToPage(context === StepContext.CareerEvent2 ? PageIdentity.SoloCareerEventDetails2 : PageIdentity.SoloCareerEventDetails1);
     }
 
     const toTableRow = (careerEvent: CareerEventModel, i: number) => {

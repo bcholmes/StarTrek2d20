@@ -158,6 +158,8 @@
 
     "ReputationChangePage.instruction": "Adjust the character's reputation as appropriate.",
 
+    "SoloCareerEvent.instruction": "Your character’s career is a tapestry of events and experiences, but a few will have been pivotal moments in the character’s life. A character defines which moments of their life are important in retrospect, and what seemed definitive to a young ensign may be inconsequential to that same officer decades later.\n\nYour character has two defining career events, chosen or determined randomly from the list below, and gains whatever benefits they provide.\n\nFor characters that chose Novice Career Length, assume that these career events took place during the character’s time at the Academy or equivalent, perhaps during a field training assignment aboard a starship.",
+
     "SoloConstructTypePage.character": "Character",
     "SoloConstructTypePage.instruction": "Are you creating a character, or a starship?",
     "SoloConstructTypePage.starship": "Starship",
@@ -446,6 +448,7 @@
     "Source.type.campaignBook": "Campaign Books",
     "Source.type.expansion": "Major Expansion Books",
     "Source.type.misc": "Misc/Other Books",
+    "Source.type.unofficial": "Unofficial Sources",
 
     "Source.book.core": "Core",
     "Source.book.alphaQuadrant": "Alpha Quadrant",
@@ -471,6 +474,8 @@
     "Source.book.utopiaPlanitia": "Utopia Planitia",
     "Source.book.lowerDecksCampaign": "Lower Decks",
     "Source.book.captainsLog": "Captain's Log",
+    "Source.book.animatedSeries": "Animated Series",
+    "Source.book.continuingMissions": "Continuing Missions",
 
     "CharacterType.name.starfleet": "Starfleet",
     "CharacterType.name.klingonWarrior": "Klingon Defense Force",

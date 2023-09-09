@@ -7,6 +7,9 @@ export enum MouthType {
     Mouth5,
     Mouth6,
 
+    Mouth7,
+    Mouth8,
+
     Mouth1Lipstick,
     Mouth2Lipstick,
     Mouth3Lipstick,

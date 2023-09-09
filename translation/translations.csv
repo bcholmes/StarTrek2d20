@@ -115,6 +115,11 @@ ModificationTypeSelectionPage.instruction,Please select the modification that yo
 ModificationTypeSelectionPage.whatMilestoneType,What kind of milestone is being applied?,Welche Art Meilenstein wird angewandt?,,Quel genre de jalon d'expérience est appliqué?
 PromotionPage.instruction,Select a new rank for this character.,Wählen Sie einen neuen Rang für diesen Charakter,,Selectionnez un nouveau grade pour ce personnage
 ReputationChangePage.instruction,Adjust the character's reputation as appropriate.,"Passen Sie das Ansehen des Charakters an, wenn nötig",,Ajustez la réputation du personnage le cas échéant
+SoloCareerEvent.instruction,"Your character’s career is a tapestry of events and experiences, but a few will have been pivotal moments in the character’s life. A character defines which moments of their life are important in retrospect, and what seemed definitive to a young ensign may be inconsequential to that same officer decades later.
+
+Your character has two defining career events, chosen or determined randomly from the list below, and gains whatever benefits they provide.
+
+For characters that chose Novice Career Length, assume that these career events took place during the character’s time at the Academy or equivalent, perhaps during a field training assignment aboard a starship.",,,
 SoloConstructTypePage.character,Character,Charakter,,
 SoloConstructTypePage.instruction,"Are you creating a character, or a starship?",Erstellst du einen Charakter oder ein Raumschiff?,,
 SoloConstructTypePage.starship,Starship,Raumschiff,,
@@ -396,6 +401,7 @@ Source.type.crewBook,Crew Books,Spielercharakter-Spielhilfen,,Lives d'Equipages
 Source.type.campaignBook,Campaign Books,Kampagnenbände,,Livres de Campagne
 Source.type.expansion,Major Expansion Books,Wichtige Erweiterungsbände,,Livres d'Extensions
 Source.type.misc,Misc/Other Books,Sonstige Bände,,Divers/Autres
+Source.type.unofficial,Unofficial Sources,,,
 Source.book.core,Core,Grundregelwerk,,Règles de Base
 Source.book.alphaQuadrant,Alpha Quadrant,Alpha-Quadrant,,Quadrant Alpha
 Source.book.betaQuadrant,Beta Quadrant,Beta-Quadrant,,Quadrant Bêta
@@ -420,6 +426,8 @@ Source.book.picardS1,Picard S1,(NOT YET TRANSLATED),,Picard S1
 Source.book.utopiaPlanitia,Utopia Planitia,(NOT YET TRANSLATED),,Utopia Planitia
 Source.book.lowerDecksCampaign,Lower Decks,(NOT YET TRANSLATED),,
 Source.book.captainsLog,Captain's Log,(NOT YET TRANSLATED),,
+Source.book.animatedSeries,Animated Series,,,
+Source.book.continuingMissions,Continuing Missions,,,
 CharacterType.name.starfleet,Starfleet,Sternenflotte,,Starfleet
 CharacterType.name.klingonWarrior,Klingon Defense Force,Klingonische Verteidigungsstreitmacht,,Forces de Défense Klingones
 CharacterType.name.civilian,Civilian,Zivilisten,,Civil

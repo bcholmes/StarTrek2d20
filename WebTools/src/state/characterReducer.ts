@@ -1,5 +1,5 @@
-import { Character, EducationStep, EnvironmentStep, SpeciesStep, UpbringingStep } from "../common/character";
-import { APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FOCUS, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
+import { CareerEventStep, Character, EducationStep, EnvironmentStep, SpeciesStep, UpbringingStep } from "../common/character";
+import { ADD_CHARACTER_CAREER_EVENT, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FOCUS, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -109,6 +109,24 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.educationStep.attributes.splice(temp.educationStep.attributes.indexOf(action.payload.attribute), 1);
                 }
             }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case ADD_CHARACTER_CAREER_EVENT: {
+            let temp = state.currentCharacter.copy();
+            let event = new CareerEventStep(action.payload.eventId);
+            if (action.payload.attribute != null) {
+                event.attribute = action.payload.attribute;
+            }
+            if (action.payload.discipline != null) {
+                event.discipline = action.payload.discipline;
+            }
+
+            temp.careerEvents.push(event);
+
             return {
                 ...state,
                 currentCharacter: temp,

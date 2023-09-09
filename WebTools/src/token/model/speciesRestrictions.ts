@@ -37,8 +37,11 @@ class SpeciesRestrictions {
             "#391201", "#722707", SpeciesRestrictions.DEFAULT_HAIR_COLOR, "#37261e", "#706f74", "#a78c6f",
             "#f1eae4", "#f4f3f1", "#e1ddda"];
         } else if (species === Species.Efrosian) {
-//            return ["#ffd9c6", "#feb582", "#f8a271", "#ff8740", "#d7580b", "#d13703", "#b72001", "#822601"];
             return ["#ffd9c6", "#d8b092", "#e1ad88", "#d69972", "#d18352", "#b06e46", "#9e603b", "#834b2b", "#70432c"];
+        } else if (species === Species.XindiReptilian) {
+            return ["#bbb895", "#aea433", "#bba326", "#898558"];
+        } else if (species === Species.Aurelian) {
+            return ["#fbebb7", "#f7d66f", "#e0c167", "#b7d562", "#b6b456", "#b49249", "#87622a"];
         } else {
             return ["#F8E0DE", "#F4D5CA", "#F2C8B8", "#E1BA93", "#dcbda1", "#CEB29C", "#CAA18B", SpeciesRestrictions.DEFAULT_SKIN_COLOR, "#AB7D5C", "#9B7A57", "#9b6b43", "#8C644A", "#704A35", "#53382D", "#473028"];
         }
@@ -150,18 +153,21 @@ class SpeciesRestrictions {
 
     static isBald(species: Species) {
         return species === Species.Bolian || species === Species.Ferengi
-            || species === Species.Deltan || species === Species.Saurian;
+            || species === Species.Deltan || species === Species.Saurian
+            || species === Species.XindiReptilian || species === Species.Benzite;
     }
 
     static isTallForeheaded(species: Species) {
         return species === Species.Klingon
             || species === Species.Tellarite || species === Species.Efrosian
-            || species === Species.Ktarian;
+            || species === Species.Ktarian
+            || species === Species.XindiPrimate;
             // species === Species.Denobulan ||
     }
 
     static isRubberHeaded(species: Species) {
-        return species === Species.Saurian || species === Species.Caitian || species === Species.Benzite;
+        return species === Species.Aurelian || species === Species.Saurian || species === Species.Caitian
+            || species === Species.Benzite || species === Species.XindiReptilian;
     }
 
     static getSpeciesOptions(species: Species) {

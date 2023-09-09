@@ -1146,7 +1146,7 @@ export class FantasyGroupsVttExporter {
 
             let index = 1;
             character.careerEvents.forEach(e => {
-                let event = CareerEventsHelper.getCareerEvent(e, character.type);
+                let event = CareerEventsHelper.getCareerEvent(e.id, character.type);
                 if (event) {
                     let key = this.createNumberedId(index++);
                     result.elements.push({

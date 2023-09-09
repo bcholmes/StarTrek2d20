@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { character, Character, CharacterAttribute, CharacterRank, CharacterSkill, CharacterTalent, EducationStep, EnvironmentStep, NpcGenerationStep, SpeciesStep, UpbringingStep } from '../common/character';
+import { CareerEventStep, character, Character, CharacterAttribute, CharacterRank, CharacterSkill, CharacterTalent, EducationStep, EnvironmentStep, NpcGenerationStep, SpeciesStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -113,7 +113,7 @@ class Marshaller {
                 : undefined,
             "name": character.name,
             "career": character.career != null ? Career[character.career] : null,
-            "careerEvents": [...character.careerEvents],
+            "careerEvents": character.careerEvents.map(e => e.id),
             "attributes": this.toAttributeObject(character.attributes),
             "disciplines": this.toSkillObject(character.skills),
             "focuses": [...character.focuses],
@@ -550,7 +550,7 @@ class Marshaller {
         result.assignedShip = json.assignedShip;
         result.pronouns = json.pronouns;
         if (json.careerEvents) {
-            result.careerEvents = [...json.careerEvents];
+            result.careerEvents = json.careerEvents.map(e => new CareerEventStep(e));
         }
         if (json.lineage) {
             result.lineage = json.lineage;

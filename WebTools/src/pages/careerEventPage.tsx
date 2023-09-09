@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {CareerEventStep, character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
@@ -64,7 +64,7 @@ export class CareerEventPage extends React.Component<IPageProperties, ICareerEve
     }
 
     private selectCareerEvent(event: number) {
-        character.careerEvents.push(event);
+        character.careerEvents.push(new CareerEventStep(event));
         CareerEventsHelper.applyCareerEvent(event, character.type);
 
         if (character.careerEvents.length === 1) {

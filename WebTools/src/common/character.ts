@@ -184,6 +184,17 @@ export class EducationStep {
     }
 }
 
+
+export class CareerEventStep {
+    public readonly id: number;
+    attribute: Attribute;
+    discipline: Skill;
+
+    constructor(id: number) {
+        this.id = id;
+    }
+}
+
 export class NpcGenerationStep {
     public enlisted: boolean;
 }
@@ -206,7 +217,7 @@ export class Character extends Construct {
     public lineage?: string;
     public house?: string;
     public career?: Career;
-    public careerEvents: number[];
+    public careerEvents: CareerEventStep[];
     public rank?: CharacterRank;
     public role?: string;
     public jobAssignment?: string;
@@ -781,7 +792,10 @@ export class Character extends Construct {
         character.implants = this.implants;
         character.career = this.career;
         this.careerEvents.forEach(e => {
-            character.careerEvents.push(e);
+            let event = new CareerEventStep(e.id);
+            event.attribute = e.attribute;
+            event.discipline = e.discipline;
+            character.careerEvents.push(event);
         });
         character.jobAssignment = this.jobAssignment;
         character.assignedShip = this.assignedShip;

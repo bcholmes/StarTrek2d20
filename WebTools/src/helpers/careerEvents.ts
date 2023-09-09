@@ -25,6 +25,14 @@ export class CareerEventModel {
         this.roll = roll;
         this.special = special;
     }
+
+    get localizedName() {
+        return this.name;
+    }
+
+    get localizedDescription() {
+        return this.description;
+    }
 }
 
 class CareerEvents {
@@ -225,7 +233,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "Discovers an Artifact",
-            "During a survey mission, the character discovered a device or fragment of technology from a now- extinct civilization. What did this piece of technology do? Does it still function now? What is known about the civilization that made it?",
+            "During a survey mission, the character discovered a device or fragment of technology from a now-extinct civilization. What did this piece of technology do? Does it still function now? What is known about the civilization that made it?",
             [Attribute.Reason],
             [Skill.Engineering],
             "The character gains a Focus, reflecting the event and its aftermath. Examples include: Ancient Technology, Computers, Reverse Engineering.",

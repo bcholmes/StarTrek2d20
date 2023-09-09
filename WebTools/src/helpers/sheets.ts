@@ -1023,13 +1023,13 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
         const character = construct as Character;
 
         if (character.careerEvents && character.careerEvents.length > 0) {
-            let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0], character.type);
+            let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0]?.id, character.type);
             if (event1) {
                 this.fillField(form, 'Career Event 1', event1.name);
             }
 
             if (character.careerEvents && character.careerEvents.length > 1) {
-                let event2 = CareerEventsHelper.getCareerEvent(character.careerEvents[1], character.type);
+                let event2 = CareerEventsHelper.getCareerEvent(character.careerEvents[1]?.id, character.type);
                 if (event2) {
                     this.fillField(form, 'Career Event 2', event2.name);
                 }
@@ -1125,13 +1125,13 @@ class TwoPageTngLandscapeCharacterSheet extends BaseTextCharacterSheet {
 
         this.fillField(form, "Pronouns", character.pronouns);
         if (character.careerEvents && character.careerEvents.length > 0) {
-            let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0], character.type);
+            let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0]?.id, character.type);
             if (event1) {
                 this.fillField(form, 'Career Event 1', event1.name);
             }
 
             if (character.careerEvents && character.careerEvents.length > 1) {
-                let event2 = CareerEventsHelper.getCareerEvent(character.careerEvents[1], character.type);
+                let event2 = CareerEventsHelper.getCareerEvent(character.careerEvents[1]?.id, character.type);
                 if (event2) {
                     this.fillField(form, 'Career Event 2', event2.name);
                 }
@@ -1205,13 +1205,13 @@ class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
         const character = construct as Character;
 
         if (character.careerEvents && character.careerEvents.length > 0) {
-            let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0], character.type);
+            let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0]?.id, character.type);
             if (event1) {
                 this.fillField(form, 'Career Event 1', event1.name);
             }
 
             if (character.careerEvents && character.careerEvents.length > 1) {
-                let event2 = CareerEventsHelper.getCareerEvent(character.careerEvents[1], character.type);
+                let event2 = CareerEventsHelper.getCareerEvent(character.careerEvents[1]?.id, character.type);
                 if (event2) {
                     this.fillField(form, 'Career Event 2', event2.name);
                 }
@@ -1317,13 +1317,13 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
         }
 
         if (character.careerEvents && character.careerEvents.length > 0) {
-            let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0], character.type);
+            let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0]?.id, character.type);
             if (event1) {
                 this.fillField(form, 'Career Event 1', event1.name);
             }
 
             if (character.careerEvents && character.careerEvents.length > 1) {
-                let event2 = CareerEventsHelper.getCareerEvent(character.careerEvents[1], character.type);
+                let event2 = CareerEventsHelper.getCareerEvent(character.careerEvents[1]?.id, character.type);
                 if (event2) {
                     this.fillField(form, 'Career Event 2', event2.name);
                 }

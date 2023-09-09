@@ -24,6 +24,7 @@ export const SET_CHARACTER_CAREER_LENGTH = 'SET_CHARACTER_CAREER_LENGTH';
 export const MODIFY_CHARACTER_ATTRIBUTE = 'MODIFY_CHARACTER_ATTRIBUTE';
 export const MODIFY_CHARACTER_DISCIPLINE = 'MODIFY_CHARACTER_DISCIPLINE';
 export const SET_CHARACTER_TYPE = 'SET_CHARACTER_TYPE';
+export const ADD_CHARACTER_CAREER_EVENT = "ADD_CHARACTER_CAREER_EVENT";
 
 export enum StepContext {
     Species,
@@ -64,6 +65,14 @@ export function setCharacterEducation(track: Track, enlisted: boolean = false) {
     let payload = { track: track, enlisted: enlisted };
     return {
        type: SET_CHARACTER_EDUCATION,
+       payload: payload
+    }
+}
+
+export function addCharacterCareerEvent(eventId: number, attribute?: Attribute, discipline?: Skill) {
+    let payload = { eventId: eventId, attribute: attribute, discipline: discipline };
+    return {
+       type: ADD_CHARACTER_CAREER_EVENT,
        payload: payload
     }
 }

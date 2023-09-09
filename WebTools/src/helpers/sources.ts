@@ -26,6 +26,10 @@ export enum Source {
     UtopiaPlanitia,
     LowerDecksCampaign,
     CaptainsLog,
+    AnimatedSeries,
+
+
+    ContinuingMissions,
 
     None
 }
@@ -37,7 +41,8 @@ export enum SourceType {
     CrewBook,
     CampaignBook,
     Expansion,
-    Misc
+    Misc,
+    Unofficial
 }
 
 class SourceTypeModel {
@@ -84,7 +89,7 @@ class Sources {
         new SourceTypeModel(SourceType.CampaignBook, "Campaign Books"),
         new SourceTypeModel(SourceType.Expansion, "Major Expansion Books"),
         new SourceTypeModel(SourceType.Misc, "Misc/Other Books"),
-
+        new SourceTypeModel(SourceType.Unofficial, "Unofficial Books"),
     ];
 
     private _sources: { [id: number]: SourceViewModel } = {
@@ -111,7 +116,9 @@ class Sources {
         [Source.DiscoveryCampaign]: new SourceViewModel(Source.DiscoveryCampaign, SourceType.CampaignBook, "Discovery Campaign"),
         [Source.UtopiaPlanitia]: new SourceViewModel(Source.UtopiaPlanitia, SourceType.Expansion, "Utopia Planitia"),
         [Source.LowerDecksCampaign]: new SourceViewModel(Source.LowerDecksCampaign, SourceType.CampaignBook, "Lower Decks Campaign"),
-        [Source.CaptainsLog]: new SourceViewModel(Source.CaptainsLog, SourceType.CoreBook, "CaptainsLog", false),
+        [Source.CaptainsLog]: new SourceViewModel(Source.CaptainsLog, SourceType.CoreBook, "Captain's Log", false),
+        [Source.ContinuingMissions]: new SourceViewModel(Source.ContinuingMissions, SourceType.Unofficial, "Continuing Missions", false),
+        [Source.AnimatedSeries]: new SourceViewModel(Source.AnimatedSeries, SourceType.Expansion, "Animated Series", false),
     };
 
     getSources() {
