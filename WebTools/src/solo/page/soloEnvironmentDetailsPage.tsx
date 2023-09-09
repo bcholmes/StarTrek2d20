@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { Header } from "../../components/header";
-import { Navigation, navigateTo } from "../../common/navigator";
+import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
 import { Environment, EnvironmentsHelper } from "../../helpers/environments";
@@ -21,6 +21,7 @@ import SoloValueInput from "../component/soloValueInput";
 import { ISoloCharacterProperties } from "./soloCharacterProperties";
 import { Species } from "../../helpers/speciesEnum";
 import { Dialog } from "../../components/dialog";
+import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 
 class SoloEnvironmentAttributeController implements IAttributeController {
 
@@ -132,16 +133,7 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({charact
 
     return (
         <div className="page container ml-0">
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SourceSelection)}>{t('Page.title.sourceSelection')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloConstructType)}>{t('Page.title.soloConstructType')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloCharacterEra)}>{t('Page.title.era')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloSpecies)}>{t('Page.title.species')}</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">{t('Page.title.environment')}</li>
-                </ol>
-            </nav>
+            <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloEnvironmentDetails} />
 
             <Header>{environment.localizedName}</Header>
                 <p>{environment.localizedDescription}</p>
@@ -172,7 +164,9 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({charact
                     <div className="col-md-6 my-3">
                         <Header level={2} className="mb-3">{t('Construct.other.value')}</Header>
 
-                        <SoloValueInput textDescription={t('Value.environment.text')} onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Environment))}}/>
+                        <SoloValueInput textDescription={t('Value.environment.text')}
+                            value={character?.environmentValue}
+                            onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Environment))}}/>
                     </div>
                 </div>
                 <div className='text-right mt-4'>

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { Header } from "../../components/header";
-import { Navigation, navigateTo } from "../../common/navigator";
+import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../components/button";
@@ -12,6 +12,7 @@ import { CareersHelper } from "../../helpers/careers";
 import { Dialog } from "../../components/dialog";
 import { makeKey } from "../../common/translationKey";
 import { Career } from "../../helpers/careerEnum";
+import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 
 const SoloCareerLengthDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
     const { t } = useTranslation();
@@ -28,17 +29,7 @@ const SoloCareerLengthDetailsPage: React.FC<ISoloCharacterProperties> = ({charac
 
     return (
         <div className="page container ml-0">
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SourceSelection)}>{t('Page.title.sourceSelection')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloConstructType)}>{t('Page.title.soloConstructType')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloCharacterEra)}>{t('Page.title.era')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloSpecies)}>{t('Page.title.species')}</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">{t('Page.title.environment')}</li>
-                </ol>
-            </nav>
-
+            <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloCareerLengthDetails} />
             <Header>{careerLength.localizedName}</Header>
                 <p>{careerLength.localizedDescription}</p>
                 <div className="row">

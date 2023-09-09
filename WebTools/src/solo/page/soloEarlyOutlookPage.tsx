@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { Header } from "../../components/header";
-import { Navigation, navigateTo } from "../../common/navigator";
+import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../components/button";
@@ -10,11 +10,12 @@ import { AttributesHelper } from "../../helpers/attributes";
 import { Skill } from "../../helpers/skills";
 import { Window } from "../../common/window";
 import InstructionText from "../../components/instructionText";
-import { EarlyOutlook, EarlyOutlookModel, UpbringingsHelper } from "../../helpers/upbringings";
+import { EarlyOutlookModel, UpbringingsHelper } from "../../helpers/upbringings";
 import { EarlyOutlookAspirationRandomTable, EarlyOutlookCasteRandomTable, EarlyOutlookUpbringingRandomTable } from "../table/earlyOutlookRandomTable";
 import { setCharacterEarlyOutlook } from "../../state/characterActions";
 import store from "../../state/store";
 import { ISoloCharacterProperties } from "./soloCharacterProperties";
+import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 
 enum EarlyOutlookTab {
     Upbringings,
@@ -100,7 +101,9 @@ const SoloEarlyOutlookPage: React.FC<ISoloCharacterProperties> = ({character}) =
 
         return (<>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomUpbringing( EarlyOutlookUpbringingRandomTable()) }>{t('Common.button.random')}</Button>
+                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomUpbringing( EarlyOutlookUpbringingRandomTable()) }>
+                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                </Button>
                 {randomUpbringing != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomUpbringing(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
 
@@ -130,7 +133,9 @@ const SoloEarlyOutlookPage: React.FC<ISoloCharacterProperties> = ({character}) =
 
         return (<>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomCaste( EarlyOutlookCasteRandomTable()) }>{t('Common.button.random')}</Button>
+                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomCaste( EarlyOutlookCasteRandomTable()) }>
+                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                </Button>
                 {randomCaste != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomCaste(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
 
@@ -160,7 +165,9 @@ const SoloEarlyOutlookPage: React.FC<ISoloCharacterProperties> = ({character}) =
 
         return (<>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomAsperation( EarlyOutlookAspirationRandomTable()) }>{t('Common.button.random')}</Button>
+                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomAsperation( EarlyOutlookAspirationRandomTable()) }>
+                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                </Button>
                 {randomAsperation != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomAsperation(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
 
@@ -182,17 +189,7 @@ const SoloEarlyOutlookPage: React.FC<ISoloCharacterProperties> = ({character}) =
 
     return (
         <div className="page container ml-0">
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SourceSelection)}>{t('Page.title.sourceSelection')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloConstructType)}>{t('Page.title.soloConstructType')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloCharacterEra)}>{t('Page.title.era')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloSpecies)}>{t('Page.title.species')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEnvironment)}>{t('Page.title.environment')}</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloEarlyOutlook')}</li>
-                </ol>
-            </nav>
+            <SoloCharacterBreadcrumbs  pageIdentity={PageIdentity.SoloEarlyOutlook} />
             <Header>{t('Page.title.soloEarlyOutlook')}</Header>
 
             <InstructionText text={t('SoloEarlyOutlookPage.instruction')} />

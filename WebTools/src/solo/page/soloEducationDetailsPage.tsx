@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "./soloCharacterProperties";
 import React from "react";
 import { connect } from "react-redux";
-import { Navigation, navigateTo } from "../../common/navigator";
+import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
 import { TrackModel, TracksHelper } from "../../helpers/tracks";
@@ -19,6 +19,7 @@ import SoloValueInput from "../component/soloValueInput";
 import { Skill } from "../../helpers/skills";
 import DisciplineListComponent, { IDisciplineController } from "../../components/disciplineListComponent";
 import { Dialog } from "../../components/dialog";
+import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 
 class SoloEducationAttributeController implements IAttributeController {
 
@@ -153,18 +154,7 @@ const SoloEducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character
 
     return (
         <div className="page container ml-0">
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SourceSelection)}>{t('Page.title.sourceSelection')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloConstructType)}>{t('Page.title.soloConstructType')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloCharacterEra)}>{t('Page.title.era')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloSpecies)}>{t('Page.title.species')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEnvironment)}>{t('Page.title.environment')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEarlyOutlook)}>{t('Page.title.soloEarlyOutlook')}</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloEducation')}</li>
-                </ol>
-            </nav>
+            <SoloCharacterBreadcrumbs  pageIdentity={PageIdentity.SoloEducationDetailsPage}/>
             <Header>{track.localizedName}</Header>
             <InstructionText text={track.localizedDescription} />
 

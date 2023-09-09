@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Navigation, navigateTo } from "../../common/navigator";
+import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
 import InstructionText from "../../components/instructionText";
@@ -12,11 +12,12 @@ import { Button } from "../../components/button";
 import { CareerLengthRandomTable } from "../table/careerLengthRandomTable";
 import store from "../../state/store";
 import { setCharacterCareerLength } from "../../state/characterActions";
+import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 
 const SoloCareerLengthPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
-    const [randomLength, setRandomLength] = useState(null);
+    const [randomLength, setRandomLength] = useState(character?.career);
 
     const careerLengthSelected = (careerLength: CareerModel)=> {
         store.dispatch(setCharacterCareerLength(careerLength.id));
@@ -40,19 +41,8 @@ const SoloCareerLengthPage: React.FC<ISoloCharacterProperties> = ({character}) =
 
     return (
         <div className="page container ml-0">
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SourceSelection)}>{t('Page.title.sourceSelection')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloConstructType)}>{t('Page.title.soloConstructType')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloCharacterEra)}>{t('Page.title.era')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloSpecies)}>{t('Page.title.species')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEnvironment)}>{t('Page.title.environment')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEarlyOutlook)}>{t('Page.title.soloEarlyOutlook')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEarlyOutlook)}>{t('Page.title.soloEducation')}</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloCareerLength')}</li>
-                </ol>
-            </nav>
+            <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloCareerLength}/>
+
             <Header>{t('Page.title.soloCareerLength')}</Header>
             <InstructionText text={t('SoloCareerLength.instruction')} />
             <div className="my-4">

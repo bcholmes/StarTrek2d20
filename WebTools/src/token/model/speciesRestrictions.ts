@@ -2,6 +2,7 @@ import { Species } from "../../helpers/speciesEnum";
 import { ExtraType } from "./extrasTypeEnum";
 import { HairType, allHairTypes, isTallForeheadHair } from "./hairTypeEnum";
 import { HeadType } from "./headTypeEnum";
+import { MouthType } from "./mouthTypeEnum";
 import { NoseType } from "./noseTypeEnum";
 import { SpeciesOption } from "./speciesOptionEnum";
 
@@ -71,6 +72,19 @@ class SpeciesRestrictions {
             return ["#111111"];
         } else {
             return ["#e1bbc3", "#8bb5db", "#4079c0", "#b4b8b9", "#8e9796", "#758a9d", "#88967d", "#6e9d4d", "#fdd089", "#fbb03b", "#aa6925", "#863603", "#56220c", "#3f0c08", "#280000"];
+        }
+    }
+
+    static getMouthTypes(species: Species) {
+        if (species === Species.Pakled) {
+            return [ MouthType.Mouth1, MouthType.Mouth2, MouthType.Mouth3, MouthType.Mouth4, MouthType.Mouth5, MouthType.Mouth6,
+                MouthType.Mouth7, MouthType.Mouth8,
+                MouthType.Mouth1Lipstick, MouthType.Mouth2Lipstick, MouthType.Mouth3Lipstick, MouthType.Mouth4Lipstick, MouthType.Mouth5Lipstick, MouthType.Mouth6Lipstick,
+            ]
+        } else {
+            return [ MouthType.Mouth1, MouthType.Mouth2, MouthType.Mouth3, MouthType.Mouth4, MouthType.Mouth5, MouthType.Mouth6,
+                MouthType.Mouth1Lipstick, MouthType.Mouth2Lipstick, MouthType.Mouth3Lipstick, MouthType.Mouth4Lipstick, MouthType.Mouth5Lipstick, MouthType.Mouth6Lipstick,
+            ]
         }
     }
 

@@ -273,6 +273,24 @@ class Environments {
         return filtered.length === 0 ? undefined : filtered[0];
     }
 
+    isSetting(environment: Environment) {
+        return [Environment.Homeworld,
+            Environment.BusyColony,
+            Environment.IsolatedColony,
+            Environment.FrontierColony,
+            Environment.StarshipOrStarbase,
+            Environment.AnotherSpeciesWorld].indexOf(environment) >= 0
+    }
+
+    isCondition(environment: Environment) {
+        return [Environment.UtopianParadise,
+            Environment.Cosmopolitan,
+            Environment.RigorousDiscipline,
+            Environment.AscetismAndIntrospection,
+            Environment.StruggleAndHardship,
+            Environment.OccupationOrWar].indexOf(environment) >= 0
+    }
+
     generateEnvironment() {
         return Math.floor(Math.random() * 6);
     }

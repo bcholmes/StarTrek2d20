@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Navigation, navigateTo } from "../../common/navigator";
+import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
 import InstructionText from "../../components/instructionText";
@@ -14,6 +14,7 @@ import { CharacterType } from "../../common/characterType";
 import { AttributesHelper } from "../../helpers/attributes";
 import { SkillsHelper } from "../../helpers/skills";
 import store from "../../state/store";
+import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 
 interface ISoloCareerEventProperties extends ISoloCharacterProperties {
     context: StepContext;
@@ -22,7 +23,8 @@ interface ISoloCareerEventProperties extends ISoloCharacterProperties {
 const SoloCareerEventPage: React.FC<ISoloCareerEventProperties> = ({character, context}) => {
 
     const { t } = useTranslation();
-    const [randomEvent, setRandomEvent] = useState(null);
+    const careerEvent = context === StepContext.CareerEvent1 ? character.careerEvents[0] : character.careerEvents[1];
+    const [randomEvent, setRandomEvent] = useState(careerEvent?.id ?? null);
 
     const careerEventSelected = (careerEvent: CareerEventModel)=> {
         store.dispatch(addCharacterCareerEvent(careerEvent.roll, careerEvent.attributes?.length === 1 ? careerEvent.attributes[0] : undefined,
@@ -55,24 +57,9 @@ const SoloCareerEventPage: React.FC<ISoloCareerEventProperties> = ({character, c
         ? toTableRow(CareerEventsHelper.getCareerEvent(randomEvent, CharacterType.Starfleet) , 0)
         : CareerEventsHelper.getSoloCareerEvents().map((c, i) => toTableRow(c, i));
 
-
-
     return (
         <div className="page container ml-0">
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SourceSelection)}>{t('Page.title.sourceSelection')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloConstructType)}>{t('Page.title.soloConstructType')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloCharacterEra)}>{t('Page.title.era')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloSpecies)}>{t('Page.title.species')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEnvironment)}>{t('Page.title.environment')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEarlyOutlook)}>{t('Page.title.soloEarlyOutlook')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEarlyOutlook)}>{t('Page.title.soloEducation')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloCareerLength)}>{t('Page.title.soloCareerLength')}</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloCareerEventPage')}</li>
-                </ol>
-            </nav>
+            <SoloCharacterBreadcrumbs pageIdentity={context === StepContext.CareerEvent1 ? PageIdentity.CareerEvent1 : PageIdentity.CareerEvent2} />
             <Header>{t('Page.title.soloCareerEvent')}</Header>
             <InstructionText text={t('SoloCareerEvent.instruction')} />
             <div className="my-4">

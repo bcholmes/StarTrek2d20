@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Navigation, navigateTo } from "../../common/navigator";
+import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
 import { SpeciesHelper, SpeciesModel } from "../../helpers/species";
@@ -13,9 +13,16 @@ import { useState } from "react";
 import { SpeciesRandomTable } from "../table/speciesRandomTable";
 import store from "../../state/store";
 import { setCharacterSpecies } from "../../state/characterActions";
+import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
+import { Character } from "../../common/character";
+import { Era } from "../../helpers/eras";
 
+interface ISoloSpeciesPageProperties {
+    era: Era;
+    character: Character;
+}
 
-const SoloSpeciesPage = ({era}) => {
+const SoloSpeciesPage: React.FC<ISoloSpeciesPageProperties> = ({era, character}) => {
 
     const selectSpecies = (species: SpeciesModel) => {
         if (species.attributes?.length === 3) {
@@ -27,7 +34,7 @@ const SoloSpeciesPage = ({era}) => {
     }
 
     const { t } = useTranslation();
-    const [randomSpecies, setRandomSpecies] = useState(null);
+    const [randomSpecies, setRandomSpecies] = useState(character?.speciesStep?.species);
 
     let speciesList = SpeciesHelper.getCaptainsLogSpecies();
     if (randomSpecies != null) {
@@ -57,15 +64,7 @@ const SoloSpeciesPage = ({era}) => {
 
     return (
         <div className="page container ml-0">
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SourceSelection)}>{t('Page.title.sourceSelection')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloConstructType)}>{t('Page.title.soloConstructType')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloCharacterEra)}>{t('Page.title.era')}</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">{t('Page.title.species')}</li>
-                </ol>
-            </nav>
+            <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloSpecies} />
             <Header>{t('Page.title.species')}</Header>
             <p className="mt-3">
                 {t('SoloSpeciesPage.instruction')}
@@ -95,7 +94,8 @@ const SoloSpeciesPage = ({era}) => {
 
 function mapStateToProps(state, ownProps) {
     return {
-        era: state.context.era
+        era: state.context.era,
+        character: state.character.currentCharacter
     };
 }
 

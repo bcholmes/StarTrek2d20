@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ISoloCharacterProperties } from "./soloCharacterProperties";
 import { connect } from "react-redux";
 import { Header } from "../../components/header";
-import { Navigation, navigateTo } from "../../common/navigator";
+import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
 import { CharacterType } from "../../common/characterType";
@@ -13,11 +13,12 @@ import { Window } from "../../common/window";
 import { EducationTrackRandomTable } from "../table/educationRandomTable";
 import store from "../../state/store";
 import { setCharacterEducation } from "../../state/characterActions";
+import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 
 const SoloEducationPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
-    const [randomTrack, setRandomTrack] = useState(null);
+    const [randomTrack, setRandomTrack] = useState(character?.educationStep?.track);
 
     const trackSelected = (track: TrackModel)=> {
         store.dispatch(setCharacterEducation(track.id, track.enlisted));
@@ -40,18 +41,8 @@ const SoloEducationPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
     return (
         <div className="page container ml-0">
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SourceSelection)}>{t('Page.title.sourceSelection')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloConstructType)}>{t('Page.title.soloConstructType')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloCharacterEra)}>{t('Page.title.era')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloSpecies)}>{t('Page.title.species')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEnvironment)}>{t('Page.title.environment')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEarlyOutlook)}>{t('Page.title.soloEarlyOutlook')}</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloEducation')}</li>
-                </ol>
-            </nav>
+            <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloEducationPage} />
+
             <Header>{t(makeKey('SoloEducationPage.type.', CharacterType[character.type]))}</Header>
             <p className="mt-3">
                 {t(makeKey('SoloEducationPage.instruction.', CharacterType[character.type]))}

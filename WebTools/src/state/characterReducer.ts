@@ -1,4 +1,4 @@
-import { CareerEventStep, Character, EducationStep, EnvironmentStep, SpeciesStep, UpbringingStep } from "../common/character";
+import { CareerEventStep, Character, EducationStep, EnvironmentStep, SpeciesStep, UpbringingStep, character } from "../common/character";
 import { ADD_CHARACTER_CAREER_EVENT, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FOCUS, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
 
 interface CharacterState {
@@ -83,8 +83,10 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         }
         case MODIFY_CHARACTER_ATTRIBUTE: {
             let temp = state.currentCharacter.copy();
+            const attribute = action.payload.attribute;
+            const increase = action.payload.increase;
             if (action.payload.context === StepContext.Species && temp.speciesStep) {
-                if (action.payload.increase) {
+                if (increase) {
                     temp.speciesStep.attributes.push(action.payload.attribute);
                     if (temp.speciesStep.attributes.length > 3) {
                         let attributes = [...temp.speciesStep.attributes];
@@ -97,16 +99,29 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.speciesStep.attributes = attributes;
                 }
             } else if (action.payload.context === StepContext.Environment && temp.environmentStep) {
-                if (action.payload.increase) {
+                if (increase) {
                     temp.environmentStep.attribute = action.payload.attribute;
                 } else if (temp.environmentStep.attribute === action.payload.attribute) {
                     temp.environmentStep.attribute = undefined;
                 }
             } else if (action.payload.context === StepContext.Education && temp.educationStep) {
-                if (action.payload.increase) {
+                if (increase) {
                     temp.educationStep.attributes.push(action.payload.attribute)
                 } else if (temp.educationStep.attributes.indexOf(action.payload.attribute) >= 0) {
                     temp.educationStep.attributes.splice(temp.educationStep.attributes.indexOf(action.payload.attribute), 1);
+                }
+            } else if (action.payload.context === StepContext.CareerEvent1 && temp.careerEvents?.length > 0) {
+                temp.careerEvents[0].attribute = increase ? attribute : undefined;
+            } else if (action.payload.context === StepContext.CareerEvent2 && temp.careerEvents?.length > 1) {
+                temp.careerEvents[1].attribute = increase ? attribute : undefined;
+            } else if (action.payload.context === StepContext.FinishingTouches && temp.finishingStep) {
+                if (increase) {
+                    temp.finishingStep.attributes.push(attribute);
+                } else {
+                    let index = temp.finishingStep.attributes.indexOf(attribute);
+                    if (index >= 0) {
+                        temp.finishingStep.attributes.splice(index, 1);
+                    }
                 }
             }
             return {
@@ -135,7 +150,11 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         }
         case SET_CHARACTER_TYPE: {
             let temp = state.currentCharacter.copy();
+            let originalType = character.type;
             temp.type = action.payload.type;
+            if (temp.type !== originalType && character.educationStep) {
+                character.educationStep = undefined;
+            }
             return {
                 ...state,
                 currentCharacter: temp,
@@ -168,6 +187,8 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 temp.trackValue = action.payload.value;
             } else if (action.payload.context === StepContext.Career) {
                 temp.careerValue = action.payload.value;
+            } else if (action.payload.context === StepContext.FinishingTouches) {
+                temp.finishValue = action.payload.value;
             }
             return {
                 ...state,
@@ -181,6 +202,10 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 temp.upbringingStep.focus = action.payload.focus;
             } else if (action.payload.context === StepContext.Education && temp.educationStep && action.payload.index <= 2) {
                 temp.educationStep.focuses[action.payload.index] = action.payload.focus;
+            } else if (action.payload.context === StepContext.CareerEvent1 && temp.careerEvents[0]) {
+                temp.careerEvents[0].focus = action.payload.focus;
+            } else if (action.payload.context === StepContext.CareerEvent2 && temp.careerEvents[1]) {
+                temp.careerEvents[1].focus = action.payload.focus;
             }
             return {
                 ...state,
@@ -191,6 +216,7 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         case MODIFY_CHARACTER_DISCIPLINE: {
             let temp = state.currentCharacter.copy();
             const discipline = action.payload.discipline;
+            const increase = action.payload.increase;
             if (action.payload.context === StepContext.Environment && temp.environmentStep) {
                 if (action.payload.increase) {
                     temp.environmentStep.discipline = action.payload.discipline;
@@ -229,6 +255,19 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                         temp.educationStep.disciplines.splice(temp.educationStep.disciplines.indexOf(discipline), 1);
                     } else {
                         temp.educationStep.decrementDiscipline = discipline;
+                    }
+                }
+            } else if (action.payload.context === StepContext.CareerEvent1 && temp.careerEvents?.length > 0) {
+                temp.careerEvents[0].discipline = increase ? discipline : undefined;
+            } else if (action.payload.context === StepContext.CareerEvent2 && temp.careerEvents?.length > 1) {
+                temp.careerEvents[1].discipline = increase ? discipline : undefined;
+            } else if (action.payload.context === StepContext.FinishingTouches && temp.finishingStep) {
+                if (increase) {
+                    temp.finishingStep.disciplines.push(discipline);
+                } else {
+                    let index = temp.finishingStep.disciplines.indexOf(discipline);
+                    if (index >= 0) {
+                        temp.finishingStep.disciplines.splice(index, 1);
                     }
                 }
             }

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { Header } from "../../components/header";
-import { Navigation, navigateTo } from "../../common/navigator";
+import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../components/button";
@@ -14,18 +14,24 @@ import { Window } from "../../common/window";
 import InstructionText from "../../components/instructionText";
 import store from "../../state/store";
 import { setCharacterEnvironment } from "../../state/characterActions";
+import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
+import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "./soloCharacterProperties";
 
 enum EnvironmentTab {
     Settings,
     Conditions
 }
 
-const SoloEnvironmentPage = ({character}) => {
+const SoloEnvironmentPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
-    const [tab, setTab] = useState(EnvironmentTab.Settings);
-    const [randomSetting, setRandomSetting] = useState(null);
-    const [randomCondition, setRandomCondition] = useState(null);
+    const [tab, setTab] = useState((character?.environmentStep == null || EnvironmentsHelper.isSetting(character?.environmentStep?.environment)) ? EnvironmentTab.Settings : EnvironmentTab.Conditions);
+    const [randomSetting, setRandomSetting] = useState((character?.environmentStep && EnvironmentsHelper.isSetting(character?.environmentStep?.environment))
+        ? character?.environmentStep?.environment
+        : null);
+    const [randomCondition, setRandomCondition] = useState((character?.environmentStep && EnvironmentsHelper.isCondition(character?.environmentStep?.environment))
+        ? character?.environmentStep?.environment
+        : null);
 
     const selectEnvironment = (environment: Environment) => {
         store.dispatch(setCharacterEnvironment(environment));
@@ -124,16 +130,7 @@ const SoloEnvironmentPage = ({character}) => {
 
     return (
         <div className="page container ml-0">
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SourceSelection)}>{t('Page.title.sourceSelection')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloConstructType)}>{t('Page.title.soloConstructType')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloCharacterEra)}>{t('Page.title.era')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloSpecies)}>{t('Page.title.species')}</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">{t('Page.title.environment')}</li>
-                </ol>
-            </nav>
+            <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloEnvironment} />
             <Header>{t('Page.title.environment')}</Header>
 
             <InstructionText text={t('SoloEnvironmentPage.instruction')} />
@@ -151,11 +148,4 @@ const SoloEnvironmentPage = ({character}) => {
         </div>);
 }
 
-
-function mapStateToProps(state, ownProps) {
-    return {
-        character: state.character?.currentCharacter
-    };
-}
-
-export default connect(mapStateToProps)(SoloEnvironmentPage);
+export default connect(soloCharacterMapStateToProperties)(SoloEnvironmentPage);

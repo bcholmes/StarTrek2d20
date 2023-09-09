@@ -184,11 +184,21 @@ export class EducationStep {
     }
 }
 
+export class FinishingStep {
+    public attributes: Attribute[];
+    public disciplines: Skill[];
+
+    constructor() {
+        this.attributes = [];
+        this.disciplines = [];
+    }
+}
 
 export class CareerEventStep {
     public readonly id: number;
-    attribute: Attribute;
-    discipline: Skill;
+    attribute?: Attribute;
+    discipline?: Skill;
+    focus?: string;
 
     constructor(id: number) {
         this.id = id;
@@ -238,6 +248,7 @@ export class Character extends Construct {
     public speciesStep?: SpeciesStep;
     public environmentStep?: EnvironmentStep;
     public upbringingStep?: UpbringingStep;
+    public finishingStep?: FinishingStep;
     public npcGenerationStep?: NpcGenerationStep;
 
     constructor() {
@@ -318,7 +329,7 @@ export class Character extends Construct {
                 }
             }
             this.educationStep?.attributes?.forEach(a => result[a].value = result[a].value + 1);
-
+            this.careerEvents.filter(e => e.attribute != null).forEach(e => result[e.attribute].value = result[e.attribute].value + 1);
             return result;
         } else {
             return this._attributes;
@@ -342,6 +353,7 @@ export class Character extends Construct {
                 result[this.educationStep.decrementDiscipline].expertise = result[this.educationStep.decrementDiscipline].expertise - 1;
             }
             this.educationStep?.disciplines?.forEach(d => result[d].expertise = result[d].expertise + 1);
+            this.careerEvents.filter(e => e.discipline != null).forEach(e => result[e.discipline].expertise = result[e.discipline].expertise + 1);
             return result;
         } else {
             return this._skills;
@@ -686,6 +698,7 @@ export class Character extends Construct {
             if (this.educationStep) {
                 this.educationStep.focuses.filter(f => f?.length).forEach(f => result.push(f));
             }
+            this.careerEvents.filter(e => e?.focus != null).forEach(e => result.push(e.focus));
             return result;
         } else {
             return this._focuses;
@@ -795,6 +808,7 @@ export class Character extends Construct {
             let event = new CareerEventStep(e.id);
             event.attribute = e.attribute;
             event.discipline = e.discipline;
+            event.focus = e.focus;
             character.careerEvents.push(event);
         });
         character.jobAssignment = this.jobAssignment;

@@ -129,7 +129,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
         }
 
         let careerEvents = c.careerEvents.map((e, i) => {
-            return (<div key={i}>{CareerEventsHelper.getCareerEvent(e.id, c.type).name}</div>)
+            return (<div key={i}>{CareerEventsHelper.getCareerEvent(e.id, c.type).localizedName}</div>)
         });
 
         let containerClass = this.props.showProfile ? "sheet-container sheet-container-visible" :  "sheet-container sheet-container-hidden";
@@ -143,7 +143,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                         <div className="sheet-panel">
                             <table className="sheet-section">
                                 <tbody>
-                                <tr>
+                                    <tr>
                                         <td className="bg-dark text-uppercase">{t('Construct.other.characterType')}</td>
                                         <td className="bg-light border-dark-nopadding text-dark">
                                             {CharacterTypeModel.getByType(c.type)?.localizedName}
