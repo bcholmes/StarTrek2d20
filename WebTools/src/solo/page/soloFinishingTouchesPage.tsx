@@ -7,14 +7,55 @@ import { connect } from "react-redux";
 import { Button } from "../../components/button";
 import SoloValueInput from "../component/soloValueInput";
 import store from "../../state/store";
-import { StepContext, modifyCharacterDiscipline, setCharacterValue } from "../../state/characterActions";
+import { StepContext, modifyCharacterAttribute, modifyCharacterDiscipline, setCharacterValue } from "../../state/characterActions";
 import { Dialog } from "../../components/dialog";
 import DisciplineListComponent, { IDisciplineController } from "../../components/disciplineListComponent";
 import { Character } from "../../common/character";
 import { Skill } from "../../helpers/skills";
 import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
+import { IAttributeController } from "../../components/attributeController";
+import { Attribute } from "../../helpers/attributes";
+import AttributeListComponent from "../../components/attributeListComponent";
 
-class SoloEnvironmentDisciplineController implements IDisciplineController {
+class SoloFinishingTouchesAttributeController implements IAttributeController {
+    readonly character: Character;
+    readonly count: number;
+
+    constructor(character: Character, count: number = 2) {
+        this.character = character;
+        this.count = count;
+    }
+
+    isShown(attribute: Attribute) {
+        return true;
+    }
+    isEditable(attribute: Attribute): boolean {
+        return true;
+    }
+    getValue(attribute: Attribute): number {
+        return this.character.attributes[attribute].value;
+    }
+    canIncrease(attribute: Attribute): boolean {
+        return this.getValue(attribute) < Character.maxAttribute(this.character) &&
+            (this.getValue(attribute) < (Character.maxAttribute(this.character) - 1) || !this.character.hasMaxedAttribute())
+            && (this.character.finishingStep?.attributes.length < this.count)
+            && (this.character.finishingStep?.attributes.filter(a => a === attribute).length < (this.count - 1));
+    }
+    canDecrease(attribute: Attribute): boolean {
+        return this.character.finishingStep?.attributes.indexOf(attribute) >= 0;
+    }
+    onIncrease(attribute: Attribute): void {
+        store.dispatch(modifyCharacterAttribute(attribute, StepContext.FinishingTouches, true));
+    }
+    onDecrease(attribute: Attribute): void {
+        store.dispatch(modifyCharacterAttribute(attribute, StepContext.FinishingTouches, false));
+    }
+    get instructions() {
+        return []
+    }
+}
+
+class SoloFinishingTouchesDisciplineController implements IDisciplineController {
 
     readonly character: Character;
     readonly count: number;
@@ -36,7 +77,8 @@ class SoloEnvironmentDisciplineController implements IDisciplineController {
     canIncrease(discipline: Skill): boolean {
         return this.getValue(discipline) < Character.maxDiscipline(this.character) &&
             (this.getValue(discipline) < (Character.maxDiscipline(this.character) - 1) || !this.character.hasMaxedSkill())
-            && this.character.finishingStep?.disciplines.length < this.count;
+            && (this.character.finishingStep?.disciplines.length < this.count)
+            && (this.character.finishingStep?.disciplines.filter(d => d === discipline).length < (this.count - 1));
     }
     canDecrease(discipline: Skill): boolean {
         return this.character.finishingStep?.disciplines.indexOf(discipline) >= 0;
@@ -53,6 +95,18 @@ class SoloEnvironmentDisciplineController implements IDisciplineController {
 const SoloFinishingTouchesPage: React.FC<ISoloCharacterProperties> = ({character}) => {
     const { t } = useTranslation();
 
+    let attributeTotal = 0;
+    character.attributes.forEach(a => attributeTotal += a.value);
+    attributeTotal -= (character.finishingStep?.attributes?.length ?? 0);
+
+    const attributeCount = 56 - attributeTotal;
+
+    let disciplineTotal = 0;
+    character.skills.forEach(a => disciplineTotal += a.expertise);
+    disciplineTotal -= (character.finishingStep?.disciplines?.length ?? 0);
+
+    const disciplineCount = 16 - disciplineTotal;
+
     const navigateToNextPage = () => {
         if (!character.finishValue) {
             Dialog.show(t('SoloFinishingTouchesPage.errorValue'));
@@ -61,20 +115,22 @@ const SoloFinishingTouchesPage: React.FC<ISoloCharacterProperties> = ({character
         }
     }
 
-    const disciplineController = new SoloEnvironmentDisciplineController(character);
+    const attributeController = new SoloFinishingTouchesAttributeController(character, attributeCount);
+    const disciplineController = new SoloFinishingTouchesDisciplineController(character);
 
     return (
         <div className="page container ml-0">
             <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloFinishingTouches} />
 
-            <Header>{t('Page.title.soloFinish')}</Header>
+            <Header>{t('Page.title.soloFinishingTouches')}</Header>
 
             <div className="row">
                 <div className="col-md-6 my-3">
-                    <Header level={2} className="mb-3">{t('Construct.other.attribute')}</Header>
+                    <Header level={2} className="mb-3">{t('Construct.other.attribute')} {t('SoloFinishingTouchesPage.select', {count: attributeCount})}</Header>
+                    <AttributeListComponent controller={attributeController} />
                 </div>
                 <div className="col-md-6 my-3">
-                    <Header level={2} className="mb-3">{t('Construct.other.discipline')}</Header>
+                    <Header level={2} className="mb-3">{t('Construct.other.discipline')}  {t('SoloFinishingTouchesPage.select', {count: disciplineCount})}</Header>
                     <DisciplineListComponent controller={disciplineController} />
                 </div>
                 <div className="col-md-6 my-3">

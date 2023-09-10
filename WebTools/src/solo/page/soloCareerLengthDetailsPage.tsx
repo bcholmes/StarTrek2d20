@@ -36,7 +36,9 @@ const SoloCareerLengthDetailsPage: React.FC<ISoloCharacterProperties> = ({charac
                     <div className="col-md-6 my-3">
                         <Header level={2} className="mb-3">{t('Construct.other.value')}</Header>
 
-                        <SoloValueInput textDescription={t(makeKey('Value.careerLength.', Career[careerLength.id], '.text'))} onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Career))}}/>
+                        <SoloValueInput textDescription={t(makeKey('Value.careerLength.', Career[careerLength.id], '.text'))}
+                            value={character.careerValue ?? ""}
+                            onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Career))}}/>
                     </div>
                 </div>
                 <div className='text-right mt-4'>
