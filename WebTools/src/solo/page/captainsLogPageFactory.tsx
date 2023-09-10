@@ -54,7 +54,7 @@ export class CaptainsLogPageFactory implements IPageFactoryRegistry {
         this.factories[PageIdentity.SoloCareerEvent2] = () => <SoloCareerEventPage context={StepContext.CareerEvent2} />;
         this.factories[PageIdentity.SoloCareerEventDetails2] = () => <SoloCareerEventDetailPage context={StepContext.CareerEvent2} />;
         this.factories[PageIdentity.SoloFinishingTouches] = () => <SoloFinishingTouchesPage />;
-        this.factories[PageIdentity.SoloFinalPage] = () => <SoloFinalPage />;
+        this.factories[PageIdentity.SoloFinal] = () => <SoloFinalPage />;
     }
 
     findFactory(page: PageIdentity) {

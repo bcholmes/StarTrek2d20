@@ -10,7 +10,7 @@ import { AttributesHelper } from "../../helpers/attributes";
 import { Skill } from "../../helpers/skills";
 import { Window } from "../../common/window";
 import InstructionText from "../../components/instructionText";
-import { EarlyOutlookModel, UpbringingsHelper } from "../../helpers/upbringings";
+import { EarlyOutlook, EarlyOutlookModel, UpbringingsHelper } from "../../helpers/upbringings";
 import { EarlyOutlookAspirationRandomTable, EarlyOutlookCasteRandomTable, EarlyOutlookUpbringingRandomTable } from "../table/earlyOutlookRandomTable";
 import { setCharacterEarlyOutlook } from "../../state/characterActions";
 import store from "../../state/store";
@@ -25,16 +25,28 @@ enum EarlyOutlookTab {
 
 const SoloEarlyOutlookPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
+    const determineInitialTab = (outlook: EarlyOutlook) => {
+        if (outlook == null) {
+            return EarlyOutlookTab.Upbringings;
+        } else if (UpbringingsHelper.isAspiration(outlook)) {
+            return EarlyOutlookTab.Aspirations;
+        } else if (UpbringingsHelper.isCaste(outlook)) {
+            return EarlyOutlookTab.Castes;
+        } else {
+            return EarlyOutlookTab.Upbringings;
+        }
+    }
+
     const { t } = useTranslation();
-    const [tab, setTab] = useState(EarlyOutlookTab.Upbringings);
-    const [randomUpbringing, setRandomUpbringing] = useState(null);
-    const [randomAsperation, setRandomAsperation] = useState(null);
-    const [randomCaste, setRandomCaste] = useState(null);
+    const initialOutlook = character?.upbringingStep?.upbringing?.id;
+    const [tab, setTab] = useState(determineInitialTab(initialOutlook));
+    const [randomUpbringing, setRandomUpbringing] = useState(initialOutlook != null && UpbringingsHelper.isUpbringing(initialOutlook) ? initialOutlook : null);
+    const [randomAsperation, setRandomAsperation] = useState(initialOutlook != null && UpbringingsHelper.isAspiration(initialOutlook) ? initialOutlook : null);
+    const [randomCaste, setRandomCaste] = useState(initialOutlook != null && UpbringingsHelper.isCaste(initialOutlook) ? initialOutlook : null);
 
     const selectOutlook = (outlook: EarlyOutlookModel) => {
         store.dispatch(setCharacterEarlyOutlook(outlook));
         Navigation.navigateToPage(PageIdentity.SoloEarlyOutlookDetails);
-
     }
 
     const renderTab = () => {

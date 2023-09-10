@@ -396,6 +396,32 @@ class Upbringings {
         return this.toList(list);
     }
 
+    isAspiration(outlook: EarlyOutlook) {
+        return [EarlyOutlook.ToExplore,
+            EarlyOutlook.ToFly,
+            EarlyOutlook.ToCreate,
+            EarlyOutlook.ToDiscover,
+            EarlyOutlook.ToProtect,
+            EarlyOutlook.ToProsper].indexOf(outlook) >= 0;
+    }
+
+    isCaste(outlook: EarlyOutlook) {
+        return [EarlyOutlook.WarriorCaste,
+            EarlyOutlook.MerchantCaste,
+            EarlyOutlook.AgriculturalCaste,
+            EarlyOutlook.ScientificCaste,
+            EarlyOutlook.ArtisticCaste,
+            EarlyOutlook.AcademicCaste,].indexOf(outlook) >= 0;
+    }
+
+    isUpbringing(outlook: EarlyOutlook) {
+        return [EarlyOutlook.MilitaryOrExploration,
+            EarlyOutlook.BusinessOrTrade,
+            EarlyOutlook.AgricultureOrRural,
+            EarlyOutlook.ScienceAndTechnology,
+            EarlyOutlook.ArtisticAndCreative,
+            EarlyOutlook.DiplomacyAndPolitics].indexOf(outlook) >= 0;
+    }
     getAspiration(aspiration: EarlyOutlook) {
         var list = this.getEarlyOutlooksList(CharacterType.Starfleet, true).filter(o => o.id === aspiration);
         return list ? list[0] : undefined;

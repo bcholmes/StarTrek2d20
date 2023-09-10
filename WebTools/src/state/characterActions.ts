@@ -3,6 +3,7 @@ import { CharacterType } from "../common/characterType";
 import { Attribute } from "../helpers/attributes";
 import { Career } from "../helpers/careerEnum";
 import { Environment } from "../helpers/environments";
+import { Rank } from "../helpers/ranks";
 import { Skill } from "../helpers/skills";
 import { Species } from "../helpers/speciesEnum";
 import { Track } from "../helpers/trackEnum";
@@ -16,10 +17,12 @@ export const SET_CHARACTER_SPECIES = 'SET_CHARACTER_SPECIES';
 export const SET_CHARACTER_FOCUS = 'SET_CHARACTER_FOCUS';
 export const SET_CHARACTER_VALUE = 'SET_CHARACTER_VALUE';
 export const SET_CHARACTER_NAME = 'SET_CHARACTER_NAME';
+export const SET_CHARACTER_RANK = 'SET_CHARACTER_RANK';
 export const SET_CHARACTER_PRONOUNS = 'SET_CHARACTER_PRONOUNS';
 export const SET_CHARACTER_EDUCATION = 'SET_CHARACTER_EDUCATION';
 export const SET_CHARACTER_ENVIRONMENT = 'SET_CHARACTER_ENVIRONMENT';
 export const SET_CHARACTER_EARLY_OUTLOOK = 'SET_CHARACTER_EARLY_OUTLOOK';
+export const SET_CHARACTER_FINISHING_TOUCHES = "SET_CHARACTER_FINISHING_TOUCHES";
 export const SET_CHARACTER_CAREER_LENGTH = 'SET_CHARACTER_CAREER_LENGTH';
 export const MODIFY_CHARACTER_ATTRIBUTE = 'MODIFY_CHARACTER_ATTRIBUTE';
 export const MODIFY_CHARACTER_DISCIPLINE = 'MODIFY_CHARACTER_DISCIPLINE';
@@ -69,8 +72,14 @@ export function setCharacterEducation(track: Track, enlisted: boolean = false) {
     }
 }
 
-export function addCharacterCareerEvent(eventId: number, attribute?: Attribute, discipline?: Skill) {
-    let payload = { eventId: eventId, attribute: attribute, discipline: discipline };
+export function setCharacterFinishingTouches() {
+    return {
+       type: SET_CHARACTER_FINISHING_TOUCHES,
+    }
+}
+
+export function addCharacterCareerEvent(eventId: number, context: StepContext, attribute?: Attribute, discipline?: Skill) {
+    let payload = { eventId: eventId, attribute: attribute, discipline: discipline, context: context };
     return {
        type: ADD_CHARACTER_CAREER_EVENT,
        payload: payload
@@ -105,6 +114,14 @@ export function setCharacterName(name: string) {
     let payload = { name: name };
     return {
        type: SET_CHARACTER_NAME,
+       payload: payload
+    }
+}
+
+export function setCharacterRank(name: string, rank?: Rank) {
+    let payload = { name: name, rank: rank };
+    return {
+       type: SET_CHARACTER_RANK,
        payload: payload
     }
 }

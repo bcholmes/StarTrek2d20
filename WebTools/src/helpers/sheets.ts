@@ -1,5 +1,5 @@
 import { Character } from '../common/character';
-import { CharacterType } from '../common/characterType';
+import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Attribute } from '../helpers/attributes';
 import { Skill } from '../helpers/skills';
 import { PDFCheckBox, PDFDocument, PDFFont, PDFForm, PDFPage, PDFTextField, rgb, StandardFonts } from 'pdf-lib'
@@ -13,11 +13,12 @@ import { SheetOutlineOptions, SpaceframeOutline, XYLocation } from './spaceframe
 import { TalentsHelper } from './talents';
 import { CareerEventsHelper } from './careerEvents';
 import { RolesHelper } from './roles';
-import { Construct } from '../common/construct';
+import { Construct, Stereotype } from '../common/construct';
 import { Starship } from '../common/starship';
 import { staTextFieldAppearanceProvider } from './pdfTextFieldAppearance';
 import store from '../state/store';
 import { CareersHelper } from './careers';
+import { TracksHelper } from './tracks';
 
 class TextBlock {
     text: string;
@@ -1340,6 +1341,53 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
     }
 }
 
+class CaptainsLogCharacterSheet extends BasicFullCharacterSheet {
+    getName(): string {
+        return 'Captain\'s Log Character Sheet (Landscape)'
+    }
+    getThumbnailUrl(): string {
+        return '/static/img/sheets/STA_Captain\'s_Log_Character_Sheet.png'
+    }
+    getPdfUrl(): string {
+        return '/static/pdf/STA_Captain\'s_Log_Character_Sheet.pdf'
+    }
+
+    populateForm(form: PDFForm, construct: Construct): void {
+        let character = construct as Character;
+        super.populateForm(form, construct);
+
+        this.fillField(form, "Pronouns", character.pronouns);
+
+        if (character.careerEvents && character.careerEvents.length > 0) {
+            let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0]?.id, character.type);
+            if (event1) {
+                this.fillField(form, 'Career Event 1', event1.name);
+            }
+
+            if (character.careerEvents && character.careerEvents.length > 1) {
+                let event2 = CareerEventsHelper.getCareerEvent(character.careerEvents[1]?.id, character.type);
+                if (event2) {
+                    this.fillField(form, 'Career Event 2', event2.name);
+                }
+            }
+        }
+
+        const careerLength = CareersHelper.instance.getSoloCareerLength(character.career);
+        this.fillField(form, "Career Length", careerLength.localizedName);
+
+        const type = CharacterTypeModel.getByType(character.type);
+        this.fillField(form, "Character Type", type.localizedName);
+
+        const track = TracksHelper.instance().getSoloTrack(character.educationStep?.track);
+        this.fillField(form, "Track", track.localizedName);
+    }
+
+    fillName(form: PDFForm, character: Character) {
+        this.fillField(form, 'Name', this.formatNameWithoutPronouns(character));
+    }
+}
+
+
 class CharacterSheets {
     public getSupportingCharacterSheet(c: Character, era: Era = store.getState().context.era): ICharacterSheet[] {
         if (c.isKlingon()) {
@@ -1352,7 +1400,9 @@ class CharacterSheets {
     }
 
     public getCharacterSheets(character: Character, era: Era = store.getState().context.era): ICharacterSheet[] {
-        if (character.isKlingon()) {
+        if (character.stereotype === Stereotype.SoloCharacter) {
+            return [ new CaptainsLogCharacterSheet() ];
+        } else if (character.isKlingon()) {
             return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),
                 new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(),  new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(),
                 new RomulanCharacterSheet() ];

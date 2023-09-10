@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "./soloCharacterProperties";
-import { Navigation, navigateTo } from "../../common/navigator";
+import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
 import { connect } from "react-redux";
@@ -57,7 +57,7 @@ const SoloFinishingTouchesPage: React.FC<ISoloCharacterProperties> = ({character
         if (!character.finishValue) {
             Dialog.show(t('SoloFinishingTouchesPage.errorValue'));
         } else {
-            Navigation.navigateToPage(PageIdentity.SoloFinalPage);
+            Navigation.navigateToPage(PageIdentity.SoloFinal);
         }
     }
 
@@ -81,6 +81,7 @@ const SoloFinishingTouchesPage: React.FC<ISoloCharacterProperties> = ({character
                     <Header level={2} className="mb-3">{t('Construct.other.value')}</Header>
 
                     <SoloValueInput textDescription={t('Value.final.text')}
+                        value={character?.finishValue}
                         onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.FinishingTouches))}}/>
                 </div>
 

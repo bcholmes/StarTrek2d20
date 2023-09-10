@@ -4,15 +4,27 @@ import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
 import { connect } from "react-redux";
 import store from "../../state/store";
-import { setCharacterName, setCharacterPronouns } from "../../state/characterActions";
+import { setCharacterName, setCharacterPronouns, setCharacterRank } from "../../state/characterActions";
 import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
 import { Button } from "../../components/button";
 import { CharacterSheetDialog } from "../../components/characterSheetDialog";
 import { CharacterSheetRegistry } from "../../helpers/sheets";
 import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
+import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
+import { Rank, RanksHelper } from "../../helpers/ranks";
+import { useState } from "react";
 
 const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
     const { t } = useTranslation();
+    let rankValue: string|Rank = "";
+    let rankName = "";
+    if (character.rank) {
+        rankValue = character.rank.id ?? "other";
+        if (character.rank.id == null) {
+            rankName = character.rank.name;
+        }
+    }
+    const [showRankOther, setShowRankOther] = useState(rankValue === "other");
 
     const showDialog = () => {
         setTimeout(() => {
@@ -21,14 +33,37 @@ const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
         }, 200);
     }
 
-    const showViewPage = () => {
+    const rankOptions = () => {
+        let result = [new DropDownElement("", t('Common.text.select')), new DropDownElement("other", "Other")];
+        [Rank.Captain, Rank.Commander, Rank.LtCommander, Rank.Lieutenant, Rank.LieutenantJG, Rank.Ensign]
+            .forEach(r => result.push(new DropDownElement(r, RanksHelper.instance().getRank(r).name)));
+        return result;
+    }
+
+    const rankSelected = (id: string|Rank) => {
+        if (id === "other") {
+            setShowRankOther(true);
+        } else {
+            if (id !== "") {
+                let rank = RanksHelper.instance().getRank(id as Rank);
+                store.dispatch(setCharacterRank(rank.name, id as Rank));
+            }
+
+            if (showRankOther) {
+                setShowRankOther(false);
+            }
+        }
+    }
+
+    if (showRankOther) {
+        rankValue = "other";
     }
 
     return (
         <div className="page container ml-0">
-            <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloFinalPage} />
+            <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloFinal} />
 
-            <Header>{t('Page.title.soloFinish')}</Header>
+            <Header>{t('Page.title.soloFinal')}</Header>
 
             <div className="row">
                 <div className="col-md-6 my-3">
@@ -46,15 +81,28 @@ const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
                 <div className="col-md-6 my-3">
                     <Header level={2} className="mb-3">{t('Construct.other.assignment')}</Header>
+
+
                 </div>
 
-                <div className="col-md-6 my-3">
+                { character.isCivilian()
+                ? undefined
+                : (<div className="col-md-6 my-3">
                     <Header level={2} className="mb-3">{t('Construct.other.rank')}</Header>
-                </div>
+
+                    <DropDownSelect items={rankOptions()} defaultValue={rankValue} onChange={r => rankSelected(r)} />
+
+                    {showRankOther
+                        ? (<div>
+                            <InputFieldAndLabel id="rankOther" labelName={t('Construct.other.rank')}
+                                value={rankName}
+                                onChange={(v) => store.dispatch(setCharacterRank(v))} />
+                            </div>)
+                        : undefined}
+                </div>)}
             </div>
-            <div className="button-container mb-5">
+            <div className="button-container my-5">
                 <Button buttonType={true} text={t('Common.button.exportPdf')} className="btn btn-primary btn-sm mr-3" onClick={() => showDialog() }  />
-                <Button buttonType={true} text={t('Common.button.view')} className="btn btn-primary btn-sm mr-3" onClick={() => showViewPage() } />
             </div>
 
         </div>);

@@ -330,6 +330,11 @@ export class Character extends Construct {
             }
             this.educationStep?.attributes?.forEach(a => result[a].value = result[a].value + 1);
             this.careerEvents.filter(e => e.attribute != null).forEach(e => result[e.attribute].value = result[e.attribute].value + 1);
+
+            this.finishingStep?.attributes?.forEach(a => result[a].value = result[a].value + 1)
+
+            AttributesHelper.getAllAttributes().forEach(a => result[a].value = Math.min(Character.maxAttribute(this), result[a].value));
+
             return result;
         } else {
             return this._attributes;
@@ -354,6 +359,11 @@ export class Character extends Construct {
             }
             this.educationStep?.disciplines?.forEach(d => result[d].expertise = result[d].expertise + 1);
             this.careerEvents.filter(e => e.discipline != null).forEach(e => result[e.discipline].expertise = result[e.discipline].expertise + 1);
+
+            this.finishingStep?.disciplines?.forEach(d => result[d].expertise = result[d].expertise + 1)
+
+            SkillsHelper.getSkills().forEach(s => result[s].expertise = Math.min(Character.maxDiscipline(this), result[s].expertise));
+
             return result;
         } else {
             return this._skills;
@@ -842,6 +852,11 @@ export class Character extends Construct {
             character.educationStep.primaryDiscipline = this.educationStep.primaryDiscipline;
             character.educationStep.decrementDiscipline = this.educationStep.decrementDiscipline;
             character.educationStep.focuses = [...this.educationStep.focuses];
+        }
+        if (this.finishingStep) {
+            character.finishingStep = new FinishingStep();
+            character.finishingStep.attributes = [...this.finishingStep.attributes];
+            character.finishingStep.disciplines = [...this.finishingStep.disciplines];
         }
         character.environmentValue = this.environmentValue;
         character.trackValue = this.trackValue;

@@ -134,7 +134,7 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
             this.props.activePage === PageIdentity.SoloCareerEvent2 ||
             this.props.activePage === PageIdentity.SoloCareerEventDetails2 ||
             this.props.activePage === PageIdentity.SoloFinishingTouches ||
-            this.props.activePage === PageIdentity.SoloFinalPage;
+            this.props.activePage === PageIdentity.SoloFinal;
     }
 
     isProfileSupportedForPage() {

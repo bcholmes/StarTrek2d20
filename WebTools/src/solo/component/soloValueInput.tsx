@@ -14,8 +14,7 @@ const SoloValueInput: React.FC<ISoloValueInput> = ({textDescription, id, value, 
     return (<>
         <InputFieldAndLabel labelName={t('Construct.other.value')} id={id ?? "value"} value={value ?? ""} onChange={(value) => onValueChanged(value) } />
         <div className="text-white py-1">{textDescription}</div>
-    </>)
-    return undefined;
+    </>);
 }
 
 export default SoloValueInput;

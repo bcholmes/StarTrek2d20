@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 import { Header } from "../../components/header";
-import { Navigation, navigateTo } from "../../common/navigator";
+import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../components/button";
 import store from "../../state/store";
-import { StepContext, modifyCharacterAttribute, modifyCharacterDiscipline, setCharacterFocus } from "../../state/characterActions";
+import { StepContext, modifyCharacterAttribute, modifyCharacterDiscipline, setCharacterFinishingTouches, setCharacterFocus } from "../../state/characterActions";
 import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "./soloCharacterProperties";
 import { CareerEventsHelper } from "../../helpers/careerEvents";
 import { CharacterType } from "../../common/characterType";
@@ -124,6 +124,7 @@ const SoloCareerEventDetailsPage: React.FC<ISoloCareerEventProperties> = ({chara
         } else if (!careerEventStep.focus) {
             Dialog.show(t('SoloCareerEventDetailsPage.errorFocus'));
         } else if (context === StepContext.CareerEvent2) {
+            store.dispatch(setCharacterFinishingTouches());
             Navigation.navigateToPage(PageIdentity.SoloFinishingTouches);
         } else {
             Navigation.navigateToPage(PageIdentity.SoloCareerEvent2);
@@ -161,6 +162,7 @@ const SoloCareerEventDetailsPage: React.FC<ISoloCareerEventProperties> = ({chara
                         <InputFieldAndLabel id="focus1" labelName={t('Construct.other.focus1')}
                             value={careerEventStep?.focus || ""}
                             onChange={(f) => store.dispatch(setCharacterFocus(f, context))} />
+                        <div className="mt-3 text-white"><b>{t('Common.text.suggestions')}:</b> {careerEvent.focusSuggestions}</div>
                     </div>
                 </div>
                 <div className='text-right mt-4'>

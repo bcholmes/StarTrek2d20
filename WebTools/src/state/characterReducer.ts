@@ -1,5 +1,5 @@
-import { CareerEventStep, Character, EducationStep, EnvironmentStep, SpeciesStep, UpbringingStep, character } from "../common/character";
-import { ADD_CHARACTER_CAREER_EVENT, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FOCUS, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
+import { CareerEventStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, SpeciesStep, UpbringingStep, character } from "../common/character";
+import { ADD_CHARACTER_CAREER_EVENT, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_RANK, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -40,7 +40,26 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         }
         case SET_CHARACTER_EDUCATION: {
             let temp = state.currentCharacter.copy();
+            let originalStep = temp.educationStep;
             temp.educationStep = new EducationStep(action.payload.track, action.payload.enlisted);
+            if (originalStep) {
+                if (originalStep.track === temp.educationStep.track) {
+                    temp.educationStep.attributes = [...originalStep.attributes];
+                    temp.educationStep.primaryDiscipline = originalStep.primaryDiscipline;
+                    temp.educationStep.decrementDiscipline = originalStep.decrementDiscipline;
+                    temp.educationStep.disciplines = [...originalStep.disciplines];
+                    temp.educationStep.focuses = [...originalStep.focuses];
+                }
+            }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case SET_CHARACTER_FINISHING_TOUCHES: {
+            let temp = state.currentCharacter.copy();
+            temp.finishingStep = new FinishingStep();
             return {
                 ...state,
                 currentCharacter: temp,
@@ -140,7 +159,25 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 event.discipline = action.payload.discipline;
             }
 
-            temp.careerEvents.push(event);
+            if (action.payload.context === StepContext.CareerEvent1) {
+                if (temp.careerEvents?.length) {
+                    if (event.id === temp.careerEvents[0].id) {
+                        event.focus = temp.careerEvents[0].focus;
+                    }
+                    temp.careerEvents[0] = event;
+                } else {
+                    temp.careerEvents.push(event);
+                }
+            } else if (action.payload.context === StepContext.CareerEvent2) {
+                if (temp.careerEvents?.length > 1) {
+                    if (event.id === temp.careerEvents[1].id) {
+                        event.focus = temp.careerEvents[1].focus;
+                    }
+                    temp.careerEvents[1] = event;
+                } else if (temp.careerEvents?.length === 1) {
+                    temp.careerEvents.push(event);
+                }
+            }
 
             return {
                 ...state,
@@ -164,6 +201,15 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         case SET_CHARACTER_NAME: {
             let temp = state.currentCharacter.copy();
             temp.name = action.payload.name;
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case SET_CHARACTER_RANK: {
+            let temp = state.currentCharacter.copy();
+            temp.rank = new CharacterRank(action.payload.name, action.payload.rank ?? undefined);
             return {
                 ...state,
                 currentCharacter: temp,

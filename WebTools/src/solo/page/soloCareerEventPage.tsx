@@ -27,7 +27,7 @@ const SoloCareerEventPage: React.FC<ISoloCareerEventProperties> = ({character, c
     const [randomEvent, setRandomEvent] = useState(careerEvent?.id ?? null);
 
     const careerEventSelected = (careerEvent: CareerEventModel)=> {
-        store.dispatch(addCharacterCareerEvent(careerEvent.roll, careerEvent.attributes?.length === 1 ? careerEvent.attributes[0] : undefined,
+        store.dispatch(addCharacterCareerEvent(careerEvent.roll, context, careerEvent.attributes?.length === 1 ? careerEvent.attributes[0] : undefined,
             careerEvent.disciplines?.length === 1 ? careerEvent.disciplines[0] : undefined));
 
         Navigation.navigateToPage(context === StepContext.CareerEvent2 ? PageIdentity.SoloCareerEventDetails2 : PageIdentity.SoloCareerEventDetails1);

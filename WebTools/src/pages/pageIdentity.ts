@@ -89,6 +89,6 @@ export enum PageIdentity {
     SoloCareerEvent2,
     SoloCareerEventDetails2,
     SoloFinishingTouches,
-    SoloFinalPage
+    SoloFinal
 
 }
