@@ -1,5 +1,5 @@
 import { CareerEventStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, SpeciesStep, UpbringingStep, character } from "../common/character";
-import { ADD_CHARACTER_CAREER_EVENT, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_RANK, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
+import { ADD_CHARACTER_CAREER_EVENT, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_RANK, SET_CHARACTER_ROLE, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -59,7 +59,20 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         }
         case SET_CHARACTER_FINISHING_TOUCHES: {
             let temp = state.currentCharacter.copy();
+            let originalStep = temp.finishingStep;
             temp.finishingStep = new FinishingStep();
+            if (originalStep) {
+                temp.finishingStep.attributes = [...originalStep.attributes];
+                temp.finishingStep.disciplines = [...originalStep.disciplines];
+
+                if (temp.attributeTotal < 56) {
+                    temp.finishingStep.attributes = [];
+                }
+                if (temp.skillTotal < 16) {
+                    temp.finishingStep.disciplines = [];
+                }
+            }
+
             return {
                 ...state,
                 currentCharacter: temp,
@@ -210,6 +223,26 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         case SET_CHARACTER_RANK: {
             let temp = state.currentCharacter.copy();
             temp.rank = new CharacterRank(action.payload.name, action.payload.rank ?? undefined);
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case SET_CHARACTER_ROLE: {
+            let temp = state.currentCharacter.copy();
+            if (action.payload.name) {
+                if (action.payload.role == null) {
+                    temp.role = undefined;
+                    temp.jobAssignment = action.payload.name;
+                } else {
+                    temp.role = action.payload.name;
+                    temp.jobAssignment = undefined;
+                }
+            } else {
+                temp.role = undefined;
+                temp.jobAssignment = undefined;
+            }
             return {
                 ...state,
                 currentCharacter: temp,

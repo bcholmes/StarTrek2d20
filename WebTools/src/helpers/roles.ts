@@ -649,6 +649,16 @@ class Roles {
         return undefined;
     }
 
+    getSoloRole(role: Role) {
+        let result = undefined;
+        this._roles.forEach(r => {
+            if (r.id === role && result == null) {
+                result = r;
+            }
+        });
+        return result;
+    }
+
     getRoleByName(role: string) {
 
         var list = this._roles;

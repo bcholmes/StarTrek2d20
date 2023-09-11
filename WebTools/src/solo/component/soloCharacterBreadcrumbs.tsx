@@ -3,6 +3,8 @@ import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "../
 import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "../../common/navigator";
+import store from "../../state/store";
+import { setCharacterFinishingTouches } from "../../state/characterActions";
 
 interface ISoloCharacterBreadcrumbProperties extends ISoloCharacterProperties{
     pageIdentity: PageIdentity;
@@ -86,7 +88,10 @@ const SoloCharacterBreadcrumbs: React.FC<ISoloCharacterBreadcrumbProperties> = (
         if (pageIdentity === PageIdentity.SoloFinishingTouches) {
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloFinal')}</li>);
         } else if (character?.finishingStep) {
-            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloFinishingTouches)}>{t('Page.title.soloFinal')}</a></li>);
+            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => {
+                store.dispatch(setCharacterFinishingTouches());
+                navigateTo(e, PageIdentity.SoloFinishingTouches);
+            }}>{t('Page.title.soloFinal')}</a></li>);
         } else {
             return undefined;
         }

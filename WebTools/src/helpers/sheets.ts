@@ -1372,6 +1372,8 @@ class CaptainsLogCharacterSheet extends BasicFullCharacterSheet {
             }
         }
 
+        this.fillField(form, 'Assignment', this.serializeAssignment(character));
+
         const careerLength = CareersHelper.instance.getSoloCareerLength(character.career);
         this.fillField(form, "Career Length", careerLength.localizedName);
 

@@ -13,7 +13,7 @@ import { Government, GovernmentType } from '../helpers/governments';
 import AgeHelper, { Age } from '../helpers/age';
 import { Weapon, PersonalWeapons } from '../helpers/weapons';
 import { Construct, Stereotype } from './construct';
-import { SpeciesHelper } from '../helpers/species';
+import { SpeciesHelper, SpeciesModel } from '../helpers/species';
 import { Rank } from '../helpers/ranks';
 import { makeKey } from './translationKey';
 import i18next from 'i18next';
@@ -341,6 +341,12 @@ export class Character extends Construct {
         }
     }
 
+    get attributeTotal() {
+        let attributeTotal = 0;
+        this.attributes.forEach(a => attributeTotal += a.value);
+        return attributeTotal;
+    }
+
     get skills(): CharacterSkill[] {
         if (this.stereotype === Stereotype.SoloCharacter) {
             let result = [];
@@ -368,6 +374,12 @@ export class Character extends Construct {
         } else {
             return this._skills;
         }
+    }
+
+    get skillTotal() {
+        let total = 0;
+        this.skills.forEach(s => total += s.expertise);
+        return total;
     }
 
     get stress() {
@@ -621,6 +633,11 @@ export class Character extends Construct {
         let traits = [ ...this.traits ];
         if (this.speciesStep?.species === Species.Custom && this.speciesStep?.customSpeciesName) {
             traits.push(this.speciesStep.customSpeciesName);
+        } else if (this.speciesStep) {
+            let species = SpeciesHelper.getSpeciesByType(this.speciesStep?.species);
+            if (species && traits.indexOf(species.name) < 0) {
+                traits.push(species.name);
+            }
         }
         if (this.hasTalent("Augmented Ability (Control)")
                 || this.hasTalent("Augmented Ability (Daring)")

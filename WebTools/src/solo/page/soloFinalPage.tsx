@@ -4,7 +4,7 @@ import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
 import { connect } from "react-redux";
 import store from "../../state/store";
-import { setCharacterName, setCharacterPronouns, setCharacterRank } from "../../state/characterActions";
+import { setCharacterAssignment, setCharacterName, setCharacterPronouns, setCharacterRank } from "../../state/characterActions";
 import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
 import { Button } from "../../components/button";
 import { CharacterSheetDialog } from "../../components/characterSheetDialog";
@@ -13,6 +13,7 @@ import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
 import { Rank, RanksHelper } from "../../helpers/ranks";
 import { useState } from "react";
+import { Role, RolesHelper } from "../../helpers/roles";
 
 const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
     const { t } = useTranslation();
@@ -24,7 +25,23 @@ const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
             rankName = character.rank.name;
         }
     }
+
+    let assignment: string|Role = character.role ? RolesHelper.getRoleByName(character.role) : null;
+
+    const [showAssignmentOther, setShowAssignmentOther] = useState(!!character.jobAssignment);
     const [showRankOther, setShowRankOther] = useState(rankValue === "other");
+
+    if (showAssignmentOther) {
+        assignment = "other";
+    }
+
+    const assignmentOptions = () => {
+        let result = [new DropDownElement("", t('Common.text.select')), new DropDownElement("other", "Other")];
+        [Role.CommandingOfficer, Role.ExecutiveOfficer, Role.OperationsManager, Role.FlightController, Role.ChiefEngineer,
+            Role.ChiefOfSecurity, Role.ChiefMedicalOfficer, Role.ScienceOfficer, Role.CommunicationsOfficer]
+            .forEach(r => result.push(new DropDownElement(r, RolesHelper.getSoloRole(r).name)));
+        return result;
+    }
 
     const showDialog = () => {
         setTimeout(() => {
@@ -51,6 +68,26 @@ const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
             if (showRankOther) {
                 setShowRankOther(false);
+            }
+        }
+    }
+
+    const assignmentSelected = (assignment: string|Role, name?: string) => {
+        if (assignment === "other") {
+            setShowAssignmentOther(true);
+            if (name) {
+                store.dispatch(setCharacterAssignment(name))
+            }
+        } else if (assignment === "") {
+            setShowAssignmentOther(false);
+            store.dispatch(setCharacterAssignment(undefined))
+        } else if (typeof assignment !== 'string') {
+            if (showAssignmentOther) {
+                setShowAssignmentOther(false);
+            }
+            let role = RolesHelper.getSoloRole(assignment as Role);
+            if (role) {
+                store.dispatch(setCharacterAssignment(role.name, assignment as Role));
             }
         }
     }
@@ -82,6 +119,15 @@ const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
                 <div className="col-md-6 my-3">
                     <Header level={2} className="mb-3">{t('Construct.other.assignment')}</Header>
 
+                    <DropDownSelect items={assignmentOptions()} defaultValue={assignment} onChange={r => assignmentSelected(r)} />
+
+                    {showAssignmentOther
+                        ? (<div>
+                            <InputFieldAndLabel id="assignmentOther" labelName={t('Construct.other.assignment')}
+                                value={rankName}
+                                onChange={(v) => assignmentSelected("other", v)} />
+                            </div>)
+                        : undefined}
 
                 </div>
 

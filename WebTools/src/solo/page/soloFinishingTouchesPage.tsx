@@ -107,16 +107,20 @@ const SoloFinishingTouchesPage: React.FC<ISoloCharacterProperties> = ({character
 
     const disciplineCount = 16 - disciplineTotal;
 
+    const attributeController = new SoloFinishingTouchesAttributeController(character, attributeCount);
+    const disciplineController = new SoloFinishingTouchesDisciplineController(character);
+
     const navigateToNextPage = () => {
-        if (!character.finishValue) {
+        if (character.finishingStep?.attributes.length !== attributeCount) {
+            Dialog.show(t('SoloFinishingTouchesPage.errorAttributes', { count: attributeCount}));
+        } else if (character.finishingStep?.disciplines.length !== disciplineCount) {
+            Dialog.show(t('SoloFinishingTouchesPage.errorDisciplines', { count: disciplineCount}));
+        } else if (!character.finishValue) {
             Dialog.show(t('SoloFinishingTouchesPage.errorValue'));
         } else {
             Navigation.navigateToPage(PageIdentity.SoloFinal);
         }
     }
-
-    const attributeController = new SoloFinishingTouchesAttributeController(character, attributeCount);
-    const disciplineController = new SoloFinishingTouchesDisciplineController(character);
 
     return (
         <div className="page container ml-0">

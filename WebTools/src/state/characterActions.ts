@@ -4,6 +4,7 @@ import { Attribute } from "../helpers/attributes";
 import { Career } from "../helpers/careerEnum";
 import { Environment } from "../helpers/environments";
 import { Rank } from "../helpers/ranks";
+import { Role } from "../helpers/roles";
 import { Skill } from "../helpers/skills";
 import { Species } from "../helpers/speciesEnum";
 import { Track } from "../helpers/trackEnum";
@@ -18,6 +19,7 @@ export const SET_CHARACTER_FOCUS = 'SET_CHARACTER_FOCUS';
 export const SET_CHARACTER_VALUE = 'SET_CHARACTER_VALUE';
 export const SET_CHARACTER_NAME = 'SET_CHARACTER_NAME';
 export const SET_CHARACTER_RANK = 'SET_CHARACTER_RANK';
+export const SET_CHARACTER_ROLE = 'SET_CHARACTER_ROLE';
 export const SET_CHARACTER_PRONOUNS = 'SET_CHARACTER_PRONOUNS';
 export const SET_CHARACTER_EDUCATION = 'SET_CHARACTER_EDUCATION';
 export const SET_CHARACTER_ENVIRONMENT = 'SET_CHARACTER_ENVIRONMENT';
@@ -122,6 +124,14 @@ export function setCharacterRank(name: string, rank?: Rank) {
     let payload = { name: name, rank: rank };
     return {
        type: SET_CHARACTER_RANK,
+       payload: payload
+    }
+}
+
+export function setCharacterAssignment(name: string, role?: Role) {
+    let payload = { name: name, role: role };
+    return {
+       type: SET_CHARACTER_ROLE,
        payload: payload
     }
 }
