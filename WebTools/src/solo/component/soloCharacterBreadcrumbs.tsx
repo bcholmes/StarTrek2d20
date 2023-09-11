@@ -45,10 +45,10 @@ const SoloCharacterBreadcrumbs: React.FC<ISoloCharacterBreadcrumbProperties> = (
     }
 
     const renderEducation = () => {
-        if ((character?.career != null && pageIdentity === PageIdentity.SoloEducationDetailsPage) || pageIdentity === PageIdentity.SoloEducationTypePage || pageIdentity === PageIdentity.SoloEducationPage) {
+        if ((character?.career != null && pageIdentity === PageIdentity.SoloEducationDetailsPage) || pageIdentity === PageIdentity.SoloEducationType || pageIdentity === PageIdentity.SoloEducationPage) {
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloEducation')}</li>);
         } else if (character?.educationStep) {
-            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEducationTypePage)}>{t('Page.title.soloEducation')}</a></li>);
+            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEducationType)}>{t('Page.title.soloEducation')}</a></li>);
         } else {
             return undefined;
         }

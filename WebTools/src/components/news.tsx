@@ -12,6 +12,14 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230910</b>
+                <ul>
+                    <li>Initial version of the Captain's Log functionality is now implemented. There are a few random tables (for things like
+                        values and focuses) that aren't yet implemented, but I think the majority of character creation is implemented. This
+                        required some fairly broad changes to the code, so please report any issues that have popped up.</li>
+                    <li>Some new species for the token generator.</li>
+                    <li>A few bug fixes that people have reported.</li>
+                </ul>
                 <b>v1.230820</b>
                 <ul>
                     <li>More foundational work as prep for supporting Captain's Log features.</li>

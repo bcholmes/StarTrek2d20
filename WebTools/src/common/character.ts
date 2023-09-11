@@ -13,7 +13,7 @@ import { Government, GovernmentType } from '../helpers/governments';
 import AgeHelper, { Age } from '../helpers/age';
 import { Weapon, PersonalWeapons } from '../helpers/weapons';
 import { Construct, Stereotype } from './construct';
-import { SpeciesHelper, SpeciesModel } from '../helpers/species';
+import { SpeciesHelper } from '../helpers/species';
 import { Rank } from '../helpers/ranks';
 import { makeKey } from './translationKey';
 import i18next from 'i18next';

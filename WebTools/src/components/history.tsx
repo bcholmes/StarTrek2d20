@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import { connect } from 'react-redux';
-import {character} from '../common/character';
+import {Character, character} from '../common/character';
 import { CharacterType } from '../common/characterType';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from '../pages/pageIdentity';
@@ -9,9 +9,10 @@ import { rewindToStarshipWorkflowStep } from '../state/starshipActions';
 import store from '../state/store';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { makeKey } from '../common/translationKey';
+import { getPageTitle } from './pageHeader';
 
 export enum HistoryType {
-    Character, Starship
+    Character, SoloCharacter, Starship
 }
 
 
@@ -25,14 +26,22 @@ interface IHistoryProperties extends WithTranslation {
 
 class History extends React.Component<IHistoryProperties, {}> {
 
+    renderHistoryByType() {
+        if (this.props.type === HistoryType.Starship) {
+            return this.renderStarshipHistory();
+        } else if (this.props.type === HistoryType.SoloCharacter) {
+            return this.renderSoloCharacterHistory();
+        } else {
+            return this.renderCharacterHistory();
+        }
+    }
+
     render() {
 
         return (<>
                 <div className="sheet-bg" style={{ display: this.props.showHistory ? 'block' : "none" }} onClick={() => this.props.close()}></div>
                 <div className={this.props.showHistory ? 'history history-visible' : 'history history-hidden'}>
-                    {this.props.type === HistoryType.Starship
-                        ? this.renderStarshipHistory()
-                        : this.renderCharacterHistory()}
+                    {this.renderHistoryByType()}
                 </div>
             </>);
     }
@@ -53,6 +62,29 @@ class History extends React.Component<IHistoryProperties, {}> {
                 }
             })
             : <div>No history.</div>;
+    }
+
+    renderPageTitleLink(page: PageIdentity) {
+        let {t} = this.props;
+        return (
+            <div className="history-item" key={page as number} onClick={() => this.goToPage(page) }>
+                {getPageTitle(t, page)}
+            </div>
+        );
+    }
+
+    renderSoloCharacterHistory() {
+        let character = store.getState().character.currentCharacter as Character;
+        return (<>
+            {character?.speciesStep ? this.renderPageTitleLink(PageIdentity.SoloSpecies) : undefined}
+            {character?.environmentStep ? this.renderPageTitleLink(PageIdentity.SoloEnvironment) : undefined}
+            {character?.upbringingStep ? this.renderPageTitleLink(PageIdentity.SoloEarlyOutlook) : undefined}
+            {character?.educationStep ? this.renderPageTitleLink(PageIdentity.SoloEducationType) : undefined}
+            {character?.career != null ? this.renderPageTitleLink(PageIdentity.SoloCareerLength) : undefined}
+            {character?.careerEvents?.length > 0 ? this.renderPageTitleLink(PageIdentity.SoloCareerEvent1) : undefined}
+            {character?.careerEvents?.length > 1 ? this.renderPageTitleLink(PageIdentity.SoloCareerEvent2) : undefined}
+            {character?.finishingStep ? this.renderPageTitleLink(PageIdentity.SoloFinishingTouches) : undefined}
+        </>);
     }
 
     renderStarshipHistory() {

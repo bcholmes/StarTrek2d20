@@ -39,7 +39,7 @@ const SoloEducationTypePage: React.FC<ISoloCharacterProperties> = ({character}) 
 
     return (
         <div className="page container ml-0">
-            <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloEducationTypePage} />
+            <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloEducationType} />
             <Header>{t('Page.title.soloEducationType')}</Header>
             <p className="mt-3">
                 {t('SoloEducationTypePage.instruction')}

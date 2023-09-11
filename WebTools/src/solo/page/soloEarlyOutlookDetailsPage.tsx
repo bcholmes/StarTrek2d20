@@ -69,7 +69,7 @@ const SoloEarlyOutlookDetailsPage: React.FC<ISoloCharacterProperties> = ({charac
         } else if (!character.upbringingStep?.focus) {
             Dialog.show(t('SoloEarlyOutlookDetailsPage.errorFocus'));
         } else {
-            Navigation.navigateToPage(PageIdentity.SoloEducationTypePage);
+            Navigation.navigateToPage(PageIdentity.SoloEducationType);
         }
     }
 

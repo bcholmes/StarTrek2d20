@@ -8,100 +8,101 @@ interface IPageHeaderProperties extends WithTranslation {
     page: PageIdentity;
 }
 
+export const getPageTitle = (t, page) => {
+    let key = makeKey('Page.title.', PageIdentity[page]);
+
+    if (key !== t(key)) {
+        return t(key);
+    } else if (page === PageIdentity.SoloCharacterEra) {
+        return t('Page.title.era');
+    } else if (page === PageIdentity.SoloSpecies) {
+        return t('Page.title.species');
+    } else if (page === PageIdentity.SoloSpeciesDetails) {
+        return t('Page.title.speciesDetails');
+    } else if (page === PageIdentity.SoloEnvironment) {
+        return t('Page.title.environment');
+    } else if (page === PageIdentity.SoloEnvironmentDetails) {
+        return t('Page.title.environmentDetails');
+    } else if (page === PageIdentity.SupportingCharacter) {
+        return "Supporting Character";
+    } else if (page === PageIdentity.StarshipToolSelection) {
+        return "Starship Tools";
+    } else if (page === PageIdentity.StarshipTypeSelection) {
+        return "Starship Type";
+    } else if (page === PageIdentity.StarshipTalentSelection) {
+        return "Starship Talents";
+    } else if (page === PageIdentity.FinalStarshipDetails) {
+        return "Final Details";
+    } else if (page === PageIdentity.SimpleStarship) {
+        return "Starship Stats";
+    } else if (page === PageIdentity.SmallCraftStats) {
+        return "Small Craft Stats";
+    } else if (page === PageIdentity.StarshipWeaponsSelection) {
+        return "Starship Weapons";
+    } else if (page === PageIdentity.ToolSelection) {
+        return "Registry";
+    } else if (page === PageIdentity.CharacterType) {
+        return "Character Type";
+    } else if (page === PageIdentity.Species
+            || page === PageIdentity.SpeciesDetails
+            || page === PageIdentity.KobaliExtraSpeciesDetails
+            || page === PageIdentity.LiberatedBorgSpeciesExtraDetails
+            || page === PageIdentity.BorgSpeciesExtraDetails
+            || page === PageIdentity.CyberneticallyEnhancedSpeciesExtraDetails
+            || page === PageIdentity.BorgImplants
+            || page === PageIdentity.Environment
+            || page === PageIdentity.EnvironmentDetails
+            || page === PageIdentity.ExtraFocus
+            || page === PageIdentity.Upbringing
+            || page === PageIdentity.UpbringingDetails
+            || page === PageIdentity.StarfleetAcademy
+            || page === PageIdentity.StarfleetAcademyDetails
+            || page === PageIdentity.ChildCareer
+            || page === PageIdentity.CadetCareer
+            || page === PageIdentity.CadetSeniority
+            || page === PageIdentity.ChildEducationPage
+            || page === PageIdentity.ChildEducationDetailsPage
+            || page === PageIdentity.CareerEvent1
+            || page === PageIdentity.CareerDetails
+            || page === PageIdentity.CareerEvent1Details
+            || page === PageIdentity.CareerEvent2
+            || page === PageIdentity.CareerEvent2Details
+            || page === PageIdentity.AttributesAndDisciplines
+            || page === PageIdentity.Finish) {
+        return character.workflow?.currentStep()?.name || "";
+    } else if (page === PageIdentity.SystemGeneration) {
+        return "System Generation";
+    } else if (page === PageIdentity.SectorDetails) {
+        return "Sector Details";
+    } else if (page === PageIdentity.SpaceframeOption) {
+        return "Spaceframe Choice";
+    } else if (page === PageIdentity.SpaceframeSelection) {
+        return "Spaceframe Selection";
+    } else if (page === PageIdentity.CustomSpaceframe) {
+        return "Custom Spaceframe";
+    } else if (page === PageIdentity.MissionProfileSelection) {
+        return "Mission Profile";
+    } else if (page === PageIdentity.MissionPodSelection) {
+        return "Mission Pod";
+    } else if (page === PageIdentity.StarshipRefits) {
+        return "Starship Refits";
+    } else if (page === PageIdentity.StarSystemDetails) {
+        return "Star System Details";
+    } else {
+        return "";
+    }
+}
+
 class PageHeader extends React.Component<IPageHeaderProperties, {}> {
     render() {
-        const title = this.getTitle();
+        const title = getPageTitle(this.props.t, this.props.page);
 
         return (
             <div className="page-header">{title}</div>
         );
     }
 
-    getTitle() {
-        let key = makeKey('Page.title.', PageIdentity[this.props.page]);
-        const { t } = this.props;
 
-        if (key !== t(key)) {
-            return t(key);
-        } else if (this.props.page === PageIdentity.SoloCharacterEra) {
-            return t('Page.title.era');
-        } else if (this.props.page === PageIdentity.SoloSpecies) {
-            return t('Page.title.species');
-        } else if (this.props.page === PageIdentity.SoloSpeciesDetails) {
-            return t('Page.title.speciesDetails');
-        } else if (this.props.page === PageIdentity.SoloEnvironment) {
-            return t('Page.title.environment');
-        } else if (this.props.page === PageIdentity.SoloEnvironmentDetails) {
-            return t('Page.title.environmentDetails');
-        } else if (this.props.page === PageIdentity.SupportingCharacter) {
-            return "Supporting Character";
-        } else if (this.props.page === PageIdentity.StarshipToolSelection) {
-            return "Starship Tools";
-        } else if (this.props.page === PageIdentity.StarshipTypeSelection) {
-            return "Starship Type";
-        } else if (this.props.page === PageIdentity.StarshipTalentSelection) {
-            return "Starship Talents";
-        } else if (this.props.page === PageIdentity.FinalStarshipDetails) {
-            return "Final Details";
-        } else if (this.props.page === PageIdentity.SimpleStarship) {
-            return "Starship Stats";
-        } else if (this.props.page === PageIdentity.SmallCraftStats) {
-            return "Small Craft Stats";
-        } else if (this.props.page === PageIdentity.StarshipWeaponsSelection) {
-            return "Starship Weapons";
-        } else if (this.props.page === PageIdentity.ToolSelection) {
-            return "Registry";
-        } else if (this.props.page === PageIdentity.CharacterType) {
-            return "Character Type";
-        } else if (this.props.page === PageIdentity.Species
-                || this.props.page === PageIdentity.SpeciesDetails
-                || this.props.page === PageIdentity.KobaliExtraSpeciesDetails
-                || this.props.page === PageIdentity.LiberatedBorgSpeciesExtraDetails
-                || this.props.page === PageIdentity.BorgSpeciesExtraDetails
-                || this.props.page === PageIdentity.CyberneticallyEnhancedSpeciesExtraDetails
-                || this.props.page === PageIdentity.BorgImplants
-                || this.props.page === PageIdentity.Environment
-                || this.props.page === PageIdentity.EnvironmentDetails
-                || this.props.page === PageIdentity.ExtraFocus
-                || this.props.page === PageIdentity.Upbringing
-                || this.props.page === PageIdentity.UpbringingDetails
-                || this.props.page === PageIdentity.StarfleetAcademy
-                || this.props.page === PageIdentity.StarfleetAcademyDetails
-                || this.props.page === PageIdentity.ChildCareer
-                || this.props.page === PageIdentity.CadetCareer
-                || this.props.page === PageIdentity.CadetSeniority
-                || this.props.page === PageIdentity.ChildEducationPage
-                || this.props.page === PageIdentity.ChildEducationDetailsPage
-                || this.props.page === PageIdentity.CareerEvent1
-                || this.props.page === PageIdentity.CareerDetails
-                || this.props.page === PageIdentity.CareerEvent1Details
-                || this.props.page === PageIdentity.CareerEvent2
-                || this.props.page === PageIdentity.CareerEvent2Details
-                || this.props.page === PageIdentity.AttributesAndDisciplines
-                || this.props.page === PageIdentity.Finish) {
-            return character.workflow?.currentStep()?.name || "";
-        } else if (this.props.page === PageIdentity.SystemGeneration) {
-            return "System Generation";
-        } else if (this.props.page === PageIdentity.SectorDetails) {
-            return "Sector Details";
-        } else if (this.props.page === PageIdentity.SpaceframeOption) {
-            return "Spaceframe Choice";
-        } else if (this.props.page === PageIdentity.SpaceframeSelection) {
-            return "Spaceframe Selection";
-        } else if (this.props.page === PageIdentity.CustomSpaceframe) {
-            return "Custom Spaceframe";
-        } else if (this.props.page === PageIdentity.MissionProfileSelection) {
-            return "Mission Profile";
-        } else if (this.props.page === PageIdentity.MissionPodSelection) {
-            return "Mission Pod";
-        } else if (this.props.page === PageIdentity.StarshipRefits) {
-            return "Starship Refits";
-        } else if (this.props.page === PageIdentity.StarSystemDetails) {
-            return "Star System Details";
-        } else {
-            return "";
-        }
-    }
 }
 
 export default withTranslation()(PageHeader);

@@ -79,7 +79,7 @@ export enum PageIdentity {
     SoloEnvironmentDetails,
     SoloEarlyOutlook,
     SoloEarlyOutlookDetails,
-    SoloEducationTypePage,
+    SoloEducationType,
     SoloEducationPage,
     SoloEducationDetailsPage,
     SoloCareerLength,

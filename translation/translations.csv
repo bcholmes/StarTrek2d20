@@ -134,6 +134,9 @@ SoloEarlyOutlookDetailsPage.errorFocus,Please select a focus.,,,
 SoloEducationDetailsPage.selectThree,(Select three),(Drei auswählen),,(Choisir trois)
 SoloEducationDetailsPage.primaryDiscipline,Primary Discipline,,,
 SoloEducationDetailsPage.secondaryDiscipline,Secondary Disciplines,,,
+SoloEducationDetailsPage.errorDisciplines,Please select one primary and two secondary disciplines.,,,
+SoloEducationDetailsPage.errorAttributes,Please select three attributes.,,,
+SoloEducationDetailsPage.errorValue,Please select a value.,,,
 SoloEducationPage.instruction.alliedMilitary,"Outside of Starfleet, the Milky Way Galaxy hosts many other security and military organizations. Instead of a Starfleet or Klingon officer, you might choose to build a Captain’s Log story around a Bajoran freedom fighter, a member of the Andorian Imperial Guard, or a radically candid warrior of the Qowat Milat.
 
 As an alternative to attending Starfleet Academy, to select the type of military training your character has received, choose from the options in the following table, or randomly select one.",,,

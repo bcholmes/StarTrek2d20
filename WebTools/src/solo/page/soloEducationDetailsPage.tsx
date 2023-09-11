@@ -188,7 +188,7 @@ const SoloEducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character
         } else if (character.educationStep?.disciplines?.length < 2 || character.educationStep?.primaryDiscipline == null ||
             (character.educationStep?.decrementDiscipline != null && character.educationStep?.disciplines?.length < 3)) {
             Dialog.show(t("SoloEducationDetailsPage.errorDisciplines"));
-        } else if (character.educationStep?.focuses?.length < 3) {
+        } else if (character.educationStep?.focuses?.filter(f => !!f).length < 3) {
             Dialog.show(t("SoloEducationDetailsPage.errorFocuses"));
         } else if (!character.trackValue) {
             Dialog.show(t("SoloEducationDetailsPage.errorValue"));
@@ -234,7 +234,9 @@ const SoloEducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character
                 </div>
                 <div className="my-3 col-md-6">
                     <Header level={2}>{t('Construct.other.value')}</Header>
-                    <SoloValueInput textDescription={t('Value.otherTraining.text')} onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Education))}}/>
+                    <SoloValueInput textDescription={t('Value.otherTraining.text')}
+                        value={character.trackValue}
+                        onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Education))}}/>
 
                 </div>
             </div>

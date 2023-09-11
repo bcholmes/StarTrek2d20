@@ -50,7 +50,8 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
                         <div className="lcar-content-action">
                             <div id="history-button" className="lcar-content-history" onClick={ () => this.toggleHistory() }>{t('Lcars.history')}</div>
                             <div id="history-container" className="history-container-hidden">
-                                <History showHistory={this.state.showHistory} type={this.isStarshipPage() ? HistoryType.Starship : HistoryType.Character}
+                                <History showHistory={this.state.showHistory}
+                                    type={this.isStarshipPage() ? HistoryType.Starship : (this.isSoloPage() ? HistoryType.SoloCharacter : HistoryType.Character)}
                                     close={() => this.setState((state) => ({...state, showHistory: false }))} />
                             </div>
                         </div>
@@ -124,7 +125,7 @@ class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState>
             this.props.activePage === PageIdentity.SoloEnvironmentDetails ||
             this.props.activePage === PageIdentity.SoloEarlyOutlook ||
             this.props.activePage === PageIdentity.SoloEarlyOutlookDetails ||
-            this.props.activePage === PageIdentity.SoloEducationTypePage ||
+            this.props.activePage === PageIdentity.SoloEducationType ||
             this.props.activePage === PageIdentity.SoloEducationPage ||
             this.props.activePage === PageIdentity.SoloEducationDetailsPage ||
             this.props.activePage === PageIdentity.SoloCareerLength ||

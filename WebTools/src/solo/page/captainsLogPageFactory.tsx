@@ -44,7 +44,7 @@ export class CaptainsLogPageFactory implements IPageFactoryRegistry {
         this.factories[PageIdentity.SoloEnvironmentDetails] = () => <SoloEnvironmentDetailsPage />;
         this.factories[PageIdentity.SoloEarlyOutlook] = () => <SoloEarlyOutlookPage />;
         this.factories[PageIdentity.SoloEarlyOutlookDetails] = () => <SoloEarlyOutlookDetailsPage />;
-        this.factories[PageIdentity.SoloEducationTypePage] = () => <SoloEducationTypePage />;
+        this.factories[PageIdentity.SoloEducationType] = () => <SoloEducationTypePage />;
         this.factories[PageIdentity.SoloEducationPage] = () => <SoloEducationPage />;
         this.factories[PageIdentity.SoloEducationDetailsPage] = () => <SoloEducationDetailsPage />;
         this.factories[PageIdentity.SoloCareerLength] = () => <SoloCareerLengthPage />;
