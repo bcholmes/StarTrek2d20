@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
-import { TrackModel, TracksHelper } from "../../helpers/tracks";
+import { ImprovementRuleType, TrackModel, TracksHelper } from "../../helpers/tracks";
 import InstructionText from "../../components/instructionText";
 import { IAttributeController } from "../../components/attributeController";
 import { Character } from "../../common/character";
@@ -24,9 +24,11 @@ import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 class SoloEducationAttributeController implements IAttributeController {
 
     readonly character: Character;
+    readonly track: TrackModel;
 
-    constructor(character: Character) {
+    constructor(character: Character, track: TrackModel) {
         this.character = character;
+        this.track = track;
     }
 
     isShown(attribute: Attribute) {
@@ -39,8 +41,20 @@ class SoloEducationAttributeController implements IAttributeController {
         return this.character.attributes[attribute].value;
     }
     canIncrease(attribute: Attribute): boolean {
-        return this.isEditable(attribute) && this.character.educationStep?.attributes?.length < 3
+        return this.getValue(attribute) < Character.maxAttribute(this.character)
+            && (this.getValue(attribute) < (Character.maxAttribute(this.character) - 1) || !this.character.hasMaxedAttribute())
+            && this.isEditable(attribute) && this.character.educationStep?.attributes?.length < 3
+            && (this.isRequiredAttributeRuleSatisfied() || this.character.educationStep?.attributes?.length < 2 || this.track.attributesRule?.attributes?.indexOf(attribute) >= 0)
             && this.character.educationStep.attributes.filter(a => a === attribute).length < 2;
+    }
+    isRequiredAttributeRuleSatisfied() {
+        if (this.track.attributesRule) {
+            let result = false;
+            this.track.attributesRule.attributes.forEach(a => result = result || (this.character.educationStep.attributes.indexOf(a) >= 0));
+            return result;
+        } else {
+            return true;
+        }
     }
     canDecrease(attribute: Attribute): boolean {
         return this.isEditable(attribute) && this.character.educationStep?.attributes?.indexOf(attribute) >= 0;
@@ -113,13 +127,44 @@ class SoloEducationSecondaryDisciplineController implements IDisciplineControlle
         return this.character.skills[discipline].expertise;
     }
     canIncrease(discipline: Skill) {
-        return ((this.character.educationStep?.disciplines.length < 2) ||
-            (this.character.educationStep?.disciplines.length < 3 && this.character.educationStep?.decrementDiscipline != null))
-            && this.character.educationStep.disciplines.indexOf(discipline) < 0
-            && (this.character.skills[discipline].expertise < Character.maxDiscipline(this.character));
+        if (this.getValue(discipline) === Character.maxDiscipline(this.character)) {
+            return false;
+        } else if (this.getValue(discipline) === (Character.maxDiscipline(this.character) - 1) && this.character.hasMaxedSkill()) {
+            return false;
+        } else if (this.character.educationStep?.disciplines.length === 3 && this.character.educationStep?.decrementDiscipline != null) {
+            return false;
+        } else if (this.character.educationStep?.disciplines.length === 2 && this.character.educationStep?.decrementDiscipline == null) {
+            return false;
+        } else if (this.character.educationStep.disciplines.indexOf(discipline) >= 0) {
+            return false;
+        } else if (this.isRequiredDisciplineRuleSatisfied()) {
+            return true;
+        } else if (this.track.skillsRule?.skills.indexOf(discipline) >= 0) {
+            return true;
+        } else  if (this.track.skillsRule?.type === ImprovementRuleType.AT_LEAST_ONE) {
+            return this.character.educationStep?.disciplines.length === 0;
+        } else {
+            let need = this.track.skillsRule.skills.length - this.countRequiredDisciplines();
+            return (2 - this.character.educationStep.disciplines.length) > need;
+        }
     }
     canDecrease(discipline: Skill) {
-        return this.character.educationStep?.disciplines.indexOf(discipline) >= 0;
+        return this.character.educationStep?.disciplines.indexOf(discipline) >= 0
+            || (this.track.skillsRule?.type === ImprovementRuleType.MAY_DECREMENT_ONE && this.character.educationStep?.decrementDiscipline == null);
+    }
+    isRequiredDisciplineRuleSatisfied() {
+        if (this.track.skillsRule == null || this.track.skillsRule.type === ImprovementRuleType.MAY_DECREMENT_ONE) {
+            return true;
+        } else if (this.track.skillsRule.type === ImprovementRuleType.MUST_INCLUDE_ALL) {
+            return this.countRequiredDisciplines() === this.track.skillsRule.skills.length;
+        } else {
+            return this.countRequiredDisciplines() >= 1;
+        }
+    }
+    countRequiredDisciplines() {
+        let count = this.track.skillsRule.skills.indexOf(this.character.educationStep.primaryDiscipline) >= 0 ? 1 : 0;
+        count += this.character.educationStep.disciplines.filter(d => this.track.skillsRule.skills.indexOf(d) >= 0).length;
+        return count;
     }
     onIncrease(discipline: Skill) {
         store.dispatch(modifyCharacterDiscipline(discipline, StepContext.Education, true));
@@ -133,7 +178,7 @@ const SoloEducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character
 
     const { t } = useTranslation();
     const track = TracksHelper.instance().getSoloTrack(character.educationStep?.track);
-    const attributeController = new SoloEducationAttributeController(character);
+    const attributeController = new SoloEducationAttributeController(character, track);
     const primaryDisciplineController = new SoloEducationPrimaryDisciplineController(character, track);
     const secondaryDisciplineController = new SoloEducationSecondaryDisciplineController(character, track);
 
@@ -162,6 +207,8 @@ const SoloEducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character
                 <div className="col-md-6 my-3">
                     <Header level={2}>{t('Construct.other.attributes') + ' ' + t('SoloEducationDetailsPage.selectThree')}</Header>
                     <AttributeListComponent controller={attributeController} />
+
+                    {track.attributesRule ? (<p>{track.attributesRule?.describe()}</p>) : undefined}
                 </div>
                 <div className="col-md-6 my-3">
                     <Header level={2}>{t('SoloEducationDetailsPage.primaryDiscipline')}</Header>
@@ -169,6 +216,8 @@ const SoloEducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character
 
                     <Header level={2} className="mt-3">{t('SoloEducationDetailsPage.secondaryDiscipline')}</Header>
                     <DisciplineListComponent controller={secondaryDisciplineController} />
+
+                    {track.skillsRule ? (<p>{track.skillsRule?.describe()}</p>) : undefined}
                 </div>
                 <div className="my-3 col-md-6">
                     <Header level={2}>{t('Construct.other.focus')}</Header>
