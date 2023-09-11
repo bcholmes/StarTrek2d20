@@ -105,7 +105,7 @@ class UpbringingDetailsPage extends React.Component<WithTranslation, IUpbringing
     }
 
     private onElectiveSkillsSelected(skills: Skill[]) {
-        this._electiveSkills = skills ? skills[0] : undefined;
+        this._electiveSkills = skills.length ? skills[0] : undefined;
         this.forceUpdate();
     }
 
@@ -116,7 +116,7 @@ class UpbringingDetailsPage extends React.Component<WithTranslation, IUpbringing
 
     private onNext() {
         const { t } = this.props;
-        if (this._electiveSkills != null) {
+        if (this._electiveSkills == null) {
             Dialog.show(t('UpbringingDetailPage.error.discipline'));
             return;
         }
