@@ -1,4 +1,4 @@
-import { CareerEventStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, SpeciesStep, UpbringingStep, character } from "../common/character";
+import { CareerEventStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, SpeciesStep, UpbringingStep } from "../common/character";
 import { ADD_CHARACTER_CAREER_EVENT, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_RANK, SET_CHARACTER_ROLE, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
 
 interface CharacterState {
@@ -200,10 +200,10 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         }
         case SET_CHARACTER_TYPE: {
             let temp = state.currentCharacter.copy();
-            let originalType = character.type;
+            let originalType = temp.type;
             temp.type = action.payload.type;
-            if (temp.type !== originalType && character.educationStep) {
-                character.educationStep = undefined;
+            if (temp.type !== originalType && temp.educationStep) {
+                temp.educationStep = undefined;
             }
             return {
                 ...state,

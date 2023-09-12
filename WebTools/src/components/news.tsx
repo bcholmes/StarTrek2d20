@@ -12,6 +12,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230911</b>
+                <ul>
+                    <li>Whoopsie-doodle. Important bug fix.</li>
+                </ul>
                 <b>v1.230910</b>
                 <ul>
                     <li>Initial version of the Captain's Log functionality is now implemented. There are a few random tables (for things like
