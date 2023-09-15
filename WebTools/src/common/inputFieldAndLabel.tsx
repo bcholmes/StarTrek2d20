@@ -2,6 +2,7 @@ import React from "react";
 
 interface IInputFieldAndLabelState {
     hasFocus: boolean;
+    value: string;
 }
 
 interface IInputFieldAndLabelProperties {
@@ -18,7 +19,14 @@ export class InputFieldAndLabel extends React.Component<IInputFieldAndLabelPrope
     constructor(props) {
         super(props);
         this.state = {
-            hasFocus: false
+            hasFocus: false,
+            value: this.props.value ?? ''
+        }
+    }
+
+    componentDidUpdate(previousProps: IInputFieldAndLabelProperties, previousState, snapshot) {
+        if (this.props.value !== previousProps.value) {
+            this.setState((state) => ({...state, value: this.props.value}));
         }
     }
 
@@ -31,14 +39,17 @@ export class InputFieldAndLabel extends React.Component<IInputFieldAndLabelPrope
         }
 
         return (
-            <div className="d-sm-flex align-items-stretch mt-3">
+            <div className="d-sm-flex align-items-stretch mt-2" style={{ maxWidth: "80%" }}>
                 <label htmlFor={this.props.id} className="textinput-label">{this.props.labelName}</label>
                 <input
+                    className="mw-100"
                     id={this.props.id}
                     type={this.props.type ? this.props.type : "text"}
                     onChange={(ev) => {
                         if (!this.state.hasFocus) {
                             this.props.onChange(ev.target.value);
+                        } else {
+                            this.setState((state) => ({...state, value: ev.target.value}))
                         }
                     }}
                     onFocus={() => {this.setState((state) => ({...state, hasFocus: true}))}}
@@ -47,7 +58,7 @@ export class InputFieldAndLabel extends React.Component<IInputFieldAndLabelPrope
                         this.props.onChange(ev.target.value);
                     }}
                     {...additionalProps}
-                    defaultValue={this.props.value} />
+                    value={this.state.value} />
             </div>);
     }
 }

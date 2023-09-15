@@ -124,7 +124,7 @@ const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
                     {showAssignmentOther
                         ? (<div>
                             <InputFieldAndLabel id="assignmentOther" labelName={t('Construct.other.assignment')}
-                                value={rankName}
+                                value={character.jobAssignment ?? ""}
                                 onChange={(v) => assignmentSelected("other", v)} />
                             </div>)
                         : undefined}

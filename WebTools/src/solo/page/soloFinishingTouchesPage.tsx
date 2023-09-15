@@ -16,6 +16,8 @@ import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 import { IAttributeController } from "../../components/attributeController";
 import { Attribute } from "../../helpers/attributes";
 import AttributeListComponent from "../../components/attributeListComponent";
+import { ValueRandomTable } from "../table/valueRandomTable";
+import D20IconButton from "../component/d20IconButton";
 
 class SoloFinishingTouchesAttributeController implements IAttributeController {
     readonly character: Character;
@@ -122,6 +124,17 @@ const SoloFinishingTouchesPage: React.FC<ISoloCharacterProperties> = ({character
         }
     }
 
+    const randomValue = () => {
+        let done = false;
+        while (!done) {
+            let value = ValueRandomTable();
+            if (character.values.indexOf(value) < 0) {
+                done = true;
+                store.dispatch(setCharacterValue(value, StepContext.FinishingTouches));
+            }
+        }
+    }
+
     return (
         <div className="page container ml-0">
             <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloFinishingTouches} />
@@ -129,20 +142,25 @@ const SoloFinishingTouchesPage: React.FC<ISoloCharacterProperties> = ({character
             <Header>{t('Page.title.soloFinishingTouches')}</Header>
 
             <div className="row">
-                <div className="col-md-6 my-3">
+                <div className="col-lg-6 my-3">
                     <Header level={2} className="mb-3">{t('Construct.other.attribute')} {t('SoloFinishingTouchesPage.select', {count: attributeCount})}</Header>
                     <AttributeListComponent controller={attributeController} />
                 </div>
-                <div className="col-md-6 my-3">
+                <div className="col-lg-6 my-3">
                     <Header level={2} className="mb-3">{t('Construct.other.discipline')}  {t('SoloFinishingTouchesPage.select', {count: disciplineCount})}</Header>
                     <DisciplineListComponent controller={disciplineController} />
                 </div>
-                <div className="col-md-6 my-3">
+                <div className="col-lg-6 my-3">
                     <Header level={2} className="mb-3">{t('Construct.other.value')}</Header>
 
-                    <SoloValueInput textDescription={t('Value.final.text')}
-                        value={character?.finishValue}
-                        onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.FinishingTouches))}}/>
+                    <div className="d-flex justify-content-between align-items-center flex-wrap">
+                        <SoloValueInput value={character?.finishValue}
+                            onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.FinishingTouches))}}/>
+                        <div style={{ flexShrink: 0 }} className="mt-2">
+                            <D20IconButton onClick={() => randomValue() }/>
+                        </div>
+                        <div className="py-1 text-white">{t('Value.final.text')}</div>
+                    </div>
                 </div>
 
             </div>

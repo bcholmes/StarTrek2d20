@@ -440,8 +440,8 @@ class Upbringings {
     }
 
     getUpbringing(upbringing: EarlyOutlook) {
-        var list = this.getEarlyOutlooksList(CharacterType.Starfleet, false);
-        return list ? list[upbringing] : null;
+        var list = this.getEarlyOutlooksList(CharacterType.Starfleet, false).filter(o => o.id === upbringing);
+        return list ? list[0] : undefined;
     }
 
     getAllUpbringings(alternate: boolean = false) {

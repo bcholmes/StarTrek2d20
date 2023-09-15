@@ -34,7 +34,12 @@ const SoloEnvironmentPage: React.FC<ISoloCharacterProperties> = ({character}) =>
         : null);
 
     const selectEnvironment = (environment: Environment) => {
-        store.dispatch(setCharacterEnvironment(environment));
+        if (environment === Environment.AnotherSpeciesWorld) {
+            store.dispatch(setCharacterEnvironment(environment,
+                character.environmentStep?.otherSpecies));
+        } else {
+            store.dispatch(setCharacterEnvironment(environment));
+        }
         Navigation.navigateToPage(PageIdentity.SoloEnvironmentDetails);
     }
 

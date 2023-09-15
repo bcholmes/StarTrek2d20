@@ -4,7 +4,7 @@ import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
 export interface ISoloValueInput {
     value?: string;
     id?: string;
-    textDescription: string;
+    textDescription?: string;
     onValueChanged: (string) => void;
 }
 
@@ -13,7 +13,7 @@ const SoloValueInput: React.FC<ISoloValueInput> = ({textDescription, id, value, 
 
     return (<>
         <InputFieldAndLabel labelName={t('Construct.other.value')} id={id ?? "value"} value={value ?? ""} onChange={(value) => onValueChanged(value) } />
-        <div className="text-white py-1">{textDescription}</div>
+        {textDescription ? <div className="text-white py-1">{textDescription}</div> : undefined}
     </>);
 }
 

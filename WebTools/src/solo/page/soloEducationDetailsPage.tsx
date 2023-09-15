@@ -20,6 +20,9 @@ import { Skill } from "../../helpers/skills";
 import DisciplineListComponent, { IDisciplineController } from "../../components/disciplineListComponent";
 import { Dialog } from "../../components/dialog";
 import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
+import D20IconButton from "../component/d20IconButton";
+import { ValueRandomTable } from "../table/valueRandomTable";
+import { FocusRandomTable } from "../table/focusRandomTable";
 
 class SoloEducationAttributeController implements IAttributeController {
 
@@ -197,6 +200,29 @@ const SoloEducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character
         }
     }
 
+    const randomValue = () => {
+        let done = false;
+        while (!done) {
+            let value = ValueRandomTable();
+            if (character.values.indexOf(value) < 0) {
+                done = true;
+                store.dispatch(setCharacterValue(value, StepContext.Education));
+            }
+        }
+    }
+
+
+    const selectRandomFocus = (index: number) => {
+        let done = false;
+        while (!done) {
+            let focus = FocusRandomTable(character.educationStep?.primaryDiscipline);
+            if (character.focuses.indexOf(focus) < 0) {
+                done = true;
+                store.dispatch(setCharacterFocus(focus, StepContext.Education, index));
+            }
+        }
+    }
+
     return (
         <div className="page container ml-0">
             <SoloCharacterBreadcrumbs  pageIdentity={PageIdentity.SoloEducationDetailsPage}/>
@@ -204,13 +230,13 @@ const SoloEducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character
             <InstructionText text={track.localizedDescription} />
 
             <div className="row">
-                <div className="col-md-6 my-3">
+                <div className="col-lg-6 my-3">
                     <Header level={2}>{t('Construct.other.attributes') + ' ' + t('SoloEducationDetailsPage.selectThree')}</Header>
                     <AttributeListComponent controller={attributeController} />
 
                     {track.attributesRule ? (<p>{track.attributesRule?.describe()}</p>) : undefined}
                 </div>
-                <div className="col-md-6 my-3">
+                <div className="col-lg-6 my-3">
                     <Header level={2}>{t('SoloEducationDetailsPage.primaryDiscipline')}</Header>
                     <DisciplineListComponent controller={primaryDisciplineController} />
 
@@ -219,25 +245,44 @@ const SoloEducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character
 
                     {track.skillsRule ? (<p>{track.skillsRule?.describe()}</p>) : undefined}
                 </div>
-                <div className="my-3 col-md-6">
+                <div className="my-3 col-lg-6">
                     <Header level={2}>{t('Construct.other.focus')}</Header>
-                    <InputFieldAndLabel id="focus1" labelName={t('Construct.other.focus1')}
-                        value={character.educationStep?.focuses[0] || ""}
-                        onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 0))} />
-                    <InputFieldAndLabel id="focus2" labelName={t('Construct.other.focus2')}
-                        value={character.educationStep?.focuses[1] || ""}
-                        onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 1))} />
-                    <InputFieldAndLabel id="focus3" labelName={t('Construct.other.focus3')}
-                        value={character.educationStep?.focuses[2] || ""}
-                        onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 2))} />
+                    <div className="d-flex justify-content-between align-items-center flex-wrap">
+                        <InputFieldAndLabel id="focus1" labelName={t('Construct.other.focus1')}
+                            value={character.educationStep?.focuses[0] || ""}
+                            onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 0))} />
+                        <div style={{ flexShrink: 0 }} className="mt-2">
+                            <D20IconButton onClick={() => selectRandomFocus(0)}/>
+                        </div>
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center flex-wrap">
+                        <InputFieldAndLabel id="focus2" labelName={t('Construct.other.focus2')}
+                            value={character.educationStep?.focuses[1] || ""}
+                            onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 1))} />
+                        <div style={{ flexShrink: 0 }} className="mt-2">
+                            <D20IconButton onClick={() => selectRandomFocus(1)}/>
+                        </div>
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center flex-wrap">
+                        <InputFieldAndLabel id="focus3" labelName={t('Construct.other.focus3')}
+                            value={character.educationStep?.focuses[2] || ""}
+                            onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 2))} />
+                        <div style={{ flexShrink: 0 }} className="mt-2">
+                            <D20IconButton onClick={() => selectRandomFocus(2)}/>
+                        </div>
+                    </div>
                     <div className="mt-3 text-white"><b>{t('Common.text.suggestions')}:</b> {track.focusSuggestions.join(", ")}</div>
                 </div>
-                <div className="my-3 col-md-6">
+                <div className="my-3 col-lg-6">
                     <Header level={2}>{t('Construct.other.value')}</Header>
-                    <SoloValueInput textDescription={t('Value.otherTraining.text')}
-                        value={character.trackValue}
-                        onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Education))}}/>
-
+                    <div className="d-flex justify-content-between align-items-center flex-wrap">
+                        <SoloValueInput value={character.trackValue}
+                            onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Education))}}/>
+                        <div style={{ flexShrink: 0 }} className="mt-2">
+                            <D20IconButton onClick={() => randomValue() }/>
+                        </div>
+                    </div>
+                    <div className="py-1 text-white">{t('Value.otherTraining.text')}</div>
                 </div>
             </div>
             <div className='text-right mt-4'>

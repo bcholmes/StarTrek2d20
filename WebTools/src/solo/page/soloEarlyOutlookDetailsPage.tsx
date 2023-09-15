@@ -19,6 +19,8 @@ import { StepContext, modifyCharacterDiscipline, setCharacterEarlyOutlook, setCh
 import { Button } from "../../components/button";
 import { Dialog } from "../../components/dialog";
 import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
+import D20IconButton from "../component/d20IconButton";
+import { FocusRandomTable } from "../table/focusRandomTable";
 
 class SoloEarlyOutlookDiscplineController implements IDisciplineController {
 
@@ -73,6 +75,17 @@ const SoloEarlyOutlookDetailsPage: React.FC<ISoloCharacterProperties> = ({charac
         }
     }
 
+    const selectRandomFocus = () => {
+        let done = false;
+        while (!done) {
+            let focus = FocusRandomTable(character.upbringingStep?.discipline);
+            if (character.focuses.indexOf(focus) < 0) {
+                done = true;
+                store.dispatch(setCharacterFocus(focus, StepContext.EarlyOutlook));
+            }
+        }
+    }
+
     const attributes = character.upbringingStep?.acceptedUpbringing
         ? (<div>
             <AttributeView name={AttributesHelper.getAttributeName(earlyOutlook.attributeAcceptPlus2) } points={2} value={character.attributes[earlyOutlook.attributeAcceptPlus2].value}/>
@@ -91,28 +104,33 @@ const SoloEarlyOutlookDetailsPage: React.FC<ISoloCharacterProperties> = ({charac
             <InstructionText text={earlyOutlook.description} />
 
             <div className="row">
-                <div className="col-md-6 my-3">
+                <div className="col-lg-6 my-3">
                     <p>{t('UpbringingDetailPage.text')}</p>
                     <CheckBox isChecked={character.upbringingStep?.acceptedUpbringing} text={t('UpbringingDetailPage.text.accept')} value={1} onChanged={() => changeAccepted(true)}/>
                     <CheckBox isChecked={!character.upbringingStep?.acceptedUpbringing} text={t('UpbringingDetailPage.text.reject')} value={0} onChanged={() => changeAccepted(false)}/>
                 </div>
-                <div className="col-md-6 my-3">
+                <div className="col-lg-6 my-3">
                     <Header level={2}>{t('Construct.other.attributes')}</Header>
                     {attributes}
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-6 my-3">
+                <div className="col-lg-6 my-3">
                     <Header level={2}>{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</Header>
                     <DisciplineListComponent controller={disciplineController} />
                 </div>
-                <div className="my-3 col-md-6">
+                <div className="my-3 col-lg-6">
                     <Header level={2}>{t('Construct.other.focus')}</Header>
                     <p>{earlyOutlook.focusDescription}</p>
-                    <InputFieldAndLabel id="focus" labelName={t('Construct.other.focus')}
-                        value={character.upbringingStep?.focus || ""}
-                        onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.EarlyOutlook))} />
-                    <div className="mt-3 text-white"><b>{t('Common.text.suggestions')}:</b> {earlyOutlook.focusSuggestions.join(", ")}</div>
+                    <div className="d-flex justify-content-between align-items-center flex-wrap">
+                        <InputFieldAndLabel id="focus" labelName={t('Construct.other.focus')}
+                            value={character.upbringingStep?.focus || ""}
+                            onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.EarlyOutlook))} />
+                        <div style={{ flexShrink: 0 }} className="mt-1">
+                            <D20IconButton onClick={() => selectRandomFocus()}/>
+                        </div>
+                    </div>
+                    <div className="py-1 text-white"><b>{t('Common.text.suggestions')}:</b> {earlyOutlook.focusSuggestions.join(", ")}</div>
                 </div>
             </div>
             <div className='text-right mt-4'>
