@@ -12,6 +12,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230915</b>
+                <ul>
+                    <li>Add in support for random value and focus tables.</li>
+                    <li>Some fixes and improvements.</li>
+                </ul>
                 <b>v1.230911</b>
                 <ul>
                     <li>Whoopsie-doodle. Important bug fix.</li>
@@ -180,54 +185,6 @@ class News extends React.Component<INewsProperties, {}> {
                     <li>A couple of minor enhancements.</li>
                     <li>Still more tweaks to the NPC Generator and the Sector Generator.</li>
                     <li>Some additional German translations.</li>
-                </ul>
-                <b>v1.230312</b>
-                <ul>
-                    <li>More tweaks to the NPC Generator and the Sector Generator.</li>
-                </ul>
-                <b>v1.230227</b>
-                <ul>
-                    <li>A few more updates to both the NPC Generator and the Star System PDF Exporter.</li>
-                </ul>
-                <b>v1.230226</b>
-                <ul>
-                    <li>More fleshing out of the NPC generator.</li>
-                    <li>I've made some internal changes to the PDF generation for star systems. It's probably not
-                        something you'd notice, though.</li>
-                </ul>
-                <b>v1.230222</b>
-                <ul>
-                    <li>Some improvements to the NPC generator.</li>
-                </ul>
-                <b>v1.230220</b>
-                <ul>
-                    <li>A few minor enhancements.</li>
-                    <li>I've broken up the app into some sub-parts. What does that mean? Well, for a while, the
-                        process of "building" the application has complained to me about the app being very large
-                        (although I haven't really noticed any problem loading the application). Now, I'm trying to
-                        trim down the size of the main application, and load in optional portions as needed. You
-                        might notice more "loading" indicators &mdash; for example, some buttons might briefly
-                        display a spinner while some part of the application is loading.
-                    </li>
-                    <li>The primary motivation for handling the above relates to adding a quick utility for
-                        creating NPCs, which introduced a non-trivial amount of data. At the moment, NPC
-                        generation is fairly basic; I'll add more functionality later.
-                    </li>
-                </ul>
-                <b>v1.230208</b>
-                <ul>
-                    <li>Two minor bug fixes.</li>
-                </ul>
-                <b>v1.230205</b>
-                <ul>
-                    <li>More revisions to the sector generator.</li>
-                    <li>Minor revisions to the landscape character sheet.</li>
-                </ul>
-                <b>v1.230204</b>
-                <ul>
-                    <li>Minor revisions to the sector generator.</li>
-                    <li>Support for Normal Milestones in the modify flow.</li>
-                    <li>Some revisions to the standard character sheet.</li>
                 </ul>
 
                 <div className="text-center">
