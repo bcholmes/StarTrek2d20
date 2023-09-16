@@ -249,25 +249,25 @@ const SoloEducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character
                     <Header level={2}>{t('Construct.other.focus')}</Header>
                     <div className="d-flex justify-content-between align-items-center flex-wrap">
                         <InputFieldAndLabel id="focus1" labelName={t('Construct.other.focus1')}
-                            value={character.educationStep?.focuses[0] || ""}
+                            value={character.educationStep?.focuses[0] || ""} className="mt-1"
                             onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 0))} />
-                        <div style={{ flexShrink: 0 }} className="mt-2">
+                        <div style={{ flexShrink: 0 }} className="mt-1">
                             <D20IconButton onClick={() => selectRandomFocus(0)}/>
                         </div>
                     </div>
                     <div className="d-flex justify-content-between align-items-center flex-wrap">
                         <InputFieldAndLabel id="focus2" labelName={t('Construct.other.focus2')}
-                            value={character.educationStep?.focuses[1] || ""}
+                            value={character.educationStep?.focuses[1] || ""} className="mt-1"
                             onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 1))} />
-                        <div style={{ flexShrink: 0 }} className="mt-2">
+                        <div style={{ flexShrink: 0 }} className="mt-1">
                             <D20IconButton onClick={() => selectRandomFocus(1)}/>
                         </div>
                     </div>
                     <div className="d-flex justify-content-between align-items-center flex-wrap">
                         <InputFieldAndLabel id="focus3" labelName={t('Construct.other.focus3')}
-                            value={character.educationStep?.focuses[2] || ""}
+                            value={character.educationStep?.focuses[2] || ""} className="mt-1"
                             onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 2))} />
-                        <div style={{ flexShrink: 0 }} className="mt-2">
+                        <div style={{ flexShrink: 0 }} className="mt-1">
                             <D20IconButton onClick={() => selectRandomFocus(2)}/>
                         </div>
                     </div>

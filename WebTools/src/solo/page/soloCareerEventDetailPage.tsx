@@ -137,7 +137,6 @@ const SoloCareerEventDetailsPage: React.FC<ISoloCareerEventProperties> = ({chara
         let done = false;
         while (!done) {
             let focus = FocusRandomTable(careerEventStep.discipline);
-            console.log(focus, context);
             if (character.focuses.indexOf(focus) < 0) {
                 done = true;
                 store.dispatch(setCharacterFocus(focus, context));

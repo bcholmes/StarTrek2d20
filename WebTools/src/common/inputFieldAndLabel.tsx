@@ -11,6 +11,7 @@ interface IInputFieldAndLabelProperties {
     type?: string,
     value: string,
     max?: number,
+    className?: string,
     onChange: (value: string) => void
 }
 
@@ -39,7 +40,7 @@ export class InputFieldAndLabel extends React.Component<IInputFieldAndLabelPrope
         }
 
         return (
-            <div className="d-sm-flex align-items-stretch mt-2" style={{ maxWidth: "80%" }}>
+            <div className={"d-sm-flex align-items-stretch " + (this.props.className ?? "mt-2")} style={{ maxWidth: "80%" }}>
                 <label htmlFor={this.props.id} className="textinput-label">{this.props.labelName}</label>
                 <input
                     className="mw-100"

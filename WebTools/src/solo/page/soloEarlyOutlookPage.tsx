@@ -39,7 +39,6 @@ const SoloEarlyOutlookPage: React.FC<ISoloCharacterProperties> = ({character}) =
 
     const { t } = useTranslation();
     const initialOutlook = character?.upbringingStep?.upbringing?.id;
-    console.log(initialOutlook == null ? "null" : EarlyOutlook[initialOutlook]);
     const [tab, setTab] = useState(determineInitialTab(initialOutlook));
     const [randomUpbringing, setRandomUpbringing] = useState(initialOutlook != null && UpbringingsHelper.isUpbringing(initialOutlook) ? initialOutlook : null);
     const [randomAsperation, setRandomAsperation] = useState(initialOutlook != null && UpbringingsHelper.isAspiration(initialOutlook) ? initialOutlook : null);

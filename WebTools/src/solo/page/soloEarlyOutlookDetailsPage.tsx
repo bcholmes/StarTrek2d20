@@ -124,7 +124,7 @@ const SoloEarlyOutlookDetailsPage: React.FC<ISoloCharacterProperties> = ({charac
                     <p>{earlyOutlook.focusDescription}</p>
                     <div className="d-flex justify-content-between align-items-center flex-wrap">
                         <InputFieldAndLabel id="focus" labelName={t('Construct.other.focus')}
-                            value={character.upbringingStep?.focus || ""}
+                            value={character.upbringingStep?.focus || ""} className="mt-1"
                             onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.EarlyOutlook))} />
                         <div style={{ flexShrink: 0 }} className="mt-1">
                             <D20IconButton onClick={() => selectRandomFocus()}/>

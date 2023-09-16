@@ -141,7 +141,7 @@ const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
                     {showRankOther
                         ? (<div>
                             <InputFieldAndLabel id="rankOther" labelName={t('Construct.other.rank')}
-                                value={rankName}
+                                value={rankName ?? ""}
                                 onChange={(v) => store.dispatch(setCharacterRank(v))} />
                             </div>)
                         : undefined}
