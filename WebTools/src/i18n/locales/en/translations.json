@@ -86,6 +86,14 @@
     "ViewPage.errorMessage": "Things have gone terribly, terribly wrong. We might be in the mirror universe.",
     "ViewPage.unnamedStarship": "Unnamed Starship",
 
+    "CareerEvents.standard": "Standard",
+    "CareerEvents.standardAndUnofficial": "Standard and Unofficial",
+    "CareerEvents.unofficialNote": "This list includes unofficial items from [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Check that your GM is comfortable allowing these items.",
+
+    "CareerEventDetails.errorAttribute": "Please select an attribute.",
+    "CareerEventDetails.errorDiscipline": "Please select a discipline.",
+    "CareerEventDetails.errorFocus": "Please select a focus.",
+
     "GMTracker.title": "Tracker",
     "GMTracker.instruction": "Use this tool to manage various NPCs in your game.",
     "GMTracker.addCharacterModalTitle": "Add Character",
@@ -400,6 +408,7 @@
     "Construct.system.weapons": "Weapons",
 
     "Page.title.career": "Career",
+    "Page.title.careerEvent": "Career Event",
     "Page.title.characterType": "Character Type",
     "Page.title.creditsPage": "Credits",
     "Page.title.customSpaceframe": "Custom Spaceframe Creation",
@@ -420,7 +429,9 @@
     "Page.title.soloCareerEvent": "Career Event",
     "Page.title.soloCareerEvent1": "Career Event 1",
     "Page.title.soloCareerEvent2": "Career Event 2",
-    "Page.title.soloCareerEventDetails": "Career Event Details",
+
+    "Please": "Career Event Details",
+
     "Page.title.soloCareerEventDetails1": "Career Event Details 1",
     "Page.title.soloCareerEventDetails2": "Career Event Details 2",
     "Page.title.soloCareerLength": "Career Length",
@@ -494,14 +505,167 @@
     "Source.book.animatedSeries": "Animated Series",
     "Source.book.continuingMissions": "Continuing Missions",
 
-    "CharacterType.name.starfleet": "Starfleet",
-    "CharacterType.name.klingonWarrior": "Klingon Defense Force",
-    "CharacterType.name.civilian": "Civilian",
-    "CharacterType.name.alliedMilitary": "Allied Military",
-    "CharacterType.name.ambassadorDiplomat": "Ambassador / Diplomat",
-    "CharacterType.name.cadet": "Cadet",
-    "CharacterType.name.child": "Child",
-    "CharacterType.name.other": "Other",
+    "CareerEvent.common.1.name": "Ship Destroyed",
+
+    "CareerEvent.common.2.name": "Death of a Friend",
+
+    "CareerEvent.common.3.name": "Lauded by Another Culture",
+
+    "CareerEvent.common.4.name": "Negotiate a Treaty",
+
+    "CareerEvent.common.5.name": "Required to Take Command",
+
+    "CareerEvent.common.6.name": "Encounter with a Truly Alien Being",
+
+    "CareerEvent.common.7.name": "Serious Injury",
+
+    "CareerEvent.common.8.name": "Conflict with a Hostile Culture",
+
+    "CareerEvent.common.9.name": "Mentored",
+
+    "CareerEvent.common.10.name": "Transporter Accident",
+
+    "CareerEvent.common.11.name": "Dealing with a Plague",
+
+    "CareerEvent.common.12.name": "Betrayed Ideals for a Superior",
+
+    "CareerEvent.common.13.name": "Called Out a Superior",
+
+    "CareerEvent.common.14.name": "New Battle Strategy",
+
+    "CareerEvent.common.15.name": "Learns Unique Language",
+
+    "CareerEvent.common.16.name": "Discovers an Artifact",
+
+    "CareerEvent.common.17.name": "Special Commendation",
+
+    "CareerEvent.common.18.name": "Solved an Engineering Crisis",
+
+    "CareerEvent.common.19.name": "Breakthrough or Invention",
+
+    "CareerEvent.common.20.name": "First Contact",
+
+    "CareerEvent.unofficial.21.name": "Advanced Tactical Training",
+    "CareerEvent.unofficial.21.description": "The character took a specialized course in advanced tactical and intelligence techniques.\n\n- Where was the course taught? Who recommended the character for the course?\n- Did the character pass the course? How did the character rank in the various subjects?",
+    "CareerEvent.unofficial.21.focusDescription": "The character gains a focus, which should reflect the special training they received. Examples include: Guerilla Tactics, Strategic Defense, or Combat Maneuvers.",
+
+    "CareerEvent.unofficial.22.name": "Protoype Testing",
+    "CareerEvent.unofficial.22.description": "The character was involved in the testing of a prototype device, a new treatment, or experimental starship\n\n- What was the device, treatment, or ship, and what made it unique or experimental?\n- Was the project classified? Was the prototype scrapped or successful?",
+    "CareerEvent.unofficial.22.focusDescription": "The character gains a focus, which should reflect something connected to the science and technology behind the prototype. Examples include: Sensors, Cybernetics, or Nanotechnology.",
+
+    "CareerEvent.unofficial.23.name": "Colonization Effort",
+    "CareerEvent.unofficial.23.description": "The character was assigned to help colonist settle on a new planet, and likely has spent significant time on-site.\n\n- What planet was colonized, and by whom? Were there any territorial disputes?\n- What major issues did the colonists have to deal with? How did the character assist?",
+    "CareerEvent.unofficial.23.focusDescription": "The character gains a focus, reflecting a skill they contributed to or learned during the colonization effort. Examples include: Mining, Impulse Engines, or Ground Vehicles.",
+
+    "CareerEvent.unofficial.24.name": "Exchange Program",
+    "CareerEvent.unofficial.24.description": "The character participated in an exchange program, which could range from an officer exchange program, an interspecies medical exchange, or a galactic cultural exchange program.\n\n- What was the nature of the exchange? Where did the character go?\n- Was the exchange an eye-opening experience, or a tense one? What lessons did the character come away with?",
+    "CareerEvent.unofficial.24.focusDescription": "The character gains a focus, reflecting insights or skills he learned during the exchange program. Examples include: Observation, Interspecies Protocol, or Sociology.",
+
+    "CareerEvent.unofficial.25.name": "Lucky Streak",
+    "CareerEvent.unofficial.25.description": "The character had an extraordinary run of luck, which others have noticed.\n\n- Was the character just lucky, or were there external reasons for the seeming good luck?\n- What kind of lucky breaks did the character have? Did it affect how others saw them?",
+    "CareerEvent.unofficial.25.focusDescription": "The character gains a focus, reflecting how they pressed their luck, or their understanding of odds. Examples include: Gambling, Evasive Action, or Mathematics.",
+
+    "CareerEvent.unofficial.26.name": "Learned from Significant Blunder",
+    "CareerEvent.unofficial.26.description": "The character had committed a significant blunder during their career, one which people have not forgotten. To avoid committing the same error again, the character has taken proper precautions.\n\n- What error did the character commit, and how bad was it? What were the consequences of that error?\n- Did the blunder negatively affect the character's career? Who still holds a grudge against them?",
+    "CareerEvent.unofficial.26.focusDescription": "The character gains a focus, which should reflect how they try to avoid future blunders, or extra practice on a particular system. Examples include: Analysis, Helm Operations, or Communication Systems.",
+
+    "CareerEvent.unofficial.27.name": "Cultural Observation Post",
+    "CareerEvent.unofficial.27.description": "The character was assigned to a cultural observation mission, operating a ‘duck blind’.\n\n- What pre-warp civilization was the character observing?\n- Did anything go wrong on the mission?",
+    "CareerEvent.unofficial.27.focusDescription": "The character gains a focus, reflecting something they studied of the culture under observation, or skills they honed while operating the duck blind. Examples include: Anthropology, Ethnomusicology, or Covert Operations.",
+
+    "CareerEvent.unofficial.28.name": "Struggle with Addiction",
+    "CareerEvent.unofficial.28.description": "The character struggled with a type of addiction, which could range from holo-addiction, to drugs, to alcohol, among others.\n\n- What was the nature of the addiction? How did it affect the character's performance?\n- What started the character's recovery? Did he rely on someone?",
+    "CareerEvent.unofficial.28.focusDescription": "The character gains a focus, reflecting coping mechanisms or expertise on the object of their addiction. Examples include: Holodecks, Mental Discipline, or Alcoholic Beverages.",
+
+    "CareerEvent.unofficial.29.name": "Rivalry",
+    "CareerEvent.unofficial.29.description": "The character had a significant rivalry with someone.\n\n- Who is the character's rival? What do they compete over?\n- Was it friendly competition or cutthroat? Was the rivalry public or private?",
+    "CareerEvent.unofficial.29.focusDescription": "The character gains a focus, reflecting the nature of the rivalry. Examples include: Debate, Fencing, or Boasting.",
+
+    "CareerEvent.unofficial.30.name": "Off-Duty Endeavour",
+    "CareerEvent.unofficial.30.description": "The character pursued an off-duty interest with great energy and talent, possibly taking part in competitions or organizing group activities locally.\n\n- What is the endeavour that the character pursued off-duty?\n- How good is the character at the activity? Has the character won accolades for the endeavour?",
+    "CareerEvent.unofficial.30.focusDescription": "The character gains a focus, which should reflect the off-duty endeavour that they participate in. Examples include: Music, Dance, Boxing, Cooking, or Singing.",
+
+    "CareerEvent.unofficial.31.name": "Starbase Posting",
+    "CareerEvent.unofficial.31.description": "The character was assigned to a starbase or space station.\n\n- Which starbase did the character work at? Were there any social or political issues that affected the starbase during the posting?\n- What did the character do aboard the starbase? Who else was assigned there?",
+    "CareerEvent.unofficial.31.focusDescription": "The character gains a focus, reflecting skills they learned as starbase crew. Examples include: Logistics, Repairs and Maintenance, or Security Protocols.",
+
+    "CareerEvent.unofficial.32.name": "Planetary Posting",
+    "CareerEvent.unofficial.32.description": "The character was assigned to a particular planet due to their expertise. Work could range from planetary security, to humanitarian aid, to reconstruction efforts.\n\n- What planet did the character work on? What was the nature of the work?\n- What was unique about the planet? What kind of interactions did the character have with the local population?",
+    "CareerEvent.unofficial.32.focusDescription": "The character gains a focus, reflecting their knowledge of the planet they were assigned to, or skills they picked up while working on-planet. Examples include: Meteorology, Atmospheric Flight, or Geology.",
+
+    "CareerEvent.unofficial.33.name": "Left Behind",
+    "CareerEvent.unofficial.33.description": "The character (or their team) was left behind to fend for themselves.\n\n- Why was the character left behind? Did they come back for the character?\n- What were the threats the character had to face? How did the character survive on their own?",
+    "CareerEvent.unofficial.33.focusDescription": "The character gains a focus, reflecting skills or knowledge they learned during or after the ordeal. Examples include: Botany, Toxicology, or Physics.",
+
+    "CareerEvent.unofficial.34.name": "Family Crisis",
+    "CareerEvent.unofficial.34.description": "A family crisis required the character to intervene.\n\n- Which family member was in crisis? What was the nature of the distress?\n- How did the character get along with members of his family during the crisis? Are there repercussions from the crisis that still linger?",
+    "CareerEvent.unofficial.34.focusDescription": "The character gains a focus, reflecting how they dealt with the crisis. Examples include: Caregiving, Dispute Resolution, or Genetics.",
+
+    "CareerEvent.unofficial.35.name": "Satisfactory Performance",
+    "CareerEvent.unofficial.35.description": "The character worked hard to get a satisfactory performance review.\n\n- Did the character just get by or did they shine? What area did they excel in?\n- Who evaluated the character? What praise or criticisms did the character receive?",
+    "CareerEvent.unofficial.35.focusDescription": "The character gains a focus, reflecting the skills they used to obtain a satisfactory performance review. Examples include: Ethics, Bureaucracy, or Team Dynamics.",
+
+    "CareerEvent.unofficial.36.name": "Confinement",
+    "CareerEvent.unofficial.36.description": "The character was confined in a prison, asylum, or trap.\n\n- Who captured the character, how, where, and why? Was it just incarceration or illegal confinement?\n- How did the character fare under confinement? Did they escape or were they released?",
+    "CareerEvent.unofficial.36.focusDescription": "The character gains a focus, reflecting skills they developed while incarcerated or in the process of escape. Examples include: Escape Techniques, Resilience, or Deception.",
+
+    "CareerEvent.unofficial.37.name": "Terraforming Mission",
+    "CareerEvent.unofficial.37.description": "The character was part of a terraforming mission, transforming an uninhabitable planet to one that can sustain life.\n\n- Which planet was being terraformed? Where was it?\n- Who was on the team? What did the character contribute?",
+    "CareerEvent.unofficial.37.focusDescription": "The character gains a focus, reflecting their terraforming specialty. Examples include: Ecology, Oceanography, or Exo-Tectonics.",
+
+    "CareerEvent.unofficial.38.name": "Leave of Absence",
+    "CareerEvent.unofficial.38.description": "The character had to ask time off from their regular duty to deal with a personal issue or pursue a special project.\n\n- What prompted the character to go on leave? How long did the character ask for?\n- What did they do while on leave? Why did the character return to their regular duty?",
+    "CareerEvent.unofficial.38.focusDescription": "The character gains a focus, which should reflect what they did on their leave. Examples include: Religion, Politics, or Industry.",
+
+    "CareerEvent.unofficial.39.name": "Media Exposure",
+    "CareerEvent.unofficial.39.description": "The character was featured in the media, either voluntarily or involuntarily.\n\n- Why did the media focus on the character? Did the character gain fame or infamy from the media exposure?\n- How has the media exposure affected how colleagues view the character?",
+    "CareerEvent.unofficial.39.focusDescription": "The character gains a focus, which should reflect skills and systems they used during their time in the spotlight. Examples include: Writing, Public Relations, or Communication Systems.",
+
+    "CareerEvent.unofficial.40.name": "Clandestine Operation",
+    "CareerEvent.unofficial.40.description": "The character was recruited for a top secret mission.\n\n- What was the secret mission? Who helped with the mission?\n- What went right or wrong on the mission? What happened after the mission?",
+    "CareerEvent.unofficial.40.focusDescription": "The character gains a focus, reflecting a skill they developed on the covert mission. Examples include: Cryptography, Explosives, or Espionage.",
+
+    "CareerEvent.unofficial.41.name": "Fleet Yard Posting",
+    "CareerEvent.unofficial.41.description": "The character was assigned to a shipyard, such as the Utopia Planitia Fleet Yards, the 40 Eridani A Starfleet Construction Yards, or the San Francisco Fleet Yards.\n\n- Was the character involved with shipbuilding, or did they have other duties?\n- Which ships did they help build or repair?",
+    "CareerEvent.unofficial.41.focusDescription": "The character gains a focus, reflecting a skill they honed while serving at the shipyard. Examples include: Starship Design, Starship Propulsion, or Starship Recognition.",
+
+    "CareerEvent.unofficial.42.name": "Missing Memories",
+    "CareerEvent.unofficial.42.description": "The character isn't sure why there are gaps in their memory.\n\n- How much time is the character missing? What happened before and after the gaps in their memory?\n- Did the character ever find out what caused the memory loss? Were they ever able to recover the memories?",
+    "CareerEvent.unofficial.42.focusDescription": "The character gains a focus, reflecting their attempt to recover their missing memories. Examples include: Research, Psychotherapy, or Neuroscience.",
+
+    "CareerEvent.unofficial.43.name": "Teaching Opportunity",
+    "CareerEvent.unofficial.43.description": "The character received an opportunity to teach or coach publicly or privately, at a school, a conference, or elsewhere.\n\n- Where did the character teach, and for how long? What subject did they teach?\n- Who were the students? Did the students appreciate the character's efforts?",
+    "CareerEvent.unofficial.43.focusDescription": "The character gains a focus, reflecting their area of expertise or a skill useful in teaching. Examples include: Teaching, Rhetoric, or Literature.",
+
+    "CareerEvent.unofficial.44.name": "Legal Entanglement",
+    "CareerEvent.unofficial.44.description": "The character became embroiled in a legal battle.\n\n- Is this a criminal or civil matter? Who are the key players in the legal dispute?\n- What was the final finding? Did the character agree with the judgment?",
+    "CareerEvent.unofficial.44.focusDescription": "The character gains a focus, reflecting a skill or area of knowledge they acquired during the legal proceedings. Examples include: Law, Criminology, or Interrogation.",
+
+    "CareerEvent.unofficial.45.name": "Victim of Mind Control",
+    "CareerEvent.unofficial.45.description": "The character's mind was altered against their will, either by a telepathic attack, possession by a creature or non-corporeal intelligence, or brainwashing.\n\n- What took over the character's mind, and how? What was the character forced to do while mind-controlled?\n- How did the character break free of the mind control? How did the character react to the things they did while mind- controlled?",
+    "CareerEvent.unofficial.45.focusDescription": "The character gains a focus, reflecting their attempts to understand the phenomenon of mind control, the enemy responsible for the mind control, or how to prevent their minds from being taken over again. Examples include: Psychiatry, Willpower, or Non-Corporeal Lifeforms.",
+
+    "CareerEvent.unofficial.46.name": "Not Fitting In",
+    "CareerEvent.unofficial.46.description": "The character was assigned to a team or environment where they didn't fit in, resulting in friction in the group or being left out.\n\n- Who didn't the character fit in with? Why didn't they fit in?\n- What did the character do about not fitting in?",
+    "CareerEvent.unofficial.46.focusDescription": "The character gains a focus, reflecting a coping mechanism or annoying talent responsible for them not fitting in. Examples include: Low- Profile, Confrontation, or Distraction.",
+
+    "CareerEvent.unofficial.47.name": "Meaningful Memento",
+    "CareerEvent.unofficial.47.description": "The character acquired a unique item that defined a special moment in their life.\n\n- What is the item? Was it a gift, a creation, or taken from somewhere?\n- What does the item mean to the character? Is it of any value to anyone else?",
+    "CareerEvent.unofficial.47.focusDescription": "The character gains a focus, reflecting the method they obtained the memento, or an area of expertise related to the nature of the memento. Examples include: Acquisition, Mythology, or Xeno- Archaeology.",
+
+    "CareerEvent.unofficial.48.name": "Deep Space Assignment",
+    "CareerEvent.unofficial.48.description": "The character was on a deep space mission.\n\n- What part of the galaxy did the character go? What ship were they on?\n- Did the character's ship discover anything of note during the deep space assignment?",
+    "CareerEvent.unofficial.48.focusDescription": "The character gains a focus, reflecting a skill or area of knowledge they learned while in deep space. Examples include: Astrophysics, Astronavigation, or Spatial Phenomena.",
+
+    "CareerEvent.unofficial.49.name": "Brush with Temporal Anomaly",
+    "CareerEvent.unofficial.49.description": "The character had been caught in a temporal anomaly, or encountered someone or something that traveled through time.\n\n- What was the temporal anomaly? Did it involve the future, the past, loops or paradoxes?\n- Did the character change the timeline or break the Temporal Prime Directive? Did the Department of Temporal Investigations get involved?",
+    "CareerEvent.unofficial.49.focusDescription": "The character gains a focus, reflecting their attempt to understand what the temporal anomaly was. Examples include: Temporal Mechanics, Parapsychology, or Particle Physics.",
+
+    "CareerEvent.unofficial.50.name": "Medical Facility Posting",
+    "CareerEvent.unofficial.50.description": "The character's assignment was to a medical facility or ship.\n\n- Where was the medical facility? Did it specialize in a particular kind of medicine?\n- What department was the character assigned to at the medical facility? Who were the patients?",
+    "CareerEvent.unofficial.50.focusDescription": "The character gains a focus, reflecting something they picked up while surrounded by medical staff. Examples include: Comparative Humanoid Anatomy, Surgery, or Virology.",
+
+    "CareerEvent.common.99.name": "Recruited to Starfleet Intelligence",
 
     "CareerType.core.young.name": "Young Officer",
     "CareerType.core.young.description": "The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.",
@@ -547,6 +711,15 @@
 
     "CareerType.solo.veteran.name": "Veteran",
     "CareerType.solo.veteran.description": "Your character has decades of experience and has served on many ships and starbases. Their judgement and opinions are highly regarded by subordinates, peers, and even superiors.",
+
+    "CharacterType.name.starfleet": "Starfleet",
+    "CharacterType.name.klingonWarrior": "Klingon Defense Force",
+    "CharacterType.name.civilian": "Civilian",
+    "CharacterType.name.alliedMilitary": "Allied Military",
+    "CharacterType.name.ambassadorDiplomat": "Ambassador / Diplomat",
+    "CharacterType.name.cadet": "Cadet",
+    "CharacterType.name.child": "Child",
+    "CharacterType.name.other": "Other",
 
     "Environment.common.homeworld.name": "Homeworld",
     "Environment.common.homeworld.description": "The character comes from the world that birthed their civilization, and has been surrounded by cultural and spiritual legacies their entire life. Species homeworlds are often utopian and idyllic, serving as the platonic ideal of that species’ culture. They also exemplify aspects of a culture’s most revered traditions, and serve as the heart of that civilization’s legal and political landscape.",

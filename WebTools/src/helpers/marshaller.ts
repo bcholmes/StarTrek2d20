@@ -5,7 +5,7 @@ import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
 import AgeHelper from './age';
-import { Attribute } from './attributes';
+import { Attribute, AttributesHelper } from './attributes';
 import { Career } from './careerEnum';
 import { CareersHelper } from './careers';
 import { allDepartments, Department } from './departments';
@@ -13,7 +13,7 @@ import { Environment, EnvironmentsHelper } from './environments';
 import { MissionPod, MissionPodHelper } from './missionPods';
 import { MissionProfile, MissionProfileHelper } from './missionProfiles';
 import { RanksHelper } from './ranks';
-import { Skill } from './skills';
+import { Skill, SkillsHelper } from './skills';
 import { Spaceframe } from './spaceframeEnum';
 import { SpaceframeModel } from './spaceframeModel';
 import { SpaceframeHelper } from './spaceframes';
@@ -113,12 +113,30 @@ class Marshaller {
                 : undefined,
             "name": character.name,
             "career": character.career != null ? Career[character.career] : null,
-            "careerEvents": character.careerEvents.map(e => e.id),
             "attributes": this.toAttributeObject(character.attributes),
             "disciplines": this.toSkillObject(character.skills),
             "focuses": [...character.focuses],
             "values": character.values
         };
+
+        if (character.careerEvents) {
+            sheet["careerEvents"] = character.careerEvents.map(c => {
+                let e = { "id": c.id };
+                if (c.focus) {
+                    e["focus"] = c.focus;
+                }
+                if (c.attribute != null) {
+                    e["attribute"] = Attribute[c.attribute];
+                }
+                if (c.discipline != null) {
+                    e["discipline"] = Skill[c.discipline];
+                }
+                if (c.trait != null) {
+                    e["trait"] = Skill[c.trait];
+                }
+                return e;
+            });
+        }
 
         if (character.rank) {
             sheet["rank"] = {
@@ -550,7 +568,27 @@ class Marshaller {
         result.assignedShip = json.assignedShip;
         result.pronouns = json.pronouns;
         if (json.careerEvents) {
-            result.careerEvents = json.careerEvents.map(e => new CareerEventStep(e));
+            result.careerEvents = json.careerEvents.map(e => {
+                if (typeof e === "number") {
+                    return new CareerEventStep(e);
+                } else {
+                    let step = new CareerEventStep(e["id"]);
+                    if (e["attribute"]) {
+                        step.attribute = AttributesHelper.getAttributeByName(e["attribute"]);
+                    }
+                    if (e["discipline"]) {
+                        step.discipline = SkillsHelper.toSkill(e["discipline"]);
+                    }
+                    if (e["focus"]) {
+                        step.focus = e["focus"];
+                    }
+                    if (e["trait"]) {
+                        step.trait = e["trait"];
+                    }
+
+                    return step;
+                }
+            });
         }
         if (json.lineage) {
             result.lineage = json.lineage;

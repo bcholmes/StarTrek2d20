@@ -61,6 +61,12 @@ ViewPage.viewMainCharacter,View Main Character,Hauptfigur anzeigen,Ver personaje
 ViewPage.viewStarship,View Starship,Raumschiff ansehen,Ver nave espacial,Voir le vaisseau spatial
 ViewPage.errorMessage,"Things have gone terribly, terribly wrong. We might be in the mirror universe.",Etwas ist ganz schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.,"Las cosas han ido terriblemente, terriblemente mal. Podríamos estar en el universo espejo.","Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir."
 ViewPage.unnamedStarship,Unnamed Starship,Unbenanntes Raumschiff,Nave espacial sin nombre,Vaisseau sans nom
+CareerEvents.standard,Standard,,,
+CareerEvents.standardAndUnofficial,Standard and Unofficial,,,
+CareerEvents.unofficialNote,This list includes unofficial items from [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Check that your GM is comfortable allowing these items.,,,
+CareerEventDetails.errorAttribute,Please select an attribute.,,,
+CareerEventDetails.errorDiscipline,Please select a discipline.,,,
+CareerEventDetails.errorFocus,Please select a focus.,,,
 GMTracker.title,Tracker,NSC-Verwaltung,Rastreador,Suivi
 GMTracker.instruction,Use this tool to manage various NPCs in your game.,"Benutzen Sie dieses Werkzeug, um die verschiedenen NSCs in Ihrem Spiel zu verwalten.",Usa esta herramienta para administrar varios NPC en tu juego.,Utilisez cet outil pour gérer divers PNJ dans votre jeu.
 GMTracker.addCharacterModalTitle,Add Character,Charakter hinzufügen,Agregar carácter,Ajouter un personnage
@@ -129,14 +135,14 @@ Choose the approach that makes the most sense for your character and storytellin
 SoloEarlyOutlookPage.upbringings,Upbringings,,,
 SoloEarlyOutlookPage.castes,Castes,,,
 SoloEarlyOutlookPage.aspirations,Aspirations,,,
-SoloEarlyOutlookDetailsPage.errorDiscipline,Please select a discipline.,,,
-SoloEarlyOutlookDetailsPage.errorFocus,Please select a focus.,,,
+SoloEarlyOutlookDetailsPage.errorDiscipline,Please select a discipline.,Bitte wähle eine Disziplin.,,
+SoloEarlyOutlookDetailsPage.errorFocus,Please select a focus.,Bitte wähle einen Fokus.,,
 SoloEducationDetailsPage.selectThree,(Select three),(Drei auswählen),,(Choisir trois)
-SoloEducationDetailsPage.primaryDiscipline,Primary Discipline,,,
-SoloEducationDetailsPage.secondaryDiscipline,Secondary Disciplines,,,
-SoloEducationDetailsPage.errorDisciplines,Please select one primary and two secondary disciplines.,,,
-SoloEducationDetailsPage.errorAttributes,Please select three attributes.,,,
-SoloEducationDetailsPage.errorValue,Please select a value.,,,
+SoloEducationDetailsPage.primaryDiscipline,Primary Discipline,Primäre Disziplin,,
+SoloEducationDetailsPage.secondaryDiscipline,Secondary Disciplines,Sekundäre Disziplin,,
+SoloEducationDetailsPage.errorDisciplines,Please select one primary and two secondary disciplines.,Bitte wähle eine primäre und zwei sekundäre Disziplinen.,,
+SoloEducationDetailsPage.errorAttributes,Please select three attributes.,Bitte wähle drei Attribute.,,
+SoloEducationDetailsPage.errorValue,Please select a value.,Bitte wähle eine Überzeugung.,,
 SoloEducationPage.instruction.alliedMilitary,"Outside of Starfleet, the Milky Way Galaxy hosts many other security and military organizations. Instead of a Starfleet or Klingon officer, you might choose to build a Captain’s Log story around a Bajoran freedom fighter, a member of the Andorian Imperial Guard, or a radically candid warrior of the Qowat Milat.
 
 As an alternative to attending Starfleet Academy, to select the type of military training your character has received, choose from the options in the following table, or randomly select one.",,,
@@ -155,30 +161,30 @@ SoloEducationPage.instruction.starfleet,"The years spent at Starfleet Academy ar
 A graduate of the Academy receives a commission as a Starfleet officer, with the rank of ensign, after which they may wait several weeks, or even months, for their first assignment. Some cadets – particularly those pursuing a doctorate – choose a path that requires an additional year or two of training and study, and instead graduate at the rank of lieutenant (junior grade).
 
 You may choose your character’s Academy track, or randomly select it.",,,
-SoloEducationPage.type.starfleet,Starfleet Academy,,,
-SoloEducationPage.type.civilian,Civilian Career Training,,,
-SoloEducationPage.type.alliedMilitary,Allied Military Training,,,
-SoloEducationPage.type.ambassadorDiplomat,Diplomatic Training,,,
+SoloEducationPage.type.starfleet,Starfleet Academy,Sternenflottenakademie,,
+SoloEducationPage.type.civilian,Civilian Career Training,Zivile Berufsausbildung,,
+SoloEducationPage.type.alliedMilitary,Allied Military Training,Militärische Ausbildung,,
+SoloEducationPage.type.ambassadorDiplomat,Diplomatic Training,Diplomatische Ausbildung,,
 SoloEducationTypePage.instruction,"Some characters will have received their education at Starfleet Academy. Others may have received theirs on the streets of a busy commercial colony, traveling among the stars, or within the societal structure of another civilization.",,,
 SoloEnvironmentDetailsPage.speciesText,Which species' did the character grow up amongst?,Unter welchen Spezies ist der Charakter aufgewachsen?,,
-SoloEnvironmentDetailsPage.errorAttribute,Please select an attribute.,,,
-SoloEnvironmentDetailsPage.errorDiscipline,Please select a discipline.,,,
-SoloEnvironmentDetailsPage.errorValue,Please select a value.,,,
+SoloEnvironmentDetailsPage.errorAttribute,Please select an attribute.,Bitte wähle ein Attribut.,,
+SoloEnvironmentDetailsPage.errorDiscipline,Please select a discipline.,Bitte wähle eine Disziplin.,,
+SoloEnvironmentDetailsPage.errorValue,Please select a value.,Bitte wähle eine Überzeugung.,,
 SoloEnvironmentPage.instruction,"In choosing your character's environment, you'll select either a setting or a condition. Each offers different storytelling prompts, but both provide the same type of benefits to your character.
 
 You may also randomly determine one of those options.",,,
 SoloEnvironmentPage.settings,Settings,Einstellungen,,
 SoloEnvironmentPage.conditions,Conditions,Bedingungen,,
-SoloEnvironmentPage.anotherSpeciesWorld.attributeText,Based on species.,,,
-SoloEraSelectionPage.instruction,Select an era for your character or have one chosen randomly.,,,
-SoloFinishingTouchesPage.attributeNote_one,The point total includes {{count}} excess point that could not be automatically added to your attributes without exceeding maximum values.,,,
-SoloFinishingTouchesPage.attributeNote_other,The point total includes {{count}} excess points that could not be automatically added to your attributes without exceeding maximum values.,,,
-SoloFinishingTouchesPage.select,(Select {{count}}),,,
-SoloFinishingTouchesPage.errorAttributes,Please choose {{count}} attributes,,,
-SoloFinishingTouchesPage.errorDisciplines,Please choose {{count}} disciplines,,,
-SoloFinishingTouchesPage.errorValue,Please choose a value,,,
+SoloEnvironmentPage.anotherSpeciesWorld.attributeText,Based on species.,Abhängig von der Spezies.,,
+SoloEraSelectionPage.instruction,Select an era for your character or have one chosen randomly.,Bitte wähle eine Ära für deinen Charakter oder lass eine zufällig auswählen.,,
+SoloFinishingTouchesPage.attributeNote_one,The point total includes {{count}} excess point that could not be automatically added to your attributes without exceeding maximum values.,"Die Gesamtpunktzahl enthält {{count}} überschüssigen Punkt, der nicht automatisch zu deinen Attributen hinzugefügt werden konnte ohne den Maximalwert zu überschreiben.",,
+SoloFinishingTouchesPage.attributeNote_other,The point total includes {{count}} excess points that could not be automatically added to your attributes without exceeding maximum values.,"Die Gesamtpunktzahl enthält {{count}} überschüssige Punkte, die nicht automatisch zu deinen Attributen hinzugefügt werden konnten ohne den Maximalwert zu überschreiben.",,
+SoloFinishingTouchesPage.select,(Select {{count}}),(Wähle {{count}}),,
+SoloFinishingTouchesPage.errorAttributes,Please choose {{count}} attributes,Bitte wähle {{count}} Attribute,,
+SoloFinishingTouchesPage.errorDisciplines,Please choose {{count}} disciplines,Bitte wähle {{count}} Disziplinen,,
+SoloFinishingTouchesPage.errorValue,Please choose a value,Bitte wähle eine Überzeugung,,
 SoloSpeciesPage.errorAttributes,Please select 3 attributes.,Bitte wähle 3 Attribute.,,
-SoloSpeciesPage.instruction,Select a species for your character or have one chosen randomly.,,,
+SoloSpeciesPage.instruction,Select a species for your character or have one chosen randomly.,Wähle eine Spezies für deinen Charakter oder lass eine zufällig auswählen.,,
 SpaceframeOptionPage.text,"Do you want a standard spaceframe, or a custom spaceframe?",Möchten Sie eine Standard-Schiffsklasse oder eine eigene Schiffsklasse?,,Voulez vous un modèle standart ou un modèle personalisé?
 SpaceframeOptionPage.button.standardSpaceframe,Standard Spaceframe,Standard-Schiffsklasse,,Modèle Standart
 SpaceframeOptionPage.button.customSpaceframe,Custom Spaceframe,Eigene Schiffsklasse,,Modèle personnalisé
@@ -354,6 +360,7 @@ Construct.system.sensors,Sensors,Sensoren,Sensores,Capteurs
 Construct.system.structure,Structure,Hülle,Estructura,Structure
 Construct.system.weapons,Weapons,Waffen,Armas,Armes
 Page.title.career,Career,Karriere,,Carrière
+Page.title.careerEvent,Career Event,Karriereereignis,,
 Page.title.characterType,Character Type,Art des Charakters,Tipo de carácter,Type de personnage
 Page.title.creditsPage,Credits,Danksagungen,Créditos,Crédits
 Page.title.customSpaceframe,Custom Spaceframe Creation,Eigene Klasse erstellen,,Création de Modèle de Vaiseau
@@ -371,20 +378,20 @@ Page.title.missionProfileTalentSelection,Mission Profile Talent,Auswahl Missions
 Page.title.sectorDetails,Sector Details,Sektordetails,Detalles del sector,Détails du secteur
 Page.title.simpleStarship,Simplified Starship Creation,Vereinfachte Raumschifferschaffung,,Creation de Vaisseau Simplifiée
 Page.title.smallCraftStats,Small Craft Stats,Shuttle-Werte,,Navette
-Page.title.soloCareerEvent,Career Event,,,
-Page.title.soloCareerEvent1,Career Event 1,,,
-Page.title.soloCareerEvent2,Career Event 2,,,
-Page.title.soloCareerEventDetails,Career Event Details,,,
-Page.title.soloCareerEventDetails1,Career Event Details 1,,,
-Page.title.soloCareerEventDetails2,Career Event Details 2,,,
-Page.title.soloCareerLength,Career Length,,,
+Page.title.soloCareerEvent,Career Event,Karriereereignis,,
+Page.title.soloCareerEvent1,Career Event 1,Karriereereignis 1,,
+Page.title.soloCareerEvent2,Career Event 2,Karriereereignis 2,,
+Please,Career Event Details,Karriereereignisdetails,,
+Page.title.soloCareerEventDetails1,Career Event Details 1,Karriereereignisdetails 1,,
+Page.title.soloCareerEventDetails2,Career Event Details 2,Karriereereignisdetails 2,,
+Page.title.soloCareerLength,Career Length,Karrierelänge,,
 Page.title.soloConstructType,Tool Selection,Werkzeug-Auswahl,,Selection d'Outil
-Page.title.soloEarlyOutlook,Early Outlook,,,
-Page.title.soloEarlyOutlookDetails,Early Outlook Details,,,
-Page.title.soloEducationType,Education Type,,,
-Page.title.soloEducation,Education,,,
+Page.title.soloEarlyOutlook,Early Outlook,Erziehung,,
+Page.title.soloEarlyOutlookDetails,Early Outlook Details,Erziehungsdetails,,
+Page.title.soloEducationType,Education Type,Ausbildungsart,,
+Page.title.soloEducation,Education,Ausbildung,,
 Page.title.soloFinishingTouches,Finishing Touches,Feinschliff,,Touches Finales
-Page.title.soloFinal,Final Details,,,
+Page.title.soloFinal,Final Details,Letzte Details,,
 Page.title.sourceSelection,Sources,Quellen,,
 Page.title.spaceframeOption,Spaceframe Option,Schiffsklassen-Optionen,,Option de Modèle
 Page.title.spaceframeSelection,Spaceframe,Schiffsklasse,,Modèle de Vaisseau
@@ -417,7 +424,7 @@ Source.type.crewBook,Crew Books,Spielercharakter-Spielhilfen,,Lives d'Equipages
 Source.type.campaignBook,Campaign Books,Kampagnenbände,,Livres de Campagne
 Source.type.expansion,Major Expansion Books,Wichtige Erweiterungsbände,,Livres d'Extensions
 Source.type.misc,Misc/Other Books,Sonstige Bände,,Divers/Autres
-Source.type.unofficial,Unofficial Sources,,,
+Source.type.unofficial,Unofficial Sources,Inoffizielle Quellen,,
 Source.book.core,Core,Grundregelwerk,,Règles de Base
 Source.book.alphaQuadrant,Alpha Quadrant,Alpha-Quadrant,,Quadrant Alpha
 Source.book.betaQuadrant,Beta Quadrant,Beta-Quadrant,,Quadrant Bêta
@@ -442,16 +449,209 @@ Source.book.picardS1,Picard S1,(NOT YET TRANSLATED),,Picard S1
 Source.book.utopiaPlanitia,Utopia Planitia,(NOT YET TRANSLATED),,Utopia Planitia
 Source.book.lowerDecksCampaign,Lower Decks,(NOT YET TRANSLATED),,
 Source.book.captainsLog,Captain's Log,(NOT YET TRANSLATED),,
-Source.book.animatedSeries,Animated Series,,,
-Source.book.continuingMissions,Continuing Missions,,,
-CharacterType.name.starfleet,Starfleet,Sternenflotte,,Starfleet
-CharacterType.name.klingonWarrior,Klingon Defense Force,Klingonische Verteidigungsstreitmacht,,Forces de Défense Klingones
-CharacterType.name.civilian,Civilian,Zivilisten,,Civil
-CharacterType.name.alliedMilitary,Allied Military,Alliiertes Militär,,Armée Alliée
-CharacterType.name.ambassadorDiplomat,Ambassador / Diplomat,Botschafter / Diplomaten,,Ambassadeur/Diplomate
-CharacterType.name.cadet,Cadet,Kadetten,,Cadet
-CharacterType.name.child,Child,Kinder,,Enfant
-CharacterType.name.other,Other,Andere,,Autre
+Source.book.animatedSeries,Animated Series,(NOT YET TRANSLATED),,
+Source.book.continuingMissions,Continuing Missions,(NOT YET TRANSLATED),,
+CareerEvent.common.1.name,Ship Destroyed,,,
+CareerEvent.common.2.name,Death of a Friend,,,
+CareerEvent.common.3.name,Lauded by Another Culture,,,
+CareerEvent.common.4.name,Negotiate a Treaty,,,
+CareerEvent.common.5.name,Required to Take Command,,,
+CareerEvent.common.6.name,Encounter with a Truly Alien Being,,,
+CareerEvent.common.7.name,Serious Injury,,,
+CareerEvent.common.8.name,Conflict with a Hostile Culture,,,
+CareerEvent.common.9.name,Mentored,,,
+CareerEvent.common.10.name,Transporter Accident,,,
+CareerEvent.common.11.name,Dealing with a Plague,,,
+CareerEvent.common.12.name,Betrayed Ideals for a Superior,,,
+CareerEvent.common.13.name,Called Out a Superior,,,
+CareerEvent.common.14.name,New Battle Strategy,,,
+CareerEvent.common.15.name,Learns Unique Language,,,
+CareerEvent.common.16.name,Discovers an Artifact,,,
+CareerEvent.common.17.name,Special Commendation,,,
+CareerEvent.common.18.name,Solved an Engineering Crisis,,,
+CareerEvent.common.19.name,Breakthrough or Invention,,,
+CareerEvent.common.20.name,First Contact,,,
+CareerEvent.unofficial.21.name,Advanced Tactical Training,,,
+CareerEvent.unofficial.21.description,"The character took a specialized course in advanced tactical and intelligence techniques.
+
+- Where was the course taught? Who recommended the character for the course?
+- Did the character pass the course? How did the character rank in the various subjects?",,,
+CareerEvent.unofficial.21.focusDescription,"The character gains a focus, which should reflect the special training they received. Examples include: Guerilla Tactics, Strategic Defense, or Combat Maneuvers.",,,
+CareerEvent.unofficial.22.name,Protoype Testing,,,
+CareerEvent.unofficial.22.description,"The character was involved in the testing of a prototype device, a new treatment, or experimental starship
+
+- What was the device, treatment, or ship, and what made it unique or experimental?
+- Was the project classified? Was the prototype scrapped or successful?",,,
+CareerEvent.unofficial.22.focusDescription,"The character gains a focus, which should reflect something connected to the science and technology behind the prototype. Examples include: Sensors, Cybernetics, or Nanotechnology.",,,
+CareerEvent.unofficial.23.name,Colonization Effort,,,
+CareerEvent.unofficial.23.description,"The character was assigned to help colonist settle on a new planet, and likely has spent significant time on-site.
+
+- What planet was colonized, and by whom? Were there any territorial disputes?
+- What major issues did the colonists have to deal with? How did the character assist?",,,
+CareerEvent.unofficial.23.focusDescription,"The character gains a focus, reflecting a skill they contributed to or learned during the colonization effort. Examples include: Mining, Impulse Engines, or Ground Vehicles.",,,
+CareerEvent.unofficial.24.name,Exchange Program,,,
+CareerEvent.unofficial.24.description,"The character participated in an exchange program, which could range from an officer exchange program, an interspecies medical exchange, or a galactic cultural exchange program.
+
+- What was the nature of the exchange? Where did the character go?
+- Was the exchange an eye-opening experience, or a tense one? What lessons did the character come away with?",,,
+CareerEvent.unofficial.24.focusDescription,"The character gains a focus, reflecting insights or skills he learned during the exchange program. Examples include: Observation, Interspecies Protocol, or Sociology.",,,
+CareerEvent.unofficial.25.name,Lucky Streak,,,
+CareerEvent.unofficial.25.description,"The character had an extraordinary run of luck, which others have noticed.
+
+- Was the character just lucky, or were there external reasons for the seeming good luck?
+- What kind of lucky breaks did the character have? Did it affect how others saw them?",,,
+CareerEvent.unofficial.25.focusDescription,"The character gains a focus, reflecting how they pressed their luck, or their understanding of odds. Examples include: Gambling, Evasive Action, or Mathematics.",,,
+CareerEvent.unofficial.26.name,Learned from Significant Blunder,,,
+CareerEvent.unofficial.26.description,"The character had committed a significant blunder during their career, one which people have not forgotten. To avoid committing the same error again, the character has taken proper precautions.
+
+- What error did the character commit, and how bad was it? What were the consequences of that error?
+- Did the blunder negatively affect the character's career? Who still holds a grudge against them?",,,
+CareerEvent.unofficial.26.focusDescription,"The character gains a focus, which should reflect how they try to avoid future blunders, or extra practice on a particular system. Examples include: Analysis, Helm Operations, or Communication Systems.",,,
+CareerEvent.unofficial.27.name,Cultural Observation Post,,,
+CareerEvent.unofficial.27.description,"The character was assigned to a cultural observation mission, operating a ‘duck blind’.
+
+- What pre-warp civilization was the character observing?
+- Did anything go wrong on the mission?",,,
+CareerEvent.unofficial.27.focusDescription,"The character gains a focus, reflecting something they studied of the culture under observation, or skills they honed while operating the duck blind. Examples include: Anthropology, Ethnomusicology, or Covert Operations.",,,
+CareerEvent.unofficial.28.name,Struggle with Addiction,,,
+CareerEvent.unofficial.28.description,"The character struggled with a type of addiction, which could range from holo-addiction, to drugs, to alcohol, among others.
+
+- What was the nature of the addiction? How did it affect the character's performance?
+- What started the character's recovery? Did he rely on someone?",,,
+CareerEvent.unofficial.28.focusDescription,"The character gains a focus, reflecting coping mechanisms or expertise on the object of their addiction. Examples include: Holodecks, Mental Discipline, or Alcoholic Beverages.",,,
+CareerEvent.unofficial.29.name,Rivalry,,,
+CareerEvent.unofficial.29.description,"The character had a significant rivalry with someone.
+
+- Who is the character's rival? What do they compete over?
+- Was it friendly competition or cutthroat? Was the rivalry public or private?",,,
+CareerEvent.unofficial.29.focusDescription,"The character gains a focus, reflecting the nature of the rivalry. Examples include: Debate, Fencing, or Boasting.",,,
+CareerEvent.unofficial.30.name,Off-Duty Endeavour,,,
+CareerEvent.unofficial.30.description,"The character pursued an off-duty interest with great energy and talent, possibly taking part in competitions or organizing group activities locally.
+
+- What is the endeavour that the character pursued off-duty?
+- How good is the character at the activity? Has the character won accolades for the endeavour?",,,
+CareerEvent.unofficial.30.focusDescription,"The character gains a focus, which should reflect the off-duty endeavour that they participate in. Examples include: Music, Dance, Boxing, Cooking, or Singing.",,,
+CareerEvent.unofficial.31.name,Starbase Posting,,,
+CareerEvent.unofficial.31.description,"The character was assigned to a starbase or space station.
+
+- Which starbase did the character work at? Were there any social or political issues that affected the starbase during the posting?
+- What did the character do aboard the starbase? Who else was assigned there?",,,
+CareerEvent.unofficial.31.focusDescription,"The character gains a focus, reflecting skills they learned as starbase crew. Examples include: Logistics, Repairs and Maintenance, or Security Protocols.",,,
+CareerEvent.unofficial.32.name,Planetary Posting,,,
+CareerEvent.unofficial.32.description,"The character was assigned to a particular planet due to their expertise. Work could range from planetary security, to humanitarian aid, to reconstruction efforts.
+
+- What planet did the character work on? What was the nature of the work?
+- What was unique about the planet? What kind of interactions did the character have with the local population?",,,
+CareerEvent.unofficial.32.focusDescription,"The character gains a focus, reflecting their knowledge of the planet they were assigned to, or skills they picked up while working on-planet. Examples include: Meteorology, Atmospheric Flight, or Geology.",,,
+CareerEvent.unofficial.33.name,Left Behind,,,
+CareerEvent.unofficial.33.description,"The character (or their team) was left behind to fend for themselves.
+
+- Why was the character left behind? Did they come back for the character?
+- What were the threats the character had to face? How did the character survive on their own?",,,
+CareerEvent.unofficial.33.focusDescription,"The character gains a focus, reflecting skills or knowledge they learned during or after the ordeal. Examples include: Botany, Toxicology, or Physics.",,,
+CareerEvent.unofficial.34.name,Family Crisis,,,
+CareerEvent.unofficial.34.description,"A family crisis required the character to intervene.
+
+- Which family member was in crisis? What was the nature of the distress?
+- How did the character get along with members of his family during the crisis? Are there repercussions from the crisis that still linger?",,,
+CareerEvent.unofficial.34.focusDescription,"The character gains a focus, reflecting how they dealt with the crisis. Examples include: Caregiving, Dispute Resolution, or Genetics.",,,
+CareerEvent.unofficial.35.name,Satisfactory Performance,,,
+CareerEvent.unofficial.35.description,"The character worked hard to get a satisfactory performance review.
+
+- Did the character just get by or did they shine? What area did they excel in?
+- Who evaluated the character? What praise or criticisms did the character receive?",,,
+CareerEvent.unofficial.35.focusDescription,"The character gains a focus, reflecting the skills they used to obtain a satisfactory performance review. Examples include: Ethics, Bureaucracy, or Team Dynamics.",,,
+CareerEvent.unofficial.36.name,Confinement,,,
+CareerEvent.unofficial.36.description,"The character was confined in a prison, asylum, or trap.
+
+- Who captured the character, how, where, and why? Was it just incarceration or illegal confinement?
+- How did the character fare under confinement? Did they escape or were they released?",,,
+CareerEvent.unofficial.36.focusDescription,"The character gains a focus, reflecting skills they developed while incarcerated or in the process of escape. Examples include: Escape Techniques, Resilience, or Deception.",,,
+CareerEvent.unofficial.37.name,Terraforming Mission,,,
+CareerEvent.unofficial.37.description,"The character was part of a terraforming mission, transforming an uninhabitable planet to one that can sustain life.
+
+- Which planet was being terraformed? Where was it?
+- Who was on the team? What did the character contribute?",,,
+CareerEvent.unofficial.37.focusDescription,"The character gains a focus, reflecting their terraforming specialty. Examples include: Ecology, Oceanography, or Exo-Tectonics.",,,
+CareerEvent.unofficial.38.name,Leave of Absence,,,
+CareerEvent.unofficial.38.description,"The character had to ask time off from their regular duty to deal with a personal issue or pursue a special project.
+
+- What prompted the character to go on leave? How long did the character ask for?
+- What did they do while on leave? Why did the character return to their regular duty?",,,
+CareerEvent.unofficial.38.focusDescription,"The character gains a focus, which should reflect what they did on their leave. Examples include: Religion, Politics, or Industry.",,,
+CareerEvent.unofficial.39.name,Media Exposure,,,
+CareerEvent.unofficial.39.description,"The character was featured in the media, either voluntarily or involuntarily.
+
+- Why did the media focus on the character? Did the character gain fame or infamy from the media exposure?
+- How has the media exposure affected how colleagues view the character?",,,
+CareerEvent.unofficial.39.focusDescription,"The character gains a focus, which should reflect skills and systems they used during their time in the spotlight. Examples include: Writing, Public Relations, or Communication Systems.",,,
+CareerEvent.unofficial.40.name,Clandestine Operation,,,
+CareerEvent.unofficial.40.description,"The character was recruited for a top secret mission.
+
+- What was the secret mission? Who helped with the mission?
+- What went right or wrong on the mission? What happened after the mission?",,,
+CareerEvent.unofficial.40.focusDescription,"The character gains a focus, reflecting a skill they developed on the covert mission. Examples include: Cryptography, Explosives, or Espionage.",,,
+CareerEvent.unofficial.41.name,Fleet Yard Posting,,,
+CareerEvent.unofficial.41.description,"The character was assigned to a shipyard, such as the Utopia Planitia Fleet Yards, the 40 Eridani A Starfleet Construction Yards, or the San Francisco Fleet Yards.
+
+- Was the character involved with shipbuilding, or did they have other duties?
+- Which ships did they help build or repair?",,,
+CareerEvent.unofficial.41.focusDescription,"The character gains a focus, reflecting a skill they honed while serving at the shipyard. Examples include: Starship Design, Starship Propulsion, or Starship Recognition.",,,
+CareerEvent.unofficial.42.name,Missing Memories,,,
+CareerEvent.unofficial.42.description,"The character isn't sure why there are gaps in their memory.
+
+- How much time is the character missing? What happened before and after the gaps in their memory?
+- Did the character ever find out what caused the memory loss? Were they ever able to recover the memories?",,,
+CareerEvent.unofficial.42.focusDescription,"The character gains a focus, reflecting their attempt to recover their missing memories. Examples include: Research, Psychotherapy, or Neuroscience.",,,
+CareerEvent.unofficial.43.name,Teaching Opportunity,,,
+CareerEvent.unofficial.43.description,"The character received an opportunity to teach or coach publicly or privately, at a school, a conference, or elsewhere.
+
+- Where did the character teach, and for how long? What subject did they teach?
+- Who were the students? Did the students appreciate the character's efforts?",,,
+CareerEvent.unofficial.43.focusDescription,"The character gains a focus, reflecting their area of expertise or a skill useful in teaching. Examples include: Teaching, Rhetoric, or Literature.",,,
+CareerEvent.unofficial.44.name,Legal Entanglement,,,
+CareerEvent.unofficial.44.description,"The character became embroiled in a legal battle.
+
+- Is this a criminal or civil matter? Who are the key players in the legal dispute?
+- What was the final finding? Did the character agree with the judgment?",,,
+CareerEvent.unofficial.44.focusDescription,"The character gains a focus, reflecting a skill or area of knowledge they acquired during the legal proceedings. Examples include: Law, Criminology, or Interrogation.",,,
+CareerEvent.unofficial.45.name,Victim of Mind Control,,,
+CareerEvent.unofficial.45.description,"The character's mind was altered against their will, either by a telepathic attack, possession by a creature or non-corporeal intelligence, or brainwashing.
+
+- What took over the character's mind, and how? What was the character forced to do while mind-controlled?
+- How did the character break free of the mind control? How did the character react to the things they did while mind- controlled?",,,
+CareerEvent.unofficial.45.focusDescription,"The character gains a focus, reflecting their attempts to understand the phenomenon of mind control, the enemy responsible for the mind control, or how to prevent their minds from being taken over again. Examples include: Psychiatry, Willpower, or Non-Corporeal Lifeforms.",,,
+CareerEvent.unofficial.46.name,Not Fitting In,,,
+CareerEvent.unofficial.46.description,"The character was assigned to a team or environment where they didn't fit in, resulting in friction in the group or being left out.
+
+- Who didn't the character fit in with? Why didn't they fit in?
+- What did the character do about not fitting in?",,,
+CareerEvent.unofficial.46.focusDescription,"The character gains a focus, reflecting a coping mechanism or annoying talent responsible for them not fitting in. Examples include: Low- Profile, Confrontation, or Distraction.",,,
+CareerEvent.unofficial.47.name,Meaningful Memento,,,
+CareerEvent.unofficial.47.description,"The character acquired a unique item that defined a special moment in their life.
+
+- What is the item? Was it a gift, a creation, or taken from somewhere?
+- What does the item mean to the character? Is it of any value to anyone else?",,,
+CareerEvent.unofficial.47.focusDescription,"The character gains a focus, reflecting the method they obtained the memento, or an area of expertise related to the nature of the memento. Examples include: Acquisition, Mythology, or Xeno- Archaeology.",,,
+CareerEvent.unofficial.48.name,Deep Space Assignment,,,
+CareerEvent.unofficial.48.description,"The character was on a deep space mission.
+
+- What part of the galaxy did the character go? What ship were they on?
+- Did the character's ship discover anything of note during the deep space assignment?",,,
+CareerEvent.unofficial.48.focusDescription,"The character gains a focus, reflecting a skill or area of knowledge they learned while in deep space. Examples include: Astrophysics, Astronavigation, or Spatial Phenomena.",,,
+CareerEvent.unofficial.49.name,Brush with Temporal Anomaly,,,
+CareerEvent.unofficial.49.description,"The character had been caught in a temporal anomaly, or encountered someone or something that traveled through time.
+
+- What was the temporal anomaly? Did it involve the future, the past, loops or paradoxes?
+- Did the character change the timeline or break the Temporal Prime Directive? Did the Department of Temporal Investigations get involved?",,,
+CareerEvent.unofficial.49.focusDescription,"The character gains a focus, reflecting their attempt to understand what the temporal anomaly was. Examples include: Temporal Mechanics, Parapsychology, or Particle Physics.",,,
+CareerEvent.unofficial.50.name,Medical Facility Posting,,,
+CareerEvent.unofficial.50.description,"The character's assignment was to a medical facility or ship.
+
+- Where was the medical facility? Did it specialize in a particular kind of medicine?
+- What department was the character assigned to at the medical facility? Who were the patients?",,,
+CareerEvent.unofficial.50.focusDescription,"The character gains a focus, reflecting something they picked up while surrounded by medical staff. Examples include: Comparative Humanoid Anatomy, Surgery, or Virology.",,,
+CareerEvent.common.99.name,Recruited to Starfleet Intelligence,,,
 CareerType.core.young.name,Young Officer,Grünschnabel,,Jeune Officier
 CareerType.core.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,Der Charakter wird durch das Potential und weniger die Fähigkeiten definiert. Das rohe Talent und die Erwartungen an das Universum müssen noch durch die Realität abgeschwächt werden.,,Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.
 CareerType.core.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naivete in some way.","Der Charakter erhält eine Überzeugung, welche die Unerfahrenheit und Naivität in irgendeiner Art widerspiegelt.",,"Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage."
@@ -462,14 +662,14 @@ CareerType.core.veteran.name,Veteran Officer,Veteran,,Officier Vétéran
 CareerType.core.veteran.description,"The character has decades of experience in the service of Starfleet, and has served on many ships, and starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.","Der Charakter blickt auf eine jahrzehntelange Erfahrung im Dienst der Sternenflotte zurück und hat bereits auf vielen Schiffen und Sternenbasen gedient. Urteilsvermögen und Meinungen werden von Untergebenen, Gleichrangigen und selbst Vorgesetzten hoch geschätzt.",,"Le personnage a des dizaines d'années d'expérience au service de Starfleet, et a servi sur de nombreux vaisseaux et bases spatiales. Le jugement et les opinions du personnage sont prisés par ses subordonés, ses pairs, et même ses supérieurs."
 CareerType.core.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.","Der Charakter erhält eine Überzeugung, welche die Jahre an Erfahrung und die in der langen Karriere geformten Wertvorstellungen widerspiegelt.",,"Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière."
 CareerType.civilian.young.name,Young,Jung,,Jeune
-CareerType.civilian.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,,,Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.
-CareerType.civilian.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.",,,"Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage."
+CareerType.civilian.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,Der Charakter wird durch das Potential und weniger die Fähigkeiten definiert. Das rohe Talent und die Erwartungen an das Universum müssen noch durch die Realität abgeschwächt werden.,,Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.
+CareerType.civilian.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.","Der Charakter erhält eine Überzeugung, welche die Unerfahrenheit und Naivität in irgendeiner Art widerspiegelt.",,"Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage."
 CareerType.civilian.experienced.name,Experienced,Erfahren,,Expérimenté
-CareerType.civilian.experienced.description,"The character has several years of experience in service, and is enjoying a promising career.",,,"The character has several years of experience en service, et jouit d'une carrière prometteuse."
+CareerType.civilian.experienced.description,"The character has several years of experience in service, and is enjoying a promising career.",Der Charakter hat mehrere Jahre Erfahrung im Dienst und freut sich auf eine vielversprechende Karriere.,,"The character has several years of experience en service, et jouit d'une carrière prometteuse."
 CareerType.civilian.experienced.valueInstruction,"The character receives a Value, and this can be chosen freely.",Der Charakter erhält einen Wert und kann diesen frei wählen.,,"Le personnage reçoit une Valueur, qui peut être choisie librement."
 CareerType.civilian.veteran.name,Veteran,Veteran,,Vétéran
-CareerType.civilian.veteran.description,"The character has decades of experience in the service, and has served on many ships, worlds, and/or starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.",,,"Le personnage a des dizaines d'années d'expérience dans le service, et a servi sur de nombreux vaisseaux et bases spatiales. Le jugement et les opinions du personnage sont prisés par ses subordonés, ses pairs, et même ses supérieurs."
-CareerType.civilian.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",,,"Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière."
+CareerType.civilian.veteran.description,"The character has decades of experience in the service, and has served on many ships, worlds, and/or starbases. The character’s judgement and opinions are highly-regarded by subordinates, peers, and even superiors.","Der Charakter blickt auf eine jahrzehntelange Erfahrung im Dienst zurück und hat bereits auf vielen Schiffen, Welten und/oder Sternenbasen gedient. Urteilsvermögen und Meinungen werden von Untergebenen, Gleichrangigen und selbst Vorgesetzten hoch geschätzt.",,"Le personnage a des dizaines d'années d'expérience dans le service, et a servi sur de nombreux vaisseaux et bases spatiales. Le jugement et les opinions du personnage sont prisés par ses subordonés, ses pairs, et même ses supérieurs."
+CareerType.civilian.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.","Der Charakter erhält eine Überzeugung, welche die Jahre an Erfahrung und die in der langen Karriere geformten Wertvorstellungen widerspiegelt.",,"Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière."
 CareerType.klingon.young.name,Young Warrior,Junger Krieger,,Jeune Guerrier
 CareerType.klingon.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,,,Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.
 CareerType.klingon.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naïveté in some way.",,,"Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage."
@@ -479,12 +679,20 @@ CareerType.klingon.experienced.valueInstruction,"The character receives a Value,
 CareerType.klingon.veteran.name,Veteran Warrior,Kriegsveteran,,Guerrier Vétéran
 CareerType.klingon.veteran.description,"The character has decades of experience in the service of the Empire, and has served on many ships and space stations. The character’s judgement and opinions are highly regarded by subordinates, peers, and even superiors.",,,"Le personnage a des dizaines d'années d'expérience au service de l'Empire, et a servi sur de nombreux vaisseaux et bases spatiales. Le jugement et les opinions du personnage sont prisés par ses subordonés, ses pairs, et même ses supérieurs."
 CareerType.klingon.veteran.valueInstruction,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",,,"Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière."
-CareerType.solo.young.name,Novice,,,
+CareerType.solo.young.name,Novice,Grünschnabel,,
 CareerType.solo.young.description,Your character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like has not yet been tempered by reality.,Der Charakter wird durch das Potential und weniger die Fähigkeiten definiert. Das rohe Talent und die Erwartungen an das Universum müssen noch durch die Realität abgeschwächt werden.,,
 CareerType.solo.experienced.name,Experienced,Erfahren,,Expérimenté
-CareerType.solo.experienced.description,Your character has several years of experience and is enjoying a promising career.,,,
+CareerType.solo.experienced.description,Your character has several years of experience and is enjoying a promising career.,Der Charakter hat mehrere Jahre Erfahrung und freut sich auf eine vielversprechende Karriere.,,
 CareerType.solo.veteran.name,Veteran,Veteran,,Vétéran
-CareerType.solo.veteran.description,"Your character has decades of experience and has served on many ships and starbases. Their judgement and opinions are highly regarded by subordinates, peers, and even superiors.",,,
+CareerType.solo.veteran.description,"Your character has decades of experience and has served on many ships and starbases. Their judgement and opinions are highly regarded by subordinates, peers, and even superiors.","Der Charakter blickt auf eine jahrzehntelange Erfahrung zurück und hat bereits auf vielen Schiffen und Sternenbasen gedient. Urteilsvermögen und Meinungen werden von Untergebenen, Gleichrangigen und selbst Vorgesetzten hoch geschätzt.",,
+CharacterType.name.starfleet,Starfleet,Sternenflotte,,Starfleet
+CharacterType.name.klingonWarrior,Klingon Defense Force,Klingonische Verteidigungsstreitmacht,,Forces de Défense Klingones
+CharacterType.name.civilian,Civilian,Zivilisten,,Civil
+CharacterType.name.alliedMilitary,Allied Military,Alliiertes Militär,,Armée Alliée
+CharacterType.name.ambassadorDiplomat,Ambassador / Diplomat,Botschafter / Diplomaten,,Ambassadeur/Diplomate
+CharacterType.name.cadet,Cadet,Kadetten,,Cadet
+CharacterType.name.child,Child,Kinder,,Enfant
+CharacterType.name.other,Other,Andere,,Autre
 Environment.common.homeworld.name,Homeworld,Heimatwelt,,Planète natale
 Environment.common.homeworld.description,"The character comes from the world that birthed their civilization, and has been surrounded by cultural and spiritual legacies their entire life. Species homeworlds are often utopian and idyllic, serving as the platonic ideal of that species’ culture. They also exemplify aspects of a culture’s most revered traditions, and serve as the heart of that civilization’s legal and political landscape.",Der Charakter stammt von der Heimatwelt seiner oder ihrer Zivilisation und ist umgeben von dem kulturellen sowie spirituellen Erbe seines oder ihres Volkes aufgewachsen. Heimatwelten spiegeln oft die Ideale ihres Volkes wider und sind äußerst utopisch und idyllisch. Sie sind Horte der Tradition und sind die Zentren des wirtschaftlichen und politischen Lebens ihrer Zivilisation.,,"Le personnage vient du monde qui a vu naître leur civilisation,et a été entouré toute sa vie par leurs héritages culturels et spirituels. Les mondes natals sont souvent utopiques et idylliques, servant comme idéal platonique de la culture de leur espèce. Ils illustrent également les aspects des traditions les plus vénérées d'une culture et constituent le cœur du paysage juridique et politique de cette civilisation."
 Environment.common.busyColony.name,Busy Colony,Geschäftige Kolonie,,Colonie Animée
@@ -530,7 +738,7 @@ AlliedMilitaryType.name.romulanStarEmpire,Romulan Star Empire,Romulanisches Ster
 AlliedMilitaryType.name.bajoranMilitia,Bajoran Militia,Bajoranisches Militär,,Forces de Sécurité Bajoranes
 AlliedMilitaryType.name.cardassianUnion,Cardassian Union,Cardassianische Union,,Union Cardassienne
 AlliedMilitaryType.name.dominion,Dominion,Dominion,,Dominion
-AlliedMilitaryType.name.ferengiMilitary,Ferengi Military,,,
+AlliedMilitaryType.name.ferengiMilitary,Ferengi Military,Ferengi Militär,,
 AlliedMilitaryType.name.other,Other,Andere,,Autre
 BodyType.averageMale,Average Male,Durchschnittlicher Mann,,
 BodyType.averageFemale,Average Female,Durchschnittliche Frau,,
@@ -542,7 +750,7 @@ Division.monsterMaroon.science,Science,Wissenschaft,,
 Division.monsterMaroon.helmEngineering,Helm/Engineering,Steuer/Technik,,
 Division.monsterMaroon.medical,Medical,Medizin,,
 Division.monsterMaroon.security,Security,Sicherheit,,
-Division.monsterMaroon.specialServices,Special Services,,,
+Division.monsterMaroon.specialServices,Special Services,Ordonnazen,,
 Division.monsterMaroon.trainee,Trainee,Rekrut,,
 Era.name.enterprise,Enterprise (22nd century),Enterprise (22. Jahrhundert),,Enterprise (22ème Siècle)
 Era.name.originalSeries,Original Series (23rd century),Originalserie (23. Jahrhundert),,Serie Originale (23ème Siècle)
@@ -625,16 +833,16 @@ MissionProfile.default.scientificAndSurvey,Scientific and Survey Operations,Wiss
 MissionProfile.default.crisisAndEmergencyResponse,Crisis and Emergency Response,Krisen- und Notfallreaktionsoperationen,,
 MissionProfile.default.multiroleExplorer,Multirole Explorer,Multifunktions-Erkundungsschiff,,
 MissionProfile.default.projectEscalante,Project Escalante,Projekt Escalante,,
-MissionProfile.default.battlecruiser,Battlecruiser,,,
+MissionProfile.default.battlecruiser,Battlecruiser,Schlachtkreuzer,,
 MissionProfile.default.reserveFleet,Reserve Fleet,Reserveflotte,,
 MissionProfile.default.civilianMerchantMarine,Civilian Merchant Marine,,,
 MissionProfile.default.colonySupport,Colony Support,,,
 MissionProfile.default.entertainmentPleasureShip,Entertainment/Pleasure Ship,,,
-MissionProfile.default.espionageIntelligence,Espionage/Intelligence,,,
+MissionProfile.default.espionageIntelligence,Espionage/Intelligence,Spionage/Geheimdienst,,
 MissionProfile.default.flagship,Flagship,Flaggschiff,,
 MissionProfile.default.logisticalQuartermaster,Logistical/Quartermaster,Quartiermeister,,
 MissionProfile.default.patrol,Patrol,Patrouille,,
-MissionProfile.default.warship,Warship,,,
+MissionProfile.default.warship,Warship,Kriegsschiff,,
 MissionProfile.klingon.crisisAndEmergencyResponse,Crisis Response and Interception,,,
 MissionProfile.klingon.multiroleExplorer,Multirole Battle Cruiser,,,
 MissionProfile.klingon.pathfinderAndReconaissance,Intelligence and Reconnaissance Operations,,,
@@ -686,7 +894,7 @@ Rank.lieutenantJG.name,Lieutenant J.G.,Lieutenant J.G.,,
 Rank.lieutenantJG.abbrev,Lt. (J.G.),Lt. (J.G.),,
 Rank.ensign.name,Ensign,Fähnrich,,
 Rank.ensign.abbrev,Ens.,Fr.,,
-Rank.other.name,Other,,,
+Rank.other.name,Other,Sonstiges,,
 Rank.none.name,None,Ohne,,
 Rank.none.abbrev,,,,
 Rank.masterChiefPettyOfficer.name,Master Chief Petty Officer,Master Chief Petty Officer,,
@@ -836,9 +1044,9 @@ Species.klingonQuchHa.name,Klingon (QuchHa’),Klingonen (QuchHa'),,
 Species.orion.name,Orion,Orioner,,
 Species.other.name,Custom/Other,Benutzerdefiniert/Andere,,
 Species.risian.name,Risian,Risaner,,
-Species.reman.name,Reman,,,
+Species.reman.name,Reman,Remaner,,
 Species.romulan.name,Romulan,Romulaner,,
-Species.suliban.name,Suliban,,,
+Species.suliban.name,Suliban,Suliban,,
 Species.suliban.description,"The Sulibans’ distinguishing physical characteristic is their mottled, greenish-tinted skin. Most of them are nomadic. One faction of Suliban are members of the Cabal and can alter their DNA and restructure their skeletons, giving them unique chameleon-like, shapeshifting abilities and enhanced senses.",,,
 Species.tellarite.name,Tellarite,Tellariten,,
 Species.tellarite.aboutNames,"Tellarite names have considerable variation, but all tend to be composed of harsh, even guttural sounds. Tellarite names consist of a personal name and a family name, though the family name is often a compound, indicating that the family name is a patronym or matronym (the name of a father or mother, respectively), toponym(derived from a place) or similar — in this way, these prefixes are similar to “O’”, “Mc“, “von”, and similar elements in some Human names. Examples: Pola jav Brin (female), Tuk glasch Khutohk (male)",,,
@@ -855,13 +1063,13 @@ Species.vulcan.aboutNames,"Vulcans have only a single name, in practical terms �
 Species.vulcan.description,"The Vulcans are a stoic, rational people. Widely claimed to be emotionless, in truth the Vulcans feel deeply and intensely, to their own detriment. Their stoicism comes from a culture of logic and self- discipline, where emotions are analyzed and dissected to rob them of their potency, so that they cannot overwhelm or control the individual. Vulcans embrace science and reason, but their lives are not purely devoted to logic: they also have a deeply philosophical side, with art and music as vital to their culture as logic. They are also an intensely private people, with many aspects of their culture — such as the rites of pon farr — which are not discussed amongst outsiders.",,,
 Species.vulcan.exampleValue,"The Needs of the Many Outweighs the Needs of the Few, or the One",,,
 Species.vulcan.traitDescription,"Due to the harsh, arid, high-gravity world they come from, Vulcans are naturally resistant to extreme heat and dehydration; they are also extremely strong, with keen auditory and olfactory senses. They are also telepathic, though this takes training to properly manifest, and they learn mental discipline and emotional control from childhood. However, this control takes regular meditation to maintain, and their controlled nature and desire for privacy can distance them from others, and make interactions awkward.",,,
-Species.xindiArboreal.name,Xindi-Arboreal,,,
-Species.xindiPrimate.name,Xindi-Primate,,,
-Species.xindiReptilian.name,Xindi-Reptilian,,,
-Species.xindiInsectoid.name,Xindi-Insectoid,,,
-Species.zakdorn.name,Zakdorn,,,
-Species.mixedSpecies.text,{{primarySpecies}} / {{secondarySpecies}},,,
-Species.formerSpecies.text,{{primarySpecies}} (originally {{otherSpecies}}),,,
+Species.xindiArboreal.name,Xindi-Arboreal,Xindi-Arboreale,,
+Species.xindiPrimate.name,Xindi-Primate,Xindi-Primaten,,
+Species.xindiReptilian.name,Xindi-Reptilian,Xindi-Reptilianer,,
+Species.xindiInsectoid.name,Xindi-Insectoid,Xindi-Insektoide,,
+Species.zakdorn.name,Zakdorn,Zakdorn,,
+Species.mixedSpecies.text,{{primarySpecies}} / {{secondarySpecies}},{{primarySpecies}} / {{secondarySpecies}},,
+Species.formerSpecies.text,{{primarySpecies}} (originally {{otherSpecies}}),{{primarySpecies}} (ursprünglich {{otherSpecies}}),,
 StarSystem.common.coordinates,Coordinates,Koordinaten,,Coordonnées
 StarSystem.common.innerZone,Inner Zone,Innere Zone,,Zone Intérieure
 StarSystem.common.ecosphere,Ecosphere,Ökosphäre,,Ecosphère
@@ -978,12 +1186,12 @@ UniformEra.monsterMaroon,The Wrath of Khan,Der Zorn des Khan,,
 UniformEra.dominionWar,Dominion War,Dominionkrieg,,
 UniformEra.lowerDecks,Lower Decks,Lower Decks,,
 UniformEra.voyagerDS9,Voyager/DS9,Voyager/DS9,,
-Upbringing.starfleet.militaryOrExploration.name,Starfleet,,,
-Upbringing.starfleet.businessOrTrade.name,Business or Trade,,,
-Upbringing.starfleet.agricultureOrRural.name,Agriculture or Rural,,,
-Upbringing.starfleet.scienceAndTechnology.name,Science and Technology,,,
-Upbringing.starfleet.artisticAndCreative.name,Artistic and Creative,,,
-Upbringing.starfleet.diplomacy and Politics.name,Diplomacy and Politics,,,
+Upbringing.starfleet.militaryOrExploration.name,Starfleet,Sternenflotte,,
+Upbringing.starfleet.businessOrTrade.name,Business or Trade,Wirtschaft und Handel,,
+Upbringing.starfleet.agricultureOrRural.name,Agriculture or Rural,Ackerbau und Landleben,,
+Upbringing.starfleet.scienceAndTechnology.name,Science and Technology,Wissenschaft und Technologie,,
+Upbringing.starfleet.artisticAndCreative.name,Artistic and Creative,Kunst und Kreativität,,
+Upbringing.starfleet.diplomacy and Politics.name,Diplomacy and Politics,Diplomatie und Politik,,
 Value.environment.text,"This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.","Diese Überzeugung sollte die Herkunft und die Kultur des Charakters, in der er oder sie aufgewachsen ist, widerspiegeln. Dies ist eine gute Gelegenheit, sich darüber Gedanken zu machen, wie der Charakter seine oder ihre eigene Kultur sieht und wie er oder sie zu den Philosophien und Traditionen der Vorfahren steht.",,Cette valeur doit refléter l'environnement et la culture dans lesquels le personnage a été élevé. C'est une bonne occasion d'examiner comment le personnage perçoit sa propre culture et comment il se rattache- ou peut-être ne se rattache pas - aux philosophies et aux traditions de son peuple.
 Value.starfleetTraining.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their time at the Academy.","Ihr Charakter erhält eine Überzeugung, die auf irgendeine Weise auf der Akademie geformte Wertvorstellungen oder gemachte Erfahrungen widerspiegeln sollte.",,"Le personnage gagne une valeur unique, qui devrait refléter certains aspects des croyances du personnage qui se sont développées pendant son séjour à l'Académie."
 Value.childEducation.text,"The character gains a single Value, which should reflect some aspect of the character’s beliefs that developed during their Education.","Ihr Charakter erhält eine Überzeugung, die auf irgendeine Weise während der Ausbildung geformte Wertvorstellungen oder gemachte Erfahrungen widerspiegeln sollte.",,"Le personnage gagne une valeur unique, qui devrait refléter certains aspects des croyances du personnage qui se sont développées au cours de son Education."
@@ -1011,7 +1219,7 @@ Weapon.quality.devastating.name,Devastating,Zerstörerisch,,
 Weapon.quality.highYield.name,High Yield,Hochenergetisch,,
 Weapon.quality.hidden.name,Hidden {{rank}},Unauffällig {{rank}},,Caché {{rank}}
 Weapon.quality.intense.name,Intense,Intensiv,,Intense
-Weapon.quality.jamming.name,Jamming,,,
+Weapon.quality.jamming.name,Jamming,Kommunikation störend,,
 Weapon.quality.knockdown.name,Knockdown,Niederwerfend,,Renversement
 Weapon.quality.nonLethal.name,Non-lethal,Nicht-tödlich,,Non-létal
 Weapon.quality.piercing.name,Piercing {{rank}},Durchdringend {{rank}},,Perçant {{rank}}

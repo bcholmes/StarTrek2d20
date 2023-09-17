@@ -34,8 +34,6 @@ class EnvironmentSelection extends React.Component<IEnvironmentSelectionProperti
             let otherSpeciesWorldName = e.name.indexOf("(") >= 0 ? e.name.substring(e.name.indexOf("(") + 1, e.name.indexOf(")")) : undefined;
             let otherSpecies = otherSpeciesWorldName ? SpeciesHelper.getSpeciesByName(otherSpeciesWorldName) : undefined;
 
-            console.log("--", otherSpeciesWorldName, otherSpecies);
-
             return (
                 <tr key={i}
                     onClick={() => { if (Window.isCompact()) this.props.onSelection(e.id, otherSpecies); }}>

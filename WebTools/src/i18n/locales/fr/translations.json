@@ -314,15 +314,6 @@
     "Source.book.picardS1": "Picard S1",
     "Source.book.utopiaPlanitia": "Utopia Planitia",
 
-    "CharacterType.name.starfleet": "Starfleet",
-    "CharacterType.name.klingonWarrior": "Forces de Défense Klingones",
-    "CharacterType.name.civilian": "Civil",
-    "CharacterType.name.alliedMilitary": "Armée Alliée",
-    "CharacterType.name.ambassadorDiplomat": "Ambassadeur/Diplomate",
-    "CharacterType.name.cadet": "Cadet",
-    "CharacterType.name.child": "Enfant",
-    "CharacterType.name.other": "Autre",
-
     "CareerType.core.young.name": "Jeune Officier",
     "CareerType.core.young.description": "Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.",
     "CareerType.core.young.valueInstruction": "Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage.",
@@ -362,6 +353,15 @@
     "CareerType.solo.experienced.name": "Expérimenté",
 
     "CareerType.solo.veteran.name": "Vétéran",
+
+    "CharacterType.name.starfleet": "Starfleet",
+    "CharacterType.name.klingonWarrior": "Forces de Défense Klingones",
+    "CharacterType.name.civilian": "Civil",
+    "CharacterType.name.alliedMilitary": "Armée Alliée",
+    "CharacterType.name.ambassadorDiplomat": "Ambassadeur/Diplomate",
+    "CharacterType.name.cadet": "Cadet",
+    "CharacterType.name.child": "Enfant",
+    "CharacterType.name.other": "Autre",
 
     "Environment.common.homeworld.name": "Planète natale",
     "Environment.common.homeworld.description": "Le personnage vient du monde qui a vu naître leur civilisation,et a été entouré toute sa vie par leurs héritages culturels et spirituels. Les mondes natals sont souvent utopiques et idylliques, servant comme idéal platonique de la culture de leur espèce. Ils illustrent également les aspects des traditions les plus vénérées d'une culture et constituent le cœur du paysage juridique et politique de cette civilisation.",

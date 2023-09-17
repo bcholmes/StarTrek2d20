@@ -1,124 +1,225 @@
-﻿import * as React from 'react';
-import {character} from '../common/character';
+﻿import React, { useState } from 'react';
+import {CareerEventStep, Character, character} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {CareerEventsHelper} from '../helpers/careerEvents';
-import {AttributesHelper} from '../helpers/attributes';
+import {Attribute, AttributesHelper} from '../helpers/attributes';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {AttributeView} from '../components/attribute';
-import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovementCollection';
-import SkillView from '../components/skill';
-import {ElectiveSkillList} from '../components/electiveSkillList';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { CharacterType } from '../common/characterType';
+import { StepContext } from '../state/characterActions';
+import DisciplineListComponent, { IDisciplineController } from '../components/disciplineListComponent';
+import { Skill } from '../helpers/skills';
+import { IAttributeController } from '../components/attributeController';
+import { useTranslation } from 'react-i18next';
+import { Header } from '../components/header';
+import AttributeListComponent from '../components/attributeListComponent';
+import { makeKey } from '../common/translationKey';
+import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
+import ReactMarkdown from 'react-markdown';
 
-export class CareerEventDetailsPage extends React.Component<IPageProperties, {}> {
-    private _focus: HTMLInputElement;
-    private _trait: HTMLInputElement;
-    private _attributeDone: boolean;
-    private _skillDone: boolean;
+interface ICareerEventDetailsProperties {
+    context: StepContext;
+}
 
-    render() {
-        const event = CareerEventsHelper.getCareerEvent(character.careerEvents[character.careerEvents.length-1]?.id, character.type);
 
-        const attributes = event.attributes.length === 1
-            ? (<AttributeView name={AttributesHelper.getAttributeName(event.attributes[0]) } points={1} value={character.attributes[event.attributes[0]].value}/>)
-            : (<AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Increase} points={1} onDone={(done) => { this._attributeDone = done; } } />);
+class CareerEventDisciplineController implements IDisciplineController {
 
-        const disciplines = event.disciplines.length === 1
-            ? (<SkillView skill={event.disciplines[0]} points={1}/>)
-            : (<ElectiveSkillList points={1} skills={event.disciplines} onUpdated={(skills) => { this._skillDone = skills.length === 1; } }/>);
+    readonly character: Character;
+    readonly careerEventStep: CareerEventStep;
+    readonly context: StepContext;
+    readonly disciplines: Skill[];
+    readonly forceUpdate: () => void;
 
-        const trait = event.traitDescription !== null
-            ? (
-                <div className="panel">
-                    <div className="header-small">TRAIT</div>
-                    <div>
-                        <div className="textinput-label">TRAIT</div>
-                        <input type="text" ref={(input) => { this._trait = input; } }/>
-                    </div>
-                    <div>{event.traitDescription}</div>
-                </div>
-              )
-            : undefined;
-
-        const special = event.special ? (<div className="panel">
-              <div className="header-small">SPECIAL</div>
-              {event.special}
-          </div>) : undefined;
-
-        const next = this.isSecondCareerEventNeeded() ? "CAREER EVENT" : character.workflow.peekNextStep().name;
-
-        return (
-            <div className="page container ml-0">
-                <CharacterCreationBreadcrumbs />
-                <div className="header-text"><div>{event.name}</div></div>
-                <div className="panel">
-                    <div className="desc-text">{event.description}</div>
-                </div>
-                <div className="panel">
-                    <div className="header-small">ATTRIBUTES</div>
-                    {attributes}
-                </div>
-                <div className="panel">
-                    <div className="header-small">DISCIPLINES</div>
-                    {disciplines}
-                </div>
-                <div className="panel">
-                    <div className="header-small">FOCUS</div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus = input; } }/>
-                    </div>
-                    <div><b>Suggestions: </b> {event.focusSuggestions}</div>
-                </div>
-                {trait}
-                {special}
-                <Button text={next} className="button-next" onClick={() => this.onNext() }/>
-            </div>
-        );
+    constructor(character: Character, careerEventStep: CareerEventStep, context: StepContext, disciplines: Skill[], forceUpdate: () => void) {
+        this.character = character;
+        this.disciplines = disciplines;
+        this.context = context;
+        this.careerEventStep = careerEventStep;
+        this.forceUpdate = forceUpdate;
     }
 
-    private isSecondCareerEventNeeded() {
-        return !(character.careerEvents.length === 2 || character.type === CharacterType.Cadet);
+    isShown(discipline: Skill) {
+        return this.disciplines.indexOf(discipline) >= 0;
     }
-
-    private onNext() {
-        const event = CareerEventsHelper.getCareerEvent(character.careerEvents[character.careerEvents.length - 1]?.id, character.type);
-        if (event.attributes.length > 1) {
-            if (!this._attributeDone) {
-                Dialog.show("You have not distributed your Attribute point.");
-                return;
-            }
+    isEditable(discipline: Skill): boolean {
+        return true;
+    }
+    getValue(discipline: Skill): number {
+        return this.character.skills[discipline].expertise;
+    }
+    canIncrease(discipline: Skill): boolean {
+        return this.getValue(discipline) < Character.maxDiscipline(this.character) &&
+            (this.getValue(discipline) < (Character.maxDiscipline(this.character) - 1) || !this.character.hasMaxedSkill())
+            && this.careerEventStep.discipline == null;
+    }
+    canDecrease(discipline: Skill): boolean {
+        return this.careerEventStep?.discipline === discipline;
+    }
+    onIncrease(discipline: Skill): void {
+        const max = Character.maxDiscipline(character);
+        if (!character.hasMaxedSkill() || this.character.skills[discipline].expertise + 1 < max) {
+            this.careerEventStep.discipline = discipline;
+            character.skills[discipline].expertise++;
         }
-
-        if (event.disciplines.length > 1) {
-            if (!this._skillDone) {
-                Dialog.show("You have not distributed your Discipline point.");
-                return;
-            }
-        }
-
-        var focus = this._focus.value;
-        if (!focus || focus.length === 0) {
-            Dialog.show("You need to type in a Focus. Choose from the suggestions if you cannot come up with your own.");
-            return;
-        }
-
-        character.addFocus(focus);
-
-        if (this._trait && this._trait.value) {
-            character.addTrait(this._trait.value);
-        }
-
-        if (character.careerEvents.length === 2 || character.type === CharacterType.Cadet) {
-            character.workflow.next();
-            Navigation.navigateToPage(PageIdentity.AttributesAndDisciplines);
-        }
-        else {
-            Navigation.navigateToPage(PageIdentity.CareerEvent2);
-        }
+        this.forceUpdate();
+    }
+    onDecrease(discipline: Skill): void {
+        this.careerEventStep.discipline = undefined;
+        character.skills[discipline].expertise--;
+        this.forceUpdate();
     }
 }
+
+class CareerEventAttributeController implements IAttributeController {
+
+    readonly character: Character;
+    readonly careerEventStep: CareerEventStep;
+    readonly context: StepContext;
+    readonly attributes: Attribute[];
+    readonly forceUpdate: () => void;
+
+    constructor(character: Character, careerEventStep: CareerEventStep, context: StepContext, attributes: Attribute[], forceUpdate: () => void) {
+        this.character = character;
+        this.attributes = attributes;
+        this.context = context;
+        this.careerEventStep = careerEventStep;
+        this.forceUpdate = forceUpdate;
+    }
+
+    isShown(attribute: Attribute) {
+        return this.attributes.indexOf(attribute) >= 0;
+    }
+    isEditable(attribute: Attribute): boolean {
+        return true;
+    }
+    getValue(attribute: Attribute): number {
+        return this.character.attributes[attribute].value;
+    }
+    canIncrease(attribute: Attribute): boolean {
+        return this.getValue(attribute) < Character.maxAttribute(this.character) &&
+            (this.getValue(attribute) < (Character.maxAttribute(this.character) - 1) || !this.character.hasMaxedAttribute())
+            && this.careerEventStep.attribute == null;
+    }
+    canDecrease(attribute: Attribute): boolean {
+        return this.careerEventStep?.attribute === attribute;
+    }
+    onIncrease(attribute: Attribute): void {
+        const max = Character.maxAttribute(character);
+        if (!character.hasMaxedAttribute() || this.character.attributes[attribute].value + 1 < max) {
+            this.careerEventStep.attribute = attribute;
+            character.attributes[attribute].value++;
+        }
+        this.forceUpdate();
+    }
+    onDecrease(attribute: Attribute): void {
+        this.careerEventStep.attribute = undefined;
+        character.attributes[attribute].value--;
+        this.forceUpdate();
+    }
+    get instructions() {
+        return []
+    }
+}
+
+function useForceUpdate() {
+    const [value, setValue] = useState(0);
+    return () => setValue(value => value + 1);
+}
+
+const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({context}) => {
+    const { t } = useTranslation();
+    const forceUpdate = useForceUpdate();
+
+    let [ trait, setTrait ] = useState("");
+    const careerEventStep = context === StepContext.CareerEvent1
+        ? character.careerEvents[0]
+        : character.careerEvents[1];
+
+    const careerEvent = CareerEventsHelper.getCareerEvent(careerEventStep?.id, character.type);
+
+    const navigateToNextStep = () => {
+        if (careerEventStep.attribute == null) {
+            Dialog.show(t('CareerEventDetails.errorAttribute'));
+        } else if (careerEventStep.discipline == null) {
+            Dialog.show(t('CareerEventDetails.errorDiscipline'));
+        } else if (!careerEventStep.focus) {
+            Dialog.show(t('CareerEventDetails.errorFocus'));
+        } else {
+
+            character.addFocus(careerEventStep.focus);
+
+            if (trait) {
+                character.addTrait(trait);
+            }
+
+            if (context === StepContext.CareerEvent2 || character.type === CharacterType.Cadet) {
+                character.workflow.next();
+                Navigation.navigateToPage(PageIdentity.AttributesAndDisciplines);
+            } else {
+                Navigation.navigateToPage(PageIdentity.CareerEvent2);
+            }
+        }
+    }
+
+    const attributeController = new CareerEventAttributeController(character, careerEventStep, context, careerEvent.attributes, forceUpdate);
+    const disciplineController = new CareerEventDisciplineController(character, careerEventStep, context, careerEvent.disciplines, forceUpdate);
+
+    return (
+        <div className="page container ml-0">
+            <CharacterCreationBreadcrumbs />
+
+            <Header>{careerEvent.localizedName}</Header>
+                <ReactMarkdown children={careerEvent.localizedDescription} />
+                <div className="row">
+                    <div className="col-lg-6 my-3">
+                        <Header level={2} className="mb-3">{t('Construct.other.attribute')}</Header>
+                        {careerEvent.attributes.length === 1
+                            ? (<div>
+                                    <AttributeView name={AttributesHelper.getAttributeName(careerEvent.attributes[0]) } points={1} value={character.attributes[careerEvent.attributes[0]].value}/>
+                                </div>)
+                            : (<AttributeListComponent controller={attributeController} />)}
+                    </div>
+                    <div className="col-lg-6 my-3">
+                        <Header level={2} className="mb-3">{t('Construct.other.discipline')}</Header>
+                        {careerEvent.disciplines.length === 1
+                        ? (<div>
+                                <AttributeView name={t(makeKey('Construct.discipline.', Skill[careerEvent.disciplines[0]])) } points={1} value={character.skills[careerEvent.disciplines[0]].expertise}/>
+                            </div>)
+                        : (<DisciplineListComponent controller={disciplineController} />)}
+                    </div>
+                    <div className="col-lg-6 my-3">
+                        <Header level={2} className="mb-3">{t('Construct.other.focus')}</Header>
+                        <InputFieldAndLabel id="focus" labelName={t('Construct.other.focus')}
+                            value={careerEventStep?.focus || ""}
+                            onChange={(f) => careerEventStep.focus = f} />
+                        <div className="mt-3 text-white"><b>{t('Common.text.suggestions')}:</b> {careerEvent.localizedFocusSuggestion}</div>
+                    </div>
+                    {careerEvent.traitDescription !== null
+                        ? (
+                            <div className="col-lg-6 my-3">
+                                <Header level={2} className="mb-3">{t('Construct.other.trait')}</Header>
+                                <InputFieldAndLabel id="trait" labelName={t('Construct.other.trait')}
+                                    value={trait}
+                                    onChange={(t) => setTrait(t)} />
+                                <div className="text-white mt-3">{careerEvent.traitDescription}</div>
+                            </div>
+                        )
+                        : undefined}
+
+                    {careerEvent.special ? (<div className="col-lg-6 my-3">
+                        <Header level={2} className="mb-3">Special</Header>
+                        <p>{careerEvent.special}</p>
+                      </div>) : undefined }
+
+                </div>
+                <div className='text-right mt-4'>
+                    <Button text={t('Common.button.next')} buttonType={true} className="btn btn-primary" onClick={() => navigateToNextStep() }/>
+                </div>
+        </div>);
+
+}
+
+export default CareerEventDetailsPage;

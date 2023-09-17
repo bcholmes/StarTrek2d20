@@ -4,7 +4,7 @@ export enum HairType {
     Balding, Receding, DeLeve, LongHair1, MediumLengthFemaleSidePart, MediumMaleCenterPart,
     MediumLengthFemaleStraight, ChinLengthCombBack, ChinLengthBob, ShortTeasedOverEyeStyle, FeminineDreadStyle, ShoulderLengthMostlyStraight,
     ShoulderLengthBob, CornRows, HighForeheadEfrosianStyle, PinnedUpHairWithPart, ShavedSides,
-    KlingonHair1, KlingonHair2, KlingonHair3
+    KlingonHair1, KlingonHair2, KlingonHair3, RomulanPeakedHair
 }
 
 export const allHairTypes = [ HairType.Bald, HairType.BowlCutHair, HairType.StylishHair, HairType.TousledSidePart,
@@ -15,7 +15,7 @@ export const allHairTypes = [ HairType.Bald, HairType.BowlCutHair, HairType.Styl
     HairType.ChinLengthCombBack, HairType.ShortTeasedOverEyeStyle, HairType.ChinLengthBob,
     HairType.FeminineDreadStyle, HairType.ShoulderLengthMostlyStraight, HairType.ShoulderLengthBob,
     HairType.HighForeheadEfrosianStyle, HairType.PinnedUpHairWithPart, HairType.ShavedSides,
-    HairType.KlingonHair1, HairType.KlingonHair2, HairType.KlingonHair3 ];
+    HairType.KlingonHair1, HairType.KlingonHair2, HairType.KlingonHair3, HairType.RomulanPeakedHair ];
 
 
 export const isTallForeheadHair = (hairType: HairType) => {

@@ -13,7 +13,7 @@ import {StarfleetAcademyDetailsPage} from './starfleetAcademyDetailsPage';
 import CareerPage from './careerPage';
 import CareerDetailsPage from './careerDetailsPage';
 import {CareerEventPage} from './careerEventPage';
-import {CareerEventDetailsPage} from './careerEventDetailsPage';
+import CareerEventDetailsPage from './careerEventDetailsPage';
 import {AttributesAndDisciplinesPage} from './attributesAndDisciplinesPage';
 import FinishPage from './finishPage';
 import SupportingCharacterPage from '../supportingcharacters/supportingCharacterPage';
@@ -36,6 +36,7 @@ import PromotionPage from '../modify/page/promotionPage';
 import MilestonePage from '../modify/page/milestonePage';
 import { MilestoneType } from '../modify/model/milestoneType';
 import SourceSelectionPage from './sourceSelectionPage';
+import { StepContext } from '../state/characterActions';
 
 export interface IPageFactoryRegistry {
     findFactory(page: PageIdentity);
@@ -78,10 +79,10 @@ export class PageFactory {
         this.factories[PageIdentity.StarfleetAcademyDetails] = () => <StarfleetAcademyDetailsPage/>;
         this.factories[PageIdentity.Career] = () => <CareerPage/>;
         this.factories[PageIdentity.CareerDetails] = () => <CareerDetailsPage/>;
-        this.factories[PageIdentity.CareerEvent1] = () => <CareerEventPage/>;
-        this.factories[PageIdentity.CareerEvent1Details] = () => <CareerEventDetailsPage/>;
-        this.factories[PageIdentity.CareerEvent2] = () => <CareerEventPage/>;
-        this.factories[PageIdentity.CareerEvent2Details] = () => <CareerEventDetailsPage/>;
+        this.factories[PageIdentity.CareerEvent1] = () => <CareerEventPage context={StepContext.CareerEvent1}/>;
+        this.factories[PageIdentity.CareerEvent1Details] = () => <CareerEventDetailsPage context={StepContext.CareerEvent1}/>;
+        this.factories[PageIdentity.CareerEvent2] = () => <CareerEventPage context={StepContext.CareerEvent2}/>;
+        this.factories[PageIdentity.CareerEvent2Details] = () => <CareerEventDetailsPage context={StepContext.CareerEvent2}/>;
         this.factories[PageIdentity.ChildCareer] = () => <SimpleCareerPage talent="Childhood Insight"/>;
         this.factories[PageIdentity.CadetCareer] = () => <SimpleCareerPage talent="Untapped Potential" />;
         this.factories[PageIdentity.CadetSeniority] = () => <CadetSeniorityPage />;

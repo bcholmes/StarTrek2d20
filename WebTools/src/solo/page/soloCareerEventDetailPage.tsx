@@ -151,8 +151,8 @@ const SoloCareerEventDetailsPage: React.FC<ISoloCareerEventProperties> = ({chara
         <div className="page container ml-0">
             <SoloCharacterBreadcrumbs pageIdentity={context === StepContext.CareerEvent2 ? PageIdentity.SoloCareerEvent2 : PageIdentity.SoloCareerEvent1} />
 
-            <Header>{careerEvent.name}</Header>
-                <InstructionText text={careerEvent.description} />
+            <Header>{careerEvent.localizedName}</Header>
+                <InstructionText text={careerEvent.localizedDescription} />
                 <div className="row">
                     <div className="col-lg-6 my-3">
                         <Header level={2} className="mb-3">{t('Construct.other.attribute')}</Header>
@@ -180,7 +180,7 @@ const SoloCareerEventDetailsPage: React.FC<ISoloCareerEventProperties> = ({chara
                                 <D20IconButton onClick={() => selectRandomFocus()}/>
                             </div>
                         </div>
-                        <div className="mt-3 text-white"><b>{t('Common.text.suggestions')}:</b> {careerEvent.focusSuggestions}</div>
+                        <div className="mt-3 text-white"><b>{t('Common.text.suggestions')}:</b> {careerEvent.localizedFocusSuggestion}</div>
                     </div>
                 </div>
                 <div className='text-right mt-4'>

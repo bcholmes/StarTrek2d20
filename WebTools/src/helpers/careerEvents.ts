@@ -1,7 +1,8 @@
 ﻿import {SkillsHelper, Skill} from './skills';
-import {Attribute} from './attributes';
+import {Attribute, AttributesHelper} from './attributes';
 import {Character, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
+import i18next from 'i18next';
 
 export class CareerEventModel {
     name: string;
@@ -12,9 +13,12 @@ export class CareerEventModel {
     traitDescription: string;
     onApply: () => void;
     roll: number;
-    special: string;
+    special?: string;
+    prefix: string;
 
-    constructor(name: string, description: string, attributes: Attribute[], disciplines: Skill[], focusSuggestions: string, traitDescription: string, roll: number, onApply: () => void, special: string = null) {
+    constructor(name: string, description: string, attributes: Attribute[], disciplines: Skill[], focusSuggestions: string,
+        traitDescription: string, roll: number, onApply: () => void, special: string = undefined, prefix: string = "common."
+        ) {
         this.name = name;
         this.description = description;
         this.attributes = attributes;
@@ -24,14 +28,25 @@ export class CareerEventModel {
         this.onApply = onApply;
         this.roll = roll;
         this.special = special;
+        this.prefix = prefix;
     }
 
     get localizedName() {
-        return this.name;
+        const key = 'CareerEvent.' + this.prefix + this.roll + '.name';
+        let result = i18next.t(key);
+        return result === key ? this.name : result;
     }
 
     get localizedDescription() {
-        return this.description;
+        const key = 'CareerEvent.' + this.prefix + this.roll + '.description';
+        let result = i18next.t(key);
+        return result === key ? this.description : result;
+    }
+
+    get localizedFocusSuggestion() {
+        const key = 'CareerEvent.' + this.prefix + this.roll + '.focusDescription';
+        let result = i18next.t(key);
+        return result === key ? this.focusSuggestions : result;
     }
 }
 
@@ -39,7 +54,7 @@ class CareerEvents {
     private _events: CareerEventModel[] = [
         new CareerEventModel(
             "Ship Destroyed",
-            "The ship the character was serving on was lost, destroyed during a mission, and the character was one of the few who survived. What was the ship’s mission? Was it something routine that went horribly wrong, or was it something perilous? What destroyed the ship? How many survivors were there? How long did it take before they were recovered?",
+            "The ship the character was serving on was lost, destroyed during a mission, and the character was one of the few who survived.\n\n- What was the ship’s mission? Was it something routine that went horribly wrong, or was it something perilous? What destroyed the ship?\n- How many survivors were there? How long did it take before they were recovered?",
             [Attribute.Daring],
             [Skill.Security],
             "The character gains a Focus, which should reflect the character’s experiences. Examples include: Extra Vehicular Operations, Small Craft, or Survival.",
@@ -52,7 +67,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "Death of a Friend",
-            "During an important mission, one of the character’s friends was killed in action. Who was the friend? How did the character know them? What was the mission? How did the friend die? Who was to blame?",
+            "During an important mission, one of the character’s friends was killed in action.\n\n- Who was the friend? How did the character know them?\n- What was the mission? How did the friend die? Who was to blame?",
             [Attribute.Insight],
             [Skill.Medicine],
             "The character gains a Focus, which should reflect the character’s experiences. Examples include: Counselling, but it may also represent a skill or pursuit the character takes up in their fallen friend’s memory or to prevent the same thing happening in the future.",
@@ -65,7 +80,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "Lauded by Another Culture",
-            "The character was involved in a mission that earned the official praise of a non-Federation culture; they are now considered to be a friend to that people. What culture was aided by this mission? What was the mission? Why was it particularly praiseworthy? Does the character have any friends or contacts in that culture who can be contacted for help?",
+            "The character was involved in a mission that earned the official praise of a non-Federation culture; they are now considered to be a friend to that people.\n\n- What culture was aided by this mission? What was the mission? Why was it particularly praiseworthy?\n- Does the character have any friends or contacts in that culture who can be contacted for help?",
             [Attribute.Presence],
             [Skill.Science],
             "The character gains a Focus, which should reflect the character’s experience with that culture. A Focus of X Culture, replacing the X with the name of that culture, is a good example, as would any that represent skills or techniques specific to that culture.",
@@ -321,7 +336,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Daring);
                 this.improveDiscipline(Skill.Security);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Death of a Friend",
@@ -334,7 +351,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Insight);
                 this.improveDiscipline(Skill.Medicine);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Lauded by Another Culture",
@@ -347,7 +366,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Presence);
                 this.improveDiscipline(Skill.Science);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Negotiate a Treaty",
@@ -360,7 +381,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Control);
                 this.improveDiscipline(Skill.Command);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Required to Take Command",
@@ -373,7 +396,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Daring);
                 this.improveDiscipline(Skill.Command);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Encounter with a Truly Alien Being",
@@ -387,7 +412,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Reason);
                 this.improveDiscipline(Skill.Science);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Serious Injury",
@@ -400,7 +427,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Fitness);
                 this.improveDiscipline(Skill.Medicine);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Glorious Battle!",
@@ -413,7 +442,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Fitness);
                 this.improveDiscipline(Skill.Security);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Mentored",
@@ -441,7 +472,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Control);
                 this.improveDiscipline(Skill.Conn);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Dealing with a Plague",
@@ -467,7 +500,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Presence);
                 this.improveDiscipline(Skill.Command);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Challenged a Superior",
@@ -480,7 +515,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Reason);
                 this.improveDiscipline(Skill.Conn);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "New Battle Strategy",
@@ -493,7 +530,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Daring);
                 this.improveDiscipline(Skill.Security);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Employed Dishonorable Means to Triumph",
@@ -506,7 +545,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Insight);
                 this.improveDiscipline(Skill.Science);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Discovers an Artifact",
@@ -519,7 +560,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Reason);
                 this.improveDiscipline(Skill.Engineering);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Honor and Glory",
@@ -533,7 +576,8 @@ class CareerEvents {
                 this.improveAttribute(Attribute.Fitness);
                 this.fieldCommission();
             },
-            "If your character was an Enlisted Warrior or Laborer, you gain a field commission and become an officer."
+            "If your character was an Enlisted Warrior or Laborer, you gain a field commission and become an officer.",
+            "klingon."
         ),
         new CareerEventModel(
             "Solved an Engineering Crisis",
@@ -546,7 +590,9 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Control);
                 this.improveDiscipline(Skill.Engineering);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Breakthrough or Invention",
@@ -558,7 +604,9 @@ class CareerEvents {
             19,
             () => {
                 this.improveDiscipline(Skill.Engineering);
-            }
+            },
+            undefined,
+            "klingon."
         ),
         new CareerEventModel(
             "Conquest",
@@ -570,9 +618,457 @@ class CareerEvents {
             20,
             () => {
                 this.improveAttribute(Attribute.Presence);
-            }
+            },
+            undefined,
+            "klingon."
         ),
     ];
+
+    private _unofficialEvents: CareerEventModel[] = [
+        new CareerEventModel(
+            "Advanced Tactical Training",
+            "The character took a specialized course in advanced tactical and intelligence techniques.\n\n- Where was the course taught? Who recommended the character for the course?\n- Did the character pass the course? How did the character rank in the various subjects?",
+            [Attribute.Control],
+            [Skill.Security],
+            "The character gains a focus, which should reflect the special training they received. Examples include: Guerilla Tactics, Strategic Defense, or Combat Maneuvers.",
+            null,
+            21,
+            () => {
+                this.improveAttribute(Attribute.Control);
+                this.improveDiscipline(Skill.Security);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Protoype Testing",
+            "",
+            [Attribute.Control],
+            [Skill.Science],
+            "",
+            null,
+            22,
+            () => {
+                this.improveAttribute(Attribute.Control);
+                this.improveDiscipline(Skill.Science);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Colonization Effort",
+            "",
+            [Attribute.Control],
+            [Skill.Science],
+            "",
+            null,
+            23,
+            () => {
+                this.improveAttribute(Attribute.Control);
+                this.improveDiscipline(Skill.Science);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Exchange Program",
+            "",
+            [Attribute.Control],
+            SkillsHelper.getSkills(),
+            "",
+            null,
+            24,
+            () => {
+                this.improveAttribute(Attribute.Control);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Lucky Streak",
+            "",
+            [Attribute.Daring],
+            [Skill.Conn],
+            "",
+            null,
+            25,
+            () => {
+                this.improveAttribute(Attribute.Daring);
+                this.improveDiscipline(Skill.Conn);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Learned from Significant Blunder",
+            "",
+            [Attribute.Daring],
+            [Skill.Engineering],
+            "",
+            null,
+            26,
+            () => {
+                this.improveAttribute(Attribute.Daring);
+                this.improveDiscipline(Skill.Engineering);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Cultural Observation Post",
+            "",
+            [Attribute.Daring],
+            [Skill.Science],
+            "",
+            null,
+            27,
+            () => {
+                this.improveAttribute(Attribute.Daring);
+                this.improveDiscipline(Skill.Science);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Struggle with Addiction",
+            "",
+            [Attribute.Daring],
+            [Skill.Medicine],
+            "",
+            null,
+            28,
+            () => {
+                this.improveAttribute(Attribute.Daring);
+                this.improveDiscipline(Skill.Medicine);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Rivalry",
+            "",
+            [Attribute.Daring],
+            SkillsHelper.getSkills(),
+            "",
+            null,
+            29,
+            () => {
+                this.improveAttribute(Attribute.Daring);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Off-Duty Endeavour",
+            "",
+            [Attribute.Fitness],
+            [Skill.Command],
+            "",
+            null,
+            30,
+            () => {
+                this.improveAttribute(Attribute.Fitness);
+                this.improveDiscipline(Skill.Command);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Starbase Posting",
+            "",
+            [Attribute.Fitness],
+            [Skill.Conn],
+            "",
+            null,
+            31,
+            () => {
+                this.improveAttribute(Attribute.Fitness);
+                this.improveDiscipline(Skill.Conn);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Planetary Posting",
+            "",
+            [Attribute.Fitness],
+            [Skill.Engineering],
+            "",
+            null,
+            32,
+            () => {
+                this.improveAttribute(Attribute.Fitness);
+                this.improveDiscipline(Skill.Engineering);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Left Behind",
+            "",
+            [Attribute.Fitness],
+            [Skill.Science],
+            "",
+            null,
+            33,
+            () => {
+                this.improveAttribute(Attribute.Fitness);
+                this.improveDiscipline(Skill.Science);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Family Crisis",
+            "",
+            [Attribute.Insight],
+            [Skill.Command],
+            "",
+            null,
+            34,
+            () => {
+                this.improveAttribute(Attribute.Insight);
+                this.improveDiscipline(Skill.Command);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Satisfactory Performance",
+            "",
+            [Attribute.Insight],
+            [Skill.Conn],
+            "",
+            null,
+            35,
+            () => {
+                this.improveAttribute(Attribute.Insight);
+                this.improveDiscipline(Skill.Conn);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Confinement",
+            "",
+            [Attribute.Insight],
+            [Skill.Security],
+            "",
+            null,
+            36,
+            () => {
+                this.improveAttribute(Attribute.Insight);
+                this.improveDiscipline(Skill.Security);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Terraforming Mission",
+            "",
+            [Attribute.Insight],
+            [Skill.Engineering],
+            "",
+            null,
+            37,
+            () => {
+                this.improveAttribute(Attribute.Insight);
+                this.improveDiscipline(Skill.Engineering);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Leave of Absence",
+            "",
+            [Attribute.Insight],
+            SkillsHelper.getSkills(),
+            "",
+            null,
+            38,
+            () => {
+                this.improveAttribute(Attribute.Insight);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Media Exposure",
+            "",
+            [Attribute.Presence],
+            [Skill.Conn],
+            "",
+            null,
+            39,
+            () => {
+                this.improveAttribute(Attribute.Presence);
+                this.improveDiscipline(Skill.Conn);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Clandestine Operation",
+            "",
+            [Attribute.Presence],
+            [Skill.Security],
+            "",
+            null,
+            40,
+            () => {
+                this.improveAttribute(Attribute.Presence);
+                this.improveDiscipline(Skill.Security);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Fleet Yard Posting",
+            "",
+            [Attribute.Presence],
+            [Skill.Engineering],
+            "",
+            null,
+            41,
+            () => {
+                this.improveAttribute(Attribute.Presence);
+                this.improveDiscipline(Skill.Engineering);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Missing Memories",
+            "",
+            [Attribute.Presence],
+            [Skill.Medicine],
+            "",
+            null,
+            42,
+            () => {
+                this.improveAttribute(Attribute.Presence);
+                this.improveDiscipline(Skill.Medicine);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Teaching Opportunity",
+            "",
+            [Attribute.Reason],
+            [Skill.Command],
+            "",
+            null,
+            43,
+            () => {
+                this.improveAttribute(Attribute.Reason);
+                this.improveDiscipline(Skill.Command);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Legal Entanglement",
+            "",
+            [Attribute.Reason],
+            [Skill.Security],
+            "",
+            null,
+            44,
+            () => {
+                this.improveAttribute(Attribute.Reason);
+                this.improveDiscipline(Skill.Security);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Victim of Mind Control",
+            "",
+            [Attribute.Reason],
+            [Skill.Medicine],
+            "",
+            null,
+            45,
+            () => {
+                this.improveAttribute(Attribute.Reason);
+                this.improveDiscipline(Skill.Medicine);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Not Fitting In",
+            "",
+            [Attribute.Reason],
+            SkillsHelper.getSkills(),
+            "",
+            null,
+            46,
+            () => {
+                this.improveAttribute(Attribute.Reason);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Meaningful Memento",
+            "",
+            AttributesHelper.getAllAttributes(),
+            [Skill.Command],
+            "",
+            null,
+            47,
+            () => {
+                this.improveDiscipline(Skill.Command);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Deep Space Assignment",
+            "",
+            AttributesHelper.getAllAttributes(),
+            [Skill.Security],
+            "",
+            null,
+            48,
+            () => {
+                this.improveDiscipline(Skill.Security);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Brush with Temporal Anomaly",
+            "",
+            AttributesHelper.getAllAttributes(),
+            [Skill.Science],
+            "",
+            null,
+            49,
+            () => {
+                this.improveDiscipline(Skill.Security);
+            },
+            undefined,
+            "unofficial."
+        ),
+        new CareerEventModel(
+            "Medical Facility Posting",
+            "",
+            AttributesHelper.getAllAttributes(),
+            [Skill.Medicine],
+            "",
+            null,
+            50,
+            () => {
+                this.improveDiscipline(Skill.Security);
+            },
+            undefined,
+            "unofficial."
+        ),
+    ];
+
 
     getSoloCareerEvents() {
         let result = [];
@@ -583,7 +1079,19 @@ class CareerEvents {
     }
 
     getCareerEvents(type: CharacterType) {
-        return type === CharacterType.KlingonWarrior ? this._klingonEvents : this._events;
+        let list = type === CharacterType.KlingonWarrior ? this._klingonEvents : this._events;
+        return [...list].sort((e1, e2) => {
+            return e1.localizedName.localeCompare(e2.localizedName);
+        })
+    }
+
+    getCareerEventsIncludingUnofficial(type: CharacterType) {
+        let list = type === CharacterType.KlingonWarrior ? this._klingonEvents : this._events;
+        list = [...list];
+        this._unofficialEvents.forEach(e => list.push(e));
+        return list.sort((e1, e2) => {
+            return e1.localizedName.localeCompare(e2.localizedName);
+        })
     }
 
     getCareerEvent(id: number, type: CharacterType): CareerEventModel {
@@ -593,9 +1101,15 @@ class CareerEvents {
         list.forEach(ev => {
             if (ev.roll === id) {
                 event = ev;
-                return;
             }
         });
+
+        if (event == null) {
+            const items = this._unofficialEvents.filter(e => e.roll === id);
+            if (items.length === 1) {
+                event = items[0];
+            }
+        }
 
         return event;
     }
@@ -621,7 +1135,7 @@ class CareerEvents {
     }
 
     private improveAttribute(attribute: Attribute) {
-        const max = character.isYoung() ? 11 : 12;
+        const max = Character.maxAttribute(character);
         if (character.hasMaxedAttribute() && character.attributes[attribute].value + 1 === max) {
             return;
         }

@@ -11,22 +11,42 @@ import { SkillsHelper } from '../helpers/skills';
 import { Window } from '../common/window';
 import { useTranslation } from 'react-i18next';
 import { Header } from '../components/header';
+import { StepContext } from "../state/characterActions";
+import { hasSource } from "../state/contextFunctions";
+import { Source } from "../helpers/sources";
+import ReactMarkdown from "react-markdown";
 
-export const CareerEventPage = () => {
-    const c = character;
+enum EventsTab {
+    Standard,
+    StandardAndUnofficial
+}
+
+interface ICareerEventProperties {
+    context: StepContext;
+}
+
+export const CareerEventPage: React.FC<ICareerEventProperties> = ({context}) => {
     const { t } = useTranslation();
     const [randomEvent, setRandomEvent] = useState(null);
+    const [randomEventWithUnofficial, setRandomEventWithUnofficial] = useState(null);
+    const [tab, setTab] = useState(EventsTab.Standard);
 
     const careerEventSelected = (careerEvent: CareerEventModel)=> {
-        c.careerEvents.push(new CareerEventStep(careerEvent.roll));
-        CareerEventsHelper.applyCareerEvent(careerEvent.roll, c.type);
+        let step = new CareerEventStep(careerEvent.roll);
+        if (careerEvent.attributes?.length === 1) {
+            step.attribute = careerEvent.attributes[0];
+        }
+        if (careerEvent.disciplines?.length === 1) {
+            step.discipline = careerEvent.disciplines[0];
+        }
+        character.careerEvents.push(step);
+        CareerEventsHelper.applyCareerEvent(careerEvent.roll, character.type);
 
-        if (c.careerEvents.length === 1) {
+        if (context === StepContext.CareerEvent1) {
             Navigation.navigateToPage(PageIdentity.CareerEvent1Details);
         } else {
             Navigation.navigateToPage(PageIdentity.CareerEvent2Details);
         }
-
     }
 
     const toTableRow = (careerEvent: CareerEventModel, i: number) => {
@@ -49,25 +69,78 @@ export const CareerEventPage = () => {
         )
     }
 
-    const events = randomEvent != null
-        ? toTableRow(CareerEventsHelper.getCareerEvent(randomEvent, c.type) , 0)
-        : CareerEventsHelper.getCareerEvents(c.type).map((c, i) => toTableRow(c, i));
+    const generateRandomEvent = (includeUnofficial: boolean) => {
+        if (includeUnofficial) {
+            return Math.floor(Math.random() * 50) + 1;
+        } else {
+            return CareerEventsHelper.generateEvent(character.type).roll;
+        }
+    }
+
+    const renderStandardTab = () => {
+
+        const events = randomEvent != null
+            ? toTableRow(CareerEventsHelper.getCareerEvent(randomEvent, character.type) , 0)
+            : CareerEventsHelper.getCareerEvents(character.type).map((c, i) => toTableRow(c, i));
+
+        return (<>
+            <div className="my-4">
+                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEvent( generateRandomEvent(false)) }>
+                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                </Button>
+                {randomEvent != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEvent(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+            </div>
+
+            <table className="selection-list">
+                <tbody>
+                    {events}
+                </tbody>
+            </table>
+        </>);
+    }
+
+    const renderStandardAndUnofficialTab = () => {
+
+        const events = randomEventWithUnofficial != null
+            ? toTableRow(CareerEventsHelper.getCareerEvent(randomEventWithUnofficial, character.type) , 0)
+            : CareerEventsHelper.getCareerEventsIncludingUnofficial(character.type).map((c, i) => toTableRow(c, i));
+
+        return (<>
+            <div className="mt-4">
+                <ReactMarkdown children={t('CareerEvents.unofficialNote')} linkTarget="_blank" />
+            </div>
+            <div className="my-4">
+                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEventWithUnofficial( generateRandomEvent(true)) }>
+                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                </Button>
+                {randomEventWithUnofficial != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEventWithUnofficial(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+            </div>
+
+            <table className="selection-list">
+                <tbody>
+                    {events}
+                </tbody>
+            </table>
+        </>);
+    }
 
     return (
         <div className="page container ml-0">
             <CharacterCreationBreadcrumbs />
             <Header>{t('Page.title.careerEvent')}</Header>
             <InstructionText text={character.workflow.currentStep().description} />
-            <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEvent( CareerEventsHelper.generateEvent(c.type).roll) }>
-                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
-                </Button>
-                {randomEvent != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEvent(null)} >{t('Common.button.showAll')}</Button>) : undefined}
-            </div>
-            <table className="selection-list">
-                <tbody>
-                    {events}
-                </tbody>
-            </table>
+            {hasSource(Source.ContinuingMissions)
+                ? (<div className="btn-group w-100" role="group" aria-label="Environment types">
+                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === EventsTab.Standard ? "active" : "")}
+                        onClick={() => setTab(EventsTab.Standard)}>{t('CareerEvents.standard')}</button>
+                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === EventsTab.StandardAndUnofficial ? "active" : "")}
+                        onClick={() => setTab(EventsTab.StandardAndUnofficial)}>{t('CareerEvents.standardAndUnofficial')}</button>
+                </div>)
+                : undefined}
+
+            {tab === EventsTab.Standard
+                ? renderStandardTab()
+                : renderStandardAndUnofficialTab()}
+
         </div>);
 }

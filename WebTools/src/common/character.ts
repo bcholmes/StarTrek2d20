@@ -199,6 +199,7 @@ export class CareerEventStep {
     attribute?: Attribute;
     discipline?: Skill;
     focus?: string;
+    trait?: string;
 
     constructor(id: number) {
         this.id = id;

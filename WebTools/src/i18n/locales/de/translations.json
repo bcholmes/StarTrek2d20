@@ -161,14 +161,42 @@
     "SoloConstructTypePage.instruction": "Erstellst du einen Charakter oder ein Raumschiff?",
     "SoloConstructTypePage.starship": "Raumschiff",
 
+    "SoloEarlyOutlookDetailsPage.errorDiscipline": "Bitte wähle eine Disziplin.",
+    "SoloEarlyOutlookDetailsPage.errorFocus": "Bitte wähle einen Fokus.",
+
     "SoloEducationDetailsPage.selectThree": "(Drei auswählen)",
+    "SoloEducationDetailsPage.primaryDiscipline": "Primäre Disziplin",
+    "SoloEducationDetailsPage.secondaryDiscipline": "Sekundäre Disziplin",
+    "SoloEducationDetailsPage.errorDisciplines": "Bitte wähle eine primäre und zwei sekundäre Disziplinen.",
+    "SoloEducationDetailsPage.errorAttributes": "Bitte wähle drei Attribute.",
+    "SoloEducationDetailsPage.errorValue": "Bitte wähle eine Überzeugung.",
+
+    "SoloEducationPage.type.starfleet": "Sternenflottenakademie",
+    "SoloEducationPage.type.civilian": "Zivile Berufsausbildung",
+    "SoloEducationPage.type.alliedMilitary": "Militärische Ausbildung",
+    "SoloEducationPage.type.ambassadorDiplomat": "Diplomatische Ausbildung",
 
     "SoloEnvironmentDetailsPage.speciesText": "Unter welchen Spezies ist der Charakter aufgewachsen?",
+    "SoloEnvironmentDetailsPage.errorAttribute": "Bitte wähle ein Attribut.",
+    "SoloEnvironmentDetailsPage.errorDiscipline": "Bitte wähle eine Disziplin.",
+    "SoloEnvironmentDetailsPage.errorValue": "Bitte wähle eine Überzeugung.",
 
     "SoloEnvironmentPage.settings": "Einstellungen",
     "SoloEnvironmentPage.conditions": "Bedingungen",
 
+    "SoloEnvironmentPage.anotherSpeciesWorld.attributeText": "Abhängig von der Spezies.",
+
+    "SoloEraSelectionPage.instruction": "Bitte wähle eine Ära für deinen Charakter oder lass eine zufällig auswählen.",
+
+    "SoloFinishingTouchesPage.attributeNote_one": "Die Gesamtpunktzahl enthält {{count}} überschüssigen Punkt, der nicht automatisch zu deinen Attributen hinzugefügt werden konnte ohne den Maximalwert zu überschreiben.",
+    "SoloFinishingTouchesPage.attributeNote_other": "Die Gesamtpunktzahl enthält {{count}} überschüssige Punkte, die nicht automatisch zu deinen Attributen hinzugefügt werden konnten ohne den Maximalwert zu überschreiben.",
+    "SoloFinishingTouchesPage.select": "(Wähle {{count}})",
+    "SoloFinishingTouchesPage.errorAttributes": "Bitte wähle {{count}} Attribute",
+    "SoloFinishingTouchesPage.errorDisciplines": "Bitte wähle {{count}} Disziplinen",
+    "SoloFinishingTouchesPage.errorValue": "Bitte wähle eine Überzeugung",
+
     "SoloSpeciesPage.errorAttributes": "Bitte wähle 3 Attribute.",
+    "SoloSpeciesPage.instruction": "Wähle eine Spezies für deinen Charakter oder lass eine zufällig auswählen.",
 
     "SpaceframeOptionPage.text": "Möchten Sie eine Standard-Schiffsklasse oder eine eigene Schiffsklasse?",
 
@@ -356,6 +384,7 @@
     "Construct.system.weapons": "Waffen",
 
     "Page.title.career": "Karriere",
+    "Page.title.careerEvent": "Karriereereignis",
     "Page.title.characterType": "Art des Charakters",
     "Page.title.creditsPage": "Danksagungen",
     "Page.title.customSpaceframe": "Eigene Klasse erstellen",
@@ -373,8 +402,22 @@
     "Page.title.sectorDetails": "Sektordetails",
     "Page.title.simpleStarship": "Vereinfachte Raumschifferschaffung",
     "Page.title.smallCraftStats": "Shuttle-Werte",
+    "Page.title.soloCareerEvent": "Karriereereignis",
+    "Page.title.soloCareerEvent1": "Karriereereignis 1",
+    "Page.title.soloCareerEvent2": "Karriereereignis 2",
+
+    "Please": "Karriereereignisdetails",
+
+    "Page.title.soloCareerEventDetails1": "Karriereereignisdetails 1",
+    "Page.title.soloCareerEventDetails2": "Karriereereignisdetails 2",
+    "Page.title.soloCareerLength": "Karrierelänge",
     "Page.title.soloConstructType": "Werkzeug-Auswahl",
+    "Page.title.soloEarlyOutlook": "Erziehung",
+    "Page.title.soloEarlyOutlookDetails": "Erziehungsdetails",
+    "Page.title.soloEducationType": "Ausbildungsart",
+    "Page.title.soloEducation": "Ausbildung",
     "Page.title.soloFinishingTouches": "Feinschliff",
+    "Page.title.soloFinal": "Letzte Details",
     "Page.title.sourceSelection": "Quellen",
     "Page.title.spaceframeOption": "Schiffsklassen-Optionen",
     "Page.title.spaceframeSelection": "Schiffsklasse",
@@ -409,6 +452,7 @@
     "Source.type.campaignBook": "Kampagnenbände",
     "Source.type.expansion": "Wichtige Erweiterungsbände",
     "Source.type.misc": "Sonstige Bände",
+    "Source.type.unofficial": "Inoffizielle Quellen",
 
     "Source.book.core": "Grundregelwerk",
     "Source.book.alphaQuadrant": "Alpha-Quadrant",
@@ -425,15 +469,6 @@
     "Source.book.klingonCore": "Klingonisches Grundregelwerk",
     "Source.book.shackletonExpanse": "Shackleton-Ausdehnung",
 
-    "CharacterType.name.starfleet": "Sternenflotte",
-    "CharacterType.name.klingonWarrior": "Klingonische Verteidigungsstreitmacht",
-    "CharacterType.name.civilian": "Zivilisten",
-    "CharacterType.name.alliedMilitary": "Alliiertes Militär",
-    "CharacterType.name.ambassadorDiplomat": "Botschafter / Diplomaten",
-    "CharacterType.name.cadet": "Kadetten",
-    "CharacterType.name.child": "Kinder",
-    "CharacterType.name.other": "Andere",
-
     "CareerType.core.young.name": "Grünschnabel",
     "CareerType.core.young.description": "Der Charakter wird durch das Potential und weniger die Fähigkeiten definiert. Das rohe Talent und die Erwartungen an das Universum müssen noch durch die Realität abgeschwächt werden.",
     "CareerType.core.young.valueInstruction": "Der Charakter erhält eine Überzeugung, welche die Unerfahrenheit und Naivität in irgendeiner Art widerspiegelt.",
@@ -447,11 +482,16 @@
     "CareerType.core.veteran.valueInstruction": "Der Charakter erhält eine Überzeugung, welche die Jahre an Erfahrung und die in der langen Karriere geformten Wertvorstellungen widerspiegelt.",
 
     "CareerType.civilian.young.name": "Jung",
+    "CareerType.civilian.young.description": "Der Charakter wird durch das Potential und weniger die Fähigkeiten definiert. Das rohe Talent und die Erwartungen an das Universum müssen noch durch die Realität abgeschwächt werden.",
+    "CareerType.civilian.young.valueInstruction": "Der Charakter erhält eine Überzeugung, welche die Unerfahrenheit und Naivität in irgendeiner Art widerspiegelt.",
 
     "CareerType.civilian.experienced.name": "Erfahren",
+    "CareerType.civilian.experienced.description": "Der Charakter hat mehrere Jahre Erfahrung im Dienst und freut sich auf eine vielversprechende Karriere.",
     "CareerType.civilian.experienced.valueInstruction": "Der Charakter erhält einen Wert und kann diesen frei wählen.",
 
     "CareerType.civilian.veteran.name": "Veteran",
+    "CareerType.civilian.veteran.description": "Der Charakter blickt auf eine jahrzehntelange Erfahrung im Dienst zurück und hat bereits auf vielen Schiffen, Welten und/oder Sternenbasen gedient. Urteilsvermögen und Meinungen werden von Untergebenen, Gleichrangigen und selbst Vorgesetzten hoch geschätzt.",
+    "CareerType.civilian.veteran.valueInstruction": "Der Charakter erhält eine Überzeugung, welche die Jahre an Erfahrung und die in der langen Karriere geformten Wertvorstellungen widerspiegelt.",
 
     "CareerType.klingon.young.name": "Junger Krieger",
 
@@ -460,11 +500,23 @@
 
     "CareerType.klingon.veteran.name": "Kriegsveteran",
 
+    "CareerType.solo.young.name": "Grünschnabel",
     "CareerType.solo.young.description": "Der Charakter wird durch das Potential und weniger die Fähigkeiten definiert. Das rohe Talent und die Erwartungen an das Universum müssen noch durch die Realität abgeschwächt werden.",
 
     "CareerType.solo.experienced.name": "Erfahren",
+    "CareerType.solo.experienced.description": "Der Charakter hat mehrere Jahre Erfahrung und freut sich auf eine vielversprechende Karriere.",
 
     "CareerType.solo.veteran.name": "Veteran",
+    "CareerType.solo.veteran.description": "Der Charakter blickt auf eine jahrzehntelange Erfahrung zurück und hat bereits auf vielen Schiffen und Sternenbasen gedient. Urteilsvermögen und Meinungen werden von Untergebenen, Gleichrangigen und selbst Vorgesetzten hoch geschätzt.",
+
+    "CharacterType.name.starfleet": "Sternenflotte",
+    "CharacterType.name.klingonWarrior": "Klingonische Verteidigungsstreitmacht",
+    "CharacterType.name.civilian": "Zivilisten",
+    "CharacterType.name.alliedMilitary": "Alliiertes Militär",
+    "CharacterType.name.ambassadorDiplomat": "Botschafter / Diplomaten",
+    "CharacterType.name.cadet": "Kadetten",
+    "CharacterType.name.child": "Kinder",
+    "CharacterType.name.other": "Andere",
 
     "Environment.common.homeworld.name": "Heimatwelt",
     "Environment.common.homeworld.description": "Der Charakter stammt von der Heimatwelt seiner oder ihrer Zivilisation und ist umgeben von dem kulturellen sowie spirituellen Erbe seines oder ihres Volkes aufgewachsen. Heimatwelten spiegeln oft die Ideale ihres Volkes wider und sind äußerst utopisch und idyllisch. Sie sind Horte der Tradition und sind die Zentren des wirtschaftlichen und politischen Lebens ihrer Zivilisation.",
@@ -494,6 +546,7 @@
     "AlliedMilitaryType.name.bajoranMilitia": "Bajoranisches Militär",
     "AlliedMilitaryType.name.cardassianUnion": "Cardassianische Union",
     "AlliedMilitaryType.name.dominion": "Dominion",
+    "AlliedMilitaryType.name.ferengiMilitary": "Ferengi Militär",
     "AlliedMilitaryType.name.other": "Andere",
 
     "BodyType.averageMale": "Durchschnittlicher Mann",
@@ -508,6 +561,7 @@
     "Division.monsterMaroon.helmEngineering": "Steuer/Technik",
     "Division.monsterMaroon.medical": "Medizin",
     "Division.monsterMaroon.security": "Sicherheit",
+    "Division.monsterMaroon.specialServices": "Ordonnazen",
     "Division.monsterMaroon.trainee": "Rekrut",
 
     "Era.name.enterprise": "Enterprise (22. Jahrhundert)",
@@ -576,10 +630,13 @@
     "MissionProfile.default.crisisAndEmergencyResponse": "Krisen- und Notfallreaktionsoperationen",
     "MissionProfile.default.multiroleExplorer": "Multifunktions-Erkundungsschiff",
     "MissionProfile.default.projectEscalante": "Projekt Escalante",
+    "MissionProfile.default.battlecruiser": "Schlachtkreuzer",
     "MissionProfile.default.reserveFleet": "Reserveflotte",
+    "MissionProfile.default.espionageIntelligence": "Spionage/Geheimdienst",
     "MissionProfile.default.flagship": "Flaggschiff",
     "MissionProfile.default.logisticalQuartermaster": "Quartiermeister",
     "MissionProfile.default.patrol": "Patrouille",
+    "MissionProfile.default.warship": "Kriegsschiff",
 
     "NpcType.minor.name": "Einfacher NSC",
 
@@ -604,6 +661,8 @@
 
     "Rank.ensign.name": "Fähnrich",
     "Rank.ensign.abbrev": "Fr.",
+
+    "Rank.other.name": "Sonstiges",
 
     "Rank.none.name": "Ohne",
 
@@ -712,13 +771,31 @@
 
     "Species.risian.name": "Risaner",
 
+    "Species.reman.name": "Remaner",
+
     "Species.romulan.name": "Romulaner",
+
+    "Species.suliban.name": "Suliban",
 
     "Species.tellarite.name": "Tellariten",
 
     "Species.trill.name": "Trill",
 
     "Species.vulcan.name": "Vulkanier",
+
+    "Species.xindiArboreal.name": "Xindi-Arboreale",
+
+    "Species.xindiPrimate.name": "Xindi-Primaten",
+
+    "Species.xindiReptilian.name": "Xindi-Reptilianer",
+
+    "Species.xindiInsectoid.name": "Xindi-Insektoide",
+
+    "Species.zakdorn.name": "Zakdorn",
+
+    "Species.mixedSpecies.text": "{{primarySpecies}} / {{secondarySpecies}}",
+
+    "Species.formerSpecies.text": "{{primarySpecies}} (ursprünglich {{otherSpecies}})",
 
     "StarSystem.common.coordinates": "Koordinaten",
     "StarSystem.common.innerZone": "Innere Zone",
@@ -738,6 +815,18 @@
     "UniformEra.dominionWar": "Dominionkrieg",
     "UniformEra.lowerDecks": "Lower Decks",
     "UniformEra.voyagerDS9": "Voyager/DS9",
+
+    "Upbringing.starfleet.militaryOrExploration.name": "Sternenflotte",
+
+    "Upbringing.starfleet.businessOrTrade.name": "Wirtschaft und Handel",
+
+    "Upbringing.starfleet.agricultureOrRural.name": "Ackerbau und Landleben",
+
+    "Upbringing.starfleet.scienceAndTechnology.name": "Wissenschaft und Technologie",
+
+    "Upbringing.starfleet.artisticAndCreative.name": "Kunst und Kreativität",
+
+    "Upbringing.starfleet.diplomacy and Politics.name": "Diplomatie und Politik",
 
     "Value.environment.text": "Diese Überzeugung sollte die Herkunft und die Kultur des Charakters, in der er oder sie aufgewachsen ist, widerspiegeln. Dies ist eine gute Gelegenheit, sich darüber Gedanken zu machen, wie der Charakter seine oder ihre eigene Kultur sieht und wie er oder sie zu den Philosophien und Traditionen der Vorfahren steht.",
 
@@ -791,6 +880,8 @@
     "Weapon.quality.hidden.name": "Unauffällig {{rank}}",
 
     "Weapon.quality.intense.name": "Intensiv",
+
+    "Weapon.quality.jamming.name": "Kommunikation störend",
 
     "Weapon.quality.knockdown.name": "Niederwerfend",
 
