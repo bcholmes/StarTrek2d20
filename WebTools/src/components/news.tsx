@@ -12,6 +12,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.230917</b>
+                <ul>
+                    <li>Starting support for unofficial extensions.</li>
+                </ul>
                 <b>v1.230915</b>
                 <ul>
                     <li>Add in support for random value and focus tables.</li>
@@ -179,12 +183,6 @@ class News extends React.Component<INewsProperties, {}> {
                 <b>v1.230318</b>
                 <ul>
                     <li>Minor bug fixes.</li>
-                </ul>
-                <b>v1.230316</b>
-                <ul>
-                    <li>A couple of minor enhancements.</li>
-                    <li>Still more tweaks to the NPC Generator and the Sector Generator.</li>
-                    <li>Some additional German translations.</li>
                 </ul>
 
                 <div className="text-center">

@@ -179,7 +179,7 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({charact
 
                     <div className="d-flex justify-content-between align-items-center flex-wrap">
                         <SoloValueInput value={character?.environmentValue}
-                            onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Education))}}/>
+                            onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Environment))}}/>
                         <div style={{ flexShrink: 0 }} className="mt-2">
                             <D20IconButton onClick={() => randomValue() }/>
                         </div>

@@ -85,6 +85,7 @@ class ProstheticCatalog {
                         case HairType.SidePart:
                         case HairType.TousledSidePart:
                         case HairType.BowlCutHair:
+                        case HairType.RomulanPeakedHair:
                         case HairType.ChinLengthBob:
                         case HairType.MediumLengthFemaleSidePart:
                         case HairType.MediumMaleCenterPart:

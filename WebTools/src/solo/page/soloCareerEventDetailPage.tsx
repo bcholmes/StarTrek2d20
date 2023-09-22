@@ -120,11 +120,11 @@ const SoloCareerEventDetailsPage: React.FC<ISoloCareerEventProperties> = ({chara
 
     const navigateToNextStep = () => {
         if (careerEventStep.attribute == null) {
-            Dialog.show(t('SoloCareerEventDetailsPage.errorAttribute'));
+            Dialog.show(t('CareerEventDetails.errorAttribute'));
         } else if (careerEventStep.discipline == null) {
-            Dialog.show(t('SoloCareerEventDetailsPage.errorDiscipline'));
+            Dialog.show(t('CareerEventDetails.errorDiscipline'));
         } else if (!careerEventStep.focus) {
-            Dialog.show(t('SoloCareerEventDetailsPage.errorFocus'));
+            Dialog.show(t('CareerEventDetails.errorFocus'));
         } else if (context === StepContext.CareerEvent2) {
             store.dispatch(setCharacterFinishingTouches());
             Navigation.navigateToPage(PageIdentity.SoloFinishingTouches);
