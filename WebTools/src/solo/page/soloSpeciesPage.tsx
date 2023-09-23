@@ -54,7 +54,7 @@ const SoloSpeciesPage: React.FC<ISoloSpeciesPageProperties> = ({era, character})
             });
 
         return (
-            <tr key={i} onClick={() => { if (Window.isCompact()) selectSpecies(s.id); }}>
+            <tr key={i} onClick={() => { if (Window.isCompact()) selectSpecies(s); }}>
                 <td className="selection-header">{s.localizedName}</td>
                 <td>{attributes}</td>
                 <td className="text-right"><Button buttonType={true} className="button-small"onClick={() => { selectSpecies(s) }} >{t('Common.button.select')}</Button></td>

@@ -2231,7 +2231,7 @@ class _Species {
     }
 
     getCaptainsLogSpecies() {
-        let result = [];
+        let result: SpeciesModel[] = [];
         for (let id in this._species) {
             const species = this._species[id];
             if (species.sources.indexOf(Source.CaptainsLog) >= 0) {
