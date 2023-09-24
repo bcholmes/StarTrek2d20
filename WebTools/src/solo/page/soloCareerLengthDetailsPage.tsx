@@ -32,7 +32,7 @@ const SoloCareerLengthDetailsPage: React.FC<ISoloCharacterProperties> = ({charac
     const randomValue = () => {
         let done = false;
         while (!done) {
-            let value = ValueRandomTable();
+            let value = ValueRandomTable(character.speciesStep?.species, character.educationStep?.primaryDiscipline);
             if (character.values.indexOf(value) < 0) {
                 done = true;
                 store.dispatch(setCharacterValue(value, StepContext.Career));

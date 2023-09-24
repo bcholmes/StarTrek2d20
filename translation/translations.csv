@@ -61,12 +61,12 @@ ViewPage.viewMainCharacter,View Main Character,Hauptfigur anzeigen,Ver personaje
 ViewPage.viewStarship,View Starship,Raumschiff ansehen,Ver nave espacial,Voir le vaisseau spatial
 ViewPage.errorMessage,"Things have gone terribly, terribly wrong. We might be in the mirror universe.",Etwas ist ganz schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.,"Las cosas han ido terriblemente, terriblemente mal. Podríamos estar en el universo espejo.","Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir."
 ViewPage.unnamedStarship,Unnamed Starship,Unbenanntes Raumschiff,Nave espacial sin nombre,Vaisseau sans nom
-CareerEvents.standard,Standard,,,
-CareerEvents.standardAndUnofficial,Standard and Unofficial,,,
-CareerEvents.unofficialNote,This list includes unofficial items from [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Check that your GM is comfortable allowing these items.,,,
-CareerEventDetails.errorAttribute,Please select an attribute.,,,
-CareerEventDetails.errorDiscipline,Please select a discipline.,,,
-CareerEventDetails.errorFocus,Please select a focus.,,,
+CareerEvents.standard,Standard,Standard,,
+CareerEvents.standardAndUnofficial,Standard and Unofficial,Standard und Inoffizielle,,
+CareerEvents.unofficialNote,This list includes unofficial items from [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Check that your GM is comfortable allowing these items.,"Diese Liste enthält inoffizielle Einträge aus [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Bitte prüfe, ob deine SL diese erlaubt.",,
+CareerEventDetails.errorAttribute,Please select an attribute.,Bitte wähle ein Attribut.,,
+CareerEventDetails.errorDiscipline,Please select a discipline.,Bitte wähle eine Disziplin.,,
+CareerEventDetails.errorFocus,Please select a focus.,Bitte wähle einen Fokus.,,
 GMTracker.title,Tracker,NSC-Verwaltung,Rastreador,Suivi
 GMTracker.instruction,Use this tool to manage various NPCs in your game.,"Benutzen Sie dieses Werkzeug, um die verschiedenen NSCs in Ihrem Spiel zu verwalten.",Usa esta herramienta para administrar varios NPC en tu juego.,Utilisez cet outil pour gérer divers PNJ dans votre jeu.
 GMTracker.addCharacterModalTitle,Add Character,Charakter hinzufügen,Agregar carácter,Ajouter un personnage
@@ -77,7 +77,7 @@ AddCharacterView.characterPrefix,Character:,Charakter:,Carácter:,Personnage:
 CareerSelectionPage.title,Select Career,Karriere wählen,,Choisir une Carrière
 CareerSelectionPage.selectCareer,Select Career,Karriere wählen,,Choisir une Carrière
 CareerSelectionPage.rollCareer,Roll Career,Zufällige Karriere,,Carrière Aléatoire
-CareerSelectionPage.exclusionText,"Your character has a Talent (""Advanced Team Dynamics"") that precludes Young characters",,,"Votre personnage a le talent ""Dynamyque de Groupe Avancée"" qui empêche les personnages ""Jeunes"""
+CareerSelectionPage.exclusionText,"Your character has a Talent (""Advanced Team Dynamics"") that precludes Young characters","Dein Charakter hat ein Talent (""Erweiterte Teamdynamik""), welches junge Charaktere ausschließt",,"Votre personnage a le talent ""Dynamyque de Groupe Avancée"" qui empêche les personnages ""Jeunes"""
 CareerSelectionPage.selectOneTalent,One talent of choice,Ein Talent deiner Wahl,,Un talent au choix
 CharacterSheetDialog.title,Choose Template,Vorlage auswählen,,Choisir un Modèle
 CharacterSheetDialog.thumbnail,Thumbnail,Portraitfoto,,Vignette
@@ -125,7 +125,11 @@ SoloCareerEvent.instruction,"Your character’s career is a tapestry of events a
 
 Your character has two defining career events, chosen or determined randomly from the list below, and gains whatever benefits they provide.
 
-For characters that chose Novice Career Length, assume that these career events took place during the character’s time at the Academy or equivalent, perhaps during a field training assignment aboard a starship.",,,
+For characters that chose Novice Career Length, assume that these career events took place during the character’s time at the Academy or equivalent, perhaps during a field training assignment aboard a starship.","Eine Karriere in der Sternenflotte besteht aus einer Vielzahl an Erfahrungen und Ereignissen – und einige darunter werden zu Wendepunkten im Leben eines Offiziers. Dabei wird dies oft erst in der Retrospektive deutlich: Was für einen Ensign mit Anfang 20 unwichtig erscheint, mag für dieselbe Person Jahrzehnte später von großer Wichtigkeit sein.
+
+Dein Charakter hat zwei entscheidende Karriere-Ereignisse, die aus der folgenden Liste ausgewählt oder zufällig bestimmt werden, und erhält alle Vorteile, die sie bieten.
+
+Hat dein Charaktere die Option „Grünschnabel“ gewählt, dann nimm an, dass die Ereignisse in der Akademiezeit geschehen sind, etwa auf einer Exkursion oder einem Praxisteil auf einem Raumschiff.",,
 SoloConstructTypePage.character,Character,Charakter,,
 SoloConstructTypePage.instruction,"Are you creating a character, or a starship?",Erstellst du einen Charakter oder ein Raumschiff?,,
 SoloConstructTypePage.starship,Starship,Raumschiff,,
@@ -451,75 +455,75 @@ Source.book.lowerDecksCampaign,Lower Decks,(NOT YET TRANSLATED),,
 Source.book.captainsLog,Captain's Log,(NOT YET TRANSLATED),,
 Source.book.animatedSeries,Animated Series,(NOT YET TRANSLATED),,
 Source.book.continuingMissions,Continuing Missions,(NOT YET TRANSLATED),,
-CareerEvent.common.1.name,Ship Destroyed,,,
-CareerEvent.common.2.name,Death of a Friend,,,
-CareerEvent.common.3.name,Lauded by Another Culture,,,
-CareerEvent.common.4.name,Negotiate a Treaty,,,
-CareerEvent.common.5.name,Required to Take Command,,,
-CareerEvent.common.6.name,Encounter with a Truly Alien Being,,,
-CareerEvent.common.7.name,Serious Injury,,,
-CareerEvent.common.8.name,Conflict with a Hostile Culture,,,
-CareerEvent.common.9.name,Mentored,,,
-CareerEvent.common.10.name,Transporter Accident,,,
-CareerEvent.common.11.name,Dealing with a Plague,,,
-CareerEvent.common.12.name,Betrayed Ideals for a Superior,,,
-CareerEvent.common.13.name,Called Out a Superior,,,
-CareerEvent.common.14.name,New Battle Strategy,,,
-CareerEvent.common.15.name,Learns Unique Language,,,
-CareerEvent.common.16.name,Discovers an Artifact,,,
-CareerEvent.common.17.name,Special Commendation,,,
-CareerEvent.common.18.name,Solved an Engineering Crisis,,,
-CareerEvent.common.19.name,Breakthrough or Invention,,,
-CareerEvent.common.20.name,First Contact,,,
-CareerEvent.unofficial.21.name,Advanced Tactical Training,,,
+CareerEvent.common.1.name,Ship Destroyed,Zerstörtes Schiff,,
+CareerEvent.common.2.name,Death of a Friend,Tod eines Freundes/einer Freundin,,
+CareerEvent.common.3.name,Lauded by Another Culture,Gelobt durch fremde Kultur,,
+CareerEvent.common.4.name,Negotiate a Treaty,Vertrag ausgehandelt,,
+CareerEvent.common.5.name,Required to Take Command,Unerwartetes Kommando,,
+CareerEvent.common.6.name,Encounter with a Truly Alien Being,Begegnung mit einem fremdartigen Wesen,,
+CareerEvent.common.7.name,Serious Injury,Ernste Verletzung,,
+CareerEvent.common.8.name,Conflict with a Hostile Culture,Konflikt mit einer fremden Kultur,,
+CareerEvent.common.9.name,Mentored,Unter die Fittiche genommen,,
+CareerEvent.common.10.name,Transporter Accident,Transporterunfall,,
+CareerEvent.common.11.name,Dealing with a Plague,Behandlung einer Seuche,,
+CareerEvent.common.12.name,Betrayed Ideals for a Superior,Verratene Ideale,,
+CareerEvent.common.13.name,Called Out a Superior,Vorgesetzte/-n angeschwärzt,,
+CareerEvent.common.14.name,New Battle Strategy,Neue Kampfstrategie,,
+CareerEvent.common.15.name,Learns Unique Language,Einzigartige Sprache gelernt,,
+CareerEvent.common.16.name,Discovers an Artifact,Artefakt entdeckt,,
+CareerEvent.common.17.name,Special Commendation,Belobigung,,
+CareerEvent.common.18.name,Solved an Engineering Crisis,Technische Krise gelöst,,
+CareerEvent.common.19.name,Breakthrough or Invention,Durchbruch oder Erfindung,,
+CareerEvent.common.20.name,First Contact,Erstkontakt,,
+CareerEvent.unofficial.21.name,Advanced Tactical Training,Fortgeschrittene taktische Ausbildung,,
 CareerEvent.unofficial.21.description,"The character took a specialized course in advanced tactical and intelligence techniques.
 
 - Where was the course taught? Who recommended the character for the course?
 - Did the character pass the course? How did the character rank in the various subjects?",,,
 CareerEvent.unofficial.21.focusDescription,"The character gains a focus, which should reflect the special training they received. Examples include: Guerilla Tactics, Strategic Defense, or Combat Maneuvers.",,,
-CareerEvent.unofficial.22.name,Protoype Testing,,,
+CareerEvent.unofficial.22.name,Protoype Testing,Protoyp getestet,,
 CareerEvent.unofficial.22.description,"The character was involved in the testing of a prototype device, a new treatment, or experimental starship
 
 - What was the device, treatment, or ship, and what made it unique or experimental?
 - Was the project classified? Was the prototype scrapped or successful?",,,
 CareerEvent.unofficial.22.focusDescription,"The character gains a focus, which should reflect something connected to the science and technology behind the prototype. Examples include: Sensors, Cybernetics, or Nanotechnology.",,,
-CareerEvent.unofficial.23.name,Colonization Effort,,,
+CareerEvent.unofficial.23.name,Colonization Effort,Bemühung um Kolonisierung,,
 CareerEvent.unofficial.23.description,"The character was assigned to help colonist settle on a new planet, and likely has spent significant time on-site.
 
 - What planet was colonized, and by whom? Were there any territorial disputes?
 - What major issues did the colonists have to deal with? How did the character assist?",,,
 CareerEvent.unofficial.23.focusDescription,"The character gains a focus, reflecting a skill they contributed to or learned during the colonization effort. Examples include: Mining, Impulse Engines, or Ground Vehicles.",,,
-CareerEvent.unofficial.24.name,Exchange Program,,,
+CareerEvent.unofficial.24.name,Exchange Program,Austauschprogramm,,
 CareerEvent.unofficial.24.description,"The character participated in an exchange program, which could range from an officer exchange program, an interspecies medical exchange, or a galactic cultural exchange program.
 
 - What was the nature of the exchange? Where did the character go?
 - Was the exchange an eye-opening experience, or a tense one? What lessons did the character come away with?",,,
 CareerEvent.unofficial.24.focusDescription,"The character gains a focus, reflecting insights or skills he learned during the exchange program. Examples include: Observation, Interspecies Protocol, or Sociology.",,,
-CareerEvent.unofficial.25.name,Lucky Streak,,,
+CareerEvent.unofficial.25.name,Lucky Streak,Glückssträhne,,
 CareerEvent.unofficial.25.description,"The character had an extraordinary run of luck, which others have noticed.
 
 - Was the character just lucky, or were there external reasons for the seeming good luck?
 - What kind of lucky breaks did the character have? Did it affect how others saw them?",,,
 CareerEvent.unofficial.25.focusDescription,"The character gains a focus, reflecting how they pressed their luck, or their understanding of odds. Examples include: Gambling, Evasive Action, or Mathematics.",,,
-CareerEvent.unofficial.26.name,Learned from Significant Blunder,,,
+CareerEvent.unofficial.26.name,Learned from Significant Blunder,Aus bedeutenden Fehlern gelernt,,
 CareerEvent.unofficial.26.description,"The character had committed a significant blunder during their career, one which people have not forgotten. To avoid committing the same error again, the character has taken proper precautions.
 
 - What error did the character commit, and how bad was it? What were the consequences of that error?
 - Did the blunder negatively affect the character's career? Who still holds a grudge against them?",,,
 CareerEvent.unofficial.26.focusDescription,"The character gains a focus, which should reflect how they try to avoid future blunders, or extra practice on a particular system. Examples include: Analysis, Helm Operations, or Communication Systems.",,,
-CareerEvent.unofficial.27.name,Cultural Observation Post,,,
+CareerEvent.unofficial.27.name,Cultural Observation Post,Kultureller Beobachtungsposten,,
 CareerEvent.unofficial.27.description,"The character was assigned to a cultural observation mission, operating a ‘duck blind’.
 
 - What pre-warp civilization was the character observing?
 - Did anything go wrong on the mission?",,,
 CareerEvent.unofficial.27.focusDescription,"The character gains a focus, reflecting something they studied of the culture under observation, or skills they honed while operating the duck blind. Examples include: Anthropology, Ethnomusicology, or Covert Operations.",,,
-CareerEvent.unofficial.28.name,Struggle with Addiction,,,
+CareerEvent.unofficial.28.name,Struggle with Addiction,Kampf mit der Sucht,,
 CareerEvent.unofficial.28.description,"The character struggled with a type of addiction, which could range from holo-addiction, to drugs, to alcohol, among others.
 
 - What was the nature of the addiction? How did it affect the character's performance?
 - What started the character's recovery? Did he rely on someone?",,,
 CareerEvent.unofficial.28.focusDescription,"The character gains a focus, reflecting coping mechanisms or expertise on the object of their addiction. Examples include: Holodecks, Mental Discipline, or Alcoholic Beverages.",,,
-CareerEvent.unofficial.29.name,Rivalry,,,
+CareerEvent.unofficial.29.name,Rivalry,Rivalität,,
 CareerEvent.unofficial.29.description,"The character had a significant rivalry with someone.
 
 - Who is the character's rival? What do they compete over?
@@ -651,7 +655,7 @@ CareerEvent.unofficial.50.description,"The character's assignment was to a medic
 - Where was the medical facility? Did it specialize in a particular kind of medicine?
 - What department was the character assigned to at the medical facility? Who were the patients?",,,
 CareerEvent.unofficial.50.focusDescription,"The character gains a focus, reflecting something they picked up while surrounded by medical staff. Examples include: Comparative Humanoid Anatomy, Surgery, or Virology.",,,
-CareerEvent.common.99.name,Recruited to Starfleet Intelligence,,,
+CareerEvent.common.99.name,Recruited to Starfleet Intelligence,Rekrutiert vom Sternenflottengeheimdienst,,
 CareerType.core.young.name,Young Officer,Grünschnabel,,Jeune Officier
 CareerType.core.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,Der Charakter wird durch das Potential und weniger die Fähigkeiten definiert. Das rohe Talent und die Erwartungen an das Universum müssen noch durch die Realität abgeschwächt werden.,,Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.
 CareerType.core.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naivete in some way.","Der Charakter erhält eine Überzeugung, welche die Unerfahrenheit und Naivität in irgendeiner Art widerspiegelt.",,"Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage."
@@ -960,8 +964,14 @@ ShipBuildType.pod.name,Pod,Kleines Shuttle,,Nacelle
 ShipBuildType.shuttlecraft.name,Shuttle,Shuttle,,Navette
 ShipBuildType.runabout.name,Runabout,Runabout,,Runabout
 ShipBuildType.starship.name,Starship,Raumschiff,,Vaisseau
-Species.aenar.name,Aenar,,,
-Species.aenar.description,"The Aenar were a subspecies of Andorians who were on the verge of extinction by the mid-22nd century. They had two antennae and no skin or hair pigmentation. Their most distinctive trait was their telepathic abilities, which included reading minds and psychically projecting themselves into the minds of other humanoids.",,,
+Species.aenar.name,Aenar,Aenar,,
+Species.aenar.description,"The Aenar subspecies of the Andorians is native to the Northern Wastes of Andoria. Their population never rose above a few thousand. Prior to the 23rd- Century, Aenar lived in an underground compound shielded by a dampening field, and had become a myth to other Andorians. They have a communal society with no formal leader, but when the situation calls for a single voice they appoint a delegate known as “The Speaker.” Aenar possess a strictly pacifist ideology and deplore violence of all forms, both physical and mental. 
+
+Physiologically, Aenar are almost identical to Andorians save an absence of skin and hair pigmentation and their highly evolved telepathic abilities, but the Aenar had a strict law against reading the minds of other people without prior consent. Aenar and Andorians were genetically compatible, and following their discovery in 2140, there were increasing marriages between the subspecies. By the early 24th-Century, few Aenar remained, having become fully integrated into Andorian society. However, it was not unknown for families with many Aenar progenitors to produce children with empathy talents.",,,
+Species.aenar.exampleValue,There is never a need for hostility,,,
+Species.aenar.soloDescription,"The Aenar were a subspecies of Andorians who were on the verge of extinction by the mid-22nd century. They had two antennae and no skin or hair pigmentation. Their most distinctive trait was their telepathic abilities, which included reading minds and psychically projecting themselves into the minds of other humanoids.",,,
+Species.aenar.trait,"Andorian, Aenar",,,
+Species.aenar.traitDescription,"These traits may reduce the Difficulty of Tasks to resist extreme cold, or Tasks impacted by extremely low temperatures. Their antennae aids in both balance and spatial awareness, and a lost or injured antenna causes dizziness until it regrows. Andorians have a high metabolism that means they tire quickly and are more vulnerable to infection from certain types of injury. Many Aenar are born blind yet have the ability to “see” people and objects via their innate telepathy. However, operating terminals or using view screens is more challenging.",,,
 Species.andorian.name,Andorian,Andorianer,,
 Species.andorian.aboutNames,"Andorian names tend to be somewhat harsh-sounding, and have a personal name followed by a clan name. Amongst some Andorians, it’s common to begin the clan name with a gender-specific prefix: 'zh' or 'sh' for females, and 'ch' or 'th' for males. This is placed before the family name, separated by an apostrophe. Longer or more complicated Andorian names are commonly shortened, especially when dealing with other species. Examples: Ishrelia zh’Azonan (female), Atheth th’Zynes(male)",,,
 Species.andorian.description,"An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the United Federation of Planets since its foundation, having been firm allies of Humanity for several years beforehand. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor-duels known as Ushaan, using razorsharp ice-mining tools.",,,
@@ -993,7 +1003,14 @@ Species.betazoid.traitDescription,"All Betazoids are telepathic to varying degre
 Species.bolian.name,Bolian,Bolianer,,
 Species.bolian.soloDescription,"Identified by a cartilaginous ridge that extends vertically down their head, past the center of the face to the chest, with skin color ranging from light blues to dark greens and muted purples with darker banding across the head. They are predominantly bald, though some females are known to have hair. Bolians are an understanding, hospitable species, often forward-facing in their duties in customer relations or diplomatic service.",,,
 Species.bynar.name,Bynar,,,
-Species.bynar.description,"Over time their interconnection with their world’s master computer has grown to the point that their language and thought patterns have become as close to binary as is possible for organic beings. In fact, their very lives depend on this interaction with their master computer, as well as with one another. They are shorter in height than most humanoids, genderless with lilac skin and enlarged skulls, and usually operate in pairs.",,,
+Species.bynar.exampleValue,There are only ever two choices,,,
+Species.bynar.description,"Bynars are native to the planet Bynaus, in the Beta Magellan system. Shorter than Humans, Bynars have lilac-coloured skin, enlarged skulls, and asymmetrical ears. Their defining characteristic is that the entire Bynar race is cyborgs connected to their master computer on their homeworld, allowing them to near-instantaneously share information. Bynars work and live in pairs, being genetically bonded to another for life. Pairs of Bynars communicate using complex binary code. When they do speak other languages, they alternate phrases and finishing each other’s sentences. If one of the pair dies, it’s traditional for the survivor to return to Bynaus to be paired with a new Bynar. 
+
+Bynar that choose not to return are seen to have rejected Bynar society and have their personal identification code removed from the computer network. The Bynars’ constant exposure to computers makes them quick to learn new operating systems and programs, and their ability to recall data and process new information makes them highly valued to organizations such as the Starfleet Corps of Engineers and the Daystrom Institute. 
+
+Bynars have practiced their cybernetic augmentation for centuries: as early as the 2150s they began replacing the parietal lobes of newborns with a synaptic processor. Bynar workers and security forces once employed supplementary physical augmentations, but these have become rare since Bynaus allied with the Federation. Initially, Bynars seldom traveled far from their homeworld, as the range of their network was limited. By the late 2200s, subspace  communication had improved enough that they could travel throughout much of the Federation.",,,
+Species.bynar.soloDescription,"Over time their interconnection with their world’s master computer has grown to the point that their language and thought patterns have become as close to binary as is possible for organic beings. In fact, their very lives depend on this interaction with their master computer, as well as with one another. They are shorter in height than most humanoids, genderless with lilac skin and enlarged skulls, and usually operate in pairs.",,,
+Species.bynar.traitDescription,"Despite their small size, Bynars are physical robust and durable. Their augmentations allow them to communicate instantaneously with their twin while in the same system, sharing all sensory input. However, they are vulnerable to electromagnetic pulses, which can disable or destroy their implants, leaving them disoriented or even disabled.",,,
 Species.caitian.name,Caitian,,,
 Species.caitian.soloDescription,"A catlike people equally devoted to martial as well as artistic and philosophical pursuits. Solidly established within the Federation, with extensive representation at all levels of Starfleet. Bipedal, slightly smaller than Humans, with prehensile tails.",,,
 Species.cardassian.name,Cardassian,,,

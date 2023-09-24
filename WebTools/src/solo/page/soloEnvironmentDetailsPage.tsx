@@ -129,7 +129,7 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({charact
     const randomValue = () => {
         let done = false;
         while (!done) {
-            let value = ValueRandomTable();
+            let value = ValueRandomTable(character.speciesStep?.species);
             if (character.values.indexOf(value) < 0) {
                 done = true;
                 store.dispatch(setCharacterValue(value, StepContext.Environment));

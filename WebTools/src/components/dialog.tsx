@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import {Button} from './button';
 
 interface IDialogProperties {
@@ -47,12 +47,12 @@ class DialogControl {
     }
 
     private render(visible: boolean) {
-        ReactDOM.render(
+        let root = createRoot(document.getElementById("dialog"));
+        root.render(
             React.createElement(_Dialog, {
                 message: this._message,
                 isVisible: visible
-            }),
-            document.getElementById("dialog")
+            })
         );
     }
 }

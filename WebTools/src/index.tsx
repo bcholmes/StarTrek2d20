@@ -1,4 +1,4 @@
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import CharacterCreationApp from "./app";
 import GMTrackerPage from './tracker/gmTrackerPage';
@@ -14,7 +14,8 @@ const TalentsOverviewMainPage = React.lazy(() => import('./pages/talentsOverview
 const ViewSheetPage = React.lazy(() => import(/* webpackChunkName: 'view' */ './view/viewSheetPage'));
 const TokenCreationPage = React.lazy(() => import(/* webpackChunkName: 'token' */ './token/tokenCreationPage'));
 
-ReactDOM.render(
+let root = createRoot(document.getElementById("mainBody"));
+root.render(
     <Provider store={store}>
         <Router>
             <Suspense fallback={<LoadingPage />}>
@@ -29,6 +30,5 @@ ReactDOM.render(
                 </Switch>
             </Suspense>
         </Router>
-    </Provider>,
-    document.getElementById("mainBody")
+    </Provider>
 );

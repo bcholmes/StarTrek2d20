@@ -26,7 +26,7 @@ const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
         }
     }
 
-    let assignment: string|Role = character.role ? RolesHelper.getRoleByName(character.role) : null;
+    let assignment: string|Role = character.role ? RolesHelper.instance.getRoleByName(character.role) : null;
 
     const [showAssignmentOther, setShowAssignmentOther] = useState(!!character.jobAssignment);
     const [showRankOther, setShowRankOther] = useState(rankValue === "other");
@@ -39,7 +39,7 @@ const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
         let result = [new DropDownElement("", t('Common.text.select')), new DropDownElement("other", "Other")];
         [Role.CommandingOfficer, Role.ExecutiveOfficer, Role.OperationsManager, Role.FlightController, Role.ChiefEngineer,
             Role.ChiefOfSecurity, Role.ChiefMedicalOfficer, Role.ScienceOfficer, Role.CommunicationsOfficer]
-            .forEach(r => result.push(new DropDownElement(r, RolesHelper.getSoloRole(r).name)));
+            .forEach(r => result.push(new DropDownElement(r, RolesHelper.instance.getSoloRole(r).name)));
         return result;
     }
 
@@ -85,7 +85,7 @@ const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
             if (showAssignmentOther) {
                 setShowAssignmentOther(false);
             }
-            let role = RolesHelper.getSoloRole(assignment as Role);
+            let role = RolesHelper.instance.getSoloRole(assignment as Role);
             if (role) {
                 store.dispatch(setCharacterAssignment(role.name, assignment as Role));
             }

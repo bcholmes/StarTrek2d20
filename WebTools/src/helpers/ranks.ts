@@ -185,7 +185,7 @@ class RolesPrerequisite implements IConstructPrerequisite<Character> {
         if (character.role == null) {
             return this.noRoleAllowed;
         } else {
-            const role = RolesHelper.getRoleByName(character.role);
+            const role = RolesHelper.instance.getRoleByName(character.role);
             return this._roles.indexOf(role) > -1;
         }
     }
@@ -202,7 +202,7 @@ class NotRolesPrerequisite implements IConstructPrerequisite<Character> {
     }
 
     isPrerequisiteFulfilled(character: Character) {
-        const role = RolesHelper.getRoleByName(character.role);
+        const role = RolesHelper.instance.getRoleByName(character.role);
         return this._roles.indexOf(role) === -1;
     }
     describe(): string {

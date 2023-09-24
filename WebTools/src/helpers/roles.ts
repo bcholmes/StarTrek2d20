@@ -133,7 +133,18 @@ export class RoleModel {
     }
 }
 
-class Roles {
+export class RolesHelper {
+
+    private static _instance;
+
+    static get instance() {
+        if (RolesHelper._instance == null) {
+            RolesHelper._instance = new RolesHelper();
+        }
+        return RolesHelper._instance;
+    }
+
+
     private _roles: RoleModel[] = [
         new RoleModel(
             Role.CommandingOfficer,
@@ -692,5 +703,3 @@ class Roles {
         return highest;
     }
 }
-
-export const RolesHelper = new Roles();

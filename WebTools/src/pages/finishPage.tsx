@@ -39,7 +39,7 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
         super(props);
 
         this.roles = [];
-        RolesHelper.getRoles(character).forEach(role => {
+        RolesHelper.instance.getRoles(character).forEach(role => {
             this.roles.push(role);
         });
 

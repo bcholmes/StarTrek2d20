@@ -446,7 +446,7 @@ export class FoundryVttExporter {
         });
 
         if (character.role != null) {
-            let role = RolesHelper.getRoleModelByName(character.role, character.type);
+            let role = RolesHelper.instance.getRoleModelByName(character.role, character.type);
             if (role) {
                 result.items.push({
                     "name": role.name,

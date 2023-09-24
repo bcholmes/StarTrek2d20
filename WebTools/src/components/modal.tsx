@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 interface IModalProperties {
     size?: string;
@@ -56,19 +57,19 @@ class ModalDialogControl {
     }
 
     private render(visible: boolean) {
+        let root = createRoot(document.getElementById("dialog"));
         if (visible) {
-            ReactDOM.render(
+            root.render(
                 React.createElement(Modal, {
                     show: visible,
                     onClose: () => { ModalControl.hide(); if (this.onClose) this.onClose();  },
                     size: this.size,
                     children: this.children,
                     header: this.header
-                }),
-                document.getElementById("dialog")
+                })
             );
         } else {
-            ReactDOM.unmountComponentAtNode(document.getElementById("dialog"));
+            root.unmount();
         }
     }
 }

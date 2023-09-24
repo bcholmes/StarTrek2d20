@@ -86,6 +86,14 @@
     "ViewPage.errorMessage": "Etwas ist ganz schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.",
     "ViewPage.unnamedStarship": "Unbenanntes Raumschiff",
 
+    "CareerEvents.standard": "Standard",
+    "CareerEvents.standardAndUnofficial": "Standard und Inoffizielle",
+    "CareerEvents.unofficialNote": "Diese Liste enthält inoffizielle Einträge aus [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Bitte prüfe, ob deine SL diese erlaubt.",
+
+    "CareerEventDetails.errorAttribute": "Bitte wähle ein Attribut.",
+    "CareerEventDetails.errorDiscipline": "Bitte wähle eine Disziplin.",
+    "CareerEventDetails.errorFocus": "Bitte wähle einen Fokus.",
+
     "GMTracker.title": "NSC-Verwaltung",
     "GMTracker.instruction": "Benutzen Sie dieses Werkzeug, um die verschiedenen NSCs in Ihrem Spiel zu verwalten.",
     "GMTracker.addCharacterModalTitle": "Charakter hinzufügen",
@@ -98,6 +106,7 @@
     "CareerSelectionPage.title": "Karriere wählen",
     "CareerSelectionPage.selectCareer": "Karriere wählen",
     "CareerSelectionPage.rollCareer": "Zufällige Karriere",
+    "CareerSelectionPage.exclusionText": "Dein Charakter hat ein Talent (\"Erweiterte Teamdynamik\"), welches junge Charaktere ausschließt",
     "CareerSelectionPage.selectOneTalent": "Ein Talent deiner Wahl",
 
     "CharacterSheetDialog.title": "Vorlage auswählen",
@@ -156,6 +165,8 @@
     "PromotionPage.instruction": "Wählen Sie einen neuen Rang für diesen Charakter",
 
     "ReputationChangePage.instruction": "Passen Sie das Ansehen des Charakters an, wenn nötig",
+
+    "SoloCareerEvent.instruction": "Eine Karriere in der Sternenflotte besteht aus einer Vielzahl an Erfahrungen und Ereignissen – und einige darunter werden zu Wendepunkten im Leben eines Offiziers. Dabei wird dies oft erst in der Retrospektive deutlich: Was für einen Ensign mit Anfang 20 unwichtig erscheint, mag für dieselbe Person Jahrzehnte später von großer Wichtigkeit sein.\n\nDein Charakter hat zwei entscheidende Karriere-Ereignisse, die aus der folgenden Liste ausgewählt oder zufällig bestimmt werden, und erhält alle Vorteile, die sie bieten.\n\nHat dein Charaktere die Option „Grünschnabel“ gewählt, dann nimm an, dass die Ereignisse in der Akademiezeit geschehen sind, etwa auf einer Exkursion oder einem Praxisteil auf einem Raumschiff.",
 
     "SoloConstructTypePage.character": "Charakter",
     "SoloConstructTypePage.instruction": "Erstellst du einen Charakter oder ein Raumschiff?",
@@ -469,6 +480,66 @@
     "Source.book.klingonCore": "Klingonisches Grundregelwerk",
     "Source.book.shackletonExpanse": "Shackleton-Ausdehnung",
 
+    "CareerEvent.common.1.name": "Zerstörtes Schiff",
+
+    "CareerEvent.common.2.name": "Tod eines Freundes/einer Freundin",
+
+    "CareerEvent.common.3.name": "Gelobt durch fremde Kultur",
+
+    "CareerEvent.common.4.name": "Vertrag ausgehandelt",
+
+    "CareerEvent.common.5.name": "Unerwartetes Kommando",
+
+    "CareerEvent.common.6.name": "Begegnung mit einem fremdartigen Wesen",
+
+    "CareerEvent.common.7.name": "Ernste Verletzung",
+
+    "CareerEvent.common.8.name": "Konflikt mit einer fremden Kultur",
+
+    "CareerEvent.common.9.name": "Unter die Fittiche genommen",
+
+    "CareerEvent.common.10.name": "Transporterunfall",
+
+    "CareerEvent.common.11.name": "Behandlung einer Seuche",
+
+    "CareerEvent.common.12.name": "Verratene Ideale",
+
+    "CareerEvent.common.13.name": "Vorgesetzte/-n angeschwärzt",
+
+    "CareerEvent.common.14.name": "Neue Kampfstrategie",
+
+    "CareerEvent.common.15.name": "Einzigartige Sprache gelernt",
+
+    "CareerEvent.common.16.name": "Artefakt entdeckt",
+
+    "CareerEvent.common.17.name": "Belobigung",
+
+    "CareerEvent.common.18.name": "Technische Krise gelöst",
+
+    "CareerEvent.common.19.name": "Durchbruch oder Erfindung",
+
+    "CareerEvent.common.20.name": "Erstkontakt",
+
+    "CareerEvent.unofficial.21.name": "Fortgeschrittene taktische Ausbildung",
+
+    "CareerEvent.unofficial.22.name": "Protoyp getestet",
+
+    "CareerEvent.unofficial.23.name": "Bemühung um Kolonisierung",
+
+    "CareerEvent.unofficial.24.name": "Austauschprogramm",
+
+    "CareerEvent.unofficial.25.name": "Glückssträhne",
+
+    "CareerEvent.unofficial.26.name": "Aus bedeutenden Fehlern gelernt",
+
+    "CareerEvent.unofficial.27.name": "Kultureller Beobachtungsposten",
+
+    "CareerEvent.unofficial.28.name": "Kampf mit der Sucht",
+
+    "CareerEvent.unofficial.29.name": "Rivalität",
+
+    "CareerEvent.common.99.name": "Rekrutiert vom Sternenflottengeheimdienst",
+
     "CareerType.core.young.name": "Grünschnabel",
     "CareerType.core.young.description": "Der Charakter wird durch das Potential und weniger die Fähigkeiten definiert. Das rohe Talent und die Erwartungen an das Universum müssen noch durch die Realität abgeschwächt werden.",
     "CareerType.core.young.valueInstruction": "Der Charakter erhält eine Überzeugung, welche die Unerfahrenheit und Naivität in irgendeiner Art widerspiegelt.",
@@ -742,6 +813,8 @@
     "ShipBuildType.runabout.name": "Runabout",
 
     "ShipBuildType.starship.name": "Raumschiff",
+
+    "Species.aenar.name": "Aenar",
 
     "Species.andorian.name": "Andorianer",
 

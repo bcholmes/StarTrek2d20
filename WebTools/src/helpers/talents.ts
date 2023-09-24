@@ -2323,6 +2323,34 @@ export class Talents {
                 "Anabaj"),
 
 
+            // Unofficial
+            new TalentModel(
+                "Telepathic Interference",
+                "Your skills at telepathy can interfere with the ability of others to read minds, send telepathic signals, or sense thoughts and emotions. As a Minor Action, you can shield the minds of others, preventing the detection of surface thoughts and emotions, as well as blocking telepathic communication. Attempts to push past your block is an Opposed Task. Additionally, you can assist other creatures in resisting having their mind read.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Aenar, true)],
+                1,
+                "Aenar"),
+            new TalentModel(
+                "Networked",
+                "You are connected to either the Bynar master system or your ship’s mainframe. Provided the computer is in communication range and there is no interference, that computer can assist you on Tasks where its Communication, Computer, or Sensor Systems would apply to the Task.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Bynar, true)],
+                1,
+                "Bynar"),
+            new TalentModel(
+                "Paired",
+                "You are genetically paired to another Bynar on the crew. This Bynar is a support character that does not count against your Crew Support for the mission. Once per scene, you can use their Disciplines on a Reason or Insight roll in place of your own.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Bynar, false)],
+                1,
+                "Bynar"),
+            new TalentModel(
+                "Unpaired",
+                "Your genetic pair is dead or is otherwise unavailable, and can’t be replaced during your current mission or deployment. Mentally alone, you are compulsively driven to aid others. When you assist another character with a Task, one d20 related to that Task can be re- rolled.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Bynar, false)],
+                1,
+                "Bynar"),
+
+
+
             // Careers
             new TalentModel(
                 "Untapped Potential",
