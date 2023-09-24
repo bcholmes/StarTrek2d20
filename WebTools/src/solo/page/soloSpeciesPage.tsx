@@ -72,7 +72,7 @@ const SoloSpeciesPage: React.FC<ISoloSpeciesPageProperties> = ({era, character})
 
             <div className="my-4">
                 <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSpecies( SpeciesRandomTable(era)) }>
-                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
                 {randomSpecies != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSpecies(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>

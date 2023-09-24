@@ -21,7 +21,7 @@ export class SpeciesExtraDetailsPage extends React.Component<ISpeciesExtraDetail
         return (<div className="page">
             <div className="container ml-0">
                 <CharacterCreationBreadcrumbs />
-                <Header>{species.name + ' '} Original Species Type</Header>
+                <Header><>{species.name + ' '} Original Species Type</></Header>
                 <InstructionText text={this.getInstructions()} />
 
                 <div className="mt-4">

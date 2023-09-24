@@ -47,7 +47,7 @@ const SoloCareerLengthPage: React.FC<ISoloCharacterProperties> = ({character}) =
             <InstructionText text={t('SoloCareerLength.instruction')} />
             <div className="my-4">
                 <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomLength( CareerLengthRandomTable()) }>
-                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
                 {randomLength != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomLength(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>

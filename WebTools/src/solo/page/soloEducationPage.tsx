@@ -49,7 +49,7 @@ const SoloEducationPage: React.FC<ISoloCharacterProperties> = ({character}) => {
             </p>
             <div className="my-4">
                 <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomTrack( EducationTrackRandomTable(character.type)) }>
-                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
                 {randomTrack != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomTrack(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>

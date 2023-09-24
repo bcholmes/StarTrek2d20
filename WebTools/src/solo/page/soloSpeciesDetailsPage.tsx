@@ -81,7 +81,7 @@ const SoloSpeciesDetailsPage: React.FC<ISoloCharacterProperties> = ({character})
                 </div>
 
                 <div className="col-md-6 mt-3">
-                    <Header level={2} className="mb-4">{t('Construct.other.attributes') + (species.attributes?.length > 3 ? ' ' + t('SpeciesDetails.selectThree') : "")} </Header>
+                    <Header level={2} className="mb-4"><>{t('Construct.other.attributes') + (species.attributes?.length > 3 ? ' ' + t('SpeciesDetails.selectThree') : "")} </></Header>
                     <AttributeComponent controller={controller} />
                 </div>
             </div>

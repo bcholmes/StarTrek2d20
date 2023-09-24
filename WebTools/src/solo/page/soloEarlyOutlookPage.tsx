@@ -114,7 +114,7 @@ const SoloEarlyOutlookPage: React.FC<ISoloCharacterProperties> = ({character}) =
         return (<>
             <div className="my-4">
                 <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomUpbringing( EarlyOutlookUpbringingRandomTable()) }>
-                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
                 {randomUpbringing != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomUpbringing(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
@@ -146,7 +146,7 @@ const SoloEarlyOutlookPage: React.FC<ISoloCharacterProperties> = ({character}) =
         return (<>
             <div className="my-4">
                 <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomCaste( EarlyOutlookCasteRandomTable()) }>
-                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
                 {randomCaste != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomCaste(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
@@ -178,7 +178,7 @@ const SoloEarlyOutlookPage: React.FC<ISoloCharacterProperties> = ({character}) =
         return (<>
             <div className="my-4">
                 <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomAsperation( EarlyOutlookAspirationRandomTable()) }>
-                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
                 {randomAsperation != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomAsperation(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>

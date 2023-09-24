@@ -107,7 +107,7 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
                             {this.renderShields()}
                         </div>
                         <div className="col-xl-6">
-                            <Header level={2}>{t('Construct.other.power')} / {t('Construct.other.crew')}</Header>
+                            <Header level={2}><>{t('Construct.other.power')} / {t('Construct.other.crew')}</></Header>
                             <div className="row row-cols-1 row-cols-1 mb-1 mt-3">
                                 <StatView showZero={true} name={t('Construct.other.power')} value={this.props.starship.power} className="col" />
                             </div>

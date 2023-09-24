@@ -116,7 +116,7 @@ const SoloEarlyOutlookDetailsPage: React.FC<ISoloCharacterProperties> = ({charac
             </div>
             <div className="row">
                 <div className="col-lg-6 my-3">
-                    <Header level={2}>{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</Header>
+                    <Header level={2}><>{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</></Header>
                     <DisciplineListComponent controller={disciplineController} />
                 </div>
                 <div className="my-3 col-lg-6">

@@ -143,11 +143,11 @@ const SoloFinishingTouchesPage: React.FC<ISoloCharacterProperties> = ({character
 
             <div className="row">
                 <div className="col-lg-6 my-3">
-                    <Header level={2} className="mb-3">{t('Construct.other.attribute')} {t('SoloFinishingTouchesPage.select', {count: attributeCount})}</Header>
+                    <Header level={2} className="mb-3"><>{t('Construct.other.attribute')} {t('SoloFinishingTouchesPage.select', {count: attributeCount})}</></Header>
                     <AttributeListComponent controller={attributeController} />
                 </div>
                 <div className="col-lg-6 my-3">
-                    <Header level={2} className="mb-3">{t('Construct.other.discipline')}  {t('SoloFinishingTouchesPage.select', {count: disciplineCount})}</Header>
+                    <Header level={2} className="mb-3"><>{t('Construct.other.discipline')}  {t('SoloFinishingTouchesPage.select', {count: disciplineCount})}</></Header>
                     <DisciplineListComponent controller={disciplineController} />
                 </div>
                 <div className="col-lg-6 my-3">

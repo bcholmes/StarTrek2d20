@@ -53,7 +53,7 @@ class EnvironmentDetailsPage extends React.Component<WithTranslation, {}> {
                 <p>{env.localizedDescription}</p>
                 <div className="row">
                     <div className="col-md-6 my-3">
-                        <Header level={2} className="mb-3">{t('Construct.other.attributes')} ({t('Common.text.selectOne')})</Header>
+                        <Header level={2} className="mb-3"><>{t('Construct.other.attributes')} ({t('Common.text.selectOne')})</></Header>
                         <AttributeImprovementCollection
                             filter={env.attributes}
                             mode={AttributeImprovementCollectionMode.Increase}
@@ -61,7 +61,7 @@ class EnvironmentDetailsPage extends React.Component<WithTranslation, {}> {
                             onDone={(done) => { this._attributeDone = done; } }/>
                     </div>
                     <div className="col-md-6 my-3">
-                        <Header level={2} className="mb-3">{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</Header>
+                        <Header level={2} className="mb-3"><>{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</></Header>
                         <ElectiveSkillList
                             points={1}
                             skills={env.disciplines}

@@ -71,7 +71,7 @@ class UpbringingDetailsPage extends React.Component<WithTranslation, IUpbringing
                 </div>
                 <div className="row">
                     <div className="col-md-6 my-3">
-                        <Header level={2}>{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</Header>
+                        <Header level={2}><>{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</></Header>
                         <ElectiveSkillList points={1} skills={upbringing.disciplines} onUpdated={skills => this.onElectiveSkillsSelected(skills) }/>
                     </div>
                     <div className="my-3 col-md-6">

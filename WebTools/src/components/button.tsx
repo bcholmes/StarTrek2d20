@@ -8,6 +8,7 @@ interface IButtonProperties {
     onMouseOver?: () => void;
     onMouseOut?: () => void;
     enabled?: boolean;
+    children?: React.ReactNode;
 }
 
 export class Button extends React.Component<IButtonProperties, {}> {

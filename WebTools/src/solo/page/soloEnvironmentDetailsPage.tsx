@@ -164,13 +164,13 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({charact
                 : undefined}
 
                 <div className="col-lg-6 my-3">
-                    <Header level={2} className="mb-3">{t('Construct.other.attributes')} ({t('Common.text.selectOne')})</Header>
+                    <Header level={2} className="mb-3"><>{t('Construct.other.attributes')} ({t('Common.text.selectOne')})</></Header>
                     {isSpeciesSelectionNeeded()
                         ? undefined
                         : (<AttributeListComponent controller={controller} />)}
                 </div>
                 <div className="col-lg-6 my-3">
-                    <Header level={2} className="mb-3">{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</Header>
+                    <Header level={2} className="mb-3"><>{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</></Header>
 
                     <DisciplineListComponent controller={disciplineController} />
                 </div>

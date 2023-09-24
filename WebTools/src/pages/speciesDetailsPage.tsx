@@ -55,7 +55,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
 
                     <div className="row">
                         <div className="col-12 col-lg-6 my-4">
-                            <Header level={2}>{t('Construct.other.attributes')} {selectDesc}</Header>
+                            <Header level={2}><>{t('Construct.other.attributes')} {selectDesc}</></Header>
                             <div className="mt-4">
                                 <AttributeListComponent controller={this.attributesController} />
                             </div>

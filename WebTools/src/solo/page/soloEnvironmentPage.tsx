@@ -80,7 +80,7 @@ const SoloEnvironmentPage: React.FC<ISoloCharacterProperties> = ({character}) =>
         return (<>
             <div className="my-4">
                 <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSetting( EnvironmentSettingRandomTable()) }>
-                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
                 {randomSetting != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSetting(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
@@ -112,7 +112,7 @@ const SoloEnvironmentPage: React.FC<ISoloCharacterProperties> = ({character}) =>
         return (<>
             <div className="my-4">
                 <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomCondition( EnvironmentConditionRandomTable()) }>
-                    <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
                 {randomCondition != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomCondition(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>

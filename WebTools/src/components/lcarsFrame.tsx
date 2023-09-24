@@ -18,6 +18,7 @@ interface ILcarsFrameState {
 interface ILcarsFrameProperties extends WithTranslation {
     history: RouteComponentProps["history"];
     activePage: PageIdentity;
+    children: React.ReactNode;
 }
 
 class LcarsFrame extends React.Component<ILcarsFrameProperties,ILcarsFrameState> {
