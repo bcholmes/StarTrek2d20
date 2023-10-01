@@ -15,9 +15,69 @@
     "Home.selection": "Sélectionnez l'outil.",
     "Home.characterButton": "Personnages et vaisseaux spatiaux",
     "Home.talentsButton": "Vue d'ensemble des talents",
+    "Home.tokenCreator": "Jetons",
+
+    "NpcConfigurationPage.option.anyMajorSpecies": "N'importe quelle Espèces Majeure",
+    "NpcConfigurationPage.option.anySpecialization": "N'importe quelle Spécialisation",
+
+    "NpcConfigurationPage.npcType": "Type de PNJ",
+    "NpcConfigurationPage.specialization": "Spécialisation",
+    "NpcConfigurationPage.text": "Spécifiez quel type de PNJ vous voulez créer",
 
     "SourceSelectionPage.sourceInstruction": "Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.",
+    "SourceSelectionPage.gameTypeInstruction": "A quel type de jeu jouez vous?",
     "SourceSelectionPage.sourceNote": "Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!",
+    "SourceSelectionPage.standardGameType": "Règles de JDR standard",
+    "SourceSelectionPage.soloGameType": "JDR solo utilisant les règles de Captain's Log",
+
+    "TokenCreator.option.rounded": "Arrondi",
+    "TokenCreator.option.bordered": "Encadré",
+
+    "TokenCreator.section.species": "Espèce",
+
+    "TokenCreator.section.species.options": "Options",
+
+    "TokenCreator.section.body": "Corps",
+
+    "TokenCreator.section.body.uniform": "Type d'Uniforme",
+    "TokenCreator.section.body.colour": "Couleur de Division",
+    "TokenCreator.section.body.rank": "Rang",
+    "TokenCreator.section.body.type": "Type de Corps",
+    "TokenCreator.section.body.uniformVariant": "Variante d'Uniforme",
+
+    "TokenCreator.section.head": "Tête",
+
+    "TokenCreator.section.head.colour": "Couleur de Peau",
+    "TokenCreator.section.head.furColour": "Couleur de Fourrure",
+    "TokenCreator.section.head.shape": "Forme de la Tête",
+
+    "TokenCreator.section.hair": "Cheveux",
+
+    "TokenCreator.section.hair.colour": "Couleur de Cheveux",
+    "TokenCreator.section.hair.style": "Coiffure",
+
+    "TokenCreator.section.mouth": "Bouche",
+
+    "TokenCreator.section.mouth.shape": "Forme de la Bouche",
+    "TokenCreator.section.mouth.colour": "Couleur des Lèvres",
+    "TokenCreator.section.mouth.moustache": "Moustache",
+    "TokenCreator.section.mouth.beard": "Barbe",
+
+    "TokenCreator.section.nose": "Nez",
+
+    "TokenCreator.section.nose.shape": "Forme du Nez",
+    "TokenCreator.section.nose.nasoLabial": "Sillons Nasogéniens",
+
+    "TokenCreator.section.eyes": "Yeux",
+
+    "TokenCreator.section.eyes.style": "Forme des Yeux",
+    "TokenCreator.section.eyes.colour": "Couleur desYeux",
+
+    "TokenCreator.section.extras": "Extras",
+
+    "TokenCreator.section.extras.ears": "Oreilles",
+    "TokenCreator.section.extras.forehead": "Front",
+    "TokenCreator.section.extras.headwear": "Couvre-Chef",
 
     "ViewPage.viewSupportingCharacter": "Voir le personnage secondaire",
     "ViewPage.viewNpc": "Voir PNJ",
@@ -25,6 +85,14 @@
     "ViewPage.viewStarship": "Voir le vaisseau spatial",
     "ViewPage.errorMessage": "Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir.",
     "ViewPage.unnamedStarship": "Vaisseau sans nom",
+
+    "CareerEvents.standard": "Standard",
+    "CareerEvents.standardAndUnofficial": "Standard et Non Officiel",
+    "CareerEvents.unofficialNote": "Cette liste inclus le travail non officiel de [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Demandez à votre MJ s'il l'autorise.",
+
+    "CareerEventDetails.errorAttribute": "Selectionez un Attribut SVP",
+    "CareerEventDetails.errorDiscipline": "Selectionez une Discipline SVP",
+    "CareerEventDetails.errorFocus": "Séléctionez un Focus SVP",
 
     "GMTracker.title": "Suivi",
     "GMTracker.instruction": "Utilisez cet outil pour gérer divers PNJ dans votre jeu.",
@@ -46,6 +114,7 @@
 
     "CustomSpeciesDetails.speciesName": "Nom",
     "CustomSpeciesDetails.instruction": "Quel est le nom de cette espèce?",
+    "CustomSpeciesDetails.speciesTrait": "Chaque espèce a un trait qui lui est propre qui peut procurer des bonus additionnels dans des circonstances particulières.",
     "CustomSpeciesDetails.speciesNameWarning": "Merci de fournir un nom pour cette espèce",
 
     "CharacterTypePage.whatType": "Quel type de personnage?",
@@ -80,6 +149,14 @@
 
     "EnvironmentPage.alliedMilitary.instruction": "Indépendamment de leur espèce, les officiers militaires viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau.",
 
+    "MilestonePage.instruction": "Selectionnez le type de modification vous voulez appliquer avec ce Jalon",
+
+    "MissionPodSelectionPage.text": "Certains modèles ont la possibilité d'être équipés d'un seul module de mission, choisi dans la liste ci-dessous. Les talents fournis par le module ne peuvent pas être échangés normalement, mais l'ensemble du module de mission (et tous ses avantages) peut être échangé comme s'il s'agissait d'un seul talent.",
+    "MissionPodSelectionPage.errorNoSelection": "Sélectionnez un module de mission avant de continuer SVP",
+
+    "MissionProfileSelectionPage.text": "Un profil de mission est ce qui différencie un vaisseau d'un autre de sa même classe. Il détermine l'équipement spécialisé qui est installé avant de s'aventurer dans l'inconnu, la priorité en termes de personnel que Starfleet accorde au navire et l'objectif global de sa mission. Toutes les vaisseaux ont un profil de mission.",
+    "MissionProfileSelectionPage.errorNoSelection": "Selectionnez un profil de mission avant de continuer SVP",
+
     "ModificationCompletePage.instruction": "Le personnage a été modifié. Vous pouvez voir le personnage modifié ou faire une autre modification\n \nVous pouvez vouloir sauvegarder l'URL pour le personnage modifié",
 
     "ModificationTypeSelectionPage.instruction": "Selectionnez la modification que vous voulez appliquer à ce personnage",
@@ -89,7 +166,26 @@
 
     "ReputationChangePage.instruction": "Ajustez la réputation du personnage le cas échéant",
 
+    "SoloCareerEvent.instruction": "La carrière de votre personnage est une tapisserie d'événements et d'expériences, mais quelques-uns auront été des moments cruciaux dans la vie du personnage. Un personnage définit quels moments de sa vie sont rétrospectivement importants, et ce qui semblait définitif à un jeune enseigne peut être sans conséquence pour lui, ce même officier, des décennies plus tard.\n\nVotre personnage dispose de deux événements de carrière déterminants, choisis ou déterminés au hasard dans la liste ci-dessous, et bénéficie de tous les avantages qu'ils procurent.\n\nPour les personnages ayant choisi la durée de carrière novice, supposez que ces événements de carrière ont eu lieu pendant le séjour du personnage à l'Académie ou équivalent, peut-être lors d'une mission d'entraînement sur le terrain à bord d'un vaisseau spatial.",
+
+    "SoloConstructTypePage.character": "Personnage",
+    "SoloConstructTypePage.instruction": "Créez vous un personnage ou un vaisseau?",
+    "SoloConstructTypePage.starship": "Vaisseau",
+
+    "SoloEarlyOutlookPage.instruction": "En suivant son éducation et sa carrière, votre personnage a formé une vision précoce qui l'a façonné de plusieurs manières. Vous pouvez choisir parmi trois approches pour déterminer l'impact de cette perspective. La première consiste à sélectionner son éducation et à déterminer s'il l'a accepté ou s'est rebellé contre elle. La seconde, qui s'applique uniquement à un personnage Klingon élevé au sein d'une Maison, est de choisir sa Caste et déterminer s'il s'y est conformé ou pas. La dernière option consiste simplement à choisir une aspiration qui a conduit votre personnage à son voyage, et s'ils l'a poursuivi ou abandonné. \n\nChoisissez l’approche qui convient le mieux à votre personnage et à votre style de narration. Une fois l'approche choisie, vous pouvez sélectionner ou déterminer au hasard l'option spécifique au sein de cette approche.",
+    "SoloEarlyOutlookPage.upbringings": "Educations",
+    "SoloEarlyOutlookPage.castes": "Castes",
+    "SoloEarlyOutlookPage.aspirations": "Aspirations",
+
+    "SoloEarlyOutlookDetailsPage.errorDiscipline": "Choisissez une Discipline SVP.",
+    "SoloEarlyOutlookDetailsPage.errorFocus": "Choisissez un Focus SVP",
+
     "SoloEducationDetailsPage.selectThree": "(Choisir trois)",
+    "SoloEducationDetailsPage.primaryDiscipline": "Discipline Principale",
+    "SoloEducationDetailsPage.secondaryDiscipline": "Discipline Secondaires",
+    "SoloEducationDetailsPage.errorDisciplines": "Sélectionnez 1 discipline principale et 2 secondaires SVP",
+    "SoloEducationDetailsPage.errorAttributes": "Sélectionnez 3 attributs SVP.",
+    "SoloEducationDetailsPage.errorValue": "Sélectionnez une Valeur SVP.",
 
     "SpaceframeOptionPage.text": "Voulez vous un modèle standart ou un modèle personalisé?",
 

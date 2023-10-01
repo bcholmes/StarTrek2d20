@@ -12,61 +12,61 @@ EraSelectionPage.eraInstruction,Select which Era to play in. Ask your GM which E
 Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sélectionnez l'outil.
 Home.characterButton,Characters & Starships,Charaktere & Raumschiffe,Personajes y naves espaciales,Personnages et vaisseaux spatiaux
 Home.talentsButton,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
-Home.tokenCreator,Tokens,Token,,
-NpcConfigurationPage.option.anyMajorSpecies,Any Major Species,Jede bedeutende Spezies,,
-NpcConfigurationPage.option.anySpecialization,Any Specialization,Jede Spezialisierung,,
-NpcConfigurationPage.npcType,NPC Type,NPC Typ,,
-NpcConfigurationPage.specialization,Specialization,Spezialisierung,,
-NpcConfigurationPage.text,Specify what kind of NPC you're trying to create.,"Lege fest, welche Art NPC du erstellen möchtest.",,
+Home.tokenCreator,Tokens,Token,,Jetons
+NpcConfigurationPage.option.anyMajorSpecies,Any Major Species,Jede bedeutende Spezies,,N'importe quelle Espèces Majeure
+NpcConfigurationPage.option.anySpecialization,Any Specialization,Jede Spezialisierung,,N'importe quelle Spécialisation
+NpcConfigurationPage.npcType,NPC Type,NPC Typ,,Type de PNJ
+NpcConfigurationPage.specialization,Specialization,Spezialisierung,,Spécialisation
+NpcConfigurationPage.text,Specify what kind of NPC you're trying to create.,"Lege fest, welche Art NPC du erstellen möchtest.",,Spécifiez quel type de PNJ vous voulez créer
 SourceSelectionPage.sourceInstruction,Select sources. Ask your GM which are available.,"Wählen Sie die verfügbaren Quellen aus. Fragen Sie, wenn nötig, Ihre Spielleitung, welche zur Verfügung stehen.",Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.,Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.
-SourceSelectionPage.gameTypeInstruction,What type of game are you playing?,Welche Art von Spiel spielst du?,,
+SourceSelectionPage.gameTypeInstruction,What type of game are you playing?,Welche Art von Spiel spielst du?,,A quel type de jeu jouez vous?
 SourceSelectionPage.sourceNote,Some sources are not yet implemented; check back soon!,Einige Quellen sind noch nicht verfügbar - schauen Sie bald wieder vorbei!,Algunas fuentes aún no se han aplicado; ¡Vuelve pronto!,Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!
-SourceSelectionPage.standardGameType,Standard RPG Rules,Standard Rollenspielregeln,,
-SourceSelectionPage.soloGameType,Solo RPG using the Captain's Log Rules,Solo Rollenspiel mit den Captain's Log Regeln,,
-TokenCreator.option.rounded,Rounded,Abgerundet,,
-TokenCreator.option.bordered,Bordered,Eingerahmt,,
-TokenCreator.section.species,Species,Spezies,,
-TokenCreator.section.species.options,Options,Optionen,,
-TokenCreator.section.body,Body,Körper,,
-TokenCreator.section.body.uniform,Uniform Type,Uniformtyp,,
-TokenCreator.section.body.colour,Division Colour,Abteilungsfarbe,,
-TokenCreator.section.body.rank,Rank,Rang,,
-TokenCreator.section.body.type,Body Type,Körpertyp,,
-TokenCreator.section.body.uniformVariant,Uniform Variant,Uniformvariante,,
-TokenCreator.section.head,Head,Kopf,,
-TokenCreator.section.head.colour,Skin Colour,Hautfarbe,,
-TokenCreator.section.head.furColour,Fur Colour,Fellfarbe,,
-TokenCreator.section.head.shape,Head Shape,Kopfform,,
-TokenCreator.section.hair,Hair,Haar,,
-TokenCreator.section.hair.colour,Hair Colour,Haarfarbe,,
-TokenCreator.section.hair.style,Hair Style,Frisur,,
-TokenCreator.section.mouth,Mouth,Mund,,
-TokenCreator.section.mouth.shape,Mouth,Mundform,,
-TokenCreator.section.mouth.colour,Lipstick Colour,Lippenstiftfarbe,,
-TokenCreator.section.mouth.moustache,Moustache,Schnurrbart,,
-TokenCreator.section.mouth.beard,Beard,Bart,,
-TokenCreator.section.nose,Nose,Nase,,
-TokenCreator.section.nose.shape,Nose Shape,Nasenform,,
-TokenCreator.section.nose.nasoLabial,Naso-Labial Folds,Nasenlippenfurche,,
-TokenCreator.section.eyes,Eyes,Augen,,
-TokenCreator.section.eyes.style,Eye Style,Augenstil,,
-TokenCreator.section.eyes.colour,Eye Colour,Augenfarbe,,
-TokenCreator.section.extras,Extras,Extras,,
-TokenCreator.section.extras.ears,Ears,Ohren,,
-TokenCreator.section.extras.forehead,Forehead,Stirn,,
-TokenCreator.section.extras.headwear,Headwear,Kopfbedeckung,,
+SourceSelectionPage.standardGameType,Standard RPG Rules,Standard Rollenspielregeln,,Règles de JDR standard
+SourceSelectionPage.soloGameType,Solo RPG using the Captain's Log Rules,Solo Rollenspiel mit den Captain's Log Regeln,,JDR solo utilisant les règles de Captain's Log
+TokenCreator.option.rounded,Rounded,Abgerundet,,Arrondi
+TokenCreator.option.bordered,Bordered,Eingerahmt,,Encadré
+TokenCreator.section.species,Species,Spezies,,Espèce
+TokenCreator.section.species.options,Options,Optionen,,Options
+TokenCreator.section.body,Body,Körper,,Corps
+TokenCreator.section.body.uniform,Uniform Type,Uniformtyp,,Type d'Uniforme
+TokenCreator.section.body.colour,Division Colour,Abteilungsfarbe,,Couleur de Division
+TokenCreator.section.body.rank,Rank,Rang,,Rang
+TokenCreator.section.body.type,Body Type,Körpertyp,,Type de Corps
+TokenCreator.section.body.uniformVariant,Uniform Variant,Uniformvariante,,Variante d'Uniforme
+TokenCreator.section.head,Head,Kopf,,Tête
+TokenCreator.section.head.colour,Skin Colour,Hautfarbe,,Couleur de Peau
+TokenCreator.section.head.furColour,Fur Colour,Fellfarbe,,Couleur de Fourrure
+TokenCreator.section.head.shape,Head Shape,Kopfform,,Forme de la Tête
+TokenCreator.section.hair,Hair,Haar,,Cheveux
+TokenCreator.section.hair.colour,Hair Colour,Haarfarbe,,Couleur de Cheveux
+TokenCreator.section.hair.style,Hair Style,Frisur,,Coiffure
+TokenCreator.section.mouth,Mouth,Mund,,Bouche
+TokenCreator.section.mouth.shape,Mouth,Mundform,,Forme de la Bouche
+TokenCreator.section.mouth.colour,Lipstick Colour,Lippenstiftfarbe,,Couleur des Lèvres
+TokenCreator.section.mouth.moustache,Moustache,Schnurrbart,,Moustache
+TokenCreator.section.mouth.beard,Beard,Bart,,Barbe
+TokenCreator.section.nose,Nose,Nase,,Nez
+TokenCreator.section.nose.shape,Nose Shape,Nasenform,,Forme du Nez
+TokenCreator.section.nose.nasoLabial,Naso-Labial Folds,Nasenlippenfurche,,Sillons Nasogéniens
+TokenCreator.section.eyes,Eyes,Augen,,Yeux
+TokenCreator.section.eyes.style,Eye Style,Augenstil,,Forme des Yeux
+TokenCreator.section.eyes.colour,Eye Colour,Augenfarbe,,Couleur desYeux
+TokenCreator.section.extras,Extras,Extras,,Extras
+TokenCreator.section.extras.ears,Ears,Ohren,,Oreilles
+TokenCreator.section.extras.forehead,Forehead,Stirn,,Front
+TokenCreator.section.extras.headwear,Headwear,Kopfbedeckung,,Couvre-Chef
 ViewPage.viewSupportingCharacter,View Supporting Character,Nebencharakter anzeigen,Ver personaje secundario,Voir le personnage secondaire
 ViewPage.viewNpc,View NPC,NSC anzeigen,,Voir PNJ
 ViewPage.viewMainCharacter,View Main Character,Hauptfigur anzeigen,Ver personaje principal,Voir le personnage principal
 ViewPage.viewStarship,View Starship,Raumschiff ansehen,Ver nave espacial,Voir le vaisseau spatial
 ViewPage.errorMessage,"Things have gone terribly, terribly wrong. We might be in the mirror universe.",Etwas ist ganz schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.,"Las cosas han ido terriblemente, terriblemente mal. Podríamos estar en el universo espejo.","Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir."
 ViewPage.unnamedStarship,Unnamed Starship,Unbenanntes Raumschiff,Nave espacial sin nombre,Vaisseau sans nom
-CareerEvents.standard,Standard,Standard,,
-CareerEvents.standardAndUnofficial,Standard and Unofficial,Standard und Inoffizielle,,
-CareerEvents.unofficialNote,This list includes unofficial items from [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Check that your GM is comfortable allowing these items.,"Diese Liste enthält inoffizielle Einträge aus [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Bitte prüfe, ob deine SL diese erlaubt.",,
-CareerEventDetails.errorAttribute,Please select an attribute.,Bitte wähle ein Attribut.,,
-CareerEventDetails.errorDiscipline,Please select a discipline.,Bitte wähle eine Disziplin.,,
-CareerEventDetails.errorFocus,Please select a focus.,Bitte wähle einen Fokus.,,
+CareerEvents.standard,Standard,Standard,,Standard
+CareerEvents.standardAndUnofficial,Standard and Unofficial,Standard und Inoffizielle,,Standard et Non Officiel
+CareerEvents.unofficialNote,This list includes unofficial items from [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Check that your GM is comfortable allowing these items.,"Diese Liste enthält inoffizielle Einträge aus [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Bitte prüfe, ob deine SL diese erlaubt.",,Cette liste inclus le travail non officiel de [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Demandez à votre MJ s'il l'autorise.
+CareerEventDetails.errorAttribute,Please select an attribute.,Bitte wähle ein Attribut.,,Selectionez un Attribut SVP
+CareerEventDetails.errorDiscipline,Please select a discipline.,Bitte wähle eine Disziplin.,,Selectionez une Discipline SVP
+CareerEventDetails.errorFocus,Please select a focus.,Bitte wähle einen Fokus.,,Séléctionez un Focus SVP
 GMTracker.title,Tracker,NSC-Verwaltung,Rastreador,Suivi
 GMTracker.instruction,Use this tool to manage various NPCs in your game.,"Benutzen Sie dieses Werkzeug, um die verschiedenen NSCs in Ihrem Spiel zu verwalten.",Usa esta herramienta para administrar varios NPC en tu juego.,Utilisez cet outil pour gérer divers PNJ dans votre jeu.
 GMTracker.addCharacterModalTitle,Add Character,Charakter hinzufügen,Agregar carácter,Ajouter un personnage
@@ -83,7 +83,7 @@ CharacterSheetDialog.title,Choose Template,Vorlage auswählen,,Choisir un Modèl
 CharacterSheetDialog.thumbnail,Thumbnail,Portraitfoto,,Vignette
 CustomSpeciesDetails.speciesName,Name,Name,,Nom
 CustomSpeciesDetails.instruction,What's the name of this species?,Wie lautet der Name dieser Spezies?,,Quel est le nom de cette espèce?
-CustomSpeciesDetails.speciesTrait,Each species gets a species-specific trait that may provide additional benefits in special circumstances.,"Jede Spezies erhält ein bestimmtes Merkmal, das in bestimmten Situationen zusätzliche Vorteile gewähren kann.",,
+CustomSpeciesDetails.speciesTrait,Each species gets a species-specific trait that may provide additional benefits in special circumstances.,"Jede Spezies erhält ein bestimmtes Merkmal, das in bestimmten Situationen zusätzliche Vorteile gewähren kann.",,Chaque espèce a un trait qui lui est propre qui peut procurer des bonus additionnels dans des circonstances particulières.
 CustomSpeciesDetails.speciesNameWarning,Please provide a name for this species.,Bitte einen Namen für diese Spezies angeben.,,Merci de fournir un nom pour cette espèce
 CharacterTypePage.whatType,What type of character is this?,Um was für eine Art von Charakter handelt es sich?,,Quel type de personnage?
 CharacterTypePage.whatGovernment,What government does this character represent?,Welche Regierung repräsentiert dieser Charakter?,,Quel gouvernement ce personnage représente?
@@ -105,11 +105,11 @@ EnvironmentPage.ambassador.instruction,"Regardless of their species, diplomats c
 EnvironmentPage.cadet.instruction,"Regardless of their species, Starfleet cadets come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.","Unabhängig von ihrer Spezies stammen Sternenflotten-Kadetten von vielen Orten auf vielen Welten. Während viele Menschen (beispielsweise) auf der Erde geboren wurden, gibt es so viele, die auf kolonisierten Welten geboren werden, auf Raumstationen oder auf Raumschiffen.",,"Indépendamment de leur espèce, les cadets de Starfleet viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau."
 EnvironmentPage.child.instruction,"Regardless of their species, children come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.","Unabhängig von ihrer Spezies stammen Kinder von vielen Orten auf vielen Welten. Während viele Menschen (beispielsweise) auf der Erde geboren wurden, gibt es so viele, die auf kolonisierten Welten geboren werden, auf Raumstationen oder auf Raumschiffen.",,"Indépendamment de leur espèce, les enfants viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau."
 EnvironmentPage.alliedMilitary.instruction,"Regardless of their species, military officers and ratings come from many places, across many types of worlds.",Unabhängig von ihrer Spezies stammen Militär-Offiziere von vielen Orten auf vielen Welten.,,"Indépendamment de leur espèce, les officiers militaires viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau."
-MilestonePage.instruction,Select what type of modification you want to apply for this milestone.,"Wählen Sie die gewünschte Änderung, die Sie mit diesem Meilenstein vornehmen möchten",,
-MissionPodSelectionPage.text,"Certain spaceframes have the ability to be fitted with a single mission pod, chosen from the list below. The talents provided by the pod may not be swapped out normally, but the entire mission pod (and all its benefits) may be swapped out as if it were a single talent.","Bestimmte Schiffsklassen sind mit einem einzelnen Missionsmodul ausgestattet, das aus der Liste unten ausgewählt wird. Die durch das Modul zur Verfügung gestellten Talente können nicht auf die übliche Art und Weise ausgetauscht werden. Allerdings ist es möglich, das gesamte Missionsmodul (und damit alle seine Boni) auszutauschen.",,
-MissionPodSelectionPage.errorNoSelection,Please select a mission pod before proceeding.,Bitte wählen Sie ein Missionmodul um fortzufahren.,,
-MissionProfileSelectionPage.text,"A mission profile is what makes one starship different from another in her same class. It determines the specialized equipment that is installed before venturing into the unknown, the priority in personnel that Starfleet gives the vessel, and its overall mission goal. All spaceframes have a mission profile.","Das Missionsprofil ist der entscheidende Punkt, in dem sich ein Schiff einer Klasse von seinen Schwesterschiffen unterscheidet. Das Profil bestimmt, wie das Raumschiff ausgestattet ist, welche Einrichtungen und welches Personal ihm zugewiesen werden und welche Art von Operationen von dem Schiff erwartet werden. Alle Schiffe haben ein Missionsprofil.",,
-MissionProfileSelectionPage.errorNoSelection,Please select a mission profile before proceeding.,Bitte wählen Sie ein Missionsprofil um fortzufahren.,,
+MilestonePage.instruction,Select what type of modification you want to apply for this milestone.,"Wählen Sie die gewünschte Änderung, die Sie mit diesem Meilenstein vornehmen möchten",,Selectionnez le type de modification vous voulez appliquer avec ce Jalon
+MissionPodSelectionPage.text,"Certain spaceframes have the ability to be fitted with a single mission pod, chosen from the list below. The talents provided by the pod may not be swapped out normally, but the entire mission pod (and all its benefits) may be swapped out as if it were a single talent.","Bestimmte Schiffsklassen sind mit einem einzelnen Missionsmodul ausgestattet, das aus der Liste unten ausgewählt wird. Die durch das Modul zur Verfügung gestellten Talente können nicht auf die übliche Art und Weise ausgetauscht werden. Allerdings ist es möglich, das gesamte Missionsmodul (und damit alle seine Boni) auszutauschen.",,"Certains modèles ont la possibilité d'être équipés d'un seul module de mission, choisi dans la liste ci-dessous. Les talents fournis par le module ne peuvent pas être échangés normalement, mais l'ensemble du module de mission (et tous ses avantages) peut être échangé comme s'il s'agissait d'un seul talent."
+MissionPodSelectionPage.errorNoSelection,Please select a mission pod before proceeding.,Bitte wählen Sie ein Missionmodul um fortzufahren.,,Sélectionnez un module de mission avant de continuer SVP
+MissionProfileSelectionPage.text,"A mission profile is what makes one starship different from another in her same class. It determines the specialized equipment that is installed before venturing into the unknown, the priority in personnel that Starfleet gives the vessel, and its overall mission goal. All spaceframes have a mission profile.","Das Missionsprofil ist der entscheidende Punkt, in dem sich ein Schiff einer Klasse von seinen Schwesterschiffen unterscheidet. Das Profil bestimmt, wie das Raumschiff ausgestattet ist, welche Einrichtungen und welches Personal ihm zugewiesen werden und welche Art von Operationen von dem Schiff erwartet werden. Alle Schiffe haben ein Missionsprofil.",,"Un profil de mission est ce qui différencie un vaisseau d'un autre de sa même classe. Il détermine l'équipement spécialisé qui est installé avant de s'aventurer dans l'inconnu, la priorité en termes de personnel que Starfleet accorde au navire et l'objectif global de sa mission. Toutes les vaisseaux ont un profil de mission."
+MissionProfileSelectionPage.errorNoSelection,Please select a mission profile before proceeding.,Bitte wählen Sie ein Missionsprofil um fortzufahren.,,Selectionnez un profil de mission avant de continuer SVP
 ModificationCompletePage.instruction,"The character has been modified. You can view the revised character, or make another modification.
 
 You might want to save the URL for the revised character.","Der Charakter wurde geändert. Sie können sich nun den geänderten Charakter ansehen oder eine weitere Änderung vornehmen.
@@ -129,24 +129,30 @@ For characters that chose Novice Career Length, assume that these career events 
 
 Dein Charakter hat zwei entscheidende Karriere-Ereignisse, die aus der folgenden Liste ausgewählt oder zufällig bestimmt werden, und erhält alle Vorteile, die sie bieten.
 
-Hat dein Charaktere die Option „Grünschnabel“ gewählt, dann nimm an, dass die Ereignisse in der Akademiezeit geschehen sind, etwa auf einer Exkursion oder einem Praxisteil auf einem Raumschiff.",,
-SoloConstructTypePage.character,Character,Charakter,,
-SoloConstructTypePage.instruction,"Are you creating a character, or a starship?",Erstellst du einen Charakter oder ein Raumschiff?,,
-SoloConstructTypePage.starship,Starship,Raumschiff,,
+Hat dein Charaktere die Option „Grünschnabel“ gewählt, dann nimm an, dass die Ereignisse in der Akademiezeit geschehen sind, etwa auf einer Exkursion oder einem Praxisteil auf einem Raumschiff.",,"La carrière de votre personnage est une tapisserie d'événements et d'expériences, mais quelques-uns auront été des moments cruciaux dans la vie du personnage. Un personnage définit quels moments de sa vie sont rétrospectivement importants, et ce qui semblait définitif à un jeune enseigne peut être sans conséquence pour lui, ce même officier, des décennies plus tard.
+
+Votre personnage dispose de deux événements de carrière déterminants, choisis ou déterminés au hasard dans la liste ci-dessous, et bénéficie de tous les avantages qu'ils procurent.
+
+Pour les personnages ayant choisi la durée de carrière novice, supposez que ces événements de carrière ont eu lieu pendant le séjour du personnage à l'Académie ou équivalent, peut-être lors d'une mission d'entraînement sur le terrain à bord d'un vaisseau spatial."
+SoloConstructTypePage.character,Character,Charakter,,Personnage
+SoloConstructTypePage.instruction,"Are you creating a character, or a starship?",Erstellst du einen Charakter oder ein Raumschiff?,,Créez vous un personnage ou un vaisseau?
+SoloConstructTypePage.starship,Starship,Raumschiff,,Vaisseau
 SoloEarlyOutlookPage.instruction,"Driving them into their education and career, your character formed an early outlook that shaped them in many ways. You may choose from three approaches of how to determine the impact of this outlook. The first is to select their upbringing, and determine whether they accepted or rebelled against it. The second – applying to Klingon characters or those raised in a Klingon household – is to select their caste, and whether they accepted or rejected its expectations. The last option is to simply choose an aspiration which drove your character onto their journey, and whether they pursued or gave up on it.
 
-Choose the approach that makes the most sense for your character and storytelling style. Once the approach is chosen, you may select or randomly determine the specific option within that approach.",,,
-SoloEarlyOutlookPage.upbringings,Upbringings,,,
-SoloEarlyOutlookPage.castes,Castes,,,
-SoloEarlyOutlookPage.aspirations,Aspirations,,,
-SoloEarlyOutlookDetailsPage.errorDiscipline,Please select a discipline.,Bitte wähle eine Disziplin.,,
-SoloEarlyOutlookDetailsPage.errorFocus,Please select a focus.,Bitte wähle einen Fokus.,,
+Choose the approach that makes the most sense for your character and storytelling style. Once the approach is chosen, you may select or randomly determine the specific option within that approach.",,,"En suivant son éducation et sa carrière, votre personnage a formé une vision précoce qui l'a façonné de plusieurs manières. Vous pouvez choisir parmi trois approches pour déterminer l'impact de cette perspective. La première consiste à sélectionner son éducation et à déterminer s'il l'a accepté ou s'est rebellé contre elle. La seconde, qui s'applique uniquement à un personnage Klingon élevé au sein d'une Maison, est de choisir sa Caste et déterminer s'il s'y est conformé ou pas. La dernière option consiste simplement à choisir une aspiration qui a conduit votre personnage à son voyage, et s'ils l'a poursuivi ou abandonné. 
+
+Choisissez l’approche qui convient le mieux à votre personnage et à votre style de narration. Une fois l'approche choisie, vous pouvez sélectionner ou déterminer au hasard l'option spécifique au sein de cette approche."
+SoloEarlyOutlookPage.upbringings,Upbringings,,,Educations
+SoloEarlyOutlookPage.castes,Castes,,,Castes
+SoloEarlyOutlookPage.aspirations,Aspirations,,,Aspirations
+SoloEarlyOutlookDetailsPage.errorDiscipline,Please select a discipline.,Bitte wähle eine Disziplin.,,Choisissez une Discipline SVP.
+SoloEarlyOutlookDetailsPage.errorFocus,Please select a focus.,Bitte wähle einen Fokus.,,Choisissez un Focus SVP
 SoloEducationDetailsPage.selectThree,(Select three),(Drei auswählen),,(Choisir trois)
-SoloEducationDetailsPage.primaryDiscipline,Primary Discipline,Primäre Disziplin,,
-SoloEducationDetailsPage.secondaryDiscipline,Secondary Disciplines,Sekundäre Disziplin,,
-SoloEducationDetailsPage.errorDisciplines,Please select one primary and two secondary disciplines.,Bitte wähle eine primäre und zwei sekundäre Disziplinen.,,
-SoloEducationDetailsPage.errorAttributes,Please select three attributes.,Bitte wähle drei Attribute.,,
-SoloEducationDetailsPage.errorValue,Please select a value.,Bitte wähle eine Überzeugung.,,
+SoloEducationDetailsPage.primaryDiscipline,Primary Discipline,Primäre Disziplin,,Discipline Principale
+SoloEducationDetailsPage.secondaryDiscipline,Secondary Disciplines,Sekundäre Disziplin,,Discipline Secondaires
+SoloEducationDetailsPage.errorDisciplines,Please select one primary and two secondary disciplines.,Bitte wähle eine primäre und zwei sekundäre Disziplinen.,,Sélectionnez 1 discipline principale et 2 secondaires SVP
+SoloEducationDetailsPage.errorAttributes,Please select three attributes.,Bitte wähle drei Attribute.,,Sélectionnez 3 attributs SVP.
+SoloEducationDetailsPage.errorValue,Please select a value.,Bitte wähle eine Überzeugung.,,Sélectionnez une Valeur SVP.
 SoloEducationPage.instruction.alliedMilitary,"Outside of Starfleet, the Milky Way Galaxy hosts many other security and military organizations. Instead of a Starfleet or Klingon officer, you might choose to build a Captain’s Log story around a Bajoran freedom fighter, a member of the Andorian Imperial Guard, or a radically candid warrior of the Qowat Milat.
 
 As an alternative to attending Starfleet Academy, to select the type of military training your character has received, choose from the options in the following table, or randomly select one.",,,
