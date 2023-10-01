@@ -3,12 +3,11 @@ import React from "react";
 export class AccessingView extends React.Component<{}, {}> {
     render() {
         return (<>
-        <div className="text-center">
+        <div className="text-center mw-100" style={{width: "556px", aspectRatio: "556/429" }}>
                 <svg
                 id="svg9699"
                 version="1.1"
-                width="556"
-                height="429">
+                viewBox="0 0 556 429">
                 <defs
                     id="defs9703">
                     <linearGradient
@@ -726,7 +725,7 @@ export class AccessingView extends React.Component<{}, {}> {
                 </svg>
             </div>
 
-            <p className="text-center my-5" style={{fontFamily: "lcars", fontSize: "64px"}}>ACCESSING...</p>
+            <p className="text-center my-5" style={{fontFamily: "lcars", fontSize: "64px", width: "556px", maxWidth: "100%"}}>ACCESSING...</p>
         </>)
     }
 }

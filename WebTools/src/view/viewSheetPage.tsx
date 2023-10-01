@@ -1,6 +1,6 @@
 import React from "react";
-import { withRouter, RouteComponentProps } from "react-router";
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { useNavigate } from "react-router";
+import { useTranslation } from 'react-i18next';
 import StarshipView from "./starshipView"
 import SupportingCharacterView from "./supportingCharacterView";
 import { marshaller } from "../helpers/marshaller";
@@ -11,21 +11,12 @@ import { Construct } from "../common/construct";
 import { Character } from "../common/character";
 import NpcView from "./npcView";
 
-interface IViewSheetPageProperties extends WithTranslation {
-    history: RouteComponentProps["history"];
-}
+const ViewSheetPage = () => {
 
-class ViewSheetPage extends React.Component<IViewSheetPageProperties, {}> {
+    const { t } = useTranslation();
+    const navigate = useNavigate();
 
-    render() {
-        return (<LcarsFrame activePage={PageIdentity.ViewSheet}>
-                <div id="app">
-                    {this.renderContents()}
-                </div>
-            </LcarsFrame>);
-    }
-
-    modifyTitle(construct: Construct) {
+    const modifyTitle = (construct: Construct) => {
         if (construct.name) {
             if (construct instanceof Character && (construct as Character).rank) {
                 document.title = (construct as Character).rank?.localizedName + " " + construct.name + " - STAR TREK ADVENTURES";
@@ -35,24 +26,22 @@ class ViewSheetPage extends React.Component<IViewSheetPageProperties, {}> {
         }
     }
 
-    renderContents() {
+    const renderContents = () => {
         let url = new URL(window.location.href);
         let query = new URLSearchParams(url.search);
         let encodedSheet = query.get('s');
 
         let json = marshaller.decode(encodedSheet);
 
-        const { t } = this.props;
-
         if (!json) {
             return (<div className="page text-white">{t('ViewPage.errorMessage')}</div>);
         } else if (json.stereotype === "starship") {
             let starship = marshaller.decodeStarship(encodedSheet);
-            this.modifyTitle(starship);
+            modifyTitle(starship);
             return (<div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => this.goToHome(e)}>{t('Page.title.home')}</a></li>
+                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
                         <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewStarship')}</li>
                     </ol>
                 </nav>
@@ -60,11 +49,11 @@ class ViewSheetPage extends React.Component<IViewSheetPageProperties, {}> {
             </div>);
         } else if (json.stereotype === "supportingCharacter") {
             let character = marshaller.decodeCharacter(json);
-            this.modifyTitle(character);
+            modifyTitle(character);
             return (<div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => this.goToHome(e)}>{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
                         <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewSupportingCharacter')}</li>
                     </ol>
                 </nav>
@@ -72,11 +61,11 @@ class ViewSheetPage extends React.Component<IViewSheetPageProperties, {}> {
             </div>);
         } else if (json.stereotype === "npc") {
             let character = marshaller.decodeCharacter(json);
-            this.modifyTitle(character);
+            modifyTitle(character);
             return (<div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => this.goToHome(e)}>{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
                         <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewNpc')}</li>
                     </ol>
                 </nav>
@@ -84,11 +73,11 @@ class ViewSheetPage extends React.Component<IViewSheetPageProperties, {}> {
             </div>);
         } else if (json.stereotype === "mainCharacter") {
             let character = marshaller.decodeCharacter(json);
-            this.modifyTitle(character);
+            modifyTitle(character);
             return (<div className="page container ml-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => this.goToHome(e)}>{t('Page.title.home')}</a></li>
+                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
                         <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewMainCharacter')}</li>
                     </ol>
                 </nav>
@@ -97,13 +86,19 @@ class ViewSheetPage extends React.Component<IViewSheetPageProperties, {}> {
         }
     }
 
-    goToHome(e: React.MouseEvent<HTMLAnchorElement>) {
+    const goToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
         e.stopPropagation();
 
-        const { history } = this.props;
-        history.push("/");
+        navigate("/");
     }
+
+    return (<LcarsFrame activePage={PageIdentity.ViewSheet}>
+        <div id="app">
+            {renderContents()}
+        </div>
+    </LcarsFrame>);
+
 }
 
-export default withTranslation()(withRouter(ViewSheetPage));
+export default ViewSheetPage;

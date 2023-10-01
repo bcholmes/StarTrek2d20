@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { withRouter, RouteComponentProps } from "react-router";
-import { withTranslation, WithTranslation } from 'react-i18next';
 import { Header } from "../../components/header";
 import { Character } from "../../common/character";
 import { navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Button } from "../../components/button";
-import { DropDownInput } from "../../components/dropDownInput";
+import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
 import { MilestoneType } from "../model/milestoneType";
 import { makeKey } from "../../common/translationKey";
 import { Skill } from "../../helpers/skills";
@@ -18,103 +16,64 @@ import store from "../../state/store";
 import { applyNormalMilestoneDiscipline, applyNormalMilestoneFocus } from "../../state/characterActions";
 import { CheckBox } from "../../components/checkBox";
 import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
 
-interface IMilestonePageProperties extends WithTranslation {
+interface IMilestonePageProperties {
     milestoneType: MilestoneType,
     character?: Character;
-    history: RouteComponentProps["history"];
 }
 
-interface IMilestonePageState {
-    normalOption: number,
-    normalDisciplineDecrease?: Skill,
-    normalDisciplineIncrease?: Skill,
-    normalDeletedFocus?: string,
-    normalAddedFocus?: string
-}
+const MilestonePage: React.FC<IMilestonePageProperties> = ({character, milestoneType}) => {
 
-class MilestonePage extends React.Component<IMilestonePageProperties, IMilestonePageState> {
+    const [ normalOption, setNormalOption ] = useState(0);
+    const [ normalDisciplineDecrease, setNormalDisciplineDecrease ] = useState(null);
+    const [ normalDisciplineIncrease, setNormalDisciplineIncrease ] = useState(null);
+    const [ normalDeletedFocus, setNormalDeletedFocus ] = useState(null);
+    const [ normalAddedFocus, setNormalAddedFocus ] = useState(null);
 
-    constructor(props) {
-        super(props);
+    const { t } = useTranslation();
+    const navigate = useNavigate();
 
-        this.state = {
-            normalOption: 0
-        };
-    }
-
-    render() {
-        const { t, milestoneType } = this.props;
-        return (<div className="page container ml-0">
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => this.goToHome(e)}>{t('Page.title.home')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.ModificationTypeSelection)}>{t('Page.title.modificationTypeSelection')}</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">{t(makeKey('Page.title.', MilestoneType[milestoneType]))}</li>
-                </ol>
-            </nav>
-
-            <Header>{t(makeKey('Page.title.', MilestoneType[milestoneType]))}</Header>
-            <p>{t('MilestonePage.instruction')}</p>
-
-            <DropDownInput items={this.getOptions()} onChange={(index) => this.setState((state) => ({
-                            ...state,
-                            normalOption: index
-                        }))} defaultValue={this.getOptions()[this.state.normalOption]}/>
-
-            <div className="mt-4">
-                <InstructionText text={this.describeNormalMilestoneOption()} />
-            </div>
-
-            {this.renderNormalMilestoneAdjustment()}
-
-            <div className="mt-4 text-right">
-                <Button buttonType={true} onClick={() => this.nextPage()} className="btn btn-primary btn-sm">{t('Common.button.next')}</Button>
-            </div>
-
-        </div>);
-    }
-
-    renderNormalMilestoneAdjustment() {
-        const { t } = this.props;
-        if (this.state.normalOption === 0) {
+    function renderNormalMilestoneAdjustment() {
+        if (normalOption === 0) {
             return (<>
                 <div className="stats-row mt-4">
-                    <StatControl statName={t(makeKey('Construct.discipline.', Skill[Skill.Command]))} value={this.getSkillValue(Skill.Command)}
-                        showIncrease={this.canIncreaseSkill(Skill.Command)} showDecrease={this.canDecreaseSkill(Skill.Command)}
-                        onIncrease={() => {this.increaseSkill(Skill.Command) }}
-                        onDecrease={() => {this.decreaseSkill(Skill.Command)}} />
+                    <StatControl statName={t(makeKey('Construct.discipline.', Skill[Skill.Command]))} value={getSkillValue(Skill.Command)}
+                        showIncrease={canIncreaseSkill(Skill.Command)} showDecrease={canDecreaseSkill(Skill.Command)}
+                        onIncrease={() => {increaseSkill(Skill.Command) }}
+                        onDecrease={() => {decreaseSkill(Skill.Command)}} />
 
-                    <StatControl statName={t(makeKey('Construct.discipline.', Skill[Skill.Security]))} value={this.getSkillValue(Skill.Security)}
-                        showIncrease={this.canIncreaseSkill(Skill.Security)} showDecrease={this.canDecreaseSkill(Skill.Security)}
-                        onIncrease={() => {this.increaseSkill(Skill.Security) }}
-                        onDecrease={() => {this.decreaseSkill(Skill.Security)}} />
+                    <StatControl statName={t(makeKey('Construct.discipline.', Skill[Skill.Security]))} value={getSkillValue(Skill.Security)}
+                        showIncrease={canIncreaseSkill(Skill.Security)} showDecrease={canDecreaseSkill(Skill.Security)}
+                        onIncrease={() => {increaseSkill(Skill.Security) }}
+                        onDecrease={() => {decreaseSkill(Skill.Security)}} />
 
-                    <StatControl statName={t(makeKey('Construct.discipline.', Skill[Skill.Science]))} value={this.getSkillValue(Skill.Science)}
-                        showIncrease={this.canIncreaseSkill(Skill.Science)} showDecrease={this.canDecreaseSkill(Skill.Science)}
-                        onIncrease={() => {this.increaseSkill(Skill.Science) }}
-                        onDecrease={() => {this.decreaseSkill(Skill.Science)}} />
+                    <StatControl statName={t(makeKey('Construct.discipline.', Skill[Skill.Science]))} value={getSkillValue(Skill.Science)}
+                        showIncrease={canIncreaseSkill(Skill.Science)} showDecrease={canDecreaseSkill(Skill.Science)}
+                        onIncrease={() => {increaseSkill(Skill.Science) }}
+                        onDecrease={() => {decreaseSkill(Skill.Science)}} />
                 </div>
 
                 <div className="stats-row">
-                    <StatControl statName={t(makeKey('Construct.discipline.', Skill[Skill.Conn]))} value={this.getSkillValue(Skill.Conn)}
-                        showIncrease={this.canIncreaseSkill(Skill.Conn)} showDecrease={this.canDecreaseSkill(Skill.Conn)}
-                        onIncrease={() => {this.increaseSkill(Skill.Conn) }}
-                        onDecrease={() => {this.decreaseSkill(Skill.Conn)}} />
+                    <StatControl statName={t(makeKey('Construct.discipline.', Skill[Skill.Conn]))} value={getSkillValue(Skill.Conn)}
+                        showIncrease={canIncreaseSkill(Skill.Conn)} showDecrease={canDecreaseSkill(Skill.Conn)}
+                        onIncrease={() => {increaseSkill(Skill.Conn) }}
+                        onDecrease={() => {decreaseSkill(Skill.Conn)}} />
 
-                    <StatControl statName={t(makeKey('Construct.discipline.', Skill[Skill.Engineering]))} value={this.getSkillValue(Skill.Engineering)}
-                        showIncrease={this.canIncreaseSkill(Skill.Engineering)} showDecrease={this.canDecreaseSkill(Skill.Engineering)}
-                        onIncrease={() => {this.increaseSkill(Skill.Engineering) }}
-                        onDecrease={() => {this.decreaseSkill(Skill.Engineering)}} />
+                    <StatControl statName={t(makeKey('Construct.discipline.', Skill[Skill.Engineering]))} value={getSkillValue(Skill.Engineering)}
+                        showIncrease={canIncreaseSkill(Skill.Engineering)} showDecrease={canDecreaseSkill(Skill.Engineering)}
+                        onIncrease={() => {increaseSkill(Skill.Engineering) }}
+                        onDecrease={() => {decreaseSkill(Skill.Engineering)}} />
 
-                    <StatControl statName={t(makeKey('Construct.discipline.', Skill[Skill.Medicine]))} value={this.getSkillValue(Skill.Medicine)}
-                        showIncrease={this.canIncreaseSkill(Skill.Medicine)} showDecrease={this.canDecreaseSkill(Skill.Medicine)}
-                        onIncrease={() => {this.increaseSkill(Skill.Medicine) }}
-                        onDecrease={() => {this.decreaseSkill(Skill.Medicine)}} />
+                    <StatControl statName={t(makeKey('Construct.discipline.', Skill[Skill.Medicine]))} value={getSkillValue(Skill.Medicine)}
+                        showIncrease={canIncreaseSkill(Skill.Medicine)} showDecrease={canDecreaseSkill(Skill.Medicine)}
+                        onIncrease={() => {increaseSkill(Skill.Medicine) }}
+                        onDecrease={() => {decreaseSkill(Skill.Medicine)}} />
                 </div>
             </>);
         } else {
-            const focuses = this.props.character.focuses.map((f, i) => {
+            const focuses = character.focuses.map((f, i) => {
                 return (
                     <tr key={i}>
                         <td>{f}</td>
@@ -122,9 +81,9 @@ class MilestonePage extends React.Component<IMilestonePageProperties, IMilestone
                             <CheckBox
                                 text=""
                                 value={t.name}
-                                isChecked={this.state.normalDeletedFocus === f}
+                                isChecked={normalDeletedFocus === f}
                                 onChanged={() => {
-                                    this.selectNormalDeletedFocus(f);
+                                    selectNormalDeletedFocus(f);
                                 } }/>
                         </td>
                     </tr>
@@ -147,128 +106,135 @@ class MilestonePage extends React.Component<IMilestonePageProperties, IMilestone
                         <p>Choose a new, replacement focus.</p>
 
                         <InputFieldAndLabel id="newFocus" labelName={t('Construct.other.focus')}
-                            value={this.state.normalAddedFocus || ""}
-                            onChange={(focus) => this.setState((state) => ({...state, normalAddedFocus: focus }))} />
+                            value={normalAddedFocus || ""}
+                            onChange={(focus) => setNormalAddedFocus(focus)} />
                     </div>
                 </div>);
         }
     }
 
-    selectNormalDeletedFocus(focus: string) {
-        this.setState((state) => ({
-            ...state,
-            normalDeletedFocus: focus
-        }));
+    function selectNormalDeletedFocus(focus: string) {
+        setNormalDeletedFocus(focus);
     }
 
-    canIncreaseSkill(skill: Skill) {
-        let base = this.props.character.skills[skill].expertise;
-        if (this.state.normalDisciplineDecrease == null) {
+    function canIncreaseSkill(skill: Skill) {
+        let base = character.skills[skill].expertise;
+        if (normalDisciplineDecrease == null) {
             return false;
         } else if (base >= 4) {
             return false;
-        } else if (this.state.normalDisciplineIncrease == null) {
+        } else if (normalDisciplineIncrease == null) {
             return true;
-        } else if (this.state.normalDisciplineDecrease === skill && this.state.normalDisciplineIncrease == null) {
+        } else if (normalDisciplineDecrease === skill && normalDisciplineIncrease == null) {
             return true;
         } else {
             return false;
         }
     }
 
-    canDecreaseSkill(skill: Skill) {
-        let base = this.props.character.skills[skill].expertise;
+    function canDecreaseSkill(skill: Skill) {
+        let base = character.skills[skill].expertise;
         if (base <= 1) {
             return false;
-        } else if (this.state.normalDisciplineIncrease === skill) {
+        } else if (normalDisciplineIncrease === skill) {
             return true;
-        } else if (this.state.normalDisciplineDecrease == null) {
+        } else if (normalDisciplineDecrease == null) {
             return true;
         } else {
             return false;
         }
     }
 
-    decreaseSkill(skill: Skill) {
-        this.setState((state) => {
-            if (state.normalDisciplineIncrease === skill) {
-                return {
-                    ...state,
-                    normalDisciplineIncrease: null
-                }
-            } else {
-                return {
-                    ...state,
-                    normalDisciplineDecrease: skill
-                }
-            }
-        });
-    }
-
-    increaseSkill(skill: Skill) {
-        this.setState((state) => {
-            if (state.normalDisciplineDecrease === skill) {
-                return {
-                    ...state,
-                    normalDisciplineDecrease: null
-                }
-            } else {
-                return {
-                    ...state,
-                    normalDisciplineIncrease: skill
-                }
-            }
-        });
-    }
-
-    getSkillValue(skill: Skill) {
-        if (skill === this.state.normalDisciplineDecrease) {
-            return this.props.character.skills[skill].expertise - 1;
-        } else if (skill === this.state.normalDisciplineIncrease) {
-            return this.props.character.skills[skill].expertise + 1;
+    function decreaseSkill(skill: Skill) {
+        if (normalDisciplineIncrease === skill) {
+            setNormalDisciplineIncrease(null);
         } else {
-            return this.props.character.skills[skill].expertise;
+            setNormalDisciplineDecrease(skill);
+        }
+    }
+
+    function increaseSkill(skill: Skill) {
+        if (normalDisciplineDecrease === skill) {
+            setNormalDisciplineDecrease(null);
+        } else {
+            setNormalDisciplineIncrease(skill);
+        };
+    }
+
+    function getSkillValue(skill: Skill) {
+        if (skill === normalDisciplineDecrease) {
+            return character.skills[skill].expertise - 1;
+        } else if (skill === normalDisciplineIncrease) {
+            return character.skills[skill].expertise + 1;
+        } else {
+            return character.skills[skill].expertise;
         }
     }
 
 
-    describeNormalMilestoneOption() {
-        if (this.state.normalOption === 0) {
+    function describeNormalMilestoneOption() {
+        if (normalOption === 0) {
             return "Reduce one discipline by 1 (to a minimum of 1) and increate a different discpline by 1 (to a maximum of 4)";
         } else {
             return "Choose a Focus and replace it with another Focus.";
         }
     }
 
-    getOptions() {
-        return [ "Change discipline", "Change focus"];
+    const getOptions = () => {
+        return [ new DropDownElement(0, "Change discipline"), new DropDownElement(1, "Change focus")];
     }
 
-    nextPage() {
-        if (this.state.normalOption === 0) {
-            if (this.state.normalDisciplineDecrease == null || this.state.normalDisciplineIncrease == null) {
+    const nextPage = () => {
+        if (normalOption === 0) {
+            if (normalDisciplineDecrease == null || normalDisciplineIncrease == null) {
                 Dialog.show("Decrease one discipline and increase another.");
             } else {
-                store.dispatch(applyNormalMilestoneDiscipline(this.state.normalDisciplineDecrease, this.state.normalDisciplineIncrease));
+                store.dispatch(applyNormalMilestoneDiscipline(normalDisciplineDecrease, normalDisciplineIncrease));
                 navigateTo(null, PageIdentity.ModificationCompletePage);
             }
         } else {
-            if (!this.state.normalDeletedFocus || !this.state.normalAddedFocus) {
+            if (!normalDeletedFocus || !normalAddedFocus) {
                 Dialog.show("Please specify which focus you want to replace, and what the new focus is.");
             } else {
-                store.dispatch(applyNormalMilestoneFocus(this.state.normalDeletedFocus, this.state.normalAddedFocus));
+                store.dispatch(applyNormalMilestoneFocus(normalDeletedFocus, normalAddedFocus));
                 navigateTo(null, PageIdentity.ModificationCompletePage);
             }
         }
     }
 
-    goToHome(e: React.MouseEvent<HTMLAnchorElement>) {
+    const goToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
         e.stopPropagation();
 
-        const { history } = this.props;
-        history.push("/");
+        navigate("/");
     }
+
+    return (<div className="page container ml-0">
+        <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+                <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
+                <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.ModificationTypeSelection)}>{t('Page.title.modificationTypeSelection')}</a></li>
+                <li className="breadcrumb-item active" aria-current="page">{t(makeKey('Page.title.', MilestoneType[milestoneType]))}</li>
+            </ol>
+        </nav>
+
+        <Header>{t(makeKey('Page.title.', MilestoneType[milestoneType]))}</Header>
+        <p>{t('MilestonePage.instruction')}</p>
+
+        <DropDownSelect items={getOptions()} onChange={(index) => setNormalOption(index as number)} defaultValue={normalOption}/>
+
+        <div className="mt-4">
+            <InstructionText text={describeNormalMilestoneOption()} />
+        </div>
+
+        {renderNormalMilestoneAdjustment()}
+
+        <div className="mt-4 text-right">
+            <Button buttonType={true} onClick={() => nextPage()} className="btn btn-primary btn-sm">{t('Common.button.next')}</Button>
+        </div>
+
+    </div>);
+
 }
 
 function mapStateToProps(state, ownProps) {
@@ -277,4 +243,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default withTranslation()(withRouter(connect(mapStateToProps)(MilestonePage)));
+export default connect(mapStateToProps)(MilestonePage);

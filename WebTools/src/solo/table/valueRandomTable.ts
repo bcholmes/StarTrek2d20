@@ -7,11 +7,23 @@ import { hasSource } from "../../state/contextFunctions";
 export const ValueRandomTable = (species?: Species, skill?: Skill) => {
 
     let roll = D20.roll();
-    if (roll <= 10 && hasSource(Source.ContinuingMissions)) {
-        if (species === Species.Vulcan) {
-            return VulcanValuesTable();
-        } else if (species === Species.Klingon) {
-            return KlingonValuesTable();
+    if (roll <= 15 && hasSource(Source.ContinuingMissions)) {
+        let subRoll = D20.roll();
+        if (subRoll <= 10) {
+            if (species != null && speciesRandomValues[species] != null
+                && skill != null && disciplineRandomValues[skill] != null) {
+
+                const table = D20.roll() <= 10 ? speciesRandomValues[species] : disciplineRandomValues[skill];
+                return table();
+            } else if (species != null && speciesRandomValues[species] != null) {
+                const table = speciesRandomValues[species];
+                return table();
+            } else if (skill != null && disciplineRandomValues[skill] != null) {
+                const table = disciplineRandomValues[skill];
+                return table();
+            } else {
+                return GeneralValuesTable();
+            }
         } else {
             return GeneralValuesTable();
         }
@@ -67,7 +79,7 @@ const StandardValuesTable = () => {
     }
 }
 
-const VulcanValuesTable = () => {
+const VulcanValuesTable = (): string => {
     let roll = D20.roll();
     switch (roll) {
         case 1:
@@ -114,7 +126,7 @@ const VulcanValuesTable = () => {
     }
 }
 
-const KlingonValuesTable = () => {
+const KlingonValuesTable = (): string => {
     let roll = D20.roll();
     switch (roll) {
         case 1:
@@ -159,6 +171,513 @@ const KlingonValuesTable = () => {
         default:
             return "In battle, there is redemption";
     }
+}
+
+const speciesRandomValues: {[species: number]: () => string } = {
+
+    [Species.Vulcan]: VulcanValuesTable,
+    [Species.Klingon]: KlingonValuesTable,
+
+}
+const ConnValuesTable = () => {
+    let roll = D20.roll() + D20.roll() + D20.roll();
+    switch (roll) {
+        case 3:
+            return "In space, speed is life";
+        case 4:
+            return "Always stay one step ahead";
+        case 5:
+            return "Feel the rhythm of the stars";
+        case 6:
+            return "Precision is the difference between success and failure";
+        case 7:
+            return "Fly it like you stole it";
+        case 8:
+            return "Every craft has a soul";
+        case 9:
+            return "Danger is the spice of life";
+        case 10:
+            return "Rules are more like guidelines";
+        case 11:
+            return "The sky is just the beginning";
+        case 12:
+            return "A smooth sea never made a skilled sailor";
+        case 13:
+            return "Navigate by instinct";
+        case 14:
+            return "Push the boundaries";
+        case 15:
+            return "Adventure is out there";
+        case 16:
+            return "The thrill of the chase";
+        case 17:
+            return "Know your ship like you know yourself";
+        case 18:
+            return "Born to fly";
+        case 19:
+            return "Full throttle or nothing";
+        case 20:
+            return "Gravity is just a suggestion";
+        case 21:
+            return "Always ride the lightning";
+        case 22:
+            return "Adapt and overcome";
+        case 23:
+            return "A pilot's heart beats in the skies";
+        case 24:
+            return "Nothing ventured; nothing gained";
+        case 25:
+            return "Stars are my roadmaps";
+        case 26:
+            return "I'd rather be flying";
+        case 27:
+            return "The horizon is my home";
+        case 28:
+            return "In the cockpit, I am free";
+        case 29:
+            return "Speed is a drug";
+        case 30:
+            return "A true pilot trusts their instincts";
+        case 31:
+            return "Navigate the impossible";
+        case 32:
+            return "To fly is to defy limits";
+        case 33:
+            return "There's always a way out";
+        case 34:
+            return "Live by the compass, not the clock";
+        case 35:
+            return "A second's hesitation can mean disaster";
+        case 36:
+            return "Plan for the worst. Hope for the best";
+        case 37:
+            return "The quicker, the better";
+        case 38:
+            return "Master of maneuvers";
+        case 39:
+            return "Never back down";
+        case 40:
+            return "Fast and furious";
+        case 41:
+            return "Failure is not an option";
+        case 42:
+            return "The wind knows the way";
+        case 43:
+            return "Every storm passes";
+        case 44:
+            return "Keep calm and fly on";
+        case 45:
+            return "Life in the fast lane";
+        case 46:
+            return "The universe is my playground";
+        case 47:
+            return "Respect the risks";
+        case 48:
+            return "No risk, no reward.";
+        case 49:
+            return "The sky is not the limit";
+        case 50:
+            return "Courage is the key to the clouds";
+        case 51:
+            return "Every course has its challenge";
+        case 52:
+            return "Always have a backup plan";
+        case 53:
+            return "Finesse over force";
+        case 54:
+            return "Dance among the stars";
+        case 55:
+            return "Trust your instruments";
+        case 56:
+            return "If you're not on the edge, you're taking up too much space";
+        case 57:
+            return "Life's a journey; enjoy the flight";
+        case 58:
+            return "A pilot's eye sees all";
+        case 59:
+            return "I control my own destiny";
+        case 60:
+        default:
+            return "I was born for the skies";
+    }
+}
+
+const EngineeringValuesTable = () => {
+    let roll = D20.roll() + D20.roll() + D20.roll();
+    switch (roll) {
+        case 3:
+            return "A place for everything and everything in its place";
+        case 4:
+            return "Adapt and overcome";
+        case 5:
+            return "Always look for a solution";
+        case 6:
+            return "Be prepared; expect the unexpected";
+        case 7:
+            return "Build a better tomorrow";
+        case 8:
+            return "Challenge the unknown";
+        case 9:
+            return "Change is the essence of life";
+        case 10:
+            return "Curiosity creates innovation";
+        case 11:
+            return "Design. Build. Improve.";
+        case 12:
+            return "Details make perfection";
+        case 13:
+            return "Diligence is the essence of life";
+        case 14:
+            return "Embrace the impossible";
+        case 15:
+            return "Every problem is a puzzle to solve";
+        case 16:
+            return "Failure is the first step to success";
+        case 17:
+            return "Functionality over aesthetics";
+        case 18:
+            return "Give me a wrench and I'll fix the universe";
+        case 19:
+            return "If it ain't broke, improve it anyway";
+        case 20:
+            return "If it can be imagined, it can be created";
+        case 21:
+            return "Imagination fuels invention";
+        case 22:
+            return "Innovate or stagnate";
+        case 23:
+            return "Invention is the child of necessity";
+        case 24:
+            return "It's not enough to understand: one must apply";
+        case 25:
+            return "Knowledge is power, but application is key";
+        case 26:
+            return "Learn from yesterday. Live for today. Hope for tomorrow.";
+        case 27:
+            return "Make it work. Make it right. Make it fast.";
+        case 28:
+            return "Never stop learning";
+        case 29:
+            return "Never stop questioning";
+        case 30:
+            return "No machine is perfect";
+        case 31:
+            return "Nothing is built to last forever";
+        case 32:
+            return "Perfection is a never-ending process";
+        case 33:
+            return "Progress demands sacrifice";
+        case 34:
+            return "Pursue new methods, not just new tools";
+        case 35:
+            return "Respect the machine; understand the machine";
+        case 36:
+            return "Rules are for those without innovation";
+        case 37:
+            return "Science is the key to progress";
+        case 38:
+            return "Simplicity is the ultimate sophistication";
+        case 39:
+            return "Solutions come from adapability";
+        case 40:
+            return "The best way to predict the future is to create it";
+        case 41:
+            return "The impossible is just something waiting to be invented";
+        case 42:
+            return "The sky is not the limit";
+        case 43:
+            return "There is always a way";
+        case 44:
+            return "There's no such thing as over-engineering";
+        case 45:
+            return "Think outside the box";
+        case 46:
+            return "To improve is to change; to perfect is to change often";
+        case 47:
+            return "Tomorrow's technology today";
+        case 48:
+            return "True genius is in simplicity";
+        case 49:
+            return "Understanding is the first step to mastery";
+        case 50:
+            return "We are made of star-stuff";
+        case 51:
+            return "We build our own future";
+        case 52:
+            return "We can rebuild it: better, stronger, faster";
+        case 53:
+            return "We don't guess: we calculate";
+        case 54:
+            return "We stand on the shoulders of giants";
+        case 55:
+            return "Where there's a will, there's a way";
+        case 56:
+            return "Wisdom comes from experience";
+        case 57:
+            return "Work smart, not hard";
+        case 58:
+            return "You don't have to see it to believe it; you have to believe it to see it";
+        case 59:
+            return "Your only limit is your imagination";
+        case 60:
+        default:
+            return "Did I break that?";
+    }
+}
+
+const ScienceValuesTable = () => {
+    let roll = D20.roll() + D20.roll() + D20.roll();
+    switch (roll) {
+        case 3:
+            return "The universe is a cosmic laboratory";
+        case 4:
+            return "Never stop questioning";
+        case 5:
+            return "Science sees the world as it is";
+        case 6:
+            return "Through hardship, knowledge";
+        case 7:
+            return "The stars are our destiny";
+        case 8:
+            return "Imagination will take us everywhere";
+        case 9:
+            return "In science we trust";
+        case 10:
+            return "Never fear the unknown";
+        case 11:
+            return "Question everything. Even the answers";
+        case 12:
+            return "Truth is found in evidence";
+        case 13:
+            return "Infinity is found in evidence";
+        case 14:
+            return "Curiosity didn't kill the cat; ignorance did";
+        case 15:
+            return "Discovery requires experimentation";
+        case 16:
+            return "The cosmos is a symphony of physics";
+        case 17:
+            return "Wonder is the seed of knowledge";
+        case 18:
+            return "Embrace the beauty of mathematics";
+        case 19:
+            return "We are all made of starstuff";
+        case 20:
+            return "The science of today is the technology of tomorrow";
+        case 21:
+            return "Order amidst chaos; beauty in randomness";
+        case 22:
+            return "In pursuit of the unknown";
+        case 23:
+            return "All mysteries can be solved";
+        case 24:
+            return "Life finds a way";
+        case 25:
+            return "Our destiny lies among the stars";
+        case 26:
+            return "Pushing the boundaries of understanding";
+        case 27:
+            return "The future belongs to the curious";
+        case 28:
+            return "The universe is under no obligation to make sense";
+        case 29:
+            return "Seek truth in all its forms";
+        case 30:
+            return "To be human is to explore";
+        case 31:
+            return "The universe is a puzzle to be solved";
+        case 32:
+            return "Understanding is the first step to mastery";
+        case 33:
+            return "All truths begin as hearsay";
+        case 34:
+            return "Theories are just patterns in the chaos";
+        case 35:
+            return "Question the status quo";
+        case 36:
+            return "Discovery is a process, not an event";
+        case 37:
+            return "Infinite variety in infinite combinations";
+        case 38:
+            return "The bigger the risk, the bigger the discovery";
+        case 39:
+            return "Every atom tells a story";
+        case 40:
+            return "The universe speaks in many languages";
+        case 41:
+            return "Through knowledge, enlightenment";
+        case 42:
+            return "Science is the poetry of reality";
+        case 43:
+            return "In every grain of sand, a universe";
+        case 44:
+            return "Reality is stranger than fiction";
+        case 45:
+            return "Logic is the language of the universe";
+        case 46:
+            return "Understanding the universe, one star at a time";
+        case 47:
+            return "The unseen is not the unknowable";
+        case 48:
+            return "Physics is the choreography of the cosmos";
+        case 49:
+            return "The universe writes its own laws";
+        case 50:
+            return "Embrace the absurdity of existence";
+        case 51:
+            return "Every experiment is a doorway to discovery";
+        case 52:
+            return "Chaos and order are two sides of the same coin";
+        case 53:
+            return "The truth is out there";
+        case 54:
+            return "Through the wormhole lies a universe of possibilities";
+        case 55:
+            return "The unknown is a canvas for discovery";
+        case 56:
+            return "Wisdom is the daughter of experience";
+        case 57:
+            return "Life is a cosmic phenomenon";
+        case 58:
+            return "Understanding begins at the edge of the known";
+        case 59:
+            return "Knowledge is the pathway to understanding";
+        case 60:
+        default:
+            return "Eternity begins in a single moment";
+    }
+}
+
+const MedicineValuesTable = () => {
+    let roll = D20.roll() + D20.roll() + D20.roll();
+    switch (roll) {
+        case 3:
+            return "A good physician treats the disease; a great physician treats the patient";
+        case 4:
+            return "Always do no harm";
+        case 5:
+            return "An ounce of prevention is worth a pound of cure";
+        case 6:
+            return "Be the healer you want to have";
+        case 7:
+            return "Benevolence above all";
+        case 8:
+            return "Break through the unknown";
+        case 9:
+            return "Cure sometimes. Treat often. Comfort always.";
+        case 10:
+            return "Disease is the real enemy";
+        case 11:
+            return "Embrace the art of healing";
+        case 12:
+            return "Every life has intrinsic value";
+        case 13:
+            return "Every patient is a door to new knowledge";
+        case 14:
+            return "Explore the mysteries of life";
+        case 15:
+            return "Good medicine requires patience";
+        case 16:
+            return "Heal the body. Heal the soul";
+        case 17:
+            return "Healing comes from the heart";
+        case 18:
+            return "I choose to save lives";
+        case 19:
+            return "In science we trust";
+        case 20:
+            return "Integrity in every diagnosis";
+        case 21:
+            return "It's not enough to treat the disease; we must treat the person";
+        case 22:
+            return "Knowledge is the best prescription";
+        case 23:
+            return "Life is a precious gift";
+        case 24:
+            return "Listen to the patient; they'll tell you the diagnosis";
+        case 25:
+            return "Medicine is a science of uncertainty and an art of probability";
+        case 26:
+            return "No life is too small to save";
+        case 27:
+            return "No patient is just a number";
+        case 28:
+            return "Not on my watch";
+        case 29:
+            return "One must care about a world on will not see";
+        case 30:
+            return "Patience, persistence and perspiration make an unbeatable combination for healing";
+        case 31:
+            return "Preserve life at all costs";
+        case 32:
+            return "Science serves life";
+        case 33:
+            return "Seek out new life and heal it";
+        case 34:
+            return "Service to life is the highest calling";
+        case 35:
+            return "The best doctor gives the least medicines";
+        case 36:
+            return "The health of my patients is my first consideration";
+        case 37:
+            return "The patient is central";
+        case 38:
+            return "The prime directive of medicine is to serve humanity";
+        case 39:
+            return "The right treatment at the right time";
+        case 40:
+            return "There's always hope, even in the darkest times";
+        case 41:
+            return "To cure someone, to relieve often, to comfort always";
+        case 42:
+            return "To heal is to understand";
+        case 43:
+            return "Trust in the power of medicine";
+        case 44:
+            return "Understanding is the first step to healing";
+        case 45:
+            return "Unseen they suffer, unheard they cry";
+        case 46:
+            return "We are all patients";
+        case 47:
+            return "We are the healers of the universe";
+        case 48:
+            return "We do more than mend broken bones, we mend broken spirits";
+        case 49:
+            return "We must live long and prosper";
+        case 50:
+            return "Where there is life, there is hope";
+        case 51:
+            return "Wherever the art of medicine is loved, there is also a love of humanity";
+        case 52:
+            return "Wisdom is to medicine as logic is to science";
+        case 53:
+            return "Without health, life is not life";
+        case 54:
+            return "Work for the good of all";
+        case 55:
+            return "Life is sacred: respect it";
+        case 56:
+            return "Each patient brings their own universe";
+        case 57:
+            return "Keep the body in good health to keep the mind strong and clear";
+        case 58:
+            return "Medicine is a science, healing is an art";
+        case 59:
+            return "Compassion is the soul of medicine";
+        case 60:
+        default:
+            return "You learn more from \"ouch\" than anything else";
+    }
+}
+
+const disciplineRandomValues: {[species: number]: () => string } = {
+
+    [Skill.Conn]: ConnValuesTable,
+    [Skill.Engineering]: EngineeringValuesTable,
+    [Skill.Science]: ScienceValuesTable,
+    [Skill.Medicine]: MedicineValuesTable,
+
 }
 
 const GeneralValuesTable = () => {

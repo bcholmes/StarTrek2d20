@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import CharacterCreationApp from "./app";
 import GMTrackerPage from './tracker/gmTrackerPage';
 import { Provider } from "react-redux";
@@ -19,15 +19,15 @@ root.render(
     <Provider store={store}>
         <Router>
             <Suspense fallback={<LoadingPage />}>
-                <Switch>
-                    <Route path="/modify" component={ModificationFramePage} />
-                    <Route path="/gmtracker" component={GMTrackerPage} />
-                    <Route path="/talents" component={TalentsOverviewMainPage} />
-                    <Route path="/view" component={ViewSheetPage} />
-                    <Route path="/credits" component={CreditsPage} />
-                    <Route path="/token" component={TokenCreationPage} />
-                    <Route path="/" component={CharacterCreationApp} />
-                </Switch>
+                <Routes>
+                    <Route path="/modify" element={<ModificationFramePage />} />
+                    <Route path="/gmtracker" element={<GMTrackerPage />} />
+                    <Route path="/talents" element={<TalentsOverviewMainPage />} />
+                    <Route path="/view" element={<ViewSheetPage />} />
+                    <Route path="/credits" element={<CreditsPage />} />
+                    <Route path="/token" element={<TokenCreationPage />} />
+                    <Route path="*" element={<CharacterCreationApp />} />
+                </Routes>
             </Suspense>
         </Router>
     </Provider>

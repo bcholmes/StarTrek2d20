@@ -1,65 +1,35 @@
-import React from "react";
-import { withRouter } from "react-router";
+import React, { useEffect } from "react";
 import { Era } from "../helpers/eras";
 import { CharacterSheetRegistry } from "../helpers/sheets";
 import { Button } from "../components/button";
 import { CharacterSheetDialog } from "../components/characterSheetDialog";
 import { Header } from "../components/header";
-import { BaseCharacterView } from "./baseCharacterView";
-import { withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { getNameAndShortRankOf } from "../helpers/ranks";
+import StressOrShieldsView from "./stressOrShieldsView";
+import CharacterStatBlock from "./characterStatBlock";
+import { ICharacterPageProperties } from "../common/iCharacterPageProperties";
+import { VttSelectionDialog } from "../vtt/view/VttSelectionDialog";
+import WeaponBlockView from "./weaponBlockView";
+import FocusBlockView from "./focusBlockView";
+import ValuesBlockView from "./valuesBlockView";
+import TalentsBlockView from "./talentsBlockView";
 
-class NpcView extends BaseCharacterView {
+const NpcView: React.FC<ICharacterPageProperties> = ({character}) => {
 
-    componentDidMount() {
-        if (this.props.character.name) {
-            if (this.props.character.rank) {
-                document.title = this.props.character.rank?.localizedName + " " + this.props.character.name + " - STAR TREK ADVENTURES";
+    useEffect(() => {
+        if (character.name) {
+            if (character.rank) {
+                document.title = character.rank?.localizedName + " " + character.name + " - STAR TREK ADVENTURES";
             } else {
-                document.title = this.props.character.name + " - STAR TREK ADVENTURES";
+                document.title = character.name + " - STAR TREK ADVENTURES";
             }
         }
-    }
+    }, [character.rank, character.name]);
 
-    render() {
-        const { t } = this.props;
-        return (<div>
-            {this.renderTopFields()}
-            <div className="row">
-                <div className="col-xl-6 mt-4">
-                    {this.renderStats()}
+    const { t } = useTranslation();
 
-                    {this.renderValues()}
-                    {this.renderTalents()}
-                </div>
-                <div className="col-xl-6">
-                    <div className="row">
-
-                        <div className="col-xl-6 mt-4">
-                            <Header level={2}>{t('Construct.other.stress')}</Header>
-                            {this.renderStress()}
-                        </div>
-
-                        <div className="col-xl-6 mt-4">
-                            <Header level={2}>{t('Construct.other.focuses')}</Header>
-                            {this.renderFocuses()}
-                        </div>
-
-                    </div>
-
-                    {this.renderWeapons()}
-                </div>
-            </div>
-
-            <div className="button-container mt-5 mb-3">
-                <Button className="button-small mr-3" onClick={() => this.showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
-                <Button className="button-small mr-3" onClick={() => this.showVttExportDialog() } buttonType={true}>{t('Common.button.exportVtt')}</Button>
-            </div>
-       </div>);
-    }
-
-    renderTopFields() {
-        const { t, character } = this.props;
+    function renderTopFields() {
         return (<>
             <Header>{(character.name ? getNameAndShortRankOf(character) : "Unnamed Character")}</Header>
             <div className="row mt-4" style={{alignItems: "baseline"}}>
@@ -85,9 +55,49 @@ class NpcView extends BaseCharacterView {
         </>)
     }
 
-    private showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(this.props.character, Era.NextGeneration), "sta-npc", this.props.character);
+    function showExportDialog() {
+        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character, Era.NextGeneration), "sta-npc", character);
     }
+
+    function showVttExportDialog() {
+        VttSelectionDialog.instance.show(character);
+    }
+
+    return (<div>
+        {renderTopFields()}
+        <div className="row">
+            <div className="col-xl-6 mt-4">
+                <CharacterStatBlock character={character} />
+
+                <ValuesBlockView character={character} />
+                <TalentsBlockView character={character} />
+            </div>
+            <div className="col-xl-6">
+                <div className="row">
+
+                    <div className="col-xl-6 mt-4">
+                        <Header level={2}>{t('Construct.other.stress')}</Header>
+                        <StressOrShieldsView value={character.stress} />
+                    </div>
+
+                    <div className="col-xl-6 mt-4">
+                        <Header level={2}>{t('Construct.other.focuses')}</Header>
+                        <FocusBlockView character={character} />
+                    </div>
+
+                </div>
+
+                <WeaponBlockView construct={character} />
+            </div>
+        </div>
+
+        <div className="button-container mt-5 mb-3">
+            <Button className="button-small mr-3" onClick={() => showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
+            <Button className="button-small mr-3" onClick={() => showVttExportDialog() } buttonType={true}>{t('Common.button.exportVtt')}</Button>
+        </div>
+    </div>);
+
+
 }
 
-export default withTranslation()(withRouter(NpcView));
+export default NpcView;

@@ -1,99 +1,83 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { withRouter, RouteComponentProps } from "react-router";
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { useNavigate } from "react-router";
+import { useTranslation } from 'react-i18next';
 import { Character } from "../../common/character";
 import { Header } from "../../components/header";
 import { Button } from "../../components/button";
-import { DropDownInput, DropDownElement  } from "../../components/dropDownInput";
+import { DropDownInput, DropDownElement, DropDownSelect  } from "../../components/dropDownInput";
 import Modifications, { ModificationType } from "../model/modificationType";
 import Milestones, { MilestoneType } from "../model/milestoneType";
 import { navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 
-interface ModificationTypeSelectionPageProperties extends WithTranslation {
+interface ModificationTypeSelectionPageProperties {
     character?: Character;
     isModified: boolean;
-    history: RouteComponentProps["history"];
 }
 
-interface ModificationTypeSelectionPageState {
-    modificationType?: ModificationType;
-    milestoneType?: MilestoneType;
-}
+const ModificationTypeSelectionPage: React.FC<ModificationTypeSelectionPageProperties> = ({character, isModified}) => {
 
-class ModificationTypeSelectionPage extends React.Component<ModificationTypeSelectionPageProperties, ModificationTypeSelectionPageState> {
+    const [modificationType, setModificationType ] = useState(ModificationType.Reputation);
+    const [milestoneType, setMilestoneType ] = useState(MilestoneType.NormalMilestone);
+    const { t } = useTranslation();
+    const navigate = useNavigate();
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            modificationType: ModificationType.Reputation,
-            milestoneType: MilestoneType.NormalMilestone
-        };
-    }
-
-    render() {
-        const { t } = this.props;
-        return (<div className="page container ml-0">
-                    <nav aria-label="breadcrumb">
-                        <ol className="breadcrumb">
-                            <li className="breadcrumb-item"><a href="index.html" onClick={(e) => this.goToHome(e)}>{t('Page.title.home')}</a></li>
-                            <li className="breadcrumb-item active" aria-current="page">{t('Page.title.modificationTypeSelection')}</li>
-                        </ol>
-                    </nav>
-
-                    <Header>{t('Page.title.modificationTypeSelection')}</Header>
-                    <p>{t('ModificationTypeSelectionPage.instruction')}</p>
-
-                    <div>
-                        <DropDownInput items={this.getModificationTypes()} onChange={(index) => this.setState((state) => ({
-                            ...state,
-                            modificationType: Modifications.instance.getItems()[index].type
-                        }))} defaultValue={this.state.modificationType}/>
-                    </div>
-
-                    {this.state.modificationType === ModificationType.Milestone
-                    ?  (<div className="my-4">
-                            <p>{t('ModificationTypeSelectionPage.whatMilestoneType')}</p>
-                            <div>
-                                <DropDownInput items={this.getMilestoneTypes()} onChange={(index) => this.setState((state) => ({
-                                    ...state,
-                                    milestoneType: Milestones.instance.getItems()[index].type
-                                }))} defaultValue={this.state.milestoneType}/>
-                            </div>
-                        </div>)
-                    : null}
-                    <div className="my-4 text-right">
-                        <Button buttonType={true} className="btn btn-primary btn-sm" onClick={() => this.nextPage()}>Next</Button>
-                    </div>
-                </div>);
-    }
-
-    getModificationTypes() {
+    const getModificationTypes = () => {
         return Modifications.instance.getItems().map(t => new DropDownElement(t.type, t.localizedName));
     }
 
-    getMilestoneTypes() {
+    const getMilestoneTypes = () => {
         return Milestones.instance.getItems().map(t => new DropDownElement(t.type, t.localizedName));
     }
 
-    nextPage() {
-        if (this.state.modificationType === ModificationType.Reputation) {
+    const nextPage = () => {
+        if (modificationType === ModificationType.Reputation) {
             navigateTo(null, PageIdentity.ReputationChange);
-        } else if (this.state.modificationType === ModificationType.Promotion) {
+        } else if (modificationType === ModificationType.Promotion) {
             navigateTo(null, PageIdentity.Promotion);
-        } else if (this.state.modificationType === ModificationType.Milestone && this.state.milestoneType === MilestoneType.NormalMilestone) {
+        } else if (modificationType === ModificationType.Milestone && milestoneType === MilestoneType.NormalMilestone) {
             navigateTo(null, PageIdentity.NormalMilestone);
         }
     }
 
-    goToHome(e: React.MouseEvent<HTMLAnchorElement>) {
+    const goToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
         e.stopPropagation();
 
-        const { history } = this.props;
-        history.push("/");
+        navigate("/");
     }
+
+
+    return (<div className="page container ml-0">
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">{t('Page.title.modificationTypeSelection')}</li>
+                    </ol>
+                </nav>
+
+                <Header>{t('Page.title.modificationTypeSelection')}</Header>
+                <p>{t('ModificationTypeSelectionPage.instruction')}</p>
+
+                <div>
+                    <DropDownInput items={getModificationTypes()}
+                        onChange={(index) => setModificationType(Modifications.instance.getItems()[index].type)} defaultValue={modificationType}/>
+                </div>
+
+                {modificationType === ModificationType.Milestone
+                ?  (<div className="my-4">
+                        <p>{t('ModificationTypeSelectionPage.whatMilestoneType')}</p>
+                        <div>
+                            <DropDownSelect items={getMilestoneTypes()} onChange={(type) => setMilestoneType(type as MilestoneType)} defaultValue={milestoneType}/>
+                        </div>
+                    </div>)
+                : null}
+                <div className="my-4 text-right">
+                    <Button buttonType={true} className="btn btn-primary btn-sm" onClick={() => nextPage()}>Next</Button>
+                </div>
+            </div>);
+
 }
 
 function mapStateToProps(state, ownProps) {
@@ -103,4 +87,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default withTranslation()(withRouter(connect(mapStateToProps)(ModificationTypeSelectionPage)));
+export default connect(mapStateToProps)(ModificationTypeSelectionPage);
