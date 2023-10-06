@@ -1,9 +1,10 @@
 import * as React from 'react';
+import packageJson from '../package.alias.json';
 
 export class AppVersion extends React.Component<{}, {}> {
 
     render() {
-        return (<div id="version">v{process.env.REACT_APP_VERSION}</div>);
+        return (<div id="version">v{packageJson.version}</div>);
     }
 }
 

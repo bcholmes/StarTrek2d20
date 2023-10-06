@@ -1,79 +1,65 @@
-import * as React from 'react';
-import {IPageProperties} from '../../pages/iPageProperties';
+import { useState } from 'react';
 import { Button } from '../../components/button';
 import { SystemGenerationTable } from '../table/systemGenerator';
 import { Navigation } from '../../common/navigator';
 import { PageIdentity } from '../../pages/pageIdentity';
 import { SpaceRegion, SpaceRegionModel, SpecialSectors, SpecialSectorTypeModel } from '../table/star';
+import { DropDownElement, DropDownSelect } from '../../components/dropDownInput';
+import { useNavigate } from 'react-router';
 
-interface ISystemGenerationState {
-    region: SpaceRegion;
-    sectorType: SpecialSectors;
-}
+export const SystemGenerationPage = () => {
 
-export class SystemGenerationPage extends React.Component<IPageProperties, ISystemGenerationState> {
+    const [region, setRegion] = useState(SpaceRegionModel.allRegions()[0].id);
+    const [sectorType, setSectorType] = useState(SpecialSectors.GeneralExpanse);
+    const navigate = useNavigate();
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            region: SpaceRegionModel.allRegions()[0].id,
-            sectorType: SpecialSectors.GeneralExpanse
-        }
-    }
-
-    render() {
-        return (
-            <div className="page container ml-0">
-                <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">System Generation</li>
-                    </ol>
-                </nav>
-
-                <div className="page-text mt-3">
-                    Select tool.
-                </div>
-                <div className="page-text mt-3">
-                <select onChange={(e) => this.selectRegion(e.target.value)} value={this.state.region}>
-                    {this.renderOptions()}
-                </select>
-                </div>
-                {this.renderSectorTypeSection()}
-                <div className="button-container">
-                    <Button text="Generate Sector" buttonType={true} className="button" onClick={() => { this.generateSystem(); }} />
-                </div>
-            </div>
-        );
-    }
-
-    renderSectorTypeSection() {
-        if (this.state.region === SpaceRegion.ShackletonExpanse) {
-            let options = SpecialSectorTypeModel.allSpecialSectorTypes().map((s, i) => { return (<option value={s.id} key={'type-' + s.id}>{s.name}</option>);});
+    const renderSectorTypeSection = () => {
+        if (region === SpaceRegion.ShackletonExpanse) {
+            let options = SpecialSectorTypeModel.allSpecialSectorTypes().map(s => new DropDownElement(s.id, s.name));
             return (<div className="page-text mt-3">
-                    <select onChange={(e) => this.selectSectorType(e.target.value)} value={this.state.sectorType}>
-                        {options}
-                    </select>
+                    <DropDownSelect onChange={(e) => selectSectorType(e as SpecialSectors)} defaultValue={sectorType} items={options} />
                 </div>)
         } else {
             return null;
         }
     }
 
-    selectSectorType(sectorType: string) {
-        this.setState((state) => ({...state, sectorType: parseInt(sectorType) as SpecialSectors }))
+    const selectSectorType = (sectorType: SpecialSectors) => {
+        setSectorType(sectorType);
     }
 
-    selectRegion(region: string) {
-        this.setState((state) => ({...state, region: parseInt(region) as SpaceRegion }))
+    const selectRegion = (region: SpaceRegion) => {
+        setRegion(region);
     }
 
-    renderOptions() {
-        return SpaceRegionModel.allRegions().map(r => { return (<option value={r.id} key={'region-' + r.id}>{r.name}</option>) });
+    const regionOptions = () => {
+        return SpaceRegionModel.allRegions().map(r => { return new DropDownElement(r.id, r.name) });
     }
 
-    private generateSystem() {
-        SystemGenerationTable.generateSector(SpaceRegionModel.for(this.state.region), this.state.region === SpaceRegion.ShackletonExpanse ? this.state.sectorType : undefined);
-        Navigation.navigateToPage(PageIdentity.SectorDetails);
+    const generateSystem = () => {
+        SystemGenerationTable.generateSector(SpaceRegionModel.for(region), region === SpaceRegion.ShackletonExpanse ? sectorType : undefined);
+        navigate("/sectorDetails");
     }
+
+    return (
+        <div className="page container ml-0">
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li className="breadcrumb-item active" aria-current="page">System Generation</li>
+                </ol>
+            </nav>
+
+            <div className="page-text mt-3">
+                Select tool.
+            </div>
+            <div className="page-text mt-3">
+            <DropDownSelect onChange={(e) => selectRegion(e as SpaceRegion)} defaultValue={region} items={regionOptions()} />
+            </div>
+            {renderSectorTypeSection()}
+            <div className="button-container">
+                <Button text="Generate Sector" buttonType={true} className="button" onClick={() => generateSystem()} />
+            </div>
+        </div>
+    );
 }

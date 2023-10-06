@@ -1,3 +1,2 @@
 interface Window {
-    version: string
 }

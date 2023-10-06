@@ -19,7 +19,6 @@ const CreditsPage = () => {
         navigate("/");
     }
 
-
     return (
         <LcarsFrame activePage={PageIdentity.CreditsPage}>
             <div id="app">
@@ -105,6 +104,20 @@ const CreditsPage = () => {
                         Attribution 3.0 Unported license. I've made a number of modifications to the image to
                         make it a bit more screen-accurate.
                     </p>
+
+                    <Header className="my-4" level={2}>Continuing Missions</Header>
+
+                    <p>
+                        With permission from the <a href="https://continuingmissionsta.com/" target="_blank" rel="noreferrer">Continuing Missions</a> site
+                        maintainers, I'm starting to integrate some of the unofficial sources. That includes material by the following folks:
+
+                        Mephit James,
+                        "Jester" Dave Gibson, {' '}
+                        <a href="https://continuingmissionsta.com/author/michaeldismuke/" target="_blank" rel="noreferrer">Michael Dismuke</a>,
+                        Tony Pi
+
+                    </p>
+
 
                     <Header className="my-4" level={2}>Contact</Header>
 

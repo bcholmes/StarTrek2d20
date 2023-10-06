@@ -37,6 +37,7 @@ import MilestonePage from '../modify/page/milestonePage';
 import { MilestoneType } from '../modify/model/milestoneType';
 import SourceSelectionPage from './sourceSelectionPage';
 import { StepContext } from '../state/characterActions';
+import toast from 'react-hot-toast';
 
 export interface IPageFactoryRegistry {
     findFactory(page: PageIdentity);
@@ -121,12 +122,12 @@ export class PageFactory {
         return factory ? factory() : undefined;
     }
 
-    loadSystemGenerationFactory(completion: () => void = () => {}) {
+    async loadSystemGenerationFactory(completion: () => void = () => {}) {
         if (this.pageFactories["system"] == null) {
             import(/* webpackChunkName: 'sector' */'../mapping/page/systemPageFactory').then(({SystemPageFactory}) => {
                 this.pageFactories["system"] = SystemPageFactory.instance;
                 completion();
-            });
+            }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
         } else {
             completion();
         }
@@ -138,7 +139,7 @@ export class PageFactory {
             import(/* webpackChunkName: 'starship' */'../starship/page/starshipPageFactory').then(({StarshipPageFactory}) => {
                 this.pageFactories["starship"] = StarshipPageFactory.instance;
                 completion();
-            });
+            }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
         } else {
             completion();
         }
@@ -149,7 +150,7 @@ export class PageFactory {
             import(/* webpackChunkName: 'npc' */ '../npc/page/npcPageFactory').then(({NpcPageFactory}) => {
                 this.pageFactories["npc"] = NpcPageFactory.instance;
                 completion();
-            });
+            }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
         } else {
             completion();
         }
@@ -160,7 +161,7 @@ export class PageFactory {
             import(/* webpackChunkName: 'captainsLog' */ '../solo/page/captainsLogPageFactory').then(({CaptainsLogPageFactory}) => {
                 this.pageFactories["captainsLog"] = CaptainsLogPageFactory.instance;
                 completion();
-            });
+            }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
         } else {
             completion();
         }

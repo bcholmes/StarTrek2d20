@@ -13,3 +13,4 @@ WebTools/src/**/*.js
 /WebTools/obj/Release
 .DS_Store
 .vscode/
+.env
