@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Button } from '../../components/button';
 import { SystemGenerationTable } from '../table/systemGenerator';
-import { Navigation } from '../../common/navigator';
-import { PageIdentity } from '../../pages/pageIdentity';
 import { SpaceRegion, SpaceRegionModel, SpecialSectors, SpecialSectorTypeModel } from '../table/star';
 import { DropDownElement, DropDownSelect } from '../../components/dropDownInput';
 import { useNavigate } from 'react-router';

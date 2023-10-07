@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import copy from "copy-to-clipboard";
-import { Navigation, preventDefaultAnchorEvent } from "../../common/navigator";
+import { preventDefaultAnchorEvent } from "../../common/navigator";
 import { Header } from "../../components/header";
-import { PageIdentity } from "../../pages/pageIdentity";
 import { setSectorName, setStar } from "../../state/starActions";
 import store from "../../state/store";
 import { EditableHeader } from "../view/editableHeader";
