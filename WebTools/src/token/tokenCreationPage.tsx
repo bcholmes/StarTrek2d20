@@ -21,6 +21,8 @@ import { DivisionColors } from './model/divisionColors';
 import { SpeciesHelper } from '../helpers/species';
 import ExtrasSelectionView from './view/extrasSelectionView';
 import { Rank } from '../helpers/ranks';
+import { UniformEra } from './model/uniformEra';
+import UniformPackCollection from './model/uniformPackCollection';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -43,6 +45,7 @@ interface ITokenCreationPageState {
     tab: Tab;
     rounded: boolean;
     bordered: boolean;
+    loadingUniform: boolean;
 }
 
 class TokenCreationPage extends React.Component<ITokenCreationPageProperties, ITokenCreationPageState> {
@@ -52,14 +55,19 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
         this.state = {
             tab: Tab.Species,
             rounded: false,
-            bordered: false
+            bordered: false,
+            loadingUniform: false
         }
     }
 
     render() {
         const { t, token } = this.props;
         const { tab, rounded, bordered } = this.state;
-        const svg = TokenSvgBuilder.createSvg(token, rounded, bordered && rounded);
+        const svg = this.state.loadingUniform
+            ? (<div className="spinner-border text-light" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>)
+            : TokenSvgBuilder.createSvg(token, rounded, bordered && rounded);
 
         return (<LcarsFrame activePage={PageIdentity.TokenCreationPage}>
                 <div id="app">
@@ -129,12 +137,17 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
         this.setState((state) => ({...state, tab: tab}));
     }
 
+    loadUniformPack(uniformEra: UniformEra) {
+        this.setState((state) => ({...state, loadingUniform: true}));
+        UniformPackCollection.instance.loadUniformPack(uniformEra, () => this.setState((state) => ({...state, loadingUniform: false})));
+    }
+
     renderTab() {
         switch (this.state.tab) {
             case Tab.Species:
                 return (<SpeciesSelectionView />);
             case Tab.Body:
-                return (<UniformSelectionView />);
+                return (<UniformSelectionView isLoading={this.state.loadingUniform} loadPack={(uniformEra) => this.loadUniformPack(uniformEra)}/>);
             case Tab.Head:
                 return (<HeadSelectionView />);
             case Tab.Mouth:

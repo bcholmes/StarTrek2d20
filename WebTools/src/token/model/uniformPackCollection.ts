@@ -1,14 +1,7 @@
-import { CivilianOutfitUniformPack } from "./civilianOutfitUniformPack";
+import toast from "react-hot-toast";
 import { DominionWarUniformPack } from "./dominionWarUniformPack";
-import { EnterpriseUniformPack } from "./enterpriseUniformPack";
-import { KlingonArmorUniformPack } from "./klingonArmorUniformPack";
-import { LowerDecksUniformPack } from "./lowerDecksUniformPack";
-import { MonsterMaroonUniformPack } from "./monsterMaroonUniformPack";
-import { TosKlingonUniformPack } from "./tosKlingonUniformPack";
-import { TosUniformPack } from "./tosUniformPack";
 import { UniformEra } from "./uniformEra";
 import { IUniformPack } from "./uniformPack";
-import { VoyagerUniformPack } from "./voyagerUniformPack";
 
 export default class UniformPackCollection {
 
@@ -20,6 +13,7 @@ export default class UniformPackCollection {
         if (UniformPackCollection._instance == null) {
             UniformPackCollection._instance = new UniformPackCollection();
         }
+        UniformPackCollection._instance.uniformPacks[UniformEra.DominionWar] = new DominionWarUniformPack();
         return UniformPackCollection._instance;
     }
 
@@ -27,32 +21,63 @@ export default class UniformPackCollection {
         if (this.isLoaded(uniformEra)) {
             return this.uniformPacks[uniformEra];
         } else {
-            let pack = this.createUniformPack(uniformEra);
-            this.uniformPacks[uniformEra] = pack;
-            return pack;
+            return this.uniformPacks[UniformEra.DominionWar];
+        }
+    }
+
+    loadUniformPack(era: UniformEra, completion: () => void = () => {}) {
+        if (this.isLoaded(era)) {
+            completion();
+        } else {
+            if (era === UniformEra.Civilian) {
+                import(/* webpackChunkName: 'civilianUniform' */ './civilianOutfitUniformPack').then(({CivilianOutfitUniformPack}) => {
+                    this.uniformPacks[era] = new CivilianOutfitUniformPack();
+                    completion();
+                }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
+            } else if (era === UniformEra.Klingon) {
+                import(/* webpackChunkName: 'klingonUniform' */ './klingonArmorUniformPack').then(({KlingonArmorUniformPack}) => {
+                    this.uniformPacks[era] = new KlingonArmorUniformPack();
+                    completion();
+                }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
+            } else if (era === UniformEra.OriginalSeriesKlingon) {
+                import(/* webpackChunkName: 'klingonUniform' */ './tosKlingonUniformPack').then(({TosKlingonUniformPack}) => {
+                    this.uniformPacks[era] = new TosKlingonUniformPack();
+                    completion();
+                }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
+            } else if (era === UniformEra.Enterprise) {
+                import(/* webpackChunkName: 'enterpriseUniform' */ './enterpriseUniformPack').then(({EnterpriseUniformPack}) => {
+                    this.uniformPacks[era] = new EnterpriseUniformPack();
+                    completion();
+                }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
+            } else if (era === UniformEra.MonsterMaroon) {
+                import(/* webpackChunkName: 'monsterMaroonUniform' */ './monsterMaroonUniformPack').then(({MonsterMaroonUniformPack}) => {
+                    this.uniformPacks[era] = new MonsterMaroonUniformPack();
+                    completion();
+                }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
+            } else if (era === UniformEra.OriginalSeries) {
+                import(/* webpackChunkName: 'tosUniform' */ './tosUniformPack').then(({TosUniformPack}) => {
+                    this.uniformPacks[era] = new TosUniformPack();
+                    completion();
+                }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
+            } else if (era === UniformEra.VoyagerDS9) {
+                import(/* webpackChunkName: 'voyagerDs9Uniform' */ './voyagerUniformPack').then(({VoyagerUniformPack}) => {
+                    this.uniformPacks[era] = new VoyagerUniformPack();
+                    completion();
+                }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
+            } else if (era === UniformEra.LowerDecks) {
+                import(/* webpackChunkName: 'lowerDecksUniform' */ './lowerDecksUniformPack').then(({LowerDecksUniformPack}) => {
+                    this.uniformPacks[era] = new LowerDecksUniformPack();
+                    completion();
+                }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
+            } else {
+                this.createUniformPack(era);
+                completion();
+            }
         }
     }
 
     private createUniformPack(era: UniformEra) {
-        if (era === UniformEra.MonsterMaroon) {
-            return new MonsterMaroonUniformPack();
-        } else if (era === UniformEra.Enterprise) {
-            return new EnterpriseUniformPack();
-        } else if (era === UniformEra.OriginalSeries) {
-            return new TosUniformPack();
-        } else if (era === UniformEra.OriginalSeriesKlingon) {
-            return new TosKlingonUniformPack();
-        } else if (era === UniformEra.Klingon) {
-            return new KlingonArmorUniformPack();
-        } else if (era === UniformEra.LowerDecks) {
-            return new LowerDecksUniformPack();
-        } else if (era === UniformEra.VoyagerDS9) {
-            return new VoyagerUniformPack();
-        } else if (era === UniformEra.Civilian) {
-            return new CivilianOutfitUniformPack();
-        } else {
-            return new DominionWarUniformPack();
-        }
+        return new DominionWarUniformPack();
     }
 
     isLoaded(uniformEra: UniformEra) {

@@ -15,46 +15,62 @@ import UniformVariantRestrictions from "../model/uniformVariantRestrictions";
 
 interface IUniformSelectionViewProperties extends WithTranslation {
     token: Token;
+    loadPack: (era: UniformEra) => void;
+    isLoading: boolean;
 }
 
 class UniformSelectionView extends React.Component<IUniformSelectionViewProperties, {}> {
 
+    handleUniformEraChange(era: UniformEra) {
+        const { loadPack } = this.props;
+        loadPack(era);
+        store.dispatch(setUniformEra(era));
+    }
+
     render() {
-        const { t, token } = this.props;
+        const { t, token, isLoading } = this.props;
 
-        return (<div className="mt-4">
-            <div className="row align-items-start">
-                <div className="col-lg-6 mb-3">
-                    <p>{t('TokenCreator.section.body.uniform')}:</p>
-                    <DropDownSelect items={this.uniformErasList()} defaultValue={token.uniformEra} onChange={(e) => store.dispatch(setUniformEra(e as UniformEra))} />
+        if (isLoading) {
+            return (<div className="spinner-border text-light" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>);
+        } else {
+
+            return (<div className="mt-4">
+                <div className="row align-items-start">
+                    <div className="col-lg-6 mb-3">
+                        <p>{t('TokenCreator.section.body.uniform')}:</p>
+                        <DropDownSelect items={this.uniformErasList()} defaultValue={token.uniformEra}
+                            onChange={(era) => this.handleUniformEraChange(era as UniformEra)} />
+                    </div>
+                    <div className="col-lg-6 mb-3">
+                        {DivisionColors.isDivisionColorsSupported(token.uniformEra) ?
+                        (<>
+                            <p>{t('TokenCreator.section.body.colour')}:</p>
+                            <ColorSelection colors={DivisionColors.getColors(token.uniformEra)} onSelection={(c) => store.dispatch(setTokenDivisionColor(c))} />
+                        </>)
+                        : undefined}
+                    </div>
                 </div>
-                <div className="col-lg-6 mb-3">
-                    {DivisionColors.isDivisionColorsSupported(token.uniformEra) ?
-                    (<>
-                        <p>{t('TokenCreator.section.body.colour')}:</p>
-                        <ColorSelection colors={DivisionColors.getColors(token.uniformEra)} onSelection={(c) => store.dispatch(setTokenDivisionColor(c))} />
-                    </>)
-                    : undefined}
+
+                <p className="mt-4">{t('TokenCreator.section.body.rank')}:</p>
+                <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
+                {RankIndicatorCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.localizedName}
+                    onClick={() => store.dispatch(setTokenRank(s.id))}
+                    active={token.rankIndicator === s.id}
+                    token={token} key={'rank-swatch-' + s.id }/>)}
                 </div>
-            </div>
 
-            <p className="mt-4">{t('TokenCreator.section.body.rank')}:</p>
-            <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-            {RankIndicatorCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.localizedName}
-                onClick={() => store.dispatch(setTokenRank(s.id))}
-                active={token.rankIndicator === s.id}
-                token={token} key={'rank-swatch-' + s.id }/>)}
-            </div>
+                <p className="mt-4">{t('TokenCreator.section.body.type')}:</p>
+                <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
+                {UniformCatalog.instance.getSwatches(token.uniformEra).map(s => <SwatchButton svg={s.svg} title={s.localizedName} size="lg"
+                    onClick={() => store.dispatch(setTokenBodyType(s.id)) }
+                    active={token.bodyType === s.id} token={token} key={'body-swatch-' + s.id }/>)}
+                </div>
 
-            <p className="mt-4">{t('TokenCreator.section.body.type')}:</p>
-            <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-            {UniformCatalog.instance.getSwatches(token.uniformEra).map(s => <SwatchButton svg={s.svg} title={s.localizedName} size="lg"
-                onClick={() => store.dispatch(setTokenBodyType(s.id)) }
-                active={token.bodyType === s.id} token={token} key={'body-swatch-' + s.id }/>)}
-            </div>
-
-            {this.renderVariants()}
-        </div>);
+                {this.renderVariants()}
+            </div>);
+        }
     }
 
     renderVariants() {
