@@ -6,12 +6,14 @@ import {CareerModel, CareersHelper} from '../helpers/careers';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {TalentDescription} from '../components/talentDescription';
-import ValueInput, {Value} from '../components/valueInput';
+import ValueInput from '../components/valueInputWithRandomOption';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import SingleTalentSelectionList from '../components/singleTalentSelectionList';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { Header } from '../components/header';
+import { ValueRandomTable } from '../solo/table/valueRandomTable';
+import { Career } from '../helpers/careerEnum';
 
 class CareerDetailsPage extends React.Component<WithTranslation, {}> {
     private _talent: TalentViewModel;
@@ -23,6 +25,16 @@ class CareerDetailsPage extends React.Component<WithTranslation, {}> {
         if (career.talent.length === 1) {
             this._talent = career.talent[0];
         }
+    }
+
+    randomValue() {
+        let value = ValueRandomTable(character.speciesStep?.species, character.educationStep?.primaryDiscipline);
+        this.onValueChanged(value);
+    }
+
+    onValueChanged(value: string) {
+        character.careerValue = value;
+        this.forceUpdate();
     }
 
     render() {
@@ -48,11 +60,20 @@ class CareerDetailsPage extends React.Component<WithTranslation, {}> {
     renderMainBody(career: CareerModel) {
         const { t } = this.props;
 
+        let textDescription = t('Value.careerLength.experienced.text');
+        if (career.id === Career.Young) {
+            textDescription = t('Value.careerLength.young.text');
+        } else if (career.id === Career.Veteran) {
+            textDescription = t('Value.careerLength.veteran.text');
+        }
+
         if (career.talent.length === 1) {
             return (<div className="row">
                 <div className="col-md-6 my-3">
                     <Header level={2}>{t('Construct.other.value')}</Header>
-                    <ValueInput value={Value.Career}/>
+                    <ValueInput value={character.careerValue} onValueChanged={(value) => this.onValueChanged(value)}
+                            onRandomClicked={() => this.randomValue()} textDescription={textDescription}
+                        />
                 </div>
 
                 <div className="col-md-6 my-3">
@@ -62,12 +83,15 @@ class CareerDetailsPage extends React.Component<WithTranslation, {}> {
             </div>);
         } else {
             return (<>
-            <div className="my-3">
-                <Header level={2}>{t('Construct.other.value')}</Header>
-                <ValueInput value={Value.Career}/>
+            <div className="row">
+                <div className="col-md-6 my-3">
+                    <Header level={2}>{t('Construct.other.value')}</Header>
+                    <ValueInput value={character.careerValue} onValueChanged={(value) => this.onValueChanged(value)}
+                                onRandomClicked={() => this.randomValue()} textDescription={textDescription} />
                 </div>
+            </div>
 
-                <div className="my-3">
+            <div className="my-3">
                 <Header level={2}>{t('Construct.other.talent')}</Header>
                 <SingleTalentSelectionList talents={this.filterTalentList()}
                     construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>

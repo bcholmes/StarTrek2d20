@@ -1,14 +1,13 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import {character} from '../common/character';
 import {CharacterType} from '../common/characterType';
 import {Navigation} from '../common/navigator';
-import {IPageProperties} from './iPageProperties';
-import {TracksHelper} from '../helpers/tracks';
+import {TrackModel, TracksHelper} from '../helpers/tracks';
 import {Skill} from '../helpers/skills';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovementCollection';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
-import ValueInput, {Value} from '../components/valueInput';
+import ValueInput from '../components/valueInputWithRandomOption';
 import {MajorsList} from '../components/majorsList';
 import SkillView from '../components/skill';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
@@ -16,8 +15,13 @@ import { Header } from '../components/header';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import SingleTalentSelectionList from '../components/singleTalentSelectionList';
 import { Track } from '../helpers/trackEnum';
+import { ValueRandomTable } from '../solo/table/valueRandomTable';
+import { WithTranslation, withTranslation } from 'react-i18next';
+import InstructionText from '../components/instructionText';
+import ReactMarkdown from 'react-markdown';
+import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 
-export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties, {}> {
+class StarfleetAcademyDetailsPage extends React.Component<WithTranslation, {}> {
     private _talent: TalentViewModel;
     private _focus1: HTMLInputElement;
     private _focus2: HTMLInputElement;
@@ -26,22 +30,26 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     private _attributesDone: boolean;
     private _skillsDone: boolean;
 
-    render() {
-        const track = TracksHelper.instance().getTrack(character.educationStep?.track);
 
+    constructor(props) {
+        super(props);
         if (character.educationStep?.track === Track.EnlistedSecurityTraining) {
-            return this.renderEnlistedSecurityTrainingDetails();
+            character.educationStep.focuses[2] = "Chain of Command";
         }
-        else if (character.educationStep?.track === Track.ShipOperations) {
-            return this.renderShipOperationsDetails();
-        }
-        else if (character.educationStep?.track === Track.UniversityAlumni) {
-            return this.renderUniversityAlumniDetails();
-        }
-        else if (character.educationStep?.track === Track.ResearchInternship) {
-            return this.renderResearchInternshipDetails();
-        }
+    }
 
+    randomValue() {
+        let value = ValueRandomTable(character.speciesStep?.species);
+        this.onValueChanged(value);
+    }
+
+    onValueChanged(value: string) {
+        character.trackValue = value;
+        this.forceUpdate();
+    }
+
+    renderFocuses(track: TrackModel) {
+        const { t } = this.props;
         let training = "Select three focuses for your character, at least one reflecting the time at Starfleet Academy.";
         if (character.type === CharacterType.KlingonWarrior) {
             if (character.enlisted) {
@@ -49,51 +57,114 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
             } else {
                 training = "Select three focuses for your character, at least one reflecting the time at KDF Academy.";
             }
+        } else if (track.id === Track.EnlistedSecurityTraining) {
+            training = "Select two focuses for your character. You have already gained the *Chain of Command* focus.";
         }
 
+        return (<div className="col-lg-6 my-3">
+            <Header level={2}>FOCUS</Header>
+            <ReactMarkdown>{training}</ReactMarkdown>
+
+            <InputFieldAndLabel id="focus1" labelName={t('Construct.other.focus1')}
+                value={character.educationStep?.focuses[0] ?? ""}
+                onChange={(value) => {character.educationStep.focuses[0] = value; this.forceUpdate()}} />
+            <InputFieldAndLabel id="focus2" labelName={t('Construct.other.focus2')}
+                value={character.educationStep?.focuses[1] ?? ""}
+                onChange={(value) => {character.educationStep.focuses[1] = value; this.forceUpdate()}} />
+            <InputFieldAndLabel id="focus3" labelName={t('Construct.other.focus3')}
+                value={character.educationStep?.focuses[2] ?? ""}
+                onChange={(value) => {character.educationStep.focuses[2] = value; this.forceUpdate()}} />
+
+            <div className="text-white mt-2"><b>Suggestions: </b> {track.focusSuggestions.join(", ")}</div>
+        </div>);
+    }
+
+    renderAttributes(track: TrackModel) {
+        return (<div className="col-lg-6 my-6">
+                <Header level={2}>ATTRIBUTES (Select up to three)</Header>
+                <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Academy} points={3} onDone={(done) => { this._attributesDone = done; } } rule={track.attributesRule}/>
+            </div>);
+    }
+
+    renderDisciplines(track: TrackModel) {
+        const { t } = this.props;
+        if (track.id === Track.EnlistedSecurityTraining) {
+            return (<div className="col-lg-6 my-3">
+                    <Header level={2}>{t('Construct.other.disciplines')}</Header>
+                    <SkillView points={2} skill={Skill.Security} />
+                    <SkillView points={1} skill={Skill.Conn} />
+                    <SkillView points={1} skill={Skill.Engineering} />
+                </div>);
+        } else if (track.id === Track.ShipOperations) {
+            return (<div className="col-lg-6 my-3">
+                    <Header level={2}>{t('Construct.other.disciplines')}</Header>
+                    <SkillView points={2} skill={Skill.Conn} />
+                    <SkillView points={1} skill={Skill.Engineering} />
+                    <SkillView points={1} skill={Skill.Science} />
+                </div>);
+        } else if (track.id === Track.UniversityAlumni) {
+            return (<div className="col-lg-6 my-3">
+                    <Header level={2}>{t('Construct.other.disciplines')}</Header>
+                    <SkillView points={2} skill={Skill.Science} />
+                    <SkillView points={1} skill={Skill.Engineering} />
+                    <SkillView points={1} skill={Skill.Command} />
+                </div>);
+        } else if (track.id === Track.ResearchInternship) {
+            return (<div className="col-lg-6 my-3">
+                    <Header level={2}>{t('Construct.other.disciplines')}</Header>
+                    <SkillView points={2} skill={Skill.Science} />
+                    <SkillView points={1} skill={Skill.Engineering} />
+                    <SkillView points={1} skill={Skill.Medicine} />
+                </div>);
+        } else {
+            return (<div className="col-lg-6 my-3">
+                    <MajorsList skills={track.majorDisciplines} onDone={(done) => {this._skillsDone = done; this.forceUpdate() }} rule={track.skillsRule}/>
+                </div>);
+        }
+    }
+
+    renderTalents() {
+        const { t } = this.props;
+        return (<div>
+                <Header level={2}>{t('Construct.other.talent')}</Header>
+                <SingleTalentSelectionList talents={this.filterTalentList()}
+                    construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
+            </div>);
+    }
+
+    render() {
+        const { t } = this.props;
+        const track = TracksHelper.instance().getTrack(character.educationStep?.track);
+
         return (
-            <div className="page">
+            <div className="page container ml-0">
+                <CharacterCreationBreadcrumbs />
                 <Header>{track.name}</Header>
-                <div className="panel">
-                    <div className="desc-text">{track.description}</div>
-                </div>
-                <div className="panel">
-                    <div className="header-small">ATTRIBUTES (Select up to three)</div>
-                    <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Academy} points={3} onDone={(done) => { this._attributesDone = done; } } rule={track.attributesRule}/>
-                </div>
-                <MajorsList skills={track.majorDisciplines} onDone={(done) => {this._skillsDone = done; this.forceUpdate() }} rule={track.skillsRule}/>
-                <div className="panel">
-                    <div className="header-small">FOCUS</div>
-                    <div>{training}</div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus1 = input; } } />
+                <InstructionText text={track.description} />
+                <div className="row">
+                    {this.renderAttributes(track)}
+                    {this.renderDisciplines(track)}
+
+                    {this.renderFocuses(track)}
+
+                    <div className="col-lg-6 my-3">
+                        <Header level={2}>VALUE</Header>
+                        <ValueInput value={character.trackValue} onValueChanged={(value) => this.onValueChanged(value)}
+                                onRandomClicked={() => this.randomValue()} textDescription={t('Value.starfleetTraining.text')}
+                            />
+
                     </div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus2 = input; } } />
-                    </div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus3 = input; } } />
-                    </div>
-                    <div><b>Suggestions: </b> {track.focusSuggestions.join(", ")}</div>
                 </div>
-                <div className="panel">
-                    <div className="header-small">TALENT</div>
-                    <SingleTalentSelectionList talents={this.filterTalentList()}
-                        construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
+                {this.renderTalents()}
+                <div className="mt-5 text-right">
+                    <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary btn" onClick={() => this.onNext() }/>
                 </div>
-                <div className="panel">
-                    <div className="header-small">VALUE</div>
-                    <ValueInput value={Value.Track}/>
-                </div>
-                <Button text="CAREER" className="button-next" onClick={() => this.onNext() }/>
             </div>
         );
     }
 
     private renderEnlistedSecurityTrainingDetails() {
+        const { t } = this.props;
         const track = TracksHelper.instance().getTrack(character.educationStep?.track);
 
         return (
@@ -132,7 +203,9 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
-                    <ValueInput value={Value.Track}/>
+                    <ValueInput value={character.trackValue} onValueChanged={(value) => this.onValueChanged(value)}
+                            onRandomClicked={() => this.randomValue()} textDescription={t('Value.starfleetTraining.text')}
+                        />
                 </div>
                 <Button text="CAREER" className="button-next" onClick={() => this.onNext() }/>
             </div>
@@ -140,6 +213,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     }
 
     private renderShipOperationsDetails() {
+        const { t } = this.props;
         const track = TracksHelper.instance().getTrack(character.educationStep?.track);
 
         return (
@@ -183,7 +257,9 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
-                    <ValueInput value={Value.Track}/>
+                    <ValueInput value={character.trackValue} onValueChanged={(value) => this.onValueChanged(value)}
+                            onRandomClicked={() => this.randomValue()} textDescription={t('Value.starfleetTraining.text')}
+                        />
                 </div>
                 <Button text="CAREER" className="button-next" onClick={() => this.onNext() }/>
             </div>
@@ -191,6 +267,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     }
 
     private renderUniversityAlumniDetails() {
+        const { t } = this.props;
         const track = TracksHelper.instance().getTrack(character.educationStep?.track);
 
         return (
@@ -243,7 +320,9 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
-                    <ValueInput value={Value.Track}/>
+                    <ValueInput value={character.trackValue} onValueChanged={(value) => this.onValueChanged(value)}
+                            onRandomClicked={() => this.randomValue()} textDescription={t('Value.otherTraining.text')}
+                        />
                 </div>
                 <Button text="CAREER" className="button-next" onClick={() => this.onNext() }/>
             </div>
@@ -251,6 +330,7 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
     }
 
     private renderResearchInternshipDetails() {
+        const { t } = this.props;
         const track = TracksHelper.instance().getTrack(character.educationStep?.track);
 
         return (
@@ -302,7 +382,9 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
                 </div>
                 <div className="panel">
                     <div className="header-small">VALUE</div>
-                    <ValueInput value={Value.Track}/>
+                    <ValueInput value={character.trackValue} onValueChanged={(value) => this.onValueChanged(value)}
+                            onRandomClicked={() => this.randomValue()} textDescription={t('Value.otherTraining.text')}
+                        />
                 </div>
                 <Button text="CAREER" className="button-next" onClick={() => this.onNext() }/>
             </div>
@@ -340,32 +422,13 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
             return;
         }
 
-        var focus1 = this._focus1.value;
-        var focus2 = this._focus2.value;
-        var focus3 = this._focus3 ? this._focus3.value : null;
-
-        if (!ignoresDisciplineRequirements) {
-            if (!focus1 || focus1.length === 0 ||
-                !focus2 || focus2.length === 0 ||
-                !focus3 || focus3.length === 0) {
-                Dialog.show("You need to type in three Focuses. Choose from the suggestions if you cannot come up with your own.");
-                return;
-            }
-        }
-        else {
-            if (!focus1 || focus1.length === 0 ||
-                !focus2 || focus2.length === 0) {
-                Dialog.show("You need to type in two Focuses. Choose from the suggestions if you cannot come up with your own.");
-                return;
-            }
+        let focuses = character.educationStep?.focuses?.filter(f => f?.length > 0);
+        if (focuses.length !== 3) {
+            Dialog.show("You need to type in three Focuses. Choose from the suggestions if you cannot come up with your own.");
+            return;
         }
 
-        character.addFocus(focus1);
-        character.addFocus(focus2);
-
-        if (focus3 && focus3.length > 0) {
-            character.addFocus(focus3);
-        }
+        focuses.forEach(f => character.addFocus(f));
 
         var trait = this._trait ? this._trait.value : null;
         if (trait && trait.length > 0) {
@@ -378,3 +441,5 @@ export class StarfleetAcademyDetailsPage extends React.Component<IPageProperties
         Navigation.navigateToPage(character.workflow.currentStep().page);
     }
 }
+
+export default withTranslation()(StarfleetAcademyDetailsPage);

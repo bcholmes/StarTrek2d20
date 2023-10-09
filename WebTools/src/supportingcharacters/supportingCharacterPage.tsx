@@ -123,7 +123,7 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
                                 this.setState((state) => ({
                                     ...state,
                                     purpose: value}));
-                                character.role = value;
+                                character.jobAssignment = value;
                             }} id="purpose" />
                         </div>
                     </div>

@@ -17,6 +17,10 @@ export const APPLY_NORMAL_MILESTONE_FOCUS = 'APPLY_NORMAL_MILESTONE_FOCUS';
 export const SET_CHARACTER_SPECIES = 'SET_CHARACTER_SPECIES';
 export const SET_CHARACTER_FOCUS = 'SET_CHARACTER_FOCUS';
 export const SET_CHARACTER_VALUE = 'SET_CHARACTER_VALUE';
+export const SET_CHARACTER_LINEAGE = 'SET_CHARACTER_LINEAGE';
+export const SET_CHARACTER_ASSIGNED_SHIP = 'SET_CHARACTER_ASSIGNED_SHIP';
+export const SET_CHARACTER_HOUSE = 'SET_CHARACTER_HOUSE';
+export const SET_CHARACTER_ADDITIONAL_TRAITS = 'SET_CHARACTER_ADDITIONAL_TRAITS';
 export const SET_CHARACTER_NAME = 'SET_CHARACTER_NAME';
 export const SET_CHARACTER_RANK = 'SET_CHARACTER_RANK';
 export const SET_CHARACTER_ROLE = 'SET_CHARACTER_ROLE';
@@ -120,6 +124,31 @@ export function setCharacterName(name: string) {
     }
 }
 
+export function setCharacterLineage(lineage: string) {
+    let payload = { lineage: lineage };
+    return {
+       type: SET_CHARACTER_LINEAGE,
+       payload: payload
+    }
+}
+
+export function setCharacterHouse(house: string) {
+    let payload = { house: house };
+    return {
+       type: SET_CHARACTER_HOUSE,
+       payload: payload
+    }
+}
+
+export function setCharacterAdditionalTraits(traits: string) {
+    let payload = { traits: traits };
+    return {
+       type: SET_CHARACTER_ADDITIONAL_TRAITS,
+       payload: payload
+    }
+}
+
+
 export function setCharacterRank(name: string, rank?: Rank) {
     let payload = { name: name, rank: rank };
     return {
@@ -128,10 +157,18 @@ export function setCharacterRank(name: string, rank?: Rank) {
     }
 }
 
-export function setCharacterAssignment(name: string, role?: Role) {
-    let payload = { name: name, role: role };
+export function setCharacterAssignment(name: string, role?: Role, secondaryRoleName?: string, secondaryRole?: Role) {
+    let payload = { name: name, role: role, secondaryRoleName: secondaryRoleName, secondaryRole: secondaryRole };
     return {
        type: SET_CHARACTER_ROLE,
+       payload: payload
+    }
+}
+
+export function setCharacterAssignedShip(assignedShip: string) {
+    let payload = { assignedShip: assignedShip };
+    return {
+       type: SET_CHARACTER_ASSIGNED_SHIP,
        payload: payload
     }
 }

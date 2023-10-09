@@ -3,6 +3,7 @@ import {character} from '../common/character';
 import {Skill, SkillsHelper} from '../helpers/skills';
 import {CheckBox} from '../components/checkBox';
 import { ImprovementRuleType, SkillImprovementRule } from '../helpers/tracks';
+import { Header } from './header';
 
 interface IMajorSkillProperties {
     skill: Skill;
@@ -27,8 +28,8 @@ class MajorSkill extends React.Component<IMajorSkillProperties, {}> {
             <table className="skill-container" cellPadding="0" cellSpacing="0">
                 <tbody>
                     <tr>
-                        <td className="skill-name" style={{ width: "250px" }}>{SkillsHelper.getSkillName(skill)}</td>
-                        <td className="skill-expertise pr-2">{skillExpertise}</td>
+                        <td className="skill-name text-white" style={{ width: "250px" }}>{SkillsHelper.getSkillName(skill)}</td>
+                        <td className="skill-expertise pr-2 text-white">{skillExpertise}</td>
                         <td className="pt-2">{checkBox}</td>
                     </tr>
                 </tbody>
@@ -64,7 +65,7 @@ export class OtherSkillIncrementAndDecrement extends React.Component<IOtherSkill
                 <tbody>
                     <tr>
                         <td style={{ width: "250px" }}>
-                            <div className="skill-name">{SkillsHelper.getSkillName(skill) }</div>
+                            <div className="skill-name text-white">{SkillsHelper.getSkillName(skill) }</div>
                         </td>
                         <td style={{ width: "30px" }}>{dec}</td>
                         <th style={{ width: "60px" }}>{expertise}</th>
@@ -99,8 +100,8 @@ class OtherSkill extends React.Component<IMajorSkillProperties, {}> {
             <table className="skill-container" cellPadding="0" cellSpacing="0">
                 <tbody>
                     <tr>
-                        <td className="skill-name" style={{ width: "250px" }}>{skillName}</td>
-                        <td className="skill-expertise pr-2">{skillExpertise}</td>
+                        <td className="skill-name text-white" style={{ width: "250px" }}>{skillName}</td>
+                        <td className="skill-expertise pr-2 text-white">{skillExpertise}</td>
                         <td className="pt-2">{checkBox}</td>
                     </tr>
                 </tbody>
@@ -128,11 +129,11 @@ class MajorSkillSelections {
 
     isFullyPopulated() {
         /*
-        console.log("Major: " + (this.major != null ? Skill[this.major] : "none") 
-            + ", Decrement: " + (this.decrementSkill != null ? Skill[this.decrementSkill] : "none") 
+        console.log("Major: " + (this.major != null ? Skill[this.major] : "none")
+            + ", Decrement: " + (this.decrementSkill != null ? Skill[this.decrementSkill] : "none")
             + ", Other: " + this.other.map((o, i) => Skill[o]));
         */
-        return this.major != null 
+        return this.major != null
             && ((this.other.length === 2 && this.decrementSkill == null)
                 || (this.other.length === 3 && this.decrementSkill != null));
     }
@@ -158,7 +159,7 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
     }
 
     render() {
-        const description = this.props.rule ? (<div className="panel"><div>{this.props.rule.describe()}</div></div>) : null;
+        const description = this.props.rule ? (<div className="text-white">{this.props.rule.describe()}</div>) : null;
 
         const majors = this.props.skills.map((s, i) => {
             if (character.enlisted && s === Skill.Command) return undefined;
@@ -178,9 +179,9 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
             otherSkills.push(Skill.Command);
         }
 
-        const other = (this.props.rule && this.props.rule.type === ImprovementRuleType.MAY_DECREMENT_ONE) 
+        const other = (this.props.rule && this.props.rule.type === ImprovementRuleType.MAY_DECREMENT_ONE)
             ? SkillsHelper.getSkills().map((s, i) => {
-                return (<OtherSkillIncrementAndDecrement key={i} skill={s} showDecrease={this.showDecreaseOther(s)} 
+                return (<OtherSkillIncrementAndDecrement key={i} skill={s} showDecrease={this.showDecreaseOther(s)}
                     showIncrease={this.showIncreaseOther(s)} onIncrease={s => this.onIncrease(s)} onDecrease={s => this.onDecrease(s)} />);
             })
             : otherSkills.map((s, i) => {
@@ -190,14 +191,10 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
 
         return (
             <div>
-                <div className="panel">
-                    <div className="header-small">MAJORS (SELECT ONE)</div>
-                    {majors}
-                </div>
-                <div className="panel">
-                    <div className="header-small">OTHER DISCIPLINES (SELECT TWO) </div>
-                    {other}
-                </div>
+                <Header level={2}>MAJORS (SELECT ONE)</Header>
+                {majors}
+                <Header level={2}>OTHER DISCIPLINES (SELECT TWO)</Header>
+                {other}
                 {description}
             </div>
         );
@@ -286,7 +283,7 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
             for (let s of this.props.skills) {
                 while (other.indexOf(s) > -1) {
                     other.splice(other.indexOf(s), 1);
-                } 
+                }
             }
         } else {
             while (other.indexOf(skill) > -1) {

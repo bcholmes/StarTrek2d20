@@ -114,20 +114,7 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
     }
 
     function renderAssignment() {
-        let result = "";
-        if (character.role) {
-            result = character.role;
-        } else if (character.jobAssignment) {
-            result = character.jobAssignment;
-        }
-
-        if (character.assignedShip) {
-            if (result.length > 0) {
-                result += ", ";
-            }
-            result += character.assignedShip;
-        }
-        return result;
+        return character.assignment;
     }
 
     function renderEquipment() {

@@ -8,6 +8,8 @@ import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcr
 import { Header } from '../components/header';
 import { extraCharacterStepsNext } from './extraCharacterSteps';
 import replaceDiceWithArrowhead from '../common/arrowhead';
+import store from '../state/store';
+import { setCharacter } from '../state/characterActions';
 
 interface Implant {
     name: string;
@@ -94,6 +96,7 @@ export class BorgImplantSelection extends React.Component<{}, {}> {
         if (optionalPage != null) {
             Navigation.navigateToPage(optionalPage);
         } else {
+            store.dispatch(setCharacter(character));
             Navigation.navigateToPage(PageIdentity.Finish);
         }
     }

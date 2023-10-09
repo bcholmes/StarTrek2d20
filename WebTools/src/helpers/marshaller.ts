@@ -25,6 +25,7 @@ import { TalentSelection } from './talentSelection';
 import { getAllTracks, Track } from './trackEnum';
 import { EarlyOutlook, UpbringingsHelper } from './upbringings';
 import { CaptureType, CaptureTypeModel, DeliverySystem, DeliverySystemModel, EnergyLoadType, EnergyLoadTypeModel, MineType, MineTypeModel, TorpedoLoadType, TorpedoLoadTypeModel, UsageCategory, Weapon, WeaponType } from './weapons';
+import { Role, RolesHelper } from './roles';
 
 class Marshaller {
 
@@ -64,7 +65,10 @@ class Marshaller {
         }
 
         if (character.role != null) {
-            sheet["role"] = character.role;
+            sheet["role"] = Role[character.role];
+            if (character.secondaryRole != null) {
+                sheet["secondaryRole"] = Role[character.secondaryRole];
+            }
         }
         if (character.jobAssignment != null) {
             sheet["jobAssignment"] = character.jobAssignment;
@@ -563,7 +567,29 @@ class Marshaller {
                 result.rank = new CharacterRank(rank.name, rank.id);
             }
         }
-        result.role = json.role;
+        if (json.role != null) {
+            let role = json.role;
+            if (typeof role === 'string') {
+                let roleModel = RolesHelper.instance.getRoleByName(role);
+                if (roleModel) {
+                    character.role = roleModel.id;
+                } else {
+                    character.jobAssignment = role;
+                }
+            } else {
+                let roleModel = RolesHelper.instance.getRole(role, character.type);
+                if (roleModel) {
+                    character.role = roleModel.id;
+                }
+            }
+        }
+        if (json.secondaryRole != null) {
+            let role = json.secondaryRole;
+            let roleModel = RolesHelper.instance.getRole(role, character.type);
+            if (roleModel) {
+                character.role = roleModel.id;
+            }
+        }
         result.jobAssignment = json.jobAssignment;
         result.assignedShip = json.assignedShip;
         result.pronouns = json.pronouns;

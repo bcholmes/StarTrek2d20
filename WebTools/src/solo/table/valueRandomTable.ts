@@ -671,11 +671,259 @@ const MedicineValuesTable = () => {
     }
 }
 
+const SecurityValuesTable = () => {
+    let roll = D20.roll() + D20.roll() + D20.roll();
+    switch (roll) {
+        case 3:
+            return "A good defense is the best offense";
+        case 4:
+            return "Alert and ready, always";
+        case 5:
+            return "An ounce of prevention is worth a pound of cure";
+        case 6:
+            return "Be the shield for those who cannot protect themselves";
+        case 7:
+            return "Brave the unknown";
+        case 8:
+            return "Courage under fire";
+        case 9:
+            return "Diligence is the mother of good fortune";
+        case 10:
+            return "Duty before self";
+        case 11:
+            return "Every life is worth protecting";
+        case 12:
+            return "Expect the unexpected";
+        case 13:
+            return "Fear is the true enemy";
+        case 14:
+            return "Fear no evil";
+        case 15:
+            return "Forge strength through adversity";
+        case 16:
+            return "Honour and loyalty above all";
+        case 17:
+            return "I am the line in the sand";
+        case 18:
+            return "Injustice anywhere is a threat to justice everywhere";
+        case 19:
+            return "It takes strength to resist the dark side";
+        case 20:
+            return "Justice is the backbone of the Federation";
+        case 21:
+            return "Knowledge is our first line of defense";
+        case 22:
+            return "Leave no man behind";
+        case 23:
+            return "Live on the front line";
+        case 24:
+            return "Loyalty is more than just a word";
+        case 25:
+            return "Never let your guard down";
+        case 26:
+            return "Never stand down from a fight for what's right";
+        case 27:
+            return "No greater friend; no worse enemy";
+        case 28:
+            return "No one is above the law";
+        case 29:
+            return "Our duty is to protect";
+        case 30:
+            return "Peace is worth defending";
+        case 31:
+            return "Preparedness is the key";
+        case 32:
+            return "Preserve and protect";
+        case 33:
+            return "Protect the weak from the evil strong";
+        case 34:
+            return "Responsibility comes with power";
+        case 35:
+            return "Safety first";
+        case 36:
+            return "Security is more than just a job";
+        case 37:
+            return "Stand strong. Stand together";
+        case 38:
+            return "Stand up against injustice";
+        case 39:
+            return "Strength is more than just physical";
+        case 40:
+            return "The best protection is early detection";
+        case 41:
+            return "The Federation's safety is my responsibility";
+        case 42:
+            return "The front line is a priviledge";
+        case 43:
+            return "The Prime Directive is absolute";
+        case 44:
+            return "There is no substitute for vigilence";
+        case 45:
+            return "To serve and protect";
+        case 46:
+            return "Trust, but verify";
+        case 47:
+            return "Truth and justice above all";
+        case 48:
+            return "Unseen, unheard, always around";
+        case 49:
+            return "Valour is stability. Not of legs and arms, but of courage and soul";
+        case 50:
+            return "Vigilance is the price of freedom";
+        case 51:
+            return "Watch and listen: every detail matters";
+        case 52:
+            return "We are the shield that guards the realms of the Federation";
+        case 53:
+            return "We do not fear the darkness";
+        case 54:
+            return "We stand for those who cannot";
+        case 55:
+            return "We will not go quietly into the night";
+        case 56:
+            return "Wisdom is greater than strength";
+        case 57:
+            return "With courage comes sacrifice";
+        case 58:
+            return "Without fear, there can be no courage";
+        case 59:
+            return "Your safety is my priority";
+        case 60:
+        default:
+            return "A well-timed Vulcan deathgrip solves a lot of problems";
+    }
+}
+
+const CommandValuesTable = () => {
+    let roll = D20.roll() + D20.roll() + D20.roll();
+    switch (roll) {
+        case 3:
+            return "A captain's place is on the bridge";
+        case 4:
+            return "Service before self";
+        case 5:
+            return "All actions have consequences";
+        case 6:
+            return "Always take the initiative";
+        case 7:
+            return "Be prepared for the unexpected";
+        case 8:
+            return "Believe in your crew";
+        case 9:
+            return "Boldly go where no one has gone before";
+        case 10:
+            return "Compassion is the heart of command";
+        case 11:
+            return "Confidence is the key in command";
+        case 12:
+            return "Decisions determine destiny";
+        case 13:
+            return "Discipline is the bridge between goals and accomplishments";
+        case 14:
+            return "Every challenge is an opportunity";
+        case 15:
+            return "Explore to discover";
+        case 16:
+            return "Failure is not an option";
+        case 17:
+            return "Fear is the mind killer";
+        case 18:
+            return "Follow the Prime Directive";
+        case 19:
+            return "For the love of adventure";
+        case 20:
+            return "Honour above all";
+        case 21:
+            return "Hope is a powerful weapon";
+        case 22:
+            return "Knowledge is our first line of defense";
+        case 23:
+            return "I will not ask my crew to do what I wouldn't";
+        case 24:
+            return "In crisis, there are no small jobs";
+        case 25:
+            return "Innovation over tradition";
+        case 26:
+            return "It's our job to get into trouble";
+        case 27:
+            return "Knowledge is power";
+        case 28:
+            return "Lead by example";
+        case 29:
+            return "Leadership is not a rank, but a responsibility";
+        case 30:
+            return "My crew; my family";
+        case 31:
+            return "Never leave a man behind";
+        case 32:
+            return "No one gets left behind";
+        case 33:
+            return "Order is necessary for progress";
+        case 34:
+            return "Peace comes from strength";
+        case 35:
+            return "Persistence commands success";
+        case 36:
+            return "Respect all. Fear none";
+        case 37:
+            return "Responsibility comes with command";
+        case 38:
+            return "Sacrifice for the greater good";
+        case 39:
+            return "Seek out new life: learn from it";
+        case 40:
+            return "Stand against injustice";
+        case 41:
+            return "Stay calm in the storm";
+        case 42:
+            return "Strategy over strength";
+        case 43:
+            return "The chain of command is sacred";
+        case 44:
+            return "The Federation is worth fighting for";
+        case 45:
+            return "The needs of the many";
+        case 46:
+            return "The unknown is a chance to learn";
+        case 47:
+            return "There is no growth in comfort";
+        case 48:
+            return "To lead is to serve";
+        case 49:
+            return "Unity is strength";
+        case 50:
+            return "Victory favours the prepared";
+        case 51:
+            return "We are explorers, not warriors";
+        case 52:
+            return "We are our best when we work together";
+        case 53:
+            return "We must strive to be more than we are";
+        case 54:
+            return "We're all part of the same team";
+        case 55:
+            return "Where there's a will, there's a way";
+        case 56:
+            return "Wisdom comes from experience";
+        case 57:
+            return "With risk comes reward";
+        case 58:
+            return "Without integrity, command means nothing";
+        case 59:
+            return "Your word is your bond";
+        case 60:
+        default:
+            return "Nover leave an enemy behind";
+    }
+}
+
 const disciplineRandomValues: {[species: number]: () => string } = {
 
+    [Skill.Command]: CommandValuesTable,
     [Skill.Conn]: ConnValuesTable,
     [Skill.Engineering]: EngineeringValuesTable,
     [Skill.Science]: ScienceValuesTable,
+    [Skill.Security]: SecurityValuesTable,
     [Skill.Medicine]: MedicineValuesTable,
 
 }

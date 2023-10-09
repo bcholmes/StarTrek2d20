@@ -9,27 +9,36 @@ import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from
 import {ElectiveSkillList} from '../components/electiveSkillList';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
-import ValueInput, {Value} from '../components/valueInput';
+import ValueInput from '../components/valueInputWithRandomOption';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { Species } from '../helpers/speciesEnum';
 import { AttributesHelper } from '../helpers/attributes';
 import { Header } from '../components/header';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import { ValueRandomTable } from '../solo/table/valueRandomTable';
 
 class EnvironmentDetailsPage extends React.Component<WithTranslation, {}> {
-    private _electiveSkills: Skill[];
     private _otherSpecies: Species;
     private _attributeDone: boolean;
 
     constructor(props: WithTranslation) {
         super(props);
 
-        this._electiveSkills = [];
         this._otherSpecies = null;
 
         if (character.environmentStep?.environment === Environment.AnotherSpeciesWorld) {
-            this._otherSpecies = SpeciesHelper.getSpeciesByType(character.environmentStep?.otherSpecies)?.id;
+            this._otherSpecies = character.environmentStep?.otherSpecies;
         }
+    }
+
+    randomValue() {
+        let value = ValueRandomTable(character.speciesStep?.species);
+        this.onValueChanged(value);
+    }
+
+    onValueChanged(value: string) {
+        character.environmentValue = value;
+        this.forceUpdate();
     }
 
     render() {
@@ -71,7 +80,9 @@ class EnvironmentDetailsPage extends React.Component<WithTranslation, {}> {
                 <div className="row">
                     <div className="col-md-6 my-3">
                         <Header level={2} className="mb-3">{t('Construct.other.value')}</Header>
-                        <ValueInput value={Value.Environment}/>
+                        <ValueInput value={character.environmentValue} onValueChanged={(value) => this.onValueChanged(value)}
+                            onRandomClicked={() => this.randomValue()} textDescription={t('Value.environment.text')}
+                        />
                     </div>
                 </div>
                 <div className='text-right'>
@@ -82,7 +93,9 @@ class EnvironmentDetailsPage extends React.Component<WithTranslation, {}> {
     }
 
     private onElectiveSkillsSelected(skills: Skill[]) {
-        this._electiveSkills = skills;
+        if (character.environmentStep && skills?.length === 1) {
+            character.environmentStep.discipline = skills[0];
+        }
         this.forceUpdate();
     }
 
@@ -93,7 +106,7 @@ class EnvironmentDetailsPage extends React.Component<WithTranslation, {}> {
             return;
         }
 
-        if (this._electiveSkills.length === 1) {
+        if (character.environmentStep.discipline != null) {
             character.workflow.next();
             Navigation.navigateToPage(PageIdentity.Upbringing);
         }

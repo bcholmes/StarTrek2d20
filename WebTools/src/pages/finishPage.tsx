@@ -1,9 +1,8 @@
-﻿import * as React from 'react';
-import {AlliedMilitaryDetails, CharacterRank, character} from '../common/character';
+﻿import React from 'react';
+import {AlliedMilitaryDetails, Character} from '../common/character';
 import {CharacterType} from '../common/characterType';
 import {Button} from '../components/button';
 import {CheckBox} from '../components/checkBox';
-import ValueInput, {Value} from '../components/valueInput';
 import {ANY_NAMES, SpeciesHelper} from '../helpers/species';
 import {RankModel, RanksHelper} from '../helpers/ranks';
 import {RolesHelper, RoleModel} from '../helpers/roles';
@@ -16,36 +15,44 @@ import { marshaller } from '../helpers/marshaller';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 import { Header } from '../components/header';
 import { withTranslation, WithTranslation } from 'react-i18next';
-
+import { soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { connect } from 'react-redux';
+import store from '../state/store';
+import { setCharacterAdditionalTraits, setCharacterAssignedShip, setCharacterAssignment, setCharacterHouse, setCharacterLineage, setCharacterName, setCharacterPronouns, setCharacterRank } from '../state/characterActions';
+import AllCharacterValues from '../components/allCharacterValues';
 
 interface IFinishPageState {
     roleSelectionAllowed: boolean|null;
-    jobAssignment?: string;
-    assignedShip?: string;
-    name?: string;
-    pronouns?: string;
-    traits?: string;
-    lineage?: string;
-    house?: string;
 }
 
-class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
+interface IFinishPageProperties extends WithTranslation {
+    character: Character;
+}
+
+class FinishPage extends React.Component<IFinishPageProperties, IFinishPageState> {
     private ranks: RankModel[];
     private roles: RoleModel[];
-    private role: string;
-    private secondaryRole: string;
 
-    constructor(props: WithTranslation) {
+    constructor(props: IFinishPageProperties) {
         super(props);
-
+        this.ranks = [];
         this.roles = [];
-        RolesHelper.instance.getRoles(character).forEach(role => {
+        this.state = {
+            roleSelectionAllowed: null
+        };
+    }
+
+    componentDidMount(): void {
+        console.log("componentDidMount");
+        this.getRanks();
+
+        RolesHelper.instance.getRoles(this.props.character).forEach(role => {
             this.roles.push(role);
         });
 
-        if (character.type !== CharacterType.Cadet) {
-            character.role = this.roles[0].name;
-            this.role = this.roles[0].name;
+        if (this.props.character.type !== CharacterType.Cadet) {
+            const role = this.roles[0];
+            store.dispatch(setCharacterAssignment(role.name, role.id));
             this.state = {
                 roleSelectionAllowed: null
             };
@@ -55,68 +62,11 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
             };
         }
 
-        this.getRanks();
-        if (!character.isCivilian()) {
-            character.rank = this.ranks[0];
-        } else {
-            character.rank = undefined;
-        }
     }
 
-    renderValues() {
-        const { t } = this.props;
-        if (character.age.isChild() || character.type === CharacterType.Cadet) {
-            return (<div className="my-5">
-                    <Header level={2}>{t('Construct.other.values')}</Header>
-                    <p>
-                        If you did not define your values during character creation,
-                        or if you want to change any of them,
-                        now is the time to think about the values your character goes by.
-                    </p>
-                    <div className="row">
-                        <div className="col-lg-6 py-2">
-                            <ValueInput value={Value.Environment} text={character.environmentValue} onChange={() => { this.forceUpdate(); } } />
-                        </div>
-                        <div className="col-lg-6 py-2">
-                            <ValueInput value={Value.Track} text={character.trackValue} onChange={() => { this.forceUpdate(); } }/>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-6 py-2">
-                            <ValueInput value={Value.Career} text={character.careerValue} onChange={() => { this.forceUpdate(); } }/>
-                        </div>
-                    </div>
-            </div>);
-        } else {
-            return (<div className="my-5">
-                    <Header level={2}>{t('Construct.other.values')}</Header>
-                    <p>
-                        If you did not define your values during character creation,
-                        or if you want to change any of them,
-                        now is the time to think about the values your character goes by.
-                    </p>
-                    <div className="row">
-                        <div className="col-lg-6 py-2">
-                            <ValueInput value={Value.Environment} text={character.environmentValue} onChange={() => { this.forceUpdate(); } } />
-                        </div>
-                        <div className="col-lg-6 py-2">
-                            <ValueInput value={Value.Track} text={character.trackValue} onChange={() => { this.forceUpdate(); } }/>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-6 py-2">
-                            <ValueInput value={Value.Career} text={character.careerValue} onChange={() => { this.forceUpdate(); } }/>
-                        </div>
-                        <div className="col-lg-6 py-2">
-                            <ValueInput value={Value.Finish} text={character.finishValue} onChange={() => { this.forceUpdate(); } }/>
-                        </div>
-                    </div>
-            </div>);
-        }
-    }
 
     render() {
-        const { t } = this.props;
+        const { t, character } = this.props;
 
         const species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
 
@@ -133,19 +83,17 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
             return (<div key={'name-' + i}>{`${n}${i < names.length - 1 ? "," : ""} `}</div>);
         });
 
-        const values = this.renderValues();
-
         let extra = null;
         if (character.isKlingon()) {
             extra = (<div className="my-4">
                 <Header level={2}>LINEAGE and House</Header>
                 <div className="row">
                     <div className="col-lg-6 mb-3">
-                        <InputFieldAndLabel labelName="Lineage" id="lineage" onChange={(value) => this.onLineageChanged(value)} value={this.state.lineage ?? ""} />
+                        <InputFieldAndLabel labelName="Lineage" id="lineage" onChange={(value) => this.onLineageChanged(value)} value={this.props.character.lineage ?? ""} />
                         <div className="text-white mt-1"><small><b>Example: </b> <i>Daughter of Martok</i> or <i>Child of Koloth</i></small></div>
                     </div>
                     <div className="col-lg-6 mb-3">
-                        <InputFieldAndLabel labelName="House" id="house" onChange={(value) => this.onHouseChanged(value)} value={this.state.house ?? ""} />
+                        <InputFieldAndLabel labelName="House" id="house" onChange={(value) => this.onHouseChanged(value)} value={this.props.character.house ?? ""} />
                         <div className="text-white mt-1"><small><b>Example: </b> <i>House Duras</i> or <i>House Kor</i></small></div>
                     </div>
                 </div>
@@ -163,11 +111,11 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
                 <div className="my-4">
                     <Header level={2}>{t('Construct.other.name')}</Header>
                     <p>{nameDescription}</p>
-                    <InputFieldAndLabel labelName={t('Construct.other.name')} id="name" onChange={(value) => this.onNameChanged(value)} value={this.state.name ?? ""} />
+                    <InputFieldAndLabel labelName={t('Construct.other.name')} id="name" onChange={(value) => this.onNameChanged(value)} value={this.props.character.name ?? ""} />
                     <div className="text-white mt-1"><small><b>Suggestions: </b> <i>{suggestions}</i></small></div>
 
                     <div className="mt-3">
-                        <InputFieldAndLabel labelName={t('Construct.other.pronouns')} id="pronouns" onChange={(value) => this.onPronounsChanged(value)} value={this.state.pronouns ?? ""} />
+                        <InputFieldAndLabel labelName={t('Construct.other.pronouns')} id="pronouns" onChange={(value) => this.onPronounsChanged(value)} value={this.props.character.pronouns ?? ""} />
                         <div className="text-white mt-1"><small><b>Suggestions: </b> <i>she/her, they/them, etc.</i></small></div>
                     </div>
                 </div>
@@ -185,12 +133,12 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
                         </ul>
 
                         <p>You can specify additional traits, here.</p>
-                        <InputFieldAndLabel labelName={t('Construct.other.traits')} id="traits" value={this.state.traits ?? ""} onChange={(value) => this.onTraitsChanged(value)} />
+                        <InputFieldAndLabel labelName={t('Construct.other.traits')} id="traits" value={this.props.character?.additionalTraits ?? ""} onChange={(value) => this.onTraitsChanged(value)} />
 
                     </div>
                 </div>
                 {this.renderAssignment()}
-                {values}
+                <AllCharacterValues />
                 <div className="button-container mb-5">
                     <Button text={t('Common.button.exportPdf')} className="button-small mr-2" onClick={() => this.showDialog() }  buttonType={true} />
                     <Button text={t('Common.button.view')} className="button-small mr-2" onClick={() => this.showViewPage() } buttonType={true} />
@@ -200,12 +148,15 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
     }
 
     showViewPage() {
-        const value = marshaller.encodeMainCharacter(character);
-        window.open('/view?s=' + value, "_blank");
+        setTimeout(() => {
+            let c = store.getState().character.currentCharacter;
+            const value = marshaller.encodeMainCharacter(c);
+            window.open('/view?s=' + value, "_blank");
+        });
     }
 
     renderAssignment() {
-        const { t } = this.props;
+        const { t, character } = this.props;
 
         const multiDiscipline = character.hasTalent("Multi-Discipline")
             ? <p>Because your character has the <b>Multi-Discipline talent</b>, you may choose <b>two roles</b>.
@@ -221,9 +172,9 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
                         <CheckBox
                             text=""
                             value={r.name}
-                            isChecked={this.role === r.name || this.secondaryRole === r.name}
+                            isChecked={character.role === r.id || character.secondaryRole === r.id}
                             onChanged={(val) => {
-                                this.onSelectRole(val);
+                                this.onSelectRole(r);
                             } }/>
                     </td>
                 </tr>
@@ -250,7 +201,7 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
         const job = (roles == null)
             ? (<div>
                     <div className="textinput-label">Job</div>
-                    <input type="text" onChange={(e) => this.onJobChanged(e.target.value) } value={this.state.jobAssignment || ""} />
+                    <input type="text" onChange={(e) => this.onJobChanged(e.target.value) } value={this.props.character.jobAssignment || ""} />
                 </div>)
             : undefined;
 
@@ -274,7 +225,7 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
             {roleDescription}
 
             <div className="mb-3">
-                <InputFieldAndLabel id='ship-id' labelName='Ship' onChange={(value) => this.onShipChanged(value)} value={this.state.assignedShip || ""} />
+                <InputFieldAndLabel id='ship-id' labelName='Ship' onChange={(value) => this.onShipChanged(value)} value={this.props.character.assignedShip || ""} />
             </div>
 
             {roleSelection}
@@ -286,7 +237,7 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
     }
 
     renderRank() {
-        const { t } = this.props;
+        const { t, character } = this.props;
 
         if (character.isCivilian() || character.age.isChild()) {
             return null;
@@ -332,20 +283,17 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
     }
 
     private onRoleSelectionAllowedChange(allowed: boolean) {
+        const { character } = this.props;
         if (allowed) {
             if (this.roles && this.roles.length > 0 && character.role == null) {
-                character.role = this.roles[0].name;
-                character.jobAssignment = "";
-                this.role = this.roles[0].name;
+                store.dispatch(setCharacterAssignment(this.roles[0].name, this.roles[0].id));
             }
             this.setState((state) => ({
                 ...state,
-                roleSelectionAllowed: allowed,
-                jobAssignment: ""
+                roleSelectionAllowed: allowed
             }));
         } else {
-            character.role = undefined;
-            this.role = undefined;
+            store.dispatch(setCharacterAssignment(undefined));
             this.setState((state) => ({
                 ...state,
                 roleSelectionAllowed: allowed
@@ -354,93 +302,82 @@ class FinishPage extends React.Component<WithTranslation, IFinishPageState> {
     }
 
     private onShipChanged(ship: string) {
-        character.assignedShip = ship;
-        this.setState((state) => ({
-            ...state,
-            assignedShip: ship
-        }))
+        store.dispatch(setCharacterAssignedShip(ship));
     }
 
     private onJobChanged(job: string) {
-        character.jobAssignment = job;
-        this.setState((state) => ({
-            ...state,
-            jobAssignment: job
-        }))
+        store.dispatch(setCharacterAssignment(job));
     }
 
 
     private showDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character), "sta-character");
+        setTimeout(() => {
+            let c = store.getState().character.currentCharacter;
+            CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(c), "sta-character");
+        });
     }
 
 
     private onNameChanged(value: string) {
-        character.name = value;
-        this.setState((state) => ({...state, name: value}));
+        store.dispatch(setCharacterName(value));
     }
 
     private onPronounsChanged(value: string) {
-        character.pronouns = value;
-        this.setState((state) => ({...state, pronouns: value}));
+        store.dispatch(setCharacterPronouns(value));
     }
 
     private onTraitsChanged(value: string) {
-        character.additionalTraits = value;
-        this.setState((state) => ({...state, traits: value}));
+        store.dispatch(setCharacterAdditionalTraits(value));
     }
 
     private onLineageChanged(value: string) {
-        character.lineage = value;
-        this.setState((state) => ({...state, lineage: value}));
+        store.dispatch(setCharacterLineage(value));
     }
 
     private onHouseChanged(value: string) {
-        character.house = value;
-        this.setState((state) => ({...state, house: value}));
+        store.dispatch(setCharacterHouse(value));
     }
 
     private onSelectRank(rank: RankModel|string) {
         if (typeof rank === "string") {
-            character.rank = new CharacterRank(rank as string);
+            store.dispatch(setCharacterRank(rank as string));
         } else {
-            character.rank = new CharacterRank(rank.name, rank.id);
-            this.forceUpdate();
+            let r = rank as RankModel;
+            store.dispatch(setCharacterRank(r.name, r.id));
         }
     }
 
-    private onSelectRole(role: string) {
+    private onSelectRole(role: RoleModel) {
+        const { character } = this.props;
         if (character.hasTalent("Multi-Discipline")) {
-            if (!character.role || character.role === role) {
-                character.role = role;
-            } else if (!character.secondaryRole || character.secondaryRole === role) {
-                character.secondaryRole = role;
+            if (character.role === null || character.role === role.id) {
+                store.dispatch(setCharacterAssignment(role.name, role.id, character.secondaryRole == null ? undefined : "secondary", character.secondaryRole));
+            } else if (character.secondaryRole == null || character.secondaryRole === role.id) {
+                store.dispatch(setCharacterAssignment(character.role == null ? undefined : "role", character.role, role.name, role.id));
             } else {
+                store.dispatch(setCharacterAssignment(character.secondaryRole == null ? undefined : "role", character.secondaryRole, role.name, role.id));
                 character.role = character.secondaryRole;
-                character.secondaryRole = role;
             }
-
-            this.role = character.role;
-            this.secondaryRole = character.secondaryRole;
         } else {
-            character.role = role;
-            character.secondaryRole = undefined;
-            this.role = role;
-            this.secondaryRole = undefined;
+            store.dispatch(setCharacterAssignment(role.name, role.id));
         }
         this.getRanks();
         this.forceUpdate();
     }
 
     private getRanks() {
+        const { character } = this.props;
         this.ranks = RanksHelper.instance().getRanks(character, false);
 
-        if (!character.isCivilian() || character.age.isChild()) {
-            character.rank = new CharacterRank(this.ranks[0].name, this.ranks[0].id);
-        } else {
-            character.rank = undefined;
+        if (character.isCivilian || character.age.isChild()) {
+            if (character.rank != null) {
+                store.dispatch(setCharacterRank(undefined));
+            }
+        } else if (this.ranks.length > 0 && (character.rank == null || this.ranks.filter(r => r.id === character.rank.id).length === 0)) {
+            let rank = this.ranks[0];
+            store.dispatch(setCharacterRank(rank.name, rank.id));
         }
     }
 }
 
-export default withTranslation()(FinishPage);
+export default withTranslation()(connect(soloCharacterMapStateToProperties)(FinishPage));

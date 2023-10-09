@@ -1,7 +1,6 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
-import {IPageProperties} from './iPageProperties';
 import {PageIdentity} from './pageIdentity';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovementCollection';
 import {SkillImprovementCollection} from '../components/skillImprovementCollection';
@@ -9,18 +8,24 @@ import {ElectiveSkillList} from '../components/electiveSkillList';
 import { TalentsHelper, TalentViewModel } from '../helpers/talents';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
-import ValueInput, {Value} from '../components/valueInput';
+import ValueInput from '../components/valueInputWithRandomOption';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { CharacterType } from '../common/characterType';
 import SingleTalentSelectionList from '../components/singleTalentSelectionList';
 import { extraCharacterStepsNext } from './extraCharacterSteps';
+import { ValueRandomTable } from '../solo/table/valueRandomTable';
+import { WithTranslation, withTranslation } from 'react-i18next';
+import store from '../state/store';
+import { setCharacter } from '../state/characterActions';
+import { Header } from '../components/header';
+import InstructionText from '../components/instructionText';
 
 interface IPageState {
     showExcessAttrDistribution: boolean;
     showExcessSkillDistribution: boolean;
 }
 
-export class AttributesAndDisciplinesPage extends React.Component<IPageProperties, IPageState> {
+class AttributesAndDisciplinesPage extends React.Component<WithTranslation, IPageState> {
     private _selectedTalent: TalentViewModel;
     private _attrPoints: number;
     private _excessAttrPoints: number;
@@ -29,7 +34,7 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
     private _attributesDone: boolean;
     private _skillsDone: boolean;
 
-    constructor(props: IPageProperties) {
+    constructor(props) {
         super(props);
 
         this._attrPoints = 2;
@@ -64,7 +69,18 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
         };
     }
 
+    randomValue() {
+        let value = ValueRandomTable(character.speciesStep?.species, character.educationStep?.primaryDiscipline);
+        this.onValueChanged(value);
+    }
+
+    onValueChanged(value: string) {
+        character.finishValue = value;
+        this.forceUpdate();
+    }
+
     render() {
+        const { t } = this.props;
         const attributes =
                 (<AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Customization}
                     points={this._excessAttrPoints + this._attrPoints} onDone={(done) => { this.attributesDone(done); } } />)
@@ -104,32 +120,36 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
 
 
         let value = (character.workflow.currentStep().options.valueSelection)
-            ? (<div className="panel">
-                    <div className="header-small">VALUE</div>
-                    <ValueInput value={Value.Finish}/>
+            ? (<div className="col-lg-6 mt-4">
+                    <Header level={2}>{t('Construct.other.value')}</Header>
+                    <ValueInput value={character.finishValue} onValueChanged={(value) => this.onValueChanged(value)}
+                            onRandomClicked={() => this.randomValue()} textDescription={t('Value.final.text')} />
                 </div>)
             : undefined;
 
 
         return (
-            <div className="page">
+            <div className="page container ml-0">
                 <CharacterCreationBreadcrumbs />
-                <div className="page-text">
-                    {description}
+                <Header>{t('Page.title.finish')}</Header>
+                <InstructionText text={description} />
+                <div className="row">
+                    <div className="col-lg-6 mt-4">
+                        <Header level={2}>{`ATTRIBUTES (POINTS: ${this._excessAttrPoints + this._attrPoints})`}</Header>
+                        {attributeText}
+                        {attributes}
+                    </div>
+                    <div className="col-lg-6 mt-4">
+                        <Header level={2}>{`DISCIPLINES (POINTS: ${this._excessSkillPoints + this._skillPoints})`}</Header>
+                        {disciplinesText}
+                        {disciplines}
+                    </div>
+                    {value}
                 </div>
-                <div className="panel">
-                    <div className="header-small">{`ATTRIBUTES (POINTS: ${this._excessAttrPoints + this._attrPoints})`}</div>
-                    {attributeText}
-                    {attributes}
-                </div>
-                <div className="panel">
-                    <div className="header-small">{`DISCIPLINES (POINTS: ${this._excessSkillPoints + this._skillPoints})`}</div>
-                    {disciplinesText}
-                    {disciplines}
-                </div>
-                {value}
                 {talentSelection}
-                <Button text="FINISH" className="button-next" onClick={() => this.onNext() }/>
+                <div className="text-right mt-4">
+                    <Button buttonType={true} text="FINISH" className="btn btn-primary" onClick={() => this.onNext() }/>
+                </div>
             </div>
         );
     }
@@ -167,7 +187,10 @@ export class AttributesAndDisciplinesPage extends React.Component<IPagePropertie
         if (optionalPage != null) {
             Navigation.navigateToPage(optionalPage);
         } else {
+            store.dispatch(setCharacter(character));
             Navigation.navigateToPage(PageIdentity.Finish);
         }
     }
 }
+
+export default withTranslation()(AttributesAndDisciplinesPage);

@@ -105,10 +105,10 @@ const CreditsPage = () => {
                         make it a bit more screen-accurate.
                     </p>
 
-                    <Header className="my-4" level={2}>Continuing Missions</Header>
+                    <Header className="my-4" level={2}>Continuing Mission</Header>
 
                     <p>
-                        With permission from the <a href="https://continuingmissionsta.com/" target="_blank" rel="noreferrer">Continuing Missions</a> site
+                        With permission from the <a href="https://continuingmissionsta.com/" target="_blank" rel="noreferrer">Continuing Mission</a> site
                         maintainers, I'm starting to integrate some of the unofficial sources. That includes material by the following folks:
 
                         Mephit James,
@@ -208,10 +208,15 @@ const CreditsPage = () => {
                     </p>
 
                     <p>
-                        There are two answers: first, Modiphius prefers to wait a bit between the time a new book is available for
-                        pre-order and the book's new rules are implemented in the creator. Personally, I think that's entirely reasonable.
-                        Second, adding stuff to the generator takes work, and I do it as time allows. I can't always turn new features
-                        around immediately.
+                        There are two answers:
+                        <ol>
+                            <li className="my-3">First, Modiphius prefers to wait a bit between the time a new book is available for
+                                pre-order and the book's new rules are implemented in the creator.
+                                Personally, I think that's entirely reasonable.</li>
+
+                            <li className="my-3">Second, adding stuff to the generator takes work, and I do it as time allows.
+                                I can't always turn new features around immediately.</li>
+                        </ol>
                     </p>
 
                     <p className="mt-5">
@@ -231,7 +236,7 @@ const CreditsPage = () => {
                     </ul>
 
                     <p className="mt-5">
-                        <strong>Why isn't there a "Buy Me a Coffee" link?</strong>
+                        <strong>Why isn't there a Patreon or "Buy Me a Coffee" link?</strong>
                     </p>
 
                     <p>

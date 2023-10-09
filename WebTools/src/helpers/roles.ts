@@ -131,6 +131,10 @@ export class RoleModel {
         });
         return valid;
     }
+
+    isKlingonRole() {
+        return this.prerequisites.filter(p => p instanceof KlingonPrerequisite)?.length > 0;
+    }
 }
 
 export class RolesHelper {
@@ -658,6 +662,25 @@ export class RolesHelper {
         }
 
         return undefined;
+    }
+
+    getRole(role: Role, characterType: CharacterType) {
+        let roles = this._roles.filter(r => r.id === role);
+        if (roles.length === 0) {
+            return undefined;
+        } else if (roles.length === 1) {
+            return roles[0];
+        } else {
+            let typeRoles = roles.filter(r => (r.isKlingonRole() && characterType === CharacterType.KlingonWarrior)
+                || (!r.isKlingonRole() && characterType !== CharacterType.KlingonWarrior));
+            if (typeRoles.length === 1) {
+                return typeRoles[0];
+            } else if (typeRoles.length > 1)  {
+                return typeRoles[0];
+            } else {
+                return roles[0];
+            }
+        }
     }
 
     getSoloRole(role: Role) {

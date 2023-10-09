@@ -9,6 +9,8 @@ import { Dialog } from "../components/dialog";
 import { Header } from "../components/header";
 import { extraCharacterStepsNext } from "./extraCharacterSteps";
 import { PageIdentity } from "./pageIdentity";
+import { setCharacter } from "../state/characterActions";
+import store from "../state/store";
 
 interface IExtraFocusPageState {
     focuses: string[]
@@ -101,6 +103,7 @@ export class ExtraFocusPage extends React.Component<{}, IExtraFocusPageState> {
         if (ok) {
             let optionalPage = extraCharacterStepsNext(character, PageIdentity.ExtraFocus);
             if (optionalPage == null) {
+                store.dispatch(setCharacter(character));
                 Navigation.navigateToPage(PageIdentity.Finish);
             } else {
                 Navigation.navigateToPage(optionalPage);

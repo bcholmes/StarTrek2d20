@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import { combineReducers } from 'redux'
 import characterReducer from './characterReducer';
 import star from './starReducer';
@@ -18,9 +18,7 @@ const reducer = combineReducers({
 const store = configureStore(
     {
         reducer: reducer,
-        middleware: getDefaultMiddleware({
-            serializableCheck: false
-        })
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware()
     });
 
 export default store;

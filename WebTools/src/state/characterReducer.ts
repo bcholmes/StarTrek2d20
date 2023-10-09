@@ -1,5 +1,5 @@
 import { CareerEventStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, SpeciesStep, UpbringingStep } from "../common/character";
-import { ADD_CHARACTER_CAREER_EVENT, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_RANK, SET_CHARACTER_ROLE, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
+import { ADD_CHARACTER_CAREER_EVENT, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_ADDITIONAL_TRAITS, SET_CHARACTER_ASSIGNED_SHIP, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_HOUSE, SET_CHARACTER_LINEAGE, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_RANK, SET_CHARACTER_ROLE, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -11,6 +11,7 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
 
         case SET_CHARACTER: {
             let temp = action.payload.character.copy();
+            temp.clearMementos();
             return {
                 ...state,
                 currentCharacter: temp,
@@ -220,6 +221,42 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 isModified: true
             }
         }
+        case SET_CHARACTER_LINEAGE: {
+            let temp = state.currentCharacter.copy();
+            temp.lineage = action.payload.lineage;
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case SET_CHARACTER_HOUSE: {
+            let temp = state.currentCharacter.copy();
+            temp.house = action.payload.house;
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case SET_CHARACTER_ASSIGNED_SHIP: {
+            let temp = state.currentCharacter.copy();
+            temp.assignedShip = action.payload.assignedShip;
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case SET_CHARACTER_ADDITIONAL_TRAITS: {
+            let temp = state.currentCharacter.copy();
+            temp.additionalTraits = action.payload.traits;
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
         case SET_CHARACTER_RANK: {
             let temp = state.currentCharacter.copy();
             temp.rank = new CharacterRank(action.payload.name, action.payload.rank ?? undefined);
@@ -236,8 +273,12 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.role = undefined;
                     temp.jobAssignment = action.payload.name;
                 } else {
-                    temp.role = action.payload.name;
+                    temp.role = action.payload.role;
                     temp.jobAssignment = undefined;
+
+                    if (action.payload.secondaryRole) {
+                        temp.secondaryRole = action.payload.secondaryRole;
+                    }
                 }
             } else {
                 temp.role = undefined;

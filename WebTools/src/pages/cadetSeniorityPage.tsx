@@ -6,28 +6,26 @@ import {Button} from '../components/button';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import InstructionText from '../components/instructionText';
 
-export class CadetSeniorityPage extends React.Component<{}, {}> {
+export const CadetSeniorityPage = () => {
 
-    render() {
-        return (
-            <div className="page">
-                <CharacterCreationBreadcrumbs />
-
-                <InstructionText text={["Are you a junior or senior cadet?"]} />
-                <div className="button-container">
-                    <Button className="button" text="Junior" onClick={() => { this.goToFinishingTouches(); } } />
-                    <Button className="button" text="Senior" onClick={() => { this.goToPage(PageIdentity.CareerEvent1); } } />
-                </div>
-            </div>
-        );
-    }
-
-    private goToFinishingTouches() {
+    const goToFinishingTouches = () => {
         character.workflow.next();
         Navigation.navigateToPage(character.workflow.currentStep().page);
     }
 
-    private goToPage(page: PageIdentity) {
+    const goToPage = (page: PageIdentity) => {
         Navigation.navigateToPage(page);
     }
+
+    return (
+        <div className="page">
+            <CharacterCreationBreadcrumbs />
+
+            <InstructionText text={["Are you a junior or senior cadet?"]} />
+            <div className="button-container">
+                <Button className="button" text="Junior" onClick={() => { goToFinishingTouches(); } } />
+                <Button className="button" text="Senior" onClick={() => { goToPage(PageIdentity.CareerEvent1); } } />
+            </div>
+        </div>
+    );
 }

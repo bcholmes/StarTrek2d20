@@ -17,6 +17,7 @@ import { SpeciesHelper } from '../helpers/species';
 import { Rank } from '../helpers/ranks';
 import { makeKey } from './translationKey';
 import i18next from 'i18next';
+import { Role, RolesHelper } from '../helpers/roles';
 
 export abstract class CharacterTypeDetails {
 }
@@ -230,10 +231,10 @@ export class Character extends Construct {
     public career?: Career;
     public careerEvents: CareerEventStep[];
     public rank?: CharacterRank;
-    public role?: string;
+    public role?: Role;
     public jobAssignment?: string;
     public assignedShip?: string;
-    public secondaryRole?: string;
+    public secondaryRole?: Role;
     public environmentValue?: string;
     public trackValue?: string;
     public careerValue?: string;
@@ -285,9 +286,10 @@ export class Character extends Construct {
     get assignmentWithoutShip() {
         let result = "";
         if (this.role) {
-            result = this.role;
+            result = RolesHelper.instance.getRole(this.role, this.type)?.name ?? "";
             if (this.secondaryRole) {
-                result = result + " / " + this.secondaryRole;
+                let secondary = RolesHelper.instance.getRole(this.secondaryRole, this.type)?.name ?? "";
+                result = result + " / " + secondary;
             }
         } else if (this.jobAssignment) {
             result = this.jobAssignment;
@@ -426,14 +428,14 @@ export class Character extends Construct {
             result.push("Tricorder");
         }
 
-        if (this.role === "Chief Medical Officer" ||
-            this.role === "Head Nurse" ||
-            this.role === "Chief Surgeon" ||
-            this.role === "Physician's Assistant" ||
-            this.role === "Anesthesiologist" ||
-            this.role === "Ship's Doctor" ||
-            this.role === "Surgeon (HaqwI’)" ||
+        if (this.role === Role.ChiefMedicalOfficer ||
+            this.role === Role.HeadNurse ||
+            this.role === Role.ChiefSurgeon ||
+            this.role === Role.PhysiciansAssistant ||
+            this.role === Role.Anesthesiologist ||
+            this.role === Role.ShipsDoctor ||
             this.jobAssignment === "Medical Doctor" ||
+            this.jobAssignment === "Medical Doctor (Resident)" ||
             this.jobAssignment === "Nurse" ||
             this.jobAssignment === "Medic") {
 
@@ -580,6 +582,10 @@ export class Character extends Construct {
         }
     }
 
+    clearMementos() {
+        this._mementos = [];
+    }
+
     goToStep(page: number) {
         for (let i = this._mementos.length - 1; i >= 0; i--) {
             if (this._mementos[i].page === page) {
@@ -655,7 +661,7 @@ export class Character extends Construct {
         if (this.hasTalent("Sensory Replacement")) {
             traits.push("Artificial Sense");
         }
-        if (this.role === 'Ambassador') {
+        if (this.role === Role.Ambassador) {
             if (this.type === CharacterType.AmbassadorDiplomat && this.typeDetails) {
                 let details = this.typeDetails as GovernmentDetails;
                 traits.push(details.getName() ? details.getName() + " Ambassador" : "Ambassador");
@@ -734,7 +740,7 @@ export class Character extends Construct {
     }
 
     isEngineer() {
-        return this.role?.toLowerCase() === "chief engineer" || this.role?.toLowerCase() === "engineering officer (jonpin)"
+        return this.role === Role.ChiefEngineer
             || (this.jobAssignment && this.jobAssignment?.toLowerCase().indexOf("engineer") >= 0);
     }
 
@@ -744,7 +750,7 @@ export class Character extends Construct {
                  this.rank?.name?.toLowerCase() === "commander" ||
                  this.rank?.name?.toLowerCase() === "lieutenant commander" ||
                  this.rank?.name?.toLowerCase().indexOf("admiral") >= 0 ||
-                 (this.role !== undefined && this.role!.toLowerCase() === "chief of security"))) ||
+                 (this.role !== undefined && this.role === Role.ChiefOfSecurity))) ||
                  (this.jobAssignment?.toLowerCase() === "security");
     }
 
