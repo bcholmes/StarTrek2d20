@@ -268,20 +268,24 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         }
         case SET_CHARACTER_ROLE: {
             let temp = state.currentCharacter.copy();
-            if (action.payload.name) {
-                if (action.payload.role == null) {
+            if (action.payload.role != null) {
+                if (typeof action.payload.role === 'string') {
                     temp.role = undefined;
-                    temp.jobAssignment = action.payload.name;
+                    temp.secondaryRole = undefined;
+                    temp.jobAssignment = action.payload.role;
                 } else {
                     temp.role = action.payload.role;
                     temp.jobAssignment = undefined;
 
                     if (action.payload.secondaryRole) {
                         temp.secondaryRole = action.payload.secondaryRole;
+                    } else {
+                        temp.secondaryRole = undefined;
                     }
                 }
             } else {
                 temp.role = undefined;
+                temp.secondaryRole = undefined;
                 temp.jobAssignment = undefined;
             }
             return {

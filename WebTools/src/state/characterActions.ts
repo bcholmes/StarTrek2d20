@@ -157,8 +157,8 @@ export function setCharacterRank(name: string, rank?: Rank) {
     }
 }
 
-export function setCharacterAssignment(name: string, role?: Role, secondaryRoleName?: string, secondaryRole?: Role) {
-    let payload = { name: name, role: role, secondaryRoleName: secondaryRoleName, secondaryRole: secondaryRole };
+export function setCharacterAssignment(role?: string|Role, secondaryRole?: Role) {
+    let payload = { role: role, secondaryRole: secondaryRole };
     return {
        type: SET_CHARACTER_ROLE,
        payload: payload

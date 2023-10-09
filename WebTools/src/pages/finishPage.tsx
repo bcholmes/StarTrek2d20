@@ -52,14 +52,14 @@ class FinishPage extends React.Component<IFinishPageProperties, IFinishPageState
 
         if (this.props.character.type !== CharacterType.Cadet) {
             const role = this.roles[0];
-            store.dispatch(setCharacterAssignment(role.name, role.id));
-            this.state = {
+            store.dispatch(setCharacterAssignment(role.id));
+            this.setState((state) => ({ ...state,
                 roleSelectionAllowed: null
-            };
+            }));
         } else {
-            this.state = {
+            this.setState((state) => ({ ...state,
                 roleSelectionAllowed: false
-            };
+            }));
         }
 
     }
@@ -351,15 +351,14 @@ class FinishPage extends React.Component<IFinishPageProperties, IFinishPageState
         const { character } = this.props;
         if (character.hasTalent("Multi-Discipline")) {
             if (character.role === null || character.role === role.id) {
-                store.dispatch(setCharacterAssignment(role.name, role.id, character.secondaryRole == null ? undefined : "secondary", character.secondaryRole));
+                store.dispatch(setCharacterAssignment(role.id, character.secondaryRole));
             } else if (character.secondaryRole == null || character.secondaryRole === role.id) {
-                store.dispatch(setCharacterAssignment(character.role == null ? undefined : "role", character.role, role.name, role.id));
+                store.dispatch(setCharacterAssignment(character.role, role.id));
             } else {
-                store.dispatch(setCharacterAssignment(character.secondaryRole == null ? undefined : "role", character.secondaryRole, role.name, role.id));
-                character.role = character.secondaryRole;
+                store.dispatch(setCharacterAssignment(character.secondaryRole, role.id));
             }
         } else {
-            store.dispatch(setCharacterAssignment(role.name, role.id));
+            store.dispatch(setCharacterAssignment(role.id));
         }
         this.getRanks();
         this.forceUpdate();

@@ -87,7 +87,7 @@ const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
             }
             let role = RolesHelper.instance.getSoloRole(assignment as Role);
             if (role) {
-                store.dispatch(setCharacterAssignment(role.name, assignment as Role));
+                store.dispatch(setCharacterAssignment(assignment as Role));
             }
         }
     }
