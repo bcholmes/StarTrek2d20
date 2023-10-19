@@ -291,6 +291,10 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
             }
         }
 
+        if (character.educationStep) {
+            character.educationStep.primaryDiscipline = skill;
+        }
+
         let selections = this.makeEmptySlotsForRule(new MajorSkillSelections(skill, other, decrementSKill));
 
         this.updateValues(selections);
@@ -302,10 +306,19 @@ export class MajorsList extends React.Component<IMajorsSkillListProperties, IMaj
         character.skills.forEach(s => {
             if (selections.major === s.skill) {
                 s.expertise = this.initialValues[s.skill] + 2;
+                if (character.educationStep) {
+                    character.educationStep.primaryDiscipline = s.skill;
+                }
             } else if (selections.decrementSkill === s.skill) {
                 s.expertise = this.initialValues[s.skill] - 1;
+                if (character.educationStep) {
+                    character.educationStep.decrementDiscipline = s.skill;
+                }
             } else if (selections.other.indexOf(s.skill) >= 0) {
                 s.expertise = this.initialValues[s.skill] + this.countOf(selections.other, s.skill);
+                if (character.educationStep) {
+                    character.educationStep.disciplines.push(s.skill);
+                }
             } else {
                 s.expertise = this.initialValues[s.skill];
             }

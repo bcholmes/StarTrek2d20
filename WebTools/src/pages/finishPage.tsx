@@ -313,7 +313,7 @@ class FinishPage extends React.Component<IFinishPageProperties, IFinishPageState
     private showDialog() {
         setTimeout(() => {
             let c = store.getState().character.currentCharacter;
-            CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(c), "sta-character");
+            CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(c), "sta-character", c);
         });
     }
 
@@ -361,7 +361,6 @@ class FinishPage extends React.Component<IFinishPageProperties, IFinishPageState
             store.dispatch(setCharacterAssignment(role.id));
         }
         this.getRanks();
-        this.forceUpdate();
     }
 
     private getRanks() {

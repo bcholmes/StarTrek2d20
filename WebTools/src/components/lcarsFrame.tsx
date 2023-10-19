@@ -89,6 +89,11 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
         }
     }
 
+    const isModifiedCharacterCreationPage = () => {
+        return activePage === PageIdentity.Finish;
+    }
+
+
     const showFeedbackPage = () => {
         window.open("https://github.com/bcholmes/StarTrek2d20/discussions", "_blank");
     }
@@ -146,7 +151,7 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
                     <div className="lcar-content-action">
                         <div id="profile-button" className={'lcar-content-profile ' + (isProfileSupportedForPage() ? '' : 'd-none')} onClick={ () => toggleProfile() }>{t('Lcars.profile')}</div>
                         <CharacterSheet showProfile={showProfile} close={() => setShowProfile(false)}
-                            storeBased={isModifyPage() || isSoloPage()}/>
+                            storeBased={isModifyPage() || isSoloPage() || isModifiedCharacterCreationPage()}/>
                     </div>
                     <div className="lcar-content-feedback" onClick={ () => showFeedbackPage() }>{t('Lcars.feedback')}</div>
                     <div className="lcar-content-news" onClick={() => showNewsPanel()}>

@@ -23,23 +23,12 @@ import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 
 class StarfleetAcademyDetailsPage extends React.Component<WithTranslation, {}> {
     private _talent: TalentViewModel;
-    private _focus1: HTMLInputElement;
-    private _focus2: HTMLInputElement;
-    private _focus3: HTMLInputElement;
     private _trait: HTMLInputElement;
     private _attributesDone: boolean;
     private _skillsDone: boolean;
 
-
-    constructor(props) {
-        super(props);
-        if (character.educationStep?.track === Track.EnlistedSecurityTraining) {
-            character.educationStep.focuses[2] = "Chain of Command";
-        }
-    }
-
     randomValue() {
-        let value = ValueRandomTable(character.speciesStep?.species);
+        let value = ValueRandomTable(character.speciesStep?.species, character.educationStep?.primaryDiscipline);
         this.onValueChanged(value);
     }
 
@@ -73,7 +62,8 @@ class StarfleetAcademyDetailsPage extends React.Component<WithTranslation, {}> {
                 onChange={(value) => {character.educationStep.focuses[1] = value; this.forceUpdate()}} />
             <InputFieldAndLabel id="focus3" labelName={t('Construct.other.focus3')}
                 value={character.educationStep?.focuses[2] ?? ""}
-                onChange={(value) => {character.educationStep.focuses[2] = value; this.forceUpdate()}} />
+                onChange={(value) => {character.educationStep.focuses[2] = value; this.forceUpdate()}}
+                disabled={track.id === Track.EnlistedSecurityTraining}/>
 
             <div className="text-white mt-2"><b>Suggestions: </b> {track.focusSuggestions.join(", ")}</div>
         </div>);
@@ -159,234 +149,6 @@ class StarfleetAcademyDetailsPage extends React.Component<WithTranslation, {}> {
                 <div className="mt-5 text-right">
                     <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary btn" onClick={() => this.onNext() }/>
                 </div>
-            </div>
-        );
-    }
-
-    private renderEnlistedSecurityTrainingDetails() {
-        const { t } = this.props;
-        const track = TracksHelper.instance().getTrack(character.educationStep?.track);
-
-        return (
-            <div className="page">
-                <div className="header-text"><div>{track.name}</div></div>
-                <div className="panel">
-                    <div className="desc-text">{track.description}</div>
-                </div>
-                <div className="panel">
-                    <div className="header-small">ATTRIBUTES (Select up to three) </div>
-                    <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Academy} points={3} onDone={(done) => { this._attributesDone = done; } }/>
-                </div>
-                <div className="panel">
-                    <div className="header-small">DISCIPLINES</div>
-                    <SkillView points={2} skill={Skill.Security} />
-                    <SkillView points={1} skill={Skill.Conn} />
-                    <SkillView points={1} skill={Skill.Engineering} />
-                </div>
-                <div className="panel">
-                    <div className="header-small">FOCUS</div>
-                    <div>Select two focuses for your character. You have already gained the <b>Chain of Command</b> focus.</div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus1 = input; } } />
-                    </div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus2 = input; } } />
-                    </div>
-                    <div><b>Suggestions: </b> {track.focusSuggestions.join(", ") }</div>
-                </div>
-                <div className="panel">
-                    <div className="header-small">TALENT</div>
-                    <SingleTalentSelectionList talents={this.filterTalentList()}
-                        construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
-                </div>
-                <div className="panel">
-                    <div className="header-small">VALUE</div>
-                    <ValueInput value={character.trackValue} onValueChanged={(value) => this.onValueChanged(value)}
-                            onRandomClicked={() => this.randomValue()} textDescription={t('Value.starfleetTraining.text')}
-                        />
-                </div>
-                <Button text="CAREER" className="button-next" onClick={() => this.onNext() }/>
-            </div>
-        );
-    }
-
-    private renderShipOperationsDetails() {
-        const { t } = this.props;
-        const track = TracksHelper.instance().getTrack(character.educationStep?.track);
-
-        return (
-            <div className="page">
-                <div className="header-text"><div>{track.name}</div></div>
-                <div className="panel">
-                    <div className="desc-text">{track.description}</div>
-                </div>
-                <div className="panel">
-                    <div className="header-small">ATTRIBUTES (Select up to three) </div>
-                    <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Academy} points={3} onDone={(done) => { this._attributesDone = done; } }/>
-                </div>
-                <div className="panel">
-                    <div className="header-small">DISCIPLINES</div>
-                    <SkillView points={2} skill={Skill.Conn} />
-                    <SkillView points={1} skill={Skill.Engineering} />
-                    <SkillView points={1} skill={Skill.Science} />
-                </div>
-                <div className="panel">
-                    <div className="header-small">FOCUS</div>
-                    <div>Select three focuses for your character.</div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus1 = input; } } />
-                    </div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus2 = input; } } />
-                    </div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus3 = input; } } />
-                    </div>
-                    <div><b>Suggestions: </b> {track.focusSuggestions.join(", ") }</div>
-                </div>
-                <div className="panel">
-                    <div className="header-small">TALENT</div>
-                    <SingleTalentSelectionList talents={this.filterTalentList()}
-                        onSelection={(talent) => { this.onTalentSelected(talent) } }
-                        construct={character} />
-                </div>
-                <div className="panel">
-                    <div className="header-small">VALUE</div>
-                    <ValueInput value={character.trackValue} onValueChanged={(value) => this.onValueChanged(value)}
-                            onRandomClicked={() => this.randomValue()} textDescription={t('Value.starfleetTraining.text')}
-                        />
-                </div>
-                <Button text="CAREER" className="button-next" onClick={() => this.onNext() }/>
-            </div>
-        );
-    }
-
-    private renderUniversityAlumniDetails() {
-        const { t } = this.props;
-        const track = TracksHelper.instance().getTrack(character.educationStep?.track);
-
-        return (
-            <div className="page">
-                <CharacterCreationBreadcrumbs />
-                <div className="header-text"><div>{track.name}</div></div>
-                <div className="panel">
-                    <div className="desc-text">{track.description}</div>
-                </div>
-                <div className="panel">
-                    <div className="header-small">ATTRIBUTES (Select up to three) </div>
-                    <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Academy} points={3} onDone={(done) => { this._attributesDone = done; } }/>
-                </div>
-                <div className="panel">
-                    <div className="header-small">DISCIPLINES</div>
-                    <SkillView points={2} skill={Skill.Science} />
-                    <SkillView points={1} skill={Skill.Engineering} />
-                    <SkillView points={1} skill={Skill.Command} />
-                </div>
-                <div className="panel">
-                    <div className="header-small">FOCUS</div>
-                    <div>Select three focuses for your character.</div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus1 = input; } } />
-                    </div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus2 = input; } } />
-                    </div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus3 = input; } } />
-                    </div>
-                    <div><b>Suggestions: </b> {track.focusSuggestions.join(", ") }</div>
-                </div>
-                <div className="panel">
-                    <div className="header-small">TRAIT</div>
-                    <div>Define a trait that reflects the time, people and relationships that were important to the character during their time on campus.</div>
-                    <div>Example: <i>Alumni of Stanford - Class of '59</i></div>
-                    <div>
-                        <div className="textinput-label">TRAIT</div>
-                        <input type="text" ref={(input) => { this._trait = input; } } />
-                    </div>
-                </div>
-                <div className="panel">
-                    <div className="header-small">TALENT</div>
-                    <SingleTalentSelectionList talents={this.filterTalentList()}
-                        construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
-                </div>
-                <div className="panel">
-                    <div className="header-small">VALUE</div>
-                    <ValueInput value={character.trackValue} onValueChanged={(value) => this.onValueChanged(value)}
-                            onRandomClicked={() => this.randomValue()} textDescription={t('Value.otherTraining.text')}
-                        />
-                </div>
-                <Button text="CAREER" className="button-next" onClick={() => this.onNext() }/>
-            </div>
-        );
-    }
-
-    private renderResearchInternshipDetails() {
-        const { t } = this.props;
-        const track = TracksHelper.instance().getTrack(character.educationStep?.track);
-
-        return (
-            <div className="page">
-                <div className="header-text"><div>{track.name}</div></div>
-                <div className="panel">
-                    <div className="desc-text">{track.description}</div>
-                </div>
-                <div className="panel">
-                    <div className="header-small">ATTRIBUTES (Select up to three) </div>
-                    <AttributeImprovementCollection mode={AttributeImprovementCollectionMode.Academy} points={3} onDone={(done) => { this._attributesDone = done; } }/>
-                </div>
-                <div className="panel">
-                    <div className="header-small">DISCIPLINES</div>
-                    <SkillView points={2} skill={Skill.Science} />
-                    <SkillView points={1} skill={Skill.Engineering} />
-                    <SkillView points={1} skill={Skill.Medicine} />
-                </div>
-                <div className="panel">
-                    <div className="header-small">FOCUS</div>
-                    <div>Select three focuses for your character.</div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus1 = input; } } />
-                    </div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus2 = input; } } />
-                    </div>
-                    <div>
-                        <div className="textinput-label">FOCUS</div>
-                        <input type="text" ref={(input) => { this._focus3 = input; } } />
-                    </div>
-                    <div><b>Suggestions: </b> {track.focusSuggestions.join(", ") }</div>
-                </div>
-                <div className="panel">
-                    <div className="header-small">TRAIT</div>
-                    <div>Define a trait that reflects the research and scientific work done during the character's internship.</div>
-                    <div>Example: <i>Nanoprobe Breakthrough</i></div>
-                    <div>
-                        <div className="textinput-label">TRAIT</div>
-                        <input type="text" ref={(input) => { this._trait = input; } } />
-                    </div>
-                </div>
-                <div className="panel">
-                    <div className="header-small">TALENT</div>
-                    <SingleTalentSelectionList talents={this.filterTalentList()}
-                        construct={character} onSelection={(talent) => { this.onTalentSelected(talent) } }/>
-                </div>
-                <div className="panel">
-                    <div className="header-small">VALUE</div>
-                    <ValueInput value={character.trackValue} onValueChanged={(value) => this.onValueChanged(value)}
-                            onRandomClicked={() => this.randomValue()} textDescription={t('Value.otherTraining.text')}
-                        />
-                </div>
-                <Button text="CAREER" className="button-next" onClick={() => this.onNext() }/>
             </div>
         );
     }

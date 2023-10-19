@@ -12,6 +12,7 @@ interface IInputFieldAndLabelProperties {
     value: string,
     max?: number,
     className?: string,
+    disabled?: boolean,
     onChange: (value: string) => void
 }
 
@@ -58,6 +59,7 @@ export class InputFieldAndLabel extends React.Component<IInputFieldAndLabelPrope
                         this.setState((state) => ({...state, hasFocus: false}));
                         this.props.onChange(ev.target.value);
                     }}
+                    disabled={this.props.disabled === true}
                     {...additionalProps}
                     value={this.state.value} />
             </div>);

@@ -369,12 +369,12 @@ export class TracksHelper {
         }
     }
 
-    getTracks() {
+    getTracks(type: CharacterType, enlisted: boolean = false) {
         var tracks: TrackModel[] = [];
-        var list = this.chooseList(character.type);
+        var list = this.chooseList(type);
         for (let model of list) {
             if (hasSource(model.source)) {
-                if (model.id === Track.EnlistedSecurityTraining && !character.enlisted && character.type !== CharacterType.KlingonWarrior) {
+                if (model.id === Track.EnlistedSecurityTraining && !enlisted) {
                     continue;
                 }
 
@@ -417,13 +417,13 @@ export class TracksHelper {
         return result;
     }
 
-    generateTrack(): Track {
-        if (character.type === CharacterType.Starfleet) {
+    generateTrack(characterType: CharacterType): Track {
+        if (characterType === CharacterType.Starfleet) {
             let tracks = [ Track.Command, Track.Operations, Track.Sciences ];
             let roll = Math.floor(Math.random() * tracks.length);
             return tracks[roll];
         } else {
-            let list = this.chooseList(character.type);
+            let list = this.chooseList(characterType);
             let roll = Math.floor(Math.random() * list.length);
             return list[roll].id;
         }
@@ -438,21 +438,38 @@ export class TracksHelper {
                 character.skills[Skill.Engineering].expertise++;
                 character.addFocus("Chain of Command");
                 character.addTrait("Enlisted Crewman");
+                if (character.educationStep) {
+                    character.educationStep.primaryDiscipline = Skill.Security;
+                    character.educationStep.disciplines = [ Skill.Security, Skill.Conn ];
+                    character.educationStep.focuses[2] = "Chain of Command";
+                }
                 break;
             case Track.ShipOperations:
                 character.skills[Skill.Conn].expertise += 2;
                 character.skills[Skill.Engineering].expertise++;
                 character.skills[Skill.Science].expertise++;
+                if (character.educationStep) {
+                    character.educationStep.primaryDiscipline = Skill.Conn;
+                    character.educationStep.disciplines = [ Skill.Engineering, Skill.Science ];
+                }
                 break;
             case Track.UniversityAlumni:
                 character.skills[Skill.Science].expertise += 2;
                 character.skills[Skill.Engineering].expertise++;
                 character.skills[Skill.Command].expertise++;
+                if (character.educationStep) {
+                    character.educationStep.primaryDiscipline = Skill.Science;
+                    character.educationStep.disciplines = [ Skill.Engineering, Skill.Command ];
+                }
                 break;
             case Track.ResearchInternship:
                 character.skills[Skill.Science].expertise += 2;
                 character.skills[Skill.Engineering].expertise++;
                 character.skills[Skill.Medicine].expertise++;
+                if (character.educationStep) {
+                    character.educationStep.primaryDiscipline = Skill.Science;
+                    character.educationStep.disciplines = [ Skill.Engineering, Skill.Medicine ];
+                }
                 break;
             default:
                 break;

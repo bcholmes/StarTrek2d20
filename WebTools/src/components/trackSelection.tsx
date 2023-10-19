@@ -10,12 +10,13 @@ import { Track } from '../helpers/trackEnum';
 interface ITrackSelectionProperties {
     onSelection: (track: Track) => void;
     onCancel: () => void;
+    enlisted?: boolean;
 }
 
 export class TrackSelection extends React.Component<ITrackSelectionProperties, {}> {
 
     render() {
-        var tracks = TracksHelper.instance().getTracks().map((t, i) => {
+        var tracks = TracksHelper.instance().getTracks(this.props.enlisted).map((t, i) => {
             const disciplines = t.majorDisciplines.map((d, i) => {
                 if (character.enlisted && d === Skill.Command) return undefined;
 
@@ -32,7 +33,7 @@ export class TrackSelection extends React.Component<ITrackSelectionProperties, {
             )
         });
 
-        const title = character.enlisted || character.type === CharacterType.KlingonWarrior
+        const title = this.props.enlisted || character.type === CharacterType.KlingonWarrior
             ? "SELECT TRACK"
             : "SELECT ACADEMY TRACK";
 
