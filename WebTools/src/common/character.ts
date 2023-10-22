@@ -285,15 +285,17 @@ export class Character extends Construct {
 
     get assignmentWithoutShip() {
         let result = "";
-        if (this.role) {
+        if (this.role != null) {
+            console.log("should find " + Role[this.role]);
             result = RolesHelper.instance.getRole(this.role, this.type)?.name ?? "";
-            if (this.secondaryRole) {
+            if (this.secondaryRole != null) {
                 let secondary = RolesHelper.instance.getRole(this.secondaryRole, this.type)?.name ?? "";
                 result = result + " / " + secondary;
             }
         } else if (this.jobAssignment) {
             result = this.jobAssignment;
         }
+        console.log("assignement: " + result);
         return result;
     }
 

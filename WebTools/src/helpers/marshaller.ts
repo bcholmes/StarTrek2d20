@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { CareerEventStep, character, Character, CharacterAttribute, CharacterRank, CharacterSkill, CharacterTalent, EducationStep, EnvironmentStep, NpcGenerationStep, SpeciesStep, UpbringingStep } from '../common/character';
+import { CareerEventStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, CharacterTalent, EducationStep, EnvironmentStep, NpcGenerationStep, SpeciesStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -65,9 +65,9 @@ class Marshaller {
         }
 
         if (character.role != null) {
-            sheet["role"] = Role[character.role];
+            sheet["role"] = { "id": Role[character.role] };
             if (character.secondaryRole != null) {
-                sheet["secondaryRole"] = Role[character.secondaryRole];
+                sheet["role"]["secondaryId"] = Role[character.secondaryRole];
             }
         }
         if (character.jobAssignment != null) {
@@ -221,8 +221,13 @@ class Marshaller {
         if (character.house) {
             sheet["house"] = character.house;
         }
-        if (character.role) {
-            sheet["role"] = character.role;
+        if (character.role != null) {
+            let role = { "id": Role[character.role] };
+            if (character.secondaryRole != null) {
+                role["secondaryId"] = Role[character.secondaryRole];
+            }
+
+            sheet["role"] = role;
         }
         if (character.educationStep != null) {
             sheet["track"] = Track[character.educationStep.track];
@@ -547,11 +552,11 @@ class Marshaller {
     decodeCharacter(json: any) {
         let result = new Character();
         if (json["stereotype"] === "npc") {
-            character.stereotype = Stereotype.Npc;
+            result.stereotype = Stereotype.Npc;
         } else if (json["stereotype"] === "supportingCharacter") {
-            character.stereotype = Stereotype.SupportingCharacter;
+            result.stereotype = Stereotype.SupportingCharacter;
         } else if (json["stereotype"] === "soloCharacter") {
-            character.stereotype = Stereotype.SoloCharacter;
+            result.stereotype = Stereotype.SoloCharacter;
         }
         let type = CharacterTypeModel.getCharacterTypeByTypeName(json.type);
         if (type) {
@@ -572,22 +577,25 @@ class Marshaller {
             if (typeof role === 'string') {
                 let roleModel = RolesHelper.instance.getRoleByName(role);
                 if (roleModel) {
-                    character.role = roleModel.id;
+                    result.role = roleModel.id;
                 } else {
-                    character.jobAssignment = role;
+                    result.jobAssignment = role;
                 }
             } else {
-                let roleModel = RolesHelper.instance.getRole(role, character.type);
-                if (roleModel) {
-                    character.role = roleModel.id;
+                let roleId = role["id"];
+                if (roleId != null) {
+                    let r = RolesHelper.instance.getRoleByTypeName(roleId, result.type);
+                    if (r != null) {
+                        result.role = r;
+                    }
                 }
-            }
-        }
-        if (json.secondaryRole != null) {
-            let role = json.secondaryRole;
-            let roleModel = RolesHelper.instance.getRole(role, character.type);
-            if (roleModel) {
-                character.role = roleModel.id;
+                if (role["secondaryId"] != null) {
+                    let secondaryId = role["secondaryId"]
+                    let r = RolesHelper.instance.getRoleByTypeName(secondaryId, result.type);
+                    if (r) {
+                        result.secondaryRole = r;
+                    }
+                }
             }
         }
         result.jobAssignment = json.jobAssignment;

@@ -417,6 +417,27 @@ export class TracksHelper {
         return result;
     }
 
+    getOtherStarfleetTracks(): TrackModel[] {
+        if (hasSource(Source.SciencesDivision)) {
+            return this._tracks.filter(t => t.id === Track.UniversityAlumni || t.id === Track.ResearchInternship);
+        } else {
+            return [];
+        }
+    }
+
+    getOfficerStarfleetTracks() {
+        return this._tracks
+                .filter(t => t.id !== Track.UniversityAlumni && t.id !== Track.ResearchInternship
+                    && t.id !== Track.EnlistedSecurityTraining)
+                .filter(t => hasSource(t.source));
+    }
+
+    getEnlistedStarfleetTracks() {
+        return this._tracks
+            .filter(t => t.id !== Track.UniversityAlumni && t.id !== Track.ResearchInternship)
+            .filter(t => hasSource(t.source));
+    }
+
     generateTrack(characterType: CharacterType): Track {
         if (characterType === CharacterType.Starfleet) {
             let tracks = [ Track.Command, Track.Operations, Track.Sciences ];

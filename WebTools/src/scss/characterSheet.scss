@@ -58,22 +58,25 @@
     font-size: x-small;
 }
 
-.bg-dark,
-.bg-darker,
-.bg-darkest {
-    background-color: #906F9A;
+.sheet-section .bg-dark,
+.sheet-section .bg-darker,
+.sheet-section .bg-darkest {
     padding: 4px;
     width: 90px;
     border-radius: 10px 0 0 10px;
     text-align: right;
 }
 
-.bg-darker {
-    background-color: #906F9A;
+.sheet-section .bg-dark {
+    background-color: $lcars-purple !important;
 }
 
-.bg-darkest {
-    background-color: #F89B24;
+.sheet-section .bg-darker {
+    background-color: $lcars-purple !important;
+}
+
+.sheet-section .bg-darkest {
+    background-color: $lcars-orange  !important;
 }
 
 .bg-dark-wide {
@@ -83,7 +86,7 @@
     width: 200px;
 }
 
-.bg-light {
+.sheet-section .bg-light {
     background-color: white;
 }
 
@@ -107,7 +110,7 @@
 @media screen and (min-width: 0px) and (max-width: 800px) {
     .sheet-bg {
         left: 71px;
-        bottom: 130px; 
+        bottom: 130px;
     }
 
     .sheet-container {

@@ -90,6 +90,35 @@ CharacterTypePage.whatGovernment,What government does this character represent?,
 CharacterTypePage.otherGovernmentName,What's the name of this government?,Wie lautet der Name dieser Regierung?,,Quel est le nom du gouvernement?
 CharacterTypePage.whatMilitary,What military does this character represent?,Welches Militär repräsentiert dieser Charakter?,,Quelle armée ce personnage représente?
 CharacterTypePage.otherMilitaryName,What's the name of this military?,Wie lautet der Name dieses Militärs?,,Quel est le nom de l'armée?
+EducationPage.instruction.alliedMilitary,"Outside of Starfleet, the Milky Way Galaxy hosts many other security and military organizations. Instead of a Starfleet or Klingon officer, you might choose to build a Captain’s Log story around a Bajoran freedom fighter, a member of the Andorian Imperial Guard, or a radically candid warrior of the Qowat Milat.
+
+As an alternative to attending Starfleet Academy, to select the type of military training your character has received, choose from the options in the following table, or randomly select one.",,,
+EducationPage.instruction.ambassadorDiplomat,"Ambassadorial characters are often found accompanying Starfleet vessels, and in other groups and situations conducive to telling exciting stories. These characters don’t necessarily have Starfleet training, but by necessity they are well-trained and well-informed, and quite capable of taking part in dangerous missions when necessary.
+
+Diplomat characters do not necessarily hold an active Starfleet rank or other military rank (though many well-known diplomats are retired Starfleet military).
+
+To select your character’s diplomatic training, choose one of the types in the following table or randomly select one.",,,
+EducationPage.instruction.cadet,"The character is an officer-in-training, still studying at Starfleet Academy or a similar institution. They have great potential, and some skill, but lack the experience to put their abilities to the best use.",,,
+EducationPage.instruction.civilian,"Civilian characters are known to become involved in adventures great and small throughout the Star Trek universe, from ambassador Sarek’s strategic negotiations to the discovery of the U.S.S. Protostar by a roguish Dal R’El. Building a Captain’s Log story around a civilian character offers a chance to shine a light on life outside of Starfleet.
+
+Civilian characters hold no Starfleet rank or other military rank, though they may be granted an honorary rank.
+
+To select your character’s civilian training, choose one of the types in the following matrix, or randomly select one.",,,
+EducationPage.instruction.klingonWarrior,"You have chosen to commit your life to the Klingon Empire as a warrior, joining the Klingon Defense Force to protect the Empire and its interests. But this is not a trivial thing to do. Joining the crew of a starship takes training and dedication, and to be an officer rather than merely a bekk requires grueling entrance exams and the approval of the Oversight Council. There are training facilities on every major world in the Empire, but the most prestigious academies are found on Qo’noS and Ty’Gokor, and a young cadet may spend much of their training off-world engaging in fleet exercises and other practical study.",,,
+EducationPage.instruction.starfleet,"The years spent at Starfleet Academy are some of the most memorable and definitive of an officer’s life, shaping the direction of their career going forward. For those who pass the grueling entrance examinations, the Academy takes four years, covering a mixture of intense training, academic studies, and practical experiences. Much of this takes place within the main Starfleet Academy campus in San Francisco on Earth, but other campuses and annexes exist across the Federation, and a cadet may spend time at any of these before they graduate.
+
+A graduate of the Academy receives a commission as a Starfleet officer, with the rank of ensign, after which they may wait several weeks, or even months, for their first assignment. Some cadets – particularly those pursuing a doctorate – choose a path that requires an additional year or two of training and study, and instead graduate at the rank of lieutenant (junior grade).
+
+You may choose your character’s Academy track, or randomly select it.",,,
+EducationPage.type.cadet,,,,
+EducationPage.type.starfleet,Starfleet Academy,Sternenflottenakademie,,
+EducationPage.type.klingonWarrior,Klingon Defense Force,Klingonische Verteidigungsstreitmacht,,
+EducationPage.type.civilian,Civilian Career Training,Zivile Berufsausbildung,,
+EducationPage.type.alliedMilitary,Allied Military Training,Militärische Ausbildung,,
+EducationPage.type.ambassadorDiplomat,Diplomatic Training,Diplomatische Ausbildung,,
+EducationPage.starfleet.academy,Officer Academy,,,
+EducationPage.starfleet.enlisted,Enlisted Training,,,
+EducationPage.starfleet.other,Other,,,
 EnvironmentPage.showAlt,Allow alternate Environments (GM's decision),Alternative Herkunft erlauben (SL-Entscheidung),,Autoriser les Environements alternatifs (Décision du MJ)
 EnvironmentPage.button.selectEnvironment,Select Environment,Herkunft wählen,,Choisir Environnement
 EnvironmentPage.button.rollEnvironment,Roll Environment,Zufällige Herkunft,,Environement Aléatoire
@@ -153,25 +182,14 @@ SoloEducationDetailsPage.secondaryDiscipline,Secondary Disciplines,Sekundäre Di
 SoloEducationDetailsPage.errorDisciplines,Please select one primary and two secondary disciplines.,Bitte wähle eine primäre und zwei sekundäre Disziplinen.,,Sélectionnez 1 discipline principale et 2 secondaires SVP
 SoloEducationDetailsPage.errorAttributes,Please select three attributes.,Bitte wähle drei Attribute.,,Sélectionnez 3 attributs SVP.
 SoloEducationDetailsPage.errorValue,Please select a value.,Bitte wähle eine Überzeugung.,,Sélectionnez une Valeur SVP.
-SoloEducationPage.instruction.alliedMilitary,"Outside of Starfleet, the Milky Way Galaxy hosts many other security and military organizations. Instead of a Starfleet or Klingon officer, you might choose to build a Captain’s Log story around a Bajoran freedom fighter, a member of the Andorian Imperial Guard, or a radically candid warrior of the Qowat Milat.
+SoloEducationPage.instruction.alliedMilitary,"You have chosen to commit your life to your government's military. You have undergone necessary training to prepare for your military role, whether that be formal officer education, or much more informal guerilla training.",,,
+SoloEducationPage.instruction.ambassadorDiplomat,"The years spent in training are some of the most memorable and definitive of an diplomat’s life, shaping the direction of their career going forwards. Diplomatic training takes years, covering a mixture of intense training, academic studies, and practical experiences.",,,
+SoloEducationPage.instruction.civilian,"The years spent in training are some of the most memorable and definitive of an civilian’s life, shaping the direction of their career going forwards. For some, that involves formal education; for others, it's the school of hard knocks.",,,
+SoloEducationPage.instruction.starfleet,"The years spent at Starfleet Academy are some of the most memorable and definitive of an officer’s life, shaping the direction of their career going forwards. For those who pass the grueling entrance examinations, the Academy takes four years, covering a mixture of intense training, academic studies, and practical experiences. Much of this takes place within the main Starfleet Academy campus in San Francisco on Earth, but other campuses and annexes exist across the Federation, and a cadet may spend time at any of these before they graduate.
 
-As an alternative to attending Starfleet Academy, to select the type of military training your character has received, choose from the options in the following table, or randomly select one.",,,
-SoloEducationPage.instruction.ambassadorDiplomat,"Ambassadorial characters are often found accompanying Starfleet vessels, and in other groups and situations conducive to telling exciting stories. These characters don’t necessarily have Starfleet training, but by necessity they are well-trained and well-informed, and quite capable of taking part in dangerous missions when necessary.
-
-Diplomat characters do not necessarily hold an active Starfleet rank or other military rank (though many well-known diplomats are retired Starfleet military).
-
-To select your character’s diplomatic training, choose one of the types in the following table or randomly select one.",,,
-SoloEducationPage.instruction.civilian,"Civilian characters are known to become involved in adventures great and small throughout the Star Trek universe, from ambassador Sarek’s strategic negotiations to the discovery of the U.S.S. Protostar by a roguish Dal R’El. Building a Captain’s Log story around a civilian character offers a chance to shine a light on life outside of Starfleet.
-
-Civilian characters hold no Starfleet rank or other military rank, though they may be granted an honorary rank.
-
-To select your character’s civilian training, choose one of the types in the following matrix, or randomly select one.",,,
-SoloEducationPage.instruction.starfleet,"The years spent at Starfleet Academy are some of the most memorable and definitive of an officer’s life, shaping the direction of their career going forward. For those who pass the grueling entrance examinations, the Academy takes four years, covering a mixture of intense training, academic studies, and practical experiences. Much of this takes place within the main Starfleet Academy campus in San Francisco on Earth, but other campuses and annexes exist across the Federation, and a cadet may spend time at any of these before they graduate.
-
-A graduate of the Academy receives a commission as a Starfleet officer, with the rank of ensign, after which they may wait several weeks, or even months, for their first assignment. Some cadets – particularly those pursuing a doctorate – choose a path that requires an additional year or two of training and study, and instead graduate at the rank of lieutenant (junior grade).
-
-You may choose your character’s Academy track, or randomly select it.",,,
+Alternatively, you may opt for an Enlisted character. This is however purely background and does not affect you in more ways than the fact that you never went to Starfleet Academy and cannot select Command as your Major. Either select or roll your Academy Track.",,,
 SoloEducationPage.type.starfleet,Starfleet Academy,Sternenflottenakademie,,
+SoloEducationPage.type.cadet,Cadet Training,,,
 SoloEducationPage.type.civilian,Civilian Career Training,Zivile Berufsausbildung,,
 SoloEducationPage.type.alliedMilitary,Allied Military Training,Militärische Ausbildung,,
 SoloEducationPage.type.ambassadorDiplomat,Diplomatic Training,Diplomatische Ausbildung,,
@@ -460,7 +478,7 @@ Source.book.utopiaPlanitia,Utopia Planitia,(NOT YET TRANSLATED),,Utopia Planitia
 Source.book.lowerDecksCampaign,Lower Decks,(NOT YET TRANSLATED),,
 Source.book.captainsLog,Captain's Log,(NOT YET TRANSLATED),,
 Source.book.animatedSeries,Animated Series,(NOT YET TRANSLATED),,
-Source.book.continuingMissions,Continuing Missions,(NOT YET TRANSLATED),,
+Source.book.continuingMissions,Continuing Mission,(NOT YET TRANSLATED),,
 CareerEvent.common.1.name,Ship Destroyed,Zerstörtes Schiff,,
 CareerEvent.common.2.name,Death of a Friend,Tod eines Freundes/einer Freundin,,
 CareerEvent.common.3.name,Lauded by Another Culture,Gelobt durch fremde Kultur,,

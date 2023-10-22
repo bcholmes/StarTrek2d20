@@ -123,6 +123,12 @@
     "CharacterTypePage.whatMilitary": "Welches Militär repräsentiert dieser Charakter?",
     "CharacterTypePage.otherMilitaryName": "Wie lautet der Name dieses Militärs?",
 
+    "EducationPage.type.starfleet": "Sternenflottenakademie",
+    "EducationPage.type.klingonWarrior": "Klingonische Verteidigungsstreitmacht",
+    "EducationPage.type.civilian": "Zivile Berufsausbildung",
+    "EducationPage.type.alliedMilitary": "Militärische Ausbildung",
+    "EducationPage.type.ambassadorDiplomat": "Diplomatische Ausbildung",
+
     "EnvironmentPage.showAlt": "Alternative Herkunft erlauben (SL-Entscheidung)",
 
     "EnvironmentPage.button.selectEnvironment": "Herkunft wählen",

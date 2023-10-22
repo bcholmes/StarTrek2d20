@@ -705,6 +705,18 @@ export class RolesHelper {
         return undefined;
     }
 
+    getRoleByTypeName(role: string) {
+
+        var list = this._roles;
+        for (var r of list) {
+            if (Role[r.id] === role) {
+                return r.id;
+            }
+        }
+
+        return undefined;
+    }
+
     private determineHighestDiscipline(character: Character) {
         var skills = [];
         character.skills.forEach(s => {

@@ -10,6 +10,9 @@ import { useTranslation } from 'react-i18next';
 import { CharacterType } from '../common/characterType';
 import { makeKey } from '../common/translationKey';
 import { Header } from '../components/header';
+import { hasSource } from '../state/contextFunctions';
+import { Source } from '../helpers/sources';
+import InstructionText from '../components/instructionText';
 
 enum StarfleetTrackTab {
 
@@ -21,7 +24,6 @@ enum StarfleetTrackTab {
 export const StarfleetAcademyPage = () => {
 
     const [randomTrack, setRandomTrack] = useState(null);
-    const [randomEnlistedTrack, setRandomEnlistedTrack] = useState(null);
     const [tab, setTab] = useState(StarfleetTrackTab.Officer);
     const { t } = useTranslation();
 
@@ -33,7 +35,7 @@ export const StarfleetAcademyPage = () => {
     const selectTrack = (track: TrackModel) => {
         const enlisted = (tab === StarfleetTrackTab.Enlisted);
         character.educationStep = new EducationStep(track.id, enlisted);
-        TracksHelper.instance().applyTrack(track);
+        TracksHelper.instance().applyTrack(track.id);
         Navigation.navigateToPage(PageIdentity.StarfleetAcademyDetails);
     }
 
@@ -46,22 +48,53 @@ export const StarfleetAcademyPage = () => {
         );
     }
 
-    const types = randomTrack != null
+    const getTracks = () => {
+        if (character.type !== CharacterType.Starfleet) {
+            return TracksHelper.instance().getTracks(character.type);
+        } else if (tab === StarfleetTrackTab.Other) {
+            return TracksHelper.instance().getOtherStarfleetTracks();
+        } else if (tab === StarfleetTrackTab.Enlisted) {
+            return TracksHelper.instance().getEnlistedStarfleetTracks();
+        } else {
+            return TracksHelper.instance().getOfficerStarfleetTracks();
+        }
+    }
+
+    const types = (randomTrack != null && tab !== StarfleetTrackTab.Other)
         ? toTableRow(TracksHelper.instance().getTrack(randomTrack), 0)
-        : TracksHelper.instance().getTracks(character.type).map((e, i) => toTableRow(e, i));
+        : getTracks().map((e, i) => toTableRow(e, i));
 
     return (
         <div className="page container ml-0">
             <CharacterCreationBreadcrumbs />
 
-            <Header>{t(makeKey('SoloEducationPage.type.', CharacterType[character.type]))}</Header>
-            <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => rollTrack() }>
-                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
-                </Button>
-                {randomTrack != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomTrack(null)} >{t('Common.button.showAll')}</Button>) : undefined}
-            </div>
-            <table className="selection-list">
+            <Header>{t(makeKey('EducationPage.type.', CharacterType[character.type]))}</Header>
+
+            <InstructionText text={t(makeKey('EducationPage.instruction.', CharacterType[character.type]))} />
+
+            {character.type === CharacterType.Starfleet
+                ? (<div className="btn-group w-100 my-4" role="group" aria-label="Environment types">
+                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === StarfleetTrackTab.Officer ? "active" : "")}
+                        onClick={() => setTab(StarfleetTrackTab.Officer)}>{t('EducationPage.starfleet.academy')}</button>
+                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === StarfleetTrackTab.Enlisted ? "active" : "")}
+                        onClick={() => setTab(StarfleetTrackTab.Enlisted)}>{t('EducationPage.starfleet.enlisted')}</button>
+                    {hasSource(Source.SciencesDivision)
+                        ? (<button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === StarfleetTrackTab.Other ? "active" : "")}
+                            onClick={() => setTab(StarfleetTrackTab.Other)}>{t('EducationPage.starfleet.other')}</button>)
+                        : undefined}
+                </div>)
+                : undefined}
+
+            {tab !== StarfleetTrackTab.Other
+                ? (<div className="my-4">
+                    <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => rollTrack() }>
+                        <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
+                    </Button>
+                    {randomTrack != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomTrack(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                </div>)
+                : undefined}
+
+            <table className="selection-list my-4">
                 <tbody>
                     {types}
                 </tbody>
