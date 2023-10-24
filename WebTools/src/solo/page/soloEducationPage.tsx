@@ -35,8 +35,8 @@ const SoloEducationPage: React.FC<ISoloCharacterProperties> = ({character}) => {
     }
 
     const types = randomTrack != null
-        ? toTableRow(TracksHelper.instance().getSoloTrack(randomTrack), 0)
-        : TracksHelper.instance().getSoloTracks(character.type).map((e, i) => toTableRow(e, i));
+        ? toTableRow(TracksHelper.instance.getSoloTrack(randomTrack), 0)
+        : TracksHelper.instance.getSoloTracks(character.type).map((e, i) => toTableRow(e, i));
 
 
     return (

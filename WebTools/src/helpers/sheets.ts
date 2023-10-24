@@ -1380,7 +1380,7 @@ class CaptainsLogCharacterSheet extends BasicFullCharacterSheet {
         const type = CharacterTypeModel.getByType(character.type);
         this.fillField(form, "Character Type", type.localizedName);
 
-        const track = TracksHelper.instance().getSoloTrack(character.educationStep?.track);
+        const track = TracksHelper.instance.getSoloTrack(character.educationStep?.track);
         this.fillField(form, "Track", track.localizedName);
     }
 

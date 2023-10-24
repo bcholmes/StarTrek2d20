@@ -124,7 +124,7 @@ class StarfleetAcademyDetailsPage extends React.Component<WithTranslation, {}> {
 
     render() {
         const { t } = this.props;
-        const track = TracksHelper.instance().getTrack(character.educationStep?.track);
+        const track = TracksHelper.instance.getTrack(character.educationStep?.track, character.type);
 
         return (
             <div className="page container ml-0">

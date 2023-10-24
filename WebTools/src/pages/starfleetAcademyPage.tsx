@@ -28,14 +28,14 @@ export const StarfleetAcademyPage = () => {
     const { t } = useTranslation();
 
     const rollTrack = () => {
-        let track = TracksHelper.instance().generateTrack(character.type);
+        let track = TracksHelper.instance.generateTrack(character.type);
         setRandomTrack(track);
     }
 
     const selectTrack = (track: TrackModel) => {
         const enlisted = (tab === StarfleetTrackTab.Enlisted);
         character.educationStep = new EducationStep(track.id, enlisted);
-        TracksHelper.instance().applyTrack(track.id);
+        TracksHelper.instance.applyTrack(track.id, character.type);
         Navigation.navigateToPage(PageIdentity.StarfleetAcademyDetails);
     }
 
@@ -50,18 +50,18 @@ export const StarfleetAcademyPage = () => {
 
     const getTracks = () => {
         if (character.type !== CharacterType.Starfleet) {
-            return TracksHelper.instance().getTracks(character.type);
+            return TracksHelper.instance.getTracks(character.type);
         } else if (tab === StarfleetTrackTab.Other) {
-            return TracksHelper.instance().getOtherStarfleetTracks();
+            return TracksHelper.instance.getOtherStarfleetTracks();
         } else if (tab === StarfleetTrackTab.Enlisted) {
-            return TracksHelper.instance().getEnlistedStarfleetTracks();
+            return TracksHelper.instance.getEnlistedStarfleetTracks();
         } else {
-            return TracksHelper.instance().getOfficerStarfleetTracks();
+            return TracksHelper.instance.getOfficerStarfleetTracks();
         }
     }
 
     const types = (randomTrack != null && tab !== StarfleetTrackTab.Other)
-        ? toTableRow(TracksHelper.instance().getTrack(randomTrack), 0)
+        ? toTableRow(TracksHelper.instance.getTrack(randomTrack, character.type), 0)
         : getTracks().map((e, i) => toTableRow(e, i));
 
     return (

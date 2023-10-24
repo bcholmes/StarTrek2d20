@@ -1,5 +1,5 @@
 ﻿import {Skill} from './skills';
-import {Character, character } from '../common/character';
+import {character } from '../common/character';
 import {CharacterType } from '../common/characterType';
 import {Source} from './sources';
 import { Attribute } from './attributes';
@@ -91,9 +91,9 @@ export class TrackModel {
 
 export class TracksHelper {
 
-    private static _instance;
+    private static _instance: TracksHelper;
 
-    static instance() {
+    static get instance() {
         if (TracksHelper._instance == null) {
             TracksHelper._instance = new TracksHelper();
         }
@@ -405,8 +405,8 @@ export class TracksHelper {
         return result ? result[0] : undefined;
     }
 
-    getTrack(track: Track, c: Character = character) {
-        let list = this.chooseList(c.type);
+    getTrack(track: Track, type: CharacterType) {
+        let list = this.chooseList(type);
         let result = null;
         for (let t of list) {
             if (t.id === track) {
@@ -450,8 +450,8 @@ export class TracksHelper {
         }
     }
 
-    applyTrack(track: Track) {
-        const model = this.getTrack(track);
+    applyTrack(track: Track, type: CharacterType) {
+        const model = this.getTrack(track, type);
         switch (model.id) {
             case Track.EnlistedSecurityTraining:
                 character.skills[Skill.Conn].expertise++;

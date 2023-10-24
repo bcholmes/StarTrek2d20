@@ -180,7 +180,7 @@ class SoloEducationSecondaryDisciplineController implements IDisciplineControlle
 const SoloEducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
-    const track = TracksHelper.instance().getSoloTrack(character.educationStep?.track);
+    const track = TracksHelper.instance.getSoloTrack(character.educationStep?.track);
     const attributeController = new SoloEducationAttributeController(character, track);
     const primaryDisciplineController = new SoloEducationPrimaryDisciplineController(character, track);
     const secondaryDisciplineController = new SoloEducationSecondaryDisciplineController(character, track);
