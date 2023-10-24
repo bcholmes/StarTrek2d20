@@ -110,7 +110,7 @@ const SoloFinishingTouchesPage: React.FC<ISoloCharacterProperties> = ({character
     const disciplineCount = 16 - disciplineTotal;
 
     const attributeController = new SoloFinishingTouchesAttributeController(character, attributeCount);
-    const disciplineController = new SoloFinishingTouchesDisciplineController(character);
+    const disciplineController = new SoloFinishingTouchesDisciplineController(character, disciplineCount);
 
     const navigateToNextPage = () => {
         if (character.finishingStep?.attributes.length !== attributeCount) {
