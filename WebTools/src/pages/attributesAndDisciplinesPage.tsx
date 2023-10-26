@@ -96,8 +96,8 @@ class AttributesAndDisciplinesPage extends React.Component<WithTranslation, IPag
         let talents = this.filterTalentList();
 
         const talentSelection = character.workflow.currentStep().options.talentSelection
-            ? (<div className="panel">
-                <div className="header-small">TALENTS</div>
+            ? (<div className="my-4">
+                <Header level={2}>TALENTS</Header>
                 <SingleTalentSelectionList talents={talents} construct={character}
                     onSelection={talent => this._selectedTalent = talent } />
             </div>)
