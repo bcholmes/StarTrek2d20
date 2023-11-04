@@ -10,15 +10,12 @@ import { extraCharacterStepsNext } from './extraCharacterSteps';
 import replaceDiceWithArrowhead from '../common/arrowhead';
 import store from '../state/store';
 import { setCharacter } from '../state/characterActions';
-import { BorgImplants } from '../helpers/borgImplant';
+import { BorgImplants, Implant } from '../helpers/borgImplant';
 
 export class BorgImplantSelection extends React.Component<{}, {}> {
 
-    private selected: string[];
-
     constructor(props: {}) {
         super(props);
-        this.selected = [...character.implants];
     }
 
     render() {
@@ -27,8 +24,8 @@ export class BorgImplantSelection extends React.Component<{}, {}> {
                 <tr>
                     <td>
                         <CheckBox
-                            isChecked={this.selected.indexOf(implant.name) > -1}
-                            onChanged={(val) => { this.selectImplant(val); }}
+                            isChecked={character.implants.indexOf(implant.type) > -1}
+                            onChanged={(val) => { this.selectImplant(implant); }}
                             value={implant.name} />
                     </td>
                     <td className="selection-header-small">{implant.name}</td>
@@ -40,7 +37,7 @@ export class BorgImplantSelection extends React.Component<{}, {}> {
         return (
             <div className="page container ml-0">
                 <CharacterCreationBreadcrumbs />
-                <Header>BORG IMPLANTS</Header>
+                <Header>Borg Implants</Header>
                 <div>
                     <p>
                         Select up to 3 implants.
@@ -59,21 +56,17 @@ export class BorgImplantSelection extends React.Component<{}, {}> {
         )
     }
 
-    private selectImplant(implant: string) {
-        this.selected.push(implant);
+    private selectImplant(implant: Implant) {
+        character.implants.push(implant.type);
 
-        if (this.selected.length > 3) {
-            this.selected.splice(0, 1);
+        if (character.implants.length > 3) {
+            character.implants.splice(0, 1);
         }
 
         this.forceUpdate();
     }
 
     private onNext() {
-        this.selected.forEach(i => {
-            character.implants.push(i);
-        });
-
         let optionalPage = extraCharacterStepsNext(character, PageIdentity.BorgImplants);
         if (optionalPage != null) {
             Navigation.navigateToPage(optionalPage);

@@ -1,11 +1,11 @@
 
-interface Implant {
+export interface Implant {
     name: string;
     type: BorgImplantType;
     description: string;
 }
 
-enum BorgImplantType {
+export enum BorgImplantType {
     AdaptiveShielding,
     CardiopulmonaryStrengthener,
     CorticalArrayBioSyntheticGland,
@@ -52,4 +52,8 @@ export class  BorgImplants {
         return i.length > 0 ? i[0] : undefined;
     }
 
+    getImplantByType(type: BorgImplantType): Implant|undefined {
+        let i = this.implants.filter(i => i.type === type);
+        return i.length > 0 ? i[0] : undefined;
+    }
 }

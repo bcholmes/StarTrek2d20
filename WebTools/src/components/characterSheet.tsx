@@ -117,7 +117,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
             return (<div key={i}>{t}</div>)
         });
 
-        let equipment = c.equipment.map((e, i) => {
+        let equipment = c.equipmentAndImplants.map((e, i) => {
             return (<div key={i}>{e}</div>)
         });
 

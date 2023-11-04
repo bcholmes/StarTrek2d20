@@ -1591,7 +1591,7 @@ class _Species {
             "",
             [TalentsHelper.getTalent("Hyper Agile"), TalentsHelper.getTalent("Pathfinder"), TalentsHelper.getTalent("Cat-Like Reflexes"), TalentsHelper.getTalent("Applied Force"), TalentsHelper.getTalent("Telepath (Kzinti)")],
             "",
-            []),
+            [{ type: "Examples", suggestions: "Chuft-Captain, Chuft-Warrior, Flyer, Healer, Mechanic, Taylor, Telepath Srith, Gunner, Fth-Captain, Arm-of-the-Hamstringer"}]),
         [Species.Anabaj]: new SpeciesModel(
             Species.Anabaj,
             "Anabaj",
@@ -1709,7 +1709,7 @@ class _Species {
             "",
             [TalentsHelper.getTalent("Underwater Acrobat"), TalentsHelper.getTalent("Aquatic Mutation")],
             "",
-            []),
+            [{ type: "Examples", suggestions: "Bala, Cadmar, Ceros, Domar, Inida, Platan, Rila, Tyda"}]),
         [Species.Pandronian]: new SpeciesModel(
             Species.Pandronian,
             "Pandronian",
@@ -1722,7 +1722,7 @@ class _Species {
             "",
             [TalentsHelper.getTalent("Triple Threat"), TalentsHelper.getTalent("Colony Creature")],
             "",
-            []),
+            [{ type: "Examples", suggestions: "Ari bn Bem, Cala vn Rem, Hari yn Elm, Shari yn Yem, Tesa bn Ray, Pami en Fel, Vara yn Hal, Lura bn Zel, Dav on Hon, Edre bn Zed"}]),
         [Species.Phylosian]: new SpeciesModel(
             Species.Phylosian,
             "Phylosian",
@@ -1735,7 +1735,7 @@ class _Species {
             "",
             [TalentsHelper.getTalent("Toxic Familiarity"), TalentsHelper.getTalent("Omnidirectional Vision")],
             "",
-            []),
+            [{ type: "Examples", suggestions: "Agmar, Bragan, Buxus, Cedrus, Dianth, Ilex, Nanthen, Rudbek, Wortek, Zala"}]),
         [Species.Skorr]: new SpeciesModel(
             Species.Skorr,
             "Skorr",
@@ -1748,7 +1748,7 @@ class _Species {
             "",
             [TalentsHelper.getTalent("Reconnaissance Flight"), TalentsHelper.getTalent("Talons")],
             "",
-            []),
+            [{ type: "Examples", suggestions: "Alar, Eeklah, Perecik, Ral, Scithaal, Tchar, Vicith, DesYog"}]),
         //[Species.Romulan]: new SpeciesModel(
         //    "",
         //    [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],

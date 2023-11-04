@@ -106,20 +106,4 @@ export class CharacterSerializer {
         }
         return result;
     }
-
-    private static serializeEquipment(eq: string[]) {
-        var result = "";
-        eq.forEach(item => {
-            result += `${item}|`;
-        });
-        return result;
-    }
-
-    private static serializeArray(array: string[]) {
-        var result = "";
-        array.forEach(item => {
-            result += `${item}|`;
-        });
-        return result;
-    }
 }

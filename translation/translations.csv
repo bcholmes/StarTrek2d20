@@ -445,40 +445,6 @@ Page.title.tokenCreationPage,Token Creation,Tokenerschaffung,,
 Page.breadcrumb.characterCreation,Character Creation,Charaktererschaffung,Creación de personajes,Création de personnages
 Page.breadcrumb.starshipCreation,Starship Creation,Raumschifferschaffung,,Règles de Base
 Page.breadcrumb.supportingCharacterCreation,Supporting Character Creation,Erschaffung von Nebencharakteren,,Création de Personnage Secondaire
-Source.type.coreBook,Core Rulebooks,Grundregelwerk,,Livres de Règles 
-Source.type.divisionBook,Division Books,Abteilungs-Bände,,Livres des Divisions
-Source.type.quadrantBook,Quadrant Books,Quadranten-Bände,,Livres des Quadrants
-Source.type.crewBook,Crew Books,Spielercharakter-Spielhilfen,,Lives d'Equipages
-Source.type.campaignBook,Campaign Books,Kampagnenbände,,Livres de Campagne
-Source.type.expansion,Major Expansion Books,Wichtige Erweiterungsbände,,Livres d'Extensions
-Source.type.misc,Misc/Other Books,Sonstige Bände,,Divers/Autres
-Source.type.unofficial,Unofficial Sources,Inoffizielle Quellen,,
-Source.book.core,Core,Grundregelwerk,,Règles de Base
-Source.book.alphaQuadrant,Alpha Quadrant,Alpha-Quadrant,,Quadrant Alpha
-Source.book.betaQuadrant,Beta Quadrant,Beta-Quadrant,,Quadrant Bêta
-Source.book.gammaQuadrant,Gamma Quadrant,Gamma-Quadrant,,Quadrant Gamma
-Source.book.deltaQuadrant,Delta Quadrant,Delta-Quadrant,,Quadrant Delta
-Source.book.commandDivision,Command Division,Kommando-Abteilung,,Division: Commandement
-Source.book.operationsDivision,Operations Division,Operative Abteilung,,Division: Opérations
-Source.book.sciencesDivision,Sciences Division,Wissenschafts-Abteilung,,Division: Science
-Source.book.tng,TNG,Das Nächste Jahrhundert,,TNG
-Source.book.ds9,DS9,Deep Space Nine,,DS9
-Source.book.voyager,Voyager,Voyager,,Voyager
-Source.book.theseAreTheVoyages,These are the Voy,Dies sind die Abenteuer,,These are the Voy
-Source.book.tribblePlayerCharacter,Tribble Player Char,(NOT YET TRANSLATED),,Tribule PDF
-Source.book.klingonCore,Klingon Core,Klingonisches Grundregelwerk,,Klingon
-Source.book.shackletonExpanse,Shackleton Expanse,Shackleton-Ausdehnung,,Etendue Shakleton
-Source.book.idwYearFive,IDW Year Five,(NOT YET TRANSLATED),,IDW Année Cinq
-Source.book.playersGuide,Player's Guide,(NOT YET TRANSLATED),,Guide du Joueur
-Source.book.tricorderSet,Tricorder Set,(NOT YET TRANSLATED),,Kit Tricorder
-Source.book.discoveryS1S2,Discovery S1/S2,(NOT YET TRANSLATED),,Discovery S1/S2
-Source.book.discoveryCampaign,Discovery Campaign,(NOT YET TRANSLATED),,Campagne Discovery
-Source.book.picardS1,Picard S1,(NOT YET TRANSLATED),,Picard S1
-Source.book.utopiaPlanitia,Utopia Planitia,(NOT YET TRANSLATED),,Utopia Planitia
-Source.book.lowerDecksCampaign,Lower Decks,(NOT YET TRANSLATED),,
-Source.book.captainsLog,Captain's Log,(NOT YET TRANSLATED),,
-Source.book.animatedSeries,Animated Series,(NOT YET TRANSLATED),,
-Source.book.continuingMissions,Continuing Mission,(NOT YET TRANSLATED),,
 CareerEvent.common.1.name,Ship Destroyed,Zerstörtes Schiff,,
 CareerEvent.common.2.name,Death of a Friend,Tod eines Freundes/einer Freundin,,
 CareerEvent.common.3.name,Lauded by Another Culture,Gelobt durch fremde Kultur,,
@@ -943,6 +909,44 @@ Rank.crewman2ndClass.name,Crewman 2nd Class,Crewman 2nd Class,,
 Rank.crewman2ndClass.abbrev,Crew.,Crew.,,
 Rank.crewman3rdClass.name,Crewman 3rd Class,Crewman 3rd Class,,
 Rank.crewman3rdClass.abbrev,Crew.,Crew.,,
+ShipBuildType.pod.name,Pod,Kleines Shuttle,,Nacelle
+ShipBuildType.shuttlecraft.name,Shuttle,Shuttle,,Navette
+ShipBuildType.runabout.name,Runabout,Runabout,,Runabout
+ShipBuildType.starship.name,Starship,Raumschiff,,Vaisseau
+Source.type.coreBook,Core Rulebooks,Grundregelwerk,,Livres de Règles 
+Source.type.divisionBook,Division Books,Abteilungs-Bände,,Livres des Divisions
+Source.type.quadrantBook,Quadrant Books,Quadranten-Bände,,Livres des Quadrants
+Source.type.crewBook,Crew Books,Spielercharakter-Spielhilfen,,Lives d'Equipages
+Source.type.campaignBook,Campaign Books,Kampagnenbände,,Livres de Campagne
+Source.type.expansion,Major Expansion Books,Wichtige Erweiterungsbände,,Livres d'Extensions
+Source.type.misc,Misc/Other Books,Sonstige Bände,,Divers/Autres
+Source.type.unofficial,Unofficial Sources,Inoffizielle Quellen,,
+Source.book.core,Core,Grundregelwerk,,Règles de Base
+Source.book.alphaQuadrant,Alpha Quadrant,Alpha-Quadrant,,Quadrant Alpha
+Source.book.betaQuadrant,Beta Quadrant,Beta-Quadrant,,Quadrant Bêta
+Source.book.gammaQuadrant,Gamma Quadrant,Gamma-Quadrant,,Quadrant Gamma
+Source.book.deltaQuadrant,Delta Quadrant,Delta-Quadrant,,Quadrant Delta
+Source.book.commandDivision,Command Division,Kommando-Abteilung,,Division: Commandement
+Source.book.operationsDivision,Operations Division,Operative Abteilung,,Division: Opérations
+Source.book.sciencesDivision,Sciences Division,Wissenschafts-Abteilung,,Division: Science
+Source.book.tng,TNG,Das Nächste Jahrhundert,,TNG
+Source.book.ds9,DS9,Deep Space Nine,,DS9
+Source.book.voyager,Voyager,Voyager,,Voyager
+Source.book.theseAreTheVoyages,These are the Voy,Dies sind die Abenteuer,,These are the Voy
+Source.book.tribblePlayerCharacter,Tribble Player Char,(NOT YET TRANSLATED),,Tribule PDF
+Source.book.klingonCore,Klingon Core,Klingonisches Grundregelwerk,,Klingon
+Source.book.shackletonExpanse,Shackleton Expanse,Shackleton-Ausdehnung,,Etendue Shakleton
+Source.book.idwYearFive,IDW Year Five,(NOT YET TRANSLATED),,IDW Année Cinq
+Source.book.playersGuide,Player's Guide,(NOT YET TRANSLATED),,Guide du Joueur
+Source.book.tricorderSet,Tricorder Set,(NOT YET TRANSLATED),,Kit Tricorder
+Source.book.discoveryS1S2,Discovery S1/S2,(NOT YET TRANSLATED),,Discovery S1/S2
+Source.book.discoveryCampaign,Discovery Campaign,(NOT YET TRANSLATED),,Campagne Discovery
+Source.book.picardS1,Picard S1,(NOT YET TRANSLATED),,Picard S1
+Source.book.utopiaPlanitia,Utopia Planitia,(NOT YET TRANSLATED),,Utopia Planitia
+Source.book.lowerDecksCampaign,Lower Decks,(NOT YET TRANSLATED),,
+Source.book.captainsLog,Captain's Log,(NOT YET TRANSLATED),,
+Source.book.animatedSeries,Animated Series,(NOT YET TRANSLATED),,
+Source.book.continuingMissions,Continuing Mission,(NOT YET TRANSLATED),,
 Spaceframe.akira,Akira Class,Akira-Klasse,,
 Spaceframe.ambassador,Ambassador Class,Ambassador-Klasse,,
 Spaceframe.archer,Archer Class,Archer-Klasse,,
@@ -984,10 +988,6 @@ Spaceframe.steamrunner,Steamrunner Class,Steamrunner-Klasse,,
 Spaceframe.sydney,Sydney Class,Sydney-Klasse,,
 Spaceframe.tKalat,T'Kalat Class,T'Kalat-Klasse,,
 Spaceframe.walker,Walker Class,Walker-Klasse,,
-ShipBuildType.pod.name,Pod,Kleines Shuttle,,Nacelle
-ShipBuildType.shuttlecraft.name,Shuttle,Shuttle,,Navette
-ShipBuildType.runabout.name,Runabout,Runabout,,Runabout
-ShipBuildType.starship.name,Starship,Raumschiff,,Vaisseau
 Species.aenar.name,Aenar,Aenar,,
 Species.aenar.description,"The Aenar subspecies of the Andorians is native to the Northern Wastes of Andoria. Their population never rose above a few thousand. Prior to the 23rd- Century, Aenar lived in an underground compound shielded by a dampening field, and had become a myth to other Andorians. They have a communal society with no formal leader, but when the situation calls for a single voice they appoint a delegate known as “The Speaker.” Aenar possess a strictly pacifist ideology and deplore violence of all forms, both physical and mental. 
 
@@ -1002,6 +1002,19 @@ Species.andorian.description,"An aggressive, passionate people from the frozen m
 Species.andorian.soloDescription,"An aggressive, passionate people from a frozen moon. Founding member of the Federation. Blue-skinned, pale-haired in appearance, with antennae. Their antennae aid in balance and spatial awareness; a lost antenna can be debilitating until it regrows. Andorians also have a high metabolism, meaning, among other things, that they tire more quickly than Humans; this also makes them more vulnerable to infection from certain types of injury.",,,
 Species.andorian.exampleValue,Proud Son/Daughter of Andoria,,,
 Species.andorian.traitDescription,"This trait may reduce the Difficulty of Tasks to resist extreme cold, or Tasks impacted by extremely low temperatures. Their antennae aid in balance and spatial awareness; a lost antenna can be debilitating until it regrows. Andorians also have a high metabolism, meaning, amongst other things, that they tire more quickly than Humans; this also makes them more vulnerable to infection from certain types of injury. Before the Federation, Andorians and Vulcans had numerous disputes; though these issues are largely considered to be ancient history, Andorians and Vulcans don’t always get along.",,,
+Species.aquan.name,Aquan,,,
+Species.aquan.aboutNames,Aquan names are typically a single word composed of just a few syllables.,,,
+Species.aquan.description,"The humanoid, water-breathing Aquans were transformed indigenous inhabitants of the planet Argo. They had green skin, flat noses, hair resembling kelp, webbed hands, and fins on their ankles. Argo was once mostly land, but planetary-wide seismic disturbances caused the land to gradually sink into the sea. Though not everyone chose the procedure, the medically advanced Aquans developed drugs to turn themselves into an aquatic species. Although they had the means to reverse the transformation, once they became water breathers, they chose to forget their past and construct a new society beneath the sea.
+
+The reversal formula was lost to time, and the remaining air breathers were seen as enemies. Among the water-breathing Aquans’ many medical talents were the manipulation and erasure of memories, which they used on their enemies.
+
+In 2269, the _Enterprise_ was studying Argo, unaware of any intelligent life on the planet, when a catastrophic seaquake put Kirk and Spock in peril of drowning.
+
+Fortunately, they were saved by some of the Aquans and transformed into sea-breathers. With the help of the Aquans, they were able to find a way to reverse the transformation, and some younger Aquans chose to also use the drug so they could experience life on the surface of their world.
+
+Today, both groups of Aquans live in peace on Argo, and within a year of first contact, a handful of Aquans, both air and water breathers, joined Starfleet.",,,
+Species.aquan.exampleValue,Air breathers rarely come in peace,,,
+Species.aquan.traitDescription,"Aquans are water breathers and expert swimmers who spend their lives in underwater environments. However, it is possible for them to transform into air breathers if they have access to the reversal formula rediscovered by the Enterprise crew.",,,
 Species.arbazan.name,Arbazan,,,
 Species.arbazan.soloDescription,"Like many Humanoid species within the Federation, the Arbazan are physically similar to Humans, though the forward portion of their skulls have slightly raised plates that reinforce their brows. Arbazan have been Federation members since shortly after its founding and are found throughout Federation space, often serving as ambassadors, attaches, advisors, and negotiators – though there have also been several well-known scientific discoveries and engineering advancements by dedicated Arbazan.",,,
 Species.ardanan.name,Ardanan,,,
@@ -1084,9 +1097,42 @@ Species.klingon.soloDescription,"A proud, warrior species centered in the Beta Q
 Species.klingonQuchHa.name,Klingon (QuchHa’),Klingonen (QuchHa'),,
 Species.orion.name,Orion,Orioner,,
 Species.other.name,Custom/Other,Benutzerdefiniert/Andere,,
+Species.pandronian.name,Pandronian,,,
+Species.pandronian.aboutNames,"Typical Pandronian names are composed of three short parts. It’s possible for individuals to disassemble from one individual and reassemble with other organisms to form a new Pandronian, which requires a new name.",,,
+Species.pandronian.description,"Pandronians are one of the most surreal sentient beings the Federation has ever encountered. They have the appearance of a light-green-skinned humanoid, but each Pandronian is actually three creatures in one, existing as a cooperative group of distinct organisms. The organisms that make up a Pandronian colony can change over time, merging with other colonies and ending the existence of the previous colony, creating new, unique Pandronians. They are, in some way, like Trill symbionts, with colony members taking the knowledge of former colonies with them when they form new unity.
+
+The concept of individuality holds an idiosyncratic meaning for a Pandronian. In language, this is expressed by using “this one” instead of “I.” Many Pandronians see single-entity beings as inferior and may appear cold and arrogant, but while disagreeable, they are not dangerous, abhorring violence and finding it a moral failing. Even in self-defense, they would rather ‘disassemble unity’ than fight.
+
+Outside of Pandronian cities is a vast jungle of constantly changing colony creatures, some quite dangerous. Consequently, Pandronians don’t travel at night or go far from home. This is so deeply ingrained it follows a Pandronian off-planet.",,,
+Species.pandronian.exampleValue,This one does not demean itself with the use of casual violence,,,
+Species.pandronian.traitDescription,Pandronians consist of discreet organisms that form a single colony creature. This gives the species a unique understanding of the concept of individuality and allows them to take part in multiple scenes simultaneously.,,,
+Species.phylosian.name,Phylosian,,,
+Species.phylosian.aboutNames,Phylosian names are generally a single word and do not reflect familial ties or concepts of gender.,,,
+Species.phylosian.description,"Despite their plant-like appearance, the Phylosians are intelligent beings with a complex culture and society. They have a unique physical appearance, lacking a traditional head and instead possessing a rounded mass resembling the top of an asparagus spear. Their sense organs are located in the form of a pair of eyestalks, but they lack visible eyes, mouths, or ears. Their bodies consist of a series of furry, vine-like extensions that are bunched near the bottom and equipped with four leg-like projections for movement.
+
+Communication is accomplished with the help of a device called a voder which interprets the low- frequency sound waves their veins make. They can communicate with other Phylosians without the voder and at great distances when on the ground.
+
+Phylosians can be long-lived and, like the great redwood trees of Earth, can grow very tall (up to 8 meters or more). However, if living in a confined area, such as a starship, that growth is stunted.
+
+All of Phylos has been greatly influenced by Stavos Keniclius, a 21st-century Augment who inadvertently triggered a staphylococcus plague when he arrived on the planet, significantly damaging the planet’s ecosystem and nearly annihilating the Phylosian civilization. Despite that tragedy, they remained peaceful.
+
+As of 2270, a few Phylosians had already joined Starfleet as experts in exobotany and medicine.",,,
+Species.phylosian.traitDescription,"Phylosians are sentient plants that have achieved a high level of technological sophistication. They have no mouths, requiring them to use technological means to communicate verbally. Their bodies are composed of a greenish trunk with many stalks protruding from the torso to act as arms and legs. Due to their biology, Phylosians are immune to poisons and toxins derived from plants.",,,
+Species.phylosian.exampleValue,All worlds should share in the beauty of peace and harmony,,,
 Species.risian.name,Risian,Risaner,,
 Species.reman.name,Reman,Remaner,,
 Species.romulan.name,Romulan,Romulaner,,
+Species.skorr.name,Skorr,,,
+Species.skorr.aboutNames,Skorr individuals usually go by a single name.,,,
+Species.skorr.description,"Bipedal avians with feathered wings, the Skorr was a splinter group of Aurelians that left their planet nearly a millennia ago to pursue a warrior way of life, pitting clan against clan.
+
+Due to their limited genetic population, the Skorr relied on cloning in their early history to support reproduction. This eventually led to the Skorr military’s ability to rapidly produce large armies. Extraordinarily long-lived, they also have an extraordinarily short childhood, reaching the equivalent of a Terran teenager in only two years.
+
+Around the time Zefram Cochran was discovering warp drive, a Skorr spiritual leader named Alar led his people into an era of peace. Before he died, his brain patterns were imprinted into a piece of sculpture called “The Soul of Alar.” Not unlike a Vulcan Katric ark, it allowed others to experience his essence, keeping the literal spirit of peace alive.
+
+Two hundred years later, the peace had held and opened the doors for their entry into the Federation. In 2270, they were close to reunification with Aurelia.",,,
+Species.skorr.exampleValue,Alar is our salvation and our teacher,,,
+Species.skorr.traitDescription,"The Skorr possess beaks and talons as well as powerful wings that grant them the ability to fly, a result of their ornithoid ancestry. Additionally, their intellects are as sharp as their talons.",,,
 Species.suliban.name,Suliban,Suliban,,
 Species.suliban.description,"The Sulibans’ distinguishing physical characteristic is their mottled, greenish-tinted skin. Most of them are nomadic. One faction of Suliban are members of the Cabal and can alter their DNA and restructure their skeletons, giving them unique chameleon-like, shapeshifting abilities and enhanced senses.",,,
 Species.tellarite.name,Tellarite,Tellariten,,

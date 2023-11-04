@@ -1,5 +1,5 @@
 import { CareerEventStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, SpeciesStep, UpbringingStep } from "../common/character";
-import { ADD_CHARACTER_CAREER_EVENT, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_ADDITIONAL_TRAITS, SET_CHARACTER_ASSIGNED_SHIP, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_HOUSE, SET_CHARACTER_LINEAGE, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_RANK, SET_CHARACTER_ROLE, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
+import { ADD_CHARACTER_BORG_IMPLANT, ADD_CHARACTER_CAREER_EVENT, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_ADDITIONAL_TRAITS, SET_CHARACTER_ASSIGNED_SHIP, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_HOUSE, SET_CHARACTER_LINEAGE, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_RANK, SET_CHARACTER_ROLE, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -205,6 +205,18 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
             temp.type = action.payload.type;
             if (temp.type !== originalType && temp.educationStep) {
                 temp.educationStep = undefined;
+            }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case ADD_CHARACTER_BORG_IMPLANT: {
+            let temp = state.currentCharacter.copy();
+            temp.implants.push(action.payload.type);
+            while (temp.implants.length > 3) {
+                temp.implants.splice(0, 1);
             }
             return {
                 ...state,

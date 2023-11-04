@@ -1,6 +1,7 @@
 import { Character, CharacterRank } from "../common/character";
 import { CharacterType } from "../common/characterType";
 import { Attribute } from "../helpers/attributes";
+import { BorgImplantType } from "../helpers/borgImplant";
 import { Career } from "../helpers/careerEnum";
 import { Environment } from "../helpers/environments";
 import { Rank } from "../helpers/ranks";
@@ -34,6 +35,7 @@ export const MODIFY_CHARACTER_ATTRIBUTE = 'MODIFY_CHARACTER_ATTRIBUTE';
 export const MODIFY_CHARACTER_DISCIPLINE = 'MODIFY_CHARACTER_DISCIPLINE';
 export const SET_CHARACTER_TYPE = 'SET_CHARACTER_TYPE';
 export const ADD_CHARACTER_CAREER_EVENT = "ADD_CHARACTER_CAREER_EVENT";
+export const ADD_CHARACTER_BORG_IMPLANT = "ADD_CHARACTER_BORG_IMPLANT";
 
 export enum StepContext {
     Species,
@@ -54,6 +56,14 @@ export function setCharacter(character: Character) {
     }
 }
 
+
+export function addCharacterBorgImplant(type: BorgImplantType) {
+    let payload = { type: type };
+    return {
+       type: ADD_CHARACTER_BORG_IMPLANT,
+       payload: payload
+    }
+}
 export function setCharacterSpecies(species: Species, attributes: Attribute[] = []) {
     let payload = { species: species, attributes: attributes };
     return {

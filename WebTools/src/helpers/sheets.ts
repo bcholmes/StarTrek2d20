@@ -658,7 +658,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
     }
 
     fillEquipment(form: PDFForm, character: Character) {
-        character.equipment.forEach( (e, i) => {
+        character.equipmentAndImplants.forEach( (e, i) => {
             this.fillField(form, 'Equipment ' + (i+1), e);
         });
     }

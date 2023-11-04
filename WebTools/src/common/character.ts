@@ -18,6 +18,7 @@ import { Rank } from '../helpers/ranks';
 import { makeKey } from './translationKey';
 import i18next from 'i18next';
 import { Role, RolesHelper } from '../helpers/roles';
+import { BorgImplantType, BorgImplants } from '../helpers/borgImplant';
 
 export abstract class CharacterTypeDetails {
 }
@@ -243,7 +244,7 @@ export class Character extends Construct {
     public typeDetails: CharacterTypeDetails;
     public workflow?: Workflow;
     public pronouns: string = '';
-    public implants: string[];
+    public implants: BorgImplantType[];
 
     // steps
     public educationStep?: EducationStep;
@@ -452,10 +453,14 @@ export class Character extends Construct {
             result.push("Ushaan-tor ice pick");
         }
 
-        if (this.implants) {
-            this.implants.forEach(i => result.push(i));
-        }
+        return result;
+    }
 
+    get equipmentAndImplants() {
+        let result = [...this.equipment];
+        if (this.implants?.length) {
+            this.implants.forEach(i => result.push(BorgImplants.instance.getImplantByType(i)?.name));
+        }
         return result;
     }
 

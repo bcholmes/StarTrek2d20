@@ -26,6 +26,7 @@ import { getAllTracks, Track } from './trackEnum';
 import { EarlyOutlook, UpbringingsHelper } from './upbringings';
 import { CaptureType, CaptureTypeModel, DeliverySystem, DeliverySystemModel, EnergyLoadType, EnergyLoadTypeModel, MineType, MineTypeModel, TorpedoLoadType, TorpedoLoadTypeModel, UsageCategory, Weapon, WeaponType } from './weapons';
 import { Role, RolesHelper } from './roles';
+import { BorgImplantType, BorgImplants } from './borgImplant';
 
 class Marshaller {
 
@@ -190,7 +191,7 @@ class Marshaller {
         }
 
         if (character.implants?.length) {
-            sheet["implants"] = [...character.implants];
+            sheet["implants"] = character.implants.map(i => BorgImplantType[i]);
         }
 
         if (character.environmentStep != null) {
@@ -697,7 +698,7 @@ class Marshaller {
             result.career = career ? career.id : undefined;
         }
         if (json.implants) {
-            result.implants = [...json.implants];
+            result.implants = json.implants.map(i => BorgImplants.instance.getImplantByTypeName(i));
         }
         if (json.reputation != null) {
             result.reputation = json.reputation;

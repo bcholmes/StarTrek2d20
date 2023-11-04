@@ -410,7 +410,7 @@ export class FoundryVttExporter {
               },)
         });
 
-        character.equipment?.forEach(e => {
+        character.equipmentAndImplants?.forEach(e => {
             let item = {
                 "name": e,
                 "type": e === "Armor" ? "armor" : "item",

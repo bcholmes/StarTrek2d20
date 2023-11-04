@@ -462,30 +462,6 @@
     "Page.breadcrumb.starshipCreation": "Raumschifferschaffung",
     "Page.breadcrumb.supportingCharacterCreation": "Erschaffung von Nebencharakteren",
 
-    "Source.type.coreBook": "Grundregelwerk",
-    "Source.type.divisionBook": "Abteilungs-Bände",
-    "Source.type.quadrantBook": "Quadranten-Bände",
-    "Source.type.crewBook": "Spielercharakter-Spielhilfen",
-    "Source.type.campaignBook": "Kampagnenbände",
-    "Source.type.expansion": "Wichtige Erweiterungsbände",
-    "Source.type.misc": "Sonstige Bände",
-    "Source.type.unofficial": "Inoffizielle Quellen",
-
-    "Source.book.core": "Grundregelwerk",
-    "Source.book.alphaQuadrant": "Alpha-Quadrant",
-    "Source.book.betaQuadrant": "Beta-Quadrant",
-    "Source.book.gammaQuadrant": "Gamma-Quadrant",
-    "Source.book.deltaQuadrant": "Delta-Quadrant",
-    "Source.book.commandDivision": "Kommando-Abteilung",
-    "Source.book.operationsDivision": "Operative Abteilung",
-    "Source.book.sciencesDivision": "Wissenschafts-Abteilung",
-    "Source.book.tng": "Das Nächste Jahrhundert",
-    "Source.book.ds9": "Deep Space Nine",
-    "Source.book.voyager": "Voyager",
-    "Source.book.theseAreTheVoyages": "Dies sind die Abenteuer",
-    "Source.book.klingonCore": "Klingonisches Grundregelwerk",
-    "Source.book.shackletonExpanse": "Shackleton-Ausdehnung",
-
     "CareerEvent.common.1.name": "Zerstörtes Schiff",
 
     "CareerEvent.common.2.name": "Tod eines Freundes/einer Freundin",
@@ -770,6 +746,38 @@
     "Rank.crewman3rdClass.name": "Crewman 3rd Class",
     "Rank.crewman3rdClass.abbrev": "Crew.",
 
+    "ShipBuildType.pod.name": "Kleines Shuttle",
+
+    "ShipBuildType.shuttlecraft.name": "Shuttle",
+
+    "ShipBuildType.runabout.name": "Runabout",
+
+    "ShipBuildType.starship.name": "Raumschiff",
+
+    "Source.type.coreBook": "Grundregelwerk",
+    "Source.type.divisionBook": "Abteilungs-Bände",
+    "Source.type.quadrantBook": "Quadranten-Bände",
+    "Source.type.crewBook": "Spielercharakter-Spielhilfen",
+    "Source.type.campaignBook": "Kampagnenbände",
+    "Source.type.expansion": "Wichtige Erweiterungsbände",
+    "Source.type.misc": "Sonstige Bände",
+    "Source.type.unofficial": "Inoffizielle Quellen",
+
+    "Source.book.core": "Grundregelwerk",
+    "Source.book.alphaQuadrant": "Alpha-Quadrant",
+    "Source.book.betaQuadrant": "Beta-Quadrant",
+    "Source.book.gammaQuadrant": "Gamma-Quadrant",
+    "Source.book.deltaQuadrant": "Delta-Quadrant",
+    "Source.book.commandDivision": "Kommando-Abteilung",
+    "Source.book.operationsDivision": "Operative Abteilung",
+    "Source.book.sciencesDivision": "Wissenschafts-Abteilung",
+    "Source.book.tng": "Das Nächste Jahrhundert",
+    "Source.book.ds9": "Deep Space Nine",
+    "Source.book.voyager": "Voyager",
+    "Source.book.theseAreTheVoyages": "Dies sind die Abenteuer",
+    "Source.book.klingonCore": "Klingonisches Grundregelwerk",
+    "Source.book.shackletonExpanse": "Shackleton-Ausdehnung",
+
     "Spaceframe.akira": "Akira-Klasse",
     "Spaceframe.ambassador": "Ambassador-Klasse",
     "Spaceframe.archer": "Archer-Klasse",
@@ -811,14 +819,6 @@
     "Spaceframe.sydney": "Sydney-Klasse",
     "Spaceframe.tKalat": "T'Kalat-Klasse",
     "Spaceframe.walker": "Walker-Klasse",
-
-    "ShipBuildType.pod.name": "Kleines Shuttle",
-
-    "ShipBuildType.shuttlecraft.name": "Shuttle",
-
-    "ShipBuildType.runabout.name": "Runabout",
-
-    "ShipBuildType.starship.name": "Raumschiff",
 
     "Species.aenar.name": "Aenar",
 

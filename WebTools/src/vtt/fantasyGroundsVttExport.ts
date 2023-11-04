@@ -1297,7 +1297,7 @@ export class FantasyGroupsVttExporter {
     convertEquipment(character: Character, start: number = 0) {
         let result = [];
 
-        character.equipment?.forEach((e, i) => {
+        character.equipmentAndImplants?.forEach((e, i) => {
             result.push({
                 "name": this.createNumberedId(start + i + 1),
                 "type": "element",
