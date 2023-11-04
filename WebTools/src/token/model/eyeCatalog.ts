@@ -433,7 +433,7 @@ class EyeCatalog {
             ]
         } else {
             return [
-                new Swatch(EyeType.Eye1, token.species === Species.Vulcan ? "Lighter Brow" : "Vulcan-esque Angled Brows", (token) => EyeCatalog.decorateSwatch(EyeType.Eye1, token)),
+                new Swatch(EyeType.Eye1, token.species === Species.Vulcan ? "Severe Brow" : "Vulcan-esque Angled Brows", (token) => EyeCatalog.decorateSwatch(EyeType.Eye1, token)),
                 new Swatch(EyeType.Eye2, "Standard Brow", (token) => EyeCatalog.decorateSwatch(EyeType.Eye2, token)),
                 new Swatch(EyeType.Eye3, "Thin Brow, Narrower Eyes", (token) => EyeCatalog.decorateSwatch(EyeType.Eye3, token)),
                 new Swatch(EyeType.Eye4, "Thin Brow, Wider Eyes", (token) => EyeCatalog.decorateSwatch(EyeType.Eye4, token)),

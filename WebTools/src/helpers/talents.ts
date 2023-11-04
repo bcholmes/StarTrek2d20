@@ -2321,6 +2321,74 @@ export class Talents {
                 [new SourcePrerequisite(Source.LowerDecksCampaign), new SpeciesPrerequisite(Species.Anabaj, false)],
                 1,
                 "Anabaj"),
+            new TalentModel(
+                "Underwater Acrobat",
+                "While maneuvering in underwater environments, an Aquan with this talent can use a minor action to move to any zone within long range instead of medium and ignore any Difficulty increases associated with underwater terrain.",
+                [new SourcePrerequisite(Source.AnimatedSeries), new SpeciesPrerequisite(Species.Aquan, true)],
+                1,
+                "Aquan"),
+            new TalentModel(
+                "Aquatic Mutation",
+                "The Aquans can transform specimens of most humanoid species into water breathers through surgically induced mutations. An Aquan with this talent can perform the necessary procedure on any humanoid character with a Difficulty 1 Reason + Medicine task, so long as they are able to access the appropriate medical facilities. The procedure takes several hours to complete and can be reversed if the subject is given the appropriate reversal formula.",
+                [new SourcePrerequisite(Source.AnimatedSeries), new SpeciesPrerequisite(Species.Aquan, true), new DisciplinePrerequisite(Skill.Medicine, 3)],
+                1,
+                "Aquan"),
+            new TalentModel(
+                "Cat-Like Reflexes",
+                "The feline nature of the Kzinti grants them heightened reflexes, agility, and balance. Reduce the Difficulty of any non-combat task that relies on precise body control and physical agility by 1 to a minimum of 0.",
+                [new SourcePrerequisite(Source.AnimatedSeries), new SpeciesPrerequisite(Species.Kzinti, false)],
+                1,
+                "Kzinti"),
+            new TalentModel(
+                "Applied Force",
+                "Kzinti are predators who instinctually know how to apply their size and strength in a fight. When making a melee attack, a character with this talent can use Fitness instead of Daring. In addition, add 1[D] to the Stress rating of unarmed attacks or 2[D] if the character’s Fitness is 11 or higher.",
+                [new SourcePrerequisite(Source.AnimatedSeries), new SpeciesPrerequisite(Species.Kzinti, false)],
+                1,
+                "Kzinti"),
+            new TalentModel(
+                "Telepath (Kzinti)",
+                "Some Kzinti have telepathic abilities, though they can be mentally taxing to use. A character with this talent can sense the surface thoughts and emotions of most living beings nearby. Surface thoughts are whatever a character is thinking or feeling at that precise moment. It will require effort and a task to search another character’s mind for specific information or memories. Unwilling targets can resist with an opposed task. If a Kzinti fails a task attempting to probe the mind of another character, the strain temporarily overwhelms them, and they cannot access their telepathic abilities for the remainder of the scene.",
+                [new SourcePrerequisite(Source.AnimatedSeries), new SpeciesPrerequisite(Species.Kzinti, true)],
+                1,
+                "Kzinti"),
+            new TalentModel(
+                "Triple Threat",
+                "The individual organisms that comprise a Pandronian are largely autonomous and can separate from one another. A character with this talent can spend 1 Momentum to cause a component organism to separate from the others and send the disassembled organism to a different location.\n\nIn this manner, the character can participate in scenes taking place in up to three different locations simultaneously, at a cost of 1 Momentum per component organism. Each individual component organism uses the character’s full game statistics, talents, and abilities. However, the character can attempt only one task per turn in combat, as usual. Each component organism does not get its own turn in combat. In non- combat situations or in scenes that don’t involve strict time limits, the component organisms can attempt tasks separately at the gamemaster’s discretion.",
+                [new SourcePrerequisite(Source.AnimatedSeries), new SpeciesPrerequisite(Species.Pandronian, false)],
+                1,
+                "Pandronian"),
+            new TalentModel(
+                "Colony Creature",
+                "Because the individual organisms that make up a colony creature are largely autonomous, it’s possible for one component organism to assist another component organism on a task. This ability can be used only once per scene.",
+                [new SourcePrerequisite(Source.AnimatedSeries), new SpeciesPrerequisite(Species.Pandronian, false)],
+                1,
+                "Pandronian"),
+            new TalentModel(
+                "Toxic Familiarity",
+                "The Phylosians’ advanced scientific capabilities, combined with their unique physiology, have made many members of their species experts at detecting and counteracting environmental toxins. Whenever a character with this talent attempts a task to diagnose a toxic substance or to develop a treatment or antidote to counteract a toxin’s effects, reduce the Difficulty of the task by 1 to a minimum of 0.",
+                [new SourcePrerequisite(Source.AnimatedSeries), new SpeciesPrerequisite(Species.Phylosian, false)],
+                1,
+                "Phylosian"),
+            new TalentModel(
+                "Omnidirectional Vision",
+                "Phylosians’ eyes rest on stalks that can be moved in any direction around their heads. This ability grants them a much wider range of vision than most humanoid species. Any time a character with this talent attempts a task to detect nearby activity using their eyesight, add one bonus d20 to the roll.",
+                [new SourcePrerequisite(Source.AnimatedSeries), new SpeciesPrerequisite(Species.Phylosian, false)],
+                1,
+                "Phylosian"),
+            new TalentModel(
+                "Reconnaissance Flight",
+                "Skorr have sharp senses that allow them to scout an area quickly from above. A character with this talent can spend 2 Momentum to take flight and conduct an aerial search that reveals any visible threats within long range. This talent relies on the ability of the character to gain sufficient altitude to get a bird’s-eye view of the terrain and does not work in enclosed spaces.",
+                [new SourcePrerequisite(Source.AnimatedSeries), new SpeciesPrerequisite(Species.Skorr, false)],
+                1,
+                "Skorr"),
+            new TalentModel(
+                "Talons",
+                "Though a peaceful and civilized species, the Skorr were once warlike and retain sharp beaks and talons that can be used as lethal weapons. Unarmed strikes by characters with this talent have the Vicious 1 Damage effect and Deadly quality.",
+                [new SourcePrerequisite(Source.AnimatedSeries), new SpeciesPrerequisite(Species.Skorr, true)],
+                1,
+                "Skorr"),
+
+
 
 
             // Unofficial

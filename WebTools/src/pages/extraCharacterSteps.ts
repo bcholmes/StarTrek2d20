@@ -19,7 +19,6 @@ export const extraCharacterStepsNext = (character: Character, currentPage?: Page
         return optionalPages[0];
     } else {
         let index = optionalPages.indexOf(currentPage);
-        console.log("Page index is " + index + " and number of optional pages is " + optionalPages.length);
         if (index >= 0 && optionalPages.length > (index+1)) {
             return optionalPages[index+1];
         } else {

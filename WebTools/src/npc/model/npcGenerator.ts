@@ -126,7 +126,9 @@ const typeSpecificValues: { [type : number ]: string[]} = {
         "Please. Let us help you.",
         "Starfleet is the only family I've ever needed.",
         "My team has my back",
-        "Work the problem"
+        "Work the problem",
+        "I've got faith of the heart",
+        "I can reach any star"
     ],
     [ NpcCharacterType.KlingonDefenseForces ] : [
         "My honour is in protecting the Empire",

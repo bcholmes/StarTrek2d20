@@ -129,5 +129,12 @@ export enum Species {
     Suliban,
 
 
+    // Animated Series
+    Aquan,
+    Pandronian,
+    Phylosian,
+    Skorr,
+
+
     Custom,
 };
