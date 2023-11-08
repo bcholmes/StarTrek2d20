@@ -30,8 +30,7 @@ export enum PageIdentity {
     CareerEvent2,
     CareerEvent2Details,
     AttributesAndDisciplines,
-    BorgImplants,
-    ExtraFocus,
+    ExtraTalentDetails,
     Finish,
 
     CustomSpaceframe,

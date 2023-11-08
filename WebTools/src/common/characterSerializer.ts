@@ -1,4 +1,4 @@
-﻿import {Character, CharacterAttribute, CharacterSkill, CharacterTalent} from './character';
+﻿import {Character, CharacterAttribute, CharacterSkill} from './character';
 import { CharacterType } from '../common/characterType';
 import {SpeciesHelper} from '../helpers/species';
 import {EnvironmentsHelper, Environment} from '../helpers/environments';
@@ -62,14 +62,6 @@ export class CharacterSerializer {
 
     private static serializeSkills(skills: CharacterSkill[]) {
         return `${skills[Skill.Command].expertise},${skills[Skill.Conn].expertise},${skills[Skill.Engineering].expertise},${skills[Skill.Security].expertise},${skills[Skill.Science].expertise},${skills[Skill.Medicine].expertise}`;
-    }
-
-    private static serializeTalents(talents: { [name: string]: CharacterTalent }) {
-        let result = "";
-        for (let talent in talents) {
-            result += `${talent}|`;
-        }
-        return result;
     }
 
     public static serializeSpecies(primary: Species, secondary: Species) {

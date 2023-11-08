@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { character } from '../common/character';
+import { EducationStep, character } from '../common/character';
 import { Navigation } from '../common/navigator';
 import { Window } from '../common/window';
 import { Button } from '../components/button';
@@ -59,6 +59,7 @@ export class ChildEducationPage extends React.Component<IPageProperties, {}> {
 
     private selectAge(age: Age) {
         character.age = age;
+        character.educationStep = new EducationStep();
         Navigation.navigateToPage(PageIdentity.ChildEducationDetailsPage);
     }
 }

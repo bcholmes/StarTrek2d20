@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import packageJson from '../package.alias.json';
 
 export class AppVersion extends React.Component<{}, {}> {

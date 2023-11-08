@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import {Attribute} from '../helpers/attributes';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { makeKey } from '../common/translationKey';

@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import {character} from '../common/character';
 import {Skill} from '../helpers/skills';
 import { withTranslation, WithTranslation } from 'react-i18next';

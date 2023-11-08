@@ -184,13 +184,11 @@ class StarfleetAcademyDetailsPage extends React.Component<WithTranslation, {}> {
             return;
         }
 
-        let focuses = character.educationStep?.focuses?.filter(f => f?.length > 0);
+        let focuses = character.educationStep?.focuses?.filter(f => f?.trim().length > 0);
         if (focuses.length !== 3) {
             Dialog.show("You need to type in three Focuses. Choose from the suggestions if you cannot come up with your own.");
             return;
         }
-
-        focuses.forEach(f => character.addFocus(f));
 
         var trait = this._trait ? this._trait.value : null;
         if (trait && trait.length > 0) {

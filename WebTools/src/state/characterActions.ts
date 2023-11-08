@@ -36,6 +36,8 @@ export const MODIFY_CHARACTER_DISCIPLINE = 'MODIFY_CHARACTER_DISCIPLINE';
 export const SET_CHARACTER_TYPE = 'SET_CHARACTER_TYPE';
 export const ADD_CHARACTER_CAREER_EVENT = "ADD_CHARACTER_CAREER_EVENT";
 export const ADD_CHARACTER_BORG_IMPLANT = "ADD_CHARACTER_BORG_IMPLANT";
+export const REMOVE_CHARACTER_BORG_IMPLANT = "REMOVE_CHARACTER_BORG_IMPLANT";
+export const ADD_CHARACTER_TALENT_FOCUS = "ADD_CHARACTER_TALENT_FOCUS";
 
 export enum StepContext {
     Species,
@@ -64,6 +66,15 @@ export function addCharacterBorgImplant(type: BorgImplantType) {
        payload: payload
     }
 }
+
+export function removeCharacterBorgImplant(type: BorgImplantType) {
+    let payload = { type: type };
+    return {
+       type: REMOVE_CHARACTER_BORG_IMPLANT,
+       payload: payload
+    }
+}
+
 export function setCharacterSpecies(species: Species, attributes: Attribute[] = []) {
     let payload = { species: species, attributes: attributes };
     return {
@@ -114,6 +125,14 @@ export function setCharacterFocus(focus: string, context: StepContext, index: nu
     let payload = { focus: focus, context: context, index: index };
     return {
        type: SET_CHARACTER_FOCUS,
+       payload: payload
+    }
+}
+
+export function addCharacterTalentFocus(focus: string, talent: string, index: number = 0) {
+    let payload = { focus: focus, talent: talent, index: index };
+    return {
+       type: ADD_CHARACTER_TALENT_FOCUS,
        payload: payload
     }
 }

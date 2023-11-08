@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {Buffer} from 'buffer';
 import { Starship } from '../common/starship';
 import { SpaceframeOutline } from '../helpers/spaceframeOutlineHelper';

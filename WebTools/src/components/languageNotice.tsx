@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Header } from './header';
 import { useTranslation } from 'react-i18next';
 import { clearLanguageOverride, isLanguageOverridePresent, overrideLanguage } from '../i18n/config';

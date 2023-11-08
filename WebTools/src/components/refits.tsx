@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import {System} from '../helpers/systems';
 import {Starship} from '../common/starship';
 import { withTranslation, WithTranslation } from 'react-i18next';

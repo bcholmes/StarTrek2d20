@@ -5,14 +5,13 @@ import {PageIdentity} from './pageIdentity';
 import {AttributeImprovementCollection, AttributeImprovementCollectionMode} from '../components/attributeImprovementCollection';
 import {SkillImprovementCollection} from '../components/skillImprovementCollection';
 import {ElectiveSkillList} from '../components/electiveSkillList';
-import { TalentsHelper, TalentViewModel } from '../helpers/talents';
+import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_EXPANDED_PROGRAM, TALENT_NAME_VISIT_EVERY_STAR, TalentsHelper, TalentViewModel } from '../helpers/talents';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import ValueInput from '../components/valueInputWithRandomOption';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { CharacterType } from '../common/characterType';
 import SingleTalentSelectionList from '../components/singleTalentSelectionList';
-import { extraCharacterStepsNext } from './extraCharacterSteps';
 import { ValueRandomTable } from '../solo/table/valueRandomTable';
 import { WithTranslation, withTranslation } from 'react-i18next';
 import store from '../state/store';
@@ -183,11 +182,12 @@ class AttributesAndDisciplinesPage extends React.Component<WithTranslation, IPag
             character.addTalent(this._selectedTalent);
         }
 
-        let optionalPage = extraCharacterStepsNext(character);
-        if (optionalPage != null) {
-            Navigation.navigateToPage(optionalPage);
+        store.dispatch(setCharacter(character));
+        if (character.hasTalent(TALENT_NAME_BORG_IMPLANTS) ||
+            character.hasTalent(TALENT_NAME_EXPANDED_PROGRAM) ||
+            character.hasTalent(TALENT_NAME_VISIT_EVERY_STAR)) {
+            Navigation.navigateToPage(PageIdentity.ExtraTalentDetails);
         } else {
-            store.dispatch(setCharacter(character));
             Navigation.navigateToPage(PageIdentity.Finish);
         }
     }

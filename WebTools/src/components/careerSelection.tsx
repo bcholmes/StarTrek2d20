@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import { character } from '../common/character';
 import {Window} from '../common/window';
 import { Career } from '../helpers/careerEnum';

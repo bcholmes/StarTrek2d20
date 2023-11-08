@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import { createRoot } from 'react-dom/client';
 import {Button} from './button';
 
@@ -6,6 +6,7 @@ interface IDialogProperties {
     message: string;
     isVisible: boolean;
 }
+
 
 class _Dialog extends React.Component<IDialogProperties, {}> {
     render() {
@@ -35,7 +36,16 @@ class _Dialog extends React.Component<IDialogProperties, {}> {
 }
 
 class DialogControl {
+    static _root;
+
     private _message: string;
+
+    static get root() {
+        if (DialogControl._root == null) {
+            DialogControl._root = createRoot(document.getElementById("dialog"));
+        }
+        return DialogControl._root;
+    }
 
     show(message: string) {
         this._message = message;
@@ -47,8 +57,7 @@ class DialogControl {
     }
 
     private render(visible: boolean) {
-        let root = createRoot(document.getElementById("dialog"));
-        root.render(
+        DialogControl.root.render(
             React.createElement(_Dialog, {
                 message: this._message,
                 isVisible: visible

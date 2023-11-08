@@ -19,6 +19,10 @@ import { hasAnySource } from '../state/contextFunctions';
 import i18next from 'i18next';
 
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
+export const TALENT_NAME_BORG_IMPLANTS = "Borg Implants";
+export const TALENT_NAME_EXPANDED_PROGRAM = "Expanded Program";
+export const TALENT_NAME_VISIT_EVERY_STAR = "Visit Every Star";
+
 
 export const CHALLENGE_DICE_NOTATION = "[D]";
 

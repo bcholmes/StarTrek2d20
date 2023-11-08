@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { createRandomValue } from '../common/randomValueGenerator';
 import { PageIdentity } from '../pages/pageIdentity';
 

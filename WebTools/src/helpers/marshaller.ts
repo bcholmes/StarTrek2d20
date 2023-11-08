@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { CareerEventStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, CharacterTalent, EducationStep, EnvironmentStep, NpcGenerationStep, SpeciesStep, UpbringingStep } from '../common/character';
+import { CareerEventStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, NpcGenerationStep, SelectedTalent, SpeciesStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -20,7 +20,7 @@ import { SpaceframeHelper } from './spaceframes';
 import { SpeciesHelper } from './species';
 import { Species } from './speciesEnum';
 import { allSystems, System } from './systems';
-import { TalentsHelper } from './talents';
+import { TALENT_NAME_BORG_IMPLANTS, TalentsHelper } from './talents';
 import { TalentSelection } from './talentSelection';
 import { getAllTracks, Track } from './trackEnum';
 import { EarlyOutlook, UpbringingsHelper } from './upbringings';
@@ -120,9 +120,12 @@ class Marshaller {
             "career": character.career != null ? Career[character.career] : null,
             "attributes": this.toAttributeObject(character.attributes),
             "disciplines": this.toSkillObject(character.skills),
-            "focuses": [...character.focuses],
             "values": character.values
         };
+
+        if (character.stereotype !== Stereotype.MainCharacter && character.stereotype !== Stereotype.SoloCharacter) {
+            sheet["focuses"] = [...character.focuses];
+        }
 
         if (character.careerEvents) {
             sheet["careerEvents"] = character.careerEvents.map(c => {
@@ -174,10 +177,27 @@ class Marshaller {
         }
 
         if (character.educationStep != null) {
-            sheet["training"] = {
-                "track": Track[character.educationStep?.track],
-                "enlisted": character.educationStep?.enlisted
+            let education = {}
+            if (character.educationStep?.track != null) {
+                education["track"] = Track[character.educationStep.track];
             }
+            if (character.educationStep?.enlisted) {
+                education["enlisted"] = character.educationStep.enlisted;
+            }
+            if (character.educationStep?.focuses.length) {
+                education["focuses"] = [...character.educationStep.focuses];
+            }
+            if (character.educationStep?.primaryDiscipline != null) {
+                education["primaryDiscipline"] = Skill[character.educationStep.primaryDiscipline];
+            }
+            if (character.educationStep?.attributes != null) {
+                education["attributes"] = character.educationStep.attributes?.filter(a => a != null).map(a => Attribute[a]);
+            }
+            if (character.educationStep?.disciplines != null) {
+                education["disciplines"] = character.educationStep.disciplines?.filter(d => d != null).map(d => Skill[d]);
+            }
+
+            sheet["training"] = education;
         }
 
         let talents = this.toTalentList(character.talents);
@@ -188,10 +208,6 @@ class Marshaller {
         let additionalTraits = this.parseTraits(character.additionalTraits);
         if (additionalTraits?.length) {
             sheet["traits"] = additionalTraits;
-        }
-
-        if (character.implants?.length) {
-            sheet["implants"] = character.implants.map(i => BorgImplantType[i]);
         }
 
         if (character.environmentStep != null) {
@@ -230,27 +246,29 @@ class Marshaller {
 
             sheet["role"] = role;
         }
-        if (character.educationStep != null) {
-            sheet["track"] = Track[character.educationStep.track];
-        }
         return sheet;
     }
 
-    toTalentList(talents: { [name: string]: CharacterTalent }) {
+    toTalentList(talents: SelectedTalent[] ) {
         let result = [];
-        for (let name in talents) {
-            let talent = talents[name];
-            for (let i = 0; i < talent.rank; i++) {
-                result.push({ "name": name });
+        talents.forEach(t => {
+            let talent = { "name": t.talent };
+            if (t.implants.length > 0) {
+                talent["implants"] = t.implants.map(i => BorgImplantType[i]);
             }
-        }
+            if (t.focuses.length > 0) {
+                talent["focuses"] = [...t.focuses];
+            }
+            result.push(talent);
+        });
         return result;
     }
 
     toAttributeObject(attributes: CharacterAttribute[]) {
         let result = {};
         attributes.forEach(a => {
-            result[Attribute[a.attribute]] = a.value; });
+            result[Attribute[a.attribute]] = a.value;
+        });
         return result;
     }
 
@@ -697,19 +715,21 @@ class Marshaller {
             let career = CareersHelper.instance.getCareerByTypeName(json.career, result.type);
             result.career = career ? career.id : undefined;
         }
-        if (json.implants) {
-            result.implants = json.implants.map(i => BorgImplants.instance.getImplantByTypeName(i));
-        }
         if (json.reputation != null) {
             result.reputation = json.reputation;
         }
         if (json.training != null) {
-            let trackAsString = json.training.track;
-            getAllTracks().forEach(t => {
-                if (Track[t] === trackAsString) {
-                    result.educationStep = new EducationStep(t, json.training.enlisted || false);
-                }
-            });
+            if (json.training.track != null) {
+                let trackAsString = json.training.track;
+                getAllTracks().forEach(t => {
+                    if (Track[t] === trackAsString) {
+                        result.educationStep = new EducationStep(t, json.training.enlisted || false);
+                    }
+                    if (json.training.focuses != null) {
+                        result.educationStep.focuses = [...json.training.focuses];
+                    }
+                });
+            }
         } else {
             let rank = result.rank == null ? null : RanksHelper.instance().getRankByName(result.rank?.name);
             if (rank && result.stereotype === Stereotype.Npc) {
@@ -765,10 +785,25 @@ class Marshaller {
             json.talents.forEach(t => {
                 let talent = TalentsHelper.getTalentViewModel(t.name);
                 if (talent) {
-                    result.addTalent(talent);
+                    let selectedTalent = new SelectedTalent(talent.name);
+                    if (t["focuses"]) {
+                        selectedTalent.focuses = [...t["focuses"]];
+                    }
+                    if (t["implants"]) {
+                        selectedTalent.implants = t["implants"].map(i => BorgImplants.instance.getImplantByTypeName(i)?.type).filter(i => i != null);
+                        console.log(t["implants"], selectedTalent.implants);
+                    }
+                    result.talents.push(selectedTalent);
                 }
             });
         }
+
+        // backward compatibility
+        if (json.implants) {
+            let talent = result.getTalentByName(TALENT_NAME_BORG_IMPLANTS);
+            talent.implants = json.implants.map(i => BorgImplants.instance.getImplantByTypeName(i)?.type).filter(i => i != null);
+        }
+
         return result;
     }
 }

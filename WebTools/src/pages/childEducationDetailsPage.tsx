@@ -112,9 +112,11 @@ export class ChildEducationDetailsPage extends React.Component<IPageProperties, 
         } else if (character.age.options.numberOfFocuses > 1 && (!this.state.focus1 || !this.state.focus2)) {
             Dialog.show("You must select " + character.age.options.numberOfFocuses + " Focuses.");
         } else {
-            character.addFocus(this.state.focus1);
-            if (character.age.options.numberOfFocuses > 1) {
-                character.addFocus(this.state.focus2);
+            if (character.educationStep != null) {
+                character.educationStep.focuses.push(this.state.focus1);
+                if (character.age.options.numberOfFocuses > 1) {
+                    character.educationStep.focuses.push(this.state.focus2);
+                }
             }
 
             character.workflow.next();

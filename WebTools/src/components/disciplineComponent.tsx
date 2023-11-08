@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeKey } from '../common/translationKey';
 import { Skill } from '../helpers/skills';

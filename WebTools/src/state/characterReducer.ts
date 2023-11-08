@@ -1,5 +1,6 @@
 import { CareerEventStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, SpeciesStep, UpbringingStep } from "../common/character";
-import { ADD_CHARACTER_BORG_IMPLANT, ADD_CHARACTER_CAREER_EVENT, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, SET_CHARACTER, SET_CHARACTER_ADDITIONAL_TRAITS, SET_CHARACTER_ASSIGNED_SHIP, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_HOUSE, SET_CHARACTER_LINEAGE, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_RANK, SET_CHARACTER_ROLE, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
+import { TALENT_NAME_BORG_IMPLANTS } from "../helpers/talents";
+import { ADD_CHARACTER_BORG_IMPLANT, ADD_CHARACTER_CAREER_EVENT, ADD_CHARACTER_TALENT_FOCUS, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, REMOVE_CHARACTER_BORG_IMPLANT, SET_CHARACTER, SET_CHARACTER_ADDITIONAL_TRAITS, SET_CHARACTER_ASSIGNED_SHIP, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_HOUSE, SET_CHARACTER_LINEAGE, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_RANK, SET_CHARACTER_ROLE, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -214,9 +215,43 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         }
         case ADD_CHARACTER_BORG_IMPLANT: {
             let temp = state.currentCharacter.copy();
-            temp.implants.push(action.payload.type);
-            while (temp.implants.length > 3) {
-                temp.implants.splice(0, 1);
+            let talent = temp.getTalentByName(TALENT_NAME_BORG_IMPLANTS);
+            if (talent) {
+                talent.implants.push(action.payload.type);
+                while (talent.implants.length > 3) {
+                    talent.implants.splice(0, 1);
+                }
+            }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case REMOVE_CHARACTER_BORG_IMPLANT: {
+            let temp = state.currentCharacter.copy();
+            let talent = temp.getTalentByName(TALENT_NAME_BORG_IMPLANTS);
+            if (talent) {
+                const index = talent.implants.indexOf(action.payload.type);
+                if (index >= 0) {
+                    talent.implants.splice(index, 1);
+                }
+            }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case ADD_CHARACTER_TALENT_FOCUS: {
+            let temp = state.currentCharacter.copy();
+            let talent = temp.getTalentByName(TALENT_NAME_BORG_IMPLANTS);
+            if (talent) {
+                const index = action.payload.index;
+                for (let i = talent.focuses.length; i <= index; i++) {
+                    talent.focuses.push("");
+                }
+                talent.focuses[index] = action.payload.focus;
             }
             return {
                 ...state,

@@ -79,7 +79,10 @@ class UpbringingDetailsPage extends React.Component<WithTranslation, IUpbringing
                         <p>{upbringing.focusDescription}</p>
                         <InputFieldAndLabel id="focus" labelName={t('Construct.other.focus')}
                             value={this.state.focus}
-                            onChange={(v) => this.setState((state) => ({...state, focus: v}))} />
+                            onChange={(v) => {
+                                character.upbringingStep.focus = v;
+                                this.setState((state) => ({...state, focus: v}))
+                            }}  />
                         <div className="mt-3 text-white"><b>{t('Common.text.suggestions')}:</b> {upbringing.focusSuggestions.join(", ")}</div>
                     </div>
                 </div>
@@ -132,7 +135,6 @@ class UpbringingDetailsPage extends React.Component<WithTranslation, IUpbringing
             return;
         }
 
-        character.addFocus(focus);
         character.addTalent(this._talent);
         character.upbringingStep.acceptedUpbringing = this._accepted;
         character.upbringingStep.discipline = this._electiveSkills;

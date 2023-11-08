@@ -645,13 +645,12 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
 
     fillTalents(form: PDFForm, character: Character) {
         let i = 1;
-        for (var t in character.talents) {
-            let talent = TalentsHelper.getTalent(t);
+        for (var t of character.talents) {
+            let talent = TalentsHelper.getTalent(t.talent);
             if (talent && talent.maxRank > 1) {
-                let rank = character.talents[t];
-                this.fillField(form, 'Talent ' + i, t + " [Rank " + rank.rank + "]");
+                this.fillField(form, 'Talent ' + i, t.talent + " [Rank " + character.getRankForTalent(t.talent) + "]");
             } else {
-                this.fillField(form, 'Talent ' + i, t);
+                this.fillField(form, 'Talent ' + i, t.talent);
             }
             i++;
         }
@@ -829,16 +828,16 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         }
 
         if (startLine) {
-            for (var t in character.talents) {
-                let text = t;
+            for (let t of character.talents) {
+                let talentName = t.talent;
 
-                const talent = TalentsHelper.getTalent(t);
+                const talent = TalentsHelper.getTalent(talentName);
                 if (talent && talent.maxRank > 1) {
-                    let rank = character.talents[t];
-                    text += " [Rank: " + rank.rank + "]";
+                    let rank = character.getRankForTalent(talentName);
+                    talentName += " [Rank: " + rank + "]";
                 }
 
-                let blocks = this.createTextBlocks(text + ":", titleStyle, symbolStyle, startLine, page);
+                let blocks = this.createTextBlocks(talentName + ":", titleStyle, symbolStyle, startLine, page);
                 blocks.forEach((b, i) => { if (i < blocks.length -1) lines.push(b); });
                 let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
 
@@ -1381,7 +1380,7 @@ class CaptainsLogCharacterSheet extends BasicFullCharacterSheet {
         this.fillField(form, "Character Type", type.localizedName);
 
         const track = TracksHelper.instance.getSoloTrack(character.educationStep?.track);
-        this.fillField(form, "Track", track.localizedName);
+        this.fillField(form, "Track", track?.localizedName ?? "");
     }
 
     fillName(form: PDFForm, character: Character) {

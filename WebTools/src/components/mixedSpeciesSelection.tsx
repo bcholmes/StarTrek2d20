@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import {Window} from '../common/window';
 import {SpeciesHelper} from '../helpers/species';
 import {AttributesHelper} from '../helpers/attributes';

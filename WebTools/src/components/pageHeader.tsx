@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import { character } from '../common/character';
 import { PageIdentity } from '../pages/pageIdentity';
 import { withTranslation, WithTranslation } from 'react-i18next';
@@ -49,10 +49,9 @@ export const getPageTitle = (t, page) => {
             || page === PageIdentity.LiberatedBorgSpeciesExtraDetails
             || page === PageIdentity.BorgSpeciesExtraDetails
             || page === PageIdentity.CyberneticallyEnhancedSpeciesExtraDetails
-            || page === PageIdentity.BorgImplants
+            || page === PageIdentity.ExtraTalentDetails
             || page === PageIdentity.Environment
             || page === PageIdentity.EnvironmentDetails
-            || page === PageIdentity.ExtraFocus
             || page === PageIdentity.Upbringing
             || page === PageIdentity.UpbringingDetails
             || page === PageIdentity.StarfleetAcademy

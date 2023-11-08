@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import i18n from 'i18next';
 import { PDFDocument } from 'pdf-lib'
 import { ICharacterSheet } from '../helpers/sheets';

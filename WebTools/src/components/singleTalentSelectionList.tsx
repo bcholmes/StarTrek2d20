@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import {CheckBox} from './checkBox';
 import {ITalent, TalentViewModel} from '../helpers/talents';
 import replaceDiceWithArrowhead from '../common/arrowhead';

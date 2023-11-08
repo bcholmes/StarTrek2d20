@@ -18,7 +18,6 @@ import AttributesAndDisciplinesPage from './attributesAndDisciplinesPage';
 import FinishPage from './finishPage';
 import SupportingCharacterPage from '../supportingcharacters/supportingCharacterPage';
 import SelectionPage from './selectionPage';
-import { BorgImplantSelection } from './borgImplantSelection';
 import { PageIdentity } from './pageIdentity';
 import CharacterTypePage from './characterTypePage';
 import SimpleCareerPage from './simpleCareerPage';
@@ -27,7 +26,6 @@ import { ChildEducationDetailsPage } from './childEducationDetailsPage';
 import { CadetSeniorityPage } from './cadetSeniorityPage';
 import SpeciesExtraDetailsPage from './speciesExtraDetailsPage';
 import { Species } from '../helpers/speciesEnum';
-import { ExtraFocusPage } from './extraFocusPage';
 import CustomSpeciesDetailsPage from './customSpeciesDetailsPage';
 import ModificationTypeSelectionPage from '../modify/page/modificationTypeSelectionPage';
 import ReputationChangePage from '../modify/page/reputationChangePage';
@@ -38,6 +36,7 @@ import { MilestoneType } from '../modify/model/milestoneType';
 import SourceSelectionPage from './sourceSelectionPage';
 import { StepContext } from '../state/characterActions';
 import toast from 'react-hot-toast';
+import ExtraTalentChoicesPage from './extraTalentChoicesPage';
 
 export interface IPageFactoryRegistry {
     findFactory(page: PageIdentity);
@@ -90,8 +89,7 @@ export class PageFactory {
         this.factories[PageIdentity.ChildEducationPage] = () => <ChildEducationPage/>;
         this.factories[PageIdentity.ChildEducationDetailsPage] = () => <ChildEducationDetailsPage/>;
         this.factories[PageIdentity.AttributesAndDisciplines] = () => <AttributesAndDisciplinesPage />;
-        this.factories[PageIdentity.BorgImplants] = () => <BorgImplantSelection />;
-        this.factories[PageIdentity.ExtraFocus] = () => <ExtraFocusPage />;
+        this.factories[PageIdentity.ExtraTalentDetails] = () => <ExtraTalentChoicesPage />;
         this.factories[PageIdentity.Finish] = () => <FinishPage/>;
         this.factories[PageIdentity.SupportingCharacter] = () => <SupportingCharacterPage />;
         this.factories[PageIdentity.ModificationTypeSelection] = () => <ModificationTypeSelectionPage />;

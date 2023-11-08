@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import {character} from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';

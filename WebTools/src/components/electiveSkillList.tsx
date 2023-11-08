@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import {Character, character} from '../common/character';
 import {Skill} from '../helpers/skills';
 import ElectiveSkill from './electiveSkill';

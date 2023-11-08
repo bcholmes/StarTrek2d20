@@ -103,11 +103,16 @@ export class CharacterRank {
     }
 }
 
-export class CharacterTalent {
-    rank: number;
+export class SelectedTalent {
 
-    constructor(rank: number) {
-        this.rank = rank;
+    readonly talent: string;
+    implants: BorgImplantType[];
+    focuses: string[];
+
+    constructor(talent: string) {
+        this.talent = talent;
+        this.implants = [];
+        this.focuses = [];
     }
 }
 
@@ -154,6 +159,10 @@ export class UpbringingStep {
     get description() {
         return this.upbringing.name + (this.acceptedUpbringing ? " (A)" : " (R)");
     }
+
+    get localizedDescription() {
+        return this.upbringing.localizedName + (this.acceptedUpbringing ? " (A)" : " (R)");
+    }
 }
 
 export class EnvironmentStep {
@@ -169,7 +178,7 @@ export class EnvironmentStep {
 }
 
 export class EducationStep {
-    public readonly track: Track;
+    public readonly track?: Track;
     public enlisted: boolean;
     public attributes: Attribute[];
     public primaryDiscipline: Skill;
@@ -177,7 +186,7 @@ export class EducationStep {
     public decrementDiscipline: Skill;
     public focuses: string[];
 
-    constructor(track: Track, enlisted: boolean = false) {
+    constructor(track?: Track, enlisted: boolean = false) {
         this.track = track;
         this.enlisted = enlisted;
         this.attributes = [];
@@ -225,7 +234,7 @@ export class Character extends Construct {
     public _skills: CharacterSkill[] = [];
     public traits: string[];
     public additionalTraits: string;
-    public talents: { [name: string]: CharacterTalent };
+    public talents: SelectedTalent[];
     public age: Age;
     public lineage?: string;
     public house?: string;
@@ -244,7 +253,6 @@ export class Character extends Construct {
     public typeDetails: CharacterTypeDetails;
     public workflow?: Workflow;
     public pronouns: string = '';
-    public implants: BorgImplantType[];
 
     // steps
     public educationStep?: EducationStep;
@@ -270,8 +278,7 @@ export class Character extends Construct {
         this._mementos = [];
         this.traits = [];
         this._focuses = [];
-        this.talents = {};
-        this.implants = [];
+        this.talents = [];
         this.careerEvents = [];
         this.age = AgeHelper.getAdultAge();
     }
@@ -459,9 +466,10 @@ export class Character extends Construct {
     get equipmentAndImplants() {
         let result = [...this.equipment];
         if (this.implants?.length) {
+            console.log(this.implants);
             this.implants.forEach(i => result.push(BorgImplants.instance.getImplantByType(i)?.name));
         }
-        return result;
+        return result.filter(i => i != null);
     }
 
     get values() {
@@ -489,11 +497,27 @@ export class Character extends Construct {
         }
     }
 
+    get implants(): BorgImplantType[] {
+        let result = [];
+        this.talents.forEach(t => result.push.apply(result, t.implants));
+        return result;
+    }
+
+    getRankForTalent(talentName: string) {
+        return this.talents.filter(t => t.talent === talentName).length;
+    }
+
     getTalentNameList() {
+        let consolidatedTalents = {};
+        this.talents.forEach(t => {
+            let rank = consolidatedTalents[t.talent] ?? 0;
+            consolidatedTalents[t.talent] = rank + 1;
+        })
+
         let result = []
-        for (let name in this.talents) {
-            let t = this.talents[name];
-            result.push(t.rank === 1 ? name : (name + " [Rank " + t.rank + "]"));
+        for (let name in consolidatedTalents) {
+            let rank = consolidatedTalents[name];
+            result.push(rank === 1 ? name : (name + " [Rank " + rank + "]"));
         }
         return result;
     }
@@ -577,6 +601,9 @@ export class Character extends Construct {
             result += 2;
         }
         if (this.hasTalent("Carnivorous Reptilian Physiology")) {
+            result += 2;
+        }
+        if (this.implants.indexOf(BorgImplantType.ExoPlating) >= 0) {
             result += 2;
         }
         return result;
@@ -696,51 +723,50 @@ export class Character extends Construct {
         return result;
     }
 
+    getTalentByName(talentName: string): SelectedTalent|undefined {
+        let result = this.talents.filter(t => t.talent === talentName);
+        return result.length > 0 ? result[0] : undefined;
+    }
+
     addTalent(talentModel: TalentViewModel) {
-        var found = false;
-
-        for (let talent in this.talents) {
-            let t = this.talents[talent];
-            if (talent === talentModel.name) {
-                t.rank++;
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
-            this.talents[talentModel.name] = new CharacterTalent(1);
-        }
+        this.talents.push(new SelectedTalent(talentModel.name));
     }
 
     hasTalent(name: string) {
-        let found = false;
-
-        for (let talent in this.talents) {
-            if (talent === name) {
-                found = true;
-                break;
-            }
-        }
-
-        return found;
+        let found = this.talents.filter(t => t.talent === name);
+        return found.length > 0;
     }
 
     addFocus(focus: string) {
         this._focuses.push(focus);
     }
 
+    private getFocusesFromSteps() {
+        let result = [];
+        if (this.upbringingStep?.focus) {
+            result.push(this.upbringingStep.focus);
+        }
+        if (this.educationStep) {
+            this.educationStep.focuses.filter(f => f?.length).forEach(f => result.push(f));
+        }
+        this.careerEvents.filter(e => e?.focus != null).forEach(e => result.push(e.focus));
+        return result;
+    }
+
     get focuses() {
         if (this.stereotype === Stereotype.SoloCharacter) {
-            let result = [];
-            if (this.upbringingStep?.focus) {
-                result.push(this.upbringingStep.focus);
+            return this.getFocusesFromSteps();
+        } else if (this.stereotype === Stereotype.MainCharacter) {
+            let result = this.getFocusesFromSteps();
+            if (result.length < this._focuses.length) {
+                return this._focuses;
+            } else {
+                this.talents.forEach(t => {
+                    t.focuses.filter(f => f != null && f.trim() != "").forEach(f => result.push(f));
+                });
+                console.log(result);
+                return result;
             }
-            if (this.educationStep) {
-                this.educationStep.focuses.filter(f => f?.length).forEach(f => result.push(f));
-            }
-            this.careerEvents.filter(e => e?.focus != null).forEach(e => result.push(e.focus));
-            return result;
         } else {
             return this._focuses;
         }
@@ -835,15 +861,16 @@ export class Character extends Construct {
             character._skills[s.skill].skill = s.skill;
             character._skills[s.skill].expertise = s.expertise;
         });
-        for (var talent in this.talents) {
-            const t = this.talents[talent];
-            character.talents[talent] = new CharacterTalent(t.rank);
-        }
+        character.talents = this.talents.map(t => {
+            let result = new SelectedTalent(t.talent);
+            result.implants = [...t.implants];
+            result.focuses = [...t.focuses];
+            return result;
+        });
         this.traits.forEach(t => {
             character.traits.push(t);
         });
         character.age = this.age;
-        character.implants = this.implants;
         character.career = this.career;
         this.careerEvents.forEach(e => {
             let event = new CareerEventStep(e.id);
