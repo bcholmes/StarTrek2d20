@@ -262,6 +262,8 @@ export class Character extends Construct {
     public finishingStep?: FinishingStep;
     public npcGenerationStep?: NpcGenerationStep;
 
+    public legacyMode: boolean;
+
     constructor() {
         super(Stereotype.MainCharacter);
         this._attributes.push(new CharacterAttribute(Attribute.Control, this._attributeInitialValue));
@@ -758,13 +760,12 @@ export class Character extends Construct {
             return this.getFocusesFromSteps();
         } else if (this.stereotype === Stereotype.MainCharacter) {
             let result = this.getFocusesFromSteps();
-            if (result.length < this._focuses.length) {
+            if (result.length < this._focuses.length || this.legacyMode) {
                 return this._focuses;
             } else {
                 this.talents.forEach(t => {
                     t.focuses.filter(f => f != null && f.trim() != "").forEach(f => result.push(f));
                 });
-                console.log(result);
                 return result;
             }
         } else {

@@ -245,7 +245,7 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         }
         case ADD_CHARACTER_TALENT_FOCUS: {
             let temp = state.currentCharacter.copy();
-            let talent = temp.getTalentByName(TALENT_NAME_BORG_IMPLANTS);
+            let talent = temp.getTalentByName(action.payload.talent);
             if (talent) {
                 const index = action.payload.index;
                 for (let i = talent.focuses.length; i <= index; i++) {

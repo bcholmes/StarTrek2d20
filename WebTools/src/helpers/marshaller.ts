@@ -110,12 +110,6 @@ class Marshaller {
         let sheet = {
             "stereotype": stereotype,
             "type": CharacterType[character.type],
-            "upbringing": character.upbringingStep != null
-                ? {
-                    "id": EarlyOutlook[character.upbringingStep.upbringing?.id],
-                    "accepted": character.upbringingStep.acceptedUpbringing
-                  }
-                : undefined,
             "name": character.name,
             "career": character.career != null ? Career[character.career] : null,
             "attributes": this.toAttributeObject(character.attributes),
@@ -123,7 +117,21 @@ class Marshaller {
             "values": character.values
         };
 
-        if (character.stereotype !== Stereotype.MainCharacter && character.stereotype !== Stereotype.SoloCharacter) {
+        if (character.upbringingStep) {
+            let upbringing = {
+                "id": EarlyOutlook[character.upbringingStep.upbringing?.id],
+                "accepted": character.upbringingStep.acceptedUpbringing
+            };
+            if (character.upbringingStep.focus) {
+                upbringing["focus"] = character.upbringingStep.focus;
+            }
+            if (character.upbringingStep.discipline != null) {
+                upbringing["discipline"] = Skill[character.upbringingStep.discipline];
+            }
+            sheet["upbringing"] = upbringing;
+        }
+
+        if ((character.stereotype !== Stereotype.MainCharacter && character.stereotype !== Stereotype.SoloCharacter) || character.legacyMode) {
             sheet["focuses"] = [...character.focuses];
         }
 
@@ -252,11 +260,12 @@ class Marshaller {
     toTalentList(talents: SelectedTalent[] ) {
         let result = [];
         talents.forEach(t => {
+            console.log(t);
             let talent = { "name": t.talent };
-            if (t.implants.length > 0) {
+            if (t.implants?.length > 0) {
                 talent["implants"] = t.implants.map(i => BorgImplantType[i]);
             }
-            if (t.focuses.length > 0) {
+            if (t.focuses?.length > 0) {
                 talent["focuses"] = [...t.focuses];
             }
             result.push(talent);
@@ -569,6 +578,7 @@ class Marshaller {
     }
 
     decodeCharacter(json: any) {
+        console.log(json);
         let result = new Character();
         if (json["stereotype"] === "npc") {
             result.stereotype = Stereotype.Npc;
@@ -737,7 +747,12 @@ class Marshaller {
                 result.npcGenerationStep.enlisted = rank.isEnlisted;
             }
         }
-        result._focuses = [...json.focuses];
+        if (json.focuses) {
+            result._focuses = [...json.focuses];
+            if (result.stereotype === Stereotype.MainCharacter) {
+                result.legacyMode = true;
+            }
+        }
         if (json.attributes) {
             result.attributes.forEach(a => {
                 let value = json.attributes[Attribute[a.attribute]];
@@ -778,6 +793,9 @@ class Marshaller {
 
         if (json.upbringing) {
             let step = new UpbringingStep(UpbringingsHelper.getUpbringingByTypeName(json.upbringing.id, result.type), json.upbringing.accepted);
+            if (json.upbringing.focus) {
+                step.focus = json.upbringing.focus;
+            }
             result.upbringingStep = step;
         }
 
@@ -785,6 +803,7 @@ class Marshaller {
             json.talents.forEach(t => {
                 let talent = TalentsHelper.getTalentViewModel(t.name);
                 if (talent) {
+                    console.log(t);
                     let selectedTalent = new SelectedTalent(talent.name);
                     if (t["focuses"]) {
                         selectedTalent.focuses = [...t["focuses"]];
