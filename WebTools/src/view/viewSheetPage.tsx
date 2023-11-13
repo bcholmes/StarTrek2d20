@@ -83,6 +83,18 @@ const ViewSheetPage = () => {
                 </nav>
                 <MainCharacterView character={character} />
             </div>);
+        } else if (json.stereotype === "soloCharacter") {
+            let character = marshaller.decodeCharacter(json);
+            modifyTitle(character);
+            return (<div className="page container ml-0">
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewSoloCharacter')}</li>
+                    </ol>
+                </nav>
+                <MainCharacterView character={character} />
+            </div>);
         }
     }
 

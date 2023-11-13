@@ -14,6 +14,7 @@ import { DropDownElement, DropDownSelect } from "../../components/dropDownInput"
 import { Rank, RanksHelper } from "../../helpers/ranks";
 import { useState } from "react";
 import { Role, RolesHelper } from "../../helpers/roles";
+import { marshaller } from "../../helpers/marshaller";
 
 const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
     const { t } = useTranslation();
@@ -96,6 +97,14 @@ const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
         rankValue = "other";
     }
 
+    const showViewPage = () => {
+        setTimeout(() => {
+            let c = store.getState().character.currentCharacter;
+            const value = marshaller.encodeSoloCharacter(c);
+            window.open('/view?s=' + value, "_blank");
+        });
+    }
+
     return (
         <div className="page container ml-0">
             <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloFinal} />
@@ -149,6 +158,7 @@ const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
             </div>
             <div className="button-container my-5">
                 <Button buttonType={true} text={t('Common.button.exportPdf')} className="btn btn-primary btn-sm mr-3" onClick={() => showDialog() }  />
+                <Button buttonType={true} text={t('Common.button.view')} className="btn btn-primary btn-sm mr-3" onClick={() => showViewPage() }  />
             </div>
 
         </div>);

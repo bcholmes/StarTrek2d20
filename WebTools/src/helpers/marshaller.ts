@@ -106,6 +106,10 @@ class Marshaller {
         return this.encode(this.encodeFullCharacterAsJson(character, "mainCharacter"));
     }
 
+    encodeSoloCharacter(character: Character) {
+        return this.encode(this.encodeFullCharacterAsJson(character, "soloCharacter"));
+    }
+
     private encodeFullCharacterAsJson(character: Character, stereotype: string) {
         let sheet = {
             "stereotype": stereotype,
@@ -225,6 +229,12 @@ class Marshaller {
             if (character.environmentStep.otherSpecies != null) {
                 environment["otherSpecies"] = Species[character.environmentStep.otherSpecies];
             }
+            if (character.environmentStep.attribute != null) {
+                environment["attribute"] = Attribute[character.environmentStep.attribute];
+            }
+            if (character.environmentStep.discipline != null) {
+                environment["discipline"] = Skill[character.environmentStep.discipline];
+            }
             sheet["environment"] = environment;
         }
 
@@ -260,7 +270,6 @@ class Marshaller {
     toTalentList(talents: SelectedTalent[] ) {
         let result = [];
         talents.forEach(t => {
-            console.log(t);
             let talent = { "name": t.talent };
             if (t.implants?.length > 0) {
                 talent["implants"] = t.implants.map(i => BorgImplantType[i]);
@@ -578,7 +587,6 @@ class Marshaller {
     }
 
     decodeCharacter(json: any) {
-        console.log(json);
         let result = new Character();
         if (json["stereotype"] === "npc") {
             result.stereotype = Stereotype.Npc;
@@ -717,6 +725,9 @@ class Marshaller {
                             result.speciesStep.originalSpecies = speciesCode;
                         }
                     }
+                    if (speciesBlock.stats != null) {
+                        result.speciesStep.attributes = speciesBlock.stats.map(s => AttributesHelper.getAttributeByName(s));
+                    }
                 }
 
             }
@@ -734,9 +745,18 @@ class Marshaller {
                 getAllTracks().forEach(t => {
                     if (Track[t] === trackAsString) {
                         result.educationStep = new EducationStep(t, json.training.enlisted || false);
-                    }
-                    if (json.training.focuses != null) {
-                        result.educationStep.focuses = [...json.training.focuses];
+                        if (json.training.focuses != null) {
+                            result.educationStep.focuses = [...json.training.focuses];
+                        }
+                        if (json.training.attributes) {
+                            result.educationStep.attributes = json.training.attributes.map(a => AttributesHelper.getAttributeByName(a));
+                        }
+                        if (json.training.disciplines) {
+                            result.educationStep.disciplines = json.training.disciplines.map(d => SkillsHelper.toSkill(d));
+                        }
+                        if (json.training.primaryDiscipline != null) {
+                            result.educationStep.primaryDiscipline = SkillsHelper.toSkill(json.training.primaryDiscipline);
+                        }
                     }
                 });
             }
@@ -788,6 +808,12 @@ class Marshaller {
                 } else {
                     result.environmentStep = new EnvironmentStep(environment.id);
                 }
+                if (json.environment.attribute) {
+                    result.environmentStep.attribute = AttributesHelper.getAttributeByName(json.environment.attribute);
+                }
+                if (json.environment.discipline) {
+                    result.environmentStep.discipline = SkillsHelper.toSkill(json.environment.discipline);
+                }
             }
         }
 
@@ -797,20 +823,25 @@ class Marshaller {
                 step.focus = json.upbringing.focus;
             }
             result.upbringingStep = step;
+
+            if (json.upbringing.focus) {
+                result.upbringingStep.focus = json.upbringing.focus;
+            }
+            if (json.upbringing.discipline != null) {
+                result.upbringingStep.discipline = SkillsHelper.toSkill(json.upbringing.discipline);
+            }
         }
 
         if (json.talents) {
             json.talents.forEach(t => {
                 let talent = TalentsHelper.getTalentViewModel(t.name);
                 if (talent) {
-                    console.log(t);
                     let selectedTalent = new SelectedTalent(talent.name);
                     if (t["focuses"]) {
                         selectedTalent.focuses = [...t["focuses"]];
                     }
                     if (t["implants"]) {
                         selectedTalent.implants = t["implants"].map(i => BorgImplants.instance.getImplantByTypeName(i)?.type).filter(i => i != null);
-                        console.log(t["implants"], selectedTalent.implants);
                     }
                     result.talents.push(selectedTalent);
                 }

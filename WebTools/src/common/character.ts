@@ -296,7 +296,6 @@ export class Character extends Construct {
     get assignmentWithoutShip() {
         let result = "";
         if (this.role != null) {
-            console.log("should find " + Role[this.role]);
             result = RolesHelper.instance.getRole(this.role, this.type)?.name ?? "";
             if (this.secondaryRole != null) {
                 let secondary = RolesHelper.instance.getRole(this.secondaryRole, this.type)?.name ?? "";
@@ -305,7 +304,6 @@ export class Character extends Construct {
         } else if (this.jobAssignment) {
             result = this.jobAssignment;
         }
-        console.log("assignement: " + result);
         return result;
     }
 
@@ -468,7 +466,6 @@ export class Character extends Construct {
     get equipmentAndImplants() {
         let result = [...this.equipment];
         if (this.implants?.length) {
-            console.log(this.implants);
             this.implants.forEach(i => result.push(BorgImplants.instance.getImplantByType(i)?.name));
         }
         return result.filter(i => i != null);
