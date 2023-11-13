@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { CareerEventStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, NpcGenerationStep, SelectedTalent, SpeciesStep, UpbringingStep } from '../common/character';
+import { CareerEventStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -116,8 +116,6 @@ class Marshaller {
             "type": CharacterType[character.type],
             "name": character.name,
             "career": character.career != null ? Career[character.career] : null,
-            "attributes": this.toAttributeObject(character.attributes),
-            "disciplines": this.toSkillObject(character.skills),
             "values": character.values
         };
 
@@ -137,6 +135,8 @@ class Marshaller {
 
         if ((character.stereotype !== Stereotype.MainCharacter && character.stereotype !== Stereotype.SoloCharacter) || character.legacyMode) {
             sheet["focuses"] = [...character.focuses];
+            sheet["attributes"] = this.toAttributeObject(character.attributes);
+            sheet["disciplines"] = this.toSkillObject(character.skills);
         }
 
         if (character.careerEvents) {
@@ -236,6 +236,13 @@ class Marshaller {
                 environment["discipline"] = Skill[character.environmentStep.discipline];
             }
             sheet["environment"] = environment;
+        }
+
+        if (character.finishingStep != null) {
+            sheet["finish"] = {
+                "attributes": character.finishingStep.attributes.map(a => Attribute[a]),
+                "disciplines": character.finishingStep.disciplines.map(d => Skill[d])
+            }
         }
 
         if (character.age != null) {
@@ -818,7 +825,8 @@ class Marshaller {
         }
 
         if (json.upbringing) {
-            let step = new UpbringingStep(UpbringingsHelper.getUpbringingByTypeName(json.upbringing.id, result.type), json.upbringing.accepted);
+            let upbringing = UpbringingsHelper.getUpbringingByTypeName(json.upbringing.id, result.type);
+            let step = new UpbringingStep(upbringing, json.upbringing.accepted);
             if (json.upbringing.focus) {
                 step.focus = json.upbringing.focus;
             }
@@ -846,6 +854,16 @@ class Marshaller {
                     result.talents.push(selectedTalent);
                 }
             });
+        }
+
+        if (json.finish) {
+            result.finishingStep = new FinishingStep();
+            if (json.finish.attributes) {
+                result.finishingStep.attributes = json.finish.attributes.map(a => AttributesHelper.getAttributeByName(a));
+            }
+            if (json.finish.disciplines) {
+                result.finishingStep.disciplines = json.finish.disciplines.map(d => SkillsHelper.toSkill(d));
+            }
         }
 
         // backward compatibility

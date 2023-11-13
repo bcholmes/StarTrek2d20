@@ -6,7 +6,7 @@ import { Button } from "../components/button";
 import { CharacterSheetDialog } from "../components/characterSheetDialog";
 import { Header } from "../components/header";
 import { CharacterSerializer } from "../common/characterSerializer";
-import { CharacterType } from "../common/characterType";
+import { CharacterType, CharacterTypeModel } from "../common/characterType";
 import { useTranslation } from 'react-i18next';
 import { getNameAndShortRankOf } from "../helpers/ranks";
 import { StatView } from "../components/StatView";
@@ -20,13 +20,14 @@ import StressOrShieldsView from "./stressOrShieldsView";
 import FocusBlockView from "./focusBlockView";
 import WeaponBlockView from "./weaponBlockView";
 import { VttSelectionDialog } from "../vtt/view/VttSelectionDialog";
+import { TracksHelper } from "../helpers/tracks";
 
 export interface ICharacterViewProperties {
     character: Character;
     showButtons?: boolean;
 }
 
-const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showButtons}) => {
+const SoloCharacterView: React.FC<ICharacterViewProperties> = ({character, showButtons}) => {
 
     useEffect(() => {
         if (character.name) {
@@ -67,8 +68,8 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.species')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.speciesName}</div></div>
 
-                <div className="col-md-2 view-field-label pb-2">{t('Construct.other.rank')}:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.rank?.localizedName}</div></div>
+                <div className="col-md-2 view-field-label pb-2">{t('Construct.other.pronouns')}:</div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.pronouns ? character.pronouns  : undefined}</div></div>
             </div>
 
             <div className="row" style={{alignItems: "baseline"}}>
@@ -81,8 +82,19 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
             </div>
 
             <div className="row" style={{alignItems: "baseline"}}>
-                <div className="col-md-2 view-field-label pb-2">{t('Construct.other.pronouns')}:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.pronouns ? character.pronouns  : undefined}</div></div>
+
+                <div className="col-md-2 view-field-label pb-2">{t('Construct.other.education')}:</div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{
+                    CharacterTypeModel.getByType(character.type).localizedName + " / " +
+                    TracksHelper.instance.getSoloTrack(character.educationStep?.track).localizedName}</div></div>
+
+                {character.isCivilian
+                    ? undefined
+                    : (<>
+                            <div className="col-md-2 view-field-label pb-2">{t('Construct.other.rank')}:</div>
+                            <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.rank?.localizedName}</div></div>
+                        </>)}
+
             </div>
 
             <div className="row" style={{alignItems: "baseline"}}>
@@ -184,4 +196,4 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
     </div>);
 }
 
-export default MainCharacterView;
+export default SoloCharacterView;

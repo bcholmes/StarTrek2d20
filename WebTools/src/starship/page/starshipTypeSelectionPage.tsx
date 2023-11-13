@@ -6,7 +6,7 @@ import { ShipBuildType, ShipBuildTypeModel, SimpleStats } from "../../common/sta
 import { Button } from "../../components/button";
 import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
 import { Header } from "../../components/header";
-import { Era } from "../../helpers/eras";
+import { Era, eraDefaultYear } from "../../helpers/eras";
 import ServiceYear from "../../helpers/serviceYear";
 import { Source } from "../../helpers/sources";
 import { PageIdentity } from "../../pages/pageIdentity";
@@ -33,7 +33,7 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
         super(props);
         this.state = {
             type: CharacterTypeModel.getStarshipTypes()[0],
-            campaignYear: this.eraDefaultYear(this.props.era),
+            campaignYear: eraDefaultYear(this.props.era),
             buildType: ShipBuildTypeModel.allTypes()[ShipBuildType.Starship]
         }
     }
@@ -140,21 +140,6 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                         {ServiceYear.instance().getTextHint(this.state.campaignYear)}
                     </div>
                 </div>);
-    }
-
-    private eraDefaultYear(era: Era) {
-        switch (era) {
-            case Era.Enterprise:
-                return 2155;
-            case Era.OriginalSeries:
-                return 2269;
-            case Era.NextGeneration:
-                return 2371;
-            case Era.PicardProdigy:
-                return 2400;
-            case Era.Discovery32:
-                return 3190;
-        }
     }
 }
 

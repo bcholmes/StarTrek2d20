@@ -23,6 +23,21 @@ export class EraModel {
     }
 }
 
+export const eraDefaultYear = (era: Era) => {
+    switch (era) {
+        case Era.Enterprise:
+            return 2155;
+        case Era.OriginalSeries:
+            return 2269;
+        case Era.NextGeneration:
+            return 2371;
+        case Era.PicardProdigy:
+            return 2400;
+        case Era.Discovery32:
+            return 3190;
+    }
+}
+
 class Eras {
     private _eras: { [id: number]: EraModel } = {
         [Era.Enterprise]: new EraModel(Era.Enterprise, "Enterprise (mid-22nd century)"),

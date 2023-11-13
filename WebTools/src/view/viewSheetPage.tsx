@@ -10,6 +10,7 @@ import { PageIdentity } from "../pages/pageIdentity";
 import { Construct } from "../common/construct";
 import { Character } from "../common/character";
 import NpcView from "./npcView";
+import SoloCharacterView from "./soloCharacterView";
 
 const ViewSheetPage = () => {
 
@@ -93,7 +94,7 @@ const ViewSheetPage = () => {
                         <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewSoloCharacter')}</li>
                     </ol>
                 </nav>
-                <MainCharacterView character={character} />
+                <SoloCharacterView character={character} />
             </div>);
         }
     }

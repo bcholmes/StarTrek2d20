@@ -9,6 +9,7 @@ import { createNewStarship } from "../../state/starshipActions";
 import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import { withTranslation, WithTranslation } from 'react-i18next';
+import { eraDefaultYear } from "../../helpers/eras";
 
 class SelectStarshipToolPage extends React.Component<WithTranslation, {}> {
 
@@ -55,7 +56,7 @@ class SelectStarshipToolPage extends React.Component<WithTranslation, {}> {
         let stats = new SimpleStats();
         stats.systems = [7, 7, 7, 7, 7, 7];
         stats.scale = 3;
-        store.dispatch(createNewStarship(CharacterType.Other, undefined, stats, workflow));
+        store.dispatch(createNewStarship(CharacterType.Other, eraDefaultYear(store.getState().context?.era), stats, workflow));
         let page =workflow.currentStep().page;
         this.goToPage(page);
     }

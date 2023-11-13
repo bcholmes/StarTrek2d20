@@ -58,6 +58,7 @@ TokenCreator.section.extras.headwear,Headwear,Kopfbedeckung,,Couvre-Chef
 ViewPage.viewSupportingCharacter,View Supporting Character,Nebencharakter anzeigen,Ver personaje secundario,Voir le personnage secondaire
 ViewPage.viewNpc,View NPC,NSC anzeigen,,Voir PNJ
 ViewPage.viewMainCharacter,View Main Character,Hauptfigur anzeigen,Ver personaje principal,Voir le personnage principal
+ViewPage.viewSoloCharacter,View Solo Character,,,
 ViewPage.viewStarship,View Starship,Raumschiff ansehen,Ver nave espacial,Voir le vaisseau spatial
 ViewPage.errorMessage,"Things have gone terribly, terribly wrong. We might be in the mirror universe.",Etwas ist ganz schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.,"Las cosas han ido terriblemente, terriblemente mal. Podríamos estar en el universo espejo.","Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir."
 ViewPage.unnamedStarship,Unnamed Starship,Unbenanntes Raumschiff,Nave espacial sin nombre,Vaisseau sans nom
@@ -324,6 +325,7 @@ Construct.other.departments,Departments,Abteilungen,Departamentos,Departements
 Construct.other.determination,Determination,Entschlossenheit,Determinación,Détermination
 Construct.other.discipline,Discipline,Disziplin,,Discipline
 Construct.other.disciplines,Disciplines,Disziplinen,Disciplinas,Disciplines
+Construct.other.education,Education,,,
 Construct.other.environment,Environment,Herkunft,Medio ambiente,Environnement
 Construct.other.equipment,Equipment,Ausrüstung,Equipo,Équipement
 Construct.other.era,Era,Ära,Era,Ère
@@ -396,6 +398,7 @@ Page.title.customSpeciesDetails,Custom Species Details,Details zur selbst erscha
 Page.title.environment,Environment,Herkunft,,Environnement
 Page.title.environmentDetails,Environment Details,Details über die Herkunft,,Détails de l'Environnement
 Page.title.era,Era,Ära,Era,Ère
+Page.title.extraTalentDetails,Extra Details,,,
 Page.title.finalStarshipDetails,Final Starship Details,Finale Raumschiff-Details,,Détails Finaux du Vaisseau
 Page.title.finish,Finishing Touches,Feinschliff,,Touches Finales
 Page.title.gamemasterTrackerPage,Tracking,NSC-Verwaltung,Seguimiento,Suivi
