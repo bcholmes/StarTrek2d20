@@ -86,7 +86,7 @@ class FinalStarshipDetailsPage extends React.Component<IFinalStarshipDetailsPage
                             Your GM may allow you to pick additional traits that describe your
                             vessel. Examples include: Prototype, Legacy Vessel, Renowned and Long-Serving.
                         </p>
-                        <textarea
+                        <textarea className="w-100"
                             rows={8}
                             onChange={(ev) => store.dispatch(setStarshipTraits(ev.target.value)) }
                             onBlur={(ev) => {

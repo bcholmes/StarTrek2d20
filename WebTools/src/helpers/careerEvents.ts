@@ -106,7 +106,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "Required to Take Command",
-            "During a mission, a crisis left the mission’s leader unable to lead. This required the character to take command, something they may not have been prepared for. What was the mission? What went wrong? Was the mission successful despite the loss of the leader?",
+            "During a mission, a crisis left the mission’s leader unable to lead. This required the character to take command, something they may not have been prepared for.\n\n- What was the mission? What went wrong?\n- Was the mission successful despite the loss of the leader?",
             [Attribute.Daring],
             [Skill.Command],
             "The character gains a Focus, which should reflect the character’s experiences during the crisis. Examples include: Lead by Example, Inspiration, or Composure.",
@@ -119,7 +119,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "Encounter with a Truly Alien Being",
-            "The character encountered a life-form which is truly alien, something barely within the comprehension of humanoid life. It might have been some godlike entity, or a creature that swims through space, but whatever it was, it was not life as we know it. What kind of creature was it? What did the character learn from the experience? What happened to the creature afterwards? Has it been seen again?",
+            "The character encountered a life-form which is truly alien, something barely within the comprehension of humanoid life. It might have been some godlike entity, or a creature that swims through space, but whatever it was, it was not life as we know it.\n\n- What kind of creature was it? What did the character learn from the experience?\n- What happened to the creature afterwards? Has it been seen again?",
             [Attribute.Reason],
             [Skill.Science],
             "The character gains a Focus, which should reflect the character’s experiences with the entity. Examples include: Empathy, Philosophy, Xenobiology.",
@@ -132,7 +132,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "Serious Injury",
-            "The character was seriously hurt, and needed to spend a considerable amount of time recovering. What was happening when the character was injured? Who was responsible? What did the recovery entail? Did the character need a prosthesis or cybernetic afterwards?",
+            "The character was seriously hurt, and needed to spend a considerable amount of time recovering.\n\n- What was happening when the character was injured? Who was responsible?\n- What did the recovery entail? Did the character need a prosthesis or cybernetic afterwards?",
             [Attribute.Fitness],
             [Skill.Medicine],
             "The character gains a Focus, which should reflect the circumstances of the character’s injury, something that helped them through recovery, or something they took up after recovering. Examples include: Athletics, Art, or Philosophy.",
@@ -145,7 +145,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "Conflict with a Hostile Culture",
-            "The character was involved in a major battle with a hostile force, and is unlikely to forget the experience. Who was the enemy in this battle? Why did the battle occur? Was it fought in space, on the ground, or both? What did the character have to do to survive? Was the battle won or lost?",
+            "The character was involved in a major battle with a hostile force, and is unlikely to forget the experience.\n\n- Who was the enemy in this battle? Why did the battle occur? Was it fought in space, on the ground, or both?\n- What did the character have to do to survive? Was the battle won or lost?",
             [Attribute.Fitness],
             [Skill.Security],
             "The character gains a Focus, which should reflect skills they honed during the fighting. Examples include: Hand Phasers, Hand-to-Hand Combat, or Shipboard Tactical Systems.",
@@ -170,7 +170,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "Transporter Accident",
-            "The character suffered some manner of strange accident while using a Transporter. What happened to the character during the accident? Were there any lasting repercussions? How does the character feel about Transporters now?",
+            "The character suffered some manner of strange accident while using a Transporter.\n\n- What happened to the character during the accident? Were there any lasting repercussions?\n- How does the character feel about Transporters now?",
             [Attribute.Control],
             [Skill.Conn],
             "The character gains a Focus, which should reflect something they learned either because of the accident, or in the aftermath. Examples include: Transporters & Replicators, Small Craft, or Quantum Mechanics.",
@@ -183,7 +183,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "Dealing with a Plague",
-            "The character’s starship was assigned to provide aid to a world deal with an epidemic. What was the disease that was running rampant? What planet it was affecting? Did the character deal directly with the sick? How was the character involved?",
+            "The character’s starship was assigned to provide aid to a world deal with an epidemic.\n\n- What was the disease that was running rampant? What planet it was affecting?\n- Did the character deal directly with the sick? How was the character involved?",
             [Attribute.Insight],
             [Skill.Medicine],
             "The character gains a Focus, which should reflect how they helped during the crisis. Examples include: Infectious Diseases, Emergency Medicine, or Triage.",
@@ -196,7 +196,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "Betrayed Ideals for a Superior",
-            "The character was placed in a situation where they had to choose between a trusted superior and their own ideals, and chose to follow the superior. Who was the superior? What did they ask the character to do? How does the character feel now? What were the repercussions of this? Are the details of this event on record? Was the character right?",
+            "The character was placed in a situation where they had to choose between a trusted superior and their own ideals, and chose to follow the superior.\n\n- Who was the superior? What did they ask the character to do? How does the character feel now?\n- What were the repercussions of this? Are the details of this event on record? Was the character right?",
             [Attribute.Presence],
             [Skill.Command],
             "The character gains a Focus, reflecting the event and its aftermath. Examples include: Persuasion, Inspiration, Investigation.",
@@ -209,7 +209,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "Called Out a Superior",
-            "The character was placed in a situation where they had to choose between a trusted superior and their own ideals, and chose to follow their ideals. Who was the superior? What did they ask the character to do? How does the character feel now? What were the repercussions of this? Are the details of this event on record? Was the character right?",
+            "The character was placed in a situation where they had to choose between a trusted superior and their own ideals, and chose to follow their ideals.\n\n- Who was the superior? What did they ask the character to do? How does the character feel now?\n- What were the repercussions of this? Are the details of this event on record? Was the character right?",
             [Attribute.Reason],
             [Skill.Conn],
             "The character gains a Focus, reflecting the event and its aftermath. Examples include: Uniform Code of Justice, History, or Starfleet Protocol.",
@@ -222,7 +222,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "New Battle Strategy",
-            "In combat with a hostile force, the character devised a new strategy or tactic. Who was the battle against? Was it in space or on the ground? What was the strategy devised?",
+            "In combat with a hostile force, the character devised a new strategy or tactic.\n\n- Who was the battle against?\n- Was it in space or on the ground? What was the strategy devised?",
             [Attribute.Daring],
             [Skill.Security],
             "The character gains a Focus, reflecting their decisive battlefield leadership. Examples include: Combat Tactics, Hazard Awareness, or Lead by Example.",
@@ -235,7 +235,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "Learns Unique Language",
-            "The character encounters a species with an unusual form of communication, and learns to communicate with them. Who were the aliens the character encountered? Was the encounter tense, or peaceful? What method of communication do the aliens use? How did the character learn it?",
+            "The character encounters a species with an unusual form of communication, and learns to communicate with them.\n\n- Who were the aliens the character encountered? Was the encounter tense, or peaceful?\n- What method of communication do the aliens use? How did the character learn it?",
             [Attribute.Insight],
             [Skill.Science],
             "The character gains a Focus, reflecting what the character learned from the event. Examples include: Linguistics, Cultural Studies, or Negotiations.",
@@ -248,7 +248,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "Discovers an Artifact",
-            "During a survey mission, the character discovered a device or fragment of technology from a now-extinct civilization. What did this piece of technology do? Does it still function now? What is known about the civilization that made it?",
+            "During a survey mission, the character discovered a device or fragment of technology from a now-extinct civilization.\n\n- What did this piece of technology do? Does it still function now?\n- What is known about the civilization that made it?",
             [Attribute.Reason],
             [Skill.Engineering],
             "The character gains a Focus, reflecting the event and its aftermath. Examples include: Ancient Technology, Computers, Reverse Engineering.",
@@ -261,7 +261,7 @@ class CareerEvents {
         ),
         new CareerEventModel(
             "Special Commendation",
-            "During a crisis, the character saved the lives of several colleagues, helping them to safety.This earned the character a special commendation. What was the crisis? Why was the mission in danger? What were the repercussions of this? Are the details of this event on record?",
+            "During a crisis, the character saved the lives of several colleagues, helping them to safety.This earned the character a special commendation.\n\n- What was the crisis? Why was the mission in danger?\n- What were the repercussions of this? Are the details of this event on record?",
             [Attribute.Fitness],
             SkillsHelper.getSkills(),
             "The character gains a Focus, reflecting the event and its aftermath. Examples include: Athletics, Survival, or Emergency Medicine.",
