@@ -8,6 +8,7 @@ import { Rank } from "../helpers/ranks";
 import { Role } from "../helpers/roles";
 import { Skill } from "../helpers/skills";
 import { Species } from "../helpers/speciesEnum";
+import { TalentViewModel } from "../helpers/talents";
 import { Track } from "../helpers/trackEnum";
 import { EarlyOutlookModel } from "../helpers/upbringings";
 export const SET_CHARACTER = 'SET_CHARACTER';
@@ -37,6 +38,7 @@ export const SET_CHARACTER_TYPE = 'SET_CHARACTER_TYPE';
 export const ADD_CHARACTER_CAREER_EVENT = "ADD_CHARACTER_CAREER_EVENT";
 export const ADD_CHARACTER_BORG_IMPLANT = "ADD_CHARACTER_BORG_IMPLANT";
 export const REMOVE_CHARACTER_BORG_IMPLANT = "REMOVE_CHARACTER_BORG_IMPLANT";
+export const ADD_CHARACTER_TALENT = "ADD_CHARACTER_TALENT";
 export const ADD_CHARACTER_TALENT_FOCUS = "ADD_CHARACTER_TALENT_FOCUS";
 
 export enum StepContext {
@@ -133,6 +135,14 @@ export function addCharacterTalentFocus(focus: string, talent: string, index: nu
     let payload = { focus: focus, talent: talent, index: index };
     return {
        type: ADD_CHARACTER_TALENT_FOCUS,
+       payload: payload
+    }
+}
+
+export function addCharacterTalent(talent: TalentViewModel) {
+    let payload = { talent: talent.name };
+    return {
+       type: ADD_CHARACTER_TALENT,
        payload: payload
     }
 }

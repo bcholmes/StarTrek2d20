@@ -20,6 +20,8 @@ import { WithTranslation, withTranslation } from 'react-i18next';
 import InstructionText from '../components/instructionText';
 import ReactMarkdown from 'react-markdown';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
+import store from '../state/store';
+import { setCharacter } from '../state/characterActions';
 
 class StarfleetAcademyDetailsPage extends React.Component<WithTranslation, {}> {
     private _talent: TalentViewModel;
@@ -198,6 +200,7 @@ class StarfleetAcademyDetailsPage extends React.Component<WithTranslation, {}> {
         character.addTalent(this._talent);
 
         character.workflow.next();
+        store.dispatch(setCharacter(character));
         Navigation.navigateToPage(character.workflow.currentStep().page);
     }
 }

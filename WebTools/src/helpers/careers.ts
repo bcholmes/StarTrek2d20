@@ -4,6 +4,7 @@ import { CharacterType } from '../common/characterType';
 import { Career } from './careerEnum';
 import i18next from 'i18next';
 import { makeKey } from '../common/translationKey';
+import { Stereotype } from '../common/construct';
 
 
 export class CareerModel {
@@ -136,19 +137,23 @@ export class CareersHelper {
         }
     }
 
-    private getList() {
-        let list = this.getBaseList(character.type);
+    private getList(type: CharacterType) {
+        let list = this.getBaseList(type);
         return list.filter(c => c.id !== Career.Young || !character.hasTalent(ADVANCED_TEAM_DYNAMICS));
     }
 
-    getCareers() {
-        let careers: CareerModel[] = [];
-        let list = this.getList();
-        for (let career of list) {
-            careers.push(career);
-        }
+    getCareers(character: Character) {
+        if (character.stereotype === Stereotype.SoloCharacter) {
+            return this.getSoloCareerLengths();
+        } else {
+            let careers: CareerModel[] = [];
+            let list = this.getList(character.type);
+            for (let career of list) {
+                careers.push(career);
+            }
 
-        return careers;
+            return careers;
+        }
     }
 
     getSoloCareerLength(careerLength: Career) {
@@ -161,22 +166,17 @@ export class CareersHelper {
     }
 
     getCareer(career: Career, c: Character = character) {
-        var list = this.getBaseList(c.type);
-        return list[career];
+        if (character.stereotype === Stereotype.SoloCharacter) {
+            return this.getSoloCareerLength(career);
+        } else {
+            const list = this.getBaseList(c.type);
+            return list[career];
+        }
     }
 
     getCareerByTypeName(typeName: string, type: CharacterType) {
         const list = this.getBaseList(type);
         const filtered = list.filter(c => Career[c.id] === typeName);
         return filtered.length === 0 ? undefined : filtered[0];
-    }
-
-    generateCareer(): Career {
-        let list = this.getList();
-        var roll = Math.floor(Math.random() * list.length);
-        return list[roll].id;
-    }
-
-    applyCareer(career: Career) {
     }
 }

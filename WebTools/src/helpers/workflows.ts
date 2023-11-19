@@ -48,10 +48,6 @@ export class Workflow {
         return this.steps[this.currentStepIndex];
     }
 
-    public peekNextStep() {
-        return this.steps[this.currentStepIndex+1];
-    }
-
     public next() {
         this.currentStepIndex++;
     }

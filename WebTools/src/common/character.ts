@@ -324,7 +324,7 @@ export class Character extends Construct {
     }
 
     get attributes() {
-        if (this.stereotype === Stereotype.SoloCharacter) {
+        if (this.stereotype === Stereotype.SoloCharacter || (this.stereotype === Stereotype.MainCharacter && !this.legacyMode)) {
             let result = [];
             AttributesHelper.getAllAttributes().forEach(a => result.push(new CharacterAttribute(a, 7)));
             this.speciesStep?.attributes?.forEach(a => result[a].value = result[a].value + 1);
@@ -361,7 +361,7 @@ export class Character extends Construct {
     }
 
     get skills(): CharacterSkill[] {
-        if (this.stereotype === Stereotype.SoloCharacter) {
+        if (this.stereotype === Stereotype.SoloCharacter || (this.stereotype === Stereotype.MainCharacter && !this.legacyMode)) {
             let result = [];
             SkillsHelper.getSkills().forEach(s => result.push(new CharacterSkill(s, 1)));
             if (this.environmentStep?.discipline != null) {
@@ -961,6 +961,30 @@ export class Character extends Construct {
         let result = new Character();
         result.stereotype = Stereotype.SoloCharacter;
         return result;
+    }
+
+    public static totalAttributeSum(character: Character) {
+        if (character.type === CharacterType.Cadet) {
+            let reduction = 2;
+            if (character.careerEvents?.length) {
+                reduction -= character.careerEvents.length;
+            }
+            return character.age.attributeSum - reduction;
+        } else {
+            return character.age.attributeSum;
+        }
+    }
+
+    public static totalDisciplineSum(character: Character) {
+        if (character.type === CharacterType.Cadet) {
+            let reduction = 2;
+            if (character.careerEvents?.length) {
+                reduction -= character.careerEvents.length;
+            }
+            return character.age.disciplineSum - reduction;
+        } else {
+            return character.age.disciplineSum;
+        }
     }
 }
 

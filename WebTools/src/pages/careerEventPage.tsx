@@ -11,42 +11,34 @@ import { SkillsHelper } from '../helpers/skills';
 import { Window } from '../common/window';
 import { useTranslation } from 'react-i18next';
 import { Header } from '../components/header';
-import { StepContext } from "../state/characterActions";
+import { StepContext, addCharacterCareerEvent } from "../state/characterActions";
 import { hasSource } from "../state/contextFunctions";
 import { Source } from "../helpers/sources";
 import ReactMarkdown from "react-markdown";
+import store from "../state/store";
+import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "../solo/page/soloCharacterProperties";
+import { connect } from "react-redux";
 
 enum EventsTab {
     Standard,
     StandardAndUnofficial
 }
 
-interface ICareerEventProperties {
+interface ICareerEventProperties extends ISoloCharacterProperties {
     context: StepContext;
 }
 
-export const CareerEventPage: React.FC<ICareerEventProperties> = ({context}) => {
+const CareerEventPage: React.FC<ICareerEventProperties> = ({character, context}) => {
     const { t } = useTranslation();
     const [randomEvent, setRandomEvent] = useState(null);
     const [randomEventWithUnofficial, setRandomEventWithUnofficial] = useState(null);
     const [tab, setTab] = useState(EventsTab.Standard);
 
     const careerEventSelected = (careerEvent: CareerEventModel)=> {
-        let step = new CareerEventStep(careerEvent.roll);
-        if (careerEvent.attributes?.length === 1) {
-            step.attribute = careerEvent.attributes[0];
-        }
-        if (careerEvent.disciplines?.length === 1) {
-            step.discipline = careerEvent.disciplines[0];
-        }
-        character.careerEvents.push(step);
-        CareerEventsHelper.applyCareerEvent(careerEvent.roll, character.type);
+        store.dispatch(addCharacterCareerEvent(careerEvent.roll, context, careerEvent.attributes?.length === 1 ? careerEvent.attributes[0] : undefined,
+            careerEvent.disciplines?.length === 1 ? careerEvent.disciplines[0] : undefined));
 
-        if (context === StepContext.CareerEvent1) {
-            Navigation.navigateToPage(PageIdentity.CareerEvent1Details);
-        } else {
-            Navigation.navigateToPage(PageIdentity.CareerEvent2Details);
-        }
+        Navigation.navigateToPage(context === StepContext.CareerEvent2 ? PageIdentity.CareerEvent2Details : PageIdentity.CareerEvent1Details);
     }
 
     const toTableRow = (careerEvent: CareerEventModel, i: number) => {
@@ -144,3 +136,5 @@ export const CareerEventPage: React.FC<ICareerEventProperties> = ({context}) => 
 
         </div>);
 }
+
+export default connect(soloCharacterMapStateToProperties)(CareerEventPage);

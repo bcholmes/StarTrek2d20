@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character} from '../common/character';
+import {Character, character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import {CareerModel, CareersHelper} from '../helpers/careers';
@@ -14,8 +14,17 @@ import { withTranslation, WithTranslation } from 'react-i18next';
 import { Header } from '../components/header';
 import { ValueRandomTable } from '../solo/table/valueRandomTable';
 import { Career } from '../helpers/careerEnum';
+import store from '../state/store';
+import { addCharacterTalent } from '../state/characterActions';
+import { soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { connect } from 'react-redux';
 
-class CareerDetailsPage extends React.Component<WithTranslation, {}> {
+interface ICareerDetailsProperties extends WithTranslation {
+
+    character: Character;
+}
+
+class CareerDetailsPage extends React.Component<ICareerDetailsProperties, {}> {
     private _talent: TalentViewModel;
 
     constructor(props) {
@@ -58,7 +67,7 @@ class CareerDetailsPage extends React.Component<WithTranslation, {}> {
     }
 
     renderMainBody(career: CareerModel) {
-        const { t } = this.props;
+        const { t, character } = this.props;
 
         let textDescription = t('Value.careerLength.experienced.text');
         if (career.id === Career.Young) {
@@ -107,18 +116,16 @@ class CareerDetailsPage extends React.Component<WithTranslation, {}> {
 
     private onTalentSelected(talent: TalentViewModel) {
         this._talent = talent;
-        this.forceUpdate();
+        store.dispatch(addCharacterTalent(talent));
     }
 
     private onNext() {
         if (!this._talent) {
             Dialog.show("You must select a Talent before proceeding.");
         } else {
-            character.addTalent(this._talent);
-            character.workflow.next();
             Navigation.navigateToPage(PageIdentity.CareerEvent1);
         }
     }
 }
 
-export default withTranslation()(CareerDetailsPage);
+export default connect(soloCharacterMapStateToProperties)(withTranslation()(CareerDetailsPage));

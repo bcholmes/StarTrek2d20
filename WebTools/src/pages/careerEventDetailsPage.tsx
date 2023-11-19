@@ -9,7 +9,7 @@ import {Dialog} from '../components/dialog';
 import {AttributeView} from '../components/attribute';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { CharacterType } from '../common/characterType';
-import { StepContext } from '../state/characterActions';
+import { StepContext, setCharacterFinishingTouches, setCharacterFocus } from '../state/characterActions';
 import DisciplineListComponent, { IDisciplineController } from '../components/disciplineListComponent';
 import { Skill } from '../helpers/skills';
 import { IAttributeController } from '../components/attributeController';
@@ -19,8 +19,11 @@ import AttributeListComponent from '../components/attributeListComponent';
 import { makeKey } from '../common/translationKey';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 import ReactMarkdown from 'react-markdown';
+import store from '../state/store';
+import { connect } from 'react-redux';
+import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 
-interface ICareerEventDetailsProperties {
+interface ICareerEventDetailsProperties extends ISoloCharacterProperties{
     context: StepContext;
 }
 
@@ -129,7 +132,7 @@ function useForceUpdate() {
     return () => setValue(value => value + 1);
 }
 
-const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({context}) => {
+const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({character, context}) => {
     const { t } = useTranslation();
     const forceUpdate = useForceUpdate();
 
@@ -148,15 +151,8 @@ const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({contex
         } else if (!careerEventStep.focus) {
             Dialog.show(t('CareerEventDetails.errorFocus'));
         } else {
-
-            character.addFocus(careerEventStep.focus);
-
-            if (trait) {
-                character.addTrait(trait);
-            }
-
             if (context === StepContext.CareerEvent2 || character.type === CharacterType.Cadet) {
-                character.workflow.next();
+                store.dispatch(setCharacterFinishingTouches());
                 Navigation.navigateToPage(PageIdentity.AttributesAndDisciplines);
             } else {
                 Navigation.navigateToPage(PageIdentity.CareerEvent2);
@@ -194,7 +190,7 @@ const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({contex
                         <Header level={2} className="mb-3">{t('Construct.other.focus')}</Header>
                         <InputFieldAndLabel id="focus" labelName={t('Construct.other.focus')}
                             value={careerEventStep?.focus || ""}
-                            onChange={(f) => careerEventStep.focus = f} />
+                            onChange={(f) => store.dispatch(setCharacterFocus(f, context))} />
                         <div className="mt-3 text-white"><b>{t('Common.text.suggestions')}:</b> {careerEvent.localizedFocusSuggestion}</div>
                     </div>
                     {careerEvent.traitDescription !== null
@@ -222,4 +218,4 @@ const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({contex
 
 }
 
-export default CareerEventDetailsPage;
+export default connect(soloCharacterMapStateToProperties)(CareerEventDetailsPage);
