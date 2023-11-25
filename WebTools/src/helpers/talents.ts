@@ -865,7 +865,7 @@ export class Talents {
                 1),
             new TalentModel(
                 "Combat Medic",
-                "The character’s abilities in field medicine and battle triage are exceptional and their presence inspires allies to continue any fight. Whenever the character attempts the First Aid Task, they may spend one Momentum to cause the recipient to regain points of Stress equal to the numaber of the character’s Medicine Discipline. A character may only regain Stress in this way once per scene.",
+                "The character’s abilities in field medicine and battle triage are exceptional and their presence inspires allies to continue any fight. Whenever the character attempts the First Aid Task, they may spend one Momentum to cause the recipient to regain points of Stress equal to the number of the character’s Medicine Discipline. A character may only regain Stress in this way once per scene.",
                 [new DisciplinePrerequisite(Skill.Security, 2), new DisciplinePrerequisite(Skill.Medicine, 2), new SourcePrerequisite(Source.OperationsDivision)],
                 1),
             new TalentModel(
@@ -971,7 +971,7 @@ export class Talents {
                 1),
             new TalentModel(
                 "Maintenance Specialist",
-                "You are an expert in conducting and directing normal, dayto-day, maintenance and repairs on Starfleet equipment. Whenever they are required to perform maintenance, reduce the Difficulty by 1, to a minimum of 1, and halve the time required to complete the Task.",
+                "You are an expert in conducting and directing normal, day-to-day, maintenance and repairs on Starfleet equipment. Whenever they are required to perform maintenance, reduce the Difficulty by 1, to a minimum of 1, and halve the time required to complete the Task.",
                 [new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.OperationsDivision)],
                 1),
             new TalentModel(
@@ -1685,7 +1685,7 @@ export class Talents {
                 "Argrathi"),
             new TalentModel(
                 "Mind Games",
-                "The Argrathi’s memory technology is used in more ways than just their penal system. From education to entertainment, the average Argrathi is exposed to the effects of this technology at a very young age and learns how to tell when their memory has been altered or when they are under the effect of mindaltering abilities or powers. An Argrathi receives a +1 bonus to all rolls when attempting to resist these effects or uncover whether they have been affected at all. ",
+                "The Argrathi’s memory technology is used in more ways than just their penal system. From education to entertainment, the average Argrathi is exposed to the effects of this technology at a very young age and learns how to tell when their memory has been altered or when they are under the effect of mind-altering abilities or powers. An Argrathi receives a +1 bonus to all rolls when attempting to resist these effects or uncover whether they have been affected at all. ",
                 [new SourcePrerequisite(Source.GammaQuadrant), new SpeciesPrerequisite(Species.Argrathi, false)],
                 1,
                 "Argrathi"),
@@ -1937,7 +1937,7 @@ export class Talents {
                 "Talaxian"),
             new TalentModel(
                 "Deep Determination",
-                "Turei have a well-earned reputation for becoming deeply committed to a particular goal – a singleminded determination to achieve success. When a Character with this Talent succeeds at a Task where they could have spent a point of Determination, but chose not to, they may spend 3 Momentum to gain a point of Determination. This Talent may only be used once per mission.",
+                "Turei have a well-earned reputation for becoming deeply committed to a particular goal – a single-minded determination to achieve success. When a Character with this Talent succeeds at a Task where they could have spent a point of Determination, but chose not to, they may spend 3 Momentum to gain a point of Determination. This Talent may only be used once per mission.",
                 [new SourcePrerequisite(Source.DeltaQuadrant), new SpeciesPrerequisite(Species.Turei, true)],
                 1,
                 "Turei"),

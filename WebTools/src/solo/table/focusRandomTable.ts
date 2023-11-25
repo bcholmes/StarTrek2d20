@@ -371,7 +371,7 @@ const FocusEngineeringRandomTable = () => {
             case 17:
                 return "Transporters/Replicators";
             case 18:
-                return "Toubleshooting";
+                return "Troubleshooting";
             case 19:
                 return "Warp Core Mechanics";
             case 20:
@@ -390,7 +390,7 @@ const FocusScienceRandomTable = () => {
             case 1:
                 return "Animal Behavior";
             case 2:
-                return "Antropology";
+                return "Anthropology";
             case 3:
                 return "Archaeology";
             case 4:

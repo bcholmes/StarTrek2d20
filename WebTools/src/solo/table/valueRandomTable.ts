@@ -378,7 +378,7 @@ const EngineeringValuesTable = () => {
         case 38:
             return "Simplicity is the ultimate sophistication";
         case 39:
-            return "Solutions come from adapability";
+            return "Solutions come from adaptability";
         case 40:
             return "The best way to predict the future is to create it";
         case 41:
@@ -461,7 +461,7 @@ const ScienceValuesTable = () => {
         case 18:
             return "Embrace the beauty of mathematics";
         case 19:
-            return "We are all made of starstuff";
+            return "We are all made of star-stuff";
         case 20:
             return "The science of today is the technology of tomorrow";
         case 21:
@@ -753,11 +753,11 @@ const SecurityValuesTable = () => {
         case 41:
             return "The Federation's safety is my responsibility";
         case 42:
-            return "The front line is a priviledge";
+            return "The front line is a privilege";
         case 43:
             return "The Prime Directive is absolute";
         case 44:
-            return "There is no substitute for vigilence";
+            return "There is no substitute for vigilance";
         case 45:
             return "To serve and protect";
         case 46:
@@ -790,7 +790,7 @@ const SecurityValuesTable = () => {
             return "Your safety is my priority";
         case 60:
         default:
-            return "A well-timed Vulcan deathgrip solves a lot of problems";
+            return "A well-timed Vulcan death grip solves a lot of problems";
     }
 }
 
@@ -964,11 +964,11 @@ const GeneralValuesTable = () => {
         case 18:
             return "Seeking out new life, protecting is when found";
         case 19:
-            return "The universe is full of wonderous complexity";
+            return "The universe is full of wondrous complexity";
         case 20:
             return "Survival of the fittest";
         case 21:
-            return "Boldy going where no one has gone before";
+            return "Boldly going where no one has gone before";
         case 22:
             return "A life without risk is no life at all";
         case 23:
@@ -1006,7 +1006,7 @@ const GeneralValuesTable = () => {
         case 39:
             return "Sometimes, the end justify the means";
         case 40:
-            return "Evolution is nature's experiement";
+            return "Evolution is nature's experiment";
         case 41:
             return "In all things, balance";
         case 42:
@@ -1044,7 +1044,7 @@ const GeneralValuesTable = () => {
         case 58:
             return "One must always have faith in oneself";
         case 59:
-            return "Self-knowledge is the beginnin of all wisdom";
+            return "Self-knowledge is the beginning of all wisdom";
         case 60:
         default:
             return "Imagination is more important than knowledge";
