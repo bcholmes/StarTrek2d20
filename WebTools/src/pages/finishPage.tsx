@@ -143,7 +143,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
 
     const renderRank = () => {
 
-        if (character.isCivilian() || character.age.isChild()) {
+        if (character.isCivilian() || character.age.isChild) {
             return null;
         } else if (character.type === CharacterType.AlliedMilitary && character.typeDetails
             && (character.typeDetails as AlliedMilitaryDetails).alliedMilitary.type === AlliedMilitaryType.Other) {

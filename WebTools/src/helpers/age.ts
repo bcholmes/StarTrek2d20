@@ -39,11 +39,11 @@ export class Age {
         return this.name;
     }
 
-    public isAdult() {
+    get isAdult() {
         return this.name === "Adult";
     }
-    public isChild() {
-        return !this.isAdult();
+    get isChild() {
+        return !this.isAdult;
     }
 }
 

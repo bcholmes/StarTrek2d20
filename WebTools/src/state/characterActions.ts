@@ -139,8 +139,8 @@ export function addCharacterTalentFocus(focus: string, talent: string, index: nu
     }
 }
 
-export function addCharacterTalent(talent: TalentViewModel) {
-    let payload = { talent: talent.name };
+export function addCharacterTalent(talent: TalentViewModel, context: StepContext) {
+    let payload = { talent: talent.name, context: context };
     return {
        type: ADD_CHARACTER_TALENT,
        payload: payload

@@ -2,7 +2,7 @@
 import {Character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
-import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_EXPANDED_PROGRAM, TALENT_NAME_VISIT_EVERY_STAR, TalentsHelper, TalentViewModel } from '../helpers/talents';
+import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_EXPANDED_PROGRAM, TALENT_NAME_VISIT_EVERY_STAR, TalentsHelper } from '../helpers/talents';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import ValueInput from '../components/valueInputWithRandomOption';
@@ -20,11 +20,6 @@ import AttributeListComponent from '../components/attributeListComponent';
 import DisciplineListComponent from '../components/disciplineListComponent';
 import store from '../state/store';
 import { addCharacterTalent, setCharacterValue, StepContext } from '../state/characterActions';
-
-interface IPageState {
-    showExcessAttrDistribution: boolean;
-    showExcessSkillDistribution: boolean;
-}
 
 const AttributesAndDisciplinesPage: React.FC<ISoloCharacterProperties> = ({character})  => {
 
@@ -89,7 +84,7 @@ const AttributesAndDisciplinesPage: React.FC<ISoloCharacterProperties> = ({chara
             <Header level={2}>TALENTS</Header>
             <SingleTalentSelectionList talents={talents} construct={character}
                 onSelection={talent => {
-                    store.dispatch(addCharacterTalent(talent));
+                    store.dispatch(addCharacterTalent(talent, StepContext.FinishingTouches));
                     setTalentSelected(talent);
                 } } />
         </div>)

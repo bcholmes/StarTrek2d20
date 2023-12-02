@@ -139,8 +139,8 @@ class History extends React.Component<IHistoryProperties, {}> {
                 case PageIdentity.UpbringingDetails: return character.type === CharacterType.KlingonWarrior ? "Caste Details" : "Upbringing Details";
                 case PageIdentity.ChildEducationPage: return "Education";
                 case PageIdentity.ChildEducationDetailsPage: return "Education Details";
-                case PageIdentity.StarfleetAcademy: return character.type === CharacterType.Starfleet ? "Starfleet Academy" : "Training";
-                case PageIdentity.StarfleetAcademyDetails: return character.type === CharacterType.Starfleet ? "Starfleet Academy Details" : "Training Details";
+                case PageIdentity.Education: return character.type === CharacterType.Starfleet ? "Starfleet Academy" : "Training";
+                case PageIdentity.EducationDetails: return character.type === CharacterType.Starfleet ? "Starfleet Academy Details" : "Training Details";
                 case PageIdentity.ChildCareer: return "Career";
                 case PageIdentity.CadetCareer: return "Career";
                 case PageIdentity.CadetSeniority: return "Cadet Seniority";

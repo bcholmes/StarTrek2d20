@@ -33,14 +33,14 @@ class ValueInput extends React.Component<IValueInputProperties, {}> {
             case Value.Track:
                 if (character.type === CharacterType.Starfleet) {
                     description = t('Value.starfleetTraining.text')
-                } else if (character.age.isChild()) {
+                } else if (character.age.isChild) {
                     description = t('Value.childEducation.text')
                 } else {
                     description = t('Value.otherTraining.text')
                 }
                 break;
             case Value.Career:
-                if (character.age.isChild() || character.type === CharacterType.Cadet) {
+                if (character.age.isChild || character.type === CharacterType.Cadet) {
                     description = CareersHelper.instance.getCareer(Career.Young).localizedDescription;
                 } else {
                     description = CareersHelper.instance.getCareer(character.career).localizedValueDescription;
@@ -63,10 +63,14 @@ class ValueInput extends React.Component<IValueInputProperties, {}> {
 
         switch (this.props.value) {
             case Value.Environment:
-                character.environmentValue = value;
+                if (character.environmentStep != null) {
+                    character.environmentStep.value = value ?? "";
+                }
                 break;
             case Value.Track:
-                character.trackValue = value;
+                if (character.educationStep != null) {
+                    character.educationStep.value = value ?? "";
+                }
                 break;
             case Value.Career:
                 character.careerValue = value;

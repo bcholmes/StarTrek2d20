@@ -663,10 +663,9 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
     }
 
     fillValues(form: PDFForm, character: Character) {
-        this.fillField(form, 'Value 1', character.environmentValue);
-        this.fillField(form, 'Value 2', character.trackValue);
-        this.fillField(form, 'Value 3', character.careerValue);
-        this.fillField(form, 'Value 4', character.finishValue);
+        character.values.forEach((v, i) => {
+            this.fillField(form, 'Value ' + (i + 1), v);
+        });
     }
 }
 

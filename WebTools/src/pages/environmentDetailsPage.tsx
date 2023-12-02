@@ -37,7 +37,7 @@ class EnvironmentDetailsPage extends React.Component<WithTranslation, {}> {
     }
 
     onValueChanged(value: string) {
-        character.environmentValue = value;
+        character.environmentStep.value = value;
         this.forceUpdate();
     }
 
@@ -80,7 +80,7 @@ class EnvironmentDetailsPage extends React.Component<WithTranslation, {}> {
                 <div className="row">
                     <div className="col-md-6 my-3">
                         <Header level={2} className="mb-3">{t('Construct.other.value')}</Header>
-                        <ValueInput value={character.environmentValue} onValueChanged={(value) => this.onValueChanged(value)}
+                        <ValueInput value={character.environmentStep?.value ?? ""} onValueChanged={(value) => this.onValueChanged(value)}
                             onRandomClicked={() => this.randomValue()} textDescription={t('Value.environment.text')}
                         />
                     </div>

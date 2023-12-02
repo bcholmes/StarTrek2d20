@@ -142,6 +142,8 @@ class UpbringingDetailsPage extends React.Component<WithTranslation, IUpbringing
         UpbringingsHelper.applyUpbringing(character.upbringingStep.upbringing, this._accepted);
         character.workflow.next();
         Navigation.navigateToPage(character.workflow.currentStep().page);
+
+
     }
 }
 

@@ -90,7 +90,11 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
     }
 
     const isModifiedCharacterCreationPage = () => {
-        return activePage === PageIdentity.CareerEvent1 ||
+        return activePage === PageIdentity.Education ||
+            activePage === PageIdentity.EducationDetails ||
+            activePage === PageIdentity.Career ||
+            activePage === PageIdentity.CareerDetails ||
+            activePage === PageIdentity.CareerEvent1 ||
             activePage === PageIdentity.CareerEvent1Details ||
             activePage === PageIdentity.CareerEvent2 ||
             activePage === PageIdentity.CareerEvent2Details ||
@@ -98,7 +102,6 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
             activePage === PageIdentity.ExtraTalentDetails ||
             activePage === PageIdentity.Finish;
     }
-
 
     const showFeedbackPage = () => {
         window.open("https://github.com/bcholmes/StarTrek2d20/discussions", "_blank");

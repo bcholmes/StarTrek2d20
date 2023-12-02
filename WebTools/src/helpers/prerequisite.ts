@@ -208,7 +208,7 @@ export class AnyEraPrerequisite implements IConstructPrerequisite<Construct> {
 export class ChildPrerequisite implements IConstructPrerequisite<Character> {
     isPrerequisiteFulfilled(character: Character): boolean {
         return character.type === CharacterType.Child ||
-            character.age.isChild();
+            character.age.isChild;
     }
     describe(): string {
         return "";
@@ -217,7 +217,7 @@ export class ChildPrerequisite implements IConstructPrerequisite<Character> {
 
 export class AdultPrerequisite implements IConstructPrerequisite<Character> {
     isPrerequisiteFulfilled(character: Character): boolean {
-        return character.age.isAdult();
+        return character.age.isAdult;
     }
     describe(): string {
         return "";

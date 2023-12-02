@@ -13,6 +13,8 @@ import { Header } from '../components/header';
 import { hasSource } from '../state/contextFunctions';
 import { Source } from '../helpers/sources';
 import InstructionText from '../components/instructionText';
+import store from '../state/store';
+import { setCharacter } from '../state/characterActions';
 
 enum StarfleetTrackTab {
 
@@ -36,7 +38,8 @@ export const StarfleetAcademyPage = () => {
         const enlisted = (tab === StarfleetTrackTab.Enlisted);
         character.educationStep = new EducationStep(track.id, enlisted);
         TracksHelper.instance.applyTrack(track.id, character.type);
-        Navigation.navigateToPage(PageIdentity.StarfleetAcademyDetails);
+        store.dispatch(setCharacter(character));
+        Navigation.navigateToPage(PageIdentity.EducationDetails);
     }
 
     const toTableRow = (track: TrackModel, i: number) => {

@@ -114,6 +114,13 @@ export class SelectedTalent {
         this.implants = [];
         this.focuses = [];
     }
+
+    copy() {
+        let result = new SelectedTalent(this.talent);
+        result.implants = [...this.implants];
+        result.focuses = [...this.focuses];
+        return result;
+    }
 }
 
 class Memento {
@@ -124,6 +131,9 @@ class Memento {
         this.page = page;
         this.character = character;
     }
+}
+
+export class SupportingStep {
 }
 
 export class SpeciesStep {
@@ -170,6 +180,7 @@ export class EnvironmentStep {
     public readonly otherSpecies?: Species;
     public attribute?: Attribute;
     public discipline?: Skill;
+    public value?: string;
 
     constructor(environment: Environment, otherSpecies?: Species) {
         this.environment = environment;
@@ -185,6 +196,8 @@ export class EducationStep {
     public disciplines: Skill[];
     public decrementDiscipline: Skill;
     public focuses: string[];
+    public talent?: SelectedTalent;
+    public value?: string;
 
     constructor(track?: Track, enlisted: boolean = false) {
         this.track = track;
@@ -219,6 +232,7 @@ export class CareerEventStep {
 
 export class NpcGenerationStep {
     public enlisted: boolean;
+    public values: string[] = [];
 }
 
 export class Character extends Construct {
@@ -234,7 +248,7 @@ export class Character extends Construct {
     public _skills: CharacterSkill[] = [];
     public traits: string[];
     public additionalTraits: string;
-    public talents: SelectedTalent[];
+    public _talents: SelectedTalent[];
     public age: Age;
     public lineage?: string;
     public house?: string;
@@ -245,8 +259,6 @@ export class Character extends Construct {
     public jobAssignment?: string;
     public assignedShip?: string;
     public secondaryRole?: Role;
-    public environmentValue?: string;
-    public trackValue?: string;
     public careerValue?: string;
     public finishValue?: string;
     public _focuses: string[];
@@ -261,6 +273,7 @@ export class Character extends Construct {
     public upbringingStep?: UpbringingStep;
     public finishingStep?: FinishingStep;
     public npcGenerationStep?: NpcGenerationStep;
+    public supportingStep?: SupportingStep;
 
     public legacyMode: boolean;
 
@@ -280,7 +293,7 @@ export class Character extends Construct {
         this._mementos = [];
         this.traits = [];
         this._focuses = [];
-        this.talents = [];
+        this._talents = [];
         this.careerEvents = [];
         this.age = AgeHelper.getAdultAge();
     }
@@ -321,6 +334,14 @@ export class Character extends Construct {
 
     get mementos() {
         return this._mementos;
+    }
+
+    get talents() {
+        let result = [...this._talents];
+        if (this.educationStep?.talent != null) {
+            result.push(this.educationStep.talent);
+        }
+        return result;
     }
 
     get attributes() {
@@ -424,7 +445,7 @@ export class Character extends Construct {
 
     get equipment() {
         let result = [];
-        if (this.age.isChild()) {
+        if (this.age.isChild) {
             result.push("Clothing");
         } else if (this.isCivilian()) {
             result.push("Clothing");
@@ -473,11 +494,11 @@ export class Character extends Construct {
 
     get values() {
         let result = [];
-        if (this.environmentValue) {
-            result.push(this.environmentValue);
+        if (this.environmentStep?.value) {
+            result.push(this.environmentStep.value);
         }
-        if (this.trackValue) {
-            result.push(this.trackValue);
+        if (this.educationStep?.value) {
+            result.push(this.educationStep.value);
         }
         if (this.careerValue) {
             result.push(this.careerValue);
@@ -548,7 +569,7 @@ export class Character extends Construct {
             result.push(PersonalWeapons.instance.phaser1);
         } else if (this.isBajoranMilitia() || this.isCardassianUnion()) {
             result.push(PersonalWeapons.instance.phaser2);
-        } else if (this.age.isAdult()) {
+        } else if (this.age.isAdult) {
             if (this.isKlingon()) {
                 result.push(PersonalWeapons.instance.dkTagh);
             }
@@ -728,7 +749,7 @@ export class Character extends Construct {
     }
 
     addTalent(talentModel: TalentViewModel) {
-        this.talents.push(new SelectedTalent(talentModel.name));
+        this._talents.push(new SelectedTalent(talentModel.name));
     }
 
     hasTalent(name: string) {
@@ -761,7 +782,7 @@ export class Character extends Construct {
                 return this._focuses;
             } else {
                 this.talents.forEach(t => {
-                    t.focuses.filter(f => f != null && f.trim() != "").forEach(f => result.push(f));
+                    t.focuses.filter(f => f != null && f.trim() !== "").forEach(f => result.push(f));
                 });
                 return result;
             }
@@ -810,15 +831,30 @@ export class Character extends Construct {
     }
 
     addValue(value: string) {
-        if (this.environmentValue == null) {
-            this.environmentValue = value;
-        } else if (this.trackValue == null) {
-            this.trackValue = value;
-        } else if (this.careerValue == null) {
-            this.careerValue = value;
-        } else if (this.finishValue == null) {
-            this.finishValue = value;
+        if (this.stereotype === Stereotype.Npc) {
+            if (this.npcGenerationStep == null) {
+                this.npcGenerationStep = new NpcGenerationStep();
+            }
+            this.npcGenerationStep.values.push(value);
+        } else {
+            if (this.environmentStep != null && this.environmentStep?.value == null) {
+                this.environmentStep.value = value;
+            } else if (this.educationStep != null && this.educationStep?.value == null) {
+                this.educationStep.value = value;
+            } else if (this.careerValue == null) {
+                this.careerValue = value;
+            } else if (this.finishValue == null) {
+                this.finishValue = value;
+            }
         }
+    }
+
+    get isJuniorCadet() {
+        return this.type === CharacterType.Cadet && this.careerEvents.length === 0;
+    }
+
+    get isSeniorCadet() {
+        return this.type === CharacterType.Cadet && this.careerEvents.length > 0;
     }
 
     update() {
@@ -859,12 +895,7 @@ export class Character extends Construct {
             character._skills[s.skill].skill = s.skill;
             character._skills[s.skill].expertise = s.expertise;
         });
-        character.talents = this.talents.map(t => {
-            let result = new SelectedTalent(t.talent);
-            result.implants = [...t.implants];
-            result.focuses = [...t.focuses];
-            return result;
-        });
+        character._talents = this._talents.map(t => t.copy());
         this.traits.forEach(t => {
             character.traits.push(t);
         });
@@ -894,6 +925,7 @@ export class Character extends Construct {
             character.environmentStep = new EnvironmentStep(this.environmentStep.environment, this.environmentStep.otherSpecies);
             character.environmentStep.attribute = this.environmentStep.attribute;
             character.environmentStep.discipline = this.environmentStep.discipline;
+            character.environmentStep.value = this.environmentStep.value;
         }
         if (this.upbringingStep) {
             character.upbringingStep = new UpbringingStep(this.upbringingStep.upbringing);
@@ -908,14 +940,14 @@ export class Character extends Construct {
             character.educationStep.primaryDiscipline = this.educationStep.primaryDiscipline;
             character.educationStep.decrementDiscipline = this.educationStep.decrementDiscipline;
             character.educationStep.focuses = [...this.educationStep.focuses];
+            character.educationStep.talent = this.educationStep.talent ? this.educationStep.talent.copy() : undefined;
+            character.educationStep.value = this.educationStep.value;
         }
         if (this.finishingStep) {
             character.finishingStep = new FinishingStep();
             character.finishingStep.attributes = [...this.finishingStep.attributes];
             character.finishingStep.disciplines = [...this.finishingStep.disciplines];
         }
-        character.environmentValue = this.environmentValue;
-        character.trackValue = this.trackValue;
         character.careerValue = this.careerValue;
         character.finishValue = this.finishValue;
         this._focuses.forEach(f => {
@@ -931,7 +963,7 @@ export class Character extends Construct {
     }
 
     public static maxAttribute(character) {
-        if (character.age.isChild()) {
+        if (character.age.isChild) {
             return 10;
         } else if (character.isYoung() || character.type === CharacterType.Cadet) {
             return 11;
@@ -941,7 +973,7 @@ export class Character extends Construct {
     }
 
     public static maxDiscipline(character) {
-        if (character.age.isChild()) {
+        if (character.age.isChild) {
             return 3;
         } else if (character.isYoung() || character.type === CharacterType.Cadet) {
             return 4;

@@ -1,5 +1,4 @@
 ﻿import { useState } from "react";
-import {CareerEventStep, character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import {CareerEventModel, CareerEventsHelper} from '../helpers/careerEvents';

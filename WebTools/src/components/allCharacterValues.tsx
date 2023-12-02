@@ -23,7 +23,7 @@ const AllCharacterValues: React.FC<ISoloCharacterProperties> = ({character}) => 
     }
 
     const { t } = useTranslation();
-    if (character.age.isChild() || character.type === CharacterType.Cadet) {
+    if (character.age.isChild || character.type === CharacterType.Cadet) {
         return (<div className="my-5">
                 <Header level={2}>{t('Construct.other.values')}</Header>
                 <p>
@@ -33,11 +33,11 @@ const AllCharacterValues: React.FC<ISoloCharacterProperties> = ({character}) => 
                 </p>
                 <div className="row">
                     <div className="col-lg-6 py-2">
-                        <ValueInput value={character.environmentValue} onValueChanged={(value) => onValueChanged(value, StepContext.Environment)}
+                        <ValueInput value={character.environmentStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value, StepContext.Environment)}
                             onRandomClicked={() => randomValue(StepContext.Environment)} textDescription={t('Value.environment.text')} />
                     </div>
                     <div className="col-lg-6 py-2">
-                    <ValueInput value={character.trackValue} onValueChanged={(value) => onValueChanged(value, StepContext.Education)}
+                    <ValueInput value={character.educationStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value, StepContext.Education)}
                             onRandomClicked={() => randomValue(StepContext.Education)} textDescription={t('Value.starfleetTraining.text')} />
                     </div>
                 </div>
@@ -65,11 +65,11 @@ const AllCharacterValues: React.FC<ISoloCharacterProperties> = ({character}) => 
                 </p>
                 <div className="row">
                     <div className="col-lg-6 py-2">
-                        <ValueInput value={character.environmentValue} onValueChanged={(value) => onValueChanged(value, StepContext.Environment)}
+                        <ValueInput value={character.environmentStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value, StepContext.Environment)}
                                 onRandomClicked={() => randomValue(StepContext.Environment)} textDescription={t('Value.environment.text')} />
                     </div>
                     <div className="col-lg-6 py-2">
-                        <ValueInput value={character.trackValue} onValueChanged={(value) => onValueChanged(value, StepContext.Education)}
+                        <ValueInput value={character.educationStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value, StepContext.Education)}
                                     onRandomClicked={() => randomValue(StepContext.Education)} textDescription={educationText} />
                     </div>
                 </div>

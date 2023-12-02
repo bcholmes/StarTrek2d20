@@ -11,9 +11,9 @@ export class CareerModel {
     readonly id: Career;
     private key: string;
     private name: string;
-    readonly talent: TalentViewModel[];
+    readonly talent?: TalentViewModel;
 
-    constructor(id: Career, key: string, name: string, talent: TalentViewModel[]) {
+    constructor(id: Career, key: string, name: string, talent?: TalentViewModel) {
         this.id = id;
         this.key = key;
         this.name = name;
@@ -48,19 +48,18 @@ export class CareersHelper {
             Career.Young,
             "core",
             "Young Officer",
-            [ToViewModel(TalentsHelper.getTalent("Untapped Potential"))]
+            ToViewModel(TalentsHelper.getTalent("Untapped Potential"))
         ),
         new CareerModel(
             Career.Experienced,
             "core",
-            "Experienced Officer",
-            []
+            "Experienced Officer"
         ),
         new CareerModel(
             Career.Veteran,
             "core",
             "Veteran Officer",
-            [ToViewModel(TalentsHelper.getTalent("Veteran"))]
+            ToViewModel(TalentsHelper.getTalent("Veteran"))
         ),
     ];
 
@@ -69,19 +68,18 @@ export class CareersHelper {
             Career.Young,
             "civilian",
             "Young",
-            [ToViewModel(TalentsHelper.getTalent("Untapped Potential"))]
+            ToViewModel(TalentsHelper.getTalent("Untapped Potential"))
         ),
         new CareerModel(
             Career.Experienced,
             "civilian",
-            "Experienced",
-            []
+            "Experienced"
         ),
         new CareerModel(
             Career.Veteran,
             "civilian",
             "Veteran",
-            [ToViewModel(TalentsHelper.getTalent("Veteran"))]
+            ToViewModel(TalentsHelper.getTalent("Veteran"))
         ),
     ];
 
@@ -90,19 +88,18 @@ export class CareersHelper {
             Career.Young,
             "klingon",
             "Young Warrior",
-            [ToViewModel(TalentsHelper.getTalent("Untapped Potential"))]
+            ToViewModel(TalentsHelper.getTalent("Untapped Potential"))
         ),
         new CareerModel(
             Career.Experienced,
             "klingon",
-            "Experienced Warrior",
-            []
+            "Experienced Warrior"
         ),
         new CareerModel(
             Career.Veteran,
             "klingon",
             "Veteran Warrior",
-            [ToViewModel(TalentsHelper.getTalent("Veteran"))]
+            ToViewModel(TalentsHelper.getTalent("Veteran"))
         ),
     ];
 
@@ -111,19 +108,18 @@ export class CareersHelper {
             Career.Young,
             "solo",
             "Novice",
-            [ToViewModel(TalentsHelper.getTalent("Untapped Potential"))]
+            ToViewModel(TalentsHelper.getTalent("Untapped Potential"))
         ),
         new CareerModel(
             Career.Experienced,
             "solo",
-            "Experienced",
-            []
+            "Experienced"
         ),
         new CareerModel(
             Career.Veteran,
             "solo",
             "Veteran",
-            [ToViewModel(TalentsHelper.getTalent("Veteran"))]
+            ToViewModel(TalentsHelper.getTalent("Veteran"))
         ),
     ];
 

@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character, CharacterRank, SpeciesStep } from '../common/character';
+import {character, CharacterRank, SpeciesStep, SupportingStep } from '../common/character';
 import {CharacterType, CharacterTypeModel } from '../common/characterType';
 import {SpeciesHelper} from '../helpers/species';
 import {DropDownElement, DropDownInput, DropDownSelect} from '../components/dropDownInput';
@@ -51,10 +51,7 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
 
         character.speciesStep = new SpeciesStep(Species.Human);
         character.rank = new CharacterRank("Lieutenant", Rank.Lieutenant);
-        character.careerValue = "";
-        character.environmentValue = "";
-        character.finishValue = "";
-        character.trackValue = "";
+
         this.state = {
             age: AgeHelper.getAdultAge(),
             type: CharacterTypeModel.getAllTypes()[character.type],
@@ -75,7 +72,7 @@ class SupportingCharacterPage extends React.Component<WithTranslation, ISupporti
 
     render() {
         const { t } = this.props;
-        let ageDiv = hasSource(Source.PlayersGuide) && character.age.isChild()
+        let ageDiv = hasSource(Source.PlayersGuide) && character.age.isChild
             ? (<div className="mt-4">
                     <div className="page-text-aligned">
                         {t('SupportingCharacter.howOld')}

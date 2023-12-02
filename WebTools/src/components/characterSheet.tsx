@@ -96,12 +96,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
             )
         });
 
-        const characterValues = [
-            c.environmentValue,
-            c.trackValue,
-            c.careerValue,
-            c.finishValue
-        ];
+        const characterValues = c.values;
 
         const values = characterValues.map((v, i) => {
             return (<div key={i}>{v}</div>);

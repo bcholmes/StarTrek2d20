@@ -119,7 +119,7 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({charact
             Dialog.show(t('SoloEnvironmentDetailsPage.errorAttribute'));
         } else if (character.environmentStep.discipline == null) {
             Dialog.show(t('SoloEnvironmentDetailsPage.errorDiscipline'));
-        } else if (character.environmentValue == null) {
+        } else if (character.environmentStep?.value == null) {
             Dialog.show(t('SoloEnvironmentDetailsPage.errorValue'));
         } else {
             Navigation.navigateToPage(PageIdentity.SoloEarlyOutlook);
@@ -178,7 +178,7 @@ const SoloEnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({charact
                     <Header level={2} className="mb-1">{t('Construct.other.value')}</Header>
 
                     <div className="d-flex justify-content-between align-items-center flex-wrap">
-                        <SoloValueInput value={character?.environmentValue}
+                        <SoloValueInput value={character?.environmentStep?.value}
                             onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Environment))}}/>
                         <div style={{ flexShrink: 0 }} className="mt-2">
                             <D20IconButton onClick={() => randomValue() }/>

@@ -208,6 +208,12 @@ class Marshaller {
             if (character.educationStep?.disciplines != null) {
                 education["disciplines"] = character.educationStep.disciplines?.filter(d => d != null).map(d => Skill[d]);
             }
+            if (character.educationStep?.value != null) {
+                education["value"] = character.educationStep.value;
+            }
+            if (character.educationStep?.talent != null) {
+                education["talent"] = this.talentToJson(character.educationStep.talent);
+            }
 
             sheet["training"] = education;
         }
@@ -275,18 +281,19 @@ class Marshaller {
     }
 
     toTalentList(talents: SelectedTalent[] ) {
-        let result = [];
-        talents.forEach(t => {
-            let talent = { "name": t.talent };
-            if (t.implants?.length > 0) {
-                talent["implants"] = t.implants.map(i => BorgImplantType[i]);
-            }
-            if (t.focuses?.length > 0) {
-                talent["focuses"] = [...t.focuses];
-            }
-            result.push(talent);
-        });
+        let result = talents.map(t => this.talentToJson(t));
         return result;
+    }
+
+    talentToJson(t: SelectedTalent) {
+        let talent = { "name": t.talent };
+        if (t.implants?.length > 0) {
+            talent["implants"] = t.implants.map(i => BorgImplantType[i]);
+        }
+        if (t.focuses?.length > 0) {
+            talent["focuses"] = [...t.focuses];
+        }
+        return talent;
     }
 
     toAttributeObject(attributes: CharacterAttribute[]) {
