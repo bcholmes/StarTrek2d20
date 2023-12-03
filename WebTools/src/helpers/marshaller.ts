@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesStep, UpbringingStep, character } from '../common/character';
+import { CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -147,6 +147,9 @@ class Marshaller {
             }
             if (character.careerStep.value) {
                 sheet["career"]["value"] = character.careerStep.value;
+            }
+            if (character.careerStep.talent != null) {
+                sheet["career"]["talent"] = this.talentToJson(character.careerStep.talent);
             }
         }
 
@@ -765,20 +768,23 @@ class Marshaller {
         }
         if (json.career) {
             let temp = json.career;
-
-            if (typeof(temp) === 'string') {
+            if (typeof temp === 'string') {
                 let career = CareersHelper.instance.getCareerByTypeName(temp, result.type);
-                character.careerStep = new CareerStep(career.id);
+                result.careerStep = new CareerStep(career.id);
             } else {
                 let length = temp.length;
                 if (length != null) {
                     let career = CareersHelper.instance.getCareerByTypeName(temp, result.type);
-                    character.careerStep = new CareerStep(career.id);
+                    result.careerStep = new CareerStep(career.id);
                 } else {
-                    character.careerStep = new CareerStep();
+                    result.careerStep = new CareerStep();
                 }
+
                 if (temp.value != null) {
-                    character.careerStep.value = temp.value;
+                    result.careerStep.value = temp.value;
+                }
+                if (temp.talent != null) {
+                    result.careerStep.talent = this.hydrateTalent(temp.talent);
                 }
             }
 
@@ -885,15 +891,9 @@ class Marshaller {
             if (json.upbringing.discipline != null) {
                 result.upbringingStep.discipline = SkillsHelper.toSkill(json.upbringing.discipline);
             }
-        }
-
-        if (json.talents) {
-            json.talents.forEach(t => {
-                let talent = this.hydrateTalent(t);
-                if (talent != null) {
-                    result._talents.push(talent);
-                }
-            });
+            if (json.upbringing.talent != null) {
+                result.upbringingStep.talent = this.hydrateTalent(json.upbringing.talent);
+            }
         }
 
         if (json.finish) {
@@ -907,6 +907,18 @@ class Marshaller {
             if (json.finish.value) {
                 result.finishingStep.value = json.finish.value;
             }
+            if (json.finish.talent != null) {
+                result.finishingStep.talent = this.hydrateTalent(json.finish.talent);
+            }
+        }
+
+        if (json.talents) {
+            json.talents.forEach(t => {
+                let talent = this.hydrateTalent(t);
+                if (talent != null) {
+                    result.addTalent(talent);
+                }
+            });
         }
 
         // backward compatibility

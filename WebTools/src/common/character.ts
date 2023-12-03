@@ -221,10 +221,22 @@ export class FinishingStep {
     public attributes: Attribute[];
     public disciplines: Skill[];
     public value?: string;
+    public talent?: SelectedTalent;
 
     constructor() {
         this.attributes = [];
         this.disciplines = [];
+    }
+
+    copy() {
+        let result = new FinishingStep();
+        result.attributes = [...this.attributes];
+        result.disciplines = [...this.disciplines];
+        result.value = this.value;
+        if (this.talent != null) {
+            result.talent = this.talent.copy();
+        }
+        return result;
     }
 }
 
@@ -359,6 +371,9 @@ export class Character extends Construct {
             }
             if (this.careerStep?.talent != null) {
                 result.push(this.careerStep.talent);
+            }
+            if (this.finishingStep?.talent != null) {
+                result.push(this.finishingStep.talent);
             }
             return result;
         }
@@ -523,7 +538,7 @@ export class Character extends Construct {
         if (this.careerStep?.value) {
             result.push(this.careerStep.value);
         }
-        if (this.finishingStep?.value != null) {
+        if (this.finishingStep?.value) {
             result.push(this.finishingStep.value);
         }
         return result;
@@ -768,8 +783,26 @@ export class Character extends Construct {
         return result.length > 0 ? result[0] : undefined;
     }
 
-    addTalent(talentModel: TalentViewModel) {
-        this._talents.push(new SelectedTalent(talentModel.name));
+    addTalent(talentModel: TalentViewModel|SelectedTalent) {
+        let selectedTalent = talentModel instanceof SelectedTalent ? talentModel as SelectedTalent : new SelectedTalent(talentModel.name);
+        if (this.stereotype === Stereotype.Npc) {
+            this._talents.push();
+        } else {
+            if (this.speciesStep != null && this.speciesStep.talent == null && this.type !== CharacterType.KlingonWarrior) {
+                this.speciesStep.talent = selectedTalent;
+            } else if (this.upbringingStep != null && this.upbringingStep.talent == null) {
+                this.upbringingStep.talent = selectedTalent;
+            } else if (this.educationStep != null && this.educationStep.talent == null) {
+                this.educationStep.talent = selectedTalent;
+            } else if (this.careerStep != null && this.careerStep.talent == null) {
+                this.careerStep.talent = selectedTalent;
+            } else if (this.finishingStep?.talent == null && this.type === CharacterType.KlingonWarrior) {
+                if (this.finishingStep == null) {
+                    this.finishingStep = new FinishingStep();
+                }
+                this.finishingStep.talent = selectedTalent;
+            }
+        }
     }
 
     hasTalent(name: string) {
@@ -863,7 +896,10 @@ export class Character extends Construct {
                 this.educationStep.value = value;
             } else if (this.careerStep != null && this.careerStep.value == null) {
                 this.careerStep.value = value;
-            } else if (this.finishingStep != null && this.finishingStep.value == null) {
+            } else if (this.finishingStep?.value == null) {
+                if (this.finishingStep == null) {
+                    this.finishingStep = new FinishingStep();
+                }
                 this.finishingStep.value = value;
             }
         }
@@ -971,10 +1007,7 @@ export class Character extends Construct {
             character.careerStep.talent = this.careerStep.talent == null ? null : this.careerStep.talent.copy();
         }
         if (this.finishingStep) {
-            character.finishingStep = new FinishingStep();
-            character.finishingStep.attributes = [...this.finishingStep.attributes];
-            character.finishingStep.disciplines = [...this.finishingStep.disciplines];
-            character.finishingStep.value = this.finishingStep.value;
+            character.finishingStep = this.finishingStep.copy();
         }
         this._focuses.forEach(f => {
             character._focuses.push(f);

@@ -262,10 +262,16 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         case ADD_CHARACTER_TALENT: {
             let temp = state.currentCharacter.copy();
             let talent = new SelectedTalent(action.payload.talent);
-            if (action.payload.context === StepContext.Education) {
+            if (action.payload.context === StepContext.Species) {
+                temp.speciesStep.talent = talent;
+            } else if (action.payload.context === StepContext.EarlyOutlook) {
+                temp.upbringingStep.talent = talent;
+            } else if (action.payload.context === StepContext.Education) {
                 temp.educationStep.talent = talent;
-            } else {
-                temp._talents.push(talent);
+            } else if (action.payload.context === StepContext.Career) {
+                temp.careerStep.talent = talent;
+            } else if (action.payload.context === StepContext.FinishingTouches) {
+                temp.finishingStep.talent = talent;
             }
             return {
                 ...state,
