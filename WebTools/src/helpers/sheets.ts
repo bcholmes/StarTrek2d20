@@ -1217,8 +1217,8 @@ class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
             }
         }
 
-        if (character.career != null) {
-            this.fillField(form, 'Career', CareersHelper.instance.getCareer(character.career).localizedName);
+        if (character.careerStep?.career != null) {
+            this.fillField(form, 'Career', CareersHelper.instance.getCareer(character.careerStep.career).localizedName);
         }
 
         this.fillField(form, 'House', (construct as Character).house);
@@ -1372,8 +1372,10 @@ class CaptainsLogCharacterSheet extends BasicFullCharacterSheet {
 
         this.fillField(form, 'Assignment', this.serializeAssignment(character));
 
-        const careerLength = CareersHelper.instance.getSoloCareerLength(character.career);
-        this.fillField(form, "Career Length", careerLength.localizedName);
+        if (character.careerStep?.career != null) {
+            const careerLength = CareersHelper.instance.getSoloCareerLength(character.careerStep.career);
+            this.fillField(form, "Career Length", careerLength.localizedName);
+        }
 
         const type = CharacterTypeModel.getByType(character.type);
         this.fillField(form, "Character Type", type.localizedName);

@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { CareerEventStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesStep, UpbringingStep } from '../common/character';
+import { CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesStep, UpbringingStep, character } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -49,8 +49,10 @@ class Marshaller {
             "focuses": [...character.focuses]
         };
 
-        if (character.career != null) {
-            sheet["career"] = Career[character.career];
+        if (character.careerStep?.career != null) {
+            sheet["career"] = {
+                "length" : Career[character.careerStep.career]
+            }
         }
 
         if (character.speciesStep) {
@@ -94,7 +96,7 @@ class Marshaller {
             sheet["values"] = character.values
         }
 
-        let talents = this.toTalentList(character.talents);
+        let talents = this.toTalentList(character._talents);
         if (talents?.length) {
             sheet["talents"] = talents;
         }
@@ -115,8 +117,6 @@ class Marshaller {
             "stereotype": stereotype,
             "type": CharacterType[character.type],
             "name": character.name,
-            "career": character.career != null ? Career[character.career] : null,
-            "values": character.values
         };
 
         if (character.upbringingStep) {
@@ -137,6 +137,17 @@ class Marshaller {
             sheet["focuses"] = [...character.focuses];
             sheet["attributes"] = this.toAttributeObject(character.attributes);
             sheet["disciplines"] = this.toSkillObject(character.skills);
+        }
+
+        if (character.careerStep != null) {
+            if (character.careerStep.career != null) {
+                sheet["career"] = {
+                    "length": Career[character.careerStep.value]
+                }
+            }
+            if (character.careerStep.value) {
+                sheet["career"]["value"] = character.careerStep.value;
+            }
         }
 
         if (character.careerEvents) {
@@ -241,6 +252,9 @@ class Marshaller {
             if (character.environmentStep.discipline != null) {
                 environment["discipline"] = Skill[character.environmentStep.discipline];
             }
+            if (character.environmentStep.value != null) {
+                environment["value"] = character.environmentStep.value;
+            }
             sheet["environment"] = environment;
         }
 
@@ -248,6 +262,9 @@ class Marshaller {
             sheet["finish"] = {
                 "attributes": character.finishingStep.attributes.map(a => Attribute[a]),
                 "disciplines": character.finishingStep.disciplines.map(d => Skill[d])
+            }
+            if (character.finishingStep.value != null) {
+                sheet["finish"]["value"] = character.finishingStep.value;
             }
         }
 
@@ -747,8 +764,24 @@ class Marshaller {
             }
         }
         if (json.career) {
-            let career = CareersHelper.instance.getCareerByTypeName(json.career, result.type);
-            result.career = career ? career.id : undefined;
+            let temp = json.career;
+
+            if (typeof(temp) === 'string') {
+                let career = CareersHelper.instance.getCareerByTypeName(temp, result.type);
+                character.careerStep = new CareerStep(career.id);
+            } else {
+                let length = temp.length;
+                if (length != null) {
+                    let career = CareersHelper.instance.getCareerByTypeName(temp, result.type);
+                    character.careerStep = new CareerStep(career.id);
+                } else {
+                    character.careerStep = new CareerStep();
+                }
+                if (temp.value != null) {
+                    character.careerStep.value = temp.value;
+                }
+            }
+
         }
         if (json.reputation != null) {
             result.reputation = json.reputation;
@@ -770,6 +803,15 @@ class Marshaller {
                         }
                         if (json.training.primaryDiscipline != null) {
                             result.educationStep.primaryDiscipline = SkillsHelper.toSkill(json.training.primaryDiscipline);
+                        }
+                        if (json.training.value != null) {
+                            result.educationStep.value = json.training.value;
+                        }
+                        if (json.training.talent != null) {
+                            let talent = this.hydrateTalent(json.training.talent);
+                            if (talent != null) {
+                                result.educationStep.talent = talent;
+                            }
                         }
                     }
                 });
@@ -803,11 +845,6 @@ class Marshaller {
                 }
             });
         }
-        if (json.values) {
-            json.values.forEach(v => {
-                result.addValue(v);
-            });
-        }
         if (json.environment) {
             let environment = EnvironmentsHelper.getEnvironmentByTypeName(json.environment.id, result.type);
             if (environment) {
@@ -827,6 +864,9 @@ class Marshaller {
                 }
                 if (json.environment.discipline) {
                     result.environmentStep.discipline = SkillsHelper.toSkill(json.environment.discipline);
+                }
+                if (json.environment.value) {
+                    result.environmentStep.value = json.environment.value;
                 }
             }
         }
@@ -849,16 +889,9 @@ class Marshaller {
 
         if (json.talents) {
             json.talents.forEach(t => {
-                let talent = TalentsHelper.getTalentViewModel(t.name);
-                if (talent) {
-                    let selectedTalent = new SelectedTalent(talent.name);
-                    if (t["focuses"]) {
-                        selectedTalent.focuses = [...t["focuses"]];
-                    }
-                    if (t["implants"]) {
-                        selectedTalent.implants = t["implants"].map(i => BorgImplants.instance.getImplantByTypeName(i)?.type).filter(i => i != null);
-                    }
-                    result.talents.push(selectedTalent);
+                let talent = this.hydrateTalent(t);
+                if (talent != null) {
+                    result._talents.push(talent);
                 }
             });
         }
@@ -871,6 +904,9 @@ class Marshaller {
             if (json.finish.disciplines) {
                 result.finishingStep.disciplines = json.finish.disciplines.map(d => SkillsHelper.toSkill(d));
             }
+            if (json.finish.value) {
+                result.finishingStep.value = json.finish.value;
+            }
         }
 
         // backward compatibility
@@ -879,7 +915,29 @@ class Marshaller {
             talent.implants = json.implants.map(i => BorgImplants.instance.getImplantByTypeName(i)?.type).filter(i => i != null);
         }
 
+        if (json.values) {
+            json.values.forEach(v => {
+                result.addValue(v);
+            });
+        }
+
         return result;
+    }
+
+    hydrateTalent(t) {
+        let talent = TalentsHelper.getTalentViewModel(t.name);
+        if (talent) {
+            let selectedTalent = new SelectedTalent(talent.name);
+            if (t["focuses"]) {
+                selectedTalent.focuses = [...t["focuses"]];
+            }
+            if (t["implants"]) {
+                selectedTalent.implants = t["implants"].map(i => BorgImplants.instance.getImplantByTypeName(i)?.type).filter(i => i != null);
+            }
+            return selectedTalent;
+        } else {
+            return undefined;
+        }
     }
 }
 

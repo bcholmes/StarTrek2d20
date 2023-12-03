@@ -45,7 +45,7 @@ const SoloCharacterBreadcrumbs: React.FC<ISoloCharacterBreadcrumbProperties> = (
     }
 
     const renderEducation = () => {
-        if ((character?.career != null && pageIdentity === PageIdentity.SoloEducationDetailsPage) || pageIdentity === PageIdentity.SoloEducationType || pageIdentity === PageIdentity.SoloEducationPage) {
+        if ((character?.careerStep != null && pageIdentity === PageIdentity.SoloEducationDetailsPage) || pageIdentity === PageIdentity.SoloEducationType || pageIdentity === PageIdentity.SoloEducationPage) {
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloEducation')}</li>);
         } else if (character?.educationStep) {
             return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEducationType)}>{t('Page.title.soloEducation')}</a></li>);
@@ -57,7 +57,7 @@ const SoloCharacterBreadcrumbs: React.FC<ISoloCharacterBreadcrumbProperties> = (
     const renderCareerLength = () => {
         if ((character?.careerEvents?.length && pageIdentity === PageIdentity.SoloCareerLengthDetails) || pageIdentity === PageIdentity.SoloCareerLength) {
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloCareerLength')}</li>);
-        } else if (character?.career != null) {
+        } else if (character?.careerStep != null) {
             return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloCareerLength)}>{t('Page.title.soloCareerLength')}</a></li>);
         } else {
             return undefined;

@@ -40,10 +40,10 @@ class CharacterSheetData {
             new SectionContent(i18n.t('Construct.other.training'), this.character.educationStep?.track != null
                 ? TracksHelper.instance.getTrack(this.character.educationStep?.track, character.type)?.name
                 : i18n.t('Common.text.none')),
-            new SectionContent(i18n.t('Construct.other.career'), this.character.career != null
+            new SectionContent(i18n.t('Construct.other.career'), this.character.careerStep?.career != null
                 ? (this.character.stereotype === Stereotype.SoloCharacter
-                    ? CareersHelper.instance.getSoloCareerLength(this.character.career).localizedName
-                    : CareersHelper.instance.getCareer(this.character.career).localizedName)
+                    ? CareersHelper.instance.getSoloCareerLength(this.character.careerStep?.career).localizedName
+                    : CareersHelper.instance.getCareer(this.character.careerStep?.career).localizedName)
                 : i18n.t('Common.text.none')),
             new SectionContent(i18n.t('Construct.other.traits'), this.character.getAllTraits())
         ];
@@ -116,7 +116,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
             return (<div key={i}>{e}</div>)
         });
 
-        if (c.career !== undefined) {
+        if (c.careerStep?.career !== undefined) {
             if (store.getState().context.era === Era.Enterprise) {
                 equipment.push(<div key={999}>Phase pistol</div>);
             } else {

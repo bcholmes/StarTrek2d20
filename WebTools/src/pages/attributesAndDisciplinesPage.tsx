@@ -46,7 +46,7 @@ const AttributesAndDisciplinesPage: React.FC<ISoloCharacterProperties> = ({chara
             Dialog.show(t('SoloFinishingTouchesPage.errorAttributes', { count: attributeCount}));
         } else if (character.finishingStep?.disciplines.length !== disciplineCount) {
             Dialog.show(t('SoloFinishingTouchesPage.errorDisciplines', { count: disciplineCount}));
-        } else if (!character.finishValue) {
+        } else if (!character.finishingStep?.value == null) {
             Dialog.show(t('SoloFinishingTouchesPage.errorValue'));
         } else if (character.type === CharacterType.KlingonWarrior && talentSelected == null) {
             Dialog.show(t('SoloFinishingTouchesPage.errorTalent'));
@@ -111,7 +111,7 @@ const AttributesAndDisciplinesPage: React.FC<ISoloCharacterProperties> = ({chara
     let value = (character.workflow.currentStep().options.valueSelection)
         ? (<div className="col-lg-6 mt-4">
                 <Header level={2}>{t('Construct.other.value')}</Header>
-                <ValueInput value={character.finishValue} onValueChanged={(value) => store.dispatch(setCharacterValue(value, StepContext.FinishingTouches))}
+                <ValueInput value={character.finishingStep?.value ?? ""} onValueChanged={(value) => store.dispatch(setCharacterValue(value, StepContext.FinishingTouches))}
                         onRandomClicked={() => randomValue()} textDescription={t('Value.final.text')} />
             </div>)
         : undefined;

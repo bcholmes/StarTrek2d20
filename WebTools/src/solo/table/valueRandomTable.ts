@@ -962,7 +962,7 @@ const GeneralValuesTable = () => {
         case 17:
             return "Living in fear isn't living at all";
         case 18:
-            return "Seeking out new life, protecting is when found";
+            return "Seeking out new life, protecting it when found";
         case 19:
             return "The universe is full of wondrous complexity";
         case 20:

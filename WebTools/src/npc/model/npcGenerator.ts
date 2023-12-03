@@ -1,4 +1,4 @@
-import { AlliedMilitaryDetails, Character, NpcGenerationStep, SpeciesStep } from "../../common/character";
+import { AlliedMilitaryDetails, CareerStep, Character, NpcGenerationStep, SpeciesStep } from "../../common/character";
 import { CharacterType } from "../../common/characterType";
 import { Stereotype } from "../../common/construct";
 import { D20 } from "../../common/die";
@@ -366,7 +366,7 @@ export class NpcGenerator {
             careers = [ Career.Experienced, Career.Experienced, Career.Experienced, Career.Veteran ];
         }
 
-        character.career = careers[Math.floor(Math.random() * careers.length)];
+        character.careerStep = new CareerStep(careers[Math.floor(Math.random() * careers.length)]);
         character.npcGenerationStep = new NpcGenerationStep();
         character.npcGenerationStep.enlisted = (Math.random() < specialization.officerProbability) ? false : true;
 

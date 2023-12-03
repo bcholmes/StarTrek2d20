@@ -43,7 +43,7 @@ const AllCharacterValues: React.FC<ISoloCharacterProperties> = ({character}) => 
                 </div>
                 <div className="row">
                     <div className="col-lg-6 py-2">
-                    <ValueInput value={character.careerValue} onValueChanged={(value) => onValueChanged(value, StepContext.Career)}
+                    <ValueInput value={character.careerStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value, StepContext.Career)}
                             onRandomClicked={() => randomValue(StepContext.Career)} textDescription={t('Value.careerLength.young.text')} />
                     </div>
                 </div>
@@ -75,11 +75,11 @@ const AllCharacterValues: React.FC<ISoloCharacterProperties> = ({character}) => 
                 </div>
                 <div className="row">
                     <div className="col-lg-6 py-2">
-                        <ValueInput value={character.careerValue} onValueChanged={(value) => onValueChanged(value, StepContext.Career)}
-                                    onRandomClicked={() => randomValue(StepContext.Career)} textDescription={t(makeKey('Value.careerLength.', Career[character.career], '.text'))} />
+                        <ValueInput value={character.careerStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value, StepContext.Career)}
+                                    onRandomClicked={() => randomValue(StepContext.Career)} textDescription={t(makeKey('Value.careerLength.', Career[character.careerStep?.career], '.text'))} />
                     </div>
                     <div className="col-lg-6 py-2">
-                        <ValueInput value={character.finishValue} onValueChanged={(value) => onValueChanged(value, StepContext.FinishingTouches)}
+                        <ValueInput value={character.finishingStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value, StepContext.FinishingTouches)}
                                 onRandomClicked={() => randomValue(StepContext.FinishingTouches)} textDescription={t('Value.final.text')} />
                     </div>
                 </div>

@@ -133,7 +133,14 @@ class Memento {
     }
 }
 
-export class SupportingStep {
+export class CareerStep {
+    career?: Career;
+    value?: string;
+    talent?: SelectedTalent;
+
+    constructor(career?: Career) {
+        this.career = career;
+    }
 }
 
 export class SpeciesStep {
@@ -142,6 +149,7 @@ export class SpeciesStep {
     public originalSpecies: Species;
     public customSpeciesName: string;
     public attributes: Attribute[];
+    public talent?: SelectedTalent;
 
     constructor(species: Species) {
         this.species = species;
@@ -153,7 +161,8 @@ export class UpbringingStep {
     public readonly upbringing: EarlyOutlookModel;
     public acceptedUpbringing: boolean;
     public discipline: Skill;
-    public focus: string;
+    public focus?: string;
+    public talent?: SelectedTalent;
 
     constructor(upbringing: EarlyOutlookModel, accepted: boolean = true) {
         this.upbringing = upbringing;
@@ -211,6 +220,7 @@ export class EducationStep {
 export class FinishingStep {
     public attributes: Attribute[];
     public disciplines: Skill[];
+    public value?: string;
 
     constructor() {
         this.attributes = [];
@@ -252,15 +262,12 @@ export class Character extends Construct {
     public age: Age;
     public lineage?: string;
     public house?: string;
-    public career?: Career;
     public careerEvents: CareerEventStep[];
     public rank?: CharacterRank;
     public role?: Role;
     public jobAssignment?: string;
     public assignedShip?: string;
     public secondaryRole?: Role;
-    public careerValue?: string;
-    public finishValue?: string;
     public _focuses: string[];
     public typeDetails: CharacterTypeDetails;
     public workflow?: Workflow;
@@ -271,9 +278,9 @@ export class Character extends Construct {
     public speciesStep?: SpeciesStep;
     public environmentStep?: EnvironmentStep;
     public upbringingStep?: UpbringingStep;
+    public careerStep?: CareerStep;
     public finishingStep?: FinishingStep;
     public npcGenerationStep?: NpcGenerationStep;
-    public supportingStep?: SupportingStep;
 
     public legacyMode: boolean;
 
@@ -337,11 +344,24 @@ export class Character extends Construct {
     }
 
     get talents() {
-        let result = [...this._talents];
-        if (this.educationStep?.talent != null) {
-            result.push(this.educationStep.talent);
+        if (this.stereotype === Stereotype.Npc) {
+            return [...this._talents];
+        } else {
+            let result = [];
+            if (this.speciesStep?.talent != null) {
+                result.push(this.speciesStep.talent);
+            }
+            if (this.upbringingStep?.talent != null) {
+                result.push(this.upbringingStep.talent);
+            }
+            if (this.educationStep?.talent != null) {
+                result.push(this.educationStep.talent);
+            }
+            if (this.careerStep?.talent != null) {
+                result.push(this.careerStep.talent);
+            }
+            return result;
         }
-        return result;
     }
 
     get attributes() {
@@ -500,11 +520,11 @@ export class Character extends Construct {
         if (this.educationStep?.value) {
             result.push(this.educationStep.value);
         }
-        if (this.careerValue) {
-            result.push(this.careerValue);
+        if (this.careerStep?.value) {
+            result.push(this.careerStep.value);
         }
-        if (this.finishValue) {
-            result.push(this.finishValue);
+        if (this.finishingStep?.value != null) {
+            result.push(this.finishingStep.value);
         }
         return result;
     }
@@ -841,10 +861,10 @@ export class Character extends Construct {
                 this.environmentStep.value = value;
             } else if (this.educationStep != null && this.educationStep?.value == null) {
                 this.educationStep.value = value;
-            } else if (this.careerValue == null) {
-                this.careerValue = value;
-            } else if (this.finishValue == null) {
-                this.finishValue = value;
+            } else if (this.careerStep != null && this.careerStep.value == null) {
+                this.careerStep.value = value;
+            } else if (this.finishingStep != null && this.finishingStep.value == null) {
+                this.finishingStep.value = value;
             }
         }
     }
@@ -900,7 +920,6 @@ export class Character extends Construct {
             character.traits.push(t);
         });
         character.age = this.age;
-        character.career = this.career;
         this.careerEvents.forEach(e => {
             let event = new CareerEventStep(e.id);
             event.attribute = e.attribute;
@@ -919,6 +938,9 @@ export class Character extends Construct {
             character.speciesStep.customSpeciesName = this.speciesStep.customSpeciesName;
             if (this.speciesStep.attributes?.length) {
                 character.speciesStep.attributes = [...this.speciesStep.attributes];
+            }
+            if (this.speciesStep.talent != null) {
+                character.speciesStep.talent = this.speciesStep.talent.copy();
             }
         }
         if (this.environmentStep) {
@@ -943,13 +965,17 @@ export class Character extends Construct {
             character.educationStep.talent = this.educationStep.talent ? this.educationStep.talent.copy() : undefined;
             character.educationStep.value = this.educationStep.value;
         }
+        if (this.careerStep) {
+            character.careerStep = new CareerStep(this.careerStep.career);
+            character.careerStep.value = this.careerStep.value;
+            character.careerStep.talent = this.careerStep.talent == null ? null : this.careerStep.talent.copy();
+        }
         if (this.finishingStep) {
             character.finishingStep = new FinishingStep();
             character.finishingStep.attributes = [...this.finishingStep.attributes];
             character.finishingStep.disciplines = [...this.finishingStep.disciplines];
+            character.finishingStep.value = this.finishingStep.value;
         }
-        character.careerValue = this.careerValue;
-        character.finishValue = this.finishValue;
         this._focuses.forEach(f => {
             character._focuses.push(f);
         });

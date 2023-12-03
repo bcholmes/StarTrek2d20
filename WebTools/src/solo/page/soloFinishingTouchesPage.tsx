@@ -39,7 +39,7 @@ const SoloFinishingTouchesPage: React.FC<ISoloCharacterProperties> = ({character
             Dialog.show(t('SoloFinishingTouchesPage.errorAttributes', { count: attributeCount}));
         } else if (character.finishingStep?.disciplines.length !== disciplineCount) {
             Dialog.show(t('SoloFinishingTouchesPage.errorDisciplines', { count: disciplineCount}));
-        } else if (!character.finishValue) {
+        } else if (!character.finishingStep?.value == null) {
             Dialog.show(t('SoloFinishingTouchesPage.errorValue'));
         } else {
             Navigation.navigateToPage(PageIdentity.SoloFinal);
@@ -76,7 +76,7 @@ const SoloFinishingTouchesPage: React.FC<ISoloCharacterProperties> = ({character
                     <Header level={2} className="mb-3">{t('Construct.other.value')}</Header>
 
                     <div className="d-flex justify-content-between align-items-center flex-wrap">
-                        <SoloValueInput value={character?.finishValue}
+                        <SoloValueInput value={character?.finishingStep?.value ?? ""}
                             onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.FinishingTouches))}}/>
                         <div style={{ flexShrink: 0 }} className="mt-2">
                             <D20IconButton onClick={() => randomValue() }/>

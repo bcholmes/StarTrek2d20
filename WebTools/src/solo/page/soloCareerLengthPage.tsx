@@ -17,7 +17,7 @@ import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 const SoloCareerLengthPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
-    const [randomLength, setRandomLength] = useState(character?.career);
+    const [randomLength, setRandomLength] = useState(character?.careerStep?.career);
 
     const careerLengthSelected = (careerLength: CareerModel)=> {
         store.dispatch(setCharacterCareerLength(careerLength.id));

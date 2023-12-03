@@ -19,10 +19,10 @@ import { ValueRandomTable } from "../table/valueRandomTable";
 const SoloCareerLengthDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
     const { t } = useTranslation();
 
-    const careerLength = CareersHelper.instance.getSoloCareerLength(character.career);
+    const careerLength = CareersHelper.instance.getSoloCareerLength(character.careerStep?.career);
 
     const navigateToNextStep = () => {
-        if (!character.careerValue) {
+        if (character.careerStep?.value == null) {
             Dialog.show(t("SoloCareerLengthDetailsPage.errorValue"));
         } else {
             Navigation.navigateToPage(PageIdentity.SoloCareerEvent1);
@@ -50,7 +50,7 @@ const SoloCareerLengthDetailsPage: React.FC<ISoloCharacterProperties> = ({charac
                         <Header level={2} className="mb-3">{t('Construct.other.value')}</Header>
 
                         <div className="d-flex justify-content-between align-items-center flex-wrap">
-                            <SoloValueInput value={character?.careerValue}
+                            <SoloValueInput value={character?.careerStep?.value ?? ""}
                                 onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Career))}}/>
                             <div style={{ flexShrink: 0 }} className="mt-2">
                                 <D20IconButton onClick={() => randomValue() }/>

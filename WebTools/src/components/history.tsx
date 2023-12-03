@@ -80,7 +80,7 @@ class History extends React.Component<IHistoryProperties, {}> {
             {character?.environmentStep ? this.renderPageTitleLink(PageIdentity.SoloEnvironment) : undefined}
             {character?.upbringingStep ? this.renderPageTitleLink(PageIdentity.SoloEarlyOutlook) : undefined}
             {character?.educationStep ? this.renderPageTitleLink(PageIdentity.SoloEducationType) : undefined}
-            {character?.career != null ? this.renderPageTitleLink(PageIdentity.SoloCareerLength) : undefined}
+            {character?.careerStep != null ? this.renderPageTitleLink(PageIdentity.SoloCareerLength) : undefined}
             {character?.careerEvents?.length > 0 ? this.renderPageTitleLink(PageIdentity.SoloCareerEvent1) : undefined}
             {character?.careerEvents?.length > 1 ? this.renderPageTitleLink(PageIdentity.SoloCareerEvent2) : undefined}
             {character?.finishingStep ? this.renderPageTitleLink(PageIdentity.SoloFinishingTouches) : undefined}

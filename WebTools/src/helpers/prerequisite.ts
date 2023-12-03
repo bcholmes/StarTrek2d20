@@ -174,7 +174,7 @@ export class CareersPrerequisite implements IConstructPrerequisite<Character> {
     }
 
     isPrerequisiteFulfilled(character: Character) {
-        return this._careers.indexOf(character.career) > -1;
+        return character.careerStep?.career != null && this._careers.indexOf(character.careerStep?.career) > -1;
     }
     describe(): string {
         return "Only available to " + this._careers.map(c => Career[c]).join(', ') + " characters";

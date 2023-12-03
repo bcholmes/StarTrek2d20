@@ -707,7 +707,7 @@ export class FantasyGroupsVttExporter {
     }
 
     convertCareer(character: Character) {
-        let career = (character.career != null) ? CareersHelper.instance.getCareer(character.career, character) : null;
+        let career = (character.careerStep?.career != null) ? CareersHelper.instance.getCareer(character.careerStep.career, character) : null;
         //<career type="string">Experienced Officer</career>
         if (career) {
             return {
@@ -952,7 +952,7 @@ export class FantasyGroupsVttExporter {
     }
 
     convertCareerLink(character: Character) {
-        if (character.career != null && character.type === CharacterType.Starfleet) {
+        if (character.careerStep?.career != null && character.type === CharacterType.Starfleet) {
             return {
                 "name": "careerlink",
                 "type": "element",
@@ -974,7 +974,7 @@ export class FantasyGroupsVttExporter {
                     "elements": [
                         {
                             "type": "text",
-                            "text": "reference.career." + this.createNumberedId(character.career + 1) + "@Star Trek Adventures Core Rulebook"
+                            "text": "reference.career." + this.createNumberedId(character.careerStep.career + 1) + "@Star Trek Adventures Core Rulebook"
                         }
                     ]
                 }]

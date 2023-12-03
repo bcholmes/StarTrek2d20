@@ -43,7 +43,7 @@ class ValueInput extends React.Component<IValueInputProperties, {}> {
                 if (character.age.isChild || character.type === CharacterType.Cadet) {
                     description = CareersHelper.instance.getCareer(Career.Young).localizedDescription;
                 } else {
-                    description = CareersHelper.instance.getCareer(character.career).localizedValueDescription;
+                    description = CareersHelper.instance.getCareer(character.careerStep?.career).localizedValueDescription;
                 }
                 break;
             case Value.Finish:
@@ -73,10 +73,14 @@ class ValueInput extends React.Component<IValueInputProperties, {}> {
                 }
                 break;
             case Value.Career:
-                character.careerValue = value;
+                if (character.careerStep != null) {
+                    character.careerStep.value = value;
+                }
                 break;
             case Value.Finish:
-                character.finishValue = value;
+                if (character.finishingStep != null) {
+                    character.finishingStep.value = value;
+                }
                 break;
         }
 

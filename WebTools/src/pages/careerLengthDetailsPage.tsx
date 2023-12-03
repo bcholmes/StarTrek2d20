@@ -22,7 +22,7 @@ const CareerLengthDetailsPage : React.FC<ISoloCharacterProperties> = ({character
 
     const { t } = useTranslation();
     const [ talentName, setTalentName ] = useState(null);
-    const career = CareersHelper.instance.getCareer(character.career);
+    const career = CareersHelper.instance.getCareer(character.careerStep?.career);
 
     useEffect(() => {
         if (career.talent != null) {
@@ -54,7 +54,7 @@ const CareerLengthDetailsPage : React.FC<ISoloCharacterProperties> = ({character
             return (<div className="row">
                 <div className="col-md-6 my-3">
                     <Header level={2}>{t('Construct.other.value')}</Header>
-                    <ValueInput value={character.careerValue} onValueChanged={(value) => onValueChanged(value)}
+                    <ValueInput value={character.careerStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value)}
                             onRandomClicked={() => randomValue()} textDescription={textDescription}
                         />
                 </div>
@@ -69,7 +69,7 @@ const CareerLengthDetailsPage : React.FC<ISoloCharacterProperties> = ({character
             <div className="row">
                 <div className="col-md-6 my-3">
                     <Header level={2}>{t('Construct.other.value')}</Header>
-                    <ValueInput value={character.careerValue} onValueChanged={(value) => onValueChanged(value)}
+                    <ValueInput value={character.careerStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value)}
                                 onRandomClicked={() => randomValue()} textDescription={textDescription} />
                 </div>
             </div>

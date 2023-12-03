@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {character, CharacterRank, SpeciesStep, SupportingStep } from '../common/character';
+import {character, CharacterRank, SpeciesStep } from '../common/character';
 import {CharacterType, CharacterTypeModel } from '../common/characterType';
 import {SpeciesHelper} from '../helpers/species';
 import {DropDownElement, DropDownInput, DropDownSelect} from '../components/dropDownInput';
