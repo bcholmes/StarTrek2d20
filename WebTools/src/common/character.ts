@@ -255,6 +255,14 @@ export class CareerEventStep {
 export class NpcGenerationStep {
     public enlisted: boolean;
     public values: string[] = [];
+    public talents: SelectedTalent[] = [];
+
+    copy() {
+        let result = new NpcGenerationStep();
+        result.values = [...this.values];
+        result.talents = this.talents.map(t => t.copy());
+        return result;
+    }
 }
 
 export class Character extends Construct {
@@ -270,7 +278,6 @@ export class Character extends Construct {
     public _skills: CharacterSkill[] = [];
     public traits: string[];
     public additionalTraits: string;
-    public _talents: SelectedTalent[];
     public age: Age;
     public lineage?: string;
     public house?: string;
@@ -312,7 +319,6 @@ export class Character extends Construct {
         this._mementos = [];
         this.traits = [];
         this._focuses = [];
-        this._talents = [];
         this.careerEvents = [];
         this.age = AgeHelper.getAdultAge();
     }
@@ -357,7 +363,7 @@ export class Character extends Construct {
 
     get talents() {
         if (this.stereotype === Stereotype.Npc) {
-            return [...this._talents];
+            return this.npcGenerationStep ? [...this.npcGenerationStep.talents] : [];
         } else {
             let result = [];
             if (this.speciesStep?.talent != null) {
@@ -528,20 +534,24 @@ export class Character extends Construct {
     }
 
     get values() {
-        let result = [];
-        if (this.environmentStep?.value) {
-            result.push(this.environmentStep.value);
+        if (this.stereotype === Stereotype.Npc) {
+            return this.npcGenerationStep?.values ?? [];
+        } else {
+            let result = [];
+            if (this.environmentStep?.value) {
+                result.push(this.environmentStep.value);
+            }
+            if (this.educationStep?.value) {
+                result.push(this.educationStep.value);
+            }
+            if (this.careerStep?.value) {
+                result.push(this.careerStep.value);
+            }
+            if (this.finishingStep?.value) {
+                result.push(this.finishingStep.value);
+            }
+            return result;
         }
-        if (this.educationStep?.value) {
-            result.push(this.educationStep.value);
-        }
-        if (this.careerStep?.value) {
-            result.push(this.careerStep.value);
-        }
-        if (this.finishingStep?.value) {
-            result.push(this.finishingStep.value);
-        }
-        return result;
     }
 
     get nameAndFullRank() {
@@ -786,7 +796,10 @@ export class Character extends Construct {
     addTalent(talentModel: TalentViewModel|SelectedTalent) {
         let selectedTalent = talentModel instanceof SelectedTalent ? talentModel as SelectedTalent : new SelectedTalent(talentModel.name);
         if (this.stereotype === Stereotype.Npc) {
-            this._talents.push();
+            if (this.npcGenerationStep == null) {
+                this.npcGenerationStep = new NpcGenerationStep();
+            }
+            this.npcGenerationStep.talents.push(selectedTalent);
         } else {
             if (this.speciesStep != null && this.speciesStep.talent == null && this.type !== CharacterType.KlingonWarrior) {
                 this.speciesStep.talent = selectedTalent;
@@ -951,7 +964,6 @@ export class Character extends Construct {
             character._skills[s.skill].skill = s.skill;
             character._skills[s.skill].expertise = s.expertise;
         });
-        character._talents = this._talents.map(t => t.copy());
         this.traits.forEach(t => {
             character.traits.push(t);
         });
@@ -1008,6 +1020,9 @@ export class Character extends Construct {
         }
         if (this.finishingStep) {
             character.finishingStep = this.finishingStep.copy();
+        }
+        if (this.npcGenerationStep) {
+            character.npcGenerationStep = this.npcGenerationStep.copy();
         }
         this._focuses.forEach(f => {
             character._focuses.push(f);

@@ -92,15 +92,20 @@ class Marshaller {
             sheet["pronouns"] = character.pronouns;
         }
 
-        if (character.values?.length) {
-            sheet["values"] = character.values
-        }
+        if (character.stereotype === Stereotype.Npc) {
+            if (character.npcGenerationStep) {
+                let block = {};
+                if (character.npcGenerationStep.values.length) {
+                    block["values"] = character.values
+                }
 
-        let talents = this.toTalentList(character._talents);
-        if (talents?.length) {
-            sheet["talents"] = talents;
+                let talents = this.toTalentList(character.npcGenerationStep.talents);
+                if (talents?.length) {
+                    block["talents"] = talents;
+                }
+                sheet["npc"] = block;
+            }
         }
-
         return sheet;
     }
 
@@ -621,6 +626,8 @@ class Marshaller {
     }
 
     decodeCharacter(json: any) {
+console.log(json);
+
         let result = new Character();
         if (json["stereotype"] === "npc") {
             result.stereotype = Stereotype.Npc;
@@ -775,7 +782,7 @@ class Marshaller {
                 let length = temp.length;
                 if (length != null) {
                     let career = CareersHelper.instance.getCareerByTypeName(temp, result.type);
-                    result.careerStep = new CareerStep(career.id);
+                    result.careerStep = new CareerStep(career?.id);
                 } else {
                     result.careerStep = new CareerStep();
                 }
@@ -825,7 +832,9 @@ class Marshaller {
         } else {
             let rank = result.rank == null ? null : RanksHelper.instance().getRankByName(result.rank?.name);
             if (rank && result.stereotype === Stereotype.Npc) {
-                result.npcGenerationStep = new NpcGenerationStep();
+                if (result.npcGenerationStep == null) {
+                    result.npcGenerationStep = new NpcGenerationStep();
+                }
                 result.npcGenerationStep.enlisted = rank.isEnlisted;
             }
         }
@@ -919,6 +928,17 @@ class Marshaller {
                     result.addTalent(talent);
                 }
             });
+        }
+        if (json.npc) {
+            if (result.npcGenerationStep == null) {
+                result.npcGenerationStep = new NpcGenerationStep();
+            }
+            if (json.npc.values) {
+                result.npcGenerationStep.values = [...json.npc.values];
+            }
+            if (json.npc.talents) {
+                result.npcGenerationStep.talents = json.npc.talents.map(t => this.hydrateTalent(t));
+            }
         }
 
         // backward compatibility
