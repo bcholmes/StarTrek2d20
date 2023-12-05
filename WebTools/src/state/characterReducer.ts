@@ -1,10 +1,36 @@
 import { CareerEventStep, CareerStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, SelectedTalent, SpeciesStep, UpbringingStep } from "../common/character";
+import { Skill } from "../helpers/skills";
 import { TALENT_NAME_BORG_IMPLANTS } from "../helpers/talents";
+import { Track } from "../helpers/trackEnum";
 import { ADD_CHARACTER_BORG_IMPLANT, ADD_CHARACTER_CAREER_EVENT, ADD_CHARACTER_TALENT, ADD_CHARACTER_TALENT_FOCUS, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, REMOVE_CHARACTER_BORG_IMPLANT, SET_CHARACTER, SET_CHARACTER_ADDITIONAL_TRAITS, SET_CHARACTER_ASSIGNED_SHIP, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_HOUSE, SET_CHARACTER_LINEAGE, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_RANK, SET_CHARACTER_ROLE, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
     isModified: boolean
+}
+
+const trackDefaults = (track: Track, step: EducationStep) => {
+    switch (track) {
+        case Track.EnlistedSecurityTraining:
+            step.primaryDiscipline = Skill.Security;
+            step.disciplines = [ Skill.Security, Skill.Conn ];
+            step.focuses[2] = "Chain of Command";
+            break;
+        case Track.ShipOperations:
+            step.primaryDiscipline = Skill.Conn;
+            step.disciplines = [ Skill.Engineering, Skill.Science ];
+            break;
+        case Track.UniversityAlumni:
+            step.primaryDiscipline = Skill.Science;
+            step.disciplines = [ Skill.Engineering, Skill.Command ];
+            break;
+        case Track.ResearchInternship:
+            step.primaryDiscipline = Skill.Science;
+            step.disciplines = [ Skill.Engineering, Skill.Medicine ];
+            break;
+        default:
+            break;
+    }
 }
 
 const characterReducer = (state: CharacterState = { currentCharacter: undefined, isModified: false }, action) => {
@@ -44,6 +70,7 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
             let temp = state.currentCharacter.copy();
             let originalStep = temp.educationStep;
             temp.educationStep = new EducationStep(action.payload.track, action.payload.enlisted);
+            trackDefaults(action.payload.track, temp.educationStep);
             if (originalStep) {
                 if (originalStep.track === temp.educationStep.track) {
                     temp.educationStep.attributes = [...originalStep.attributes];

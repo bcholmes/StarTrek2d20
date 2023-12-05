@@ -124,6 +124,15 @@
     "CharacterTypePage.whatMilitary": "What military does this character represent?",
     "CharacterTypePage.otherMilitaryName": "What's the name of this military?",
 
+    "CareerLength.instruction": "At this stage, you have a choice to make about the character. This decision is a clear one: are you a young officer, fresh out of the Academy, with your whole career ahead of you, have you served in Starfleet for several years, or are you a veteran with decades of experience?\n\nEither select or roll your Career.",
+
+    "CareerLength.instruction.klingon": "At this stage, you have a choice to make about the character. This decision is a clear one: is the character a young officer, eager for glory and with their whole career ahead of them, have they served in the KDF for several years, or are they a veteran with decades of experience?\n\nEither select or roll your Career.",
+    "CareerLength.instruction.civilian": "At this stage, you have a choice to make about the character. This decision is a clear one: are you a young professional, fresh out of training, with your whole career ahead of you, have you served in your career for several years, or are you a veteran with decades of experience?\n\nEither select or roll your Career.",
+
+    "EarlyOutlookPage.instruction": "The nature of a person’s family and their surroundings as they grew up can have a massive impact upon them, and, whether they accept this influence or rebelled against it, it will shape the rest of their lives.\n\nEither select or roll your early outlook.",
+
+    "EarlyOutlookPage.instruction.klingon": "The Klingon Empire has long had a system of castes, divided amongst the professions and vocations which allow society to function. Families within these castes tend to train in certain vocations, generation after generation. Throughout Klingon history, different castes have risen and fallen in prominence, though the Warrior caste has always held a place of significance. Within the last few centuries, however, this system has begun to break down, with caste divisions no longer as strictly defined as they once were, and while more traditional families still expect their children to follow in their footsteps, many Klingons break from caste and pursue whatever careers they desire.\n\nEither select or roll your caste.",
+
     "EducationPage.instruction.alliedMilitary": "Outside of Starfleet, the Milky Way Galaxy hosts many other security and military organizations. Instead of a Starfleet or Klingon officer, you might choose to build a Captain’s Log story around a Bajoran freedom fighter, a member of the Andorian Imperial Guard, or a radically candid warrior of the Qowat Milat.\n\nAs an alternative to attending Starfleet Academy, to select the type of military training your character has received, choose from the options in the following table, or randomly select one.",
     "EducationPage.instruction.ambassadorDiplomat": "Ambassadorial characters are often found accompanying Starfleet vessels, and in other groups and situations conducive to telling exciting stories. These characters don’t necessarily have Starfleet training, but by necessity they are well-trained and well-informed, and quite capable of taking part in dangerous missions when necessary.\n\nDiplomat characters do not necessarily hold an active Starfleet rank or other military rank (though many well-known diplomats are retired Starfleet military).\n\nTo select your character’s diplomatic training, choose one of the types in the following table or randomly select one.",
     "EducationPage.instruction.cadet": "The character is an officer-in-training, still studying at Starfleet Academy or a similar institution. They have great potential, and some skill, but lack the experience to put their abilities to the best use.",
@@ -433,6 +442,7 @@
     "Page.title.creditsPage": "Credits",
     "Page.title.customSpaceframe": "Custom Spaceframe Creation",
     "Page.title.customSpeciesDetails": "Custom Species Details",
+    "Page.title.educationDetails": "Education Details",
     "Page.title.environment": "Environment",
     "Page.title.environmentDetails": "Environment Details",
     "Page.title.era": "Era",

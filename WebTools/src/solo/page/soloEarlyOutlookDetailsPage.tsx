@@ -10,56 +10,21 @@ import { AttributeView } from "../../components/attribute";
 import { AttributesHelper } from "../../helpers/attributes";
 import { CheckBox } from "../../components/checkBox";
 import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
-import DisciplineListComponent, { IDisciplineController } from "../../components/disciplineListComponent";
-import { EarlyOutlookModel } from "../../helpers/upbringings";
-import { Character } from "../../common/character";
-import { Skill } from "../../helpers/skills";
+import DisciplineListComponent from "../../components/disciplineListComponent";
 import store from "../../state/store";
-import { StepContext, modifyCharacterDiscipline, setCharacterEarlyOutlook, setCharacterFocus } from "../../state/characterActions";
+import { StepContext, setCharacterEarlyOutlook, setCharacterFocus } from "../../state/characterActions";
 import { Button } from "../../components/button";
 import { Dialog } from "../../components/dialog";
 import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 import D20IconButton from "../component/d20IconButton";
 import { FocusRandomTable } from "../table/focusRandomTable";
-
-class SoloEarlyOutlookDiscplineController implements IDisciplineController {
-
-    readonly character: Character;
-    readonly earlyOutlook: EarlyOutlookModel;
-
-    constructor(character: Character, earlyOutlook: EarlyOutlookModel) {
-        this.character = character;
-        this.earlyOutlook = earlyOutlook;
-    }
-
-    isShown(discipline: Skill) {
-        return this.earlyOutlook.disciplines.indexOf(discipline) >= 0;
-    }
-    isEditable(discipline: Skill)  {
-        return this.earlyOutlook.disciplines.length >= 1;
-    }
-    getValue(discipline: Skill) {
-        return this.character.skills[discipline].expertise;
-    }
-    canIncrease(discipline: Skill) {
-        return this.character.upbringingStep?.discipline == null && (this.character.skills[discipline].expertise < Character.maxDiscipline(this.character));
-    }
-    canDecrease(discipline: Skill) {
-        return this.character.upbringingStep?.discipline === discipline;
-    }
-    onIncrease(discipline: Skill) {
-        store.dispatch(modifyCharacterDiscipline(discipline, StepContext.EarlyOutlook, true));
-    }
-    onDecrease(discipline: Skill) {
-        store.dispatch(modifyCharacterDiscipline(discipline, StepContext.EarlyOutlook, false));
-    }
-}
+import { EarlyOutlookDiscplineController } from "../../components/earlyOutlookControllers";
 
 const SoloEarlyOutlookDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
     const earlyOutlook = character.upbringingStep?.upbringing;
-    const disciplineController = new SoloEarlyOutlookDiscplineController(character, earlyOutlook);
+    const disciplineController = new EarlyOutlookDiscplineController(character, earlyOutlook);
 
     const changeAccepted = (accepted: boolean) => {
         store.dispatch(setCharacterEarlyOutlook(earlyOutlook, accepted));

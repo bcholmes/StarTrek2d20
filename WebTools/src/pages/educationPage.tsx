@@ -1,5 +1,4 @@
 ﻿import React, { useState } from 'react';
-import {EducationStep, character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import {TrackModel, TracksHelper} from '../helpers/tracks';
@@ -14,7 +13,9 @@ import { hasSource } from '../state/contextFunctions';
 import { Source } from '../helpers/sources';
 import InstructionText from '../components/instructionText';
 import store from '../state/store';
-import { setCharacter } from '../state/characterActions';
+import { setCharacterEducation } from '../state/characterActions';
+import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { connect } from 'react-redux';
 
 enum StarfleetTrackTab {
 
@@ -23,7 +24,7 @@ enum StarfleetTrackTab {
     Other
 }
 
-export const StarfleetAcademyPage = () => {
+const EducationPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
     const [randomTrack, setRandomTrack] = useState(null);
     const [tab, setTab] = useState(StarfleetTrackTab.Officer);
@@ -36,9 +37,7 @@ export const StarfleetAcademyPage = () => {
 
     const selectTrack = (track: TrackModel) => {
         const enlisted = (tab === StarfleetTrackTab.Enlisted);
-        character.educationStep = new EducationStep(track.id, enlisted);
-        TracksHelper.instance.applyTrack(track.id, character.type);
-        store.dispatch(setCharacter(character));
+        store.dispatch(setCharacterEducation(track.id, enlisted));
         Navigation.navigateToPage(PageIdentity.EducationDetails);
     }
 
@@ -106,3 +105,5 @@ export const StarfleetAcademyPage = () => {
     );
 
 }
+
+export default connect(soloCharacterMapStateToProperties)(EducationPage);

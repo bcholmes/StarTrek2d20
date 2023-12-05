@@ -572,6 +572,15 @@ const FocusMedicineRandomTable = () => {
     }
 }
 
+export const FocusRandomTableWithHints = (skill?: Skill, hints: string[] =[]) => {
+    if (D20.roll() <= 10 && hints.length > 0) {
+        let i = Math.floor(hints.length * Math.random());
+        return hints[i];
+    } else {
+        return FocusRandomTable(skill);
+    }
+}
+
 export const FocusRandomTable = (skill?: Skill) => {
     if (skill == null) {
         skill = FocusDivisionRandomTable();

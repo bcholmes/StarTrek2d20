@@ -18,10 +18,10 @@ class SkillView extends React.Component<ISkillProperties, {}> {
                 <tbody>
                     <tr>
                         <td style={{ width: "250px" }}>
-                            <div className="skill-name">{t(makeKey('Construct.discipline.', Skill[skill]))}</div>
+                            <div className="skill-name text-white">{t(makeKey('Construct.discipline.', Skill[skill]))}</div>
                         </td>
-                        <td>(+{points}) &nbsp;</td>
-                        <td className="skill-expertise">{character.skills[skill].expertise}</td>
+                        <td className="text-white">(+{points}) &nbsp;</td>
+                        <td className="skill-expertise text-white">{character.skills[skill].expertise}</td>
                     </tr>
                 </tbody>
             </table>

@@ -16,6 +16,8 @@ import { AttributesHelper } from '../helpers/attributes';
 import { Header } from '../components/header';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { ValueRandomTable } from '../solo/table/valueRandomTable';
+import store from '../state/store';
+import { setCharacter } from '../state/characterActions';
 
 class EnvironmentDetailsPage extends React.Component<WithTranslation, {}> {
     private _otherSpecies: Species;
@@ -108,6 +110,7 @@ class EnvironmentDetailsPage extends React.Component<WithTranslation, {}> {
 
         if (character.environmentStep.discipline != null) {
             character.workflow.next();
+            store.dispatch(setCharacter(character));
             Navigation.navigateToPage(PageIdentity.Upbringing);
         }
         else {

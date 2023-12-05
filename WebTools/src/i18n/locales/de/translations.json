@@ -129,6 +129,10 @@
     "EducationPage.type.alliedMilitary": "Militärische Ausbildung",
     "EducationPage.type.ambassadorDiplomat": "Diplomatische Ausbildung",
 
+    "EducationPage.starfleet.academy": "Offizierslaufbahn",
+    "EducationPage.starfleet.enlisted": "Mannschaftslaufbahn",
+    "EducationPage.starfleet.other": "Andere",
+
     "EnvironmentPage.showAlt": "Alternative Herkunft erlauben (SL-Entscheidung)",
 
     "EnvironmentPage.button.selectEnvironment": "Herkunft wählen",
@@ -332,6 +336,7 @@
     "Construct.other.determination": "Entschlossenheit",
     "Construct.other.discipline": "Disziplin",
     "Construct.other.disciplines": "Disziplinen",
+    "Construct.other.education": "Ausbildung",
     "Construct.other.environment": "Herkunft",
     "Construct.other.equipment": "Ausrüstung",
     "Construct.other.era": "Ära",
@@ -406,9 +411,11 @@
     "Page.title.creditsPage": "Danksagungen",
     "Page.title.customSpaceframe": "Eigene Klasse erstellen",
     "Page.title.customSpeciesDetails": "Details zur selbst erschaffenen Spezies",
+    "Page.title.educationDetails": "Details zur Ausbildung",
     "Page.title.environment": "Herkunft",
     "Page.title.environmentDetails": "Details über die Herkunft",
     "Page.title.era": "Ära",
+    "Page.title.extraTalentDetails": "Zusätzliche Details",
     "Page.title.finalStarshipDetails": "Finale Raumschiff-Details",
     "Page.title.finish": "Feinschliff",
     "Page.title.gamemasterTrackerPage": "NSC-Verwaltung",

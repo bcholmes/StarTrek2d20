@@ -91,6 +91,21 @@ CharacterTypePage.whatGovernment,What government does this character represent?,
 CharacterTypePage.otherGovernmentName,What's the name of this government?,Wie lautet der Name dieser Regierung?,,Quel est le nom du gouvernement?
 CharacterTypePage.whatMilitary,What military does this character represent?,Welches Militär repräsentiert dieser Charakter?,,Quelle armée ce personnage représente?
 CharacterTypePage.otherMilitaryName,What's the name of this military?,Wie lautet der Name dieses Militärs?,,Quel est le nom de l'armée?
+CareerLength.instruction,"At this stage, you have a choice to make about the character. This decision is a clear one: are you a young officer, fresh out of the Academy, with your whole career ahead of you, have you served in Starfleet for several years, or are you a veteran with decades of experience?
+
+Either select or roll your Career.",,,
+CareerLength.instruction.klingon,"At this stage, you have a choice to make about the character. This decision is a clear one: is the character a young officer, eager for glory and with their whole career ahead of them, have they served in the KDF for several years, or are they a veteran with decades of experience?
+
+Either select or roll your Career.",,,
+CareerLength.instruction.civilian,"At this stage, you have a choice to make about the character. This decision is a clear one: are you a young professional, fresh out of training, with your whole career ahead of you, have you served in your career for several years, or are you a veteran with decades of experience?
+
+Either select or roll your Career.",,,
+EarlyOutlookPage.instruction,"The nature of a person’s family and their surroundings as they grew up can have a massive impact upon them, and, whether they accept this influence or rebelled against it, it will shape the rest of their lives.
+
+Either select or roll your early outlook.",,,
+EarlyOutlookPage.instruction.klingon,"The Klingon Empire has long had a system of castes, divided amongst the professions and vocations which allow society to function. Families within these castes tend to train in certain vocations, generation after generation. Throughout Klingon history, different castes have risen and fallen in prominence, though the Warrior caste has always held a place of significance. Within the last few centuries, however, this system has begun to break down, with caste divisions no longer as strictly defined as they once were, and while more traditional families still expect their children to follow in their footsteps, many Klingons break from caste and pursue whatever careers they desire.
+
+Either select or roll your caste.",,,
 EducationPage.instruction.alliedMilitary,"Outside of Starfleet, the Milky Way Galaxy hosts many other security and military organizations. Instead of a Starfleet or Klingon officer, you might choose to build a Captain’s Log story around a Bajoran freedom fighter, a member of the Andorian Imperial Guard, or a radically candid warrior of the Qowat Milat.
 
 As an alternative to attending Starfleet Academy, to select the type of military training your character has received, choose from the options in the following table, or randomly select one.",,,
@@ -117,9 +132,9 @@ EducationPage.type.klingonWarrior,Klingon Defense Force,Klingonische Verteidigun
 EducationPage.type.civilian,Civilian Career Training,Zivile Berufsausbildung,,
 EducationPage.type.alliedMilitary,Allied Military Training,Militärische Ausbildung,,
 EducationPage.type.ambassadorDiplomat,Diplomatic Training,Diplomatische Ausbildung,,
-EducationPage.starfleet.academy,Officer Academy,,,
-EducationPage.starfleet.enlisted,Enlisted Training,,,
-EducationPage.starfleet.other,Other,,,
+EducationPage.starfleet.academy,Officer Academy,Offizierslaufbahn,,
+EducationPage.starfleet.enlisted,Enlisted Training,Mannschaftslaufbahn,,
+EducationPage.starfleet.other,Other,Andere,,
 EnvironmentPage.showAlt,Allow alternate Environments (GM's decision),Alternative Herkunft erlauben (SL-Entscheidung),,Autoriser les Environements alternatifs (Décision du MJ)
 EnvironmentPage.button.selectEnvironment,Select Environment,Herkunft wählen,,Choisir Environnement
 EnvironmentPage.button.rollEnvironment,Roll Environment,Zufällige Herkunft,,Environement Aléatoire
@@ -325,7 +340,7 @@ Construct.other.departments,Departments,Abteilungen,Departamentos,Departements
 Construct.other.determination,Determination,Entschlossenheit,Determinación,Détermination
 Construct.other.discipline,Discipline,Disziplin,,Discipline
 Construct.other.disciplines,Disciplines,Disziplinen,Disciplinas,Disciplines
-Construct.other.education,Education,,,
+Construct.other.education,Education,Ausbildung,,
 Construct.other.environment,Environment,Herkunft,Medio ambiente,Environnement
 Construct.other.equipment,Equipment,Ausrüstung,Equipo,Équipement
 Construct.other.era,Era,Ära,Era,Ère
@@ -395,10 +410,11 @@ Page.title.characterType,Character Type,Art des Charakters,Tipo de carácter,Typ
 Page.title.creditsPage,Credits,Danksagungen,Créditos,Crédits
 Page.title.customSpaceframe,Custom Spaceframe Creation,Eigene Klasse erstellen,,Création de Modèle de Vaiseau
 Page.title.customSpeciesDetails,Custom Species Details,Details zur selbst erschaffenen Spezies,,Détails de Race Personalisé
+Page.title.educationDetails,Education Details,Details zur Ausbildung,,
 Page.title.environment,Environment,Herkunft,,Environnement
 Page.title.environmentDetails,Environment Details,Details über die Herkunft,,Détails de l'Environnement
 Page.title.era,Era,Ära,Era,Ère
-Page.title.extraTalentDetails,Extra Details,,,
+Page.title.extraTalentDetails,Extra Details,Zusätzliche Details,,
 Page.title.finalStarshipDetails,Final Starship Details,Finale Raumschiff-Details,,Détails Finaux du Vaisseau
 Page.title.finish,Finishing Touches,Feinschliff,,Touches Finales
 Page.title.gamemasterTrackerPage,Tracking,NSC-Verwaltung,Seguimiento,Suivi
