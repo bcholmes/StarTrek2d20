@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { EducationStep, character } from '../common/character';
 import { Navigation } from '../common/navigator';
 import { Window } from '../common/window';
 import { Button } from '../components/button';
@@ -7,7 +6,6 @@ import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcr
 import { Header } from '../components/header';
 import InstructionText from '../components/instructionText';
 import AgeHelper, { Age } from '../helpers/age';
-import {IPageProperties} from './iPageProperties';
 import { PageIdentity } from './pageIdentity';
 import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { useTranslation } from 'react-i18next';

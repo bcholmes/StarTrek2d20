@@ -5,7 +5,6 @@ import {navigateTo, Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
 import {Source} from '../helpers/sources';
-import {WorkflowsHelper} from '../helpers/workflows';
 import { hasSource } from '../state/contextFunctions';
 import { useTranslation } from 'react-i18next';
 import InstructionText from '../components/instructionText';

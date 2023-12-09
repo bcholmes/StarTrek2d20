@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {Character, SpeciesStep} from '../common/character';
+import {Character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import {SpeciesHelper} from '../helpers/species';
@@ -38,7 +38,7 @@ class SpeciesPage extends React.Component<ISpeciesPageProperties, ISpeciesPageSt
 
     render() {
 
-        const { t, character } = this.props;
+        const { t } = this.props;
 
         const rollAlpha = hasSource(Source.AlphaQuadrant) && this.isRollAvailable()
             ? <Button className="button" text={t('SpeciesPage.rollAlphaSpecies')} onClick={() => this.rollAlphaSpecies()} />

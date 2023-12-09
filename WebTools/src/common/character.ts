@@ -5,7 +5,6 @@ import {Environment} from '../helpers/environments';
 import {Species} from '../helpers/speciesEnum';
 import {Track} from '../helpers/trackEnum';
 import {EarlyOutlookModel} from '../helpers/upbringings';
-import {Workflow} from '../helpers/workflows';
 import {TalentViewModel} from '../helpers/talents';
 import {CharacterType} from './characterType';
 import { AlliedMilitary, AlliedMilitaryType } from '../helpers/alliedMilitary';
