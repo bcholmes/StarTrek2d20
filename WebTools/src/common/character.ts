@@ -745,6 +745,9 @@ export class Character extends Construct {
                 traits.push(species.name);
             }
         }
+        if (this.enlisted) {
+            traits.push("Enlisted Crewman");
+        }
         if (this.hasTalent("Augmented Ability (Control)")
                 || this.hasTalent("Augmented Ability (Daring)")
                 || this.hasTalent("Augmented Ability (Fitness)")
@@ -1002,6 +1005,9 @@ export class Character extends Construct {
             character.upbringingStep.acceptedUpbringing = this.upbringingStep.acceptedUpbringing;
             character.upbringingStep.discipline = this.upbringingStep.discipline;
             character.upbringingStep.focus = this.upbringingStep.focus;
+            if (this.upbringingStep.talent) {
+                character.upbringingStep.talent = this.upbringingStep.talent.copy();
+            }
         }
         if (this.educationStep) {
             character.educationStep = new EducationStep(this.educationStep.track, this.educationStep.enlisted);

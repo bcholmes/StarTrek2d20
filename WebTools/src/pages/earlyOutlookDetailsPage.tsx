@@ -16,7 +16,7 @@ import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../
 import { addCharacterTalent, setCharacterEarlyOutlook, setCharacterFocus, StepContext } from '../state/characterActions';
 import store from '../state/store';
 import { PageIdentity } from './pageIdentity';
-import { FocusRandomTable, FocusRandomTableWithHints } from '../solo/table/focusRandomTable';
+import { FocusRandomTableWithHints } from '../solo/table/focusRandomTable';
 import { connect } from 'react-redux';
 import D20IconButton from '../solo/component/d20IconButton';
 import { EarlyOutlookDiscplineController } from '../components/earlyOutlookControllers';

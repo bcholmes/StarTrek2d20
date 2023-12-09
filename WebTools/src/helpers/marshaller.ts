@@ -135,6 +135,9 @@ class Marshaller {
             if (character.upbringingStep.discipline != null) {
                 upbringing["discipline"] = Skill[character.upbringingStep.discipline];
             }
+            if (character.upbringingStep.talent != null) {
+                upbringing["talent"] = this.talentToJson(character.upbringingStep.talent);
+            }
             sheet["upbringing"] = upbringing;
         }
 
@@ -205,6 +208,10 @@ class Marshaller {
             if (character.speciesStep.attributes) {
                 sheet["species"]["stats"] = character.speciesStep.attributes.map(a => Attribute[a]);
             }
+
+            if (character.speciesStep.talent) {
+                sheet["species"]["talent"] = this.talentToJson(character.speciesStep.talent);
+            }
         }
 
         if (character.educationStep != null) {
@@ -235,11 +242,6 @@ class Marshaller {
             }
 
             sheet["training"] = education;
-        }
-
-        let talents = this.toTalentList(character.talents);
-        if (talents?.length) {
-            sheet["talents"] = talents;
         }
 
         let additionalTraits = this.parseTraits(character.additionalTraits);
@@ -768,6 +770,9 @@ console.log(json);
                     }
                     if (speciesBlock.stats != null) {
                         result.speciesStep.attributes = speciesBlock.stats.map(s => AttributesHelper.getAttributeByName(s));
+                    }
+                    if (speciesBlock.talent != null) {
+                        result.speciesStep.talent = this.hydrateTalent(speciesBlock.talent);
                     }
                 }
 

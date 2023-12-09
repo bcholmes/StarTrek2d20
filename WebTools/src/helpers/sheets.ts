@@ -813,7 +813,7 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         let lines: Line[] = [];
         let startLine = new Line(start, currentColumn);
         if (character.role != null) {
-            let role = RolesHelper.instance.getRoleModelByName(character.role, character.type);
+            let role = RolesHelper.instance.getRole(character.role, character.type);
             if (role) {
                 let blocks = this.createTextBlocks(role.name + ":", titleStyle, symbolStyle, startLine, page);
                 blocks.forEach((b, i) => { if (i < blocks.length -1) lines.push(b); });

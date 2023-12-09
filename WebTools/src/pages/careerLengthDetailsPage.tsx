@@ -85,7 +85,7 @@ const CareerLengthDetailsPage : React.FC<ISoloCharacterProperties> = ({character
 
     const filterTalentList = () => {
         return TalentsHelper.getAllAvailableTalentsForCharacter(character).filter(
-            t => !character.hasTalent(talentName) || (talentName != null && t.name === talentName) || t.rank > 1);
+            t => !character.hasTalent(t.name) || (character.careerStep?.talent != null && t.name === character.careerStep?.talent?.talent) || t.rank > 1);
     }
 
     const onTalentSelected = (talent: TalentViewModel) => {

@@ -1,59 +1,57 @@
-﻿import * as React from 'react';
-import {character} from '../common/character';
+﻿import React, { useEffect } from 'react';
 import {Navigation} from '../common/navigator';
 import {Button} from '../components/button';
 import {TalentDescription} from '../components/talentDescription';
 import ValueInput, {Value} from '../components/valueInput';
-import { TalentsHelper, TalentViewModel } from '../helpers/talents';
+import { TalentsHelper, ToViewModel } from '../helpers/talents';
 import InstructionText from '../components/instructionText';
 import { Header } from '../components/header';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
+import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { connect } from 'react-redux';
+import { PageIdentity } from './pageIdentity';
+import store from '../state/store';
+import { StepContext, addCharacterTalent } from '../state/characterActions';
 
-interface ISimpleCareerPageProperties extends WithTranslation {
+interface ISimpleCareerPageProperties extends ISoloCharacterProperties {
     talent: string;
+    nextPage: PageIdentity;
 }
 
-class SimpleCareerPage extends React.Component<ISimpleCareerPageProperties, {}> {
+const SimpleCareerPage: React.FC<ISimpleCareerPageProperties> = ({character, talent, nextPage}) => {
 
-    talent: TalentViewModel;
+    const { t } = useTranslation();
+    const talentModel = TalentsHelper.getTalent(talent);
 
-    constructor(props) {
-        super(props);
-        // this never changes for the life of the page
-        this.talent = TalentsHelper.getTalentViewModel(this.props.talent);
+    const onNext = () => {
+        Navigation.navigateToPage(nextPage);
     }
 
-    render() {
-        const { t } = this.props;
-        return (
-            <div className="page">
-                <CharacterCreationBreadcrumbs />
-                <Header>{t('Page.title.career')}</Header>
-                <InstructionText text={character.workflow.currentStep().description} />
-                <div className="row">
-                    <div className="col-12 col-md-6">
-                        <Header level={2}>{t('Construct.other.value')}</Header>
-                        <ValueInput value={Value.Career}/>
-                    </div>
-                    <div className="col-12 col-md-6">
-                        <Header level={2}>{t('Construct.other.talent')}</Header>
-                        <TalentDescription name={this.talent.name} description={this.talent.description} />
-                    </div>
+    useEffect(() => {
+        store.dispatch(addCharacterTalent(ToViewModel(talentModel), StepContext.Career));
+    }, [talent]);
+
+    return (
+        <div className="page">
+            <CharacterCreationBreadcrumbs />
+            <Header>{t('Page.title.career')}</Header>
+            <InstructionText text={character.workflow.currentStep().description} />
+            <div className="row">
+                <div className="col-12 col-lg-6">
+                    <Header level={2}>{t('Construct.other.value')}</Header>
+                    <ValueInput value={Value.Career}/>
                 </div>
-                <div className="text-right">
-                    <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary" onClick={() => this.onNext() }/>
+                <div className="col-12 col-lg-6">
+                    <Header level={2}>{t('Construct.other.talent')}</Header>
+                    <TalentDescription name={talentModel.localizedName} description={talentModel.description} />
                 </div>
             </div>
-        );
-    }
-
-    private onNext() {
-        character.addTalent(this.talent);
-
-        character.workflow.next();
-        Navigation.navigateToPage(character.workflow.currentStep().page);
-    }
+            <div className="text-right">
+                <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary" onClick={() => onNext() }/>
+            </div>
+        </div>
+    );
 }
 
-export default withTranslation()(SimpleCareerPage);
+export default connect(soloCharacterMapStateToProperties)(SimpleCareerPage);

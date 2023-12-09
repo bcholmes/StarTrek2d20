@@ -83,8 +83,8 @@ export class PageFactory {
         this.factories[PageIdentity.CareerEvent1Details] = () => <CareerEventDetailsPage context={StepContext.CareerEvent1}/>;
         this.factories[PageIdentity.CareerEvent2] = () => <CareerEventPage context={StepContext.CareerEvent2}/>;
         this.factories[PageIdentity.CareerEvent2Details] = () => <CareerEventDetailsPage context={StepContext.CareerEvent2}/>;
-        this.factories[PageIdentity.ChildCareer] = () => <SimpleCareerPage talent="Childhood Insight"/>;
-        this.factories[PageIdentity.CadetCareer] = () => <SimpleCareerPage talent="Untapped Potential" />;
+        this.factories[PageIdentity.ChildCareer] = () => <SimpleCareerPage talent="Childhood Insight" nextPage={PageIdentity.AttributesAndDisciplines}/>;
+        this.factories[PageIdentity.CadetCareer] = () => <SimpleCareerPage talent="Untapped Potential"  nextPage={PageIdentity.CadetSeniority} />;
         this.factories[PageIdentity.CadetSeniority] = () => <CadetSeniorityPage />;
         this.factories[PageIdentity.ChildEducationPage] = () => <ChildEducationPage/>;
         this.factories[PageIdentity.ChildEducationDetailsPage] = () => <ChildEducationDetailsPage/>;
