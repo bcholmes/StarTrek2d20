@@ -19,14 +19,14 @@ import ReactMarkdown from 'react-markdown';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 import store from '../state/store';
 import { StepContext, addCharacterTalent, setCharacterFocus, setCharacterValue } from '../state/characterActions';
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { connect } from 'react-redux';
 import { EducationAttributeController, EducationPrimaryDisciplineController, EducationSecondaryDisciplineController } from '../components/educationControllers';
 import AttributeListComponent from '../components/attributeListComponent';
 import DisciplineListComponent from '../components/disciplineListComponent';
 import { PageIdentity } from './pageIdentity';
 
-const EducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
     const track = TracksHelper.instance.getSoloTrack(character.educationStep?.track);
@@ -165,14 +165,14 @@ const EducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) =
             } else if (character.type === CharacterType.Cadet) {
                 Navigation.navigateToPage(PageIdentity.CadetCareer);
             } else {
-                Navigation.navigateToPage(PageIdentity.Career);
+                Navigation.navigateToPage(PageIdentity.CareerLength);
             }
         }
     }
 
     return (
         <div className="page container ml-0">
-            <CharacterCreationBreadcrumbs />
+            <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.EducationDetails} />
             <Header>{track.name}</Header>
             <InstructionText text={track.description} />
             <div className="row">
@@ -199,4 +199,4 @@ const EducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) =
 
 }
 
-export default connect(soloCharacterMapStateToProperties)(EducationDetailsPage);
+export default connect(characterMapStateToProperties)(EducationDetailsPage);

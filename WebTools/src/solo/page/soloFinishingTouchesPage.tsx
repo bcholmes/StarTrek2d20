@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "./soloCharacterProperties";
+import { ICharacterProperties, characterMapStateToProperties } from "./soloCharacterProperties";
 import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
@@ -16,7 +16,7 @@ import { ValueRandomTable } from "../table/valueRandomTable";
 import D20IconButton from "../component/d20IconButton";
 import { FinishingTouchesAttributeController, FinishingTouchesDisciplineController } from "../../components/finishingTouchesControllers";
 
-const SoloFinishingTouchesPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const SoloFinishingTouchesPage: React.FC<ICharacterProperties> = ({character}) => {
     const { t } = useTranslation();
 
     let attributeTotal = 0;
@@ -94,4 +94,4 @@ const SoloFinishingTouchesPage: React.FC<ISoloCharacterProperties> = ({character
 }
 
 
-export default connect(soloCharacterMapStateToProperties)(SoloFinishingTouchesPage);
+export default connect(characterMapStateToProperties)(SoloFinishingTouchesPage);

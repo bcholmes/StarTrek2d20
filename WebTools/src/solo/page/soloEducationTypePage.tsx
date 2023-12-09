@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ISoloCharacterProperties } from "./soloCharacterProperties";
+import { ICharacterProperties } from "./soloCharacterProperties";
 import { useTranslation } from "react-i18next";
 import { CharacterType, CharacterTypeModel } from "../../common/characterType";
 import store from "../../state/store";
@@ -14,7 +14,7 @@ import { setCharacterType } from "../../state/characterActions";
 import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 
 
-const SoloEducationTypePage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const SoloEducationTypePage: React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
     const [randomType, setRandomType] = useState(character?.educationStep ? character.type : null);

@@ -7,7 +7,7 @@ import { Button } from "../../components/button";
 import store from "../../state/store";
 import { StepContext, setCharacterValue } from "../../state/characterActions";
 import SoloValueInput from "../component/soloValueInput";
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "./soloCharacterProperties";
+import { ICharacterProperties, characterMapStateToProperties } from "./soloCharacterProperties";
 import { CareersHelper } from "../../helpers/careers";
 import { Dialog } from "../../components/dialog";
 import { makeKey } from "../../common/translationKey";
@@ -16,7 +16,7 @@ import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 import D20IconButton from "../component/d20IconButton";
 import { ValueRandomTable } from "../table/valueRandomTable";
 
-const SoloCareerLengthDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const SoloCareerLengthDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
     const { t } = useTranslation();
 
     const careerLength = CareersHelper.instance.getSoloCareerLength(character.careerStep?.career);
@@ -68,4 +68,4 @@ const SoloCareerLengthDetailsPage: React.FC<ISoloCharacterProperties> = ({charac
 }
 
 
-export default connect(soloCharacterMapStateToProperties)(SoloCareerLengthDetailsPage);
+export default connect(characterMapStateToProperties)(SoloCareerLengthDetailsPage);

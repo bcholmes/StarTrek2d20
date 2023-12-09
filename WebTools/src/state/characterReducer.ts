@@ -47,10 +47,21 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         }
         case SET_CHARACTER_SPECIES: {
             let temp = state.currentCharacter.copy();
+            let originalStep = temp.speciesStep;
             temp.speciesStep = new SpeciesStep(action.payload.species);
             if (action.payload.attributes) {
                 temp.speciesStep.attributes = action.payload.attributes;
             }
+            if (originalStep) {
+                if (originalStep.species === temp.speciesStep.species) {
+                    temp.speciesStep.attributes = [...originalStep.attributes];
+                    temp.speciesStep.customSpeciesName = originalStep.customSpeciesName;
+                    temp.speciesStep.mixedSpecies = originalStep.mixedSpecies;
+                    temp.speciesStep.originalSpecies = originalStep.originalSpecies;
+                    temp.speciesStep.talent = originalStep.talent?.copy();
+                }
+            }
+
             return {
                 ...state,
                 currentCharacter: temp,
@@ -149,6 +160,7 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.upbringingStep.discipline = originalStep.discipline;
                 }
                 temp.upbringingStep.focus = originalStep.focus;
+                temp.upbringingStep.talent = temp.upbringingStep.talent?.copy();
             }
             return {
                 ...state,
@@ -385,7 +397,7 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.role = action.payload.role;
                     temp.jobAssignment = undefined;
 
-                    if (action.payload.secondaryRole) {
+                    if (action.payload.secondaryRole != null) {
                         temp.secondaryRole = action.payload.secondaryRole;
                     } else {
                         temp.secondaryRole = undefined;

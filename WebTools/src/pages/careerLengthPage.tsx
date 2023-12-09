@@ -1,7 +1,7 @@
 ﻿import { useTranslation } from "react-i18next";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "../solo/page/soloCharacterProperties";
+import { ICharacterProperties, characterMapStateToProperties } from "../solo/page/soloCharacterProperties";
 import { CareerModel, CareersHelper } from "../helpers/careers";
 import { setCharacterCareerLength } from "../state/characterActions";
 import store from "../state/store";
@@ -20,17 +20,17 @@ import { ADVANCED_TEAM_DYNAMICS } from "../helpers/talents";
 import { Career } from "../helpers/careerEnum";
 import { D20 } from "../common/die";
 
-const CareerLengthPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const CareerLengthPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
     const [randomLength, setRandomLength] = useState(character?.careerStep?.career);
 
     const careerLengthSelected = (careerLength: CareerModel)=> {
         store.dispatch(setCharacterCareerLength(careerLength.id));
-        if (character.stereotype === Stereotype.MainCharacter) {
-            Navigation.navigateToPage(PageIdentity.CareerDetails);
-        } else {
+        if (character.stereotype === Stereotype.SoloCharacter) {
             Navigation.navigateToPage(PageIdentity.SoloCareerLengthDetails);
+        } else {
+            Navigation.navigateToPage(PageIdentity.CareerLengthDetails);
         }
     }
 
@@ -92,4 +92,4 @@ const CareerLengthPage: React.FC<ISoloCharacterProperties> = ({character}) => {
         </div>);
 }
 
-export default connect(soloCharacterMapStateToProperties)(CareerLengthPage);
+export default connect(characterMapStateToProperties)(CareerLengthPage);

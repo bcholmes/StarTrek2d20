@@ -98,8 +98,8 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
             activePage === PageIdentity.UpbringingDetails ||
             activePage === PageIdentity.Education ||
             activePage === PageIdentity.EducationDetails ||
-            activePage === PageIdentity.Career ||
-            activePage === PageIdentity.CareerDetails ||
+            activePage === PageIdentity.CareerLength ||
+            activePage === PageIdentity.CareerLengthDetails ||
             activePage === PageIdentity.CareerEvent1 ||
             activePage === PageIdentity.CareerEvent1Details ||
             activePage === PageIdentity.CareerEvent2 ||

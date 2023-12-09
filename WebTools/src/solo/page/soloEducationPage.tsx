@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ISoloCharacterProperties } from "./soloCharacterProperties";
+import { ICharacterProperties } from "./soloCharacterProperties";
 import { connect } from "react-redux";
 import { Header } from "../../components/header";
 import { Navigation } from "../../common/navigator";
@@ -15,7 +15,7 @@ import store from "../../state/store";
 import { setCharacterEducation } from "../../state/characterActions";
 import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 
-const SoloEducationPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const SoloEducationPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
     const [randomTrack, setRandomTrack] = useState(character?.educationStep?.track);

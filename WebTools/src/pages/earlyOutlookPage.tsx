@@ -7,7 +7,7 @@ import InstructionText from '../components/instructionText';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import store from '../state/store';
 import { setCharacterEarlyOutlook } from '../state/characterActions';
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { Header } from '../components/header';
 import { useTranslation } from 'react-i18next';
 import { makeKey } from '../common/translationKey';
@@ -27,7 +27,7 @@ enum EarlyOutlookTab {
     Aspirations
 }
 
-const EarlyOutlookPage : React.FC<ISoloCharacterProperties> = ({character}) => {
+const EarlyOutlookPage : React.FC<ICharacterProperties> = ({character}) => {
 
     const determineInitialTab = (outlook?: EarlyOutlook) => {
         if (outlook == null && character.type !== CharacterType.KlingonWarrior) {
@@ -211,7 +211,7 @@ const EarlyOutlookPage : React.FC<ISoloCharacterProperties> = ({character}) => {
 
     return (
         <div className="page container ml-0">
-            <CharacterCreationBreadcrumbs />
+            <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Upbringing} />
             <Header>{t('Page.title.soloEarlyOutlook')}</Header>
 
             <InstructionText text={character.type === CharacterType.KlingonWarrior ? t('EarlyOutlookPage.instruction.klingon') : t('EarlyOutlookPage.instruction')} />
@@ -235,4 +235,4 @@ const EarlyOutlookPage : React.FC<ISoloCharacterProperties> = ({character}) => {
         </div>);
 }
 
-export default connect(soloCharacterMapStateToProperties)(EarlyOutlookPage);
+export default connect(characterMapStateToProperties)(EarlyOutlookPage);

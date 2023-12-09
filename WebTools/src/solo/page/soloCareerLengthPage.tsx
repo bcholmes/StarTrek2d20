@@ -3,7 +3,7 @@ import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
 import InstructionText from "../../components/instructionText";
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "./soloCharacterProperties";
+import { ICharacterProperties, characterMapStateToProperties } from "./soloCharacterProperties";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { CareerModel, CareersHelper } from "../../helpers/careers";
@@ -14,7 +14,7 @@ import store from "../../state/store";
 import { setCharacterCareerLength } from "../../state/characterActions";
 import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 
-const SoloCareerLengthPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const SoloCareerLengthPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
     const [randomLength, setRandomLength] = useState(character?.careerStep?.career);
@@ -59,4 +59,4 @@ const SoloCareerLengthPage: React.FC<ISoloCharacterProperties> = ({character}) =
         </div>);
 }
 
-export default connect(soloCharacterMapStateToProperties)(SoloCareerLengthPage);
+export default connect(characterMapStateToProperties)(SoloCareerLengthPage);

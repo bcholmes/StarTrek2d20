@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "../solo/page/soloCharacterProperties";
+import { ICharacterProperties, characterMapStateToProperties } from "../solo/page/soloCharacterProperties";
 import { useTranslation } from "react-i18next";
 import { CharacterType } from "../common/characterType";
 import { Header } from "./header";
@@ -10,7 +10,7 @@ import ValueInput from "./valueInputWithRandomOption";
 import { makeKey } from "../common/translationKey";
 import { Career } from "../helpers/careerEnum";
 
-const AllCharacterValues: React.FC<ISoloCharacterProperties> = ({character}) => {
+const AllCharacterValues: React.FC<ICharacterProperties> = ({character}) => {
 
 
     const randomValue = (context: StepContext) => {
@@ -87,4 +87,4 @@ const AllCharacterValues: React.FC<ISoloCharacterProperties> = ({character}) => 
     }
 }
 
-export default connect(soloCharacterMapStateToProperties)(AllCharacterValues);
+export default connect(characterMapStateToProperties)(AllCharacterValues);

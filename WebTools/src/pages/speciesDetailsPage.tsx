@@ -18,12 +18,12 @@ import AttributeListComponent from '../components/attributeListComponent';
 import SingleTalentSelectionList from '../components/singleTalentSelectionList';
 import { useTranslation } from 'react-i18next';
 import { StepContext, addCharacterTalent } from '../state/characterActions';
-import { ISoloCharacterProperties } from '../solo/page/soloCharacterProperties';
+import { ICharacterProperties } from '../solo/page/soloCharacterProperties';
 import { SpeciesAttributeController } from '../components/speciesController';
 import { Stereotype } from '../common/construct';
 import { CharacterType } from '../common/characterType';
 
-interface ISpeciesDetailsProperties extends ISoloCharacterProperties {
+interface ISpeciesDetailsProperties extends ICharacterProperties {
     allowCrossSpeciesTalents: boolean;
     allowEsotericTalents: boolean;
 }
@@ -124,7 +124,7 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
     return (
         <div className="page">
             <div className="container ml-0">
-                <CharacterCreationBreadcrumbs />
+                <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.SpeciesDetails} />
                 <Header>{character.localizedSpeciesName}</Header>
                 <InstructionText text={species.localizedDescription} />
 

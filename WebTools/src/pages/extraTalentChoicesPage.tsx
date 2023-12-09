@@ -9,13 +9,13 @@ import replaceDiceWithArrowhead from '../common/arrowhead';
 import store from '../state/store';
 import { addCharacterBorgImplant, addCharacterTalentFocus, removeCharacterBorgImplant } from '../state/characterActions';
 import { BorgImplants, Implant } from '../helpers/borgImplant';
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_EXPANDED_PROGRAM, TALENT_NAME_VISIT_EVERY_STAR } from '../helpers/talents';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 
-const ExtraTalentChoicesPage : React.FC<ISoloCharacterProperties> = ({character}) => {
+const ExtraTalentChoicesPage : React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
 
@@ -136,4 +136,4 @@ const ExtraTalentChoicesPage : React.FC<ISoloCharacterProperties> = ({character}
         </div>);
 }
 
-export default connect(soloCharacterMapStateToProperties)(ExtraTalentChoicesPage);
+export default connect(characterMapStateToProperties)(ExtraTalentChoicesPage);

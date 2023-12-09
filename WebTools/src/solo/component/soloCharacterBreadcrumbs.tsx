@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "../page/soloCharacterProperties";
+import { ICharacterProperties, characterMapStateToProperties } from "../page/soloCharacterProperties";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "../../common/navigator";
 import store from "../../state/store";
 import { setCharacterFinishingTouches } from "../../state/characterActions";
 
-interface ISoloCharacterBreadcrumbProperties extends ISoloCharacterProperties{
+interface ISoloCharacterBreadcrumbProperties extends ICharacterProperties{
     pageIdentity: PageIdentity;
 }
 
@@ -115,4 +115,4 @@ const SoloCharacterBreadcrumbs: React.FC<ISoloCharacterBreadcrumbProperties> = (
     </nav>);
 }
 
-export default connect(soloCharacterMapStateToProperties)(SoloCharacterBreadcrumbs);
+export default connect(characterMapStateToProperties)(SoloCharacterBreadcrumbs);

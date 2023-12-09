@@ -1,6 +1,6 @@
 ﻿import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "../solo/page/soloCharacterProperties";
+import { ICharacterProperties, characterMapStateToProperties } from "../solo/page/soloCharacterProperties";
 import { Environment, EnvironmentsHelper } from "../helpers/environments";
 import { setCharacterEnvironment } from "../state/characterActions";
 import store from "../state/store";
@@ -24,7 +24,7 @@ enum EnvironmentTab {
     Conditions
 }
 
-const EnvironmentPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const EnvironmentPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
     const [tab, setTab] = useState((character?.environmentStep == null || EnvironmentsHelper.isSetting(character?.environmentStep?.environment)) ? EnvironmentTab.Settings : EnvironmentTab.Conditions);
@@ -146,7 +146,7 @@ const EnvironmentPage: React.FC<ISoloCharacterProperties> = ({character}) => {
         <div className="page container ml-0">
             {character.stereotype === Stereotype.SoloCharacter
                 ? (<SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloEnvironment} />)
-                : (<CharacterCreationBreadcrumbs />)};
+                : (<CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Environment} />)};
             <Header>{t('Page.title.environment')}</Header>
 
             <InstructionText text={t('SoloEnvironmentPage.instruction')} />
@@ -164,4 +164,4 @@ const EnvironmentPage: React.FC<ISoloCharacterProperties> = ({character}) => {
         </div>);
 }
 
-export default connect(soloCharacterMapStateToProperties)(EnvironmentPage);
+export default connect(characterMapStateToProperties)(EnvironmentPage);

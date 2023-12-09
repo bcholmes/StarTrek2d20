@@ -144,8 +144,8 @@ class History extends React.Component<IHistoryProperties, {}> {
                 case PageIdentity.ChildCareer: return "Career";
                 case PageIdentity.CadetCareer: return "Career";
                 case PageIdentity.CadetSeniority: return "Cadet Seniority";
-                case PageIdentity.Career: return "Career";
-                case PageIdentity.CareerDetails: return "Career Details";
+                case PageIdentity.CareerLength: return "Career";
+                case PageIdentity.CareerLengthDetails: return "Career Details";
                 case PageIdentity.CareerEvent1: return "Career Event 1";
                 case PageIdentity.CareerEvent1Details: return "Career Event 1 Details";
                 case PageIdentity.CareerEvent2: return "Career Event 2";

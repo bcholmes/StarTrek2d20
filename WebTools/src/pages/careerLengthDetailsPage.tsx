@@ -15,10 +15,10 @@ import { ValueRandomTable } from '../solo/table/valueRandomTable';
 import { Career } from '../helpers/careerEnum';
 import store from '../state/store';
 import { StepContext, addCharacterTalent, setCharacterValue } from '../state/characterActions';
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { connect } from 'react-redux';
 
-const CareerLengthDetailsPage : React.FC<ISoloCharacterProperties> = ({character}) => {
+const CareerLengthDetailsPage : React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
     const [ talentName, setTalentName ] = useState(null);
@@ -118,4 +118,4 @@ const CareerLengthDetailsPage : React.FC<ISoloCharacterProperties> = ({character
 
 }
 
-export default connect(soloCharacterMapStateToProperties)(CareerLengthDetailsPage);
+export default connect(characterMapStateToProperties)(CareerLengthDetailsPage);

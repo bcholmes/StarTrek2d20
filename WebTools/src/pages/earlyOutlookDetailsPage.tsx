@@ -12,7 +12,7 @@ import InstructionText from '../components/instructionText';
 import { Header } from '../components/header';
 import { useTranslation } from 'react-i18next';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { addCharacterTalent, setCharacterEarlyOutlook, setCharacterFocus, StepContext } from '../state/characterActions';
 import store from '../state/store';
 import { PageIdentity } from './pageIdentity';
@@ -21,8 +21,9 @@ import { connect } from 'react-redux';
 import D20IconButton from '../solo/component/d20IconButton';
 import { EarlyOutlookDiscplineController } from '../components/earlyOutlookControllers';
 import DisciplineListComponent from '../components/disciplineListComponent';
+import { CharacterType } from '../common/characterType';
 
-const EarlyOutlookDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
     const earlyOutlook = character.upbringingStep?.upbringing;
@@ -40,7 +41,12 @@ const EarlyOutlookDetailsPage: React.FC<ISoloCharacterProperties> = ({character}
         } else if (character.upbringingStep?.talent == null) {
             Dialog.show(t('UpbringingDetailPage.error.talent'));
         } else {
-            Navigation.navigateToPage(PageIdentity.Education);
+
+            if (character.type === CharacterType.Child) {
+                Navigation.navigateToPage(PageIdentity.ChildEducationPage);
+            } else {
+                Navigation.navigateToPage(PageIdentity.Education);
+            }
         }
     }
 
@@ -79,13 +85,13 @@ const EarlyOutlookDetailsPage: React.FC<ISoloCharacterProperties> = ({character}
 
     return (
         <div className="page container ml-0">
-            <CharacterCreationBreadcrumbs />
+            <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.UpbringingDetails} />
             <Header>{earlyOutlook.localizedName}</Header>
 
             <InstructionText text={earlyOutlook.description} />
 
             <div className="row">
-            <div className="col-lg-6 my-3">
+                <div className="col-lg-6 my-3">
                     <p>{t('UpbringingDetailPage.text')}</p>
                     <CheckBox isChecked={character.upbringingStep?.acceptedUpbringing} text={t('UpbringingDetailPage.text.accept')} value={1} onChanged={() => changeAccepted(true)}/>
                     <CheckBox isChecked={!character.upbringingStep?.acceptedUpbringing} text={t('UpbringingDetailPage.text.reject')} value={0} onChanged={() => changeAccepted(false)}/>
@@ -125,4 +131,4 @@ const EarlyOutlookDetailsPage: React.FC<ISoloCharacterProperties> = ({character}
     );
 }
 
-export default connect(soloCharacterMapStateToProperties)(EarlyOutlookDetailsPage)
+export default connect(characterMapStateToProperties)(EarlyOutlookDetailsPage)

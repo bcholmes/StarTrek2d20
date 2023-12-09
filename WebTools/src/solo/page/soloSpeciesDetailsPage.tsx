@@ -8,12 +8,12 @@ import { SpeciesHelper } from "../../helpers/species";
 import InstructionText from "../../components/instructionText";
 import AttributeListComponent from "../../components/attributeListComponent";
 import { Button } from "../../components/button";
-import { ISoloCharacterProperties } from "./soloCharacterProperties";
+import { ICharacterProperties } from "./soloCharacterProperties";
 import { Dialog } from "../../components/dialog";
 import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 import { SpeciesAttributeController } from "../../components/speciesController";
 
-const SoloSpeciesDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const SoloSpeciesDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
 

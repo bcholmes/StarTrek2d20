@@ -62,7 +62,7 @@ export const getPageTitle = (t, page) => {
             || page === PageIdentity.ChildEducationPage
             || page === PageIdentity.ChildEducationDetailsPage
             || page === PageIdentity.CareerEvent1
-            || page === PageIdentity.CareerDetails
+            || page === PageIdentity.CareerLengthDetails
             || page === PageIdentity.CareerEvent1Details
             || page === PageIdentity.CareerEvent2
             || page === PageIdentity.CareerEvent2Details

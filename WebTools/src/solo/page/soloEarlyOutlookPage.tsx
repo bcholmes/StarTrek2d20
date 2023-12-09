@@ -14,7 +14,7 @@ import { EarlyOutlook, EarlyOutlookModel, UpbringingsHelper } from "../../helper
 import { EarlyOutlookAspirationRandomTable, EarlyOutlookCasteRandomTable, EarlyOutlookUpbringingRandomTable } from "../table/earlyOutlookRandomTable";
 import { setCharacterEarlyOutlook } from "../../state/characterActions";
 import store from "../../state/store";
-import { ISoloCharacterProperties } from "./soloCharacterProperties";
+import { ICharacterProperties } from "./soloCharacterProperties";
 import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 
 enum EarlyOutlookTab {
@@ -23,7 +23,7 @@ enum EarlyOutlookTab {
     Aspirations
 }
 
-const SoloEarlyOutlookPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const SoloEarlyOutlookPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const determineInitialTab = (outlook: EarlyOutlook) => {
         if (outlook == null) {

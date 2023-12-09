@@ -1,5 +1,5 @@
 import React from "react";
-import { ISoloCharacterProperties } from "./soloCharacterProperties";
+import { ICharacterProperties } from "./soloCharacterProperties";
 import { connect } from "react-redux";
 import { Header } from "../../components/header";
 import InstructionText from "../../components/instructionText";
@@ -20,7 +20,7 @@ import D20IconButton from "../component/d20IconButton";
 import { FocusRandomTable } from "../table/focusRandomTable";
 import { EarlyOutlookDiscplineController } from "../../components/earlyOutlookControllers";
 
-const SoloEarlyOutlookDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const SoloEarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
     const earlyOutlook = character.upbringingStep?.upbringing;

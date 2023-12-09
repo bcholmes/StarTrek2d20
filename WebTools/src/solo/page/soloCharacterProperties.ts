@@ -1,10 +1,10 @@
 import { Character } from "../../common/character";
 
-export interface ISoloCharacterProperties {
+export interface ICharacterProperties {
     character: Character;
 }
 
-export const soloCharacterMapStateToProperties = (state, ownProps) => {
+export const characterMapStateToProperties = (state, ownProps) => {
     return {
         character: state.character?.currentCharacter
     };

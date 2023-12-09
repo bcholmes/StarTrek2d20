@@ -99,7 +99,7 @@ class SpeciesPage extends React.Component<ISpeciesPageProperties, ISpeciesPageSt
         return (
             <div className="page">
                 <div className="container ml-0">
-                    <CharacterCreationBreadcrumbs />
+                    <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Species} />
                     {content}
                 </div>
             </div>

@@ -3,7 +3,7 @@ import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
 import InstructionText from "../../components/instructionText";
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "./soloCharacterProperties";
+import { ICharacterProperties, characterMapStateToProperties } from "./soloCharacterProperties";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Window } from "../../common/window";
@@ -16,7 +16,7 @@ import { SkillsHelper } from "../../helpers/skills";
 import store from "../../state/store";
 import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 
-interface ISoloCareerEventProperties extends ISoloCharacterProperties {
+interface ISoloCareerEventProperties extends ICharacterProperties {
     context: StepContext;
 }
 
@@ -76,4 +76,4 @@ const SoloCareerEventPage: React.FC<ISoloCareerEventProperties> = ({character, c
         </div>);
 }
 
-export default connect(soloCharacterMapStateToProperties)(SoloCareerEventPage);
+export default connect(characterMapStateToProperties)(SoloCareerEventPage);

@@ -8,14 +8,14 @@ import InstructionText from '../components/instructionText';
 import { Header } from '../components/header';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { useTranslation } from 'react-i18next';
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { connect } from 'react-redux';
 import { PageIdentity } from './pageIdentity';
 import store from '../state/store';
 import { StepContext, addCharacterTalent } from '../state/characterActions';
 import { CharacterType } from '../common/characterType';
 
-interface ISimpleCareerPageProperties extends ISoloCharacterProperties {
+interface ISimpleCareerPageProperties extends ICharacterProperties {
     talent: string;
     nextPage: PageIdentity;
 }
@@ -57,4 +57,4 @@ const SimpleCareerPage: React.FC<ISimpleCareerPageProperties> = ({character, tal
     );
 }
 
-export default connect(soloCharacterMapStateToProperties)(SimpleCareerPage);
+export default connect(characterMapStateToProperties)(SimpleCareerPage);

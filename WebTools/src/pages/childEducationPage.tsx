@@ -7,7 +7,7 @@ import { Header } from '../components/header';
 import InstructionText from '../components/instructionText';
 import AgeHelper, { Age } from '../helpers/age';
 import { PageIdentity } from './pageIdentity';
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import store from '../state/store';
@@ -48,7 +48,7 @@ const AgeSelection : React.FC<ITrackSelectionProperties> = ({onSelection}) => {
     );
 }
 
-const ChildEducationPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const ChildEducationPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
 
@@ -65,4 +65,4 @@ const ChildEducationPage: React.FC<ISoloCharacterProperties> = ({character}) => 
 
 }
 
-export default connect(soloCharacterMapStateToProperties)(ChildEducationPage);
+export default connect(characterMapStateToProperties)(ChildEducationPage);

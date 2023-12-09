@@ -77,8 +77,8 @@ export class PageFactory {
         this.factories[PageIdentity.UpbringingDetails] = () => <EarlyOutlookDetailsPage/>;
         this.factories[PageIdentity.Education] = () => <EducationPage/>;
         this.factories[PageIdentity.EducationDetails] = () => <EducationDetailsPage/>;
-        this.factories[PageIdentity.Career] = () => <CareerLengthPage/>;
-        this.factories[PageIdentity.CareerDetails] = () => <CareerLengthDetailsPage/>;
+        this.factories[PageIdentity.CareerLength] = () => <CareerLengthPage/>;
+        this.factories[PageIdentity.CareerLengthDetails] = () => <CareerLengthDetailsPage/>;
         this.factories[PageIdentity.CareerEvent1] = () => <CareerEventPage context={StepContext.CareerEvent1}/>;
         this.factories[PageIdentity.CareerEvent1Details] = () => <CareerEventDetailsPage context={StepContext.CareerEvent1}/>;
         this.factories[PageIdentity.CareerEvent2] = () => <CareerEventPage context={StepContext.CareerEvent2}/>;

@@ -14,7 +14,7 @@ import { Source } from '../helpers/sources';
 import InstructionText from '../components/instructionText';
 import store from '../state/store';
 import { setCharacterEducation } from '../state/characterActions';
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { connect } from 'react-redux';
 
 enum StarfleetTrackTab {
@@ -24,7 +24,7 @@ enum StarfleetTrackTab {
     Other
 }
 
-const EducationPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const EducationPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const [randomTrack, setRandomTrack] = useState(null);
     const [tab, setTab] = useState(StarfleetTrackTab.Officer);
@@ -68,7 +68,7 @@ const EducationPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
     return (
         <div className="page container ml-0">
-            <CharacterCreationBreadcrumbs />
+            <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Education} />
 
             <Header>{t(makeKey('EducationPage.type.', CharacterType[character.type]))}</Header>
 
@@ -106,4 +106,4 @@ const EducationPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
 }
 
-export default connect(soloCharacterMapStateToProperties)(EducationPage);
+export default connect(characterMapStateToProperties)(EducationPage);

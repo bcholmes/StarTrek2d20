@@ -15,7 +15,7 @@ import { ValueRandomTable } from '../solo/table/valueRandomTable';
 import store from '../state/store';
 import { StepContext, modifyCharacterAttribute, modifyCharacterDiscipline, setCharacterEnvironment, setCharacterValue } from '../state/characterActions';
 import { IAttributeController } from '../components/attributeController';
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { CharacterType } from '../common/characterType';
 import { DropDownElement, DropDownSelect } from '../components/dropDownInput';
 import SoloCharacterBreadcrumbs from '../solo/component/soloCharacterBreadcrumbs';
@@ -97,7 +97,7 @@ class SoloEnvironmentDisciplineController implements IDisciplineController {
     }
 }
 
-const EnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const EnvironmentDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
     const { t } = useTranslation();
 
     const environment = EnvironmentsHelper.getEnvironment(character.environmentStep?.environment, CharacterType.Starfleet);
@@ -155,7 +155,7 @@ const EnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({character})
         <div className="page container ml-0">
             {character.stereotype === Stereotype.SoloCharacter
                 ? (<SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloEnvironment} />)
-                : (<CharacterCreationBreadcrumbs />)};
+                : (<CharacterCreationBreadcrumbs  pageIdentity={PageIdentity.EnvironmentDetails} />)};
 
             <Header>{environment.localizedName}</Header>
             <p>{environment.localizedDescription}</p>
@@ -203,4 +203,4 @@ const EnvironmentDetailsPage: React.FC<ISoloCharacterProperties> = ({character})
 
 }
 
-export default connect(soloCharacterMapStateToProperties)(EnvironmentDetailsPage);
+export default connect(characterMapStateToProperties)(EnvironmentDetailsPage);

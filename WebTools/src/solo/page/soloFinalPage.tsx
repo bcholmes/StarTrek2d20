@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "./soloCharacterProperties";
+import { ICharacterProperties, characterMapStateToProperties } from "./soloCharacterProperties";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
 import { connect } from "react-redux";
@@ -16,7 +16,7 @@ import { useState } from "react";
 import { Role, RolesHelper } from "../../helpers/roles";
 import { marshaller } from "../../helpers/marshaller";
 
-const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const SoloFinalPage: React.FC<ICharacterProperties> = ({character}) => {
     const { t } = useTranslation();
     let rankValue: string|Rank = "";
     let rankName = "";
@@ -166,4 +166,4 @@ const SoloFinalPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 }
 
 
-export default connect(soloCharacterMapStateToProperties)(SoloFinalPage);
+export default connect(characterMapStateToProperties)(SoloFinalPage);

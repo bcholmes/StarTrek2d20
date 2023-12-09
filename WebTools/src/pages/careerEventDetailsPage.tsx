@@ -21,9 +21,9 @@ import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 import ReactMarkdown from 'react-markdown';
 import store from '../state/store';
 import { connect } from 'react-redux';
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 
-interface ICareerEventDetailsProperties extends ISoloCharacterProperties{
+interface ICareerEventDetailsProperties extends ICharacterProperties{
     context: StepContext;
 }
 
@@ -218,4 +218,4 @@ const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({charac
 
 }
 
-export default connect(soloCharacterMapStateToProperties)(CareerEventDetailsPage);
+export default connect(characterMapStateToProperties)(CareerEventDetailsPage);

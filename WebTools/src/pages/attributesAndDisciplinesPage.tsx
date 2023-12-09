@@ -14,14 +14,14 @@ import { useTranslation } from 'react-i18next';
 import { Header } from '../components/header';
 import InstructionText from '../components/instructionText';
 import { FinishingTouchesAttributeController, FinishingTouchesDisciplineController } from '../components/finishingTouchesControllers';
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { connect } from 'react-redux';
 import AttributeListComponent from '../components/attributeListComponent';
 import DisciplineListComponent from '../components/disciplineListComponent';
 import store from '../state/store';
 import { addCharacterTalent, setCharacterValue, StepContext } from '../state/characterActions';
 
-const AttributesAndDisciplinesPage: React.FC<ISoloCharacterProperties> = ({character})  => {
+const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character})  => {
 
     const [talentSelected, setTalentSelected] = useState(undefined);
 
@@ -144,4 +144,4 @@ const AttributesAndDisciplinesPage: React.FC<ISoloCharacterProperties> = ({chara
     );
 }
 
-export default connect(soloCharacterMapStateToProperties)(AttributesAndDisciplinesPage);
+export default connect(characterMapStateToProperties)(AttributesAndDisciplinesPage);

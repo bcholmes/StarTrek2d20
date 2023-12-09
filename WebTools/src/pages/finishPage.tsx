@@ -15,7 +15,7 @@ import { marshaller } from '../helpers/marshaller';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 import { Header } from '../components/header';
 import { useTranslation } from 'react-i18next';
-import { soloCharacterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { connect } from 'react-redux';
 import store from '../state/store';
 import { setCharacterAdditionalTraits, setCharacterAssignedShip, setCharacterAssignment, setCharacterHouse, setCharacterLineage, setCharacterName, setCharacterPronouns, setCharacterRank } from '../state/characterActions';
@@ -336,4 +336,4 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
     );
 }
 
-export default connect(soloCharacterMapStateToProperties)(FinishPage);
+export default connect(characterMapStateToProperties)(FinishPage);

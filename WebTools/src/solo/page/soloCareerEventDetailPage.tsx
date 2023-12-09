@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "../../components/button";
 import store from "../../state/store";
 import { StepContext, setCharacterFinishingTouches, setCharacterFocus } from "../../state/characterActions";
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "./soloCharacterProperties";
+import { ICharacterProperties, characterMapStateToProperties } from "./soloCharacterProperties";
 import { CareerEventsHelper } from "../../helpers/careerEvents";
 import { CharacterType } from "../../common/characterType";
 import InstructionText from "../../components/instructionText";
@@ -23,7 +23,7 @@ import D20IconButton from "../component/d20IconButton";
 import { FocusRandomTable } from "../table/focusRandomTable";
 import { CareerEventAttributeController, CareerEventDisciplineController } from "../../components/careerEventDetailsControllers";
 
-interface ISoloCareerEventProperties extends ISoloCharacterProperties {
+interface ISoloCareerEventProperties extends ICharacterProperties {
     context: StepContext;
 }
 
@@ -109,4 +109,4 @@ const SoloCareerEventDetailsPage: React.FC<ISoloCareerEventProperties> = ({chara
 }
 
 
-export default connect(soloCharacterMapStateToProperties)(SoloCareerEventDetailsPage);
+export default connect(characterMapStateToProperties)(SoloCareerEventDetailsPage);

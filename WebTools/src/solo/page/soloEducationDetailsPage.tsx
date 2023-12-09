@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "./soloCharacterProperties";
+import { ICharacterProperties, characterMapStateToProperties } from "./soloCharacterProperties";
 import React from "react";
 import { connect } from "react-redux";
 import { Navigation } from "../../common/navigator";
@@ -21,7 +21,7 @@ import { ValueRandomTable } from "../table/valueRandomTable";
 import { FocusRandomTable } from "../table/focusRandomTable";
 import { EducationAttributeController, EducationPrimaryDisciplineController, EducationSecondaryDisciplineController } from "../../components/educationControllers";
 
-const SoloEducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
+const SoloEducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
     const track = TracksHelper.instance.getSoloTrack(character.educationStep?.track);
@@ -135,4 +135,4 @@ const SoloEducationDetailsPage: React.FC<ISoloCharacterProperties> = ({character
         </div>);
 }
 
-export default connect(soloCharacterMapStateToProperties)(SoloEducationDetailsPage);
+export default connect(characterMapStateToProperties)(SoloEducationDetailsPage);

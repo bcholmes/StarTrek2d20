@@ -15,7 +15,7 @@ import { hasSource } from "../state/contextFunctions";
 import { Source } from "../helpers/sources";
 import ReactMarkdown from "react-markdown";
 import store from "../state/store";
-import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "../solo/page/soloCharacterProperties";
+import { ICharacterProperties, characterMapStateToProperties } from "../solo/page/soloCharacterProperties";
 import { connect } from "react-redux";
 
 enum EventsTab {
@@ -23,7 +23,7 @@ enum EventsTab {
     StandardAndUnofficial
 }
 
-interface ICareerEventProperties extends ISoloCharacterProperties {
+interface ICareerEventProperties extends ICharacterProperties {
     context: StepContext;
 }
 
@@ -136,4 +136,4 @@ const CareerEventPage: React.FC<ICareerEventProperties> = ({character, context})
         </div>);
 }
 
-export default connect(soloCharacterMapStateToProperties)(CareerEventPage);
+export default connect(characterMapStateToProperties)(CareerEventPage);
