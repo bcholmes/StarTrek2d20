@@ -1,116 +1,167 @@
-﻿import * as React from 'react';
-import {character, EnvironmentStep} from '../common/character';
-import {Navigation} from '../common/navigator';
-import {PageIdentity} from './pageIdentity';
-import {Environment, EnvironmentsHelper} from '../helpers/environments';
-import {Button} from '../components/button';
-import EnvironmentSelection from '../components/environmentSelection';
-import InstructionText from '../components/instructionText';
-import { Source } from '../helpers/sources';
-import { CheckBox } from '../components/checkBox';
-import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
-import { hasSource } from '../state/contextFunctions';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import { Header } from '../components/header';
-import { Species } from '../helpers/speciesEnum';
+﻿import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ISoloCharacterProperties, soloCharacterMapStateToProperties } from "../solo/page/soloCharacterProperties";
+import { Environment, EnvironmentsHelper } from "../helpers/environments";
+import { setCharacterEnvironment } from "../state/characterActions";
+import store from "../state/store";
+import { Navigation } from "../common/navigator";
+import { PageIdentity } from "./pageIdentity";
+import { Stereotype } from "../common/construct";
+import { makeKey } from "../common/translationKey";
+import { Attribute } from "../helpers/attributes";
+import { Window } from "../common/window";
+import { Button } from "../components/button";
+import { EnvironmentConditionRandomTable, EnvironmentSettingRandomTable } from "../solo/table/environmentRandomTable";
+import CharacterCreationBreadcrumbs from "../components/characterCreationBreadcrumbs";
+import SoloCharacterBreadcrumbs from "../solo/component/soloCharacterBreadcrumbs";
+import { Header } from "../components/header";
+import InstructionText from "../components/instructionText";
+import { connect } from "react-redux";
+import { Skill } from "../helpers/skills";
 
-interface IEnvironmentPageState {
-    showSelection: boolean;
-    alternate: boolean;
-    showAlternates: boolean;
+enum EnvironmentTab {
+    Settings,
+    Conditions
 }
 
-class EnvironmentPage extends React.Component<WithTranslation, IEnvironmentPageState> {
-    constructor(props: WithTranslation) {
-        super(props);
+const EnvironmentPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
-        this.state = {
-            showSelection: false,
-            alternate: false,
-            showAlternates: false
-        };
-    }
+    const { t } = useTranslation();
+    const [tab, setTab] = useState((character?.environmentStep == null || EnvironmentsHelper.isSetting(character?.environmentStep?.environment)) ? EnvironmentTab.Settings : EnvironmentTab.Conditions);
+    const [randomSetting, setRandomSetting] = useState((character?.environmentStep && EnvironmentsHelper.isSetting(character?.environmentStep?.environment))
+        ? character?.environmentStep?.environment
+        : null);
+    const [randomCondition, setRandomCondition] = useState((character?.environmentStep && EnvironmentsHelper.isCondition(character?.environmentStep?.environment))
+        ? character?.environmentStep?.environment
+        : null);
 
-    render() {
-        const { t } = this.props;
-
-        let showAlt = (hasSource(Source.PlayersGuide)) ? (<CheckBox isChecked={this.state.showAlternates} value={'alternates'} text={t('EnvironmentPage.showAlt')} onChanged={val => { this.setState(state => ({...state, showAlternates: !state.showAlternates}) ) }} />) : null;
-
-        let alt = (this.state.showAlternates)
-                ? (<div className="pl-2 pr-2">
-                    <Button className="button" text={t('EnvironmentPage.button.selectAltEnvironment')} onClick={() => this.showAlternateEnvironments()} />
-                    <Button className="button" text={t('EnvironmentPage.button.rollAltEnvironment')} onClick={() => this.rollAlternateEnvironment()} />
-                   </div>)
-                : null;
-
-
-        var content = !this.state.showSelection ?
-            (
-                <div>
-                    <InstructionText text={character.workflow.currentStep().description} />
-                    <p>
-                        {t('EnvironmentPage.simple.instruction')}
-                    </p>
-                    {showAlt}
-                    <div className="row row-cols-md-2">
-                        <div className="pl-2 pr-2">
-                            <Button className="button" text={t('EnvironmentPage.button.selectEnvironment')} onClick={() => this.showEnvironments() } />
-                            <Button className="button" text={t('EnvironmentPage.button.rollEnvironment')} onClick={() => this.rollEnvironment() } />
-                        </div>
-                        {alt}
-                    </div>
-                </div>
-            )
-            : (
-                <EnvironmentSelection
-                    alternate={this.state.alternate}
-                    onSelection={(env, speciesId) => this.selectEnvironment(env, speciesId) }
-                    onCancel={() => this.hideEnvironments() }
-                    character={character} />
-            );
-
-        return (
-            <div className="page">
-                <div className="container ml-0">
-                    <CharacterCreationBreadcrumbs />
-                    <Header>{t('Page.title.environment')}</Header>
-                    {content}
-                </div>
-            </div>
-        );
-    }
-
-    private rollEnvironment() {
-        let env = EnvironmentsHelper.generateEnvironment();
-        this.selectEnvironment(env);
-    }
-
-    private rollAlternateEnvironment() {
-        let env = EnvironmentsHelper.generateAlternateEnvironment();
-        this.selectEnvironment(env);
-    }
-
-    private showEnvironments() {
-        this.setState({ showSelection: true, alternate: false });
-    }
-
-    private showAlternateEnvironments() {
-        this.setState({ showSelection: true, alternate: true });
-    }
-
-    private hideEnvironments() {
-        this.setState({ showSelection: false });
-    }
-
-    private selectEnvironment(env: Environment, id?: Species) {
-       if (env === Environment.AnotherSpeciesWorld) {
-            character.environmentStep = new EnvironmentStep(env, id);
+    const selectEnvironment = (environment: Environment) => {
+        if (environment === Environment.AnotherSpeciesWorld) {
+            store.dispatch(setCharacterEnvironment(environment,
+                character.environmentStep?.otherSpecies));
         } else {
-            character.environmentStep = new EnvironmentStep(env);
+            store.dispatch(setCharacterEnvironment(environment));
         }
 
-        Navigation.navigateToPage(PageIdentity.EnvironmentDetails);
+        if (character.stereotype === Stereotype.SoloCharacter) {
+            Navigation.navigateToPage(PageIdentity.SoloEnvironmentDetails);
+        } else {
+            Navigation.navigateToPage(PageIdentity.EnvironmentDetails);
+        }
     }
+
+    const toTableRow = (e, i) => {
+        let attributes = e.getAttributesForCharacter(character).map((a, i) => {
+            return <div key={'attr-' + i}>{t(makeKey('Construct.attribute.', Attribute[a])) }</div>;
+        });
+
+        if (e.id === Environment.AnotherSpeciesWorld) {
+            attributes = (<div key={'attr-' + i}>{t('SoloEnvironmentPage.anotherSpeciesWorld.attributeText')}</div>)
+        }
+
+        const disciplines = e.disciplines.map((d, i) => {
+            return <div key={'skill-' + i}>{t(makeKey('Construct.discipline.', Skill[d]))}</div>;
+        });
+
+        return (
+            <tr key={i}
+                onClick={() => { if (Window.isCompact()) selectEnvironment(e.id); }}>
+                <td className="selection-header">{e.localizedName}</td>
+                <td>{attributes}</td>
+                <td>{disciplines}</td>
+                <td className="text-right">
+                    <Button className="button-small" onClick={() => { selectEnvironment(e.id) } } buttonType={true} >{t('Common.button.select')}</Button>
+                </td>
+            </tr>
+        )
+    }
+
+    const renderSettingsTab = () => {
+
+        let settingsList = character.stereotype === Stereotype.SoloCharacter
+            ? EnvironmentsHelper.getEnvironmentSettings()
+            : EnvironmentsHelper.getEnvironmentSettings(character.type);
+        if (randomSetting != null) {
+            settingsList = [EnvironmentsHelper.getEnvironmentSettingByType(randomSetting)];
+        }
+        let settingRows = settingsList.map((e,i) => toTableRow(e, i));
+
+        return (<>
+            <div className="my-4">
+                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSetting( EnvironmentSettingRandomTable()) }>
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
+                </Button>
+                {randomSetting != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSetting(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+            </div>
+
+            <table className="selection-list">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td><b>{t('Construct.other.attributes')}</b></td>
+                            <td><b>{t('Construct.other.disciplines')}</b></td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {settingRows}
+                    </tbody>
+                </table>
+            </>);
+    }
+
+    const renderConditionsTab = () => {
+
+        let settingsList = EnvironmentsHelper.getEnvironmentConditions();
+        if (randomCondition != null) {
+            settingsList = [EnvironmentsHelper.getEnvironmentConditionByType(randomCondition)];
+        }
+        let settingRows = settingsList.map((e,i) => toTableRow(e, i));
+
+        return (<>
+            <div className="my-4">
+                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomCondition( EnvironmentConditionRandomTable()) }>
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
+                </Button>
+                {randomCondition != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomCondition(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+            </div>
+
+            <table className="selection-list">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td><b>{t('Construct.other.attributes')}</b></td>
+                            <td><b>{t('Construct.other.disciplines')}</b></td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {settingRows}
+                    </tbody>
+                </table>
+            </>);
+    }
+
+    return (
+        <div className="page container ml-0">
+            {character.stereotype === Stereotype.SoloCharacter
+                ? (<SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloEnvironment} />)
+                : (<CharacterCreationBreadcrumbs />)};
+            <Header>{t('Page.title.environment')}</Header>
+
+            <InstructionText text={t('SoloEnvironmentPage.instruction')} />
+
+            <div className="btn-group w-100" role="group" aria-label="Environment types">
+                <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === EnvironmentTab.Settings ? "active" : "")}
+                    onClick={() => setTab(EnvironmentTab.Settings)}>{t('SoloEnvironmentPage.settings')}</button>
+                <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === EnvironmentTab.Conditions ? "active" : "")}
+                    onClick={() => setTab(EnvironmentTab.Conditions)}>{t('SoloEnvironmentPage.conditions')}</button>
+            </div>
+
+            {tab === EnvironmentTab.Settings
+                ? renderSettingsTab()
+                : renderConditionsTab()}
+        </div>);
 }
 
-export default withTranslation()(EnvironmentPage);
+export default connect(soloCharacterMapStateToProperties)(EnvironmentPage);

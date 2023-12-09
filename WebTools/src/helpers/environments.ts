@@ -197,7 +197,7 @@ class Environments {
         ),
     };
 
-    getEnvironmentSettings() {
+    getEnvironmentSettings(type: CharacterType = CharacterType.Starfleet) {
         let result = [];
         for (let environment in this._environments) {
             result.push(this._environments[environment]);

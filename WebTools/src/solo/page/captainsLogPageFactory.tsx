@@ -2,8 +2,6 @@ import { ConstructType } from "../../common/construct";
 import { IPageFactoryRegistry } from "../../pages/pageFactory";
 import { PageIdentity } from "../../pages/pageIdentity";
 import SoloConstructTypePage from "./soloConstructTypePage";
-import SoloEnvironmentDetailsPage from "./soloEnvironmentDetailsPage";
-import SoloEnvironmentPage from "./soloEnvironmentPage";
 import SoloEraSelectionPage from "./soloEraSelectionPage";
 import SoloSpeciesDetailsPage from "./soloSpeciesDetailsPage";
 import SoloSpeciesPage from "./soloSpeciesPage";
@@ -19,6 +17,8 @@ import SoloCareerLengthDetailsPage from "./soloCareerLengthDetailsPage";
 import SoloCareerEventDetailPage from "./soloCareerEventDetailPage";
 import SoloFinishingTouchesPage from "./soloFinishingTouchesPage";
 import SoloFinalPage from "./soloFinalPage";
+import EnvironmentPage from "../../pages/environmentPage";
+import EnvironmentDetailsPage from "../../pages/environmentDetailsPage";
 
 export class CaptainsLogPageFactory implements IPageFactoryRegistry {
 
@@ -40,8 +40,8 @@ export class CaptainsLogPageFactory implements IPageFactoryRegistry {
         this.factories[PageIdentity.SoloCharacterEra] = () => <SoloEraSelectionPage type={ConstructType.Character} />;
         this.factories[PageIdentity.SoloSpecies] = () => <SoloSpeciesPage />;
         this.factories[PageIdentity.SoloSpeciesDetails] = () => <SoloSpeciesDetailsPage />;
-        this.factories[PageIdentity.SoloEnvironment] = () => <SoloEnvironmentPage />;
-        this.factories[PageIdentity.SoloEnvironmentDetails] = () => <SoloEnvironmentDetailsPage />;
+        this.factories[PageIdentity.SoloEnvironment] = () => <EnvironmentPage />;
+        this.factories[PageIdentity.SoloEnvironmentDetails] = () => <EnvironmentDetailsPage />;
         this.factories[PageIdentity.SoloEarlyOutlook] = () => <SoloEarlyOutlookPage />;
         this.factories[PageIdentity.SoloEarlyOutlookDetails] = () => <SoloEarlyOutlookDetailsPage />;
         this.factories[PageIdentity.SoloEducationType] = () => <SoloEducationTypePage />;

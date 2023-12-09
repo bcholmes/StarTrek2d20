@@ -78,6 +78,8 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.educationStep.decrementDiscipline = originalStep.decrementDiscipline;
                     temp.educationStep.disciplines = [...originalStep.disciplines];
                     temp.educationStep.focuses = [...originalStep.focuses];
+                    temp.educationStep.value = originalStep.value;
+                    temp.educationStep.talent = originalStep.talent?.copy();
                 }
             }
             return {

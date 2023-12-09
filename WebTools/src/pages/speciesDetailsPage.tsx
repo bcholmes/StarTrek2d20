@@ -19,6 +19,7 @@ import { AttributeController, AttributeControllerFactory } from '../components/a
 import AttributeListComponent from '../components/attributeListComponent';
 import SingleTalentSelectionList from '../components/singleTalentSelectionList';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import { setCharacter } from '../state/characterActions';
 
 interface ISpeciesDetailsProperties extends WithTranslation {
     allowCrossSpeciesTalents: boolean;
@@ -165,6 +166,7 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
         }
 
         character.workflow.next();
+        store.dispatch(setCharacter(character));
         Navigation.navigateToPage(PageIdentity.Environment);
     }
 }
