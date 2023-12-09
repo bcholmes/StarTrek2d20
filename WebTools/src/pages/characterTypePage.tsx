@@ -1,10 +1,9 @@
 import * as React from 'react';
-import {AlliedMilitaryDetails, character, GovernmentDetails} from '../common/character';
+import {AlliedMilitaryDetails, Character, GovernmentDetails} from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
-import {WorkflowsHelper} from '../helpers/workflows';
 import AllyHelper, { AlliedMilitaryType } from '../helpers/alliedMilitary';
 import { Source } from '../helpers/sources';
 import Governments, { GovernmentType } from '../helpers/governments';
@@ -13,6 +12,7 @@ import store from '../state/store';
 import { hasSource } from '../state/contextFunctions';
 import { Header } from '../components/header';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import { setCharacter } from '../state/characterActions';
 
 interface ICharacterTypePageState {
     type: CharacterType,
@@ -153,18 +153,15 @@ class CharacterTypePage extends React.Component<WithTranslation, ICharacterTypeP
     }
 
     private startWorkflow() {
+        let character = new Character();
         character.type = this.state.type;
         if (character.type === CharacterType.AlliedMilitary) {
             character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(this.state.alliedMilitary), this.state.otherName);
         } else if (character.type === CharacterType.AmbassadorDiplomat) {
             character.typeDetails = new GovernmentDetails(Governments.findOption(this.state.government), this.state.otherName);
         }
-        character.workflow = WorkflowsHelper.getWorkflow(character.type);
-        this.goToPage(PageIdentity.Species);
-    }
-
-    private goToPage(page: PageIdentity) {
-        Navigation.navigateToPage(page);
+        store.dispatch(setCharacter(character));
+        Navigation.navigateToPage(PageIdentity.Species);
     }
 }
 

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
@@ -9,8 +8,7 @@ import InstructionText from '../components/instructionText';
 export const CadetSeniorityPage = () => {
 
     const goToFinishingTouches = () => {
-        character.workflow.next();
-        Navigation.navigateToPage(character.workflow.currentStep().page);
+        Navigation.navigateToPage(PageIdentity.AttributesAndDisciplines);
     }
 
     const goToPage = (page: PageIdentity) => {

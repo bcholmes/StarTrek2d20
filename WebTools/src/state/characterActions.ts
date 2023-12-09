@@ -1,5 +1,6 @@
 import { Character, CharacterRank } from "../common/character";
 import { CharacterType } from "../common/characterType";
+import { Age } from "../helpers/age";
 import { Attribute } from "../helpers/attributes";
 import { BorgImplantType } from "../helpers/borgImplant";
 import { Career } from "../helpers/careerEnum";
@@ -19,6 +20,7 @@ export const APPLY_NORMAL_MILESTONE_FOCUS = 'APPLY_NORMAL_MILESTONE_FOCUS';
 export const SET_CHARACTER_SPECIES = 'SET_CHARACTER_SPECIES';
 export const SET_CHARACTER_FOCUS = 'SET_CHARACTER_FOCUS';
 export const SET_CHARACTER_VALUE = 'SET_CHARACTER_VALUE';
+export const SET_CHARACTER_AGE = 'SET_CHARACTER_AGE';
 export const SET_CHARACTER_LINEAGE = 'SET_CHARACTER_LINEAGE';
 export const SET_CHARACTER_ASSIGNED_SHIP = 'SET_CHARACTER_ASSIGNED_SHIP';
 export const SET_CHARACTER_HOUSE = 'SET_CHARACTER_HOUSE';
@@ -140,7 +142,7 @@ export function addCharacterTalentFocus(focus: string, talent: string, index: nu
 }
 
 export function addCharacterTalent(talent: TalentViewModel, context: StepContext) {
-    let payload = { talent: talent.name, context: context };
+    let payload = { talent: talent == null ? undefined : talent.name, context: context };
     return {
        type: ADD_CHARACTER_TALENT,
        payload: payload
@@ -159,6 +161,14 @@ export function setCharacterName(name: string) {
     let payload = { name: name };
     return {
        type: SET_CHARACTER_NAME,
+       payload: payload
+    }
+}
+
+export function setCharacterAge(age: Age) {
+    let payload = { age: age };
+    return {
+       type: SET_CHARACTER_AGE,
        payload: payload
     }
 }

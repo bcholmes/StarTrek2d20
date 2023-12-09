@@ -34,7 +34,6 @@ const ToolSelectionPage = () => {
             goToPage(PageIdentity.CharacterType);
         } else {
             character.type = CharacterType.Starfleet;
-            character.workflow = WorkflowsHelper.starfleetWorkflow;
             goToPage(PageIdentity.Species);
         }
     }

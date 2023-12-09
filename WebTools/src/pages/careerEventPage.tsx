@@ -119,7 +119,7 @@ const CareerEventPage: React.FC<ICareerEventProperties> = ({character, context})
         <div className="page container ml-0">
             <CharacterCreationBreadcrumbs />
             <Header>{t('Page.title.careerEvent')}</Header>
-            <InstructionText text={character.workflow.currentStep().description} />
+            <InstructionText text={t('CareerEvents.instruction')} />
             {hasSource(Source.ContinuingMissions)
                 ? (<div className="btn-group w-100" role="group" aria-label="Environment types">
                     <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === EventsTab.Standard ? "active" : "")}

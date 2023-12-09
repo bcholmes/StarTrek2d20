@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {Character, character, SpeciesStep} from '../common/character';
+import {Character, SpeciesStep} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import {SpeciesHelper} from '../helpers/species';
@@ -14,14 +14,20 @@ import { Era } from '../helpers/eras';
 import store from '../state/store';
 import { hasSource } from '../state/contextFunctions';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import { setCharacterSpecies } from '../state/characterActions';
+import { connect } from 'react-redux';
 
 interface ISpeciesPageState {
     showSelection: boolean;
     showMixedSelection: boolean;
 }
 
-class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
-    constructor(props: WithTranslation) {
+interface ISpeciesPageProperties extends WithTranslation {
+    character?: Character;
+}
+
+class SpeciesPage extends React.Component<ISpeciesPageProperties, ISpeciesPageState> {
+    constructor(props: ISpeciesPageProperties) {
         super(props);
 
         this.state = {
@@ -32,7 +38,7 @@ class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
 
     render() {
 
-        const { t } = this.props;
+        const { t, character } = this.props;
 
         const rollAlpha = hasSource(Source.AlphaQuadrant) && this.isRollAvailable()
             ? <Button className="button" text={t('SpeciesPage.rollAlphaSpecies')} onClick={() => this.rollAlphaSpecies()} />
@@ -55,7 +61,7 @@ class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
             (
                 <div>
                     <div className="page-text">
-                        <InstructionText text={character.workflow.currentStep().localizedDescription} />
+                        <InstructionText text={t('SpeciesPage.text')} />
                     </div>
                     <div className="row row-cols-md-2">
                         <div className="col">
@@ -101,7 +107,7 @@ class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
     }
 
     private isRollAvailable() {
-        return !Character.isSpeciesListLimited(character);
+        return !Character.isSpeciesListLimited(this.props.character);
     }
 
     private rollSpecies() {
@@ -141,7 +147,7 @@ class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
     }
 
     private showCustomSpecies() {
-        character.speciesStep = new SpeciesStep(Species.Custom);
+        store.dispatch(setCharacterSpecies(Species.Custom));
         Navigation.navigateToPage(PageIdentity.CustomSpeciesDetails);
     }
 
@@ -159,8 +165,16 @@ class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
         });
     }
 
+
+
     private selectSpecies(species: Species) {
-        character.speciesStep = new SpeciesStep(species);
+        let speciesModel = SpeciesHelper.getSpeciesByType(species);
+        if (speciesModel.attributes?.length <= 3) {
+            store.dispatch(setCharacterSpecies(speciesModel.id, speciesModel.attributes));
+        } else {
+            store.dispatch(setCharacterSpecies(speciesModel.id));
+        }
+
         if (species === Species.Kobali) {
             Navigation.navigateToPage(PageIdentity.KobaliExtraSpeciesDetails);
         } else if (species === Species.Borg) {
@@ -170,17 +184,22 @@ class SpeciesPage extends React.Component<WithTranslation, ISpeciesPageState> {
         } else if (species === Species.CyberneticallyEnhanced) {
             Navigation.navigateToPage(PageIdentity.CyberneticallyEnhancedSpeciesExtraDetails);
         } else {
-            SpeciesHelper.applySpecies(species);
             Navigation.navigateToPage(PageIdentity.SpeciesDetails);
         }
     }
 
     private selectMixedSpecies(primary: Species, secondary: Species) {
-        character.speciesStep = new SpeciesStep(primary);
-        character.speciesStep.mixedSpecies = secondary;
-        SpeciesHelper.applySpecies(primary, secondary);
-        Navigation.navigateToPage(PageIdentity.SpeciesDetails);
+//        character.speciesStep = new SpeciesStep(primary);
+//        character.speciesStep.mixedSpecies = secondary;
+//        SpeciesHelper.applySpecies(primary, secondary);
+//        Navigation.navigateToPage(PageIdentity.SpeciesDetails);
     }
 }
 
-export default withTranslation()(SpeciesPage);
+function mapStateToProps(state, ownProps) {
+    return {
+        character: state.character?.currentCharacter
+    };
+}
+
+export default withTranslation()(connect(mapStateToProps)(SpeciesPage));

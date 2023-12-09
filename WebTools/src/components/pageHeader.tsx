@@ -68,7 +68,7 @@ export const getPageTitle = (t, page) => {
             || page === PageIdentity.CareerEvent2Details
             || page === PageIdentity.AttributesAndDisciplines
             || page === PageIdentity.Finish) {
-        return character.workflow?.currentStep()?.name || "";
+        return "";
     } else if (page === PageIdentity.SystemGeneration) {
         return "System Generation";
     } else if (page === PageIdentity.SectorDetails) {

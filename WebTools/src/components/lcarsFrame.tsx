@@ -90,7 +90,11 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
     }
 
     const isModifiedCharacterCreationPage = () => {
-        return activePage === PageIdentity.Upbringing ||
+        return activePage === PageIdentity.Species ||
+            activePage === PageIdentity.SpeciesDetails ||
+            activePage === PageIdentity.Environment ||
+            activePage === PageIdentity.EnvironmentDetails ||
+            activePage === PageIdentity.Upbringing ||
             activePage === PageIdentity.UpbringingDetails ||
             activePage === PageIdentity.Education ||
             activePage === PageIdentity.EducationDetails ||

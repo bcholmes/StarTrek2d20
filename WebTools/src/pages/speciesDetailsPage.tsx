@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import { character } from '../common/character';
 import { Navigation } from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import { SpeciesHelper, SpeciesModel } from '../helpers/species';
@@ -15,69 +14,33 @@ import { connect } from 'react-redux';
 import { hasSource } from '../state/contextFunctions';
 import InstructionText from '../components/instructionText';
 import { Header } from '../components/header';
-import { AttributeController, AttributeControllerFactory } from '../components/attributeController';
 import AttributeListComponent from '../components/attributeListComponent';
 import SingleTalentSelectionList from '../components/singleTalentSelectionList';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import { setCharacter } from '../state/characterActions';
+import { useTranslation } from 'react-i18next';
+import { StepContext, addCharacterTalent } from '../state/characterActions';
+import { ISoloCharacterProperties } from '../solo/page/soloCharacterProperties';
+import { SpeciesAttributeController } from '../components/speciesController';
+import { Stereotype } from '../common/construct';
+import { CharacterType } from '../common/characterType';
 
-interface ISpeciesDetailsProperties extends WithTranslation {
+interface ISpeciesDetailsProperties extends ISoloCharacterProperties {
     allowCrossSpeciesTalents: boolean;
     allowEsotericTalents: boolean;
 }
 
-interface ISpeciesDetailsPageState {
-    attributeSelectionComplete: boolean;
-}
+const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, allowCrossSpeciesTalents, allowEsotericTalents}) => {
 
-class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpeciesDetailsPageState> {
-    private _selectedTalent: TalentViewModel;
-    attributesController: AttributeController;
+    const { t } = useTranslation();
+    let species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
+    const controller = SpeciesAttributeController.create(character, species);
 
-    constructor(props) {
-        super(props);
-        this.attributesController = AttributeControllerFactory.create(character, done => this.attributesDone(done));
-        this.state = {
-            attributeSelectionComplete: this.attributesController.selections.length === 3
-        };
+    const selectDesc = species.attributes.length > 3 ? t('SpeciesDetails.selectThree') : "";
+
+    const isTalentSelectionRequired = () => {
+        return character.stereotype !== Stereotype.SoloCharacter && character.type !== CharacterType.KlingonWarrior;
     }
 
-    render() {
-        const { t } = this.props;
-        let species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
-        const selectDesc = species.attributes.length > 3 ? t('SpeciesDetails.selectThree') : "";
-
-        return (
-            <div className="page">
-                <div className="container ml-0">
-                    <CharacterCreationBreadcrumbs />
-                    <Header>{character.localizedSpeciesName}</Header>
-                    <InstructionText text={species.localizedDescription} />
-
-                    <div className="row">
-                        <div className="col-12 col-lg-6 my-4">
-                            <Header level={2}><>{t('Construct.other.attributes')} {selectDesc}</></Header>
-                            <div className="mt-4">
-                                <AttributeListComponent controller={this.attributesController} />
-                            </div>
-
-                            <InstructionText text={this.attributesController.instructions} />
-                        </div>
-                        <div className="col-12 col-lg-6 my-4">
-                            {this.renderTraitSection(species)}
-                        </div>
-                    </div>
-                    {this.renderTalentsSection(species)}
-                    <div className="text-right mt-4">
-                        <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary" onClick={() => this.onNext()} />
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
-    renderTraitSection(species: SpeciesModel) {
-        const { t } = this.props;
+    const renderTraitSection = (species: SpeciesModel) => {
         let mixed = character.speciesStep?.mixedSpecies != null
             ? SpeciesHelper.getSpeciesByType(character.speciesStep?.mixedSpecies)
             : null;
@@ -99,83 +62,99 @@ class SpeciesDetailsPage extends React.Component<ISpeciesDetailsProperties, ISpe
             </div>);
     }
 
-    renderTalentsSection(species: SpeciesModel) {
-        const { t } = this.props;
+    const renderTalentsSection = () => {
         let talents = [];
         talents.push(...TalentsHelper.getAllAvailableTalentsForCharacter(character));
 
         const esotericTalentOption = (hasSource(Source.PlayersGuide)) ? (<div>
                 <CheckBox
-                    isChecked={this.props.allowEsotericTalents}
+                    isChecked={allowEsotericTalents}
                     text={t('SpeciesDetails.allowEsoteric')}
-                    value={!this.props.allowEsotericTalents}
-                    onChanged={() => { store.dispatch(setAllowEsotericTalents(!this.props.allowEsotericTalents));  }} />
+                    value={!allowEsotericTalents}
+                    onChanged={() => { store.dispatch(setAllowEsotericTalents(!allowEsotericTalents));  }} />
             </div>) : undefined;
 
-        return talents.length > 0 && character.workflow.currentStep().options.talentSelection
+        return talents.length > 0 && isTalentSelectionRequired()
             ? (<div>
                 <Header level={2}>{t('Construct.other.talents')}</Header>
                 <div>
-                    {this.renderCrossSpeciesCheckbox()}
+                    {renderCrossSpeciesCheckbox()}
                 </div>
                 {esotericTalentOption}
                 <SingleTalentSelectionList talents={talents} construct={character}
-                    onSelection={talent => this.onTalentSelected(talent)} />
+                    onSelection={talent => onTalentSelected(talent)} />
             </div>)
             : (<div>
                 <Header level={2}>{t('SpeciesDetails.options')}</Header>
                 <div>
-                    {this.renderCrossSpeciesCheckbox()}
+                    {renderCrossSpeciesCheckbox()}
                 </div>
                 {esotericTalentOption}
               </div>);
     }
 
-    private renderCrossSpeciesCheckbox() {
-        const { t } = this.props;
+    const renderCrossSpeciesCheckbox = () => {
         return (<CheckBox
-            isChecked={this.props.allowCrossSpeciesTalents}
+            isChecked={allowCrossSpeciesTalents}
             text={t('SpeciesDetails.allowCrossSpecies')}
-            value={!this.props.allowCrossSpeciesTalents}
+            value={!allowCrossSpeciesTalents}
             onChanged={() => {
-                store.dispatch(setAllowCrossSpeciesTalents(!this.props.allowCrossSpeciesTalents));
+                store.dispatch(setAllowCrossSpeciesTalents(!allowCrossSpeciesTalents));
             }} />);
     }
 
-    private attributesDone(done: boolean) {
-        this.setState((state) => ({...state, attributeSelectionComplete: done }))
+    const onTalentSelected = (talent: TalentViewModel) => {
+        store.dispatch(addCharacterTalent(talent, StepContext.Species));
     }
 
-    private onTalentSelected(talent: TalentViewModel) {
-        this._selectedTalent = talent;
-    }
-
-    private onNext() {
-        if (!this.state.attributeSelectionComplete) {
+    const onNext = () => {
+        if (character.speciesStep?.attributes?.length !== 3) {
             Dialog.show("You have not distributed all Attribute points.");
             return;
         }
 
-        if (character.workflow.currentStep().options.talentSelection) {
-            if (!this._selectedTalent) {
-                Dialog.show("You have not selected a talent.");
-                return;
-            }
-
-            character.addTalent(this._selectedTalent);
+        if (isTalentSelectionRequired() && character.speciesStep?.talent == null) {
+            Dialog.show("You have not selected a talent.");
+            return;
         }
 
-        character.workflow.next();
-        store.dispatch(setCharacter(character));
         Navigation.navigateToPage(PageIdentity.Environment);
     }
+
+    return (
+        <div className="page">
+            <div className="container ml-0">
+                <CharacterCreationBreadcrumbs />
+                <Header>{character.localizedSpeciesName}</Header>
+                <InstructionText text={species.localizedDescription} />
+
+                <div className="row">
+                    <div className="col-12 col-lg-6 my-4">
+                        <Header level={2}><>{t('Construct.other.attributes')} {selectDesc}</></Header>
+                        <AttributeListComponent controller={controller} />
+
+                        <InstructionText text={controller.instructions} />
+                    </div>
+                    <div className="col-12 col-lg-6 my-4">
+                        {renderTraitSection(species)}
+                    </div>
+                </div>
+                {renderTalentsSection()}
+                <div className="text-right mt-4">
+                    <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary" onClick={() => onNext()} />
+                </div>
+            </div>
+        </div>
+    );
+
 }
 
 function mapStateToProps(state, ownProps) {
     return {
+        character: state.character?.currentCharacter,
         allowCrossSpeciesTalents: state.context.allowCrossSpeciesTalents,
         allowEsotericTalents: state.context.allowEsotericTalents
     };
 }
 
-export default withTranslation()(connect(mapStateToProps)(SpeciesDetailsPage));
+export default connect(mapStateToProps)(SpeciesDetailsPage);

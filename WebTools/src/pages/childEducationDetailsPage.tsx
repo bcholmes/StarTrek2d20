@@ -8,6 +8,7 @@ import { Dialog } from '../components/dialog';
 import { Header } from '../components/header';
 import ValueInput, { Value } from '../components/valueInput';
 import { IPageProperties } from './iPageProperties';
+import { PageIdentity } from './pageIdentity';
 
 interface IEducationDetailsState {
     attributesChosen: boolean;
@@ -119,8 +120,7 @@ export class ChildEducationDetailsPage extends React.Component<IPageProperties, 
                 }
             }
 
-            character.workflow.next();
-            Navigation.navigateToPage(character.workflow.currentStep().page);
+            Navigation.navigateToPage(PageIdentity.ChildCareer);
         }
     }
 }

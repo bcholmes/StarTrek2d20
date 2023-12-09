@@ -289,7 +289,6 @@ export class Character extends Construct {
     public secondaryRole?: Role;
     public _focuses: string[];
     public typeDetails: CharacterTypeDetails;
-    public workflow?: Workflow;
     public pronouns: string = '';
 
     // steps
@@ -1033,9 +1032,6 @@ export class Character extends Construct {
         this._focuses.forEach(f => {
             character._focuses.push(f);
         });
-        if (this.workflow) {
-            character.workflow = this.workflow.copy();
-        }
         character.pronouns = this.pronouns;
         character.name = this.name;
         character.additionalTraits = this.additionalTraits;

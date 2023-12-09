@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import { PageIdentity } from './pageIdentity';
 import store from '../state/store';
 import { StepContext, addCharacterTalent } from '../state/characterActions';
+import { CharacterType } from '../common/characterType';
 
 interface ISimpleCareerPageProperties extends ISoloCharacterProperties {
     talent: string;
@@ -32,11 +33,13 @@ const SimpleCareerPage: React.FC<ISimpleCareerPageProperties> = ({character, tal
         store.dispatch(addCharacterTalent(ToViewModel(talentModel), StepContext.Career));
     }, [talent]);
 
+    let instruction = character.type === CharacterType.Child ? "CareerLength.instruction.child" : "CareerLength.instruction.cadet";
+
     return (
         <div className="page">
             <CharacterCreationBreadcrumbs />
             <Header>{t('Page.title.career')}</Header>
-            <InstructionText text={character.workflow.currentStep().description} />
+            <InstructionText text={t(instruction)} />
             <div className="row">
                 <div className="col-12 col-lg-6">
                     <Header level={2}>{t('Construct.other.value')}</Header>

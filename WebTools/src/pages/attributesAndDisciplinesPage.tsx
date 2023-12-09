@@ -108,7 +108,7 @@ const AttributesAndDisciplinesPage: React.FC<ISoloCharacterProperties> = ({chara
     ) : undefined;
 
 
-    let value = (character.workflow.currentStep().options.valueSelection)
+    let value = (character.type !== CharacterType.Child && character.type !== CharacterType.Cadet)
         ? (<div className="col-lg-6 mt-4">
                 <Header level={2}>{t('Construct.other.value')}</Header>
                 <ValueInput value={character.finishingStep?.value ?? ""} onValueChanged={(value) => store.dispatch(setCharacterValue(value, StepContext.FinishingTouches))}

@@ -4,62 +4,21 @@ import { Navigation } from "../../common/navigator"
 import { Header } from "../../components/header"
 import { PageIdentity } from "../../pages/pageIdentity"
 import { connect } from "react-redux";
-import { SpeciesHelper, SpeciesModel } from "../../helpers/species";
+import { SpeciesHelper } from "../../helpers/species";
 import InstructionText from "../../components/instructionText";
-import { IAttributeController } from "../../components/attributeController";
-import { Character } from "../../common/character";
-import { Attribute } from "../../helpers/attributes";
-import AttributeComponent from "../../components/attributeListComponent";
+import AttributeListComponent from "../../components/attributeListComponent";
 import { Button } from "../../components/button";
-import store from "../../state/store";
-import { StepContext, modifyCharacterAttribute } from "../../state/characterActions";
 import { ISoloCharacterProperties } from "./soloCharacterProperties";
 import { Dialog } from "../../components/dialog";
 import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
-
-class SoloSpeciesAttributeController implements IAttributeController {
-
-    readonly character: Character;
-    readonly species: SpeciesModel;
-
-    constructor(character: Character, species: SpeciesModel) {
-        this.character = character;
-        this.species = species;
-    }
-
-    isShown(attribute: Attribute) {
-        return this.species.attributes.indexOf(attribute) >= 0;
-    }
-    isEditable(attribute: Attribute): boolean {
-        return this.species.attributes.length > 3;
-    }
-    getValue(attribute: Attribute): number {
-        return this.character.attributes[attribute].value;
-    }
-    canIncrease(attribute: Attribute): boolean {
-        return this.isEditable(attribute) && this.character.speciesStep?.attributes?.length < 3 && this.character.speciesStep?.attributes?.indexOf(attribute) < 0;
-    }
-    canDecrease(attribute: Attribute): boolean {
-        return this.isEditable(attribute) && this.character.speciesStep?.attributes?.indexOf(attribute) >= 0;
-    }
-    onIncrease(attribute: Attribute): void {
-        store.dispatch(modifyCharacterAttribute(attribute, StepContext.Species));
-    }
-    onDecrease(attribute: Attribute): void {
-        store.dispatch(modifyCharacterAttribute(attribute, StepContext.Species, false));
-    }
-    get instructions() {
-        return []
-    }
-}
-
+import { SpeciesAttributeController } from "../../components/speciesController";
 
 const SoloSpeciesDetailsPage: React.FC<ISoloCharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
 
     const species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
-    const controller = new SoloSpeciesAttributeController(character, species);
+    const controller = new SpeciesAttributeController(character, species);
 
     const navigateToNextPage = () => {
         if (character.speciesStep?.attributes?.length !== 3) {
@@ -82,7 +41,7 @@ const SoloSpeciesDetailsPage: React.FC<ISoloCharacterProperties> = ({character})
 
                 <div className="col-md-6 mt-3">
                     <Header level={2} className="mb-4"><>{t('Construct.other.attributes') + (species.attributes?.length > 3 ? ' ' + t('SpeciesDetails.selectThree') : "")} </></Header>
-                    <AttributeComponent controller={controller} />
+                    <AttributeListComponent controller={controller} />
                 </div>
             </div>
 

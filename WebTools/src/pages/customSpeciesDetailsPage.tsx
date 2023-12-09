@@ -20,6 +20,8 @@ import SingleTalentSelectionList from '../components/singleTalentSelectionList';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { Attribute } from '../helpers/attributes';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
+import { Stereotype } from '../common/construct';
+import { CharacterType } from '../common/characterType';
 
 interface ICustomSpeciesDetailsProperties extends WithTranslation {
     allowCrossSpeciesTalents: boolean;
@@ -105,7 +107,7 @@ class CustomSpeciesDetailsPage extends React.Component<ICustomSpeciesDetailsProp
                     onChanged={() => { store.dispatch(setAllowEsotericTalents(!this.props.allowEsotericTalents));  }} />
             </div>) : undefined;
 
-        return talents.length > 0 && character.workflow.currentStep().options.talentSelection
+        return talents.length > 0 && this.isTalentSelectionRequired()
             ? (<div>
                 <Header level={2}>{t('Construct.other.talents')}</Header>
                 <div>
@@ -148,7 +150,12 @@ class CustomSpeciesDetailsPage extends React.Component<ICustomSpeciesDetailsProp
         this._selectedTalent = talent;
     }
 
+    private isTalentSelectionRequired = () => {
+        return character.stereotype !== Stereotype.SoloCharacter && character.type !== CharacterType.KlingonWarrior;
+    }
+
     private onNext() {
+
         const { t } = this.props;
         if (!this.state.speciesName) {
             Dialog.show(t('CustomSpeciesDetails.speciesNameWarning'));
@@ -160,7 +167,7 @@ class CustomSpeciesDetailsPage extends React.Component<ICustomSpeciesDetailsProp
             return;
         }
 
-        if (character.workflow.currentStep().options.talentSelection) {
+        if (this.isTalentSelectionRequired()) {
             if (!this._selectedTalent) {
                 Dialog.show("You have not selected a talent.");
                 return;
@@ -169,7 +176,6 @@ class CustomSpeciesDetailsPage extends React.Component<ICustomSpeciesDetailsProp
             character.addTalent(this._selectedTalent);
         }
 
-        character.workflow.next();
         Navigation.navigateToPage(PageIdentity.Environment);
     }
 }
