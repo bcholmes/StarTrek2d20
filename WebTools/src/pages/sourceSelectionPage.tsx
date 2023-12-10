@@ -30,7 +30,6 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
             profileButton.style.display = "";
         }
 
-        character.saveMemento(PageIdentity.SourceSelection);
         this.state = {
             soloLoading: false
         }

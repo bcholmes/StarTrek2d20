@@ -122,15 +122,6 @@ export class SelectedTalent {
     }
 }
 
-class Memento {
-    page: number;
-    character: Character;
-
-    constructor(page: number, character: Character) {
-        this.page = page;
-        this.character = character;
-    }
-}
 
 export class CareerStep {
     career?: Career;
@@ -269,7 +260,6 @@ export class Character extends Construct {
     public static ABSOLUTE_MAX_ATTRIBUTE = 12;
 
     private _attributeInitialValue: number = 7;
-    private _mementos: Memento[];
 
     public reputation = 10;
     public reprimands = 0;
@@ -314,7 +304,6 @@ export class Character extends Construct {
             this._skills.push(new CharacterSkill(i, 1));
         }
 
-        this._mementos = [];
         this.traits = [];
         this._focuses = [];
         this.careerEvents = [];
@@ -356,7 +345,7 @@ export class Character extends Construct {
     }
 
     get mementos() {
-        return this._mementos;
+        return [];
     }
 
     get talents() {
@@ -672,27 +661,6 @@ export class Character extends Construct {
         return result;
     }
 
-    saveMemento(page: number) {
-        if (!this._mementos.some(s => s.page === page)) {
-            const copy = this.copy();
-            this._mementos.push(new Memento(page, copy));
-        }
-    }
-
-    clearMementos() {
-        this._mementos = [];
-    }
-
-    goToStep(page: number) {
-        for (let i = this._mementos.length - 1; i >= 0; i--) {
-            if (this._mementos[i].page === page) {
-                character = this._mementos[i].character;
-                character.saveMemento(page);
-                break;
-            }
-        }
-    }
-
     get speciesName() {
         if (this.speciesStep == null) {
             return "";
@@ -954,9 +922,6 @@ export class Character extends Construct {
         character.type = this.type;
         character.stereotype = this.stereotype;
         character.typeDetails = this.typeDetails;
-        this._mementos.forEach(s => {
-            character._mementos.push(new Memento(s.page, s.character));
-        });
         this._attributes.forEach(a => {
             character._attributes[a.attribute].attribute = a.attribute;
             character._attributes[a.attribute].value = a.value;

@@ -60,7 +60,7 @@ const SoloCareerEventPage: React.FC<ISoloCareerEventProperties> = ({character, c
     return (
         <div className="page container ml-0">
             <SoloCharacterBreadcrumbs pageIdentity={context === StepContext.CareerEvent1 ? PageIdentity.CareerEvent1 : PageIdentity.CareerEvent2} />
-            <Header>{t('Page.title.soloCareerEvent')}</Header>
+            <Header>{t('Page.title.careerEvent')}</Header>
             <InstructionText text={t('SoloCareerEvent.instruction')} />
             <div className="my-4">
                 <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEvent( CareerEventsHelper.generateEvent(CharacterType.Starfleet).roll) }>

@@ -1,18 +1,16 @@
-﻿import React, { useState } from 'react';
-import {CareerEventStep, Character, character} from '../common/character';
+﻿import React from 'react';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import {CareerEventsHelper} from '../helpers/careerEvents';
-import {Attribute, AttributesHelper} from '../helpers/attributes';
+import {AttributesHelper} from '../helpers/attributes';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {AttributeView} from '../components/attribute';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import { CharacterType } from '../common/characterType';
-import { StepContext, setCharacterFinishingTouches, setCharacterFocus } from '../state/characterActions';
-import DisciplineListComponent, { IDisciplineController } from '../components/disciplineListComponent';
+import { StepContext, setCharacterCareerEventTrait, setCharacterFinishingTouches, setCharacterFocus } from '../state/characterActions';
+import DisciplineListComponent from '../components/disciplineListComponent';
 import { Skill } from '../helpers/skills';
-import { IAttributeController } from '../components/attributeController';
 import { useTranslation } from 'react-i18next';
 import { Header } from '../components/header';
 import AttributeListComponent from '../components/attributeListComponent';
@@ -22,121 +20,15 @@ import ReactMarkdown from 'react-markdown';
 import store from '../state/store';
 import { connect } from 'react-redux';
 import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { CareerEventAttributeController, CareerEventDisciplineController } from '../components/careerEventDetailsControllers';
 
 interface ICareerEventDetailsProperties extends ICharacterProperties{
     context: StepContext;
 }
 
-
-class CareerEventDisciplineController implements IDisciplineController {
-
-    readonly character: Character;
-    readonly careerEventStep: CareerEventStep;
-    readonly context: StepContext;
-    readonly disciplines: Skill[];
-    readonly forceUpdate: () => void;
-
-    constructor(character: Character, careerEventStep: CareerEventStep, context: StepContext, disciplines: Skill[], forceUpdate: () => void) {
-        this.character = character;
-        this.disciplines = disciplines;
-        this.context = context;
-        this.careerEventStep = careerEventStep;
-        this.forceUpdate = forceUpdate;
-    }
-
-    isShown(discipline: Skill) {
-        return this.disciplines.indexOf(discipline) >= 0;
-    }
-    isEditable(discipline: Skill): boolean {
-        return true;
-    }
-    getValue(discipline: Skill): number {
-        return this.character.skills[discipline].expertise;
-    }
-    canIncrease(discipline: Skill): boolean {
-        return this.getValue(discipline) < Character.maxDiscipline(this.character) &&
-            (this.getValue(discipline) < (Character.maxDiscipline(this.character) - 1) || !this.character.hasMaxedSkill())
-            && this.careerEventStep.discipline == null;
-    }
-    canDecrease(discipline: Skill): boolean {
-        return this.careerEventStep?.discipline === discipline;
-    }
-    onIncrease(discipline: Skill): void {
-        const max = Character.maxDiscipline(character);
-        if (!character.hasMaxedSkill() || this.character.skills[discipline].expertise + 1 < max) {
-            this.careerEventStep.discipline = discipline;
-            character.skills[discipline].expertise++;
-        }
-        this.forceUpdate();
-    }
-    onDecrease(discipline: Skill): void {
-        this.careerEventStep.discipline = undefined;
-        character.skills[discipline].expertise--;
-        this.forceUpdate();
-    }
-}
-
-class CareerEventAttributeController implements IAttributeController {
-
-    readonly character: Character;
-    readonly careerEventStep: CareerEventStep;
-    readonly context: StepContext;
-    readonly attributes: Attribute[];
-    readonly forceUpdate: () => void;
-
-    constructor(character: Character, careerEventStep: CareerEventStep, context: StepContext, attributes: Attribute[], forceUpdate: () => void) {
-        this.character = character;
-        this.attributes = attributes;
-        this.context = context;
-        this.careerEventStep = careerEventStep;
-        this.forceUpdate = forceUpdate;
-    }
-
-    isShown(attribute: Attribute) {
-        return this.attributes.indexOf(attribute) >= 0;
-    }
-    isEditable(attribute: Attribute): boolean {
-        return true;
-    }
-    getValue(attribute: Attribute): number {
-        return this.character.attributes[attribute].value;
-    }
-    canIncrease(attribute: Attribute): boolean {
-        return this.getValue(attribute) < Character.maxAttribute(this.character) &&
-            (this.getValue(attribute) < (Character.maxAttribute(this.character) - 1) || !this.character.hasMaxedAttribute())
-            && this.careerEventStep.attribute == null;
-    }
-    canDecrease(attribute: Attribute): boolean {
-        return this.careerEventStep?.attribute === attribute;
-    }
-    onIncrease(attribute: Attribute): void {
-        const max = Character.maxAttribute(character);
-        if (!character.hasMaxedAttribute() || this.character.attributes[attribute].value + 1 < max) {
-            this.careerEventStep.attribute = attribute;
-            character.attributes[attribute].value++;
-        }
-        this.forceUpdate();
-    }
-    onDecrease(attribute: Attribute): void {
-        this.careerEventStep.attribute = undefined;
-        character.attributes[attribute].value--;
-        this.forceUpdate();
-    }
-    get instructions() {
-        return []
-    }
-}
-
-function useForceUpdate() {
-    const [value, setValue] = useState(0);
-    return () => setValue(value => value + 1);
-}
-
 const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({character, context}) => {
     const { t } = useTranslation();
-    const forceUpdate = useForceUpdate();
 
-    let [ trait, setTrait ] = useState("");
     const careerEventStep = context === StepContext.CareerEvent1
         ? character.careerEvents[0]
         : character.careerEvents[1];
@@ -160,8 +52,8 @@ const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({charac
         }
     }
 
-    const attributeController = new CareerEventAttributeController(character, careerEventStep, context, careerEvent.attributes, forceUpdate);
-    const disciplineController = new CareerEventDisciplineController(character, careerEventStep, context, careerEvent.disciplines, forceUpdate);
+    const attributeController = new CareerEventAttributeController(character, careerEventStep, context, careerEvent.attributes);
+    const disciplineController = new CareerEventDisciplineController(character, careerEventStep, context, careerEvent.disciplines);
 
     return (
         <div className="page container ml-0">
@@ -198,8 +90,8 @@ const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({charac
                             <div className="col-lg-6 my-3">
                                 <Header level={2} className="mb-3">{t('Construct.other.trait')}</Header>
                                 <InputFieldAndLabel id="trait" labelName={t('Construct.other.trait')}
-                                    value={trait}
-                                    onChange={(t) => setTrait(t)} />
+                                    value={careerEventStep.trait ?? ""}
+                                    onChange={(t) => store.dispatch(setCharacterCareerEventTrait(t, context))} />
                                 <div className="text-white mt-3">{careerEvent.traitDescription}</div>
                             </div>
                         )

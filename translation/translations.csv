@@ -62,12 +62,16 @@ ViewPage.viewSoloCharacter,View Solo Character,,,
 ViewPage.viewStarship,View Starship,Raumschiff ansehen,Ver nave espacial,Voir le vaisseau spatial
 ViewPage.errorMessage,"Things have gone terribly, terribly wrong. We might be in the mirror universe.",Etwas ist ganz schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.,"Las cosas han ido terriblemente, terriblemente mal. Podríamos estar en el universo espejo.","Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir."
 ViewPage.unnamedStarship,Unnamed Starship,Unbenanntes Raumschiff,Nave espacial sin nombre,Vaisseau sans nom
+CareerEvents.instruction,"Your career is a tapestry of events and experiences, but amongst this, a few will have been pivotal moments in your life. Define which moments of your life are important in retrospect, and what seemed definitive to an ensign in their early 20s may be inconsequential to that same officer decades later.",,,
 CareerEvents.standard,Standard,Standard,,Standard
 CareerEvents.standardAndUnofficial,Standard and Unofficial,Standard und Inoffizielle,,Standard et Non Officiel
 CareerEvents.unofficialNote,This list includes unofficial items from [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Check that your GM is comfortable allowing these items.,"Diese Liste enthält inoffizielle Einträge aus [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Bitte prüfe, ob deine SL diese erlaubt.",,Cette liste inclus le travail non officiel de [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Demandez à votre MJ s'il l'autorise.
 CareerEventDetails.errorAttribute,Please select an attribute.,Bitte wähle ein Attribut.,,Selectionez un Attribut SVP
 CareerEventDetails.errorDiscipline,Please select a discipline.,Bitte wähle eine Disziplin.,,Selectionez une Discipline SVP
 CareerEventDetails.errorFocus,Please select a focus.,Bitte wähle einen Fokus.,,Séléctionez un Focus SVP
+ChildSelectionPage.instruction,"Naturally, a child has not attended Starfleet Academy (or any of its counterparts), or any institute of higher education. Indeed, they’re still in their earlier stages of education.
+
+Select an age for your character.",,,
 GMTracker.title,Tracker,NSC-Verwaltung,Rastreador,Suivi
 GMTracker.instruction,Use this tool to manage various NPCs in your game.,"Benutzen Sie dieses Werkzeug, um die verschiedenen NSCs in Ihrem Spiel zu verwalten.",Usa esta herramienta para administrar varios NPC en tu juego.,Utilisez cet outil pour gérer divers PNJ dans votre jeu.
 GMTracker.addCharacterModalTitle,Add Character,Charakter hinzufügen,Agregar carácter,Ajouter un personnage
@@ -100,6 +104,8 @@ Either select or roll your Career.",,,
 CareerLength.instruction.civilian,"At this stage, you have a choice to make about the character. This decision is a clear one: are you a young professional, fresh out of training, with your whole career ahead of you, have you served in your career for several years, or are you a veteran with decades of experience?
 
 Either select or roll your Career.",,,
+CareerLength.instruction.cadet,"The character is an officer-in-training, still studying at Starfleet Academy or a similar institution. They have great potential, and some skill, but lack the experience to put their abilities to the best use.",,,
+CareerLength.instruction.child,"Naturally, a child character doesn’t have much in the way of a career.",,,
 EarlyOutlookPage.instruction,"The nature of a person’s family and their surroundings as they grew up can have a massive impact upon them, and, whether they accept this influence or rebelled against it, it will shape the rest of their lives.
 
 Either select or roll your early outlook.",,,
@@ -126,7 +132,7 @@ EducationPage.instruction.starfleet,"The years spent at Starfleet Academy are so
 A graduate of the Academy receives a commission as a Starfleet officer, with the rank of ensign, after which they may wait several weeks, or even months, for their first assignment. Some cadets – particularly those pursuing a doctorate – choose a path that requires an additional year or two of training and study, and instead graduate at the rank of lieutenant (junior grade).
 
 You may choose your character’s Academy track, or randomly select it.",,,
-EducationPage.type.cadet,,,,
+EducationPage.type.cadet,Cadet Training,,,
 EducationPage.type.starfleet,Starfleet Academy,Sternenflottenakademie,,
 EducationPage.type.klingonWarrior,Klingon Defense Force,Klingonische Verteidigungsstreitmacht,,
 EducationPage.type.civilian,Civilian Career Training,Zivile Berufsausbildung,,
@@ -404,12 +410,14 @@ Construct.system.engines,Engines,Antrieb,Motores,Moteur
 Construct.system.sensors,Sensors,Sensoren,Sensores,Capteurs
 Construct.system.structure,Structure,Hülle,Estructura,Structure
 Construct.system.weapons,Weapons,Waffen,Armas,Armes
-Page.title.career,Career,Karriere,,Carrière
 Page.title.careerEvent,Career Event,Karriereereignis,,
+Page.title.careerLength,Career Length,Karrierelänge,,Carrière
+Page.title.careerLengthDetails,Career Length Details,,,
 Page.title.characterType,Character Type,Art des Charakters,Tipo de carácter,Type de personnage
 Page.title.creditsPage,Credits,Danksagungen,Créditos,Crédits
 Page.title.customSpaceframe,Custom Spaceframe Creation,Eigene Klasse erstellen,,Création de Modèle de Vaiseau
 Page.title.customSpeciesDetails,Custom Species Details,Details zur selbst erschaffenen Spezies,,Détails de Race Personalisé
+Page.title.education,Education,Ausbildung,,
 Page.title.educationDetails,Education Details,Details zur Ausbildung,,
 Page.title.environment,Environment,Herkunft,,Environnement
 Page.title.environmentDetails,Environment Details,Details über die Herkunft,,Détails de l'Environnement
@@ -425,12 +433,12 @@ Page.title.missionProfileTalentSelection,Mission Profile Talent,Auswahl Missions
 Page.title.sectorDetails,Sector Details,Sektordetails,Detalles del sector,Détails du secteur
 Page.title.simpleStarship,Simplified Starship Creation,Vereinfachte Raumschifferschaffung,,Creation de Vaisseau Simplifiée
 Page.title.smallCraftStats,Small Craft Stats,Shuttle-Werte,,Navette
-Page.title.soloCareerEvent,Career Event,Karriereereignis,,
-Page.title.soloCareerEvent1,Career Event 1,Karriereereignis 1,,
-Page.title.soloCareerEvent2,Career Event 2,Karriereereignis 2,,
-Please,Career Event Details,Karriereereignisdetails,,
-Page.title.soloCareerEventDetails1,Career Event Details 1,Karriereereignisdetails 1,,
-Page.title.soloCareerEventDetails2,Career Event Details 2,Karriereereignisdetails 2,,
+Page.title.careerEvent,Career Event,Karriereereignis,,
+Page.title.careerEvent1,Career Event 1,Karriereereignis 1,,
+Page.title.careerEvent2,Career Event 2,Karriereereignis 2,,
+Page.title.careerEventDetails,Career Event Details,Karriereereignisdetails,,
+Page.title.careerEventDetails1,Career Event Details 1,Karriereereignisdetails 1,,
+Page.title.careerEventDetails2,Career Event Details 2,Karriereereignisdetails 2,,
 Page.title.soloCareerLength,Career Length,Karrierelänge,,
 Page.title.soloConstructType,Tool Selection,Werkzeug-Auswahl,,Selection d'Outil
 Page.title.soloEarlyOutlook,Early Outlook,Erziehung,,
@@ -461,6 +469,8 @@ Page.title.normalMilestone,Normal Milestone,Regulärer Meilenstein,,Jalon Normal
 Page.title.modificationComplete,Modification Completed,Änderung abgeschlossen,,Modification Effectuée
 Page.title.npcConfiguration,Random NPC Configuration,Anpassung zufälliger NSCs,,Configuration des PNJ Aléatoires
 Page.title.tokenCreationPage,Token Creation,Tokenerschaffung,,
+Page.title.upbringing,Early Outlook,Erziehung,,
+Page.title.upbringingDetails,Early Outlook Details,Erziehungsdetails,,
 Page.breadcrumb.characterCreation,Character Creation,Charaktererschaffung,Creación de personajes,Création de personnages
 Page.breadcrumb.starshipCreation,Starship Creation,Raumschifferschaffung,,Règles de Base
 Page.breadcrumb.supportingCharacterCreation,Supporting Character Creation,Erschaffung von Nebencharakteren,,Création de Personnage Secondaire

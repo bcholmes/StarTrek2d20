@@ -38,6 +38,7 @@ export const MODIFY_CHARACTER_ATTRIBUTE = 'MODIFY_CHARACTER_ATTRIBUTE';
 export const MODIFY_CHARACTER_DISCIPLINE = 'MODIFY_CHARACTER_DISCIPLINE';
 export const SET_CHARACTER_TYPE = 'SET_CHARACTER_TYPE';
 export const ADD_CHARACTER_CAREER_EVENT = "ADD_CHARACTER_CAREER_EVENT";
+export const SET_CHARACTER_CAREER_EVENT_TRAIT = "SET_CHARACTER_CAREER_EVENT_TRAIT";
 export const ADD_CHARACTER_BORG_IMPLANT = "ADD_CHARACTER_BORG_IMPLANT";
 export const REMOVE_CHARACTER_BORG_IMPLANT = "REMOVE_CHARACTER_BORG_IMPLANT";
 export const ADD_CHARACTER_TALENT = "ADD_CHARACTER_TALENT";
@@ -188,6 +189,15 @@ export function setCharacterHouse(house: string) {
        payload: payload
     }
 }
+
+export function setCharacterCareerEventTrait(trait: string, context: StepContext) {
+    let payload = { trait: trait, context: context };
+    return {
+       type: SET_CHARACTER_CAREER_EVENT_TRAIT,
+       payload: payload
+    }
+}
+
 
 export function setCharacterAdditionalTraits(traits: string) {
     let payload = { traits: traits };

@@ -87,6 +87,7 @@
     "ViewPage.errorMessage": "Things have gone terribly, terribly wrong. We might be in the mirror universe.",
     "ViewPage.unnamedStarship": "Unnamed Starship",
 
+    "CareerEvents.instruction": "Your career is a tapestry of events and experiences, but amongst this, a few will have been pivotal moments in your life. Define which moments of your life are important in retrospect, and what seemed definitive to an ensign in their early 20s may be inconsequential to that same officer decades later.",
     "CareerEvents.standard": "Standard",
     "CareerEvents.standardAndUnofficial": "Standard and Unofficial",
     "CareerEvents.unofficialNote": "This list includes unofficial items from [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Check that your GM is comfortable allowing these items.",
@@ -94,6 +95,8 @@
     "CareerEventDetails.errorAttribute": "Please select an attribute.",
     "CareerEventDetails.errorDiscipline": "Please select a discipline.",
     "CareerEventDetails.errorFocus": "Please select a focus.",
+
+    "ChildSelectionPage.instruction": "Naturally, a child has not attended Starfleet Academy (or any of its counterparts), or any institute of higher education. Indeed, they’re still in their earlier stages of education.\n\nSelect an age for your character.",
 
     "GMTracker.title": "Tracker",
     "GMTracker.instruction": "Use this tool to manage various NPCs in your game.",
@@ -128,6 +131,8 @@
 
     "CareerLength.instruction.klingon": "At this stage, you have a choice to make about the character. This decision is a clear one: is the character a young officer, eager for glory and with their whole career ahead of them, have they served in the KDF for several years, or are they a veteran with decades of experience?\n\nEither select or roll your Career.",
     "CareerLength.instruction.civilian": "At this stage, you have a choice to make about the character. This decision is a clear one: are you a young professional, fresh out of training, with your whole career ahead of you, have you served in your career for several years, or are you a veteran with decades of experience?\n\nEither select or roll your Career.",
+    "CareerLength.instruction.cadet": "The character is an officer-in-training, still studying at Starfleet Academy or a similar institution. They have great potential, and some skill, but lack the experience to put their abilities to the best use.",
+    "CareerLength.instruction.child": "Naturally, a child character doesn’t have much in the way of a career.",
 
     "EarlyOutlookPage.instruction": "The nature of a person’s family and their surroundings as they grew up can have a massive impact upon them, and, whether they accept this influence or rebelled against it, it will shape the rest of their lives.\n\nEither select or roll your early outlook.",
 
@@ -140,6 +145,7 @@
     "EducationPage.instruction.klingonWarrior": "You have chosen to commit your life to the Klingon Empire as a warrior, joining the Klingon Defense Force to protect the Empire and its interests. But this is not a trivial thing to do. Joining the crew of a starship takes training and dedication, and to be an officer rather than merely a bekk requires grueling entrance exams and the approval of the Oversight Council. There are training facilities on every major world in the Empire, but the most prestigious academies are found on Qo’noS and Ty’Gokor, and a young cadet may spend much of their training off-world engaging in fleet exercises and other practical study.",
     "EducationPage.instruction.starfleet": "The years spent at Starfleet Academy are some of the most memorable and definitive of an officer’s life, shaping the direction of their career going forward. For those who pass the grueling entrance examinations, the Academy takes four years, covering a mixture of intense training, academic studies, and practical experiences. Much of this takes place within the main Starfleet Academy campus in San Francisco on Earth, but other campuses and annexes exist across the Federation, and a cadet may spend time at any of these before they graduate.\n\nA graduate of the Academy receives a commission as a Starfleet officer, with the rank of ensign, after which they may wait several weeks, or even months, for their first assignment. Some cadets – particularly those pursuing a doctorate – choose a path that requires an additional year or two of training and study, and instead graduate at the rank of lieutenant (junior grade).\n\nYou may choose your character’s Academy track, or randomly select it.",
 
+    "EducationPage.type.cadet": "Cadet Training",
     "EducationPage.type.starfleet": "Starfleet Academy",
     "EducationPage.type.klingonWarrior": "Klingon Defense Force",
     "EducationPage.type.civilian": "Civilian Career Training",
@@ -436,12 +442,14 @@
     "Construct.system.structure": "Structure",
     "Construct.system.weapons": "Weapons",
 
-    "Page.title.career": "Career",
     "Page.title.careerEvent": "Career Event",
+    "Page.title.careerLength": "Career Length",
+    "Page.title.careerLengthDetails": "Career Length Details",
     "Page.title.characterType": "Character Type",
     "Page.title.creditsPage": "Credits",
     "Page.title.customSpaceframe": "Custom Spaceframe Creation",
     "Page.title.customSpeciesDetails": "Custom Species Details",
+    "Page.title.education": "Education",
     "Page.title.educationDetails": "Education Details",
     "Page.title.environment": "Environment",
     "Page.title.environmentDetails": "Environment Details",
@@ -457,14 +465,12 @@
     "Page.title.sectorDetails": "Sector Details",
     "Page.title.simpleStarship": "Simplified Starship Creation",
     "Page.title.smallCraftStats": "Small Craft Stats",
-    "Page.title.soloCareerEvent": "Career Event",
-    "Page.title.soloCareerEvent1": "Career Event 1",
-    "Page.title.soloCareerEvent2": "Career Event 2",
-
-    "Please": "Career Event Details",
-
-    "Page.title.soloCareerEventDetails1": "Career Event Details 1",
-    "Page.title.soloCareerEventDetails2": "Career Event Details 2",
+    "Page.title.careerEvent": "Career Event",
+    "Page.title.careerEvent1": "Career Event 1",
+    "Page.title.careerEvent2": "Career Event 2",
+    "Page.title.careerEventDetails": "Career Event Details",
+    "Page.title.careerEventDetails1": "Career Event Details 1",
+    "Page.title.careerEventDetails2": "Career Event Details 2",
     "Page.title.soloCareerLength": "Career Length",
     "Page.title.soloConstructType": "Tool Selection",
     "Page.title.soloEarlyOutlook": "Early Outlook",
@@ -495,6 +501,8 @@
     "Page.title.modificationComplete": "Modification Completed",
     "Page.title.npcConfiguration": "Random NPC Configuration",
     "Page.title.tokenCreationPage": "Token Creation",
+    "Page.title.upbringing": "Early Outlook",
+    "Page.title.upbringingDetails": "Early Outlook Details",
 
     "Page.breadcrumb.characterCreation": "Character Creation",
     "Page.breadcrumb.starshipCreation": "Starship Creation",

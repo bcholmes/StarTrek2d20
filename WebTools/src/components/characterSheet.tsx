@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import i18n from 'i18next';
-import {Character, character} from '../common/character';
+import {Character} from '../common/character';
 import {Attribute} from '../helpers/attributes';
 import {Skill} from '../helpers/skills';
 import {EnvironmentsHelper, Environment} from '../helpers/environments';
@@ -80,7 +80,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
 
     render() {
         const { t } = this.props;
-        let c = character;
+        let c = new Character();
         if (this.props.storeBased && store.getState().character.currentCharacter) {
             c = store.getState().character.currentCharacter;
         }

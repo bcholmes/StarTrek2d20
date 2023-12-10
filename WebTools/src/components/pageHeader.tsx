@@ -1,5 +1,4 @@
 ﻿import React from 'react';
-import { character } from '../common/character';
 import { PageIdentity } from '../pages/pageIdentity';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { makeKey } from '../common/translationKey';
@@ -15,14 +14,22 @@ export const getPageTitle = (t, page) => {
         return t(key);
     } else if (page === PageIdentity.SoloCharacterEra) {
         return t('Page.title.era');
-    } else if (page === PageIdentity.SoloSpecies) {
-        return t('Page.title.species');
-    } else if (page === PageIdentity.SoloSpeciesDetails) {
-        return t('Page.title.speciesDetails');
+    } else if (page === PageIdentity.SoloCareerEvent1) {
+        return t('Page.title.careerEvent1');
+    } else if (page === PageIdentity.SoloCareerEvent2) {
+        return t('Page.title.careerEvent2');
+    } else if (page === PageIdentity.SoloCareerEventDetails1) {
+        return t('Page.title.careerEventDetails1');
+    } else if (page === PageIdentity.SoloCareerEventDetails2) {
+        return t('Page.title.careerEventDetails2');
     } else if (page === PageIdentity.SoloEnvironment) {
         return t('Page.title.environment');
     } else if (page === PageIdentity.SoloEnvironmentDetails) {
         return t('Page.title.environmentDetails');
+    } else if (page === PageIdentity.SoloSpecies) {
+        return t('Page.title.species');
+    } else if (page === PageIdentity.SoloSpeciesDetails) {
+        return t('Page.title.speciesDetails');
     } else if (page === PageIdentity.SupportingCharacter) {
         return "Supporting Character";
     } else if (page === PageIdentity.StarshipToolSelection) {

@@ -48,20 +48,23 @@ class History extends React.Component<IHistoryProperties, {}> {
 
 
     renderCharacterHistory() {
-        return character.mementos.length > 0
-            ? character.mementos.map((step, i) => {
-                const name = this.getPageName(step.page);
-                if (name.length > 0) {
-                    return (
-                        <div className="history-item" key={i} onClick={() => this.goToPage(step.page) }>
-                            {name}
-                        </div>
-                    );
-                } else {
-                    return undefined;
-                }
-            })
-            : <div>No history.</div>;
+        let character = store.getState().character.currentCharacter as Character;
+        if (character == null) {
+            return (<div>No history</div>);
+        } else {
+            return (<>
+                {character?.speciesStep ? this.renderPageTitleLink(PageIdentity.Species) : (<div>No history</div>)}
+                {character?.environmentStep ? this.renderPageTitleLink(PageIdentity.Environment) : undefined}
+                {character?.upbringingStep ? this.renderPageTitleLink(PageIdentity.Upbringing) : undefined}
+                {character?.educationStep
+                    ? (character.type === CharacterType.Child ? this.renderPageTitleLink(PageIdentity.ChildEducationPage) : this.renderPageTitleLink(PageIdentity.Education))
+                    : undefined}
+                {character?.careerStep != null ? this.renderPageTitleLink(PageIdentity.CareerLength) : undefined}
+                {character?.careerEvents?.length > 0 ? this.renderPageTitleLink(PageIdentity.CareerEvent1) : undefined}
+                {character?.careerEvents?.length > 1 ? this.renderPageTitleLink(PageIdentity.CareerEvent2) : undefined}
+                {character?.finishingStep ? this.renderPageTitleLink(PageIdentity.AttributesAndDisciplines) : undefined}
+            </>);
+        }
     }
 
     renderPageTitleLink(page: PageIdentity) {
@@ -118,7 +121,7 @@ class History extends React.Component<IHistoryProperties, {}> {
         history.classList.add("history-hidden");
 
         this.props.close();
-        character.goToStep(page);
+//        character.goToStep(page);
         Navigation.navigateToHistoryPage(page);
     }
 

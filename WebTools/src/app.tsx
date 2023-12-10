@@ -51,10 +51,6 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
             ...this.state,
             activePage: page
         })
-
-        if (!isHistory) {
-            character.saveMemento(this.state.activePage);
-        }
     }
 
     render() {

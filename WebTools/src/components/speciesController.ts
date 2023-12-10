@@ -52,10 +52,6 @@ export class SpeciesAttributeController implements IAttributeController {
 
 class KtarianSpeciesAttributeController extends SpeciesAttributeController {
 
-    constructor(character: Character, species: SpeciesModel) {
-        super(character, species);
-    }
-
     isShown(attribute: Attribute) {
         return super.isShown(attribute)
             || this.species.secondaryAttributes.indexOf(attribute) >= 0;
