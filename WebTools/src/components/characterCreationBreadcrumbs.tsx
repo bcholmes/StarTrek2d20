@@ -5,6 +5,8 @@ import { characterMapStateToProperties, ICharacterProperties } from "../solo/pag
 import { connect } from "react-redux";
 import { navigateTo } from "../common/navigator";
 import { CharacterType } from "../common/characterType";
+import { setCharacterFinishingTouches } from "../state/characterActions";
+import store from "../state/store";
 
 interface ICharacterBreadcrumbProperties extends ICharacterProperties {
     pageIdentity?: PageIdentity;
@@ -73,6 +75,39 @@ const CharacterCreationBreadcrumbs : React.FC<ICharacterBreadcrumbProperties> = 
         }
     }
 
+    const renderCareerEvent1 = () => {
+        if ((character?.careerEvents?.length > 1 && pageIdentity === PageIdentity.CareerEvent1Details) || pageIdentity === PageIdentity.CareerEvent1) {
+            return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.careerEvent1')}</li>);
+        } else if (character?.careerEvents?.length || character?.finishingStep) {
+            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.CareerEvent1)}>{t('Page.title.careerEvent1')}</a></li>);
+        } else {
+            return undefined;
+        }
+    }
+
+    const renderCareerEvent2 = () => {
+        if ((character?.finishingStep && pageIdentity === PageIdentity.CareerEvent2Details) || pageIdentity === PageIdentity.CareerEvent2) {
+            return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.careerEvent2')}</li>);
+        } else if (character?.finishingStep) {
+            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.CareerEvent2)}>{t('Page.title.careerEvent2')}</a></li>);
+        } else {
+            return undefined;
+        }
+    }
+
+    const renderFinal = () => {
+        if (pageIdentity === PageIdentity.AttributesAndDisciplines) {
+            return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloFinal')}</li>);
+        } else if (character?.finishingStep || pageIdentity === PageIdentity.Finish) {
+            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => {
+                store.dispatch(setCharacterFinishingTouches());
+                navigateTo(e, PageIdentity.AttributesAndDisciplines);
+            }}>{t('Page.title.soloFinal')}</a></li>);
+        } else {
+            return undefined;
+        }
+    }
+
     return (<nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
@@ -82,6 +117,9 @@ const CharacterCreationBreadcrumbs : React.FC<ICharacterBreadcrumbProperties> = 
                     {renderEarlyOutlook()}
                     {renderEducation()}
                     {renderCareerLength()}
+                    {renderCareerEvent1()}
+                    {renderCareerEvent2()}
+                    {renderFinal()}
                 </ol>
             </nav>);
 }

@@ -80,8 +80,8 @@ export function removeCharacterBorgImplant(type: BorgImplantType) {
     }
 }
 
-export function setCharacterSpecies(species: Species, attributes: Attribute[] = []) {
-    let payload = { species: species, attributes: attributes };
+export function setCharacterSpecies(species: Species, attributes: Attribute[] = [], mixedSpecies?: Species, originalSpecies?: Species) {
+    let payload = { species: species, attributes: attributes, mixedSpecies: mixedSpecies, originalSpecies: originalSpecies };
     return {
        type: SET_CHARACTER_SPECIES,
        payload: payload

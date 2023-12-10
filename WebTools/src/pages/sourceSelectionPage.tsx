@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Source, SourcesHelper} from '../helpers/sources';
-import {Character, character} from '../common/character';
+import {Character} from '../common/character';
 import {Navigation, navigateTo} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import store from '../state/store';

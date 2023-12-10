@@ -49,17 +49,25 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
             let originalStep = temp.speciesStep;
             temp.speciesStep = new SpeciesStep(action.payload.species);
             if (action.payload.attributes) {
-                temp.speciesStep.attributes = action.payload.attributes;
+                temp.speciesStep.attributes = [...action.payload.attributes];
             }
             if (originalStep) {
                 if (originalStep.species === temp.speciesStep.species) {
-                    temp.speciesStep.attributes = [...originalStep.attributes];
+                    if (originalStep.attributes?.length) {
+                        if (originalStep.originalSpecies != null && originalStep.originalSpecies === action.payload.originalSpecies) {
+                            temp.speciesStep.attributes = [...originalStep.attributes];
+                        } else if (originalStep.mixedSpecies != null && originalStep.mixedSpecies === action.payload.mixedSpecies) {
+                            temp.speciesStep.attributes = [...originalStep.attributes];
+                        }
+                    }
                     temp.speciesStep.customSpeciesName = originalStep.customSpeciesName;
                     temp.speciesStep.mixedSpecies = originalStep.mixedSpecies;
                     temp.speciesStep.originalSpecies = originalStep.originalSpecies;
                     temp.speciesStep.talent = originalStep.talent?.copy();
                 }
             }
+            temp.speciesStep.mixedSpecies = action.payload.mixedSpecies;
+            temp.speciesStep.originalSpecies = action.payload.originalSpecies;
 
             return {
                 ...state,

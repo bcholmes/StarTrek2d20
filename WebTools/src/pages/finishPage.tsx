@@ -20,6 +20,7 @@ import { connect } from 'react-redux';
 import store from '../state/store';
 import { setCharacterAdditionalTraits, setCharacterAssignedShip, setCharacterAssignment, setCharacterHouse, setCharacterLineage, setCharacterName, setCharacterPronouns, setCharacterRank } from '../state/characterActions';
 import AllCharacterValues from '../components/allCharacterValues';
+import { PageIdentity } from './pageIdentity';
 
 interface IFinishPageProperties {
     character: Character;
@@ -292,7 +293,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
 
     return (
         <div className="page container ml-0">
-            <CharacterCreationBreadcrumbs />
+            <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Finish} />
             <Header>{t('Page.title.finish')}</Header>
             <p>
                 Your character is finished. Export your character to PDF, or use the "Profile" option in the left-hand bar to see the chosen options and

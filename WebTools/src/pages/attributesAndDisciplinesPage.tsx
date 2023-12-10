@@ -119,7 +119,7 @@ const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character
 
     return (
         <div className="page container ml-0">
-            <CharacterCreationBreadcrumbs />
+            <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.AttributesAndDisciplines} />
             <Header>{t('Page.title.finish')}</Header>
             <InstructionText text={description} />
             <div className="row">
