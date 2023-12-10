@@ -15,10 +15,11 @@ export class CareerEventModel {
     roll: number;
     special?: string;
     prefix: string;
+    focuses: string[];
 
     constructor(name: string, description: string, attributes: Attribute[], disciplines: Skill[], focusSuggestions: string,
-        traitDescription: string, roll: number, onApply: () => void, special: string = undefined, prefix: string = "common."
-        ) {
+        traitDescription: string, roll: number, onApply: () => void, special: string = undefined, prefix: string = "common.",
+        focuses: string[] = []) {
         this.name = name;
         this.description = description;
         this.attributes = attributes;
@@ -29,6 +30,7 @@ export class CareerEventModel {
         this.roll = roll;
         this.special = special;
         this.prefix = prefix;
+        this.focuses = focuses;
     }
 
     get localizedName() {
@@ -63,7 +65,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Daring);
                 this.improveDiscipline(Skill.Security);
-            }
+            },
+            undefined,
+            "common.",
+            ["Extra Vehicular Operations", "Small Craft", "Survival"]
         ),
         new CareerEventModel(
             "Death of a Friend",
@@ -76,7 +81,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Insight);
                 this.improveDiscipline(Skill.Medicine);
-            }
+            },
+            undefined,
+            "common.",
+            ["Counselling", "Cultural Grief Practices"]
         ),
         new CareerEventModel(
             "Lauded by Another Culture",
@@ -89,7 +97,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Presence);
                 this.improveDiscipline(Skill.Science);
-            }
+            },
+            undefined,
+            "common.",
+            ["X Culture"]
         ),
         new CareerEventModel(
             "Negotiate a Treaty",
@@ -102,7 +113,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Control);
                 this.improveDiscipline(Skill.Command);
-            }
+            },
+            undefined,
+            "common.",
+            ["Diplomacy", "Negotiation", "Galactic Politics"]
         ),
         new CareerEventModel(
             "Required to Take Command",
@@ -115,7 +129,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Daring);
                 this.improveDiscipline(Skill.Command);
-            }
+            },
+            undefined,
+            "common.",
+            ["Lead by Example", "Inspiration", "Composure"]
         ),
         new CareerEventModel(
             "Encounter with a Truly Alien Being",
@@ -128,7 +145,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Reason);
                 this.improveDiscipline(Skill.Science);
-            }
+            },
+            undefined,
+            "common.",
+            ["Empathy", "Philosophy", "Xenobiology"]
         ),
         new CareerEventModel(
             "Serious Injury",
@@ -141,7 +161,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Fitness);
                 this.improveDiscipline(Skill.Medicine);
-            }
+            },
+            undefined,
+            "common.",
+            ["Athletics", "Art", "Philosophy"]
         ),
         new CareerEventModel(
             "Conflict with a Hostile Culture",
@@ -154,7 +177,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Fitness);
                 this.improveDiscipline(Skill.Security);
-            }
+            },
+            undefined,
+            "common.",
+            ["Hand Phasers", "Hand-to-Hand Combat", "Shipboard Tactical Systems"]
         ),
         new CareerEventModel(
             "Mentored",
@@ -166,7 +192,10 @@ class CareerEvents {
             9,
             () => {
                 this.improveDiscipline(Skill.Conn);
-            }
+            },
+            undefined,
+            "common.",
+            ["Composure", "Etiquette"]
         ),
         new CareerEventModel(
             "Transporter Accident",
@@ -179,7 +208,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Control);
                 this.improveDiscipline(Skill.Conn);
-            }
+            },
+            undefined,
+            "common.",
+            ["Transporters & Replicators", "Small Craft", "Quantum Mechanics"]
         ),
         new CareerEventModel(
             "Dealing with a Plague",
@@ -192,7 +224,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Insight);
                 this.improveDiscipline(Skill.Medicine);
-            }
+            },
+            undefined,
+            "common.",
+            ["Infectious Diseases", "Emergency Medicine", "Triage"]
         ),
         new CareerEventModel(
             "Betrayed Ideals for a Superior",
@@ -205,7 +240,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Presence);
                 this.improveDiscipline(Skill.Command);
-            }
+            },
+            undefined,
+            "common.",
+            ["Persuasion", "Inspiration", "Investigation"]
         ),
         new CareerEventModel(
             "Called Out a Superior",
@@ -218,7 +256,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Reason);
                 this.improveDiscipline(Skill.Conn);
-            }
+            },
+            undefined,
+            "common.",
+            ["Uniform Code of Justice", "History", "Starfleet Protocol"]
         ),
         new CareerEventModel(
             "New Battle Strategy",
@@ -231,7 +272,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Daring);
                 this.improveDiscipline(Skill.Security);
-            }
+            },
+            undefined,
+            "common.",
+            ["Combat Tactics", "Hazard Awareness", "Lead by Example"]
         ),
         new CareerEventModel(
             "Learns Unique Language",
@@ -244,7 +288,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Insight);
                 this.improveDiscipline(Skill.Science);
-            }
+            },
+            undefined,
+            "common.",
+            ["Linguistics", "Cultural Studies", "Negotiation"]
         ),
         new CareerEventModel(
             "Discovers an Artifact",
@@ -257,7 +304,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Reason);
                 this.improveDiscipline(Skill.Engineering);
-            }
+            },
+            undefined,
+            "common.",
+            ["Ancient Technology", "Computers", "Reverse Engineering"]
         ),
         new CareerEventModel(
             "Special Commendation",
@@ -269,7 +319,10 @@ class CareerEvents {
             17,
             () => {
                 this.improveAttribute(Attribute.Fitness);
-            }
+            },
+            undefined,
+            "common.",
+            ["Athletics", "Survival", "Emergency Medicine"]
         ),
         new CareerEventModel(
             "Solved an Engineering Crisis",
@@ -282,7 +335,10 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Control);
                 this.improveDiscipline(Skill.Engineering);
-            }
+            },
+            undefined,
+            "common.",
+            ["Electro-Plasma Power Systems", "Fusion Reactors", "Warp Engines"]
         ),
         new CareerEventModel(
             "Breakthrough or Invention",
@@ -294,7 +350,10 @@ class CareerEvents {
             19,
             () => {
                 this.improveDiscipline(Skill.Engineering);
-            }
+            },
+            undefined,
+            "common.",
+            ["Experimental Technology", "Invention", "Improvisation"]
         ),
         new CareerEventModel(
             "First Contact",
@@ -306,7 +365,10 @@ class CareerEvents {
             20,
             () => {
                 this.improveAttribute(Attribute.Presence);
-            }
+            },
+            undefined,
+            "common.",
+            ["Cultural Studies", "Diplomacy", "Infiltration"]
         ),
 
         // Operations
@@ -321,7 +383,11 @@ class CareerEvents {
             () => {
                 this.improveAttribute(Attribute.Daring);
                 this.improveDiscipline(Skill.Security);
-            }),
+            },
+            undefined,
+            "common.",
+            ["Composure", "Infiltration", "Persuasion"]
+        )
     ];
 
     private _klingonEvents: CareerEventModel[] = [

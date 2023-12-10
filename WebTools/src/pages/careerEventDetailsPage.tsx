@@ -21,6 +21,8 @@ import store from '../state/store';
 import { connect } from 'react-redux';
 import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { CareerEventAttributeController, CareerEventDisciplineController } from '../components/careerEventDetailsControllers';
+import { FocusRandomTableWithHints } from '../solo/table/focusRandomTable';
+import D20IconButton from '../solo/component/d20IconButton';
 
 interface ICareerEventDetailsProperties extends ICharacterProperties{
     context: StepContext;
@@ -34,6 +36,17 @@ const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({charac
         : character.careerEvents[1];
 
     const careerEvent = CareerEventsHelper.getCareerEvent(careerEventStep?.id, character.type);
+
+    const selectRandomFocus = () => {
+        let done = false;
+        while (!done) {
+            let focus = FocusRandomTableWithHints(careerEventStep.discipline, careerEvent.focuses);
+            if (character.focuses.indexOf(focus) < 0) {
+                done = true;
+                store.dispatch(setCharacterFocus(focus, context));
+            }
+        }
+    }
 
     const navigateToNextStep = () => {
         if (careerEventStep.attribute == null) {
@@ -80,9 +93,14 @@ const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({charac
                     </div>
                     <div className="col-lg-6 my-3">
                         <Header level={2} className="mb-3">{t('Construct.other.focus')}</Header>
-                        <InputFieldAndLabel id="focus" labelName={t('Construct.other.focus')}
-                            value={careerEventStep?.focus || ""}
-                            onChange={(f) => store.dispatch(setCharacterFocus(f, context))} />
+                        <div className="d-flex justify-content-between align-items-center flex-wrap">
+                            <InputFieldAndLabel id="focus" labelName={t('Construct.other.focus')}
+                                value={careerEventStep?.focus || ""} className="mt-1"
+                                onChange={(v) => store.dispatch(setCharacterFocus(v, context))} />
+                            <div style={{ flexShrink: 0 }} className="mt-1">
+                                <D20IconButton onClick={() => selectRandomFocus()}/>
+                            </div>
+                        </div>
                         <div className="mt-3 text-white"><b>{t('Common.text.suggestions')}:</b> {careerEvent.localizedFocusSuggestion}</div>
                     </div>
                     {careerEvent.traitDescription !== null
