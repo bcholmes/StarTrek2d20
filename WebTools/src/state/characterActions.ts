@@ -256,16 +256,16 @@ export function setCharacterCareerLength(careerLength: Career) {
     }
 }
 
-export function modifyCharacterAttribute(attribute: Attribute, context: StepContext, increase: boolean = true) {
-    let payload = { attribute: attribute, context: context, increase: increase };
+export function modifyCharacterAttribute(attribute: Attribute, context: StepContext, positive: boolean = true, decrement: boolean = false) {
+    let payload = { attribute: attribute, context: context, positive: positive, decrement: decrement };
     return {
        type: MODIFY_CHARACTER_ATTRIBUTE,
        payload: payload
     }
 }
 
-export function modifyCharacterDiscipline(discipline: Skill, context: StepContext, increase: boolean = true, primaryDisciplines: Skill[] = []) {
-    let payload = { discipline: discipline, context: context, increase: increase, primaryDisciplines: primaryDisciplines };
+export function modifyCharacterDiscipline(discipline: Skill, context: StepContext, positive: boolean = true, primaryDisciplines: Skill[] = []) {
+    let payload = { discipline: discipline, context: context, positive: positive, primaryDisciplines: primaryDisciplines };
     return {
        type: MODIFY_CHARACTER_DISCIPLINE,
        payload: payload

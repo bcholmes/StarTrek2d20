@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import {Character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
@@ -19,7 +19,7 @@ import { connect } from 'react-redux';
 import AttributeListComponent from '../components/attributeListComponent';
 import DisciplineListComponent from '../components/disciplineListComponent';
 import store from '../state/store';
-import { addCharacterTalent, setCharacterValue, StepContext } from '../state/characterActions';
+import { addCharacterTalent, setCharacterFinishingTouches, setCharacterValue, StepContext } from '../state/characterActions';
 
 const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character})  => {
 
@@ -106,6 +106,12 @@ const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character
             be automatically added to your dsciplines without exceeding maximum values.
         </p>
     ) : undefined;
+
+    useEffect(() => {
+        if (character.finishingStep == null) {
+            store.dispatch(setCharacterFinishingTouches());
+        }
+    }, []);
 
 
     let value = (character.type !== CharacterType.Child && character.type !== CharacterType.Cadet)

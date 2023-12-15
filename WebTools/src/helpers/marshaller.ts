@@ -154,9 +154,15 @@ class Marshaller {
                 }
             }
             if (character.careerStep.value) {
+                if (sheet["career"] == null) {
+                    sheet["career"] = {};
+                }
                 sheet["career"]["value"] = character.careerStep.value;
             }
             if (character.careerStep.talent != null) {
+                if (sheet["career"] == null) {
+                    sheet["career"] = {};
+                }
                 sheet["career"]["talent"] = this.talentToJson(character.careerStep.talent);
             }
         }

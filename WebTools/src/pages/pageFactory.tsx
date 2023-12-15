@@ -22,7 +22,7 @@ import { PageIdentity } from './pageIdentity';
 import CharacterTypePage from './characterTypePage';
 import SimpleCareerPage from './simpleCareerPage';
 import ChildEducationPage from './childEducationPage';
-import { ChildEducationDetailsPage } from './childEducationDetailsPage';
+import ChildEducationDetailsPage from './childEducationDetailsPage';
 import { CadetSeniorityPage } from './cadetSeniorityPage';
 import SpeciesExtraDetailsPage from './speciesExtraDetailsPage';
 import { Species } from '../helpers/speciesEnum';

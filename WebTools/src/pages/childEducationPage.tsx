@@ -57,7 +57,7 @@ const ChildEducationPage: React.FC<ICharacterProperties> = ({character}) => {
         Navigation.navigateToPage(PageIdentity.ChildEducationDetailsPage);
     }
 
-    return (<div className="page">
+    return (<div className="page container ml-0">
         <CharacterCreationBreadcrumbs />
         <InstructionText text={t('ChildSelectionPage.instruction')} />
         <AgeSelection onSelection={(a) => selectAge(a)} />

@@ -1,105 +1,41 @@
 import * as React from 'react';
-import { character } from '../common/character';
-import { Navigation } from '../common/navigator';
 import { Button } from '../components/button';
 import { ChildAttributeImprovementCollection } from '../components/childAttributeImprovement';
 import { ChildSkillList } from '../components/childSkillList';
-import { Dialog } from '../components/dialog';
 import { Header } from '../components/header';
-import ValueInput, { Value } from '../components/valueInput';
-import { IPageProperties } from './iPageProperties';
-import { PageIdentity } from './pageIdentity';
+import ValueInput from '../components/valueInputWithRandomOption';
+import { ICharacterPageProperties } from '../common/iCharacterPageProperties';
+import { characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { connect } from 'react-redux';
+import InstructionText from '../components/instructionText';
+import { useTranslation } from 'react-i18next';
+import ReactMarkdown from 'react-markdown';
+import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
+import store from '../state/store';
+import { StepContext, setCharacterFocus, setCharacterValue } from '../state/characterActions';
+import { ValueRandomTable } from '../solo/table/valueRandomTable';
 
-interface IEducationDetailsState {
-    attributesChosen: boolean;
-    attributesDecreased: boolean;
-    disciplinesChosen: boolean;
-    disciplinesDecreased: boolean;
-    focus1?: string;
-    focus2?: string;
-}
+const ChildEducationDetailsPage: React.FC<ICharacterPageProperties> = ({character}) => {
 
-export class ChildEducationDetailsPage extends React.Component<IPageProperties, IEducationDetailsState> {
+    const { t } = useTranslation();
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            attributesChosen: false,
-            attributesDecreased: false,
-            disciplinesChosen: false,
-            disciplinesDecreased: false
-        };
+    const randomValue = () => {
+        let value = ValueRandomTable(character.speciesStep?.species, character.educationStep?.primaryDiscipline);
+        onValueChanged(value);
     }
 
-    render() {
-
-        let focuses = character.age.options.numberOfFocuses === 1
-            ? (<div className="panel">
-                <div className="header-small">FOCUS</div>
-                <div>{character.age.options.focusText}</div>
-                <div>
-                    <div className="textinput-label">FOCUS</div>
-                    <input type="text" onChange={(input) => { this.setFocus(0, input.target.value); } } />
-                </div>
-            </div>)
-            : (<div className="panel">
-                <div className="header-small">FOCUS</div>
-                <div>{character.age.options.focusText}</div>
-                <div>
-                    <div className="textinput-label">FOCUS</div>
-                    <input type="text" onChange={(input) => { this.setFocus(0, input.target.value) } } />
-                </div>
-                <div>
-                    <div className="textinput-label">FOCUS</div>
-                    <input type="text" onChange={(input) => { this.setFocus(1, input.target.value) } } />
-                </div>
-            </div>);
-
-        return (<div className="page">
-            <Header>{character.age.name}</Header>
-            <div className="panel">
-                <div className="desc-text">{character.age.description}</div>
-            </div>
-            <div className="panel">
-                <div className="header-small">ATTRIBUTES</div>
-                <ChildAttributeImprovementCollection decreasePoints={character.age.options.decreaseAttributes} onChange={(dec, inc) => this.onAttributesChanged(dec, inc)} />
-            </div>
-            <div className="panel">
-                <div className="header-small">DISCIPLINES</div>
-                <ChildSkillList decreasePoints={character.age.options.decreaseDisciplines} onChanged={(dec, inc) => { this.onDisciplinesChanged(dec, inc) } } />
-            </div>
-            {focuses}
-            <div className="panel">
-                <div className="header-small">VALUE</div>
-                <ValueInput value={Value.Track}/>
-            </div>
-            <Button text="CAREER" className="button-next" onClick={() => this.onNext() }/>
-        </div>);
+    const onValueChanged = (value: string) => {
+        store.dispatch(setCharacterValue(value, StepContext.Education));
     }
 
-    setFocus(index: number, focus: string) {
-        if (index === 0) {
-            this.setState((state) => ({
-                ...state,
-                focus1: focus
-            }));
-        } else {
-            this.setState((state) => ({
-                ...state,
-                focus2: focus
-            }));
-        }
+    const onAttributesChanged = (dec: boolean, inc: boolean) => {
     }
 
-    onAttributesChanged(dec: boolean, inc: boolean) {
-        this.setState((state) => ({...state, attributesChosen: inc, attributesDecreased: dec}));
+    const onDisciplinesChanged = (dec: boolean, inc: boolean) => {
     }
 
-    onDisciplinesChanged(dec: boolean, inc: boolean) {
-        this.setState((state) => ({...state, disciplinesChosen: inc, disciplinesDecreased: dec}));
-    }
-
-    private onNext() {
+    const onNext = () => {
+        /*
         if (!this.state.attributesDecreased) {
             Dialog.show("You must decrease " + (character.age.options.decreaseAttributes === 1 ? "one attribute" : (character.age.options.decreaseAttributes + " attributes")));
         } else if (!this.state.attributesChosen) {
@@ -122,5 +58,55 @@ export class ChildEducationDetailsPage extends React.Component<IPageProperties, 
 
             Navigation.navigateToPage(PageIdentity.ChildCareer);
         }
+        */
     }
+
+    let focuses = character.age.options.numberOfFocuses === 1
+        ? (<div className="col-lg-6 my-3">
+            <Header level={2}>{t('Construct.other.focus')}</Header>
+            <ReactMarkdown>{character.age.options.focusText}</ReactMarkdown>
+
+            <InputFieldAndLabel id="focus1" labelName={t('Construct.other.focus1')}
+                value={character.educationStep?.focuses[0] ?? ""}
+                onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 0))} />
+        </div>)
+        : (<div className="col-lg-6 my-3">
+            <Header level={2}>{t('Construct.other.focuses')}</Header>
+            <ReactMarkdown>{character.age.options.focusText}</ReactMarkdown>
+
+            <InputFieldAndLabel id="focus1" labelName={t('Construct.other.focus1')}
+                value={character.educationStep?.focuses[0] ?? ""}
+                onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 0))} />
+            <InputFieldAndLabel id="focus2" labelName={t('Construct.other.focus2')}
+                value={character.educationStep?.focuses[1] ?? ""}
+                onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 1))} />
+        </div>);
+
+    return (<div className="page container ml-0">
+        <Header>{character.age.name}</Header>
+        <InstructionText text={character.age.description} />
+        <div className="row">
+            <div className="col-lg-6 my-3">
+                <Header level={2}>{t('Construct.other.attributes')}</Header>
+                <ChildAttributeImprovementCollection decreasePoints={character.age.options.decreaseAttributes} onChange={(dec, inc) => onAttributesChanged(dec, inc)} />
+            </div>
+            <div className="col-lg-6 my-3">
+                <Header level={2}>{t('Construct.other.disciplines')}</Header>
+                <ChildSkillList decreasePoints={character.age.options.decreaseDisciplines} onChanged={(dec, inc) => { onDisciplinesChanged(dec, inc) } } />
+            </div>
+            {focuses}
+            <div className="col-lg-6 my-3">
+                <Header level={2}>{t('Construct.other.value')}</Header>
+                <ValueInput value={character.educationStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value)}
+                    onRandomClicked={() => randomValue()} textDescription={t('Value.childEducation.text')} />
+
+            </div>
+        </div>
+
+        <div className="text-right">
+            <Button buttonType={true} className="btn btn-primary" onClick={() => onNext() }>{t('Common.button.next')}</Button>
+        </div>
+    </div>);
 }
+
+export default connect(characterMapStateToProperties)(ChildEducationDetailsPage);
