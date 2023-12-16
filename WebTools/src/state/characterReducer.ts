@@ -1,5 +1,7 @@
 import { CareerEventStep, CareerStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, SelectedTalent, SpeciesStep, SupportingStep, UpbringingStep } from "../common/character";
+import { CharacterType } from "../common/characterType";
 import { Stereotype } from "../common/construct";
+import AgeHelper from "../helpers/age";
 import { Skill } from "../helpers/skills";
 import { Species } from "../helpers/speciesEnum";
 import { TALENT_NAME_BORG_IMPLANTS } from "../helpers/talents";
@@ -295,8 +297,16 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
             let temp = state.currentCharacter.copy();
             let originalType = temp.type;
             temp.type = action.payload.type;
-            if (temp.type !== originalType && temp.educationStep) {
-                temp.educationStep = undefined;
+            if (temp.type !== originalType) {
+                if (temp.educationStep) {
+                    temp.educationStep = undefined;
+                }
+
+                if (originalType === CharacterType.Child && temp.type !== CharacterType.Child) {
+                    temp.age = AgeHelper.getAdultAge();
+                } else if (originalType !== CharacterType.Child && temp.type === CharacterType.Child) {
+                    temp.age = AgeHelper.getAllChildAges()[0];
+                }
             }
             return {
                 ...state,

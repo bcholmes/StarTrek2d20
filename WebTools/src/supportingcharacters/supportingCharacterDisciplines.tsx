@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-import { Skill, SkillsHelper } from '../helpers/skills';
+import { Skill } from '../helpers/skills';
 import { useTranslation } from 'react-i18next';
 import { makeKey } from '../common/translationKey';
 import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';

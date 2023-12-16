@@ -35,12 +35,6 @@ class Value extends React.Component<IValueProperties, {}> {
     }
 }
 
-interface IAttributeState {
-    selectedValue?: number;
-    assignedValues: number[];
-    checkedValues: number[];
-}
-
 const SupportingCharacterAttributes: React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();

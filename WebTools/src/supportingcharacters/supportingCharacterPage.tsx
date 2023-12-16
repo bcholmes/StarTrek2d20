@@ -9,7 +9,7 @@ import {Rank, RanksHelper} from '../helpers/ranks';
 import {Button} from '../components/button';
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
-import AgeHelper, { Age } from '../helpers/age';
+import AgeHelper from '../helpers/age';
 import { Source } from '../helpers/sources';
 import { marshaller } from '../helpers/marshaller';
 import { Species } from '../helpers/speciesEnum';
@@ -92,15 +92,6 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
 
     const selectType = (characterType: CharacterType) => {
         store.dispatch(setCharacterType(characterType as CharacterType));
-        let age = character.age;
-
-        if (characterType !== CharacterType.Child) {
-            age = AgeHelper.getAdultAge();
-            character.age = age;
-        } else if (character.age === AgeHelper.getAdultAge()) {
-            age = AgeHelper.getAllChildAges()[0];
-            character.age = age;
-        }
 
         if (characterType === CharacterType.Child
             || characterType === CharacterType.AmbassadorDiplomat
@@ -168,7 +159,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                             <DropDownSelect
                                 items={getTypes() }
                                 defaultValue={character.type}
-                                onChange={(index) => selectType(index as number) }/>
+                                onChange={(index) => selectType(index as CharacterType) }/>
                         </div>
 
                         {ageDiv}
