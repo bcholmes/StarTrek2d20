@@ -52,6 +52,39 @@ export class SpeciesAttributeController implements IAttributeController {
     }
 }
 
+export class CustomSpeciesAttributeController implements IAttributeController {
+    readonly character: Character;
+
+    constructor(character: Character) {
+        this.character = character;
+    }
+
+    isShown(attribute: Attribute) {
+        return true;
+    }
+    isEditable(attribute: Attribute): boolean {
+        return true;
+    }
+    getValue(attribute: Attribute): number {
+        return this.character.attributes[attribute].value;
+    }
+    canIncrease(attribute: Attribute): boolean {
+        return this.isEditable(attribute) && this.character.speciesStep?.attributes?.length < 3 && this.character.speciesStep?.attributes?.indexOf(attribute) < 0;
+    }
+    canDecrease(attribute: Attribute): boolean {
+        return this.isEditable(attribute) && this.character.speciesStep?.attributes?.indexOf(attribute) >= 0;
+    }
+    onIncrease(attribute: Attribute): void {
+        store.dispatch(modifyCharacterAttribute(attribute, StepContext.Species));
+    }
+    onDecrease(attribute: Attribute): void {
+        store.dispatch(modifyCharacterAttribute(attribute, StepContext.Species, false));
+    }
+    get instructions() {
+        return []
+    }
+}
+
 class KtarianSpeciesAttributeController extends SpeciesAttributeController {
 
     isShown(attribute: Attribute) {

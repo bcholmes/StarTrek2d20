@@ -93,6 +93,7 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
         return activePage === PageIdentity.SupportingCharacter ||
             activePage === PageIdentity.Species ||
             activePage === PageIdentity.SpeciesDetails ||
+            activePage === PageIdentity.CustomSpeciesDetails ||
             activePage === PageIdentity.BorgSpeciesExtraDetails ||
             activePage === PageIdentity.KobaliExtraSpeciesDetails ||
             activePage === PageIdentity.CyberneticallyEnhancedSpeciesExtraDetails ||

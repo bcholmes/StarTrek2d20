@@ -6,7 +6,7 @@ import {Track} from './trackEnum';
 import {AlliedMilitaryDetails, Character, CharacterRank } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { AlliedMilitaryType } from './alliedMilitary';
-import { AllOfPrerequisite, AnyOfPrerequisite, CareersPrerequisite, CharacterTypePrerequisite, EnlistedPrerequisite, AnyEraPrerequisite, IConstructPrerequisite, MainCharacterPrerequisite, NotPrerequisite, OfficerPrerequisite, SourcePrerequisite } from './prerequisite';
+import { AllOfPrerequisite, AnyOfPrerequisite, CareersPrerequisite, CharacterTypePrerequisite, EnlistedPrerequisite, AnyEraPrerequisite, IConstructPrerequisite, NotPrerequisite, OfficerPrerequisite, SourcePrerequisite } from './prerequisite';
 import store from '../state/store';
 import { makeKey } from '../common/translationKey';
 import i18next from 'i18next';
