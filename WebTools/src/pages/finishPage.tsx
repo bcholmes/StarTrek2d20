@@ -58,7 +58,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
             let c = store.getState().character.currentCharacter;
             const value = marshaller.encodeMainCharacter(c);
             window.open('/view?s=' + value, "_blank");
-        });
+        }, 200);
     }
 
     const renderAssignment = (roleList: RoleModel[]) => {
@@ -212,7 +212,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
         setTimeout(() => {
             let c = store.getState().character.currentCharacter;
             CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(c), "sta-character", c);
-        });
+        }, 200);
     }
 
 

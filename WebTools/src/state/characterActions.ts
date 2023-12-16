@@ -43,6 +43,8 @@ export const ADD_CHARACTER_BORG_IMPLANT = "ADD_CHARACTER_BORG_IMPLANT";
 export const REMOVE_CHARACTER_BORG_IMPLANT = "REMOVE_CHARACTER_BORG_IMPLANT";
 export const ADD_CHARACTER_TALENT = "ADD_CHARACTER_TALENT";
 export const ADD_CHARACTER_TALENT_FOCUS = "ADD_CHARACTER_TALENT_FOCUS";
+export const SET_SUPPORTING_CHARACTER_DISCIPLINES = "SET_SUPPORTING_CHARACTER_DISCIPLINES";
+export const SET_SUPPORTING_CHARACTER_ATTRIBUTES = "SET_SUPPORTING_CHARACTER_ATTRIBUTES";
 
 export enum StepContext {
     Species,
@@ -80,10 +82,27 @@ export function removeCharacterBorgImplant(type: BorgImplantType) {
     }
 }
 
-export function setCharacterSpecies(species: Species, attributes: Attribute[] = [], mixedSpecies?: Species, originalSpecies?: Species) {
-    let payload = { species: species, attributes: attributes, mixedSpecies: mixedSpecies, originalSpecies: originalSpecies };
+export function setCharacterSpecies(species: Species, attributes: Attribute[] = [], mixedSpecies?: Species, originalSpecies?: Species, customSpeciesName?: string) {
+    let payload = { species: species, attributes: attributes, mixedSpecies: mixedSpecies,
+        originalSpecies: originalSpecies, customSpeciesName: customSpeciesName };
     return {
        type: SET_CHARACTER_SPECIES,
+       payload: payload
+    }
+}
+
+export function setSupportingCharacterDisciplines(disciplines: Skill[]) {
+    let payload = { disciplines: disciplines };
+    return {
+       type: SET_SUPPORTING_CHARACTER_DISCIPLINES,
+       payload: payload
+    }
+}
+
+export function setSupportingCharacterAttributes(attributes: Attribute[]) {
+    let payload = { attributes: attributes };
+    return {
+       type: SET_SUPPORTING_CHARACTER_ATTRIBUTES,
        payload: payload
     }
 }

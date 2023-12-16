@@ -13,7 +13,7 @@ import AgeHelper, { Age } from '../helpers/age';
 import { Weapon, PersonalWeapons } from '../helpers/weapons';
 import { Construct, Stereotype } from './construct';
 import { SpeciesHelper } from '../helpers/species';
-import { Rank } from '../helpers/ranks';
+import { Rank, RanksHelper } from '../helpers/ranks';
 import { makeKey } from './translationKey';
 import i18next from 'i18next';
 import { Role, RolesHelper } from '../helpers/roles';
@@ -99,6 +99,26 @@ export class CharacterRank {
         } else {
             return this.name;
         }
+    }
+}
+
+export class SupportingStep {
+    focuses: string[]
+    attributes: Attribute[];
+    disciplines: Skill[];
+
+    constructor() {
+        this.focuses = ["", "", ""];
+        this.attributes = [...AttributesHelper.getAllAttributes()];
+        this.disciplines = [...SkillsHelper.getSkills()];
+    }
+
+    copy() {
+        let result = new SupportingStep();
+        result.focuses = [...this.focuses];
+        result.attributes = [...this.attributes];
+        result.disciplines = [...this.disciplines];
+        return result;
     }
 }
 
@@ -288,6 +308,7 @@ export class Character extends Construct {
     public careerStep?: CareerStep;
     public finishingStep?: FinishingStep;
     public npcGenerationStep?: NpcGenerationStep;
+    public supportingStep?: SupportingStep;
 
     public legacyMode: boolean;
 
@@ -398,6 +419,13 @@ export class Character extends Construct {
             AttributesHelper.getAllAttributes().forEach(a => result[a].value = Math.min(Character.maxAttribute(this), result[a].value));
 
             return result;
+        } else if (this.stereotype === Stereotype.SupportingCharacter && !this.legacyMode) {
+            let values = this.age.attributes;
+            return AttributesHelper.getAllAttributes().map(a => {
+                let index = this.supportingStep?.attributes?.indexOf(a);
+                let speciesBonus = this.speciesStep?.attributes?.filter(att => att === a).length;
+                return new CharacterAttribute(a, values[index] + speciesBonus);
+            });
         } else {
             return this._attributes;
         }
@@ -433,6 +461,12 @@ export class Character extends Construct {
             SkillsHelper.getSkills().forEach(s => result[s].expertise = Math.min(Character.maxDiscipline(this), result[s].expertise));
 
             return result;
+        } else if (this.stereotype === Stereotype.SupportingCharacter && !this.legacyMode) {
+            let values = this.age.disciplines;
+            return SkillsHelper.getSkills().map(s => {
+                let index = this.supportingStep?.disciplines?.indexOf(s);
+                return new CharacterSkill(s, values[index]);
+            });
         } else {
             return this._skills;
         }
@@ -821,6 +855,8 @@ export class Character extends Construct {
                 });
                 return result;
             }
+        } else if (this.stereotype === Stereotype.SupportingCharacter) {
+            return this.supportingStep?.focuses?.filter(f => f.trim().length);
         } else {
             return this._focuses;
         }
@@ -993,6 +1029,7 @@ export class Character extends Construct {
         if (this.npcGenerationStep) {
             character.npcGenerationStep = this.npcGenerationStep.copy();
         }
+        character.supportingStep = this.supportingStep?.copy();
         this._focuses.forEach(f => {
             character._focuses.push(f);
         });
@@ -1032,6 +1069,16 @@ export class Character extends Construct {
     public static createSoloCharacter() {
         let result = new Character();
         result.stereotype = Stereotype.SoloCharacter;
+        return result;
+    }
+
+    public static createSupportingCharacter() {
+        let result = new Character();
+        result.stereotype = Stereotype.SupportingCharacter;
+        result.speciesStep = new SpeciesStep(Species.Human);
+        result.supportingStep = new SupportingStep();
+        let rank = RanksHelper.instance().getRank(Rank.Lieutenant);
+        result.rank = new CharacterRank(rank.localizedName, rank.id);
         return result;
     }
 

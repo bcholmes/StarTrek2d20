@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesStep, UpbringingStep } from '../common/character';
+import { CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesStep, SupportingStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -44,14 +44,25 @@ class Marshaller {
             "type": CharacterType[character.type],
             "age": character.age ? character.age.name : undefined,
             "name": character.name,
-            "attributes": this.toAttributeObject(character.attributes),
-            "disciplines": this.toSkillObject(character.skills),
             "focuses": [...character.focuses]
         };
 
         if (character.careerStep?.career != null) {
             sheet["career"] = {
                 "length" : Career[character.careerStep.career]
+            }
+        }
+
+        if (character.stereotype === Stereotype.Npc || character.legacyMode) {
+            sheet["attributes"] = this.toAttributeObject(character.attributes);
+            sheet["disciplines"] = this.toSkillObject(character.skills);
+        }
+
+        if (character.supportingStep) {
+            sheet["supporting"] = {
+                "focuses": [...character.supportingStep.focuses.filter(f => f.trim().length)],
+                "attributes": [...character.supportingStep.attributes.map(a => Attribute[a])],
+                "disciplines": [...character.supportingStep.disciplines.map(d => Skill[d])]
             }
         }
 
@@ -634,7 +645,6 @@ class Marshaller {
     }
 
     decodeCharacter(json: any) {
-console.log(json);
 
         let result = new Character();
         if (json["stereotype"] === "npc") {
@@ -949,6 +959,18 @@ console.log(json);
             }
             if (json.npc.talents) {
                 result.npcGenerationStep.talents = json.npc.talents.map(t => this.hydrateTalent(t));
+            }
+        }
+        if (json.supporting && result.stereotype === Stereotype.SupportingCharacter) {
+            result.supportingStep = new SupportingStep();
+            if (json.supporting.focuses) {
+                result.supportingStep.focuses = [...json.supporting.focuses];
+            }
+            if (json.supporting.attributes) {
+                result.supportingStep.attributes = [...json.supporting.attributes.map(a => AttributesHelper.getAttributeByName(a))];
+            }
+            if (json.supporting.disciplines) {
+                result.supportingStep.disciplines = [...json.supporting.disciplines.map(d => SkillsHelper.findSkill(d))];
             }
         }
 

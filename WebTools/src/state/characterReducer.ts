@@ -1,8 +1,10 @@
-import { CareerEventStep, CareerStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, SelectedTalent, SpeciesStep, UpbringingStep } from "../common/character";
+import { CareerEventStep, CareerStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, SelectedTalent, SpeciesStep, SupportingStep, UpbringingStep } from "../common/character";
+import { Stereotype } from "../common/construct";
 import { Skill } from "../helpers/skills";
+import { Species } from "../helpers/speciesEnum";
 import { TALENT_NAME_BORG_IMPLANTS } from "../helpers/talents";
 import { Track } from "../helpers/trackEnum";
-import { ADD_CHARACTER_BORG_IMPLANT, ADD_CHARACTER_CAREER_EVENT, ADD_CHARACTER_TALENT, ADD_CHARACTER_TALENT_FOCUS, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, REMOVE_CHARACTER_BORG_IMPLANT, SET_CHARACTER, SET_CHARACTER_ADDITIONAL_TRAITS, SET_CHARACTER_AGE, SET_CHARACTER_ASSIGNED_SHIP, SET_CHARACTER_CAREER_EVENT_TRAIT, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_HOUSE, SET_CHARACTER_LINEAGE, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_RANK, SET_CHARACTER_ROLE, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, StepContext } from "./characterActions";
+import { ADD_CHARACTER_BORG_IMPLANT, ADD_CHARACTER_CAREER_EVENT, ADD_CHARACTER_TALENT, ADD_CHARACTER_TALENT_FOCUS, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE, MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, REMOVE_CHARACTER_BORG_IMPLANT, SET_CHARACTER, SET_CHARACTER_ADDITIONAL_TRAITS, SET_CHARACTER_AGE, SET_CHARACTER_ASSIGNED_SHIP, SET_CHARACTER_CAREER_EVENT_TRAIT, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION, SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_HOUSE, SET_CHARACTER_LINEAGE, SET_CHARACTER_NAME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_RANK, SET_CHARACTER_ROLE, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, SET_SUPPORTING_CHARACTER_ATTRIBUTES, SET_SUPPORTING_CHARACTER_DISCIPLINES, StepContext } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -60,7 +62,9 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                             temp.speciesStep.attributes = [...originalStep.attributes];
                         }
                     }
-                    temp.speciesStep.customSpeciesName = originalStep.customSpeciesName;
+                    if (temp.speciesStep.species === Species.Custom) {
+                        temp.speciesStep.customSpeciesName = originalStep.customSpeciesName;
+                    }
                     temp.speciesStep.mixedSpecies = originalStep.mixedSpecies;
                     temp.speciesStep.originalSpecies = originalStep.originalSpecies;
                     temp.speciesStep.talent = originalStep.talent?.copy();
@@ -68,6 +72,9 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
             }
             temp.speciesStep.mixedSpecies = action.payload.mixedSpecies;
             temp.speciesStep.originalSpecies = action.payload.originalSpecies;
+            if (temp.speciesStep.species === Species.Custom && action.payload.customSpeciesName) {
+                temp.speciesStep.customSpeciesName = action.payload.customSpeciesName;
+            }
 
             return {
                 ...state,
@@ -218,6 +225,30 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     }
                 }
             }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case SET_SUPPORTING_CHARACTER_DISCIPLINES: {
+            let temp = state.currentCharacter.copy();
+            if (temp.supportingStep == null) {
+                temp.supportingStep = new SupportingStep();
+            }
+            temp.supportingStep.disciplines = [...action.payload.disciplines];
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case SET_SUPPORTING_CHARACTER_ATTRIBUTES: {
+            let temp = state.currentCharacter.copy();
+            if (temp.supportingStep == null) {
+                temp.supportingStep = new SupportingStep();
+            }
+            temp.supportingStep.attributes = [...action.payload.attributes];
             return {
                 ...state,
                 currentCharacter: temp,
@@ -455,7 +486,16 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         }
         case SET_CHARACTER_FOCUS: {
             let temp = state.currentCharacter.copy();
-            if (action.payload.context === StepContext.EarlyOutlook && temp.upbringingStep) {
+            if (temp.stereotype === Stereotype.SupportingCharacter) {
+                if (temp.supportingStep == null) {
+                    temp.supportingStep = new SupportingStep();
+                }
+                let index = action.payload.index ?? 0;
+                for (let i = temp.supportingStep.focuses.length; i <= index; i++) {
+                    temp.supportingStep.focuses.push("");
+                }
+                temp.supportingStep.focuses[index] = action.payload.focus;
+            } else if (action.payload.context === StepContext.EarlyOutlook && temp.upbringingStep) {
                 temp.upbringingStep.focus = action.payload.focus;
             } else if (action.payload.context === StepContext.Education && temp.educationStep && action.payload.index <= 2) {
                 temp.educationStep.focuses[action.payload.index] = action.payload.focus;
