@@ -134,6 +134,8 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
             if (originalStep) {
                 temp.finishingStep.attributes = [...originalStep.attributes];
                 temp.finishingStep.disciplines = [...originalStep.disciplines];
+                temp.finishingStep.value = originalStep.value;
+                temp.finishingStep.talent = originalStep.talent?.copy();
 
                 if (temp.attributeTotal < Character.totalAttributeSum(temp)) {
                     temp.finishingStep.attributes = [];
@@ -159,6 +161,7 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     if (originalStep.otherSpecies === temp.environmentStep.otherSpecies) {
                         temp.environmentStep.attribute = originalStep.attribute;
                     }
+                    temp.environmentStep.value = originalStep.value;
                 }
             }
             return {

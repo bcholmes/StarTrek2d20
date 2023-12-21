@@ -254,11 +254,8 @@ SpeciesPage.rollAlphaSpecies,Roll Alpha Species,Alphaquadrantspezies würfeln,,
 SpeciesPage.rollBetaSpecies,Roll Beta Species,Betaquadrantspezies würfeln,,
 SpeciesPage.rollGammaSpecies,Roll Gamma Species,Gammaquadrantspezies würfeln,,
 SpeciesPage.rollDeltaSpecies,Roll Delta Species,Deltaquadrantspezies würfeln,,
-SpeciesPage.text,"To what species do you belong? You may also create a character of mixed species, gaining benefits from both.
-
-Either select or roll your Species.","Zu welcher Spezies gehören Sie? Sie können auch einen Charakter von gemischter Herkunft erstellen und Boni von beiden erhalten.
-
-Bitte wählen oder würfeln Sie Ihre Spezies.",,
+SpeciesPage.text,"To what species do you belong? You may also create a character of mixed species, gaining benefits from both.",Zu welcher Spezies gehören Sie? Sie können auch einen Charakter von gemischter Herkunft erstellen und Boni von beiden erhalten.,,
+SpeciesPage.text.select,Either select or roll your Species.,Bitte wählen oder würfeln Sie Ihre Spezies.,,
 SpeciesPage.textNoRoll,"To what species do you belong? You may also create a character of mixed species, gaining benefits from both.",Zu welcher Spezies gehören Sie? Sie können auch einen Charakter von gemischter Herkunft erstellen und Boni von beiden erhalten.,,
 SpeciesPage.mixedSpeciesNote,"Select two species. You will gain Traits from both species and may select from both species' Talents, but only the primary species gives you attribute bonuses.","Wählen Sie zwei Spezies. Sie erhalten Merkmale von beiden Spezies und können auf die Talente beider Spezies zugreifen, erhalten jedoch nur die Attributsboni der primären Spezies.",,
 StarshipToolSelection.instruction,Select an option,Wählen Sie eine Option,Seleccione una opción,Sélectionnez une option
@@ -410,6 +407,7 @@ Construct.system.engines,Engines,Antrieb,Motores,Moteur
 Construct.system.sensors,Sensors,Sensoren,Sensores,Capteurs
 Construct.system.structure,Structure,Hülle,Estructura,Structure
 Construct.system.weapons,Weapons,Waffen,Armas,Armes
+Page.title.attributesAndDisciplines,Finishing Touches,Feinschliff,,Touches Finales
 Page.title.careerEvent,Career Event,Karriereereignis,,
 Page.title.careerLength,Career Length,Karrierelänge,,Carrière
 Page.title.careerLengthDetails,Career Length Details,,,

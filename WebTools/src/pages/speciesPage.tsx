@@ -1,173 +1,75 @@
-﻿import * as React from 'react';
-import {Character} from '../common/character';
-import {Navigation} from '../common/navigator';
+﻿import React, { useState } from 'react';
 import {PageIdentity} from './pageIdentity';
-import {SpeciesHelper} from '../helpers/species';
-import {Button} from '../components/button';
-import SpeciesSelection from '../components/speciesSelection';
-import {MixedSpeciesSelection} from '../components/mixedSpeciesSelection';
-import { Source } from '../helpers/sources';
+import MixedSpeciesSelection from '../components/mixedSpeciesSelection';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
-import { Species } from '../helpers/speciesEnum';
-import InstructionText from '../components/instructionText';
-import { Era } from '../helpers/eras';
-import store from '../state/store';
-import { hasSource } from '../state/contextFunctions';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import { setCharacterSpecies } from '../state/characterActions';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
+import { characterMapStateToProperties, ICharacterProperties } from '../solo/page/soloCharacterProperties';
+import { Header } from '../components/header';
+import InstructionText from '../components/instructionText';
+import SpeciesSelection from '../components/speciesSelection';
+import { Species } from '../helpers/speciesEnum';
+import { SpeciesHelper } from '../helpers/species';
+import { setCharacterSpecies } from '../state/characterActions';
+import store from '../state/store';
+import { Navigation } from '../common/navigator';
+import { Button } from '../components/button';
 
-interface ISpeciesPageState {
-    showSelection: boolean;
-    showMixedSelection: boolean;
+enum SpeciesTab {
+    Standard,
+    Custom,
+    Mixed
 }
 
-interface ISpeciesPageProperties extends WithTranslation {
-    character?: Character;
-}
+const SpeciesPage: React.FC<ICharacterProperties> = ({character}) => {
 
-class SpeciesPage extends React.Component<ISpeciesPageProperties, ISpeciesPageState> {
-    constructor(props: ISpeciesPageProperties) {
-        super(props);
+    const { t } = useTranslation();
 
-        this.state = {
-            showSelection: false,
-            showMixedSelection: false
-        };
-    }
-
-    render() {
-
-        const { t } = this.props;
-
-        const rollAlpha = hasSource(Source.AlphaQuadrant) && this.isRollAvailable()
-            ? <Button className="button" text={t('SpeciesPage.rollAlphaSpecies')} onClick={() => this.rollAlphaSpecies()} />
-            : undefined;
-
-        const rollBeta = hasSource(Source.BetaQuadrant) && this.isRollAvailable()
-            ? <Button className="button" text={t('SpeciesPage.rollBetaSpecies')} onClick={() => this.rollBetaSpecies()} />
-            : undefined;
-
-        const rollGamma = store.getState().context.era === Era.NextGeneration && hasSource(Source.GammaQuadrant) && this.isRollAvailable()
-            ? <Button className="button" text={t('SpeciesPage.rollGammaSpecies')} onClick={() => this.rollGammaSpecies()} />
-            : undefined;
-
-        const rollDelta = store.getState().context.era === Era.NextGeneration && hasSource(Source.DeltaQuadrant) && this.isRollAvailable()
-            ? <Button className="button" text={t('SpeciesPage.rollDeltaSpecies')} onClick={() => this.rollDeltaSpecies()} />
-            : undefined;
-
-
-        var content = !this.state.showSelection && !this.state.showMixedSelection?
-            (
-                <div>
-                    <div className="page-text">
-                        <InstructionText text={t('SpeciesPage.text')} />
-                    </div>
-                    <div className="row row-cols-md-2">
-                        <div className="col">
-                            <Button className="button" text={t('SpeciesPage.selectSpecies')} onClick={() => this.showSpecies() } />
-                            <Button className="button" text={t('SpeciesPage.selectMixedSpecies')} onClick={() => this.showMixedSpecies() }/>
-                            <Button className="button" text={t('SpeciesPage.selectCustomSpecies')} onClick={() => this.showCustomSpecies() }/>
-                        </div>
-                        <div className="col">
-                            {this.isRollAvailable() ? (<Button className="button" text={t('SpeciesPage.rollCoreSpecies')} onClick={() => this.rollSpecies()} />) : undefined }
-                            {rollAlpha}
-                            {rollBeta}
-                            {rollGamma}
-                            {rollDelta}
-                        </div>
-                    </div>
-                </div>
-            )
-            : this.state.showSelection
-                ? (
-                    <div>
-                        <SpeciesSelection
-                            onSelection={(species) => this.selectSpecies(species) }
-                            onCancel={() => this.hideSpecies() } />
-                    </div>
-                  )
-                : (
-                    <div>
-                        <InstructionText text={t('SpeciesPage.mixedSpeciesNote')} />
-                        <MixedSpeciesSelection
-                            onSelection={(primary, secondary) => this.selectMixedSpecies(primary, secondary) }
-                            onCancel={() => this.hideSpecies() } />
-                    </div>
-                  );
-
-        return (
-            <div className="page">
-                <div className="container ml-0">
-                    <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Species} />
-                    {content}
-                </div>
-            </div>
-        );
-    }
-
-    private isRollAvailable() {
-        return !Character.isSpeciesListLimited(this.props.character);
-    }
-
-    private rollSpecies() {
-        var species = SpeciesHelper.generateSpecies();
-        this.selectSpecies(species);
-    }
-
-    private rollAlphaSpecies() {
-        var species = SpeciesHelper.generateFromAlphaQuadrantTable();
-        this.selectSpecies(species);
-    }
-
-    private rollGammaSpecies() {
-        let species = SpeciesHelper.generateFromGammaQuadrantTable();
-        if (species != null) {
-            this.selectSpecies(species);
+    const chooseInitialTab = () => {
+        if (character?.speciesStep?.species === Species.Custom) {
+            return SpeciesTab.Custom;
+        } else if (character?.speciesStep?.mixedSpecies != null) {
+            return SpeciesTab.Mixed;
+        } else {
+            return SpeciesTab.Standard;
         }
     }
 
-    private rollDeltaSpecies() {
-        let species = SpeciesHelper.generateFromDeltaQuadrantTable();
-        if (species != null) {
-            this.selectSpecies(species);
+    const [tab, setTab] = useState(chooseInitialTab());
+
+    const renderTab = () => {
+        if (tab === SpeciesTab.Standard) {
+            return (<SpeciesSelection
+                onSelection={(species) => selectStandardSpecies(species) } />)
+        } else if (tab === SpeciesTab.Mixed) {
+            return (<MixedSpeciesSelection />);
+        } else {
+            return selectCustomSpecies();
         }
     }
 
-    private rollBetaSpecies() {
-        var species = SpeciesHelper.generateFromBetaQuadrantTable();
-        this.selectSpecies(species);
-    }
-
-    private showSpecies() {
-        this.setState({
-            showSelection: true,
-            showMixedSelection: false
-        });
-    }
-
-    private showCustomSpecies() {
+    const showCustomSpecies = () => {
         store.dispatch(setCharacterSpecies(Species.Custom));
         Navigation.navigateToPage(PageIdentity.CustomSpeciesDetails);
     }
 
-    private hideSpecies() {
-        this.setState({
-            showSelection: false,
-            showMixedSelection: false
-        });
+    const selectCustomSpecies = () => {
+
+        return (<div className="text-right mt-4">
+            <table className="selection-list">
+                <tbody>
+                    <tr>
+                        <td className="selection-header">Custom Species</td>
+                        <td className="text-right">
+                            <Button buttonType={true} className="btn btn-primary btn-sm" text={t('Common.text.select')} onClick={() => showCustomSpecies() }/>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>);
     }
 
-    private showMixedSpecies() {
-        this.setState({
-            showSelection: false,
-            showMixedSelection: true
-        });
-    }
-
-
-
-    private selectSpecies(species: Species) {
+    const selectStandardSpecies = (species: Species) => {
         let speciesModel = SpeciesHelper.getSpeciesByType(species);
         if (speciesModel.attributes?.length <= 3) {
             store.dispatch(setCharacterSpecies(speciesModel.id, speciesModel.attributes));
@@ -188,18 +90,27 @@ class SpeciesPage extends React.Component<ISpeciesPageProperties, ISpeciesPageSt
         }
     }
 
-    private selectMixedSpecies(primary: Species, secondary: Species) {
-//        character.speciesStep = new SpeciesStep(primary);
-//        character.speciesStep.mixedSpecies = secondary;
-//        SpeciesHelper.applySpecies(primary, secondary);
-//        Navigation.navigateToPage(PageIdentity.SpeciesDetails);
-    }
+    return (
+        <div className="page">
+            <div className="container ml-0">
+                <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Species} />
+                <Header>{t('Page.title.species')}</Header>
+
+                <InstructionText text={t('SpeciesPage.text')} />
+
+                <div className="btn-group w-100 mt-4" role="group" aria-label="Environment types">
+                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === SpeciesTab.Standard ? "active" : "")}
+                        onClick={() => setTab(SpeciesTab.Standard)}>Standard Species</button>
+                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === SpeciesTab.Mixed ? "active" : "")}
+                        onClick={() => setTab(SpeciesTab.Mixed)}>Mixed Species</button>
+                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === SpeciesTab.Custom ? "active" : "")}
+                        onClick={() => setTab(SpeciesTab.Custom)}>Custom Species</button>
+                </div>
+
+                {renderTab()}
+            </div>
+        </div>
+    );
 }
 
-function mapStateToProps(state, ownProps) {
-    return {
-        character: state.character?.currentCharacter
-    };
-}
-
-export default withTranslation()(connect(mapStateToProps)(SpeciesPage));
+export default connect(characterMapStateToProperties)(SpeciesPage);

@@ -279,7 +279,10 @@
     "SpeciesPage.rollBetaSpecies": "Roll Beta Species",
     "SpeciesPage.rollGammaSpecies": "Roll Gamma Species",
     "SpeciesPage.rollDeltaSpecies": "Roll Delta Species",
-    "SpeciesPage.text": "To what species do you belong? You may also create a character of mixed species, gaining benefits from both.\n\nEither select or roll your Species.",
+    "SpeciesPage.text": "To what species do you belong? You may also create a character of mixed species, gaining benefits from both.",
+
+    "SpeciesPage.text.select": "Either select or roll your Species.",
+
     "SpeciesPage.textNoRoll": "To what species do you belong? You may also create a character of mixed species, gaining benefits from both.",
     "SpeciesPage.mixedSpeciesNote": "Select two species. You will gain Traits from both species and may select from both species' Talents, but only the primary species gives you attribute bonuses.",
 
@@ -442,6 +445,7 @@
     "Construct.system.structure": "Structure",
     "Construct.system.weapons": "Weapons",
 
+    "Page.title.attributesAndDisciplines": "Finishing Touches",
     "Page.title.careerEvent": "Career Event",
     "Page.title.careerLength": "Career Length",
     "Page.title.careerLengthDetails": "Career Length Details",

@@ -242,7 +242,10 @@
     "SpeciesPage.rollBetaSpecies": "Betaquadrantspezies würfeln",
     "SpeciesPage.rollGammaSpecies": "Gammaquadrantspezies würfeln",
     "SpeciesPage.rollDeltaSpecies": "Deltaquadrantspezies würfeln",
-    "SpeciesPage.text": "Zu welcher Spezies gehören Sie? Sie können auch einen Charakter von gemischter Herkunft erstellen und Boni von beiden erhalten.\n\nBitte wählen oder würfeln Sie Ihre Spezies.",
+    "SpeciesPage.text": "Zu welcher Spezies gehören Sie? Sie können auch einen Charakter von gemischter Herkunft erstellen und Boni von beiden erhalten.",
+
+    "SpeciesPage.text.select": "Bitte wählen oder würfeln Sie Ihre Spezies.",
+
     "SpeciesPage.textNoRoll": "Zu welcher Spezies gehören Sie? Sie können auch einen Charakter von gemischter Herkunft erstellen und Boni von beiden erhalten.",
     "SpeciesPage.mixedSpeciesNote": "Wählen Sie zwei Spezies. Sie erhalten Merkmale von beiden Spezies und können auf die Talente beider Spezies zugreifen, erhalten jedoch nur die Attributsboni der primären Spezies.",
 
@@ -405,6 +408,7 @@
     "Construct.system.structure": "Hülle",
     "Construct.system.weapons": "Waffen",
 
+    "Page.title.attributesAndDisciplines": "Feinschliff",
     "Page.title.careerEvent": "Karriereereignis",
     "Page.title.careerLength": "Karrierelänge",
     "Page.title.characterType": "Art des Charakters",

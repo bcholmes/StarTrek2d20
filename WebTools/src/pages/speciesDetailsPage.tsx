@@ -66,6 +66,8 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
         let talents = [];
         talents.push(...TalentsHelper.getAllAvailableTalentsForCharacter(character));
 
+        let initial = character.speciesStep?.talent ? TalentsHelper.getTalent(character.speciesStep?.talent?.talent) : undefined;
+
         const esotericTalentOption = (hasSource(Source.PlayersGuide)) ? (<div>
                 <CheckBox
                     isChecked={allowEsotericTalents}
@@ -82,6 +84,7 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
                 </div>
                 {esotericTalentOption}
                 <SingleTalentSelectionList talents={talents} construct={character}
+                    initialSelection={initial}
                     onSelection={talent => onTalentSelected(talent)} />
             </div>)
             : (<div>
