@@ -228,7 +228,7 @@ class Environments {
             return a.name.localeCompare(b.name);
         });
 
-        SpeciesHelper.getSpecies().forEach(s => {
+        SpeciesHelper.getSpecies(CharacterType.Starfleet).forEach(s => {
             environments.push(
                 new EnvironmentModel(
                     Environment.AnotherSpeciesWorld,

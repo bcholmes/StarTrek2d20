@@ -1772,12 +1772,12 @@ class _Species {
         return result;
     }
 
-    getSpecies() {
+    getSpecies(characterType: CharacterType) {
         let species: SpeciesModel[] = [];
         for (let archetype in this._species) {
             let spec = this._species[archetype];
 
-            const hasEra = (spec.eras.indexOf(store.getState().context.era) > -1) || (spec.id === Species.Klingon && character.type === CharacterType.KlingonWarrior);
+            const hasEra = (spec.eras.indexOf(store.getState().context.era) > -1) || (spec.id === Species.Klingon && characterType === CharacterType.KlingonWarrior);
             const isSourceAvailable = hasAnySource(spec.sources);
 
             if (hasEra && isSourceAvailable && !this.ignoreSpecies(spec.id)) {
@@ -1790,7 +1790,7 @@ class _Species {
         });
     }
 
-    getPrimarySpecies(type: CharacterType, excludeSpeciesBasedOnOtherSpecies: boolean = false) {
+    getPrimarySpecies(type: CharacterType, excludeSpeciesBasedOnOtherSpecies: boolean, character: Character) {
         if (type === CharacterType.KlingonWarrior) {
             var species: SpeciesModel[] = [];
 
@@ -1812,14 +1812,14 @@ class _Species {
             return species.sort((a, b) => {
                 return a.localizedName.localeCompare(b.localizedName);
             });
-        } else if (Character.isSpeciesListLimited(character) && character.typeDetails != null) {
+        } else if (type !== CharacterType.Starfleet && Character.isSpeciesListLimited(character) && character.typeDetails != null) {
             let alliedMilitary = (character.typeDetails as AlliedMilitaryDetails).alliedMilitary;
             let species = alliedMilitary.species.map(s => this._species[s]).filter(s => hasAnySource(s.sources) && !this.ignoreSpecies(s.id));
             return species.sort((a, b) => {
                 return a.localizedName.localeCompare(b.localizedName);
             });
         } else {
-            let candidates = this.getSpecies();
+            let candidates = this.getSpecies(character.type);
             return excludeSpeciesBasedOnOtherSpecies ? candidates.filter(s => s.isMixedSpeciesAllowed) : candidates;
         }
     }
@@ -2273,7 +2273,7 @@ class _Species {
     }
 
     generateRandomSpeciesForQuadrant(source: Source) : Species|null {
-        let quadrantSpecies = this.getSpecies().filter(s => s.sources.indexOf(source) >=0);
+        let quadrantSpecies = this.getSpecies(CharacterType.Starfleet).filter(s => s.sources.indexOf(source) >=0);
         if (quadrantSpecies.length === 0) {
             return null;
         } else {

@@ -41,7 +41,7 @@ const MixedSpeciesSelection: React.FC<ICharacterProperties> = ({character}) => {
     }
 
 
-    const primarySpeciesRows = SpeciesHelper.getPrimarySpecies(character.type, true).map((s, i) => {
+    const primarySpeciesRows = SpeciesHelper.getPrimarySpecies(character.type, true, character).map((s, i) => {
         if (s.id === secondarySpecies) return undefined;
 
         const attributes = s.attributes.map((a, i) => {
@@ -76,7 +76,7 @@ const MixedSpeciesSelection: React.FC<ICharacterProperties> = ({character}) => {
         );
     });
 
-    const secondarySpeciesRows = SpeciesHelper.getSpecies()
+    const secondarySpeciesRows = SpeciesHelper.getSpecies(character.type)
         .filter(s => s.id !== Species.LiberatedBorg && s.id !== Species.Borg && s.id !== Species.Kobali && s.id !== Species.CyberneticallyEnhanced)
         .map((s, i) => {
         if (s.id === primarySpecies) return undefined;

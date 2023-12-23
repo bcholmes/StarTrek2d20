@@ -18,10 +18,6 @@ interface ISpeciesSelectionProperties extends ICharacterProperties {
     onSelection: (species: Species) => void;
 }
 
-interface ISpeciesSelectionPageState {
-    allowAllSpecies: boolean
-}
-
 const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onSelection}) => {
     const [allowAllSpecies, setAllowAllSpecies ] = useState(false);
     const [randomSpecies, setRandomSpecies] = useState(character?.speciesStep?.species);
@@ -36,7 +32,7 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
             onChanged={() => setAllowAllSpecies(!allowAllSpecies)} />)
         : undefined
 
-    const speciesOptions = SpeciesHelper.getPrimarySpecies(allowAllSpecies ? CharacterType.Starfleet : character.type);
+    const speciesOptions = SpeciesHelper.getPrimarySpecies(allowAllSpecies ? CharacterType.Starfleet : character.type, false, character);
     let visibleSpeciesOptions = (randomSpecies != null)
         ? [SpeciesHelper.getSpeciesByType(randomSpecies)]
         : speciesOptions;

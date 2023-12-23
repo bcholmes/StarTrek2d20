@@ -119,7 +119,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
     }, [])
 
     const getSpeciesList = () => {
-        let speciesList = SpeciesHelper.getSpecies().map(s => { return new DropDownElement(s.id, s.localizedName) });
+        let speciesList = SpeciesHelper.getSpecies(CharacterType.Starfleet).map(s => { return new DropDownElement(s.id, s.localizedName) });
         speciesList.push(new DropDownElement(Species.Custom, t('Species.other.name')));
 
         return speciesList;
