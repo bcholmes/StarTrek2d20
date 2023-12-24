@@ -136,7 +136,7 @@ export class EducationSecondaryDisciplineController implements IDisciplineContro
     }
     canDecrease(discipline: Skill) {
         return this.character.educationStep?.disciplines.indexOf(discipline) >= 0
-            || (this.track.skillsRule?.type === ImprovementRuleType.MAY_DECREMENT_ONE && this.character.educationStep?.decrementDisciplines?.length == 0);
+            || (this.track.skillsRule?.type === ImprovementRuleType.MAY_DECREMENT_ONE && this.character.educationStep?.decrementDisciplines?.length === 0);
     }
     isRequiredDisciplineRuleSatisfied() {
         if (this.track.skillsRule == null || this.track.skillsRule.type === ImprovementRuleType.MAY_DECREMENT_ONE) {

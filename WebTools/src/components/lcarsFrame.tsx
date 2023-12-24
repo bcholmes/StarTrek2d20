@@ -45,14 +45,6 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
         }
     }
 
-    const isModifyPage = () => {
-        return activePage === PageIdentity.ModificationTypeSelection ||
-            activePage === PageIdentity.Promotion ||
-            activePage === PageIdentity.ReputationChange ||
-            activePage === PageIdentity.NormalMilestone ||
-            activePage === PageIdentity.ModificationCompletePage;
-    }
-
     const isSoloPage = () => {
         return activePage === PageIdentity.SoloCharacterEra ||
             activePage === PageIdentity.SoloConstructType ||
@@ -87,31 +79,6 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
         } else {
             return true;
         }
-    }
-
-    const isModifiedCharacterCreationPage = () => {
-        return activePage === PageIdentity.SupportingCharacter ||
-            activePage === PageIdentity.Species ||
-            activePage === PageIdentity.SpeciesDetails ||
-            activePage === PageIdentity.CustomSpeciesDetails ||
-            activePage === PageIdentity.BorgSpeciesExtraDetails ||
-            activePage === PageIdentity.KobaliExtraSpeciesDetails ||
-            activePage === PageIdentity.CyberneticallyEnhancedSpeciesExtraDetails ||
-            activePage === PageIdentity.Environment ||
-            activePage === PageIdentity.EnvironmentDetails ||
-            activePage === PageIdentity.Upbringing ||
-            activePage === PageIdentity.UpbringingDetails ||
-            activePage === PageIdentity.Education ||
-            activePage === PageIdentity.EducationDetails ||
-            activePage === PageIdentity.CareerLength ||
-            activePage === PageIdentity.CareerLengthDetails ||
-            activePage === PageIdentity.CareerEvent1 ||
-            activePage === PageIdentity.CareerEvent1Details ||
-            activePage === PageIdentity.CareerEvent2 ||
-            activePage === PageIdentity.CareerEvent2Details ||
-            activePage === PageIdentity.AttributesAndDisciplines ||
-            activePage === PageIdentity.ExtraTalentDetails ||
-            activePage === PageIdentity.Finish;
     }
 
     const showFeedbackPage = () => {

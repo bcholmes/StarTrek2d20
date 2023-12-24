@@ -480,12 +480,18 @@ export class FoundryVttExporter {
             }
         }
 
-        Object.keys(character.talents).forEach(key => {
-            let characterTalent = character.talents[key];
-            let talent = TalentsHelper.getTalent(key);
+        let talentNames = [];
+        character.talents.forEach(selectedTalent => {
+            if (talentNames.indexOf(selectedTalent.talent) < 0) {
+                talentNames.push(selectedTalent.talent);
+            }
+        });
+
+        talentNames.forEach(n => {
+            let talent = TalentsHelper.getTalent(n);
             if (talent) {
                 result.items.push({
-                    "name": talent.displayName + (talent.maxRank > 1 ? " [x" + characterTalent.rank + "]" : ""),
+                    "name": talent.displayName + (talent.maxRank > 1 ? " [x" + character.getRankForTalent(talent.name) + "]" : ""),
                     "type": "talent",
                     "img": this.determineTalentIcon(talent, options),
                     "system": {

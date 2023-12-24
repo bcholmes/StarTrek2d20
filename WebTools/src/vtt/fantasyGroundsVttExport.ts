@@ -1474,9 +1474,15 @@ export class FantasyGroupsVttExporter {
             "elements": []
         }
 
-        Object.keys(character.talents).forEach(key => {
-            let characterTalent = character.talents[key];
-            let talent = TalentsHelper.getTalent(key);
+        let talentNames = [];
+        character.talents.forEach(selectedTalent => {
+            if (talentNames.indexOf(selectedTalent.talent) < 0) {
+                talentNames.push(selectedTalent.talent);
+            }
+        });
+
+        talentNames.forEach(n => {
+            let talent = TalentsHelper.getTalent(n);
             if (talent) {
 
                 result.elements.push({
@@ -1506,7 +1512,7 @@ export class FantasyGroupsVttExporter {
                             "elements": [
                                 {
                                     "type": "text",
-                                    "text": talent.maxRank > 1 ? characterTalent.rank : 0
+                                    "text": talent.maxRank > 1 ? character.getRankForTalent(talent.name) : 0
                                 }
                             ]
                         },
