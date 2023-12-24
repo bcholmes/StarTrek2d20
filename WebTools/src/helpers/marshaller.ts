@@ -251,6 +251,12 @@ class Marshaller {
             if (character.educationStep?.disciplines != null) {
                 education["disciplines"] = character.educationStep.disciplines?.filter(d => d != null).map(d => Skill[d]);
             }
+            if (character.educationStep?.decrementDisciplines?.length) {
+                education["decrementDisciplines"] = character.educationStep.decrementDisciplines?.filter(d => d != null).map(d => Skill[d]);
+            }
+            if (character.educationStep?.decrementAttributes?.length) {
+                education["decrementAttributes"] = character.educationStep.decrementAttributes?.filter(d => d != null).map(a => Attribute[a]);
+            }
             if (character.educationStep?.value != null) {
                 education["value"] = character.educationStep.value;
             }
@@ -821,34 +827,36 @@ class Marshaller {
             result.reputation = json.reputation;
         }
         if (json.training != null) {
-            if (json.training.track != null) {
-                let trackAsString = json.training.track;
-                getAllTracks().forEach(t => {
-                    if (Track[t] === trackAsString) {
-                        result.educationStep = new EducationStep(t, json.training.enlisted || false);
-                        if (json.training.focuses != null) {
-                            result.educationStep.focuses = [...json.training.focuses];
-                        }
-                        if (json.training.attributes) {
-                            result.educationStep.attributes = json.training.attributes.map(a => AttributesHelper.getAttributeByName(a));
-                        }
-                        if (json.training.disciplines) {
-                            result.educationStep.disciplines = json.training.disciplines.map(d => SkillsHelper.toSkill(d));
-                        }
-                        if (json.training.primaryDiscipline != null) {
-                            result.educationStep.primaryDiscipline = SkillsHelper.toSkill(json.training.primaryDiscipline);
-                        }
-                        if (json.training.value != null) {
-                            result.educationStep.value = json.training.value;
-                        }
-                        if (json.training.talent != null) {
-                            let talent = this.hydrateTalent(json.training.talent);
-                            if (talent != null) {
-                                result.educationStep.talent = talent;
-                            }
-                        }
-                    }
-                });
+            let trackAsString = json.training.track;
+            let tracks = getAllTracks().filter(t => Track[t] === trackAsString);
+
+            result.educationStep = new EducationStep(tracks.length ? tracks[0] : undefined, json.training.enlisted || false);
+            if (json.training.focuses != null) {
+                result.educationStep.focuses = [...json.training.focuses];
+            }
+            if (json.training.attributes) {
+                result.educationStep.attributes = json.training.attributes.map(a => AttributesHelper.getAttributeByName(a));
+            }
+            if (json.training.disciplines) {
+                result.educationStep.disciplines = json.training.disciplines.map(d => SkillsHelper.toSkill(d));
+            }
+            if (json.training.decrementDisciplines) {
+                result.educationStep.decrementDisciplines = json.training.decrementDisciplines.map(d => SkillsHelper.toSkill(d));
+            }
+            if (json.training.decrementAttributes) {
+                result.educationStep.decrementAttributes = json.training.decrementAttributes.map(a => AttributesHelper.getAttributeByName(a));
+            }
+            if (json.training.primaryDiscipline != null) {
+                result.educationStep.primaryDiscipline = SkillsHelper.toSkill(json.training.primaryDiscipline);
+            }
+            if (json.training.value != null) {
+                result.educationStep.value = json.training.value;
+            }
+            if (json.training.talent != null) {
+                let talent = this.hydrateTalent(json.training.talent);
+                if (talent != null) {
+                    result.educationStep.talent = talent;
+                }
             }
         } else {
             let rank = result.rank == null ? null : RanksHelper.instance().getRankByName(result.rank?.name);

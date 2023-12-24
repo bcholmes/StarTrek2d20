@@ -210,10 +210,11 @@ export class EnvironmentStep {
 export class EducationStep {
     public readonly track?: Track;
     public enlisted: boolean;
+    public decrementAttributes: Attribute[];
     public attributes: Attribute[];
     public primaryDiscipline: Skill;
     public disciplines: Skill[];
-    public decrementDiscipline: Skill;
+    public decrementDisciplines: Skill[];
     public focuses: string[];
     public talent?: SelectedTalent;
     public value?: string;
@@ -222,6 +223,8 @@ export class EducationStep {
         this.track = track;
         this.enlisted = enlisted;
         this.attributes = [];
+        this.decrementAttributes = [];
+        this.decrementDisciplines = [];
         this.disciplines = [];
         this.focuses = ["", "", ""];
     }
@@ -411,6 +414,7 @@ export class Character extends Construct {
                     result[earlyOutlook.attributeRebelPlus1].value = result[earlyOutlook.attributeRebelPlus1].value + 1;
                 }
             }
+            this.educationStep?.decrementAttributes?.forEach(a => result[a].value = result[a].value - 1);
             this.educationStep?.attributes?.forEach(a => result[a].value = result[a].value + 1);
             this.careerEvents.filter(e => e.attribute != null).forEach(e => result[e.attribute].value = result[e.attribute].value + 1);
 
@@ -450,9 +454,7 @@ export class Character extends Construct {
             if (this.educationStep?.primaryDiscipline != null) {
                 result[this.educationStep.primaryDiscipline].expertise = result[this.educationStep.primaryDiscipline].expertise + 2;
             }
-            if (this.educationStep?.decrementDiscipline != null) {
-                result[this.educationStep.decrementDiscipline].expertise = result[this.educationStep.decrementDiscipline].expertise - 1;
-            }
+            this.educationStep?.decrementDisciplines?.forEach(d =>  result[d].expertise = result[d].expertise - 1);
             this.educationStep?.disciplines?.forEach(d => result[d].expertise = result[d].expertise + 1);
             this.careerEvents.filter(e => e.discipline != null).forEach(e => result[e.discipline].expertise = result[e.discipline].expertise + 1);
 
@@ -1013,7 +1015,8 @@ export class Character extends Construct {
             character.educationStep.attributes = [...this.educationStep.attributes];
             character.educationStep.disciplines = [...this.educationStep.disciplines];
             character.educationStep.primaryDiscipline = this.educationStep.primaryDiscipline;
-            character.educationStep.decrementDiscipline = this.educationStep.decrementDiscipline;
+            character.educationStep.decrementDisciplines = [...this.educationStep.decrementDisciplines];
+            character.educationStep.decrementAttributes = [...this.educationStep.decrementAttributes];
             character.educationStep.focuses = [...this.educationStep.focuses];
             character.educationStep.talent = this.educationStep.talent ? this.educationStep.talent.copy() : undefined;
             character.educationStep.value = this.educationStep.value;

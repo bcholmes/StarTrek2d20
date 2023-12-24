@@ -151,7 +151,7 @@ const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
         if (character.educationStep?.attributes?.length < 3) {
             Dialog.show(t("SoloEducationDetailsPage.errorAttributes"));
         } else if (character.educationStep?.disciplines?.length < 2 || character.educationStep?.primaryDiscipline == null ||
-            (character.educationStep?.decrementDiscipline != null && character.educationStep?.disciplines?.length < 3)) {
+            (character.educationStep?.decrementDisciplines.length > 0 && character.educationStep?.disciplines?.length < 3)) {
             Dialog.show(t("SoloEducationDetailsPage.errorDisciplines"));
         } else if (character.educationStep?.focuses?.filter(f => !!f).length < 3) {
             Dialog.show(t("SoloEducationDetailsPage.errorFocuses"));

@@ -171,7 +171,7 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
                     <div className="lcar-content-action">
                         <div id="profile-button" className={'lcar-content-profile ' + (isProfileSupportedForPage() ? '' : 'd-none')} onClick={ () => toggleProfile() }>{t('Lcars.profile')}</div>
                         <CharacterSheet showProfile={showProfile} close={() => setShowProfile(false)}
-                            storeBased={isModifyPage() || isSoloPage() || isModifiedCharacterCreationPage()}/>
+                            storeBased={true}/>
                     </div>
                     <div className="lcar-content-feedback" onClick={ () => showFeedbackPage() }>{t('Lcars.feedback')}</div>
                     <div className="lcar-content-news" onClick={() => showNewsPanel()}>

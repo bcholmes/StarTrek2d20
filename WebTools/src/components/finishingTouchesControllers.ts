@@ -25,9 +25,6 @@ export class FinishingTouchesAttributeController implements IAttributeController
         return this.character.attributes[attribute].value;
     }
     canIncrease(attribute: Attribute): boolean {
-        console.log("Value of " + Attribute[attribute], this.getValue(attribute), Character.maxAttribute(this.character))
-        console.log("Filter of " + Attribute[attribute], this.character.finishingStep?.attributes.filter(a => a === attribute).length, (this.count - 1));
-
         return this.getValue(attribute) < Character.maxAttribute(this.character) &&
             (this.getValue(attribute) < (Character.maxAttribute(this.character) - 1) || !this.character.hasMaxedAttribute())
             && (this.character.finishingStep?.attributes.length < this.count)

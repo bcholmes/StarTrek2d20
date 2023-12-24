@@ -81,7 +81,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
     render() {
         const { t } = this.props;
         let c = new Character();
-        if (this.props.storeBased && store.getState().character.currentCharacter) {
+        if (store.getState().character.currentCharacter) {
             c = store.getState().character.currentCharacter;
         }
 

@@ -114,7 +114,7 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 if (originalStep.track === temp.educationStep.track) {
                     temp.educationStep.attributes = [...originalStep.attributes];
                     temp.educationStep.primaryDiscipline = originalStep.primaryDiscipline;
-                    temp.educationStep.decrementDiscipline = originalStep.decrementDiscipline;
+                    temp.educationStep.decrementDisciplines = [...originalStep.decrementDisciplines];
                     temp.educationStep.disciplines = [...originalStep.disciplines];
                     temp.educationStep.focuses = [...originalStep.focuses];
                     temp.educationStep.value = originalStep.value;
@@ -211,10 +211,18 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.environmentStep.attribute = undefined;
                 }
             } else if (action.payload.context === StepContext.Education && temp.educationStep) {
-                if (positive) {
-                    temp.educationStep.attributes.push(action.payload.attribute)
-                } else if (temp.educationStep.attributes.indexOf(action.payload.attribute) >= 0) {
-                    temp.educationStep.attributes.splice(temp.educationStep.attributes.indexOf(action.payload.attribute), 1);
+                if (action.payload.forceDecrement && temp.type === CharacterType.Child) {
+                    if (positive) {
+                        temp.educationStep.decrementAttributes.splice(temp.educationStep.decrementAttributes.indexOf(action.payload.attribute), 1);
+                    } else {
+                        temp.educationStep.decrementAttributes.push(action.payload.attribute)
+                    }
+                } else {
+                    if (positive) {
+                        temp.educationStep.attributes.push(action.payload.attribute)
+                    } else if (temp.educationStep.attributes.indexOf(action.payload.attribute) >= 0) {
+                        temp.educationStep.attributes.splice(temp.educationStep.attributes.indexOf(action.payload.attribute), 1);
+                    }
                 }
             } else if (action.payload.context === StepContext.CareerEvent1 && temp.careerEvents?.length > 0) {
                 temp.careerEvents[0].attribute = positive ? attribute : undefined;
@@ -553,31 +561,49 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.upbringingStep.discipline = undefined;
                 }
             } else if (action.payload.context === StepContext.Education && temp.educationStep) {
-                if (action.payload.positive) {
-                    if (action.payload.primaryDisciplines.length > 0) {
-                        temp.educationStep.primaryDiscipline = discipline;
-                        action.payload.primaryDisciplines.forEach(d => {
-                            if (temp.educationStep.disciplines.indexOf(d) >= 0) {
-                                temp.educationStep.disciplines.splice(temp.educationStep.disciplines.indexOf(d), 1);
+                if (action.payload.forceDecrement) {
+                    if (positive) {
+                        let value = temp.skills[discipline].expertise;
+                        temp.educationStep.decrementDisciplines.splice(temp.educationStep.decrementDisciplines.indexOf(discipline), 1);
+                        // if we're no longer decrementing a discipline that could only be incremented because of
+                        // the previous decrement, then remove the increment
+                        if (temp.skills[discipline].expertise === value) {
+                            if (temp.educationStep.disciplines.indexOf(discipline) >= 0) {
+                                temp.educationStep.disciplines.splice(temp.educationStep.disciplines.indexOf(discipline), 1);
+                            } else if (temp.educationStep.primaryDiscipline === discipline) {
+                                temp.educationStep.primaryDiscipline = undefined;
                             }
-                        });
-                    } else if (temp.educationStep.decrementDiscipline === discipline) {
-                        temp.educationStep.decrementDiscipline = null;
+                        }
                     } else {
-                        temp.educationStep.disciplines.push(discipline);
+                        temp.educationStep.decrementDisciplines.push(discipline)
                     }
                 } else {
-                    if (temp.educationStep.primaryDiscipline === discipline) {
-                        temp.educationStep.primaryDiscipline = null;
-                        action.payload.primaryDisciplines.forEach(d => {
-                            if (temp.educationStep.disciplines.indexOf(d) >= 0) {
-                                temp.educationStep.disciplines.splice(temp.educationStep.disciplines.indexOf(d), 1);
-                            }
-                        });
-                    } else if (temp.educationStep.disciplines.indexOf(discipline) >= 0) {
-                        temp.educationStep.disciplines.splice(temp.educationStep.disciplines.indexOf(discipline), 1);
+                    if (action.payload.positive) {
+                        if (action.payload.primaryDisciplines.length > 0) {
+                            temp.educationStep.primaryDiscipline = discipline;
+                            action.payload.primaryDisciplines.forEach(d => {
+                                if (temp.educationStep.disciplines.indexOf(d) >= 0) {
+                                    temp.educationStep.disciplines.splice(temp.educationStep.disciplines.indexOf(d), 1);
+                                }
+                            });
+                        } else if (temp.educationStep.decrementDisciplines.indexOf(discipline) && temp.type !== CharacterType.Child) {
+                            temp.educationStep.decrementDisciplines.splice(temp.educationStep.decrementDisciplines.indexOf(discipline), 1);
+                        } else {
+                            temp.educationStep.disciplines.push(discipline);
+                        }
                     } else {
-                        temp.educationStep.decrementDiscipline = discipline;
+                        if (temp.educationStep.primaryDiscipline === discipline) {
+                            temp.educationStep.primaryDiscipline = null;
+                            action.payload.primaryDisciplines.forEach(d => {
+                                if (temp.educationStep.disciplines.indexOf(d) >= 0) {
+                                    temp.educationStep.disciplines.splice(temp.educationStep.disciplines.indexOf(d), 1);
+                                }
+                            });
+                        } else if (temp.educationStep.disciplines.indexOf(discipline) >= 0) {
+                            temp.educationStep.disciplines.splice(temp.educationStep.disciplines.indexOf(discipline), 1);
+                        } else if (temp.type !== CharacterType.Child) {
+                            temp.educationStep.decrementDisciplines.push(discipline);
+                        }
                     }
                 }
             } else if (action.payload.context === StepContext.CareerEvent1 && temp.careerEvents?.length > 0) {
