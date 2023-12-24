@@ -12,6 +12,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.231224a</b>
+                <ul>
+                    <li>Turns out I caused an 11th-hour bug. Drat. But thanks for the quick reporting by Phantomaoj.</li>
+                </ul>
                 <b>v1.231224</b>
                 <div className="text-white my-3">Sorry, folks. I've been busier than usual with work-related things over the last few months,
                     and I've been working on some fairly

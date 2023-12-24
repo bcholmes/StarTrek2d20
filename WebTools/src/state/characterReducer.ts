@@ -586,7 +586,7 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                                     temp.educationStep.disciplines.splice(temp.educationStep.disciplines.indexOf(d), 1);
                                 }
                             });
-                        } else if (temp.educationStep.decrementDisciplines.indexOf(discipline) && temp.type !== CharacterType.Child) {
+                        } else if (temp.educationStep.decrementDisciplines.indexOf(discipline) >= 0 && temp.type !== CharacterType.Child) {
                             temp.educationStep.decrementDisciplines.splice(temp.educationStep.decrementDisciplines.indexOf(discipline), 1);
                         } else {
                             temp.educationStep.disciplines.push(discipline);
