@@ -1105,6 +1105,13 @@ export class Character extends Construct {
         return result;
     }
 
+    public static createMainCharacter(type: CharacterType) {
+        let result = new Character();
+        result.type = type;
+        result.stereotype = Stereotype.MainCharacter;
+        return result;
+    }
+
     public static createSupportingCharacter() {
         let result = new Character();
         result.stereotype = Stereotype.SupportingCharacter;

@@ -1,5 +1,5 @@
-﻿import React, { useState } from 'react';
-import {character} from '../common/character';
+﻿import { useState } from 'react';
+import {Character} from '../common/character';
 import { CharacterType } from '../common/characterType';
 import {navigateTo, Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
@@ -11,6 +11,8 @@ import InstructionText from '../components/instructionText';
 import { PageFactory } from './pageFactory';
 import { LoadingButton } from '../common/loadingButton';
 import { useNavigate } from 'react-router';
+import store from '../state/store';
+import { setCharacter } from '../state/characterActions';
 
 const ToolSelectionPage = () => {
 
@@ -32,7 +34,8 @@ const ToolSelectionPage = () => {
         if (hasSource(Source.KlingonCore) || hasSource(Source.PlayersGuide)) {
             goToPage(PageIdentity.CharacterType);
         } else {
-            character.type = CharacterType.Starfleet;
+            let character = Character.createMainCharacter(CharacterType.Starfleet);
+            store.dispatch(setCharacter(character));
             goToPage(PageIdentity.Species);
         }
     }
