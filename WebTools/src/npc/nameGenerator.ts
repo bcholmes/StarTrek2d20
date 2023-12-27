@@ -16,6 +16,10 @@ const names = [
         "names": require('./names-klingon.json')
     },
     {
+        "species": "Reman",
+        "names": require('./names-reman.json')
+    },
+    {
         "species": "Tellarite",
         "names": require('./names-tellarite.json')
     },

@@ -122,8 +122,12 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         if (this.state.selectedType?.type === NpcCharacterType.KlingonDefenseForces) {
             const list = this.props.era === Era.NextGeneration ? [ Species.Klingon ] : [ Species.Klingon, Species.KlingonQuchHa ];
             return list.map(s => SpeciesHelper.getSpeciesByType(s));
+        } else if (this.state.selectedType?.type === NpcCharacterType.Cardassian) {
+            return [ SpeciesHelper.getSpeciesByType(Species.Cardassian)];
         } else if (this.state.selectedType?.type === NpcCharacterType.Ferengi) {
             return [ SpeciesHelper.getSpeciesByType(Species.Ferengi)];
+        } else if (this.state.selectedType?.type === NpcCharacterType.RomulanMilitary) {
+            return [ SpeciesHelper.getSpeciesByType(Species.Romulan), SpeciesHelper.getSpeciesByType(Species.Reman)];
         } else {
             const list = [ Species.Andorian, Species.Bajoran, Species.Betazoid, Species.Bolian, Species.Denobulan, Species.Human, Species.Tellarite, Species.Trill, Species.Vulcan ];
             let result = list.map(s => SpeciesHelper.getSpeciesByType(s)).filter(s => s.eras.indexOf(this.props.era) >= 0);
@@ -160,7 +164,9 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
 
     randomSpecies() {
         if (this.state.selectedType.type === NpcCharacterType.KlingonDefenseForces ||
-            this.state.selectedType.type === NpcCharacterType.Ferengi) {
+            this.state.selectedType.type === NpcCharacterType.Cardassian ||
+            this.state.selectedType.type === NpcCharacterType.Ferengi ||
+            this.state.selectedType.type === NpcCharacterType.RomulanMilitary) {
             let list = this.getSpeciesList();
             return list[Math.floor(Math.random() * list.length)].id;
         } else {

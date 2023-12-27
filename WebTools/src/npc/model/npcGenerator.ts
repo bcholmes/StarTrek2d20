@@ -106,6 +106,16 @@ const careerSkills: { [type: number ]: string[] } = {
         "Subtle Billing Surcharges",
         "Trade Authority Bureaucracy",
         "Energy Whips"
+    ],
+    [NpcCharacterType.RomulanMilitary] : [
+        "Scheming",
+        "Sneak Attacks",
+        "Military Tactics",
+        "The Federation/Romulan War",
+        "Political Jockeying",
+        "Plots and Intrigue",
+        "Tal Shiar Conspiracy Theories",
+        "Tests of Loyalty"
     ]
 }
 
@@ -140,6 +150,8 @@ const typeSpecificValues: { [type : number ]: string[]} = {
         "I see you have forgotten the first time we met. I assure you that I have not forgotten."
     ],
     [ NpcCharacterType.Ferengi ] : [
+    ],
+    [ NpcCharacterType.RomulanMilitary ] : [
     ]
 }
 
@@ -176,7 +188,41 @@ const typeSpecificGeneralValues: { [type : number ]: string[]} = {
         "Today we conquer! Oh, if someday we are defeated... well... war has its fortunes. Good and bad.",
         "It would have been glorious."
     ],
+    [ NpcCharacterType.RomulanMilitary ] : [
+        "Secrecy is Strength",
+        "Vigilance is Virtue",
+        "Ambition Knows No Bounds",
+        "Unity in Deception",
+        "Adapt or Be Conquered",
+        "Strength in Isolation",
+        "The Ends Justify the Means",
+        "Intrigue is the Spice of Life",
+        "Patience in Pursuit",
+        "Honor in Victory, Disgrace in Defeat"
+    ],
     [ NpcCharacterType.Ferengi ] : [
+    ],
+    [ NpcCharacterType.Cardassian] : [
+        "Order Above All",
+        "Duty Defines Honour",
+        "Strength Through Unity",
+        "Information is Power",
+        "Adaptation is Survival",
+        "Discipline Breeds Excellence",
+        "Sacrifice for the Greater Good",
+        "Loyalty Commands Respect",
+        "Patriotism as Virtue",
+        "Legacy Endures Through Contribution",
+        "Hierarchy is Inviolate",
+        "Education is the Key to Progress",
+        "Security Breeds Prosperity",
+        "Faith in the Central Command",
+        "Cultural Preservation is Paramount",
+        "Pragmatism Over Idealism",
+        "Artistic Expression in Service of the State",
+        "Resilience in the Face of Adversity",
+        "The State Knows Best",
+        "Atonement Through Service"
     ]
 }
 
@@ -322,6 +368,18 @@ const speciesSpecificValues: { [species : number ]: string[]} = {
         "The bigger the smile, the sharper the knife.",
         "Good customers are as rare as latinum. Treasure them.",
         "Free advice is seldom cheap."
+    ],
+    [Species.Romulan] : [
+        "I Will Not Fail in My Duty to the Empire",
+        "The Ends Justify the Means",
+        "Everything I Do, I Do for Romulus"
+    ],
+    [Species.Reman] : [
+        "You think darkness is your ally? You merely adopted the dark. I was born in it, molded by it.",
+        "One Day the Reman People Will Rise, and Take the Throne of Romulus Itself!"
+    ],
+    [Species.Cardassian] : [
+        "Family is all"
     ]
 }
 
@@ -385,8 +443,16 @@ export class NpcGenerator {
             case NpcCharacterType.Starfleet:
                 character.type = CharacterType.Starfleet;
                 break;
+            case NpcCharacterType.Cardassian:
+                character.type = CharacterType.AlliedMilitary;
+                character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(AlliedMilitaryType.CardassianUnion), "Cardassian Union");
+                break;
             case NpcCharacterType.KlingonDefenseForces:
                 character.type = CharacterType.KlingonWarrior;
+                break;
+            case NpcCharacterType.RomulanMilitary:
+                character.type = CharacterType.AlliedMilitary;
+                character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(AlliedMilitaryType.RomulanStarEmpire), "Romulan");
                 break;
             case NpcCharacterType.Ferengi:
                 if (specialization.id === Specialization.FerengiMerchant) {
@@ -416,7 +482,8 @@ export class NpcGenerator {
                     let roll = D20.roll();
                     if (roll < 7) {
                         // go for species talents
-                        talentList = species.talents.map(t => ToViewModel(t, 1, character.type));
+                        let talentName = species.talents.map(t => t.name);
+                        talentList = talentList.filter(t => talentName.indexOf(t.name) >= 0 || t.specialRule);
                     } else if (roll < 14) {
                         talentList = talentList.filter(t => t.category === specializationSkill);
                     } else {
@@ -432,6 +499,9 @@ export class NpcGenerator {
 
                     if (talentList.length) {
                         let talent = talentList[Math.floor(Math.random() * talentList.length)];
+                        if (talent.name === "Free Advice Is Seldom Cheap") {
+                            console.log("****** FOUND IT ******")
+                        }
                         if (!character.hasTalent(talent.name) || talent.hasRank) {
                             character.addTalent(talent);
                             done = true;
@@ -534,21 +604,23 @@ export class NpcGenerator {
         let secondaryChances = [17, 15, 11, 9, 6, 3];
 
         for (let i = 0; i < numberOfFocuses; i++) {
-            let focuses = (D20.roll() > 10)
-                ? careerSkills[specialization.type]
-                : recreationSkills[specialization.type];
-            if (D20.roll() <= primaryChances[i]) {
-                focuses = specialization.primaryFocuses;
-            } else if (D20.roll() <= secondaryChances[i]) {
-                focuses = specialization.secondaryFocuses;
-            }
-
             let done = false;
             while (!done) {
-                let focus = focuses[Math.floor(Math.random() * focuses.length)];
-                if (character.focuses.indexOf(focus) < 0) {
-                    character.addFocus(focus);
-                    done = true;
+                let focuses = (D20.roll() > 10)
+                    ? careerSkills[specialization.type]
+                    : recreationSkills[specialization.type];
+                if (D20.roll() <= primaryChances[i]) {
+                    focuses = specialization.primaryFocuses;
+                } else if (D20.roll() <= secondaryChances[i]) {
+                    focuses = specialization.secondaryFocuses;
+                }
+
+                if (focuses?.length) {
+                    let focus = focuses[Math.floor(Math.random() * focuses.length)];
+                    if (character.focuses.indexOf(focus) < 0) {
+                        character.addFocus(focus);
+                        done = true;
+                    }
                 }
             }
         }

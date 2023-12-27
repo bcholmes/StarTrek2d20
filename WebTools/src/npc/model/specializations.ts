@@ -24,6 +24,12 @@ export enum Specialization {
 
     FerengiMerchant,
     FerengiDaiMon,
+
+    CardassianSoldier,
+
+    RomulanCenturion,
+    RomulanTalShiar,
+
 }
 
 export class SpecializationModel {
@@ -213,7 +219,8 @@ export class Specializations {
                 "For a covert operative, there's often a fine line between hunter and hunted. Letting someone hunt you is just another way of finding out more about them.",
                 "The ironic thing about infiltrating a group of criminals is that the only way to successfully be accepted is to actually be helpful.",
                 "There's nothing quite like the feeling that you get in the pit of your stomach when you begin to suspect your intelligence on an operation may have been wrong.",
-                "Officially, I was never here."],
+                "Officially, I was never here.",
+                "I'll spare you the 'ends justify the means' speech and you spare me the 'we must do what's right' speech. You and I are not going to see eye to eye on this subject, so I suggest we stop discussing it."],
                 0.6),
             new SpecializationModel(Specialization.Jag, NpcCharacterType.Starfleet, "Judge Advocate General's Office",
                 [Attribute.Presence, Attribute.Control, Attribute.Insight],
@@ -478,8 +485,65 @@ export class Specializations {
                     "I won't preside over the demise of Ferengi civilization! The line has to be drawn here! This far, and no further!",
                     "There's nothing beyond greed! Greed is the purest and most noble of emotions!"
                 ], 1.0),
-
-            ];
+            new SpecializationModel(Specialization.RomulanCenturion, NpcCharacterType.RomulanMilitary, "Romulan Centurion",
+                [Attribute.Control, Attribute.Reason, Attribute.Fitness],
+                Skill.Security,
+                [
+                    "Using the Fog of War", "Disruptors", "Starship Weapons", "Advanced Ground Tactics",
+                    "Aggressive Stances"
+                ],
+                [
+                    "Cloaking Device", "Defensive Strategies", "Shield Modulation",
+                    "Conspiracy", "Political Jockeying", "Military Chest-Puffing"
+                ],
+                [
+                    "You and I are of a kind. In a different reality, I could have called you friend.",
+                    "He's a sorcerer, that one! He reads the thoughts in my brain!",
+                    "We are creatures of duty. I have lived my life by it.",
+                    "Danger and I are old companions.",
+                    "There's great hostility behind this smile.",
+                    "You have one chance to escape destruction.",
+                    "You can be sarcastic now, but in a few millennia, when your species is extinct and the Romulan Empire spans the galaxy..."
+                ], 0.5),
+            new SpecializationModel(Specialization.RomulanTalShiar, NpcCharacterType.RomulanMilitary, "Tal Shiar Operative",
+                [Attribute.Daring, Attribute.Presence, Attribute.Insight],
+                Skill.Security,
+                [
+                    "Infiltration", "Intelligence Analysis", "Building Underground Networks", "Undercover Ops", "Signals Intelligence",
+                    "Interrogation", "Data Analysis", "Underworld Environments", "Extra-Legal Operations", "Spycraft", "Torture", "Disinformation Campaigns"
+                ],[
+                    "Hand-to-Hand Combat", "Hand Phasers", "Terrorist Networks", "Covert Ops", "Electronic Surveillance", "Computer System Penetration",
+                    "Hacker Culture", "Asset Development Techniques", "Underworld Contacts", "Ex-filtration", "Security Systems",
+                    "Political Analysis", "Coercion", "Charm and Affability", "Foreign Intelligence Agencies", "Survival", "Sniper Training",
+                    "Weaknesses of the Federation", "Conspiracies and Plots"
+                ], [
+                    "We have to prioritize the good or the Empire",
+                    "Shadows Illuminate Truth",
+                    "Whispers Carry Authority",
+                    "Fear is a Weapon",
+                    "Knowledge is Power, Silence is Control",
+                    "Trust No One, Question Everything",
+                    "Deception Breeds Loyalty",
+                    "Subtlety Prevails Over Force",
+                    "The End Justifies the Subterfuge",
+                    "Silent Minds, Vocal Actions",
+                    "Pawns in the Game of Secrets"
+                ],
+                0.7),
+            new SpecializationModel(Specialization.CardassianSoldier, NpcCharacterType.Cardassian, "Cardassian Soldier",
+                [Attribute.Control, Attribute.Reason, Attribute.Fitness],
+                Skill.Security,
+                [
+                    "Phasers", "Starship Weapons", "Advanced Ground Tactics",
+                    "Aggressive Stances"
+                ],
+                [
+                    "Orbital Bombardment", "Defensive Strategies", "Shield Modulation",
+                    "Conspiracy", "Political Jockeying", "Military Chest-Puffing"
+                ],
+                [
+                ], 0.5),
+        ]
     }
 
     getSpecializations(type: NpcCharacterType) {

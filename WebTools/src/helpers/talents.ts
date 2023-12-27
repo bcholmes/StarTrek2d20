@@ -7,16 +7,18 @@ import {Department} from './departments';
 import {Source} from './sources';
 import {Era} from './eras';
 import { Species } from './speciesEnum';
-import { Construct } from '../common/construct';
+import { Construct, Stereotype } from '../common/construct';
 import { Starship } from '../common/starship';
 import store from '../state/store';
 import { centuryToYear } from './weapons';
 import { Spaceframe } from './spaceframeEnum';
-import { CareersPrerequisite, IConstructPrerequisite, MainCharacterPrerequisite, ServiceYearPrerequisite, SourcePrerequisite } from './prerequisite';
+import { CareersPrerequisite, CharacterStereotypePrerequisite, CharacterTypePrerequisite, IConstructPrerequisite, MainCharacterPrerequisite, NotPrerequisite, OfficerPrerequisite, ServiceYearPrerequisite, SourcePrerequisite } from './prerequisite';
 import { NotSourcePrerequisite } from './spaceframes';
 import { Career } from './careerEnum';
 import { hasAnySource } from '../state/contextFunctions';
 import i18next from 'i18next';
+import { toCamelCase } from '../common/camelCaseUtil';
+import { AlliedMilitary, AlliedMilitaryType } from './alliedMilitary';
 
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
 export const TALENT_NAME_BORG_IMPLANTS = "Borg Implants";
@@ -510,14 +512,7 @@ export class TalentModel implements ITalent {
     }
 
     get rootKey() {
-        let result = "";
-        for (let i = 0; i < this.name.length; i++) {
-            const c = this.name.charAt(i);
-            if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(c) >= 0) {
-                result += c;
-            }
-        }
-        return result.length > 0 ? result.substring(0, 1).toLocaleLowerCase() + result.substring(1) : result;
+        return toCamelCase(this.name);
     }
 
     get localizedName() {
@@ -628,8 +623,9 @@ export class TalentViewModel {
     category: string;
     prerequisites: IConstructPrerequisite<Construct>[];
     displayName: string;
+    specialRule: boolean;
 
-    constructor(name: string, rank: number, showRank: boolean, description: string, skill: Skill, category: string, prerequities: IConstructPrerequisite<Character>[]) {
+    constructor(name: string, rank: number, showRank: boolean, description: string, skill: Skill, category: string, prerequities: IConstructPrerequisite<Character>[], specialRule: boolean) {
         this.id = name;
         this.description = description;
         this.rank = rank;
@@ -638,6 +634,7 @@ export class TalentViewModel {
         this.name = name;
         this.prerequisites = prerequities;
         this.category = category;
+        this.specialRule = specialRule;
     }
 
 
@@ -658,7 +655,7 @@ export function ToViewModel(talent: TalentModel, rank: number = 1, type: Charact
     if (type === CharacterType.KlingonWarrior) {
         name = talent.nameForSource(Source.KlingonCore);
     }
-    return new TalentViewModel(name, rank, talent.maxRank > 1, talent.description, undefined, talent.category, talent.prerequisites);
+    return new TalentViewModel(name, rank, talent.maxRank > 1, talent.description, undefined, talent.category, talent.prerequisites, talent.specialRule);
 }
 
 export class Talents {
@@ -3356,6 +3353,61 @@ export class Talents {
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.DiscoveryCampaign)],
             1,
             "Starship", true),
+
+        new TalentModel(
+            "First into Battle",
+            "When the Klingon Veteran makes a successful attack, they may spend 3 Momentum to assist another Klingon’s next attack with their Daring + Command.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new CareersPrerequisite(Career.Veteran)],
+            1,
+            "Klingon", true),
+        new TalentModel(
+            "Free Advice Is Seldom Cheap",
+            "Increase the Difficulty of all Social Conflict to persuade a Ferengi Merchant by 2. This Difficulty increase is removed as soon as the Ferengi is offered something in trade.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpeciesPrerequisite(Species.Ferengi, false)],
+            1,
+            "Ferengi", true),
+        new TalentModel(
+            "You Can’t Make a Deal If You’re Dead",
+            "This Ferengi will never make a lethal attack. Further, whenever attempting a Task to make a deal or otherwise persuade an enemy who they have previously incapacitated, or an enemy who obviously outmatches them, they may add a bonus d20 to the roll.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpeciesPrerequisite(Species.Ferengi, false)],
+            1,
+            "Ferengi", true),
+        new TalentModel(
+            "Ambush",
+            "When attacking an opponent who is unaware, the Romulan Officer may spend 2 Threat, to allow the Officer and all Romulans under their command to re-roll any number of d20s on their attack rolls.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc),new AnySpeciesPrerequisite(false, Species.Romulan, Species.Reman),  new OfficerPrerequisite()],
+            1,
+            "Romulan", true),
+        new TalentModel(
+            "Ruthless and Determined",
+            "The character may spend 2 Threat to gain the effects of a point of Determination, rather than the normal 3.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Romulan, Species.Reman), new OfficerPrerequisite()],
+            1,
+            "Romulan", true),
+        new TalentModel(
+            "Supreme Authority",
+            "Whenever a Romulan currently under the character's command attempts a Task to resist persuasion or intimidation, the character may spend 1 Threat to allow that Romulan to re-roll, even if they are not present in that scene.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Romulan, Species.Reman), new OfficerPrerequisite(), new CareersPrerequisite(Career.Veteran)],
+            1,
+            "Romulan", true),
+        new TalentModel(
+            "Romulan Military Efficiency",
+            "The character grants all Romulan NPCs under their command an additional Task each turn.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Romulan, Species.Reman), new OfficerPrerequisite(), new CareersPrerequisite(Career.Veteran, Career.Experienced)],
+            1,
+            "Romulan", true),
+        new TalentModel(
+            "Manipulation is Second Nature",
+            "The character may attempt to Negotiate or Intimidate as an additional Task on their turn.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Romulan, Species.Reman), new OfficerPrerequisite(), new CareersPrerequisite(Career.Veteran, Career.Experienced)],
+            1,
+            "Romulan", true),
+        new TalentModel(
+            "I Anticipated Your Move",
+            "Unless a Player Character has a higher Daring than the Romulan officer, the Romulan always acts before the first Player Character.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Romulan, Species.Reman), new OfficerPrerequisite(), new CareersPrerequisite(Career.Veteran, Career.Experienced), new AttributePrerequisite(Attribute.Daring, 9)],
+            1,
+            "Romulan", true),
         ];
 
     getTalents() {
@@ -3446,6 +3498,12 @@ export class Talents {
                     return ToViewModel(t, 1, character.type);
                 }
             });
+
+            if (character.stereotype === Stereotype.Npc) {
+                let rules = this._specialRules.filter(t => t.isPrerequisiteFulfilled(character) && !character.hasTalent(t.name));
+                rules.forEach(t => result.push(ToViewModel(t, 1, character.type)));
+            }
+
             result.sort((a, b) => a.name.localeCompare(b.name));
             return result;
         }

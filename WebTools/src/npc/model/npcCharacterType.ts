@@ -6,7 +6,7 @@ import store from "../../state/store";
 import { Era } from "../../helpers/eras";
 
 export enum NpcCharacterType {
-    Starfleet, KlingonDefenseForces, RomulanMilitary, Ferengi
+    Starfleet, KlingonDefenseForces, RomulanMilitary, Ferengi, Cardassian
 }
 
 export class NpcCharacterTypeModel {
@@ -24,9 +24,13 @@ export class NpcCharacterTypeModel {
             case NpcCharacterType.Starfleet:
                 return i18next.t('CharacterType.name.starfleet');
             case NpcCharacterType.KlingonDefenseForces:
-                return "Klingon";
+                return i18next.t('Species.klingon.name');
+            case NpcCharacterType.RomulanMilitary:
+                return i18next.t('Species.romulan.name');
+            case NpcCharacterType.Cardassian:
+                return i18next.t('Species.cardassian.name');
             case NpcCharacterType.Ferengi:
-                return "Ferengi";
+                return i18next.t('Species.ferengi.name');
             default:
                 return this.name;
         }
@@ -47,6 +51,8 @@ export class NpcCharacterTypes {
     private _types = [
         new NpcCharacterTypeModel(NpcCharacterType.Starfleet, "Starfleet"),
         new NpcCharacterTypeModel(NpcCharacterType.KlingonDefenseForces, "Klingon Defence Forces"),
+        new NpcCharacterTypeModel(NpcCharacterType.RomulanMilitary, "Romulan Military"),
+        new NpcCharacterTypeModel(NpcCharacterType.Cardassian, "Cardassian"),
         new NpcCharacterTypeModel(NpcCharacterType.Ferengi, "Ferengi"),
     ];
 
@@ -56,6 +62,8 @@ export class NpcCharacterTypes {
                 return true;
             } else if (t.type === NpcCharacterType.KlingonDefenseForces) {
                 return hasAnySource([Source.KlingonCore, Source.PlayersGuide]);
+            } else if (t.type === NpcCharacterType.Cardassian) {
+                return hasAnySource([Source.DS9, Source.AlphaQuadrant]) && store.getState().context.era === Era.NextGeneration;
             } else if (t.type === NpcCharacterType.Ferengi) {
                 return hasAnySource([Source.DS9, Source.AlphaQuadrant]) && store.getState().context.era === Era.NextGeneration;
             } else {

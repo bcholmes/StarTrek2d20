@@ -239,6 +239,20 @@ export class CharacterTypePrerequisite implements IConstructPrerequisite<Charact
     }
 }
 
+export class CharacterStereotypePrerequisite implements IConstructPrerequisite<Character> {
+    private types: Stereotype[];
+
+    constructor(...type: Stereotype[]) {
+        this.types = type;
+    }
+
+    isPrerequisiteFulfilled(character: Character) {
+        return character instanceof Character && this.types.indexOf(character.stereotype) >= 0;
+    }
+    describe(): string {
+        return "";
+    }
+}
 export class AllOfPrerequisite implements IConstructPrerequisite<Character> {
     private prequisites: IConstructPrerequisite<Character>[];
 
