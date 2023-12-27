@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesStep, SupportingStep, UpbringingStep } from '../common/character';
+import { CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, Specialization, SpeciesStep, SupportingStep, UpbringingStep, allSpecializations } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -113,6 +113,10 @@ class Marshaller {
                 let talents = this.toTalentList(character.npcGenerationStep.talents);
                 if (talents?.length) {
                     block["talents"] = talents;
+                }
+
+                if (character.npcGenerationStep?.specialization != null) {
+                    block["specialization"] = Specialization[character.npcGenerationStep.specialization];
                 }
                 sheet["npc"] = block;
             }
@@ -967,6 +971,9 @@ class Marshaller {
             }
             if (json.npc.talents) {
                 result.npcGenerationStep.talents = json.npc.talents.map(t => this.hydrateTalent(t));
+            }
+            if (json.npc.specialization) {
+                allSpecializations().forEach(s => { if (Specialization[s] === json.npc.specialization) {result.npcGenerationStep.specialization = s;}})
             }
         }
         if (json.supporting && result.stereotype === Stereotype.SupportingCharacter) {

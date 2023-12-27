@@ -12,7 +12,7 @@ import { Starship } from '../common/starship';
 import store from '../state/store';
 import { centuryToYear } from './weapons';
 import { Spaceframe } from './spaceframeEnum';
-import { CareersPrerequisite, CharacterStereotypePrerequisite, CharacterTypePrerequisite, IConstructPrerequisite, MainCharacterPrerequisite, NotPrerequisite, OfficerPrerequisite, ServiceYearPrerequisite, SourcePrerequisite } from './prerequisite';
+import { CareersPrerequisite, CharacterStereotypePrerequisite, IConstructPrerequisite, MainCharacterPrerequisite, OfficerPrerequisite, ServiceYearPrerequisite, SourcePrerequisite } from './prerequisite';
 import { NotSourcePrerequisite } from './spaceframes';
 import { Career } from './careerEnum';
 import { hasAnySource } from '../state/contextFunctions';
@@ -3380,12 +3380,54 @@ export class Talents {
         new TalentModel(
             "First into Battle",
             "When the Klingon Veteran makes a successful attack, they may spend 3 Momentum to assist another Klingon’s next attack with their Daring + Command.",
-            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new CareersPrerequisite(Career.Veteran)],
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new OfficerPrerequisite(), new CareersPrerequisite(Career.Veteran)],
+            1,
+            "Klingon", true),
+        new TalentModel(
+            "Precision Targeting",
+            "When the character makes an attack that targets a specific system, he may reroll one d20 in his dice pool, and the attack gains the Piercing 1 damage effect",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new OfficerPrerequisite(), new DisciplinePrerequisite(Skill.Security, 3)],
+            1,
+            "Klingon", true),
+        new TalentModel(
+            "Cunning Negotiator",
+            "Whenever the character attempts a Presence task to influence an opponent during a negotiation, they may re-roll one d20.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new OfficerPrerequisite(), new AttributePrerequisite(Attribute.Presence, 9)],
+            1,
+            "Klingon", true),
+        new TalentModel(
+            "Cunning Wit",
+            "The character fights as much with words as with weapons. When in personal combat against an enemy who can understand them, they may use Presence instead of Daring to attack.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new OfficerPrerequisite(), new AttributePrerequisite(Attribute.Presence, 9)],
+            1,
+            "Klingon", true),
+        new TalentModel(
+            "Tactical Genius",
+            "Once per scene, if the character succeeds at an Insight + Command task to assess their opponent, they may spend 2 Threat to allow all under their command to re-roll one d20 on their next task.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new OfficerPrerequisite()],
+            1,
+            "Klingon", true),
+        new TalentModel(
+            "Fleet Commander",
+            "Commanding a vessel during a fleet action reduces the Difficulty of a task to grant a bonus to Korrd’s vessel or group by 1, to a minimum of 1. Aboard a vessel during a fleet action, the character may treat the vessel as having a Command department of 4+, regardless of the actual value.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new OfficerPrerequisite(), new CareersPrerequisite(Career.Veteran), new DisciplinePrerequisite(Skill.Command, 3)],
+            1,
+            "Klingon", true),
+        new TalentModel(
+            "Threatening 3",
+            "When the player characters encounter the Klingon character, add three Threat to the Threat pool.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa)],
             1,
             "Klingon", true),
         new TalentModel(
             "Free Advice Is Seldom Cheap",
             "Increase the Difficulty of all Social Conflict to persuade a Ferengi Merchant by 2. This Difficulty increase is removed as soon as the Ferengi is offered something in trade.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpeciesPrerequisite(Species.Ferengi, false)],
+            1,
+            "Ferengi", true),
+        new TalentModel(
+            "Keep Your Ears Open",
+            "Whenever the character attempts a Task to detect danger or hidden enemies, or to listen in on someone’s conversation, reduce the Difficulty by 1.",
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpeciesPrerequisite(Species.Ferengi, false)],
             1,
             "Ferengi", true),
@@ -3451,7 +3493,7 @@ export class Talents {
             "Cardassian", true),
         new TalentModel(
             "Ruthless",
-            "Gul Tremak may re-roll any d20s in his dice pool when making an attack against an enemy that was not aware of or prepared for an attack, or against an enemy that is defenseless.",
+            "A Cardassian Officer may re-roll any d20s in their dice pool when making an attack against an enemy that was not aware of or prepared for an attack, or against an enemy that is defenseless.",
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Cardassian), new OfficerPrerequisite(), new CareersPrerequisite(Career.Veteran, Career.Experienced)],
             1,
             "Cardassian", true),

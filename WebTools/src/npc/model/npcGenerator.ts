@@ -420,7 +420,7 @@ export class NpcGenerator {
             Career.Experienced, Career.Veteran, Career.Veteran];
         if (specialization.id === Specialization.Admiral) {
             careers = [ Career.Veteran ];
-        } else if (specialization.id === Specialization.FerengiDaiMon) {
+        } else if (specialization.id === Specialization.FerengiDaiMon || specialization.id === Specialization.KlingonShipCaptain) {
             careers = [ Career.Experienced, Career.Experienced, Career.Experienced, Career.Veteran ];
         }
 
@@ -573,23 +573,19 @@ export class NpcGenerator {
 
     static assignValues(npcType: NpcType, character: Character, specialization: SpecializationModel) {
         let count = NpcTypes.numberOfValues(npcType);
+        let valueOptions = [];
+        valueOptions.push.apply(valueOptions, specialization.values ?? []);
+        valueOptions.push.apply(valueOptions, typeSpecificGeneralValues[specialization.type] ?? []);
+        valueOptions.push.apply(valueOptions, typeSpecificValues[specialization.type] ?? []);
+        valueOptions.push.apply(valueOptions, speciesSpecificValues[(character.speciesStep.species === Species.KlingonQuchHa
+            ? Species.Klingon
+            : character.speciesStep.species)] ?? []);
+
         for (let i = 0; i < count; i++) {
             let done = false;
             while (!done) {
-                let roll = D20.roll();
-                let values = specialization.values;
-                if (roll < 6) {
-                    values = typeSpecificGeneralValues[specialization.type];
-                } else if (roll < 11) {
-                    values = typeSpecificValues[specialization.type];
-                } else if (roll < 16) {
-                    values = speciesSpecificValues[character.speciesStep.species === Species.KlingonQuchHa
-                        ? Species.Klingon
-                        : character.speciesStep.species];
-                }
-
-                if (values?.length) {
-                    let value = values[Math.floor(Math.random() * values.length)];
+                if (valueOptions?.length) {
+                    let value = valueOptions[Math.floor(Math.random() * valueOptions.length)];
                     if (character.values.indexOf(value) < 0) {
                         character.addValue(value);
                         done = true;
@@ -633,8 +629,9 @@ export class NpcGenerator {
             ranks = RanksHelper.instance().getAdmiralRanks(character);
         } else if (specialization.id === Specialization.FerengiDaiMon) {
             ranks = [ RanksHelper.instance().getRank(Rank.DaiMon) ];
+        } else if (specialization.id === Specialization.KlingonShipCaptain) {
+            ranks = [ RanksHelper.instance().getRank(Rank.Captain) ];
         }
-
 
         ranks = ranks.filter(r => r.id !== Rank.Yeoman1stClass
             && r.id !== Rank.Yeoman2ndClass

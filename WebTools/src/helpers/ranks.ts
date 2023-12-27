@@ -284,7 +284,7 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
                 new NotRolesPrerequisite([Role.Admiral]),
-                new CharacterTypePrerequisite(CharacterType.Starfleet)
+                new CharacterTypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior)
             ],
             "Capt."),
         new RankModel(

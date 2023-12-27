@@ -368,6 +368,21 @@ export class Specializations {
                     "The Empire used to choke the quadrant with fear, power, but now?! We've lost our way.",
                     "Peace was never an option!"
                 ], 0.6),
+            new SpecializationModel(Specialization.KlingonShipCaptain, NpcCharacterType.KlingonDefenseForces, "Klingon Ship Captain",
+                [Attribute.Reason, Attribute.Control, Attribute.Presence],
+                Skill.Command,
+                ["Starship Battle Tactics", "Rousing speech-making", "Ship Recognition", "Crew Duties", "Evasive Maneuvers", "Intimidating Speeches"],
+                ["Hand-to-Hand Combat", "Melee Weapons", "Disruptors", "Tales of Glorious Battle!", "Weaknesses of Starfleet"],
+                [
+                    "It will be glorious!",
+                    "Glorious battle!",
+                    "Today is a good day to die",
+                    "Qapla' (Success)",
+                    "Hab SoSlI' Quch! (Your mother has a smooth forehead)",
+                    "wo’ batlhvaD (For the honour of the Empire!)",
+                    "The Empire used to choke the quadrant with fear, power, but now?! We've lost our way.",
+                    "Peace was never an option!"
+                ], 1.0),
             new SpecializationModel(Specialization.KlingonWeaponsOfficer, NpcCharacterType.KlingonDefenseForces, "Klingon Weapons Officer",
                 [Attribute.Control, Attribute.Daring, Attribute.Presence],
                 Skill.Security,

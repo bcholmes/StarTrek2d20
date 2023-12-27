@@ -41,6 +41,7 @@ export enum Specialization {
     KlingonWarrior,
     KlingonWeaponsOfficer,
     KlingonMedic,
+    KlingonShipCaptain,
 
     FerengiMerchant,
     FerengiDaiMon,
@@ -49,6 +50,37 @@ export enum Specialization {
 
     RomulanCenturion,
     RomulanTalShiar,
+}
+
+export const allSpecializations = () => {
+    return [Specialization.Admiral,
+        Specialization.Admin,
+        Specialization.Counselor,
+        Specialization.FirstContactSpecialist,
+        Specialization.Jag,
+        Specialization.Security,
+        Specialization.MedicalDoctor,
+        Specialization.Nurse,
+        Specialization.HangarDeck,
+        Specialization.Conn,
+        Specialization.ScienceTech,
+        Specialization.Scientist,
+        Specialization.Engineer,
+        Specialization.IntelligenceOfficer,
+
+        Specialization.KlingonWarrior,
+        Specialization.KlingonWeaponsOfficer,
+        Specialization.KlingonMedic,
+        Specialization.KlingonShipCaptain,
+
+        Specialization.FerengiMerchant,
+        Specialization.FerengiDaiMon,
+
+        Specialization.CardassianSoldier,
+
+        Specialization.RomulanCenturion,
+        Specialization.RomulanTalShiar,
+    ]
 }
 
 export enum Division {
