@@ -12,7 +12,7 @@ import { BorgImplants, Implant } from '../helpers/borgImplant';
 import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
-import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_EXPANDED_PROGRAM, TALENT_NAME_VISIT_EVERY_STAR } from '../helpers/talents';
+import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_EXPANDED_PROGRAM, TALENT_NAME_VISIT_EVERY_STAR, TALENT_NAME_WISDOM_OF_YEARS } from '../helpers/talents';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 
 const ExtraTalentChoicesPage : React.FC<ICharacterProperties> = ({character}) => {
@@ -92,6 +92,25 @@ const ExtraTalentChoicesPage : React.FC<ICharacterProperties> = ({character}) =>
         }
     }
 
+    const renderWisdomOfYears = () => {
+        if (character.hasTalent(TALENT_NAME_WISDOM_OF_YEARS)) {
+            let talent = character.getTalentByName(TALENT_NAME_WISDOM_OF_YEARS);
+            return (<div className="mt-4 col-lg-6">
+                    <Header level={2}>Visit Every Star</Header>
+                    <p>Characters with the talent "Visit Every Star" may choose 1 additional focus.</p>
+                    <InputFieldAndLabel id={'focus-star'}
+                        labelName={t('Construct.other.focus')}
+                        onChange={(value) => addFocus(value, TALENT_NAME_WISDOM_OF_YEARS, 0)}
+                        value={talent.focuses[0] ?? ""}
+                        key={'additionalFocus-star'} />
+                    <div><small className="text-white">
+                        Choose a focus reflecting the insights you received from your long life
+                    </small></div>
+                </div>);
+        } else {
+            return undefined;
+        }
+    }
     const renderExpandedProgram = () => {
         if (character.hasTalent(TALENT_NAME_EXPANDED_PROGRAM)) {
             let talent = character.getTalentByName(TALENT_NAME_EXPANDED_PROGRAM);
@@ -127,6 +146,7 @@ const ExtraTalentChoicesPage : React.FC<ICharacterProperties> = ({character}) =>
                 {renderImplants()}
                 {renderVisitEveryStar()}
                 {renderExpandedProgram()}
+                {renderWisdomOfYears()}
             </div>
 
             <div className="text-right my-4">

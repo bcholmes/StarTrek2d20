@@ -1749,6 +1749,28 @@ class _Species {
             [TalentsHelper.getTalent("Reconnaissance Flight"), TalentsHelper.getTalent("Talons")],
             "",
             [{ type: "Examples", suggestions: "Alar, Eeklah, Perecik, Ral, Scithaal, Tchar, Vicith, DesYog"}]),
+
+
+
+
+
+        [Species.ElAurian]: new SpeciesModel(
+            Species.ElAurian,
+            "El-Aurian",
+            [Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Source.ContinuingMissions],
+            [],
+            [Attribute.Fitness, Attribute.Insight, Attribute.Presence],
+            "El-Aurian",
+            "",
+            "",
+            [TalentsHelper.getTalent("Listener"), TalentsHelper.getTalent("Wisdom of Years"), TalentsHelper.getTalent("The Long View"), TalentsHelper.getTalent("Temporal Awareness"), TalentsHelper.getTalent("Cultural Flexibility")],
+            "",
+            []),
+
+
+
+
         //[Species.Romulan]: new SpeciesModel(
         //    "",
         //    [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],

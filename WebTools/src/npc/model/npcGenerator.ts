@@ -1,4 +1,4 @@
-import { AlliedMilitaryDetails, CareerStep, Character, NpcGenerationStep, SpeciesStep } from "../../common/character";
+import { AlliedMilitaryDetails, CareerStep, Character, NpcGenerationStep, Specialization, SpeciesStep } from "../../common/character";
 import { CharacterType } from "../../common/characterType";
 import { Stereotype } from "../../common/construct";
 import { D20 } from "../../common/die";
@@ -11,7 +11,7 @@ import { SpeciesHelper, SpeciesModel } from "../../helpers/species";
 import { TalentsHelper, ToViewModel } from "../../helpers/talents";
 import { NameGenerator } from "../nameGenerator";
 import { NpcType, NpcTypes } from "./npcType";
-import { Specialization, SpecializationModel, Specializations } from "./specializations";
+import { SpecializationModel, Specializations } from "./specializations";
 import { NpcCharacterType } from "./npcCharacterType";
 import { hasAnySource } from "../../state/contextFunctions";
 import { Source } from "../../helpers/sources";
@@ -426,6 +426,7 @@ export class NpcGenerator {
 
         character.careerStep = new CareerStep(careers[Math.floor(Math.random() * careers.length)]);
         character.npcGenerationStep = new NpcGenerationStep();
+        character.npcGenerationStep.specialization = specialization.id;
         character.npcGenerationStep.enlisted = (Math.random() < specialization.officerProbability) ? false : true;
 
         if (!character.isCivilian()) {

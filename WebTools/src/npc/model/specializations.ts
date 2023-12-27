@@ -1,36 +1,7 @@
+import { Specialization } from "../../common/character";
 import { Attribute } from "../../helpers/attributes";
 import { Skill } from "../../helpers/skills";
 import { NpcCharacterType } from "./npcCharacterType";
-
-export enum Specialization {
-    Admiral,
-    Admin,
-    Counselor,
-    FirstContactSpecialist,
-    Jag,
-    Security,
-    MedicalDoctor,
-    Nurse,
-    HangarDeck,
-    Conn,
-    ScienceTech,
-    Scientist,
-    Engineer,
-    IntelligenceOfficer,
-
-    KlingonWarrior,
-    KlingonWeaponsOfficer,
-    KlingonMedic,
-
-    FerengiMerchant,
-    FerengiDaiMon,
-
-    CardassianSoldier,
-
-    RomulanCenturion,
-    RomulanTalShiar,
-
-}
 
 export class SpecializationModel {
 
@@ -196,7 +167,7 @@ export class Specializations {
                 "I envy you, taking these first steps into a new frontier."
                 ],
                 0.3),
-            new SpecializationModel(Specialization.IntelligenceOfficer, NpcCharacterType.Starfleet, "Intelligence",
+            new SpecializationModel(Specialization.IntelligenceOfficer, NpcCharacterType.Starfleet, "Intelligence Operative",
                 [Attribute.Daring, Attribute.Presence, Attribute.Insight],
                 Skill.Security,
                 ["Infiltration", "Intelligence Analysis", "Building Underground Networks", "Undercover Ops", "Signals Intelligence",
@@ -517,7 +488,7 @@ export class Specializations {
                     "Political Analysis", "Coercion", "Charm and Affability", "Foreign Intelligence Agencies", "Survival", "Sniper Training",
                     "Weaknesses of the Federation", "Conspiracies and Plots"
                 ], [
-                    "We have to prioritize the good or the Empire",
+                    "We have to prioritize the good of the Empire",
                     "Shadows Illuminate Truth",
                     "Whispers Carry Authority",
                     "Fear is a Weapon",

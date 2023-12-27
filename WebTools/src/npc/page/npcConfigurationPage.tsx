@@ -14,9 +14,10 @@ import { PageIdentity } from '../../pages/pageIdentity';
 import { NpcCharacterType, NpcCharacterTypeModel, NpcCharacterTypes } from '../model/npcCharacterType';
 import { NpcGenerator } from '../model/npcGenerator';
 import { NpcType, NpcTypes } from '../model/npcType';
-import { Specialization, SpecializationModel, Specializations } from '../model/specializations';
+import { SpecializationModel, Specializations } from '../model/specializations';
 import { hasAnySource } from '../../state/contextFunctions';
 import { Source } from '../../helpers/sources';
+import { Specialization } from '../../common/character';
 
 interface INpcConfigurationPageProperties extends WithTranslation {
     era: Era;

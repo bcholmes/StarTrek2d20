@@ -18,13 +18,12 @@ import { Career } from './careerEnum';
 import { hasAnySource } from '../state/contextFunctions';
 import i18next from 'i18next';
 import { toCamelCase } from '../common/camelCaseUtil';
-import { AlliedMilitary, AlliedMilitaryType } from './alliedMilitary';
 
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
 export const TALENT_NAME_BORG_IMPLANTS = "Borg Implants";
 export const TALENT_NAME_EXPANDED_PROGRAM = "Expanded Program";
 export const TALENT_NAME_VISIT_EVERY_STAR = "Visit Every Star";
-
+export const TALENT_NAME_WISDOM_OF_YEARS = "Wisdom of Years";
 
 export const CHALLENGE_DICE_NOTATION = "[D]";
 
@@ -1269,9 +1268,9 @@ export class Talents {
             new TalentModel(
                 "Cultural Flexibility",
                 "Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",
-                [new SpeciesPrerequisite(Species.Denobulan, true), new EraPrerequisite(Era.Enterprise)],
+                [new AnySpeciesPrerequisite(true, Species.Denobulan, Species.ElAurian), new EraPrerequisite(Era.Enterprise)],
                 1,
-                "Denobulan"),
+                "Denobulan/El-Aurian"),
             new TalentModel(
                 "Parent Figure",
                 "You have a large family, with many children, nieces, and nephews, and you’ve learned how to coordinate even the most unruly and fractious of groups when necessary. When attempting or assisting a Task, and two or more other characters are involved in the Task, the first Complication generated on the Task — either by the character attempting the Task, or one of the assistants — may be ignored.",
@@ -2417,6 +2416,30 @@ export class Talents {
                 [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Bynar, false)],
                 1,
                 "Bynar"),
+            new TalentModel(
+                "The Long View",
+                "Due to their extremely long lifespans, El-Aurians come to understand and gain knowledge more extensively that most other individuals. When a character with this Talent uses a Milestone to exchange a Focus, they may do so twice instead of once.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.ElAurian, true)],
+                1,
+                "El-Aurian"),
+            new TalentModel(
+                "Temporal Awareness",
+                "One hundred and fifty El-Aurian refugees who were aboard the SS Lakul in 2293 became caught in the Nexus. For them it was akin to “being inside joy”. Forty-Seven of these refugees were “yanked out” by the USS Enterprise-B, leaving a temporal “echo” of themselves behind within the Nexus that exists outside of all of time. These El-Aurians are still connected to their “echoes” granting them an awareness of manipulations made to the time-space continuum. Any alterations to the natural flow of time leaves the El-Aurian with this talent with a nagging “feeling” that something is just not right, or is fundamentally “off”. The Gamemaster secretly makes a Difficulty 0 Insight + Science Task check for the player. If the Task fails the player is oblivious to the changes. On one success, the El-Aurian knows something is wrong, but not exactly what it is. For each success past the first, the Gamemaster may give the player brief hints as the character begins to remember brief impulses of “how things should be”. Additionally, the player may spend a point of Momentum to remember a specific fact about the former timeline.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.ElAurian, true)],
+                1,
+                "El-Aurian"),
+            new TalentModel(
+                "Listener",
+                "You know how to subtly use your empathic skills to discern not only what is being said but also what is being unsaid. This allows you to tell someone exactly what they needs to hear. When you attempt a Task to advise or convince someone into taking or refraining from a specific course of action, you may add a bonus d20",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.ElAurian, true)],
+                1,
+                "El-Aurian"),
+            new TalentModel(
+                "Wisdom of Years",
+                "You have many decades if not several centuries of experiences to draw upon. You may have one additional Value and Focus, reflecting the insights you received from your long life",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.ElAurian, true)],
+                1,
+                "El-Aurian"),
 
 
 

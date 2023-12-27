@@ -2,7 +2,7 @@
 import {Character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
-import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_EXPANDED_PROGRAM, TALENT_NAME_VISIT_EVERY_STAR, TalentsHelper } from '../helpers/talents';
+import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_EXPANDED_PROGRAM, TALENT_NAME_VISIT_EVERY_STAR, TALENT_NAME_WISDOM_OF_YEARS, TalentsHelper } from '../helpers/talents';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import ValueInput from '../components/valueInputWithRandomOption';
@@ -52,7 +52,8 @@ const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character
             Dialog.show(t('SoloFinishingTouchesPage.errorTalent'));
         } else if (character.hasTalent(TALENT_NAME_BORG_IMPLANTS) ||
             character.hasTalent(TALENT_NAME_EXPANDED_PROGRAM) ||
-            character.hasTalent(TALENT_NAME_VISIT_EVERY_STAR)) {
+            character.hasTalent(TALENT_NAME_VISIT_EVERY_STAR) ||
+            character.hasTalent(TALENT_NAME_WISDOM_OF_YEARS)) {
             Navigation.navigateToPage(PageIdentity.ExtraTalentDetails);
         } else {
             Navigation.navigateToPage(PageIdentity.Finish);

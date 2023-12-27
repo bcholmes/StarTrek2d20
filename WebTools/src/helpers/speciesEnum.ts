@@ -136,5 +136,10 @@ export enum Species {
     Skorr,
 
 
+    // Continuing Missions
+    ElAurian,
+
+
+
     Custom,
 };

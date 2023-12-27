@@ -22,6 +22,35 @@ import { BorgImplantType, BorgImplants } from '../helpers/borgImplant';
 export abstract class CharacterTypeDetails {
 }
 
+export enum Specialization {
+    Admiral,
+    Admin,
+    Counselor,
+    FirstContactSpecialist,
+    Jag,
+    Security,
+    MedicalDoctor,
+    Nurse,
+    HangarDeck,
+    Conn,
+    ScienceTech,
+    Scientist,
+    Engineer,
+    IntelligenceOfficer,
+
+    KlingonWarrior,
+    KlingonWeaponsOfficer,
+    KlingonMedic,
+
+    FerengiMerchant,
+    FerengiDaiMon,
+
+    CardassianSoldier,
+
+    RomulanCenturion,
+    RomulanTalShiar,
+}
+
 export enum Division {
     Command,
     Science,
@@ -266,6 +295,7 @@ export class CareerEventStep {
 }
 
 export class NpcGenerationStep {
+    public specialization: Specialization;
     public enlisted: boolean;
     public values: string[] = [];
     public talents: SelectedTalent[] = [];
