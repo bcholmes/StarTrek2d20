@@ -50,6 +50,7 @@ const SpeciesExtraDetailsPage: React.FC<ISpeciesExtraDetailsPageProperties> = ({
 
             <div className="mt-4">
                 <SimpleSpeciesSelection onSelection={(species) => selectOriginalSpecies(species)}
+                    character={character}
                     species={SpeciesHelper.getPrimarySpecies(character.type, true, character)} />
             </div>
         </div>

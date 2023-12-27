@@ -595,6 +595,10 @@ export class PersonalWeapons {
         return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.Vicious, 1)], [new WeaponQuality(Quality.NonLethal)], WeaponType.MELEE);
     }
 
+    get unarmedStrikeIntense() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.Intense)], [new WeaponQuality(Quality.NonLethal)], WeaponType.MELEE);
+    }
+
     get phaser1() {
         return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser1.name'), 2, [], [new WeaponQuality(Quality.Charge), new WeaponQuality(Quality.Hidden, 1)], WeaponType.ENERGY);
     }

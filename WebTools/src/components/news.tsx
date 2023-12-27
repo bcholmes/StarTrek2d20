@@ -12,6 +12,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.231227</b>
+                <ul>
+                    <li>Another bug was report by Felderburg, related to selecting a limited number of sources.</li>
+                    <li>I've made some mior revisions to NPC generation, including better support for "special rules".</li>
+                    <li>Various internal clean-up activities.</li>
+                </ul>
                 <b>v1.231224a</b>
                 <ul>
                     <li>Turns out I caused an 11th-hour bug. Drat. But thanks for the quick reporting by Phantomaoj.</li>

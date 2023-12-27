@@ -4,10 +4,12 @@ import { SpeciesModel } from '../helpers/species';
 import { AttributesHelper } from '../helpers/attributes';
 import { Button } from './button';
 import { Species } from '../helpers/speciesEnum';
+import { Character } from '../common/character';
 
 interface ISimpleSpeciesSelectionProperties {
     onSelection: (species: SpeciesModel) => void;
     species: SpeciesModel[];
+    character: Character;
 }
 
 export class SimpleSpeciesSelection extends React.Component<ISimpleSpeciesSelectionProperties, {}> {
@@ -35,7 +37,7 @@ export class SimpleSpeciesSelection extends React.Component<ISimpleSpeciesSelect
             const talents = s.id === Species.Changeling
                 ? <div>Morphogenic Matrix</div>
                 : s.talents.map((t, i) => {
-                    return t.isAvailableExcludingSpecies() ? <div key={i}>{t.name}</div> : <span key={i}></span>;
+                    return t.isAvailableExcludingSpecies(this.props.character) ? <div key={i}>{t.name}</div> : <span key={i}></span>;
                 });
 
             return (

@@ -63,7 +63,7 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
         const talents = s.id === Species.Changeling
             ? <div>Morphogenic Matrix</div>
             : s.talents.map((t, i) => {
-                return t.isAvailableExcludingSpecies() ? <div key={i}>{t.name}</div> : <span key={i}></span>;
+                return t.isAvailableExcludingSpecies(character) ? <div key={i}>{t.name}</div> : <span key={i}></span>;
             });
         const sources = SourcesHelper.getSourceName(s.sources);
 

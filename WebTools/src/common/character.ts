@@ -8,7 +8,7 @@ import {EarlyOutlookModel} from '../helpers/upbringings';
 import {TalentViewModel} from '../helpers/talents';
 import {CharacterType} from './characterType';
 import { AlliedMilitary, AlliedMilitaryType } from '../helpers/alliedMilitary';
-import { Government, GovernmentType } from '../helpers/governments';
+import { Government, Polity } from '../helpers/governments';
 import AgeHelper, { Age } from '../helpers/age';
 import { Weapon, PersonalWeapons } from '../helpers/weapons';
 import { Construct, Stereotype } from './construct';
@@ -113,7 +113,7 @@ export class GovernmentDetails extends CharacterTypeDetails {
     }
 
     getName() {
-        if (this.government && this.government.type === GovernmentType.Other && this.name) {
+        if (this.government && this.government.type === Polity.Other && this.name) {
             return this.name;
         } else if (this.government) {
             return this.government.name;
@@ -677,6 +677,8 @@ export class Character extends Construct {
 
         if (this.hasTalent("Mean Right Hook")) {
             result.push(PersonalWeapons.instance.unarmedStrikeMean);
+        } else if (this.hasTalent("Martial Artist")) {
+            result.push(PersonalWeapons.instance.unarmedStrikeIntense);
         } else {
             result.push(PersonalWeapons.instance.unarmedStrike);
         }

@@ -51,9 +51,9 @@ class MissionProfileTalentSelectionPage extends React.Component<IMissionProfileT
             if (!t.isSourcePrerequisiteFulfilled(this.props.starship)) {
                 // skip it
             } else if (!this.props.starship.spaceframeModel?.hasTalent(t.name)) {
-                talents.push(ToViewModel(t));
+                talents.push(ToViewModel(t, 1, this.props.starship?.type));
             } else if (t.maxRank > 1) {
-                talents.push(ToViewModel(t, 2));
+                talents.push(ToViewModel(t, 2, this.props.starship?.type));
             }
         });
         return talents;

@@ -1,4 +1,4 @@
-import {Character, character } from '../common/character';
+import {Character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import {AliasModel} from './aliases';
 import {Attribute} from './attributes';
@@ -526,7 +526,7 @@ export class TalentModel implements ITalent {
         return result === key ? "" : result;
     }
 
-    isAvailableExcludingSpecies() {
+    isAvailableExcludingSpecies(character: Character) {
         let available = true;
         this.prerequisites.forEach((p, i) => {
             if (!(p instanceof SpeciesPrerequisite) && !(p instanceof AnySpeciesPrerequisite) && !p.isPrerequisiteFulfilled(character)) {
@@ -649,7 +649,7 @@ export class TalentViewModel {
     }
 }
 
-export function ToViewModel(talent: TalentModel, rank: number = 1, type: CharacterType = character.type): TalentViewModel {
+export function ToViewModel(talent: TalentModel, rank: number = 1, type: CharacterType): TalentViewModel {
     let name = talent.name;
     if (type === CharacterType.KlingonWarrior) {
         name = talent.nameForSource(Source.KlingonCore);
@@ -3507,14 +3507,14 @@ export class Talents {
     }
 
 
-    getTalentViewModel(name: string) {
+    getTalentViewModel(name: string, character?: Character) {
         let talent = this.getTalent(name);
 
         if (talent) {
-            let rank = character.hasTalent(talent.name)
-                ? character.talents[talent.name].rank + 1
+            let rank = character?.hasTalent(talent.name)
+                ? character?.talents[talent.name].rank + 1
                 : 1;
-            return ToViewModel(talent, rank, character.type);
+            return ToViewModel(talent, rank, character?.type ?? CharacterType.Starfleet);
         } else {
             return null;
         }

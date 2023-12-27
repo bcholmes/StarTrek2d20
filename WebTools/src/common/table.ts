@@ -1,2 +1,2 @@
 
-export type SimpleTable<Type> = () => Type;
+export type TableRoll<Type> = () => Type;

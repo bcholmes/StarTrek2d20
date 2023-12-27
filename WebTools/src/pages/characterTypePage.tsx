@@ -6,18 +6,19 @@ import {PageIdentity} from './pageIdentity';
 import {Button} from '../components/button';
 import AllyHelper, { AlliedMilitaryType } from '../helpers/alliedMilitary';
 import { Source } from '../helpers/sources';
-import Governments, { GovernmentType } from '../helpers/governments';
+import Governments, { Polity } from '../helpers/governments';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import store from '../state/store';
 import { hasSource } from '../state/contextFunctions';
 import { Header } from '../components/header';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { setCharacter } from '../state/characterActions';
+import { DropDownElement, DropDownSelect } from '../components/dropDownInput';
 
 interface ICharacterTypePageState {
     type: CharacterType,
     alliedMilitary?: AlliedMilitaryType
-    government?: GovernmentType
+    polity?: Polity
     otherName: string
 }
 
@@ -70,11 +71,12 @@ class CharacterTypePage extends React.Component<WithTranslation, ICharacterTypeP
         const { t } = this.props;
         if (this.state.type === CharacterType.AmbassadorDiplomat) {
 
-            const types = Governments.selectOptions(store.getState().context.era).map(t => {
-                return (<option value={t.type} key={'gov-' + t.type}>{t.localizedName}</option>);
+            const polityValues = Governments.selectOptions(store.getState().context.era).map(t => {
+                return new DropDownElement(t.type, t.localizedName);
             });
+            polityValues.unshift(new DropDownElement("", t('Common.select.choose')));
 
-            const other = this.state.government === GovernmentType.Other
+            const other = this.state.polity === Polity.Other
                 ? (<>
                     <p className="mt-4">
                         {t('CharacterTypePage.otherGovernmentName')}
@@ -90,10 +92,7 @@ class CharacterTypePage extends React.Component<WithTranslation, ICharacterTypeP
                     <p className="mt-4">
                         {t('CharacterTypePage.whatGovernment')}
                     </p>
-                    <select onChange={(e) => this.selectGovernmentType(e.target.value)} value={this.state.government}>
-                        <option>{t('Common.select.choose')}</option>
-                        {types}
-                    </select>
+                    <DropDownSelect onChange={(val) => this.selectPolity(val === "" ? undefined :(val as Polity))} defaultValue={this.state.polity} items={polityValues} />
                     {other}
                   </>);
         } else {
@@ -144,11 +143,10 @@ class CharacterTypePage extends React.Component<WithTranslation, ICharacterTypeP
         }));
     }
 
-    private selectGovernmentType(typeAsString: string) {
-        let type = parseInt(typeAsString) as GovernmentType;
+    private selectPolity(polity: Polity) {
         this.setState(state => ({
             ...state,
-            government: type
+            polity: polity
         }));
     }
 
@@ -158,7 +156,7 @@ class CharacterTypePage extends React.Component<WithTranslation, ICharacterTypeP
         if (character.type === CharacterType.AlliedMilitary) {
             character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(this.state.alliedMilitary), this.state.otherName);
         } else if (character.type === CharacterType.AmbassadorDiplomat) {
-            character.typeDetails = new GovernmentDetails(Governments.findOption(this.state.government), this.state.otherName);
+            character.typeDetails = new GovernmentDetails(Governments.findOption(this.state.polity), this.state.otherName);
         }
         store.dispatch(setCharacter(character));
         Navigation.navigateToPage(PageIdentity.Species);

@@ -9,7 +9,7 @@ import { Rank } from "../helpers/ranks";
 import { Role } from "../helpers/roles";
 import { Skill } from "../helpers/skills";
 import { Species } from "../helpers/speciesEnum";
-import { TalentViewModel } from "../helpers/talents";
+import { ITalent, TalentViewModel } from "../helpers/talents";
 import { Track } from "../helpers/trackEnum";
 import { EarlyOutlookModel } from "../helpers/upbringings";
 export const SET_CHARACTER = 'SET_CHARACTER';
@@ -161,7 +161,7 @@ export function addCharacterTalentFocus(focus: string, talent: string, index: nu
     }
 }
 
-export function addCharacterTalent(talent: TalentViewModel, context: StepContext) {
+export function addCharacterTalent(talent: ITalent, context: StepContext) {
     let payload = { talent: talent == null ? undefined : talent.name, context: context };
     return {
        type: ADD_CHARACTER_TALENT,

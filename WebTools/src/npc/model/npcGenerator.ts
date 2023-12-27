@@ -475,7 +475,7 @@ export class NpcGenerator {
             let n = 0;
 
             if (i === 0 && species.id === Species.Klingon && hasAnySource([Source.KlingonCore, Source.BetaQuadrant])) {
-                character.addTalent(ToViewModel(TalentsHelper.getTalent("Brak'lul")));
+                character.addTalent(ToViewModel(TalentsHelper.getTalent("Brak'lul"), 1, character.type));
             } else {
                 while (!done) {
                     let talentList = TalentsHelper.getAllAvailableTalentsForCharacter(character);
