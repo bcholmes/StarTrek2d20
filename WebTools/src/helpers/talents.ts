@@ -3431,6 +3431,30 @@ export class Talents {
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Romulan, Species.Reman), new OfficerPrerequisite(), new CareersPrerequisite(Career.Veteran, Career.Experienced), new AttributePrerequisite(Attribute.Daring, 9)],
             1,
             "Romulan", true),
+        new TalentModel(
+            "Ambushes and Traps",
+            "Whenever a Cardassian uses the Ready Task to ready a Ranged attack, that Ranged attack gains one bonus d20.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Cardassian)],
+            1,
+            "Cardassian", true),
+        new TalentModel(
+            "Loyal and Disciplined",
+            "Whenever a Cardassian receives assistance from a superior on a Task, the Cardassian may re-roll a single d20.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Cardassian)],
+            1,
+            "Cardassian", true),
+        new TalentModel(
+            "Expects Success",
+            "Whenever a Cardassian uses the Direct or Assist Task to aid a subordinate, that Task may always Succeed at Cost.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Cardassian)],
+            1,
+            "Cardassian", true),
+        new TalentModel(
+            "Ruthless",
+            "Gul Tremak may re-roll any d20s in his dice pool when making an attack against an enemy that was not aware of or prepared for an attack, or against an enemy that is defenseless.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Cardassian), new OfficerPrerequisite(), new CareersPrerequisite(Career.Veteran, Career.Experienced)],
+            1,
+            "Cardassian", true),
         ];
 
     getTalents() {
