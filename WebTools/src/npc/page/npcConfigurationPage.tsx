@@ -17,7 +17,7 @@ import { NpcType, NpcTypes } from '../model/npcType';
 import { SpecializationModel, Specializations } from '../model/specializations';
 import { hasAnySource } from '../../state/contextFunctions';
 import { Source } from '../../helpers/sources';
-import { Specialization } from '../../common/character';
+import { Specialization } from '../../common/specializationEnum';
 
 interface INpcConfigurationPageProperties extends WithTranslation {
     era: Era;
@@ -42,8 +42,6 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
     }
 
     render() {
-
-
         const { t } = this.props;
         return (<div className="page">
             <div className="container ml-0">
@@ -119,8 +117,30 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         return result;
     }
 
+    getStandardFederationSpeciesList() {
+        const list = [ Species.Andorian, Species.Bajoran, Species.Betazoid, Species.Bolian, Species.Denobulan, Species.Human, Species.Tellarite, Species.Trill, Species.Vulcan ];
+        return list.map(s => SpeciesHelper.getSpeciesByType(s)).filter(s => s.eras.indexOf(this.props.era) >= 0);
+    }
+
+    getStandardFederationSpeciesListAsTypes() {
+        return this.getStandardFederationSpeciesList().map(s => s.id);
+    }
+
     getSpeciesList() {
-        if (this.state.selectedType?.type === NpcCharacterType.KlingonDefenseForces) {
+        if (this.state.selectedSpecialization != null && this.state.selectedSpecialization?.species?.length) {
+            return this.state.selectedSpecialization.species.map(s => SpeciesHelper.getSpeciesByType(s)).filter(s => s.eras.indexOf(this.props.era) >= 0);
+        } else if (this.state.selectedType?.type === NpcCharacterType.RogueRuffianMercenary) {
+            let items = [];
+            Specializations.instance.getSpecializations(this.state.selectedType?.type).forEach(s => {
+                let speciesList = s.species?.length ? s.species : this.getStandardFederationSpeciesListAsTypes();
+                speciesList. forEach(s => {
+                    if (items.indexOf(s) < 0) {
+                        items.push(s);
+                    }
+                });
+            });
+            return items.map(s => SpeciesHelper.getSpeciesByType(s)).filter(s => s.eras.indexOf(this.props.era) >= 0);
+        } else if (this.state.selectedType?.type === NpcCharacterType.KlingonDefenseForces) {
             const list = this.props.era === Era.NextGeneration ? [ Species.Klingon ] : [ Species.Klingon, Species.KlingonQuchHa ];
             return list.map(s => SpeciesHelper.getSpeciesByType(s));
         } else if (this.state.selectedType?.type === NpcCharacterType.Cardassian) {
@@ -130,9 +150,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         } else if (this.state.selectedType?.type === NpcCharacterType.RomulanMilitary) {
             return [ SpeciesHelper.getSpeciesByType(Species.Romulan), SpeciesHelper.getSpeciesByType(Species.Reman)];
         } else {
-            const list = [ Species.Andorian, Species.Bajoran, Species.Betazoid, Species.Bolian, Species.Denobulan, Species.Human, Species.Tellarite, Species.Trill, Species.Vulcan ];
-            let result = list.map(s => SpeciesHelper.getSpeciesByType(s)).filter(s => s.eras.indexOf(this.props.era) >= 0);
-            return result;
+            return this.getStandardFederationSpeciesList();
         }
     }
 
@@ -176,9 +194,18 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
     }
 
     createNpc() {
-        let species = this.state.selectedSpecies != null
-            ? this.state.selectedSpecies
-            : this.randomSpecies();
+        let specialization = this.state.selectedSpecialization;
+        if (specialization == null) {
+            let specializations = Specializations.instance.getSpecializations(this.state.selectedType.type);
+            specialization = specializations[Math.floor(Math.random() * specializations.length)];
+        }
+        let species = this.state.selectedSpecies;
+        if (species == null && specialization.species?.length) {
+            let list = specialization.species;
+            species = list[Math.floor(Math.random() * list.length)];
+        } else if (species == null) {
+            species = this.randomSpecies();
+        }
         let character = NpcGenerator.createNpc(this.state.selectedNpcType, this.state.selectedType.type,
             SpeciesHelper.getSpeciesByType(species), this.state.selectedSpecialization);
 

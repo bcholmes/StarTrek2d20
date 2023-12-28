@@ -41,14 +41,16 @@ export class NameGenerator {
         return NameGenerator._instance;
     }
 
-    createName(species: SpeciesModel) {
+    createName(species: SpeciesModel, gender: string = undefined) {
 
         let result = { name: "", pronouns: "" };
         let found = false;
         for (let name of names) {
             if (name.species === species.name) {
 
-                let lastNames = name.names.filter(n => n.type === 'LastName');
+                let lastNames = name.names
+                    .filter(n => n.type === 'LastName')
+                    .filter(n => gender == null || gender === n.gender || n.gender === 'Unisex');
                 let lastName = null;
                 if (lastNames.length > 0) {
                     let r = Math.floor(Math.random() * lastNames.length);
@@ -56,6 +58,7 @@ export class NameGenerator {
                 }
                 let firstNames = name.names
                     .filter(n => n.type === 'FirstName')
+                    .filter(n => gender == null || gender === n.gender)
                     .filter(n => {
                         if (lastName == null) {
                             return true;

@@ -21,7 +21,7 @@ const TalentsBlockView: React.FC<ICharacterPageProperties> = ({character}) => {
             <Header level={2} className="mt-4">{t('Construct.other.talents')}</Header>
             {talents.map((t, i) =>
                 (<div className="text-white view-border-bottom py-2" key={'talent-' + i}>
-                    <strong>{t.localizedName + (t.maxRank > 1 ? " [x" + character.getRankForTalent(t.name) + "]" : "")}:</strong> {' '}
+                    <strong>{t.localizedDisplayName + (t.maxRank > 1 ? " [x" + character.getRankForTalent(t.name) + "]" : "")}:</strong> {' '}
                     {replaceDiceWithArrowhead(t.description)}
                 </div>))}
         </>);

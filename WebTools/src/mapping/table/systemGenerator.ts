@@ -6,6 +6,7 @@ import AlienNameGenerator from "../util/alienNameGenerator";
 import { LuminosityTable } from "./luminosityTable";
 import { addNoiseToValue } from "./noise";
 import { Orbit, Orbits } from "./orbit";
+import { isolatedColonyFeaturesOfInterest } from "./planetaryFeaturesTable";
 import { Sector, SectorCoordinates } from "./sector";
 import { LuminosityClass, LuminosityClassModel, SpectralClass, SpectralClassModel, Star, Range, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon, SpaceRegion } from "./star";
 import { CompanionType, StarSystem } from "./starSystem";
@@ -1023,14 +1024,22 @@ class SystemGeneration {
                 world.notes.push(type.notes);
             }
 
-            if (isPrimaryWorld && world.worldClass.id !== WorldClass.D && !world.worldClass.isGasGiant) {
-                world.features.push(this.planetaryFeaturesOfInterest(D20.roll()));
-                let feature2 = this.planetaryFeaturesOfInterest(D20.roll());
-                if (world.features.indexOf(feature2) < 0) {
-                    world.features.push(feature2);
-                }
+            if (isPrimaryWorld && !world.worldClass.isGasGiant) {
+                if (world.worldClass.id === WorldClass.D || world.worldClass.id === WorldClass.Y) {
+                    let feature = isolatedColonyFeaturesOfInterest();
+                    world.features.push(feature.localizedDescription);
+                } else if (world.worldClass.id === WorldClass.L && D20.roll() < 14) {
+                    let feature = isolatedColonyFeaturesOfInterest();
+                    world.features.push(feature.localizedDescription);
+                } else {
+                    world.features.push(this.planetaryFeaturesOfInterest(D20.roll()));
+                    let feature2 = this.planetaryFeaturesOfInterest(D20.roll());
+                    if (world.features.indexOf(feature2) < 0) {
+                        world.features.push(feature2);
+                    }
 
-                world.features.push(this.planetaryDetails(D20.roll()));
+                    world.features.push(this.planetaryDetails(D20.roll()));
+                }
             }
             if (isPrimaryWorld) {
                 world.name = AlienNameGenerator.generatePlanetName();

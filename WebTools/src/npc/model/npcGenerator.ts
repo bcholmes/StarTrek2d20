@@ -1,4 +1,4 @@
-import { AlliedMilitaryDetails, CareerStep, Character, NpcGenerationStep, Specialization, SpeciesStep } from "../../common/character";
+import { AlliedMilitaryDetails, CareerStep, Character, NpcGenerationStep, SpeciesStep } from "../../common/character";
 import { CharacterType } from "../../common/characterType";
 import { Stereotype } from "../../common/construct";
 import { D20 } from "../../common/die";
@@ -17,6 +17,7 @@ import { hasAnySource } from "../../state/contextFunctions";
 import { Source } from "../../helpers/sources";
 import { AlliedMilitaryType } from "../../helpers/alliedMilitary";
 import AllyHelper from "../../helpers/alliedMilitary";
+import { Specialization } from "../../common/specializationEnum";
 
 class RankWithTier {
     readonly name: string;
@@ -75,6 +76,9 @@ const recreationSkills: { [type: number ]: string[] } = {
         "Stardrifter afficionado",
         "Schmoozing",
         "Bars and Diners"
+    ],
+    [NpcCharacterType.Cardassian] : [
+
     ]
 }
 
@@ -420,7 +424,8 @@ export class NpcGenerator {
             Career.Experienced, Career.Veteran, Career.Veteran];
         if (specialization.id === Specialization.Admiral) {
             careers = [ Career.Veteran ];
-        } else if (specialization.id === Specialization.FerengiDaiMon || specialization.id === Specialization.KlingonShipCaptain) {
+        } else if (specialization.id === Specialization.FerengiDaiMon || specialization.id === Specialization.KlingonShipCaptain
+                || specialization.id === Specialization.CardassianGul) {
             careers = [ Career.Experienced, Career.Experienced, Career.Experienced, Career.Veteran ];
         }
 
@@ -454,6 +459,9 @@ export class NpcGenerator {
             case NpcCharacterType.RomulanMilitary:
                 character.type = CharacterType.AlliedMilitary;
                 character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(AlliedMilitaryType.RomulanStarEmpire), "Romulan");
+                break;
+            case NpcCharacterType.RogueRuffianMercenary:
+                character.type = CharacterType.Civilian;
                 break;
             case NpcCharacterType.Ferengi:
                 if (specialization.id === Specialization.FerengiMerchant) {
@@ -500,9 +508,6 @@ export class NpcGenerator {
 
                     if (talentList.length) {
                         let talent = talentList[Math.floor(Math.random() * talentList.length)];
-                        if (talent.name === "Free Advice Is Seldom Cheap") {
-                            console.log("****** FOUND IT ******")
-                        }
                         if (!character.hasTalent(talent.name) || talent.hasRank) {
                             character.addTalent(talent);
                             done = true;
@@ -631,6 +636,8 @@ export class NpcGenerator {
             ranks = [ RanksHelper.instance().getRank(Rank.DaiMon) ];
         } else if (specialization.id === Specialization.KlingonShipCaptain) {
             ranks = [ RanksHelper.instance().getRank(Rank.Captain) ];
+        } else if (specialization.id === Specialization.CardassianGul) {
+            ranks = [ RanksHelper.instance().getRank(Rank.Gul) ];
         }
 
         ranks = ranks.filter(r => r.id !== Rank.Yeoman1stClass

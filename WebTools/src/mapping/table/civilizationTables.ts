@@ -9,6 +9,11 @@ export enum PolityType {
     Alliance, Confederation, Empire, Federation
 }
 
+export enum ReligionType {
+    Agnosticism, Animism, Atheism, Deism, Dualism, Henotheism, Monolatrism,
+    Monotheism, Pantheism, Polytheism
+}
+
 export const governmentTypeTable: TableRoll<GovernmentType> = () => {
     let roll = D20.roll();
     switch (roll) {

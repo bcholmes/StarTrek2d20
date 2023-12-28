@@ -2,6 +2,7 @@ import { Character } from "../common/character";
 import { CharacterType } from "../common/characterType";
 import { Construct, Stereotype } from "../common/construct";
 import { IConstruct } from "../common/iconstruct";
+import { Specialization } from "../common/specializationEnum";
 import { Starship } from "../common/starship";
 import store from "../state/store";
 import { Career } from "./careerEnum";
@@ -253,6 +254,22 @@ export class CharacterStereotypePrerequisite implements IConstructPrerequisite<C
         return "";
     }
 }
+
+export class SpecializationPrerequisite implements IConstructPrerequisite<Character> {
+    private types: Specialization[];
+
+    constructor(...type: Specialization[]) {
+        this.types = type;
+    }
+
+    isPrerequisiteFulfilled(character: Character) {
+        return character instanceof Character && character.stereotype === Stereotype.Npc && this.types.indexOf(character.npcGenerationStep?.specialization) >= 0;
+    }
+    describe(): string {
+        return "";
+    }
+}
+
 export class AllOfPrerequisite implements IConstructPrerequisite<Character> {
     private prequisites: IConstructPrerequisite<Character>[];
 

@@ -18,69 +18,9 @@ import { makeKey } from './translationKey';
 import i18next from 'i18next';
 import { Role, RolesHelper } from '../helpers/roles';
 import { BorgImplantType, BorgImplants } from '../helpers/borgImplant';
+import { Specialization } from './specializationEnum';
 
 export abstract class CharacterTypeDetails {
-}
-
-export enum Specialization {
-    Admiral,
-    Admin,
-    Counselor,
-    FirstContactSpecialist,
-    Jag,
-    Security,
-    MedicalDoctor,
-    Nurse,
-    HangarDeck,
-    Conn,
-    ScienceTech,
-    Scientist,
-    Engineer,
-    IntelligenceOfficer,
-
-    KlingonWarrior,
-    KlingonWeaponsOfficer,
-    KlingonMedic,
-    KlingonShipCaptain,
-
-    FerengiMerchant,
-    FerengiDaiMon,
-
-    CardassianSoldier,
-
-    RomulanCenturion,
-    RomulanTalShiar,
-}
-
-export const allSpecializations = () => {
-    return [Specialization.Admiral,
-        Specialization.Admin,
-        Specialization.Counselor,
-        Specialization.FirstContactSpecialist,
-        Specialization.Jag,
-        Specialization.Security,
-        Specialization.MedicalDoctor,
-        Specialization.Nurse,
-        Specialization.HangarDeck,
-        Specialization.Conn,
-        Specialization.ScienceTech,
-        Specialization.Scientist,
-        Specialization.Engineer,
-        Specialization.IntelligenceOfficer,
-
-        Specialization.KlingonWarrior,
-        Specialization.KlingonWeaponsOfficer,
-        Specialization.KlingonMedic,
-        Specialization.KlingonShipCaptain,
-
-        Specialization.FerengiMerchant,
-        Specialization.FerengiDaiMon,
-
-        Specialization.CardassianSoldier,
-
-        Specialization.RomulanCenturion,
-        Specialization.RomulanTalShiar,
-    ]
 }
 
 export enum Division {

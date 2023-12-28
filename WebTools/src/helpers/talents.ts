@@ -12,12 +12,13 @@ import { Starship } from '../common/starship';
 import store from '../state/store';
 import { centuryToYear } from './weapons';
 import { Spaceframe } from './spaceframeEnum';
-import { CareersPrerequisite, CharacterStereotypePrerequisite, IConstructPrerequisite, MainCharacterPrerequisite, OfficerPrerequisite, ServiceYearPrerequisite, SourcePrerequisite } from './prerequisite';
+import { CareersPrerequisite, CharacterStereotypePrerequisite, IConstructPrerequisite, MainCharacterPrerequisite, OfficerPrerequisite, ServiceYearPrerequisite, SourcePrerequisite, SpecializationPrerequisite } from './prerequisite';
 import { NotSourcePrerequisite } from './spaceframes';
 import { Career } from './careerEnum';
 import { hasAnySource } from '../state/contextFunctions';
 import i18next from 'i18next';
 import { toCamelCase } from '../common/camelCaseUtil';
+import { Specialization } from '../common/specializationEnum';
 
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
 export const TALENT_NAME_BORG_IMPLANTS = "Borg Implants";
@@ -3396,11 +3397,11 @@ export class Talents {
             1,
             "Klingon", true),
         new TalentModel(
-            "Cunning Wit",
+            "Cutting Wit",
             "The character fights as much with words as with weapons. When in personal combat against an enemy who can understand them, they may use Presence instead of Daring to attack.",
-            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new OfficerPrerequisite(), new AttributePrerequisite(Attribute.Presence, 9)],
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa, Species.Orion), new AttributePrerequisite(Attribute.Presence, 9)],
             1,
-            "Klingon", true),
+            "Klingon/Orion", true),
         new TalentModel(
             "Tactical Genius",
             "Once per scene, if the character succeeds at an Insight + Command task to assess their opponent, they may spend 2 Threat to allow all under their command to re-roll one d20 on their next task.",
@@ -3456,6 +3457,12 @@ export class Talents {
             1,
             "Romulan", true),
         new TalentModel(
+            "Supreme Authority (Cardassian)",
+            "Whenever a Cardassian currently under the character's command attempts a Task to resist persuasion or intimidation, the character may spend 1 Threat to allow that Cardassian to re-roll, even if they are not present in that scene.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Cardassian), new OfficerPrerequisite(), new CareersPrerequisite(Career.Veteran)],
+            1,
+            "Cardassian", true),
+        new TalentModel(
             "Romulan Military Efficiency",
             "The character grants all Romulan NPCs under their command an additional Task each turn.",
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Romulan, Species.Reman), new OfficerPrerequisite(), new CareersPrerequisite(Career.Veteran, Career.Experienced)],
@@ -3497,7 +3504,74 @@ export class Talents {
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Cardassian), new OfficerPrerequisite(), new CareersPrerequisite(Career.Veteran, Career.Experienced)],
             1,
             "Cardassian", true),
-        ];
+        new TalentModel(
+            "No Quarter",
+            "When commanding a boarding action and assisting the soldiers under their command by giving them orders, the character may re-roll a single d20.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Orion), new SpecializationPrerequisite(Specialization.OrionPirate)],
+            1,
+            "Orion", true),
+        new TalentModel(
+            "Cutthroat Crew",
+            "Whenever the Orion Pirates attempt a Task related to boarding a captured vessel, and they buy additional d20s with Threat, they may re-roll a single d20.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Orion), new SpecializationPrerequisite(Specialization.OrionPirate)],
+            1,
+            "Orion", true),
+        new TalentModel(
+            "Vicious",
+            "The character knows how to use cruelty to motivate others. When enforcing discipline using threats or violence and buying additional d20s with Threat, the character may re-roll a single d20.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Orion), new SpecializationPrerequisite(Specialization.OrionPirate)],
+            1,
+            "Orion", true),
+        new TalentModel(
+            "A Little Bit Extra",
+            "An Orion Science Officer is always on the lookout for something interesting, profitable, or valuable. Whenever performing a Task with Science, the Orion Scientist gains 1 bonus Momentum, that they can only spend on Obtain Information.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Orion), new DisciplinePrerequisite(Skill.Science, 3)],
+            1,
+            "Orion", true),
+        new TalentModel(
+            "Assess Odds",
+            "The character knows when and where to apply their efforts for maximum payoff and how to best utilize their skills. Pick either Insight or Presence; when the character attempts a Task using that Attribute and don’t have an applicable Focus, each die that rolls a “2” scores two successes.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(false, Species.Orion)],
+            1,
+            "Orion", true),
+        new TalentModel(
+            "Potent Pheromones",
+            "While at Close range, when attempting a Task to negotiate, persuade, or seduce a humanoid creature physically attracted to them, the character adds a bonus d20 to the roll.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(false, Species.Orion)],
+            1,
+            "Orion", true),
+        new TalentModel(
+            "Subservient",
+            "Used to supplicating themselves to a higher authority (typically a female Orion slave master) the character will not willingly act against their superiors. Whenever they attempt a Task to resist being coerced into disobeying an order, betraying their allies, or otherwise acting against a directive, they reduce the Difficulty by 1.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(false, Species.Orion)],
+            1,
+            "Orion", true),
+        new TalentModel(
+            "Pheromonal Thrall",
+            "Thanks to years of conditioning, exposure to an Orion superior's pheromones, and careful manipulation by that slave master, the character gains an additional d20 when assisting their superior in Tasks where the superior spends Threat.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Orion)],
+            1,
+            "Orion", true),
+        new TalentModel(
+            "False-Faced",
+            "When deceiving others, the character reduces the difficulty by 1, to a minimum of zero.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Orion)],
+            1,
+            "Orion", true),
+        new TalentModel(
+            "Better Than You Know Yourself",
+            "The character has honed their skill at reading others to an almost-psychic level. When using Insight + Command to do so, they roll an additional d20.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Orion)],
+            1,
+            "Orion", true),
+        new TalentModel(
+            "Provocative",
+            "When performing a Task using Presence + Command, they character may spend a Threat to gain some small but useful secret from their target, whatever the Task’s result.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Orion)],
+            1,
+            "Orion", true),
+
+    ];
 
     getTalents() {
         let result = [];

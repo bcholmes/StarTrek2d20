@@ -6,7 +6,7 @@ import store from "../../state/store";
 import { Era } from "../../helpers/eras";
 
 export enum NpcCharacterType {
-    Starfleet, KlingonDefenseForces, RomulanMilitary, Ferengi, Cardassian
+    Starfleet, KlingonDefenseForces, RomulanMilitary, Ferengi, Cardassian, RogueRuffianMercenary
 }
 
 export class NpcCharacterTypeModel {
@@ -24,13 +24,15 @@ export class NpcCharacterTypeModel {
             case NpcCharacterType.Starfleet:
                 return i18next.t('CharacterType.name.starfleet');
             case NpcCharacterType.KlingonDefenseForces:
-                return i18next.t('Species.klingon.name');
+                return i18next.t('AlliedMilitaryType.name.klingonDefenceForce');
             case NpcCharacterType.RomulanMilitary:
-                return i18next.t('Species.romulan.name');
+                return i18next.t('AlliedMilitaryType.name.romulanStarEmpire');
             case NpcCharacterType.Cardassian:
-                return i18next.t('Species.cardassian.name');
+                return i18next.t('AlliedMilitaryType.name.cardassianUnion');
             case NpcCharacterType.Ferengi:
                 return i18next.t('Species.ferengi.name');
+            case NpcCharacterType.Ferengi:
+                return "Rogues, Ruffians, and Mercenaries";
             default:
                 return this.name;
         }
@@ -54,6 +56,7 @@ export class NpcCharacterTypes {
         new NpcCharacterTypeModel(NpcCharacterType.RomulanMilitary, "Romulan Military"),
         new NpcCharacterTypeModel(NpcCharacterType.Cardassian, "Cardassian"),
         new NpcCharacterTypeModel(NpcCharacterType.Ferengi, "Ferengi"),
+        new NpcCharacterTypeModel(NpcCharacterType.RogueRuffianMercenary, "Rogues, Ruffians, and Mercenaries"),
     ];
 
     get types() {

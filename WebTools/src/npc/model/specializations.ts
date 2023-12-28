@@ -1,6 +1,7 @@
-import { Specialization } from "../../common/character";
+import { Specialization } from "../../common/specializationEnum";
 import { Attribute } from "../../helpers/attributes";
 import { Skill } from "../../helpers/skills";
+import { Species } from "../../helpers/speciesEnum";
 import { NpcCharacterType } from "./npcCharacterType";
 
 export class SpecializationModel {
@@ -14,10 +15,11 @@ export class SpecializationModel {
     secondaryFocuses: string[];
     values: string[];
     officerProbability: number;
+    species: Species[];
 
     constructor(id: Specialization, type: NpcCharacterType, name: string, primaryAttributes: Attribute[], primaryDiscipline: Skill,
         primaryFocuses: string[], secondaryFocuses: string[], values: string[],
-        officerProbability: number = 0) {
+        officerProbability: number = 0, species: Species[] = []) {
         this.id = id;
         this.type = type;
         this.name = name;
@@ -27,6 +29,7 @@ export class SpecializationModel {
         this.secondaryFocuses = secondaryFocuses;
         this.officerProbability = officerProbability;
         this.values = values;
+        this.species = species;
     }
 }
 
@@ -513,14 +516,15 @@ export class Specializations {
                     "Subtlety Prevails Over Force",
                     "The End Justifies the Subterfuge",
                     "Silent Minds, Vocal Actions",
-                    "Pawns in the Game of Secrets"
+                    "Pawns in the Game of Secrets",
+                    "Silence! I've been stabbing commanders in the back since before your mother killed her first traitor."
                 ],
                 0.7),
             new SpecializationModel(Specialization.CardassianSoldier, NpcCharacterType.Cardassian, "Cardassian Soldier",
                 [Attribute.Control, Attribute.Reason, Attribute.Fitness],
                 Skill.Security,
                 [
-                    "Phasers", "Starship Weapons", "Advanced Ground Tactics",
+                    "Hand Phasers", "Starship Weapons", "Advanced Ground Tactics",
                     "Aggressive Stances"
                 ],
                 [
@@ -529,6 +533,52 @@ export class Specializations {
                 ],
                 [
                 ], 0.5),
+            new SpecializationModel(Specialization.CardassianGul, NpcCharacterType.Cardassian, "Cardassian Gul",
+                [Attribute.Control, Attribute.Reason, Attribute.Presence],
+                Skill.Command,
+                [
+                    "Starship Battle Tactics", "Persuasion", "Advanced Ground Tactics",
+                    "Border Agreements", "Leadership", "Diplomacy", "Rules of Engagement"
+                ],
+                [
+                    "Weaknesses of Starfleet", "Famous Cardassian Battles", "The Occupation of Bajor",
+                    "Political Jockeying", "Military Chest-Puffing", "Starship Protocols"
+                ],
+                [
+                    "One man's villain is another man's hero, Captain.",
+                    "Cardassia will be made whole. All that we have lost will be ours again. And anyone who stands in our way will be destroyed.",
+                    "They thought I was their enemy. They don't know what it is to be my enemy, but they will.",
+                    "Everything I have lost I will regain. It's only a matter of time.",
+                    "There was a time when the mere mention of my race inspired fear. And now… we're a beaten people. Afraid to fight back because we're afraid to lose what little is left.",
+                    "In this room you do not ask questions. I ask them, you answer. If I am not satisfied with your answers, you will die.",
+                    "This Bajoran obsession with alleged Cardassian improprieties during the occupation is really quite distasteful.",
+                    "What you call genocide, I call a day's work."
+                ], 0.5),
+
+            new SpecializationModel(Specialization.OrionPirate, NpcCharacterType.RogueRuffianMercenary, "Orion Pirate",
+                [Attribute.Daring, Attribute.Presence, Attribute.Control],
+                Skill.Security,
+                [
+                    "Starship Breach Tactics", "Tractor Beams", "Starship Disarming Techniques",
+                    "Valuation", "Ambushes and Traps", "Starship Detection Prevention"
+                ],
+                [
+                    "Generating Fear", "Slavery", "Hostage-Taking", "Negotiation", "Starship Cannibalization"
+                ],
+                [
+                    "Shh, I'm pirating. Let's go!",
+                    "I will destroy my enemies",
+                    "Opportunity Knows No Borders",
+                    "Adaptability is the Key to Survival",
+                    "Profit is the Great Equalizer",
+                    "Negotiation is an Art Form",
+                    "Connections Forge Destiny",
+                    "Independence is a Birthright",
+                    "Cunning Trumps Strength",
+                    "Cultural Richness in Diversity",
+                    "Freedom in Enterprise",
+                    "Resilience in the Face of Scrutiny"
+                ], 0.5, [Species.Orion]),
         ]
     }
 
