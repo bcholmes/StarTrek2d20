@@ -1,5 +1,5 @@
 
-interface PlanetaryFeature {
+export interface PlanetaryFeature {
     readonly localizedDescription: string;
 }
 

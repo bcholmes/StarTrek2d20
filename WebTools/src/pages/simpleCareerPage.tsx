@@ -3,7 +3,7 @@ import {Navigation} from '../common/navigator';
 import {Button} from '../components/button';
 import {TalentDescription} from '../components/talentDescription';
 import ValueInput from '../components/valueInputWithRandomOption';
-import { TalentsHelper, ToViewModel } from '../helpers/talents';
+import { TalentsHelper } from '../helpers/talents';
 import InstructionText from '../components/instructionText';
 import { Header } from '../components/header';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';

@@ -9,7 +9,7 @@ import { Rank } from "../helpers/ranks";
 import { Role } from "../helpers/roles";
 import { Skill } from "../helpers/skills";
 import { Species } from "../helpers/speciesEnum";
-import { ITalent, TalentViewModel } from "../helpers/talents";
+import { ITalent } from "../helpers/talents";
 import { Track } from "../helpers/trackEnum";
 import { EarlyOutlookModel } from "../helpers/upbringings";
 export const SET_CHARACTER = 'SET_CHARACTER';
