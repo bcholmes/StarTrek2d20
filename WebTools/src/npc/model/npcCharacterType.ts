@@ -31,7 +31,7 @@ export class NpcCharacterTypeModel {
                 return i18next.t('AlliedMilitaryType.name.cardassianUnion');
             case NpcCharacterType.Ferengi:
                 return i18next.t('Species.ferengi.name');
-            case NpcCharacterType.Ferengi:
+            case NpcCharacterType.RogueRuffianMercenary:
                 return "Rogues, Ruffians, and Mercenaries";
             default:
                 return this.name;

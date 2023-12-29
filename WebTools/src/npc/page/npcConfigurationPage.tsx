@@ -113,6 +113,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         let result = [ new DropDownElement(null, t('NpcConfigurationPage.option.anySpecialization'))];
         Specializations.instance.getSpecializations(this.state.selectedType.type)
             .filter(s => (s.type !== NpcCharacterType.Ferengi || this.props.era === Era.NextGeneration) && hasAnySource([Source.DS9, Source.AlphaQuadrant]))
+            .filter(s => this.state.selectedSpecies == null || s.species.length === 0 || s.species.indexOf(this.state.selectedSpecies) >= 0 )
             .forEach(s => result.push(new DropDownElement(s.id, s.name)));
         return result;
     }
@@ -132,12 +133,14 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         } else if (this.state.selectedType?.type === NpcCharacterType.RogueRuffianMercenary) {
             let items = [];
             Specializations.instance.getSpecializations(this.state.selectedType?.type).forEach(s => {
-                let speciesList = s.species?.length ? s.species : this.getStandardFederationSpeciesListAsTypes();
-                speciesList. forEach(s => {
-                    if (items.indexOf(s) < 0) {
-                        items.push(s);
-                    }
-                });
+                if (this.state.selectedSpecialization == null || this.state.selectedSpecialization?.id === s.id) {
+                    let speciesList = s.species?.length ? s.species : this.getStandardFederationSpeciesListAsTypes();
+                    speciesList. forEach(s => {
+                        if (items.indexOf(s) < 0) {
+                            items.push(s);
+                        }
+                    });
+                }
             });
             return items.map(s => SpeciesHelper.getSpeciesByType(s)).filter(s => s.eras.indexOf(this.props.era) >= 0);
         } else if (this.state.selectedType?.type === NpcCharacterType.KlingonDefenseForces) {
@@ -207,7 +210,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
             species = this.randomSpecies();
         }
         let character = NpcGenerator.createNpc(this.state.selectedNpcType, this.state.selectedType.type,
-            SpeciesHelper.getSpeciesByType(species), this.state.selectedSpecialization);
+            SpeciesHelper.getSpeciesByType(species), specialization);
 
         const value = marshaller.encodeNpc(character);
         window.open('/view?s=' + value, "_blank");
