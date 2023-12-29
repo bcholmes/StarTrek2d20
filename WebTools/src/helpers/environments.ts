@@ -199,8 +199,9 @@ class Environments {
 
     getEnvironmentSettings(type: CharacterType = CharacterType.Starfleet) {
         let result = [];
-        for (let environment in this._environments) {
-            result.push(this._environments[environment]);
+        let list = type === CharacterType.KlingonWarrior ? this._klingonEnvironments : this._environments;
+        for (let environment in list) {
+            result.push(list[environment]);
         }
 
         return result;

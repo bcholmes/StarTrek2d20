@@ -1043,6 +1043,8 @@ export class Character extends Construct {
         character.pronouns = this.pronouns;
         character.name = this.name;
         character.additionalTraits = this.additionalTraits;
+        character.lineage = this.lineage;
+        character.house = this.house;
         return character;
     }
 

@@ -138,6 +138,7 @@ export enum Species {
 
     // Continuing Missions
     ElAurian,
+    Yridian,
 
 
 

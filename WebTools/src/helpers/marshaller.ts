@@ -68,15 +68,7 @@ class Marshaller {
         }
 
         if (character.speciesStep) {
-            sheet["species"] = { "primary": Species[character.speciesStep.species]};
-
-            if (character.speciesStep.customSpeciesName && character.speciesStep.species === Species.Custom) {
-                sheet["species"]["customName"] = character.speciesStep.customSpeciesName;
-            }
-
-            if (character.speciesStep.attributes) {
-                sheet["species"]["stats"] = character.speciesStep.attributes.map(a => Attribute[a]);
-            }
+            sheet["species"] = this.toSpeciesJson(character);
         }
 
         if (character.role != null) {
@@ -214,26 +206,7 @@ class Marshaller {
         }
 
         if (character.speciesStep) {
-            sheet["species"] = { "primary": Species[character.speciesStep.species]};
-
-            if (character.speciesStep.customSpeciesName && character.speciesStep.species === Species.Custom) {
-                sheet["species"]["customName"] = character.speciesStep.customSpeciesName;
-            }
-
-            if (character.speciesStep.mixedSpecies != null) {
-                sheet["species"]["mixed"] = Species[character.speciesStep.mixedSpecies];
-            }
-            if (character.speciesStep.originalSpecies != null) {
-                sheet["species"]["original"] = Species[character.speciesStep.originalSpecies];
-            }
-
-            if (character.speciesStep.attributes) {
-                sheet["species"]["stats"] = character.speciesStep.attributes.map(a => Attribute[a]);
-            }
-
-            if (character.speciesStep.talent) {
-                sheet["species"]["talent"] = this.talentToJson(character.speciesStep.talent);
-            }
+            sheet["species"] = this.toSpeciesJson(character);
         }
 
         if (character.educationStep != null) {
@@ -333,6 +306,30 @@ class Marshaller {
             sheet["role"] = role;
         }
         return sheet;
+    }
+
+    toSpeciesJson(character: Character) {
+        let json = { "primary": Species[character.speciesStep.species]};
+
+        if (character.speciesStep.customSpeciesName && character.speciesStep.species === Species.Custom) {
+            json["customName"] = character.speciesStep.customSpeciesName;
+        }
+
+        if (character.speciesStep.mixedSpecies != null) {
+            json["mixed"] = Species[character.speciesStep.mixedSpecies];
+        }
+        if (character.speciesStep.originalSpecies != null) {
+            json["original"] = Species[character.speciesStep.originalSpecies];
+        }
+
+        if (character.speciesStep.attributes?.length) {
+            json["stats"] = character.speciesStep.attributes.map(a => Attribute[a]);
+        }
+
+        if (character.speciesStep.talent) {
+            json["talent"] = this.talentToJson(character.speciesStep.talent);
+        }
+        return json;
     }
 
     toTalentList(talents: SelectedTalent[] ) {

@@ -1767,7 +1767,19 @@ class _Species {
             [TalentsHelper.getTalent("Listener"), TalentsHelper.getTalent("Wisdom of Years"), TalentsHelper.getTalent("The Long View"), TalentsHelper.getTalent("Temporal Awareness"), TalentsHelper.getTalent("Cultural Flexibility")],
             "",
             []),
-
+        [Species.Yridian]: new SpeciesModel(
+            Species.Yridian,
+            "Yridian",
+            [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Source.ContinuingMissions],
+            [],
+            [Attribute.Insight, Attribute.Presence, Attribute.Reason],
+            "Yridian",
+            "",
+            "",
+            [TalentsHelper.getTalent("Listener"), TalentsHelper.getTalent("Wisdom of Years")],
+            "",
+            []),
 
 
 

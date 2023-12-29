@@ -30,6 +30,7 @@ export enum Specialization {
     RomulanTalShiar,
 
     OrionPirate,
+    InformationBroker,
 }
 
 export const allSpecializations = () => {

@@ -23,8 +23,6 @@ import { addCharacterTalent, setCharacterFinishingTouches, setCharacterValue, St
 
 const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character})  => {
 
-    const [talentSelected, setTalentSelected] = useState(undefined);
-
     const randomValue = () => {
         let done = false;
         while (!done) {
@@ -38,7 +36,7 @@ const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character
 
     const filterTalentList = () => {
         return TalentsHelper.getAllAvailableTalentsForCharacter(character).filter(
-            t => !character.hasTalent(t.name) || (talentSelected != null && t.name === talentSelected) || t.rank > 1);
+            t => !character.hasTalent(t.name) || (character?.finishingStep?.talent != null && t.name === character?.finishingStep?.talent?.talent) || t.rank > 1);
     }
 
     const navigateToNextPage = () => {
@@ -48,7 +46,7 @@ const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character
             Dialog.show(t('SoloFinishingTouchesPage.errorDisciplines', { count: disciplineCount}));
         } else if (!character.finishingStep?.value == null) {
             Dialog.show(t('SoloFinishingTouchesPage.errorValue'));
-        } else if (character.type === CharacterType.KlingonWarrior && talentSelected == null) {
+        } else if (character.type === CharacterType.KlingonWarrior && character?.finishingStep?.talent == null) {
             Dialog.show(t('SoloFinishingTouchesPage.errorTalent'));
         } else if (character.hasTalent(TALENT_NAME_BORG_IMPLANTS) ||
             character.hasTalent(TALENT_NAME_EXPANDED_PROGRAM) ||
@@ -86,7 +84,6 @@ const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character
             <SingleTalentSelectionList talents={talents} construct={character}
                 onSelection={talent => {
                     store.dispatch(addCharacterTalent(talent, StepContext.FinishingTouches));
-                    setTalentSelected(talent);
                 } } />
         </div>)
         : undefined;

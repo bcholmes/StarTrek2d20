@@ -13,7 +13,7 @@ import { NameGenerator } from "../nameGenerator";
 import { NpcType, NpcTypes } from "./npcType";
 import { SpecializationModel, Specializations } from "./specializations";
 import { NpcCharacterType } from "./npcCharacterType";
-import { hasAnySource } from "../../state/contextFunctions";
+import { hasAnySource, hasSource } from "../../state/contextFunctions";
 import { Source } from "../../helpers/sources";
 import { AlliedMilitaryType } from "../../helpers/alliedMilitary";
 import AllyHelper from "../../helpers/alliedMilitary";
@@ -120,6 +120,10 @@ const careerSkills: { [type: number ]: string[] } = {
         "Plots and Intrigue",
         "Tal Shiar Conspiracy Theories",
         "Tests of Loyalty"
+    ],
+    [ NpcCharacterType.RogueRuffianMercenary ] : [
+        "The Underworld", "Safety Protocols", "Law Enforcement Policies and Practices", "Negotiation",
+        "Bribery", "Underworld Contacts", "Surveillance Countermeasures", "Jamming Devices"
     ]
 }
 
@@ -156,6 +160,23 @@ const typeSpecificValues: { [type : number ]: string[]} = {
     [ NpcCharacterType.Ferengi ] : [
     ],
     [ NpcCharacterType.RomulanMilitary ] : [
+    ],
+    [ NpcCharacterType.RogueRuffianMercenary ] : [
+        "To live outside the law, you must be honest.",
+        "I know what I bring to the table so trust me when I say that I am not afraid to eat alone.",
+        "You're only as good as your last envelope.",
+        "Suffice it to say that if you ever tell anyone about our arrangement, we'll never work together again.",
+        "No questions. No answers. That's the business we're in. You just accept it and move on.",
+        "I never walk into a place I don't know how to walk out of.",
+        "If it's going to be a amateur night, the price goes up, and I want it upfront.",
+        "Don't let yourself get attached to anything you are not willing to walk out on in 30 seconds flat if you feel the heat around the corner.",
+        "We Just Got Made.",
+        "Trust your gut. Something doesn't feel right, it's not right.",
+        "I say what I mean, and I do what I say.",
+        "He knew the risks, he didn't have to be there. It rains... you get wet.",
+        "All I am is what I'm going after.",
+        "If you're good at something, never do it for free.",
+        "Let me ask you something. If the rule you followed brought you to this, of what use was the rule?"
     ]
 }
 
@@ -399,11 +420,22 @@ export class NpcGenerator {
         }
         NpcGenerator.assignCharacterType(character, characterType, specialization);
 
-        let {name, pronouns} = NameGenerator.instance.createName(species.id === Species.KlingonQuchHa ? SpeciesHelper.getSpeciesByType(Species.Klingon) : species);
+        character.jobAssignment = specialization.name;
+        character.speciesStep = new SpeciesStep(species.id);
+        if (species.id === Species.CyberneticallyEnhanced) {
+            let originalSpecies = SpeciesHelper.generateSpecies();
+            character.speciesStep.originalSpecies = originalSpecies;
+        }
+        let nameSpecies = species;
+        if (character.speciesStep?.originalSpecies != null) {
+            nameSpecies = SpeciesHelper.getSpeciesByType(character.speciesStep.originalSpecies);
+        } else if (nameSpecies.id === Species.KlingonQuchHa) {
+            nameSpecies = SpeciesHelper.getSpeciesByType(Species.Klingon);
+        }
+
+        let {name, pronouns} = NameGenerator.instance.createName(nameSpecies);
         character.name = name;
         character.pronouns = pronouns;
-        character.speciesStep = new SpeciesStep(species.id);
-        character.jobAssignment = specialization.name;
 
         NpcGenerator.assignAttributes(npcType, character, species, specialization);
 
@@ -484,6 +516,8 @@ export class NpcGenerator {
 
             if (i === 0 && species.id === Species.Klingon && hasAnySource([Source.KlingonCore, Source.BetaQuadrant])) {
                 character.addTalent(ToViewModel(TalentsHelper.getTalent("Brak'lul"), 1, character.type));
+            } else if (i === 0 && species.id === Species.CyberneticallyEnhanced && hasSource(Source.SciencesDivision)) {
+                character.addTalent(ToViewModel(TalentsHelper.getTalent("Neural Interface"), 1, character.type));
             } else {
                 while (!done) {
                     let talentList = TalentsHelper.getAllAvailableTalentsForCharacter(character);

@@ -578,7 +578,24 @@ export class Specializations {
                     "Cultural Richness in Diversity",
                     "Freedom in Enterprise",
                     "Resilience in the Face of Scrutiny"
-                ], 0.5, [Species.Orion]),
+                ], 0, [Species.Orion]),
+            new SpecializationModel(Specialization.InformationBroker, NpcCharacterType.RogueRuffianMercenary, "Information Broker",
+                [Attribute.Control, Attribute.Insight, Attribute.Reason],
+                Skill.Security,
+                [
+                    "Hacking", "Electronic Security Systems", "Cryptography",
+                    "Intrusion Counter-Measures", "Information Peddling"
+                ],
+                [
+                    "Negotiation", "The DarkNet", "Cybernetics", "Information Storage Systems",
+                    "Tracer Evasion Techniques", "Shady Dealings", "Stealth", "Data Tapping Technology",
+                    "Dive Bars"
+                ],
+                [
+                    "I hacked the Gibson",
+                    "Mess with the best; die like the rest."
+                ], 0, [Species.Yridian, Species.Bynar, Species.CyberneticallyEnhanced]),
+
         ]
     }
 

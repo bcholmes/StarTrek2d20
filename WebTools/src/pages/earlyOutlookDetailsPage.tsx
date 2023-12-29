@@ -5,7 +5,7 @@ import {AttributeView} from '../components/attribute';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import {CheckBox} from '../components/checkBox';
-import { TalentsHelper, TalentViewModel } from '../helpers/talents';
+import { TALENT_NAME_BRAK_LUL, TalentsHelper, TalentViewModel, ToViewModel } from '../helpers/talents';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
 import SingleTalentSelectionList from '../components/singleTalentSelectionList';
 import InstructionText from '../components/instructionText';
@@ -22,6 +22,7 @@ import D20IconButton from '../solo/component/d20IconButton';
 import { EarlyOutlookDiscplineController } from '../components/earlyOutlookControllers';
 import DisciplineListComponent from '../components/disciplineListComponent';
 import { CharacterType } from '../common/characterType';
+import { Species } from '../helpers/speciesEnum';
 
 const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
@@ -66,8 +67,13 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
     }
 
     const filterTalentList = () => {
-        return TalentsHelper.getAllAvailableTalentsForCharacter(character).filter(
-            t => !character.hasTalent(t.name) || (character.upbringingStep.talent != null && t.name === character.upbringingStep.talent.talent) || t.rank > 1);
+        if (character.type === CharacterType.KlingonWarrior && character.speciesStep?.species === Species.Klingon) {
+            return [ ToViewModel( TalentsHelper.getTalent(TALENT_NAME_BRAK_LUL), 1, character.type ) ];
+        } else {
+            return TalentsHelper.getAllAvailableTalentsForCharacter(character).filter(
+                t => !character.hasTalent(t.name) || (character.upbringingStep.talent != null && t.name === character.upbringingStep.talent.talent) || t.rank > 1);
+        }
+
     }
 
     const attributes = character.upbringingStep?.acceptedUpbringing

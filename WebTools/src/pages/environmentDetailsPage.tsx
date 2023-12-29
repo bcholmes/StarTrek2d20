@@ -100,7 +100,9 @@ class SoloEnvironmentDisciplineController implements IDisciplineController {
 const EnvironmentDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
     const { t } = useTranslation();
 
-    const environment = EnvironmentsHelper.getEnvironment(character.environmentStep?.environment, CharacterType.Starfleet);
+    const environment = EnvironmentsHelper.getEnvironment(character.environmentStep?.environment, character.stereotype === Stereotype.SoloCharacter
+        ? CharacterType.Starfleet
+        : character.type);
     let attributes = environment.attributes;
     if (environment.id === Environment.Homeworld) {
         let species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);

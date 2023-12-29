@@ -4,6 +4,10 @@ import { Species } from "../helpers/speciesEnum";
 
 const names = [
     {
+        "species": "Bynar",
+        "names": require('./names-bynar.json')
+    },
+    {
         "species": "Human",
         "names": require('./names-human.json')
     },
@@ -26,6 +30,10 @@ const names = [
     {
         "species": "Vulcan",
         "names": require('./names-vulcan.json')
+    },
+    {
+        "species": "Yridian",
+        "names": require('./names-yridian.json')
     },
 
 ];

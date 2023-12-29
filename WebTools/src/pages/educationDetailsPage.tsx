@@ -25,11 +25,14 @@ import { EducationAttributeController, EducationPrimaryDisciplineController, Edu
 import AttributeListComponent from '../components/attributeListComponent';
 import DisciplineListComponent from '../components/disciplineListComponent';
 import { PageIdentity } from './pageIdentity';
+import { Stereotype } from '../common/construct';
 
 const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const { t } = useTranslation();
-    const track = TracksHelper.instance.getSoloTrack(character.educationStep?.track);
+    const track = character.stereotype === Stereotype.SoloCharacter
+        ? TracksHelper.instance.getSoloTrack(character.educationStep?.track)
+        : TracksHelper.instance.getTrack(character.educationStep?.track, character.type);
     const attributeController = new EducationAttributeController(character, track);
     const primaryDisciplineController = new EducationPrimaryDisciplineController(character, track);
     const secondaryDisciplineController = new EducationSecondaryDisciplineController(character, track);

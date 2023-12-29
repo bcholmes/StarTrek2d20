@@ -25,6 +25,7 @@ export const TALENT_NAME_BORG_IMPLANTS = "Borg Implants";
 export const TALENT_NAME_EXPANDED_PROGRAM = "Expanded Program";
 export const TALENT_NAME_VISIT_EVERY_STAR = "Visit Every Star";
 export const TALENT_NAME_WISDOM_OF_YEARS = "Wisdom of Years";
+export const TALENT_NAME_BRAK_LUL = "Brak’lul";
 
 export const CHALLENGE_DICE_NOTATION = "[D]";
 
@@ -2441,6 +2442,18 @@ export class Talents {
                 [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.ElAurian, true)],
                 1,
                 "El-Aurian"),
+            new TalentModel(
+                "Mind for Information",
+                "You have a gift for processing information and retaining it. When you attempt a Task to organize information or recall it, you may add a bonus d20 to your dice pool.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Yridian, true)],
+                1,
+                "Yridian"),
+            new TalentModel(
+                "Scavenger Instinct",
+                "Your Yridian evolutionary ancestors were scavengers, which gives you an instinct for searching, as well as furtive skills such as spying, burglary, and smuggling. When you attempt a Task where non-detection or searching is an asset, and you add a d20 to your dice pool by adding to Threat, you may re-roll two d20s.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Yridian, false)],
+                1,
+                "Yridian"),
 
 
 
@@ -3570,6 +3583,12 @@ export class Talents {
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Orion)],
             1,
             "Orion", true),
+        new TalentModel(
+            "Devious and Untrustworthy",
+            "If Yridians are involved, things may get treacherous. When a Yridian free agent first becomes involved in a Mission, roll 3[D]. For each point rolled, add one to the Threat pool. This effect may only apply once regardless of how many other Yridian free agents are encountered during the Mission.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(false, Species.Yridian)],
+            1,
+            "Yridian", true),
 
     ];
 
