@@ -12,6 +12,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.231230</b>
+                <ul>
+                    <li>Continuing with behind-the-scenes work of minor streamlining and clean-up of the creator in general.</li>
+                    <li>Again, more bits of work on the NPC generator.</li>
+                </ul>
                 <b>v1.231229</b>
                 <ul>
                     <li>Another bug was report by ELH, related to Klingon characters, and while testing that out, I noticed a few more Klingon-related glitches.</li>

@@ -26,6 +26,8 @@ import AttributeListComponent from '../components/attributeListComponent';
 import DisciplineListComponent from '../components/disciplineListComponent';
 import { PageIdentity } from './pageIdentity';
 import { Stereotype } from '../common/construct';
+import D20IconButton from '../solo/component/d20IconButton';
+import { FocusRandomTableWithHints } from '../solo/table/focusRandomTable';
 
 const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
@@ -40,6 +42,18 @@ const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
     const randomValue = () => {
         let value = ValueRandomTable(character.speciesStep?.species, character.educationStep?.primaryDiscipline);
         onValueChanged(value);
+    }
+
+
+    const selectRandomFocus = (index: number) => {
+        let done = false;
+        while (!done) {
+            let focus = FocusRandomTableWithHints(character.educationStep?.primaryDiscipline, track.focusSuggestions);
+            if (character.focuses.indexOf(focus) < 0) {
+                done = true;
+                store.dispatch(setCharacterFocus(focus, StepContext.Education, index));
+            }
+        }
     }
 
     const onValueChanged = (value: string) => {
@@ -62,16 +76,33 @@ const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
             <Header level={2}>FOCUS</Header>
             <ReactMarkdown>{training}</ReactMarkdown>
 
-            <InputFieldAndLabel id="focus1" labelName={t('Construct.other.focus1')}
-                value={character.educationStep?.focuses[0] ?? ""}
-                onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 0))} />
-            <InputFieldAndLabel id="focus2" labelName={t('Construct.other.focus2')}
-                value={character.educationStep?.focuses[1] ?? ""}
-                onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 1))} />
-            <InputFieldAndLabel id="focus3" labelName={t('Construct.other.focus3')}
-                value={character.educationStep?.focuses[2] ?? ""}
-                onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 2))}
-                disabled={track.id === Track.EnlistedSecurityTraining}/>
+            <div className="d-flex justify-content-between align-items-center flex-wrap">
+                <InputFieldAndLabel id="focus1" labelName={t('Construct.other.focus1')}
+                    value={character.educationStep?.focuses[0] || ""} className="mt-1"
+                    onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 0))} />
+                <div style={{ flexShrink: 0 }} className="mt-1">
+                    <D20IconButton onClick={() => selectRandomFocus(0)}/>
+                </div>
+            </div>
+            <div className="d-flex justify-content-between align-items-center flex-wrap">
+                <InputFieldAndLabel id="focus2" labelName={t('Construct.other.focus2')}
+                    value={character.educationStep?.focuses[1] || ""} className="mt-1"
+                    onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 1))} />
+                <div style={{ flexShrink: 0 }} className="mt-1">
+                    <D20IconButton onClick={() => selectRandomFocus(1)}/>
+                </div>
+            </div>
+            <div className="d-flex justify-content-between align-items-center flex-wrap">
+                <InputFieldAndLabel id="focus3" labelName={t('Construct.other.focus3')}
+                    value={character.educationStep?.focuses[2] || ""} className="mt-1"
+                    onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 2))}
+                    disabled={track.id === Track.EnlistedSecurityTraining} />
+                {track.id === Track.EnlistedSecurityTraining
+                    ? undefined :
+                    (<div style={{ flexShrink: 0 }} className="mt-1">
+                        <D20IconButton onClick={() => selectRandomFocus(2)}/>
+                    </div>)}
+            </div>
 
             <div className="text-white mt-2"><b>Suggestions: </b> {track.focusSuggestions.join(", ")}</div>
         </div>);
