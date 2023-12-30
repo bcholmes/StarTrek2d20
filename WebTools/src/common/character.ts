@@ -547,6 +547,10 @@ export class Character extends Construct {
             result.push("Ushaan-tor ice pick");
         }
 
+        if (this.npcGenerationStep?.specialization === Specialization.OrionPirate) {
+            result.push("Orion Multi-Key");
+        }
+
         return result;
     }
 
@@ -644,10 +648,12 @@ export class Character extends Construct {
         } else if (this.isBajoranMilitia() || this.isCardassianUnion()) {
             result.push(PersonalWeapons.instance.phaser2);
         } else if (this.age.isAdult) {
-            if (this.isKlingon()) {
+            if (this.npcGenerationStep?.specialization === Specialization.FerengiDaiMon) {
+                result.push(PersonalWeapons.instance.phaser1);
+                result.push(PersonalWeapons.instance.energyWhip);
+            } else if (this.isKlingon()) {
                 result.push(PersonalWeapons.instance.dkTagh);
-            }
-            if (this.type !== CharacterType.Child && this.type !== CharacterType.Civilian) {
+            } else if (this.type !== CharacterType.Child && this.type !== CharacterType.Civilian) {
                 result.push(PersonalWeapons.instance.disruptorPistol);
             }
         }

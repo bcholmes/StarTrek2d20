@@ -28,6 +28,10 @@ const names = [
         "names": require('./names-nausicaan.json')
     },
     {
+        "species": "Orion",
+        "names": require('./names-orion.json')
+    },
+    {
         "species": "Reman",
         "names": require('./names-reman.json')
     },

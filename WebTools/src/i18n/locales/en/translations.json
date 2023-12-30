@@ -1593,6 +1593,10 @@
     "Weapon.common.name": "Name/Type",
     "Weapon.common.qualities": "Qualities",
 
+    "Weapon.personal.dagger.name": "Dagger",
+
+    "Weapon.personal.energyWhip.name": "Energy Whip",
+
     "Weapon.personal.phaser1.name": "Phaser type-1",
 
     "Weapon.personal.phaser2.name": "Phaser type-2",

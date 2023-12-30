@@ -252,17 +252,21 @@ class TalentPrerequisite implements IConstructPrerequisite<Construct> {
 }
 
 class FocusPrerequisite implements IConstructPrerequisite<Character> {
-    private focus: string;
+    private focuses: string[];
 
-    constructor(focus: string) {
-        this.focus = focus;
+    constructor(...focuses: string[]) {
+        this.focuses = focuses;
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return c.focuses.indexOf(this.focus) > -1;
+        return c.focuses.filter(f => this.focuses.indexOf(f) >= 0).length > 0;
     }
     describe(): string {
-        return "Requires \"" + this.focus + "\" Focus";
+        if (this.focuses.length === 1) {
+            return "Requires \"" + this.focuses[0] + "\" Focus";
+        } else {
+            return "Requires one of the following focuses: \"" + this.focuses.join("\", \"") + "\"";
+        }
     }
 }
 
@@ -3590,7 +3594,7 @@ export class Talents {
             "Orion", true),
         new TalentModel(
             "Provocative",
-            "When performing a Task using Presence + Command, they character may spend a Threat to gain some small but useful secret from their target, whatever the Task’s result.",
+            "When performing a Task using Presence + Command, the character may spend a Threat to gain some small but useful secret from their target, whatever the Task’s result.",
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Orion)],
             1,
             "Orion", true),
@@ -3600,8 +3604,6 @@ export class Talents {
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(false, Species.Yridian)],
             1,
             "Yridian", true),
-
-
         new TalentModel(
             "Brute Force",
             "The character adds the Vicious 1 Effect to their Unarmed Strike, and removes the Non-lethal Quality.",
@@ -3668,7 +3670,58 @@ export class Talents {
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Admiral)],
             1,
             "General", true),
-
+        new TalentModel(
+            "Sector Specialist",
+            "The character is an expert in a specific sector of space. All Tasks involving the mapping of that sector, location of bodies, navigational hazards, etc. have their Difficulty reduced by 1. But this reliance on their own knowledge makes anything that is different from what they know often go unnoticed as they assume they know better, and the Complication range of these Tasks is increased by 1.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Scientist, Specialization.StarfleetScientist),
+            new FocusPrerequisite("Astrometrics", "Stellar Cartography")],
+            1,
+            "General", true),
+        new TalentModel(
+            "Specialist Subject: Exploring Life",
+            "A character that chooses this has an interest in Biology and Medicine, but no formal medical training. However, they have a great deal of knowledge about plant and animal species and how they may help or hinder a humanoid. Taking this increases the explorer’s Medicine Discipline by 1.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Scientist, Specialization.StarfleetScientist),
+            new FocusPrerequisite("Biology", "Xenobiology", "Evolutionary Biology")],
+            1,
+            "General", true),
+        new TalentModel(
+            "Specialist Subject: Trailblazer",
+            "The character has a wanderlust that drives them to be the first to see a new world, or be the first to explore a new sector of space. This can bring notoriety when they discover a new civilization or the remains of an ancient one, but the dangers of being on your own in the unknown mean many scientists risk their lives. A scientist with this choice may increase their Conn or Security Discipline by 1.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Scientist, Specialization.StarfleetScientist)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Specialist Subject: Academic Explorer",
+            "These scientists have been more formerly trained to accurately chart the unknown. Choosing this allows a Focus of one of the following: Stellar Cartography, Planetary Geography, or Geomorphology.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Scientist, Specialization.StarfleetScientist)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Specialist Subject: Hard Science",
+            "The scientist gains a Focus based on a single scientific field of study, e.g. Astrophysics, Subspace Theory, Quantum Mechanics.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Scientist, Specialization.StarfleetScientist),
+            new FocusPrerequisite("Astrophysics", "Subspace Theory", "Physics", "Geology", "Quantum Mechanics", "Particle Physics", "Warp Theory"), new CareersPrerequisite(Career.Experienced, Career.Veteran)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Specialist Subject: Research Lead",
+            "The scientist has a broad background in the sciences and have honed their people skills to be able to lead other researchers in their projects. The professor does not gain a Focus; rather their Command Discipline is increased by 1.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Scientist, Specialization.StarfleetScientist), new CareersPrerequisite(Career.Experienced, Career.Veteran)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Specialist Subject: Social Scientist",
+            "A social scientist is trained in how intelligent beings interact with the world around them in fields such as Anthropology, Geography, and Linguistics. Like the Hard Science choice above, the choices in Focus should also have a specific world or culture attached to them, e.g. History of Andor, Vulcan Linguistics, or Tellarite Law.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Scientist, Specialization.StarfleetScientist), ,
+            new FocusPrerequisite("Anthropology", "Geography", "Linguistics", "Sociology", "History"), new CareersPrerequisite(Career.Experienced, Career.Veteran)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Armchair Analysis",
+            "When the counselor uses their Insight to gain psychological information about someone with whom they are in dialogue, they can reroll a single d20.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Counselor)],
+            1,
+            "General", true),
     ];
 
     getTalents() {

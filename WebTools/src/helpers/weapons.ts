@@ -629,6 +629,10 @@ export class PersonalWeapons {
         return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.disruptor.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.ENERGY);
     }
 
+    get energyWhip() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.energyWhip.name'), 3, [new WeaponQuality(Quality.Intense)], [new WeaponQuality(Quality.NonLethal)], WeaponType.ENERGY);
+    }
+
     static get instance() {
         if (PersonalWeapons._instance == null) {
             PersonalWeapons._instance = new PersonalWeapons();

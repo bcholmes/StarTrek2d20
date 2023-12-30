@@ -11,7 +11,7 @@ export enum Specialization {
     HangarDeck,
     Conn,
     ScienceTech,
-    Scientist,
+    StarfleetScientist,
     Engineer,
     IntelligenceOfficer,
 
@@ -28,6 +28,8 @@ export enum Specialization {
 
     RomulanCenturion,
     RomulanTalShiar,
+
+    Scientist,
 
     OrionPirate,
     InformationBroker,
@@ -47,7 +49,7 @@ export const allSpecializations = () => {
         Specialization.HangarDeck,
         Specialization.Conn,
         Specialization.ScienceTech,
-        Specialization.Scientist,
+        Specialization.StarfleetScientist,
         Specialization.Engineer,
         Specialization.IntelligenceOfficer,
 
@@ -64,6 +66,8 @@ export const allSpecializations = () => {
 
         Specialization.RomulanCenturion,
         Specialization.RomulanTalShiar,
+
+        Specialization.Scientist,
 
         Specialization.OrionPirate,
         Specialization.InformationBroker,

@@ -10,6 +10,7 @@ import store from '../state/store';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { makeKey } from '../common/translationKey';
 import { getPageTitle } from './pageHeader';
+import { Stereotype } from '../common/construct';
 
 export enum HistoryType {
     Character, SoloCharacter, Starship
@@ -29,7 +30,7 @@ class History extends React.Component<IHistoryProperties, {}> {
     renderHistoryByType() {
         if (this.props.type === HistoryType.Starship) {
             return this.renderStarshipHistory();
-        } else if (this.props.type === HistoryType.SoloCharacter) {
+        } else if (this.props.type === HistoryType.SoloCharacter || character?.stereotype === Stereotype.SoloCharacter) {
             return this.renderSoloCharacterHistory();
         } else {
             return this.renderCharacterHistory();
@@ -83,7 +84,7 @@ class History extends React.Component<IHistoryProperties, {}> {
             {character?.environmentStep ? this.renderPageTitleLink(PageIdentity.SoloEnvironment) : undefined}
             {character?.upbringingStep ? this.renderPageTitleLink(PageIdentity.SoloEarlyOutlook) : undefined}
             {character?.educationStep ? this.renderPageTitleLink(PageIdentity.SoloEducationType) : undefined}
-            {character?.careerStep != null ? this.renderPageTitleLink(PageIdentity.SoloCareerLength) : undefined}
+            {character?.careerStep != null ? this.renderPageTitleLink(PageIdentity.CareerLength) : undefined}
             {character?.careerEvents?.length > 0 ? this.renderPageTitleLink(PageIdentity.SoloCareerEvent1) : undefined}
             {character?.careerEvents?.length > 1 ? this.renderPageTitleLink(PageIdentity.SoloCareerEvent2) : undefined}
             {character?.finishingStep ? this.renderPageTitleLink(PageIdentity.SoloFinishingTouches) : undefined}

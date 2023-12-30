@@ -81,7 +81,6 @@ export enum PageIdentity {
     SoloEducationType,
     SoloEducationPage,
     SoloEducationDetailsPage,
-    SoloCareerLength,
     SoloCareerLengthDetails,
     SoloCareerEvent1,
     SoloCareerEventDetails1,

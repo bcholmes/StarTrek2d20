@@ -40,7 +40,7 @@ const SoloEducationDetailsPage: React.FC<ICharacterProperties> = ({character}) =
         } else if (!character.educationStep?.value) {
             Dialog.show(t("SoloEducationDetailsPage.errorValue"));
         } else {
-            Navigation.navigateToPage(PageIdentity.SoloCareerLength);
+            Navigation.navigateToPage(PageIdentity.CareerLength);
         }
     }
 

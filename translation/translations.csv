@@ -1378,6 +1378,8 @@ Value.careerLength.veteran.text,"The character receives a Value, which must refl
 Value.final.text,"The character receives one final Value. This might reflect the Career Events rolled in Step Six, or it may represent some other element of the character. This Value might be a relationship, connecting the character to another character in the crew, or to another organization or culture in some way.","Der Charakter erhält eine letzte Überzeugung. Diese kann mit einem der Karriereereignisse aus Schritt 6 zusammenhängen, aber auch völlig frei gewählt sein. Die Überzeugung kann auch eine Beziehung sein, die den Charakter mit einem anderen Charakter in der Crew, einer Organisation oder einer Kultur verbindet.",,"Le personnage reçoit une valeur finale. Cela peut refléter les événements de carrière lancés à l'étape six, ou cela peut représenter un autre élément du personnage. Cette valeur peut être une relation, reliant le personnage à un autre personnage de l'équipage, ou à une autre organisation ou culture d'une manière ou d'une autre."
 Weapon.common.name,Name/Type,Name/Typ,,Nom/Type
 Weapon.common.qualities,Qualities,Eigenschaften,,Qualités
+Weapon.personal.dagger.name,Dagger,,,
+Weapon.personal.energyWhip.name,Energy Whip,,,
 Weapon.personal.phaser1.name,Phaser type-1,"Phaser, Typ 1",,Phaser type-1
 Weapon.personal.phaser2.name,Phaser type-2,"Phaser, Typ 2",,Phaser type-2
 Weapon.personal.strike.name,Unarmed Strike,Unbewaffneter Angriff,,Frappe à mains nues

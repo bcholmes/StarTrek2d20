@@ -53,16 +53,20 @@ const CareerLengthPage: React.FC<ICharacterProperties> = ({character}) => {
         }
     }
 
-    const lengths = randomLength != null
-        ? toTableRow(CareersHelper.instance.getCareer(randomLength, character), 0)
-        : CareersHelper.instance.getCareers(character)
-            .filter(c => !character.hasTalent(ADVANCED_TEAM_DYNAMICS) || c.id !== Career.Young )
-            .map((c, i) => toTableRow(c, i));
+    const lengths = character.stereotype === Stereotype.SoloCharacter
+        ? (randomLength != null
+            ? toTableRow(CareersHelper.instance.getSoloCareerLength(randomLength), 0)
+            : CareersHelper.instance.getSoloCareerLengths().map((c, i) => toTableRow(c, i)))
+        : (randomLength != null
+            ? toTableRow(CareersHelper.instance.getCareer(randomLength, character), 0)
+            : CareersHelper.instance.getCareers(character)
+                .filter(c => !character.hasTalent(ADVANCED_TEAM_DYNAMICS) || c.id !== Career.Young )
+                .map((c, i) => toTableRow(c, i)));
 
     let instructionKey = "CareerLength.instruction";
     if (character.type === CharacterType.KlingonWarrior) {
         instructionKey = "CareerLength.instruction.klingon";
-    } else if (character.type === CharacterType.Civilian) {
+    } else if (character.type === CharacterType.Civilian || character.type === CharacterType.AmbassadorDiplomat) {
         instructionKey = "CareerLength.instruction.civilian";
     }
 
@@ -71,7 +75,7 @@ const CareerLengthPage: React.FC<ICharacterProperties> = ({character}) => {
     return (
         <div className="page container ml-0">
             {character.stereotype === Stereotype.SoloCharacter
-                ? (<SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloCareerLength}/>)
+                ? (<SoloCharacterBreadcrumbs pageIdentity={PageIdentity.CareerLength}/>)
                 : (<CharacterCreationBreadcrumbs />)}
 
             <Header>{t('Page.title.soloCareerLength')}</Header>

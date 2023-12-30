@@ -498,6 +498,9 @@ export class NpcGenerator {
             case NpcCharacterType.RogueRuffianMercenary:
                 character.type = CharacterType.Civilian;
                 break;
+            case NpcCharacterType.Civilian:
+                character.type = CharacterType.Civilian;
+                break;
             case NpcCharacterType.Ferengi:
                 if (specialization.id === Specialization.FerengiMerchant) {
                     character.type = CharacterType.Civilian;

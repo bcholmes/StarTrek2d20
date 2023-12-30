@@ -55,10 +55,10 @@ const SoloCharacterBreadcrumbs: React.FC<ISoloCharacterBreadcrumbProperties> = (
     }
 
     const renderCareerLength = () => {
-        if ((character?.careerEvents?.length && pageIdentity === PageIdentity.SoloCareerLengthDetails) || pageIdentity === PageIdentity.SoloCareerLength) {
+        if ((character?.careerEvents?.length && pageIdentity === PageIdentity.SoloCareerLengthDetails) || pageIdentity === PageIdentity.CareerLength) {
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloCareerLength')}</li>);
         } else if (character?.careerStep != null) {
-            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloCareerLength)}>{t('Page.title.soloCareerLength')}</a></li>);
+            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.CareerLength)}>{t('Page.title.soloCareerLength')}</a></li>);
         } else {
             return undefined;
         }
