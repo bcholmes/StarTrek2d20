@@ -1780,6 +1780,36 @@ class _Species {
             [TalentsHelper.getTalent("Listener"), TalentsHelper.getTalent("Wisdom of Years")],
             "",
             []),
+        [Species.Hupyrian]: new SpeciesModel(
+            Species.Hupyrian,
+            "Hupyrian",
+            [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Source.ContinuingMissions],
+            [],
+            [Attribute.Insight, Attribute.Presence, Attribute.Reason],
+            "Hupyrian",
+            "",
+            "",
+            [TalentsHelper.getTalent("Vow of Silence"), TalentsHelper.getTalent("Dolbargy Healing Trance")],
+            "",
+            []),
+
+
+
+
+        [Species.Nausicaan]: new SpeciesModel(
+            Species.Nausicaan,
+            "Nausicaan",
+            [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Source.None],
+            [],
+            [Attribute.Daring, Attribute.Fitness, Attribute.Presence],
+            "Nausicaan",
+            "",
+            "",
+            [TalentsHelper.getTalent("Listener"), TalentsHelper.getTalent("Wisdom of Years")],
+            "",
+            []),
 
 
 

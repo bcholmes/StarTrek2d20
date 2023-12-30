@@ -31,6 +31,8 @@ export enum Specialization {
 
     OrionPirate,
     InformationBroker,
+    BruteForHire,
+    Bodyguard,
 }
 
 export const allSpecializations = () => {
@@ -58,11 +60,15 @@ export const allSpecializations = () => {
         Specialization.FerengiDaiMon,
 
         Specialization.CardassianSoldier,
+        Specialization.CardassianGul,
 
         Specialization.RomulanCenturion,
         Specialization.RomulanTalShiar,
 
         Specialization.OrionPirate,
+        Specialization.InformationBroker,
+        Specialization.BruteForHire,
+        Specialization.Bodyguard,
     ]
 }
 

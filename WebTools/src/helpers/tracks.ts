@@ -256,7 +256,7 @@ export class TracksHelper {
             "You didn’t have any formal training. Rather, you learned to fight out of necessity, to defend your home from aggressors and invaders, or to try and liberate it from those who were oppressing your people. Frontier colonies, worlds where society has collapsed into feuding factions, and conquered planets often produce these kinds of fighters.",
             [Skill.Security],
             [Skill.Command, Skill.Conn,Skill.Engineering, Skill.Medicine, Skill.Science],
-            ["Composure, Inspiration", "Psychological Warfare", "Hand Phasers", "Disruptors", "Hand-to-Hand Combat", "Infiltration", "Disguise", "Interrogation", "Demolition"],
+            ["Composure", "Inspiration", "Psychological Warfare", "Hand Phasers", "Disruptors", "Hand-to-Hand Combat", "Infiltration", "Disguise", "Interrogation", "Demolition"],
             new AttributeImprovementRule(ImprovementRuleType.AT_LEAST_ONE, Attribute.Daring, Attribute.Fitness)
         ),
     ];

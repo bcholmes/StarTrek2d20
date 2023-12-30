@@ -219,6 +219,7 @@
     "SoloEducationDetailsPage.errorDisciplines": "Please select one primary and two secondary disciplines.",
     "SoloEducationDetailsPage.errorAttributes": "Please select three attributes.",
     "SoloEducationDetailsPage.errorValue": "Please select a value.",
+    "SoloEducationDetailsPage.errorFocuses": "Please select your focuses.",
 
     "SoloEducationPage.instruction.alliedMilitary": "You have chosen to commit your life to your government's military. You have undergone necessary training to prepare for your military role, whether that be formal officer education, or much more informal guerilla training.",
     "SoloEducationPage.instruction.ambassadorDiplomat": "The years spent in training are some of the most memorable and definitive of an diplomat’s life, shaping the direction of their career going forwards. Diplomatic training takes years, covering a mixture of intense training, academic studies, and practical experiences.",
@@ -825,10 +826,55 @@
     "ExtraType.inuitTattoo": "Inuit Tattoo",
     "ExtraType.ferengiHeadFlap": "Ferengi Head Flap",
 
+    "Focus.animalHandling": "Animal Handling",
+    "Focus.anthropology": "Anthropology",
     "Focus.astronavigation": "Astronavigation",
+    "Focus.astrophysics": "Astrophysics",
+    "Focus.bureaucracy": "Bureaucracy",
+    "Focus.botany": "Botany",
     "Focus.composure": "Composure",
+    "Focus.computers": "Computers",
+    "Focus.cybernetics": "Cybernetics",
+    "Focus.demolition": "Demolition",
     "Focus.diplomacy": "Diplomacy",
+    "Focus.disguise": "Disguise",
+    "Focus.disruptors": "Disruptors",
+    "Focus.electroPlasmaPowerSystems": "Electro-Plasma Power Systems",
+    "Focus.emergencyMedicine": "Emergency Medicine",
+    "Focus.espionage": "Espionage",
+    "Focus.exoTectonics": "Exo-tectonics",
     "Focus.extraVehicularActivity": "Extra-Vehicular Activity",
+    "Focus.evasiveAction": "Evasive Action",
+    "Focus.genetics": "Genetics",
+    "Focus.geology": "Geology",
+    "Focus.handPhasers": "Hand Phasers",
+    "Focus.handToHandCombat": "Hand-to-Hand Combat",
+    "Focus.helmOperation": "Helm Operation",
+    "Focus.history": "History",
+    "Focus.infectiousDiseases": "Infectious Diseases",
+    "Focus.infiltration": "Infiltration",
+    "Focus.inspiration": "Inspiration",
+    "Focus.interrogation": "Interrogation",
+    "Focus.intimidation": "Intimidation",
+    "Focus.linguistics": "Linguistics",
+    "Focus.persuasion": "Persuasion",
+    "Focus.physics": "Physics",
+    "Focus.politics": "Politics",
+    "Focus.psychiatry": "Psychiatry",
+    "Focus.quantumMechanics": "Quantum Mechanics",
+    "Focus.shipboardTacticalSystems": "Shipboard Tactical Systems",
+    "Focus.smallCraft": "Small Craft",
+    "Focus.starshipRecognition": "Starship Recognition",
+    "Focus.starfleetProtocols": "Starfleet Protocols",
+    "Focus.surgery": "Surgery",
+    "Focus.survival": "Survival",
+    "Focus.teamDynamics": "Team Dynamics",
+    "Focus.threatAnalysis": "Threat Analysis",
+    "Focus.traumaSurgery": "Trauma Surgery",
+    "Focus.transportersReplicators": "Transporters & Replicators",
+    "Focus.virology": "Virology",
+    "Focus.warpFieldDynamics": "Warp Field Dynamics",
+    "Focus.xenobiology": "Xenobiology",
 
     "GovernmentType.name.andorian": "Andorian",
     "GovernmentType.name.bajoran": "Bajoran",
@@ -1207,6 +1253,12 @@
     "Species.human.exampleValue": "The Drive for Exploration",
     "Species.human.traitDescription": "Humans are adaptable and resilient, and their resolve and ambition often allow them to resist great hardship and triumph despite great adversity. However, Humans can also be reckless and stubborn, irrational, and unpredictable.",
 
+    "Species.hupyrian.name": "Hupyrian",
+    "Species.hupyrian.exampleValue": "I Obey Only One Master",
+    "Species.hupyrian.description": "The Hupyrians are physically imposing, often over two meters tall. They have wrinkly skin and large ears and noses. The Hupyrians are closely allied with the Ferengi, and their homeworld is the source of Hupyrian beetle snuff. They have tight skin with wrinkles around their eyes and mouths that give them a constant frowning expression. They are known for their devotion in service, and some will take a vow of silence where they are only permitted to speak to their masters. They are often found as bodyguards and food tasters.",
+
+    "Species.human.traitDescription": "Hupyrians are taller than most species, and their size alone can be intimidating. They are loyal especially when working in the employ of another, and take vows seriously.",
+
     "Species.illyrian.name": "Illyrian",
     "Species.illyrian.description": "A spacefaring humanoid species that utilizes genetic engineering to adapt their bodies to the new planets they settle, rather than changing the planet to suit themselves.",
 
@@ -1225,6 +1277,8 @@
     "Species.klingon.soloDescription": "A proud, warrior species centered in the Beta Quadrant. There is a great redundancy in Klingon organs, with two livers, multiple stomachs, three lungs, and an eight-chambered heart. Their skeletal structure also has several redundancies that mitigate injuries that would prove fatal to other humanoids.",
 
     "Species.klingonQuchHa.name": "Klingon (QuchHa’)",
+
+    "Species.nausicaan.name": "Nausicaan",
 
     "Species.orion.name": "Orion",
 
@@ -1282,6 +1336,10 @@
     "Species.xindiReptilian.name": "Xindi-Reptilian",
 
     "Species.xindiInsectoid.name": "Xindi-Insectoid",
+
+    "Species.yridian.name": "Yridian",
+    "Species.yridian.traitDescription": "The Yridians are usually bald, but some have dark, curly hair. They have a wrinkly appearance, with rodent-like ears and small eyes and noses. They have a ridge running from their nose, up and over their heads. Most are thumbless and have only four fingers on each hand, but some have thumbs. They are often devious and untrustworthy.",
+    "Species.yridian.description": "Yridians are often free agents working with those who share their personal goals, or as hired hands for other species. They are known to be traders, smugglers and information merchants, and are unwilling to part with information without payment. They were believed to be extinct until the mid-2360s until the Federation made first contact. They use disruptor weaponry.",
 
     "Species.zakdorn.name": "Zakdorn",
 

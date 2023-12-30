@@ -593,8 +593,44 @@ export class Specializations {
                 ],
                 [
                     "I hacked the Gibson",
-                    "Mess with the best; die like the rest."
-                ], 0, [Species.Yridian, Species.Bynar, Species.CyberneticallyEnhanced]),
+                    "Mess with the best; die like the rest.",
+                    "Information wants to be free, but for now, it has a price attached to it."
+                ], 0, [Species.Yridian, Species.Bynar, Species.CyberneticallyEnhanced, Species.Betazoid]),
+            new SpecializationModel(Specialization.BruteForHire, NpcCharacterType.RogueRuffianMercenary, "Brute-for-Hire",
+                [Attribute.Fitness, Attribute.Daring, Attribute.Presence],
+                Skill.Security,
+                [
+                    "Hand-to-Hand Combat", "Disruptors", "Hand Phasers",
+                    "Blade Weapons", "Ground Combat Tactics"
+                ],
+                [
+                    "Making Threats", "Setting Traps", "Security Review", "Security Rounds"
+                ],
+                [
+                    "Might Makes Right.",
+                    "My Way or the Airlock.",
+                    "Money is Almost as Good as Violence.",
+                    "They Will Respect My Authority",
+                    "Sometimes Family Hurts Family"
+                ], 0, [Species.Nausicaan, Species.Klingon]),
+            new SpecializationModel(Specialization.Bodyguard, NpcCharacterType.RogueRuffianMercenary, "Bodyguard",
+                [Attribute.Fitness, Attribute.Daring, Attribute.Presence],
+                Skill.Security,
+                [
+                    "Threat Assessment", "Disruptors", "Hand Phasers",
+                    "Hand-to-Hand Combat"
+                ],
+                [
+                    "Security Rounds", "Creating Distraction", "Background Checks", "Covering Fire",
+                    "Exfiltration", "Safe Houses"
+                ],
+                [
+                    "I need you to do what I say!",
+                    "Don't panic; I'm going to get you out of this.",
+                    "The package is secure. I repeat: the package is secure",
+                    "My Life for my Charge",
+                    "I can live with being in the line of fire."
+                ], 0, [Species.Nausicaan, Species.Hupyrian]),
 
         ]
     }

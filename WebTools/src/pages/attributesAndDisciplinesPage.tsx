@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect } from 'react';
 import {Character} from '../common/character';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from './pageIdentity';

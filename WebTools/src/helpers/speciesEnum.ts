@@ -139,6 +139,12 @@ export enum Species {
     // Continuing Missions
     ElAurian,
     Yridian,
+    Hupyrian,
+
+
+
+    // None
+    Nausicaan,
 
 
 

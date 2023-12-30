@@ -5,7 +5,7 @@ import {Environment} from '../helpers/environments';
 import {Species} from '../helpers/speciesEnum';
 import {Track} from '../helpers/trackEnum';
 import {EarlyOutlookModel} from '../helpers/upbringings';
-import {TalentViewModel} from '../helpers/talents';
+import {ITalent, TalentViewModel} from '../helpers/talents';
 import {CharacterType} from './characterType';
 import { AlliedMilitary, AlliedMilitaryType } from '../helpers/alliedMilitary';
 import { Government, Polity } from '../helpers/governments';
@@ -619,6 +619,8 @@ export class Character extends Construct {
             result.push(PersonalWeapons.instance.unarmedStrikeMean);
         } else if (this.hasTalent("Martial Artist")) {
             result.push(PersonalWeapons.instance.unarmedStrikeIntense);
+        } else if (this.hasTalent("Brute Force")) {
+            result.push(PersonalWeapons.instance.unarmedStrikeVicious);
         } else {
             result.push(PersonalWeapons.instance.unarmedStrike);
         }
@@ -802,7 +804,7 @@ export class Character extends Construct {
         return result.length > 0 ? result[0] : undefined;
     }
 
-    addTalent(talentModel: TalentViewModel|SelectedTalent) {
+    addTalent(talentModel: ITalent|SelectedTalent) {
         let selectedTalent = talentModel instanceof SelectedTalent ? talentModel as SelectedTalent : new SelectedTalent(talentModel.name);
         if (this.stereotype === Stereotype.Npc) {
             if (this.npcGenerationStep == null) {

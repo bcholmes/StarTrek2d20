@@ -2454,7 +2454,18 @@ export class Talents {
                 [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Yridian, false)],
                 1,
                 "Yridian"),
-
+            new TalentModel(
+                "Vow of Silence",
+                "You are intensely loyal and have taken a vow of silence and will only speak to your direct superior. Whenever you attempt to resist efforts to make you speak or betray your employer’s trust, reduce the Difficulty of the Task by two.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Hupyrian, true)],
+                1,
+                "Hupyrian"),
+            new TalentModel(
+                "Dolbargy Healing Trance",
+                "You have learned the technique of inducing a voluntary deep coma that simulates death. Entering the trance is a Control+Medicine Task. Choose a Difficulty of 1, 2, or 3. Success means that any attempt to detect your vital signs must increase the Difficulty of that task by an amount equal to the Difficulty you chose. While in this trance, you may listen but do nothing else. Gain a temporary Trait: Appears Dead that lasts until you wake up. To wake from the trance is a Control+Medicine Task at Difficulty 1.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(true, Species.Hupyrian, Species.Ferengi)],
+                1,
+                "Hupyrian/Ferengi"),
 
 
             // Careers
@@ -3589,6 +3600,74 @@ export class Talents {
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(false, Species.Yridian)],
             1,
             "Yridian", true),
+
+
+        new TalentModel(
+            "Brute Force",
+            "The character adds the Vicious 1 Effect to their Unarmed Strike, and removes the Non-lethal Quality.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Nausicaan, Species.JemHadar)],
+            1,
+            "Nausicaan/Jem'Hadar", true),
+        new TalentModel(
+            "Nausicaan Bloodlust",
+            "When the character attempts a melee attack, and purchases one or more additional dice with Threat, they may re-roll any number of d20s.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Nausicaan)],
+            1,
+            "Nausicaan", true),
+        new TalentModel(
+            "Ruthless and Determined (Nausicaan)",
+            "The character may spend 2 Threat to gain the effects of a point of Determination, rather than the normal 3.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Nausicaan), new CareersPrerequisite(Career.Veteran, Career.Experienced)],
+            1,
+            "Nausicaan", true),
+        new TalentModel(
+            "Bullying Demeanor",
+            "When the Nausicaan attempts a Task to intimidate or frighten a creature they consider weaker and buy one or more d20s with Threat, they ignore any complications.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(false, Species.Nausicaan)],
+            1,
+            "Nausicaan", true),
+        new TalentModel(
+            "Lust for Violence",
+            "When a Nausicaan attempts a Melee attack, and purchases one or more additional dice with Threat, the Nausicaan may re-roll any number of [D] from that attack",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(false, Species.Nausicaan)],
+            1,
+            "Nausicaan", true),
+        new TalentModel(
+            "Nausicaan Toughness",
+            "The Nausicaan only suffers an injury after sustaining 6 damage instead of just 5.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(false, Species.Nausicaan)],
+            1,
+            "Nausicaan", true),
+        new TalentModel(
+            "Crippling Attack",
+            "When the Nausicaan performs a Task using Security, they may spent 1 Threat to prevent their target from taking the Movement Minor Action.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(false, Species.Nausicaan)],
+            1,
+            "Nausicaan", true),
+        new TalentModel(
+            "Menacing",
+            "When the Nausicaan enters a scene, immediately add a point to the Threat pool.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(false, Species.Nausicaan)],
+            1,
+            "Nausicaan", true),
+        new TalentModel(
+            "Bodyguard",
+            "Whenever a Bodyguard attempts a Task to notice or detect an enemy or hazard, they may re-roll one d20.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Bodyguard)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Accomplished Strategist",
+            "The character is a skilled commander who learned the arts of warfare commanding ships in battle. Whenever they attempt a Task to formulate, execute, or explain a strategy, they may spend 1 Threat to re-roll his dice pool.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Admiral)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Counter Ploy",
+            "Whenever an enemy attempts a Task to create an Advantage representing some manner of strategy or tactic, the character may spend 1 Threat to increase the Difficulty by 1. Further, if this Task then fails, the character may immediately spend one additional Threat to create an Advantage of their own, representing their own stratagem.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Admiral)],
+            1,
+            "General", true),
 
     ];
 

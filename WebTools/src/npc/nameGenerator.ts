@@ -16,8 +16,16 @@ const names = [
         "names": require('./names-ferengi.json')
     },
     {
+        "species": "Hupyrian",
+        "names": require('./names-hupyrian.json')
+    },
+    {
         "species": "Klingon",
         "names": require('./names-klingon.json')
+    },
+    {
+        "species": "Nausicaan",
+        "names": require('./names-nausicaan.json')
     },
     {
         "species": "Reman",

@@ -405,6 +405,9 @@ const speciesSpecificValues: { [species : number ]: string[]} = {
     ],
     [Species.Cardassian] : [
         "Family is all"
+    ],
+    [Species.Nausicaan] : [
+        "Pain is Pleasure"
     ]
 }
 
@@ -518,6 +521,8 @@ export class NpcGenerator {
                 character.addTalent(ToViewModel(TalentsHelper.getTalent("Brak'lul"), 1, character.type));
             } else if (i === 0 && species.id === Species.CyberneticallyEnhanced && hasSource(Source.SciencesDivision)) {
                 character.addTalent(ToViewModel(TalentsHelper.getTalent("Neural Interface"), 1, character.type));
+            } else if (i === 0 && species.id === Species.Betazoid && specialization.id === Specialization.InformationBroker) {
+                character.addTalent(ToViewModel(TalentsHelper.getTalent("Telepath"), 1, character.type));
             } else {
                 while (!done) {
                     let talentList = TalentsHelper.getAllAvailableTalentsForCharacter(character);
@@ -526,7 +531,16 @@ export class NpcGenerator {
                     if (roll < 7) {
                         // go for species talents
                         let talentName = species.talents.map(t => t.name);
-                        talentList = talentList.filter(t => talentName.indexOf(t.name) >= 0 || t.specialRule);
+                        talentList = talentList.filter(t => talentName.indexOf(t.name) >= 0 || (t.specialRule && i > 0))
+                            .filter(t => {
+                                if (t.name === "Potent Pheromones") {
+                                    return character.pronouns === "she/her";
+                                } else if ((t.name === "Subservient") || (t.name === "Pheromonal Thrall")) {
+                                    return character.pronouns === "he/him";
+                                } else {
+                                    return true;
+                                }
+                            });
                     } else if (roll < 14) {
                         talentList = talentList.filter(t => t.category === specializationSkill);
                     } else {
