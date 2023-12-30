@@ -74,8 +74,6 @@ export enum PageIdentity {
     SoloCharacterEra,
     SoloSpecies,
     SoloSpeciesDetails,
-    SoloEnvironment,
-    SoloEnvironmentDetails,
     SoloEarlyOutlook,
     SoloEarlyOutlookDetails,
     SoloEducationType,

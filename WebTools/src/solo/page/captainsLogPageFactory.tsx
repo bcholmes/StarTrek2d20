@@ -16,8 +16,6 @@ import SoloCareerLengthDetailsPage from "./soloCareerLengthDetailsPage";
 import SoloCareerEventDetailPage from "./soloCareerEventDetailPage";
 import SoloFinishingTouchesPage from "./soloFinishingTouchesPage";
 import SoloFinalPage from "./soloFinalPage";
-import EnvironmentPage from "../../pages/environmentPage";
-import EnvironmentDetailsPage from "../../pages/environmentDetailsPage";
 
 export class CaptainsLogPageFactory implements IPageFactoryRegistry {
 
@@ -39,8 +37,6 @@ export class CaptainsLogPageFactory implements IPageFactoryRegistry {
         this.factories[PageIdentity.SoloCharacterEra] = () => <SoloEraSelectionPage type={ConstructType.Character} />;
         this.factories[PageIdentity.SoloSpecies] = () => <SoloSpeciesPage />;
         this.factories[PageIdentity.SoloSpeciesDetails] = () => <SoloSpeciesDetailsPage />;
-        this.factories[PageIdentity.SoloEnvironment] = () => <EnvironmentPage />;
-        this.factories[PageIdentity.SoloEnvironmentDetails] = () => <EnvironmentDetailsPage />;
         this.factories[PageIdentity.SoloEarlyOutlook] = () => <SoloEarlyOutlookPage />;
         this.factories[PageIdentity.SoloEarlyOutlookDetails] = () => <SoloEarlyOutlookDetailsPage />;
         this.factories[PageIdentity.SoloEducationType] = () => <SoloEducationTypePage />;

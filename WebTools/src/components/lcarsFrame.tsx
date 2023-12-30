@@ -50,8 +50,6 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
             activePage === PageIdentity.SoloConstructType ||
             activePage === PageIdentity.SoloSpecies ||
             activePage === PageIdentity.SoloSpeciesDetails ||
-            activePage === PageIdentity.SoloEnvironment ||
-            activePage === PageIdentity.SoloEnvironmentDetails ||
             activePage === PageIdentity.SoloEarlyOutlook ||
             activePage === PageIdentity.SoloEarlyOutlookDetails ||
             activePage === PageIdentity.SoloEducationType ||

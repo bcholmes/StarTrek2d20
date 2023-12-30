@@ -9,7 +9,6 @@ import { StepContext, setCharacterFinishingTouches, setCharacterFocus } from "..
 import { ICharacterProperties, characterMapStateToProperties } from "./soloCharacterProperties";
 import { CareerEventsHelper } from "../../helpers/careerEvents";
 import { CharacterType } from "../../common/characterType";
-import InstructionText from "../../components/instructionText";
 import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
 import { AttributeView } from "../../components/attribute";
 import { AttributesHelper } from "../../helpers/attributes";
@@ -22,6 +21,7 @@ import { Dialog } from "../../components/dialog";
 import D20IconButton from "../component/d20IconButton";
 import { FocusRandomTable } from "../table/focusRandomTable";
 import { CareerEventAttributeController, CareerEventDisciplineController } from "../../components/careerEventDetailsControllers";
+import ReactMarkdown from "react-markdown";
 
 interface ISoloCareerEventProperties extends ICharacterProperties {
     context: StepContext;
@@ -70,7 +70,7 @@ const SoloCareerEventDetailsPage: React.FC<ISoloCareerEventProperties> = ({chara
             <SoloCharacterBreadcrumbs pageIdentity={context === StepContext.CareerEvent2 ? PageIdentity.SoloCareerEvent2 : PageIdentity.SoloCareerEvent1} />
 
             <Header>{careerEvent.localizedName}</Header>
-                <InstructionText text={careerEvent.localizedDescription} />
+                <ReactMarkdown>{careerEvent.localizedDescription}</ReactMarkdown>
                 <div className="row">
                     <div className="col-lg-6 my-3">
                         <Header level={2} className="mb-3">{t('Construct.other.attribute')}</Header>

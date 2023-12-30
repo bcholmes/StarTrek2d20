@@ -25,10 +25,10 @@ const SoloCharacterBreadcrumbs: React.FC<ISoloCharacterBreadcrumbProperties> = (
     }
 
     const renderEnvironment = () => {
-        if ((character?.upbringingStep && pageIdentity === PageIdentity.SoloEnvironmentDetails) || pageIdentity === PageIdentity.SoloEnvironment) {
+        if ((character?.upbringingStep && pageIdentity === PageIdentity.EnvironmentDetails) || pageIdentity === PageIdentity.Environment) {
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.environment')}</li>);
         } else if (character?.environmentStep) {
-            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloEnvironment)}>{t('Page.title.environment')}</a></li>);
+            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Environment)}>{t('Page.title.environment')}</a></li>);
         } else {
             return undefined;
         }

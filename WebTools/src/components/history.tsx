@@ -81,7 +81,7 @@ class History extends React.Component<IHistoryProperties, {}> {
         let character = store.getState().character.currentCharacter as Character;
         return (<>
             {character?.speciesStep ? this.renderPageTitleLink(PageIdentity.SoloSpecies) : undefined}
-            {character?.environmentStep ? this.renderPageTitleLink(PageIdentity.SoloEnvironment) : undefined}
+            {character?.environmentStep ? this.renderPageTitleLink(PageIdentity.Environment) : undefined}
             {character?.upbringingStep ? this.renderPageTitleLink(PageIdentity.SoloEarlyOutlook) : undefined}
             {character?.educationStep ? this.renderPageTitleLink(PageIdentity.SoloEducationType) : undefined}
             {character?.careerStep != null ? this.renderPageTitleLink(PageIdentity.CareerLength) : undefined}

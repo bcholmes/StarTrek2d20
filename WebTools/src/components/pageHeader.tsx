@@ -22,9 +22,9 @@ export const getPageTitle = (t, page) => {
         return t('Page.title.careerEventDetails1');
     } else if (page === PageIdentity.SoloCareerEventDetails2) {
         return t('Page.title.careerEventDetails2');
-    } else if (page === PageIdentity.SoloEnvironment) {
+    } else if (page === PageIdentity.Environment) {
         return t('Page.title.environment');
-    } else if (page === PageIdentity.SoloEnvironmentDetails) {
+    } else if (page === PageIdentity.EnvironmentDetails) {
         return t('Page.title.environmentDetails');
     } else if (page === PageIdentity.SoloSpecies) {
         return t('Page.title.species');

@@ -156,7 +156,7 @@ const EnvironmentDetailsPage: React.FC<ICharacterProperties> = ({character}) => 
     return (
         <div className="page container ml-0">
             {character.stereotype === Stereotype.SoloCharacter
-                ? (<SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloEnvironment} />)
+                ? (<SoloCharacterBreadcrumbs pageIdentity={PageIdentity.EducationDetails} />)
                 : (<CharacterCreationBreadcrumbs  pageIdentity={PageIdentity.EnvironmentDetails} />)};
 
             <Header>{environment.localizedName}</Header>

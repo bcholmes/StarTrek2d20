@@ -44,7 +44,7 @@ const EnvironmentPage: React.FC<ICharacterProperties> = ({character}) => {
         }
 
         if (character.stereotype === Stereotype.SoloCharacter) {
-            Navigation.navigateToPage(PageIdentity.SoloEnvironmentDetails);
+            Navigation.navigateToPage(PageIdentity.EnvironmentDetails);
         } else {
             Navigation.navigateToPage(PageIdentity.EnvironmentDetails);
         }
@@ -145,7 +145,7 @@ const EnvironmentPage: React.FC<ICharacterProperties> = ({character}) => {
     return (
         <div className="page container ml-0">
             {character.stereotype === Stereotype.SoloCharacter
-                ? (<SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloEnvironment} />)
+                ? (<SoloCharacterBreadcrumbs pageIdentity={PageIdentity.Environment} />)
                 : (<CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Environment} />)};
             <Header>{t('Page.title.environment')}</Header>
 

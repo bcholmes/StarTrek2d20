@@ -24,7 +24,7 @@ const SoloSpeciesDetailsPage: React.FC<ICharacterProperties> = ({character}) => 
         if (character.speciesStep?.attributes?.length !== 3) {
             Dialog.show(t('SoloSpeciesPage.errorAttributes'));
         } else {
-            Navigation.navigateToPage(PageIdentity.SoloEnvironment);
+            Navigation.navigateToPage(PageIdentity.Environment);
         }
     }
 
