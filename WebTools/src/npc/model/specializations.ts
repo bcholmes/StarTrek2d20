@@ -640,7 +640,7 @@ export class Specializations {
                 "Tricorder Operation"],
                 ["Research Publication", "Scientific Journals", "Research Methods", "Specialized Scientific Equipment", "Emergency Procedures",
                 "Isolation Fields", "Gravitational Theory", "Calculus", "Computer Simulation", "Holographic Simulation", "Computer Programming",
-                "Starfleet Science", "Daystrom Institute Research Priorities", "The Works of Gideon Seyetik", "The Works of Sitar",
+                "University Politics", "Daystrom Institute Research Priorities", "The Works of Gideon Seyetik", "The Works of Sitar",
                 "The Works of Kazanga"],
                 ["Nobody remembers the one who confirmed someone else's work.",
                 "They'll remember me alongside Einstein, Kazanga, Sitar!",

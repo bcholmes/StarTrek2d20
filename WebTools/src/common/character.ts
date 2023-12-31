@@ -128,6 +128,7 @@ export class SelectedTalent {
     readonly talent: string;
     implants: BorgImplantType[];
     focuses: string[];
+    value: string;
 
     constructor(talent: string) {
         this.talent = talent;
@@ -139,6 +140,7 @@ export class SelectedTalent {
         let result = new SelectedTalent(this.talent);
         result.implants = [...this.implants];
         result.focuses = [...this.focuses];
+        result.value = this.value;
         return result;
     }
 }
@@ -579,6 +581,23 @@ export class Character extends Construct {
             if (this.finishingStep?.value) {
                 result.push(this.finishingStep.value);
             }
+
+            if (this.speciesStep?.talent?.value) {
+                result.push(this.speciesStep.talent.value);
+            }
+            if (this.upbringingStep?.talent?.value) {
+                result.push(this.upbringingStep.talent.value);
+            }
+            if (this.educationStep?.talent?.value) {
+                result.push(this.educationStep.talent.value);
+            }
+            if (this.careerStep?.talent?.value) {
+                result.push(this.careerStep.talent.value);
+            }
+            if (this.finishingStep?.talent?.value) {
+                result.push(this.finishingStep.talent?.value);
+            }
+
             return result;
         }
     }

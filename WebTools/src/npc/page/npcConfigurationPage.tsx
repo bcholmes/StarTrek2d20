@@ -204,8 +204,8 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         }
         let species = this.state.selectedSpecies;
         if (species == null && specialization.species?.length) {
-            let list = specialization.species;
-            species = list[Math.floor(Math.random() * list.length)];
+            let list = specialization.species.map(s => SpeciesHelper.getSpeciesByType(s)).filter(s => s.eras.indexOf(this.props.era) >= 0)
+            species = list[Math.floor(Math.random() * list.length)].id;
         } else if (species == null) {
             species = this.randomSpecies();
         }

@@ -345,6 +345,9 @@ class Marshaller {
         if (t.focuses?.length > 0) {
             talent["focuses"] = [...t.focuses];
         }
+        if (t.value) {
+            talent["value"] = t.value;
+        }
         return talent;
     }
 
@@ -1011,6 +1014,9 @@ class Marshaller {
             }
             if (t["implants"]) {
                 selectedTalent.implants = t["implants"].map(i => BorgImplants.instance.getImplantByTypeName(i)?.type).filter(i => i != null);
+            }
+            if (t["value"]) {
+                selectedTalent.value = t["value"];
             }
             return selectedTalent;
         } else {

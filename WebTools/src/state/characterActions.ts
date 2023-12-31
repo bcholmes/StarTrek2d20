@@ -43,6 +43,7 @@ export const ADD_CHARACTER_BORG_IMPLANT = "ADD_CHARACTER_BORG_IMPLANT";
 export const REMOVE_CHARACTER_BORG_IMPLANT = "REMOVE_CHARACTER_BORG_IMPLANT";
 export const ADD_CHARACTER_TALENT = "ADD_CHARACTER_TALENT";
 export const ADD_CHARACTER_TALENT_FOCUS = "ADD_CHARACTER_TALENT_FOCUS";
+export const ADD_CHARACTER_TALENT_VALUE = "ADD_CHARACTER_TALENT_VALUE";
 export const SET_SUPPORTING_CHARACTER_DISCIPLINES = "SET_SUPPORTING_CHARACTER_DISCIPLINES";
 export const SET_SUPPORTING_CHARACTER_ATTRIBUTES = "SET_SUPPORTING_CHARACTER_ATTRIBUTES";
 
@@ -157,6 +158,15 @@ export function addCharacterTalentFocus(focus: string, talent: string, index: nu
     let payload = { focus: focus, talent: talent, index: index };
     return {
        type: ADD_CHARACTER_TALENT_FOCUS,
+       payload: payload
+    }
+}
+
+export function addCharacterTalentValue(value: string, talent: string|ITalent) {
+    let talentName = typeof talent === "string" ? talent as string : (talent as ITalent).name;
+    let payload = { value: value, talent: talentName };
+    return {
+       type: ADD_CHARACTER_TALENT_VALUE,
        payload: payload
     }
 }
