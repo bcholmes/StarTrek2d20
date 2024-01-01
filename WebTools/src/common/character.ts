@@ -19,6 +19,7 @@ import i18next from 'i18next';
 import { Role, RolesHelper } from '../helpers/roles';
 import { BorgImplantType, BorgImplants } from '../helpers/borgImplant';
 import { Specialization } from './specializationEnum';
+import { MilestoneType } from '../modify/model/milestoneType';
 
 export abstract class CharacterTypeDetails {
 }
@@ -153,6 +154,30 @@ export class CareerStep {
 
     constructor(career?: Career) {
         this.career = career;
+    }
+}
+
+export class MilestoneTalentChange {
+    removed: string;
+    added: string;
+}
+
+export class MilestoneFocusChange {
+    removed: string;
+    added: string;
+}
+
+export class MilestoneAttributeChange {
+    removed: Attribute;
+    added: Attribute;
+}
+
+export class Milestone {
+    readonly type: MilestoneType;
+    change?: MilestoneTalentChange|MilestoneFocusChange|MilestoneAttributeChange;
+
+    constructor(type: MilestoneType) {
+        this.type = type;
     }
 }
 
@@ -667,11 +692,19 @@ export class Character extends Construct {
         } else if (this.isBajoranMilitia() || this.isCardassianUnion()) {
             result.push(PersonalWeapons.instance.phaser2);
         } else if (this.age.isAdult) {
-            if (this.npcGenerationStep?.specialization === Specialization.FerengiDaiMon) {
+            if (this.isKlingon()) {
+                result.push(PersonalWeapons.instance.dkTagh);
+            } else if (this.npcGenerationStep?.specialization === Specialization.FerengiDaiMon) {
                 result.push(PersonalWeapons.instance.phaser1);
                 result.push(PersonalWeapons.instance.energyWhip);
-            } else if (this.isKlingon()) {
-                result.push(PersonalWeapons.instance.dkTagh);
+            } else if (this.npcGenerationStep?.specialization === Specialization.RomulanCenturion
+                || this.npcGenerationStep?.specialization === Specialization.RomulanTalShiar) {
+                result.push(PersonalWeapons.instance.disruptorPistol);
+            } else if (this.npcGenerationStep?.specialization === Specialization.SonaCommandOfficer) {
+                result.push(PersonalWeapons.instance.sonaPlasmaDisruptorShotgun);
+            } else if (this.npcGenerationStep?.specialization === Specialization.OrionPirate) {
+                result.push(PersonalWeapons.instance.disruptorPistol);
+                result.push(PersonalWeapons.instance.dagger);
             } else if (this.type !== CharacterType.Child && this.type !== CharacterType.Civilian) {
                 result.push(PersonalWeapons.instance.disruptorPistol);
             }

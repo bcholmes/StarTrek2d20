@@ -80,6 +80,30 @@
         ]
     },
     {
+        "name": "Merkos",
+        "gender": "Male",
+        "type": "FirstName",
+        "tags": [
+            "Orion"
+        ]
+    },
+    {
+        "name": "Savro",
+        "gender": "Male",
+        "type": "FirstName",
+        "tags": [
+            "Orion"
+        ]
+    },
+    {
+        "name": "Ivra",
+        "gender": "Male",
+        "type": "FirstName",
+        "tags": [
+            "Orion"
+        ]
+    },
+    {
         "name": "D'Bora",
         "gender": "Female",
         "type": "FirstName",
@@ -113,7 +137,7 @@
     },
     {
         "name": "D'Erika",
-        "gender": "Male",
+        "gender": "Female",
         "type": "FirstName",
         "tags": [
             "Orion"
@@ -121,7 +145,7 @@
     },
     {
         "name": "D'Vana",
-        "gender": "Male",
+        "gender": "Female",
         "type": "FirstName",
         "tags": [
             "Orion"
@@ -209,6 +233,22 @@
     },
     {
         "name": "Remy",
+        "gender": "Male",
+        "type": "FirstName",
+        "tags": [
+            "Orion"
+        ]
+    },
+    {
+        "name": "Imry",
+        "gender": "Male",
+        "type": "FirstName",
+        "tags": [
+            "Orion"
+        ]
+    },
+    {
+        "name": "Kelon",
         "gender": "Male",
         "type": "FirstName",
         "tags": [
@@ -321,6 +361,62 @@
     },
     {
         "name": "Theter",
+        "gender": "Unisex",
+        "type": "LastName",
+        "tags": [
+            "Orion"
+        ]
+    },
+    {
+        "name": "Kerav",
+        "gender": "Unisex",
+        "type": "LastName",
+        "tags": [
+            "Orion"
+        ]
+    },
+    {
+        "name": "Madrav",
+        "gender": "Unisex",
+        "type": "LastName",
+        "tags": [
+            "Orion"
+        ]
+    },
+    {
+        "name": "Skuros",
+        "gender": "Unisex",
+        "type": "LastName",
+        "tags": [
+            "Orion"
+        ]
+    },
+    {
+        "name": "Jorva",
+        "gender": "Unisex",
+        "type": "LastName",
+        "tags": [
+            "Orion"
+        ]
+    },
+    {
+        "name": "Radras",
+        "gender": "Unisex",
+        "type": "LastName",
+        "tags": [
+            "Orion"
+        ]
+    },
+    {
+        "name": "Morkai",
+        "gender": "Unisex",
+        "type": "LastName",
+        "tags": [
+            "Orion"
+        ]
+    },
+    {
+        "name": "Keros",
         "gender": "Unisex",
         "type": "LastName",
         "tags": [

@@ -1387,11 +1387,13 @@ Weapon.personal.batleth.name,Bat'leth,Bat'leth,,Bat'leth
 Weapon.personal.dktahg.name,d’k tahg dagger,D'k tahg Dolch,,Dague d’k tahg
 Weapon.personal.ushaantor.name,Ushaan-tor,Ushaan-tor,,Ushaan-tor
 Weapon.personal.disruptor.name,Disruptor Pistol,Disruptorpistole,,Pistolet Disrupteur
+Weapon.personal.sonaPlasmaDisruptorShotgun.name,Son'a Plasma Disruptor Shotgun,,,
 Weapon.quality.area.name,Area,Flächendeckend,,Aire
 Weapon.quality.charge.name,Charge,Aufladbar,,Charges
 Weapon.quality.calibration.name,Calibration,Kalibrierung,,
 Weapon.quality.dampening.name,Dampening,Energiesenkend,,
 Weapon.quality.deadly.name,Deadly,Letal,,Mortel
+Weapon.quality.debilitating.name,Debilitating,,,
 Weapon.quality.depleting.name,Depleting,Erschöpfend,,
 Weapon.quality.devastating.name,Devastating,Zerstörerisch,,
 Weapon.quality.highYield.name,High Yield,Hochenergetisch,,

@@ -28,6 +28,9 @@ export enum Specialization {
 
     RomulanCenturion,
     RomulanTalShiar,
+    RomulanSenator,
+
+    SonaCommandOfficer,
 
     Scientist,
 
@@ -66,6 +69,9 @@ export const allSpecializations = () => {
 
         Specialization.RomulanCenturion,
         Specialization.RomulanTalShiar,
+        Specialization.RomulanSenator,
+
+        Specialization.SonaCommandOfficer,
 
         Specialization.Scientist,
 

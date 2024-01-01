@@ -5,7 +5,8 @@ import { Era } from "./eras";
 
 export enum Quality {
     Area, Calibration, Charge, Dampening, Deadly, Depleting, Devastating, Hidden, HighYield,
-    Intense, Jamming, Knockdown, NonLethal, PersistentX, Piercing, Slowing, Versatile, Vicious
+    Intense, Jamming, Knockdown, NonLethal, PersistentX, Piercing, Slowing, Versatile, Vicious,
+    Debilitating
 }
 
 export class WeaponQuality {
@@ -585,7 +586,7 @@ const StarshipWeaponRegistry = new StarshipWeaponList();
 export default StarshipWeaponRegistry;
 
 export class PersonalWeapons {
-    private static _instance;
+    private static _instance: PersonalWeapons;
 
     get unarmedStrike() {
         return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown)], [new WeaponQuality(Quality.NonLethal)], WeaponType.MELEE);
@@ -629,8 +630,16 @@ export class PersonalWeapons {
         return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.disruptor.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.ENERGY);
     }
 
+    get sonaPlasmaDisruptorShotgun() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.sonaPlasmaDisruptorShotgun.name'), 4, [new WeaponQuality(Quality.Vicious, 1), new WeaponQuality(Quality.Debilitating), new WeaponQuality(Quality.Piercing, 1)], [], WeaponType.ENERGY);
+    }
+
     get energyWhip() {
         return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.energyWhip.name'), 3, [new WeaponQuality(Quality.Intense)], [new WeaponQuality(Quality.NonLethal)], WeaponType.ENERGY);
+    }
+
+    get dagger() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.dagger.name'), 1, [new WeaponQuality(Quality.Vicious, 1)], [new WeaponQuality(Quality.Deadly), new WeaponQuality(Quality.Hidden, 1)], WeaponType.ENERGY);
     }
 
     static get instance() {

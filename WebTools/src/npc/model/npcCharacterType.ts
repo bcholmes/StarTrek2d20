@@ -6,7 +6,7 @@ import store from "../../state/store";
 import { Era } from "../../helpers/eras";
 
 export enum NpcCharacterType {
-    Starfleet, KlingonDefenseForces, RomulanMilitary, Ferengi, Cardassian, Civilian, RogueRuffianMercenary
+    Starfleet, KlingonDefenseForces, RomulanEmpire, Ferengi, Cardassian, MinorPolity, Civilian, RogueRuffianMercenary
 }
 
 export class NpcCharacterTypeModel {
@@ -25,7 +25,7 @@ export class NpcCharacterTypeModel {
                 return i18next.t('CharacterType.name.starfleet');
             case NpcCharacterType.KlingonDefenseForces:
                 return i18next.t('AlliedMilitaryType.name.klingonDefenceForce');
-            case NpcCharacterType.RomulanMilitary:
+            case NpcCharacterType.RomulanEmpire:
                 return i18next.t('AlliedMilitaryType.name.romulanStarEmpire');
             case NpcCharacterType.Cardassian:
                 return i18next.t('AlliedMilitaryType.name.cardassianUnion');
@@ -33,6 +33,8 @@ export class NpcCharacterTypeModel {
                 return i18next.t('CharacterType.name.civilian');
             case NpcCharacterType.Ferengi:
                 return i18next.t('Species.ferengi.name');
+            case NpcCharacterType.MinorPolity:
+                return "Minor Polity";
             case NpcCharacterType.RogueRuffianMercenary:
                 return "Rogues, Ruffians, and Mercenaries";
             default:
@@ -55,9 +57,10 @@ export class NpcCharacterTypes {
     private _types = [
         new NpcCharacterTypeModel(NpcCharacterType.Starfleet, "Starfleet"),
         new NpcCharacterTypeModel(NpcCharacterType.KlingonDefenseForces, "Klingon Defence Forces"),
-        new NpcCharacterTypeModel(NpcCharacterType.RomulanMilitary, "Romulan Military"),
+        new NpcCharacterTypeModel(NpcCharacterType.RomulanEmpire, "Romulan Star Empire"),
         new NpcCharacterTypeModel(NpcCharacterType.Cardassian, "Cardassian"),
         new NpcCharacterTypeModel(NpcCharacterType.Ferengi, "Ferengi"),
+        new NpcCharacterTypeModel(NpcCharacterType.MinorPolity, "Minor Polity"),
         new NpcCharacterTypeModel(NpcCharacterType.Civilian, "Civilian"),
         new NpcCharacterTypeModel(NpcCharacterType.RogueRuffianMercenary, "Rogues, Ruffians, and Mercenaries"),
     ];

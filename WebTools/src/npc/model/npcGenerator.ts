@@ -1,4 +1,4 @@
-import { AlliedMilitaryDetails, CareerStep, Character, NpcGenerationStep, SpeciesStep } from "../../common/character";
+import { AlliedMilitaryDetails, CareerStep, Character, EducationStep, NpcGenerationStep, SpeciesStep } from "../../common/character";
 import { CharacterType } from "../../common/characterType";
 import { Stereotype } from "../../common/construct";
 import { D20 } from "../../common/die";
@@ -15,9 +15,10 @@ import { SpecializationModel, Specializations } from "./specializations";
 import { NpcCharacterType } from "./npcCharacterType";
 import { hasAnySource, hasSource } from "../../state/contextFunctions";
 import { Source } from "../../helpers/sources";
-import { AlliedMilitaryType } from "../../helpers/alliedMilitary";
+import { AlliedMilitary, AlliedMilitaryType } from "../../helpers/alliedMilitary";
 import AllyHelper from "../../helpers/alliedMilitary";
 import { Specialization } from "../../common/specializationEnum";
+import { Track } from "../../helpers/trackEnum";
 
 class RankWithTier {
     readonly name: string;
@@ -111,7 +112,7 @@ const careerSkills: { [type: number ]: string[] } = {
         "Trade Authority Bureaucracy",
         "Energy Whips"
     ],
-    [NpcCharacterType.RomulanMilitary] : [
+    [NpcCharacterType.RomulanEmpire] : [
         "Scheming",
         "Sneak Attacks",
         "Military Tactics",
@@ -159,7 +160,7 @@ const typeSpecificValues: { [type : number ]: string[]} = {
     ],
     [ NpcCharacterType.Ferengi ] : [
     ],
-    [ NpcCharacterType.RomulanMilitary ] : [
+    [ NpcCharacterType.RomulanEmpire ] : [
     ],
     [ NpcCharacterType.RogueRuffianMercenary ] : [
         "To live outside the law, you must be honest.",
@@ -213,7 +214,8 @@ const typeSpecificGeneralValues: { [type : number ]: string[]} = {
         "Today we conquer! Oh, if someday we are defeated... well... war has its fortunes. Good and bad.",
         "It would have been glorious."
     ],
-    [ NpcCharacterType.RomulanMilitary ] : [
+    [ NpcCharacterType.RomulanEmpire ] : [
+        "We have to prioritize the good of the Empire",
         "Secrecy is Strength",
         "Vigilance is Virtue",
         "Ambition Knows No Bounds",
@@ -491,12 +493,23 @@ export class NpcGenerator {
             case NpcCharacterType.KlingonDefenseForces:
                 character.type = CharacterType.KlingonWarrior;
                 break;
-            case NpcCharacterType.RomulanMilitary:
-                character.type = CharacterType.AlliedMilitary;
-                character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(AlliedMilitaryType.RomulanStarEmpire), "Romulan");
+            case NpcCharacterType.RomulanEmpire:
+                if (specialization.id === Specialization.RomulanSenator) {
+                    character.type = CharacterType.Civilian;
+                    character.educationStep = new EducationStep(Track.PoliticianOrBureaucrat);
+                } else {
+                    character.type = CharacterType.AlliedMilitary;
+                    character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(AlliedMilitaryType.RomulanStarEmpire), "Romulan");
+                }
                 break;
             case NpcCharacterType.RogueRuffianMercenary:
                 character.type = CharacterType.Civilian;
+                break;
+            case NpcCharacterType.MinorPolity:
+                character.type = CharacterType.AlliedMilitary;
+                if (specialization.id === Specialization.SonaCommandOfficer) {
+                    character.typeDetails = new AlliedMilitaryDetails(new AlliedMilitary("Son'a Command", AlliedMilitaryType.SonACommand, [ Species.SonA ]), "Son'a Command");
+                }
                 break;
             case NpcCharacterType.Civilian:
                 character.type = CharacterType.Civilian;

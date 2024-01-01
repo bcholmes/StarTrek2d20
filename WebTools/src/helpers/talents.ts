@@ -3491,6 +3491,18 @@ export class Talents {
             1,
             "Cardassian", true),
         new TalentModel(
+            "Senatorial Presence",
+            "Whenever one of the senator's subordinates attempts a Task to resist persuasion, intimidation, or interrogation, the senator may spend two Threat to allow that Romulan to roll as if they had the benefit of their assistance using Control + Command, even if they are not present in the scene.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Romulan), new CareersPrerequisite(Career.Veteran, Career.Experienced), new SpecializationPrerequisite(Specialization.RomulanSenator)],
+            1,
+            "Romulan", true),
+        new TalentModel(
+            "Reman Bodyguard",
+            "The senator has a Reman bodyguard who is completely devoted to their well-being. If attacked while in the presence of the bodyguard, the senator may use the bodyguard’s Fitness + Security for purposes of Stress, providing they are within Reach.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Romulan), new SpecializationPrerequisite(Specialization.RomulanSenator)],
+            1,
+            "Romulan", true),
+        new TalentModel(
             "Romulan Military Efficiency",
             "The character grants all Romulan NPCs under their command an additional Task each turn.",
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Romulan, Species.Reman), new OfficerPrerequisite(), new CareersPrerequisite(Career.Veteran, Career.Experienced)],
@@ -3722,6 +3734,18 @@ export class Talents {
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Counselor)],
             1,
             "General", true),
+        new TalentModel(
+            "Son'a Desperation",
+            "Whenever a Son’a officer is below their maximum Stress, and buys additional d20s with Threat, the Son’a officer may re-roll a single d20.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new SpecializationPrerequisite(Specialization.SonaCommandOfficer), new SpeciesPrerequisite(Species.SonA, false)],
+            1,
+            "Son'a", true),
+        new TalentModel(
+            "Son'a Authority",
+            "Whenever a Son’a command officer uses the Direct or Assist Task to command a Tarlac, Ellora, or another Son’a under their command, the officer may roll 2d20 instead of 1d20.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new SpecializationPrerequisite(Specialization.SonaCommandOfficer), new SpeciesPrerequisite(Species.SonA, false)],
+            1,
+            "Son'a", true),
     ];
 
     getTalents() {

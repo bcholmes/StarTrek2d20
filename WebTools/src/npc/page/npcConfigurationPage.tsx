@@ -130,7 +130,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
     getSpeciesList() {
         if (this.state.selectedSpecialization != null && this.state.selectedSpecialization?.species?.length) {
             return this.state.selectedSpecialization.species.map(s => SpeciesHelper.getSpeciesByType(s)).filter(s => s.eras.indexOf(this.props.era) >= 0);
-        } else if (this.state.selectedType?.type === NpcCharacterType.RogueRuffianMercenary) {
+        } else if (this.state.selectedType?.type === NpcCharacterType.RogueRuffianMercenary || this.state.selectedType?.type === NpcCharacterType.MinorPolity) {
             let items = [];
             Specializations.instance.getSpecializations(this.state.selectedType?.type).forEach(s => {
                 if (this.state.selectedSpecialization == null || this.state.selectedSpecialization?.id === s.id) {
@@ -150,7 +150,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
             return [ SpeciesHelper.getSpeciesByType(Species.Cardassian)];
         } else if (this.state.selectedType?.type === NpcCharacterType.Ferengi) {
             return [ SpeciesHelper.getSpeciesByType(Species.Ferengi)];
-        } else if (this.state.selectedType?.type === NpcCharacterType.RomulanMilitary) {
+        } else if (this.state.selectedType?.type === NpcCharacterType.RomulanEmpire) {
             return [ SpeciesHelper.getSpeciesByType(Species.Romulan), SpeciesHelper.getSpeciesByType(Species.Reman)];
         } else {
             return this.getStandardFederationSpeciesList();
@@ -188,7 +188,8 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         if (this.state.selectedType.type === NpcCharacterType.KlingonDefenseForces ||
             this.state.selectedType.type === NpcCharacterType.Cardassian ||
             this.state.selectedType.type === NpcCharacterType.Ferengi ||
-            this.state.selectedType.type === NpcCharacterType.RomulanMilitary) {
+            this.state.selectedType.type === NpcCharacterType.MinorPolity ||
+            this.state.selectedType.type === NpcCharacterType.RomulanEmpire) {
             let list = this.getSpeciesList();
             return list[Math.floor(Math.random() * list.length)].id;
         } else {

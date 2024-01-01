@@ -96,6 +96,7 @@ export enum Rank {
 
     // not specified
     DaiMon,
+    Adhar,
     None
 }
 
@@ -111,7 +112,7 @@ class AlliedMilitaryPrerequisite implements IConstructPrerequisite<Character> {
     isPrerequisiteFulfilled(character: Character) {
         return character.type === CharacterType.AlliedMilitary
             && character.typeDetails
-            &&  this.types.indexOf((character.typeDetails as AlliedMilitaryDetails).alliedMilitary.type) >= 0;
+            &&  this.types.indexOf((character.typeDetails as AlliedMilitaryDetails)?.alliedMilitary?.type) >= 0;
     }
     describe(): string {
         return "";
@@ -992,6 +993,22 @@ export class RanksHelper {
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.FerengiMilitary)
             ],
             "DaiMon"),
+        new RankModel(
+            Rank.Adhar,
+            "Adhar", "O5",
+            [
+                new OfficerPrerequisite(),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.SonACommand)
+            ],
+            "Adhar"),
+        new RankModel(
+            Rank.Adhar,
+            "Subadhar", "O4",
+            [
+                new OfficerPrerequisite(),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.SonACommand)
+            ],
+            "Subadhar"),
         ];
 
     getRanks(character: Character, ignorePrerequisites?: boolean) {

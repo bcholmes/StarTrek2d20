@@ -474,7 +474,26 @@ export class Specializations {
                     "I won't preside over the demise of Ferengi civilization! The line has to be drawn here! This far, and no further!",
                     "There's nothing beyond greed! Greed is the purest and most noble of emotions!"
                 ], 1.0),
-            new SpecializationModel(Specialization.RomulanCenturion, NpcCharacterType.RomulanMilitary, "Romulan Centurion",
+            new SpecializationModel(Specialization.RomulanSenator, NpcCharacterType.RomulanEmpire, "Romulan Senator",
+                [Attribute.Control, Attribute.Reason, Attribute.Insight],
+                Skill.Command,
+                [
+                    "Bureaucracy", "Diplomacy", "Politics", "Linguistics", "History", "Philosophy",
+                    "Alliance-building", "Romulan Governmental Priorities", "Senatorial Protocol"
+                ],
+                [
+                    "Romulan Senators and their Histories", "State Secrets", "Budgeting",
+                    "Obfuscation", "Bluffing", "Romulan History and Traditions"
+                ],
+                [
+                    "We are creatures of duty. I have lived my life by it.",
+                    "To be honest, my opinion of Starfleet officers is so low that you'd have to work very hard indeed to disappoint me.",
+                    "Dogged determination isn't enough to change the reality of your situation. Time is definitely not on your side. ",
+                    "This mission was supposed to cause dissension in the region. It's had the opposite effect.",
+                    "You can be sarcastic now, but in a few millennia, when your species is extinct and the Romulan Empire spans the galaxy...",
+                    "My people have a reputation for arrogance. I'm afraid it's well earned."
+                ], 0, [ Species.Romulan ]),
+            new SpecializationModel(Specialization.RomulanCenturion, NpcCharacterType.RomulanEmpire, "Romulan Centurion",
                 [Attribute.Control, Attribute.Reason, Attribute.Fitness],
                 Skill.Security,
                 [
@@ -494,7 +513,7 @@ export class Specializations {
                     "You have one chance to escape destruction.",
                     "You can be sarcastic now, but in a few millennia, when your species is extinct and the Romulan Empire spans the galaxy..."
                 ], 0.5),
-            new SpecializationModel(Specialization.RomulanTalShiar, NpcCharacterType.RomulanMilitary, "Tal Shiar Operative",
+            new SpecializationModel(Specialization.RomulanTalShiar, NpcCharacterType.RomulanEmpire, "Tal Shiar Operative",
                 [Attribute.Daring, Attribute.Presence, Attribute.Insight],
                 Skill.Security,
                 [
@@ -506,7 +525,6 @@ export class Specializations {
                     "Political Analysis", "Coercion", "Charm and Affability", "Foreign Intelligence Agencies", "Survival", "Sniper Training",
                     "Weaknesses of the Federation", "Conspiracies and Plots"
                 ], [
-                    "We have to prioritize the good of the Empire",
                     "Shadows Illuminate Truth",
                     "Whispers Carry Authority",
                     "Fear is a Weapon",
@@ -519,7 +537,7 @@ export class Specializations {
                     "Pawns in the Game of Secrets",
                     "Silence! I've been stabbing commanders in the back since before your mother killed her first traitor."
                 ],
-                0.7),
+                0.7, [ Species.Romulan ]),
             new SpecializationModel(Specialization.CardassianSoldier, NpcCharacterType.Cardassian, "Cardassian Soldier",
                 [Attribute.Control, Attribute.Reason, Attribute.Fitness],
                 Skill.Security,
@@ -553,8 +571,29 @@ export class Specializations {
                     "In this room you do not ask questions. I ask them, you answer. If I am not satisfied with your answers, you will die.",
                     "This Bajoran obsession with alleged Cardassian improprieties during the occupation is really quite distasteful.",
                     "What you call genocide, I call a day's work."
-                ], 0.5),
-
+                ], 1),
+            new SpecializationModel(Specialization.SonaCommandOfficer, NpcCharacterType.MinorPolity, "Son'a Adhar",
+                [Attribute.Control, Attribute.Daring, Attribute.Presence],
+                Skill.Command,
+                [
+                    "Starship Battle Tactics", "Negotiation", "Threats",
+                    "The Dominion War", "Leadership", "Diplomacy"
+                ],
+                [
+                    "Political Jockeying", "Military Chest-Puffing", "Starship Protocols", "Plasma Disruptors",
+                    "Vinting", "Skin Stretching", "Art Classics", "Fine Alcohols", "Beauty Treatments"
+                ],
+                [
+                    "Youth is wasted on the young.",
+                    "Technology should not be 'forbidden'.",
+                    "You should have a treatment. It'll do wonders for your face.",
+                    "We remained sunk in greed, sloth, and sensuality. The three most amiable vices in the catalog.",
+                    "The quest for immortality is never a vain quest.",
+                    "I don't want to become immortal through my accomplishments; I want to become immortal by not dying.",
+                    "Your egalitarian ideas just don't reflect the reality that some are more deserving of greatness than others.",
+                    "Our former leaders lacked vision. Self-abnegation is not a virtue.",
+                    "We do what we must."
+                ], 1, [Species.SonA]),
             new SpecializationModel(Specialization.OrionPirate, NpcCharacterType.RogueRuffianMercenary, "Orion Pirate",
                 [Attribute.Daring, Attribute.Presence, Attribute.Control],
                 Skill.Security,

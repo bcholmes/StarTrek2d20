@@ -13,6 +13,7 @@ export enum AlliedMilitaryType {
     CardassianUnion,
     Dominion,
     FerengiMilitary,
+    SonACommand,
     Other
 }
 

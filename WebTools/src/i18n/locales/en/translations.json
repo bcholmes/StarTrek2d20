@@ -1611,6 +1611,8 @@
 
     "Weapon.personal.disruptor.name": "Disruptor Pistol",
 
+    "Weapon.personal.sonaPlasmaDisruptorShotgun.name": "Son'a Plasma Disruptor Shotgun",
+
     "Weapon.quality.area.name": "Area",
 
     "Weapon.quality.charge.name": "Charge",
@@ -1620,6 +1622,8 @@
     "Weapon.quality.dampening.name": "Dampening",
 
     "Weapon.quality.deadly.name": "Deadly",
+
+    "Weapon.quality.debilitating.name": "Debilitating",
 
     "Weapon.quality.depleting.name": "Depleting",
 
