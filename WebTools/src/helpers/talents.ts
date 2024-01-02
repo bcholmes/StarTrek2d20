@@ -2393,7 +2393,24 @@ export class Talents {
                 [new SourcePrerequisite(Source.AnimatedSeries), new SpeciesPrerequisite(Species.Skorr, true)],
                 1,
                 "Skorr"),
-
+            new TalentModel(
+                "Trained from Birth",
+                "When you make a Security task, you ignore the 1st complication rolled. In addition, if you are making an opposed task using Security, you generate 1 Momentum for each complication your opponent suffers. Bonus Momentum may not be saved.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Talarian, false)],
+                1,
+                "Talarian"),
+            new TalentModel(
+                "Talarian Cruelty",
+                "You are cruel & have a reputation to match it. When you attempt a Task to identify the weaknesses or flaws of an enemy you reduce Difficulty by 1. If the enemy has a trait which reflects this weakness, you may re-roll a single d20 on the next attack or persuasion Task you attempt vs them.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Talarian, false)],
+                1,
+                "Talarian"),
+            new TalentModel(
+                "The B'Nar",
+                "A Talarian will perform The B'Nar when in mourning or cut off from other Talarians. After they have made the B'Nar for a length of time equivalient to their Fitness score, they immediately regain all Stress points. Also, making the B'Nar is so enheartening to a Talarian that they gain 1d20 to Control or Fitness rolls",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Talarian, false)],
+                1,
+                "Talarian"),
 
 
 
@@ -3746,6 +3763,24 @@ export class Talents {
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new SpecializationPrerequisite(Specialization.SonaCommandOfficer), new SpeciesPrerequisite(Species.SonA, false)],
             1,
             "Son'a", true),
+        new TalentModel(
+            "Endure the Pain",
+            "Reduce non-lethal damage against the Talarian by 2. This is unaffected by Piercing.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new SpecializationPrerequisite(Specialization.TalarianWarrior, Specialization.TalarianOfficer)],
+            1,
+            "Talarian", true),
+        new TalentModel(
+            "Sharing Victory",
+            "When a Talarian succeeds in a Task, the next Talarian in the initiative order, if performing a Task, may re-roll a d20 in their pool at no cost.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new SpecializationPrerequisite(Specialization.TalarianWarrior, Specialization.TalarianOfficer)],
+            1,
+            "Talarian", true),
+        new TalentModel(
+            "Guerilla Maneuvers",
+            "The Talarian Officer may Create an Advantage once per adventure for free, representing a pre-arranged strategy, such as a rigged explosion or ambush. Such an explosion is treated as (Ranged, 5[D] Area).",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new SpecializationPrerequisite(Specialization.TalarianOfficer)],
+            1,
+            "Talarian", true),
     ];
 
     getTalents() {

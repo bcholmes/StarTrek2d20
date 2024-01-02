@@ -594,6 +594,35 @@ export class Specializations {
                     "Our former leaders lacked vision. Self-abnegation is not a virtue.",
                     "We do what we must."
                 ], 1, [Species.SonA]),
+            new SpecializationModel(Specialization.TalarianOfficer, NpcCharacterType.MinorPolity, "Talarian Officer",
+                [Attribute.Control, Attribute.Daring, Attribute.Presence],
+                Skill.Command,
+                [
+                    "Starship Battle Tactics", "Negotiation", "Threats",
+                    "Leadership", "Diplomacy", "Talarian Military Protocol",
+                    "Disruptors", "Hand-to-Hand Combat", "Melee Weapons"
+                ],
+                [
+                    "Starship Tactical Weapons",
+                    "Guerilla Tactics", "Training Games", "Talarian Age-of-Decision Tests", "Ship Sensors",
+                ],
+                [
+                    "By the Fathers of Talar",
+                    "My father and my father's father were all decorated officers; I will not bring shame to their legacy.",
+                    "Constantly testing one's capabilities promotes strength.",
+                    "We are willing to make war to preserve our culture.",
+                    "You are not like us. You don't understand or appreciate our values, our culture, our way of life.",
+                    "We do not touch outsiders.",
+                    "We push our boundaries to achieve excellence.",
+                    "We are engaged in an eternal quest to hone ourselves to peak greatness.",
+                    "Among my people, a female can never outrank a male.",
+                    "Pain is not a consideration",
+                    "You understand nothing.",
+                    "It was war. Death is part of war.",
+                    "I am ready to die.",
+                    "To attack a superior officer is the highest offence.",
+                    "I wear these gloves so that I do not have to touch an alien."
+                ], 1, [Species.Talarian]),
             new SpecializationModel(Specialization.OrionPirate, NpcCharacterType.RogueRuffianMercenary, "Orion Pirate",
                 [Attribute.Daring, Attribute.Presence, Attribute.Control],
                 Skill.Security,

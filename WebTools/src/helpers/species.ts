@@ -1793,7 +1793,19 @@ class _Species {
             [TalentsHelper.getTalent("Vow of Silence"), TalentsHelper.getTalent("Dolbargy Healing Trance")],
             "",
             []),
-
+        [Species.Talarian]: new SpeciesModel(
+            Species.Talarian,
+            "Talarian",
+            [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Source.ContinuingMissions],
+            [],
+            [Attribute.Control, Attribute.Daring, Attribute.Fitness],
+            "Talarian",
+            "",
+            "",
+            [TalentsHelper.getTalent("Trained from Birth"), TalentsHelper.getTalent("Talarian Cruelty"), TalentsHelper.getTalent("The B'Nar")],
+            "",
+            []),
 
 
 

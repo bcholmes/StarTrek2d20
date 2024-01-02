@@ -36,6 +36,10 @@ const names = [
         "names": require('./names-reman.json')
     },
     {
+        "species": "Talarian",
+        "names": require('./names-talarian.json')
+    },
+    {
         "species": "Tellarite",
         "names": require('./names-tellarite.json')
     },

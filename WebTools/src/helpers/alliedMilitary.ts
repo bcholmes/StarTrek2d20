@@ -14,6 +14,7 @@ export enum AlliedMilitaryType {
     Dominion,
     FerengiMilitary,
     SonACommand,
+    TalarianMilitia,
     Other
 }
 

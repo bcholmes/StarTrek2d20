@@ -140,6 +140,7 @@ export enum Species {
     ElAurian,
     Yridian,
     Hupyrian,
+    Talarian,
 
 
 

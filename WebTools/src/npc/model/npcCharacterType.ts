@@ -79,6 +79,8 @@ export class NpcCharacterTypes {
                 return hasAnySource([Source.DS9, Source.AlphaQuadrant, Source.CaptainsLog]) && this.isNextGenerationOrLater();
             } else if (t.type === NpcCharacterType.Ferengi) {
                 return hasAnySource([Source.DS9, Source.AlphaQuadrant, Source.CaptainsLog]) && this.isNextGenerationOrLater();
+            } else if (t.type === NpcCharacterType.MinorPolity) {
+                return hasAnySource([Source.AlphaQuadrant, Source.ContinuingMissions]) && this.isNextGenerationOrLater();
             } else {
                 return true;
             }

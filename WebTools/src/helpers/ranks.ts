@@ -285,7 +285,10 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
                 new NotRolesPrerequisite([Role.Admiral]),
-                new CharacterTypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior)
+                new AnyOfPrerequisite(
+                    new CharacterTypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior),
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.AndorianImperialGuard, AlliedMilitaryType.TalarianMilitia)
+                )
             ],
             "Capt."),
         new RankModel(
@@ -305,7 +308,10 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
                 new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer]),
-                new CharacterTypePrerequisite(CharacterType.Starfleet)
+                new AnyOfPrerequisite(
+                    new CharacterTypePrerequisite(CharacterType.Starfleet),
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.TalarianMilitia)
+                )
             ],
             "LCdr."),
         new RankModel(
@@ -321,7 +327,8 @@ export class RanksHelper {
                     ),
                     new CharacterTypePrerequisite(CharacterType.KlingonWarrior),
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.KlingonDefenceForce, AlliedMilitaryType.RomulanStarEmpire,
-                        AlliedMilitaryType.AndorianImperialGuard, AlliedMilitaryType.VulcanHighCommand, AlliedMilitaryType.BajoranMilitia)),
+                        AlliedMilitaryType.AndorianImperialGuard, AlliedMilitaryType.VulcanHighCommand, AlliedMilitaryType.BajoranMilitia,
+                        AlliedMilitaryType.TalarianMilitia)),
             ],
             "Lt."),
         new RankModel(
@@ -331,7 +338,10 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
                 new NotRolesPrerequisite([Role.Admiral, Role.CommandingOfficer]),
-                new CharacterTypePrerequisite(CharacterType.Starfleet)
+                new AnyOfPrerequisite(
+                    new CharacterTypePrerequisite(CharacterType.Starfleet),
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.TalarianMilitia)
+                )
             ],
             "Lt. (J.G.)"),
         new RankModel(
@@ -342,7 +352,7 @@ export class RanksHelper {
                 new CareersPrerequisite(Career.Young, Career.Experienced),
                 new RolesPrerequisite([Role.CommunicationsOfficer, Role.FlightController, Role.OperationsManager, Role.ScienceOfficer, Role.ShipsCounselor, Role.WeaponsOfficer], true),
                 new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior),
-                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.KlingonDefenceForce)),
+                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.KlingonDefenceForce, AlliedMilitaryType.TalarianMilitia)),
             ],
             "Ens."),
         new RankModel(

@@ -438,7 +438,12 @@ export class NpcGenerator {
             nameSpecies = SpeciesHelper.getSpeciesByType(Species.Klingon);
         }
 
-        let {name, pronouns} = NameGenerator.instance.createName(nameSpecies);
+        let gender = undefined;
+        if (specialization.id === Specialization.TalarianOfficer || specialization.id === Specialization.TalarianWarrior) {
+            gender = "Male";
+        }
+
+        let {name, pronouns} = NameGenerator.instance.createName(nameSpecies, gender);
         character.name = name;
         character.pronouns = pronouns;
 
@@ -462,7 +467,7 @@ export class NpcGenerator {
         if (specialization.id === Specialization.Admiral) {
             careers = [ Career.Veteran ];
         } else if (specialization.id === Specialization.FerengiDaiMon || specialization.id === Specialization.KlingonShipCaptain
-                || specialization.id === Specialization.CardassianGul) {
+                || specialization.id === Specialization.CardassianGul || specialization.id === Specialization.SonaCommandOfficer) {
             careers = [ Career.Experienced, Career.Experienced, Career.Experienced, Career.Veteran ];
         }
 
@@ -509,6 +514,8 @@ export class NpcGenerator {
                 character.type = CharacterType.AlliedMilitary;
                 if (specialization.id === Specialization.SonaCommandOfficer) {
                     character.typeDetails = new AlliedMilitaryDetails(new AlliedMilitary("Son'a Command", AlliedMilitaryType.SonACommand, [ Species.SonA ]), "Son'a Command");
+                } else if (specialization.id === Specialization.TalarianOfficer || specialization.id === Specialization.TalarianWarrior) {
+                    character.typeDetails = new AlliedMilitaryDetails(new AlliedMilitary("Talarian Militia", AlliedMilitaryType.TalarianMilitia, [ Species.Talarian ]), "Talarian Militia");
                 }
                 break;
             case NpcCharacterType.Civilian:
@@ -517,7 +524,7 @@ export class NpcGenerator {
             case NpcCharacterType.Ferengi:
                 if (specialization.id === Specialization.FerengiMerchant) {
                     character.type = CharacterType.Civilian;
-                } else {
+            } else {
                     character.type = CharacterType.AlliedMilitary;
                     character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(AlliedMilitaryType.Other), "Ferengi");
                 }
