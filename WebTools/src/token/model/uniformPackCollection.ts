@@ -69,6 +69,11 @@ export default class UniformPackCollection {
                     this.uniformPacks[era] = new LowerDecksUniformPack();
                     completion();
                 }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
+            } else if (era === UniformEra.JemHadar) {
+                import(/* webpackChunkName: 'jemHadar' */ './jemHadarUniformPack').then(({JemHadarUniformPack}) => {
+                    this.uniformPacks[era] = new JemHadarUniformPack();
+                    completion();
+                }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
             } else {
                 this.createUniformPack(era);
                 completion();

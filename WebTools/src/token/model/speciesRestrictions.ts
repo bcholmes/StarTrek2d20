@@ -181,7 +181,8 @@ class SpeciesRestrictions {
 
     static isRubberHeaded(species: Species) {
         return species === Species.Aurelian || species === Species.Saurian || species === Species.Caitian
-            || species === Species.Benzite || species === Species.XindiReptilian;
+            || species === Species.Benzite || species === Species.JemHadar || species === Species.XindiReptilian
+            || species === Species.Zaranite;
     }
 
     static getSpeciesOptions(species: Species) {

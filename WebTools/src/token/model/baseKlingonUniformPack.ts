@@ -96,4 +96,9 @@ export abstract class BaseKlingonUniformPack {
     getBorderLogo(token: Token): string {
         return KlingonEmblem;
     }
+
+    isDivisionColorSupported(token: Token): boolean {
+        return false;
+    }
+
 }

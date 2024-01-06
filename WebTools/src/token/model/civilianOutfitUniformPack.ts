@@ -194,4 +194,8 @@ export class CivilianOutfitUniformPack extends BaseNeckProvider implements IUnif
     getBorderLogo(token: Token): string {
         return "";
     }
+
+    isDivisionColorSupported(token: Token): boolean {
+        return false;
+    }
 }

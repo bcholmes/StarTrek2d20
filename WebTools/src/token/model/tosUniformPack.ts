@@ -406,5 +406,9 @@ export class TosUniformPack extends BaseNeckProvider implements IUniformPack {
             return TosScienceDelta;
         }
     }
+
+    isDivisionColorSupported(token: Token): boolean {
+        return true;
+    }
 }
 

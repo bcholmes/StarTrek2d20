@@ -14,4 +14,6 @@ export interface IUniformPack {
     getRankBorderIndicator(token: Token): string;
 
     getBorderLogo(token: Token): string;
+
+    isDivisionColorSupported(token: Token): boolean;
 }

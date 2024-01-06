@@ -360,4 +360,8 @@ export abstract class BaseTngEraUniformPack extends BaseNeckProvider {
     getBorderLogo(token: Token): string {
         return DominionWarCommbadge;
     }
+
+    isDivisionColorSupported(token: Token): boolean {
+        return true;
+    }
 }

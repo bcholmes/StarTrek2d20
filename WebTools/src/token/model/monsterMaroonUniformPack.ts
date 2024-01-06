@@ -604,4 +604,8 @@ export class MonsterMaroonUniformPack extends BaseNeckProvider implements IUnifo
     getBorderLogo(token: Token): string {
         return TwokDelta;
     }
+
+    isDivisionColorSupported(token: Token): boolean {
+        return true;
+    }
 }

@@ -3741,7 +3741,7 @@ export class Talents {
         new TalentModel(
             "Specialist Subject: Social Scientist",
             "A social scientist is trained in how intelligent beings interact with the world around them in fields such as Anthropology, Geography, and Linguistics. Like the Hard Science choice above, the choices in Focus should also have a specific world or culture attached to them, e.g. History of Andor, Vulcan Linguistics, or Tellarite Law.",
-            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Scientist, Specialization.StarfleetScientist), ,
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Scientist, Specialization.StarfleetScientist),
             new FocusPrerequisite("Anthropology", "Geography", "Linguistics", "Sociology", "History"), new CareersPrerequisite(Career.Experienced, Career.Veteran)],
             1,
             "General", true),

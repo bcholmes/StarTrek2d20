@@ -135,7 +135,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
             Specializations.instance.getSpecializations(this.state.selectedType?.type).forEach(s => {
                 if (this.state.selectedSpecialization == null || this.state.selectedSpecialization?.id === s.id) {
                     let speciesList = s.species?.length ? s.species : this.getStandardFederationSpeciesListAsTypes();
-                    speciesList. forEach(s => {
+                    speciesList.forEach(s => {
                         if (items.indexOf(s) < 0) {
                             items.push(s);
                         }

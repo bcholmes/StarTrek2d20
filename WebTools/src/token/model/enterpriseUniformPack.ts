@@ -640,4 +640,8 @@ export class EnterpriseUniformPack extends BaseNeckProvider implements IUniformP
     getBorderLogo(token: Token): string {
         return EnterpriseEraStarfleetLogo;
     }
+
+    isDivisionColorSupported(token: Token): boolean {
+        return true;
+    }
 }
