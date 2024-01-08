@@ -898,13 +898,13 @@
     "StarSystem.common.companionStar": "Begleitstern",
 
     "UniformEra.civilian": "Zivilist",
+    "UniformEra.dominionWar": "Dominionkrieg",
     "UniformEra.enterprise": "Enterprise",
+    "UniformEra.klingon": "Klingonische Rüstung",
+    "UniformEra.lowerDecks": "Lower Decks",
+    "UniformEra.monsterMaroon": "Der Zorn des Khan",
     "UniformEra.originalSeries": "Originalserie",
     "UniformEra.originalSeriesKlingon": "Klingonen (Originalserie)",
-    "UniformEra.klingon": "Klingonische Rüstung",
-    "UniformEra.monsterMaroon": "Der Zorn des Khan",
-    "UniformEra.dominionWar": "Dominionkrieg",
-    "UniformEra.lowerDecks": "Lower Decks",
     "UniformEra.voyagerDS9": "Voyager/DS9",
 
     "Upbringing.starfleet.militaryOrExploration.name": "Sternenflotte",

@@ -40,7 +40,9 @@ export class DivisionColors {
 
     static getDivision(era: UniformEra, color: string) {
         let index = this.indexOf(era, color);
-        if (era === UniformEra.MonsterMaroon) {
+        if (!this.isDivisionColorsSupported(era)) {
+            return null;
+        } else if (era === UniformEra.MonsterMaroon) {
             let colours = ["Command", "Science", "HelmEngineering", "Medical", "Security", "Special Services", "Trainee"];
             return index >= 0 ? colours[index] : null;
         } else {
@@ -50,7 +52,7 @@ export class DivisionColors {
 
     static isDivisionColorsSupported(era: UniformEra) {
         return era !== UniformEra.Klingon && era !== UniformEra.OriginalSeriesKlingon && era !== UniformEra.Civilian
-            && era !== UniformEra.JemHadar;
+            && era !== UniformEra.JemHadar && era !== UniformEra.Romulan && era !== UniformEra.Suliban;
     }
 
     static indexOf(era: UniformEra, color: string) {

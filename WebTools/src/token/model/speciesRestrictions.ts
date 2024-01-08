@@ -43,6 +43,8 @@ class SpeciesRestrictions {
             return ["#bbb895", "#aea433", "#bba326", "#898558"];
         } else if (species === Species.Aurelian) {
             return ["#fbebb7", "#f7d66f", "#e0c167", "#b7d562", "#b6b456", "#b49249", "#87622a"];
+        } else if (species === Species.Reman) {
+            return ["#ccc9be", "#c8d9d6", "#b4bdb8", "#96a09c"];
         } else {
             return ["#F8E0DE", "#F4D5CA", "#F2C8B8", "#E1BA93", "#dcbda1", "#CEB29C", "#CAA18B", SpeciesRestrictions.DEFAULT_SKIN_COLOR, "#AB7D5C", "#9B7A57", "#9b6b43", "#8C644A", "#704A35", "#53382D", "#473028"];
         }
@@ -181,7 +183,8 @@ class SpeciesRestrictions {
 
     static isRubberHeaded(species: Species) {
         return species === Species.Aurelian || species === Species.Saurian || species === Species.Caitian
-            || species === Species.Benzite || species === Species.JemHadar || species === Species.XindiReptilian
+            || species === Species.Benzite || species === Species.JemHadar || species === Species.Reman
+            || species === Species.Jelna || species === Species.XindiReptilian
             || species === Species.Zaranite;
     }
 

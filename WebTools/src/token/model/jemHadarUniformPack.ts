@@ -1,7 +1,5 @@
-import { Rank } from "../../helpers/ranks";
 import { BaseNeckProvider } from "./baseNeckProvider";
 import { BodyType } from "./bodyTypeEnum"
-import RankIndicatorCatalog from "./rankIndicatorCatalog";
 import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch"
 import { Token } from "./token";

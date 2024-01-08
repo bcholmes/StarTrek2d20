@@ -277,6 +277,9 @@ class Marshaller {
             if (character.finishingStep.value != null) {
                 sheet["finish"]["value"] = character.finishingStep.value;
             }
+            if (character.finishingStep.talent != null) {
+                sheet["finish"]["talent"] = this.talentToJson(character.finishingStep.talent);
+            }
         }
 
         if (character.age != null) {
