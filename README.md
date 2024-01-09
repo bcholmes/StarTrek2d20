@@ -25,9 +25,6 @@ You might want to install an IDE. The original developer of this codebase used V
 Community Edition (which only runs on Windoze). I tend to use [VS Code](https://code.visualstudio.com/)
 on my Mac.
 
-Some of the files in this repo (such as the Visual Studio solution file -- .sln) date back to the
-original developer's IDE. I haven't touched those files since I started maintaining this project.
-
 ## Getting Started
 
 *Note*: I recently added a symbolic link to the package.json file. I'm not sure if Windows is going

@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import copy from "copy-to-clipboard";
 import { preventDefaultAnchorEvent } from "../../common/navigator";
 import { Header } from "../../components/header";
 import { setSectorName, setStar } from "../../state/starActions";
@@ -34,12 +33,6 @@ const SectorDetailsPage: React.FC<ISectorDetailsPageProperties> = ({sector}) => 
 
         const pdfBytes = await pdfDoc.save();
         download(pdfBytes, "Sector-" + sector.name + ".pdf", "application/pdf");
-    }
-
-    const copyDetailsToClipboard = () => {
-        copy(sector.plainText, {
-            debug: true,
-            message: 'Press #{key} to copy',});
     }
 
     const showSystem = (system: StarSystem) => {
