@@ -7,7 +7,7 @@ import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcr
 import { Header } from '../components/header';
 import replaceDiceWithArrowhead from '../common/arrowhead';
 import store from '../state/store';
-import { addCharacterBorgImplant, addCharacterTalentFocus, addCharacterTalentValue, removeCharacterBorgImplant, setCharacterFocus } from '../state/characterActions';
+import { addCharacterBorgImplant, addCharacterTalentFocus, addCharacterTalentValue, removeCharacterBorgImplant } from '../state/characterActions';
 import { BorgImplants, Implant } from '../helpers/borgImplant';
 import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { useTranslation } from 'react-i18next';

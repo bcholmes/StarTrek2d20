@@ -13,7 +13,7 @@ import SystemView from "../view/systemView";
 import { Button } from "../../components/button";
 import { Sector } from "../table/sector";
 import { StarSystem } from "../table/starSystem";
-import { PDFDocument } from "pdf-lib";
+import { PDFDocument } from "@cantoo/pdf-lib";
 import { PdfExporter } from "../export/pdfExporter";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";

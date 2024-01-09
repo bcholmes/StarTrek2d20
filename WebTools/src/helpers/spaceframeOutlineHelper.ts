@@ -1,4 +1,4 @@
-import { PDFDocument, RGB } from "pdf-lib";
+import { PDFDocument, RGB } from "@cantoo/pdf-lib";
 import { CharacterType } from "../common/characterType";
 import { Starship } from "../common/starship";
 import { Spaceframe } from "./spaceframeEnum";

@@ -36,6 +36,7 @@
   "main": "src/app.tsx",
   "private": true,
   "dependencies": {
+    "@cantoo/pdf-lib": "1.20.0",
     "@pdf-lib/fontkit": "1.1.1",
     "@reduxjs/toolkit": "1.8.1",
     "bootstrap": "^4.6.2",
@@ -51,7 +52,6 @@
     "js-base64": "3.7.2",
     "loader-utils": "^2.0.4",
     "pako": "2.0.4",
-    "pdf-lib": "1.17.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "2.4.1",
