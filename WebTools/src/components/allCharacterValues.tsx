@@ -29,7 +29,7 @@ const AllCharacterValues: React.FC<ICharacterProperties> = ({character}) => {
                 <p>
                     If you did not define your values during character creation,
                     or if you want to change any of them,
-                    now is the time to think about the values your character goes by.
+                    now is the time to think about the values your character holds.
                 </p>
                 <div className="row">
                     <div className="col-lg-6 py-2">
