@@ -89,10 +89,10 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
 
         const data = this._sheetData.dataSection.map((s, i) => {
             return (
-                <tr key={i}>
-                    <td className="bg-dark text-uppercase">{s.name}</td>
-                    <td className="bg-light border-dark text-dark">{s.value}</td>
-                </tr>
+                <div className="sheet-panel d-flex">
+                    <div className="sheet-label-purple text-uppercase">{s.name}</div>
+                    <div className="sheet-data">{s.value}</div>
+                </div>
             )
         });
 
@@ -133,7 +133,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
             return (<div key={i}>{CareerEventsHelper.getCareerEvent(e.id, c.type).localizedName}</div>)
         });
 
-        let containerClass = this.props.showProfile ? "sheet-container sheet-container-visible" :  "sheet-container sheet-container-hidden";
+        let containerClass = this.props.showProfile ? "sheet-container sheet-container-visible pr-3" :  "sheet-container sheet-container-hidden pr-3";
         const era = this.props.era == null ? null : ErasHelper.getEra(this.props.era);
 
         return (
@@ -141,165 +141,191 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                 <div id="character-sheet" className={this.props.showProfile ? 'sheet-visible' : 'sheet-hidden'}>
                     <div className="sheet-bg" id="sheet-bg" style={{ display: this.props.showProfile ? '' : "none" }} onClick={() => this.props.close()}></div>
                     <div className={containerClass} id="sheet-container">
-                        <div className="sheet-panel">
-                            <table className="sheet-section">
-                                <tbody>
-                                    <tr>
-                                        <td className="bg-dark text-uppercase">{t('Construct.other.characterType')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark">
-                                            {CharacterTypeModel.getByType(c.type)?.localizedName}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className="sheet-panel">
-                            <table className="sheet-section">
-                                <tbody>
-                                    <tr>
-                                        <td className="bg-darker text-uppercase">{t('Construct.other.era')}:</td>
-                                        <td className="bg-light border-dark-nopadding text-dark">{era?.localizedName ?? ""}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <div className="row">
+                            <div className="col-md-6 mb-2">
+                                <div className="sheet-panel d-flex">
+                                    <div className="sheet-label-purple text-uppercase">{t('Construct.other.characterType')}</div>
+                                    <div className="sheet-data">
+                                        {CharacterTypeModel.getByType(c.type)?.localizedName}
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div className="sheet-panel">
-                            <table className="sheet-section">
-                                <tbody>
-                                    {data}
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className="sheet-panel">
-                            <table className="sheet-section">
-                                <tbody>
-                                    <tr>
-                                        <td className="bg-darker text-uppercase">{t('Construct.attribute.control')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark text-center">
-                                            {c.attributes[Attribute.Control].value}
-                                        </td>
-                                        <td className="bg-darker text-uppercase">{t('Construct.attribute.daring')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark text-center">
-                                            {c.attributes[Attribute.Daring].value}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="bg-darker text-uppercase">{t('Construct.attribute.fitness')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark text-center">
-                                            {c.attributes[Attribute.Fitness].value}
-                                        </td>
-                                        <td className="bg-darker text-uppercase">{t('Construct.attribute.insight')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark text-center">
-                                            {c.attributes[Attribute.Insight].value}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="bg-darker text-uppercase">{t('Construct.attribute.presence')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark text-center">
-                                            {c.attributes[Attribute.Presence].value}
-                                        </td>
-                                        <td className="bg-darker text-uppercase">{t('Construct.attribute.reason')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark text-center">
-                                            {c.attributes[Attribute.Reason].value}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="bg-darkest text-uppercase">{t('Construct.discipline.command')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark text-center">
-                                            {c.skills[Skill.Command].expertise}
-                                        </td>
-                                        <td className="bg-darkest text-uppercase">{t('Construct.discipline.conn')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark text-center">
-                                            {c.skills[Skill.Conn].expertise}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="bg-darkest text-uppercase">{t('Construct.discipline.security')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark text-center">
-                                            {c.skills[Skill.Security].expertise}
-                                        </td>
-                                        <td className="bg-darkest text-uppercase">{t('Construct.discipline.engineering')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark text-center">
-                                            {c.skills[Skill.Engineering].expertise}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="bg-darkest text-uppercase">{t('Construct.discipline.science')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark text-center">
-                                            {c.skills[Skill.Science].expertise}
-                                        </td>
-                                        <td className="bg-darkest text-uppercase">{t('Construct.discipline.medicine')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark text-center">
-                                            {c.skills[Skill.Medicine].expertise}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className="sheet-panel">
-                            <table className="sheet-section">
-                                <tbody>
-                                    <tr>
-                                        <td className="bg-dark text-uppercase">{t('Construct.other.values')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark">
-                                            {values}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className="sheet-panel">
-                            <table className="sheet-section">
-                                <tbody>
-                                    <tr>
-                                        <td className="bg-dark text-uppercase">{t('Construct.other.focuses')}</td>
-                                        <td className="bg-light border-dark-nopadding text-dark">
-                                            {focuses}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        {c.stereotype === Stereotype.SoloCharacter ? undefined :
-                            (<div className="sheet-panel">
-                                <table className="sheet-section">
-                                    <tbody>
-                                        <tr>
-                                            <td className="bg-dark text-uppercase">{t('Construct.other.talents')}</td>
-                                            <td className="bg-light border-dark-nopadding text-dark">
-                                                {talents}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>)}
-                        <div className="sheet-panel">
-                            <table className="sheet-section">
-                                <tbody>
-                                    <tr>
-                                        <td className="bg-dark text-uppercase">{t('Construct.other.equipment')}</td>
-                                        <td className="bg-light border-dark text-dark">
-                                            {equipment}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className="sheet-panel">
-                            <table className="sheet-section">
-                                <tbody>
-                                    <tr>
-                                        <td className="bg-dark text-uppercase">{t('Construct.other.careerEvents')}</td>
-                                        <td className="bg-light border-dark text-dark">
-                                            {careerEvents}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            <div className="col-md-6 mb-2">
+                                <div className="sheet-panel d-flex">
+                                    <div className="sheet-label-purple text-uppercase">{t('Construct.other.era')}</div>
+                                    <div className="sheet-data">
+                                        {era?.localizedName ?? ""}
+                                    </div>
+                                </div>
+                            </div>
 
-                        <br />
+
+                            <div className="col-md-6 mb-2">
+                                {data}
+                            </div>
+
+                            <div className="col-md-6 mb-2">
+
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="sheet-panel d-flex mw-100">
+                                            <div className="sheet-label-purple text-uppercase">{t('Construct.attribute.control')}</div>
+                                            <div className="sheet-data text-center">
+                                                {c.attributes[Attribute.Control].value}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="sheet-panel d-flex mw-100">
+                                            <div className="sheet-label-purple text-uppercase">{t('Construct.attribute.daring')}</div>
+                                            <div className="sheet-data text-center">
+                                                {c.attributes[Attribute.Daring].value}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="sheet-panel d-flex mw-100">
+                                            <div className="sheet-label-purple text-uppercase">{t('Construct.attribute.fitness')}</div>
+                                            <div className="sheet-data text-center">
+                                                {c.attributes[Attribute.Fitness].value}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="sheet-panel d-flex mw-100">
+                                            <div className="sheet-label-purple text-uppercase">{t('Construct.attribute.insight')}</div>
+                                            <div className="sheet-data text-center">
+                                                {c.attributes[Attribute.Insight].value}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="sheet-panel d-flex mw-100">
+                                            <div className="sheet-label-purple text-uppercase">{t('Construct.attribute.presence')}</div>
+                                            <div className="sheet-data text-center">
+                                                {c.attributes[Attribute.Presence].value}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="sheet-panel d-flex mw-100">
+                                            <div className="sheet-label-purple text-uppercase">{t('Construct.attribute.reason')}</div>
+                                            <div className="sheet-data text-center">
+                                                {c.attributes[Attribute.Reason].value}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="sheet-panel d-flex mw-100">
+                                            <div className="sheet-label-orange text-uppercase">{t('Construct.discipline.command')}</div>
+                                            <div className="sheet-data text-center">
+                                                {c.skills[Skill.Command].expertise}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="sheet-panel d-flex mw-100">
+                                            <div className="sheet-label-orange text-uppercase">{t('Construct.discipline.conn')}</div>
+                                            <div className="sheet-data text-center">
+                                                {c.skills[Skill.Conn].expertise}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="sheet-panel d-flex mw-100">
+                                            <div className="sheet-label-orange text-uppercase">{t('Construct.discipline.security')}</div>
+                                            <div className="sheet-data text-center">
+                                                {c.skills[Skill.Security].expertise}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="sheet-panel d-flex mw-100">
+                                            <div className="sheet-label-orange text-uppercase">{t('Construct.discipline.engineering')}</div>
+                                            <div className="sheet-data text-center">
+                                                {c.skills[Skill.Engineering].expertise}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="sheet-panel d-flex mw-100">
+                                            <div className="sheet-label-orange text-uppercase">{t('Construct.discipline.science')}</div>
+                                            <div className="sheet-data text-center">
+                                                {c.skills[Skill.Science].expertise}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="sheet-panel d-flex mw-100">
+                                            <div className="sheet-label-orange text-uppercase">{t('Construct.discipline.medicine')}</div>
+                                            <div className="sheet-data text-center">
+                                                {c.skills[Skill.Medicine].expertise}
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div className="col-md-6 mb-2">
+                                <div className="sheet-panel d-flex">
+                                    <div className="sheet-label-purple text-uppercase">{t('Construct.other.values')}</div>
+                                    <div className="sheet-data">
+                                        {values}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col-md-6 mb-2">
+                                <div className="sheet-panel d-flex">
+                                    <div className="sheet-label-purple text-uppercase">{t('Construct.other.focuses')}</div>
+                                    <div className="sheet-data">
+                                        {focuses}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {c.stereotype === Stereotype.SoloCharacter ? undefined :
+                                (<div className="col-md-6 mb-2">
+                                    <div className="sheet-panel d-flex">
+                                        <div className="sheet-label-purple text-uppercase">{t('Construct.other.talents')}</div>
+                                        <div className="sheet-data">
+                                        {talents}
+                                        </div>
+                                    </div>
+                                </div>)}
+
+                            <div className="col-md-6 mb-2">
+                                <div className="sheet-panel d-flex">
+                                    <div className="sheet-label-purple text-uppercase">{t('Construct.other.equipment')}</div>
+                                    <div className="sheet-data">
+                                        {equipment}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col-md-6 mb-2">
+                                <div className="sheet-panel d-flex">
+                                    <div className="sheet-label-purple text-uppercase">{t('Construct.other.careerEvents')}</div>
+                                    <div className="sheet-data">
+                                        {careerEvents}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import packageJson from '../package.alias.json';
 export class AppVersion extends React.Component<{}, {}> {
 
     render() {
-        return (<div id="version">v{packageJson.version}</div>);
+        return (<div id="version" className="pr-3">v{packageJson.version}</div>);
     }
 }
 

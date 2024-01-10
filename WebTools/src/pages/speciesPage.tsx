@@ -94,20 +94,22 @@ const SpeciesPage: React.FC<ICharacterProperties> = ({character}) => {
         <div className="page">
             <div className="container ml-0">
                 <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Species} />
-                <Header>{t('Page.title.species')}</Header>
+                <main>
+                    <Header>{t('Page.title.species')}</Header>
 
-                <InstructionText text={t('SpeciesPage.text')} />
+                    <InstructionText text={t('SpeciesPage.text')} />
 
-                <div className="btn-group w-100 mt-4" role="group" aria-label="Environment types">
-                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === SpeciesTab.Standard ? "active" : "")}
-                        onClick={() => setTab(SpeciesTab.Standard)}>Standard Species</button>
-                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === SpeciesTab.Mixed ? "active" : "")}
-                        onClick={() => setTab(SpeciesTab.Mixed)}>Mixed Species</button>
-                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === SpeciesTab.Custom ? "active" : "")}
-                        onClick={() => setTab(SpeciesTab.Custom)}>Custom Species</button>
-                </div>
+                    <div className="btn-group w-100 mt-4" role="group" aria-label="Environment types">
+                        <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === SpeciesTab.Standard ? "active" : "")}
+                            onClick={() => setTab(SpeciesTab.Standard)}>Standard Species</button>
+                        <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === SpeciesTab.Mixed ? "active" : "")}
+                            onClick={() => setTab(SpeciesTab.Mixed)}>Mixed Species</button>
+                        <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === SpeciesTab.Custom ? "active" : "")}
+                            onClick={() => setTab(SpeciesTab.Custom)}>Custom Species</button>
+                    </div>
 
-                {renderTab()}
+                    {renderTab()}
+                </main>
             </div>
         </div>
     );

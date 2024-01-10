@@ -25,7 +25,8 @@ export class Button extends React.Component<IButtonProperties, {}> {
         : (
             <div className={(this.props.className ? this.props.className : "button") + " button-title"} onClick={() => this.props.onClick()}
                 onMouseOver={() => { if (this.props.onMouseOver) { this.props.onMouseOver(); }}}
-                onMouseOut={() => { if (this.props.onMouseOut) { this.props.onMouseOut(); }}}>
+                onMouseOut={() => { if (this.props.onMouseOut) { this.props.onMouseOut(); }}}
+                role="button">
                 {this.props.text ? this.props.text : this.props.children}
             </div>
         )

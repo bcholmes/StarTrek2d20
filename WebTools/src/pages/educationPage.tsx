@@ -70,37 +70,39 @@ const EducationPage: React.FC<ICharacterProperties> = ({character}) => {
         <div className="page container ml-0">
             <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Education} />
 
-            <Header>{t(makeKey('EducationPage.type.', CharacterType[character.type]))}</Header>
+            <main>
+                <Header>{t(makeKey('EducationPage.type.', CharacterType[character.type]))}</Header>
 
-            <InstructionText text={t(makeKey('EducationPage.instruction.', CharacterType[character.type]))} />
+                <InstructionText text={t(makeKey('EducationPage.instruction.', CharacterType[character.type]))} />
 
-            {character.type === CharacterType.Starfleet
-                ? (<div className="btn-group w-100 my-4" role="group" aria-label="Environment types">
-                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === StarfleetTrackTab.Officer ? "active" : "")}
-                        onClick={() => setTab(StarfleetTrackTab.Officer)}>{t('EducationPage.starfleet.academy')}</button>
-                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === StarfleetTrackTab.Enlisted ? "active" : "")}
-                        onClick={() => setTab(StarfleetTrackTab.Enlisted)}>{t('EducationPage.starfleet.enlisted')}</button>
-                    {hasSource(Source.SciencesDivision)
-                        ? (<button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === StarfleetTrackTab.Other ? "active" : "")}
-                            onClick={() => setTab(StarfleetTrackTab.Other)}>{t('EducationPage.starfleet.other')}</button>)
-                        : undefined}
-                </div>)
-                : undefined}
+                {character.type === CharacterType.Starfleet
+                    ? (<div className="btn-group w-100 my-4" role="group" aria-label="Environment types">
+                        <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === StarfleetTrackTab.Officer ? "active" : "")}
+                            onClick={() => setTab(StarfleetTrackTab.Officer)}>{t('EducationPage.starfleet.academy')}</button>
+                        <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === StarfleetTrackTab.Enlisted ? "active" : "")}
+                            onClick={() => setTab(StarfleetTrackTab.Enlisted)}>{t('EducationPage.starfleet.enlisted')}</button>
+                        {hasSource(Source.SciencesDivision)
+                            ? (<button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === StarfleetTrackTab.Other ? "active" : "")}
+                                onClick={() => setTab(StarfleetTrackTab.Other)}>{t('EducationPage.starfleet.other')}</button>)
+                            : undefined}
+                    </div>)
+                    : undefined}
 
-            {tab !== StarfleetTrackTab.Other
-                ? (<div className="my-4">
-                    <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => rollTrack() }>
-                        <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
-                    </Button>
-                    {randomTrack != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomTrack(null)} >{t('Common.button.showAll')}</Button>) : undefined}
-                </div>)
-                : undefined}
+                {tab !== StarfleetTrackTab.Other
+                    ? (<div className="my-4">
+                        <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => rollTrack() }>
+                            <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
+                        </Button>
+                        {randomTrack != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomTrack(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                    </div>)
+                    : undefined}
 
-            <table className="selection-list my-4">
-                <tbody>
-                    {types}
-                </tbody>
-            </table>
+                <table className="selection-list my-4">
+                    <tbody>
+                        {types}
+                    </tbody>
+                </table>
+            </main>
         </div>
     );
 

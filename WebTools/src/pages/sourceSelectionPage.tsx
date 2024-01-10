@@ -12,6 +12,7 @@ import { Button } from '../components/button';
 import { PageFactory } from './pageFactory';
 import { LoadingButton } from '../common/loadingButton';
 import { setCharacter } from '../state/characterActions';
+import { Header } from '../components/header';
 
 interface ISourceSelectionPageProperties extends WithTranslation {
     sources: Source[]
@@ -82,25 +83,28 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
                         <li className="breadcrumb-item active" aria-current="page">{t('Page.title.sourceSelection')}</li>
                     </ol>
                 </nav>
-                {this.renderSources()}
-                <p className="mt-5">
-                    {t('SourceSelectionPage.gameTypeInstruction')}
-                </p>
-                <table className="selection-list">
-                    <tbody>
-                        <tr onClick={() => { if (Window.isCompact()) this.selectStandardRules(); }}>
-                            <td className="selection-header">{t('SourceSelectionPage.standardGameType')}</td>
-                            <td className="text-right"><Button buttonType={true} className="btn btn-sm btn-primary" text={t('Common.button.select')} onClick={() => { this.selectStandardRules() }} /></td>
-                        </tr>
-                        <tr onClick={() => { if (Window.isCompact() && this.hasSource(Source.CaptainsLog)) this.selectSoloRules(); }}>
-                            <td className="selection-header">{t('SourceSelectionPage.soloGameType')}</td>
-                            <td className="text-right">
-                                <LoadingButton loading={this.state.soloLoading} className="btn-sm"  onClick={() => { this.selectSoloRules() }}
-                                    enabled={this.hasSource(Source.CaptainsLog)} >{t('Common.button.select')}</LoadingButton>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <main>
+                    <Header className="mb-4">{t('Page.title.sourceSelection')}</Header>
+                    {this.renderSources()}
+                    <p className="mt-5">
+                        {t('SourceSelectionPage.gameTypeInstruction')}
+                    </p>
+                    <table className="selection-list">
+                        <tbody>
+                            <tr onClick={() => { if (Window.isCompact()) this.selectStandardRules(); }}>
+                                <td className="selection-header">{t('SourceSelectionPage.standardGameType')}</td>
+                                <td className="text-right"><Button buttonType={true} className="btn btn-sm btn-primary" text={t('Common.button.select')} onClick={() => { this.selectStandardRules() }} /></td>
+                            </tr>
+                            <tr onClick={() => { if (Window.isCompact() && this.hasSource(Source.CaptainsLog)) this.selectSoloRules(); }}>
+                                <td className="selection-header">{t('SourceSelectionPage.soloGameType')}</td>
+                                <td className="text-right">
+                                    <LoadingButton loading={this.state.soloLoading} className="btn-sm"  onClick={() => { this.selectSoloRules() }}
+                                        enabled={this.hasSource(Source.CaptainsLog)} >{t('Common.button.select')}</LoadingButton>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </main>
             </div>
         );
     }

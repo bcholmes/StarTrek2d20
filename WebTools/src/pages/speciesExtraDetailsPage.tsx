@@ -45,14 +45,16 @@ const SpeciesExtraDetailsPage: React.FC<ISpeciesExtraDetailsPageProperties> = ({
     return (<div className="page">
         <div className="container ml-0">
             <CharacterCreationBreadcrumbs />
-            <Header>{speciesModel.localizedName + ' '} Original Species Type</Header>
-            <InstructionText text={getInstructions()} />
+            <main>
+                <Header>{speciesModel.localizedName + ' '} Original Species Type</Header>
+                <InstructionText text={getInstructions()} />
 
-            <div className="mt-4">
-                <SimpleSpeciesSelection onSelection={(species) => selectOriginalSpecies(species)}
-                    character={character}
-                    species={SpeciesHelper.getPrimarySpecies(character.type, true, character)} />
-            </div>
+                <div className="mt-4">
+                    <SimpleSpeciesSelection onSelection={(species) => selectOriginalSpecies(species)}
+                        character={character}
+                        species={SpeciesHelper.getPrimarySpecies(character.type, true, character)} />
+                </div>
+            </main>
         </div>
     </div>);
 

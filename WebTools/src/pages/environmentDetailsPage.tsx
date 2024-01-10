@@ -159,48 +159,50 @@ const EnvironmentDetailsPage: React.FC<ICharacterProperties> = ({character}) => 
                 ? (<SoloCharacterBreadcrumbs pageIdentity={PageIdentity.EducationDetails} />)
                 : (<CharacterCreationBreadcrumbs  pageIdentity={PageIdentity.EnvironmentDetails} />)};
 
-            <Header>{environment.localizedName}</Header>
-            <p>{environment.localizedDescription}</p>
-            <div className="row">
-                {environment.id === Environment.AnotherSpeciesWorld
-                ? (<div className="col-lg-6 my-3">
-                    <Header level={2} className="mb-3">{t('Construct.other.species')}</Header>
-                    <InstructionText text={t('SoloEnvironmentDetailsPage.speciesText')} />
+            <main>
+                <Header>{environment.localizedName}</Header>
+                <p>{environment.localizedDescription}</p>
+                <div className="row">
+                    {environment.id === Environment.AnotherSpeciesWorld
+                    ? (<div className="col-lg-6 my-3">
+                        <Header level={2} className="mb-3">{t('Construct.other.species')}</Header>
+                        <InstructionText text={t('SoloEnvironmentDetailsPage.speciesText')} />
 
-                    <div className="mt-3">
-                        <DropDownSelect items={speciesList} defaultValue={character.environmentStep?.otherSpecies ?? ""}
-                            onChange={s => {if (s !== "") {selectOtherSpecies(s as Species)} }} />
-                    </div>
-                </div>)
-                : undefined}
-
-                <div className="col-lg-6 my-3">
-                    <Header level={2} className="mb-3"><>{t('Construct.other.attributes')} ({t('Common.text.selectOne')})</></Header>
-                    {isSpeciesSelectionNeeded()
-                        ? undefined
-                        : (<AttributeListComponent controller={controller} />)}
-                </div>
-                <div className="col-lg-6 my-3">
-                    <Header level={2} className="mb-3"><>{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</></Header>
-
-                    <DisciplineListComponent controller={disciplineController} />
-                </div>
-                <div className="col-lg-6 my-3">
-                    <Header level={2} className="mb-1">{t('Construct.other.value')}</Header>
-
-                    <div className="d-flex justify-content-between align-items-center flex-wrap">
-                        <SoloValueInput value={character?.environmentStep?.value}
-                            onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Environment))}}/>
-                        <div style={{ flexShrink: 0 }} className="mt-2">
-                            <D20IconButton onClick={() => randomValue() }/>
+                        <div className="mt-3">
+                            <DropDownSelect items={speciesList} defaultValue={character.environmentStep?.otherSpecies ?? ""}
+                                onChange={s => {if (s !== "") {selectOtherSpecies(s as Species)} }} />
                         </div>
-                        <div className="py-1 text-white">{t('Value.environment.text')}</div>
+                    </div>)
+                    : undefined}
+
+                    <div className="col-lg-6 my-3">
+                        <Header level={2} className="mb-3"><>{t('Construct.other.attributes')} ({t('Common.text.selectOne')})</></Header>
+                        {isSpeciesSelectionNeeded()
+                            ? undefined
+                            : (<AttributeListComponent controller={controller} />)}
+                    </div>
+                    <div className="col-lg-6 my-3">
+                        <Header level={2} className="mb-3"><>{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</></Header>
+
+                        <DisciplineListComponent controller={disciplineController} />
+                    </div>
+                    <div className="col-lg-6 my-3">
+                        <Header level={2} className="mb-1">{t('Construct.other.value')}</Header>
+
+                        <div className="d-flex justify-content-between align-items-center flex-wrap">
+                            <SoloValueInput value={character?.environmentStep?.value}
+                                onValueChanged={(string) => {store.dispatch(setCharacterValue(string, StepContext.Environment))}}/>
+                            <div style={{ flexShrink: 0 }} className="mt-2">
+                                <D20IconButton onClick={() => randomValue() }/>
+                            </div>
+                            <div className="py-1 text-white">{t('Value.environment.text')}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className='text-right mt-4'>
-                <Button text={t('Common.button.next')} buttonType={true} className="btn btn-primary" onClick={() => navigateToNextStep() }/>
-            </div>
+                <div className='text-right mt-4'>
+                    <Button text={t('Common.button.next')} buttonType={true} className="btn btn-primary" onClick={() => navigateToNextStep() }/>
+                </div>
+            </main>
         </div>);
 
 }

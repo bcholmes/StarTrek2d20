@@ -36,11 +36,6 @@
 .sheet-panel {
     background-color: #DE84B7;
     color: white;
-    padding: 4px;
-    margin-bottom: 5px;
-    width: 300px;
-    display: inline-table;
-    vertical-align: top;
 }
 
 .sheet-panel-wide {
@@ -77,6 +72,34 @@
 
 .sheet-section .bg-darkest {
     background-color: $lcars-orange  !important;
+}
+
+.sheet-panel {
+    .sheet-label-purple, .sheet-label-orange {
+        padding: 4px;
+        width: 90px;
+        border-radius: 10px 0 0 10px;
+        text-align: right;
+        font-size: x-small;
+    }
+
+    .sheet-label-purple {
+        background-color: $lcars-purple !important;
+    }
+
+    .sheet-label-orange {
+        background-color: $lcars-orange !important;
+    }
+
+
+    .sheet-data {
+        background-color: white;
+        border: 1px solid #906F9A;
+        padding: 2px;
+        color: black;
+        flex-grow: 1;
+        font-size: x-small;
+    }
 }
 
 .bg-dark-wide {

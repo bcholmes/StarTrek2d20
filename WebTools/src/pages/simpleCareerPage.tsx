@@ -48,23 +48,25 @@ const SimpleCareerPage: React.FC<ISimpleCareerPageProperties> = ({character, tal
     return (
         <div className="page container ml-0">
             <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.CadetCareer}/>
-            <Header>{t('Page.title.careerLength')}</Header>
-            <InstructionText text={t(instruction)} />
-            <div className="row">
-                <div className="col-12 col-lg-6">
-                    <Header level={2}>{t('Construct.other.value')}</Header>
-                    <ValueInput value={character.careerStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value)}
-                            onRandomClicked={() => randomValue()} textDescription={t('Value.careerLength.young.text')}
-                        />
+            <main>
+                <Header>{t('Page.title.careerLength')}</Header>
+                <InstructionText text={t(instruction)} />
+                <div className="row">
+                    <div className="col-12 col-lg-6">
+                        <Header level={2}>{t('Construct.other.value')}</Header>
+                        <ValueInput value={character.careerStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value)}
+                                onRandomClicked={() => randomValue()} textDescription={t('Value.careerLength.young.text')}
+                            />
+                    </div>
+                    <div className="col-12 col-lg-6">
+                        <Header level={2}>{t('Construct.other.talent')}</Header>
+                        <TalentDescription name={talentModel.localizedName} description={talentModel.description} />
+                    </div>
                 </div>
-                <div className="col-12 col-lg-6">
-                    <Header level={2}>{t('Construct.other.talent')}</Header>
-                    <TalentDescription name={talentModel.localizedName} description={talentModel.description} />
+                <div className="text-right">
+                    <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary" onClick={() => onNext() }/>
                 </div>
-            </div>
-            <div className="text-right">
-                <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary" onClick={() => onNext() }/>
-            </div>
+            </main>
         </div>
     );
 }

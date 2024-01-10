@@ -63,7 +63,7 @@ const NpcView: React.FC<ICharacterPageProperties> = ({character}) => {
         VttSelectionDialog.instance.show(character);
     }
 
-    return (<div>
+    return (<main>
         {renderTopFields()}
         <div className="row">
             <div className="col-xl-6 mt-4">
@@ -95,7 +95,7 @@ const NpcView: React.FC<ICharacterPageProperties> = ({character}) => {
             <Button className="button-small mr-3" onClick={() => showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
             <Button className="button-small mr-3" onClick={() => showVttExportDialog() } buttonType={true}>{t('Common.button.exportVtt')}</Button>
         </div>
-    </div>);
+    </main>);
 
 
 }

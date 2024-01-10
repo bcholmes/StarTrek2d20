@@ -4,6 +4,7 @@ interface IDropDownInputProperties {
     items: string[]|DropDownElement[];
     defaultValue: any;
     onChange: (index: number) => void;
+    id?: string;
 }
 
 interface IDropDownSelectProperties {
@@ -37,7 +38,7 @@ export class DropDownInput extends React.Component<IDropDownInputProperties, {}>
         });
 
         return (
-            <select value={defaultValue} onChange={e => onChange((e.target as HTMLSelectElement).selectedIndex) }>
+            <select value={defaultValue} onChange={e => onChange((e.target as HTMLSelectElement).selectedIndex) } id={this.props.id}>
                 {options}
             </select>
         );

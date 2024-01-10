@@ -133,7 +133,7 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
         VttSelectionDialog.instance.show(character);
     }
 
-    return (<div>
+    return (<main>
         {renderTopFields()}
 
         <div className="row">
@@ -181,7 +181,7 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
                     </div>
                 </div>)
             : null}
-    </div>);
+    </main>);
 }
 
 export default MainCharacterView;

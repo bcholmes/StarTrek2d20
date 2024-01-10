@@ -294,45 +294,47 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
     return (
         <div className="page container ml-0">
             <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Finish} />
-            <Header>{t('Page.title.finish')}</Header>
-            <p>
-                Your character is finished. Export your character to PDF, or use the "Profile" option in the left-hand bar to see the chosen options and
-                transcribe them manually on to a character sheet.
-            </p>
-            <div className="my-4">
-                <Header level={2}>{t('Construct.other.name')}</Header>
-                <p>{nameDescription}</p>
-                <InputFieldAndLabel labelName={t('Construct.other.name')} id="name" onChange={(value) => onNameChanged(value)} value={character.name ?? ""} />
-                <div className="text-white mt-1"><small><b>Suggestions: </b> <i>{suggestions}</i></small></div>
+            <main>
+                <Header>{t('Page.title.finish')}</Header>
+                <p>
+                    Your character is finished. Export your character to PDF, or use the "Profile" option in the left-hand bar to see the chosen options and
+                    transcribe them manually on to a character sheet.
+                </p>
+                <div className="my-4">
+                    <Header level={2}>{t('Construct.other.name')}</Header>
+                    <p>{nameDescription}</p>
+                    <InputFieldAndLabel labelName={t('Construct.other.name')} id="name" onChange={(value) => onNameChanged(value)} value={character.name ?? ""} />
+                    <div className="text-white mt-1"><small><b>Suggestions: </b> <i>{suggestions}</i></small></div>
 
-                <div className="mt-3">
-                    <InputFieldAndLabel labelName={t('Construct.other.pronouns')} id="pronouns" onChange={(value) => onPronounsChanged(value)} value={character.pronouns ?? ""} />
-                    <div className="text-white mt-1"><small><b>Suggestions: </b> <i>she/her, they/them, etc.</i></small></div>
+                    <div className="mt-3">
+                        <InputFieldAndLabel labelName={t('Construct.other.pronouns')} id="pronouns" onChange={(value) => onPronounsChanged(value)} value={character.pronouns ?? ""} />
+                        <div className="text-white mt-1"><small><b>Suggestions: </b> <i>she/her, they/them, etc.</i></small></div>
+                    </div>
                 </div>
-            </div>
-            {extra}
+                {extra}
 
-            <div className="row">
+                <div className="row">
 
-                {renderRank()}
-                <div className="col-lg-6 my-5">
-                    <Header level={2}>ADDITIONAL TRAITS</Header>
-                    <p>Your character automatically has the following {character.baseTraits.length === 1 ? 'trait' : 'traits'}:</p>
-                    <ul>
-                        {character.baseTraits.map((e,i) => { return (<li key={'trait-' + i}>{e}</li>); })}
-                    </ul>
+                    {renderRank()}
+                    <div className="col-lg-6 my-5">
+                        <Header level={2}>ADDITIONAL TRAITS</Header>
+                        <p>Your character automatically has the following {character.baseTraits.length === 1 ? 'trait' : 'traits'}:</p>
+                        <ul>
+                            {character.baseTraits.map((e,i) => { return (<li key={'trait-' + i}>{e}</li>); })}
+                        </ul>
 
-                    <p>You can specify additional traits, here.</p>
-                    <InputFieldAndLabel labelName={t('Construct.other.traits')} id="traits" value={character?.additionalTraits ?? ""} onChange={(value) => onTraitsChanged(value)} />
+                        <p>You can specify additional traits, here.</p>
+                        <InputFieldAndLabel labelName={t('Construct.other.traits')} id="traits" value={character?.additionalTraits ?? ""} onChange={(value) => onTraitsChanged(value)} />
 
+                    </div>
                 </div>
-            </div>
-            {renderAssignment(roleList)}
-            <AllCharacterValues />
-            <div className="button-container mb-5">
-                <Button text={t('Common.button.exportPdf')} className="button-small mr-2" onClick={() => showDialog() }  buttonType={true} />
-                <Button text={t('Common.button.view')} className="button-small mr-2" onClick={() => showViewPage() } buttonType={true} />
-            </div>
+                {renderAssignment(roleList)}
+                <AllCharacterValues />
+                <div className="button-container mb-5">
+                    <Button text={t('Common.button.exportPdf')} className="button-small mr-2" onClick={() => showDialog() }  buttonType={true} />
+                    <Button text={t('Common.button.view')} className="button-small mr-2" onClick={() => showViewPage() } buttonType={true} />
+                </div>
+            </main>
         </div>
     );
 }

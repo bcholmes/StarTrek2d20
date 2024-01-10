@@ -242,21 +242,32 @@ const TalentsOverviewPage = () => {
                 <li className="breadcrumb-item active" aria-current="page">{t('Page.title.talentsOverview')}</li>
                 </ol>
             </nav>
-            <div className="float-top">
-                <div className="talent-filter">
-                    <DropDownInput items={_categories} defaultValue={category} onChange={(index) => { onCategoryChanged(index); }} />
+            <main>
+                <div className="float-top">
+                    <div className="talent-filter">
+                        <label className="sr-only" htmlFor='category'>Category</label>
+                        <DropDownInput id="category" items={_categories} defaultValue={category} onChange={(index) => { onCategoryChanged(index); }} />
+                    </div>
+                    <div className="talent-filter">
+                        <label className="sr-only" htmlFor='search'>Search</label>
+                        <input type="text" id="search" onChange={(e) => { searchChanged(e); }} value={search} placeholder="Search..." autoComplete="off"/>
+                    </div>
                 </div>
-                <div className="talent-filter">
-                    <input type="text" id="search" onChange={(e) => { searchChanged(e); }} value={search} placeholder="Search..." autoComplete="off"/>
+                <div className="page">
+                    <table className="selection-list">
+                        <thead className="sr-only">
+                            <tr>
+                                <th>{t('Construct.other.talent')}</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {talents}
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-            <div className="page">
-                <table className="selection-list">
-                    <tbody>
-                        {talents}
-                    </tbody>
-                </table>
-            </div>
+            </main>
         </div>
     );
 }

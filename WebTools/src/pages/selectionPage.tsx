@@ -41,7 +41,7 @@ const SelectionPage = () => {
                     <li className="breadcrumb-item active" aria-current="page">{t('Page.title.home')}</li>
                 </ol>
             </nav>
-            <div className="row">
+            <main className="row">
                 <div className="col-md-8">
                     <p className="mt-3">
                         {t('Home.selection')}
@@ -55,7 +55,7 @@ const SelectionPage = () => {
                 <div className="col-md-4">
                     {isEnglishDefault() ? undefined : (<LanguageNotice />) }
                 </div>
-            </div>
+            </main>
         </div>
     );
 }

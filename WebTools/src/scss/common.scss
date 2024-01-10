@@ -156,7 +156,7 @@ h5 {
 }
 
 .stat-name.purple, .stat-value.purple {
-    background-color: #906F9A;
+    background-color: $lcars-purple;
     color: white;
 }
 .stat-name.orange, .stat-value.orange {
@@ -354,7 +354,7 @@ input[type=checkbox]:focus {
 
 a,
 a:hover {
-    color: #F89B24;
+    color: $lcars-burnt-orange;
 }
 
 .breadcrumb-item a,
@@ -478,7 +478,7 @@ h2.header-text {
 	}
 
 .lcar-content {
-    max-height: 80%;
+    max-height: calc(100% - 60px - 30px - 45px);
 	flex: 1;
 
 	display: flex;
@@ -545,7 +545,7 @@ h2.header-text {
 
 	.lcar-footer-end {
 		max-width: 250px;
-		background: #9179B7 !important;
+		background: $lcars-brighter-purple !important;
 
         animation: fadein .5s ease;
         animation-delay: .4s !important;
@@ -580,11 +580,30 @@ h2.header-text {
     box-sizing: content-box;
     line-height: normal;
 }
+
+.lcar-content-left-button {
+    color: black;
+    text-align: right;
+    font-family: lcars;
+    font-size: x-large;
+    max-width: 120px;
+    padding: 3px 11px 6px 0px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-sizing: content-box;
+    line-height: normal;
+}
+
     .lcar-content-history {
         padding: 3px 11px 8px 0px;
         background-color: #9999FF !important;
         animation: fadein .5s ease;
         animation-delay: .4s !important;
+    }
+
+    .lcar-content-credits {
+        background-color: $lcars-dull-orange !important;
+        max-height: 34px;
     }
 
     .lcar-content-profile {
@@ -764,11 +783,8 @@ table.aspect-list td:first-child {
 }
 
 #version {
-    position: fixed;
-    right: 10px;
-    bottom: 10px;
-    color: white;
-    font-size: x-small;
+    font-family: lcars;
+    font-size: large;
 }
 
 @media screen and (min-width: 0px) and (max-width: 768px) {
@@ -805,10 +821,15 @@ table.aspect-list td:first-child {
     .lcar-content-history,
     .lcar-content-profile,
     .lcar-content-feedback,
-    .lcar-content-news{
+    .lcar-content-news,
+    .lcar-content-left-button {
         text-align: center;
         padding: 3px 18px 8px 0px;
         font-size: 1.6em;
+    }
+
+    .lcar-content {
+        max-height: calc(100% - 50px - 20px - 45px);
     }
 
     .lcar-content-feedback {
@@ -872,6 +893,10 @@ table.aspect-list td:first-child {
 
     table.selection-list td {
         padding: 10px;
+        font-size: x-small;
+    }
+
+    .copyright {
         font-size: x-small;
     }
 

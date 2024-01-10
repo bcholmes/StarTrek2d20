@@ -147,20 +147,22 @@ const EnvironmentPage: React.FC<ICharacterProperties> = ({character}) => {
             {character.stereotype === Stereotype.SoloCharacter
                 ? (<SoloCharacterBreadcrumbs pageIdentity={PageIdentity.Environment} />)
                 : (<CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Environment} />)};
-            <Header>{t('Page.title.environment')}</Header>
+            <main>
+                <Header>{t('Page.title.environment')}</Header>
 
-            <InstructionText text={t('SoloEnvironmentPage.instruction')} />
+                <InstructionText text={t('SoloEnvironmentPage.instruction')} />
 
-            <div className="btn-group w-100" role="group" aria-label="Environment types">
-                <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === EnvironmentTab.Settings ? "active" : "")}
-                    onClick={() => setTab(EnvironmentTab.Settings)}>{t('SoloEnvironmentPage.settings')}</button>
-                <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === EnvironmentTab.Conditions ? "active" : "")}
-                    onClick={() => setTab(EnvironmentTab.Conditions)}>{t('SoloEnvironmentPage.conditions')}</button>
-            </div>
+                <div className="btn-group w-100" role="group" aria-label="Environment types">
+                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === EnvironmentTab.Settings ? "active" : "")}
+                        onClick={() => setTab(EnvironmentTab.Settings)}>{t('SoloEnvironmentPage.settings')}</button>
+                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === EnvironmentTab.Conditions ? "active" : "")}
+                        onClick={() => setTab(EnvironmentTab.Conditions)}>{t('SoloEnvironmentPage.conditions')}</button>
+                </div>
 
-            {tab === EnvironmentTab.Settings
-                ? renderSettingsTab()
-                : renderConditionsTab()}
+                {tab === EnvironmentTab.Settings
+                    ? renderSettingsTab()
+                    : renderConditionsTab()}
+            </main>
         </div>);
 }
 

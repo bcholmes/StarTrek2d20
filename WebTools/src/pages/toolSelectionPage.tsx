@@ -82,19 +82,21 @@ const ToolSelectionPage = () => {
                     </ol>
                 </nav>
 
-                <InstructionText text={t('ToolSelection.instruction')} />
+                <main>
+                    <InstructionText text={t('ToolSelection.instruction')} />
 
-                <div className="row">
-                    <div className="col-md-6 button-column">
-                        <Button className="button mt-4" onClick={() => { startStarfleetWorkflow(); } } >{t('ToolSelection.mainCharacter')}</Button>
-                        <Button className="button mt-4" onClick={() => { goToPage(PageIdentity.SupportingCharacter); } } >{t('ToolSelection.supportingCharacter')}</Button>
-                        <LoadingButton onClick={() => { loadStarshipAndGoToPage(); } } loading={loadingStarship}>{t('ToolSelection.starship')}</LoadingButton>
-                        {renderSystemGenerationButton()}
+                    <div className="row">
+                        <div className="col-md-6 button-column">
+                            <Button className="button mt-4" onClick={() => { startStarfleetWorkflow(); } } >{t('ToolSelection.mainCharacter')}</Button>
+                            <Button className="button mt-4" onClick={() => { goToPage(PageIdentity.SupportingCharacter); } } >{t('ToolSelection.supportingCharacter')}</Button>
+                            <LoadingButton onClick={() => { loadStarshipAndGoToPage(); } } loading={loadingStarship}>{t('ToolSelection.starship')}</LoadingButton>
+                            {renderSystemGenerationButton()}
+                        </div>
+                        <div className="col-md-6 button-column">
+                            <LoadingButton onClick={() => { loadNpcAndGoToPage(); } } loading={loadingNpc}>{t('ToolSelection.randomNpc')}</LoadingButton>
+                        </div>
                     </div>
-                    <div className="col-md-6 button-column">
-                        <LoadingButton onClick={() => { loadNpcAndGoToPage(); } } loading={loadingNpc}>{t('ToolSelection.randomNpc')}</LoadingButton>
-                    </div>
-                </div>
+                </main>
             </div>
         </div>
     );

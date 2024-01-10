@@ -6,15 +6,19 @@
 }
 
 $lcars-salmon: #CC6666;
-$lcars-purple: #906F9A;
-$lcars-brighter-purple: #9179B7;
+$lcars-purple: #8C6996;
+$lcars-brighter-purple: #9E8ABD; //#9179B7; - original colour does not provide sufficient contast
 $lcars-orange: #F89B24;
-$lcars-pink: orchid;
+$lcars-pink: #da70d6;
 $lcars-dull-purple: #B5B3D8; // used for buttons (or is it?)
 $lcars-light-orange: #FFCC66;
+$lcars-dull-orange: #F9AC76;
+$lcars-burnt-orange: #DA7E07; // used for links
 $lcars-light-pink: #DE84B7;
 $lcars-dull-pink: #c37ba4;
 $lcars-very-light-pink: #f7bbdd;
+
+$breadcrumb-active-color: #999999;
 
 $primary: $lcars-purple;
 $danger: $lcars-salmon;

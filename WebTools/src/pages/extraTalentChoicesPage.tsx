@@ -179,21 +179,22 @@ const ExtraTalentChoicesPage : React.FC<ICharacterProperties> = ({character}) =>
 
     return (<div className="page container ml-0">
             <CharacterCreationBreadcrumbs />
-            <Header>Additional Talent Details</Header>
+            <main>
+                <Header>Additional Talent Details</Header>
 
-            <p>Some of your talents require a few extra decisions.</p>
+                <p>Some of your talents require a few extra decisions.</p>
 
-            <div className="row">
-                {renderImplants()}
-                {renderVisitEveryStar()}
-                {renderExpandedProgram()}
-                {renderWisdomOfYears()}
-            </div>
+                <div className="row">
+                    {renderImplants()}
+                    {renderVisitEveryStar()}
+                    {renderExpandedProgram()}
+                    {renderWisdomOfYears()}
+                </div>
 
-            <div className="text-right my-4">
-                <Button buttonType={true} className="btn btn-primary" onClick={() => onNext()} >{t('Common.button.next')}</Button>
-            </div>
-
+                <div className="text-right my-4">
+                    <Button buttonType={true} className="btn btn-primary" onClick={() => onNext()} >{t('Common.button.next')}</Button>
+                </div>
+            </main>
         </div>);
 }
 

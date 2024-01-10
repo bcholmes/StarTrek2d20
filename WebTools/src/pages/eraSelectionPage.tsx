@@ -30,14 +30,16 @@ class EraSelectionPage extends React.Component<WithTranslation, {}> {
                         <li className="breadcrumb-item active" aria-current="page">{t('Page.title.era')}</li>
                     </ol>
                 </nav>
-                <p className="mt-5">
-                    {t('EraSelectionPage.eraInstruction')}
-                </p>
-                <table className="selection-list">
-                    <tbody>
-                        {eras}
-                    </tbody>
-                </table>
+                <main>
+                    <p className="mt-5">
+                        {t('EraSelectionPage.eraInstruction')}
+                    </p>
+                    <table className="selection-list">
+                        <tbody>
+                            {eras}
+                        </tbody>
+                    </table>
+                </main>
             </div>
         );
     }

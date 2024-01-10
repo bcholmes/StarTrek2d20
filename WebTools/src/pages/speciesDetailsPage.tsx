@@ -128,24 +128,26 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
         <div className="page">
             <div className="container ml-0">
                 <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.SpeciesDetails} />
-                <Header>{character.localizedSpeciesName}</Header>
-                <InstructionText text={species.localizedDescription} />
+                <main>
+                    <Header>{character.localizedSpeciesName}</Header>
+                    <InstructionText text={species.localizedDescription} />
 
-                <div className="row">
-                    <div className="col-12 col-lg-6 my-4">
-                        <Header level={2}><>{t('Construct.other.attributes')} {selectDesc}</></Header>
-                        <AttributeListComponent controller={controller} />
+                    <div className="row">
+                        <div className="col-12 col-lg-6 my-4">
+                            <Header level={2}><>{t('Construct.other.attributes')} {selectDesc}</></Header>
+                            <AttributeListComponent controller={controller} />
 
-                        <InstructionText text={controller.instructions} />
+                            <InstructionText text={controller.instructions} />
+                        </div>
+                        <div className="col-12 col-lg-6 my-4">
+                            {renderTraitSection(species)}
+                        </div>
                     </div>
-                    <div className="col-12 col-lg-6 my-4">
-                        {renderTraitSection(species)}
+                    {renderTalentsSection()}
+                    <div className="text-right mt-4">
+                        <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary" onClick={() => onNext()} />
                     </div>
-                </div>
-                {renderTalentsSection()}
-                <div className="text-right mt-4">
-                    <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary" onClick={() => onNext()} />
-                </div>
+                </main>
             </div>
         </div>
     );

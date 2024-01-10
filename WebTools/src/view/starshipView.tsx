@@ -43,7 +43,7 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
             name = t('ViewPage.unnamedStarship');
         }
 
-        return (<div>
+        return (<main>
             <Header>{name}</Header>
             <div className="row mt-4" style={{alignItems: "baseline"}}>
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.spaceFrame')}:</div>
@@ -125,7 +125,7 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
                 <Button className="button-small mr-3" onClick={() => this.showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
                 <Button className="button-small mr-3" onClick={() => this.showVttExportDialog() } buttonType={true}>{t('Common.button.exportVtt')}</Button>
             </div>
-       </div>);
+       </main>);
     }
 
     private refitAsString() {

@@ -104,10 +104,11 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
         setShowNews(false);
     }
 
-    const goToCredits = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        e.stopPropagation();
-
+    const goToCredits = (e?: React.MouseEvent<HTMLAnchorElement>) => {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         navigate("/credits");
     }
 
@@ -124,7 +125,7 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
             <div className="lcar-content">
                 <div className="lcar-content-start">
                     <div className="lcar-content-start-top"></div>
-                    <div className="lcar-content-action">
+                    <div className="lcar-content-action" role="button" tabIndex={0}>
                         <div id="history-button" className="lcar-content-history" onClick={ () => toggleHistory() }>{t('Lcars.history')}</div>
                         <div id="history-container" className="history-container-hidden">
                             <History showHistory={showHistory}
@@ -132,14 +133,17 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
                                 close={() => setShowHistory(false)} />
                         </div>
                     </div>
-                    <div className="lcar-content-action">
+                    <div className="lcar-content-action" role="button" tabIndex={0}>
                         <div id="profile-button" className={'lcar-content-profile ' + (isProfileSupportedForPage() ? '' : 'd-none')} onClick={ () => toggleProfile() }>{t('Lcars.profile')}</div>
                         <CharacterSheet showProfile={showProfile} close={() => setShowProfile(false)}
                             storeBased={true}/>
                     </div>
-                    <div className="lcar-content-feedback" onClick={ () => showFeedbackPage() }>{t('Lcars.feedback')}</div>
-                    <div className="lcar-content-news" onClick={() => showNewsPanel()}>
+                    <div className="lcar-content-feedback" role="button"  tabIndex={0} onClick={ () => showFeedbackPage() }>{t('Lcars.feedback')}</div>
+                    <div className="lcar-content-news" role="button" tabIndex={0} onClick={() => showNewsPanel()}>
                         <div id="news-button" className="lcar-news">{t('Lcars.news')}</div>
+                    </div>
+                    <div className="lcar-content-left-button lcar-content-credits" role="button" tabIndex={0} onClick={() => goToCredits()}>
+                        {t('Lcars.credits')}
                     </div>
                     <div></div>
                 </div>
@@ -148,18 +152,12 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
             </div>
             <div className="lcar-footer">
                 <div className="lcar-footer-start"></div>
-                <div className="lcar-footer-end"><RandomLcarsReadout page={activePage} /></div>
+                <div className="lcar-footer-end d-flex justify-content-between align-items-center"><RandomLcarsReadout page={activePage} /> <AppVersion key="app-version"/></div>
             </div>
-            <div className="row">
-                <div className="col-md-8 offset-md-2 text-primary text-center">
-                    TM &amp; &copy; 2024 CBS Studios Inc. {t('Lcars.copyright')}
-                </div>
-                <div className="col-md-2 text-right pr-4">
-                    <a href="./index.html" className="text-primary" onClick={(e) => goToCredits(e)}>{t('Lcars.credits')}</a>
-                </div>
-            </div>
+            <footer className="text-primary text-center copyright">
+                TM &amp; &copy; 2024 CBS Studios Inc. {t('Lcars.copyright')}
+            </footer>
         </div>,
-        <AppVersion key="app-version"/>,
         <div id="dialog" key="modal-dialog"></div>,
         <News showModal={showNews} onClose={() => {hideNewsPanel()}} key="news"/>
     </>);
