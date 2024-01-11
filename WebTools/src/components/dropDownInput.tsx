@@ -11,6 +11,7 @@ interface IDropDownSelectProperties {
     items: DropDownElement[];
     defaultValue: any;
     onChange: (index: string|number) => void;
+    id?: string;
 }
 
 export class DropDownElement {
@@ -54,7 +55,7 @@ export class DropDownSelect extends React.Component<IDropDownSelectProperties, {
         });
 
         return (
-            <select value={defaultValue} onChange={e => onChange(items[(e.target as HTMLSelectElement).selectedIndex].value)}>
+            <select value={defaultValue} onChange={e => onChange(items[(e.target as HTMLSelectElement).selectedIndex].value)} id={this.props.id}>
                 {options}
             </select>
         );

@@ -80,54 +80,56 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
                             </ol>
                         </nav>
 
-                        <Header>{t('Page.title.tokenCreationPage')}</Header>
+                        <main>
 
-                        <div className="row">
+                            <Header>{t('Page.title.tokenCreationPage')}</Header>
 
-                            <div className="col-lg-4 mt-4">
-                                <div className="mw-100" style={{width: "400px", aspectRatio: "1" }} dangerouslySetInnerHTML={{ __html: svg }}>
+                            <div className="row">
 
+                                <div className="col-lg-4 mt-4">
+                                    <div className="mw-100" style={{width: "400px", aspectRatio: "1" }} dangerouslySetInnerHTML={{ __html: svg }}>
+
+                                    </div>
+
+                                    <div className="mt-3">
+                                        <CheckBox value="rounded" isChecked={rounded}
+                                            onChanged={(val) => { this.setState((state) => ({...state, rounded: !state.rounded })) }}
+                                            text={t('TokenCreator.option.rounded')} />
+                                    </div>
+                                    <div>
+                                        <CheckBox value="fancy" isChecked={bordered && rounded}
+                                            onChanged={(val) => { this.setState((state) => ({...state, bordered: !state.bordered })) }}
+                                            text={t('TokenCreator.option.bordered')} disabled={ !rounded } />
+                                    </div>
+
+                                    <div className="mt-4">
+                                        <Button buttonType={true} className='btn btn-primary btn-sm' onClick={() => this.exportPng()}>{t('Common.button.export')}</Button>
+                                    </div>
                                 </div>
 
-                                <div className="mt-3">
-                                    <CheckBox value="rounded" isChecked={rounded}
-                                        onChanged={(val) => { this.setState((state) => ({...state, rounded: !state.rounded })) }}
-                                        text={t('TokenCreator.option.rounded')} />
-                                </div>
-                                <div>
-                                    <CheckBox value="fancy" isChecked={bordered && rounded}
-                                        onChanged={(val) => { this.setState((state) => ({...state, bordered: !state.bordered })) }}
-                                        text={t('TokenCreator.option.bordered')} disabled={ !rounded } />
-                                </div>
-
-                                <div className="mt-4">
-                                    <Button buttonType={true} className='btn btn-primary btn-sm' onClick={() => this.exportPng()}>{t('Common.button.export')}</Button>
+                                <div className="col-lg-8 mt-4">
+                                    <div className="btn-group w-100" role="group" aria-label="Avatar part types">
+                                        <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Species ? "active" : "")}
+                                            onClick={() => this.selectTab(Tab.Species)}>{t('TokenCreator.section.species')}</button>
+                                        <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Body ? "active" : "")}
+                                            onClick={() => this.selectTab(Tab.Body)}>{t('TokenCreator.section.body')}</button>
+                                        <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Head ? "active" : "")}
+                                            onClick={() => this.selectTab(Tab.Head)}>{t('TokenCreator.section.head')}</button>
+                                        <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Hair ? "active" : "")}
+                                            onClick={() => this.selectTab(Tab.Hair)}>{t('TokenCreator.section.hair')}</button>
+                                        <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Mouth ? "active" : "")}
+                                            onClick={() => this.selectTab(Tab.Mouth)}>{t('TokenCreator.section.mouth')}</button>
+                                        <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Nose ? "active" : "")}
+                                            onClick={() => this.selectTab(Tab.Nose)}>{t('TokenCreator.section.nose')}</button>
+                                        <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Eyes ? "active" : "")}
+                                            onClick={() => this.selectTab(Tab.Eyes)}>{t('TokenCreator.section.eyes')}</button>
+                                        <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Extras ? "active" : "")}
+                                            onClick={() => this.selectTab(Tab.Extras)}>{t('TokenCreator.section.extras')}</button>
+                                    </div>
+                                    {this.renderTab()}
                                 </div>
                             </div>
-
-                            <div className="col-lg-8 mt-4">
-                                <div className="btn-group w-100" role="group" aria-label="Avatar part types">
-                                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Species ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Species)}>{t('TokenCreator.section.species')}</button>
-                                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Body ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Body)}>{t('TokenCreator.section.body')}</button>
-                                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Head ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Head)}>{t('TokenCreator.section.head')}</button>
-                                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Hair ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Hair)}>{t('TokenCreator.section.hair')}</button>
-                                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Mouth ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Mouth)}>{t('TokenCreator.section.mouth')}</button>
-                                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Nose ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Nose)}>{t('TokenCreator.section.nose')}</button>
-                                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Eyes ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Eyes)}>{t('TokenCreator.section.eyes')}</button>
-                                    <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === Tab.Extras ? "active" : "")}
-                                        onClick={() => this.selectTab(Tab.Extras)}>{t('TokenCreator.section.extras')}</button>
-                                </div>
-                                {this.renderTab()}
-                            </div>
-                        </div>
-
+                        </main>
                     </div>
                 </div>
             </LcarsFrame>)

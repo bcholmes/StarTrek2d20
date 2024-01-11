@@ -23,7 +23,9 @@ class SpeciesSelectionView extends React.Component<ISpeciesSelectionProperties, 
         const { token } = this.props;
         return (
             <div className="mt-4">
-                <DropDownSelect items={this.speciesList()} defaultValue={token.species} onChange={(s) => store.dispatch(setTokenSpecies(s as Species))} />
+                <label className="sr-only" htmlFor="species">Species</label>
+                <DropDownSelect items={this.speciesList()} defaultValue={token.species} onChange={(s) => store.dispatch(setTokenSpecies(s as Species))}
+                    id="species"/>
 
                 {this.renderOptions()}
             </div>);

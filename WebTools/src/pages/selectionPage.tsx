@@ -41,8 +41,8 @@ const SelectionPage = () => {
                     <li className="breadcrumb-item active" aria-current="page">{t('Page.title.home')}</li>
                 </ol>
             </nav>
-            <main className="row">
-                <div className="col-md-8">
+            <div className="row">
+                <main className="col-md-8">
                     <p className="mt-3">
                         {t('Home.selection')}
                     </p>
@@ -51,11 +51,11 @@ const SelectionPage = () => {
                         <Button text={t('Home.talentsButton')} buttonType={true} className="button" onClick={() => { selectTool(Tool.TalentsOverview); }} />
                         <Button text={t('Home.tokenCreator')} buttonType={true} className="button" onClick={() => { selectTool(Tool.TokenCreator); }} />
                     </div>
-                </div>
-                <div className="col-md-4">
+                </main>
+                <section className="col-md-4">
                     {isEnglishDefault() ? undefined : (<LanguageNotice />) }
-                </div>
-            </main>
+                </section>
+            </div>
         </div>
     );
 }
