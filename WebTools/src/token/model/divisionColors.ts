@@ -31,6 +31,10 @@ export class DivisionColors {
             return [ new NamedColor(i18next.t("Division.command"), "#d01c2f"),
                 new NamedColor(i18next.t("Division.science"), "#30787E"),
                 new NamedColor(i18next.t("Division.operations"), "#eb9e3c")];
+        } else if (era === UniformEra.NextGeneration) {
+            return [ new NamedColor(i18next.t("Division.command"), "#d01c2f"),
+                new NamedColor(i18next.t("Division.science"), "#0070b8"),
+                new NamedColor(i18next.t("Division.operations"), "#eb9e3c")];
         } else {
             return [ new NamedColor(i18next.t("Division.command"), "#B12542"),
                 new NamedColor(i18next.t("Division.science"), "#30787E"),

@@ -76,6 +76,7 @@
     "TokenCreator.section.extras": "Extras",
 
     "TokenCreator.section.extras.ears": "Ears",
+    "TokenCreator.section.extras.face": "Face",
     "TokenCreator.section.extras.forehead": "Forehead",
     "TokenCreator.section.extras.headwear": "Headwear",
 
@@ -824,6 +825,7 @@
     "ExtraType.smallBindi": "Small Bindi",
     "ExtraType.risanSymbol": "Risian Symbol",
     "ExtraType.inuitTattoo": "Inuit Tattoo",
+    "ExtraType.zaraniteMask": "Zaranite Breather Mask",
     "ExtraType.ferengiHeadFlap": "Ferengi Head Flap",
 
     "Focus.animalHandling": "Animal Handling",
@@ -908,6 +910,7 @@
     "HairType.feminineDreadStyle": "Feminine Dread Style",
     "HairType.shoulderLengthMostlyStraight": "Shoulder Length Mostly Straight",
     "HairType.shoulderLengthBob": "Shoulder Length Bob",
+    "HairType.tousledSidePart": "Tousled Side Part",
     "HairType.cornRows": "Corn Rows",
     "HairType.highForeheadEfrosianStyle": "Efrosian-style Mane",
     "HairType.pinnedUpHairWithPart": "Pinned Up Hair with Part",
@@ -1566,6 +1569,7 @@
     "UniformEra.klingon": "Klingon Armour",
     "UniformEra.lowerDecks": "Lower Decks",
     "UniformEra.monsterMaroon": "The Wrath of Khan",
+    "UniformEra.nextGeneration": "The Next Generation",
     "UniformEra.originalSeries": "Original Series",
     "UniformEra.originalSeriesKlingon": "Klingon (Original Series)",
     "UniformEra.romulan": "Romulan",

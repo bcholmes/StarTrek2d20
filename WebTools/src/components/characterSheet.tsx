@@ -89,7 +89,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
 
         const data = this._sheetData.dataSection.map((s, i) => {
             return (
-                <div className="sheet-panel d-flex">
+                <div className="sheet-panel d-flex" key={'data-' + i}>
                     <div className="sheet-label-purple text-uppercase">{s.name}</div>
                     <div className="sheet-data">{s.value}</div>
                 </div>

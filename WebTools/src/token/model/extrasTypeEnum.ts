@@ -6,11 +6,13 @@ export enum ExtraType {
 
     SmallBindi, RisanSymbol, InuitTattoo,
 
+    ZaraniteMask,
+
     FerengiHeadFlap
 }
 
 export enum ExtraCategory {
-    Ear, Forehead, Headwear
+    Ear, Forehead, Face, Headwear
 }
 
 export const getExtraCategory = (extraType: ExtraType) => {

@@ -82,10 +82,12 @@
     "ViewPage.viewSupportingCharacter": "Nebencharakter anzeigen",
     "ViewPage.viewNpc": "NSC anzeigen",
     "ViewPage.viewMainCharacter": "Hauptfigur anzeigen",
+    "ViewPage.viewSoloCharacter": "Solocharakter anzeigen",
     "ViewPage.viewStarship": "Raumschiff ansehen",
     "ViewPage.errorMessage": "Etwas ist ganz schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.",
     "ViewPage.unnamedStarship": "Unbenanntes Raumschiff",
 
+    "CareerEvents.instruction": "Deine Karriere ist ein Sammelsurium von Ereignissen und Erfahrungen, aber einige davon werden entscheidende Momente in deinem Leben gewesen sein. Bestimme, welche Momente deines Lebens im Nachhinein wichtig sind, und was einem Fähnrich mit Anfang 20 entscheidend erschien, demselben Offizier Jahrzehnte später aber belanglos erscheinen mag.",
     "CareerEvents.standard": "Standard",
     "CareerEvents.standardAndUnofficial": "Standard und Inoffizielle",
     "CareerEvents.unofficialNote": "Diese Liste enthält inoffizielle Einträge aus [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Bitte prüfe, ob deine SL diese erlaubt.",
@@ -122,6 +124,8 @@
     "CharacterTypePage.otherGovernmentName": "Wie lautet der Name dieser Regierung?",
     "CharacterTypePage.whatMilitary": "Welches Militär repräsentiert dieser Charakter?",
     "CharacterTypePage.otherMilitaryName": "Wie lautet der Name dieses Militärs?",
+
+    "EarlyOutlookPage.instruction": "Die Art der Familie und der Umgebung, in der man aufwächst, kann einen massiven Einfluss haben, und ob man diesen Einfluss akzeptiert oder sich dagegen auflehnt, wird den Rest des Lebens prägen.\n\nWähle oder würfle deine Erziehung.",
 
     "EducationPage.type.starfleet": "Sternenflottenakademie",
     "EducationPage.type.klingonWarrior": "Klingonische Verteidigungsstreitmacht",
@@ -182,6 +186,10 @@
     "SoloConstructTypePage.instruction": "Erstellst du einen Charakter oder ein Raumschiff?",
     "SoloConstructTypePage.starship": "Raumschiff",
 
+    "SoloEarlyOutlookPage.upbringings": "Erziehungen",
+    "SoloEarlyOutlookPage.castes": "Kasten",
+    "SoloEarlyOutlookPage.aspirations": "Ziele",
+
     "SoloEarlyOutlookDetailsPage.errorDiscipline": "Bitte wähle eine Disziplin.",
     "SoloEarlyOutlookDetailsPage.errorFocus": "Bitte wähle einen Fokus.",
 
@@ -191,19 +199,24 @@
     "SoloEducationDetailsPage.errorDisciplines": "Bitte wähle eine primäre und zwei sekundäre Disziplinen.",
     "SoloEducationDetailsPage.errorAttributes": "Bitte wähle drei Attribute.",
     "SoloEducationDetailsPage.errorValue": "Bitte wähle eine Überzeugung.",
+    "SoloEducationDetailsPage.errorFocuses": "Bitte wähle deine Fokusse.",
 
     "SoloEducationPage.type.starfleet": "Sternenflottenakademie",
+    "SoloEducationPage.type.cadet": "Kadettenausbildung",
     "SoloEducationPage.type.civilian": "Zivile Berufsausbildung",
     "SoloEducationPage.type.alliedMilitary": "Militärische Ausbildung",
     "SoloEducationPage.type.ambassadorDiplomat": "Diplomatische Ausbildung",
+
+    "SoloEducationTypePage.instruction": "Einige Charaktere werden ihre Ausbildung an der Sternenflottenakademie erhalten haben. Andere haben ihre Ausbildung vielleicht auf den Straßen einer geschäftigen Handelskolonie, auf Reisen zwischen den Sternen oder in der Gesellschaftsstruktur einer anderen Zivilisation erhalten.",
 
     "SoloEnvironmentDetailsPage.speciesText": "Unter welchen Spezies ist der Charakter aufgewachsen?",
     "SoloEnvironmentDetailsPage.errorAttribute": "Bitte wähle ein Attribut.",
     "SoloEnvironmentDetailsPage.errorDiscipline": "Bitte wähle eine Disziplin.",
     "SoloEnvironmentDetailsPage.errorValue": "Bitte wähle eine Überzeugung.",
 
-    "SoloEnvironmentPage.settings": "Einstellungen",
-    "SoloEnvironmentPage.conditions": "Bedingungen",
+    "SoloEnvironmentPage.instruction": "Bei der Wahl der Lebensumstände deines Charakters wählst du entweder eine Herkunft oder eine Lebenslage. Beide bieten unterschiedliche Möglichkeiten, die Geschichte zu erzählen, aber beide bieten die gleiche Art von Vorteilen für deinen Charakter.\n\nDu kannst auch eine dieser Optionen zufällig auswählen.",
+    "SoloEnvironmentPage.settings": "Herkunft",
+    "SoloEnvironmentPage.conditions": "Lebenslage",
 
     "SoloEnvironmentPage.anotherSpeciesWorld.attributeText": "Abhängig von der Spezies.",
 
@@ -411,6 +424,7 @@
     "Page.title.attributesAndDisciplines": "Feinschliff",
     "Page.title.careerEvent": "Karriereereignis",
     "Page.title.careerLength": "Karrierelänge",
+    "Page.title.careerLengthDetails": "Details zur Karrierelänge",
     "Page.title.characterType": "Art des Charakters",
     "Page.title.creditsPage": "Danksagungen",
     "Page.title.customSpaceframe": "Eigene Klasse erstellen",
@@ -644,6 +658,56 @@
     "ExtraType.inuitTattoo": "Inuit-Tattoo",
     "ExtraType.ferengiHeadFlap": "Ferengi-Kopftuch",
 
+    "Focus.animalHandling": "Tierführung",
+    "Focus.anthropology": "Anthropologie",
+    "Focus.astronavigation": "Astronavigation",
+    "Focus.astrophysics": "Astrophysik",
+    "Focus.bureaucracy": "Bürokratie",
+    "Focus.botany": "Botanik",
+    "Focus.composure": "Haltung",
+    "Focus.computers": "Computer",
+    "Focus.cybernetics": "Kybernetik",
+    "Focus.demolition": "Demolierung",
+    "Focus.diplomacy": "Diplomtie",
+    "Focus.disguise": "Tarnung",
+    "Focus.disruptors": "Disruptoren",
+    "Focus.electroPlasmaPowerSystems": "Elektroplasma-Systeme (EPS)",
+    "Focus.emergencyMedicine": "Notfallmedizin",
+    "Focus.espionage": "Spionage",
+    "Focus.exoTectonics": "Exotektonik",
+    "Focus.extraVehicularActivity": "Außenbordeinsatz",
+    "Focus.evasiveAction": "Ausweichmanöver",
+    "Focus.genetics": "Genetik",
+    "Focus.geology": "Geologie",
+    "Focus.handPhasers": "Handphaser",
+    "Focus.handToHandCombat": "Unbewaffneter Nahkampf",
+    "Focus.helmOperation": "Steuerkontrolle",
+    "Focus.history": "Geschichte",
+    "Focus.infectiousDiseases": "Ansteckende Krankheiten",
+    "Focus.infiltration": "Infiltration",
+    "Focus.inspiration": "Inspiration",
+    "Focus.interrogation": "Vernehmung",
+    "Focus.intimidation": "Einschüchterung",
+    "Focus.linguistics": "Linguistik",
+    "Focus.persuasion": "Überzeugen",
+    "Focus.physics": "Physik",
+    "Focus.politics": "Politik",
+    "Focus.psychiatry": "Psychiatrie",
+    "Focus.quantumMechanics": "Quantenmechnaik",
+    "Focus.shipboardTacticalSystems": "Taktische Raumschiffsysteme",
+    "Focus.smallCraft": "Shuttles",
+    "Focus.starshipRecognition": "Raumschiffidentifikation",
+    "Focus.starfleetProtocols": "Sternenflotten-Protokoll",
+    "Focus.surgery": "Chirurgie",
+    "Focus.survival": "Überlebenstraining",
+    "Focus.teamDynamics": "Teamdynamik",
+    "Focus.threatAnalysis": "Bedrohungsanalyse",
+    "Focus.traumaSurgery": "Traumachirurgie",
+    "Focus.transportersReplicators": "Transporter und Replikatoren",
+    "Focus.virology": "Virologie",
+    "Focus.warpFieldDynamics": "Warpfeldynamik",
+    "Focus.xenobiology": "Xenobiologie",
+
     "GovernmentType.name.andorian": "Andorianer",
     "GovernmentType.name.bajoran": "Bajoraner",
     "GovernmentType.name.cardassian": "Cardassianer",
@@ -657,6 +721,7 @@
 
     "HairType.bald": "Glatze",
     "HairType.bowlCutHair": "Topfschnitt",
+    "HairType.chinLengthBob": "Kinnlanger Bob",
 
     "HeadType.averageAngular": "Gewöhnlich, kantig",
     "HeadType.squareJawed": "Quadratischer Kiefer",
@@ -835,22 +900,57 @@
     "Species.aenar.name": "Aenar",
 
     "Species.andorian.name": "Andorianer",
+    "Species.andorian.description": "Die Andorianer, ein aggressives, leidenschaftliches Volk vom Eismond Andoria, sind seit ihrer Gründung Teil der Vereinten Föderation der Planeten und waren schon in den Jahren zuvor verlässliche Verbündete der Menschen. Ihre blaue Haut, ihr weißes Haar und ihre Antennen verleihen ihnen ein unverwechselbares Erscheinungsbild, und auch wenn die Imperiale Andorianische Garde mit Gründung der Föderation außer Dienst gestellt wurde, unterhalten sie immer noch starke militärische Traditionen und den Brauch eines ritualisierten Ehrenduells, das als Ushaan bekannt ist und rasiermesserscharfe, beim Eisbergbau genutzte Werkzeuge verwendet.",
+    "Species.andorian.exampleValue": "Stolzer Sohn/Stolze Tochter Andorias",
+    "Species.andorian.traitDescription": "Dieses Merkmal senkt die Schwierigkeit aller Aufgaben, um extremer Kälte zu widerstehen, oder aller Aufgaben, welche von extrem niedrigen Temperaturen negativ beeinflusst werden. Die Antennen unterstützen bei der Balance und räumlichen Wahrnehmung, während eine verlorene Antenne diese Fähigkeiten hemmt, bis sie nachgewachsen ist. Andorianer haben einen hohen Metabolismus, was unter anderem bedeutet, dass sie schneller ermüden als Menschen. Dies macht sie auch anfälliger für bestimmte Infektionen, vor allem solchen, die durch Verletzungen verursacht werden. Vor Gründung der Föderation hatten Andorianer und Vulkanier zahllose Auseinandersetzungen. Auch wenn diese Probleme von den meisten schon seit langem als der Vergangenheit zugehörig angesehen werden, verstehen sich Andorianer und Vulkanier auch heute nicht immer.",
 
     "Species.bajoran.name": "Bajoraner",
+    "Species.bajoran.description": "Die Bajoraner, ein spirituelles, unbeugsames Volk vom Planeten Bajor, haben nach Jahrzehnten der Besatzung durch die Cardassianische Union viel verloren. Viele Bajoraner wurden während der Besatzungszeit über den Alpha-Quadranten verstreut, während diejenigen, die auf Bajor zurückblieben, im Widerstand kämpften oder in Arbeitslagern unter der cardassianischen Herrschaft schufteten. Zwar endete die Besatzung vor einigen Jahren, die Narben, die sie hinterließ, werden jedoch Generationen benötigen, um zu heilen. Bajor ist kein Mitglied der Föderation, dennoch haben viele in der Diaspora verstreute Bajoraner einen Weg in die Sternenflotte gefunden. Die bajoranische Kultur dreht sich vor allem um ihren starken Glauben an die Propheten – himmlischen Wesen, die seit Jahrtausenden über Bajor wachen. Laut neuerer religiöser Doktrin handelt es sich beim bajoranischen Wurmloch um den Himmelstempel der Propheten.",
+    "Species.bajoran.exampleValue": "Vertrauen in die Propheten",
+    "Species.bajoran.traitDescription": "Aus offensichtlichen Gründen neigen Bajoraner dazu, eine feindselige Einstellung gegenüber Cardassianern einzunehmen, und lehnen Personen ab, die vor dem Leid des bajoranischen Volkes die Augen verschließen. Auch wenn nicht alle Bajoraner gleichermaßen spirituell oder religiös sind, haben die meisten umfangreiche Kenntnisse über die Propheten und ihren Platz in der bajoranischen Gesellschaft.",
 
     "Species.betazoid.name": "Betazoiden",
+    "Species.betazoid.description": "Das friedfertige Volk der Betazoiden kommt von der idyllischen grünen Welt Betazed. Dieser Planet ist ein angesehenes Mitglied der Föderation und seine Bewohner können im gesamten Föderationsraum gefunden werden, einschließlich im Dienste der Sternenflotte. Betazoiden sind nahezu identisch zu Menschen, unterscheiden sich von ihnen aber in einem entscheidenden Punkt: Sie sind natürliche Telepathen und entwickeln während ihrer Jugend empathische Fähigkeiten. Die Ausprägung dieser Fähigkeiten unterscheiden sich von Individuum zu Individuum, resultierten jedoch in einer Kultur, in der Ehrlichkeit und Direktheit fundamentale Prinzipien sind – es ist schwierig, ein Geheimnis zu bewahren, wenn alle Personen um dich herum Gedanken lesen können.",
+    "Species.betazoid.exampleValue": "Mitgefühl durch Verständnis",
+    "Species.betazoid.traitDescription": "Alle Betazoiden sind zumindest zu einem gewissen Grad telepathisch, und auch dann sehr feinfühlig für andere Wesen um sich herum, wenn sie ihre Fähigkeiten nicht aktiv einsetzen. Sie sind aber auch anfällig für telepathische Störungen und psychische Angriffe. Aufgrund ihrer offenen Kultur und Fähigkeit, Gedanken und Gefühle zu lesen, haben sie eine nur geringe Vertrautheit mit Lügen und Täuschung. Da sie sensibel auf die Gedanken anderer Lebewesen reagieren, neigen sie dazu, sich in der Nähe von Tieren nicht wohlzufühlen, da sie sich darum sorgen, sich im Verstand einer wilden Kreatur zu verlieren.",
 
     "Species.bolian.name": "Bolianer",
+
+    "Species.caitian.name": "Caitianer",
+
+    "Species.cardassian.name": "Cardassianer",
+
+    "Species.changeling.name": "Wechselbalg",
+
+    "Species.chelon.name": "Rigellianische Chelonen",
 
     "Species.deltan.name": "Deltaner",
 
     "Species.denobulan.name": "Denobulaner",
+    "Species.denobulan.description": "Denobulaner stammen vom Planeten Denobula und sind ein aufgeschlossenes, wissbegieriges Volk, das seit den 2130er Jahren mit den Menschen verbündet ist. Auch wenn Denobula nicht zu den Begründern der Föderation zählt, schlossen sich ihr die Denobulaner nur wenig später an. Denobulaner sind gesellige Personen mit markanten, ausdrucksstarken Zügen, die es gewohnt sind, in beengten Lebensräumen zu leben, und deren erweiterte Familiengruppen groß und komplex sind – Denobulaner können mehrere Ehepartner haben, die alle wiederum mehrere eigene Partner haben, mit Dutzenden von Kindern innerhalb dieser Gemeinschaft. Ihre Kultur ist von Neugierde, Aufmerksamkeit und einem Interesse für eine Vielzahl von Philosophien geprägt. Ihre akademische Geisteshaltung, ihre Großfamilien und ihre gesellige Natur sorgen aber meist dafür, dass sich eher wenige von ihnen besonders weit von Denobula entfernen.",
+    "Species.denobulan.exampleValue": "Gemeinsam sind wir stark",
+    "Species.denobulan.traitDescription": "Denobulaner besitzen ein robustes Immunsystem, reagieren aber sehr empfindlich auf verschiedenste Arten von Strahlungsvergiftungen. Sie sind natürliche Kletterer und erklimmen glatte Wände wie irdische Echsen. Denobulaner benötigen keinen Schlaf, müssen allerdings für mehrere Tage pro Jahr Winterschlaf halten und sind stark desorientiert, wenn sie während dieser Zeit gestört werden.",
+
+    "Species.edosian.name": "Edosianer",
 
     "Species.efrosian.name": "Efrosianer",
 
+    "Species.elAurian.name": "El-Aurianer",
+
     "Species.ferengi.name": "Ferengi",
 
+    "Species.gorn.name": "Gorn",
+
+    "Species.hologram.name": "Hologramm",
+
     "Species.human.name": "Menschen",
+    "Species.human.description": "Die Menschen vom Planeten Erde im Sol-System sind eine unverwüstliche, vielfältige und anpassungsfähige Spezies, die sich in weniger als einem Jahrhundert von verfeindeten, miteinander Krieg führenden Nationen am Rande der gegenseitigen Vernichtung zu einer vereinigten, friedlichen Gesellschaft entwickelte. Den Menschen gelang es auch, innerhalb nur eines Jahrhunderts nach Entwicklung der interstellaren Raumfahrt, Allianzen zwischen einstigen Feinden zu schmieden. Die Erde ist Mitbegründer und bedeutendes Mitglied der Vereinten Föderation der Planeten, und viele ihrer Institutionen sind auf der Erde zu finden. Die Menschen – getrieben sowohl von starken Emotionen als auch behutsamer Vernunft – demonstrieren oftmals eine große Gegensätzlichkeit in ihrem Wesen und auch wenn sie ihre kriegerische und zerstrittene Vergangenheit größtenteils hinter sich gelassen haben, ist ihr Drang und ihre Fähigkeit zur Aggression ein ebenso wichtiger Bestandteil ihrer Erfolgsgeschichte wie ihre Neugierde und ihr analytischer Verstand.",
+    "Species.human.exampleValue": "Forscherdrang",
+    "Species.human.traitDescription": "Menschen sind anpassungsfähig und unverwüstlich, und ihre Entschlossenheit und ihr Ehrgeiz erlauben es ihnen oftmals, großen Strapazen zu widerstehen und selbst im Angesicht großer Widrigkeiten den Erfolg davon zu tragen. Menschen können aber auch waghalsig und stur sein, irrational und unberechenbar.",
+
+    "Species.jelna.name": "Rigellianische Jelna",
+
+    "Species.jemHadar.name": "Jem'Hadar",
 
     "Species.klingon.name": "Klingonen",
 
@@ -869,10 +969,19 @@
     "Species.suliban.name": "Suliban",
 
     "Species.tellarite.name": "Tellariten",
+    "Species.tellarite.description": "Die stämmigen, stark behaarten Tellariten stammen von Tellar Prime, einem gemäßigten Planeten im Alpha-Quadranten. Ihre Kultur ist bekannt für ihren barschen Umgang mit anderen, ihre Streitlust, ihren sturen Stolz, hitziges Gemüt und geringe Geduld. Dies ist allerdings eine nur oberflächliche Charakterisierung: Auch wenn Tellariten streitlustig sind, hat dies ihren Ursprung in intellektueller Ehrlichkeit und rigoroser Skepsis. Für Tellariten ist keine Idee, kein Konzept und keine Person von Anfechtungen und Analysen ausgenommen und jeder Einfall, der nicht gründlicher Prüfung standhält, ist wertlos. Tellariten genießen Debatten und neigen dazu, einander mit Kritik, Beschwerden und sogar Beleidigungen zu grüßen. Wem es nicht gelingt, ebenso zu antworten, wird als schwach angesehen, da es auf Charakterschwäche und die Unwilligkeit, sich mit Fehlern zu befassen, hindeutet.",
+    "Species.tellarite.exampleValue": "Alle Ideen müssen einer genauen Überprüfung statthalten",
+    "Species.tellarite.traitDescription": "Tellariten haben einen ausgeprägten Geruchssinn und eine hohe Toleranzschwelle für viele geläufige Drogen, Toxine und Rauschmittel (Tellariten werden durch Alkohol nicht betrunken, nur lebhafter). Sie verfügen auch über einen hervorragenden Sehsinn und eine genauere Wahrnehmung von Entfernungen, Tiefe und Dimensionen als Menschen.",
 
     "Species.trill.name": "Trill",
+    "Species.trill.description": "Die Spezies der Trill, die von dem gleichnamigen Planeten stammt, ist nahezu identisch mit Menschen, abgesehen von den Flecken, die zu beiden Seiten ihres Körpers von Kopf bis Fuß entlanglaufen. Dieser oberflächliche Unterschied verbirgt eine erhebliche Besonderheit – die Fähigkeit der Trill, sich mit einem als Symbiont bekannten symbiotischen Organismus zu verbinden, wobei ein eigenständiges Wesen aus zwei individuellen Kreaturen entsteht. Der Symbiont lebt für viele Jahrhunderte und wird dabei mit aufeinander folgenden Wirten vereinigt, wobei er die Erinnerungen und das Wissen vorheriger Wirte in eine neue Vereinigung mitnimmt. Dieser Umstand ist außerhalb von Trill nicht sonderlich gut bekannt, auch wenn es kein Geheimnis ist – es wird einfach nicht ausgiebig diskutiert und die Zahl vereinigter Trill ist relativ klein. Die Trill sind seit mehr als einem Jahrhundert Teil der Föderation und viele Trill haben geachtete Rollen in der Föderation ausgeübt. Die Trill neigen dazu, sich vor allem auf intellektuelle Aktivitäten zu konzentrieren, da Lernen und das Erringen von Weisheit von den Symbionten sehr geschätzt werden.",
+    "Species.trill.exampleValue": "Vier Lebenszeiten voller Abenteuer",
+    "Species.trill.traitDescription": "Trill besitzen als Nebenprodukt ihres Potentials, vereinigt zu werden, eine hohe Widerstandskraft gegen Parasiten. Vereinigte Trill sind sogar vollständig immun gegen parasitische Infektionen. Sie neigen jedoch dazu, starke allergische Reaktionen auf Insektenbisse und andere Formen von Giften zu entwickeln, die ihre Neurochemie stören können, vor allem, wenn sie vereinigt sind. Da viele Details der Trill-Physiologie – insbesondere in Bezug auf die Symbiose – nicht weithin bekannt sind, kann dies zu medizinischen Komplikationen führen.",
 
     "Species.vulcan.name": "Vulkanier",
+    "Species.vulcan.description": "Die Vulkanier sind ein stoisches, rationales Volk. Weithin als emotionslos betrachtet, fühlen die Vulkanier tatsächlich sogar sehr innig und intensiv, und das zu ihrem eigenen Nachteil. Ihr Gleichmut entstammt einer Kultur der Logik und Selbstdisziplin, in der Emotionen analysiert und seziert werden, um sie ihrer Macht zu berauben, sodass sie das Individuum weder überwältigen noch kontrollieren können. Vulkanier schätzen Wissenschaft und Vernunft, ihr Leben ist aber nicht nur der Logik gewidmet – sie haben auch eine zutiefst philosophische Seite, in der Kunst und Musik ebenso bedeutend sind wie Logik. Sie sind auch ein äußerst privates Volk, das viele Aspekte ihrer Kultur – wie zum Beispiel die Riten des Pon Farr – nicht mit Außenseitern diskutiert.",
+    "Species.vulcan.exampleValue": "Das Wohl der Vielen wiegt schwerer als das Wohl Weniger, oder gar des Einzelnen",
+    "Species.vulcan.traitDescription": "Aufgrund der harschen, trockenen Welt mit hoher Schwerkraft, von der sie stammen, besitzen Vulkanier eine natürliche Resistenz gegen extreme Hitze und Dehydrierung. Sie sind auch außergewöhnlich stark, mit scharfen Ohren und ausgeprägtem Geruchssinn. Sie sind zudem telepathisch, auch wenn es Übung benötigt, um diese Fähigkeiten auszubilden, und erlernen von Kindesbeinen an mentale Disziplin sowie emotionale Kontrolle. Diese Kontrolle aufrechtzuerhalten erfordert jedoch regelmäßige Meditation. Ihr kontrolliertes Wesen sowie ihr Wunsch nach Privatsphäre können dazu führen, dass sie sich von anderen distanzieren, und dies kann wiederum Interaktionen mit ihnen unbehaglich machen.",
 
     "Species.xindiArboreal.name": "Xindi-Arboreale",
 
@@ -900,11 +1009,14 @@
     "UniformEra.civilian": "Zivilist",
     "UniformEra.dominionWar": "Dominionkrieg",
     "UniformEra.enterprise": "Enterprise",
+    "UniformEra.jemHadar": "Jem'Hadar",
     "UniformEra.klingon": "Klingonische Rüstung",
     "UniformEra.lowerDecks": "Lower Decks",
     "UniformEra.monsterMaroon": "Der Zorn des Khan",
     "UniformEra.originalSeries": "Originalserie",
     "UniformEra.originalSeriesKlingon": "Klingonen (Originalserie)",
+    "UniformEra.romulan": "Romulaner",
+    "UniformEra.suliban": "Suliban",
     "UniformEra.voyagerDS9": "Voyager/DS9",
 
     "Upbringing.starfleet.militaryOrExploration.name": "Sternenflotte",
@@ -938,6 +1050,10 @@
     "Weapon.common.name": "Name/Typ",
     "Weapon.common.qualities": "Eigenschaften",
 
+    "Weapon.personal.dagger.name": "Dolch",
+
+    "Weapon.personal.energyWhip.name": "Energiepeitsche",
+
     "Weapon.personal.phaser1.name": "Phaser, Typ 1",
 
     "Weapon.personal.phaser2.name": "Phaser, Typ 2",
@@ -952,6 +1068,8 @@
 
     "Weapon.personal.disruptor.name": "Disruptorpistole",
 
+    "Weapon.personal.sonaPlasmaDisruptorShotgun.name": "Son'a Plasma-Disruptor-Schrotflinte",
+
     "Weapon.quality.area.name": "Flächendeckend",
 
     "Weapon.quality.charge.name": "Aufladbar",
@@ -961,6 +1079,8 @@
     "Weapon.quality.dampening.name": "Energiesenkend",
 
     "Weapon.quality.deadly.name": "Letal",
+
+    "Weapon.quality.debilitating.name": "Verletzend",
 
     "Weapon.quality.depleting.name": "Erschöpfend",
 

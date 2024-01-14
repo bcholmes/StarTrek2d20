@@ -40,6 +40,7 @@ export default class UniformVariantRestrictions {
 
     static isRankSupported(rankIndicator: Rank, uniformEra: UniformEra) {
         switch (uniformEra) {
+            case UniformEra.NextGeneration:
             case UniformEra.VoyagerDS9:
             case UniformEra.DominionWar:
             case UniformEra.LowerDecks:
@@ -63,6 +64,8 @@ export default class UniformVariantRestrictions {
                     ].indexOf(rankIndicator) >= 0;
 
             case UniformEra.Civilian:
+            case UniformEra.Suliban:
+            case UniformEra.Romulan:
                 return [ Rank.None ].indexOf(rankIndicator) >= 0;
 
             default:
@@ -73,7 +76,8 @@ export default class UniformVariantRestrictions {
     }
 
     static isStraightenedNeck(uniformEra: UniformEra) {
-        return uniformEra === UniformEra.Suliban || uniformEra === UniformEra.VoyagerDS9 || uniformEra === UniformEra.OriginalSeries;
+        return uniformEra === UniformEra.Suliban || uniformEra === UniformEra.VoyagerDS9
+            || uniformEra === UniformEra.OriginalSeries || uniformEra === UniformEra.NextGeneration;
     }
 
 }

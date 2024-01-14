@@ -34,10 +34,20 @@ class ExtraSelectionView extends React.Component<IExtraSelectionViewProperties, 
             key={'extra-swatch-forehead-' + s.id }/>)}
         </div>
 
+        <p className="mt-4">{t('TokenCreator.section.extras.face')}:</p>
+        <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
+        {ExtrasCatalog.instance.getSwatches(this.props.token, ExtraCategory.Face).map(s => <SwatchButton svg={s.svg} title={s.localizedName}
+            onClick={() => this.addExtra(s.id, ExtraCategory.Face)}
+            active={this.props.token.extras.indexOf(s.id) >= 0 || (s.id === ExtraType.None && !this.isExtraCategoryPresent(ExtraCategory.Face))}
+            token={this.props.token} size="lg"
+            key={'extra-swatch-headwear-' + s.id }/>)}
+        </div>
+
+
         <p className="mt-4">{t('TokenCreator.section.extras.headwear')}:</p>
         <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
         {ExtrasCatalog.instance.getSwatches(this.props.token, ExtraCategory.Headwear).map(s => <SwatchButton svg={s.svg} title={s.localizedName}
-            onClick={() => this.addExtra(s.id, ExtraCategory.Forehead)}
+            onClick={() => this.addExtra(s.id, ExtraCategory.Headwear)}
             active={this.props.token.extras.indexOf(s.id) >= 0 || (s.id === ExtraType.None && !this.isExtraCategoryPresent(ExtraCategory.Headwear))}
             token={this.props.token} size="lg"
             key={'extra-swatch-headwear-' + s.id }/>)}
