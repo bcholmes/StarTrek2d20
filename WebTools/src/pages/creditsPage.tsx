@@ -121,7 +121,8 @@ const CreditsPage = () => {
 
                     <Header className="my-4" level={2}>Contact</Header>
 
-                    <p>I'm on <a href="https://tech.lgbt/@bcholmes" target="_blank" rel="noreferrer">Mastodon</a>,
+                    <p>I'm on <a href="https://tech.lgbt/@bcholmes" target="_blank" rel="noreferrer">Mastodon</a>, {' '}
+                        <a href="https://bsky.app/profile/bcholmes.bsky.social" target="_blank" rel="noreferrer">BlueSky</a>,
                         Discord and the <a href="https://forums.modiphius.com/u/bcholmes" target="_blank" rel="noreferrer">Modiphius Forums</a>.
                         You can also find me on <a href="https://github.com/bcholmes" target="_blank" rel="noreferrer">GitHub</a>.</p>
 

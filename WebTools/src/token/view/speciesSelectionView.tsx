@@ -54,8 +54,8 @@ class SpeciesSelectionView extends React.Component<ISpeciesSelectionProperties, 
         return [Species.Andorian, Species.Aurelian, Species.Bajoran, Species.Benzite, Species.Betazoid, Species.Bolian,
                 Species.Caitian, Species.Deltan, Species.Denobulan, Species.Efrosian, Species.Ferengi, Species.Haliian,
                 Species.Human, Species.Klingon, Species.KlingonQuchHa, Species.JemHadar,
-                Species.Ktarian, Species.Orion,
-                Species.Pakled, Species.Reman, Species.Risian, Species.Romulan, Species.Saurian, Species.Tellarite, Species.Trill,
+                Species.Ktarian, Species.Orion, Species.Pakled, Species.Reman, Species.Risian, Species.Romulan,
+                Species.Saurian, Species.Suliban, Species.Tellarite, Species.Trill,
                 Species.Vulcan, Species.XindiPrimate, Species.XindiReptilian, Species.Zaranite
             ].map(s => new DropDownElement(s, SpeciesHelper.getSpeciesByType(s).localizedName))
             .sort((d1, d2) => d1.name.localeCompare(d2.name));

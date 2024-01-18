@@ -1,4 +1,6 @@
+import i18next from "i18next";
 import { Specialization } from "../../common/specializationEnum";
+import { makeKey } from "../../common/translationKey";
 import { Attribute } from "../../helpers/attributes";
 import { Skill } from "../../helpers/skills";
 import { Species } from "../../helpers/speciesEnum";
@@ -30,6 +32,12 @@ export class SpecializationModel {
         this.officerProbability = officerProbability;
         this.values = values;
         this.species = species;
+    }
+
+    get localizedName() {
+        let key = makeKey('Specialization.', Specialization[this.id]);
+        let result = i18next.t(key);
+        return key === result ? this.name : result;
     }
 }
 
