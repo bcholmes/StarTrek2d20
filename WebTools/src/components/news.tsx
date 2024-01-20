@@ -12,6 +12,25 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240120</b>
+                <ul>
+                    <li>
+                        I've added a few more options to the token generator: there are a few more species and uniform options. Some
+                        are things that have been asked for more than a few times (like TNG-era uniforms) and some are probably
+                        pretty esoterric (like Zaranites). I think my artist, Keith Curtis, hit it out of the park with the
+                        Suliban and Romulan uniforms especially.</li>
+                    <li>
+                        I've seen more than a few complaints about the necks/posture in the token generator. I've finally started to address
+                        this complaint. It'll take me a while to change all of the art assets, but at the moment, depending on which
+                        uniform you specify, you'll get a straighter neck.
+                    </li>
+                    <li>
+                        You may notice some layout changes. I was working on some accessibility analysis, and incorporated some changes
+                        recommended by some accessibility tools. Some of that involves tweaks to the layout; some of that involves
+                        some minor colour changes. And a bunch of invisibile things. If we believe in infinite diversity, then we
+                        need to include accessibility.
+                    </li>
+                </ul>
                 <b>v1.240108</b>
                 <ul>
                     <li>A few additional token options.</li>
@@ -124,21 +143,6 @@ class News extends React.Component<INewsProperties, {}> {
                 <b>v1.230728</b>
                 <ul>
                     <li>Lower Decks! Lower Decks!</li>
-                </ul>
-                <b>v1.230716</b>
-                <ul>
-                    <li>A few bug fixes related to Starships.</li>
-                    <li>Minor revisions to tokens.</li>
-                    <li>Some prep for Captain's Log support.</li>
-                </ul>
-                <b>v1.230705</b>
-                <ul>
-                    <li>A number of additional updates to the token generator.</li>
-                </ul>
-                <b>v1.230624</b>
-                <ul>
-                    <li>German translation has been pretty active, lately, and this update includes more German.</li>
-                    <li>I've heard you: you want Monster Maroon uniforms.</li>
                 </ul>
 
                 <div className="text-center">
