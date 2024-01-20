@@ -25,28 +25,30 @@ class SpeciesRestrictions {
             return ["#a2b152", "#8e932f", "#8f8f0b", "#838218", "#7a863a", "#6f7f36", "#6b764c", "#697543", "#5d6937", "#5a6135", "#4c4c1a", "#414b26"];
         } else if (species === Species.Andorian) {
             return ["#bbb6c7", "#b0c2cc", "#a9d8f4", "#7ca9e0", "#919bd5", "#6e87bf", "#3e8fb8", "#0068a5"];
+        } else if (species === Species.Aurelian) {
+            return ["#fbebb7", "#f7d66f", "#e0c167", "#b7d562", "#b6b456", "#b49249", "#87622a"];
         } else if (species === Species.Benzite) {
             return ["#b0c2cc", "#a9d8f4", "#7ca9e0", "#919bd5", "#6e87bf", "#3e8fb8"];
         } else if (species === Species.Bolian) {
             return ["#97c3f2", "#87acda", "#5883a6", "#5772b7", "#0665b3", "#385f8d"]; // "#597986",
         } else if (species === Species.Ferengi) {
             return ["#d18352"];
-        } else if (species === Species.Saurian) {
-            return ["#de898a", "#ca7882", "#b6677a", "#a77e86", "#989591", "#626163", "#7c6a61", "#603f31"];
         } else if (species === Species.Caitian) {
             return ["#fdf2dc", "#fae9b5", "#f0c882", "#f9c861", "#e9a63d", "#e38732", "#913c13", "#430c05", "#4e0300", "#811002",
             "#391201", "#722707", SpeciesRestrictions.DEFAULT_HAIR_COLOR, "#37261e", "#706f74", "#a78c6f",
             "#f1eae4", "#f4f3f1", "#e1ddda"];
         } else if (species === Species.Efrosian) {
             return ["#ffd9c6", "#d8b092", "#e1ad88", "#d69972", "#d18352", "#b06e46", "#9e603b", "#834b2b", "#70432c"];
-        } else if (species === Species.XindiReptilian) {
-            return ["#bbb895", "#aea433", "#bba326", "#898558"];
-        } else if (species === Species.Aurelian) {
-            return ["#fbebb7", "#f7d66f", "#e0c167", "#b7d562", "#b6b456", "#b49249", "#87622a"];
+        } else if (species === Species.JemHadar) {
+            return ["#b7b7b1", "#a59f95", "#86828a", "#7c7972"];
         } else if (species === Species.Reman) {
             return ["#ccc9be", "#c8d9d6", "#b4bdb8", "#96a09c"];
+        } else if (species === Species.Saurian) {
+            return ["#de898a", "#ca7882", "#b6677a", "#a77e86", "#989591", "#626163", "#7c6a61", "#603f31"];
         } else if (species === Species.Suliban) {
             return ["#c7b799", "#d1ba77", "#bea55f", "#c6b923"];
+        } else if (species === Species.XindiReptilian) {
+            return ["#bbb895", "#aea433", "#bba326", "#898558"];
         } else {
             return ["#F8E0DE", "#F4D5CA", "#F2C8B8", "#E1BA93", "#dcbda1", "#CEB29C", "#CAA18B", SpeciesRestrictions.DEFAULT_SKIN_COLOR, "#AB7D5C", "#9B7A57", "#9b6b43", "#8C644A", "#704A35", "#53382D", "#473028"];
         }
