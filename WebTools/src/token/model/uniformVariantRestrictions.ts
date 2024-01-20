@@ -76,8 +76,11 @@ export default class UniformVariantRestrictions {
     }
 
     static isStraightenedNeck(uniformEra: UniformEra) {
-        return uniformEra === UniformEra.Suliban || uniformEra === UniformEra.VoyagerDS9
-            || uniformEra === UniformEra.OriginalSeries || uniformEra === UniformEra.NextGeneration;
+        return uniformEra === UniformEra.Suliban
+            || uniformEra === UniformEra.VoyagerDS9
+            || uniformEra === UniformEra.Romulan
+            || uniformEra === UniformEra.OriginalSeries
+            || uniformEra === UniformEra.NextGeneration;
     }
 
 }
