@@ -457,8 +457,7 @@ class SpaceframeOutlineHelper {
         page.moveTo(options.outlineLocation.x, page.getHeight() - options.outlineLocation.y);
         page.drawSvgPath(outline, { borderColor: options.outlineColor,
             borderWidth: options.borderWidth / options.outlineScale,
-            scale: scale,
-            matrix: [scale, 0, 0, -scale, 0, 0] })
+            scale: scale })
     }
 
     renderFullSvg(starship: Starship) {

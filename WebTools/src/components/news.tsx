@@ -12,6 +12,14 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240120a</b>
+                <ul>
+                    <li>
+                        One of the changes in the last version included an upgrade of a library that I use to generate PDFs.
+                        Unfortunately, that upgrade had a side-effect: ship outlines were being drawn upside-down. I've
+                        now reverted that upgrade until I can figure out how to deal with that problem.
+                    </li>
+                </ul>
                 <b>v1.240120</b>
                 <ul>
                     <li>
