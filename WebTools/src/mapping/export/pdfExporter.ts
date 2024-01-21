@@ -1,4 +1,4 @@
-import { PDFDocument, PDFFont, PDFPage, RGB, rgb } from "@cantoo/pdf-lib";
+import { PDFDocument, PDFFont, PDFPage, RGB, rgb } from "pdf-lib";
 import fontkit from '@pdf-lib/fontkit'
 import { Sector } from "../table/sector";
 import { Color } from "../../common/colour";

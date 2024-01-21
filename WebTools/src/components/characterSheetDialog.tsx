@@ -1,6 +1,6 @@
 import React from 'react';
 import i18n from 'i18next';
-import { PDFDocument } from '@cantoo/pdf-lib'
+import { PDFDocument } from 'pdf-lib'
 import { ICharacterSheet } from '../helpers/sheets';
 import {Button} from './button';
 import { ModalControl } from './modal';
