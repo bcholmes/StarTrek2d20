@@ -29,6 +29,7 @@ class UniformSelectionView extends React.Component<IUniformSelectionViewProperti
 
     render() {
         const { t, token, isLoading } = this.props;
+        const ranks = RankIndicatorCatalog.instance.getSwatches(token);
 
         if (isLoading) {
             return (<div className="mt-4 text-center">
@@ -55,13 +56,17 @@ class UniformSelectionView extends React.Component<IUniformSelectionViewProperti
                     </div>
                 </div>
 
-                <p className="mt-4">{t('TokenCreator.section.body.rank')}:</p>
-                <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-                {RankIndicatorCatalog.instance.getSwatches(token).map(s => <SwatchButton svg={s.svg} title={s.localizedName}
-                    onClick={() => store.dispatch(setTokenRank(s.id))}
-                    active={token.rankIndicator === s.id}
-                    token={token} key={'rank-swatch-' + s.id }/>)}
-                </div>
+                {ranks?.length <= 1
+                    ? undefined
+                    : (<>
+                        <p className="mt-4">{t('TokenCreator.section.body.rank')}:</p>
+                        <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
+                        {ranks.map(s => <SwatchButton svg={s.svg} title={s.localizedName}
+                            onClick={() => store.dispatch(setTokenRank(s.id))}
+                            active={token.rankIndicator === s.id}
+                            token={token} key={'rank-swatch-' + s.id }/>)}
+                        </div>
+                    </>)}
 
                 <p className="mt-4">{t('TokenCreator.section.body.type')}:</p>
                 <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>

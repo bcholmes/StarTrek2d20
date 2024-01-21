@@ -91,20 +91,29 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
 
                                     </div>
 
-                                    <div className="mt-3">
-                                        <CheckBox value="rounded" isChecked={rounded}
-                                            onChanged={(val) => { this.setState((state) => ({...state, rounded: !state.rounded })) }}
-                                            text={t('TokenCreator.option.rounded')} />
-                                    </div>
-                                    <div>
-                                        <CheckBox value="fancy" isChecked={bordered && rounded}
-                                            onChanged={(val) => { this.setState((state) => ({...state, bordered: !state.bordered })) }}
-                                            text={t('TokenCreator.option.bordered')} disabled={ !rounded } />
+                                    <div className="row">
+                                        <div className="col-6">
+
+                                            <div className="mt-3">
+                                                <CheckBox value="rounded" isChecked={rounded}
+                                                    onChanged={(val) => { this.setState((state) => ({...state, rounded: !state.rounded })) }}
+                                                    text={t('TokenCreator.option.rounded')} />
+                                            </div>
+                                            <div>
+                                                <CheckBox value="fancy" isChecked={bordered && rounded}
+                                                    onChanged={(val) => { this.setState((state) => ({...state, bordered: !state.bordered })) }}
+                                                    text={t('TokenCreator.option.bordered')} disabled={ !rounded } />
+                                            </div>
+                                        </div>
+
+                                        <div className="col-6">
+                                            <div className="mt-4 text-right">
+                                                <Button buttonType={true} className='btn btn-primary btn-xs mw-100' onClick={() => this.exportPng()}>{t('Common.button.export')}</Button>
+                                            </div>
+                                        </div>
+
                                     </div>
 
-                                    <div className="mt-4">
-                                        <Button buttonType={true} className='btn btn-primary btn-sm' onClick={() => this.exportPng()}>{t('Common.button.export')}</Button>
-                                    </div>
                                 </div>
 
                                 <div className="col-lg-8 mt-4">

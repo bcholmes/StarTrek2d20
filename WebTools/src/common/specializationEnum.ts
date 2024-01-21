@@ -40,6 +40,7 @@ export enum Specialization {
     InformationBroker,
     BruteForHire,
     Bodyguard,
+    Smuggler,
 }
 
 export const allSpecializations = () => {

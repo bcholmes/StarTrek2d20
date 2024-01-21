@@ -53,6 +53,10 @@ h1 .btn-link {
     min-width: 150px;
 }
 
+.btn.btn-xs {
+    min-width: auto;
+}
+
 .btn.btn-sm.btn-primary {
     line-height: 1.2;
 }
