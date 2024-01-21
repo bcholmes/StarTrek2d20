@@ -34,7 +34,7 @@ class UniformSelectionView extends React.Component<IUniformSelectionViewProperti
         if (isLoading) {
             return (<div className="mt-4 text-center">
                     <div className="spinner-border text-light" role="status">
-                        <span className="sr-only">Loading...</span>
+                        <span className="visually-hidden">Loading...</span>
                     </div>
                 </div>);
         } else {

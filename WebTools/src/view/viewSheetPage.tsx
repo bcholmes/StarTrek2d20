@@ -39,7 +39,7 @@ const ViewSheetPage = () => {
         } else if (json.stereotype === "starship") {
             let starship = marshaller.decodeStarship(encodedSheet);
             modifyTitle(starship);
-            return (<div className="page container ml-0">
+            return (<div className="page container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
@@ -51,7 +51,7 @@ const ViewSheetPage = () => {
         } else if (json.stereotype === "supportingCharacter") {
             let character = marshaller.decodeCharacter(json);
             modifyTitle(character);
-            return (<div className="page container ml-0">
+            return (<div className="page container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
@@ -63,7 +63,7 @@ const ViewSheetPage = () => {
         } else if (json.stereotype === "npc") {
             let character = marshaller.decodeCharacter(json);
             modifyTitle(character);
-            return (<div className="page container ml-0">
+            return (<div className="page container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
@@ -75,7 +75,7 @@ const ViewSheetPage = () => {
         } else if (json.stereotype === "mainCharacter") {
             let character = marshaller.decodeCharacter(json);
             modifyTitle(character);
-            return (<div className="page container ml-0">
+            return (<div className="page container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
@@ -87,7 +87,7 @@ const ViewSheetPage = () => {
         } else if (json.stereotype === "soloCharacter") {
             let character = marshaller.decodeCharacter(json);
             modifyTitle(character);
-            return (<div className="page container ml-0">
+            return (<div className="page container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>

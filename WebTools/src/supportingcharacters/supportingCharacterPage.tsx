@@ -140,7 +140,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
         : null;
 
     return character ? (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="index.html">{t('Page.title.home')}</a></li>
@@ -262,8 +262,8 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                 </div>
             </div>
             <div className="button-container mt-4">
-                <Button text={t('Common.button.exportPdf')} className="button-small mr-2 mb-2" onClick={() => showDialog() } buttonType={true} />
-                <Button text={t('Common.button.view')} className="button-small mr-2 mb-2" onClick={() => showViewPage() } buttonType={true} />
+                <Button text={t('Common.button.exportPdf')} className="button-small me-2 mb-2" onClick={() => showDialog() } buttonType={true} />
+                <Button text={t('Common.button.view')} className="button-small me-2 mb-2" onClick={() => showViewPage() } buttonType={true} />
             </div>
         </div>
     ) : undefined;

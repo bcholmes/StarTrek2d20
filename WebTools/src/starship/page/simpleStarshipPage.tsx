@@ -24,7 +24,7 @@ export class BaseSimpleStarshipPage extends React.Component<ISimpleStarshipPageP
 
     render() {
         const { t } = this.props;
-        return (<div className="page container ml-0">
+        return (<div className="page container ms-0">
             <ShipBuildingBreadcrumbs />
             {this.renderHeader()}
 
@@ -139,7 +139,7 @@ export class BaseSimpleStarshipPage extends React.Component<ISimpleStarshipPageP
                 </div>
             </section>
 
-            <section className="text-right">
+            <section className="text-end">
                 <Button buttonType={true} onClick={() => this.nextPage()}>{t('Common.button.next')}</Button>
             </section>
         </div>);

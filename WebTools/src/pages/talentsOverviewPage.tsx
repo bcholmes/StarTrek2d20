@@ -235,7 +235,7 @@ const TalentsOverviewPage = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                 <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
@@ -245,17 +245,17 @@ const TalentsOverviewPage = () => {
             <main>
                 <div className="float-top">
                     <div className="talent-filter">
-                        <label className="sr-only" htmlFor='category'>Category</label>
+                        <label className="visually-hidden" htmlFor='category'>Category</label>
                         <DropDownInput id="category" items={_categories} defaultValue={category} onChange={(index) => { onCategoryChanged(index); }} />
                     </div>
                     <div className="talent-filter">
-                        <label className="sr-only" htmlFor='search'>Search</label>
+                        <label className="visually-hidden" htmlFor='search'>Search</label>
                         <input type="text" id="search" onChange={(e) => { searchChanged(e); }} value={search} placeholder="Search..." autoComplete="off"/>
                     </div>
                 </div>
                 <div className="page">
                     <table className="selection-list">
-                        <thead className="sr-only">
+                        <thead className="visually-hidden">
                             <tr>
                                 <th>{t('Construct.other.talent')}</th>
                                 <th>Category</th>

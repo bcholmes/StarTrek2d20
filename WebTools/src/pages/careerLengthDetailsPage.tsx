@@ -102,7 +102,7 @@ const CareerLengthDetailsPage : React.FC<ICharacterProperties> = ({character}) =
     }
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <CharacterCreationBreadcrumbs />
 
             <Header>{career.localizedName}</Header>
@@ -110,7 +110,7 @@ const CareerLengthDetailsPage : React.FC<ICharacterProperties> = ({character}) =
 
             {renderMainBody(career)}
 
-            <div className="text-right">
+            <div className="text-end">
                 <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary" onClick={() => onNext() }/>
             </div>
         </div>

@@ -46,7 +46,7 @@ const SimpleCareerPage: React.FC<ISimpleCareerPageProperties> = ({character, tal
     let instruction = character.type === CharacterType.Child ? "CareerLength.instruction.child" : "CareerLength.instruction.cadet";
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.CadetCareer}/>
             <main>
                 <Header>{t('Page.title.careerLength')}</Header>
@@ -63,7 +63,7 @@ const SimpleCareerPage: React.FC<ISimpleCareerPageProperties> = ({character, tal
                         <TalentDescription name={talentModel.localizedName} description={talentModel.description} />
                     </div>
                 </div>
-                <div className="text-right">
+                <div className="text-end">
                     <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary" onClick={() => onNext() }/>
                 </div>
             </main>

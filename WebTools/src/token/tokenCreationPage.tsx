@@ -65,14 +65,14 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
         const { tab, rounded, bordered } = this.state;
         const svg = this.state.loadingUniform
             ? (<div className="spinner-border text-light" role="status">
-                    <span className="sr-only">Loading...</span>
+                    <span className="visually-hidden">Loading...</span>
                 </div>)
             : TokenSvgBuilder.createSvg(token, rounded, bordered && rounded);
 
         return (<LcarsFrame activePage={PageIdentity.TokenCreationPage}>
                 <div id="app">
 
-                    <div className="page container ml-0">
+                    <div className="page container ms-0">
                         <nav aria-label="breadcrumb">
                             <ol className="breadcrumb">
                                 <li className="breadcrumb-item"><a href="index.html">{t('Page.title.home')}</a></li>
@@ -107,7 +107,7 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
                                         </div>
 
                                         <div className="col-6">
-                                            <div className="mt-4 text-right">
+                                            <div className="mt-4 text-end">
                                                 <Button buttonType={true} className='btn btn-primary btn-xs mw-100' onClick={() => this.exportPng()}>{t('Common.button.export')}</Button>
                                             </div>
                                         </div>

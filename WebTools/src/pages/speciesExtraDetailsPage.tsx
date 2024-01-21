@@ -43,7 +43,7 @@ const SpeciesExtraDetailsPage: React.FC<ISpeciesExtraDetailsPageProperties> = ({
     let speciesModel = SpeciesHelper.getSpeciesByType(species);
 
     return (<div className="page">
-        <div className="container ml-0">
+        <div className="container ms-0">
             <CharacterCreationBreadcrumbs />
             <main>
                 <Header>{speciesModel.localizedName + ' '} Original Species Type</Header>

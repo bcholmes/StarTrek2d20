@@ -1,38 +1,25 @@
 ﻿import React from 'react';
 import { createRoot } from 'react-dom/client';
-import {Button} from './button';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 
 interface IDialogProperties {
     message: string;
-    isVisible: boolean;
 }
 
+const _Dialog: React.FC<IDialogProperties> = ({ message }) => {
 
-class _Dialog extends React.Component<IDialogProperties, {}> {
-    render() {
-        const {isVisible} = this.props;
-
-        const visibilityClass = isVisible
-            ? "dialog-visible"
-            : "dialog-hidden";
-
-        const containerClass = isVisible
-            ? "dialog-container dialog-container-visible"
-            : "dialog-container";
-
-        return (
-            <div className={visibilityClass}>
-                <div className="dialog-bg"></div>
-                <div className={containerClass}>
-                    {this.props.message}
-                    <br/>
-                    <div className="button-container-centered">
-                        <Button text="OK" className="button" onClick={() => { Dialog.hide() } } />
-                    </div>
-                </div>
-            </div>
-        );
-    }
+    return (
+        <Modal show={true}>
+            <Modal.Body className="text-center py-4">{message}</Modal.Body>
+            <Modal.Footer className="border-top-0 justify-content-center py-4">
+                <Button variant="primary" onClick={() => Dialog.hide()}>
+                    Close
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    );
 }
 
 class DialogControl {
@@ -57,12 +44,16 @@ class DialogControl {
     }
 
     private render(visible: boolean) {
-        DialogControl.root.render(
-            React.createElement(_Dialog, {
-                message: this._message,
-                isVisible: visible
-            })
-        );
+        if (visible) {
+            DialogControl.root.render(
+                React.createElement(_Dialog, {
+                    message: this._message
+                })
+            );
+        } else {
+            DialogControl.root.unmount();
+            DialogControl._root = null;
+        }
     }
 }
 

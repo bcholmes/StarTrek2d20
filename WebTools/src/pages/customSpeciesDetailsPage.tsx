@@ -106,7 +106,7 @@ const CustomSpeciesDetailsPage: React.FC<ICustomSpeciesDetailsProperties> = ({ch
 
     return (
         <div className="page">
-            <div className="container ml-0">
+            <div className="container ms-0">
                 <CharacterCreationBreadcrumbs />
                 <Header>{t('Page.title.customSpeciesDetails')}</Header>
                 <InstructionText text={t('CustomSpeciesDetails.instruction')} />
@@ -131,7 +131,7 @@ const CustomSpeciesDetailsPage: React.FC<ICustomSpeciesDetailsProperties> = ({ch
                     </div>
                 </div>
                 {renderTalentsSection()}
-                <div className="text-right">
+                <div className="text-end">
                     <Button text={t('Common.button.next')} className="button-next" onClick={() => onNext()} buttonType={true} />
                 </div>
             </div>

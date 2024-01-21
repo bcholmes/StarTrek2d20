@@ -19,7 +19,7 @@ interface IMissionProfileTalentSelectionPageProperties {
 
 class MissionProfileTalentSelectionPage extends React.Component<IMissionProfileTalentSelectionPageProperties, {}> {
     render() {
-        return (<div className="page container ml-0">
+        return (<div className="page container ms-0">
             <ShipBuildingBreadcrumbs />
             <Header>Mission Profile Talent</Header>
             <p>
@@ -30,7 +30,7 @@ class MissionProfileTalentSelectionPage extends React.Component<IMissionProfileT
                 initialSelection={this.props.starship.profileTalent}
                 construct={this.props.starship}
                 onSelection={(talent) => this.saveTalent(talent)} />
-            <div className="text-right">
+            <div className="text-end">
                 <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
             </div>
         </div>);

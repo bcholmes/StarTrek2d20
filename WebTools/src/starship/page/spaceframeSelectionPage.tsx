@@ -22,7 +22,7 @@ interface ISpaceframeSelectionPageProperties extends WithTranslation {
 class SpaceframeSelectionPage extends React.Component<ISpaceframeSelectionPageProperties, {}> {
     render() {
         const { t } = this.props;
-        return (<div className="page container ml-0">
+        return (<div className="page container ms-0">
             <ShipBuildingBreadcrumbs />
             <Header>{t('Page.title.spaceframeSelection')}</Header>
             <InstructionText text={t('SpaceframeSelectionPage.text')} />
@@ -32,7 +32,7 @@ class SpaceframeSelectionPage extends React.Component<ISpaceframeSelectionPagePr
                 serviceYear={this.props.starship.serviceYear}
                 type={this.props.starship.type}
                 onSelection={(spaceframe) => store.dispatch(setStarshipSpaceframe(spaceframe))} />
-            <div className="text-right">
+            <div className="text-end">
                 <Button buttonType={true} onClick={() => this.nextPage()}>{t('Common.button.next')}</Button>
             </div>
         </div>);

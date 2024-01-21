@@ -154,7 +154,7 @@ const EnvironmentDetailsPage: React.FC<ICharacterProperties> = ({character}) => 
     speciesList.unshift(new DropDownElement("", t('Common.text.select')));
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             {character.stereotype === Stereotype.SoloCharacter
                 ? (<SoloCharacterBreadcrumbs pageIdentity={PageIdentity.EducationDetails} />)
                 : (<CharacterCreationBreadcrumbs  pageIdentity={PageIdentity.EnvironmentDetails} />)};
@@ -199,7 +199,7 @@ const EnvironmentDetailsPage: React.FC<ICharacterProperties> = ({character}) => 
                         </div>
                     </div>
                 </div>
-                <div className='text-right mt-4'>
+                <div className='text-end mt-4'>
                     <Button text={t('Common.button.next')} buttonType={true} className="btn btn-primary" onClick={() => navigateToNextStep() }/>
                 </div>
             </main>

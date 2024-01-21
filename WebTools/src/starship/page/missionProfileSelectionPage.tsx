@@ -21,7 +21,7 @@ interface IMissionProfileSelectionPageProperties extends WithTranslation {
 class MissionProfileSelectionPage extends React.Component<IMissionProfileSelectionPageProperties, {}> {
     render() {
         const { t } = this.props;
-        return (<div className="page container ml-0">
+        return (<div className="page container ms-0">
             <ShipBuildingBreadcrumbs />
             <Header>{t('Page.title.missionProfileSelection')}</Header>
             <p>{t('MissionProfileSelectionPage.text')}
@@ -30,7 +30,7 @@ class MissionProfileSelectionPage extends React.Component<IMissionProfileSelecti
                 initialSelection={this.props.starship.missionProfileModel}
                 starship={this.props.starship}
                 onSelection={(profile) => store.dispatch(setStarshipMissionProfile(profile))} />
-            <div className="text-right">
+            <div className="text-end">
                 <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
             </div>
         </div>);

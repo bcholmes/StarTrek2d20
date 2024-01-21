@@ -126,7 +126,7 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
 
     return (
         <div className="page">
-            <div className="container ml-0">
+            <div className="container ms-0">
                 <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.SpeciesDetails} />
                 <main>
                     <Header>{character.localizedSpeciesName}</Header>
@@ -144,7 +144,7 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
                         </div>
                     </div>
                     {renderTalentsSection()}
-                    <div className="text-right mt-4">
+                    <div className="text-end mt-4">
                         <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary" onClick={() => onNext()} />
                     </div>
                 </main>

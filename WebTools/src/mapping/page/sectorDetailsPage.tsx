@@ -47,7 +47,7 @@ const SectorDetailsPage: React.FC<ISectorDetailsPageProperties> = ({sector}) => 
     const navigate = useNavigate();
     const { t } = useTranslation();
     return sector
-    ?   (<div className="page container ml-0">
+    ?   (<div className="page container ms-0">
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="index.html"onClick={(event) =>
@@ -85,7 +85,7 @@ const SectorDetailsPage: React.FC<ISectorDetailsPageProperties> = ({sector}) => 
                 </table>
             </div>
             <div className="mt-3">
-                <Button onClick={() => exportPdf()} text={t('Common.button.exportPdf')} className="button-small mr-2" buttonType={true} />
+                <Button onClick={() => exportPdf()} text={t('Common.button.exportPdf')} className="button-small me-2" buttonType={true} />
             </div>
         </div>)
     : null;

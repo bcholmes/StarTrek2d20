@@ -87,7 +87,7 @@ class CharacterSheetDialogControl {
         let browserLanguage = getNavigatorLanguage();
         let filteredSheets = sheets.filter(s => s.getLanguage() === "en" || browserLanguage.indexOf(s.getLanguage()) === 0);
 
-        ModalControl.show("lg", () => {}, React.createElement(_CharacterSheetDialog, {
+        ModalControl.show("xl", () => {}, React.createElement(_CharacterSheetDialog, {
             sheets: filteredSheets,
             suffix: suffix,
             construct: c

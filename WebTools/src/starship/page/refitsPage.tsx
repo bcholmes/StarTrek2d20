@@ -20,7 +20,7 @@ interface IRefitPageProperties {
 
 class RefitPage extends React.Component<IRefitPageProperties, {}> {
     render() {
-        return (<div className="page container ml-0">
+        return (<div className="page container ms-0">
             <ShipBuildingBreadcrumbs />
             <Header>Refits</Header>
             <p>
@@ -33,7 +33,7 @@ class RefitPage extends React.Component<IRefitPageProperties, {}> {
             <Refits refits={this.props.starship.refits} points={this.props.refitCount} starship={this.props.starship}
                         onIncrease={(s) => { this.addRefit(s)} } onDecrease={(s) => { this.removeRefit(s); } }/>
 
-            <div className="text-right">
+            <div className="text-end">
                 <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
             </div>
         </div>);

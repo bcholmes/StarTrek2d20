@@ -111,7 +111,7 @@ class CharacterTypePage extends React.Component<WithTranslation, ICharacterTypeP
         });
 
         return (
-            <div className="page container ml-0">
+            <div className="page container ms-0">
                 <CharacterCreationBreadcrumbs />
                 <Header level={1}>{t('Page.title.characterType')}</Header>
                 <p>{t('CharacterTypePage.whatType')}</p>

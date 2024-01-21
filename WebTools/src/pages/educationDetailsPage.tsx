@@ -205,7 +205,7 @@ const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
     }
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.EducationDetails} />
             <Header>{track.name}</Header>
             <InstructionText text={track.description} />
@@ -224,7 +224,7 @@ const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
                 </div>
             </div>
             {renderTalents()}
-            <div className="mt-5 text-right">
+            <div className="mt-5 text-end">
                 <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary btn" onClick={() => navigateToNextPage() }/>
             </div>
         </div>

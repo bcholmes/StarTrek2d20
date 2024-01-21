@@ -185,8 +185,8 @@ const SoloCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
         {(showButtons == null || showButtons === true)
             ? (<div className="d-flex justify-content-between">
                     <div className="mt-5 mb-3">
-                        <Button className="button-small mr-3" onClick={() => showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
-                        <Button className="button-small mr-3" onClick={() => showVttExportDialog() } buttonType={true}>{t('Common.button.exportVtt')}</Button>
+                        <Button className="button-small me-3" onClick={() => showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
+                        <Button className="button-small me-3" onClick={() => showVttExportDialog() } buttonType={true}>{t('Common.button.exportVtt')}</Button>
                     </div>
                     <div className="mt-5 mb-3">
                         <Button className="button-small" onClick={() => navigateToModification() } buttonType={true}>{t('Common.button.modify')}</Button>

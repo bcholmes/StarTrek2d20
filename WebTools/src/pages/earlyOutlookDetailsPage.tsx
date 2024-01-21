@@ -90,7 +90,7 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
     let talents = filterTalentList()
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.UpbringingDetails} />
             <Header>{earlyOutlook.localizedName}</Header>
 
@@ -130,7 +130,7 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
                 <Header level={2}>{t('Construct.other.talent')}</Header>
                 <SingleTalentSelectionList talents={talents} onSelection={(talent) => { onTalentSelected(talent) } } construct={character}/>
             </div>
-            <div className="text-right">
+            <div className="text-end">
                 <Button buttonType={true} className="button-next" onClick={() => navigateToNextPage() }>{t('Common.button.next')}</Button>
             </div>
         </div>

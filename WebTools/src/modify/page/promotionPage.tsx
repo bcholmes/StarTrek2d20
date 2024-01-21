@@ -39,7 +39,7 @@ const PromotionPage: React.FC<IPromotionPageProperties> = ({character}) => {
     }
 
     const { t } = useTranslation();
-    return (<div className="page container ml-0">
+    return (<div className="page container ms-0">
         <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
                 <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
@@ -58,7 +58,7 @@ const PromotionPage: React.FC<IPromotionPageProperties> = ({character}) => {
                 setRankName(rank.name);
             }} defaultValue={rank || ""}/>
 
-        <div className="mt-4 text-right">
+        <div className="mt-4 text-end">
             <Button buttonType={true} onClick={() => nextPage()} className="btn btn-primary btn-sm">{t('Common.button.next')}</Button>
         </div>
 

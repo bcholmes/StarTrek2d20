@@ -20,7 +20,7 @@ interface ISimpleStarshipPageProperties {
 
 class StarshipTalentsPage extends React.Component<ISimpleStarshipPageProperties, {}> {
     render() {
-        return (<div className="page container ml-0">
+        return (<div className="page container ms-0">
             <ShipBuildingBreadcrumbs />
             <Header>Talents</Header>
             <p>Select {this.props.starship.freeTalentSlots} {(this.props.starship.freeTalentSlots === 1) ? ' talent ' : ' talents '} for your ship.</p>
@@ -31,7 +31,7 @@ class StarshipTalentsPage extends React.Component<ISimpleStarshipPageProperties,
                     construct={this.props.starship}
                     onSelection={(talents) => store.dispatch(setAdditionalTalents(talents))} />)
                 : null}
-            <div className="text-right">
+            <div className="text-end">
                 <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
             </div>
         </div>);

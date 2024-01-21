@@ -69,7 +69,7 @@ const EnvironmentPage: React.FC<ICharacterProperties> = ({character}) => {
                 <td className="selection-header">{e.localizedName}</td>
                 <td>{attributes}</td>
                 <td>{disciplines}</td>
-                <td className="text-right">
+                <td className="text-end">
                     <Button className="button-small" onClick={() => { selectEnvironment(e.id) } } buttonType={true} >{t('Common.button.select')}</Button>
                 </td>
             </tr>
@@ -88,10 +88,10 @@ const EnvironmentPage: React.FC<ICharacterProperties> = ({character}) => {
 
         return (<>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSetting( EnvironmentSettingRandomTable()) }>
-                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
+                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSetting( EnvironmentSettingRandomTable()) }>
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
-                {randomSetting != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSetting(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                {randomSetting != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSetting(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
 
             <table className="selection-list">
@@ -120,10 +120,10 @@ const EnvironmentPage: React.FC<ICharacterProperties> = ({character}) => {
 
         return (<>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomCondition( EnvironmentConditionRandomTable()) }>
-                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
+                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomCondition( EnvironmentConditionRandomTable()) }>
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
-                {randomCondition != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomCondition(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                {randomCondition != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomCondition(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
 
             <table className="selection-list">
@@ -143,7 +143,7 @@ const EnvironmentPage: React.FC<ICharacterProperties> = ({character}) => {
     }
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             {character.stereotype === Stereotype.SoloCharacter
                 ? (<SoloCharacterBreadcrumbs pageIdentity={PageIdentity.Environment} />)
                 : (<CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Environment} />)};

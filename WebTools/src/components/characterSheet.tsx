@@ -133,7 +133,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
             return (<div key={i}>{CareerEventsHelper.getCareerEvent(e.id, c.type).localizedName}</div>)
         });
 
-        let containerClass = this.props.showProfile ? "sheet-container sheet-container-visible pr-3" :  "sheet-container sheet-container-hidden pr-3";
+        let containerClass = this.props.showProfile ? "sheet-container sheet-container-visible pe-3" :  "sheet-container sheet-container-hidden pe-3";
         const era = this.props.era == null ? null : ErasHelper.getEra(this.props.era);
 
         return (

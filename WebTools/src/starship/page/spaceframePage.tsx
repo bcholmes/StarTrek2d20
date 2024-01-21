@@ -23,7 +23,7 @@ class SpaceframePage extends React.Component<ISpaceframePageProperties, {}> {
     render() {
         const { t } = this.props;
         return (
-            <div className="page container ml-0">
+            <div className="page container ms-0">
                 <ShipBuildingBreadcrumbs />
                 <Header>{t('Page.title.spaceframeOption')}</Header>
 

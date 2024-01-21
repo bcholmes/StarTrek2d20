@@ -69,7 +69,7 @@ const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({charac
     const disciplineController = new CareerEventDisciplineController(character, careerEventStep, context, careerEvent.disciplines);
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <CharacterCreationBreadcrumbs />
 
             <Header>{careerEvent.localizedName}</Header>
@@ -121,7 +121,7 @@ const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({charac
                       </div>) : undefined }
 
                 </div>
-                <div className='text-right mt-4'>
+                <div className='text-end mt-4'>
                     <Button text={t('Common.button.next')} buttonType={true} className="btn btn-primary" onClick={() => navigateToNextStep() }/>
                 </div>
         </div>);

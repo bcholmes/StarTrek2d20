@@ -41,7 +41,7 @@ const GMTrackerPage: React.FC<IGMTrackerPageProperties> = ({characters}) => {
 
     return (<LcarsFrame activePage={PageIdentity.GamemasterTrackerPage}>
             <div id="app">
-                <div className="container ml-0">
+                <div className="container ms-0">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item">
@@ -53,7 +53,7 @@ const GMTrackerPage: React.FC<IGMTrackerPageProperties> = ({characters}) => {
                     <Header>{t('GMTracker.title')}</Header>
                     <p>{t('GMTracker.instruction')}</p>
 
-                    <div className="text-right">
+                    <div className="text-end">
                         <Button buttonType={true} className="btn btn-link btn-lg" onClick={() => showAddModal()}><i className="bi bi-plus-circle"></i></Button>
                     </div>
 

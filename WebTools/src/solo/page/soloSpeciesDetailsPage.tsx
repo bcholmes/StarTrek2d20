@@ -29,7 +29,7 @@ const SoloSpeciesDetailsPage: React.FC<ICharacterProperties> = ({character}) => 
     }
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloSpeciesDetails}/>
             <Header>{character.localizedSpeciesName}</Header>
 
@@ -45,7 +45,7 @@ const SoloSpeciesDetailsPage: React.FC<ICharacterProperties> = ({character}) => 
                 </div>
             </div>
 
-            <div className="text-right mt-4">
+            <div className="text-end mt-4">
                 <Button buttonType={true} onClick={() => navigateToNextPage()} className="btn btn-primary">{t('Common.button.next')}</Button>
             </div>
         </div>

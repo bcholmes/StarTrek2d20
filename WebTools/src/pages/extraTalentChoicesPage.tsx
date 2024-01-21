@@ -177,7 +177,7 @@ const ExtraTalentChoicesPage : React.FC<ICharacterProperties> = ({character}) =>
         }
     }
 
-    return (<div className="page container ml-0">
+    return (<div className="page container ms-0">
             <CharacterCreationBreadcrumbs />
             <main>
                 <Header>Additional Talent Details</Header>
@@ -191,7 +191,7 @@ const ExtraTalentChoicesPage : React.FC<ICharacterProperties> = ({character}) =>
                     {renderWisdomOfYears()}
                 </div>
 
-                <div className="text-right my-4">
+                <div className="text-end my-4">
                     <Button buttonType={true} className="btn btn-primary" onClick={() => onNext()} >{t('Common.button.next')}</Button>
                 </div>
             </main>

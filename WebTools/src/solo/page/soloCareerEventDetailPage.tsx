@@ -66,7 +66,7 @@ const SoloCareerEventDetailsPage: React.FC<ISoloCareerEventProperties> = ({chara
     const disciplineController = new CareerEventDisciplineController(character, careerEventStep, context, careerEvent.disciplines);
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <SoloCharacterBreadcrumbs pageIdentity={context === StepContext.CareerEvent2 ? PageIdentity.SoloCareerEvent2 : PageIdentity.SoloCareerEvent1} />
 
             <Header>{careerEvent.localizedName}</Header>
@@ -101,7 +101,7 @@ const SoloCareerEventDetailsPage: React.FC<ISoloCareerEventProperties> = ({chara
                         <div className="mt-3 text-white"><b>{t('Common.text.suggestions')}:</b> {careerEvent.localizedFocusSuggestion}</div>
                     </div>
                 </div>
-                <div className='text-right mt-4'>
+                <div className='text-end mt-4'>
                     <Button text={t('Common.button.next')} buttonType={true} className="btn btn-primary" onClick={() => navigateToNextStep() }/>
                 </div>
         </div>);

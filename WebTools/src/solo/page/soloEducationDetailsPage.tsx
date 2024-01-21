@@ -68,7 +68,7 @@ const SoloEducationDetailsPage: React.FC<ICharacterProperties> = ({character}) =
     }
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <SoloCharacterBreadcrumbs  pageIdentity={PageIdentity.SoloEducationDetailsPage}/>
             <Header>{track.localizedName}</Header>
             <InstructionText text={track.localizedDescription} />
@@ -129,7 +129,7 @@ const SoloEducationDetailsPage: React.FC<ICharacterProperties> = ({character}) =
                     <div className="py-1 text-white">{t('Value.otherTraining.text')}</div>
                 </div>
             </div>
-            <div className='text-right mt-4'>
+            <div className='text-end mt-4'>
                 <Button text={t('Common.button.next')} buttonType={true} className="btn btn-primary" onClick={() => navigateToNextPage() }/>
             </div>
         </div>);

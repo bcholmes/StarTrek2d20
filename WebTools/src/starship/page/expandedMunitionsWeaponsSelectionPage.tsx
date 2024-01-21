@@ -20,7 +20,7 @@ interface IExpandedMunitionsWeaponsSelectionPage {
 class ExpandedMunitionsWeaponsSelectionPage extends React.Component<IExpandedMunitionsWeaponsSelectionPage, {}> {
 
     render() {
-        return (<div className="page container ml-0">
+        return (<div className="page container ms-0">
                 <ShipBuildingBreadcrumbs />
                 <Header>Expanded Munitions</Header>
 
@@ -30,7 +30,7 @@ class ExpandedMunitionsWeaponsSelectionPage extends React.Component<IExpandedMun
                             ? "Your ship has the talent \"Expanded Munitions\" (multiple times). You may select " + this.numberOfWeapons() + " additional starship weapons:"
                             : "Your ship has the talent \"Expanded Munitions\". You may select an additional starship weapon:"}
                         </p>
-                    <div className="text-right">
+                    <div className="text-end">
                         <Button buttonType={true} className="btn btn-link mt-0" onClick={() => this.showModal()}><i className="bi bi-plus-circle"></i></Button>
                     </div>
                 </div>
@@ -46,7 +46,7 @@ class ExpandedMunitionsWeaponsSelectionPage extends React.Component<IExpandedMun
                     {this.renderWeapons()}
                 </table>
 
-                <div className="text-right">
+                <div className="text-end">
                     <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
                 </div>
             </div>);
@@ -67,7 +67,7 @@ class ExpandedMunitionsWeaponsSelectionPage extends React.Component<IExpandedMun
                     <td className="selection-header">{s.weapon.description}</td>
                     <td><p className="m-0">{s.weapon.dice}</p></td>
                     <td><p className="m-0">{s.weapon.effectsAndQualities}</p></td>
-                    <td className="text-right"><Button buttonType={true} className="btn btn-link text-danger" onClick={() => { this.confirmRemove(s) }} ><i className="bi bi-trash"></i></Button></td>
+                    <td className="text-end"><Button buttonType={true} className="btn btn-link text-danger" onClick={() => { this.confirmRemove(s) }} ><i className="bi bi-trash"></i></Button></td>
                 </tr>))}
             </tbody>);
         }
@@ -93,7 +93,7 @@ class ExpandedMunitionsWeaponsSelectionPage extends React.Component<IExpandedMun
     }
 
     confirmRemove(selection: ShipTalentDetailSelection) {
-        ModalControl.show("", () => this.closeModal(), this.confirmationContents(selection), "Delete Weapon");
+        ModalControl.show(undefined, () => this.closeModal(), this.confirmationContents(selection), "Delete Weapon");
     }
 
     showModal() {
@@ -112,7 +112,7 @@ class ExpandedMunitionsWeaponsSelectionPage extends React.Component<IExpandedMun
     confirmationContents(selection: ShipTalentDetailSelection) {
         return (<div>Are you sure you want to delete this weapon?
             <div className="mt-4 text-center">
-                <Button buttonType={true}  className="button-small mr-3" onClick={() => { this.closeModal() }} >Cancel</Button>
+                <Button buttonType={true}  className="button-small me-3" onClick={() => { this.closeModal() }} >Cancel</Button>
                 <Button buttonType={true}  className="button-small" onClick={() => { this.deleteWeapon(selection) }} >Delete</Button>
             </div>
         </div>);

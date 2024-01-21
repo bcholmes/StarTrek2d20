@@ -38,7 +38,7 @@ class AddCharacterView extends React.Component<IAddCharacterProperties, IAddChar
 
                 <p className="mt-3">{this.state.message}</p>
 
-                <div className="mt-5 text-right">
+                <div className="mt-5 text-end">
                     <Button className="btn btn-sm btn-primary" buttonType={true}
                         enabled={this.state.enabled}
                         onClick={() => this.addCharacter()}>{t('Common.button.add')}</Button>

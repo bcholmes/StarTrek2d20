@@ -24,7 +24,7 @@ const SoloEraSelectionPage = ({type}) => {
         return (
             <tr key={i} onClick={() => { if (Window.isCompact()) eraSelected(e.id); }}>
                 <td className="selection-header">{e.localizedName}</td>
-                <td className="text-right"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { eraSelected(e.id) }} /></td>
+                <td className="text-end"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { eraSelected(e.id) }} /></td>
             </tr>
         );
     }
@@ -34,7 +34,7 @@ const SoloEraSelectionPage = ({type}) => {
         : ErasHelper.getBasicEras().map((e, i) => toTableRow(e, i));
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
@@ -47,10 +47,10 @@ const SoloEraSelectionPage = ({type}) => {
                 {t('SoloEraSelectionPage.instruction')}
             </p>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEra( eraRandomTable()) }>
-                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
+                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomEra( eraRandomTable()) }>
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
-                {randomEra != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEra(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                {randomEra != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomEra(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
             <table className="selection-list">
                 <tbody>

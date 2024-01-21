@@ -40,7 +40,7 @@ export const SystemGenerationPage = () => {
     }
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="index.html">Home</a></li>

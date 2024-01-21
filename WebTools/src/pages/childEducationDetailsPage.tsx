@@ -265,7 +265,7 @@ const ChildEducationDetailsPage: React.FC<ICharacterPageProperties> = ({characte
                 onChange={(v) => store.dispatch(setCharacterFocus(v, StepContext.Education, 1))} />
         </div>);
 
-    return (<div className="page container ml-0">
+    return (<div className="page container ms-0">
         <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.ChildEducationDetailsPage} />
         <Header>{character.age.name}</Header>
         <InstructionText text={character.age.description} />
@@ -309,7 +309,7 @@ const ChildEducationDetailsPage: React.FC<ICharacterPageProperties> = ({characte
             </div>
         </div>
 
-        <div className="text-right">
+        <div className="text-end">
             <Button buttonType={true} className="btn btn-primary" onClick={() => onNext() }>{t('Common.button.next')}</Button>
         </div>
     </div>);

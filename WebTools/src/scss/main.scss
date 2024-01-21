@@ -24,9 +24,16 @@ $primary: $lcars-purple;
 $danger: $lcars-salmon;
 $info: #F9AC76;
 
+$modal-content-bg: $lcars-brighter-purple;
+$modal-content-color: white;
+$modal-content-border-radius: 1.25rem;
+
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/variables-dark';
 @import '~bootstrap/scss/mixins';
+@import "~bootstrap/scss/maps";
+@import '~bootstrap/scss/root';
 
 $bootstrap-icons-font-src: url("~bootstrap-icons/font/fonts/bootstrap-icons.woff2") format("woff2"), url("~bootstrap-icons/font/fonts/bootstrap-icons.woff") format("woff");
 
@@ -42,26 +49,9 @@ $btn-border-radius-sm:        1.25rem;
 
 $btn-font-family:             lcars;
 
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins';
-@import '~bootstrap/scss/root';
-@import '~bootstrap/scss/reboot';
 
-@import '~bootstrap/scss/breadcrumb';
-@import '~bootstrap/scss/button-group';
-@import '~bootstrap/scss/grid';
-@import '~bootstrap/scss/type';
-@import '~bootstrap/scss/buttons';
-@import '~bootstrap/scss/spinners';
-@import '~bootstrap/scss/utilities/background';
-@import '~bootstrap/scss/utilities/borders';
-@import '~bootstrap/scss/utilities/display';
-@import '~bootstrap/scss/utilities/flex';
-@import '~bootstrap/scss/utilities/screenreaders';
-@import '~bootstrap/scss/utilities/spacing';
-@import '~bootstrap/scss/utilities/sizing';
-@import '~bootstrap/scss/utilities/text';
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap-grid';
 
 @import './common.scss';
 @import './attributes.scss';

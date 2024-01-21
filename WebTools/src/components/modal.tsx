@@ -1,49 +1,46 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import Modal from 'react-bootstrap/Modal';
 
 interface IModalProperties {
-    size?: string;
+    size?: "xl" | "lg" | "sm";
     show: boolean;
     onClose: () => void;
     children?: React.ReactNode;
     header: string;
 }
 
-class Modal extends React.Component<IModalProperties, {}> {
+const ModalBox: React.FC<IModalProperties> = ({size, show, onClose, children, header}) => {
 
-    render() {
-        return (
-            <div className={this.props.show ? "dialog-visible": "dialog-hidden" }>
-                <div className="modal-backdrop"></div>
-                <div className="modal" onClick={() => { this.props.onClose(); } }>
-                    <div className={'modal-dialog ' + (this.props.size === 'lg' ? 'modal-lg' : '')} onClick={(e) => e.stopPropagation()}>
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5>{this.props.header}</h5>
-                                <button className="close" onClick={() => this.props.onClose() }><img src="static/img/close.png" style={{height: '24px', width: '24px'}} alt="Close" /></button>
-                            </div>
-                            <div className="modal-body">
-                                {this.props.children}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
+    return (
+        <Modal show={show} size={size}>
+            <Modal.Header className="pt-4 border-bottom-0">
+                <h5>{header}</h5>
+                <button className="close" onClick={() => onClose() } role="button"><img src="static/img/close.png" style={{height: '24px', width: '24px'}} alt="Close" /></button>
+            </Modal.Header>
+            <Modal.Body>{children}</Modal.Body>
+        </Modal>);
 }
 
-export default Modal;
+export default ModalBox;
 
 class ModalDialogControl {
 
-    size?: string;
+    static _root;
+
+    size?: "xl" | "lg" | "sm";
     onClose?: () => void;
     children?: React.ReactNode;
     header: string;
 
-    show(size?: string, onClose?: () => void, children?: React.ReactNode, header?: string) {
+    static get root() {
+        if (ModalDialogControl._root == null) {
+            ModalDialogControl._root = createRoot(document.getElementById("dialog"));
+        }
+        return ModalDialogControl._root;
+    }
+
+    show(size?: "xl" | "lg" | "sm", onClose?: () => void, children?: React.ReactNode, header?: string) {
         this.size = size;
         this.onClose = onClose;
         this.children = children;
@@ -56,10 +53,9 @@ class ModalDialogControl {
     }
 
     private render(visible: boolean) {
-        let root = createRoot(document.getElementById("dialog"));
         if (visible) {
-            root.render(
-                React.createElement(Modal, {
+            ModalDialogControl.root.render(
+                React.createElement(ModalBox, {
                     show: visible,
                     onClose: () => { ModalControl.hide(); if (this.onClose) this.onClose();  },
                     size: this.size,
@@ -68,7 +64,8 @@ class ModalDialogControl {
                 })
             );
         } else {
-            root.unmount();
+            ModalDialogControl.root.unmount();
+            ModalDialogControl._root = null;
         }
     }
 }

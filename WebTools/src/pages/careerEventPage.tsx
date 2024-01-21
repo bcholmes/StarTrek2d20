@@ -55,7 +55,7 @@ const CareerEventPage: React.FC<ICareerEventProperties> = ({character, context})
                 <td className="selection-header">{careerEvent.name}</td>
                 <td>{attributes}</td>
                 <td>{disciplines}</td>
-                <td className="text-right"><Button className="button-small" text="Select" onClick={() => { careerEventSelected(careerEvent) } } buttonType={true}/></td>
+                <td className="text-end"><Button className="button-small" text="Select" onClick={() => { careerEventSelected(careerEvent) } } buttonType={true}/></td>
             </tr>
         )
     }
@@ -76,10 +76,10 @@ const CareerEventPage: React.FC<ICareerEventProperties> = ({character, context})
 
         return (<>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEvent( generateRandomEvent(false)) }>
-                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
+                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomEvent( generateRandomEvent(false)) }>
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
-                {randomEvent != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEvent(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                {randomEvent != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomEvent(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
 
             <table className="selection-list">
@@ -101,10 +101,10 @@ const CareerEventPage: React.FC<ICareerEventProperties> = ({character, context})
                 <ReactMarkdown children={t('CareerEvents.unofficialNote')} linkTarget="_blank" />
             </div>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEventWithUnofficial( generateRandomEvent(true)) }>
-                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
+                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomEventWithUnofficial( generateRandomEvent(true)) }>
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
-                {randomEventWithUnofficial != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomEventWithUnofficial(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                {randomEventWithUnofficial != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomEventWithUnofficial(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
 
             <table className="selection-list">
@@ -116,7 +116,7 @@ const CareerEventPage: React.FC<ICareerEventProperties> = ({character, context})
     }
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <CharacterCreationBreadcrumbs />
             <Header>{t('Page.title.careerEvent')}</Header>
             <InstructionText text={t('CareerEvents.instruction')} />

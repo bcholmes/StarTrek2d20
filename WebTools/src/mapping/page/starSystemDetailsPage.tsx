@@ -54,7 +54,7 @@ const StarSystemDetailsPage: React.FC<IStarSystemDetailsPageProperties> = ({star
         navigate("/systemGenerator");
     } else {
         return (
-            <div className="page container ml-0">
+            <div className="page container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html">{t('Page.title.home')}</a></li>
@@ -98,8 +98,8 @@ const StarSystemDetailsPage: React.FC<IStarSystemDetailsPageProperties> = ({star
                 </div>
 
                 <div>
-                    <Button buttonType={true} className="mr-2 btn btn-primary btn-sm" text="Back to Sector" onClick={() => navigate("/sectorDetails") } />
-                    <Button onClick={() => exportPdf()} text={t('Common.button.exportPdf')} className="btn btn-primary btn-sm mr-2" buttonType={true} />
+                    <Button buttonType={true} className="me-2 btn btn-primary btn-sm" text="Back to Sector" onClick={() => navigate("/sectorDetails") } />
+                    <Button onClick={() => exportPdf()} text={t('Common.button.exportPdf')} className="btn btn-primary btn-sm me-2" buttonType={true} />
                 </div>
             </div>);
     }

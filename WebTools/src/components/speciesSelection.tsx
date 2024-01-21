@@ -73,7 +73,7 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
                 <td>{attributes}</td>
                 <td className="d-none d-md-table-cell">{sources}</td>
                 <td>{talents}</td>
-                <td className="text-right"><Button buttonType={true} className="button-small"onClick={() => { onSelection(s.id) }} >{t('Common.button.select')}</Button></td>
+                <td className="text-end"><Button buttonType={true} className="button-small"onClick={() => { onSelection(s.id) }} >{t('Common.button.select')}</Button></td>
             </tr>
         );
     });
@@ -84,10 +84,10 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
             {overrideCheckbox}
 
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSpecies( determineRandomSpecies()) }>
-                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('SpeciesPage.rollCoreSpecies')}/> {t('SpeciesPage.rollCoreSpecies')}</>
+                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpecies( determineRandomSpecies()) }>
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('SpeciesPage.rollCoreSpecies')}/> {t('SpeciesPage.rollCoreSpecies')}</>
                 </Button>
-                {randomSpecies != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomSpecies(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                {randomSpecies != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpecies(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
             <table className="selection-list">
                 <thead>

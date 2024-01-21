@@ -58,7 +58,7 @@ const SoloFinishingTouchesPage: React.FC<ICharacterProperties> = ({character}) =
     }
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloFinishingTouches} />
 
             <Header>{t('Page.title.soloFinishingTouches')}</Header>
@@ -86,7 +86,7 @@ const SoloFinishingTouchesPage: React.FC<ICharacterProperties> = ({character}) =
                 </div>
 
             </div>
-            <div className='text-right mt-4'>
+            <div className='text-end mt-4'>
                 <Button text={t('Common.button.next')} buttonType={true} className="btn btn-primary" onClick={() => navigateToNextPage() }/>
             </div>
         </div>);

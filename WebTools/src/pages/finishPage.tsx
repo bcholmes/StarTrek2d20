@@ -292,7 +292,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
     }
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Finish} />
             <main>
                 <Header>{t('Page.title.finish')}</Header>
@@ -331,8 +331,8 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
                 {renderAssignment(roleList)}
                 <AllCharacterValues />
                 <div className="button-container mb-5">
-                    <Button text={t('Common.button.exportPdf')} className="button-small mr-2" onClick={() => showDialog() }  buttonType={true} />
-                    <Button text={t('Common.button.view')} className="button-small mr-2" onClick={() => showViewPage() } buttonType={true} />
+                    <Button text={t('Common.button.exportPdf')} className="button-small me-2" onClick={() => showDialog() }  buttonType={true} />
+                    <Button text={t('Common.button.view')} className="button-small me-2" onClick={() => showViewPage() } buttonType={true} />
                 </div>
             </main>
         </div>

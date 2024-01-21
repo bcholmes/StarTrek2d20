@@ -20,7 +20,7 @@ interface IMissionPodSelectionPageProperties extends WithTranslation{
 class MissionPodSelectionPage extends React.Component<IMissionPodSelectionPageProperties, {}> {
     render() {
         const { t } = this.props;
-        return (<div className="page container ml-0">
+        return (<div className="page container ms-0">
             <ShipBuildingBreadcrumbs />
             <Header>{t('Page.title.missionPodSelection')}</Header>
             <p>{t('MissionPodSelectionPage.text')}
@@ -29,7 +29,7 @@ class MissionPodSelectionPage extends React.Component<IMissionPodSelectionPagePr
                 initialSelection={this.props.starship.missionPodModel}
                 starship={this.props.starship}
                 onSelection={(missionPod) => store.dispatch(setStarshipMissionPod(missionPod))} />
-            <div className="text-right">
+            <div className="text-end">
                 <Button buttonType={true} onClick={() => this.nextPage()}>{t('Common.button.next')}</Button>
             </div>
         </div>);

@@ -28,7 +28,7 @@ const SoloEducationTypePage: React.FC<ICharacterProperties> = ({character}) => {
         return (
             <tr key={i} onClick={() => { if (Window.isCompact()) typeSelected(type.type); }}>
                 <td className="selection-header">{type.localizedName}</td>
-                <td className="text-right"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { typeSelected(type.type) }} /></td>
+                <td className="text-end"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { typeSelected(type.type) }} /></td>
             </tr>
         );
     }
@@ -38,17 +38,17 @@ const SoloEducationTypePage: React.FC<ICharacterProperties> = ({character}) => {
         : CharacterTypeModel.getSoloCharacterTypes().map((e, i) => toTableRow(e, i));
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloEducationType} />
             <Header>{t('Page.title.soloEducationType')}</Header>
             <p className="mt-3">
                 {t('SoloEducationTypePage.instruction')}
             </p>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomType( EducationCategoryRandomTable()) }>
-                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="mr-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
+                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomType( EducationCategoryRandomTable()) }>
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
-                {randomType != null ? (<Button buttonType={true} className="btn btn-primary btn-sm mr-3" onClick={() => setRandomType(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                {randomType != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomType(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
             <table className="selection-list">
                 <tbody>

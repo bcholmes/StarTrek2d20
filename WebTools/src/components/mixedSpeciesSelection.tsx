@@ -156,7 +156,7 @@ const MixedSpeciesSelection: React.FC<ICharacterProperties> = ({character}) => {
             </table>
             </div>
         </div>
-        <div className="text-right mt-4">
+        <div className="text-end mt-4">
             <Button buttonType={true} className="btn btn-primary" onClick={() => navigateToNextPage()} >{t('Common.button.next')}</Button>
         </div>
     </>);

@@ -55,12 +55,12 @@ const SpeciesPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const selectCustomSpecies = () => {
 
-        return (<div className="text-right mt-4">
+        return (<div className="text-end mt-4">
             <table className="selection-list">
                 <tbody>
                     <tr>
                         <td className="selection-header">Custom Species</td>
-                        <td className="text-right">
+                        <td className="text-end">
                             <Button buttonType={true} className="btn btn-primary btn-sm" text={t('Common.text.select')} onClick={() => showCustomSpecies() }/>
                         </td>
                     </tr>
@@ -92,7 +92,7 @@ const SpeciesPage: React.FC<ICharacterProperties> = ({character}) => {
 
     return (
         <div className="page">
-            <div className="container ml-0">
+            <div className="container ms-0">
                 <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Species} />
                 <main>
                     <Header>{t('Page.title.species')}</Header>

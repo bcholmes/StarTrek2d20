@@ -15,7 +15,7 @@ class WorldView extends React.Component<IWorldViewProperties, {}> {
     render() {
         let { world } = this.props;
         let attributes = world.attributeList;
-        return (<div className="col mb-5 pr-3">
+        return (<div className="col mb-5 pe-3">
                 {attributes.map((a,i) => (<DataValueRow name={a.name + ":"} key={'attr-' + i}>{a.value}</DataValueRow>))}
             </div>);
     }

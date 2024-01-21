@@ -122,7 +122,7 @@ const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character
 
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.AttributesAndDisciplines} />
             <Header>{t('Page.title.finish')}</Header>
             <InstructionText text={description} />
@@ -141,7 +141,7 @@ const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character
             </div>
 
             {talentSelection}
-            <div className="text-right mt-4">
+            <div className="text-end mt-4">
                 <Button buttonType={true} text="FINISH" className="btn btn-primary" onClick={() => navigateToNextPage() }/>
             </div>
         </div>

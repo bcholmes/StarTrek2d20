@@ -106,7 +106,7 @@ const SoloFinalPage: React.FC<ICharacterProperties> = ({character}) => {
     }
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <SoloCharacterBreadcrumbs pageIdentity={PageIdentity.SoloFinal} />
 
             <Header>{t('Page.title.soloFinal')}</Header>
@@ -157,8 +157,8 @@ const SoloFinalPage: React.FC<ICharacterProperties> = ({character}) => {
                 </div>)}
             </div>
             <div className="button-container my-5">
-                <Button buttonType={true} text={t('Common.button.exportPdf')} className="btn btn-primary btn-sm mr-3" onClick={() => showDialog() }  />
-                <Button buttonType={true} text={t('Common.button.view')} className="btn btn-primary btn-sm mr-3" onClick={() => showViewPage() }  />
+                <Button buttonType={true} text={t('Common.button.exportPdf')} className="btn btn-primary btn-sm me-3" onClick={() => showDialog() }  />
+                <Button buttonType={true} text={t('Common.button.view')} className="btn btn-primary btn-sm me-3" onClick={() => showViewPage() }  />
             </div>
 
         </div>);

@@ -31,7 +31,7 @@ const ModificationCompletePage: React.FC<ModificationCompletePageProperties> = (
         window.open('/view?s=' + value, "_blank");
     }
 
-    return (<div className="page container ml-0">
+    return (<div className="page container ms-0">
         <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
                 <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
@@ -42,8 +42,8 @@ const ModificationCompletePage: React.FC<ModificationCompletePageProperties> = (
         <Header>{t('Page.title.modificationComplete')}</Header>
         <InstructionText text={t('ModificationCompletePage.instruction')} />
 
-        <div className="my-4 text-right">
-            <Button buttonType={true} className="btn btn-primary btn-sm mr-2" onClick={() => navigateTo(null, PageIdentity.ModificationTypeSelection)}>Modify</Button>
+        <div className="my-4 text-end">
+            <Button buttonType={true} className="btn btn-primary btn-sm me-2" onClick={() => navigateTo(null, PageIdentity.ModificationTypeSelection)}>Modify</Button>
             <Button buttonType={true} className="btn btn-primary btn-sm" onClick={() => showViewPage()}>View</Button>
         </div>
     </div>);

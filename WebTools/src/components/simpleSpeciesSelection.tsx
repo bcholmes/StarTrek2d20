@@ -45,7 +45,7 @@ export class SimpleSpeciesSelection extends React.Component<ISimpleSpeciesSelect
                     <td className="selection-header">{s.name}</td>
                     <td>{attributes}</td>
                     <td>{talents}</td>
-                    <td className="text-right"><Button buttonType={true} className="button-small" text="Select" onClick={() => { this.props.onSelection(s) }} /></td>
+                    <td className="text-end"><Button buttonType={true} className="button-small" text="Select" onClick={() => { this.props.onSelection(s) }} /></td>
                 </tr>
             );
         });

@@ -32,7 +32,7 @@ class FinalStarshipDetailsPage extends React.Component<IFinalStarshipDetailsPage
     }
 
     render() {
-        return (<div className="page container ml-0">
+        return (<div className="page container ms-0">
                 <ShipBuildingBreadcrumbs />
                 <Header>Final Starship Details</Header>
 
@@ -99,8 +99,8 @@ class FinalStarshipDetailsPage extends React.Component<IFinalStarshipDetailsPage
 
                 <div className="starship-panel mt-5">
                     <div className="button-container mb-3">
-                        <Button text="Export to PDF" className="button-small mr-2 mb-2" onClick={() => this.showExportDialog() } buttonType={true} />
-                        <Button text="View" className="button-small mr-2 mb-2" onClick={() => this.showViewPage() } buttonType={true} />
+                        <Button text="Export to PDF" className="button-small me-2 mb-2" onClick={() => this.showExportDialog() } buttonType={true} />
+                        <Button text="View" className="button-small me-2 mb-2" onClick={() => this.showViewPage() } buttonType={true} />
                     </div>
                 </div>
             </div>);

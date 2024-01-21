@@ -22,7 +22,7 @@ const SoloConstructTypePage = () => {
     const { t } = useTranslation();
     return (
         <div className="page">
-            <div className="container ml-0">
+            <div className="container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>

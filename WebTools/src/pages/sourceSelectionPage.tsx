@@ -76,7 +76,7 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
         const { t } = this.props;
 
         return (
-            <div className="page container ml-0">
+            <div className="page container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
@@ -93,11 +93,11 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
                         <tbody>
                             <tr onClick={() => { if (Window.isCompact()) this.selectStandardRules(); }}>
                                 <td className="selection-header">{t('SourceSelectionPage.standardGameType')}</td>
-                                <td className="text-right"><Button buttonType={true} className="btn btn-sm btn-primary" text={t('Common.button.select')} onClick={() => { this.selectStandardRules() }} /></td>
+                                <td className="text-end"><Button buttonType={true} className="btn btn-sm btn-primary" text={t('Common.button.select')} onClick={() => { this.selectStandardRules() }} /></td>
                             </tr>
                             <tr onClick={() => { if (Window.isCompact() && this.hasSource(Source.CaptainsLog)) this.selectSoloRules(); }}>
                                 <td className="selection-header">{t('SourceSelectionPage.soloGameType')}</td>
-                                <td className="text-right">
+                                <td className="text-end">
                                     <LoadingButton loading={this.state.soloLoading} className="btn-sm"  onClick={() => { this.selectSoloRules() }}
                                         enabled={this.hasSource(Source.CaptainsLog)} >{t('Common.button.select')}</LoadingButton>
                                 </td>

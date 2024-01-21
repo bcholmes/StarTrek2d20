@@ -62,7 +62,7 @@ const SoloEarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}
         </div>);
 
     return (
-        <div className="page container ml-0">
+        <div className="page container ms-0">
             <SoloCharacterBreadcrumbs  pageIdentity={PageIdentity.SoloEarlyOutlookDetails} />
             <Header>{earlyOutlook.localizedName}</Header>
 
@@ -98,7 +98,7 @@ const SoloEarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}
                     <div className="py-1 text-white"><b>{t('Common.text.suggestions')}:</b> {earlyOutlook.focusSuggestions.join(", ")}</div>
                 </div>
             </div>
-            <div className='text-right mt-4'>
+            <div className='text-end mt-4'>
                 <Button text={t('Common.button.next')} buttonType={true} className="btn btn-primary" onClick={() => navigateToNextPage() }/>
             </div>
         </div>);
