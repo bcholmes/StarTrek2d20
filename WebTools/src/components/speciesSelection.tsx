@@ -13,6 +13,17 @@ import { SourcesHelper } from '../helpers/sources';
 import InstructionText from './instructionText';
 import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { connect } from 'react-redux';
+import SplitButton from 'react-bootstrap/SplitButton';
+import Dropdown from 'react-bootstrap/Dropdown';
+
+enum RandomMode {
+    All,
+    Core,
+    AlphaQuadrant,
+    BetaQuadrant,
+    GammaQuadrant,
+    DeltaQuadrant
+}
 
 interface ISpeciesSelectionProperties extends ICharacterProperties {
     onSelection: (species: Species) => void;
@@ -23,6 +34,7 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
     const [randomSpecies, setRandomSpecies] = useState(character?.speciesStep?.species);
 
     const { t } = useTranslation();
+    const [mode, setMode] = useState(RandomMode.All);
 
     let overrideCheckbox = (Character.isSpeciesListLimited(character))
         ? (<CheckBox
@@ -37,13 +49,43 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
         ? [SpeciesHelper.getSpeciesByType(randomSpecies)]
         : speciesOptions;
 
-    const determineRandomSpecies = () => {
-        if (!Character.isSpeciesListLimited(character) || allowAllSpecies) {
+    const determineRandomSpecies = (mode: RandomMode) => {
+        if (mode === RandomMode.Core) {
             let speciesSelection = SpeciesHelper.generateSpecies();
+            return speciesSelection;
+        } else if (mode === RandomMode.AlphaQuadrant) {
+            let speciesSelection = SpeciesHelper.generateFromAlphaQuadrantTable();
+            return speciesSelection;
+        } else if (mode === RandomMode.BetaQuadrant) {
+            let speciesSelection = SpeciesHelper.generateFromBetaQuadrantTable();
+            return speciesSelection;
+        } else if (mode === RandomMode.GammaQuadrant) {
+            let speciesSelection = SpeciesHelper.generateFromGammaQuadrantTable();
+            return speciesSelection;
+        } else if (mode === RandomMode.DeltaQuadrant) {
+            let speciesSelection = SpeciesHelper.generateFromDeltaQuadrantTable();
             return speciesSelection;
         } else {
             let speciesSelection = speciesOptions[Math.floor(speciesOptions.length * Math.random())];
             return speciesSelection.id;
+        }
+    }
+
+    const determineButtonLabel = (mode: RandomMode) => {
+        switch (mode) {
+            case RandomMode.All:
+                return t('Common.button.random');
+            case RandomMode.Core:
+                return t('SpeciesPage.rollCoreSpecies');
+            case RandomMode.AlphaQuadrant:
+                return t('SpeciesPage.rollAlphaSpecies');
+            case RandomMode.BetaQuadrant:
+                return t('SpeciesPage.rollBetaSpecies');
+            case RandomMode.GammaQuadrant:
+                return t('SpeciesPage.rollGammaSpecies');
+            case RandomMode.DeltaQuadrant:
+            default:
+                return t('SpeciesPage.rollDeltaSpecies');
         }
     }
 
@@ -78,15 +120,33 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
         );
     });
 
+    const buttonLabel = determineButtonLabel(mode);
+
+    const buttonTitle = (<>
+        <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('SpeciesPage.rollCoreSpecies')}/> {buttonLabel}
+    </>);
+
     return (
         <div className="mt-4">
             <InstructionText text={t('SpeciesPage.text.select')} />
             {overrideCheckbox}
 
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpecies( determineRandomSpecies()) }>
-                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('SpeciesPage.rollCoreSpecies')}/> {t('SpeciesPage.rollCoreSpecies')}</>
-                </Button>
+                {Character.isSpeciesListLimited(character) && !allowAllSpecies
+                    ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpecies( determineRandomSpecies(RandomMode.All)) }>
+                            <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('SpeciesPage.rollCoreSpecies')}</>
+                        </Button>)
+                    : (<SplitButton variant='primary' title={buttonTitle} size="sm"
+                            onSelect={(eventKey) => { setMode(parseInt(eventKey) as RandomMode) }} onClick={() => setRandomSpecies(determineRandomSpecies(mode))}
+                            className="me-3">
+                            <Dropdown.Item eventKey={RandomMode.All}>All</Dropdown.Item>
+                            <Dropdown.Item eventKey={RandomMode.Core}>Core</Dropdown.Item>
+                            <Dropdown.Item eventKey={RandomMode.AlphaQuadrant}>Alpha Quadrant</Dropdown.Item>
+                            <Dropdown.Item eventKey={RandomMode.BetaQuadrant}>Beta Quadrant</Dropdown.Item>
+                            <Dropdown.Item eventKey={RandomMode.GammaQuadrant}>Gamma Quadrant</Dropdown.Item>
+                            <Dropdown.Item eventKey={RandomMode.DeltaQuadrant}>Delta Quadrant</Dropdown.Item>
+                        </SplitButton>)}
+
                 {randomSpecies != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpecies(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
             <table className="selection-list">
