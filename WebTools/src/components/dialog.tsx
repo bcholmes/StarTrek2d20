@@ -2,6 +2,7 @@
 import { createRoot } from 'react-dom/client';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useTranslation } from 'react-i18next';
 
 
 interface IDialogProperties {
@@ -10,12 +11,14 @@ interface IDialogProperties {
 
 const _Dialog: React.FC<IDialogProperties> = ({ message }) => {
 
+    const { t } = useTranslation();
+
     return (
         <Modal show={true}>
             <Modal.Body className="text-center py-4">{message}</Modal.Body>
             <Modal.Footer className="border-top-0 justify-content-center py-4">
                 <Button variant="primary" onClick={() => Dialog.hide()}>
-                    Close
+                    {t('Common.button.ok')}
                 </Button>
             </Modal.Footer>
         </Modal>

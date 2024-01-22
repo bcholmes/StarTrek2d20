@@ -1,4 +1,4 @@
-import { AlliedMilitaryDetails, CareerStep, Character, EducationStep, NpcGenerationStep, SpeciesStep } from "../../common/character";
+import { AlliedMilitaryDetails, CareerStep, Character, EducationStep, GovernmentDetails, NpcGenerationStep, SpeciesStep } from "../../common/character";
 import { CharacterType } from "../../common/characterType";
 import { Stereotype } from "../../common/construct";
 import { D20 } from "../../common/die";
@@ -19,6 +19,7 @@ import { AlliedMilitary, AlliedMilitaryType } from "../../helpers/alliedMilitary
 import AllyHelper from "../../helpers/alliedMilitary";
 import { Specialization } from "../../common/specializationEnum";
 import { Track } from "../../helpers/trackEnum";
+import Governments, { Government, Polity } from "../../helpers/governments";
 
 class RankWithTier {
     readonly name: string;
@@ -265,7 +266,9 @@ const speciesSpecificValues: { [species : number ]: string[]} = {
         "I wish to spend this time in contemplative meditation.",
         "Music has fascinating mathematical properties",
         "Fascinating",
-        "Live long and prosper"
+        "Live long and prosper",
+        "When your logic doesn't work, you raise your voice? You've been on Earth too long.",
+        "Your presence here has not been... overly meddlesome."
     ],
     [ Species.Andorian ] : [
         "My blood flows with ice like my Andorian ancestors!",
@@ -519,7 +522,12 @@ export class NpcGenerator {
                 }
                 break;
             case NpcCharacterType.Civilian:
-                character.type = CharacterType.Civilian;
+                if (specialization.id === Specialization.FederationAmbassador) {
+                    character.type = CharacterType.AmbassadorDiplomat;
+                    character.typeDetails = new GovernmentDetails(Governments.findOption(Polity.Federation), "");
+                } else {
+                    character.type = CharacterType.Civilian;
+                }
                 break;
             case NpcCharacterType.Ferengi:
                 if (specialization.id === Specialization.FerengiMerchant) {

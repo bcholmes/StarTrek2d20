@@ -35,6 +35,8 @@ export enum Specialization {
     TalarianOfficer,
 
     Scientist,
+    Bureaucrat,
+    FederationAmbassador,
 
     OrionPirate,
     InformationBroker,
@@ -79,11 +81,14 @@ export const allSpecializations = () => {
         Specialization.TalarianOfficer,
 
         Specialization.Scientist,
+        Specialization.Bureaucrat,
+        Specialization.FederationAmbassador,
 
         Specialization.OrionPirate,
         Specialization.InformationBroker,
         Specialization.BruteForHire,
         Specialization.Bodyguard,
+        Specialization.Smuggler,
     ]
 }
 

@@ -3781,6 +3781,24 @@ export class Talents {
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new SpecializationPrerequisite(Specialization.TalarianOfficer)],
             1,
             "Talarian", true),
+        new TalentModel(
+            "Renowned Diplomat",
+            "The character’s renown and reputation are such that his mere presence can serve as the groundwork for diplomatic talks. Once per scene, when a character is involved in a Social Conflict reflecting peace talks, negotiations, or some other diplomatic mission, they may re-roll a single d20 as long as the ambassador is present in the scene or was instrumental in establishing the talks.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.FederationAmbassador)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Break the Ice",
+            "The ambassador's manner breaks through formality in a way that sometimes puts other diplomats and negotiators ill-at-ease. It does open up talks in a way that proper etiquette and procedure often do not. When attempting a Task during a Social Conflict, the ambassador may choose to increase their Complication Range by 1, 2, or 3. If the Task succeeds, they gain bonus Momentum equal to the amount by which they increased her Complication range.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.FederationAmbassador)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Diplomatic Expertise",
+            "Whenever the ambassador attempts a Task within a Social Conflict and buys one or more additional dice, they may re-roll their dice pool.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.FederationAmbassador)],
+            1,
+            "General", true),
     ];
 
     getTalents() {

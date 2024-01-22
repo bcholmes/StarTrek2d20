@@ -734,7 +734,28 @@ export class Specializations {
                 "Yes, this advance could be abused or weaponized. But I can't let that stop me.",
                 "Where did my coffee go? it was just here! ... What do you mean, 'three days ago'?"],
                 0),
-
+            new SpecializationModel(Specialization.FederationAmbassador, NpcCharacterType.Civilian, "Federation Ambassador",
+                [Attribute.Control, Attribute.Insight, Attribute.Presence],
+                Skill.Command,
+                [
+                    "Oration", "Negotiation", "Diplomacy", "Composure", "Treaty Issues", "Federation Law", "Politics"
+                ], [
+                    "Relations with the Klingon Empire", "Relations with teh Romulan Star Empire", "The History of the Federation",
+                    "The Writings of Ambassador Archer", "The History of Ambassador Sarek", "The Accomplishments of Ambassador Gav",
+                    "Diplomatic Strategies of Ambassador Riva", "Shmoozing", "Diplomatic Protocol", "Abiguous Treaty Clauses",
+                    "Tholian Diplomatic Complexities", "V'Lar's Negotiating Tactics", "Out-of-the-ordinary Compromises",
+                    "Finer Details of Agreements", "Political Leaders and their Agendas", "Psychology", "Current Political Issues"
+                ], [
+                    "Deception has never been a stranger to this room.",
+                    "May we together become greater than the sum of both of us.",
+                    "Diplomacy should be a job left to diplomats.",
+                    "V'Lar's treatise on negotiating tactics is the definitive text on the subject.",
+                    "I'll accept the judgment of history.",
+                    "I think, when one has been angry for a very long time, one gets used to it. And it becomes comfortable like... like old leather. And finally... it becomes so familiar that one can't remember feeling any other way.",
+                    "If there is to be a lasting peace between us, neither you nor I must allow any one individual to undermine our efforts.",
+                    "Take this message to your leaders: 'We'll be watching'."
+                ],
+                0),
         ]
     }
 
