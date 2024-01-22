@@ -12,6 +12,23 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240121</b>
+                <ul>
+                    <li>
+                        I've implemented a minor change to the species selection process: prior to a number of big recent changes,
+                        users had a large number of random selection options. I wanted a bit more of a stream-lined experience on this,
+                        and I had an idea on how to make that possible, but I knew that there were some pre-requisite things I
+                        needed to do first. I've done that, now.
+                    </li>
+                    <li>
+                        One of those prerequisite changes was an upgrade to the library that handles the appearance of the site.
+                        Some minor layout changes have happened as a consequence. If you see anything that looks broken, please let
+                        me know.
+                    </li>
+                    <li>
+                        I've addedd a few minor options into the token generator.
+                    </li>
+                </ul>
                 <b>v1.240120a</b>
                 <ul>
                     <li>

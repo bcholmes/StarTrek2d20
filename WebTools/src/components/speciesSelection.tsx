@@ -134,7 +134,7 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
             <div className="my-4">
                 {Character.isSpeciesListLimited(character) && !allowAllSpecies
                     ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpecies( determineRandomSpecies(RandomMode.All)) }>
-                            <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('SpeciesPage.rollCoreSpecies')}</>
+                            <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                         </Button>)
                     : (<SplitButton variant='primary' title={buttonTitle} size="sm"
                             onSelect={(eventKey) => { setMode(parseInt(eventKey) as RandomMode) }} onClick={() => setRandomSpecies(determineRandomSpecies(mode))}
