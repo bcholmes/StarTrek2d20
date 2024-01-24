@@ -80,6 +80,7 @@ export default class UniformVariantRestrictions {
         return uniformEra === UniformEra.Suliban
             || uniformEra === UniformEra.Civilian
             || uniformEra === UniformEra.VoyagerDS9
+            || uniformEra === UniformEra.DominionWar
             || uniformEra === UniformEra.Romulan
             || uniformEra === UniformEra.OriginalSeries
             || uniformEra === UniformEra.NextGeneration;

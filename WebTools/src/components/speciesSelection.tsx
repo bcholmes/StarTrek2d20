@@ -9,12 +9,13 @@ import { CheckBox } from './checkBox';
 import { Species } from '../helpers/speciesEnum';
 import { useTranslation } from 'react-i18next';
 import { makeKey } from '../common/translationKey';
-import { SourcesHelper } from '../helpers/sources';
+import { Source, SourcesHelper } from '../helpers/sources';
 import InstructionText from './instructionText';
 import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { connect } from 'react-redux';
 import SplitButton from 'react-bootstrap/SplitButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { hasSource } from '../state/contextFunctions';
 
 enum RandomMode {
     All,
@@ -141,10 +142,18 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
                             className="me-3">
                             <Dropdown.Item eventKey={RandomMode.All}>All</Dropdown.Item>
                             <Dropdown.Item eventKey={RandomMode.Core}>Core</Dropdown.Item>
-                            <Dropdown.Item eventKey={RandomMode.AlphaQuadrant}>Alpha Quadrant</Dropdown.Item>
-                            <Dropdown.Item eventKey={RandomMode.BetaQuadrant}>Beta Quadrant</Dropdown.Item>
-                            <Dropdown.Item eventKey={RandomMode.GammaQuadrant}>Gamma Quadrant</Dropdown.Item>
-                            <Dropdown.Item eventKey={RandomMode.DeltaQuadrant}>Delta Quadrant</Dropdown.Item>
+                            {hasSource(Source.AlphaQuadrant)
+                                ? (<Dropdown.Item eventKey={RandomMode.AlphaQuadrant}>Alpha Quadrant</Dropdown.Item>)
+                                : undefined}
+                            {hasSource(Source.BetaQuadrant)
+                                ? (<Dropdown.Item eventKey={RandomMode.BetaQuadrant}>Beta Quadrant</Dropdown.Item>)
+                                : undefined}
+                            {hasSource(Source.GammaQuadrant)
+                                ? (<Dropdown.Item eventKey={RandomMode.GammaQuadrant}>Gamma Quadrant</Dropdown.Item>)
+                                : undefined}
+                            {hasSource(Source.DeltaQuadrant)
+                                ? (<Dropdown.Item eventKey={RandomMode.DeltaQuadrant}>Delta Quadrant</Dropdown.Item>)
+                                : undefined}
                         </SplitButton>)}
 
                 {randomSpecies != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpecies(null)} >{t('Common.button.showAll')}</Button>) : undefined}
