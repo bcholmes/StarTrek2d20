@@ -13,6 +13,7 @@ import { LoadingButton } from '../common/loadingButton';
 import { useNavigate } from 'react-router';
 import store from '../state/store';
 import { setCharacter } from '../state/characterActions';
+import { Header } from '../components/header';
 
 const ToolSelectionPage = () => {
 
@@ -83,12 +84,13 @@ const ToolSelectionPage = () => {
                 </nav>
 
                 <main>
+                    <Header>{t('Page.title.toolSelection')}</Header>
                     <InstructionText text={t('ToolSelection.instruction')} />
 
                     <div className="row">
                         <div className="col-md-6 button-column">
-                            <Button className="button mt-4" onClick={() => { startStarfleetWorkflow(); } } >{t('ToolSelection.mainCharacter')}</Button>
-                            <Button className="button mt-4" onClick={() => { goToPage(PageIdentity.SupportingCharacter); } } >{t('ToolSelection.supportingCharacter')}</Button>
+                            <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => { startStarfleetWorkflow(); } } >{t('ToolSelection.mainCharacter')}</Button>
+                            <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => { goToPage(PageIdentity.SupportingCharacter); } } >{t('ToolSelection.supportingCharacter')}</Button>
                             <LoadingButton onClick={() => { loadStarshipAndGoToPage(); } } loading={loadingStarship}>{t('ToolSelection.starship')}</LoadingButton>
                             {renderSystemGenerationButton()}
                         </div>

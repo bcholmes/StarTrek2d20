@@ -20,6 +20,8 @@ const SectorContainerPage = React.lazy(async () => {
     await PageFactory.instance.loadSystemGenerationFactory();
     return import(/* webpackChunkName: 'sector' */ './mapping/page/sectorContainerPage');
 });
+const TableListPage = React.lazy(() => import(/* webpackChunkName: 'table' */ './table/page/tableListPage'));
+const ViewTablePage = React.lazy(() => import(/* webpackChunkName: 'table' */ './table/page/viewTablePage'));
 
 let root = createRoot(document.getElementById("mainBody"));
 root.render(
@@ -36,6 +38,8 @@ root.render(
                     <Route path="/sectorDetails" element={<SectorContainerPage activePage={PageIdentity.SectorDetails} />} />
                     <Route path="/starSystemDetails" element={<SectorContainerPage activePage={PageIdentity.StarSystemDetails} />} />
                     <Route path="/token" element={<TokenCreationPage />} />
+                    <Route path="/tables" element={<TableListPage />} />
+                    <Route path="/table" element={<ViewTablePage />} />
                     <Route path="*" element={<CharacterCreationApp />} />
                 </Routes>
             </Suspense>

@@ -122,7 +122,9 @@ class CharacterTypePage extends React.Component<WithTranslation, ICharacterTypeP
                 {alliedMilitary}
                 {governments}
 
-                <Button onClick={() => this.startWorkflow()}>{t('Common.button.create')}</Button>
+                <div className="mt-4">
+                    <Button buttonType={true} className="btn btn-primary" onClick={() => this.startWorkflow()}>{t('Common.button.create')}</Button>
+                </div>
             </div>
         );
     }

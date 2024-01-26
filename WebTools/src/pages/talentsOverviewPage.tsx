@@ -243,17 +243,17 @@ const TalentsOverviewPage = () => {
                 </ol>
             </nav>
             <main>
-                <div className="float-top">
-                    <div className="talent-filter">
+                <div className="row">
+                    <div className="col-md-6 mt-3">
                         <label className="visually-hidden" htmlFor='category'>Category</label>
                         <DropDownInput id="category" items={_categories} defaultValue={category} onChange={(index) => { onCategoryChanged(index); }} />
                     </div>
-                    <div className="talent-filter">
+                    <div className="col-md-6 mt-3 text-end">
                         <label className="visually-hidden" htmlFor='search'>Search</label>
-                        <input type="text" id="search" onChange={(e) => { searchChanged(e); }} value={search} placeholder="Search..." autoComplete="off"/>
+                        <input type="search" id="search" onChange={(e) => { searchChanged(e); }} value={search} placeholder="Search..." autoComplete="off"/>
                     </div>
                 </div>
-                <div className="page">
+                <div>
                     <table className="selection-list">
                         <thead className="visually-hidden">
                             <tr>

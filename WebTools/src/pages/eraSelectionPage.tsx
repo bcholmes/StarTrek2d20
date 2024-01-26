@@ -7,6 +7,7 @@ import {Button} from '../components/button';
 import store from '../state/store';
 import { setEra } from '../state/contextActions';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import { Header } from '../components/header';
 
 class EraSelectionPage extends React.Component<WithTranslation, {}> {
 
@@ -31,6 +32,7 @@ class EraSelectionPage extends React.Component<WithTranslation, {}> {
                     </ol>
                 </nav>
                 <main>
+                    <Header>{t('Page.title.era')}</Header>
                     <p className="mt-5">
                         {t('EraSelectionPage.eraInstruction')}
                     </p>
