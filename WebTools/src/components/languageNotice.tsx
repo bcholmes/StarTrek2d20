@@ -3,7 +3,7 @@ import { Header } from './header';
 import { useTranslation } from 'react-i18next';
 import { clearLanguageOverride, isLanguageOverridePresent, overrideLanguage } from '../i18n/config';
 
-const LanguageNotice =(props) => {
+const LanguageNotice =() => {
 
     const { t } = useTranslation();
 
@@ -14,14 +14,14 @@ const LanguageNotice =(props) => {
         {isLanguageOverridePresent()
             ? (
                 <p>
-                    <a href="index.html" onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    <a href="/" onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                         e.preventDefault();
                         e.stopPropagation();
                         clearLanguageOverride();
                     }}>Use Default Language</a>
                 </p>)
             : (<p>
-                    <a href="index.html" onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    <a href="/" onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                         e.preventDefault();
                         e.stopPropagation();
                         overrideLanguage('en');

@@ -50,9 +50,9 @@ const SectorDetailsPage: React.FC<ISectorDetailsPageProperties> = ({sector}) => 
     ?   (<div className="page container ms-0">
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html"onClick={(event) =>
+                    <li className="breadcrumb-item"><a href="/index.html"onClick={(event) =>
                             preventDefaultAnchorEvent(event, () => navigate("/"))}>{t('Page.title.home')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(event) =>
+                    <li className="breadcrumb-item"><a href="/index.html" onClick={(event) =>
                             preventDefaultAnchorEvent(event, () => navigate("/systemGenerator"))}>{t('Page.title.systemGeneration')}</a></li>
                     <li className="breadcrumb-item active" aria-current="page">{t('Page.title.sectorDetails')}</li>
                 </ol>

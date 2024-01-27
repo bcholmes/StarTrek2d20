@@ -802,6 +802,19 @@ table.aspect-list td:first-child {
     font-size: large;
 }
 
+.table.table-dark tr td {
+    background-color: black;
+}
+
+.table.table-dark.table-striped tr:nth-of-type(2n+1) > td {
+    --bs-table-bg-type: var(--bs-gray-900);
+}
+
+
+.table td > p:last-child {
+    margin-bottom: 0.25rem;
+}
+
 @media screen and (min-width: 0px) and (max-width: 768px) {
 
     #app {

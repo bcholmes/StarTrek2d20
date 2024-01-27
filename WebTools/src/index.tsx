@@ -38,8 +38,8 @@ root.render(
                     <Route path="/sectorDetails" element={<SectorContainerPage activePage={PageIdentity.SectorDetails} />} />
                     <Route path="/starSystemDetails" element={<SectorContainerPage activePage={PageIdentity.StarSystemDetails} />} />
                     <Route path="/token" element={<TokenCreationPage />} />
-                    <Route path="/tables" element={<TableListPage />} />
-                    <Route path="/table" element={<ViewTablePage />} />
+                    <Route path="/table/list" element={<TableListPage />} />
+                    <Route path="/table/view" element={<ViewTablePage />} />
                     <Route path="*" element={<CharacterCreationApp />} />
                 </Routes>
             </Suspense>

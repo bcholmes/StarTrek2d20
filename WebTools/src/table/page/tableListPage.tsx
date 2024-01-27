@@ -13,7 +13,7 @@ const TableListPage: React.FC<{}> = () => {
             <div className="page container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item"><a href="/index.html">{t('Page.title.home')}</a></li>
                         <li className="breadcrumb-item active" aria-current="page">{t('Page.title.tableList')}</li>
                     </ol>
                 </nav>

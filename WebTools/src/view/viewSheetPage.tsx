@@ -42,7 +42,7 @@ const ViewSheetPage = () => {
             return (<div className="page container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
+                    <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
                         <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewStarship')}</li>
                     </ol>
                 </nav>
@@ -54,7 +54,7 @@ const ViewSheetPage = () => {
             return (<div className="page container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
                         <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewSupportingCharacter')}</li>
                     </ol>
                 </nav>
@@ -66,7 +66,7 @@ const ViewSheetPage = () => {
             return (<div className="page container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
                         <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewNpc')}</li>
                     </ol>
                 </nav>
@@ -78,7 +78,7 @@ const ViewSheetPage = () => {
             return (<div className="page container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
+                    <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
                         <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewMainCharacter')}</li>
                     </ol>
                 </nav>
@@ -90,7 +90,7 @@ const ViewSheetPage = () => {
             return (<div className="page container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
+                    <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
                         <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewSoloCharacter')}</li>
                     </ol>
                 </nav>

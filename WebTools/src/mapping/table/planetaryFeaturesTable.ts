@@ -1,5 +1,5 @@
 import { D20 } from "../../common/die";
-import { TableRoll } from "../../common/table";
+import { TableRoll } from "../../common/tableRoll";
 import { PlanetaryFeature } from "./planetaryFeature";
 
 export enum StandardPlantaryFeature {

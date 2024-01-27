@@ -20,7 +20,7 @@ const CharacterCreationBreadcrumbs : React.FC<ICharacterBreadcrumbProperties> = 
         if ((character?.environmentStep && pageIdentity === PageIdentity.SpeciesDetails) || pageIdentity === PageIdentity.Species) {
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.species')}</li>);
         } else if (character?.speciesStep) {
-            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Species)}>{t('Page.title.species')}</a></li>);
+            return (<li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.Species)}>{t('Page.title.species')}</a></li>);
         } else {
             return undefined;
         }
@@ -30,7 +30,7 @@ const CharacterCreationBreadcrumbs : React.FC<ICharacterBreadcrumbProperties> = 
         if ((character?.upbringingStep && pageIdentity === PageIdentity.EnvironmentDetails) || pageIdentity === PageIdentity.Environment) {
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.environment')}</li>);
         } else if (character?.environmentStep) {
-            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Environment)}>{t('Page.title.environment')}</a></li>);
+            return (<li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.Environment)}>{t('Page.title.environment')}</a></li>);
         } else {
             return undefined;
         }
@@ -40,7 +40,7 @@ const CharacterCreationBreadcrumbs : React.FC<ICharacterBreadcrumbProperties> = 
         if ((character?.educationStep && pageIdentity === PageIdentity.UpbringingDetails) || pageIdentity === PageIdentity.Upbringing) {
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloEarlyOutlook')}</li>);
         } else if (character?.upbringingStep) {
-            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Upbringing)}>{t('Page.title.soloEarlyOutlook')}</a></li>);
+            return (<li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.Upbringing)}>{t('Page.title.soloEarlyOutlook')}</a></li>);
         } else {
             return undefined;
         }
@@ -52,7 +52,7 @@ const CharacterCreationBreadcrumbs : React.FC<ICharacterBreadcrumbProperties> = 
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloEducation')}</li>);
         } else if (character?.educationStep) {
             const page = (character.type === CharacterType.Child) ? PageIdentity.ChildEducationPage : PageIdentity.Education;
-            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, page)}>{t('Page.title.soloEducation')}</a></li>);
+            return (<li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, page)}>{t('Page.title.soloEducation')}</a></li>);
         } else {
             return undefined;
         }
@@ -69,7 +69,7 @@ const CharacterCreationBreadcrumbs : React.FC<ICharacterBreadcrumbProperties> = 
             } else if (character.type === CharacterType.Child) {
                 page = PageIdentity.ChildCareer;
             }
-            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, page)}>{t('Page.title.soloCareerLength')}</a></li>);
+            return (<li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, page)}>{t('Page.title.soloCareerLength')}</a></li>);
         } else {
             return undefined;
         }
@@ -79,7 +79,7 @@ const CharacterCreationBreadcrumbs : React.FC<ICharacterBreadcrumbProperties> = 
         if ((character?.careerEvents?.length > 1 && pageIdentity === PageIdentity.CareerEvent1Details) || pageIdentity === PageIdentity.CareerEvent1) {
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.careerEvent1')}</li>);
         } else if (character?.careerEvents?.length || character?.finishingStep) {
-            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.CareerEvent1)}>{t('Page.title.careerEvent1')}</a></li>);
+            return (<li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.CareerEvent1)}>{t('Page.title.careerEvent1')}</a></li>);
         } else {
             return undefined;
         }
@@ -89,7 +89,7 @@ const CharacterCreationBreadcrumbs : React.FC<ICharacterBreadcrumbProperties> = 
         if ((character?.finishingStep && pageIdentity === PageIdentity.CareerEvent2Details) || pageIdentity === PageIdentity.CareerEvent2) {
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.careerEvent2')}</li>);
         } else if (character?.finishingStep) {
-            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.CareerEvent2)}>{t('Page.title.careerEvent2')}</a></li>);
+            return (<li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.CareerEvent2)}>{t('Page.title.careerEvent2')}</a></li>);
         } else {
             return undefined;
         }
@@ -99,7 +99,7 @@ const CharacterCreationBreadcrumbs : React.FC<ICharacterBreadcrumbProperties> = 
         if (pageIdentity === PageIdentity.AttributesAndDisciplines) {
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloFinal')}</li>);
         } else if (character?.finishingStep || pageIdentity === PageIdentity.Finish) {
-            return (<li className="breadcrumb-item"><a href="index.html" onClick={(e) => {
+            return (<li className="breadcrumb-item"><a href="/index.html" onClick={(e) => {
                 store.dispatch(setCharacterFinishingTouches());
                 navigateTo(e, PageIdentity.AttributesAndDisciplines);
             }}>{t('Page.title.soloFinal')}</a></li>);
@@ -110,8 +110,8 @@ const CharacterCreationBreadcrumbs : React.FC<ICharacterBreadcrumbProperties> = 
 
     return (<nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
-                    <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Era)}>{t('Page.title.era')}</a></li>
+                    <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
+                    <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.Era)}>{t('Page.title.era')}</a></li>
                     {renderSpecies()}
                     {renderEnvironment()}
                     {renderEarlyOutlook()}

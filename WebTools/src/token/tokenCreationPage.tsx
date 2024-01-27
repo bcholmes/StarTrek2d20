@@ -75,7 +75,7 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
                     <div className="page container ms-0">
                         <nav aria-label="breadcrumb">
                             <ol className="breadcrumb">
-                                <li className="breadcrumb-item"><a href="index.html">{t('Page.title.home')}</a></li>
+                                <li className="breadcrumb-item"><a href="/index.html">{t('Page.title.home')}</a></li>
                                 <li className="breadcrumb-item active" aria-current="page">{t('Page.title.tokenCreationPage')}</li>
                             </ol>
                         </nav>

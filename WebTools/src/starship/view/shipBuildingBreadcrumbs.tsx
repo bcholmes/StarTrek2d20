@@ -15,7 +15,7 @@ class ShipBuildingBreadcrumbs extends React.Component<IShipBuildingBreadcrumbsPr
     render() {
         return (<nav aria-label="breadcrumb">
             <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>Home</a></li>
+                <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>Home</a></li>
                 {this.renderLinks()}
             </ol>
         </nav>);
@@ -29,7 +29,7 @@ class ShipBuildingBreadcrumbs extends React.Component<IShipBuildingBreadcrumbsPr
     renderLinks() {
         return this.props.workflow.steps.map((s, i) => {
             if (i < this.props.workflow.currentStepIndex) {
-                return (<li className="breadcrumb-item" key={i}><a href="index.html" onClick={(e) => this.goToStep(e, s, i)}>{s.name}</a></li>);
+                return (<li className="breadcrumb-item" key={i}><a href="/index.html" onClick={(e) => this.goToStep(e, s, i)}>{s.name}</a></li>);
             } else if (i === this.props.workflow.currentStepIndex) {
                 return (<li className="breadcrumb-item active" key={i}>{s.name}</li>);
             } else {

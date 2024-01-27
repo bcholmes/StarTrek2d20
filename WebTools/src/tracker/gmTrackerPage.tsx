@@ -45,7 +45,7 @@ const GMTrackerPage: React.FC<IGMTrackerPageProperties> = ({characters}) => {
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item">
-                                <a href="index.html" onClick={(e) => goToHome(e) }>{t('Page.title.home')}</a>
+                                <a href="/index.html" onClick={(e) => goToHome(e) }>{t('Page.title.home')}</a>
                             </li>
                             <li className="breadcrumb-item active" aria-current="page">{t('Page.title.gamemasterTrackerPage')}</li>
                         </ol>

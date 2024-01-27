@@ -495,6 +495,7 @@
     "Page.title.starshipToolSelection": "Starship Tool Selection",
     "Page.title.supportingCharacter": "Supporting Character",
     "Page.title.systemGeneration": "System Generation",
+    "Page.title.tableList": "Table List",
     "Page.title.talentsOverview": "Talents Overview",
     "Page.title.toolSelection": "Tool Selection",
     "Page.title.viewSheet": "View Sheet",
@@ -509,6 +510,7 @@
     "Page.title.tokenCreationPage": "Token Creation",
     "Page.title.upbringing": "Early Outlook",
     "Page.title.upbringingDetails": "Early Outlook Details",
+    "Page.title.viewTable": "View Table",
 
     "Page.breadcrumb.characterCreation": "Character Creation",
     "Page.breadcrumb.starshipCreation": "Starship Creation",
@@ -1146,6 +1148,27 @@
     "Spaceframe.tKalat": "T'Kalat Class",
     "Spaceframe.walker": "Walker Class",
 
+    "Specialization.admiral": "Admiral",
+    "Specialization.admin": "Yeoman",
+    "Specialization.conn": "Conn",
+    "Specialization.counselor": "Counselor",
+    "Specialization.engineer": "Engineer",
+    "Specialization.ferengiDaiMon": "Ferengi DaiMon",
+    "Specialization.ferengiMerchant": "Ferengi Merchant",
+    "Specialization.firstContactSpecialist": "First Contact Specialist",
+    "Specialization.hangarDeck": "Hangar Deck",
+    "Specialization.intelligenceOfficer": "Intelligence Officer",
+    "Specialization.jag": "Judge Advocate General's Office",
+    "Specialization.klingonWarrior": "Klingon Warrior",
+    "Specialization.klingonShipCaptain": "Klingon Ship Captain",
+    "Specialization.klingonWeaponsOfficer": "Klingon Weapons Officer",
+    "Specialization.klingonMedic": "Klingon Medic",
+    "Specialization.medicalDoctor": "Medical Doctor",
+    "Specialization.nurse": "Nurse",
+    "Specialization.scienceTech": "Science Technician",
+    "Specialization.security": "Security",
+    "Specialization.starfleetScientist": "Scientist",
+
     "Species.aenar.name": "Aenar",
     "Species.aenar.description": "The Aenar subspecies of the Andorians is native to the Northern Wastes of Andoria. Their population never rose above a few thousand. Prior to the 23rd- Century, Aenar lived in an underground compound shielded by a dampening field, and had become a myth to other Andorians. They have a communal society with no formal leader, but when the situation calls for a single voice they appoint a delegate known as “The Speaker.” Aenar possess a strictly pacifist ideology and deplore violence of all forms, both physical and mental. \n\nPhysiologically, Aenar are almost identical to Andorians save an absence of skin and hair pigmentation and their highly evolved telepathic abilities, but the Aenar had a strict law against reading the minds of other people without prior consent. Aenar and Andorians were genetically compatible, and following their discovery in 2140, there were increasing marriages between the subspecies. By the early 24th-Century, few Aenar remained, having become fully integrated into Andorian society. However, it was not unknown for families with many Aenar progenitors to produce children with empathy talents.",
     "Species.aenar.exampleValue": "There is never a need for hostility",
@@ -1558,7 +1581,7 @@
 
     "Talent.versatileTractorBeam.soloDescription": "The ship has exotic particle emitters integrated with its tractor beam system. With a few simple adjustments, the tractor beam can become even more useful against ships trapped within. The tractor beam can even deplete energy from a vessel trapped in its field.",
 
-    "Talent.wormholeRelaySystem": "Wormhold Relay System",
+    "Talent.wormholeRelaySystem": "Wormhole Relay System",
 
     "Talent.wormholeRelaySystem.soloDescription": "The ship has an additional sensor system outfitted with high-energy transceivers, verteron sensors, and neutrino sensors. These sensors, combined with field-generation devices, allow the ship to send and receive data streams through wormholes.",
 

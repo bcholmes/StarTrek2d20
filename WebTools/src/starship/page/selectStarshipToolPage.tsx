@@ -20,7 +20,7 @@ class SelectStarshipToolPage extends React.Component<WithTranslation, {}> {
                 <div className="container ms-0">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
-                            <li className="breadcrumb-item"><a href="index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
+                            <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
                             <li className="breadcrumb-item active" aria-current="page">{t('Page.title.starshipToolSelection')}</li>
                         </ol>
                     </nav>

@@ -461,6 +461,7 @@ Page.title.starSystemDetails,Star System Details,Details zum Sternensystem,Detal
 Page.title.starshipToolSelection,Starship Tool Selection,Auswahl der Raumschiff-Erschaffung,Herramientas de naves espaciales,Outils de vaisseau spatial
 Page.title.supportingCharacter,Supporting Character,Nebencharakter,Personaje secundario,Personnage secondaire
 Page.title.systemGeneration,System Generation,System-Erschaffung,Generación del Sistema Estelar,Génération du système stellaire
+Page.title.tableList,Table List,,,
 Page.title.talentsOverview,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents
 Page.title.toolSelection,Tool Selection,Werkzeug-Auswahl,,Selection d'Outil
 Page.title.viewSheet,View Sheet,Bogen anzeigen,Ver hoja,Voir la feuille
@@ -475,6 +476,7 @@ Page.title.npcConfiguration,Random NPC Configuration,Anpassung zufälliger NSCs,
 Page.title.tokenCreationPage,Token Creation,Tokenerschaffung,,
 Page.title.upbringing,Early Outlook,Erziehung,,
 Page.title.upbringingDetails,Early Outlook Details,Erziehungsdetails,,
+Page.title.viewTable,View Table,,,
 Page.breadcrumb.characterCreation,Character Creation,Charaktererschaffung,Creación de personajes,Création de personnages
 Page.breadcrumb.starshipCreation,Starship Creation,Raumschifferschaffung,,Règles de Base
 Page.breadcrumb.supportingCharacterCreation,Supporting Character Creation,Erschaffung von Nebencharakteren,,Création de Personnage Secondaire
@@ -1073,6 +1075,26 @@ Spaceframe.steamrunner,Steamrunner Class,Steamrunner-Klasse,,
 Spaceframe.sydney,Sydney Class,Sydney-Klasse,,
 Spaceframe.tKalat,T'Kalat Class,T'Kalat-Klasse,,
 Spaceframe.walker,Walker Class,Walker-Klasse,,
+Specialization.admiral,Admiral,,,
+Specialization.admin,Yeoman,,,
+Specialization.conn,Conn,,,
+Specialization.counselor,Counselor,,,
+Specialization.engineer,Engineer,,,
+Specialization.ferengiDaiMon,Ferengi DaiMon,,,
+Specialization.ferengiMerchant,Ferengi Merchant,,,
+Specialization.firstContactSpecialist,First Contact Specialist,,,
+Specialization.hangarDeck,Hangar Deck,,,
+Specialization.intelligenceOfficer,Intelligence Officer,,,
+Specialization.jag,Judge Advocate General's Office,,,
+Specialization.klingonWarrior,Klingon Warrior,,,
+Specialization.klingonShipCaptain,Klingon Ship Captain,,,
+Specialization.klingonWeaponsOfficer,Klingon Weapons Officer,,,
+Specialization.klingonMedic,Klingon Medic,,,
+Specialization.medicalDoctor,Medical Doctor,,,
+Specialization.nurse,Nurse,,,
+Specialization.scienceTech,Science Technician,,,
+Specialization.security,Security,,,
+Specialization.starfleetScientist,Scientist,,,
 Species.aenar.name,Aenar,Aenar,,
 Species.aenar.description,"The Aenar subspecies of the Andorians is native to the Northern Wastes of Andoria. Their population never rose above a few thousand. Prior to the 23rd- Century, Aenar lived in an underground compound shielded by a dampening field, and had become a myth to other Andorians. They have a communal society with no formal leader, but when the situation calls for a single voice they appoint a delegate known as “The Speaker.” Aenar possess a strictly pacifist ideology and deplore violence of all forms, both physical and mental. 
 
@@ -1364,7 +1386,7 @@ Talent.variableGeometryWarpField,Variable Geometry Warp Field,,,
 Talent.variableGeometryWarpField.soloDescription,"An extension of the variable pitch warp nacelles seen on the Intrepid-class and the warp vector technology found on many Vulcan-designed starships, a ship with a variable geometry warp field can adjust its subspace field in highly turbulent spacetime and can continue to provide propulsive force even then.",,,
 Talent.versatileTractorBeam,Versatile Tractor Beam,,,
 Talent.versatileTractorBeam.soloDescription,"The ship has exotic particle emitters integrated with its tractor beam system. With a few simple adjustments, the tractor beam can become even more useful against ships trapped within. The tractor beam can even deplete energy from a vessel trapped in its field.",,,
-Talent.wormholeRelaySystem,Wormhold Relay System,,,
+Talent.wormholeRelaySystem,Wormhole Relay System,,,
 Talent.wormholeRelaySystem.soloDescription,"The ship has an additional sensor system outfitted with high-energy transceivers, verteron sensors, and neutrino sensors. These sensors, combined with field-generation devices, allow the ship to send and receive data streams through wormholes.",,,
 UniformEra.civilian,Civilian,Zivilist,,
 UniformEra.dominionWar,Dominion War,Dominionkrieg,,

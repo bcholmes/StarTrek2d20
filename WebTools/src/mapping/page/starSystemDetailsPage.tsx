@@ -57,9 +57,9 @@ const StarSystemDetailsPage: React.FC<IStarSystemDetailsPageProperties> = ({star
             <div className="page container ms-0">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">{t('Page.title.home')}</a></li>
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => preventDefaultAnchorEvent(e, () => navigate("/systemGenerator"))}>{t('Page.title.systemGeneration')}</a></li>
-                        <li className="breadcrumb-item"><a href="index.html" onClick={(e) => preventDefaultAnchorEvent(e, () => navigate("/sectorDetails"))}>{t('Page.title.sectorDetails')}</a></li>
+                        <li className="breadcrumb-item"><a href="/index.html">{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => preventDefaultAnchorEvent(e, () => navigate("/systemGenerator"))}>{t('Page.title.systemGeneration')}</a></li>
+                        <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => preventDefaultAnchorEvent(e, () => navigate("/sectorDetails"))}>{t('Page.title.sectorDetails')}</a></li>
                         <li className="breadcrumb-item active" aria-current="page">{t('Page.title.starSystemDetails')}</li>
                     </ol>
                 </nav>

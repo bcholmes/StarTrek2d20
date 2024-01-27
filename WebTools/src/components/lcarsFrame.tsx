@@ -116,7 +116,7 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
     return (<>
         <div className="lcar-container" key="main-container">
             <div className="lcar-header">
-                <div className="lcar-header-start"><a href="index.html"><img src="./static/img/logo.png" className="logo" alt="Star Trek Adventures Logo"/></a></div>
+                <div className="lcar-header-start"><a href="/index.html"><img src="/static/img/logo.png" className="logo" alt="Star Trek Adventures Logo"/></a></div>
                 <div></div>
                 <div className="lcar-header-middle"></div>
                 <PageHeader page={activePage} />
