@@ -89,6 +89,7 @@ export enum PageIdentity {
 
     TableList,
     ViewTable,
+    ImportTable,
 
 
 

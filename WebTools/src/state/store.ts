@@ -6,6 +6,7 @@ import starshipReducer from './starshipReducer';
 import gmTracker from './gmTrackerReducer';
 import contextReducer from './contextReducer';
 import tokenReducer from './tokenReducer';
+import tableReducer from './tableReducer';
 
 const reducer = combineReducers({
     star: star,
@@ -13,7 +14,8 @@ const reducer = combineReducers({
     context: contextReducer,
     gmTracker: gmTracker,
     character: characterReducer,
-    token: tokenReducer
+    token: tokenReducer,
+    table: tableReducer
 })
 const store = configureStore(
     {

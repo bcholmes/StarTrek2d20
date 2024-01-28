@@ -11,6 +11,7 @@ import LoadingPage from './pages/loadingPage';
 import { Toaster } from 'react-hot-toast';
 import { PageIdentity } from './pages/pageIdentity';
 import { PageFactory } from './pages/pageFactory';
+import ImportTablePage from './table/page/importTablePage';
 
 const CreditsPage = React.lazy(() => import('./pages/creditsPage'));
 const TalentsOverviewMainPage = React.lazy(() => import('./pages/talentsOverviewMainPage'));
@@ -40,6 +41,7 @@ root.render(
                     <Route path="/token" element={<TokenCreationPage />} />
                     <Route path="/table/list" element={<TableListPage />} />
                     <Route path="/table/view" element={<ViewTablePage />} />
+                    <Route path="/table/import" element={<ImportTablePage />} />
                     <Route path="*" element={<CharacterCreationApp />} />
                 </Routes>
             </Suspense>

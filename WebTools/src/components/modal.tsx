@@ -16,7 +16,7 @@ const ModalBox: React.FC<IModalProperties> = ({size, show, onClose, children, he
         <Modal show={show} size={size}>
             <Modal.Header className="pt-4 border-bottom-0">
                 <h5>{header}</h5>
-                <button className="close" onClick={() => onClose() } role="button"><img src="static/img/close.png" style={{height: '24px', width: '24px'}} alt="Close" /></button>
+                <button className="close" onClick={() => onClose() } role="button"><img src="/static/img/close.png" style={{height: '24px', width: '24px'}} alt="Close" /></button>
             </Modal.Header>
             <Modal.Body>{children}</Modal.Body>
         </Modal>);
