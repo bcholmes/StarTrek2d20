@@ -19,6 +19,7 @@ import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 import D20IconButton from "../component/d20IconButton";
 import { FocusRandomTable } from "../table/focusRandomTable";
 import { EarlyOutlookDiscplineController } from "../../components/earlyOutlookControllers";
+import { localizedFocus } from "../../components/focusHelper";
 
 const SoloEarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
@@ -43,7 +44,7 @@ const SoloEarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}
     const selectRandomFocus = () => {
         let done = false;
         while (!done) {
-            let focus = FocusRandomTable(character.upbringingStep?.discipline);
+            let focus = localizedFocus(FocusRandomTable(character.upbringingStep?.discipline));
             if (character.focuses.indexOf(focus) < 0) {
                 done = true;
                 store.dispatch(setCharacterFocus(focus, StepContext.EarlyOutlook));
@@ -95,7 +96,7 @@ const SoloEarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}
                             <D20IconButton onClick={() => selectRandomFocus()}/>
                         </div>
                     </div>
-                    <div className="py-1 text-white"><b>{t('Common.text.suggestions')}:</b> {earlyOutlook.focusSuggestions.join(", ")}</div>
+                    <div className="py-1 text-white"><b>{t('Common.text.suggestions')}:</b> {earlyOutlook.focusSuggestions.map(f => localizedFocus(f)).join(", ")}</div>
                 </div>
             </div>
             <div className='text-end mt-4'>

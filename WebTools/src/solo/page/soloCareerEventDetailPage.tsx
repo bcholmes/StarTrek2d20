@@ -22,6 +22,7 @@ import D20IconButton from "../component/d20IconButton";
 import { FocusRandomTable } from "../table/focusRandomTable";
 import { CareerEventAttributeController, CareerEventDisciplineController } from "../../components/careerEventDetailsControllers";
 import ReactMarkdown from "react-markdown";
+import { localizedFocus } from "../../components/focusHelper";
 
 interface ISoloCareerEventProperties extends ICharacterProperties {
     context: StepContext;
@@ -54,7 +55,7 @@ const SoloCareerEventDetailsPage: React.FC<ISoloCareerEventProperties> = ({chara
     const selectRandomFocus = () => {
         let done = false;
         while (!done) {
-            let focus = FocusRandomTable(careerEventStep.discipline);
+            let focus = localizedFocus(FocusRandomTable(careerEventStep.discipline));
             if (character.focuses.indexOf(focus) < 0) {
                 done = true;
                 store.dispatch(setCharacterFocus(focus, context));

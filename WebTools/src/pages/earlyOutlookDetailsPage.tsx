@@ -23,6 +23,7 @@ import { EarlyOutlookDiscplineController } from '../components/earlyOutlookContr
 import DisciplineListComponent from '../components/disciplineListComponent';
 import { CharacterType } from '../common/characterType';
 import { Species } from '../helpers/speciesEnum';
+import { localizedFocus } from '../components/focusHelper';
 
 const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
@@ -54,7 +55,7 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
     const selectRandomFocus = () => {
         let done = false;
         while (!done) {
-            let focus = FocusRandomTableWithHints(character.upbringingStep?.discipline, earlyOutlook.focusSuggestions);
+            let focus = localizedFocus(FocusRandomTableWithHints(character.upbringingStep?.discipline, earlyOutlook.focusSuggestions));
             if (character.focuses.indexOf(focus) < 0) {
                 done = true;
                 store.dispatch(setCharacterFocus(focus, StepContext.EarlyOutlook));
@@ -123,7 +124,7 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
                             <D20IconButton onClick={() => selectRandomFocus()}/>
                         </div>
                     </div>
-                    <div className="py-1 text-white"><b>{t('Common.text.suggestions')}:</b> {earlyOutlook.focusSuggestions.join(", ")}</div>
+                    <div className="py-1 text-white"><b>{t('Common.text.suggestions')}:</b> {earlyOutlook.focusSuggestions.map(f => localizedFocus(f)).join(", ")}</div>
                 </div>
             </div>
             <div>
@@ -131,7 +132,7 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
                 <SingleTalentSelectionList talents={talents} onSelection={(talent) => { onTalentSelected(talent) } } construct={character}/>
             </div>
             <div className="text-end">
-                <Button buttonType={true} className="button-next" onClick={() => navigateToNextPage() }>{t('Common.button.next')}</Button>
+                <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => navigateToNextPage() }>{t('Common.button.next')}</Button>
             </div>
         </div>
     );

@@ -23,6 +23,7 @@ import { ICharacterProperties, characterMapStateToProperties } from '../solo/pag
 import { CareerEventAttributeController, CareerEventDisciplineController } from '../components/careerEventDetailsControllers';
 import { FocusRandomTableWithHints } from '../solo/table/focusRandomTable';
 import D20IconButton from '../solo/component/d20IconButton';
+import { localizedFocus } from '../components/focusHelper';
 
 interface ICareerEventDetailsProperties extends ICharacterProperties{
     context: StepContext;
@@ -40,7 +41,7 @@ const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({charac
     const selectRandomFocus = () => {
         let done = false;
         while (!done) {
-            let focus = FocusRandomTableWithHints(careerEventStep.discipline, careerEvent.focuses);
+            let focus = localizedFocus(FocusRandomTableWithHints(careerEventStep.discipline, careerEvent.focuses));
             if (character.focuses.indexOf(focus) < 0) {
                 done = true;
                 store.dispatch(setCharacterFocus(focus, context));

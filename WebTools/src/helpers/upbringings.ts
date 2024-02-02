@@ -116,7 +116,8 @@ class Upbringings {
             Attribute.Daring,
             [Skill.Conn, Skill.Engineering, Skill.Medicine, Skill.Science],
             "The character’s Focus should relate to the character’s favoured fields of study and inquiry.",
-            ["Astrophysics", "Astronavigation", "Computers", "Cybernetics", "Power Systems", "Genetics", "Physics", "Subspace Communications", "Surgery", "Quantum Mechanics", "Warp Field Dynamics", "Xenobiology"]
+            ["Astrophysics", "Astronavigation", "Computers", "Cybernetics", "Power Systems", "Genetics", "Physics", "Subspace Communications", "Surgery", "Quantum Mechanics", "Warp Field Dynamics", "Xenobiology"],
+            "Upbringing.starfleet."
         ),
         new EarlyOutlookModel(
             EarlyOutlook.ArtisticAndCreative,
@@ -128,7 +129,8 @@ class Upbringings {
             Attribute.Daring,
             [Skill.Command, Skill.Engineering, Skill.Science],
             "The character’s Focus should relate to the character’s preferred way of applying their skills.",
-            ["Botany", "Cultural Studies", "Holoprogramming", "Linguistics", "Music", "Observation", "Persuasion", "Psychology"]
+            ["Botany", "Cultural Studies", "Holoprogramming", "Linguistics", "Music", "Observation", "Persuasion", "Psychology"],
+            "Upbringing.starfleet."
         ),
         new EarlyOutlookModel(
             EarlyOutlook.DiplomacyAndPolitics,

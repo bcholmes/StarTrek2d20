@@ -28,6 +28,7 @@ import { PageIdentity } from './pageIdentity';
 import { Stereotype } from '../common/construct';
 import D20IconButton from '../solo/component/d20IconButton';
 import { FocusRandomTableWithHints } from '../solo/table/focusRandomTable';
+import { localizedFocus } from '../components/focusHelper';
 
 const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
@@ -48,7 +49,7 @@ const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
     const selectRandomFocus = (index: number) => {
         let done = false;
         while (!done) {
-            let focus = FocusRandomTableWithHints(character.educationStep?.primaryDiscipline, track.focusSuggestions);
+            let focus = localizedFocus(FocusRandomTableWithHints(character.educationStep?.primaryDiscipline, track.focusSuggestions));
             if (character.focuses.indexOf(focus) < 0) {
                 done = true;
                 store.dispatch(setCharacterFocus(focus, StepContext.Education, index));
@@ -104,7 +105,7 @@ const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
                     </div>)}
             </div>
 
-            <div className="text-white mt-2"><b>Suggestions: </b> {track.focusSuggestions.join(", ")}</div>
+            <div className="text-white mt-2"><b>Suggestions: </b> {track.focusSuggestions.map(f => localizedFocus(f)).join(", ")}</div>
         </div>);
     }
 

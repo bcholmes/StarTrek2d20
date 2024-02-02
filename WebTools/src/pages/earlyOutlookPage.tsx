@@ -80,15 +80,15 @@ const EarlyOutlookPage : React.FC<ICharacterProperties> = ({character}) => {
         if (Window.isCompact()) {
             return (
                 <tr key={i} onClick={() => { selectOutlook(u) } }>
-                    <td className="selection-header">{u.name}</td>
+                    <td className="selection-header">{u.localizedName}</td>
                     <td>
                         ACCEPT<br/>
-                        <div>{AttributesHelper.getAttributeName(u.attributeAcceptPlus2) } +2</div>
-                        <div>{AttributesHelper.getAttributeName(u.attributeAcceptPlus1) } +1</div>
+                        <div>{t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(u.attributeAcceptPlus2))) } +2</div>
+                        <div>{t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(u.attributeAcceptPlus1))) } +1</div>
                         <br/>
                         REBEL<br/>
-                        <div>{AttributesHelper.getAttributeName(u.attributeRebelPlus2) } +2</div>
-                        <div>{AttributesHelper.getAttributeName(u.attributeRebelPlus1) } +1</div>
+                        <div>{t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(u.attributeRebelPlus2))) } +2</div>
+                        <div>{t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(u.attributeRebelPlus1))) } +1</div>
                     </td>
                     <td>{disciplines}</td>
                 </tr>
@@ -97,14 +97,14 @@ const EarlyOutlookPage : React.FC<ICharacterProperties> = ({character}) => {
         else {
             return (
                 <tr key={i}>
-                    <td className="selection-header">{u.name}</td>
+                    <td className="selection-header">{u.localizedName}</td>
                     <td>
-                        <div>{AttributesHelper.getAttributeName(u.attributeAcceptPlus2) } +2</div>
-                        <div>{AttributesHelper.getAttributeName(u.attributeAcceptPlus1) } +1</div>
+                        <div>{t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(u.attributeAcceptPlus2))) } +2</div>
+                        <div>{t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(u.attributeAcceptPlus1))) } +1</div>
                     </td>
                     <td>
-                        <div>{AttributesHelper.getAttributeName(u.attributeRebelPlus2) } +2</div>
-                        <div>{AttributesHelper.getAttributeName(u.attributeRebelPlus1) } +1</div>
+                        <div>{t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(u.attributeRebelPlus2))) } +2</div>
+                        <div>{t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(u.attributeRebelPlus1))) } +1</div>
                     </td>
                     <td>{disciplines}</td>
                     <td className="text-end"><Button className="button-small" text="Select" onClick={() => { selectOutlook(u) } } buttonType={true} /></td>

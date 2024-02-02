@@ -18,6 +18,8 @@ export class Button extends React.Component<IButtonProperties, {}> {
         if (this.props.buttonType) {
             if (className.indexOf("button-small") >= 0) {
                 className = className.replace("button-small", "btn btn-primary btn-sm");
+            } else if (className.indexOf("button-next") >= 0) {
+                className = className.replace("button-next", "btn btn-primary");
             }
         }
 

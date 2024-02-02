@@ -20,6 +20,7 @@ import D20IconButton from "../component/d20IconButton";
 import { ValueRandomTable } from "../table/valueRandomTable";
 import { FocusRandomTable } from "../table/focusRandomTable";
 import { EducationAttributeController, EducationPrimaryDisciplineController, EducationSecondaryDisciplineController } from "../../components/educationControllers";
+import { localizedFocus } from "../../components/focusHelper";
 
 const SoloEducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
@@ -59,7 +60,7 @@ const SoloEducationDetailsPage: React.FC<ICharacterProperties> = ({character}) =
     const selectRandomFocus = (index: number) => {
         let done = false;
         while (!done) {
-            let focus = FocusRandomTable(character.educationStep?.primaryDiscipline);
+            let focus = localizedFocus(FocusRandomTable(character.educationStep?.primaryDiscipline));
             if (character.focuses.indexOf(focus) < 0) {
                 done = true;
                 store.dispatch(setCharacterFocus(focus, StepContext.Education, index));

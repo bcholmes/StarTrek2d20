@@ -3,13 +3,13 @@ export const toCamelCase = (phrase: string) => {
     let result = "";
     let upperCase = false;
     for (let i = 0; i < phrase.length; i++) {
-        const c = phrase.charAt(i);
+        let c = phrase.charAt(i);
         if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(c) >= 0) {
             if (upperCase) {
-                result = c.toLocaleUpperCase();
+                c = c.toLocaleUpperCase();
                 upperCase = false;
             } else {
-                result = c.toLocaleLowerCase();
+                c = c.toLocaleLowerCase();
             }
             result += c;
         } else if (" " === c || "-" === c) {
