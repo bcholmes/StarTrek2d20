@@ -438,6 +438,25 @@ export class Specializations {
                     "Take your medicine as ordered or wake up on the barge to Gre'thor.",
                     "I've seen too many young warriors die before their time"
                 ], 0.95),
+            new SpecializationModel(Specialization.KlingonDiplomat, NpcCharacterType.KlingonDefenseForces, "Klingon Diplomat",
+                [Attribute.Control, Attribute.Insight, Attribute.Presence],
+                Skill.Command,
+                [
+                    "Oration", "Negotiation", "Diplomacy", "Composure", "Treaty Issues", "Klingon Law", "Politics",
+                    "Posturing"
+                ],
+                [
+                    "Hand-to-Hand Combat", "Melee Weapons", "Disruptors", "Relations with the Federation", "Relations with the Romulan Star Empire",
+                    "The History of the Empire", "Tholian Diplomatic Complexities", "Schmoozing",
+                    "Political Leaders and their Agendas", "Current Political Issues", "Federation Weaknesses"
+                ],
+                [
+                    "Your modesty is very Human, Captain. I will excuse it.",
+                    "Vulcans are well known as the intellectual puppets of this Federation!",
+                    "We have the right to preserve our race!",
+                    "That's outrageous!!",
+                    "For the good of the empire!"
+                ], 0.5),
             new SpecializationModel(Specialization.FerengiMerchant, NpcCharacterType.Ferengi, "Ferengi Merchant",
                 [Attribute.Control, Attribute.Insight, Attribute.Presence],
                 Skill.Command,
@@ -764,7 +783,7 @@ export class Specializations {
                 [
                     "Oration", "Negotiation", "Diplomacy", "Composure", "Treaty Issues", "Federation Law", "Politics"
                 ], [
-                    "Relations with the Klingon Empire", "Relations with teh Romulan Star Empire", "The History of the Federation",
+                    "Relations with the Klingon Empire", "Relations with the Romulan Star Empire", "The History of the Federation",
                     "The Writings of Ambassador Archer", "The History of Ambassador Sarek", "The Accomplishments of Ambassador Gav",
                     "Diplomatic Strategies of Ambassador Riva", "Shmoozing", "Diplomatic Protocol", "Abiguous Treaty Clauses",
                     "Tholian Diplomatic Complexities", "V'Lar's Negotiating Tactics", "Out-of-the-ordinary Compromises",
@@ -778,6 +797,53 @@ export class Specializations {
                     "I think, when one has been angry for a very long time, one gets used to it. And it becomes comfortable like... like old leather. And finally... it becomes so familiar that one can't remember feeling any other way.",
                     "If there is to be a lasting peace between us, neither you nor I must allow any one individual to undermine our efforts.",
                     "Take this message to your leaders: 'We'll be watching'."
+                ],
+                0),
+            new SpecializationModel(Specialization.Bureaucrat, NpcCharacterType.Civilian, "Bureaucrat",
+                [Attribute.Control, Attribute.Insight, Attribute.Presence],
+                Skill.Command,
+                [
+                    "Administrative Procedures", "Planning", "Paperwork", "Regulations and Processes"
+                ], [
+                    "Civics", "Bribery", "Organizational Hierarchy", "Legalese", "Working the System",
+                ], [
+                    "Details matter.",
+                    "Not without the proper paperwork!",
+                    "Without processes, society would devolve into chaos!",
+                    "Are you going to go ahead and have those TPS reports for us this afternoon?",
+                    "Sounds like somebody's got a case of the Mondays.",
+                    "An efficient bureaucracy is the greatest threat to liberty.",
+                    "The bureaucracy is expanding to meet the needs of the expanding bureaucracy.",
+                    "You will never understand bureaucracies until you understand that for bureaucrats procedure is everything and outcomes are nothing.",
+                    "Bureaucracies are designed to perform public business.",
+                    "If you are going to sin, sin against God, not the bureaucracy. God will forgive you but the bureaucracy won't.",
+                    "The perfect bureaucrat everywhere is the person who manages to make no decisions and escape all responsibility.",
+                    "Bureaucrats are the only people in the world who can say absolutely nothing and mean it."
+                ],
+                0),
+            new SpecializationModel(Specialization.Colonist, NpcCharacterType.Civilian, "Colonist",
+                [Attribute.Fitness, Attribute.Daring, Attribute.Presence],
+                Skill.Engineering,
+                [
+                    "Agriculture", "Construction", "City Planning", "Animal Husbandry", "Biology", "Community Building",
+                ], [
+                    "Materials Fabrication",
+                    "Ground Vehicles", "Power Systems",
+                    "Renewable Energy Sources", "Hydrology", "Animal Husbandry",
+                    "Small Group Governance", "Infrastructure Planning",
+                    "Emergency Services", "Geology", "Civics",
+                ], [
+                    "We must imagine the future, including the new technologies that are required.",
+                    "Rugged, hard work!",
+                    "Earth is just too small and fragile a basket for humanity to keep all its eggs in.",
+                    "This is the goal: To make available for life every place where life is possible. To make inhabitable all worlds as yet uninhabitable, and all life purposeful.",
+                    "In the long run, a single-planet species will not survive.",
+                    "Humanity has a spiritual need for an open frontier.",
+                    "Exploration is really the essence of the human spirit.",
+                    "From each according to their abilities, to each according to their needs.",
+                    "The ultimate goal of farming is not the growing of crops, but the cultivation and perfection of sentient beings.",
+                    "Farming is a profession of hope.",
+                    "If you tickle the earth with a hoe she laughs with a harvest."
                 ],
                 0),
         ]

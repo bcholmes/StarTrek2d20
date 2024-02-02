@@ -74,7 +74,7 @@ const HaliianForehead = `<g>
 </g>`;
 
 export enum ProstheticPlacement {
-    VeryBack, BaseHead, UnderHair, VeryFront
+    VeryBack, BehindHead, BaseHead, UnderHair, VeryFront
 }
 
 class ProstheticCatalog {
@@ -91,7 +91,7 @@ class ProstheticCatalog {
     getProsthetic(token: Token, placement: ProstheticPlacement) {
         if (token.species === Species.Andorian) {
             switch (placement) {
-                case ProstheticPlacement.VeryBack:
+                case ProstheticPlacement.BehindHead:
                     return AndorianAntennaBack.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
                 case ProstheticPlacement.VeryFront:
                     switch (token.hairType) {

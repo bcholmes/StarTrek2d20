@@ -44,11 +44,12 @@ export class TokenSvgBuilder {
             "<g"  + (UniformVariantRestrictions.isStraightenedNeck(token.uniformEra) ? " transform=\"translate(-20,0)\"" : "") + ">" +
             HairCatalog.instance.getHair(token, HairElement.BehindHead) +
             EarCatalog.instance.getHiddenEar(token) +
-            ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.VeryBack) +
             "</g>" +
+            ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.VeryBack) +
             UniformCatalog.instance.getBody(token) +
             RankIndicatorCatalog.instance.getRankIndicator(token) +
             "<g"  + (UniformVariantRestrictions.isStraightenedNeck(token.uniformEra) ? " transform=\"translate(-20,0)\"" : "") + ">" +
+            ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.BehindHead) +
             HeadCatalog.instance.getHead(token) +
             ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.BaseHead) +
             NasoLabialFoldCatalog.instance.getNasoLabialFold(token) +

@@ -15,20 +15,37 @@ import SwatchButton from './swatchButton';
 
 interface ISpeciesSelectionProperties extends WithTranslation {
     token: Token;
+    isLoading: boolean;
+    loadExtension: () => void;
 }
 
 class SpeciesSelectionView extends React.Component<ISpeciesSelectionProperties, {}> {
 
-    render() {
-        const { token } = this.props;
-        return (
-            <div className="mt-4">
-                <label className="visually-hidden" htmlFor="species">Species</label>
-                <DropDownSelect items={this.speciesList()} defaultValue={token.species} onChange={(s) => store.dispatch(setTokenSpecies(s as Species))}
-                    id="species"/>
+    selectSpecies(species: Species) {
+        if (SpeciesRestrictions.isRubberHeaded(species)) {
+            this.props.loadExtension();
+        }
+        store.dispatch(setTokenSpecies(species));
+    }
 
-                {this.renderOptions()}
-            </div>);
+    render() {
+        const { token, isLoading } = this.props;
+        if (isLoading) {
+            return (<div className="mt-4 text-center">
+                    <div className="spinner-border text-light" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
+                </div>);
+        } else {
+            return (
+                <div className="mt-4">
+                    <label className="visually-hidden" htmlFor="species">Species</label>
+                    <DropDownSelect items={this.speciesList()} defaultValue={token.species} onChange={(s) => this.selectSpecies(s as Species)}
+                        id="species"/>
+
+                    {this.renderOptions()}
+                </div>);
+        }
     }
 
     renderOptions() {

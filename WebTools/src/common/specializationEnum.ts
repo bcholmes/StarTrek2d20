@@ -19,6 +19,7 @@ export enum Specialization {
     KlingonWeaponsOfficer,
     KlingonMedic,
     KlingonShipCaptain,
+    KlingonDiplomat,
 
     FerengiMerchant,
     FerengiDaiMon,
@@ -36,6 +37,7 @@ export enum Specialization {
 
     Scientist,
     Bureaucrat,
+    Colonist,
     FederationAmbassador,
 
     OrionPirate,
@@ -65,6 +67,7 @@ export const allSpecializations = () => {
         Specialization.KlingonWeaponsOfficer,
         Specialization.KlingonMedic,
         Specialization.KlingonShipCaptain,
+        Specialization.KlingonDiplomat,
 
         Specialization.FerengiMerchant,
         Specialization.FerengiDaiMon,
@@ -82,6 +85,7 @@ export const allSpecializations = () => {
 
         Specialization.Scientist,
         Specialization.Bureaucrat,
+        Specialization.Colonist,
         Specialization.FederationAmbassador,
 
         Specialization.OrionPirate,

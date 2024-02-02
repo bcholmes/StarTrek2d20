@@ -499,7 +499,12 @@ export class NpcGenerator {
                 character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(AlliedMilitaryType.CardassianUnion), "Cardassian Union");
                 break;
             case NpcCharacterType.KlingonDefenseForces:
-                character.type = CharacterType.KlingonWarrior;
+                if (specialization.id === Specialization.KlingonDiplomat) {
+                    character.type = CharacterType.AmbassadorDiplomat;
+                    character.typeDetails = new GovernmentDetails(Governments.findOption(Polity.Klingon), "");
+                } else {
+                    character.type = CharacterType.KlingonWarrior;
+                }
                 break;
             case NpcCharacterType.RomulanEmpire:
                 if (specialization.id === Specialization.RomulanSenator) {

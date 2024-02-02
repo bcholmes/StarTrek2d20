@@ -23,6 +23,7 @@ import ExtrasSelectionView from './view/extrasSelectionView';
 import { Rank } from '../helpers/ranks';
 import { UniformEra } from './model/uniformEra';
 import UniformPackCollection from './model/uniformPackCollection';
+import HeadCatalog from './model/headCatalog';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -45,7 +46,7 @@ interface ITokenCreationPageState {
     tab: Tab;
     rounded: boolean;
     bordered: boolean;
-    loadingUniform: boolean;
+    loadingExtension: boolean;
 }
 
 class TokenCreationPage extends React.Component<ITokenCreationPageProperties, ITokenCreationPageState> {
@@ -56,14 +57,14 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
             tab: Tab.Species,
             rounded: false,
             bordered: false,
-            loadingUniform: false
+            loadingExtension: false
         }
     }
 
     render() {
         const { t, token } = this.props;
         const { tab, rounded, bordered } = this.state;
-        const svg = this.state.loadingUniform
+        const svg = this.state.loadingExtension
             ? (<div className="spinner-border text-light" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </div>)
@@ -149,18 +150,23 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
     }
 
     loadUniformPack(uniformEra: UniformEra) {
-        this.setState((state) => ({...state, loadingUniform: true}));
-        UniformPackCollection.instance.loadUniformPack(uniformEra, () => this.setState((state) => ({...state, loadingUniform: false})));
+        this.setState((state) => ({...state, loadingExtension: true}));
+        UniformPackCollection.instance.loadUniformPack(uniformEra, () => this.setState((state) => ({...state, loadingExtension: false})));
+    }
+
+    loadHeadExtension() {
+        this.setState((state) => ({...state, loadingExtension: true}));
+        HeadCatalog.instance.loadRubberHeadExtension(() => this.setState((state) => ({...state, loadingExtension: false})));
     }
 
     renderTab() {
         switch (this.state.tab) {
             case Tab.Species:
-                return (<SpeciesSelectionView />);
+                return (<SpeciesSelectionView isLoading={this.state.loadingExtension} loadExtension={() => this.loadHeadExtension()} />);
             case Tab.Body:
-                return (<UniformSelectionView isLoading={this.state.loadingUniform} loadPack={(uniformEra) => this.loadUniformPack(uniformEra)}/>);
+                return (<UniformSelectionView isLoading={this.state.loadingExtension} loadPack={(uniformEra) => this.loadUniformPack(uniformEra)}/>);
             case Tab.Head:
-                return (<HeadSelectionView />);
+                return (<HeadSelectionView isLoading={this.state.loadingExtension} />);
             case Tab.Mouth:
                 return (<MouthSelectionView />);
             case Tab.Nose:
