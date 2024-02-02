@@ -7,7 +7,7 @@
 .delta {
     color: inherit;
     letter-spacing: -1px;
-    font-size: 0px;    
+    font-size: 0px;
 }
 .delta::after {
     font-size: 1rem;
@@ -20,7 +20,7 @@ table.selection-list .delta::after {
     font-size: 12px;
 }
 
-@media screen and (min-width: 0px) and (max-width: 800px) {
+@media screen and (min-width: 0px) and (max-width: 768px) {
     table.selection-list .delta::after {
         font-size: 10px;
     }

@@ -346,6 +346,7 @@
     "Common.button.exportVtt": "Export for VTT",
     "Common.button.exportPdf": "Export to PDF",
     "Common.button.ok": "OK",
+    "Common.button.copyToClipboard": "Copy to clipboard",
     "Common.button.add": "Add",
     "Common.button.cancel": "Cancel",
     "Common.button.create": "Create",
@@ -355,6 +356,7 @@
 
     "Common.text.description": "Description",
     "Common.text.none": "None",
+    "Common.text.copiedToClipboard": "Copied to clipboard",
     "Common.text.search": "Search...",
     "Common.text.select": "Select",
     "Common.text.selectOne": "Select one",

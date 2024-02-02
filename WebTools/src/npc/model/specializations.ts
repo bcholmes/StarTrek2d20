@@ -707,6 +707,30 @@ export class Specializations {
                     "My Life for my Charge",
                     "I can live with being in the line of fire."
                 ], 0, [Species.Nausicaan, Species.Hupyrian]),
+            new SpecializationModel(Specialization.Smuggler, NpcCharacterType.RogueRuffianMercenary, "Smuggler",
+                [Attribute.Control, Attribute.Insight, Attribute.Presence],
+                Skill.Conn,
+                [
+                    "Concealment", "Smuggling", "Border Security Protocols",
+                    "Scanning Technology", "Cargo Handling"
+                ],
+                [
+                    "Bribery", "Valuation", "Narcotics", "Negotiation",
+                    "Arms Transport", "Evasive Manoeuvres", "Underground Contacts",
+                    "Distracting Authorities", "Uncommon Trade Routes",
+                    "Detection Evasion", "Scan Suppressing Technology"
+                ],
+                [
+                    "Never tell me the odds!",
+                    "You like me because I’m a scoundrel. There aren’t enough scoundrels in your life.",
+                    "It’s all a lot of simple tricks and nonsense.",
+                    "I got a bad feeling about this",
+                    "I got some old debts I’ve got to pay off with this stuff. Even if I didn’t, you don’t think I’d be fool enough to stick around here, do you?",
+                    "I can see none of you are smugglers; that's why it's so loud.",
+                    "Trust isn't given; it's earned.",
+                    "Carrying charges, my friend. Carrying charges."
+                ], 0, [ Species.Andorian, Species.Bajoran, Species.Betazoid, Species.Bolian, Species.Denobulan, Species.Human,
+                        Species.Orion, Species.Nausicaan, Species.Pakled, Species.Tellarite, Species.Trill, Species.Vulcan ]),
             new SpecializationModel(Specialization.Scientist, NpcCharacterType.Civilian, "Scientist",
                 [Attribute.Reason, Attribute.Insight, Attribute.Control],
                 Skill.Science,

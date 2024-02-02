@@ -12,7 +12,7 @@ import { Starship } from '../common/starship';
 import store from '../state/store';
 import { centuryToYear } from './weapons';
 import { Spaceframe } from './spaceframeEnum';
-import { CareersPrerequisite, CharacterStereotypePrerequisite, IConstructPrerequisite, MainCharacterPrerequisite, OfficerPrerequisite, ServiceYearPrerequisite, SourcePrerequisite, SpecializationPrerequisite } from './prerequisite';
+import { CareersPrerequisite, CharacterStereotypePrerequisite, IConstructPrerequisite, MainCharacterPrerequisite, NotPrerequisite, OfficerPrerequisite, ServiceYearPrerequisite, SourcePrerequisite, SpecializationPrerequisite } from './prerequisite';
 import { NotSourcePrerequisite } from './spaceframes';
 import { Career } from './careerEnum';
 import { hasAnySource } from '../state/contextFunctions';
@@ -3797,6 +3797,42 @@ export class Talents {
             "Diplomatic Expertise",
             "Whenever the ambassador attempts a Task within a Social Conflict and buys one or more additional dice, they may re-roll their dice pool.",
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.FederationAmbassador)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Jurisprudence",
+            "The JAG Officer is extremely well-versed in the theory and philosophy of law, and may re-roll one d20 on a Task that uses the character’s Reason and their Law Focus.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Jag)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Proficiency: Courtroom Arguments",
+            "When engaged in courtroom Tasks such as making a legal argument or cross-examining a witness the JAG officer may add one bonus d20.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Jag)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Threatening 3",
+            "The character is powerful and dangerous, with a vitality and drive that allows them to triumph where others might fail. The character begins each scene with 3 Threat, that may only be used to benefit itself, and which are not drawn from the general Threat pool.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Jag)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Slippery",
+            "The Smuggler is used to playing upon their essentially harmless nature to wriggle out of trouble. The Smuggler reduces all Difficulties when trying to convince authorities to let them go using Presence by 1 (to a minimum of 0).",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Smuggler)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Proficiency: Concealing Contraband",
+            "When engaged in Tasks associated with hiding contraband or evading scans the smuggler may add one bonus d20.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Smuggler)],
+            1,
+            "General", true),
+        new TalentModel(
+            "One with the Ship",
+            "Whenever the Smuggler attempts a Task to pilot their ship, they may reduce the Difficulty by one, to a minimum of zero.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Smuggler), new DisciplinePrerequisite(Skill.Conn, 3)],
             1,
             "General", true),
     ];

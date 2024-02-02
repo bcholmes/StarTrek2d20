@@ -10,6 +10,7 @@ import { setTableCollectionSelection } from "../../state/tableActions"
 import store from "../../state/store"
 import { useNavigate } from "react-router"
 import { toCamelCase } from "../../common/camelCaseUtil"
+import { TableCollectionDescription } from "./tableDescription"
 
 interface ITableListPageProperties {
     collections: TableCollection[];
@@ -35,7 +36,7 @@ const TableListPage: React.FC<ITableListPageProperties> = ({collections}) => {
     const renderCategories = () => {
         return categories.map((c, i) => {
             return (
-                <div className="col-md-6 mt-4" key={'category-' + i}>
+                <div className="col-lg-6 mt-4" key={'category-' + i}>
                     <Header level={2}>{c}</Header>
                     <table className="table table-dark table-striped">
                         <tbody>
@@ -44,11 +45,11 @@ const TableListPage: React.FC<ITableListPageProperties> = ({collections}) => {
                             .filter(tc => tc.category === c)
                             .map((tc, j) => (<tr key={'row-' + toCamelCase(c) + '-' + j}>
                                     <td>
-                                        <ReactMarkdown>{'**' + tc.name + ':** ' + tc.description}</ReactMarkdown>
+                                        <TableCollectionDescription tableCollection={tc} />
                                     </td>
                                     <td>
                                         <div className="text-right">
-                                            <Button buttonType={true} className="btn btn-primary btn-sm ms-3" onClick={() => selectCollection(tc)}>Select</Button>
+                                            <Button buttonType={true} className="btn btn-primary btn-xs" onClick={() => selectCollection(tc)}>Select</Button>
                                         </div>
                                     </td>
                                 </tr>))}

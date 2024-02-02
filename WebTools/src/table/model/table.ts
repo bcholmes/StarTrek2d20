@@ -13,7 +13,7 @@ export class TableRow {
     }
 
     get range() {
-        return this.to == null ? "" + this.from : ("" + this.from + "-" + this.to);
+        return (this.to == null || this.to === this.from) ? "" + this.from : ("" + this.from + "\u2013" + this.to);
     }
 }
 

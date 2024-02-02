@@ -320,6 +320,7 @@ Common.button.export,Export,Export,,
 Common.button.exportVtt,Export for VTT,Für VTT exportieren,,
 Common.button.exportPdf,Export to PDF,Als PDF exportieren,Exportar a PDF,Exporter au format PDF
 Common.button.ok,OK,OK,De acuerdo,D'accord
+Common.button.copyToClipboard,Copy to clipboard,,,
 Common.button.add,Add,Hinzufügen,Agregar,Ajouter
 Common.button.cancel,Cancel,Abbrechen,Cancelar,Annuler
 Common.button.create,Create,Erschaffen,,Créer
@@ -328,6 +329,7 @@ Common.button.next,Next,Weiter,Próximo,Prochain
 Common.button.view,View,Anzeigen,Vista,Vue
 Common.text.description,Description,Beschreibung,,
 Common.text.none,None,Keine Auswahl,,Aucun
+Common.text.copiedToClipboard,Copied to clipboard,,,
 Common.text.search,Search...,Suchen...,,
 Common.text.select,Select,Wähle,,Selectionnez
 Common.text.selectOne,Select one,Wählen Sie eine(n/s),,Selectionnez en un

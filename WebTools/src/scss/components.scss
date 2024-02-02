@@ -338,7 +338,7 @@ div.align-items-stretch > label.textinput-label {
 
 /* RESPONSIVE */
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 768px) {
     .header {
         width: 512px;
         height: 61px;
@@ -352,7 +352,7 @@ div.align-items-stretch > label.textinput-label {
     }
 }
 
-@media screen and (min-width: 0px) and (max-width: 800px) {
+@media screen and (min-width: 0px) and (max-width: 768px) {
     .button, .btn {
         font-size: large;
         max-width: 150px;

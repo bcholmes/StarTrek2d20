@@ -1,3 +1,4 @@
+import { Color } from "../../common/colour";
 import { Species } from "../../helpers/speciesEnum";
 import { ExtraType } from "./extrasTypeEnum";
 import { HairType, allHairTypes, isTallForeheadHair } from "./hairTypeEnum";
@@ -19,6 +20,10 @@ class SpeciesRestrictions {
     static DEFAULT_LIPSTICK_COLOR = "#a9777a";
 
     static DEFAULT_EYE_COLOR_REGEX = /#754324/g;
+
+    static readonly LIP_COLOUR = Color.from("#f4b39b");
+    static readonly DARK_LIP_COLOUR = Color.from("#aa6778");
+
 
     static getSkinColors(species: Species) {
         if (species === Species.Orion) {
@@ -227,6 +232,16 @@ class SpeciesRestrictions {
                 NoseType.BroadFlat
             ];
         }
+    }
+
+    static isHumanLikeSkinColouring(species: Species) {
+        let colours = SpeciesRestrictions.getSkinColors(species);
+        let humanSkinColours = SpeciesRestrictions.getSkinColors(Species.Human);
+        let result = colours.length === humanSkinColours.length;
+        if (result) {
+            colours.forEach((c, i) => result = result && (c === humanSkinColours[i]));
+        }
+        return result;
     }
 }
 

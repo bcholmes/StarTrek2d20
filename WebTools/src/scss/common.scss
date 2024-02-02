@@ -112,6 +112,10 @@ h5 {
             flex-shrink: 0;
         }
     }
+
+    .container p, .container ul li {
+        font-size: 14px;
+    }
 }
 .stat-name {
     display: inline-block;

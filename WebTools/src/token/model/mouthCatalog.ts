@@ -1,3 +1,4 @@
+import { Color } from "../../common/colour";
 import { Species } from "../../helpers/speciesEnum";
 import { MouthType } from "./mouthTypeEnum";
 import SpeciesRestrictions from "./speciesRestrictions";
@@ -374,7 +375,21 @@ class MouthCatalog {
     }
 
     getMouth(token: Token) {
-        return MouthCatalog.getMouthSvg(token.mouthType, token.species).replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor).replace(/#c14242/g, token.lipstickColor);
+        let lipColour = token.skinColor;
+        if (SpeciesRestrictions.isHumanLikeSkinColouring(token.species)) {
+            let blendColour = SpeciesRestrictions.LIP_COLOUR;
+            let blendPercentage = 0.4;
+            let skinColours = SpeciesRestrictions.getSkinColors(token.species);
+            let index = skinColours.indexOf(token.skinColor);
+            if (index > Math.floor(skinColours.length / 2)) {
+                blendColour = SpeciesRestrictions.DARK_LIP_COLOUR;
+                blendPercentage = 0.25;
+            }
+            lipColour = Color.from(lipColour).blend(blendColour, blendPercentage).asHex();
+        }
+        return MouthCatalog.getMouthSvg(token.mouthType, token.species)
+            .replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, lipColour)
+            .replace(/#c14242/g, token.lipstickColor);
     }
 
     private static getMouthSvg(mouthType: MouthType, species: Species) {

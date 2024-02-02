@@ -19,7 +19,7 @@ import { AlliedMilitary, AlliedMilitaryType } from "../../helpers/alliedMilitary
 import AllyHelper from "../../helpers/alliedMilitary";
 import { Specialization } from "../../common/specializationEnum";
 import { Track } from "../../helpers/trackEnum";
-import Governments, { Government, Polity } from "../../helpers/governments";
+import Governments, { Polity } from "../../helpers/governments";
 
 class RankWithTier {
     readonly name: string;
@@ -562,7 +562,7 @@ export class NpcGenerator {
                     if (roll < 7) {
                         // go for species talents
                         let talentName = species.talents.map(t => t.name);
-                        talentList = talentList.filter(t => talentName.indexOf(t.name) >= 0 || (t.specialRule && i > 0))
+                        talentList = talentList.filter(t => talentName.indexOf(t.name) >= 0 || (t.specialRule && (i > 0 || talentName.length === 0)))
                             .filter(t => {
                                 if (t.name === "Potent Pheromones") {
                                     return character.pronouns === "she/her";
