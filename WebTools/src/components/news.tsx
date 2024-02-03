@@ -12,6 +12,20 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240203</b>
+                <ul>
+                    <li>
+                        Most of the updates in this version are fairly invisible (and relate to an upcoming feature).
+                        But there are some minor NPC improvements, a few internationalization updates, and some token
+                        tweaks.
+                    </li>
+                    <li>
+                        There are a couple of changes to the species selection process. Since the list of species is
+                        so long, these days, I've added a search bar. There was also a bug identified on the "Random"
+                        drop-down: if you haven't included, say, the Delta Quadrant sourcebook, you shouldn't see
+                        the option for getting a random Delta Quadrant species.
+                    </li>
+                </ul>
                 <b>v1.240121</b>
                 <ul>
                     <li>
@@ -164,10 +178,6 @@ class News extends React.Component<INewsProperties, {}> {
                     <li>Lower Decks spaceframes</li>
                     <li>Small improvements to Token generation (particularly enlisted uniforms for Monster Maroon uniforms).</li>
                     <li>Michael Prangenberg contributed some improvements to the Foundry VTT export.</li>
-                </ul>
-                <b>v1.230728</b>
-                <ul>
-                    <li>Lower Decks! Lower Decks!</li>
                 </ul>
 
                 <div className="text-center">
