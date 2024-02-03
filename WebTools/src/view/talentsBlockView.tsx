@@ -22,7 +22,7 @@ const TalentsBlockView: React.FC<ICharacterPageProperties> = ({character}) => {
             {talents.map((t, i) =>
                 (<div className="text-white view-border-bottom py-2" key={'talent-' + i}>
                     <strong>{t.localizedDisplayName + (t.maxRank > 1 ? " [x" + character.getRankForTalent(t.name) + "]" : "")}:</strong> {' '}
-                    {replaceDiceWithArrowhead(t.description)}
+                    {replaceDiceWithArrowhead(t.localizedDescription)}
                 </div>))}
         </>);
     } else {

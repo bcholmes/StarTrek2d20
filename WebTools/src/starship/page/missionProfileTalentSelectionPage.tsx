@@ -6,7 +6,7 @@ import { Button } from "../../components/button";
 import { Dialog } from "../../components/dialog";
 import { Header } from "../../components/header";
 import SingleTalentSelectionList from "../../components/singleTalentSelectionList";
-import { TalentsHelper, TalentViewModel, ToViewModel } from "../../helpers/talents";
+import { ITalent, TalentsHelper, TalentViewModel, ToViewModel } from "../../helpers/talents";
 import { nextStarshipWorkflowStep, setStarshipMissionProfileTalent } from "../../state/starshipActions";
 import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
@@ -19,7 +19,7 @@ interface IMissionProfileTalentSelectionPageProperties {
 
 class MissionProfileTalentSelectionPage extends React.Component<IMissionProfileTalentSelectionPageProperties, {}> {
     render() {
-        return (<div className="page container ms-0">
+        return (<div className="page container ml-0">
             <ShipBuildingBreadcrumbs />
             <Header>Mission Profile Talent</Header>
             <p>
@@ -30,13 +30,13 @@ class MissionProfileTalentSelectionPage extends React.Component<IMissionProfileT
                 initialSelection={this.props.starship.profileTalent}
                 construct={this.props.starship}
                 onSelection={(talent) => this.saveTalent(talent)} />
-            <div className="text-end">
+            <div className="text-right">
                 <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
             </div>
         </div>);
     }
 
-    saveTalent(talent: TalentViewModel) {
+    saveTalent(talent: ITalent) {
         if (talent) {
             let talentModel = TalentsHelper.getTalent(talent.name);
             store.dispatch(setStarshipMissionProfileTalent(talentModel));

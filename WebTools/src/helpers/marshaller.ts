@@ -551,7 +551,7 @@ class Marshaller {
             result.missionProfileModel = MissionProfileHelper.getMissionProfileByName(json.missionProfile.name, result.type);
 
             if (json.missionProfile.talent) {
-                let talent = TalentsHelper.getTalentViewModel(json.missionProfile.talent.name);
+                let talent = TalentsHelper.getTalent(json.missionProfile.talent.name);
                 if (talent) {
                     result.profileTalent = talent;
                 }

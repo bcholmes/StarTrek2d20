@@ -516,6 +516,12 @@ export class TalentModel implements ITalent {
         }
     }
 
+    get localizedDescription() {
+        let key = "Talent." + this.rootKey + ".description";
+        let result = i18next.t(key);
+        return result === key ? this.description : result;
+    }
+
     get rootKey() {
         return toCamelCase(this.name);
     }
@@ -629,22 +635,24 @@ export class TalentViewModel {
     prerequisites: IConstructPrerequisite<Construct>[];
     displayName: string;
     specialRule: boolean;
+    localizedName:string;
 
-    constructor(name: string, rank: number, showRank: boolean, description: string, skill: Skill, category: string, prerequities: IConstructPrerequisite<Character>[], specialRule: boolean) {
+    constructor(name: string, localizedName:string, rank: number, showRank: boolean, description: string, skill: Skill, category: string, prerequities: IConstructPrerequisite<Character>[], specialRule: boolean) {
         this.id = name;
         this.description = description;
         this.rank = rank;
         this.hasRank = showRank;
-        this.displayName = this.constructDisplayName(name, rank, showRank, skill, category);
+        this.displayName = this.constructDisplayName(name, localizedName, rank, showRank, skill, category);
         this.name = name;
         this.prerequisites = prerequities;
         this.category = category;
         this.specialRule = specialRule;
+        this.localizedName = localizedName;
     }
 
 
-    private constructDisplayName(name: string, rank: number, showRank: boolean, skill: Skill, category: string) {
-        let displayName = name + ((showRank && category !== "Starship" && category !== "Starbase") ? " [Rank: " + rank + "]" : "");
+    private constructDisplayName(name: string, localizedName: string, rank: number, showRank: boolean, skill: Skill, category: string) {
+        let displayName = localizedName + ((showRank && category !== "Starship" && category !== "Starbase") ? " [Rank: " + rank + "]" : "");
         let suffix = skill !== undefined && skill !== Skill.None
             ? ` (${SkillsHelper.getSkillName(skill)})`
             : category.length > 0 ? ` (${category})` : "";
@@ -660,7 +668,7 @@ export function ToViewModel(talent: TalentModel, rank: number = 1, type: Charact
     if (type === CharacterType.KlingonWarrior) {
         name = talent.nameForSource(Source.KlingonCore);
     }
-    return new TalentViewModel(name, rank, talent.maxRank > 1, talent.description, undefined, talent.category, talent.prerequisites, talent.specialRule);
+    return new TalentViewModel(name, talent.localizedName, rank, talent.maxRank > 1, talent.localizedDescription, undefined, talent.category, talent.prerequisites, talent.specialRule);
 }
 
 export class Talents {

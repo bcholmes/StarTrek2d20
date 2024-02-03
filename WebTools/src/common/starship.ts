@@ -4,7 +4,7 @@ import { MissionPodModel } from "../helpers/missionPods";
 import { MissionProfileModel } from "../helpers/missionProfiles";
 import { SpaceframeModel } from "../helpers/spaceframeModel";
 import { allSystems, System } from "../helpers/systems";
-import { TalentsHelper, TalentViewModel } from "../helpers/talents";
+import { TalentModel, TalentsHelper, TalentViewModel } from "../helpers/talents";
 import { TalentSelection } from "../helpers/talentSelection";
 import StarshipWeaponRegistry, { Weapon } from "../helpers/weapons";
 import { CharacterType } from "./characterType";
@@ -95,7 +95,7 @@ export class Starship extends Construct {
     private _spaceframe?: SpaceframeModel = undefined;
     missionPodModel?: MissionPodModel;
     missionProfileModel?: MissionProfileModel;
-    profileTalent?: TalentViewModel;
+    profileTalent?: TalentModel;
     additionalTalents: TalentViewModel[] = [];
     refits: System[] = [];
     simpleStats: SimpleStats;

@@ -14,7 +14,7 @@ interface IButtonProperties {
 
 export class Button extends React.Component<IButtonProperties, {}> {
     render() {
-        let className = this.props.className;
+        let className = this.props.className ?? "";
         if (this.props.buttonType) {
             if (className.indexOf("button-small") >= 0) {
                 className = className.replace("button-small", "btn btn-primary btn-sm");

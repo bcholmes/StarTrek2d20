@@ -30,8 +30,8 @@ class SpaceframePage extends React.Component<ISpaceframePageProperties, {}> {
                 <p>{t('SpaceframeOptionPage.text')}</p>
 
                 <div className="button-column">
-                    <Button className="button" onClick={() => this.navigateToSpaceframeSelection() } buttonType={true}>{t('SpaceframeOptionPage.button.standardSpaceframe')}</Button>
-                    <Button className="button" onClick={() => this.navigateToCustomSpaceframe() } buttonType={true}>{t('SpaceframeOptionPage.button.customSpaceframe')}</Button>
+                    <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => this.navigateToSpaceframeSelection() }>{t('SpaceframeOptionPage.button.standardSpaceframe')}</Button>
+                    <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => this.navigateToCustomSpaceframe() }>{t('SpaceframeOptionPage.button.customSpaceframe')}</Button>
                 </div>
             </div>
         );
