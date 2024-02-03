@@ -36,6 +36,7 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
 
     const { t } = useTranslation();
     const [mode, setMode] = useState(RandomMode.All);
+    const [searchTerm, setSearchTerm] = useState<string>();
 
     let overrideCheckbox = (Character.isSpeciesListLimited(character))
         ? (<CheckBox
@@ -90,18 +91,23 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
         }
     }
 
-    let species = visibleSpeciesOptions.map((s, i) => {
-        const attributes = s.id === Species.Ktarian
-            ? (
-                <div key={'species-' + s.id}>
-                    <div>{t('Construct.attribute.control')}</div>
-                    <div>{t('Construct.attribute.reason')}</div>
-                    <div>Fitness or Presence</div>
-                </div>
-            )
-            : s.attributes.map((a, i) => {
-                return <div key={i}>{t(makeKey('Construct.attribute.', Attribute[a])) }</div>;
-            });
+    let species = visibleSpeciesOptions
+        .filter(s =>
+            searchTerm == null || searchTerm.trim().length === 0
+                || s.name.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase()) >= 0
+                || s.localizedName.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase()) >= 0 )
+        .map((s, i) => {
+            const attributes = s.id === Species.Ktarian
+                ? (
+                    <div key={'species-' + s.id}>
+                        <div>{t('Construct.attribute.control')}</div>
+                        <div>{t('Construct.attribute.reason')}</div>
+                        <div>Fitness or Presence</div>
+                    </div>
+                )
+                : s.attributes.map((a, i) => {
+                    return <div key={i}>{t(makeKey('Construct.attribute.', Attribute[a])) }</div>;
+                });
 
         const talents = s.id === Species.Changeling
             ? <div>Morphogenic Matrix</div>
@@ -116,7 +122,7 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
                 <td>{attributes}</td>
                 <td className="d-none d-md-table-cell">{sources}</td>
                 <td>{talents}</td>
-                <td className="text-end"><Button buttonType={true} className="button-small"onClick={() => { onSelection(s.id) }} >{t('Common.button.select')}</Button></td>
+                <td className="text-end d-none d-sm-table-cell"><Button buttonType={true} className="button-small"onClick={() => { onSelection(s.id) }} >{t('Common.button.select')}</Button></td>
             </tr>
         );
     });
@@ -132,7 +138,8 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
             <InstructionText text={t('SpeciesPage.text.select')} />
             {overrideCheckbox}
 
-            <div className="my-4">
+            <div className="row">
+                <div className="col-md-6 my-4">
                 {Character.isSpeciesListLimited(character) && !allowAllSpecies
                     ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpecies( determineRandomSpecies(RandomMode.All)) }>
                             <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
@@ -157,6 +164,11 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
                         </SplitButton>)}
 
                 {randomSpecies != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpecies(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                </div>
+                <div className="col-md-6 text-end my-4">
+                    <label className="visually-hidden" htmlFor='search'>Search</label>
+                    <input type="search" id="search" onChange={(e) => { setSearchTerm(e.target.value); }} value={searchTerm} placeholder="Search..." autoComplete="off"/>
+                </div>
             </div>
             <table className="selection-list">
                 <thead>
@@ -165,7 +177,7 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
                         <td><b>{t('Construct.other.attributes')}</b></td>
                         <td className="d-none d-md-table-cell"><b>{t('Construct.other.sources')}</b></td>
                         <td><b>{t('Construct.other.talentOptions')}</b></td>
-                        <td></td>
+                        <td className="text-end d-none d-sm-table-cell"></td>
                     </tr>
                 </thead>
                 <tbody>
