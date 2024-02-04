@@ -1,4 +1,5 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
+import {Helmet} from "react-helmet";
 import { Events, EventIdentity } from './common/eventChannel';
 import { PageFactory } from './pages/pageFactory';
 import { PageIdentity } from './pages/pageIdentity';
@@ -55,9 +56,19 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
     render() {
         const page = PageFactory.instance.createPage(this.state.activePage);
 
-        return (<LcarsFrame activePage={this.state.activePage}>
+        return (<>
+            <Helmet>
+                <title>STAR TREK Adventures Character Creator</title>
+                <meta property="og:title" content="The Star Trek Adventures Character Creator" />
+                <meta property="og:description" content="A free application that you can use to create characters, ships, and tokens for Modiphius' Star Trek Adventures RPG (and the Captain's Log Solo RPG game)." />
+                <meta property="og:type" content="website" />
+                <meta property="og:image" content="/static/img/bannerImage.png" />
+                <meta property="og:url" content="https://sta.bcholmes.org" />
+            </Helmet>
+            <LcarsFrame activePage={this.state.activePage}>
                 <div id="app">{page}</div>
-            </LcarsFrame>);
+            </LcarsFrame>
+        </>);
     }
 
 }

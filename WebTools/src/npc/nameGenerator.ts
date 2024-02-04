@@ -1,5 +1,5 @@
 import { D20 } from "../common/die";
-import { SpeciesModel } from "../helpers/species";
+import { ISpecies } from "../helpers/species";
 import { Species } from "../helpers/speciesEnum";
 
 const names = [
@@ -65,7 +65,7 @@ export class NameGenerator {
         return NameGenerator._instance;
     }
 
-    createName(species: SpeciesModel, gender: string = undefined) {
+    createName(species: ISpecies, gender: "Male"|"Female"|"Unisex" = undefined) {
 
         let result = { name: "", pronouns: "" };
         let found = false;
@@ -115,7 +115,7 @@ export class NameGenerator {
                         firstNameString = firstName.variants[Math.floor(Math.random() * firstName.variants.length)];
                     }
                 }
-                let pronouns = this.derivePronouns(firstName.gender);
+                let pronouns = this.derivePronouns(firstName.gender, gender != null);
                 result = {
                     name: this.combineParts(firstNameString, lastName?.name, species, pronouns, name.names),
                     pronouns: pronouns
@@ -145,7 +145,7 @@ export class NameGenerator {
                 firstName = parts[Math.floor(Math.random() * parts.length)].trim();
             }
 
-            let pronouns = this.derivePronouns(gender);
+            let pronouns = this.derivePronouns(gender, gender != null);
             result = {
                 name: this.combineParts(firstName, lastName, species, pronouns),
                 pronouns: pronouns
@@ -155,7 +155,7 @@ export class NameGenerator {
         return result;
     }
 
-    private combineParts(firstName: string, lastName: string, species: SpeciesModel, pronouns: string, names: [] = []) {
+    private combineParts(firstName: string, lastName: string, species: ISpecies, pronouns: string, names: [] = []) {
         let parts = []
 
         if (species.id === Species.Bajoran) {
@@ -215,13 +215,13 @@ export class NameGenerator {
         }
     }
 
-    private derivePronouns(gender: string) {
+    private derivePronouns(gender: string, preventNonbinary: boolean) {
         if (gender === "Male") {
-            return D20.roll() === 20 ? "they/them" : "he/him";
+            return (!preventNonbinary && D20.roll() === 20) ? "they/them" : "he/him";
         } else if (gender === "Female") {
-            return D20.roll() === 20 ? "they/them" : "she/her";
+            return (!preventNonbinary && D20.roll() === 20) ? "they/them" : "she/her";
         } else {
-            return D20.roll() >= 18 ? "they/them" : (D20.roll() <= 10 ? "he/him" : "she/her");
+            return (!preventNonbinary && D20.roll() >= 18) ? "they/them" : (D20.roll() <= 10 ? "he/him" : "she/her");
         }
     }
 }

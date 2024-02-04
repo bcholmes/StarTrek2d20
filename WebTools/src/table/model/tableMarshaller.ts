@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { Table, TableCollection } from "./table";
+import { Table, TableCollection, TableRow, ValueResult } from "./table";
 
 class TableMarshaller {
 
@@ -26,9 +26,34 @@ class TableMarshaller {
 
     unmarshall(encodedCollection: string) {
         let json = this.decode(encodedCollection);
-        console.log(json);
 
-        return json;
+        if (json["mainTable"]) {
+            const mainTable = this.unmarshallTable(json["mainTable"]);
+
+            const description = json["description"];
+            const category = json["category"];
+
+            return new TableCollection(mainTable, description, category);
+        } else {
+            return undefined;
+        }
+    }
+
+    private unmarshallTable(json: any) {
+        const name = json["name"];
+        let rows = [];
+        if (json["rows"]) {
+            json.rows?.map(r => {
+                let result = null;
+                if (r["result"]) {
+                    result = new ValueResult(r["result"]["name"], r["result"]["description"]);
+                }
+                return new TableRow(
+                    result, r["from"], r["to"]
+                )
+            }).forEach(r => rows.push(r));
+        }
+        return new Table(name, rows);
     }
 
     decode(s: string) {
@@ -53,8 +78,8 @@ class TableMarshaller {
         json["rows"] = table.rows?.map(r => { return {
             result: {
                 "type": "value",
-                "name": r.result.name,
-                "description": r.result.description
+                "name": r.result?.name,
+                "description": r.result?.description
             },
             from: r.from,
             to: r.to

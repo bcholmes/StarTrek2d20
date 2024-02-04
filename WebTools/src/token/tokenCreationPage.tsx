@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import {Helmet} from "react-helmet";
 import LcarsFrame from '../components/lcarsFrame';
 import { PageIdentity } from '../pages/pageIdentity';
 import { Header } from '../components/header';
@@ -70,7 +71,16 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
                 </div>)
             : TokenSvgBuilder.createSvg(token, rounded, bordered && rounded);
 
-        return (<LcarsFrame activePage={PageIdentity.TokenCreationPage}>
+        return (<>
+            <Helmet>
+                <title>Star Trek Adventures Token Generator</title>
+                <meta property="og:title" content="Star Trek Adventures Token Generator" />
+                <meta property="og:description" content="A free application that you can use to create downloadable character tokens for Modiphius' Star Trek Adventures Role Playing Game." />
+                <meta property="og:type" content="website" />
+                <meta property="og:image" content="/static/img/bannerImageToken.png" />
+                <meta property="og:url" content="https://sta.bcholmes.org/token" />
+            </Helmet>
+            <LcarsFrame activePage={PageIdentity.TokenCreationPage}>
                 <div id="app">
 
                     <div className="page container ms-0">
@@ -142,7 +152,8 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
                         </main>
                     </div>
                 </div>
-            </LcarsFrame>)
+            </LcarsFrame>
+        </>)
     }
 
     selectTab(tab: Tab) {

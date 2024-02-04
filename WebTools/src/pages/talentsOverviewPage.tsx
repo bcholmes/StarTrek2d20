@@ -31,7 +31,10 @@ class TalentViewModel {
 
     matches(term) {
         term = term.toLowerCase().replace("’", "'");
-        return this.name.toLowerCase().replace("’", "'").indexOf(term) >= 0 || this.description.toLowerCase().replace("’", "'").indexOf(term) >= 0 || this.category.toLowerCase().indexOf(term) >= 0 || this.matchesAlias(term);
+        return this.name.toLowerCase().replace("’", "'").indexOf(term) >= 0
+            || this.displayName.toLowerCase().replace("’", "'").indexOf(term) >= 0
+            || this.description.toLowerCase().replace("’", "'").indexOf(term) >= 0
+            || this.category.toLowerCase().indexOf(term) >= 0 || this.matchesAlias(term);
     }
     matchesAlias(term) {
         var result = false;
@@ -59,7 +62,7 @@ class TalentViewModel {
             }
         });
 
-        return new TalentViewModel(talent.name, talent.localizedDisplayName, talent.description, sourceString, category, prerequisites, talent.aliases);
+        return new TalentViewModel(talent.name, talent.localizedDisplayName, talent.localizedDescription, sourceString, category, prerequisites, talent.aliases);
     }
 }
 

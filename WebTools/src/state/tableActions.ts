@@ -10,3 +10,12 @@ export function setTableCollectionSelection(selection: TableCollection) {
        payload: payload
     }
 }
+
+
+export function importTableCollection(collection: TableCollection) {
+    let payload = { collection: collection };
+    return {
+       type: IMPORT_TABLE_COLLECTION,
+       payload: payload
+    }
+}

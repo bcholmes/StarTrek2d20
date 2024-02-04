@@ -83,7 +83,8 @@ export default class UniformVariantRestrictions {
             || uniformEra === UniformEra.DominionWar
             || uniformEra === UniformEra.Romulan
             || uniformEra === UniformEra.OriginalSeries
-            || uniformEra === UniformEra.NextGeneration;
+            || uniformEra === UniformEra.NextGeneration
+            || uniformEra === UniformEra.Enterprise;
     }
 
 }

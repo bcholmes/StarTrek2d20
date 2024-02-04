@@ -10,7 +10,7 @@ import { Department } from './departments';
 import { System } from './systems';
 import { Weapon } from './weapons';
 import { SheetOutlineOptions, SpaceframeOutline, XYLocation } from './spaceframeOutlineHelper';
-import { TalentsHelper } from './talents';
+import { CHALLENGE_DICE_NOTATION, TalentsHelper } from './talents';
 import { CareerEventsHelper } from './careerEvents';
 import { RolesHelper } from './roles';
 import { Construct, Stereotype } from '../common/construct';
@@ -870,7 +870,7 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
                 if (this.containsDelta(word)) {
                     let parts = this.separateDeltas(word);
                     let blocks = parts.map(p => {
-                        if (p === '[D]') {
+                        if (p === CHALLENGE_DICE_NOTATION) {
                             return this.createTextBlock("A", symbolStyle);
                         } else {
                             return this.createTextBlock(p, fontSpec);
@@ -900,7 +900,7 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
 
                         let parts = this.separateDeltas(words[i]); // get the original word without the leading space
                         parts.forEach(p => {
-                            if (p === '[D]') {
+                            if (p === CHALLENGE_DICE_NOTATION) {
                                 line.add(this.createTextBlock("A", symbolStyle));
                             } else {
                                 line.add(this.createTextBlock(p, fontSpec));
@@ -944,7 +944,7 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
     separateDeltas(word: string) {
         let result: string[] = [];
         while (word.length > 0) {
-            let index = word.indexOf("[D]");
+            let index = word.indexOf(CHALLENGE_DICE_NOTATION);
             if (index > 0) {
                 result.push(word.substring(0, index));
                 result.push(word.substring(index, index+3));

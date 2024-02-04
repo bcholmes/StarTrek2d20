@@ -35,7 +35,7 @@ const ViewTablePage: React.FC<IViewTablePageProperties> = ({tableCollection}) =>
 
     const createUrl = () => {
         const { hostname, protocol, port } = window.location;
-        return protocol + "//" + hostname + (port !== "80" && port !== "443" ? ":" + port : "") + "/table/import?table=" + TableMarshaller.instance.marshall(tableCollection);
+        return protocol + "//" + hostname + ((port !== "80" && port !== "443") ? ":" + port : "") + "/table/import?table=" + TableMarshaller.instance.marshall(tableCollection);
     }
 
     if (tableCollection == null) {

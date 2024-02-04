@@ -31,7 +31,7 @@ export class Table {
     name: string;
     rows: TableRow[];
 
-    constructor(name: string, ...rows: TableRow[]) {
+    constructor(name: string, rows: TableRow[]) {
         this.name = name;
         this.rows = rows;
     }

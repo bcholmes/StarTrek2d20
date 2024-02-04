@@ -10,14 +10,20 @@ import { hasAnySource, hasSource } from '../state/contextFunctions';
 import { makeKey } from '../common/translationKey';
 import i18next from 'i18next';
 
-class NameModel {
+export interface NameModel {
     type: string;
     suggestions: string;
 }
 
 export const ANY_NAMES = [ { type: "any", suggestions: "anything"} as NameModel ]
 
-export class SpeciesModel {
+export interface ISpecies {
+    id: Species;
+    name: string;
+    nameSuggestions: NameModel[];
+}
+
+export class SpeciesModel implements ISpecies {
     id: Species;
     name: string;
     eras: Era[];

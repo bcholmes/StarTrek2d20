@@ -34,9 +34,9 @@ export class NpcCharacterTypeModel {
             case NpcCharacterType.Ferengi:
                 return i18next.t('Species.ferengi.name');
             case NpcCharacterType.MinorPolity:
-                return "Minor Polity";
+                return i18next.t('NpcCharacterType.minorPolity');
             case NpcCharacterType.RogueRuffianMercenary:
-                return "Rogues, Ruffians, and Mercenaries";
+                return i18next.t('NpcCharacterType.rogueRuffianMercenary');
             default:
                 return this.name;
         }
