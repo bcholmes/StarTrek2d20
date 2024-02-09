@@ -59,7 +59,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                 </div>
 
                 <div className="row">
-                    <div className="col-md-6 my-4">
+                    <div className="col-md-6 mt-4">
                         <Header level={2}>{t('NpcConfigurationPage.npcType')}</Header>
 
                         <div className="my-4">
@@ -69,6 +69,21 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                                 onChange={(type) => this.setState((state) => ({...state, selectedNpcType: type as number })) }/>
                         </div>
 
+                    </div>
+
+                    <div className="col-md-6 mt-4">
+                        <Header level={2}>{t('Construct.other.characterType')}</Header>
+
+                        <div className="my-4">
+                            <DropDownSelect
+                                items={ NpcCharacterTypes.instance.types.map(t => new DropDownElement(t.type, t.localizedName )) }
+                                defaultValue={ this.state.selectedType?.type ?? "" }
+                                onChange={(type) => this.selectType(NpcCharacterTypes.instance.getType(type as NpcCharacterType) ) }/>
+                        </div>
+
+                    </div>
+
+                    <div className="col-md-6 mt-4">
                         <Header level={2} className="mt-5">{t('Construct.other.species')}</Header>
 
                         <div className="mt-4">
@@ -80,16 +95,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
 
                     </div>
 
-                    <div className="col-md-6 my-4">
-                        <Header level={2}>{t('Construct.other.characterType')}</Header>
-
-                        <div className="my-4">
-                            <DropDownSelect
-                                items={ NpcCharacterTypes.instance.types.map(t => new DropDownElement(t.type, t.localizedName )) }
-                                defaultValue={ this.state.selectedType?.type ?? "" }
-                                onChange={(type) => this.selectType(NpcCharacterTypes.instance.getType(type as NpcCharacterType) ) }/>
-                        </div>
-
+                    <div className="col-md-6 mt-4">
                         <Header level={2} className="mt-5">{t('NpcConfigurationPage.specialization')}</Header>
 
                         <div className="mt-4">

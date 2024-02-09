@@ -33,7 +33,8 @@ Broadly speaking, there are three types of text in the application:
    examples of these game-specific labels that appear in multiple places in the app. Most of these labels are
    translated; some screens have not been updated to make use of the translations.
 3. Reference data. For example, the names and text descriptions of species, roles, talents, etc. all fall in to
-   this category. This is probably the largest amount of text to deal with, and this work hasn't really started.
+   this category. This is probably the largest amount of text to deal with, and this work has started, but there's
+   still a lot to do.
 
 ### Process
 
@@ -50,12 +51,12 @@ likelihood of people helping out.
 
 When I'm making code changes, I download a
 [CSV copy](https://github.com/bcholmes/StarTrek2d20/blob/sta-complete/translation/translations.csv)
-of the spreadsheet. I then run a utility on the CSV to convert the CSV file in to a series of
+of the spreadsheet. I then run a utility to convert the CSV file in to a series of
 [translation.json](https://github.com/bcholmes/StarTrek2d20/blob/sta-complete/WebTools/src/i18n/locales/en/translations.json)
-files used by the app. The conversion is started manually, but the process of conversion is
-automated: I never manually change the translation.json files.
+files used by the app. The conversion is automated, but only happens when I manually trigger it:
+I never manually change the `translation.json` files.
 
-Because the translation.json files are tracked in git, I can diff the changes to see if something has
+Because the `translation.json` files are tracked in git, I can diff the changes to see if something has
 changed that I wasn't expecting to change.
 
 The next time I build and deploy the app, the converted text is picked up, and the new translations are

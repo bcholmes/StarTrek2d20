@@ -12,6 +12,7 @@
 
     "EraSelectionPage.eraInstruction": "Select which Era to play in. Ask your GM which Era to choose.",
 
+    "Home.title": "STA Character Creator",
     "Home.selection": "Select tool.",
     "Home.characterButton": "Characters & Starships",
     "Home.talentsButton": "Talents Overview",
@@ -1446,6 +1447,10 @@
 
     "Talent.advancedTransporters.soloDescription": "The ship is outfitted with dozens of transporter emitter array pads, allowing targeting scanners to lock on to their targets and destination more easily.",
 
+    "Talent.advisor": "Advisor",
+
+    "Talent.advisor.description": "Whenever you assist another character using your Command Discipline, the character being assisted may re-roll one d20.",
+
     "Talent.automatedDefenses": "Automated Defenses",
 
     "Talent.automatedDefenses.soloDescription": "The ship’s weapons systems can automatically lock on to a target and fire even if the crew is incapacitated or unavailable.",
@@ -1466,6 +1471,10 @@
 
     "Talent.cloakingDevice.soloDescription": "The vessel has a device that allows it to vanish from sensors. While cloaked, the vessel cannot attempt any attacks, nor can it be the target of an attack unless the attacker finds some way of detecting the cloaked vessel. While cloaked, a vessel’s shields are down.",
 
+    "Talent.closeProtection": "Close Protection",
+
+    "Talent.closeProtection.description": "When you make a successful Attack, you may spend one Momentum to protect a single ally within Close range. The next Attack against that ally before the start of your next turn increases in Difficulty by 1.",
+
     "Talent.commandShip": "Command Ship",
 
     "Talent.commandShip.soloDescription": "The ship has command and control systems allowing it to coordinate easily with allies during a crisis.",
@@ -1473,6 +1482,10 @@
     "Talent.culturalFlexibility": "Cultural Flexibility",
 
     "Talent.culturalFlexibility.description": "Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",
+
+    "Talent.defuseTheTension": "Defuse the Tension",
+
+    "Talent.defuseTheTension.description": "Whenever you attempt a Task to persuade someone not to resort to violence, you may add a bonus d20 to your dice pool.",
 
     "Talent.dedicatedSubspaceTranceiverArray": "Dedicated Subspace Tranceiver Array",
 
@@ -1509,6 +1522,14 @@
     "Talent.fastTargetingSystems": "Fast Targeting Systems",
 
     "Talent.fastTargetingSystems.soloDescription": "The ship’s targeting systems can lock weapons on target much faster and more accurately than other ships of its class, giving it an edge in battle.",
+
+    "Talent.flyBy": "Fly-By",
+
+    "Talent.flyBy.description": "Whenever you use the Swift Task Momentum Spend, you do not increase the Difficulty of the second Task if one of the Tasks you attempt is to pilot a vessel or vehicle.",
+
+    "Talent.followMyLead": "Follow My Lead",
+
+    "Talent.followMyLead.description": "Once per scene, when you succeed at a Task during combat or another perilous situation, you may spend one Determination. If you do, choose a single ally. The next Task that ally attempts counts as having assistance from you, using your Presence + Command.",
 
     "Talent.formerInitiate": "Former Initiate",
 
@@ -1558,6 +1579,10 @@
 
     "Talent.independentPhaserSupply.soloDescription": "The ship’s phasers use an independent power supply, rather than drawing directly from the ship’s other power sources.",
 
+    "Talent.interrogation": "Interrogation",
+
+    "Talent.interrogation.description": "When you succeed at a Task to coerce someone to reveal information in a social conflict, you will gain one bonus Momentum, which may only be spent on the Obtain Information Momentum Spend.",
+
     "Talent.joined": "Joined",
 
     "Talent.joined.description": "You have a symbiont, with lifetimes of memories to draw upon. Once per mission, you may declare that a former host had expertise in a relevant skill or field of study; you gain a single Focus for the remainder of the scene, as you draw upon those memories. Additionally, you gain a Trait with the name of the Symbiont; this reflects potential advantages of the Joining, the ability to perform rites and rituals to awaken past hosts’ memories, and the vulnerabilities inherent in the connection. Former Initiate cannot be taken if the character has the Joined Talent — they are mutually exclusive.",
@@ -1565,6 +1590,12 @@
     "Talent.kolinahr": "Kolinahr",
 
     "Talent.kolinahr.description": "You have undergone the ritual journey to purge all emotion. You reduce the Difficulty of all Tasks to resist coercion, mental intrusion, pain, and other mental attacks by two.",
+
+    "Talent.meanRightHook": "Mean Right Hook",
+
+    "Talent.meanRightHook.alias.klingonCore": "Warrior’s Strike",
+
+    "Talent.meanRightHook.description": "Your Unarmed Strike Attack has the Vicious 1 Damage Effect.",
 
     "Talent.mindMeld": "Mind-Meld",
 
@@ -1586,6 +1617,10 @@
 
     "Talent.orbExperience.description": "You have received a vision from the Bajoran Prophets, through one of the Orbs. This rare experience, though confusing at first, has shaped your life and outlook. You have one additional Value, reflecting the insights you received from the experience. The first time this Value is Challenged, roll 1[D]; if an Effect is rolled, then some foretold element of the Orb Experience has come to pass, and the Value is not crossed out as it would normally be.",
 
+    "Talent.packTactics": "Pack Tactics",
+
+    "Talent.packTactics.description": "Whenever you assist another character during combat, the character you assisted gains one bonus Momentum if they succeed.",
+
     "Talent.parentFigure": "Parent Figure",
 
     "Talent.parentFigure.description": "You have a large family, with many children, nieces, and nephews, and you’ve learned how to coordinate even the most unruly and fractious of groups when necessary. When attempting or assisting a Task, and two or more other characters are involved in the Task, the first Complication generated on the Task — either by the character attempting the Task, or one of the assistants — may be ignored.",
@@ -1594,13 +1629,25 @@
 
     "Talent.pointDefenseSystem.soloDescription": "The ship is equipped with a system of small energy weapon emitters that operates independently from the main weapons systems. When a torpedo targets the ship, these emitters start firing in the direction it is traveling from, potentially destroying it before it impacts the shields or the ship’s hull. This system only works at subwarp speeds.",
 
+    "Talent.preciseEvasion": "Precise Evasion",
+
+    "Talent.preciseEvasion.description": "Whenever you succeed at the Evasive Action Task, you may spend two Momentum. If you do, the ship does not suffer the increased Difficulty for attacks normally caused by Evasive Action.",
+
     "Talent.proudAndHonorable": "Proud and Honorable",
 
     "Talent.proudAndHonorable.description": "Your personal integrity is unimpeachable, and you will not willingly break a promise made. Whenever you attempt a Task to resist being coerced into breaking a promise, betraying your allies, or otherwise acting dishonorably, you reduce the Difficulty by 1.",
 
+    "Talent.pushTheLimits": "Push the Limits",
+
+    "Talent.pushTheLimits.description": "When you attempt a Conn Task that has increased in Difficulty due to environmental conditions or damage to the engines, reduce the Difficulty by 1, to a minimum of 1.",
+
     "Talent.quantumTorpedoes": "Quantum Torpedoes",
 
     "Talent.quantumTorpedoes.soloDescription": "The vessel has been equipped with the latest in ship-to-ship munitions: quantum torpedoes. The ship has quantum torpedoes in addition to any other form of torpedo it carries.",
+
+    "Talent.quickToAction": "Quick to Action",
+
+    "Talent.quickToAction.description": "During the first round of any combat, you and your allies may ignore the normal cost to Retain the Initiative.",
 
     "Talent.rapidFireTorpedoLauncher": "Rapid-Fire Torpedo Launcher",
 
@@ -1642,6 +1689,10 @@
 
     "Talent.spiritOfDiscovery.description": "You have the drive, spirit, and courage to voyage into the unknown. You may spend one Determination to add three points to the group Momentum pool. The normal conditions for spending Determination still apply.",
 
+    "Talent.starshipExpert": "Starship Expert",
+
+    "Talent.starshipExpert.description": "Whenever you succeed at a Conn Task to identify a type of starship, or to try and understand an unknown form of Starship, you gain one bonus Momentum, which may only be used on the Obtain Information Momentum Spend, or to pay part of the cost of the Create Advantage Momentum Spend (where the Advantage must represent some form of known or observed weakness in the ship being studied).",
+
     "Talent.strongPagh": "Strong Pagh",
 
     "Talent.strongPagh.description": "You believe profoundly in the Prophets, and rely heavily upon that faith to see you through hardship. Whenever you attempt a Task to resist being coerced or threatened, you reduce the Difficulty of that Task by 1.",
@@ -1649,6 +1700,12 @@
     "Talent.sturdy": "Sturdy",
 
     "Talent.sturdy.description": "You have a blend of physical resilience and mental fortitude such that you’re difficult to subdue. You reduce the cost to resist being knocked prone by the Knockdown damage effect by one, to a minimum of 0, and gain +1 Resistance against all non-lethal attacks.",
+
+    "Talent.supervisor": "Supervisor",
+
+    "Talent.supervisor.alias.klingonCore": "War Leader",
+
+    "Talent.supervisor.description": "The ship’s Crew Support increases by one. This increase is cumulative if multiple Main Characters in the group select it.",
 
     "Talent.tachyonDetectionField": "Tachyon Detection Field",
 

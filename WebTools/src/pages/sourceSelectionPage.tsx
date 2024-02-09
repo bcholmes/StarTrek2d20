@@ -45,11 +45,11 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
                 hasUnavailableSources = hasUnavailableSources || !s.available;
                 const className = s.available ? (this.hasSource(s.id) ? "source source-selected" : "source") : "source unavailable";
                 return (
-                    <div key={s.id} className={className} onClick={() => { if (s.available) { this.sourceChanged(s.id); } } } title={s.localizedName}>{s.localizedName}</div>
+                    <div key={s.id} className={className} onClick={() => { if (s.available) { this.sourceChanged(s.id); } } } title={s.localizedName} role="button">{s.localizedName}</div>
                 );
             });
             return (<div key={'source-type-' + t.type}>
-                <div className="text-white small text-center" style={{overflow: 'hidden', textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{t.localizedName}</div>
+                <div className="text-white small text-center" style={{overflow: 'hidden', textOverflow: "ellipsis", whiteSpace: "nowrap" }} role="button">{t.localizedName}</div>
                 {list}
             </div>)
         });
@@ -62,8 +62,8 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
             </p>
             {note}
             <div className="d-flex flex-wrap">
-                <div className="source source-emphasis" onClick={() => { this.toggleSources(true); } }>{t('Common.button.selectAll')}</div>
-                <div className="source source-emphasis" onClick={() => { this.toggleSources(false); } }>{t('Common.button.selectNone')}</div>
+                <div className="source source-emphasis" onClick={() => { this.toggleSources(true); } } role="button">{t('Common.button.selectAll')}</div>
+                <div className="source source-emphasis" onClick={() => { this.toggleSources(false); } } role="button">{t('Common.button.selectNone')}</div>
             </div>
             <div className="d-flex flex-wrap mt-3 mb-3">
                 {sources}

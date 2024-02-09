@@ -6,6 +6,7 @@ import LanguageNotice from '../components/languageNotice';
 import { isEnglishDefault } from '../i18n/config';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
+import { Header } from '../components/header';
 
 enum Tool {
     CharacterGenerator,
@@ -41,8 +42,11 @@ const SelectionPage = () => {
                     <li className="breadcrumb-item active" aria-current="page">{t('Page.title.home')}</li>
                 </ol>
             </nav>
-            <div className="row">
-                <main className="col-md-8">
+            <main className="row">
+                <div className="col-12">
+                    <Header>{t('Home.title')}</Header>
+                </div>
+                <div className="col-md-8">
                     <p className="mt-3">
                         {t('Home.selection')}
                     </p>
@@ -51,11 +55,11 @@ const SelectionPage = () => {
                         <Button text={t('Home.talentsButton')} buttonType={true} className="btn btn-primary mt-4" onClick={() => { selectTool(Tool.TalentsOverview); }} />
                         <Button text={t('Home.tokenCreator')} buttonType={true} className="btn btn-primary mt-4" onClick={() => { selectTool(Tool.TokenCreator); }} />
                     </div>
-                </main>
+                </div>
                 <section className="col-md-4">
                     {isEnglishDefault() ? undefined : (<LanguageNotice />) }
                 </section>
-            </div>
+            </main>
         </div>
     );
 }

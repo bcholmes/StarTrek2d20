@@ -8,7 +8,7 @@ import {Skill} from '../helpers/skills';
 import {Button} from '../components/button';
 import {Dialog} from '../components/dialog';
 import { Species } from '../helpers/speciesEnum';
-import { Attribute } from '../helpers/attributes';
+import { Attribute, AttributesHelper } from '../helpers/attributes';
 import { Header } from '../components/header';
 import { useTranslation } from 'react-i18next';
 import { ValueRandomTable } from '../solo/table/valueRandomTable';
@@ -105,9 +105,14 @@ const EnvironmentDetailsPage: React.FC<ICharacterProperties> = ({character}) => 
         : character.type);
     let attributes = environment.attributes;
     if (environment.id === Environment.Homeworld) {
-        let species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
-        attributes = species.attributes;
-    } else if (environment.id === Environment.AnotherSpeciesWorld && character.environmentStep?.otherSpecies) {
+        let speciesType = character.speciesStep?.species;
+        if (speciesType === Species.Custom) {
+            attributes = AttributesHelper.getAllAttributes();
+        } else {
+            let species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
+            attributes = species.attributes;
+        }
+    } else if (environment.id === Environment.AnotherSpeciesWorld && character.environmentStep?.otherSpecies != null) {
         let species = SpeciesHelper.getSpeciesByType(character.environmentStep?.otherSpecies);
         attributes = species?.attributes;
     }
