@@ -1,4 +1,3 @@
-import { TableCollection } from "../table/model/table"
 import TableMarshaller from "../table/model/tableMarshaller";
 import store from "./store"
 
