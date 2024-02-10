@@ -44,6 +44,8 @@ class SpeciesRestrictions {
             "#f1eae4", "#f4f3f1", "#e1ddda"];
         } else if (species === Species.Efrosian) {
             return ["#ffd9c6", "#d8b092", "#e1ad88", "#d69972", "#d18352", "#b06e46", "#9e603b", "#834b2b", "#70432c"];
+        } else if (species === Species.Jelna) {
+            return ["#f5e5d3", "#f0dcca", "#decbbe"];
         } else if (species === Species.JemHadar) {
             return ["#b7b7b1", "#a59f95", "#86828a", "#7c7972"];
         } else if (species === Species.Reman) {
@@ -132,7 +134,7 @@ class SpeciesRestrictions {
     }
 
     static getHairTypes(species: Species) {
-        if (this.isBald(species) || SpeciesRestrictions.isRubberHeaded(species)) {
+        if (species !== Species.Jelna && (this.isBald(species) || SpeciesRestrictions.isRubberHeaded(species))) {
             return [ HairType.Bald ];
         } else if (species === Species.Andorian) {
             // the corn rows don't look right with the Antennae
