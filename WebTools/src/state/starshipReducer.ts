@@ -10,6 +10,13 @@ interface StarshipState {
 const starshipReducer = (state: StarshipState = { starship: undefined, workflow: undefined }, action) => {
     switch (action.type) {
         case CREATE_NEW_STARSHIP: {
+            let s = action.payload.starship;
+            return {
+                ...state,
+                starship: s
+            }
+        }
+        case CREATE_NEW_STARSHIP: {
             let s = new Starship();
             s.type = action.payload.type;
             s.serviceYear = action.payload.serviceYear;

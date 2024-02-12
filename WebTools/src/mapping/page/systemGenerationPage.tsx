@@ -55,8 +55,8 @@ export const SystemGenerationPage = () => {
             <DropDownSelect onChange={(e) => selectRegion(e as SpaceRegion)} defaultValue={region} items={regionOptions()} />
             </div>
             {renderSectorTypeSection()}
-            <div className="button-container">
-                <Button text="Generate Sector" buttonType={true} className="button" onClick={() => generateSystem()} />
+            <div className="button-container mt-4">
+                <Button text="Generate Sector" buttonType={true} className="btn btn-primary" onClick={() => generateSystem()} />
             </div>
         </div>
     );

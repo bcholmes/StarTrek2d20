@@ -10,3 +10,9 @@ export const characterMapStateToProperties = (state, ownProps) => {
     };
 }
 
+export const starshipMapStateToProperties = (state, ownProps) => {
+    return {
+        character: state.starship?.starship
+    };
+}
+

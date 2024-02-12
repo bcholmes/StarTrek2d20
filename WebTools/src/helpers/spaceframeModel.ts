@@ -2,11 +2,22 @@ import i18next from "i18next";
 import { CharacterType } from "../common/characterType";
 import { Starship } from "../common/starship";
 import { makeKey } from "../common/translationKey";
-import { IConstructPrerequisite, ServiceYearPrerequisite, StarshipTypePrerequisite } from "./prerequisite";
+import { IConstructPrerequisite, NeverPrerequisite, ServiceYearPrerequisite, StarshipTypePrerequisite } from "./prerequisite";
 import { Source } from "./sources";
 import { Spaceframe } from "./spaceframeEnum";
 import { SourcePrerequisite } from "./spaceframes";
 import { TalentSelection } from "./talentSelection";
+
+
+export class SoloSpaceframeStats {
+    departments: number[];
+    systems: number[];
+
+    constructor(systems: number[], departments: number[]) {
+        this.departments = departments;
+        this.systems = systems;
+    }
+}
 
 export class SpaceframeModel {
     id: Spaceframe|null;
@@ -21,11 +32,13 @@ export class SpaceframeModel {
     talents: TalentSelection[];
     additionalTraits: string[];
     maxServiceYear: number;
+    soloStats?: SoloSpaceframeStats;
 
     constructor(id: Spaceframe|null, type: CharacterType, name: string, serviceYear: number,
         prerequisites: IConstructPrerequisite<Starship>[], systems: number[], departments: number[],
         scale: number, attacks: string[], talents: TalentSelection[],
-        additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999) {
+        additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999,
+        soloStats?: SoloSpaceframeStats) {
 
         this.id = id;
         this.type = type;
@@ -39,6 +52,7 @@ export class SpaceframeModel {
         this.talents = talents;
         this.additionalTraits = additionalTraits;
         this.maxServiceYear = maxServiceYear;
+        this.soloStats = soloStats;
     }
 
     get isMissionPodAvailable() {
@@ -88,11 +102,16 @@ export class SpaceframeModel {
     }
 
     static createStandardSpaceframe(id: Spaceframe, type: CharacterType, name: string, serviceYear: number, source: Source[], systems: number[], departments: number[],
-        scale: number, attacks: string[], talents: TalentSelection[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999) {
+        scale: number, attacks: string[], talents: TalentSelection[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999,
+        soloStats?: SoloSpaceframeStats) {
         let sourcePrerequisite = new SourcePrerequisite();
         sourcePrerequisite.sources = source;
-        let prerequisites = [ sourcePrerequisite, new StarshipTypePrerequisite(type), new ServiceYearPrerequisite(serviceYear) ];
-        return new SpaceframeModel(id, type, name, serviceYear, prerequisites, systems, departments, scale, attacks, talents, additionalTraits, maxServiceYear );
+        let prerequisites: IConstructPrerequisite<Starship>[] = [
+            sourcePrerequisite, new StarshipTypePrerequisite(type), new ServiceYearPrerequisite(serviceYear) ];
+        if (serviceYear > 3100) {
+            prerequisites.push(new NeverPrerequisite());
+        }
+        return new SpaceframeModel(id, type, name, serviceYear, prerequisites, systems, departments, scale, attacks, talents, additionalTraits, maxServiceYear, soloStats );
     }
 
     static createCustomSpaceframe(type: CharacterType, serviceYear: number,

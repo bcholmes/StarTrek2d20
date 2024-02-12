@@ -125,4 +125,11 @@ export enum Spaceframe {
     BortasBir,
     Sech,
     SarcophagusShip,
+
+    // Captain's Log
+    Angelou,
+    Eisenberg,
+    Friendship,
+    Janeway,
+    Kirk,
 }

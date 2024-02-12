@@ -7,12 +7,19 @@ import { Button } from "../../components/button";
 import store from "../../state/store";
 import { setCharacter } from "../../state/characterActions";
 import { Character } from "../../common/character";
+import { Starship } from "../../common/starship";
+import { createStarship } from "../../state/starshipActions";
 
 const SoloConstructTypePage = () => {
 
     const createCharacter = () => {
         store.dispatch(setCharacter(Character.createSoloCharacter()));
         goToPage(PageIdentity.SoloCharacterEra);
+    }
+
+    const createSoloStarship = () => {
+        store.dispatch(createStarship(Starship.createSoloStarship()));
+        goToPage(PageIdentity.SoloStarshipEra);
     }
 
     const goToPage = (page: PageIdentity) => {
@@ -35,7 +42,7 @@ const SoloConstructTypePage = () => {
 
                 <div className="button-column">
                     <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => createCharacter() } >{t('SoloConstructTypePage.character')}</Button>
-                    <Button buttonType={true} className="btn btn-primary mt-4" enabled={false} onClick={() => {  } } >{t('SoloConstructTypePage.starship')}</Button>
+                    <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => createSoloStarship() } >{t('SoloConstructTypePage.starship')}</Button>
                 </div>
             </div>
         </div>

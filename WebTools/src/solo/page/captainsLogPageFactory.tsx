@@ -1,4 +1,4 @@
-import { ConstructType } from "../../common/construct";
+import { ConstructType, Stereotype } from "../../common/construct";
 import { IPageFactoryRegistry } from "../../pages/pageFactory";
 import { PageIdentity } from "../../pages/pageIdentity";
 import SoloConstructTypePage from "./soloConstructTypePage";
@@ -16,6 +16,7 @@ import SoloCareerLengthDetailsPage from "./soloCareerLengthDetailsPage";
 import SoloCareerEventDetailPage from "./soloCareerEventDetailPage";
 import SoloFinishingTouchesPage from "./soloFinishingTouchesPage";
 import SoloFinalPage from "./soloFinalPage";
+import SoloStarshipSpaceframePage from "./soloStarshipSpaceframePage";
 
 export class CaptainsLogPageFactory implements IPageFactoryRegistry {
 
@@ -34,7 +35,7 @@ export class CaptainsLogPageFactory implements IPageFactoryRegistry {
         this.factories = {};
 
         this.factories[PageIdentity.SoloConstructType] = () => <SoloConstructTypePage />;
-        this.factories[PageIdentity.SoloCharacterEra] = () => <SoloEraSelectionPage type={ConstructType.Character} />;
+        this.factories[PageIdentity.SoloCharacterEra] = () => <SoloEraSelectionPage stereotype={Stereotype.SoloCharacter} />;
         this.factories[PageIdentity.SoloSpecies] = () => <SoloSpeciesPage />;
         this.factories[PageIdentity.SoloSpeciesDetails] = () => <SoloSpeciesDetailsPage />;
         this.factories[PageIdentity.SoloEarlyOutlook] = () => <SoloEarlyOutlookPage />;
@@ -49,6 +50,10 @@ export class CaptainsLogPageFactory implements IPageFactoryRegistry {
         this.factories[PageIdentity.SoloCareerEventDetails2] = () => <SoloCareerEventDetailPage context={StepContext.CareerEvent2} />;
         this.factories[PageIdentity.SoloFinishingTouches] = () => <SoloFinishingTouchesPage />;
         this.factories[PageIdentity.SoloFinal] = () => <SoloFinalPage />;
+
+        this.factories[PageIdentity.SoloStarshipEra] = () => <SoloEraSelectionPage stereotype={Stereotype.SoloStarship} />;
+        this.factories[PageIdentity.SoloStarshipSpaceframe] = () => <SoloStarshipSpaceframePage />;
+
     }
 
     findFactory(page: PageIdentity) {

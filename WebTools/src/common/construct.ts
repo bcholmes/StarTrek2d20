@@ -12,7 +12,8 @@ export enum Stereotype {
     SoloCharacter,
     SupportingCharacter,
     Npc,
-    Starship
+    Starship,
+    SoloStarship
 }
 
 export abstract class Construct implements IConstruct {

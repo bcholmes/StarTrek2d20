@@ -87,6 +87,10 @@ export enum PageIdentity {
     SoloFinishingTouches,
     SoloFinal,
 
+    SoloStarshipEra,
+    SoloStarshipSpaceframe,
+
+
     TableList,
     ViewTable,
     ImportTable,

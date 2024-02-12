@@ -8,16 +8,25 @@ import { navigateTo, Navigation } from '../../common/navigator';
 import { PageIdentity } from '../../pages/pageIdentity';
 import { setEra } from '../../state/contextActions';
 import store from '../../state/store';
-import { eraRandomTable } from '../table/eraRandomTable';
+import { eraRandomTable, eraRandomTableForStarships } from '../table/eraRandomTable';
+import { Stereotype } from '../../common/construct';
 
-const SoloEraSelectionPage = ({type}) => {
+interface ISoloEraSelectionPage {
+    stereotype: Stereotype;
+}
+
+const SoloEraSelectionPage: React.FC<ISoloEraSelectionPage> = ({stereotype}) => {
 
     const { t } = useTranslation();
     const [randomEra, setRandomEra] = useState(null);
 
     const eraSelected = (era: Era)=> {
         store.dispatch(setEra(era));
-        Navigation.navigateToPage(PageIdentity.SoloSpecies);
+        if (stereotype === Stereotype.SoloStarship) {
+            Navigation.navigateToPage(PageIdentity.SoloStarshipSpaceframe);
+        } else {
+            Navigation.navigateToPage(PageIdentity.SoloSpecies);
+        }
     }
 
     const toTableRow = (e: EraModel, i: number) => {
@@ -31,7 +40,9 @@ const SoloEraSelectionPage = ({type}) => {
 
     const eras = randomEra != null
         ? toTableRow(ErasHelper.getEra(randomEra), 0)
-        : ErasHelper.getBasicEras().map((e, i) => toTableRow(e, i));
+        : (stereotype === Stereotype.SoloStarship
+            ? ErasHelper.getEras().map((e, i) => toTableRow(e, i))
+            : ErasHelper.getBasicEras().map((e, i) => toTableRow(e, i)));
 
     return (
         <div className="page container ms-0">
@@ -47,7 +58,8 @@ const SoloEraSelectionPage = ({type}) => {
                 {t('SoloEraSelectionPage.instruction')}
             </p>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomEra( eraRandomTable()) }>
+                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() =>
+                    setRandomEra( stereotype === Stereotype.SoloStarship ? eraRandomTableForStarships() : eraRandomTable()) }>
                     <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
                 {randomEra != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomEra(null)} >{t('Common.button.showAll')}</Button>) : undefined}

@@ -270,6 +270,17 @@ export class SpecializationPrerequisite implements IConstructPrerequisite<Charac
     }
 }
 
+export class NeverPrerequisite implements IConstructPrerequisite<Starship> {
+
+    isPrerequisiteFulfilled(c: Starship) {
+        return false;
+    }
+
+    describe(): string {
+        return "";
+    }
+}
+
 export class AllOfPrerequisite implements IConstructPrerequisite<Character> {
     private prequisites: IConstructPrerequisite<Character>[];
 

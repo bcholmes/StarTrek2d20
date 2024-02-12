@@ -88,6 +88,7 @@ export class ShipBuildTypeModel {
 }
 
 export class Starship extends Construct {
+    stereotype: Stereotype = Stereotype.Starship;
     buildType: ShipBuildType = ShipBuildType.Starship;
     registry: string = "";
     traits: string = "";
@@ -105,6 +106,12 @@ export class Starship extends Construct {
     constructor() {
         super(Stereotype.Starship);
         this.name = "";
+    }
+
+    static createSoloStarship() {
+        const result = new Starship();
+        result.stereotype = Stereotype.SoloStarship;
+        return result;
     }
 
     get spaceframeModel() {

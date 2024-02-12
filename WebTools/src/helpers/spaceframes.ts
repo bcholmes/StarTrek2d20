@@ -1,10 +1,11 @@
 ﻿import { CharacterType } from '../common/characterType';
 import { Starship } from '../common/starship';
 import { hasAnySource } from '../state/contextFunctions';
+import { Era } from './eras';
 import { IConstructPrerequisite, ServiceYearPrerequisite } from './prerequisite';
 import {Source} from './sources';
 import { Spaceframe } from './spaceframeEnum';
-import { SpaceframeModel } from './spaceframeModel';
+import { SoloSpaceframeStats, SpaceframeModel } from './spaceframeModel';
 import { TalentSelection } from './talentSelection';
 
 export class SourcePrerequisite implements IConstructPrerequisite<Starship> {
@@ -43,7 +44,7 @@ export class SpaceframeHelper {
 
     private static _instance;
 
-    static instance() {
+    static instance(): SpaceframeHelper {
         if (SpaceframeHelper._instance == null) {
             SpaceframeHelper._instance = new SpaceframeHelper();
         }
@@ -857,7 +858,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Polarized Hull Plating")
             ],
             [ "UESPA Civilian Starship" ],
-            2399),
+            2399,
+            new SoloSpaceframeStats(
+                [5, 5, 6, 7, 8, 4],
+                [1, 3, 1, 4, 1, 4]
+            )),
         [Spaceframe.Delta]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Delta,
             CharacterType.Starfleet,
@@ -877,7 +882,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Polarized Hull Plating")
             ],
             [ "UESPA Starship" ],
-            2190),
+            2190,
+            new SoloSpaceframeStats(
+                [6, 5, 6, 6, 5, 7],
+                [2, 3, 4, 3, 1, 2]
+            )),
         [Spaceframe.IntrepidType]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.IntrepidType,
             CharacterType.Starfleet,
@@ -897,7 +906,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Polarized Hull Plating")
             ],
             [ "UESPA Starship" ],
-            2190),
+            2190,
+            new SoloSpaceframeStats(
+                [6, 5, 7, 6, 5, 5],
+                [2, 3, 3, 2, 3, 1]
+            )),
         [Spaceframe.Antares]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Antares,
             CharacterType.Starfleet,
@@ -1338,7 +1351,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Efficiency"),
             ],
             [ "Federation Starship" ],
-            2269),
+            2269,
+            new SoloSpaceframeStats(
+                [7, 7, 7, 8, 10, 10],
+                [2, 2, 1, 5, 4, 2]
+            )),
         [Spaceframe.Defiant_UP]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Defiant_UP,
             CharacterType.Starfleet,
@@ -1504,7 +1521,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Grappler Cables"),
             ],
             [ "Federation Starship" ],
-            2170),
+            2170,
+            new SoloSpaceframeStats(
+                [6, 6, 6, 6, 6, 6],
+                [3, 2, 2, 3, 3, 2]
+            )),
         [Spaceframe.Oberth_UP]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Oberth_UP,
             CharacterType.Starfleet,
@@ -2326,6 +2347,121 @@ export class SpaceframeHelper {
             2269),
 
 
+
+        [Spaceframe.Angelou]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Angelou,
+            CharacterType.Starfleet,
+            "Angelou Class",
+            3188,
+            [ Source.CaptainsLog ],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            5,
+            [
+            ],
+            [
+            ],
+            [
+                "Federation Starship",
+                "IMT-C"
+            ],
+            9999,
+            new SoloSpaceframeStats(
+                [7, 6, 6, 7, 8, 6],
+                [2, 2, 2, 3, 3, 3]
+            )),
+        [Spaceframe.Eisenberg]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Eisenberg,
+            CharacterType.Starfleet,
+            "Eisenberg Class",
+            3188,
+            [ Source.CaptainsLog ],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            4,
+            [
+            ],
+            [
+            ],
+            [
+                "Federation Starship",
+                "IMT-C"
+            ],
+            9999,
+            new SoloSpaceframeStats(
+                [7, 6, 6, 7, 8, 6],
+                [2, 2, 2, 3, 3, 3]
+            )),
+        [Spaceframe.Friendship]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Friendship,
+            CharacterType.Starfleet,
+            "Friendship Class",
+            3188,
+            [ Source.CaptainsLog ],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            4,
+            [
+            ],
+            [
+            ],
+            [
+                "Federation Starship",
+                "IMT-C"
+            ],
+            9999,
+            new SoloSpaceframeStats(
+                [6, 6, 7, 7, 6, 6],
+                [2, 3, 2, 3, 3, 2]
+            )),
+        [Spaceframe.Janeway]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Janeway,
+            CharacterType.Starfleet,
+            "Janeway Class",
+            3188,
+            [ Source.CaptainsLog ],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            4,
+            [
+            ],
+            [
+            ],
+            [
+                "Federation Starship",
+                "IMT-C"
+            ],
+            9999,
+            new SoloSpaceframeStats(
+                [7, 6, 7, 8, 6, 5],
+                [2, 2, 2, 3, 4, 2]
+            )),
+        [Spaceframe.Kirk]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Kirk,
+            CharacterType.Starfleet,
+            "Kirk Class",
+            3188,
+            [ Source.CaptainsLog ],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            4,
+            [
+            ],
+            [
+            ],
+            [
+                "Federation Starship",
+                "IMT-C"
+            ],
+            9999,
+            new SoloSpaceframeStats(
+                [6, 6, 7, 6, 6, 8],
+                [3, 2, 3, 3, 2, 2]
+            )),
+
+
+
+
         //[Spaceframe.]: SpaceframeModel.createStandardSpaceframe(
         //    CharacterType.Starfleet,
         //    "",
@@ -2368,5 +2504,38 @@ export class SpaceframeHelper {
             }
         }
         return result;
+    }
+
+    soloSpaceframesByEra(era: Era) : Spaceframe[] {
+        switch (era) {
+            case Era.Enterprise:
+                return [ Spaceframe.Daedalus_UP, Spaceframe.IntrepidType, Spaceframe.JClassYClass, Spaceframe.NX, Spaceframe.Delta ];
+            case Era.OriginalSeries:
+                return [
+                        Spaceframe.Antares,
+                        Spaceframe.Archer,
+                        Spaceframe.Cardenas,
+                        Spaceframe.Constellation_UP,
+                        Spaceframe.Constitution_UP,
+                        Spaceframe.Crossfield,
+                        Spaceframe.Engle,
+                        Spaceframe.Excelsior_UP,
+                        Spaceframe.Hiawatha,
+                        Spaceframe.Hoover,
+                        Spaceframe.Magee,
+                        Spaceframe.Malachowski,
+                        Spaceframe.Miranda_UP,
+                        Spaceframe.Nimitz,
+                        Spaceframe.Oberth_UP,
+                        Spaceframe.Hermes,
+                        Spaceframe.Shepard,
+                        Spaceframe.Soyuz,
+                        Spaceframe.Sydney,
+                        Spaceframe.Walker,
+                ];
+            case Era.Discovery32:
+            default:
+                return [ Spaceframe.Angelou, Spaceframe.Eisenberg, Spaceframe.Friendship, Spaceframe.Janeway, Spaceframe.Kirk ];
+        }
     }
 }

@@ -1,5 +1,5 @@
 import { CharacterType } from "../common/characterType";
-import { ShipBuildType, ShipTalentDetailSelection, SimpleStats } from "../common/starship";
+import { ShipBuildType, ShipTalentDetailSelection, SimpleStats, Starship } from "../common/starship";
 import { Department } from "../helpers/departments";
 import { MissionPodModel } from "../helpers/missionPods";
 import { MissionProfileModel } from "../helpers/missionProfiles";
@@ -10,6 +10,7 @@ import { Weapon } from "../helpers/weapons";
 import { ShipBuildWorkflow } from "../starship/model/shipBuildWorkflow";
 
 export const CREATE_NEW_STARSHIP = "CREATE_NEW_STARSHIP";
+export const CREATE_STARSHIP = "CREATE_STARSHIP";
 export const CHANGE_STARSHIP_SCALE = "CHANGE_STARSHIP_SCALE";
 export const CHANGE_STARSHIP_SPACEFRAME_SCALE = "CHANGE_STARSHIP_SPACEFRAME_SCALE";
 export const CHANGE_STARSHIP_SPACEFRAME_CLASS_NAME = "CHANGE_STARSHIP_SPACEFRAME_CLASS_NAME";
@@ -36,6 +37,14 @@ export const ADD_STARSHIP_TALENT_SELECTION = "ADD_STARSHIP_TALENT_SELECTION";
 export const REMOVE_STARSHIP_TALENT_SELECTION = "REMOVE_STARSHIP_TALENT_SELECTION";
 export const REMOVE_ALL_STARSHIP_TALENT_SELECTION = "REMOVE_ALL_STARSHIP_TALENT_SELECTION";
 export const DELETE_STARSHIP_REFIT = "DELETE_STARSHIP_REFIT";
+
+export function createStarship(starship: Starship) {
+    let payload = { starship: Starship }
+    return {
+        type: CREATE_STARSHIP,
+        payload: payload
+     }
+ }
 
 export function createNewStarship(type: CharacterType, serviceYear?: number, simple: SimpleStats = undefined, workflow?: ShipBuildWorkflow,
         buildType: ShipBuildType = ShipBuildType.Starship) {
