@@ -241,9 +241,13 @@ export class Starship extends Construct {
     getBaseSystem(system: System) {
         let result = 0;
         if (this.spaceframeModel) {
-            result += this.spaceframeModel.systems[system];
-            if (this.spaceframeModel.isMissionPodAvailable && this.missionPodModel) {
-                result += this.missionPodModel.systems[system];
+            if (this.stereotype === Stereotype.SoloStarship) {
+                result += this.spaceframeModel.soloStats?.systems[system];
+            } else {
+                result += this.spaceframeModel.systems[system];
+                if (this.spaceframeModel.isMissionPodAvailable && this.missionPodModel) {
+                    result += this.missionPodModel.systems[system];
+                }
             }
         } else if (this.simpleStats != null) {
             result = this.simpleStats.systems[system];
@@ -259,17 +263,17 @@ export class Starship extends Construct {
     getTalentNameList() {
         let talents = [];
 
-        if (this.spaceframeModel) {
+        if (this.spaceframeModel && this.stereotype !== Stereotype.SoloStarship) {
             talents = [...this.spaceframeModel.talents.map(t => { return t.description; })];
         }
 
-        if (this.profileTalent) {
+        if (this.profileTalent && this.stereotype !== Stereotype.SoloStarship) {
             talents.push(this.profileTalent.name);
         }
         this.additionalTalents.forEach(t => {
             talents.push(t.name);
         });
-        if (this.missionPodModel) {
+        if (this.missionPodModel && this.stereotype !== Stereotype.SoloStarship) {
             this.missionPodModel.talents.forEach(t => {
                 talents.push(t.name);
             });
@@ -450,20 +454,26 @@ export class Starship extends Construct {
             const missionPod = this.missionPodModel;
             const profile = this.missionProfileModel;
 
-            frame.departments.forEach((d, i) => {
-                result[i] = d;
-            });
-
-            if (missionPod) {
-                missionPod.departments.forEach((d, i) => {
-                    result[i] += d;
+            if (this.stereotype === Stereotype.SoloStarship) {
+                frame.soloStats?.departments.forEach((d, i) => {
+                    result[i] = d;
                 });
-            }
-
-            if (this.missionProfileModel !== undefined) {
-                profile.departments.forEach((d, i) => {
-                    result[i] += d;
+            } else {
+                frame.departments.forEach((d, i) => {
+                    result[i] = d;
                 });
+
+                if (missionPod) {
+                    missionPod.departments.forEach((d, i) => {
+                        result[i] += d;
+                    });
+                }
+
+                if (this.missionProfileModel !== undefined) {
+                    profile.departments.forEach((d, i) => {
+                        result[i] += d;
+                    });
+                }
             }
         } else if (this.simpleStats != null) {
             allDepartments().forEach(d => result[d] = this.simpleStats.departments[d]);
@@ -487,6 +497,7 @@ export class Starship extends Construct {
     public copy(): Starship {
         let result = new Starship();
         result.type = this.type;
+        result.stereotype = this.stereotype;
         result.buildType = this.buildType;
         result.name = this.name;
         result.registry = this.registry;

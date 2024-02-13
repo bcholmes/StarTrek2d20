@@ -39,8 +39,8 @@ const CareerLengthPage: React.FC<ICharacterProperties> = ({character}) => {
             <tr key={i} onClick={() => { if (Window.isCompact()) careerLengthSelected(careerLength); }}>
                 <td className="selection-header">{careerLength.localizedName}</td>
                 <td className="text-end"><Button buttonType={true} className="btn btn-primary btn-sm"
-                    text={t('Common.button.select')} onClick={() => { careerLengthSelected(careerLength) }}
-                /></td>
+                    onClick={() => { careerLengthSelected(careerLength) }}
+                >{t('Common.button.select')}</Button></td>
             </tr>
         );
     }

@@ -100,7 +100,7 @@ const SoloEarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}
                 </div>
             </div>
             <div className='text-end mt-4'>
-                <Button text={t('Common.button.next')} buttonType={true} className="btn btn-primary" onClick={() => navigateToNextPage() }/>
+                <Button buttonType={true} className="btn btn-primary" onClick={() => navigateToNextPage() }>{t('Common.button.next')}</Button>
             </div>
         </div>);
 }

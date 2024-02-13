@@ -331,8 +331,8 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
                 {renderAssignment(roleList)}
                 <AllCharacterValues />
                 <div className="button-container mb-5">
-                    <Button text={t('Common.button.exportPdf')} className="button-small me-2" onClick={() => showDialog() }  buttonType={true} />
-                    <Button text={t('Common.button.view')} className="button-small me-2" onClick={() => showViewPage() } buttonType={true} />
+                    <Button className="button-small me-2" onClick={() => showDialog() }  buttonType={true}>{t('Common.button.exportPdf')}</Button>
+                    <Button className="button-small me-2" onClick={() => showViewPage() } buttonType={true}>{t('Common.button.view')}</Button>
                 </div>
             </main>
         </div>

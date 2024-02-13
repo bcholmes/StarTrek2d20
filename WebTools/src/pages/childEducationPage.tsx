@@ -19,13 +19,15 @@ interface ITrackSelectionProperties {
 
 const AgeSelection : React.FC<ITrackSelectionProperties> = ({onSelection}) => {
 
+    const { t } = useTranslation();
+
     let ages = AgeHelper.getAllChildAges().map((a, i) => {
         return (
             <tr key={i}
                 onClick={() => { if (Window.isCompact()) onSelection(a); } }>
                 <td className="selection-header">{a.name}</td>
                 <td>{a.description}</td>
-                <td><Button className="button-small" text="Select" onClick={() => { onSelection(a) } } /></td>
+                <td><Button className="button-small" onClick={() => { onSelection(a) } }>{t('Common.button.select')}</Button></td>
             </tr>
         )
     });

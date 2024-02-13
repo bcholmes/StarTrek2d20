@@ -37,9 +37,10 @@ export const ADD_STARSHIP_TALENT_SELECTION = "ADD_STARSHIP_TALENT_SELECTION";
 export const REMOVE_STARSHIP_TALENT_SELECTION = "REMOVE_STARSHIP_TALENT_SELECTION";
 export const REMOVE_ALL_STARSHIP_TALENT_SELECTION = "REMOVE_ALL_STARSHIP_TALENT_SELECTION";
 export const DELETE_STARSHIP_REFIT = "DELETE_STARSHIP_REFIT";
+export const SET_STARSHIP_SERVICE_YEAR = "SET_STARSHIP_SERVICE_YEAR";
 
 export function createStarship(starship: Starship) {
-    let payload = { starship: Starship }
+    let payload = { starship: starship }
     return {
         type: CREATE_STARSHIP,
         payload: payload
@@ -75,6 +76,14 @@ export function changeStarshipSpaceframeServiceYear(year: number) {
     let payload = { serviceYear: year };
     return {
        type: CHANGE_STARSHIP_SPACEFRAME_SERVICE_YEAR,
+       payload: payload
+    }
+}
+
+export function setStarshipServiceYear(year: number) {
+    let payload = { serviceYear: year };
+    return {
+       type: SET_STARSHIP_SERVICE_YEAR,
        payload: payload
     }
 }

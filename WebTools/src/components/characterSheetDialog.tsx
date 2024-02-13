@@ -52,7 +52,7 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
                     {sheetList}
                 </div>
                 <div className="button-container-centered">
-                    <Button text={i18n.t('Common.button.exportPdf')} className="button" onClick={() => { this.exportPdf() } } />
+                    <Button className="button" onClick={() => { this.exportPdf() } }>{i18n.t('Common.button.exportPdf')}</Button>
                 </div>
             </div>
         );

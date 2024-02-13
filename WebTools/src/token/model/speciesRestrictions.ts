@@ -245,6 +245,16 @@ class SpeciesRestrictions {
         }
         return result;
     }
+
+    static isDarkSkinned(species: Species, skinColor: string) {
+        if (this.isHumanLikeSkinColouring(species)) {
+            let skinColours = SpeciesRestrictions.getSkinColors(species);
+            let index = skinColours.indexOf(skinColor);
+            return (index > Math.floor(skinColours.length / 2));
+        } else {
+            return false;
+        }
+    }
 }
 
 export default SpeciesRestrictions;

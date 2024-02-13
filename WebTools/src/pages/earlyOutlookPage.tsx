@@ -107,7 +107,7 @@ const EarlyOutlookPage : React.FC<ICharacterProperties> = ({character}) => {
                         <div>{t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(u.attributeRebelPlus1))) } +1</div>
                     </td>
                     <td>{disciplines}</td>
-                    <td className="text-end"><Button className="button-small" text="Select" onClick={() => { selectOutlook(u) } } buttonType={true} /></td>
+                    <td className="text-end"><Button className="button-small" onClick={() => { selectOutlook(u) } } buttonType={true}>{t('Common.button.select')}</Button></td>
                 </tr>
             )
         }

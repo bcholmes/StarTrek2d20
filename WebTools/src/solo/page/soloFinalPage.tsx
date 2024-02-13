@@ -157,8 +157,8 @@ const SoloFinalPage: React.FC<ICharacterProperties> = ({character}) => {
                 </div>)}
             </div>
             <div className="button-container my-5">
-                <Button buttonType={true} text={t('Common.button.exportPdf')} className="btn btn-primary btn-sm me-3" onClick={() => showDialog() }  />
-                <Button buttonType={true} text={t('Common.button.view')} className="btn btn-primary btn-sm me-3" onClick={() => showViewPage() }  />
+                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => showDialog() }>{t('Common.button.exportPdf')}</Button>
+                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => showViewPage() }>{t('Common.button.view')}</Button>
             </div>
 
         </div>);

@@ -18,7 +18,7 @@ class EraSelectionPage extends React.Component<WithTranslation, {}> {
             return (
                 <tr key={i} onClick={() => { if (Window.isCompact()) this.eraSelected(e.id); }}>
                     <td className="selection-header">{e.localizedName}</td>
-                    <td className="text-end"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { this.eraSelected(e.id) }} /></td>
+                    <td className="text-end"><Button buttonType={true} className="button-small" onClick={() => { this.eraSelected(e.id) }}>{t('Common.button.select')}</Button></td>
                 </tr>
             );
         });

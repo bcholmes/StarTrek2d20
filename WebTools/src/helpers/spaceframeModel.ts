@@ -108,7 +108,7 @@ export class SpaceframeModel {
         sourcePrerequisite.sources = source;
         let prerequisites: IConstructPrerequisite<Starship>[] = [
             sourcePrerequisite, new StarshipTypePrerequisite(type), new ServiceYearPrerequisite(serviceYear) ];
-        if (serviceYear > 3100) {
+        if (serviceYear > 3100 || id === Spaceframe.ScoutType) {
             prerequisites.push(new NeverPrerequisite());
         }
         return new SpaceframeModel(id, type, name, serviceYear, prerequisites, systems, departments, scale, attacks, talents, additionalTraits, maxServiceYear, soloStats );

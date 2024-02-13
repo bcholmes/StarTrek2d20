@@ -56,7 +56,7 @@ export const SystemGenerationPage = () => {
             </div>
             {renderSectorTypeSection()}
             <div className="button-container mt-4">
-                <Button text="Generate Sector" buttonType={true} className="btn btn-primary" onClick={() => generateSystem()} />
+                <Button buttonType={true} className="btn btn-primary" onClick={() => generateSystem()}>Generate Sector</Button>
             </div>
         </div>
     );

@@ -61,7 +61,7 @@ const SoloCareerLengthDetailsPage: React.FC<ICharacterProperties> = ({character}
                 </div>
             </div>
             <div className='text-end mt-4'>
-                <Button text={t('Common.button.next')} buttonType={true} className="btn btn-primary" onClick={() => navigateToNextStep() }/>
+                <Button buttonType={true} className="btn btn-primary" onClick={() => navigateToNextStep() }>{t('Common.button.next')}</Button>
             </div>
         </div>);
 

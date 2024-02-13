@@ -18,7 +18,7 @@ class SystemView extends React.Component<ISystemViewProperties, {}> {
             <td>{this.props.system.star ? this.props.system.star.description : ""}</td>
             <td className="text-center">{this.props.system.worlds ? this.props.system.worlds.length : ""}</td>
             <td className="text-end">
-                <Button buttonType={true} text={t('Common.button.view')} className="button-small" onClick={() => this.props.onClick()}/>
+                <Button buttonType={true} className="button-small" onClick={() => this.props.onClick()}>{t('Common.button.view')}</Button>
             </td>
         </tr>) : null;
     }

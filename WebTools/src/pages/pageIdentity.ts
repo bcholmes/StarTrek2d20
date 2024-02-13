@@ -89,6 +89,9 @@ export enum PageIdentity {
 
     SoloStarshipEra,
     SoloStarshipSpaceframe,
+    SoloStarshipTraits,
+    SoloStarshipTalents,
+    SoloStarshipFinish,
 
 
     TableList,

@@ -1,4 +1,4 @@
-import { ConstructType, Stereotype } from "../../common/construct";
+import { Stereotype } from "../../common/construct";
 import { IPageFactoryRegistry } from "../../pages/pageFactory";
 import { PageIdentity } from "../../pages/pageIdentity";
 import SoloConstructTypePage from "./soloConstructTypePage";
@@ -17,6 +17,7 @@ import SoloCareerEventDetailPage from "./soloCareerEventDetailPage";
 import SoloFinishingTouchesPage from "./soloFinishingTouchesPage";
 import SoloFinalPage from "./soloFinalPage";
 import SoloStarshipSpaceframePage from "./soloStarshipSpaceframePage";
+import SoloStarshipFinalPage from "./soloStarhipFinalPage";
 
 export class CaptainsLogPageFactory implements IPageFactoryRegistry {
 
@@ -53,6 +54,7 @@ export class CaptainsLogPageFactory implements IPageFactoryRegistry {
 
         this.factories[PageIdentity.SoloStarshipEra] = () => <SoloEraSelectionPage stereotype={Stereotype.SoloStarship} />;
         this.factories[PageIdentity.SoloStarshipSpaceframe] = () => <SoloStarshipSpaceframePage />;
+        this.factories[PageIdentity.SoloStarshipTalents] = () => <SoloStarshipFinalPage />;
 
     }
 

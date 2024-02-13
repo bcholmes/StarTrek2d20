@@ -32,14 +32,20 @@ export const getPageTitle = (t, page) => {
         return t('Page.title.speciesDetails');
     } else if (page === PageIdentity.SupportingCharacter) {
         return "Supporting Character";
+    } else if (page === PageIdentity.SoloStarshipSpaceframe) {
+        return t('Page.title.spaceframeSelection');
+    } else if (page === PageIdentity.SoloStarshipTalents) {
+        return t('Page.title.starshipTalentSelection');
+    } else if (page === PageIdentity.SoloStarshipTraits) {
+        return t('Page.title.starshipTraits');
+    } else if (page === PageIdentity.SoloStarshipFinish) {
+        return t('Page.title.finalStarshipDetails');
     } else if (page === PageIdentity.StarshipToolSelection) {
         return "Starship Tools";
     } else if (page === PageIdentity.StarshipTypeSelection) {
         return "Starship Type";
     } else if (page === PageIdentity.StarshipTalentSelection) {
         return "Starship Talents";
-    } else if (page === PageIdentity.FinalStarshipDetails) {
-        return "Final Details";
     } else if (page === PageIdentity.SimpleStarship) {
         return "Starship Stats";
     } else if (page === PageIdentity.SmallCraftStats) {

@@ -83,7 +83,7 @@ const OriginalSeriesSpaceframeRandomTable: TableRoll<Spaceframe> = () => {
     case 15:
         return Spaceframe.Oberth_UP;
     case 16:
-        return Spaceframe.Hermes;
+        return Spaceframe.ScoutType;
     case 17:
         return Spaceframe.Shepard;
     case 18:

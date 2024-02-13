@@ -28,7 +28,7 @@ const SoloEducationTypePage: React.FC<ICharacterProperties> = ({character}) => {
         return (
             <tr key={i} onClick={() => { if (Window.isCompact()) typeSelected(type.type); }}>
                 <td className="selection-header">{type.localizedName}</td>
-                <td className="text-end"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { typeSelected(type.type) }} /></td>
+                <td className="text-end"><Button buttonType={true} className="button-small" onClick={() => { typeSelected(type.type) }}>{t('Common.button.select')}</Button></td>
             </tr>
         );
     }

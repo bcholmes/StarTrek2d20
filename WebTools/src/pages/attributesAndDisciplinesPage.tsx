@@ -142,7 +142,7 @@ const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character
 
             {talentSelection}
             <div className="text-end mt-4">
-                <Button buttonType={true} text="FINISH" className="btn btn-primary" onClick={() => navigateToNextPage() }/>
+                <Button buttonType={true} className="btn btn-primary" onClick={() => navigateToNextPage() }>FINISH</Button>
             </div>
         </div>
     );

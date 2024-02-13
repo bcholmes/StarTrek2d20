@@ -93,11 +93,15 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
                         <tbody>
                             <tr onClick={() => { if (Window.isCompact()) this.selectStandardRules(); }}>
                                 <td className="selection-header">{t('SourceSelectionPage.standardGameType')}</td>
-                                <td className="text-end"><Button buttonType={true} className="btn btn-sm btn-primary" text={t('Common.button.select')} onClick={() => { this.selectStandardRules() }} /></td>
+                                <td className="text-end d-none d-sm-table-cell"><Button buttonType={true} className="btn btn-sm btn-primary" onClick={() => { this.selectStandardRules() }}>{t('Common.button.select')}</Button></td>
                             </tr>
-                            <tr onClick={() => { if (Window.isCompact() && this.hasSource(Source.CaptainsLog)) this.selectSoloRules(); }}>
+                            <tr onClick={() => {
+                                if (Window.isCompact() && this.hasSource(Source.CaptainsLog)) {
+                                    this.selectSoloRules();
+                                }
+                            }}>
                                 <td className="selection-header">{t('SourceSelectionPage.soloGameType')}</td>
-                                <td className="text-end">
+                                <td className="text-end d-none d-sm-table-cell">
                                     <LoadingButton loading={this.state.soloLoading} className="btn-sm"  onClick={() => { this.selectSoloRules() }}
                                         enabled={this.hasSource(Source.CaptainsLog)} >{t('Common.button.select')}</LoadingButton>
                                 </td>

@@ -308,7 +308,35 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Rugged Design"),
             ],
             [ "Federation Starship" ],
-            2290),
+            2290,
+            new SoloSpaceframeStats(
+                [7, 9, 9, 10, 8, 6],
+                [2, 4, 1, 3, 4, 2]
+            )),
+        [Spaceframe.ScoutType]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.ScoutType,
+            CharacterType.Starfleet,
+            "Scout Type",
+            2242,
+            [ Source.CaptainsLog ],
+            [7, 6, 9, 8, 8, 6],
+            [0, 2, 0, 0, 1, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Reaction Control System"),
+                TalentSelection.selectTalent("Independent Phaser Supply"),
+                TalentSelection.selectTalent("Rugged Design"),
+            ],
+            [ "Federation Starship" ],
+            2290,
+            new SoloSpaceframeStats(
+                [7, 9, 9, 10, 8, 6],
+                [2, 4, 1, 3, 4, 2]
+            )),
         [Spaceframe.Oberth]: new SpaceframeModel(
             Spaceframe.Oberth,
             CharacterType.Starfleet,
@@ -346,7 +374,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Rugged Design"),
             ],
             [ "Federation Starship" ],
-            99999),
+            99999,
+            new SoloSpaceframeStats(
+                [9, 7, 9, 9, 10, 7],
+                [2, 4, 2, 2, 2, 3]
+            )),
         [Spaceframe.Centaur]: new SpaceframeModel(
             Spaceframe.Centaur,
             CharacterType.Starfleet,
@@ -578,7 +610,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Improved Reaction Control System")
             ],
             [ "Federation Starship" ],
-            2290),
+            2290,
+            new SoloSpaceframeStats(
+                [9, 8, 10, 9, 6, 6],
+                [2, 4, 2, 2, 3, 1]
+            )),
         [Spaceframe.Walker]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Walker,
             CharacterType.Starfleet,
@@ -598,7 +634,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Rugged Design")
             ],
             [ "Federation Starship" ],
-            2265),
+            2265,
+            new SoloSpaceframeStats(
+                [7, 8, 7, 10, 7, 6],
+                [2, 2, 2, 3, 3, 3]
+            )),
         [Spaceframe.Shepard]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Shepard,
             CharacterType.Starfleet,
@@ -618,7 +658,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Rugged Design")
             ],
             [ "Federation Starship" ],
-            2290),
+            2290,
+            new SoloSpaceframeStats(
+                [6, 7, 9, 8, 8, 7],
+                [2, 2, 3, 3, 3, 2]
+            )),
         [Spaceframe.Magee]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Magee,
             CharacterType.Starfleet,
@@ -637,7 +681,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Specialized Crew (Science)")
             ],
             [ "Federation Starship" ],
-            2290),
+            2290,
+            new SoloSpaceframeStats(
+                [7, 9, 7, 10, 6, 5],
+                [2, 2, 1, 4, 5, 2]
+            )),
         [Spaceframe.Cardenas]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Cardenas,
             CharacterType.Starfleet,
@@ -658,7 +706,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Redundant Systems [Warp Enginges]")
             ],
             [ "Federation Starship" ],
-            2290),
+            2290,
+            new SoloSpaceframeStats(
+                [7, 6, 9, 8, 6, 7],
+                [2, 3, 3, 2, 3, 1]
+            )),
         [Spaceframe.Hoover]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Hoover,
             CharacterType.Starfleet,
@@ -677,7 +729,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Extensive Shuttlebays")
             ],
             [ "Federation Starship" ],
-            2290),
+            2290,
+            new SoloSpaceframeStats(
+                [6, 8, 8, 7, 7, 8],
+                [1, 2, 3, 4, 3, 2]
+            )),
         [Spaceframe.Malachowski]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Malachowski,
             CharacterType.Starfleet,
@@ -697,7 +753,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Rapid-Fire Torpedo Launcher"),
             ],
             [ "Federation Starship" ],
-            2290),
+            2290,
+            new SoloSpaceframeStats(
+                [7, 6, 6, 8, 8, 10],
+                [2, 2, 5, 3, 2, 1]
+            )),
         [Spaceframe.Engle]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Engle,
             CharacterType.Starfleet,
@@ -717,7 +777,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Improved Impulse Drive"),
             ],
             [ "Federation Starship" ],
-            2290),
+            2290,
+            new SoloSpaceframeStats(
+                [8, 8, 10, 7, 6, 6],
+                [2, 3, 2, 2, 2, 4]
+            )),
         [Spaceframe.Nimitz]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Nimitz,
             CharacterType.Starfleet,
@@ -739,7 +803,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Extensive Shuttlebays"),
             ],
             [ "Federation Starship" ],
-            2290),
+            2290,
+            new SoloSpaceframeStats(
+                [10, 7, 7, 7, 7, 7],
+                [5, 1, 3, 1, 3, 1]
+            )),
         [Spaceframe.Crossfield]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Crossfield,
             CharacterType.Starfleet,
@@ -760,7 +828,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Extensive Shuttlebays"),
             ],
             [ "Federation Starship" ],
-            2290),
+            2290,
+            new SoloSpaceframeStats(
+                [7, 8, 8, 8, 8, 7],
+                [1, 2, 2, 4, 4, 2]
+            )),
         [Spaceframe.Hiawatha]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Hiawatha,
             CharacterType.Starfleet,
@@ -779,7 +851,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Redundant Systems [Life Support]"),
             ],
             [ "Federation Starship" ],
-            2290),
+            2290,
+            new SoloSpaceframeStats(
+                [8, 8, 6, 9, 8, 5],
+                [2, 2, 2, 1, 3, 5]
+            )),
         [Spaceframe.StealthShip]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.StealthShip,
             CharacterType.Starfleet,
@@ -928,7 +1004,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Rugged Design")
             ],
             [ "Federation Starship" ],
-            2315),
+            2315,
+            new SoloSpaceframeStats(
+                [8, 8, 7, 8, 7, 6],
+                [1, 3, 1, 4, 3, 3]
+            )),
         [Spaceframe.Springfield]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Springfield,
             CharacterType.Starfleet,
@@ -1308,7 +1388,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Four-Nacelle Stability"),
             ],
             [ "Federation Starship" ],
-            99999),
+            99999,
+            new SoloSpaceframeStats(
+                [10, 9, 11, 11, 9, 8],
+                [2, 4, 3, 2, 2, 1]
+            )),
         [Spaceframe.Constitution_UP]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Constitution_UP,
             CharacterType.Starfleet,
@@ -1329,7 +1413,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Constitution Saucer Separation")
             ],
             [ "Federation Starship" ],
-            2290),
+            2290,
+            new SoloSpaceframeStats(
+                [8, 8, 8, 8, 7, 7],
+                [3, 2, 3, 2, 3, 2]
+            )),
         [Spaceframe.Daedalus_UP]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Daedalus_UP,
             CharacterType.Starfleet,
@@ -1398,7 +1486,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Excelsior Saucer Separation")
             ],
             [ "Federation Starship" ],
-            99999),
+            99999,
+            new SoloSpaceframeStats(
+                [8, 8, 10, 10, 9, 8],
+                [4, 1, 2, 4, 2, 2]
+            )),
         [Spaceframe.Intrepid_UP]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Intrepid_UP,
             CharacterType.Starfleet,
@@ -1460,7 +1552,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Extensive Shuttlebays")
             ],
             [ "Federation Starship" ],
-            99999),
+            99999,
+            new SoloSpaceframeStats(
+                [7, 8, 8, 9, 8, 8],
+                [3, 3, 2, 2, 3, 2]
+            )),
         [Spaceframe.Nebula_UP]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Nebula_UP,
             CharacterType.Starfleet,
@@ -1544,7 +1640,11 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Improved Warp Drive"),
             ],
             [ "Federation Starship" ],
-            99999),
+            99999,
+            new SoloSpaceframeStats(
+                [8, 9, 8, 9, 7, 6],
+                [1, 3, 2, 3, 4, 2]
+            )),
         [Spaceframe.Olympic_UP]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Olympic_UP,
             CharacterType.Starfleet,
@@ -1587,6 +1687,31 @@ export class SpaceframeHelper {
             ],
             [ "Federation Starship" ],
             99999),
+        [Spaceframe.Soyuz]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Soyuz,
+            CharacterType.Starfleet,
+            "Soyuz Class",
+            2269,
+            [ Source.UtopiaPlanitia ],
+            [7, 7, 7, 6, 8, 9],
+            [0, 0, 2, 0, 1, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Phaser Cannons",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("High-Resolution Sensors"),
+                TalentSelection.selectTalent("Secondary Reactors"),
+            ],
+            [ "Federation Starship" ],
+            2310,
+            new SoloSpaceframeStats(
+                [8, 10, 9, 10, 10, 10],
+                [2, 2, 4, 2, 3, 2]
+            )),
         [Spaceframe.Steamrunner_UP]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Steamrunner_UP,
             CharacterType.Starfleet,
@@ -2509,7 +2634,7 @@ export class SpaceframeHelper {
     soloSpaceframesByEra(era: Era) : Spaceframe[] {
         switch (era) {
             case Era.Enterprise:
-                return [ Spaceframe.Daedalus_UP, Spaceframe.IntrepidType, Spaceframe.JClassYClass, Spaceframe.NX, Spaceframe.Delta ];
+                return [ Spaceframe.Daedalus_UP, Spaceframe.IntrepidType, Spaceframe.JClassYClass, Spaceframe.NX_UP, Spaceframe.Delta ];
             case Era.OriginalSeries:
                 return [
                         Spaceframe.Antares,
@@ -2527,11 +2652,25 @@ export class SpaceframeHelper {
                         Spaceframe.Miranda_UP,
                         Spaceframe.Nimitz,
                         Spaceframe.Oberth_UP,
-                        Spaceframe.Hermes,
+                        Spaceframe.ScoutType,
                         Spaceframe.Shepard,
                         Spaceframe.Soyuz,
                         Spaceframe.Sydney,
                         Spaceframe.Walker,
+                ];
+            case Era.PicardProdigy:
+                return [
+                        Spaceframe.Gagarin,
+                        Spaceframe.Inquiry,
+                        Spaceframe.Luna_UP,
+                        Spaceframe.Odyssey,
+                        Spaceframe.Pathfinder,
+                        Spaceframe.Prometheus,
+                        Spaceframe.Reliant,
+                        Spaceframe.Ross,
+                        Spaceframe.Sovereign_UP,
+                        Spaceframe.Sutherland,
+                        Spaceframe.Vesta
                 ];
             case Era.Discovery32:
             default:

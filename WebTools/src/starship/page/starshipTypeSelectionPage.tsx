@@ -84,7 +84,7 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                             {buildTypeSelection}
                         </div>
                     </div>
-                    <Button onClick={() => this.startWorkflow()} text={t('Common.button.create')} />
+                    <Button onClick={() => this.startWorkflow()}>{t('Common.button.create')}</Button>
                 </div>
             </div>
         );

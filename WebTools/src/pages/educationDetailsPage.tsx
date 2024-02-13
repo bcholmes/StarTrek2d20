@@ -226,7 +226,7 @@ const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
             </div>
             {renderTalents()}
             <div className="mt-5 text-end">
-                <Button buttonType={true} text={t('Common.button.next')} className="btn btn-primary btn" onClick={() => navigateToNextPage() }/>
+                <Button buttonType={true} className="btn btn-primary btn" onClick={() => navigateToNextPage() }>{t('Common.button.next')}</Button>
             </div>
         </div>
     );

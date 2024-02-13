@@ -132,7 +132,7 @@ const CustomSpeciesDetailsPage: React.FC<ICustomSpeciesDetailsProperties> = ({ch
                 </div>
                 {renderTalentsSection()}
                 <div className="text-end">
-                    <Button text={t('Common.button.next')} className="button-next" onClick={() => onNext()} buttonType={true} />
+                    <Button className="button-next" onClick={() => onNext()} buttonType={true}>{t('Common.button.next')}</Button>
                 </div>
             </div>
         </div>);

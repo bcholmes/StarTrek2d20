@@ -21,8 +21,8 @@ export const CadetSeniorityPage = () => {
 
             <InstructionText text={["Are you a junior or senior cadet?"]} />
             <div className="button-container">
-                <Button className="button" text="Junior" onClick={() => { goToFinishingTouches(); } } />
-                <Button className="button" text="Senior" onClick={() => { goToPage(PageIdentity.CareerEvent1); } } />
+                <Button className="button" onClick={() => { goToFinishingTouches(); } } >Junior</Button>
+                <Button className="button" onClick={() => { goToPage(PageIdentity.CareerEvent1); } }>Senior</Button>
             </div>
         </div>
     );

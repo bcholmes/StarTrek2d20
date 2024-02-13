@@ -45,7 +45,7 @@ const EducationPage: React.FC<ICharacterProperties> = ({character}) => {
         return (
             <tr key={i} onClick={() => { if (Window.isCompact()) selectTrack(track); }}>
                 <td className="selection-header">{track.localizedName}</td>
-                <td className="text-end"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { selectTrack(track) }} /></td>
+                <td className="text-end"><Button buttonType={true} className="button-small" onClick={() => { selectTrack(track) }}>{t('Common.button.select')}</Button></td>
             </tr>
         );
     }

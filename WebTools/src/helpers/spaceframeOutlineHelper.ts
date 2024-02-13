@@ -326,7 +326,7 @@ class SpaceframeOutlineHelper {
             return GAGARIN_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Galaxy) {
             return GALAXY_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Hermes) {
+        } else if (spaceframe.id === Spaceframe.Hermes || spaceframe.id === Spaceframe.ScoutType) {
             return this.isMovieEra(starship.serviceYear) ? HERMES_CLASS_ELABORATE_OUTLINE : HERMES_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Hiawatha) {
             return HIAWATHA_CLASS_ELABORATE_OUTLINE;

@@ -3,21 +3,19 @@ import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { Header } from "../../components/header";
 import { connect } from "react-redux";
-import { makeKey } from "../../common/translationKey";
 import { Window } from "../../common/window";
 import { Button } from "../../components/button";
 import { useState } from "react";
 import store from "../../state/store";
-import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 import { Era } from "../../helpers/eras";
 import { Starship } from "../../common/starship";
 import { SpaceframeHelper } from "../../helpers/spaceframes";
-import { Department, allDepartments } from "../../helpers/departments";
+import { Department } from "../../helpers/departments";
 import { SpaceframeModel } from "../../helpers/spaceframeModel";
 import { setStarshipSpaceframe } from "../../state/starshipActions";
 import { SpaceframeRandomTable } from "../table/starshipRandomTable";
 import { StatView } from "../../components/StatView";
-import { System, allSystems } from "../../helpers/systems";
+import { System, } from "../../helpers/systems";
 import SoloStarshipBreadcrumbs from "../component/soloStarshipBreadcrumbs";
 
 interface ISoloStarshipSpaceframePageProperties {
@@ -29,7 +27,7 @@ const SoloStarshipSpaceframePage: React.FC<ISoloStarshipSpaceframePageProperties
 
     const selectSpaceframe = (spaceframe: SpaceframeModel) => {
         store.dispatch(setStarshipSpaceframe(spaceframe));
-        Navigation.navigateToPage(PageIdentity.SoloSpeciesDetails);
+        Navigation.navigateToPage(PageIdentity.SoloStarshipTalents);
     }
 
     const { t } = useTranslation();
@@ -40,25 +38,45 @@ const SoloStarshipSpaceframePage: React.FC<ISoloStarshipSpaceframePageProperties
         selectionList = [SpaceframeHelper.instance().getSpaceframe(randomSpaceframe)];
     }
     let selectionRows = selectionList.map((s,i) => {
-        const departments = allDepartments().map((d, j) => {
-                return <StatView name={t('Construct.department', Department[d])} value={s.soloStats?.departments[d]} className="col mb-1" showZero={true}
-                    key={'frame-' + s + '-dept-' + j}/>
-            });
+        const departments = (<>
+                <StatView name={t('Construct.department.command')} value={s.soloStats?.departments[Department.Command]} className="col mb-1" showZero={true}
+                    key={'frame-' + s + '-dept-command'}/>
+                <StatView name={t('Construct.department.security')} value={s.soloStats?.departments[Department.Security]} className="col mb-1" showZero={true}
+                    key={'frame-' + s + '-dept-security'}/>
+                <StatView name={t('Construct.department.science')} value={s.soloStats?.departments[Department.Science]} className="col mb-1" showZero={true}
+                    key={'frame-' + s + '-dept-science'}/>
+                <StatView name={t('Construct.department.conn')} value={s.soloStats?.departments[Department.Conn]} className="col mb-1" showZero={true}
+                    key={'frame-' + s + '-dept-conn'}/>
+                <StatView name={t('Construct.department.engineering')} value={s.soloStats?.departments[Department.Engineering]} className="col mb-1" showZero={true}
+                    key={'frame-' + s + '-dept-engineering'}/>
+                <StatView name={t('Construct.department.medicine')} value={s.soloStats?.departments[Department.Medicine]} className="col mb-1" showZero={true}
+                    key={'frame-' + s + '-dept-medicine'}/>
+            </>);
 
-            const systems = allSystems().map((sy, j) => {
-                return <StatView name={t('Construct.system', System[sy])} value={s.soloStats?.systems[sy]} className="col mb-1" showZero={true}
-                    key={'frame-' + s + '-sys-' + j}/>
-            });
+        const systems = (<>
+                <StatView name={t('Construct.system.comms')} value={s.soloStats?.systems[System.Comms]} className="col mb-1" showZero={true}
+                    key={'frame-' + s + '-sys-comms'}/>
+                <StatView name={t('Construct.system.engines')} value={s.soloStats?.systems[System.Engines]} className="col mb-1" showZero={true}
+                    key={'frame-' + s + '-sys-engines'}/>
+                <StatView name={t('Construct.system.structure')} value={s.soloStats?.systems[System.Structure]} className="col mb-1" showZero={true}
+                    key={'frame-' + s + '-sys-structure'}/>
+                <StatView name={t('Construct.system.computer')} value={s.soloStats?.systems[System.Computer]} className="col mb-1" showZero={true}
+                    key={'frame-' + s + '-sys-commputer'}/>
+                <StatView name={t('Construct.system.sensors')} value={s.soloStats?.systems[System.Sensors]} className="col mb-1" showZero={true}
+                    key={'frame-' + s + '-sys-sensors'}/>
+                <StatView name={t('Construct.system.weapons')} value={s.soloStats?.systems[System.Weapons]} className="col mb-1" showZero={true}
+                    key={'frame-' + s + '-sys-weapons'}/>
+            </>);
 
         return (
             <tr key={i} onClick={() => { if (Window.isCompact()) selectSpaceframe(s); }}>
                 <td className="selection-header">{s.localizedName}</td>
                 <td className="d-none d-md-table-cell">
                     <div className="row row-cols-1 row-cols-lg-3" style={{maxWidth: "600px"}}>
-                    {departments}
+                    {systems}
                     </div>
                     <div className="row row-cols-1 row-cols-lg-3 mt-2" style={{maxWidth: "600px"}}>
-                    {systems}
+                    {departments}
                     </div>
                     <div className="row row-cols-1 row-cols-lg-3 mt-2 mb-3" style={{maxWidth: "600px"}}>
                     <StatView name={t('Construct.other.scale')} value={s.scale} className="col mb-1" showZero={true}

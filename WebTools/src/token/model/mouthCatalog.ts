@@ -379,9 +379,7 @@ class MouthCatalog {
         if (SpeciesRestrictions.isHumanLikeSkinColouring(token.species)) {
             let blendColour = SpeciesRestrictions.LIP_COLOUR;
             let blendPercentage = 0.4;
-            let skinColours = SpeciesRestrictions.getSkinColors(token.species);
-            let index = skinColours.indexOf(token.skinColor);
-            if (index > Math.floor(skinColours.length / 2)) {
+            if (SpeciesRestrictions.isDarkSkinned(token.species, token.skinColor)) {
                 blendColour = SpeciesRestrictions.DARK_LIP_COLOUR;
                 blendPercentage = 0.25;
             }

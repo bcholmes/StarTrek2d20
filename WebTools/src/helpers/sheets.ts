@@ -1420,12 +1420,14 @@ class CharacterSheets {
     }
 
     public getStarshipSheets(starship: Starship, era: Era): ICharacterSheet[] {
-        if (starship.type === CharacterType.KlingonWarrior) {
+        if (starship.stereotype === Stereotype.SoloStarship) {
+            return [ new CaptainsLogStarshipSheet() ];
+        } else if (starship.type === CharacterType.KlingonWarrior) {
             return [ new StandardKlingonStarshipSheet(), new StandardTngStarshipSheet(), new StandardTosStarshipSheet() ];
         } else if (era === Era.NextGeneration) {
-            return [ new StandardTngStarshipSheet(), new StandardTosStarshipSheet(), new StandardKlingonStarshipSheet(), new CaptainsLogStarshipSheet() ];
+            return [ new StandardTngStarshipSheet(), new StandardTosStarshipSheet(), new StandardKlingonStarshipSheet() ];
         } else {
-            return [ new StandardTosStarshipSheet(), new StandardTngStarshipSheet(), new StandardKlingonStarshipSheet(), new CaptainsLogStarshipSheet() ];
+            return [ new StandardTosStarshipSheet(), new StandardTngStarshipSheet(), new StandardKlingonStarshipSheet() ];
         }
     }
 }

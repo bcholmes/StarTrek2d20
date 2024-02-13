@@ -127,6 +127,7 @@ export enum Spaceframe {
     SarcophagusShip,
 
     // Captain's Log
+    ScoutType,
     Angelou,
     Eisenberg,
     Friendship,

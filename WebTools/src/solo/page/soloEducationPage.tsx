@@ -29,7 +29,7 @@ const SoloEducationPage: React.FC<ICharacterProperties> = ({character}) => {
         return (
             <tr key={i} onClick={() => { if (Window.isCompact()) trackSelected(track); }}>
                 <td className="selection-header">{track.localizedName}</td>
-                <td className="text-end"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { trackSelected(track) }} /></td>
+                <td className="text-end"><Button buttonType={true} className="button-small" onClick={() => { trackSelected(track) }}>{t('Common.button.select')}</Button></td>
             </tr>
         );
     }

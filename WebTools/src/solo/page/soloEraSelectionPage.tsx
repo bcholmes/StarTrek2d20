@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Era, EraModel, ErasHelper } from '../../helpers/eras';
+import { Era, EraModel, ErasHelper, eraDefaultYear } from '../../helpers/eras';
 import { Window } from '../../common/window';
 import { Button } from '../../components/button';
 import { navigateTo, Navigation } from '../../common/navigator';
@@ -10,6 +10,7 @@ import { setEra } from '../../state/contextActions';
 import store from '../../state/store';
 import { eraRandomTable, eraRandomTableForStarships } from '../table/eraRandomTable';
 import { Stereotype } from '../../common/construct';
+import { setStarshipServiceYear } from '../../state/starshipActions';
 
 interface ISoloEraSelectionPage {
     stereotype: Stereotype;
@@ -23,6 +24,7 @@ const SoloEraSelectionPage: React.FC<ISoloEraSelectionPage> = ({stereotype}) => 
     const eraSelected = (era: Era)=> {
         store.dispatch(setEra(era));
         if (stereotype === Stereotype.SoloStarship) {
+            store.dispatch(setStarshipServiceYear(eraDefaultYear(era)));
             Navigation.navigateToPage(PageIdentity.SoloStarshipSpaceframe);
         } else {
             Navigation.navigateToPage(PageIdentity.SoloSpecies);
@@ -33,7 +35,7 @@ const SoloEraSelectionPage: React.FC<ISoloEraSelectionPage> = ({stereotype}) => 
         return (
             <tr key={i} onClick={() => { if (Window.isCompact()) eraSelected(e.id); }}>
                 <td className="selection-header">{e.localizedName}</td>
-                <td className="text-end"><Button buttonType={true} className="button-small" text={t('Common.button.select')} onClick={() => { eraSelected(e.id) }} /></td>
+                <td className="text-end"><Button buttonType={true} className="button-small" onClick={() => { eraSelected(e.id) }} >{t('Common.button.select')}</Button></td>
             </tr>
         );
     }
