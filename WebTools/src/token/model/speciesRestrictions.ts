@@ -45,7 +45,7 @@ class SpeciesRestrictions {
         } else if (species === Species.Efrosian) {
             return ["#ffd9c6", "#d8b092", "#e1ad88", "#d69972", "#d18352", "#b06e46", "#9e603b", "#834b2b", "#70432c"];
         } else if (species === Species.Jelna) {
-            return ["#f5e5d3", "#f0dcca", "#decbbe"];
+            return ["#f5e5d3", "#f0dcca", "#decbbe", "#d5cbd4", "#756352"];
         } else if (species === Species.JemHadar) {
             return ["#b7b7b1", "#a59f95", "#86828a", "#7c7972"];
         } else if (species === Species.Reman) {
@@ -66,8 +66,10 @@ class SpeciesRestrictions {
             return [HeadType.SquareJawed, HeadType.RoundedAverage, HeadType.PointedDelicate ];
         } else if (species === Species.Suliban) {
             return [HeadType.SquareJawed, HeadType.RoundedAverage ];
+        } else if (species === Species.Jelna) {
+            return [HeadType.SquareJawed, HeadType.RoundedAverage ];
         } else if (this.isRubberHeaded(species) && species !== Species.Benzite) {
-            return [HeadType.RoundedNarrow ];
+            return [HeadType.RoundedAverage ];
         } else {
             return [ HeadType.AverageAngular,
                 HeadType.SquareJawed,

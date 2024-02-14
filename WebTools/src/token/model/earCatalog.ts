@@ -171,7 +171,7 @@ class EarCatalog {
     }
 
     getEar(token: Token) {
-        if (SpeciesRestrictions.isRubberHeaded(token.species)) {
+        if (SpeciesRestrictions.isRubberHeaded(token.species) && token.species !== Species.Jelna) {
             return "";
         } else if (token.species === Species.Vulcan || token.species === Species.Romulan) {
             return VulcanEar.replace(SpeciesColors.DEFAULT_SKIN_COLOR, token.skinColor);

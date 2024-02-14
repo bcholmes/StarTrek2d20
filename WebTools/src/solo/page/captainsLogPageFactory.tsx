@@ -55,7 +55,7 @@ export class CaptainsLogPageFactory implements IPageFactoryRegistry {
         this.factories[PageIdentity.SoloStarshipEra] = () => <SoloEraSelectionPage stereotype={Stereotype.SoloStarship} />;
         this.factories[PageIdentity.SoloStarshipSpaceframe] = () => <SoloStarshipSpaceframePage />;
         this.factories[PageIdentity.SoloStarshipTalents] = () => <SoloStarshipFinalPage />;
-
+        this.factories[PageIdentity.SoloStarshipFinish] = () => <SoloStarshipFinalPage />;
     }
 
     findFactory(page: PageIdentity) {

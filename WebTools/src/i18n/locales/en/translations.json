@@ -184,6 +184,10 @@
 
     "EnvironmentPage.alliedMilitary.instruction": "Regardless of their species, military officers and ratings come from many places, across many types of worlds.",
 
+    "FinalStarshipDetails.instruction": "Your ship is almost complete. It just needs a few final touches.",
+
+    "FinalStarshipDetails.name.instruction": "Every Starship needs a name. There is no universal convention for the naming of ships, often naming them after locations, important historical persons (normally only the person’s surname), ancient ships, mythical figures, or even more abstract ideals, virtues, or concepts. In many cases, these vague naming conventions overlap — a ship may be named after an ancient ship that was itself named after a location, for example — but this shouldn’t cause any issues.\n\nThe name should ideally be a single word or, more rarely, two.",
+
     "MilestonePage.instruction": "Select what type of modification you want to apply for this milestone.",
 
     "MissionPodSelectionPage.text": "Certain spaceframes have the ability to be fitted with a single mission pod, chosen from the list below. The talents provided by the pod may not be swapped out normally, but the entire mission pod (and all its benefits) may be swapped out as if it were a single talent.",
@@ -346,6 +350,7 @@
     "Common.button.export": "Export",
     "Common.button.exportVtt": "Export for VTT",
     "Common.button.exportPdf": "Export to PDF",
+    "Common.button.finish": "Finish",
     "Common.button.ok": "OK",
     "Common.button.copyToClipboard": "Copy to clipboard",
     "Common.button.add": "Add",
@@ -496,6 +501,7 @@
     "Page.title.starshipTalentSelection": "Starship Talents",
     "Page.title.starSystemDetails": "Star System Details",
     "Page.title.starshipToolSelection": "Starship Tool Selection",
+    "Page.title.starshipTraits": "Starship Traits",
     "Page.title.supportingCharacter": "Supporting Character",
     "Page.title.systemGeneration": "System Generation",
     "Page.title.tableList": "Table List",
