@@ -293,6 +293,9 @@
     "SpeciesPage.textNoRoll": "To what species do you belong? You may also create a character of mixed species, gaining benefits from both.",
     "SpeciesPage.mixedSpeciesNote": "Select two species. You will gain Traits from both species and may select from both species' Talents, but only the primary species gives you attribute bonuses.",
 
+    "StarshipTalentSelection.instruction_one": "Please select {{count}} talent.",
+    "StarshipTalentSelection.instruction_other": "Please select {{count}} talents.",
+
     "StarshipToolSelection.instruction": "Select an option",
     "StarshipToolSelection.standardBuild": "Standard Build",
     "StarshipToolSelection.standardBuildDescription": "The standard Starship creation process follows the build steps as outlined in the rulebooks. E.g.: starships choose a Spaceframe, Mission Profile, etc.",

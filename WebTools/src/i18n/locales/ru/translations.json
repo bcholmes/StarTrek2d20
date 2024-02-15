@@ -1,0 +1,98 @@
+{
+    "LanguageNotice.title": "Приветствуем Вас!",
+    "LanguageNotice.text": "Мы экспериментируем с базовой поддержкой международных языкоа. На данный момент это начальная стадия, но мы надеемся добавить больше языков в дальнейшем.",
+    "LanguageNotice.useEnglish": "Пожалуйста используйте Английский вариант",
+
+    "Lcars.feedback": "Обратная связь",
+    "Lcars.history": "История",
+    "Lcars.news": "Новости",
+    "Lcars.profile": "Профиль",
+
+    "EraSelectionPage.eraInstruction": "Выберите в какой Эре вы планируете играть. Спросите Г-ма какую Эру выбрать.",
+
+    "Home.title": "Генератор Персонажей STA",
+    "Home.selection": "Выберите инстумент.",
+    "Home.characterButton": "Персонажи и Корабли",
+    "Home.talentsButton": "Обзор Талантов",
+
+    "NpcConfigurationPage.npcType": "Тип НИП",
+    "NpcConfigurationPage.specialization": "Специализация",
+
+    "TokenCreator.option.rounded": "Скругленное",
+    "TokenCreator.option.bordered": "Обрамленное",
+
+    "TokenCreator.section.species": "Расы",
+
+    "TokenCreator.section.species.options": "Опции",
+
+    "TokenCreator.section.body": "Тело",
+
+    "TokenCreator.section.body.uniform": "Тип униформы",
+    "TokenCreator.section.body.rank": "Ранг",
+    "TokenCreator.section.body.type": "Телосложение",
+    "TokenCreator.section.body.uniformVariant": "Варианты униформы",
+
+    "TokenCreator.section.head": "Голова",
+
+    "TokenCreator.section.head.colour": "Цвет кожи",
+    "TokenCreator.section.head.furColour": "Цвет шерсти",
+    "TokenCreator.section.head.shape": "Форма головы",
+
+    "TokenCreator.section.hair": "Волосы",
+
+    "TokenCreator.section.hair.colour": "Цвет волос",
+    "TokenCreator.section.hair.style": "Прическа",
+
+    "TokenCreator.section.mouth": "Рот",
+
+    "TokenCreator.section.mouth.shape": "Рот",
+    "TokenCreator.section.mouth.colour": "Цвет помады",
+    "TokenCreator.section.mouth.moustache": "Усы",
+    "TokenCreator.section.mouth.beard": "Борода",
+
+    "TokenCreator.section.nose": "Нос",
+
+    "TokenCreator.section.nose.shape": "Форма носа",
+
+    "TokenCreator.section.eyes": "Глаза",
+
+    "TokenCreator.section.eyes.style": "Тип глаз",
+    "TokenCreator.section.eyes.colour": "Цвет глаз",
+
+    "TokenCreator.section.extras": "Дополнения",
+
+    "TokenCreator.section.extras.ears": "Уши",
+    "TokenCreator.section.extras.face": "Лицо",
+    "TokenCreator.section.extras.forehead": "Лоб",
+    "TokenCreator.section.extras.headwear": "Головной убор",
+
+    "ViewPage.viewSupportingCharacter": "Просмотр Персонажей Поддержки",
+    "ViewPage.viewNpc": "Просмотр НИП",
+    "ViewPage.viewMainCharacter": "Просмотр Игрового Персонажа",
+    "ViewPage.viewStarship": "Просмотр Корабля",
+    "ViewPage.errorMessage": "Что-то пошло чертовски не так. Вероятно мы оказались в зеркальной вселенной.",
+    "ViewPage.unnamedStarship": "Безымянный корабль",
+
+    "CareerEventDetails.errorFocus": "Выберите специализацию",
+
+    "GMTracker.addCharacterModalTitle": "Добавьте персонажа",
+
+    "AddCharacterView.instruction": "Вставьте гиперссылку для персонажа",
+    "AddCharacterView.errorMessage": "Гиперссылка не валидна.",
+    "AddCharacterView.errorCharacterType": "Ауч! На данный момент есть поддержка только для персонажей, но не для кораблей.",
+    "AddCharacterView.characterPrefix": "Персонаж:",
+
+    "CareerSelectionPage.title": "Выберите Карьеру",
+    "CareerSelectionPage.selectCareer": "Выберите Карьеру",
+    "CareerSelectionPage.rollCareer": "Рандомальная Карьера",
+
+    "CharacterSheetDialog.title": "Выберите модель",
+
+    "CustomSpeciesDetails.speciesName": "Имя",
+    "CustomSpeciesDetails.instruction": "Каково название этой рассы?",
+    "CustomSpeciesDetails.speciesNameWarning": "Пожалуйста предоставьте название для этой рассы.",
+
+    "CharacterTypePage.whatType": "Какой это тип персонажа?",
+    "CharacterTypePage.whatGovernment": "Какое правительство представляет этот персонаж?",
+    "CharacterTypePage.otherGovernmentName": "Название правительства?"
+}

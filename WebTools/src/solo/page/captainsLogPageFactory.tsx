@@ -18,6 +18,7 @@ import SoloFinishingTouchesPage from "./soloFinishingTouchesPage";
 import SoloFinalPage from "./soloFinalPage";
 import SoloStarshipSpaceframePage from "./soloStarshipSpaceframePage";
 import SoloStarshipFinalPage from "./soloStarhipFinalPage";
+import SoloStarshipTalentsPage from "./soloStarshipTalentsPage";
 
 export class CaptainsLogPageFactory implements IPageFactoryRegistry {
 
@@ -54,7 +55,7 @@ export class CaptainsLogPageFactory implements IPageFactoryRegistry {
 
         this.factories[PageIdentity.SoloStarshipEra] = () => <SoloEraSelectionPage stereotype={Stereotype.SoloStarship} />;
         this.factories[PageIdentity.SoloStarshipSpaceframe] = () => <SoloStarshipSpaceframePage />;
-        this.factories[PageIdentity.SoloStarshipTalents] = () => <SoloStarshipFinalPage />;
+        this.factories[PageIdentity.SoloStarshipTalents] = () => <SoloStarshipTalentsPage />;
         this.factories[PageIdentity.SoloStarshipFinish] = () => <SoloStarshipFinalPage />;
     }
 

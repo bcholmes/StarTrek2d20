@@ -36,8 +36,6 @@ export const getPageTitle = (t, page) => {
         return t('Page.title.spaceframeSelection');
     } else if (page === PageIdentity.SoloStarshipTalents) {
         return t('Page.title.starshipTalentSelection');
-    } else if (page === PageIdentity.SoloStarshipTraits) {
-        return t('Page.title.starshipTraits');
     } else if (page === PageIdentity.SoloStarshipFinish) {
         return t('Page.title.finalStarshipDetails');
     } else if (page === PageIdentity.StarshipToolSelection) {
