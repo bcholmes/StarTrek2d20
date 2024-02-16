@@ -10,6 +10,7 @@ At the moment, the code supports the following languages:
 2. French
 3. German
 4. Spanish
+5. Russian
 
 I'm not averse to adding other languages; I'm just trying to make the best effort vs. benefit decision possible.
 If you really think we should have another language included (and, especially, if you're willing to help out
@@ -36,6 +37,15 @@ Broadly speaking, there are three types of text in the application:
    this category. This is probably the largest amount of text to deal with, and this work has started, but there's
    still a lot to do.
 
+### PDFs
+
+Static text that appears on PDF character sheets and starship sheets are part of the PDF itself, and is not
+translated. At the moment, there's a translated character sheet for German (which only appears if the user)
+has selected German as a language; all other PDFs are in English.
+
+If you've created a character sheet in another language, feel free to send it along and I'll include it
+when I can.
+
 ### Process
 
 At the moment, all the translation text is contained in a
@@ -61,6 +71,12 @@ changed that I wasn't expecting to change.
 
 The next time I build and deploy the app, the converted text is picked up, and the new translations are
 available.
+
+### Conversion Utility
+
+The utility is a simple node script. From the command line in the `translations` directory, I run:
+
+    node convertTranslations.js
 
 ### Blank Entries
 

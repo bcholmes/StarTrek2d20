@@ -15,7 +15,7 @@
     "Home.selection": "Выберите инстумент.",
     "Home.characterButton": "Персонажи и Корабли",
     "Home.talentsButton": "Обзор Талантов",
-    "Home.tokenCreator": "Жетоны",
+    "Home.tokenCreator": "Токены",
 
     "NpcConfigurationPage.npcType": "Тип ВП",
     "NpcConfigurationPage.specialization": "Специализация",
@@ -30,7 +30,7 @@
     "TokenCreator.option.rounded": "Скругленное",
     "TokenCreator.option.bordered": "Обрамленное",
 
-    "TokenCreator.section.species": "Расы",
+    "TokenCreator.section.species": "Раса",
 
     "TokenCreator.section.species.options": "Опции",
 
@@ -160,5 +160,35 @@
     "SpaceframeOptionPage.text": "Вы хотите обычную рамку или нестандартную?",
 
     "SpaceframeOptionPage.button.standardSpaceframe": "Стандартная рамка",
-    "SpaceframeOptionPage.button.customSpaceframe": "Нестандартная рамка"
+    "SpaceframeOptionPage.button.customSpaceframe": "Нестандартная рамка",
+
+    "Species.aenar.name": "Аэнар",
+
+    "Species.andorian.name": "Андорианец",
+
+    "Species.aurelian.name": "Аурелиан",
+
+    "Species.bajoran.name": "Баджорец",
+
+    "Species.betazoid.name": "Бетазоид",
+
+    "Species.bolian.name": "Булианец",
+
+    "Species.denobulan.name": "Денобуланец",
+
+    "Species.ferengi.name": "Ферренги",
+
+    "Species.hologram.name": "Голограмма",
+
+    "Species.horta.name": "Хорта",
+
+    "Species.human.name": "Человек",
+
+    "Species.kazon.name": "Кейзон",
+
+    "Species.klingon.name": "Клингон",
+
+    "Species.nausicaan.name": "Наусиканец",
+
+    "Species.orion.name": "Орионец"
 }
