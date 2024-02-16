@@ -8,4 +8,8 @@ export class AliasModel {
         this.name = name;
         this.source = source;
     }
+
+    get localizedName() {
+        return this.name;
+    }
 }

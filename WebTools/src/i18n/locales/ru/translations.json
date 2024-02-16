@@ -3,6 +3,7 @@
     "LanguageNotice.text": "Мы экспериментируем с базовой поддержкой международных языкоа. На данный момент это начальная стадия, но мы надеемся добавить больше языков в дальнейшем.",
     "LanguageNotice.useEnglish": "Пожалуйста используйте Английский вариант",
 
+    "Lcars.copyright": "STAR TREK и сопутствующие обозначения и логотипы являются товарными знаками CBS Studios. Все права защищены.",
     "Lcars.feedback": "Обратная связь",
     "Lcars.history": "История",
     "Lcars.news": "Новости",
@@ -14,9 +15,17 @@
     "Home.selection": "Выберите инстумент.",
     "Home.characterButton": "Персонажи и Корабли",
     "Home.talentsButton": "Обзор Талантов",
+    "Home.tokenCreator": "Жетоны",
 
-    "NpcConfigurationPage.npcType": "Тип НИП",
+    "NpcConfigurationPage.npcType": "Тип ВП",
     "NpcConfigurationPage.specialization": "Специализация",
+    "NpcConfigurationPage.text": "Определите тип ВП которого вы пытаетесь создать.",
+
+    "SourceSelectionPage.sourceInstruction": "Выберите источники. Уточните с ГМ-ом если возможно.",
+    "SourceSelectionPage.gameTypeInstruction": "В какой вид игры вы играете?",
+    "SourceSelectionPage.sourceNote": "Некоторые источники еще на доступны; скоро добавим!",
+    "SourceSelectionPage.standardGameType": "Стандартные правила НРИ",
+    "SourceSelectionPage.soloGameType": "Соло НРИ используя Правила Дневник Капитана",
 
     "TokenCreator.option.rounded": "Скругленное",
     "TokenCreator.option.bordered": "Обрамленное",
@@ -28,6 +37,7 @@
     "TokenCreator.section.body": "Тело",
 
     "TokenCreator.section.body.uniform": "Тип униформы",
+    "TokenCreator.section.body.colour": "Цвет подразделения",
     "TokenCreator.section.body.rank": "Ранг",
     "TokenCreator.section.body.type": "Телосложение",
     "TokenCreator.section.body.uniformVariant": "Варианты униформы",
@@ -53,6 +63,7 @@
     "TokenCreator.section.nose": "Нос",
 
     "TokenCreator.section.nose.shape": "Форма носа",
+    "TokenCreator.section.nose.nasoLabial": "Носогубные Складки",
 
     "TokenCreator.section.eyes": "Глаза",
 
@@ -69,9 +80,9 @@
     "ViewPage.viewSupportingCharacter": "Просмотр Персонажей Поддержки",
     "ViewPage.viewNpc": "Просмотр НИП",
     "ViewPage.viewMainCharacter": "Просмотр Игрового Персонажа",
-    "ViewPage.viewStarship": "Просмотр Корабля",
+    "ViewPage.viewStarship": "Просмотр Звездолета",
     "ViewPage.errorMessage": "Что-то пошло чертовски не так. Вероятно мы оказались в зеркальной вселенной.",
-    "ViewPage.unnamedStarship": "Безымянный корабль",
+    "ViewPage.unnamedStarship": "Безымянный Звездолет",
 
     "CareerEventDetails.errorFocus": "Выберите специализацию",
 
@@ -84,7 +95,7 @@
 
     "CareerSelectionPage.title": "Выберите Карьеру",
     "CareerSelectionPage.selectCareer": "Выберите Карьеру",
-    "CareerSelectionPage.rollCareer": "Рандомальная Карьера",
+    "CareerSelectionPage.rollCareer": "Рандомная Карьера",
 
     "CharacterSheetDialog.title": "Выберите модель",
 
@@ -94,5 +105,60 @@
 
     "CharacterTypePage.whatType": "Какой это тип персонажа?",
     "CharacterTypePage.whatGovernment": "Какое правительство представляет этот персонаж?",
-    "CharacterTypePage.otherGovernmentName": "Название правительства?"
+    "CharacterTypePage.otherGovernmentName": "Название правительства?",
+
+    "EducationPage.type.starfleet": "Академия Звездного Флота",
+
+    "EducationPage.starfleet.academy": "Офицерская Академия",
+    "EducationPage.starfleet.other": "Другое",
+
+    "EnvironmentPage.showAlt": "Позволить альтернативную Среду обитания (Решение ГМ-а)",
+
+    "EnvironmentPage.button.selectEnvironment": "Выберите Среду обитания",
+    "EnvironmentPage.button.rollEnvironment": "Рандомная Среда обитания",
+    "EnvironmentPage.button.selectAltEnvironment": "Выбрать Альтернативную Среду обитания",
+    "EnvironmentPage.button.rollAltEnvironment": "Рандомная Альтернативная Среда обитания",
+
+    "EnvironmentPage.error.attributes": "Вы должны выбрать 1 Качество для улучшения чтобы продолжить",
+    "EnvironmentPage.error.disciplines": "Вы должны выбрать 1 Знание для улучшения чтобы продолжить",
+
+    "EnvironmentPage.simple.instruction": "Или выберите, или рандомизируйте Среду обитания",
+
+    "SoloConstructTypePage.character": "Персонаж",
+    "SoloConstructTypePage.instruction": "Вы создаете персонажа или звездолет?",
+    "SoloConstructTypePage.starship": "Звездолет",
+
+    "SoloEarlyOutlookDetailsPage.errorDiscipline": "Пожалуйста выберите Знание",
+    "SoloEarlyOutlookDetailsPage.errorFocus": "Пожалуйста выберите Специализацию",
+
+    "SoloEducationDetailsPage.selectThree": "(выберите три)",
+    "SoloEducationDetailsPage.primaryDiscipline": "Основное Знание",
+    "SoloEducationDetailsPage.secondaryDiscipline": "Вторичное Знание",
+    "SoloEducationDetailsPage.errorDisciplines": "Пожалуйста выберите одно основне и два вторичных знания.",
+    "SoloEducationDetailsPage.errorAttributes": "Пожалуйста выберите три качества.",
+    "SoloEducationDetailsPage.errorValue": "Пожалуйста выберите значение.",
+    "SoloEducationDetailsPage.errorFocuses": "Пожалуйста выберите свои специализации.",
+
+    "SoloEducationPage.type.starfleet": "Академия Звездного Флота",
+
+    "SoloEnvironmentDetailsPage.errorAttribute": "Пожалуйста выберите качество.",
+    "SoloEnvironmentDetailsPage.errorDiscipline": "Пожалуйста выберите знание.",
+    "SoloEnvironmentDetailsPage.errorValue": "Пожалуйста выберите значение.",
+
+    "SoloEnvironmentPage.settings": "Настройки",
+
+    "SoloEraSelectionPage.instruction": "Выберите эру для своего персонажа или назначьте рандомально.",
+
+    "SoloFinishingTouchesPage.select": "(Выберите {{count}})",
+    "SoloFinishingTouchesPage.errorAttributes": "Пожалуйста выберите {{count}} качеств",
+    "SoloFinishingTouchesPage.errorDisciplines": "Пожалуйста выберите {{count}} знаний",
+    "SoloFinishingTouchesPage.errorValue": "Пожалуйста выберите значение",
+
+    "SoloSpeciesPage.errorAttributes": "Пожалуйста выберите 3 качества.",
+    "SoloSpeciesPage.instruction": "Выберите расу для своего персонажа или назначьте рандомально.",
+
+    "SpaceframeOptionPage.text": "Вы хотите обычную рамку или нестандартную?",
+
+    "SpaceframeOptionPage.button.standardSpaceframe": "Стандартная рамка",
+    "SpaceframeOptionPage.button.customSpaceframe": "Нестандартная рамка"
 }

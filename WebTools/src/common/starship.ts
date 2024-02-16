@@ -283,14 +283,14 @@ export class Starship extends Construct {
 
     getNonSpaceframeTalentSelectionList() {
         let talents: Map<string, TalentSelection> = new Map();
-        if (this.profileTalent) {
+        if (this.profileTalent && this.stereotype !== Stereotype.SoloStarship) {
             this.addTalent(new TalentSelection(TalentsHelper.getTalent(this.profileTalent.name)), talents);
         }
 
         this.additionalTalents.forEach(t => {
             this.addTalent(new TalentSelection(TalentsHelper.getTalent(t.name)), talents);
         });
-        if (this.missionPodModel) {
+        if (this.missionPodModel && this.stereotype !== Stereotype.SoloStarship) {
             this.missionPodModel.talents.forEach(t => {
                 this.addTalent(new TalentSelection(t), talents);
             });
@@ -303,20 +303,20 @@ export class Starship extends Construct {
 
     getTalentSelectionList() {
         let talents: Map<string, TalentSelection> = new Map();
-        if (this.spaceframeModel) {
+        if (this.spaceframeModel && this.stereotype !== Stereotype.SoloStarship) {
             this.spaceframeModel.talents.forEach(t => {
                 this.addTalent(t, talents);
             });
         }
 
-        if (this.profileTalent) {
+        if (this.profileTalent && this.stereotype !== Stereotype.SoloStarship) {
             this.addTalent(new TalentSelection(TalentsHelper.getTalent(this.profileTalent.name)), talents);
         }
 
         this.additionalTalents.forEach(t => {
             this.addTalent(new TalentSelection(TalentsHelper.getTalent(t.name)), talents);
         });
-        if (this.missionPodModel) {
+        if (this.missionPodModel && this.stereotype !== Stereotype.SoloStarship) {
             this.missionPodModel.talents.forEach(t => {
                 this.addTalent(new TalentSelection(t), talents);
             });

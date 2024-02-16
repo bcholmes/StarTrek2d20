@@ -16,6 +16,10 @@ export interface IConstructPrerequisite<T extends IConstruct> {
     describe(): string
 }
 
+export interface ICompositePrerequisite<T extends IConstruct> {
+    prerequisites: IConstructPrerequisite<T>[];
+}
+
 export class CadetPrerequisite implements IConstructPrerequisite<Character> {
     isPrerequisiteFulfilled(character: Character): boolean {
         return character.type === CharacterType.Cadet;

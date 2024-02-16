@@ -2,7 +2,7 @@ Language,en,de,es,fr,ru
 LanguageNotice.title,Hello There!,Willkommen!,¡Hola!,Salut!,Приветствуем Вас!
 LanguageNotice.text,"We're experimenting with some initial support for national languages. We're in a very preliminary stage, but we hope to be able to support more languages, soon.","Wir experimentieren mit einer grundlegenden Unterstützung für Landessprachen. Wir befinden uns in einem sehr frühen Stadium, hoffen aber, bald noch weitere Sprachen unterstützen zu können.","Estamos experimentando con algún soporte inicial para los idiomas nacionales. Estamos en una etapa muy preliminar, pero esperamos poder soportar más idiomas, pronto.","Nous expérimentons un soutien initial pour les langues nationales. Nous sommes dans une phase très préliminaire, mais nous espérons être en mesure de prendre en charge plus de langues, bientôt.","Мы экспериментируем с базовой поддержкой международных языкоа. На данный момент это начальная стадия, но мы надеемся добавить больше языков в дальнейшем."
 LanguageNotice.useEnglish,Use English instead,Stattdessen Englisch verwenden,Usar inglés,Utiliser l'anglais,Пожалуйста используйте Английский вариант
-Lcars.copyright,STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.,STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.,STAR TREK y las marcas y logotipos relacionados son marcas comerciales de CBS Studios Inc. Todos los derechos reservados.,STAR TREK et les marques et logos associés sont des marques commerciales de CBS Studios Inc. Tous droits réservés.,
+Lcars.copyright,STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.,STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.,STAR TREK y las marcas y logotipos relacionados son marcas comerciales de CBS Studios Inc. Todos los derechos reservados.,STAR TREK et les marques et logos associés sont des marques commerciales de CBS Studios Inc. Tous droits réservés.,STAR TREK и сопутствующие обозначения и логотипы являются товарными знаками CBS Studios. Все права защищены.
 Lcars.credits,Credits,Danksagungen,Créditos,Crédits,
 Lcars.feedback,Feedback,Feedback,,Votre Avis,Обратная связь
 Lcars.history,History,Verlauf,,Historique,История
@@ -13,24 +13,24 @@ Home.title,STA Character Creator,,,,Генератор Персонажей STA
 Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sélectionnez l'outil.,Выберите инстумент.
 Home.characterButton,Characters & Starships,Charaktere & Raumschiffe,Personajes y naves espaciales,Personnages et vaisseaux spatiaux,Персонажи и Корабли
 Home.talentsButton,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents,Обзор Талантов
-Home.tokenCreator,Tokens,Token,,Jetons,
+Home.tokenCreator,Tokens,Token,,Jetons,Жетоны
 NpcConfigurationPage.option.anyMajorSpecies,Any Major Species,Jede bedeutende Spezies,,N'importe quelle Espèces Majeure,
 NpcConfigurationPage.option.anySpecialization,Any Specialization,Jede Spezialisierung,,N'importe quelle Spécialisation,
-NpcConfigurationPage.npcType,NPC Type,NPC Typ,,Type de PNJ,Тип НИП
+NpcConfigurationPage.npcType,NPC Type,NPC Typ,,Type de PNJ,Тип ВП
 NpcConfigurationPage.specialization,Specialization,Spezialisierung,,Spécialisation,Специализация
-NpcConfigurationPage.text,Specify what kind of NPC you're trying to create.,"Lege fest, welche Art NPC du erstellen möchtest.",,Spécifiez quel type de PNJ vous voulez créer,
-SourceSelectionPage.sourceInstruction,Select sources. Ask your GM which are available.,"Wählen Sie die verfügbaren Quellen aus. Fragen Sie, wenn nötig, Ihre Spielleitung, welche zur Verfügung stehen.",Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.,Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.,
-SourceSelectionPage.gameTypeInstruction,What type of game are you playing?,Welche Art von Spiel spielst du?,,A quel type de jeu jouez vous?,
-SourceSelectionPage.sourceNote,Some sources are not yet implemented; check back soon!,Einige Quellen sind noch nicht verfügbar - schauen Sie bald wieder vorbei!,Algunas fuentes aún no se han aplicado; ¡Vuelve pronto!,Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!,
-SourceSelectionPage.standardGameType,Standard RPG Rules,Standard Rollenspielregeln,,Règles de JDR standard,
-SourceSelectionPage.soloGameType,Solo RPG using the Captain's Log Rules,Solo Rollenspiel mit den Captain's Log Regeln,,JDR solo utilisant les règles de Captain's Log,
+NpcConfigurationPage.text,Specify what kind of NPC you're trying to create.,"Lege fest, welche Art NPC du erstellen möchtest.",,Spécifiez quel type de PNJ vous voulez créer,Определите тип ВП которого вы пытаетесь создать.
+SourceSelectionPage.sourceInstruction,Select sources. Ask your GM which are available.,"Wählen Sie die verfügbaren Quellen aus. Fragen Sie, wenn nötig, Ihre Spielleitung, welche zur Verfügung stehen.",Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.,Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.,Выберите источники. Уточните с ГМ-ом если возможно.
+SourceSelectionPage.gameTypeInstruction,What type of game are you playing?,Welche Art von Spiel spielst du?,,A quel type de jeu jouez vous?,В какой вид игры вы играете?
+SourceSelectionPage.sourceNote,Some sources are not yet implemented; check back soon!,Einige Quellen sind noch nicht verfügbar - schauen Sie bald wieder vorbei!,Algunas fuentes aún no se han aplicado; ¡Vuelve pronto!,Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!,Некоторые источники еще на доступны; скоро добавим!
+SourceSelectionPage.standardGameType,Standard RPG Rules,Standard Rollenspielregeln,,Règles de JDR standard,Стандартные правила НРИ
+SourceSelectionPage.soloGameType,Solo RPG using the Captain's Log Rules,Solo Rollenspiel mit den Captain's Log Regeln,,JDR solo utilisant les règles de Captain's Log,Соло НРИ используя Правила Дневник Капитана
 TokenCreator.option.rounded,Rounded,Abgerundet,,Arrondi,Скругленное
 TokenCreator.option.bordered,Bordered,Eingerahmt,,Encadré,Обрамленное
 TokenCreator.section.species,Species,Spezies,,Espèce,Расы
 TokenCreator.section.species.options,Options,Optionen,,Options,Опции
 TokenCreator.section.body,Body,Körper,,Corps,Тело
 TokenCreator.section.body.uniform,Uniform Type,Uniformtyp,,Type d'Uniforme,Тип униформы
-TokenCreator.section.body.colour,Division Colour,Abteilungsfarbe,,Couleur de Division,
+TokenCreator.section.body.colour,Division Colour,Abteilungsfarbe,,Couleur de Division,Цвет подразделения
 TokenCreator.section.body.rank,Rank,Rang,,Rang,Ранг
 TokenCreator.section.body.type,Body Type,Körpertyp,,Type de Corps,Телосложение
 TokenCreator.section.body.uniformVariant,Uniform Variant,Uniformvariante,,Variante d'Uniforme,Варианты униформы
@@ -48,7 +48,7 @@ TokenCreator.section.mouth.moustache,Moustache,Schnurrbart,,Moustache,Усы
 TokenCreator.section.mouth.beard,Beard,Bart,,Barbe,Борода
 TokenCreator.section.nose,Nose,Nase,,Nez,Нос
 TokenCreator.section.nose.shape,Nose Shape,Nasenform,,Forme du Nez,Форма носа
-TokenCreator.section.nose.nasoLabial,Naso-Labial Folds,Nasenlippenfurche,,Sillons Nasogéniens,
+TokenCreator.section.nose.nasoLabial,Naso-Labial Folds,Nasenlippenfurche,,Sillons Nasogéniens,Носогубные Складки
 TokenCreator.section.eyes,Eyes,Augen,,Yeux,Глаза
 TokenCreator.section.eyes.style,Eye Style,Augenstil,,Forme des Yeux,Тип глаз
 TokenCreator.section.eyes.colour,Eye Colour,Augenfarbe,,Couleur desYeux,Цвет глаз
@@ -61,9 +61,9 @@ ViewPage.viewSupportingCharacter,View Supporting Character,Nebencharakter anzeig
 ViewPage.viewNpc,View NPC,NSC anzeigen,,Voir PNJ,Просмотр НИП
 ViewPage.viewMainCharacter,View Main Character,Hauptfigur anzeigen,Ver personaje principal,Voir le personnage principal,Просмотр Игрового Персонажа
 ViewPage.viewSoloCharacter,View Solo Character,Solocharakter anzeigen,,,
-ViewPage.viewStarship,View Starship,Raumschiff ansehen,Ver nave espacial,Voir le vaisseau spatial,Просмотр Корабля
+ViewPage.viewStarship,View Starship,Raumschiff ansehen,Ver nave espacial,Voir le vaisseau spatial,Просмотр Звездолета
 ViewPage.errorMessage,"Things have gone terribly, terribly wrong. We might be in the mirror universe.",Etwas ist ganz schrecklich schief gelaufen. Wir könnten uns im Spiegeluniversum befinden.,"Las cosas han ido terriblemente, terriblemente mal. Podríamos estar en el universo espejo.","Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir.",Что-то пошло чертовски не так. Вероятно мы оказались в зеркальной вселенной.
-ViewPage.unnamedStarship,Unnamed Starship,Unbenanntes Raumschiff,Nave espacial sin nombre,Vaisseau sans nom,Безымянный корабль
+ViewPage.unnamedStarship,Unnamed Starship,Unbenanntes Raumschiff,Nave espacial sin nombre,Vaisseau sans nom,Безымянный Звездолет
 CareerEvents.instruction,"Your career is a tapestry of events and experiences, but amongst this, a few will have been pivotal moments in your life. Define which moments of your life are important in retrospect, and what seemed definitive to an ensign in their early 20s may be inconsequential to that same officer decades later.","Deine Karriere ist ein Sammelsurium von Ereignissen und Erfahrungen, aber einige davon werden entscheidende Momente in deinem Leben gewesen sein. Bestimme, welche Momente deines Lebens im Nachhinein wichtig sind, und was einem Fähnrich mit Anfang 20 entscheidend erschien, demselben Offizier Jahrzehnte später aber belanglos erscheinen mag.",,,
 CareerEvents.standard,Standard,Standard,,Standard,
 CareerEvents.standardAndUnofficial,Standard and Unofficial,Standard und Inoffizielle,,Standard et Non Officiel,
@@ -83,7 +83,7 @@ AddCharacterView.errorCharacterType,"Whoops! We only support characters, at the 
 AddCharacterView.characterPrefix,Character:,Charakter:,Carácter:,Personnage:,Персонаж:
 CareerSelectionPage.title,Select Career,Karriere wählen,,Choisir une Carrière,Выберите Карьеру
 CareerSelectionPage.selectCareer,Select Career,Karriere wählen,,Choisir une Carrière,Выберите Карьеру
-CareerSelectionPage.rollCareer,Roll Career,Zufällige Karriere,,Carrière Aléatoire,Рандомальная Карьера
+CareerSelectionPage.rollCareer,Roll Career,Zufällige Karriere,,Carrière Aléatoire,Рандомная Карьера
 CareerSelectionPage.exclusionText,"Your character has a Talent (""Advanced Team Dynamics"") that precludes Young characters","Dein Charakter hat ein Talent (""Erweiterte Teamdynamik""), welches junge Charaktere ausschließt",,"Votre personnage a le talent ""Dynamyque de Groupe Avancée"" qui empêche les personnages ""Jeunes""",
 CareerSelectionPage.selectOneTalent,One talent of choice,Ein Talent deiner Wahl,,Un talent au choix,
 CharacterSheetDialog.title,Choose Template,Vorlage auswählen,,Choisir un Modèle,Выберите модель
@@ -137,22 +137,22 @@ A graduate of the Academy receives a commission as a Starfleet officer, with the
 
 You may choose your character’s Academy track, or randomly select it.",,,,
 EducationPage.type.cadet,Cadet Training,,,,
-EducationPage.type.starfleet,Starfleet Academy,Sternenflottenakademie,,,
+EducationPage.type.starfleet,Starfleet Academy,Sternenflottenakademie,,,Академия Звездного Флота
 EducationPage.type.klingonWarrior,Klingon Defense Force,Klingonische Verteidigungsstreitmacht,,,
 EducationPage.type.civilian,Civilian Career Training,Zivile Berufsausbildung,,,
 EducationPage.type.alliedMilitary,Allied Military Training,Militärische Ausbildung,,,
 EducationPage.type.ambassadorDiplomat,Diplomatic Training,Diplomatische Ausbildung,,,
-EducationPage.starfleet.academy,Officer Academy,Offizierslaufbahn,,,
+EducationPage.starfleet.academy,Officer Academy,Offizierslaufbahn,,,Офицерская Академия
 EducationPage.starfleet.enlisted,Enlisted Training,Mannschaftslaufbahn,,,
-EducationPage.starfleet.other,Other,Andere,,,
-EnvironmentPage.showAlt,Allow alternate Environments (GM's decision),Alternative Herkunft erlauben (SL-Entscheidung),,Autoriser les Environements alternatifs (Décision du MJ),
-EnvironmentPage.button.selectEnvironment,Select Environment,Herkunft wählen,,Choisir Environnement,
-EnvironmentPage.button.rollEnvironment,Roll Environment,Zufällige Herkunft,,Environement Aléatoire,
-EnvironmentPage.button.selectAltEnvironment,Select Alternate Environment,Alternative Herkunft wählen,,Choisir un Environnement Alternatif,
-EnvironmentPage.button.rollAltEnvironment,Roll Alternate Environment,Zufällige alternative Herkunft,,Environement Alternatif Aléatoire,
-EnvironmentPage.error.attributes,You must select 1 Attribute to improve before proceeding.,"Sie müssen 1 Attribut, welches verbessert werden soll auswählen, bevor Sie fortfahren",,Vous devez choisir 1 Attribut à améliorer avant de continuer,
-EnvironmentPage.error.disciplines,You must select 1 Discipline to improve before proceeding.,"Sie müssen 1 Disziplin, welche verbessert werden soll auswählen, bevor Sie fortfahren",,Vous devez choisir 1 Discipline à améliorer avant de continuer,
-EnvironmentPage.simple.instruction,Either select or roll your Environment.,Herkunft wählen oder auswürfeln,,Choisisez ou tirez au sort votre Environnement,
+EducationPage.starfleet.other,Other,Andere,,,Другое
+EnvironmentPage.showAlt,Allow alternate Environments (GM's decision),Alternative Herkunft erlauben (SL-Entscheidung),,Autoriser les Environements alternatifs (Décision du MJ),Позволить альтернативную Среду обитания (Решение ГМ-а)
+EnvironmentPage.button.selectEnvironment,Select Environment,Herkunft wählen,,Choisir Environnement,Выберите Среду обитания
+EnvironmentPage.button.rollEnvironment,Roll Environment,Zufällige Herkunft,,Environement Aléatoire,Рандомная Среда обитания
+EnvironmentPage.button.selectAltEnvironment,Select Alternate Environment,Alternative Herkunft wählen,,Choisir un Environnement Alternatif,Выбрать Альтернативную Среду обитания
+EnvironmentPage.button.rollAltEnvironment,Roll Alternate Environment,Zufällige alternative Herkunft,,Environement Alternatif Aléatoire,Рандомная Альтернативная Среда обитания
+EnvironmentPage.error.attributes,You must select 1 Attribute to improve before proceeding.,"Sie müssen 1 Attribut, welches verbessert werden soll auswählen, bevor Sie fortfahren",,Vous devez choisir 1 Attribut à améliorer avant de continuer,Вы должны выбрать 1 Качество для улучшения чтобы продолжить
+EnvironmentPage.error.disciplines,You must select 1 Discipline to improve before proceeding.,"Sie müssen 1 Disziplin, welche verbessert werden soll auswählen, bevor Sie fortfahren",,Vous devez choisir 1 Discipline à améliorer avant de continuer,Вы должны выбрать 1 Знание для улучшения чтобы продолжить
+EnvironmentPage.simple.instruction,Either select or roll your Environment.,Herkunft wählen oder auswürfeln,,Choisisez ou tirez au sort votre Environnement,"Или выберите, или рандомизируйте Среду обитания"
 EnvironmentPage.starfleet.instruction,"Regardless of their species, Starfleet officers come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.","Unabhängig von ihrer Spezies stammen Sternenflotten-Offiziere von vielen Orten auf vielen Welten. Während viele Menschen (beispielsweise) auf der Erde geboren wurden, gibt es so viele, die auf kolonisierten Welten geboren werden, auf Raumstationen oder auf Raumschiffen.",,"Indépendamment de leur espèce, les officiers de Starfleet viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau.",
 EnvironmentPage.klingon.instruction,"The Klingon Empire is vast and expands with each new conquest. Thus, Klingons come from many different worlds, from the likes of Qo’noS and Khitomer in the heart of the Empire, to border colonies that may have only been claimed in the last generation. Further, as a culture which has been spacefaring for centuries, countless Klingons are raised in space, aboard starbases and transport ships across the Empire.","Das klingonische Reich ist weit und weitet sich mit jeder Eroberung aus. Daher stammen Klingonen von vielen verschiedenen Welten, von solchen im Herzen des Reichs wie Qo'noS und Khitomer bis zu den fernen Kolonien nahe der Grenzen, die erst in der letzten Generation erobert wurden. Als eine Kultur, die seit Jahrhunderten Raumfahrt betreibt sind zahllose Klingonen im Weltraum aufgewachsen, auf Raumstationen oder Transportschiffen im ganzen Reich.",,"L'Empire Klingon est vaste et s'étend avec chaque nouvelle conquète. Ainsi les Klingons viennent de nombreux mondes,des mondes comme Qo’noS ou Khitomer au cœur de l'Empire, aux colonies frontières qui peuvent avoir été revendiqués depuis juste une génération. De plus, en tant que culture voyageant dans l'espace depuis des siècles, d'innombrables Klingons sont élevés dans l'espace, dans des bases spatiales et des vaisseaux de transport à travers l'Empire.",
 EnvironmentPage.civilian.instruction,"Regardless of their species, people come from many places, across many worlds. While many Humans (for example) are born on Earth, there are many more who were born on a colonized world elsewhere in the Galaxy, or on a starbase or a starship.","Unabhängig von ihrer Spezies stammen Leute von vielen Orten auf vielen Welten. Während viele Menschen (beispielsweise) auf der Erde geboren wurden, gibt es so viele, die auf kolonisierten Welten geboren werden, auf Raumstationen oder auf Raumschiffen.",,"Indépendamment de leur espèce, les gens viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau.",
@@ -193,9 +193,9 @@ Hat dein Charaktere die Option „Grünschnabel“ gewählt, dann nimm an, dass 
 Votre personnage dispose de deux événements de carrière déterminants, choisis ou déterminés au hasard dans la liste ci-dessous, et bénéficie de tous les avantages qu'ils procurent.
 
 Pour les personnages ayant choisi la durée de carrière novice, supposez que ces événements de carrière ont eu lieu pendant le séjour du personnage à l'Académie ou équivalent, peut-être lors d'une mission d'entraînement sur le terrain à bord d'un vaisseau spatial.",
-SoloConstructTypePage.character,Character,Charakter,,Personnage,
-SoloConstructTypePage.instruction,"Are you creating a character, or a starship?",Erstellst du einen Charakter oder ein Raumschiff?,,Créez vous un personnage ou un vaisseau?,
-SoloConstructTypePage.starship,Starship,Raumschiff,,Vaisseau,
+SoloConstructTypePage.character,Character,Charakter,,Personnage,Персонаж
+SoloConstructTypePage.instruction,"Are you creating a character, or a starship?",Erstellst du einen Charakter oder ein Raumschiff?,,Créez vous un personnage ou un vaisseau?,Вы создаете персонажа или звездолет?
+SoloConstructTypePage.starship,Starship,Raumschiff,,Vaisseau,Звездолет
 SoloEarlyOutlookPage.instruction,"Driving them into their education and career, your character formed an early outlook that shaped them in many ways. You may choose from three approaches of how to determine the impact of this outlook. The first is to select their upbringing, and determine whether they accepted or rebelled against it. The second – applying to Klingon characters or those raised in a Klingon household – is to select their caste, and whether they accepted or rejected its expectations. The last option is to simply choose an aspiration which drove your character onto their journey, and whether they pursued or gave up on it.
 
 Choose the approach that makes the most sense for your character and storytelling style. Once the approach is chosen, you may select or randomly determine the specific option within that approach.",,,"En suivant son éducation et sa carrière, votre personnage a formé une vision précoce qui l'a façonné de plusieurs manières. Vous pouvez choisir parmi trois approches pour déterminer l'impact de cette perspective. La première consiste à sélectionner son éducation et à déterminer s'il l'a accepté ou s'est rebellé contre elle. La seconde, qui s'applique uniquement à un personnage Klingon élevé au sein d'une Maison, est de choisir sa Caste et déterminer s'il s'y est conformé ou pas. La dernière option consiste simplement à choisir une aspiration qui a conduit votre personnage à son voyage, et s'ils l'a poursuivi ou abandonné. 
@@ -204,51 +204,51 @@ Choisissez l’approche qui convient le mieux à votre personnage et à votre st
 SoloEarlyOutlookPage.upbringings,Upbringings,Erziehungen,,Educations,
 SoloEarlyOutlookPage.castes,Castes,Kasten,,Castes,
 SoloEarlyOutlookPage.aspirations,Aspirations,Ziele,,Aspirations,
-SoloEarlyOutlookDetailsPage.errorDiscipline,Please select a discipline.,Bitte wähle eine Disziplin.,,Choisissez une Discipline SVP.,
-SoloEarlyOutlookDetailsPage.errorFocus,Please select a focus.,Bitte wähle einen Fokus.,,Choisissez un Focus SVP,
-SoloEducationDetailsPage.selectThree,(Select three),(Drei auswählen),,(Choisir trois),
-SoloEducationDetailsPage.primaryDiscipline,Primary Discipline,Primäre Disziplin,,Discipline Principale,
-SoloEducationDetailsPage.secondaryDiscipline,Secondary Disciplines,Sekundäre Disziplin,,Discipline Secondaires,
-SoloEducationDetailsPage.errorDisciplines,Please select one primary and two secondary disciplines.,Bitte wähle eine primäre und zwei sekundäre Disziplinen.,,Sélectionnez 1 discipline principale et 2 secondaires SVP,
-SoloEducationDetailsPage.errorAttributes,Please select three attributes.,Bitte wähle drei Attribute.,,Sélectionnez 3 attributs SVP.,
-SoloEducationDetailsPage.errorValue,Please select a value.,Bitte wähle eine Überzeugung.,,Sélectionnez une Valeur SVP.,
-SoloEducationDetailsPage.errorFocuses,Please select your focuses.,Bitte wähle deine Fokusse.,,,
+SoloEarlyOutlookDetailsPage.errorDiscipline,Please select a discipline.,Bitte wähle eine Disziplin.,,Choisissez une Discipline SVP.,Пожалуйста выберите Знание
+SoloEarlyOutlookDetailsPage.errorFocus,Please select a focus.,Bitte wähle einen Fokus.,,Choisissez un Focus SVP,Пожалуйста выберите Специализацию
+SoloEducationDetailsPage.selectThree,(Select three),(Drei auswählen),,(Choisir trois),(выберите три)
+SoloEducationDetailsPage.primaryDiscipline,Primary Discipline,Primäre Disziplin,,Discipline Principale,Основное Знание
+SoloEducationDetailsPage.secondaryDiscipline,Secondary Disciplines,Sekundäre Disziplin,,Discipline Secondaires,Вторичное Знание
+SoloEducationDetailsPage.errorDisciplines,Please select one primary and two secondary disciplines.,Bitte wähle eine primäre und zwei sekundäre Disziplinen.,,Sélectionnez 1 discipline principale et 2 secondaires SVP,Пожалуйста выберите одно основне и два вторичных знания.
+SoloEducationDetailsPage.errorAttributes,Please select three attributes.,Bitte wähle drei Attribute.,,Sélectionnez 3 attributs SVP.,Пожалуйста выберите три качества.
+SoloEducationDetailsPage.errorValue,Please select a value.,Bitte wähle eine Überzeugung.,,Sélectionnez une Valeur SVP.,Пожалуйста выберите значение.
+SoloEducationDetailsPage.errorFocuses,Please select your focuses.,Bitte wähle deine Fokusse.,,,Пожалуйста выберите свои специализации.
 SoloEducationPage.instruction.alliedMilitary,"You have chosen to commit your life to your government's military. You have undergone necessary training to prepare for your military role, whether that be formal officer education, or much more informal guerilla training.",,,,
 SoloEducationPage.instruction.ambassadorDiplomat,"The years spent in training are some of the most memorable and definitive of an diplomat’s life, shaping the direction of their career going forwards. Diplomatic training takes years, covering a mixture of intense training, academic studies, and practical experiences.",,,,
 SoloEducationPage.instruction.civilian,"The years spent in training are some of the most memorable and definitive of an civilian’s life, shaping the direction of their career going forwards. For some, that involves formal education; for others, it's the school of hard knocks.",,,,
 SoloEducationPage.instruction.starfleet,"The years spent at Starfleet Academy are some of the most memorable and definitive of an officer’s life, shaping the direction of their career going forwards. For those who pass the grueling entrance examinations, the Academy takes four years, covering a mixture of intense training, academic studies, and practical experiences. Much of this takes place within the main Starfleet Academy campus in San Francisco on Earth, but other campuses and annexes exist across the Federation, and a cadet may spend time at any of these before they graduate.
 
 Alternatively, you may opt for an Enlisted character. This is however purely background and does not affect you in more ways than the fact that you never went to Starfleet Academy and cannot select Command as your Major. Either select or roll your Academy Track.",,,,
-SoloEducationPage.type.starfleet,Starfleet Academy,Sternenflottenakademie,,,
+SoloEducationPage.type.starfleet,Starfleet Academy,Sternenflottenakademie,,,Академия Звездного Флота
 SoloEducationPage.type.cadet,Cadet Training,Kadettenausbildung,,,
 SoloEducationPage.type.civilian,Civilian Career Training,Zivile Berufsausbildung,,,
 SoloEducationPage.type.alliedMilitary,Allied Military Training,Militärische Ausbildung,,,
 SoloEducationPage.type.ambassadorDiplomat,Diplomatic Training,Diplomatische Ausbildung,,,
 SoloEducationTypePage.instruction,"Some characters will have received their education at Starfleet Academy. Others may have received theirs on the streets of a busy commercial colony, traveling among the stars, or within the societal structure of another civilization.","Einige Charaktere werden ihre Ausbildung an der Sternenflottenakademie erhalten haben. Andere haben ihre Ausbildung vielleicht auf den Straßen einer geschäftigen Handelskolonie, auf Reisen zwischen den Sternen oder in der Gesellschaftsstruktur einer anderen Zivilisation erhalten.",,,
 SoloEnvironmentDetailsPage.speciesText,Which species' did the character grow up amongst?,Unter welchen Spezies ist der Charakter aufgewachsen?,,,
-SoloEnvironmentDetailsPage.errorAttribute,Please select an attribute.,Bitte wähle ein Attribut.,,,
-SoloEnvironmentDetailsPage.errorDiscipline,Please select a discipline.,Bitte wähle eine Disziplin.,,,
-SoloEnvironmentDetailsPage.errorValue,Please select a value.,Bitte wähle eine Überzeugung.,,,
+SoloEnvironmentDetailsPage.errorAttribute,Please select an attribute.,Bitte wähle ein Attribut.,,,Пожалуйста выберите качество.
+SoloEnvironmentDetailsPage.errorDiscipline,Please select a discipline.,Bitte wähle eine Disziplin.,,,Пожалуйста выберите знание.
+SoloEnvironmentDetailsPage.errorValue,Please select a value.,Bitte wähle eine Überzeugung.,,,Пожалуйста выберите значение.
 SoloEnvironmentPage.instruction,"In choosing your character's environment, you'll select either a setting or a condition. Each offers different storytelling prompts, but both provide the same type of benefits to your character.
 
 You may also randomly determine one of those options.","Bei der Wahl der Lebensumstände deines Charakters wählst du entweder eine Herkunft oder eine Lebenslage. Beide bieten unterschiedliche Möglichkeiten, die Geschichte zu erzählen, aber beide bieten die gleiche Art von Vorteilen für deinen Charakter.
 
 Du kannst auch eine dieser Optionen zufällig auswählen.",,,
-SoloEnvironmentPage.settings,Settings,Herkunft,,,
+SoloEnvironmentPage.settings,Settings,Herkunft,,,Настройки
 SoloEnvironmentPage.conditions,Conditions,Lebenslage,,,
 SoloEnvironmentPage.anotherSpeciesWorld.attributeText,Based on species.,Abhängig von der Spezies.,,,
-SoloEraSelectionPage.instruction,Select an era for your character or have one chosen randomly.,Bitte wähle eine Ära für deinen Charakter oder lass eine zufällig auswählen.,,,
+SoloEraSelectionPage.instruction,Select an era for your character or have one chosen randomly.,Bitte wähle eine Ära für deinen Charakter oder lass eine zufällig auswählen.,,,Выберите эру для своего персонажа или назначьте рандомально.
 SoloFinishingTouchesPage.attributeNote_one,The point total includes {{count}} excess point that could not be automatically added to your attributes without exceeding maximum values.,"Die Gesamtpunktzahl enthält {{count}} überschüssigen Punkt, der nicht automatisch zu deinen Attributen hinzugefügt werden konnte ohne den Maximalwert zu überschreiben.",,,
 SoloFinishingTouchesPage.attributeNote_other,The point total includes {{count}} excess points that could not be automatically added to your attributes without exceeding maximum values.,"Die Gesamtpunktzahl enthält {{count}} überschüssige Punkte, die nicht automatisch zu deinen Attributen hinzugefügt werden konnten ohne den Maximalwert zu überschreiben.",,,
-SoloFinishingTouchesPage.select,(Select {{count}}),(Wähle {{count}}),,,
-SoloFinishingTouchesPage.errorAttributes,Please choose {{count}} attributes,Bitte wähle {{count}} Attribute,,,
-SoloFinishingTouchesPage.errorDisciplines,Please choose {{count}} disciplines,Bitte wähle {{count}} Disziplinen,,,
-SoloFinishingTouchesPage.errorValue,Please choose a value,Bitte wähle eine Überzeugung,,,
-SoloSpeciesPage.errorAttributes,Please select 3 attributes.,Bitte wähle 3 Attribute.,,,
-SoloSpeciesPage.instruction,Select a species for your character or have one chosen randomly.,Wähle eine Spezies für deinen Charakter oder lass eine zufällig auswählen.,,,
-SpaceframeOptionPage.text,"Do you want a standard spaceframe, or a custom spaceframe?",Möchten Sie eine Standard-Schiffsklasse oder eine eigene Schiffsklasse?,,Voulez vous un modèle standart ou un modèle personalisé?,
-SpaceframeOptionPage.button.standardSpaceframe,Standard Spaceframe,Standard-Schiffsklasse,,Modèle Standart,
-SpaceframeOptionPage.button.customSpaceframe,Custom Spaceframe,Eigene Schiffsklasse,,Modèle personnalisé,
+SoloFinishingTouchesPage.select,(Select {{count}}),(Wähle {{count}}),,,(Выберите {{count}})
+SoloFinishingTouchesPage.errorAttributes,Please choose {{count}} attributes,Bitte wähle {{count}} Attribute,,,Пожалуйста выберите {{count}} качеств
+SoloFinishingTouchesPage.errorDisciplines,Please choose {{count}} disciplines,Bitte wähle {{count}} Disziplinen,,,Пожалуйста выберите {{count}} знаний
+SoloFinishingTouchesPage.errorValue,Please choose a value,Bitte wähle eine Überzeugung,,,Пожалуйста выберите значение
+SoloSpeciesPage.errorAttributes,Please select 3 attributes.,Bitte wähle 3 Attribute.,,,Пожалуйста выберите 3 качества.
+SoloSpeciesPage.instruction,Select a species for your character or have one chosen randomly.,Wähle eine Spezies für deinen Charakter oder lass eine zufällig auswählen.,,,Выберите расу для своего персонажа или назначьте рандомально.
+SpaceframeOptionPage.text,"Do you want a standard spaceframe, or a custom spaceframe?",Möchten Sie eine Standard-Schiffsklasse oder eine eigene Schiffsklasse?,,Voulez vous un modèle standart ou un modèle personalisé?,Вы хотите обычную рамку или нестандартную?
+SpaceframeOptionPage.button.standardSpaceframe,Standard Spaceframe,Standard-Schiffsklasse,,Modèle Standart,Стандартная рамка
+SpaceframeOptionPage.button.customSpaceframe,Custom Spaceframe,Eigene Schiffsklasse,,Modèle personnalisé,Нестандартная рамка
 SpaceframeSelectionPage.text,"The Spaceframe is the ship’s basic structure and infrastructure, and the foundation upon which everything else will be laid. At this stage, the Players select a single class, which provides the basic Systems for the ship, as well as its Scale, and its weaponry. Different classes enter and leave service at different dates, so the campaign year determines availability.","Die Klasse bestimmt die grundlegende Struktur und Infrastruktur des Schiffs, sowie das Fundament, auf dem alles andere aufbaut. Während dieses Schritts wählen die Spieler eine einzelne Klasse, die die grundlegenden Systeme des Schiffs, seine Schiffsgröße und seine Bewaffnung bereitstellt. Verschiedene Klassen werden zu unterschiedlichen Zeit in und außer Dienst gestellt, das Kampagnenjahr bestimmt also die Verfügbarkeit.",,,
 SpaceframeSelectionPage.note,"Note: The Utopia Planitia sourcebook has re-defined the stats for a number of previously-published spaceframes. Those redefined stats are presented, here.",Hinweis: Das Utopia Planitia Quellenbuch hat die Werte von einigen bereits vorher veröffentlichten Schiffsklassen neu festgelegt. Diese neuen Werte werden hier angezeigt.,,,
 SpaceframeSelectionPage.ignoreEndOfService,Ignore end-of-service date (GM's decision),Das Datum der Außerdienststellung ignorieren (Entscheidung liegt bei der Spielleitung),,,
@@ -1322,8 +1322,8 @@ Talent.ablativeArmor,Ablative Armor,,,,
 Talent.ablativeArmor.soloDescription,"The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures, such as those caused by energy weapons and torpedo blasts, dissipating the energy and protecting the ship. This plating is replaced periodically.",,,,
 Talent.ablativeFieldProjector,Ablative Field Projector,,,,
 Talent.ablativeFieldProjector.soloDescription,The ship’s shield emitters are combined with an ablative field projector that allows its graviton field to be shared with another target in close range. Complications could mean shield failure or power loss to key systems.,,,,
-Talent.adaptableEnergyWeapon,Adaptable Energy Weapon,,,,
-Talent.adaptableEnergyWeapon.soloDescription,The ship’s weapon delivery systems are enhanced by multiparticle emitters. These emitters allow for the ship’s energy weapon capabilities to be modified when fired. This could create distinct advantages during a battle.,,,,
+Talent.adaptableEnergyWeapons,Adaptable Energy Weapons,,,,
+Talent.adaptableEnergyWeapons.soloDescription,The ship’s weapon delivery systems are enhanced by multiparticle emitters. These emitters allow for the ship’s energy weapon capabilities to be modified when fired. This could create distinct advantages during a battle.,,,,
 Talent.advancedEmergencyCrewHolograms,Advanced Emergency Crew Holograms,,,,
 Talent.advancedEmergencyCrewHolograms.soloDescription,"The starship has the entirety of its interior spaces and some critical areas on its exterior outfitted with holoemitters, allowing the computer to project simulated personnel during emergencies. They cannot operate away from the ship.",,,,
 Talent.advancedSickbay,Advanced Sickbay,,,,
@@ -1340,8 +1340,8 @@ Talent.advisor,Advisor,,,,
 Talent.advisor.description,"Whenever you assist another character using your Command Discipline, the character being assisted may re-roll one d20.",,,,
 Talent.automatedDefenses,Automated Defenses,,,,
 Talent.automatedDefenses.soloDescription,The ship’s weapons systems can automatically lock on to a target and fire even if the crew is incapacitated or unavailable.,,,,
-Talent.backupEPSConduits,Backup EPS Conduits,,,,
-Talent.backupEPSConduits.soloDescription,"The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of emergency, keeping it from being lost when the ship is damaged.",,,,
+Talent.backupEpsConduits,Backup EPS Conduits,,,,
+Talent.backupEpsConduits.soloDescription,"The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of emergency, keeping it from being lost when the ship is damaged.",,,,
 Talent.captainsYacht,Captain's Yacht,,,,
 Talent.captainsYacht.soloDescription,"The vessel has a single additional support craft, normally mounted in a dedicated port under the saucer section of the ship. These craft, larger
 than most shuttles, are often used for diplomatic missions and special excursions by the commanding officer and are often known as the Captain’s Yacht.",,,,
@@ -1357,8 +1357,8 @@ Talent.culturalFlexibility,Cultural Flexibility,,,,
 Talent.culturalFlexibility.description,"Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",,,,
 Talent.defuseTheTension,Defuse the Tension,,,,
 Talent.defuseTheTension.description,"Whenever you attempt a Task to persuade someone not to resort to violence, you may add a bonus d20 to your dice pool.",,,,
-Talent.dedicatedSubspaceTranceiverArray,Dedicated Subspace Tranceiver Array,,,,
-Talent.dedicatedSubspaceTranceiverArray.soloDescription,"A starship with this talent has a section of its hull that slides away where a long, tether-like subspace transceiver array can be deployed to enhance the vessel’s communication range and clarity, even at warp.",,,,
+Talent.dedicatedSubspaceTransceiverArray,Dedicated Subspace Tranceiver Array,,,,
+Talent.dedicatedSubspaceTransceiverArray.soloDescription,"A starship with this talent has a section of its hull that slides away where a long, tether-like subspace transceiver array can be deployed to enhance the vessel’s communication range and clarity, even at warp.",,,,
 Talent.deluxeGalley,Deluxe Galley,,,,
 Talent.deluxeGalley.soloDescription,The ship’s mess hall is equipped with top-of-the- line food preparation systems as well as vast stores of non-replicated food.,,,,
 Talent.diplomaticSuites,Diplomatic Suites,,,,

@@ -1428,9 +1428,9 @@
 
     "Talent.ablativeFieldProjector.soloDescription": "The ship’s shield emitters are combined with an ablative field projector that allows its graviton field to be shared with another target in close range. Complications could mean shield failure or power loss to key systems.",
 
-    "Talent.adaptableEnergyWeapon": "Adaptable Energy Weapon",
+    "Talent.adaptableEnergyWeapons": "Adaptable Energy Weapons",
 
-    "Talent.adaptableEnergyWeapon.soloDescription": "The ship’s weapon delivery systems are enhanced by multiparticle emitters. These emitters allow for the ship’s energy weapon capabilities to be modified when fired. This could create distinct advantages during a battle.",
+    "Talent.adaptableEnergyWeapons.soloDescription": "The ship’s weapon delivery systems are enhanced by multiparticle emitters. These emitters allow for the ship’s energy weapon capabilities to be modified when fired. This could create distinct advantages during a battle.",
 
     "Talent.advancedEmergencyCrewHolograms": "Advanced Emergency Crew Holograms",
 
@@ -1464,9 +1464,9 @@
 
     "Talent.automatedDefenses.soloDescription": "The ship’s weapons systems can automatically lock on to a target and fire even if the crew is incapacitated or unavailable.",
 
-    "Talent.backupEPSConduits": "Backup EPS Conduits",
+    "Talent.backupEpsConduits": "Backup EPS Conduits",
 
-    "Talent.backupEPSConduits.soloDescription": "The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of emergency, keeping it from being lost when the ship is damaged.",
+    "Talent.backupEpsConduits.soloDescription": "The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of emergency, keeping it from being lost when the ship is damaged.",
 
     "Talent.captainsYacht": "Captain's Yacht",
 
@@ -1496,9 +1496,9 @@
 
     "Talent.defuseTheTension.description": "Whenever you attempt a Task to persuade someone not to resort to violence, you may add a bonus d20 to your dice pool.",
 
-    "Talent.dedicatedSubspaceTranceiverArray": "Dedicated Subspace Tranceiver Array",
+    "Talent.dedicatedSubspaceTransceiverArray": "Dedicated Subspace Tranceiver Array",
 
-    "Talent.dedicatedSubspaceTranceiverArray.soloDescription": "A starship with this talent has a section of its hull that slides away where a long, tether-like subspace transceiver array can be deployed to enhance the vessel’s communication range and clarity, even at warp.",
+    "Talent.dedicatedSubspaceTransceiverArray.soloDescription": "A starship with this talent has a section of its hull that slides away where a long, tether-like subspace transceiver array can be deployed to enhance the vessel’s communication range and clarity, even at warp.",
 
     "Talent.deluxeGalley": "Deluxe Galley",
 

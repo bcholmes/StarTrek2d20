@@ -386,7 +386,7 @@ class Marshaller {
 
     encodeStarship(starship: Starship) {
         let sheet = {
-            "stereotype": "starship",
+            "stereotype": starship.stereotype === Stereotype.SoloStarship ? "soloStarship" : "starship",
             "type": CharacterType[starship.type],
             "buildType": ShipBuildType[starship.buildType],
             "year": starship.serviceYear,
@@ -511,6 +511,9 @@ class Marshaller {
         let json = this.decode(s);
         let result = new Starship();
         result.name = json.name;
+        if (json.stereotype === "soloStarship") {
+            result.stereotype = Stereotype.SoloStarship;
+        }
         result.registry = json.registry;
         result.traits = json.traits;
         result.serviceYear = json.year;
