@@ -114,7 +114,11 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
         }
         case SET_STARSHIP_SPACEFRAME: {
             let s = state.starship.copy();
+            let original = s.spaceframeModel;
             s.spaceframeModel = action.payload.spaceframe;
+            if (original != null && s.spaceframeModel.scale < original.scale) {
+                s.pruneExcessTalents();
+            }
             return {
                 ...state,
                 starship: s

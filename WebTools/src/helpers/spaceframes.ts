@@ -362,7 +362,7 @@ export class SpaceframeHelper {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("High-Resolution Sensors"),
                 TalentSelection.selectTalent("Improved Warp Drive"),
             ],
             [ "Federation Starship" ],
@@ -426,7 +426,7 @@ export class SpaceframeHelper {
                 "Tractor Beam (Strength 4)"
             ],
             [
-                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("High-Resolution Sensors"),
                 TalentSelection.selectTalent("Improved Impulse Drive"),
                 TalentSelection.selectTalent("Saucer Separation"),
             ],
@@ -467,7 +467,7 @@ export class SpaceframeHelper {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("High-Resolution Sensors"),
                 TalentSelection.selectTalent("Modular Laboratories"),
             ],
             [ "Federation Starship" ],
@@ -1452,7 +1452,7 @@ export class SpaceframeHelper {
                 "Tractor Beam (Strength 4)"
             ],
             [
-                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("High-Resolution Sensors"),
                 TalentSelection.selectTalent("Improved Impulse Drive"),
                 TalentSelection.selectTalent("Saucer Separation"),
             ],
@@ -1770,7 +1770,7 @@ export class SpaceframeHelper {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("High-Resolution Sensors"),
                 TalentSelection.selectTalent("Improved Warp Drive"),
             ],
             [ "Federation Starship" ],
@@ -1979,7 +1979,7 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Advanced Research Facilities"),
                 TalentSelection.selectTalent("Advanced Sensor Suites"),
                 TalentSelection.selectTalent("Advanced Sickbay"),
-                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("High-Resolution Sensors"),
             ],
             [ "Federation Starship" ],
             99999),
@@ -2106,7 +2106,7 @@ export class SpaceframeHelper {
                 "Tractor Beam (Strength 2)"
             ],
             [
-                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("High-Resolution Sensors"),
                 TalentSelection.selectTalent("Improved Power Systems")
             ],
             [
@@ -2216,7 +2216,7 @@ export class SpaceframeHelper {
                 "Tractor Beam (Strength 3)"
             ],
             [
-                TalentSelection.selectTalent("High Resolution Sensors"),
+                TalentSelection.selectTalent("High-Resolution Sensors"),
                 TalentSelection.selectTalent("Rapid-Fire Torpedo Launcher")
             ],
             [

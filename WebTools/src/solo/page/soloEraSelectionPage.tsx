@@ -10,7 +10,8 @@ import { setEra } from '../../state/contextActions';
 import store from '../../state/store';
 import { eraRandomTable, eraRandomTableForStarships } from '../table/eraRandomTable';
 import { Stereotype } from '../../common/construct';
-import { setStarshipServiceYear } from '../../state/starshipActions';
+import { createStarship, setStarshipServiceYear } from '../../state/starshipActions';
+import { Starship } from '../../common/starship';
 
 interface ISoloEraSelectionPage {
     stereotype: Stereotype;
@@ -24,7 +25,15 @@ const SoloEraSelectionPage: React.FC<ISoloEraSelectionPage> = ({stereotype}) => 
     const eraSelected = (era: Era)=> {
         store.dispatch(setEra(era));
         if (stereotype === Stereotype.SoloStarship) {
-            store.dispatch(setStarshipServiceYear(eraDefaultYear(era)));
+            let starship = store.getState().starship?.starship;
+            let serviceYear = eraDefaultYear(era);
+            if (starship?.serviceYear != null && starship?.serviceYear != serviceYear) {
+                let newStarship = Starship.createSoloStarship();
+                newStarship.serviceYear = serviceYear;
+                store.dispatch(createStarship(newStarship));
+            } else {
+                store.dispatch(setStarshipServiceYear(eraDefaultYear(era)));
+            }
             Navigation.navigateToPage(PageIdentity.SoloStarshipSpaceframe);
         } else {
             Navigation.navigateToPage(PageIdentity.SoloSpecies);
@@ -35,7 +44,8 @@ const SoloEraSelectionPage: React.FC<ISoloEraSelectionPage> = ({stereotype}) => 
         return (
             <tr key={i} onClick={() => { if (Window.isCompact()) eraSelected(e.id); }}>
                 <td className="selection-header">{e.localizedName}</td>
-                <td className="text-end"><Button buttonType={true} className="button-small" onClick={() => { eraSelected(e.id) }} >{t('Common.button.select')}</Button></td>
+                <td className="text-end"><Button buttonType={true} className="button-small"
+                     onClick={() => { eraSelected(e.id) }} >{t('Common.button.select')}</Button></td>
             </tr>
         );
     }

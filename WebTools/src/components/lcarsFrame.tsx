@@ -38,7 +38,12 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
             activePage === PageIdentity.StarshipWeaponsSelection ||
             activePage === PageIdentity.StarshipTalentSelection ||
             activePage === PageIdentity.FinalStarshipDetails ||
-            activePage === PageIdentity.SimpleStarship) {
+            activePage === PageIdentity.SimpleStarship ||
+
+            activePage === PageIdentity.SoloStarshipEra ||
+            activePage === PageIdentity.SoloStarshipSpaceframe ||
+            activePage === PageIdentity.SoloStarshipTalents ||
+            activePage === PageIdentity.SoloStarshipFinish) {
             return true;
         } else {
             return false;

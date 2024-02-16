@@ -14,10 +14,10 @@ import { ServiceYearPrerequisite } from "../../helpers/prerequisite";
 import store from "../../state/store";
 import { setAdditionalTalents } from "../../state/starshipActions";
 import { CharacterType } from "../../common/characterType";
-import star from "../../state/starReducer";
 import { Dialog } from "../../components/dialog";
 import { Navigation } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
+import { StarshipRandomTalentTable } from "../table/starshipRandomTalentTable";
 
 interface ISoloStarshipTalentsProperties {
     starship: Starship;
@@ -28,7 +28,26 @@ const SoloStarshipTalentsPage: React.FC<ISoloStarshipTalentsProperties> = ({star
     const { t } = useTranslation();
 
     const randomTalents = () => {
+        let talents = [];
+        let count = starship.additionalTalents?.length;
+        if (count > 0 && count < starship?.spaceframeModel?.scale) {
+            talents = starship.additionalTalents.map(t => t.name);
+        }
 
+        while (talents.length < starship?.spaceframeModel?.scale) {
+            let name = StarshipRandomTalentTable();
+            if (talents.indexOf(name) < 0) {
+                let talent = TalentsHelper.getTalent(name);
+                if (talent != null && isTalentAllowed(talent)) {
+                    talents.push(name);
+                } else if (talent == null) {
+                    console.log("Can't find talent " + name);
+                }
+            }
+        }
+
+        let talentViewModels = talents.map(n => ToViewModel(TalentsHelper.getTalent(n), 1, CharacterType.Starfleet));
+        store.dispatch(setAdditionalTalents(talentViewModels));
     }
 
     const navigateToNextPage = () => {
@@ -69,17 +88,8 @@ const SoloStarshipTalentsPage: React.FC<ISoloStarshipTalentsProperties> = ({star
         .filter(t => t.category === "Starship")
         .filter(t => t.sources.indexOf(Source.CaptainsLog) >= 0)
         .filter(t => t.name !== "Cloaking Device" && t.name !== "Cloaked Mines")
-        .filter(t => {
-            let ok = true;
-            t.prerequisites.forEach(p => {
-                if (p instanceof CenturyPrerequisite) {
-                    ok = ok && p.isPrerequisiteFulfilled(starship);
-                } else if (p instanceof ServiceYearPrerequisite) {
-                    ok = ok && p.isPrerequisiteFulfilled(starship);
-                }
-            });
-            return ok;
-        }).sort((t1, t2) => t1.localizedNameForSource(Source.CaptainsLog).localeCompare(t2.localizedNameForSource(Source.CaptainsLog)));
+        .filter(t => isTalentAllowed(t))
+        .sort((t1, t2) => t1.localizedNameForSource(Source.CaptainsLog).localeCompare(t2.localizedNameForSource(Source.CaptainsLog)));
 
     const talentRows = talents.map((t, i) => {
         let prerequisites = undefined;
@@ -123,6 +133,11 @@ const SoloStarshipTalentsPage: React.FC<ISoloStarshipTalentsProperties> = ({star
                 {t('StarshipTalentSelection.instruction', { count: starship.scale, interpolation: { escapeValue: false } })}
             </ReactMarkdown>
 
+            <div className="my-4">
+                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => randomTalents()}>
+                    <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
+                </Button>
+            </div>
             <table className="selection-list mt-3">
                 <tbody>
                     {talentRows}

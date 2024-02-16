@@ -15,10 +15,28 @@ const SoloStarshipBreadcrumbs: React.FC<ISoloCharacterBreadcrumbProperties> = ({
     const { t } = useTranslation();
 
     const renderSpaceframe = () => {
-        if (starship?.spaceframeModel != null && pageIdentity === PageIdentity.SoloStarshipSpaceframe) {
+        if (pageIdentity === PageIdentity.SoloStarshipSpaceframe) {
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.spaceframeSelection')}</li>);
         } else if (starship?.spaceframeModel) {
             return (<li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloStarshipSpaceframe)}>{t('Page.title.spaceframeSelection')}</a></li>);
+        } else {
+            return undefined;
+        }
+    }
+
+    const renderTalents = () => {
+        if (pageIdentity === PageIdentity.SoloStarshipTalents) {
+            return (<li className="breadcrumb-item active" aria-current="page">{t('Construct.other.talents')}</li>);
+        } else if (starship?.additionalTalents?.length) {
+            return (<li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloStarshipTalents)}>{t('Construct.other.talents')}</a></li>);
+        } else {
+            return undefined;
+        }
+    }
+
+    const renderFinish = () => {
+        if (pageIdentity === PageIdentity.SoloStarshipFinish) {
+            return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloFinal')}</li>);
         } else {
             return undefined;
         }
@@ -31,6 +49,8 @@ const SoloStarshipBreadcrumbs: React.FC<ISoloCharacterBreadcrumbProperties> = ({
             <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloConstructType)}>{t('Page.title.soloConstructType')}</a></li>
             <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.SoloStarshipEra)}>{t('Page.title.era')}</a></li>
             {renderSpaceframe()}
+            {renderTalents()}
+            {renderFinish()}
         </ol>
     </nav>);
 }

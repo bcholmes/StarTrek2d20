@@ -6,7 +6,7 @@ import { Header } from "../../components/header";
 import { useTranslation } from "react-i18next";
 import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
 import store from "../../state/store";
-import { setStarshipName, setStarshipRegistry } from "../../state/starshipActions";
+import { setStarshipName, setStarshipRegistry, setStarshipTraits } from "../../state/starshipActions";
 import { useEffect } from "react";
 import RegistryNumber from "../../components/registryNumberGenerator";
 import { CharacterType } from "../../common/characterType";
@@ -14,6 +14,7 @@ import ReactMarkdown from "react-markdown";
 import { Button } from "../../components/button";
 import { CharacterSheetDialog } from "../../components/characterSheetDialog";
 import { CharacterSheetRegistry } from "../../helpers/sheets";
+import { PageIdentity } from "../../pages/pageIdentity";
 
 interface ISoloStarshipFinalProperties {
     starship: Starship;
@@ -37,7 +38,7 @@ const SoloStarshipFinalPage: React.FC<ISoloStarshipFinalProperties> = ({starship
     }
 
     return (<div className="page container ms-0">
-        <SoloStarshipBreadcrumbs />
+        <SoloStarshipBreadcrumbs pageIdentity={PageIdentity.SoloStarshipFinish} />
         <Header>{t('Page.title.finalStarshipDetails')}</Header>
 
         <ReactMarkdown>{t('FinalStarshipDetails.instruction')}</ReactMarkdown>
@@ -59,11 +60,38 @@ const SoloStarshipFinalPage: React.FC<ISoloStarshipFinalProperties> = ({starship
 
             </div>
 
-            <div className="button-container mb-5">
-                    <Button className="button-small me-2" onClick={() => showDialog() }  buttonType={true}>{t('Common.button.exportPdf')}</Button>
-                </div>
+            <div className="col-lg-6 mt-3">
+                <Header level={2}>Traits</Header>
+                <ReactMarkdown>{t('FinalStarshipDetails.traits.instruction')}</ReactMarkdown>
+                <ul>
+                    {starship.defaultTraits.length > 0
+                        ? starship.defaultTraits.map((t, i) => {
+                            return (
+                                <li key={'trait-' + i}>
+                                    {t}
+                                </li>
+                            );
+                        })
+                        : (<li key="no-trait">{t('Common.text.none')}</li>)
+                    }
+                </ul>
+                <ReactMarkdown>{t('FinalStarshipDetails.traits.note')}</ReactMarkdown>
 
+                <textarea className="w-100"
+                    rows={8}
+                    onChange={(ev) => store.dispatch(setStarshipTraits(ev.target.value)) }
+                    onBlur={(ev) => {
+                        let temp = ev.target.value.replace(/\n/g, ', ');
+                        store.dispatch(setStarshipTraits(temp));
+                    } }
+                    value={starship.traits} />
+            </div>
         </div>
+
+        <div className="button-container mb-5">
+            <Button className="button-small me-2" onClick={() => showDialog() }  buttonType={true}>{t('Common.button.exportPdf')}</Button>
+        </div>
+
     </div>);
 }
 

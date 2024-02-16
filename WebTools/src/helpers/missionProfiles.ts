@@ -92,7 +92,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Additional Propulsion System"),
                 TalentsHelper.getTalent("Advanced Shields"),
                 TalentsHelper.getTalent("Backup EPS Conduits"),
-                TalentsHelper.getTalent("High Resolution Sensors"),
+                TalentsHelper.getTalent("High-Resolution Sensors"),
                 TalentsHelper.getTalent("Improved Power Systems"),
                 TalentsHelper.getTalent("Improved Warp Drive")
             ]),
@@ -115,7 +115,7 @@ class MissionProfiles {
             [
                 TalentsHelper.getTalent("Advanced Research Facilities"),
                 TalentsHelper.getTalent("Advanced Sensor Suites"),
-                TalentsHelper.getTalent("High Resolution Sensors"),
+                TalentsHelper.getTalent("High-Resolution Sensors"),
                 TalentsHelper.getTalent("Modular Laboratories")
             ]),
         [MissionProfile.CrisisAndEmergencyResponse]: new MissionProfileModel(
@@ -225,7 +225,7 @@ class MissionProfiles {
             [2, 2, 3, 1, 3, 1],
             [
                 TalentsHelper.getTalent("Electronic Warfare Systems"),
-                TalentsHelper.getTalent("High Resolution Sensors"),
+                TalentsHelper.getTalent("High-Resolution Sensors"),
                 TalentsHelper.getTalent("Improved Reaction Control System"),
                 TalentsHelper.getTalent("Slim Sensor Silhouette"),
             ],
@@ -266,7 +266,7 @@ class MissionProfiles {
             [1, 3, 3, 1, 2, 2],
             [
                 TalentsHelper.getTalent("Fast Targeting Systems"),
-                TalentsHelper.getTalent("High Resolution Sensors"),
+                TalentsHelper.getTalent("High-Resolution Sensors"),
                 TalentsHelper.getTalent("Improved Power Systems"),
             ],
             undefined,
@@ -322,7 +322,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Electronic Warfare Systems"),
                 TalentsHelper.getTalent("Improved Reaction Control System"),
                 TalentsHelper.getTalent("Improved Warp Drive"),
-                TalentsHelper.getTalent("High Resolution Sensors")
+                TalentsHelper.getTalent("High-Resolution Sensors")
             ],
             CharacterType.KlingonWarrior),
         [MissionProfile.ScientificAndSurvey]: new MissionProfileModel(

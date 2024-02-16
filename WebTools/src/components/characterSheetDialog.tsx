@@ -51,8 +51,8 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
                 <div className="style-selections">
                     {sheetList}
                 </div>
-                <div className="button-container-centered">
-                    <Button className="button" onClick={() => { this.exportPdf() } }>{i18n.t('Common.button.exportPdf')}</Button>
+                <div className="text-center">
+                    <Button className="btn btn-primary mt-4" onClick={() => { this.exportPdf() } }>{i18n.t('Common.button.exportPdf')}</Button>
                 </div>
             </div>
         );

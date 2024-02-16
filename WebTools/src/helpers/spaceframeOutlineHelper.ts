@@ -453,7 +453,6 @@ class SpaceframeOutlineHelper {
     drawOutline(pdf: PDFDocument, outline: string, options: SheetOutlineOptions) {
         const page = pdf.getPage(0);
         const scale =  PIXELS_TO_POINTS_RATIO * options.outlineScale;
-        console.log(scale);
         page.moveTo(options.outlineLocation.x, page.getHeight() - options.outlineLocation.y);
         page.drawSvgPath(outline, { borderColor: options.outlineColor,
             borderWidth: options.borderWidth / options.outlineScale,

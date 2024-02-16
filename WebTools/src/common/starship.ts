@@ -192,7 +192,9 @@ export class Starship extends Construct {
     }
 
     get freeTalentSlots() {
-        if (this.buildType === ShipBuildType.Starship) {
+        if (this.stereotype === Stereotype.SoloStarship) {
+            return this.numberOfTalents;
+        } else if (this.buildType === ShipBuildType.Starship) {
             let numTalents = 0;
 
             if (this.spaceframeModel !== undefined) {
@@ -363,7 +365,12 @@ export class Starship extends Construct {
     }
 
     pruneExcessTalents() {
-        if (this.freeTalentSlots < this.additionalTalents.length) {
+        if (this.stereotype === Stereotype.SoloStarship) {
+            if (this.additionalTalents.length > this.spaceframeModel?.scale) {
+                let excess = this.additionalTalents.length - this.spaceframeModel?.scale;
+                this.additionalTalents.splice(0, excess);
+                }
+        } else if (this.freeTalentSlots < this.additionalTalents.length) {
             let excess = this.additionalTalents.length - this.freeTalentSlots;
             this.additionalTalents.splice(0, excess);
         }

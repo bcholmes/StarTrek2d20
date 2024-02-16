@@ -541,9 +541,6 @@ export class TalentModel implements ITalent {
     get localizedSoloDescription(): string { // for Starship talents, this is the short, abbreviated description of the talent
         let key = "Talent." + this.rootKey + ".soloDescription";
         let result = i18next.t(key);
-        if (result === key) {
-            console.log("check " + key);
-        }
         return result === key ? "" : result;
     }
 
@@ -573,10 +570,6 @@ export class TalentModel implements ITalent {
 
         if (src.length === 0) {
             src = [ Source.Core ];
-        }
-
-        if (this.name === "Cloaking Device") {
-            console.log(src);
         }
 
         return src;
@@ -2956,12 +2949,6 @@ export class Talents {
                 1,
                 "Starship"),
             new TalentModel(
-                "High Resolution Sensors",
-                "The vessel’s sensors can gain large amounts of accurate data, though they are extremely sensitive. While the vessel is not in combat, any successful Task that is assisted by the ship’s Sensors gains one bonus Momentum.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core, Source.CaptainsLog)],
-                1,
-                "Starship"),
-            new TalentModel(
                 "Improved Damage Control",
                 "The ship has more efficient damage reporting systems, and better-trained teams of technicians, allowing the crew to respond more quickly to damage during a crisis. When a character takes the Damage Control Task aboard this ship, they may re-roll a single d20. If the repairs require an Extended Task, then the characters also gain Progression 1, adding +1 to Work done for each Effect rolled.",
                 [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core, Source.CaptainsLog)],
@@ -3242,7 +3229,7 @@ export class Talents {
             new TalentModel(
                 "High-Resolution Sensors",
                 "The vessel’s sensors can gain large amounts of accurate data, though they are extremely sensitive. While the vessel is not in combat, any successful task that is assisted by the ship’s Sensors gains one bonus Momentum.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia, Source.CaptainsLog)],
                 1,
                 "Starship"),
             new TalentModel(
@@ -3292,7 +3279,7 @@ export class Talents {
                 "An extension of the variable pitch warp nacelles seen on the Intrepid class and the warp vector technology found on many Vulcan-designed starships, a ship with a variable geometry warp field can adjust its subspace field in highly turbulent spacetime and can continue to provide propulsive force even then. These vessels provide the advantage of Variable Geometry Warp Field in any scene involving a disadvantage related to difficulties forming or maintaining a stable warp field.",
                 [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia, Source.CaptainsLog)],
                 1,
-                "Starship"),
+                "Starship", false, new AliasModel("Variable Geometry Warp Drive", Source.CaptainsLog)),
             new TalentModel(
                 "Versatile Tractor Beam",
                 "The ship has exotic particle emitters integrated with its tractor beam system. With a few simple adjustments, the tractor beam can become even more useful against ships trapped within. When the tractor beam is activated, the operator may choose to add one of the following effects:\nDepleting: At the end of each round a target remains within the tractor beam, it loses 1 Shield.\nDraining: At the end of each round a target remains within the tractor beam, it loses 1 Power.",
@@ -3951,6 +3938,8 @@ export class Talents {
             talent = this.getTalent("Multi-Vector Assault Mode");
         } else if (talent === null && name === "Advanced Emergeny Crew Holograms") {
             talent = this.getTalent("Advanced Emergency Crew Holograms");
+        } else if (talent === null && name === "High Resolution Sensors") {
+            talent = this.getTalent("High-Resolution Sensors");
         }
 
         if (talent === null) {
