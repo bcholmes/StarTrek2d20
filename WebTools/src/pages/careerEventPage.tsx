@@ -55,7 +55,7 @@ const CareerEventPage: React.FC<ICareerEventProperties> = ({character, context})
                 <td className="selection-header">{careerEvent.name}</td>
                 <td>{attributes}</td>
                 <td>{disciplines}</td>
-                <td className="text-end"><Button className="button-small" onClick={() => { careerEventSelected(careerEvent) } } buttonType={true}/>{t('Common.button.select')}</td>
+                <td className="text-end"><Button className="button-small" onClick={() => { careerEventSelected(careerEvent) } } buttonType={true}>{t('Common.button.select')}</Button></td>
             </tr>
         )
     }

@@ -268,9 +268,9 @@ export class RankModel {
 
 export class RanksHelper {
 
-    private static _instance;
+    private static _instance: RanksHelper;
 
-    static instance() {
+    static instance(): RanksHelper {
         if (RanksHelper._instance == null) {
             RanksHelper._instance = new RanksHelper();
         }
@@ -350,8 +350,8 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
-                new RolesPrerequisite([Role.CommunicationsOfficer, Role.FlightController, Role.OperationsManager, Role.ScienceOfficer, Role.ShipsCounselor, Role.WeaponsOfficer], true),
-                new AnyOfPrerequisite(new CharacterTypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior),
+                new AnyOfPrerequisite(
+                    new CharacterTypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior),
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.KlingonDefenceForce, AlliedMilitaryType.TalarianMilitia)),
             ],
             "Ens."),

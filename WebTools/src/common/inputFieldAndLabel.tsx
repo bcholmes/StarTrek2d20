@@ -13,6 +13,7 @@ interface IInputFieldAndLabelProperties {
     max?: number,
     className?: string,
     disabled?: boolean,
+    placeholder?: string,
     onChange: (value: string) => void
 }
 
@@ -47,6 +48,7 @@ export class InputFieldAndLabel extends React.Component<IInputFieldAndLabelPrope
                     className="mw-100"
                     id={this.props.id}
                     type={this.props.type ? this.props.type : "text"}
+                    placeholder={this.props.placeholder}
                     onChange={(ev) => {
                         if (!this.state.hasFocus) {
                             this.props.onChange(ev.target.value);

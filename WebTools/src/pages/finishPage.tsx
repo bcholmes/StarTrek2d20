@@ -29,6 +29,7 @@ interface IFinishPageProperties {
 const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
     const { t } = useTranslation();
     const [ roleSelectionAllowed, setRoleSelectionAllowed] = useState(null);
+    const [ roleOther, setRoleOther] = useState(character.jobAssignment);
 
     const currentRole = character.role;
 
@@ -36,7 +37,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
     let rankList = RanksHelper.instance().getSortedRanks(character);
 
     useEffect(() => {
-        if (character.role == null) {
+        if (character.role == null && (!character.jobAssignment)) {
             if (character.type !== CharacterType.Cadet) {
                 const role = roleList[0];
                 store.dispatch(setCharacterAssignment(role.id));
@@ -86,13 +87,43 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
             )
         });
 
-        const roles = roleSelectionAllowed === true || roleSelectionAllowed == null || character.hasTalent("Multi-Discipline")
-            ? (<table className="selection-list">
-                    <tbody>
-                        {roleRows}
-                    </tbody>
-                </table>)
-            : undefined;
+        const roles = (<table className="selection-list">
+                <tbody>
+                    {roleSelectionAllowed === true || roleSelectionAllowed == null || character.hasTalent("Multi-Discipline") ? roleRows : undefined}
+                    {character.hasTalent("Multi-Discipline")
+                        ? undefined
+                        : (<tr>
+                            <td className="selection-header-small">{t('Common.text.other')}</td>
+                            <td>
+                                <InputFieldAndLabel id='roleOther'
+                                    labelName={t('Construct.other.job')}
+                                    onChange={(value) => {
+                                        if (!value) {
+                                            value = t('Common.text.other');
+                                        }
+                                        setRoleOther(value);
+                                        onSelectRole(undefined, value);
+                                    }}
+                                    placeholder={t('FinishPage.job.example')}
+                                    value={roleOther} />
+                            </td>
+                            <td>
+                                <CheckBox
+                                    text=""
+                                    value={t('Common.text.other')}
+                                    isChecked={character.role == null && character.jobAssignment === roleOther}
+                                    onChanged={(val) => {
+                                        let job = roleOther;
+                                        if (!job) {
+                                            job = t('Common.text.other');
+                                            setRoleOther(job);
+                                        }
+                                        onSelectRole(undefined, job);
+                                    } }/>
+                            </td>
+                        </tr>)}
+                </tbody>
+            </table>);
 
         const roleSelection = (roleSelectionAllowed != null && !character.hasTalent("Multi-Discipline"))
             ? (<CheckBox
@@ -103,18 +134,11 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
                 />)
             : undefined;
 
-        const job = (roles == null)
-            ? (<div>
-                    <div className="textinput-label">Job</div>
-                    <input type="text" onChange={(e) => onJobChanged(e.target.value) } value={character.jobAssignment || ""} />
-                </div>)
-            : undefined;
-
         const cadetNote = (roles == null && character.type === CharacterType.Cadet)
             ? (<p>Cadets do not normally have a key role and instead have a simple job assignment. Cadets might be given a role in special circumstances.</p>)
             : null;
 
-        const roleDescription = (roles != null)
+        const roleDescription = (roleSelectionAllowed === true || roleSelectionAllowed == null || character.hasTalent("Multi-Discipline"))
         ? (<p>
                 Select character's role and the ship on which they serve.
                 This choice will be based on your highest discipline(s).
@@ -136,7 +160,6 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
             {roleSelection}
             {multiDiscipline}
             {roles}
-            {job}
 
         </div>);
     }
@@ -245,8 +268,10 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
         }
     }
 
-    const onSelectRole = (role: RoleModel) => {
-        if (character.hasTalent("Multi-Discipline")) {
+    const onSelectRole = (role?: RoleModel, assignment?: string) => {
+        if (role == null && assignment) {
+            store.dispatch(setCharacterAssignment(assignment));
+        } else if (character.hasTalent("Multi-Discipline")) {
             if (character.role === null || character.role === role.id) {
                 store.dispatch(setCharacterAssignment(role.id, character.secondaryRole));
             } else if (character.secondaryRole == null || character.secondaryRole === role.id) {

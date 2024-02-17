@@ -715,7 +715,7 @@ export class NpcGenerator {
     static assignRank(character: Character, specialization: SpecializationModel) {
         let ranks = RanksHelper.instance().getSortedRanks(character);
         if (specialization.id === Specialization.Admiral) {
-            ranks = RanksHelper.instance().getAdmiralRanks(character);
+            ranks = RanksHelper.instance().getAdmiralRanks();
         } else if (specialization.id === Specialization.FerengiDaiMon) {
             ranks = [ RanksHelper.instance().getRank(Rank.DaiMon) ];
         } else if (specialization.id === Specialization.KlingonShipCaptain) {
@@ -736,13 +736,7 @@ export class NpcGenerator {
 
         let rankList = [];
         for (const rank of ranks) {
-            if (rank.tiers > 1) {
-                for (let i = 1; i <= rank.tiers; i++) {
-                    rankList.push(new RankWithTier(rank.name, rank.id, i));
-                }
-            } else {
-                rankList.push(new RankWithTier(rank.name, rank.id));
-            }
+            rankList.push(new RankWithTier(rank.name, rank.id));
         }
 
         if (rankList.length > 0) {
@@ -756,7 +750,7 @@ export class NpcGenerator {
             if (specialization.id === Specialization.MedicalDoctor && rank.rank === Rank.Ensign) {
                 character.jobAssignment = specialization.name + " (Resident)";
             }
-            RanksHelper.instance().applyRank(character, rank.rank, rank.tier == null ? 1 : rank.tier);
+            RanksHelper.instance().applyRank(character, rank.rank);
         }
     }
 

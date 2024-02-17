@@ -193,6 +193,8 @@
     "FinalStarshipDetails.traits.instruction": "You may now define additional Traits for your starship. Your starship already has these traits:",
     "FinalStarshipDetails.traits.note": "Your GM may allow you to pick additional traits that describe your vessel. Examples include: Prototype, Legacy Vessel, Renowned and Long-Serving.",
 
+    "FinishPage.job.example": "e.g. Junior Engineer",
+
     "MilestonePage.instruction": "Select what type of modification you want to apply for this milestone.",
 
     "MissionPodSelectionPage.text": "Certain spaceframes have the ability to be fitted with a single mission pod, chosen from the list below. The talents provided by the pod may not be swapped out normally, but the entire mission pod (and all its benefits) may be swapped out as if it were a single talent.",
@@ -378,6 +380,7 @@
     "Common.text.total": "Total",
     "Common.text.yes": "Yes",
     "Common.text.no": "No",
+    "Common.text.other": "Other",
 
     "Common.select.choose": "Choose...",
 
