@@ -83,7 +83,7 @@ const SoloStarshipSpaceframePage: React.FC<ISoloStarshipSpaceframePageProperties
                         key={'frame-' + s + '-scale'} colourClass="red"/>
                     </div>
                 </td>
-                <td className="text-end"><Button buttonType={true} className="button-small"onClick={() => { selectSpaceframe(s) }} >{t('Common.button.select')}</Button></td>
+                <td className="text-end"><Button className="button-small"onClick={() => { selectSpaceframe(s) }} >{t('Common.button.select')}</Button></td>
             </tr>
         );
     });
@@ -97,10 +97,10 @@ const SoloStarshipSpaceframePage: React.FC<ISoloStarshipSpaceframePageProperties
             </p>
 
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpaceframe( SpaceframeRandomTable(era)) }>
+                <Button className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpaceframe( SpaceframeRandomTable(era)) }>
                     <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
-                {randomSpaceframe != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpaceframe(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                {randomSpaceframe != null ? (<Button className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpaceframe(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
 
             <table className="selection-list">

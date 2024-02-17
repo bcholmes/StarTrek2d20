@@ -33,7 +33,7 @@ class SpaceframeSelectionPage extends React.Component<ISpaceframeSelectionPagePr
                 type={this.props.starship.type}
                 onSelection={(spaceframe) => store.dispatch(setStarshipSpaceframe(spaceframe))} />
             <div className="text-end">
-                <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => this.nextPage()}>{t('Common.button.next')}</Button>
+                <Button className="btn btn-primary mt-4" onClick={() => this.nextPage()}>{t('Common.button.next')}</Button>
             </div>
         </div>);
     }

@@ -2,7 +2,6 @@
 
 interface IButtonProperties {
     onClick: () => void;
-    buttonType?: boolean;
     className?: string;
     onMouseOver?: () => void;
     onMouseOut?: () => void;

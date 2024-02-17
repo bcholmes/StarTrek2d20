@@ -52,7 +52,7 @@ class History extends React.Component<IHistoryProperties, {}> {
         const { t } = this.props;
         let character = store.getState().character.currentCharacter as Character;
         if (character == null) {
-            return (<div>{t('No history')}</div>);
+            return (<div>{t('Lcars.noHistory')}</div>);
         } else {
             return (<>
                 {character?.speciesStep ? this.renderPageTitleLink(PageIdentity.Species) : (<div>No history</div>)}

@@ -38,7 +38,7 @@ const CareerLengthPage: React.FC<ICharacterProperties> = ({character}) => {
         return (
             <tr key={i} onClick={() => { if (Window.isCompact()) careerLengthSelected(careerLength); }}>
                 <td className="selection-header">{careerLength.localizedName}</td>
-                <td className="text-end"><Button buttonType={true} className="btn btn-primary btn-sm"
+                <td className="text-end"><Button className="btn btn-primary btn-sm"
                     onClick={() => { careerLengthSelected(careerLength) }}
                 >{t('Common.button.select')}</Button></td>
             </tr>
@@ -83,10 +83,10 @@ const CareerLengthPage: React.FC<ICharacterProperties> = ({character}) => {
             {message}
 
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomLength( selectRandomCareerLength()) }>
+                <Button className="btn btn-primary btn-sm me-3" onClick={() => setRandomLength( selectRandomCareerLength()) }>
                     <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
-                {randomLength != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomLength(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                {randomLength != null ? (<Button className="btn btn-primary btn-sm me-3" onClick={() => setRandomLength(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
             <table className="selection-list">
                 <tbody>

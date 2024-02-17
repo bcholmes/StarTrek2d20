@@ -89,7 +89,7 @@ const SoloStarshipFinalPage: React.FC<ISoloStarshipFinalProperties> = ({starship
         </div>
 
         <div className="button-container mb-5">
-            <Button className="button-small me-2" onClick={() => showDialog() }  buttonType={true}>{t('Common.button.exportPdf')}</Button>
+            <Button className="button-small me-2" onClick={() => showDialog() } >{t('Common.button.exportPdf')}</Button>
         </div>
 
     </div>);

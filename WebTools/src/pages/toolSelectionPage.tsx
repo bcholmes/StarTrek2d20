@@ -89,8 +89,8 @@ const ToolSelectionPage = () => {
 
                     <div className="row">
                         <div className="col-md-6 button-column">
-                            <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => { startStarfleetWorkflow(); } } >{t('ToolSelection.mainCharacter')}</Button>
-                            <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => { goToPage(PageIdentity.SupportingCharacter); } } >{t('ToolSelection.supportingCharacter')}</Button>
+                            <Button className="btn btn-primary mt-4" onClick={() => { startStarfleetWorkflow(); } } >{t('ToolSelection.mainCharacter')}</Button>
+                            <Button className="btn btn-primary mt-4" onClick={() => { goToPage(PageIdentity.SupportingCharacter); } } >{t('ToolSelection.supportingCharacter')}</Button>
                             <LoadingButton onClick={() => { loadStarshipAndGoToPage(); } } loading={loadingStarship}>{t('ToolSelection.starship')}</LoadingButton>
                             {renderSystemGenerationButton()}
                         </div>

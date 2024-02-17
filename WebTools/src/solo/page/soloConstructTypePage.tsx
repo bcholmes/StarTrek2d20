@@ -41,8 +41,8 @@ const SoloConstructTypePage = () => {
                 <InstructionText text={t('SoloConstructTypePage.instruction')} />
 
                 <div className="button-column">
-                    <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => createCharacter() } >{t('SoloConstructTypePage.character')}</Button>
-                    <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => createSoloStarship() } >{t('SoloConstructTypePage.starship')}</Button>
+                    <Button className="btn btn-primary mt-4" onClick={() => createCharacter() } >{t('SoloConstructTypePage.character')}</Button>
+                    <Button className="btn btn-primary mt-4" onClick={() => createSoloStarship() } >{t('SoloConstructTypePage.starship')}</Button>
                 </div>
             </div>
         </div>

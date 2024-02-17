@@ -8,19 +8,19 @@ Lcars.feedback,Feedback,Feedback,,Votre Avis,Обратная связь
 Lcars.history,History,Verlauf,,Historique,История
 Lcars.news,News,Neuigkeiten,,Actualités,Новости
 Lcars.profile,Profile,Bogen,,Profil,Профиль
-EraSelectionPage.eraInstruction,Select which Era to play in. Ask your GM which Era to choose.,"Wählen Sie aus, in welcher Ära gespielt wird. Fragen Sie, wenn nötig, Ihre Spielleitung, welche Ära Sie wählen sollen.",Selecciona en qué Era jugar. Pregúntale a tu GM qué Era elegir.,Sélectionnez l'ère dans laquelle jouer. Demandez à votre MJ quelle ère choisir.,Выберите в какой Эре вы планируете играть. Спросите Г-ма какую Эру выбрать.
+EraSelectionPage.eraInstruction,Select which Era to play in. Ask your GM which Era to choose.,"Wählen Sie aus, in welcher Ära gespielt wird. Fragen Sie, wenn nötig, Ihre Spielleitung, welche Ära Sie wählen sollen.",Selecciona en qué Era jugar. Pregúntale a tu GM qué Era elegir.,Sélectionnez l'ère dans laquelle jouer. Demandez à votre MJ quelle ère choisir.,Выберите в какой Эре вы планируете играть. Спросите Мастера какую Эру выбрать.
 Home.title,STA Character Creator,,,,Генератор Персонажей STA
 Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sélectionnez l'outil.,Выберите инстумент.
 Home.characterButton,Characters & Starships,Charaktere & Raumschiffe,Personajes y naves espaciales,Personnages et vaisseaux spatiaux,Персонажи и Корабли
 Home.talentsButton,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents,Обзор Талантов
 Home.tokenCreator,Tokens,Token,,Jetons,Токены
-History.noHistory,No history,,,,
+Lcars.noHistory,No history,,,,История пуста
 NpcConfigurationPage.option.anyMajorSpecies,Any Major Species,Jede bedeutende Spezies,,N'importe quelle Espèces Majeure,
 NpcConfigurationPage.option.anySpecialization,Any Specialization,Jede Spezialisierung,,N'importe quelle Spécialisation,
 NpcConfigurationPage.npcType,NPC Type,NPC Typ,,Type de PNJ,Тип ВП
 NpcConfigurationPage.specialization,Specialization,Spezialisierung,,Spécialisation,Специализация
 NpcConfigurationPage.text,Specify what kind of NPC you're trying to create.,"Lege fest, welche Art NPC du erstellen möchtest.",,Spécifiez quel type de PNJ vous voulez créer,Определите тип ВП которого вы пытаетесь создать.
-SourceSelectionPage.sourceInstruction,Select sources. Ask your GM which are available.,"Wählen Sie die verfügbaren Quellen aus. Fragen Sie, wenn nötig, Ihre Spielleitung, welche zur Verfügung stehen.",Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.,Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.,Выберите источники. Уточните с ГМ-ом если возможно.
+SourceSelectionPage.sourceInstruction,Select sources. Ask your GM which are available.,"Wählen Sie die verfügbaren Quellen aus. Fragen Sie, wenn nötig, Ihre Spielleitung, welche zur Verfügung stehen.",Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.,Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.,Выберите источники. Уточните с Мастером если возможно.
 SourceSelectionPage.gameTypeInstruction,What type of game are you playing?,Welche Art von Spiel spielst du?,,A quel type de jeu jouez vous?,В какой вид игры вы играете?
 SourceSelectionPage.sourceNote,Some sources are not yet implemented; check back soon!,Einige Quellen sind noch nicht verfügbar - schauen Sie bald wieder vorbei!,Algunas fuentes aún no se han aplicado; ¡Vuelve pronto!,Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!,Некоторые источники еще на доступны; скоро добавим!
 SourceSelectionPage.standardGameType,Standard RPG Rules,Standard Rollenspielregeln,,Règles de JDR standard,Стандартные правила НРИ
@@ -146,7 +146,7 @@ EducationPage.type.ambassadorDiplomat,Diplomatic Training,Diplomatische Ausbildu
 EducationPage.starfleet.academy,Officer Academy,Offizierslaufbahn,,,Офицерская Академия
 EducationPage.starfleet.enlisted,Enlisted Training,Mannschaftslaufbahn,,,
 EducationPage.starfleet.other,Other,Andere,,,Другое
-EnvironmentPage.showAlt,Allow alternate Environments (GM's decision),Alternative Herkunft erlauben (SL-Entscheidung),,Autoriser les Environements alternatifs (Décision du MJ),Позволить альтернативную Среду обитания (Решение ГМ-а)
+EnvironmentPage.showAlt,Allow alternate Environments (GM's decision),Alternative Herkunft erlauben (SL-Entscheidung),,Autoriser les Environements alternatifs (Décision du MJ),Позволить альтернативную Среду обитания (Решение Мастера)
 EnvironmentPage.button.selectEnvironment,Select Environment,Herkunft wählen,,Choisir Environnement,Выберите Среду обитания
 EnvironmentPage.button.rollEnvironment,Roll Environment,Zufällige Herkunft,,Environement Aléatoire,Рандомная Среда обитания
 EnvironmentPage.button.selectAltEnvironment,Select Alternate Environment,Alternative Herkunft wählen,,Choisir un Environnement Alternatif,Выбрать Альтернативную Среду обитания
@@ -258,21 +258,21 @@ SpaceframeSelectionPage.note,"Note: The Utopia Planitia sourcebook has re-define
 SpaceframeSelectionPage.ignoreEndOfService,Ignore end-of-service date (GM's decision),Das Datum der Außerdienststellung ignorieren (Entscheidung liegt bei der Spielleitung),,,
 SpaceframeSelectionPage.error,Please select a spaceframe before proceeding.,Bitte wählen Sie eine Schiffsklasse um fortzufahren.,,,
 SpeciesDetails.options,Species Options,Spezies-Optionen,,Option d'espèce,
-SpeciesDetails.selectThree,(Select three),(Drei auswählen),,(Choisir trois),
-SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),Spezies-übergreifende Talente erlauben (Entscheidung liegt bei der Spielleitung),,Autoriser les talents inter-espèces (Decision du GM),
-SpeciesDetails.allowEsoteric,Allow esoterric talents (GM's decision),Esoterische Talente erlauben (Entscheidung liegt bei der Spielleitung),,Autoriser les talents ésoteriques (Decision du GM),
-SpeciesPage.selectSpecies,Select Species,Spezies wählen,,,
-SpeciesPage.selectMixedSpecies,Select Mixed Species,Spezies gemischter Herkunft wählen,,,
+SpeciesDetails.selectThree,(Select three),(Drei auswählen),,(Choisir trois),(выберите три)
+SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),Spezies-übergreifende Talente erlauben (Entscheidung liegt bei der Spielleitung),,Autoriser les talents inter-espèces (Decision du GM),Позволить таланты других рас (Решение Мастера)
+SpeciesDetails.allowEsoteric,Allow esoterric talents (GM's decision),Esoterische Talente erlauben (Entscheidung liegt bei der Spielleitung),,Autoriser les talents ésoteriques (Decision du GM),Позволить эзотерические таланты (Решение Мастера)
+SpeciesPage.selectSpecies,Select Species,Spezies wählen,,,Выбрать расу
+SpeciesPage.selectMixedSpecies,Select Mixed Species,Spezies gemischter Herkunft wählen,,,Выбрать смешанную расу
 SpeciesPage.selectCustomSpecies,Select Custom Species,Eigene Spezies wählen,,,
-SpeciesPage.rollCoreSpecies,Roll Core Species,Grundregelwerkspezies würfeln,,,
-SpeciesPage.rollAlphaSpecies,Roll Alpha Species,Alphaquadrantspezies würfeln,,,
-SpeciesPage.rollBetaSpecies,Roll Beta Species,Betaquadrantspezies würfeln,,,
-SpeciesPage.rollGammaSpecies,Roll Gamma Species,Gammaquadrantspezies würfeln,,,
-SpeciesPage.rollDeltaSpecies,Roll Delta Species,Deltaquadrantspezies würfeln,,,
-SpeciesPage.text,"To what species do you belong? You may also create a character of mixed species, gaining benefits from both.",Zu welcher Spezies gehören Sie? Sie können auch einen Charakter von gemischter Herkunft erstellen und Boni von beiden erhalten.,,,
-SpeciesPage.text.select,Either select or roll your Species.,Bitte wählen oder würfeln Sie Ihre Spezies.,,,
-SpeciesPage.textNoRoll,"To what species do you belong? You may also create a character of mixed species, gaining benefits from both.",Zu welcher Spezies gehören Sie? Sie können auch einen Charakter von gemischter Herkunft erstellen und Boni von beiden erhalten.,,,
-SpeciesPage.mixedSpeciesNote,"Select two species. You will gain Traits from both species and may select from both species' Talents, but only the primary species gives you attribute bonuses.","Wählen Sie zwei Spezies. Sie erhalten Merkmale von beiden Spezies und können auf die Talente beider Spezies zugreifen, erhalten jedoch nur die Attributsboni der primären Spezies.",,,
+SpeciesPage.rollCoreSpecies,Roll Core Species,Grundregelwerkspezies würfeln,,,Случайный выбор Базовой расы
+SpeciesPage.rollAlphaSpecies,Roll Alpha Species,Alphaquadrantspezies würfeln,,,Случайный выбор Альфа расы
+SpeciesPage.rollBetaSpecies,Roll Beta Species,Betaquadrantspezies würfeln,,,Случайный выбор Бета расы
+SpeciesPage.rollGammaSpecies,Roll Gamma Species,Gammaquadrantspezies würfeln,,,Случайный выбор Гамма расы
+SpeciesPage.rollDeltaSpecies,Roll Delta Species,Deltaquadrantspezies würfeln,,,Случайный выбор Дельта расы
+SpeciesPage.text,"To what species do you belong? You may also create a character of mixed species, gaining benefits from both.",Zu welcher Spezies gehören Sie? Sie können auch einen Charakter von gemischter Herkunft erstellen und Boni von beiden erhalten.,,,"К какой расе Вы относитесь? Вы также можете создать персонажа смешанной расы, получая выгоду от обеих."
+SpeciesPage.text.select,Either select or roll your Species.,Bitte wählen oder würfeln Sie Ihre Spezies.,,,Выберите и рандомизируйте свою расу.
+SpeciesPage.textNoRoll,"To what species do you belong? You may also create a character of mixed species, gaining benefits from both.",Zu welcher Spezies gehören Sie? Sie können auch einen Charakter von gemischter Herkunft erstellen und Boni von beiden erhalten.,,,"К какой расе Вы относитесь? Вы также можете создать персонажа смешанной расы, получая выгоду от обеих."
+SpeciesPage.mixedSpeciesNote,"Select two species. You will gain Traits from both species and may select from both species' Talents, but only the primary species gives you Attribute bonuses.","Wählen Sie zwei Spezies. Sie erhalten Merkmale von beiden Spezies und können auf die Talente beider Spezies zugreifen, erhalten jedoch nur die Attributsboni der primären Spezies.",,,Выберите две расы. Вы получите Черты обеих и сможете выбирать Таланты с обеих сторон. Но только первичная раса даёт бонусы к Качествам.
 StarshipTalentSelection.instruction_one,Please select {{count}} talent.,,,,
 StarshipTalentSelection.instruction_other,Please select {{count}} talents.,,,,
 StarshipToolSelection.instruction,Select an option,Wählen Sie eine Option,Seleccione una opción,Sélectionnez une option,
@@ -315,67 +315,67 @@ SupportingCharacter.nameAndRank,Name & Rank,Name & Rang,,Nom & Rang,
 SupportingCharacter.nameAndRankInstruction,Give the character an appropriate name and rank. Supporting Characters should never have a rank above Lieutenant and may often be enlisted personnel rather than officers.,Geben Sie dem Charakter einen passenden Namen und Rang. Nebencharaktere sollten keinen höheren Rang als Lieutenant haben und sind oftmals sogar Mannschaftsdienstgrade anstatt von Offizieren.,,Donnez au personnage un nom et un grade approprié. Les personnages secondaires ne peuvent pas avoir un grade supérieur à Lieutenant et sont très sonvant du personnel enrôlé plutôt que des officiers.,
 SupportingCharacter.numericalValue,Value,Wert,,Valeur,
 SupportingCharacter.speciesBonus,Species Bonus,Spezies-Bonus,,Bonus d'Espèce,
-ToolSelection.instruction,What do you want to create?,Was soll erschaffen werden?,¿Qué quieres crear?,Que voulez vous créer?,
-ToolSelection.mainCharacter,Main Character,Hauptfigur,Personaje principal,Personnage principal,
-ToolSelection.supportingCharacter,Supporting Character,Nebencharakter,Personaje secundario,Personnage secondaire,
-ToolSelection.starship,Starship,Raumschiff,Nave estelar,Vaisseau spatial,
-ToolSelection.spaceSector,Space Sector,Raumsektor,Sector espacial,Secteur spatial,
-ToolSelection.randomNpc,Random NPC,Zufälliger NSC,,PNJ aléatoire,
-Common.button.random,Random,Zufällig,,,
-Common.button.select,Select,Auswählen,Escoger,Choisir,
-Common.button.selectAll,Select All,Alles auswählen,Seleccionar todo,Sélectionner tout,
-Common.button.selectNone,Select None,Auswahl aufheben,Seleccionar Ninguno,Sélectionnez Aucun,
-Common.button.showAll,Show Alll,Alle anzeigen,,,
+ToolSelection.instruction,What do you want to create?,Was soll erschaffen werden?,¿Qué quieres crear?,Que voulez vous créer?,Что вы хотите сгенерировать?
+ToolSelection.mainCharacter,Main Character,Hauptfigur,Personaje principal,Personnage principal,Главный персонаж
+ToolSelection.supportingCharacter,Supporting Character,Nebencharakter,Personaje secundario,Personnage secondaire,Персонаж поддержки
+ToolSelection.starship,Starship,Raumschiff,Nave estelar,Vaisseau spatial,Звездолет
+ToolSelection.spaceSector,Space Sector,Raumsektor,Sector espacial,Secteur spatial,Звездный сектор
+ToolSelection.randomNpc,Random NPC,Zufälliger NSC,,PNJ aléatoire,Рандомальный второстепенный персонаж
+Common.button.random,Random,Zufällig,,,Случайный выбор
+Common.button.select,Select,Auswählen,Escoger,Choisir,Выбрать
+Common.button.selectAll,Select All,Alles auswählen,Seleccionar todo,Sélectionner tout,Выбрать все
+Common.button.selectNone,Select None,Auswahl aufheben,Seleccionar Ninguno,Sélectionnez Aucun,Отменить все
+Common.button.showAll,Show Alll,Alle anzeigen,,,Показать все
 Common.button.exportJson,Export to JSON,Als JSON exportieren,Exportar a JSON,Exporter au format JSON,
 Common.button.export,Export,Export,,,
 Common.button.exportVtt,Export for VTT,Für VTT exportieren,,,
 Common.button.exportPdf,Export to PDF,Als PDF exportieren,Exportar a PDF,Exporter au format PDF,
 Common.button.finish,Finish,,,,
 Common.button.ok,OK,OK,De acuerdo,D'accord,
-Common.button.copyToClipboard,Copy to clipboard,,,,
-Common.button.add,Add,Hinzufügen,Agregar,Ajouter,
-Common.button.cancel,Cancel,Abbrechen,Cancelar,Annuler,
-Common.button.create,Create,Erschaffen,,Créer,
-Common.button.modify,Modify,Anpassen,,Modifier,
-Common.button.next,Next,Weiter,Próximo,Prochain,
-Common.button.view,View,Anzeigen,Vista,Vue,
-Common.text.description,Description,Beschreibung,,,
-Common.text.none,None,Keine Auswahl,,Aucun,
-Common.text.copiedToClipboard,Copied to clipboard,,,,
-Common.text.search,Search...,Suchen...,,,
-Common.text.select,Select,Wähle,,Selectionnez,
-Common.text.selectOne,Select one,Wählen Sie eine(n/s),,Selectionnez en un,
-Common.text.suggestions,Suggestions,Vorschläge,,,
-Common.text.total,Total,Insgesamt,,Total,
-Common.text.yes,Yes,Ja,,,
-Common.text.no,No,Nein,,,
-Common.text.other,Other,,,,
-Common.select.choose,Choose...,Wählen Sie aus ...,,Choisir,
-Construct.other.assignment,Assignment,Position,Asignación,Mission,
+Common.button.copyToClipboard,Copy to clipboard,,,,Скопировать в буфер
+Common.button.add,Add,Hinzufügen,Agregar,Ajouter,Добавить
+Common.button.cancel,Cancel,Abbrechen,Cancelar,Annuler,Отменить
+Common.button.create,Create,Erschaffen,,Créer,Создать
+Common.button.modify,Modify,Anpassen,,Modifier,Изменить
+Common.button.next,Next,Weiter,Próximo,Prochain,Слуедующий
+Common.button.view,View,Anzeigen,Vista,Vue,Показать
+Common.text.description,Description,Beschreibung,,,Описание
+Common.text.none,None,Keine Auswahl,,Aucun,Пусто
+Common.text.copiedToClipboard,Copied to clipboard,,,,Скопировано в буфер
+Common.text.search,Search...,Suchen...,,,Поиск ...
+Common.text.select,Select,Wähle,,Selectionnez,Выбрать
+Common.text.selectOne,Select one,Wählen Sie eine(n/s),,Selectionnez en un,Выберите один
+Common.text.suggestions,Suggestions,Vorschläge,,,Предложения
+Common.text.total,Total,Insgesamt,,Total,Всего
+Common.text.yes,Yes,Ja,,,Да
+Common.text.no,No,Nein,,,Нет
+Common.text.other,Other,,,,Другое
+Common.select.choose,Choose...,Wählen Sie aus ...,,Choisir,Выберите ...
+Construct.other.assignment,Assignment,Position,Asignación,Mission,Назначение
 Construct.other.attribute,Attribute,Attribut,,Attribut,
 Construct.other.attributes,Attributes,Attribute,Atributos,Attributs,
-Construct.other.career,Career,Karriere,,Carrière,
-Construct.other.careerEvent1,Career Event 1,Karriereereignis 1,,Evénement de Carrière 1,
-Construct.other.careerEvent2,Career Event 2,Karriereereignis 2,,Evénement de Carrière 2,
-Construct.other.careerEvents,Career Events,Karriereereignisse,,Evénements de Carrière,
-Construct.other.characterType,Character Type,Art des Charakters,Tipo de carácter,Type de personnage,
-Construct.other.crew,Crew,Crew,Tripulación,Équipage,
-Construct.other.departments,Departments,Abteilungen,Departamentos,Departements,
-Construct.other.determination,Determination,Entschlossenheit,Determinación,Détermination,
+Construct.other.career,Career,Karriere,,Carrière,Карьера
+Construct.other.careerEvent1,Career Event 1,Karriereereignis 1,,Evénement de Carrière 1,Первое событие карьеры
+Construct.other.careerEvent2,Career Event 2,Karriereereignis 2,,Evénement de Carrière 2,Второе событие карьеры
+Construct.other.careerEvents,Career Events,Karriereereignisse,,Evénements de Carrière,События карьеры
+Construct.other.characterType,Character Type,Art des Charakters,Tipo de carácter,Type de personnage,Тип персонажа
+Construct.other.crew,Crew,Crew,Tripulación,Équipage,Персонал
+Construct.other.departments,Departments,Abteilungen,Departamentos,Departements,Отделы
+Construct.other.determination,Determination,Entschlossenheit,Determinación,Détermination,Целеустремленность
 Construct.other.discipline,Discipline,Disziplin,,Discipline,
 Construct.other.disciplines,Disciplines,Disziplinen,Disciplinas,Disciplines,
 Construct.other.education,Education,Ausbildung,,,
-Construct.other.environment,Environment,Herkunft,Medio ambiente,Environnement,
-Construct.other.equipment,Equipment,Ausrüstung,Equipo,Équipement,
-Construct.other.era,Era,Ära,Era,Ère,
-Construct.other.focus,Focus,Fokus,,Spécialités,
-Construct.other.focus1,Focus 1,Fokus 1,,Spécialité 1,
-Construct.other.focus2,Focus 2,Fokus 2,,Spécialité 2,
-Construct.other.focus3,Focus 3,Fokus 3,,Spécialité 3,
-Construct.other.focuses,Focuses,Fokusse,Atenciónes,Spécialités,
-Construct.other.job,Job,Tätigkeit,,Travail,
+Construct.other.environment,Environment,Herkunft,Medio ambiente,Environnement,Среда обитания
+Construct.other.equipment,Equipment,Ausrüstung,Equipo,Équipement,Снаряжение
+Construct.other.era,Era,Ära,Era,Ère,Эра
+Construct.other.focus,Focus,Fokus,,Spécialités,Специализация
+Construct.other.focus1,Focus 1,Fokus 1,,Spécialité 1,Специализация 1
+Construct.other.focus2,Focus 2,Fokus 2,,Spécialité 2,Специализация 2
+Construct.other.focus3,Focus 3,Fokus 3,,Spécialité 3,Специализация 3
+Construct.other.focuses,Focuses,Fokusse,Atenciónes,Spécialités,Специализации
+Construct.other.job,Job,Tätigkeit,,Travail,Работа
 Construct.other.missionProfile,Mission Profile,Missionsprofil,Perfil de la misión,Profil de mission,
-Construct.other.name,Name,Name,Nombre,Nom,
+Construct.other.name,Name,Name,Nombre,Nom,Имя
 Construct.other.pronouns,Pronouns,Pronomen,Pronombres,Pronoms,
 Construct.other.power,Power,Energie,Poder,Energie,
 Construct.other.purpose,Purpose,Zweck,,Rôle,
@@ -429,24 +429,24 @@ Construct.system.engines,Engines,Antrieb,Motores,Moteur,
 Construct.system.sensors,Sensors,Sensoren,Sensores,Capteurs,
 Construct.system.structure,Structure,Hülle,Estructura,Structure,
 Construct.system.weapons,Weapons,Waffen,Armas,Armes,
-Page.title.attributesAndDisciplines,Finishing Touches,Feinschliff,,Touches Finales,
-Page.title.careerEvent,Career Event,Karriereereignis,,,
-Page.title.careerLength,Career Length,Karrierelänge,,Carrière,
-Page.title.careerLengthDetails,Career Length Details,Details zur Karrierelänge,,,
-Page.title.characterType,Character Type,Art des Charakters,Tipo de carácter,Type de personnage,
+Page.title.attributesAndDisciplines,Finishing Touches,Feinschliff,,Touches Finales,Заключительные штрихи
+Page.title.careerEvent,Career Event,Karriereereignis,,,События карьеры
+Page.title.careerLength,Career Length,Karrierelänge,,Carrière,Продолжительность карьеры
+Page.title.careerLengthDetails,Career Length Details,Details zur Karrierelänge,,,Подробности продолжительности карьеры
+Page.title.characterType,Character Type,Art des Charakters,Tipo de carácter,Type de personnage,Тип персонажа
 Page.title.creditsPage,Credits,Danksagungen,Créditos,Crédits,
 Page.title.customSpaceframe,Custom Spaceframe Creation,Eigene Klasse erstellen,,Création de Modèle de Vaiseau,
 Page.title.customSpeciesDetails,Custom Species Details,Details zur selbst erschaffenen Spezies,,Détails de Race Personalisé,
-Page.title.education,Education,Ausbildung,,,
-Page.title.educationDetails,Education Details,Details zur Ausbildung,,,
-Page.title.environment,Environment,Herkunft,,Environnement,
-Page.title.environmentDetails,Environment Details,Details über die Herkunft,,Détails de l'Environnement,
-Page.title.era,Era,Ära,Era,Ère,
-Page.title.extraTalentDetails,Extra Details,Zusätzliche Details,,,
+Page.title.education,Education,Ausbildung,,,Обучение
+Page.title.educationDetails,Education Details,Details zur Ausbildung,,,Детали обучения
+Page.title.environment,Environment,Herkunft,,Environnement,Среда обитания
+Page.title.environmentDetails,Environment Details,Details über die Herkunft,,Détails de l'Environnement,Подробности среды обитания
+Page.title.era,Era,Ära,Era,Ère,Эра
+Page.title.extraTalentDetails,Extra Details,Zusätzliche Details,,,Дополнительные детали
 Page.title.finalStarshipDetails,Final Starship Details,Finale Raumschiff-Details,,Détails Finaux du Vaisseau,
-Page.title.finish,Finishing Touches,Feinschliff,,Touches Finales,
+Page.title.finish,Finishing Touches,Feinschliff,,Touches Finales,Заключительные штрихи
 Page.title.gamemasterTrackerPage,Tracking,NSC-Verwaltung,Seguimiento,Suivi,
-Page.title.home,Home,Startseite,Página principal,Page d'accueil,
+Page.title.home,Home,Startseite,Página principal,Page d'accueil,Домашняя
 Page.title.missionPodSelection,Mission Pod Selection,Auswahl Missionsmodul,,Selection des Nacelles de Mission,
 Page.title.missionProfileSelection,Mission Profile Selection,Auswahl Missionsprofil,,Selection du Profil de Mission,
 Page.title.missionProfileTalentSelection,Mission Profile Talent,Auswahl Missionsprofil-Talent,,Talent du Profil de mission,
@@ -460,14 +460,14 @@ Page.title.careerEventDetails,Career Event Details,Karriereereignisdetails,,,
 Page.title.careerEventDetails1,Career Event Details 1,Karriereereignisdetails 1,,,
 Page.title.careerEventDetails2,Career Event Details 2,Karriereereignisdetails 2,,,
 Page.title.soloCareerLength,Career Length,Karrierelänge,,,
-Page.title.soloConstructType,Tool Selection,Werkzeug-Auswahl,,Selection d'Outil,
+Page.title.soloConstructType,Tool Selection,Werkzeug-Auswahl,,Selection d'Outil,Выбор инструмента
 Page.title.soloEarlyOutlook,Early Outlook,Erziehung,,,
 Page.title.soloEarlyOutlookDetails,Early Outlook Details,Erziehungsdetails,,,
 Page.title.soloEducationType,Education Type,Ausbildungsart,,,
 Page.title.soloEducation,Education,Ausbildung,,,
 Page.title.soloFinishingTouches,Finishing Touches,Feinschliff,,Touches Finales,
 Page.title.soloFinal,Final Details,Letzte Details,,,
-Page.title.sourceSelection,Sources,Quellen,,,
+Page.title.sourceSelection,Sources,Quellen,,,Источники
 Page.title.spaceframeOption,Spaceframe Option,Schiffsklassen-Optionen,,Option de Modèle,
 Page.title.spaceframeSelection,Spaceframe,Schiffsklasse,,Modèle de Vaisseau,
 Page.title.species,Species,Spezies,,Espèce,
@@ -480,7 +480,7 @@ Page.title.supportingCharacter,Supporting Character,Nebencharakter,Personaje sec
 Page.title.systemGeneration,System Generation,System-Erschaffung,Generación del Sistema Estelar,Génération du système stellaire,
 Page.title.tableList,Table List,,,,
 Page.title.talentsOverview,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents,
-Page.title.toolSelection,Tool Selection,Werkzeug-Auswahl,,Selection d'Outil,
+Page.title.toolSelection,Tool Selection,Werkzeug-Auswahl,,Selection d'Outil,Выбор инструмента
 Page.title.viewSheet,View Sheet,Bogen anzeigen,Ver hoja,Voir la feuille,
 Page.title.starshipTypeSelection,Starship Type,Raumschiff-Typ,,Type de Vaisseau,
 Page.title.starshipWeaponsSelection,Starship Weapons,Raumschiffwaffen,,Armes de Vaisseau,
@@ -700,7 +700,7 @@ CareerEvent.unofficial.50.focusDescription,"The character gains a focus, reflect
 CareerEvent.common.99.name,Recruited to Starfleet Intelligence,Rekrutiert vom Sternenflottengeheimdienst,,,
 CareerType.core.young.name,Young Officer,Grünschnabel,,Jeune Officier,
 CareerType.core.young.description,The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.,Der Charakter wird durch das Potential und weniger die Fähigkeiten definiert. Das rohe Talent und die Erwartungen an das Universum müssen noch durch die Realität abgeschwächt werden.,,Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.,
-CareerType.core.young.valueInstruction,"The character receives a Value, which must reflect the character’s inexperience and naivete in some way.","Der Charakter erhält eine Überzeugung, welche die Unerfahrenheit und Naivität in irgendeiner Art widerspiegelt.",,"Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage.",
+CareerType.core.young.description,"The character receives a Value, which must reflect the character’s inexperience and naivete in some way.","Der Charakter erhält eine Überzeugung, welche die Unerfahrenheit und Naivität in irgendeiner Art widerspiegelt.",,"Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage.",
 CareerType.core.experienced.name,Experienced Officer,Erfahrener Offizier,,Officier Expérimenté,
 CareerType.core.experienced.description,"The character has several years of experience in service of Starfleet, and is enjoying a promising career.",Der Charakter hat mehrere Jahre Erfahrung im Dienst der Sternenflotte und freut sich auf eine vielversprechende Karriere.,,"The character has several years of experience au service de Starfleet, et jouit d'une carrière prometteuse.",
 CareerType.core.experienced.valueInstruction,"The character receives a Value, and this can be chosen freely.",Der Charakter erhält eine frei wählbare Überzeugung.,,"Le personnage reçoit une Valueur, qui peut être choisie librement.",
@@ -798,12 +798,12 @@ Division.monsterMaroon.medical,Medical,Medizin,,,
 Division.monsterMaroon.security,Security,Sicherheit,,,
 Division.monsterMaroon.specialServices,Special Services,Ordonnazen,,,
 Division.monsterMaroon.trainee,Trainee,Rekrut,,,
-Era.name.enterprise,Enterprise (22nd century),Enterprise (22. Jahrhundert),,Enterprise (22ème Siècle),
-Era.name.originalSeries,Original Series (23rd century),Originalserie (23. Jahrhundert),,Serie Originale (23ème Siècle),
-Era.name.nextGeneration,Next Generation (24th century),Das Nächste Jahrhundert (24. Jahrhundert),,Nouvelle Génération (24ème Siècle),
-Era.name.picardProdigy,"Picard/Prodigy (late 24th century, early 25th century)","Picard/Prodigy (spätes 24., frühes 25. Jahrhundert)",,,
-Era.name.discovery32,Discovery (32nd century),Discovery (32. Jahrhundert),,,
-ExtraType.none,None,Nichts,,,
+Era.name.enterprise,Enterprise (22nd century),Enterprise (22. Jahrhundert),,Enterprise (22ème Siècle),Энтерпрайз (22й век)
+Era.name.originalSeries,Original Series (23rd century),Originalserie (23. Jahrhundert),,Serie Originale (23ème Siècle),Оригинальные серии (23й век)
+Era.name.nextGeneration,Next Generation (24th century),Das Nächste Jahrhundert (24. Jahrhundert),,Nouvelle Génération (24ème Siècle),Новое поколение (24й век)
+Era.name.picardProdigy,"Picard/Prodigy (late 24th century, early 25th century)","Picard/Prodigy (spätes 24., frühes 25. Jahrhundert)",,,Пикард/Вундеркинды (Поздний 24й и начало 25го века)
+Era.name.discovery32,Discovery (32nd century),Discovery (32. Jahrhundert),,,Дискавери (32й век)
+ExtraType.none,None,Nichts,,,Отсуствует
 ExtraType.bajoranEarring,Bajoran Earring,Bajoranischer Ohrring,,,
 ExtraType.simpleEarring,Simple Stud Earring,Einfacher Ohrstecker,,,
 ExtraType.hoopEarring,Hoop Earring,Kreolen-Ohrring,,,
@@ -1035,25 +1035,25 @@ ShipBuildType.pod.name,Pod,Kleines Shuttle,,Nacelle,
 ShipBuildType.shuttlecraft.name,Shuttle,Shuttle,,Navette,
 ShipBuildType.runabout.name,Runabout,Runabout,,Runabout,
 ShipBuildType.starship.name,Starship,Raumschiff,,Vaisseau,
-Source.type.coreBook,Core Rulebooks,Grundregelwerk,,Livres de Règles ,
+Source.type.coreBook,Core Rulebooks,Grundregelwerk,,Livres de Règles ,Базовые книги правил
 Source.type.divisionBook,Division Books,Abteilungs-Bände,,Livres des Divisions,
 Source.type.quadrantBook,Quadrant Books,Quadranten-Bände,,Livres des Quadrants,
 Source.type.crewBook,Crew Books,Spielercharakter-Spielhilfen,,Lives d'Equipages,
 Source.type.campaignBook,Campaign Books,Kampagnenbände,,Livres de Campagne,
 Source.type.expansion,Major Expansion Books,Wichtige Erweiterungsbände,,Livres d'Extensions,
 Source.type.misc,Misc/Other Books,Sonstige Bände,,Divers/Autres,
-Source.type.unofficial,Unofficial Sources,Inoffizielle Quellen,,,
-Source.book.core,Core,Grundregelwerk,,Règles de Base,
-Source.book.alphaQuadrant,Alpha Quadrant,Alpha-Quadrant,,Quadrant Alpha,
-Source.book.betaQuadrant,Beta Quadrant,Beta-Quadrant,,Quadrant Bêta,
-Source.book.gammaQuadrant,Gamma Quadrant,Gamma-Quadrant,,Quadrant Gamma,
-Source.book.deltaQuadrant,Delta Quadrant,Delta-Quadrant,,Quadrant Delta,
+Source.type.unofficial,Unofficial Sources,Inoffizielle Quellen,,,Неофициальные ресурсы
+Source.book.core,Core,Grundregelwerk,,Règles de Base,Основная книга
+Source.book.alphaQuadrant,Alpha Quadrant,Alpha-Quadrant,,Quadrant Alpha,Альфа Квадрант
+Source.book.betaQuadrant,Beta Quadrant,Beta-Quadrant,,Quadrant Bêta,Бета Квадрант
+Source.book.gammaQuadrant,Gamma Quadrant,Gamma-Quadrant,,Quadrant Gamma,Гамма Квадрант
+Source.book.deltaQuadrant,Delta Quadrant,Delta-Quadrant,,Quadrant Delta,Дельта Квадрант
 Source.book.commandDivision,Command Division,Kommando-Abteilung,,Division: Commandement,
 Source.book.operationsDivision,Operations Division,Operative Abteilung,,Division: Opérations,
 Source.book.sciencesDivision,Sciences Division,Wissenschafts-Abteilung,,Division: Science,
 Source.book.tng,TNG,Das Nächste Jahrhundert,,TNG,
 Source.book.ds9,DS9,Deep Space Nine,,DS9,
-Source.book.voyager,Voyager,Voyager,,Voyager,
+Source.book.voyager,Voyager,Voyager,,Voyager,Вояджер
 Source.book.theseAreTheVoyages,These are the Voy,Dies sind die Abenteuer,,These are the Voy,
 Source.book.tribblePlayerCharacter,Tribble Player Char,(NOT YET TRANSLATED),,Tribule PDF,
 Source.book.klingonCore,Klingon Core,Klingonisches Grundregelwerk,,Klingon,

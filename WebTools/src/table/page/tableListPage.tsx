@@ -48,7 +48,7 @@ const TableListPage: React.FC<ITableListPageProperties> = ({collections}) => {
                                     </td>
                                     <td>
                                         <div className="text-right">
-                                            <Button buttonType={true} className="btn btn-primary btn-xs" onClick={() => selectCollection(tc)}>Select</Button>
+                                            <Button className="btn btn-primary btn-xs" onClick={() => selectCollection(tc)}>Select</Button>
                                         </div>
                                     </td>
                                 </tr>))}

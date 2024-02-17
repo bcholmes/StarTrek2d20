@@ -140,7 +140,7 @@ export class BaseSimpleStarshipPage extends React.Component<ISimpleStarshipPageP
             </section>
 
             <section className="text-end">
-                <Button buttonType={true} onClick={() => this.nextPage()}>{t('Common.button.next')}</Button>
+                <Button onClick={() => this.nextPage()}>{t('Common.button.next')}</Button>
             </section>
         </div>);
     }

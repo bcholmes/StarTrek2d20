@@ -53,7 +53,7 @@ const ReputationChangePage: React.FC<ReputationChangePageProperties> = ({charact
                     onDecrease={() => setDelta((delta) => (delta - 1))} />
 
         <div className="mt-4 text-end">
-            <Button buttonType={true} onClick={() => nextPage()} className="btn btn-primary btn-sm">{t('Common.button.next')}</Button>
+            <Button onClick={() => nextPage()} className="btn btn-primary btn-sm">{t('Common.button.next')}</Button>
         </div>
 
     </div>);

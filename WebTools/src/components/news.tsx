@@ -206,7 +206,7 @@ class News extends React.Component<INewsProperties, {}> {
                 </ul>
 
                 <div className="text-center">
-                    <Button buttonType={true} className="btn btn-primary" onClick={ () => this.props.onClose() }>OK</Button>
+                    <Button className="btn btn-primary" onClick={ () => this.props.onClose() }>OK</Button>
                 </div>
             </Modal>
         );

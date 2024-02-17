@@ -18,7 +18,7 @@
     "Home.talentsButton": "Talents Overview",
     "Home.tokenCreator": "Tokens",
 
-    "History.noHistory": "No history",
+    "Lcars.noHistory": "No history",
 
     "NpcConfigurationPage.option.anyMajorSpecies": "Any Major Species",
     "NpcConfigurationPage.option.anySpecialization": "Any Specialization",
@@ -298,7 +298,7 @@
     "SpeciesPage.text.select": "Either select or roll your Species.",
 
     "SpeciesPage.textNoRoll": "To what species do you belong? You may also create a character of mixed species, gaining benefits from both.",
-    "SpeciesPage.mixedSpeciesNote": "Select two species. You will gain Traits from both species and may select from both species' Talents, but only the primary species gives you attribute bonuses.",
+    "SpeciesPage.mixedSpeciesNote": "Select two species. You will gain Traits from both species and may select from both species' Talents, but only the primary species gives you Attribute bonuses.",
 
     "StarshipTalentSelection.instruction_one": "Please select {{count}} talent.",
     "StarshipTalentSelection.instruction_other": "Please select {{count}} talents.",
@@ -701,7 +701,7 @@
 
     "CareerType.core.young.name": "Young Officer",
     "CareerType.core.young.description": "The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.",
-    "CareerType.core.young.valueInstruction": "The character receives a Value, which must reflect the character’s inexperience and naivete in some way.",
+    "CareerType.core.young.description": "The character receives a Value, which must reflect the character’s inexperience and naivete in some way.",
 
     "CareerType.core.experienced.name": "Experienced Officer",
     "CareerType.core.experienced.description": "The character has several years of experience in service of Starfleet, and is enjoying a promising career.",

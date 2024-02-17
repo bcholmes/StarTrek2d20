@@ -59,7 +59,7 @@ const PromotionPage: React.FC<IPromotionPageProperties> = ({character}) => {
             }} defaultValue={rank || ""}/>
 
         <div className="mt-4 text-end">
-            <Button buttonType={true} onClick={() => nextPage()} className="btn btn-primary btn-sm">{t('Common.button.next')}</Button>
+            <Button onClick={() => nextPage()} className="btn btn-primary btn-sm">{t('Common.button.next')}</Button>
         </div>
 
     </div>);

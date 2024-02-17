@@ -69,7 +69,7 @@ const ViewTablePage: React.FC<IViewTablePageProperties> = ({tableCollection}) =>
                                 <Header level={3}>{tableCollection.name}</Header>
                                 <ReactMarkdown>{tableCollection.description}</ReactMarkdown>
                             </div>
-                            <Button buttonType={true} className="btn btn-link mt-4" onClick={() => showModal()} title="Share"><i className="bi bi-share"></i></Button>
+                            <Button className="btn btn-link mt-4" onClick={() => showModal()} title="Share"><i className="bi bi-share"></i></Button>
                         </div>
 
                         <div className="row">
@@ -79,7 +79,7 @@ const ViewTablePage: React.FC<IViewTablePageProperties> = ({tableCollection}) =>
 
                             <div className="col-md-6 mt-4">
                                 <div className="text-end">
-                                    <Button buttonType={true} onClick={() => setValue(tableCollection.roll())} className="btn btn-primary btn-sm">
+                                    <Button onClick={() => setValue(tableCollection.roll())} className="btn btn-primary btn-sm">
                                         <img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')} />
                                         {' '} Roll
                                     </Button>

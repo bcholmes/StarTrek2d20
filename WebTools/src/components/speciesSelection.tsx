@@ -122,7 +122,7 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
                 <td>{attributes}</td>
                 <td className="d-none d-md-table-cell">{sources}</td>
                 <td>{talents}</td>
-                <td className="text-end d-none d-sm-table-cell"><Button buttonType={true} className="button-small"onClick={() => { onSelection(s.id) }} >{t('Common.button.select')}</Button></td>
+                <td className="text-end d-none d-sm-table-cell"><Button className="button-small"onClick={() => { onSelection(s.id) }} >{t('Common.button.select')}</Button></td>
             </tr>
         );
     });
@@ -141,7 +141,7 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
             <div className="row">
                 <div className="col-md-6 my-4">
                 {Character.isSpeciesListLimited(character) && !allowAllSpecies
-                    ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpecies( determineRandomSpecies(RandomMode.All)) }>
+                    ? (<Button className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpecies( determineRandomSpecies(RandomMode.All)) }>
                             <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                         </Button>)
                     : (<SplitButton variant='primary' title={buttonTitle} size="sm"
@@ -163,7 +163,7 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
                                 : undefined}
                         </SplitButton>)}
 
-                {randomSpecies != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpecies(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                {randomSpecies != null ? (<Button className="btn btn-primary btn-sm me-3" onClick={() => setRandomSpecies(null)} >{t('Common.button.showAll')}</Button>) : undefined}
                 </div>
                 <div className="col-md-6 text-end my-4">
                     <label className="visually-hidden" htmlFor='search'>Search</label>

@@ -382,7 +382,7 @@
 
     "CareerType.core.young.name": "Jeune Officier",
     "CareerType.core.young.description": "Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.",
-    "CareerType.core.young.valueInstruction": "Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage.",
+    "CareerType.core.young.description": "Le personnage reçoit une Valueur, qui doit,d'une certaine manière refléter l'inexperience et la naïveté du personnage.",
 
     "CareerType.core.experienced.name": "Officier Expérimenté",
     "CareerType.core.experienced.description": "The character has several years of experience au service de Starfleet, et jouit d'une carrière prometteuse.",

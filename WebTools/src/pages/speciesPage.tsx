@@ -61,7 +61,7 @@ const SpeciesPage: React.FC<ICharacterProperties> = ({character}) => {
                     <tr>
                         <td className="selection-header">Custom Species</td>
                         <td className="text-end">
-                            <Button buttonType={true} className="btn btn-primary btn-sm" onClick={() => showCustomSpecies() }>{t('Common.text.select')}</Button>
+                            <Button className="btn btn-primary btn-sm" onClick={() => showCustomSpecies() }>{t('Common.text.select')}</Button>
                         </td>
                     </tr>
                 </tbody>

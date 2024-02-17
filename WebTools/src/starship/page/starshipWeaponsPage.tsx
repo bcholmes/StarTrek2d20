@@ -27,7 +27,7 @@ class StarshipWeaponsPageProperties extends React.Component<IStarshipWeaponsPage
                 <div className="d-flex mb-3 mt-4">
                     <p className="mr-auto mb-0">This ship has the following weapons:</p>
                     <div className="text-end">
-                        <Button buttonType={true} className="btn btn-link mt-0" onClick={() => this.showModal()}><i className="bi bi-plus-circle"></i></Button>
+                        <Button className="btn btn-link mt-0" onClick={() => this.showModal()}><i className="bi bi-plus-circle"></i></Button>
                     </div>
                 </div>
 
@@ -43,7 +43,7 @@ class StarshipWeaponsPageProperties extends React.Component<IStarshipWeaponsPage
                 </table>
 
                 <div className="text-end">
-                    <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
+                    <Button onClick={() => this.nextPage()}>Next</Button>
                 </div>
             </div>);
     }
@@ -59,7 +59,7 @@ class StarshipWeaponsPageProperties extends React.Component<IStarshipWeaponsPage
                     <td className="selection-header">{w.description}</td>
                     <td><p className="m-0">{w.dice}</p></td>
                     <td><p className="m-0">{w.effectsAndQualities}</p></td>
-                    <td className="text-end"><Button buttonType={true} className="btn btn-link text-danger" onClick={() => { this.confirmRemove(w) }} ><i className="bi bi-trash"></i></Button></td>
+                    <td className="text-end"><Button className="btn btn-link text-danger" onClick={() => { this.confirmRemove(w) }} ><i className="bi bi-trash"></i></Button></td>
                 </tr>))}
             </tbody>);
         }
@@ -95,8 +95,8 @@ class StarshipWeaponsPageProperties extends React.Component<IStarshipWeaponsPage
     confirmationContents(w: Weapon) {
         return (<div>Are you sure you want to delete this weapon?
             <div className="mt-4 text-center">
-                <Button buttonType={true}  className="button-small me-3" onClick={() => { this.closeModal() }} >Cancel</Button>
-                <Button buttonType={true}  className="button-small" onClick={() => { this.deleteWeapon(w) }} >Delete</Button>
+                <Button  className="button-small me-3" onClick={() => { this.closeModal() }} >Cancel</Button>
+                <Button  className="button-small" onClick={() => { this.deleteWeapon(w) }} >Delete</Button>
             </div>
         </div>);
     }

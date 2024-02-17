@@ -46,7 +46,7 @@ const SoloSpeciesDetailsPage: React.FC<ICharacterProperties> = ({character}) => 
             </div>
 
             <div className="text-end mt-4">
-                <Button buttonType={true} onClick={() => navigateToNextPage()} className="btn btn-primary">{t('Common.button.next')}</Button>
+                <Button onClick={() => navigateToNextPage()} className="btn btn-primary">{t('Common.button.next')}</Button>
             </div>
         </div>
     )

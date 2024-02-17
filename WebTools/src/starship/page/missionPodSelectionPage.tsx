@@ -30,7 +30,7 @@ class MissionPodSelectionPage extends React.Component<IMissionPodSelectionPagePr
                 starship={this.props.starship}
                 onSelection={(missionPod) => store.dispatch(setStarshipMissionPod(missionPod))} />
             <div className="text-end">
-                <Button buttonType={true} onClick={() => this.nextPage()}>{t('Common.button.next')}</Button>
+                <Button onClick={() => this.nextPage()}>{t('Common.button.next')}</Button>
             </div>
         </div>);
     }

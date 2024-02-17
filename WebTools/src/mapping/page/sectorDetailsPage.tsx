@@ -85,7 +85,7 @@ const SectorDetailsPage: React.FC<ISectorDetailsPageProperties> = ({sector}) => 
                 </table>
             </div>
             <div className="mt-3">
-                <Button onClick={() => exportPdf()} className="button-small me-2" buttonType={true}>{t('Common.button.exportPdf')}</Button>
+                <Button onClick={() => exportPdf()} className="button-small me-2">{t('Common.button.exportPdf')}</Button>
             </div>
         </div>)
     : null;

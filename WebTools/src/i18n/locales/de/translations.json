@@ -550,7 +550,7 @@
 
     "CareerType.core.young.name": "Grünschnabel",
     "CareerType.core.young.description": "Der Charakter wird durch das Potential und weniger die Fähigkeiten definiert. Das rohe Talent und die Erwartungen an das Universum müssen noch durch die Realität abgeschwächt werden.",
-    "CareerType.core.young.valueInstruction": "Der Charakter erhält eine Überzeugung, welche die Unerfahrenheit und Naivität in irgendeiner Art widerspiegelt.",
+    "CareerType.core.young.description": "Der Charakter erhält eine Überzeugung, welche die Unerfahrenheit und Naivität in irgendeiner Art widerspiegelt.",
 
     "CareerType.core.experienced.name": "Erfahrener Offizier",
     "CareerType.core.experienced.description": "Der Charakter hat mehrere Jahre Erfahrung im Dienst der Sternenflotte und freut sich auf eine vielversprechende Karriere.",

@@ -134,7 +134,7 @@ const SoloStarshipTalentsPage: React.FC<ISoloStarshipTalentsProperties> = ({star
             </ReactMarkdown>
 
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => randomTalents()}>
+                <Button className="btn btn-primary btn-sm me-3" onClick={() => randomTalents()}>
                     <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
             </div>
@@ -145,7 +145,7 @@ const SoloStarshipTalentsPage: React.FC<ISoloStarshipTalentsProperties> = ({star
             </table>
 
             <div className='text-end mt-4'>
-                <Button buttonType={true} className="btn btn-primary" onClick={() => navigateToNextPage() }>{t('Common.button.next')}</Button>
+                <Button className="btn btn-primary" onClick={() => navigateToNextPage() }>{t('Common.button.next')}</Button>
             </div>
         </div>);
 }

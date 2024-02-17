@@ -54,7 +54,7 @@ const GMTrackerPage: React.FC<IGMTrackerPageProperties> = ({characters}) => {
                     <p>{t('GMTracker.instruction')}</p>
 
                     <div className="text-end">
-                        <Button buttonType={true} className="btn btn-link btn-lg" onClick={() => showAddModal()}><i className="bi bi-plus-circle"></i></Button>
+                        <Button className="btn btn-link btn-lg" onClick={() => showAddModal()}><i className="bi bi-plus-circle"></i></Button>
                     </div>
 
                     {characters.map((c, i) => <GmCharacterView tracking={c} key={'character-' + c.id}/>)}

@@ -98,8 +98,8 @@ const StarSystemDetailsPage: React.FC<IStarSystemDetailsPageProperties> = ({star
                 </div>
 
                 <div>
-                    <Button buttonType={true} className="me-2 btn btn-primary btn-sm" onClick={() => navigate("/sectorDetails") }>Back to Sector</Button>
-                    <Button onClick={() => exportPdf()} className="btn btn-primary btn-sm me-2" buttonType={true}>{t('Common.button.exportPdf')}</Button>
+                    <Button className="me-2 btn btn-primary btn-sm" onClick={() => navigate("/sectorDetails") }>Back to Sector</Button>
+                    <Button onClick={() => exportPdf()} className="btn btn-primary btn-sm me-2">{t('Common.button.exportPdf')}</Button>
                 </div>
             </div>);
     }

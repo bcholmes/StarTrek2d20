@@ -111,7 +111,7 @@ const CareerLengthDetailsPage : React.FC<ICharacterProperties> = ({character}) =
             {renderMainBody(career)}
 
             <div className="text-end">
-                <Button buttonType={true} className="btn btn-primary" onClick={() => onNext() }>{t('Common.button.next')}</Button>
+                <Button className="btn btn-primary" onClick={() => onNext() }>{t('Common.button.next')}</Button>
             </div>
         </div>
     );

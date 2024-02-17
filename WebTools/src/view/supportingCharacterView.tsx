@@ -90,8 +90,8 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
         </div>
 
         <div className="button-container mt-5 mb-3">
-            <Button className="button-small me-3" onClick={() => showExportDialog() } buttonType={true}>{t('Common.button.exportPdf')}</Button>
-            <Button className="button-small me-3" onClick={() => showVttExportDialog() } buttonType={true}>{t('Common.button.exportVtt')}</Button>
+            <Button className="button-small me-3" onClick={() => showExportDialog() }>{t('Common.button.exportPdf')}</Button>
+            <Button className="button-small me-3" onClick={() => showVttExportDialog() }>{t('Common.button.exportVtt')}</Button>
         </div>
     </main>);
 }

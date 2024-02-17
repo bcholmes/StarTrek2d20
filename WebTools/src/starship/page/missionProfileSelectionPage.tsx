@@ -31,7 +31,7 @@ class MissionProfileSelectionPage extends React.Component<IMissionProfileSelecti
                 starship={this.props.starship}
                 onSelection={(profile) => store.dispatch(setStarshipMissionProfile(profile))} />
             <div className="text-end mt-4">
-                <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
+                <Button onClick={() => this.nextPage()}>Next</Button>
             </div>
         </div>);
     }

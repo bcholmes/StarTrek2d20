@@ -93,7 +93,7 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
                         <tbody>
                             <tr onClick={() => { if (Window.isCompact()) this.selectStandardRules(); }}>
                                 <td className="selection-header">{t('SourceSelectionPage.standardGameType')}</td>
-                                <td className="text-end d-none d-sm-table-cell"><Button buttonType={true} className="btn btn-sm btn-primary" onClick={() => { this.selectStandardRules() }}>{t('Common.button.select')}</Button></td>
+                                <td className="text-end d-none d-sm-table-cell"><Button className="btn btn-sm btn-primary" onClick={() => { this.selectStandardRules() }}>{t('Common.button.select')}</Button></td>
                             </tr>
                             <tr onClick={() => {
                                 if (Window.isCompact() && this.hasSource(Source.CaptainsLog)) {

@@ -52,7 +52,7 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
                 {this.renderVttSpecificSettings()}
 
                 <div className="mt-5 text-center">
-                    <Button buttonType={true} className="btn btn-primary" onClick={() => this.export() }
+                    <Button className="btn btn-primary" onClick={() => this.export() }
                         enabled={this.state.vttType !== VttType.FantasyGrounds || this.props.construct instanceof Character} >Export</Button>
                 </div>
             </div>

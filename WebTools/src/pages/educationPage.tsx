@@ -45,7 +45,7 @@ const EducationPage: React.FC<ICharacterProperties> = ({character}) => {
         return (
             <tr key={i} onClick={() => { if (Window.isCompact()) selectTrack(track); }}>
                 <td className="selection-header">{track.localizedName}</td>
-                <td className="text-end"><Button buttonType={true} className="button-small" onClick={() => { selectTrack(track) }}>{t('Common.button.select')}</Button></td>
+                <td className="text-end"><Button className="button-small" onClick={() => { selectTrack(track) }}>{t('Common.button.select')}</Button></td>
             </tr>
         );
     }
@@ -90,10 +90,10 @@ const EducationPage: React.FC<ICharacterProperties> = ({character}) => {
 
                 {tab !== StarfleetTrackTab.Other
                     ? (<div className="my-4">
-                        <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => rollTrack() }>
+                        <Button className="btn btn-primary btn-sm me-3" onClick={() => rollTrack() }>
                             <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                         </Button>
-                        {randomTrack != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomTrack(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                        {randomTrack != null ? (<Button className="btn btn-primary btn-sm me-3" onClick={() => setRandomTrack(null)} >{t('Common.button.showAll')}</Button>) : undefined}
                     </div>)
                     : undefined}
 

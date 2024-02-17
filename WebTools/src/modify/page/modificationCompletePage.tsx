@@ -43,8 +43,8 @@ const ModificationCompletePage: React.FC<ModificationCompletePageProperties> = (
         <InstructionText text={t('ModificationCompletePage.instruction')} />
 
         <div className="my-4 text-end">
-            <Button buttonType={true} className="btn btn-primary btn-sm me-2" onClick={() => navigateTo(null, PageIdentity.ModificationTypeSelection)}>Modify</Button>
-            <Button buttonType={true} className="btn btn-primary btn-sm" onClick={() => showViewPage()}>View</Button>
+            <Button className="btn btn-primary btn-sm me-2" onClick={() => navigateTo(null, PageIdentity.ModificationTypeSelection)}>Modify</Button>
+            <Button className="btn btn-primary btn-sm" onClick={() => showViewPage()}>View</Button>
         </div>
     </div>);
 

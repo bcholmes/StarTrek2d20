@@ -310,7 +310,7 @@ const ChildEducationDetailsPage: React.FC<ICharacterPageProperties> = ({characte
         </div>
 
         <div className="text-end">
-            <Button buttonType={true} className="btn btn-primary" onClick={() => onNext() }>{t('Common.button.next')}</Button>
+            <Button className="btn btn-primary" onClick={() => onNext() }>{t('Common.button.next')}</Button>
         </div>
     </div>);
 }

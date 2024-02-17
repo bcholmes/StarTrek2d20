@@ -132,7 +132,7 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
                 <SingleTalentSelectionList talents={talents} onSelection={(talent) => { onTalentSelected(talent) } } construct={character}/>
             </div>
             <div className="text-end">
-                <Button buttonType={true} className="btn btn-primary mt-4" onClick={() => navigateToNextPage() }>{t('Common.button.next')}</Button>
+                <Button className="btn btn-primary mt-4" onClick={() => navigateToNextPage() }>{t('Common.button.next')}</Button>
             </div>
         </div>
     );

@@ -61,8 +61,8 @@ class GMCharacterView extends React.Component<IGMCharacterViewProperties, {}> {
                     <div className="text-white"><b>{t('Construct.other.talents')}:</b> {character.getTalentNameList()?.map((t, i) => (i > 0 ? ', ' : '') + t)}</div>
                 </div>
                 <div className="col-lg-3 text-end">
-                    <Button buttonType={true} className="btn btn-link" onClick={() => this.viewCharacter()}><i className="bi bi-eyeglasses"></i></Button>
-                    <Button buttonType={true} className="btn btn-link text-danger" onClick={() => this.removeCharacter()}><i className="bi bi-trash"></i></Button>
+                    <Button className="btn btn-link" onClick={() => this.viewCharacter()}><i className="bi bi-eyeglasses"></i></Button>
+                    <Button className="btn btn-link text-danger" onClick={() => this.removeCharacter()}><i className="bi bi-trash"></i></Button>
                 </div>
             </div>
         </div>)

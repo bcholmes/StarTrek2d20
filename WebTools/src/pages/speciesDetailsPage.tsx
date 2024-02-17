@@ -145,7 +145,7 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
                     </div>
                     {renderTalentsSection()}
                     <div className="text-end mt-4">
-                        <Button buttonType={true} className="btn btn-primary" onClick={() => onNext()}>{t('Common.button.next')}</Button>
+                        <Button className="btn btn-primary" onClick={() => onNext()}>{t('Common.button.next')}</Button>
                     </div>
                 </main>
             </div>

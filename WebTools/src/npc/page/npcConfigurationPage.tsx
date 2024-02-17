@@ -108,7 +108,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                 </div>
 
                 <div className="mt-5">
-                    <Button buttonType={true} className="btn btn-primary" onClick={() => this.createNpc()}>{t('Common.button.create')}</Button>
+                    <Button className="btn btn-primary" onClick={() => this.createNpc()}>{t('Common.button.create')}</Button>
                 </div>
             </div>
         </div>);

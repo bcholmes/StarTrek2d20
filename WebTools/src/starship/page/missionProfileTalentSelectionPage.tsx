@@ -31,7 +31,7 @@ class MissionProfileTalentSelectionPage extends React.Component<IMissionProfileT
                 construct={this.props.starship}
                 onSelection={(talent) => this.saveTalent(talent)} />
             <div className="text-right">
-                <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
+                <Button onClick={() => this.nextPage()}>Next</Button>
             </div>
         </div>);
     }

@@ -157,7 +157,7 @@ class AddWeaponView extends React.Component<IAddWeaponViewProperties, IAddWeapon
             {load}
             {deliveryType}
             <div className="text-center">
-                <Button buttonType={true} onClick={() => this.addWeapon()}>Add</Button>
+                <Button onClick={() => this.addWeapon()}>Add</Button>
             </div>
         </div>);
     }

@@ -31,7 +31,7 @@ class ExpandedMunitionsWeaponsSelectionPage extends React.Component<IExpandedMun
                             : "Your ship has the talent \"Expanded Munitions\". You may select an additional starship weapon:"}
                         </p>
                     <div className="text-end">
-                        <Button buttonType={true} className="btn btn-link mt-0" onClick={() => this.showModal()}><i className="bi bi-plus-circle"></i></Button>
+                        <Button className="btn btn-link mt-0" onClick={() => this.showModal()}><i className="bi bi-plus-circle"></i></Button>
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@ class ExpandedMunitionsWeaponsSelectionPage extends React.Component<IExpandedMun
                 </table>
 
                 <div className="text-end">
-                    <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
+                    <Button onClick={() => this.nextPage()}>Next</Button>
                 </div>
             </div>);
     }
@@ -67,7 +67,7 @@ class ExpandedMunitionsWeaponsSelectionPage extends React.Component<IExpandedMun
                     <td className="selection-header">{s.weapon.description}</td>
                     <td><p className="m-0">{s.weapon.dice}</p></td>
                     <td><p className="m-0">{s.weapon.effectsAndQualities}</p></td>
-                    <td className="text-end"><Button buttonType={true} className="btn btn-link text-danger" onClick={() => { this.confirmRemove(s) }} ><i className="bi bi-trash"></i></Button></td>
+                    <td className="text-end"><Button className="btn btn-link text-danger" onClick={() => { this.confirmRemove(s) }} ><i className="bi bi-trash"></i></Button></td>
                 </tr>))}
             </tbody>);
         }
@@ -112,8 +112,8 @@ class ExpandedMunitionsWeaponsSelectionPage extends React.Component<IExpandedMun
     confirmationContents(selection: ShipTalentDetailSelection) {
         return (<div>Are you sure you want to delete this weapon?
             <div className="mt-4 text-center">
-                <Button buttonType={true}  className="button-small me-3" onClick={() => { this.closeModal() }} >Cancel</Button>
-                <Button buttonType={true}  className="button-small" onClick={() => { this.deleteWeapon(selection) }} >Delete</Button>
+                <Button  className="button-small me-3" onClick={() => { this.closeModal() }} >Cancel</Button>
+                <Button  className="button-small" onClick={() => { this.deleteWeapon(selection) }} >Delete</Button>
             </div>
         </div>);
     }

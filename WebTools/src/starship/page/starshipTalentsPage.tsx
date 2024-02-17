@@ -32,7 +32,7 @@ class StarshipTalentsPage extends React.Component<ISimpleStarshipPageProperties,
                     onSelection={(talents) => store.dispatch(setAdditionalTalents(talents))} />)
                 : null}
             <div className="text-end">
-                <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
+                <Button onClick={() => this.nextPage()}>Next</Button>
             </div>
         </div>);
     }

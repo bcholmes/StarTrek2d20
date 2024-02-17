@@ -31,7 +31,7 @@ class SelectStarshipToolPage extends React.Component<WithTranslation, {}> {
 
                     <div className="d-flex mt-3">
                         <div className="me-5">
-                            <Button buttonType={true} className="btn btn-primary mt-0" onClick={() => { this.goToPage(PageIdentity.StarshipTypeSelection); } }
+                            <Button className="btn btn-primary mt-0" onClick={() => { this.goToPage(PageIdentity.StarshipTypeSelection); } }
                             >{t('StarshipToolSelection.standardBuild')}</Button>
                         </div>
                         <p className="d-none d-lg-block">{t('StarshipToolSelection.standardBuildDescription')}
@@ -39,7 +39,7 @@ class SelectStarshipToolPage extends React.Component<WithTranslation, {}> {
                     </div>
                     <div className="d-flex mt-4">
                         <div className="me-5">
-                            <Button buttonType={true} className="btn btn-primary mt-0" onClick={() => { this.startSimplifiedWorkflow(); } }
+                            <Button className="btn btn-primary mt-0" onClick={() => { this.startSimplifiedWorkflow(); } }
                             >{t('StarshipToolSelection.simplifiedBuild')}</Button>
                         </div>
                         <p className="d-none d-lg-block">

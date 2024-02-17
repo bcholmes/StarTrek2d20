@@ -55,7 +55,7 @@ const CareerEventPage: React.FC<ICareerEventProperties> = ({character, context})
                 <td className="selection-header">{careerEvent.name}</td>
                 <td>{attributes}</td>
                 <td>{disciplines}</td>
-                <td className="text-end"><Button className="button-small" onClick={() => { careerEventSelected(careerEvent) } } buttonType={true}>{t('Common.button.select')}</Button></td>
+                <td className="text-end"><Button className="button-small" onClick={() => { careerEventSelected(careerEvent) } }>{t('Common.button.select')}</Button></td>
             </tr>
         )
     }
@@ -76,10 +76,10 @@ const CareerEventPage: React.FC<ICareerEventProperties> = ({character, context})
 
         return (<>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomEvent( generateRandomEvent(false)) }>
+                <Button className="btn btn-primary btn-sm me-3" onClick={() => setRandomEvent( generateRandomEvent(false)) }>
                     <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
-                {randomEvent != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomEvent(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                {randomEvent != null ? (<Button className="btn btn-primary btn-sm me-3" onClick={() => setRandomEvent(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
 
             <table className="selection-list">
@@ -101,10 +101,10 @@ const CareerEventPage: React.FC<ICareerEventProperties> = ({character, context})
                 <ReactMarkdown children={t('CareerEvents.unofficialNote')} linkTarget="_blank" />
             </div>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomEventWithUnofficial( generateRandomEvent(true)) }>
+                <Button className="btn btn-primary btn-sm me-3" onClick={() => setRandomEventWithUnofficial( generateRandomEvent(true)) }>
                     <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
-                {randomEventWithUnofficial != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomEventWithUnofficial(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                {randomEventWithUnofficial != null ? (<Button className="btn btn-primary btn-sm me-3" onClick={() => setRandomEventWithUnofficial(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
 
             <table className="selection-list">

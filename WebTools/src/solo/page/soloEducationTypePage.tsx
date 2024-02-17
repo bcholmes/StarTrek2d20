@@ -28,7 +28,7 @@ const SoloEducationTypePage: React.FC<ICharacterProperties> = ({character}) => {
         return (
             <tr key={i} onClick={() => { if (Window.isCompact()) typeSelected(type.type); }}>
                 <td className="selection-header">{type.localizedName}</td>
-                <td className="text-end"><Button buttonType={true} className="button-small" onClick={() => { typeSelected(type.type) }}>{t('Common.button.select')}</Button></td>
+                <td className="text-end"><Button className="button-small" onClick={() => { typeSelected(type.type) }}>{t('Common.button.select')}</Button></td>
             </tr>
         );
     }
@@ -45,10 +45,10 @@ const SoloEducationTypePage: React.FC<ICharacterProperties> = ({character}) => {
                 {t('SoloEducationTypePage.instruction')}
             </p>
             <div className="my-4">
-                <Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomType( EducationCategoryRandomTable()) }>
+                <Button className="btn btn-primary btn-sm me-3" onClick={() => setRandomType( EducationCategoryRandomTable()) }>
                     <><img src="/static/img/d20.svg" style={{height: "24px", aspectRatio: "1"}} className="me-1" alt={t('Common.button.random')}/> {t('Common.button.random')}</>
                 </Button>
-                {randomType != null ? (<Button buttonType={true} className="btn btn-primary btn-sm me-3" onClick={() => setRandomType(null)} >{t('Common.button.showAll')}</Button>) : undefined}
+                {randomType != null ? (<Button className="btn btn-primary btn-sm me-3" onClick={() => setRandomType(null)} >{t('Common.button.showAll')}</Button>) : undefined}
             </div>
             <table className="selection-list">
                 <tbody>

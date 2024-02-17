@@ -103,7 +103,7 @@ const SoloCareerEventDetailsPage: React.FC<ISoloCareerEventProperties> = ({chara
                     </div>
                 </div>
                 <div className='text-end mt-4'>
-                    <Button buttonType={true} className="btn btn-primary" onClick={() => navigateToNextStep() }>{t('Common.button.next')}</Button>
+                    <Button className="btn btn-primary" onClick={() => navigateToNextStep() }>{t('Common.button.next')}</Button>
                 </div>
         </div>);
 

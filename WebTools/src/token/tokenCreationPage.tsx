@@ -119,7 +119,7 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
 
                                         <div className="col-6">
                                             <div className="mt-4 text-end">
-                                                <Button buttonType={true} className='btn btn-primary btn-xs mw-100' onClick={() => this.exportPng()}>{t('Common.button.export')}</Button>
+                                                <Button className='btn btn-primary btn-xs mw-100' onClick={() => this.exportPng()}>{t('Common.button.export')}</Button>
                                             </div>
                                         </div>
 

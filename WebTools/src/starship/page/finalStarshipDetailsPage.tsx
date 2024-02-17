@@ -99,8 +99,8 @@ class FinalStarshipDetailsPage extends React.Component<IFinalStarshipDetailsPage
 
                 <div className="starship-panel mt-5">
                     <div className="button-container mb-3">
-                        <Button className="button-small me-2 mb-2" onClick={() => this.showExportDialog() } buttonType={true} >Export to PDF</Button>
-                        <Button className="button-small me-2 mb-2" onClick={() => this.showViewPage() } buttonType={true} >View</Button>
+                        <Button className="button-small me-2 mb-2" onClick={() => this.showExportDialog() } >Export to PDF</Button>
+                        <Button className="button-small me-2 mb-2" onClick={() => this.showViewPage() } >View</Button>
                     </div>
                 </div>
             </div>);

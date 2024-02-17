@@ -74,7 +74,7 @@ const ModificationTypeSelectionPage: React.FC<ModificationTypeSelectionPagePrope
                     </div>)
                 : null}
                 <div className="my-4 text-end">
-                    <Button buttonType={true} className="btn btn-primary btn-sm" onClick={() => nextPage()}>Next</Button>
+                    <Button className="btn btn-primary btn-sm" onClick={() => nextPage()}>Next</Button>
                 </div>
             </div>);
 

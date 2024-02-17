@@ -34,7 +34,7 @@ class RefitPage extends React.Component<IRefitPageProperties, {}> {
                         onIncrease={(s) => { this.addRefit(s)} } onDecrease={(s) => { this.removeRefit(s); } }/>
 
             <div className="text-end">
-                <Button buttonType={true} onClick={() => this.nextPage()}>Next</Button>
+                <Button onClick={() => this.nextPage()}>Next</Button>
             </div>
         </div>);
     }

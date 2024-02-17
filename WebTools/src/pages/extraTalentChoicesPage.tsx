@@ -192,7 +192,7 @@ const ExtraTalentChoicesPage : React.FC<ICharacterProperties> = ({character}) =>
                 </div>
 
                 <div className="text-end my-4">
-                    <Button buttonType={true} className="btn btn-primary" onClick={() => onNext()} >{t('Common.button.next')}</Button>
+                    <Button className="btn btn-primary" onClick={() => onNext()} >{t('Common.button.next')}</Button>
                 </div>
             </main>
         </div>);
