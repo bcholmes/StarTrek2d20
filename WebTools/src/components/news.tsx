@@ -12,6 +12,16 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240216a</b>
+                <ul>
+                    <li>
+                        A revision to the final step, including changes to the handling of ranks and roles of
+                        non-department heads.
+                    </li>
+                    <li>
+                        Solo starship creation now implements a profile button.
+                    </li>
+                </ul>
                 <b>v1.240216</b>
                 <ul>
                     <li>
