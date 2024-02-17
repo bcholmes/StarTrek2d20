@@ -12,6 +12,7 @@ import { eraRandomTable, eraRandomTableForStarships } from '../table/eraRandomTa
 import { Stereotype } from '../../common/construct';
 import { createStarship, setStarshipServiceYear } from '../../state/starshipActions';
 import { Starship } from '../../common/starship';
+import { Header } from '../../components/header';
 
 interface ISoloEraSelectionPage {
     stereotype: Stereotype;
@@ -66,7 +67,9 @@ const SoloEraSelectionPage: React.FC<ISoloEraSelectionPage> = ({stereotype}) => 
                     <li className="breadcrumb-item active" aria-current="page">{t('Page.title.era')}</li>
                 </ol>
             </nav>
-            <p className="mt-5">
+
+            <Header>{t('Page.title.era')}</Header>
+            <p className="mt-3">
                 {t('SoloEraSelectionPage.instruction')}
             </p>
             <div className="my-4">

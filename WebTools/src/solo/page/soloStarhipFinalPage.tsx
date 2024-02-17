@@ -54,7 +54,7 @@ const SoloStarshipFinalPage: React.FC<ISoloStarshipFinalProperties> = ({starship
                 </div>
 
                 <div className="d-sm-flex align-items-stretch">
-                    <InputFieldAndLabel id="registry" labelName="Registry"
+                    <InputFieldAndLabel id="registry" labelName={t('Construct.other.registry')}
                         onChange={(registry) => {store.dispatch(setStarshipRegistry(registry))}} value={starship?.registry ?? ""} />
                 </div>
 

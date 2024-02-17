@@ -8,6 +8,7 @@ import News from "./news";
 import PageHeader from "./pageHeader";
 import { RandomLcarsReadout } from "./randomLcarsReadout";
 import { useTranslation } from 'react-i18next';
+import StarshipProfile from "./starshipProfile";
 
 interface ILcarsFrameProperties {
     activePage: PageIdentity;
@@ -25,6 +26,13 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
     const navigate = useNavigate();
 
 
+    const isSoloStarshipPage = () => {
+        return activePage === PageIdentity.SoloStarshipEra ||
+            activePage === PageIdentity.SoloStarshipSpaceframe ||
+            activePage === PageIdentity.SoloStarshipTalents ||
+            activePage === PageIdentity.SoloStarshipFinish;
+    }
+
     const isStarshipPage = () => {
         if (activePage === PageIdentity.SmallCraftStats ||
             activePage === PageIdentity.MissionPodSelection ||
@@ -38,12 +46,7 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
             activePage === PageIdentity.StarshipWeaponsSelection ||
             activePage === PageIdentity.StarshipTalentSelection ||
             activePage === PageIdentity.FinalStarshipDetails ||
-            activePage === PageIdentity.SimpleStarship ||
-
-            activePage === PageIdentity.SoloStarshipEra ||
-            activePage === PageIdentity.SoloStarshipSpaceframe ||
-            activePage === PageIdentity.SoloStarshipTalents ||
-            activePage === PageIdentity.SoloStarshipFinish) {
+            activePage === PageIdentity.SimpleStarship) {
             return true;
         } else {
             return false;
@@ -140,8 +143,9 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
                     </div>
                     <div className="lcar-content-action" role="button" tabIndex={0}>
                         <div id="profile-button" className={'lcar-content-profile ' + (isProfileSupportedForPage() ? '' : 'd-none')} onClick={ () => toggleProfile() }>{t('Lcars.profile')}</div>
-                        <CharacterSheet showProfile={showProfile} close={() => setShowProfile(false)}
-                            storeBased={true}/>
+                        {isSoloStarshipPage()
+                            ? (<StarshipProfile showProfile={showProfile} close={() => setShowProfile(false)}/>)
+                            : (<CharacterSheet showProfile={showProfile} close={() => setShowProfile(false)} storeBased={true}/>)}
                     </div>
                     <div className="lcar-content-feedback" role="button"  tabIndex={0} onClick={ () => showFeedbackPage() }>{t('Lcars.feedback')}</div>
                     <div className="lcar-content-news" role="button" tabIndex={0} onClick={() => showNewsPanel()}>

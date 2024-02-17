@@ -73,7 +73,7 @@ const SoloStarshipTalentsPage: React.FC<ISoloStarshipTalentsProperties> = ({star
     }
 
     const isTalentAllowed = (t: TalentModel) => {
-        let ok = true;
+        let ok = (t.name !== "Cloaking Device" && t.name !== "Cloaked Mines");
         t.prerequisites.forEach(p => {
             if (p instanceof CenturyPrerequisite) {
                 ok = ok && p.isPrerequisiteFulfilled(starship);
