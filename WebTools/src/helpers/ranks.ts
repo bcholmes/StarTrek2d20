@@ -186,8 +186,7 @@ class RolesPrerequisite implements IConstructPrerequisite<Character> {
         if (character.role == null) {
             return this.noRoleAllowed;
         } else {
-            const role = RolesHelper.instance.getRoleByName(character.role);
-            return this._roles.indexOf(role) > -1;
+            return (this._roles.indexOf(character.role) > -1) || (character.secondaryRole != null && this._roles.indexOf(character.secondaryRole) >= 0);
         }
     }
     describe(): string {
@@ -203,9 +202,10 @@ class NotRolesPrerequisite implements IConstructPrerequisite<Character> {
     }
 
     isPrerequisiteFulfilled(character: Character) {
-        const role = RolesHelper.instance.getRoleByName(character.role);
-        return this._roles.indexOf(role) === -1;
+        return character.role == null ||
+            (this._roles.indexOf(character.role) < 0 && (character.secondaryRole == null || this._roles.indexOf(character.secondaryRole) < 0));
     }
+
     describe(): string {
         return "";
     }
@@ -350,6 +350,7 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
+                new NotRolesPrerequisite([Role.ExecutiveOfficer, Role.ChiefMedicalOfficer, Role.ChiefOfSecurity, Role.ChiefEngineer]),
                 new AnyOfPrerequisite(
                     new CharacterTypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior),
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.KlingonDefenceForce, AlliedMilitaryType.TalarianMilitia)),

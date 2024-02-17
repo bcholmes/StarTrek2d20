@@ -4,8 +4,8 @@ import {CharacterType} from '../common/characterType';
 import {Button} from '../components/button';
 import {CheckBox} from '../components/checkBox';
 import {ANY_NAMES, SpeciesHelper} from '../helpers/species';
-import {RankModel, RanksHelper} from '../helpers/ranks';
-import {RolesHelper, RoleModel} from '../helpers/roles';
+import {Rank, RankModel, RanksHelper} from '../helpers/ranks';
+import {RolesHelper, RoleModel, Role} from '../helpers/roles';
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
 import { AlliedMilitaryType } from '../helpers/alliedMilitary';
@@ -34,7 +34,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
     const currentRole = character.role;
 
     let roleList = RolesHelper.instance.getRoles(character);
-    let rankList = RanksHelper.instance().getSortedRanks(character);
+    let rankList = RanksHelper.instance().getSortedRanks(character, false);
 
     useEffect(() => {
         if (character.role == null && (!character.jobAssignment)) {
@@ -47,7 +47,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
             }
         } else if (!character.isCivilian() && rankList?.length > 0) {
             let existingRank = rankList.filter(r => r.id === character.rank?.id);
-            if (character.rank == null || existingRank == null) {
+            if (character.rank == null || existingRank.length === 0) {
                 const rank = rankList[rankList.length - 1];
                 store.dispatch(setCharacterRank(rank.name, rank.id));
             }
@@ -226,18 +226,12 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
         store.dispatch(setCharacterAssignedShip(ship));
     }
 
-    const onJobChanged = (job: string) => {
-        store.dispatch(setCharacterAssignment(job));
-    }
-
-
     const showDialog = () => {
         setTimeout(() => {
             let c = store.getState().character.currentCharacter;
             CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(c), "sta-character", c);
         }, 200);
     }
-
 
     const onNameChanged = (value: string) => {
         store.dispatch(setCharacterName(value));
@@ -269,6 +263,17 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
     }
 
     const onSelectRole = (role?: RoleModel, assignment?: string) => {
+        /*
+        if (character.rank?.id === Rank.Ensign && role != null
+            && [Role.ChiefMedicalOfficer, Role.ChiefEngineer, Role.ChiefOfSecurity, Role.ExecutiveOfficer].indexOf(role.id) >= 0) {
+
+            let validRanks = rankList.filter(r => r.id !== Rank.Ensign);
+            if (validRanks.length) {
+                store.dispatch(setCharacterRank(validRanks[0].localizedName, validRanks[0].id));
+            }
+        }
+        */
+
         if (role == null && assignment) {
             store.dispatch(setCharacterAssignment(assignment));
         } else if (character.hasTalent("Multi-Discipline")) {
