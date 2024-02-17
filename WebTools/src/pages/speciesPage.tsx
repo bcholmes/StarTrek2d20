@@ -99,13 +99,13 @@ const SpeciesPage: React.FC<ICharacterProperties> = ({character}) => {
 
                     <InstructionText text={t('SpeciesPage.text')} />
 
-                    <div className="btn-group w-100 mt-4" role="group" aria-label="Environment types">
+                    <div className="btn-group w-100 mt-4" role="group" aria-label={t('Page.title.species')}>
                         <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === SpeciesTab.Standard ? "active" : "")}
-                            onClick={() => setTab(SpeciesTab.Standard)}>Standard Species</button>
+                            onClick={() => setTab(SpeciesTab.Standard)}>{t('SpeciesPage.standardSpecies')}</button>
                         <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === SpeciesTab.Mixed ? "active" : "")}
-                            onClick={() => setTab(SpeciesTab.Mixed)}>Mixed Species</button>
+                            onClick={() => setTab(SpeciesTab.Mixed)}>{t('SpeciesPage.mixedSpecies')}</button>
                         <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === SpeciesTab.Custom ? "active" : "")}
-                            onClick={() => setTab(SpeciesTab.Custom)}>Custom Species</button>
+                            onClick={() => setTab(SpeciesTab.Custom)}>{t('SpeciesPage.customSpecies')}</button>
                     </div>
 
                     {renderTab()}

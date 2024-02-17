@@ -253,6 +253,8 @@
     "Page.title.sourceSelection": "Источники",
     "Page.title.toolSelection": "Выбор инструмента",
 
+    "CharacterType.name.starfleet": "Звездный флот",
+
     "Era.name.enterprise": "Энтерпрайз (22й век)",
     "Era.name.originalSeries": "Оригинальные серии (23й век)",
     "Era.name.nextGeneration": "Новое поколение (24й век)",
@@ -260,6 +262,19 @@
     "Era.name.discovery32": "Дискавери (32й век)",
 
     "ExtraType.none": "Отсуствует",
+
+    "GovernmentType.name.andorian": "Андорское",
+    "GovernmentType.name.bajoran": "Баджорское",
+    "GovernmentType.name.cardassian": "Кардасское",
+    "GovernmentType.name.dominion": "Доминион",
+    "GovernmentType.name.federation": "Федерация",
+    "GovernmentType.name.klingon": "Клингонское",
+    "GovernmentType.name.romulan": "Ромуланское",
+    "GovernmentType.name.tellarite": "Телларитское",
+    "GovernmentType.name.vulcan": "Вулканское",
+    "GovernmentType.name.other": "Другое",
+
+    "NasoLabialFoldType.none": "Отсуствует",
 
     "Source.type.coreBook": "Базовые книги правил",
     "Source.type.unofficial": "Неофициальные ресурсы",
@@ -270,20 +285,51 @@
     "Source.book.gammaQuadrant": "Гамма Квадрант",
     "Source.book.deltaQuadrant": "Дельта Квадрант",
     "Source.book.voyager": "Вояджер",
+    "Source.book.klingonCore": "Клингоны основная",
+    "Source.book.shackletonExpanse": "Пространство Шеклтона",
+    "Source.book.discoveryCampaign": "Кампания Дискавери",
+
+    "Specialization.admiral": "Адмирал",
+    "Specialization.conn": "Пилот",
+    "Specialization.counselor": "Советник",
+    "Specialization.engineer": "Инженер",
+    "Specialization.ferengiDaiMon": "Ферренги Даймон",
+    "Specialization.ferengiMerchant": "Ферренги-торговец",
+    "Specialization.firstContactSpecialist": "Специалист по Первому Контакту",
+    "Specialization.starfleetScientist": "Ученый",
 
     "Species.aenar.name": "Аэнар",
+    "Species.aenar.trait": "Андорианец, Аэнар",
 
     "Species.andorian.name": "Андорианец",
+    "Species.andorian.exampleValue": "Гордый/ая сын/дочь Андории",
+
+    "Species.aquan.name": "Акамариец",
+
+    "Species.arbazan.name": "Арбазанец",
 
     "Species.aurelian.name": "Аурелиан",
 
     "Species.bajoran.name": "Баджорец",
+    "Species.bajoran.exampleValue": "Вера в Пророков",
+
+    "Species.barzan.name": "Барзанец",
+
+    "Species.benzite.name": "Бензит",
 
     "Species.betazoid.name": "Бетазоид",
 
-    "Species.bolian.name": "Булианец",
+    "Species.bolian.name": "Болианец",
+
+    "Species.bynar.name": "Бинар",
+
+    "Species.caitian.name": "Каитан",
+
+    "Species.cardassian.name": "Кардассиан",
 
     "Species.denobulan.name": "Денобуланец",
+
+    "Species.elAurian.name": "Эль-Урианин",
 
     "Species.ferengi.name": "Ферренги",
 
@@ -293,11 +339,25 @@
 
     "Species.human.name": "Человек",
 
+    "Species.jemHadar.name": "Джем’Хадар",
+
     "Species.kazon.name": "Кейзон",
 
     "Species.klingon.name": "Клингон",
 
+    "Species.klingonQuchHa.name": "Клингон (КучХа’)",
+
     "Species.nausicaan.name": "Наусиканец",
 
-    "Species.orion.name": "Орионец"
+    "Species.orion.name": "Орионец",
+
+    "Species.romulan.name": "Ромулианец",
+
+    "Species.suliban.name": "Сулибан",
+
+    "Species.tellarite.name": "Телларит",
+
+    "Species.trill.name": "Трилл",
+
+    "Species.vulcan.name": "Вулканец"
 }

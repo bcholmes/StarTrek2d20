@@ -33,6 +33,8 @@
     "SourceSelectionPage.standardGameType": "Standard RPG Rules",
     "SourceSelectionPage.soloGameType": "Solo RPG using the Captain's Log Rules",
 
+    "ShareTableModal.instruction": "Respect copyrights. Please only share your own, personally-created tables.",
+
     "TokenCreator.option.rounded": "Rounded",
     "TokenCreator.option.bordered": "Bordered",
 
@@ -286,6 +288,9 @@
     "SpeciesDetails.allowEsoteric": "Allow esoterric talents (GM's decision)",
 
     "SpeciesPage.selectSpecies": "Select Species",
+    "SpeciesPage.standardSpecies": "Standard Species",
+    "SpeciesPage.mixedSpecies": "Mixed Species",
+    "SpeciesPage.customSpecies": "Custom Species",
     "SpeciesPage.selectMixedSpecies": "Select Mixed Species",
     "SpeciesPage.selectCustomSpecies": "Select Custom Species",
     "SpeciesPage.rollCoreSpecies": "Roll Core Species",

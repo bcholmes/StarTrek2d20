@@ -25,6 +25,7 @@ SourceSelectionPage.gameTypeInstruction,What type of game are you playing?,Welch
 SourceSelectionPage.sourceNote,Some sources are not yet implemented; check back soon!,Einige Quellen sind noch nicht verfügbar - schauen Sie bald wieder vorbei!,Algunas fuentes aún no se han aplicado; ¡Vuelve pronto!,Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!,Некоторые источники еще на доступны; скоро добавим!
 SourceSelectionPage.standardGameType,Standard RPG Rules,Standard Rollenspielregeln,,Règles de JDR standard,Стандартные правила НРИ
 SourceSelectionPage.soloGameType,Solo RPG using the Captain's Log Rules,Solo Rollenspiel mit den Captain's Log Regeln,,JDR solo utilisant les règles de Captain's Log,Соло НРИ используя Правила Дневник Капитана
+ShareTableModal.instruction,"Respect copyrights. Please only share your own, personally-created tables.",,,,
 TokenCreator.option.rounded,Rounded,Abgerundet,,Arrondi,Скругленное
 TokenCreator.option.bordered,Bordered,Eingerahmt,,Encadré,Обрамленное
 TokenCreator.section.species,Species,Spezies,,Espèce,Раса
@@ -262,6 +263,9 @@ SpeciesDetails.selectThree,(Select three),(Drei auswählen),,(Choisir trois),(в
 SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),Spezies-übergreifende Talente erlauben (Entscheidung liegt bei der Spielleitung),,Autoriser les talents inter-espèces (Decision du GM),Позволить таланты других рас (Решение Мастера)
 SpeciesDetails.allowEsoteric,Allow esoterric talents (GM's decision),Esoterische Talente erlauben (Entscheidung liegt bei der Spielleitung),,Autoriser les talents ésoteriques (Decision du GM),Позволить эзотерические таланты (Решение Мастера)
 SpeciesPage.selectSpecies,Select Species,Spezies wählen,,,Выбрать расу
+SpeciesPage.standardSpecies,Standard Species,,,,
+SpeciesPage.mixedSpecies,Mixed Species,,,,
+SpeciesPage.customSpecies,Custom Species,,,,
 SpeciesPage.selectMixedSpecies,Select Mixed Species,Spezies gemischter Herkunft wählen,,,Выбрать смешанную расу
 SpeciesPage.selectCustomSpecies,Select Custom Species,Eigene Spezies wählen,,,
 SpeciesPage.rollCoreSpecies,Roll Core Species,Grundregelwerkspezies würfeln,,,Случайный выбор Базовой расы
@@ -731,7 +735,7 @@ CareerType.solo.experienced.name,Experienced,Erfahren,,Expérimenté,
 CareerType.solo.experienced.description,Your character has several years of experience and is enjoying a promising career.,Der Charakter hat mehrere Jahre Erfahrung und freut sich auf eine vielversprechende Karriere.,,,
 CareerType.solo.veteran.name,Veteran,Veteran,,Vétéran,
 CareerType.solo.veteran.description,"Your character has decades of experience and has served on many ships and starbases. Their judgement and opinions are highly regarded by subordinates, peers, and even superiors.","Der Charakter blickt auf eine jahrzehntelange Erfahrung zurück und hat bereits auf vielen Schiffen und Sternenbasen gedient. Urteilsvermögen und Meinungen werden von Untergebenen, Gleichrangigen und selbst Vorgesetzten hoch geschätzt.",,,
-CharacterType.name.starfleet,Starfleet,Sternenflotte,,Starfleet,
+CharacterType.name.starfleet,Starfleet,Sternenflotte,,Starfleet,Звездный флот
 CharacterType.name.klingonWarrior,Klingon Defense Force,Klingonische Verteidigungsstreitmacht,,Forces de Défense Klingones,
 CharacterType.name.civilian,Civilian,Zivilisten,,Civil,
 CharacterType.name.alliedMilitary,Allied Military,Alliiertes Militär,,Armée Alliée,
@@ -877,16 +881,16 @@ Focus.transportersReplicators,Transporters & Replicators,Transporter und Replika
 Focus.virology,Virology,Virologie,,,
 Focus.warpFieldDynamics,Warp Field Dynamics,Warpfeldynamik,,,
 Focus.xenobiology,Xenobiology,Xenobiologie,,,
-GovernmentType.name.andorian,Andorian,Andorianer,,Andorien,
-GovernmentType.name.bajoran,Bajoran,Bajoraner,,Bajoran,
-GovernmentType.name.cardassian,Cardassian,Cardassianer,,Cardassien,
-GovernmentType.name.dominion,Dominion,Dominion,,Dominion,
-GovernmentType.name.federation,Federation,Föderation,,Fédération,
-GovernmentType.name.klingon,Klingon,Klingonen,,Klingon,
-GovernmentType.name.romulan,Romulan,Romulaner,,Romulien,
-GovernmentType.name.tellarite,Tellarite,Tellariten,,Tellarite,
-GovernmentType.name.vulcan,Vulcan,Vulkanier,,Vulcain,
-GovernmentType.name.other,Other,Andere,,Autre,
+GovernmentType.name.andorian,Andorian,Andorianer,,Andorien,Андорское
+GovernmentType.name.bajoran,Bajoran,Bajoraner,,Bajoran,Баджорское
+GovernmentType.name.cardassian,Cardassian,Cardassianer,,Cardassien,Кардасское
+GovernmentType.name.dominion,Dominion,Dominion,,Dominion,Доминион
+GovernmentType.name.federation,Federation,Föderation,,Fédération,Федерация
+GovernmentType.name.klingon,Klingon,Klingonen,,Klingon,Клингонское
+GovernmentType.name.romulan,Romulan,Romulaner,,Romulien,Ромуланское
+GovernmentType.name.tellarite,Tellarite,Tellariten,,Tellarite,Телларитское
+GovernmentType.name.vulcan,Vulcan,Vulkanier,,Vulcain,Вулканское
+GovernmentType.name.other,Other,Andere,,Autre,Другое
 HairType.bald,Bald,Glatze,,,
 HairType.bowlCutHair,Bowl Cut,Topfschnitt,,,
 HairType.chinLengthBob,Chin Length Bob,Kinnlanger Bob,,,
@@ -976,7 +980,7 @@ MouthType.mouth3Lipstick,"Lipstick, Prominent Upper Lip",,,,
 MouthType.mouth4Lipstick,"Lipstick, Thin Lip",,,,
 MouthType.mouth5Lipstick,"Lipstick, Downward-pointing",,,,
 MouthType.mouth6Lipstick,"Lipstick, Pronounced Cupid's Bow",,,,
-NasoLabialFoldType.none,None,,,,
+NasoLabialFoldType.none,None,,,,Отсуствует
 NasoLabialFoldType.subtle,Subtle,,,,
 NasoLabialFoldType.cherubic,Cherubic,,,,
 NasoLabialFoldType.nimoy,Haughty,,,,
@@ -1056,13 +1060,13 @@ Source.book.ds9,DS9,Deep Space Nine,,DS9,
 Source.book.voyager,Voyager,Voyager,,Voyager,Вояджер
 Source.book.theseAreTheVoyages,These are the Voy,Dies sind die Abenteuer,,These are the Voy,
 Source.book.tribblePlayerCharacter,Tribble Player Char,(NOT YET TRANSLATED),,Tribule PDF,
-Source.book.klingonCore,Klingon Core,Klingonisches Grundregelwerk,,Klingon,
-Source.book.shackletonExpanse,Shackleton Expanse,Shackleton-Ausdehnung,,Etendue Shakleton,
+Source.book.klingonCore,Klingon Core,Klingonisches Grundregelwerk,,Klingon,Клингоны основная
+Source.book.shackletonExpanse,Shackleton Expanse,Shackleton-Ausdehnung,,Etendue Shakleton,Пространство Шеклтона
 Source.book.idwYearFive,IDW Year Five,(NOT YET TRANSLATED),,IDW Année Cinq,
 Source.book.playersGuide,Player's Guide,(NOT YET TRANSLATED),,Guide du Joueur,
 Source.book.tricorderSet,Tricorder Set,(NOT YET TRANSLATED),,Kit Tricorder,
 Source.book.discoveryS1S2,Discovery S1/S2,(NOT YET TRANSLATED),,Discovery S1/S2,
-Source.book.discoveryCampaign,Discovery Campaign,(NOT YET TRANSLATED),,Campagne Discovery,
+Source.book.discoveryCampaign,Discovery Campaign,(NOT YET TRANSLATED),,Campagne Discovery,Кампания Дискавери
 Source.book.picardS1,Picard S1,(NOT YET TRANSLATED),,Picard S1,
 Source.book.utopiaPlanitia,Utopia Planitia,(NOT YET TRANSLATED),,Utopia Planitia,
 Source.book.lowerDecksCampaign,Lower Decks,(NOT YET TRANSLATED),,,
@@ -1110,14 +1114,14 @@ Spaceframe.steamrunner,Steamrunner Class,Steamrunner-Klasse,,,
 Spaceframe.sydney,Sydney Class,Sydney-Klasse,,,
 Spaceframe.tKalat,T'Kalat Class,T'Kalat-Klasse,,,
 Spaceframe.walker,Walker Class,Walker-Klasse,,,
-Specialization.admiral,Admiral,,,,
+Specialization.admiral,Admiral,,,,Адмирал
 Specialization.admin,Yeoman,,,,
-Specialization.conn,Conn,,,,
-Specialization.counselor,Counselor,,,,
-Specialization.engineer,Engineer,,,,
-Specialization.ferengiDaiMon,Ferengi DaiMon,,,,
-Specialization.ferengiMerchant,Ferengi Merchant,,,,
-Specialization.firstContactSpecialist,First Contact Specialist,,,,
+Specialization.conn,Conn,,,,Пилот
+Specialization.counselor,Counselor,,,,Советник
+Specialization.engineer,Engineer,,,,Инженер
+Specialization.ferengiDaiMon,Ferengi DaiMon,,,,Ферренги Даймон
+Specialization.ferengiMerchant,Ferengi Merchant,,,,Ферренги-торговец
+Specialization.firstContactSpecialist,First Contact Specialist,,,,Специалист по Первому Контакту
 Specialization.hangarDeck,Hangar Deck,,,,
 Specialization.intelligenceOfficer,Intelligence Officer,,,,
 Specialization.jag,Judge Advocate General's Office,,,,
@@ -1129,22 +1133,22 @@ Specialization.medicalDoctor,Medical Doctor,,,,
 Specialization.nurse,Nurse,,,,
 Specialization.scienceTech,Science Technician,,,,
 Specialization.security,Security,,,,
-Specialization.starfleetScientist,Scientist,,,,
+Specialization.starfleetScientist,Scientist,,,,Ученый
 Species.aenar.name,Aenar,Aenar,,,Аэнар
 Species.aenar.description,"The Aenar subspecies of the Andorians is native to the Northern Wastes of Andoria. Their population never rose above a few thousand. Prior to the 23rd- Century, Aenar lived in an underground compound shielded by a dampening field, and had become a myth to other Andorians. They have a communal society with no formal leader, but when the situation calls for a single voice they appoint a delegate known as “The Speaker.” Aenar possess a strictly pacifist ideology and deplore violence of all forms, both physical and mental. 
 
 Physiologically, Aenar are almost identical to Andorians save an absence of skin and hair pigmentation and their highly evolved telepathic abilities, but the Aenar had a strict law against reading the minds of other people without prior consent. Aenar and Andorians were genetically compatible, and following their discovery in 2140, there were increasing marriages between the subspecies. By the early 24th-Century, few Aenar remained, having become fully integrated into Andorian society. However, it was not unknown for families with many Aenar progenitors to produce children with empathy talents.",,,,
 Species.aenar.exampleValue,There is never a need for hostility,,,,
 Species.aenar.soloDescription,"The Aenar were a subspecies of Andorians who were on the verge of extinction by the mid-22nd century. They had two antennae and no skin or hair pigmentation. Their most distinctive trait was their telepathic abilities, which included reading minds and psychically projecting themselves into the minds of other humanoids.",,,,
-Species.aenar.trait,"Andorian, Aenar",,,,
+Species.aenar.trait,"Andorian, Aenar",,,,"Андорианец, Аэнар"
 Species.aenar.traitDescription,"These traits may reduce the Difficulty of Tasks to resist extreme cold, or Tasks impacted by extremely low temperatures. Their antennae aids in both balance and spatial awareness, and a lost or injured antenna causes dizziness until it regrows. Andorians have a high metabolism that means they tire quickly and are more vulnerable to infection from certain types of injury. Many Aenar are born blind yet have the ability to “see” people and objects via their innate telepathy. However, operating terminals or using view screens is more challenging.",,,,
 Species.andorian.name,Andorian,Andorianer,,,Андорианец
 Species.andorian.aboutNames,"Andorian names tend to be somewhat harsh-sounding, and have a personal name followed by a clan name. Amongst some Andorians, it’s common to begin the clan name with a gender-specific prefix: 'zh' or 'sh' for females, and 'ch' or 'th' for males. This is placed before the family name, separated by an apostrophe. Longer or more complicated Andorian names are commonly shortened, especially when dealing with other species. Examples: Ishrelia zh’Azonan (female), Atheth th’Zynes(male)",,,,
 Species.andorian.description,"An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the United Federation of Planets since its foundation, having been firm allies of Humanity for several years beforehand. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor-duels known as Ushaan, using razorsharp ice-mining tools.","Die Andorianer, ein aggressives, leidenschaftliches Volk vom Eismond Andoria, sind seit ihrer Gründung Teil der Vereinten Föderation der Planeten und waren schon in den Jahren zuvor verlässliche Verbündete der Menschen. Ihre blaue Haut, ihr weißes Haar und ihre Antennen verleihen ihnen ein unverwechselbares Erscheinungsbild, und auch wenn die Imperiale Andorianische Garde mit Gründung der Föderation außer Dienst gestellt wurde, unterhalten sie immer noch starke militärische Traditionen und den Brauch eines ritualisierten Ehrenduells, das als Ushaan bekannt ist und rasiermesserscharfe, beim Eisbergbau genutzte Werkzeuge verwendet.",,,
 Species.andorian.soloDescription,"An aggressive, passionate people from a frozen moon. Founding member of the Federation. Blue-skinned, pale-haired in appearance, with antennae. Their antennae aid in balance and spatial awareness; a lost antenna can be debilitating until it regrows. Andorians also have a high metabolism, meaning, among other things, that they tire more quickly than Humans; this also makes them more vulnerable to infection from certain types of injury.",,,,
-Species.andorian.exampleValue,Proud Son/Daughter of Andoria,Stolzer Sohn/Stolze Tochter Andorias,,,
+Species.andorian.exampleValue,Proud Son/Daughter of Andoria,Stolzer Sohn/Stolze Tochter Andorias,,,Гордый/ая сын/дочь Андории
 Species.andorian.traitDescription,"This trait may reduce the Difficulty of Tasks to resist extreme cold, or Tasks impacted by extremely low temperatures. Their antennae aid in balance and spatial awareness; a lost antenna can be debilitating until it regrows. Andorians also have a high metabolism, meaning, amongst other things, that they tire more quickly than Humans; this also makes them more vulnerable to infection from certain types of injury. Before the Federation, Andorians and Vulcans had numerous disputes; though these issues are largely considered to be ancient history, Andorians and Vulcans don’t always get along.","Dieses Merkmal senkt die Schwierigkeit aller Aufgaben, um extremer Kälte zu widerstehen, oder aller Aufgaben, welche von extrem niedrigen Temperaturen negativ beeinflusst werden. Die Antennen unterstützen bei der Balance und räumlichen Wahrnehmung, während eine verlorene Antenne diese Fähigkeiten hemmt, bis sie nachgewachsen ist. Andorianer haben einen hohen Metabolismus, was unter anderem bedeutet, dass sie schneller ermüden als Menschen. Dies macht sie auch anfälliger für bestimmte Infektionen, vor allem solchen, die durch Verletzungen verursacht werden. Vor Gründung der Föderation hatten Andorianer und Vulkanier zahllose Auseinandersetzungen. Auch wenn diese Probleme von den meisten schon seit langem als der Vergangenheit zugehörig angesehen werden, verstehen sich Andorianer und Vulkanier auch heute nicht immer.",,,
-Species.aquan.name,Aquan,,,,
+Species.aquan.name,Aquan,,,,Акамариец
 Species.aquan.aboutNames,Aquan names are typically a single word composed of just a few syllables.,,,,
 Species.aquan.description,"The humanoid, water-breathing Aquans were transformed indigenous inhabitants of the planet Argo. They had green skin, flat noses, hair resembling kelp, webbed hands, and fins on their ankles. Argo was once mostly land, but planetary-wide seismic disturbances caused the land to gradually sink into the sea. Though not everyone chose the procedure, the medically advanced Aquans developed drugs to turn themselves into an aquatic species. Although they had the means to reverse the transformation, once they became water breathers, they chose to forget their past and construct a new society beneath the sea.
 
@@ -1157,7 +1161,7 @@ Fortunately, they were saved by some of the Aquans and transformed into sea-brea
 Today, both groups of Aquans live in peace on Argo, and within a year of first contact, a handful of Aquans, both air and water breathers, joined Starfleet.",,,,
 Species.aquan.exampleValue,Air breathers rarely come in peace,,,,
 Species.aquan.traitDescription,"Aquans are water breathers and expert swimmers who spend their lives in underwater environments. However, it is possible for them to transform into air breathers if they have access to the reversal formula rediscovered by the Enterprise crew.",,,,
-Species.arbazan.name,Arbazan,,,,
+Species.arbazan.name,Arbazan,,,,Арбазанец
 Species.arbazan.soloDescription,"Like many Humanoid species within the Federation, the Arbazan are physically similar to Humans, though the forward portion of their skulls have slightly raised plates that reinforce their brows. Arbazan have been Federation members since shortly after its founding and are found throughout Federation space, often serving as ambassadors, attaches, advisors, and negotiators – though there have also been several well-known scientific discoveries and engineering advancements by dedicated Arbazan.",,,,
 Species.ardanan.name,Ardanan,,,,
 Species.ardanan.soloDescription,"Ardana natives are hardy individuals, whose duality of art and culture, and resource mining and management, make them excellent all-rounders. The Ardanans are a people of both stout endurance and cultural excellence.",,,,
@@ -1166,12 +1170,12 @@ Species.aurelian.soloDescription,"An avian people encountered early in Federatio
 Species.bajoran.name,Bajoran,Bajoraner,,,Баджорец
 Species.bajoran.aboutNames,"Bajoran names begin with the family name, followed by a personal name. The individual names are normally short — rarely more than two syllables — and with a soft or melodic sound. Bajor Is traditionally matriarchal, with children taking their mother’s family name. Examples: Reil Yesa (female), Latara Gel (male)",,,,
 Species.bajoran.description,"A spiritual, dauntless people from the planet Bajor, the Bajorans have lost much after decades of occupation by the Cardassian Union. Many Bajorans were scattered across the Alpha Quadrant during the occupation, while those who remained on Bajor often acted as insurgents or toiled in labor camps under Cardassian rule. The occupation ended a few years ago, but the scars it left will take generations to heal. Bajor is not a member of the Federation, but many Bajorans scattered by the diaspora have found their way into Starfleet. Bajoran culture places a strong belief in the Prophets, celestial beings who are said to have watched over Bajor for millennia; modern religious doctrine states that the Bajoran Wormhole is the Prophets’ Celestial Temple.","Die Bajoraner, ein spirituelles, unbeugsames Volk vom Planeten Bajor, haben nach Jahrzehnten der Besatzung durch die Cardassianische Union viel verloren. Viele Bajoraner wurden während der Besatzungszeit über den Alpha-Quadranten verstreut, während diejenigen, die auf Bajor zurückblieben, im Widerstand kämpften oder in Arbeitslagern unter der cardassianischen Herrschaft schufteten. Zwar endete die Besatzung vor einigen Jahren, die Narben, die sie hinterließ, werden jedoch Generationen benötigen, um zu heilen. Bajor ist kein Mitglied der Föderation, dennoch haben viele in der Diaspora verstreute Bajoraner einen Weg in die Sternenflotte gefunden. Die bajoranische Kultur dreht sich vor allem um ihren starken Glauben an die Propheten – himmlischen Wesen, die seit Jahrtausenden über Bajor wachen. Laut neuerer religiöser Doktrin handelt es sich beim bajoranischen Wurmloch um den Himmelstempel der Propheten.",,,
-Species.bajoran.exampleValue,Faith in the Prophets,Vertrauen in die Propheten,,,
+Species.bajoran.exampleValue,Faith in the Prophets,Vertrauen in die Propheten,,,Вера в Пророков
 Species.bajoran.soloDescription,"A spiritual, dauntless people who suffered under Cardassian occupation. They worship celestial beings residing in the Bajoran wormhole. They are much like Humans in appearance, with nose ridges and often wear an elaborate earring on their right ear.",,,,
 Species.bajoran.traitDescription,"For obvious reasons, Bajorans tend to be hostile towards Cardassians, and resentful of those who are dismissive of, or turned a blind eye to, the suffering of the Bajoran people. While not all Bajorans are spiritual or religious to the same degree, most have a cultural understanding of the Prophets’ place in Bajoran society.","Aus offensichtlichen Gründen neigen Bajoraner dazu, eine feindselige Einstellung gegenüber Cardassianern einzunehmen, und lehnen Personen ab, die vor dem Leid des bajoranischen Volkes die Augen verschließen. Auch wenn nicht alle Bajoraner gleichermaßen spirituell oder religiös sind, haben die meisten umfangreiche Kenntnisse über die Propheten und ihren Platz in der bajoranischen Gesellschaft.",,,
-Species.barzan.name,Barzan,,,,
+Species.barzan.name,Barzan,,,,Барзанец
 Species.barzan.soloDescription,"A diligent, determined people from a resource-poor world. Joined the Federation in the 25th century, though individuals were known to serve in Starfleet prior. Very similar to Humans in appearance, with unique forehead ridges and often equipped with a specialized breathing apparatus.",,,,
-Species.benzite.name,Benzite,,,,
+Species.benzite.name,Benzite,,,,Бензит
 Species.benzite.soloDescription,"Benzite physiology gives this species’ skin a hairless blue-to-green complexion. The Benzite skull has a thick protrusion that extends over the brow and nose, with two facial tendrils above the lip. A Benzite’s average body temperature is several degrees lower than an average, warm-blooded Humanoid, though the Benzites themselves are not cold-blooded. Until 2370, most Benzites in Starfleet had trouble breathing a standard nitrogen/oxygen atmosphere and relied on breathing apparatus.",,,,
 Species.betazoid.name,Betazoid,Betazoiden,,,Бетазоид
 Species.betazoid.aboutNames,"Betazoid names tend to have at least two syllables and a melodic sound, with a personal name followed by a family name; of these, the family name tends to have a harder sound. Betazoids are traditionally matriarchal, with children taking their mother’s family name.",,,,
@@ -1179,9 +1183,9 @@ Species.betazoid.description,"The peaceful Betazoid people hail from the idyllic
 Species.betazoid.exampleValue,Compassion Through Understanding,Mitgefühl durch Verständnis,,,
 Species.betazoid.soloDescription,"Betazoids appear almost identical to Humans, but differ in one major way: they are naturally telepathic, developing mental abilities during adolescence. All Betazoids are telepathic to varying degrees, and even when not actively using their abilities, they are highly perceptive of others around them, but also sensitive to telepathic disturbances and mental assaults. They have little familiarity with lies and deception, due to their open culture and ability to read the thoughts and emotions of others. As they are sensitive to the minds of other living beings, they tend not to be comfortable around animals, for fear of losing themselves in the minds of wild creatures.",,,,
 Species.betazoid.traitDescription,"All Betazoids are telepathic to varying degrees, and even when not actively using their abilities, they are highly perceptive of others around them, but also highly sensitive to telepathic disturbances and mental assaults. They have little familiarity with lies and deception, due to their open culture and ability to read the thoughts and emotions of others. As they are sensitive to the minds of other living beings, they tend not to be comfortable around animals, for fear of losing themselves in the minds of wild creatures.","Alle Betazoiden sind zumindest zu einem gewissen Grad telepathisch, und auch dann sehr feinfühlig für andere Wesen um sich herum, wenn sie ihre Fähigkeiten nicht aktiv einsetzen. Sie sind aber auch anfällig für telepathische Störungen und psychische Angriffe. Aufgrund ihrer offenen Kultur und Fähigkeit, Gedanken und Gefühle zu lesen, haben sie eine nur geringe Vertrautheit mit Lügen und Täuschung. Da sie sensibel auf die Gedanken anderer Lebewesen reagieren, neigen sie dazu, sich in der Nähe von Tieren nicht wohlzufühlen, da sie sich darum sorgen, sich im Verstand einer wilden Kreatur zu verlieren.",,,
-Species.bolian.name,Bolian,Bolianer,,,Булианец
+Species.bolian.name,Bolian,Bolianer,,,Болианец
 Species.bolian.soloDescription,"Identified by a cartilaginous ridge that extends vertically down their head, past the center of the face to the chest, with skin color ranging from light blues to dark greens and muted purples with darker banding across the head. They are predominantly bald, though some females are known to have hair. Bolians are an understanding, hospitable species, often forward-facing in their duties in customer relations or diplomatic service.",,,,
-Species.bynar.name,Bynar,,,,
+Species.bynar.name,Bynar,,,,Бинар
 Species.bynar.exampleValue,There are only ever two choices,,,,
 Species.bynar.description,"Bynars are native to the planet Bynaus, in the Beta Magellan system. Shorter than Humans, Bynars have lilac-coloured skin, enlarged skulls, and asymmetrical ears. Their defining characteristic is that the entire Bynar race is cyborgs connected to their master computer on their homeworld, allowing them to near-instantaneously share information. Bynars work and live in pairs, being genetically bonded to another for life. Pairs of Bynars communicate using complex binary code. When they do speak other languages, they alternate phrases and finishing each other’s sentences. If one of the pair dies, it’s traditional for the survivor to return to Bynaus to be paired with a new Bynar. 
 
@@ -1190,9 +1194,9 @@ Bynar that choose not to return are seen to have rejected Bynar society and have
 Bynars have practiced their cybernetic augmentation for centuries: as early as the 2150s they began replacing the parietal lobes of newborns with a synaptic processor. Bynar workers and security forces once employed supplementary physical augmentations, but these have become rare since Bynaus allied with the Federation. Initially, Bynars seldom traveled far from their homeworld, as the range of their network was limited. By the late 2200s, subspace  communication had improved enough that they could travel throughout much of the Federation.",,,,
 Species.bynar.soloDescription,"Over time their interconnection with their world’s master computer has grown to the point that their language and thought patterns have become as close to binary as is possible for organic beings. In fact, their very lives depend on this interaction with their master computer, as well as with one another. They are shorter in height than most humanoids, genderless with lilac skin and enlarged skulls, and usually operate in pairs.",,,,
 Species.bynar.traitDescription,"Despite their small size, Bynars are physical robust and durable. Their augmentations allow them to communicate instantaneously with their twin while in the same system, sharing all sensory input. However, they are vulnerable to electromagnetic pulses, which can disable or destroy their implants, leaving them disoriented or even disabled.",,,,
-Species.caitian.name,Caitian,Caitianer,,,
+Species.caitian.name,Caitian,Caitianer,,,Каитан
 Species.caitian.soloDescription,"A catlike people equally devoted to martial as well as artistic and philosophical pursuits. Solidly established within the Federation, with extensive representation at all levels of Starfleet. Bipedal, slightly smaller than Humans, with prehensile tails.",,,,
-Species.cardassian.name,Cardassian,Cardassianer,,,
+Species.cardassian.name,Cardassian,Cardassianer,,,Кардассиан
 Species.cardassian.soloDescription,"A much-feared people known for devotion to their state and a sense of superiority. Often adversaries of Starfleet and other civilizations, though personal alliances have been formed during times of war, and societal cooperation witnessed in far-future times of scarcity. Grey-skinned humanoids with ridges on their neck and forehead.",,,,
 Species.changeling.name,Changeling,Wechselbalg,,,
 Species.changeling.soloDescription,"A Changeling is naturally a gelatinous, morphogenic, orange-brown fluid, which can adopt the form and structure of any solid object, including other living creatures and diffuse substances like fog. While they cannot become energy, a Changeling’s ability to assume other forms is limited more by skill and experience than by physical capacity: it is theorized that they transfer mass to and from subspace to change size and density. Many Changelings find themselves persecuted by “solids” for their shapeshifting ability, and often crave a sense of order and justice in the universe, with a rigid attitude at odds with their fluid forms.",,,,
@@ -1212,7 +1216,7 @@ Species.edosian.name,Edosian,Edosianer,,,
 Species.edosian.soloDescription,"A long-lived, meticulous, and reflective people. Loosely allied with the Federation, with service in Starfleet rare but not unknown. Tripedal and three- limbed, more stable and capable of multi-tasking than Humans, even if a bit slower.",,,,
 Species.efrosian.name,Efrosian,Efrosianer,,,
 Species.efrosian.soloDescription,"A musical people from a frozen world devoted to history. Often sought as helm officers and navigators, as well as translators and communications officers thanks to their emphasis on linguistics and oral tradition. Notable in appearance for intense tufts of hair and mustaches.",,,,
-Species.elAurian.name,El-Aurian,El-Aurianer,,,
+Species.elAurian.name,El-Aurian,El-Aurianer,,,Эль-Урианин
 Species.elAurian.description,"A species of “listeners” originating in the El-Aurian system, The El-Aurians were a well-traveled species of humanoids who visited many parts of the Milky Way galaxy and beyond. Some El-Aurians had even visited Earth during the 19th century before humanity even knew of their existence. In the mid-23rd century, the El-Aurian race was the victim of a massive Borg invasion, with all but a small fraction of El-Aurians being assimilated or killed and the entire civilization destroyed. The loss of their home world scattered the survivors across the galaxy. By the 24th century few El-Aurians remain and with no established civilization or home wander as nomads of the galaxy. Few of these survivors have even taken up a career in Starfleet, hoping to find a community they lost so long ago.",,,,
 Species.elAurian.exampleValue,"I told you, I listen",,,,
 Species.elAurian.traitDescription,"This species are masters of the art of listening. They understand that listening is an active skill, and involves taking into consideration such things as body language, tone of voice, as well as the words that other beings are speaking. El-Aurians may use this trait to reduce the Difficulty of Social Interaction Tasks. El-Aurians know that time is on their side, they never really feel a need to rush. When performing an Extended Task, an El-Aurian may make one free Re-Roll Work without a spend of Momentum. Since they destroyed the El-Aurian home world, most El-Aurians are distrustful of or outright hate the Borg.",,,,
@@ -1236,7 +1240,7 @@ Species.human.traitDescription,"Hupyrians are taller than most species, and thei
 Species.illyrian.name,Illyrian,,,,
 Species.illyrian.description,"A spacefaring humanoid species that utilizes genetic engineering to adapt their bodies to the new planets they settle, rather than changing the planet to suit themselves.",,,,
 Species.jelna.name,Rigellian Jelna,Rigellianische Jelna,,,
-Species.jemHadar.name,Jem'Hadar,Jem'Hadar,,,
+Species.jemHadar.name,Jem'Hadar,Jem'Hadar,,,Джем’Хадар
 Species.jemHadar.soloDescription,"Individual Jem’Hadar are physically powerful, and far stronger and more resilient than Humans. They also have exceptionally keen eyesight, and act utterly without fear or hesitation in battle. They do not regard death with any apprehension, and are extremely aggressive, limited only by their absolute obedience to the Founders and the Vorta.",,,,
 Species.kazon.name,Kazon,,,,Кейзон
 Species.kazon.description,"An aggressive warrior species from the Delta Quadrant divided into eighteen different sects that war over resources. They have intricate head ridges and thick, coral-shaped hair.",,,,
@@ -1244,7 +1248,7 @@ Species.kelpien.name,Kelpien,,,,
 Species.kelpien.soloDescription,"An empathetic people kept in check by the technologically advanced Ba’ul who share their homeworld. Initially prohibited from contact with other civilizations, notable individuals managed to join Starfleet, and the ensuing centuries brought both species of Kaminar into the Federation. Tall and lanky, with keen eyesight, a capacity for sprinting, and sensitive ganglia on their heads which become capable of shooting barbs once they mature through vahar’ai.",,,,
 Species.klingon.name,Klingon,Klingonen,,,Клингон
 Species.klingon.soloDescription,"A proud, warrior species centered in the Beta Quadrant. There is a great redundancy in Klingon organs, with two livers, multiple stomachs, three lungs, and an eight-chambered heart. Their skeletal structure also has several redundancies that mitigate injuries that would prove fatal to other humanoids.",,,,
-Species.klingonQuchHa.name,Klingon (QuchHa’),Klingonen (QuchHa'),,,
+Species.klingonQuchHa.name,Klingon (QuchHa’),Klingonen (QuchHa'),,,Клингон (КучХа’)
 Species.nausicaan.name,Nausicaan,,,,Наусиканец
 Species.orion.name,Orion,Orioner,,,Орионец
 Species.other.name,Custom/Other,Benutzerdefiniert/Andere,,,
@@ -1272,7 +1276,7 @@ Species.phylosian.traitDescription,"Phylosians are sentient plants that have ach
 Species.phylosian.exampleValue,All worlds should share in the beauty of peace and harmony,,,,
 Species.risian.name,Risian,Risaner,,,
 Species.reman.name,Reman,Remaner,,,
-Species.romulan.name,Romulan,Romulaner,,,
+Species.romulan.name,Romulan,Romulaner,,,Ромулианец
 Species.skorr.name,Skorr,,,,
 Species.skorr.aboutNames,Skorr individuals usually go by a single name.,,,,
 Species.skorr.description,"Bipedal avians with feathered wings, the Skorr was a splinter group of Aurelians that left their planet nearly a millennia ago to pursue a warrior way of life, pitting clan against clan.
@@ -1284,24 +1288,24 @@ Around the time Zefram Cochran was discovering warp drive, a Skorr spiritual lea
 Two hundred years later, the peace had held and opened the doors for their entry into the Federation. In 2270, they were close to reunification with Aurelia.",,,,
 Species.skorr.exampleValue,Alar is our salvation and our teacher,,,,
 Species.skorr.traitDescription,"The Skorr possess beaks and talons as well as powerful wings that grant them the ability to fly, a result of their ornithoid ancestry. Additionally, their intellects are as sharp as their talons.",,,,
-Species.suliban.name,Suliban,Suliban,,,
+Species.suliban.name,Suliban,Suliban,,,Сулибан
 Species.suliban.description,"The Sulibans’ distinguishing physical characteristic is their mottled, greenish-tinted skin. Most of them are nomadic. One faction of Suliban are members of the Cabal and can alter their DNA and restructure their skeletons, giving them unique chameleon-like, shapeshifting abilities and enhanced senses.",,,,
 Species.talarian.name,Talarian,,,,
 Species.talarian.aboutNames,"Talarian names are usually short, but have a less gruff or rugged sound than most words in their language. The names Endar and Jono are good examples of Talarian nomenclature.",,,,
 Species.talarian.description,"Talarians are a Xenophobic species, & will normally wear gloves when in the company of other species to avoid touching an ""alien"" directly. Removing the gloves & touching someone with the bare hands is a sign of affection and respect. Bowing is considered a sign of respect, affection and solidarity. When meeting a close person, the bowing is extended by touching arms & gently pressing foreheads.",,,,
 Species.talarian.exampleValue,Constantly testing one's capabilities promotes strength.,,,,
 Species.talarian.traitDescription,"Talarians are characterized by a distinctive hairless enlargement of the coronal area of the skull extending in 2 lobes to the back of the head. Talarian blood is red, & Talarians are prone to radiation burns & respiratory distress. Otherwise their physique is very similar to humans & Human/Talarian hybrids are possible without too many complications.",,,,
-Species.tellarite.name,Tellarite,Tellariten,,,
+Species.tellarite.name,Tellarite,Tellariten,,,Телларит
 Species.tellarite.aboutNames,"Tellarite names have considerable variation, but all tend to be composed of harsh, even guttural sounds. Tellarite names consist of a personal name and a family name, though the family name is often a compound, indicating that the family name is a patronym or matronym (the name of a father or mother, respectively), toponym(derived from a place) or similar — in this way, these prefixes are similar to “O’”, “Mc“, “von”, and similar elements in some Human names. Examples: Pola jav Brin (female), Tuk glasch Khutohk (male)",,,,
 Species.tellarite.description,"The stout, hirsute Tellarite species comes from Tellar Prime, a temperate planet in the Alpha Quadrant. Theirs is a culture noted for being abrasive and argumentative, with a stubborn pride, quick tempers, and little patience. However, this is only a superficial view: while Tellarites are argumentative, it comes from a sense of intellectual honesty and rigorous skepticism. To a Tellarite, no idea, concept, or person is beyond challenge or analysis, and any notion that cannot stand up to scrutiny is an unworthy one. Tellarites revel in debates, and tend to greet one another with criticisms, complaints, and even insults; failing to respond in kind is poorly- regarded, as it displays a weakness of character and an unwillingness to confront flaws.","Die stämmigen, stark behaarten Tellariten stammen von Tellar Prime, einem gemäßigten Planeten im Alpha-Quadranten. Ihre Kultur ist bekannt für ihren barschen Umgang mit anderen, ihre Streitlust, ihren sturen Stolz, hitziges Gemüt und geringe Geduld. Dies ist allerdings eine nur oberflächliche Charakterisierung: Auch wenn Tellariten streitlustig sind, hat dies ihren Ursprung in intellektueller Ehrlichkeit und rigoroser Skepsis. Für Tellariten ist keine Idee, kein Konzept und keine Person von Anfechtungen und Analysen ausgenommen und jeder Einfall, der nicht gründlicher Prüfung standhält, ist wertlos. Tellariten genießen Debatten und neigen dazu, einander mit Kritik, Beschwerden und sogar Beleidigungen zu grüßen. Wem es nicht gelingt, ebenso zu antworten, wird als schwach angesehen, da es auf Charakterschwäche und die Unwilligkeit, sich mit Fehlern zu befassen, hindeutet.",,,
 Species.tellarite.exampleValue,All Ideas must Withstand Scrutiny,Alle Ideen müssen einer genauen Überprüfung statthalten,,,
 Species.tellarite.traitDescription,"Tellarites have a keen sense of smell and a high tolerance for many common drugs, toxins, and inebriants (Tellarites don’t get drunk, just feisty). They also have excellent eyesight, and more acute perception of distance, depth, and dimension than Humans.","Tellariten haben einen ausgeprägten Geruchssinn und eine hohe Toleranzschwelle für viele geläufige Drogen, Toxine und Rauschmittel (Tellariten werden durch Alkohol nicht betrunken, nur lebhafter). Sie verfügen auch über einen hervorragenden Sehsinn und eine genauere Wahrnehmung von Entfernungen, Tiefe und Dimensionen als Menschen.",,,
-Species.trill.name,Trill,Trill,,,
+Species.trill.name,Trill,Trill,,,Трилл
 Species.trill.aboutNames,"Trill names consist of a personal name and a family name, though in the case of a joined Trill, the family name is replaced with the name of the symbiont. Examples: Koria Inazin (female, unjoined), Bejal Okir (male, joined)",,,,
 Species.trill.description,"The Trill species, from their homeworld of the same name, appear almost identical to Humans, but for rows of spots running down the sides of their bodies, from head to toe. However, this superficial similarity conceals a considerable difference — the Trill are capable of bonding with a symbiotic organism known as a symbiont, creating a distinct being from the two individual creatures. The symbionts can live for many centuries, and are placed with successive hosts, carrying the memories and knowledge of previous hosts into a new joining with each new generation. This fact isn’t widely known outside the Trill themselves, but it isn’t a secret — it simply isn’t widely discussed, and the number of joined Trill is relatively small. The Trill have been part of the Federation for well over a century, with several renowned Trill serving important roles in shaping the Federation. The Trill, as a culture, tend to be focused on intellectual pursuits first and foremost, as learning and wisdom are prized by the symbionts in their hosts.","Die Spezies der Trill, die von dem gleichnamigen Planeten stammt, ist nahezu identisch mit Menschen, abgesehen von den Flecken, die zu beiden Seiten ihres Körpers von Kopf bis Fuß entlanglaufen. Dieser oberflächliche Unterschied verbirgt eine erhebliche Besonderheit – die Fähigkeit der Trill, sich mit einem als Symbiont bekannten symbiotischen Organismus zu verbinden, wobei ein eigenständiges Wesen aus zwei individuellen Kreaturen entsteht. Der Symbiont lebt für viele Jahrhunderte und wird dabei mit aufeinander folgenden Wirten vereinigt, wobei er die Erinnerungen und das Wissen vorheriger Wirte in eine neue Vereinigung mitnimmt. Dieser Umstand ist außerhalb von Trill nicht sonderlich gut bekannt, auch wenn es kein Geheimnis ist – es wird einfach nicht ausgiebig diskutiert und die Zahl vereinigter Trill ist relativ klein. Die Trill sind seit mehr als einem Jahrhundert Teil der Föderation und viele Trill haben geachtete Rollen in der Föderation ausgeübt. Die Trill neigen dazu, sich vor allem auf intellektuelle Aktivitäten zu konzentrieren, da Lernen und das Erringen von Weisheit von den Symbionten sehr geschätzt werden.",,,
 Species.trill.exampleValue,Four Lifetimes of Adventure,Vier Lebenszeiten voller Abenteuer,,,
 Species.trill.traitDescription,"Trill are especially resilient to parasites, as a quirk of their potential to be Joined; Joined Trill are entirely immune to parasitic infection. However, they tend to have strong allergic reactions to insect bites and other forms of venom, which can disrupt their neurochemistry, particularly if they’re Joined. As many of the specifics of Trill physiology — especially with regards to symbiosis — are not widely known, this can result in medical complications.","Trill besitzen als Nebenprodukt ihres Potentials, vereinigt zu werden, eine hohe Widerstandskraft gegen Parasiten. Vereinigte Trill sind sogar vollständig immun gegen parasitische Infektionen. Sie neigen jedoch dazu, starke allergische Reaktionen auf Insektenbisse und andere Formen von Giften zu entwickeln, die ihre Neurochemie stören können, vor allem, wenn sie vereinigt sind. Da viele Details der Trill-Physiologie – insbesondere in Bezug auf die Symbiose – nicht weithin bekannt sind, kann dies zu medizinischen Komplikationen führen.",,,
-Species.vulcan.name,Vulcan,Vulkanier,,,
+Species.vulcan.name,Vulcan,Vulkanier,,,Вулканец
 Species.vulcan.aboutNames,"Vulcans have only a single name, in practical terms — while they do have family names, these are not discussed amongst other species — and tend to be traditional in the names they use. Male Vulcans often — though far from always — are given names beginning with S, while female names frequently begin with T. These are far from universal, however.",,,,
 Species.vulcan.description,"The Vulcans are a stoic, rational people. Widely claimed to be emotionless, in truth the Vulcans feel deeply and intensely, to their own detriment. Their stoicism comes from a culture of logic and self- discipline, where emotions are analyzed and dissected to rob them of their potency, so that they cannot overwhelm or control the individual. Vulcans embrace science and reason, but their lives are not purely devoted to logic: they also have a deeply philosophical side, with art and music as vital to their culture as logic. They are also an intensely private people, with many aspects of their culture — such as the rites of pon farr — which are not discussed amongst outsiders.","Die Vulkanier sind ein stoisches, rationales Volk. Weithin als emotionslos betrachtet, fühlen die Vulkanier tatsächlich sogar sehr innig und intensiv, und das zu ihrem eigenen Nachteil. Ihr Gleichmut entstammt einer Kultur der Logik und Selbstdisziplin, in der Emotionen analysiert und seziert werden, um sie ihrer Macht zu berauben, sodass sie das Individuum weder überwältigen noch kontrollieren können. Vulkanier schätzen Wissenschaft und Vernunft, ihr Leben ist aber nicht nur der Logik gewidmet – sie haben auch eine zutiefst philosophische Seite, in der Kunst und Musik ebenso bedeutend sind wie Logik. Sie sind auch ein äußerst privates Volk, das viele Aspekte ihrer Kultur – wie zum Beispiel die Riten des Pon Farr – nicht mit Außenseitern diskutiert.",,,
 Species.vulcan.exampleValue,"The Needs of the Many Outweighs the Needs of the Few, or the One","Das Wohl der Vielen wiegt schwerer als das Wohl Weniger, oder gar des Einzelnen",,,
