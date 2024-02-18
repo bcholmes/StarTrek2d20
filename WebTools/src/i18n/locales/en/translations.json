@@ -291,6 +291,8 @@
     "SpeciesPage.standardSpecies": "Standard Species",
     "SpeciesPage.mixedSpecies": "Mixed Species",
     "SpeciesPage.customSpecies": "Custom Species",
+    "SpeciesPage.primarySpecies": "Select Primary Species",
+    "SpeciesPage.secondarySpecies": "Select Secondary Species",
     "SpeciesPage.selectMixedSpecies": "Select Mixed Species",
     "SpeciesPage.selectCustomSpecies": "Select Custom Species",
     "SpeciesPage.rollCoreSpecies": "Roll Core Species",
@@ -304,6 +306,7 @@
 
     "SpeciesPage.textNoRoll": "To what species do you belong? You may also create a character of mixed species, gaining benefits from both.",
     "SpeciesPage.mixedSpeciesNote": "Select two species. You will gain Traits from both species and may select from both species' Talents, but only the primary species gives you Attribute bonuses.",
+    "SpeciesPage.selectTwoSpeciesError": "Please select both a primary and secondary species",
 
     "StarshipTalentSelection.instruction_one": "Please select {{count}} talent.",
     "StarshipTalentSelection.instruction_other": "Please select {{count}} talents.",
@@ -1266,6 +1269,10 @@
     "Species.bolian.name": "Bolian",
     "Species.bolian.soloDescription": "Identified by a cartilaginous ridge that extends vertically down their head, past the center of the face to the chest, with skin color ranging from light blues to dark greens and muted purples with darker banding across the head. They are predominantly bald, though some females are known to have hair. Bolians are an understanding, hospitable species, often forward-facing in their duties in customer relations or diplomatic service.",
 
+    "Species.borg.name": "Borg",
+    "Species.borg.description": "Borg is not something that a person is born to, but rather something that they are forced to become — though for infants and children assimilated by the Collective, they may have little or no memory of any other life. The Borg meld biology with technology, and a drone will have countless implants, the result of both invasive surgery and aggressive nanotechnology. As of 2371, only a single individual has ever been removed from the Borg Collective — Jean-Luc Picard, who was captured only days earlier, meaning that his implants were less extensive than those of someone assimilated years or decades before. Borg NPCs are all mixed-species characters — their original species, and their new reality as part of the Collective",
+    "Species.borg.traitDescription": "Borg are extremely strong and resilient, owing to their technologically-enhanced physiology. They lack self-determination and intuition, relying on directives and protocols from the Collective, and the gestalt consciousness of countless other Borg drones.",
+
     "Species.bynar.name": "Bynar",
     "Species.bynar.exampleValue": "There are only ever two choices",
     "Species.bynar.description": "Bynars are native to the planet Bynaus, in the Beta Magellan system. Shorter than Humans, Bynars have lilac-coloured skin, enlarged skulls, and asymmetrical ears. Their defining characteristic is that the entire Bynar race is cyborgs connected to their master computer on their homeworld, allowing them to near-instantaneously share information. Bynars work and live in pairs, being genetically bonded to another for life. Pairs of Bynars communicate using complex binary code. When they do speak other languages, they alternate phrases and finishing each other’s sentences. If one of the pair dies, it’s traditional for the survivor to return to Bynaus to be paired with a new Bynar. \n\nBynar that choose not to return are seen to have rejected Bynar society and have their personal identification code removed from the computer network. The Bynars’ constant exposure to computers makes them quick to learn new operating systems and programs, and their ability to recall data and process new information makes them highly valued to organizations such as the Starfleet Corps of Engineers and the Daystrom Institute. \n\nBynars have practiced their cybernetic augmentation for centuries: as early as the 2150s they began replacing the parietal lobes of newborns with a synaptic processor. Bynar workers and security forces once employed supplementary physical augmentations, but these have become rare since Bynaus allied with the Federation. Initially, Bynars seldom traveled far from their homeworld, as the range of their network was limited. By the late 2200s, subspace  communication had improved enough that they could travel throughout much of the Federation.",
@@ -1400,6 +1407,10 @@
     "Species.trill.description": "The Trill species, from their homeworld of the same name, appear almost identical to Humans, but for rows of spots running down the sides of their bodies, from head to toe. However, this superficial similarity conceals a considerable difference — the Trill are capable of bonding with a symbiotic organism known as a symbiont, creating a distinct being from the two individual creatures. The symbionts can live for many centuries, and are placed with successive hosts, carrying the memories and knowledge of previous hosts into a new joining with each new generation. This fact isn’t widely known outside the Trill themselves, but it isn’t a secret — it simply isn’t widely discussed, and the number of joined Trill is relatively small. The Trill have been part of the Federation for well over a century, with several renowned Trill serving important roles in shaping the Federation. The Trill, as a culture, tend to be focused on intellectual pursuits first and foremost, as learning and wisdom are prized by the symbionts in their hosts.",
     "Species.trill.exampleValue": "Four Lifetimes of Adventure",
     "Species.trill.traitDescription": "Trill are especially resilient to parasites, as a quirk of their potential to be Joined; Joined Trill are entirely immune to parasitic infection. However, they tend to have strong allergic reactions to insect bites and other forms of venom, which can disrupt their neurochemistry, particularly if they’re Joined. As many of the specifics of Trill physiology — especially with regards to symbiosis — are not widely known, this can result in medical complications.",
+
+    "Species.vorta.name": "Vorta",
+    "Species.vorta.description": "The Vorta are genetically-engineered life-forms, created to serve as advisors, scientists, diplomats, and overseers for the Dominion, acting as the Founders’ closest servants and foremost representatives. Vorta are cloned, in batches of identical beings, with a new clone being activated and placed into service upon the death of a predecessor, receiving the memories of those that came before them, though each clone is nevertheless a distinct individual. Vorta are extremely cunning and clever, but have little creativity or sense of aesthetics.",
+    "Species.vorta.traitDescription": "Vorta have extremely keen hearing, but relatively poor eyesight. They are immune to most forms of poison. Vorta are absolutely loyal to the Dominion, revering the Founders as living gods. Those who encounter the Vorta often regard them as insincere or manipulative.",
 
     "Species.vulcan.name": "Vulcan",
     "Species.vulcan.aboutNames": "Vulcans have only a single name, in practical terms — while they do have family names, these are not discussed amongst other species — and tend to be traditional in the names they use. Male Vulcans often — though far from always — are given names beginning with S, while female names frequently begin with T. These are far from universal, however.",

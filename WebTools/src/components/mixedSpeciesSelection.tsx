@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { Dialog } from './dialog';
 import { Navigation } from '../common/navigator';
 import { PageIdentity } from '../pages/pageIdentity';
+import { makeKey } from '../common/translationKey';
 
 
 const MixedSpeciesSelection: React.FC<ICharacterProperties> = ({character}) => {
@@ -45,11 +46,11 @@ const MixedSpeciesSelection: React.FC<ICharacterProperties> = ({character}) => {
         if (s.id === secondarySpecies) return undefined;
 
         const attributes = s.attributes.map((a, i) => {
-            return <div>{AttributesHelper.getAttributeName(a) }</div>;
+            return <div>{t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(a)))}</div>;
         });
 
         const talents = s.talents.map((t, i) => {
-            return <div>{t.name}</div>;
+            return <div>{t.localizedDisplayName}</div>;
         });
 
         const checkbox = !Window.isCompact()
@@ -68,7 +69,7 @@ const MixedSpeciesSelection: React.FC<ICharacterProperties> = ({character}) => {
             <tr key={'primary-' + s.id}
                 style={{backgroundColor:rowBackground}}
                 onClick={() => { if (Window.isCompact()) { assignPrimarySepecies(s.id) } } }>
-                <td className="selection-header">{s.name}</td>
+                <td className="selection-header">{s.localizedName}</td>
                 <td>{attributes}</td>
                 <td>{talents}</td>
                 <td>{checkbox}</td>
@@ -82,11 +83,11 @@ const MixedSpeciesSelection: React.FC<ICharacterProperties> = ({character}) => {
         if (s.id === primarySpecies) return undefined;
 
         const attributes = s.attributes.map((a, i) => {
-            return <div>{AttributesHelper.getAttributeName(a) }</div>;
+            return <div>{t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(a)))}</div>;
         });
 
         const talents = s.talents.map((t, i) => {
-            return <div>{t.name}</div>;
+            return <div>{t.localizedDisplayName}</div>;
         });
 
         const checkbox = !Window.isCompact()
@@ -115,7 +116,7 @@ const MixedSpeciesSelection: React.FC<ICharacterProperties> = ({character}) => {
 
     const navigateToNextPage = () => {
         if (character.speciesStep?.species == null || character.speciesStep?.mixedSpecies == null) {
-            Dialog.show("Please select both a primary and secondary species");
+            Dialog.show(t('SpeciesPage.selectTwoSpeciesError'));
         } else {
             Navigation.navigateToPage(PageIdentity.SpeciesDetails);
         }
@@ -124,13 +125,13 @@ const MixedSpeciesSelection: React.FC<ICharacterProperties> = ({character}) => {
     return (<>
         <div className="row">
             <div className="col-lg-6 mt-3">
-            <Header level={2}>SELECT PRIMARY SPECIES</Header>
+            <Header level={2}>{t('SpeciesPage.primarySpecies')}</Header>
             <table className="selection-list">
                 <thead>
                     <tr>
                         <td></td>
-                        <td><b>Attributes</b></td>
-                        <td><b>Talent Options</b></td>
+                        <td><b>{t('Construct.other.attributes')}</b></td>
+                        <td><b>{t('Construct.other.talentOptions')}</b></td>
                         <td></td>
                     </tr>
                 </thead>
@@ -140,13 +141,13 @@ const MixedSpeciesSelection: React.FC<ICharacterProperties> = ({character}) => {
             </table>
             </div>
             <div className="col-lg-6 mt-3">
-            <Header level={2}>SELECT SECONDARY SPECIES</Header>
+            <Header level={2}>{t('SpeciesPage.secondarySpecies')}</Header>
             <table className="selection-list">
                 <thead>
                     <tr>
                         <td></td>
-                        <td><b>Attributes</b></td>
-                        <td><b>Talent Options</b></td>
+                        <td><b>{t('Construct.other.attributes')}</b></td>
+                        <td><b>{t('Construct.other.talentOptions')}</b></td>
                         <td></td>
                     </tr>
                 </thead>
