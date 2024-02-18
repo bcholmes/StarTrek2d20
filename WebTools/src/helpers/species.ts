@@ -57,44 +57,52 @@ export class SpeciesModel implements ISpecies {
         this.isMixedSpeciesAllowed = isMixedSpeciesAllowed;
     }
 
+    private get speciesKeyName() {
+        let result = Species[this.id];
+        if (result.indexOf("Ext") === (result.length - 3)) {
+            result = result.substring(0, result.length - 3);
+        }
+        return result;
+    }
+
     get localizedName() {
-        const key = makeKey('Species.', Species[this.id], ".name");
+        const key = makeKey('Species.', this.speciesKeyName, ".name");
         const localized = i18next.t(key);
         return key === localized ? this.name : localized;
     }
 
     get localizedTrait() {
-        const key = makeKey('Species.', Species[this.id], ".trait");
+        const key = makeKey('Species.', this.speciesKeyName, ".trait");
         const localized = i18next.t(key);
         return key === localized ? this.localizedName : localized;
     }
 
     get localizedDescription() {
-        const key = makeKey('Species.', Species[this.id], ".description");
+        const key = makeKey('Species.', this.speciesKeyName, ".description");
         const localized = i18next.t(key);
         return key === localized ? this.description : localized;
     }
 
     get localizedSoloDescription() {
-        const key = makeKey('Species.', Species[this.id], ".soloDescription");
+        const key = makeKey('Species.', this.speciesKeyName, ".soloDescription");
         const localized = i18next.t(key);
         return key === localized ? this.description : localized;
     }
 
     get localizedNameDescription() {
-        const key = makeKey('Species.', Species[this.id], ".aboutNames");
+        const key = makeKey('Species.', this.speciesKeyName, ".aboutNames");
         const localized = i18next.t(key);
         return key === localized ? this.nameDescription : localized;
     }
 
     get localizedTraitDescription() {
-        const key = makeKey('Species.', Species[this.id], ".traitDescription");
+        const key = makeKey('Species.', this.speciesKeyName, ".traitDescription");
         const localized = i18next.t(key);
         return key === localized ? this.traitDescription : localized;
     }
 
     get localizedExampleValue() {
-        const key = makeKey('Species.', Species[this.id], ".exampleValue");
+        const key = makeKey('Species.', this.speciesKeyName, ".exampleValue");
         const localized = i18next.t(key);
         return key === localized ? this.exampleValue : localized;
     }

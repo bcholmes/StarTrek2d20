@@ -609,7 +609,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
 
         let upbringing = character.upbringingStep;
         if (upbringing != null) {
-            this.fillField(form, 'Upbringing', character.upbringingStep.description);
+            this.fillUpbringing(form, character);
         }
         this.fillField(form, 'Assignment', this.serializeAssignment(character));
         this.fillField(form, 'Environment', CharacterSerializer.serializeEnvironment(character.environmentStep?.environment, character.environmentStep?.otherSpecies, character.type));
@@ -666,6 +666,10 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         character.values.forEach((v, i) => {
             this.fillField(form, 'Value ' + (i + 1), v);
         });
+    }
+
+    fillUpbringing(form: PDFForm, character: Character) {
+        this.fillField(form, 'Upbringing', character.upbringingStep.description);
     }
 }
 
@@ -724,7 +728,22 @@ class RomulanCharacterSheet extends BasicFullCharacterSheet {
     }
 }
 
-class StandardGermanCharacterSheet extends BasicFullCharacterSheet {
+class LocalizedCharacterSheet extends BasicFullCharacterSheet {
+
+    fillRank(form: PDFForm, character: Character) {
+        this.fillField(form, 'Rank', character.rank?.localizedName);
+    }
+
+    fillSpecies(form: PDFForm, character: Character) {
+        this.fillField(form, 'Species', character.localizedSpeciesName);
+    }
+
+    fillUpbringing(form: PDFForm, character: Character) {
+        this.fillField(form, 'Upbringing', character.upbringingStep.localizedDescription);
+    }
+}
+
+class StandardGermanCharacterSheet extends LocalizedCharacterSheet {
     getLanguage(): string {
         return "de";
     }
@@ -737,13 +756,20 @@ class StandardGermanCharacterSheet extends BasicFullCharacterSheet {
     getPdfUrl(): string {
         return '/static/pdf/TNG_StarTrek_de_Charakter.pdf'
     }
+}
 
-    fillRank(form: PDFForm, character: Character) {
-        this.fillField(form, 'Rank', character.rank?.localizedName);
+class StandardRussianCharacterSheet extends LocalizedCharacterSheet {
+    getLanguage(): string {
+        return "ru";
     }
-
-    fillSpecies(form: PDFForm, character: Character) {
-        this.fillField(form, 'Species', character.localizedSpeciesName);
+    getName(): string {
+        return 'Russian TNG Character Sheet (A4)'
+    }
+    getThumbnailUrl(): string {
+        return '/static/img/sheets/TNG_StarTrek_de_Charakter.png'
+    }
+    getPdfUrl(): string {
+        return '/static/pdf/TNG_StarTrek_ru_Character_Sheet.pdf'
     }
 }
 
@@ -1406,16 +1432,16 @@ class CharacterSheets {
             return [ new CaptainsLogCharacterSheet() ];
         } else if (character.isKlingon()) {
             return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),
-                new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(),  new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(),
-                new RomulanCharacterSheet() ];
+                new StandardRussianCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(),  new TwoPageTngLandscapeCharacterSheet(),
+                new TwoPageTngCharacterSheet(), new RomulanCharacterSheet() ];
         } else if (era === Era.NextGeneration) {
-            return [ new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new KlingonCharacterSheet(), new StandardTosCharacterSheet(),
-                new LandscapeTngCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageKlingonCharacterSheet(),
-                new RomulanCharacterSheet() ];
+            return [ new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new StandardRussianCharacterSheet(), new KlingonCharacterSheet(),
+                new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(),
+                new TwoPageKlingonCharacterSheet(), new RomulanCharacterSheet() ];
         } else {
             return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),
-                new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageKlingonCharacterSheet(),
-                new RomulanCharacterSheet() ];
+                new StandardRussianCharacterSheet(),  new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(),
+                new TwoPageKlingonCharacterSheet(), new RomulanCharacterSheet() ];
         }
     }
 

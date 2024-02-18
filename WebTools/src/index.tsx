@@ -23,6 +23,7 @@ const SectorContainerPage = React.lazy(async () => {
 });
 const TableListPage = React.lazy(() => import(/* webpackChunkName: 'table' */ './table/page/tableListPage'));
 const ViewTablePage = React.lazy(() => import(/* webpackChunkName: 'table' */ './table/page/viewTablePage'));
+const EditTablePage = React.lazy(() => import(/* webpackChunkName: 'table' */ './table/page/editTablePage'));
 
 let root = createRoot(document.getElementById("mainBody"));
 root.render(
@@ -41,6 +42,7 @@ root.render(
                     <Route path="/token" element={<TokenCreationPage />} />
                     <Route path="/table/list" element={<TableListPage />} />
                     <Route path="/table/view" element={<ViewTablePage />} />
+                    <Route path="/table/edit" element={<EditTablePage />} />
                     <Route path="/table/import" element={<ImportTablePage />} />
                     <Route path="*" element={<CharacterCreationApp />} />
                 </Routes>

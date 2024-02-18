@@ -1,6 +1,6 @@
 import { Table, TableCollection, TableRow, ValueResult } from "../table/model/table";
 import TableMarshaller from "../table/model/tableMarshaller";
-import { IMPORT_TABLE_COLLECTION, SET_TABLE_COLLECTION_SELECTION } from "./tableActions";
+import { IMPORT_TABLE_COLLECTION, SAVE_EDITED_TABLE, SET_TABLE_COLLECTION_SELECTION, SET_TABLE_FOR_EDITING } from "./tableActions";
 
 const tableCollection = new TableCollection(
         new Table("Probability Matrix: Things That Could Go Wrong While Visiting an Alien Bar",
@@ -38,7 +38,7 @@ const persistTables = (tables: TableCollection[]) => {
     window.localStorage.setItem("settings.tableData", JSON.stringify(data));
 }
 
-let initialData: { selection: TableCollection, collections: TableCollection[] } = null;
+let initialData: { selection: TableCollection, collections: TableCollection[], editing?: TableCollection } = null;
 
 const getInitialData = () => {
     let base = { selection: null, collections: [ tableCollection ] };
@@ -64,6 +64,16 @@ const tableReducer = (state = getInitialData(), action) => {
         case SET_TABLE_COLLECTION_SELECTION: {
             let temp = {...state };
             temp.selection = action.payload.selection;
+            return temp;
+        }
+        case SET_TABLE_FOR_EDITING: {
+            let temp = {...state };
+            temp.editing = action.payload.selection;
+            return temp;
+        }
+        case SAVE_EDITED_TABLE: {
+            let temp = {...state };
+            temp.selection = temp.editing;
             return temp;
         }
         default:

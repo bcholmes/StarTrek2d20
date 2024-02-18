@@ -25,6 +25,10 @@
     text-transform: uppercase;
 }
 
+.btn.btn-outline-secondary, .btn.btn-outline-primary {
+    border-width: 1px;
+}
+
 h1 .btn-link {
     font-size: medium;
 }
