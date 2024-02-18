@@ -29,6 +29,15 @@ export const TALENT_NAME_BRAK_LUL = "Brak’lul";
 
 export const CHALLENGE_DICE_NOTATION = "[D]";
 
+enum TalentCategory {
+    General,
+    Career,
+    Enhancement,
+    Starship,
+    Starbase,
+    Esoteric
+}
+
 class AttributePrerequisite implements IConstructPrerequisite<Character> {
     private attribute: Attribute;
     private value: number;
@@ -655,6 +664,35 @@ export class TalentModel implements ITalent {
             }
         });
         return prerequisites;
+    }
+
+    get localizedCategory() {
+        let categoryEnum = undefined;
+        for (let i = 0; i < TalentCategory.Esoteric; i++) {
+            if (this.category === TalentCategory[i]) {
+                categoryEnum = TalentCategory[i];
+            }
+        }
+        if (categoryEnum != null) {
+            let key = "TalentCategory." + toCamelCase(categoryEnum);
+            return i18next.t(key);
+        } else {
+            let match = SkillsHelper.getSkills().filter(s => Skill[s] === this.category);
+            if (match.length) {
+                let key = "Construct.discipline." + toCamelCase(Skill[match[0]]);
+                return i18next.t(key);
+            } else {
+                // assume that it's a species
+                let key = "Species." + toCamelCase(this.category) + ".name";
+                if (this.category === "Rigellian Jelna") {
+                    key = "Species.jelna.name";
+                } else if (this.category === "Rigellian Chelon") {
+                    key = "Species.chelon.name";
+                }
+                let result = i18next.t(key);
+                return result === key ? this.category : result;
+            }
+        }
     }
 }
 

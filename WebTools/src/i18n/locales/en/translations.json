@@ -1493,6 +1493,30 @@
 
     "Talent.backupEpsConduits.soloDescription": "The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of emergency, keeping it from being lost when the ship is damaged.",
 
+    "Talent.boldCommand": "Bold: Command",
+
+    "Talent.boldCommand.description": "Whenever you attempt a Task with Command, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.\nConflicts with \"Cautious: Command\" Talent",
+
+    "Talent.boldConn": "Bold: Conn",
+
+    "Talent.boldConn.description": "Whenever you attempt a Task with Conn, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.\nConflicts with \"Cautious: Conn\" Talent",
+
+    "Talent.boldEngineering": "Bold: Engineering",
+
+    "Talent.boldEngineering.description": "Whenever you attempt a Task with Engineering, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.\nConflicts with \"Cautious: Engineering\" Talent",
+
+    "Talent.boldMedicine": "Bold: Medicine",
+
+    "Talent.boldMedicine.description": "Whenever you attempt a Task with Medicine, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.\nConflicts with \"Cautious: Medicine\" Talent",
+
+    "Talent.boldScience": "Bold Science",
+
+    "Talent.boldScience.description": "Whenever you attempt a Task with Science, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.\nConflicts with \"Cautious: Science\" Talent",
+
+    "Talent.boldSecurity": "Bold: Security",
+
+    "Talent.boldSecurity.description": "Whenever you attempt a Task with Security, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.\nConflicts with \"Cautious: Security\" Talent",
+
     "Talent.captainsYacht": "Captain's Yacht",
 
     "Talent.captainsYacht.soloDescription": "The vessel has a single additional support craft, normally mounted in a dedicated port under the saucer section of the ship. These craft, larger\nthan most shuttles, are often used for diplomatic missions and special excursions by the commanding officer and are often known as the Captain’s Yacht.",
@@ -1764,6 +1788,13 @@
     "Talent.wormholeRelaySystem": "Wormhole Relay System",
 
     "Talent.wormholeRelaySystem.soloDescription": "The ship has an additional sensor system outfitted with high-energy transceivers, verteron sensors, and neutrino sensors. These sensors, combined with field-generation devices, allow the ship to send and receive data streams through wormholes.",
+
+    "TalentCategory.general": "General",
+    "TalentCategory.career": "Career",
+    "TalentCategory.enhancement": "Enhancement",
+    "TalentCategory.starship": "Starship",
+    "TalentCategory.starbase": "Starbase",
+    "TalentCategory.esoteric": "Esoteric",
 
     "UniformEra.civilian": "Civilian",
     "UniformEra.dominionWar": "Dominion War",

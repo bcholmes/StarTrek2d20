@@ -1192,7 +1192,7 @@ Species.betazoid.soloDescription,"Betazoids appear almost identical to Humans, b
 Species.betazoid.traitDescription,"All Betazoids are telepathic to varying degrees, and even when not actively using their abilities, they are highly perceptive of others around them, but also highly sensitive to telepathic disturbances and mental assaults. They have little familiarity with lies and deception, due to their open culture and ability to read the thoughts and emotions of others. As they are sensitive to the minds of other living beings, they tend not to be comfortable around animals, for fear of losing themselves in the minds of wild creatures.","Alle Betazoiden sind zumindest zu einem gewissen Grad telepathisch, und auch dann sehr feinfühlig für andere Wesen um sich herum, wenn sie ihre Fähigkeiten nicht aktiv einsetzen. Sie sind aber auch anfällig für telepathische Störungen und psychische Angriffe. Aufgrund ihrer offenen Kultur und Fähigkeit, Gedanken und Gefühle zu lesen, haben sie eine nur geringe Vertrautheit mit Lügen und Täuschung. Da sie sensibel auf die Gedanken anderer Lebewesen reagieren, neigen sie dazu, sich in der Nähe von Tieren nicht wohlzufühlen, da sie sich darum sorgen, sich im Verstand einer wilden Kreatur zu verlieren.",,,"Все бетазоиды в разной степени владеют телепатией и отлично понимают состояние окружающих, даже если не используют свои способности активно. Но это также делает их крайне чувствительными к телепатическому воздействию и психическим атакам. Благодаря культуре открытости и способности читать чужие мысли и эмоции бетазоиды мало знают о лжи и обмане. Поскольку они чувствительны к разумам других живых существ, то, как правило, чувствуют себя неуютно рядом с животными из-за страха раствориться в сознании дикого существа."
 Species.bolian.name,Bolian,Bolianer,,,Болианец
 Species.bolian.soloDescription,"Identified by a cartilaginous ridge that extends vertically down their head, past the center of the face to the chest, with skin color ranging from light blues to dark greens and muted purples with darker banding across the head. They are predominantly bald, though some females are known to have hair. Bolians are an understanding, hospitable species, often forward-facing in their duties in customer relations or diplomatic service.",,,,
-Species.borg.name,Borg,,,,
+Species.borg.name,Borg,,,,Борг
 Species.borg.description,"Borg is not something that a person is born to, but rather something that they are forced to become — though for infants and children assimilated by the Collective, they may have little or no memory of any other life. The Borg meld biology with technology, and a drone will have countless implants, the result of both invasive surgery and aggressive nanotechnology. As of 2371, only a single individual has ever been removed from the Borg Collective — Jean-Luc Picard, who was captured only days earlier, meaning that his implants were less extensive than those of someone assimilated years or decades before. Borg NPCs are all mixed-species characters — their original species, and their new reality as part of the Collective",,,,
 Species.borg.traitDescription,"Borg are extremely strong and resilient, owing to their technologically-enhanced physiology. They lack self-determination and intuition, relying on directives and protocols from the Collective, and the gestalt consciousness of countless other Borg drones.",,,,
 Species.bynar.name,Bynar,,,,Бинар
@@ -1317,7 +1317,7 @@ Species.trill.description,"The Trill species, from their homeworld of the same n
 жить на протяжении многих веков, их передают от трилла к триллу, с каждым разом перенося воспоминания и знания предыдущих носителей в новый союз. Этот факт не слишком хорошо известен за пределами общества триллов, но это не секрет - он просто не обсуждается широко, а количество соединённых триллов сравнительно невелико. Триллы входят в состав Федерации уже более ста лет, и несколько известных триллов сыграли важную роль в её формировании. Цивилизация триллов построена в первую очередь на интеллектуальной деятельности, так как симбионты ценят в носителях обучаемость и мудрость."
 Species.trill.exampleValue,Four Lifetimes of Adventure,Vier Lebenszeiten voller Abenteuer,,,
 Species.trill.traitDescription,"Trill are especially resilient to parasites, as a quirk of their potential to be Joined; Joined Trill are entirely immune to parasitic infection. However, they tend to have strong allergic reactions to insect bites and other forms of venom, which can disrupt their neurochemistry, particularly if they’re Joined. As many of the specifics of Trill physiology — especially with regards to symbiosis — are not widely known, this can result in medical complications.","Trill besitzen als Nebenprodukt ihres Potentials, vereinigt zu werden, eine hohe Widerstandskraft gegen Parasiten. Vereinigte Trill sind sogar vollständig immun gegen parasitische Infektionen. Sie neigen jedoch dazu, starke allergische Reaktionen auf Insektenbisse und andere Formen von Giften zu entwickeln, die ihre Neurochemie stören können, vor allem, wenn sie vereinigt sind. Da viele Details der Trill-Physiologie – insbesondere in Bezug auf die Symbiose – nicht weithin bekannt sind, kann dies zu medizinischen Komplikationen führen.",,,"Благодаря способности к соединению триллы особенно устойчивы к паразитам, а соединённые триллы получают полный иммунитет к паразитарному заражению. Тем не менее они, особенно соединённые, как правило, обладают сильной аллергической реакцией на укусы насекомых и другие виды яда, способные повлиять на их нервную систему. Поскольку многие физиологические особенности триллов (особенно касающиеся симбиоза) малоизвестны, это может привести к медицинским осложнениям."
-Species.vorta.name,Vorta,,,,
+Species.vorta.name,Vorta,,,,Ворта
 Species.vorta.description,"The Vorta are genetically-engineered life-forms, created to serve as advisors, scientists, diplomats, and overseers for the Dominion, acting as the Founders’ closest servants and foremost representatives. Vorta are cloned, in batches of identical beings, with a new clone being activated and placed into service upon the death of a predecessor, receiving the memories of those that came before them, though each clone is nevertheless a distinct individual. Vorta are extremely cunning and clever, but have little creativity or sense of aesthetics.",,,,
 Species.vorta.traitDescription,"Vorta have extremely keen hearing, but relatively poor eyesight. They are immune to most forms of poison. Vorta are absolutely loyal to the Dominion, revering the Founders as living gods. Those who encounter the Vorta often regard them as insincere or manipulative.",,,,
 Species.vulcan.name,Vulcan,Vulkanier,,,Вулканец
@@ -1368,6 +1368,24 @@ Talent.automatedDefenses,Automated Defenses,,,,
 Talent.automatedDefenses.soloDescription,The ship’s weapons systems can automatically lock on to a target and fire even if the crew is incapacitated or unavailable.,,,,
 Talent.backupEpsConduits,Backup EPS Conduits,,,,
 Talent.backupEpsConduits.soloDescription,"The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of emergency, keeping it from being lost when the ship is damaged.",,,,
+Talent.boldCommand,Bold: Command,,,,Смелый: Коммандование (Общее)
+Talent.boldCommand.description,"Whenever you attempt a Task with Command, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.
+Conflicts with ""Cautious: Command"" Talent",,,,
+Talent.boldConn,Bold: Conn,,,,
+Talent.boldConn.description,"Whenever you attempt a Task with Conn, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.
+Conflicts with ""Cautious: Conn"" Talent",,,,
+Talent.boldEngineering,Bold: Engineering,,,,
+Talent.boldEngineering.description,"Whenever you attempt a Task with Engineering, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.
+Conflicts with ""Cautious: Engineering"" Talent",,,,
+Talent.boldMedicine,Bold: Medicine,,,,
+Talent.boldMedicine.description,"Whenever you attempt a Task with Medicine, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.
+Conflicts with ""Cautious: Medicine"" Talent",,,,
+Talent.boldScience,Bold Science,,,,
+Talent.boldScience.description,"Whenever you attempt a Task with Science, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.
+Conflicts with ""Cautious: Science"" Talent",,,,
+Talent.boldSecurity,Bold: Security,,,,
+Talent.boldSecurity.description,"Whenever you attempt a Task with Security, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.
+Conflicts with ""Cautious: Security"" Talent",,,,
 Talent.captainsYacht,Captain's Yacht,,,,
 Talent.captainsYacht.soloDescription,"The vessel has a single additional support craft, normally mounted in a dedicated port under the saucer section of the ship. These craft, larger
 than most shuttles, are often used for diplomatic missions and special excursions by the commanding officer and are often known as the Captain’s Yacht.",,,,
@@ -1438,9 +1456,9 @@ Talent.joined.description,"You have a symbiont, with lifetimes of memories to dr
 больше, чем симбионтов, вы были одним из многих, кто не прошёл отбор, но качеств даже неуспешного посвящённого хватает для поступления на службу в Звёздный флот. Если вы за счёт Целеустремлённости приобретаете бонусный d20 для выполнения Задачи на Самоконтроль или Здравомыслие, то можете бросить заново все использованные d20. Нельзя взять Талант «Бывший посвящённый», если у ПИ есть Талант «Соединённый» - они взаимоисключающие."
 Talent.kolinahr,Kolinahr,,,,КОЛИНАР
 Talent.kolinahr.description,"You have undergone the ritual journey to purge all emotion. You reduce the Difficulty of all Tasks to resist coercion, mental intrusion, pain, and other mental attacks by two.",,,,"Вы прошли ритуальное путешествие, чтобы очиститься от эмоций. Сложность выполнения вами любых Задач, связанных с противодействием принуждению, проникновению в разум, боли и прочим ментальным воздействиям, снижается на 2."
-Talent.meanRightHook,Mean Right Hook,,,,
+Talent.meanRightHook,Mean Right Hook,,,,Мощный Хук Справа
 Talent.meanRightHook.alias.klingonCore,Warrior’s Strike,,,,
-Talent.meanRightHook.description,Your Unarmed Strike Attack has the Vicious 1 Damage Effect.,,,,
+Talent.meanRightHook.description,Your Unarmed Strike Attack has the Vicious 1 Damage Effect.,,,,Урон от ваших Атак без оружия оказывает 1 Повреждающее воздействие.
 Talent.mindMeld,Mind-Meld,,,,СЛИЯНИЕ РАЗУМОВ
 Talent.mindMeld.description,"You have undergone training in telepathic techniques that allow the melding of minds through physical contact. This will always require a Task with a Difficulty of at least 1, which can be opposed by an unwilling participant. If successful, you link minds with the participant, sharing thoughts and memories; Momentum may be spent to gain more information, or perform deeper telepathic exchanges. This link goes both ways, and it is a tiring and potentially hazardous process for you. Complications can result in pain, disorientation, or lingering emotional or behavioral difficulties.",,,,"Вы прошли обучение телепатическим техникам, позволяющим соединять разумы через физический контакт. Для этого всегда требуется выполнить Задачу со сложностью не менее 1, которой может сопротивляться не желающая вступать в контакт цель. При успехе вы сливаетесь разумом с целью, делитесь мыслями и воспоминаниями, при этом можно потратить жетоны Импульса, чтобы получить дополнительную информацию или провести
 более глубокий телепатический обмен. Подобная связь действует в обе стороны, и для вас это обессиливающий и потенциально опасный процесс. Любые Осложнения могут привести к боли, дезориентации, а также затяжным эмоциональным или поведенческим проблемам."
@@ -1512,6 +1530,12 @@ Talent.versatileTractorBeam,Versatile Tractor Beam,,,,
 Talent.versatileTractorBeam.soloDescription,"The ship has exotic particle emitters integrated with its tractor beam system. With a few simple adjustments, the tractor beam can become even more useful against ships trapped within. The tractor beam can even deplete energy from a vessel trapped in its field.",,,,
 Talent.wormholeRelaySystem,Wormhole Relay System,,,,
 Talent.wormholeRelaySystem.soloDescription,"The ship has an additional sensor system outfitted with high-energy transceivers, verteron sensors, and neutrino sensors. These sensors, combined with field-generation devices, allow the ship to send and receive data streams through wormholes.",,,,
+TalentCategory.general,General,,,,
+TalentCategory.career,Career,,,,
+TalentCategory.enhancement,Enhancement,,,,
+TalentCategory.starship,Starship,,,,
+TalentCategory.starbase,Starbase,,,,
+TalentCategory.esoteric,Esoteric,,,,
 UniformEra.civilian,Civilian,Zivilist,,,
 UniformEra.dominionWar,Dominion War,Dominionkrieg,,,
 UniformEra.enterprise,Enterprise,Enterprise,,,
