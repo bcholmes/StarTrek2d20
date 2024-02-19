@@ -48,51 +48,8 @@ export enum Specialization {
 }
 
 export const allSpecializations = () => {
-    return [Specialization.Admiral,
-        Specialization.Admin,
-        Specialization.Counselor,
-        Specialization.FirstContactSpecialist,
-        Specialization.Jag,
-        Specialization.Security,
-        Specialization.MedicalDoctor,
-        Specialization.Nurse,
-        Specialization.HangarDeck,
-        Specialization.Conn,
-        Specialization.ScienceTech,
-        Specialization.StarfleetScientist,
-        Specialization.Engineer,
-        Specialization.IntelligenceOfficer,
-
-        Specialization.KlingonWarrior,
-        Specialization.KlingonWeaponsOfficer,
-        Specialization.KlingonMedic,
-        Specialization.KlingonShipCaptain,
-        Specialization.KlingonDiplomat,
-
-        Specialization.FerengiMerchant,
-        Specialization.FerengiDaiMon,
-
-        Specialization.CardassianSoldier,
-        Specialization.CardassianGul,
-
-        Specialization.RomulanCenturion,
-        Specialization.RomulanTalShiar,
-        Specialization.RomulanSenator,
-
-        Specialization.SonaCommandOfficer,
-        Specialization.TalarianWarrior,
-        Specialization.TalarianOfficer,
-
-        Specialization.Scientist,
-        Specialization.Bureaucrat,
-        Specialization.Colonist,
-        Specialization.FederationAmbassador,
-
-        Specialization.OrionPirate,
-        Specialization.InformationBroker,
-        Specialization.BruteForHire,
-        Specialization.Bodyguard,
-        Specialization.Smuggler,
-    ]
+    return Object.keys(Specialization).filter((item) => {
+        return !isNaN(Number(item));
+    }).map(item => Number(item));
 }
 

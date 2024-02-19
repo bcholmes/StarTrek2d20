@@ -8,7 +8,7 @@ export enum ExtraType {
 
     ZaraniteMask, Visor,
 
-    FerengiHeadFlap
+    FerengiHeadFlap, SecurityHelmet,
 }
 
 export enum ExtraCategory {
@@ -24,6 +24,7 @@ export const getExtraCategory = (extraType: ExtraType) => {
             return ExtraCategory.Ear;
 
         case ExtraType.FerengiHeadFlap:
+        case ExtraType.SecurityHelmet:
             return ExtraCategory.Headwear;
 
         case ExtraType.Visor:

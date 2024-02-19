@@ -38,7 +38,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
     }
 
     const getAges = () => {
-        return AgeHelper.getAllChildAges().map(a => a.name);
+        return AgeHelper.getAllChildAges().map((a, i) => new DropDownElement(i, a.name));
     }
 
     const selectAge = (index: number) => {
@@ -125,16 +125,27 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
         return speciesList;
     }
 
+    const characterAgeAsIndex = () => {
+        let age = character.age;
+        let result = -1;
+        AgeHelper.getAllChildAges().forEach((a,i) => {
+            if (a.name === age.name) {
+                result = i
+            }
+        });
+        return result;
+    }
+
     let ageDiv = hasSource(Source.PlayersGuide) && character?.age?.isChild
         ? (<div className="mt-4">
                 <div className="page-text-aligned">
                     {t('SupportingCharacter.howOld')}
                 </div>
                 <div>
-                    <DropDownInput
+                    <DropDownSelect
                         items={getAges() }
-                        defaultValue={character.age.name}
-                        onChange={(index) => selectAge(index) }/>
+                        defaultValue={characterAgeAsIndex()}
+                        onChange={(index) => selectAge(index as number) }/>
                 </div>
             </div>)
         : null;

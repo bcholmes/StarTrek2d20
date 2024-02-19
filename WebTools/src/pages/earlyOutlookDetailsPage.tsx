@@ -24,6 +24,7 @@ import DisciplineListComponent from '../components/disciplineListComponent';
 import { CharacterType } from '../common/characterType';
 import { Species } from '../helpers/speciesEnum';
 import { localizedFocus } from '../components/focusHelper';
+import { makeKey } from '../common/translationKey';
 
 const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
@@ -79,12 +80,12 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
 
     const attributes = character.upbringingStep?.acceptedUpbringing
         ? (<div>
-            <AttributeView name={AttributesHelper.getAttributeName(earlyOutlook.attributeAcceptPlus2) } points={2} value={character.attributes[earlyOutlook.attributeAcceptPlus2].value}/>
-            <AttributeView name={AttributesHelper.getAttributeName(earlyOutlook.attributeAcceptPlus1) } points={1} value={character.attributes[earlyOutlook.attributeAcceptPlus1].value}/>
+            <AttributeView name={t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(earlyOutlook.attributeAcceptPlus2))) } points={2} value={character.attributes[earlyOutlook.attributeAcceptPlus2].value}/>
+            <AttributeView name={t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(earlyOutlook.attributeAcceptPlus1))) } points={1} value={character.attributes[earlyOutlook.attributeAcceptPlus1].value}/>
         </div>)
         : (<div>
-            <AttributeView name={AttributesHelper.getAttributeName(earlyOutlook.attributeRebelPlus2) } points={2} value={character.attributes[earlyOutlook.attributeRebelPlus2].value}/>
-            <AttributeView name={AttributesHelper.getAttributeName(earlyOutlook.attributeRebelPlus1) } points={1} value={character.attributes[earlyOutlook.attributeRebelPlus1].value}/>
+            <AttributeView name={t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(earlyOutlook.attributeRebelPlus2))) } points={2} value={character.attributes[earlyOutlook.attributeRebelPlus2].value}/>
+            <AttributeView name={t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(earlyOutlook.attributeRebelPlus1))) } points={1} value={character.attributes[earlyOutlook.attributeRebelPlus1].value}/>
         </div>);
 
 
@@ -95,7 +96,7 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
             <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.UpbringingDetails} />
             <Header>{earlyOutlook.localizedName}</Header>
 
-            <InstructionText text={earlyOutlook.description} />
+            <InstructionText text={earlyOutlook.localizedDescription} />
 
             <div className="row">
                 <div className="col-lg-6 my-3">
@@ -115,7 +116,7 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
                 </div>
                 <div className="my-3 col-lg-6">
                     <Header level={2}>{t('Construct.other.focus')}</Header>
-                    <p>{earlyOutlook.focusDescription}</p>
+                    <p>{earlyOutlook.localizedFocusDescription}</p>
                     <div className="d-flex justify-content-between align-items-center flex-wrap">
                         <InputFieldAndLabel id="focus" labelName={t('Construct.other.focus')}
                             value={character.upbringingStep?.focus || ""} className="mt-1"

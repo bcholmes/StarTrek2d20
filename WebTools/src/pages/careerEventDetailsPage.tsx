@@ -80,7 +80,8 @@ const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({charac
                         <Header level={2} className="mb-3">{t('Construct.other.attribute')}</Header>
                         {careerEvent.attributes.length === 1
                             ? (<div>
-                                    <AttributeView name={AttributesHelper.getAttributeName(careerEvent.attributes[0]) } points={1} value={character.attributes[careerEvent.attributes[0]].value}/>
+                                    <AttributeView name={t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(careerEvent.attributes[0])))}
+                                        points={1} value={character.attributes[careerEvent.attributes[0]].value}/>
                                 </div>)
                             : (<AttributeListComponent controller={attributeController} />)}
                     </div>

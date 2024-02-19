@@ -763,10 +763,10 @@ class StandardRussianCharacterSheet extends LocalizedCharacterSheet {
         return "ru";
     }
     getName(): string {
-        return 'Russian TNG Character Sheet (A4)'
+        return 'Russian TNG Character Sheet'
     }
     getThumbnailUrl(): string {
-        return '/static/img/sheets/TNG_StarTrek_de_Charakter.png'
+        return '/static/img/sheets/TNG_StarTrek_ru_Character_Sheet.png'
     }
     getPdfUrl(): string {
         return '/static/pdf/TNG_StarTrek_ru_Character_Sheet.pdf'

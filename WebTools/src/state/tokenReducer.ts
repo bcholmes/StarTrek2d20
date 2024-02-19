@@ -92,7 +92,7 @@ const token = (state: Token = initialState, action) => {
         if (options.indexOf(option) < 0) {
             option = SpeciesOption.Option1;
         }
-        let extras = state.extras.filter(e => SpeciesRestrictions.isExtraAvailableFor(e, newSpecies));
+        let extras = state.extras.filter(e => SpeciesRestrictions.isExtraAvailableFor(e, newSpecies, state.uniformEra));
 
         let variant = state.variant;
         let variants = UniformVariantRestrictions.getAvailableVariants(state.uniformEra, state.bodyType, newSpecies, state.divisionColor, state.rankIndicator);
@@ -134,13 +134,15 @@ const token = (state: Token = initialState, action) => {
         if (variants.indexOf(variant) < 0) {
             variant = UniformVariantType.Base;
         }
+        let extras = state.extras.filter(e => SpeciesRestrictions.isExtraAvailableFor(e, state.species, action.payload.era));
 
         return {
             ...state,
             rankIndicator: rank,
             divisionColor: colour,
             uniformEra: action.payload.era,
-            variant: variant
+            variant: variant,
+            extras: extras
         }
     }
     case SET_TOKEN_DIVISION_COLOR: {

@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-import { DropDownElement, DropDownInput, DropDownSelect } from "../components/dropDownInput";
+import { DropDownElement, DropDownSelect } from "../components/dropDownInput";
 import { Skill, SkillsHelper } from "../helpers/skills";
 import { TalentModel, TalentsHelper } from "../helpers/talents";
 import { SourcesHelper } from "../helpers/sources";

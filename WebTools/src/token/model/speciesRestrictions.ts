@@ -6,6 +6,7 @@ import { HeadType } from "./headTypeEnum";
 import { MouthType } from "./mouthTypeEnum";
 import { NoseType } from "./noseTypeEnum";
 import { SpeciesOption } from "./speciesOptionEnum";
+import { UniformEra } from "./uniformEra";
 
 
 class SpeciesRestrictions {
@@ -164,7 +165,7 @@ class SpeciesRestrictions {
         return this.getSpeciesOptions(species).length > 1;
     }
 
-    static isExtraAvailableFor(extra: ExtraType, species: Species) {
+    static isExtraAvailableFor(extra: ExtraType, species: Species, uniformEra: UniformEra) {
         if (extra === ExtraType.BajoranEarring) {
             return species === Species.Bajoran;
         } else if (extra === ExtraType.SimpleEarring || extra === ExtraType.HoopEarring) {
@@ -179,6 +180,8 @@ class SpeciesRestrictions {
             return species === Species.Ferengi;
         } else if (extra === ExtraType.ZaraniteMask) {
             return species === Species.Zaranite;
+        } else if (extra === ExtraType.SecurityHelmet) {
+            return uniformEra === UniformEra.MonsterMaroon;
         } else {
             return true;
         }
@@ -252,7 +255,7 @@ class SpeciesRestrictions {
         if (this.isHumanLikeSkinColouring(species)) {
             let skinColours = SpeciesRestrictions.getSkinColors(species);
             let index = skinColours.indexOf(skinColor);
-            return (index > Math.floor(skinColours.length / 2));
+            return (index >= Math.floor(skinColours.length / 2));
         } else {
             return false;
         }

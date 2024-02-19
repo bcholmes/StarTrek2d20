@@ -10,6 +10,8 @@
     "Lcars.news": "News",
     "Lcars.profile": "Profile",
 
+    "AttributesAndDisciplines.instruction": "At this stage, your character is almost complete, and needs only a few final elements and adjustments. This serves as a last chance to customize the character before play.",
+
     "EraSelectionPage.eraInstruction": "Select which Era to play in. Ask your GM which Era to choose.",
 
     "Home.title": "STA Character Creator",
@@ -546,44 +548,64 @@
     "Page.breadcrumb.supportingCharacterCreation": "Supporting Character Creation",
 
     "CareerEvent.common.1.name": "Ship Destroyed",
+    "CareerEvent.common.1.description": "The ship the character was serving on was lost, destroyed during a mission, and the character was one of the few who survived.\n\n- What was the ship’s mission? Was it something routine that went horribly wrong, or was it something perilous? What destroyed the ship?\n- How many survivors were there? How long did it take before they were recovered?",
 
     "CareerEvent.common.2.name": "Death of a Friend",
+    "CareerEvent.common.2.description": "During an important mission, one of the character’s friends was killed in action.\n\n- Who was the friend? How did the character know them?\n- What was the mission? How did the friend die? Who was to blame?",
 
     "CareerEvent.common.3.name": "Lauded by Another Culture",
+    "CareerEvent.common.3.description": "The character was involved in a mission that earned the official praise of a non-Federation culture; they are now considered to be a friend to that people.\n\n- What culture was aided by this mission? What was the mission? Why was it particularly praiseworthy?\n- Does the character have any friends or contacts in that culture who can be contacted for help?",
 
     "CareerEvent.common.4.name": "Negotiate a Treaty",
+    "CareerEvent.common.4.description": "The character was part of a delegation that helped negotiate a treaty, agreement, or alliance with a culture outside the Federation. What culture was the treaty with? What was it for?",
 
     "CareerEvent.common.5.name": "Required to Take Command",
+    "CareerEvent.common.5.description": "During a mission, a crisis left the mission’s leader unable to lead. This required the character to take command, something they may not have been prepared for.\n\n- What was the mission? What went wrong?\n- Was the mission successful despite the loss of the leader?",
 
     "CareerEvent.common.6.name": "Encounter with a Truly Alien Being",
+    "CareerEvent.common.6.description": "The character encountered a life-form which is truly alien, something barely within the comprehension of humanoid life. It might have been some godlike entity, or a creature that swims through space, but whatever it was, it was not life as we know it.\n\n- What kind of creature was it? What did the character learn from the experience?\n- What happened to the creature afterwards? Has it been seen again?",
 
     "CareerEvent.common.7.name": "Serious Injury",
+    "CareerEvent.common.7.description": "The character was seriously hurt, and needed to spend a considerable amount of time recovering.\n\n- What was happening when the character was injured? Who was responsible?\n- What did the recovery entail? Did the character need a prosthesis or cybernetic afterwards?",
 
     "CareerEvent.common.8.name": "Conflict with a Hostile Culture",
+    "CareerEvent.common.8.description": "The character was involved in a major battle with a hostile force, and is unlikely to forget the experience.\n\n- Who was the enemy in this battle? Why did the battle occur? Was it fought in space, on the ground, or both?\n- What did the character have to do to survive? Was the battle won or lost?",
 
     "CareerEvent.common.9.name": "Mentored",
+    "CareerEvent.common.9.description": "A highly-respected officer took notice of the character’s career. For a time, the character served as the officer’s pilot and aide, gaining the benefit of the officer’s experiences and lessons. Who was the officer? Does the officer remain a contact or even friend of the character?",
 
     "CareerEvent.common.10.name": "Transporter Accident",
+    "CareerEvent.common.10.description": "The character suffered some manner of strange accident while using a Transporter.\n\n- What happened to the character during the accident? Were there any lasting repercussions?\n- How does the character feel about Transporters now?",
 
     "CareerEvent.common.11.name": "Dealing with a Plague",
+    "CareerEvent.common.11.description": "The character’s starship was assigned to provide aid to a world deal with an epidemic.\n\n- What was the disease that was running rampant? What planet it was affecting?\n- Did the character deal directly with the sick? How was the character involved?",
 
     "CareerEvent.common.12.name": "Betrayed Ideals for a Superior",
+    "CareerEvent.common.12.description": "The character was placed in a situation where they had to choose between a trusted superior and their own ideals, and chose to follow the superior.\n\n- Who was the superior? What did they ask the character to do? How does the character feel now?\n- What were the repercussions of this? Are the details of this event on record? Was the character right?",
 
     "CareerEvent.common.13.name": "Called Out a Superior",
+    "CareerEvent.common.13.description": "The character was placed in a situation where they had to choose between a trusted superior and their own ideals, and chose to follow their ideals.\n\n- Who was the superior? What did they ask the character to do? How does the character feel now?\n- What were the repercussions of this? Are the details of this event on record? Was the character right?",
 
     "CareerEvent.common.14.name": "New Battle Strategy",
+    "CareerEvent.common.14.description": "In combat with a hostile force, the character devised a new strategy or tactic.\n\n- Who was the battle against?\n- Was it in space or on the ground? What was the strategy devised?",
 
     "CareerEvent.common.15.name": "Learns Unique Language",
+    "CareerEvent.common.15.description": "The character encounters a species with an unusual form of communication, and learns to communicate with them.\n\n- Who were the aliens the character encountered? Was the encounter tense, or peaceful?\n- What method of communication do the aliens use? How did the character learn it?",
 
     "CareerEvent.common.16.name": "Discovers an Artifact",
+    "CareerEvent.common.16.description": "During a survey mission, the character discovered a device or fragment of technology from a now-extinct civilization.\n\n- What did this piece of technology do? Does it still function now?\n- What is known about the civilization that made it?",
 
     "CareerEvent.common.17.name": "Special Commendation",
+    "CareerEvent.common.17.description": "During a crisis, the character saved the lives of several colleagues, helping them to safety.This earned the character a special commendation.\n\n- What was the crisis? Why was the mission in danger?\n- What were the repercussions of this? Are the details of this event on record?",
 
     "CareerEvent.common.18.name": "Solved an Engineering Crisis",
+    "CareerEvent.common.18.description": "The character was instrumental in ending a crisis caused by malfunctioning technology, and saved many lives in the process. What technology had malfunctioned, and why was it dangerous? How did the character solve the problem?",
 
     "CareerEvent.common.19.name": "Breakthrough or Invention",
+    "CareerEvent.common.19.description": "The character made an important technological discovery, devised a new way of using a particular technology, or invented some new technology that will be invaluable in the future. What was the discovery, breakthrough, or invention? How will it be useful?",
 
     "CareerEvent.common.20.name": "First Contact",
+    "CareerEvent.common.20.description": "The character was chosen to be involved in one of the most important of Starfleet’s missions: first contact with another culture. What culture did the character make first contact with? Did the mission go well?",
 
     "CareerEvent.unofficial.21.name": "Advanced Tactical Training",
     "CareerEvent.unofficial.21.description": "The character took a specialized course in advanced tactical and intelligence techniques.\n\n- Where was the course taught? Who recommended the character for the course?\n- Did the character pass the course? How did the character rank in the various subjects?",
@@ -760,6 +782,30 @@
     "CharacterType.name.cadet": "Cadet",
     "CharacterType.name.child": "Child",
     "CharacterType.name.other": "Other",
+
+    "EarlyOutlook.MilitaryOrExploration": "Starfleet",
+
+    "EarlyOutlook.MilitaryOrExploration.description": "The character’s family may have a strong tradition of Starfleet service, with at least one member of the family in every generation serving the Federation in this way. Perhaps both the character’s parents were Starfleet officers, who met in service. Either way, the character’s formative years were influenced by Starfleet.",
+
+    "EarlyOutlook.BusinessOrTrade": "Business or Trade",
+
+    "EarlyOutlook.BusinessOrTrade.description": "The character’s family may have connections on countless worlds, overseeing and directing some grand business endeavor. They might have been traders or involved in interplanetary freight. Either way, the character has grown up encountering people from all walks of life, including those from outside the Federation, and their outlook on life has been shaped accordingly.",
+
+    "EarlyOutlook.agricultureOrRural": "Agriculture or Rural",
+
+    "EarlyOutlook.agricultureOrRural.description": "The character grew up surrounded more by nature than by people, in rural communities, on the frontier, or somewhere else distanced from the bustle of cities. They might be heavily involved in agriculture, growing real food to supplement synthesized or replicated meals.",
+
+    "EarlyOutlook.ScienceAndTechnology": "Science and Technology",
+
+    "EarlyOutlook.ScienceAndTechnology.description": "The character’s home was one filled with the potential of science, and cutting edge developments were familiar ground. Perhaps the character was raised by scientists or engineers, or had mentors and teachers who encouraged a talent for the technical.",
+
+    "EarlyOutlook.ArtisticAndCreative": "Artistic and Creative",
+
+    "EarlyOutlook.ArtisticAndCreative.description": "The character’s life was filled with arts and creativity of all kinds, and no matter what pursuits the character favors, they are exposed to the great works of many cultures, and given every opportunity to express themselves.",
+
+    "EarlyOutlook.DiplomacyAndPolitics": "Diplomacy and Politics",
+
+    "EarlyOutlook.DiplomacyAndPolitics.description": "The character has been exposed to the complexities of political thought and the nuances of diplomacy since they were young, perhaps because a family member was involved in those fields.",
 
     "Environment.common.homeworld.name": "Homeworld",
     "Environment.common.homeworld.description": "The character comes from the world that birthed their civilization, and has been surrounded by cultural and spiritual legacies their entire life. Species homeworlds are often utopian and idyllic, serving as the platonic ideal of that species’ culture. They also exemplify aspects of a culture’s most revered traditions, and serve as the heart of that civilization’s legal and political landscape.",
@@ -938,6 +984,7 @@
 
     "HairType.bald": "Bald",
     "HairType.bowlCutHair": "Bowl Cut",
+    "HairType.centrePart": "Centre Part",
     "HairType.chinLengthBob": "Chin Length Bob",
     "HairType.mature": "Mature",
     "HairType.stylishHair": "Stylish Short",
@@ -1495,27 +1542,59 @@
 
     "Talent.boldCommand": "Bold: Command",
 
-    "Talent.boldCommand.description": "Whenever you attempt a Task with Command, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.\nConflicts with \"Cautious: Command\" Talent",
+    "Talent.boldCommand.description": "Whenever you attempt a Task with Command, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
 
     "Talent.boldConn": "Bold: Conn",
 
-    "Talent.boldConn.description": "Whenever you attempt a Task with Conn, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.\nConflicts with \"Cautious: Conn\" Talent",
+    "Talent.boldConn.description": "Whenever you attempt a Task with Conn, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
 
     "Talent.boldEngineering": "Bold: Engineering",
 
-    "Talent.boldEngineering.description": "Whenever you attempt a Task with Engineering, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.\nConflicts with \"Cautious: Engineering\" Talent",
+    "Talent.boldEngineering.description": "Whenever you attempt a Task with Engineering, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
 
     "Talent.boldMedicine": "Bold: Medicine",
 
-    "Talent.boldMedicine.description": "Whenever you attempt a Task with Medicine, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.\nConflicts with \"Cautious: Medicine\" Talent",
+    "Talent.boldMedicine.description": "Whenever you attempt a Task with Medicine, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
 
     "Talent.boldScience": "Bold Science",
 
-    "Talent.boldScience.description": "Whenever you attempt a Task with Science, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.\nConflicts with \"Cautious: Science\" Talent",
+    "Talent.boldScience.description": "Whenever you attempt a Task with Science, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
 
     "Talent.boldSecurity": "Bold: Security",
 
-    "Talent.boldSecurity.description": "Whenever you attempt a Task with Security, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.\nConflicts with \"Cautious: Security\" Talent",
+    "Talent.boldSecurity.description": "Whenever you attempt a Task with Security, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
+
+    "Talent.сautiousSecurity": "Cautious: Security",
+
+    "Talent.сautiousSecurity.description": "Whenever you attempt a Task with Security, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
+
+    "Talent.collaborationCommand": "Collaboration: Command",
+
+    "Talent.collaborationCommand.description": "Whenever you attempt a Task with Command, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
+
+    "Talent.collaborationConn": "Collaboration: Conn",
+
+    "Talent.collaborationConn.description": "Whenever you attempt a Task with Conn, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
+
+    "Talent.collaborationEngineering": "Collaboration: Engineering",
+
+    "Talent.collaborationEngineering.description": "Whenever you attempt a Task with Engineering, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
+
+    "Talent.collaborationMedicine": "Collaboration: Medicine",
+
+    "Talent.collaborationMedicine.description": "Whenever you attempt a Task with Medicine, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
+
+    "Talent.collaborationScience": "Collaboration Science",
+
+    "Talent.collaborationScience.description": "Whenever you attempt a Task with Science, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
+
+    "Talent.collaborationSecurity": "Collaboration: Security",
+
+    "Talent.collaborationSecurity.description": "Whenever you attempt a Task with Security, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
+
+    "Talent.constantlyWatching": "Constantly Watching",
+
+    "Talent.constantlyWatching.description": "When you attempt a Task to detect danger or hidden enemies, reduce the Difficulty by 1.",
 
     "Talent.captainsYacht": "Captain's Yacht",
 
@@ -1540,6 +1619,10 @@
     "Talent.culturalFlexibility": "Cultural Flexibility",
 
     "Talent.culturalFlexibility.description": "Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",
+
+    "Talent.dauntless": "Dauntless",
+
+    "Talent.dauntless.description": "Whenever you attempt a Task to resist being intimidated or threatened, you may add a bonus d20 to your dice pool.",
 
     "Talent.defuseTheTension": "Defuse the Tension",
 
@@ -1580,6 +1663,10 @@
     "Talent.fastTargetingSystems": "Fast Targeting Systems",
 
     "Talent.fastTargetingSystems.soloDescription": "The ship’s targeting systems can lock weapons on target much faster and more accurately than other ships of its class, giving it an edge in battle.",
+
+    "Talent.fieldMedicine": "Field Medicine",
+
+    "Talent.fieldMedicine.description": "When attempting a Medicine Task, you may ignore any increase in Difficulty for working without the proper tools or equipment.",
 
     "Talent.flyBy": "Fly-By",
 
@@ -1755,6 +1842,10 @@
 
     "Talent.strongPagh.description": "You believe profoundly in the Prophets, and rely heavily upon that faith to see you through hardship. Whenever you attempt a Task to resist being coerced or threatened, you reduce the Difficulty of that Task by 1.",
 
+    "Talent.studious": "Studious",
+
+    "Talent.studious.description": "Whenever you spend one or more Momentum to Obtain Information, you may ask one additional question (in total, not per Momentum spent on Obtain Information).",
+
     "Talent.sturdy": "Sturdy",
 
     "Talent.sturdy.description": "You have a blend of physical resilience and mental fortitude such that you’re difficult to subdue. You reduce the cost to resist being knocked prone by the Knockdown damage effect by one, to a minimum of 0, and gain +1 Resistance against all non-lethal attacks.",
@@ -1773,9 +1864,21 @@
 
     "Talent.telepath.description": "You can sense the surface thoughts and emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. Surface thoughts are whatever a creature is thinking about at that precise moment. The character cannot choose not to sense the emotions or read the surface thoughts of those nearby, except for those who are resistant to telepathy. It will require effort and a Task to pick out the emotions or thoughts of a specific individual in a crowd, to search a creature’s mind for specific thoughts or memories, or to block out the minds of those nearby. Unwilling targets may resist with an Opposed Task.",
 
+    "Talent.technicalExpertise": "Technical Expertise",
+
+    "Talent.technicalExpertise.description": "Whenever you attempt a Task assisted by the ship’s Computers or Sensors, you may re-roll one d20 (which may be the ship’s die).",
+
     "Talent.theUshaan": "The Ushaan",
 
     "Talent.theUshaan.description": "You are experienced in the tradition of honor-dueling known as the Ushaan, having spilt much blood upon the ice. When you make a melee Attack, or are targeted by a melee Attack, and buy one or more d20s by adding to Threat, you may re-roll the dice pool for the Task. Further, you own an Ushaan-tor, a razor-sharp ice-miner’s tool used in these duels.",
+
+    "Talent.tough": "Tough",
+
+    "Talent.tough.description": "Whenever you Avoid an Injury, the cost is reduced by 1, to a minimum of 1.",
+
+    "Talent.untappedPotential": "Untapped Potential",
+
+    "Talent.untappedPotential.description": "The character is inexperienced, but talented and with a bright future in Starfleet. The character may not have or increase any Attribute above 11, or any Discipline above 4 while they have this Talent (and may have to adjust Attributes and Disciplines accordingly at the end of character creation). Whenever the character succeeds at a Task for which they bought one or more additional dice with either Momentum or Threat, they may roll 1[D]. The character receives bonus Momentum equal to the roll, and adds one point to Threat if an Effect is rolled. The character cannot gain any higher rank than lieutenant (junior grade) while they possess this Talent.",
 
     "Talent.variableGeometryWarpField": "Variable Geometry Warp Field",
 
@@ -1784,6 +1887,10 @@
     "Talent.versatileTractorBeam": "Versatile Tractor Beam",
 
     "Talent.versatileTractorBeam.soloDescription": "The ship has exotic particle emitters integrated with its tractor beam system. With a few simple adjustments, the tractor beam can become even more useful against ships trapped within. The tractor beam can even deplete energy from a vessel trapped in its field.",
+
+    "Talent.veteran": "Veteran",
+
+    "Talent.veteran.description": "The character is wise and experienced, and draws upon inner reserves of willpower and determination in a more measured and considered way. Whenever the character spends a point of Determination, roll 1[D]. If an Effect is rolled, immediately regain that spent point of Determination. The character has a rank of at least Lieutenant Commander.",
 
     "Talent.wormholeRelaySystem": "Wormhole Relay System",
 
@@ -1811,16 +1918,28 @@
     "UniformEra.voyagerDS9": "Voyager/DS9",
 
     "Upbringing.starfleet.militaryOrExploration.name": "Starfleet",
+    "Upbringing.starfleet.militaryOrExploration.description": "The character’s family may have a strong tradition of Starfleet service, with at least one member of the family in every generation serving the Federation in this way. Perhaps both the character’s parents were Starfleet officers, who met in service. Either way, the character’s formative years were influenced by Starfleet.",
+    "Upbringing.starfleet.militaryOrExploration.focusDescription": "The character’s Focus should relate to their connection to Starfleet, covering skills learned during the character’s formative years.",
 
     "Upbringing.starfleet.businessOrTrade.name": "Business or Trade",
+    "Upbringing.starfleet.businessOrTrade.description": "The character’s family may have connections on countless worlds, overseeing and directing some grand business endeavor. They might have been traders or involved in interplanetary freight. Either way, the character has grown up encountering people from all walks of life, including those from outside the Federation, and their outlook on life has been shaped accordingly.",
+    "Upbringing.starfleet.businessOrTrade.focusDescription": "The character’s Focus should relate to the nature of their family’s business, covering skills that are valuable during trade, or which were useful to the family business in other ways.",
 
     "Upbringing.starfleet.agricultureOrRural.name": "Agriculture or Rural",
+    "Upbringing.starfleet.agricultureOrRural.description": "The character grew up surrounded more by nature than by people, in rural communities, on the frontier, or somewhere else distanced from the bustle of cities. They might be heavily involved in agriculture, growing real food to supplement synthesized or replicated meals.",
+    "Upbringing.starfleet.agricultureOrRural.focusDescription": "The character’s Focus should relate to the character’s rural lifestyle, and the skills they learned there.",
 
     "Upbringing.starfleet.scienceAndTechnology.name": "Science and Technology",
+    "Upbringing.starfleet.scienceAndTechnology.description": "The character’s home was one filled with the potential of science, and cutting edge developments were familiar ground. Perhaps the character was raised by scientists or engineers, or had mentors and teachers who encouraged a talent for the technical.",
+    "Upbringing.starfleet.scienceAndTechnology.focusDescription": "The character’s Focus should relate to the character’s favoured fields of study and inquiry.",
 
     "Upbringing.starfleet.artisticAndCreative.name": "Artistic and Creative",
+    "Upbringing.starfleet.artisticAndCreative.description": "The character’s life was filled with arts and creativity of all kinds, and no matter what pursuits the character favors, they are exposed to the great works of many cultures, and given every opportunity to express themselves.",
+    "Upbringing.starfleet.artisticAndCreative.focusDescription": "The character’s Focus should relate to the character’s preferred way of applying their skills.",
 
-    "Upbringing.starfleet.diplomacy and Politics.name": "Diplomacy and Politics",
+    "Upbringing.starfleet.diplomacyAndPolitics.name": "Diplomacy and Politics",
+    "Upbringing.starfleet.diplomacyAndPolitics.description": "The character has been exposed to the complexities of political thought and the nuances of diplomacy since they were young, perhaps because a family member was involved in those fields.",
+    "Upbringing.starfleet.diplomacyAndPolitics.focusDescription": "The character’s Focus should relate to the character’s preferred way of applying their skills.",
 
     "Value.environment.text": "This Value should reflect the environment and culture the character was raised within. This is a good opportunity to consider how the character views their own culture, and how they connect — or possibly, don’t connect — to the philosophies and traditions of their people.",
 

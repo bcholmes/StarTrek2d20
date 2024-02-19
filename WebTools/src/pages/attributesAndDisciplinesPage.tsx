@@ -74,8 +74,6 @@ const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character
     const attributeController = new FinishingTouchesAttributeController(character, attributeCount);
     const disciplineController = new FinishingTouchesDisciplineController(character, disciplineCount);
 
-    const description = "At this stage, your character is almost complete, and needs only a few final elements and adjustments. This serves as a last chance to customize the character before play.";
-
     let talents = filterTalentList();
 
     const talentSelection = character.type === CharacterType.KlingonWarrior
@@ -125,7 +123,7 @@ const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character
         <div className="page container ms-0">
             <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.AttributesAndDisciplines} />
             <Header>{t('Page.title.finish')}</Header>
-            <InstructionText text={description} />
+            <InstructionText text={t('AttributesAndDisciplines.instruction')} />
             <div className="row">
                 <div className="col-lg-6 my-3">
                     <Header level={2} className="mb-3"><>{t('Construct.other.attribute')} {t('SoloFinishingTouchesPage.select', {count: attributeCount})}</></Header>

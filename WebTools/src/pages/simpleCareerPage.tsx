@@ -15,6 +15,8 @@ import store from '../state/store';
 import { StepContext, addCharacterTalent, setCharacterValue } from '../state/characterActions';
 import { CharacterType } from '../common/characterType';
 import { ValueRandomTable } from '../solo/table/valueRandomTable';
+import { makeKey } from '../common/translationKey';
+import { Career } from '../helpers/careerEnum';
 
 interface ISimpleCareerPageProperties extends ICharacterProperties {
     talent: string;
@@ -44,6 +46,7 @@ const SimpleCareerPage: React.FC<ISimpleCareerPageProperties> = ({character, tal
     }, [talent]);
 
     let instruction = character.type === CharacterType.Child ? "CareerLength.instruction.child" : "CareerLength.instruction.cadet";
+    let career = character.careerStep?.career;
 
     return (
         <div className="page container ms-0">
@@ -55,12 +58,12 @@ const SimpleCareerPage: React.FC<ISimpleCareerPageProperties> = ({character, tal
                     <div className="col-12 col-lg-6">
                         <Header level={2}>{t('Construct.other.value')}</Header>
                         <ValueInput value={character.careerStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value)}
-                                onRandomClicked={() => randomValue()} textDescription={t('Value.careerLength.young.text')}
+                                onRandomClicked={() => randomValue()} textDescription={t(makeKey('Value.careerLength.', Career[career], '.text'))}
                             />
                     </div>
                     <div className="col-12 col-lg-6">
                         <Header level={2}>{t('Construct.other.talent')}</Header>
-                        <TalentDescription name={talentModel.localizedName} description={talentModel.description} />
+                        <TalentDescription name={talentModel.localizedName} description={talentModel.localizedDescription} />
                     </div>
                 </div>
                 <div className="text-end">

@@ -63,6 +63,18 @@ export class EarlyOutlookModel {
         let result = i18next.t(key);
         return result === key ? this.name : result;
     }
+
+    get localizedDescription() {
+        let key = makeKey(this.keyPrefix, EarlyOutlook[this.id], ".description");
+        let result = i18next.t(key);
+        return result === key ? this.description : result;
+    }
+
+    get localizedFocusDescription() {
+        let key = makeKey(this.keyPrefix, EarlyOutlook[this.id], ".focusDescription");
+        let result = i18next.t(key);
+        return result === key ? this.focusDescription : result;
+    }
 }
 
 class Upbringings {
@@ -142,7 +154,8 @@ class Upbringings {
             Attribute.Fitness,
             [Skill.Command, Skill.Conn, Skill.Security],
             "The character’s Focus should relate to the character’s preferred way of applying their skills.",
-            ["Composure", "Debate", "Diplomacy", "Espionage", "Interrogation", "Law", "Philosophy", "Starfleet Protocol"]
+            ["Composure", "Debate", "Diplomacy", "Espionage", "Interrogation", "Law", "Philosophy", "Starfleet Protocol"],
+            "Upbringing.starfleet."
         ),
     ];
 

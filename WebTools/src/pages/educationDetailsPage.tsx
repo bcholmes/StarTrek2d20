@@ -74,7 +74,7 @@ const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
         }
 
         return (<div className="col-lg-6 my-3">
-            <Header level={2}>FOCUS</Header>
+            <Header level={2}>{t('Construct.other.focuses')}</Header>
             <ReactMarkdown>{training}</ReactMarkdown>
 
             <div className="d-flex justify-content-between align-items-center flex-wrap">
@@ -217,7 +217,7 @@ const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
                 {renderFocuses(track)}
 
                 <div className="col-lg-6 my-3">
-                    <Header level={2}>VALUE</Header>
+                    <Header level={2}>{t('Construct.other.value')}</Header>
                     <ValueInput value={character.educationStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value)}
                             onRandomClicked={() => randomValue()} textDescription={t('Value.starfleetTraining.text')}
                         />
