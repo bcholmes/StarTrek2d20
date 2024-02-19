@@ -1,4 +1,5 @@
 import { makeKey } from "../../common/translationKey";
+import { ExtraType } from "./extrasTypeEnum";
 import { HairType } from "./hairTypeEnum";
 import { ReferenceHead, SimpleNeck } from "./headCatalog";
 import SpeciesRestrictions from "./speciesRestrictions";
@@ -778,7 +779,9 @@ class HairCatalog {
         let front = (typeof hair.frontSvg === "string") ? hair.frontSvg as string : (hair.frontSvg as HairSource).front
         let back = (typeof hair.frontSvg === "string") ? hair.backSvg : (hair.frontSvg as HairSource).back;
 
-        if (element === HairElement.BehindEars && !hair.inFrontOfEars) {
+        if (token.extras.indexOf(ExtraType.SecurityHelmet) >= 0) {
+            return "";
+        } else if (element === HairElement.BehindEars && !hair.inFrontOfEars) {
             return front.replace(/#383838/g, token.hairColor);
         } else if (element === HairElement.CoveringEars && hair.inFrontOfEars) {
             return front.replace(/#383838/g, token.hairColor);

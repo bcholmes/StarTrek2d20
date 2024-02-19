@@ -181,7 +181,7 @@ class SpeciesRestrictions {
         } else if (extra === ExtraType.ZaraniteMask) {
             return species === Species.Zaranite;
         } else if (extra === ExtraType.SecurityHelmet) {
-            return uniformEra === UniformEra.MonsterMaroon;
+            return uniformEra === UniformEra.MonsterMaroon && !SpeciesRestrictions.isRubberHeaded(species);
         } else {
             return true;
         }

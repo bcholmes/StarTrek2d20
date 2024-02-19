@@ -1564,9 +1564,29 @@
 
     "Talent.boldSecurity.description": "Whenever you attempt a Task with Security, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
 
-    "Talent.сautiousSecurity": "Cautious: Security",
+    "Talent.cautiousCommand": "Cautious: Command",
 
-    "Talent.сautiousSecurity.description": "Whenever you attempt a Task with Security, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
+    "Talent.cautiousCommand.description": "Whenever you attempt a Task with Command, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
+
+    "Talent.cautiousConn": "Cautious: Conn",
+
+    "Talent.cautiousConn.description": "Whenever you attempt a Task with Conn, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
+
+    "Talent.cautiousEngineering": "Cautious: Engineering",
+
+    "Talent.cautiousEngineering.description": "Whenever you attempt a Task with Engineering, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
+
+    "Talent.cautiousMedicine": "Cautious: Medicine",
+
+    "Talent.cautiousMedicine.description": "Whenever you attempt a Task with Medicine, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
+
+    "Talent.cautiousScience": "Cautious: Science",
+
+    "Talent.cautiousScience.description": "Whenever you attempt a Task with Science, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
+
+    "Talent.cautiousSecurity": "Cautious: Security",
+
+    "Talent.cautiousSecurity.description": "Whenever you attempt a Task with Security, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
 
     "Talent.collaborationCommand": "Collaboration: Command",
 
@@ -1902,6 +1922,18 @@
     "TalentCategory.starship": "Starship",
     "TalentCategory.starbase": "Starbase",
     "TalentCategory.esoteric": "Esoteric",
+
+    "Track.starfleet.command": "Command Track",
+
+    "Track.starfleet.command.description": "The Command track is for those cadets who aspire to command their own starship someday. It focuses on leadership and interpersonal skills, diplomacy, decisionmaking in crisis situations, an understanding of protocol and procedure, and starship operations, which includes flight control. Many command track cadets begin their careers as flight control officers and pilots, where their training can be put to the test on a smaller scale while they gain the experience necessary for more authority and responsibility. Command track cadets customarily undertake the infamous Kobayashi Maru test during their final year.",
+
+    "Track.starfleet.operations": "Operations Track",
+
+    "Track.starfleet.operations.description": "The Operations track is practical and hands-on, dealing with many of the realities of Starfleet’s mission. Divided broadly into engineering and security divisions, operations track cadets are defined by a sense of pragmatism, whether that applies to the technical or the tactical.",
+
+    "Track.starfleet.sciences": "Sciences Track",
+
+    "Track.starfleet.sciences.description": "Somewhat isolated from the other Tracks, the Sciences track is primarily academic, with Starfleet Academy producing many accomplished scientists. Included within the sciences track, but separated by a distinct curriculum, is Starfleet Medical, training doctors, nurses, and counselors to serve aboard Starfleet vessels and facilities across the Federation.",
 
     "UniformEra.civilian": "Civilian",
     "UniformEra.dominionWar": "Dominion War",

@@ -216,7 +216,7 @@ SoloEarlyOutlookPage.instruction,"Driving them into their education and career, 
 Choose the approach that makes the most sense for your character and storytelling style. Once the approach is chosen, you may select or randomly determine the specific option within that approach.",,,"En suivant son éducation et sa carrière, votre personnage a formé une vision précoce qui l'a façonné de plusieurs manières. Vous pouvez choisir parmi trois approches pour déterminer l'impact de cette perspective. La première consiste à sélectionner son éducation et à déterminer s'il l'a accepté ou s'est rebellé contre elle. La seconde, qui s'applique uniquement à un personnage Klingon élevé au sein d'une Maison, est de choisir sa Caste et déterminer s'il s'y est conformé ou pas. La dernière option consiste simplement à choisir une aspiration qui a conduit votre personnage à son voyage, et s'ils l'a poursuivi ou abandonné. 
 
 Choisissez l’approche qui convient le mieux à votre personnage et à votre style de narration. Une fois l'approche choisie, vous pouvez sélectionner ou déterminer au hasard l'option spécifique au sein de cette approche.",
-SoloEarlyOutlookPage.upbringings,Upbringings,Erziehungen,,Educations,
+SoloEarlyOutlookPage.upbringings,Upbringings,Erziehungen,,Educations,Воспитание
 SoloEarlyOutlookPage.castes,Castes,Kasten,,Castes,
 SoloEarlyOutlookPage.aspirations,Aspirations,Ziele,,Aspirations,
 SoloEarlyOutlookDetailsPage.errorDiscipline,Please select a discipline.,Bitte wähle eine Disziplin.,,Choisissez une Discipline SVP.,Пожалуйста выберите Знание
@@ -459,7 +459,7 @@ Page.title.careerLengthDetails,Career Length Details,Details zur Karrierelänge,
 Page.title.characterType,Character Type,Art des Charakters,Tipo de carácter,Type de personnage,Тип персонажа
 Page.title.creditsPage,Credits,Danksagungen,Créditos,Crédits,
 Page.title.customSpaceframe,Custom Spaceframe Creation,Eigene Klasse erstellen,,Création de Modèle de Vaiseau,
-Page.title.customSpeciesDetails,Custom Species Details,Details zur selbst erschaffenen Spezies,,Détails de Race Personalisé,
+Page.title.customSpeciesDetails,Custom Species Details,Details zur selbst erschaffenen Spezies,,Détails de Race Personalisé,Детали расы
 Page.title.education,Education,Ausbildung,,,Обучение
 Page.title.educationDetails,Education Details,Details zur Ausbildung,,,Детали обучения
 Page.title.environment,Environment,Herkunft,,Environnement,Среда обитания
@@ -540,77 +540,135 @@ CareerEvent.common.3.name,Lauded by Another Culture,Gelobt durch fremde Kultur,,
 CareerEvent.common.3.description,"The character was involved in a mission that earned the official praise of a non-Federation culture; they are now considered to be a friend to that people.
 
 - What culture was aided by this mission? What was the mission? Why was it particularly praiseworthy?
-- Does the character have any friends or contacts in that culture who can be contacted for help?",,,,
+- Does the character have any friends or contacts in that culture who can be contacted for help?",,,,"Персонаж участвовал в миссии, которая заслужила официальную благодарность цивилизации, не входящей в состав Федерации, и теперь считается другом этого народа. Кому помогла эта миссия? В чём она заключалась?
+
+- Почему миссия заслужила особую похвалу?
+- Есть ли у этого персонажа друзья или знакомые среди этой цивилизации, к которым можно обратиться за по-
+Мощью?"
 CareerEvent.common.4.name,Negotiate a Treaty,Vertrag ausgehandelt,,,Заключение договора
-CareerEvent.common.4.description,"The character was part of a delegation that helped negotiate a treaty, agreement, or alliance with a culture outside the Federation. What culture was the treaty with? What was it for?",,,,
+CareerEvent.common.4.description,"The character was part of a delegation that helped negotiate a treaty, agreement, or alliance with a culture outside the Federation. What culture was the treaty with? What was it for?",,,,"Персонаж входил в делегацию, которая помогла провести переговоры о заключении перемирия, соглашения или альянса с цивилизацией, не входящей в Федерацию. 
+
+- С кем был заключён договор? Какова цель договора?"
 CareerEvent.common.5.name,Required to Take Command,Unerwartetes Kommando,,,Принятие командования
 CareerEvent.common.5.description,"During a mission, a crisis left the mission’s leader unable to lead. This required the character to take command, something they may not have been prepared for.
 
 - What was the mission? What went wrong?
-- Was the mission successful despite the loss of the leader?",,,,
+- Was the mission successful despite the loss of the leader?",,,,"Из-за кризиса во время миссии лидер не смог ею руководить. От персонажа потребовалось принять командование на себя, к чему он, возможно, не был готов. 
+
+- В чём заключалась миссия? Что пошло не так?
+- Была ли миссия успешной несмотря на потерю
+лидера?"
 CareerEvent.common.6.name,Encounter with a Truly Alien Being,Begegnung mit einem fremdartigen Wesen,,,Встреча с по-настоящему чуждым существом
 CareerEvent.common.6.description,"The character encountered a life-form which is truly alien, something barely within the comprehension of humanoid life. It might have been some godlike entity, or a creature that swims through space, but whatever it was, it was not life as we know it.
 
 - What kind of creature was it? What did the character learn from the experience?
-- What happened to the creature afterwards? Has it been seen again?",,,,
+- What happened to the creature afterwards? Has it been seen again?",,,,"Персонаж столкнулся с по-настоящему иной формой жизни, которая не укладывается в рамки представлений о гуманоидной жизни. Это может быть богоподобное создание или дрейфующее по космосу существо, но в любом случае это представитель незнакомой нам формы жизни. 
+
+- Что это за существо? Чему персонаж научился благодаря
+этой встречи?
+- Что случилось с существом после? Его видели снова?"
 CareerEvent.common.7.name,Serious Injury,Ernste Verletzung,,,Серьезная травма
 CareerEvent.common.7.description,"The character was seriously hurt, and needed to spend a considerable amount of time recovering.
 
 - What was happening when the character was injured? Who was responsible?
-- What did the recovery entail? Did the character need a prosthesis or cybernetic afterwards?",,,,
+- What did the recovery entail? Did the character need a prosthesis or cybernetic afterwards?",,,,"Персонаж был серьёзно ранен и долго восстанавливался. 
+- При каких обстоятельствах персонаж был ранен? Кто в этом виноват?
+- Какие последствия восстановления? Потребовался
+ли персонажу обычный или кибернетический протез?"
 CareerEvent.common.8.name,Conflict with a Hostile Culture,Konflikt mit einer fremden Kultur,,,Конфликт с враждебной цивилизацией
 CareerEvent.common.8.description,"The character was involved in a major battle with a hostile force, and is unlikely to forget the experience.
 
 - Who was the enemy in this battle? Why did the battle occur? Was it fought in space, on the ground, or both?
-- What did the character have to do to survive? Was the battle won or lost?",,,,
+- What did the character have to do to survive? Was the battle won or lost?",,,,"Персонаж участвовал в серьёзной битве с враждебной силой и вряд ли забудет об этом. 
+
+- Кем был враг? По какой причине произошло сраже-
+ние? Это сражение велось в космосе, на планете или и там, и там?
+- Что должен был предпринять ПИ для выживания?Битва окончилась победой или поражением?"
 CareerEvent.common.9.name,Mentored,Unter die Fittiche genommen,,,Обучение у наставника
-CareerEvent.common.9.description,"A highly-respected officer took notice of the character’s career. For a time, the character served as the officer’s pilot and aide, gaining the benefit of the officer’s experiences and lessons. Who was the officer? Does the officer remain a contact or even friend of the character?",,,,
+CareerEvent.common.9.description,"A highly-respected officer took notice of the character’s career. For a time, the character served as the officer’s pilot and aide, gaining the benefit of the officer’s experiences and lessons. Who was the officer? Does the officer remain a contact or even friend of the character?",,,,"Уважаемый офицер присматривал за персонажем. Какое-то время персонаж служил пилотом под его началом и исполнял обязанности его помощника, получая ценные знания и опыт. 
+
+- Кем был этот офицер? Поддерживает ли он отношения с персонажем или, может, даже стал ему другом?"
 CareerEvent.common.10.name,Transporter Accident,Transporterunfall,,,Авария на транспортере
 CareerEvent.common.10.description,"The character suffered some manner of strange accident while using a Transporter.
 
 - What happened to the character during the accident? Were there any lasting repercussions?
-- How does the character feel about Transporters now?",,,,
+- How does the character feel about Transporters now?",,,,"Персонаж пострадал в результате какого-то необычного инцидента на транспóртере. 
+
+- Что случилось с ПИ во время аварии? Были ли какие-то продолжительные последствия?
+- Как ПИ сейчас относится к транспóртерам?"
 CareerEvent.common.11.name,Dealing with a Plague,Behandlung einer Seuche,,,Борьба с эпидемией
 CareerEvent.common.11.description,"The character’s starship was assigned to provide aid to a world deal with an epidemic.
 
 - What was the disease that was running rampant? What planet it was affecting?
-- Did the character deal directly with the sick? How was the character involved?",,,,
+- Did the character deal directly with the sick? How was the character involved?",,,,"Звездолёт персонаж был направлен для оказания помощи
+Какому-то народу в борьбе с эпидемией. 
+
+- Что за болезнь свирепствовала? Какая планета по-
+Страдала? 
+- Персонаж имел дело непосредственно с больными? В чём заключались его задачи?"
 CareerEvent.common.12.name,Betrayed Ideals for a Superior,Verratene Ideale,,,Предательство идеалов ради начальства
 CareerEvent.common.12.description,"The character was placed in a situation where they had to choose between a trusted superior and their own ideals, and chose to follow the superior.
 
 - Who was the superior? What did they ask the character to do? How does the character feel now?
-- What were the repercussions of this? Are the details of this event on record? Was the character right?",,,,
+- What were the repercussions of this? Are the details of this event on record? Was the character right?",,,,"Персонаж оказался в ситуации, когда был вынужден выбирать между своими идеалами и приказом командира, которому доверял, и решил подчиниться приказу. 
+
+- Кем был командир? Что он попросил сделать? 
+- Как персонаж чувствует себя сейчас?
+Каковы были последствия этого поступка? Есть ли записи случившегося? Был ли персонаж прав?"
 CareerEvent.common.13.name,Called Out a Superior,Vorgesetzte/-n angeschwärzt,,,Пеподчинение старшему по званию
 CareerEvent.common.13.description,"The character was placed in a situation where they had to choose between a trusted superior and their own ideals, and chose to follow their ideals.
 
 - Who was the superior? What did they ask the character to do? How does the character feel now?
-- What were the repercussions of this? Are the details of this event on record? Was the character right?",,,,
+- What were the repercussions of this? Are the details of this event on record? Was the character right?",,,,"Персонаж оказался в ситуации, когда был вынужден выбирать между своими идеалами и приказом командира, которому он доверял, и решил следовать идеалам. 
+
+- Кем был командир? Что он просил сделать? Как персонаж чувствует себя сейчас?
+- Каковы были последствия этого поступка? Есть ли записи случившегося? Был ли персонаж прав?"
 CareerEvent.common.14.name,New Battle Strategy,Neue Kampfstrategie,,,Новая стратегия боя
 CareerEvent.common.14.description,"In combat with a hostile force, the character devised a new strategy or tactic.
 
 - Who was the battle against?
-- Was it in space or on the ground? What was the strategy devised?",,,,
+- Was it in space or on the ground? What was the strategy devised?",,,,"В бою с врагами персонаж смог придумать новую стратегию или тактику. 
+
+- Против кого вёлся бой? Бой шёл в космосе или на планете?
+- Что это была за стратегия?"
 CareerEvent.common.15.name,Learns Unique Language,Einzigartige Sprache gelernt,,,Изучение уникального языка
 CareerEvent.common.15.description,"The character encounters a species with an unusual form of communication, and learns to communicate with them.
 
 - Who were the aliens the character encountered? Was the encounter tense, or peaceful?
-- What method of communication do the aliens use? How did the character learn it?",,,,
+- What method of communication do the aliens use? How did the character learn it?",,,,"Персонаж встретил вид с необычной формой общения и научился с ним общаться. 
+
+- С какими инопланетянами встретился ПИ? Встреча была мирной или напряжённой?
+- Какой метод общения используют чужаки? Как персонаж научился ему?"
 CareerEvent.common.16.name,Discovers an Artifact,Artefakt entdeckt,,,Обнаружение артефакта
 CareerEvent.common.16.description,"During a survey mission, the character discovered a device or fragment of technology from a now-extinct civilization.
 
 - What did this piece of technology do? Does it still function now?
-- What is known about the civilization that made it?",,,,
+- What is known about the civilization that made it?",,,,"Во время исследовательской миссии персонаж обнаружил устройство или артефакт, относящийся к технологии ныне исчезнувшей цивилизации.
+
+- Для чего предназначалась эта технология? Действует
+ли артефакт до сих пор?
+- Что известно о цивилизации, которая его создала?"
 CareerEvent.common.17.name,Special Commendation,Belobigung,,,Особая благодарность
 CareerEvent.common.17.description,"During a crisis, the character saved the lives of several colleagues, helping them to safety.This earned the character a special commendation.
 
 - What was the crisis? Why was the mission in danger?
-- What were the repercussions of this? Are the details of this event on record?",,,,
+- What were the repercussions of this? Are the details of this event on record?",,,,"В кризисной ситуации персонаж спас жизнь нескольким коллегам и помог им добраться в безопасное место. За это он был удостоен особой благодарности.
+
+- Что это была за ситуация? Почему люди были в опасности?
+- Каковы были последствия случившегося? Есть ли записи случившегося?"
 CareerEvent.common.18.name,Solved an Engineering Crisis,Technische Krise gelöst,,,Решение инженерной проблемы
-CareerEvent.common.18.description,"The character was instrumental in ending a crisis caused by malfunctioning technology, and saved many lives in the process. What technology had malfunctioned, and why was it dangerous? How did the character solve the problem?",,,,
-CareerEvent.common.19.name,Breakthrough or Invention,Durchbruch oder Erfindung,,,Открытие или изобретение
-CareerEvent.common.19.description,"The character made an important technological discovery, devised a new way of using a particular technology, or invented some new technology that will be invaluable in the future. What was the discovery, breakthrough, or invention? How will it be useful?",,,,
+CareerEvent.common.18.description,"The character was instrumental in ending a crisis caused by malfunctioning technology, and saved many lives in the process. What technology had malfunctioned, and why was it dangerous? How did the character solve the problem?",,,,"Персонаж сыграл важную роль в преодолении кризисной ситуации, вызванной неисправностью, и спас благодаря этому множество жизней.
+
+- Какая техника неисправна, и почему это было опасно?
+- Как персонаж решил проблему?"
+CareerEvent.common.19.name,Breakthrough or Invention,Durchbruch oder Erfindung,,,Прорыв или изобретение
+CareerEvent.common.19.description,"The character made an important technological discovery, devised a new way of using a particular technology, or invented some new technology that will be invaluable in the future. What was the discovery, breakthrough, or invention? How will it be useful?",,,,"Персонаж сделал важное техническое открытие, придумал необычный способ использования существующей технологии или изобрёл какую-то новую технологию, которая станет бесценной.
+
+- Что это было за открытие - прорыв или изобретение? Какую пользу оно несёт?"
 CareerEvent.common.20.name,First Contact,Erstkontakt,,,Первый контакт
-CareerEvent.common.20.description,The character was chosen to be involved in one of the most important of Starfleet’s missions: first contact with another culture. What culture did the character make first contact with? Did the mission go well?,,,,
+CareerEvent.common.20.description,The character was chosen to be involved in one of the most important of Starfleet’s missions: first contact with another culture. What culture did the character make first contact with? Did the mission go well?,,,,"Персонаж был выбран для участия в одной из самых важных миссий Звёздного флота: установление первого контакта с другой цивилизацией. 
+
+- С какой цивилизацией был установлен первый контакт? Прошла ли миссия успешно?"
 CareerEvent.unofficial.21.name,Advanced Tactical Training,Fortgeschrittene taktische Ausbildung,,,
 CareerEvent.unofficial.21.description,"The character took a specialized course in advanced tactical and intelligence techniques.
 
@@ -1488,8 +1546,18 @@ Talent.boldScience,Bold Science,,,,Смелый: Наука
 Talent.boldScience.description,"Whenever you attempt a Task with Science, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",,,,"Если при выполнении Задачи с применением Науки приобретается 1 бонусный d20 или больше, добавив ведущему жетон Угрозы, можно заново бросить 1 использованный для этой Задачи d20."
 Talent.boldSecurity,Bold: Security,,,,Смелый: Безопасность
 Talent.boldSecurity.description,"Whenever you attempt a Task with Security, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",,,,"Если при выполнении Задачи с применением Безопасности приобретается 1 бонусный d20 или больше, добавив ведущему жетон Угрозы, можно заново бросить 1 использованный для этой Задачи d20."
-Talent.сautiousSecurity,Cautious: Security,,,,Предусмотрительный: Безопасность
-Talent.сautiousSecurity.description,"Whenever you attempt a Task with Security, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",,,,"Если при выполнении Задачи с применением этого Безопасности приобретается 1 бонусный d20 или больше, за жетон Импульса можно заново бросить 1 использованный для этой Задачи d20"
+Talent.cautiousCommand,Cautious: Command,,,,Предусмотрительный: Коммандование
+Talent.cautiousCommand.description,"Whenever you attempt a Task with Command, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",,,,"Если привыполнении Задачи с применением этого Коммандования приобретается 1 бонусный d20 или больше, за жетон Импульса можно заново бросить 1 использованный для этой Задачи d20."
+Talent.cautiousConn,Cautious: Conn,,,,Предусмотрительный: Навигация
+Talent.cautiousConn.description,"Whenever you attempt a Task with Conn, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",,,,"Если привыполнении Задачи с применением этого Навигации приобретается 1 бонусный d20 или больше, за жетон Импульса можно заново бросить 1 использованный для этой Задачи d20."
+Talent.cautiousEngineering,Cautious: Engineering,,,,Предусмотрительный: Инженерия
+Talent.cautiousEngineering.description,"Whenever you attempt a Task with Engineering, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",,,,"Если привыполнении Задачи с применением этого Инженерии приобретается 1 бонусный d20 или больше, за жетон Импульса можно заново бросить 1 использованный для этой Задачи d20."
+Talent.cautiousMedicine,Cautious: Medicine,,,,Предусмотрительный: Медицина
+Talent.cautiousMedicine.description,"Whenever you attempt a Task with Medicine, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",,,,"Если привыполнении Задачи с применением этого Медицины приобретается 1 бонусный d20 или больше, за жетон Импульса можно заново бросить 1 использованный для этой Задачи d20."
+Talent.cautiousScience,Cautious: Science,,,,Предусмотрительный: Наука
+Talent.cautiousScience.description,"Whenever you attempt a Task with Science, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",,,,"Если привыполнении Задачи с применением этого Науки приобретается 1 бонусный d20 или больше, за жетон Импульса можно заново бросить 1 использованный для этой Задачи d20."
+Talent.cautiousSecurity,Cautious: Security,,,,Предусмотрительный: Безопасность
+Talent.cautiousSecurity.description,"Whenever you attempt a Task with Security, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",,,,"Если привыполнении Задачи с применением этого Безопасности приобретается 1 бонусный d20 или больше, за жетон Импульса можно заново бросить 1 использованный для этой Задачи d20."
 Talent.collaborationCommand,Collaboration: Command,,,,Сотрудничество: Коммандование
 Talent.collaborationCommand.description,"Whenever you attempt a Task with Command, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",,,,"Если при выполнении Задачи с применением Коммандования приобретается 1 бонусный d20 или больше, добавив ведущему жетон Угрозы, можно заново бросить 1 использованный для этой Задачи d20."
 Talent.collaborationConn,Collaboration: Conn,,,,Сотрудничество: Навигация
@@ -1666,6 +1734,12 @@ TalentCategory.enhancement,Enhancement,,,,Улучшение
 TalentCategory.starship,Starship,,,,Звездолет
 TalentCategory.starbase,Starbase,,,,Звездная база
 TalentCategory.esoteric,Esoteric,,,,Эзотерический
+Track.starfleet.command,Command Track,,,,
+Track.starfleet.command.description,"The Command track is for those cadets who aspire to command their own starship someday. It focuses on leadership and interpersonal skills, diplomacy, decisionmaking in crisis situations, an understanding of protocol and procedure, and starship operations, which includes flight control. Many command track cadets begin their careers as flight control officers and pilots, where their training can be put to the test on a smaller scale while they gain the experience necessary for more authority and responsibility. Command track cadets customarily undertake the infamous Kobayashi Maru test during their final year.",,,,
+Track.starfleet.operations,Operations Track,,,,
+Track.starfleet.operations.description,"The Operations track is practical and hands-on, dealing with many of the realities of Starfleet’s mission. Divided broadly into engineering and security divisions, operations track cadets are defined by a sense of pragmatism, whether that applies to the technical or the tactical.",,,,
+Track.starfleet.sciences,Sciences Track,,,,
+Track.starfleet.sciences.description,"Somewhat isolated from the other Tracks, the Sciences track is primarily academic, with Starfleet Academy producing many accomplished scientists. Included within the sciences track, but separated by a distinct curriculum, is Starfleet Medical, training doctors, nurses, and counselors to serve aboard Starfleet vessels and facilities across the Federation.",,,,
 UniformEra.civilian,Civilian,Zivilist,,,
 UniformEra.dominionWar,Dominion War,Dominionkrieg,,,
 UniformEra.enterprise,Enterprise,Enterprise,,,

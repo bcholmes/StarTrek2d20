@@ -2,7 +2,7 @@
 import {Character } from '../common/character';
 import {CharacterType, CharacterTypeModel } from '../common/characterType';
 import {SpeciesHelper} from '../helpers/species';
-import {DropDownElement, DropDownInput, DropDownSelect} from '../components/dropDownInput';
+import {DropDownElement, DropDownSelect} from '../components/dropDownInput';
 import SupportingCharacterAttributes from './supportingCharacterAttributes';
 import SupportingCharacterDisciplines from './supportingCharacterDisciplines';
 import {Rank, RanksHelper} from '../helpers/ranks';

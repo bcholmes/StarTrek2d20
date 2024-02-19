@@ -5,6 +5,8 @@ import {Source} from './sources';
 import { Attribute } from './attributes';
 import { hasSource } from '../state/contextFunctions';
 import { Track } from './trackEnum';
+import { makeKey } from '../common/translationKey';
+import i18next from 'i18next';
 
 export enum ImprovementRuleType {
     AT_LEAST_ONE, MUST_INCLUDE_ALL, MAY_DECREMENT_ONE
@@ -66,8 +68,9 @@ export class TrackModel {
     attributesRule?: AttributeImprovementRule;
     skillsRule?: SkillImprovementRule;
     enlisted: boolean;
+    prefix?: string;
 
-    constructor(id: Track, name: string, source: Source, description: string, majorDisciplines: Skill[], otherDisciplines: Skill[], focusSuggestions: string[], attributes?: AttributeImprovementRule, skillsRule?: SkillImprovementRule, enlisted: boolean = false) {
+    constructor(id: Track, name: string, source: Source, description: string, majorDisciplines: Skill[], otherDisciplines: Skill[], focusSuggestions: string[], attributes?: AttributeImprovementRule, skillsRule?: SkillImprovementRule, enlisted: boolean = false, prefix?: string) {
         this.id = id;
         this.name = name;
         this.source = source;
@@ -81,11 +84,15 @@ export class TrackModel {
     }
 
     get localizedName() {
-        return this.name;
+        let key = makeKey(this.prefix, Track[this.id]);
+        let result = i18next.t(key);
+        return result === key ? this.name : result;
     }
 
     get localizedDescription() {
-        return this.description;
+        let key = makeKey(this.prefix, Track[this.id], ".description");
+        let result = i18next.t(key);
+        return result === key ? this.description : result;
     }
 }
 
@@ -108,7 +115,11 @@ export class TracksHelper {
             "The Command track is for those cadets who aspire to command their own starship someday. It focuses on leadership and interpersonal skills, diplomacy, decisionmaking in crisis situations, an understanding of protocol and procedure, and starship operations, which includes flight control. Many command track cadets begin their careers as flight control officers and pilots, where their training can be put to the test on a smaller scale while they gain the experience necessary for more authority and responsibility. Command track cadets customarily undertake the infamous Kobayashi Maru test during their final year.",
             [Skill.Command, Skill.Conn],
             [Skill.Engineering, Skill.Medicine, Skill.Science, Skill.Security],
-            ["Astronavigation", "Composure", "Diplomacy", "Extra-Vehicular Activity", "Evasive Action", "Helm Operations", "Inspiration", "Persuasion", "Small Craft", "Starship Recognition", "Starfleet Protocols", "Team Dynamics"]
+            ["Astronavigation", "Composure", "Diplomacy", "Extra-Vehicular Activity", "Evasive Action", "Helm Operations", "Inspiration", "Persuasion", "Small Craft", "Starship Recognition", "Starfleet Protocols", "Team Dynamics"],
+            undefined,
+            undefined,
+            false,
+            "Track.starfleet."
         ),
         new TrackModel(
             Track.Operations,
@@ -117,7 +128,11 @@ export class TracksHelper {
             "The Operations track is practical and hands-on, dealing with many of the realities of Starfleet’s mission. Divided broadly into engineering and security divisions, operations track cadets are defined by a sense of pragmatism, whether that applies to the technical or the tactical.",
             [Skill.Engineering, Skill.Security],
             [Skill.Command, Skill.Conn, Skill.Medicine, Skill.Science],
-            ["Computers", "Cybernetics", "Electro-Plasma Power Systems", "Espionage", "Hand Phasers", "Hand-to-Hand Combat", "Infiltration", "Interrogation", "Shipboard Tactical Systems", "Survival", "Transporters & Replicators", "Warp Field Dynamics"]
+            ["Computers", "Cybernetics", "Electro-Plasma Power Systems", "Espionage", "Hand Phasers", "Hand-to-Hand Combat", "Infiltration", "Interrogation", "Shipboard Tactical Systems", "Survival", "Transporters & Replicators", "Warp Field Dynamics"],
+            undefined,
+            undefined,
+            false,
+            "Track.starfleet."
         ),
         new TrackModel(
             Track.Sciences,
@@ -126,7 +141,11 @@ export class TracksHelper {
             "Somewhat isolated from the other Tracks, the Sciences track is primarily academic, with Starfleet Academy producing many accomplished scientists. Included within the sciences track, but separated by a distinct curriculum, is Starfleet Medical, training doctors, nurses, and counselors to serve aboard Starfleet vessels and facilities across the Federation.",
             [Skill.Medicine, Skill.Science],
             [Skill.Command, Skill.Conn, Skill.Engineering, Skill.Security],
-            ["Anthropology", "Astrophysics", "Botany", "Computers", "Cybernetics", "Emergency Medicine", "Exo-tectonics", "Genetics", "Geology", "Infectious Diseases", "Linguistics", "Physics", "Psychiatry", "Quantum Mechanics", "Trauma Surgery", "Virology", "Warp Field Dynamics", "Xenobiology"]
+            ["Anthropology", "Astrophysics", "Botany", "Computers", "Cybernetics", "Emergency Medicine", "Exo-tectonics", "Genetics", "Geology", "Infectious Diseases", "Linguistics", "Physics", "Psychiatry", "Quantum Mechanics", "Trauma Surgery", "Virology", "Warp Field Dynamics", "Xenobiology"],
+            undefined,
+            undefined,
+            false,
+            "Track.starfleet."
         ),
         new TrackModel(
             Track.EnlistedSecurityTraining,
@@ -138,7 +157,8 @@ export class TracksHelper {
             ["Espionage", "Hand Phasers", "Hand-to-Hand Combat", "Infiltration", "Interrogation", "Shipboard Tactical Systems", "Survival"],
             undefined,
             undefined,
-            true
+            true,
+            "Track.starfleet."
         ),
         new TrackModel(
             Track.ShipOperations,
@@ -147,7 +167,11 @@ export class TracksHelper {
             "",
             [Skill.Conn],
             [Skill.Engineering, Skill.Science],
-            ["Computers", "Electro-Plasma Power Systems", "Flight Control Systems", "Interrogation", "Interstellar Navigation", "Sensor Imaging", "Transporters & Replicators"]
+            ["Computers", "Electro-Plasma Power Systems", "Flight Control Systems", "Interrogation", "Interstellar Navigation", "Sensor Imaging", "Transporters & Replicators"],
+            undefined,
+            undefined,
+            false,
+            "Track.starfleet."
         ),
         new TrackModel(
             Track.UniversityAlumni,
@@ -156,7 +180,11 @@ export class TracksHelper {
             "Instead of attending Starfleet Academy for four years, you choose to have been educated at one of the major universities throughout Federation space and commissioned as an officer upon graduation.",
             [Skill.Science],
             [Skill.Command, Skill.Engineering],
-            ["Anthropology", "Astrophysics", "Botany", "Computers", "Cybernetics", "Emergency Medicine", "Exo-tectonics", "Genetics", "Geology", "Infectious Diseases", "Linguistics", "Physics", "Psychiatry", "Quantum Mechanics", "Trauma Surgery", "Virology", "Warp Field Dynamics", "Xenobiology"]
+            ["Anthropology", "Astrophysics", "Botany", "Computers", "Cybernetics", "Emergency Medicine", "Exo-tectonics", "Genetics", "Geology", "Infectious Diseases", "Linguistics", "Physics", "Psychiatry", "Quantum Mechanics", "Trauma Surgery", "Virology", "Warp Field Dynamics", "Xenobiology"],
+            undefined,
+            undefined,
+            false,
+            "Track.starfleet."
         ),
         new TrackModel(
             Track.ResearchInternship,
@@ -165,7 +193,11 @@ export class TracksHelper {
             "You have pursued a working internship at a major research station and obtained a commission in Starfleet following exceptional work in your field.",
             [Skill.Science],
             [Skill.Medicine, Skill.Engineering],
-            ["Anthropology", "Astrophysics", "Botany", "Computers", "Cybernetics", "Emergency Medicine", "Exo-tectonics", "Genetics", "Geology", "Infectious Diseases", "Linguistics", "Physics", "Psychiatry", "Quantum Mechanics", "Trauma Surgery", "Virology", "Warp Field Dynamics", "Xenobiology"]
+            ["Anthropology", "Astrophysics", "Botany", "Computers", "Cybernetics", "Emergency Medicine", "Exo-tectonics", "Genetics", "Geology", "Infectious Diseases", "Linguistics", "Physics", "Psychiatry", "Quantum Mechanics", "Trauma Surgery", "Virology", "Warp Field Dynamics", "Xenobiology"],
+            undefined,
+            undefined,
+            false,
+            "Track.starfleet."
         ),
     ];
 

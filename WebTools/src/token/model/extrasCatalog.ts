@@ -256,7 +256,7 @@ class ExtrasCatalog {
                     + (DivisionColors.isDivisionColorsSupported(token.uniformEra)
                         ? item.svg.replace(DefaultRed, token.uniformEra === UniformEra.DominionWar ? "#7d7d7d" : token.divisionColor)
                         : item.svg)
-                    + EarCatalog.instance.getEar(token)
+                    + (item.id === ExtraType.SecurityHelmet ? "" :EarCatalog.instance.getEar(token))
                     + `</g>
                     </g>
                 </svg>`;

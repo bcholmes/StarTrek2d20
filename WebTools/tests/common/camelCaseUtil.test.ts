@@ -8,6 +8,7 @@ describe('testing Camel Case Utility', () => {
 
     test('unusual characters', () => {
         expect(toCamelCase("Transporters & Replicators")).toBe("transportersReplicators");
+        expect(toCamelCase("Cautious: Command")).toBe("cautiousCommand");
     });
 
     test('unusual characters without spaces', () => {
