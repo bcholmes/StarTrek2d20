@@ -5,7 +5,7 @@ import { PageIdentity } from "../../pages/pageIdentity"
 import { connect } from "react-redux"
 import { TableCollection } from "../model/table"
 import { Button } from "../../components/button"
-import { setTableCollectionSelection } from "../../state/tableActions"
+import { setTableCollectionSelection, setTableForEditing } from "../../state/tableActions"
 import store from "../../state/store"
 import { useNavigate } from "react-router"
 import { toCamelCase } from "../../common/camelCaseUtil"
@@ -30,6 +30,11 @@ const TableListPage: React.FC<ITableListPageProperties> = ({collections}) => {
     const selectCollection = (collection: TableCollection) => {
         store.dispatch(setTableCollectionSelection(collection));
         navigate("/table/view");
+    }
+
+    const createTable = () => {
+        store.dispatch(setTableForEditing(new TableCollection()));
+        navigate("/table/edit");
     }
 
     const renderCategories = () => {
@@ -72,6 +77,10 @@ const TableListPage: React.FC<ITableListPageProperties> = ({collections}) => {
 
                 <main>
                     <Header>{t('Page.title.tableList')}</Header>
+
+                    <div className="text-end mt-3">
+                        <Button className="btn btn-primary btn-sm" onClick={createTable}>{t('Common.button.create')}</Button>
+                    </div>
 
                     <div className="row">
                         {renderCategories()}

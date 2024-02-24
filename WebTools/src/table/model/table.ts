@@ -48,7 +48,7 @@ export class TableCollection {
     description: string;
     category: string;
 
-    constructor(mainTable: Table, description: string, category: string) {
+    constructor(mainTable?: Table, description: string = "", category: string = "") {
         this.mainTable = mainTable;
         this.description = description;
         this.category = category;

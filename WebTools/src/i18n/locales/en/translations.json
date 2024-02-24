@@ -12,6 +12,9 @@
 
     "AttributesAndDisciplines.instruction": "At this stage, your character is almost complete, and needs only a few final elements and adjustments. This serves as a last chance to customize the character before play.",
 
+    "EditTablePage.header.createTable": "Create Table",
+    "EditTablePage.header.modifyTable": "Modify Table",
+
     "EraSelectionPage.eraInstruction": "Select which Era to play in. Ask your GM which Era to choose.",
 
     "Home.title": "STA Character Creator",

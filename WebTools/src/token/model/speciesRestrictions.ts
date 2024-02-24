@@ -35,6 +35,10 @@ class SpeciesRestrictions {
             return ["#fbebb7", "#f7d66f", "#e0c167", "#b7d562", "#b6b456", "#b49249", "#87622a"];
         } else if (species === Species.Benzite) {
             return ["#b0c2cc", "#a9d8f4", "#7ca9e0", "#919bd5", "#6e87bf", "#3e8fb8"];
+        } else if (species === Species.Bynar) {
+            return ["#cda3ce"];
+        } else if (species === Species.Cardassian) {
+            return ["#dcd5d0", "#c4bab1", "#b4a8a8", "#998679", "#a88872" ];
         } else if (species === Species.Bolian) {
             return ["#97c3f2", "#87acda", "#5883a6", "#5772b7", "#0665b3", "#385f8d"]; // "#597986",
         } else if (species === Species.Ferengi) {
@@ -136,16 +140,16 @@ class SpeciesRestrictions {
             "#de928f", "#ec909b", "#e2889e", "#d67788", "#c89898"];
     }
 
-    static getHairTypes(species: Species) {
+    static getHairTypes(species: Species): HairType[] {
         if (species !== Species.Jelna && (this.isBald(species) || SpeciesRestrictions.isRubberHeaded(species))) {
             return [ HairType.Bald ];
         } else if (species === Species.Andorian) {
             // the corn rows don't look right with the Antennae
-            return allHairTypes.filter(h => h !== HairType.CornRows);
+            return allHairTypes().filter(h => h !== HairType.CornRows);
         } else if (this.isTallForeheaded(species)) {
-            return allHairTypes.filter(h => isTallForeheadHair(h));
+            return allHairTypes().filter(h => isTallForeheadHair(h));
         } else {
-            return allHairTypes;
+            return allHairTypes();
         }
     }
 
@@ -194,7 +198,8 @@ class SpeciesRestrictions {
     }
 
     static isTallForeheaded(species: Species) {
-        return species === Species.Klingon
+        return species === Species.Cardassian
+            || species === Species.Klingon
             || species === Species.Tellarite || species === Species.Efrosian
             || species === Species.Ktarian
             || species === Species.XindiPrimate;
@@ -202,7 +207,9 @@ class SpeciesRestrictions {
     }
 
     static isRubberHeaded(species: Species) {
-        return species === Species.Aurelian || species === Species.Saurian || species === Species.Caitian
+        return species === Species.Aurelian || species === Species.Saurian
+            || species === Species.Bynar
+            || species === Species.Caitian
             || species === Species.Benzite || species === Species.JemHadar || species === Species.Reman
             || species === Species.Jelna || species === Species.Suliban || species === Species.XindiReptilian
             || species === Species.Zaranite;

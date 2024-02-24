@@ -6,12 +6,14 @@ import LcarsFrame from "../../components/lcarsFrame";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { AccessingView } from "../../common/accessingView";
 import { preventDefaultAnchorEvent } from "../../common/navigator";
+import { Header } from "../../components/header";
 
 interface IEditTablePageProperties {
+    initial: boolean;
     tableCollection?: TableCollection;
 }
 
-const EditTablePage: React.FC<IEditTablePageProperties> = ({tableCollection}) => {
+const EditTablePage: React.FC<IEditTablePageProperties> = ({tableCollection, initial}) => {
 
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -39,6 +41,8 @@ const EditTablePage: React.FC<IEditTablePageProperties> = ({tableCollection}) =>
                             <li className="breadcrumb-item active" aria-current="page">{t('Page.title.viewTable')}</li>
                         </ol>
                     </nav>
+
+                    <Header>{initial ? t('EditTablePage.header.createTable') : t('EditTablePage.header.modifyTable')}</Header>
                 </div>
             </div>
         </LcarsFrame>);
@@ -47,6 +51,7 @@ const EditTablePage: React.FC<IEditTablePageProperties> = ({tableCollection}) =>
 
 const mapStateToProps = (state) => {
     return {
+        initial: true,
         tableCollection: state.table?.editing
     }
 }

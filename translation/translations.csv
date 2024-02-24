@@ -9,6 +9,8 @@ Lcars.history,History,Verlauf,,Historique,История
 Lcars.news,News,Neuigkeiten,,Actualités,Новости
 Lcars.profile,Profile,Bogen,,Profil,Профиль
 AttributesAndDisciplines.instruction,"At this stage, your character is almost complete, and needs only a few final elements and adjustments. This serves as a last chance to customize the character before play.",,,,
+EditTablePage.header.createTable,Create Table,,,,
+EditTablePage.header.modifyTable,Modify Table,,,,
 EraSelectionPage.eraInstruction,Select which Era to play in. Ask your GM which Era to choose.,"Wählen Sie aus, in welcher Ära gespielt wird. Fragen Sie, wenn nötig, Ihre Spielleitung, welche Ära Sie wählen sollen.",Selecciona en qué Era jugar. Pregúntale a tu GM qué Era elegir.,Sélectionnez l'ère dans laquelle jouer. Demandez à votre MJ quelle ère choisir.,Выберите в какой Эре вы планируете играть. Спросите Мастера какую Эру выбрать.
 Home.title,STA Character Creator,,,,Генератор Персонажей STA
 Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sélectionnez l'outil.,Выберите инстумент.
@@ -1587,8 +1589,8 @@ Talent.culturalFlexibility,Cultural Flexibility,,,,Культурная гибк
 Talent.culturalFlexibility.description,"Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",,,,"Ваш вид дружелюбен, терпелив и любознателен, и вы - пример этих качеств. Вы легко приспосабливаетесь к незнакомым социальным структурам и новым культурам. Снизьте на 1 сложность Задач по знакомству с неизвестной культурой или при попытке придерживаться верного поведения, взаимодействуя с представителем такой культуры."
 Talent.dauntless,Dauntless,,,,Неустрашимый
 Talent.dauntless.description,"Whenever you attempt a Task to resist being intimidated or threatened, you may add a bonus d20 to your dice pool.",,,,"Выполняя Задачу по сопротивлению запугиванию или угрозе, можно взять бонусный d20."
-Talent.defuseTheTension,Defuse the Tension,,,,
-Talent.defuseTheTension.description,"Whenever you attempt a Task to persuade someone not to resort to violence, you may add a bonus d20 to your dice pool.",,,,
+Talent.defuseTheTension,Defuse the Tension,,,,Умеет снизить напряжение
+Talent.defuseTheTension.description,"Whenever you attempt a Task to persuade someone not to resort to violence, you may add a bonus d20 to your dice pool.",,,,"Выполняя Задачу по убеждению кого-то не применять насилие, возьмите для броска бонусный d20."
 Talent.dedicatedSubspaceTransceiverArray,Dedicated Subspace Tranceiver Array,,,,
 Talent.dedicatedSubspaceTransceiverArray.soloDescription,"A starship with this talent has a section of its hull that slides away where a long, tether-like subspace transceiver array can be deployed to enhance the vessel’s communication range and clarity, even at warp.",,,,
 Talent.deluxeGalley,Deluxe Galley,,,,
@@ -1609,8 +1611,8 @@ Talent.fastTargetingSystems,Fast Targeting Systems,,,,
 Talent.fastTargetingSystems.soloDescription,"The ship’s targeting systems can lock weapons on target much faster and more accurately than other ships of its class, giving it an edge in battle.",,,,
 Talent.fieldMedicine,Field Medicine,,,,Полевая медицина
 Talent.fieldMedicine.description,"When attempting a Medicine Task, you may ignore any increase in Difficulty for working without the proper tools or equipment.",,,,"Выполняя Задачу на Медицину, игнорируйте любое увеличение сложности за работу без нужных инструментов или оборудования."
-Talent.flyBy,Fly-By,,,,
-Talent.flyBy.description,"Whenever you use the Swift Task Momentum Spend, you do not increase the Difficulty of the second Task if one of the Tasks you attempt is to pilot a vessel or vehicle.",,,,
+Talent.flyBy,Fly-By,,,,Облет
+Talent.flyBy.description,"Whenever you use the Swift Task Momentum Spend, you do not increase the Difficulty of the second Task if one of the Tasks you attempt is to pilot a vessel or vehicle.",,,,"При использовании вами запаса Импульса для выполнения Дополнительной Задачи, сложность Дополнительной Задачи не увеличивается, если одна из выполняемых Задач «Управление кораблём или транспортным средством»."
 Talent.followMyLead,Follow My Lead,,,,За мной!
 Talent.followMyLead.description,"Once per scene, when you succeed at a Task during combat or another perilous situation, you may spend one Determination. If you do, choose a single ally. The next Task that ally attempts counts as having assistance from you, using your Presence + Command.",,,,"Раз за сцену, успешно выполнив Задачу во время боя или другой опасной ситуации, можете снизить свою Целеустремлённость на 1 и выбрать одного союзника. В сле-
 дующий раз при выполнении Задачи будет считаться, что он получает от вас Помощь с использованием вашей Харизмы + Командования."

@@ -68,7 +68,7 @@ const tableReducer = (state = getInitialData(), action) => {
         }
         case SET_TABLE_FOR_EDITING: {
             let temp = {...state };
-            temp.editing = action.payload.selection;
+            temp.editing = action.payload.collection;
             return temp;
         }
         case SAVE_EDITED_TABLE: {
