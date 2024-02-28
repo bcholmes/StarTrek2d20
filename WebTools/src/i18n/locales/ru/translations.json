@@ -818,5 +818,58 @@
 
     "Value.careerLength.veteran.text": "Персонаж получает Ценность, отражающую его годы опыта и убеждения сформировавшиеся за долгую карьеру.",
 
-    "Value.final.text": "Персонаж получает одну заключительную Ценность. Она должно отражать События Карьеры выбранные в Шестом Этапе или исходить из других данных персонажа. Эта Ценность может быть социальной, связывающей персонажа с другим членом команды, какой-то организацией или расой в каком то виде."
+    "Value.final.text": "Персонаж получает одну заключительную Ценность. Она должно отражать События Карьеры выбранные в Шестом Этапе или исходить из других данных персонажа. Эта Ценность может быть социальной, связывающей персонажа с другим членом команды, какой-то организацией или расой в каком то виде.",
+
+    "Weapon.common.name": "Название/Тип",
+    "Weapon.common.qualities": "Качества",
+
+    "Weapon.personal.dagger.name": "Клинок",
+
+    "Weapon.personal.energyWhip.name": "Энергитический хлыст",
+
+    "Weapon.personal.phaser1.name": "Фазер первого типа",
+
+    "Weapon.personal.phaser2.name": "Фазер второго типа",
+
+    "Weapon.personal.strike.name": "Рукопашная атака",
+
+    "Weapon.personal.batleth.name": "Бат'лет",
+
+    "Weapon.personal.ushaantor.name": "Ушаан-тор",
+
+    "Weapon.personal.disruptor.name": "Дизрапторный пистолет",
+
+    "Weapon.quality.area.name": "Дистанция",
+
+    "Weapon.quality.charge.name": "Заряд",
+
+    "Weapon.quality.calibration.name": "Калибровка",
+
+    "Weapon.quality.dampening.name": "Ослабляющее",
+
+    "Weapon.quality.deadly.name": "Смертельное",
+
+    "Weapon.quality.devastating.name": "Разрушительное",
+
+    "Weapon.quality.highYield.name": "Высокомощное",
+
+    "Weapon.quality.hidden.name": "Незаметное {{rank}}",
+
+    "Weapon.quality.intense.name": "Тяжолое",
+
+    "Weapon.quality.jamming.name": "Генератор помех",
+
+    "Weapon.quality.knockdown.name": "Сбивающее с ног",
+
+    "Weapon.quality.nonLethal.name": "Несмертельное",
+
+    "Weapon.quality.piercing.name": "Пробивающее {{rank}}",
+
+    "Weapon.quality.persistentX.name": "Остаточное действие Х",
+
+    "Weapon.quality.slowing.name": "Замедляющее",
+
+    "Weapon.quality.versatile.name": "Многоцелевое {{rank}}",
+
+    "Weapon.quality.vicious.name": "Повреждающее {{rank}}"
 }

@@ -878,6 +878,7 @@
     "AlliedMilitaryType.name.other": "Other",
 
     "BodyType.averageMale": "Average Male",
+    "BodyType.averageNonBinary": "Average Non-Binary",
     "BodyType.averageFemale": "Average Female",
 
     "Division.command": "Command",
@@ -1593,27 +1594,27 @@
 
     "Talent.collaborationCommand": "Collaboration: Command",
 
-    "Talent.collaborationCommand.description": "Whenever you attempt a Task with Command, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
+    "Talent.collaborationCommand.description": "Whenever an ally attempts a Task using Command, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",
 
     "Talent.collaborationConn": "Collaboration: Conn",
 
-    "Talent.collaborationConn.description": "Whenever you attempt a Task with Conn, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
+    "Talent.collaborationConn.description": "Whenever an ally attempts a Task using Conn, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",
 
     "Talent.collaborationEngineering": "Collaboration: Engineering",
 
-    "Talent.collaborationEngineering.description": "Whenever you attempt a Task with Engineering, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
+    "Talent.collaborationEngineering.description": "Whenever an ally attempts a Task using Engineering, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",
 
     "Talent.collaborationMedicine": "Collaboration: Medicine",
 
-    "Talent.collaborationMedicine.description": "Whenever you attempt a Task with Medicine, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
+    "Talent.collaborationMedicine.description": "Whenever an ally attempts a Task using Medicine, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",
 
     "Talent.collaborationScience": "Collaboration Science",
 
-    "Talent.collaborationScience.description": "Whenever you attempt a Task with Science, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
+    "Talent.collaborationScience.description": "Whenever an ally attempts a Task using Science, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",
 
     "Talent.collaborationSecurity": "Collaboration: Security",
 
-    "Talent.collaborationSecurity.description": "Whenever you attempt a Task with Security, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
+    "Talent.collaborationSecurity.description": "Whenever an ally attempts a Task using Security, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",
 
     "Talent.constantlyWatching": "Constantly Watching",
 
@@ -1938,8 +1939,10 @@
 
     "Track.starfleet.sciences.description": "Somewhat isolated from the other Tracks, the Sciences track is primarily academic, with Starfleet Academy producing many accomplished scientists. Included within the sciences track, but separated by a distinct curriculum, is Starfleet Medical, training doctors, nurses, and counselors to serve aboard Starfleet vessels and facilities across the Federation.",
 
+    "UniformEra.bynar": "Bynar",
     "UniformEra.civilian": "Civilian",
     "UniformEra.dominionWar": "Dominion War",
+    "UniformEra.ferengi": "Ferengi",
     "UniformEra.enterprise": "Enterprise",
     "UniformEra.jemHadar": "Jem'Hadar",
     "UniformEra.klingon": "Klingon Armour",

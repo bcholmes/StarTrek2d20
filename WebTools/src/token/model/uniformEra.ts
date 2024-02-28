@@ -15,6 +15,8 @@ export enum UniformEra {
     Romulan,
     Suliban,
     VoyagerDS9,
+    Bynar,
+    Ferengi,
 }
 
 export class UniformEraModel {
@@ -36,6 +38,7 @@ export class UniformEraHelper {
     private static _instance: UniformEraHelper;
 
     types = [
+//        new UniformEraModel(UniformEra.Bynar, "Bynar"),
         new UniformEraModel(UniformEra.Civilian, "Civilian"),
         new UniformEraModel(UniformEra.Enterprise, "Enterprise"),
         new UniformEraModel(UniformEra.Klingon, "Klingon Armour"),

@@ -29,7 +29,12 @@ export default class UniformPackCollection {
         if (this.isLoaded(era)) {
             completion();
         } else {
-            if (era === UniformEra.Civilian) {
+            if (era === UniformEra.Bynar) {
+                import(/* webpackChunkName: 'bynarUniform' */ './bynarUniformPack').then(({BynarUniformPack}) => {
+                    this.uniformPacks[era] = new BynarUniformPack();
+                    completion();
+                }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
+            } else  if (era === UniformEra.Civilian) {
                 import(/* webpackChunkName: 'civilianUniform' */ './civilianOutfitUniformPack').then(({CivilianOutfitUniformPack}) => {
                     this.uniformPacks[era] = new CivilianOutfitUniformPack();
                     completion();

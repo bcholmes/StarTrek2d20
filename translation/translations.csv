@@ -958,6 +958,7 @@ AlliedMilitaryType.name.dominion,Dominion,Dominion,,Dominion,
 AlliedMilitaryType.name.ferengiMilitary,Ferengi Military,Ferengi Militär,,,
 AlliedMilitaryType.name.other,Other,Andere,,Autre,
 BodyType.averageMale,Average Male,Durchschnittlicher Mann,,,
+BodyType.averageNonBinary,Average Non-Binary,,,,
 BodyType.averageFemale,Average Female,Durchschnittliche Frau,,,
 Division.command,Command,Kommando,,,
 Division.science,Science,Wissenschaft,,,
@@ -1561,17 +1562,17 @@ Talent.cautiousScience.description,"Whenever you attempt a Task with Science, an
 Talent.cautiousSecurity,Cautious: Security,,,,Предусмотрительный: Безопасность
 Talent.cautiousSecurity.description,"Whenever you attempt a Task with Security, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",,,,"Если привыполнении Задачи с применением этого Безопасности приобретается 1 бонусный d20 или больше, за жетон Импульса можно заново бросить 1 использованный для этой Задачи d20."
 Talent.collaborationCommand,Collaboration: Command,,,,Сотрудничество: Коммандование
-Talent.collaborationCommand.description,"Whenever you attempt a Task with Command, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",,,,"Если при выполнении Задачи с применением Коммандования приобретается 1 бонусный d20 или больше, добавив ведущему жетон Угрозы, можно заново бросить 1 использованный для этой Задачи d20."
+Talent.collaborationCommand.description,"Whenever an ally attempts a Task using Command, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",,,,"Если при выполнении Задачи с применением Коммандования приобретается 1 бонусный d20 или больше, добавив ведущему жетон Угрозы, можно заново бросить 1 использованный для этой Задачи d20."
 Talent.collaborationConn,Collaboration: Conn,,,,Сотрудничество: Навигация
-Talent.collaborationConn.description,"Whenever you attempt a Task with Conn, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",,,,"Если при выполнении Задачи с применением Навигации приобретается 1 бонусный d20 или больше, добавив ведущему жетон Угрозы, можно заново бросить 1 использованный для этой Задачи d20."
+Talent.collaborationConn.description,"Whenever an ally attempts a Task using Conn, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",,,,"Если при выполнении Задачи с применением Навигации приобретается 1 бонусный d20 или больше, добавив ведущему жетон Угрозы, можно заново бросить 1 использованный для этой Задачи d20."
 Talent.collaborationEngineering,Collaboration: Engineering,,,,Сотрудничество: Инженерия
-Talent.collaborationEngineering.description,"Whenever you attempt a Task with Engineering, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",,,,"Если при выполнении Задачи с применением Инженерии приобретается 1 бонусный d20 или больше, добавив ведущему жетон Угрозы, можно заново бросить 1 использованный для этой Задачи d20."
+Talent.collaborationEngineering.description,"Whenever an ally attempts a Task using Engineering, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",,,,"Если при выполнении Задачи с применением Инженерии приобретается 1 бонусный d20 или больше, добавив ведущему жетон Угрозы, можно заново бросить 1 использованный для этой Задачи d20."
 Talent.collaborationMedicine,Collaboration: Medicine,,,,Сотрудничество: Медицина
-Talent.collaborationMedicine.description,"Whenever you attempt a Task with Medicine, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",,,,"Если при выполнении Задачи с применением Медицины приобретается 1 бонусный d20 или больше, добавив ведущему жетон Угрозы, можно заново бросить 1 использованный для этой Задачи d20."
+Talent.collaborationMedicine.description,"Whenever an ally attempts a Task using Medicine, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",,,,"Если при выполнении Задачи с применением Медицины приобретается 1 бонусный d20 или больше, добавив ведущему жетон Угрозы, можно заново бросить 1 использованный для этой Задачи d20."
 Talent.collaborationScience,Collaboration Science,,,,Сотрудничество: Наука
-Talent.collaborationScience.description,"Whenever you attempt a Task with Science, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",,,,"Если при выполнении Задачи с применением Науки приобретается 1 бонусный d20 или больше, добавив ведущему жетон Угрозы, можно заново бросить 1 использованный для этой Задачи d20."
+Talent.collaborationScience.description,"Whenever an ally attempts a Task using Science, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",,,,"Если при выполнении Задачи с применением Науки приобретается 1 бонусный d20 или больше, добавив ведущему жетон Угрозы, можно заново бросить 1 использованный для этой Задачи d20."
 Talent.collaborationSecurity,Collaboration: Security,,,,Сотрудничество: Безопасность
-Talent.collaborationSecurity.description,"Whenever you attempt a Task with Security, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",,,,"Если при выполнении Задачи с применением этого Безопасности приобретается 1 бонусный d20 или больше, за жетон Импульса можно заново бросить 1 использованный для этой Задачи d20"
+Talent.collaborationSecurity.description,"Whenever an ally attempts a Task using Security, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",,,,"Если при выполнении Задачи с применением этого Безопасности приобретается 1 бонусный d20 или больше, за жетон Импульса можно заново бросить 1 использованный для этой Задачи d20"
 Talent.constantlyWatching,Constantly Watching,,,,Всегда настороже
 Talent.constantlyWatching.description,"When you attempt a Task to detect danger or hidden enemies, reduce the Difficulty by 1.",,,,Сложность выполнения Задачи по выявлению опасности или скрытых врагов уменьшается на 1.
 Talent.captainsYacht,Captain's Yacht,,,,
@@ -1742,8 +1743,10 @@ Track.starfleet.operations,Operations Track,,,,
 Track.starfleet.operations.description,"The Operations track is practical and hands-on, dealing with many of the realities of Starfleet’s mission. Divided broadly into engineering and security divisions, operations track cadets are defined by a sense of pragmatism, whether that applies to the technical or the tactical.",,,,
 Track.starfleet.sciences,Sciences Track,,,,
 Track.starfleet.sciences.description,"Somewhat isolated from the other Tracks, the Sciences track is primarily academic, with Starfleet Academy producing many accomplished scientists. Included within the sciences track, but separated by a distinct curriculum, is Starfleet Medical, training doctors, nurses, and counselors to serve aboard Starfleet vessels and facilities across the Federation.",,,,
+UniformEra.bynar,Bynar,,,,
 UniformEra.civilian,Civilian,Zivilist,,,
 UniformEra.dominionWar,Dominion War,Dominionkrieg,,,
+UniformEra.ferengi,Ferengi,,,,
 UniformEra.enterprise,Enterprise,Enterprise,,,
 UniformEra.jemHadar,Jem'Hadar,Jem'Hadar,,,
 UniformEra.klingon,Klingon Armour,Klingonische Rüstung,,,
@@ -1782,37 +1785,37 @@ Value.careerLength.experienced.text,"The character receives a Value, and this ca
 Свободный выбор."
 Value.careerLength.veteran.text,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.","Der Charakter erhält eine Überzeugung, welche die Jahre an Erfahrung und die in der langen Karriere geformten Wertvorstellungen widerspiegelt.",,"Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière.","Персонаж получает Ценность, отражающую его годы опыта и убеждения сформировавшиеся за долгую карьеру."
 Value.final.text,"The character receives one final Value. This might reflect the Career Events rolled in Step Six, or it may represent some other element of the character. This Value might be a relationship, connecting the character to another character in the crew, or to another organization or culture in some way.","Der Charakter erhält eine letzte Überzeugung. Diese kann mit einem der Karriereereignisse aus Schritt 6 zusammenhängen, aber auch völlig frei gewählt sein. Die Überzeugung kann auch eine Beziehung sein, die den Charakter mit einem anderen Charakter in der Crew, einer Organisation oder einer Kultur verbindet.",,"Le personnage reçoit une valeur finale. Cela peut refléter les événements de carrière lancés à l'étape six, ou cela peut représenter un autre élément du personnage. Cette valeur peut être une relation, reliant le personnage à un autre personnage de l'équipage, ou à une autre organisation ou culture d'une manière ou d'une autre.","Персонаж получает одну заключительную Ценность. Она должно отражать События Карьеры выбранные в Шестом Этапе или исходить из других данных персонажа. Эта Ценность может быть социальной, связывающей персонажа с другим членом команды, какой-то организацией или расой в каком то виде."
-Weapon.common.name,Name/Type,Name/Typ,,Nom/Type,
-Weapon.common.qualities,Qualities,Eigenschaften,,Qualités,
-Weapon.personal.dagger.name,Dagger,Dolch,,,
-Weapon.personal.energyWhip.name,Energy Whip,Energiepeitsche,,,
-Weapon.personal.phaser1.name,Phaser type-1,"Phaser, Typ 1",,Phaser type-1,
-Weapon.personal.phaser2.name,Phaser type-2,"Phaser, Typ 2",,Phaser type-2,
-Weapon.personal.strike.name,Unarmed Strike,Unbewaffneter Angriff,,Frappe à mains nues,
-Weapon.personal.batleth.name,Bat'leth,Bat'leth,,Bat'leth,
+Weapon.common.name,Name/Type,Name/Typ,,Nom/Type,Название/Тип
+Weapon.common.qualities,Qualities,Eigenschaften,,Qualités,Качества
+Weapon.personal.dagger.name,Dagger,Dolch,,,Клинок
+Weapon.personal.energyWhip.name,Energy Whip,Energiepeitsche,,,Энергитический хлыст
+Weapon.personal.phaser1.name,Phaser type-1,"Phaser, Typ 1",,Phaser type-1,Фазер первого типа
+Weapon.personal.phaser2.name,Phaser type-2,"Phaser, Typ 2",,Phaser type-2,Фазер второго типа
+Weapon.personal.strike.name,Unarmed Strike,Unbewaffneter Angriff,,Frappe à mains nues,Рукопашная атака
+Weapon.personal.batleth.name,Bat'leth,Bat'leth,,Bat'leth,Бат'лет
 Weapon.personal.dktahg.name,d’k tahg dagger,D'k tahg Dolch,,Dague d’k tahg,
-Weapon.personal.ushaantor.name,Ushaan-tor,Ushaan-tor,,Ushaan-tor,
-Weapon.personal.disruptor.name,Disruptor Pistol,Disruptorpistole,,Pistolet Disrupteur,
+Weapon.personal.ushaantor.name,Ushaan-tor,Ushaan-tor,,Ushaan-tor,Ушаан-тор
+Weapon.personal.disruptor.name,Disruptor Pistol,Disruptorpistole,,Pistolet Disrupteur,Дизрапторный пистолет
 Weapon.personal.sonaPlasmaDisruptorShotgun.name,Son'a Plasma Disruptor Shotgun,Son'a Plasma-Disruptor-Schrotflinte,,,
-Weapon.quality.area.name,Area,Flächendeckend,,Aire,
-Weapon.quality.charge.name,Charge,Aufladbar,,Charges,
-Weapon.quality.calibration.name,Calibration,Kalibrierung,,,
-Weapon.quality.dampening.name,Dampening,Energiesenkend,,,
-Weapon.quality.deadly.name,Deadly,Letal,,Mortel,
+Weapon.quality.area.name,Area,Flächendeckend,,Aire,Дистанция
+Weapon.quality.charge.name,Charge,Aufladbar,,Charges,Заряд
+Weapon.quality.calibration.name,Calibration,Kalibrierung,,,Калибровка
+Weapon.quality.dampening.name,Dampening,Energiesenkend,,,Ослабляющее
+Weapon.quality.deadly.name,Deadly,Letal,,Mortel,Смертельное
 Weapon.quality.debilitating.name,Debilitating,Verletzend,,,
 Weapon.quality.depleting.name,Depleting,Erschöpfend,,,
-Weapon.quality.devastating.name,Devastating,Zerstörerisch,,,
-Weapon.quality.highYield.name,High Yield,Hochenergetisch,,,
-Weapon.quality.hidden.name,Hidden {{rank}},Unauffällig {{rank}},,Caché {{rank}},
-Weapon.quality.intense.name,Intense,Intensiv,,Intense,
-Weapon.quality.jamming.name,Jamming,Kommunikation störend,,,
-Weapon.quality.knockdown.name,Knockdown,Niederwerfend,,Renversement,
-Weapon.quality.nonLethal.name,Non-lethal,Nicht-tödlich,,Non-létal,
-Weapon.quality.piercing.name,Piercing {{rank}},Durchdringend {{rank}},,Perçant {{rank}},
-Weapon.quality.persistentX.name,Persistent X,Anhaltend X,,,
-Weapon.quality.slowing.name,Slowing,Verlangsamend,,,
-Weapon.quality.versatile.name,Versatile {{rank}},Vielseitig {{rank}},,,
-Weapon.quality.vicious.name,Vicious {{rank}},Verheerend {{rank}},,Vicieux {{rank}},
+Weapon.quality.devastating.name,Devastating,Zerstörerisch,,,Разрушительное
+Weapon.quality.highYield.name,High Yield,Hochenergetisch,,,Высокомощное
+Weapon.quality.hidden.name,Hidden {{rank}},Unauffällig {{rank}},,Caché {{rank}},Незаметное {{rank}}
+Weapon.quality.intense.name,Intense,Intensiv,,Intense,Тяжолое
+Weapon.quality.jamming.name,Jamming,Kommunikation störend,,,Генератор помех
+Weapon.quality.knockdown.name,Knockdown,Niederwerfend,,Renversement,Сбивающее с ног
+Weapon.quality.nonLethal.name,Non-lethal,Nicht-tödlich,,Non-létal,Несмертельное
+Weapon.quality.piercing.name,Piercing {{rank}},Durchdringend {{rank}},,Perçant {{rank}},Пробивающее {{rank}}
+Weapon.quality.persistentX.name,Persistent X,Anhaltend X,,,Остаточное действие Х
+Weapon.quality.slowing.name,Slowing,Verlangsamend,,,Замедляющее
+Weapon.quality.versatile.name,Versatile {{rank}},Vielseitig {{rank}},,,Многоцелевое {{rank}}
+Weapon.quality.vicious.name,Vicious {{rank}},Verheerend {{rank}},,Vicieux {{rank}},Повреждающее {{rank}}
 World.attribute.designation,Designation,Bezeichnung,,Designation,
 World.attribute.classification,Classification,Klasse,,Classification,
 World.attribute.notes,Notes,Anmerkungen,,Notes,
