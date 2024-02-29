@@ -431,13 +431,13 @@ export class TracksHelper {
         }
     }
 
-    getSoloTrack(track: Track) {
+    getSoloTrack(track: Track): TrackModel {
         const tracks = [this._tracks, this._alliedMilitaryTracks, this._ambassardorTracks, this._civilianTracks];
         let result = tracks.map(list => list.filter(t => t.id === track)).filter(list => list.length > 0).map(list => list[0]);
         return result ? result[0] : undefined;
     }
 
-    getTrack(track: Track, type: CharacterType) {
+    getTrack(track: Track, type: CharacterType): TrackModel {
         let list = this.chooseList(type);
         let result = null;
         for (let t of list) {

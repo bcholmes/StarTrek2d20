@@ -13,6 +13,7 @@ describe('testing Camel Case Utility', () => {
 
     test('unusual characters without spaces', () => {
         expect(toCamelCase("Mind-Meld")).toBe("mindMeld");
+        expect(toCamelCase("Fly-By")).toBe("flyBy");
     });
 
     test('names needing capitalization', () => {

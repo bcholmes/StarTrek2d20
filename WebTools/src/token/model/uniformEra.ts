@@ -2,6 +2,7 @@ import i18next from "i18next";
 import { makeKey } from "../../common/translationKey";
 
 export enum UniformEra {
+    Cardassian,
     Civilian,
     DominionWar,
     Enterprise,
@@ -38,7 +39,8 @@ export class UniformEraHelper {
     private static _instance: UniformEraHelper;
 
     types = [
-//        new UniformEraModel(UniformEra.Bynar, "Bynar"),
+        new UniformEraModel(UniformEra.Bynar, "Bynar"),
+        new UniformEraModel(UniformEra.Cardassian, "Cardassian"),
         new UniformEraModel(UniformEra.Civilian, "Civilian"),
         new UniformEraModel(UniformEra.Enterprise, "Enterprise"),
         new UniformEraModel(UniformEra.Klingon, "Klingon Armour"),

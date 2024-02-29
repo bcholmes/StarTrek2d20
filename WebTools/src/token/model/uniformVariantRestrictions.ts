@@ -79,6 +79,7 @@ export default class UniformVariantRestrictions {
     static isStraightenedNeck(uniformEra: UniformEra) {
         return uniformEra === UniformEra.Suliban
             || uniformEra === UniformEra.Bynar
+            || uniformEra === UniformEra.Cardassian
             || uniformEra === UniformEra.Civilian
             || uniformEra === UniformEra.LowerDecks
             || uniformEra === UniformEra.VoyagerDS9

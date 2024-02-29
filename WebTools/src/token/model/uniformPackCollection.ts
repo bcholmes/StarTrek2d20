@@ -34,6 +34,11 @@ export default class UniformPackCollection {
                     this.uniformPacks[era] = new BynarUniformPack();
                     completion();
                 }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
+            } else  if (era === UniformEra.Cardassian) {
+                import(/* webpackChunkName: 'cardassianUniform' */ './cardassianUniformPack').then(({CardassianUniformPack}) => {
+                    this.uniformPacks[era] = new CardassianUniformPack();
+                    completion();
+                }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
             } else  if (era === UniformEra.Civilian) {
                 import(/* webpackChunkName: 'civilianUniform' */ './civilianOutfitUniformPack').then(({CivilianOutfitUniformPack}) => {
                     this.uniformPacks[era] = new CivilianOutfitUniformPack();

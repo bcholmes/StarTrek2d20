@@ -172,6 +172,8 @@ class SpeciesRestrictions {
     static isExtraAvailableFor(extra: ExtraType, species: Species, uniformEra: UniformEra) {
         if (extra === ExtraType.BajoranEarring) {
             return species === Species.Bajoran;
+        } else if (extra === ExtraType.BynarHeadpiece1 || extra === ExtraType.BynarHeadpiece2) {
+            return species === Species.Bynar;
         } else if (extra === ExtraType.SimpleEarring || extra === ExtraType.HoopEarring) {
             return species !== Species.Bolian
                 && !this.isRubberHeaded(species)
@@ -212,7 +214,7 @@ class SpeciesRestrictions {
             || species === Species.Caitian
             || species === Species.Benzite || species === Species.JemHadar || species === Species.Reman
             || species === Species.Jelna || species === Species.Suliban || species === Species.XindiReptilian
-            || species === Species.Zaranite;
+            || species === Species.Yridian || species === Species.Zaranite;
     }
 
     static getSpeciesOptions(species: Species) {

@@ -167,7 +167,7 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
                 </div>
                 <div className="col-md-6 text-end my-4">
                     <label className="visually-hidden" htmlFor='search'>Search</label>
-                    <input type="search" id="search" onChange={(e) => { setSearchTerm(e.target.value); }} value={searchTerm} placeholder="Search..." autoComplete="off"/>
+                    <input type="search" id="search" onChange={(e) => { setSearchTerm(e.target.value); }} value={searchTerm} placeholder={t('Common.text.search')} autoComplete="off"/>
                 </div>
             </div>
             <table className="selection-list">

@@ -17,6 +17,7 @@ import ReactMarkdown from "react-markdown";
 import store from "../state/store";
 import { ICharacterProperties, characterMapStateToProperties } from "../solo/page/soloCharacterProperties";
 import { connect } from "react-redux";
+import { makeKey } from "../common/translationKey";
 
 enum EventsTab {
     Standard,
@@ -42,17 +43,17 @@ const CareerEventPage: React.FC<ICareerEventProperties> = ({character, context})
 
     const toTableRow = (careerEvent: CareerEventModel, i: number) => {
         const attributes = careerEvent.attributes.map((a, i) => {
-            return <div key={i}>{AttributesHelper.getAttributeName(a) }</div>
+            return <div key={i}>{t(makeKey('Construct.attribute.', AttributesHelper.getAttributeName(a))) }</div>
         });
 
         const disciplines = careerEvent.disciplines.map((d, i) => {
-            return <div key={i}>{SkillsHelper.getSkillName(d) }</div>;
+            return <div key={i}>{t(makeKey('Construct.discipline.', SkillsHelper.getSkillName(d))) }</div>;
         });
 
         return (
             <tr key={i}
                 onClick={() => { if (Window.isCompact()) careerEventSelected(careerEvent); } }>
-                <td className="selection-header">{careerEvent.name}</td>
+                <td className="selection-header">{careerEvent.localizedName}</td>
                 <td>{attributes}</td>
                 <td>{disciplines}</td>
                 <td className="text-end"><Button className="button-small" onClick={() => { careerEventSelected(careerEvent) } }>{t('Common.button.select')}</Button></td>
