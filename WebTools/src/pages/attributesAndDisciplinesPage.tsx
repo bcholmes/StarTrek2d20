@@ -23,6 +23,8 @@ import { addCharacterTalent, setCharacterFinishingTouches, setCharacterValue, St
 
 const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character})  => {
 
+    const { t } = useTranslation();
+
     const randomValue = () => {
         let done = false;
         while (!done) {
@@ -57,8 +59,6 @@ const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character
             Navigation.navigateToPage(PageIdentity.Finish);
         }
     }
-
-    const { t } = useTranslation();
 
     let attributeTotal = 0;
     character.attributes.forEach(a => attributeTotal += a.value);

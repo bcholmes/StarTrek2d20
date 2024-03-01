@@ -9,6 +9,7 @@ import store from "../state/store";
 import ValueInput from "./valueInputWithRandomOption";
 import { makeKey } from "../common/translationKey";
 import { Career } from "../helpers/careerEnum";
+import InstructionText from "./instructionText";
 
 const AllCharacterValues: React.FC<ICharacterProperties> = ({character}) => {
 
@@ -26,11 +27,7 @@ const AllCharacterValues: React.FC<ICharacterProperties> = ({character}) => {
     if (character.age.isChild || character.type === CharacterType.Cadet) {
         return (<div className="my-5">
                 <Header level={2}>{t('Construct.other.values')}</Header>
-                <p>
-                    If you did not define your values during character creation,
-                    or if you want to change any of them,
-                    now is the time to think about the values your character holds.
-                </p>
+                <InstructionText text={t('FinishPage.values.instruction')} />
                 <div className="row">
                     <div className="col-lg-6 py-2">
                         <ValueInput value={character.environmentStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value, StepContext.Environment)}

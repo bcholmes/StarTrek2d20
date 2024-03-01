@@ -81,6 +81,7 @@ export class TrackModel {
         this.attributesRule = attributes;
         this.skillsRule = skillsRule;
         this.enlisted = enlisted;
+        this.prefix = prefix;
     }
 
     get localizedName() {

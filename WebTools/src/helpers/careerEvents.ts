@@ -3,6 +3,8 @@ import {Attribute, AttributesHelper} from './attributes';
 import {Character, character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import i18next from 'i18next';
+import { hasSource } from '../state/contextFunctions';
+import { Source } from './sources';
 
 export class CareerEventModel {
     name: string;
@@ -46,9 +48,15 @@ export class CareerEventModel {
     }
 
     get localizedFocusSuggestion() {
-        const key = 'CareerEvent.' + this.prefix + this.roll + '.focusDescription';
+        const key = 'CareerEvent.' + this.prefix + this.roll + '.focusSuggestion';
         let result = i18next.t(key);
         return result === key ? this.focusSuggestions : result;
+    }
+
+    get localizedTraitDescription() {
+        const key = 'CareerEvent.' + this.prefix + this.roll + '.traitDescription';
+        let result = i18next.t(key);
+        return result === key ? this.traitDescription : result;
     }
 }
 
@@ -1146,14 +1154,16 @@ class CareerEvents {
 
     getCareerEvents(type: CharacterType) {
         let list = type === CharacterType.KlingonWarrior ? this._klingonEvents : this._events;
+        if (!hasSource(Source.OperationsDivision)) {
+            list = list.filter(e => e.roll !== 99);
+        }
         return [...list].sort((e1, e2) => {
             return e1.localizedName.localeCompare(e2.localizedName);
         })
     }
 
     getCareerEventsIncludingUnofficial(type: CharacterType) {
-        let list = type === CharacterType.KlingonWarrior ? this._klingonEvents : this._events;
-        list = [...list];
+        let list = this.getCareerEvents(type);
         this._unofficialEvents.forEach(e => list.push(e));
         return list.sort((e1, e2) => {
             return e1.localizedName.localeCompare(e2.localizedName);

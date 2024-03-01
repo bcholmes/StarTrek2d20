@@ -61,7 +61,7 @@ const CareerLengthDetailsPage : React.FC<ICharacterProperties> = ({character}) =
 
                 <div className="col-md-6 my-3">
                     <Header level={2}>{t('Construct.other.talent')}</Header>
-                    <TalentDescription name={career.talent.name} description={career.talent.description}/>
+                    <TalentDescription name={career.talent.localizedDisplayName} description={career.talent.localizedDescription}/>
                 </div>
             </div>);
         } else {

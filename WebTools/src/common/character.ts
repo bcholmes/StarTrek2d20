@@ -155,6 +155,13 @@ export class CareerStep {
     constructor(career?: Career) {
         this.career = career;
     }
+
+    public copy() {
+        const careerStep = new CareerStep(this.career);
+        careerStep.value = this.value;
+        careerStep.talent = this.talent == null ? null : this.talent.copy();
+        return careerStep;
+    }
 }
 
 export class MilestoneTalentChange {
@@ -397,6 +404,31 @@ export class Character extends Construct {
         return result;
     }
 
+    get localizedAssignment() {
+        let result = this.localizedAssignmentWithoutShip;
+
+        if (this.assignedShip) {
+            if (result) {
+                result += ", ";
+            }
+            result += this.assignedShip;
+        }
+        return result;
+    }
+
+    get localizedAssignmentWithoutShip() {
+        let result = "";
+        if (this.role != null) {
+            result = RolesHelper.instance.getRole(this.role, this.type)?.localizedName ?? "";
+            if (this.secondaryRole != null) {
+                let secondary = RolesHelper.instance.getRole(this.secondaryRole, this.type)?.localizedName ?? "";
+                result = result + " / " + secondary;
+            }
+        } else if (this.jobAssignment) {
+            result = this.jobAssignment;
+        }
+        return result;
+    }
     get mementos() {
         return [];
     }
@@ -1041,6 +1073,7 @@ export class Character extends Construct {
             event.attribute = e.attribute;
             event.discipline = e.discipline;
             event.focus = e.focus;
+            event.trait = e.trait;
             character.careerEvents.push(event);
         });
         character.jobAssignment = this.jobAssignment;
@@ -1085,17 +1118,9 @@ export class Character extends Construct {
             character.educationStep.talent = this.educationStep.talent ? this.educationStep.talent.copy() : undefined;
             character.educationStep.value = this.educationStep.value;
         }
-        if (this.careerStep) {
-            character.careerStep = new CareerStep(this.careerStep.career);
-            character.careerStep.value = this.careerStep.value;
-            character.careerStep.talent = this.careerStep.talent == null ? null : this.careerStep.talent.copy();
-        }
-        if (this.finishingStep) {
-            character.finishingStep = this.finishingStep.copy();
-        }
-        if (this.npcGenerationStep) {
-            character.npcGenerationStep = this.npcGenerationStep.copy();
-        }
+        character.careerStep = this.careerStep?.copy();
+        character.finishingStep = this.finishingStep?.copy();
+        character.npcGenerationStep = this.npcGenerationStep?.copy();
         character.supportingStep = this.supportingStep?.copy();
         this._focuses.forEach(f => {
             character._focuses.push(f);

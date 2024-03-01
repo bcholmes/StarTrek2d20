@@ -112,7 +112,7 @@ const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({charac
                                 <InputFieldAndLabel id="trait" labelName={t('Construct.other.trait')}
                                     value={careerEventStep.trait ?? ""}
                                     onChange={(t) => store.dispatch(setCharacterCareerEventTrait(t, context))} />
-                                <div className="text-white mt-3">{careerEvent.traitDescription}</div>
+                                <div className="text-white mt-3">{careerEvent.localizedTraitDescription}</div>
                             </div>
                         )
                         : undefined}

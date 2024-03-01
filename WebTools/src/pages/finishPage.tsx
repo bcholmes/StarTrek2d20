@@ -21,6 +21,7 @@ import store from '../state/store';
 import { setCharacterAdditionalTraits, setCharacterAssignedShip, setCharacterAssignment, setCharacterHouse, setCharacterLineage, setCharacterName, setCharacterPronouns, setCharacterRank } from '../state/characterActions';
 import AllCharacterValues from '../components/allCharacterValues';
 import { PageIdentity } from './pageIdentity';
+import ReactMarkdown from 'react-markdown';
 
 interface IFinishPageProperties {
     character: Character;
@@ -72,8 +73,8 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
         const roleRows = roleList.map((r, i) => {
             return (
                 <tr key={i}>
-                    <td className="selection-header-small">{r.name}</td>
-                    <td>{replaceDiceWithArrowhead(r.description)}</td>
+                    <td className="selection-header-small">{r.localizedName}</td>
+                    <td>{replaceDiceWithArrowhead(r.localizedDescription)}</td>
                     <td>
                         <CheckBox
                             text=""
@@ -139,12 +140,8 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
             : null;
 
         const roleDescription = (roleSelectionAllowed === true || roleSelectionAllowed == null || character.hasTalent("Multi-Discipline"))
-        ? (<p>
-                Select character's role and the ship on which they serve.
-                This choice will be based on your highest discipline(s).
-                The most suitable choice will appear on top, while the other options will be available as well in case you want to create a different character.
-            </p>)
-        : undefined;
+            ? (<ReactMarkdown>{t('FinishPage.role.instruction')}</ReactMarkdown>)
+            : undefined;
 
         return (
         <div className="mt-3">
@@ -199,7 +196,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
 
             return (<div className="col-lg-6 my-5">
                         <Header level={2}>{t('Construct.other.rank')}</Header>
-                        <p>Select your character's rank.</p>
+                        <ReactMarkdown>{t('FinishPage.rank.instruction')}</ReactMarkdown>
                         <table className="selection-list">
                             <tbody>
                                 {ranks}
@@ -291,7 +288,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
 
     const species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
 
-    const nameDescription = species == null ? "Custom species might have any naming protocol." : species.nameDescription;
+    const nameDescription = species == null ? "Custom species might have any naming protocol." : species.localizedNameDescription;
 
     const nameSuggestions = species?.nameSuggestions ?? ANY_NAMES;
     let names = [];
@@ -326,19 +323,16 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
             <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Finish} />
             <main>
                 <Header>{t('Page.title.finish')}</Header>
-                <p>
-                    Your character is finished. Export your character to PDF, or use the "Profile" option in the left-hand bar to see the chosen options and
-                    transcribe them manually on to a character sheet.
-                </p>
+                <ReactMarkdown>{t('FinishPage.instruction')}</ReactMarkdown>
                 <div className="my-4">
                     <Header level={2}>{t('Construct.other.name')}</Header>
                     <p>{nameDescription}</p>
                     <InputFieldAndLabel labelName={t('Construct.other.name')} id="name" onChange={(value) => onNameChanged(value)} value={character.name ?? ""} />
-                    <div className="text-white mt-1"><small><b>Suggestions: </b> <i>{suggestions}</i></small></div>
+                    <div className="text-white mt-1"><small><b>{t('Common.text.suggestions')}: </b> <i>{suggestions}</i></small></div>
 
                     <div className="mt-3">
                         <InputFieldAndLabel labelName={t('Construct.other.pronouns')} id="pronouns" onChange={(value) => onPronounsChanged(value)} value={character.pronouns ?? ""} />
-                        <div className="text-white mt-1"><small><b>Suggestions: </b> <i>she/her, they/them, etc.</i></small></div>
+                        <div className="text-white mt-1"><small><b>{t('Common.text.suggestions')}: </b> <i>she/her, they/them, etc.</i></small></div>
                     </div>
                 </div>
                 {extra}
@@ -347,13 +341,13 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
 
                     {renderRank()}
                     <div className="col-lg-6 my-5">
-                        <Header level={2}>ADDITIONAL TRAITS</Header>
-                        <p>Your character automatically has the following {character.baseTraits.length === 1 ? 'trait' : 'traits'}:</p>
+                        <Header level={2}>{t('Construct.other.additionalTraits')}</Header>
+                        <ReactMarkdown>{t(character.baseTraits.length === 1 ? 'FinishPage.trait.preamble_one' : 'FinishPage.trait.preamble_other')}</ReactMarkdown>
                         <ul>
                             {character.baseTraits.map((e,i) => { return (<li key={'trait-' + i}>{e}</li>); })}
                         </ul>
 
-                        <p>You can specify additional traits, here.</p>
+                        <ReactMarkdown>{t('FinishPage.trait.instruction')}</ReactMarkdown>
                         <InputFieldAndLabel labelName={t('Construct.other.traits')} id="traits" value={character?.additionalTraits ?? ""} onChange={(value) => onTraitsChanged(value)} />
 
                     </div>

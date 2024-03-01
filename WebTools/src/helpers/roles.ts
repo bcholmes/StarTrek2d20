@@ -5,6 +5,8 @@ import { CharacterType } from '../common/characterType';
 import { AdultPrerequisite, AllOfPrerequisite, AnyOfPrerequisite, CadetPrerequisite, CareersPrerequisite, CharacterTypePrerequisite, ChildPrerequisite, CivilianPrerequisite, EnlistedPrerequisite, AnyEraPrerequisite, IConstructPrerequisite, KlingonPrerequisite, NotPrerequisite, SourcePrerequisite } from './prerequisite';
 import { Career } from './careerEnum';
 import { Era } from './eras';
+import { makeKey } from '../common/translationKey';
+import i18next from 'i18next';
 
 export enum Role {
     // Core
@@ -130,6 +132,23 @@ export class RoleModel {
             }
         });
         return valid;
+    }
+
+    get isKlingon() {
+        let prerequisites = this.prerequisites.filter(p => p instanceof KlingonPrerequisite);
+        return prerequisites.length > 0;
+    }
+
+    get localizedName() {
+        const key = makeKey('Role.' + (this.isKlingon ? "klingon." : ""), Role[this.id]);
+        const localized = i18next.t(key);
+        return key === localized ? this.name : localized;
+    }
+
+    get localizedDescription() {
+        const key = makeKey('Role.' + (this.isKlingon ? "klingon." : ""), Role[this.id], ".description");
+        const localized = i18next.t(key);
+        return key === localized ? this.description : localized;
     }
 
     isKlingonRole() {

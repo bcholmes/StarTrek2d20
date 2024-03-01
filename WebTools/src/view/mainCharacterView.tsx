@@ -114,7 +114,7 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
     }
 
     function renderAssignment() {
-        return character.assignment;
+        return character.localizedAssignment;
     }
 
     function renderEquipment() {
