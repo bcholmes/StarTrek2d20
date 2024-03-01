@@ -227,11 +227,15 @@ class ExtrasCatalog {
         return this.items
             .filter(i => i.category === category && token.extras.indexOf(i.id) >= 0)
             .filter(i => i.id !== ExtraType.FerengiHeadFlap || back)
-            .map(i => {if (i.id === ExtraType.FerengiHeadFlap && DivisionColors.isDivisionColorsSupported(token.uniformEra)) {
+            .map(i => {if (i.id === ExtraType.FerengiHeadFlap) {
                 if (token.uniformEra === UniformEra.DominionWar) {
                     return i.svg.replace(DefaultRed, "#7d7d7d");
-                } else {
+                } else if (token.uniformEra === UniformEra.Ferengi) {
+                    return i.svg.replace(DefaultRed, "#0aaa71");
+                } else if (DivisionColors.isDivisionColorsSupported(token.uniformEra)) {
                     return i.svg.replace(DefaultRed, token.divisionColor);
+                } else {
+                    return i.svg;
                 }
             } else {
                 return i.svg
@@ -265,6 +269,11 @@ class ExtrasCatalog {
                     </g>
                 </svg>`;
         } else if (item.category === ExtraCategory.Headwear || item.category === ExtraCategory.Face) {
+            let headflapColour = "#0aaa71";
+            if (DivisionColors.isDivisionColorsSupported(token.uniformEra)) {
+                headflapColour = token.divisionColor;
+            }
+
             return `<svg viewBox="0 0 240 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <defs>
                         <clipPath id="extraClipPath-` + item.category + "-"  + item.id + `">
@@ -277,7 +286,7 @@ class ExtrasCatalog {
                     + (token.species === Species.Ferengi ? FerengiForehead.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor) : "")
                     + (DivisionColors.isDivisionColorsSupported(token.uniformEra)
                         ? item.svg.replace(DefaultRed, token.uniformEra === UniformEra.DominionWar ? "#7d7d7d" : token.divisionColor)
-                        : item.svg)
+                        : item.svg.replace(DefaultRed, headflapColour))
                     + (item.id === ExtraType.SecurityHelmet ? "" :EarCatalog.instance.getEar(token))
                     + `</g>
                     </g>

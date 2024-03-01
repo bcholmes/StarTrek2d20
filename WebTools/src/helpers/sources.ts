@@ -3,6 +3,7 @@ import { makeKey } from '../common/translationKey';
 
 export enum Source {
     Core,
+    Core2ndEdition,
     AlphaQuadrant,
     BetaQuadrant,
     GammaQuadrant,
@@ -27,7 +28,7 @@ export enum Source {
     LowerDecksCampaign,
     CaptainsLog,
     AnimatedSeries,
-
+    FederationKlingonWar,
 
     ContinuingMissions,
 
@@ -94,6 +95,7 @@ class Sources {
 
     private _sources: { [id: number]: SourceViewModel } = {
         [Source.Core]: new SourceViewModel(Source.Core, SourceType.CoreBook, "Core"),
+        [Source.Core2ndEdition]: new SourceViewModel(Source.Core2ndEdition, SourceType.CoreBook, "Core (2nd Ed.)", false),
         [Source.AlphaQuadrant]: new SourceViewModel(Source.AlphaQuadrant, SourceType.QuadrantBook, "Alpha Quadrant"),
         [Source.BetaQuadrant]: new SourceViewModel(Source.BetaQuadrant, SourceType.QuadrantBook, "Beta Quadrant"),
         [Source.GammaQuadrant]: new SourceViewModel(Source.GammaQuadrant, SourceType.QuadrantBook, "Gamma Quadrant"),
@@ -119,6 +121,7 @@ class Sources {
         [Source.CaptainsLog]: new SourceViewModel(Source.CaptainsLog, SourceType.CoreBook, "Captain's Log"),
         [Source.ContinuingMissions]: new SourceViewModel(Source.ContinuingMissions, SourceType.Unofficial, "Continuing Mission"),
         [Source.AnimatedSeries]: new SourceViewModel(Source.AnimatedSeries, SourceType.Expansion, "Animated Series"),
+        [Source.FederationKlingonWar]: new SourceViewModel(Source.FederationKlingonWar, SourceType.Expansion, "Federation-Klingon War", false),
     };
 
     getSources() {

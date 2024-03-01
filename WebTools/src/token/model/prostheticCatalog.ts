@@ -104,6 +104,7 @@ class ProstheticCatalog {
                         case HairType.MediumMaleCenterPart:
                         case HairType.ShortTeasedOverEyeStyle:
                         case HairType.PinnedUpHairWithPart:
+                        case HairType.CentrePart:
                             return AndorianAntennaFrontCovered.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
 
                         case HairType.FeminineDreadStyle:

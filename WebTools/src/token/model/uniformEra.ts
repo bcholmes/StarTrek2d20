@@ -43,6 +43,7 @@ export class UniformEraHelper {
         new UniformEraModel(UniformEra.Cardassian, "Cardassian"),
         new UniformEraModel(UniformEra.Civilian, "Civilian"),
         new UniformEraModel(UniformEra.Enterprise, "Enterprise"),
+        new UniformEraModel(UniformEra.Ferengi, "Ferengi"),
         new UniformEraModel(UniformEra.Klingon, "Klingon Armour"),
         new UniformEraModel(UniformEra.DominionWar, "Dominion War"),
         new UniformEraModel(UniformEra.LowerDecks, "Lower Decks"),

@@ -1,4 +1,5 @@
 import { Rank } from "../../helpers/ranks";
+import { BaseNeckProvider } from "./baseNeckProvider";
 import Swatch from "./swatch";
 import { Token } from "./token";
 
@@ -44,7 +45,7 @@ const KlingonRanks = {
     },
 }
 
-export abstract class BaseKlingonUniformPack {
+export abstract class BaseKlingonUniformPack extends BaseNeckProvider {
 
     getRankSwatches() {
         return [
