@@ -1713,6 +1713,10 @@
 
     "Talent.commandShip.soloDescription": "The ship has command and control systems allowing it to coordinate easily with allies during a crisis.",
 
+    "Talent.computerExpertise": "Computer Expertise",
+
+    "Talent.computerExpertise.description": "Whenever you attempt a Task that involves the programming or study of a computer system, you may add a bonus d20 to your pool.",
+
     "Talent.culturalFlexibility": "Cultural Flexibility",
 
     "Talent.culturalFlexibility.description": "Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",
@@ -1821,9 +1825,17 @@
 
     "Talent.independentPhaserSupply.soloDescription": "The ship’s phasers use an independent power supply, rather than drawing directly from the ship’s other power sources.",
 
+    "Talent.intenseScrutiny": "Intense Scrutiny",
+
+    "Talent.intenseScrutiny.description": "Whenever you succeed at a Task using Reason or Control as part of an Extended Task, you may ignore up to two Resistance for every Effect rolled.",
+
     "Talent.interrogation": "Interrogation",
 
     "Talent.interrogation.description": "When you succeed at a Task to coerce someone to reveal information in a social conflict, you will gain one bonus Momentum, which may only be spent on the Obtain Information Momentum Spend.",
+
+    "Talent.inTheNickOfTime": "In the Nick of Time",
+
+    "Talent.inTheNickOfTime.description": "Whenever you succeed at an Engineering or Science Task as part of an Extended Task, you score 1 additional Work for every Effect rolled.",
 
     "Talent.joined": "Joined",
 
@@ -1969,6 +1981,10 @@
 
     "Talent.technicalExpertise.description": "Whenever you attempt a Task assisted by the ship’s Computers or Sensors, you may re-roll one d20 (which may be the ship’s die).",
 
+    "Talent.testingATheory": "Testing a Theory",
+
+    "Talent.testingATheory.description": "When you attempt a Task using Engineering or Science, you may roll one additional d20, so long as you succeeded at a previous Task covering the same scientific or technological field earlier in the same adventure.",
+
     "Talent.theUshaan": "The Ushaan",
 
     "Talent.theUshaan.description": "You are experienced in the tradition of honor-dueling known as the Ushaan, having spilt much blood upon the ice. When you make a melee Attack, or are targeted by a melee Attack, and buy one or more d20s by adding to Threat, you may re-roll the dice pool for the Task. Further, you own an Ushaan-tor, a razor-sharp ice-miner’s tool used in these duels.",
@@ -2017,6 +2033,7 @@
     "Track.starfleet.sciences.description": "Somewhat isolated from the other Tracks, the Sciences track is primarily academic, with Starfleet Academy producing many accomplished scientists. Included within the sciences track, but separated by a distinct curriculum, is Starfleet Medical, training doctors, nurses, and counselors to serve aboard Starfleet vessels and facilities across the Federation.",
 
     "UniformEra.bynar": "Bynar",
+    "UniformEra.cardassian": "Cardassian Military",
     "UniformEra.civilian": "Civilian",
     "UniformEra.dominionWar": "Dominion War",
     "UniformEra.ferengi": "Ferengi",
