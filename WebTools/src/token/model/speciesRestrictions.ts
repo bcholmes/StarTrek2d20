@@ -156,6 +156,8 @@ class SpeciesRestrictions {
     static getDefaultHairType(species: Species) {
         if (species === Species.Efrosian) {
             return HairType.HighForeheadEfrosianStyle;
+        } else if (species === Species.Cardassian) {
+            return HairType.StraightCombedBackShort;
         } else {
             return this.getHairTypes(species)[0];
         }
