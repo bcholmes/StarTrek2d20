@@ -18,7 +18,8 @@ class Swatch {
         if (this.localizationKey == null) {
             return this.name;
         } else {
-            return i18next.t(this.localizationKey);
+            let result = i18next.t(this.localizationKey);
+            return result === this.localizationKey ? this.name : i18next.t(this.localizationKey);
         }
     }
 }

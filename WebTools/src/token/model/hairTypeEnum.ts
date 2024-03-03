@@ -4,7 +4,8 @@ export enum HairType {
     Balding, Receding, DeLeve, LongHair1, MediumLengthFemaleSidePart, MediumMaleCenterPart,
     MediumLengthFemaleStraight, ChinLengthCombBack, ChinLengthBob, ShortTeasedOverEyeStyle, FeminineDreadStyle, ShoulderLengthMostlyStraight,
     ShoulderLengthBob, CornRows, HighForeheadEfrosianStyle, PinnedUpHairWithPart, ShavedSides,
-    KlingonHair1, KlingonHair2, KlingonHair3, RomulanPeakedHair, Mature, CentrePart, StraightCombedBackShort
+    KlingonHair1, KlingonHair2, KlingonHair3, RomulanPeakedHair, Mature, CentrePart,
+    StraightCombedBackShort, StraightCombedBackMedium
 }
 
 export const allHairTypes = (): HairType[] => {
@@ -18,5 +19,6 @@ export const isTallForeheadHair = (hairType: HairType) => {
         hairType === HairType.Receding ||
         hairType === HairType.KlingonHair1 || hairType === HairType.KlingonHair2 || hairType === HairType.KlingonHair3 ||
         hairType === HairType.StraightCombedBackShort ||
+        hairType === HairType.StraightCombedBackMedium ||
         HairType[hairType].indexOf("HighForehead") === 0;
 }
