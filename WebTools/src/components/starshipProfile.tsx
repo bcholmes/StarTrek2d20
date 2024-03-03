@@ -8,6 +8,7 @@ import { Stereotype } from "../common/construct";
 import { Source } from "../helpers/sources";
 import { System } from "../helpers/systems";
 import { Department } from "../helpers/departments";
+import { Starship } from "../common/starship";
 
 interface IStarshipProfileProperties {
     era?: Era;
@@ -18,12 +19,12 @@ interface IStarshipProfileProperties {
 const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era, close}) => {
 
     const { t } = useTranslation();
-    let starship = store.getState().starship?.starship;
+    let starship = store.getState().starship?.starship as Starship;
     let containerClass = showProfile ? "sheet-container sheet-container-visible pe-3" :  "sheet-container sheet-container-hidden pe-3";
     const eraModel = era != null ? ErasHelper.getEra(era) : null;
 
-    const talents = starship.getTalentSelectionList().map((t, i) => {
-        let name = starship.stereotype === Stereotype.SoloStarship ? t.talent.localizedNameForSource(Source.CaptainsLog) : t.localizedDisplayName;
+    const talents = starship?.getTalentSelectionList().map((t, i) => {
+        let name = starship?.stereotype === Stereotype.SoloStarship ? t.talent.localizedNameForSource(Source.CaptainsLog) : t.talent.localizedDisplayName;
         return (<div key={'talent-' + i}>{name}</div>)
     });
 
@@ -58,6 +59,13 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                 <div className="sheet-data">{starship?.name ?? ""}</div>
                             </div>
 
+                            {starship?.stereotype === Stereotype.SoloStarship
+                                ? undefined
+                                : (<div className="sheet-panel d-flex">
+                                        <div className="sheet-label-purple text-uppercase">{t('Construct.other.serviceDate')}</div>
+                                        <div className="sheet-data">{starship?.serviceYear ?? ""}</div>
+                                    </div>)}
+
                             <div className="sheet-panel d-flex">
                                 <div className="sheet-label-purple text-uppercase">{t('Construct.other.registry')}</div>
                                 <div className="sheet-data">{starship?.registry ?? ""}</div>
@@ -65,13 +73,27 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
 
                             <div className="sheet-panel d-flex">
                                 <div className="sheet-label-purple text-uppercase">{t('Construct.other.spaceFrame')}</div>
-                                <div className="sheet-data">{starship?.spaceframeModel?.localizedName ?? ""}</div>
+                                <div className="sheet-data">{starship?.localizedClassName ?? ""}</div>
                             </div>
 
                             <div className="sheet-panel d-flex">
                                 <div className="sheet-label-purple text-uppercase">{t('Construct.other.scale')}</div>
                                 <div className="sheet-data">{starship?.spaceframeModel?.scale ?? ""}</div>
                             </div>
+
+                            {starship?.stereotype === Stereotype.SoloStarship
+                                ? undefined
+                                : (<div className="sheet-panel d-flex">
+                                        <div className="sheet-label-purple text-uppercase">{t('Construct.other.serviceDate')}</div>
+                                        <div className="sheet-data">{starship?.missionProfileModel?.localizedName ?? ""}</div>
+                                    </div>)}
+
+                            {starship?.stereotype === Stereotype.SoloStarship
+                                ? undefined
+                                : (<div className="sheet-panel d-flex">
+                                        <div className="sheet-label-purple text-uppercase">{t('Construct.other.refits')}</div>
+                                        <div className="sheet-data">{starship?.refitsAsString() ?? ""}</div>
+                                    </div>)}
 
                             <div className="sheet-panel d-flex">
                                 <div className="sheet-label-purple text-uppercase">{t('Construct.other.traits')}</div>
@@ -86,7 +108,7 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-purple text-uppercase">{t('Construct.system.comms')}</div>
                                             <div className="sheet-data text-center">
-                                                {starship.getSystemValue(System.Comms)}
+                                                {starship?.getSystemValue(System.Comms)}
                                             </div>
                                         </div>
                                     </div>
@@ -95,7 +117,7 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-purple text-uppercase">{t('Construct.system.computer')}</div>
                                             <div className="sheet-data text-center">
-                                                {starship.getSystemValue(System.Computer)}
+                                                {starship?.getSystemValue(System.Computer)}
                                             </div>
                                         </div>
                                     </div>
@@ -104,7 +126,7 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-purple text-uppercase">{t('Construct.system.engines')}</div>
                                             <div className="sheet-data text-center">
-                                                {starship.getSystemValue(System.Engines)}
+                                                {starship?.getSystemValue(System.Engines)}
                                             </div>
                                         </div>
                                     </div>
@@ -113,7 +135,7 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-purple text-uppercase">{t('Construct.system.sensors')}</div>
                                             <div className="sheet-data text-center">
-                                                {starship.getSystemValue(System.Sensors)}
+                                                {starship?.getSystemValue(System.Sensors)}
                                             </div>
                                         </div>
                                     </div>
@@ -122,7 +144,7 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-purple text-uppercase">{t('Construct.system.structure')}</div>
                                             <div className="sheet-data text-center">
-                                                {starship.getSystemValue(System.Structure)}
+                                                {starship?.getSystemValue(System.Structure)}
                                             </div>
                                         </div>
                                     </div>
@@ -131,7 +153,7 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-purple text-uppercase">{t('Construct.system.weapons')}</div>
                                             <div className="sheet-data text-center">
-                                                {starship.getSystemValue(System.Weapons)}
+                                                {starship?.getSystemValue(System.Weapons)}
                                             </div>
                                         </div>
                                     </div>
@@ -140,7 +162,7 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-orange text-uppercase">{t('Construct.department.command')}</div>
                                             <div className="sheet-data text-center">
-                                                {starship.departments[Department.Command]}
+                                                {starship?.departments[Department.Command]}
                                             </div>
                                         </div>
                                     </div>
@@ -149,7 +171,7 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-orange text-uppercase">{t('Construct.department.conn')}</div>
                                             <div className="sheet-data text-center">
-                                                {starship.departments[Department.Conn]}
+                                                {starship?.departments[Department.Conn]}
                                             </div>
                                         </div>
                                     </div>
@@ -158,7 +180,7 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-orange text-uppercase">{t('Construct.department.security')}</div>
                                             <div className="sheet-data text-center">
-                                                {starship.departments[Department.Security]}
+                                                {starship?.departments[Department.Security]}
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +189,7 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-orange text-uppercase">{t('Construct.department.engineering')}</div>
                                             <div className="sheet-data text-center">
-                                                {starship.departments[Department.Engineering]}
+                                                {starship?.departments[Department.Engineering]}
                                             </div>
                                         </div>
                                     </div>
@@ -176,7 +198,7 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-orange text-uppercase">{t('Construct.department.science')}</div>
                                             <div className="sheet-data text-center">
-                                                {starship.departments[Department.Science]}
+                                                {starship?.departments[Department.Science]}
                                             </div>
                                         </div>
                                     </div>
@@ -185,7 +207,7 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-orange text-uppercase">{t('Construct.department.medicine')}</div>
                                             <div className="sheet-data text-center">
-                                                {starship.departments[Department.Medicine]}
+                                                {starship?.departments[Department.Medicine]}
                                             </div>
                                         </div>
                                     </div>
@@ -202,9 +224,7 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>);

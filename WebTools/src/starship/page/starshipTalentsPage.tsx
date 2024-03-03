@@ -31,7 +31,7 @@ class StarshipTalentsPage extends React.Component<ISimpleStarshipPageProperties,
                     construct={this.props.starship}
                     onSelection={(talents) => store.dispatch(setAdditionalTalents(talents))} />)
                 : null}
-            <div className="text-end">
+            <div className="text-end mt-3">
                 <Button onClick={() => this.nextPage()}>Next</Button>
             </div>
         </div>);

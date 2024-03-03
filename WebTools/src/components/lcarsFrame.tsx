@@ -46,7 +46,8 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
             activePage === PageIdentity.StarshipWeaponsSelection ||
             activePage === PageIdentity.StarshipTalentSelection ||
             activePage === PageIdentity.FinalStarshipDetails ||
-            activePage === PageIdentity.SimpleStarship) {
+            activePage === PageIdentity.SimpleStarship ||
+            isSoloStarshipPage()) {
             return true;
         } else {
             return false;
@@ -78,8 +79,7 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
             activePage === PageIdentity.TalentsOverview ||
             activePage === PageIdentity.SystemGeneration ||
             activePage === PageIdentity.SectorDetails ||
-            activePage === PageIdentity.StarSystemDetails ||
-            isStarshipPage()) {
+            activePage === PageIdentity.StarSystemDetails) {
             return false;
         } else {
             return true;
@@ -143,7 +143,7 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
                     </div>
                     <div className="lcar-content-action" role="button" tabIndex={0}>
                         <div id="profile-button" className={'lcar-content-profile ' + (isProfileSupportedForPage() ? '' : 'd-none')} onClick={ () => toggleProfile() }>{t('Lcars.profile')}</div>
-                        {isSoloStarshipPage()
+                        {isStarshipPage()
                             ? (<StarshipProfile showProfile={showProfile} close={() => setShowProfile(false)}/>)
                             : (<CharacterSheet showProfile={showProfile} close={() => setShowProfile(false)} storeBased={true}/>)}
                     </div>

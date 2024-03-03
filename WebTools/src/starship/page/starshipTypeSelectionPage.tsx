@@ -41,7 +41,8 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
     render() {
         const { t } = this.props;
         let typeSelection = hasSource(Source.KlingonCore)
-            ? (<div className="my-3">
+            ? (<div className="col-lg-6">
+                <div className="my-3">
                     <Header level={2}>{t('StarshipTypeSelection.shipPolity')}</Header>
                     <p>{t('StarshipTypeSelection.whatShipPolity')}</p>
                     <div>
@@ -50,7 +51,8 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                             defaultValue={ this.state.type.type }
                             onChange={(index) => this.selectType(CharacterTypeModel.getByType(index as number)) }/>
                     </div>
-                </div>)
+                </div>
+            </div>)
             : undefined;
 
         let buildTypeSelection = (<div className="my-3">
@@ -77,9 +79,7 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                 <div>
                     {this.renderServiceYear()}
                     <div className="row">
-                        <div className="col-lg-6">
-                            {typeSelection}
-                        </div>
+                        {typeSelection}
                         <div className="col-lg-6">
                             {buildTypeSelection}
                         </div>

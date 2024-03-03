@@ -466,7 +466,7 @@ export class Starship extends Construct {
                     result[i] = d;
                 });
             } else {
-                frame.departments.forEach((d, i) => {
+                frame?.departments.forEach((d, i) => {
                     result[i] = d;
                 });
 
