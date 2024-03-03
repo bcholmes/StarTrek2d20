@@ -1,5 +1,5 @@
 import React from 'react';
-import packageJson from '../package.alias.json';
+import packageJson from '../../package.json';
 
 export class AppVersion extends React.Component<{}, {}> {
 
