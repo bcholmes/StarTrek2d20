@@ -5,7 +5,7 @@
     padding: 15px;
     border-radius: 20px;
     text-align: right;
-    font-family: lcars;
+    font-family: var(--lcars-font);
     font-size: x-large;
     width: 250px;
     margin-top: 30px;
@@ -20,7 +20,7 @@
 
 .btn {
     text-align: right;
-    font-family: lcars;
+    font-family: var(--lcars-font);
     font-size: x-large;
     text-transform: uppercase;
 }
@@ -112,7 +112,7 @@ h1 .btn-link {
     background-color: #B5B3D8;
     color: black !important;
     text-align: right;
-    font-family: lcars;
+    font-family: var(--lcars-font);
     font-size: x-large;
     cursor: pointer;
     opacity: 0.8;
@@ -315,7 +315,7 @@ div.align-items-stretch > label.textinput-label {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     margin-right: 5px;
-    font-family: lcars;
+    font-family: var(--lcars-font);
     font-size: large;
     min-width: 60px;
     text-align: right;
