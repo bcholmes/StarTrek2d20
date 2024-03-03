@@ -12,6 +12,15 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240303</b>
+                <ul>
+                    <li>
+                        A number of updates for token generation. New species! New uniforms!
+                    </li>
+                    <li>
+                        Minor internal tweaks, and prep for new books.
+                    </li>
+                </ul>
                 <b>v1.240228</b>
                 <ul>
                     <li>
@@ -198,29 +207,6 @@ class News extends React.Component<INewsProperties, {}> {
                         required some fairly broad changes to the code, so please report any issues that have popped up.</li>
                     <li>Some new species for the token generator.</li>
                     <li>A few bug fixes that people have reported.</li>
-                </ul>
-                <b>v1.230820</b>
-                <ul>
-                    <li>More foundational work as prep for supporting Captain's Log features.</li>
-                    <li>New features for the token generator.</li>
-                </ul>
-                <b>v1.230812</b>
-                <ul>
-                    <li>A few extra options on the Token Generator.</li>
-                </ul>
-                <b>v1.230806</b>
-                <ul>
-                    <li>Minor tweaks.</li>
-                </ul>
-                <b>v1.230805</b>
-                <ul>
-                    <li>A few more lower decks options</li>
-                </ul>
-                <b>v1.230804</b>
-                <ul>
-                    <li>Lower Decks spaceframes</li>
-                    <li>Small improvements to Token generation (particularly enlisted uniforms for Monster Maroon uniforms).</li>
-                    <li>Michael Prangenberg contributed some improvements to the Foundry VTT export.</li>
                 </ul>
 
                 <div className="text-center">
