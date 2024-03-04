@@ -514,6 +514,29 @@ export class Specializations {
                     "That's the problem with your species: you don't know how to negotiate!",
                     "In a year, I'll have my own moon"
                 ], 0.0),
+            new SpecializationModel(Specialization.FerengiEliminator, NpcCharacterType.Ferengi, "Ferengi Eliminator",
+                [Attribute.Daring, Attribute.Fitness, Attribute.Control],
+                Skill.Security,
+                [
+                    "Stealth", "Hand-to-Hand Combat", "Melee Weapons", "Explosives", "Infiltration", "Security Systems"
+                ],
+                [
+                    "Operations Planning", "Starship Weapons", "Shield Modulation", "Hacking", "Ground Tactics"
+                ],
+                [
+                    "I work best alone",
+                    "I hope this is a secure channel",
+                    "I've never seen a sloppier, more amateurish operation in my life... If you ever do something like this again -- count me in!",
+                    "Eliminators have a certain code, after all. It is dishonorable to kill someone if you aren't being paid.",
+                    "Assassin?... That sounds so exotic... I was just a murderer.",
+                    "The important thing to know about an assassination or an attempted assassination is not who fired the shot, but who paid for the bullet.",
+                    "Being an elimninator means knowing when to kill -- and when not to kill.",
+                    "Eliminators take no pride in fighting fairly. We take pride in winning.",
+                    "Think of it as a hobby. Something you do to relax. You're an 'elimination enthusiast.'",
+                    "It's nearly impossible to defend against an assassin who's willing to die for his cause.",
+                    "An eliminator that can go where they please is not to be taken lightly.",
+                    "Eliminators are meant to be quiet. Precise. We do not go announcing conspiracies from the rooftops to all who pass by."
+                ], 0.0),
             new SpecializationModel(Specialization.FerengiDaiMon, NpcCharacterType.Ferengi, "Ferengi DaiMon",
                 [Attribute.Control, Attribute.Daring, Attribute.Presence],
                 Skill.Command,

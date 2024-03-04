@@ -65,6 +65,8 @@ export default class UniformVariantRestrictions {
                     ].indexOf(rankIndicator) >= 0;
 
             case UniformEra.Civilian:
+            case UniformEra.Ferengi:
+            case UniformEra.Cardassian:
             case UniformEra.Suliban:
             case UniformEra.Romulan:
                 return [ Rank.None ].indexOf(rankIndicator) >= 0;
@@ -77,8 +79,7 @@ export default class UniformVariantRestrictions {
     }
 
     static isStraightenedNeck(uniformEra: UniformEra) {
-        return uniformEra != null &&
-            uniformEra !== UniformEra.MonsterMaroon && uniformEra !== UniformEra.Klingon;
+        return uniformEra != null && uniformEra !== UniformEra.Klingon;
     }
 
 }

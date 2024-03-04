@@ -386,8 +386,10 @@ export class MonsterMaroonUniformPack extends BaseNeckProvider implements IUnifo
 
     getUniformSwatches() {
         return [
-            new Swatch(BodyType.AverageMale, "Average Male", (token) => MonsterMaroonUniformPack.decorateUniformSwatch(this.getNeck(BodyType.AverageMale, token.skinColor) + (this.isEnlisted(token) ? MonsterMaroon.averageMaleBodyEnlisted : MonsterMaroon.averageMaleBody), BodyType.AverageMale, token), "BodyType.averageMale"),
-            new Swatch(BodyType.AverageFemale, "Average Female", (token) => MonsterMaroonUniformPack.decorateUniformSwatch(this.getNeck(BodyType.AverageFemale, token.skinColor) + (this.isEnlisted(token) ? MonsterMaroon.averageFemaleEnlistedBody : MonsterMaroon.averageFemaleBody), BodyType.AverageFemale, token), "BodyType.averageFemale"),
+            new Swatch(BodyType.AverageMale, "Average Male", (token) => MonsterMaroonUniformPack.decorateUniformSwatch(this.getNeck(BodyType.AverageMale, token.skinColor, undefined, UniformEra.MonsterMaroon)
+                + (this.isEnlisted(token) ? MonsterMaroon.averageMaleBodyEnlisted : MonsterMaroon.averageMaleBody), BodyType.AverageMale, token), "BodyType.averageMale"),
+            new Swatch(BodyType.AverageFemale, "Average Female", (token) => MonsterMaroonUniformPack.decorateUniformSwatch(this.getNeck(BodyType.AverageFemale, token.skinColor, undefined, UniformEra.MonsterMaroon)
+                + (this.isEnlisted(token) ? MonsterMaroon.averageFemaleEnlistedBody : MonsterMaroon.averageFemaleBody), BodyType.AverageFemale, token), "BodyType.averageFemale"),
         ];
     }
 
@@ -529,7 +531,7 @@ export class MonsterMaroonUniformPack extends BaseNeckProvider implements IUnifo
 
     getUniformAndVariantBody(token: Token) {
         let result = "";
-        let neck = this.getNeck(token.bodyType, token.skinColor, token.species)
+        let neck = this.getNeck(token.bodyType, token.skinColor, token.species, UniformEra.MonsterMaroon)
         if (token.bodyType === BodyType.AverageMale) {
             result = this.isEnlisted(token) ? MonsterMaroon.averageMaleBodyEnlisted : MonsterMaroon.averageMaleBody;
         } else {
@@ -549,8 +551,10 @@ export class MonsterMaroonUniformPack extends BaseNeckProvider implements IUnifo
     getUniformVariantSwatches(token: Token) {
         if (token.bodyType === BodyType.AverageFemale && DivisionColors.getDivision(UniformEra.MonsterMaroon, token.divisionColor) === "Medical") {
             return [
-                new Swatch(UniformVariantType.Base, "Base", (token) => UniformCatalog.decorateSwatch(this.getNeck(BodyType.AverageFemale, token.skinColor) + (this.isEnlisted(token) ? MonsterMaroon.averageFemaleEnlistedBody : MonsterMaroon.averageFemaleBody), 100000 + UniformVariantType.Base, token)),
-                new Swatch(UniformVariantType.Variant1, "Medical", (token) => UniformCatalog.decorateSwatch(this.getNeck(BodyType.AverageFemale, token.skinColor) + MonsterMaroon.averageFemaleMedicalBody, 100000 + UniformVariantType.Variant1, token)),
+                new Swatch(UniformVariantType.Base, "Base", (token) => UniformCatalog.decorateSwatch(this.getNeck(BodyType.AverageFemale, token.skinColor, undefined, UniformEra.MonsterMaroon)
+                    + (this.isEnlisted(token) ? MonsterMaroon.averageFemaleEnlistedBody : MonsterMaroon.averageFemaleBody), 100000 + UniformVariantType.Base, token)),
+                new Swatch(UniformVariantType.Variant1, "Medical", (token) => UniformCatalog.decorateSwatch(this.getNeck(BodyType.AverageFemale, token.skinColor, undefined, UniformEra.MonsterMaroon)
+                    + MonsterMaroon.averageFemaleMedicalBody, 100000 + UniformVariantType.Variant1, token)),
             ];
         } else {
             return [];

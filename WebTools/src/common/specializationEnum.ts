@@ -24,6 +24,8 @@ export enum Specialization {
 
     FerengiMerchant,
     FerengiDaiMon,
+    FerengiLiquidator,
+    FerengiEliminator,
 
     CardassianSoldier,
     CardassianGul,
