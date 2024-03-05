@@ -413,7 +413,22 @@ const speciesSpecificValues: { [species : number ]: string[]} = {
     ],
     [Species.Nausicaan] : [
         "Pain is Pleasure"
+    ],
+    [Species.Pakled] : [
+        "We are smart",
+        "We look for things. Things that make us go!",
+        "Pakleds are Strong!",
+        "Big Boomers Make Big Boom",
+        "It is broken!",
+        "You think we're stupid, but we're smart!",
+        "We want to be nothing if not persistent.",
+        "We want them.",
+        "You underestimate me! Because you are not smart!",
+        "I tricked you!",
+        "Give me all your technology, or I will take it from you!",
+        "The Pakleds are a force! One that you reckon with!"
     ]
+
 }
 
 
@@ -470,7 +485,8 @@ export class NpcGenerator {
         if (specialization.id === Specialization.Admiral) {
             careers = [ Career.Veteran ];
         } else if (specialization.id === Specialization.FerengiDaiMon || specialization.id === Specialization.KlingonShipCaptain
-                || specialization.id === Specialization.CardassianGul || specialization.id === Specialization.SonaCommandOfficer) {
+                || specialization.id === Specialization.CardassianGul || specialization.id === Specialization.SonaCommandOfficer
+                || specialization.id === Specialization.Captain) {
             careers = [ Career.Experienced, Career.Experienced, Career.Experienced, Career.Veteran ];
         }
 
@@ -716,6 +732,8 @@ export class NpcGenerator {
         let ranks = RanksHelper.instance().getSortedRanks(character);
         if (specialization.id === Specialization.Admiral) {
             ranks = RanksHelper.instance().getAdmiralRanks();
+        } else if (specialization.id === Specialization.Captain) {
+            ranks = [ RanksHelper.instance().getRank(Rank.Captain) ];
         } else if (specialization.id === Specialization.FerengiDaiMon) {
             ranks = [ RanksHelper.instance().getRank(Rank.DaiMon) ];
         } else if (specialization.id === Specialization.KlingonShipCaptain) {

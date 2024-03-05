@@ -3537,7 +3537,7 @@ export class Talents {
             1,
             "Klingon", true),
         new TalentModel(
-            "Threatening 3",
+            "Threatening 3 (Klingon)",
             "When the player characters encounter the Klingon character, add three Threat to the Threat pool.",
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa)],
             1,
@@ -3912,6 +3912,30 @@ export class Talents {
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Smuggler), new DisciplinePrerequisite(Skill.Conn, 3)],
             1,
             "General", true),
+        new TalentModel(
+            "Considered Every Outcome",
+            "The character is a keenly analytical commander, regarding every situation from myriad different angles and considering the advice of her senior staff before coming to a command decision. When they succeed at a Reason + Command Task, the character scores one additional Momentum than normal.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Captain), new AttributePrerequisite(Attribute.Reason, 4)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Tough 1",
+            "This adversary’s Resistance against melee attacks is increased by 1.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpeciesPrerequisite(Species.Pakled, false)],
+            1,
+            "General", true),
+        new TalentModel(
+            "Threatening (Pakled)",
+            "When a Pakled adds dice to a pool by spending Threat, they may re-roll a single d20.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpeciesPrerequisite(Species.Pakled, false)],
+            1,
+            "Pakled", true),
+        new TalentModel(
+            "Klingon Friends",
+            "Once per combat encounter, the character may add two Minor Klingon adversaries to the encounter without spending Threat.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpeciesPrerequisite(Species.Pakled, false)],
+            1,
+            "Pakled", true),
     ];
 
     getTalents() {

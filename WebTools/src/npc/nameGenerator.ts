@@ -32,6 +32,10 @@ const names = [
         "names": require('./names-orion.json')
     },
     {
+        "species": "Pakled",
+        "names": require('./names-pakled.json')
+    },
+    {
         "species": "Reman",
         "names": require('./names-reman.json')
     },

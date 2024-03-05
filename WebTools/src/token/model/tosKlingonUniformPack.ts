@@ -1,11 +1,10 @@
 import { Rank } from "../../helpers/ranks";
-import { Species } from "../../helpers/speciesEnum";
 import { BaseKlingonUniformPack } from "./baseKlingonUniformPack";
 import { BodyType } from "./bodyTypeEnum";
 import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
 import { Token } from "./token";
-import UniformCatalog, { BaseFemaleBolianNeckRidge, BaseMaleBodyBolianNeckRidge, DefaultRed } from "./uniformCatalog";
+import UniformCatalog, { DefaultRed } from "./uniformCatalog";
 import { UniformEra } from "./uniformEra";
 import { IUniformPack } from "./uniformPack";
 import { UniformVariantType } from "./uniformVariantTypeEnum";

@@ -14,6 +14,7 @@ export enum Specialization {
     StarfleetScientist,
     Engineer,
     IntelligenceOfficer,
+    Captain,
 
     KlingonWarrior,
     KlingonWeaponsOfficer,
@@ -39,12 +40,14 @@ export enum Specialization {
     Bureaucrat,
     Colonist,
     FederationAmbassador,
+    IndependentTraderCaptain,
 
     OrionPirate,
     InformationBroker,
     BruteForHire,
     Bodyguard,
     Smuggler,
+    SketchyTraderCaptain,
 }
 
 export const allSpecializations = () => {

@@ -79,6 +79,23 @@ export class Specializations {
                 "A declaration of war is a sign of failure",
                 "Ensure the successful completion of the mission. All other considerations are secondary. Your crew is expendable."],
                 1),
+            new SpecializationModel(Specialization.Captain, NpcCharacterType.Starfleet, "Captain",
+                [Attribute.Control, Attribute.Presence, Attribute.Reason],
+                Skill.Command,
+                ["Starship Tactics", "Evasive Strategies", "Ship Recognition", "Starfleet Protocols"],
+                ["Risk Assessment", "Mission Parameters", "Diplomacy", "Starfleet Command Structure", "Starfleet Ships and their Captains",
+                "Outside-of-the-box Tactics", "Current Border Readiness", "Negotiation", "Military Intelligence",
+                "Current Exploration Priorities", "Recent Treaties", "Operational Efficiency",
+                "Interstellar Law"],
+                ["To seek out new life and new civilizations",
+                "Give me a tall ship and a star to steer her by",
+                "I've sent a lot of good officers to their deaths",
+                "Do not underestimate our enemy",
+                "Treat this ship like a lady... and she'll always bring you home.",
+                "People don't enter Starfleet to become commanders, or admirals for that matter. It's the captain's chair that everyone has their eye on.",
+                "You don't respect the chair. You know why? Because you're not ready for it.",
+                "Turn off that damned noise! Go to yellow alert!"],
+                1),
             new SpecializationModel(Specialization.Conn, NpcCharacterType.Starfleet, "Conn",
                 [Attribute.Daring, Attribute.Control],
                 Skill.Conn,
@@ -457,6 +474,25 @@ export class Specializations {
                     "That's outrageous!!",
                     "For the good of the empire!"
                 ], 0.5),
+            new SpecializationModel(Specialization.SketchyTraderCaptain, NpcCharacterType.RogueRuffianMercenary, "Sketchy Trader Captain",
+                [Attribute.Control, Attribute.Insight, Attribute.Presence],
+                Skill.Conn,
+                [
+                    "Business", "Appraisal", "Negotiation", "Bargaining", "Finance", "Opportunistic Insight", "Trading", "Cargo Carrying"
+                ],
+                [
+                    "Weakness Detection", "Ship's Sensors", "Listening", "Information Gathering", "Valuation"
+                ],
+                [
+                    "Life is like loading twice your cargo weight on to your spacecraft. If it's canaries and you can keep half of them flying all the time, you're all right.",
+                    "It's planet forbidden!",
+                    "Is that an offer or a joke?",
+                    "There's always a market for an ingenious trader.",
+                ], 0.0,
+                [
+                    Species.Ferengi, Species.Human, Species.Nausicaan, Species.Orion, Species.Pakled,
+                    Species.Tellarite, Species.Yridian
+                ]),
             new SpecializationModel(Specialization.FerengiMerchant, NpcCharacterType.Ferengi, "Ferengi Merchant",
                 [Attribute.Control, Attribute.Insight, Attribute.Presence],
                 Skill.Command,
