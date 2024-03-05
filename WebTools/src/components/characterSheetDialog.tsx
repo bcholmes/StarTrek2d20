@@ -7,6 +7,7 @@ import { ModalControl } from './modal';
 import { character } from '../common/character';
 import { Construct } from '../common/construct';
 import { getNavigatorLanguage } from '../i18n/config';
+import fontkit from '@pdf-lib/fontkit';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -63,11 +64,22 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
     }
 
     private async exportPdf() {
-        const sheet = this.state['selection'];
+        const sheet: ICharacterSheet = this.state['selection'];
         if (sheet) {
 
             const existingPdfBytes = await fetch(sheet.getPdfUrl()).then(res => res.arrayBuffer())
             const pdfDoc = await PDFDocument.load(existingPdfBytes)
+
+            if (sheet.getLanguage() === 'ru') {
+                pdfDoc.registerFontkit(fontkit);
+                const lcarsFontBytes = await fetch("/static/font/bebas-neue-cyr.ttf").then(res => res.arrayBuffer());
+                const lcarsFont =  await pdfDoc.embedFont(lcarsFontBytes)
+                const form = pdfDoc.getForm()
+                const rawUpdateFieldAppearances = form.updateFieldAppearances.bind(form);
+                form.updateFieldAppearances = function () {
+                    return rawUpdateFieldAppearances(lcarsFont);
+                };
+            }
 
             await sheet.populate(pdfDoc, this.props.construct);
 
