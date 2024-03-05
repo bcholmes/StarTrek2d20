@@ -9,7 +9,8 @@
     line-height: 1;
   }
 
-  .sheet-selection-item:not(:has([src='/static/img/sheets/TNG_StarTrek_ru_Character_Sheet.png'])) {
+  // temporary hide non-ru sheets
+  .sheet-selection-item:not(:has([src$='/TNG_StarTrek_ru_Character_Sheet.png'])) {
     display: none;
   }
 }
