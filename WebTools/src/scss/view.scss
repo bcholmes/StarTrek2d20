@@ -9,7 +9,7 @@
 
 .view-field-label {
     color: $lcars-purple;
-    font-family: lcars;
+    font-family: var(--lcars-font);
     font-size: 1.6rem;
     text-transform: uppercase;
 }
