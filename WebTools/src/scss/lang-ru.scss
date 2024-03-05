@@ -8,4 +8,8 @@
   .stat-value, .pill-left, .pill-right {
     line-height: 1;
   }
+
+  .sheet-selection-item:not(:has([src='/static/img/sheets/TNG_StarTrek_ru_Character_Sheet.png'])) {
+    display: none;
+  }
 }
