@@ -1,5 +1,5 @@
 ﻿import {Career} from './careerEnum';
-import {Role, RolesHelper} from './roles';
+import {Role} from './roles';
 import {Era} from './eras';
 import {Source} from './sources';
 import {Track} from './trackEnum';
