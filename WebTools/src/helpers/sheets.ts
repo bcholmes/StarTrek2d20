@@ -115,6 +115,9 @@ export interface ICharacterSheet {
 }
 
 abstract class BasicSheet implements ICharacterSheet {
+
+    formFont: PDFFont;
+
     getLanguage(): string {
         return "en";
     }
@@ -127,7 +130,27 @@ abstract class BasicSheet implements ICharacterSheet {
     getPdfUrl(): string {
         throw new Error('Method not implemented.');
     }
+
+    getDefaultFontPath() {
+        return "/static/font/bebas-neue-cyr.ttf";
+    }
+
+    async initializeFonts(pdf: PDFDocument) {
+
+        pdf.registerFontkit(fontkit);
+        const lcarsFontBytes = await fetch(this.getDefaultFontPath()).then(res => res.arrayBuffer());
+        const lcarsFont =  await pdf.embedFont(lcarsFontBytes)
+        this.formFont = lcarsFont;
+        const form = pdf.getForm()
+        const rawUpdateFieldAppearances = form.updateFieldAppearances.bind(form);
+        form.updateFieldAppearances = function () {
+            return rawUpdateFieldAppearances(lcarsFont);
+        };
+
+    }
+
     async populate(pdf: PDFDocument, construct: Construct) {
+        await this.initializeFonts(pdf);
         const form = pdf.getForm();
         if (construct.name) {
             pdf.setTitle(construct.name);
@@ -369,7 +392,7 @@ class CaptainsLogStarshipSheet extends BasicStarshipSheet {
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {
-        super.populate(pdf, construct);
+        await super.populate(pdf, construct);
         let starship = construct as Starship;
 
         SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(314.0, 216), rgb(119.0/255, 117.0/255.0, 90.0/255.0), 0.6, 1), starship);
@@ -388,7 +411,7 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {
-        super.populate(pdf, construct);
+        await super.populate(pdf, construct);
         let starship = construct as Starship;
 
         SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(43.5, 290.25), rgb(245.0/255, 157.0/255.0, 8.0/255.0)), starship);
@@ -407,7 +430,7 @@ class StandardTosStarshipSheet extends BasicStarshipSheet {
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {
-        super.populate(pdf, construct);
+        await super.populate(pdf, construct);
         let starship = construct as Starship;
 
         SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(32, 240.0), rgb(237.0/255, 27.0/255.0, 47.0/255.0), 0.85), starship);
@@ -439,6 +462,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
         throw new Error('Method not implemented.');
     }
     async populate(pdf: PDFDocument, construct: Construct) {
+        await this.initializeFonts(pdf);
         const form = pdf.getForm();
         if (construct.name) {
             pdf.setTitle(construct.name);
@@ -1025,7 +1049,6 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {
-        pdf.registerFontkit(fontkit);
         await super.populate(pdf, construct);
         await this.fillPageTwo(pdf, construct as Character);
 
@@ -1111,9 +1134,19 @@ class TwoPageTngLandscapeCharacterSheet extends BaseTextCharacterSheet {
         return '/static/pdf/TNG_Two_Page_Landscape_Character_Sheet.pdf'
     }
 
+    getDefaultFontPath() {
+        return "/static/font/OpenSansCondensed-Light.ttf";
+    }
+
     async populate(pdf: PDFDocument, construct: Construct) {
-        pdf.registerFontkit(fontkit);
         await super.populate(pdf, construct);
+
+        const symbolFontBytes = await fetch("/static/font/Trek_Arrowheads.ttf").then(res => res.arrayBuffer());
+        const symbolFont = await pdf.embedFont(symbolFontBytes);
+
+        const boldFontBytes = await fetch("/static/font/OpenSansCondensed-Bold.ttf").then(res => res.arrayBuffer());
+        const helveticaBold = await pdf.embedFont(boldFontBytes);
+        const helvetica = this.formFont;
 
         // pdf-lib does awful things to empty multi-line fields
         // See: https://github.com/Hopding/pdf-lib/discussions/1196
@@ -1128,12 +1161,6 @@ class TwoPageTngLandscapeCharacterSheet extends BaseTextCharacterSheet {
         });
 
         const page = pdf.getPages()[0];
-
-        const symbolFontBytes = await fetch("/static/font/Trek_Arrowheads.ttf").then(res => res.arrayBuffer());
-
-        const helveticaBold = await pdf.embedFont(StandardFonts.HelveticaBold);
-        const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
-        const symbolFont = await pdf.embedFont(symbolFontBytes);
 
         const titleStyle = new FontSpecification(helveticaBold, 8);
         const paragraphStyle = new FontSpecification(helvetica, 8);
@@ -1206,14 +1233,13 @@ class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {
-        pdf.registerFontkit(fontkit);
         await super.populate(pdf, construct);
         await this.fillPageTwo(pdf, construct as Character);
 
         // pdf-lib does awful things to empty multi-line fields
         // See: https://github.com/Hopding/pdf-lib/discussions/1196
         let form = pdf.getForm();
-        const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
+        const helvetica = this.formFont;
         form.getFields().forEach(f => {
             if (f instanceof PDFTextField) {
                 let textField = f as PDFTextField;
@@ -1308,8 +1334,11 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
         return '/static/pdf/TNG_Landscape_Character_Sheet.pdf'
     }
 
+    getDefaultFontPath() {
+        return "/static/font/OpenSansCondensed-Light.ttf";
+    }
+
     async populate(pdf: PDFDocument, construct: Construct) {
-        pdf.registerFontkit(fontkit);
         await super.populate(pdf, construct);
         await this.fillTalentTextBlock(pdf, construct as Character);
     }
@@ -1317,14 +1346,12 @@ class LandscapeTngCharacterSheet extends BaseTextCharacterSheet {
     async fillTalentTextBlock(pdf: PDFDocument, character: Character) {
         const page = pdf.getPages()[0];
         const boldFontBytes = await fetch("/static/font/OpenSansCondensed-Bold.ttf").then(res => res.arrayBuffer());
-        const lightFontBytes = await fetch("/static/font/OpenSansCondensed-Light.ttf").then(res => res.arrayBuffer());
         const symbolFontBytes = await fetch("/static/font/Trek_Arrowheads.ttf").then(res => res.arrayBuffer());
 
         const openSansBold = await pdf.embedFont(boldFontBytes);
-        const openSansLight = await pdf.embedFont(lightFontBytes);
         const symbolFont = await pdf.embedFont(symbolFontBytes);
         const titleStyle = new FontSpecification(openSansBold, 9);
-        const paragraphStyle = new FontSpecification(openSansLight, 9);
+        const paragraphStyle = new FontSpecification(this.formFont, 9);
         const symbolStyle = new FontSpecification(symbolFont, 9);
 
         let currentColumn = new Column(583, 45, 563-45, 757-583);

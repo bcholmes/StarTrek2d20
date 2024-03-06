@@ -69,18 +69,6 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
 
             const existingPdfBytes = await fetch(sheet.getPdfUrl()).then(res => res.arrayBuffer())
             const pdfDoc = await PDFDocument.load(existingPdfBytes)
-
-            if (sheet.getLanguage() === 'ru') {
-                pdfDoc.registerFontkit(fontkit);
-                const lcarsFontBytes = await fetch("/static/font/bebas-neue-cyr.ttf").then(res => res.arrayBuffer());
-                const lcarsFont =  await pdfDoc.embedFont(lcarsFontBytes)
-                const form = pdfDoc.getForm()
-                const rawUpdateFieldAppearances = form.updateFieldAppearances.bind(form);
-                form.updateFieldAppearances = function () {
-                    return rawUpdateFieldAppearances(lcarsFont);
-                };
-            }
-
             await sheet.populate(pdfDoc, this.props.construct);
 
             const pdfBytes = await pdfDoc.save();

@@ -8,9 +8,4 @@
   .stat-value, .pill-left, .pill-right {
     line-height: 1;
   }
-
-  // temporary hide non-ru sheets
-  .sheet-selection-item:not(:has([src$='/TNG_StarTrek_ru_Character_Sheet.png'])) {
-    display: none;
-  }
 }
