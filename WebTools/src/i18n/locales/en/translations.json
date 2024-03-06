@@ -1459,8 +1459,7 @@
     "Species.hupyrian.name": "Hupyrian",
     "Species.hupyrian.exampleValue": "I Obey Only One Master",
     "Species.hupyrian.description": "The Hupyrians are physically imposing, often over two meters tall. They have wrinkly skin and large ears and noses. The Hupyrians are closely allied with the Ferengi, and their homeworld is the source of Hupyrian beetle snuff. They have tight skin with wrinkles around their eyes and mouths that give them a constant frowning expression. They are known for their devotion in service, and some will take a vow of silence where they are only permitted to speak to their masters. They are often found as bodyguards and food tasters.",
-
-    "Species.human.traitDescription": "Hupyrians are taller than most species, and their size alone can be intimidating. They are loyal especially when working in the employ of another, and take vows seriously.",
+    "Species.hupyrian.traitDescription": "Hupyrians are taller than most species, and their size alone can be intimidating. They are loyal especially when working in the employ of another, and take vows seriously.",
 
     "Species.illyrian.name": "Illyrian",
     "Species.illyrian.description": "A spacefaring humanoid species that utilizes genetic engineering to adapt their bodies to the new planets they settle, rather than changing the planet to suit themselves.",

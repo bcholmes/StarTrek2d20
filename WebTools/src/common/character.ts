@@ -433,7 +433,7 @@ export class Character extends Construct {
         return [];
     }
 
-    get talents() {
+    get talents(): SelectedTalent[] {
         if (this.stereotype === Stereotype.Npc) {
             return this.npcGenerationStep ? [...this.npcGenerationStep.talents] : [];
         } else {

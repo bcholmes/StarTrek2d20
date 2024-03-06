@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import { CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { CharacterSerializer } from '../common/characterSerializer';
+import { TalentsHelper } from '../helpers/talents';
 
 class SectionContent {
     name: string;
@@ -36,9 +37,9 @@ class CharacterSheetData {
         this._data = [
             new SectionContent(i18n.t('Construct.other.species'), this.getSpeciesString()),
             new SectionContent(i18n.t('Construct.other.environment'), this.getEnvironmentString()),
-            new SectionContent(i18n.t('Construct.other.upbringing'), this.character.upbringingStep ? this.character.upbringingStep?.description : i18n.t('Common.text.none')),
+            new SectionContent(i18n.t('Construct.other.upbringing'), this.character.upbringingStep ? this.character.upbringingStep?.localizedDescription : i18n.t('Common.text.none')),
             new SectionContent(i18n.t('Construct.other.training'), this.character.educationStep?.track != null
-                ? TracksHelper.instance.getTrack(this.character.educationStep?.track, character.type)?.name
+                ? TracksHelper.instance.getTrack(this.character.educationStep?.track, character.type)?.localizedName
                 : i18n.t('Common.text.none')),
             new SectionContent(i18n.t('Construct.other.career'), this.character.careerStep?.career != null
                 ? (this.character.stereotype === Stereotype.SoloCharacter
@@ -54,11 +55,11 @@ class CharacterSheetData {
     }
 
     private getSpeciesString() {
-        return this.character.speciesName || i18n.t('Common.text.none');
+        return this.character.localizedSpeciesName || i18n.t('Common.text.none');
     }
 
     private getEnvironmentString() {
-        let env = this.character.environmentStep ? EnvironmentsHelper.getEnvironment(this.character.environmentStep.environment, this.character.type).name : i18n.t('Common.text.none');
+        let env = this.character.environmentStep ? EnvironmentsHelper.getEnvironment(this.character.environmentStep.environment, this.character.type).localizedName : i18n.t('Common.text.none');
 
         if (this.character.environmentStep?.environment === Environment.AnotherSpeciesWorld && this.character.environmentStep?.otherSpecies != null) {
             env = CharacterSerializer.serializeEnvironment(this.character.environmentStep.environment, this.character.environmentStep.otherSpecies, this.character.type);
@@ -106,10 +107,9 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
             return (<div key={i}>{f}</div>);
         });
 
-        let characterTalents = c.getTalentNameList();
-
-        const talents = characterTalents.map((t, i) => {
-            return (<div key={i}>{t}</div>)
+        const talents = c.talents.map((t, i) => {
+            const talentModel = TalentsHelper.getTalent(t.talent);
+            return (<div key={i}>{talentModel.localizedDisplayName}</div>)
         });
 
         let equipment = c.equipmentAndImplants.map((e, i) => {

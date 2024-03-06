@@ -1,6 +1,6 @@
 Language,en,de,es,fr,ru
 LanguageNotice.title,Hello There!,Willkommen!,¡Hola!,Salut!,Приветствуем Вас!
-LanguageNotice.text,"We're experimenting with some initial support for national languages. We're in a very preliminary stage, but we hope to be able to support more languages, soon.","Wir experimentieren mit einer grundlegenden Unterstützung für Landessprachen. Wir befinden uns in einem sehr frühen Stadium, hoffen aber, bald noch weitere Sprachen unterstützen zu können.","Estamos experimentando con algún soporte inicial para los idiomas nacionales. Estamos en una etapa muy preliminar, pero esperamos poder soportar más idiomas, pronto.","Nous expérimentons un soutien initial pour les langues nationales. Nous sommes dans une phase très préliminaire, mais nous espérons être en mesure de prendre en charge plus de langues, bientôt.","Мы экспериментируем с базовой поддержкой международных языкоа. На данный момент это начальная стадия, но мы надеемся добавить больше языков в дальнейшем."
+LanguageNotice.text,"We're experimenting with some initial support for national languages. We're in a very preliminary stage, but we hope to be able to support more languages, soon.","Wir experimentieren mit einer grundlegenden Unterstützung für Landessprachen. Wir befinden uns in einem sehr frühen Stadium, hoffen aber, bald noch weitere Sprachen unterstützen zu können.","Estamos experimentando con algún soporte inicial para los idiomas nacionales. Estamos en una etapa muy preliminar, pero esperamos poder soportar más idiomas, pronto.","Nous expérimentons un soutien initial pour les langues nationales. Nous sommes dans une phase très préliminaire, mais nous espérons être en mesure de prendre en charge plus de langues, bientôt.","Мы экспериментируем с базовой поддержкой международных языков. На данный момент это начальная стадия, но мы надеемся добавить больше языков в дальнейшем."
 LanguageNotice.useEnglish,Use English instead,Stattdessen Englisch verwenden,Usar inglés,Utiliser l'anglais,Пожалуйста используйте Английский вариант
 Lcars.copyright,STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.,STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved.,STAR TREK y las marcas y logotipos relacionados son marcas comerciales de CBS Studios Inc. Todos los derechos reservados.,STAR TREK et les marques et logos associés sont des marques commerciales de CBS Studios Inc. Tous droits réservés.,STAR TREK и сопутствующие обозначения и логотипы являются товарными знаками CBS Studios. Все права защищены.
 Lcars.credits,Credits,Danksagungen,Créditos,Crédits,
@@ -13,7 +13,7 @@ EditTablePage.header.createTable,Create Table,,,,Создать таблицу
 EditTablePage.header.modifyTable,Modify Table,,,,Изменить таблицу
 EraSelectionPage.eraInstruction,Select which Era to play in. Ask your GM which Era to choose.,"Wählen Sie aus, in welcher Ära gespielt wird. Fragen Sie, wenn nötig, Ihre Spielleitung, welche Ära Sie wählen sollen.",Selecciona en qué Era jugar. Pregúntale a tu GM qué Era elegir.,Sélectionnez l'ère dans laquelle jouer. Demandez à votre MJ quelle ère choisir.,Выберите в какой Эре вы планируете играть. Спросите Мастера какую Эру выбрать.
 Home.title,STA Character Creator,,,,Генератор Персонажей STA
-Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sélectionnez l'outil.,Выберите инстумент.
+Home.selection,Select tool.,Werkzeug auswählen.,Seleccione la herramienta.,Sélectionnez l'outil.,Выберите инструмент.
 Home.characterButton,Characters & Starships,Charaktere & Raumschiffe,Personajes y naves espaciales,Personnages et vaisseaux spatiaux,Персонажи и Корабли
 Home.talentsButton,Talents Overview,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents,Обзор Талантов
 Home.tokenCreator,Tokens,Token,,Jetons,Токены
@@ -181,7 +181,7 @@ The name should ideally be a single word or, more rarely, two.",,,,
 FinalStarshipDetails.traits.instruction,You may now define additional Traits for your starship. Your starship already has these traits:,,,,
 FinalStarshipDetails.traits.note,"Your GM may allow you to pick additional traits that describe your vessel. Examples include: Prototype, Legacy Vessel, Renowned and Long-Serving.",,,,
 FinishPage.instruction,"Your character is finished. Export your character to PDF, or use the ""Profile"" option in the left-hand bar to see the chosen options and transcribe them manually on to a character sheet.",,,,
-FinishPage.rank.instruction,Select your character's rank.,,,,
+FinishPage.rank.instruction,Select your character's rank.,,,,Выберите рагн вашего персонажа.
 FinishPage.trait.preamble_one,Your character automatically has the following trait:,,,,
 FinishPage.trait.preamble_other,Your character automatically has the following traits:,,,,
 FinishPage.trait.instruction,"You can specify additional traits, here.",,,,
@@ -352,7 +352,7 @@ ToolSelection.mainCharacter,Main Character,Hauptfigur,Personaje principal,Person
 ToolSelection.supportingCharacter,Supporting Character,Nebencharakter,Personaje secundario,Personnage secondaire,Персонаж поддержки
 ToolSelection.starship,Starship,Raumschiff,Nave estelar,Vaisseau spatial,Звездолет
 ToolSelection.spaceSector,Space Sector,Raumsektor,Sector espacial,Secteur spatial,Звездный сектор
-ToolSelection.randomNpc,Random NPC,Zufälliger NSC,,PNJ aléatoire,Рандомальный второстепенный персонаж
+ToolSelection.randomNpc,Random NPC,Zufälliger NSC,,PNJ aléatoire,Рандомный второстепенный персонаж
 Common.button.random,Random,Zufällig,,,Случайный выбор
 Common.button.select,Select,Auswählen,Escoger,Choisir,Выбрать
 Common.button.selectAll,Select All,Alles auswählen,Seleccionar todo,Sélectionner tout,Выбрать все
@@ -408,7 +408,7 @@ Construct.other.focuses,Focuses,Fokusse,Atenciónes,Spécialités,Специал
 Construct.other.job,Job,Tätigkeit,,Travail,Работа
 Construct.other.missionProfile,Mission Profile,Missionsprofil,Perfil de la misión,Profil de mission,
 Construct.other.name,Name,Name,Nombre,Nom,Имя
-Construct.other.pronouns,Pronouns,Pronomen,Pronombres,Pronoms,
+Construct.other.pronouns,Pronouns,Pronomen,Pronombres,Pronoms,Называть
 Construct.other.power,Power,Energie,Poder,Energie,
 Construct.other.purpose,Purpose,Zweck,,Rôle,
 Construct.other.rank,Rank,Rang,Rango,Grade,Ранг
@@ -639,7 +639,7 @@ CareerEvent.common.12.description,"The character was placed in a situation where
 - Как персонаж чувствует себя сейчас?
 Каковы были последствия этого поступка? Есть ли записи случившегося? Был ли персонаж прав?"
 CareerEvent.common.12.focusSuggestion,"The character gains a Focus, reflecting the event and its aftermath. Examples include: Persuasion, Inspiration, Investigation.",,,,
-CareerEvent.common.13.name,Called Out a Superior,Vorgesetzte/-n angeschwärzt,,,Пеподчинение старшему по званию
+CareerEvent.common.13.name,Called Out a Superior,Vorgesetzte/-n angeschwärzt,,,Неподчинение старшему по званию
 CareerEvent.common.13.description,"The character was placed in a situation where they had to choose between a trusted superior and their own ideals, and chose to follow their ideals.
 
 - Who was the superior? What did they ask the character to do? How does the character feel now?
@@ -1201,9 +1201,9 @@ NpcCharacterType.rogueRuffianMercenary,"Rogues, Ruffians, and Mercenaries",,,,
 NpcType.minor.name,Minor NPC,Einfacher NSC,,PNJ Mineur,
 NpcType.notable.name,Notable NPC,Bedeutender NSC,,PNJ Notable,
 NpcType.major.name,Major NPC,Herausragender NSC,,PNJ Majeur,
-Rank.captain.name,Captain,Captain,,,
+Rank.captain.name,Captain,Captain,,,Капитан
 Rank.captain.abbrev,Capt.,Capt.,,,
-Rank.commander.name,Commander,Commander,,,
+Rank.commander.name,Commander,Commander,,,Коммандер
 Rank.commander.abbrev,Cmdr.,Cmdr.,,,
 Rank.ltCommander.name,Lt. Commander,Lt. Commander,,,
 Rank.ltCommander.abbrev,LCdr.,LCdr.,,,
@@ -1464,7 +1464,7 @@ Species.human.traitDescription,"Humans are adaptable and resilient, and their re
 Species.hupyrian.name,Hupyrian,,,,
 Species.hupyrian.exampleValue,I Obey Only One Master,,,,
 Species.hupyrian.description,"The Hupyrians are physically imposing, often over two meters tall. They have wrinkly skin and large ears and noses. The Hupyrians are closely allied with the Ferengi, and their homeworld is the source of Hupyrian beetle snuff. They have tight skin with wrinkles around their eyes and mouths that give them a constant frowning expression. They are known for their devotion in service, and some will take a vow of silence where they are only permitted to speak to their masters. They are often found as bodyguards and food tasters.",,,,
-Species.human.traitDescription,"Hupyrians are taller than most species, and their size alone can be intimidating. They are loyal especially when working in the employ of another, and take vows seriously.",,,,
+Species.hupyrian.traitDescription,"Hupyrians are taller than most species, and their size alone can be intimidating. They are loyal especially when working in the employ of another, and take vows seriously.",,,,
 Species.illyrian.name,Illyrian,,,,Иллирианцы
 Species.illyrian.description,"A spacefaring humanoid species that utilizes genetic engineering to adapt their bodies to the new planets they settle, rather than changing the planet to suit themselves.",,,,
 Species.jelna.name,Rigellian Jelna,Rigellianische Jelna,,,
@@ -1639,8 +1639,8 @@ Talent.closeProtection,Close Protection,,,,Защитник
 Talent.closeProtection.description,"When you make a successful Attack, you may spend one Momentum to protect a single ally within Close range. The next Attack against that ally before the start of your next turn increases in Difficulty by 1.",,,,"Успешно выполнив Атаку, сбросьте 1 жетон Импульса и выберите союзника в пределах Ближней дистанции. Сложность следующей Атаки против него вырастит на 1."
 Talent.commandShip,Command Ship,,,,Командный корабль
 Talent.commandShip.soloDescription,The ship has command and control systems allowing it to coordinate easily with allies during a crisis.,,,,"У звездолёта есть системы командования и управления, позволяющие координировать действия союзников в кризисной ситуации."
-Talent.computerExpertise,Computer Expertise,,,,
-Talent.computerExpertise.description,"Whenever you attempt a Task that involves the programming or study of a computer system, you may add a bonus d20 to your pool.",,,,
+Talent.computerExpertise,Computer Expertise,,,,Компьютерный специалист
+Talent.computerExpertise.description,"Whenever you attempt a Task that involves the programming or study of a computer system, you may add a bonus d20 to your pool.",,,,"Выполняя Задачу, связанную с программированием или компьютерными системами, бросьте бонусный d20."
 Talent.culturalFlexibility,Cultural Flexibility,,,,Культурная гибкость
 Talent.culturalFlexibility.description,"Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",,,,"Ваш вид дружелюбен, терпелив и любознателен, и вы - пример этих качеств. Вы легко приспосабливаетесь к незнакомым социальным структурам и новым культурам. Снизьте на 1 сложность Задач по знакомству с неизвестной культурой или при попытке придерживаться верного поведения, взаимодействуя с представителем такой культуры."
 Talent.dauntless,Dauntless,,,,Неустрашимый
@@ -1697,12 +1697,12 @@ Talent.incisiveScrutiny,Incisive Scrutiny,,,,Повышенная внимате
 Talent.incisiveScrutiny.description,"You have a knack for finding weak spots in arguments, theories, and machines alike to glean information from them, learning about things by how they respond to pressure against vulnerable points. When you succeed at a Task using Control or Insight, you gain one bonus Momentum, which may only be used for the Obtain Information Momentum Spend.",,,,"Вы умеете находить слабые места в аргументах, теориях и механизмах, получать о них информацию и понимать их природу по их реакции при давлении на уязвимые точки. При успешном выполнении Задачи на Самоконтроль или Понимание получаете дополнительный жетон Импульса, который можно использовать, только чтобы «Получить информацию»."
 Talent.independentPhaserSupply,Independent Phaser Supply,,,,
 Talent.independentPhaserSupply.soloDescription,"The ship’s phasers use an independent power supply, rather than drawing directly from the ship’s other power sources.",,,,
-Talent.intenseScrutiny,Intense Scrutiny,,,,
-Talent.intenseScrutiny.description,"Whenever you succeed at a Task using Reason or Control as part of an Extended Task, you may ignore up to two Resistance for every Effect rolled.",,,,
+Talent.intenseScrutiny,Intense Scrutiny,,,,Пристальное внимание
+Talent.intenseScrutiny.description,"Whenever you succeed at a Task using Reason or Control as part of an Extended Task, you may ignore up to two Resistance for every Effect rolled.",,,,"Успешно выполнив Задачу на Здравомыслие или Самоконтроль в рамках Продолжительной задачи, снизьте рейтинг Сопротивляемости на 1 или 2 за каждый выпавший Эффект."
 Talent.interrogation,Interrogation,,,,Допрос
 Talent.interrogation.description,"When you succeed at a Task to coerce someone to reveal information in a social conflict, you will gain one bonus Momentum, which may only be spent on the Obtain Information Momentum Spend.",,,,"Успешно выполнив Задачу по принуждению кого-либо к раскрытию информации, вы получаете 1 дополнительный жетон Импульса, который можно сбросить только для использования правила «Получить информацию»."
-Talent.inTheNickOfTime,In the Nick of Time,,,,
-Talent.inTheNickOfTime.description,"Whenever you succeed at an Engineering or Science Task as part of an Extended Task, you score 1 additional Work for every Effect rolled.",,,,
+Talent.inTheNickOfTime,In the Nick of Time,,,,В последний момент
+Talent.inTheNickOfTime.description,"Whenever you succeed at an Engineering or Science Task as part of an Extended Task, you score 1 additional Work for every Effect rolled.",,,,"Успешно выполнив Задачу на Инженерию или Науку в рамках Продолжительной задачи, вы увеличиваете количество сделанной Работы на 1 за каждый выпавший Эффект."
 Talent.joined,Joined,,,,Соединенный
 Talent.joined.description,"You have a symbiont, with lifetimes of memories to draw upon. Once per mission, you may declare that a former host had expertise in a relevant skill or field of study; you gain a single Focus for the remainder of the scene, as you draw upon those memories. Additionally, you gain a Trait with the name of the Symbiont; this reflects potential advantages of the Joining, the ability to perform rites and rituals to awaken past hosts’ memories, and the vulnerabilities inherent in the connection. Former Initiate cannot be taken if the character has the Joined Talent — they are mutually exclusive.",,,,"Вы присоединились к Программе посвящения, надеясь, что Комиссия по симбиозу выберет вас для соединения. Поскольку посвящённых намного больше, чем симбионтов, вы были одним из многих, кто не прошёл отбор, но качеств даже неуспешного посвящённого хватает для поступления на службу в Звёздный флот. Если вы за счёт Целеустремлённости приобретаете бонусный d20 для выполнения Задачи на Самоконтроль или Здравомыслие, то можете бросить заново все использованные d20. Нельзя взять Талант «Бывший посвящённый», если у ПИ есть Талант «Соединённый» - они взаимоисключающие."
 Talent.kolinahr,Kolinahr,,,,Колинар
@@ -1779,8 +1779,8 @@ Talent.telepath,Telepath,,,,Телепат
 Talent.telepath.description,"You can sense the surface thoughts and emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. Surface thoughts are whatever a creature is thinking about at that precise moment. The character cannot choose not to sense the emotions or read the surface thoughts of those nearby, except for those who are resistant to telepathy. It will require effort and a Task to pick out the emotions or thoughts of a specific individual in a crowd, to search a creature’s mind for specific thoughts or memories, or to block out the minds of those nearby. Unwilling targets may resist with an Opposed Task.",,,,"Можно дать только при создании ПИ. Вы можете чувствовать поверхностные мысли и эмоции большинства живых существ, находящихся поблизости, и телепатически общаться с другими эмпатами и телепатами, а также с теми, с кем очень близко знакомы. Вы не можете не чувствовать эмоции или не считывать то, о чём существо рядом с вами думает в данный момент, если только оно не сопротивляется телепатии. Чтобы распознать эмоции или прочитать мысли конкретного индивида в толпе, найти в разуме существа определённые мысли или закрыться от сознания тех, кто поблизости, нужно приложить усилие и выполнить Задачу. Те, кто не желает подвергаться вашему воздействию, могут сопротивляться с помощью Встречной задачи."
 Talent.technicalExpertise,Technical Expertise,,,,Технические знания
 Talent.technicalExpertise.description,"Whenever you attempt a Task assisted by the ship’s Computers or Sensors, you may re-roll one d20 (which may be the ship’s die).",,,,"Выполняя Задачу, при которой получена Помощь Компьютеров или Сенсоров звездолёта, можно заново бросить 1 использованный d20 (в том числе d20, брошенный за Помощь звездолёта)."
-Talent.testingATheory,Testing a Theory,,,,
-Talent.testingATheory.description,"When you attempt a Task using Engineering or Science, you may roll one additional d20, so long as you succeeded at a previous Task covering the same scientific or technological field earlier in the same adventure.",,,,
+Talent.testingATheory,Testing a Theory,,,,Проверка теории
+Talent.testingATheory.description,"When you attempt a Task using Engineering or Science, you may roll one additional d20, so long as you succeeded at a previous Task covering the same scientific or technological field earlier in the same adventure.",,,,"Выполняя Задачу на Науку или Инженерию, бросьте бонусный d20, если прошлая Задача, которую вы успешно выполнили в текущем  приключении, была связана с научным или техническим вопросом в той же сфере."
 Talent.theUshaan,The Ushaan,,,,Ушаан
 Talent.theUshaan.description,"You are experienced in the tradition of honor-dueling known as the Ushaan, having spilt much blood upon the ice. When you make a melee Attack, or are targeted by a melee Attack, and buy one or more d20s by adding to Threat, you may re-roll the dice pool for the Task. Further, you own an Ushaan-tor, a razor-sharp ice-miner’s tool used in these duels.",,,,"Вы натренированы в дуэлях чести, известных как ушаан, и пролили на лёд немало крови. Когда вы совершаете Рукопашную атаку или являетесь её целью и приобретаете 1 или больше бонусных d20, добавив ведущему жетоны Угрозы, вы можете заново бросить все использованные d20. Кроме того, у вас есть Ушаан-тор, бритвенно-острый ледоруб, используемый в этих дуэлях."
 Talent.tough,Tough,,,,Крепкий

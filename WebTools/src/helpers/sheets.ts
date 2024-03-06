@@ -19,6 +19,7 @@ import { staTextFieldAppearanceProvider } from './pdfTextFieldAppearance';
 import store from '../state/store';
 import { CareersHelper } from './careers';
 import { TracksHelper } from './tracks';
+import { localizedFocus } from '../components/focusHelper';
 
 class TextBlock {
     text: string;
@@ -507,16 +508,18 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
         if (character.additionalTraits) {
             traits.push(character.additionalTraits);
         }
-
         this.fillField(form, 'Traits', CharacterSerializer.serializeTraits(traits));
-        character.focuses.forEach( (f, i) => {
-            this.fillField(form, 'Focus ' + (i+1), f);
-        });
-
+        this.fillFocuses(form, character);
         this.fillAttributes(form, character);
         this.fillSkills(form, character);
         this.fillExtras(form, character);
         this.fillStress(form, character);
+    }
+
+    fillFocuses(form: PDFForm, character: Character) {
+        character.focuses.forEach( (f, i) => {
+            this.fillField(form, 'Focus ' + (i+1), f);
+        });
     }
 
     fillName(form: PDFForm, character: Character) {
@@ -764,6 +767,25 @@ class LocalizedCharacterSheet extends BasicFullCharacterSheet {
 
     fillUpbringing(form: PDFForm, character: Character) {
         this.fillField(form, 'Upbringing', character.upbringingStep.localizedDescription);
+    }
+
+    fillTalents(form: PDFForm, character: Character) {
+        let i = 1;
+        for (var t of character.talents) {
+            let talent = TalentsHelper.getTalent(t.talent);
+            if (talent && talent.maxRank > 1) {
+                this.fillField(form, 'Talent ' + i, talent.localizedDisplayName + " [Rank " + character.getRankForTalent(t.talent) + "]");
+            } else {
+                this.fillField(form, 'Talent ' + i, talent.localizedDisplayName);
+            }
+            i++;
+        }
+    }
+
+    fillFocuses(form: PDFForm, character: Character) {
+        character.focuses.forEach( (f, i) => {
+            this.fillField(form, 'Focus ' + (i+1), localizedFocus(f));
+        });
     }
 }
 
