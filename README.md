@@ -27,10 +27,6 @@ on my Mac.
 
 ## Getting Started
 
-*Note*: I recently added a symbolic link to the package.json file. I'm not sure if Windows is going
-to have issues with that. Old versions of Windows didn't support symbolic links, but a cursory review
-of the Google suggests that they're now supported.
-
 1. Open a command prompt in the WebTools/ folder and type ```npm install``` to install node modules,
    including TypeScript, React, Bootstrap and more.
 2. Start the development server using the ```npm run start``` command
