@@ -12,6 +12,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240305</b>
+                <ul>
+                    <li>
+                        An excellent contribution from Hanzo and LoranRendel fixed a problem with Cyrillic characters in exported PDFs.
+                    </li>
+                </ul>
                 <b>v1.240303</b>
                 <ul>
                     <li>
