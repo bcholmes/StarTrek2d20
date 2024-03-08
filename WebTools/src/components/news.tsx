@@ -12,10 +12,19 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240306</b>
+                <ul>
+                    <li>
+                        Minor tweaks and bug fixes.
+                    </li>
+                </ul>
                 <b>v1.240305</b>
                 <ul>
                     <li>
-                        An excellent contribution from Hanzo and LoranRendel fixed a problem with Cyrillic characters in exported PDFs.
+                        An excellent contribution from Hanzo and LoranRendel fixed a problem with Cyrillic characters in exported PDFs. One of the
+                        effects of this update is that PDF files now use a different font (one with broader international character support).
+                        The new font takes up a bit more space for the descender, and the net effect is that the overall font size is smaller.
+                        I've tweaked some of the character sheets to make the text fields larger to compensate.
                     </li>
                 </ul>
                 <b>v1.240303</b>

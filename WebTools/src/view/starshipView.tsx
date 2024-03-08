@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Starship } from "../common/starship";
 import { CharacterType } from "../common/characterType";
 import { Department } from "../helpers/departments";
@@ -8,12 +8,14 @@ import { System } from "../helpers/systems";
 import { Button } from "../components/button";
 import { CharacterSheetDialog } from "../components/characterSheetDialog";
 import { Header } from "../components/header";
-import { OutlineImage } from "../components/outlineImage";
 import { StatView } from "../components/StatView";
 import WeaponView from "../components/weaponView";
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { makeKey } from "../common/translationKey";
 import { VttSelectionDialog } from "../vtt/view/VttSelectionDialog";
+
+const OutlineImage = lazy(() => import(/* webpackChunkName: 'spaceframeOutline' */ '../components/outlineImage'));
+
 
 const NBSP = '\u00A0';
 
@@ -90,7 +92,13 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
                     </div>
 
                     <div className="mt-3">
-                        <OutlineImage starship={this.props.starship} size="lg" />
+                        <Suspense fallback={<div className="mt-4 text-center">
+                            <div className="spinner-border text-light" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
+                        </div>}>
+                            <OutlineImage starship={this.props.starship} size="lg" />
+                        </Suspense>
 
                         <div className="row row-cols-1 row-cols-xl-3 mb-2">
                             <StatView showZero={true} name={t('Construct.other.resistance')} value={this.props.starship.resistance} className="col mb-2" colourClass="red" />

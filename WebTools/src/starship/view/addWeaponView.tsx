@@ -156,7 +156,7 @@ class AddWeaponView extends React.Component<IAddWeaponViewProperties, IAddWeapon
                 onChange={(index) => this.selectWeaponType(WeaponTypeModel.allStarshipTypes()[index] ) }/>
             {load}
             {deliveryType}
-            <div className="text-center">
+            <div className="text-center mt-4">
                 <Button onClick={() => this.addWeapon()}>Add</Button>
             </div>
         </div>);

@@ -24,8 +24,8 @@ class StarshipWeaponsPageProperties extends React.Component<IStarshipWeaponsPage
                 <ShipBuildingBreadcrumbs />
                 <Header>Ship Weapons</Header>
 
-                <div className="d-flex mb-3 mt-4">
-                    <p className="mr-auto mb-0">This ship has the following weapons:</p>
+                <div className="d-flex mb-3 mt-4 ">
+                    <p className="me-auto mb-0">This ship has the following weapons:</p>
                     <div className="text-end">
                         <Button className="btn btn-link mt-0" onClick={() => this.showModal()}><i className="bi bi-plus-circle"></i></Button>
                     </div>
@@ -42,7 +42,7 @@ class StarshipWeaponsPageProperties extends React.Component<IStarshipWeaponsPage
                     {this.renderWeapons()}
                 </table>
 
-                <div className="text-end">
+                <div className="text-end mt-4">
                     <Button onClick={() => this.nextPage()}>Next</Button>
                 </div>
             </div>);

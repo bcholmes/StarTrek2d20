@@ -9,7 +9,6 @@ import { Era } from './eras';
 import { Department } from './departments';
 import { System } from './systems';
 import { Weapon } from './weapons';
-import { SheetOutlineOptions, SpaceframeOutline, XYLocation } from './spaceframeOutlineHelper';
 import { CHALLENGE_DICE_NOTATION, TalentsHelper } from './talents';
 import { CareerEventsHelper } from './careerEvents';
 import { RolesHelper } from './roles';
@@ -20,6 +19,7 @@ import store from '../state/store';
 import { CareersHelper } from './careers';
 import { TracksHelper } from './tracks';
 import { localizedFocus } from '../components/focusHelper';
+import { XYLocation } from '../common/xyLocation';
 
 class TextBlock {
     text: string;
@@ -396,6 +396,7 @@ class CaptainsLogStarshipSheet extends BasicStarshipSheet {
         await super.populate(pdf, construct);
         let starship = construct as Starship;
 
+        const { SheetOutlineOptions, SpaceframeOutline } = await import(/* webpackChunkName: 'spaceframeOutline' */ "../helpers/spaceframeOutlineHelper");
         SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(314.0, 216), rgb(119.0/255, 117.0/255.0, 90.0/255.0), 0.6, 1), starship);
     }
 }
@@ -415,6 +416,7 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
         await super.populate(pdf, construct);
         let starship = construct as Starship;
 
+        const { SheetOutlineOptions, SpaceframeOutline } = await import(/* webpackChunkName: 'spaceframeOutline' */ "../helpers/spaceframeOutlineHelper");
         SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(43.5, 290.25), rgb(245.0/255, 157.0/255.0, 8.0/255.0)), starship);
     }
 }
@@ -434,6 +436,7 @@ class StandardTosStarshipSheet extends BasicStarshipSheet {
         await super.populate(pdf, construct);
         let starship = construct as Starship;
 
+        const { SheetOutlineOptions, SpaceframeOutline } = await import(/* webpackChunkName: 'spaceframeOutline' */ "../helpers/spaceframeOutlineHelper");
         SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(32, 240.0), rgb(237.0/255, 27.0/255.0, 47.0/255.0), 0.85), starship);
     }
 }
