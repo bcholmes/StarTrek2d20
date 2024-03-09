@@ -79,7 +79,7 @@ export default class UniformVariantRestrictions {
     }
 
     static isStraightenedNeck(uniformEra: UniformEra) {
-        return uniformEra != null && uniformEra !== UniformEra.Klingon && uniformEra !== UniformEra.MonsterMaroon;
+        return uniformEra != null && uniformEra !== UniformEra.Klingon;
     }
 
 }
