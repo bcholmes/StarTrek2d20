@@ -15,8 +15,6 @@ import store from '../state/store';
 import { StepContext, addCharacterTalent, setCharacterValue } from '../state/characterActions';
 import { CharacterType } from '../common/characterType';
 import { ValueRandomTable } from '../solo/table/valueRandomTable';
-import { makeKey } from '../common/translationKey';
-import { Career } from '../helpers/careerEnum';
 
 interface ISimpleCareerPageProperties extends ICharacterProperties {
     talent: string;

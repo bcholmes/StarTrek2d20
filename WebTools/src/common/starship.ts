@@ -31,15 +31,15 @@ export enum ShipBuildType {
 export const refitCalculator = (starship: Starship) => {
     if (starship.buildType === ShipBuildType.Starship && starship?.serviceYear && starship?.spaceframeModel?.serviceYear) {
         if (starship.serviceYear >= 2400 && starship.spaceframeModel.serviceYear >= 2400) {
-            return Math.floor((starship.serviceYear - starship.spaceframeModel.serviceYear) / 50);
+            return Math.max(0, Math.floor((starship.serviceYear - starship.spaceframeModel.serviceYear) / 50));
         } else if (starship.serviceYear < 2400 && starship.spaceframeModel.serviceYear < 2400) {
-            return Math.floor((starship.serviceYear - starship.spaceframeModel.serviceYear) / 10);
+            return Math.max(0, Math.floor((starship.serviceYear - starship.spaceframeModel.serviceYear) / 10));
         } else if (starship.serviceYear > starship.spaceframeModel.serviceYear) {
             let remainder = starship.spaceframeModel.serviceYear % 10;
             let inflectionYear = 2400 + (remainder === 0 ? 0 : (remainder - 10));
             let result = Math.floor((starship.serviceYear - inflectionYear) / 50)
                 + Math.floor((inflectionYear - starship.spaceframeModel.serviceYear) / 10);
-            return result;
+            return Math.max(0, result);
         } else {
             return 0;
         }
