@@ -14,7 +14,7 @@ export default class UniformVariantRestrictions {
         let result = [ UniformVariantType.Base ];
 
         if (uniformEra === UniformEra.MonsterMaroon) {
-            if (bodyType === BodyType.AverageFemale && "Medical" === DivisionColors.getDivision(uniformEra, divisionColor)) {
+            if ("Medical" === DivisionColors.getDivision(uniformEra, divisionColor)) {
                 result.push(UniformVariantType.Variant1); // medical whites
             }
         } else if (uniformEra === UniformEra.OriginalSeriesKlingon) {
