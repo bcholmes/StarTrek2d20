@@ -51,9 +51,9 @@ const SelectionPage = () => {
                         {t('Home.selection')}
                     </p>
                     <div className="button-column">
-                        <Button className="btn btn-primary mt-4" onClick={() => { selectTool(Tool.CharacterGenerator); }} >{t('Home.characterButton')}</Button>
-                        <Button className="btn btn-primary mt-4" onClick={() => { selectTool(Tool.TalentsOverview); }}>{t('Home.talentsButton')}</Button>
-                        <Button className="btn btn-primary mt-4" onClick={() => { selectTool(Tool.TokenCreator); }}>{t('Home.tokenCreator')}</Button>
+                        <Button className="mt-4" onClick={() => { selectTool(Tool.CharacterGenerator); }} >{t('Home.characterButton')}</Button>
+                        <Button className="mt-4" onClick={() => { selectTool(Tool.TalentsOverview); }}>{t('Home.talentsButton')}</Button>
+                        <Button className="mt-4" onClick={() => { selectTool(Tool.TokenCreator); }}>{t('Home.tokenCreator')}</Button>
                     </div>
                 </div>
                 <section className="col-md-4">

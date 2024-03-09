@@ -46,7 +46,7 @@ const SimpleCareerPage: React.FC<ISimpleCareerPageProperties> = ({character, tal
     }, [talent]);
 
     let instruction = character.type === CharacterType.Child ? "CareerLength.instruction.child" : "CareerLength.instruction.cadet";
-    let career = character.careerStep?.career;
+    let valueText = character.type === CharacterType.Child ? "Value.childEducation.text" : "Value.careerLength.young.text";
 
     return (
         <div className="page container ms-0">
@@ -58,7 +58,7 @@ const SimpleCareerPage: React.FC<ISimpleCareerPageProperties> = ({character, tal
                     <div className="col-12 col-lg-6">
                         <Header level={2}>{t('Construct.other.value')}</Header>
                         <ValueInput value={character.careerStep?.value ?? ""} onValueChanged={(value) => onValueChanged(value)}
-                                onRandomClicked={() => randomValue()} textDescription={t(makeKey('Value.careerLength.', Career[career], '.text'))}
+                                onRandomClicked={() => randomValue()} textDescription={t(valueText)}
                             />
                     </div>
                     <div className="col-12 col-lg-6">

@@ -2,6 +2,7 @@
 
 interface IButtonProperties {
     onClick: () => void;
+    variant?: string;
     className?: string;
     onMouseOver?: () => void;
     onMouseOut?: () => void;
@@ -12,11 +13,22 @@ interface IButtonProperties {
 
 export class Button extends React.Component<IButtonProperties, {}> {
     render() {
+        let variant = this.props.variant;
+        if (!variant) {
+            variant = "primary";
+        }
+
         let className = this.props.className ?? "";
         if (className.indexOf("button-small") >= 0) {
-            className = className.replace("button-small", "btn btn-primary btn-sm");
+            className = className.replace("button-small", "btn btn-" + variant + " btn-sm");
         } else if (className.indexOf("button-next") >= 0) {
-            className = className.replace("button-next", "btn btn-primary");
+            className = className.replace("button-next", "btn btn-" + variant + " btn-sm");
+        } else if (className.indexOf("btn") < 0) {
+            className = "btn btn-" + variant + " " + className;
+        }
+
+        if (className.indexOf("btn-" + variant) < 0) {
+            className += " btn-" + variant;
         }
 
         return (
