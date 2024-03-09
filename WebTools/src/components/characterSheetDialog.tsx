@@ -7,7 +7,6 @@ import { ModalControl } from './modal';
 import { character } from '../common/character';
 import { Construct } from '../common/construct';
 import { getNavigatorLanguage } from '../i18n/config';
-import fontkit from '@pdf-lib/fontkit';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 

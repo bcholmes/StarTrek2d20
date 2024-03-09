@@ -15,6 +15,7 @@ export enum Specialization {
     Engineer,
     IntelligenceOfficer,
     Captain,
+    StationCommander,
 
     KlingonWarrior,
     KlingonWeaponsOfficer,

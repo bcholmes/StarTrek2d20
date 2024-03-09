@@ -4,8 +4,8 @@ import {CharacterType} from '../common/characterType';
 import {Button} from '../components/button';
 import {CheckBox} from '../components/checkBox';
 import {ANY_NAMES, SpeciesHelper} from '../helpers/species';
-import {Rank, RankModel, RanksHelper} from '../helpers/ranks';
-import {RolesHelper, RoleModel, Role} from '../helpers/roles';
+import {RankModel, RanksHelper} from '../helpers/ranks';
+import {RolesHelper, RoleModel} from '../helpers/roles';
 import {CharacterSheetDialog} from '../components/characterSheetDialog'
 import {CharacterSheetRegistry} from '../helpers/sheets';
 import { AlliedMilitaryType } from '../helpers/alliedMilitary';

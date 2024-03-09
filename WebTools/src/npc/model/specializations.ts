@@ -96,6 +96,24 @@ export class Specializations {
                 "You don't respect the chair. You know why? Because you're not ready for it.",
                 "Turn off that damned noise! Go to yellow alert!"],
                 1),
+            new SpecializationModel(Specialization.StationCommander, NpcCharacterType.Starfleet, "Station Commander",
+                [Attribute.Control, Attribute.Presence, Attribute.Reason],
+                Skill.Command,
+                ["Sector Politics", "Station Operations", "Ops Oversight", "System Traffic Control", "Leadership"],
+                [
+                    "Administration", "Staffing and Assignments", "Sector Starship Assignments", "Interstellar Politics", "Recreation",
+                    "Starship Supply Management", "Billeting", "Starship Repair Scheduling", "Negotiation",
+                    "Resouce Allocation"
+                ],
+                [
+                    "This sector is of considerable strategic importance",
+                    "I have two ships that have a far more urgent need for those supplies",
+                    "This far from usual shipping routes, sometimes you have to make do.",
+                    "If this station falls, so falls the sector.",
+                    "This station was our last, best hope for peace.",
+                    "Upon arrival, you will report for debriefing."
+                ],
+                1),
             new SpecializationModel(Specialization.Conn, NpcCharacterType.Starfleet, "Conn",
                 [Attribute.Daring, Attribute.Control],
                 Skill.Conn,
@@ -537,6 +555,26 @@ export class Specializations {
                     "An eliminator that can go where they please is not to be taken lightly.",
                     "Eliminators are meant to be quiet. Precise. We do not go announcing conspiracies from the rooftops to all who pass by."
                 ], 0.0),
+            new SpecializationModel(Specialization.FerengiLiquidator, NpcCharacterType.Ferengi, "Ferengi Liquidator",
+                [Attribute.Reason, Attribute.Insight, Attribute.Presence],
+                Skill.Command,
+                [
+                    "Ferengi Trade Law", "Fees and Tarifs", "Taxes", "Forensic Accounting", "Valuation", "Investigation"
+                ],
+                [
+                    "Trade", "Commerce Protocols", "FCA Punitive Actions", "Intimidation", "Interrogation", "Bureaucracy",
+                    "Record Falsification Tricks", "Union Busting"
+                ],
+                [
+                    "If this were Ferenginar, I'd have you all taken to the Spire of the Tower of Commerce, displayed to the crowds in the Great Marketplace below, and then shoved off!! One by one!! Small children would bet on where you would land, and your spattered remains would be sold as feed mulch for gree-worms.",
+                    "Ferengi interests must be protected",
+                    "If you do not follow my instructions, your financial accounts on Ferenginar will be confiscated, your families fined, and your trading permits revoked. You'll be ruined. Reduced to utter destitution.",
+                    "You're just like the rest of your family: weak-lobed degenerates. Another loser in a long line of failed Ferengis.",
+                    "Confiscation of assets will begin immediately.",
+                    "This is official FCA business!",
+                    "It's not over.",
+
+                ], 1.0),
             new SpecializationModel(Specialization.FerengiDaiMon, NpcCharacterType.Ferengi, "Ferengi DaiMon",
                 [Attribute.Control, Attribute.Daring, Attribute.Presence],
                 Skill.Command,

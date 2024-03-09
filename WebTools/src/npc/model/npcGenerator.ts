@@ -734,6 +734,8 @@ export class NpcGenerator {
             ranks = RanksHelper.instance().getAdmiralRanks();
         } else if (specialization.id === Specialization.Captain) {
             ranks = [ RanksHelper.instance().getRank(Rank.Captain) ];
+        } else if (specialization.id === Specialization.StationCommander) {
+            ranks = [Rank.Commodore, Rank.Captain, Rank.Commander].map(r => RanksHelper.instance().getRank(r));
         } else if (specialization.id === Specialization.FerengiDaiMon) {
             ranks = [ RanksHelper.instance().getRank(Rank.DaiMon) ];
         } else if (specialization.id === Specialization.KlingonShipCaptain) {
