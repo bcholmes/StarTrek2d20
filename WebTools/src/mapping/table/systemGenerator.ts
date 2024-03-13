@@ -1,9 +1,10 @@
-import { Color } from "../../common/colour";
+import { SimpleColor } from "../../common/colour";
 import { D20, D6 } from "../../common/die";
 import { setSector, setStar } from "../../state/starActions";
 import store from "../../state/store";
 import AlienNameGenerator from "../util/alienNameGenerator";
 import { LuminosityTable } from "./luminosityTable";
+import { numberOfMoonsTable } from "./moonsAndSatellitesTable";
 import { addNoiseToValue } from "./noise";
 import { Orbit, Orbits } from "./orbit";
 import { isolatedColonyFeaturesOfInterest } from "./planetaryFeaturesTable";
@@ -41,17 +42,17 @@ class GeneralPlanetaryType {
 class SystemGeneration {
 
     private spectralClasses: SpectralClassModel[] = [
-        new SpectralClassModel(SpectralClass.M, "M", new Range(2400, 3700), "Red", Color.from("#f40b10"), new Range(null, 0.7)),
-        new SpectralClassModel(SpectralClass.K, "K", new Range(3700, 5200), "Orange", Color.from("#F89B24"), new Range(0.7, 0.96)),
-        new SpectralClassModel(SpectralClass.G, "G", new Range(5200, 6000), "Yellow", Color.from("#FFCC66"), new Range(0.96, 1.15)),
-        new SpectralClassModel(SpectralClass.F, "F", new Range(6000, 7500), "Yellow white", Color.from("#ffefcf"), new Range(1.15, 1.4)),
-        new SpectralClassModel(SpectralClass.A, "A", new Range(7500, 10000), "White", Color.from("#fbf8ff"), new Range(1.4, 1.8)),
-        new SpectralClassModel(SpectralClass.B, "B", new Range(10000, 30000), "Blue white", Color.from("#bbccff"), new Range(1.8, 6.6)),
-        new SpectralClassModel(SpectralClass.L, "L", new Range(1300, 2400), "Red brown", Color.from("#a52a2a"), new Range(0.08, 0.15)),
-        new SpectralClassModel(SpectralClass.Y, "Y", new Range(500, 1300), "Brown", Color.from("#964b00"), new Range(0.08, 0.14)),
-        new SpectralClassModel(SpectralClass.T, "T", new Range(undefined, 500), "Dark brown", Color.from("#663300"), new Range(0.08, 0.14)),
-        new SpectralClassModel(SpectralClass.WhiteDwarf, "White Dwarf", new Range(2400, 3700), "White", Color.from("#fbf8ff"), new Range(0.08, 0.14)),
-        new SpectralClassModel(SpectralClass.BrownDwarf, "Brown Dwarf", new Range(2400, 3700), "Brown", Color.from("#964b00"), new Range(0.08, 0.14)),
+        new SpectralClassModel(SpectralClass.M, "M", new Range(2400, 3700), "Red", SimpleColor.from("#f40b10"), new Range(null, 0.7)),
+        new SpectralClassModel(SpectralClass.K, "K", new Range(3700, 5200), "Orange", SimpleColor.from("#F89B24"), new Range(0.7, 0.96)),
+        new SpectralClassModel(SpectralClass.G, "G", new Range(5200, 6000), "Yellow", SimpleColor.from("#FFCC66"), new Range(0.96, 1.15)),
+        new SpectralClassModel(SpectralClass.F, "F", new Range(6000, 7500), "Yellow white", SimpleColor.from("#ffefcf"), new Range(1.15, 1.4)),
+        new SpectralClassModel(SpectralClass.A, "A", new Range(7500, 10000), "White", SimpleColor.from("#fbf8ff"), new Range(1.4, 1.8)),
+        new SpectralClassModel(SpectralClass.B, "B", new Range(10000, 30000), "Blue white", SimpleColor.from("#bbccff"), new Range(1.8, 6.6)),
+        new SpectralClassModel(SpectralClass.L, "L", new Range(1300, 2400), "Red brown", SimpleColor.from("#a52a2a"), new Range(0.08, 0.15)),
+        new SpectralClassModel(SpectralClass.Y, "Y", new Range(500, 1300), "Brown", SimpleColor.from("#964b00"), new Range(0.08, 0.14)),
+        new SpectralClassModel(SpectralClass.T, "T", new Range(undefined, 500), "Dark brown", SimpleColor.from("#663300"), new Range(0.08, 0.14)),
+        new SpectralClassModel(SpectralClass.WhiteDwarf, "White Dwarf", new Range(2400, 3700), "White", SimpleColor.from("#fbf8ff"), new Range(0.08, 0.14)),
+        new SpectralClassModel(SpectralClass.BrownDwarf, "Brown Dwarf", new Range(2400, 3700), "Brown", SimpleColor.from("#964b00"), new Range(0.08, 0.14)),
     ];
 
     private worldClasses: WorldClassModel[] = [
@@ -467,29 +468,6 @@ class SystemGeneration {
         18: 9,
         19: 9,
         20: 11,
-    }
-
-    private numberOfMoonsTable: { [roll: number] : number } = {
-        1: 1,
-        2: 1,
-        3: 1,
-        4: 1,
-        5: 1,
-        6: 1,
-        7: 1,
-        8: 1,
-        9: 1,
-        10: 1,
-        11: 2,
-        12: 2,
-        13: 2,
-        14: 2,
-        15: 2,
-        16: 3,
-        17: 3,
-        18: 4,
-        19: 4,
-        20: 5,
     }
 
     private asteroidSizeTable: { [roll: number] : number } = {
@@ -1111,7 +1089,7 @@ class SystemGeneration {
                     } else {
                         romanNumeralId++;
                         if (!world.worldClass.isGasGiant) {
-                            world.numberOfSatellites = this.numberOfMoonsTable[D20.roll()];
+                            world.numberOfSatellites = numberOfMoonsTable();
                         }
                     }
 

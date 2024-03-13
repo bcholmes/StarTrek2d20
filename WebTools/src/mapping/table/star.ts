@@ -1,4 +1,4 @@
-import { Color } from "../../common/colour";
+import { SimpleColor } from "../../common/colour";
 
 export enum SpaceRegion {
     AlphaQuadrant,
@@ -200,10 +200,10 @@ export class SpectralClassModel {
     public id: SpectralClass;
     public description: string;
     public colourDescription: string;
-    public colour: Color;
+    public colour: SimpleColor;
     public radius: Range;
 
-    constructor(id: SpectralClass, description: string, temperature: Range, colourDescription: string, colour: Color, radius: Range) {
+    constructor(id: SpectralClass, description: string, temperature: Range, colourDescription: string, colour: SimpleColor, radius: Range) {
         this.id = id;
         this.description = description;
         this.colourDescription = colourDescription;

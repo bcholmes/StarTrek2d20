@@ -1,4 +1,6 @@
-export class Color {
+import Color from 'color';
+
+export class SimpleColor {
     red: number; // 0 - 255
     green: number;
     blue: number;
@@ -11,8 +13,8 @@ export class Color {
         this.alpha = alpha;
     }
 
-    blend(color: Color, ratio: number) {
-        return new Color(
+    blend(color: SimpleColor, ratio: number) {
+        return new SimpleColor(
             Math.round(this.red * (1-ratio) + color.red * ratio),
             Math.round(this.green * (1-ratio) + color.green * ratio),
             Math.round(this.blue * (1-ratio) + color.blue * ratio),
@@ -25,7 +27,7 @@ export class Color {
     }
 
     withAlpha(alpha: number) {
-        return new Color(this.red, this.green, this.blue, alpha);
+        return new SimpleColor(this.red, this.green, this.blue, alpha);
     }
 
     get luminance() {
@@ -34,6 +36,10 @@ export class Color {
 
     get isDark() {
         return this.luminance <= 0.5;
+    }
+
+    darker() {
+        return SimpleColor.from(Color(this.asHex()).darken(0.5).hex());
     }
 
     get isApproximatelyWhite() {
@@ -55,7 +61,7 @@ export class Color {
             let red = parseInt(hex.substring(0, 2), 16);
             let green = parseInt(hex.substring(2, 4), 16);
             let blue = parseInt(hex.substring(4), 16);
-            return new Color(red, green, blue);
+            return new SimpleColor(red, green, blue);
         }
     }
 }

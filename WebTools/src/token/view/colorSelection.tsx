@@ -1,5 +1,5 @@
 import React from "react";
-import { Color } from "../../common/colour";
+import { SimpleColor } from "../../common/colour";
 import { NamedColor } from "../model/namedColour";
 
 interface IColorProperties {
@@ -14,7 +14,7 @@ class ColorSelection extends React.Component<IColorProperties, {}> {
 
         const buttons = colors.map(c => {
             const color = (c instanceof NamedColor) ? (c as NamedColor).color : c;
-            const dark = Color.from(color).isDark;
+            const dark = SimpleColor.from(color).isDark;
             const borderColor = dark ? "#666666" : color;
             const title = (c instanceof NamedColor) ? (c as NamedColor).name : "";
             return (<div className="rounded-circle"

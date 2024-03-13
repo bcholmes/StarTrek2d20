@@ -5,7 +5,7 @@ import RankIndicatorCatalog from "./rankIndicatorCatalog";
 import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch"
 import { Token } from "./token";
-import UniformCatalog, { DefaultRed } from "./uniformCatalog"
+import UniformCatalog from "./uniformCatalog"
 import { UniformEra } from "./uniformEra";
 import { IUniformPack } from "./uniformPack";
 import { UniformVariantType } from "./uniformVariantTypeEnum";

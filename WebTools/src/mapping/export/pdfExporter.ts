@@ -1,7 +1,7 @@
 import { PDFDocument, PDFFont, PDFPage, RGB, rgb } from "@cantoo/pdf-lib";
 import fontkit from '@pdf-lib/fontkit'
 import { Sector } from "../table/sector";
-import { Color } from "../../common/colour";
+import { SimpleColor } from "../../common/colour";
 import { CompanionType, StarSystem } from "../table/starSystem";
 import { createRandomValue } from "../../common/randomValueGenerator";
 import { AsteroidBeltDetails, WorldClass } from "../table/world";
@@ -724,10 +724,10 @@ export class PdfExporter {
         systems.forEach((s) => {
             let z = s.sectorCoordinates.z / 20 * 0.6 + 0.4;
             let baseColour = s.star.spectralClass.colour;
-            let colour = baseColour.blend(new Color(255, 255, 255), 1-z);
+            let colour = baseColour.blend(new SimpleColor(255, 255, 255), 1-z);
             let borderColour = colour;
             if (colour.isApproximatelyWhite) {
-                borderColour = Color.from("#666666").blend(new Color(255, 255, 255), 1-z);
+                borderColour = SimpleColor.from("#666666").blend(new SimpleColor(255, 255, 255), 1-z);
             }
 
             let r = Math.max(1, Math.sqrt(s.star.spectralClass.radius.midpoint * 35));
@@ -736,10 +736,10 @@ export class PdfExporter {
                 let r1 = r * 0.75;
 
                 let baseColour2 = s.companionStar.spectralClass.colour;
-                let colour2 = baseColour2.blend(new Color(255, 255, 255), 1-z);
+                let colour2 = baseColour2.blend(new SimpleColor(255, 255, 255), 1-z);
                 let borderColour2 = colour2;
                 if (colour2.isApproximatelyWhite) {
-                    borderColour2 = Color.from("#666666").blend(new Color(255, 255, 255), 1-z);
+                    borderColour2 = SimpleColor.from("#666666").blend(new SimpleColor(255, 255, 255), 1-z);
                 }
 
                 let r2 = Math.max(1, Math.sqrt(s.companionStar.spectralClass.radius.midpoint * 35));

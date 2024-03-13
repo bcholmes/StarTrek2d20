@@ -1,4 +1,4 @@
-import { Color } from "../../common/colour";
+import { SimpleColor } from "../../common/colour";
 import { Species } from "../../helpers/speciesEnum";
 import { ExtraType } from "./extrasTypeEnum";
 import { HairType, allHairTypes, isTallForeheadHair } from "./hairTypeEnum";
@@ -22,8 +22,8 @@ class SpeciesRestrictions {
 
     static DEFAULT_EYE_COLOR_REGEX = /#754324/g;
 
-    static readonly LIP_COLOUR = Color.from("#f4b39b");
-    static readonly DARK_LIP_COLOUR = Color.from("#aa6778");
+    static readonly LIP_COLOUR = SimpleColor.from("#f4b39b");
+    static readonly DARK_LIP_COLOUR = SimpleColor.from("#aa6778");
 
 
     static getSkinColors(species: Species) {

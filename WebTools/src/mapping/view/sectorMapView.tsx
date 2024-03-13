@@ -1,5 +1,5 @@
 import React from "react";
-import { Color } from "../../common/colour";
+import { SimpleColor } from "../../common/colour";
 import { IPageProperties } from "../../pages/iPageProperties";
 import { Sector } from "../table/sector";
 import { StarSystem } from "../table/starSystem";
@@ -35,7 +35,7 @@ class SectorMapView extends React.Component<ISectorMapViewProperties, {}> {
 
             let z = s.sectorCoordinates.z / 20 * 0.75 + 0.25;
             let baseColour = s.star.spectralClass.colour;
-            let colour = baseColour.blend(new Color(0, 0, 0), 1-z);
+            let colour = baseColour.blend(new SimpleColor(0, 0, 0), 1-z);
 
             let r = Math.max(1, Math.sqrt(s.star.spectralClass.radius.midpoint * 50));
 
@@ -44,7 +44,7 @@ class SectorMapView extends React.Component<ISectorMapViewProperties, {}> {
                 let r1 = r * 0.75;
 
                 let baseColour2 = s.companionStar.spectralClass.colour;
-                let colour2 = baseColour2.blend(new Color(0, 0, 0), 1-z);
+                let colour2 = baseColour2.blend(new SimpleColor(0, 0, 0), 1-z);
 
                 let r2 = Math.max(1, Math.sqrt(s.companionStar.spectralClass.radius.midpoint * 50));
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Color } from "../../common/colour";
+import { SimpleColor } from "../../common/colour";
 import { CompanionType } from "../table/starSystem";
 import { WorldClass, AsteroidBeltDetails } from "../table/world";
 import { SystemMapView } from "./systemMapView";
@@ -52,12 +52,12 @@ class SystemMapUpperView extends SystemMapView {
             }
         }
 
-        const starColour = system.star.spectralClass.colour.blend(new Color(255, 255, 255), 0.5);
-        const darkerStarColour = system.star.spectralClass.colour.blend(new Color(0, 0, 0), 0.4);
-        const worldColour = Color.from(purple).blend(new Color(255, 255, 255), 0.5);
-        const darkerWorldColour = Color.from(purple).blend(new Color(0, 0, 0), 0.2);
-        const companionColour = system.companionStar ? system.companionStar.spectralClass.colour.blend(new Color(255, 255, 255), 0.5) : null;
-        const darkerCompanionColour = system.companionStar ? system.companionStar.spectralClass.colour.blend(new Color(0, 0, 0), 0.5) : null;
+        const starColour = system.star.spectralClass.colour.blend(new SimpleColor(255, 255, 255), 0.5);
+        const darkerStarColour = system.star.spectralClass.colour.blend(new SimpleColor(0, 0, 0), 0.4);
+        const worldColour = SimpleColor.from(purple).blend(new SimpleColor(255, 255, 255), 0.5);
+        const darkerWorldColour = SimpleColor.from(purple).blend(new SimpleColor(0, 0, 0), 0.2);
+        const companionColour = system.companionStar ? system.companionStar.spectralClass.colour.blend(new SimpleColor(255, 255, 255), 0.5) : null;
+        const darkerCompanionColour = system.companionStar ? system.companionStar.spectralClass.colour.blend(new SimpleColor(0, 0, 0), 0.5) : null;
 
         const coronaR = r + 5;
         const coronaRStop = r / coronaR;

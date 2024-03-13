@@ -51,6 +51,7 @@ export enum Species {
     Haliian,
     Ktarian,
     Zaranite,
+    Tzenkethi,
     // Gamma Quadrant
     Argrathi,
     ChangelingGamma,

@@ -99,6 +99,11 @@ export default class UniformPackCollection {
                     this.uniformPacks[era] = new RomulanUniformPack();
                     completion();
                 }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
+            } else if (era === UniformEra.StrangeNewWorlds) {
+                import(/* webpackChunkName: 'strangeNewWorlds' */ './strangeNewWorldsUniformPack').then(({StrangeNewWorldsUniformPack}) => {
+                    this.uniformPacks[era] = new StrangeNewWorldsUniformPack();
+                    completion();
+                }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
             } else if (era === UniformEra.Suliban) {
                 import(/* webpackChunkName: 'suliban' */ './sulibanUniformPack').then(({SulibanUniformPack}) => {
                     this.uniformPacks[era] = new SulibanUniformPack();

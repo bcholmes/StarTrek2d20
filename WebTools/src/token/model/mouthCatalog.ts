@@ -1,4 +1,4 @@
-import { Color } from "../../common/colour";
+import { SimpleColor } from "../../common/colour";
 import { Species } from "../../helpers/speciesEnum";
 import { MouthType } from "./mouthTypeEnum";
 import SpeciesRestrictions from "./speciesRestrictions";
@@ -383,7 +383,7 @@ class MouthCatalog {
                 blendColour = SpeciesRestrictions.DARK_LIP_COLOUR;
                 blendPercentage = 0.25;
             }
-            lipColour = Color.from(lipColour).blend(blendColour, blendPercentage).asHex();
+            lipColour = SimpleColor.from(lipColour).blend(blendColour, blendPercentage).asHex();
         }
         return MouthCatalog.getMouthSvg(token.mouthType, token.species)
             .replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, lipColour)
