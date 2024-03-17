@@ -1,6 +1,7 @@
 import React from "react";
 import { StarSystem } from "../table/starSystem";
-import { AsteroidBeltDetails, WorldClass } from "../table/world";
+import { AsteroidBeltDetails } from "../table/world";
+import { WorldClass } from "../table/worldClass";
 
 export interface ISystemMapViewProperties {
     system: StarSystem;

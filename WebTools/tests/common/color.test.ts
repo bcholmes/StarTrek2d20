@@ -12,7 +12,6 @@ describe('testing simple color', () => {
     });
 
     test('darker', () => {
-        console.log(SimpleColor.from("#d30000")?.darker());
         expect(SimpleColor.from("#d30000")?.darker()?.asHex()).toBe("#6a0000");
     });
 

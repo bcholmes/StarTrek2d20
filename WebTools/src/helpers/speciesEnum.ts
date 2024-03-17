@@ -144,6 +144,12 @@ export enum Species {
     Talarian,
 
 
+    // Federation-Klingon War
+    Arcadian,
+    Ariolo,
+    Betelgeusian,
+    Coridanite,
+    Megarite,
 
     // None
     Nausicaan,

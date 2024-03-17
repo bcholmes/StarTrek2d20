@@ -3,6 +3,7 @@ import { D20, D6 } from "../../common/die";
 import { setSector, setStar } from "../../state/starActions";
 import store from "../../state/store";
 import AlienNameGenerator from "../util/alienNameGenerator";
+import { atmosphereTable } from "./atmosphereTable";
 import { LuminosityTable } from "./luminosityTable";
 import { numberOfMoonsTable } from "./moonsAndSatellitesTable";
 import { addNoiseToValue } from "./noise";
@@ -11,7 +12,8 @@ import { isolatedColonyFeaturesOfInterest } from "./planetaryFeaturesTable";
 import { Sector, SectorCoordinates } from "./sector";
 import { LuminosityClass, LuminosityClassModel, SpectralClass, SpectralClassModel, Star, Range, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon, SpaceRegion } from "./star";
 import { CompanionType, StarSystem } from "./starSystem";
-import { AsteroidBeltDetails, GasGiantDetails, StandardWorldDetails, World, WorldClass, WorldClassModel, WorldCoreType } from "./world";
+import { AsteroidBeltDetails, GasGiantDetails, StandardWorldDetails, World, WorldCoreType } from "./world";
+import { WorldClassModel, WorldClass, worldClasses } from "./worldClass";
 
 enum AsteroidBeltZone {
     Nickel, Mixed, CarbonaceousOrIce
@@ -55,25 +57,6 @@ class SystemGeneration {
         new SpectralClassModel(SpectralClass.BrownDwarf, "Brown Dwarf", new Range(2400, 3700), "Brown", SimpleColor.from("#964b00"), new Range(0.08, 0.14)),
     ];
 
-    private worldClasses: WorldClassModel[] = [
-        new WorldClassModel(WorldClass.AsteroidBelt, "Asteroid Belt"),
-        new WorldClassModel(WorldClass.B, "Geomorphic"),
-        new WorldClassModel(WorldClass.C, "Icy Geoinactive"),
-        new WorldClassModel(WorldClass.D, "Icy/Rocky Barren"),
-        new WorldClassModel(WorldClass.E, "Geoplastic"),
-        new WorldClassModel(WorldClass.H, "Desert"),
-        new WorldClassModel(WorldClass.I, "Ammonia Clouds/Gas Supergiant"),
-        new WorldClassModel(WorldClass.J, "Jovian Gas Giant"),
-        new WorldClassModel(WorldClass.K, "Adaptable"),
-        new WorldClassModel(WorldClass.L, "Marginal"),
-        new WorldClassModel(WorldClass.M, "Terrestrial"),
-        new WorldClassModel(WorldClass.N, "Reducing"),
-        new WorldClassModel(WorldClass.O, "Pelagic/Ocean"),
-        new WorldClassModel(WorldClass.P, "Glaciated"),
-        new WorldClassModel(WorldClass.T, "Gas Ultragiants"),
-        new WorldClassModel(WorldClass.Y, "Demon"),
-        new WorldClassModel(WorldClass.ArtificialPlanet, "Artificial Planet"),
-    ];
 
     private spectralClassTable: { [roll: number]: SpectralClassModel } = {
         1: this.spectralClasses[0],
@@ -337,114 +320,114 @@ class SystemGeneration {
     // from the Core rulebook, p. 307
     private generalPlanetaryType: { [roll: number]: GeneralPlanetaryType } = {
 
-        2: new GeneralPlanetaryType(this.worldClasses[WorldClass.ArtificialPlanet], "Non-obvious"),
-        3: new GeneralPlanetaryType(this.worldClasses[WorldClass.ArtificialPlanet], "Non-obvious"),
-        4: new GeneralPlanetaryType(this.worldClasses[WorldClass.ArtificialPlanet], "Non-obvious"),
-        5: new GeneralPlanetaryType(this.worldClasses[WorldClass.ArtificialPlanet], "Non-obvious"),
-        6: new GeneralPlanetaryType(this.worldClasses[WorldClass.D]),
-        7: new GeneralPlanetaryType(this.worldClasses[WorldClass.D]),
-        8: new GeneralPlanetaryType(this.worldClasses[WorldClass.D]),
-        9: new GeneralPlanetaryType(this.worldClasses[WorldClass.H]),
-        10: new GeneralPlanetaryType(this.worldClasses[WorldClass.H]),
-        11: new GeneralPlanetaryType(this.worldClasses[WorldClass.L], "Land life has not yet evolved"),
-        12: new GeneralPlanetaryType(this.worldClasses[WorldClass.L], "Land life has not yet evolved"),
-        13: new GeneralPlanetaryType(this.worldClasses[WorldClass.L], "Land life has not yet evolved"),
-        14: new GeneralPlanetaryType(this.worldClasses[WorldClass.O], "Water world with only small islands"),
-        15: new GeneralPlanetaryType(this.worldClasses[WorldClass.O], "Water world with only small islands"),
-        16: new GeneralPlanetaryType(this.worldClasses[WorldClass.O], "Water world with only small islands"),
-        17: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Verdant jungle world"),
-        18: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Verdant jungle world"),
-        19: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Verdant jungle world"),
-        20: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Temperate world — like Earth"),
-        21: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Temperate world — like Earth"),
-        22: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Temperate world — like Earth"),
-        23: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Dry hot world — like Vulcan"),
-        24: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Dry hot world — like Vulcan"),
-        25: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Dry hot world — like Vulcan"),
-        26: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Ice age world"),
-        27: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Ice age world"),
-        28: new GeneralPlanetaryType(this.worldClasses[WorldClass.M], "Ice age world"),
-        29: new GeneralPlanetaryType(this.worldClasses[WorldClass.L], "Marginally habitable world"),
-        30: new GeneralPlanetaryType(this.worldClasses[WorldClass.L], "Marginally habitable world"),
-        31: new GeneralPlanetaryType(this.worldClasses[WorldClass.K], "Neptune-like"),
-        32: new GeneralPlanetaryType(this.worldClasses[WorldClass.K], "Mars-like"),
-        33: new GeneralPlanetaryType(this.worldClasses[WorldClass.K], "Mars-like"),
-        34: new GeneralPlanetaryType(this.worldClasses[WorldClass.Y]),
-        35: new GeneralPlanetaryType(this.worldClasses[WorldClass.Y]),
-        36: new GeneralPlanetaryType(this.worldClasses[WorldClass.ArtificialPlanet], "Obvious"),
-        37: new GeneralPlanetaryType(this.worldClasses[WorldClass.ArtificialPlanet], "Obvious"),
-        38: new GeneralPlanetaryType(this.worldClasses[WorldClass.J]),
-        39: new GeneralPlanetaryType(this.worldClasses[WorldClass.J]),
-        40: new GeneralPlanetaryType(this.worldClasses[WorldClass.T]),
+        2: new GeneralPlanetaryType(worldClasses[WorldClass.ArtificialPlanet], "Non-obvious"),
+        3: new GeneralPlanetaryType(worldClasses[WorldClass.ArtificialPlanet], "Non-obvious"),
+        4: new GeneralPlanetaryType(worldClasses[WorldClass.ArtificialPlanet], "Non-obvious"),
+        5: new GeneralPlanetaryType(worldClasses[WorldClass.ArtificialPlanet], "Non-obvious"),
+        6: new GeneralPlanetaryType(worldClasses[WorldClass.D]),
+        7: new GeneralPlanetaryType(worldClasses[WorldClass.D]),
+        8: new GeneralPlanetaryType(worldClasses[WorldClass.D]),
+        9: new GeneralPlanetaryType(worldClasses[WorldClass.H]),
+        10: new GeneralPlanetaryType(worldClasses[WorldClass.H]),
+        11: new GeneralPlanetaryType(worldClasses[WorldClass.L], "Land life has not yet evolved"),
+        12: new GeneralPlanetaryType(worldClasses[WorldClass.L], "Land life has not yet evolved"),
+        13: new GeneralPlanetaryType(worldClasses[WorldClass.L], "Land life has not yet evolved"),
+        14: new GeneralPlanetaryType(worldClasses[WorldClass.O], "Water world with only small islands"),
+        15: new GeneralPlanetaryType(worldClasses[WorldClass.O], "Water world with only small islands"),
+        16: new GeneralPlanetaryType(worldClasses[WorldClass.O], "Water world with only small islands"),
+        17: new GeneralPlanetaryType(worldClasses[WorldClass.M], "Verdant jungle world"),
+        18: new GeneralPlanetaryType(worldClasses[WorldClass.M], "Verdant jungle world"),
+        19: new GeneralPlanetaryType(worldClasses[WorldClass.M], "Verdant jungle world"),
+        20: new GeneralPlanetaryType(worldClasses[WorldClass.M], "Temperate world — like Earth"),
+        21: new GeneralPlanetaryType(worldClasses[WorldClass.M], "Temperate world — like Earth"),
+        22: new GeneralPlanetaryType(worldClasses[WorldClass.M], "Temperate world — like Earth"),
+        23: new GeneralPlanetaryType(worldClasses[WorldClass.M], "Dry hot world — like Vulcan"),
+        24: new GeneralPlanetaryType(worldClasses[WorldClass.M], "Dry hot world — like Vulcan"),
+        25: new GeneralPlanetaryType(worldClasses[WorldClass.M], "Dry hot world — like Vulcan"),
+        26: new GeneralPlanetaryType(worldClasses[WorldClass.M], "Ice age world"),
+        27: new GeneralPlanetaryType(worldClasses[WorldClass.M], "Ice age world"),
+        28: new GeneralPlanetaryType(worldClasses[WorldClass.M], "Ice age world"),
+        29: new GeneralPlanetaryType(worldClasses[WorldClass.L], "Marginally habitable world"),
+        30: new GeneralPlanetaryType(worldClasses[WorldClass.L], "Marginally habitable world"),
+        31: new GeneralPlanetaryType(worldClasses[WorldClass.K], "Neptune-like"),
+        32: new GeneralPlanetaryType(worldClasses[WorldClass.K], "Mars-like"),
+        33: new GeneralPlanetaryType(worldClasses[WorldClass.K], "Mars-like"),
+        34: new GeneralPlanetaryType(worldClasses[WorldClass.Y]),
+        35: new GeneralPlanetaryType(worldClasses[WorldClass.Y]),
+        36: new GeneralPlanetaryType(worldClasses[WorldClass.ArtificialPlanet], "Obvious"),
+        37: new GeneralPlanetaryType(worldClasses[WorldClass.ArtificialPlanet], "Obvious"),
+        38: new GeneralPlanetaryType(worldClasses[WorldClass.J]),
+        39: new GeneralPlanetaryType(worldClasses[WorldClass.J]),
+        40: new GeneralPlanetaryType(worldClasses[WorldClass.T]),
     }
 
     private innerWorldTable: { [roll: number]: WorldClassModel[] } = {
-        1: [ this.worldClasses[WorldClass.Y] ], // Y
-        2: [ this.worldClasses[WorldClass.B] ], // B
-        3: [ this.worldClasses[WorldClass.B] ], // B
-        4: [ this.worldClasses[WorldClass.N] ], // N
-        5: [ this.worldClasses[WorldClass.N] ], // N
-        6: [ this.worldClasses[WorldClass.N] ], // N
-        7: [ this.worldClasses[WorldClass.J] ], // J
-        8: [ this.worldClasses[WorldClass.J] ], // J
-        9: [ this.worldClasses[WorldClass.J] ], // J
-        10: [ this.worldClasses[WorldClass.J] ], // J
-        11: [ this.worldClasses[WorldClass.J] ], // J
-        12: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
-        13: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
-        14: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
-        15: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
-        16: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
-        17: [ this.worldClasses[WorldClass.H] ], // H
-        18: [ this.worldClasses[WorldClass.H] ], // H
-        19: [ this.worldClasses[WorldClass.H] ], // H
-        20: [ this.worldClasses[WorldClass.L], this.worldClasses[WorldClass.K], this.worldClasses[WorldClass.M] ], // L, K, or M
+        1: [ worldClasses[WorldClass.Y] ], // Y
+        2: [ worldClasses[WorldClass.B] ], // B
+        3: [ worldClasses[WorldClass.B] ], // B
+        4: [ worldClasses[WorldClass.N] ], // N
+        5: [ worldClasses[WorldClass.N] ], // N
+        6: [ worldClasses[WorldClass.N] ], // N
+        7: [ worldClasses[WorldClass.J] ], // J
+        8: [ worldClasses[WorldClass.J] ], // J
+        9: [ worldClasses[WorldClass.J] ], // J
+        10: [ worldClasses[WorldClass.J] ], // J
+        11: [ worldClasses[WorldClass.J] ], // J
+        12: [ worldClasses[WorldClass.D], worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        13: [ worldClasses[WorldClass.D], worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        14: [ worldClasses[WorldClass.D], worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        15: [ worldClasses[WorldClass.D], worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        16: [ worldClasses[WorldClass.D], worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        17: [ worldClasses[WorldClass.H] ], // H
+        18: [ worldClasses[WorldClass.H] ], // H
+        19: [ worldClasses[WorldClass.H] ], // H
+        20: [ worldClasses[WorldClass.L], worldClasses[WorldClass.K], worldClasses[WorldClass.M] ], // L, K, or M
     }
 
     private outerWorldTable: { [roll: number]: WorldClassModel[] } = {
-        1: [ this.worldClasses[WorldClass.L] ], // L
-        2: [ this.worldClasses[WorldClass.C] ], // C
-        3: [ this.worldClasses[WorldClass.C] ], // C
-        4: [ this.worldClasses[WorldClass.C] ], // C
-        5: [ this.worldClasses[WorldClass.C] ], // C
-        6: [ this.worldClasses[WorldClass.J] ], // J
-        7: [ this.worldClasses[WorldClass.J] ], // J
-        8: [ this.worldClasses[WorldClass.J] ], // J
-        9: [ this.worldClasses[WorldClass.J] ], // J
-        10: [ this.worldClasses[WorldClass.J] ], // J
-        11: [ this.worldClasses[WorldClass.J] ], // J
-        12: [ this.worldClasses[WorldClass.J] ], // J
-        13: [ this.worldClasses[WorldClass.J] ], // J
-        14: [ this.worldClasses[WorldClass.J] ], // J
-        15: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
-        16: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
-        17: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
-        18: [ this.worldClasses[WorldClass.D], this.worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
-        19: [ this.worldClasses[WorldClass.I] ], // I
-        20: [ this.worldClasses[WorldClass.P] ], // P
+        1: [ worldClasses[WorldClass.L] ], // L
+        2: [ worldClasses[WorldClass.C] ], // C
+        3: [ worldClasses[WorldClass.C] ], // C
+        4: [ worldClasses[WorldClass.C] ], // C
+        5: [ worldClasses[WorldClass.C] ], // C
+        6: [ worldClasses[WorldClass.J] ], // J
+        7: [ worldClasses[WorldClass.J] ], // J
+        8: [ worldClasses[WorldClass.J] ], // J
+        9: [ worldClasses[WorldClass.J] ], // J
+        10: [ worldClasses[WorldClass.J] ], // J
+        11: [ worldClasses[WorldClass.J] ], // J
+        12: [ worldClasses[WorldClass.J] ], // J
+        13: [ worldClasses[WorldClass.J] ], // J
+        14: [ worldClasses[WorldClass.J] ], // J
+        15: [ worldClasses[WorldClass.D], worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        16: [ worldClasses[WorldClass.D], worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        17: [ worldClasses[WorldClass.D], worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        18: [ worldClasses[WorldClass.D], worldClasses[WorldClass.AsteroidBelt] ], // D or Asteroid
+        19: [ worldClasses[WorldClass.I] ], // I
+        20: [ worldClasses[WorldClass.P] ], // P
     }
 
     private primaryWorldTable: { [roll: number]: WorldClassModel[] } = {
-        1: [ this.worldClasses[WorldClass.L], this.worldClasses[WorldClass.E] ], // L or E
-        2: [ this.worldClasses[WorldClass.L], this.worldClasses[WorldClass.E] ], // L or E
-        3: [ this.worldClasses[WorldClass.L], this.worldClasses[WorldClass.E] ], // L or E
-        4: [ this.worldClasses[WorldClass.L], this.worldClasses[WorldClass.E] ], // L or E
-        5: [ this.worldClasses[WorldClass.L], this.worldClasses[WorldClass.E] ], // L or E
-        6: [ this.worldClasses[WorldClass.M] ], // M
-        7: [ this.worldClasses[WorldClass.M] ], // M
-        8: [ this.worldClasses[WorldClass.M] ], // M
-        9: [ this.worldClasses[WorldClass.M] ], // M
-        10: [ this.worldClasses[WorldClass.M] ], // M
-        11: [ this.worldClasses[WorldClass.M] ], // M
-        12: [ this.worldClasses[WorldClass.M] ], // M
-        13: [ this.worldClasses[WorldClass.K] ], // K
-        14: [ this.worldClasses[WorldClass.K] ], // K
-        15: [ this.worldClasses[WorldClass.K] ], // K
-        16: [ this.worldClasses[WorldClass.K] ], // K
-        17: [ this.worldClasses[WorldClass.K] ], // K
-        18: [ this.worldClasses[WorldClass.K] ], // K
-        19: [ this.worldClasses[WorldClass.O], this.worldClasses[WorldClass.P] ], // O or P
-        20: [ this.worldClasses[WorldClass.O], this.worldClasses[WorldClass.P] ], // O or P
+        1: [ worldClasses[WorldClass.L], worldClasses[WorldClass.E] ], // L or E
+        2: [ worldClasses[WorldClass.L], worldClasses[WorldClass.E] ], // L or E
+        3: [ worldClasses[WorldClass.L], worldClasses[WorldClass.E] ], // L or E
+        4: [ worldClasses[WorldClass.L], worldClasses[WorldClass.E] ], // L or E
+        5: [ worldClasses[WorldClass.L], worldClasses[WorldClass.E] ], // L or E
+        6: [ worldClasses[WorldClass.M] ], // M
+        7: [ worldClasses[WorldClass.M] ], // M
+        8: [ worldClasses[WorldClass.M] ], // M
+        9: [ worldClasses[WorldClass.M] ], // M
+        10: [ worldClasses[WorldClass.M] ], // M
+        11: [ worldClasses[WorldClass.M] ], // M
+        12: [ worldClasses[WorldClass.M] ], // M
+        13: [ worldClasses[WorldClass.K] ], // K
+        14: [ worldClasses[WorldClass.K] ], // K
+        15: [ worldClasses[WorldClass.K] ], // K
+        16: [ worldClasses[WorldClass.K] ], // K
+        17: [ worldClasses[WorldClass.K] ], // K
+        18: [ worldClasses[WorldClass.K] ], // K
+        19: [ worldClasses[WorldClass.O], worldClasses[WorldClass.P] ], // O or P
+        20: [ worldClasses[WorldClass.O], worldClasses[WorldClass.P] ], // O or P
     }
 
     private notableSystemsTable: { [roll: number] : number } = {
@@ -1073,11 +1056,11 @@ class SystemGeneration {
                 let world = null;
                 if (i === (primaryWorldOrbit-1) && orbit.radius > starSystem.gardenZoneOuterRadius) {
                     let roll = D20.roll();
-                    let worldClass = this.worldClasses[WorldClass.J];
+                    let worldClass = worldClasses[WorldClass.J];
                     if (roll >= 9) {
-                        worldClass = this.worldClasses[WorldClass.I];
+                        worldClass = worldClasses[WorldClass.I];
                     } else if (roll > 16) {
-                        worldClass = this.worldClasses[WorldClass.T];
+                        worldClass = worldClasses[WorldClass.T];
                     }
                     world = this.createBasicWorldAttributes(worldClass, orbit, romanNumeralId, starSystem);
                     this.createGasGiantDetails(world, orbit, starSystem, region, true);
@@ -1261,6 +1244,8 @@ class SystemGeneration {
             } else {
                 result.rotationPeriod = addNoiseToValue(period);
             }
+
+            result.atmosphereDetails = atmosphereTable(world.worldClass.id);
         }
 
         if (world.worldClass.id === WorldClass.O) {

@@ -4,8 +4,9 @@ import { Sector } from "../table/sector";
 import { SimpleColor } from "../../common/colour";
 import { CompanionType, StarSystem } from "../table/starSystem";
 import { createRandomValue } from "../../common/randomValueGenerator";
-import { AsteroidBeltDetails, WorldClass } from "../table/world";
+import { AsteroidBeltDetails } from "../table/world";
 import i18next from "i18next";
+import { WorldClass } from "../table/worldClass";
 
 const BULLET = '\u2022';
 

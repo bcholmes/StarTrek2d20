@@ -928,6 +928,9 @@
     "Division.monsterMaroon.specialServices": "Special Services",
     "Division.monsterMaroon.trainee": "Trainee",
 
+    "Division.strangeNewWorlds.medical": "Medical",
+    "Division.strangeNewWorlds.nursing": "Nursing",
+
     "Era.name.enterprise": "Enterprise (22nd century)",
     "Era.name.originalSeries": "Original Series (23rd century)",
     "Era.name.nextGeneration": "Next Generation (24th century)",
@@ -990,6 +993,7 @@
     "Focus.philosophy": "Philosophy",
     "Focus.physics": "Physics",
     "Focus.politics": "Politics",
+    "Focus.powerSystems": "Power Systems",
     "Focus.psychiatry": "Psychiatry",
     "Focus.psychology": "Psychology",
     "Focus.quantumMechanics": "Quantum Mechanics",
@@ -999,6 +1003,7 @@
     "Focus.starshipRecognition": "Starship Recognition",
     "Focus.starfleetProtocols": "Starfleet Protocols",
     "Focus.structuralEngineering": "Structural Engineering",
+    "Focus.subspaceCommunications": "Subspace Communications",
     "Focus.surgery": "Surgery",
     "Focus.survey": "Survey",
     "Focus.survival": "Survival",
@@ -1481,6 +1486,7 @@
     "Species.klingonQuchHa.name": "Klingon (QuchHa’)",
 
     "Species.nausicaan.name": "Nausicaan",
+    "Species.nausicaan.traitDescription": "Nausicaans are a tall, very strong species hailing from Nausicaa. They are generally stronger than an average Human, though often somewhat less intelligent, preferring brute force over finesse and direct methods as opposed to subtlety. They have little patience for organized forms of government, though they will tolerate following a captain for as long as that captain earns their capricious loyalty. Nausicaans are somewhat resistant to pain and injury, and almost never back down from a challenge, especially when it involves games that carry the potential for serious bodily harm to themselves or their opponents.",
 
     "Species.orion.name": "Orion",
 
@@ -1530,6 +1536,9 @@
     "Species.trill.description": "The Trill species, from their homeworld of the same name, appear almost identical to Humans, but for rows of spots running down the sides of their bodies, from head to toe. However, this superficial similarity conceals a considerable difference — the Trill are capable of bonding with a symbiotic organism known as a symbiont, creating a distinct being from the two individual creatures. The symbionts can live for many centuries, and are placed with successive hosts, carrying the memories and knowledge of previous hosts into a new joining with each new generation. This fact isn’t widely known outside the Trill themselves, but it isn’t a secret — it simply isn’t widely discussed, and the number of joined Trill is relatively small. The Trill have been part of the Federation for well over a century, with several renowned Trill serving important roles in shaping the Federation. The Trill, as a culture, tend to be focused on intellectual pursuits first and foremost, as learning and wisdom are prized by the symbionts in their hosts.",
     "Species.trill.exampleValue": "Four Lifetimes of Adventure",
     "Species.trill.traitDescription": "Trill are especially resilient to parasites, as a quirk of their potential to be Joined; Joined Trill are entirely immune to parasitic infection. However, they tend to have strong allergic reactions to insect bites and other forms of venom, which can disrupt their neurochemistry, particularly if they’re Joined. As many of the specifics of Trill physiology — especially with regards to symbiosis — are not widely known, this can result in medical complications.",
+
+    "Species.tzenkethi.name": "Tzenkethi",
+    "Species.tzenkethi.traitDescription": "This Trait may reduce the Difficulty of Tasks requiring (extreme) flexibility. When not in combat or stressful situations, they naturally regenerate at extremely fast speeds as long as they have at least 1 Stress. Tzenkethi are singularly focused on excellence and moving up the Echelons, therefore they will do anything they can in order to complete the task ahead of them and succeed, even if this means dying in the process. Other Tzenkethi authority figures are holy to them and they would never go against direct orders. Due to a history of dealing with alien invaders the Tzenkethi are extremely mistrustful of aliens and believe they are without morals.",
 
     "Species.vorta.name": "Vorta",
     "Species.vorta.description": "The Vorta are genetically-engineered life-forms, created to serve as advisors, scientists, diplomats, and overseers for the Dominion, acting as the Founders’ closest servants and foremost representatives. Vorta are cloned, in batches of identical beings, with a new clone being activated and placed into service upon the death of a predecessor, receiving the memories of those that came before them, though each clone is nevertheless a distinct individual. Vorta are extremely cunning and clever, but have little creativity or sense of aesthetics.",
@@ -1607,6 +1616,10 @@
     "Talent.advisor": "Advisor",
 
     "Talent.advisor.description": "Whenever you assist another character using your Command Discipline, the character being assisted may re-roll one d20.",
+
+    "Talent.aLittleMorePower": "A Little More Power",
+
+    "Talent.aLittleMorePower.description": "Whenever you succeed at an Engineering Task aboard your own ship, you may spend one Momentum to regain one spent Power.",
 
     "Talent.automatedDefenses": "Automated Defenses",
 
@@ -1788,6 +1801,10 @@
 
     "Talent.highPowerTractorBeam.soloDescription": "The ship’s tractor beam systems channel far greater quantities of power and exert much more force on the target.",
 
+    "Talent.iKnowMyShip": "I Know My Ship",
+
+    "Talent.iKnowMyShip.description": "Whenever you attempt a Task to determine the source of a technical problem with your ship, add one bonus d20.",
+
     "Talent.improvedDamageControl": "Improved Damage Control",
 
     "Talent.improvedDamageControl.soloDescription": "The ship has more efficient damage reporting systems, and better-trained teams of technicians, allowing the crew to respond more quickly to damage during a crisis.",
@@ -1839,6 +1856,10 @@
     "Talent.joined": "Joined",
 
     "Talent.joined.description": "You have a symbiont, with lifetimes of memories to draw upon. Once per mission, you may declare that a former host had expertise in a relevant skill or field of study; you gain a single Focus for the remainder of the scene, as you draw upon those memories. Additionally, you gain a Trait with the name of the Symbiont; this reflects potential advantages of the Joining, the ability to perform rites and rituals to awaken past hosts’ memories, and the vulnerabilities inherent in the connection. Former Initiate cannot be taken if the character has the Joined Talent — they are mutually exclusive.",
+
+    "Talent.juryRig": "Jury-rig",
+
+    "": "Whenever you attempt an Engineering Task to perform repairs, you may reduce the Difficulty by two, to a minimum of 0. If you do this, however, then the repairs are only temporary and will last only a single scene, plus one additional scene per Momentum spent (Repeatable) before they fail again. Jury-rigged repairs can only be applied once, and the Difficulty to repair a device that has been Jury-rigged increases by 1.",
 
     "Talent.kolinahr": "Kolinahr",
 
@@ -2046,6 +2067,7 @@
     "UniformEra.originalSeriesKlingon": "Klingon (Original Series)",
     "UniformEra.romulan": "Romulan",
     "UniformEra.suliban": "Suliban",
+    "UniformEra.strangeNewWorlds": "Strange New Worlds",
     "UniformEra.voyagerDS9": "Voyager/DS9",
 
     "Upbringing.starfleet.militaryOrExploration.name": "Starfleet",
@@ -2149,6 +2171,9 @@
 
     "Weapon.quality.vicious.name": "Vicious {{rank}}",
 
+    "World.attribute.atmosphereType": "Atmosphere Type",
+    "World.attribute.atmosphericDensity": "Atmospheric Density",
+    "World.attribute.atmosphericContaminants": "Atmospheric Contaminants",
     "World.attribute.designation": "Designation",
     "World.attribute.classification": "Classification",
     "World.attribute.notes": "Notes",
@@ -2170,6 +2195,29 @@
     "World.attribute.ring": "Ring",
     "World.attribute.beltWidth": "Belt Width",
     "World.attribute.predominantSize": "Predominant Size",
+
+    "World.atmosphereType.vacuum": "Vacuum",
+    "World.atmosphereType.standardOxygenNitrogenMix": "Standard oxygen/nitrogen mix",
+    "World.atmosphereType.oxygenArgonMix": "Oxygen/argon mix",
+    "World.atmosphereType.hydrogenCompoundsAndReactiveGases": "Hydrogen compounds and reactive gases",
+    "World.atmosphereType.carbonDioxide": "Carbon dioxide",
+
+    "World.atmosphericContaminant.bacteriaOrViruses": "Dangerous bacteria or viruses",
+    "World.atmosphericContaminant.unusualGases": "Unusual gases",
+    "World.atmosphericContaminant.highOxygen": "High oxygen",
+    "World.atmosphericContaminant.pollutants": "Pollutants",
+    "World.atmosphericContaminant.sulfurCompounds": "Sulfur compounds",
+    "World.atmosphericContaminant.radioactives": "Radioactives",
+    "World.atmosphericContaminant.lowOxygen": "LowOxygen",
+    "World.atmosphericContaminant.acidRain": "Acid rain",
+    "World.atmosphericContaminant.corrosiveGases": "Corrosive gases",
+    "World.atmosphericContaminant.irritantPollens": "Irritant pollens",
+
+    "World.atmosphericDensity.veryThin": "Very thin",
+    "World.atmosphericDensity.thin": "Thin",
+    "World.atmosphericDensity.standard": "Standard",
+    "World.atmosphericDensity.dense": "Dense",
+    "World.atmosphericDensity.veryDense": "Very dense",
 
     "World.class.description": "Class {{class}}",
     "World.class.fullDescription": "Class {{class}} ({{definition}})"

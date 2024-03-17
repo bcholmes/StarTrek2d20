@@ -5,9 +5,14 @@ https://sta.bcholmes.org . This is an alternative (and possibly temporary) versi
 generator app](https://sta.modiphiusapps.hostinguk.org/).
 
 Why does an alternative version exist? I wanted to make some additional features available a bit faster
-than it was taking to get pull requests processed (and deployed) on the original codebase. 300 commits
-later, it might be time to accept that the original repo has been abandoned, and that this version
-is now the primary one.
+than it was taking to get pull requests processed (and deployed) on the original codebase.
+
+Over two years have passed since any of my pull requests have been accepted into azjerei's
+[original codebase](https://github.com/azjerei/StarTrek2d20), and this copy is now more than
+700 commits ahead of the original. So I think it's
+time to accept that the original repo has been abandoned, and that this version
+is now the primary one. I've now severed the "fork" relationship between my repo and the
+original. Mainly because I want to count the commit activity on my GitHub profile.
 
 ## Prerequisites
 

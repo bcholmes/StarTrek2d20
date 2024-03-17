@@ -1,5 +1,8 @@
 import { D20 } from "../../common/die";
 import i18next from "i18next";
+import { AtmosphereDetails } from "./atmosphereTable";
+import { WorldClass, WorldClassModel } from "./worldClass";
+import { WorldAttribute } from "./worldAttribute";
 
 const ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
 
@@ -7,25 +10,6 @@ export enum WorldCoreType {
     Heavy, Molten, Rocky, Icy
 }
 
-export enum WorldClass {
-    AsteroidBelt,
-    B,
-    C,
-    D,
-    E,
-    H,
-    I,
-    J,
-    K,
-    L,
-    M,
-    N,
-    O,
-    P,
-    T,
-    Y,
-    ArtificialPlanet,
-}
 
 export enum RomanNumerals {
     I,
@@ -87,20 +71,6 @@ export class RingTypeModel {
     }
     static getTypeNone() {
         return this.getTypes()[0];
-    }
-}
-
-export class WorldClassModel {
-    public id: WorldClass;
-    public description: string;
-
-    constructor(id: WorldClass, description: string) {
-        this.id = id;
-        this.description = description;
-    }
-
-    get isGasGiant() {
-        return this.id === WorldClass.J || this.id === WorldClass.I || this.id === WorldClass.T;
     }
 }
 
@@ -253,6 +223,7 @@ export class StandardWorldDetails extends WorldDetails {
     rotationPeriod: number;
     hydrographicPercentage: number;
     axialTilt: number;
+    atmosphereDetails: AtmosphereDetails;
 
     plainText() {
         return (this.rotationPeriod ? ("\nRotation: " + (this.tidallyLocked
@@ -275,19 +246,16 @@ export class StandardWorldDetails extends WorldDetails {
         if (this.hydrographicPercentage != null) {
             result.push(new WorldAttribute(i18next.t("World.attribute.waterCoverage"), this.hydrographicPercentage.toFixed(2) + '%'));
         }
+
+        if (this.atmosphereDetails != null) {
+            this.atmosphereDetails.attributeList.forEach(a => result.push(a));
+        }
+
         return result;
     }
 }
 
-export class WorldAttribute {
-    readonly name: string;
-    readonly value: string;
 
-    constructor(name: string, value: string) {
-        this.name = name;
-        this.value = value;
-    }
-}
 
 export class World {
 

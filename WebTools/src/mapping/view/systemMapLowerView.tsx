@@ -1,8 +1,9 @@
 import React from "react";
 import { SimpleColor } from "../../common/colour";
 import { CompanionType } from "../table/starSystem";
-import { AsteroidBeltDetails, StandardWorldDetails, WorldClass } from "../table/world";
+import { AsteroidBeltDetails, StandardWorldDetails } from "../table/world";
 import { SystemMapView } from "./systemMapView";
+import { WorldClass } from "../table/worldClass";
 
 class SystemMapLowerView extends SystemMapView {
 

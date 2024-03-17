@@ -143,7 +143,19 @@
 
     "EnvironmentPage.simple.instruction": "Или выберите, или рандомизируйте Среду обитания",
 
+    "FinishPage.instruction": "Персонаж был завершен. Экспортируйте его в PDF, или используйте \"Профиль\" слева для просмотра выбранных вариантов и для переноса их в бланк персонажа вручную.",
+
     "FinishPage.rank.instruction": "Выберите рагн вашего персонажа.",
+
+    "FinishPage.trait.preamble_one": "У персонажа автоматом есть следующяя черта:",
+    "FinishPage.trait.preamble_other": "У персонажа автоматом есть следующие черты:",
+    "FinishPage.trait.instruction": "Тут можно определить дополнительные черты.",
+
+    "FinishPage.role.instruction": "Выберите роль персонажа и корабль на котором он служит. Этот выбор будет основан на наивысшем Знании(ях). Наилучшый выбор будет сверху, но остальные опции будут так же показаны если вы хотите создать другого персонажа.",
+
+    "FinishPage.values.instruction": "Если вы не определили ценности персонажа в процессе создания, или вы хотите поменять их, сейчас самое время обдумать ценности с которыми ваш персонаж пойдет дальше.",
+
+    "FinishPage.job.example": "например Младший Инженер",
 
     "SoloConstructTypePage.character": "Персонаж",
     "SoloConstructTypePage.instruction": "Вы создаете персонажа или звездолет?",
@@ -223,13 +235,18 @@
     "UpbringingDetailPage.error.talent": "Выберите талант для продолжения.",
     "UpbringingDetailPage.error.focus": "Нужно написать Специализацию. Выберите из предложенных если ничего не приходит в голову.",
 
+    "SupportingCharacter.whatType": "Выберите тип персонажа",
+    "SupportingCharacter.howOld": "Возраст персонажа",
     "SupportingCharacter.purposeOrDepartment": "Цель/Отдел",
+    "SupportingCharacter.whatPurpose": "Выберите цель второстепенного первонажа. Он будет инженером, врачом, ученым или безопасником?",
     "SupportingCharacter.speciesAndAttributes": "Расы и Качества",
     "SupportingCharacter.speciesAndAttributesInstruction": "Назначьте Качества и выберите расу персонажа. Выбор расы повлияет на окончательные значения Качества.\nВыделите два значения, чтобы поменять их местами.",
     "SupportingCharacter.disciplineInstruction": "Назначьте знания персонажу. Максимальное значение должно отражать отдел/цель создания персонажа.\nВыделите два значения, чтобы поменять их местами.",
     "SupportingCharacter.focusInstruction": "Выберите три специализации для персонажа. Как минимум одна должна отражать выбор отдела персонажа.",
     "SupportingCharacter.nameAndRank": "Имя и ранг",
+    "SupportingCharacter.nameAndRankInstruction": "Дайте персонажу соответствующее имя и ранг. Второстепенные персонажи никогда не могут иметь ранг выше Лейтенанта и чаще бывают рядовым составом, чем офицерами.",
     "SupportingCharacter.numericalValue": "Значение",
+    "SupportingCharacter.speciesBonus": "Рассовый бонус",
 
     "ToolSelection.instruction": "Что вы хотите сгенерировать?",
     "ToolSelection.mainCharacter": "Главный персонаж",
@@ -243,6 +260,12 @@
     "Common.button.selectAll": "Выбрать все",
     "Common.button.selectNone": "Отменить все",
     "Common.button.showAll": "Показать все",
+    "Common.button.exportJson": "Экспорт в JSON",
+    "Common.button.export": "Экспорт",
+    "Common.button.exportVtt": "Экспорт в VTT",
+    "Common.button.exportPdf": "Экспорт в PDF",
+    "Common.button.finish": "Конец",
+    "Common.button.ok": "OK",
     "Common.button.copyToClipboard": "Скопировать в буфер",
     "Common.button.add": "Добавить",
     "Common.button.cancel": "Отменить",
@@ -278,6 +301,7 @@
     "Construct.other.determination": "Целеустремленность",
     "Construct.other.discipline": "Знание",
     "Construct.other.disciplines": "Знания",
+    "Construct.other.education": "Образование",
     "Construct.other.environment": "Среда обитания",
     "Construct.other.equipment": "Снаряжение",
     "Construct.other.era": "Эра",
@@ -287,13 +311,20 @@
     "Construct.other.focus3": "Специализация 3",
     "Construct.other.focuses": "Специализации",
     "Construct.other.job": "Работа",
+    "Construct.other.missionProfile": "Профиль миссии",
     "Construct.other.name": "Имя",
     "Construct.other.pronouns": "Называть",
+    "Construct.other.power": "Энергия",
+    "Construct.other.purpose": "Роль",
     "Construct.other.rank": "Ранг",
+    "Construct.other.resistance": "Сопротивление",
+    "Construct.other.reprimands": "Выговоры",
     "Construct.other.reputation": "Репутация",
+    "Construct.other.serviceDate": "Период службы",
     "Construct.other.shields": "Щиты",
     "Construct.other.specialRules": "Особые Правила",
     "Construct.other.species": "Раса",
+    "Construct.other.stats": "Значения",
     "Construct.other.stress": "Стресс",
     "Construct.other.systems": "Системы",
     "Construct.other.talent": "Талант",
@@ -301,6 +332,7 @@
     "Construct.other.training": "Тренировка",
     "Construct.other.trait": "Черта",
     "Construct.other.traits": "Черты",
+    "Construct.other.additionalTraits": "Дополнительные черты",
     "Construct.other.upbringing": "Воспитание",
     "Construct.other.value": "Ценность",
     "Construct.other.values": "Ценности",
@@ -346,6 +378,7 @@
     "Page.title.environmentDetails": "Детали среды обитания",
     "Page.title.era": "Эра",
     "Page.title.extraTalentDetails": "Дополнительные детали",
+    "Page.title.finalStarshipDetails": "Заключительные штрихи звездолета",
     "Page.title.finish": "Заключительные штрихи",
     "Page.title.home": "Домашняя",
     "Page.title.careerEvent": "Cобытие карьеры",
@@ -443,11 +476,29 @@
 
     "CharacterType.name.starfleet": "Звездный флот",
 
+    "EarlyOutlook.MilitaryOrExploration": "Звездный флот",
+
+    "EarlyOutlook.MilitaryOrExploration.description": "В семье персонажа может существовать традиция служить\n в Звёздном флоте, при этом в каждом поколении был,\n по крайней мере, один член семьи, который служил так\n Федерации. Возможно, оба родителя ПИ были офицерами\n Звёздного флота, которые встретились на службе. В любом случае Звёздный флот повлиял на юные годы персонажа.",
+
+    "EarlyOutlook.BusinessOrTrade": "Бизнес или торговля",
+
+    "EarlyOutlook.BusinessOrTrade.description": "Семья персонажа может иметь связи в бесконечном количестве\n различных мест Вселенной, руководя и управляя грандиозным бизнесом. Они могут быть торговцами или участвовать в межпланетных перевозках. В любом случае\n персонаж вырос среди представителей из разных слоёв общества, в том числе и живущих за пределами Федерации,\n и его взгляд на жизнь сформировался соответственно.",
+
     "EarlyOutlook.agricultureOrRural": "Сельское хозяйство и фермерство",
 
     "EarlyOutlook.agricultureOrRural.description": "Персонаж рос, скорее всего, на природе, в сельских общинах, на границе или где-то ещё вдали от городской суеты. Он мог серьёзно заниматься сельским хозяйством, выращивая настоящие продукты питания, дополняющие синтезированные или реплицированные блюда.",
 
     "EarlyOutlook.ScienceAndTechnology": "Наука и технологии",
+
+    "EarlyOutlook.ScienceAndTechnology.description": "В доме персонажа царила наука, передовые разработки были\n для него обыденностью. Возможно, Персонаж воспитывался\n учёными или инженерами или у него были наставники\n и учителя, поощрявшие тягу к технологиям.",
+
+    "EarlyOutlook.ArtisticAndCreative": "Искусство и творечество",
+
+    "EarlyOutlook.ArtisticAndCreative.description": "Персонаж провёл детство в окружении произведений искусства\n и творческих людей, и независимо от того, какие занятия\n он предпочитает, он знаком с великими произведениями\n разных культур, и ему были даны все возможности для\n самовыражения.",
+
+    "EarlyOutlook.DiplomacyAndPolitics": "Дипломатия и политика",
+
+    "EarlyOutlook.DiplomacyAndPolitics.description": "Персонаж с раннего возраста знаком с тонкостями политики\n и дипломатическими нюансами, возможно потому, что\n этим занимался один из членов его семьи.",
 
     "Environment.common.homeworld.name": "Родной мир",
     "Environment.common.homeworld.description": "Персонаж родом с планеты, породившей его цивилизацию, и всю жизнь его окружало культурное и духовное наследие предков. Родные миры часто выглядят утопично и идиллически служат образцами культурных идеалов своих видов. Они хранят наиболее почитаемые традиции и служат правовым и политическим центром цивилизации.",
@@ -467,6 +518,12 @@
     "Environment.common.anotherSpeciesWorld.name": "Планета другого вида",
     "Environment.common.anotherSpeciesWorld.description": "ПИ вырос среди представителей другого вида. Возможно, он жил в небольшом анклаве своего вида или осиротел в результате какой-то катастрофы и потому воспитывался инопланетянами. Как бы то ни было, у этого ПИ уникальный взгляд на свой вид и на тех, с кем он вырос.",
 
+    "Environment.special.name": "{{name}} ({{species}})",
+
+    "Division.command": "Командныая",
+    "Division.science": "Оперативная",
+    "Division.operations": "Научная",
+
     "Era.name.enterprise": "Энтерпрайз (22й век)",
     "Era.name.originalSeries": "Оригинальные серии (23й век)",
     "Era.name.nextGeneration": "Новое поколение (24й век)",
@@ -474,6 +531,75 @@
     "Era.name.discovery32": "Дискавери (32й век)",
 
     "ExtraType.none": "Отсуствует",
+    "ExtraType.bajoranEarring": "Баджорская сережка",
+
+    "Focus.animalHandling": "Обращение с животными",
+    "Focus.anthropology": "Антропология",
+    "Focus.astrometrics": "Астрометрия",
+    "Focus.astronavigation": "Астронавигация",
+    "Focus.astrophysics": "Астрофизика",
+    "Focus.bureaucracy": "Бюрократия",
+    "Focus.botany": "Ботаника",
+    "Focus.composure": "Самообладание",
+    "Focus.computers": "Компьютеры",
+    "Focus.culturalStudies": "Культурология",
+    "Focus.cybernetics": "Кибернетика",
+    "Focus.debate": "Дебаты",
+    "Focus.demolition": "Снос",
+    "Focus.diplomacy": "Дипломатия и политика",
+    "Focus.disguise": "Маскировка",
+    "Focus.disruptors": "Дистрапторы",
+    "Focus.electroPlasmaPowerSystems": "Электро-плазменные силовые установки",
+    "Focus.emergencyMedicine": "Неотложная медицинская помощь",
+    "Focus.espionage": "Шпионаж",
+    "Focus.exoTectonics": "Экзо-тектоника",
+    "Focus.extraVehicularActivity": "Внекорабельная деятельность (ВКД)",
+    "Focus.evasiveAction": "Уклонение",
+    "Focus.finances": "Финансы",
+    "Focus.genetics": "Генетика",
+    "Focus.geology": "Геология",
+    "Focus.handPhasers": "Ручные фазеры",
+    "Focus.handToHandCombat": "Рукопашный бой",
+    "Focus.helmOperation": "Рулевое управление",
+    "Focus.history": "История",
+    "Focus.holoprogramming": "Голопрограммирование",
+    "Focus.infectiousDiseases": "Имфекционные заболевания",
+    "Focus.infiltration": "Внедрение",
+    "Focus.inspiration": "Вдохновение",
+    "Focus.interrogation": "Допрос",
+    "Focus.intimidation": "Устрашение",
+    "Focus.law": "Право",
+    "Focus.linguistics": "Лингвистика",
+    "Focus.manufacturing": "Производство",
+    "Focus.metallurgy": "Металлургия",
+    "Focus.music": "Музыка",
+    "Focus.negotiation": "Переговоры",
+    "Focus.observation": "Наблюдение",
+    "Focus.persuasion": "Убеждение",
+    "Focus.philosophy": "Философия",
+    "Focus.physics": "Физика",
+    "Focus.politics": "Политика",
+    "Focus.powerSystems": "Энергетические системы",
+    "Focus.psychiatry": "Психиатрия",
+    "Focus.psychology": "Психология",
+    "Focus.quantumMechanics": "Кватновая механика",
+    "Focus.rapidAnalysis": "Экстпресс-анализ",
+    "Focus.shipboardTacticalSystems": "Корабельные тактические системы",
+    "Focus.smallCraft": "Малые суда",
+    "Focus.starshipRecognition": "Идентификация звездолётов",
+    "Focus.starfleetProtocols": "Протокол Звёздного флота",
+    "Focus.structuralEngineering": "Структурная инженерия",
+    "Focus.subspaceCommunications": "Подпространственная связь",
+    "Focus.surgery": "Хирургия",
+    "Focus.survey": "Исследование",
+    "Focus.survival": "Выживание",
+    "Focus.teamDynamics": "Командная динамика",
+    "Focus.threatAnalysis": "Анализ угрозы",
+    "Focus.traumaSurgery": "Хирургия травматологических повреждений",
+    "Focus.transportersReplicators": "Транспортеры и репликаторы",
+    "Focus.virology": "Вирусология",
+    "Focus.warpFieldDynamics": "Динамика варп-полей",
+    "Focus.xenobiology": "Ксенобиология",
 
     "GovernmentType.name.andorian": "Андорское",
     "GovernmentType.name.bajoran": "Баджорское",
@@ -486,11 +612,105 @@
     "GovernmentType.name.vulcan": "Вулканское",
     "GovernmentType.name.other": "Другое",
 
+    "HairType.bald": "Лысый",
+    "HairType.bowlCutHair": "Под горшой",
+
     "NasoLabialFoldType.none": "Отсуствует",
 
     "Rank.captain.name": "Капитан",
+    "Rank.captain.abbrev": "Кап.",
 
     "Rank.commander.name": "Коммандер",
+    "Rank.commander.abbrev": "Ком.",
+
+    "Rank.ltCommander.name": "Лейтенант-Коммандер",
+    "Rank.ltCommander.abbrev": "Лт.Ком.",
+
+    "Rank.lieutenant.name": "Лейтенант",
+    "Rank.lieutenant.abbrev": "Лт.",
+
+    "Rank.lieutenantJG.name": "Младщий Лейтенант",
+    "Rank.lieutenantJG.abbrev": "Мл.Лт.",
+
+    "Rank.ensign.name": "Энсин",
+    "Rank.ensign.abbrev": "Энс.",
+
+    "Rank.other.name": "Другое",
+
+    "Rank.none.name": "Отсутствует",
+
+    "Rank.masterChiefPettyOfficer.name": "Старший мичман",
+    "Rank.masterChiefPettyOfficer.abbrev": "чиф",
+
+    "Rank.seniorChiefPettyOfficer.name": "Мичман",
+    "Rank.seniorChiefPettyOfficer.abbrev": "чиф",
+
+    "Rank.chiefPettyOfficer.name": "Главный специалист",
+    "Rank.chiefPettyOfficer.abbrev": "чиф",
+
+    "Rank.pettyOfficer1stClass.name": "Старшина 1й статьи",
+    "Rank.pettyOfficer1stClass.abbrev": "спец",
+
+    "Rank.pettyOfficer2ndClass.name": "Старшина 2й статьи",
+    "Rank.pettyOfficer2ndClass.abbrev": "спец",
+
+    "Rank.pettyOfficer3rdClass.name": "Старшина 3й статьи",
+    "Rank.pettyOfficer3rdClass.abbrev": "спец",
+
+    "Rank.crewman1stClass.name": "Матрос 1й статьи",
+    "Rank.crewman1stClass.abbrev": "матр.",
+
+    "Rank.crewman2ndClass.name": "Матрос 2й статьи",
+    "Rank.crewman2ndClass.abbrev": "матр.",
+
+    "Rank.crewman3rdClass.name": "Матрос 3й статьи",
+    "Rank.crewman3rdClass.abbrev": "матр.",
+
+    "Role.commandingOfficer": "Командир",
+
+    "Role.commandingOfficer.description": "Капитан.\nДаже если командир не в звании капитана, подчинённые будут называть его капитаном. Командир должен быть у каждого корабля.",
+
+    "Role.executiveOfficer": "Старший помощнник",
+
+    "Role.executiveOfficer.description": "Заместитель командира. Старший помощник - главный советник капитана и принимает командование в случае его недееспособности. Если у корабля\n нет специально назначенного старшего помощника,\n им лучше назначить офицера, находящегося на другой должности, без дополнительных преимуществ\n должности старпома",
+
+    "Role.operationsManager": "Глава оперативной службы",
+
+    "Role.operationsManager.description": "Глава оперативной службы отвечает за все технические операции, совершаемые на борту или с участием корабля, как правило, с поста оперативной службы на мостике или находясь во взаимодействии с главным инженером (на небольших кораблях один офицер может занимать обе должности). Он также часто принимает на себя обязанности научного офицера, если такового нет среди старшего состава экипажа.",
+
+    "Role.chiefEngineer": "Главный инженер",
+
+    "Role.chiefEngineer.description": "Главный инженер отвечает за работоспособность\n и функционирование корабля и руководит инженерной службой на его борту.",
+
+    "Role.chiefOfSecurity": "Начальник службы безопасности",
+
+    "Role.chiefOfSecurity.description": "Этот офицер управляет службой и несёт ответственность за корабль и экипаж\nво время миссий, расследует дисциплинарные проступки и уголовные дела, а также обеспечивает защиту важных лиц на борту. На многих кораблях работает за тактическим постом на мостике.",
+
+    "Role.chiefMedicalOfficer": "Главный медицинский офицер",
+
+    "Role.chiefMedicalOfficer.description": "Главный медицинский офицер, также\n судовой хирург или главный врач; отвечает за здоровье и благополучие экипажа и других лиц, находящихся на борту, и руководит медицинской службой. Может\n приказывать старшим офицерам и отменять их приказы, если речь идёт об их здоровье.",
+
+    "Role.scienceOfficer": "Научный офицер",
+
+    "Role.scienceOfficer.description": "Отвечает за консультирование командира по всем научным\n вопросам и предоставляет гипотезы о неизвестных\n явлениях. Не на всех кораблях есть специальный научный офицер, и часто его обязанности выполняет\n глава оперативной службы.",
+
+    "Role.flightController": "Главный навигатор",
+
+    "Role.flightController.description": "Не самая типичная для старших офицеров должность. Некоторые капитаны, особенно действующие\n в неизведанном космосе, назначают старшим офицером также главного рулевого или офицера-навигатора.",
+
+    "Role.shipsCounselor": "Корабельный советник",
+    "Role.shipsCounselor,description": "На больших кораблях и звёздных базах есть\n персонал, занимающийся психологической поддержкой. Некоторые капитаны считают их ценными советниками, поскольку их обучение охватывает как\n культуру, так и психологию, что позволяет им точно\n считывать чужие настроения и намерения.",
+    "Role.communicationsOfficer": "Офицер связи",
+
+    "Role.communicationsOfficer.description": "Чаще встречающиеся в более ранние годы существования Звёздного флота узкоспециализированные офицеры связи владеют языками\n и криптографией, используют передовые технологии\n перевода и расшифровки и важны как при встрече с новыми, так и с враждебными цивилизациями.",
+
+    "ShipBuildType.pod.name": "Челнок",
+
+    "ShipBuildType.shuttlecraft.name": "Шаттл",
+
+    "ShipBuildType.runabout.name": "Катер",
+
+    "ShipBuildType.starship.name": "Звездолет",
 
     "Source.type.coreBook": "Базовые книги правил",
     "Source.type.unofficial": "Неофициальные ресурсы",
@@ -500,6 +720,8 @@
     "Source.book.betaQuadrant": "Бета Квадрант",
     "Source.book.gammaQuadrant": "Гамма Квадрант",
     "Source.book.deltaQuadrant": "Дельта Квадрант",
+    "Source.book.tng": "Новое поколение",
+    "Source.book.ds9": "Далекий космос 9",
     "Source.book.voyager": "Вояджер",
     "Source.book.klingonCore": "Клингоны основная",
     "Source.book.shackletonExpanse": "Пространство Шеклтона",
@@ -507,12 +729,19 @@
     "Source.book.captainsLog": "Дневник Капитана",
 
     "Specialization.admiral": "Адмирал",
+    "Specialization.admin": "Специалист",
     "Specialization.conn": "Пилот",
     "Specialization.counselor": "Советник",
     "Specialization.engineer": "Инженер",
     "Specialization.ferengiDaiMon": "Ферренги Даймон",
     "Specialization.ferengiMerchant": "Ферренги-торговец",
     "Specialization.firstContactSpecialist": "Специалист по Первому Контакту",
+    "Specialization.hangarDeck": "Ангарная палуба для шаттлов",
+    "Specialization.intelligenceOfficer": "Офицер разведки",
+    "Specialization.klingonWarrior": "Клингон-воин",
+    "Specialization.nurse": "Медсестра",
+    "Specialization.scienceTech": "Научный техник",
+    "Specialization.security": "Безоапсник",
     "Specialization.starfleetScientist": "Ученый",
 
     "Species.aenar.name": "Аэнар",
@@ -645,9 +874,21 @@
 
     "Talent.advancedShields.soloDescription": "Это щиты, в которых используются новейшие достижения науки либо в них применяются разработки, ещё не внедрённые другими цивилизациями. Улучшенные щиты обеспечивают большую защиту при тех же затратах энергии.",
 
+    "Talent.advancedTransporters": "Улучшенные транспортеры",
+
+    "Talent.advancedTransporters.soloDescription": "Корабль оснащен десятками площадок с излучателями транспотреров, что позволяет сканерам наведения навестись на их цели и пункты назначения с большей легкостью",
+
     "Talent.advisor": "Советник",
 
     "Talent.advisor.description": "Когда вы оказываете Помощь другому персонажу, используя Знание Командование, тот, кому оказывается Помощь, может заново бросить 1d20.",
+
+    "Talent.aLittleMorePower": "Выжать еще немного энергии",
+
+    "Talent.aLittleMorePower.description": "Успешно выполнив Задачу на Инженерию на борту своего корабля, сбросьте 1 жетон Импульса, чтобы вернуть 1 потраченную единицу Энергии.",
+
+    "Talent.automatedDefenses": "Автоматическая защита",
+
+    "Talent.automatedDefenses.soloDescription": "Оружейные системы корабля могут автоматически находить цель и стрелять даже если экипаж обездвижен или отсутствует.",
 
     "Talent.backupEpsConduits": "Запасные каналы ЭПС",
 
@@ -801,6 +1042,14 @@
 
     "Talent.highResolutionSensors.soloDescription": "Сенсоры корабля чрезвычайно чувствительны и могут получать большие объёмы точных данных.",
 
+    "Talent.highPowerTractorBeam": "Мощный Тягловый луч",
+
+    "Talent.highPowerTractorBeam.soloDescription": "Засчет большего энергитического потенциала тягловой системы, тягловый луч может создавать большую нагрузку на цель.",
+
+    "Talent.iKnowMyShip": "Я знаю свой корабль",
+
+    "Talent.iKnowMyShip.description": "Бросьте бонусный d20 при решении Задачи по определению неполадок на борту вашего корабля.",
+
     "Talent.improvedDamageControl": "Улучшенное устранение повреждений",
 
     "Talent.improvedDamageControl.soloDescription": "Звездолёт обладает эффективными системами оповещения о полученных повреждениях, а также хорошо обученными командами техников, что позволяет его экипажу быстрее реагировать в критических ситуациях.",
@@ -833,6 +1082,10 @@
 
     "Talent.incisiveScrutiny.description": "Вы умеете находить слабые места в аргументах, теориях и механизмах, получать о них информацию и понимать их природу по их реакции при давлении на уязвимые точки. При успешном выполнении Задачи на Самоконтроль или Понимание получаете дополнительный жетон Импульса, который можно использовать, только чтобы «Получить информацию».",
 
+    "Talent.independentPhaserSupply": "Независимое питание фазеров",
+
+    "Talent.independentPhaserSupply.soloDescription": "Корабельные фазеры имеют независимый источник питания вместо использования общих силовых установок корабля.",
+
     "Talent.intenseScrutiny": "Пристальное внимание",
 
     "Talent.intenseScrutiny.description": "Успешно выполнив Задачу на Здравомыслие или Самоконтроль в рамках Продолжительной задачи, снизьте рейтинг Сопротивляемости на 1 или 2 за каждый выпавший Эффект.",
@@ -849,11 +1102,17 @@
 
     "Talent.joined.description": "Вы присоединились к Программе посвящения, надеясь, что Комиссия по симбиозу выберет вас для соединения. Поскольку посвящённых намного больше, чем симбионтов, вы были одним из многих, кто не прошёл отбор, но качеств даже неуспешного посвящённого хватает для поступления на службу в Звёздный флот. Если вы за счёт Целеустремлённости приобретаете бонусный d20 для выполнения Задачи на Самоконтроль или Здравомыслие, то можете бросить заново все использованные d20. Нельзя взять Талант «Бывший посвящённый», если у ПИ есть Талант «Соединённый» - они взаимоисключающие.",
 
+    "Talent.juryRig": "Быстрый ремонт",
+
+    "": "При выполнении Ремонта с применением Инженерии снизьте сложность Задачи на 2. При этом такой Ремонт временный и его эффект длится одну сцену + ещё одну сцену за каждый сброшенный жетон Импульса (Повторное применение). Любое устройство ремонтируется так только раз, и сложность его следующего Ремонта возрастает на 1.",
+
     "Talent.kolinahr": "Колинар",
 
     "Talent.kolinahr.description": "Вы прошли ритуальное путешествие, чтобы очиститься от эмоций. Сложность выполнения вами любых Задач, связанных с противодействием принуждению, проникновению в разум, боли и прочим ментальным воздействиям, снижается на 2.",
 
     "Talent.meanRightHook": "Мощный Хук Справа",
+
+    "Talent.meanRightHook.alias.klingonCore": "Удар воина",
 
     "Talent.meanRightHook.description": "Урон от ваших Атак без оружия оказывает 1 Повреждающее воздействие.",
 
@@ -880,6 +1139,10 @@
     "Talent.parentFigure": "РОДИТЕЛЬСКАЯ ФИГУРА",
 
     "Talent.parentFigure.description": "У вас большая семья, много детей, племянников и племянниц, и вы научились при необходимости управлять даже самыми недисциплинированными и своенравными группами. Если вы выполняете Задачу, в которую вовлечены два или больше других персонажей или помогаете выполнить такую Задачу, то первое Осложнение, полученное из-за ваших действий или действий одного из ваших помощников, игнорируется.",
+
+    "Talent.personalEffects": "Личные вещи",
+
+    "Talent.personalEffects.description": "У персонажа есть важный и необычный предмет или устройство, не из стандартного снаряжения, но полезное во время миссий. Персонаж может иметь один предмет со Стоимостью возможности 2 или два предмета со Стоимостью возможности 1. Ни один из предметов не может иметь Стоимость усиления больше 1 (Глава 8 «Технологии и снаряжение»). Этот Талант можно выбрать несколько раз.",
 
     "Talent.preciseEvasion": "Точный манёвр",
 
@@ -945,6 +1208,10 @@
 
     "Talent.supervisor.description": "Рейтинг Экипажа корабля увеличивается на 1. Если несколько основных ПИ выбрали этот Талант, эффекты таких Талантов складываются, но каждый основной ПИ может выбрать этот Талант только один раз.",
 
+    "Talent.tachyonDetectionField": "Отражатель тахионного поля",
+
+    "Talent.tachyonDetectionField.soloDescription": "Корабль снащен генератором поля способным создать облако тахионов вокруг себя. Когда поле активо, корабль обнаруживает любые замаскированные или скрытые корабли находящиеся на близкой дистанции.",
+
     "Talent.telepath": "Телепат",
 
     "Talent.telepath.description": "Можно дать только при создании ПИ. Вы можете чувствовать поверхностные мысли и эмоции большинства живых существ, находящихся поблизости, и телепатически общаться с другими эмпатами и телепатами, а также с теми, с кем очень близко знакомы. Вы не можете не чувствовать эмоции или не считывать то, о чём существо рядом с вами думает в данный момент, если только оно не сопротивляется телепатии. Чтобы распознать эмоции или прочитать мысли конкретного индивида в толпе, найти в разуме существа определённые мысли или закрыться от сознания тех, кто поблизости, нужно приложить усилие и выполнить Задачу. Те, кто не желает подвергаться вашему воздействию, могут сопротивляться с помощью Встречной задачи.",
@@ -955,7 +1222,7 @@
 
     "Talent.testingATheory": "Проверка теории",
 
-    "Talent.testingATheory.description": "Выполняя Задачу на Науку или Инженерию, бросьте бонусный d20, если прошлая Задача, которую вы успешно выполнили в текущем  приключении, была связана с научным или техническим вопросом в той же сфере.",
+    "Talent.testingATheory.description": "Выполняя Задачу на Науку или Инженерию, бросьте бонусный d20, если прошлая Задача, которую вы успешно выполнили в текущем приключении, была связана с научным или техническим вопросом в той же сфере.",
 
     "Talent.theUshaan": "Ушаан",
 
@@ -993,6 +1260,7 @@
     "Track.starfleet.sciences.description": "Стоящие несколько в стороне от других направлений, научные курсы являются в основном академическим и их закончило множество успешных учёных. К научным курсам также относится отдельная учебная программа Медицинской службы Звёздного флота, по которой готовят врачей, медсестёр и консультантов для работы на кораблях и других объектах Звёздного флота по всей Федерации.",
 
     "UniformEra.bynar": "Бинар",
+    "UniformEra.cardassian": "Войска Кардассии",
     "UniformEra.civilian": "Гражданский",
     "UniformEra.dominionWar": "Война с Доминионом",
     "UniformEra.ferengi": "Ферренги",
@@ -1006,7 +1274,8 @@
     "UniformEra.originalSeriesKlingon": "Клингон (Оригинальные серии)",
     "UniformEra.romulan": "Ромуланец",
     "UniformEra.suliban": "Сулибан",
-    "UniformEra.voyagerDS9": "Вояджер/ДК9",
+    "UniformEra.strangeNewWorlds": "Странные Новые Миры",
+    "UniformEra.voyagerDS9": "Вояджер/Далекий Космос 9",
 
     "Upbringing.starfleet.militaryOrExploration.name": "Звездный флот",
     "Upbringing.starfleet.militaryOrExploration.description": "В семье персонажа может существовать традиция служить в Звёздном флоте, при этом в каждом поколении был, по крайней мере, один член семьи, который служил так Федерации. Возможно, оба родителя персонажа были офицерами Звёздного флота, которые встретились на службе. В любом случае Звёздный флот повлиял на юные годы персонажа.",
