@@ -974,6 +974,27 @@ class SystemGeneration {
         return worldType;
     }
 
+    createWorldFeatures(world: World) {
+        if (!world.worldClass.isGasGiant) {
+            if (world.worldClass.id === WorldClass.D || world.worldClass.id === WorldClass.Y) {
+                let feature = isolatedColonyFeaturesOfInterest();
+                world.features.push(feature.localizedDescription);
+            } else if (world.worldClass.id === WorldClass.L && D20.roll() < 14) {
+                let feature = isolatedColonyFeaturesOfInterest();
+                world.features.push(feature.localizedDescription);
+            } else {
+                world.features.push(this.planetaryFeaturesOfInterest(D20.roll()));
+                let feature2 = this.planetaryFeaturesOfInterest(D20.roll());
+                if (world.features.indexOf(feature2) < 0) {
+                    world.features.push(feature2);
+                }
+
+                world.features.push(this.planetaryDetails(D20.roll()));
+            }
+        }
+    }
+
+
     createBasicWorld(isPrimaryWorld: boolean, orbit: Orbit, romanNumeral: number, region: SpaceRegionModel, starSystem: StarSystem, useCoreTable: boolean = false) {
         if (region.id !== SpaceRegion.ShackletonExpanse && (isPrimaryWorld || useCoreTable || (orbit.radius < starSystem.gardenZoneOuterRadius && orbit.radius >= starSystem.gardenZoneInnerRadius))) {
 
@@ -985,24 +1006,8 @@ class SystemGeneration {
                 world.notes.push(type.notes);
             }
 
-            if (isPrimaryWorld && !world.worldClass.isGasGiant) {
-                if (world.worldClass.id === WorldClass.D || world.worldClass.id === WorldClass.Y) {
-                    let feature = isolatedColonyFeaturesOfInterest();
-                    world.features.push(feature.localizedDescription);
-                } else if (world.worldClass.id === WorldClass.L && D20.roll() < 14) {
-                    let feature = isolatedColonyFeaturesOfInterest();
-                    world.features.push(feature.localizedDescription);
-                } else {
-                    world.features.push(this.planetaryFeaturesOfInterest(D20.roll()));
-                    let feature2 = this.planetaryFeaturesOfInterest(D20.roll());
-                    if (world.features.indexOf(feature2) < 0) {
-                        world.features.push(feature2);
-                    }
-
-                    world.features.push(this.planetaryDetails(D20.roll()));
-                }
-            }
             if (isPrimaryWorld) {
+                this.createWorldFeatures(world);
                 world.name = AlienNameGenerator.generatePlanetName();
             }
 
@@ -1023,6 +1028,7 @@ class SystemGeneration {
             let world = this.createBasicWorldAttributes(worldType, orbit, romanNumeral, starSystem);
             if (isPrimaryWorld) {
                 world.name = AlienNameGenerator.generatePlanetName();
+                this.createWorldFeatures(world);
             }
             return world;
         }
