@@ -25,6 +25,7 @@ export default class UniformVariantRestrictions {
             result.push(UniformVariantType.Variant1);
             result.push(UniformVariantType.Variant2);
             result.push(UniformVariantType.Variant3);
+            result.push(UniformVariantType.Variant4);
         } else if (uniformEra === UniformEra.OriginalSeries) {
             if (DivisionColors.getDivision(uniformEra, divisionColor) === "Command" && rank === Rank.Captain) {
                 result.push(UniformVariantType.Variant1);
