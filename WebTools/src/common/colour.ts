@@ -38,8 +38,8 @@ export class SimpleColor {
         return this.luminance <= 0.5;
     }
 
-    darker() {
-        return SimpleColor.from(Color(this.asHex()).darken(0.5).hex());
+    darken(amount: number = 0.5) {
+        return SimpleColor.from(Color(this.asHex()).darken(amount).hex());
     }
 
     get isApproximatelyWhite() {

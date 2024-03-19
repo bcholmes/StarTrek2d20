@@ -11,8 +11,13 @@ describe('testing simple color', () => {
         expect(SimpleColor.from("#333333")?.isDark).toBeTruthy();
     });
 
-    test('darker', () => {
-        expect(SimpleColor.from("#d30000")?.darker()?.asHex()).toBe("#6a0000");
+    test('darken', () => {
+        expect(SimpleColor.from("#d30000")?.darken()?.asHex()).toBe("#6a0000");
+        expect(SimpleColor.from("#ffffff")?.darken()?.asHex()).toBe("#808080");
+    });
+
+    test('darken black', () => {
+        expect(SimpleColor.from("#000000")?.darken()?.asHex()).toBe("#000000");
     });
 
 
