@@ -1,5 +1,5 @@
 import { Species } from "../../helpers/speciesEnum";
-import { BolianEar, FerengiEar1, FerengiEar2, FerengiEar3, StandardEar, VulcanEar } from "./earCatalog";
+import { BolianEar, FerengiEar1, FerengiEar2, FerengiEar3, FerengiEar4, StandardEar, VulcanEar } from "./earCatalog";
 import { BolianSeam, BolianStripes, FerengiCheekAppliances, FerengiForehead, ReferenceHead, RomulanForehead, SimpleNeck } from "./headCatalog";
 import { SpeciesOption } from "./speciesOptionEnum";
 import SpeciesRestrictions from "./speciesRestrictions";
@@ -221,7 +221,8 @@ class SpeciesOptionCatalog {
             return [
                 new Swatch(SpeciesOption.Option1, "Medium-sized Lobes", (token) => SpeciesOptionCatalog.instance.decorateSwatch(SpeciesOption.Option1, token)),
                 new Swatch(SpeciesOption.Option2, "Small Lobes", (token) => SpeciesOptionCatalog.instance.decorateSwatch(SpeciesOption.Option2, token)),
-                new Swatch(SpeciesOption.Option3, "Large Lobes", (token) => SpeciesOptionCatalog.instance.decorateSwatch(SpeciesOption.Option3, token))
+                new Swatch(SpeciesOption.Option3, "Large Lobes", (token) => SpeciesOptionCatalog.instance.decorateSwatch(SpeciesOption.Option3, token)),
+                new Swatch(SpeciesOption.Option4, "Droopy Lobes", (token) => SpeciesOptionCatalog.instance.decorateSwatch(SpeciesOption.Option4, token)),
             ];
         } else if (token.species === Species.Romulan) {
             return [
@@ -285,6 +286,9 @@ class SpeciesOptionCatalog {
                     break;
                 case SpeciesOption.Option3:
                     ear = FerengiEar3.Front;
+                    break;
+                case SpeciesOption.Option4:
+                    ear = FerengiEar4.Front;
                     break;
                 default:
                     ear = "";
