@@ -4,7 +4,7 @@ import { ExtraType } from "./extrasTypeEnum";
 import { HairType, allHairTypes, isTallForeheadHair } from "./hairTypeEnum";
 import { HeadType } from "./headTypeEnum";
 import { MouthType } from "./mouthTypeEnum";
-import { NoseType } from "./noseTypeEnum";
+import { NoseType, allNoseTypes } from "./noseTypeEnum";
 import { SpeciesOption } from "./speciesOptionEnum";
 import { UniformEra } from "./uniformEra";
 
@@ -237,18 +237,7 @@ class SpeciesRestrictions {
         if (species === Species.Tellarite || species === Species.Ferengi || species === Species.Cardassian) {
             return [ NoseType.StraightBasic ];
         } else {
-            return [NoseType.StraightBasic,
-                NoseType.Convex,
-                NoseType.SmallBulb,
-                NoseType.Broad,
-                NoseType.LongNarrow,
-                NoseType.HighBridge,
-                NoseType.Bulbous,
-                NoseType.SmallFlat,
-                NoseType.SmallUpTurned,
-                NoseType.Hawk,
-                NoseType.BroadFlat
-            ];
+            return allNoseTypes();
         }
     }
 

@@ -10,5 +10,12 @@ export enum NoseType {
     SmallFlat,
     SmallUpTurned,
     Hawk,
-    BroadFlat
+    BroadFlat,
+    Pointed
+}
+
+export const allNoseTypes = (): NoseType[] => {
+    return Object.keys(NoseType).filter((item) => {
+        return !isNaN(Number(item));
+    }).map(item => Number(item));
 }
