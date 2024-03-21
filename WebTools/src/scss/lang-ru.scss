@@ -8,4 +8,10 @@
   .stat-value, .pill-left, .pill-right {
     line-height: 1;
   }
+
+  @media screen and (max-width: 768px) {
+    .lcar-content-start {
+      max-width: 100px;
+    }
+  }
 }
