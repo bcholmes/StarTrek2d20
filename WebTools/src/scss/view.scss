@@ -22,7 +22,7 @@
     background-color: $lcars-dull-pink;
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
-    line-height: normal;
+    line-height: 1;
     text-align: right;
     text-transform: uppercase;
     width: 120px;
@@ -50,7 +50,7 @@
     background-color: $lcars-dull-pink;
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
-    line-height: normal;
+    line-height: 1;
     width: calc(100% - 120px - 0.25rem);
     overflow: hidden;
     text-overflow: ellipsis;
