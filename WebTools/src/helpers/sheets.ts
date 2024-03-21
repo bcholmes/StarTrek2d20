@@ -678,9 +678,9 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         for (var t of character.talents) {
             let talent = TalentsHelper.getTalent(t.talent);
             if (talent && talent.maxRank > 1) {
-                this.fillField(form, 'Talent ' + i, t.talent + " [Rank " + character.getRankForTalent(t.talent) + "]");
+                this.fillField(form, 'Talent ' + i, talent.localizedDisplayName + " [Rank " + character.getRankForTalent(t.talent) + "]");
             } else {
-                this.fillField(form, 'Talent ' + i, t.talent);
+                this.fillField(form, 'Talent ' + i, talent.localizedDisplayName);
             }
             i++;
         }
@@ -699,7 +699,21 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
     }
 
     fillUpbringing(form: PDFForm, character: Character) {
-        this.fillField(form, 'Upbringing', character.upbringingStep.description);
+        this.fillField(form, 'Upbringing', character.upbringingStep.localizedDescription);
+    }
+
+    fillRank(form: PDFForm, character: Character) {
+        this.fillField(form, 'Rank', character.rank?.localizedName);
+    }
+
+    fillSpecies(form: PDFForm, character: Character) {
+        this.fillField(form, 'Species', character.localizedSpeciesName);
+    }
+
+    fillFocuses(form: PDFForm, character: Character) {
+        character.focuses.forEach( (f, i) => {
+            this.fillField(form, 'Focus ' + (i+1), localizedFocus(f));
+        });
     }
 }
 
@@ -758,40 +772,11 @@ class RomulanCharacterSheet extends BasicFullCharacterSheet {
     }
 }
 
+// todo it can be removed because of the methods are moved to parent class
 class LocalizedCharacterSheet extends BasicFullCharacterSheet {
-
-    fillRank(form: PDFForm, character: Character) {
-        this.fillField(form, 'Rank', character.rank?.localizedName);
-    }
-
-    fillSpecies(form: PDFForm, character: Character) {
-        this.fillField(form, 'Species', character.localizedSpeciesName);
-    }
-
-    fillUpbringing(form: PDFForm, character: Character) {
-        this.fillField(form, 'Upbringing', character.upbringingStep.localizedDescription);
-    }
-
-    fillTalents(form: PDFForm, character: Character) {
-        let i = 1;
-        for (var t of character.talents) {
-            let talent = TalentsHelper.getTalent(t.talent);
-            if (talent && talent.maxRank > 1) {
-                this.fillField(form, 'Talent ' + i, talent.localizedDisplayName + " [Rank " + character.getRankForTalent(t.talent) + "]");
-            } else {
-                this.fillField(form, 'Talent ' + i, talent.localizedDisplayName);
-            }
-            i++;
-        }
-    }
-
-    fillFocuses(form: PDFForm, character: Character) {
-        character.focuses.forEach( (f, i) => {
-            this.fillField(form, 'Focus ' + (i+1), localizedFocus(f));
-        });
-    }
 }
 
+// todo deprecate and remove after universal pdf file will be ready
 class StandardGermanCharacterSheet extends LocalizedCharacterSheet {
     getLanguage(): string {
         return "de";
@@ -807,6 +792,7 @@ class StandardGermanCharacterSheet extends LocalizedCharacterSheet {
     }
 }
 
+// todo deprecate and remove after universal pdf file will be ready
 class StandardRussianCharacterSheet extends LocalizedCharacterSheet {
     getLanguage(): string {
         return "ru";
