@@ -1,5 +1,6 @@
 ﻿:root {
-    --lcars-font: lcars;
+    --lcars-header-font: lcars;
+    --lcars-text-font: Oswald;
 }
 
 @import "lang-ru";
@@ -105,7 +106,7 @@ h5 {
     .stat-name {
         padding-top: 2px;
         padding-bottom: 2px;
-        font-family: var(--lcars-font);
+        font-family: var(--lcars-header-font);
         font-size: 16px;
         flex-grow: 1;
         flex-shrink: 1;
@@ -172,7 +173,7 @@ h5 {
     text-transform: uppercase;
     height: 30px;
     margin: 0 0.25rem 0 0;
-    font-family: var(--lcars-font);
+    font-family: var(--lcars-header-font);
     font-size: large;
     background-color: $lcars-purple;
     line-height: normal;
@@ -289,7 +290,8 @@ body {
     zoom: 1;
     overflow-x: hidden;
     overflow-y: hidden;
-    font-family: Helvetica;
+    //font-family: Helvetica;
+    font-family: var(--lcars-text-font);
     font-size: small;
     padding: 0;
     margin: 0;
@@ -429,7 +431,7 @@ a:hover {
     background: #F89B24;
     padding: 10px;
     margin-bottom: 10px;
-    font-family: var(--lcars-font);
+    font-family: var(--lcars-header-font);
     font-size: x-large;
     text-transform: uppercase;
     width: 25%;
@@ -440,7 +442,7 @@ a:hover {
 .header-text {
     color: black;
     background-color: #FFCC66;
-    font-family: var(--lcars-font);
+    font-family: var(--lcars-header-font);
     font-size: 40px;
     text-transform: uppercase;
     border-radius: 20px;
@@ -511,7 +513,7 @@ h2.header-text {
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        font-family: var(--lcars-font);
+        font-family: var(--lcars-header-font);
 		font-size: x-large;
         text-transform: uppercase;
         line-height: 1;
@@ -593,7 +595,7 @@ h2.header-text {
 
     .lcar-footer .lcar-text {
         color: black;
-        font-family: var(--lcars-font);
+        font-family: var(--lcars-header-font);
         font-size: 15px;
         padding: 3px 6px 3px 6px;
         text-transform: uppercase;
@@ -611,7 +613,7 @@ h2.header-text {
 .lcar-content-news {
     color: black;
     text-align: right;
-    font-family: var(--lcars-font);
+    font-family: var(--lcars-header-font);
     font-size: x-large;
     max-width: 120px;
     padding: 3px 11px 6px 0px;
@@ -624,7 +626,7 @@ h2.header-text {
 .lcar-content-left-button {
     color: black;
     text-align: right;
-    font-family: var(--lcars-font);
+    font-family: var(--lcars-header-font);
     font-size: x-large;
     max-width: 120px;
     padding: 3px 11px 6px 0px;
@@ -764,7 +766,7 @@ table.aspect-list td:first-child {
     padding: 10px;
     border-radius: 20px;
     text-align: right;
-    font-family: var(--lcars-font);
+    font-family: var(--lcars-header-font);
     font-size: large;
     text-transform: uppercase;
     width: 144px;
@@ -822,7 +824,7 @@ table.aspect-list td:first-child {
 }
 
 #version {
-    font-family: var(--lcars-font);
+    font-family: var(--lcars-header-font);
     font-size: large;
 }
 

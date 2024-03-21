@@ -1,6 +1,6 @@
 .btn {
     text-align: right;
-    font-family: var(--lcars-font);
+    font-family: var(--lcars-header-font);
     font-size: x-large;
     text-transform: uppercase;
 }
@@ -273,7 +273,7 @@ div.align-items-stretch > label.textinput-label {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     margin-right: 5px;
-    font-family: var(--lcars-font);
+    font-family: var(--lcars-header-font);
     font-size: large;
     min-width: 60px;
     text-align: right;
