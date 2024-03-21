@@ -161,10 +161,7 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
                 {children}
             </div>
             <div className="lcar-footer">
-                <div className="lcar-footer-start d-flex">
-                    <div className="language-selector ms-auto me-3">
-                    </div>
-                </div>
+                <div className="lcar-footer-start"></div>
                 <div className="lcar-footer-end d-flex justify-content-between align-items-center">
                     <RandomLcarsReadout page={activePage} />
                     <LanguageSelector/>
