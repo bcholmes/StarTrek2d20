@@ -9,6 +9,7 @@ import PageHeader from "./pageHeader";
 import { RandomLcarsReadout } from "./randomLcarsReadout";
 import { useTranslation } from 'react-i18next';
 import StarshipProfile from "./starshipProfile";
+import LanguageSelector from "./languageSelector";
 
 interface ILcarsFrameProperties {
     activePage: PageIdentity;
@@ -160,8 +161,15 @@ const LcarsFrame: React.FC<ILcarsFrameProperties>  = ({activePage, children}) =>
                 {children}
             </div>
             <div className="lcar-footer">
-                <div className="lcar-footer-start"></div>
-                <div className="lcar-footer-end d-flex justify-content-between align-items-center"><RandomLcarsReadout page={activePage} /> <AppVersion key="app-version"/></div>
+                <div className="lcar-footer-start d-flex">
+                    <div className="language-selector ms-auto me-3">
+                    </div>
+                </div>
+                <div className="lcar-footer-end d-flex justify-content-between align-items-center">
+                    <RandomLcarsReadout page={activePage} />
+                    <LanguageSelector/>
+                    <AppVersion key="app-version"/>
+                </div>
             </div>
             <footer className="text-primary text-center copyright">
                 TM &amp; &copy; 2024 CBS Studios Inc. {t('Lcars.copyright')}
