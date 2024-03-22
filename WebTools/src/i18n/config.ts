@@ -46,13 +46,20 @@ const staDetector = {
 };
 
 const localStorageKey = 'settings.language';
-const supportedLanguages = ['en', 'es', 'de', 'fr', 'ru'];
+export const supportedLanguages = {
+    'en': 'English',
+    'es': 'Español',
+    'de': 'Deutsch',
+    'fr': 'Français',
+    'ru': 'Русский'
+};
+const supportedLanguagesCodes = Object.keys(supportedLanguages);
 
 const languageDetector = new LanguageDetector();
 languageDetector.addDetector(staDetector);
 
 export const getNavigatorLanguage = () => {
-    let found = staDetector.lookup({})?.filter(l => supportedLanguages.indexOf(l) >= 0);
+    let found = staDetector.lookup({})?.filter(l => supportedLanguagesCodes.indexOf(l) >= 0);
     return found?.length ? found[0] : "en";
 }
 
@@ -61,8 +68,10 @@ export const isEnglishDefault = () => {
     return language.indexOf('en') === 0;
 }
 
+export const getCurrentLanguageCode = () => window.localStorage.getItem(localStorageKey) ?? getNavigatorLanguage()
+
 export const overrideLanguage = (language: string) => {
-    if (supportedLanguages.indexOf(language) >= 0) {
+    if (supportedLanguagesCodes.indexOf(language) >= 0) {
         window.localStorage.setItem(localStorageKey, language);
         i18n.changeLanguage(language);
     }
@@ -85,7 +94,7 @@ i18n.use(initReactI18next)
     .use(languageDetector)
     .init({
         fallbackLng: 'en',
-        supportedLngs: supportedLanguages,
+        supportedLngs: supportedLanguagesCodes,
         detection: {
             order: ['localStorage', "staDetector"],
             lookupLocalStorage: localStorageKey

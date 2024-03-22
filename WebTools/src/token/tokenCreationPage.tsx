@@ -98,7 +98,7 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
                             <div className="row">
 
                                 <div className="col-lg-4 mt-4">
-                                    <div className="mw-100" style={{width: "400px", aspectRatio: "1" }} dangerouslySetInnerHTML={{ __html: svg }}>
+                                    <div className="mw-100" style={{width: "400px", aspectRatio: "1" }} dangerouslySetInnerHTML={{ __html: svg as any }}>
 
                                     </div>
 
