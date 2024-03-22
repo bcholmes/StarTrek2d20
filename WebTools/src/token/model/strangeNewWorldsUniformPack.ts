@@ -93,7 +93,7 @@ const RankIndicators = {
         <g id="g69" transform="translate(4.4982426,3.3773264)">
             <path style="display:inline;fill:#970f0f;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 99.167414,375.20734 17.528866,-24.93033 2.83926,1.99668 -17.52887,24.93033 z" id="path66"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 296.36238,223.48737 -0.0272,7.39914 2.97132,-10e-4 0.0267,-7.39641 z" transform="rotate(34.901462)" id="path67"/>
-            <path style="display:inline;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 296.04126,242.91829 -0.0267,7.39642 3.47038,8.4e-4 0.0267,-7.39641 z" transform="rotate(34.901462)" id="path68"/>
+            <path style="display:inline;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 296.04126,242.91829 -0.0267,7.39642 3.47038,8.4e-4 0.0267,-7.39641 z" transform="rotate(34.901462)" id="path68"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 296.35482,225.43619 -0.0108,2.87242 2.97244,5.3e-4 0.0108,-2.87241 z" transform="rotate(34.901462)" id="path69"/>
         </g>
     </g>`,
@@ -103,7 +103,7 @@ const RankIndicators = {
         <g id="g38">
             <path style="display:inline;fill:#970f0f;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 103.62405,378.24488 17.50725,-24.89612 7.5438,5.30426 -17.50725,24.89611 z" id="path35"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 301.75732,223.48837 -0.0283,7.39753 8.72387,8.3e-4 0.0272,-7.39914 z" transform="rotate(34.901462)" id="path36"/>
-            <path style="display:inline;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 301.43508,242.91802 -0.0283,7.39753 9.22341,2e-5 0.0267,-7.39642 z" transform="rotate(34.901462)" id="path37"/>
+            <path style="display:inline;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 301.43508,242.91802 -0.0283,7.39753 9.22341,2e-5 0.0267,-7.39642 z" transform="rotate(34.901462)" id="path37"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 301.75024,225.43519 -0.0108,2.87242 8.72227,0.002 0.0108,-2.87242 z" transform="rotate(34.901462)" id="path38"/>
         </g>
     </g>`,
@@ -113,13 +113,13 @@ const RankIndicators = {
         <g id="g25">
             <path style="display:inline;fill:#970f0f;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 103.62405,378.24488 17.50725,-24.89612 7.5438,5.30426 -17.50725,24.89611 z" id="path22"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 301.75732,223.48837 -0.0283,7.39753 8.72387,8.3e-4 0.0272,-7.39914 z" transform="rotate(34.901462)" id="path23"/>
-            <path style="display:inline;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 301.43508,242.91802 -0.0283,7.39753 9.22341,2e-5 0.0267,-7.39642 z" transform="rotate(34.901462)" id="path24"/>
+            <path style="display:inline;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 301.43508,242.91802 -0.0283,7.39753 9.22341,2e-5 0.0267,-7.39642 z" transform="rotate(34.901462)" id="path24"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 301.75024,225.43519 -0.0108,2.87242 8.72227,0.002 0.0108,-2.87242 z" transform="rotate(34.901462)" id="path25"/>
         </g>
         <g id="g29" transform="translate(-1.4504754,-0.72523772)">
             <path style="display:inline;fill:#970f0f;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 99.167414,375.20734 17.528866,-24.93033 2.83926,1.99668 -17.52887,24.93033 z" id="path26"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 296.36238,223.48737 -0.0272,7.39914 2.97132,-10e-4 0.0267,-7.39641 z" transform="rotate(34.901462)" id="path27"/>
-            <path style="display:inline;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 296.04126,242.91829 -0.0267,7.39642 3.47038,8.4e-4 0.0267,-7.39641 z" transform="rotate(34.901462)" id="path28"/>
+            <path style="display:inline;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 296.04126,242.91829 -0.0267,7.39642 3.47038,8.4e-4 0.0267,-7.39641 z" transform="rotate(34.901462)" id="path28"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 296.35482,225.43619 -0.0108,2.87242 2.97244,5.3e-4 0.0108,-2.87241 z" transform="rotate(34.901462)" id="path29"/>
         </g>
     </g>`,
@@ -129,13 +129,13 @@ const RankIndicators = {
         <g id="g52">
             <path style="display:inline;fill:#970f0f;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 103.62405,378.24488 17.50725,-24.89612 7.5438,5.30426 -17.50725,24.89611 z" id="path49"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 301.75732,223.48837 -0.0283,7.39753 8.72387,8.3e-4 0.0272,-7.39914 z" transform="rotate(34.901462)" id="path50"/>
-            <path style="display:inline;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 301.43508,242.91802 -0.0283,7.39753 9.22341,2e-5 0.0267,-7.39642 z" transform="rotate(34.901462)" id="path51"/>
+            <path style="display:inline;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 301.43508,242.91802 -0.0283,7.39753 9.22341,2e-5 0.0267,-7.39642 z" transform="rotate(34.901462)" id="path51"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 301.75024,225.43519 -0.0108,2.87242 8.72227,0.002 0.0108,-2.87242 z" transform="rotate(34.901462)" id="path52"/>
         </g>
         <g id="g60" transform="translate(2.8426388,2.4220742)">
             <path style="display:inline;fill:#970f0f;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 90.027593,368.82789 17.507257,-24.89612 7.54379,5.30426 -17.507261,24.89612 z" id="path57"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 285.21825,223.48937 -0.0267,7.39641 8.72115,3.5e-4 0.0283,-7.39754 z" transform="rotate(34.901462)" id="path58"/>
-            <path style="display:inline;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 284.89601,242.91828 -0.0283,7.39753 9.22341,2e-5 0.0283,-7.39753 z" transform="rotate(34.901462)" id="path59"/>
+            <path style="display:inline;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 284.89601,242.91828 -0.0283,7.39753 9.22341,2e-5 0.0283,-7.39753 z" transform="rotate(34.901462)" id="path59"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 285.21117,225.43519 -0.0108,2.87242 8.72227,0.002 0.0108,-2.87242 z" transform="rotate(34.901462)" id="path60"/>
         </g>
     </g>`,
@@ -145,19 +145,19 @@ const RankIndicators = {
         <g id="g19">
             <path style="display:inline;fill:#970f0f;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 103.62405,378.24488 17.50725,-24.89612 7.5438,5.30426 -17.50725,24.89611 z" id="path19"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 301.75732,223.48837 -0.0283,7.39753 8.72387,8.3e-4 0.0272,-7.39914 z" transform="rotate(34.901462)" id="path13"/>
-            <path style="display:inline;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 301.43508,242.91802 -0.0283,7.39753 9.22341,2e-5 0.0267,-7.39642 z" transform="rotate(34.901462)" id="path17"/>
+            <path style="display:inline;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 301.43508,242.91802 -0.0283,7.39753 9.22341,2e-5 0.0267,-7.39642 z" transform="rotate(34.901462)" id="path17"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 301.75024,225.43519 -0.0108,2.87242 8.72227,0.002 0.0108,-2.87242 z" transform="rotate(34.901462)" id="path15"/>
         </g>
         <g id="g20" transform="translate(-1.4504754,-0.72523772)">
             <path style="display:inline;fill:#970f0f;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 99.167414,375.20734 17.528866,-24.93033 2.83926,1.99668 -17.52887,24.93033 z" id="rect5"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 296.36238,223.48737 -0.0272,7.39914 2.97132,-10e-4 0.0267,-7.39641 z" transform="rotate(34.901462)" id="path12"/>
-            <path style="display:inline;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 296.04126,242.91829 -0.0267,7.39642 3.47038,8.4e-4 0.0267,-7.39641 z" transform="rotate(34.901462)" id="path16"/>
+            <path style="display:inline;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 296.04126,242.91829 -0.0267,7.39642 3.47038,8.4e-4 0.0267,-7.39641 z" transform="rotate(34.901462)" id="path16"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 296.35482,225.43619 -0.0108,2.87242 2.97244,5.3e-4 0.0108,-2.87241 z" transform="rotate(34.901462)" id="path14"/>
         </g>
         <g id="g21" transform="translate(-2.9009509,-1.8856181)">
             <path style="display:inline;fill:#970f0f;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 90.027593,368.82789 17.507257,-24.89612 7.54379,5.30426 -17.507261,24.89612 z" id="path18"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 285.21825,223.48937 -0.0267,7.39641 8.72115,3.5e-4 0.0283,-7.39754 z" transform="rotate(34.901462)" id="rect6"/>
-            <path style="display:inline;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 284.89601,242.91828 -0.0283,7.39753 9.22341,2e-5 0.0283,-7.39753 z" transform="rotate(34.901462)" id="rect7"/>
+            <path style="display:inline;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 284.89601,242.91828 -0.0283,7.39753 9.22341,2e-5 0.0283,-7.39753 z" transform="rotate(34.901462)" id="rect7"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 285.21117,225.43519 -0.0108,2.87242 8.72227,0.002 0.0108,-2.87242 z" transform="rotate(34.901462)" id="rect8"/>
         </g>
     </g>`
@@ -265,7 +265,7 @@ export class StrangeNewWorldsUniformPack extends BaseNeckProvider implements IUn
     }
 
     getRankBorderIndicator(token: Token) {
-        const barColour = SimpleColor.from(token.divisionColor).darken(0.25).asHex();
+        const barColour = StrangeNewWorldsUniformPack.getRankIndicatorColor(token.divisionColor);
         switch (token.rankIndicator) {
             case Rank.Ensign:
                 return RankIndicators.ensign.replace(DefaultRed, token.divisionColor).replace(/#970f0f/g, barColour) + RankIndicators.borderOutline;
@@ -307,10 +307,15 @@ export class StrangeNewWorldsUniformPack extends BaseNeckProvider implements IUn
             </defs>
             <g clip-path="url(#rankClipPath` + rankIndicator + `">
                 <g transform="translate(-65, -318)">`
-        + svg.replace(DefaultRed, token.divisionColor).replace(/#970f0f/g, SimpleColor.from(token.divisionColor).darken(0.25).asHex())
+        + svg.replace(DefaultRed, token.divisionColor).replace(/#970f0f/g, StrangeNewWorldsUniformPack.getRankIndicatorColor(token.divisionColor))
         + `</g>
         + </g>
         </svg>`;
+    }
+
+    static getRankIndicatorColor(divisionColor: string) {
+        let base = SimpleColor.from(divisionColor);
+        return base.isDark ? base.lighten(0.4).asHex() : base.darken(0.25).asHex();
     }
 
     getBorderLogo(token: Token): string {

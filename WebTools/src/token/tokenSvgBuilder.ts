@@ -38,43 +38,43 @@ export class TokenSvgBuilder {
                 + `</defs>
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">`
 
-        + "<g id=\"background\"" + (rounded ? " clip-path=\"url(#roundClipPath)\"" : "") + " >" +
-            `<rect width="400px" height="400px" x="0" y="0" fill="white"/>` +
-            "<g"  + (rounded ? " transform=\"translate(" + (UniformVariantRestrictions.isStraightenedNeck(token.uniformEra) ? "-40" : "-60") + ",0)\"" : "") + ">" +
-            "<g"  + (UniformVariantRestrictions.isStraightenedNeck(token.uniformEra) ? " transform=\"translate(-20,0)\"" : "") + ">" +
-            HairCatalog.instance.getHair(token, HairElement.BehindHead) +
-            EarCatalog.instance.getHiddenEar(token) +
-            "</g>" +
-            ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.VeryBack) +
-            UniformCatalog.instance.getBody(token) +
-            RankIndicatorCatalog.instance.getRankIndicator(token) +
-            "<g"  + (UniformVariantRestrictions.isStraightenedNeck(token.uniformEra) ? " transform=\"translate(-20,0)\"" : "") + ">" +
-            ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.BehindHead) +
-            HeadCatalog.instance.getHead(token) +
-            ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.BaseHead) +
-            NasoLabialFoldCatalog.instance.getNasoLabialFold(token) +
-            FacialHairCatalog.instance.getFacialHair(token, FacialHairPlacement.Chin) +
-            MouthCatalog.instance.getMouth(token) +
-            FacialHairCatalog.instance.getFacialHair(token, FacialHairPlacement.UpperLip) +
-            EyeCatalog.instance.getEyes(token) +
-            NoseCatalog.instance.getNose(token) +
-            EyeBrowCatalog.instance.getEyeBrows(token) +
-            ExtrasCatalog.instance.getExtras(token, ExtraCategory.Forehead) +
-            HairCatalog.instance.getHair(token, HairElement.BehindEars) +
-            ExtrasCatalog.instance.getExtras(token, ExtraCategory.Headwear, true) +
-            EarCatalog.instance.getEar(token) +
-            ExtrasCatalog.instance.getExtras(token, ExtraCategory.Face) +
-            ExtrasCatalog.instance.getExtras(token, ExtraCategory.Ear) +
-            HairCatalog.instance.getHair(token, HairElement.CoveringEars) +
-            ExtrasCatalog.instance.getExtras(token, ExtraCategory.Headwear) +
-            ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.VeryFront) +
-            "</g>" +
-            "</g>" +
-        "</g>"
+                + "<g id=\"background\"" + (rounded ? " clip-path=\"url(#roundClipPath)\"" : "") + " >" +
+                    `<rect width="400px" height="400px" x="0" y="0" fill="white"/>` +
+                    "<g"  + (rounded ? " transform=\"translate(" + (UniformVariantRestrictions.isStraightenedNeck(token.uniformEra) ? "-40" : "-60") + ",0)\"" : "") + ">" +
+                        "<g"  + (UniformVariantRestrictions.isStraightenedNeck(token.uniformEra) ? " transform=\"translate(-20,0)\"" : "") + ">" +
+                            HairCatalog.instance.getHair(token, HairElement.BehindHead) +
+                            EarCatalog.instance.getHiddenEar(token) +
+                        "</g>" +
+                        ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.VeryBack) +
+                        UniformCatalog.instance.getBody(token) +
+                        RankIndicatorCatalog.instance.getRankIndicator(token) +
+                        "<g"  + (UniformVariantRestrictions.isStraightenedNeck(token.uniformEra) ? " transform=\"translate(-20,0)\"" : "") + ">" +
+                            ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.BehindHead) +
+                            HeadCatalog.instance.getHead(token) +
+                            ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.BaseHead) +
+                            NasoLabialFoldCatalog.instance.getNasoLabialFold(token) +
+                            FacialHairCatalog.instance.getFacialHair(token, FacialHairPlacement.Chin) +
+                            MouthCatalog.instance.getMouth(token) +
+                            FacialHairCatalog.instance.getFacialHair(token, FacialHairPlacement.UpperLip) +
+                            EyeCatalog.instance.getEyes(token) +
+                            NoseCatalog.instance.getNose(token) +
+                            EyeBrowCatalog.instance.getEyeBrows(token) +
+                            ExtrasCatalog.instance.getExtras(token, ExtraCategory.Forehead) +
+                            HairCatalog.instance.getHair(token, HairElement.BehindEars) +
+                            ExtrasCatalog.instance.getExtras(token, ExtraCategory.Headwear, true) +
+                            EarCatalog.instance.getEar(token) +
+                            ExtrasCatalog.instance.getExtras(token, ExtraCategory.Face) +
+                            ExtrasCatalog.instance.getExtras(token, ExtraCategory.Ear) +
+                            HairCatalog.instance.getHair(token, HairElement.CoveringEars) +
+                            ExtrasCatalog.instance.getExtras(token, ExtraCategory.Headwear) +
+                            ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.VeryFront) +
+                        "</g>" +
+                    "</g>" +
+                "</g>"
 
-        + (fancyBorder ? TokenSvgBuilder.createBorder(token) : "")
+                + (fancyBorder ? TokenSvgBuilder.createBorder(token) : "")
 
-        + `</g>
+            + `</g>
         </svg>`;
     }
 

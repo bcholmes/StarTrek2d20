@@ -38,6 +38,10 @@ export class SimpleColor {
         return this.luminance <= 0.5;
     }
 
+    lighten(amount: number = 0.5) {
+        return SimpleColor.from(Color(this.asHex()).lighten(amount).hex());
+    }
+
     darken(amount: number = 0.5) {
         return SimpleColor.from(Color(this.asHex()).darken(amount).hex());
     }
