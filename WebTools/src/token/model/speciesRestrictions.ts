@@ -69,6 +69,8 @@ class SpeciesRestrictions {
     static getHeadTypes(species: Species) {
         if (species === Species.Caitian) {
             return [HeadType.SquareJawed, HeadType.RoundedAverage, HeadType.PointedDelicate ];
+        } else if (species === Species.Kelpien) {
+            return [HeadType.SquareJawed, HeadType.RoundedAverage ];
         } else if (species === Species.Suliban) {
             return [HeadType.SquareJawed, HeadType.RoundedAverage ];
         } else if (species === Species.Jelna) {
@@ -211,11 +213,10 @@ class SpeciesRestrictions {
     }
 
     static isRubberHeaded(species: Species) {
-        return species === Species.Aurelian || species === Species.Saurian
-            || species === Species.Bynar
-            || species === Species.Caitian
-            || species === Species.Benzite || species === Species.JemHadar || species === Species.Reman
-            || species === Species.Jelna || species === Species.Suliban || species === Species.XindiReptilian
+        return species === Species.Aurelian || species === Species.Bynar
+            || species === Species.Caitian || species === Species.Benzite || species === Species.Jelna
+            || species === Species.JemHadar || species === Species.Kelpien || species === Species.Reman
+            || species === Species.Saurian || species === Species.Suliban || species === Species.XindiReptilian
             || species === Species.Yridian || species === Species.Zaranite;
     }
 

@@ -29,7 +29,7 @@ class News extends React.Component<INewsProperties, {}> {
                         </div>
                         <div className="mt-2">
                         The second big issue is related to ranks. I think the show isn't terribly consistent about how it
-                        represents ranks. So, I ended up making a wild swing at rank insignia to keep is kind of in line with
+                        represents ranks. So, I ended up making a wild swing at rank insignia that's in line with
                         how <cite>TOS</cite> represents ranks.
                         </div>
                     </li>
