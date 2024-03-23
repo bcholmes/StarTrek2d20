@@ -12,6 +12,32 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240323</b>
+                <ul>
+                    <li>
+                        The primary change is in the token generator. I posted a poll on Farcebook recently, asking
+                        which uniform I should support next. The result was overwhelmingly in favour of the {' '}
+                        <cite>Strange New Worlds</cite> uniform. Not gonna lie: this uniform has a few complicated bits,
+                        but I think I have a reasonable first version in place.
+                        <div className="mt-2">
+                        There are some notes I should probably make: at the moment, I'm only supporting the V-neck
+                        version of the uniform. Although we primarily see M'Benga and Chapel wearing variants (M'Benga's
+                        medical tunic/smock and Chapel's nursing jumpsuit), they do wear the V-necks when they
+                        take part in landing teams. See the episodes, "All Those Who Wander" and "Hegemony," for example.
+                        In the future, I'll support variants for the medical smock, nursing jumpsuit and, or course, the
+                        skant.
+                        </div>
+                        <div className="mt-2">
+                        The second big issue is related to ranks. I think the show isn't terribly consistent about how it
+                        represents ranks. So, I ended up making a wild swing at rank insignia to keep is kind of in line with
+                        how <cite>TOS</cite> represents ranks.
+                        </div>
+                    </li>
+                    <li>
+                        Some additional improvements have been made with respect to national languages, thanks to a
+                        code contribution.
+                    </li>
+                </ul>
                 <b>v1.240316</b>
                 <ul>
                     <li>
@@ -214,35 +240,6 @@ class News extends React.Component<INewsProperties, {}> {
                     <li>More support for some Continuing Missions species options</li>
                     <li>I've made some pretty broad infrastructure changes. I think I've managed to clean up any consequences of that,
                         but if you see anyting hinky, drop me a message.</li>
-                </ul>
-                <b>v1.230923</b>
-                <ul>
-                    <li>Another bug fix.</li>
-                </ul>
-                <b>v1.230921</b>
-                <ul>
-                    <li>Bug fix.</li>
-                </ul>
-                <b>v1.230917</b>
-                <ul>
-                    <li>Starting support for unofficial extensions.</li>
-                </ul>
-                <b>v1.230915</b>
-                <ul>
-                    <li>Add in support for random value and focus tables.</li>
-                    <li>Some fixes and improvements.</li>
-                </ul>
-                <b>v1.230911</b>
-                <ul>
-                    <li>Whoopsie-doodle. Important bug fix.</li>
-                </ul>
-                <b>v1.230910</b>
-                <ul>
-                    <li>Initial version of the Captain's Log functionality is now implemented. There are a few random tables (for things like
-                        values and focuses) that aren't yet implemented, but I think the majority of character creation is implemented. This
-                        required some fairly broad changes to the code, so please report any issues that have popped up.</li>
-                    <li>Some new species for the token generator.</li>
-                    <li>A few bug fixes that people have reported.</li>
                 </ul>
 
                 <div className="text-center">
