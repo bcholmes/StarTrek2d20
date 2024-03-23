@@ -150,6 +150,10 @@ const TrillNeckAddOn = `<g>
 
 export abstract class BaseNeckProvider {
 
+    private isLowerShoulders(uniformEra: UniformEra) {
+        return uniformEra === UniformEra.Suliban || uniformEra === UniformEra.StrangeNewWorlds;
+    }
+
 
     protected getNeck(body: BodyType, skinColor: string, species?: Species, uniformEra?: UniformEra, uniformVariant: UniformVariantType = UniformVariantType.Base) {
         if (UniformVariantRestrictions.isStraightenedNeck(uniformEra)) {
@@ -173,7 +177,7 @@ export abstract class BaseNeckProvider {
                 } else if (species === Species.XindiReptilian) {
                     result += "<g transform=\"translate(-10, 0)\">" + XindiReptilianNeckAddOn + "</g>";
                 }
-                return result;
+                return this.isLowerShoulders(uniformEra) ? `<g transform="translate(0, 7)">` + result + `</g>` : result;
             } else {
                 let result = Necks.straightenedFemale.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, skinColor);
                 if (species === Species.Bolian) {
