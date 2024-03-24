@@ -59,6 +59,15 @@ export enum Role {
 
     Navigator,
 
+    // Federation-Klingon War
+    CombatEngineer,
+    FieldMedic,
+    HeavyWeaponsSpecialist,
+    OrdnanceExpert,
+    Reconaissance,
+    SquadLeader,
+    TacticalOfficer,
+
 }
 
 /**
@@ -633,8 +642,69 @@ export class RolesHelper {
             new SourcePrerequisite(Source.PlayersGuide),
             new AdultPrerequisite()),
 
-
-
+        new RoleModel(
+            Role.CombatEngineer,
+            "Combat Engineer",
+            "Having combat squads on the ground of planets of interest can help change the face of the war. You are a member of one of these combat squads and use your engineering expertise to both aid the squad and disrupt the enemy. With your knowledge of structure, computers, and power flow, your presence ensures that the squad’s gear is in working order and that the enemy’s defenses will fall quickly in your presence.",
+            Skill.Engineering,
+            "To represent your ability to build and repair, your role ability grants you 1 bonus Momentum when you succeed at an Engineering task during a combat encounter. This ability primarily manifests by manipulating the battlefield instead of attacking an enemy directly. Your knowledge of how to manipulate structures to your advantage can change the course of a skirmish and provide incredible narratives that can end combats in relatively short order.",
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
+            new SourcePrerequisite(Source.FederationKlingonWar),
+            new AdultPrerequisite()),
+        new RoleModel(
+            Role.FieldMedic,
+            "Field Medic",
+            "With perhaps the most important role during wartime, you are often on the ground, ensuring the health and well-being of your people. Often assigned to combat squads, you provide for the medical needs of those on the front lines, sometimes as they are seeing active combat. This duty is not for the weak of heart and requires dexterous reflexes and quick decision-making skills. In many cases, you alone hold the line between life and death.",
+            Skill.Medicine,
+            "While on the front lines, chaos is everywhere. Often, wounded are brought to you more quickly than you can effectively take care of them. Couple that with particle beams and explosions all around you, and it’s easy to become distracted from the work that needs to be done. Luckily, you are highly trained at keeping calm and focusing on what is in front of you. To represent this, your role ability allows you to ignore any Difficulty increases to First Aid tasks you attempt due to the distraction of battle. This allows you to treat the wounded as though they were in the calm of your infirmary or sickbay.",
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
+            new SourcePrerequisite(Source.FederationKlingonWar),
+            new AdultPrerequisite()),
+        new RoleModel(
+            Role.HeavyWeaponsSpecialist,
+            "Heavy Weapons Specialist",
+            "In the unfortunate case where deadly conflict is necessary, an incursion force will usually bring along several soldiers who are adept at using larger, more devastating weapons. With an armory of weapons ranging from particle rifles to type-3 phasers and even grenade launchers, you have access to a terrifying number of destructive weapons that can even be effective when fired at ground vehicles and shuttles.",
+            Skill.Security,
+            "Because your job on the battlefield requires you to have access to heavy weapons, your role ability helps mitigate the cost of taking them with you. While most characters would pay heavy escalation costs, your cost is slightly less. Whenever you take a weapon with an escalation cost as part of your gear, you may reduce the escalation cost by one, to a minimum of one. This reduction mitigates the Threat points that a gamemaster would typically gain from players taking such devastating weaponry.",
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
+            new SourcePrerequisite(Source.FederationKlingonWar),
+            new AdultPrerequisite()),
+        new RoleModel(
+            Role.OrdnanceExpert,
+            "Ordnance Expert",
+            "You are usually a member of a combat squad deployed on a planet’s surface. Your specialty is knowing how to cause the most damage possible in the shortest period of time. In addition, you are knowledgeable about deactivating explosive devices, and making sure they don’t cause a massive number of casualties and destruction.",
+            Skill.Security,
+            "You know just where to place an attack that will affect multiple targets. To represent this insight, if you attempt a task involving a device or piece of equipment with either the Area damage effect or Grenade weapon quality, you may reroll a single d20.",
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
+            new SourcePrerequisite(Source.FederationKlingonWar),
+            new AdultPrerequisite()),
+        new RoleModel(
+            Role.Reconaissance,
+            "Reconaissance",
+            "You are the eyes and ears of a combat squad and are adept at collecting information on tactical objectives and other important targets. Using advanced technology as your ally, you often move ahead of your group to collect the information necessary to create an effective plan for the operation.",
+            Skill.Security,
+            "Your ability to gather information is top notch and your role ability reflects this. Whenever you succeed at a Security or Insight task that involves gathering information, you generate 1 additional Momentum that can only be spent on the Obtain Information Momentum spend. This ability represents your ability to dig deeper into the information you gather and the connections you make to other experiences you’ve had.",
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
+            new SourcePrerequisite(Source.FederationKlingonWar),
+            new AdultPrerequisite()),
+        new RoleModel(
+            Role.SquadLeader,
+            "Squad Leader",
+            "You are the eyes and ears of a combat squad and are adept at collecting information on tactical objectives and other important targets. Using advanced technology as your ally, you often move ahead of your group to collect the information necessary to create an effective plan for the operation.",
+            Skill.Command,
+            "You are an exceptional leader and your prowess on the field of battle is inspiring. Your role ability reflects this battle-hardened leadership and shows that there are many ways to lead a group of people. Whenever you use the Direct task, you may choose to use your Security discipline score in place of Command. When you do so, the task is still considered to have been completed using the Command discipline. This ability shows how you use your Security skill to lead your squad to success.",
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
+            new SourcePrerequisite(Source.FederationKlingonWar),
+            new AdultPrerequisite()),
+        new RoleModel(
+            Role.TacticalOfficer,
+            "Tactical Officer",
+            "You command the daunting firepower of a Federation starship, trading fire with Klingon warships in intense space battles. The lives of your crew depend on your ability to pinpoint enemy weaknesses, so you can incapacitate or destroy your adversary as efficiently as possible.",
+            Skill.Security,
+            "You have trained tirelessly to use a starship’s weaponry as instinctively as most security personnel wield a hand phaser. When you succeed on an attack assisted by a ship’s weapons, you may spend 1 Momentum (Immediate) to gain 1 effect.",
+            new NotTalentPrerequisite("Advanced Team Dynamics"),
+            new SourcePrerequisite(Source.FederationKlingonWar),
+            new AdultPrerequisite()),
 
     ];
 
