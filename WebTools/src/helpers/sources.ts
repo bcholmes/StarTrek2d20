@@ -121,7 +121,7 @@ class Sources {
         [Source.CaptainsLog]: new SourceViewModel(Source.CaptainsLog, SourceType.CoreBook, "Captain's Log"),
         [Source.ContinuingMissions]: new SourceViewModel(Source.ContinuingMissions, SourceType.Unofficial, "Continuing Mission"),
         [Source.AnimatedSeries]: new SourceViewModel(Source.AnimatedSeries, SourceType.Expansion, "Animated Series"),
-        [Source.FederationKlingonWar]: new SourceViewModel(Source.FederationKlingonWar, SourceType.Expansion, "Federation-Klingon War", false),
+        [Source.FederationKlingonWar]: new SourceViewModel(Source.FederationKlingonWar, SourceType.Expansion, "Federation-Klingon War"),
     };
 
     getSources() {

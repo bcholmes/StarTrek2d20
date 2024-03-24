@@ -112,18 +112,25 @@ class VariableDisciplinePrerequisite implements IConstructPrerequisite<Character
 class SpeciesPrerequisite implements IConstructPrerequisite<Character> {
     private species: number;
     private allowCrossSelection: boolean;
+    private allowMixedSpecies: boolean;
 
-    constructor(species: number, allowCrossSelection: boolean) {
+    constructor(species: number, allowCrossSelection: boolean, allowMixedSpecies: boolean = true) {
         this.species = species;
         this.allowCrossSelection = allowCrossSelection;
+        this.allowMixedSpecies = allowMixedSpecies;
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return c.speciesStep?.species === this.species ||
-               c.speciesStep?.mixedSpecies === this.species ||
-               c.speciesStep?.originalSpecies === this.species ||
-               (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
+        if (this.allowMixedSpecies) {
+            return c.speciesStep?.species === this.species ||
+            c.speciesStep?.mixedSpecies === this.species ||
+            c.speciesStep?.originalSpecies === this.species ||
+            (this.allowCrossSelection && store.getState().context.allowCrossSpeciesTalents);
+        } else {
+            return c.speciesStep?.species === this.species && c.speciesStep?.mixedSpecies == null && c.speciesStep?.originalSpecies == null;
+        }
     }
+
     describe(): string {
         return "";
     }
@@ -1345,13 +1352,13 @@ export class Talents {
             new TalentModel(
                 "Empath",
                 "You can sense the emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. You cannot choose not to sense the emotions of those nearby, except for those who are resistant to telepathy. It may require effort and a Task to pick out the emotions of a specific individual in a crowd, or to block out the emotions of those nearby. Increase the Difficulty of this Task if the situation is stressful, if there are a lot of beings present, if the target has resistance to telepathy, and other relevant factors.",
-                [new AnySpeciesPrerequisite(true, Species.Betazoid, Species.Mari, Species.Deltan)],
+                [new AnySpeciesPrerequisite(true, Species.Betazoid, Species.Mari, Species.Deltan, Species.Aenar)],
                 1,
                 "Betazoid/Mari/Deltan"),
             new TalentModel(
                 "Telepath",
                 "You can sense the surface thoughts and emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. Surface thoughts are whatever a creature is thinking about at that precise moment. The character cannot choose not to sense the emotions or read the surface thoughts of those nearby, except for those who are resistant to telepathy. It will require effort and a Task to pick out the emotions or thoughts of a specific individual in a crowd, to search a creature’s mind for specific thoughts or memories, or to block out the minds of those nearby. Unwilling targets may resist with an Opposed Task.",
-                [new AnySpeciesPrerequisite(true, Species.Betazoid), new EraPrerequisite(Era.NextGeneration)],
+                [new AnySpeciesPrerequisite(true, Species.Betazoid, Species.Aenar), new EraPrerequisite(Era.NextGeneration)],
                 1,
                 "Betazoid"),
             new TalentModel(
@@ -2477,6 +2484,88 @@ export class Talents {
                 1,
                 "Skorr"),
             new TalentModel(
+                "Acute Senses",
+                "The Aenar have honed their senses to the point that they are able to respond to stimuli just as well as, if not superior to, those who possess the ability to see. When attempting a task to detect something which is hidden from conventional senses, or which would normally be difficult to perceive, the Aenar may re-roll one d20.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Aenar, true)],
+                1,
+                "Aenar"),
+            new TalentModel(
+                "Chosen Speaker",
+                "Among Aenar communities, leaders and mediators are chosen as and when the need arises, nominating an individual to serve as Speaker. You've been chosen for this role often, and are adept at using your senses and your telepathy to aid communication. When attempting a task to communicate telepathically with a willing being, you may re-roll 1d20.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Aenar, true, false)],
+                1,
+                "Aenar"),
+            new TalentModel(
+                "Immense Self-Discipline",
+                "Arcadians are renowned for their ability to maintain control of their emotions and are extraordinarily hard to goad into taking violent action. Any task to provoke, anger, or compel an Arcadian to take aggressive action increases in Difficulty by 2. However, an Arcadian must add 1 to Threat in order to make an attack against an enemy during combat.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Arcadian, true)],
+                1,
+                "Arcadian"),
+            new TalentModel(
+                "Rapid Data Assimilation",
+                "The Arcadian’s genetic makeup allows them to absorb massive amounts of data and apply it quickly. When the Arcadian succeeds at a task as part of a timed challenge or timed task, the Momentum cost to reduce the number of Intervals taken is reduced by 1. Further, if the task is failed, the Arcadian may reduce the number of Intervals taken by 1 by adding 1 to Threat.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Arcadian, true)],
+                1,
+                "Arcadian"),
+            new TalentModel(
+                "Rapid Data Assimilation",
+                "The Arcadian’s genetic makeup allows them to absorb massive amounts of data and apply it quickly. When the Arcadian succeeds at a task as part of a timed challenge or timed task, the Momentum cost to reduce the number of Intervals taken is reduced by 1. Further, if the task is failed, the Arcadian may reduce the number of Intervals taken by 1 by adding 1 to Threat.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Arcadian, false)],
+                1,
+                "Arcadian"),
+            new TalentModel(
+                "Powerful Frame",
+                "Ariolo possess a dense musculature and powerful limbs that allow them to run for extended periods of time and allow them to lift heavy objects with ease. They receive one free d20 when attempting to perform a task involving physical labor.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Ariolo, true)],
+                1,
+                "Ariolo"),
+            new TalentModel(
+                "All in Due Time",
+                "The passage of time is meaningless to the Ariolo, who believe that stressing over tense situations will only lead to making mistakes. The character may reduce the Difficulty of a task they attempt involving Presence or Control by 1.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Ariolo, true)],
+                1,
+                "Ariolo"),
+            new TalentModel(
+                "Verbal Warfare",
+                "Engaging in debate is one of the highest forms of expression in Betelgeusian culture, and a Betelgeusian who deigns to engage someone in argument is considered to be giving them a great gift. During an opposed task in a social conflict, Betelgeusians gain 1 bonus Momentum so long as they succeed at their task.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Betelgeusian, true)],
+                1,
+                "Betelgeusian"),
+            new TalentModel(
+                "Strength of the Elders",
+                "Betelgeusians are descended from predators who used speed and ferocity to overwhelm their prey. In modern times a Betelgeusian can enter a mental state where they strike their opponent viciously in order to defeat them quickly. A Betelgeusian may use Fitness + Security rather than Daring + Security to make melee attacks. In addition, they inflict +1[D] Stress with any successful melee attack.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Betelgeusian, false)],
+                1,
+                "Betelgeusian"),
+            new TalentModel(
+                "Intention Detector",
+                "Years of weathering betrayal and manipulation by others has given the Coridanites a strong sense of knowing when they are being misled. The Coridanite may use the higher of their Insight or Presence during a task to determine if someone is lying or attempting to mislead them.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Coridanite, true)],
+                1,
+                "Coridanite"),
+            new TalentModel(
+                "Radiation Resistant Anatomy",
+                "Coridanites hail from a world where dilithium and certain radioactive elements are common and their biology has compensated for high levels of particles in the atmosphere. When suffering Stress from radiation, halve the total Stress suffered (rounded down), to a minimum of 1.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Coridanite, false)],
+                1,
+                "Coridanite"),
+            new TalentModel(
+                "Thick Skin",
+                "The insults and jabs of others mean little to Megarites, who have mastered the ability to take praise in their own achievements. If a Megarite is successful in a task against someone trying to manipulate them emotionally, they may ignore all subsequent attempts by their opponent for the remainder of the scene.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Megarite, true)],
+                1,
+                "Megarite"),
+            new TalentModel(
+                "Master of Aquatic Engineering",
+                "The Megarites’ homeworld necessitated not only being able to build their settlements along the coasts but also being able to withstand devastating tidal waves and impacts by glaciers. This has allowed them to develop their aquatic engineering skills to the point they are praised by other species, leading to Megarites often being employed as consultants. When attempting a task involving aquatic engineering, the Megaritie may reroll a d20.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Megarite, true)],
+                1,
+                "Megarite"),
+
+
+
+            // Unofficial
+            new TalentModel(
                 "Trained from Birth",
                 "When you make a Security task, you ignore the 1st complication rolled. In addition, if you are making an opposed task using Security, you generate 1 Momentum for each complication your opponent suffers. Bonus Momentum may not be saved.",
                 [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Talarian, false)],
@@ -2494,14 +2583,10 @@ export class Talents {
                 [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Talarian, false)],
                 1,
                 "Talarian"),
-
-
-
-            // Unofficial
             new TalentModel(
                 "Telepathic Interference",
                 "Your skills at telepathy can interfere with the ability of others to read minds, send telepathic signals, or sense thoughts and emotions. As a Minor Action, you can shield the minds of others, preventing the detection of surface thoughts and emotions, as well as blocking telepathic communication. Attempts to push past your block is an Opposed Task. Additionally, you can assist other creatures in resisting having their mind read.",
-                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Aenar, true)],
+                [new SourcePrerequisite(Source.ContinuingMissions), new NotSourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Aenar, true)],
                 1,
                 "Aenar"),
             new TalentModel(
