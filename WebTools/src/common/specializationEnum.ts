@@ -38,6 +38,7 @@ export enum Specialization {
     SonaCommandOfficer,
     TalarianWarrior,
     TalarianOfficer,
+    TzenkethiSoldier,
 
     Scientist,
     Bureaucrat,

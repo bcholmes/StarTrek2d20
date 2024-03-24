@@ -699,7 +699,7 @@ export class Character extends Construct {
             result.push(PersonalWeapons.instance.unarmedStrikeMean);
         } else if (this.hasTalent("Martial Artist")) {
             result.push(PersonalWeapons.instance.unarmedStrikeIntense);
-        } else if (this.hasTalent("Brute Force")) {
+        } else if (this.hasTalent("Brute Force") || this.hasTalent("Extra Arms")) {
             result.push(PersonalWeapons.instance.unarmedStrikeVicious);
         } else {
             result.push(PersonalWeapons.instance.unarmedStrike);
@@ -732,6 +732,13 @@ export class Character extends Construct {
             } else if (this.npcGenerationStep?.specialization === Specialization.RomulanCenturion
                 || this.npcGenerationStep?.specialization === Specialization.RomulanTalShiar) {
                 result.push(PersonalWeapons.instance.disruptorPistol);
+            } else if (this.npcGenerationStep?.specialization === Specialization.TzenkethiSoldier) {
+                if (this.rank.id === Rank.LorAA) {
+                    result.push(PersonalWeapons.instance.tzenkethiHeavyBlade);
+                } else {
+                    result.push(PersonalWeapons.instance.dagger);
+                }
+                result.push(PersonalWeapons.instance.particleRifle);
             } else if (this.npcGenerationStep?.specialization === Specialization.SonaCommandOfficer) {
                 result.push(PersonalWeapons.instance.sonaPlasmaDisruptorShotgun);
             } else if (this.npcGenerationStep?.specialization === Specialization.OrionPirate) {

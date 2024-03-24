@@ -36,7 +36,7 @@ class CharacterTypePage extends React.Component<WithTranslation, ICharacterTypeP
         const { t } = this.props;
         if (this.state.type === CharacterType.AlliedMilitary) {
 
-            const types = AllyHelper.selectOptions(store.getState().context.era, !hasSource(Source.KlingonCore)).map(t => {
+            const types = AllyHelper.instance.selectOptions(store.getState().context.era, !hasSource(Source.KlingonCore)).map(t => {
                 return (<option value={t.type} key={'type-' + t.type}>{t.localizedName}</option>);
             });
 
@@ -156,7 +156,7 @@ class CharacterTypePage extends React.Component<WithTranslation, ICharacterTypeP
         let character = new Character();
         character.type = this.state.type;
         if (character.type === CharacterType.AlliedMilitary) {
-            character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(this.state.alliedMilitary), this.state.otherName);
+            character.typeDetails = new AlliedMilitaryDetails(AllyHelper.instance.findOption(this.state.alliedMilitary), this.state.otherName);
         } else if (character.type === CharacterType.AmbassadorDiplomat) {
             character.typeDetails = new GovernmentDetails(Governments.findOption(this.state.polity), this.state.otherName);
         }

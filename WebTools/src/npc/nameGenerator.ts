@@ -48,6 +48,10 @@ const names = [
         "names": require('./names-tellarite.json')
     },
     {
+        "species": "Tzenkethi",
+        "names": require('./names-tzenkethi.json')
+    },
+    {
         "species": "Vulcan",
         "names": require('./names-vulcan.json')
     },

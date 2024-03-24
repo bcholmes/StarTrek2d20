@@ -1882,6 +1882,19 @@ class _Species {
             [TalentsHelper.getTalent("Trained from Birth"), TalentsHelper.getTalent("Talarian Cruelty"), TalentsHelper.getTalent("The B'Nar")],
             "",
             []),
+        [Species.Tzenkethi]: new SpeciesModel(
+            Species.Tzenkethi,
+            "Tzenkethi",
+            [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Source.ContinuingMissions],
+            [],
+            [Attribute.Daring, Attribute.Fitness, Attribute.Reason],
+            "Tzenkethi",
+            "",
+            "",
+            [TalentsHelper.getTalent("Extra Arms")],
+            "",
+            []),
 
 
 

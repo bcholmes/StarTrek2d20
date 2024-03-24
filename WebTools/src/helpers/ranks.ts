@@ -97,6 +97,9 @@ export enum Rank {
     // not specified
     DaiMon,
     Adhar,
+    LorC,
+    LorBB,
+    LorAA,
     None
 }
 
@@ -1020,6 +1023,30 @@ export class RanksHelper {
                 new AlliedMilitaryPrerequisite(AlliedMilitaryType.SonACommand)
             ],
             "Subadhar"),
+        new RankModel(
+            Rank.LorAA,
+            "Lor-AA", "O5",
+            [
+                new OfficerPrerequisite(),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.TzenkethiCoalition)
+            ],
+            "Lor-AA"),
+        new RankModel(
+            Rank.LorBB,
+            "Lor-BB", "O4",
+            [
+                new OfficerPrerequisite(),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.TzenkethiCoalition)
+            ],
+            "Lor-BB"),
+        new RankModel(
+            Rank.LorC,
+            "Lor-C", "O3",
+            [
+                new OfficerPrerequisite(),
+                new AlliedMilitaryPrerequisite(AlliedMilitaryType.TzenkethiCoalition)
+            ],
+            "Lor-C"),
         ];
 
     getRanks(character: Character, ignorePrerequisites?: boolean) {

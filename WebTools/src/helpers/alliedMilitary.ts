@@ -15,6 +15,7 @@ export enum AlliedMilitaryType {
     FerengiMilitary,
     SonACommand,
     TalarianMilitia,
+    TzenkethiCoalition,
     Other
 }
 
@@ -36,7 +37,17 @@ export class AlliedMilitary {
     }
 }
 
-class _AllyHelper {
+class AllyHelper {
+
+    static _instance: AllyHelper;
+
+    static get instance() {
+        if (AllyHelper._instance == null) {
+            AllyHelper._instance = new AllyHelper();
+        }
+        return AllyHelper._instance;
+    }
+
     options: AlliedMilitary[] = [
         new AlliedMilitary("Andorian Imperial Guard", AlliedMilitaryType.AndorianImperialGuard, [Species.Andorian],
                 Era.Enterprise),
@@ -65,7 +76,5 @@ class _AllyHelper {
         return temp ? temp[0] : null;
     }
 }
-
-const AllyHelper = new _AllyHelper();
 
 export default AllyHelper;

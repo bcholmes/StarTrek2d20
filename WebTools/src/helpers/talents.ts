@@ -2655,6 +2655,13 @@ export class Talents {
                 [new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(true, Species.Hupyrian, Species.Ferengi)],
                 1,
                 "Hupyrian/Ferengi"),
+            new TalentModel(
+                "Extra Arms",
+                "You know how to use your twin sets of arms with coordination and efficiency. On your turn, you can take an additional Minor Action, which can only be used for the Draw Item or Interact Minor Actions. Additionally, you add the Vicious 1 effect to your Unarmed Strike.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(true, Species.Tzenkethi)],
+                1,
+                "Tzenkethi"),
+
 
 
             // Careers
@@ -3974,9 +3981,27 @@ export class Talents {
             1,
             "General", true),
         new TalentModel(
+            "Threatening 1",
+            "The character is powerful and dangerous, with a vitality and drive that allows them to triumph where others might fail. The character begins each scene with 1 Threat, that may only be used to benefit themself, and which are not drawn from the general Threat pool.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.TzenkethiSoldier), new NotTalentPrerequisite("Threatening 2"), new NotTalentPrerequisite("Threatening 3")],
+            1,
+            "General", true),
+        new TalentModel(
+            "Threatening 2",
+            "The character is powerful and dangerous, with a vitality and drive that allows them to triumph where others might fail. The character begins each scene with 2 Threat, that may only be used to benefit themself, and which are not drawn from the general Threat pool.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.TzenkethiSoldier), new NotTalentPrerequisite("Threatening 1"), new NotTalentPrerequisite("Threatening 3")],
+            1,
+            "General", true),
+        new TalentModel(
             "Threatening 3",
-            "The character is powerful and dangerous, with a vitality and drive that allows them to triumph where others might fail. The character begins each scene with 3 Threat, that may only be used to benefit itself, and which are not drawn from the general Threat pool.",
-            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Jag)],
+            "The character is powerful and dangerous, with a vitality and drive that allows them to triumph where others might fail. The character begins each scene with 3 Threat, that may only be used to benefit themself, and which are not drawn from the general Threat pool.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.Jag, Specialization.TzenkethiSoldier), new NotTalentPrerequisite("Threatening 1"), new NotTalentPrerequisite("Threatening 2")],
+            1,
+            "General", true),
+        new TalentModel(
+            "Fast Recovery 2",
+            "The character recovers from stress and injury quickly. At the start of each of their Turns, the character regains 2 Stress, up to their normal maximum. If the character is Injured at the start of their turn, they may instead spend two Threat to remove that Injury.",
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpecializationPrerequisite(Specialization.TzenkethiSoldier)],
             1,
             "General", true),
         new TalentModel(

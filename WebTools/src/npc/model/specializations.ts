@@ -747,6 +747,30 @@ export class Specializations {
                     "To attack a superior officer is the highest offence.",
                     "I wear these gloves so that I do not have to touch an alien."
                 ], 1, [Species.Talarian]),
+            new SpecializationModel(Specialization.TzenkethiSoldier, NpcCharacterType.MinorPolity, "Tzenkethi Solier",
+                [Attribute.Daring, Attribute.Fitness, Attribute.Reason],
+                Skill.Security,
+                [
+                    "Starship Battle Tactics", "Negotiation", "Threats",
+                    "Leadership", "Diplomacy",
+                    "Bladed Weapons", "Particle Rifles", "Hand-to-Hand Combat", "Melee Weapons"
+                ],
+                [
+                    "Starship Tactical Weapons",
+                    "Guerilla Tactics", "Ship Sensors",
+                    "The Rules of the Eschelon"
+                ],
+                [
+                    "There Is No Higher Calling Than to Serve",
+                    "Sometimes the Mind is Sharper than the Blade",
+                    "The Echelons Must Be Protected At All Costs",
+                    "There Is Perfect Order Into Which All Things Fit",
+                    "Trust is Hard-Earned and Irreparable if Broken",
+                    "I deserve my ranking",
+                    "I do what is necessary in service of the Autarch",
+                    "Without a proper order, there is chaos and destruction",
+                    "There is no place for outsiders in the Eschelons"
+                ], 1, [Species.Tzenkethi]),
             new SpecializationModel(Specialization.OrionPirate, NpcCharacterType.RogueRuffianMercenary, "Orion Pirate",
                 [Attribute.Daring, Attribute.Presence, Attribute.Control],
                 Skill.Security,

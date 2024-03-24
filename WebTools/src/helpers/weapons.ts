@@ -6,7 +6,7 @@ import { Era } from "./eras";
 export enum Quality {
     Area, Calibration, Charge, Dampening, Deadly, Depleting, Devastating, Hidden, HighYield,
     Intense, Jamming, Knockdown, NonLethal, PersistentX, Piercing, Slowing, Versatile, Vicious,
-    Debilitating
+    Debilitating, Accurate
 }
 
 export class WeaponQuality {
@@ -618,6 +618,14 @@ export class PersonalWeapons {
 
     get batLeth() {
         return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.batleth.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.MELEE, 2);
+    }
+
+    get tzenkethiHeavyBlade() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.tzenkethiHeavyBlade.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.MELEE, 2);
+    }
+
+    get particleRifle() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.particleRifle.name'), 3, [], [new WeaponQuality(Quality.Accurate)], WeaponType.ENERGY, 2);
     }
 
     get dkTagh() {

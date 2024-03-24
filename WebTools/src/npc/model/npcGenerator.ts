@@ -512,7 +512,7 @@ export class NpcGenerator {
                 break;
             case NpcCharacterType.Cardassian:
                 character.type = CharacterType.AlliedMilitary;
-                character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(AlliedMilitaryType.CardassianUnion), "Cardassian Union");
+                character.typeDetails = new AlliedMilitaryDetails(AllyHelper.instance.findOption(AlliedMilitaryType.CardassianUnion), "Cardassian Union");
                 break;
             case NpcCharacterType.KlingonDefenseForces:
                 if (specialization.id === Specialization.KlingonDiplomat) {
@@ -528,7 +528,7 @@ export class NpcGenerator {
                     character.educationStep = new EducationStep(Track.PoliticianOrBureaucrat);
                 } else {
                     character.type = CharacterType.AlliedMilitary;
-                    character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(AlliedMilitaryType.RomulanStarEmpire), "Romulan");
+                    character.typeDetails = new AlliedMilitaryDetails(AllyHelper.instance.findOption(AlliedMilitaryType.RomulanStarEmpire), "Romulan");
                 }
                 break;
             case NpcCharacterType.RogueRuffianMercenary:
@@ -540,6 +540,8 @@ export class NpcGenerator {
                     character.typeDetails = new AlliedMilitaryDetails(new AlliedMilitary("Son'a Command", AlliedMilitaryType.SonACommand, [ Species.SonA ]), "Son'a Command");
                 } else if (specialization.id === Specialization.TalarianOfficer || specialization.id === Specialization.TalarianWarrior) {
                     character.typeDetails = new AlliedMilitaryDetails(new AlliedMilitary("Talarian Militia", AlliedMilitaryType.TalarianMilitia, [ Species.Talarian ]), "Talarian Militia");
+                } else if (specialization.id === Specialization.TzenkethiSoldier) {
+                    character.typeDetails = new AlliedMilitaryDetails(new AlliedMilitary("Tzenkethi Coalition", AlliedMilitaryType.TzenkethiCoalition, [ Species.Tzenkethi ]), "Tzenkethi Coalition");
                 }
                 break;
             case NpcCharacterType.Civilian:
@@ -555,7 +557,7 @@ export class NpcGenerator {
                     character.type = CharacterType.Civilian;
             } else {
                     character.type = CharacterType.AlliedMilitary;
-                    character.typeDetails = new AlliedMilitaryDetails(AllyHelper.findOption(AlliedMilitaryType.Other), "Ferengi");
+                    character.typeDetails = new AlliedMilitaryDetails(AllyHelper.instance.findOption(AlliedMilitaryType.Other), "Ferengi");
                 }
                 break;
             default:
