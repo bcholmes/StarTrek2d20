@@ -25,6 +25,7 @@ import { Rank } from '../helpers/ranks';
 import { UniformEra } from './model/uniformEra';
 import UniformPackCollection from './model/uniformPackCollection';
 import HeadCatalog from './model/headCatalog';
+import UniformVariantRestrictions from './model/uniformVariantRestrictions';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -212,15 +213,20 @@ class TokenCreationPage extends React.Component<ITokenCreationPageProperties, IT
     }
 
     exportPng() {
+        const { token } = this.props;
         this.toPng({
             width: 400,
             height: 400,
-            svg: TokenSvgBuilder.createSvg(this.props.token, this.state.rounded, this.state.bordered && this.state.rounded)
+            svg: TokenSvgBuilder.createSvg(token, this.state.rounded, this.state.bordered && this.state.rounded)
         }).then((png) => {
-            let division = DivisionColors.getDivision(this.props.token.uniformEra, this.props.token.divisionColor);
-            let species = SpeciesHelper.getSpeciesByType(this.props.token.species);
+            let division = DivisionColors.getDivision(token.uniformEra, token.divisionColor);
+            let species = SpeciesHelper.getSpeciesByType(token.species);
             let speciesName = species.name.replace(/[ ()’']/g, "");
-            let name = "token-" + speciesName + "-" + (division != null ? (division + "-") : "") + Rank[this.props.token.rankIndicator] + ".png";
+            let name = "token-" + speciesName + "-" + (division != null ? (division + "-") : "")
+                + (UniformEra[token.uniformEra])
+                + ((UniformVariantRestrictions.isRankSupported(token.rankIndicator, token.uniformEra) && token.rankIndicator !== Rank.None)
+                    ? "-" + Rank[token.rankIndicator] + ".png"
+                    : "");
             download(png, name, "image/png");
         });
     }
