@@ -747,7 +747,7 @@ export class Specializations {
                     "To attack a superior officer is the highest offence.",
                     "I wear these gloves so that I do not have to touch an alien."
                 ], 1, [Species.Talarian]),
-            new SpecializationModel(Specialization.TzenkethiSoldier, NpcCharacterType.MinorPolity, "Tzenkethi Solier",
+            new SpecializationModel(Specialization.TzenkethiSoldier, NpcCharacterType.MinorPolity, "Tzenkethi Soldier",
                 [Attribute.Daring, Attribute.Fitness, Attribute.Reason],
                 Skill.Security,
                 [
