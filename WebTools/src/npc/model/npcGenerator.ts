@@ -21,18 +21,6 @@ import { Specialization } from "../../common/specializationEnum";
 import { Track } from "../../helpers/trackEnum";
 import Governments, { Polity } from "../../helpers/governments";
 
-class RankWithTier {
-    readonly name: string;
-    readonly rank: Rank;
-    readonly tier?: number;
-
-    constructor(name: string, rank: Rank, tier?: number) {
-        this.name = name;
-        this.rank = rank;
-        this.tier = tier;
-    }
-}
-
 const recreationSkills: { [type: number ]: string[] } = {
 
     [ NpcCharacterType.Starfleet] : [
@@ -542,6 +530,8 @@ export class NpcGenerator {
                     character.typeDetails = new AlliedMilitaryDetails(new AlliedMilitary("Talarian Militia", AlliedMilitaryType.TalarianMilitia, [ Species.Talarian ]), "Talarian Militia");
                 } else if (specialization.id === Specialization.TzenkethiSoldier) {
                     character.typeDetails = new AlliedMilitaryDetails(new AlliedMilitary("Tzenkethi Coalition", AlliedMilitaryType.TzenkethiCoalition, [ Species.Tzenkethi ]), "Tzenkethi Coalition");
+                } else if (specialization.id === Specialization.TholianWarrior) {
+                    character.typeDetails = new AlliedMilitaryDetails(new AlliedMilitary("Tholian Assembly", AlliedMilitaryType.TholianAssembly, [ Species.Tholian ]), "Tholian Assembly");
                 }
                 break;
             case NpcCharacterType.Civilian:
@@ -744,6 +734,8 @@ export class NpcGenerator {
             ranks = [ RanksHelper.instance().getRank(Rank.Captain) ];
         } else if (specialization.id === Specialization.CardassianGul) {
             ranks = [ RanksHelper.instance().getRank(Rank.Gul) ];
+        } else if (specialization.id === Specialization.TholianWarrior) {
+            ranks = [];
         }
 
         ranks = ranks.filter(r => r.id !== Rank.Yeoman1stClass
@@ -756,23 +748,18 @@ export class NpcGenerator {
             && r.id !== Rank.MasterChiefSpecialist
             && r.id !== Rank.SeniorChiefSpecialist);
 
-        let rankList = [];
-        for (const rank of ranks) {
-            rankList.push(new RankWithTier(rank.name, rank.id));
-        }
-
-        if (rankList.length > 0) {
+        if (ranks.length > 0) {
             // by using a logarithmic scale, I'm biasing the random values in favour
             // of the ranks at the higher end of the list (which are the more junior ranks)
-            let maxValue = Math.pow(Math.E, rankList.length + 1);
+            let maxValue = Math.pow(Math.E, ranks.length + 1);
             let random = Math.log1p(Math.random() * maxValue);
-            let index = Math.min(rankList.length - 1, Math.max(0, Math.floor(random)));
-            let rank = rankList[index];
+            let index = Math.min(ranks.length - 1, Math.max(0, Math.floor(random)));
+            let rank = ranks[index];
 
-            if (specialization.id === Specialization.MedicalDoctor && rank.rank === Rank.Ensign) {
+            if (specialization.id === Specialization.MedicalDoctor && rank.id === Rank.Ensign) {
                 character.jobAssignment = specialization.name + " (Resident)";
             }
-            RanksHelper.instance().applyRank(character, rank.rank);
+            RanksHelper.instance().applyRank(character, rank.id);
         }
     }
 

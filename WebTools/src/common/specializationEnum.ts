@@ -39,6 +39,7 @@ export enum Specialization {
     TalarianWarrior,
     TalarianOfficer,
     TzenkethiSoldier,
+    TholianWarrior,
 
     Scientist,
     Bureaucrat,

@@ -2179,7 +2179,7 @@ export class Talents {
                 "Tholian"),
             new TalentModel(
                 "Radiation Burst",
-                "Some Tholians can channel radiation into intense bursts that act as a ranged weapon in combat (3A, Vicious 1 damage effect).",
+                "Some Tholians can channel radiation into intense bursts that act as a ranged weapon in combat (3[D], Vicious 1 damage effect).",
                 [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(Species.Tholian, true)],
                 1,
                 "Tholian"),

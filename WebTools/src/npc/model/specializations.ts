@@ -771,6 +771,30 @@ export class Specializations {
                     "Without a proper order, there is chaos and destruction",
                     "There is no place for outsiders in the Eschelons"
                 ], 1, [Species.Tzenkethi]),
+            new SpecializationModel(Specialization.TholianWarrior, NpcCharacterType.MinorPolity, "Tholian Warrior",
+                [Attribute.Control, Attribute.Daring, Attribute.Fitness],
+                Skill.Security,
+                [
+                    "Starship Battle Tactics", "Negotiation", "Threats",
+                    "Leadership", "Diplomacy",
+                    "Particle Rifles", "Hand-to-Hand Combat", "Melee Weapons"
+                ],
+                [
+                    "Starship Tactical Weapons", "Ship Sensors",
+                    "Tholian Borders", "The Threat of Outsiders", "Isolation Protocols",
+                    "The Needs of the Assembly"
+                ],
+                [
+                    "Protect our borders",
+                    "Our enemies do not respect our space",
+                    "That which is of the outside must be isolated",
+                    "Be correct; we do not tolerate deceit.",
+                    "You are an outsider, and you lie!",
+                    "Inaccuracy is betrayal.",
+                    "You may go no further than this; if you try, we will stop you.",
+                    "You have been told. You will comply.",
+                    "All that needs to be said has already been said."
+                ], 1, [Species.Tholian]),
             new SpecializationModel(Specialization.OrionPirate, NpcCharacterType.RogueRuffianMercenary, "Orion Pirate",
                 [Attribute.Daring, Attribute.Presence, Attribute.Control],
                 Skill.Security,

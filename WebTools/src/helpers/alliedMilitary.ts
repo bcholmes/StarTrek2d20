@@ -16,6 +16,7 @@ export enum AlliedMilitaryType {
     SonACommand,
     TalarianMilitia,
     TzenkethiCoalition,
+    TholianAssembly,
     Other
 }
 

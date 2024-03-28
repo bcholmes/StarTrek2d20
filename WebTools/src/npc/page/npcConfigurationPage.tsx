@@ -119,6 +119,8 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         let result = [ new DropDownElement(null, t('NpcConfigurationPage.option.anySpecialization'))];
         Specializations.instance.getSpecializations(this.state.selectedType.type)
             .filter(s => (s.type !== NpcCharacterType.Ferengi || this.props.era === Era.NextGeneration) && hasAnySource([Source.DS9, Source.AlphaQuadrant]))
+            .filter(s => (s.id !== Specialization.TzenkethiSoldier) || hasAnySource([Source.AlphaQuadrant]))
+            .filter(s => (s.id !== Specialization.TholianWarrior) || hasAnySource([Source.IdwYearFive]))
             .filter(s => this.state.selectedSpecies == null || s.species.length === 0 || s.species.indexOf(this.state.selectedSpecies) >= 0 )
             .forEach(s => result.push(new DropDownElement(s.id, s.localizedName)));
         return result;
