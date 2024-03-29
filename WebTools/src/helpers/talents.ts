@@ -3002,9 +3002,105 @@ export class Talents {
                 [new SourcePrerequisite(Source.DiscoveryS1S2), new GMsDiscretionPrerequisite()],
                 1,
                 "General"),
+            new TalentModel(
+                "An Answer for Everything",
+                "You relish intense debate, where you can see your opponent’s argument unfold, then turn it back against them. When you succeed at a task as part of an extended task in a social conflict, you may reroll a number of [D] up to your Command score.",
+                [new SourcePrerequisite(Source.FederationKlingonWar)],
+                1,
+                "General"),
+            new TalentModel(
+                "Combat Gunner",
+                "You have trained to operate ground vehicles and mounted weapons. You may use your Conn instead of Security when making an attack with a weapon mounted on a ground vehicle.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new DisciplinePrerequisite(Skill.Conn, 4), new DisciplinePrerequisite(Skill.Security, 3)],
+                1,
+                "General"),
+            new TalentModel(
+                "Defensive Training: Melee",
+                "You are adept at staying out of harm’s way during a skirmish. Melee attacks that target you have their Difficulty increased by 1.",
+                [new SourcePrerequisite(Source.FederationKlingonWar)],
+                1,
+                "General"),
+            new TalentModel(
+                "Defensive Training: Ranged",
+                "You are adept at staying out of harm’s way during a skirmish. Ranged attacks that target you have their Difficulty increased by 1.",
+                [new SourcePrerequisite(Source.FederationKlingonWar)],
+                1,
+                "General"),
+            new TalentModel(
+                "Demolitionist",
+                "You are skilled in making, setting, and defusing explosive devices. Whenever you attempt an Engineering task to create, set, or to defuse an explosive device or whenever you make an attack with a weapon with the Grenade weapon quality, the first d20 you purchase is free. In addition, you can ignore the first complication on an Engineering task involving explosives once per scene.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new DisciplinePrerequisite(Skill.Engineering, 5), new DisciplinePrerequisite(Skill.Security, 3)],
+                1,
+                "General"),
+            new TalentModel(
+                "Exploit Weakness",
+                "You are trained in surprising your opponent and taking advantage of any weaknesses they have. When you attempt an attack against an unaware enemy, or an enemy suffering from a trait that represents weakness or vulnerability, the attack gains the Piercing 2 effect.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new AttributePrerequisite(Attribute.Insight, 10), new DisciplinePrerequisite(Skill.Security, 3)],
+                1,
+                "General"),
+            new TalentModel(
+                "Finesse Strikes",
+                "You are graceful on the field of battle, often dancing around the enemy with relative ease. Once per combat encounter, you may reroll all the [D] for the Stress you inflict when you make a single successful melee attack.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new DisciplinePrerequisite(Skill.Security, 4)],
+                1,
+                "General"),
+            new TalentModel(
+                "Focused Fire",
+                "You are adept at focusing your attacks on the same point of an enemy to inflict massive damage in that area. When you make a successful ranged attack against an enemy that has already been shot this turn and choose to spend Momentum to increase the amount of Stress suffered, you may reroll up to 3[D].",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new DisciplinePrerequisite(Skill.Security, 4)],
+                1,
+                "General"),
+            new TalentModel(
+                "Improvised Weapon Training",
+                "You are able to turn the most innocuous items into weapons at a moment’s notice. Once per scene, you may use an item such as a rock, crystal, or shard of metal laying around into a melee weapon. This weapon deals 2[D] + Security damage and is removed at the end of the encounter.",
+                [new SourcePrerequisite(Source.FederationKlingonWar)],
+                1,
+                "General"),
+            new TalentModel(
+                "Moving Target",
+                "Your training in hit-and-move tactics allows you to confuse attackers as you run to take cover. When you take the Sprint task, the Difficulty of ranged attacks that target you is increased by 1 until your next turn.",
+                [new SourcePrerequisite(Source.FederationKlingonWar)],
+                1,
+                "General"),
+            new TalentModel(
+                "Nimble (War)",
+                "You are quick on your feet and know how to navigate obstacles around you. When attempting a task to move through difficult terrain or similar physical obstacles, you may reduce the Difficulty of the task by 2. If this reduces the Difficulty to 0, you may move over or around that obstacle as if it wasn’t there.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new AttributePrerequisite(Attribute.Fitness, 10)],
+                1,
+                "General"),
+            new TalentModel(
+                "Out of Harm's Way",
+                "You are used to balancing the need to keep a patient still and the need to get them somewhere safer. When attempting to carry or restrain another person, you may use Medicine instead of Security, and you ignore the first complication rolled on any such tasks.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new DisciplinePrerequisite(Skill.Security, 2), new DisciplinePrerequisite(Skill.Medicine, 3)],
+                1,
+                "General"),
+            new TalentModel(
+                "Reasoned Discourse",
+                "You are precise and succinct with language, allowing you to convey facts and logical arguments effectively and quickly. When you need to communicate complicated information or argue with logic over emotion, reduce the Difficulty of the task by 1.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new DisciplinePrerequisite(Skill.Command, 3)],
+                1,
+                "General"),
+            new TalentModel(
+                "Rousing Speaker",
+                "You are accustomed to public speaking, stirring the emotions of your audience. When you attempt a task to convince or persuade others with a stirring speech, reduce the Difficulty of the task by 1.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new AttributePrerequisite(Attribute.Presence, 10)],
+                1,
+                "General"),
+            new TalentModel(
+                "Saboteur (War)",
+                "You have a knack for breaking things. When attacking an object, structure, or stationary vehicle, you may use your Engineering score instead of Security. In addition, when inflicting Stress on such a target, you can spend 2 Momentum to change any challenge dice to an effect result, up to your Engineering score.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new DisciplinePrerequisite(Skill.Engineering, 5), new DisciplinePrerequisite(Skill.Security, 2)],
+                1,
+                "General"),
+            new TalentModel(
+                "Tracker",
+                "You can follow even the faintest of tracks. When you attempt a task to track animals, people, or ground vehicles, the first d20 you buy is free. If the tracking was done as part of an extended task then the roll gains Progression 1.",
+                [new SourcePrerequisite(Source.FederationKlingonWar), new DisciplinePrerequisite(Skill.Security, 3), new DisciplinePrerequisite(Skill.Conn, 2)],
+                1,
+                "General"),
         ];
 
-    private _starshipTalents: TalentModel[] = [
+        private _starshipTalents: TalentModel[] = [
             // Starships
             new TalentModel(
                 "Ablative Armor",

@@ -638,7 +638,7 @@
     "CareerEvent.common.18.focusSuggestion": "The character gains a Focus, reflecting the technology involved in the event. Examples include: Electro-Plasma Power Systems, Fusion Reactors, or Warp Engines.",
 
     "CareerEvent.common.19.name": "Breakthrough or Invention",
-    "CareerEvent.common.19.description": "The character made an important technological discovery, devised a new way of using a particular technology, or invented some new technology that will be invaluable in the future. What was the discovery, breakthrough, or invention? How will it be useful?",
+    "CareerEvent.common.19.description": "The character made an important technological discovery, devised a new way of using a particular technology, or invented some new technology that will be invaluable in the future. \n\n- What was the discovery, breakthrough, or invention? \n- How will it be useful?",
     "CareerEvent.common.19.focusSuggestion": "The character gains a Focus, reflecting the character’s achievement. Examples include: Experimental Technology, Invention, or Improvisation.",
 
     "CareerEvent.common.20.name": "First Contact",
@@ -1654,6 +1654,10 @@
 
     "Talent.aLittleMorePower.description": "Whenever you succeed at an Engineering Task aboard your own ship, you may spend one Momentum to regain one spent Power.",
 
+    "Talent.anAnswerForEverything": "An Answer for Everything",
+
+    "Talent.anAnswerForEverything.description": "You relish intense debate, where you can see your opponent’s argument unfold, then turn it back against them. When you succeed at a task as part of an extended task in a social conflict, you may reroll a number of [D] up to your Command score.",
+
     "Talent.automatedDefenses": "Automated Defenses",
 
     "Talent.automatedDefenses.soloDescription": "The ship’s weapons systems can automatically lock on to a target and fire even if the crew is incapacitated or unavailable.",
@@ -1754,6 +1758,10 @@
 
     "Talent.closeProtection.description": "When you make a successful Attack, you may spend one Momentum to protect a single ally within Close range. The next Attack against that ally before the start of your next turn increases in Difficulty by 1.",
 
+    "Talent.combatGunner": "Combat Gunner",
+
+    "Talent.combatGunner.description": "You have trained to operate ground vehicles and mounted weapons. You may use your Conn instead of Security when making an attack with a weapon mounted on a ground vehicle.",
+
     "Talent.commandShip": "Command Ship",
 
     "Talent.commandShip.soloDescription": "The ship has command and control systems allowing it to coordinate easily with allies during a crisis.",
@@ -1770,6 +1778,14 @@
 
     "Talent.dauntless.description": "Whenever you attempt a Task to resist being intimidated or threatened, you may add a bonus d20 to your dice pool.",
 
+    "Talent.defensiveTrainingMelee": "Defensive Training: Melee",
+
+    "Talent.defensiveTrainingMelee.description": "You are adept at staying out of harm’s way during a skirmish. Melee attacks that target you have their Difficulty increased by 1.",
+
+    "Talent.defensiveTrainingRanged": "Defensive Training: Ranged",
+
+    "Talent.defensiveTrainingRanged.description": "You are adept at staying out of harm’s way during a skirmish. Ranged attacks that target you have their Difficulty increased by 1.",
+
     "Talent.defuseTheTension": "Defuse the Tension",
 
     "Talent.defuseTheTension.description": "Whenever you attempt a Task to persuade someone not to resort to violence, you may add a bonus d20 to your dice pool.",
@@ -1782,6 +1798,7 @@
 
     "Talent.deluxeGalley.soloDescription": "The ship’s mess hall is equipped with top-of-the- line food preparation systems as well as vast stores of non-replicated food.",
 
+    "Talent.demolitionist": "You are skilled in making, setting, and defusing explosive devices. Whenever you attempt an Engineering task to create, set, or to defuse an explosive device or whenever you make an attack with a weapon with the Grenade weapon quality, the first d20 you purchase is free. In addition, you can ignore the first complication on an Engineering task involving explosives once per scene.",
     "Talent.diplomaticSuites": "Diplomatic Suites",
 
     "Talent.diplomaticSuites.soloDescription": "The ship has numerous high-quality staterooms for hosting VIPs, as well as briefing rooms and other facilities that allow the ship to serve as a neutral ground for diplomatic summits, trade negotiations, and similar functions.",
@@ -1802,6 +1819,10 @@
 
     "Talent.empath.description": "You can sense the emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. You cannot choose not to sense the emotions of those nearby, except for those who are resistant to telepathy. It may require effort and a Task to pick out the emotions of a specific individual in a crowd, or to block out the emotions of those nearby. Increase the Difficulty of this Task if the situation is stressful, if there are a lot of beings present, if the target has resistance to telepathy, and other relevant factors.",
 
+    "Talent.exploitWeakness": "Exploit Weakness",
+
+    "Talent.exploitWeakness.description": "You are trained in surprising your opponent and taking advantage of any weaknesses they have. When you attempt an attack against an unaware enemy, or an enemy suffering from a trait that represents weakness or vulnerability, the attack gains the Piercing 2 effect.",
+
     "Talent.extensiveShuttlebays": "Extensive Shuttlebays",
 
     "Talent.extensiveShuttlebays.soloDescription": "The vessel’s shuttlebays are large, well-supplied, and able to support a larger number of active shuttle missions simultaneously.",
@@ -1814,9 +1835,17 @@
 
     "Talent.fieldMedicine.description": "When attempting a Medicine Task, you may ignore any increase in Difficulty for working without the proper tools or equipment.",
 
+    "Talent.finesseStrikes": "Finesse Strikes",
+
+    "Talent.finesseStrikes.description": "You are graceful on the field of battle, often dancing around the enemy with relative ease. Once per combat encounter, you may reroll all the [D] for the Stress you inflict when you make a single successful melee attack.",
+
     "Talent.flyBy": "Fly-By",
 
     "Talent.flyBy.description": "Whenever you use the Swift Task Momentum Spend, you do not increase the Difficulty of the second Task if one of the Tasks you attempt is to pilot a vessel or vehicle.",
+
+    "Talent.focusedFire": "Focused Fire",
+
+    "Talent.focusedFire.description": "You are adept at focusing your attacks on the same point of an enemy to inflict massive damage in that area. When you make a successful ranged attack against an enemy that has already been shot this turn and choose to spend Momentum to increase the amount of Stress suffered, you may reroll up to 3[D].",
 
     "Talent.followMyLead": "Follow My Lead",
 
@@ -1866,6 +1895,10 @@
 
     "Talent.improvedWarpDrive.soloDescription": "The ship’s warp drive is more efficient, capitalizing on improved field dynamics, better control of antimatter flow rates, or some other advancement that allows the ship to expend less energy when traveling at warp.",
 
+    "Talent.improvisedWeaponTraining": "Improvised Weapon Training",
+
+    "Talent.improvisedWeaponTraining.description": "You are able to turn the most innocuous items into weapons at a moment’s notice. Once per scene, you may use an item such as a rock, crystal, or shard of metal laying around into a melee weapon. This weapon deals 2[D] + Security damage and is removed at the end of the encounter.",
+
     "Talent.incisiveScrutiny": "Incisive Scrutiny",
 
     "Talent.incisiveScrutiny.description": "You have a knack for finding weak spots in arguments, theories, and machines alike to glean information from them, learning about things by how they respond to pressure against vulnerable points. When you succeed at a Task using Control or Insight, you gain one bonus Momentum, which may only be used for the Obtain Information Momentum Spend.",
@@ -1912,6 +1945,10 @@
 
     "Talent.modularLaboratories.soloDescription": "The ship has considerable numbers of empty, multi- purpose compartments that can be converted to laboratories as and when required.",
 
+    "Talent.movingTarget": "Moving Target",
+
+    "Talent.movingTarget.description": "Your training in hit-and-move tactics allows you to confuse attackers as you run to take cover. When you take the Sprint task, the Difficulty of ranged attacks that target you is increased by 1 until your next turn.",
+
     "Talent.multiVectorAssaultMode": "Multi-Vector Assault Mode",
 
     "Talent.multiVectorAssaultMode.soloDescription": "The vessel can split apart into three distinct sections. Each section has the same systems and departments scores as the original fully integrated starship, but each individual section has less power than when the ship is integrated. Use this in narration to create interesting advantages or complications.",
@@ -1920,9 +1957,17 @@
 
     "Talent.nervePinch.description": "You have learned numerous techniques for the stimulation and control of nerve impulses — collectively called neuropressure. Some applications of neuropressure can be used to swiftly and non-lethally incapacitate assailants. The nerve pinch counts as a melee weapon with 1[D], Size 1H, and the Intense and Non-lethal qualities. You may use Science or Medicine instead of Security when attempting a nerve pinch Attack, and may increase damage by your Science or Medicine Discipline instead of Security.",
 
+    "Talent.nimbleWar": "Nimble",
+
+    "Talent.nimbleWar.description": "You are quick on your feet and know how to navigate obstacles around you. When attempting a task to move through difficult terrain or similar physical obstacles, you may reduce the Difficulty of the task by 2. If this reduces the Difficulty to 0, you may move over or around that obstacle as if it wasn’t there.",
+
     "Talent.orbExperience": "Orb Experience",
 
     "Talent.orbExperience.description": "You have received a vision from the Bajoran Prophets, through one of the Orbs. This rare experience, though confusing at first, has shaped your life and outlook. You have one additional Value, reflecting the insights you received from the experience. The first time this Value is Challenged, roll 1[D]; if an Effect is rolled, then some foretold element of the Orb Experience has come to pass, and the Value is not crossed out as it would normally be.",
+
+    "Talent.outOfHarmsWay": "Out of Harm's Way",
+
+    "Talent.outOfHarmsWay.description": "You are used to balancing the need to keep a patient still and the need to get them somewhere safer. When attempting to carry or restrain another person, you may use Medicine instead of Security, and you ignore the first complication rolled on any such tasks.",
 
     "Talent.packTactics": "Pack Tactics",
 
@@ -1964,6 +2009,10 @@
 
     "Talent.rapidFireTorpedoLauncher.soloDescription": "The vessel’s torpedo launchers have been redesigned to allow the ship to fire multiple torpedoes much more quickly and accurately.",
 
+    "Talent.reasonedDiscourse": "Reasoned Discourse",
+
+    "Talent.reasonedDiscourse.description": "You are precise and succinct with language, allowing you to convey facts and logical arguments effectively and quickly. When you need to communicate complicated information or argue with logic over emotion, reduce the Difficulty of the task by 1.",
+
     "Talent.resolute": "Resolute",
 
     "Talent.resolute.description": "You are indomitable, and unwilling to succumb to adversity. You increase your maximum Stress by 3.",
@@ -1972,9 +2021,17 @@
 
     "Talent.regenerativeHull.soloDescription": "The ship’s hull is infused with reverse-engineered Borg nanite technology that seeks out and repairs the hull immediately when it is damaged, often preventing a breach before it can happen.",
 
+    "Talent.rousingSpeaker": "Rousing Speaker",
+
+    "Talent.rousingSpeaker.description": "You are accustomed to public speaking, stirring the emotions of your audience. When you attempt a task to convince or persuade others with a stirring speech, reduce the Difficulty of the task by 1.",
+
     "Talent.ruggedDesign": "Rugged Design",
 
     "Talent.ruggedDesign.soloDescription": "The ship is designed with the frontier in mind, with a durable construction and easy access to critical systems that allow repairs to be made easily.",
+
+    "Talent.saboteurWar": "Saboteur",
+
+    "Talent.saboteurWar.description": "You have a knack for breaking things. When attacking an object, structure, or stationary vehicle, you may use your Engineering score instead of Security. In addition, when inflicting Stress on such a target, you can spend 2 Momentum to change any challenge dice to an effect result, up to your Engineering score.",
 
     "Talent.saucerSeparation": "Saucer Separation",
 
@@ -2045,6 +2102,10 @@
     "Talent.tough": "Tough",
 
     "Talent.tough.description": "Whenever you Avoid an Injury, the cost is reduced by 1, to a minimum of 1.",
+
+    "Talent.tracker": "You can follow even the faintest of tracks. When you attempt a task to track animals, people, or ground vehicles, the first d20 you buy is free. If the tracking was done as part of an extended task then the roll gains Progression 1.",
+
+    "Talent.tracker.description": "You can follow even the faintest of tracks. When you attempt a task to track animals, people, or ground vehicles, the first d20 you buy is free. If the tracking was done as part of an extended task then the roll gains Progression 1.",
 
     "Talent.untappedPotential": "Untapped Potential",
 

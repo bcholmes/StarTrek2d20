@@ -675,10 +675,10 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
 
     fillTalents(form: PDFForm, character: Character) {
         let i = 1;
-        for (var t of character.talents) {
-            let talent = TalentsHelper.getTalent(t.talent);
+        for (var t of character.getDistinctTalentNameList()) {
+            let talent = TalentsHelper.getTalent(t);
             if (talent && talent.maxRank > 1) {
-                this.fillField(form, 'Talent ' + i, talent.localizedDisplayName + " [Rank " + character.getRankForTalent(t.talent) + "]");
+                this.fillField(form, 'Talent ' + i, talent.localizedDisplayName + " [Rank " + character.getRankForTalent(t) + "]");
             } else {
                 this.fillField(form, 'Talent ' + i, talent.localizedDisplayName);
             }
@@ -772,12 +772,7 @@ class RomulanCharacterSheet extends BasicFullCharacterSheet {
     }
 }
 
-// todo it can be removed because of the methods are moved to parent class
-class LocalizedCharacterSheet extends BasicFullCharacterSheet {
-}
-
-// todo deprecate and remove after universal pdf file will be ready
-class StandardGermanCharacterSheet extends LocalizedCharacterSheet {
+class StandardGermanCharacterSheet extends BasicFullCharacterSheet {
     getLanguage(): string {
         return "de";
     }
@@ -793,7 +788,7 @@ class StandardGermanCharacterSheet extends LocalizedCharacterSheet {
 }
 
 // todo deprecate and remove after universal pdf file will be ready
-class StandardRussianCharacterSheet extends LocalizedCharacterSheet {
+class StandardRussianCharacterSheet extends BasicFullCharacterSheet {
     getLanguage(): string {
         return "ru";
     }
@@ -876,7 +871,7 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         if (character.role != null) {
             let role = RolesHelper.instance.getRole(character.role, character.type);
             if (role) {
-                let blocks = this.createTextBlocks(role.name + ":", titleStyle, symbolStyle, startLine, page);
+                let blocks = this.createTextBlocks(role.localizedName + ":", titleStyle, symbolStyle, startLine, page);
                 blocks.forEach((b, i) => { if (i < blocks.length -1) lines.push(b); });
 
                 let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
@@ -888,12 +883,12 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         }
 
         if (startLine) {
-            for (let t of character.talents) {
-                let talentName = t.talent;
+            for (let t of character.getDistinctTalentNameList()) {
 
-                const talent = TalentsHelper.getTalent(talentName);
+                const talent = TalentsHelper.getTalent(t);
+                let talentName = talent.localizedName;
                 if (talent && talent.maxRank > 1) {
-                    let rank = character.getRankForTalent(talentName);
+                    let rank = character.getRankForTalent(t);
                     talentName += " [Rank: " + rank + "]";
                 }
 

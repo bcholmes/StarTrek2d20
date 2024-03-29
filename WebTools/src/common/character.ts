@@ -692,6 +692,19 @@ export class Character extends Construct {
         return result;
     }
 
+    /* returns the "official" name of the talent */
+    getDistinctTalentNameList() {
+        let result = [];
+        this.talents.forEach(t => {
+            if (result.indexOf(t.talent) < 0) {
+                result.push(t.talent);
+            }
+        })
+
+        return result;
+    }
+
+
     determineWeapons() {
         let result: Weapon[] = [];
 
