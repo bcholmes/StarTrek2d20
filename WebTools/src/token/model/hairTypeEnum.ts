@@ -5,7 +5,7 @@ export enum HairType {
     MediumLengthFemaleStraight, ChinLengthCombBack, ChinLengthBob, ShortTeasedOverEyeStyle, FeminineDreadStyle, ShoulderLengthMostlyStraight,
     ShoulderLengthBob, CornRows, HighForeheadEfrosianStyle, PinnedUpHairWithPart, ShavedSides,
     KlingonHair1, KlingonHair2, KlingonHair3, RomulanPeakedHair, Mature, CentrePart,
-    StraightCombedBackShort, StraightCombedBackMedium
+    StraightCombedBackShort, StraightCombedBackMedium, UpsweptWithProduct,
 }
 
 export const allHairTypes = (): HairType[] => {
