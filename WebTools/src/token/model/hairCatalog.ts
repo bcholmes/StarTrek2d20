@@ -842,7 +842,7 @@ class HairCatalog {
         let front = (typeof hair.frontSvg === "string") ? hair.frontSvg as string : (hair.frontSvg as HairSource).front
         let back = (typeof hair.frontSvg === "string") ? hair.backSvg : (hair.frontSvg as HairSource).back;
 
-        if (token.extras.indexOf(ExtraType.SecurityHelmet) >= 0) {
+        if (token.extras.indexOf(ExtraType.SecurityHelmet) >= 0 || token.extras.indexOf(ExtraType.VulcanHeaddress) >= 0) {
             return "";
         } else if (element === HairElement.BehindEars && !hair.inFrontOfEars) {
             return front.replace(/#383838/g, token.hairColor);
