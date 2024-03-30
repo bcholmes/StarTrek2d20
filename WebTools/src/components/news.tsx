@@ -12,6 +12,18 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240329</b>
+                <ul>
+                    <li>
+                        Some additional tweaks to the token generator.
+                    </li>
+                    <li>
+                        Initial support for the <cite>Federation-Klingon War</cite> book.
+                    </li>
+                    <li>
+                        Minor NPC updates.
+                    </li>
+                </ul>
                 <b>v1.240323</b>
                 <ul>
                     <li>
