@@ -367,7 +367,12 @@
     "Construct.system.weapons": "Вооружение",
 
     "Page.title.attributesAndDisciplines": "Заключительные штрихи",
-    "Page.title.careerEvent": "События карьеры",
+    "Page.title.careerEvent": "Cобытие карьеры",
+    "Page.title.careerEvent1": "Первое событие карьеры",
+    "Page.title.careerEvent2": "Второе событие карьеры",
+    "Page.title.careerEventDetails": "Детали события",
+    "Page.title.careerEventDetails1": "Детали первого события",
+    "Page.title.careerEventDetails2": "Детали второго события",
     "Page.title.careerLength": "Продолжительность карьеры",
     "Page.title.careerLengthDetails": "Подробности продолжительности карьеры",
     "Page.title.characterType": "Тип персонажа",
@@ -381,12 +386,6 @@
     "Page.title.finalStarshipDetails": "Заключительные штрихи звездолета",
     "Page.title.finish": "Заключительные штрихи",
     "Page.title.home": "Домашняя",
-    "Page.title.careerEvent": "Cобытие карьеры",
-    "Page.title.careerEvent1": "Первое событие карьеры",
-    "Page.title.careerEvent2": "Второе событие карьеры",
-    "Page.title.careerEventDetails": "Детали события",
-    "Page.title.careerEventDetails1": "Детали первого события",
-    "Page.title.careerEventDetails2": "Детали второго события",
     "Page.title.soloCareerLength": "Продолжительность карьеры",
     "Page.title.soloConstructType": "Выбор инструмента",
     "Page.title.soloEarlyOutlook": "Воспитание",
@@ -464,7 +463,7 @@
 
     "CareerType.core.young.name": "Молодой офицер",
     "CareerType.core.young.description": "Персонаж обладает скорее потенциальными, чем конкретными навыками. Его пока неразвитые способности и представления о Вселенной не прошли испытания реальностью.",
-    "CareerType.core.young.description": "ПИ получает Ценность, которая должна\nотражать его неопытность и наивность.",
+    "CareerType.core.young.valueInstruction": "ПИ получает Ценность, которая должна\nотражать его неопытность и наивность.",
 
     "CareerType.core.experienced.name": "Опытный офицер",
     "CareerType.core.experienced.description": "Персонаж уже несколько лет служит в Звёздном флоте и делает многообещающую карьеру. По правилам все персонажи, создаваемые случайным образом, - опытные офицеры.",
@@ -1104,7 +1103,7 @@
 
     "Talent.juryRig": "Быстрый ремонт",
 
-    "": "При выполнении Ремонта с применением Инженерии снизьте сложность Задачи на 2. При этом такой Ремонт временный и его эффект длится одну сцену + ещё одну сцену за каждый сброшенный жетон Импульса (Повторное применение). Любое устройство ремонтируется так только раз, и сложность его следующего Ремонта возрастает на 1.",
+    "Talent.juryRig.description": "При выполнении Ремонта с применением Инженерии снизьте сложность Задачи на 2. При этом такой Ремонт временный и его эффект длится одну сцену + ещё одну сцену за каждый сброшенный жетон Импульса (Повторное применение). Любое устройство ремонтируется так только раз, и сложность его следующего Ремонта возрастает на 1.",
 
     "Talent.kolinahr": "Колинар",
 

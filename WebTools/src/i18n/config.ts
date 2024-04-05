@@ -51,6 +51,7 @@ export const supportedLanguages = {
     'es': 'Español',
     'de': 'Deutsch',
     'fr': 'Français',
+    'pt-BR': 'Português (Brasileiro)',
     'ru': 'Русский'
 };
 const supportedLanguagesCodes = Object.keys(supportedLanguages);

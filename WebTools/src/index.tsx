@@ -21,6 +21,10 @@ const SectorContainerPage = React.lazy(async () => {
     await PageFactory.instance.loadSystemGenerationFactory();
     return import(/* webpackChunkName: 'sector' */ './mapping/page/sectorContainerPage');
 });
+const StarSystemDetailsPage = React.lazy(async () => {
+    await PageFactory.instance.loadSystemGenerationFactory();
+    return import(/* webpackChunkName: 'sector' */ './mapping/page/starSystemDetailsPage');
+});
 const TableListPage = React.lazy(() => import(/* webpackChunkName: 'table' */ './table/page/tableListPage'));
 const ViewTablePage = React.lazy(() => import(/* webpackChunkName: 'table' */ './table/page/viewTablePage'));
 const EditTablePage = React.lazy(() => import(/* webpackChunkName: 'table' */ './table/page/editTablePage'));
@@ -38,7 +42,7 @@ root.render(
                     <Route path="/credits" element={<CreditsPage />} />
                     <Route path="/systemGenerator" element={<SectorContainerPage activePage={PageIdentity.SystemGeneration} />} />
                     <Route path="/sectorDetails" element={<SectorContainerPage activePage={PageIdentity.SectorDetails} />} />
-                    <Route path="/starSystemDetails" element={<SectorContainerPage activePage={PageIdentity.StarSystemDetails} />} />
+                    <Route path="/starSystemDetails" element={<StarSystemDetailsPage />} />
                     <Route path="/token" element={<TokenCreationPage />} />
                     <Route path="/table/list" element={<TableListPage />} />
                     <Route path="/table/view" element={<ViewTablePage />} />

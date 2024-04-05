@@ -495,6 +495,11 @@
 
     "Page.title.attributesAndDisciplines": "Finishing Touches",
     "Page.title.careerEvent": "Career Event",
+    "Page.title.careerEvent1": "Career Event 1",
+    "Page.title.careerEvent2": "Career Event 2",
+    "Page.title.careerEventDetails": "Career Event Details",
+    "Page.title.careerEventDetails1": "Career Event Details 1",
+    "Page.title.careerEventDetails2": "Career Event Details 2",
     "Page.title.careerLength": "Career Length",
     "Page.title.careerLengthDetails": "Career Length Details",
     "Page.title.characterType": "Character Type",
@@ -517,12 +522,6 @@
     "Page.title.sectorDetails": "Sector Details",
     "Page.title.simpleStarship": "Simplified Starship Creation",
     "Page.title.smallCraftStats": "Small Craft Stats",
-    "Page.title.careerEvent": "Career Event",
-    "Page.title.careerEvent1": "Career Event 1",
-    "Page.title.careerEvent2": "Career Event 2",
-    "Page.title.careerEventDetails": "Career Event Details",
-    "Page.title.careerEventDetails1": "Career Event Details 1",
-    "Page.title.careerEventDetails2": "Career Event Details 2",
     "Page.title.soloCareerLength": "Career Length",
     "Page.title.soloConstructType": "Tool Selection",
     "Page.title.soloEarlyOutlook": "Early Outlook",
@@ -769,7 +768,7 @@
 
     "CareerType.core.young.name": "Young Officer",
     "CareerType.core.young.description": "The character is defined by their potential more than their skill. Their raw talent and their expectations of what the universe is like have not yet been tempered by reality.",
-    "CareerType.core.young.description": "The character receives a Value, which must reflect the character’s inexperience and naivete in some way.",
+    "CareerType.core.young.valueInstruction": "The character receives a Value, which must reflect the character’s inexperience and naivete in some way.",
 
     "CareerType.core.experienced.name": "Experienced Officer",
     "CareerType.core.experienced.description": "The character has several years of experience in service of Starfleet, and is enjoying a promising career.",
@@ -1925,7 +1924,7 @@
 
     "Talent.juryRig": "Jury-rig",
 
-    "": "Whenever you attempt an Engineering Task to perform repairs, you may reduce the Difficulty by two, to a minimum of 0. If you do this, however, then the repairs are only temporary and will last only a single scene, plus one additional scene per Momentum spent (Repeatable) before they fail again. Jury-rigged repairs can only be applied once, and the Difficulty to repair a device that has been Jury-rigged increases by 1.",
+    "Talent.juryRig.description": "Whenever you attempt an Engineering Task to perform repairs, you may reduce the Difficulty by two, to a minimum of 0. If you do this, however, then the repairs are only temporary and will last only a single scene, plus one additional scene per Momentum spent (Repeatable) before they fail again. Jury-rigged repairs can only be applied once, and the Difficulty to repair a device that has been Jury-rigged increases by 1.",
 
     "Talent.kolinahr": "Kolinahr",
 

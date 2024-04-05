@@ -3,6 +3,7 @@ import i18next from "i18next";
 import { AtmosphereDetails } from "./atmosphereTable";
 import { WorldClass, WorldClassModel } from "./worldClass";
 import { WorldAttribute } from "./worldAttribute";
+import { PlanetaryFeature } from "./planetaryFeature";
 
 const ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
 
@@ -275,7 +276,7 @@ export class World {
     coreType?: WorldCoreType;
     gravity?: number;
     notes: string[] = [];
-    features: string[] = [];
+    features: (string|PlanetaryFeature)[] = [];
 
     get isSatellite() {
         return this.satelliteOrbit != null;
@@ -383,7 +384,8 @@ export class World {
         }
 
         if (this.features?.length) {
-            result.push(new WorldAttribute(i18next.t("World.attribute.features"), this.features.join(", ")));
+            let features = this.features.map(f => (typeof(f) === "string" || f instanceof String) ? f : f.localizedDescription).join(", ");
+            result.push(new WorldAttribute(i18next.t("World.attribute.features"), features));
         }
         return result;
     }

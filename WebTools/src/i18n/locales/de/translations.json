@@ -423,6 +423,11 @@
 
     "Page.title.attributesAndDisciplines": "Feinschliff",
     "Page.title.careerEvent": "Karriereereignis",
+    "Page.title.careerEvent1": "Karriereereignis 1",
+    "Page.title.careerEvent2": "Karriereereignis 2",
+    "Page.title.careerEventDetails": "Karriereereignisdetails",
+    "Page.title.careerEventDetails1": "Karriereereignisdetails 1",
+    "Page.title.careerEventDetails2": "Karriereereignisdetails 2",
     "Page.title.careerLength": "Karrierelänge",
     "Page.title.careerLengthDetails": "Details zur Karrierelänge",
     "Page.title.characterType": "Art des Charakters",
@@ -445,12 +450,6 @@
     "Page.title.sectorDetails": "Sektordetails",
     "Page.title.simpleStarship": "Vereinfachte Raumschifferschaffung",
     "Page.title.smallCraftStats": "Shuttle-Werte",
-    "Page.title.careerEvent": "Karriereereignis",
-    "Page.title.careerEvent1": "Karriereereignis 1",
-    "Page.title.careerEvent2": "Karriereereignis 2",
-    "Page.title.careerEventDetails": "Karriereereignisdetails",
-    "Page.title.careerEventDetails1": "Karriereereignisdetails 1",
-    "Page.title.careerEventDetails2": "Karriereereignisdetails 2",
     "Page.title.soloCareerLength": "Karrierelänge",
     "Page.title.soloConstructType": "Werkzeug-Auswahl",
     "Page.title.soloEarlyOutlook": "Erziehung",
@@ -550,7 +549,7 @@
 
     "CareerType.core.young.name": "Grünschnabel",
     "CareerType.core.young.description": "Der Charakter wird durch das Potential und weniger die Fähigkeiten definiert. Das rohe Talent und die Erwartungen an das Universum müssen noch durch die Realität abgeschwächt werden.",
-    "CareerType.core.young.description": "Der Charakter erhält eine Überzeugung, welche die Unerfahrenheit und Naivität in irgendeiner Art widerspiegelt.",
+    "CareerType.core.young.valueInstruction": "Der Charakter erhält eine Überzeugung, welche die Unerfahrenheit und Naivität in irgendeiner Art widerspiegelt.",
 
     "CareerType.core.experienced.name": "Erfahrener Offizier",
     "CareerType.core.experienced.description": "Der Charakter hat mehrere Jahre Erfahrung im Dienst der Sternenflotte und freut sich auf eine vielversprechende Karriere.",

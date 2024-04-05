@@ -1,4 +1,5 @@
 import { NasoLabialFoldType } from "./nasoLabialFoldTypeEnum";
+import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
 import { Token } from "./token";
 
@@ -54,7 +55,9 @@ class NasoLabialFoldCatalog {
     }
 
     getNasoLabialFold(token: Token) {
-        if (token.nasoLabialFold === NasoLabialFoldType.Nimoy) {
+        if (SpeciesRestrictions.isRubberHeaded(token.species)) {
+            return "";
+        } else if (token.nasoLabialFold === NasoLabialFoldType.Nimoy) {
             return NimoyNasoLabial;
         } else if (token.nasoLabialFold === NasoLabialFoldType.Subtle) {
             return SubtleNasoLabial;

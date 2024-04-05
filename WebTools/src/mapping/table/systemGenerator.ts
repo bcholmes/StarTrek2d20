@@ -8,6 +8,7 @@ import { LuminosityTable } from "./luminosityTable";
 import { numberOfMoonsTable } from "./moonsAndSatellitesTable";
 import { addNoiseToValue } from "./noise";
 import { Orbit, Orbits } from "./orbit";
+import { planetaryFeaturesOfInterest } from "./planetaryFeature";
 import { isolatedColonyFeaturesOfInterest } from "./planetaryFeaturesTable";
 import { Sector, SectorCoordinates } from "./sector";
 import { LuminosityClass, LuminosityClassModel, SpectralClass, SpectralClassModel, Star, Range, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon, SpaceRegion } from "./star";
@@ -474,43 +475,6 @@ class SystemGeneration {
         18: 100000,
         19: 250000,
         20: 500000,
-    }
-
-    private planetaryFeaturesOfInterest = (roll: number) => {
-        switch (roll) {
-            case 1:
-            case 2:
-                return "Exceedingly dangerous animal or plant life";
-            case 3:
-            case 4:
-                return "Peaceful primitive inhabitants";
-            case 5:
-            case 6:
-                return "Warlike primitive inhabitants";
-            case 7:
-                return "Peaceful technological inhabitants";
-            case 8:
-            case 9:
-                return "Warlike technological inhabitants";
-            case 10:
-            case 11:
-                return "Transcendent inhabitants of great power";
-            case 12:
-            case 13:
-                return "Ancient ruins or artifacts";
-            case 14:
-            case 15:
-                return "Off-world visitors";
-            case 16:
-            case 17:
-                return "Crashed spacecraft";
-            case 18:
-                return "Local conditions that limit or prohibit transporter use";
-            case 19:
-            case 20:
-            default:
-                return "Dangerous natural phenomena";
-        }
     }
 
     private planetaryDetails = (roll: number) => {
@@ -983,8 +947,8 @@ class SystemGeneration {
                 let feature = isolatedColonyFeaturesOfInterest();
                 world.features.push(feature.localizedDescription);
             } else {
-                world.features.push(this.planetaryFeaturesOfInterest(D20.roll()));
-                let feature2 = this.planetaryFeaturesOfInterest(D20.roll());
+                world.features.push(planetaryFeaturesOfInterest().localizedDescription);
+                let feature2 = planetaryFeaturesOfInterest().localizedDescription;
                 if (world.features.indexOf(feature2) < 0) {
                     world.features.push(feature2);
                 }

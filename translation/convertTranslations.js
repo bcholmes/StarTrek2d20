@@ -13,6 +13,10 @@ const convertDataToTranslations = async (data) => {
     for (let i = 0; i < languages.length; i++) {
         console.log(i + " " + languages[i]);
 
+        const name = directory + '/WebTools/src/i18n/locales/' + languages[i] + '/translations.json';
+        if (!fs.existsSync(name) && !fs.existsSync(directory + '/WebTools/src/i18n/locales/' + languages[i])) {
+            fs.mkdirSync(directory + '/WebTools/src/i18n/locales/' + languages[i]);
+        }
         let stream = await fs.createWriteStream(directory + '/WebTools/src/i18n/locales/' + languages[i] + '/translations.json');
         stream.write("{");
 

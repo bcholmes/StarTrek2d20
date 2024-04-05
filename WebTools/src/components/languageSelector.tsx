@@ -21,7 +21,7 @@ const LanguageSelector: React.FC = () => {
     return hostname !== "localhost"
         ? undefined
         : (
-            <select value={selectedLanguage} onChange={handleLanguageChange} style={style}>
+            <select value={selectedLanguage} onChange={handleLanguageChange} style={style} className="ms-2">
                 {Object.keys(supportedLanguages).map((key) => (
                     <option key={key} value={key}>{supportedLanguages[key]}</option>
                 ))}
