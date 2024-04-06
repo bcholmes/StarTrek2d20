@@ -11,6 +11,7 @@ At the moment, the code supports the following languages:
 3. German
 4. Spanish
 5. Russian
+6. Portuguese (Brazilian)
 
 I'm not averse to adding other languages; I'm just trying to make the best effort vs. benefit decision possible.
 If you really think we should have another language included (and, especially, if you're willing to help out
