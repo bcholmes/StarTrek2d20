@@ -1797,7 +1797,8 @@
 
     "Talent.deluxeGalley.soloDescription": "O refeitório da nave é equipado com sistemas de preparação de alimentos de primeira linha, além de vastos estoques de alimentos não replicados.",
 
-    "Talent.demolitionist": "Você é hábil na fabricação, instalação e desativação de dispositivos explosivos. Sempre que você tentar uma tarefa de Engenharia para criar, instalar ou desativar um dispositivo explosivo, ou sempre que fizer um ataque com uma arma com a qualidade de arma Granada, o primeiro d20 que você comprar será gratuito. Além disso, você pode ignorar a primeira complicação em uma Tarefa de Engenharia envolvendo explosivos uma vez por cena.",
+    "Talent.demolitionist.description": "Você é hábil na fabricação, instalação e desativação de dispositivos explosivos. Sempre que você tentar uma tarefa de Engenharia para criar, instalar ou desativar um dispositivo explosivo, ou sempre que fizer um ataque com uma arma com a qualidade de arma Granada, o primeiro d20 que você comprar será gratuito. Além disso, você pode ignorar a primeira complicação em uma Tarefa de Engenharia envolvendo explosivos uma vez por cena.",
+
     "Talent.diplomaticSuites": "Suítes Diplomáticas",
 
     "Talent.diplomaticSuites.soloDescription": "A nave têm numerosos aposentos de alta qualidade para abrigar VIPs, assim como salas de instrução e outras instalações para permitir que atue como terreno neutro para reuniões diplomáticas, negociações de comércio e funções similares.",

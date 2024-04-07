@@ -1797,7 +1797,10 @@
 
     "Talent.deluxeGalley.soloDescription": "The ship’s mess hall is equipped with top-of-the- line food preparation systems as well as vast stores of non-replicated food.",
 
-    "Talent.demolitionist": "You are skilled in making, setting, and defusing explosive devices. Whenever you attempt an Engineering task to create, set, or to defuse an explosive device or whenever you make an attack with a weapon with the Grenade weapon quality, the first d20 you purchase is free. In addition, you can ignore the first complication on an Engineering task involving explosives once per scene.",
+    "Talent.demolitionist": "Demolitionist",
+
+    "Talent.demolitionist.description": "You are skilled in making, setting, and defusing explosive devices. Whenever you attempt an Engineering task to create, set, or to defuse an explosive device or whenever you make an attack with a weapon with the Grenade weapon quality, the first d20 you purchase is free. In addition, you can ignore the first complication on an Engineering task involving explosives once per scene.",
+
     "Talent.diplomaticSuites": "Diplomatic Suites",
 
     "Talent.diplomaticSuites.soloDescription": "The ship has numerous high-quality staterooms for hosting VIPs, as well as briefing rooms and other facilities that allow the ship to serve as a neutral ground for diplomatic summits, trade negotiations, and similar functions.",
