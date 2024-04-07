@@ -1,4 +1,5 @@
 import { SimpleColor } from "../../common/colour";
+import { SpectralClass, SpectralClassModel } from "./spectralClass";
 
 export enum SpaceRegion {
     AlphaQuadrant,
@@ -122,22 +123,6 @@ let regions = [
     new SpaceRegionModel(SpaceRegion.ShackletonExpanse, "Shackleton Expanse", "SE"),
 ];
 
-export enum SpectralClass {
-    M,
-    K,
-    G,
-    F,
-
-    A,
-    B,
-    O,
-    L,
-    Y,
-    T,
-    WhiteDwarf,
-    BrownDwarf,
-}
-
 
 /**
  * Symbol    Class of Star                  Example
@@ -172,57 +157,6 @@ export class LuminosityClassModel {
     }
 }
 
-
-export class Range {
-    public from?: number;
-    public to?: number;
-
-    constructor(from?: number, to?: number) {
-        this.from = from;
-        this.to = to;
-    }
-
-    get midpoint() {
-        if (this.to == null && this.from == null) {
-            return 0;
-        } else if (this.to == null) {
-            return this.from;
-        } else if (this.from == null) {
-            return this.to / 2;
-        } else {
-            return (this.to + this.from) / 2;
-        }
-    }
-}
-
-export class SpectralClassModel {
-
-    public id: SpectralClass;
-    public description: string;
-    public colourDescription: string;
-    public colour: SimpleColor;
-    public radius: Range;
-
-    constructor(id: SpectralClass, description: string, temperature: Range, colourDescription: string, colour: SimpleColor, radius: Range) {
-        this.id = id;
-        this.description = description;
-        this.colourDescription = colourDescription;
-        this.colour = colour;
-        this.radius = radius;
-    }
-
-    get isDwarf() {
-        return (this.id === SpectralClass.WhiteDwarf || this.id === SpectralClass.BrownDwarf) ||
-            this.id === SpectralClass.L || this.id === SpectralClass.Y || this.id === SpectralClass.T;
-    }
-
-    isHot() {
-        return this.id === SpectralClass.F || this.id === SpectralClass.A || this.id === SpectralClass.B || this.id === SpectralClass.O;
-    }
-    isCool() {
-        return this.id === SpectralClass.L || this.id === SpectralClass.Y || this.id === SpectralClass.T;
-    }
-}
 
 export class Star {
     public spectralClass: SpectralClassModel;

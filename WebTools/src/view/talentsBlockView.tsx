@@ -7,23 +7,16 @@ import replaceDiceWithArrowhead from "../common/arrowhead";
 const TalentsBlockView: React.FC<ICharacterPageProperties> = ({character}) => {
 
     const { t } = useTranslation();
-    let talents = [];
-    let names = [];
-    character.talents.forEach(talent => {
-        if (names.indexOf(talent.talent) < 0) {
-            names.push(talent.talent);
-            talents.push(TalentsHelper.getTalent(talent.talent));
-        }
-    })
-
-    if (character?.getTalentNameList()?.length) {
+    if (character?.getDistinctTalentNameList()?.length) {
         return (<>
             <Header level={2} className="mt-4">{t('Construct.other.talents')}</Header>
-            {talents.map((t, i) =>
-                (<div className="text-white view-border-bottom py-2" key={'talent-' + i}>
+            {character?.getDistinctTalentNameList().map((tName, i) => {
+                let t = TalentsHelper.getTalent(tName);
+                return (<div className="text-white view-border-bottom py-2" key={'talent-' + i}>
                     <strong>{t.localizedDisplayName + (t.maxRank > 1 ? " [x" + character.getRankForTalent(t.name) + "]" : "")}:</strong> {' '}
                     {replaceDiceWithArrowhead(t.localizedDescription)}
-                </div>))}
+                </div>)
+            })}
         </>);
     } else {
         return undefined;

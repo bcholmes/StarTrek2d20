@@ -1020,7 +1020,7 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         let textBlock = new TextBlock();
         textBlock.text = text;
         const textWidth = fontSpec.font.widthOfTextAtSize(text, fontSpec.size);
-        const textHeight = fontSpec.font.heightAtSize(fontSpec.size);
+        const textHeight = (fontSpec.font.heightAtSize(fontSpec.size, { descender: false }) + fontSpec.font.heightAtSize(fontSpec.size)) / 2;
         textBlock.height = textHeight;
         textBlock.width = textWidth;
         textBlock.font = fontSpec.font;

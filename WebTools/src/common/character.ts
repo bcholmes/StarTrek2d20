@@ -693,7 +693,7 @@ export class Character extends Construct {
     }
 
     /* returns the "official" name of the talent */
-    getDistinctTalentNameList() {
+    getDistinctTalentNameList(): string[] {
         let result = [];
         this.talents.forEach(t => {
             if (result.indexOf(t.talent) < 0) {
@@ -859,8 +859,8 @@ export class Character extends Construct {
             traits.push(this.speciesStep.customSpeciesName);
         } else if (this.speciesStep) {
             let species = SpeciesHelper.getSpeciesByType(this.speciesStep?.species);
-            if (species && traits.indexOf(species.name) < 0) {
-                traits.push(species.name);
+            if (species && traits.indexOf(species.name) < 0 && traits.indexOf(species.localizedName) < 0) {
+                traits.push(species.localizedName);
             }
         }
         if (this.enlisted) {
@@ -926,9 +926,15 @@ export class Character extends Construct {
                 this.speciesStep.talent = selectedTalent;
             } else if (this.upbringingStep != null && this.upbringingStep.talent == null) {
                 this.upbringingStep.talent = selectedTalent;
-            } else if (this.educationStep != null && this.educationStep.talent == null) {
+            } else if (this.educationStep?.talent == null) {
+                if (this.educationStep == null) {
+                    this.educationStep = new EducationStep();
+                }
                 this.educationStep.talent = selectedTalent;
-            } else if (this.careerStep != null && this.careerStep.talent == null) {
+            } else if (this.careerStep?.talent == null) {
+                if (this.careerStep == null) {
+                    this.careerStep = new CareerStep();
+                }
                 this.careerStep.talent = selectedTalent;
             } else if (this.finishingStep?.talent == null && this.type === CharacterType.KlingonWarrior) {
                 if (this.finishingStep == null) {
@@ -1028,9 +1034,15 @@ export class Character extends Construct {
         } else {
             if (this.environmentStep != null && this.environmentStep?.value == null) {
                 this.environmentStep.value = value;
-            } else if (this.educationStep != null && this.educationStep?.value == null) {
+            } else if (this.educationStep?.value == null) {
+                if (this.educationStep == null) {
+                    this.educationStep = new EducationStep();
+                }
                 this.educationStep.value = value;
-            } else if (this.careerStep != null && this.careerStep.value == null) {
+            } else if (this.careerStep?.value == null) {
+                if (this.careerStep == null) {
+                    this.careerStep = new CareerStep();
+                }
                 this.careerStep.value = value;
             } else if (this.finishingStep?.value == null) {
                 if (this.finishingStep == null) {

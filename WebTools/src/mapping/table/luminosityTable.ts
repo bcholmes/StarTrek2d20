@@ -1,5 +1,6 @@
 import { addNoiseToValue } from "./noise";
-import { LuminosityClass, SpectralClass, Star } from "./star";
+import { SpectralClass } from "./spectralClass";
+import { LuminosityClass, Star } from "./star";
 
 class LuminosityCrossReference {
     spectralClass: SpectralClass

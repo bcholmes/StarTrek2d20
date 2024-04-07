@@ -1,4 +1,3 @@
-import { SimpleColor } from "../../common/colour";
 import { D20, D6 } from "../../common/die";
 import { setSector, setStar } from "../../state/starActions";
 import store from "../../state/store";
@@ -11,7 +10,8 @@ import { Orbit, Orbits } from "./orbit";
 import { planetaryFeaturesOfInterest } from "./planetaryFeature";
 import { isolatedColonyFeaturesOfInterest } from "./planetaryFeaturesTable";
 import { Sector, SectorCoordinates } from "./sector";
-import { LuminosityClass, LuminosityClassModel, SpectralClass, SpectralClassModel, Star, Range, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon, SpaceRegion } from "./star";
+import { SpectralClass, SpectralClassModel, SpectralClassRegistry } from "./spectralClass";
+import { LuminosityClass, LuminosityClassModel, Star, SpaceRegionModel, SpecialSectors, NotableSpatialPhenomenonModel, NotableSpatialPhenomenon, SpaceRegion } from "./star";
 import { CompanionType, StarSystem } from "./starSystem";
 import { AsteroidBeltDetails, GasGiantDetails, StandardWorldDetails, World, WorldCoreType } from "./world";
 import { WorldClassModel, WorldClass, worldClasses } from "./worldClass";
@@ -44,63 +44,48 @@ class GeneralPlanetaryType {
 
 class SystemGeneration {
 
-    private spectralClasses: SpectralClassModel[] = [
-        new SpectralClassModel(SpectralClass.M, "M", new Range(2400, 3700), "Red", SimpleColor.from("#f40b10"), new Range(null, 0.7)),
-        new SpectralClassModel(SpectralClass.K, "K", new Range(3700, 5200), "Orange", SimpleColor.from("#F89B24"), new Range(0.7, 0.96)),
-        new SpectralClassModel(SpectralClass.G, "G", new Range(5200, 6000), "Yellow", SimpleColor.from("#FFCC66"), new Range(0.96, 1.15)),
-        new SpectralClassModel(SpectralClass.F, "F", new Range(6000, 7500), "Yellow white", SimpleColor.from("#ffefcf"), new Range(1.15, 1.4)),
-        new SpectralClassModel(SpectralClass.A, "A", new Range(7500, 10000), "White", SimpleColor.from("#fbf8ff"), new Range(1.4, 1.8)),
-        new SpectralClassModel(SpectralClass.B, "B", new Range(10000, 30000), "Blue white", SimpleColor.from("#bbccff"), new Range(1.8, 6.6)),
-        new SpectralClassModel(SpectralClass.L, "L", new Range(1300, 2400), "Red brown", SimpleColor.from("#a52a2a"), new Range(0.08, 0.15)),
-        new SpectralClassModel(SpectralClass.Y, "Y", new Range(500, 1300), "Brown", SimpleColor.from("#964b00"), new Range(0.08, 0.14)),
-        new SpectralClassModel(SpectralClass.T, "T", new Range(undefined, 500), "Dark brown", SimpleColor.from("#663300"), new Range(0.08, 0.14)),
-        new SpectralClassModel(SpectralClass.WhiteDwarf, "White Dwarf", new Range(2400, 3700), "White", SimpleColor.from("#fbf8ff"), new Range(0.08, 0.14)),
-        new SpectralClassModel(SpectralClass.BrownDwarf, "Brown Dwarf", new Range(2400, 3700), "Brown", SimpleColor.from("#964b00"), new Range(0.08, 0.14)),
-    ];
-
-
     private spectralClassTable: { [roll: number]: SpectralClassModel } = {
-        1: this.spectralClasses[0],
-        2: this.spectralClasses[0],
-        3: this.spectralClasses[0],
-        4: this.spectralClasses[0],
-        5: this.spectralClasses[0],
-        6: this.spectralClasses[0],
-        7: this.spectralClasses[0],
-        8: this.spectralClasses[0],
-        9: this.spectralClasses[0],
-        10: this.spectralClasses[0],
-        11: this.spectralClasses[0],
-        12: this.spectralClasses[0],
-        13: this.spectralClasses[1],
-        14: this.spectralClasses[1],
-        15: this.spectralClasses[1],
-        16: this.spectralClasses[1],
-        17: this.spectralClasses[2],
-        18: this.spectralClasses[2],
-        19: this.spectralClasses[3],
+        1: SpectralClassRegistry.instance.classes[0],
+        2: SpectralClassRegistry.instance.classes[0],
+        3: SpectralClassRegistry.instance.classes[0],
+        4: SpectralClassRegistry.instance.classes[0],
+        5: SpectralClassRegistry.instance.classes[0],
+        6: SpectralClassRegistry.instance.classes[0],
+        7: SpectralClassRegistry.instance.classes[0],
+        8: SpectralClassRegistry.instance.classes[0],
+        9: SpectralClassRegistry.instance.classes[0],
+        10: SpectralClassRegistry.instance.classes[0],
+        11: SpectralClassRegistry.instance.classes[0],
+        12: SpectralClassRegistry.instance.classes[0],
+        13: SpectralClassRegistry.instance.classes[1],
+        14: SpectralClassRegistry.instance.classes[1],
+        15: SpectralClassRegistry.instance.classes[1],
+        16: SpectralClassRegistry.instance.classes[1],
+        17: SpectralClassRegistry.instance.classes[2],
+        18: SpectralClassRegistry.instance.classes[2],
+        19: SpectralClassRegistry.instance.classes[3],
     }
 
     private specialSpectraTable: { [roll: number]: SpectralClassModel[] } = {
-        1: [this.spectralClasses[4] ],
-        2: [this.spectralClasses[4] ],
-        3: [this.spectralClasses[4] ],
-        4: [this.spectralClasses[5] ],
-        5: [this.spectralClasses[5] ],
-        6: [this.spectralClasses[5] ],
-        7: [this.spectralClasses[6], this.spectralClasses[7], this.spectralClasses[8] ],
-        8: [this.spectralClasses[6], this.spectralClasses[7], this.spectralClasses[8] ],
-        9: [this.spectralClasses[6], this.spectralClasses[7], this.spectralClasses[8] ],
-        10: [this.spectralClasses[6], this.spectralClasses[7], this.spectralClasses[8] ],
-        11: [this.spectralClasses[6], this.spectralClasses[7], this.spectralClasses[8] ],
-        12: [this.spectralClasses[6], this.spectralClasses[7], this.spectralClasses[8] ],
-        13: [this.spectralClasses[9] ],
-        14: [this.spectralClasses[9] ],
-        15: [this.spectralClasses[9] ],
-        16: [this.spectralClasses[10] ],
-        17: [this.spectralClasses[10] ],
-        18: [this.spectralClasses[10] ],
-        19: [this.spectralClasses[10] ],
+        1: [SpectralClassRegistry.instance.classes[4] ],
+        2: [SpectralClassRegistry.instance.classes[4] ],
+        3: [SpectralClassRegistry.instance.classes[4] ],
+        4: [SpectralClassRegistry.instance.classes[5] ],
+        5: [SpectralClassRegistry.instance.classes[5] ],
+        6: [SpectralClassRegistry.instance.classes[5] ],
+        7: [SpectralClassRegistry.instance.classes[6], SpectralClassRegistry.instance.classes[7], SpectralClassRegistry.instance.classes[8] ],
+        8: [SpectralClassRegistry.instance.classes[6], SpectralClassRegistry.instance.classes[7], SpectralClassRegistry.instance.classes[8] ],
+        9: [SpectralClassRegistry.instance.classes[6], SpectralClassRegistry.instance.classes[7], SpectralClassRegistry.instance.classes[8] ],
+        10: [SpectralClassRegistry.instance.classes[6], SpectralClassRegistry.instance.classes[7], SpectralClassRegistry.instance.classes[8] ],
+        11: [SpectralClassRegistry.instance.classes[6], SpectralClassRegistry.instance.classes[7], SpectralClassRegistry.instance.classes[8] ],
+        12: [SpectralClassRegistry.instance.classes[6], SpectralClassRegistry.instance.classes[7], SpectralClassRegistry.instance.classes[8] ],
+        13: [SpectralClassRegistry.instance.classes[9] ],
+        14: [SpectralClassRegistry.instance.classes[9] ],
+        15: [SpectralClassRegistry.instance.classes[9] ],
+        16: [SpectralClassRegistry.instance.classes[10] ],
+        17: [SpectralClassRegistry.instance.classes[10] ],
+        18: [SpectralClassRegistry.instance.classes[10] ],
+        19: [SpectralClassRegistry.instance.classes[10] ],
     };
 
     private luminosityTable: LuminosityClassModel[] = [

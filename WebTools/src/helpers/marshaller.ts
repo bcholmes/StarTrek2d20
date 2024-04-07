@@ -662,7 +662,6 @@ class Marshaller {
     }
 
     decodeCharacter(json: any) {
-
         let result = new Character();
         if (json["stereotype"] === "npc") {
             result.stereotype = Stereotype.Npc;
@@ -815,13 +814,21 @@ class Marshaller {
             let temp = json.career;
             if (typeof temp === 'string') {
                 let career = CareersHelper.instance.getCareerByTypeName(temp, result.type);
-                result.careerStep = new CareerStep(career.id);
+                if (result.careerStep != null) {
+                    result.careerStep.career = career.id;
+                } else {
+                    result.careerStep = new CareerStep(career.id);
+                }
             } else {
                 let length = temp.length;
                 if (length != null) {
                     let career = CareersHelper.instance.getCareerByTypeName(temp, result.type);
-                    result.careerStep = new CareerStep(career?.id);
-                } else {
+                    if (result.careerStep != null) {
+                        result.careerStep.career = career.id;
+                    } else {
+                        result.careerStep = new CareerStep(career.id);
+                    }
+                } else if (result.careerStep == null) {
                     result.careerStep = new CareerStep();
                 }
 
