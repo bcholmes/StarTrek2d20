@@ -10,12 +10,18 @@
     "Lcars.news": "Neuigkeiten",
     "Lcars.profile": "Bogen",
 
+    "EditTablePage.header.createTable": "Tabelle erstellen",
+    "EditTablePage.header.modifyTable": "Tabelle bearbeiten",
+
     "EraSelectionPage.eraInstruction": "Wählen Sie aus, in welcher Ära gespielt wird. Fragen Sie, wenn nötig, Ihre Spielleitung, welche Ära Sie wählen sollen.",
 
+    "Home.title": "STA Charakterersteller",
     "Home.selection": "Werkzeug auswählen.",
     "Home.characterButton": "Charaktere & Raumschiffe",
     "Home.talentsButton": "Talente im Überblick",
     "Home.tokenCreator": "Token",
+
+    "Lcars.noHistory": "Kein Verlauf",
 
     "NpcConfigurationPage.option.anyMajorSpecies": "Jede bedeutende Spezies",
     "NpcConfigurationPage.option.anySpecialization": "Jede Spezialisierung",
@@ -29,6 +35,8 @@
     "SourceSelectionPage.sourceNote": "Einige Quellen sind noch nicht verfügbar - schauen Sie bald wieder vorbei!",
     "SourceSelectionPage.standardGameType": "Standard Rollenspielregeln",
     "SourceSelectionPage.soloGameType": "Solo Rollenspiel mit den Captain's Log Regeln",
+
+    "ShareTableModal.instruction": "Beachtet Urheberrechte. Teilt bitte nur eure eigenen, selbst-erstellten Tabellen.",
 
     "TokenCreator.option.rounded": "Abgerundet",
     "TokenCreator.option.bordered": "Eingerahmt",
@@ -76,6 +84,7 @@
     "TokenCreator.section.extras": "Extras",
 
     "TokenCreator.section.extras.ears": "Ohren",
+    "TokenCreator.section.extras.face": "Gesicht",
     "TokenCreator.section.extras.forehead": "Stirn",
     "TokenCreator.section.extras.headwear": "Kopfbedeckung",
 
@@ -127,6 +136,7 @@
 
     "EarlyOutlookPage.instruction": "Die Art der Familie und der Umgebung, in der man aufwächst, kann einen massiven Einfluss haben, und ob man diesen Einfluss akzeptiert oder sich dagegen auflehnt, wird den Rest des Lebens prägen.\n\nWähle oder würfle deine Erziehung.",
 
+    "EducationPage.type.cadet": "Kadettenausbildung",
     "EducationPage.type.starfleet": "Sternenflottenakademie",
     "EducationPage.type.klingonWarrior": "Klingonische Verteidigungsstreitmacht",
     "EducationPage.type.civilian": "Zivile Berufsausbildung",
@@ -162,6 +172,8 @@
     "EnvironmentPage.child.instruction": "Unabhängig von ihrer Spezies stammen Kinder von vielen Orten auf vielen Welten. Während viele Menschen (beispielsweise) auf der Erde geboren wurden, gibt es so viele, die auf kolonisierten Welten geboren werden, auf Raumstationen oder auf Raumschiffen.",
 
     "EnvironmentPage.alliedMilitary.instruction": "Unabhängig von ihrer Spezies stammen Militär-Offiziere von vielen Orten auf vielen Welten.",
+
+    "FinalStarshipDetails.instruction": "Dein Shiff ist fast komplett. Es fehlen nur ein paar letzte Feinschliffe.",
 
     "MilestonePage.instruction": "Wählen Sie die gewünschte Änderung, die Sie mit diesem Meilenstein vornehmen möchten",
 
@@ -248,6 +260,11 @@
     "SpeciesDetails.allowEsoteric": "Esoterische Talente erlauben (Entscheidung liegt bei der Spielleitung)",
 
     "SpeciesPage.selectSpecies": "Spezies wählen",
+    "SpeciesPage.standardSpecies": "Standard-Spezies",
+    "SpeciesPage.mixedSpecies": "Gemischtspezies",
+    "SpeciesPage.customSpecies": "Eigene Spezies",
+    "SpeciesPage.primarySpecies": "Wähle primäre Spezies",
+    "SpeciesPage.secondarySpecies": "Wähle sekundäre Spezies",
     "SpeciesPage.selectMixedSpecies": "Spezies gemischter Herkunft wählen",
     "SpeciesPage.selectCustomSpecies": "Eigene Spezies wählen",
     "SpeciesPage.rollCoreSpecies": "Grundregelwerkspezies würfeln",
@@ -261,6 +278,10 @@
 
     "SpeciesPage.textNoRoll": "Zu welcher Spezies gehören Sie? Sie können auch einen Charakter von gemischter Herkunft erstellen und Boni von beiden erhalten.",
     "SpeciesPage.mixedSpeciesNote": "Wählen Sie zwei Spezies. Sie erhalten Merkmale von beiden Spezies und können auf die Talente beider Spezies zugreifen, erhalten jedoch nur die Attributsboni der primären Spezies.",
+    "SpeciesPage.selectTwoSpeciesError": "Bitte wähle eine primäre und eine sekundäre Spezies.",
+
+    "StarshipTalentSelection.instruction_one": "Bitte wähle {{count}} Talent.",
+    "StarshipTalentSelection.instruction_other": "Bitte wähle {{count}} Talente.",
 
     "StarshipToolSelection.instruction": "Wählen Sie eine Option",
     "StarshipToolSelection.standardBuild": "Standardprozess",
@@ -319,7 +340,9 @@
     "Common.button.export": "Export",
     "Common.button.exportVtt": "Für VTT exportieren",
     "Common.button.exportPdf": "Als PDF exportieren",
+    "Common.button.finish": "Abschließen",
     "Common.button.ok": "OK",
+    "Common.button.copyToClipboard": "In die Zwischenablage kopieren",
     "Common.button.add": "Hinzufügen",
     "Common.button.cancel": "Abbrechen",
     "Common.button.create": "Erschaffen",
@@ -329,6 +352,7 @@
 
     "Common.text.description": "Beschreibung",
     "Common.text.none": "Keine Auswahl",
+    "Common.text.copiedToClipboard": "In die Zwischenablage kopiert",
     "Common.text.search": "Suchen...",
     "Common.text.select": "Wähle",
     "Common.text.selectOne": "Wählen Sie eine(n/s)",
@@ -336,6 +360,7 @@
     "Common.text.total": "Insgesamt",
     "Common.text.yes": "Ja",
     "Common.text.no": "Nein",
+    "Common.text.other": "Andere",
 
     "Common.select.choose": "Wählen Sie aus ...",
 
@@ -369,6 +394,7 @@
     "Construct.other.purpose": "Zweck",
     "Construct.other.rank": "Rang",
     "Construct.other.refits": "Nachrüstungen",
+    "Construct.other.registry": "Registriernummer",
     "Construct.other.resistance": "Widerstand",
     "Construct.other.reprimands": "Verwarnungen",
     "Construct.other.reputation": "Ansehen",
@@ -388,6 +414,7 @@
     "Construct.other.training": "Ausbildung",
     "Construct.other.trait": "Merkmal",
     "Construct.other.traits": "Merkmale",
+    "Construct.other.additionalTraits": "Zusätzliche Merkmale",
     "Construct.other.upbringing": "Erziehung",
     "Construct.other.value": "Überzeugung",
     "Construct.other.values": "Überzeugungen",
@@ -466,8 +493,10 @@
     "Page.title.starshipTalentSelection": "Raumschiff-Talente",
     "Page.title.starSystemDetails": "Details zum Sternensystem",
     "Page.title.starshipToolSelection": "Auswahl der Raumschiff-Erschaffung",
+    "Page.title.starshipTraits": "Raumschiffmerkmale",
     "Page.title.supportingCharacter": "Nebencharakter",
     "Page.title.systemGeneration": "System-Erschaffung",
+    "Page.title.tableList": "Tabellenliste",
     "Page.title.talentsOverview": "Talente im Überblick",
     "Page.title.toolSelection": "Werkzeug-Auswahl",
     "Page.title.viewSheet": "Bogen anzeigen",
@@ -482,6 +511,7 @@
     "Page.title.tokenCreationPage": "Tokenerschaffung",
     "Page.title.upbringing": "Erziehung",
     "Page.title.upbringingDetails": "Erziehungsdetails",
+    "Page.title.viewTable": "Tabelle anzeigen",
 
     "Page.breadcrumb.characterCreation": "Charaktererschaffung",
     "Page.breadcrumb.starshipCreation": "Raumschifferschaffung",
@@ -657,17 +687,21 @@
     "ExtraType.smallBindi": "Kleines Bindi",
     "ExtraType.risanSymbol": "Risanisches Symbol",
     "ExtraType.inuitTattoo": "Inuit-Tattoo",
+    "ExtraType.zaraniteMask": "Zaranit-Atemmaske",
     "ExtraType.ferengiHeadFlap": "Ferengi-Kopftuch",
 
     "Focus.animalHandling": "Tierführung",
     "Focus.anthropology": "Anthropologie",
+    "Focus.astrometrics": "Astrometrie",
     "Focus.astronavigation": "Astronavigation",
     "Focus.astrophysics": "Astrophysik",
     "Focus.bureaucracy": "Bürokratie",
     "Focus.botany": "Botanik",
     "Focus.composure": "Haltung",
     "Focus.computers": "Computer",
+    "Focus.culturalStudies": "Kulturwissenschaften",
     "Focus.cybernetics": "Kybernetik",
+    "Focus.debate": "Debatte",
     "Focus.demolition": "Demolierung",
     "Focus.diplomacy": "Diplomtie",
     "Focus.disguise": "Tarnung",
@@ -678,28 +712,43 @@
     "Focus.exoTectonics": "Exotektonik",
     "Focus.extraVehicularActivity": "Außenbordeinsatz",
     "Focus.evasiveAction": "Ausweichmanöver",
+    "Focus.finances": "Finanzen",
     "Focus.genetics": "Genetik",
     "Focus.geology": "Geologie",
     "Focus.handPhasers": "Handphaser",
     "Focus.handToHandCombat": "Unbewaffneter Nahkampf",
     "Focus.helmOperation": "Steuerkontrolle",
     "Focus.history": "Geschichte",
+    "Focus.holoprogramming": "Holoprogrammierung",
     "Focus.infectiousDiseases": "Ansteckende Krankheiten",
     "Focus.infiltration": "Infiltration",
     "Focus.inspiration": "Inspiration",
     "Focus.interrogation": "Vernehmung",
     "Focus.intimidation": "Einschüchterung",
+    "Focus.law": "Gesetz",
     "Focus.linguistics": "Linguistik",
+    "Focus.manufacturing": "Herstellung",
+    "Focus.metallurgy": "Metallurgie",
+    "Focus.music": "Musik",
+    "Focus.negotiation": "Verhandlung",
+    "Focus.observation": "Überwachung",
     "Focus.persuasion": "Überzeugen",
+    "Focus.philosophy": "Philosophie",
     "Focus.physics": "Physik",
     "Focus.politics": "Politik",
+    "Focus.powerSystems": "Energiesysteme",
     "Focus.psychiatry": "Psychiatrie",
+    "Focus.psychology": "Psychologie",
     "Focus.quantumMechanics": "Quantenmechnaik",
+    "Focus.rapidAnalysis": "Schnelle Analyse",
     "Focus.shipboardTacticalSystems": "Taktische Raumschiffsysteme",
     "Focus.smallCraft": "Shuttles",
     "Focus.starshipRecognition": "Raumschiffidentifikation",
     "Focus.starfleetProtocols": "Sternenflotten-Protokoll",
+    "Focus.structuralEngineering": "Statik",
+    "Focus.subspaceCommunications": "Subspace-Kommunikation",
     "Focus.surgery": "Chirurgie",
+    "Focus.survey": "Vermessung",
     "Focus.survival": "Überlebenstraining",
     "Focus.teamDynamics": "Teamdynamik",
     "Focus.threatAnalysis": "Bedrohungsanalyse",
@@ -917,6 +966,8 @@
 
     "Species.bolian.name": "Bolianer",
 
+    "Species.bynar.name": "Bynar",
+
     "Species.caitian.name": "Caitianer",
 
     "Species.cardassian.name": "Cardassianer",
@@ -1007,8 +1058,392 @@
     "StarSystem.common.primaryStar": "Hauptstern",
     "StarSystem.common.companionStar": "Begleitstern",
 
+    "Talent.ablativeArmor": "Ablative Panzerung",
+
+    "Talent.ablativeArmor.soloDescription": "Die Hüllenpanzerung des Schiffs verfügt über zusätzliche ablative Schichten, die unter extremen Temperatureinwirkungen desintegrieren, wie zum Beispiel bei Beschuss mit einer Energiewaffe oder bei einer Torpedoexplosion. Die Energie wird dabei abgeleitet, um das Raumschiff zu schützen. Diese Panzerung wird in regelmäßigen Abständen erneuert. Der Widerstand des Schiffs erhöht sich um 2.",
+
+    "Talent.advancedSickbay": "Verbesserte Krankenstation",
+
+    "Talent.advancedSickbay.soloDescription": "Die Krankenstation des Schiffs ist hervorragend ausgestattet, und größer, als es für ein Raumschiff dieser Größe üblich ist.",
+
+    "Talent.advancedResearchFacilities": "Fortschrittliche Forschungseinrichtungen",
+
+    "Talent.advancedResearchFacilities.soloDescription": "Das Schiff ist mit zusätzlichen Laboratorien und Langzeit-Forschungseinrichtungen ausgestattet, die es der Mannschaft gestatten, Raumphänomene über eine längere Zeit hinweg zu studieren und so eine Fülle von Informationen zu sammeln.",
+
+    "Talent.advancedSensorSuites": "Verbesserte Sensoren",
+
+    "Talent.advancedSensorSuites.soloDescription": "Die Sensoren des Schiffs gehören zu den hochentwickeltsten und fortschrittlichsten, die der Flotte zur Verfügung stehen.",
+
+    "Talent.advancedShields": "Verbesserte Schilde",
+
+    "Talent.advancedShields.soloDescription": "Die Schilde des Schiffs sind hochmodern und nutzen fortschrittliche Techniken, die andere Zivilisationen noch nicht zu überwinden gelernt haben, oder die einfach nur größeren Schutz für denselben Energieverbrauch bieten.",
+
+    "Talent.advisor": "Berater",
+
+    "Talent.advisor.description": "Wenn Sie einen anderen Charakter unterstützen und dafür Ihre Kommando-Disziplin verwenden, kann der unterstützte Charakter einen W20 neu würfeln.",
+
+    "Talent.aLittleMorePower": "Etwas mehr Energie",
+
+    "Talent.aLittleMorePower.description": "Wenn Sie an Bord Ihres Schiffes erfolgreich eine Technik-Aufgabe absolvieren, können Sie einen Punkt Momentum einsetzen, um einen verbrauchten Punkt Energie wiederherzustellen.",
+
+    "Talent.backupEpsConduits": "Reserve-EPS-Leitungen",
+
+    "Talent.backupEpsConduits.soloDescription": "Die Energieleitungen des Schiffs verfügen über zusätzliche Redundanzen, die aktiviert werden können, um in Notfällen Energie leichter umzuleiten und so bei Beschädigungen des Raumschiffs Verlusten vorbeugen.",
+
+    "Talent.boldCommand": "Kühn: Kommando",
+
+    "Talent.boldCommand.description": "Immer, wenn Sie eine Aufgabe mit Kommando absolvieren und einen oder mehrere zusätzliche W20 mit Bedrohung erwerben, können Sie einen W20 neu würfeln.",
+
+    "Talent.boldConn": "Kühn: Flugkontrolle",
+
+    "Talent.boldConn.description": "Immer, wenn Sie eine Aufgabe mit Flugkontrolle absolvieren und einen oder mehrere zusätzliche W20 mit Bedrohung erwerben, können Sie einen W20 neu würfeln.",
+
+    "Talent.boldEngineering": "Kühn: Technik",
+
+    "Talent.boldEngineering.description": "Immer, wenn Sie eine Aufgabe mit Technik absolvieren und einen oder mehrere zusätzliche W20 mit Bedrohung erwerben, können Sie einen W20 neu würfeln.",
+
+    "Talent.boldMedicine": "Kühn: Medizin",
+
+    "Talent.boldMedicine.description": "Immer, wenn Sie eine Aufgabe mit Medizin absolvieren und einen oder mehrere zusätzliche W20 mit Bedrohung erwerben, können Sie einen W20 neu würfeln.",
+
+    "Talent.boldScience": "Kühn: Wissenschaft",
+
+    "Talent.boldScience.description": "Immer, wenn Sie eine Aufgabe mit Wissenschaft absolvieren und einen oder mehrere zusätzliche W20 mit Bedrohung erwerben, können Sie einen W20 neu würfeln.",
+
+    "Talent.boldSecurity": "Kühn: Sicherheit",
+
+    "Talent.boldSecurity.description": "Immer, wenn Sie eine Aufgabe mit Sicherheit absolvieren und einen oder mehrere zusätzliche W20 mit Bedrohung erwerben, können Sie einen W20 neu würfeln.",
+
+    "Talent.cautiousCommand": "Vorsichtig: Kommando",
+
+    "Talent.cautiousCommand.description": "Immer, wenn Sie eine Aufgabe mit Kommando versuchen und einen oder mehrere zusätzliche W20 mit Momentum erwerben, können Sie einen W20 neu würfeln.",
+
+    "Talent.cautiousConn": "Vorsichtig: Flugkontrolle",
+
+    "Talent.cautiousConn.description": "Immer, wenn Sie eine Aufgabe mit Flugkontrolle versuchen und einen oder mehrere zusätzliche W20 mit Momentum erwerben, können Sie einen W20 neu würfeln.",
+
+    "Talent.cautiousEngineering": "Vorsichtig: Technik",
+
+    "Talent.cautiousEngineering.description": "Immer, wenn Sie eine Aufgabe mit Technik versuchen und einen oder mehrere zusätzliche W20 mit Momentum erwerben, können Sie einen W20 neu würfeln.",
+
+    "Talent.cautiousMedicine": "Vorsichtig: Medizin",
+
+    "Talent.cautiousMedicine.description": "Immer, wenn Sie eine Aufgabe mit Medizin versuchen und einen oder mehrere zusätzliche W20 mit Momentum erwerben, können Sie einen W20 neu würfeln.",
+
+    "Talent.cautiousScience": "Vorsichtig: Wissenschaft",
+
+    "Talent.cautiousScience.description": "Immer, wenn Sie eine Aufgabe mit Wissenschaft versuchen und einen oder mehrere zusätzliche W20 mit Momentum erwerben, können Sie einen W20 neu würfeln.",
+
+    "Talent.cautiousSecurity": "Vorsichtig: Sicherheit",
+
+    "Talent.cautiousSecurity.description": "Immer, wenn Sie eine Aufgabe mit Sicherheit versuchen und einen oder mehrere zusätzliche W20 mit Momentum erwerben, können Sie einen W20 neu würfeln.",
+
+    "Talent.collaborationCommand": "Zusammenarbeit: Kommando",
+
+    "Talent.collaborationCommand.description": "Immer, wenn ein Verbündeter eine Aufgabe mit Kommando versucht, können Sie einen Punkt Sofortiges Momentum einsetzen, damit der Verbündete Ihren Wert in der besagten Disziplin einsetzen kann, sowie einen Ihrer Fokusse.",
+
+    "Talent.collaborationConn": "Zusammenarbeit: Flugkontrolle",
+
+    "Talent.collaborationConn.description": "Immer, wenn ein Verbündeter eine Aufgabe mit Flugkontrolle versucht, können Sie einen Punkt Sofortiges Momentum einsetzen, damit der Verbündete Ihren Wert in der besagten Disziplin einsetzen kann, sowie einen Ihrer Fokusse.",
+
+    "Talent.collaborationEngineering": "Zusammenarbeit: Technik",
+
+    "Talent.collaborationEngineering.description": "Immer, wenn ein Verbündeter eine Aufgabe mit Technik versucht, können Sie einen Punkt Sofortiges Momentum einsetzen, damit der Verbündete Ihren Wert in der besagten Disziplin einsetzen kann, sowie einen Ihrer Fokusse.",
+
+    "Talent.collaborationMedicine": "Zusammenarbeit: Medizin",
+
+    "Talent.collaborationMedicine.description": "Immer, wenn ein Verbündeter eine Aufgabe mit Medizin versucht, können Sie einen Punkt Sofortiges Momentum einsetzen, damit der Verbündete Ihren Wert in der besagten Disziplin einsetzen kann, sowie einen Ihrer Fokusse.",
+
+    "Talent.collaborationScience": "Zusammenarbeit: Wissenschaft",
+
+    "Talent.collaborationScience.description": "Immer, wenn ein Verbündeter eine Aufgabe mit Wissenschaft versucht, können Sie einen Punkt Sofortiges Momentum einsetzen, damit der Verbündete Ihren Wert in der besagten Disziplin einsetzen kann, sowie einen Ihrer Fokusse.",
+
+    "Talent.collaborationSecurity": "Zusammenarbeit: Sicherheit",
+
+    "Talent.collaborationSecurity.description": "Immer, wenn ein Verbündeter eine Aufgabe mit Sicherheit versucht, können Sie einen Punkt Sofortiges Momentum einsetzen, damit der Verbündete Ihren Wert in der besagten Disziplin einsetzen kann, sowie einen Ihrer Fokusse.",
+
+    "Talent.constantlyWatching": "Stets wachsam",
+
+    "Talent.constantlyWatching.description": "Wenn Sie eine Aufgabe absolvieren, um Gefahren oder versteckte Feinde zu erkennen, können Sie die Schwierigkeit der Aufgabe um 1 reduzieren.",
+
+    "Talent.captainsYacht": "Yacht des Captains",
+
+    "Talent.captainsYacht.soloDescription": "Das Raumschiff verfügt über ein einzelnes zusätzliches Unterstützungsfahrzeug. Dieses ist für gewöhnlich an einer speziell dafür ausgelegten Andockstelle unterhalb der Untertassensektion des Schiffs befestigt. Es ist größer als die meisten Shuttles und wird oft für diplomatische Missionen und wichtige Ausflüge des Kommandierenden Offiziers genutzt. In der Regel werden diese Schiffe als „Yacht des Captains“ bezeichnet.",
+
+    "Talent.closeProtection": "Bodyguard",
+
+    "Talent.closeProtection.description": "Bei einem erfolgreichen Angriff können Sie einen Punkt Momentum ausgeben, um einen einzelnen Verbündeten in Kurzer Reichweite zu beschützen. Der nächste Angriff gegen diesen Verbündeten, der vor Ihrem nächsten Zug stattfindet, hat eine um 1 erhöhte Schwierigkeit.",
+
+    "Talent.commandShip": "Kommandoschiff",
+
+    "Talent.commandShip.soloDescription": "Das Schiff verfügt über Kommando- und Kontrollsysteme, die es ihm erlauben, seine Aktivitäten während einer Krise besser mit Verbündeten zu koordinieren.",
+
+    "Talent.computerExpertise": "Computerexperte",
+
+    "Talent.computerExpertise.description": "Wenn Sie eine Aufgabe versuchen, die das Programmieren oder Studium eines Computersystems beinhaltet, können Sie Ihrem Würfelvorrat einen zusätzlichen W20 hinzufügen.",
+
+    "Talent.culturalFlexibility": "Kulturelle Anpassungsfähigkeit",
+
+    "Talent.culturalFlexibility.description": "Ihr Volk ist freundlich, geduldig und neugierig, und Sie sind ein Paradebeispiel für diese Angewohnheiten. Sie fühlen sich wohl, wenn Sie auf neue Kulturen treffen, und passen sich ungewohnten sozialen Strukturen leicht an. Wenn Sie eine Aufgabe absolvieren, um etwas über eine unvertraute Kultur zu lernen, sich korrekt zu verhalten oder wenn Sie auf Mitglieder einer solchen Kultur treffen, dann können Sie die Schwierigkeit um 1 reduzieren.",
+
+    "Talent.dauntless": "Unerschrocken",
+
+    "Talent.dauntless.description": "Wenn Sie eine Aufgabe absolvieren, um Einschüchterungen oder Drohungen zu widerstehen, können Sie Ihrem Würfelvorrat einen zusätzlichen W20 hinzufügen.",
+
+    "Talent.defuseTheTension": "Situation entschärfen",
+
+    "Talent.defuseTheTension.description": "Wenn Sie eine Aufgabe versuchen, um jemanden davon zu überzeugen, keine Gewalt anzuwenden, können Sie Ihrem Würfelvorrat einen zusätzlichen W20 hinzufügen.",
+
+    "Talent.diplomaticSuites": "Botschafterquartiere",
+
+    "Talent.diplomaticSuites.soloDescription": "Das Raumschiff verfügt über zahlreiche erstklassige Gästequartiere für wichtige Persönlichkeiten, sowie über Beratungsräume und andere Einrichtungen, die es dem Schiff erlauben, als neutraler Boden für diplomatische Gipfeltreffen, Handelsgespräche und vergleichbare Anlässe zu fungieren.",
+
+    "Talent.electronicWarfareSystems": "Systeme zur elektronischen Kriegsführung",
+
+    "Talent.electronicWarfareSystems.soloDescription": "Die Kommunikationssysteme des Schiffs wurden speziell darauf ausgelegt, in der Schlacht feindliche Kommunikation abzufangen und zu stören.",
+
+    "Talent.emergencyMedicalHologram": "Medizinisches Notfallhologramm",
+
+    "Talent.emergencyMedicalHologram.soloDescription": "Die Krankenstation des Raumschiffs ist mit Holoemittern und einem hochmodernen holografischen Doktor ausgestattet, der medizinischem Personal in Notfällen assistieren kann. Dieser Charakter kann sich zu keinem Schauplatz bewegen, der nicht mit Holoemittern ausgestattet ist.",
+
+    "Talent.empath": "Empath",
+
+    "Talent.empath.description": "Sie können die Gefühle der meisten Lebewesen in Ihrer Nähe spüren und telepathisch mit anderen Empathen und Telepathen kommunizieren, ebenso mit allen Personen, mit denen Sie eine besondere Vertrautheit verbindet. Sie können nicht einfach die Entscheidung treffen, die Emotionen von Wesen in Ihrer Nähe nicht zu spüren, es sei denn, diese besitzen eine Resistenz gegen Telepathie. Es kann Mühe und eine Aufgabe erfordern, um die Gefühle eines bestimmten Individuums aus einer Menge herauszupicken, oder die Emotionen von Wesen in Ihrer Nähe auszublenden. Die Schwierigkeit solcher Aufgaben ist erhöht, wenn die Situation besonders stressig ist, wenn sehr viele Wesen anwesend sind, das Ziel eine Resistenz gegen Telepathie besitzt, oder andere Störungen vorliegen.",
+
+    "Talent.extensiveShuttlebays": "Vergrößerter Shuttlehangar",
+
+    "Talent.extensiveShuttlebays.soloDescription": "Die Shuttlehangars des Raumschiffs sind größer als üblich, sehr gut ausgestattet und können eine hohe Zahl von aktiven Shuttlemissionen zur selben Zeit unterstützen.",
+
+    "Talent.fastTargetingSystems": "Schnellerfassungssysteme",
+
+    "Talent.fastTargetingSystems.soloDescription": "Die Zielerfassungssysteme des Schiffs erlauben es den Waffen, ein Ziel sehr viel schneller und genauer zu erfassen als andere Raumschiffe seiner Klasse, was ihm einen Vorteil in der Schlacht verschafft.",
+
+    "Talent.fieldMedicine": "Feldchirurg",
+
+    "Talent.fieldMedicine.description": "Wenn Sie eine Medizin-Aufgabe absolvieren, können Sie eine etwaige Erhöhung der Schwierigkeit aufgrund unvollständiger oder fehlender Ausrüstung ignorieren.",
+
+    "Talent.flyBy": "Vorbeiflug",
+
+    "Talent.flyBy.description": "Wenn Sie Momentum für den Einsatz Weitere Aufgabe einsetzen, erhöhen Sie nicht die Schwierigkeit der zweiten Aufgabe, wenn eine der beiden Aufgaben mit dem Steuern eines Schiffs oder Fahrzeug zu tun hat.",
+
+    "Talent.followMyLead": "Mir nach!",
+
+    "Talent.followMyLead.description": "Einmal je Szene, wenn Sie während eines Kampfes oder einer gefährlichen Situation eine Aufgabe erfolgreich absolvieren, können Sie einen Punkt Entschlossenheit einsetzen. Wenn Sie dies tun, wählen Sie einen einzelnen Verbündeten aus. Die nächste Aufgabe, die dieser Verbündete absolviert, wird automatisch durch Sie mit Ausstrahlung + Kommando unterstützt.",
+
+    "Talent.formerInitiate": "Ehemaliger Kandidat",
+
+    "Talent.formerInitiate.description": "Sie sind dem Kandidatenprogramm in der Hoffnung beigetreten, von der Symbiosekommission für eine Vereinigung ausgewählt zu werden. Da es sehr viel mehr Kandidaten als Symbionten gibt, waren Sie einer von vielen, die abgelehnt wurden, doch die Qualitäten eines gescheiterten Kandidaten sind für die Sternenflotte immer noch hoch genug, um Sie zu rekrutieren. Wann immer Sie eine Aufgabe mit Konzentration oder Verstand versuchen und Entschlossenheit ausgeben, um einen Bonus-W20 für diese Aufgabe zu kaufen, dürfen Sie Ihren Würfelpool erneut würfeln. Ehemaliger Kandidat kann nicht ausgewählt werden, wenn der Charakter das Talent Vereinigt besitzt – die beiden schließen einander aus.",
+
+    "Talent.highResolutionSensors": "Hochauflösende Sensoren",
+
+    "Talent.highResolutionSensors.soloDescription": "Die Sensoren des Schiffs können große Mengen sehr genauer Daten sammeln, sind aber extrem empfindlich.",
+
+    "Talent.highPowerTractorBeam": "Hochenergie-Traktorstrahl",
+
+    "Talent.highPowerTractorBeam.soloDescription": "Die Traktorstrahlsysteme des Schiffs kanalisieren deutlich höhere Energiemengen und können so weitaus mehr Kraft auf ihr Ziel ausüben.",
+
+    "Talent.iKnowMyShip": "Ich kenne mein Schiff",
+
+    "Talent.iKnowMyShip.description": "Wenn Sie eine Aufgabe versuchen, um die Quelle eines technischen Problems auf Ihrem Schiff zu finden, können Sie Ihrem Würfelpool einen zusätzlichen W20 hinzufügen.",
+
+    "Talent.improvedDamageControl": "Verbesserte Schadenskontrolle",
+
+    "Talent.improvedDamageControl.soloDescription": "Das Schiff hat effizientere Schadensmeldesysteme und besser ausgebildete Technikerteams, die es der Crew erlauben, während einer Krisensituation sehr viel schneller zu reagieren.",
+
+    "Talent.improvedHullIntegrity": "Erhöhte Hüllenintegrität",
+
+    "Talent.improvedHullIntegrity.soloDescription": "Die Hülle des Raumschiffs wurde verstärkt, um Belastungen und Schaden besser zu widerstehen.",
+
+    "Talent.improvedImpulseDrive": "Verbesserter Impulsantrieb",
+
+    "Talent.improvedImpulseDrive.soloDescription": "Die Impulsantriebe des Schiffs sind kraftvoller als die der meisten Raumschiffe und erlauben es ihm, sehr viel schneller zu beschleunigen.",
+
+    "Talent.improvedPowerSystems": "Verbesserte Energiesysteme",
+
+    "Talent.improvedPowerSystems.soloDescription": "Die Energiesysteme des Schiffs sind äußerst effizient und erlauben die rasche Umlenkung und Umleitung von Energie aus verschiedenen Systemen.",
+
+    "Talent.improvedReactionControlSystem": "Verbesserte Manövertriebwerke",
+
+    "Talent.improvedReactionControlSystem.soloDescription": "Die Manöverdüsen des Schiffs arbeiten mit erhöhter Präzision und erlauben es dem Raumschiff, seinen Kurs sehr viel behutsamer anzupassen.",
+
+    "Talent.improvedShieldRecharge": "Verbesserte Schildaufladung",
+
+    "Talent.improvedShieldRecharge.soloDescription": "Die Schilde des Schiffs haben redundante Kondensatoren und Emitterreihen, die es erlauben, die Schilde sehr viel effizienter wieder aufzuladen.",
+
+    "Talent.improvedWarpDrive": "Verbesserter Warpantrieb",
+
+    "Talent.improvedWarpDrive.soloDescription": "Der Warpantrieb des Schiffs ist effizienter und profitiert von verbesserter Felddynamik, besserer Kontrolle der Antimaterieflussraten, oder irgendeinem anderen Fortschritt, der es dem Raumschiff gestattet, weniger Energie während des Warpflugs zu verbrauchen.",
+
+    "Talent.incisiveScrutiny": "Gründliche Kontrolle",
+
+    "Talent.incisiveScrutiny.description": "Sie haben ein Talent dafür, Schwachstellen in Argumenten, Theorien und Maschinen zu finden, um Informationen aus ihnen zu gewinnen und daraus zu lernen, wie diese auf Druck gegen verwundbare Stellen reagieren. Wenn Ihnen eine Aufgabe gelingt, die Konzentration oder Gespür verwendet, erhalten Sie einen Punkt Bonus-Momentum, der nur für den Sofortigen Momentum-Einsatz Informationen erlangen verwendet werden darf.",
+
+    "Talent.independentPhaserSupply": "Unabhängige Phaserenergie",
+
+    "Talent.independentPhaserSupply.soloDescription": "Die Phaser des Schiffs nutzen eine unabhängige Energiequelle anstatt aus dem Energievorrat des Schiffs gespeist zu werden.",
+
+    "Talent.intenseScrutiny": "Kritischer Blick",
+
+    "Talent.intenseScrutiny.description": "Wenn Ihnen eine Aufgabe gelingt, die Verstand oder Konzentration verwendet und Teil einer Erweiterten Aufgabe ist, können Sie für jeden gewürfelten Effekt bis zu zwei Punkte Widerstand ignorieren.",
+
+    "Talent.interrogation": "Verhörspezialist",
+
+    "Talent.interrogation.description": "Wenn Sie erfolgreich eine Aufgabe absolvieren, um jemanden in einem sozialen Konflikt zu zwingen, Informationen preiszugeben, erhalten Sie einen zusätzlichen Punkt Momentum, den Sie ausschließlich für den Einsatz Informationen erlangen nutzen können.",
+
+    "Talent.inTheNickOfTime": "Perfektes Timing",
+
+    "Talent.inTheNickOfTime.description": "Wenn Sie innerhalb einer Erweiterten Aufgabe erfolgreich eine Technik- oder Wissenschafts-Aufgabe absolvieren, generieren Sie 1 Punkt Zusätzliche Arbeitsleistung pro gewürfelten Effekt.",
+
+    "Talent.joined": "Vereinigt",
+
+    "Talent.joined.description": "Sie haben einen Symbionten, mit mehreren Lebenszeiten voller Erinnerungen, auf die Sie zurückgreifen können. Einmal pro Mission dürfen Sie erklären, dass ein früherer Wirt Expertise in einer relevanten Fähigkeit oder einem Wissensgebiet hatte. Sie erhalten einen einzelnen Fokus für den Rest der Szene, während Sie auf diese Erinnerungen zurückgreifen. Außerdem erhalten Sie ein Merkmal mit dem Namen des Symbionten. Dieser steht für die Vorteile der Vereinigung, die Fähigkeit, bestimmte Riten und Rituale zur Erweckung der Erinnerungen einstiger Wirte vorzunehmen, sowie für durch die Verbindung auftretende potenzielle Nachteile. Vereinigt kann nicht ausgewählt werden, wenn der Charakter das Talent Ehemaliger Kandidat besitzt – die beiden schließen einander aus.",
+
+    "Talent.juryRig.description": "Wenn Sie eine Technik-Aufgabe versuchen, um Reparaturen durchzuführen, können Sie die Schwierigkeit der Aufgabe um 2 senken, bis zu einem Minimum von 0. Wenn Sie dies tun, sind die Reparaturen allerdings nur temporär und werden nur eine einzige Szene lang halten – plus eine weitere Szene je Punkt Momentum, den Sie dafür einsetzen. Danach versagt die entsprechende Systemkomponente wieder. Notfallüberbrückungen können immer nur einmal an derselben Stelle vorgenommen werden. Ferner steigt die Schwierigkeit einer Reparatur der betroffenen Systemkomponente nach einer Notfallüberbrückung um 1.",
+
+    "Talent.kolinahr": "Kolinahr",
+
+    "Talent.kolinahr.description": "Sie haben die rituelle Reise unternommen, die nötig ist, um alle Emotionen zu eliminieren. Sie können die Schwierigkeit aller Aufgaben, um Zwängen, psychischen Angriffen, Schmerz und anderen mentalen Angriffen zu widerstehen, um 2 reduzieren.",
+
+    "Talent.meanRightHook": "Fieser rechter Haken",
+
+    "Talent.meanRightHook.description": "Ihre unbewaffneten Nahkampfangriffe erhalten den Schadenseffekt Verheerend 1.",
+
+    "Talent.mindMeld": "Gedankenverschmelzung",
+
+    "Talent.mindMeld.description": "Sie haben das notwendige Training in den telepathischen Techniken durchlaufen, die die Verschmelzung Ihres Verstandes mit dem eines anderen Wesens durch physischen Kontakt erlauben. Dies erfordert immer eine Aufgabe mit einer Schwierigkeit von mindestens 1, gegen die unwillige Ziele mit einer Vergleichenden Aufgabe Widerstand leisten können. Bei Erfolg verbinden Sie Ihren Verstand mit dem anderen Wesen und teilen mit diesem Gedanken und Erinnerungen. Momentum kann ausgegeben werden, um weitere Informationen zu erhalten, oder für einen tiefergehenden telepathischen Austausch. Diese Verbindung geht in beide Richtungen und es handelt sich für Sie dabei um einen ermüdenden und potenziell gefährlichen Prozess. Komplikationen können zu Schmerzen führen, zu Desorientierung, zu anhaltenden emotionalen Problemen oder Verhaltensstörungen.",
+
+    "Talent.modularLaboratories": "Modulare Laboratorien",
+
+    "Talent.modularLaboratories.soloDescription": "Das Schiff verfügt über eine beträchtliche Anzahl leerer Mehrzweck-Abteile, die sich bei Bedarf in Laboratorien konvertieren lassen.",
+
+    "Talent.nervePinch": "Nervengriff",
+
+    "Talent.nervePinch.description": "Sie haben zahlreiche Techniken zur Stimulation und Kontrolle von Nervenimpulsen gelernt – in ihrer Gesamtheit Neuropressur genannt. Manche Anwendungen von Neuropressur können verwendet werden, um Angreifer rasch und nicht-tödlich auszuschalten. Der Nervengriff gilt als Nahkampfwaffe mit 1[D], Größe 1H und den Qualitäten Intensiv und Nicht-tödlich. Sie dürfen Wissenschaft oder Medizin anstelle von Sicherheit nutzen, wenn Sie mit dem Nervengriff angreifen, und dürfen den Schaden um Ihre Wissenschafts- oder Medizin-Disziplin erhöhen anstelle von Sicherheit.",
+
+    "Talent.orbExperience": "Drehkörpererfahrung",
+
+    "Talent.orbExperience.description": "Sie haben durch einen Drehkörper eine Vision von den bajoranischen Propheten empfangen. Dieses seltene Erlebnis, auch wenn es anfänglich verwirrend war, hat Ihr Leben und Ihre Sicht auf die Zukunft entscheidend geprägt. Sie erhalten eine zusätzliche Überzeugung, die die Einsichten widerspiegelt, die Sie durch dieses Erlebnis erhalten haben. Wenn diese Überzeugung zum ersten Mal hinterfragt wird, würfeln Sie 1[D]. Wenn ein Effekt geworfen wird, dann ist ein prophezeites Element der Drehkörpererfahrung eingetreten und die Überzeugung wird nicht wie gewöhnlich durchgestrichen.",
+
+    "Talent.packTactics": "Rudeltaktik",
+
+    "Talent.packTactics.description": "Wenn Sie einen anderen Charakter im Kampf unterstützen, erhält der unterstützte Charakter bei Erfolg einen zusätzlichen Punkt Momentum.",
+
+    "Talent.parentFigure": "Elternfigur",
+
+    "Talent.parentFigure.description": "Sie haben eine große Familie, mit vielen Kindern, Nichten und Neffen und haben gelernt, wie man, falls nötig, sogar die chaotischste und aufsässigste Gruppe koordiniert. Wenn Sie eine Aufgabe absolvieren oder dabei unterstützen, und zwei oder mehr Charaktere an der Aufgabe beteiligt sind, dann darf die erste Komplikation, die bei der Aufgabe erzeugt wird – entweder von dem Charakter, der die Aufgabe versucht, oder einem Unterstützer – ignoriert werden.",
+
+    "Talent.personalEffects": "Persönliche Habe",
+
+    "Talent.personalEffects.description": "Sie besitzen einen ganz besonderen und ungewöhnlichen Gegenstand – oder ein entsprechendes Gerät – welcher nicht zur Standardausrüstung der Sternenflotte gehört, aber dennoch in Missionen nützlich ist. Sie können einen Gegenstand mit Verzichtskosten von 2 oder zwei Gegenstände mit Verzichtskosten von je 1 auswählen. Keiner dieser Gegenstände darf höhere Eskalationskosten als 1 haben.",
+
+    "Talent.preciseEvasion": "Präzise Ausweichmanöver",
+
+    "Talent.preciseEvasion.description": "Immer, wenn Sie eine Ausweichmanöver-Aufgabe erfolgreich absolvieren, können Sie zwei Momentum einsetzen, um die Erhöhung der Schwierigkeit für Angriffswürfe zu vermeiden, die das Schiff normalerweise durch die Ausweichmanöver hinnehmen müsste.",
+
+    "Talent.proudAndHonorable": "Stolz und ehrenhaft",
+
+    "Talent.proudAndHonorable.description": "Ihre persönliche Integrität ist unanfechtbar, und Sie werden niemals willentlich ein einmal gemachtes Versprechen brechen. Wann immer Sie eine Aufgabe versuchen, um dem Versuch zu widerstehen, Sie dazu zu bewegen, ein Versprechen zu brechen, Verbündete zu betrügen oder anderweitig unehrenhaft zu handeln, können Sie die Schwierigkeit der Aufgabe um 1 reduzieren.",
+
+    "Talent.pushTheLimits": "Bis ans Limit",
+
+    "Talent.pushTheLimits.description": "Wenn Sie eine Flugkontroll-Aufgabe absolvieren, deren Schwierigkeit durch Umwelteinflüsse oder Schäden am Antrieb erhöht wurde, können Sie die Schwierigkeit um 1 reduzieren, bis zu einem Minimum von 1.",
+
+    "Talent.quantumTorpedoes": "Quantumtorpedos",
+
+    "Talent.quantumTorpedoes.soloDescription": "Das Raumschiff ist mit der modernsten Schiff-zu-Schiff-Munition ausgestattet: Quantentorpedos. Zusätzlich zu möglicherweise weiteren Formen von Torpedos, die das Schiff mit sich führt, verfügt es über Quantentorpedos.",
+
+    "Talent.quickToAction": "Allzeit bereit",
+
+    "Talent.quickToAction.description": "Während der ersten Runde eines Kampfes können Sie und Ihre Verbündeten die regulären Kosten zum Behalten der Initiative ignorieren.",
+
+    "Talent.rapidFireTorpedoLauncher": "Schnellfeuer-Torpedowerfer",
+
+    "Talent.rapidFireTorpedoLauncher.soloDescription": "Die Torpedowerfer des Raumschiffs wurden so konstruiert, dass sie es dem Schiff gestatten, mehrere Torpedos sehr viel schneller und genauer abzufeuern als üblich.",
+
+    "Talent.resolute": "Standhaft",
+
+    "Talent.resolute.description": "Sie sind unerschütterlich und nicht bereit, Widrigkeiten nachzugeben. Ihre maximale Anstrengung ist um 3 Punkte erhöht.",
+
+    "Talent.ruggedDesign": "Robustes Design",
+
+    "Talent.ruggedDesign.soloDescription": "Das Schiff wurde so gebaut, dass es sich für die unerforschten Weiten des Weltraums eignet, mit einer strapazierfähigen Konstruktion und einfachem Zugang zu kritischen Systemen, was Reparaturen erleichtert.",
+
+    "Talent.saucerSeparation": "Untertassenabtrennung",
+
+    "Talent.saucerSeparation.soloDescription": "Das Schiff ist so gebaut, dass die Untertassensektion von der Antriebssektion getrennt werden kann, so dass es als zwei eigenständige Raumschiffe funktioniert. Jede Sektion hat dieselben Systeme und Abteilungen, sowie Waffen. Die Untertassensektion, die die Mannschaftsquartiere und Erholungseinrichtungen enthält, ist nicht in der Lage, auf Warp zu gehen.",
+
+    "Talent.secondaryReactors": "Sekundäre Reaktoren",
+
+    "Talent.secondaryReactors.soloDescription": "Das Raumschiff verfügt über zusätzliche Impuls- und Fusionsreaktoren, die es ihm erlauben, sehr viel größere Energiemengen zu produzieren.",
+
+    "Talent.spiritOfDiscovery": "Entdeckergeist",
+
+    "Talent.spiritOfDiscovery.description": "Sie haben den Drang, das Temperament und den Mut, um ins Unbekannte aufzubrechen. Sie dürfen einen Punkt Entschlossenheit ausgeben, um drei Punkte zum Momentumvorrat hinzuzufügen. Die normalen Voraussetzungen für das Ausgeben von Entschlossenheit sind dabei immer noch gültig.",
+
+    "Talent.starshipExpert": "Raumschiff-Experte",
+
+    "Talent.starshipExpert.description": "Wenn Sie eine Flugkontroll-Aufgabe zum Identifizieren von Raumschifftypen oder zum Verständnis fremdartiger Raumschiffsysteme erfolgreich absolvieren, erhalten Sie einen zusätzlichen Punkt Momentum, der nur für die Einsätze Informationen erlangen oder Vorteil erzeugen genutzt werden kann (wobei der Vorteil sich irgendwie auf das gewonnene Wissen über das Schiff oder eine seiner Schwächen beziehen muss).",
+
+    "Talent.strongPagh": "Starkes Pagh",
+
+    "Talent.strongPagh.description": "Ihr Glaube an die Propheten ist stark und Sie verlassen sich auf ihre Hilfe, um Notlagen zu überstehen. Wann immer Sie eine Aufgabe ablegen müssen, um sich gegen Zwang oder Einschüchterung zu wehren, können Sie die Schwierigkeit dieser Aufgabe um 1 reduzieren.",
+
+    "Talent.studious": "Wissbegierig",
+
+    "Talent.studious.description": "Wenn Sie einen oder mehrere Punkte Momentum für den Einsatz Informationen erlangen einsetzen, können Sie insgesamt (nicht je eingesetztem Punkt Momentum) eine zusätzliche Frage stellen.",
+
+    "Talent.sturdy": "Unbeugsam",
+
+    "Talent.sturdy.description": "Sie verfügen über große körperliche Widerstandsfähigkeit und mentale Stärke und sind nur schwer unterzukriegen. Sie reduzieren die Kosten, um von dem Schadenseffekt Niederwerfen nicht niedergeworfen zu werden, um 1, bis zueinem Minimum von 0, und erhalten +1 Widerstand gegen alle nicht-tödlichen Angriffe.",
+
+    "Talent.supervisor": "Abteilungsleiter",
+
+    "Talent.supervisor.description": "Die Verfügbare Crew Ihres Schiffes steigt um 1. Dieser Anstieg ist kumulativ, wenn mehrere Hauptfiguren der Gruppe dieses Talent wählen. Jede Hauptfigur kann es jedoch nur einmal wählen.",
+
+    "Talent.telepath": "Telepath",
+
+    "Talent.telepath.description": "Sie können die oberflächlichen Gedanken und Gefühle der meisten Lebewesen in Ihrer Nähe spüren und telepathisch mit anderen Empathen und Telepathen kommunizieren, ebenso mit allen Personen, mit denen Sie eine besondere Vertrautheit verbindet. Oberflächliche Gedanken umfasst alles, was eine Kreatur in genau diesem Moment denkt. Sie können nicht einfach die Entscheidung treffen, die Emotionen oder oberflächlichen Gedanken von Wesen in Ihrer Nähe nicht zu spüren, es sei denn, diese besitzen eine Resistenz gegen Telepathie. Es kann Mühe und eine Aufgabe erfordern, um die Gefühle oder Gedanken eines bestimmten Individuums aus einer Menge herauszupicken, innerhalb des Verstandes eines Wesens nach bestimmten Gedanken oder Erinnerungen zu suchen, oder die Emotionen und Gedanken von Wesen in Ihrer Nähe auszublenden. Unfreiwillige Ziele können mit einer Vergleichenden Aufgabe Widerstand leisten.",
+
+    "Talent.technicalExpertise": "Technik-Experte",
+
+    "Talent.technicalExpertise.description": "Wenn Sie eine Aufgabe absolvieren, die von den Computern oder Sensoren des Schiffs unterstützt wird, können Sie einen W20 neu würfeln (dabei kann es sich auch um den Würfel des Schiffs handeln).",
+
+    "Talent.testingATheory": "Eine Theorie überprüfen",
+
+    "Talent.testingATheory.description": "Wenn Sie eine Aufgabe mit Technik oder Wissenschaft absolvieren, können Sie einen zusätzlichen W20 würfeln, sofern Sie in derselben Mission an früherer Stelle eine Aufgabe, die sich mit demselben wissenschaftlichen oder technologischen Bereich befasste, erfolgreich absolviert haben.",
+
+    "Talent.theUshaan": "Das Ushaan",
+
+    "Talent.theUshaan.description": "Sie haben Erfahrung mit dem alten Brauch der Ehrenduelle, die als das Ushaan bekannt sind, und Sie haben viel Blut auf dem Eis vergossen. Wenn Sie einen Nahkampfangriff durchführen, oder das Ziel eines solchen Angriffs sind, und Sie einen oder mehrere W20 kaufen, indem Sie Punkte zur Bedrohung hinzufügen, dürfen Sie Ihren Würfelpool für diese Aufgabe neu würfeln. Außerdem sind Sie im Besitz eines Ushaan-tor, eines rasiermesserscharfen Eisbergbau-Werkzeugs, das für diese Duelle verwendet wird.",
+
+    "Talent.tough": "Zäh",
+
+    "Talent.tough.description": "Wenn Sie eine Verletzung vermeiden, werden die Kosten um 1 reduziert. Sie zahlen jedoch mindestens 1.",
+
+    "Talent.untappedPotential": "Rohes Potential",
+
+    "Talent.untappedPotential.description": "Der Charakter ist unerfahren aber talentiert und hat eine große Zukunft in der Sternenflotte vor sich. Der Charakter kann kein Attribut über 11 und keine Disziplin über 4 haben, solange dieses Talent besessen wird (entsprechend müssen gegebenenfalls Werte am Ende der Charaktererschaffung angepasst werden). Wenn der Charakter eine Aufgabe, für die zusätzliche W20 mittels Momentum oder Bedrohung erworben wurden, erfolgreich absolviert, würfle 1[D]. Der Charakter erhält so viel Bonus-Momentum, wie das Ergebnis beträgt und erhöht die Bedrohung um 1, falls ein Effekt gewürfelt wird. Der Charakter kann keinen höheren Rang als Lieutenant (junior grade) erlangen, solange dieses Talent besessen wird.",
+
+    "Talent.veteran": "Veteran",
+
+    "Talent.veteran.description": "Der Charakter ist weise und erfahren und kann auf innere Reserven an Willenskraft und Entschlossenheit zurückgreifen. Wenn der Charakter einen Punkt Entschlossenheit ausgibt, würfle 1[D]. Falls ein Effekt gewürfelt wird, erhält der Charakter den ausgegebenen Punkt Entschlossenheit zurück. Der Charakter muss einen Rang von mindestens Lieutenant Commander haben.",
+
+    "TalentCategory.general": "Generell",
+    "TalentCategory.career": "Karriere",
+    "TalentCategory.enhancement": "Verbesserung",
+    "TalentCategory.starship": "Raumschiff",
+    "TalentCategory.starbase": "Sternenbasis",
+    "TalentCategory.esoteric": "Esoterisch",
+
+    "Track.starfleet.command": "Kommandolaufbahn",
+    "Track.starfleet.operations": "Operationslaufbahn",
+    "Track.starfleet.sciences": "Wissenschaftslaufbahn",
+
+    "UniformEra.bynar": "Bynar",
+    "UniformEra.cardassian": "Cardassianisches Militär",
     "UniformEra.civilian": "Zivilist",
     "UniformEra.dominionWar": "Dominionkrieg",
+    "UniformEra.ferengi": "Ferengi",
     "UniformEra.enterprise": "Enterprise",
     "UniformEra.jemHadar": "Jem'Hadar",
     "UniformEra.klingon": "Klingonische Rüstung",
@@ -1019,6 +1454,7 @@
     "UniformEra.originalSeriesKlingon": "Klingonen (Originalserie)",
     "UniformEra.romulan": "Romulaner",
     "UniformEra.suliban": "Suliban",
+    "UniformEra.strangeNewWorlds": "Strange New Worlds",
     "UniformEra.voyagerDS9": "Voyager/DS9",
 
     "Upbringing.starfleet.militaryOrExploration.name": "Sternenflotte",
@@ -1070,7 +1506,11 @@
 
     "Weapon.personal.disruptor.name": "Disruptorpistole",
 
+    "Weapon.personal.particleRifle.name": "Partikelgewehr",
+
     "Weapon.personal.sonaPlasmaDisruptorShotgun.name": "Son'a Plasma-Disruptor-Schrotflinte",
+
+    "Weapon.quality.accurate.name": "Präzise",
 
     "Weapon.quality.area.name": "Flächendeckend",
 
@@ -1110,6 +1550,9 @@
 
     "Weapon.quality.vicious.name": "Verheerend {{rank}}",
 
+    "World.attribute.atmosphereType": "Atmosphärentyp",
+    "World.attribute.atmosphericDensity": "Atmosphärische Dichte",
+    "World.attribute.atmosphericContaminants": "Atmosphärische Schadstoffe",
     "World.attribute.designation": "Bezeichnung",
     "World.attribute.classification": "Klasse",
     "World.attribute.notes": "Anmerkungen",
@@ -1131,6 +1574,30 @@
     "World.attribute.ring": "Ring",
     "World.attribute.beltWidth": "Durchmesser des Gürtels",
     "World.attribute.predominantSize": "Typische Größe",
+
+    "World.atmosphereType.vacuum": "Vakuum",
+    "World.atmosphereType.standardOxygenNitrogenMix": "Standard-Sauerstoff-/Stickstoff-Gemisch",
+    "World.atmosphereType.oxygenArgonMix": "Sauerstoff-/Argon-Gemisch",
+    "World.atmosphereType.hydrogenCompoundsAndReactiveGases": "Wasserstoffverbindungen und reaktive Gase",
+    "World.atmosphereType.carbonDioxide": "Kohlendioxid",
+    "World.atmosphereType.toxicChemicals": "Giftige Chemikalien",
+
+    "World.atmosphericContaminant.bacteriaOrViruses": "Gefährliche Bakterien oder Viren",
+    "World.atmosphericContaminant.unusualGases": "Ungewöhnliche Gase",
+    "World.atmosphericContaminant.highOxygen": "Hoher Sauerstoffgehalt",
+    "World.atmosphericContaminant.pollutants": "Schadstoffe",
+    "World.atmosphericContaminant.sulfurCompounds": "Schwefelverbindungen",
+    "World.atmosphericContaminant.radioactives": "Radioaktiv",
+    "World.atmosphericContaminant.lowOxygen": "Geringer Sauerstoffgehalt",
+    "World.atmosphericContaminant.acidRain": "Säureregen",
+    "World.atmosphericContaminant.corrosiveGases": "Korrosive Gase",
+    "World.atmosphericContaminant.irritantPollens": "Reizende Pollen",
+
+    "World.atmosphericDensity.veryThin": "Sehr dünn",
+    "World.atmosphericDensity.thin": "Dünn",
+    "World.atmosphericDensity.standard": "Standard",
+    "World.atmosphericDensity.dense": "Dichte",
+    "World.atmosphericDensity.veryDense": "Sehr dicht",
 
     "World.class.description": "Klasse {{class}}",
     "World.class.fullDescription": "Klasse {{class}} ({{definition}})"
