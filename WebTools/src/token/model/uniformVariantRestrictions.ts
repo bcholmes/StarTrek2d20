@@ -23,7 +23,7 @@ export default class UniformVariantRestrictions {
                 result.push(UniformVariantType.Variant1); // Klingon sash
             }
         } else if (uniformEra === UniformEra.StrangeNewWorlds) {
-            if (bodyType === BodyType.AverageMale && DivisionColors.getDivision(uniformEra, divisionColor) === "Medical") {
+            if (DivisionColors.getDivision(uniformEra, divisionColor) === "Medical") {
                 result.push(UniformVariantType.Variant2);
             }
         } else if (uniformEra === UniformEra.Civilian) {
