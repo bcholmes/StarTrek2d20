@@ -1,4 +1,3 @@
-import { SimpleColor } from "../../common/colour";
 import { SpectralClass, SpectralClassModel } from "./spectralClass";
 
 export enum SpaceRegion {

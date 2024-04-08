@@ -814,7 +814,9 @@ class Marshaller {
             let temp = json.career;
             if (typeof temp === 'string') {
                 let career = CareersHelper.instance.getCareerByTypeName(temp, result.type);
-                if (result.careerStep != null) {
+                if (career == null) {
+                    result.careerStep = new CareerStep();
+                } else if (result.careerStep != null) {
                     result.careerStep.career = career.id;
                 } else {
                     result.careerStep = new CareerStep(career.id);
@@ -823,7 +825,9 @@ class Marshaller {
                 let length = temp.length;
                 if (length != null) {
                     let career = CareersHelper.instance.getCareerByTypeName(temp, result.type);
-                    if (result.careerStep != null) {
+                    if (career == null) {
+                        result.careerStep = new CareerStep();
+                    } else if (result.careerStep != null) {
                         result.careerStep.career = career.id;
                     } else {
                         result.careerStep = new CareerStep(career.id);

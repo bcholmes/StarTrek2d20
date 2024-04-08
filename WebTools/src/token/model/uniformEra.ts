@@ -19,6 +19,7 @@ export enum UniformEra {
     Bynar,
     Ferengi,
     StrangeNewWorlds,
+    Maco,
 }
 
 export class UniformEraModel {
