@@ -34,6 +34,9 @@ export const ModifyBreadcrumb = (props: IModifyBreadcrumbProperties) => {
   else if (milestoneType > -1) activePageTitle = MilestoneType[milestoneType];
   else {
     switch (modificationType) {
+      case ModificationType.Freeform:
+        activePageTitle = "modificationFreeform";
+        break;
       case ModificationType.Promotion:
         activePageTitle = "promotion";
         break;
@@ -48,21 +51,14 @@ export const ModifyBreadcrumb = (props: IModifyBreadcrumbProperties) => {
   return (
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb">
-        <li className="breadcrumb-item">
-          <a href="/index.html" onClick={(e) => goToHome(e, navigate)}>
-            {t("Page.title.home")}
-          </a>
-        </li>
-        {(() => {
-          if (milestoneType) {
-            return (
-              <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.ModificationTypeSelection)}>
-                  {t("Page.title.modificationTypeSelection")}
-                </a></li>
-            );
-          }
-          return (<li className="breadcrumb-item active" aria-current="page">{t(activePageTitle)}</li>);
-        })()}
+        <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e, navigate)}>{t("Page.title.home")}</a></li>
+        { milestoneType > -1 ? (
+            <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.ModificationTypeSelection)}>
+                {t("Page.title.modificationTypeSelection")}
+              </a></li>
+          ) : null
+        }
+        <li className="breadcrumb-item active" aria-current="page">{t(activePageTitle)}</li>
       </ol>
     </nav>
   );
