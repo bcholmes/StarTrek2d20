@@ -400,9 +400,6 @@ export class Roll20VttExporter {
         }
 
         let name = talent.maxRank > 1 ? (talent.displayName + character.getRankForTalent(talentName)) : talent.displayName;
-        if (name.indexOf(": " + category) >= 0 && name.indexOf(": " + category) === (name.length - (": " + category).length)) {
-            name = name.substring(0, (name.length - (": " + category).length));
-        }
 
         return [{
             "name": "repeating_talents_" + rowId + "_talent_name",

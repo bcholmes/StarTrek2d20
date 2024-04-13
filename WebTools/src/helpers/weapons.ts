@@ -647,7 +647,7 @@ export class PersonalWeapons {
     }
 
     get dagger() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.dagger.name'), 1, [new WeaponQuality(Quality.Vicious, 1)], [new WeaponQuality(Quality.Deadly), new WeaponQuality(Quality.Hidden, 1)], WeaponType.ENERGY);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.dagger.name'), 1, [new WeaponQuality(Quality.Vicious, 1)], [new WeaponQuality(Quality.Deadly), new WeaponQuality(Quality.Hidden, 1)], WeaponType.MELEE);
     }
 
     static get instance() {
