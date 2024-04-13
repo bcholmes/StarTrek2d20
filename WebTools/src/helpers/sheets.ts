@@ -912,6 +912,7 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         );
     }
 
+    /* eslint-disable no-loop-func */
     createTextBlocks(text: string, fontSpec: FontSpecification, symbolStyle: FontSpecification, line: Line, page: PDFPage) {
         let result: Line[] = [];
         if (line) {
@@ -992,6 +993,7 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         }
         return result;
     }
+    /* eslint-enable no-loop-func */
 
     containsDelta(word: string) {
         return word.indexOf("[D]") >= 0;

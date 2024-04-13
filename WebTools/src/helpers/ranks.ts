@@ -1050,25 +1050,7 @@ export class RanksHelper {
         ];
 
     getRanks(character: Character, ignorePrerequisites?: boolean) {
-        let ranks: RankModel[] = [];
-
-        for (let rank in this._ranks) {
-            let r = this._ranks[rank];
-            let valid = true;
-
-            if (ignorePrerequisites === undefined || ignorePrerequisites === false) {
-                r.prerequisites.forEach(req => {
-                    if (!req.isPrerequisiteFulfilled(character)) {
-                        valid = false;
-                    }
-                });
-            }
-
-            if (valid) {
-                ranks.push(r);
-            }
-        }
-        return ranks;
+        return !ignorePrerequisites ? this._ranks.filter(r => r.prerequisites.every(p => p.isPrerequisiteFulfilled(character))) : [...this._ranks];
     }
 
     getSortedRanks(character: Character, ignorePrerequisites?: boolean) {
