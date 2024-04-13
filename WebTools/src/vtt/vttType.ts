@@ -21,7 +21,8 @@ export class VttTypes {
 
     private readonly types: VttTypeModel[] = [
         new VttTypeModel(VttType.FantasyGrounds, "Fantasy Grounds"),
-        new VttTypeModel(VttType.Foundry, "Foundry VTT")
+        new VttTypeModel(VttType.Foundry, "Foundry VTT"),
+        new VttTypeModel(VttType.Roll20, "Roll20")
     ];
 
     static get instance() {

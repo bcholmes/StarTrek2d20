@@ -89,8 +89,13 @@ export default class UniformPackCollection {
                     this.uniformPacks[era] = new JemHadarUniformPack();
                     completion();
                 }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
+            } else if (era === UniformEra.Maco) {
+                import(/* webpackChunkName: 'maco' */ './macoUniformPack').then(({MacoUniformPack}) => {
+                    this.uniformPacks[era] = new MacoUniformPack();
+                    completion();
+                }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));
             } else if (era === UniformEra.NextGeneration) {
-                import(/* webpackChunkName: 'romulan' */ './tngUniformPack').then(({TngUniformPack}) => {
+                import(/* webpackChunkName: 'tng' */ './tngUniformPack').then(({TngUniformPack}) => {
                     this.uniformPacks[era] = new TngUniformPack();
                     completion();
                 }).catch((error) => toast("Ooops. Something bad happened", { className: 'bg-danger' }));

@@ -782,7 +782,7 @@ export class RolesHelper {
         return result;
     }
 
-    getRoleByName(role: string) {
+    getRoleByName(role: string): Role {
 
         var list = this._roles;
         for (var r of list) {

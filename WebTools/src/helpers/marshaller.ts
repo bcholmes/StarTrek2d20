@@ -687,9 +687,9 @@ class Marshaller {
         if (json.role != null) {
             let role = json.role;
             if (typeof role === 'string') {
-                let roleModel = RolesHelper.instance.getRoleByName(role);
-                if (roleModel) {
-                    result.role = roleModel.id;
+                let roleType = RolesHelper.instance.getRoleByName(role);
+                if (roleType != null) {
+                    result.role = roleType;
                 } else {
                     result.jobAssignment = role;
                 }
@@ -814,23 +814,19 @@ class Marshaller {
             let temp = json.career;
             if (typeof temp === 'string') {
                 let career = CareersHelper.instance.getCareerByTypeName(temp, result.type);
-                if (career == null) {
-                    result.careerStep = new CareerStep();
-                } else if (result.careerStep != null) {
-                    result.careerStep.career = career.id;
+                if (result.careerStep != null) {
+                    result.careerStep.career = career?.id;
                 } else {
-                    result.careerStep = new CareerStep(career.id);
+                    result.careerStep = new CareerStep(career?.id);
                 }
             } else {
                 let length = temp.length;
                 if (length != null) {
                     let career = CareersHelper.instance.getCareerByTypeName(temp, result.type);
-                    if (career == null) {
-                        result.careerStep = new CareerStep();
-                    } else if (result.careerStep != null) {
-                        result.careerStep.career = career.id;
+                    if (result.careerStep != null) {
+                        result.careerStep.career = career?.id;
                     } else {
-                        result.careerStep = new CareerStep(career.id);
+                        result.careerStep = new CareerStep(career?.id);
                     }
                 } else if (result.careerStep == null) {
                     result.careerStep = new CareerStep();

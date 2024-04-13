@@ -20,6 +20,7 @@ import { Role, RolesHelper } from '../helpers/roles';
 import { BorgImplantType, BorgImplants } from '../helpers/borgImplant';
 import { Specialization } from './specializationEnum';
 import { MilestoneType } from '../modify/model/milestoneType';
+import { EquipmentHelper, EquipmentType } from '../helpers/equipment';
 
 export abstract class CharacterTypeDetails {
 }
@@ -568,20 +569,20 @@ export class Character extends Construct {
         }
     }
 
-    get equipment() {
+    get equipmentModels() {
         let result = [];
         if (this.age.isChild) {
-            result.push("Clothing");
+            result.push(EquipmentHelper.instance.findByType(EquipmentType.Clothing));
         } else if (this.isCivilian()) {
-            result.push("Clothing");
+            result.push(EquipmentHelper.instance.findByType(EquipmentType.Clothing));
         } else if (this.type === CharacterType.KlingonWarrior) {
-            result.push("Armor");
-            result.push("Communicator");
-            result.push("Tricorder");
+            result.push(EquipmentHelper.instance.findByType(EquipmentType.Armor));
+            result.push(EquipmentHelper.instance.findByType(EquipmentType.Communicator));
+            result.push(EquipmentHelper.instance.findByType(EquipmentType.Tricorder));
         } else {
-            result.push("Uniform");
-            result.push("Communicator");
-            result.push("Tricorder");
+            result.push(EquipmentHelper.instance.findByType(EquipmentType.Uniform));
+            result.push(EquipmentHelper.instance.findByType(EquipmentType.Communicator));
+            result.push(EquipmentHelper.instance.findByType(EquipmentType.Tricorder));
         }
 
         if (this.role === Role.ChiefMedicalOfficer ||
@@ -595,22 +596,26 @@ export class Character extends Construct {
             this.jobAssignment === "Nurse" ||
             this.jobAssignment === "Medic") {
 
-            result.push("MedKit");
+            result.push(EquipmentHelper.instance.findByType(EquipmentType.MedKit));
         }
 
         if (this.isEngineer()) {
-            result.push("Engineering Kit");
+            result.push(EquipmentHelper.instance.findByType(EquipmentType.EngineeringKit));
         }
 
         if (this.hasTalent("The Ushaan")) {
-            result.push("Ushaan-tor ice pick");
+            result.push(EquipmentHelper.instance.findByType(EquipmentType.UshaanTor));
         }
 
         if (this.npcGenerationStep?.specialization === Specialization.OrionPirate) {
-            result.push("Orion Multi-Key");
+            result.push(EquipmentHelper.instance.findByType(EquipmentType.OrionMultiKey));
         }
 
         return result;
+    }
+
+    get equipment() {
+        return this.equipmentModels.map(e => e.name);
     }
 
     get equipmentAndImplants() {

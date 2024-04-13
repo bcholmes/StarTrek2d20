@@ -52,6 +52,7 @@ export class UniformEraHelper {
         new UniformEraModel(UniformEra.DominionWar, "Dominion War"),
         new UniformEraModel(UniformEra.LowerDecks, "Lower Decks"),
         new UniformEraModel(UniformEra.JemHadar, "Jem'Hadar"),
+        new UniformEraModel(UniformEra.Maco, "MACO"),
         new UniformEraModel(UniformEra.NextGeneration, "The Next Generation"),
         new UniformEraModel(UniformEra.OriginalSeries, "Original Series"),
         new UniformEraModel(UniformEra.OriginalSeriesKlingon, "Klingon (Original Series)"),

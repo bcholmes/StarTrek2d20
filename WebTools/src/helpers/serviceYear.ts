@@ -83,7 +83,8 @@ class ServiceYear {
         3188: "Third season of Star Trek: Discovery. Michael Burnham arrives in 32nd century",
         3189: "Third season of Star Trek: Discovery. The USS Discovery arrives in the 32nd century",
         3190: "Fourth season of Star Trek: Discovery",
-        3191: "After the fourth season of Star Trek Discovery",
+        3191: "Fifth season of Star Trek Discovery",
+        3192: "After the fifth season of Star Trek Discovery",
     }
 
 

@@ -67,7 +67,8 @@ export class DivisionColors {
     static isDivisionColorsSupported(era: UniformEra) {
         return era !== UniformEra.Klingon && era !== UniformEra.OriginalSeriesKlingon && era !== UniformEra.Civilian
             && era !== UniformEra.JemHadar && era !== UniformEra.Romulan && era !== UniformEra.Suliban
-            && era !== UniformEra.Ferengi && era !== UniformEra.Bynar && era !== UniformEra.Cardassian;
+            && era !== UniformEra.Ferengi && era !== UniformEra.Bynar && era !== UniformEra.Cardassian
+            && era !== UniformEra.Maco;
     }
 
     static indexOf(era: UniformEra, color: string) {

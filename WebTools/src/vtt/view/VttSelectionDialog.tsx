@@ -9,6 +9,7 @@ import { FoundryVttExporter, FoundryVttExporterOptions } from "../foundryVttExpo
 import { VttType, VttTypes } from "../vttType";
 import i18next from 'i18next';
 import { FantasyGroupsVttExporter } from "../fantasyGroundsVttExport";
+import { Roll20VttExporter } from "../roll20VttExporter";
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 
@@ -109,6 +110,8 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
                 this.exportCharacterToFoundryVtt(this.props.construct as Character);
             } else if (this.state.vttType === VttType.FantasyGrounds) {
                 this.exportCharacterToFantasyGrounds(this.props.construct as Character);
+            } else if (this.state.vttType === VttType.Roll20) {
+                this.exportCharacterToRoll20(this.props.construct as Character);
             }
         }
         if (this.props.construct instanceof Starship) {
@@ -125,6 +128,14 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
 
         const escaped = this.sanitizeName(character.name, "sta-character");
         download(jsonBytes, escaped + "-foundry-vtt.json", "application/json");
+    }
+
+    exportCharacterToRoll20(character: Character) {
+        const json = Roll20VttExporter.instance.exportCharacter(character);
+        const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
+
+        const escaped = this.sanitizeName(character.name, "sta-character");
+        download(jsonBytes, escaped + "-roll20-vtt.json", "application/json");
     }
 
     exportCharacterToFantasyGrounds(character: Character) {
