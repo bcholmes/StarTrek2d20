@@ -823,7 +823,7 @@ class Marshaller {
             } else {
                 let length = temp.length;
                 if (length != null) {
-                    let career = CareersHelper.instance.getCareerByTypeName(temp.length, result.type);
+                    let career = CareersHelper.instance.getCareerByTypeName(length, result.type);
                     if (result.careerStep != null) {
                         result.careerStep.career = career?.id;
                     } else {
