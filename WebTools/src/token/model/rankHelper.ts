@@ -11,6 +11,9 @@ export const isEnlistedRank = (rank: Rank) => {
         case Rank.ChiefPettyOfficer:
         case Rank.SeniorChiefPettyOfficer:
         case Rank.MasterChiefPettyOfficer:
+        case Rank.Sergeant:
+        case Rank.Corporal:
+        case Rank.Private:
             return true;
         default:
             return false;

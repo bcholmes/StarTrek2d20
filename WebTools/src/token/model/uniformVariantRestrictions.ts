@@ -74,6 +74,12 @@ export default class UniformVariantRestrictions {
                         Rank.Crewman3rdClass, Rank.Crewman2ndClass, Rank.Crewman1stClass
                     ].indexOf(rankIndicator) >= 0;
 
+            case UniformEra.Maco:
+                return [
+                        Rank.None, Rank.Colonel, Rank.LieutenantColonel, Rank.Major, Rank.Captain, Rank.FirstLieutenant, Rank.SecondLieutenant,
+                        Rank.Sergeant, Rank.Corporal, Rank.Private
+                    ].indexOf(rankIndicator) >= 0;
+
             case UniformEra.Civilian:
             case UniformEra.Ferengi:
             case UniformEra.Cardassian:

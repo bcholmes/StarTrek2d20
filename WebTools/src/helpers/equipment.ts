@@ -1,3 +1,5 @@
+import i18next from "i18next";
+import { makeKey } from "../common/translationKey";
 
 export enum EquipmentType {
     Uniform,
@@ -22,6 +24,12 @@ export class EquipmentModel {
         this.type = type;
         this.name = name;
         this.description = description;
+    }
+
+    get localizedName() {
+        let key = makeKey("Equipment.", EquipmentType[this.type]);
+        let result = i18next.t(key);
+        return result === key ? this.name : result;
     }
 }
 
