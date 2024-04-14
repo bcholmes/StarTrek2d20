@@ -151,7 +151,8 @@ const TrillNeckAddOn = `<g>
 export abstract class BaseNeckProvider {
 
     private isLowerShoulders(uniformEra: UniformEra) {
-        return uniformEra === UniformEra.Suliban || uniformEra === UniformEra.StrangeNewWorlds || uniformEra === UniformEra.JemHadar;
+        return uniformEra === UniformEra.Suliban || uniformEra === UniformEra.StrangeNewWorlds || uniformEra === UniformEra.JemHadar
+            || uniformEra === UniformEra.DominionWar;
     }
 
 
