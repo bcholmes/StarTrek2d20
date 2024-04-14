@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router";
 import { useTranslation } from 'react-i18next';
 import { Character } from "../../common/character";
 import { Header } from "../../components/header";
@@ -9,22 +8,14 @@ import { navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { marshaller } from "../../helpers/marshaller";
 import InstructionText from "../../components/instructionText";
+import { ModifyBreadcrumb } from "../modifyBreadcrumb";
 
 interface ModificationCompletePageProperties {
     character?: Character;
 }
 
 const ModificationCompletePage: React.FC<ModificationCompletePageProperties> = ({character}) => {
-
     const { t } = useTranslation();
-    const navigate = useNavigate();
-
-    const goToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        navigate("/");
-    }
 
     const showViewPage = () => {
         const value = marshaller.encodeMainCharacter(character);
@@ -32,12 +23,7 @@ const ModificationCompletePage: React.FC<ModificationCompletePageProperties> = (
     }
 
     return (<div className="page container ms-0">
-        <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
-                <li className="breadcrumb-item active" aria-current="page">{t('Page.title.modificationComplete')}</li>
-            </ol>
-        </nav>
+        <ModifyBreadcrumb isComplete />
 
         <Header>{t('Page.title.modificationComplete')}</Header>
         <InstructionText text={t('ModificationCompletePage.instruction')} />

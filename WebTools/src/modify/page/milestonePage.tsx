@@ -17,7 +17,8 @@ import { applyNormalMilestoneDiscipline, applyNormalMilestoneFocus } from "../..
 import { CheckBox } from "../../components/checkBox";
 import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router";
+import { ModifyBreadcrumb } from "../modifyBreadcrumb";
+import { ModificationType } from "../model/modificationType";
 
 interface IMilestonePageProperties {
     milestoneType: MilestoneType,
@@ -33,7 +34,6 @@ const MilestonePage: React.FC<IMilestonePageProperties> = ({character, milestone
     const [ normalAddedFocus, setNormalAddedFocus ] = useState(null);
 
     const { t } = useTranslation();
-    const navigate = useNavigate();
 
     function renderNormalMilestoneAdjustment() {
         if (normalOption === 0) {
@@ -202,21 +202,9 @@ const MilestonePage: React.FC<IMilestonePageProperties> = ({character, milestone
         }
     }
 
-    const goToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        navigate("/");
-    }
 
     return (<div className="page container ms-0">
-        <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
-                <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.ModificationTypeSelection)}>{t('Page.title.modificationTypeSelection')}</a></li>
-                <li className="breadcrumb-item active" aria-current="page">{t(makeKey('Page.title.', MilestoneType[milestoneType]))}</li>
-            </ol>
-        </nav>
+        <ModifyBreadcrumb milestoneType={milestoneType} modificationType={ModificationType.Milestone} />
 
         <Header>{t(makeKey('Page.title.', MilestoneType[milestoneType]))}</Header>
         <p>{t('MilestonePage.instruction')}</p>

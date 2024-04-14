@@ -158,7 +158,7 @@ class Marshaller {
         if (character.careerStep != null) {
             if (character.careerStep.career != null) {
                 sheet["career"] = {
-                    "length": Career[character.careerStep.value]
+                    "length": Career[character.careerStep.career]
                 }
             }
             if (character.careerStep.value) {
@@ -308,6 +308,7 @@ class Marshaller {
 
             sheet["role"] = role;
         }
+
         return sheet;
     }
 
@@ -822,7 +823,7 @@ class Marshaller {
             } else {
                 let length = temp.length;
                 if (length != null) {
-                    let career = CareersHelper.instance.getCareerByTypeName(temp, result.type);
+                    let career = CareersHelper.instance.getCareerByTypeName(length, result.type);
                     if (result.careerStep != null) {
                         result.careerStep.career = career?.id;
                     } else {

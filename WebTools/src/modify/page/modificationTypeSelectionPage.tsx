@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router";
 import { useTranslation } from 'react-i18next';
 import { Character } from "../../common/character";
 import { Header } from "../../components/header";
@@ -10,6 +9,7 @@ import Modifications, { ModificationType } from "../model/modificationType";
 import Milestones, { MilestoneType } from "../model/milestoneType";
 import { navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
+import { ModifyBreadcrumb } from "../modifyBreadcrumb";
 
 interface ModificationTypeSelectionPageProperties {
     character?: Character;
@@ -21,7 +21,6 @@ const ModificationTypeSelectionPage: React.FC<ModificationTypeSelectionPagePrope
     const [modificationType, setModificationType ] = useState(ModificationType.Reputation);
     const [milestoneType, setMilestoneType ] = useState(MilestoneType.NormalMilestone);
     const { t } = useTranslation();
-    const navigate = useNavigate();
 
     const getModificationTypes = () => {
         return Modifications.instance.getItems().map(t => new DropDownElement(t.type, t.localizedName));
@@ -41,21 +40,8 @@ const ModificationTypeSelectionPage: React.FC<ModificationTypeSelectionPagePrope
         }
     }
 
-    const goToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        navigate("/");
-    }
-
-
     return (<div className="page container ms-0">
-                <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">{t('Page.title.modificationTypeSelection')}</li>
-                    </ol>
-                </nav>
+                <ModifyBreadcrumb />
 
                 <Header>{t('Page.title.modificationTypeSelection')}</Header>
                 <p>{t('ModificationTypeSelectionPage.instruction')}</p>

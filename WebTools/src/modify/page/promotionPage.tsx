@@ -10,7 +10,8 @@ import { modifyCharacterRank } from "../../state/characterActions";
 import { RanksHelper } from "../../helpers/ranks";
 import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router";
+import { ModifyBreadcrumb } from "../modifyBreadcrumb";
+import { ModificationType } from "../model/modificationType";
 
 interface IPromotionPageProperties {
     character?: Character;
@@ -20,7 +21,6 @@ const PromotionPage: React.FC<IPromotionPageProperties> = ({character}) => {
 
     const [ rank, setRank ] = useState(character?.rank?.id);
     const [ rankName, setRankName ] = useState(character?.rank?.name);
-    const navigate = useNavigate();
 
     const getRanks = () => {
         return RanksHelper.instance().getRanks(character, false).map(r => new DropDownElement(r.id, r.name));
@@ -31,22 +31,10 @@ const PromotionPage: React.FC<IPromotionPageProperties> = ({character}) => {
         navigateTo(null, PageIdentity.ModificationCompletePage);
     }
 
-    const goToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        navigate("/");
-    }
 
     const { t } = useTranslation();
     return (<div className="page container ms-0">
-        <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
-                <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.ModificationTypeSelection)}>{t('Page.title.modificationTypeSelection')}</a></li>
-                <li className="breadcrumb-item active" aria-current="page">{t('Page.title.promotion')}</li>
-            </ol>
-        </nav>
+        <ModifyBreadcrumb modificationType={ModificationType.Promotion} />
 
         <Header>{t('Page.title.promotion')}</Header>
         <p>{t('PromotionPage.instruction')}</p>
