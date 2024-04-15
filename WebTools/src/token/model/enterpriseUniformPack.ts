@@ -446,7 +446,7 @@ const EnterpriseInsignia = {
 
         LtCommander: `<g transform="matrix(0.31657258,-0.02205342,0.02205342,0.31657258,141.53912,192.15648)">
                 <g id="g114200">
-                <rect style="fill:#c4c4c4;fill-opacity:1;fill-rule:evenodd;stroke:#313131;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1" id="rect114192" width="32.203384" height="33.559334" x="63.418083" y="342.62714" inkscape:label="rect108010" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"/>
+                <rect style="fill:#c4c4c4;fill-opacity:1;fill-rule:evenodd;stroke:#313131;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1" id="rect114192" width="32.203384" height="33.559334" x="63.418083" y="342.62714" />
                 <rect style="fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1" id="rect114194" width="20.992111" height="30.008533" x="69.519768" y="344.42737"/>
                 <rect style="display:inline;fill:#4b4b4b;fill-opacity:1;fill-rule:evenodd;stroke:#313131;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1" id="rect114196" width="13.559326" height="27.556904" x="73.204964" y="345.89111"/>
                 <rect style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#313131;stroke-width:0.9;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:0.2" id="rect114198" width="30.633101" height="31.922932" x="64.203224" y="343.44534"/>

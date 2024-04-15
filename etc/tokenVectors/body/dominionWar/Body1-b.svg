@@ -12,7 +12,6 @@
    xml:space="preserve"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><defs
      id="defs171230" /><sodipodi:namedview
@@ -26,7 +25,7 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="2.33"
-     inkscape:cx="200"
+     inkscape:cx="199.57082"
      inkscape:cy="200"
      inkscape:window-width="1920"
      inkscape:window-height="1145"
@@ -110,16 +109,4 @@
        style="display:inline;opacity:0.2;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.911631px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 368.9541,353.5484 c 0,0 6.16873,24.64853 6.43777,33.1715 0.26904,8.52297 0.42919,13.2801 0.42919,13.2801 H 366.379 Z"
        id="path2"
-       sodipodi:nodetypes="czccc" /></g><g
-     inkscape:groupmode="layer"
-     id="layer8"
-     inkscape:label="Image"
-     style="display:none;opacity:0.391"
-     sodipodi:insensitive="true"><image
-       width="400"
-       height="400"
-       preserveAspectRatio="none"
-       xlink:href="../../../../../../../Downloads/token-Human-Command-StrangeNewWorlds(1).png"
-       id="image1"
-       x="-0.47169811"
-       y="-2.8421709e-14" /></g></svg>
+       sodipodi:nodetypes="czccc" /></g></svg>

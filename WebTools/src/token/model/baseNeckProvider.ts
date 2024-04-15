@@ -152,7 +152,7 @@ export abstract class BaseNeckProvider {
 
     private isLowerShoulders(uniformEra: UniformEra) {
         return uniformEra === UniformEra.Suliban || uniformEra === UniformEra.StrangeNewWorlds || uniformEra === UniformEra.JemHadar
-            || uniformEra === UniformEra.DominionWar;
+            || uniformEra === UniformEra.DominionWar || uniformEra === UniformEra.Maco;
     }
 
 
