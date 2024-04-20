@@ -210,15 +210,16 @@ const CreditsPage = () => {
 
                     <p>
                         There are two answers:
-                        <ol>
-                            <li className="my-3">First, Modiphius prefers to wait a bit between the time a new book is available for
-                                pre-order and the book's new rules are implemented in the creator.
-                                Personally, I think that's entirely reasonable.</li>
-
-                            <li className="my-3">Second, adding stuff to the generator takes work, and I do it as time allows.
-                                I can't always turn new features around immediately.</li>
-                        </ol>
                     </p>
+
+                    <ol>
+                        <li className="my-3">First, Modiphius prefers to wait a bit between the time a new book is available for
+                            pre-order and the book's new rules are implemented in the creator.
+                            Personally, I think that's entirely reasonable.</li>
+
+                        <li className="my-3">Second, adding stuff to the generator takes work, and I do it as time allows.
+                            I can't always turn new features around immediately.</li>
+                    </ol>
 
                     <p className="mt-5">
                         <strong>Aren't you supposed to show some intrusive prompt about cookies? Like, for {' '}

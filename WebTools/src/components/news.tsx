@@ -20,7 +20,7 @@ class News extends React.Component<INewsProperties, {}> {
                 <ul>
                     <li>
                         I've added the ability to export characters for Roll20. Roll20 doesn't appear to have a
-                        built-in import/export utility (which I find weird), but Detaaz pointed me at the
+                        built-in import/export utility (which I find weird), but Detaaz pointed me at the {' '}
                         <a href="https://justas-d.github.io/roll20-enhancement-suite/index.html" target="_blank" rel="noreferrer">Roll20 Enhancement Suite</a>,
                         which allows this ability. At the moment, only standard character sheets are supported.
                         I should be able to provide ship and NPC sheets in a later update.
