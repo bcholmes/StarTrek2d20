@@ -1,0 +1,16 @@
+{
+    "TokenCreator.section.body.colour": "Division Color",
+
+    "TokenCreator.section.head.colour": "Skin Color",
+    "TokenCreator.section.head.furColour": "Fur Color",
+
+    "TokenCreator.section.hair.colour": "Hair Color",
+
+    "TokenCreator.section.mouth.colour": "Lipstick Color",
+
+    "TokenCreator.section.eyes.colour": "Eye Color",
+
+    "Species.bynar.description": "Bynars are native to the planet Bynaus, in the Beta Magellan system. Shorter than Humans, Bynars have lilac-colored skin, enlarged skulls, and asymmetrical ears. Their defining characteristic is that the entire Bynar race is cyborgs connected to their master computer on their homeworld, allowing them to near-instantaneously share information. Bynars work and live in pairs, being genetically bonded to another for life. Pairs of Bynars communicate using complex binary code. When they do speak other languages, they alternate phrases and finishing each other’s sentences. If one of the pair dies, it’s traditional for the survivor to return to Bynaus to be paired with a new Bynar. \n\nBynar that choose not to return are seen to have rejected Bynar society and have their personal identification code removed from the computer network. The Bynars’ constant exposure to computers makes them quick to learn new operating systems and programs, and their ability to recall data and process new information makes them highly valued to organizations such as the Starfleet Corps of Engineers and the Daystrom Institute. \n\nBynars have practiced their cybernetic augmentation for centuries: as early as the 2150s they began replacing the parietal lobes of newborns with a synaptic processor. Bynar workers and security forces once employed supplementary physical augmentations, but these have become rare since Bynaus allied with the Federation. Initially, Bynars seldom traveled far from their homeworld, as the range of their network was limited. By the late 2200s, subspace  communication had improved enough that they could travel throughout much of the Federation.",
+
+    "UniformEra.klingon": "Klingon Armor"
+}

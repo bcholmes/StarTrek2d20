@@ -22,6 +22,7 @@ const convertDataToTranslations = async (data) => {
 
         let previousPrefix = null;
 
+        let separator = "";
         for (let j = 1; j < data.length; j++) {
             const row = data[j];
             const key = row[0];
@@ -30,9 +31,8 @@ const convertDataToTranslations = async (data) => {
             if (value && value !== "(NOT YET TRANSLATED)") {
                 let prefix = key.substring(0, key.lastIndexOf('.'));
 
-                if (j > 1) {
-                    stream.write(",");
-                }
+                stream.write(separator);
+                separator = ",";
                 if (previousPrefix !== null && previousPrefix !== prefix) {
                     stream.write("\n");
                 }

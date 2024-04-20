@@ -21,6 +21,9 @@ export abstract class Construct implements IConstruct {
     public name?: string;
     public type: CharacterType = CharacterType.Starfleet;
 
+    // which version of rules are we using?
+    public version: number = 1;
+
     constructor(stereotype: Stereotype) {
         this.stereotype = stereotype;
     }

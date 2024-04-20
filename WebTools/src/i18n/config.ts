@@ -48,6 +48,7 @@ const staDetector = {
 const localStorageKey = 'settings.language';
 export const supportedLanguages = {
     'en': 'English',
+    'en-US': 'American',
     'es': 'Español',
     'de': 'Deutsch',
     'fr': 'Français',

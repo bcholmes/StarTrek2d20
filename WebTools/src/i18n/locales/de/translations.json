@@ -10,6 +10,8 @@
     "Lcars.news": "Neuigkeiten",
     "Lcars.profile": "Bogen",
 
+    "AttributesAndDisciplines.instruction": "An diesem Punkt ist dein Charakter fast komplett und benötigt nur noch ein paar finale Elemente und Anpassungen. Dies dient als letzte Chance den Charalter vor dem Spiel anzupassen.",
+
     "EditTablePage.header.createTable": "Tabelle erstellen",
     "EditTablePage.header.modifyTable": "Tabelle bearbeiten",
 
@@ -105,6 +107,8 @@
     "CareerEventDetails.errorDiscipline": "Bitte wähle eine Disziplin.",
     "CareerEventDetails.errorFocus": "Bitte wähle einen Fokus.",
 
+    "ChildSelectionPage.instruction": "Ein Kind besuchte natürlich noch nicht die Sternenflottenakademie (bzw. ein vergleichbares Gegenstück) oder irgendein höheres Bildungsinstitut. Tatsächlich sind sie noch in den frühen Phasen der Ausbildung.\n\nWähle ein Alter für deinen Charakter.",
+
     "GMTracker.title": "NSC-Verwaltung",
     "GMTracker.instruction": "Benutzen Sie dieses Werkzeug, um die verschiedenen NSCs in Ihrem Spiel zu verwalten.",
     "GMTracker.addCharacterModalTitle": "Charakter hinzufügen",
@@ -174,6 +178,12 @@
     "EnvironmentPage.alliedMilitary.instruction": "Unabhängig von ihrer Spezies stammen Militär-Offiziere von vielen Orten auf vielen Welten.",
 
     "FinalStarshipDetails.instruction": "Dein Shiff ist fast komplett. Es fehlen nur ein paar letzte Feinschliffe.",
+
+    "FinishPage.rank.instruction": "Wähle den Rang deines Charakters.",
+
+    "FinishPage.trait.preamble_one": "Dein Charakter hat automatisch folgendes Merkmal:",
+    "FinishPage.trait.preamble_other": "Dein Charakter hat automatisch folgende Merkmale:",
+    "FinishPage.trait.instruction": "Hier kannst du weitere Merkmale angeben.",
 
     "MilestonePage.instruction": "Wählen Sie die gewünschte Änderung, die Sie mit diesem Meilenstein vornehmen möchten",
 
@@ -658,6 +668,7 @@
     "AlliedMilitaryType.name.other": "Andere",
 
     "BodyType.averageMale": "Durchschnittlicher Mann",
+    "BodyType.averageNonBinary": "Durchschnittliche nicht-binäre Person",
     "BodyType.averageFemale": "Durchschnittliche Frau",
 
     "Division.command": "Kommando",
@@ -673,6 +684,17 @@
     "Division.monsterMaroon.trainee": "Rekrut",
 
     "Division.strangeNewWorlds.medical": "Medizin",
+    "Division.strangeNewWorlds.nursing": "Pflege",
+
+    "Equipment.uniform": "Uniform",
+    "Equipment.clothing": "Kleidung",
+    "Equipment.armor": "Rüstung",
+    "Equipment.communicator": "Kommunikator",
+    "Equipment.tricorder": "Trikorder",
+    "Equipment.medkit": "Medkit",
+    "Equipment.engineeringKit": "Technischer Werkzeugkasten",
+    "Equipment.orionMultiKey": "Orionischer Multischlüssel",
+    "Equipment.ushaanTor": "Ushaan-tor Eispickel",
 
     "Era.name.enterprise": "Enterprise (22. Jahrhundert)",
     "Era.name.originalSeries": "Originalserie (23. Jahrhundert)",
@@ -818,6 +840,9 @@
     "MissionProfile.default.patrol": "Patrouille",
     "MissionProfile.default.warship": "Kriegsschiff",
 
+    "NpcCharacterType.minorPolity": "Kleinere Partei",
+    "NpcCharacterType.rogueRuffianMercenary": "Schurken, Raufbolde und Söldner",
+
     "NpcType.minor.name": "Einfacher NSC",
 
     "NpcType.notable.name": "Bedeutender NSC",
@@ -872,6 +897,53 @@
 
     "Rank.crewman3rdClass.name": "Crewman 3rd Class",
     "Rank.crewman3rdClass.abbrev": "Crew.",
+
+    "Rank.sergeant.name": "Sergeant",
+    "Rank.sergeant.abbrev": "Sgt.",
+
+    "Rank.corporal.name": "Corporal",
+    "Rank.corporal.abbrev": "Cpl.",
+
+    "Rank.private.name": "Private",
+    "Rank.private.abbrev": "Pvt.",
+
+    "Role.commandingOfficer": "Kommandierende/-r Offizier/-in",
+
+    "Role.commandingOfficer.description": "Der Captain. Selbst wenn ein Kommandierender Offizier nicht den Rang eines Captain hält, wird er oder sie von Untergebenen dennoch als Captain angesprochen werden. Jedes Schiff muss einen Kommandierenden Offizier besitzen.",
+
+    "Role.executiveOfficer": "Erste/-r Offizier/-in",
+
+    "Role.executiveOfficer.description": "Zweite/-r in der Rangfolge. Der oder die Erste Offizier/-in hat eine wichtige Beratungsfunktion für den Captain und übernimmt das Kommando, wenn der Captain dazu nicht in der Lage ist. Falls das Schiff keinen spezialisierten Ersten Offizier bzw. keine Erste Offizierin besitzt, nimmt ein anderer Offizier oder eine andere Offizierin diese Rolle ein, kann aber nicht den spieltechnischen Vorteil nutzen.",
+
+    "Role.operationsManager": "Operationsleiter/-in",
+
+    "Role.operationsManager.description": "Der oder die Operationsleiter/-in überwacht alle technischen Operationen an Bord oder in Bezug auf das Schiff, meist von der Operativen Station (Ops) auf der Brücke. Dabei kooperiert er oder sie mit dem oder der Chefingenieur/-in (auf kleineren Schiffen sind beide Rollen oft zusammengelegt). Hierfür muss auch oft die Position eines Wissenschaftsoffiziers eingenommen werden, falls diese Rolle nicht separat unter den Führungsoffizieren besetzt ist.",
+
+    "Role.chiefEngineer": "Chefingenieur/-in",
+
+    "Role.chiefEngineer.description": "Der oder die Chefingenieur/-in leitet die Technische Abteilung an und ist dafür zuständig, dass die Schiffssysteme funktionieren.",
+
+    "Role.chiefOfSecurity": "Sicherheitschef/-in",
+
+    "Role.chiefOfSecurity.description": "Der oder die Sicherheitschef/-in steht den Sicherheitskräften auf dem Schiff vor und ist für die Sicherheit von Crew und Schiff während Missionen verantwortllich. Außerdem ist er oder sie für disziplinarische Angelegenheiten, Untersuchungen von Verbrechen und den Schutz wichtiger Personen zuständig. Auf vielen Schiffen ist sein oder ihr Dienstposten die Taktische Station auf der Brücke.",
+
+    "Role.chiefMedicalOfficer": "Chefarzt/Chefärztin",
+
+    "Role.chiefMedicalOfficer.description": "Dieser Posten, mitunter auch als Schiffsarzt bzw. Schiffsärztin bezeichnet, ist für die Gesundheit und das Wohlergehen der Crew und anderer Personen an Bord zuständig, sowie leitet das medizinische Personal an. Der Chefarzt oder die Chefärztin kann Befehle vorgesetzter Offiziere außer Kraft setzen, wenn medizinische Gründe dafür sprechen.",
+
+    "Role.scienceOfficer": "Wissenschaftsoffizier/-in",
+
+    "Role.scienceOfficer.description": "Der Wissenschaftsoffizier oder die Wissenschaftsoffizierin berät den Captain in allen wissenschaftlichen Fragen und formuliert Hypothesen zu allen unbekannten Phänomenen. Nicht jedes Schiff weist einen solchen Posten auf, in solchen Fällen nimmt oft der oder die Operationsleiter/-in diese Aufgaben wahr.",
+
+    "Role.flightController": "Steuermann/-frau",
+
+    "Role.flightController.description": "Auch wenn dies meist keine Führungsposition ist, nehmen manche Captains, vor allem wenn sie in unbekannten Raum vordringen, doch ihre/-n erfahrenste/-n Steuermann/-frau in die Riege der Führungsoffiziere auf.",
+
+    "Role.shipsCounselor": "Counselor",
+    "Role.shipsCounselor,description": "Auf größeren Schiffen oder Sternenbasen ist es üblich, dass sich ein Offizier oder eine Offizierin um das mentale Wohlergehen der Crew kümmert. Manche Captains sehen diese Offiziere als wertvolle Berater, da sie sich sowohl in kulturellen Fragen als auch in Psychologie auskennen und gut in der Lage sind, die Motive und Stimmungen anderer zu verstehen.",
+    "Role.communicationsOfficer": "Kommunikationsoffizier/-in",
+
+    "Role.communicationsOfficer.description": "Vor allem in den früheren Jahren der Sternenflotte gab es spezialisierte Kommunikationsoffiziere, die üblicherweise gut ausgebildete Linguisten und Kryptographen waren und unterstützt von der modernsten Technologie Schlüsselrollen im Kontakt mit freundlichen und feindlichen neuen Kulturen einnahmen.",
 
     "ShipBuildType.pod.name": "Kleines Shuttle",
 
@@ -1436,8 +1508,16 @@
     "TalentCategory.esoteric": "Esoterisch",
 
     "Track.starfleet.command": "Kommandolaufbahn",
+
+    "Track.starfleet.command.description": "Die Kommando-Laufbahn ist für all jene Kadetten, die davon träumen, später einmal selbst ein Raumschiff zu kommandieren. Hier wird ein Schwerpunkt auf Führung und zwischenmenschliche Fähigkeiten, Diplomatie, Entscheidungsfindung in Krisensituationen, Protokolle und Prozeduren sowie Abläufe auf einem Raumschiff und Flugkontrolle gelegt. Viele Kadetten der Kommando-Abteilung beginnen ihre Karrieren als Flugoffiziere und Steuerleute – Posten, auf denen sie ihr Training in kleinem Maßstab verfeinern können und gleichzeitig mehr Erfahrung sammeln, um später mehr Verantwortung zu tragen. Kadetten der Kommando-Laufbahn müssen in ihrem letzten Studienjahr den berüchtigten Kobayashi-Maru-Test ablegen.",
+
     "Track.starfleet.operations": "Operationslaufbahn",
+
+    "Track.starfleet.operations.description": "In der Operativen Laufbahn wird Wert auf praxisnahe Ausbildung gelegt, um auf die vielen Unwägbarkeiten auf Sternenflotten-Missionen vorzubereiten. Kadetten dieser Laufbahn spezialisieren sich auf Technik oder Sicherheit, haben aber stets einen gewissen Pragmatismus gemeinsam.",
+
     "Track.starfleet.sciences": "Wissenschaftslaufbahn",
+
+    "Track.starfleet.sciences.description": "Die Wissenschafts-Laufbahn ist anders als die übrigen Laufbahnen vor allem akademisch in der Ausbildung und viele später berühmte Wissenschaftler haben ihre ersten Schritte an der Akademie gemacht. Teil der Wissenschaftslaufbahn, wenn auch mit teils getrenntem Curriculum, ist die Ausbildung von neuem Personal für das Medizinische Corps der Sternenflotte – Pflegekräfte, Ärzte und Counselor für den Dienst auf den Raumschiffen und Einrichtungen der Flotte.",
 
     "UniformEra.bynar": "Bynar",
     "UniformEra.cardassian": "Cardassianisches Militär",

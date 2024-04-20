@@ -35,7 +35,7 @@ const StarSystemDetailsPage: React.FC<IStarSystemDetailsPageProperties> = ({star
             let list = worlds.map((w,i) => <WorldView world={w} system={starSystem} key={'world-' + w.orbitId}/>);
             return (<div>
                 <div className="page-text my-3">{title}</div>
-                <div className="row row-cols-1 row-cols-md-2">
+                <div>
                     {list}
                 </div>
             </div>);
