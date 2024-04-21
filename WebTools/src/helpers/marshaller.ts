@@ -45,6 +45,7 @@ class Marshaller {
             "type": CharacterType[character.type],
             "age": character.age ? character.age.name : undefined,
             "name": character.name,
+            "version": character.version,
             "focuses": [...character.focuses]
         };
 
@@ -130,6 +131,7 @@ class Marshaller {
             "stereotype": stereotype,
             "type": CharacterType[character.type],
             "name": character.name,
+            "version": character.version,
         };
 
         if (character.upbringingStep) {

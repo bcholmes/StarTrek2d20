@@ -20,7 +20,7 @@ import { Role, RolesHelper } from '../helpers/roles';
 import { BorgImplantType, BorgImplants } from '../helpers/borgImplant';
 import { Specialization } from './specializationEnum';
 import { MilestoneType } from '../modify/model/milestoneType';
-import { EquipmentHelper, EquipmentType } from '../helpers/equipment';
+import { EquipmentHelper, EquipmentModel, EquipmentType } from '../helpers/equipment';
 
 export abstract class CharacterTypeDetails {
 }
@@ -569,7 +569,7 @@ export class Character extends Construct {
         }
     }
 
-    get equipmentModels() {
+    get equipmentModels(): EquipmentModel[] {
         let result = [];
         if (this.age.isChild) {
             result.push(EquipmentHelper.instance.findByType(EquipmentType.Clothing));

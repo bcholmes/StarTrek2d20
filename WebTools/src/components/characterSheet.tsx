@@ -15,6 +15,7 @@ import { CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { CharacterSerializer } from '../common/characterSerializer';
 import { TalentsHelper } from '../helpers/talents';
+import { BorgImplants } from '../helpers/borgImplant';
 
 class SectionContent {
     name: string;
@@ -112,9 +113,15 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
             return (<div key={i}>{talentModel.localizedDisplayName}</div>)
         });
 
-        let equipment = c.equipmentAndImplants.map((e, i) => {
-            return (<div key={i}>{e}</div>)
+        let equipment = c.equipmentModels.map((e, i) => {
+            return (<div key={i}>{e.localizedName}</div>)
         });
+
+        c.implants.map((type, i) => {
+            let implant = BorgImplants.instance.getImplantByType(type);
+            return equipment.push(<div key={i + equipment.length}>{implant.type}</div>)
+        });
+
 
         if (c.careerStep?.career !== undefined) {
             if (store.getState().context.era === Era.Enterprise) {

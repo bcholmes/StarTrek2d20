@@ -20,6 +20,7 @@ import { CareersHelper } from './careers';
 import { TracksHelper } from './tracks';
 import { localizedFocus } from '../components/focusHelper';
 import { XYLocation } from '../common/xyLocation';
+import { BorgImplants } from './borgImplant';
 
 class TextBlock {
     text: string;
@@ -687,8 +688,15 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
     }
 
     fillEquipment(form: PDFForm, character: Character) {
-        character.equipmentAndImplants.forEach( (e, i) => {
-            this.fillField(form, 'Equipment ' + (i+1), e);
+        character.equipmentModels.forEach( (e, i) => {
+            this.fillField(form, 'Equipment ' + (i+1), e.localizedName);
+        });
+
+        let offset = character.equipmentModels.length;
+
+        character.implants.forEach( (type, i) => {
+            let implant = BorgImplants.instance.getImplantByType(type);
+            this.fillField(form, 'Equipment ' + (i+offset+1), implant.name);
         });
     }
 
