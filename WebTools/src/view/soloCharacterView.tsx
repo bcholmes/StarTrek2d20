@@ -131,7 +131,7 @@ const SoloCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
 
     function renderEquipment() {
         if (character.equipmentAndImplants) {
-            return character.equipmentAndImplants.map((e, i) => (<div className="text-white view-border-bottom py-2" key={'equipment-' + i}>{e}</div>));
+            return character.equipmentAndImplants.map((e, i) => (<div className="text-white view-border-bottom py-2" key={'equipment-' + i}>{e.localizedName}</div>));
         } else {
             return undefined;
         }

@@ -17,7 +17,7 @@ import { Rank, RanksHelper } from '../helpers/ranks';
 import { makeKey } from './translationKey';
 import i18next from 'i18next';
 import { Role, RolesHelper } from '../helpers/roles';
-import { BorgImplantType, BorgImplants } from '../helpers/borgImplant';
+import { BorgImplantType, BorgImplants, Implant } from '../helpers/borgImplant';
 import { Specialization } from './specializationEnum';
 import { MilestoneType } from '../modify/model/milestoneType';
 import { EquipmentHelper, EquipmentModel, EquipmentType } from '../helpers/equipment';
@@ -618,10 +618,10 @@ export class Character extends Construct {
         return this.equipmentModels.map(e => e.name);
     }
 
-    get equipmentAndImplants() {
-        let result = [...this.equipment];
+    get equipmentAndImplants(): (EquipmentModel|Implant)[] {
+        let result: (EquipmentModel|Implant)[] = [...this.equipmentModels];
         if (this.implants?.length) {
-            this.implants.forEach(i => result.push(BorgImplants.instance.getImplantByType(i)?.name));
+            this.implants.forEach(i => result.push(BorgImplants.instance.getImplantByType(i)));
         }
         return result.filter(i => i != null);
     }

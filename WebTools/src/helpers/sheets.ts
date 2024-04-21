@@ -688,15 +688,8 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
     }
 
     fillEquipment(form: PDFForm, character: Character) {
-        character.equipmentModels.forEach( (e, i) => {
+        character.equipmentAndImplants.forEach((e, i) => {
             this.fillField(form, 'Equipment ' + (i+1), e.localizedName);
-        });
-
-        let offset = character.equipmentModels.length;
-
-        character.implants.forEach( (type, i) => {
-            let implant = BorgImplants.instance.getImplantByType(type);
-            this.fillField(form, 'Equipment ' + (i+offset+1), implant.name);
         });
     }
 

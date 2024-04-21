@@ -10,6 +10,7 @@ import { DeliverySystem, EnergyLoadType, PersonalWeapons, Quality, TorpedoLoadTy
 import { allSystems, System } from "../helpers/systems";
 import { Spaceframe } from "../helpers/spaceframeEnum";
 import { Species } from "../helpers/speciesEnum";
+import { EquipmentType } from "../helpers/equipment";
 
 const DEFAULT_STARSHIP_ICON = "systems/sta/assets/icons/ship_icon.png";
 const DEFAULT_EQUIPMENT_ICON = "systems/sta/assets/icons/voyagercombadgeicon.svg";
@@ -412,9 +413,9 @@ export class FoundryVttExporter {
 
         character.equipmentAndImplants?.forEach(e => {
             let item = {
-                "name": e,
-                "type": e === "Armor" ? "armor" : "item",
-                "img": this.determineItemIcon(e, options),
+                "name": e.name,
+                "type": e.type === EquipmentType.Armor ? "armor" : "item",
+                "img": this.determineItemIcon(e.name, options),
                 "system": {
                   "description": "",
                   "quantity": 1,

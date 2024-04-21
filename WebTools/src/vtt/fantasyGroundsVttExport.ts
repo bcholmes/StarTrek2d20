@@ -1393,7 +1393,7 @@ export class FantasyGroupsVttExporter {
                             }
                         ]
                     },
-                    this.convertToFormattedText("notes", e, null),
+                    this.convertToFormattedText("notes", e.name, null),
                     {
                         "name": "piercing",
                         "attributes": {
