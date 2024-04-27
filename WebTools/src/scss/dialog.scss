@@ -37,6 +37,10 @@
     transform: translateX(-50%);
 }
 
+.modal-content a, .modal-content a:hover {
+  color: $lcars-light-orange;
+}
+
 @media screen and (min-width: 0px) and (max-width: 1000px) {
 
   .modal-dialog.modal-lg {

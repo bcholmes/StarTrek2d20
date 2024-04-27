@@ -15,7 +15,6 @@ import { CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { CharacterSerializer } from '../common/characterSerializer';
 import { TalentsHelper } from '../helpers/talents';
-import { BorgImplants } from '../helpers/borgImplant';
 
 class SectionContent {
     name: string;

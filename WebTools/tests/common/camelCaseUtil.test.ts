@@ -9,6 +9,7 @@ describe('testing Camel Case Utility', () => {
     test('unusual characters', () => {
         expect(toCamelCase("Transporters & Replicators")).toBe("transportersReplicators");
         expect(toCamelCase("Cautious: Command")).toBe("cautiousCommand");
+        expect(toCamelCase("Doctor's Orders")).toBe("doctorsOrders");
     });
 
     test('unusual characters without spaces', () => {

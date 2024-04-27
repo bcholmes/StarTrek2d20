@@ -70,7 +70,16 @@ export const isEnglishDefault = () => {
     return language.indexOf('en') === 0;
 }
 
-export const getCurrentLanguageCode = () => window.localStorage.getItem(localStorageKey) ?? getNavigatorLanguage()
+export const getCurrentLanguageCode = () => {
+    let previousLanguage = window.localStorage.getItem(localStorageKey);
+    if (previousLanguage == null) {
+        return getNavigatorLanguage();
+    } else if (previousLanguage === "en" && getNavigatorLanguage().indexOf("en") === 0) {
+        return getNavigatorLanguage();
+    } else {
+        return getNavigatorLanguage();
+    }
+}
 
 export const overrideLanguage = (language: string) => {
     if (supportedLanguagesCodes.indexOf(language) >= 0) {

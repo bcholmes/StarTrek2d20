@@ -687,6 +687,9 @@ class Marshaller {
                 result.rank = new CharacterRank(rank.name, rank.id);
             }
         }
+        if (json.version) {
+            result.version = json.version;
+        }
         if (json.role != null) {
             let role = json.role;
             if (typeof role === 'string') {

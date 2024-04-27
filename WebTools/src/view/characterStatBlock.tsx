@@ -5,6 +5,7 @@ import { makeKey } from "../common/translationKey";
 import { Attribute } from "../helpers/attributes";
 import { Skill } from "../helpers/skills";
 import { ICharacterPageProperties } from "../common/iCharacterPageProperties";
+import { DisciplinesOrDepartments } from "./disciplinesOrDepartments";
 
 const CharacterStatBlock: React.FC<ICharacterPageProperties> = ({character}) => {
 
@@ -22,7 +23,7 @@ const CharacterStatBlock: React.FC<ICharacterPageProperties> = ({character}) => 
             <StatView name={t(makeKey('Construct.attribute.', Attribute[Attribute.Reason]))} value={character.attributes ? character.attributes[Attribute.Reason].value : undefined} className="col mb-2" />
         </div>
 
-        <Header level={2} className="mt-4">{t('Construct.other.disciplines')}</Header>
+        <Header level={2} className="mt-4"><DisciplinesOrDepartments character={character} /></Header>
         <div className="row row-cols-1 row-cols-md-3 mt-3">
             <StatView name={t(makeKey('Construct.discipline.', Skill[Skill.Command]))} value={character.skills ? character.skills[Skill.Command].expertise : undefined} className="col mb-2" showZero={true} />
             <StatView name={t(makeKey('Construct.discipline.', Skill[Skill.Security]))} value={character.skills ? character.skills[Skill.Security].expertise : undefined} className="col mb-2" showZero={true} />
