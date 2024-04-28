@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { connect } from 'react-redux';
-import {Character, character} from '../common/character';
+import {Character} from '../common/character';
 import { CharacterType } from '../common/characterType';
 import {Navigation} from '../common/navigator';
 import {PageIdentity} from '../pages/pageIdentity';
@@ -8,9 +8,7 @@ import { ShipBuildWorkflow, ShipBuildWorkflowStep } from '../starship/model/ship
 import { rewindToStarshipWorkflowStep } from '../state/starshipActions';
 import store from '../state/store';
 import { withTranslation, WithTranslation } from 'react-i18next';
-import { makeKey } from '../common/translationKey';
 import { getPageTitle } from './pageHeader';
-import { Stereotype } from '../common/construct';
 
 export enum HistoryType {
     Character, SoloCharacter, Starship
@@ -30,7 +28,7 @@ class History extends React.Component<IHistoryProperties, {}> {
     renderHistoryByType() {
         if (this.props.type === HistoryType.Starship) {
             return this.renderStarshipHistory();
-        } else if (this.props.type === HistoryType.SoloCharacter || character?.stereotype === Stereotype.SoloCharacter) {
+        } else if (this.props.type === HistoryType.SoloCharacter) {
             return this.renderSoloCharacterHistory();
         } else {
             return this.renderCharacterHistory();
@@ -123,48 +121,9 @@ class History extends React.Component<IHistoryProperties, {}> {
         history.classList.add("history-hidden");
 
         this.props.close();
-//        character.goToStep(page);
         Navigation.navigateToHistoryPage(page);
     }
 
-    private getPageName(page: PageIdentity) {
-        const { t } = this.props;
-
-        let key = makeKey('Page.title.', PageIdentity[page]);
-
-        let text = t(key);
-        if (text === key) {
-
-            switch (page) {
-                case PageIdentity.KobaliExtraSpeciesDetails: return "Species Extra Details";
-                case PageIdentity.SpeciesDetails: return "Species Details";
-                case PageIdentity.Environment: return "Environment";
-                case PageIdentity.EnvironmentDetails: return "Environment Details";
-                case PageIdentity.Upbringing: return character.type === CharacterType.KlingonWarrior ? "Caste" : "Upbringing";
-                case PageIdentity.UpbringingDetails: return character.type === CharacterType.KlingonWarrior ? "Caste Details" : "Upbringing Details";
-                case PageIdentity.ChildEducationPage: return "Education";
-                case PageIdentity.ChildEducationDetailsPage: return "Education Details";
-                case PageIdentity.Education: return character.type === CharacterType.Starfleet ? "Starfleet Academy" : "Training";
-                case PageIdentity.EducationDetails: return character.type === CharacterType.Starfleet ? "Starfleet Academy Details" : "Training Details";
-                case PageIdentity.ChildCareer: return "Career";
-                case PageIdentity.CadetCareer: return "Career";
-                case PageIdentity.CadetSeniority: return "Cadet Seniority";
-                case PageIdentity.CareerLength: return "Career";
-                case PageIdentity.CareerLengthDetails: return "Career Details";
-                case PageIdentity.CareerEvent1: return "Career Event 1";
-                case PageIdentity.CareerEvent1Details: return "Career Event 1 Details";
-                case PageIdentity.CareerEvent2: return "Career Event 2";
-                case PageIdentity.CareerEvent2Details: return "Career Event 2 Details";
-                case PageIdentity.AttributesAndDisciplines: return "Attributes & Disciplines";
-                case PageIdentity.Finish: return "Finish";
-                default:
-                    return "";
-            }
-
-        } else {
-            return text;
-        }
-    }
 }
 
 function mapStateToProps(state, ownProps) {

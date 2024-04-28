@@ -865,7 +865,10 @@ export class Character extends Construct {
             traits.push(this.speciesStep.customSpeciesName);
         } else if (this.speciesStep) {
             let species = SpeciesHelper.getSpeciesByType(this.speciesStep?.species);
-            if (species && traits.indexOf(species.name) < 0 && traits.indexOf(species.localizedName) < 0) {
+            if (species && traits.indexOf(species.localizedName) < 0) {
+                if (traits.indexOf(species.name) >= 0) {
+                    traits.splice(traits.indexOf(species.name), 1);
+                }
                 traits.push(species.localizedName);
             }
         }
@@ -1248,14 +1251,6 @@ export class Character extends Construct {
         } else {
             return character.age.disciplineSum;
         }
-    }
-}
-
-export let character = new Character();
-
-export const setGlobalCharacter = (c: Character) => {
-    if (c) {
-        character = c;
     }
 }
 

@@ -691,7 +691,7 @@
     "Equipment.armor": "Rüstung",
     "Equipment.communicator": "Kommunikator",
     "Equipment.tricorder": "Trikorder",
-    "Equipment.medkit": "Medkit",
+    "Equipment.medKit": "Medkit",
     "Equipment.engineeringKit": "Technischer Werkzeugkasten",
     "Equipment.orionMultiKey": "Orionischer Multischlüssel",
     "Equipment.ushaanTor": "Ushaan-tor Eispickel",
@@ -940,7 +940,9 @@
     "Role.flightController.description": "Auch wenn dies meist keine Führungsposition ist, nehmen manche Captains, vor allem wenn sie in unbekannten Raum vordringen, doch ihre/-n erfahrenste/-n Steuermann/-frau in die Riege der Führungsoffiziere auf.",
 
     "Role.shipsCounselor": "Counselor",
-    "Role.shipsCounselor,description": "Auf größeren Schiffen oder Sternenbasen ist es üblich, dass sich ein Offizier oder eine Offizierin um das mentale Wohlergehen der Crew kümmert. Manche Captains sehen diese Offiziere als wertvolle Berater, da sie sich sowohl in kulturellen Fragen als auch in Psychologie auskennen und gut in der Lage sind, die Motive und Stimmungen anderer zu verstehen.",
+
+    "Role.shipsCounselor.description": "Auf größeren Schiffen oder Sternenbasen ist es üblich, dass sich ein Offizier oder eine Offizierin um das mentale Wohlergehen der Crew kümmert. Manche Captains sehen diese Offiziere als wertvolle Berater, da sie sich sowohl in kulturellen Fragen als auch in Psychologie auskennen und gut in der Lage sind, die Motive und Stimmungen anderer zu verstehen.",
+
     "Role.communicationsOfficer": "Kommunikationsoffizier/-in",
 
     "Role.communicationsOfficer.description": "Vor allem in den früheren Jahren der Sternenflotte gab es spezialisierte Kommunikationsoffiziere, die üblicherweise gut ausgebildete Linguisten und Kryptographen waren und unterstützt von der modernsten Technologie Schlüsselrollen im Kontakt mit freundlichen und feindlichen neuen Kulturen einnahmen.",

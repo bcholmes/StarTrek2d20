@@ -122,30 +122,30 @@ const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
         if (track.id === Track.EnlistedSecurityTraining) {
             return (<div className="col-lg-6 my-3">
                     <Header level={2}>{t('Construct.other.disciplines')}</Header>
-                    <SkillView points={2} skill={Skill.Security} />
-                    <SkillView points={1} skill={Skill.Conn} />
-                    <SkillView points={1} skill={Skill.Engineering} />
+                    <SkillView points={2} skill={Skill.Security} character={character} />
+                    <SkillView points={1} skill={Skill.Conn}  character={character}/>
+                    <SkillView points={1} skill={Skill.Engineering}  character={character}/>
                 </div>);
         } else if (track.id === Track.ShipOperations) {
             return (<div className="col-lg-6 my-3">
                     <Header level={2}>{t('Construct.other.disciplines')}</Header>
-                    <SkillView points={2} skill={Skill.Conn} />
-                    <SkillView points={1} skill={Skill.Engineering} />
-                    <SkillView points={1} skill={Skill.Science} />
+                    <SkillView points={2} skill={Skill.Conn}  character={character}/>
+                    <SkillView points={1} skill={Skill.Engineering}  character={character}/>
+                    <SkillView points={1} skill={Skill.Science}  character={character}/>
                 </div>);
         } else if (track.id === Track.UniversityAlumni) {
             return (<div className="col-lg-6 my-3">
                     <Header level={2}>{t('Construct.other.disciplines')}</Header>
-                    <SkillView points={2} skill={Skill.Science} />
-                    <SkillView points={1} skill={Skill.Engineering} />
-                    <SkillView points={1} skill={Skill.Command} />
+                    <SkillView points={2} skill={Skill.Science}  character={character}/>
+                    <SkillView points={1} skill={Skill.Engineering}  character={character}/>
+                    <SkillView points={1} skill={Skill.Command}  character={character}/>
                 </div>);
         } else if (track.id === Track.ResearchInternship) {
             return (<div className="col-lg-6 my-3">
                     <Header level={2}>{t('Construct.other.disciplines')}</Header>
-                    <SkillView points={2} skill={Skill.Science} />
-                    <SkillView points={1} skill={Skill.Engineering} />
-                    <SkillView points={1} skill={Skill.Medicine} />
+                    <SkillView points={2} skill={Skill.Science}  character={character}/>
+                    <SkillView points={1} skill={Skill.Engineering}  character={character}/>
+                    <SkillView points={1} skill={Skill.Medicine}  character={character}/>
                 </div>);
         } else {
             return (<div className="col-lg-6 my-3">

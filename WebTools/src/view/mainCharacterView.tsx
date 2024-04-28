@@ -133,6 +133,18 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
         VttSelectionDialog.instance.show(character);
     }
 
+    function renderPastimes() {
+        if (character.pastimes) {
+            let result = character.pastimes.map((p, i) => (<div className="text-white view-border-bottom py-2" key={'pastime-' + i}>{p}</div>));
+            return (<>
+                <Header level={2}>{t('Construct.other.pastimes')}</Header>
+                {result}
+            </>);
+        } else {
+            return undefined;
+        }
+    }
+
     return (<main>
         {renderTopFields()}
 
@@ -159,6 +171,7 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
                         <FocusBlockView character={character} />
                     </div>
 
+                    {renderPastimes()}
                 </div>
 
                 <div>

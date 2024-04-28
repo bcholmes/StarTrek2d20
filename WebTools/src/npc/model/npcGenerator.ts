@@ -434,7 +434,7 @@ export class NpcGenerator {
         character.jobAssignment = specialization.name;
         character.speciesStep = new SpeciesStep(species.id);
         if (species.id === Species.CyberneticallyEnhanced) {
-            let originalSpecies = SpeciesHelper.generateSpecies();
+            let originalSpecies = SpeciesHelper.generateSpecies(CharacterType.Starfleet);
             character.speciesStep.originalSpecies = originalSpecies;
         }
         let nameSpecies = species;

@@ -1,17 +1,18 @@
 ﻿import React from 'react';
-import {character} from '../common/character';
 import {Skill} from '../helpers/skills';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { makeKey } from '../common/translationKey';
+import { Character } from '../common/character';
 
 interface ISkillProperties extends WithTranslation {
     skill: Skill;
     points: number;
+    character: Character;
 }
 
 class SkillView extends React.Component<ISkillProperties, {}> {
     render() {
-        const {skill, points, t} = this.props;
+        const {skill, points, t, character} = this.props;
 
         return (
             <table cellPadding="0" cellSpacing="0">

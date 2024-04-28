@@ -1,6 +1,6 @@
 ﻿import {SkillsHelper, Skill} from './skills';
 import {Attribute, AttributesHelper} from './attributes';
-import {Character, character } from '../common/character';
+import {Character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import i18next from 'i18next';
 import { hasSource } from '../state/contextFunctions';
@@ -1211,27 +1211,12 @@ class CareerEvents {
     }
 
     private improveAttribute(attribute: Attribute) {
-        const max = Character.maxAttribute(character);
-        if (character.hasMaxedAttribute() && character.attributes[attribute].value + 1 === max) {
-            return;
-        }
-
-        character.attributes[attribute].value++;
     }
 
     private improveDiscipline(discipline: Skill) {
-        const max = Character.maxDiscipline(character);
-        if (character.hasMaxedSkill() && character.skills[discipline].expertise + 1 === max) {
-            return;
-        }
-
-        character.skills[discipline].expertise++;
     }
 
     private fieldCommission() {
-        if (character.enlisted && character.educationStep) {
-            character.educationStep.enlisted = false;
-        }
     }
 
 }

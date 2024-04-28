@@ -1,5 +1,4 @@
 ﻿import React from 'react';
-import {character} from '../common/character';
 import EraSelectionPage from './eraSelectionPage';
 import ToolSelectionPage from './toolSelectionPage';
 import SpeciesPage from './speciesPage';
@@ -114,8 +113,6 @@ export class PageFactory {
         if (!factory) {
             console.error(`Unable to find a page factory for ${PageIdentity[page]}`);
         }
-
-        character.update();
 
         return factory ? factory() : undefined;
     }

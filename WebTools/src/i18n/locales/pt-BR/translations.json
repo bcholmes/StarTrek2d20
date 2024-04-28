@@ -1233,7 +1233,9 @@
     "Role.flightController.description": "Não sendo uma típica função sênior da equipe, alguns capitães, particularmente aqueles operando em espaço desconhecido, escolha o timoneiro ou oficial de controle de voo mais sênior para servir como funcionário sênior também.",
 
     "Role.shipsCounselor": "Psicólogo da Nave",
-    "Role.shipsCounselor,description": "Em naves maiores e bases estelares, é comum ter pessoal dedicado à saúde mental. Alguns capitães os consideram conselheiros valiosos, já que o treinamento deles cobre cultura e psicologia, tornando-os excepcionalmente bons em ler o humor e as intenções dos outros.",
+
+    "Role.shipsCounselor.description": "Em naves maiores e bases estelares, é comum ter pessoal dedicado à saúde mental. Alguns capitães os consideram conselheiros valiosos, já que o treinamento deles cobre cultura e psicologia, tornando-os excepcionalmente bons em ler o humor e as intenções dos outros.",
+
     "Role.communicationsOfficer": "Oficial de Comunicações",
 
     "Role.communicationsOfficer.description": "Mais comuns nos primórdios da Frota Estelar, oficiais de comunicações dedicados normalmente são habilidosos em linguística e criptografia e auxiliam com tecnologias avançadas de tradução e decodificação, portanto, são valiosos durante encontros com novas culturas e com povos hostis.",

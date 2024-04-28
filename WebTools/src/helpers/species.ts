@@ -1,6 +1,6 @@
 ﻿import { Attribute } from './attributes';
 import { TalentModel, TalentsHelper } from './talents';
-import { AlliedMilitaryDetails, Character, character } from '../common/character';
+import { AlliedMilitaryDetails, Character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Era } from '../helpers/eras';
 import { Source } from '../helpers/sources';
@@ -2022,10 +2022,10 @@ class _Species {
         return result;
     }
 
-    generateSpecies(): Species {
-        if (character.type === CharacterType.KlingonWarrior && store.getState().context.era === Era.NextGeneration) {
+    generateSpecies(characterType: CharacterType = CharacterType.Starfleet): Species {
+        if (characterType === CharacterType.KlingonWarrior && store.getState().context.era === Era.NextGeneration) {
             return Species.Klingon;
-        } else if (character.type === CharacterType.KlingonWarrior) {
+        } else if (characterType === CharacterType.KlingonWarrior) {
             let roll = Math.floor(Math.random() * 20) + 1;
             // it doesn't appear that there are any real rules for this.
             return roll <= 5 ? Species.KlingonQuchHa : Species.Klingon;
@@ -2125,30 +2125,6 @@ class _Species {
             }
 
             return species;
-        }
-    }
-
-    applySpecies(species: Species, mixed?: Species, otherSpecies?: Species) {
-        let s = this.getSpeciesByType(species);
-
-        if (this._species[species].attributes.length !== 6) {
-            s.attributes.forEach(attr => {
-                character.attributes[attr].value++;
-            });
-        }
-
-        character.addTrait(s.trait);
-
-        if (mixed != null) {
-            s = this.getSpeciesByType(mixed);
-            character.addTrait(s.trait);
-        }
-
-        if (otherSpecies != null) {
-            s = this.getSpeciesByType(otherSpecies);
-            if (species === Species.Kobali && s.attributes.length <= 3) {
-                s.attributes.forEach(a => character.attributes[a].value++)
-            }
         }
     }
 

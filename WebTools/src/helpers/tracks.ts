@@ -1,5 +1,4 @@
 ﻿import {Skill} from './skills';
-import {character } from '../common/character';
 import {CharacterType } from '../common/characterType';
 import {Source} from './sources';
 import { Attribute } from './attributes';
@@ -7,6 +6,7 @@ import { hasSource } from '../state/contextFunctions';
 import { Track } from './trackEnum';
 import { makeKey } from '../common/translationKey';
 import i18next from 'i18next';
+import { Character } from '../common/character';
 
 export enum ImprovementRuleType {
     AT_LEAST_ONE, MUST_INCLUDE_ALL, MAY_DECREMENT_ONE
@@ -483,7 +483,7 @@ export class TracksHelper {
         }
     }
 
-    applyTrack(track: Track, type: CharacterType) {
+    applyTrack(character: Character, track: Track, type: CharacterType) {
         const model = this.getTrack(track, type);
         switch (model.id) {
             case Track.EnlistedSecurityTraining:

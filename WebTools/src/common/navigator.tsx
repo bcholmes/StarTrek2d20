@@ -1,6 +1,5 @@
 ﻿import { PageIdentity } from '../pages/pageIdentity';
 import { Events, EventIdentity } from './eventChannel';
-import { character } from './character';
 
 export class Navigator {
 
@@ -9,7 +8,6 @@ export class Navigator {
         page.classList.add('page-out');
 
         setTimeout(() => {
-            character.update();
             Events.signal(EventIdentity.ShowPage, pageId);
         },
         400);
@@ -20,7 +18,6 @@ export class Navigator {
         page.classList.add('page-out');
 
         setTimeout(() => {
-            character.update();
             Events.signal(EventIdentity.HistoryBack, pageId);
         },
         400);

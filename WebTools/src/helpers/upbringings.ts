@@ -1,9 +1,9 @@
 ﻿import i18next from 'i18next';
-import {character} from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { makeKey } from '../common/translationKey';
 import {Attribute} from './attributes';
 import {Skill} from './skills';
+import { Character } from '../common/character';
 
 export enum EarlyOutlook {
     // Core
@@ -459,18 +459,18 @@ class Upbringings {
         return list ? list[0] : undefined;
     }
 
-    getAllUpbringings(alternate: boolean = false) {
-        var list = this.getEarlyOutlooksList(character.type, alternate);
+    getAllUpbringings(characterType: CharacterType, alternate: boolean = false) {
+        var list = this.getEarlyOutlooksList(characterType, alternate);
         return this.toList(list);
     }
 
-    generateUpbringing(alternate: boolean) {
-        let list = this.getEarlyOutlooksList(character.type, alternate);
+    generateUpbringing(characterType: CharacterType, alternate: boolean) {
+        let list = this.getEarlyOutlooksList(characterType, alternate);
         var roll = Math.floor(Math.random() * list.length);
         return list[roll];
     }
 
-    applyUpbringing(upbringing: EarlyOutlookModel, accepted: boolean) {
+    private applyUpbringing(character: Character, upbringing: EarlyOutlookModel, accepted: boolean) {
 
         if (accepted) {
             character.attributes[upbringing.attributeAcceptPlus2].value += 2;

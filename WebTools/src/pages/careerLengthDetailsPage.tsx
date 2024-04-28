@@ -22,7 +22,7 @@ const CareerLengthDetailsPage : React.FC<ICharacterProperties> = ({character}) =
 
     const { t } = useTranslation();
     const [ talentName, setTalentName ] = useState(null);
-    const career = CareersHelper.instance.getCareer(character.careerStep?.career);
+    const career = CareersHelper.instance.getCareer(character.careerStep?.career, character);
 
     useEffect(() => {
         if (career.talent != null) {

@@ -44,7 +44,7 @@ class CharacterSheetData {
             new SectionContent(i18n.t('Construct.other.career'), this.character.careerStep?.career != null
                 ? (this.character.stereotype === Stereotype.SoloCharacter
                     ? CareersHelper.instance.getSoloCareerLength(this.character.careerStep?.career).localizedName
-                    : CareersHelper.instance.getCareer(this.character.careerStep?.career).localizedName)
+                    : CareersHelper.instance.getCareer(this.character.careerStep?.career, this.character).localizedName)
                 : i18n.t('Common.text.none')),
             new SectionContent(i18n.t('Construct.other.traits'), this.character.getAllTraits())
         ];

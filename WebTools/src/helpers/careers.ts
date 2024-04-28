@@ -1,5 +1,5 @@
 ﻿import {TalentsHelper, ADVANCED_TEAM_DYNAMICS, TalentModel} from './talents';
-import {Character, character } from '../common/character';
+import {Character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Career } from './careerEnum';
 import i18next from 'i18next';
@@ -134,8 +134,7 @@ export class CareersHelper {
     }
 
     private getList(type: CharacterType) {
-        let list = this.getBaseList(type);
-        return list.filter(c => c.id !== Career.Young || !character.hasTalent(ADVANCED_TEAM_DYNAMICS));
+        return this.getBaseList(type);
     }
 
     getCareers(character: Character) {
@@ -161,8 +160,8 @@ export class CareersHelper {
         return this._soloCareerLengths;
     }
 
-    getCareer(career: Career, c: Character = character) {
-        if (character.stereotype === Stereotype.SoloCharacter) {
+    getCareer(career: Career, c: Character) {
+        if (c.stereotype === Stereotype.SoloCharacter) {
             return this.getSoloCareerLength(career);
         } else {
             const list = this.getBaseList(c.type);

@@ -762,7 +762,6 @@ class Marshaller {
                 let species = SpeciesHelper.getSpeciesByType(speciesCode);
                 if (species != null) {
                     result.speciesStep = new SpeciesStep(speciesCode);
-                    result.addTrait(species.trait);
 
                     if (json.mixedSpecies != null) {
                         let speciesCode = SpeciesHelper.getSpeciesTypeByName(json.mixedSpecies);

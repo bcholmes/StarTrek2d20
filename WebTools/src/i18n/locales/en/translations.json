@@ -418,6 +418,7 @@
     "Construct.other.careerEvents": "Career Events",
     "Construct.other.characterType": "Character Type",
     "Construct.other.crew": "Crew",
+    "Construct.other.department": "Department",
     "Construct.other.departments": "Departments",
     "Construct.other.determination": "Determination",
     "Construct.other.discipline": "Discipline",
@@ -434,6 +435,7 @@
     "Construct.other.job": "Job",
     "Construct.other.missionProfile": "Mission Profile",
     "Construct.other.name": "Name",
+    "Construct.other.pastimes": "Pastimes",
     "Construct.other.pronouns": "Pronouns",
     "Construct.other.power": "Power",
     "Construct.other.purpose": "Purpose",
@@ -450,6 +452,7 @@
     "Construct.other.spaceFrame": "Space Frame",
     "Construct.other.specialRules": "Special Rules",
     "Construct.other.species": "Species",
+    "Construct.other.speciesAbility": "Species Ability",
     "Construct.other.stats": "Stats",
     "Construct.other.stress": "Stress",
     "Construct.other.systems": "Systems",
@@ -935,7 +938,7 @@
     "Equipment.armor": "Armour",
     "Equipment.communicator": "Communicator",
     "Equipment.tricorder": "Tricorder",
-    "Equipment.medkit": "MedKit",
+    "Equipment.medKit": "MedKit",
     "Equipment.engineeringKit": "Engineering Kit",
     "Equipment.orionMultiKey": "Orion Multi-Key",
     "Equipment.ushaanTor": "Ushaan-Tor ice pick",
@@ -1252,7 +1255,9 @@
     "Role.flightController.description": "Not a typical senior staff role, some captains, particularly those operating in uncharted space, choose the most senior helmsman or flight control officer to serve as senior staff as well.",
 
     "Role.shipsCounselor": "Ship's Counselor",
-    "Role.shipsCounselor,description": "On larger ships and starbases, it’s common to have personnel dedicated to the mental soak. Some captains regard them as valuable advisors, as their training covers both culture and psychology, making them exceptionally good at reading the moods and intentions of others.",
+
+    "Role.shipsCounselor.description": "On larger ships and starbases, it’s common to have personnel dedicated to the mental soak. Some captains regard them as valuable advisors, as their training covers both culture and psychology, making them exceptionally good at reading the moods and intentions of others.",
+
     "Role.communicationsOfficer": "Communications Officer",
 
     "Role.communicationsOfficer.description": "More common in the earlier days of Starfleet, dedicated communications officers are typically skilled in linguistics and cryptography, and aided with advanced translation and decryption technologies, and thus valuable during encounters with both new cultures, and with hostile ones.",
@@ -1275,6 +1280,7 @@
     "Source.type.unofficial": "Unofficial Sources",
 
     "Source.book.core": "Core",
+    "Source.book.core2ndEdition": "Core 2e",
     "Source.book.alphaQuadrant": "Alpha Quadrant",
     "Source.book.betaQuadrant": "Beta Quadrant",
     "Source.book.gammaQuadrant": "Gamma Quadrant",

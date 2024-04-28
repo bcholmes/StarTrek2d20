@@ -4,7 +4,6 @@ import { PDFDocument } from '@cantoo/pdf-lib'
 import { ICharacterSheet } from '../helpers/sheets';
 import {Button} from './button';
 import { ModalControl } from './modal';
-import { character } from '../common/character';
 import { Construct } from '../common/construct';
 import { getNavigatorLanguage } from '../i18n/config';
 
@@ -82,7 +81,7 @@ class _CharacterSheetDialog extends React.Component<ICharacterSheetDialogPropert
 
 class CharacterSheetDialogControl {
 
-    show(sheets: ICharacterSheet[], suffix: string, c: Construct = character) {
+    show(sheets: ICharacterSheet[], suffix: string, c: Construct) {
         let browserLanguage = getNavigatorLanguage();
         let filteredSheets = sheets.filter(s => s.getLanguage() === "en" || browserLanguage.indexOf(s.getLanguage()) === 0);
 
