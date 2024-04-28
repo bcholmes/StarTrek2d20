@@ -877,7 +877,7 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
 
                 let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
 
-                blocks = this.createTextBlocks(role.ability, paragraphStyle, symbolStyle, line, page);
+                blocks = this.createTextBlocks(role.localizedAbility, paragraphStyle, symbolStyle, line, page);
                 blocks.forEach(b => lines.push(b));
                 startLine = this.addBlankLineAfter(lines, page);
             }

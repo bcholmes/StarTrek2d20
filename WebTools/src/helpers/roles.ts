@@ -160,6 +160,12 @@ export class RoleModel {
         return key === localized ? this.description : localized;
     }
 
+    get localizedAbility() {
+        const key = makeKey('Role.' + (this.isKlingon ? "klingon." : ""), Role[this.id], ".ability");
+        const localized = i18next.t(key);
+        return key === localized ? this.ability : localized;
+    }
+
     isKlingonRole() {
         return this.prerequisites.filter(p => p instanceof KlingonPrerequisite)?.length > 0;
     }

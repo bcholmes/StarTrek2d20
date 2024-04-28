@@ -254,6 +254,28 @@ const RankIndicators = {
             <path style="display:inline;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 284.89601,242.91828 -0.0283,7.39753 9.22341,2e-5 0.0283,-7.39753 z" transform="rotate(34.901462)" id="rect7"/>
             <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 285.21117,225.43519 -0.0108,2.87242 8.72227,0.002 0.0108,-2.87242 z" transform="rotate(34.901462)" id="rect8"/>
         </g>
+    </g>`,
+
+    commodore: `<g>
+        <path id="path1" style="display:inline;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 196.43555,223.39695 3.9e-4,28.24744 124.25808,-4e-5 -3.9e-4,-28.24743 z" transform="rotate(34.627047)"/>
+        <g id="g5">
+            <path style="display:inline;fill:#970f0f;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 103.62405,378.24488 17.50725,-24.89612 7.5438,5.30426 -17.50725,24.89611 z" id="path2"/>
+            <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 301.75732,223.48837 -0.0283,7.39753 8.72387,8.3e-4 0.0272,-7.39914 z" transform="rotate(34.901462)" id="path3"/>
+            <path style="display:inline;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 301.43508,242.91802 -0.0283,7.39753 9.22341,2e-5 0.0267,-7.39642 z" transform="rotate(34.901462)" id="path4"/>
+            <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 301.75024,225.43519 -0.0108,2.87242 8.72227,0.002 0.0108,-2.87242 z" transform="rotate(34.901462)" id="path5"/>
+        </g>
+        <g id="g30" transform="translate(-7.2086432,-4.757413)">
+            <path style="display:inline;fill:#970f0f;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 90.027593,368.82789 17.507257,-24.89612 7.54379,5.30426 -17.507261,24.89612 z" id="path10"/>
+            <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 285.21825,223.48937 -0.0267,7.39641 8.72115,3.5e-4 0.0283,-7.39754 z" transform="rotate(34.901462)" id="path11"/>
+            <path style="display:inline;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 284.89601,242.91828 -0.0283,7.39753 9.22341,2e-5 0.0283,-7.39753 z" transform="rotate(34.901462)" id="path20"/>
+            <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 285.21117,225.43519 -0.0108,2.87242 8.72227,0.002 0.0108,-2.87242 z" transform="rotate(34.901462)" id="path30"/>
+        </g>
+        <g id="g39" transform="translate(3.0990491,2.3707921)">
+            <path style="display:inline;fill:#970f0f;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 90.027593,368.82789 17.507257,-24.89612 7.54379,5.30426 -17.507261,24.89612 z" id="path31"/>
+            <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 285.21825,223.48937 -0.0267,7.39641 8.72115,3.5e-4 0.0283,-7.39754 z" transform="rotate(34.901462)" id="path32"/>
+            <path style="display:inline;fill-opacity:0.2;fill-rule:evenodd;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20" d="m 284.89601,242.91828 -0.0283,7.39753 9.22341,2e-5 0.0283,-7.39753 z" transform="rotate(34.901462)" id="path33"/>
+            <path style="display:inline;fill:#ffffff;fill-opacity:0.3;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-dasharray:none;stroke-opacity:1" d="m 285.21117,225.43519 -0.0108,2.87242 8.72227,0.002 0.0108,-2.87242 z" transform="rotate(34.901462)" id="path39"/>
+        </g>
     </g>`
 }
 
@@ -381,7 +403,8 @@ export class StrangeNewWorldsUniformPack extends BaseNeckProvider implements IUn
             new Swatch(Rank.Lieutenant, "Lieutenant", (token) => StrangeNewWorldsUniformPack.decorateRankSwatch(RankIndicators.lieutenant + RankIndicators.swatchOutline, Rank.Lieutenant, token), "Rank.lieutenant.name"),
             new Swatch(Rank.LtCommander, "Lt. Commander", (token) => StrangeNewWorldsUniformPack.decorateRankSwatch(RankIndicators.ltCommander + RankIndicators.swatchOutline, Rank.LtCommander, token), "Rank.ltCommander.name"),
             new Swatch(Rank.Commander, "Commander", (token) => StrangeNewWorldsUniformPack.decorateRankSwatch(RankIndicators.commander + RankIndicators.swatchOutline, Rank.Commander, token), "Rank.commander.name"),
-            new Swatch(Rank.Captain, "Captain", (token) => StrangeNewWorldsUniformPack.decorateRankSwatch(RankIndicators.captain + RankIndicators.swatchOutline, Rank.Captain, token), "Rank.captain.name")
+            new Swatch(Rank.Captain, "Captain", (token) => StrangeNewWorldsUniformPack.decorateRankSwatch(RankIndicators.captain + RankIndicators.swatchOutline, Rank.Captain, token), "Rank.captain.name"),
+            new Swatch(Rank.Commodore, "Commodore", (token) => StrangeNewWorldsUniformPack.decorateRankSwatch(RankIndicators.commodore + RankIndicators.swatchOutline, Rank.Commodore, token), "Rank.commodore.name")
         ];
     }
 
@@ -404,6 +427,8 @@ export class StrangeNewWorldsUniformPack extends BaseNeckProvider implements IUn
                 return RankIndicators.commander.replace(DefaultRed, token.divisionColor).replace(/#970f0f/g, barColour) + RankIndicators.borderOutline;
             case Rank.Captain:
                 return RankIndicators.captain.replace(DefaultRed, token.divisionColor).replace(/#970f0f/g, barColour) + RankIndicators.borderOutline;
+            case Rank.Commodore:
+                return RankIndicators.commodore.replace(DefaultRed, token.divisionColor).replace(/#970f0f/g, barColour) + RankIndicators.borderOutline;
             default:
                 return "";
         }

@@ -85,6 +85,12 @@ export default class UniformVariantRestrictions {
             case UniformEra.Romulan:
                 return [ Rank.None ].indexOf(rankIndicator) >= 0;
 
+            case UniformEra.StrangeNewWorlds:
+                return [
+                    Rank.None, Rank.Ensign, Rank.LieutenantJG, Rank.LieutenantJG, Rank.LtCommander, Rank.Commander, Rank.Captain,
+                    Rank.Commodore
+                ].indexOf(rankIndicator) >= 0;
+
             default:
                 return [
                         Rank.None, Rank.Ensign, Rank.LieutenantJG, Rank.LieutenantJG, Rank.LtCommander, Rank.Commander, Rank.Captain
