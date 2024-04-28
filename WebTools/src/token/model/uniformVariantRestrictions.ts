@@ -33,7 +33,7 @@ export default class UniformVariantRestrictions {
             result.push(UniformVariantType.Variant4);
             result.push(UniformVariantType.Variant5);
         } else if (uniformEra === UniformEra.OriginalSeries) {
-            if (DivisionColors.getDivision(uniformEra, divisionColor) === "Command" && rank === Rank.Captain) {
+            if (DivisionColors.getDivision(uniformEra, divisionColor) === "Command" && (rank === Rank.Captain || rank === Rank.Commodore)) {
                 result.push(UniformVariantType.Variant1);
             }
             if (bodyType === BodyType.AverageMale) {
@@ -78,6 +78,7 @@ export default class UniformVariantRestrictions {
                         Rank.Sergeant, Rank.Corporal, Rank.Private
                     ].indexOf(rankIndicator) >= 0;
 
+            case UniformEra.Bynar:
             case UniformEra.Civilian:
             case UniformEra.Ferengi:
             case UniformEra.Cardassian:
@@ -86,6 +87,7 @@ export default class UniformVariantRestrictions {
                 return [ Rank.None ].indexOf(rankIndicator) >= 0;
 
             case UniformEra.StrangeNewWorlds:
+            case UniformEra.OriginalSeries:
                 return [
                     Rank.None, Rank.Ensign, Rank.LieutenantJG, Rank.LieutenantJG, Rank.LtCommander, Rank.Commander, Rank.Captain,
                     Rank.Commodore

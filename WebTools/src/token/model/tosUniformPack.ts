@@ -242,6 +242,49 @@ const OriginalSeriesFemaleBodyEngineeringSymbol= `<g>
     <path style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.11072px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 332.16897,364.0919 2.15346,2.93516 4.48569,-1.18553 -0.40042,-6.89029 -5.11989,-2.42659 -5.98584,4.3925 1.77417,8.27018 c 0,0 4.90614,1.46669 6.76718,1.73103 1.86104,0.26434 4.30325,0.27277 4.30325,0.27277 l -0.025,-0.28001 c 0,0 -5.47227,-1.75604 -7.3201,-2.88741 -1.84783,-1.13139 -2.89675,-2.3666 -3.1547,-4.07385 -0.25795,-1.70723 0.52648,-3.66906 1.66795,-4.56441 1.14147,-0.89536 2.44753,-1.02105 3.57976,-0.57109 1.13223,0.44996 1.95817,1.20532 2.24882,2.30057 0.29066,1.09525 0.39195,2.10571 -0.16787,3.1577 -0.5598,1.05203 -1.71982,0.85696 -2.52407,0.43906 -0.80428,-0.41789 -1.76299,-1.55147 -1.76299,-1.55147 z" id="path18493"/>
 </g>`;
 
+const rankIndicator = {
+    border: {
+        commodore: `<g>
+            <rect style="opacity:1;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:#ffd59c;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect34812" width="126.25761" height="30.247616" x="195.43486" y="222.39742" rx="4" ry="4" transform="rotate(34.627047)"/>
+            <rect style="fill:#ffd59c;fill-rule:evenodd;stroke:none;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-opacity:0.3;fill-opacity:1" id="rect2" width="29.353292" height="22.161291" x="-252.30537" y="274.59122" transform="rotate(-55.418977)"/>
+            <g id="g51917" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-240.46769,291.99762)">
+                <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect50013" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
+                <path id="rect51906" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z" />
+                <path id="path51909" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z" />
+                <path id="path51911" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z" />
+            </g>
+            <g id="g2559" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-258.20528,279.77306)">
+                <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect2551" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
+                <path id="path2553" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z" />
+                <path id="path2555" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z" />
+                <path id="path2557" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z" />
+            </g>
+            <rect style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffd59c;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect47378" width="126.25761" height="30.247616" x="195.43486" y="222.39742" rx="4" ry="4" transform="rotate(34.627047)"/>
+        </g>`
+    },
+
+    swatch: {
+        commodore: `<g>
+            <rect style="opacity:1;fill:#d30000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect4774" width="126.25761" height="30.247616" x="195.43486" y="222.39742" transform="rotate(34.627047)"/>
+            <rect style="fill:#ffd59c;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;stroke-opacity:0.3" id="rect1" width="29.353292" height="22.161291" x="-252.30537" y="274.59122" transform="rotate(-55.418977)"/>
+            <g id="g4786" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-240.46769,291.99762)">
+                <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect4778" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
+                <path id="path4780" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z" />
+                <path id="path4782" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z" />
+                <path id="path4784" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z" />
+            </g>
+            <g id="g4796" transform="matrix(0.59120647,-0.8382132,0.8382132,0.59120647,-258.20528,279.77306)">
+                <rect style="opacity:1;fill:#ffd59c;fill-opacity:1;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect4788" width="28.059921" height="5.1700811" x="125.05373" y="316.33209" rx="0" ry="0"/>
+                <path id="path4790" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" transform="rotate(46.33222)" d="m 325.3487,124.76265 0.95071,-1.04483 0.0422,2.12776 c -0.0669,0.7562 -1.25872,1.5395 -2.27776,1.46427 l -8.20257,-0.0256 -1.11848,1.10723 -0.26503,-2.16058 c -0.008,-0.93982 0.53648,-1.51249 1.22913,-1.52357 z" />
+                <path id="path4792" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 143.71967,321.65786 1.41222,-0.0337 -1.50999,1.4997 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.65144,-6.03598 -1.54934,-0.0613 1.36228,-1.58176 c 0.67431,-0.65471 1.61954,-0.4618 2.00128,-0.0913 z" />
+                <path id="path4794" style="opacity:1;fill:#ffd59c;stroke:#000000;stroke-width:0.487457;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" d="m 153.55018,321.48837 0.71733,0.0454 -0.8151,1.42065 c -0.59319,0.47374 -1.98272,0.15248 -2.63192,-0.63659 l -5.64516,-5.95105 -1.57321,-0.0445 1.37987,-1.68353 c 0.67431,-0.65471 1.42379,-0.66331 1.87149,-0.25 z" />
+            </g>
+            <rect style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:40;stroke-dasharray:none;stroke-opacity:1" id="rect4798" width="126.25761" height="30.247616" x="195.43486" y="222.39742" transform="rotate(34.627047)"/>
+        </g>`
+    }
+}
+
+
 export class TosUniformPack extends BaseNeckProvider implements IUniformPack {
 
     getUniformSwatches() {
@@ -265,7 +308,7 @@ export class TosUniformPack extends BaseNeckProvider implements IUniformPack {
                     } else if (division === Division[Division.Operations]) {
                         result += OriginalSeriesMaleBodyEngineeringSymbol;
                     }
-                } else if (token.variant === UniformVariantType.Variant1 && token.rankIndicator === Rank.Captain
+                } else if (token.variant === UniformVariantType.Variant1 && this.isCaptainOrCommodore(token)
                         && DivisionColors.getDivision(token.uniformEra, token.divisionColor) === Division[Division.Command]) {
                     result = TosUniforms.averageMaleBodyCommandVariant;
                 } else if (token.variant === UniformVariantType.Variant2) {
@@ -283,7 +326,7 @@ export class TosUniformPack extends BaseNeckProvider implements IUniformPack {
                     } else if (division === Division[Division.Operations]) {
                         result += OriginalSeriesFemaleBodyEngineeringSymbol;
                     }
-                } else if (token.variant === UniformVariantType.Variant1 && token.rankIndicator === Rank.Captain
+                } else if (token.variant === UniformVariantType.Variant1 && this.isCaptainOrCommodore(token)
                         && DivisionColors.getDivision(token.uniformEra, token.divisionColor) === Division[Division.Command]) {
                     result = TosUniforms.averageFemaleBodyCommandVariant;
                 }
@@ -295,11 +338,15 @@ export class TosUniformPack extends BaseNeckProvider implements IUniformPack {
             + result.replace(DefaultRed, token.divisionColor).replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
     }
 
+    isCaptainOrCommodore(token: Token) {
+        return token.rankIndicator === Rank.Captain || token.rankIndicator === Rank.Commodore;
+    }
+
     getUniformVariantSwatches(token: Token) {
         let swatches = [];
         if (token.bodyType === BodyType.AverageMale) {
             swatches.push(new Swatch(UniformVariantType.Base, "Standard Uniform", (token) => UniformCatalog.decorateSwatch(this.getNeck(token.bodyType, token.skinColor, undefined, UniformEra.OriginalSeries) + TosUniforms.averageMaleBody, 1000 + UniformVariantType.Base, token)));
-            if (DivisionColors.getDivision(token.uniformEra, token.divisionColor) === "Command" && token.rankIndicator === Rank.Captain) {
+            if (DivisionColors.getDivision(token.uniformEra, token.divisionColor) === "Command" && this.isCaptainOrCommodore(token)) {
                 swatches.push(new Swatch(UniformVariantType.Variant1, "Command Variant", (token) => UniformCatalog.decorateSwatch(this.getNeck(token.bodyType, token.skinColor, undefined, UniformEra.OriginalSeries) + TosUniforms.averageMaleBodyCommandVariant, 1000 + UniformVariantType.Variant1, token)));
             }
             swatches.push(new Swatch(UniformVariantType.Variant2, "Jumpsuit", (token) => UniformCatalog.decorateSwatch(this.getNeck(token.bodyType, token.skinColor, undefined, UniformEra.OriginalSeries) + TosUniforms.averageMaleBodyJumpsuit, 1000 + UniformVariantType.Variant2, token)));
@@ -307,7 +354,7 @@ export class TosUniformPack extends BaseNeckProvider implements IUniformPack {
             return swatches;
         } else {
             swatches.push(new Swatch(UniformVariantType.Base, "Standard Uniform", (token) => UniformCatalog.decorateSwatch(this.getNeck(token.bodyType, token.skinColor, undefined, UniformEra.OriginalSeries) + TosUniforms.averageFemaleBody, 1000 + UniformVariantType.Base, token)));
-            if (DivisionColors.getDivision(token.uniformEra, token.divisionColor) === "Command" && token.rankIndicator === Rank.Captain) {
+            if (DivisionColors.getDivision(token.uniformEra, token.divisionColor) === "Command" && this.isCaptainOrCommodore(token)) {
                 swatches.push(new Swatch(UniformVariantType.Variant1, "Command Variant", (token) => UniformCatalog.decorateSwatch(this.getNeck(token.bodyType, token.skinColor, undefined, UniformEra.OriginalSeries) + TosUniforms.averageFemaleBodyCommandVariant, 1000 + UniformVariantType.Variant1, token)));
                 return swatches;
             } else {
@@ -324,7 +371,8 @@ export class TosUniformPack extends BaseNeckProvider implements IUniformPack {
             new Swatch(Rank.Lieutenant, "Lieutenant", (token) => TosUniformPack.decorateRankSwatch(TosLieutenant, Rank.Lieutenant, token), "Rank.lieutenant.name"),
             new Swatch(Rank.LtCommander, "Lt. Commander", (token) => TosUniformPack.decorateRankSwatch(TosLtCommander, Rank.LtCommander, token), "Rank.ltCommander.name"),
             new Swatch(Rank.Commander, "Commander", (token) => TosUniformPack.decorateRankSwatch(TosCommander, Rank.Commander, token), "Rank.commander.name"),
-            new Swatch(Rank.Captain, "Captain", (token) => TosUniformPack.decorateRankSwatch(TosCaptain, Rank.Captain, token), "Rank.captain.name")
+            new Swatch(Rank.Captain, "Captain", (token) => TosUniformPack.decorateRankSwatch(TosCaptain, Rank.Captain, token), "Rank.captain.name"),
+            new Swatch(Rank.Commodore, "Commodore", (token) => TosUniformPack.decorateRankSwatch(rankIndicator.swatch.commodore, Rank.Commodore, token), "Rank.commodore.name")
         ];
     }
 
@@ -350,6 +398,12 @@ export class TosUniformPack extends BaseNeckProvider implements IUniformPack {
                 } else {
                     return TosCaptainBorder.replace(DefaultRed, token.divisionColor);
                 }
+            case Rank.Commodore:
+                if (token.variant === UniformVariantType.Variant1 && DivisionColors.getDivision(UniformEra.OriginalSeries, token.divisionColor) === "Command") {
+                    return rankIndicator.border.commodore.replace(DefaultRed, "#88966c");
+                } else {
+                    return rankIndicator.border.commodore.replace(DefaultRed, token.divisionColor);
+                }
             default:
                 return "";
         }
@@ -357,7 +411,7 @@ export class TosUniformPack extends BaseNeckProvider implements IUniformPack {
 
     getBorderColor(token: Token) {
         if (token.variant === UniformVariantType.Variant1 && DivisionColors.getDivision(UniformEra.OriginalSeries, token.divisionColor) === "Command"
-                && token.rankIndicator === Rank.Captain) {
+                && (token.rankIndicator === Rank.Captain || token.rankIndicator === Rank.Commodore)) {
             return "#88966c";
         } else {
             return token.divisionColor;

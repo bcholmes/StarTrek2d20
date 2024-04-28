@@ -58,6 +58,7 @@ export enum Role {
     Translator,
 
     Navigator,
+    Helmsman,
 
     // Federation-Klingon War
     CombatEngineer,
@@ -272,11 +273,11 @@ export class RolesHelper {
             new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
         new RoleModel(
-            Role.FlightController,
+            Role.Helmsman,
             "Helmsman",
             "The helmsman manages and oversees all technical operations aboard or involving  the ship, normally from the helm station on the bridge, or in conjunction with the chief engineer (on smaller ships, one officer may fill both roles). This often entails taking on the duties of a science officer, if there is no dedicated science officer in the senior staff. When the helmsman succeeds at a Task assisted by the ship’s Computers or Sensors, or using a tricorder, the character generates one bonus Momentum, which may only be used on the Obtain Information Momentum spend.",
             Skill.Conn,
-            "You reduce the Difficulty of any task to translate or understand an unfamiliar language by 2, to a minimum of 0.",
+            "When the helmsman is required to analyze or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",
             new SourcePrerequisite(Source.TricorderSet),
             new AnyEraPrerequisite(Era.OriginalSeries),
             new NotKlingonPrerequisite(),
@@ -447,7 +448,7 @@ export class RolesHelper {
             "Helm Officer (DeghwI’)",
             "The weapons officer has direct control of the ship’s weaponry, and is responsible for their maintenance and upkeep. Since this can vary from vessel to vessel, it is vital that a ship’s weapons officer be completely familiar with the arsenal they oversee. The weapons officer also has the duty of becoming familiar with enemy vessels, learning their strengths, weaknesses, and capabilities to advise the commanding officer during battle.",
             Skill.Conn,
-            "When the weapons officer succeeds at an attack with the ship’s weapons, they may re-roll a number of challenge dice on the damage roll equal to the weapons officer’s Security score.",
+            "When the helm officer succeeds at a Conn task to control a starship, they generate one point of bonus Momentum to be used on that task. Bonus Momentum may not be saved.",
             new SourcePrerequisite(Source.KlingonCore),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
             new KlingonPrerequisite()),
