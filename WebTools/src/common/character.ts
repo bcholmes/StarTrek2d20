@@ -339,6 +339,7 @@ export class Character extends Construct {
     public _focuses: string[];
     public typeDetails: CharacterTypeDetails;
     public pronouns: string = '';
+    public pastimes: string[];
 
     // steps
     public educationStep?: EducationStep;
@@ -871,6 +872,11 @@ export class Character extends Construct {
         if (this.enlisted) {
             traits.push("Enlisted Crewman");
         }
+        this.careerEvents?.forEach(e => {
+            if (e.trait) {
+                traits.push(e.trait);
+            }
+        })
         if (this.hasTalent("Augmented Ability (Control)")
                 || this.hasTalent("Augmented Ability (Daring)")
                 || this.hasTalent("Augmented Ability (Fitness)")
