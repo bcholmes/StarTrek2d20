@@ -27,6 +27,7 @@ import D20IconButton from '../solo/component/d20IconButton';
 import { connect } from 'react-redux';
 import { Stereotype } from '../common/construct';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
+import { DisciplinesOrDepartments } from '../view/disciplinesOrDepartments';
 
 class EnvironmentAttributeController implements IAttributeController {
 
@@ -187,7 +188,10 @@ const EnvironmentDetailsPage: React.FC<ICharacterProperties> = ({character}) => 
                             : (<AttributeListComponent controller={controller} />)}
                     </div>
                     <div className="col-lg-6 my-3">
-                        <Header level={2} className="mb-3"><>{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</></Header>
+                        <Header level={2} className="mb-3">
+                            <DisciplinesOrDepartments character={character} />
+                            <>{' (' + t('Common.text.selectOne') + ')'}</>
+                        </Header>
 
                         <DisciplineListComponent controller={disciplineController} />
                     </div>

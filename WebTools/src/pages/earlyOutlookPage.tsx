@@ -20,6 +20,7 @@ import { Stereotype } from '../common/construct';
 import { CharacterType } from '../common/characterType';
 import { hasSource } from '../state/contextFunctions';
 import { Source } from '../helpers/sources';
+import { DisciplinesOrDepartments } from '../view/disciplinesOrDepartments';
 
 enum EarlyOutlookTab {
     Upbringings,
@@ -134,7 +135,8 @@ const EarlyOutlookPage : React.FC<ICharacterProperties> = ({character}) => {
                         <tr>
                             <td></td>
                             <td><b>{t('Construct.other.attributes')}</b></td>
-                            <td><b>{t('Construct.other.disciplines')}</b></td>
+                            <td></td>
+                            <td><b><DisciplinesOrDepartments character={character} /></b></td>
                             <td></td>
                         </tr>
                     </thead>
@@ -166,7 +168,8 @@ const EarlyOutlookPage : React.FC<ICharacterProperties> = ({character}) => {
                         <tr>
                             <td></td>
                             <td><b>{t('Construct.other.attributes')}</b></td>
-                            <td><b>{t('Construct.other.disciplines')}</b></td>
+                            <td></td>
+                            <td><b><DisciplinesOrDepartments character={character} /></b></td>
                             <td></td>
                         </tr>
                     </thead>
@@ -198,7 +201,8 @@ const EarlyOutlookPage : React.FC<ICharacterProperties> = ({character}) => {
                         <tr>
                             <td></td>
                             <td><b>{t('Construct.other.attributes')}</b></td>
-                            <td><b>{t('Construct.other.disciplines')}</b></td>
+                            <td></td>
+                            <td><b><DisciplinesOrDepartments character={character} /></b></td>
                             <td></td>
                         </tr>
                     </thead>

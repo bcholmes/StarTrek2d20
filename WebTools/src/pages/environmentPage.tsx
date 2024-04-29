@@ -18,6 +18,7 @@ import { Header } from "../components/header";
 import InstructionText from "../components/instructionText";
 import { connect } from "react-redux";
 import { Skill } from "../helpers/skills";
+import { DisciplinesOrDepartments } from "../view/disciplinesOrDepartments";
 
 enum EnvironmentTab {
     Settings,
@@ -131,7 +132,7 @@ const EnvironmentPage: React.FC<ICharacterProperties> = ({character}) => {
                         <tr>
                             <td></td>
                             <td><b>{t('Construct.other.attributes')}</b></td>
-                            <td><b>{t('Construct.other.disciplines')}</b></td>
+                            <td><b><DisciplinesOrDepartments character={character}/></b></td>
                             <td></td>
                         </tr>
                     </thead>

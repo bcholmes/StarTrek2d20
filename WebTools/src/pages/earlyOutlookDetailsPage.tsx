@@ -25,6 +25,7 @@ import { CharacterType } from '../common/characterType';
 import { Species } from '../helpers/speciesEnum';
 import { localizedFocus } from '../components/focusHelper';
 import { makeKey } from '../common/translationKey';
+import { DisciplinesOrDepartments } from '../view/disciplinesOrDepartments';
 
 const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
@@ -111,7 +112,10 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
             </div>
             <div className="row">
                 <div className="col-md-6 my-3">
-                    <Header level={2}><>{t('Construct.other.disciplines')} ({t('Common.text.selectOne')})</></Header>
+                    <Header level={2}>
+                        <DisciplinesOrDepartments character={character} />
+                        <>{' (' + t('Common.text.selectOne') + ')'}</>
+                    </Header>
                     <DisciplineListComponent controller={disciplineController} />
                 </div>
                 <div className="my-3 col-lg-6">
