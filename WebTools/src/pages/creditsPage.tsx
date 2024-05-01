@@ -66,6 +66,8 @@ const CreditsPage = () => {
                         hear the faint buzzing.
                     </p>
 
+                    <div className="row row-cols-md-2">
+                        <div className="col">
                     <Header className="my-4" level={2}>Internationalization</Header>
                     <p>
                         Recently, I've started making the app support more languages than just English: initial support for German, Spanish and French exist, but it'll
@@ -79,55 +81,61 @@ const CreditsPage = () => {
                     <p>
                         If you can help, let me know, and I'd welcome any input you can provide.
                     </p>
+                    </div>
+                    <div className="col">
+                        <Header className="my-4" level={2}>Token Art</Header>
 
-                    <Header className="my-4" level={2}>Token Art</Header>
+                        <p>Many of the art images used in the token generator were commissioned from {' '}
+                            <a href="http://kacurtis.com/" target="_blank" rel="noreferrer">Keith Curtis</a> (no SSL).
+                            I've sought out work from Keith multiple times; he's a reliable guy.
+                        </p>
+                        <p>
+                            The terms of the commission allow me to treat these images as open source.
+                        </p>
 
-                    <p>Many of the art images used in the token generator were commissioned from {' '}
-                        <a href="http://kacurtis.com/" target="_blank" rel="noreferrer">Keith Curtis</a> (no SSL).
-                        I've sought out work from Keith multiple times; he's a reliable guy.
-                    </p>
-                    <p>
-                        The terms of the commission allow me to treat these images as open source.
-                    </p>
+                        <p>
+                            I've built the token borders essentially from scratch, but I'd be lying if I didn't
+                            acknowledge the inspiration and design ideas from token borders created by <a href="https://www.reddit.com/user/Buford_TheOldMan"
+                            target="_blank" rel="noreferrer">Buford_TheOldMan</a> and <a href="https://forums.modiphius.com/u/felderburg/summary"
+                            target="_blank" rel="noreferrer">Felderburg</a>.
+                        </p>
 
-                    <p>
-                        I've built the token borders essentially from scratch, but I'd be lying if I didn't
-                        acknowledge the inspiration and design ideas from token borders created by <a href="https://www.reddit.com/user/Buford_TheOldMan"
-                        target="_blank" rel="noreferrer">Buford_TheOldMan</a> and <a href="https://forums.modiphius.com/u/felderburg/summary"
-                        target="_blank" rel="noreferrer">Felderburg</a>.
-                    </p>
+                        <p>
+                            The <em>Enterprise</em>-era Starfleet logo originated as a vector drawing on {' '}
+                            <a href="https://commons.wikimedia.org/wiki/File:Starfleet_Shoulder_Patch.svg" target="_blank" rel="noreferrer">Wikimedia
+                            Commons</a>. It was created by user Shisma, and released under the Creative Commons
+                            Attribution 3.0 Unported license. I've made a number of modifications to the image to
+                            make it a bit more screen-accurate.
+                        </p>
 
-                    <p>
-                        The <em>Enterprise</em>-era Starfleet logo originated as a vector drawing on {' '}
-                        <a href="https://commons.wikimedia.org/wiki/File:Starfleet_Shoulder_Patch.svg" target="_blank" rel="noreferrer">Wikimedia
-                        Commons</a>. It was created by user Shisma, and released under the Creative Commons
-                        Attribution 3.0 Unported license. I've made a number of modifications to the image to
-                        make it a bit more screen-accurate.
-                    </p>
+                    </div>
+                    <div className="col">
+                        <Header className="my-4" level={2}>Continuing Mission</Header>
 
-                    <Header className="my-4" level={2}>Continuing Mission</Header>
+                        <p>
+                            With permission from the <a href="https://continuingmissionsta.com/" target="_blank" rel="noreferrer">Continuing Mission</a> site
+                            maintainers, I'm starting to integrate some of the unofficial sources. That includes material by the following folks:
 
-                    <p>
-                        With permission from the <a href="https://continuingmissionsta.com/" target="_blank" rel="noreferrer">Continuing Mission</a> site
-                        maintainers, I'm starting to integrate some of the unofficial sources. That includes material by the following folks:
+                            Mephit James,
+                            "Jester" Dave Gibson, {' '}
+                            <a href="https://continuingmissionsta.com/author/michaeldismuke/" target="_blank" rel="noreferrer">Michael Dismuke</a>,
+                            Tony Pi
 
-                        Mephit James,
-                        "Jester" Dave Gibson, {' '}
-                        <a href="https://continuingmissionsta.com/author/michaeldismuke/" target="_blank" rel="noreferrer">Michael Dismuke</a>,
-                        Tony Pi
+                        </p>
 
-                    </p>
+                    </div>
+                    <div className="col">
+                        <Header className="my-4" level={2}>Contact</Header>
 
+                        <p>I'm on <a href="https://tech.lgbt/@bcholmes" target="_blank" rel="noreferrer">Mastodon</a>, {' '}
+                            <a href="https://bsky.app/profile/bcholmes.bsky.social" target="_blank" rel="noreferrer">BlueSky</a>,
+                            Discord and the <a href="https://forums.modiphius.com/u/bcholmes" target="_blank" rel="noreferrer">Modiphius Forums</a>.
+                            You can also find me on <a href="https://github.com/bcholmes" target="_blank" rel="noreferrer">GitHub</a>.</p>
 
-                    <Header className="my-4" level={2}>Contact</Header>
+                        <p>I use <a href="https://www.facebook.com/profile.php?id=100002491590474" target="_blank" rel="noreferrer">Facebook</a>, but only rarely.</p>
 
-                    <p>I'm on <a href="https://tech.lgbt/@bcholmes" target="_blank" rel="noreferrer">Mastodon</a>, {' '}
-                        <a href="https://bsky.app/profile/bcholmes.bsky.social" target="_blank" rel="noreferrer">BlueSky</a>,
-                        Discord and the <a href="https://forums.modiphius.com/u/bcholmes" target="_blank" rel="noreferrer">Modiphius Forums</a>.
-                        You can also find me on <a href="https://github.com/bcholmes" target="_blank" rel="noreferrer">GitHub</a>.</p>
-
-                    <p>I use <a href="https://www.facebook.com/profile.php?id=100002491590474" target="_blank" rel="noreferrer">Facebook</a>, but only rarely.</p>
-
+                    </div>
+                    </div>
                     <Header className="my-4" level={2}>Asked Questions, Possibly Frequently</Header>
 
                     <p>
@@ -213,11 +221,11 @@ const CreditsPage = () => {
                     </p>
 
                     <ol>
-                        <li className="my-3">First, Modiphius prefers to wait a bit between the time a new book is available for
+                        <li className="my-3 text-white" style={{ fontSize: "1.125rem"}}>First, Modiphius prefers to wait a bit between the time a new book is available for
                             pre-order and the book's new rules are implemented in the creator.
                             Personally, I think that's entirely reasonable.</li>
 
-                        <li className="my-3">Second, adding stuff to the generator takes work, and I do it as time allows.
+                        <li className="my-3 text-white" style={{ fontSize: "1.125rem"}}>Second, adding stuff to the generator takes work, and I do it as time allows.
                             I can't always turn new features around immediately.</li>
                     </ol>
 

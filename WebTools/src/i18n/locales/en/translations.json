@@ -436,7 +436,9 @@
     "Construct.other.missionProfile": "Mission Profile",
     "Construct.other.name": "Name",
     "Construct.other.pastimes": "Pastimes",
+    "Construct.other.personalThreat": "Personal Threat",
     "Construct.other.pronouns": "Pronouns",
+    "Construct.other.protection": "Protection",
     "Construct.other.power": "Power",
     "Construct.other.purpose": "Purpose",
     "Construct.other.rank": "Rank",
@@ -1164,6 +1166,18 @@
 
     "NpcType.major.name": "Major NPC",
 
+    "Rank.admiral.name": "Admiral",
+    "Rank.admiral.abbrev": "Adm.",
+
+    "Rank.viceAdmiral.name": "Vice Admiral",
+    "Rank.viceAdmiral.abbrev": "VAdm.",
+
+    "Rank.rearAdmiral.name": "Rear Admiral",
+    "Rank.rearAdmiral.abbrev": "RAdm.",
+
+    "Rank.commodore.name": "Commodore",
+    "Rank.commodore.abbrev": "Cdre.",
+
     "Rank.captain.name": "Captain",
     "Rank.captain.abbrev": "Capt.",
 
@@ -1225,42 +1239,57 @@
     "Role.commandingOfficer": "Commanding Officer",
 
     "Role.commandingOfficer.description": "The captain. Even if the commanding officer does not hold the rank of captain, they will be referred to as captain by their subordinates. Every ship must have a commanding officer.",
+    "Role.commandingOfficer.ability": "The commanding officer may spend a point of Determination to grant any other character they can communicate with one point of Determination; this does not have to be linked to a Value.",
 
     "Role.executiveOfficer": "Executive Officer",
 
     "Role.executiveOfficer.description": "Second-in-Command. The executive officer is the captain’s chief advisor, and takes command in situations where the captain is unable to. If a ship does not have a dedicated executive officer, an officer in another role should be noted as second-in-command, but they will not gain the benefits of this role.",
+    "Role.executiveOfficer.ability": "When another character in communication with the executive officer spends a point of Determination, the executive officer may spend 3 Momentum (Immediate) to let that character regain the spent point of Determination.",
 
     "Role.operationsManager": "Operations Manager",
 
     "Role.operationsManager.description": "The operations manager manages and oversees all technical operations aboard or involving the ship, normally from the Operations station on the Bridge, or in conjunction with the chief engineer (on smaller ships, one officer may fill both roles). This often entails taking on the duties of a science officer, if there is no dedicated science officer in the senior staff.",
+    "Role.operationsManager.ability": "When the operations manager succeeds at a Task assisted by the ship’s Computers or Sensors, or using a tricorder, the character generates one bonus Momentum, which may only be used on the Obtain Information Momentum Spend.",
 
     "Role.chiefEngineer": "Chief Engineer",
 
     "Role.chiefEngineer.description": "The chief engineer is responsible for ensuring that the ship remains operational and functional, and commands the engineering department aboard the ship.",
+    "Role.chiefEngineer.ability": "When aboard the ship, the chief engineer always has the Advantage “Engineering Department”, which represents the ship’s complement of engineers and technicians.",
 
     "Role.chiefOfSecurity": "Chief of Security",
 
     "Role.chiefOfSecurity.description": "The chief of security oversees the ship’s security department, and is responsible for ensuring the safety of the ship and crew during missions, for the investigation of disciplinary and criminal matters, and for overseeing the protection of important persons aboard the ship. On many ships, the chief of security operates from the Tactical station on the bridge.",
+    "Role.chiefOfSecurity.ability": "When aboard the ship, the chief of security always has the Advantage “Security Detachment”, which represents the ship’s security personnel.",
 
     "Role.chiefMedicalOfficer": "Chief Medical Officer",
 
     "Role.chiefMedicalOfficer.description": "The chief medical officer, also known as ship’s surgeon, or ship’s doctor, is responsible for the health and wellbeing of the crew and other persons aboard the ship, and leads the ship’s medical department. A chief medical officer can order, and countermand the orders of, senior officers where matters of that officer’s health are concerned.",
+    "Role.chiefMedicalOfficer.ability": "When aboard the ship, the chief medical officer always has the Advantage “Medical Department”, which represents the ship’s medical personnel.",
 
     "Role.scienceOfficer": "Science Officer",
 
     "Role.scienceOfficer.description": "A science officer is responsible for advising the commanding officer of all matters scientific, providing hypotheses in matters concerning the unknown. Not all ships have a dedicated science officer within the senior staff, often having the operations manager take on these duties.",
+    "Role.scienceOfficer.ability": "When the science officer succeeds at a Task assisted by the ship’s Computers or Sensors, or using a tricorder, the character generates one bonus Momentum, which may only be used on the Obtain Information Momentum spend.",
 
     "Role.flightController": "Flight Controller",
 
     "Role.flightController.description": "Not a typical senior staff role, some captains, particularly those operating in uncharted space, choose the most senior helmsman or flight control officer to serve as senior staff as well.",
+    "Role.flightController.ability": "When the flight controller is required to analyze or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",
 
     "Role.shipsCounselor": "Ship's Counselor",
 
     "Role.shipsCounselor.description": "On larger ships and starbases, it’s common to have personnel dedicated to the mental soak. Some captains regard them as valuable advisors, as their training covers both culture and psychology, making them exceptionally good at reading the moods and intentions of others.",
+    "Role.shipsCounselor.ability": "After succeeding at a Task to determine the emotional state or intent of another living creature, the ship’s counselor gains one bonus Momentum, which may only be used on the Obtain Information Momentum Spend.",
 
     "Role.communicationsOfficer": "Communications Officer",
 
     "Role.communicationsOfficer.description": "More common in the earlier days of Starfleet, dedicated communications officers are typically skilled in linguistics and cryptography, and aided with advanced translation and decryption technologies, and thus valuable during encounters with both new cultures, and with hostile ones.",
+    "Role.communicationsOfficer.ability": "When a Task attempted by the communications officer is increased in Difficulty because of an unfamiliar language or encryption, ignore that Difficulty increase.",
+
+    "Role.admiral": "Admiral",
+
+    "Role.admiral.description": "Flag Officers only.",
+    "Role.admiral.ability": "Select three additional Focuses, reflecting areas of expertise or subjects that pertain to the admiral’s assignment. At the start of each mission, the admiral chooses one of their three Focuses, and every Main Character receives that as an additional Focus for the mission, due to additional briefings and instructional resources.",
 
     "ShipBuildType.pod.name": "Pod",
 
