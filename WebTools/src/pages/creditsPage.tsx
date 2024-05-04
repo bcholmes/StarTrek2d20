@@ -66,7 +66,7 @@ const CreditsPage = () => {
                         hear the faint buzzing.
                     </p>
 
-                    <div className="row row-cols-md-2">
+                    <div className="row  row-cols-1 row-cols-lg-2">
                         <div className="col">
                     <Header className="my-4" level={2}>Internationalization</Header>
                     <p>
