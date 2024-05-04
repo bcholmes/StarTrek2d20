@@ -20,101 +20,10 @@ import { CareersHelper } from './careers';
 import { TracksHelper } from './tracks';
 import { localizedFocus } from '../components/focusHelper';
 import { XYLocation } from '../common/xyLocation';
-import { BorgImplants } from './borgImplant';
+import { Column, FontSpecification, ICharacterSheet, Line, TextBlock } from '../exportpdf/icharactersheet';
+import { SimpleColor } from '../common/colour';
+import { BasicGeneratedHalfPageCharacterSheet } from '../exportpdf/generatedsheet';
 
-class TextBlock {
-    text: string;
-    fontSize: number;
-    font: PDFFont;
-    height: number;
-    width: number;
-}
-
-class Line {
-    blocks: TextBlock[];
-    column: Column;
-    location: XYLocation; // represents the upper-left-hand corner of the line
-
-    constructor(location: XYLocation, column: Column, blocks?: TextBlock[]) {
-        this.location = location;
-        this.blocks = blocks || [];
-        this.column = column;
-    }
-
-    height() {
-        let h = 0.0;
-        this.blocks.forEach(b => {if (b.height > h) h = b.height; });
-        return h;
-    }
-    bottom() {
-        return new XYLocation(this.location.x, this.location.y - this.height());
-    }
-    availableWidth() {
-        let w = 0.0;
-        this.blocks.forEach(b => w += b.width);
-        return this.column.width - w;
-    }
-    isEmpty() {
-        return this.blocks.length === 0;
-    }
-    add(block: TextBlock) {
-        this.blocks.push(block);
-    }
-
-    moveToNextColumnIfNecessary(page: PDFPage) {
-        if (this.column.contains(this.bottom(), page)) {
-            return this;
-        } else if (this.column.nextColumn == null) {
-            return null;
-        } else {
-            return new Line(this.column.nextColumn.translatedStart(page), this.column.nextColumn, this.blocks);
-        }
-    }
-}
-
-class FontSpecification {
-    font: PDFFont;
-    size: number;
-
-    constructor(font: PDFFont, size: number) {
-        this.font = font;
-        this.size = size;
-    }
-}
-
-
-class Column {
-    start: XYLocation;
-    height: number;
-    width: number;
-    nextColumn?: Column;
-
-    constructor(x: number, y: number, height: number, width: number, nextColumn?: Column) {
-        this.start = new XYLocation(x, y);
-        this.height = height;
-        this.width = width;
-        this.nextColumn = nextColumn;
-    }
-
-    contains(point: XYLocation, page: PDFPage) {
-        return point.x >= this.start.x && point.x <= (this.start.x + this.width)
-            && point.y <= (page.getSize().height - this.start.y) && point.y >= (page.getSize().height - this.start.y - this.height);
-    }
-    translatedStart(page: PDFPage) {
-        let x = this.start.x;
-        let y = page.getSize().height - this.start.y;
-        return new XYLocation(x, y);
-    }
-}
-
-export interface ICharacterSheet {
-    getLanguage(): string;
-    getName(): string;
-    getThumbnailUrl(): string;
-    getPdfUrl(): string;
-    populate(pdf: PDFDocument, construct: Construct);
-    createFileName(suffix: string, construct: Construct);
-}
 
 abstract class BasicSheet implements ICharacterSheet {
 
@@ -909,7 +818,7 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         }
 
         lines.forEach(t =>
-            this.writeTextBlock(t, page)
+            t.writeTextBlocks(page, SimpleColor.from("#000000"))
         );
     }
 
@@ -929,9 +838,9 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
                     let parts = this.separateDeltas(word);
                     let blocks = parts.map(p => {
                         if (p === CHALLENGE_DICE_NOTATION) {
-                            return this.createTextBlock("A", symbolStyle);
+                            return TextBlock.create("A", symbolStyle);
                         } else {
-                            return this.createTextBlock(p, fontSpec);
+                            return TextBlock.create(p, fontSpec);
                         }
                     });
                     let sum = previousBlock == null ? 0 : previousBlock.width;
@@ -959,15 +868,15 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
                         let parts = this.separateDeltas(words[i]); // get the original word without the leading space
                         parts.forEach(p => {
                             if (p === CHALLENGE_DICE_NOTATION) {
-                                line.add(this.createTextBlock("A", symbolStyle));
+                                line.add(TextBlock.create("A", symbolStyle));
                             } else {
-                                line.add(this.createTextBlock(p, fontSpec));
+                                line.add(TextBlock.create(p, fontSpec));
                             }
                         });
                     }
                 } else {
                     textPortion += word;
-                    let block = this.createTextBlock(textPortion, fontSpec);
+                    let block = TextBlock.create(textPortion, fontSpec);
                     if (block.width < line.availableWidth()) {
                         previousBlock = block;
                     } else {
@@ -983,7 +892,7 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
                             }
                         }
                         textPortion = words[i];
-                        previousBlock = this.createTextBlock(textPortion, fontSpec);
+                        previousBlock = TextBlock.create(textPortion, fontSpec);
                     }
                 }
             }
@@ -1019,31 +928,7 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         return result;
     }
 
-    createTextBlock(text: string, fontSpec: FontSpecification) {
-        let textBlock = new TextBlock();
-        textBlock.text = text;
-        const textWidth = fontSpec.font.widthOfTextAtSize(text, fontSpec.size);
-        const textHeight = (fontSpec.font.heightAtSize(fontSpec.size, { descender: false }) + fontSpec.font.heightAtSize(fontSpec.size)) / 2;
-        textBlock.height = textHeight;
-        textBlock.width = textWidth;
-        textBlock.font = fontSpec.font;
-        textBlock.fontSize = fontSpec.size;
-        return textBlock;
-    }
 
-    writeTextBlock(line: Line, page: PDFPage) {
-        let x = line.bottom().x;
-        line.blocks.forEach(textBlock => {
-            page.drawText(textBlock.text, {
-                x: x,
-                y: line.bottom().y,
-                size: textBlock.fontSize,
-                font: textBlock.font,
-                color: rgb(0.1, 0.1, 0.1)
-            });
-            x += textBlock.width;
-        });
-    }
 }
 
 class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
@@ -1457,9 +1342,11 @@ class CharacterSheets {
         if (c.isKlingon()) {
             return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new StandardTosCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
         } else if (era === Era.NextGeneration) {
-            return [ new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),  new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet(), new KlingonCharacterSheet()  ];
+            return [ new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),  new BasicGeneratedHalfPageCharacterSheet(),
+                new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet(), new KlingonCharacterSheet()  ];
         } else {
-            return [ new StandardTosCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),  new HalfPageSupportingCharacterSheet(), new KlingonCharacterSheet() ];
+            return [ new StandardTosCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),
+                new BasicGeneratedHalfPageCharacterSheet(), new HalfPageSupportingCharacterSheet(), new KlingonCharacterSheet() ];
         }
     }
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import i18n from 'i18next';
 import { PDFDocument } from '@cantoo/pdf-lib'
-import { ICharacterSheet } from '../helpers/sheets';
 import {Button} from './button';
 import { ModalControl } from './modal';
 import { Construct } from '../common/construct';
 import { getNavigatorLanguage } from '../i18n/config';
+import { ICharacterSheet } from '../exportpdf/icharactersheet';
 
 declare function download(bytes: any, fileName: any, contentType: any): any;
 

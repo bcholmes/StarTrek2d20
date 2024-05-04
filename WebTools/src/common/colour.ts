@@ -1,4 +1,5 @@
 import Color from 'color';
+import { rgb } from "@cantoo/pdf-lib";
 
 export class SimpleColor {
     red: number; // 0 - 255
@@ -67,5 +68,9 @@ export class SimpleColor {
             let blue = parseInt(hex.substring(4), 16);
             return new SimpleColor(red, green, blue);
         }
+    }
+
+    asPdfRbg() {
+        return rgb(this.red / 255.0, this.green / 255.0, this.blue / 255.0);
     }
 }
