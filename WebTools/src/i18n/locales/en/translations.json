@@ -410,6 +410,7 @@
     "Common.select.choose": "Choose...",
 
     "Construct.other.assignment": "Assignment",
+    "Construct.other.attacks": "Attacks",
     "Construct.other.attribute": "Attribute",
     "Construct.other.attributes": "Attributes",
     "Construct.other.career": "Career",
@@ -1290,6 +1291,8 @@
 
     "Role.admiral.description": "Flag Officers only.",
     "Role.admiral.ability": "Select three additional Focuses, reflecting areas of expertise or subjects that pertain to the admiral’s assignment. At the start of each mission, the admiral chooses one of their three Focuses, and every Main Character receives that as an additional Focus for the mission, due to additional briefings and instructional resources.",
+
+    "Sheet.basicGeneratedHalfPageCharacterSheet": "New 2nd Ed.-style Character Sheet",
 
     "ShipBuildType.pod.name": "Pod",
 
@@ -2278,8 +2281,11 @@
 
     "Value.final.text": "The character receives one final Value. This might reflect the Career Events rolled in Step Six, or it may represent some other element of the character. This Value might be a relationship, connecting the character to another character in the crew, or to another organization or culture in some way.",
 
+    "Weapon.common.melee": "Melee",
     "Weapon.common.name": "Name/Type",
     "Weapon.common.qualities": "Qualities",
+    "Weapon.common.ranged": "Ranged",
+    "Weapon.common.size": "Size {{hands}}H",
 
     "Weapon.personal.dagger.name": "Dagger",
 

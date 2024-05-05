@@ -103,6 +103,16 @@ export class CharacterRank {
             return this.name;
         }
     }
+
+    get localizedAbbreviation() {
+        if (this.id != null) {
+            let key = makeKey("Rank.", Rank[this.id], ".abbrev");
+            let result = i18next.t(key);
+            return key === result ? this.name : result;
+        } else {
+            return this.name;
+        }
+    }
 }
 
 export class SupportingStep {
@@ -1012,7 +1022,8 @@ export class Character extends Construct {
                  this.rank?.name?.toLowerCase() === "lieutenant commander" ||
                  this.rank?.name?.toLowerCase().indexOf("admiral") >= 0 ||
                  (this.role !== undefined && this.role === Role.ChiefOfSecurity))) ||
-                 (this.jobAssignment?.toLowerCase() === "security");
+                 (this.jobAssignment?.toLowerCase() === "security") ||
+                 (this.stereotype === Stereotype.SupportingCharacter && this.supportingStep?.disciplines[0] === Skill.Security);
     }
 
     isYoung() {

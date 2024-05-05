@@ -9,7 +9,7 @@ import { Era } from './eras';
 import { Department } from './departments';
 import { System } from './systems';
 import { Weapon } from './weapons';
-import { CHALLENGE_DICE_NOTATION, TalentsHelper } from './talents';
+import { TalentsHelper } from './talents';
 import { CareerEventsHelper } from './careerEvents';
 import { RolesHelper } from './roles';
 import { Construct, Stereotype } from '../common/construct';
@@ -20,7 +20,7 @@ import { CareersHelper } from './careers';
 import { TracksHelper } from './tracks';
 import { localizedFocus } from '../components/focusHelper';
 import { XYLocation } from '../common/xyLocation';
-import { Column, FontSpecification, ICharacterSheet, Line, TextBlock } from '../exportpdf/icharactersheet';
+import { Column, FontSpecification, ICharacterSheet, LayoutHelper, Line } from '../exportpdf/icharactersheet';
 import { SimpleColor } from '../common/colour';
 import { BasicGeneratedHalfPageCharacterSheet } from '../exportpdf/generatedsheet';
 
@@ -755,6 +755,8 @@ class KlingonCharacterSheet extends BasicFullCharacterSheet {
 
 class BaseTextCharacterSheet extends BasicFullCharacterSheet {
 
+    layoutHelper = new LayoutHelper();
+
     addBlankLineAfter(lines: Line[], page: PDFPage) {
         let currentColumn = null;
         let newLocation = null;
@@ -781,12 +783,12 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         if (character.role != null) {
             let role = RolesHelper.instance.getRole(character.role, character.type);
             if (role) {
-                let blocks = this.createTextBlocks(role.localizedName + ":", titleStyle, symbolStyle, startLine, page);
+                let blocks = this.layoutHelper.createTextBlocks(role.localizedName + ":", titleStyle, symbolStyle, startLine, page);
                 blocks.forEach((b, i) => { if (i < blocks.length -1) lines.push(b); });
 
                 let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
 
-                blocks = this.createTextBlocks(role.localizedAbility, paragraphStyle, symbolStyle, line, page);
+                blocks = this.layoutHelper.createTextBlocks(role.localizedAbility, paragraphStyle, symbolStyle, line, page);
                 blocks.forEach(b => lines.push(b));
                 startLine = this.addBlankLineAfter(lines, page);
             }
@@ -802,12 +804,12 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
                     talentName += " [Rank: " + rank + "]";
                 }
 
-                let blocks = this.createTextBlocks(talentName + ":", titleStyle, symbolStyle, startLine, page);
+                let blocks = this.layoutHelper.createTextBlocks(talentName + ":", titleStyle, symbolStyle, startLine, page);
                 blocks.forEach((b, i) => { if (i < blocks.length -1) lines.push(b); });
                 let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
 
                 if (talent) {
-                    blocks = this.createTextBlocks(talent.localizedDescription, paragraphStyle, symbolStyle, line, page);
+                    blocks = this.layoutHelper.createTextBlocks(talent.localizedDescription, paragraphStyle, symbolStyle, line, page);
                     blocks.forEach(b => lines.push(b));
                     startLine = this.addBlankLineAfter(lines, page);
                     if (startLine == null) {
@@ -821,113 +823,6 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
             t.writeTextBlocks(page, SimpleColor.from("#000000"))
         );
     }
-
-    /* eslint-disable no-loop-func */
-    createTextBlocks(text: string, fontSpec: FontSpecification, symbolStyle: FontSpecification, line: Line, page: PDFPage) {
-        let result: Line[] = [];
-        if (line) {
-            let words = text.split(/\s+/);
-            let previousBlock = null;
-            let textPortion = "";
-            for (let i = 0; i < words.length; i++) {
-                let word = words[i];
-                if (textPortion !== "" || !line.isEmpty()) {
-                    word = " " + word;
-                }
-                if (this.containsDelta(word)) {
-                    let parts = this.separateDeltas(word);
-                    let blocks = parts.map(p => {
-                        if (p === CHALLENGE_DICE_NOTATION) {
-                            return TextBlock.create("A", symbolStyle);
-                        } else {
-                            return TextBlock.create(p, fontSpec);
-                        }
-                    });
-                    let sum = previousBlock == null ? 0 : previousBlock.width;
-                    blocks.forEach(b => sum += b.width);
-
-                    if (sum < line.availableWidth()) {
-                        if (previousBlock != null) {
-                            line.add(previousBlock);
-                            previousBlock = null;
-                        }
-                        blocks.forEach(b => line.add(b));
-                        textPortion = "";
-
-                    } else {
-                        line.add(previousBlock);
-                        line = line.moveToNextColumnIfNecessary(page);
-                        previousBlock = null;
-                        if (line) {
-                            result.push(line);
-                            line = new Line(line.bottom(), line.column);
-                        } else {
-                            break;
-                        }
-
-                        let parts = this.separateDeltas(words[i]); // get the original word without the leading space
-                        parts.forEach(p => {
-                            if (p === CHALLENGE_DICE_NOTATION) {
-                                line.add(TextBlock.create("A", symbolStyle));
-                            } else {
-                                line.add(TextBlock.create(p, fontSpec));
-                            }
-                        });
-                    }
-                } else {
-                    textPortion += word;
-                    let block = TextBlock.create(textPortion, fontSpec);
-                    if (block.width < line.availableWidth()) {
-                        previousBlock = block;
-                    } else {
-                        if (previousBlock != null) {
-                            line.add(previousBlock);
-                            line = line.moveToNextColumnIfNecessary(page);
-                            previousBlock = null;
-                            if (line) {
-                                result.push(line);
-                                line = new Line(line.bottom(), line.column);
-                            } else {
-                                break;
-                            }
-                        }
-                        textPortion = words[i];
-                        previousBlock = TextBlock.create(textPortion, fontSpec);
-                    }
-                }
-            }
-            if (previousBlock != null && line != null) {
-                line.add(previousBlock);
-                result.push(line);
-            }
-        }
-        return result;
-    }
-    /* eslint-enable no-loop-func */
-
-    containsDelta(word: string) {
-        return word.indexOf("[D]") >= 0;
-    }
-
-    separateDeltas(word: string) {
-        let result: string[] = [];
-        while (word.length > 0) {
-            let index = word.indexOf(CHALLENGE_DICE_NOTATION);
-            if (index > 0) {
-                result.push(word.substring(0, index));
-                result.push(word.substring(index, index+3));
-                word = word.substring(index + 3);
-            } else if (index === 0) {
-                result.push(word.substring(index, index+3));
-                word = word.substring(index + 3);
-            } else {
-                result.push(word);
-                word = "";
-            }
-        }
-        return result;
-    }
-
 
 }
 

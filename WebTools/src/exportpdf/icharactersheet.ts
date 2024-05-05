@@ -1,7 +1,8 @@
-import { PDFDocument, PDFFont, PDFPage, rgb } from "@cantoo/pdf-lib";
+import { PDFDocument, PDFFont, PDFPage } from "@cantoo/pdf-lib";
 import { Construct } from "../common/construct";
 import { XYLocation } from "../common/xyLocation";
 import { SimpleColor } from "../common/colour";
+import { CHALLENGE_DICE_NOTATION } from "../helpers/talents";
 
 export class TextBlock {
     text: string;
@@ -9,8 +10,9 @@ export class TextBlock {
     font: PDFFont;
     height: number;
     width: number;
+    colour?: SimpleColor;
 
-    static create(text: string, fontSpec: FontSpecification, descender: boolean|number = false) {
+    static create(text: string, fontSpec: FontSpecification, descender: boolean|number = false, colour?: SimpleColor) {
 
         let weight = 0.5;
         if (typeof descender === "boolean") {
@@ -29,6 +31,7 @@ export class TextBlock {
         textBlock.width = textWidth;
         textBlock.font = fontSpec.font;
         textBlock.fontSize = fontSpec.size;
+        textBlock.colour = colour;
         return textBlock;
     }
 
@@ -42,7 +45,7 @@ export class TextBlock {
             y: y,
             size: this.fontSize,
             font: this.font,
-            color: rgb(color.red / 255.0, color.green / 255.0, color.blue / 255.0)
+            color: this.colour == null ? color.asPdfRbg() : this.colour.asPdfRbg()
         });
     }
 }
@@ -63,7 +66,7 @@ export class Line {
         this.blocks.forEach(b => {if (b.height > h) h = b.height; });
         return h;
     }
-    bottom() {
+    bottom(): XYLocation {
         return new XYLocation(this.location.x, this.location.y - this.height());
     }
     availableWidth() {
@@ -95,6 +98,112 @@ export class Line {
             textBlock.writeToPage(x, this.bottom().y, page, color);
             x += textBlock.width;
         });
+    }
+}
+
+export class LayoutHelper {
+    createTextBlocks(text: string, fontSpec: FontSpecification, symbolStyle: FontSpecification, line: Line, page: PDFPage, colour?: SimpleColor) {
+        let result: Line[] = [];
+        if (line) {
+            let words = text.split(/\s+/);
+            let previousBlock = null;
+            let textPortion = "";
+            for (let i = 0; i < words.length; i++) {
+                let word = words[i];
+                if (textPortion !== "" || !line.isEmpty()) {
+                    word = " " + word;
+                }
+                if (this.containsDelta(word)) {
+                    let parts = this.separateDeltas(word);
+                    let blocks = parts.map(p => {
+                        if (p === CHALLENGE_DICE_NOTATION) {
+                            return TextBlock.create("A", symbolStyle, false, colour);
+                        } else {
+                            return TextBlock.create(p, fontSpec, false, colour);
+                        }
+                    });
+                    let sum = previousBlock == null ? 0 : previousBlock.width;
+                    blocks.forEach(b => sum += b.width);
+
+                    if (sum < line.availableWidth()) {
+                        if (previousBlock != null) {
+                            line.add(previousBlock);
+                            previousBlock = null;
+                        }
+                        blocks.forEach(b => line.add(b));
+                        textPortion = "";
+
+                    } else {
+                        line.add(previousBlock);
+                        line = line.moveToNextColumnIfNecessary(page);
+                        previousBlock = null;
+                        if (line) {
+                            result.push(line);
+                            line = new Line(line.bottom(), line.column);
+                        } else {
+                            break;
+                        }
+
+                        let parts = this.separateDeltas(words[i]); // get the original word without the leading space
+                        parts.forEach(p => {
+                            if (p === CHALLENGE_DICE_NOTATION) {
+                                line.add(TextBlock.create("A", symbolStyle, false, colour));
+                            } else {
+                                line.add(TextBlock.create(p, fontSpec, false, colour));
+                            }
+                        });
+                    }
+                } else {
+                    textPortion += word;
+                    let block = TextBlock.create(textPortion, fontSpec, false, colour);
+                    if (block.width < line.availableWidth()) {
+                        previousBlock = block;
+                    } else {
+                        if (previousBlock != null) {
+                            line.add(previousBlock);
+                            line = line.moveToNextColumnIfNecessary(page);
+                            previousBlock = null;
+                            if (line) {
+                                result.push(line);
+                                line = new Line(line.bottom(), line.column);
+                            } else {
+                                break;
+                            }
+                        }
+                        textPortion = words[i];
+                        previousBlock = TextBlock.create(textPortion, fontSpec, false, colour);
+                    }
+                }
+            }
+            if (previousBlock != null && line != null) {
+                line.add(previousBlock);
+                result.push(line);
+            }
+        }
+        return result;
+    }
+
+    containsDelta(word: string) {
+        return word.indexOf("[D]") >= 0;
+    }
+
+    separateDeltas(word: string) {
+        let result: string[] = [];
+        while (word.length > 0) {
+            let index = word.indexOf(CHALLENGE_DICE_NOTATION);
+            if (index > 0) {
+                result.push(word.substring(0, index));
+                result.push(word.substring(index, index+3));
+                word = word.substring(index + 3);
+            } else if (index === 0) {
+                result.push(word.substring(index, index+3));
+                word = word.substring(index + 3);
+            } else {
+                result.push(word);
+                word = "";
+            }
+        }
+        return result;
     }
 }
 

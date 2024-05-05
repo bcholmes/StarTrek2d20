@@ -428,6 +428,7 @@ Common.text.no,No,,Nein,,,Нет,Não
 Common.text.other,Other,,Andere,,,Другое,Outro
 Common.select.choose,Choose...,,Wählen Sie aus ...,,Choisir,Выберите ...,Escolha...
 Construct.other.assignment,Assignment,,Position,Asignación,Mission,Назначение,Designação
+Construct.other.attacks,Attacks,,,,,,
 Construct.other.attribute,Attribute,,Attribut,,Attribut,Качество,Atributo
 Construct.other.attributes,Attributes,,Attribute,Atributos,Attributs,Качества,Atributos
 Construct.other.career,Career,,Karriere,,Carrière,Карьера,Carreira
@@ -1508,6 +1509,7 @@ Role.communicationsOfficer.ability,"When a Task attempted by the communications 
 Role.admiral,Admiral,,,,,Адмирал,
 Role.admiral.description,Flag Officers only.,,,,,Только флагманы,
 Role.admiral.ability,"Select three additional Focuses, reflecting areas of expertise or subjects that pertain to the admiral’s assignment. At the start of each mission, the admiral chooses one of their three Focuses, and every Main Character receives that as an additional Focus for the mission, due to additional briefings and instructional resources.",,,,,"Выберите три дополнительные Специализации, отражающие область знаний или предметы, относящиеся к заданию адмирала. В начале каждой миссии адмирал выбирает одну из трех Специализаций и каждый главный герой получает ее в качестве дополнительного Специализации для миссии, благодаря дополнительным инструктажам и учебным ресурсам.",
+Sheet.basicGeneratedHalfPageCharacterSheet,New 2nd Ed.-style Character Sheet,,,,,,
 ShipBuildType.pod.name,Pod,,Kleines Shuttle,,Nacelle,Челнок,Módulo
 ShipBuildType.shuttlecraft.name,Shuttle,,Shuttle,,Navette,Шаттл,Nave Auxiliar
 ShipBuildType.runabout.name,Runabout,,Runabout,,Runabout,Катер,Explorador
@@ -2221,8 +2223,11 @@ Value.careerLength.experienced.text,"The character receives a Value, and this ca
 Свободный выбор.","A personagem recebe um Valor, que pode ser escolhido livremente."
 Value.careerLength.veteran.text,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",,"Der Charakter erhält eine Überzeugung, welche die Jahre an Erfahrung und die in der langen Karriere geformten Wertvorstellungen widerspiegelt.",,"Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière.","Персонаж получает Ценность, отражающую его годы опыта и убеждения сформировавшиеся за долгую карьеру.","A personagem recebe um Valor, que precisa refletir os anos de experiência e crenças que o personagem obteve durante sua longa carreira."
 Value.final.text,"The character receives one final Value. This might reflect the Career Events rolled in Step Six, or it may represent some other element of the character. This Value might be a relationship, connecting the character to another character in the crew, or to another organization or culture in some way.",,"Der Charakter erhält eine letzte Überzeugung. Diese kann mit einem der Karriereereignisse aus Schritt 6 zusammenhängen, aber auch völlig frei gewählt sein. Die Überzeugung kann auch eine Beziehung sein, die den Charakter mit einem anderen Charakter in der Crew, einer Organisation oder einer Kultur verbindet.",,"Le personnage reçoit une valeur finale. Cela peut refléter les événements de carrière lancés à l'étape six, ou cela peut représenter un autre élément du personnage. Cette valeur peut être une relation, reliant le personnage à un autre personnage de l'équipage, ou à une autre organisation ou culture d'une manière ou d'une autre.","Персонаж получает одну заключительную Ценность. Она должно отражать События Карьеры выбранные в Шестом Этапе или исходить из других данных персонажа. Эта Ценность может быть социальной, связывающей персонажа с другим членом команды, какой-то организацией или расой в каком то виде.","A personagem recebe um Valor final. Isso pode refletir os Eventos de Carreira rolados no Passo Seis ou algum outro elemento da personagem. Esse Valor pode ser um relacionamento, conectando a personagem a outro da tripulação ou de alguma forma a outra organização ou cultura."
+Weapon.common.melee,Melee,,,,,,
 Weapon.common.name,Name/Type,,Name/Typ,,Nom/Type,Название/Тип,Nome/Tipo
 Weapon.common.qualities,Qualities,,Eigenschaften,,Qualités,Качества,Qualidades
+Weapon.common.ranged,Ranged,,,,,,
+Weapon.common.size,Size {{hands}}H,,,,,,
 Weapon.personal.dagger.name,Dagger,,Dolch,,,Клинок,Adaga
 Weapon.personal.energyWhip.name,Energy Whip,,Energiepeitsche,,,Энергитический хлыст,Chicote de Energia
 Weapon.personal.phaser1.name,Phaser type-1,,"Phaser, Typ 1",,Phaser type-1,Фазер первого типа,Fêiser Tipo-1

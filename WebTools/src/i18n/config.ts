@@ -77,7 +77,7 @@ export const getCurrentLanguageCode = () => {
     } else if (previousLanguage === "en" && getNavigatorLanguage().indexOf("en") === 0 && supportedLanguagesCodes.indexOf(getNavigatorLanguage()) >= 0) {
         return getNavigatorLanguage();
     } else {
-        return getNavigatorLanguage();
+        return previousLanguage;
     }
 }
 

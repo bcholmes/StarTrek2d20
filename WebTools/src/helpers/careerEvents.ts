@@ -1,6 +1,5 @@
 ﻿import {SkillsHelper, Skill} from './skills';
 import {Attribute, AttributesHelper} from './attributes';
-import {Character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import i18next from 'i18next';
 import { hasSource } from '../state/contextFunctions';
