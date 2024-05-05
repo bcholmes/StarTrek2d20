@@ -1292,7 +1292,7 @@
     "Role.admiral.description": "Flag Officers only.",
     "Role.admiral.ability": "Select three additional Focuses, reflecting areas of expertise or subjects that pertain to the admiral’s assignment. At the start of each mission, the admiral chooses one of their three Focuses, and every Main Character receives that as an additional Focus for the mission, due to additional briefings and instructional resources.",
 
-    "Sheet.basicGeneratedHalfPageCharacterSheet": "New 2nd Ed.-style Character Sheet",
+    "Sheet.basicGeneratedHalfPageCharacterSheet": "New Half-Page 2nd Ed.-style Character Sheet",
 
     "ShipBuildType.pod.name": "Pod",
 

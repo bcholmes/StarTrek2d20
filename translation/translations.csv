@@ -1509,7 +1509,7 @@ Role.communicationsOfficer.ability,"When a Task attempted by the communications 
 Role.admiral,Admiral,,,,,Адмирал,
 Role.admiral.description,Flag Officers only.,,,,,Только флагманы,
 Role.admiral.ability,"Select three additional Focuses, reflecting areas of expertise or subjects that pertain to the admiral’s assignment. At the start of each mission, the admiral chooses one of their three Focuses, and every Main Character receives that as an additional Focus for the mission, due to additional briefings and instructional resources.",,,,,"Выберите три дополнительные Специализации, отражающие область знаний или предметы, относящиеся к заданию адмирала. В начале каждой миссии адмирал выбирает одну из трех Специализаций и каждый главный герой получает ее в качестве дополнительного Специализации для миссии, благодаря дополнительным инструктажам и учебным ресурсам.",
-Sheet.basicGeneratedHalfPageCharacterSheet,New 2nd Ed.-style Character Sheet,,,,,,
+Sheet.basicGeneratedHalfPageCharacterSheet,New Half-Page 2nd Ed.-style Character Sheet,,,,,,
 ShipBuildType.pod.name,Pod,,Kleines Shuttle,,Nacelle,Челнок,Módulo
 ShipBuildType.shuttlecraft.name,Shuttle,,Shuttle,,Navette,Шаттл,Nave Auxiliar
 ShipBuildType.runabout.name,Runabout,,Runabout,,Runabout,Катер,Explorador

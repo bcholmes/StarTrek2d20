@@ -12,6 +12,18 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240505</b>
+                <ul>
+                    <li>I'm experimenting with a new type of character sheet: one of the limitations of the existing
+                        character sheet system is that the PDFs are (mostly) hard-coded as English (in the sense that
+                        when the sheet as a heading that says "Attributes", that text doesn't change if you're a
+                        German user). So I'm trying out a more dynamically-generated sheet. Not gonna lie:
+                        this is a lot more complicated. The new sheet is a simple sheet for supporting characters.
+                        At the moment, the sheet that I'm creating isn't especially form-based; I'm sure some folks will
+                        hate that because they like really like editability. Again: this is an experiment at the moment
+                        to try out some new programming patterns.
+                    </li>
+                </ul>
                 <b>v1.240430</b>
                 <ul>
                     <li>Minor, mostly non-visible changes.</li>
@@ -280,20 +292,6 @@ class News extends React.Component<INewsProperties, {}> {
                     <li>Solo characters are now viewable / bookmarkable.</li>
                     <li>mjhawkins sent me a number of spelling fixes! Yay!</li>
                     <li>Support for the <cite>Animated Series</cite> sourcebook is now in place.</li>
-                </ul>
-                <b>v1.231024</b>
-                <ul>
-                    <li>A number of non-trivial internal changes have taken place. Some screens might appear different, but mosty the
-                        functionality should be the same.
-                    </li>
-                    <li>Some bug fixes have been implemented.</li>
-                </ul>
-                <b>v1.231006</b>
-                <ul>
-                    <li>A few more token options.</li>
-                    <li>More support for some Continuing Missions species options</li>
-                    <li>I've made some pretty broad infrastructure changes. I think I've managed to clean up any consequences of that,
-                        but if you see anyting hinky, drop me a message.</li>
                 </ul>
 
                 <div className="text-center">
