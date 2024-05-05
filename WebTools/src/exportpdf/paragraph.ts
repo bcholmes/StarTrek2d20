@@ -1,7 +1,8 @@
 import { PDFFont, PDFPage } from "@cantoo/pdf-lib";
-import { Column, FontSpecification, LayoutHelper, Line } from "./icharactersheet";
+import { Column, LayoutHelper, Line } from "./icharactersheet";
 import { SimpleColor } from "../common/colour";
 import { XYLocation } from "../common/xyLocation";
+import { FontSpecification } from "./fontSpecification";
 
 export class Paragraph {
 
@@ -11,12 +12,14 @@ export class Paragraph {
     symbolFont: PDFFont;
     page: PDFPage;
 
+    // in PDF coordinate system
     private start?: XYLocation;
 
     constructor(page: PDFPage, layoutHelper: LayoutHelper, column: Column, symbolFont?: PDFFont) {
         this.layoutHelper = layoutHelper;
         this.column = column;
         this.page = page;
+        this.symbolFont = symbolFont;
     }
 
     private currentLine() {
@@ -49,5 +52,14 @@ export class Paragraph {
             result.start = newLocation;
         }
         return result;
+    }
+
+    get bottom() {
+        if (this.lines.length > 0) {
+            let line = this.lines[this.lines.length-1];
+            return this.column.untranslateLocation(this.page, line.bottom());
+        } else {
+            return this.column.start;
+        }
     }
 }

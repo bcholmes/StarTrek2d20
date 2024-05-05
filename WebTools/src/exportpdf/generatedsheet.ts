@@ -1,5 +1,5 @@
-import { PDFDocument, PDFFont, PDFPage } from "@cantoo/pdf-lib";
-import { Column, FontSpecification, ICharacterSheet, LayoutHelper, Line, TextBlock } from "./icharactersheet";
+import { PDFDocument, PDFFont, PDFForm, PDFPage } from "@cantoo/pdf-lib";
+import { Column, ICharacterSheet, LayoutHelper } from "./icharactersheet";
 import fontkit from '@pdf-lib/fontkit'
 import { Construct } from "../common/construct";
 import i18next from "i18next";
@@ -13,6 +13,8 @@ import { WeaponType } from "../helpers/weapons";
 import { CHALLENGE_DICE_NOTATION } from "../helpers/talents";
 import { XYLocation } from "../common/xyLocation";
 import { Paragraph } from "./paragraph";
+import { FontSpecification } from "./fontSpecification";
+import { TextBlock } from "./textBlock";
 
 abstract class BasicGeneratedSheet implements ICharacterSheet {
 
@@ -95,8 +97,8 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
     connBlock: Column = new Column(322, 158, 11, 58);
     engineeringBlock: Column = new Column(400, 143, 11, 58);
     securityBlock: Column = new Column(400, 158, 11, 58);
-    scienceBlock: Column = new Column(478, 143, 11, 58);
-    medicineBlock: Column = new Column(478, 158, 11, 58);
+    medicineBlock: Column = new Column(478, 143, 11, 58);
+    scienceBlock: Column = new Column(478, 158, 11, 58);
 
     remainingBlock: Column = new Column(322, 198, 338-198, 550-322);
 
@@ -108,7 +110,7 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
 
     getName(): string {
         return i18next.t(makeKey('Sheet.', "BasicGeneratedHalfPageCharacterSheet"),
-            { "defaultValue": "New 2nd Ed.-style Character Sheet"});
+            { "defaultValue": "New Half-Page 2nd Ed.-style Character Sheet"});
     }
     getThumbnailUrl(): string {
         return '/static/img/sheets/STA_2e_Half_Page_Sheet.png'
@@ -121,12 +123,15 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
         await super.initializeFonts(pdf);
 
         this.textFont = this.formFont;
-        const headingFontName = getCurrentLanguageCode() === "ru" ? "/static/font/bebas-neue-cyr.ttf" : "/static/font/Michroma-Regular.ttf";
-        const fontBytes = await fetch(headingFontName).then(res => res.arrayBuffer());
-        this.headingFont = await pdf.embedFont(fontBytes);
-
         const boldFontBytes = await fetch("/static/font/OpenSansCondensed-Bold.ttf").then(res => res.arrayBuffer());
         this.boldFont = await pdf.embedFont(boldFontBytes);
+
+        if (getCurrentLanguageCode() === "ru") {
+            this.headingFont = this.boldFont;
+        } else {
+            const fontBytes = await fetch("/static/font/Michroma-Regular.ttf").then(res => res.arrayBuffer());
+            this.headingFont = await pdf.embedFont(fontBytes);
+        }
 
         const symbolFontBytes = await fetch("/static/font/Trek_Arrowheads.ttf").then(res => res.arrayBuffer());
         this.symbolFont = await pdf.embedFont(symbolFontBytes);
@@ -204,7 +209,45 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
         this.writeName(page, character);
 
         this.writeSubTitle(page, i18next.t("Construct.other.attacks"), this.attacksTitleBlock);
-        this.writeAttacks(page, character, this.remainingBlock);
+        let remainingSpace = this.writeAttacks(page, character, this.remainingBlock);
+        let remainingColumn = new Column(remainingSpace.x, remainingSpace.y + 16,
+            13, this.remainingBlock.width);
+
+        this.writeSubTitle(page, i18next.t("Construct.other.stress"), remainingColumn);
+        remainingColumn = this.remainingBlock.bottomAfter(30 + remainingSpace.y - this.remainingBlock.start.y);
+        if (remainingColumn) {
+            this.writeStressBoxes(page, pdf.getForm(), character, remainingColumn);
+        }
+    }
+
+    writeStressBoxes(page: PDFPage, form: PDFForm, character: Character, column: Column) {
+        let stressBox = "m 1,0 h 7.5 c 0.554,0 1,0.446 1,1 v 7.5 c 0,0.554 -0.446,1 -1,1 H 1 C 0.446,9.5 0,9.054 0,8.5 V 1 C 0,0.446 0.446,0 1,0 Z";
+
+        let x = column.translatedStart(page).x;
+        const y = column.translatedStart(page).y;
+        for (let i = 0; i < character.stress; i++) {
+
+            page.moveTo(x, y);
+            page.drawSvgPath(stressBox, {
+                borderColor: SimpleColor.from("#000000").asPdfRbg(),
+                borderWidth: 0.5
+            });
+
+            let checkbox = form.createCheckBox("Stress " + (i+1));
+            checkbox.addToPage(page, {
+                x: x + 0.5,
+                y: y - 9,
+                width: 8.5,
+                height: 8.5,
+                textColor: SimpleColor.from("#000000").asPdfRbg(),
+                borderWidth: 0
+            });
+
+            x += 12;
+            if (i % 5 === 4) {
+                x += 10;
+            }
+        }
     }
 
     determineLabelFontSize() {
@@ -349,12 +392,12 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
 
         let indentedColumn = new Column(column.start.x + 15, column.start.y, column.height, column.width - 15);
 
-        let start = indentedColumn.translatedStart(page);
-        let startLine = new Line(start, indentedColumn);
         let bold = new FontSpecification(this.boldFont, 9);
         let standard = new FontSpecification(this.textFont, 9);
-        let symbols = new FontSpecification(this.symbolFont, 9);
         let security = character.skills[Skill.Security].expertise;
+
+        let paragraph = null;
+        let bottom = column.start;
 
         character.determineWeapons().forEach(w => {
             let type = w.type === WeaponType.MELEE ? i18next.t("Weapon.common.melee") : i18next.t("Weapon.common.ranged");
@@ -362,33 +405,23 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
             let text = type + ", " + (w.dice + security) + CHALLENGE_DICE_NOTATION + ", " + qualities
                 + (w.hands != null ? ", " + i18next.t("Weapon.common.size", { hands: w.hands }) : "");
 
-            let blocks = this.layoutHelper.createLines(w.name + ": ", bold, symbols, startLine, page);
-            let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
+            paragraph = paragraph == null ? new Paragraph(page, this.layoutHelper, indentedColumn, this.symbolFont) : paragraph.nextParagraph(0);
+            paragraph.append(w.name + ": ", bold);
+            paragraph.append(text, standard);
+            paragraph.write();
 
-            if (blocks.length) {
-                let location = blocks[0].location;
-                page.moveTo(column.start.x, page.getHeight() - (location.y + blocks[0].height() + 3));
+            if (paragraph.lines.length) {
+                let location = paragraph.lines[0].location;
+                page.moveTo(column.start.x, page.getHeight() - (location.y + paragraph.lines[0].height() + 3));
                 page.drawSvgPath(BasicGeneratedHalfPageCharacterSheet.bulletPath, {
                     color: BasicGeneratedHalfPageCharacterSheet.tealColour.asPdfRbg(),
                     borderWidth: 0
                 });
             }
 
-            blocks.forEach((t, i) => {
-                if (i < (blocks.length -1)) {
-                    t.writeTextBlocks(page, SimpleColor.from("#000000"));
-                }
-            });
-
-            let textBlocks = this.layoutHelper.createLines(text, standard, symbols, line, page);
-
-            textBlocks.forEach(t => {
-                t.writeTextBlocks(page, SimpleColor.from("#000000"));
-            });
-            line = (textBlocks.length > 0) ? textBlocks[textBlocks.length - 1] : new Line(startLine.location, startLine.column);
-            startLine = new Line(new XYLocation(line.bottom().x, line.bottom().y), indentedColumn);
+            bottom = paragraph.bottom;
         });
 
-        return indentedColumn;
+        return new XYLocation(column.start.x, bottom.y);
     }
 }

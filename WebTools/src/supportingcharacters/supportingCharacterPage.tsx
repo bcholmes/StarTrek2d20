@@ -180,7 +180,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                         <p>
                             {t('SupportingCharacter.whatPurpose')}
                         </p>
-                        <InputFieldAndLabel labelName={t('Construct.other.purpose')} value={character.jobAssignment} onChange={(value) => {
+                        <InputFieldAndLabel labelName={t('Construct.other.purpose')} value={character.jobAssignment ?? ""} onChange={(value) => {
                             store.dispatch(setCharacterAssignment(value));
                         }} id="purpose" />
                     </div>

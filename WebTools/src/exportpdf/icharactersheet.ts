@@ -1,54 +1,10 @@
-import { PDFDocument, PDFFont, PDFPage } from "@cantoo/pdf-lib";
+import { PDFDocument, PDFPage } from "@cantoo/pdf-lib";
 import { Construct } from "../common/construct";
 import { XYLocation } from "../common/xyLocation";
 import { SimpleColor } from "../common/colour";
 import { CHALLENGE_DICE_NOTATION } from "../helpers/talents";
-
-export class TextBlock {
-    text: string;
-    fontSize: number;
-    font: PDFFont;
-    height: number;
-    width: number;
-    colour?: SimpleColor;
-
-    static create(text: string, fontSpec: FontSpecification, descender: boolean|number = false, colour?: SimpleColor) {
-
-        let weight = 0.5;
-        if (typeof descender === "boolean") {
-            if (descender === true) {
-                weight = 1;
-            }
-        } else {
-            weight = descender;
-        }
-
-        let textBlock = new TextBlock();
-        textBlock.text = text;
-        const textWidth = fontSpec.font.widthOfTextAtSize(text, fontSpec.size);
-        const textHeight = fontSpec.font.heightAtSize(fontSpec.size, { descender: false }) + this.descenderFor(fontSpec) * weight;
-        textBlock.height = textHeight;
-        textBlock.width = textWidth;
-        textBlock.font = fontSpec.font;
-        textBlock.fontSize = fontSpec.size;
-        textBlock.colour = colour;
-        return textBlock;
-    }
-
-    static descenderFor(fontSpec: FontSpecification) {
-        return fontSpec.font.heightAtSize(fontSpec.size) - fontSpec.font.heightAtSize(fontSpec.size, { descender: false });
-    }
-
-    writeToPage(x: number, y: number, page: PDFPage, color: SimpleColor) {
-        page.drawText(this.text, {
-            x: x,
-            y: y,
-            size: this.fontSize,
-            font: this.font,
-            color: this.colour == null ? color.asPdfRbg() : this.colour.asPdfRbg()
-        });
-    }
-}
+import { TextBlock } from "./textBlock";
+import { FontSpecification } from "./fontSpecification";
 
 export class Line {
     blocks: TextBlock[];
@@ -102,8 +58,6 @@ export class Line {
 }
 
 export class LayoutHelper {
-
-    symbolFont: PDFFont;
 
     createLines(text: string, fontSpec: FontSpecification, symbolStyle: FontSpecification, lines: Line|(Line[]), page: PDFPage, colour?: SimpleColor) {
         let result: Line[] = [];
@@ -222,15 +176,6 @@ export class LayoutHelper {
     }
 }
 
-export class FontSpecification {
-    font: PDFFont;
-    size: number;
-
-    constructor(font: PDFFont, size: number) {
-        this.font = font;
-        this.size = size;
-    }
-}
 
 
 export class Column {
@@ -256,8 +201,22 @@ export class Column {
         return new XYLocation(x, y);
     }
 
+    untranslateLocation(page: PDFPage, location: XYLocation) {
+        let x = location.x;
+        let y = page.getSize().height - location.y;
+        return new XYLocation(x, y);
+    }
+
     get end() {
         return new XYLocation(this.start.x + this.width, this.start.y + this.height);
+    }
+
+    bottomAfter(deltaY: number) {
+        if (deltaY <= this.height) {
+            return new Column(this.start.x, this.start.y + deltaY, this.height - deltaY, this.width);
+        } else {
+            return null;
+        }
     }
 }
 

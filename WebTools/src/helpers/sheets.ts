@@ -20,9 +20,10 @@ import { CareersHelper } from './careers';
 import { TracksHelper } from './tracks';
 import { localizedFocus } from '../components/focusHelper';
 import { XYLocation } from '../common/xyLocation';
-import { Column, FontSpecification, ICharacterSheet, LayoutHelper, Line } from '../exportpdf/icharactersheet';
+import { Column, ICharacterSheet, LayoutHelper, Line } from '../exportpdf/icharactersheet';
 import { SimpleColor } from '../common/colour';
 import { BasicGeneratedHalfPageCharacterSheet } from '../exportpdf/generatedsheet';
+import { FontSpecification } from '../exportpdf/fontSpecification';
 
 
 abstract class BasicSheet implements ICharacterSheet {
