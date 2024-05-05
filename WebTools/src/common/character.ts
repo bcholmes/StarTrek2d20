@@ -565,18 +565,71 @@ export class Character extends Construct {
     get division() {
         if (this.type !== CharacterType.Starfleet) {
             return null;
-        } else if (this.educationStep?.track != null) {
-            if (this.educationStep?.track === Track.Command) {
-                return Division.Command;
-            } else if (this.educationStep?.track === Track.Operations) {
-                return Division.Operations
-            } else if (this.educationStep?.track === Track.Sciences) {
-                return Division.Science;
-            } else {
-                return null;
-            }
         } else {
-            return null; // figure out from specialization?
+
+            if (this.role != null) {
+                switch (this.role) {
+                    case Role.CommandingOfficer:
+                    case Role.ExecutiveOfficer:
+                    case Role.FlightController:
+                    case Role.Helmsman:
+                    case Role.Navigator:
+                        return Division.Command;
+
+                    case Role.ChiefEngineer:
+                    case Role.ChiefOfSecurity:
+                    case Role.TacticalOfficer:
+                    case Role.CommunicationsOfficer:
+                        return Division.Operations;
+
+                    case Role.ScienceOfficer:
+                    case Role.ChiefMedicalOfficer:
+                    case Role.HeadNurse:
+                    case Role.Anesthesiologist:
+                    case Role.ShipsCounselor:
+                    case Role.ChiefSurgeon:
+                    case Role.FieldMedic:
+                        return Division.Science;
+
+                    default:
+                }
+            }
+
+            if (this.npcGenerationStep?.specialization != null) {
+                switch (this.npcGenerationStep.specialization) {
+                    case Specialization.Captain:
+                    case Specialization.FirstContactSpecialist:
+                    case Specialization.Conn:
+                    case Specialization.HangarDeck:
+                        return Division.Command;
+
+                    case Specialization.Engineer:
+                    case Specialization.Security:
+                        return Division.Operations;
+
+                    case Specialization.StarfleetScientist:
+                    case Specialization.Counselor:
+                    case Specialization.Nurse:
+                    case Specialization.MedicalDoctor:
+                        return Division.Science;
+
+                    default:
+                }
+            }
+
+            if (this.educationStep?.track != null) {
+                if (this.educationStep?.track === Track.Command) {
+                    return Division.Command;
+                } else if (this.educationStep?.track === Track.Operations) {
+                    return Division.Operations
+                } else if (this.educationStep?.track === Track.Sciences) {
+                    return Division.Science;
+                } else {
+                    return null;
+                }
+            } else {
+                return null; // figure out from specialization?
+            }
         }
     }
 

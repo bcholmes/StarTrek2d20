@@ -21,9 +21,9 @@ import { TracksHelper } from './tracks';
 import { localizedFocus } from '../components/focusHelper';
 import { XYLocation } from '../common/xyLocation';
 import { Column, ICharacterSheet, LayoutHelper, Line } from '../exportpdf/icharactersheet';
-import { SimpleColor } from '../common/colour';
 import { BasicGeneratedHalfPageCharacterSheet } from '../exportpdf/generatedsheet';
 import { FontSpecification } from '../exportpdf/fontSpecification';
+import { Paragraph } from '../exportpdf/paragraph';
 
 
 abstract class BasicSheet implements ICharacterSheet {
@@ -778,51 +778,34 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
     }
 
     writeRoleAndTalents(page: PDFPage, character: Character, titleStyle: FontSpecification, paragraphStyle: FontSpecification, symbolStyle: FontSpecification, currentColumn: Column) {
-        let start = currentColumn.translatedStart(page);
-        let lines: Line[] = [];
-        let startLine = new Line(start, currentColumn);
+        let paragraph = new Paragraph(page, this.layoutHelper, currentColumn, symbolStyle.font);
         if (character.role != null) {
             let role = RolesHelper.instance.getRole(character.role, character.type);
             if (role) {
-                let blocks = this.layoutHelper.createLines(role.localizedName + ":", titleStyle, symbolStyle, startLine, page);
-                blocks.forEach((b, i) => { if (i < blocks.length -1) lines.push(b); });
+                paragraph.append(role.localizedName + ": ", titleStyle);
+                paragraph.append(role.localizedAbility, paragraphStyle);
 
-                let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
-
-                blocks = this.layoutHelper.createLines(role.localizedAbility, paragraphStyle, symbolStyle, line, page);
-                blocks.forEach(b => lines.push(b));
-                startLine = this.addBlankLineAfter(lines, page);
+                paragraph.write();
+                paragraph = paragraph.nextParagraph();
             }
         }
 
-        if (startLine) {
-            for (let t of character.getDistinctTalentNameList()) {
+        for (let t of character.getDistinctTalentNameList()) {
 
+            if (paragraph) {
                 const talent = TalentsHelper.getTalent(t);
-                let talentName = talent.localizedName;
+                let talentName = talent.localizedDisplayName;
                 if (talent && talent.maxRank > 1) {
                     let rank = character.getRankForTalent(t);
                     talentName += " [Rank: " + rank + "]";
                 }
+                paragraph.append(talentName, titleStyle);
+                paragraph.append(talent.localizedDescription, paragraphStyle);
+                paragraph.write();
 
-                let blocks = this.layoutHelper.createLines(talentName + ":", titleStyle, symbolStyle, startLine, page);
-                blocks.forEach((b, i) => { if (i < blocks.length -1) lines.push(b); });
-                let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
-
-                if (talent) {
-                    blocks = this.layoutHelper.createLines(talent.localizedDescription, paragraphStyle, symbolStyle, line, page);
-                    blocks.forEach(b => lines.push(b));
-                    startLine = this.addBlankLineAfter(lines, page);
-                    if (startLine == null) {
-                        break;
-                    }
-                }
-            };
-        }
-
-        lines.forEach(t =>
-            t.writeTextBlocks(page, SimpleColor.from("#000000"))
-        );
+                paragraph = paragraph.nextParagraph();
+            }
+        };
     }
 
 }
