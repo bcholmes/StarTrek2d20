@@ -783,12 +783,12 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         if (character.role != null) {
             let role = RolesHelper.instance.getRole(character.role, character.type);
             if (role) {
-                let blocks = this.layoutHelper.createTextBlocks(role.localizedName + ":", titleStyle, symbolStyle, startLine, page);
+                let blocks = this.layoutHelper.createLines(role.localizedName + ":", titleStyle, symbolStyle, startLine, page);
                 blocks.forEach((b, i) => { if (i < blocks.length -1) lines.push(b); });
 
                 let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
 
-                blocks = this.layoutHelper.createTextBlocks(role.localizedAbility, paragraphStyle, symbolStyle, line, page);
+                blocks = this.layoutHelper.createLines(role.localizedAbility, paragraphStyle, symbolStyle, line, page);
                 blocks.forEach(b => lines.push(b));
                 startLine = this.addBlankLineAfter(lines, page);
             }
@@ -804,12 +804,12 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
                     talentName += " [Rank: " + rank + "]";
                 }
 
-                let blocks = this.layoutHelper.createTextBlocks(talentName + ":", titleStyle, symbolStyle, startLine, page);
+                let blocks = this.layoutHelper.createLines(talentName + ":", titleStyle, symbolStyle, startLine, page);
                 blocks.forEach((b, i) => { if (i < blocks.length -1) lines.push(b); });
                 let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
 
                 if (talent) {
-                    blocks = this.layoutHelper.createTextBlocks(talent.localizedDescription, paragraphStyle, symbolStyle, line, page);
+                    blocks = this.layoutHelper.createLines(talent.localizedDescription, paragraphStyle, symbolStyle, line, page);
                     blocks.forEach(b => lines.push(b));
                     startLine = this.addBlankLineAfter(lines, page);
                     if (startLine == null) {

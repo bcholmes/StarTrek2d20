@@ -12,6 +12,7 @@ import { getCurrentLanguageCode } from "../i18n/config";
 import { WeaponType } from "../helpers/weapons";
 import { CHALLENGE_DICE_NOTATION } from "../helpers/talents";
 import { XYLocation } from "../common/xyLocation";
+import { Paragraph } from "./paragraph";
 
 abstract class BasicGeneratedSheet implements ICharacterSheet {
 
@@ -139,6 +140,8 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
         const page = pdf.getPage(0);
         const labelFont = new FontSpecification(this.boldFont, this.determineLabelFontSize());
 
+        this.writeCharacterDetails(page, character);
+
         this.writeLabel(page, i18next.t("Construct.attribute.control"),
             this.controlBlock, labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
         this.writeLabel(page, i18next.t("Construct.attribute.daring"),
@@ -234,6 +237,39 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
         return fontSize;
     }
 
+    writeCharacterDetails(page: PDFPage, character: Character) {
+        let paragraph = new Paragraph(page, this.layoutHelper, this.mainBlock, this.symbolFont);
+        paragraph.append(i18next.t("Construct.other.purpose").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
+        paragraph.append(character.jobAssignment ?? i18next.t("Common.text.none"), new FontSpecification(this.textFont, 9));
+        paragraph.write();
+
+        if (character.pronouns?.length) {
+            paragraph = paragraph.nextParagraph();
+            paragraph.append(i18next.t("Construct.other.pronouns").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
+            paragraph.append(character.pronouns, new FontSpecification(this.textFont, 9));
+            paragraph.write();
+        }
+
+        if (character.speciesStep?.species != null) {
+            paragraph = paragraph.nextParagraph();
+            paragraph.append(i18next.t("Construct.other.species").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
+            paragraph.append(character.localizedSpeciesName, new FontSpecification(this.textFont, 9));
+            paragraph.write();
+        }
+
+        paragraph = paragraph.nextParagraph();
+        paragraph.append(i18next.t("Construct.other.traits").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
+        paragraph.append(character.getAllTraits(), new FontSpecification(this.textFont, 9));
+        paragraph.write();
+
+        if (character.focuses?.length) {
+            paragraph = paragraph.nextParagraph();
+            paragraph.append(i18next.t("Construct.other.focuses").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
+            paragraph.append(character.focuses.join(", "), new FontSpecification(this.textFont, 9));
+            paragraph.write();
+        }
+    }
+
     writeName(page: PDFPage, character: Character) {
         if (character.name?.length) {
             let name = character.name;
@@ -262,7 +298,6 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
                 color: BasicGeneratedHalfPageCharacterSheet.tealColour.asPdfRbg(),
                 borderWidth: 0
             });
-            console.log("Draw curve: " + curvePath);
 
             textBlock.writeToPage(x, page.getHeight() - y, page, SimpleColor.from("#ffffff"));
         }
@@ -327,7 +362,7 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
             let text = type + ", " + (w.dice + security) + CHALLENGE_DICE_NOTATION + ", " + qualities
                 + (w.hands != null ? ", " + i18next.t("Weapon.common.size", { hands: w.hands }) : "");
 
-            let blocks = this.layoutHelper.createTextBlocks(w.name + ": ", bold, symbols, startLine, page);
+            let blocks = this.layoutHelper.createLines(w.name + ": ", bold, symbols, startLine, page);
             let line = (blocks.length > 0) ? blocks[blocks.length - 1] : new Line(startLine.location, startLine.column);
 
             if (blocks.length) {
@@ -345,7 +380,7 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
                 }
             });
 
-            let textBlocks = this.layoutHelper.createTextBlocks(text, standard, symbols, line, page);
+            let textBlocks = this.layoutHelper.createLines(text, standard, symbols, line, page);
 
             textBlocks.forEach(t => {
                 t.writeTextBlocks(page, SimpleColor.from("#000000"));

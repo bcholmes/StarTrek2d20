@@ -102,8 +102,23 @@ export class Line {
 }
 
 export class LayoutHelper {
-    createTextBlocks(text: string, fontSpec: FontSpecification, symbolStyle: FontSpecification, line: Line, page: PDFPage, colour?: SimpleColor) {
+
+    symbolFont: PDFFont;
+
+    createLines(text: string, fontSpec: FontSpecification, symbolStyle: FontSpecification, lines: Line|(Line[]), page: PDFPage, colour?: SimpleColor) {
         let result: Line[] = [];
+        if (result instanceof Line) {
+            // ignore
+        } else if (result.length > 0) {
+            let l = lines as (Line[]);
+            result = [...l].splice(l.length-1, 1);
+        }
+        let line = null;
+        if (lines instanceof Line) {
+            line = lines as Line;
+        } else if (lines.length > 0) {
+            line = lines[lines.length-1];
+        }
         if (line) {
             let words = text.split(/\s+/);
             let previousBlock = null;
