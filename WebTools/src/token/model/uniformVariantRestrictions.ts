@@ -99,9 +99,4 @@ export default class UniformVariantRestrictions {
                     ].indexOf(rankIndicator) >= 0;
         }
     }
-
-    static isStraightenedNeck(uniformEra: UniformEra) {
-        return uniformEra != null && uniformEra !== UniformEra.Klingon;
-    }
-
 }

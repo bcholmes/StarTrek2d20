@@ -15,7 +15,6 @@ import { Token } from "./model/token";
 import UniformCatalog from "./model/uniformCatalog";
 import { UniformEra } from "./model/uniformEra";
 import UniformPackCollection from "./model/uniformPackCollection";
-import UniformVariantRestrictions from "./model/uniformVariantRestrictions";
 
 const EnterpriseEraStarfleetLogoGradient = `<radialGradient xmlns="http://www.w3.org/2000/svg" id="blueSpaceBackground" cx="314.99219" cy="293.60739" r="229.5562" fx="314.99219" fy="293.60739" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.18219681,0,0,0.18219681,278.71109,288.43675)">
     <stop offset="0" style="stop-color:#4279b3;stop-opacity:1;" id="stop1320"/>
@@ -40,15 +39,15 @@ export class TokenSvgBuilder {
 
                 + "<g id=\"background\"" + (rounded ? " clip-path=\"url(#roundClipPath)\"" : "") + " >" +
                     `<rect width="400px" height="400px" x="0" y="0" fill="white"/>` +
-                    "<g"  + (rounded ? " transform=\"translate(" + (UniformVariantRestrictions.isStraightenedNeck(token.uniformEra) ? "-40" : "-60") + ",0)\"" : "") + ">" +
-                        "<g"  + (UniformVariantRestrictions.isStraightenedNeck(token.uniformEra) ? " transform=\"translate(-20,0)\"" : "") + ">" +
+                    "<g"  + (rounded ? " transform=\"translate(-40,0)\"" : "") + ">" +
+                        "<g transform=\"translate(-20,0)\">" +
                             HairCatalog.instance.getHair(token, HairElement.BehindHead) +
                             EarCatalog.instance.getHiddenEar(token) +
                         "</g>" +
                         ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.VeryBack) +
                         UniformCatalog.instance.getBody(token) +
                         RankIndicatorCatalog.instance.getRankIndicator(token) +
-                        "<g"  + (UniformVariantRestrictions.isStraightenedNeck(token.uniformEra) ? " transform=\"translate(-20,0)\"" : "") + ">" +
+                        "<g transform=\"translate(-20,0)\">" +
                             ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.BehindHead) +
                             HeadCatalog.instance.getHead(token) +
                             ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.BaseHead) +

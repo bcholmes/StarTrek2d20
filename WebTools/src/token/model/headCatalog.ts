@@ -5,7 +5,6 @@ import { SpeciesOption } from "./speciesOptionEnum";
 import SpeciesRestrictions from "./speciesRestrictions";
 import Swatch from "./swatch";
 import { Token } from "./token";
-import UniformVariantRestrictions from "./uniformVariantRestrictions";
 
 const Head2 = `<g id="g159589">
     <path d="m 194.61306,93.470808 c 0,-41.473333 46.45867,-64.095999 70.328,-64.095999 22.76933,0 51.496,12.610667 65.4,28.709333 7.37066,8.534666 11.86933,24.485333 14.34533,36.362666 2.87067,13.772002 3.828,25.636002 3.828,27.589332 0,2.10533 -0.968,3.852 -2.09067,5.87467 -0.132,0.236 -0.26533,0.48133 -0.4,0.72533 -0.26933,0.956 -0.80933,1.896 -1.11066,2.72933 -0.55067,1.51867 -0.78267,3.1 -1.27867,4.61334 -0.536,2.17066 0.0173,3.828 0,5.21066 0,-0.26266 -0.0827,-0.528 -0.20267,-0.79466 0.14534,2.372 0.46267,5.09733 0.80667,8.03866 0.63067,5.36134 1.344,11.43867 1.16,16.93467 -0.25067,7.524 -5.304,22.76667 -8.808,32.852 -1.74933,5.03066 -3.012,8.66533 -3.26666,10.308 -0.212,1.37866 -0.44,3.71333 -0.70267,6.41733 -0.51467,5.28667 -1.58533,16.28667 -2.832,17.404 -1.12933,1.004 -15.08533,1.932 -26.608,1.47467 -3.27867,-0.12934 -6.32667,-0.376 -9.056,-0.73334 -3.25467,-0.42533 -12.89333,-4.07466 -19.13067,-7.36266 0,0 -47.484,-26.90267 -48.78,-28.524 -1.29733,-1.62 -7.94133,-21.87867 -8.104,-24.63333 -0.16133,-2.75467 -6.21333,-4.74134 -7.65066,-6.49467 -1.436,-1.75467 -15.2,-22.656 -15.2,-50.876 0,-17.663999 -0.64667,-21.729332 -0.64667,-21.729332" style="fill:#cd976d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333" id="path160653"/>
@@ -491,11 +490,7 @@ class HeadCatalog {
             default:
         }
         if (token.species === Species.Trill) {
-            if (UniformVariantRestrictions.isStraightenedNeck(token.uniformEra)) {
-                return result + Trill.headOnly;
-            } else {
-                return result + TrillDots;
-            }
+            return result + Trill.headOnly;
         } else if (token.species === Species.Andorian) {
             return result + AndorianForehead.replace(SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX, token.skinColor);
         } else if (token.species === Species.Cardassian) {
