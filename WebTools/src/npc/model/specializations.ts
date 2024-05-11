@@ -506,6 +506,10 @@ export class Specializations {
                     "It's planet forbidden!",
                     "Is that an offer or a joke?",
                     "There's always a market for an ingenious trader.",
+                    "Some of the most successful relationships are based on lies and deceit. Since that's where they usually end up anyway, it's a logical place to start.",
+                    "There's nothing more expensive for an arms dealer than peace.",
+                    "The only problem with an honest buck is they're so hard to make -- the margins are too low, too many people are doin' it.",
+                    "The first and most important rule of gun-running is: Never get shot with your own merchandise."
                 ], 0.0,
                 [
                     Species.Ferengi, Species.Human, Species.Nausicaan, Species.Orion, Species.Pakled,
@@ -964,6 +968,24 @@ export class Specializations {
                     "If you are going to sin, sin against God, not the bureaucracy. God will forgive you but the bureaucracy won't.",
                     "The perfect bureaucrat everywhere is the person who manages to make no decisions and escape all responsibility.",
                     "Bureaucrats are the only people in the world who can say absolutely nothing and mean it."
+                ],
+                0),
+            new SpecializationModel(Specialization.IndependentTraderCaptain, NpcCharacterType.Civilian, "Independent Trader Captain",
+                [Attribute.Control, Attribute.Daring, Attribute.Insight],
+                Skill.Conn,
+                [
+                    "Business", "Appraisal", "Negotiation", "Bargaining", "Finance", "Opportunistic Insight", "Trading", "Cargo Carrying"
+                ],
+                [
+                    "Evasive Maneouvers", "Ship's Sensors", "Fancy Flying", "Valuation"
+                ],
+                [
+                    "Life is like loading twice your cargo weight on to your spacecraft. If it's canaries and you can keep half of them flying all the time, you're all right.",
+                    "Is that an offer or a joke?",
+                    "There's always a market for an ingenious trader.",
+                    "I've got a bad feeling about this.",
+                    "Look, I'd love to help, but I've already promised this shipment to a Klingon merchant. They don't like it when you break a deal.",
+                    "I'm not sure there's a market for this, but I could take two crates off your hands. Unless the price is unrealistic."
                 ],
                 0),
             new SpecializationModel(Specialization.Colonist, NpcCharacterType.Civilian, "Colonist",

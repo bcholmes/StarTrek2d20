@@ -35,7 +35,7 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.pronouns')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.pronouns ? character.pronouns  : undefined}</div></div>
 
-                <div className="col-md-2 view-field-label pb-2">Department:</div>
+                <div className="col-md-2 view-field-label pb-2">{t('Construct.other.purpose')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.role == null ? character.jobAssignment : character.role}</div></div>
             </div>
 
@@ -43,7 +43,7 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.rank')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.rank?.localizedName}</div></div>
 
-                <div className="col-md-2 view-field-label pb-2">Species:</div>
+                <div className="col-md-2 view-field-label pb-2">{t('Construct.other.species')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.speciesName}</div></div>
             </div>
 

@@ -126,12 +126,8 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
         const boldFontBytes = await fetch("/static/font/OpenSansCondensed-Bold.ttf").then(res => res.arrayBuffer());
         this.boldFont = await pdf.embedFont(boldFontBytes);
 
-        if (getCurrentLanguageCode() === "ru") {
-            this.headingFont = this.boldFont;
-        } else {
-            const fontBytes = await fetch("/static/font/Michroma-Regular.ttf").then(res => res.arrayBuffer());
-            this.headingFont = await pdf.embedFont(fontBytes);
-        }
+        const fontBytes = await fetch("/static/font/Michroma-Regular.ttf").then(res => res.arrayBuffer());
+        this.headingFont = await pdf.embedFont(fontBytes);
 
         const symbolFontBytes = await fetch("/static/font/Trek_Arrowheads.ttf").then(res => res.arrayBuffer());
         this.symbolFont = await pdf.embedFont(symbolFontBytes);

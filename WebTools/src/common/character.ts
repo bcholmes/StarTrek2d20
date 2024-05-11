@@ -334,7 +334,7 @@ export class Character extends Construct {
     public reputation = 10;
     public reprimands = 0;
     public _attributes: CharacterAttribute[] = [];
-    public _skills: CharacterSkill[] = [];
+    public _skills: number[] = [];
     public traits: string[];
     public additionalTraits: string;
     public age: Age;
@@ -373,7 +373,7 @@ export class Character extends Construct {
         this._attributes.push(new CharacterAttribute(Attribute.Reason, this._attributeInitialValue));
 
         for (var i = 0; i <= Skill.Medicine; i++) {
-            this._skills.push(new CharacterSkill(i, 1));
+            this._skills.push(i);
         }
 
         this.traits = [];
@@ -543,7 +543,7 @@ export class Character extends Construct {
                 return new CharacterSkill(s, values[index]);
             });
         } else {
-            return this._skills;
+            return SkillsHelper.getSkills().map(s => new CharacterSkill(s, this._skills[s]));
         }
     }
 
@@ -1153,9 +1153,9 @@ export class Character extends Construct {
             }
         });
 
-        this._skills.forEach(s => {
-            if (s.expertise > maxDiscipline) {
-                s.expertise = maxDiscipline;
+        SkillsHelper.getSkills().forEach(s => {
+            if (this._skills[s] > maxDiscipline) {
+                this._skills[s] = maxDiscipline;
             }
         });
     }
@@ -1170,10 +1170,7 @@ export class Character extends Construct {
             character._attributes[a.attribute].attribute = a.attribute;
             character._attributes[a.attribute].value = a.value;
         });
-        this._skills.forEach(s => {
-            character._skills[s.skill].skill = s.skill;
-            character._skills[s.skill].expertise = s.expertise;
-        });
+        character._skills = [...this._skills];
         this.traits.forEach(t => {
             character.traits.push(t);
         });
