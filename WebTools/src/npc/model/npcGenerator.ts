@@ -463,7 +463,7 @@ export class NpcGenerator {
             if (i === 0 && specialization.primaryDiscipline != null) {
                 a = specialization.primaryDiscipline;
             }
-            character.skills[a].expertise = disciplinePoints[i];
+            character._skills[a] = disciplinePoints[i];
             disciplines.splice(disciplines.indexOf(a), 1);
         }
 

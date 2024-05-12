@@ -59,6 +59,12 @@ export class LandscapeGeneratedCharacterSheet extends BasicGeneratedSheet {
 
     ];
 
+    static readonly determinationPills = [
+        new Column(151.5, 266, 10.7, 22.5),
+        new Column(181.3, 266, 10.7, 22.5),
+        new Column(211.2, 266, 10.7, 22.5)
+    ]
+
     static readonly subTitleLocations = {
         "attacks": new Column(40.2, 390.9, 11.8, 142.9),
         "attributes": new Column(366.5, 27.5, 11.8, 142.9),
@@ -158,6 +164,7 @@ export class LandscapeGeneratedCharacterSheet extends BasicGeneratedSheet {
         this.writeWeaponLabels(page);
         this.writeStress(pdf, page, character);
         this.writeRoleAndTalents(page, character);
+        this.createDeterminationCheckmarks(pdf, page);
 
         this.populateForm(pdf.getForm(), character);
     }
@@ -321,6 +328,22 @@ export class LandscapeGeneratedCharacterSheet extends BasicGeneratedSheet {
     }
     formatNameWithoutPronouns(character: Character) {
         return CharacterSerializer.serializeName(character);
+    }
+
+    createDeterminationCheckmarks(pdf: PDFDocument, page: PDFPage) {
+        let form = pdf.getForm();
+        LandscapeGeneratedCharacterSheet.determinationPills.forEach((block, i) => {
+
+            let checkbox = form.createCheckBox("Determination " + (i+1));
+            checkbox.addToPage(page, {
+                x: block.start.x + 4,
+                y: page.getHeight() - block.start.y - 10,
+                width: block.width - 8,
+                height: 9,
+                textColor: SimpleColor.from("#000000").asPdfRbg(),
+                borderWidth: 0
+            });
+        });
     }
 
     writeStress(pdf: PDFDocument, page: PDFPage, character: Character) {

@@ -115,6 +115,7 @@ class Marshaller {
                 sheet["npc"] = block;
             }
         }
+        console.log("JSON: ", sheet);
         return sheet;
     }
 
@@ -906,18 +907,9 @@ class Marshaller {
             });
         }
         if (json.disciplines) {
-            if (result.legacyMode) {
-                SkillsHelper.getSkills().forEach(s =>
-                    result._skills[s] = json.disciplines[Skill[s]]
-                );
-            } else {
-                result.skills.forEach(s => {
-                    let value = json.disciplines[Skill[s.skill]];
-                    if (value != null) {
-                        s.expertise = value;
-                    }
-                });
-            }
+            SkillsHelper.getSkills().forEach(s =>
+                result._skills[s] = json.disciplines[Skill[s]]
+            );
         }
         if (json.environment) {
             let environment = EnvironmentsHelper.getEnvironmentByTypeName(json.environment.id, result.type);
