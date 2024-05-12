@@ -12,6 +12,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240512</b>
+                <ul>
+                    <li>The big new thing is that I've converted the one-page Landscape sheet to better support
+                        non-English languages.
+                    </li>
+                </ul>
                 <b>v1.240505</b>
                 <ul>
                     <li>I'm experimenting with a new type of character sheet: one of the limitations of the existing
