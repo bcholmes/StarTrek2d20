@@ -132,6 +132,7 @@ export class Paragraph {
     lines: Line[] = [];
     symbolFont: PDFFont;
     page: PDFPage;
+    indentAmount: number;
 
     // in PDF coordinate system
     private start?: XYLocation;
@@ -145,11 +146,38 @@ export class Paragraph {
 
     private currentLine() {
         if (this.lines.length === 0) {
-            let start = this.start == null ? this.column.translatedStart(this.page) : this.start;
-            return new Line(start, this.column);
+            let column = this.column;
+            let start = this.start;
+            if (this.indentAmount) {
+                column = Paragraph.indentedColumn(column, this.indentAmount);
+                if (start != null) {
+                    start = new XYLocation(start.x + this.indentAmount, start.y);
+                }
+            }
+            if (start == null) {
+                start = column.translatedStart(this.page);
+            }
+            return new Line(start, column);
         } else {
             return this.lines[this.lines.length - 1];
         }
+    }
+
+    private static indentedColumn(column: Column, indentAmount: number) {
+        return new Column(column.start.x + indentAmount, column.start.y, column.height, column.width - indentAmount,
+            column.nextColumn ? Paragraph.indentedColumn(column.nextColumn, indentAmount) : undefined)
+    }
+
+    private static unindentedColumn(column: Column, indentAmount: number) {
+        if (indentAmount) {
+            return new Column(column.start.x - indentAmount, column.start.y, column.height, column.width + indentAmount,
+                column.nextColumn ? Paragraph.unindentedColumn(column.nextColumn, indentAmount) : undefined)
+        } else {
+            return column;
+        }
+    }
+    indent(amount: number) {
+        this.indentAmount = amount;
     }
 
     append(text: string, font: FontSpecification, colour?: SimpleColor) {
@@ -176,8 +204,8 @@ export class Paragraph {
             }
 
             if (line) {
-                result = new Paragraph(this.page, line.column, this.symbolFont);
-                result.start = newLocation;
+                result = new Paragraph(this.page, Paragraph.unindentedColumn(line.column, this.indentAmount), this.symbolFont);
+                result.start = this.indentAmount ? new XYLocation(newLocation.x - this.indentAmount, newLocation.y) : newLocation;
             } else {
                 result = null;
             }

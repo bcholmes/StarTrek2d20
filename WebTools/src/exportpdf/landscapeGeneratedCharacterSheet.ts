@@ -7,7 +7,7 @@ import i18next from "i18next";
 import { getCurrentLanguageCode } from "../i18n/config";
 import { Character } from "../common/character";
 import { Construct } from "../common/construct";
-import { TalentsHelper } from "../helpers/talents";
+import { TALENT_NAME_BORG_IMPLANTS, TalentsHelper } from "../helpers/talents";
 import { FontSpecification } from "./fontSpecification";
 import { Paragraph } from "./paragraph";
 import { RolesHelper } from "../helpers/roles";
@@ -15,6 +15,7 @@ import { CharacterSerializer } from "../common/characterSerializer";
 import { Skill } from "../helpers/skills";
 import { Attribute } from "../helpers/attributes";
 import { CareerEventsHelper } from "../helpers/careerEvents";
+import { BorgImplants, Implant } from "../helpers/borgImplant";
 
 export class LandscapeGeneratedCharacterSheet extends BasicGeneratedSheet {
 
@@ -300,7 +301,7 @@ export class LandscapeGeneratedCharacterSheet extends BasicGeneratedSheet {
     }
 
     fillEquipment(form: PDFForm, character: Character) {
-        character.equipmentAndImplants.forEach((e, i) => {
+        character.equipmentModels.forEach((e, i) => {
             this.fillField(form, 'Equipment ' + (i+1), e.localizedName);
         });
     }
@@ -600,7 +601,21 @@ export class LandscapeGeneratedCharacterSheet extends BasicGeneratedSheet {
                 paragraph.append(talent.localizedDescription, new FontSpecification(this.textFont, 9));
                 paragraph.write();
 
-                paragraph = paragraph.nextParagraph();
+                if (talent.name === TALENT_NAME_BORG_IMPLANTS) {
+                    character.implants.forEach(implantType => {
+
+                        let implant = BorgImplants.instance.getImplantByType(implantType);
+                        paragraph = paragraph.nextParagraph(0);
+                        if (paragraph) {
+                            paragraph.indent(10);
+                            paragraph.append(implant.localizedName + ": ", new FontSpecification(this.boldFont, 9));
+                            paragraph.append(implant.description, new FontSpecification(this.textFont, 9));
+                            paragraph.write();
+                        }
+                    });
+                }
+
+                paragraph = paragraph ? paragraph.nextParagraph() : null;
             }
         };
     }

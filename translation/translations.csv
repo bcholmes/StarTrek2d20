@@ -771,7 +771,7 @@ CareerEvent.common.16.description,"During a survey mission, the character discov
 - Qual tecnologia foi essa? Ela ainda funciona?
 - O que se conhece sobre a civilização que a criou?"
 CareerEvent.common.16.focusSuggestion,"The character gains a Focus, reflecting the event and its aftermath. Examples include: Ancient Technology, Computers, Reverse Engineering.",,,,,,"A personagem recebe um Foco, refletindo o evento e suas consequências. Exemplos incluem: Tecnologia Antiga, Computação, Engenharia Reversa."
-CareerEvent.common.17.name,Принятие командования,,Belobigung,,,Особая благодарность,Condecoração Especial
+CareerEvent.common.17.name,Special Commendation,,Belobigung,,,Особая благодарность,Condecoração Especial
 CareerEvent.common.17.description,"During a crisis, the character saved the lives of several colleagues, helping them to safety.This earned the character a special commendation.
 
 - What was the crisis? Why was the mission in danger?

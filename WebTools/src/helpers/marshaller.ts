@@ -115,7 +115,6 @@ class Marshaller {
                 sheet["npc"] = block;
             }
         }
-        console.log("JSON: ", sheet);
         return sheet;
     }
 
