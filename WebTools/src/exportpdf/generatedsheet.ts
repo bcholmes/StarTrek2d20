@@ -1,5 +1,5 @@
 import { PDFDocument, PDFFont, PDFForm, PDFPage } from "@cantoo/pdf-lib";
-import { Column, ICharacterSheet, LayoutHelper } from "./icharactersheet";
+import { Column, ICharacterSheet } from "./icharactersheet";
 import fontkit from '@pdf-lib/fontkit'
 import { Construct } from "../common/construct";
 import i18next from "i18next";
@@ -8,7 +8,6 @@ import { SimpleColor } from "../common/colour";
 import { Character } from "../common/character";
 import { Attribute, AttributesHelper } from "../helpers/attributes";
 import { Skill, SkillsHelper } from "../helpers/skills";
-import { getCurrentLanguageCode } from "../i18n/config";
 import { WeaponType } from "../helpers/weapons";
 import { CHALLENGE_DICE_NOTATION } from "../helpers/talents";
 import { XYLocation } from "../common/xyLocation";
@@ -16,7 +15,7 @@ import { Paragraph } from "./paragraph";
 import { FontSpecification } from "./fontSpecification";
 import { TextBlock } from "./textBlock";
 
-abstract class BasicGeneratedSheet implements ICharacterSheet {
+export abstract class BasicGeneratedSheet implements ICharacterSheet {
 
     formFont: PDFFont;
 
@@ -76,8 +75,6 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
     static readonly greyColour: SimpleColor = SimpleColor.from("#979696");
 
     static readonly bulletPath = "M 1.98633,0 C 0.88552,0 0,0.887478 0,1.988281 v 2.52539 C 0,5.614474 0.88552,6.5 1.98633,6.5 H 7.35 C 9.1505,6.5 10.6,5.050496 10.6,3.25 10.6,1.449502 9.1505,0 7.35,0 Z";
-
-    layoutHelper = new LayoutHelper();
 
     nameBlock: Column = new Column(90, 48, 15, 550-90);
     mainBlock: Column = new Column(74, 72, 338-72, 304-74);
@@ -277,7 +274,7 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
     }
 
     writeCharacterDetails(page: PDFPage, character: Character) {
-        let paragraph = new Paragraph(page, this.layoutHelper, this.mainBlock, this.symbolFont);
+        let paragraph = new Paragraph(page, this.mainBlock, this.symbolFont);
         paragraph.append(i18next.t("Construct.other.purpose").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
         paragraph.append(character.jobAssignment ?? i18next.t("Common.text.none"), new FontSpecification(this.textFont, 9));
         paragraph.write();
@@ -401,7 +398,7 @@ export class BasicGeneratedHalfPageCharacterSheet extends BasicGeneratedSheet {
             let text = type + ", " + (w.dice + security) + CHALLENGE_DICE_NOTATION + ", " + qualities
                 + (w.hands != null ? ", " + i18next.t("Weapon.common.size", { hands: w.hands }) : "");
 
-            paragraph = paragraph == null ? new Paragraph(page, this.layoutHelper, indentedColumn, this.symbolFont) : paragraph.nextParagraph(0);
+            paragraph = paragraph == null ? new Paragraph(page, indentedColumn, this.symbolFont) : paragraph.nextParagraph(0);
             paragraph.append(w.name + ": ", bold);
             paragraph.append(text, standard);
             paragraph.write();

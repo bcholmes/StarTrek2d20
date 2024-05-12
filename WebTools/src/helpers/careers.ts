@@ -1,4 +1,4 @@
-﻿import {TalentsHelper, ADVANCED_TEAM_DYNAMICS, TalentModel} from './talents';
+﻿import {TalentsHelper, TalentModel} from './talents';
 import {Character } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { Career } from './careerEnum';

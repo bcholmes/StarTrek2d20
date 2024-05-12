@@ -906,12 +906,18 @@ class Marshaller {
             });
         }
         if (json.disciplines) {
-            result.skills.forEach(s => {
-                let value = json.disciplines[Skill[s.skill]];
-                if (value != null) {
-                    s.expertise = value;
-                }
-            });
+            if (result.legacyMode) {
+                SkillsHelper.getSkills().forEach(s =>
+                    result._skills[s] = json.disciplines[Skill[s]]
+                );
+            } else {
+                result.skills.forEach(s => {
+                    let value = json.disciplines[Skill[s.skill]];
+                    if (value != null) {
+                        s.expertise = value;
+                    }
+                });
+            }
         }
         if (json.environment) {
             let environment = EnvironmentsHelper.getEnvironmentByTypeName(json.environment.id, result.type);

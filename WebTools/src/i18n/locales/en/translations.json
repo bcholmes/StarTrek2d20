@@ -415,7 +415,13 @@
     "Construct.other.attributes": "Attributes",
     "Construct.other.career": "Career",
     "Construct.other.careerEvent1": "Career Event 1",
+
+    "Construct.other.careerEvent1.short": "Event 1",
+
     "Construct.other.careerEvent2": "Career Event 2",
+
+    "Construct.other.careerEvent2.short": "Event 2",
+
     "Construct.other.careerEvents": "Career Events",
     "Construct.other.characterType": "Character Type",
     "Construct.other.crew": "Crew",
@@ -433,6 +439,7 @@
     "Construct.other.focus2": "Focus 2",
     "Construct.other.focus3": "Focus 3",
     "Construct.other.focuses": "Focuses",
+    "Construct.other.injuries": "Injuries",
     "Construct.other.job": "Job",
     "Construct.other.missionProfile": "Mission Profile",
     "Construct.other.name": "Name",
@@ -451,6 +458,7 @@
     "Construct.other.scale": "Scale",
     "Construct.other.serviceDate": "Service Date",
     "Construct.other.shields": "Shields",
+    "Construct.other.ship": "Ship",
     "Construct.other.sources": "Sources",
     "Construct.other.spaceFrame": "Space Frame",
     "Construct.other.specialRules": "Special Rules",
@@ -1293,6 +1301,11 @@
     "Role.admiral.ability": "Select three additional Focuses, reflecting areas of expertise or subjects that pertain to the admiral’s assignment. At the start of each mission, the admiral chooses one of their three Focuses, and every Main Character receives that as an additional Focus for the mission, due to additional briefings and instructional resources.",
 
     "Sheet.basicGeneratedHalfPageCharacterSheet": "New Half-Page 2nd Ed.-style Character Sheet",
+    "Sheet.halfPageSupportingCharacterSheet": "Half-Page Supporting Character Sheet",
+    "Sheet.landscapeGeneratedCharacterSheet": "TNG Landscape Character Sheet (US-Letter)",
+    "Sheet.standardTngCharacterSheet": "Standard TNG Character Sheet (US-Letter)",
+
+    "Sheet.text.title": "Starfleet Personnel Record",
 
     "ShipBuildType.pod.name": "Pod",
 

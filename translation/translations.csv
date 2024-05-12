@@ -433,7 +433,9 @@ Construct.other.attribute,Attribute,,Attribut,,Attribut,Качество,Atribut
 Construct.other.attributes,Attributes,,Attribute,Atributos,Attributs,Качества,Atributos
 Construct.other.career,Career,,Karriere,,Carrière,Карьера,Carreira
 Construct.other.careerEvent1,Career Event 1,,Karriereereignis 1,,Evénement de Carrière 1,Первое событие карьеры,Evento de Carreira 1
+Construct.other.careerEvent1.short,Event 1,,,,,,
 Construct.other.careerEvent2,Career Event 2,,Karriereereignis 2,,Evénement de Carrière 2,Второе событие карьеры,Evento de Carreira 2
+Construct.other.careerEvent2.short,Event 2,,,,,,
 Construct.other.careerEvents,Career Events,,Karriereereignisse,,Evénements de Carrière,События карьеры,Eventos de Carreira
 Construct.other.characterType,Character Type,,Art des Charakters,Tipo de carácter,Type de personnage,Тип персонажа,Tipo de Personagem
 Construct.other.crew,Crew,,Crew,Tripulación,Équipage,Персонал,Tripulação
@@ -451,6 +453,7 @@ Construct.other.focus1,Focus 1,,Fokus 1,,Spécialité 1,Специализаци
 Construct.other.focus2,Focus 2,,Fokus 2,,Spécialité 2,Специализация 2,Foco 2
 Construct.other.focus3,Focus 3,,Fokus 3,,Spécialité 3,Специализация 3,Foco 3
 Construct.other.focuses,Focuses,,Fokusse,Atenciónes,Spécialités,Специализации,Focos
+Construct.other.injuries,Injuries,,,,,,
 Construct.other.job,Job,,Tätigkeit,,Travail,Работа,Trabalho
 Construct.other.missionProfile,Mission Profile,,Missionsprofil,Perfil de la misión,Profil de mission,Профиль миссии,Perfil de Missão
 Construct.other.name,Name,,Name,Nombre,Nom,Имя,Nome
@@ -469,6 +472,7 @@ Construct.other.reputation,Reputation,,Ansehen,,Réputation,Репутация,R
 Construct.other.scale,Scale,,Schiffsgröße,Escama,Echelle,,Escala
 Construct.other.serviceDate,Service Date,,Indienststellung,Fecha de servicio,Date de mise en service,Период службы,Data de Serviço
 Construct.other.shields,Shields,,Schilde,Escudos,Boucliers,Щиты,Escudos
+Construct.other.ship,Ship,,,,,,
 Construct.other.sources,Sources,,Quellen,,,,Fontes
 Construct.other.spaceFrame,Space Frame,,Schiffsklasse,Malla espacial,Modèle de Vaisseau,,Estrutura Espacial
 Construct.other.specialRules,Special Rules,,Spezialregeln,Reglas especiales,Règles spéciales,Особые Правила,Regras Especiais
@@ -1510,6 +1514,10 @@ Role.admiral,Admiral,,,,,Адмирал,
 Role.admiral.description,Flag Officers only.,,,,,Только флагманы,
 Role.admiral.ability,"Select three additional Focuses, reflecting areas of expertise or subjects that pertain to the admiral’s assignment. At the start of each mission, the admiral chooses one of their three Focuses, and every Main Character receives that as an additional Focus for the mission, due to additional briefings and instructional resources.",,,,,"Выберите три дополнительные Специализации, отражающие область знаний или предметы, относящиеся к заданию адмирала. В начале каждой миссии адмирал выбирает одну из трех Специализаций и каждый главный герой получает ее в качестве дополнительного Специализации для миссии, благодаря дополнительным инструктажам и учебным ресурсам.",
 Sheet.basicGeneratedHalfPageCharacterSheet,New Half-Page 2nd Ed.-style Character Sheet,,,,,,
+Sheet.halfPageSupportingCharacterSheet,Half-Page Supporting Character Sheet,,,,,,
+Sheet.landscapeGeneratedCharacterSheet,TNG Landscape Character Sheet (US-Letter),,,,,,
+Sheet.standardTngCharacterSheet,Standard TNG Character Sheet (US-Letter),,,,,,
+Sheet.text.title,Starfleet Personnel Record,,,,,,
 ShipBuildType.pod.name,Pod,,Kleines Shuttle,,Nacelle,Челнок,Módulo
 ShipBuildType.shuttlecraft.name,Shuttle,,Shuttle,,Navette,Шаттл,Nave Auxiliar
 ShipBuildType.runabout.name,Runabout,,Runabout,,Runabout,Катер,Explorador

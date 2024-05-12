@@ -373,7 +373,7 @@ export class Character extends Construct {
         this._attributes.push(new CharacterAttribute(Attribute.Reason, this._attributeInitialValue));
 
         for (var i = 0; i <= Skill.Medicine; i++) {
-            this._skills.push(i);
+            this._skills.push(0);
         }
 
         this.traits = [];

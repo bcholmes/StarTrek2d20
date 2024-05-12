@@ -20,10 +20,11 @@ import { CareersHelper } from './careers';
 import { TracksHelper } from './tracks';
 import { localizedFocus } from '../components/focusHelper';
 import { XYLocation } from '../common/xyLocation';
-import { Column, ICharacterSheet, LayoutHelper, Line } from '../exportpdf/icharactersheet';
+import { Column, ICharacterSheet, Line } from '../exportpdf/icharactersheet';
 import { BasicGeneratedHalfPageCharacterSheet } from '../exportpdf/generatedsheet';
 import { FontSpecification } from '../exportpdf/fontSpecification';
 import { Paragraph } from '../exportpdf/paragraph';
+import { LandscapeGeneratedCharacterSheet } from '../exportpdf/landscapeGeneratedCharacterSheet';
 
 
 abstract class BasicSheet implements ICharacterSheet {
@@ -756,29 +757,8 @@ class KlingonCharacterSheet extends BasicFullCharacterSheet {
 
 class BaseTextCharacterSheet extends BasicFullCharacterSheet {
 
-    layoutHelper = new LayoutHelper();
-
-    addBlankLineAfter(lines: Line[], page: PDFPage) {
-        let currentColumn = null;
-        let newLocation = null;
-        if (lines.length > 0) {
-            let line = lines[lines.length-1];
-            newLocation = line.location;
-            currentColumn = line.column;
-            newLocation = new XYLocation(line.bottom().x, line.bottom().y - (0.5 * line.height()));
-        }
-
-        if (newLocation && currentColumn) {
-            let line = new Line(newLocation, currentColumn);
-            line = line.moveToNextColumnIfNecessary(page);
-            return line;
-        } else {
-            return null;
-        }
-    }
-
     writeRoleAndTalents(page: PDFPage, character: Character, titleStyle: FontSpecification, paragraphStyle: FontSpecification, symbolStyle: FontSpecification, currentColumn: Column) {
-        let paragraph = new Paragraph(page, this.layoutHelper, currentColumn, symbolStyle.font);
+        let paragraph = new Paragraph(page, currentColumn, symbolStyle.font);
         if (character.role != null) {
             let role = RolesHelper.instance.getRole(character.role, character.type);
             if (role) {
@@ -1234,15 +1214,15 @@ class CharacterSheets {
             return [ new CaptainsLogCharacterSheet() ];
         } else if (character.isKlingon()) {
             return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),
-                new StandardRussianCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(),  new TwoPageTngLandscapeCharacterSheet(),
+                new StandardRussianCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(),
                 new TwoPageTngCharacterSheet(), new RomulanCharacterSheet() ];
         } else if (era === Era.NextGeneration) {
             return [ new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new StandardRussianCharacterSheet(), new KlingonCharacterSheet(),
-                new StandardTosCharacterSheet(), new LandscapeTngCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(),
+                new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(),
                 new TwoPageKlingonCharacterSheet(), new RomulanCharacterSheet() ];
         } else {
             return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),
-                new StandardRussianCharacterSheet(),  new LandscapeTngCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(),
+                new StandardRussianCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(),
                 new TwoPageKlingonCharacterSheet(), new RomulanCharacterSheet() ];
         }
     }
