@@ -353,7 +353,7 @@ export class RanksHelper {
             [
                 new OfficerPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
-                new NotRolesPrerequisite([Role.ExecutiveOfficer, Role.ChiefMedicalOfficer, Role.ChiefOfSecurity, Role.ChiefEngineer]),
+                new NotRolesPrerequisite([Role.ExecutiveOfficer, Role.ChiefMedicalOfficer, Role.ChiefOfSecurity, Role.ChiefEngineer, Role.CommandingOfficer]),
                 new AnyOfPrerequisite(
                     new CharacterTypePrerequisite(CharacterType.Starfleet, CharacterType.KlingonWarrior),
                     new AlliedMilitaryPrerequisite(AlliedMilitaryType.KlingonDefenceForce, AlliedMilitaryType.TalarianMilitia)),

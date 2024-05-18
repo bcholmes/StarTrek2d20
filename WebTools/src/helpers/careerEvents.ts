@@ -12,26 +12,26 @@ export class CareerEventModel {
     disciplines: Skill[];
     focusSuggestions: string;
     traitDescription: string;
-    onApply: () => void;
     roll: number;
     special?: string;
     prefix: string;
     focuses: string[];
+    source: Source;
 
     constructor(name: string, description: string, attributes: Attribute[], disciplines: Skill[], focusSuggestions: string,
         traitDescription: string, roll: number, onApply: () => void, special: string = undefined, prefix: string = "common.",
-        focuses: string[] = []) {
+        focuses: string[] = [], source: Source = Source.Core) {
         this.name = name;
         this.description = description;
         this.attributes = attributes;
         this.disciplines = disciplines;
         this.focusSuggestions = focusSuggestions;
         this.traitDescription = traitDescription;
-        this.onApply = onApply;
         this.roll = roll;
         this.special = special;
         this.prefix = prefix;
         this.focuses = focuses;
+        this.source = source;
     }
 
     get localizedName() {
@@ -377,6 +377,97 @@ class CareerEvents {
             "common.",
             ["Cultural Studies", "Diplomacy", "Infiltration"]
         ),
+        // Federation-Klingon War
+        new CareerEventModel(
+            "Behind Enemy Lines",
+            "When conflict broke out, you were trapped on a planet which was claimed by the Klingons and had to help your colleagues escape.\n\n- What lasting bonds were made?\n- What did you leave behind?",
+            [Attribute.Daring],
+            [Skill.Security],
+            "",
+            null,
+            51,
+            () => {
+            },
+            undefined,
+            "common.",
+            [],
+            Source.FederationKlingonWar
+        ),
+        new CareerEventModel(
+            "Emergency Responder",
+            "When the war began, your ship was sent to aid victims of a bombing run on a devastated planet.\n\n- How did you cope with the suffering you witnessed?\n- How many did you save?",
+            [Attribute.Insight],
+            [Skill.Medicine],
+            "",
+            null,
+            52,
+            () => {
+            },
+            undefined,
+            "common.",
+            [],
+            Source.FederationKlingonWar
+        ),
+        new CareerEventModel(
+            "Battlefield Improvisation",
+            "You gained skill by using a regular piece of technology or your environment in a new way which aided in victory during a battle.\n\n- What did you invent?\n- What did you have to break to create your new tool?",
+            [Attribute.Presence],
+            [Skill.Engineering],
+            "",
+            null,
+            53,
+            () => {
+            },
+            undefined,
+            "common.",
+            [],
+            Source.FederationKlingonWar
+        ),
+        new CareerEventModel(
+            "Thrust into Command",
+            "At the outbreak of the war, you were serving on a ship whose captain was injured. You were forced to lead the crew to safety.\n\n- How do you feel?\n- What lingering effects has this had for you?",
+            [Attribute.Control],
+            [Skill.Command],
+            "",
+            null,
+            54,
+            () => {
+            },
+            undefined,
+            "common.",
+            [],
+            Source.FederationKlingonWar
+        ),
+        new CareerEventModel(
+            "Narrow Escape",
+            "Your ship was caught in a trap by Klingon battle cruisers. You convinced your captain to trust in a reckless plan you’d devised to escape.\n\n- What injuries were sustained?\n- How did your captain feel?",
+            [Attribute.Daring],
+            [Skill.Command],
+            "",
+            null,
+            55,
+            () => {
+            },
+            undefined,
+            "common.",
+            [],
+            Source.FederationKlingonWar
+        ),
+        new CareerEventModel(
+            "Found a Weak Spot",
+            "During a battle against enemy forces, you were able to analyze their tactics or weapons and devise a way to neutralize them.\n\n- Did this win the day?\n- How do people feel about your achievement?",
+            [Attribute.Reason],
+            [Skill.Science],
+            "",
+            null,
+            56,
+            () => {
+            },
+            undefined,
+            "common.",
+            [],
+            Source.FederationKlingonWar
+        ),
 
         // Operations
         new CareerEventModel(
@@ -393,7 +484,8 @@ class CareerEvents {
             },
             undefined,
             "common.",
-            ["Composure", "Infiltration", "Persuasion"]
+            ["Composure", "Infiltration", "Persuasion"],
+            Source.OperationsDivision
         )
     ];
 
@@ -1153,9 +1245,7 @@ class CareerEvents {
 
     getCareerEvents(type: CharacterType) {
         let list = type === CharacterType.KlingonWarrior ? this._klingonEvents : this._events;
-        if (!hasSource(Source.OperationsDivision)) {
-            list = list.filter(e => e.roll !== 99);
-        }
+        list = list.filter(e => hasSource(e.source));
         return [...list].sort((e1, e2) => {
             return e1.localizedName.localeCompare(e2.localizedName);
         })
@@ -1202,11 +1292,6 @@ class CareerEvents {
         });
 
         return event;
-    }
-
-    applyCareerEvent(id: number, type: CharacterType) {
-        let event = this.getCareerEvent(id, type);
-        event.onApply();
     }
 
     private improveAttribute(attribute: Attribute) {
