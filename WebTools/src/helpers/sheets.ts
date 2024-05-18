@@ -20,7 +20,7 @@ import { CareersHelper } from './careers';
 import { TracksHelper } from './tracks';
 import { localizedFocus } from '../components/focusHelper';
 import { XYLocation } from '../common/xyLocation';
-import { Column, ICharacterSheet, Line } from '../exportpdf/icharactersheet';
+import { Column, ICharacterSheet } from '../exportpdf/icharactersheet';
 import { BasicGeneratedHalfPageCharacterSheet } from '../exportpdf/generatedsheet';
 import { FontSpecification } from '../exportpdf/fontSpecification';
 import { Paragraph } from '../exportpdf/paragraph';
