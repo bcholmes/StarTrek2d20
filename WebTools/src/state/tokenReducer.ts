@@ -94,8 +94,27 @@ const token = (state: Token = initialState, action) => {
         }
         let extras = state.extras.filter(e => SpeciesRestrictions.isExtraAvailableFor(e, newSpecies, state.uniformEra));
 
+        let uniformEra = state.uniformEra;
+        let colour = state.divisionColor;
+        let rank = state.rankIndicator;
+        let uniforms = SpeciesRestrictions.getUniformTypes(newSpecies);
+        if (uniforms.indexOf(uniformEra) < 0) {
+            uniformEra = uniforms[0];
+
+            let newColourOptions = DivisionColors.getColors(action.payload.era);
+            let index = DivisionColors.indexOf(state.uniformEra, colour);
+            if (index >= 0 && index < newColourOptions.length) {
+                colour = newColourOptions[index].color;
+            } else {
+                colour = newColourOptions[0].color;
+            }
+            if (!UniformVariantRestrictions.isRankSupported(rank, action.payload.era)) {
+                rank = Rank.None;
+            }
+        }
+
         let variant = state.variant;
-        let variants = UniformVariantRestrictions.getAvailableVariants(state.uniformEra, state.bodyType, newSpecies, state.divisionColor, state.rankIndicator);
+        let variants = UniformVariantRestrictions.getAvailableVariants(uniformEra, state.bodyType, newSpecies, state.divisionColor, state.rankIndicator);
         if (variants.indexOf(variant) < 0) {
             variant = UniformVariantType.Base;
         }
@@ -113,6 +132,9 @@ const token = (state: Token = initialState, action) => {
             species: action.payload.species,
             speciesOption: option,
             extras: extras,
+            uniformEra: uniformEra,
+            rankIndicator: rank,
+            divisionColor: colour,
             variant: variant
         }
     }

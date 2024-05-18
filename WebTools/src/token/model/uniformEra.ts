@@ -2,9 +2,9 @@ import i18next from "i18next";
 import { makeKey } from "../../common/translationKey";
 
 export enum UniformEra {
+    DominionWar,
     Cardassian,
     Civilian,
-    DominionWar,
     Enterprise,
     JemHadar,
     Klingon,
@@ -20,6 +20,12 @@ export enum UniformEra {
     Ferengi,
     StrangeNewWorlds,
     Maco,
+}
+
+export const allUniformEras = (): UniformEra[] => {
+    return Object.keys(UniformEra).filter((item) => {
+        return !isNaN(Number(item));
+    }).map(item => Number(item));
 }
 
 export class UniformEraModel {

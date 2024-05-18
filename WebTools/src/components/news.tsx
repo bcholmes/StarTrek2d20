@@ -14,7 +14,7 @@ class News extends React.Component<INewsProperties, {}> {
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
                 <b>v1.240512</b>
                 <ul>
-                    <li>The big new thing is that I've converted the one-page Landscape sheet to better support
+                    <li>The big new thing is that I've converted the one-page TNG Landscape PDF to better support
                         non-English languages.
                     </li>
                 </ul>

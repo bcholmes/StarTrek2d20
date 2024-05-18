@@ -6,7 +6,7 @@ import { HeadType } from "./headTypeEnum";
 import { MouthType } from "./mouthTypeEnum";
 import { NoseType, allNoseTypes } from "./noseTypeEnum";
 import { SpeciesOption } from "./speciesOptionEnum";
-import { UniformEra } from "./uniformEra";
+import { UniformEra, allUniformEras } from "./uniformEra";
 
 
 class SpeciesRestrictions {
@@ -25,6 +25,14 @@ class SpeciesRestrictions {
     static readonly LIP_COLOUR = SimpleColor.from("#f4b39b");
     static readonly DARK_LIP_COLOUR = SimpleColor.from("#aa6778");
 
+
+    static getUniformTypes(species: Species) {
+        if (species === Species.Cetacean) {
+            return [ UniformEra.DominionWar, UniformEra.LowerDecks ];
+        } else {
+            return allUniformEras();
+        }
+    }
 
     static getSkinColors(species: Species) {
         if (species === Species.Orion) {
@@ -216,7 +224,10 @@ class SpeciesRestrictions {
 
     static isRubberHeaded(species: Species) {
         return species === Species.Aurelian || species === Species.Bynar
-            || species === Species.Caitian || species === Species.Benzite || species === Species.Jelna
+            || species === Species.Benzite
+            || species === Species.Caitian
+            || species === Species.Cetacean
+            || species === Species.Jelna
             || species === Species.JemHadar || species === Species.Kelpien || species === Species.Reman
             || species === Species.Saurian || species === Species.Suliban || species === Species.XindiReptilian
             || species === Species.Yridian || species === Species.Zaranite;

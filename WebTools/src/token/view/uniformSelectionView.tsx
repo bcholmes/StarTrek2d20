@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 import { Token } from "../model/token";
 import UniformCatalog from "../model/uniformCatalog";
 import UniformVariantRestrictions from "../model/uniformVariantRestrictions";
+import SpeciesRestrictions from "../model/speciesRestrictions";
 
 interface IUniformSelectionViewProperties extends WithTranslation {
     token: Token;
@@ -43,7 +44,7 @@ class UniformSelectionView extends React.Component<IUniformSelectionViewProperti
                 <div className="row align-items-start">
                     <div className="col-lg-6 mb-3">
                         <p>{t('TokenCreator.section.body.uniform')}:</p>
-                        <DropDownSelect items={this.uniformErasList()} defaultValue={token.uniformEra}
+                        <DropDownSelect items={this.uniformErasList(token)} defaultValue={token.uniformEra}
                             onChange={(era) => this.handleUniformEraChange(era as UniformEra)} />
                     </div>
                     <div className="col-lg-6 mb-3">
@@ -96,8 +97,9 @@ class UniformSelectionView extends React.Component<IUniformSelectionViewProperti
         }
     }
 
-    uniformErasList() {
-        return UniformEraHelper.instance.types.map(u => new DropDownElement(u.id, u.localizedName));
+    uniformErasList(token: Token) {
+        let uniformTypes = SpeciesRestrictions.getUniformTypes(token.species);
+        return UniformEraHelper.instance.types.filter(u => uniformTypes.indexOf(u.id) >= 0).map(u => new DropDownElement(u.id, u.localizedName));
     }
 }
 

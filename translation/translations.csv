@@ -1513,6 +1513,9 @@ Role.communicationsOfficer.ability,"When a Task attempted by the communications 
 Role.admiral,Admiral,,,,,Адмирал,
 Role.admiral.description,Flag Officers only.,,,,,Только флагманы,
 Role.admiral.ability,"Select three additional Focuses, reflecting areas of expertise or subjects that pertain to the admiral’s assignment. At the start of each mission, the admiral chooses one of their three Focuses, and every Main Character receives that as an additional Focus for the mission, due to additional briefings and instructional resources.",,,,,"Выберите три дополнительные Специализации, отражающие область знаний или предметы, относящиеся к заданию адмирала. В начале каждой миссии адмирал выбирает одну из трех Специализаций и каждый главный герой получает ее в качестве дополнительного Специализации для миссии, благодаря дополнительным инструктажам и учебным ресурсам.",
+Role.navigator,Navigator,,,,,,
+Role.navigator.description,"Not a typical senior staff role, some captains, particularly those operating in uncharted space, choose the most senior navigator to serve as senior staff as well.",,,,,,
+Role.navigator.ability,"When the navigator is required to analyze, or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",,,,,,
 Sheet.basicGeneratedHalfPageCharacterSheet,New Half-Page 2nd Ed.-style Character Sheet,,,,,,
 Sheet.halfPageSupportingCharacterSheet,Half-Page Supporting Character Sheet,,,,,,
 Sheet.landscapeGeneratedCharacterSheet,TNG Landscape Character Sheet (US-Letter),,,,,,
@@ -1896,6 +1899,7 @@ StarSystem.common.worlds,Worlds,,Welten,,Mondes,,Mundos
 StarSystem.common.noWorlds,No worlds,,Keine Welten,,Pas de mondes,,Sem mundos
 StarSystem.common.primaryStar,Primary Star,,Hauptstern,,Etoile Primaire,,Estrela Primária
 StarSystem.common.companionStar,Companion Star,,Begleitstern,,Etoile Binaire,,Estrela Companheira
+Talent.text.rank,{{talentName}} [Rank: {{rank}}],,,,,,
 Talent.ablativeArmor,Ablative Armor,,Ablative Panzerung,,,Абляционная броня,Armadura Ablativa
 Talent.ablativeArmor.soloDescription,"The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures, such as those caused by energy weapons and torpedo blasts, dissipating the energy and protecting the ship. This plating is replaced periodically.",,"Die Hüllenpanzerung des Schiffs verfügt über zusätzliche ablative Schichten, die unter extremen Temperatureinwirkungen desintegrieren, wie zum Beispiel bei Beschuss mit einer Energiewaffe oder bei einer Torpedoexplosion. Die Energie wird dabei abgeleitet, um das Raumschiff zu schützen. Diese Panzerung wird in regelmäßigen Abständen erneuert. Der Widerstand des Schiffs erhöht sich um 2.",,,"У покрытия корпуса есть дополнительный абляционный слой, который медленнее разрушается при экстремальных температурах, например вызванных взрывами энергетического оружия или залпами торпед, рассеивает энергию и защищает корабль. Оно периодически заменяется.","O revestimento do casco da nave possui uma camada ablativa adicional que desintegra lentamente sob temperaturas extremas, como as causadas por armas de energia ou explosões de torpedos, dissipando a energia e protegendo a nave. Esse revestimento é substituído periodicamente."
 Talent.ablativeFieldProjector,Ablative Field Projector,,,,,,Projetor de Campo Ablativo

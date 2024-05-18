@@ -288,7 +288,7 @@ export class RolesHelper {
             "Navigator",
             "Not a typical senior staff role, some captains, particularly those operating in uncharted space, choose the most senior navigator to serve as senior staff as well. When the navigator is required to analyze, or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",
             Skill.Conn,
-            "You reduce the Difficulty of any task to translate or understand an unfamiliar language by 2, to a minimum of 0.",
+            "When the navigator is required to analyze, or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",
             new SourcePrerequisite(Source.TricorderSet),
             new NotKlingonPrerequisite(),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
@@ -528,6 +528,9 @@ export class RolesHelper {
             new AnyOfPrerequisite(
                 new AllOfPrerequisite(
                     new AnyEraPrerequisite(Era.Enterprise),
+                    new CharacterTypePrerequisite(CharacterType.Starfleet)),
+                new AllOfPrerequisite(
+                    new SourcePrerequisite(Source.FederationKlingonWar),
                     new CharacterTypePrerequisite(CharacterType.Starfleet)),
                 new CharacterTypePrerequisite(CharacterType.AlliedMilitary))
             ),
