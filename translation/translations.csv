@@ -460,6 +460,8 @@ Construct.other.launchYear,Launch Year,,,,,,
 Construct.other.missionPod,Mission Pod,,,,,,
 Construct.other.missionProfile,Mission Profile,,Missionsprofil,Perfil de la misión,Profil de mission,Профиль миссии,Perfil de Missão
 Construct.other.name,Name,,Name,Nombre,Nom,Имя,Nome
+Construct.other.numberOfRefits_one,{{count}} refit,,,,,,
+Construct.other.numberOfRefits_other,{{count}} refits,,,,,,
 Construct.other.pastimes,Pastimes,,,,,,
 Construct.other.personalThreat,Personal Threat,,,,,,
 Construct.other.pronouns,Pronouns,,Pronomen,Pronombres,Pronoms,Называть,Pronomes
@@ -496,6 +498,8 @@ Construct.other.upbringing,Upbringing,,Erziehung,Cría,Education,Воспита�
 Construct.other.value,Value,,Überzeugung,,Valeur,Ценность,Valor
 Construct.other.values,Values,,Überzeugungen,Valores,Valeurs,Ценности,Valores
 Construct.other.weapons,Weapons,,Waffen,Armas,Armes,Оружие,Armas
+Construct.other.yearsOfService_one,{{count}} year of service,,,,,,
+Construct.other.yearsOfService_other,{{count}} years of service,,,,,,
 Construct.attribute.control,Control,,Konzentration,Control,Contrôle,Самоконтроль,Controle
 Construct.attribute.daring,Daring,,Wagemut,Atrevido,Audace,Решительность,Audácia
 Construct.attribute.fitness,Fitness,,Fitness,Aptitud,Forme Physique,Физподготовка,Físico

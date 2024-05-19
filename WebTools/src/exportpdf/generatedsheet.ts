@@ -1,19 +1,7 @@
-import { PDFDocument, PDFFont, PDFForm, PDFPage } from "@cantoo/pdf-lib";
-import { Column, ICharacterSheet } from "./icharactersheet";
+import { PDFDocument, PDFFont } from "@cantoo/pdf-lib";
+import { ICharacterSheet } from "./icharactersheet";
 import fontkit from '@pdf-lib/fontkit'
 import { Construct } from "../common/construct";
-import i18next from "i18next";
-import { makeKey } from "../common/translationKey";
-import { SimpleColor } from "../common/colour";
-import { Character } from "../common/character";
-import { Attribute, AttributesHelper } from "../helpers/attributes";
-import { Skill, SkillsHelper } from "../helpers/skills";
-import { WeaponType } from "../helpers/weapons";
-import { CHALLENGE_DICE_NOTATION } from "../helpers/talents";
-import { XYLocation } from "../common/xyLocation";
-import { Paragraph } from "./paragraph";
-import { FontSpecification } from "./fontSpecification";
-import { TextBlock } from "./textBlock";
 
 export abstract class BasicGeneratedSheet implements ICharacterSheet {
 

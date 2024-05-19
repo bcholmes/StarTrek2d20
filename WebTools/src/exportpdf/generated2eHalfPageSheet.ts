@@ -1,4 +1,4 @@
-import { PDFDocument, PDFFont, PDFForm, PDFPage } from "@cantoo/pdf-lib";
+import { PDFDocument, PDFForm, PDFPage } from "@cantoo/pdf-lib";
 import { SimpleColor } from "../common/colour";
 import { BaseNonForm2eSheet } from "./generated2eBaseSheet";
 import { Column } from "./icharactersheet";
@@ -9,10 +9,6 @@ import { Skill } from "../helpers/skills";
 import { Character } from "../common/character";
 import { Paragraph } from "./paragraph";
 import { FontSpecification } from "./fontSpecification";
-import { TextBlock } from "./textBlock";
-import { CHALLENGE_DICE_NOTATION } from "../helpers/talents";
-import { WeaponType } from "../helpers/weapons";
-import { XYLocation } from "../common/xyLocation";
 import { Construct } from "../common/construct";
 
 export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
@@ -219,40 +215,4 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
     }
 
 
-    writeAttacks(page: PDFPage, character: Character, column: Column) {
-
-        let indentedColumn = new Column(column.start.x + 15, column.start.y, column.height, column.width - 15);
-
-        let bold = new FontSpecification(this.boldFont, 9);
-        let standard = new FontSpecification(this.textFont, 9);
-        let security = character.skills[Skill.Security].expertise;
-
-        let paragraph = null;
-        let bottom = column.start;
-
-        character.determineWeapons().forEach(w => {
-            let type = w.type === WeaponType.MELEE ? i18next.t("Weapon.common.melee") : i18next.t("Weapon.common.ranged");
-            let qualities = w.qualities.map(q => q.localizedDescription).join(", ");
-            let text = type + ", " + (w.dice + security) + CHALLENGE_DICE_NOTATION + ", " + qualities
-                + (w.hands != null ? ", " + i18next.t("Weapon.common.size", { hands: w.hands }) : "");
-
-            paragraph = paragraph == null ? new Paragraph(page, indentedColumn, this.symbolFont) : paragraph.nextParagraph(0);
-            paragraph.append(w.name + ": ", bold);
-            paragraph.append(text, standard);
-            paragraph.write();
-
-            if (paragraph.lines.length) {
-                let location = paragraph.lines[0].location;
-                page.moveTo(column.start.x, page.getHeight() - (location.y + paragraph.lines[0].height() + 3));
-                page.drawSvgPath(BasicGeneratedHalfPageCharacterSheet.bulletPath, {
-                    color: BasicGeneratedHalfPageCharacterSheet.tealColour.asPdfRbg(),
-                    borderWidth: 0
-                });
-            }
-
-            bottom = paragraph.bottom;
-        });
-
-        return new XYLocation(column.start.x, bottom.y);
-    }
 }

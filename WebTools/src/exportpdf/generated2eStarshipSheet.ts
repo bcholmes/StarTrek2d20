@@ -125,8 +125,20 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         paragraph = paragraph.nextParagraph(1);
 
         paragraph.append(i18next.t("Construct.other.timeline").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9),
-            Generated2eStarshipSheet.tealColour);
+        Generated2eStarshipSheet.tealColour);
         paragraph.append("" + (starship.serviceYear), new FontSpecification(this.textFont, 9));
+        if (starship.spaceframeModel?.serviceYear != null && starship.serviceYear != null) {
+            let yearsOfService = i18next.t("Construct.other.yearsOfService", {
+                count: (Math.max(0, starship.serviceYear -  starship.spaceframeModel.serviceYear)),
+                interpolation: { escapeValue: false }
+            });
+            let numberOfRefits = i18next.t("Construct.other.numberOfRefits", {
+                count: starship.numberOfRefits,
+                interpolation: { escapeValue: false }
+            });
+
+            paragraph.append("(" + yearsOfService + ", " + numberOfRefits + ")", new FontSpecification(this.textFont, 9));
+        }
         paragraph.write();
 
         if (starship.className?.length) {
@@ -160,7 +172,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
         let bottom = this.writeThreeColumnDerivedStats(page, starship, paragraph);
 
-        let statFontSize = this.determineFontSizeForWidth(this.determineAllStatLabels(starship), 72.2 * 0.8);
+        let statFontSize = this.determineFontSizeForWidth(this.determineAllStatLabels(starship), 72.2 * 0.8 - 2);
 
         this.writeSubTitle(page, i18next.t("Construct.other.systems"), new Column(bottom.x, bottom.y + 16,
             13, Generated2eStarshipSheet.column1.width));

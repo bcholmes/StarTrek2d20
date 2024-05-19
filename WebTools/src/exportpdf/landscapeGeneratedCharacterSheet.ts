@@ -15,7 +15,7 @@ import { CharacterSerializer } from "../common/characterSerializer";
 import { Skill } from "../helpers/skills";
 import { Attribute } from "../helpers/attributes";
 import { CareerEventsHelper } from "../helpers/careerEvents";
-import { BorgImplants, Implant } from "../helpers/borgImplant";
+import { BorgImplants } from "../helpers/borgImplant";
 
 export class LandscapeGeneratedCharacterSheet extends BasicGeneratedSheet {
 

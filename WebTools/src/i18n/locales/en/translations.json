@@ -446,6 +446,8 @@
     "Construct.other.missionPod": "Mission Pod",
     "Construct.other.missionProfile": "Mission Profile",
     "Construct.other.name": "Name",
+    "Construct.other.numberOfRefits_one": "{{count}} refit",
+    "Construct.other.numberOfRefits_other": "{{count}} refits",
     "Construct.other.pastimes": "Pastimes",
     "Construct.other.personalThreat": "Personal Threat",
     "Construct.other.pronouns": "Pronouns",
@@ -482,6 +484,8 @@
     "Construct.other.value": "Value",
     "Construct.other.values": "Values",
     "Construct.other.weapons": "Weapons",
+    "Construct.other.yearsOfService_one": "{{count}} year of service",
+    "Construct.other.yearsOfService_other": "{{count}} years of service",
 
     "Construct.attribute.control": "Control",
     "Construct.attribute.daring": "Daring",
