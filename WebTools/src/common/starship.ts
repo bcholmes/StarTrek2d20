@@ -262,6 +262,21 @@ export class Starship extends Construct {
         return base;
     }
 
+    getDistinctTalentNameList() {
+        let result = [];
+        this.getTalentSelectionList().forEach(t => {
+            if (result.indexOf(t.talent.name) < 0) {
+                result.push(t.talent.name);
+            }
+        });
+        return result
+    }
+
+    getRankForTalent(talentName: string) {
+        let shortenedList = this.getTalentSelectionList().filter(t => t.talent.name === talentName);
+        return shortenedList.length === 1 ? shortenedList[0].rank : 0;
+    }
+
     getTalentNameList() {
         let talents = [];
 

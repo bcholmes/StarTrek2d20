@@ -61,6 +61,12 @@ class Line {
             x += textBlock.width;
         });
     }
+
+    get width() {
+        let result = 0;
+        this.blocks.forEach(b => result += b.width);
+        return result;
+    }
 }
 
 class LayoutHelper {
@@ -152,6 +158,8 @@ class LayoutHelper {
             }
             if (previousBlock != null && line != null) {
                 line.add(previousBlock);
+            }
+            if (line?.blocks?.length) {
                 result.push(line);
             }
         }
@@ -237,8 +245,8 @@ export class Paragraph {
         this.indentAmount = amount;
     }
 
-    append(text: string, font: FontSpecification, colour?: SimpleColor) {
-        this.lines = this.layoutHelper.createLines(text, font, new FontSpecification(this.symbolFont, font.size), this.currentLine(), this.page, colour);
+    append(text: string|number, font: FontSpecification, colour?: SimpleColor) {
+        this.lines = this.layoutHelper.createLines("" + text, font, new FontSpecification(this.symbolFont, font.size), this.currentLine(), this.page, colour);
     }
 
     write(colour: SimpleColor = SimpleColor.from("#000000")) {

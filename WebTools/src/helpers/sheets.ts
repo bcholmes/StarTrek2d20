@@ -21,10 +21,11 @@ import { TracksHelper } from './tracks';
 import { localizedFocus } from '../components/focusHelper';
 import { XYLocation } from '../common/xyLocation';
 import { Column, ICharacterSheet } from '../exportpdf/icharactersheet';
-import { BasicGeneratedHalfPageCharacterSheet } from '../exportpdf/generatedsheet';
+import { BasicGeneratedHalfPageCharacterSheet } from '../exportpdf/generated2eHalfPageSheet';
 import { FontSpecification } from '../exportpdf/fontSpecification';
 import { Paragraph } from '../exportpdf/paragraph';
 import { LandscapeGeneratedCharacterSheet } from '../exportpdf/landscapeGeneratedCharacterSheet';
+import { Generated2eStarshipSheet } from '../exportpdf/generated2eStarshipSheet';
 
 
 abstract class BasicSheet implements ICharacterSheet {
@@ -1162,11 +1163,11 @@ class CharacterSheets {
         if (starship.stereotype === Stereotype.SoloStarship) {
             return [ new CaptainsLogStarshipSheet() ];
         } else if (starship.type === CharacterType.KlingonWarrior) {
-            return [ new StandardKlingonStarshipSheet(), new StandardTngStarshipSheet(), new StandardTosStarshipSheet() ];
+            return [ new StandardKlingonStarshipSheet(), new StandardTngStarshipSheet(), new Generated2eStarshipSheet(), new StandardTosStarshipSheet() ];
         } else if (era === Era.NextGeneration) {
-            return [ new StandardTngStarshipSheet(), new StandardTosStarshipSheet(), new StandardKlingonStarshipSheet() ];
+            return [ new StandardTngStarshipSheet(), new Generated2eStarshipSheet(), new StandardTosStarshipSheet(), new StandardKlingonStarshipSheet() ];
         } else {
-            return [ new StandardTosStarshipSheet(), new StandardTngStarshipSheet(), new StandardKlingonStarshipSheet() ];
+            return [ new StandardTosStarshipSheet(), new Generated2eStarshipSheet(), new StandardTngStarshipSheet(), new StandardKlingonStarshipSheet() ];
         }
     }
 }

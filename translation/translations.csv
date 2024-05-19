@@ -439,6 +439,7 @@ Construct.other.careerEvent2.short,Event 2,,,,,,
 Construct.other.careerEvents,Career Events,,Karriereereignisse,,Evénements de Carrière,События карьеры,Eventos de Carreira
 Construct.other.characterType,Character Type,,Art des Charakters,Tipo de carácter,Type de personnage,Тип персонажа,Tipo de Personagem
 Construct.other.crew,Crew,,Crew,Tripulación,Équipage,Персонал,Tripulação
+Construct.other.crewSupport,Crew Support,,,,,,
 Construct.other.department,Department,,,,,,
 Construct.other.departments,Departments,,Abteilungen,Departamentos,Departements,Отделы,Departamentos
 Construct.other.determination,Determination,,Entschlossenheit,Determinación,Détermination,Целеустремленность,Determinação
@@ -455,6 +456,8 @@ Construct.other.focus3,Focus 3,,Fokus 3,,Spécialité 3,Специализаци
 Construct.other.focuses,Focuses,,Fokusse,Atenciónes,Spécialités,Специализации,Focos
 Construct.other.injuries,Injuries,,,,,,
 Construct.other.job,Job,,Tätigkeit,,Travail,Работа,Trabalho
+Construct.other.launchYear,Launch Year,,,,,,
+Construct.other.missionPod,Mission Pod,,,,,,
 Construct.other.missionProfile,Mission Profile,,Missionsprofil,Perfil de la misión,Profil de mission,Профиль миссии,Perfil de Missão
 Construct.other.name,Name,,Name,Nombre,Nom,Имя,Nome
 Construct.other.pastimes,Pastimes,,,,,,
@@ -484,6 +487,7 @@ Construct.other.systems,Systems,,Systeme,Sistemas,Systèmes,Системы,Siste
 Construct.other.talent,Talent,,Talent,,Talent,Талант,Talento
 Construct.other.talents,Talents,,Talente,Talentos,Talents,Таланты,Talentos
 Construct.other.talentOptions,Talent Options,,Talentoptionen,,,,Opções de Talento
+Construct.other.timeline,Timeline,,,,,,
 Construct.other.training,Training,,Ausbildung,,Formation,Тренировка,Treinamento
 Construct.other.trait,Trait,,Merkmal,Rasgo,Trait,Черта,Traço
 Construct.other.traits,Traits,,Merkmale,Rasgos,Traits,Черты,Traços
