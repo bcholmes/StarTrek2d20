@@ -26,6 +26,7 @@ import { FontSpecification } from '../exportpdf/fontSpecification';
 import { Paragraph } from '../exportpdf/paragraph';
 import { LandscapeGeneratedCharacterSheet } from '../exportpdf/landscapeGeneratedCharacterSheet';
 import { Generated2eStarshipSheet } from '../exportpdf/generated2eStarshipSheet';
+import { GeneratedTngPortraitCharacterSheet } from '../exportpdf/generatedTngPortraitCharacterSheet';
 
 
 abstract class BasicSheet implements ICharacterSheet {
@@ -47,6 +48,10 @@ abstract class BasicSheet implements ICharacterSheet {
 
     getDefaultFontPath() {
         return "/static/font/bebas-neue-cyr.ttf";
+    }
+
+    getTags() {
+        return [];
     }
 
     async initializeFonts(pdf: PDFDocument) {
@@ -1131,12 +1136,12 @@ class CaptainsLogCharacterSheet extends BasicFullCharacterSheet {
 class CharacterSheets {
     public getSupportingCharacterSheet(c: Character, era: Era = store.getState().context.era): ICharacterSheet[] {
         if (c.isKlingon()) {
-            return [ new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new StandardTosCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
+            return [ new KlingonCharacterSheet(), new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(), new StandardTosCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
         } else if (era === Era.NextGeneration) {
-            return [ new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),  new BasicGeneratedHalfPageCharacterSheet(),
+            return [ new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),  new BasicGeneratedHalfPageCharacterSheet(),
                 new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet(), new KlingonCharacterSheet()  ];
         } else {
-            return [ new StandardTosCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),
+            return [ new StandardTosCharacterSheet(), new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),
                 new BasicGeneratedHalfPageCharacterSheet(), new HalfPageSupportingCharacterSheet(), new KlingonCharacterSheet() ];
         }
     }
@@ -1145,15 +1150,15 @@ class CharacterSheets {
         if (character.stereotype === Stereotype.SoloCharacter) {
             return [ new CaptainsLogCharacterSheet() ];
         } else if (character.isKlingon()) {
-            return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),
+            return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),
                 new StandardRussianCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(),
                 new TwoPageTngCharacterSheet(), new RomulanCharacterSheet() ];
         } else if (era === Era.NextGeneration) {
-            return [ new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(), new StandardRussianCharacterSheet(), new KlingonCharacterSheet(),
+            return [ new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(), new StandardRussianCharacterSheet(), new KlingonCharacterSheet(),
                 new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(),
                 new TwoPageKlingonCharacterSheet(), new RomulanCharacterSheet() ];
         } else {
-            return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new StandardTngCharacterSheet(), new StandardGermanCharacterSheet(),
+            return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),
                 new StandardRussianCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(),
                 new TwoPageKlingonCharacterSheet(), new RomulanCharacterSheet() ];
         }

@@ -24,6 +24,10 @@ export abstract class BasicGeneratedSheet implements ICharacterSheet {
         return "/static/font/OpenSansCondensed-Light.ttf";
     }
 
+    getTags() {
+        return [];
+    }
+
     async initializeFonts(pdf: PDFDocument) {
 
         pdf.registerFontkit(fontkit);

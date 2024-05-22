@@ -80,11 +80,25 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
         }
     }
 
-    writeLabel(page: PDFPage, text: string, block: Column, font: FontSpecification, colour: SimpleColor) {
-        const textBlock = TextBlock.create(text.toLocaleUpperCase(), font, false);
-        let y = block.end.y - 1 - ((block.height - textBlock.height) / 2);
-        let x = block.start.x + (block.width - textBlock.width);
+    writeLabel(page: PDFPage, originalText: string, column: Column, font: FontSpecification, colour: SimpleColor) {
+        originalText = originalText.toLocaleUpperCase();
+        let textBlock = TextBlock.create(originalText, font, false);
 
+        let text = originalText;
+        let width = font.font.widthOfTextAtSize(text, font.size);
+        console.log("Width", width, column.width);
+        while (width > column.width) {
+            text = text.substring(0, text.length-1);
+            width = font.font.widthOfTextAtSize(text + "...", font.size);
+        }
+
+        if (text !== originalText) {
+            text += "...";
+            textBlock = TextBlock.create(text, font, false);
+        }
+
+        let y = column.end.y - 1 - ((column.height - textBlock.height) / 2);
+        let x = column.start.x + (column.width - textBlock.width);
         textBlock.writeToPage(x, page.getHeight() - y, page, colour);
     }
 
