@@ -215,6 +215,12 @@ export class GeneratedTngPortraitCharacterSheet extends BaseTNGGeneratedCharacte
         return name;
     }
 
+    fillEquipment(form: PDFForm, character: Character) {
+        character.equipmentAndImplants.forEach((e, i) => {
+            this.fillField(form, 'Equipment ' + (i+1), e.localizedName);
+        });
+    }
+
     serializeAssignment(character: Character) {
         let result = this.serializeBasicAssignment(character);
         if (character.assignedShip != null) {
