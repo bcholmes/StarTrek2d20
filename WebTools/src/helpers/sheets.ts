@@ -20,7 +20,7 @@ import { CareersHelper } from './careers';
 import { TracksHelper } from './tracks';
 import { localizedFocus } from '../components/focusHelper';
 import { XYLocation } from '../common/xyLocation';
-import { Column, ICharacterSheet } from '../exportpdf/icharactersheet';
+import { Column, ICharacterSheet, SheetTag } from '../exportpdf/icharactersheet';
 import { BasicGeneratedHalfPageCharacterSheet } from '../exportpdf/generated2eHalfPageSheet';
 import { FontSpecification } from '../exportpdf/fontSpecification';
 import { Paragraph } from '../exportpdf/paragraph';
@@ -645,17 +645,8 @@ class HalfPageSupportingCharacterSheet extends BasicShortCharacterSheet {
     getPdfUrl(): string {
         return '/static/pdf/TNG_Supporting_Character_Half_Page.pdf'
     }
-}
-
-class StandardTngCharacterSheet extends BasicFullCharacterSheet {
-    getName(): string {
-        return 'Standard TNG Character Sheet'
-    }
-    getThumbnailUrl(): string {
-        return '/static/img/sheets/TNG_Standard_Character_Sheet.png'
-    }
-    getPdfUrl(): string {
-        return '/static/pdf/TNG_Standard_Character_Sheet.pdf'
+    getTags(): SheetTag[] {
+        return [ SheetTag.HalfPage, SheetTag.Lcars ];
     }
 }
 
@@ -732,6 +723,9 @@ class StandardTosCharacterSheet extends BasicFullCharacterSheet {
     getPdfUrl(): string {
         return '/static/pdf/TOS_Standard_Character_Sheet.pdf'
     }
+    getTags(): SheetTag[] {
+        return [ SheetTag.Landscape ];
+    }
 }
 
 
@@ -744,6 +738,10 @@ class KlingonCharacterSheet extends BasicFullCharacterSheet {
     }
     getPdfUrl(): string {
         return '/static/pdf/STA_Klingon_Character_Sheet.pdf'
+    }
+
+    getTags(): SheetTag[] {
+        return [ SheetTag.Portrait, SheetTag.UsLetter ];
     }
 
     populateForm(form: PDFForm, construct: Construct) {
@@ -805,6 +803,10 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
     }
     getPdfUrl(): string {
         return '/static/pdf/TNG_2_Page_Character_Sheet_new.pdf'
+    }
+
+    getTags(): SheetTag[] {
+        return [ SheetTag.Portrait, SheetTag.Lcars, SheetTag.TalentText, SheetTag.UsLetter ];
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {
@@ -895,6 +897,10 @@ class TwoPageTngLandscapeCharacterSheet extends BaseTextCharacterSheet {
 
     getDefaultFontPath() {
         return "/static/font/OpenSansCondensed-Light.ttf";
+    }
+
+    getTags(): SheetTag[] {
+        return [ SheetTag.Landscape, SheetTag.Lcars, SheetTag.TalentText, SheetTag.UsLetter ];
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {
@@ -989,6 +995,10 @@ class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
     }
     getPdfUrl(): string {
         return '/static/pdf/STA_2_Page_Klingon_Character_Sheet.pdf'
+    }
+
+    getTags(): SheetTag[] {
+        return [ SheetTag.Portrait, SheetTag.TalentText, SheetTag.UsLetter ];
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {
@@ -1091,6 +1101,10 @@ class CaptainsLogCharacterSheet extends BasicFullCharacterSheet {
     }
     getPdfUrl(): string {
         return '/static/pdf/STA_Captain\'s_Log_Character_Sheet.pdf'
+    }
+
+    getTags(): SheetTag[] {
+        return [ SheetTag.HalfPage ];
     }
 
     populateForm(form: PDFForm, construct: Construct): void {

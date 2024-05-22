@@ -1,7 +1,7 @@
 import { PDFDocument, PDFForm, PDFPage } from "@cantoo/pdf-lib";
 import { SimpleColor } from "../common/colour";
 import { BaseNonForm2eSheet } from "./generated2eBaseSheet";
-import { Column } from "./icharactersheet";
+import { Column, SheetTag } from "./icharactersheet";
 import i18next from "i18next";
 import { makeKey } from "../common/translationKey";
 import { Attribute } from "../helpers/attributes";
@@ -45,6 +45,10 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
     }
     getPdfUrl(): string {
         return "/static/pdf/STA_2e_Half_Page_Sheet.pdf";
+    }
+
+    getTags(): SheetTag[] {
+        return [ SheetTag.HalfPage, SheetTag.Style2e, SheetTag.LanguageSupport ];
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {

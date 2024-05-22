@@ -7,7 +7,11 @@ export enum SheetTag {
     Landscape,
     Portrait,
     TalentText,
-    Lcars
+    Lcars,
+    UsLetter,
+    HalfPage,
+    Style2e,
+    TwoPage
 }
 
 export class Column {

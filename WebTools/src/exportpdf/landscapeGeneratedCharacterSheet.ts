@@ -1,7 +1,7 @@
 import { PDFDocument, PDFFont, PDFPage } from "@cantoo/pdf-lib";
 import { SimpleColor } from "../common/colour";
 import { XYLocation } from "../common/xyLocation";
-import { Column } from "./icharactersheet";
+import { Column, SheetTag } from "./icharactersheet";
 import i18next from "i18next";
 import { getCurrentLanguageCode } from "../i18n/config";
 import { Character } from "../common/character";
@@ -128,6 +128,10 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
 
     getDefaultFontPath() {
         return "/static/font/OpenSansCondensed-Light.ttf";
+    }
+
+    getTags(): SheetTag[] {
+        return [ SheetTag.Landscape, SheetTag.Lcars, SheetTag.LanguageSupport, SheetTag.TalentText, SheetTag.UsLetter ];
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {

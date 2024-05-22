@@ -206,7 +206,7 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
                 + (w.hands != null ? ", " + i18next.t("Weapon.common.size", { hands: w.hands }) : "");
 
             paragraph = paragraph == null ? new Paragraph(page, indentedColumn, this.symbolFont) : paragraph.nextParagraph(0);
-            paragraph.append(w.name + ": ", bold);
+            paragraph.append(w.description + ": ", bold);
             paragraph.append(text, standard);
             paragraph.write();
 

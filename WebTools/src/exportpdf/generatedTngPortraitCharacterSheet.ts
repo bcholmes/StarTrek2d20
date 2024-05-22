@@ -1,7 +1,7 @@
 import { PDFDocument, PDFForm, PDFPage } from "@cantoo/pdf-lib";
 import { XYLocation } from "../common/xyLocation";
 import { BaseTNGGeneratedCharacterSheet } from "./baseTngGeneratedCharacterSheet";
-import { Column } from "./icharactersheet";
+import { Column, SheetTag } from "./icharactersheet";
 import { Character } from "../common/character";
 import { SimpleColor } from "../common/colour";
 import i18next from "i18next";
@@ -13,13 +13,17 @@ export class GeneratedTngPortraitCharacterSheet extends BaseTNGGeneratedCharacte
     static readonly headingColumn = new Column(167.9, 12.9, 17.8, 401);
 
     getName(): string {
-        return 'Standard TNG Character Sheet'
+        return i18next.t("Sheet.generatedTngPortraitCharacterSheet")
     }
     getThumbnailUrl(): string {
         return '/static/img/sheets/TNG_Standard_Character_Sheet.png'
     }
     getPdfUrl(): string {
         return '/static/pdf/TNG_Standard_Character_Sheet.pdf'
+    }
+
+    getTags(): SheetTag[] {
+        return [ SheetTag.Portrait, SheetTag.Lcars, SheetTag.LanguageSupport, SheetTag.UsLetter ]
     }
 
     get subTitleLocations() {

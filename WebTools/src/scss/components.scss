@@ -298,6 +298,22 @@ div.align-items-stretch > label.textinput-label {
     user-select: none;
 }
 
+.modal-body .selectable-pill {
+    box-shadow: none;
+    border-style: solid;
+    border-width: 1px;
+    color: #d3cae1;
+    border-color: #d3cae1;
+    border-radius: var(--bs-border-radius-pill) !important;
+    background: transparent;
+}
+
+.modal-body .selectable-pill.active {
+    color: #9e8abd;
+    background-color: #d3cae1;
+    border-color: #d3cae1;
+}
+
 /* RESPONSIVE */
 
 @media screen and (min-width: 768px) {

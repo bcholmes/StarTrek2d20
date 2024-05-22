@@ -1,5 +1,5 @@
 import { PDFDocument, PDFFont } from "@cantoo/pdf-lib";
-import { ICharacterSheet } from "./icharactersheet";
+import { ICharacterSheet, SheetTag } from "./icharactersheet";
 import fontkit from '@pdf-lib/fontkit'
 import { Construct } from "../common/construct";
 
@@ -24,7 +24,7 @@ export abstract class BasicGeneratedSheet implements ICharacterSheet {
         return "/static/font/OpenSansCondensed-Light.ttf";
     }
 
-    getTags() {
+    getTags(): SheetTag[] {
         return [];
     }
 

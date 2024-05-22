@@ -1314,11 +1314,21 @@
     "Role.navigator.ability": "When the navigator is required to analyze, or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",
 
     "Sheet.basicGeneratedHalfPageCharacterSheet": "New Half-Page 2nd Ed.-style Character Sheet",
+    "Sheet.generatedTngPortraitCharacterSheet": "TNG Portrait Character Sheet (US-Letter)",
     "Sheet.halfPageSupportingCharacterSheet": "Half-Page Supporting Character Sheet",
     "Sheet.landscapeGeneratedCharacterSheet": "TNG Landscape Character Sheet (US-Letter)",
     "Sheet.standardTngCharacterSheet": "Standard TNG Character Sheet (US-Letter)",
 
     "Sheet.text.title": "Starfleet Personnel Record",
+
+    "SheetTag.landscape": "Landscape",
+    "SheetTag.languageSupport": "Language Support",
+    "SheetTag.lcars": "LCARS",
+    "SheetTag.portrait": "Portrait",
+    "SheetTag.style2e": "2nd Ed. Style",
+    "SheetTag.talentText": "Talent Text",
+    "SheetTag.twoPage": "2-Page",
+    "SheetTag.usLetter": "US Letter",
 
     "ShipBuildType.pod.name": "Pod",
 
@@ -1698,6 +1708,7 @@
 
     "Talent.ablativeArmor": "Ablative Armor",
 
+    "Talent.ablativeArmor.description": "The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures, such as those caused by energy weapons and torpedo blasts, dissipating the energy, and protecting the ship. This plating is replaced periodically. The ship’s Resistance is increased by 2.",
     "Talent.ablativeArmor.soloDescription": "The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures, such as those caused by energy weapons and torpedo blasts, dissipating the energy and protecting the ship. This plating is replaced periodically.",
 
     "Talent.ablativeFieldProjector": "Ablative Field Projector",
@@ -1718,14 +1729,17 @@
 
     "Talent.advancedResearchFacilities": "Advanced Research Facilities",
 
+    "Talent.advancedResearchFacilities.description": "The vessel is equipped with additional laboratories and long-term research facilities, which allow the crew to study phenomena over a protracted period, and thus generate a wealth of useful information. Whenever a character on board the ship attempts a Task to perform research, and they are assisted by the ship’s Computers + Science, the character gains one bonus Momentum, which must be used for the Obtain Information Momentum Spend.",
     "Talent.advancedResearchFacilities.soloDescription": "The vessel is equipped with additional laboratories and long-term research facilities, which allow the crew to study phenomena over a protracted period, and thus generate a wealth of useful information.",
 
     "Talent.advancedSensorSuites": "Advanced Sensor Suites",
 
+    "Talent.advancedSensorSuites.description": "The vessel’s sensors are amongst the most sophisticated and advanced available in the fleet. Unless the ship’s Sensors have suffered one or more Breaches, whenever a character performs a Task assisted by the ship’s Sensors, they may reduce the Difficulty of the Task by one, to a minimum of 0.",
     "Talent.advancedSensorSuites.soloDescription": "The vessel’s sensors are among the most sophisticated and advanced available in the fleet.",
 
     "Talent.advancedShields": "Advanced Shields",
 
+    "Talent.advancedShields.description": "The vessel’s shields are state of the art, using developments that other cultures have not yet learned to overcome, or which simply provide greater protection for the same power expenditure. The ship’s maximum Shields are increased by 5.",
     "Talent.advancedShields.soloDescription": "The vessel’s shields are state-of-the-art, using developments that other cultures have not yet learned to overcome, or which simply provide greater protection for the same power expenditure.",
 
     "Talent.advancedTransporters": "Advanced Transporters",

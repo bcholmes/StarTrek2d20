@@ -5,7 +5,7 @@ import { PDFDocument, PDFForm, PDFPage } from "@cantoo/pdf-lib";
 import { Construct } from "../common/construct";
 import { Starship } from "../common/starship";
 import { XYLocation } from "../common/xyLocation";
-import { Column } from "./icharactersheet";
+import { Column, SheetTag } from "./icharactersheet";
 import { Paragraph } from "./paragraph";
 import { FontSpecification } from "./fontSpecification";
 import { SimpleColor } from "../common/colour";
@@ -29,6 +29,10 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
     }
     getPdfUrl(): string {
         return "/static/pdf/STA_2e_Starship_Sheet.pdf";
+    }
+
+    getTags(): SheetTag[] {
+        return [ SheetTag.Portrait, SheetTag.Style2e, SheetTag.LanguageSupport, SheetTag.TalentText, SheetTag.UsLetter ];
     }
 
     get nameColumn() {
