@@ -13,12 +13,12 @@ import { createStarship } from "../../state/starshipActions";
 const SoloConstructTypePage = () => {
 
     const createCharacter = () => {
-        store.dispatch(setCharacter(Character.createSoloCharacter()));
+        store.dispatch(setCharacter(Character.createSoloCharacter(store.getState().context.era)));
         goToPage(PageIdentity.SoloCharacterEra);
     }
 
     const createSoloStarship = () => {
-        store.dispatch(createStarship(Starship.createSoloStarship()));
+        store.dispatch(createStarship(Starship.createSoloStarship(store.getState().context.era)));
         goToPage(PageIdentity.SoloStarshipEra);
     }
 

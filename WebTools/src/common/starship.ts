@@ -10,6 +10,7 @@ import StarshipWeaponRegistry, { Weapon } from "../helpers/weapons";
 import { CharacterType } from "./characterType";
 import { Construct, Stereotype } from "./construct";
 import { makeKey } from "./translationKey";
+import { Era } from "../helpers/eras";
 
 export class SimpleStats {
     departments: number[];
@@ -108,9 +109,17 @@ export class Starship extends Construct {
         this.name = "";
     }
 
-    static createSoloStarship() {
+    static createSoloStarship(era: Era = Era.NextGeneration) {
         const result = new Starship();
         result.stereotype = Stereotype.SoloStarship;
+        result.era = era;
+        return result;
+    }
+
+    static createStandardStarship(era: Era = Era.NextGeneration) {
+        const result = new Starship();
+        result.stereotype = Stereotype.Starship;
+        result.era = era;
         return result;
     }
 
@@ -513,11 +522,9 @@ export class Starship extends Construct {
         }
     }
 
-    static updateSystemAndDepartments(starship: Starship) {
-    }
-
     public copy(): Starship {
         let result = new Starship();
+        result.era = this.era;
         result.type = this.type;
         result.stereotype = this.stereotype;
         result.buildType = this.buildType;

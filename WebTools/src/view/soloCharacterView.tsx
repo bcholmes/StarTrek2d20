@@ -138,7 +138,7 @@ const SoloCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
     }
 
     function showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character, Era.NextGeneration), "sta-character", character);
+        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character), "sta-character", character);
     }
 
     function showVttExportDialog() {

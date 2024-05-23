@@ -64,6 +64,14 @@ class Eras {
     getEra(era: Era) {
         return this._eras[era];
     }
+    getEraByName(name: string): Era|null {
+        let results = Object.keys(this._eras).map(e => this._eras[e].id).filter(e => Era[e] === name);
+        if (results.length === 1) {
+            return results[0];
+        } else {
+            return null;
+        }
+    }
 }
 
 export const ErasHelper = new Eras();

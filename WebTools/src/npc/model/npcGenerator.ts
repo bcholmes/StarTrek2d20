@@ -20,6 +20,7 @@ import AllyHelper from "../../helpers/alliedMilitary";
 import { Specialization } from "../../common/specializationEnum";
 import { Track } from "../../helpers/trackEnum";
 import Governments, { Polity } from "../../helpers/governments";
+import { Era } from "../../helpers/eras";
 
 const recreationSkills: { [type: number ]: string[] } = {
 
@@ -422,9 +423,8 @@ const speciesSpecificValues: { [species : number ]: string[]} = {
 
 export class NpcGenerator {
 
-    static createNpc(npcType: NpcType, characterType: NpcCharacterType, species: SpeciesModel, specialization: SpecializationModel) {
-        let character = new Character();
-        character.stereotype = Stereotype.Npc;
+    static createNpc(npcType: NpcType, characterType: NpcCharacterType, species: SpeciesModel, specialization: SpecializationModel, era: Era) {
+        let character = Character.createNpcCharacter(era);
         if (specialization == null) {
             let specializations = Specializations.instance.getSpecializations(characterType);
             specialization = specializations[Math.floor(Math.random() * specializations.length)];

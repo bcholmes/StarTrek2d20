@@ -2,7 +2,6 @@ import React, { lazy, Suspense } from "react";
 import { Starship } from "../common/starship";
 import { CharacterType } from "../common/characterType";
 import { Department } from "../helpers/departments";
-import { Era } from "../helpers/eras";
 import { CharacterSheetRegistry } from "../helpers/sheets";
 import { System } from "../helpers/systems";
 import { Button } from "../components/button";
@@ -142,7 +141,7 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
     }
 
     private showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(this.props.starship, Era.NextGeneration), "starship", this.props.starship);
+        CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(this.props.starship), "starship", this.props.starship);
     }
 
     private getAllTraits() {

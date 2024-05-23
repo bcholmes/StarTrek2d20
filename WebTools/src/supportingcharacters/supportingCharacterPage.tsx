@@ -48,7 +48,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
     const showDialog = () => {
         setTimeout(() => {
             let c = store.getState().character.currentCharacter;
-            CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet(c, store.getState().context.era), "supporting-character", c);
+            CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet(c), "supporting-character", c);
         }, 200)
     }
 
@@ -114,7 +114,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
     }
 
     useEffect(() => {
-        let character = Character.createSupportingCharacter();
+        let character = Character.createSupportingCharacter(store.getState().context.era);
         store.dispatch(setCharacter(character));
     }, [])
 

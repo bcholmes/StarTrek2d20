@@ -1,6 +1,7 @@
 import { CharacterType } from "../common/characterType";
 import { ShipBuildType, ShipTalentDetailSelection, SimpleStats, Starship } from "../common/starship";
 import { Department } from "../helpers/departments";
+import { Era } from "../helpers/eras";
 import { MissionPodModel } from "../helpers/missionPods";
 import { MissionProfileModel } from "../helpers/missionProfiles";
 import { SpaceframeModel } from "../helpers/spaceframeModel";
@@ -47,9 +48,9 @@ export function createStarship(starship: Starship) {
      }
  }
 
-export function createNewStarship(type: CharacterType, serviceYear?: number, simple: SimpleStats = undefined, workflow?: ShipBuildWorkflow,
+export function createNewStarship(type: CharacterType, era: Era, serviceYear?: number, simple: SimpleStats = undefined, workflow?: ShipBuildWorkflow,
         buildType: ShipBuildType = ShipBuildType.Starship) {
-    let payload = { type: type, serviceYear: serviceYear, simple: simple, workflow: workflow, buildType: buildType };
+    let payload = { type: type, era: era, serviceYear: serviceYear, simple: simple, workflow: workflow, buildType: buildType };
     return {
        type: CREATE_NEW_STARSHIP,
        payload: payload

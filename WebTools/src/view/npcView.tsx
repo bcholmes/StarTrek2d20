@@ -56,7 +56,7 @@ const NpcView: React.FC<ICharacterPageProperties> = ({character}) => {
     }
 
     function showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character, Era.NextGeneration), "sta-npc", character);
+        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character), "sta-npc", character);
     }
 
     function showVttExportDialog() {

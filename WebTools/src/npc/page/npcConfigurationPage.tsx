@@ -108,7 +108,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
                 </div>
 
                 <div className="mt-5">
-                    <Button className="btn btn-primary" onClick={() => this.createNpc()}>{t('Common.button.create')}</Button>
+                    <Button className="btn btn-primary" onClick={() => this.createNpc(this.props.era)}>{t('Common.button.create')}</Button>
                 </div>
             </div>
         </div>);
@@ -205,7 +205,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
         }
     }
 
-    createNpc() {
+    createNpc(era: Era) {
         let specialization = this.state.selectedSpecialization;
         if (specialization == null) {
             let specializations = Specializations.instance.getSpecializations(this.state.selectedType.type);
@@ -219,7 +219,7 @@ class NpcConfigurationPage extends React.Component<INpcConfigurationPageProperti
             species = this.randomSpecies();
         }
         let character = NpcGenerator.createNpc(this.state.selectedNpcType, this.state.selectedType.type,
-            SpeciesHelper.getSpeciesByType(species), specialization);
+            SpeciesHelper.getSpeciesByType(species), specialization, era);
 
         const value = marshaller.encodeNpc(character);
         window.open('/view?s=' + value, "_blank");

@@ -15,7 +15,6 @@ import { RolesHelper } from './roles';
 import { Construct, Stereotype } from '../common/construct';
 import { Starship } from '../common/starship';
 import { staTextFieldAppearanceProvider } from './pdfTextFieldAppearance';
-import store from '../state/store';
 import { CareersHelper } from './careers';
 import { TracksHelper } from './tracks';
 import { localizedFocus } from '../components/focusHelper';
@@ -330,6 +329,10 @@ class StandardTngStarshipSheet extends BasicStarshipSheet {
         return '/static/pdf/TNG_Standard_Starship_Sheet_no_outline.pdf'
     }
 
+    getTags(): SheetTag[] {
+        return [ SheetTag.Landscape, SheetTag.Lcars, SheetTag.UsLetter ]
+    }
+
     async populate(pdf: PDFDocument, construct: Construct) {
         await super.populate(pdf, construct);
         let starship = construct as Starship;
@@ -350,6 +353,10 @@ class StandardTosStarshipSheet extends BasicStarshipSheet {
         return '/static/pdf/STA_TOS_Starship_Sheet.pdf'
     }
 
+    getTags(): SheetTag[] {
+        return [ SheetTag.Landscape ]
+    }
+
     async populate(pdf: PDFDocument, construct: Construct) {
         await super.populate(pdf, construct);
         let starship = construct as Starship;
@@ -368,6 +375,10 @@ class StandardKlingonStarshipSheet extends BasicStarshipSheet {
     }
     getPdfUrl(): string {
         return '/static/pdf/STA_Klingon_Starship_Sheet_revised.pdf'
+    }
+
+    getTags(): SheetTag[] {
+        return [ SheetTag.Landscape ]
     }
 }
 
@@ -1148,10 +1159,10 @@ class CaptainsLogCharacterSheet extends BasicFullCharacterSheet {
 
 
 class CharacterSheets {
-    public getSupportingCharacterSheet(c: Character, era: Era = store.getState().context.era): ICharacterSheet[] {
+    public getSupportingCharacterSheet(c: Character): ICharacterSheet[] {
         if (c.isKlingon()) {
             return [ new KlingonCharacterSheet(), new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(), new StandardTosCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
-        } else if (era === Era.NextGeneration) {
+        } else if (c.era === Era.NextGeneration) {
             return [ new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),  new BasicGeneratedHalfPageCharacterSheet(),
                 new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet(), new KlingonCharacterSheet()  ];
         } else {
@@ -1160,14 +1171,14 @@ class CharacterSheets {
         }
     }
 
-    public getCharacterSheets(character: Character, era: Era = store.getState().context.era): ICharacterSheet[] {
+    public getCharacterSheets(character: Character): ICharacterSheet[] {
         if (character.stereotype === Stereotype.SoloCharacter) {
             return [ new CaptainsLogCharacterSheet() ];
         } else if (character.isKlingon()) {
             return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),
                 new StandardRussianCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(),
                 new TwoPageTngCharacterSheet(), new RomulanCharacterSheet() ];
-        } else if (era === Era.NextGeneration) {
+        } else if (character.era === Era.NextGeneration) {
             return [ new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(), new StandardRussianCharacterSheet(), new KlingonCharacterSheet(),
                 new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(),
                 new TwoPageKlingonCharacterSheet(), new RomulanCharacterSheet() ];
@@ -1178,12 +1189,12 @@ class CharacterSheets {
         }
     }
 
-    public getStarshipSheets(starship: Starship, era: Era): ICharacterSheet[] {
+    public getStarshipSheets(starship: Starship): ICharacterSheet[] {
         if (starship.stereotype === Stereotype.SoloStarship) {
             return [ new CaptainsLogStarshipSheet() ];
         } else if (starship.type === CharacterType.KlingonWarrior) {
             return [ new StandardKlingonStarshipSheet(), new StandardTngStarshipSheet(), new Generated2eStarshipSheet(), new StandardTosStarshipSheet() ];
-        } else if (era === Era.NextGeneration) {
+        } else if (starship.era === Era.NextGeneration) {
             return [ new StandardTngStarshipSheet(), new Generated2eStarshipSheet(), new StandardTosStarshipSheet(), new StandardKlingonStarshipSheet() ];
         } else {
             return [ new StandardTosStarshipSheet(), new Generated2eStarshipSheet(), new StandardTngStarshipSheet(), new StandardKlingonStarshipSheet() ];

@@ -119,7 +119,7 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
 
     selectSoloRules() {
         this.setState((state) => ({...state, soloLoading: true}));
-        store.dispatch(setCharacter(Character.createSoloCharacter()));
+        store.dispatch(setCharacter(Character.createSoloCharacter(store.getState().context.era)));
         PageFactory.instance.loadCaptainsLogFactory(() => {
                 this.setState((state) => ({...state, soloLoading: false}));
                 Navigation.navigateToPage(PageIdentity.SoloConstructType);

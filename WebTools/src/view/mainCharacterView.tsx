@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
-import { Era } from "../helpers/eras";
 import { CharacterSheetRegistry } from "../helpers/sheets";
 import { Button } from "../components/button";
 import { CharacterSheetDialog } from "../components/characterSheetDialog";
@@ -126,7 +125,7 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
     }
 
     function showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character, Era.NextGeneration), "sta-character", character);
+        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character), "sta-character", character);
     }
 
     function showVttExportDialog() {

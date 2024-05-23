@@ -21,6 +21,7 @@ import { BorgImplantType, BorgImplants, Implant } from '../helpers/borgImplant';
 import { Specialization } from './specializationEnum';
 import { MilestoneType } from '../modify/model/milestoneType';
 import { EquipmentHelper, EquipmentModel, EquipmentType } from '../helpers/equipment';
+import { Era } from '../helpers/eras';
 
 export abstract class CharacterTypeDetails {
 }
@@ -826,7 +827,8 @@ export class Character extends Construct {
             } else if (this.npcGenerationStep?.specialization === Specialization.OrionPirate) {
                 result.push(PersonalWeapons.instance.disruptorPistol);
                 result.push(PersonalWeapons.instance.dagger);
-            } else if (this.type !== CharacterType.Child && this.type !== CharacterType.Civilian) {
+            } else if (this.type !== CharacterType.Child && this.type !== CharacterType.Civilian
+                    && this.type !== CharacterType.AmbassadorDiplomat) {
                 result.push(PersonalWeapons.instance.disruptorPistol);
             }
         }
@@ -1267,9 +1269,17 @@ export class Character extends Construct {
                 && (character.typeDetails as AlliedMilitaryDetails).alliedMilitary?.species?.length > 0);
     }
 
-    public static createSoloCharacter() {
+    public static createSoloCharacter(era: Era) {
         let result = new Character();
         result.stereotype = Stereotype.SoloCharacter;
+        result.era = era;
+        return result;
+    }
+
+    public static createNpcCharacter(era: Era) {
+        let result = new Character();
+        result.stereotype = Stereotype.Npc;
+        result.era = era;
         return result;
     }
 
@@ -1280,9 +1290,10 @@ export class Character extends Construct {
         return result;
     }
 
-    public static createSupportingCharacter() {
+    public static createSupportingCharacter(era: Era) {
         let result = new Character();
         result.stereotype = Stereotype.SupportingCharacter;
+        result.era = era;
         result.speciesStep = new SpeciesStep(Species.Human);
         result.supportingStep = new SupportingStep();
         let rank = RanksHelper.instance().getRank(Rank.Lieutenant);

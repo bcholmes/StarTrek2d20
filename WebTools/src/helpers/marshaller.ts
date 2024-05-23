@@ -28,6 +28,7 @@ import { CaptureType, CaptureTypeModel, DeliverySystem, DeliverySystemModel, Ene
 import { Role, RolesHelper } from './roles';
 import { BorgImplantType, BorgImplants } from './borgImplant';
 import { Specialization, allSpecializations } from '../common/specializationEnum';
+import { Era, ErasHelper } from './eras';
 
 class Marshaller {
 
@@ -43,6 +44,7 @@ class Marshaller {
         let sheet = {
             "stereotype": stereotype,
             "type": CharacterType[character.type],
+            "era": Era[character.era],
             "age": character.age ? character.age.name : undefined,
             "name": character.name,
             "version": character.version,
@@ -130,6 +132,7 @@ class Marshaller {
         let sheet = {
             "stereotype": stereotype,
             "type": CharacterType[character.type],
+            "era": Era[character.era],
             "name": character.name,
             "version": character.version,
         };
@@ -391,6 +394,7 @@ class Marshaller {
         let sheet = {
             "stereotype": starship.stereotype === Stereotype.SoloStarship ? "soloStarship" : "starship",
             "type": CharacterType[starship.type],
+            "era": Era[starship.era],
             "buildType": ShipBuildType[starship.buildType],
             "year": starship.serviceYear,
             "name": starship.name,
@@ -517,6 +521,12 @@ class Marshaller {
         if (json.stereotype === "soloStarship") {
             result.stereotype = Stereotype.SoloStarship;
         }
+        if (json.era) {
+            let era = ErasHelper.getEraByName(json.era);
+            if (era != null) {
+                result.era = era;
+            }
+        }
         result.registry = json.registry;
         result.traits = json.traits;
         result.serviceYear = json.year;
@@ -607,8 +617,6 @@ class Marshaller {
             });
         }
 
-        Starship.updateSystemAndDepartments(result);
-
         return result;
     }
 
@@ -677,6 +685,12 @@ class Marshaller {
         let type = CharacterTypeModel.getCharacterTypeByTypeName(json.type);
         if (type) {
             result.type = type.type;
+        }
+        if (json.era) {
+            let era = ErasHelper.getEraByName(json.era);
+            if (era != null) {
+                result.era = era;
+            }
         }
         result.name = json.name;
         result.additionalTraits = json.traits ? json.traits.join(", ") : "";

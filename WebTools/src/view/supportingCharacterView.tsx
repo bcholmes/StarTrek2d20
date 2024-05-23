@@ -55,7 +55,7 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
     }
 
     function showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet(character, Era.NextGeneration), "sta-character", character);
+        CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet(character), "sta-character", character);
     }
 
     function showVttExportDialog() {

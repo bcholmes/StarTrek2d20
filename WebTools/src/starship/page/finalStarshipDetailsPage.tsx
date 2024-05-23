@@ -6,7 +6,6 @@ import { Button } from "../../components/button";
 import { CharacterSheetDialog } from "../../components/characterSheetDialog";
 import { Header } from "../../components/header";
 import RegistryNumber from "../../components/registryNumberGenerator";
-import { Era } from "../../helpers/eras";
 import { marshaller } from "../../helpers/marshaller";
 import { CharacterSheetRegistry } from "../../helpers/sheets";
 import { setStarshipName, setStarshipRegistry, setStarshipTraits } from "../../state/starshipActions";
@@ -15,7 +14,6 @@ import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
 
 interface IFinalStarshipDetailsPageProperties {
     starship: Starship;
-    era: Era;
 }
 
 class FinalStarshipDetailsPage extends React.Component<IFinalStarshipDetailsPageProperties, {}> {
@@ -134,14 +132,13 @@ class FinalStarshipDetailsPage extends React.Component<IFinalStarshipDetailsPage
     }
 
     private showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(this.props.starship, this.props.era), "starship", this.props.starship);
+        CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(this.props.starship), "starship", this.props.starship);
     }
 }
 
 function mapStateToProps(state, ownProps) {
     return {
         starship: state.starship.starship,
-        era: state.context.era
     };
 }
 

@@ -33,7 +33,7 @@ const SoloStarshipFinalPage: React.FC<ISoloStarshipFinalProperties> = ({starship
     const showDialog = () => {
         setTimeout(() => {
             let s = store.getState().starship?.starship;
-            CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(s, store.getState().context?.era), "sta-solo-starship", s);
+            CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(s), "sta-solo-starship", s);
         }, 200);
     }
 

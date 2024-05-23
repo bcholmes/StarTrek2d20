@@ -56,7 +56,7 @@ class SelectStarshipToolPage extends React.Component<WithTranslation, {}> {
         let stats = new SimpleStats();
         stats.systems = [7, 7, 7, 7, 7, 7];
         stats.scale = 3;
-        store.dispatch(createNewStarship(CharacterType.Other, eraDefaultYear(store.getState().context?.era), stats, workflow));
+        store.dispatch(createNewStarship(CharacterType.Other, store.getState().context?.era, eraDefaultYear(store.getState().context?.era), stats, workflow));
         let page =workflow.currentStep().page;
         this.goToPage(page);
     }
