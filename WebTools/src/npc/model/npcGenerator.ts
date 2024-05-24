@@ -1,6 +1,5 @@
 import { AlliedMilitaryDetails, CareerStep, Character, EducationStep, GovernmentDetails, NpcGenerationStep, SpeciesStep } from "../../common/character";
 import { CharacterType } from "../../common/characterType";
-import { Stereotype } from "../../common/construct";
 import { D20 } from "../../common/die";
 import { AttributesHelper } from "../../helpers/attributes";
 import { Career } from "../../helpers/careerEnum";

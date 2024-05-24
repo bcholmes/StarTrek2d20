@@ -222,7 +222,7 @@ export class Roll20VttExporter {
                 // species trait
                 if (character.speciesStep?.species !== Species.Custom) {
                     let species = SpeciesHelper.getSpeciesByType(character?.speciesStep?.species);
-                    description = species.traitDescription;
+                    description = species.localizedTraitDescription;
                 }
             }
             Array.prototype.push.apply(result.character.attribs, this.convertTrait(character, t, id, description))

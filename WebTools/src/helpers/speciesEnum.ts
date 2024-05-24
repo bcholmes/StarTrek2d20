@@ -103,6 +103,7 @@ export enum Species {
     Xahean,
     Saurian,
     CyberneticallyEnhanced,
+    Baul,
 
     // should have been in Delta Quadrant, above...
     Kobali,

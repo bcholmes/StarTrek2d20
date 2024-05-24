@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
-import { Era } from "../helpers/eras";
 import { CharacterSheetRegistry } from "../helpers/sheets";
 import { Button } from "../components/button";
 import { CharacterSheetDialog } from "../components/characterSheetDialog";

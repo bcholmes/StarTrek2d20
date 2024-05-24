@@ -28,10 +28,10 @@ export class SpeciesModel implements ISpecies {
     name: string;
     eras: Era[];
     sources: Source[];
-    description: string[];
+    private description: string[];
     attributes: Attribute[];
     trait: string;
-    traitDescription: string;
+    private traitDescription: string;
     exampleValue: string;
     talents: TalentModel[];
     nameDescription: string;
@@ -1462,6 +1462,19 @@ class _Species {
             "Artificial but Still Alive.",
             [TalentsHelper.getTalent("Synthetic Physiology"), TalentsHelper.getTalent("Analytical Recall")],
             "Based on the name conventions of the original species.",
+            [], [], false),
+        [Species.Baul]: new SpeciesModel(
+            Species.Baul,
+            "Ba'ul",
+            [Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Source.DiscoveryCampaign],
+            [],
+            [Attribute.Control, Attribute.Presence, Attribute.Reason],
+            "Ba'ul",
+            "",
+            "We Will Never Again Be Food for Kelpiens",
+            [],
+            "",
             [], [], false),
         [Species.Romulan]: new SpeciesModel(
             Species.Romulan,

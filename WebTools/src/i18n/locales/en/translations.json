@@ -1490,6 +1490,11 @@
     "Species.barzan.name": "Barzan",
     "Species.barzan.soloDescription": "A diligent, determined people from a resource-poor world. Joined the Federation in the 25th century, though individuals were known to serve in Starfleet prior. Very similar to Humans in appearance, with unique forehead ridges and often equipped with a specialized breathing apparatus.",
 
+    "Species.baul.name": "Ba'ul",
+    "Species.baul.description": "The Ba’ul are one of the two sentient species native to the planet Kaminar and have a historically strained relationship with Kaminar’s other sapient inhabitants, the Kelpiens. Though they turned the tables on their Kelpien predators to prevent their extinction, their centuries of subjugating the Kelpiens have cast them in a role just as monstrous as  those who hunted them for sustenance. With the Kelpien population having undergone Vahar’ai, the Ba’ul’s future is uncertain, but, to their credit, the Kelpiens wish to seek a new form of coexistence beneficial to both species.",
+    "Species.baul.exampleValue": "We Will Never Again Be Food for Kelpiens",
+    "Species.baul.traitDescription": "Physically the Ba’ul appear as ebon-skinned humanoids with thin overall builds, thin limbs with long appendages, sharp spines projecting from their backs, and two eyes that glow with a red hue. The Ba’ul appear to be amphibious and thus are able to breathe M-Class atmosphere as well as underwater. Ba’ul secrete a viscous black ooze over the entirety of their bodies; this ooze also emits a black mist.",
+
     "Species.benzite.name": "Benzite",
     "Species.benzite.soloDescription": "Benzite physiology gives this species’ skin a hairless blue-to-green complexion. The Benzite skull has a thick protrusion that extends over the brow and nose, with two facial tendrils above the lip. A Benzite’s average body temperature is several degrees lower than an average, warm-blooded Humanoid, though the Benzites themselves are not cold-blooded. Until 2370, most Benzites in Starfleet had trouble breathing a standard nitrogen/oxygen atmosphere and relied on breathing apparatus.",
 

@@ -1664,7 +1664,7 @@ export class SpaceframeHelper {
             Spaceframe.Miranda_UP,
             CharacterType.Starfleet,
             "Miranda Class",
-            2274,
+            2264,
             [ Source.UtopiaPlanitia ],
             [7, 8, 8, 8, 8, 8],
             [1, 1, 0, 0, 1, 0],

@@ -357,7 +357,7 @@ class SpaceframeOutlineHelper {
         } else if (spaceframe.id === Spaceframe.Malachowski) {
             return MALACHOWSKI_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Miranda || spaceframe.id === Spaceframe.Miranda_UP) {
-            return MIRANDA_CLASS_MOVIE_ELABORATE_OUTLINE;
+            return this.isMovieEra(starship.serviceYear) ? MIRANDA_CLASS_MOVIE_ELABORATE_OUTLINE : MIRANDA_TOS_ERA;
         } else if (spaceframe.id === Spaceframe.Nebula || spaceframe.id === Spaceframe.Nebula_UP) {
             return NEBULA_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.NewOrleans) {
