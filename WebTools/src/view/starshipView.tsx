@@ -12,6 +12,7 @@ import WeaponView from "../components/weaponView";
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { makeKey } from "../common/translationKey";
 import { VttSelectionDialog } from "../vtt/view/VttSelectionDialog";
+import TalentsBlockView from "./talentsBlockView";
 
 const OutlineImage = lazy(() => import(/* webpackChunkName: 'spaceframeOutline' */ '../components/outlineImage'));
 
@@ -150,26 +151,7 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
     }
 
     renderTalentNames() {
-        const { t } = this.props;
-        let talentNames = this.props.starship.getTalentSelectionList().filter(t => !t.talent.specialRule).map(t => t.description);
-        let specialRuleNames = this.props.starship.getTalentSelectionList().filter(t => t.talent.specialRule).map(t => t.description);
-
-        return (<>
-                {talentNames?.length
-                    ? (<>
-                        <Header level={2} className="mt-4">{t('Construct.other.talents')}</Header>
-                        {talentNames.map((t, i) => (<div className="text-white view-border-bottom py-2" key={'talent-' + i}>{t}</div>))}
-                    </>)
-                    : null}
-                {specialRuleNames?.length
-                    ? (<>
-                        <Header level={2} className="mt-4">{t('Construct.other.specialRules')}</Header>
-                        {specialRuleNames.map((t, i) => (<div className="text-white view-border-bottom py-2" key={'special-' + i}>
-                            {t === "Mission Pod" && this.props.starship?.missionPodModel ? (t + ": " + this.props.starship.missionPodModel.name) : t}
-                            </div>))}
-                    </>)
-                    : null}
-            </>);
+        return <TalentsBlockView construct={this.props.starship} />
     }
 
     renderShields() {

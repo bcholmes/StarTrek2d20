@@ -152,7 +152,7 @@ const SoloCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
                 {renderStats()}
 
                 <ValuesBlockView character={character} />
-                <TalentsBlockView character={character} />
+                <TalentsBlockView construct={character} />
 
             </div>
 

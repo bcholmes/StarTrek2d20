@@ -2,7 +2,7 @@ import { PDFDocument, PDFFont, PDFForm, PDFPage } from "@cantoo/pdf-lib";
 import { Character } from "../common/character";
 import { CharacterSerializer } from "../common/characterSerializer";
 import { SimpleColor } from "../common/colour";
-import { Construct } from "../common/construct";
+import { Construct, Stereotype } from "../common/construct";
 import { BasicGeneratedSheet } from "./generatedsheet";
 import { Skill } from "../helpers/skills";
 import { Attribute } from "../helpers/attributes";
@@ -352,7 +352,10 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BasicGeneratedSheet
             let block = table[key];
             if (key === "departments" && character.version === 1) {
                 key = "disciplines";
+            } else if (key === "talents" && character.stereotype === Stereotype.Npc) {
+                key = "specialRules";
             }
+
             const originalText = i18next.t("Construct.other." + key).toLocaleUpperCase();
             let text = originalText;
             let width = this.headingFont.widthOfTextAtSize(text, fontSize);

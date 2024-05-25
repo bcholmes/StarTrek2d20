@@ -69,7 +69,7 @@ const NpcView: React.FC<ICharacterPageProperties> = ({character}) => {
                 <CharacterStatBlock character={character} />
 
                 <ValuesBlockView character={character} />
-                <TalentsBlockView character={character} />
+                <TalentsBlockView construct={character} />
             </div>
             <div className="col-xl-6">
                 <div className="row">
