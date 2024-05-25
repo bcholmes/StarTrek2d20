@@ -5,6 +5,7 @@ import star from './starReducer';
 import starshipReducer from './starshipReducer';
 import gmTracker from './gmTrackerReducer';
 import contextReducer from './contextReducer';
+import safetyReducer from './safetyReducer';
 import tokenReducer from './tokenReducer';
 import tableReducer from './tableReducer';
 
@@ -15,7 +16,8 @@ const reducer = combineReducers({
     gmTracker: gmTracker,
     character: characterReducer,
     token: tokenReducer,
-    table: tableReducer
+    table: tableReducer,
+    safety: safetyReducer
 })
 const store = configureStore(
     {

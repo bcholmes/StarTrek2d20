@@ -7,19 +7,20 @@ import LcarsFrame from "../../components/lcarsFrame";
 import ReactMarkdown from "react-markdown";
 import { SafetySection, SafetySections } from "../model/safetySection";
 import { SafetyEvaluation, SafetyEvaluationType } from "../model/safetyEvaluation";
+import { connect } from "react-redux";
+import store from "../../state/store";
+import { setSafetyEvaluation } from "../../state/safetyActions";
+import { SafetyChecklistPdf } from "../export/safetyPdf";
+import { Button } from "../../components/button";
 
-interface ISafetySectionViewProperties {
+interface ISafetySectionViewProperties extends ISafetyChecklistPageProperties {
     section: SafetySection;
 }
 
-const SafetySectionView: React.FC<ISafetySectionViewProperties> = ({section}) => {
-
-    const [ selections, setSelections ] = useState({});
+const SafetySectionView: React.FC<ISafetySectionViewProperties> = ({section, evaluation}) => {
 
     const select = (category: string, evaluation: SafetyEvaluationType) => {
-        let temp = {...selections};
-        temp[category] = evaluation;
-        setSelections(temp);
+        store.dispatch(setSafetyEvaluation(category, evaluation));
     }
 
     return (<div className="col my-3">
@@ -44,13 +45,13 @@ const SafetySectionView: React.FC<ISafetySectionViewProperties> = ({section}) =>
                             return (<tr key={"section-category-" + category}>
                                 <td>{c}</td>
                                 <td className="text-center"><input type="radio" name={category} value="AlwaysOk"
-                                    checked={selections[category] === SafetyEvaluationType.AlwaysOk}
+                                    checked={evaluation[category] === SafetyEvaluationType.AlwaysOk}
                                     onChange={() => select(category, SafetyEvaluationType.AlwaysOk)} /></td>
                                 <td className="text-center"><input type="radio" name={category} value="YellowAlert"
-                                    checked={selections[category] === SafetyEvaluationType.YellowAlert}
+                                    checked={evaluation[category] === SafetyEvaluationType.YellowAlert}
                                     onChange={() => select(category, SafetyEvaluationType.YellowAlert)} /></td>
                                 <td className="text-center"><input type="radio" name={category} value="RedAlert"
-                                    checked={selections[category] === SafetyEvaluationType.RedAlert}
+                                    checked={evaluation[category] === SafetyEvaluationType.RedAlert}
                                     onChange={() => select(category, SafetyEvaluationType.RedAlert)} /></td>
                             </tr>);})}
                     </tbody>
@@ -60,9 +61,17 @@ const SafetySectionView: React.FC<ISafetySectionViewProperties> = ({section}) =>
 }
 
 
-const SafetyChecklistPage = () => {
+interface ISafetyChecklistPageProperties {
+    evaluation: {[key: string]: SafetyEvaluationType }
+}
+
+const SafetyChecklistPage: React.FC<ISafetyChecklistPageProperties> = ({evaluation}) => {
 
     const { t } = useTranslation();
+
+    const exportPdf = () => {
+        new SafetyChecklistPdf().export(evaluation);
+    }
 
     return (<LcarsFrame activePage={PageIdentity.SectorDetails}>
         <div id="app">
@@ -79,12 +88,23 @@ const SafetyChecklistPage = () => {
                     <ReactMarkdown>{t("SafetyChecklist.instruction")}</ReactMarkdown>
 
                     <div className="row row-cols-1 row-cols-lg-2 my-3">
-                        {SafetySections.instance.sections.map(s => (<SafetySectionView section={s} key={"section-" + s.type} />))}
+                        {SafetySections.instance.sections.map(s => (<SafetySectionView section={s} key={"section-" + s.type} evaluation={evaluation} />))}
                     </div>
+
+                    <div className="mt-4 text-end">
+                        <Button className='btn btn-primary btn-xs mw-100' onClick={() => exportPdf()}>{t('Common.button.export')}</Button>
+                    </div>
+
                 </div>
             </div>
         </div>
     </LcarsFrame>);
 }
 
-export default SafetyChecklistPage;
+function mapStateToProps(state, ownProps) {
+    return {
+        evaluation: state.safety
+    };
+}
+
+export default connect(mapStateToProps)(SafetyChecklistPage);
