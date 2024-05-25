@@ -33,6 +33,8 @@ export enum PageIdentity {
     ExtraTalentDetails,
     Finish,
 
+    OtherTools,
+
     CustomSpaceframe,
     MissionProfileTalentSelection,
     MissionProfileSelection,

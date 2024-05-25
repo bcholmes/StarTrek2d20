@@ -206,6 +206,7 @@
     "Home.characterButton": "Characters & Starships",
     "Home.talentsButton": "Talents Overview",
     "Home.tokenCreator": "Tokens",
+    "Home.otherTools": "Other Tools",
 
     "MilestonePage.instruction": "Select what type of modification you want to apply for this milestone.",
 
@@ -543,6 +544,7 @@
     "Page.title.missionPodSelection": "Mission Pod Selection",
     "Page.title.missionProfileSelection": "Mission Profile Selection",
     "Page.title.missionProfileTalentSelection": "Mission Profile Talent",
+    "Page.title.otherTools": "Other Tools",
     "Page.title.sectorDetails": "Sector Details",
     "Page.title.simpleStarship": "Simplified Starship Creation",
     "Page.title.smallCraftStats": "Small Craft Stats",

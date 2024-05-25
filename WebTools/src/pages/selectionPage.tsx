@@ -11,7 +11,8 @@ import { Header } from '../components/header';
 enum Tool {
     CharacterGenerator,
     TalentsOverview,
-    TokenCreator
+    TokenCreator,
+    OtherTools
 }
 
 const SelectionPage = () => {
@@ -30,6 +31,10 @@ const SelectionPage = () => {
             }
             case Tool.TokenCreator: {
                 navigate("/token");
+                break;
+            }
+            case Tool.OtherTools: {
+                Navigation.navigateToPage(PageIdentity.OtherTools);
                 break;
             }
         }
@@ -54,6 +59,7 @@ const SelectionPage = () => {
                         <Button className="mt-4" onClick={() => { selectTool(Tool.CharacterGenerator); }} >{t('Home.characterButton')}</Button>
                         <Button className="mt-4" onClick={() => { selectTool(Tool.TalentsOverview); }}>{t('Home.talentsButton')}</Button>
                         <Button className="mt-4" onClick={() => { selectTool(Tool.TokenCreator); }}>{t('Home.tokenCreator')}</Button>
+                        <Button className="mt-4" onClick={() => { selectTool(Tool.OtherTools); }}>{t('Home.otherTools')}</Button>
                     </div>
                 </div>
                 <section className="col-md-4">

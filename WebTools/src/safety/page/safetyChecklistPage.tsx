@@ -12,6 +12,7 @@ import store from "../../state/store";
 import { setSafetyEvaluation } from "../../state/safetyActions";
 import { SafetyChecklistPdf } from "../export/safetyPdf";
 import { Button } from "../../components/button";
+import { useNavigate } from "react-router";
 
 interface ISafetySectionViewProperties extends ISafetyChecklistPageProperties {
     section: SafetySection;
@@ -68,9 +69,16 @@ interface ISafetyChecklistPageProperties {
 const SafetyChecklistPage: React.FC<ISafetyChecklistPageProperties> = ({evaluation}) => {
 
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     const exportPdf = () => {
         new SafetyChecklistPdf().export(evaluation);
+    }
+
+    const goToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        e.stopPropagation();
+        navigate("/");
     }
 
     return (<LcarsFrame activePage={PageIdentity.SectorDetails}>
@@ -79,7 +87,7 @@ const SafetyChecklistPage: React.FC<ISafetyChecklistPageProperties> = ({evaluati
                 <div className="container ms-0">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
-                            <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, PageIdentity.Home)}>{t('Page.title.home')}</a></li>
+                            <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
                             <li className="breadcrumb-item active" aria-current="page">{t('Page.title.safetyChecklist')}</li>
                         </ol>
                     </nav>
