@@ -17,20 +17,7 @@
 
     "EraSelectionPage.eraInstruction": "Select which Era to play in. Ask your GM which Era to choose.",
 
-    "Home.title": "STA Character Creator",
-    "Home.selection": "Select tool.",
-    "Home.characterButton": "Characters & Starships",
-    "Home.talentsButton": "Talents Overview",
-    "Home.tokenCreator": "Tokens",
-
     "Lcars.noHistory": "No history",
-
-    "NpcConfigurationPage.option.anyMajorSpecies": "Any Major Species",
-    "NpcConfigurationPage.option.anySpecialization": "Any Specialization",
-
-    "NpcConfigurationPage.npcType": "NPC Type",
-    "NpcConfigurationPage.specialization": "Specialization",
-    "NpcConfigurationPage.text": "Specify what kind of NPC you're trying to create.",
 
     "SourceSelectionPage.sourceInstruction": "Select sources. Ask your GM which are available.",
     "SourceSelectionPage.gameTypeInstruction": "What type of game are you playing?",
@@ -214,6 +201,12 @@
 
     "FinishPage.job.example": "e.g. Junior Engineer",
 
+    "Home.title": "STA Character Creator",
+    "Home.selection": "Select tool.",
+    "Home.characterButton": "Characters & Starships",
+    "Home.talentsButton": "Talents Overview",
+    "Home.tokenCreator": "Tokens",
+
     "MilestonePage.instruction": "Select what type of modification you want to apply for this milestone.",
 
     "MissionPodSelectionPage.text": "Certain spaceframes have the ability to be fitted with a single mission pod, chosen from the list below. The talents provided by the pod may not be swapped out normally, but the entire mission pod (and all its benefits) may be swapped out as if it were a single talent.",
@@ -227,9 +220,18 @@
     "ModificationTypeSelectionPage.instruction": "Please select the modification that you want to apply to this character:",
     "ModificationTypeSelectionPage.whatMilestoneType": "What kind of milestone is being applied?",
 
+    "NpcConfigurationPage.option.anyMajorSpecies": "Any Major Species",
+    "NpcConfigurationPage.option.anySpecialization": "Any Specialization",
+
+    "NpcConfigurationPage.npcType": "NPC Type",
+    "NpcConfigurationPage.specialization": "Specialization",
+    "NpcConfigurationPage.text": "Specify what kind of NPC you're trying to create.",
+
     "PromotionPage.instruction": "Select a new rank for this character.",
 
     "ReputationChangePage.instruction": "Adjust the character's reputation as appropriate.",
+
+    "SafetyChecklist.instruction": "This checklist is a tool which the gamemaster can use to help players in discussing where their personal boundaries for certain themes in this campaign may lie.\n\n- **Always OK**: This means the player is always comfortable with this topic being described, shown and represented in a game.\n\n- **Yellow Alert**: This means the player is generally comfortable with this topic being discussed in a game, but prefers for the more vivid descriptions to be handled “off-screen.”\n\n- **Red Alert**: This means the player does not want this subject to be discussed in a game; they may have any number of reasons for this. Some reasons may include objection to the topic on moral principles, traumatic personal experience, a dislike of the topic being trivialized in a fictional entertainment medium like a game, and so on. Don’t ask  what the reason is for the player who feels this way; it isn’t anyone’s place to change that player’s mind. Simply accept their stance, respect it, and do not include the topic in question.",
 
     "SoloCareerEvent.instruction": "Your character’s career is a tapestry of events and experiences, but a few will have been pivotal moments in the character’s life. A character defines which moments of their life are important in retrospect, and what seemed definitive to a young ensign may be inconsequential to that same officer decades later.\n\nYour character has two defining career events, chosen or determined randomly from the list below, and gains whatever benefits they provide.\n\nFor characters that chose Novice Career Length, assume that these career events took place during the character’s time at the Academy or equivalent, perhaps during a field training assignment aboard a starship.",
 
@@ -575,6 +577,7 @@
     "Page.title.normalMilestone": "Normal Milestone",
     "Page.title.modificationComplete": "Modification Completed",
     "Page.title.npcConfiguration": "Random NPC Configuration",
+    "Page.title.safetyChecklist": "Safety Checklist",
     "Page.title.tokenCreationPage": "Token Creation",
     "Page.title.upbringing": "Early Outlook",
     "Page.title.upbringingDetails": "Early Outlook Details",
@@ -1312,6 +1315,42 @@
 
     "Role.navigator.description": "Not a typical senior staff role, some captains, particularly those operating in uncharted space, choose the most senior navigator to serve as senior staff as well.",
     "Role.navigator.ability": "When the navigator is required to analyze, or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",
+
+    "SafetyEvaluationType.alwaysOk": "Always OK",
+    "SafetyEvaluationType.yellowAlert": "Yellow Alert",
+    "SafetyEvaluationType.redAlert": "Red Alert",
+
+    "SafetySection.category.dismemberment": "Descriptions of dismemberment",
+    "SafetySection.category.gore": "Descriptions of gore",
+    "SafetySection.category.massDestructionGenocide": "Descriptions of mass destruction or genocide",
+    "SafetySection.category.harmToAnimals": "Harm to animals",
+    "SafetySection.category.harmToChildren": "Harm to children",
+    "SafetySection.category.hateCrimes": "Harm to minority groups, targeted hate crimes",
+    "SafetySection.category.traitorMechanicsPvP": "Traitor mechanics / Player vs. Player (PVP)",
+    "SafetySection.category.speciesHate": "Directed hate against other species (e.g., Klingons, Humans)",
+    "SafetySection.category.homophobia": "Homophobia / transphobia",
+    "SafetySection.category.racism": "Racism (within one’s own species)",
+    "SafetySection.category.religiousIntolerance": "Religious intolerance",
+    "SafetySection.category.sexism": "Sexism",
+    "SafetySection.category.hatefulLanguage": "Targeted hateful language",
+    "SafetySection.category.entrapment": "Entrapment; being buried underground, etc.",
+    "SafetySection.category.grief": "Grief",
+    "SafetySection.category.imprisonmentRestraint": "Imprisonment or restraint",
+    "SafetySection.category.noPersonalAgency": "Lack of personal agency or ability to change events",
+    "SafetySection.category.mentalAbuse": "Mental abuse or conditioning",
+    "SafetySection.category.stranded": "Stranded, unable to contact aid",
+    "SafetySection.category.biologicalWeapons": "Biological weapons",
+    "SafetySection.category.desecrationOfBodies": "Desecration of bodies",
+    "SafetySection.category.execution": "Execution",
+    "SafetySection.category.forcedScientificExperiments": "Forced scientific experimentation",
+    "SafetySection.category.murderOfNonCombatants": "Murder of non-combatants",
+    "SafetySection.category.torture": "Torture",
+
+    "SafetySectionType.violence": "Violence",
+    "SafetySectionType.gameplayMechanics": "Gameplay Mechanics",
+    "SafetySectionType.hatred": "Hatred",
+    "SafetySectionType.helplessness": "Helplessness",
+    "SafetySectionType.warCrimes": "War Crimes",
 
     "Sheet.basicGeneratedHalfPageCharacterSheet": "New Half-Page 2nd Ed.-style Character Sheet",
     "Sheet.generatedTngPortraitCharacterSheet": "TNG Portrait Character Sheet (US-Letter)",

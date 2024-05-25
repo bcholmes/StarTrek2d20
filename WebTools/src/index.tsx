@@ -28,6 +28,8 @@ const StarSystemDetailsPage = React.lazy(async () => {
 const TableListPage = React.lazy(() => import(/* webpackChunkName: 'table' */ './table/page/tableListPage'));
 const ViewTablePage = React.lazy(() => import(/* webpackChunkName: 'table' */ './table/page/viewTablePage'));
 const EditTablePage = React.lazy(() => import(/* webpackChunkName: 'table' */ './table/page/editTablePage'));
+const SafetyChecklistPage = React.lazy(() => import(/* webpackChunkName: 'safety' */ './safety/page/safetyChecklistPage'));
+
 
 let root = createRoot(document.getElementById("mainBody"));
 root.render(
@@ -39,6 +41,7 @@ root.render(
                     <Route path="/gmtracker" element={<GMTrackerPage />} />
                     <Route path="/talents" element={<TalentsOverviewMainPage />} />
                     <Route path="/view" element={<ViewSheetPage />} />
+                    <Route path="/safety" element={<SafetyChecklistPage />} />
                     <Route path="/credits" element={<CreditsPage />} />
                     <Route path="/systemGenerator" element={<SectorContainerPage activePage={PageIdentity.SystemGeneration} />} />
                     <Route path="/sectorDetails" element={<SectorContainerPage activePage={PageIdentity.SectorDetails} />} />

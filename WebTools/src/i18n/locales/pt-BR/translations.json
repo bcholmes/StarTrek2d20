@@ -17,20 +17,7 @@
 
     "EraSelectionPage.eraInstruction": "Selecione a Era em que deseja jogar. Pergunte ao seu MJ qual Era escolher.",
 
-    "Home.title": "Criador de Personagens STA",
-    "Home.selection": "Selecione a ferramenta.",
-    "Home.characterButton": "Personagens e Naves Estelares",
-    "Home.talentsButton": "Visão Geral dos Talentos",
-    "Home.tokenCreator": "Tokens",
-
     "Lcars.noHistory": "Sem Histórico",
-
-    "NpcConfigurationPage.option.anyMajorSpecies": "Qualquer Espécie Principal",
-    "NpcConfigurationPage.option.anySpecialization": "Qualquer Especialização",
-
-    "NpcConfigurationPage.npcType": "Tipo de PdM",
-    "NpcConfigurationPage.specialization": "Especialização",
-    "NpcConfigurationPage.text": "Especifique o tipo de PdM que você está tentando criar.",
 
     "SourceSelectionPage.sourceInstruction": "Selecione as fontes. Pergunte ao seu MJ as que estão disponíveis.",
     "SourceSelectionPage.gameTypeInstruction": "Que tipo de jogo você está jogando?",
@@ -214,6 +201,12 @@
 
     "FinishPage.job.example": "ex.: Engenheiro Júnior",
 
+    "Home.title": "Criador de Personagens STA",
+    "Home.selection": "Selecione a ferramenta.",
+    "Home.characterButton": "Personagens e Naves Estelares",
+    "Home.talentsButton": "Visão Geral dos Talentos",
+    "Home.tokenCreator": "Tokens",
+
     "MilestonePage.instruction": "Selecione o tipo de modificação que você deseja aplicar a esse marco de história.",
 
     "MissionPodSelectionPage.text": "Certas estruturas espaciais podem ser equipadas com um único módulo de missão, escolhido da lista abaixo. Os talentos fornecidos pelo módulo não podem ser trocados normalmente, mas o módulo integral da missão (e todos os seus benefícios) pode ser trocado como se fosse um único talento.",
@@ -226,6 +219,13 @@
 
     "ModificationTypeSelectionPage.instruction": "Selecione a modificação que você deseja aplicar a esta personagem:",
     "ModificationTypeSelectionPage.whatMilestoneType": "Que tipo de marco de história está sendo aplicado?",
+
+    "NpcConfigurationPage.option.anyMajorSpecies": "Qualquer Espécie Principal",
+    "NpcConfigurationPage.option.anySpecialization": "Qualquer Especialização",
+
+    "NpcConfigurationPage.npcType": "Tipo de PdM",
+    "NpcConfigurationPage.specialization": "Especialização",
+    "NpcConfigurationPage.text": "Especifique o tipo de PdM que você está tentando criar.",
 
     "PromotionPage.instruction": "Selecione uma nova patente para esta personagem.",
 

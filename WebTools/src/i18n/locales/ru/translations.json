@@ -16,20 +16,7 @@
 
     "EraSelectionPage.eraInstruction": "Выберите в какой Эре вы планируете играть. Спросите Мастера какую Эру выбрать.",
 
-    "Home.title": "Генератор Персонажей STA",
-    "Home.selection": "Выберите инструмент.",
-    "Home.characterButton": "Персонажи и Корабли",
-    "Home.talentsButton": "Обзор Талантов",
-    "Home.tokenCreator": "Токены",
-
     "Lcars.noHistory": "История пуста",
-
-    "NpcConfigurationPage.option.anyMajorSpecies": "Любая основная раса",
-    "NpcConfigurationPage.option.anySpecialization": "Любая Специализация",
-
-    "NpcConfigurationPage.npcType": "Тип ВП",
-    "NpcConfigurationPage.specialization": "Специализация",
-    "NpcConfigurationPage.text": "Определите тип ВП которого вы пытаетесь создать.",
 
     "SourceSelectionPage.sourceInstruction": "Выберите источники. Уточните с Мастером если возможно.",
     "SourceSelectionPage.gameTypeInstruction": "В какой вид игры вы играете?",
@@ -156,6 +143,19 @@
     "FinishPage.values.instruction": "Если вы не определили ценности персонажа в процессе создания, или вы хотите поменять их, сейчас самое время обдумать ценности с которыми ваш персонаж пойдет дальше.",
 
     "FinishPage.job.example": "например Младший Инженер",
+
+    "Home.title": "Генератор Персонажей STA",
+    "Home.selection": "Выберите инструмент.",
+    "Home.characterButton": "Персонажи и Корабли",
+    "Home.talentsButton": "Обзор Талантов",
+    "Home.tokenCreator": "Токены",
+
+    "NpcConfigurationPage.option.anyMajorSpecies": "Любая основная раса",
+    "NpcConfigurationPage.option.anySpecialization": "Любая Специализация",
+
+    "NpcConfigurationPage.npcType": "Тип ВП",
+    "NpcConfigurationPage.specialization": "Специализация",
+    "NpcConfigurationPage.text": "Определите тип ВП которого вы пытаетесь создать.",
 
     "SoloConstructTypePage.character": "Персонаж",
     "SoloConstructTypePage.instruction": "Вы создаете персонажа или звездолет?",

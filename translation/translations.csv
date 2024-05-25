@@ -12,17 +12,7 @@ AttributesAndDisciplines.instruction,"At this stage, your character is almost co
 EditTablePage.header.createTable,Create Table,,Tabelle erstellen,,,Создать таблицу,Criar Tabela
 EditTablePage.header.modifyTable,Modify Table,,Tabelle bearbeiten,,,Изменить таблицу,Modificar Tabela
 EraSelectionPage.eraInstruction,Select which Era to play in. Ask your GM which Era to choose.,,"Wählen Sie aus, in welcher Ära gespielt wird. Fragen Sie, wenn nötig, Ihre Spielleitung, welche Ära Sie wählen sollen.",Selecciona en qué Era jugar. Pregúntale a tu GM qué Era elegir.,Sélectionnez l'ère dans laquelle jouer. Demandez à votre MJ quelle ère choisir.,Выберите в какой Эре вы планируете играть. Спросите Мастера какую Эру выбрать.,Selecione a Era em que deseja jogar. Pergunte ao seu MJ qual Era escolher.
-Home.title,STA Character Creator,,STA Charakterersteller,,,Генератор Персонажей STA,Criador de Personagens STA
-Home.selection,Select tool.,,Werkzeug auswählen.,Seleccione la herramienta.,Sélectionnez l'outil.,Выберите инструмент.,Selecione a ferramenta.
-Home.characterButton,Characters & Starships,,Charaktere & Raumschiffe,Personajes y naves espaciales,Personnages et vaisseaux spatiaux,Персонажи и Корабли,Personagens e Naves Estelares
-Home.talentsButton,Talents Overview,,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents,Обзор Талантов,Visão Geral dos Talentos
-Home.tokenCreator,Tokens,,Token,,Jetons,Токены,Tokens
 Lcars.noHistory,No history,,Kein Verlauf,,,История пуста,Sem Histórico
-NpcConfigurationPage.option.anyMajorSpecies,Any Major Species,,Jede bedeutende Spezies,,N'importe quelle Espèces Majeure,Любая основная раса,Qualquer Espécie Principal
-NpcConfigurationPage.option.anySpecialization,Any Specialization,,Jede Spezialisierung,,N'importe quelle Spécialisation,Любая Специализация,Qualquer Especialização
-NpcConfigurationPage.npcType,NPC Type,,NPC Typ,,Type de PNJ,Тип ВП,Tipo de PdM
-NpcConfigurationPage.specialization,Specialization,,Spezialisierung,,Spécialisation,Специализация,Especialização
-NpcConfigurationPage.text,Specify what kind of NPC you're trying to create.,,"Lege fest, welche Art NPC du erstellen möchtest.",,Spécifiez quel type de PNJ vous voulez créer,Определите тип ВП которого вы пытаетесь создать.,Especifique o tipo de PdM que você está tentando criar.
 SourceSelectionPage.sourceInstruction,Select sources. Ask your GM which are available.,,"Wählen Sie die verfügbaren Quellen aus. Fragen Sie, wenn nötig, Ihre Spielleitung, welche zur Verfügung stehen.",Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.,Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.,Выберите источники. Уточните с Мастером если возможно.,Selecione as fontes. Pergunte ao seu MJ as que estão disponíveis.
 SourceSelectionPage.gameTypeInstruction,What type of game are you playing?,,Welche Art von Spiel spielst du?,,A quel type de jeu jouez vous?,В какой вид игры вы играете?,Que tipo de jogo você está jogando?
 SourceSelectionPage.sourceNote,Some sources are not yet implemented; check back soon!,,Einige Quellen sind noch nicht verfügbar - schauen Sie bald wieder vorbei!,Algunas fuentes aún no se han aplicado; ¡Vuelve pronto!,Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!,Некоторые источники еще на доступны; скоро добавим!,Algumas fontes ainda não foram implementadas; retorne em breve!
@@ -218,6 +208,11 @@ FinishPage.trait.instruction,"You can specify additional traits, here.",,Hier ka
 FinishPage.role.instruction,"Select character's role and the ship on which they serve. This choice will be based on your highest discipline(s). The most suitable choice will appear on top, while the other options will be available as well in case you want to create a different character.",,,,,"Выберите роль персонажа и корабль на котором он служит. Этот выбор будет основан на наивысшем Знании(ях). Наилучшый выбор будет сверху, но остальные опции будут так же показаны если вы хотите создать другого персонажа.","Selecione a função da personagem e a nave em que ela serve. Essa escolha será baseada em sua(s) disciplina(s) mais elevada(s). A opção mais adequada aparecerá no topo, enquanto as outras opções também estarão disponíveis, caso você queira criar uma personagem diferente."
 FinishPage.values.instruction,"If you did not define your values during character creation, or if you want to change any of them, now is the time to think about the values your character goes by.",,,,,"Если вы не определили ценности персонажа в процессе создания, или вы хотите поменять их, сейчас самое время обдумать ценности с которыми ваш персонаж пойдет дальше.","Se você não definiu seus valores durante a criação da personagem, ou se deseja alterar algum deles, agora é o momento de pensar nos valores que sua personagem segue."
 FinishPage.job.example,e.g. Junior Engineer,,,,,например Младший Инженер,ex.: Engenheiro Júnior
+Home.title,STA Character Creator,,STA Charakterersteller,,,Генератор Персонажей STA,Criador de Personagens STA
+Home.selection,Select tool.,,Werkzeug auswählen.,Seleccione la herramienta.,Sélectionnez l'outil.,Выберите инструмент.,Selecione a ferramenta.
+Home.characterButton,Characters & Starships,,Charaktere & Raumschiffe,Personajes y naves espaciales,Personnages et vaisseaux spatiaux,Персонажи и Корабли,Personagens e Naves Estelares
+Home.talentsButton,Talents Overview,,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents,Обзор Талантов,Visão Geral dos Talentos
+Home.tokenCreator,Tokens,,Token,,Jetons,Токены,Tokens
 MilestonePage.instruction,Select what type of modification you want to apply for this milestone.,,"Wählen Sie die gewünschte Änderung, die Sie mit diesem Meilenstein vornehmen möchten",,Selectionnez le type de modification vous voulez appliquer avec ce Jalon,,Selecione o tipo de modificação que você deseja aplicar a esse marco de história.
 MissionPodSelectionPage.text,"Certain spaceframes have the ability to be fitted with a single mission pod, chosen from the list below. The talents provided by the pod may not be swapped out normally, but the entire mission pod (and all its benefits) may be swapped out as if it were a single talent.",,"Bestimmte Schiffsklassen sind mit einem einzelnen Missionsmodul ausgestattet, das aus der Liste unten ausgewählt wird. Die durch das Modul zur Verfügung gestellten Talente können nicht auf die übliche Art und Weise ausgetauscht werden. Allerdings ist es möglich, das gesamte Missionsmodul (und damit alle seine Boni) auszutauschen.",,"Certains modèles ont la possibilité d'être équipés d'un seul module de mission, choisi dans la liste ci-dessous. Les talents fournis par le module ne peuvent pas être échangés normalement, mais l'ensemble du module de mission (et tous ses avantages) peut être échangé comme s'il s'agissait d'un seul talent.",,"Certas estruturas espaciais podem ser equipadas com um único módulo de missão, escolhido da lista abaixo. Os talentos fornecidos pelo módulo não podem ser trocados normalmente, mas o módulo integral da missão (e todos os seus benefícios) pode ser trocado como se fosse um único talento."
 MissionPodSelectionPage.errorNoSelection,Please select a mission pod before proceeding.,,Bitte wählen Sie ein Missionmodul um fortzufahren.,,Sélectionnez un module de mission avant de continuer SVP,,Selecione um módulo de missão antes de continuar.
@@ -234,8 +229,20 @@ Vous pouvez vouloir sauvegarder l'URL pour le personnage modifié",,"A personage
 Talvez você queira salvar a URL da personagem revisada."
 ModificationTypeSelectionPage.instruction,Please select the modification that you want to apply to this character:,,Wählen Sie die gewünschte Änderung an Ihrem Charakter aus,,Selectionnez la modification que vous voulez appliquer à ce personnage,,Selecione a modificação que você deseja aplicar a esta personagem:
 ModificationTypeSelectionPage.whatMilestoneType,What kind of milestone is being applied?,,Welche Art Meilenstein wird angewandt?,,Quel genre de jalon d'expérience est appliqué?,,Que tipo de marco de história está sendo aplicado?
+NpcConfigurationPage.option.anyMajorSpecies,Any Major Species,,Jede bedeutende Spezies,,N'importe quelle Espèces Majeure,Любая основная раса,Qualquer Espécie Principal
+NpcConfigurationPage.option.anySpecialization,Any Specialization,,Jede Spezialisierung,,N'importe quelle Spécialisation,Любая Специализация,Qualquer Especialização
+NpcConfigurationPage.npcType,NPC Type,,NPC Typ,,Type de PNJ,Тип ВП,Tipo de PdM
+NpcConfigurationPage.specialization,Specialization,,Spezialisierung,,Spécialisation,Специализация,Especialização
+NpcConfigurationPage.text,Specify what kind of NPC you're trying to create.,,"Lege fest, welche Art NPC du erstellen möchtest.",,Spécifiez quel type de PNJ vous voulez créer,Определите тип ВП которого вы пытаетесь создать.,Especifique o tipo de PdM que você está tentando criar.
 PromotionPage.instruction,Select a new rank for this character.,,Wählen Sie einen neuen Rang für diesen Charakter,,Selectionnez un nouveau grade pour ce personnage,,Selecione uma nova patente para esta personagem.
 ReputationChangePage.instruction,Adjust the character's reputation as appropriate.,,"Passen Sie das Ansehen des Charakters an, wenn nötig",,Ajustez la réputation du personnage le cas échéant,,Ajuste a reputação da personagem conforme apropriado.
+SafetyChecklist.instruction,"This checklist is a tool which the gamemaster can use to help players in discussing where their personal boundaries for certain themes in this campaign may lie.
+
+- **Always OK**: This means the player is always comfortable with this topic being described, shown and represented in a game.
+
+- **Yellow Alert**: This means the player is generally comfortable with this topic being discussed in a game, but prefers for the more vivid descriptions to be handled “off-screen.”
+
+- **Red Alert**: This means the player does not want this subject to be discussed in a game; they may have any number of reasons for this. Some reasons may include objection to the topic on moral principles, traumatic personal experience, a dislike of the topic being trivialized in a fictional entertainment medium like a game, and so on. Don’t ask  what the reason is for the player who feels this way; it isn’t anyone’s place to change that player’s mind. Simply accept their stance, respect it, and do not include the topic in question.",,,,,,
 SoloCareerEvent.instruction,"Your character’s career is a tapestry of events and experiences, but a few will have been pivotal moments in the character’s life. A character defines which moments of their life are important in retrospect, and what seemed definitive to a young ensign may be inconsequential to that same officer decades later.
 
 Your character has two defining career events, chosen or determined randomly from the list below, and gains whatever benefits they provide.
@@ -584,6 +591,7 @@ Page.title.promotion,Promotion,,Beförderung,,Promotion,,Promoção
 Page.title.normalMilestone,Normal Milestone,,Regulärer Meilenstein,,Jalon Normal,,Marco de História Normal
 Page.title.modificationComplete,Modification Completed,,Änderung abgeschlossen,,Modification Effectuée,,Modificação Concluída
 Page.title.npcConfiguration,Random NPC Configuration,,Anpassung zufälliger NSCs,,Configuration des PNJ Aléatoires,,Configuração de PdM Aleatórios
+Page.title.safetyChecklist,Safety Checklist,,,,,,
 Page.title.tokenCreationPage,Token Creation,,Tokenerschaffung,,,,Criação de Token
 Page.title.upbringing,Early Outlook,,Erziehung,,,Детали воспитания,Experiência Inicial
 Page.title.upbringingDetails,Early Outlook Details,,Erziehungsdetails,,,Направление образование,Detalhes da Experiência Inicial
@@ -1524,6 +1532,39 @@ Role.admiral.ability,"Select three additional Focuses, reflecting areas of exper
 Role.navigator,Navigator,,,,,,
 Role.navigator.description,"Not a typical senior staff role, some captains, particularly those operating in uncharted space, choose the most senior navigator to serve as senior staff as well.",,,,,,
 Role.navigator.ability,"When the navigator is required to analyze, or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",,,,,,
+SafetyEvaluationType.alwaysOk,Always OK,,,,,,
+SafetyEvaluationType.yellowAlert,Yellow Alert,,,,,,
+SafetyEvaluationType.redAlert,Red Alert,,,,,,
+SafetySection.category.dismemberment,Descriptions of dismemberment,,,,,,
+SafetySection.category.gore,Descriptions of gore,,,,,,
+SafetySection.category.massDestructionGenocide,Descriptions of mass destruction or genocide,,,,,,
+SafetySection.category.harmToAnimals,Harm to animals,,,,,,
+SafetySection.category.harmToChildren,Harm to children,,,,,,
+SafetySection.category.hateCrimes,"Harm to minority groups, targeted hate crimes",,,,,,
+SafetySection.category.traitorMechanicsPvP,Traitor mechanics / Player vs. Player (PVP),,,,,,
+SafetySection.category.speciesHate,"Directed hate against other species (e.g., Klingons, Humans)",,,,,,
+SafetySection.category.homophobia,Homophobia / transphobia,,,,,,
+SafetySection.category.racism,Racism (within one’s own species),,,,,,
+SafetySection.category.religiousIntolerance,Religious intolerance,,,,,,
+SafetySection.category.sexism,Sexism,,,,,,
+SafetySection.category.hatefulLanguage,Targeted hateful language,,,,,,
+SafetySection.category.entrapment,"Entrapment; being buried underground, etc.",,,,,,
+SafetySection.category.grief,Grief,,,,,,
+SafetySection.category.imprisonmentRestraint,Imprisonment or restraint,,,,,,
+SafetySection.category.noPersonalAgency,Lack of personal agency or ability to change events,,,,,,
+SafetySection.category.mentalAbuse,Mental abuse or conditioning,,,,,,
+SafetySection.category.stranded,"Stranded, unable to contact aid",,,,,,
+SafetySection.category.biologicalWeapons,Biological weapons,,,,,,
+SafetySection.category.desecrationOfBodies,Desecration of bodies,,,,,,
+SafetySection.category.execution,Execution,,,,,,
+SafetySection.category.forcedScientificExperiments,Forced scientific experimentation,,,,,,
+SafetySection.category.murderOfNonCombatants,Murder of non-combatants,,,,,,
+SafetySection.category.torture,Torture,,,,,,
+SafetySectionType.violence,Violence,,,,,,
+SafetySectionType.gameplayMechanics,Gameplay Mechanics,,,,,,
+SafetySectionType.hatred,Hatred,,,,,,
+SafetySectionType.helplessness,Helplessness,,,,,,
+SafetySectionType.warCrimes,War Crimes,,,,,,
 Sheet.basicGeneratedHalfPageCharacterSheet,New Half-Page 2nd Ed.-style Character Sheet,,,,,,
 Sheet.generatedTngPortraitCharacterSheet,TNG Portrait Character Sheet (US-Letter),,,,,,
 Sheet.halfPageSupportingCharacterSheet,Half-Page Supporting Character Sheet,,,,,,

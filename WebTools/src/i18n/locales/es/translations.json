@@ -8,10 +8,6 @@
 
     "EraSelectionPage.eraInstruction": "Selecciona en qué Era jugar. Pregúntale a tu GM qué Era elegir.",
 
-    "Home.selection": "Seleccione la herramienta.",
-    "Home.characterButton": "Personajes y naves espaciales",
-    "Home.talentsButton": "Descripción general de talentos",
-
     "SourceSelectionPage.sourceInstruction": "Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.",
     "SourceSelectionPage.sourceNote": "Algunas fuentes aún no se han aplicado; ¡Vuelve pronto!",
 
@@ -29,6 +25,10 @@
     "AddCharacterView.errorMessage": "Esta URL no parece válida.",
     "AddCharacterView.errorCharacterType": "¡Gritos! Solo admitimos personajes, por el momento. No naves espaciales.",
     "AddCharacterView.characterPrefix": "Carácter:",
+
+    "Home.selection": "Seleccione la herramienta.",
+    "Home.characterButton": "Personajes y naves espaciales",
+    "Home.talentsButton": "Descripción general de talentos",
 
     "StarshipToolSelection.instruction": "Seleccione una opción",
     "StarshipToolSelection.standardBuild": "Construcción estándar",

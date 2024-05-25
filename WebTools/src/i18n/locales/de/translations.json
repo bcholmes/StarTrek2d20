@@ -17,20 +17,7 @@
 
     "EraSelectionPage.eraInstruction": "Wählen Sie aus, in welcher Ära gespielt wird. Fragen Sie, wenn nötig, Ihre Spielleitung, welche Ära Sie wählen sollen.",
 
-    "Home.title": "STA Charakterersteller",
-    "Home.selection": "Werkzeug auswählen.",
-    "Home.characterButton": "Charaktere & Raumschiffe",
-    "Home.talentsButton": "Talente im Überblick",
-    "Home.tokenCreator": "Token",
-
     "Lcars.noHistory": "Kein Verlauf",
-
-    "NpcConfigurationPage.option.anyMajorSpecies": "Jede bedeutende Spezies",
-    "NpcConfigurationPage.option.anySpecialization": "Jede Spezialisierung",
-
-    "NpcConfigurationPage.npcType": "NPC Typ",
-    "NpcConfigurationPage.specialization": "Spezialisierung",
-    "NpcConfigurationPage.text": "Lege fest, welche Art NPC du erstellen möchtest.",
 
     "SourceSelectionPage.sourceInstruction": "Wählen Sie die verfügbaren Quellen aus. Fragen Sie, wenn nötig, Ihre Spielleitung, welche zur Verfügung stehen.",
     "SourceSelectionPage.gameTypeInstruction": "Welche Art von Spiel spielst du?",
@@ -185,6 +172,12 @@
     "FinishPage.trait.preamble_other": "Dein Charakter hat automatisch folgende Merkmale:",
     "FinishPage.trait.instruction": "Hier kannst du weitere Merkmale angeben.",
 
+    "Home.title": "STA Charakterersteller",
+    "Home.selection": "Werkzeug auswählen.",
+    "Home.characterButton": "Charaktere & Raumschiffe",
+    "Home.talentsButton": "Talente im Überblick",
+    "Home.tokenCreator": "Token",
+
     "MilestonePage.instruction": "Wählen Sie die gewünschte Änderung, die Sie mit diesem Meilenstein vornehmen möchten",
 
     "MissionPodSelectionPage.text": "Bestimmte Schiffsklassen sind mit einem einzelnen Missionsmodul ausgestattet, das aus der Liste unten ausgewählt wird. Die durch das Modul zur Verfügung gestellten Talente können nicht auf die übliche Art und Weise ausgetauscht werden. Allerdings ist es möglich, das gesamte Missionsmodul (und damit alle seine Boni) auszutauschen.",
@@ -197,6 +190,13 @@
 
     "ModificationTypeSelectionPage.instruction": "Wählen Sie die gewünschte Änderung an Ihrem Charakter aus",
     "ModificationTypeSelectionPage.whatMilestoneType": "Welche Art Meilenstein wird angewandt?",
+
+    "NpcConfigurationPage.option.anyMajorSpecies": "Jede bedeutende Spezies",
+    "NpcConfigurationPage.option.anySpecialization": "Jede Spezialisierung",
+
+    "NpcConfigurationPage.npcType": "NPC Typ",
+    "NpcConfigurationPage.specialization": "Spezialisierung",
+    "NpcConfigurationPage.text": "Lege fest, welche Art NPC du erstellen möchtest.",
 
     "PromotionPage.instruction": "Wählen Sie einen neuen Rang für diesen Charakter",
 

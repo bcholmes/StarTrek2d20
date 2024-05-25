@@ -12,18 +12,6 @@
 
     "EraSelectionPage.eraInstruction": "Sélectionnez l'ère dans laquelle jouer. Demandez à votre MJ quelle ère choisir.",
 
-    "Home.selection": "Sélectionnez l'outil.",
-    "Home.characterButton": "Personnages et vaisseaux spatiaux",
-    "Home.talentsButton": "Vue d'ensemble des talents",
-    "Home.tokenCreator": "Jetons",
-
-    "NpcConfigurationPage.option.anyMajorSpecies": "N'importe quelle Espèces Majeure",
-    "NpcConfigurationPage.option.anySpecialization": "N'importe quelle Spécialisation",
-
-    "NpcConfigurationPage.npcType": "Type de PNJ",
-    "NpcConfigurationPage.specialization": "Spécialisation",
-    "NpcConfigurationPage.text": "Spécifiez quel type de PNJ vous voulez créer",
-
     "SourceSelectionPage.sourceInstruction": "Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.",
     "SourceSelectionPage.gameTypeInstruction": "A quel type de jeu jouez vous?",
     "SourceSelectionPage.sourceNote": "Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!",
@@ -149,6 +137,11 @@
 
     "EnvironmentPage.alliedMilitary.instruction": "Indépendamment de leur espèce, les officiers militaires viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau.",
 
+    "Home.selection": "Sélectionnez l'outil.",
+    "Home.characterButton": "Personnages et vaisseaux spatiaux",
+    "Home.talentsButton": "Vue d'ensemble des talents",
+    "Home.tokenCreator": "Jetons",
+
     "MilestonePage.instruction": "Selectionnez le type de modification vous voulez appliquer avec ce Jalon",
 
     "MissionPodSelectionPage.text": "Certains modèles ont la possibilité d'être équipés d'un seul module de mission, choisi dans la liste ci-dessous. Les talents fournis par le module ne peuvent pas être échangés normalement, mais l'ensemble du module de mission (et tous ses avantages) peut être échangé comme s'il s'agissait d'un seul talent.",
@@ -161,6 +154,13 @@
 
     "ModificationTypeSelectionPage.instruction": "Selectionnez la modification que vous voulez appliquer à ce personnage",
     "ModificationTypeSelectionPage.whatMilestoneType": "Quel genre de jalon d'expérience est appliqué?",
+
+    "NpcConfigurationPage.option.anyMajorSpecies": "N'importe quelle Espèces Majeure",
+    "NpcConfigurationPage.option.anySpecialization": "N'importe quelle Spécialisation",
+
+    "NpcConfigurationPage.npcType": "Type de PNJ",
+    "NpcConfigurationPage.specialization": "Spécialisation",
+    "NpcConfigurationPage.text": "Spécifiez quel type de PNJ vous voulez créer",
 
     "PromotionPage.instruction": "Selectionnez un nouveau grade pour ce personnage",
 
