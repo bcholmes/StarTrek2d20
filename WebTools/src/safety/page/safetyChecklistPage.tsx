@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Header } from "../../components/header";
 import { useTranslation } from "react-i18next";
-import { navigateTo } from "../../common/navigator";
 import { PageIdentity } from "../../pages/pageIdentity";
 import LcarsFrame from "../../components/lcarsFrame";
 import ReactMarkdown from "react-markdown";

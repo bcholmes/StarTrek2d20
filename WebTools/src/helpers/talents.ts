@@ -479,7 +479,7 @@ class DepartmentPrerequisite implements IConstructPrerequisite<Starship> {
 
 export class TalentModel implements ITalent {
     readonly name: string;
-    description: string;
+    private description: string;
     prerequisites: IConstructPrerequisite<Construct>[];
     maxRank: number;
     category: string;

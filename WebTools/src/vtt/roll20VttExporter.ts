@@ -399,7 +399,7 @@ export class Roll20VttExporter {
             category = "General";
         }
 
-        let name = talent.maxRank > 1 ? (talent.displayName + character.getRankForTalent(talentName)) : talent.displayName;
+        let name = talent.maxRank > 1 ? (talent.localizedDisplayName + character.getRankForTalent(talentName)) : talent.displayName;
 
         return [{
             "name": "repeating_talents_" + rowId + "_talent_name",
@@ -409,7 +409,7 @@ export class Roll20VttExporter {
         },
         {
             "name": "repeating_talents_" + rowId + "_talent_description",
-            "current": talent.description,
+            "current": talent.localizedDescription,
             "max": "",
             "id": id.nextId()
         },
