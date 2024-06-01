@@ -54,7 +54,7 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
 
                 <div className="mt-5 text-center">
                     <Button className="btn btn-primary" onClick={() => this.export() }
-                        enabled={this.state.vttType === VttType.Foundry || this.props.construct instanceof Character} >Export</Button>
+                        enabled={this.state.vttType !== VttType.FantasyGrounds || this.props.construct instanceof Character} >Export</Button>
                 </div>
             </div>
         );
@@ -117,6 +117,8 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
         if (this.props.construct instanceof Starship) {
             if (this.state.vttType === VttType.Foundry) {
                 this.exportStarshipToFoundryVtt(this.props.construct as Starship);
+            } else if (this.state.vttType === VttType.Roll20) {
+                this.exportStarshipToRoll20(this.props.construct as Starship);
             }
         }
         VttSelectionDialog.instance.hide();
@@ -135,6 +137,14 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
         const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
 
         const escaped = this.sanitizeName(character.name, "sta-character");
+        download(jsonBytes, escaped + "-roll20-vtt.json", "application/json");
+    }
+
+    exportStarshipToRoll20(starship: Starship) {
+        const json = Roll20VttExporter.instance.exportStarship(starship);
+        const jsonBytes = new TextEncoder().encode(JSON.stringify(json, null, 4));
+
+        const escaped = this.sanitizeName(starship.name, "sta-starship");
         download(jsonBytes, escaped + "-roll20-vtt.json", "application/json");
     }
 

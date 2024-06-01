@@ -1,13 +1,18 @@
+import i18next from "i18next";
 import { Character } from "../common/character";
 import { CharacterSerializer } from "../common/characterSerializer";
+import { Starship } from "../common/starship";
 import { Attribute, AttributesHelper } from "../helpers/attributes";
 import { BorgImplants, Implant } from "../helpers/borgImplant";
 import { EquipmentModel } from "../helpers/equipment";
 import { Skill, SkillsHelper } from "../helpers/skills";
 import { SpeciesHelper } from "../helpers/species";
 import { Species } from "../helpers/speciesEnum";
-import { TalentsHelper } from "../helpers/talents";
-import { Weapon, WeaponType } from "../helpers/weapons";
+import { TALENT_NAME_MISSION_POD, TalentsHelper } from "../helpers/talents";
+import { Weapon, WeaponRange, WeaponType } from "../helpers/weapons";
+import { System, allSystems } from "../helpers/systems";
+import { makeKey } from "../common/translationKey";
+import { Department, allDepartments } from "../helpers/departments";
 
 class IdHelper {
 
@@ -54,6 +59,117 @@ export class Roll20VttExporter {
         }
         return Roll20VttExporter._instance;
     }
+
+    exportStarship(starship: Starship) {
+
+        let starshipClass = starship.className ?? "";
+        let name = starship.name ?? "Unnamed " + (starshipClass.length ? starshipClass + " " : "")  + " Starship";
+
+        if (starship.registry) {
+            name += ", " + starship.registry;
+        }
+
+        let result = {
+            "schema_version": 3,
+            "type": "handout",
+            "handout": {
+                "archived": false,
+                "avatar": "",
+                "controlledby": "",
+                "inplayerjournals": "",
+                "name": name,
+                "tags": "[]",
+                "gmnotes": "",
+                "notes": this.createStarshipNotes(starship)
+            }
+        }
+
+        return result;
+    }
+
+
+    createStarshipNotes(starship: Starship) {
+
+        let result = "";
+
+        if (starship.getAllTraits()?.length) {
+            result += "<p><strong>Traits:</strong> " + starship.getAllTraits() + "</p>\n"
+        }
+
+        result += "<h2>" + i18next.t("Construct.other.systems") + "</h2>\n"
+        result += "<table>\n<thead>\n<tr>\n";
+        allSystems().forEach(s => result += "<th>" + i18next.t(makeKey("Construct.system.", System[s])) + "</th>\n");
+        result += "</tr>\n</thead>\n<tbody><tr>\n";
+        allSystems().forEach(s => result += "<td>" + starship.getSystemValue(s) + "</td>\n");
+        result += "</tr>\n</tbody>\n</table>\n";
+
+        result += "<h2>" + i18next.t("Construct.other.departments") + "</h2>\n"
+        result += "<table>\n<thead>\n<tr>\n";
+        allDepartments().forEach(d => result += "<th>" + i18next.t(makeKey("Construct.department.", Department[d])) + "</th>\n");
+        result += "</tr>\n</thead>\n<tbody><tr>\n";
+        allDepartments().forEach(d => result += "<td>" + starship.departments[d] + "</td>\n");
+        result += "</tr>\n</tbody>\n</table>\n";
+
+        result += "<p><strong>" + i18next.t("Construct.other.power") + ":</strong> " + starship.power + "<br />";
+        result += "<strong>" + i18next.t("Construct.other.scale") + ":</strong> " + starship.scale + "<br />";
+        result += "<strong>" + i18next.t("Construct.other.shields") + ":</strong> " + starship.shields + "<br />";
+        result += "<strong>" + i18next.t("Construct.other.crewSupport") + ":</strong> " + starship.crewSupport + "</p>";
+
+
+        const delta = "<img src=\"https://s3.amazonaws.com/files.d20.io/images/239862759/6uRVM0G3z6g119ymlL1VLg/med.png?1628984150\">";
+        const weapons = starship.determineWeapons();
+        if (weapons?.length) {
+            result += "<p><strong>" + i18next.t("Construct.other.attacks") + "</strong></p>\n<ul>\n";
+
+            weapons.forEach(w => {
+                result += "<li><p>" + w.description + " ("
+                    + (w.range != null ? WeaponRange[w.range] + " " : "")
+                    + starship.getDiceForWeapon(w) + delta + " "
+                    + w.effectsAndQualities + ")"
+                    + "</p></li>";
+            });
+
+            result += "</ul>\n";
+        }
+        let talents = starship.getDistinctTalentNameList()
+            .map(t => TalentsHelper.getTalent(t))
+            .filter(t => t != null && !t.specialRule);
+        if (talents?.length) {
+            result += "<p><strong>" + i18next.t("Construct.other.talents") + "</strong></p>\n<ul>\n";
+
+            talents.forEach(t =>
+                result += "<li><p><b>" + t.localizedName
+                    + (t.maxRank > 1 ? " [x" + starship.getRankForTalent(t.name) + "]" :"")
+                    + ":</b> "
+                    + t.localizedDescription
+                    + "</p></li>\n"
+            )
+
+            result += "</ul>\n";
+        }
+
+        let specialRules = starship.getDistinctTalentNameList()
+            .map(t => TalentsHelper.getTalent(t))
+            .filter(t => t != null && t.specialRule);
+        if (specialRules?.length) {
+            result += "<p><strong>" + i18next.t("Construct.other.specialRules") + "</strong></p>\n<ul>\n";
+
+            specialRules.forEach(t =>
+                result += "<li><p><b>" + t.localizedName
+                    + ((t.name === TALENT_NAME_MISSION_POD && starship.missionPodModel != null)
+                        ? ": " + starship.missionPodModel.localizedName
+                        : "")
+                    + (t.maxRank > 1 ? "[x" + starship.getRankForTalent(t.name) + "]" :"")
+                    + ":</b> "
+                    + t.localizedDescription
+                    + "</p></li>\n"
+            )
+
+            result += "</ul>\n";
+        }
+        return result;
+    }
+
 
     exportCharacter(character: Character) {
         let id = new IdHelper();

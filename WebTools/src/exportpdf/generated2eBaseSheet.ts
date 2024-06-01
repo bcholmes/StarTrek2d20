@@ -202,7 +202,9 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
             } else {
                 qualities = "";
             }
-            let text = type + ", " + (w.dice + security) + CHALLENGE_DICE_NOTATION + qualities
+            const dice = (construct instanceof Starship) ? (construct as Starship).getDiceForWeapon(w) : (w.dice + security);
+
+            let text = type + ", " + dice + CHALLENGE_DICE_NOTATION + qualities
                 + (w.hands != null ? ", " + i18next.t("Weapon.common.size", { hands: w.hands }) : "");
 
             paragraph = paragraph == null ? new Paragraph(page, indentedColumn, this.symbolFont) : paragraph.nextParagraph(0);

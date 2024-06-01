@@ -522,6 +522,20 @@ export class Starship extends Construct {
         }
     }
 
+    getDiceForWeapon(weapon: Weapon) {
+        let dice = weapon.dice;
+        if (weapon.isTractorOrGrappler) {
+            dice = this.scale - 1;
+
+            if (this.hasTalent("High-Power Tractor Beam")) {
+                dice += 2;
+            }
+        } else {
+            dice += this.departments[Department.Security];
+        }
+        return dice;
+    }
+
     public copy(): Starship {
         let result = new Starship();
         result.era = this.era;
