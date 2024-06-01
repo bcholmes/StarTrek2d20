@@ -12,6 +12,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240601</b>
+                <ul>
+                    <li>A handful of smaller updates: export starships for Roll20, a new Safety checklist based on
+                        the <cite>Federation-Klingon War</cite> book, and other bits.</li>
+                </ul>
                 <b>v1.240524</b>
                 <ul>
                     <li>Incorporate some feedback items.</li>
