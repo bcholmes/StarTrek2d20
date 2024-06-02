@@ -1,9 +1,8 @@
-import { PDFDocument, PDFFont, PDFPage } from "@cantoo/pdf-lib";
+import { PDFDocument, PDFPage } from "@cantoo/pdf-lib";
 import { SimpleColor } from "../common/colour";
 import { XYLocation } from "../common/xyLocation";
 import { Column, SheetTag } from "./icharactersheet";
 import i18next from "i18next";
-import { getCurrentLanguageCode } from "../i18n/config";
 import { Character } from "../common/character";
 import { Construct } from "../common/construct";
 import { TALENT_NAME_BORG_IMPLANTS, TalentsHelper } from "../helpers/talents";
