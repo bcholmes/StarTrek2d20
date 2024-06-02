@@ -10,13 +10,22 @@
     "Lcars.news": "Actualités",
     "Lcars.profile": "Profil",
 
+    "AttributesAndDisciplines.instruction": "A cette étape, votre personnage est presque prêt, et ne necessite que quelques ajustements finaux. C'est la dernière occasion pour modifier le personnage avant le jeu",
+
+    "EditTablePage.header.createTable": "Créer un tableau",
+    "EditTablePage.header.modifyTable": "Modifier le tableau",
+
     "EraSelectionPage.eraInstruction": "Sélectionnez l'ère dans laquelle jouer. Demandez à votre MJ quelle ère choisir.",
+
+    "Lcars.noHistory": "Aucun historique",
 
     "SourceSelectionPage.sourceInstruction": "Sélectionnez les sources. Demandez à votre MJ lesquels sont disponibles.",
     "SourceSelectionPage.gameTypeInstruction": "A quel type de jeu jouez vous?",
     "SourceSelectionPage.sourceNote": "Certaines sources ne sont pas encore mises en œuvre; Revenez bientôt!",
     "SourceSelectionPage.standardGameType": "Règles de JDR standard",
     "SourceSelectionPage.soloGameType": "JDR solo utilisant les règles de Captain's Log",
+
+    "ShareTableModal.instruction": "Merci de respecter les droits d'auteur, et de ne partager que les tableaux que vous avez créé personnellement",
 
     "TokenCreator.option.rounded": "Arrondi",
     "TokenCreator.option.bordered": "Encadré",
@@ -64,23 +73,28 @@
     "TokenCreator.section.extras": "Extras",
 
     "TokenCreator.section.extras.ears": "Oreilles",
+    "TokenCreator.section.extras.face": "Visage",
     "TokenCreator.section.extras.forehead": "Front",
     "TokenCreator.section.extras.headwear": "Couvre-Chef",
 
     "ViewPage.viewSupportingCharacter": "Voir le personnage secondaire",
     "ViewPage.viewNpc": "Voir PNJ",
     "ViewPage.viewMainCharacter": "Voir le personnage principal",
+    "ViewPage.viewSoloCharacter": "Voir le personnage solo",
     "ViewPage.viewStarship": "Voir le vaisseau spatial",
     "ViewPage.errorMessage": "Les choses ont terriblement, terriblement mal tourné. Nous pourrions être dans l'univers miroir.",
     "ViewPage.unnamedStarship": "Vaisseau sans nom",
 
+    "CareerEvents.instruction": "Votre carrière est remplie d'évènements et d'expériences marquantes, mais certains de ces instants ont été des moments pivots dans votre vie. Définissez quels moments de votre vie ont, avec le recul, été lesplus importants. Ce qui semblait vital à un enseigne dans sa vaingtaine pourra paraitre insignifiant à l'officier qu'il sera devenu des decennies plus tard.",
     "CareerEvents.standard": "Standard",
     "CareerEvents.standardAndUnofficial": "Standard et Non Officiel",
     "CareerEvents.unofficialNote": "Cette liste inclus le travail non officiel de [Continuing Missions](https://continuingmissionsta.com/2018/05/09/replicator-resource-expanded-career-events-write-ups/). Demandez à votre MJ s'il l'autorise.",
 
     "CareerEventDetails.errorAttribute": "Selectionez un Attribut SVP",
     "CareerEventDetails.errorDiscipline": "Selectionez une Discipline SVP",
-    "CareerEventDetails.errorFocus": "Séléctionez un Focus SVP",
+    "CareerEventDetails.errorFocus": "Séléctionez une Spécialité SVP",
+
+    "ChildSelectionPage.instruction": "Naturellement, un enfant n'a pas été à Starfleet Academy (ou équivalent), ni quelque institut univirsitaire que ce soit. Il est encore tôt dans son parcours éducatif.\n\nQuel âge a votre personnage ?",
 
     "GMTracker.title": "Suivi",
     "GMTracker.instruction": "Utilisez cet outil pour gérer divers PNJ dans votre jeu.",
@@ -110,6 +124,8 @@
     "CharacterTypePage.otherGovernmentName": "Quel est le nom du gouvernement?",
     "CharacterTypePage.whatMilitary": "Quelle armée ce personnage représente?",
     "CharacterTypePage.otherMilitaryName": "Quel est le nom de l'armée?",
+
+    "CareerLength.instruction": "A cette étape, vous avez un choix à faire concernant votre personnage. Cette décision est claire : êtes vous un jeune officier, tout juste sorti de l'Académie, avec une magnifique carrière devant, ou êtes vous un vétéran, un vieux briscard avec des années d'experience .?\n\nChoississez ou lancez le dé.",
 
     "EnvironmentPage.showAlt": "Autoriser les Environements alternatifs (Décision du MJ)",
 
@@ -178,7 +194,7 @@
     "SoloEarlyOutlookPage.aspirations": "Aspirations",
 
     "SoloEarlyOutlookDetailsPage.errorDiscipline": "Choisissez une Discipline SVP.",
-    "SoloEarlyOutlookDetailsPage.errorFocus": "Choisissez un Focus SVP",
+    "SoloEarlyOutlookDetailsPage.errorFocus": "Choisissez une Spécialité SVP",
 
     "SoloEducationDetailsPage.selectThree": "(Choisir trois)",
     "SoloEducationDetailsPage.primaryDiscipline": "Discipline Principale",
@@ -186,6 +202,7 @@
     "SoloEducationDetailsPage.errorDisciplines": "Sélectionnez 1 discipline principale et 2 secondaires SVP",
     "SoloEducationDetailsPage.errorAttributes": "Sélectionnez 3 attributs SVP.",
     "SoloEducationDetailsPage.errorValue": "Sélectionnez une Valeur SVP.",
+    "SoloEducationDetailsPage.errorFocuses": "Sélectionnez vos spécialités SVP.",
 
     "SpaceframeOptionPage.text": "Voulez vous un modèle standart ou un modèle personalisé?",
 
@@ -196,6 +213,15 @@
     "SpeciesDetails.selectThree": "(Choisir trois)",
     "SpeciesDetails.allowCrossSpecies": "Autoriser les talents inter-espèces (Decision du GM)",
     "SpeciesDetails.allowEsoteric": "Autoriser les talents ésoteriques (Decision du GM)",
+
+    "SpeciesPage.selectSpecies": "Choississez une espèce",
+    "SpeciesPage.standardSpecies": "Espèces standard",
+    "SpeciesPage.mixedSpecies": "Espèces métissées",
+    "SpeciesPage.customSpecies": "Espèces sur mesure",
+    "SpeciesPage.primarySpecies": "Choississez une espèce primaire",
+    "SpeciesPage.secondarySpecies": "Choississez une espèce secondaire",
+    "SpeciesPage.selectMixedSpecies": "Choississez une espèce métissée",
+    "SpeciesPage.selectCustomSpecies": "Choississez une espèce sur mesure",
 
     "StarshipToolSelection.instruction": "Sélectionnez une option",
     "StarshipToolSelection.standardBuild": "Construction Standard",
@@ -215,6 +241,15 @@
     "StarshipPage.whatClass": "Quel est le nom de la classe du vaisseau?",
     "StarshipPage.whatYear": "Quel est la date de la mise en service de la classe de vaisseau",
     "StarshipPage.class": "Classe",
+
+    "UpbringingDetailPage.text": "Avez accepté ou rejeté votre éducation ?",
+
+    "UpbringingDetailPage.text.accept": "Accepter",
+    "UpbringingDetailPage.text.reject": "Rejeter",
+
+    "UpbringingDetailPage.error.discipline": "Vous devez choisir 1 Discipline pour continuer.",
+    "UpbringingDetailPage.error.talent": "Vous devez choisir 1 Talent pour continuer.",
+    "UpbringingDetailPage.error.focus": "Vous devez entrer une Spécialité. Choississez parmi les proposistion ou créez la votre.",
 
     "SupportingCharacter.whatType": "Choisir un type de personnage",
     "SupportingCharacter.howOld": "Quel est l'âge de votre personnage",
@@ -236,12 +271,18 @@
     "ToolSelection.spaceSector": "Secteur spatial",
     "ToolSelection.randomNpc": "PNJ aléatoire",
 
+    "Common.button.random": "Aléatoire",
     "Common.button.select": "Choisir",
     "Common.button.selectAll": "Sélectionner tout",
     "Common.button.selectNone": "Sélectionnez Aucun",
+    "Common.button.showAll": "Tout montrer",
     "Common.button.exportJson": "Exporter au format JSON",
+    "Common.button.export": "Exporter au format JSON",
+    "Common.button.exportVtt": "Exporter pour VTT",
     "Common.button.exportPdf": "Exporter au format PDF",
+    "Common.button.finish": "Terminer",
     "Common.button.ok": "D'accord",
+    "Common.button.copyToClipboard": "Copier dans le presse-papier",
     "Common.button.add": "Ajouter",
     "Common.button.cancel": "Annuler",
     "Common.button.create": "Créer",
@@ -249,26 +290,43 @@
     "Common.button.next": "Prochain",
     "Common.button.view": "Vue",
 
+    "Common.text.description": "Description",
     "Common.text.none": "Aucun",
+    "Common.text.copiedToClipboard": "Copié dans le presse papier !",
+    "Common.text.search": "Recherche...",
     "Common.text.select": "Selectionnez",
     "Common.text.selectOne": "Selectionnez en un",
+    "Common.text.suggestions": "Suggestions",
     "Common.text.total": "Total",
+    "Common.text.yes": "Oui",
+    "Common.text.no": "Non",
+    "Common.text.other": "Autre",
 
     "Common.select.choose": "Choisir",
 
     "Construct.other.assignment": "Mission",
+    "Construct.other.attacks": "Attaques",
     "Construct.other.attribute": "Attribut",
     "Construct.other.attributes": "Attributs",
     "Construct.other.career": "Carrière",
     "Construct.other.careerEvent1": "Evénement de Carrière 1",
+
+    "Construct.other.careerEvent1.short": "Evènement 1",
+
     "Construct.other.careerEvent2": "Evénement de Carrière 2",
+
+    "Construct.other.careerEvent2.short": "Evènement 2",
+
     "Construct.other.careerEvents": "Evénements de Carrière",
     "Construct.other.characterType": "Type de personnage",
     "Construct.other.crew": "Équipage",
+    "Construct.other.crewSupport": "Support d'équipage",
+    "Construct.other.department": "Département",
     "Construct.other.departments": "Departements",
     "Construct.other.determination": "Détermination",
     "Construct.other.discipline": "Discipline",
     "Construct.other.disciplines": "Disciplines",
+    "Construct.other.education": "Education",
     "Construct.other.environment": "Environnement",
     "Construct.other.equipment": "Équipement",
     "Construct.other.era": "Ère",
@@ -277,34 +335,52 @@
     "Construct.other.focus2": "Spécialité 2",
     "Construct.other.focus3": "Spécialité 3",
     "Construct.other.focuses": "Spécialités",
+    "Construct.other.injuries": "Blessures",
     "Construct.other.job": "Travail",
+    "Construct.other.launchYear": "Année de lancement",
+    "Construct.other.missionPod": "Module de mission",
     "Construct.other.missionProfile": "Profil de mission",
     "Construct.other.name": "Nom",
+    "Construct.other.numberOfRefits_one": "{{count}} refonte",
+    "Construct.other.numberOfRefits_other": "{{count}} refonte",
+    "Construct.other.pastimes": "Hobbies",
+    "Construct.other.personalThreat": "Menace Personnelle",
     "Construct.other.pronouns": "Pronoms",
+    "Construct.other.protection": "Protection",
     "Construct.other.power": "Energie",
     "Construct.other.purpose": "Rôle",
     "Construct.other.rank": "Grade",
     "Construct.other.refits": "Mises à jour",
+    "Construct.other.registry": "Immatriculation",
     "Construct.other.resistance": "Résistance",
     "Construct.other.reprimands": "Réprimandes",
     "Construct.other.reputation": "Réputation",
     "Construct.other.scale": "Echelle",
     "Construct.other.serviceDate": "Date de mise en service",
     "Construct.other.shields": "Boucliers",
+    "Construct.other.ship": "Vaisseau",
+    "Construct.other.sources": "Sources",
     "Construct.other.spaceFrame": "Modèle de Vaisseau",
     "Construct.other.specialRules": "Règles spéciales",
     "Construct.other.species": "Espèce",
+    "Construct.other.speciesAbility": "Capacités d'espèce",
+    "Construct.other.stats": "Stats",
     "Construct.other.stress": "Stress",
     "Construct.other.systems": "Systèmes",
     "Construct.other.talent": "Talent",
     "Construct.other.talents": "Talents",
+    "Construct.other.talentOptions": "Options de Tlent",
+    "Construct.other.timeline": "Chronologie",
     "Construct.other.training": "Formation",
     "Construct.other.trait": "Trait",
     "Construct.other.traits": "Traits",
+    "Construct.other.additionalTraits": "Traits additionnels",
     "Construct.other.upbringing": "Education",
     "Construct.other.value": "Valeur",
     "Construct.other.values": "Valeurs",
     "Construct.other.weapons": "Armes",
+    "Construct.other.yearsOfService_one": "{{count}} année de service",
+    "Construct.other.yearsOfService_other": "{{count}} années de service",
 
     "Construct.attribute.control": "Contrôle",
     "Construct.attribute.daring": "Audace",
@@ -335,14 +411,24 @@
     "Construct.system.weapons": "Armes",
 
     "Page.title.attributesAndDisciplines": "Touches Finales",
-    "Page.title.careerLength": "Carrière",
+    "Page.title.careerEvent": "Evènement de carrière",
+    "Page.title.careerEvent1": "Evènement de carrière 1",
+    "Page.title.careerEvent2": "Evènement de carrière 2",
+    "Page.title.careerEventDetails": "Evènement de carrière (détails)",
+    "Page.title.careerEventDetails1": "Evènement de carrière (détails) 1",
+    "Page.title.careerEventDetails2": "Evènement de carrière  (détails) 2",
+    "Page.title.careerLength": "Durée de carrière",
+    "Page.title.careerLengthDetails": "Durée de carrière (détails)",
     "Page.title.characterType": "Type de personnage",
     "Page.title.creditsPage": "Crédits",
     "Page.title.customSpaceframe": "Création de Modèle de Vaiseau",
     "Page.title.customSpeciesDetails": "Détails de Race Personalisé",
+    "Page.title.education": "Education",
+    "Page.title.educationDetails": "Education (détails)",
     "Page.title.environment": "Environnement",
     "Page.title.environmentDetails": "Détails de l'Environnement",
     "Page.title.era": "Ère",
+    "Page.title.extraTalentDetails": "Détails supplémentaires",
     "Page.title.finalStarshipDetails": "Détails Finaux du Vaisseau",
     "Page.title.finish": "Touches Finales",
     "Page.title.gamemasterTrackerPage": "Suivi",
@@ -350,11 +436,17 @@
     "Page.title.missionPodSelection": "Selection des Nacelles de Mission",
     "Page.title.missionProfileSelection": "Selection du Profil de Mission",
     "Page.title.missionProfileTalentSelection": "Talent du Profil de mission",
+    "Page.title.otherTools": "Autres outils",
     "Page.title.sectorDetails": "Détails du secteur",
     "Page.title.simpleStarship": "Creation de Vaisseau Simplifiée",
     "Page.title.smallCraftStats": "Navette",
+    "Page.title.soloCareerLength": "Durée de carrière",
     "Page.title.soloConstructType": "Selection d'Outil",
+    "Page.title.soloEducationType": "Type d'éducation",
+    "Page.title.soloEducation": "Education",
     "Page.title.soloFinishingTouches": "Touches Finales",
+    "Page.title.soloFinal": "Détails finaux",
+    "Page.title.sourceSelection": "Sources",
     "Page.title.spaceframeOption": "Option de Modèle",
     "Page.title.spaceframeSelection": "Modèle de Vaisseau",
     "Page.title.species": "Espèce",
@@ -362,8 +454,10 @@
     "Page.title.starshipTalentSelection": "Talents de Vaisseau",
     "Page.title.starSystemDetails": "Détails du système stellaire",
     "Page.title.starshipToolSelection": "Outils de vaisseau spatial",
+    "Page.title.starshipTraits": "Traits du vaisseau",
     "Page.title.supportingCharacter": "Personnage secondaire",
     "Page.title.systemGeneration": "Génération du système stellaire",
+    "Page.title.tableList": "Liste des tableaux",
     "Page.title.talentsOverview": "Vue d'ensemble des talents",
     "Page.title.toolSelection": "Selection d'Outil",
     "Page.title.viewSheet": "Voir la feuille",
@@ -375,10 +469,15 @@
     "Page.title.normalMilestone": "Jalon Normal",
     "Page.title.modificationComplete": "Modification Effectuée",
     "Page.title.npcConfiguration": "Configuration des PNJ Aléatoires",
+    "Page.title.safetyChecklist": "Checklist de sécurité",
+    "Page.title.tokenCreationPage": "Création de Jeton",
+    "Page.title.viewTable": "Voir tableau",
 
     "Page.breadcrumb.characterCreation": "Création de personnages",
     "Page.breadcrumb.starshipCreation": "Règles de Base",
     "Page.breadcrumb.supportingCharacterCreation": "Création de Personnage Secondaire",
+
+    "CareerEvent.common.1.name": "Vaisseau détruit",
 
     "CareerType.core.young.name": "Jeune Officier",
     "CareerType.core.young.description": "Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.",
@@ -539,8 +638,10 @@
     "Source.type.campaignBook": "Livres de Campagne",
     "Source.type.expansion": "Livres d'Extensions",
     "Source.type.misc": "Divers/Autres",
+    "Source.type.unofficial": "Sources non officielles",
 
     "Source.book.core": "Règles de Base",
+    "Source.book.core2ndEdition": "Règles de Base (2ème édition)",
     "Source.book.alphaQuadrant": "Quadrant Alpha",
     "Source.book.betaQuadrant": "Quadrant Bêta",
     "Source.book.gammaQuadrant": "Quadrant Gamma",
@@ -563,6 +664,52 @@
     "Source.book.picardS1": "Picard S1",
     "Source.book.utopiaPlanitia": "Utopia Planitia",
 
+    "Species.andorian.aboutNames": "Les noms ANDORIENS ont en général des sonorités dures, et comprennent un prénom suivi du nom du clan. Certains Andoriens ont l’habitude de faire précéder le nom du clan d’un préfixe de genre (« zh » pour les femmes et « ch » ou « th » pour les hommes) et d’une apostrophe ; il sera placé avant le nom de famille. Les noms andoriens plus longs ou plus compliqués seront raccourcis, en particulier quand ils ont affaire à d’autres espèces.",
+    "Species.andorian.description": "Ce peuple agressif et passionné originaire de la lune glacée d’Andoria fait partie de la Fédération des Planètes Unies depuis sa création, et il était déjà un fidèle allié de l’humanité depuis déjà plusieurs années. Leur peau bleue, leurs cheveux pâles et leurs antennes leur confèrent une apparence distinctive. Si la Garde impériale andorienne a été démobilisée quand la Fédération est née, ils ont conservé de fortes traditions militaires, ainsi qu’un rituel de duel d’honneur appelé Ushaan au cours duquel on utilise des outils pour creuser la glace affûtés comme des rasoirs.",
+    "Species.andorian.exampleValue": " Fier fils/fille d’Andoria.",
+    "Species.andorian.traitDescription": "Ce Trait réduit la difficulté des Tâches quand il s’agitde résister au froid extrême, ou des Tâches influencées par des températures particulièrement basses. Leurs antennes améliorent leur équilibre et leur conscience de l’espace ; perdre l’une d’entre elles peut être très handicapant jusqu’à ce qu’elle repousse. Les Andoriens ont également un métabolisme très rapide, ce qui signifie entre autres qu’ils se fatiguent plus vite que les Humains. Cela les rend aussi plus sensibles aux infec-tions considérées comme appartenant au passé. Les Andoriens et les Vulcains ne s’entendent parfois pas très bien.",
+
+    "Species.bajoran.name": "Bajoran",
+    "Species.bajoran.aboutNames": "Les noms BAJORANS commencent par le nom de famille, suivi du prénom. Ces derniers sont normalement courts (rarement plus de deux syllabes), avec des sonorités douces ou mélodiques. Bajor est une société traditionnellement matriarcale et les enfants prennent le nom de famille de leurs mères.",
+    "Species.bajoran.description": "Ce peuple spirituel et intrépide de la planète Bajor a beaucoup perdu après des décennies d’occupation par l’Union Cardassienne. Nombre d’entre eux ont été éparpillés dans le quadrant Alpha durant cette période, et ceux qui sont restés sur la planète mère se sont souvent insurgés ou ont été contraints de rejoindre des camps de travaux forcés sous le commandement cardassien. Cette occupation a pris fin il y a quelques années, mais il faudra des générations avant que les cicatrices qu’elle a laissées ne disparaissent. Bajor ne fait pas partie de la Fédération mais beaucoup des membres de sa diaspora ont rejoint Starfleet. Ce peuple croit fermement dans l’existence des Prophètes, des êtres célestes qui ont dit-on veillé sur lui pendant des millénaires ; pour la doctrine religieuse moderne, le Vortex bajoran est le Temple céleste des Prophètes.",
+    "Species.bajoran.exampleValue": "Foi dans les Prophètes.",
+    "Species.bajoran.traitDescription": "Pour des raisons évidentes, les Bajorans se montrent en général hostiles envers les Cardassiens, et ils en veulent à tous ceux qui ont dédaigné ou ignoré leurs souffrances. S’ils ne sont pas tous aussi religieux, ils ont pour la plupart une compréhension culturelle de la place des Prophètes dans la culture bajorane.",
+
+    "Species.betazoid.name": "Betazoïdes",
+    "Species.betazoid.aboutNames": "Les noms BÉTAZOÏDES ont au moins deux syllabes et des consonances mélodiques. Le prénom est suivi du nom de famille, à la sonorité plus dure. Les Bétazoïdes ont une société traditionnellement matriarcale, et les enfants prennent le nom de famille de leurs mères.",
+    "Species.betazoid.description": "Les pacifiques Bétazoïdes viennent de Bétazed, monde idyllique et verdoyant et membre très estimé de la Fédération, et on les croise partout dans son espace, y compris au sein de Starfleet. Les Bétazoïdes ont une apparence presque identique à celles des Humains, à une différence majeure près : ce sont des télépathes naturels qui développent des capacités psychiques au cours de leur adolescence. La puissance de ces dons varie d’un individu à l’autre, mais a permis l’avènement d’une culture où l’honnêteté et la droiture sont fondamentales : il est difficile de garder un secret quand tout le monde autour de vous peut lire dans les pensées.",
+    "Species.betazoid.exampleValue": "La compassion par la compréhension",
+    "Species.betazoid.traitDescription": "Les Bétazoïdes sont tous télépathes à différents degrés et même lorsqu’ils n’utilisent pas activement leurs talents, ils sont très perceptifs des gens qui les entourent, mais aussi très sensibles aux perturbations télépathiques et aux attaques mentales. Étant donné l’ouverture de leur culture et leur aptitude à lire les pensées et les émotions des autres, ils sont très peu familiers avec le mensonge et la tromperie. Leur sensibilité aux esprits des autres êtres vivants les rend mal à l’aise avec les animaux ; ils ont en effet peur de se perdre dans l’esprit des créatures sauvages.",
+
+    "Species.denobulan.name": "Dénobulien",
+    "Species.denobulan.aboutNames": "Les DÉNOBULIENS ont en général un seul nom, étant donné qu’un individu peut faire partie de plusieurs familles entrecroisées. Certains Dénobuliens accolent le nom de l’un de leurs conjoints et en font une sorte de surnom, mais cette habitude indique souvent une association avec des espèces qui ne comprennent pas le fonctionnement de leur structure familiale. Leurs noms sont en général courts et ils ont des sonorités dures, en particulier les prénoms masculins.",
+    "Species.denobulan.description": "La planète Dénobula est alliée à l’humanité depuis les années 2130 et si elle ne figure pas parmi les fondateurs de la Fédération, elle l’a rejointe peu de temps après. Ce peuple, sociable, grégaire et curieux a des traits expressifs et distinctifs. Il vit traditionnellement dans des communautés étroitement liées, et au sein de larges et complexes groupes familiaux étendus. Un Dénobulien a plusieurs épouses, qui ont elles-mêmes plusieurs partenaires, et qui ont ensemble des douzaines d’enfants. Ils sont culturellement curieux, perspicaces et intéressés par un large éventail de philosophies, mais à cause de leur tempérament studieux, de leurs grandes familles et de leur nature grégaire, ils quittent rarement leur monde natal pour s’aventurer dans l’univers.",
+    "Species.denobulan.exampleValue": "La sécurité dans le nombre.",
+    "Species.denobulan.traitDescription": "Les Dénobuliens ont un solide système immunitaire, mais une certaine vulnérabilité aux différentes formes d’empoisonnement par les radiations. Grimpeurs naturels et talentueux, ils sont capables d’escalader les parois abruptes comme certains lézards terrestres. Les Dénobuliens n’ont pas besoin de dormir ; ils doivent pourtant hiberner plusieurs jours par an et seront désorientés s’ils sont obligés de rester éveillés au cours de cette période",
+
+    "Species.human.name": "Humain",
+    "Species.human.description": "Originaires de la planète Terre dans le système Sol, les Humains sont une espèce résistante, diverse et capable de s’adapter à tout. En moins d’un siècle, ils sont passés d’un conglomérat de nations divisées, en guerre et au bord de l’annihilation mutuelle à une société unie et paisible, et ils ont forgé des alliances avec d’anciens ennemis dans le siècle qui a suivi leur maîtrise du voyage interstellaire. La Terre est le membre fondateur et central de la Fédération des Planètes Unies, et l’on retrouve un grand nombre de ses institutions sur la planète. Les Humains ont une nature souvent dichotomique ; ils sont tout autant influencés par de puissantes émotions que par un raisonnement prudent et s’ils ont en grande partie réussi à s’affranchir de leurs comportements guerriers et de leurs divisions, leur instinct et leur potentiel d’agression participent autant à leur réussite que leur curiosité et leur esprit d’analyse.",
+    "Species.human.exampleValue": "L’envie d’explorer.",
+    "Species.human.traitDescription": "Les Humains sont résistants et s'adaptent à tout ; leur volonté et leur ambition leur permettent souvent de triompher, envers et contre tout, de grandes épreuves. Ils peuvent hélas se montrer tout aussi imprudents, bornés, irrationnels et imprévisibles.",
+
+    "Species.tellarite.name": "Tellarite",
+    "Species.tellarite.aboutNames": "Les noms TELLARITES varient considérablement mais ils sont en général tous composés de sonorités dures, voire gutturales. Ils sont formés par un prénom suivi d’un nom de famille, souvent composé, ce qui indique qu’il s’agit d’un patronyme ou d’un matronyme (le nom du père ou de la mère), d’un toponyme (dérivé d’un lieu) ou d’un nom similaire. On retrouve des préfixes similaires à ceux que l’on retrouve dans les noms de famille humains, comme par exemple « O’ », « Mc » et « von ». Exemples : Pola jav Brin (féminin), Tuk glasch Khutohk (masculin).",
+    "Species.tellarite.description": "Les robustes et hirsutes Tellarites sont originaires de Tellar Prime, une planète tempérée du quadrant Alpha. Leur culture est réputée pour son côté rugueux, son esprit de contradiction, sa fierté obstinée, son caractère soupe au lait et son manque de patience. Ce n’est pourtant qu’une impression. S’ils contrarient, c’est parce qu’ils font montre d’honnêteté intellectuelle et d’un rigoureux scepticisme. Pour un Tellarite, il n’existe ni idée, ni concept ni personne qui ne puisse être défié ou analysé et si une notion ne supporte pas un examen approfondi, alors elle ne vaut rien. Ces gens adorent le débat et ont tendance à accueillir les autres en les couvrant de critiques, de plaintes et même d’insultes ; ne pas répondre de la même manière est très mal vu, car c’est pour eux la preuve de sa faiblesse de caractère et la volonté de ne pas faire face à ses défaut",
+    "Species.tellarite.exampleValue": "Toutes les idées doivent résister à la critique",
+    "Species.tellarite.traitDescription": "Ils ont un odorat très fin et résistent très bien à beaucoup de drogues, de toxines et d’alcools courants (les Tellarites ne sont pas saouls, ils sont fougueux). Ils ont également une excellente vue et une perception de la distance, de la profondeur et des dimensions plus précise que celle des Humains.",
+
+    "Species.trill.name": "Trill",
+    "Species.trill.aboutNames": "Les noms TRILLS sont formés d’un prénom et d’un nom de famille, sauf en ce qui concerne les Trills joint ; leur nom de famille est remplacé par celui du symbiote. \nExemples : Koria Inazin (féminin, non-joint), Bejal Okir (masculin, joint).",
+    "Species.trill.description": "Les Trills sont originaires du monde éponyme et ont une apparence pratiquement identique aux Humains, en dehors des lignes de petites taches courant de chaque côté de leur corps, de la tête aux pieds. Cette ressemblance superficielle cache pourtant une énorme différence : les Trills sont capables de vivre en symbiose avec un organisme appelé symbiote, créant ainsi une créature vivante distincte des deux individus. Les symbiotes peuvent vivre des siècles et passent d’hôte en hôte, emmenant avec eux les souvenirs et les connaissances des précédents quand ils se lient avec une nouvelle génération. Cette particularité n’est pas très connue en dehors des Trills eux-mêmes, sans être pour autant un secret ; on n’en discute tout simplement pas souvent, et le nombre de Trills joints est relativement faible. Ce peuple fait partie de la Fédération depuis déjà plus d’un siècle et plusieurs Trills célèbres ont participé activement à son organisation. En tant que culture, ils ont tendance à se consacrer avant tout à des reherches intellectuelles, car les symbiotes dans leurs hôtes apprécient les connaissances et la sagesse.",
+    "Species.trill.exampleValue": "Quatre vies d’aventure.",
+    "Species.trill.traitDescription": "Ils sont étrangement très résistants aux parasites, et c’est une bizarrerie de leur potentiel à se « joindre ». Totalement immunisés aux infections parasitaires, ils font pourtant de fortes réactions allergiques aux morsures et aux piqûres d’insectes, et aux autres formes de venins, qui peuvent déséquilibrer leur chimie neurologique, en particulier quand ils sont « joints ». Des complications médicales peuvent résulter de la méconnaissance des spécificités de leur physiologie, et plus précisément celles de la symbiose.",
+
+    "Species.vulcan.name": "Vulcain",
+    "Species.vulcan.aboutNames": "Les VULCAINS n’ont qu’un prénom et sont assez traditionnels dabs leur choix. Ils ont cependant des noms de famille, mais c’est un sujet qu’ils n’abordent pas avec les autres espèces. Le nom des Vulcains commence par un S et celui des Vulcaines par un T mais dans les deux cas, c’est loin d’être une généralité.",
+    "Species.vulcan.description": "Les Vulcains sont stoïques, rationnels et considérés à tort comme largement dénués d’émotions. En réalité, ils les ressentent profondément et intensément, et ce à leur propre détriment. Leur stoïcisme est issu d’une culture de logique et de discipline personnelle, dans laquelle les émotions sont analysées et disséquées afin de les débarrasser de leur puissance, et ainsi de les empêcher de submerger ou de contrôler l’individu. Certes, les Vulcains embrassent la science et la raison, mais leur vie n’est pas purement affaire de logique. Ils ont aussi un côté profondément philosophique, et l’art et la musique leur sont tout autant essentiels que la logique. Ils sont également extrêmement secrets, et n’abordent pas avec les étrangers de nombreux aspects de leur culture, comme les rites du pon farr.",
+    "Species.vulcan.exampleValue": "Les besoins du nombre surpassent ceux de quelques-uns, ou ceux d’un seul.",
+    "Species.vulcan.traitDescription": "Originaires d’un monde rude, aride et à la gravité élevée, les Vulcains sont naturellement résistants à la chaleur extrême et à la déshydratation. Ils sont aussi extrêmement forts, et dotés d’une ouïe et d’un odorat très fins. Ce sont des télépathes qui doivent pourtant s’entraîner afin d’utiliser ces dons, et ils sont formés depuis l’enfance à la discipline mentale et au contrôle émotionnel. Cependant, ce dernier nécessite pour être entretenu des périodes régulières de méditation. Leur nature mesurée et leur désir d’intimité peuvent les éloigner des autres et rendre les échanges embarrassants",
+
     "StarSystem.common.coordinates": "Coordonnées",
     "StarSystem.common.innerZone": "Zone Intérieure",
     "StarSystem.common.ecosphere": "Ecosphère",
@@ -571,6 +718,286 @@
     "StarSystem.common.noWorlds": "Pas de mondes",
     "StarSystem.common.primaryStar": "Etoile Primaire",
     "StarSystem.common.companionStar": "Etoile Binaire",
+
+    "Talent.boldCommand": "Audacieux : Commandement",
+
+    "Talent.boldCommand.description": "Quand vous effectuez une Tâche avec Commandement et que vous achetez au moins un d20 en ajoutant de la Menace, vous pouvez relancer un d20.",
+
+    "Talent.boldConn": "Audacieux : Pilotage",
+
+    "Talent.boldConn.description": "Quand vous effectuez une Tâche avec Pilotage et que vous achetez au moins un d20 en ajoutant de la Menace, vous pouvez relancer un d20.",
+
+    "Talent.boldEngineering": "Audacieux : Ingénierie",
+
+    "Talent.boldEngineering.description": "Quand vous effectuez une Tâche avec Ingénierie et que vous achetez au moins un d20 en ajoutant de la Menace, vous pouvez relancer un d20.",
+
+    "Talent.boldMedicine": "Audacieux : Médecine",
+
+    "Talent.boldMedicine.description": "Quand vous effectuez une Tâche avec Médecine et que vous achetez au moins un d20 en ajoutant de la Menace, vous pouvez relancer un d20.",
+
+    "Talent.boldScience": "Audacieux : Sciences",
+
+    "Talent.boldScience.description": "Quand vous effectuez une Tâche avec Sciences et que vous achetez au moins un d20 en ajoutant de la Menace, vous pouvez relancer un d20.",
+
+    "Talent.boldSecurity": "Audacieux : Sécurité",
+
+    "Talent.boldSecurity.description": "Quand vous effectuez une Tâche avec Sécurité et que vous achetez au moins un d20 en ajoutant de la Menace, vous pouvez relancer un d20.",
+
+    "Talent.cautiousCommand": "Prudent : Commandement",
+
+    "Talent.cautiousCommand.description": "À chaque fois que vous effectuez une Tâche avec Commandement et que vous achetez au moins un d20 en dépensant des points d’Impulsion, vous pouvez relancer un d20. ",
+
+    "Talent.cautiousConn": "Prudent : Pilotage",
+
+    "Talent.cautiousConn.description": "À chaque fois que vous effectuez une Tâche avec Pilotage et que vous achetez au moins un d20 en dépensant des points d’Impulsion, vous pouvez relancer un d20. ",
+
+    "Talent.cautiousEngineering": "Prudent : Ingénierie",
+
+    "Talent.cautiousEngineering.description": "À chaque fois que vous effectuez une Tâche avec Ingénierie et que vous achetez au moins un d20 en dépensant des points d’Impulsion, vous pouvez relancer un d20. ",
+
+    "Talent.cautiousMedicine": "Prudent : Médecine",
+
+    "Talent.cautiousMedicine.description": "À chaque fois que vous effectuez une Tâche avec Médecine et que vous achetez au moins un d20 en dépensant des points d’Impulsion, vous pouvez relancer un d20. ",
+
+    "Talent.cautiousScience": "Prudent : Sciences",
+
+    "Talent.cautiousScience.description": "À chaque fois que vous effectuez une Tâche avec Sciences et que vous achetez au moins un d20 en dépensant des points d’Impulsion, vous pouvez relancer un d20. ",
+
+    "Talent.cautiousSecurity": "Prudent : Sécurité",
+
+    "Talent.cautiousSecurity.description": "À chaque fois que vous effectuez une Tâche avec Sécurité et que vous achetez au moins un d20 en dépensant des points d’Impulsion, vous pouvez relancer un d20. ",
+
+    "Talent.collaborationCommand": "Collaboration : Commandement",
+
+    "Talent.collaborationCommand.description": "À chaque fois qu’un allié effectue une Tâche avec Commandement, vous pouvez dépenser 1 point d’Impulsion (immédiat), ce qui lui permettra d’utiliser votre score dans la Discipline, ainsi que l’une de vos Spécialisations.",
+
+    "Talent.collaborationConn": "Collaboration : Pilotage",
+
+    "Talent.collaborationConn.description": "À chaque fois qu’un allié effectue une Tâche avec Pilotage, vous pouvez dépenser 1 point d’Impulsion (immédiat), ce qui lui permettra d’utiliser votre score dans la Discipline, ainsi que l’une de vos Spécialisations.",
+
+    "Talent.collaborationEngineering": "Collaboration: Ingénierie",
+
+    "Talent.collaborationEngineering.description": "À chaque fois qu’un allié effectue une Tâche avec ingénierie, vous pouvez dépenser 1 point d’Impulsion (immédiat), ce qui lui permettra d’utiliser votre score dans la Discipline, ainsi que l’une de vos Spécialisations.",
+
+    "Talent.collaborationMedicine": "Collaboration : Médecine",
+
+    "Talent.collaborationMedicine.description": "À chaque fois qu’un allié effectue une Tâche avec Médecine, vous pouvez dépenser 1 point d’Impulsion (immédiat), ce qui lui permettra d’utiliser votre score dans la Discipline, ainsi que l’une de vos Spécialisations.",
+
+    "Talent.collaborationScience": "Collaboration : Science",
+
+    "Talent.collaborationScience.description": "À chaque fois qu’un allié effectue une Tâche avec Science, vous pouvez dépenser 1 point d’Impulsion (immédiat), ce qui lui permettra d’utiliser votre score dans la Discipline, ainsi que l’une de vos Spécialisations.",
+
+    "Talent.collaborationSecurity": "Collaboration : Sécurité",
+
+    "Talent.collaborationSecurity.description": "À chaque fois qu’un allié effectue une Tâche avec Sécurité, vous pouvez dépenser 1 point d’Impulsion (immédiat), ce qui lui permettra d’utiliser votre score dans la Discipline, ainsi que l’une de vos Spécialisations.",
+
+    "Talent.constantlyWatching": "TOUJOURS SUR SES GARDES",
+
+    "Talent.constantlyWatching.description": "Quand vous tentez de détecter un danger ou des ennemis dissimulés, vous diminuez la difficulté de –1.",
+
+    "Talent.closeProtection": "PROTECTION RAPPROCHÉE",
+
+    "Talent.closeProtection.description": "Quand vous réussissez une attaque, vous pouvez dépenser 1 point d’Impulsion pour protéger un et un seul allié situé à portée Courte. La difficulté de la prochaine attaque qui le prendra pour cible avant le début de votre prochain tour augmente de +1.",
+
+    "Talent.computerExpertise": "EXPERTISE INFORMATIQUE",
+
+    "Talent.computerExpertise.description": "Quand vous programmez ou étudiez un Système informatique, vous ajoutez un d20 bonus à votre réserve de dés.",
+
+    "Talent.culturalFlexibility": "Souplesse culturelle",
+
+    "Talent.culturalFlexibility.description": "Votre peuple est amical, patient et curieux, et vous êtes l’incarnation de ces traits. Vous êtes à l’aise quand vous rencontrez de nouvelles cultures, et pouvez facilement vous adapter à des structures sociales étrangères. Quand vous effectuez une Tâche visant à vous familiariser avec une culture inconnue, ou à vous comporter d’une façon appropriée lors d’échanges avec les membres de ces cultures, sa difficulté diminue de –1.",
+
+    "Talent.dauntless": "DÉTERMINÉ",
+
+    "Talent.dauntless.description": "Quand vous voulez résister à l’intimidation ou à la menace, vous ajoutez un d20 bonus à votre réserve de dés.",
+
+    "Talent.defuseTheTension": "DÉSAMORCER LA CRISE",
+
+    "Talent.defuseTheTension.description": "Quand vous tentez de persuader quelqu’un de ne pas avoir recours à la violence, vous ajoutez un d20 bonus dans votre réserve de dés.",
+
+    "Talent.empath": "Empathe",
+
+    "Talent.empath.description": "Vous pouvez sentir les émotions de la plupart des êtres vivants près de vous, et communiquer par télépathie avec les autres empathes et télépathes, et avec ceux qui vous sont extrêmement familiers. Vous ne pouvez pas décider de ne pas sentir leurs émotions sauf s’ils sont résistants à la télépathie. Vous devrez faire des efforts, et donc effectuer une Tâche, pour sentir les émotions d’un individu précis dans une foule, ou pour bloquer les émotions de ceux qui se trouvent à proximité. La difficulté de cette Tâche augmente si la situation est tendue, s’il y a beaucoup de créatures présentes, si la cible résiste à la télépathie, et si d’autres facteurs pertinents se présentent.",
+
+    "Talent.firstResponse": "PREMIÈRE RÉACTION",
+
+    "Talent.firstResponse.description": "Vous gagnez un d20 bonus quand vous effectuez la Tâche Premiers secours pendant un combat. De plus, vous pouvez toujours obtenir une Réussite mitigée, mais pour chaque Complication que vous subissez la difficulté pour soigner les blessures du patient par la suite augmentera de +1.",
+
+    "Talent.doctorsOrders": "LES ORDRES DU DOCTEUR",
+
+    "Talent.doctorsOrders.description": "Quand vous effectuez une Tâche afin de coordonner les autres, ou pour obliger quelqu’un à faire ou ne pas faire une certaine action, vous pouvez utiliser la Discipline Médecine au lieu du Commandement.",
+
+    "Talent.triage": "TRIAGE",
+
+    "Talent.triage.description": "Quand vous effectuez une Tâche pour identifier des blessures ou des maladies précises, ou pour déterminer la gravité de l’état d’un patient, vous pouvez dépenser 1 point d’Impulsion (multiple) pour diagnostiquer un patient de plus.",
+
+    "Talent.fieldMedicine": "MÉDECINE DE TERRAIN",
+
+    "Talent.fieldMedicine.description": "Quand vous effectuez une Tâche de Médecine, vous ignorez les augmentations de difficulté dues à l’absence d’instruments ou d’équipement appropriés.",
+
+    "Talent.flyBy": "VOL DE RECONNAISSANCE",
+
+    "Talent.flyBy.description": "Quand vous optez pour l’Impulsion Tâche rapide , la difficulté de la seconde Tâche n’augmente pas si vous pilotez un vaisseau ou un véhicule avec l’une de ces deux Tâches.",
+
+    "Talent.followMyLead": "SUIVEZ-MOI",
+
+    "Talent.followMyLead.description": "Une fois par scène, quand vous réussissez une Tâche en combat ou dans une situation dangereuse, vous pouvez dépenser 1 point de Détermination. Choisissez un allié. Il effectuera sa prochaine Tâche comme si vous l’assistiez, et utilisera votre total de Présence + Commandement.",
+
+    "Talent.formerInitiate": "Ancien Initié",
+
+    "Talent.formerInitiate.description": "Vous avez rejoint le Programme des Initiés dans l’espoir d’être choisi par la Commission des Symbioses et devenir un Joint. Étant donné le nombre bien plus important d’initiés que de symbiotes, vous figurez parmi ceux qui ont échoué. Pourtant, vos qualités ont malgré cet échec suffit à Starfleet pour vous recruter. Quand vous effectuez une Tâche impliquant le Contrôle ou la Raison et que vous dépensez de la Détermination pour acquérir un d20 bonus à cet effet, vous pouvez relancer votre réserve de dés. Ce Talent ne peut être sélectionné si le personnage est joint – ces deux Talents s’excluent mutuellement.",
+
+    "Talent.iKnowMyShip": "JE CONNAIS MON VAISSEAU",
+
+    "Talent.iKnowMyShip.description": "Quand vous tentez de déterminer la source d’un problème technique sur votre vaisseau, vous bénéficiez d’un d20 bonus",
+
+    "Talent.incisiveScrutiny": "Critique incisive",
+
+    "Talent.incisiveScrutiny.description": "Vous avez le chic pour trouver les points faibles dans les argumentaires, les théories et les machines et pour en tirer des informations. Vous apprenez en observant la manière dont ils résistent à la pression que vous mettez sur ces points faibles. Quand vous réussissez une Tâche impliquant le Contrôle ou l’Intuition, vous bénéficiez d’1 point d’Impulsion bonus, que vous ne pouvez utiliser que sur l’Impulsion Obtention d’informations.",
+
+    "Talent.intenseScrutiny": "EXAMEN APPROFONDI",
+
+    "Talent.intenseScrutiny.description": "Quand vous réussissez une Tâche impliquant le Contrôle ou la Raison dans le cadre d’une Tâche étendue, vous ignorez jusqu’à 2 Résistances pour chaque Effet obtenu.",
+
+    "Talent.interrogation": "INTERROGATOIRE",
+
+    "Talent.interrogation.description": "Au cours d’un conflit social, quand vous réussissez à obliger quelqu’un à vous révéler des informations, vous bénéficiez d’1 point d’Impulsion bonus, que vous ne pourrez dépenser que pour l’Obtention d’informations.",
+
+    "Talent.inTheNickOfTime": "JUSTE À TEMPS",
+
+    "Talent.inTheNickOfTime.description": "Quand vous réussissez une Tâche d’Ingénierie ou de Science dans le cadre d’une Tâche étendue, vous bénéficiez d’un Effort supplémentaire pour chaque Effet obtenu.",
+
+    "Talent.joined": "Joint",
+
+    "Talent.joined.description": "Vous avez un symbiote, et pouvez puiser dans les vies entières de souvenirs qu’il porte. Une fois par mission, vous avez la possibilité de déclarer qu’un hôte précédent possédait les compétences dans le domaine ou la matière qui vous intéresse ; vous bénéficiez d’une seule Spécialisation pour le reste de la scène, tandis que votre alter ego puise dans ses souvenirs. De plus, vous gagnez un Trait portant le nom du symbiote afin de refléter les avantages possibles de cette union, la capacité d’accomplir les rites et les rituels pour éveiller la mémoire des hôtes passés, et les vulnérabilités intrinsèques à ce lien. Ce Talent ne peut être sélectionné si le personnage est Ancien initié – ces deux Talents s’excluent mutuellement.",
+
+    "Talent.juryRig": "BRICOLAGE",
+
+    "Talent.juryRig.description": "Quand vous tentez de faire des réparations (Tâche d’Ingénierie), vous réduisez la difficulté de –2 (minimum 0). Si vous le faites cependant, ces réparations ne sont que temporaires et ne dureront que le temps d’une seule scène, plus une scène par point d’Impulsion dépensé (multiple). Vous ne pouvez effectuer ces réparations de fortune qu’une seule fois, et la difficulté pour remettre en fonction un appareil qui a été bricolé augmente de +1.",
+
+    "Talent.kolinahr": "Kolinahr",
+
+    "Talent.kolinahr.description": "Vous avez entrepris le voyage rituel qui vous purifiera de toute émotion. La difficulté de toutes les Tâches visant à résister à la contrainte, l’intrusion mentale, la douleur et les attaques mentales diminue de –2.",
+
+    "Talent.meanRightHook": "CROCHET DU DROIT VICIEUX",
+
+    "Talent.meanRightHook.alias.klingonCore": "Frappe du guerrier",
+
+    "Talent.meanRightHook.description": "Vos attaques à mains nues bénéficient de l’Effet de dégâts Dévastateur 1.",
+
+    "Talent.mindMeld": "Fusion Mentale",
+
+    "Talent.mindMeld.description": "Vous avez été formé aux techniques télépathiques qui permettent la fusion des esprits par le contact physique. La fusion mentale sera toujours une Tâche d’une difficulté au moins égale à 1, à laquelle un participant volontaire pourra s’opposer. En cas de réussite, votre esprit et celui du récipiendaire sont liés et partagent leurs pensées et leurs souvenirs. Vous pouvez consacrer des points d’Impulsion pour l’Obtention d’informations ou avoir des échanges télépathiques plus profonds. Le lien fonctionne dans les deux sens, et c’est un processus épuisant et potentiellement dangereux pour vous. Des complications comme la douleur, la désorientation, des émotions persistantes ou des difficultés comportementales peuvent survenir.",
+
+    "Talent.nervePinch": "Prise Vulcaine",
+
+    "Talent.nervePinch.description": "Vous avez appris de nombreuses techniques de stimulation et de contrôle de l’influx nerveux, appelées neuro-pression. Certaines d’entre elles servent à neutraliser rapidement et sans danger des agresseurs. Le pincement neural équivaut à une arme de corps-à-corps disposant des caractéristiques suivantes : Corps-à-corps, 1 Intense, 1M, Non létal. Quand vous tentez cette technique, vous pouvez utiliser la Science ou la Médecine à la place de la Sécurité, et augmenter les dégâts infligés de votre score dans l’une de ces deux Disciplines",
+
+    "Talent.orbExperience": "Rencontre avec un orbe",
+
+    "Talent.orbExperience.description": "Vous avez reçu une vision des Prophètes par le biais d’un des Orbes. Cette expérience rare, d’abord troublante, a changé votre vie et votre vision des choses. Vous avez un Idéal supplémentaire, hérité de ce vécu. La première fois qu’il est mis à l’épreuve, lancez 1 ; si vous obtenez un Effet, l’une des prédictions de l’Orbe s’est réalisée et l’Idéal n’est pas coché comme il devrait l’être dans des circonstances normales.",
+
+    "Talent.packTactics": "TACTIQUE DE MEUTE",
+
+    "Talent.packTactics.description": "Quand vous aidez un autre personnage en combat, il bénéficie d‘1 point bonus d’Impulsion s’il réussit son action.",
+
+    "Talent.parentFigure": "Figure Parentale",
+
+    "Talent.parentFigure.description": "Vous avez une grande famille et de nombreux enfants, nièces et neveux. Vous avez appris à coordonner les groupes les plus turbulents et les plus indisciplinés quand cela s’avère nécessaire. Quand vous effectuez ou participez à une Tâche dans laquelle se trouvent impliqués au moins deux autres personnages, vous pouvez ignorer la première Complication qu’elle génère (que ce soit du fait de celui qui tente cette action ou de l’un de ses assistants).",
+
+    "Talent.personalEffects": "EFFETS PERSONNELS",
+
+    "Talent.personalEffects.description": "Le personnage possède un objet ou un appareil important ou inhabituel qui ne fait pas partie de l’équipement ordinaire de Starfleet, mais qui est néanmoins utile en mission. Vous pouvez sélectionner un objet dont le coût d’Opportunité est de 2, ou deux objets dont le coût d’Opportunité est de 1. Leur coût d’Amélioration ne peut dépasser 1. ",
+
+    "Talent.proudAndHonorable": "Fier et Honorable",
+
+    "Talent.proudAndHonorable.description": "Votre intégrité personnelle est irréprochable et vous ne romprez pas volontairement une promesse que vous avez faite. Quand vous effectuez une Tâche pour éviter qu’on ne vous oblige à revenir sur votre parole, trahir vos alliés ou agir de manière déshonorante, vous réduisez la difficulté de –1",
+
+    "Talent.pushTheLimits": "REPOUSSER LES LIMITES",
+
+    "Talent.pushTheLimits.description": "Quand des conditions environnementales ou des dégâts sur les moteurs aggravent la difficulté d’une Tâche de Pilotage, vous diminuez cette aggravation de –1 (minimum 1).",
+
+    "Talent.quickToAction": "RÉACTION RAPIDE",
+
+    "Talent.quickToAction.description": "Lors du premier round d’un combat, Conserver l’initiative ne coûte rien pour vos alliés et vous.",
+
+    "Talent.resolute": "Résolu",
+
+    "Talent.resolute.description": "Vous êtes indomptable et refusez de baisser les bras dans l’adversité. Votre score maximum de Stress augmente de +3",
+
+    "Talent.spiritOfDiscovery": "Grand explorateur",
+
+    "Talent.spiritOfDiscovery.description": "Vous avez l’envie, la volonté et le courage de voyager vers l’inconnu. Vous pouvez dépenser 1 point de Détermination pour ajouter 3 points à la réserve d’Impulsion du groupe. Les conditions normales pour dépenser de la Détermination s’appliquent toujours.",
+
+    "Talent.starshipExpert": "EXPERT EN VAISSEAU SPATIAL",
+
+    "Talent.starshipExpert.description": "Quand vous réussissez à identifier un type de vaisseau ou à comprendre un type de vaisseau inconnu, vous bénéficiez d’1 point d’Impulsion bonus, que vous ne pourrez utiliser que pour l’Obtention d’informations, ou bien pour payer une partie du coût d’une création d’Avantage (l’Avantage doit représenter une faiblesse connue ou remarquée sur le vaisseau que vous êtes en train d’étudier).",
+
+    "Talent.strongPagh": "Pagh Puissant",
+
+    "Talent.strongPagh.description": "Vous croyez profondément dans les Prophètes et comptez énormément sur cette foi pour traverser les épreuves de la vie. Quand vous effectuez une Tâche pour résister à la contrainte ou à la menace, sa difficulté diminue de –1",
+
+    "Talent.studious": "STUDIEUX",
+
+    "Talent.studious.description": "Quand vous dépensez au moins 1 point d’Impulsion sur l’Obtention d’informations, vous posez une question supplémentaire (en tout, et non une par point d’Impulsion dépensé).",
+
+    "Talent.sturdy": "Solide",
+
+    "Talent.sturdy.description": "Votre résistance physique et mentale est telle qu’on a du mal à vous maîtriser. Vous réduisez de –1 le coût pour résister à une chute provoquée par l’effet des dégâts de Renversement (minimum 0), et vous bénéficiez d’un bonus de +1 en Résistance pour encaisser toutes les attaques non létales.",
+
+    "Talent.supervisor": "SUPERVISEUR",
+
+    "Talent.supervisor.alias.klingonCore": "Chef de Guerre",
+
+    "Talent.supervisor.description": "Le total du Personnel d’appui du vaisseau augmente de +1. Il est possible de cumuler ce bonus si plusieurs Personnages principaux possèdent ce Talent, mais ils ne peuvent le choisir qu’une seule fois.",
+
+    "Talent.telepath": "Télépathe",
+
+    "Talent.telepath.description": "Vous êtes capable de sentir les pensées de surface et les émotions de la plupart des êtres vivants près de vous, et de communiquer par télépathie avec les autres empathes et télépathes, et avec ceux qui vous sont extrêmement familiers. Par pensées de surface, on entend toutes celles qui traversent l’esprit d’une créature à un instant précis. Vous ne pouvez pas choisir de ne pas sentir leurs émotions sauf si elles sont résistantes à la télépathie. Vous devrez faire des efforts, et donc effectuer une Tâche, pour sentir les émotions ou les pensées de surface d’un individu précis dans une foule, pour fouiller un esprit afin d’y trouver des pensées ou des souvenirs précis, ou pour bloquer les esprits de ceux qui se trouvent à proximité. Les cibles qui ne le veulent pas peuvent résister en effectuant une Tâche en opposition",
+
+    "Talent.technicalExpertise": "EXPERTISE TECHNIQUE",
+
+    "Talent.technicalExpertise.description": "Quand vous effectuez une Tâche à l’aide des ordinateurs ou des détecteurs du vaisseau, vous pouvez relancer 1d20 (qui peut être celui du navire).",
+
+    "Talent.testingATheory": "TESTER UNE THÉORIE",
+
+    "Talent.testingATheory.description": "Quand vous effectuez une Tâche impliquant l’Ingénierie ou la Science, vous lancez un d20 supplémentaire, et ce tant que vous avez réussi une Tâche précédente dans le même domaine scientifique ou technologique au cours de la même aventure.",
+
+    "Talent.theUshaan": "L’Ushaan",
+
+    "Talent.theUshaan.description": "Vous avez une certaine expérience de la tradition du duel d’honneur appelé Ushaan, et avez répandu beaucoup de sang sur la glace. Quand vous portez ou que vous êtes la cible d’une attaque au corps-à-corps, et que vous achetez un ou plusieurs d20 en ajoutant de la Menace, vous pouvez relancer le groupement de dés de la Tâche. Vous possédez de plus un Ushaan-tor, un outil de mineur servant à travailler la glace affûté comme un rasoir, que vous utilisez au cours de ces duels. Il s’agit d’une arme de corps-à-corps et ses caractéristiques sont les suivantes : Corps-à-corps, 2 Dévastateur 1, 1M",
+
+    "Talent.tough": "COSTAUD",
+
+    "Talent.tough.description": "Quand vous cherchez à éviter une Blessure, il vous en coûte 1 point de moins (minimum 1).",
+
+    "Talent.untappedPotential": "POTENTIEL INEXPLOITÉ",
+
+    "Talent.untappedPotential.description": "Le personnage est inexpérimenté mais talentueux, et il a un avenir brillant dans Starfleet. S’il choisit ce Talent, il n’a pas d’Attribut au-delà de 11, ni de Discipline au-dessus de 4 (et il devra peut-être modifier les scores obtenus à la fin de la phase de création). S’il réussit une Tâche pour laquelle il a acheté un ou plusieurs dé(s) grâce à l’Impulsion ou à la Menace, il peut lancer 1 . Il obtient alors un bonus d’Impulsion égal au résultat du , et ajoute 1 point de Menace s’il obtient un Effet. Le grade du personnage ne peut dépasser celui de sous-lieutenant.",
+
+    "Talent.veteran": "VÉTÉRAN",
+
+    "Talent.veteran.description": "Le personnage a un esprit brillant, mesuré et réfléchi. Quand il dépense 1 point de Détermination, il peut lancer 1 . S’il obtient un Effet, il récupère immédiatement le point de Détermination qu’il vient de dépenser. Le grade du personnage est au moins égal à celui de lieutenant commandeur",
+
+    "UniformEra.bynar": "Bynar",
+    "UniformEra.cardassian": "Armée Cardassienne",
+    "UniformEra.civilian": "Civil",
+    "UniformEra.dominionWar": "Guerre du Dominion",
+    "UniformEra.ferengi": "Ferengi",
+    "UniformEra.enterprise": "Enterprise",
+    "UniformEra.jemHadar": "Jem'Hadar",
+    "UniformEra.klingon": "Klingon (armure",
+    "UniformEra.lowerDecks": "Lower Decks",
+    "UniformEra.monsterMaroon": "La colère de Khan",
+    "UniformEra.nextGeneration": "The Next Generation",
+    "UniformEra.originalSeries": "Série originale",
+    "UniformEra.originalSeriesKlingon": "Klingon (série originale)",
+    "UniformEra.romulan": "Romulien",
+    "UniformEra.suliban": "Suliban",
+    "UniformEra.strangeNewWorlds": "Strange New Worlds",
+    "UniformEra.voyagerDS9": "Voyager/DS9",
+
+    "Upbringing.starfleet.militaryOrExploration.name": "Starfleet",
 
     "Value.environment.text": "Cette valeur doit refléter l'environnement et la culture dans lesquels le personnage a été élevé. C'est une bonne occasion d'examiner comment le personnage perçoit sa propre culture et comment il se rattache- ou peut-être ne se rattache pas - aux philosophies et aux traditions de son peuple.",
 
@@ -588,8 +1015,15 @@
 
     "Value.final.text": "Le personnage reçoit une valeur finale. Cela peut refléter les événements de carrière lancés à l'étape six, ou cela peut représenter un autre élément du personnage. Cette valeur peut être une relation, reliant le personnage à un autre personnage de l'équipage, ou à une autre organisation ou culture d'une manière ou d'une autre.",
 
+    "Weapon.common.melee": "Mélée",
     "Weapon.common.name": "Nom/Type",
     "Weapon.common.qualities": "Qualités",
+    "Weapon.common.ranged": "A distance",
+    "Weapon.common.size": "Taile {{hands}} Mains",
+
+    "Weapon.personal.dagger.name": "Dague",
+
+    "Weapon.personal.energyWhip.name": "Fouet énérgétique",
 
     "Weapon.personal.phaser1.name": "Phaser type-1",
 
@@ -605,15 +1039,35 @@
 
     "Weapon.personal.disruptor.name": "Pistolet Disrupteur",
 
+    "Weapon.personal.particleRifle.name": "Fusil à particules",
+
+    "Weapon.personal.sonaPlasmaDisruptorShotgun.name": "Disrupteur à plasma Son'a",
+
+    "Weapon.quality.accurate.name": "Précis",
+
     "Weapon.quality.area.name": "Aire",
 
     "Weapon.quality.charge.name": "Charges",
 
+    "Weapon.quality.calibration.name": "Calibration",
+
+    "Weapon.quality.dampening.name": "Ammortissant",
+
     "Weapon.quality.deadly.name": "Mortel",
+
+    "Weapon.quality.debilitating.name": "Débilitant",
+
+    "Weapon.quality.depleting.name": "Epuisant",
+
+    "Weapon.quality.devastating.name": "Devastateur",
+
+    "Weapon.quality.highYield.name": "Haut rendement",
 
     "Weapon.quality.hidden.name": "Caché {{rank}}",
 
     "Weapon.quality.intense.name": "Intense",
+
+    "Weapon.quality.jamming.name": "Interférences",
 
     "Weapon.quality.knockdown.name": "Renversement",
 
@@ -621,8 +1075,17 @@
 
     "Weapon.quality.piercing.name": "Perçant {{rank}}",
 
+    "Weapon.quality.persistentX.name": "Persistant X",
+
+    "Weapon.quality.slowing.name": "Ralentissant",
+
+    "Weapon.quality.versatile.name": "Versatile {{rank}}",
+
     "Weapon.quality.vicious.name": "Vicieux {{rank}}",
 
+    "World.attribute.atmosphereType": "Type d'athmosphère",
+    "World.attribute.atmosphericDensity": "Densité athmosphérique",
+    "World.attribute.atmosphericContaminants": "Contaminants athmospheriques",
     "World.attribute.designation": "Designation",
     "World.attribute.classification": "Classification",
     "World.attribute.notes": "Notes",
@@ -644,6 +1107,30 @@
     "World.attribute.ring": "Anneau",
     "World.attribute.beltWidth": "Largeur de la Ceinture",
     "World.attribute.predominantSize": "Taille Predominante",
+
+    "World.atmosphereType.vacuum": "Vide",
+    "World.atmosphereType.standardOxygenNitrogenMix": "Mélange standard Oxygène / Azote",
+    "World.atmosphereType.oxygenArgonMix": "Mélange Oxygène / Argon",
+    "World.atmosphereType.hydrogenCompoundsAndReactiveGases": "Composés d'Hydrogène et gaz réactifs",
+    "World.atmosphereType.carbonDioxide": "Dioxyde de Carbone",
+    "World.atmosphereType.toxicChemicals": "Produits toxiques",
+
+    "World.atmosphericContaminant.bacteriaOrViruses": "Bactéries ou virus dangereux",
+    "World.atmosphericContaminant.unusualGases": "Gaz inhabituels",
+    "World.atmosphericContaminant.highOxygen": "Fort taux d'Oxygène",
+    "World.atmosphericContaminant.pollutants": "Polluants",
+    "World.atmosphericContaminant.sulfurCompounds": "Composés Sulfurés",
+    "World.atmosphericContaminant.radioactives": "Radioactivité",
+    "World.atmosphericContaminant.lowOxygen": "Faible taux d'Oxygène",
+    "World.atmosphericContaminant.acidRain": "Pluies acides",
+    "World.atmosphericContaminant.corrosiveGases": "Gaz corrosifs",
+    "World.atmosphericContaminant.irritantPollens": "Pollens irritants",
+
+    "World.atmosphericDensity.veryThin": "Très peu dense",
+    "World.atmosphericDensity.thin": "Peu dense",
+    "World.atmosphericDensity.standard": "Standard",
+    "World.atmosphericDensity.dense": "Dense",
+    "World.atmosphericDensity.veryDense": "Très dense",
 
     "World.class.description": "Classe {{class}}",
     "World.class.fullDescription": "Class {{class}} ({{definition}})"

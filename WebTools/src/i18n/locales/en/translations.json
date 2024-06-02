@@ -1438,7 +1438,7 @@
 
     "Spaceframe.centaur": "Centaur Class",
 
-    "": "In the mid-2280s, Starfleet felt that the next generation of light cruisers should begin development based on the new technologies being developed in tandem for the Excelsior class. The failures of the prototype transwarp systems in the Excelsior class meant delays for the light cruiser, then named the Centaur class. Extensive redesigns of most systems were undertaken by the mid-2290s, with additional vessels of the class beyond the prototype coming into service. Externally this class resembles the Excelsior class in many regards, including sharing the same saucer for its primary hull and elongated transwarp-style nacelles. Not as modular and mission-customizable as the Miranda class, the Centaur class would only be produced in small numbers, and was seen as a specialist vessel during an age when multipurpose vessels were in ascendancy in Starfleet Command.",
+    "Spaceframe.centaur.description": "In the mid-2280s, Starfleet felt that the next generation of light cruisers should begin development based on the new technologies being developed in tandem for the Excelsior class. The failures of the prototype transwarp systems in the Excelsior class meant delays for the light cruiser, then named the Centaur class. Extensive redesigns of most systems were undertaken by the mid-2290s, with additional vessels of the class beyond the prototype coming into service. Externally this class resembles the Excelsior class in many regards, including sharing the same saucer for its primary hull and elongated transwarp-style nacelles. Not as modular and mission-customizable as the Miranda class, the Centaur class would only be produced in small numbers, and was seen as a specialist vessel during an age when multipurpose vessels were in ascendancy in Starfleet Command.",
 
     "Spaceframe.constellation": "Constellation Class",
 
@@ -1449,17 +1449,49 @@
     "Spaceframe.constitution.description": "The symbol of Starfleet in the mid-to-late 23rd century, the Constitution class would become legendary across the Orion Spur due to its five-year missions.\n\nConstruction of the vessels was accomplished primarily in the Sol system, but after the initial block of vessels was completed and the first five-year missions were at an end, spaceframes were manufactured in other core world systems capable of handling the large spaceframe. The Constitution class would become the testbed of new technologies in the early 2270s that were developed out of the same classes’ five-year missions and lessons learned from the brief war with the Klingon Empire. The spaceframe continued in service until the mid-24th century.",
 
     "Spaceframe.crossfield": "Crossfield Class",
+
+    "Spaceframe.crossfield.description": "Designed and produced in secret, the Crossfield class was produced solely to test the theoretical “displacement-activated spore hub drive” developed by Doctors Paul Stamets and Justin Straal. The launch of U.S.S. Crossfield in 2255 was a success for starship research and development for Starfleet, but initial tests of the spore drive were  unsuccessful. By early 2256, these flaws in the drive system were ironed out and the spaceframes were launched just prior to the outbreak of hostilities with the Klingon Empire.\n\nWith the limited number of spaceframes produced and the loss of both Glenn and Discovery to drive failures in 2256 and 2258 respectively, only U.S.S. Crossfield was left in service, and further spaceframes had their production canceled. Crossfield herself would continue in service with the Starfleet Corps of Engineers until a collision with a sizable piece of an asteroid rendered the vessel unsalvageable after being towed back to Spacedock in 2273. It remained there in use as a testbed for new technologies until it was finally broken up in 2290.",
+
     "Spaceframe.daedalus": "Daedalus Class",
+
+    "Spaceframe.daedalus.description": "The Daedalus class served Starfleet as its primary patrol, colony support, and exploration craft prior to the introduction of the N X class. The rapidly expanding influence of United Earth meant the construction of these spaceframes had to occur at a rapid pace, meaning that these vessels were built with the lowest amount of advanced technology as  possible, as well as systems that would require little from shipyards for maintenance. The success of this class during the Earth-Romulan War, and its amazing adaptability, meant that it would continue to serve actively in Starfleet into the mid-23rd century, and in civilian support roles into the late 24th century.",
+
     "Spaceframe.defiant": "Defiant Class",
+
+    "Spaceframe.defiant.description": "As Starfleet had little experience in designing a warship from the ground up, the development of the Defiant class began before the destruction of the fleet at Wolf 359 by the Borg in 2367, and wouldn’t see the construction of the first spaceframe until 2371 – and only then after delays and massive redesigns, as new technology was developed to fight the Borg.",
+
     "Spaceframe.engle": "Engle Class",
+
+    "Spaceframe.engle.description": "The Engle class had gone so far as to have an experimental spaceframe constructed in 2208, and was finally finished with the advent of newer warp coil designs in 2224. Fast classes of starships such as the Cardenas class were useful, but required large amounts of material to produce, as well as significant amounts of energy to maintain a stable warp field. The Engle class was smaller, and required a much smaller warp core to maintain high velocities and a stable field.\n\nThe spaceframe proved to be popular for new member worlds of the Federation to request Starfleet to build at their shipyards due to its speed and size. During the 2230s and 40s many of the first Starfleet vessels to be assigned to a newly admitted or colonized world were Engles.\n\nEngle-class vessels were relegated to Starfleet Medical as emergency response ships and kept in active service in that role until the late 2290s.",
+
     "Spaceframe.excelsior": "Excelsior Class",
+
+    "Spaceframe.excelsior.description": "What was originally intended as a testbed for the highly experimental “transwarp” propulsion system, the “Great Experiment” was seen as a disaster after the complete failure of Excelsior’s propulsion systems in 2285. After a total redesign was performed on nearly all ship’s systems, the transwarp propulsion was replaced with standard warp propulsion. The versatile Excelsior spaceframe became a standard sight across the Federation and beyond, and continues to be manufactured into the 2390s.",
+
+    "Spaceframe.gagarin": "Gagarin Class",
+
+    "Spaceframe.gagarin.description": "The latter decades of the 24th century were tumultuous. The difficult political climate gave rise to a faction of hawks in Starfleet who insisted that deterrence was an important tool. If new war did come, Starfleet would need starships capable of engaging new adversaries. The Gagarin-class battlecruiser is one of several designs ordered by a Starfleet shedding its isolationism and preparing to face a new century of uncertainty.",
+
     "Spaceframe.galaxy": "Galaxy Class",
+
+    "Spaceframe.galaxy.description": "The Galaxy class was designed to surpass any exploration and science vessel ever developed by Starfleet, including the most advanced technologies of the 2350s. This spaceframe also represented a totally new philosophy for crew mental well-being on long duration, deep space assignments, as it saw Starfleet providing facilities and living quarters for civilian dependents and volunteers. The concept centered on not separating families from loved ones for years at a time, and the morale on Galaxy-class vessels was correspondingly high.",
+
     "Spaceframe.ganashia": "Ganashia Class",
     "Spaceframe.hermes": "Hermes Class",
     "Spaceframe.hiawatha": "Hiawatha Class",
     "Spaceframe.hoover": "Hoover Class",
     "Spaceframe.intrepid": "Intrepid Class",
+
+    "Spaceframe.intrepid.description": "After a decade in service, Starfleet had seen the successes and failures of the Galaxy-class vessels then in service. As that large vessel was being used more as a diplomatic and command vessel than for exploration, Starfleet felt there was a need for a smaller and faster deep-space explorer. Containing the best technology of the early 2370s and evolved from the Nova class’s design and materials, the new Intrepid class was a symbol of the Federation Science Council’s intent to have Starfleet return to its stated goals of exploration and science. The Dominion War would reduce the number of hulls constructed, but the end of the war – and the return of U.S.S. Voyager to Federation space in 2378 – meant renewed passion for this spaceframe.",
+
+    "Spaceframe.inquiry": "Inquiry Class",
+
+    "Spaceframe.inquiry.description": "The technological renaissance for the Federation in the late 24th century produced giant strides forward in almost every aspect of life for its citizens, and Starfleet saw each of these as an opportunity to push its design philosophy forward. The success of the Vesta class had Starfleet attempting to build a more automated and adaptive spaceframe capable of using quantum slipstream, and to be as modular as the Nebula and Luna classes. It was determined that installing a QSD would require far too many crew members to operate, and instead focus was put upon improving the vessel’s sustained cruising velocity. The Inquiry-class exploration cruiser was the result, and began replacing Miranda-class vessels almost immediately. The first large-scale deployment of these vessels was the 1st Devron Heavy Response Squadron under the command of Captain Riker in 2399.",
+
     "Spaceframe.luna": "Luna Class",
+
+    "Spaceframe.luna.description": "With the design success of the Intrepid class, Starfleet immediately began the parallel development of a heavy explorer capable of all the same exploratory and scientific assignments of an Intrepid class, but with larger research facilities, more computer processing power, and longer mission duration. The Luna class exited its design phase eight months after her sister class, and while there were engineering delays, U.S.S. Luna NX-80101 slipped her drydock over Mars in late 2372. Further delays occurred because of the outbreak of war between the Klingon Empire, and later, the Dominion. While the Luna class was approved for production, further vessels weren’t launched until 2375.",
+
     "Spaceframe.magee": "Magee Class",
     "Spaceframe.malachowski": "Malachowski Class",
     "Spaceframe.miranda": "Miranda Class",
@@ -1472,20 +1504,42 @@
     "Spaceframe.obena": "Obena Class",
     "Spaceframe.oberth": "Oberth Class",
     "Spaceframe.olympic": "Olympic Class",
+    "Spaceframe.odyssey": "Odyssey Class",
+
+    "Spaceframe.odyssey.description": "Following encounters with the massive starships fielded by the Borg, Dominion, and the Remans, Starfleet planners were concerned that the Federation’s heavy cruisers were falling behind the curve on defensive and offensive capability. In response, the Admiralty decided to invest in an ambitious design program. The goal was to create Starfleet’s own iteration of a massive “star cruiser” that could compete with these super-capital-class starships on a peer footing. The project would yield the U.S.S. Odyssey, the U.S.S. Verity, and eventually the next Starship Enterprise, NCC-1701-F. The Odyssey class would carry the Federation’s flag into the 25th century as a beacon of hope during a  tumultuous era.",
+
     "Spaceframe.osler": "Osler Class",
     "Spaceframe.parliament": "Parliament Class",
+    "Spaceframe.pathfinder": "Pathfinder Class",
+
+    "Spaceframe.pathfinder.description": "Starfleet’s order of battle has long emphasized the humble science vessel, to the point where many admiralty planners regularly complain that fleet resources are being misallocated given the recent belligerent political climate of the Galaxy. While the turn of the 25th century has certainly seen a shift in new construction away from pure research ships into cruisers and escorts, the Admiralty continues to pursue ways to build versatile starships that are useful as defense platforms but also excel at research and exploration. A sixth-generation example of Starfleet’s long-range science vessel, the Pathfinder’s namesake is the mission that helped bring the U.S.S. Voyager home 40 years ago.",
+
+    "Spaceframe.reliant": "Reliant Class",
+
+    "Spaceframe.reliant.description": "The Admiralty needed a replacement for the Miranda class that could serve as the backbone of Starfleet’s logistical and operational support corps. Unlike the Miranda, which began life as a long-range cruiser and transitioned to logistical and support duties as it became outclassed by newer constructions, the Reliant would be designed as a support ship from its inception. The Reliant was one of the first starship classes to fully embrace the “sixth generation” of Starfleet starship technology, featuring more automation, more versatile particle emitters and sensors, and a fast but limited quantum slipstream burst projector.",
+
+    "Spaceframe.ross": "Ross Class",
+
+    "Spaceframe.ross.description": "The Ross-class exploration cruiser is an evolution of the large, long-range explorer-type vessel, building on the successes of its Galaxy-class predecessor. The Ross is a product of a variety of important advancements in Starfleet’s tactical and computational systems that came about in the 2370s. The Admiralty envisioned the Ross as a complement to the Sovereign-class assault cruiser. In contrast to the Sovereign’s focus on combat performance and fleet command, the Ross used its extra tonnage to host a large suite of diplomatic quarters, crew-support facilities, science labs, and even an auxiliary warp core.",
+
     "Spaceframe.saber": "Saber Class",
     "Spaceframe.shepard": "Shepard Class",
     "Spaceframe.sovereign": "Sovereign Class",
     "Spaceframe.steamrunner": "Steamrunner Class",
+    "Spaceframe.sutherland": "Sutherland Class",
+
+    "Spaceframe.sutherland.description": "The Sutherland-class research vessel is a long-range starship that represents a sixth-generation iteration on the medium exploration and survey cruiser, in the tradition of the Miranda, Constellation, and Nebula classes before it. It is a generational evolution from its Nebula-class predecessor and brings a selection of turn-of-the-century technologies to the long-range surveyor mission profile. The Sutherland design incorporates the “sixth generation” suite of starship technologies pioneered by the Reliant class into a much larger survey cruiser, with an emphasis on modernizing its defensive systems in addition to adding the latest research facilities.",
+
     "Spaceframe.sydney": "Sydney Class",
     "Spaceframe.tKalat": "T'Kalat Class",
     "Spaceframe.walker": "Walker Class",
 
     "Specialization.admiral": "Admiral",
     "Specialization.admin": "Yeoman",
+    "Specialization.child": "Child",
     "Specialization.conn": "Conn",
     "Specialization.counselor": "Counselor",
+    "Specialization.civilianDoctor": "Medical Doctor",
     "Specialization.engineer": "Engineer",
     "Specialization.ferengiDaiMon": "Ferengi DaiMon",
     "Specialization.ferengiMerchant": "Ferengi Merchant",

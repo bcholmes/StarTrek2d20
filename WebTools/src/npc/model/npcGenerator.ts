@@ -20,6 +20,7 @@ import { Specialization } from "../../common/specializationEnum";
 import { Track } from "../../helpers/trackEnum";
 import Governments, { Polity } from "../../helpers/governments";
 import { Era } from "../../helpers/eras";
+import AgeHelper from "../../helpers/age";
 
 const recreationSkills: { [type: number ]: string[] } = {
 
@@ -537,6 +538,10 @@ export class NpcGenerator {
                 if (specialization.id === Specialization.FederationAmbassador) {
                     character.type = CharacterType.AmbassadorDiplomat;
                     character.typeDetails = new GovernmentDetails(Governments.findOption(Polity.Federation), "");
+                } else if (specialization.id === Specialization.Child) {
+                    character.type = CharacterType.Child;
+                    let ages = AgeHelper.getAllChildAges();
+                    character.age = ages[Math.floor(Math.random() * ages.length)];
                 } else {
                     character.type = CharacterType.Civilian;
                 }

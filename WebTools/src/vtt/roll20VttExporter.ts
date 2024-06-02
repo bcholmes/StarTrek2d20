@@ -9,7 +9,7 @@ import { Skill, SkillsHelper } from "../helpers/skills";
 import { SpeciesHelper } from "../helpers/species";
 import { Species } from "../helpers/speciesEnum";
 import { TalentsHelper } from "../helpers/talents";
-import { Weapon, WeaponRange, WeaponType } from "../helpers/weapons";
+import { Weapon, WeaponRange, WeaponType, WeaponTypeModel } from "../helpers/weapons";
 import { System, allSystems } from "../helpers/systems";
 import { makeKey } from "../common/translationKey";
 import { Department, allDepartments } from "../helpers/departments";
@@ -123,15 +123,16 @@ export class Roll20VttExporter {
         result += "<strong>" + i18next.t("Construct.other.crewSupport") + ":</strong> " + starship.crewSupport + "</p>";
 
 
-        const delta = "<img src=\"https://s3.amazonaws.com/files.d20.io/images/239862759/6uRVM0G3z6g119ymlL1VLg/med.png?1628984150\">";
+        const delta = "<img src=\"https://s3.amazonaws.com/files.d20.io/images/239862759/6uRVM0G3z6g119ymlL1VLg/med.png?1628984150\" height=\"18\" width=\"13\">";
         const weapons = starship.determineWeapons();
         if (weapons?.length) {
             result += "<p><strong>" + i18next.t("Construct.other.attacks") + "</strong></p>\n<ul>\n";
 
             weapons.forEach(w => {
                 result += "<li><p>" + w.description + " ("
-                    + (w.range != null ? WeaponRange[w.range] + " " : "")
-                    + starship.getDiceForWeapon(w) + delta + " "
+                    + (w.isTractorOrGrappler ? "" : (WeaponTypeModel.TYPES[w.type].description + ", "))
+                    + (w.range != null ? "Range " + WeaponRange[w.range] + ", " : "")
+                    + (w.isTractorOrGrappler ? "Strength " + starship.getDiceForWeapon(w) : (starship.getDiceForWeapon(w) + delta)) + " "
                     + w.effectsAndQualities + ")"
                     + "</p></li>";
             });

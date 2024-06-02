@@ -46,6 +46,8 @@ export enum Specialization {
     Colonist,
     FederationAmbassador,
     IndependentTraderCaptain,
+    Child,
+    CivilianDoctor,
 
     OrionPirate,
     InformationBroker,

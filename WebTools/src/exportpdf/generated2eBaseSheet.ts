@@ -86,7 +86,6 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
 
         let text = originalText;
         let width = font.font.widthOfTextAtSize(text, font.size);
-        console.log("Width", width, column.width);
         while (width > column.width) {
             text = text.substring(0, text.length-1);
             width = font.font.widthOfTextAtSize(text + "...", font.size);

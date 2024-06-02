@@ -1013,6 +1013,56 @@ export class Specializations {
                     "If you tickle the earth with a hoe she laughs with a harvest."
                 ],
                 0),
+            new SpecializationModel(Specialization.Child, NpcCharacterType.Civilian, "Child",
+                [Attribute.Insight, Attribute.Presence, Attribute.Daring],
+                Skill.Command,
+                [
+                    "Toys", "Flotter Stories", "Kadis-kot", "Dinosaurs", "Exploration", "School"
+                ], [
+                    "Holodeck Adventures", "Rules", "Chores", "Homework", "Games", "Camping", "Emergency Drills"
+                ], [
+                    "No!",
+                    "I'm telling!",
+                    "I know you are, but what am I?",
+                    "Do you want to be my friend?",
+                    "This is so cool!",
+                    "You've got cooties!",
+                    "You have to share!"
+                ],
+                0),
+            new SpecializationModel(Specialization.CivilianDoctor, NpcCharacterType.Civilian, "Medical Doctor",
+                [Attribute.Insight, Attribute.Presence, Attribute.Control],
+                Skill.Medicine,
+                [
+                    "Surgery", "Immunology", "Pharmacology", "Orthopedics", "Reconstructive Surgery", "Medical Equipment Specialist",
+                    "First Aid", "Diagnosis", "Medical Safety Protocols", "Medical Tricorders and Sensors",
+                    "Infectious Diseases", "Xenobiology", "Esoteric Medicine", "Neurology", "Anesthesiology",
+                    "Obstetrics and Gynaecology", "Cosmetic Surgery"
+                ],
+                [
+                    "Triage and Prioritization", "Treatment Plans", "Infectious Disease Control", "Parasites", "Personal Safety Equipment", "Physiology",
+                    "Medical Risk Management", "The Nervous System", "Cardiothoracics", "Pediatrics", "Trauma Medicine", "Prosthetics",
+                    "Quarantine Procedures", "Silicon-based Life Forms", "Yonadan Medical Database", "Medical Experimentation",
+                    "Medical Research", "Outbreak Protocols", "History of Medicine", "Pathology", "Autopsy", "Medical Administration",
+                    "Cryogenics", "Cosmetic Disguise", "Medical Biofilters", "Genetics", "Cloning", "Genetic Augmentation",
+                    "Degenerative Diseases", "Veterinarian Medicine", "Medical Ethics", "Denobulan Consent Model"
+                ],
+                [
+                    "Consent of the patient is the bedrock of medicine",
+                    "I can't let another patient die!",
+                    "Sit down and let me finish this examination",
+                    "When conventional treatments aren't working, it's time to try the unconventional.",
+                    "Because I'm a doctor, and I said so!",
+                    "Haunted by a past medical mistake",
+                    "Medicines cure diseases but only doctors can cure patients.",
+                    "Drugs are not always necessary. Belief in recovery always is.",
+                    "Wherever the art of Medicine is loved, there is also a love of Humanity.",
+                    "Observation, Reason, Understanding, Courage; these make the physician.",
+                    "Damn. Where are the calluses we doctors are supposed to grow over our feelings?",
+                    "You put your research ahead of your patients' lives. And as far as I'm concerned, that's a violation of our most sacred trust.",
+                    "I'm just an old country doctor."
+                ],
+                0),
         ]
     }
 
