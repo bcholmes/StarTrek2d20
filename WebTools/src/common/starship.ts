@@ -4,7 +4,7 @@ import { MissionPodModel } from "../helpers/missionPods";
 import { MissionProfileModel } from "../helpers/missionProfiles";
 import { SpaceframeModel } from "../helpers/spaceframeModel";
 import { allSystems, System } from "../helpers/systems";
-import { TalentModel, TalentsHelper, TalentViewModel } from "../helpers/talents";
+import { TALENT_NAME_MISSION_POD, TalentModel, TalentsHelper, TalentViewModel } from "../helpers/talents";
 import { TalentSelection } from "../helpers/talentSelection";
 import StarshipWeaponRegistry, { Weapon } from "../helpers/weapons";
 import { CharacterType } from "./characterType";
@@ -283,7 +283,16 @@ export class Starship extends Construct {
 
     getRankForTalent(talentName: string) {
         let shortenedList = this.getTalentSelectionList().filter(t => t.talent.name === talentName);
-        return shortenedList.length === 1 ? shortenedList[0].rank : 0;
+        return shortenedList.length > 0 ? shortenedList[0].rank : 0;
+    }
+
+    getQualifierForTalent(talentName: string) {
+        if (talentName === TALENT_NAME_MISSION_POD && this.missionPodModel != null) {
+            return this.missionPodModel.localizedName;
+        } else {
+            let shortenedList = this.getTalentSelectionList().filter(t => t.talent.name === talentName);
+            return shortenedList.length > 0 ? shortenedList[0].qualifier : undefined;
+        }
     }
 
     getTalentNameList() {

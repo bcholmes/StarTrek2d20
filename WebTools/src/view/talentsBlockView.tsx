@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Header } from "../components/header";
-import { TALENT_NAME_MISSION_POD, TalentsHelper } from "../helpers/talents";
+import { TalentsHelper } from "../helpers/talents";
 import replaceDiceWithArrowhead from "../common/arrowhead";
 import { Stereotype } from "../common/construct";
 import { Starship } from "../common/starship";
@@ -24,8 +24,14 @@ const TalentsBlockView: React.FC<IConstructPageProperties> = ({construct}) => {
                     {replaceDiceWithArrowhead(t.localizedSoloDescription)}
                 </div>);
             } else {
+                let name = t.localizedDisplayName;
+                let starship = construct as Starship;
+                let qualifier = starship.getQualifierForTalent(tName);
+                if (qualifier?.length) {
+                    name += " [" + qualifier + "]";
+                }
                 return (<div className="text-white view-border-bottom py-2" key={'talent-' + i}>
-                    <strong>{t.localizedDisplayName + (t.maxRank > 1 ? " [x" + construct.getRankForTalent(t.name) + "]" : "")}:</strong> {' '}
+                    <strong>{name + (t.maxRank > 1 ? " [x" + construct.getRankForTalent(t.name) + "]" : "")}:</strong> {' '}
                     {replaceDiceWithArrowhead(t.localizedDescription)}
                 </div>);
             }
@@ -43,8 +49,9 @@ const TalentsBlockView: React.FC<IConstructPageProperties> = ({construct}) => {
             } else {
                 let name = t.localizedDisplayName;
                 let starship = construct as Starship;
-                if (t.name === TALENT_NAME_MISSION_POD && starship.missionPodModel) {
-                    name += ": " + starship.missionPodModel?.localizedName;
+                let qualifier = starship.getQualifierForTalent(tName);
+                if (qualifier?.length) {
+                    name += " [" + qualifier + "]";
                 }
                 return (<div className="text-white view-border-bottom py-2" key={'talent-' + i}>
                     <strong>{name + (t.maxRank > 1 ? " [x" + construct.getRankForTalent(t.name) + "]" : "")}:</strong> {' '}

@@ -83,16 +83,36 @@ export class SpaceframeModel {
         return result;
     }
 
-    get localizedName() {
+    get key() {
         if (this.id != null) {
             let key = makeKey('Spaceframe.', Spaceframe[this.id]);
             if (key.indexOf("_UP") >= 0) {
                 key = key.substring(0, key.indexOf("_UP"));
             }
+            return key;
+        } else {
+            return undefined;
+        }
+    }
+
+    get localizedName() {
+        let key = this.key;
+        if (key != null) {
             let local = i18next.t(key);
             return local === key ? this.name : local;
         } else {
             return this.name;
+        }
+    }
+
+    get localizedDescription() {
+        let key = this.key;
+        if (key != null) {
+            key += ".description";
+            let local = i18next.t(key);
+            return local === key ? undefined : local;
+        } else {
+            return undefined;
         }
     }
 

@@ -8,7 +8,7 @@ import { EquipmentModel } from "../helpers/equipment";
 import { Skill, SkillsHelper } from "../helpers/skills";
 import { SpeciesHelper } from "../helpers/species";
 import { Species } from "../helpers/speciesEnum";
-import { TALENT_NAME_MISSION_POD, TalentsHelper } from "../helpers/talents";
+import { TalentsHelper } from "../helpers/talents";
 import { Weapon, WeaponRange, WeaponType } from "../helpers/weapons";
 import { System, allSystems } from "../helpers/systems";
 import { makeKey } from "../common/translationKey";
@@ -63,7 +63,9 @@ export class Roll20VttExporter {
     exportStarship(starship: Starship) {
 
         let starshipClass = starship.className ?? "";
-        let name = starship.name ?? "Unnamed " + (starshipClass.length ? starshipClass + " " : "")  + " Starship";
+        let name = starship.name?.length > 0
+            ? starship.name
+            :  "Unnamed " + (starshipClass.length ? starshipClass + " " : "")  + " Starship";
 
         if (starship.registry) {
             name += ", " + starship.registry;
@@ -91,6 +93,11 @@ export class Roll20VttExporter {
     createStarshipNotes(starship: Starship) {
 
         let result = "";
+
+        let description = starship.spaceframeModel?.localizedDescription;
+        if (description) {
+            description.split("\n").filter(p => p.length > 0).forEach(p => result += "<p>" + p + "</p>\n");
+        }
 
         if (starship.getAllTraits()?.length) {
             result += "<p><strong>Traits:</strong> " + starship.getAllTraits() + "</p>\n"
@@ -137,13 +144,15 @@ export class Roll20VttExporter {
         if (talents?.length) {
             result += "<p><strong>" + i18next.t("Construct.other.talents") + "</strong></p>\n<ul>\n";
 
-            talents.forEach(t =>
+            talents.forEach(t => {
+                let qualifier = starship.getQualifierForTalent(t.name);
                 result += "<li><p><b>" + t.localizedName
                     + (t.maxRank > 1 ? " [x" + starship.getRankForTalent(t.name) + "]" :"")
+                    + (qualifier?.length ? ": " + qualifier : "")
                     + ":</b> "
                     + t.localizedDescription
                     + "</p></li>\n"
-            )
+            });
 
             result += "</ul>\n";
         }
@@ -154,16 +163,15 @@ export class Roll20VttExporter {
         if (specialRules?.length) {
             result += "<p><strong>" + i18next.t("Construct.other.specialRules") + "</strong></p>\n<ul>\n";
 
-            specialRules.forEach(t =>
+            specialRules.forEach(t => {
+                let qualifier = starship.getQualifierForTalent(t.name);
                 result += "<li><p><b>" + t.localizedName
-                    + ((t.name === TALENT_NAME_MISSION_POD && starship.missionPodModel != null)
-                        ? ": " + starship.missionPodModel.localizedName
-                        : "")
                     + (t.maxRank > 1 ? "[x" + starship.getRankForTalent(t.name) + "]" :"")
+                    + (qualifier?.length ? ": " + qualifier : "")
                     + ":</b> "
                     + t.localizedDescription
                     + "</p></li>\n"
-            )
+            });
 
             result += "</ul>\n";
         }
