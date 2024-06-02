@@ -12,6 +12,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240602</b>
+                <ul>
+                    <li>Some additional French and Spanish translations.</li>
+                    <li>Minor improvements to the Starship export for Roll20.</li>
+                </ul>
                 <b>v1.240601</b>
                 <ul>
                     <li>A handful of smaller updates: export starships for Roll20, a new Safety checklist based on

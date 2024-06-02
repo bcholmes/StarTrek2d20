@@ -592,11 +592,53 @@
     "AlliedMilitaryType.name.bajoranMilitia": "Forces de Sécurité Bajoranes",
     "AlliedMilitaryType.name.cardassianUnion": "Union Cardassienne",
     "AlliedMilitaryType.name.dominion": "Dominion",
+    "AlliedMilitaryType.name.ferengiMilitary": "Armée Ferengi",
     "AlliedMilitaryType.name.other": "Autre",
+
+    "BodyType.averageMale": "Male moyen",
+    "BodyType.averageNonBinary": "Non binaire moyen/ne",
+    "BodyType.averageFemale": "Femelle moyenne",
+
+    "Division.command": "Commandement",
+    "Division.science": "Sciences",
+    "Division.operations": "Opérations",
+
+    "Division.monsterMaroon.command": "Commandement",
+    "Division.monsterMaroon.science": "Sciences",
+    "Division.monsterMaroon.helmEngineering": "Pilotage/Ingénierie",
+    "Division.monsterMaroon.medical": "Médical",
+    "Division.monsterMaroon.security": "Sécurité",
+    "Division.monsterMaroon.specialServices": "Services Spéciaux",
+    "Division.monsterMaroon.trainee": "Stagiaire",
+
+    "Division.strangeNewWorlds.medical": "Médical",
+    "Division.strangeNewWorlds.nursing": "Infirmier",
+
+    "Equipment.uniform": "Uniforme",
+    "Equipment.clothing": "Vêtement",
+    "Equipment.armor": "Armure",
+    "Equipment.communicator": "Communicateur",
+    "Equipment.tricorder": "Tricorder",
+    "Equipment.medKit": "Medkit",
+    "Equipment.engineeringKit": "Kit d'Ingénierie",
+    "Equipment.orionMultiKey": "Multiclé Orionne",
+    "Equipment.ushaanTor": "Pic à Glace Ushaan-Tor",
 
     "Era.name.enterprise": "Enterprise (22ème Siècle)",
     "Era.name.originalSeries": "Serie Originale (23ème Siècle)",
     "Era.name.nextGeneration": "Nouvelle Génération (24ème Siècle)",
+    "Era.name.picardProdigy": "Picard/Prodigy (fin 24ème, début 25ème Siècle)",
+    "Era.name.discovery32": "Discovery (32ème Siècle)",
+
+    "ExtraType.none": "Rien",
+    "ExtraType.bajoranEarring": "Boucle d'oreille Brajorane",
+    "ExtraType.simpleEarring": "Boucle d'oreille simple",
+    "ExtraType.hoopEarring": "Créole",
+    "ExtraType.smallBindi": "Petit Bindi",
+    "ExtraType.risanSymbol": "Symbole Risien",
+    "ExtraType.inuitTattoo": "Tatouage Inuit",
+    "ExtraType.zaraniteMask": "Respirateur Zaranite",
+    "ExtraType.ferengiHeadFlap": "Voilette Ferengi",
 
     "GovernmentType.name.andorian": "Andorien",
     "GovernmentType.name.bajoran": "Bajoran",
@@ -622,6 +664,127 @@
     "NpcType.notable.name": "PNJ Notable",
 
     "NpcType.major.name": "PNJ Majeur",
+
+    "Rank.admiral.name": "Amiral",
+    "Rank.admiral.abbrev": "Amir.",
+
+    "Rank.viceAdmiral.name": "Vice-Amiral ",
+    "Rank.viceAdmiral.abbrev": "V.-Amir.",
+
+    "Rank.rearAdmiral.name": "Contre-Amiral",
+    "Rank.rearAdmiral.abbrev": "C.-Amir.",
+
+    "Rank.commodore.name": "Commodore",
+    "Rank.commodore.abbrev": "Cdore.",
+
+    "Rank.captain.name": "Capitaine",
+    "Rank.captain.abbrev": "Capt.",
+
+    "Rank.commander.name": "Commandeur",
+    "Rank.commander.abbrev": "Comm.",
+
+    "Rank.ltCommander.name": "Lieutenant commandeur",
+    "Rank.ltCommander.abbrev": "Lt. Com.",
+
+    "Rank.lieutenant.name": "Lieutenant ",
+    "Rank.lieutenant.abbrev": "Lt.",
+
+    "Rank.lieutenantJG.name": "Sous-Lieutenant",
+    "Rank.lieutenantJG.abbrev": "Ss.-Lt.",
+
+    "Rank.ensign.name": "Enseigne",
+    "Rank.ensign.abbrev": "Ens.",
+
+    "Rank.other.name": "Autre",
+
+    "Rank.none.name": "Sans",
+    "Rank.none.abbrev": "-",
+
+    "Rank.masterChiefPettyOfficer.name": "Premier Maitre",
+    "Rank.masterChiefPettyOfficer.abbrev": "Chef",
+
+    "Rank.seniorChiefPettyOfficer.name": "Second maitre",
+    "Rank.seniorChiefPettyOfficer.abbrev": "Chef",
+
+    "Rank.chiefPettyOfficer.name": "Maitre",
+    "Rank.chiefPettyOfficer.abbrev": "Chef",
+
+    "Rank.pettyOfficer1stClass.name": "Maitre 1ère classe",
+    "Rank.pettyOfficer1stClass.abbrev": "M.",
+
+    "Rank.pettyOfficer2ndClass.name": "Maitre 2ème classe",
+    "Rank.pettyOfficer2ndClass.abbrev": "M.",
+
+    "Rank.pettyOfficer3rdClass.name": "Maitre 3ème classe",
+    "Rank.pettyOfficer3rdClass.abbrev": "M",
+
+    "Rank.crewman1stClass.name": "Membre d'équipage 1ère classe",
+    "Rank.crewman1stClass.abbrev": "M.E. ",
+
+    "Rank.crewman2ndClass.name": "Membre d'équipage 2ème classe",
+    "Rank.crewman2ndClass.abbrev": "M.E. ",
+
+    "Rank.crewman3rdClass.name": "Membre d'équipage 3ème classe",
+    "Rank.crewman3rdClass.abbrev": "M.E. ",
+
+    "Rank.sergeant.name": "Sergent",
+    "Rank.sergeant.abbrev": "Ser.",
+
+    "Rank.corporal.name": "Caporal",
+    "Rank.corporal.abbrev": "Cap.",
+
+    "Rank.private.name": "Soldat",
+    "Rank.private.abbrev": "Sol.",
+
+    "Role.commandingOfficer": "COMMANDANT.",
+
+    "Role.commandingOfficer.description": "seulement. Le capitaine. Même s’il n’a pas le grade de capitaine, ses subordonnés l’appelleront ainsi. Chaque vaisseau doit avoir un commandant.",
+    "Role.commandingOfficer.ability": "Le commandant peut dépenser 1 point de Détermination et conférer ce point à un personnage avec lequel il est en communication ; cette faculté n’a pas besoin d’être liée à un Idéal.",
+
+    "Role.executiveOfficer": "COMMANDANT EN SECOND.",
+
+    "Role.executiveOfficer.description": "Second dans la hiérarchie. Il est le premier conseiller du capitaine et il prend le commandement quand ce dernier ne peut pas assumer son rôle. S’il n’y en a pas à bord, un officier occupant d’autres fonctions sera désigné comme commandant en second. Il ne bénéficiera cependant pas des avantages liés à ce rôle. ",
+    "Role.executiveOfficer.ability": "Quand un autre personnage en communication avec le second dépense 1 point  de Détermination, ce dernier peut en retour dépenser 3 points d’Impulsion (immédiat) et lui permettre de regagner le point de Détermination qu’il vient de dépenser.",
+
+    "Role.operationsManager": "CHEF DES OPÉRATIONS.",
+
+    "Role.operationsManager.description": "Le chef des opérations gère et supervise toutes les opérations techniques se déroulant à bord ou impliquant le vaisseau, depuis le poste des opérations sur la passerelle ou en collaboration avec le chef-ingénieur (sur des vaisseaux plus petits, un officier peut remplir les deux rôles). Cela implique souvent d’assumer les fonctions d’un officier scientifique, s’il n’y en a pas parmi les officiers.",
+    "Role.operationsManager.ability": "Quand le chef des opérations réussit une Tâche à l’aide des ordinateurs ou des détecteurs du vaisseau, ou en utilisant un tricordeur, il génère 1 point d’Impulsion bonus, qui ne peut être utilisé que pour l’Impulsion Obtention d’informations.",
+
+    "Role.chiefEngineer": "CHEF-INGÉNIEUR.",
+
+    "Role.chiefEngineer.description": "Il est responsable de la bonne marche du navire et dirige le département ingénierie à bord.",
+    "Role.chiefEngineer.ability": "Quand il est sur le navire, le personnage bénéficie toujours de l’Avantage « Département d’Ingénierie », représentant l’ensemble des ingénieurs et des techniciens du bord.",
+
+    "Role.chiefOfSecurity": "CHEF DE LA SÉCURITÉ.",
+
+    "Role.chiefOfSecurity.description": "Le chef de la sécurité supervise le ser-vice du même nom. Il est responsable de la sécurité du navire et de l’équipage pendant les missions, des enquêtes disciplinaires et criminelles et de la protection des personnes importantes qui se trouvent à bord. Sur de nombreux vaisseaux, le chef de la sécurité se trouve au poste Tactique sur la passerelle.",
+    "Role.chiefOfSecurity.ability": "Quand il est sur le navire, le chef de la sécurité bénéficie toujours de l’Avantage « Détachement de Sécurité », représentant l’ensemble du personnel de sécurité du bord.",
+
+    "Role.chiefMedicalOfficer": "MÉDECIN-CHEF.",
+
+    "Role.chiefMedicalOfficer.description": "Responsable de la santé et du bien-être de l’équipage et des autres passagers, le médecin-chef, également appelé chirurgien de bord ou médecin de bord, est à la tête du département médical du navire. Il peut donner des ordres et des contrordres aux officiers du vaisseau quand leur santé est concernée.",
+    "Role.chiefMedicalOfficer.ability": "Quand il est sur le navire, le médecin-chef bénéficie toujours de l’Avantage « Département médical », représentant l’ensemble du personnel médical de bord.",
+
+    "Role.scienceOfficer": "OFFICIER SCIENTIFIQUE.",
+
+    "Role.scienceOfficer.description": "Il est chargé de conseiller le commandant sur tous les sujets scientifiques et d’émettre des hypothèses sur ce qui est inconnu. Tous les navires n’ont pas d’officier attitré à cette fonction parmi les cadres du vaisseau, et c’est souvent le chef des opérations qui s’en charge.",
+    "Role.scienceOfficer.ability": "Quand l’officier scientifique réussit une Tâche à l’aide des ordinateurs ou des détecteurs du vaisseau, ou d’un tricordeur, il génère 1 point d’Impulsion bonus, qui ne peut être utilisé que pour l’Impulsion Obtention d’informations.",
+
+    "Role.flightController": "CONTRÔLEUR DE VOL.",
+
+    "Role.flightController.description": "Ce n’est pas une fonction typique parmi les officiers mais certains capitaines, en particulier ceux qui naviguent dans l’espace non cartographié, intègrent le timonier ou le contrôleur de vol le plus expérimenté dans leur équipe d’officiers.",
+    "Role.flightController.ability": "Quand on lui demande d’analyser ou de réparer une technologie liée au vol ou à la propulsion, le contrôleur de vol peut utiliser sa Discipline de Pilotage à la place de l’Ingénierie.",
+
+    "Role.shipsCounselor": "CONSEILLER DU NAVIRE.",
+
+    "Role.shipsCounselor.description": "Sur les vaisseaux plus gros et les bases stellaires, il est courant de trouver du personnel dédié au bien-être mental de l’équipage. Certains capitaines les tiennent en haute estime car leur formation et leurs conseils couvrent les domaines culturels et psychologiques, ce qui les rend exceptionnellement doués pour comprendre les humeurs et les intentions.",
+    "Role.shipsCounselor.ability": "Après avoir réussi une Tâche visant à déterminer l’état émotionnel ou l’intention d’une créature vivante, le conseiller du navire gagne 1 point d’Impulsion bonus, qui ne peut être utilisé que pour l’Impulsion Obtention d’informations.",
+
+    "Role.communicationsOfficer": "OFFICIER DES COMMUNICATIONS.",
+
+    "Role.communicationsOfficer.description": "Cette fonctionétait plus répandue aux débuts de Starfleet, et elle est occupée par des officiers dévoués, compétents en langues et en cryptographie et assistés des dernières technologies en matière de traduction et de décryptage. C’est un atout précieux quand le navire rencontre des cultures nouvelles ou hostiles.",
+    "Role.communicationsOfficer.ability": "L’officier des communications ne tient pas compte de l’augmentation de difficulté d’une Tâche qu’il entreprend si elle est causée par une langue ou un codage inhabituel",
 
     "ShipBuildType.pod.name": "Nacelle",
 
@@ -719,6 +882,38 @@
     "StarSystem.common.primaryStar": "Etoile Primaire",
     "StarSystem.common.companionStar": "Etoile Binaire",
 
+    "Talent.ablativeArmor": "ARMURE ABLATIVE",
+
+    "Talent.ablativeArmor.description": "La coque du vaisseau est recouverte d’une couche ablative qui se désagrège lentement lorsqu’elle est soumise à des températures extrêmes, comme lorsqu’elle essuie des tirs de torpilles ou d’armes à énergie. L’armure ablative protège alors le navire en dissipant l’énergie de ces projectiles. Ce revêtement doit être régulièrement remplacé. La Résistance du vaisseau augmente de +2.",
+
+    "Talent.advancedSickbay": "INFIRMERIE SOPHISTIQUÉE",
+
+    "Talent.advancedSickbay.soloDescription": "L’infirmerie du vaisseau est extrêmement bien équipée, et elle occupe une surface plus importante que de coutume pour un appareil de cette taille. Le vaisseau bénéficie de l’Avantage Infirmerie sophistiquée, qui s’applique à toutes les Tâches entreprises dans l’infirmerie et relevant des domaines médical et biologique. Si le Système Ordinateurs est neutralisé, cet Avantage est perdu.",
+
+    "Talent.advancedResearchFacilities": "ÉQUIPEMENT DE RECHERCHE SOPHISTIQUÉ",
+
+    "Talent.advancedResearchFacilities.description": "Le vaisseau possède des laboratoires supplémentaires et des infrastructures de recherche pérennes. L’équipage est donc libre d’étudier des phénomènes sur de longues périodes, et fourni ainsi quantité d’informations utiles. Lorsqu’un personnage entreprend une Tâche de recherche à bord, et qu’il est aidé par le vaisseau avec Ordinateurs + Science, il gagne une Impulsion bonus qu’il peut ensuite dépenser pour l’Obtention d’information.",
+
+    "Talent.advancedSensorSuites": "DISPOSITIFS DE DÉTECTION AVANCÉS",
+
+    "Talent.advancedSensorSuites.description": "Le vaisseau est équipé des détecteurs les plus sophistiqués et perfectionnés de la flotte. Lorsqu’un personnage entreprend une Tâche aidé des Détecteurs du navire, il peut réduire sa difficulté de –1, jusqu’à un minimum de 0. Ceci étant, les Détecteurs ne doivent pas être affectés par une Brèche.",
+
+    "Talent.advancedShields": "BOUCLIERS AVANCÉS",
+
+    "Talent.advancedShields.description": "Le vaisseau est équipé de boucliers de pointe. Ils utilisent une technologie que les autres cultures n’ont pas encore su développer, ou apportent simplement une meilleure protection pour une consommation d’énergie équivalente. La valeur de Boucliers maximale du vaisseau augmente de +5",
+
+    "Talent.advisor": "CONSEILLER",
+
+    "Talent.advisor.description": "Quand vous utilisez votre Commandement pour Aider un autre personnage, celui-ci peut relancer un d20.",
+
+    "Talent.aLittleMorePower": "UN PEU PLUS DE JUS",
+
+    "Talent.aLittleMorePower.description": "Quand vous réussissez une Tâche d’Ingénierie à bord de votre vaisseau, vous pouvez dépenser 1 point d’Impulsion pour récupérer 1 point d’Énergie.",
+
+    "Talent.backupEpsConduits": "CONDUITS SUPPLÉMENTAIRES DE SECOURS",
+
+    "Talent.backupEpsConduits.soloDescription": "Le vaisseau est équipé de conduits d’alimentation supplémentaires, qui peuvent être activés pour permettre de détourner de l’énergie plus facilement en cas d’urgence. Cela évite par exemple une fuite d’énergie si l’appareil est endommagé. Le cas échéant, lancez un par point d’Énergie qui pourrait être perdu. Chaque Effet obtenu empêche la perte de ce point.",
+
     "Talent.boldCommand": "Audacieux : Commandement",
 
     "Talent.boldCommand.description": "Quand vous effectuez une Tâche avec Commandement et que vous achetez au moins un d20 en ajoutant de la Menace, vous pouvez relancer un d20.",
@@ -799,6 +994,10 @@
 
     "Talent.closeProtection.description": "Quand vous réussissez une attaque, vous pouvez dépenser 1 point d’Impulsion pour protéger un et un seul allié situé à portée Courte. La difficulté de la prochaine attaque qui le prendra pour cible avant le début de votre prochain tour augmente de +1.",
 
+    "Talent.commandShip": "VAISSEAU DE COMMANDEMENT",
+
+    "Talent.commandShip.soloDescription": "En situation de crise, les commandes et les systèmes de contrôle du vaisseau lui permettent de se coordonner facilement avec ses alliés. Lorsqu’un personnage réussit la Tâche Créer un Avantage, cela leur permet d’être aidés en permanence par le vaisseau avec Communications + Commandement. Ils peuvent également étendre l’Avantage aux navires alliés ou aux équipes éloignées, à condition d’être en communication avec eux.",
+
     "Talent.computerExpertise": "EXPERTISE INFORMATIQUE",
 
     "Talent.computerExpertise.description": "Quand vous programmez ou étudiez un Système informatique, vous ajoutez un d20 bonus à votre réserve de dés.",
@@ -815,9 +1014,29 @@
 
     "Talent.defuseTheTension.description": "Quand vous tentez de persuader quelqu’un de ne pas avoir recours à la violence, vous ajoutez un d20 bonus dans votre réserve de dés.",
 
+    "Talent.diplomaticSuites": "SUITES DIPLOMATIQUES",
+
+    "Talent.diplomaticSuites.soloDescription": "Le vaisseau possède un grand nombre de cabines de luxe destinées aux invités VIP, ainsi que des salles de réunion et tout autre espace lui permettant de faire office de terrain neutre pour les sommets diplomatiques, les négociations commerciales, etc. Lorsque des pourparlers se déroulent à bord, les membres d’équipages peuvent être aidés par le vaisseau avec Ordinateurs + Commandement, ou Structure + Commandement.",
+
+    "Talent.electronicWarfareSystems": "SYSTÈMES DE GUERRE ÉLECTRONIQUE",
+
+    "Talent.electronicWarfareSystems.soloDescription": "Les systèmes de communication du vaisseau ont été spécialement conçus pour intercepter et brouiller les communications ennemies en combat. Lorsqu’un personnage réussit la Tâche Intercepter ou Brouiller des signaux, il peut dépenser 2 points d’Impulsion pour cibler un navire supplémentaire.",
+
+    "Talent.emergencyMedicalHologram": "HOLOGRAMME MÉDICAL D’URGENCE",
+
+    "Talent.emergencyMedicalHologram.soloDescription": "L’infirmerie du vaisseau est équipée d’holo-émetteurs et d’un docteur holographique à la pointe de la technologie, qui pourra assister le personnel médical en cas d’urgence. Ce personnage ne peut se rendre que dans des endroits équipés d’holo-émetteurs.",
+
     "Talent.empath": "Empathe",
 
     "Talent.empath.description": "Vous pouvez sentir les émotions de la plupart des êtres vivants près de vous, et communiquer par télépathie avec les autres empathes et télépathes, et avec ceux qui vous sont extrêmement familiers. Vous ne pouvez pas décider de ne pas sentir leurs émotions sauf s’ils sont résistants à la télépathie. Vous devrez faire des efforts, et donc effectuer une Tâche, pour sentir les émotions d’un individu précis dans une foule, ou pour bloquer les émotions de ceux qui se trouvent à proximité. La difficulté de cette Tâche augmente si la situation est tendue, s’il y a beaucoup de créatures présentes, si la cible résiste à la télépathie, et si d’autres facteurs pertinents se présentent.",
+
+    "Talent.extensiveShuttlebays": "VASTES HANGARS",
+
+    "Talent.extensiveShuttlebays.soloDescription": "Les hangars du vaisseau sont vastes, bien approvisionnés, et capables de supporter l’entretien de plusieurs navettes actives à la fois. Le navire peut avoir deux fois plus de navettes actives qu’en temps normal, et transporter deux appareils d’Envergure 2.",
+
+    "Talent.fastTargetingSystems": "SYSTÈMES DE CIBLAGE RAPIDE",
+
+    "Talent.fastTargetingSystems.soloDescription": "Les systèmes de ciblage du vaisseau opèrent plus rapidement et plus précisément que ceux des autres navires de sa classe, ce qui lui confère un avantage certain en combat. De plus, lorsqu’il tente de cibler un Système précis sur un vaisseau ennemi, la difficulté de la Tâche n’est pas majorée.",
 
     "Talent.firstResponse": "PREMIÈRE RÉACTION",
 
@@ -847,9 +1066,41 @@
 
     "Talent.formerInitiate.description": "Vous avez rejoint le Programme des Initiés dans l’espoir d’être choisi par la Commission des Symbioses et devenir un Joint. Étant donné le nombre bien plus important d’initiés que de symbiotes, vous figurez parmi ceux qui ont échoué. Pourtant, vos qualités ont malgré cet échec suffit à Starfleet pour vous recruter. Quand vous effectuez une Tâche impliquant le Contrôle ou la Raison et que vous dépensez de la Détermination pour acquérir un d20 bonus à cet effet, vous pouvez relancer votre réserve de dés. Ce Talent ne peut être sélectionné si le personnage est joint – ces deux Talents s’excluent mutuellement.",
 
+    "Talent.highResolutionSensors": "DÉTECTEURS HAUTE RÉSOLUTION",
+
+    "Talent.highResolutionSensors.soloDescription": "Les détecteurs du vaisseau recueillent un grand nombre d’informations précises, mais ils sont extrêmement sensibles. Hors combat, la réussite d’une Tâche entreprise avec les Détecteurs du vaisseau génère une Impulsion bonus.",
+
     "Talent.iKnowMyShip": "JE CONNAIS MON VAISSEAU",
 
     "Talent.iKnowMyShip.description": "Quand vous tentez de déterminer la source d’un problème technique sur votre vaisseau, vous bénéficiez d’un d20 bonus",
+
+    "Talent.improvedDamageControl": "CONTRÔLE DES DÉGÂTS AMÉLIORÉ",
+
+    "Talent.improvedDamageControl.soloDescription": "Les systèmes de rapport de dommages du vaisseau sont plus efficaces, et ses équipes de techniciens sont mieux entraînées, ce qui permet une intervention plus rapide en situation de crise. Lorsqu’un personnage entreprend la Tâche Contrôle des dommages, il peut relancer un d20. Si les réparations nécessitent une Tâche étendue, le personnage bénéficie alors de Progression 1 et gagne +1 Effort pour chaque Effet obtenu.",
+
+    "Talent.improvedHullIntegrity": "INTÉGRITÉ DE LA COQUE AMÉLIORÉE",
+
+    "Talent.improvedHullIntegrity.soloDescription": "La coque du vaisseau a été consolidée pour mieux résister à la pression et aux dégâts. Sa Résistance augmente de +1.",
+
+    "Talent.improvedImpulseDrive": "MOTEUR À IMPULSION AMÉLIORÉ",
+
+    "Talent.improvedImpulseDrive.soloDescription": "Les moteurs à impulsion du vaisseau sont plus puissants que la moyenne, ce qui lui permet d’accélérer bien plus rapidement. Lorsque le timonier réussit la Tâche Impulsion, Manœuvre d’attaque, Évasion ou Éperonnage, il peut dépenser 2 points d’Impulsions pour majorer de +1 la difficulté des attaques visant le vaisseau. Cet effet, dû à la rapide accélération de l’appareil, prend fin lorsque débute le prochain tour du timonier.",
+
+    "Talent.improvedPowerSystems": "SYSTÈMES D’ALIMENTATION AMÉLIORÉS",
+
+    "Talent.improvedPowerSystems.soloDescription": "Les systèmes d’alimentation du vaisseau sont particulièrement efficaces, et l’énergie peut être rapidement détournée et dirigée vers d’autres structures. Lorsqu’un personnage réussit la Tâche Gestion d’énergie, le vaisseau gagne 2 points d’Énergie par point d’Impulsion dépensé (multiple) au lieu de 1.",
+
+    "Talent.improvedReactionControlSystem": "SYSTÈME DE CONTRÔLE PAR RÉACTION AMÉLIORÉ",
+
+    "Talent.improvedReactionControlSystem.soloDescription": "Les propulseurs du vaisseau agissent avec plus de précision, ce qui lui permet de mieux contrôler sa trajectoire. Si un personnage entreprend une Tâche visant à piloter ou manœuvrer l’appareil, et que la présence d’obstacles ou de dangers provoque une majoration de sa difficulté, celle-ci est alors réduite de –1. Elle ne peut néanmoins pas être inférieure à la difficulté normale de la Tâche.",
+
+    "Talent.improvedShieldRecharge": "RECHARGEMENT DES BOUCLIERS AMÉLIORÉ",
+
+    "Talent.improvedShieldRecharge.soloDescription": "Les boucliers déflecteurs du vaisseau sont dotés de condensateurs supplémentaires et de réseaux d’émetteurs, ce qui permet de recharger les boucliers bien plus rapidement. Lorsque la Tâche Recharger les boucliers est réussie, le navire ne récupère plus 2 mais 3 points de",
+
+    "Talent.improvedWarpDrive": "MOTEUR À DISTORSION AMÉLIORÉ",
+
+    "Talent.improvedWarpDrive.soloDescription": "Le moteur à distorsion du vaisseau est plus puissant car il tire profit de meilleures dynamiques de champs, d’un meilleur contrôle des flux d’antimatière, ou de tout autre progrès technique qui lui permet de consommer moins d’énergie en voyageant à cette vitesse. Lorsque le vaisseau consomme de l’énergie pour entrer en distorsion, lancez 1 par point d’Énergie dépensé. Pour chaque Effet ainsi obtenu, le point d’Énergie n’est finalement pas consommé.",
 
     "Talent.incisiveScrutiny": "Critique incisive",
 
@@ -889,6 +1140,10 @@
 
     "Talent.mindMeld.description": "Vous avez été formé aux techniques télépathiques qui permettent la fusion des esprits par le contact physique. La fusion mentale sera toujours une Tâche d’une difficulté au moins égale à 1, à laquelle un participant volontaire pourra s’opposer. En cas de réussite, votre esprit et celui du récipiendaire sont liés et partagent leurs pensées et leurs souvenirs. Vous pouvez consacrer des points d’Impulsion pour l’Obtention d’informations ou avoir des échanges télépathiques plus profonds. Le lien fonctionne dans les deux sens, et c’est un processus épuisant et potentiellement dangereux pour vous. Des complications comme la douleur, la désorientation, des émotions persistantes ou des difficultés comportementales peuvent survenir.",
 
+    "Talent.modularLaboratories": "LABORATOIRES MODULAIRES",
+
+    "Talent.modularLaboratories.soloDescription": "Le vaisseau dispose d’un nombre important de compartiments vides et modulables qui peuvent être convertis en laboratoires en cas de besoin. En début d’aventure, l’équipage peut décider de leur organisation : cette configuration compte comme un Avantage, qui s’applique aux travaux effectués à l’intérieur de ces laboratoires modulaires.",
+
     "Talent.nervePinch": "Prise Vulcaine",
 
     "Talent.nervePinch.description": "Vous avez appris de nombreuses techniques de stimulation et de contrôle de l’influx nerveux, appelées neuro-pression. Certaines d’entre elles servent à neutraliser rapidement et sans danger des agresseurs. Le pincement neural équivaut à une arme de corps-à-corps disposant des caractéristiques suivantes : Corps-à-corps, 1 Intense, 1M, Non létal. Quand vous tentez cette technique, vous pouvez utiliser la Science ou la Médecine à la place de la Sécurité, et augmenter les dégâts infligés de votre score dans l’une de ces deux Disciplines",
@@ -909,6 +1164,10 @@
 
     "Talent.personalEffects.description": "Le personnage possède un objet ou un appareil important ou inhabituel qui ne fait pas partie de l’équipement ordinaire de Starfleet, mais qui est néanmoins utile en mission. Vous pouvez sélectionner un objet dont le coût d’Opportunité est de 2, ou deux objets dont le coût d’Opportunité est de 1. Leur coût d’Amélioration ne peut dépasser 1. ",
 
+    "Talent.preciseEvasion": "JE TE DIS QUE ÇA PASSE",
+
+    "Talent.preciseEvasion.description": "Quand vous réussissez la Tâche Manœuvre d’évasion, vous pouvez dépenser 2 points d’Impulsion. Contrairement à la règle, la difficulté des attaques du vaisseau n’augmente pas.",
+
     "Talent.proudAndHonorable": "Fier et Honorable",
 
     "Talent.proudAndHonorable.description": "Votre intégrité personnelle est irréprochable et vous ne romprez pas volontairement une promesse que vous avez faite. Quand vous effectuez une Tâche pour éviter qu’on ne vous oblige à revenir sur votre parole, trahir vos alliés ou agir de manière déshonorante, vous réduisez la difficulté de –1",
@@ -917,13 +1176,33 @@
 
     "Talent.pushTheLimits.description": "Quand des conditions environnementales ou des dégâts sur les moteurs aggravent la difficulté d’une Tâche de Pilotage, vous diminuez cette aggravation de –1 (minimum 1).",
 
+    "Talent.quantumTorpedoes": "TORPILLES QUANTIQUES",
+
+    "Talent.quantumTorpedoes.soloDescription": "Le vaisseau est équipé des dernières munitions vaisseau-à-vaisseau : les torpilles quantiques. Celles-ci viennent s’ajouter aux autres types de torpilles présentes à bord.",
+
     "Talent.quickToAction": "RÉACTION RAPIDE",
 
     "Talent.quickToAction.description": "Lors du premier round d’un combat, Conserver l’initiative ne coûte rien pour vos alliés et vous.",
 
+    "Talent.rapidFireTorpedoLauncher": "LANCE-TORPILLES À CADENCE DE TIR ÉLEVÉE",
+
+    "Talent.rapidFireTorpedoLauncher.soloDescription": "Les lance-torpilles du vaisseau ont été revus et peuvent désormais tirer plusieurs torpilles à la fois à une cadence plus rapide et avec une meilleure précision. Chaque fois que l’équipage génère 3 points de Menace pour tirer une salve de torpilles, il peut relancer un d20 ainsi que n’importe quel nombre de sur le jet de dégâts.",
+
     "Talent.resolute": "Résolu",
 
     "Talent.resolute.description": "Vous êtes indomptable et refusez de baisser les bras dans l’adversité. Votre score maximum de Stress augmente de +3",
+
+    "Talent.ruggedDesign": "CONCEPTION ROBUSTE",
+
+    "Talent.ruggedDesign.soloDescription": "Le vaisseau a été conçu pour explorer l’inconnu : il est donc doté d’une construction durable et d’un accès facilité aux systèmes vitaux, ce qui simplifie les réparations. La difficulté des Tâches visant à réparer le vaisseau est réduite de –1, jusqu’à un minimum de 1.",
+
+    "Talent.saucerSeparation": "SOUCOUPE DÉTACHABLE",
+
+    "Talent.saucerSeparation.soloDescription": "Le design du vaisseau permet à la soucoupe de se détacher de la coque technique, se séparant ainsi en deux appareils bien distincts. Chaque section dispose de ses propres Systèmes, Départements, Talents et armements.Néanmoins, l’Envergure de chaque partie est inférieure à celle du vaisseau de –1, ce qui oblige à recalculer tout ce qui dépendait de cette valeur. De plus, leur valeur d’Énergie est égale à la moitié de celle du vaisseau avant séparation (arrondie à l’inférieur). Si celui-ci avait subi des dégâts, les deux parties souffrent elles aussi de ces avaries. La soucoupe, qui accueille les quartiers d’équipages et les zones récréatives, n’est pas équipée pour entrer en distorsion.Pour scinder le vaisseau, le personnage doit entreprendre une Tâche de Contrôle + Pilotage, difficulté 3, aidé par le vaisseau avec Structure + Ingénierie. Il ne peut s’exécuter que s’il se trouve dans la salle des machines ou aux commandes de la console d’ingénierie. Pour réunir les deux parties du vaisseau, la même Tâche doit être entreprise, mais elle sera cette fois d’une difficulté de 1 et devra être exécutée par des individus se trouvant dans chacune des deux sections. Si l’un des deux groupes échoue, la Tâche aussi. Si la Structure de l’une des deux parties est endommagée ou neutralisée, la séparation et la jonction sont impossibles à effectuer.",
+
+    "Talent.secondaryReactors": "RÉACTEURS AUXILIAIRES",
+
+    "Talent.secondaryReactors.soloDescription": "Le vaisseau est doté de réacteurs à fusion et de réacteurs à impulsion supplémentaires, qui lui permettent de produire bien plus d’énergie. Sa capacité normale en Énergie augmente de +5.",
 
     "Talent.spiritOfDiscovery": "Grand explorateur",
 
@@ -1042,6 +1321,8 @@
     "Weapon.personal.particleRifle.name": "Fusil à particules",
 
     "Weapon.personal.sonaPlasmaDisruptorShotgun.name": "Disrupteur à plasma Son'a",
+
+    "Weapon.personal.tzenkethiHeavyBlade.name": "Lame Lourde Tzenkethi ",
 
     "Weapon.quality.accurate.name": "Précis",
 
