@@ -12,8 +12,8 @@
 
     "AttributesAndDisciplines.instruction": "A cette étape, votre personnage est presque prêt, et ne necessite que quelques ajustements finaux. C'est la dernière occasion pour modifier le personnage avant le jeu",
 
-    "EditTablePage.header.createTable": "Créer un tableau",
-    "EditTablePage.header.modifyTable": "Modifier le tableau",
+    "EditTablePage.header.createTable": "Créer une table",
+    "EditTablePage.header.modifyTable": "Modifier la table",
 
     "EraSelectionPage.eraInstruction": "Sélectionnez l'ère dans laquelle jouer. Demandez à votre MJ quelle ère choisir.",
 
@@ -25,7 +25,7 @@
     "SourceSelectionPage.standardGameType": "Règles de JDR standard",
     "SourceSelectionPage.soloGameType": "JDR solo utilisant les règles de Captain's Log",
 
-    "ShareTableModal.instruction": "Merci de respecter les droits d'auteur, et de ne partager que les tableaux que vous avez créé personnellement",
+    "ShareTableModal.instruction": "Merci de respecter les droits d'auteur, et de ne partager que les tables que vous avez créé personnellement",
 
     "TokenCreator.option.rounded": "Arrondi",
     "TokenCreator.option.bordered": "Encadré",
@@ -125,7 +125,23 @@
     "CharacterTypePage.whatMilitary": "Quelle armée ce personnage représente?",
     "CharacterTypePage.otherMilitaryName": "Quel est le nom de l'armée?",
 
-    "CareerLength.instruction": "A cette étape, vous avez un choix à faire concernant votre personnage. Cette décision est claire : êtes vous un jeune officier, tout juste sorti de l'Académie, avec une magnifique carrière devant, ou êtes vous un vétéran, un vieux briscard avec des années d'experience .?\n\nChoississez ou lancez le dé.",
+    "CareerLength.instruction": "A cette étape, vous avez un choix à faire concernant votre personnage. Cette décision est claire : êtes-vous un jeune officier, tout juste sorti de l'Académie, avec une magnifique carrière devant vous, un vieux briscard de starfleet depuis des années ou êtes vous un vétéran,  avec des décénnies d'experience ?\n\nChoisissez ou lancez le dé.",
+
+    "CareerLength.instruction.klingon": "A cette étape, vous avez un choix à faire concernant votre personnage. Cette décision est claire : êtes vous un jeune officier cherchant la gloire, un vieux briscard du FDK , ou un vétéran avec des décénnies d'experience ?\n\nChoisissez ou lancez le dé.",
+    "CareerLength.instruction.civilian": "A cette étape, vous avez un choix à faire concernant votre personnage. Cette décision est claire : êtes-vous un jeune diplomé, tout juste sorti de l'Ecole, avec une magnifique carrière devant vous, un professionnel quiroulesa bosse depuis des années ou  un vétéran, avec des décennies d'experience ?\n\nChoisissez ou lancez le dé.",
+
+    "EducationPage.instruction.starfleet": "Les années passées à Starfleet Academy sont les plus mémorables et les plus importantes de la vie d’un officier, et elles sont les bases de sa carrière. Ceux qui réussissent les difficiles examens d’entrée y passent quatre ans et partagent leur temps entre un entraînement physique intense, des études théoriques et des expériences pratiques. Leurs études se passent la plupart du temps au sein du campus de l’Académie de Starfleet à San Francisco, sur Terre. D’autres campus et annexes existent dans toute la Fédération (comme à Marseille), et un cadet peut passer du temps dans n’importe lequel d’entre eux avant sa remise de diplôme. \n\nAprès avoir réussi ses examens, il reçoit un engagement d’officier de Starfleet et le rang d’enseigne. Il doit ensuite attendre plusieurs semaines, voire plusieurs mois, avant sa première affectation. Certains cadets, en particulier ceux qui poursuivent un doctorat, choisissent une voie qui demande une ou deux années d’entraînement et d’étude supplémentaires, et reçoivent le grade de sous-lieutenant. En termes de jeu, le temps passé par le personnage à l’Académie de Starfleet a un impact certain sur lui. Les progrès qu’il y fait sont expliqués en détail plus loin.\n\n Le joueur choisit la carrière de son personnage au sein de l’Académie, ou le détermine au dé.",
+
+    "EducationPage.type.cadet": "Ecole des Cadets",
+    "EducationPage.type.starfleet": "Starfleet Academy",
+    "EducationPage.type.klingonWarrior": "Forces de défense Klingonnes",
+    "EducationPage.type.civilian": "Formation Professionnelle Civile",
+    "EducationPage.type.alliedMilitary": "Formation Militaire Alliée",
+    "EducationPage.type.ambassadorDiplomat": "Formation DIplomatique",
+
+    "EducationPage.starfleet.academy": "Académie des Officiers",
+    "EducationPage.starfleet.enlisted": "Formation des recrues",
+    "EducationPage.starfleet.other": "Autre",
 
     "EnvironmentPage.showAlt": "Autoriser les Environements alternatifs (Décision du MJ)",
 
@@ -153,10 +169,33 @@
 
     "EnvironmentPage.alliedMilitary.instruction": "Indépendamment de leur espèce, les officiers militaires viennent de plein d'endroits, de nombreux mondes. Bien que beaucoup d'Humains (par exemple) sont nés sur la Terre, il y en a beaucoup d'autres qui sont nés sur un monde colonisé ailleurs dans la Galaxie, ou sur une base spatiale ou un vaisseau.",
 
+    "FinalStarshipDetails.instruction": "Votre vaisseau est presque terminé. Il ne reste que quelques détails à regler !",
+
+    "FinalStarshipDetails.name.instruction": "Tout vaisseau mérite un nom. Il n'y a pas de convention universelle pour nommer un vaisseau, le nom pouvant faire référence à des lieux, des personalités (généralement uniquement le nom de famille), d'anciens vaisseaux, des figures mythiques, ou encore plus abstrait, des valeurs, vertus ou concepts. Le nom devrait être composé idéalement d'un seul mot, plus rarement deux.",
+
+    "FinalStarshipDetails.traits.instruction": "Vous pouvez à présent ajouter des Traits supplémentaires pour votre vaisseau. Pour l'instant le vaisseau possède les Traits :",
+    "FinalStarshipDetails.traits.note": "Votre MJpeut vous autoriser a choisir des traits supplémentaires pour décrire votre vaisseau. (ex: Prototype, Vaisseau Patrimoine, Renommé ou Vétéran)",
+
+    "FinishPage.instruction": "Votre personnage est terminé ! Vous pouvez exporter votre fiche personnage en PDF, ou utiliser l'option \"Profil\" dans la barre à gauche, afin de choisir des options et de les transcrire manuellement sur la feuille de personnage.",
+
+    "FinishPage.rank.instruction": "Choisissez le grade de votre personnage",
+
+    "FinishPage.trait.preamble_one": "Votre personnage obtient automatiquement le Trait suivant :",
+    "FinishPage.trait.preamble_other": "Votre personnage obtient automatiquement les Traits suivants :",
+    "FinishPage.trait.instruction": "Vous pouvez  spécifier de traits supplémentaires ici. ",
+
+    "FinishPage.role.instruction": "Selectionner le role du personnage ainsi que le batiment sur lequel il sert. Ce choix se base sur votre/vos meilleure(s) Discipline(s).  Le choix le plus adapté se situe en haut, mais d'autres options vous sont proposées au cas ou vous souhaiteriez creer un personnage différent. ",
+
+    "FinishPage.values.instruction": "Si vous n'avez pas défini vos Valeurs pendant la création de personnage, ou si vous voulez les modifier,  c'est le moment !",
+
+    "FinishPage.job.example": "ex : Apprenti Ingénieur ",
+
+    "Home.title": "STA : Création de Personnage",
     "Home.selection": "Sélectionnez l'outil.",
     "Home.characterButton": "Personnages et vaisseaux spatiaux",
     "Home.talentsButton": "Vue d'ensemble des talents",
     "Home.tokenCreator": "Jetons",
+    "Home.otherTools": "Autres outils",
 
     "MilestonePage.instruction": "Selectionnez le type de modification vous voulez appliquer avec ce Jalon",
 
@@ -204,24 +243,61 @@
     "SoloEducationDetailsPage.errorValue": "Sélectionnez une Valeur SVP.",
     "SoloEducationDetailsPage.errorFocuses": "Sélectionnez vos spécialités SVP.",
 
+    "SoloEducationPage.instruction.starfleet": "Les années passées à Starfleet Academy sont les plus mémorables et les plus importantes de la vie d’un officier, et elles sont les bases de sa carrière. Ceux qui réussissent les difficiles examens d’entrée y passent quatre ans et partagent leur temps entre un entraînement physique intense, des études théoriques et des expériences pratiques. Leurs études se passent la plupart du temps au sein du campus de l’Académie de Starfleet à San Francisco, sur Terre. D’autres campus et annexes existent dans toute la Fédération (comme à Marseille), et un cadet peut passer du temps dans n’importe lequel d’entre eux avant sa remise de diplôme. Après avoir réussi ses examens, il reçoit un engagement d’officier de Starfleet et le rang d’enseigne. Il doit ensuite attendre plusieurs semaines, voire plusieurs mois, avant sa première affectation. Certains cadets, en particulier ceux qui poursuivent un doctorat, choisissent une voie qui demande une ou deux années d’entraînement et d’étude supplémentaires, et reçoivent le grade de sous-lieutenant. En termes de jeu, le temps passé par le personnage à l’Académie de Starfleet a un impact certain sur lui. Les progrès qu’il y fait sont expliqués en détail plus loin. Le joueur choisit la carrière de son personnage au sein de l’Académie, ou le détermine au dé",
+
+    "SoloEducationPage.type.starfleet": "Starfleet Academy",
+    "SoloEducationPage.type.cadet": "Ecole des Cadets",
+    "SoloEducationPage.type.civilian": "Formation Professionnelle Civile",
+    "SoloEducationPage.type.alliedMilitary": "Formation Militaire Alliée",
+    "SoloEducationPage.type.ambassadorDiplomat": "Formation Diplomatique",
+
+    "SoloEnvironmentDetailsPage.errorAttribute": "Choisissez un Attribut, SVP",
+    "SoloEnvironmentDetailsPage.errorDiscipline": "Choisissez une discipline, SVP",
+    "SoloEnvironmentDetailsPage.errorValue": "Choisissez une Valeur, SVP",
+
+    "SoloFinishingTouchesPage.select": "(Selectionnez {{count}})",
+    "SoloFinishingTouchesPage.errorAttributes": "Choisissez {{count}} Attributs, SVP",
+    "SoloFinishingTouchesPage.errorDisciplines": "Choisissez {{count}} DIciplines, SVP",
+    "SoloFinishingTouchesPage.errorValue": "Choisissez une Valeur, SVP",
+
+    "SoloSpeciesPage.errorAttributes": "Choisissez 3 Attribus, SVP",
+    "SoloSpeciesPage.instruction": "Choisissez une Espèce pour votre personnage ou tirez en une au dé.",
+
     "SpaceframeOptionPage.text": "Voulez vous un modèle standart ou un modèle personalisé?",
 
     "SpaceframeOptionPage.button.standardSpaceframe": "Modèle Standart",
     "SpaceframeOptionPage.button.customSpaceframe": "Modèle personnalisé",
+
+    "SpaceframeSelectionPage.error": "Choisissez un modèle avant de continuer, SVP",
 
     "SpeciesDetails.options": "Option d'espèce",
     "SpeciesDetails.selectThree": "(Choisir trois)",
     "SpeciesDetails.allowCrossSpecies": "Autoriser les talents inter-espèces (Decision du GM)",
     "SpeciesDetails.allowEsoteric": "Autoriser les talents ésoteriques (Decision du GM)",
 
-    "SpeciesPage.selectSpecies": "Choississez une espèce",
+    "SpeciesPage.selectSpecies": "Choisissez une espèce",
     "SpeciesPage.standardSpecies": "Espèces standard",
     "SpeciesPage.mixedSpecies": "Espèces métissées",
     "SpeciesPage.customSpecies": "Espèces sur mesure",
-    "SpeciesPage.primarySpecies": "Choississez une espèce primaire",
-    "SpeciesPage.secondarySpecies": "Choississez une espèce secondaire",
-    "SpeciesPage.selectMixedSpecies": "Choississez une espèce métissée",
-    "SpeciesPage.selectCustomSpecies": "Choississez une espèce sur mesure",
+    "SpeciesPage.primarySpecies": "Choisissez une espèce primaire",
+    "SpeciesPage.secondarySpecies": "Choisissez une espèce secondaire",
+    "SpeciesPage.selectMixedSpecies": "Choisissez une espèce métissée",
+    "SpeciesPage.selectCustomSpecies": "Choisissez une espèce sur mesure",
+    "SpeciesPage.rollCoreSpecies": "Tirer une espèce du livre de base au dé",
+    "SpeciesPage.rollAlphaSpecies": "Tirer une espèce du quadrant Alpha au dé",
+    "SpeciesPage.rollBetaSpecies": "Tirer une espèce du quadrant Beta au dé",
+    "SpeciesPage.rollGammaSpecies": "Tirer une espèce du quadrant Gamma au dé",
+    "SpeciesPage.rollDeltaSpecies": "Tirer une espèce du quadrant Delta au dé",
+    "SpeciesPage.text": "A quelle espèce appartenez-vous ? Vous pouvez également creer un personnage métissé, tirant bénéfice des deux espèces",
+
+    "SpeciesPage.text.select": "Choisissez ou tirez au dé votre Espèce",
+
+    "SpeciesPage.textNoRoll": "A quelle espèce appartenez-vous ? Vous pouvez également creer un personnage métissé, tirant bénéfice des deux espèces",
+    "SpeciesPage.mixedSpeciesNote": "Choisissez deux espèces. vousobtiendrez des Traits et pourrez choisir parmi les talents de chaque espèce, mais seule votre espèce primaire vous accordera un bonus d'Attributs.",
+    "SpeciesPage.selectTwoSpeciesError": "Choisissez une espèce primaire et une secondaire, SVP",
+
+    "StarshipTalentSelection.instruction_one": "Choisissez {{count}} talent.",
+    "StarshipTalentSelection.instruction_other": "Choisissez {{count}} talents.",
 
     "StarshipToolSelection.instruction": "Sélectionnez une option",
     "StarshipToolSelection.standardBuild": "Construction Standard",
@@ -249,7 +325,7 @@
 
     "UpbringingDetailPage.error.discipline": "Vous devez choisir 1 Discipline pour continuer.",
     "UpbringingDetailPage.error.talent": "Vous devez choisir 1 Talent pour continuer.",
-    "UpbringingDetailPage.error.focus": "Vous devez entrer une Spécialité. Choississez parmi les proposistion ou créez la votre.",
+    "UpbringingDetailPage.error.focus": "Vous devez entrer une Spécialité. Choisissez parmi les proposistion ou créez la votre.",
 
     "SupportingCharacter.whatType": "Choisir un type de personnage",
     "SupportingCharacter.howOld": "Quel est l'âge de votre personnage",
@@ -457,7 +533,7 @@
     "Page.title.starshipTraits": "Traits du vaisseau",
     "Page.title.supportingCharacter": "Personnage secondaire",
     "Page.title.systemGeneration": "Génération du système stellaire",
-    "Page.title.tableList": "Liste des tableaux",
+    "Page.title.tableList": "Liste des tables",
     "Page.title.talentsOverview": "Vue d'ensemble des talents",
     "Page.title.toolSelection": "Selection d'Outil",
     "Page.title.viewSheet": "Voir la feuille",
@@ -471,13 +547,95 @@
     "Page.title.npcConfiguration": "Configuration des PNJ Aléatoires",
     "Page.title.safetyChecklist": "Checklist de sécurité",
     "Page.title.tokenCreationPage": "Création de Jeton",
-    "Page.title.viewTable": "Voir tableau",
+    "Page.title.upbringing": "Experience initiale",
+    "Page.title.upbringingDetails": "Détails de l'expérience initiale",
+    "Page.title.viewTable": "Voir table",
 
     "Page.breadcrumb.characterCreation": "Création de personnages",
     "Page.breadcrumb.starshipCreation": "Règles de Base",
     "Page.breadcrumb.supportingCharacterCreation": "Création de Personnage Secondaire",
 
-    "CareerEvent.common.1.name": "Vaisseau détruit",
+    "CareerEvent.common.1.name": "VAISSEAU DÉTRUIT",
+    "CareerEvent.common.1.description": "Le vaisseau sur lequel le personnage servait a été perdu, détruit au cours d’une mission, et il figure parmi les rares survivants. Quelle était sa mission ? Était-ce une mission de rou- tine qui a horriblement mal tourné, ou quelque chose de dangereux ? Qu’est-ce qui a détruit le vaisseau ? Combien y a-t-il eu de survivants ? Combien de temps a-t-il fallu pour les récupérer ?",
+    "CareerEvent.common.1.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les expériences qu’il a endurées. Par exemple : Opérations extravéhiculaires, Petite navette ou Survie.",
+
+    "CareerEvent.common.2.name": "MORT D’UN AMI",
+    "CareerEvent.common.2.description": "Au cours d’une importante mission, l’un des amis du personnage a été tué au combat. Qui était cet ami ? Comment se sont-ils connus ? Quelle était la mission ? Comment l’ami est-il mort ? Qui en est responsable ?",
+    "CareerEvent.common.2.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les expériences qu’il a endurées. Par exemple : Conseiller. Elle peut également représenter une compétence ou un objectif que le personnage a repris à son compte en mémoire de son ami défunt, ou pour éviter qu’une telle situation se reproduise dans le futur.",
+
+    "CareerEvent.common.3.name": "APPRÉCIÉ D’UNE AUTRE CULTURE",
+    "CareerEvent.common.3.description": "Le personnage a pris part à une mission qui lui a valu les remerciements d’une culture étrangère à la Fédération ; il est à présent considéré comme un ami de ce peuple. Quelle culture la mission a-t-elle aidée ? Quelle était la mission ? Pourquoi cela a-t-il mérité de telles louanges ? Le personnage a-t-il des amis ou des contacts au sein de cette culture, auquel il peut faire appel si besoin ?",
+    "CareerEvent.common.3.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les expériences qu’il a vécues là-bas. Par exemple Culture X (en remplaçant le X par son nom), ou toutes les compétences ou les techniques qui lui appartiennent",
+    "CareerEvent.common.3.traitDescription": "Le personnage gagne un Trait représentant cet événement, le renom dont il bénéficie là-bas, ainsi que les avantages et les problèmes conférés par ce statut. Par exemple : Ami de la culture X (en remplaçant le X par son nom)",
+
+    "CareerEvent.common.4.name": "A NÉGOCIÉ UN TRAITÉ",
+    "CareerEvent.common.4.description": "Le personnage faisait partie d’une délégation qui prit part à la négociation d’un traité, d’un accord ou d’une alliance avec une culture étrangère à la Fédération. Quelle était cette culture ? Dans quel but ce traité a-t-il été négocié ?",
+    "CareerEvent.common.4.focusSuggestion": "Le personnage gagne une Spécialisation reflétant son expérience dans ces discussions. Par exemple : Diplomatie, Négociation ou Politique galactique.",
+
+    "CareerEvent.common.5.name": "A DÛ PRENDRE LE COMMANDEMENT",
+    "CareerEvent.common.5.description": "Le chef d’une mission a été incapable d’assumer ses fonctions pendant une crise. Le personnage a dû prendre la direction des opérations et c’était une chose à laquelle il n’avait peut-être pas été préparé. Quelle était la nature de la mission ? Qu’est-ce qui a mal tourné ? A-t-elle réussi malgré l’absence de chef ?",
+    "CareerEvent.common.5.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les expériences qu’il a vécues pendant cette crise. Par exemple, Donner l’exemple, Sang-froid ou Source d’inspiration",
+
+    "CareerEvent.common.6.name": "RENCONTRE AVEC UNE CRÉATURE VÉRITABLEMENT ÉTRANGE",
+    "CareerEvent.common.6.description": "Le personnage a rencontré une forme de vie vraiment différente, qui saisissait à peine la notion de vie humanoïde. Peut-être était-ce une entité divine ou une créature nageant à travers l’espace. Quoi qu’elle ait pu être, ce n’était pas la vie telle que nous la connaissons. Quel genre de créature était-ce ? Quelles connaissances le personnage a-t-il tirées de son expérience ? Qu’est-il arrivé ensuite à la créature ? L’a-t-on vue depuis ?",
+    "CareerEvent.common.6.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les expériences qu’il a vécues avec cette entité. Par exemple, Empathie, Philosophie ou Xénobiologie",
+
+    "CareerEvent.common.7.name": "BLESSURE GRAVE",
+    "CareerEvent.common.7.description": "Le personnage a été gravement touché et son état a nécessité une très longue convalescence. Que se passait-il quand il a été blessé ? Qui a causé cette blessure ? Qu’est-ce que cette convalescence a entraîné ? A-t-il eu besoin d’une prothèse ou d’implants cybernétiques ensuite ?",
+    "CareerEvent.common.7.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les circonstances dans lesquelles il a été blessé, quelque chose qui l’a aidé pendant sa convalescence ou qu’il a acquis après. Par exemple : Art, Athlétisme ou Philosophie.",
+    "CareerEvent.common.7.traitDescription": "Le personnage gagne un Trait représentant les effets à long terme de ses blessures ou la façon dont elles ont guéri. Par exemple : Prothèse, ou une forme de handicap.",
+
+    "CareerEvent.common.8.name": "CONFLIT AVEC UNE CULTURE HOSTILE",
+    "CareerEvent.common.8.description": "Le personnage a pris part à une bataille majeure opposant la Fédération à une force hostile, et il n’est pas près d’oublier son expérience. Qui était l’ennemi ? Pourquoi cet affrontement a-t-il eu lieu ? A-t-il eu lieu dans l’espace, au sol ou les deux ? Qu’a-t-il dû faire pour survivre ? La bataille a-t-elle été gagnée ou perdue ?",
+    "CareerEvent.common.8.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les compétences qu’il a améliorées pendant l’affrontement. Par exemple, Combat au corps-à-corps, Phaseurs de poing ou Systèmes tactiques de bord.",
+
+    "CareerEvent.common.9.name": "MENTOR",
+    "CareerEvent.common.9.description": "Un officier très respecté a remarqué le parcours du personnage, et l’a pris pendant un certain temps à son service comme pilote et aide de camp. Celui-ci a bénéficié de son expérience et de ses enseignements. Qui était cet officier ? Est-il resté un contact, ou même devenu un ami ?",
+    "CareerEvent.common.9.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les connaissances apprises. Par exemple, Étiquette ou Sang-froid, ou n’importe quelle Spécialisation représentant celles de l’officier.",
+
+    "CareerEvent.common.10.name": "ACCIDENT DE TÉLÉPORTEUR",
+    "CareerEvent.common.10.description": "Le personnage a été victime d’un étrange accident au cours d’une téléportation. Que lui est-il arrivé pendant cet incident ? Y a-t-il eu des répercussions à long terme ? Que pense-t-il à présent des téléporteurs ?",
+    "CareerEvent.common.10.focusSuggestion": "Le personnage gagne une Spécialisation qui doit refléter ce que l’accident, ou ses suites, lui a appris. Par exemple, Mécanique quantique, Petites navettes ou Téléporteurs & synthétiseurs.",
+
+    "CareerEvent.common.11.name": "CONFRONTÉ À UNE ÉPIDÉMIE",
+    "CareerEvent.common.11.description": "Le vaisseau du personnage a été envoyé porter assistance à un monde victime d’une épidémie. Quelle était cette maladie qui faisait des ravages ? Quelle planète était contaminée ? Comment s’est-il impliqué ?",
+    "CareerEvent.common.11.focusSuggestion": "Le personnage gagne une Spécialisation reflétant la manière dont il a prêté assistance pendant cette crise. Par exemple, Maladies infectieuses, Médecine d’urgence ou Triage.",
+
+    "CareerEvent.common.12.name": "A TRAHI SES IDÉAUX POUR UN SUPÉRIEUR",
+    "CareerEvent.common.12.description": "Le personnage s’est retrouvé dans une situation où il a dû choisir entre un officier en qui il avait confiance et ses propres valeurs, et il a suivi son supérieur. Qui était ce supérieur ? Que lui a-t-il demandé de faire ? Comment le personnage se sent-il à présent ? Existe-t-il des archives sur le sujet ? A-t-il eu raison de le faire ?",
+    "CareerEvent.common.12.focusSuggestion": "Le personnage gagne une Spécialisation reflétant cet événement et ses conséquences. Par exemple, Enquête, Inspiration ou Persuasion.",
+
+    "CareerEvent.common.13.name": "A DÉSOBÉI À UN SUPÉRIEUR",
+    "CareerEvent.common.13.description": "Le personnage s’est retrouvé dans une situation où il a dû choisir entre un officier en qui il avait confiance et ses propres valeurs, et il a suivi ses valeurs.Qui était ce supérieur ? Que lui a-t-il demandé de faire ? Comment le personnage se sent-il à présent ? Quelles ont été les répercussions de cette action ? Existe-t-il des archives sur le sujet ? A-t-il eu raison de le faire ?",
+    "CareerEvent.common.13.focusSuggestion": "Le personnage gagne une une Spécialisation reflétant cet événement et ses conséquences. Par exemple, Code de justice militaire, Histoire ou Protocole de Starfleet.",
+
+    "CareerEvent.common.14.name": "NOUVELLE STRATÉGIE",
+    "CareerEvent.common.14.description": "Pendant un combat contre une force hostile, le personnage a mis au point une stratégie ou une tactique nouvelle. Contre qui livrait-il bataille ? Était-ce dans l’espace ou au sol ? Quelle était cette stratégie ?",
+    "CareerEvent.common.14.focusSuggestion": "Le personnage gagne une Spécialisation reflétant son rôle décisif sur le champ de bataille. Par exemple, Donner l’exemple, Sens du danger ou Tactique de combat.",
+
+    "CareerEvent.common.15.name": "A APPRIS UNE LANGUE UNIQUE",
+    "CareerEvent.common.15.description": "Le personnage a rencontré une espèce douée d’une forme unique de communication et l’a apprise. Qui étaient ces extraterrestres ? Le climat de cette rencontre était-il tendu ou paisible ? Quelle était la méthode de communication utilisée ? Comment l’a-t-il apprise ?",
+    "CareerEvent.common.15.focusSuggestion": "Le personnage gagne une Spécialisation qui doit refléter ce qu’il a appris de l’événement. Par exemple, Approche culturelle, Langues ou Négociation.",
+
+    "CareerEvent.common.16.name": "A DÉCOUVERT UN ARTEFACT",
+    "CareerEvent.common.16.description": "Au cours d’une mission de reconnaissance, le personnage a découvert un appareil ou un élément de technologie appartenant à une civilisation à présent disparue. Que faisait cet objet ? Fonctionne-t-il toujours ? Que sait-on de la civilisation qui l’a fabriqué ?",
+    "CareerEvent.common.16.focusSuggestion": "Le personnage gagne une Spécialisation reflétant cet événement et ses conséquences. Par exemple, Informatique, Ingénierie inversée ou Technologie antique",
+
+    "CareerEvent.common.17.name": "DÉCORATION",
+    "CareerEvent.common.17.description": "Le personnage a, au cours d’une situation de crise, sauvé la vie de plusieurs collègues et les a mis en sûreté. Cela lui a valu une décoration. Quelle était cette situation de crise ? Pourquoi la mission était-elle en danger ? Y a-t-il eu des répercussions ? Existe-t-il des archives sur le sujet ?",
+    "CareerEvent.common.17.focusSuggestion": "Le personnage gagne une Spécialisation qui doit refléter cet événement et ses conséquences. Par exemple, Athlétisme, Médecine d’urgence ou Survie.",
+
+    "CareerEvent.common.18.name": "A RÉSOLU UNE CRISE TECHNIQUE",
+    "CareerEvent.common.18.description": "Le personnage a joué un rôle clé dans la résolution d’une crise provoquée par une technologie défectueuse, et il a ainsi sauvé de nombreuses vies. Quelle était la technologie en cause et pourquoi était-ce dangereux ? Comment a-t-il résolu le problème ?",
+    "CareerEvent.common.18.focusSuggestion": "Le personnage gagne une Spécialisation reflétant la technologie en cause dans cet événement. Par exemple, Moteurs à distorsion, Réacteurs à fusion ou Système d’alimentation électro-plasmatiques",
+
+    "CareerEvent.common.19.name": "DÉCOUVERTE CAPITALE OU INVENTION",
+    "CareerEvent.common.19.description": "Le personnage a fait une découverte technologique importante, mis au point une nouvelle façon d’utiliser un appareil précis ou inventé une nouvelle technologie qui se révélera inestimable dans le futur. Quelle est cette trouvaille, cette découverte capitale ou cette invention ? En quoi sera-t-elle utile ?",
+    "CareerEvent.common.19.focusSuggestion": "Le personnage gagne une Spécialisation reflétant la réussite du personnage. Par exemple, Improvisation, Invention ou Technologie expérimentale.",
+
+    "CareerEvent.common.20.name": "PREMIER CONTACT",
+    "CareerEvent.common.20.description": "Le personnage a été sélectionné pour participer à l’une des missions les plus importantes de Starfleet : le premier contact avec une autre culture. Quelle était cette culture ? La mission s’est-elle bien déroulée ?",
+    "CareerEvent.common.20.focusSuggestion": "Le personnage gagne une Spécialisation reflétant la nature de la mission. Par exemple, Approche culturelle, Diplomatie ou Infiltration.",
 
     "CareerType.core.young.name": "Jeune Officier",
     "CareerType.core.young.description": "Le personnage est défini plus par son potentiel que par ses compétences. leur talent brut et leurs espérances sur ce que à quoi l'univers ressemble n'ont pas encore été altéré par la réalité.",
@@ -515,6 +673,8 @@
     "CareerType.klingon.veteran.description": "Le personnage a des dizaines d'années d'expérience au service de l'Empire, et a servi sur de nombreux vaisseaux et bases spatiales. Le jugement et les opinions du personnage sont prisés par ses subordonés, ses pairs, et même ses supérieurs.",
     "CareerType.klingon.veteran.valueInstruction": "Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière.",
 
+    "CareerType.solo.young.name": "Novice",
+
     "CareerType.solo.experienced.name": "Expérimenté",
 
     "CareerType.solo.veteran.name": "Vétéran",
@@ -527,6 +687,8 @@
     "CharacterType.name.cadet": "Cadet",
     "CharacterType.name.child": "Enfant",
     "CharacterType.name.other": "Autre",
+
+    "EarlyOutlook.MilitaryOrExploration": "Starfleet",
 
     "Environment.common.homeworld.name": "Planète natale",
     "Environment.common.homeworld.description": "Le personnage vient du monde qui a vu naître leur civilisation,et a été entouré toute sa vie par leurs héritages culturels et spirituels. Les mondes natals sont souvent utopiques et idylliques, servant comme idéal platonique de la culture de leur espèce. Ils illustrent également les aspects des traditions les plus vénérées d'une culture et constituent le cœur du paysage juridique et politique de cette civilisation.",
@@ -640,6 +802,74 @@
     "ExtraType.zaraniteMask": "Respirateur Zaranite",
     "ExtraType.ferengiHeadFlap": "Voilette Ferengi",
 
+    "Focus.animalHandling": "Comportement animal",
+    "Focus.anthropology": "Anthropologie",
+    "Focus.astrometrics": "Astrométrique",
+    "Focus.astronavigation": "Astronavigation",
+    "Focus.astrophysics": "Astrophysique",
+    "Focus.bureaucracy": "Bureaucracie",
+    "Focus.botany": "Botanique",
+    "Focus.composure": "Maitrise de soi",
+    "Focus.computers": "Informatique",
+    "Focus.culturalStudies": "Etudes culturelles",
+    "Focus.cybernetics": "Cybernetique",
+    "Focus.debate": "Débat",
+    "Focus.demolition": "Démolition",
+    "Focus.diplomacy": "Diplomacie",
+    "Focus.disguise": "Déguisement",
+    "Focus.disruptors": "Disrupteurs",
+    "Focus.electroPlasmaPowerSystems": "Systèmes d'Alimentations Electro-Plasmiques",
+    "Focus.emergencyMedicine": "Médecine d'Urgence",
+    "Focus.espionage": "Espionnage",
+    "Focus.exoTectonics": "Exo-tectonique",
+    "Focus.extraVehicularActivity": "Activités Extra-Vehiculaires ",
+    "Focus.evasiveAction": "Action d'évasion",
+    "Focus.finances": "Finances",
+    "Focus.genetics": "Genetique",
+    "Focus.geology": "Géologie",
+    "Focus.handPhasers": " Phaseurs de Poing",
+    "Focus.handToHandCombat": "Combat à mains nues",
+    "Focus.helmOperation": "Timonerie",
+    "Focus.history": "Histoire",
+    "Focus.holoprogramming": "Holoprogrammation",
+    "Focus.infectiousDiseases": "Maladies infectieuses",
+    "Focus.infiltration": "Infiltration",
+    "Focus.inspiration": "Inspiration",
+    "Focus.interrogation": "Interrogation",
+    "Focus.intimidation": "Intimidation",
+    "Focus.law": "Droit",
+    "Focus.linguistics": "Linguistique",
+    "Focus.manufacturing": "Fabrication",
+    "Focus.metallurgy": "Metallurgie",
+    "Focus.music": "Musique",
+    "Focus.negotiation": "Négotiation",
+    "Focus.observation": "Observation",
+    "Focus.persuasion": "Persuasion",
+    "Focus.philosophy": "Philosophie",
+    "Focus.physics": "Physique",
+    "Focus.politics": "Politique",
+    "Focus.powerSystems": "Systèmes d'alimentation",
+    "Focus.psychiatry": "Psychiatrie",
+    "Focus.psychology": "Psychologie",
+    "Focus.quantumMechanics": "Mechanique Quantique",
+    "Focus.rapidAnalysis": "Analyse Rapide",
+    "Focus.shipboardTacticalSystems": "Systèmes Tactiques de Bord",
+    "Focus.smallCraft": "Petit Vaisseau",
+    "Focus.starshipRecognition": "Reconnaissance des Vaisseaux",
+    "Focus.starfleetProtocols": "Protocoles de Starfleet ",
+    "Focus.structuralEngineering": "Ingénierie Structurelle",
+    "Focus.subspaceCommunications": "Communications Subspaciales",
+    "Focus.surgery": "Chirurgie",
+    "Focus.survey": "Enquête",
+    "Focus.survival": "Survie",
+    "Focus.teamDynamics": "Dynamique d'équipe",
+    "Focus.threatAnalysis": "Analyse des Menaces",
+    "Focus.traumaSurgery": "Chirurgie Traumatique",
+    "Focus.transportersReplicators": "Transporteurs & Réplicateurs",
+    "Focus.virology": "Virologie",
+    "Focus.warpFieldDynamics": "Dynamique des Champs de Distorsion",
+    "Focus.xenobiology": "Xenobiologie",
+
     "GovernmentType.name.andorian": "Andorien",
     "GovernmentType.name.bajoran": "Bajoran",
     "GovernmentType.name.cardassian": "Cardassien",
@@ -658,6 +888,14 @@
     "MilestoneType.name.normalMilestone": "Jalon Normal",
     "MilestoneType.name.spotlightMilestone": "Jalon Sous les Projecteurs",
     "MilestoneType.name.arcMilestone": "Jalon Arc de Personnage",
+
+    "MissionProfile.default.strategicAndDiplomatic": "OPÉRATIONS DIPLOMATIQUES ET STRATÉGIQUES",
+    "MissionProfile.default.pathfinderAndReconaissance": "OPÉRATIONS DE RECONNAISSANCE ET D’EXPLORATION",
+    "MissionProfile.default.technicalTestBed": "PLATEFORME D’ESSAI TECHNIQUE",
+    "MissionProfile.default.tactical": "OPÉRATIONS TACTIQUES",
+    "MissionProfile.default.scientificAndSurvey": "OPÉRATIONS D’ÉTUDE SCIENTIFIQUE",
+    "MissionProfile.default.crisisAndEmergencyResponse": "RÉPONSE AUX SITUATIONS D’URGENCE ET DE CRISE",
+    "MissionProfile.default.multiroleExplorer": "EXPLORATEUR POLYVALENT",
 
     "NpcType.minor.name": "PNJ Mineur",
 
@@ -786,6 +1024,54 @@
     "Role.communicationsOfficer.description": "Cette fonctionétait plus répandue aux débuts de Starfleet, et elle est occupée par des officiers dévoués, compétents en langues et en cryptographie et assistés des dernières technologies en matière de traduction et de décryptage. C’est un atout précieux quand le navire rencontre des cultures nouvelles ou hostiles.",
     "Role.communicationsOfficer.ability": "L’officier des communications ne tient pas compte de l’augmentation de difficulté d’une Tâche qu’il entreprend si elle est causée par une langue ou un codage inhabituel",
 
+    "Role.admiral": "Amiral",
+
+    "SafetyEvaluationType.alwaysOk": "Toujours OK",
+    "SafetyEvaluationType.yellowAlert": "Alerte Jaune",
+    "SafetyEvaluationType.redAlert": "Alerte Jouge",
+
+    "SafetySection.category.dismemberment": "Descriptions de démembrement",
+    "SafetySection.category.gore": "Descriptions sanglantes",
+    "SafetySection.category.massDestructionGenocide": "Descriptions de Destruction de Masse et de Génocide",
+    "SafetySection.category.harmToAnimals": "Maltraitance Animale",
+    "SafetySection.category.harmToChildren": "Maltraitance Enfantine",
+    "SafetySection.category.hateCrimes": "Maltraitance envers des minorités, crimes de haine ciblés",
+    "SafetySection.category.traitorMechanicsPvP": "Mécaniques de traitrise entre joueurs",
+    "SafetySection.category.speciesHate": "Haine dirigée envers d'autres espèces (ex : Klingons,humains",
+    "SafetySection.category.homophobia": "Homophobie/ Transphobie",
+    "SafetySection.category.racism": "Racisme (au sein d'une espèce)",
+    "SafetySection.category.religiousIntolerance": "Intolerence religieuse",
+    "SafetySection.category.sexism": "Sexisme",
+    "SafetySection.category.hatefulLanguage": "Haine verbale ciblée",
+    "SafetySection.category.entrapment": "Enfermement, etre enterré vivant",
+    "SafetySection.category.grief": "Deuil",
+    "SafetySection.category.imprisonmentRestraint": "Emprisonnement ou contrainte",
+    "SafetySection.category.noPersonalAgency": "Manque d'emprise surles événements",
+    "SafetySection.category.mentalAbuse": "Abus mentaux ou conditionnement",
+    "SafetySection.category.stranded": "Isolation, Incapacité d'appeler a l'aide",
+    "SafetySection.category.biologicalWeapons": "Armes Biologiques",
+    "SafetySection.category.desecrationOfBodies": "Profanation de corps",
+    "SafetySection.category.execution": "Executions",
+    "SafetySection.category.forcedScientificExperiments": "Experimentation scientifique forcée",
+    "SafetySection.category.murderOfNonCombatants": "Meurtre de non combatants",
+    "SafetySection.category.torture": "TOrture",
+
+    "SafetySectionType.violence": "Violence",
+    "SafetySectionType.gameplayMechanics": "Mécaniques de Jeu",
+    "SafetySectionType.hatred": "Haine",
+    "SafetySectionType.helplessness": "Sentiment d'Impuissance",
+    "SafetySectionType.warCrimes": "Crimes de guerre",
+
+    "SheetTag.a4": "A4",
+    "SheetTag.halfPage": "Demi-page",
+    "SheetTag.landscape": "Paysage",
+    "SheetTag.languageSupport": "Langue",
+    "SheetTag.lcars": "LCARS",
+    "SheetTag.portrait": "Portrait",
+    "SheetTag.style2e": "Style 2ème édition",
+    "SheetTag.twoPage": "2 Pages",
+    "SheetTag.usLetter": "Format lettre US",
+
     "ShipBuildType.pod.name": "Nacelle",
 
     "ShipBuildType.shuttlecraft.name": "Navette",
@@ -826,6 +1112,99 @@
     "Source.book.discoveryCampaign": "Campagne Discovery",
     "Source.book.picardS1": "Picard S1",
     "Source.book.utopiaPlanitia": "Utopia Planitia",
+    "Source.book.lowerDecksCampaign": "Lower Decks",
+    "Source.book.captainsLog": "Captain's Log",
+    "Source.book.animatedSeries": "Animated Series",
+    "Source.book.continuingMissions": "Continuing Mission",
+
+    "Spaceframe.akira": "Classe Akira",
+
+    "Spaceframe.akira.description": "En 2367, suite à la Bataille de Wolf 359, Starfleet comprit la nécessité d’un vaisseau bien plus lourdement armé. Un navire qui pourrait patrouiller et défendre de vastes portions de territoire contre d’éventuelles incursions des Borgs, tout en poursuivant sa mission principale, celle de tous les vaisseaux Starfleet : explorer l’inconnu. Le Bureau de Conception de Vaisseau Avancé des Chantiers Spatiaux d’Antares reprit le croquis d’un modèle qui avait été abandonné, et donna naissance à l’U.S.S. Akira en 2368. Les tests furent si concluants que Starfleet Command demanda sur-le-champ une production de masse.",
+
+    "Spaceframe.ambassador": "Classe Ambassador",
+    "Spaceframe.archer": "Classe Archer",
+    "Spaceframe.california": "Class California",
+    "Spaceframe.cardenas": "Classe Cardenas",
+    "Spaceframe.centaur": "Classe Centaur",
+    "Spaceframe.constellation": "Classe Constellation",
+
+    "Spaceframe.constellation.description": "Sa conception remonte à la moitié des années 2280, période de grandes tensions entre l’Empire Klingon et la Fédération. À l’origine, il devait servir de patrouilleur et d’intercepteur lourd, mais sans pour autant ressembler à un vaisseau de guerre. Par conséquent, sa production se poursuivit malgré la signature des premiers Accords de Khitomer, en 2293. Il changea néanmoins d’affectation : au lieu de servir d’intercepteur, sa mission serait d’intervenir en cas d’urgence et de gérer les conflits qui pourraient rapidement dégénérer sans l’intervention de Starfleet.",
+
+    "Spaceframe.constitution": "Classe Constitution",
+
+    "Spaceframe.constitution.description": "Depuis le 23 e siècle, les vaisseaux de classe Constitution sont ceux qui représentent le mieux Starfleet. En 2235, l’organisation cherchait à améliorer la protection des mondes de la Fédération et à étendre son espace territorial. Elle décida qu’elle avait besoin d’un navire d’exploration plus robuste et polyvalent, qui serait en mesure de lutter si la menace d’un conflit imminent avec l’Empire Klingon venait à se concrétiser. Le design qu’ils mirent au point servit par la suite à des dizaines de classes de vaisseaux : une coque principale en forme de soucoupe, contenant la passerelle et la plupart des systèmes d’armement, une coque secondaire cylindrique hébergeant le noyau de distorsion, le déflecteur de navigation et le hangar à navettes, et reliée par deux entretoises à deux nacelles de distorsion, placées à bonne distance du vaisseau.",
+
+    "Spaceframe.crossfield": "Classe Crossfield",
+    "Spaceframe.daedalus": "Classe Daedalus",
+    "Spaceframe.defiant": "Classe Défiant",
+
+    "Spaceframe.defiant.description": "Si la science et l’exploration sont les motivations principales de Starfleet, les exploits militaires ne sont pas sa priorité. L’organisation n’a que peu d’expérience concernant la conception de navires de guerre, à l’exception de quelques modèles réalisés pendant le conflit qui opposa la Terre à l’Empire Stellaire Romulien. Starfleet avait commencé à travailler sur la classe Defiant un an avant la bataille de Wolf 359, mais son développement et sa production sont devenus une priorité après cet affrontement désastreux contre le Collectif Borg. Les premiers tests du prototype ont révélé de sérieux défauts, et l’intégralité du projet a été mise au placard. Son développement ne reprit qu’en 2370, lorsque l’officier commandant de Deep Space 9 demanda que le prototype lui soit confié, alors que les tensions entre la Fédération et le Dominion ne cessaient de s’exacerber.",
+
+    "Spaceframe.engle": "Classe Engle ",
+    "Spaceframe.excelsior": "Classe Excelsior",
+    "Spaceframe.gagarin": "Class Gagarine",
+    "Spaceframe.galaxy": "Classe Galaxy",
+
+    "Spaceframe.galaxy.description": "La classe Galaxy a été conçue pour être le meilleur vaisseau d’exploration scientifique jamais déployé par Starfleet. C’est pourquoi, lors de sa mise en service, il était équipé des meilleures technologies de la fin des années 2350, tout comme le classe Nebula qui avait un design identique. Il représentait également la nouvelle philosophie de Starfleet, qui souhaitait permettre aux officiers et aux équipages affectés à de longues missions aux confins de l’espace d’emmener avec eux leurs familles et leurs proches, au lieu de les en séparer pendant des années. Par conséquent, ce vaisseau spatial faisait partie des plus grands : il pouvait contenir jusqu’à deux mille membres d’équipage et leurs familles (même si dans les faits ce nombre s’élevait plutôt à mille), ainsi que quinze mille évacués en cas d’urgence. Entre quinze et vingt pourcents des personnes présentes à bord ne travaillaient pas pour Starfleet, et chaque vaisseau de classe Galaxy mettait à leur disposition des infrastructures et des services, comme des écoles pour les enfants, des bars, parfois même des restaurants, des crèches, et les plus grands holodecks de l’époque.",
+
+    "Spaceframe.ganashia": "Classe Ganashia",
+    "Spaceframe.hermes": "Classe Hermes",
+    "Spaceframe.hiawatha": "Classe Hiawatha",
+    "Spaceframe.hoover": "Classe Hoover",
+    "Spaceframe.intrepid": "Classe Intrepid",
+
+    "Spaceframe.intrepid.description": "Au milieu des années 2360, Starfleet était conscient des qualités et des défauts des vaisseaux de classe Galaxy. À cause de sa grande taille, de son équipage important, et du fait qu’il était plus souvent affecté aux missions d’ordre diplomatique qu’à l’exploration, les ingénieurs commencèrent à travailler sur le prochain grand explorateur : la classe Intrepid. Le premier navire fut introduit en grande pompe en 2371, et le Conseil Scientifique de la Fédération le considéra rapidement comme une précieuse ressource. Plus petit que la classe Galaxy, il ressemblait beaucoup à la classe Constitution, mais il était équipé de la meilleure technologie de la Fédération",
+
+    "Spaceframe.inquiry": "Classe Inquiry",
+    "Spaceframe.luna": "Classe Luna",
+    "Spaceframe.magee": "Classe Magee",
+    "Spaceframe.malachowski": "Classe Malachowski",
+    "Spaceframe.miranda": "Classe Miranda",
+    "Spaceframe.nebula": "Classe Nébula",
+    "Spaceframe.newOrleans": "Classe Nouvelle Orléans",
+    "Spaceframe.nimitz": "Classe Nimitz",
+    "Spaceframe.norway": "Classe Norway",
+    "Spaceframe.nova": "Classe Nova",
+    "Spaceframe.nX": "Classe NX",
+    "Spaceframe.obena": "Classe Obena",
+    "Spaceframe.oberth": "Classe Oberth",
+    "Spaceframe.olympic": "Classe Olympic",
+    "Spaceframe.odyssey": "Classe Odyssey",
+    "Spaceframe.osler": "Classe Osler",
+    "Spaceframe.parliament": "Classe Parliament",
+    "Spaceframe.pathfinder": "Classe Pathfinder",
+    "Spaceframe.reliant": "Classe Reliant",
+    "Spaceframe.ross": "Classe Ross",
+    "Spaceframe.saber": "Classe Saber",
+    "Spaceframe.shepard": "Classe SHepard",
+    "Spaceframe.sovereign": "Classe Sovereign",
+    "Spaceframe.steamrunner": "Classe Steamrunner",
+    "Spaceframe.sutherland": "Classe Sutherland",
+    "Spaceframe.sydney": "Classe Sydney",
+    "Spaceframe.tKalat": "Classe T'Kalat",
+    "Spaceframe.walker": "Classe Walker",
+
+    "Specialization.admiral": "Amiral",
+    "Specialization.admin": "Yeoman",
+    "Specialization.child": "Enfant",
+    "Specialization.conn": "Pilote",
+    "Specialization.counselor": "Conseiller",
+    "Specialization.civilianDoctor": "Médecin",
+    "Specialization.engineer": "Ingénieur",
+    "Specialization.ferengiDaiMon": "DaiMon Ferengi",
+    "Specialization.ferengiMerchant": "Marchand Ferengi",
+    "Specialization.firstContactSpecialist": "Spécialiste du premier contact",
+    "Specialization.hangarDeck": "Hangar de Pont",
+    "Specialization.intelligenceOfficer": "Officier du Renseignement",
+    "Specialization.klingonWarrior": "Guerrier Klingon",
+    "Specialization.klingonShipCaptain": "Capitaine de vaisseau Klingon",
+    "Specialization.klingonWeaponsOfficer": "Officier Tactique Klingon",
+    "Specialization.klingonMedic": "Médecin Klingon",
+    "Specialization.medicalDoctor": "Médecin",
+    "Specialization.nurse": "Infirmier",
+    "Specialization.scienceTech": "Technicien Scientifique",
+    "Specialization.security": "Sécurité",
+    "Specialization.starfleetScientist": "Scientifique",
 
     "Species.andorian.aboutNames": "Les noms ANDORIENS ont en général des sonorités dures, et comprennent un prénom suivi du nom du clan. Certains Andoriens ont l’habitude de faire précéder le nom du clan d’un préfixe de genre (« zh » pour les femmes et « ch » ou « th » pour les hommes) et d’une apostrophe ; il sera placé avant le nom de famille. Les noms andoriens plus longs ou plus compliqués seront raccourcis, en particulier quand ils ont affaire à d’autres espèces.",
     "Species.andorian.description": "Ce peuple agressif et passionné originaire de la lune glacée d’Andoria fait partie de la Fédération des Planètes Unies depuis sa création, et il était déjà un fidèle allié de l’humanité depuis déjà plusieurs années. Leur peau bleue, leurs cheveux pâles et leurs antennes leur confèrent une apparence distinctive. Si la Garde impériale andorienne a été démobilisée quand la Fédération est née, ils ont conservé de fortes traditions militaires, ainsi qu’un rituel de duel d’honneur appelé Ushaan au cours duquel on utilise des outils pour creuser la glace affûtés comme des rasoirs.",
@@ -844,16 +1223,85 @@
     "Species.betazoid.exampleValue": "La compassion par la compréhension",
     "Species.betazoid.traitDescription": "Les Bétazoïdes sont tous télépathes à différents degrés et même lorsqu’ils n’utilisent pas activement leurs talents, ils sont très perceptifs des gens qui les entourent, mais aussi très sensibles aux perturbations télépathiques et aux attaques mentales. Étant donné l’ouverture de leur culture et leur aptitude à lire les pensées et les émotions des autres, ils sont très peu familiers avec le mensonge et la tromperie. Leur sensibilité aux esprits des autres êtres vivants les rend mal à l’aise avec les animaux ; ils ont en effet peur de se perdre dans l’esprit des créatures sauvages.",
 
+    "Species.bynar.name": "Bynar",
+
+    "Species.caitian.name": "Caitien",
+
+    "Species.cardassian.name": "Cardassien",
+
+    "Species.changeling.name": "Changeant",
+
+    "Species.chelon.name": "Chélonien (Rigellien)",
+
+    "Species.coridanite.name": "Coridanites",
+
+    "Species.deltan.name": "Deltan",
+
     "Species.denobulan.name": "Dénobulien",
     "Species.denobulan.aboutNames": "Les DÉNOBULIENS ont en général un seul nom, étant donné qu’un individu peut faire partie de plusieurs familles entrecroisées. Certains Dénobuliens accolent le nom de l’un de leurs conjoints et en font une sorte de surnom, mais cette habitude indique souvent une association avec des espèces qui ne comprennent pas le fonctionnement de leur structure familiale. Leurs noms sont en général courts et ils ont des sonorités dures, en particulier les prénoms masculins.",
     "Species.denobulan.description": "La planète Dénobula est alliée à l’humanité depuis les années 2130 et si elle ne figure pas parmi les fondateurs de la Fédération, elle l’a rejointe peu de temps après. Ce peuple, sociable, grégaire et curieux a des traits expressifs et distinctifs. Il vit traditionnellement dans des communautés étroitement liées, et au sein de larges et complexes groupes familiaux étendus. Un Dénobulien a plusieurs épouses, qui ont elles-mêmes plusieurs partenaires, et qui ont ensemble des douzaines d’enfants. Ils sont culturellement curieux, perspicaces et intéressés par un large éventail de philosophies, mais à cause de leur tempérament studieux, de leurs grandes familles et de leur nature grégaire, ils quittent rarement leur monde natal pour s’aventurer dans l’univers.",
     "Species.denobulan.exampleValue": "La sécurité dans le nombre.",
     "Species.denobulan.traitDescription": "Les Dénobuliens ont un solide système immunitaire, mais une certaine vulnérabilité aux différentes formes d’empoisonnement par les radiations. Grimpeurs naturels et talentueux, ils sont capables d’escalader les parois abruptes comme certains lézards terrestres. Les Dénobuliens n’ont pas besoin de dormir ; ils doivent pourtant hiberner plusieurs jours par an et seront désorientés s’ils sont obligés de rester éveillés au cours de cette période",
 
+    "Species.doopler.name": "Doopler",
+
+    "Species.edosian.name": "Edosien",
+
+    "Species.efrosian.name": "Efrosien",
+
+    "Species.elAurian.name": "El-Aurien",
+
+    "Species.ferengi.name": "Ferengi",
+
+    "Species.gorn.name": "Gorn",
+
+    "Species.hologram.name": "Hologramme",
+
+    "Species.horta.name": "Horta",
+
     "Species.human.name": "Humain",
+    "Species.human.aboutNames": "Les noms HUMAINS sont très différents et plutôt que de généraliser, il vaut mieux que les joueurs cherchent dans d’autres sources, considérant la grande variété de langues, de cultures et de traditions chez les Humains.",
     "Species.human.description": "Originaires de la planète Terre dans le système Sol, les Humains sont une espèce résistante, diverse et capable de s’adapter à tout. En moins d’un siècle, ils sont passés d’un conglomérat de nations divisées, en guerre et au bord de l’annihilation mutuelle à une société unie et paisible, et ils ont forgé des alliances avec d’anciens ennemis dans le siècle qui a suivi leur maîtrise du voyage interstellaire. La Terre est le membre fondateur et central de la Fédération des Planètes Unies, et l’on retrouve un grand nombre de ses institutions sur la planète. Les Humains ont une nature souvent dichotomique ; ils sont tout autant influencés par de puissantes émotions que par un raisonnement prudent et s’ils ont en grande partie réussi à s’affranchir de leurs comportements guerriers et de leurs divisions, leur instinct et leur potentiel d’agression participent autant à leur réussite que leur curiosité et leur esprit d’analyse.",
     "Species.human.exampleValue": "L’envie d’explorer.",
     "Species.human.traitDescription": "Les Humains sont résistants et s'adaptent à tout ; leur volonté et leur ambition leur permettent souvent de triompher, envers et contre tout, de grandes épreuves. Ils peuvent hélas se montrer tout aussi imprudents, bornés, irrationnels et imprévisibles.",
+
+    "Species.hupyrian.name": "Hupyrien",
+
+    "Species.illyrian.name": "Illyrien",
+
+    "Species.jelna.name": "Jelna (Rigellien)",
+
+    "Species.jemHadar.name": "Jem'Hadar",
+
+    "Species.kazon.name": "Kazon",
+
+    "Species.kelpien.name": "Kelpien",
+
+    "Species.klingon.name": "Klingon",
+
+    "Species.megarite.name": "Mégarite",
+
+    "Species.nausicaan.name": "Nausicaan",
+
+    "Species.orion.name": "Orion",
+
+    "Species.other.name": "Custom / Autre",
+
+    "Species.pandronian.name": "Pandronien",
+
+    "Species.phylosian.name": "Phylosien",
+
+    "Species.risian.name": "Risien",
+
+    "Species.reman.name": "Rémien",
+
+    "Species.romulan.name": "Romulien",
+
+    "Species.skorr.name": "Skorr",
+
+    "Species.suliban.name": "Suliban",
+
+    "Species.talarian.name": "Talarien",
 
     "Species.tellarite.name": "Tellarite",
     "Species.tellarite.aboutNames": "Les noms TELLARITES varient considérablement mais ils sont en général tous composés de sonorités dures, voire gutturales. Ils sont formés par un prénom suivi d’un nom de famille, souvent composé, ce qui indique qu’il s’agit d’un patronyme ou d’un matronyme (le nom du père ou de la mère), d’un toponyme (dérivé d’un lieu) ou d’un nom similaire. On retrouve des préfixes similaires à ceux que l’on retrouve dans les noms de famille humains, comme par exemple « O’ », « Mc » et « von ». Exemples : Pola jav Brin (féminin), Tuk glasch Khutohk (masculin).",
@@ -867,11 +1315,31 @@
     "Species.trill.exampleValue": "Quatre vies d’aventure.",
     "Species.trill.traitDescription": "Ils sont étrangement très résistants aux parasites, et c’est une bizarrerie de leur potentiel à se « joindre ». Totalement immunisés aux infections parasitaires, ils font pourtant de fortes réactions allergiques aux morsures et aux piqûres d’insectes, et aux autres formes de venins, qui peuvent déséquilibrer leur chimie neurologique, en particulier quand ils sont « joints ». Des complications médicales peuvent résulter de la méconnaissance des spécificités de leur physiologie, et plus précisément celles de la symbiose.",
 
+    "Species.tzenkethi.name": "Tzenkethi",
+
+    "Species.vorta.name": "Vorta",
+
     "Species.vulcan.name": "Vulcain",
     "Species.vulcan.aboutNames": "Les VULCAINS n’ont qu’un prénom et sont assez traditionnels dabs leur choix. Ils ont cependant des noms de famille, mais c’est un sujet qu’ils n’abordent pas avec les autres espèces. Le nom des Vulcains commence par un S et celui des Vulcaines par un T mais dans les deux cas, c’est loin d’être une généralité.",
     "Species.vulcan.description": "Les Vulcains sont stoïques, rationnels et considérés à tort comme largement dénués d’émotions. En réalité, ils les ressentent profondément et intensément, et ce à leur propre détriment. Leur stoïcisme est issu d’une culture de logique et de discipline personnelle, dans laquelle les émotions sont analysées et disséquées afin de les débarrasser de leur puissance, et ainsi de les empêcher de submerger ou de contrôler l’individu. Certes, les Vulcains embrassent la science et la raison, mais leur vie n’est pas purement affaire de logique. Ils ont aussi un côté profondément philosophique, et l’art et la musique leur sont tout autant essentiels que la logique. Ils sont également extrêmement secrets, et n’abordent pas avec les étrangers de nombreux aspects de leur culture, comme les rites du pon farr.",
     "Species.vulcan.exampleValue": "Les besoins du nombre surpassent ceux de quelques-uns, ou ceux d’un seul.",
     "Species.vulcan.traitDescription": "Originaires d’un monde rude, aride et à la gravité élevée, les Vulcains sont naturellement résistants à la chaleur extrême et à la déshydratation. Ils sont aussi extrêmement forts, et dotés d’une ouïe et d’un odorat très fins. Ce sont des télépathes qui doivent pourtant s’entraîner afin d’utiliser ces dons, et ils sont formés depuis l’enfance à la discipline mentale et au contrôle émotionnel. Cependant, ce dernier nécessite pour être entretenu des périodes régulières de méditation. Leur nature mesurée et leur désir d’intimité peuvent les éloigner des autres et rendre les échanges embarrassants",
+
+    "Species.xindiArboreal.name": "Xindi-Arboricole",
+
+    "Species.xindiPrimate.name": "Xindi-Primate",
+
+    "Species.xindiReptilian.name": "Xindi-Reptilien",
+
+    "Species.xindiInsectoid.name": "Xindi-Insectoïde",
+
+    "Species.yridian.name": "Yridien",
+
+    "Species.zakdorn.name": "Zakdorn",
+
+    "Species.mixedSpecies.text": "{{primarySpecies}} / {{secondarySpecies}}",
+
+    "Species.formerSpecies.text": "{{primarySpecies}} (originally {{otherSpecies}})",
 
     "StarSystem.common.coordinates": "Coordonnées",
     "StarSystem.common.innerZone": "Zone Intérieure",
@@ -1258,6 +1726,25 @@
 
     "Talent.veteran.description": "Le personnage a un esprit brillant, mesuré et réfléchi. Quand il dépense 1 point de Détermination, il peut lancer 1 . S’il obtient un Effet, il récupère immédiatement le point de Détermination qu’il vient de dépenser. Le grade du personnage est au moins égal à celui de lieutenant commandeur",
 
+    "TalentCategory.general": "Général",
+    "TalentCategory.career": "Carrière",
+    "TalentCategory.enhancement": "Amélioration",
+    "TalentCategory.starship": "Vaisseau",
+    "TalentCategory.starbase": "Base Stellaire",
+    "TalentCategory.esoteric": "Esotérique",
+
+    "Track.starfleet.command": "CURSUS DE COMMANDEMENT",
+
+    "Track.starfleet.command.description": "Il est destiné aux cadets qui aspirent à commander un jour leur propre vaisseau spatial. Il met l’accent sur les qualités de chef et les compétences interpersonnelles, la diplomatie, la prise de décision en situation de crise, la compréhension des protocoles et des procédures et les opérations d’un vaisseau, ce qui inclut le contrôle du vol. De nombreux cadets issus de cette formation commencent leur carrière en tant que contrôleurs aériens et pilotes. Ces deux métiers mettent leur entraînement à l’épreuve à une échelle moindre, et leur permettent de gagner l’expérience nécessaire à des postes d’autorité et à responsabilité. Les cadets du cursus de commandement passent le tristement célèbre test de Kobayashi Maru au cours de leur dernière année",
+
+    "Track.starfleet.operations": "CURSUS DES OPÉRATIONS",
+
+    "Track.starfleet.operations.description": "Il s’agit d’une formation pratique et de terrain, qui gère les nombreuses réalités de la mission de Starfleet. Les Opérations se divisent en gros en deux volets, l’ingénierie et la sécurité, et les cadets qui optent pour cette carrière ont en commun un certain pragmatisme, que ce pragmatisme soit appliqué à l’aspect technique ou tactique des choses",
+
+    "Track.starfleet.sciences": "CURSUS DE SCIENCE",
+
+    "Track.starfleet.sciences.description": "Cette formation, un peu isolée des deux autres, est principalement théorique, et c’est de l’Académie de Starfleet que sont issus de nombreux scientifiques accomplis. Au sein du département des Sciences, mais dépendant d’un cursus différent, se trouve le Département Médical de Starfleet, qui forme des médecins, des infirmiers et des conseillers entraînés pour servir à bord des vaisseaux et des installations de Starfleet dans la Fédération.",
+
     "UniformEra.bynar": "Bynar",
     "UniformEra.cardassian": "Armée Cardassienne",
     "UniformEra.civilian": "Civil",
@@ -1277,6 +1764,26 @@
     "UniformEra.voyagerDS9": "Voyager/DS9",
 
     "Upbringing.starfleet.militaryOrExploration.name": "Starfleet",
+
+    "Upbringing.starfleet.businessOrTrade.name": "AFFAIRES OU COMMERCE",
+    "Upbringing.starfleet.businessOrTrade.description": "La famille du personnage a des relations sur d’innombrables mondes, et supervise et dirige une grande entreprise quelconque. Ce sont peut-être des marchands ou des transporteurs interplanétaires. Quoi qu’il en soit, il a grandi en croisant des gens de toutes les origines, y compris des étrangers à la Fédération, et sa vision de la vie a été influencée par cette diversité.",
+    "Upbringing.starfleet.businessOrTrade.focusDescription": "Sa Spécialisation doit refléter la nature de l’entreprise de sa famille et concerner des compétences utiles au commerce ou à leurs activités spécifiques. On trouve par exemple : Finances, Géologie, Langues, Métallurgie, Négociation, Production industrielle et Supervision.",
+
+    "Upbringing.starfleet.agricultureOrRural.name": "AGRICOLE OU RURALE",
+    "Upbringing.starfleet.agricultureOrRural.description": "Le personnage a grandi plus entouré par la nature que par les gens, au sein d’une communauté rurale, sur la frontière ou à l’écart de l’agitation des villes. Peut-être est-il très impliqué dans la culture, la production de nourriture, de compléments alimentaires, ou bien la fabrication de repas synthétisés.",
+    "Upbringing.starfleet.agricultureOrRural.focusDescription": "Sa Spécialisation doit refléter son style de vie rural et les compétences apprises au cours de sa jeunesse. On trouve par exemple : Athlétisme, Dressage, Endurance, Maladies infectieuses, Médecine d’urgence, Navigation, Toxicologie et Véhicules terrestres",
+
+    "Upbringing.starfleet.scienceAndTechnology.name": "SCIENCE ET TECHNOLOGIE",
+    "Upbringing.starfleet.scienceAndTechnology.description": "La maison du personnage était le royaume de la science et il a toujours baigné dans les dernières avancées des technologies de pointe. Il a peut-être été élevé par des scientifiques ou des ingénieurs, à moins qu’il n’ait eu des mentors ou des professeurs qui ont encouragé ses talents de technicien.",
+    "Upbringing.starfleet.scienceAndTechnology.focusDescription": "Sa Spécialisation doit refléter ses matières et ses recherches favorites. On trouve par exemple : Astronavigation, Astrophysique, Chirurgie, Communications spatiales, Cybernétique, Dynamique des champs de distorsion, Génétique, Informatique, Mécanique quantique, Physique, Systèmes de propulsion et Xénobiologie.",
+
+    "Upbringing.starfleet.artisticAndCreative.name": "ARTISTIQUE ET CRÉATIVE",
+    "Upbringing.starfleet.artisticAndCreative.description": "La vie du personnage était remplie d’arts de toutes sortes et synonyme de créativité. Peu importe son domaine de prédilection, il a autour de lui les chefs-d’œuvre de nombreuses cultures et il a toutes les occasions d’exprimer son Talent.",
+    "Upbringing.starfleet.artisticAndCreative.focusDescription": "Sa Spécialisation doit refléter la façon dont il préfère utiliser ses compétences. On trouve par exemple : Botanique, Études culturelles, Holo-programmation, Langues, Musique, Observation, Persuasion et Psychologie.",
+
+    "Upbringing.starfleet.diplomacyAndPolitics.name": "DIPLOMATIE ET POLITIQUE",
+    "Upbringing.starfleet.diplomacyAndPolitics.description": "Le personnage baigne depuis son plus jeune âge dans la complexité de la pensée politique et les nuances de la diplomatie, sans doute parce qu’un membre de sa famille exerçait l’une de ces professions.",
+    "Upbringing.starfleet.diplomacyAndPolitics.focusDescription": "Sa Spécialisation doit refléter la manière dont il préfère utiliser ses compétences. On trouve par exemple : Débat,Diplomatie, Espionnage, Interrogatoire, Loi, Philosophie, Protocole de Starfleet et Sang-froid.",
 
     "Value.environment.text": "Cette valeur doit refléter l'environnement et la culture dans lesquels le personnage a été élevé. C'est une bonne occasion d'examiner comment le personnage perçoit sa propre culture et comment il se rattache- ou peut-être ne se rattache pas - aux philosophies et aux traditions de son peuple.",
 
@@ -1336,7 +1843,7 @@
 
     "Weapon.quality.deadly.name": "Mortel",
 
-    "Weapon.quality.debilitating.name": "Débilitant",
+    "Weapon.quality.debilitating.name": "Invalidant",
 
     "Weapon.quality.depleting.name": "Epuisant",
 

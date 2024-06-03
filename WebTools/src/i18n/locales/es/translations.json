@@ -15,11 +15,11 @@
     "EditTablePage.header.createTable": "Crear tabla",
     "EditTablePage.header.modifyTable": "Modificar tabla",
 
-    "EraSelectionPage.eraInstruction": "Selecciona en qué Era jugar. Pregúntale a tu GM qué Era elegir.",
+    "EraSelectionPage.eraInstruction": "Selecciona en qué Época jugar. Pregúntale a tu DJ qué Época elegir.",
 
     "Lcars.noHistory": "Sin historia",
 
-    "SourceSelectionPage.sourceInstruction": "Seleccione las fuentes. Pregúntele a su GM cuáles están disponibles.",
+    "SourceSelectionPage.sourceInstruction": "Selecciona las fuentes. Pregunta a tu DJ cuáles están disponibles.",
     "SourceSelectionPage.gameTypeInstruction": "¿Qué tipo de juego estás jugando?",
     "SourceSelectionPage.sourceNote": "Algunas fuentes aún no se han implementado. ¡Vuelve a comprobarlo más adelante !",
     "SourceSelectionPage.standardGameType": "Reglas RPG estándar",
@@ -94,10 +94,10 @@
     "CareerEventDetails.errorDiscipline": "Por favor, seleciona una disciplina.",
     "CareerEventDetails.errorFocus": "Por favor, seleciona un foco.",
 
-    "ChildSelectionPage.instruction": "Naturalmente, un niño aún no ha asistido a la Academia de la Flota Estelar (ni a ninguna de sus equivalentes), ni a ninguna institución de educación superior. De hecho, todavía está en las primeras etapas su educación.    Selecciona una edad para tu personaje.",
+    "ChildSelectionPage.instruction": "Naturalmente, un niño aún no ha asistido a la Academia de la Flota Estelar (ni a ninguna de sus equivalentes), ni a ninguna institución de educación superior. De hecho, todavía está en las primeras etapas su educación.\n\nSelecciona una edad para tu personaje.",
 
-    "GMTracker.title": "Rastreador",
-    "GMTracker.instruction": "Usa esta herramienta para administrar varios PNJ en tu juego.",
+    "GMTracker.title": "Seguimiento",
+    "GMTracker.instruction": "Usa esta herramienta para administrar varios PNJ en tu partida.",
     "GMTracker.addCharacterModalTitle": "Añadir Personaje",
 
     "AddCharacterView.instruction": "Introduce la URL para un personaje.",
@@ -136,14 +136,200 @@
 
     "EarlyOutlookPage.instruction.klingon": "El Imperio Klingon ha tenido durante mucho tiempo un sistema de castas, divididas entre las profesiones y vocaciones que permiten el funcionamiento de la sociedad. Las familias dentro de estas castas tienden a formarse en determinadas vocaciones, generación tras generación. A lo largo de la historia klingon, diferentes castas han aumentado y disminuido en importancia, aunque la casta de los guerreros siempre ha ocupado un lugar de importancia. Sin embargo, en los últimos siglos, este sistema ha comenzado a desmoronarse, las divisiones de castas ya no están tan estrictamente definidas como antes, y mientras las familias más tradicionales todavía esperan que sus hijos sigan sus pasos, muchos klingon rompen con las castas y persiguen cualquier carrera que deseen.  Selecciona o tira un dado para tu casta.",
 
-    "EducationPage.instruction.alliedMilitary": "Fuera de la Flota Estelar, la Vía Láctea alberga muchas otras organizaciones militares y de seguridad. En lugar de un oficial de la Flota Estelar o un oficial klingon, puedes optar por construir una historia en solitario usando Captain's Log en torno a un luchador por la libertad bajorano, un miembro de la Guardia Imperial Andoriana o una guerrera radicalmente sincera de las Qowat Milat.  Como alternativa a asistir a la Academia de la Flota Estelar, para seleccionar el tipo de entrenamiento militar que ha recibido tu personaje, elige entre las opciones de la siguiente tabla o selecciona una al azar.",
+    "EducationPage.instruction.alliedMilitary": "Fuera de la Flota Estelar, la Vía Láctea alberga muchas otras organizaciones militares y de seguridad. En lugar de un oficial de la Flota Estelar o un oficial klingon, puedes optar por construir una historia en solitario usando Captain's Log en torno a un luchador por la libertad bajorano, un miembro de la Guardia Imperial Andoriana o una guerrera radicalmente sincera de las Qowat Milat. Como alternativa a asistir a la Academia de la Flota Estelar, para seleccionar el tipo de entrenamiento militar que ha recibido tu personaje, elige entre las opciones de la siguiente tabla o selecciona una al azar.",
+    "EducationPage.instruction.ambassadorDiplomat": "Los personajes embajadores a menudo acompañan naves de la Flota Estelar, y también a otros grupos y situaciones que llevan a historias emocionantes. Estos personajes no necesariamente tienen entrenamiento de la Flota Estelar, pero por necesidad están bien entrenados y bien informados, por lo que son bastante capaces de formar parte de misiones peligrosas cuando es necesario.\n\nLos personajes diplomáticos no necesariamente tienen un rango activo de la Flota Estelar u otro rango militar (aunque muchos diplomáticos conocidos son militares retirados de la Flota Estelar).\n\nPara seleccionar la formación diplomática del personaje, elige uno de los tipos en la siguiente tabla o selecciona uno al azar.",
+    "EducationPage.instruction.cadet": "El personaje es un oficial en formación, que sigue estudiando en la Academia de la Flota Estelar o institución similar. Tiene un gran potencial y algo de habilidad, pero carece de la experiencia para usar sus habilidades de la mejor manera.",
+    "EducationPage.instruction.civilian": "Se sabe que los personajes civiles se pueden ver envueltos en grandes y pequeñas aventuras en todo el universo de Star Trek, desde las negociaciones estratégicas del embajador Sarek hasta el descubrimiento de la U.S.S. Protostar por el astuto Dal R’el. La creación de una historia para \"Captainś Log\" en torno a un personaje civil ofrece la oportunidad de mostar la vida fuera de Flota Estelar.\n\nLos personajes civiles no tienen rango en la Flota Estelar ni ningún otro rango militar, aunque se les puede otorgar un rango honorario.\n\nPara seleccionar el entrenamiento civil del personaje, elige uno de los tipos en la siguiente tabla, o selecciona al azar uno.",
+    "EducationPage.instruction.klingonWarrior": "Has elegido comprometer tu vida al Imperio Klingon como guerrero, uniéndote a la Fuerza de Defensa Klingon para proteger al Imperio y sus intereses. Pero esto no es algo trivial. Unirse a la tripulación de una nave espacial requiere entrenamiento y dedicación, y ser un oficial en lugar de simplemente un Bekk requiere pruebas de acceso agotadoras y la visto bueno del Consejo de Supervisión. Hay instalaciones de entrenamiento en todos los principales mundos del Imperio, pero las academias más prestigiosas se encuentran en Qo’nos y Ty’Gokor, y un joven cadete puede gastar gran parte de su entrenamiento participando en ejercicios de flota y otro estudio práctico.",
+    "EducationPage.instruction.starfleet": "Los años invertidos en la Academia de la Flota Estelar son algunos de los más memorables y determinantes en la vida de un oficial, dando forma al rumbo de su futura carrera. Para aquellos que superan las exigentes pruebas de acceso, la Academia supone afrontar cuatro años, dónde se llevan a cabo un intenso entrenamiento, exigentes estudios académicos y experiencias prácticas. Gran parte de esto tiene lugar dentro del campus principal de la Academia de la Flota, en San Francisco (la Tierra), pero existen otros campus y anexos en toda la Federación, y un cadete puede pasar tiempo en cualquiera de ellos antes de que se gradúe.\n\nUn graduado de la Academia recibe es nombrado oficial de la Flota Estelar, con el rango de Alférez, después de lo cual puede esperar varias semanas, o incluso meses, para su primer destino. Algunos cadetes, particularmente aquellos que buscan un doctorado, eligen un camino que requiere un año adicional o dos de entramiento y estudio, y en su lugar se gradúan con el rango de teniente (grado junior).\n\nPuede elegir la trayectoria de la Academia del personaje o seleccionarla al azar.",
 
+    "EducationPage.type.cadet": "Formación de Cadete",
     "EducationPage.type.starfleet": "Academia de la Flota Estelar",
     "EducationPage.type.klingonWarrior": "Fuerza de Defensa Klingon",
+    "EducationPage.type.civilian": "Formación Profesional Civil",
+    "EducationPage.type.alliedMilitary": "Formación de Militar Aliado",
+    "EducationPage.type.ambassadorDiplomat": "Formación Diplomática",
 
+    "EducationPage.starfleet.academy": "Academia de Oficiales",
+    "EducationPage.starfleet.enlisted": "Formación de reclutas",
+    "EducationPage.starfleet.other": "Otro",
+
+    "EnvironmentPage.showAlt": "Permitir Entornos alternativos (decisión del DJ)",
+
+    "EnvironmentPage.button.selectEnvironment": "Selecciona Entorno Alternativo",
+    "EnvironmentPage.button.rollEnvironment": "Tirar para Entorno",
+    "EnvironmentPage.button.selectAltEnvironment": "Selecciona Entorno Alternativo",
+    "EnvironmentPage.button.rollAltEnvironment": "Tira para Entorno Alternativo",
+
+    "EnvironmentPage.error.attributes": "Tienes que seleccionar 1 Atributo a mejorar antes de continuar.",
+    "EnvironmentPage.error.disciplines": "Tienes que seleccionar 1 Disciplina a mejorar antes de continuar.",
+
+    "EnvironmentPage.simple.instruction": "Selecciona o tira para elegir Entorno.",
+
+    "EnvironmentPage.starfleet.instruction": "Independientemente de su especie, los oficiales de la Flota Estelar provienen de muchos lugares, en muchos mundos. Mientras que muchos humanos (por ejemplo) nacen en la tierra, hay muchos más que nacieron en un mundo colonizado en otras partes de la galaxia, o en una base estelar o una nave estelar.",
+
+    "EnvironmentPage.klingon.instruction": "El Imperio Klingon es enorme y se expande con cada nueva conquista. Por lo tanto, los klingons provienen de muchos mundos diferentes, desde lugares como Qo’nos y Khitomer en el corazón del Imperio, hasta las colonias fronterizas que prodrían haber sido reclamadas en la última generación. Además, como una cultura que ha sido espacial durante siglos, innumerables klingons crecen en el espacio, a bordo de bases estelares y naves de transporte por todo el imperio.",
+
+    "EnvironmentPage.civilian.instruction": "Independientemente de su especie, las personas provienen de muchos lugares, en muchos mundos. Mientras que muchos humanos (por ejemplo) nacen en la tierra, hay muchos más que nacieron en un mundo colonizado en otras partes de la galaxia, o en una base estelar o una nave estelar.",
+
+    "EnvironmentPage.ambassador.instruction": "Independientemente de su especie, los diplomáticos provienen de muchos lugares, en muchos mundos. Mientras que muchos humanos (por ejemplo) nacen en la tierra, hay muchos más que nacieron en un mundo colonizado en otras partes de la galaxia, o en una base estelar o una nave estelar.",
+
+    "EnvironmentPage.cadet.instruction": "Independientemente de su especie, los cadetes de la Flota Estelar provienen de muchos lugares, en muchos mundos. Mientras que muchos humanos (por ejemplo) nacen en la tierra, hay muchos más que nacieron en un mundo colonizado en otras partes de la galaxia, o en una base estelar o una nave estelar.",
+
+    "EnvironmentPage.child.instruction": "Independientemente de su especie, los niños provienen de muchos lugares, en muchos mundos. Mientras que muchos humanos (por ejemplo) nacen en la tierra, hay muchos más que nacieron en un mundo colonizado en otras partes de la galaxia, o en una base estelar o una nave estelar.",
+
+    "EnvironmentPage.alliedMilitary.instruction": "Independientemente de su especie, los oficiales militares y las calificaciones provienen de muchos lugares, en muchos tipos de mundos.",
+
+    "FinalStarshipDetails.instruction": "Tu nave casi está terminada. Solo necesita algunos toques finales.",
+
+    "FinalStarshipDetails.name.instruction": "Toda nave estelar necesita un nombre. No existe una convención universal para el nombre de las naves, pero a menudo se les ponen nombres de lugares, personas históricas importantes (normalmente solo el apellido de la persona), barcos antiguos, figuras míticas o incluso ideales, virtudes o conceptos más abstractos. En muchos casos, estas vagas convenciones de nombres se superponen, un barco podría llevar el nombre de un antiguo barco que lleva el nombre de un lugar, por ejemplo, pero esto no debería suponer ningún problema.\n\nEl nombre idealmente debería ser una sola palabra o, más raramente, dos.",
+
+    "FinalStarshipDetails.traits.instruction": "Ahora puedes definir Rasgos adicionales para tu nave estelar. Tu nave ya tiene los siguientes rasgos:",
+    "FinalStarshipDetails.traits.note": "El DJ podría permitir la elección de rasgos adicionales que describan tu nave. Los ejemplos incluyen: Prototipo, Nave Antigua, Renombrada y Larga Duración.",
+
+    "FinishPage.instruction": "Tu personaje está termiando. Exporta tu personaje a PDF, o utiliza la opción de \"Perfil\" en la barra lateral izquierda para ver las opciones elegidas y transcribirlas manualmente en otra hoja de personaje.",
+
+    "FinishPage.rank.instruction": "Selecciona el rango de tu personaje.",
+
+    "FinishPage.trait.preamble_one": "Tu personaje tiene de forma automática el siguiente rasgo:",
+    "FinishPage.trait.preamble_other": "Tu personaje tiene de forma automática los siguientes rasgos:",
+    "FinishPage.trait.instruction": "Puedes especificar rasgos adicionales aquí.",
+
+    "FinishPage.role.instruction": "Selecciona el papel del personaje, así como la nave en la que sirve. Esta elección se basa en disciplinas más altas. La opción más adecuada aparecerá en primer lugar, mientras que las otras opciones también estarán disponibles en caso de que quieras crear un personaje diferente.",
+
+    "FinishPage.values.instruction": "Si no indicaste tus valores durante la creación de personajes, o si quieres cambiar alguno de ellos, ahora es el momento de pensar en los valores que tiene tu personaje.",
+
+    "FinishPage.job.example": "ej: Ingeniero Junior",
+
+    "Home.title": "STA: Creación de Personaje",
     "Home.selection": "Selecciona una herramienta.",
     "Home.characterButton": "Personajes y Naves Estelares",
     "Home.talentsButton": "Descripción general de talentos",
+    "Home.tokenCreator": "Tokens",
+    "Home.otherTools": "Otras Herramientas",
+
+    "MilestonePage.instruction": "Selecciona el tipo de modificación que quieres aplicar para el Hito.",
+
+    "MissionPodSelectionPage.text": "Algunas estructuras espaciales tienen la habilidad de encajar con un único módulo de misión, escogido de la lista a continuación. Los talentos proporcionados por el módulo (y todos sus beneficios) normalmente no se pueden intercambiar, pero todo el módulo de misión se podría intercambiar como si fuera un solo talento.",
+    "MissionPodSelectionPage.errorNoSelection": "Selecciona un módulo de misión antes de continuar, por favor.",
+
+    "MissionProfileSelectionPage.text": "El perfil de misión es lo que diferencia a una nave estelar de otra de su misma clase. Determina el equipo especializado que se instala antes de aventurarse hacia lo desconocido, la prioridad de personal que la Flota Estelar proporciona a la nave y el objetivo general de su misión. Todas las estructuras espaciales tienen un perfil de misión.",
+    "MissionProfileSelectionPage.errorNoSelection": "Selecciona un perfil de misión antes de continuar, por favor.",
+
+    "ModificationCompletePage.instruction": "El personaje ha sido modificado. Puedes ver el personaje revisado o realizar otra modificación.\n\nEs posible que quieras guardar la URL del personaje revisado.",
+
+    "ModificationTypeSelectionPage.instruction": "Selecciona la modificación que quieres aplicar a este personaje.",
+    "ModificationTypeSelectionPage.whatMilestoneType": "¿Qué tipo de hito está siendo aplicado?",
+
+    "NpcConfigurationPage.option.anyMajorSpecies": "Cualquier Especie Principal",
+    "NpcConfigurationPage.option.anySpecialization": "Cualquier Especialización",
+
+    "NpcConfigurationPage.npcType": "Tipo de PNJ",
+    "NpcConfigurationPage.specialization": "Especialidad",
+    "NpcConfigurationPage.text": "Especifíca qué tipo de PNJ estás creando.",
+
+    "PromotionPage.instruction": "Selecciona un nuevo rango para el personaje.",
+
+    "ReputationChangePage.instruction": "Ajusta la reputación del personaje según corresponda.",
+
+    "SafetyChecklist.instruction": "Esta lista de verificación es una herramienta que el director del juego puede utilizar para ayudar a los jugadores a debatir dónde pueden encontrarse sus límites personales para ciertos temas durante la partida.\n\n- **Todo OK**: Esto significa que el jugador está siempre cómodo con este tema como se es'ta siendo descrito, mostrado y representado en la partida.\n\n- **Alerta amarilla**: Esto significa que el jugador por lo general se siente cómodo con que este tema se trate en la partida, pero prefiere que las descripciones más detalladas se manejen \"fuera de la pantalla\".\n\n- **Alerta Roja**: Esto significa que el jugador no quiere que este tema se trate en la partida; puede tener varias razones para ello. Algunos motivos pueden incluir objeciones al tema por principios morales, experiencia personal traumática, malestar por que el tema sea trivializado en un medio de entretenimiento ficticio como un juego, etc. No preguntes cuál es el motivo del jugador que se siente así; No le corresponde a nadie cambiar la opinión de ese jugador. Simplemente acepta su postura, respétala y no incluyas el tema en cuestión.",
+
+    "SoloCareerEvent.instruction": "La carrera de tu personaje es un tapiz de eventos y experiencias, pero algunos habrán sido momentos cruciales en la vida del personaje. Un personaje define qué momentos de su vida son importantes en retrospectiva, y lo que parecía determinante para un joven alférez puede resultar intrascendente para ese mismo oficial décadas después.\n\nTu personaje tiene dos eventos de carrera que lo definen, elegidos o determinados al azar de la lista a continuación, y obtiene los beneficios que le proporcionan.\n\nPara los personajes que eligieron Duración de Carrera como Novato, se puede suponer que estos eventos profesionales tuvieron lugar durante el tiempo que el personaje estuvo en la Academia o equivalente, tal vez durante una asignación de entrenamiento de campo a bordo de una nave estelar.",
+
+    "SoloConstructTypePage.character": "Personaje",
+    "SoloConstructTypePage.instruction": "¿Estás creando un personaje, o una nave estelar?",
+    "SoloConstructTypePage.starship": "Nave Estelar",
+
+    "SoloEarlyOutlookPage.instruction": "Impulsado por su educación y su carrera, tu personaje desarrolló una visión del mundo que lo define de muchas maneras. Puede elegir entre tres enfoques para determinar el impacto de esta perspectiva. La primera es seleccionar su educación y determinar si la aceptó o se rebeló contra ella. La segunda –aplica a personajes klingon o a aquellos criados en un hogar klingon– es seleccionar su casta y si aceptaron o rechazaron sus expectativas. La última opción es simplemente elegir una aspiración que impulsó a tu personaje en su viaje, y si lo persiguió o se rindió.\n\nElige el enfoque que tenga más sentido para tu personaje y estilo de narración. Una vez elegido el enfoque, puedes seleccionar o determinar aleatoriamente la opción específica dentro de ese enfoque.",
+    "SoloEarlyOutlookPage.upbringings": "Educación",
+    "SoloEarlyOutlookPage.castes": "Castas",
+    "SoloEarlyOutlookPage.aspirations": "Aspiraciones",
+
+    "SoloEarlyOutlookDetailsPage.errorDiscipline": "Selecciona una disciplina, por favor.",
+    "SoloEarlyOutlookDetailsPage.errorFocus": "Selecciona una especialización, por favor.",
+
+    "SoloEducationDetailsPage.selectThree": "(Selecciona tres)",
+    "SoloEducationDetailsPage.primaryDiscipline": "Disciplina Principal",
+    "SoloEducationDetailsPage.secondaryDiscipline": "Disciplinas Secundarias",
+    "SoloEducationDetailsPage.errorDisciplines": "Selecciona 1 disciplina principal y 2 secundarias, por favor.",
+    "SoloEducationDetailsPage.errorAttributes": "Selecciona tres Atributos, por favor.",
+    "SoloEducationDetailsPage.errorValue": "Selecciona un Valor, por favor.",
+    "SoloEducationDetailsPage.errorFocuses": "Selecciona tus especizalidades, por favor.",
+
+    "SoloEducationPage.instruction.alliedMilitary": "Ha elegido comprometer su vida con el ejército de su gobierno. Ha recibido el entrenamiento necesario para prepararse para su rol militar, ya sea educación formal para oficiales o entrenamiento de guerrilla mucho más informal.",
+    "SoloEducationPage.instruction.ambassadorDiplomat": "Los años pasados ​​en formación son algunos de los más memorables y determinantes de la vida de un diplomático y marcan la dirección de su futura carrera. La formación diplomática lleva años y abarca una combinación de intensa preparación, estudios académicos y experiencias prácticas.",
+    "SoloEducationPage.instruction.civilian": "Los años pasados ​​en formaciónson algunos de los más memorables y determinantes en la vida de un civil, y marcan la dirección de su futura carrera. Para algunos, eso implica educación formal; para otros, es la escuela de la vida.",
+    "SoloEducationPage.instruction.starfleet": "Los años pasados ​​en la Academia de la Flota Estelar son algunos de los más memorables y determinantes en la vida de un oficial y marcarán la dirección de su carrera en el futuro. Para aquellos que aprueban las extenuantes pruebas de acceso, la Academia dura cuatro años y cubre una combinación de entrenamiento intenso, estudios académicos y experiencias prácticas. Gran parte de esto tiene lugar dentro del campus principal de la Academia de la Flota Estelar en San Francisco en la Tierra, pero existen otros campus y anexos en toda la Federación, y un cadete puede pasar tiempo en cualquiera de ellos antes de graduarse.\n\nDe forma alternativa, puedes optar por un personaje alistado. Sin embargo, esto es solamente en cuanto a trasfondo y no afecta más que al hecho de que nunca fuiste a la Academia de la Flota Estelar y no puedes seleccionar Mando como tu Disciplina Principal. Selecciona o tira para tu Trayectoria en la Acadmia.",
+
+    "SoloEducationPage.type.starfleet": "Academia de la Flota Estelar",
+    "SoloEducationPage.type.cadet": "Formación de Cadete",
+    "SoloEducationPage.type.civilian": "Formación de Carrera Civil",
+    "SoloEducationPage.type.alliedMilitary": "Formación de Militar Aliado",
+    "SoloEducationPage.type.ambassadorDiplomat": "Formación Diplomática",
+
+    "SoloEducationTypePage.instruction": "Algunos personajes se formarán en la Academia de la Flota Estelar. Muchos otros lo harán en las calles de una bulliciosa colonia comercial, viajando entre las estrellas, o en la estructura social de otra civilización.",
+
+    "SoloEnvironmentDetailsPage.speciesText": "¿Entre qué especie(s) creció el personaje?",
+    "SoloEnvironmentDetailsPage.errorAttribute": "Selecciona un Atributo, por favor.",
+    "SoloEnvironmentDetailsPage.errorDiscipline": "Selecciona una disciplina, por favor.",
+    "SoloEnvironmentDetailsPage.errorValue": "Selecciona un Valor, por favor.",
+
+    "SoloEnvironmentPage.instruction": "Al elegir el entorno de tu personaje, seleccionarás un escenario o una condición. Cada uno ofrece diferentes sugerencias para la historia, pero ambos proporcionan el mismo tipo de beneficios para el personaje.\n\nTambién puedes determinar al azar una de esas opciones.",
+    "SoloEnvironmentPage.settings": "Ajustes",
+    "SoloEnvironmentPage.conditions": "Condiciones",
+
+    "SoloEnvironmentPage.anotherSpeciesWorld.attributeText": "Basado en especies.",
+
+    "SoloEraSelectionPage.instruction": "Selecciona una Época  para tu personaje o elige una aleatoria.",
+
+    "SoloFinishingTouchesPage.attributeNote_one": "El total de puntos incluye {{count}} punto sobrante que no se puede agregar automáticamente a los atributos sin sobrepasar los valores máximos.",
+    "SoloFinishingTouchesPage.attributeNote_other": "El total de puntos incluye {{count}} puntos sobrantes que no se pueden agregar automáticamente a los atributos sin sobrepasar los valores máximos.",
+    "SoloFinishingTouchesPage.select": "(Selecciona {{count}})",
+    "SoloFinishingTouchesPage.errorAttributes": "Elige {{count}} Atributos, por favor.",
+    "SoloFinishingTouchesPage.errorDisciplines": "Elige {{count}} Disciplinas, por favor.",
+    "SoloFinishingTouchesPage.errorValue": "Elige un Valor, por favor.",
+
+    "SoloSpeciesPage.errorAttributes": "Elgite 3 Atributos, por favor.",
+    "SoloSpeciesPage.instruction": "Selecciona la especie para tu personaje o elige una de forma aleatoria.",
+
+    "SpaceframeOptionPage.text": "¿Quieres una estructura espacial estándar, o una personalizada?",
+
+    "SpaceframeOptionPage.button.standardSpaceframe": "Estuctura Espacial Estándar",
+    "SpaceframeOptionPage.button.customSpaceframe": "Estuctura Espacial Personalizada",
+
+    "SpaceframeSelectionPage.text": "La Estructura Espacial es la infraestructura básica de la nave, y la base sobre la que se asentará todo lo demás. En esta etapa, los jugadores seleccionan una única clase, que proporciona los sistemas básicos para la nave, así como su escala y su armamento. Las diferentes clases entran y salen del servicio en distintas fechas, por lo que el año de la campaña determina la disponibilidad.",
+    "SpaceframeSelectionPage.note": "Nota: El libro de Utopia Planitia ha redefinido las estadísticas de varias Estructuras Espaciales publicadas anteriormente. Esas estadísticas redefinidas se muestran aquí.",
+    "SpaceframeSelectionPage.ignoreEndOfService": "Ignora fecha de fin de servicio (decisión del DJ)",
+    "SpaceframeSelectionPage.error": "Selecciona una Estructura Espacial antes de continuar.",
+
+    "SpeciesDetails.options": "Opciones de Especie",
+    "SpeciesDetails.selectThree": "(Selecciona tres)",
+    "SpeciesDetails.allowCrossSpecies": "Permitir talentos inter-especies (decisión del DJ)",
+    "SpeciesDetails.allowEsoteric": "Permitir talentos esotéricos (decisión del DJ)",
+
+    "SpeciesPage.selectSpecies": "Selecciona una Especie",
+    "SpeciesPage.standardSpecies": "Especies éstandar",
+    "SpeciesPage.mixedSpecies": "Especies mestizas",
+    "SpeciesPage.customSpecies": "Especies personalizadas",
+    "SpeciesPage.primarySpecies": "Selecciona una Especie Principal",
+    "SpeciesPage.secondarySpecies": "Selecciona una Especie Secundaria",
+    "SpeciesPage.selectMixedSpecies": "Selecciona una Especie Mestiza",
+    "SpeciesPage.selectCustomSpecies": "Selecciona una Especie Personalizada",
+    "SpeciesPage.rollCoreSpecies": "Tira para Especie del Libro Básico",
+    "SpeciesPage.rollAlphaSpecies": "Tira para Especie del cuadrante Alpha",
+    "SpeciesPage.rollBetaSpecies": "Tira para Especie del cuadrante Beta",
+    "SpeciesPage.rollGammaSpecies": "Tira para Especie del cuadrante Gamma",
+    "SpeciesPage.rollDeltaSpecies": "Tira para Especie del cuadrante Delta",
+    "SpeciesPage.text": "¿A qué especie perteneces? Puedes crear un personaje mestizo, por lo que ganaría beneficios de ambas especies.",
+
+    "SpeciesPage.text.select": "Elige o tira para seleccionar Especie.",
+
+    "SpeciesPage.textNoRoll": "¿A qué especie perteneces? Puedes crear un personaje mestizo, por lo que ganaría beneficios de ambas especies.",
+    "SpeciesPage.mixedSpeciesNote": "Selecciona dos especies. Obtendrás Rasgos de ambas especies y podrás seleccionar Talentos de las dos especies, pero solo la principal te proporciona los beneficios de Atributo.",
+    "SpeciesPage.selectTwoSpeciesError": "Selecciona la especie primaria y secundaria, por favor.",
+
+    "StarshipTalentSelection.instruction_one": "Slecciona {{count}} talento, por favor.",
+    "StarshipTalentSelection.instruction_other": "Slecciona {{count}} talentos, por favor.",
 
     "StarshipToolSelection.instruction": "Selecciona una opción",
     "StarshipToolSelection.standardBuild": "Creación Estándar",
@@ -151,8 +337,38 @@
     "StarshipToolSelection.simplifiedBuild": "Creación Simplificada",
     "StarshipToolSelection.simplifiedBuildDescription": "La creación simplificada es una buena opción para traspasar un conjunto de estadísticas, por ejemplo, de una fuente en línea u otra referencia.",
 
+    "StarshipTypeSelection.campaignYear": "Año de Campaña",
+    "StarshipTypeSelection.instruction": "¿Cuál es el año actual en la campaña? Probablemente necesitarás consultar a tu DJ.\n\nUn año predeterminado se rellenará automáticamente dependiendo de la Época elegida.",
+    "StarshipTypeSelection.year": "Año",
+    "StarshipTypeSelection.shipPolity": "Tipo de Nave",
+    "StarshipTypeSelection.whatShipPolity": "¿Que tipo de nave estar es?",
+    "StarshipTypeSelection.shipBuildType": "Escala de Nave",
+    "StarshipTypeSelection.whatShipBuildType": "¿Como de grande es la nave?",
+
+    "StarshipPage.whatScale": "¿Que tamaño tiene esta nave?",
+    "StarshipPage.whatClass": "¿Cómo se llama la clase de la nave?",
+    "StarshipPage.whatYear": "¿En que año entró en servicio esta clase de nave?",
     "StarshipPage.class": "Clase",
 
+    "UpbringingDetailPage.text": "¿Aceptas o te rebelas contra tu educación?",
+
+    "UpbringingDetailPage.text.accept": "Aceptar",
+    "UpbringingDetailPage.text.reject": "Rechazar",
+
+    "UpbringingDetailPage.error.discipline": "Debes seleccionar 1 Disciplina a mejorar antes de continuar.",
+    "UpbringingDetailPage.error.talent": "Debes seleccionar un Talento antes de continuar.",
+    "UpbringingDetailPage.error.focus": "Debes elegir una Especialidad. Elige entre las sugerencias o crea la tuya propia.",
+
+    "SupportingCharacter.whatType": "Elige un tipo de personaje.",
+    "SupportingCharacter.howOld": "¿Que edad tiene tu personaje?",
+    "SupportingCharacter.purposeOrDepartment": "Puesto/Departamento",
+    "SupportingCharacter.whatPurpose": "Determina qué puesto ocupará el personaje secundario. ¿Es un ingeniero, un médico, un científico o un oficial de seguridad?",
+    "SupportingCharacter.speciesAndAttributes": "Especie y Atributos",
+    "SupportingCharacter.speciesAndAttributesInstruction": "Asigna las puntuaciones de Atributos y elige la especie del personaje. La especie escogida afectará a las puntuaciones finales de los Atributos. Selecciona dos valores diferentes para intercambiarlos. ",
+    "SupportingCharacter.disciplineInstruction": "Asigna las Disciplinas del personaje. El valor más alto debe coincidir con el departamento/puesto del personaje. Selecciona dos valores diferentes para intercambiarlos.",
+    "SupportingCharacter.focusInstruction": "Escoge tres Especialidades para el personaje. Al menos uno debería reflejar el departamento/puesto del personaje.",
+    "SupportingCharacter.nameAndRank": "Nombre y Rango",
+    "SupportingCharacter.nameAndRankInstruction": "Proporciona al personaje un nombre y rango apropiado. Los Personajes de Apoyo nunca deberían tener un rango por encima de Teniente y la mayoría de las veces será personal alistado en vez de oficiales.",
     "SupportingCharacter.numericalValue": "Valor",
     "SupportingCharacter.speciesBonus": "Bonus de Especie",
 
@@ -179,7 +395,7 @@
     "Common.button.cancel": "Cancelar",
     "Common.button.create": "Crear",
     "Common.button.modify": "Modificar",
-    "Common.button.next": "Próximo",
+    "Common.button.next": "Siguiente",
     "Common.button.view": "Vista",
 
     "Common.text.description": "Descripción",
@@ -218,15 +434,15 @@
     "Construct.other.determination": "Determinación",
     "Construct.other.discipline": "Disciplina",
     "Construct.other.disciplines": "Disciplinas",
-    "Construct.other.education": "Educación",
+    "Construct.other.education": "Formación",
     "Construct.other.environment": "Entorno",
     "Construct.other.equipment": "Equipo",
     "Construct.other.era": "Era",
-    "Construct.other.focus": "Inercia",
-    "Construct.other.focus1": "Inercia 1",
-    "Construct.other.focus2": "Inercia 2",
-    "Construct.other.focus3": "Inercia 3",
-    "Construct.other.focuses": "Inercias",
+    "Construct.other.focus": "Especialidad",
+    "Construct.other.focus1": "Especialidad 1",
+    "Construct.other.focus2": "Especialidad 2",
+    "Construct.other.focus3": "Especialidad 3",
+    "Construct.other.focuses": "Especialidades",
     "Construct.other.injuries": "Heridas",
     "Construct.other.job": "Trabajo",
     "Construct.other.launchYear": "Año de Lanzamiento",
@@ -263,7 +479,7 @@
     "Construct.other.talents": "Talentos",
     "Construct.other.talentOptions": "Opciones de Talento",
     "Construct.other.timeline": "Cronología",
-    "Construct.other.training": "Entrenamiento",
+    "Construct.other.training": "Formación",
     "Construct.other.trait": "Rasgo",
     "Construct.other.traits": "Rasgos",
     "Construct.other.additionalTraits": "Rasgos Adicionales",
@@ -315,7 +531,7 @@
     "Page.title.creditsPage": "Créditos",
     "Page.title.customSpaceframe": "Creación Personalizada de Estructura Espacial",
     "Page.title.customSpeciesDetails": "Detalles de Especie Personalizada",
-    "Page.title.education": "Formación Académica",
+    "Page.title.education": "Formación",
     "Page.title.educationDetails": "Detalles de Formación Académica",
     "Page.title.environment": "Entorno",
     "Page.title.environmentDetails": "Detalles de Entorno",

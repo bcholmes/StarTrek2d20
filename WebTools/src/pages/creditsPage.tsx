@@ -78,6 +78,7 @@ const CreditsPage = () => {
                     <p className="mx-4"><b>German:</b> <a href="https://forums.modiphius.com/u/misterx/summary" target="_blank" rel="noreferrer">MisterX</a>, {' '}
                         <a href="http://www.daniel-joedemann.de/" target="_blank" rel="noreferrer">Daniel Jödemann</a>, {' '}
                         <a href="https://github.com/mprangenberg" target="_blank" rel="noreferrer">Michael Prangenberg</a></p>
+                    <p className="mx-4"><b>Spanish:</b> <a href="https://github.com/k3ssdev" target="_blank" rel="noreferrer">k3ssdev</a></p>
                     <p>
                         If you can help, let me know, and I'd welcome any input you can provide.
                     </p>

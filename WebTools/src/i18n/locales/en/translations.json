@@ -1362,6 +1362,8 @@
 
     "Sheet.text.title": "Starfleet Personnel Record",
 
+    "SheetTag.a4": "A4",
+    "SheetTag.halfPage": "Half-Page",
     "SheetTag.landscape": "Landscape",
     "SheetTag.languageSupport": "Language Support",
     "SheetTag.lcars": "LCARS",

@@ -71,7 +71,8 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         if (resistanceParagraph.lines.length === 1 && scaleParagraph.lines.length === 1 && crewParagraph.lines.length === 1
             && (resistanceParagraph.lines[0].width + scaleParagraph.lines[0].width + crewParagraph.lines[0].width + 30 < previousParagraph.column.width)) {
 
-            let centreX = previousParagraph.column.width / 2 - (scaleParagraph.lines[0].width / 2);
+            let availableMiddleSpace = previousParagraph.column.width - resistanceParagraph.lines[0].width - crewParagraph.lines[0].width;
+            let centreX = resistanceParagraph.lines[0].width + (availableMiddleSpace / 2) - (scaleParagraph.lines[0].width / 2);
             let endX = previousParagraph.column.width - (crewParagraph.lines[0].width);
 
             resistanceParagraph.write();
