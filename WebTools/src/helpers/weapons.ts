@@ -6,7 +6,7 @@ import { Era } from "./eras";
 export enum Quality {
     Area, Calibration, Charge, Dampening, Deadly, Depleting, Devastating, Hidden, HighYield,
     Intense, Jamming, Knockdown, NonLethal, PersistentX, Piercing, Slowing, Versatile, Vicious,
-    Debilitating, Accurate
+    Debilitating, Accurate, AreaOrSpread, Spread
 }
 
 export class WeaponQuality {
@@ -133,13 +133,15 @@ export class EnergyLoadTypeModel {
 
     readonly type: EnergyLoadType;
     readonly description: string;
-    readonly _weaponQualities: WeaponQuality[];
+    readonly _qualities: WeaponQuality[];
+    readonly effects: WeaponQuality[];
     readonly century: number;
 
     constructor(type: EnergyLoadType, description: string, effect: WeaponQuality[], quality: WeaponQuality[], century: number) {
         this.type = type;
         this.description = description;
-        this._weaponQualities = quality.concat(effect);
+        this._qualities = quality;
+        this.effects = effect;
         this.century = century;
     }
 
@@ -151,12 +153,13 @@ export class EnergyLoadTypeModel {
         return this.allTypes().filter(e => year > centuryToYear(e.century));
     }
 
-
-    get effectAndQualities() {
-        return this.qualities;
+    get effectsAndQualities() {
+        return [...this._qualities].concat(this.effects);
     }
-    get qualities() {
-        let result = this._weaponQualities.map(q => q.localizedDescription);
+
+    get effectAndQualitiesAsString() {
+        let effectsAndQualities = [...this._qualities].concat(this.effects);
+        let result = effectsAndQualities.map(q => q.localizedDescription);
         return result.join(", ");
     }
 }
@@ -172,35 +175,35 @@ export enum TorpedoLoadType {
 
 export class TorpedoLoadTypeModel {
     static readonly TYPES = [
-        new TorpedoLoadTypeModel(TorpedoLoadType.Chroniton,   "Chroniton",   3, "",             [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.Slowing)],    25),
-        new TorpedoLoadTypeModel(TorpedoLoadType.Gravimetric, "Gravimetric", 3, "Piercing 1",   [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.HighYield)],  24),
-        new TorpedoLoadTypeModel(TorpedoLoadType.Neutronic,   "Neutronic",   4, "Dampening",    [new WeaponQuality(Quality.Calibration)],                                        25),
-        new TorpedoLoadTypeModel(TorpedoLoadType.Nuclear,     "Nuclear",     3, "Vicious 1",    [new WeaponQuality(Quality.Calibration)],                                        20),
-        new TorpedoLoadTypeModel(TorpedoLoadType.Photon,      "Photon",      3, "",             [new WeaponQuality(Quality.HighYield)],                                          23),
-        new TorpedoLoadTypeModel(TorpedoLoadType.Photonic,    "Photonic",    2, "",             [new WeaponQuality(Quality.HighYield)],                                          22),
-        new TorpedoLoadTypeModel(TorpedoLoadType.Plasma,      "Plasma",      3, "Persistent 8", [new WeaponQuality(Quality.Calibration)],                                        23),
-        new TorpedoLoadTypeModel(TorpedoLoadType.Polaron,     "Polaron",     3, "Piercing 2",   [new WeaponQuality(Quality.Calibration)],                                        24),
-        new TorpedoLoadTypeModel(TorpedoLoadType.Positron,    "Positron",    3, "Dampening",    [new WeaponQuality(Quality.Calibration)],                                        24),
-        new TorpedoLoadTypeModel(TorpedoLoadType.Quantum,     "Quantum",     4, "Vicious 1",    [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.HighYield)],  24),
-        new TorpedoLoadTypeModel(TorpedoLoadType.Spatial,     "Spatial",     2, "",             [],                                                                              22),
-        new TorpedoLoadTypeModel(TorpedoLoadType.Tetryonic,   "Tetryonic",   2, "Depleting",    [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.HighYield)],  25),
-        new TorpedoLoadTypeModel(TorpedoLoadType.Transphasic, "Transphasic", 3, "Piercing 2",   [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.Devastating)],25),
-        new TorpedoLoadTypeModel(TorpedoLoadType.Tricobolt,   "Tricobolt",   3, "Area",         [new WeaponQuality(Quality.Calibration)],                                        25),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Chroniton,   "Chroniton",   3, [],                                         [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.Slowing)],    25),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Gravimetric, "Gravimetric", 3, [new WeaponQuality(Quality.Piercing, 1)],   [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.HighYield)],  24),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Neutronic,   "Neutronic",   4, [new WeaponQuality(Quality.Dampening)],     [new WeaponQuality(Quality.Calibration)],                                        25),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Nuclear,     "Nuclear",     3, [new WeaponQuality(Quality.Vicious, 1)],    [new WeaponQuality(Quality.Calibration)],                                        20),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Photon,      "Photon",      3, [],                                         [new WeaponQuality(Quality.HighYield)],                                          23),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Photonic,    "Photonic",    2, [],                                         [new WeaponQuality(Quality.HighYield)],                                          22),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Plasma,      "Plasma",      3, [new WeaponQuality(Quality.PersistentX, 8)],[new WeaponQuality(Quality.Calibration)],                                        23),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Polaron,     "Polaron",     3, [new WeaponQuality(Quality.Piercing, 2)],   [new WeaponQuality(Quality.Calibration)],                                        24),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Positron,    "Positron",    3, [new WeaponQuality(Quality.Dampening)],     [new WeaponQuality(Quality.Calibration)],                                        24),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Quantum,     "Quantum",     4, [new WeaponQuality(Quality.Vicious, 1)],    [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.HighYield)],  24),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Spatial,     "Spatial",     2, [],                                         [],                                                                              22),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Tetryonic,   "Tetryonic",   2, [new WeaponQuality(Quality.Depleting)],     [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.HighYield)],  25),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Transphasic, "Transphasic", 3, [new WeaponQuality(Quality.Piercing, 2)],   [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.Devastating)],25),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Tricobolt,   "Tricobolt",   3, [new WeaponQuality(Quality.Area)],          [new WeaponQuality(Quality.Calibration)],                                        25),
 
     ];
 
     readonly type: TorpedoLoadType;
     readonly description: string;
     readonly dice: number;
-    readonly effect: string;
+    readonly _weaponEffects: WeaponQuality[];
     readonly _weaponQualities: WeaponQuality[];
     readonly century: number;
 
-    constructor(type: TorpedoLoadType, description: string, dice: number, effect: string, quality: WeaponQuality[], century: number) {
+    constructor(type: TorpedoLoadType, description: string, dice: number, effect: WeaponQuality[], quality: WeaponQuality[], century: number) {
         this.type = type;
         this.description = description;
         this.dice = dice;
-        this.effect = effect;
+        this._weaponEffects = effect;
         this._weaponQualities = quality;
         this.century = century;
     }
@@ -215,17 +218,12 @@ export class TorpedoLoadTypeModel {
 
     get effectAndQualities() {
         let result = [];
-        if (this.effect) {
-            result.push(this.effect);
-        }
-        let qualities = this.qualities;
-        if (qualities) {
-            result.push(qualities);
-        }
+        this._weaponEffects.forEach(e => result.push(e.localizedDescription));
+        this._weaponQualities.forEach(q => result.push(q.localizedDescription));
         return result.join(", ");
     }
 
-    get qualities() {
+    get qualitiesAsString() {
         let result = this._weaponQualities.map(q => q.localizedDescription);
         return result.join(", ");
     }
@@ -321,7 +319,7 @@ export class DeliverySystemModel {
     static readonly TYPES = [
         new DeliverySystemModel(DeliverySystem.Cannons, "Cannons", 2, 21),
         new DeliverySystemModel(DeliverySystem.Banks, "Banks", 1, 23),
-        new DeliverySystemModel(DeliverySystem.Arrays, "Arrays", 0, 24, "Area or Spread"),
+        new DeliverySystemModel(DeliverySystem.Arrays, "Arrays", 0, 24, new WeaponQuality(Quality.AreaOrSpread)),
         new DeliverySystemModel(DeliverySystem.SpinalLances, "Spinal Lance", 3, 25),
     ];
 
@@ -329,14 +327,14 @@ export class DeliverySystemModel {
     description: string;
     diceBonus: number;
     century: number;
-    additionalQualities: string
+    additionalQuality: WeaponQuality
 
-    constructor(type: DeliverySystem, description: string, diceBonus: number, century: number, additionalQualities: string = "") {
+    constructor(type: DeliverySystem, description: string, diceBonus: number, century: number, additionalQuality?: WeaponQuality) {
         this.type = type;
         this.description = description;
         this.diceBonus = diceBonus;
         this.century = century;
-        this.additionalQualities = additionalQualities;
+        this.additionalQuality = additionalQuality;
     }
 
     static allTypes() {
@@ -357,8 +355,8 @@ export class Weapon {
     requiresTalent: boolean;
     loadType?: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel|MineTypeModel;
     deliveryType?: DeliverySystemModel;
-    qualities: WeaponQuality[];
-    effects: WeaponQuality[];
+    _qualities: WeaponQuality[];
+    _effects: WeaponQuality[];
     hands?: number;
 
     constructor(usage: UsageCategory, name: string, dice: number, type: WeaponType,
@@ -403,7 +401,7 @@ export class Weapon {
         if (this.usageCategory === UsageCategory.Character) {
             return this.effects.concat(this.qualities);
         } else if (this.loadType instanceof EnergyLoadTypeModel) {
-            return (this.loadType as EnergyLoadTypeModel)._weaponQualities;
+            return (this.loadType as EnergyLoadTypeModel).effectsAndQualities;
         } else if (this.loadType instanceof TorpedoLoadTypeModel) {
             return (this.loadType as TorpedoLoadTypeModel)._weaponQualities;
         } else {
@@ -465,13 +463,55 @@ export class Weapon {
         }
     }
 
+    // returns qualities without effects
+    get qualities() {
+        if (this.usageCategory === UsageCategory.Character) {
+            return this._qualities;
+        } else if (this.loadType != null && this.loadType instanceof EnergyLoadTypeModel) {
+            return (this.loadType as EnergyLoadTypeModel)._qualities;
+        } else {
+            let result = [];
+            if (this.loadType != null && this.loadType instanceof TorpedoLoadTypeModel) {
+                let torpedoLoadType = this.loadType as TorpedoLoadTypeModel;
+                result = [...torpedoLoadType._weaponQualities];
+            } else if (this.loadType != null && this.loadType instanceof MineTypeModel) {
+                let mineType = this.loadType as MineTypeModel;
+                result = [...mineType._weaponQualities];
+            }
+
+            return result;
+        }
+    }
+
+    get effects() {
+        if (this.usageCategory === UsageCategory.Character) {
+            return this._effects;
+        } else {
+            let result = [];
+            if (this.loadType != null && this.loadType instanceof EnergyLoadTypeModel) {
+                result = [...(this.loadType as EnergyLoadTypeModel).effects];
+            } else if (this.loadType != null && this.loadType instanceof TorpedoLoadTypeModel) {
+                let torpedoLoadType = this.loadType as TorpedoLoadTypeModel;
+                result = [...torpedoLoadType._weaponEffects];
+            } else if (this.loadType != null && this.loadType instanceof MineTypeModel) {
+                let mineType = this.loadType as MineTypeModel;
+                result = [...mineType._weaponEffects];
+            }
+
+            if (this.deliveryType?.additionalQuality != null) {
+                result.push(this.deliveryType.additionalQuality);
+            }
+
+            return result;
+        }
+    }
     get effectsAndQualities() {
         if (this.usageCategory === UsageCategory.Character) {
             return this.weaponQualities.map(q => q.localizedDescription).join(", ");
         } else {
             let result = "";
             if (this.loadType != null && this.loadType instanceof EnergyLoadTypeModel) {
-                result = (this.loadType as EnergyLoadTypeModel).qualities;
+                result = (this.loadType as EnergyLoadTypeModel).effectAndQualitiesAsString;
             } else if (this.loadType != null && this.loadType instanceof TorpedoLoadTypeModel) {
                 let torpedoLoadType = this.loadType as TorpedoLoadTypeModel;
                 result = torpedoLoadType.effectAndQualities;
@@ -480,13 +520,11 @@ export class Weapon {
                 result = torpedoLoadType.effectAndQualities;
             }
 
-            if (this.deliveryType != null) {
-                if (this.deliveryType.additionalQualities) {
-                    if (result.length > 0) {
-                        result += ", ";
-                    }
-                    result += this.deliveryType.additionalQualities;
+            if (this.deliveryType?.additionalQuality != null) {
+                if (result.length > 0) {
+                    result += ", ";
                 }
+                result += this.deliveryType.additionalQuality.localizedDescription;
             }
             return result;
         }
@@ -498,8 +536,8 @@ export class Weapon {
 
     static createCharacterWeapon(name: string, dice: number, effects: WeaponQuality[], qualities: WeaponQuality[], type: WeaponType, hands: number = 1) {
         let result = new Weapon(UsageCategory.Character, name, dice, type);
-        result.qualities = qualities;
-        result.effects = effects;
+        result._qualities = qualities;
+        result._effects = effects;
         result.hands = hands;
         return result;
     }

@@ -2483,6 +2483,8 @@
 
     "Weapon.quality.area.name": "Area",
 
+    "Weapon.quality.areaOrSpread.name": "Area or Spread",
+
     "Weapon.quality.charge.name": "Charge",
 
     "Weapon.quality.calibration.name": "Calibration",
@@ -2514,6 +2516,8 @@
     "Weapon.quality.persistentX.name": "Persistent X",
 
     "Weapon.quality.slowing.name": "Slowing",
+
+    "Weapon.quality.spread.name": "Spread",
 
     "Weapon.quality.versatile.name": "Versatile {{rank}}",
 

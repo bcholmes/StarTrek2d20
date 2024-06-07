@@ -1,12 +1,12 @@
 {
     "LanguageNotice.title": "¡Hola!",
-    "LanguageNotice.text": "Estamos experimentando con un soporte inicial para los idiomas nacionales. Estamos en una etapa muy preliminar, pero esperamos poder soportar más idiomas pronto.",
+    "LanguageNotice.text": "\nEstamos comenzando a implementar soporte para idiomas nacionales. Nos encontramos en una etapa inicial, pero esperamos poder ofrecer compatibilidad con más idiomas próximamente.",
     "LanguageNotice.useEnglish": "Usar inglés",
 
     "Lcars.copyright": "STAR TREK y las marcas y logotipos relacionados son marcas comerciales de CBS Studios Inc. Todos los derechos reservados.",
     "Lcars.credits": "Créditos",
     "Lcars.feedback": "Feedback",
-    "Lcars.history": "Historia",
+    "Lcars.history": "Historial",
     "Lcars.news": "Novedades",
     "Lcars.profile": "Perfil",
 
@@ -17,7 +17,7 @@
 
     "EraSelectionPage.eraInstruction": "Selecciona en qué Época jugar. Pregúntale a tu DJ qué Época elegir.",
 
-    "Lcars.noHistory": "Sin historia",
+    "Lcars.noHistory": "Sin historial",
 
     "SourceSelectionPage.sourceInstruction": "Selecciona las fuentes. Pregunta a tu DJ cuáles están disponibles.",
     "SourceSelectionPage.gameTypeInstruction": "¿Qué tipo de juego estás jugando?",
@@ -180,7 +180,7 @@
 
     "EnvironmentPage.alliedMilitary.instruction": "Independientemente de su especie, los oficiales militares y las calificaciones provienen de muchos lugares, en muchos tipos de mundos.",
 
-    "FinalStarshipDetails.instruction": "Tu nave casi está terminada. Solo necesita algunos toques finales.",
+    "FinalStarshipDetails.instruction": "Tu nave casi está terminada. Solo necesita algunos retoques finales.",
 
     "FinalStarshipDetails.name.instruction": "Toda nave estelar necesita un nombre. No existe una convención universal para el nombre de las naves, pero a menudo se les ponen nombres de lugares, personas históricas importantes (normalmente solo el apellido de la persona), barcos antiguos, figuras míticas o incluso ideales, virtudes o conceptos más abstractos. En muchos casos, estas vagas convenciones de nombres se superponen, un barco podría llevar el nombre de un antiguo barco que lleva el nombre de un lugar, por ejemplo, pero esto no debería suponer ningún problema.\n\nEl nombre idealmente debería ser una sola palabra o, más raramente, dos.",
 
@@ -204,16 +204,16 @@
     "Home.title": "STA: Creación de Personaje",
     "Home.selection": "Selecciona una herramienta.",
     "Home.characterButton": "Personajes y Naves Estelares",
-    "Home.talentsButton": "Descripción general de talentos",
+    "Home.talentsButton": "Descripción de Talentos",
     "Home.tokenCreator": "Tokens",
     "Home.otherTools": "Otras Herramientas",
 
     "MilestonePage.instruction": "Selecciona el tipo de modificación que quieres aplicar para el Hito.",
 
-    "MissionPodSelectionPage.text": "Algunas estructuras espaciales tienen la habilidad de encajar con un único módulo de misión, escogido de la lista a continuación. Los talentos proporcionados por el módulo (y todos sus beneficios) normalmente no se pueden intercambiar, pero todo el módulo de misión se podría intercambiar como si fuera un solo talento.",
+    "MissionPodSelectionPage.text": "Algunas plantillas de nave tienen la habilidad de encajar con un único módulo de misión, escogido de la lista a continuación. Los talentos proporcionados por el módulo (y todos sus beneficios) normalmente no se pueden intercambiar, pero todo el módulo de misión se podría intercambiar como si fuera un solo talento.",
     "MissionPodSelectionPage.errorNoSelection": "Selecciona un módulo de misión antes de continuar, por favor.",
 
-    "MissionProfileSelectionPage.text": "El perfil de misión es lo que diferencia a una nave estelar de otra de su misma clase. Determina el equipo especializado que se instala antes de aventurarse hacia lo desconocido, la prioridad de personal que la Flota Estelar proporciona a la nave y el objetivo general de su misión. Todas las estructuras espaciales tienen un perfil de misión.",
+    "MissionProfileSelectionPage.text": "El perfil de misión es lo que diferencia a una nave estelar de otra de su misma clase. Determina el equipo especializado que se instala antes de aventurarse hacia lo desconocido, la prioridad de personal que la Flota Estelar proporciona a la nave y el objetivo general de su misión. Todas las plantillas tienen un perfil de misión.",
     "MissionProfileSelectionPage.errorNoSelection": "Selecciona un perfil de misión antes de continuar, por favor.",
 
     "ModificationCompletePage.instruction": "El personaje ha sido modificado. Puedes ver el personaje revisado o realizar otra modificación.\n\nEs posible que quieras guardar la URL del personaje revisado.",
@@ -232,7 +232,7 @@
 
     "ReputationChangePage.instruction": "Ajusta la reputación del personaje según corresponda.",
 
-    "SafetyChecklist.instruction": "Esta lista de verificación es una herramienta que el director del juego puede utilizar para ayudar a los jugadores a debatir dónde pueden encontrarse sus límites personales para ciertos temas durante la partida.\n\n- **Todo OK**: Esto significa que el jugador está siempre cómodo con este tema como se es'ta siendo descrito, mostrado y representado en la partida.\n\n- **Alerta amarilla**: Esto significa que el jugador por lo general se siente cómodo con que este tema se trate en la partida, pero prefiere que las descripciones más detalladas se manejen \"fuera de la pantalla\".\n\n- **Alerta Roja**: Esto significa que el jugador no quiere que este tema se trate en la partida; puede tener varias razones para ello. Algunos motivos pueden incluir objeciones al tema por principios morales, experiencia personal traumática, malestar por que el tema sea trivializado en un medio de entretenimiento ficticio como un juego, etc. No preguntes cuál es el motivo del jugador que se siente así; No le corresponde a nadie cambiar la opinión de ese jugador. Simplemente acepta su postura, respétala y no incluyas el tema en cuestión.",
+    "SafetyChecklist.instruction": "Esta lista de verificación es una herramienta que el director del juego puede utilizar para ayudar a los jugadores a debatir dónde pueden encontrarse sus límites personales para ciertos temas durante la partida.\n\n- **Siempre OK**: Esto significa que el jugador está siempre cómodo con este tema como se está siendo descrito, mostrado y representado en la partida.\n\n- **Alerta amarilla**: Esto significa que el jugador por lo general se siente cómodo con que este tema se trate en la partida, pero prefiere que las descripciones más detalladas se manejen \"fuera de escena\".\n\n- **Alerta Roja**: Esto significa que el jugador no quiere que este tema se trate en la partida; puede tener varias razones para ello. Algunos motivos pueden incluir objeciones al tema por principios morales, experiencia personal traumática, malestar por que el tema sea trivializado en un medio de entretenimiento ficticio como un juego, etc. No preguntes cuál es el motivo del jugador que se siente así; No le corresponde a nadie cambiar la opinión de ese jugador. Simplemente acepta su postura, respétala y no incluyas el tema en cuestión.",
 
     "SoloCareerEvent.instruction": "La carrera de tu personaje es un tapiz de eventos y experiencias, pero algunos habrán sido momentos cruciales en la vida del personaje. Un personaje define qué momentos de su vida son importantes en retrospectiva, y lo que parecía determinante para un joven alférez puede resultar intrascendente para ese mismo oficial décadas después.\n\nTu personaje tiene dos eventos de carrera que lo definen, elegidos o determinados al azar de la lista a continuación, y obtiene los beneficios que le proporcionan.\n\nPara los personajes que eligieron Duración de Carrera como Novato, se puede suponer que estos eventos profesionales tuvieron lugar durante el tiempo que el personaje estuvo en la Academia o equivalente, tal vez durante una asignación de entrenamiento de campo a bordo de una nave estelar.",
 
@@ -246,7 +246,7 @@
     "SoloEarlyOutlookPage.aspirations": "Aspiraciones",
 
     "SoloEarlyOutlookDetailsPage.errorDiscipline": "Selecciona una disciplina, por favor.",
-    "SoloEarlyOutlookDetailsPage.errorFocus": "Selecciona una especialización, por favor.",
+    "SoloEarlyOutlookDetailsPage.errorFocus": "Selecciona una especialidad, por favor.",
 
     "SoloEducationDetailsPage.selectThree": "(Selecciona tres)",
     "SoloEducationDetailsPage.primaryDiscipline": "Disciplina Principal",
@@ -292,15 +292,15 @@
     "SoloSpeciesPage.errorAttributes": "Elgite 3 Atributos, por favor.",
     "SoloSpeciesPage.instruction": "Selecciona la especie para tu personaje o elige una de forma aleatoria.",
 
-    "SpaceframeOptionPage.text": "¿Quieres una estructura espacial estándar, o una personalizada?",
+    "SpaceframeOptionPage.text": "¿Quieres una Plantilla estándar, o una personalizada?",
 
     "SpaceframeOptionPage.button.standardSpaceframe": "Estuctura Espacial Estándar",
     "SpaceframeOptionPage.button.customSpaceframe": "Estuctura Espacial Personalizada",
 
-    "SpaceframeSelectionPage.text": "La Estructura Espacial es la infraestructura básica de la nave, y la base sobre la que se asentará todo lo demás. En esta etapa, los jugadores seleccionan una única clase, que proporciona los sistemas básicos para la nave, así como su escala y su armamento. Las diferentes clases entran y salen del servicio en distintas fechas, por lo que el año de la campaña determina la disponibilidad.",
-    "SpaceframeSelectionPage.note": "Nota: El libro de Utopia Planitia ha redefinido las estadísticas de varias Estructuras Espaciales publicadas anteriormente. Esas estadísticas redefinidas se muestran aquí.",
+    "SpaceframeSelectionPage.text": "La Plantilla es la superestructura básica de la nave, y la base sobre la que se asentará todo lo demás. En esta etapa, los jugadores seleccionan una única clase, que proporciona los sistemas básicos para la nave, así como su escala y su armamento. Las diferentes clases entran y salen del servicio en distintas fechas, por lo que el año de la campaña determina la disponibilidad.",
+    "SpaceframeSelectionPage.note": "Nota: El libro de Utopia Planitia ha redefinido las estadísticas de varias Plantillas publicadas anteriormente. Esas estadísticas redefinidas se muestran aquí.",
     "SpaceframeSelectionPage.ignoreEndOfService": "Ignora fecha de fin de servicio (decisión del DJ)",
-    "SpaceframeSelectionPage.error": "Selecciona una Estructura Espacial antes de continuar.",
+    "SpaceframeSelectionPage.error": "Selecciona una Plantilla antes de continuar.",
 
     "SpeciesDetails.options": "Opciones de Especie",
     "SpeciesDetails.selectThree": "(Selecciona tres)",
@@ -333,7 +333,7 @@
 
     "StarshipToolSelection.instruction": "Selecciona una opción",
     "StarshipToolSelection.standardBuild": "Creación Estándar",
-    "StarshipToolSelection.standardBuildDescription": "El proceso estándar de creación de Nave Estelar sigue los pasos de creación descritos en los libros de reglas. Por ejemplo: las naves estelares eligen un estructura espacial, un perfil de misión, etc.",
+    "StarshipToolSelection.standardBuildDescription": "El proceso estándar de creación de Nave Estelar sigue los pasos de creación descritos en los libros de reglas. Por ejemplo: las naves estelares eligen una Plantillal, un perfil de misión, etc.",
     "StarshipToolSelection.simplifiedBuild": "Creación Simplificada",
     "StarshipToolSelection.simplifiedBuildDescription": "La creación simplificada es una buena opción para traspasar un conjunto de estadísticas, por ejemplo, de una fuente en línea u otra referencia.",
 
@@ -468,7 +468,7 @@
     "Construct.other.shields": "Escudos",
     "Construct.other.ship": "Nave",
     "Construct.other.sources": "Fuentes",
-    "Construct.other.spaceFrame": "Estructura Espacial",
+    "Construct.other.spaceFrame": "Plantilla",
     "Construct.other.specialRules": "Reglas Especiales",
     "Construct.other.species": "Especie",
     "Construct.other.speciesAbility": "Habilidad de la Especie",
@@ -518,7 +518,7 @@
     "Construct.system.structure": "Estructura",
     "Construct.system.weapons": "Armas",
 
-    "Page.title.attributesAndDisciplines": "Toques Finales",
+    "Page.title.attributesAndDisciplines": "Retoques Finales",
     "Page.title.careerEvent": "Evento de Carrera",
     "Page.title.careerEvent1": "Evento de Carrera 1",
     "Page.title.careerEvent2": "Evento de Carrera 2",
@@ -529,7 +529,7 @@
     "Page.title.careerLengthDetails": "Detalles de la Duración de la Carrera",
     "Page.title.characterType": "Tipo de Personaje",
     "Page.title.creditsPage": "Créditos",
-    "Page.title.customSpaceframe": "Creación Personalizada de Estructura Espacial",
+    "Page.title.customSpaceframe": "Creación Personalizada de Plantilla",
     "Page.title.customSpeciesDetails": "Detalles de Especie Personalizada",
     "Page.title.education": "Formación",
     "Page.title.educationDetails": "Detalles de Formación Académica",
@@ -538,7 +538,7 @@
     "Page.title.era": "Era",
     "Page.title.extraTalentDetails": "Detalles extra",
     "Page.title.finalStarshipDetails": "Detalles Finales de la Nave Estelar",
-    "Page.title.finish": "Toques Finales",
+    "Page.title.finish": "Retoques Finales",
     "Page.title.gamemasterTrackerPage": "Seguimiento",
     "Page.title.home": "Página principal",
     "Page.title.missionPodSelection": "Selección de Módulo de Misión",
@@ -554,11 +554,11 @@
     "Page.title.soloEarlyOutlookDetails": "Detalles de Perspectiva Temprana",
     "Page.title.soloEducationType": "Tipo de Formación Académica",
     "Page.title.soloEducation": "Formación Académica",
-    "Page.title.soloFinishingTouches": "Toques Finales",
+    "Page.title.soloFinishingTouches": "Retoques Finales",
     "Page.title.soloFinal": "Detalles Finales",
     "Page.title.sourceSelection": "Fuentes",
-    "Page.title.spaceframeOption": "Opción de Estructura Espacial",
-    "Page.title.spaceframeSelection": "Estructura Espacial",
+    "Page.title.spaceframeOption": "Opción de Plantilla",
+    "Page.title.spaceframeSelection": "Plantilla",
     "Page.title.species": "Especie",
     "Page.title.speciesDetails": "Detalles de Especie",
     "Page.title.starshipTalentSelection": "Talentos de Nave Estelar",
@@ -589,5 +589,927 @@
     "Page.breadcrumb.starshipCreation": "Creación de Nave Estelar",
     "Page.breadcrumb.supportingCharacterCreation": "Creación de Personaje de Apoyo",
 
-    "CareerEvent.common.1.name": "Nave Destruída"
+    "CareerEvent.common.1.name": "Nave Destruída",
+    "CareerEvent.common.1.description": "La nave en el que servía el personaje se perdió, fue destruido durante una misión y el personaje fue uno de los pocos que sobrevivió.\n\n- ¿Cuál era la misión del barco? ¿Fue algo rutinario que salió terriblemente mal o fue algo peligroso? ¿Qué destruyó la nave?\n- ¿Cuántos supervivientes hubo? ¿Cuánto tiempo pasó hasta que fueron rescatados?",
+    "CareerEvent.common.1.focusSuggestion": "El personaje gana una Especialidad que debería reflejar las experiencias vividas. Los ejemplos incluyen: operaciones extravehiculares, vehículos pequeños o supervivencia.",
+
+    "CareerEvent.common.2.name": "La Muerte de un Amigo",
+    "CareerEvent.common.2.description": "Durante una misión importante, uno de los amigos del personaje murió en acción.\n\n- ¿Quién era el amigo? ¿Cómo los conoció el personaje?\n- ¿Cuál fue la misión? ¿Cómo murió el amigo? ¿Quién tuvo la culpa?",
+    "CareerEvent.common.2.focusSuggestion": "El personaje gana una Especialidad que debería reflejar las experiencias vividas. Los ejemplos incluyen: Asesoramiento, pero también puede representar una habilidad o actividad que el personaje emprende en memoria de su amigo caído o para evitar que suceda lo mismo en el futuro.",
+
+    "CareerEvent.common.3.name": "Elogiado por Otra Cultura",
+    "CareerEvent.common.3.description": "El personaje estuvo involucrado en una misión que se ganó los elogios oficiales de una cultura ajena a la Federación; ahora se les considera amigos de ese pueblo.\n\n- ¿A qué cultura ayudó esta misión? ¿Cuál fue la misión? ¿Por qué fue particularmente digno de elogio?\n- ¿Tiene el personaje algún amigo o contacto en esa cultura a quien pueda contactar para pedir ayuda?",
+    "CareerEvent.common.3.focusSuggestion": "El personaje obtiene una Especialidad, que debería reflejar la experiencia del personaje con esa cultura. Una Especialidad de la Cultura X, reemplazando la X con el nombre de esa cultura, es un buen ejemplo, al igual que cualquiera que represente habilidades o técnicas específicas de esa cultura.",
+    "CareerEvent.common.3.traitDescription": "El personaje puede adquirir un Rasgo, que debería reflejar este evento. Un buen ejemplo podría ser Amigo de las/los X, reemplazando la X con el nombre de la cultura. Esto refleja el renombre del personaje entre esa cultura y los beneficios y problemas que trae consigo ese estatus.",
+
+    "CareerEvent.common.4.name": "Negociación un Tratado",
+    "CareerEvent.common.4.description": "El personaje formaba parte de una delegación que ayudó a negociar un tratado, acuerdo o alianza con una cultura ajena a la Federación. ¿Con qué cultura fue el tratado? ¿Para qué era?",
+    "CareerEvent.common.4.focusSuggestion": "El personaje gana una Especialidad, que debería reflejar la experiencia del personaje con las negociaciones. Los ejemplos incluyen: diplomacia, negociación o política galáctica.",
+
+    "CareerEvent.common.5.name": "Tuvo que Tomar el Mando",
+    "CareerEvent.common.5.description": "Durante una misión, una crisis dejó al líder del equipo incapaz de liderar. Esto requerió que el personaje tomara el mando, algo para lo que quizás no estaba preparado.\n\n- ¿Cuál fue la misión? ¿Qué salió mal?\n- ¿La misión tuvo éxito a pesar de la perder al líder de equipo?",
+    "CareerEvent.common.5.focusSuggestion": "El personaje gana una Especialidad, que debería reflejar las experiencias del personaje durante la crisis. Los ejemplos incluyen: liderar con el ejemplo, inspiración o serenidad.",
+
+    "CareerEvent.common.6.name": "Encuentro con un ser realmente alienígena",
+    "CareerEvent.common.6.description": "El personaje encontró una forma de vida que era verdaderamente alienígena, algo que apenas está dentro de la comprensión de la vida humanoide. Podría haber sido alguna entidad divina o una criatura que nada por el espacio, pero fuera lo que fuese, no era vida tal como la conocemos.\n\n- ¿Qué clase de criatura era? ¿Qué aprendió el personaje de la experiencia?\n- ¿Qué pasó después con la criatura? ¿Se ha vuelto a ver?",
+    "CareerEvent.common.6.focusSuggestion": "El personaje obtiene una Especialidad, que debería reflejar las experiencias del personaje con la entidad. Los ejemplos incluyen: empatía, filosofía, xenobiología.",
+
+    "CareerEvent.common.7.name": "Herida Grave",
+    "CareerEvent.common.7.description": "El personaje resultó gravemente herido y necesitó pasar una cantidad considerable de tiempo recuperándose.\n\n- ¿Qué estaba pasando cuando el personaje resultó herido? ¿Quién fue el responsable?\n- ¿Qué supuso la recuperación? ¿El personaje necesitó una prótesis o un implante cibernético después?",
+    "CareerEvent.common.7.focusSuggestion": "El personaje obtiene una Especialidad, que debe reflejar las circunstancias de la lesión del personaje, algo que le ayudó durante la recuperación o algo que tomó después de recuperarse. Los ejemplos incluyen: atletismo, arte o filosofía.",
+    "CareerEvent.common.7.traitDescription": "El personaje puede adquirir un Rasgo, que debería reflejar algún efecto duradero de la lesión del personaje o de la forma en que se recuperó. Los ejemplos incluyen: Implante protésico o alguna forma de discapacidad.",
+
+    "CareerEvent.common.8.name": "Conflicto con una Cultura Hostil",
+    "CareerEvent.common.8.description": "El personaje estuvo involucrado en una batalla importante con una fuerza hostil y es poco probable que olvide la experiencia.\n\n- ¿Quién era el enemigo en esta batalla? ¿Por qué se produjo la batalla? ¿Se combatió en el espacio, en tierra o en ambos?\n- ¿Qué tuvo que hacer el personaje para sobrevivir? ¿Se ganó o se perdió la batalla?",
+    "CareerEvent.common.8.focusSuggestion": "El personaje obtiene un enfoque, que debería reflejar las habilidades que perfeccionó durante la lucha. Los ejemplos incluyen: fáseres de mano, combate cuerpo a cuerpo o sistemas tácticos de a bordo.",
+
+    "CareerEvent.common.9.name": "Tutelado",
+    "CareerEvent.common.9.description": "Un oficial muy respetado se fijó en la carrera del personaje. Durante un tiempo, el personaje sirvió como piloto y ayudante del oficial, beneficiándose de sus experiencias y lecciones. ¿Quién era el oficial? ¿El oficial sigue siendo un contacto o incluso un amigo del personaje?",
+    "CareerEvent.common.9.focusSuggestion": "El personaje gana una Especialidad, que refleja las lecciones aprendidas. Los ejemplos incluyen: compostura o etiqueta, aunque cualquier Especialidad que refleje las especialidades del oficial sería apropiado.",
+
+    "CareerEvent.common.10.name": "Accidente de Transportador",
+    "CareerEvent.common.10.description": "El personaje sufrió algún tipo de extraño accidente mientras usaba un transportador.\n\n- ¿Qué le pasó al personaje durante el accidente? ¿Hubo alguna repercusión duradera?\n- ¿Cómo se siente ahora el personaje con respecto a los transportadores?",
+    "CareerEvent.common.10.focusSuggestion": "El personaje obtiene una Especialidad, que debería reflejar algo que aprendió debido al accidente o después del mismo. Los ejemplos incluyen: transportadores y replicadores, vehículos pequeños o mecánica cuántica.",
+
+    "CareerEvent.common.11.name": "Lidió con una plaga",
+    "CareerEvent.common.11.description": "La nave estelar del personaje fue asignada para proporcionar ayuda a un mundo que se enfrentaba a una epidemia.\n\n- ¿Cuál era la enfermedad que se estaba extendiendo? ¿A qué planeta estaba afectando?\n- ¿El personaje trataba directamente con los enfermos? ¿Cómo estuvo involucrado el personaje?",
+    "CareerEvent.common.11.focusSuggestion": "El personaje gana una Especialidad, que debería reflejar cómo ayudó durante la crisis. Los ejemplos incluyen: enfermedades infecciosas, medicina de urgencia o triaje.",
+
+    "CareerEvent.common.12.name": "Traicionó sus Ideales por un Superior",
+    "CareerEvent.common.12.description": "El personaje se vio en una situación en la que tenía que elegir entre un superior de confianza y sus propios ideales, y decidió seguir al superior.\n\n- ¿Quién era el superior? ¿Qué le pidieron al personaje que hiciera? ¿Cómo se siente el personaje ahora?\n- ¿Cuáles fueron las repercusiones de esto? ¿Están registrados los detalles de este evento? ¿Tenía razón el personaje?",
+    "CareerEvent.common.12.focusSuggestion": "El personaje gana una Especialidad, que refleja el evento y sus consecuencias. Los ejemplos incluyen: persuasión, inspiración, investigación.",
+
+    "CareerEvent.common.13.name": "Desafió a un Superior",
+    "CareerEvent.common.13.description": "El personaje se vio en una situación en la que tenía que elegir entre un superior de confianza y sus propios ideales, y decidió seguir sus ideales.\n\n- ¿Quién era el superior? ¿Qué le pidieron al personaje que hiciera? ¿Cómo se siente el personaje ahora?\n- ¿Cuáles fueron las repercusiones de esto? ¿Están registrados los detalles de este evento? ¿Tenía razón el personaje?",
+    "CareerEvent.common.13.focusSuggestion": "El personaje gana una Especialidad, que refleja el evento y sus consecuencias. Los ejemplos incluyen: Código de Justicia de la Federación, Historia o Protocolo de la Flota Estelar.",
+
+    "CareerEvent.common.14.name": "Nueva Estrategia de Batalla",
+    "CareerEvent.common.14.description": "En combate con una fuerza hostil, el personaje ideó una nueva estrategia o táctica.\n\n- ¿Contra quién fue la batalla?\n- ¿Fue en el espacio o en la Tierra? ¿Cuál fue la estrategia ideada?",
+    "CareerEvent.common.14.focusSuggestion": "El personaje obtiene una Especialidad, que refleja su liderazgo decisivo en el campo de batalla. Los ejemplos incluyen: tácticas de combate, conciencia de la amenaza o liderar con el ejemplo.",
+
+    "CareerEvent.common.15.name": "Aprendió un Lenguaje Único",
+    "CareerEvent.common.15.description": "El personaje encontró una especie con una forma inusual de comunicación y aprendió a comunicarse con ella.\n\n- ¿Quiénes eran los alienígenas con los que se encontró?¿El encuentro fue tenso o cordial?\n- ¿Qué método de comunicación empleaban los alienígenas? ¿Cómo lo aprendió el personaje?",
+    "CareerEvent.common.15.focusSuggestion": "El personaje obtiene una Especialidad, que refleja lo que aprendió del evento. Los ejemplos incluyen: Lingüística, Estudios Culturales o Negociaciones.",
+
+    "CareerEvent.common.16.name": "Descubrió un Artefacto",
+    "CareerEvent.common.16.description": "Durante una misión de reconocimiento, el personaje descubrió un dispositivo o fragmento de tecnología de una civilización ahora extinta.\n\n- ¿Qué hizo esta pieza de tecnología? ¿Sigue funcionando ahora?\n- ¿Qué se sabe sobre la civilización que lo creó?",
+    "CareerEvent.common.16.focusSuggestion": "El personaje gana una Especialidad, que refleja el evento y sus consecuencias. Los ejemplos incluyen: tecnología antigua, informática, ingeniería inversa.",
+
+    "CareerEvent.common.17.name": "Mención Especial",
+    "CareerEvent.common.17.description": "Durante una crisis, el personaje salvó la vida de varios compañeros, ayudándolos a ponerse a salvo, lo que le valió un elogio especial.\n\n- ¿Cuál fue la crisis? ¿Por qué estaba en peligro la misión?\n- ¿Cuáles fueron las repercusiones de esto? ¿Están registrados los detalles de este evento?",
+    "CareerEvent.common.17.focusSuggestion": "El personaje gana una Especialidad, que refleja el evento y sus consecuencias. Los ejemplos incluyen: atletismo, supervivencia o medicina de urgencia.",
+
+    "CareerEvent.common.18.name": "Resolvió una Crisis de Ingeniería",
+    "CareerEvent.common.18.description": "El personaje jugó un papel decisivo para poner fin a una crisis causada por un fallo tecnológico y salvó muchas vidas en el proceso. ¿Qué tecnología había fallado y por qué era peligrosa? ¿Cómo resolvió el personaje el problema?",
+    "CareerEvent.common.18.focusSuggestion": "El personaje gana una Especialidad, que refleja la tecnología involucrada en el evento. Los ejemplos incluyen: sistemas de energía de electroplasma, reactores de fusión o motores warp.",
+
+    "CareerEvent.common.19.name": "Descubrimiento o Invención",
+    "CareerEvent.common.19.description": "El personaje hizo un descubrimiento tecnológico importante, ideó una nueva forma de utilizar una tecnología en particular o inventó alguna tecnología nueva que será imprescindible en el futuro.\n\n- ¿Cuál fue el descubrimiento, avance o invención?\n- ¿Cómo será útil?",
+    "CareerEvent.common.19.focusSuggestion": "El personaje gana una Especialidad, que refleja el logro del personaje. Los ejemplos incluyen: tecnología experimental, invención o improvisación.",
+
+    "CareerEvent.common.20.name": "Primer Contacto",
+    "CareerEvent.common.20.description": "El personaje fue elegido para participar en una de las misiones más importantes de la Flota Estelar: el primer contacto con otra cultura. ¿Con qué cultura tuvo el primer contacto el personaje? ¿La misión salió bien?",
+    "CareerEvent.common.20.focusSuggestion": "El personaje gana una Especialidad, que refleja la naturaleza de la misión. Los ejemplos incluyen: estudios culturales, diplomacia o infiltración.",
+
+    "CareerEvent.common.99.name": "Reclutado para la inteligencia de la Flota Estelar",
+
+    "CareerType.core.young.name": "Oficial Junior",
+    "CareerType.core.young.description": "El personaje se define por su potencial más que por su habilidad. Su talento en bruto y sus expectativas sobre cómo es el universo aún no se han visto templadas por la realidad.",
+    "CareerType.core.young.valueInstruction": "El personaje recibe un Valor, que debe reflejar de alguna manera su inexperiencia e ingenuidad.",
+
+    "CareerType.core.experienced.name": "Oficial Experimentado",
+    "CareerType.core.experienced.description": "El personaje tiene varios años de experiencia al servicio de la Flota Estelar y disfruta de una carrera prometedora.",
+    "CareerType.core.experienced.valueInstruction": "El personaje recibe un Valor, que puede elegir libremente.",
+
+    "CareerType.core.veteran.name": "Oficial Veterano",
+    "CareerType.core.veteran.description": "El personaje tiene décadas de experiencia al servicio de la Flota Estelar y ha servido en muchas naves y bases estelares. El juicio y las opiniones del personaje son muy apreciados por subordinados, compañeros e incluso superiores.",
+    "CareerType.core.veteran.valueInstruction": "El personaje recibe un Valor, que debe reflejar los años de experiencia del personaje y las creencias que ha formado a lo largo de su larga carrera.",
+
+    "CareerType.civilian.young.name": "Joven",
+    "CareerType.civilian.young.description": "El personaje se define por su potencial más que por su habilidad. Su talento en bruto y sus expectativas sobre cómo es el universo aún no se han visto templadas por la realidad.",
+    "CareerType.civilian.young.valueInstruction": "El personaje recibe un Valor, que debe reflejar de alguna manera su inexperiencia e ingenuidad.",
+
+    "CareerType.civilian.experienced.name": "Experimentado",
+    "CareerType.civilian.experienced.description": "El personaje tiene varios años de experiencia en el servicio y disfruta de una carrera prometedora.",
+    "CareerType.civilian.experienced.valueInstruction": "El personaje recibe un Valor, que puede elegir libremente.",
+
+    "CareerType.civilian.veteran.name": "Veterano",
+    "CareerType.civilian.veteran.description": "El personaje tiene décadas de experiencia en el servicio y ha servido en muchas naves, mundos y/o bases estelares. El juicio y las opiniones del personaje son muy apreciados por subordinados, compañeros e incluso superiores.",
+    "CareerType.civilian.veteran.valueInstruction": "El personaje recibe un Valor, que debe reflejar los años de experiencia del personaje y las creencias que ha formado a lo largo de su larga carrera.",
+
+    "CareerType.klingon.young.name": "Joven Guerrero",
+    "CareerType.klingon.young.description": "El personaje se define por su potencial más que por su habilidad. Su talento en bruto y sus expectativas sobre cómo es el universo aún no se han visto templadas por la realidad.",
+    "CareerType.klingon.young.valueInstruction": "El personaje recibe un Valor, que debe reflejar de alguna manera su inexperiencia e ingenuidad.",
+
+    "CareerType.klingon.experienced.name": "Guerrero Experimentado",
+    "CareerType.klingon.experienced.description": "El personaje tiene varios años de experiencia al servicio del Imperio y disfruta de una carrera prometedora. Esta es la suposición predeterminada para los personajes creados usando estas reglas.",
+    "CareerType.klingon.experienced.valueInstruction": "El personaje recibe un Valor, que puede elegir libremente.",
+
+    "CareerType.klingon.veteran.name": "Guerrero Veterano",
+    "CareerType.klingon.veteran.description": "El personaje tiene décadas de experiencia al servicio del Imperio y ha servido en muchas naves y estaciones espaciales. El juicio y las opiniones del personaje son muy apreciados por subordinados, compañeros e incluso superiores.",
+    "CareerType.klingon.veteran.valueInstruction": "El personaje recibe un Valor, que debe reflejar los años de experiencia del personaje y las creencias que ha formado a lo largo de su larga carrera.",
+
+    "CareerType.solo.young.name": "Novato",
+    "CareerType.solo.young.description": "Tu personaje se define por su potencial más que por su habilidad. Su talento en bruto y sus expectativas sobre cómo es el universo aún no se han visto templadas por la realidad.",
+
+    "CareerType.solo.experienced.name": "Experimentado",
+    "CareerType.solo.experienced.description": "Tu personaje tiene varios años de experiencia y disfruta de una carrera prometedora.",
+
+    "CareerType.solo.veteran.name": "Veterano",
+    "CareerType.solo.veteran.description": "Tu personaje tiene décadas de experiencia y ha servido en muchas naves y bases estelares. Sus juicios y opiniones son muy apreciados por subordinados, pares e incluso superiores.",
+
+    "CharacterType.name.starfleet": "Flota Estelar",
+    "CharacterType.name.klingonWarrior": "Fuerza de Defensa Klingon",
+    "CharacterType.name.civilian": "Civil",
+    "CharacterType.name.alliedMilitary": "Armada Aliada",
+    "CharacterType.name.ambassadorDiplomat": "Embajador / Diplomático",
+    "CharacterType.name.cadet": "Cadete",
+    "CharacterType.name.child": "Niño",
+    "CharacterType.name.other": "Otro",
+
+    "EarlyOutlook.MilitaryOrExploration": "Flota Estelar",
+
+    "EarlyOutlook.MilitaryOrExploration.description": "La familia del personaje tendría una larga tradición de servicio en la Flota Estelar, con al menos un miembro de la familia de cada generación que ha servido en la Federación. Quizás ambos padres del personaje eran oficiales de la Flota Estelar, que se conocieron en el servicio. De cualquier manera, los años de formación del personaje estuvieron influenciados por la Flota Estelar.",
+
+    "EarlyOutlook.BusinessOrTrade": "Negocios o Comercio",
+
+    "EarlyOutlook.BusinessOrTrade.description": "La familia del personaje podría tener conexiones en innumerables mundos, supervisando y dirigiendo algún negocio grande. Podrían haber sido comerciantes o estar involucrados en operaciones de transporte interplanetario. De cualquier manera, el personaje ha crecido encontrándose con personas de todos los ámbitos de la vida, incluidos aquellos que no pertenecen a la Federación, y su visión de la vida se ha moldeado en consecuencia.",
+
+    "EarlyOutlook.agricultureOrRural": "Agrícola o Rural",
+
+    "EarlyOutlook.agricultureOrRural.description": "El personaje creció rodeado más de naturaleza que de personas, en comunidades rurales, en la frontera o en algún lugar alejado del bullicio de las ciudades. Es posible que estén muy involucrados en la agricultura, cultivando alimentos reales para complementar las comidas sintetizadas o replicadas.",
+
+    "EarlyOutlook.ScienceAndTechnology": "Ciencia y Tecnología",
+
+    "EarlyOutlook.ScienceAndTechnology.description": "El hogar del personaje estaba lleno del potencial de la ciencia y los desarrollos de vanguardia eran terreno familiar. Quizás el personaje fue criado por científicos o ingenieros, o tuvo mentores y profesores que fomentaron el talento para lo técnico.",
+
+    "EarlyOutlook.ArtisticAndCreative": "Artístico y Creativo",
+
+    "EarlyOutlook.ArtisticAndCreative.description": "La vida del personaje estuvo llena de arte y creatividad de todo tipo, y sin importar qué actividades prefiera el personaje, está expuesto a las grandes obras de muchas culturas y se le ofrecen todas las oportunidades para expresarse.",
+
+    "EarlyOutlook.DiplomacyAndPolitics": "Diplomacia y Política",
+
+    "EarlyOutlook.DiplomacyAndPolitics.description": "El personaje ha estado expuesto a las complejidades del pensamiento político y los matices de la diplomacia desde que era joven, quizás porque un miembro de la familia estaba involucrado en esos campos.",
+
+    "Environment.common.homeworld.name": "Mundo Natal",
+    "Environment.common.homeworld.description": "El personaje proviene del mundo que dio origen a su civilización y ha estado rodeado de legados culturales y espirituales durante toda su vida. Los mundos natales de las especies son a menudo utópicos e idílicos y sirven como el ideal platónico de la cultura de esa especie. También ejemplifican aspectos de las tradiciones más veneradas de una cultura y sirven como el corazón del panorama legal y político de esa civilización.",
+
+    "Environment.common.busyColony.name": "Colonia Ajetreada",
+    "Environment.common.busyColony.description": "El personaje proviene de una de las colonias más antiguas o prósperas de su cultura, que puede ser otro mundo dentro de su sistema de origen (como la Luna o Marte para los humanos) o uno de los primeros mundos colonizados después de que la cultura desarrollase el vuelo interestelar. Estas colonias a menudo desarrollan una perspectiva ferozmente independiente, habiéndose desarrollado a menudo con poca ayuda directa de su mundo natal y con un sentido de orgullo que acompaña a estar entre los primeros de su especie en colonizar otro mundo.",
+
+    "Environment.common.isolatedColony.name": "Colonia Aislada",
+    "Environment.common.isolatedColony.description": "El personaje proviene de una colonia aislada de la sociedad galáctica en general. Mundos como el monasterio vulcano en P'Jem utilizan las grandes distancias entre los sistemas estelares como una oportunidad para el aislamiento contemplativo, mientras que otros se asientan porque representan oportunidades de investigación únicas. Las culturas de estas colonias tienden a centrarse en el aprendizaje y la introspección.",
+
+    "Environment.common.frontierColony.name": "Colonia Fronteriza",
+    "Environment.common.frontierColony.description": "El personaje proviene de una colonia ubicada en los márgenes del espacio conocido, ya sea en el borde de un espacio inexplorado o en la frontera con otra civilización. Los colonos fronterizos tienden a ser resistentes y decididos, incluso testarudos, y están bien preparados para los peligros que su hogar pueda plantear.",
+
+    "Environment.common.starshipOrStarbase.name": "Nave o Base Estelar",
+    "Environment.common.starshipOrStarbase.description": "El personaje creció en el espacio, viajando a bordo de una nave espacial o viviendo en una estación espacial o base estelar. Si bien es poco probable que haya vivido a bordo de una nave de la Flota Estelar (solo algunos de ellos tienen familias), muchos cargueros, transportes y otras naves civiles tienen una tradición de tripulaciones familiares o generacionales, y muchos oficiales con familias aceptan puestos en bases estelares en lugar de naves. Aquellos que crecieron en el espacio aprenden todo sobre la vida a bordo cuando son niños, y muchos son preparados para el liderazgo o aprenden a volar una lanzadera durante sus años de formación.",
+
+    "Environment.common.anotherSpeciesWorld.name": "Mundo de otra Especie",
+    "Environment.common.anotherSpeciesWorld.description": "El personaje creció entre otra especie. Es posible que hayan vivido en un pequeño enclave de su propia especie, o que haya quedado huérfanos por algún tipo de desastre y hayan sido criados por alienigenas. En cualquier caso, el personaje tiene perspectivas únicas sobre su propia especie y sobre aquellos con quienes creció.",
+
+    "Environment.klingon.homeworld.name": "Qo'noS",
+    "Environment.klingon.homeworld.description": "Provienes del mundo natal klingon de Qo'noS, a menudo llamado Kronos por los forasteros, y has estado rodeado por los legados culturales y espirituales de Kahless y el Imperio durante toda tu vida. Las tradiciones klingon más antiguas y veneradas provienen de su mundo natal y son una parte decisiva de su educación.",
+
+    "Environment.klingon.busyColony.name": "Colonia Ajetreada",
+    "Environment.klingon.busyColony.description": "Provienes de una de las colonias más antiguas o prósperas del Imperio. Estas colonias a menudo tienen una perspectiva independiente bastante agresiva, ya que se desarrollaron con poca ayuda del Imperio en sus primeros días, y el orgullo que acompaña a estar entre los primeros de su tipo en colonizarun mundo extraño aún permanece en los descendientes de esos primeros colonos.",
+
+    "Environment.klingon.isolatedColony.name": "Colonia Aislada",
+    "Environment.klingon.isolatedColony.description": "Provienes de una colonia aislada del resto del Imperio y de la galaxia en general. Mundos como Boreth utilizan este aislamiento como una oportunidad para la espiritualidad y la contemplación, mientras que otros se asientan porque presentan oportunidades únicas para realizar investigaciones lejos del escrutinio y la politiquería de los mundos centrales. Incluso en el Imperio, en estos mundos se enfatiza el aprendizaje y la introspección.",
+
+    "Environment.klingon.frontierColony.name": "Colonia Fronteriza",
+    "Environment.klingon.frontierColony.description": "Provienes de una colonia ubicada en los márgenes del Imperio, ya sea en el borde del espacio explorado o en la frontera con la Federación o el Imperio Romulano. Es posible que incluso tu mundo haya sido reclamado a una de esas potencias rivales durante un conflicto en generaciones anteriores. Las colonias fronterizas tienden a producir personas decididas, testarudas y bien preparadas para los peligros que pueda presentar su hogar, y totalmente dispuestas a luchar para conservar lo que es suyo.",
+
+    "Environment.klingon.starshipOrStarbase.name": "Nave o Base Estelar",
+    "Environment.klingon.starshipOrStarbase.description": "Creciste en el espacio, viajaste a bordo de una nave o viviste a bordo de una estación espacial. No habrás crecido a bordo de una nave de guerra, pero muchos cargueros, transportes y otros buques civiles si que tienen una tradición de tripulaciones familiares o generacionales. Aquellos que crecieron en el espacio aprenden todo sobre la vida a bordo desde que eran niños y, como resultado, muchos se adaptan fácilmente una vida en el espacio.",
+
+    "Environment.klingon.anotherSpeciesWorld.name": "Mundo de otra Especie",
+    "Environment.klingon.anotherSpeciesWorld.description": "Creciste entre gente que no era klingon. Quizás fuiste parte de un enclave klingon que supervisaba un mundo conquistado, o fuiste criado entre exiliados, o quedaste huérfano durante una batalla o desastre y fuiste criado por extraterrestres. Es posible que hayas crecido en el Imperio o que seas un extraño en él. En cualquier caso, has elegido servir al Imperio y demostrar que eres tan klingon como cualquiera nacido en Qo'noS, incluso si tienes perspectivas diferentes sobre la cultura y tradición klingon.",
+
+    "Environment.alternate.utopianParadise.name": "Paraíso Utópico",
+    "Environment.alternate.utopianParadise.description": "Creciste en un ambiente de paz, prosperidad y abundancia. No había guerra en vuestro mundo, ni pobreza, escasez de vivienda, hambre o crimen. Sólo sabías de esas cosas gracias a los estudios de historia y nunca has podido entender realmente cómo una sociedad puede producir una desigualdad tan destructiva. Siempre has tenido acceso a los recursos no sólo para sobrevivir, sino también para prosperar en cualquier cosa que decidas llevar a cabo.",
+
+    "Environment.alternate.cosmopolitan.name": "Cosmopolita",
+    "Environment.alternate.cosmopolitan.description": "Creciste en entornos de comercio o diplomacia y en una mezcla de diferentes comunidades y culturas. Lo desconocido siempre ha sido lo normal y te familiarizaste con docenas de culturas de mundos distantes mucho antes de ser adulto. El ritmo frenético de la vida y la necesidad básica de deleitarse con las diferencias entre grupos e individuos te parecen simplemente la realidad de la existencia en esta enorme Galaxia.",
+
+    "Environment.alternate.rigorousDiscipline.name": "Disciplina Severa",
+    "Environment.alternate.rigorousDiscipline.description": "Siempre has estado rodeado de nociones de deber y propósito, y tu infancia fue estricta, orientada a prepararte para asumir un rol concreto o alcanzar una meta específica. Esto significaba relativamente poca libertad personal, pero te inculcó un poderoso sentido de lo que eras capaz de hacer cuando te exigían alcanzar el éxito.",
+
+    "Environment.alternate.ascetismAndIntrospection.name": "Ascetismo e Introspección",
+    "Environment.alternate.ascetismAndIntrospection.description": "Tu vida era sencilla y carecía de muchos de los lujos que los mundos prósperos dan por sentado. Esto no se debía a una carencia, sino más bien a una elección: una creencia entre aquellos con quienes creciste de que la abundancia externa y material puede distraerte del autoconocimiento y el crecimiento personal.",
+
+    "Environment.alternate.struggleAndHardship.name": "Lucha y Dificultades",
+    "Environment.alternate.struggleAndHardship.description": "Por diferentes motivos, tu mundo tenía pocos recursos disponibles. Los mundos en la frontera, así como los puestos de avanzada aislados, son a menudo lugares penosos donde la supervivencia continua es difícil, mientras que otros mundos luchan por sobrevivir a raíz de desastres naturales o ecológicos, las secuelas de la guerra o el colapso social que deja la infraestructura más básica en ruinas. Algunos buscan mundos como este, donde el “trabajo honesto” se considera una virtud, mientras que otros se encuentran en vidas de lucha diaria sin elección propia y buscan mejorar su mundo o escapar de él.",
+
+    "Environment.alternate.occupationOrWar.name": "Ocupación o Guerra",
+    "Environment.alternate.occupationOrWar.description": "Aunque los miembros de la Federación ya no se declaran la guerra entre ellos, pero la guerra sigue formando parte de la Galaxia. Los conflictos locales o planetarios azotan a muchos mundos independientes, y los conflictos interestelares que van desde escaramuzas fronterizas hasta guerras sectoriales son algo para lo que todas las civilizaciones deben prepararse. Los mundos asolados por la guerra, o incluso ocupados por una nación o cultura hostil, son lugares difíciles para vivir, y a menudo obligan a las personas a adaptarse a condiciones horribles y a decisiones de vida o muerte.",
+
+    "Environment.special.name": "{{name}} ({{species}})",
+
+    "AlliedMilitaryType.name.maco": "MACO",
+    "AlliedMilitaryType.name.andorianImperialGuard": "Guardia Imperial Andoriana",
+    "AlliedMilitaryType.name.vulcanHighCommand": "Alto Mando Vulcano",
+    "AlliedMilitaryType.name.klingonDefenceForce": "Fuerza de Defensa Klingon",
+    "AlliedMilitaryType.name.romulanStarEmpire": "Imperio Estelar Romulano",
+    "AlliedMilitaryType.name.bajoranMilitia": "Milicia Bajorana",
+    "AlliedMilitaryType.name.cardassianUnion": "Unión Cardassiana",
+    "AlliedMilitaryType.name.dominion": "El Dominio",
+    "AlliedMilitaryType.name.ferengiMilitary": "Militar Ferengi",
+    "AlliedMilitaryType.name.other": "Otro",
+
+    "BodyType.averageMale": "Hombre Promedio",
+    "BodyType.averageNonBinary": "No Binarie Promedio",
+    "BodyType.averageFemale": "Mujer Promedio",
+
+    "Division.command": "Mando",
+    "Division.science": "Ciencia",
+    "Division.operations": "Operaciones",
+
+    "Division.monsterMaroon.command": "Mando",
+    "Division.monsterMaroon.science": "Ciencia",
+    "Division.monsterMaroon.helmEngineering": "Timón/Ingeniería",
+    "Division.monsterMaroon.medical": "Médico",
+    "Division.monsterMaroon.security": "Seguridad",
+    "Division.monsterMaroon.specialServices": "Servicios Especiales",
+    "Division.monsterMaroon.trainee": "Aprendiz",
+
+    "Division.strangeNewWorlds.medical": "Médico",
+    "Division.strangeNewWorlds.nursing": "Enfermería",
+
+    "Equipment.uniform": "Uniforme",
+    "Equipment.clothing": "Vestimenta",
+    "Equipment.armor": "Armadura",
+    "Equipment.communicator": "Comunicador",
+    "Equipment.tricorder": "Tricorder",
+    "Equipment.medKit": "MedKit",
+    "Equipment.engineeringKit": "Kit de Ingeniería",
+    "Equipment.orionMultiKey": "Multiherramienta Orión",
+    "Equipment.ushaanTor": "Picahielos Ushaan-Tor",
+
+    "Era.name.enterprise": "Enterprise (siglo 22)",
+    "Era.name.originalSeries": "Serie Original (siglo 23)",
+    "Era.name.nextGeneration": "Nueva Generación (siglo 24)",
+    "Era.name.picardProdigy": "Picard/Prodigy (finales siglo 24, principios siglo 25)",
+    "Era.name.discovery32": "Discovery (siglo 32)",
+
+    "ExtraType.none": "Ninguno",
+    "ExtraType.bajoranEarring": "Pendiente Bajorano",
+    "ExtraType.simpleEarring": "Pendiente Sencillo",
+    "ExtraType.hoopEarring": "Pendiente de Aro",
+    "ExtraType.smallBindi": "Bindi Pequeño",
+    "ExtraType.risanSymbol": "Símbolo Risiano",
+    "ExtraType.inuitTattoo": "Tatuaje Unuit",
+    "ExtraType.zaraniteMask": "Respirador Zaranita",
+    "ExtraType.ferengiHeadFlap": "Velo Ferengi",
+
+    "Focus.animalHandling": "Trato con Animales",
+    "Focus.anthropology": "Antropología",
+    "Focus.astrometrics": "Astrométrica",
+    "Focus.astronavigation": "Astronavegación",
+    "Focus.astrophysics": "Astrofísica",
+    "Focus.bureaucracy": "Burocracia",
+    "Focus.botany": "Botánica",
+    "Focus.composure": "Autocontrol",
+    "Focus.computers": "Ordenadores",
+    "Focus.culturalStudies": "Estudios Culturales",
+    "Focus.cybernetics": "Cibernética",
+    "Focus.debate": "Debate",
+    "Focus.demolition": "Demolición",
+    "Focus.diplomacy": "Diplomacia",
+    "Focus.disguise": "Disfraces",
+    "Focus.disruptors": "Disruptores",
+    "Focus.electroPlasmaPowerSystems": "Sistemas de Energía de Electroplasma",
+    "Focus.emergencyMedicine": "Medicina de Emergencia",
+    "Focus.espionage": "Espionaje",
+    "Focus.exoTectonics": "Exotectónica",
+    "Focus.extraVehicularActivity": "Actividad Extravehicular",
+    "Focus.evasiveAction": "Acción Evasiva",
+    "Focus.finances": "Finanzas",
+    "Focus.genetics": "Genética",
+    "Focus.geology": "Geología",
+    "Focus.handPhasers": "Fásers de Mano",
+    "Focus.handToHandCombat": "Combate cuerpo a cuerpo",
+    "Focus.helmOperation": "Operar Timón",
+    "Focus.history": "Historia",
+    "Focus.holoprogramming": "Holoprogramación",
+    "Focus.infectiousDiseases": "Enfermedades Infecciosas",
+    "Focus.infiltration": "Infiltración",
+    "Focus.inspiration": "Inspiración",
+    "Focus.interrogation": "Interrogatorio",
+    "Focus.intimidation": "Intimidación",
+    "Focus.law": "Derecho",
+    "Focus.linguistics": "Lingüística",
+    "Focus.manufacturing": "Fabricación",
+    "Focus.metallurgy": "Metalurgia",
+    "Focus.music": "Música",
+    "Focus.negotiation": "Negociación",
+    "Focus.observation": "Observación",
+    "Focus.persuasion": "Persuasión",
+    "Focus.philosophy": "Filosofía",
+    "Focus.physics": "Física",
+    "Focus.politics": "Política",
+    "Focus.powerSystems": "Sistemas de Energía",
+    "Focus.psychiatry": "Psiquiatría",
+    "Focus.psychology": "Psicología",
+    "Focus.quantumMechanics": "Mecánica Cuántica",
+    "Focus.rapidAnalysis": "Análisis Rápido",
+    "Focus.shipboardTacticalSystems": "Sistemas Tácticos de a Bordo",
+    "Focus.smallCraft": "Vehículos Pequeños",
+    "Focus.starshipRecognition": "Reconocimiento de Naves",
+    "Focus.starfleetProtocols": "Protocolos de la Flota Estelar",
+    "Focus.structuralEngineering": "Ingeniería Estructural",
+    "Focus.subspaceCommunications": "Comunicaciones Subespaciales",
+    "Focus.surgery": "Cirugía",
+    "Focus.survey": "Vigilancia",
+    "Focus.survival": "Supervivencia",
+    "Focus.teamDynamics": "Dinámicas de Equipo",
+    "Focus.threatAnalysis": "Análisis de Amenazas",
+    "Focus.traumaSurgery": "Cirugía de Urgencia",
+    "Focus.transportersReplicators": "Transportatores y Replicadores",
+    "Focus.virology": "Virología",
+    "Focus.warpFieldDynamics": "Dinámica de Campos de Curvatura",
+    "Focus.xenobiology": "Xenobiología",
+
+    "GovernmentType.name.andorian": "Andoriano",
+    "GovernmentType.name.bajoran": "Bajorano",
+    "GovernmentType.name.cardassian": "Cardassiano",
+    "GovernmentType.name.dominion": "El Dominio",
+    "GovernmentType.name.federation": "Federación",
+    "GovernmentType.name.klingon": "Klingon",
+    "GovernmentType.name.romulan": "Romulano",
+    "GovernmentType.name.tellarite": "Telarita",
+    "GovernmentType.name.vulcan": "Vulcano",
+    "GovernmentType.name.other": "Otro",
+
+    "HairType.bald": "Calvicie",
+    "HairType.bowlCutHair": "Corte a Tazón",
+    "HairType.centrePart": "Raya al Medio",
+    "HairType.chinLengthBob": "Bob a la Altura de la Barbilla",
+    "HairType.mature": "Clásico",
+    "HairType.stylishHair": "Corte Moderno",
+    "HairType.sidePart": "Hacia un Lado",
+    "HairType.shortAfro": "Rizado Corto",
+    "HairType.veryShortAfro": "Rizado muy corto",
+    "HairType.pulledBackPonyTail": "Coleta",
+    "HairType.balding": "Calvicie",
+    "HairType.receding": "Con Entradas",
+    "HairType.deLeve": "Afeitado leve",
+    "HairType.mediumLengthFemaleSidePart": "Media Melena Hacia un Lado",
+    "HairType.mediumMaleCenterPart": "Media Melena con Raya al Medio",
+    "HairType.mediumLengthFemaleStraight": "Media Melena Recta",
+    "HairType.chinLengthCombBack": "Media Melena Recta Hacia Atrás",
+    "HairType.shavedSides": "Laterales Rapados",
+    "HairType.shortTeasedOverEyeStyle": "Corto, Cardado, Encima de los Ojos",
+    "HairType.feminineDreadStyle": "Estilo Dread Femenino",
+    "HairType.shoulderLengthMostlyStraight": "Recto por Encima de los Hombros",
+    "HairType.shoulderLengthBob": "A la Altura de los Hombros",
+    "HairType.tousledSidePart": "Parte Lateral Despeinada",
+    "HairType.cornRows": "Trenzas Africanas",
+    "HairType.highForeheadEfrosianStyle": "Melena Efrosiana",
+    "HairType.pinnedUpHairWithPart": "Recogido con Pinzas",
+
+    "HeadType.averageAngular": "Normal, Angular",
+    "HeadType.squareJawed": "Mandíbula Cuadrada",
+    "HeadType.roundedNarrow": "Redondeada, Estrecha",
+    "HeadType.roundedAverage": "Redondeada, Normal",
+    "HeadType.softerNarrow": "Suave, Mandíbula Estrecha",
+    "HeadType.pointedDelicate": "Puntiaguda, Mandíbula Delicada",
+    "HeadType.rectangular": "Rectangular con Mandíbula Puntiaguda",
+    "HeadType.elfin": "Duendecillo, Mandíbula Pequeña",
+    "HeadType.pillShaped": "En Forma de Píldora, Pesada",
+    "HeadType.roundedHeavy": "Redondeada, Pesada",
+
+    "ModificationType.name.reputation": "Reputación",
+    "ModificationType.name.promotion": "Promoción",
+    "ModificationType.name.milestone": "Hito",
+
+    "MilestoneType.name.normalMilestone": "Hito Normal",
+    "MilestoneType.name.spotlightMilestone": "Hito Destacado",
+    "MilestoneType.name.arcMilestone": "Hito de Arco",
+
+    "MissionPod.commandAndControl": "Mando y Control",
+    "MissionPod.sensors": "Sensores",
+    "MissionPod.weapons": "Armamento",
+    "MissionPod.astrometricsAndNavigation": "Astrometría y Navegación",
+    "MissionPod.defensiveShieldEnhancement": "Mejora de Escudo Defensivo",
+    "MissionPod.emergencyRecovery": "Recuperación de Emergencia",
+    "MissionPod.fieldHospital": "Hospital de Campo",
+    "MissionPod.fleetCarrier": "Transporte de la Flota",
+    "MissionPod.fleetCommandSupport": "Apoyo al Mando de la Flota",
+    "MissionPod.mobileDrydock": "Dique Seco Móvil",
+    "MissionPod.warpPropulsionPod": "Módulo de Propulsión de Curvatura",
+
+    "MissionProfile.default.strategicAndDiplomatic": "Operaciones Estratégicas y Diplomáticas",
+    "MissionProfile.default.pathfinderAndReconaissance": "Operaciones de Reconocimiento y Exploración",
+    "MissionProfile.default.technicalTestBed": "Banco de pruebas técnicas",
+    "MissionProfile.default.tactical": "Operaciones Tácticas",
+    "MissionProfile.default.scientificAndSurvey": "Operaciones Científicas y de Observación",
+    "MissionProfile.default.crisisAndEmergencyResponse": "Respuesta a crisis y emergencias",
+    "MissionProfile.default.multiroleExplorer": "Explorador Polivalente",
+    "MissionProfile.default.projectEscalante": "Proyecto Escalante",
+    "MissionProfile.default.battlecruiser": "Crucero de Batalla",
+    "MissionProfile.default.reserveFleet": "Flota de Reserva",
+    "MissionProfile.default.civilianMerchantMarine": "Marina Mercante Civil",
+    "MissionProfile.default.colonySupport": "Soporte a Colonias",
+    "MissionProfile.default.entertainmentPleasureShip": "Nave Recreativa/Placer",
+    "MissionProfile.default.espionageIntelligence": "Espionaje/Inteligencia",
+    "MissionProfile.default.flagship": "Nave Insignia",
+    "MissionProfile.default.logisticalQuartermaster": "Logística/Intendencia",
+    "MissionProfile.default.patrol": "Pratulla",
+    "MissionProfile.default.warship": "Nave de Guerra",
+
+    "MissionProfile.klingon.crisisAndEmergencyResponse": "Respuesta a crisis e Interceptación",
+    "MissionProfile.klingon.multiroleExplorer": "Crucero de Batalla Polivalente",
+    "MissionProfile.klingon.pathfinderAndReconaissance": "Operaciones de Inteligencia y Reconocimiento",
+    "MissionProfile.klingon.scientificAndSurvey": "Operaciones Científicas y de Observación",
+    "MissionProfile.klingon.strategicAndDiplomatic": "Operaciones Estratégicas y Diplomáticas",
+    "MissionProfile.klingon.houseGuard": "Guardia de la Casa",
+    "MissionProfile.klingon.warship": "Nave de Guerra",
+
+    "MouthType.mouth1": "Labios Finos",
+    "MouthType.mouth2": "Labios normales",
+    "MouthType.mouth3": "Labio normal fruncido",
+    "MouthType.mouth4": "Pequeños",
+    "MouthType.mouth5": "Labios Carnosos",
+    "MouthType.mouth6": "Labios Anchos y Carnosos",
+    "MouthType.mouth1Lipstick": "Carmín, Atriz Clásica de Hollywood",
+    "MouthType.mouth2Lipstick": "Carmín, Efecto Volumen",
+    "MouthType.mouth3Lipstick": "Carmín, Labio Superior Resaltado",
+    "MouthType.mouth4Lipstick": "Carmín, Labios Finos",
+    "MouthType.mouth5Lipstick": "Carmín, Delineado Inferior",
+    "MouthType.mouth6Lipstick": "Carmín, Arco de Cupido Pronunciado",
+
+    "NasoLabialFoldType.none": "Ninguno",
+    "NasoLabialFoldType.subtle": "Sutil",
+    "NasoLabialFoldType.cherubic": "Angelical",
+    "NasoLabialFoldType.nimoy": "Arrogante",
+    "NasoLabialFoldType.meaney": "Sutil, Ancha",
+    "NasoLabialFoldType.lewis": "Pronunciada",
+
+    "NoseType.straightBasic": "Recta/Básica",
+    "NoseType.convex": "Convexa",
+    "NoseType.smallBulb": "Bulbo Pequeño",
+    "NoseType.broad": "Amplia",
+    "NoseType.longNarrow": "Larga y Estrecha",
+    "NoseType.highBridge": "Puente Alto",
+    "NoseType.bulbous": "Bulbosa",
+    "NoseType.smallFlat": "Pequeña",
+    "NoseType.smallUpTurned": "Pequeña, Levantada",
+    "NoseType.hawk": "De Halcón",
+    "NoseType.broadFlat": "Fosas nasales anchas, planas y pronunciadas",
+
+    "NpcCharacterType.minorPolity": "Político Menor",
+    "NpcCharacterType.rogueRuffianMercenary": "Pícaros, rufianes y mercenarios",
+
+    "NpcType.minor.name": "PNJ Menor",
+
+    "NpcType.notable.name": "PNJ Notable",
+
+    "NpcType.major.name": "PNJ Mayor",
+
+    "Rank.admiral.name": "Almirante",
+    "Rank.admiral.abbrev": "Alm.",
+
+    "Rank.viceAdmiral.name": "Vicealmirante",
+    "Rank.viceAdmiral.abbrev": "Vicealm.",
+
+    "Rank.rearAdmiral.name": "Contraalmirante",
+    "Rank.rearAdmiral.abbrev": "Contralm.",
+
+    "Rank.commodore.name": "Comodoro",
+    "Rank.commodore.abbrev": "Com.",
+
+    "Rank.captain.name": "Capitán",
+    "Rank.captain.abbrev": "Cap.",
+
+    "Rank.commander.name": "Comandante",
+    "Rank.commander.abbrev": "Cmte.",
+
+    "Rank.ltCommander.name": "Teniente Comandante",
+    "Rank.ltCommander.abbrev": "Tte. Comandante",
+
+    "Rank.lieutenant.name": "Teniente",
+    "Rank.lieutenant.abbrev": "Tte.",
+
+    "Rank.lieutenantJG.name": "Tenente Jr.",
+    "Rank.lieutenantJG.abbrev": "Tte. Jr.",
+
+    "Rank.ensign.name": "Alférez",
+    "Rank.ensign.abbrev": "Alfz.",
+
+    "Rank.other.name": "Otro",
+
+    "Rank.none.name": "Ninguno",
+
+    "Rank.masterChiefPettyOfficer.name": "Contramaestre mayor / Jefe Especialista Mayor",
+    "Rank.masterChiefPettyOfficer.abbrev": "Jefe",
+
+    "Rank.seniorChiefPettyOfficer.name": "Contramaestre de Cargo / Jefe Senior Especialista",
+    "Rank.seniorChiefPettyOfficer.abbrev": "Jefe",
+
+    "Rank.chiefPettyOfficer.name": "Contramaestre / Jefe Especialista",
+    "Rank.chiefPettyOfficer.abbrev": "Jefe",
+
+    "Rank.pettyOfficer1stClass.name": "Suboficial de 1a Clase",
+    "Rank.pettyOfficer1stClass.abbrev": "S.",
+
+    "Rank.pettyOfficer2ndClass.name": "Suboficial de 2a Clase / Especialista",
+    "Rank.pettyOfficer2ndClass.abbrev": "E.",
+
+    "Rank.pettyOfficer3rdClass.name": "Suboficial de 3a Clase / Ayudante",
+    "Rank.pettyOfficer3rdClass.abbrev": "A.",
+
+    "Rank.crewman1stClass.name": "Tripulante de 1a Clase",
+    "Rank.crewman1stClass.abbrev": "Trip.",
+
+    "Rank.crewman2ndClass.name": "Tripulante de 2a Clase",
+    "Rank.crewman2ndClass.abbrev": "Trip.",
+
+    "Rank.crewman3rdClass.name": "Tripulante de 3a Clase",
+    "Rank.crewman3rdClass.abbrev": "Trip.",
+
+    "Rank.sergeant.name": "Sargento",
+    "Rank.sergeant.abbrev": "Sgto.",
+
+    "Rank.corporal.name": "Corporal",
+    "Rank.corporal.abbrev": "Cpl.",
+
+    "Rank.private.name": "Privado",
+    "Rank.private.abbrev": "Priv.",
+
+    "Role.commandingOfficer": "Oficial al Mando",
+
+    "Role.commandingOfficer.description": "El capitán. Incluso si el oficial al mando no tiene el rango de capitán, sus subordinados se referirán a él como capitán. Toda nave debe tener un oficial al mando.",
+    "Role.commandingOfficer.ability": "El oficial al mando puede gastar un punto de Determinación para otorgar a cualquier otro personaje con el que pueda comunicarse con un punto de Determinación; esto no tiene que estar vinculado a un Valor.",
+
+    "Role.executiveOfficer": "Oficial Ejecutivo",
+
+    "Role.executiveOfficer.description": "Segundo al mando. El oficial ejecutivo es el principal asesor del capitán y toma el mando en situaciones en las que el capitán no puede hacerlo. Si una nave no tiene un oficial ejecutivo dedicado, un oficial que desempeña otra función debe considerarse segundo al mando, pero no obtendrá los beneficios de esta función.",
+    "Role.executiveOfficer.ability": "Cuando otro personaje en comunicación con el oficial ejecutivo gasta un punto de Determinación, el oficial ejecutivo puede gastar 3 de Inercia (Inmediato) para permitir que ese personaje recupere el punto de Determinación gastado.",
+
+    "Role.operationsManager": "Jefe de Operaciones",
+
+    "Role.operationsManager.description": "El jefe de operaciones gestiona y supervisa todas las operaciones técnicas a bordo o que involucran a la nave, normalmente desde la estación de operaciones en el puente, o en conjunto con el ingeniero jefe (en naves más pequeñas, un oficial puede desempeñar ambas funciones). Esto a menudo implica asumir las funciones de un oficial científico, si no hay un oficial científico dedicado entre el personal superior.",
+    "Role.operationsManager.ability": "Cuando el jefe de operaciones tiene éxito en una tarea con la ayuda del ordenador o sensores de la nave, o usando un tricorder, el personaje genera una Inercia adicional, que solo se puede usar en el gasto de Inercia para obtener información.",
+
+    "Role.chiefEngineer": "Ingeniero Jefe",
+
+    "Role.chiefEngineer.description": "El ingeniero jefe es responsable de garantizar que la nave permanezca operativa y funcional, y dirige el departamento de ingeniería a bordo de la nave.",
+    "Role.chiefEngineer.ability": "Cuando está a bordo de la nave, el ingeniero jefe siempre tiene \"Departamento de Ingeniería\" como ventaja, que representa el complemento de ingenieros y técnicos de la nave.",
+
+    "Role.chiefOfSecurity": "Jefe de Seguridad",
+
+    "Role.chiefOfSecurity.description": "El jefe de seguridad supervisa el departamento de seguridad de la nave y es responsable de garantizar la seguridad la nave y la tripulación durante las misiones, de la investigación de asuntos disciplinarios y penales y de supervisar la protección de personas importantes a bordo. En muchas naves, el jefe de seguridad opera desde la consola táctica en el puente.",
+    "Role.chiefOfSecurity.ability": "Cuando está a bordo de la nave, el jefe de seguridad siempre tiene la ventaja \"Equipo de seguridad\", que representa al personal de seguridad de la nave.",
+
+    "Role.chiefMedicalOfficer": "Oficial Médico en Jefe",
+
+    "Role.chiefMedicalOfficer.description": "El oficial médico en jefe, también conocido como el médico de la nave, es responsable de la salud y el bienestar de la tripulación y de otras personas a bordo de la nave, y dirige el departamento médico de la nave. Un oficial médico en jefe puede ordenar y revocar las órdenes de oficiales superiores en lo que respecta a cuestiones de salud.",
+    "Role.chiefMedicalOfficer.ability": "A bordo del barco, el oficial médico en jefe siempre cuenta con el “Departamento Médico” como ventaja, que representa al personal médico de la nave.",
+
+    "Role.scienceOfficer": "Oficial Científico",
+
+    "Role.scienceOfficer.description": "El oficial científico es responsable de asesorar al oficial al mando en todos los asuntos científicos, proporcionando hipótesis en asuntos relacionados con lo desconocido. No todos las naves tienen un oficial científico en exclusiva dentro del personal superior, y a menudo el jefe de operaciones asume estas tareas.",
+    "Role.scienceOfficer.ability": "Cuando el oficial científico tiene éxito en una tarea asistido por el ordenador o los sensores de la nave, o usando un tricorder, el personaje genera Inercia adicional, que solo se puede usar en el gasto de Inercia para la obtención de información.",
+
+    "Role.flightController": "Controlador de Vuelo",
+
+    "Role.flightController.description": "No es una función típica del personal superior; algunos capitanes, particularmente aquellos que operan en espacios inexplorados, eligen al timonel o al oficial de control de vuelo de mayor rango para que también sirva como personal superior.",
+    "Role.flightController.ability": "Cuando se requiere que el controlador de vuelo analice o repare tecnología relacionada con el vuelo o la propulsión, podrá utilizar la Disciplina Pilotaje en lugar de Ingeniería.",
+
+    "Role.shipsCounselor": "Consejero de la Nave",
+
+    "Role.shipsCounselor.description": "En naves y bases estelares más grandes, es común tener personal dedicado a la asistencia mental. Algunos capitanes los consideran asesores valiosos, ya que su formación abarca tanto la cultura como la psicología, lo que los hace excepcionalmente buenos para interpretar los estados de ánimo y las intenciones de los demás.",
+    "Role.shipsCounselor.ability": "Después de tener éxito en una tarea para determinar el estado emocional o la intención de otra criatura viviente, el consejero de la nave obtiene 1 Inercia adicional, que solo puede usarse en el gasto de Inercia para obtener información.",
+
+    "Role.communicationsOfficer": "Oficial de Comunicaciones",
+
+    "Role.communicationsOfficer.description": "Más común en los primeros días de la Flota Estelar, los oficiales de comunicaciones dedicados suelen tener habilidades en lingüística y criptografía, y cuentan con tecnologías avanzadas de traducción y descifrado, por lo que son valiosos durante los encuentros tanto con culturas nuevas como con culturas hostiles.",
+    "Role.communicationsOfficer.ability": "Cuando la dificultad de una tarea que intenta el oficial de comunicaciones aumenta debido a un idioma o encriptación desconocidos, ignora ese aumento de dificultad.",
+
+    "Role.admiral": "Almirante",
+
+    "Role.admiral.description": "Solamente oficiales superiores.",
+    "Role.admiral.ability": "Seleccione tres Especialidades adicionales, que reflejen áreas de especialización o temas relacionados con la asignación del almirante. Al comienzo de cada misión, el almirante elige uno de sus tres Especialidades, y cada personaje principal lo recibe como una Especialidad adicional para la misión, debido a sesiones informativas y recursos de instrucción adicionales.",
+
+    "Role.navigator": "Navegante",
+
+    "Role.navigator.description": "No es una función típica del personal superior; algunos capitanes, particularmente aquellos que operan en espacio inexplorado, eligen al navegante de mayor rango para que también sirva como personal superior.",
+    "Role.navigator.ability": "Cuando se requiere que el navegante analice o repare tecnología relacionada con el vuelo o la propulsión, podrá utilizar la Disciplina Pilotaje en lugar de Ingeniería.",
+
+    "SafetyEvaluationType.alwaysOk": "Siempre OK",
+    "SafetyEvaluationType.yellowAlert": "Alerta Amarilla",
+    "SafetyEvaluationType.redAlert": "Alerta Roja",
+
+    "SafetySection.category.dismemberment": "Descripciones de desmembramientos",
+    "SafetySection.category.gore": "Descripciones de sangre",
+    "SafetySection.category.massDestructionGenocide": "Descripciones de destrucción masiva o genocidio",
+    "SafetySection.category.harmToAnimals": "Daño a animales",
+    "SafetySection.category.harmToChildren": "Daño a niños",
+    "SafetySection.category.hateCrimes": "Daño a grupos minoritarios, objetivo de crímenes de odio",
+    "SafetySection.category.traitorMechanicsPvP": "Mecánicas de traidor / Jugador vs. Jugador (JcJ)",
+    "SafetySection.category.speciesHate": "Odio dirigido hacia otras especies (ej. Klingos, Humanos...)",
+    "SafetySection.category.homophobia": "Homofobia / Transfobia",
+    "SafetySection.category.racism": "Racismo (dentro de la propia especie)",
+    "SafetySection.category.religiousIntolerance": "Intolerancia Religiosa",
+    "SafetySection.category.sexism": "Sexismo",
+    "SafetySection.category.hatefulLanguage": "Lenguaje de odio",
+    "SafetySection.category.entrapment": "Atrapamiento; ser enterrado bajo tierra, etc.",
+    "SafetySection.category.grief": "Dolor",
+    "SafetySection.category.imprisonmentRestraint": "Encarcelamiento o retención no voluntaria",
+    "SafetySection.category.noPersonalAgency": "Falta de control sobre los eventos",
+    "SafetySection.category.mentalAbuse": "Abuso o condicionamiento mental",
+    "SafetySection.category.stranded": "Aislamiento, incapacidad de pedir ayuda",
+    "SafetySection.category.biologicalWeapons": "Armas Biológicas",
+    "SafetySection.category.desecrationOfBodies": "Profanación de Cuerpos",
+    "SafetySection.category.execution": "Ejecuciones",
+    "SafetySection.category.forcedScientificExperiments": "Experimentación Científica Forzada",
+    "SafetySection.category.murderOfNonCombatants": "Asesinato de no combatientes",
+    "SafetySection.category.torture": "Tortura",
+
+    "SafetySectionType.violence": "Violencia",
+    "SafetySectionType.gameplayMechanics": "Mecánicas de Juego",
+    "SafetySectionType.hatred": "Odio",
+    "SafetySectionType.helplessness": "Impotencia",
+    "SafetySectionType.warCrimes": "Crímenes de Guerra",
+
+    "Sheet.text.title": "Registro de personal de la Flota Estelar",
+
+    "SheetTag.a4": "A4",
+    "SheetTag.halfPage": "Media Página",
+    "SheetTag.landscape": "Paisaje",
+    "SheetTag.languageSupport": "Soporte de idiomas",
+    "SheetTag.lcars": "LCARS",
+    "SheetTag.portrait": "Retrato",
+    "SheetTag.style2e": "Estilo 2a ed.",
+    "SheetTag.talentText": "Texto del Talento",
+    "SheetTag.twoPage": "2 páginas",
+    "SheetTag.usLetter": "Carta",
+
+    "ShipBuildType.pod.name": "Sonda",
+
+    "ShipBuildType.shuttlecraft.name": "Lanzadera",
+
+    "ShipBuildType.runabout.name": "Runabout",
+
+    "ShipBuildType.starship.name": "Nave Estelar",
+
+    "Source.type.coreBook": "Libros Básicos",
+    "Source.type.divisionBook": "Libros de Divisiones",
+    "Source.type.quadrantBook": "Libros de Cuadrantes",
+    "Source.type.crewBook": "Libros de Tripulaciones",
+    "Source.type.campaignBook": "Libros de Campaña",
+    "Source.type.expansion": "Libros de Expansión",
+    "Source.type.misc": "Varios/Otros Libros",
+    "Source.type.unofficial": "Fuentes No Oficiales",
+
+    "Source.book.core": "Reglas Básicas",
+    "Source.book.core2ndEdition": "Reglas Básicas 2a ed.",
+    "Source.book.alphaQuadrant": "Cuadrante Alfa",
+    "Source.book.betaQuadrant": "Cuadrante Beta",
+    "Source.book.gammaQuadrant": "Cuadrante Gamma",
+    "Source.book.deltaQuadrant": "Cuadrante Delta",
+    "Source.book.commandDivision": "División de Mando",
+    "Source.book.operationsDivision": "División de Operaciones",
+    "Source.book.sciencesDivision": "División de Ciencias",
+    "Source.book.tng": "TNG",
+    "Source.book.ds9": "DS9",
+    "Source.book.voyager": "Voyager",
+    "Source.book.theseAreTheVoyages": "Estos son los Viajes de...",
+    "Source.book.tribblePlayerCharacter": "Tribble PDF",
+    "Source.book.klingonCore": "Klingon",
+    "Source.book.shackletonExpanse": "Extensión Shakleton",
+    "Source.book.idwYearFive": "IDW Año Cinco",
+    "Source.book.playersGuide": "Guía del Jugador",
+    "Source.book.tricorderSet": "Set Tricorder",
+    "Source.book.discoveryS1S2": "Discovery S1/S2",
+    "Source.book.discoveryCampaign": "Campaña de la Discovery",
+    "Source.book.picardS1": "Picard S1",
+    "Source.book.utopiaPlanitia": "Utopia Planitia",
+    "Source.book.lowerDecksCampaign": "Lower Decks",
+    "Source.book.captainsLog": "Captain's Log",
+    "Source.book.animatedSeries": "Animated Series",
+    "Source.book.continuingMissions": "Continuing Mission",
+
+    "Spaceframe.akira": "Clase Akira",
+
+    "Spaceframe.akira.description": "Después de la Batalla de Wolf 359, la Flota Estelar vio la necesidad de una nave estelar fuertemente armada y con capacidad de combate que pudiera realizar tareas de patrulla y mantener una presencia constante en un sector del espacio para proporcionar apoyo o acción directa en tareas de combate, pero aún así ser capaz de contribuir al objetivo principal de la Flota Estelar en exploración y descubrimiento. El diseño que la Oficina de Diseño Astronaval Avanzado (ODAA) eligió para este proyecto fue uno que se había propuesto por primera vez a mediados del siglo XXIII, pero las limitaciones tecnológicas impidieron su correcta construcción hasta entonces. Cuando se actualiza con las últimas tecnologías, la nueva U.S.S. Akira tuvo tanto éxito en sus patrullas iniciales que la Flota Estelar inmediatamente ordenó la producción amplia de la clase.",
+
+    "Spaceframe.ambassador": "Clase Ambassador",
+
+    "Spaceframe.ambassador.description": "La División de Exploración de la Flota Estelar y el Consejo Científico de la Federación comenzaron a ver una disminución constante en los resultados científicos de las misiones al espacio profundo a principios del siglo XXIV. La Flota Estelar había estado confiando en las naves clase Excelsior y las pocas naves clase Constitución que todavía estaban en servicio para continuar con sus objetivos de exploración, pero incluso con las remodelaciones planificadas de esos diseños, todavía requerían visitas a los centros logísticos cada cinco años a medida que los sistemas se iban desgastando. Los muelles de Utopia Planitia comenzaron a desarrollar una nueva nave de exploración para el espacio profundo que cubriría estas preocupaciones y permitiría que una nave se adentrara aún más en lo desconocido. La clase Ambassador fue desarrollada y lanzada en 2335, y muchas de las técnicas de ingeniería, ideas de diseño y tecnologías creadas para esta nave estelar continuarían perfeccionándose durante las próximas décadas y se convertirían en la base de la clase Galaxy.",
+
+    "Spaceframe.archer": "Clase Archer",
+
+    "Spaceframe.archer.description": "La clase Archer fue diseñada para ser una nave pionera de nueva generación, destinada a misiones de exploración de largo alcance y para ampliar los límites de la Federación más lejos y más rápido que cualquier otra clase de nave de la Flota Estelar. El equipo de diseño de la clase se benefició de la investigación obtenida a través de más de una década de avances tecnológicos instalados en naves de las clases Constitución, Hermes, Ptolomeo y Saladino, lo que dio como resultado que la clase Archer cuente con algunos de los propulsores de impulso y conjuntos de propulsores RCS más avanzados hasta el momento. instalado en una nave de la Flota Estelar. El diseño de la es compacto y consta de un casco principal de tres cubiertas que contiene todos los sistemas de a borto, excepto las dos barquillas de curvatura exteriores conectadas por anclajes cortos al casco principal. Las naves de la clase Archer continuarían en servicio hasta mediados del siglo XXIV, cuando los runabouts de la clase Danubio comenzaron a asumir las funciones que alguna vez desempeñaron.",
+
+    "Spaceframe.california": "Clase California",
+
+    "Spaceframe.california.description": "A medida que la Federación se expandía rápidamente por el Brazo de Orion en la década de 2350, la Flota Estelar estaba viendo una falta de naves capaces de responder a necesidades de todo tipo dentro de las fronteras del ambito político. La Flota Estelar se abrió a la posibilidad para que los mundos miembros diseñaran y construyeran su propia clase de nave estelar para poder responder a los problemas que sentían que presionaban a sus propias colonias e intereses. La Tierra presentó la clase California basada en diseños ya estandarizados de la Flota Estelar, pero con características que eran específicas de la Tierra y que influirían en las naves estelares clase Galaxy de la siguiente década. Las naves de clase California fueron vistas como caballos de batalla de confianza, pero nunca se construyeron en cantidades comparables a las naves de clase Excelsior y Miranda, lo que las hace rara vez vistas fuera de los volúmenes de la Federación dominados por humanos y cetáceos. La Flota Estelar continuó utilizándolos en funciones de primera línea hasta mediados del siglo 25, cuando poco a poco fueron incorporándose al uso civil.",
+
+    "Spaceframe.cardenas": "Clase Cardenas",
+
+    "Spaceframe.cardenas.description": "Los éxitos vistos en las otras clases tras la Operación Next Step dieron al Almirantazgo la esperanza de que otras ideas que se habían propuesto en los primeros años del proyecto pudieran ampliarse y realizarse plenamente. Uno de esos conceptos era una “fragata de respuesta rápida” que tenía las mismas dimensiones que los diseños anteriores de Next Step. Con la Federación expandiéndose rápidamente a través del Brazo de Orión, el diseño de la clase Cárdenas solo pasó por una fase de revisión, y muchos de los problemas de ingeniería iniciales se resolvieron mientras se construían los primeros modelos.\n\nLa clase Cárdenas se convirtió en uno de los puestos más prestigiosos que una persona podía obtener a principios del siglo XXIII. La velocidad para la que fue diseñado no solo hizo que la nave fuera enviada a sistemas estelares a lo largo de las zonas neutrales klingon y romulanas para interceptar o perseguir sombras de sensores, sino que también se utilizó como explorador de alta velocidad. Como esta clase estaba altamente especializada con sus sistemas de propulsión warp, reacondicionar el modelo llevó mucho tiempo, lo que hizo que esta clase pasara casi el doble de tiempo en dique seco en comparación con otras naves de desplazamiento similar. Este problema se agravó con el desarrollo de las ordenadores duotrónicos a principios de la década de 2240.\n\nEn 2245, la gran mayoría de las naves clase Cárdenas estaban fuera de servicio activo y en servicio o reacondicionamiento. El lanzamiento de la nave clase Constitución produjo el fin de estas naves, pero la Flota Estelar permitiría que continuaran aquellas que actualmente se estaban reacondicionando, pero ordenó que el resto de las naves se retiraran. La última clase Cárdenas activa, el U.S.S. Van Allen, retirada en 2263.",
+
+    "Spaceframe.centaur": "Clase Centauro",
+
+    "Spaceframe.centaur.description": "A mediados de la década de 2280, la Flota Estelar consideró que la siguiente generación de cruceros ligeros debería comenzar a desarrollarse basándose en las nuevas tecnologías que se estaban desarrollando para la clase Excelsior. Los fallos en los prototipos de sistemas transcurvatura en la clase Excelsior significaron retrasos para el crucero ligero, entonces llamado clase Centaur. A mediados de la década de 2290 se llevaron a cabo extensos rediseños de la mayoría de los sistemas, y entraron en servicio naves adicionales de la clase además del prototipo. Externamente, esta clase se parece a la clase Excelsior en muchos aspectos, incluso comparte el mismo platillo para su casco principal y barquillas alargadas de estilo transcurvatura. Sin llegar a ser tan modular y personalizable para la misión como la clase Miranda, la clase Centaur solo se produciría en pequeñas cantidades y era vista como una nave especializada durante una época en la que las naves multipropósito estaban en ascenso en el Mando de la Flota Estelar.",
+
+    "Spaceframe.constellation": "Clase Constellation",
+
+    "Spaceframe.constellation.description": "La clase Constellation se desarrolló a mediados de la década de 2280 como respuesta a la creciente tensión con el Imperio Klingon y a las dificultades en el desarrollo del nuevo sistema trasncurvatura para las naves de la clase Excelsior. La nave nunca fue concebida como una nave de guerra del tipo utilizada por el Imperio, ni tenía tanto armamento como una nave clase Miranda completamente armada, pero las naves clase Constellation estaban destinadas a poder interceptar incursiones del Imperio en altas velocidades y sobrevivir hasta que pudieran llegar refuerzos más pesados. El uso previsto de esta clase nunca se produciría, ya que los Acuerdos de Khitomer se firmaron poco después del despliegue generalizado de la clase. En lugar de ser puestas fuera de servicio o redesplegadas, las naves clase Constellation recibieron diferentes asignaciones, siendo los primeros en responder a las crisis en toda la Federación y los sectores no reclamados que rodean sus fronteras.",
+
+    "Spaceframe.constitution": "Clase Constitution",
+
+    "Spaceframe.constitution.description": "El símbolo de la Flota Estelar a mediados y finales del siglo 23, la clase Constitución se volvería legendaria en todo el Brazo de Orion debido a sus misiones de cinco años.\n\nLa construcción de las naves se llevó a cabo principalmente en el sistema solar, pero después de que se completó el bloque inicial de naves y finalizaron las primeras misiones de cinco años, este modelo también se fabricó en otros sistemas centrales del mundo capaces de manejar la gran estructura espacial necesaria. La clase Constitución se convertiría en el banco de pruebas de nuevas tecnologías a principios de la década de 2270 que se desarrollaron a partir de las misiones de cinco años de las mismas clases y las lecciones aprendidas de la breve guerra con el Imperio Klingon. Esta clase de nave continuó en servicio hasta mediados del siglo XXIV.",
+
+    "Spaceframe.crossfield": "Class Crossfield",
+    "Spaceframe.sydney": "Clase Sydney",
+    "Spaceframe.tKalat": "Clase T'Kalat",
+    "Spaceframe.walker": "Clase Walker",
+
+    "Specialization.admiral": "Almirante",
+    "Specialization.admin": "Terrateniente",
+    "Specialization.child": "Niño",
+    "Specialization.conn": "Piloto",
+    "Specialization.counselor": "Consejero",
+    "Specialization.civilianDoctor": "Médico",
+    "Specialization.engineer": "Ingeniero",
+    "Specialization.ferengiDaiMon": "DaiMon Ferengi",
+    "Specialization.ferengiMerchant": "Ferengi Mercante",
+    "Specialization.firstContactSpecialist": "Especialista en Primer Contacto",
+    "Specialization.hangarDeck": "Bodegas de Carga",
+    "Specialization.intelligenceOfficer": "Oficial de Inteligencia",
+    "Specialization.jag": "Oficina del Juez Auditor General",
+    "Specialization.klingonWarrior": "Guerrero Klingon",
+    "Specialization.klingonShipCaptain": "Capitán de Nave Klingon",
+    "Specialization.klingonWeaponsOfficer": "Oficial de Armamento Klingon",
+    "Specialization.klingonMedic": "Médico Klingon",
+    "Specialization.medicalDoctor": "Médico",
+    "Specialization.nurse": "Enfermera",
+    "Specialization.scienceTech": "Ténico de Ciencias",
+    "Specialization.security": "Seguridad",
+    "Specialization.starfleetScientist": "Científico",
+
+    "Species.aenar.name": "Aenar",
+
+    "Species.mixedSpecies.text": "{{primarySpecies}} / {{secondarySpecies}}",
+
+    "Species.formerSpecies.text": "{{primarySpecies}} (originally {{otherSpecies}})",
+
+    "StarSystem.common.coordinates": "Coordenadas",
+    "StarSystem.common.innerZone": "Zona Interna",
+    "StarSystem.common.ecosphere": "Ecosfera",
+    "StarSystem.common.outerZone": "Zona Externa",
+    "StarSystem.common.worlds": "Mundos",
+    "StarSystem.common.noWorlds": "Sin Mundos",
+    "StarSystem.common.primaryStar": "Estrella Primaria",
+    "StarSystem.common.companionStar": "Estrella Compañera",
+
+    "Talent.text.rank": "{{talentName}} [Rank: {{rank}}]",
+
+    "Talent.ablativeArmor": "Armadura Ablativa",
+
+    "UniformEra.bynar": "Bynar",
+    "UniformEra.cardassian": "Militar Cardassiano",
+    "UniformEra.civilian": "Civil",
+    "UniformEra.dominionWar": "Guerra del Dominio",
+    "UniformEra.ferengi": "Ferengi",
+    "UniformEra.enterprise": "Enterprise",
+    "UniformEra.jemHadar": "Jem'Hadar",
+    "UniformEra.klingon": "Armada Klingon",
+    "UniformEra.lowerDecks": "Lower Decks",
+    "UniformEra.monsterMaroon": "La Ira de Khan",
+    "UniformEra.nextGeneration": "La Nueva Generación",
+    "UniformEra.originalSeries": "Serie Original",
+    "UniformEra.originalSeriesKlingon": "Klingon (Serie Original)",
+    "UniformEra.romulan": "Romulano",
+    "UniformEra.suliban": "Suliban",
+    "UniformEra.strangeNewWorlds": "Strange New Worlds",
+    "UniformEra.voyagerDS9": "Voyager/DS9",
+
+    "Upbringing.starfleet.militaryOrExploration.name": "Flota Estelar",
+
+    "Weapon.common.melee": "Cuerpo a Cuerpo",
+    "Weapon.common.name": "Nombre/Tipo",
+    "Weapon.common.qualities": "Cualidades",
+    "Weapon.common.ranged": "A distancia",
+    "Weapon.common.size": "Tamaño {{hands}} manos",
+
+    "Weapon.personal.dagger.name": "Daga",
+
+    "Weapon.personal.energyWhip.name": "Látigo energético",
+
+    "Weapon.personal.phaser1.name": "Fáser tipo-1",
+
+    "Weapon.personal.phaser2.name": "Fáser tipo-2",
+
+    "Weapon.personal.strike.name": "Golpe Desarmado",
+
+    "Weapon.personal.batleth.name": "Bat'leth",
+
+    "Weapon.personal.dktahg.name": "Dague d’k tahg",
+
+    "Weapon.personal.ushaantor.name": "Ushaan-tor",
+
+    "Weapon.personal.disruptor.name": "Pistola Disruptora",
+
+    "Weapon.personal.particleRifle.name": "Rifle de Partículas",
+
+    "Weapon.personal.sonaPlasmaDisruptorShotgun.name": "Disruptora de plasma Son'a",
+
+    "Weapon.personal.tzenkethiHeavyBlade.name": "Hoja pesada Tzenkethi",
+
+    "Weapon.quality.accurate.name": "Preciso",
+
+    "Weapon.quality.area.name": "Área",
+
+    "Weapon.quality.charge.name": "Carga",
+
+    "Weapon.quality.calibration.name": "Calibración",
+
+    "Weapon.quality.dampening.name": "Amortiguación",
+
+    "Weapon.quality.deadly.name": "Mortal",
+
+    "Weapon.quality.debilitating.name": "Debilitador",
+
+    "Weapon.quality.depleting.name": "Agotador",
+
+    "Weapon.quality.devastating.name": "Devastador",
+
+    "Weapon.quality.highYield.name": "Alto Rendimiento",
+
+    "Weapon.quality.hidden.name": "Oculto {{rank}}",
+
+    "Weapon.quality.intense.name": "Intenso",
+
+    "Weapon.quality.jamming.name": "Interferencias",
+
+    "Weapon.quality.knockdown.name": "Derribar",
+
+    "Weapon.quality.nonLethal.name": "No Letal",
+
+    "Weapon.quality.piercing.name": "Punzante {{rank}}",
+
+    "Weapon.quality.persistentX.name": "Persistente X",
+
+    "Weapon.quality.slowing.name": "Ralentizante",
+
+    "Weapon.quality.versatile.name": "Versátil {{rank}}",
+
+    "Weapon.quality.vicious.name": "Atroz {{rank}}",
+
+    "World.attribute.atmosphereType": "Tipo de Atmósfera",
+    "World.attribute.atmosphericDensity": "Densidad Atmosférica",
+    "World.attribute.atmosphericContaminants": "Contaminantes Atmosféricos",
+    "World.attribute.designation": "Designación",
+    "World.attribute.classification": "Clasificación",
+    "World.attribute.notes": "Notas",
+    "World.attribute.orbitalRadius": "Radio Orbital",
+    "World.attribute.orbitalPeriod": "Periodo Orbital",
+    "World.attribute.eccentricity": "Excentricidad",
+    "World.attribute.diameter": "Diámetro",
+    "World.attribute.density": "Densidad",
+    "World.attribute.mass": "Masa",
+    "World.attribute.gravity": "Gravedad",
+    "World.attribute.satellites": "Satélites",
+    "World.attribute.core": "Núcleo",
+    "World.attribute.features": "Características",
+    "World.attribute.rotation": "Rotación",
+    "World.attribute.tidallyLocked": "Acoplamiento de Marea",
+    "World.attribute.retrograde": "Retrógrado",
+    "World.attribute.axialTilt": "Inclinación axial",
+    "World.attribute.waterCoverage": "Superficie del agua",
+    "World.attribute.ring": "Anillo",
+    "World.attribute.beltWidth": "Ancho del cinturón",
+    "World.attribute.predominantSize": "Tamaño predominante",
+
+    "World.atmosphereType.vacuum": "Vacío",
+    "World.atmosphereType.standardOxygenNitrogenMix": "Mezcla estándar de oxígeno/nitrógeno",
+    "World.atmosphereType.oxygenArgonMix": "Mezcla de oxígeno/argón",
+    "World.atmosphereType.hydrogenCompoundsAndReactiveGases": "Compuestos de hidrógeno y gases reactivos",
+    "World.atmosphereType.carbonDioxide": "Dióxido de carbono",
+    "World.atmosphereType.toxicChemicals": "Químicos tóxicos",
+
+    "World.atmosphericContaminant.bacteriaOrViruses": "Bacterias o virus peligrosos",
+    "World.atmosphericContaminant.unusualGases": "Gases raros",
+    "World.atmosphericContaminant.highOxygen": "Alto nivel de oxígeno",
+    "World.atmosphericContaminant.pollutants": "Contaminantes",
+    "World.atmosphericContaminant.sulfurCompounds": "Compuestos de azufre",
+    "World.atmosphericContaminant.radioactives": "Radioactividad",
+    "World.atmosphericContaminant.lowOxygen": "Bajo nivel de oxígeno",
+    "World.atmosphericContaminant.acidRain": "Lluvia Ácida",
+    "World.atmosphericContaminant.corrosiveGases": "Gases Corrosivos",
+    "World.atmosphericContaminant.irritantPollens": "Pólenes Irritantes",
+
+    "World.atmosphericDensity.veryThin": "Muy fina",
+    "World.atmosphericDensity.thin": "Fina",
+    "World.atmosphericDensity.standard": "Normal",
+    "World.atmosphericDensity.dense": "Densa",
+    "World.atmosphericDensity.veryDense": "Muy Densa",
+
+    "World.class.description": "Clase {{class}}",
+    "World.class.fullDescription": "Clase {{class}} ({{definition}})"
 }

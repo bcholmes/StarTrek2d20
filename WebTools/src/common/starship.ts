@@ -249,6 +249,11 @@ export class Starship extends Construct {
         return trait;
     }
 
+    get allTraitsAsArray() {
+        let traits = this.getAllTraits();
+        return traits.split(',').map(t => t.trim()).filter(t => t?.length > 0);
+    }
+
     getBaseSystem(system: System) {
         let result = 0;
         if (this.spaceframeModel) {

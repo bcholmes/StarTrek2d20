@@ -14,6 +14,33 @@ import { System, allSystems } from "../helpers/systems";
 import { makeKey } from "../common/translationKey";
 import { Department, allDepartments } from "../helpers/departments";
 
+interface IRoll20Attribute {
+    name: string,
+    current: string|boolean|number,
+    max: string|number,
+    id: string
+}
+
+interface IRoll20Character {
+    oldId: string,
+    name: string,
+    avatar: string,
+    bio: string,
+    gmnotes: string,
+    defaulttoken: string,
+    tags: string,
+    controlledby: string,
+    inplayerjournals: string,
+    attribs: IRoll20Attribute[],
+    abilities: any[]
+}
+
+interface IRoll20Json {
+    schema_version: number,
+    type: string,
+    character: IRoll20Character
+}
+
 class IdHelper {
 
     static readonly ID_PARTS: String = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -61,6 +88,157 @@ export class Roll20VttExporter {
     }
 
     exportStarship(starship: Starship) {
+        let id = new IdHelper();
+        let name = starship.name || "Unnamed Starship";
+        let result: IRoll20Json = {
+            "schema_version": 3,
+            "type": "character",
+            "character": {
+                "oldId": id.currentId,
+                "name": name,
+                "avatar": "",
+                "bio": "",
+                "gmnotes": "",
+                "defaulttoken": "",
+                "tags": "[]",
+                "controlledby": "",
+                "inplayerjournals": "",
+                "attribs": [
+                    {
+                        "name": "sheet_color",
+                        "current": "black",
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "attributeName",
+                        "current": false,
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "disciplineName",
+                        "current": false,
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "systemName",
+                        "current": "COMMAND",
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "departmentName",
+                        "current": false,
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "ask_whisper",
+                        "current": "Whisper to GM?",
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "ask_public_roll",
+                        "current": "Public Roll",
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "ask_whisper_roll",
+                        "current": "Whisper Roll",
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "diceRoll",
+                        "current": "{{dice1=[[d20<@{target}cf>@{complication}cs<@{focus}]]}}{{dice2=[[d20<@{target}cf>@{complication}cs<@{focus}]]}}",
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "crew_diceRoll",
+                        "current": "{{dice1=[[d20<@{crew_target}cf>@{ship_complication}cs<@{crew_discipline}]]}}{{dice2=[[d20<@{crew_target}cf>@{ship_complication}cs<@{crew_discipline}]]}}",
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "ship_diceRoll",
+                        "current": "{{dice1=[[d20<@{ship_target}cf>@{ship_complication}cs<@{department}]]}}{{dice2=[[d20<@{ship_target}cf>@{ship_complication}cs<@{department}]]}}",
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "focus",
+                        "current": "1",
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "complication",
+                        "current": "20",
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "version",
+                        "current": 1.6,
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "settings_toggle",
+                        "current": "0",
+                        "max": "",
+                        "id": id.nextId()
+                    },
+                    {
+                        "name": "sheet_type",
+                        "current": "starship",
+                        "max": "",
+                        "id": "-Nz_YFXyrBCoNytnAbXI"
+                    },
+                ],
+                "abilities": []
+            }
+        }
+
+        result.character.attribs.push(this.convertSpaceframe(starship, id));
+        result.character.attribs.push(this.convertMissionProfile(starship, id));
+        result.character.attribs.push(this.convertDesignation(starship, id));
+        result.character.attribs.push(this.convertServiceDate(starship, id));
+        result.character.attribs.push(this.convertRefit(starship, id));
+        result.character.attribs.push(this.convertShields(starship, id));
+        result.character.attribs.push(this.convertShipResistance(starship, id));
+        result.character.attribs.push(this.convertScale(starship, id));
+        result.character.attribs.push(this.convertCrew(starship, id));
+        result.character.attribs.push(this.convertPower(starship, id));
+
+        allDepartments().forEach(d =>
+            result.character.attribs.push(this.convertDepartment(starship, d, id))
+        );
+        allSystems().forEach(s =>
+            result.character.attribs.push(this.convertSystem(starship, s, id))
+        );
+
+        starship.getDistinctTalentNameList().forEach(t =>
+            Array.prototype.push.apply(result.character.attribs, this.convertStarshipTalent(starship, t, id))
+        );
+
+        starship.allTraitsAsArray.forEach((t,i) => {
+            Array.prototype.push.apply(result.character.attribs, this.convertStarshipTrait(starship, t, id))
+        });
+
+        starship.determineWeapons().forEach(w =>
+            Array.prototype.push.apply(result.character.attribs, this.convertStarshipWeapon(starship, w, id))
+        );
+
+        return result;
+    }
+
+    exportStarshipAsHandout(starship: Starship) {
 
         let starshipClass = starship.className ?? "";
         let name = starship.name?.length > 0
@@ -186,7 +364,7 @@ export class Roll20VttExporter {
         if (character.pronouns) {
             name += " (" + character.pronouns + ")";
         }
-        let result = {
+        let result: IRoll20Json = {
             "schema_version": 3,
             "type": "character",
             "character": {
@@ -359,6 +537,97 @@ export class Roll20VttExporter {
         return result;
     }
 
+    convertShields(starship: Starship, id: IdHelper) {
+        return {
+            "name": "shields",
+            "current": "",
+            "max": starship.shields ?? 0,
+            "id": id.nextId()
+        };
+    }
+
+    convertServiceDate(starship: Starship, id: IdHelper) {
+        return {
+            "name": "ship-rank",
+            "current": "" + (starship.serviceYear ?? ""),
+            "max": "",
+            "id": id.nextId()
+        };
+    }
+
+    convertSpaceframe(starship: Starship, id: IdHelper) {
+        return {
+            "name": "ship-environment",
+            "current": starship.className ?? "",
+            "max": "",
+            "id": id.nextId()
+        };
+    }
+
+
+    convertDesignation(starship: Starship, id: IdHelper) {
+        return {
+            "name": "ship-designation",
+            "current": starship.registry ?? "",
+            "max": "",
+            "id": id.nextId()
+        };
+    }
+
+    convertRefit(starship: Starship, id: IdHelper) {
+        return {
+            "name": "ship-refit",
+            "current": starship.refitsAsString() ?? "",
+            "max": "",
+            "id": id.nextId()
+        };
+    }
+
+    convertMissionProfile(starship: Starship, id: IdHelper) {
+        return {
+            "name": "ship_ship-mission-profile",
+            "current": starship.missionProfileModel?.localizedName ?? "",
+            "max": "",
+            "id": id.nextId()
+        };
+    }
+
+    convertScale(starship: Starship, id: IdHelper) {
+        return {
+            "name": "ship_scale",
+            "current": "" + (starship.scale ?? ""),
+            "max": "",
+            "id": id.nextId()
+        };
+    }
+
+    convertCrew(starship: Starship, id: IdHelper) {
+        return {
+            "name": "crew",
+            "current": "0",
+            "max": starship.crewSupport ?? 0,
+            "id": id.nextId()
+        };
+    }
+
+    convertPower(starship: Starship, id: IdHelper) {
+        return {
+            "name": "power",
+            "current": "0",
+            "max": starship.power ?? 0,
+            "id": id.nextId()
+        };
+    }
+
+    convertShipResistance(starship: Starship, id: IdHelper) {
+        return {
+            "name": "ship_resistance",
+            "current": "" + (starship.resistance ?? ""),
+            "max": "",
+            "id": id.nextId()
+        };
+    }
+
     convertSpecies(character: Character, id: IdHelper) {
         return {
             "name": "species",
@@ -440,6 +709,30 @@ export class Roll20VttExporter {
         };
     }
 
+    convertDepartment(starship: Starship, d: Department, id: IdHelper) {
+        return {
+            "name": "ship_" + Department[d].toLocaleLowerCase(),
+            "current": starship.departments[d],
+            "max": "",
+            "id": id.nextId()
+        };
+    }
+
+    convertSystem(starship: Starship, s: System, id: IdHelper) {
+        let name = System[s];
+        if (s === System.Comms) {
+            name = "communcation";
+        } else if (s === System.Computer) {
+            name = "computers";
+        }
+        return {
+            "name": "ship_" + name.toLocaleLowerCase(),
+            "current": starship.getSystemValue(s),
+            "max": "",
+            "id": id.nextId()
+        };
+    }
+
     convertAttribute(character: Character, a: Attribute, id: IdHelper) {
         return {
             "name": Attribute[a].toLocaleLowerCase(),
@@ -515,6 +808,55 @@ export class Roll20VttExporter {
         return result;
     }
 
+    convertStarshipTalent(starship: Starship, talentName: string, id: IdHelper) {
+        const rowId = id.nextId();
+
+        let talent = TalentsHelper.getTalent(talentName);
+        let category = talent.category;
+        if (category === "") {
+            category = "General";
+        }
+
+        let name = talent.maxRank > 1 ? (talent.localizedDisplayName + starship.getRankForTalent(talentName)) : talent.localizedDisplayName;
+
+        let qualifier = starship.getQualifierForTalent(talent.name);
+        if (qualifier?.length) {
+            name += ": " + qualifier;
+        }
+
+        return [{
+            "name": "repeating_stalents_" + rowId + "_stalent_name",
+            "current": name,
+            "max": "",
+            "id": id.nextId()
+        },
+        {
+            "name": "repeating_stalents_" + rowId + "_stalent_description",
+            "current": talent.localizedDescription,
+            "max": "",
+            "id": id.nextId()
+        },
+        {
+            "name": "repeating_stalents_" + rowId + "_stalent_requirements",
+            "current": talent.requirement ?? "",
+            "max": "",
+            "id": id.nextId()
+        },
+        {
+            "name": "repeating_stalents_" + rowId + "_stalent_category",
+            "current": category,
+            "max": "",
+            "id": id.nextId()
+        },
+        {
+            "name": "repeating_stalents_" + rowId + "_stalent_settings",
+            "current": "0",
+            "max": "",
+            "id": id.nextId()
+        }];
+    }
+
+
     convertTalent(character: Character, talentName: string, id: IdHelper) {
         const rowId = id.nextId();
 
@@ -524,7 +866,7 @@ export class Roll20VttExporter {
             category = "General";
         }
 
-        let name = talent.maxRank > 1 ? (talent.localizedDisplayName + character.getRankForTalent(talentName)) : talent.displayName;
+        let name = talent.maxRank > 1 ? (talent.localizedDisplayName + character.getRankForTalent(talentName)) : talent.localizedDisplayName;
 
         return [{
             "name": "repeating_talents_" + rowId + "_talent_name",
@@ -571,12 +913,12 @@ export class Roll20VttExporter {
             "id": id.nextId()
         },{
             "name": "repeating_weapons_" + rowId + "_weapon_quality",
-            "current": weapon.qualities.map(q => q.description).join(", "),
+            "current": weapon.qualities?.map(q => q.localizedDescription)?.join(", ") ?? "",
             "max": "",
             "id": id.nextId()
         },{
             "name": "repeating_weapons_" + rowId + "_weapon_effects",
-            "current": weapon.effects.map(q => q.description).join(", "),
+            "current": weapon.effects?.map(q => q.localizedDescription)?.join(", ") ?? "",
             "max": "",
             "id": id.nextId()
         },{
@@ -592,6 +934,45 @@ export class Roll20VttExporter {
         },{
             "name": "repeating_weapons_" + rowId + "_weapon_type",
             "current": weapon.type === WeaponType.MELEE ? "Melee" : "Ranged",
+            "max": "",
+            "id": id.nextId()
+        }];
+    }
+
+    convertStarshipWeapon(starship: Starship, weapon: Weapon, id: IdHelper) {
+        let damage = "";
+        for (let i = 0; i < weapon.dice + starship.getDiceForWeapon(weapon); i++) {
+            damage += "{{cdice" + (i+1) + "=[[1d6]]}}";
+        }
+        const rowId = id.nextId();
+        return [{
+            "name": "repeating_ship_" + rowId + "_weapon_name",
+            "current": weapon.description,
+            "max": "",
+            "id": id.nextId()
+        },{
+            "name": "repeating_ship_" + rowId + "_weapon_quality",
+            "current": weapon.qualities?.map(q => q.localizedDescription)?.join(", ") ?? "",
+            "max": "",
+            "id": id.nextId()
+        },{
+            "name": "repeating_ship_" + rowId + "_weapon_effect",
+            "current": weapon.effects?.map(q => q.localizedDescription)?.join(", ") ?? "",
+            "max": "",
+            "id": id.nextId()
+        },{
+            "name": "repeating_ship_" + rowId + "_weapon_damage",
+            "current": weapon.dice,
+            "max": "",
+            "id": id.nextId()
+        },{
+            "name": "repeating_ship_" + rowId + "_damageRoll",
+            "current": damage,
+            "max": "",
+            "id": id.nextId()
+        },{
+            "name": "repeating_ship_" + rowId + "_weapon_type",
+            "current": weapon.type === WeaponType.TORPEDO ? "Torpedo" : "Energy",
             "max": "",
             "id": id.nextId()
         }];
@@ -619,6 +1000,23 @@ export class Roll20VttExporter {
                 "id": id.nextId()
             });
         }
+        return result;
+    }
+
+    convertStarshipTrait(starship: Starship, trait: string, id: IdHelper) {
+        const rowId = id.nextId();
+        let result = [{
+            "name": "repeating_straits_" + rowId + "_strait_name",
+            "current": trait,
+            "max": "",
+            "id": id.nextId()
+        },
+        {
+            "name": "repeating_straits_" + rowId + "_strait_settings",
+            "current": "0",
+            "max": "",
+            "id": id.nextId()
+        }];
         return result;
     }
 }
