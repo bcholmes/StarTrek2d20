@@ -20,6 +20,8 @@ export enum UniformEra {
     Ferengi,
     StrangeNewWorlds,
     Maco,
+    TheMotionPicture,
+    Discovery23,
 }
 
 export const allUniformEras = (): UniformEra[] => {
