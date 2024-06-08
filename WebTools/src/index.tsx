@@ -12,6 +12,7 @@ import { Toaster } from 'react-hot-toast';
 import { PageIdentity } from './pages/pageIdentity';
 import { PageFactory } from './pages/pageFactory';
 import ImportTablePage from './table/page/importTablePage';
+import OtherToolsPage from './pages/otherToolsPage';
 
 const CreditsPage = React.lazy(() => import('./pages/creditsPage'));
 const TalentsOverviewMainPage = React.lazy(() => import('./pages/talentsOverviewMainPage'));
@@ -41,11 +42,12 @@ root.render(
                     <Route path="/gmtracker" element={<GMTrackerPage />} />
                     <Route path="/talents" element={<TalentsOverviewMainPage />} />
                     <Route path="/view" element={<ViewSheetPage />} />
-                    <Route path="/safety" element={<SafetyChecklistPage />} />
                     <Route path="/credits" element={<CreditsPage />} />
                     <Route path="/systemGenerator" element={<SectorContainerPage activePage={PageIdentity.SystemGeneration} />} />
                     <Route path="/sectorDetails" element={<SectorContainerPage activePage={PageIdentity.SectorDetails} />} />
                     <Route path="/starSystemDetails" element={<StarSystemDetailsPage />} />
+                    <Route path="/tools" element={<OtherToolsPage />} />
+                    <Route path="/tools/safety" element={<SafetyChecklistPage />} />
                     <Route path="/token" element={<TokenCreationPage />} />
                     <Route path="/table/list" element={<TableListPage />} />
                     <Route path="/table/view" element={<ViewTablePage />} />

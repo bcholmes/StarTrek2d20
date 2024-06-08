@@ -36,7 +36,6 @@ import SourceSelectionPage from './sourceSelectionPage';
 import { StepContext } from '../state/characterActions';
 import toast from 'react-hot-toast';
 import ExtraTalentChoicesPage from './extraTalentChoicesPage';
-import OtherToolsPage from './otherToolsPage';
 
 export interface IPageFactoryRegistry {
     findFactory(page: PageIdentity);
@@ -97,7 +96,6 @@ export class PageFactory {
         this.factories[PageIdentity.Promotion] = () => <PromotionPage />;
         this.factories[PageIdentity.NormalMilestone] = () => <MilestonePage milestoneType={MilestoneType.NormalMilestone} />;
         this.factories[PageIdentity.ModificationCompletePage] = () => <ModificationCompletePage />;
-        this.factories[PageIdentity.OtherTools] = () => <OtherToolsPage />;
     }
 
     createPage(page: PageIdentity) {

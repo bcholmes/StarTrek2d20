@@ -34,7 +34,7 @@ const SelectionPage = () => {
                 break;
             }
             case Tool.OtherTools: {
-                Navigation.navigateToPage(PageIdentity.OtherTools);
+                navigate("/tools");
                 break;
             }
         }

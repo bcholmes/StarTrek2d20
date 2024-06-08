@@ -12,6 +12,7 @@ import { setSafetyEvaluation } from "../../state/safetyActions";
 import { SafetyChecklistPdf } from "../export/safetyPdf";
 import { Button } from "../../components/button";
 import { useNavigate } from "react-router";
+import { preventDefaultAnchorEvent } from "../../common/navigator";
 
 interface ISafetySectionViewProperties extends ISafetyChecklistPageProperties {
     section: SafetySection;
@@ -87,6 +88,7 @@ const SafetyChecklistPage: React.FC<ISafetyChecklistPageProperties> = ({evaluati
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
+                            <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => preventDefaultAnchorEvent(e, () => navigate("/tools"))}>{t('Page.title.otherTools')}</a></li>
                             <li className="breadcrumb-item active" aria-current="page">{t('Page.title.safetyChecklist')}</li>
                         </ol>
                     </nav>
