@@ -12,6 +12,11 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240607</b>
+                <ul>
+                    <li>Another round of French and Spanish translations.</li>
+                    <li>I've adjusted the Roll20 export for Starships to export them as usable sheets, rather than just handouts.</li>
+                </ul>
                 <b>v1.240603</b>
                 <ul>
                     <li>Even more French and Spanish translations.</li>

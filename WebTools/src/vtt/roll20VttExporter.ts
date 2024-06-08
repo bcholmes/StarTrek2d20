@@ -326,7 +326,7 @@ export class Roll20VttExporter {
             talents.forEach(t => {
                 let qualifier = starship.getQualifierForTalent(t.name);
                 result += "<li><p><b>" + t.localizedName
-                    + (t.maxRank > 1 ? " [x" + starship.getRankForTalent(t.name) + "]" :"")
+                    + (t.maxRank > 1 ? (" [x" + starship.getRankForTalent(t.name) + "]") :"")
                     + (qualifier?.length ? ": " + qualifier : "")
                     + ":</b> "
                     + t.localizedDescription
@@ -817,7 +817,7 @@ export class Roll20VttExporter {
             category = "General";
         }
 
-        let name = talent.maxRank > 1 ? (talent.localizedDisplayName + starship.getRankForTalent(talentName)) : talent.localizedDisplayName;
+        let name = talent.maxRank > 1 ? (talent.localizedDisplayName + " [x" + starship.getRankForTalent(talentName) + "]") : talent.localizedDisplayName;
 
         let qualifier = starship.getQualifierForTalent(talent.name);
         if (qualifier?.length) {
@@ -838,7 +838,7 @@ export class Roll20VttExporter {
         },
         {
             "name": "repeating_stalents_" + rowId + "_stalent_requirements",
-            "current": talent.requirement ?? "",
+            "current": (talent.requirement?.length ? talent.requirement : "None"),
             "max": "",
             "id": id.nextId()
         },
