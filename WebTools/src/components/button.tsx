@@ -19,7 +19,9 @@ export class Button extends React.Component<IButtonProperties, {}> {
         }
 
         let className = this.props.className ?? "";
-        if (className.indexOf("button-small") >= 0) {
+        if (className.indexOf("btn-link") >= 0) {
+            variant = undefined;
+        } else if (className.indexOf("button-small") >= 0) {
             className = className.replace("button-small", "btn btn-" + variant + " btn-sm");
         } else if (className.indexOf("button-next") >= 0) {
             className = className.replace("button-next", "btn btn-" + variant + " btn-sm");
@@ -27,7 +29,7 @@ export class Button extends React.Component<IButtonProperties, {}> {
             className = "btn btn-" + variant + " " + className;
         }
 
-        if (className.indexOf("btn-" + variant) < 0) {
+        if (variant != null && className.indexOf("btn-" + variant) < 0) {
             className += " btn-" + variant;
         }
 
