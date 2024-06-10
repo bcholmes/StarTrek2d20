@@ -266,6 +266,8 @@ NpcConfigurationPage.option.anySpecialization,Any Specialization,,Jede Spezialis
 NpcConfigurationPage.npcType,NPC Type,,NPC Typ,Tipo de PNJ,Type de PNJ,Тип ВП,Tipo de PdM
 NpcConfigurationPage.specialization,Specialization,,Spezialisierung,Especialidad,Spécialisation,Специализация,Especialização
 NpcConfigurationPage.text,Specify what kind of NPC you're trying to create.,,"Lege fest, welche Art NPC du erstellen möchtest.",Especifíca qué tipo de PNJ estás creando.,Spécifiez quel type de PNJ vous voulez créer,Определите тип ВП которого вы пытаетесь создать.,Especifique o tipo de PdM que você está tentando criar.
+OtherToolsPage.instruction,This section contains a number of miscellaneous additional tools that might be used in your STA game.,,,,,,
+OtherToolsPage.safetyChecklist.instruction,"This checklist is a tool which the gamemaster can use to help players in discussing where their personal boundaries for certain themes in this campaign may lie. This list is divided into several categories, each of which includes a number of topics. This online version of the safety checklist can allow GMs or players to review the topics and evaluate how they want those topics handled in-game.",,,,,,
 PromotionPage.instruction,Select a new rank for this character.,,Wählen Sie einen neuen Rang für diesen Charakter,Selecciona un nuevo rango para el personaje.,Selectionnez un nouveau grade pour ce personnage,,Selecione uma nova patente para esta personagem.
 ReputationChangePage.instruction,Adjust the character's reputation as appropriate.,,"Passen Sie das Ansehen des Charakters an, wenn nötig",Ajusta la reputación del personaje según corresponda.,Ajustez la réputation du personnage le cas échéant,,Ajuste a reputação da personagem conforme apropriado.
 SafetyChecklist.instruction,"This checklist is a tool which the gamemaster can use to help players in discussing where their personal boundaries for certain themes in this campaign may lie.
@@ -1327,6 +1329,9 @@ Division.monsterMaroon.specialServices,Special Services,,Ordonnazen,Servicios Es
 Division.monsterMaroon.trainee,Trainee,,Rekrut,Aprendiz,Stagiaire,,Estagiário
 Division.strangeNewWorlds.medical,Medical,,Medizin,Médico,Médical,,Médico
 Division.strangeNewWorlds.nursing,Nursing,,Pflege,Enfermería,Infirmier,,Enfermagem
+Division.tmp.medical,Medical,,Medizin,Médico,Médical,,Médico
+Division.tmp.security,Security,,Sicherheit,Seguridad,Sécurité,,Segurança
+Division.tmp.engineering,Engineering,,Technik,Ingeniería,Ingénierie,,Engenharia
 Equipment.uniform,Uniform,,Uniform,Uniforme,Uniforme,Униформа,
 Equipment.clothing,Clothing,,Kleidung,Vestimenta,Vêtement,Одежда,
 Equipment.armor,Armour,,Rüstung,Armadura,Armure,Броня,
@@ -2412,6 +2417,7 @@ Track.starfleet.sciences.description,"Somewhat isolated from the other Tracks, t
 UniformEra.bynar,Bynar,,Bynar,Bynar,Bynar,Бинар,Bynar
 UniformEra.cardassian,Cardassian Military,,Cardassianisches Militär,Militar Cardassiano,Armée Cardassienne,Войска Кардассии,Militares Cardassianos
 UniformEra.civilian,Civilian,,Zivilist,Civil,Civil,Гражданский,Civil
+UniformEra.discovery23,Discovery (23rd Century),,,,,,
 UniformEra.dominionWar,Dominion War,,Dominionkrieg,Guerra del Dominio,Guerre du Dominion,Война с Доминионом,Guerra do Domínio
 UniformEra.ferengi,Ferengi,,Ferengi,Ferengi,Ferengi,Ферренги,Ferengi
 UniformEra.enterprise,Enterprise,,Enterprise,Enterprise,Enterprise,Энтерпрайз,Enterprise
@@ -2425,6 +2431,7 @@ UniformEra.originalSeriesKlingon,Klingon (Original Series),,Klingonen (Originals
 UniformEra.romulan,Romulan,,Romulaner,Romulano,Romulien,Ромуланец,Romulano
 UniformEra.suliban,Suliban,,Suliban,Suliban,Suliban,Сулибан,Suliban
 UniformEra.strangeNewWorlds,Strange New Worlds,,Strange New Worlds,Strange New Worlds,Strange New Worlds,Странные Новые Миры,Strange New Worlds
+UniformEra.theMotionPicture,The Motion Picture,,,,,,
 UniformEra.voyagerDS9,Voyager/DS9,,Voyager/DS9,Voyager/DS9,Voyager/DS9,Вояджер/Далекий Космос 9,Voyager/DS9
 Upbringing.starfleet.militaryOrExploration.name,Starfleet,,Sternenflotte,Flota Estelar,Starfleet,Звездный флот,Frota Estelar
 Upbringing.starfleet.militaryOrExploration.description,"The character’s family may have a strong tradition of Starfleet service, with at least one member of the family in every generation serving the Federation in this way. Perhaps both the character’s parents were Starfleet officers, who met in service. Either way, the character’s formative years were influenced by Starfleet.",,,,,"В семье персонажа может существовать традиция служить в Звёздном флоте, при этом в каждом поколении был, по крайней мере, один член семьи, который служил так Федерации. Возможно, оба родителя персонажа были офицерами Звёздного флота, которые встретились на службе. В любом случае Звёздный флот повлиял на юные годы персонажа.","A família do personagem pode ter uma forte tradição de serviço na Frota Estelar, com pelo menos um membro da família em cada geração servindo à Federação desta forma. Talvez ambos os pais do personagem fossem oficiais da Frota Estelar que se conheceram em serviço. De qualquer forma, os anos de formação do personagem foram influenciados pela Frota Estelar."

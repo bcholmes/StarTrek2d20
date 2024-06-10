@@ -21,16 +21,20 @@ const OtherToolsPage = () => {
                         <li className="breadcrumb-item active" aria-current="page">{t('Page.title.otherTools')}</li>
                     </ol>
                     </nav>
-                    <main className="row">
-                        <div className="col-12">
-                            <Header>{t('Page.title.otherTools')}</Header>
-                        </div>
-                        <div className="col-md-8">
-                            <p className="mt-3">
-                                {t('Home.selection')}
-                            </p>
-                            <div className="button-column">
-                                <Button className="mt-4" onClick={() => navigate("/tools/safety")} >{t('Page.title.safetyChecklist')}</Button>
+                    <main>
+                        <Header>{t('Page.title.otherTools')}</Header>
+                        <p className="mt-3">
+                            {t('OtherToolsPage.instruction')}
+                        </p>
+                        <div className="row row-cols-md-2 row-cols-1">
+                            <div className="col mt-5">
+                                <Header level={2}>{t('Page.title.safetyChecklist')}</Header>
+                                <p className="mt-3">
+                                    {t('OtherToolsPage.safetyChecklist.instruction')}
+                                </p>
+                                <div className="text-end mt-4">
+                                    <Button onClick={() => navigate("/tools/safety")} >{t('Page.title.safetyChecklist')}</Button>
+                                </div>
                             </div>
                         </div>
                     </main>

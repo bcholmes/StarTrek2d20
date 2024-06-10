@@ -930,6 +930,10 @@
     "Division.strangeNewWorlds.medical": "Médico",
     "Division.strangeNewWorlds.nursing": "Enfermagem",
 
+    "Division.tmp.medical": "Médico",
+    "Division.tmp.security": "Segurança",
+    "Division.tmp.engineering": "Engenharia",
+
     "Era.name.enterprise": "Enterprise (século 22)",
     "Era.name.originalSeries": "Série Original (século 23)",
     "Era.name.nextGeneration": "A Nova Geração (século 24)",

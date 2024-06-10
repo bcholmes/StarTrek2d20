@@ -776,6 +776,10 @@
     "Division.strangeNewWorlds.medical": "Médical",
     "Division.strangeNewWorlds.nursing": "Infirmier",
 
+    "Division.tmp.medical": "Médical",
+    "Division.tmp.security": "Sécurité",
+    "Division.tmp.engineering": "Ingénierie",
+
     "Equipment.uniform": "Uniforme",
     "Equipment.clothing": "Vêtement",
     "Equipment.armor": "Armure",

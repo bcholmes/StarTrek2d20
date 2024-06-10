@@ -686,6 +686,10 @@
     "Division.strangeNewWorlds.medical": "Medizin",
     "Division.strangeNewWorlds.nursing": "Pflege",
 
+    "Division.tmp.medical": "Medizin",
+    "Division.tmp.security": "Sicherheit",
+    "Division.tmp.engineering": "Technik",
+
     "Equipment.uniform": "Uniform",
     "Equipment.clothing": "Kleidung",
     "Equipment.armor": "Rüstung",

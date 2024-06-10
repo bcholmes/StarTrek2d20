@@ -228,6 +228,10 @@
     "NpcConfigurationPage.specialization": "Specialization",
     "NpcConfigurationPage.text": "Specify what kind of NPC you're trying to create.",
 
+    "OtherToolsPage.instruction": "This section contains a number of miscellaneous additional tools that might be used in your STA game.",
+
+    "OtherToolsPage.safetyChecklist.instruction": "This checklist is a tool which the gamemaster can use to help players in discussing where their personal boundaries for certain themes in this campaign may lie. This list is divided into several categories, each of which includes a number of topics. This online version of the safety checklist can allow GMs or players to review the topics and evaluate how they want those topics handled in-game.",
+
     "PromotionPage.instruction": "Select a new rank for this character.",
 
     "ReputationChangePage.instruction": "Adjust the character's reputation as appropriate.",
@@ -956,6 +960,10 @@
 
     "Division.strangeNewWorlds.medical": "Medical",
     "Division.strangeNewWorlds.nursing": "Nursing",
+
+    "Division.tmp.medical": "Medical",
+    "Division.tmp.security": "Security",
+    "Division.tmp.engineering": "Engineering",
 
     "Equipment.uniform": "Uniform",
     "Equipment.clothing": "Clothing",
@@ -2394,6 +2402,7 @@
     "UniformEra.bynar": "Bynar",
     "UniformEra.cardassian": "Cardassian Military",
     "UniformEra.civilian": "Civilian",
+    "UniformEra.discovery23": "Discovery (23rd Century)",
     "UniformEra.dominionWar": "Dominion War",
     "UniformEra.ferengi": "Ferengi",
     "UniformEra.enterprise": "Enterprise",
@@ -2407,6 +2416,7 @@
     "UniformEra.romulan": "Romulan",
     "UniformEra.suliban": "Suliban",
     "UniformEra.strangeNewWorlds": "Strange New Worlds",
+    "UniformEra.theMotionPicture": "The Motion Picture",
     "UniformEra.voyagerDS9": "Voyager/DS9",
 
     "Upbringing.starfleet.militaryOrExploration.name": "Starfleet",
