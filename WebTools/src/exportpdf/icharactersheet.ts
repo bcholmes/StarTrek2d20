@@ -1,6 +1,5 @@
-import { PDFDocument, PDFPage } from "@cantoo/pdf-lib";
+import { PDFDocument } from "@cantoo/pdf-lib";
 import { Construct } from "../common/construct";
-import { XYLocation } from "../common/xyLocation";
 
 export enum SheetTag {
     LanguageSupport,

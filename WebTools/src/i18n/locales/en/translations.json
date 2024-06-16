@@ -57,6 +57,7 @@
 
     "TokenCreator.section.mouth.shape": "Mouth",
     "TokenCreator.section.mouth.colour": "Lipstick Colour",
+    "TokenCreator.section.mouth.shadow": "Shadow",
     "TokenCreator.section.mouth.moustache": "Moustache",
     "TokenCreator.section.mouth.beard": "Beard",
 
