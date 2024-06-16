@@ -1298,6 +1298,9 @@ class SystemGeneration {
         } else if (world.worldClass.id === WorldClass.D) {
             minimumDiameter = 100;
             maximumDiameter = 1000;
+        } else if (world.worldClass.id === WorldClass.C) {
+            minimumDiameter = 100;
+            maximumDiameter = 10000;
         }
         let delta = (maximumDiameter - minimumDiameter) / (40 - 1);
         let roll = D20.roll() + D20.roll();
