@@ -79,10 +79,16 @@
     "ViewPage.viewSupportingCharacter": "Просмотр Персонажей Поддержки",
     "ViewPage.viewNpc": "Просмотр НИП",
     "ViewPage.viewMainCharacter": "Просмотр Игрового Персонажа",
+    "ViewPage.viewSoloCharacter": "Просмотр Сольного Персонажа",
     "ViewPage.viewStarship": "Просмотр Звездолета",
     "ViewPage.errorMessage": "Что-то пошло чертовски не так. Вероятно мы оказались в зеркальной вселенной.",
     "ViewPage.unnamedStarship": "Безымянный Звездолет",
 
+    "CareerEvents.standard": "Стандартное",
+    "CareerEvents.standardAndUnofficial": "Стардартное и Неофициальное",
+
+    "CareerEventDetails.errorAttribute": "Пожалуйста выберите качество",
+    "CareerEventDetails.errorDiscipline": "Пожалуйста выберите знание",
     "CareerEventDetails.errorFocus": "Выберите специализацию",
 
     "GMTracker.addCharacterModalTitle": "Добавьте персонажа",
@@ -95,11 +101,13 @@
     "CareerSelectionPage.title": "Выберите Карьеру",
     "CareerSelectionPage.selectCareer": "Выберите Карьеру",
     "CareerSelectionPage.rollCareer": "Рандомная Карьера",
+    "CareerSelectionPage.selectOneTalent": "Один талант на выбор",
 
     "CharacterSheetDialog.title": "Выберите модель",
 
     "CustomSpeciesDetails.speciesName": "Имя",
     "CustomSpeciesDetails.instruction": "Каково название этой рассы?",
+    "CustomSpeciesDetails.speciesTrait": "Каждая раса получает особую рассовую черту, которая может дать дополнительные преимущества в особых обстоятельствах.",
     "CustomSpeciesDetails.speciesNameWarning": "Пожалуйста предоставьте название для этой рассы.",
 
     "CharacterTypePage.whatType": "Какой это тип персонажа?",
@@ -113,6 +121,9 @@
     "EducationPage.instruction.starfleet": "Годы, проведённые в Академии Звёздного флота, являются одними из самых запоминающихся и важных в жизни офицера и определяют направление его карьеры. Те, кто сдали изнурительные вступительные экзамены, учатся в Академии четыре года, занимаясь интенсивной физподготовкой, учат теорию и практику. Большая часть обучения проходит на территории главного кампуса Академии Звёздного флота в Сан-Франциско на Земле, но так как отделения и кампусы Академии существуют по всей территории Федерации, курсант может пройти учёбу в любом из них.\n\nВыпускник Академии становится офицером Звёздного флота в звании энсина, после чего может прождать своего первого назначения несколько недель, а то и месяцев. Некоторые курсанты, особенно желающие получить учёную степень, выбирают курс, требующий один или два дополнительных года тренировок и обучения, и после выпуска получают звание лейтенанта (младшее звание).\n\nМожно выбрать путь обучения прерсонажа в Акадении или использовать случайный выбор.",
 
     "EducationPage.type.starfleet": "Академия Звездного Флота",
+    "EducationPage.type.civilian": "Гражданское обучение",
+    "EducationPage.type.alliedMilitary": "Военная подготовка у союзников",
+    "EducationPage.type.ambassadorDiplomat": "Дипломатическое обучение",
 
     "EducationPage.starfleet.academy": "Офицерская Академия",
     "EducationPage.starfleet.enlisted": "Рядовая подготовка",
@@ -149,6 +160,14 @@
     "Home.characterButton": "Персонажи и Корабли",
     "Home.talentsButton": "Обзор Талантов",
     "Home.tokenCreator": "Токены",
+    "Home.otherTools": "Другие инструменты",
+
+    "MilestonePage.instruction": "Выберите тип модификации который вы хотите применить к этой вехе",
+
+    "ModificationCompletePage.instruction": "Персонаж был изменен. Вы можете просмотреть измененного персонажа или внести новую модификацю.\n\nВы можете сохранить URL для измененного персонажа.",
+
+    "ModificationTypeSelectionPage.instruction": "Пожалуйста выберите тип измененния который вы хотите применить для данного персонажа:",
+    "ModificationTypeSelectionPage.whatMilestoneType": "Какой тип вехи был применен?",
 
     "NpcConfigurationPage.option.anyMajorSpecies": "Любая основная раса",
     "NpcConfigurationPage.option.anySpecialization": "Любая Специализация",
@@ -156,6 +175,10 @@
     "NpcConfigurationPage.npcType": "Тип ВП",
     "NpcConfigurationPage.specialization": "Специализация",
     "NpcConfigurationPage.text": "Определите тип ВП которого вы пытаетесь создать.",
+
+    "PromotionPage.instruction": "Выберите новый ранг для персонажа",
+
+    "ReputationChangePage.instruction": "Измените репутацию персонада в соответствии с обстаятельствами.",
 
     "SoloConstructTypePage.character": "Персонаж",
     "SoloConstructTypePage.instruction": "Вы создаете персонажа или звездолет?",
@@ -289,14 +312,22 @@
     "Common.select.choose": "Выберите ...",
 
     "Construct.other.assignment": "Назначение",
+    "Construct.other.attacks": "Оружие",
     "Construct.other.attribute": "Качество",
     "Construct.other.attributes": "Качества",
     "Construct.other.career": "Карьера",
     "Construct.other.careerEvent1": "Первое событие карьеры",
+
+    "Construct.other.careerEvent1.short": "Событие 1",
+
     "Construct.other.careerEvent2": "Второе событие карьеры",
+
+    "Construct.other.careerEvent2.short": "Событие 2",
+
     "Construct.other.careerEvents": "События карьеры",
     "Construct.other.characterType": "Тип персонажа",
     "Construct.other.crew": "Персонал",
+    "Construct.other.department": "Отдел",
     "Construct.other.departments": "Отделы",
     "Construct.other.determination": "Целеустремленность",
     "Construct.other.discipline": "Знание",
@@ -310,6 +341,7 @@
     "Construct.other.focus2": "Специализация 2",
     "Construct.other.focus3": "Специализация 3",
     "Construct.other.focuses": "Специализации",
+    "Construct.other.injuries": "Ранения",
     "Construct.other.job": "Работа",
     "Construct.other.missionProfile": "Профиль миссии",
     "Construct.other.name": "Имя",
@@ -322,6 +354,8 @@
     "Construct.other.reputation": "Репутация",
     "Construct.other.serviceDate": "Период службы",
     "Construct.other.shields": "Щиты",
+    "Construct.other.ship": "Звездолет",
+    "Construct.other.sources": "Источники",
     "Construct.other.specialRules": "Особые Правила",
     "Construct.other.species": "Раса",
     "Construct.other.stats": "Значения",
@@ -749,6 +783,26 @@
     "Role.admiral.description": "Только флагманы",
     "Role.admiral.ability": "Выберите три дополнительные Специализации, отражающие область знаний или предметы, относящиеся к заданию адмирала. В начале каждой миссии адмирал выбирает одну из трех Специализаций и каждый главный герой получает ее в качестве дополнительного Специализации для миссии, благодаря дополнительным инструктажам и учебным ресурсам.",
 
+    "SafetySectionType.violence": "Насилие",
+    "SafetySectionType.gameplayMechanics": "Игровая механика",
+    "SafetySectionType.warCrimes": "Военные преступления",
+
+    "Sheet.basicGeneratedHalfPageCharacterSheet": "Новый бланк персонажа 2го издания пол листа",
+    "Sheet.generatedTngPortraitCharacterSheet": "Портретный бланк персонажа TNG (US-Letter)",
+    "Sheet.halfPageSupportingCharacterSheet": "Бланк вспомогательного персонажа на пол листа",
+    "Sheet.landscapeGeneratedCharacterSheet": "Альбомный бланк персонажа TNG (US-Letter)",
+    "Sheet.standardTngCharacterSheet": "Стандартный бланк персонажа TNG (US-Letter)",
+
+    "Sheet.text.title": "Бланк персонажа",
+
+    "SheetTag.halfPage": "Пол страницы",
+    "SheetTag.landscape": "Альбомный",
+    "SheetTag.languageSupport": "Поддержка языков",
+    "SheetTag.portrait": "Портретный",
+    "SheetTag.style2e": "Стиль 2го издания",
+    "SheetTag.talentText": "Текст талантов",
+    "SheetTag.twoPage": "2-я страница",
+
     "ShipBuildType.pod.name": "Челнок",
 
     "ShipBuildType.shuttlecraft.name": "Шаттл",
@@ -772,6 +826,7 @@
     "Source.book.klingonCore": "Клингоны основная",
     "Source.book.shackletonExpanse": "Пространство Шеклтона",
     "Source.book.discoveryCampaign": "Кампания Дискавери",
+    "Source.book.lowerDecksCampaign": "Нижние палубы",
     "Source.book.captainsLog": "Дневник Капитана",
 
     "Spaceframe.akira": "Класс Акира",

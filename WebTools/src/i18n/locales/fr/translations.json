@@ -1,6 +1,6 @@
 {
     "LanguageNotice.title": "Salut!",
-    "LanguageNotice.text": "Nous expérimentons un soutien initial pour les langues nationales. Nous sommes dans une phase très préliminaire, mais nous espérons être en mesure de prendre en charge plus de langues, bientôt.",
+    "LanguageNotice.text": "Nous expérimentons un support pour les langues nationales. Nous sommes dans une phase très préliminaire, mais nous espérons être en mesure de prendre en charge plus de langues, bientôt.",
     "LanguageNotice.useEnglish": "Utiliser l'anglais",
 
     "Lcars.copyright": "STAR TREK et les marques et logos associés sont des marques commerciales de CBS Studios Inc. Tous droits réservés.",
@@ -217,9 +217,15 @@
     "NpcConfigurationPage.specialization": "Spécialisation",
     "NpcConfigurationPage.text": "Spécifiez quel type de PNJ vous voulez créer",
 
+    "OtherToolsPage.instruction": "Cette section contient divers outils additionnels à utiliser lors de vos parties de STA",
+
+    "OtherToolsPage.safetyChecklist.instruction": "Cette Checklist est un outil permettant au Maitre du Jeu  et à ses joueurs de se mettre d'accord sur les limites personnelles de chacun à ne pas dépasser lors d'une campagne. Cette liste est subdivisée en plusieurs catégories comprenant certains sujets. Cette version en ligne permet au MJ et aux joueurs d'estimer comment traiter ces sujets en jeu. ",
+
     "PromotionPage.instruction": "Selectionnez un nouveau grade pour ce personnage",
 
     "ReputationChangePage.instruction": "Ajustez la réputation du personnage le cas échéant",
+
+    "SafetyChecklist.instruction": "Cette checklist est un outil permettant au Maitre du Jeu  et à ses joueurs de se mettre d'accord sur les limites personnelles de chacun à ne pas dépasser lors d'une campagne. \n\n- **Toujours OK** :  Le sujet peut être décrit, montré ou abordé dans le jeu,lejoueur n'a aucun problème avec ca.\n\n- **Alerte Jaune** : Le sujet peut être abordé, mais le joueur préfère éviter les représentations et descriptions trop crues \n\n- **Alerte Rouge** : Le sujet met le joueur mal à l'aise et ne doit pas être abordé lors du jeu. Les raisons à cela peuvent être variées, d'un principe moral au traumatisme personnel, et certains peuvent avoir du mal à banaliser certaines choses durant un jeu. N'en demandez pas les raisons, la sensibilité personnelle n'est pas sujet à débat, acceptez simplement le fait et respectez vos joueur en évitant le sujet. ",
 
     "SoloCareerEvent.instruction": "La carrière de votre personnage est une tapisserie d'événements et d'expériences, mais quelques-uns auront été des moments cruciaux dans la vie du personnage. Un personnage définit quels moments de sa vie sont rétrospectivement importants, et ce qui semblait définitif à un jeune enseigne peut être sans conséquence pour lui, ce même officier, des décennies plus tard.\n\nVotre personnage dispose de deux événements de carrière déterminants, choisis ou déterminés au hasard dans la liste ci-dessous, et bénéficie de tous les avantages qu'ils procurent.\n\nPour les personnages ayant choisi la durée de carrière novice, supposez que ces événements de carrière ont eu lieu pendant le séjour du personnage à l'Académie ou équivalent, peut-être lors d'une mission d'entraînement sur le terrain à bord d'un vaisseau spatial.",
 
@@ -255,6 +261,10 @@
     "SoloEnvironmentDetailsPage.errorDiscipline": "Choisissez une discipline, SVP",
     "SoloEnvironmentDetailsPage.errorValue": "Choisissez une Valeur, SVP",
 
+    "SoloEraSelectionPage.instruction": "Choississez une époque pour votre personnage ou tirez en une aléatoirement",
+
+    "SoloFinishingTouchesPage.attributeNote_one": "Votre total de points dépasse de {{count}} point votre valeur maximum, qui n'a pas pu être ajouté a vos attributs",
+    "SoloFinishingTouchesPage.attributeNote_other": "Votre total de points dépasse de {{count}} points votre valeur maximum, qui n'ont pas pu être ajoutés a vos attributs",
     "SoloFinishingTouchesPage.select": "(Selectionnez {{count}})",
     "SoloFinishingTouchesPage.errorAttributes": "Choisissez {{count}} Attributs, SVP",
     "SoloFinishingTouchesPage.errorDisciplines": "Choisissez {{count}} DIciplines, SVP",
@@ -263,11 +273,14 @@
     "SoloSpeciesPage.errorAttributes": "Choisissez 3 Attribus, SVP",
     "SoloSpeciesPage.instruction": "Choisissez une Espèce pour votre personnage ou tirez en une au dé.",
 
-    "SpaceframeOptionPage.text": "Voulez vous un modèle standart ou un modèle personalisé?",
+    "SpaceframeOptionPage.text": "Voulez vous un modèle standard ou un modèle personalisé?",
 
-    "SpaceframeOptionPage.button.standardSpaceframe": "Modèle Standart",
+    "SpaceframeOptionPage.button.standardSpaceframe": "Modèle Standard",
     "SpaceframeOptionPage.button.customSpaceframe": "Modèle personnalisé",
 
+    "SpaceframeSelectionPage.text": "Le modèle définit la structure et l'infrastructure du vaisseau, c'est la base sur laquelle tout le reste sera monté. A cette étape, les Joueurs choisissent une classe, qui fourniront les systèmes de base du vaisseau,ainsi que son envergure et son armement. Les différentes classes sont entrées en service et ont été réformées à différentes dates. L'année ou se déroule la campagne détermine donc la disponibilité du modèle.",
+    "SpaceframeSelectionPage.note": "Note : Le supplément \"Utopia Planitia\" a redéfini les statistiques de nombreux modèles précédemment publiés. Les données présentées ici ont suivi cette mise à jour.",
+    "SpaceframeSelectionPage.ignoreEndOfService": "Ignorer la date de fin de service du modèle (en accord avec le MJ)",
     "SpaceframeSelectionPage.error": "Choisissez un modèle avant de continuer, SVP",
 
     "SpeciesDetails.options": "Option d'espèce",
@@ -445,7 +458,7 @@
     "Construct.other.systems": "Systèmes",
     "Construct.other.talent": "Talent",
     "Construct.other.talents": "Talents",
-    "Construct.other.talentOptions": "Options de Tlent",
+    "Construct.other.talentOptions": "Options de Talent",
     "Construct.other.timeline": "Chronologie",
     "Construct.other.training": "Formation",
     "Construct.other.trait": "Trait",
@@ -555,85 +568,85 @@
     "Page.breadcrumb.starshipCreation": "Règles de Base",
     "Page.breadcrumb.supportingCharacterCreation": "Création de Personnage Secondaire",
 
-    "CareerEvent.common.1.name": "VAISSEAU DÉTRUIT",
+    "CareerEvent.common.1.name": "Vaisseau détruit",
     "CareerEvent.common.1.description": "Le vaisseau sur lequel le personnage servait a été perdu, détruit au cours d’une mission, et il figure parmi les rares survivants. Quelle était sa mission ? Était-ce une mission de rou- tine qui a horriblement mal tourné, ou quelque chose de dangereux ? Qu’est-ce qui a détruit le vaisseau ? Combien y a-t-il eu de survivants ? Combien de temps a-t-il fallu pour les récupérer ?",
     "CareerEvent.common.1.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les expériences qu’il a endurées. Par exemple : Opérations extravéhiculaires, Petite navette ou Survie.",
 
-    "CareerEvent.common.2.name": "MORT D’UN AMI",
+    "CareerEvent.common.2.name": "Mort d'un ami",
     "CareerEvent.common.2.description": "Au cours d’une importante mission, l’un des amis du personnage a été tué au combat. Qui était cet ami ? Comment se sont-ils connus ? Quelle était la mission ? Comment l’ami est-il mort ? Qui en est responsable ?",
     "CareerEvent.common.2.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les expériences qu’il a endurées. Par exemple : Conseiller. Elle peut également représenter une compétence ou un objectif que le personnage a repris à son compte en mémoire de son ami défunt, ou pour éviter qu’une telle situation se reproduise dans le futur.",
 
-    "CareerEvent.common.3.name": "APPRÉCIÉ D’UNE AUTRE CULTURE",
+    "CareerEvent.common.3.name": "Apprécié d'une autre culture",
     "CareerEvent.common.3.description": "Le personnage a pris part à une mission qui lui a valu les remerciements d’une culture étrangère à la Fédération ; il est à présent considéré comme un ami de ce peuple. Quelle culture la mission a-t-elle aidée ? Quelle était la mission ? Pourquoi cela a-t-il mérité de telles louanges ? Le personnage a-t-il des amis ou des contacts au sein de cette culture, auquel il peut faire appel si besoin ?",
     "CareerEvent.common.3.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les expériences qu’il a vécues là-bas. Par exemple Culture X (en remplaçant le X par son nom), ou toutes les compétences ou les techniques qui lui appartiennent",
     "CareerEvent.common.3.traitDescription": "Le personnage gagne un Trait représentant cet événement, le renom dont il bénéficie là-bas, ainsi que les avantages et les problèmes conférés par ce statut. Par exemple : Ami de la culture X (en remplaçant le X par son nom)",
 
-    "CareerEvent.common.4.name": "A NÉGOCIÉ UN TRAITÉ",
+    "CareerEvent.common.4.name": "A négocié un traité",
     "CareerEvent.common.4.description": "Le personnage faisait partie d’une délégation qui prit part à la négociation d’un traité, d’un accord ou d’une alliance avec une culture étrangère à la Fédération. Quelle était cette culture ? Dans quel but ce traité a-t-il été négocié ?",
     "CareerEvent.common.4.focusSuggestion": "Le personnage gagne une Spécialisation reflétant son expérience dans ces discussions. Par exemple : Diplomatie, Négociation ou Politique galactique.",
 
-    "CareerEvent.common.5.name": "A DÛ PRENDRE LE COMMANDEMENT",
+    "CareerEvent.common.5.name": "A du prendre le commandement",
     "CareerEvent.common.5.description": "Le chef d’une mission a été incapable d’assumer ses fonctions pendant une crise. Le personnage a dû prendre la direction des opérations et c’était une chose à laquelle il n’avait peut-être pas été préparé. Quelle était la nature de la mission ? Qu’est-ce qui a mal tourné ? A-t-elle réussi malgré l’absence de chef ?",
     "CareerEvent.common.5.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les expériences qu’il a vécues pendant cette crise. Par exemple, Donner l’exemple, Sang-froid ou Source d’inspiration",
 
-    "CareerEvent.common.6.name": "RENCONTRE AVEC UNE CRÉATURE VÉRITABLEMENT ÉTRANGE",
+    "CareerEvent.common.6.name": "Rencontre avec une créature vraiment étrange",
     "CareerEvent.common.6.description": "Le personnage a rencontré une forme de vie vraiment différente, qui saisissait à peine la notion de vie humanoïde. Peut-être était-ce une entité divine ou une créature nageant à travers l’espace. Quoi qu’elle ait pu être, ce n’était pas la vie telle que nous la connaissons. Quel genre de créature était-ce ? Quelles connaissances le personnage a-t-il tirées de son expérience ? Qu’est-il arrivé ensuite à la créature ? L’a-t-on vue depuis ?",
     "CareerEvent.common.6.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les expériences qu’il a vécues avec cette entité. Par exemple, Empathie, Philosophie ou Xénobiologie",
 
-    "CareerEvent.common.7.name": "BLESSURE GRAVE",
+    "CareerEvent.common.7.name": "Blessure grave",
     "CareerEvent.common.7.description": "Le personnage a été gravement touché et son état a nécessité une très longue convalescence. Que se passait-il quand il a été blessé ? Qui a causé cette blessure ? Qu’est-ce que cette convalescence a entraîné ? A-t-il eu besoin d’une prothèse ou d’implants cybernétiques ensuite ?",
     "CareerEvent.common.7.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les circonstances dans lesquelles il a été blessé, quelque chose qui l’a aidé pendant sa convalescence ou qu’il a acquis après. Par exemple : Art, Athlétisme ou Philosophie.",
     "CareerEvent.common.7.traitDescription": "Le personnage gagne un Trait représentant les effets à long terme de ses blessures ou la façon dont elles ont guéri. Par exemple : Prothèse, ou une forme de handicap.",
 
-    "CareerEvent.common.8.name": "CONFLIT AVEC UNE CULTURE HOSTILE",
+    "CareerEvent.common.8.name": "Conflit avec une culture hostile",
     "CareerEvent.common.8.description": "Le personnage a pris part à une bataille majeure opposant la Fédération à une force hostile, et il n’est pas près d’oublier son expérience. Qui était l’ennemi ? Pourquoi cet affrontement a-t-il eu lieu ? A-t-il eu lieu dans l’espace, au sol ou les deux ? Qu’a-t-il dû faire pour survivre ? La bataille a-t-elle été gagnée ou perdue ?",
     "CareerEvent.common.8.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les compétences qu’il a améliorées pendant l’affrontement. Par exemple, Combat au corps-à-corps, Phaseurs de poing ou Systèmes tactiques de bord.",
 
-    "CareerEvent.common.9.name": "MENTOR",
+    "CareerEvent.common.9.name": "Mentor",
     "CareerEvent.common.9.description": "Un officier très respecté a remarqué le parcours du personnage, et l’a pris pendant un certain temps à son service comme pilote et aide de camp. Celui-ci a bénéficié de son expérience et de ses enseignements. Qui était cet officier ? Est-il resté un contact, ou même devenu un ami ?",
     "CareerEvent.common.9.focusSuggestion": "Le personnage gagne une Spécialisation reflétant les connaissances apprises. Par exemple, Étiquette ou Sang-froid, ou n’importe quelle Spécialisation représentant celles de l’officier.",
 
-    "CareerEvent.common.10.name": "ACCIDENT DE TÉLÉPORTEUR",
+    "CareerEvent.common.10.name": "Accident de téléporteur",
     "CareerEvent.common.10.description": "Le personnage a été victime d’un étrange accident au cours d’une téléportation. Que lui est-il arrivé pendant cet incident ? Y a-t-il eu des répercussions à long terme ? Que pense-t-il à présent des téléporteurs ?",
     "CareerEvent.common.10.focusSuggestion": "Le personnage gagne une Spécialisation qui doit refléter ce que l’accident, ou ses suites, lui a appris. Par exemple, Mécanique quantique, Petites navettes ou Téléporteurs & synthétiseurs.",
 
-    "CareerEvent.common.11.name": "CONFRONTÉ À UNE ÉPIDÉMIE",
+    "CareerEvent.common.11.name": "Conronté à une épidémie",
     "CareerEvent.common.11.description": "Le vaisseau du personnage a été envoyé porter assistance à un monde victime d’une épidémie. Quelle était cette maladie qui faisait des ravages ? Quelle planète était contaminée ? Comment s’est-il impliqué ?",
     "CareerEvent.common.11.focusSuggestion": "Le personnage gagne une Spécialisation reflétant la manière dont il a prêté assistance pendant cette crise. Par exemple, Maladies infectieuses, Médecine d’urgence ou Triage.",
 
-    "CareerEvent.common.12.name": "A TRAHI SES IDÉAUX POUR UN SUPÉRIEUR",
+    "CareerEvent.common.12.name": "A trahi ses idéaux pour un superieur",
     "CareerEvent.common.12.description": "Le personnage s’est retrouvé dans une situation où il a dû choisir entre un officier en qui il avait confiance et ses propres valeurs, et il a suivi son supérieur. Qui était ce supérieur ? Que lui a-t-il demandé de faire ? Comment le personnage se sent-il à présent ? Existe-t-il des archives sur le sujet ? A-t-il eu raison de le faire ?",
     "CareerEvent.common.12.focusSuggestion": "Le personnage gagne une Spécialisation reflétant cet événement et ses conséquences. Par exemple, Enquête, Inspiration ou Persuasion.",
 
-    "CareerEvent.common.13.name": "A DÉSOBÉI À UN SUPÉRIEUR",
+    "CareerEvent.common.13.name": "A désobéi a un superieur",
     "CareerEvent.common.13.description": "Le personnage s’est retrouvé dans une situation où il a dû choisir entre un officier en qui il avait confiance et ses propres valeurs, et il a suivi ses valeurs.Qui était ce supérieur ? Que lui a-t-il demandé de faire ? Comment le personnage se sent-il à présent ? Quelles ont été les répercussions de cette action ? Existe-t-il des archives sur le sujet ? A-t-il eu raison de le faire ?",
     "CareerEvent.common.13.focusSuggestion": "Le personnage gagne une une Spécialisation reflétant cet événement et ses conséquences. Par exemple, Code de justice militaire, Histoire ou Protocole de Starfleet.",
 
-    "CareerEvent.common.14.name": "NOUVELLE STRATÉGIE",
+    "CareerEvent.common.14.name": "Nouvelle stratégie",
     "CareerEvent.common.14.description": "Pendant un combat contre une force hostile, le personnage a mis au point une stratégie ou une tactique nouvelle. Contre qui livrait-il bataille ? Était-ce dans l’espace ou au sol ? Quelle était cette stratégie ?",
     "CareerEvent.common.14.focusSuggestion": "Le personnage gagne une Spécialisation reflétant son rôle décisif sur le champ de bataille. Par exemple, Donner l’exemple, Sens du danger ou Tactique de combat.",
 
-    "CareerEvent.common.15.name": "A APPRIS UNE LANGUE UNIQUE",
+    "CareerEvent.common.15.name": "A appris une langue unique",
     "CareerEvent.common.15.description": "Le personnage a rencontré une espèce douée d’une forme unique de communication et l’a apprise. Qui étaient ces extraterrestres ? Le climat de cette rencontre était-il tendu ou paisible ? Quelle était la méthode de communication utilisée ? Comment l’a-t-il apprise ?",
     "CareerEvent.common.15.focusSuggestion": "Le personnage gagne une Spécialisation qui doit refléter ce qu’il a appris de l’événement. Par exemple, Approche culturelle, Langues ou Négociation.",
 
-    "CareerEvent.common.16.name": "A DÉCOUVERT UN ARTEFACT",
+    "CareerEvent.common.16.name": "A découvert un artefact",
     "CareerEvent.common.16.description": "Au cours d’une mission de reconnaissance, le personnage a découvert un appareil ou un élément de technologie appartenant à une civilisation à présent disparue. Que faisait cet objet ? Fonctionne-t-il toujours ? Que sait-on de la civilisation qui l’a fabriqué ?",
     "CareerEvent.common.16.focusSuggestion": "Le personnage gagne une Spécialisation reflétant cet événement et ses conséquences. Par exemple, Informatique, Ingénierie inversée ou Technologie antique",
 
-    "CareerEvent.common.17.name": "DÉCORATION",
+    "CareerEvent.common.17.name": "Décoration",
     "CareerEvent.common.17.description": "Le personnage a, au cours d’une situation de crise, sauvé la vie de plusieurs collègues et les a mis en sûreté. Cela lui a valu une décoration. Quelle était cette situation de crise ? Pourquoi la mission était-elle en danger ? Y a-t-il eu des répercussions ? Existe-t-il des archives sur le sujet ?",
     "CareerEvent.common.17.focusSuggestion": "Le personnage gagne une Spécialisation qui doit refléter cet événement et ses conséquences. Par exemple, Athlétisme, Médecine d’urgence ou Survie.",
 
-    "CareerEvent.common.18.name": "A RÉSOLU UNE CRISE TECHNIQUE",
+    "CareerEvent.common.18.name": "A résolu une crise technique",
     "CareerEvent.common.18.description": "Le personnage a joué un rôle clé dans la résolution d’une crise provoquée par une technologie défectueuse, et il a ainsi sauvé de nombreuses vies. Quelle était la technologie en cause et pourquoi était-ce dangereux ? Comment a-t-il résolu le problème ?",
     "CareerEvent.common.18.focusSuggestion": "Le personnage gagne une Spécialisation reflétant la technologie en cause dans cet événement. Par exemple, Moteurs à distorsion, Réacteurs à fusion ou Système d’alimentation électro-plasmatiques",
 
-    "CareerEvent.common.19.name": "DÉCOUVERTE CAPITALE OU INVENTION",
+    "CareerEvent.common.19.name": "Découverte capitale ou invention",
     "CareerEvent.common.19.description": "Le personnage a fait une découverte technologique importante, mis au point une nouvelle façon d’utiliser un appareil précis ou inventé une nouvelle technologie qui se révélera inestimable dans le futur. Quelle est cette trouvaille, cette découverte capitale ou cette invention ? En quoi sera-t-elle utile ?",
     "CareerEvent.common.19.focusSuggestion": "Le personnage gagne une Spécialisation reflétant la réussite du personnage. Par exemple, Improvisation, Invention ou Technologie expérimentale.",
 
-    "CareerEvent.common.20.name": "PREMIER CONTACT",
+    "CareerEvent.common.20.name": "Premier contact",
     "CareerEvent.common.20.description": "Le personnage a été sélectionné pour participer à l’une des missions les plus importantes de Starfleet : le premier contact avec une autre culture. Quelle était cette culture ? La mission s’est-elle bien déroulée ?",
     "CareerEvent.common.20.focusSuggestion": "Le personnage gagne une Spécialisation reflétant la nature de la mission. Par exemple, Approche culturelle, Diplomatie ou Infiltration.",
 
@@ -893,13 +906,47 @@
     "MilestoneType.name.spotlightMilestone": "Jalon Sous les Projecteurs",
     "MilestoneType.name.arcMilestone": "Jalon Arc de Personnage",
 
-    "MissionProfile.default.strategicAndDiplomatic": "OPÉRATIONS DIPLOMATIQUES ET STRATÉGIQUES",
-    "MissionProfile.default.pathfinderAndReconaissance": "OPÉRATIONS DE RECONNAISSANCE ET D’EXPLORATION",
-    "MissionProfile.default.technicalTestBed": "PLATEFORME D’ESSAI TECHNIQUE",
-    "MissionProfile.default.tactical": "OPÉRATIONS TACTIQUES",
-    "MissionProfile.default.scientificAndSurvey": "OPÉRATIONS D’ÉTUDE SCIENTIFIQUE",
-    "MissionProfile.default.crisisAndEmergencyResponse": "RÉPONSE AUX SITUATIONS D’URGENCE ET DE CRISE",
-    "MissionProfile.default.multiroleExplorer": "EXPLORATEUR POLYVALENT",
+    "MissionPod.commandAndControl": "Commandement et Controle",
+    "MissionPod.sensors": "Capteurs",
+    "MissionPod.weapons": "Armement",
+    "MissionPod.astrometricsAndNavigation": "Astrométrique et Navigation",
+    "MissionPod.defensiveShieldEnhancement": "Amélioration du Bouclier défensif",
+    "MissionPod.emergencyRecovery": "Récupération d'urgence",
+    "MissionPod.fieldHospital": "Hopital de terrain",
+    "MissionPod.fleetCarrier": "Transport de Flotte",
+    "MissionPod.fleetCommandSupport": "Support de Commandement de la Flotte",
+    "MissionPod.mobileDrydock": "Cale seche mobile",
+    "MissionPod.warpPropulsionPod": "Module de distortion",
+
+    "MissionProfile.default.strategicAndDiplomatic": "Opérations diplomatiques et stratégiques",
+    "MissionProfile.default.pathfinderAndReconaissance": "Opérations de reconnaissance et d’exploration",
+    "MissionProfile.default.technicalTestBed": "plateforme d’essai techniqueP",
+    "MissionProfile.default.tactical": "Opérations tactiques",
+    "MissionProfile.default.scientificAndSurvey": "Opérations d’étude scientifique",
+    "MissionProfile.default.crisisAndEmergencyResponse": "Réponse aux situations d’urgence et de crise",
+    "MissionProfile.default.multiroleExplorer": "Explorateur polyvalent",
+    "MissionProfile.default.projectEscalante": "Projet Escalante",
+    "MissionProfile.default.battlecruiser": "Croiseur de bataille",
+    "MissionProfile.default.reserveFleet": "Flotte de réserve",
+    "MissionProfile.default.civilianMerchantMarine": "Marine marchande civile",
+    "MissionProfile.default.colonySupport": "Support de colonie",
+    "MissionProfile.default.entertainmentPleasureShip": "Vaisseau de plaisir / d'amusement",
+    "MissionProfile.default.espionageIntelligence": "Espionage / renseignement",
+    "MissionProfile.default.flagship": "Vaisseau Amiral",
+    "MissionProfile.default.logisticalQuartermaster": "Logistique / Quartier-maitre",
+    "MissionProfile.default.patrol": "Patrouille",
+    "MissionProfile.default.warship": "Vaisseau de guerre",
+
+    "MissionProfile.klingon.crisisAndEmergencyResponse": "Réaction et interception de crise",
+    "MissionProfile.klingon.multiroleExplorer": "Croiseur de baitaille multirole",
+    "MissionProfile.klingon.pathfinderAndReconaissance": "Opérations de reconnaissance et de renseignement",
+    "MissionProfile.klingon.scientificAndSurvey": "Opérations scientifiques et prospection",
+    "MissionProfile.klingon.strategicAndDiplomatic": "Opérations stratégiques et diplomatiques",
+    "MissionProfile.klingon.houseGuard": "Garde de Maison",
+    "MissionProfile.klingon.warship": "Vaisseau de guerre",
+
+    "NpcCharacterType.minorPolity": "Groupe Mineur",
+    "NpcCharacterType.rogueRuffianMercenary": "Voleurs, Ruffians et Mercenaires",
 
     "NpcType.minor.name": "PNJ Mineur",
 
@@ -952,22 +999,22 @@
     "Rank.chiefPettyOfficer.abbrev": "Chef",
 
     "Rank.pettyOfficer1stClass.name": "Maitre 1ère classe",
-    "Rank.pettyOfficer1stClass.abbrev": "M.",
+    "Rank.pettyOfficer1stClass.abbrev": "M. 1 ",
 
     "Rank.pettyOfficer2ndClass.name": "Maitre 2ème classe",
-    "Rank.pettyOfficer2ndClass.abbrev": "M.",
+    "Rank.pettyOfficer2ndClass.abbrev": "M. 2 ",
 
     "Rank.pettyOfficer3rdClass.name": "Maitre 3ème classe",
-    "Rank.pettyOfficer3rdClass.abbrev": "M",
+    "Rank.pettyOfficer3rdClass.abbrev": "M. 3 ",
 
     "Rank.crewman1stClass.name": "Membre d'équipage 1ère classe",
-    "Rank.crewman1stClass.abbrev": "M.E. ",
+    "Rank.crewman1stClass.abbrev": "M.E. 1",
 
     "Rank.crewman2ndClass.name": "Membre d'équipage 2ème classe",
-    "Rank.crewman2ndClass.abbrev": "M.E. ",
+    "Rank.crewman2ndClass.abbrev": "M.E. 2",
 
     "Rank.crewman3rdClass.name": "Membre d'équipage 3ème classe",
-    "Rank.crewman3rdClass.abbrev": "M.E. ",
+    "Rank.crewman3rdClass.abbrev": "M.E. 3",
 
     "Rank.sergeant.name": "Sergent",
     "Rank.sergeant.abbrev": "Ser.",
@@ -978,57 +1025,65 @@
     "Rank.private.name": "Soldat",
     "Rank.private.abbrev": "Sol.",
 
-    "Role.commandingOfficer": "COMMANDANT.",
+    "Role.commandingOfficer": "Commandant",
 
     "Role.commandingOfficer.description": "seulement. Le capitaine. Même s’il n’a pas le grade de capitaine, ses subordonnés l’appelleront ainsi. Chaque vaisseau doit avoir un commandant.",
     "Role.commandingOfficer.ability": "Le commandant peut dépenser 1 point de Détermination et conférer ce point à un personnage avec lequel il est en communication ; cette faculté n’a pas besoin d’être liée à un Idéal.",
 
-    "Role.executiveOfficer": "COMMANDANT EN SECOND.",
+    "Role.executiveOfficer": "Commandant en second",
 
     "Role.executiveOfficer.description": "Second dans la hiérarchie. Il est le premier conseiller du capitaine et il prend le commandement quand ce dernier ne peut pas assumer son rôle. S’il n’y en a pas à bord, un officier occupant d’autres fonctions sera désigné comme commandant en second. Il ne bénéficiera cependant pas des avantages liés à ce rôle. ",
     "Role.executiveOfficer.ability": "Quand un autre personnage en communication avec le second dépense 1 point  de Détermination, ce dernier peut en retour dépenser 3 points d’Impulsion (immédiat) et lui permettre de regagner le point de Détermination qu’il vient de dépenser.",
 
-    "Role.operationsManager": "CHEF DES OPÉRATIONS.",
+    "Role.operationsManager": "Chef des opérations",
 
     "Role.operationsManager.description": "Le chef des opérations gère et supervise toutes les opérations techniques se déroulant à bord ou impliquant le vaisseau, depuis le poste des opérations sur la passerelle ou en collaboration avec le chef-ingénieur (sur des vaisseaux plus petits, un officier peut remplir les deux rôles). Cela implique souvent d’assumer les fonctions d’un officier scientifique, s’il n’y en a pas parmi les officiers.",
     "Role.operationsManager.ability": "Quand le chef des opérations réussit une Tâche à l’aide des ordinateurs ou des détecteurs du vaisseau, ou en utilisant un tricordeur, il génère 1 point d’Impulsion bonus, qui ne peut être utilisé que pour l’Impulsion Obtention d’informations.",
 
-    "Role.chiefEngineer": "CHEF-INGÉNIEUR.",
+    "Role.chiefEngineer": "Chef Ingénieur",
 
     "Role.chiefEngineer.description": "Il est responsable de la bonne marche du navire et dirige le département ingénierie à bord.",
     "Role.chiefEngineer.ability": "Quand il est sur le navire, le personnage bénéficie toujours de l’Avantage « Département d’Ingénierie », représentant l’ensemble des ingénieurs et des techniciens du bord.",
 
-    "Role.chiefOfSecurity": "CHEF DE LA SÉCURITÉ.",
+    "Role.chiefOfSecurity": "Chef de la sécurité",
 
     "Role.chiefOfSecurity.description": "Le chef de la sécurité supervise le ser-vice du même nom. Il est responsable de la sécurité du navire et de l’équipage pendant les missions, des enquêtes disciplinaires et criminelles et de la protection des personnes importantes qui se trouvent à bord. Sur de nombreux vaisseaux, le chef de la sécurité se trouve au poste Tactique sur la passerelle.",
     "Role.chiefOfSecurity.ability": "Quand il est sur le navire, le chef de la sécurité bénéficie toujours de l’Avantage « Détachement de Sécurité », représentant l’ensemble du personnel de sécurité du bord.",
 
-    "Role.chiefMedicalOfficer": "MÉDECIN-CHEF.",
+    "Role.chiefMedicalOfficer": "Medecin - chef",
 
     "Role.chiefMedicalOfficer.description": "Responsable de la santé et du bien-être de l’équipage et des autres passagers, le médecin-chef, également appelé chirurgien de bord ou médecin de bord, est à la tête du département médical du navire. Il peut donner des ordres et des contrordres aux officiers du vaisseau quand leur santé est concernée.",
     "Role.chiefMedicalOfficer.ability": "Quand il est sur le navire, le médecin-chef bénéficie toujours de l’Avantage « Département médical », représentant l’ensemble du personnel médical de bord.",
 
-    "Role.scienceOfficer": "OFFICIER SCIENTIFIQUE.",
+    "Role.scienceOfficer": "Officier scientifique",
 
     "Role.scienceOfficer.description": "Il est chargé de conseiller le commandant sur tous les sujets scientifiques et d’émettre des hypothèses sur ce qui est inconnu. Tous les navires n’ont pas d’officier attitré à cette fonction parmi les cadres du vaisseau, et c’est souvent le chef des opérations qui s’en charge.",
     "Role.scienceOfficer.ability": "Quand l’officier scientifique réussit une Tâche à l’aide des ordinateurs ou des détecteurs du vaisseau, ou d’un tricordeur, il génère 1 point d’Impulsion bonus, qui ne peut être utilisé que pour l’Impulsion Obtention d’informations.",
 
-    "Role.flightController": "CONTRÔLEUR DE VOL.",
+    "Role.flightController": "Controleur de Vol",
 
     "Role.flightController.description": "Ce n’est pas une fonction typique parmi les officiers mais certains capitaines, en particulier ceux qui naviguent dans l’espace non cartographié, intègrent le timonier ou le contrôleur de vol le plus expérimenté dans leur équipe d’officiers.",
     "Role.flightController.ability": "Quand on lui demande d’analyser ou de réparer une technologie liée au vol ou à la propulsion, le contrôleur de vol peut utiliser sa Discipline de Pilotage à la place de l’Ingénierie.",
 
-    "Role.shipsCounselor": "CONSEILLER DU NAVIRE.",
+    "Role.shipsCounselor": "Conseiller du vaisseau",
 
     "Role.shipsCounselor.description": "Sur les vaisseaux plus gros et les bases stellaires, il est courant de trouver du personnel dédié au bien-être mental de l’équipage. Certains capitaines les tiennent en haute estime car leur formation et leurs conseils couvrent les domaines culturels et psychologiques, ce qui les rend exceptionnellement doués pour comprendre les humeurs et les intentions.",
     "Role.shipsCounselor.ability": "Après avoir réussi une Tâche visant à déterminer l’état émotionnel ou l’intention d’une créature vivante, le conseiller du navire gagne 1 point d’Impulsion bonus, qui ne peut être utilisé que pour l’Impulsion Obtention d’informations.",
 
-    "Role.communicationsOfficer": "OFFICIER DES COMMUNICATIONS.",
+    "Role.communicationsOfficer": "Officier des communications",
 
     "Role.communicationsOfficer.description": "Cette fonctionétait plus répandue aux débuts de Starfleet, et elle est occupée par des officiers dévoués, compétents en langues et en cryptographie et assistés des dernières technologies en matière de traduction et de décryptage. C’est un atout précieux quand le navire rencontre des cultures nouvelles ou hostiles.",
     "Role.communicationsOfficer.ability": "L’officier des communications ne tient pas compte de l’augmentation de difficulté d’une Tâche qu’il entreprend si elle est causée par une langue ou un codage inhabituel",
 
     "Role.admiral": "Amiral",
+
+    "Role.admiral.description": "Officiers supérieurs uniquement",
+    "Role.admiral.ability": "Choisissez 3 spécialisations supplémentaires, qui reflètent les zones d'expertise ou les sujets qui se rapportent au role d'Amiral. Au début de chaque mission, l'amiral choisit  une de ces trois spécialisations, et chaque personnage principal bénéficie de cette spécialisation supplémentaire pour la durée de la mission, grace a ses instructions et briefings.",
+
+    "Role.navigator": "Navigateur",
+
+    "Role.navigator.description": "Membre atypique du pont superieur, le navigateur est généralement choisi par le capitaine, en particulier dans les territoires non cartographiés, parmi les meilleurs pilotes du vaisseau",
+    "Role.navigator.ability": "Quand le navigateur doit analyser ou reparer une technologie liée au vol ou a la propulsion, il peut utiliser la discipline Pilotage au lieu d'Ingénierie",
 
     "SafetyEvaluationType.alwaysOk": "Toujours OK",
     "SafetyEvaluationType.yellowAlert": "Alerte Jaune",
@@ -1354,26 +1409,43 @@
     "StarSystem.common.primaryStar": "Etoile Primaire",
     "StarSystem.common.companionStar": "Etoile Binaire",
 
-    "Talent.ablativeArmor": "ARMURE ABLATIVE",
+    "Talent.ablativeArmor": "Armure ablative",
 
     "Talent.ablativeArmor.description": "La coque du vaisseau est recouverte d’une couche ablative qui se désagrège lentement lorsqu’elle est soumise à des températures extrêmes, comme lorsqu’elle essuie des tirs de torpilles ou d’armes à énergie. L’armure ablative protège alors le navire en dissipant l’énergie de ces projectiles. Ce revêtement doit être régulièrement remplacé. La Résistance du vaisseau augmente de +2.",
+    "Talent.ablativeArmor.soloDescription": "La coque du vaisseau est recouverte d’une couche ablative qui se désagrège lentement lorsqu’elle est soumise à des températures extrêmes, comme lorsqu’elle essuie des tirs de torpilles ou d’armes à énergie. L’armure ablative protège alors le navire en dissipant l’énergie de ces projectiles. Ce revêtement doit être régulièrement remplacé.",
 
-    "Talent.advancedSickbay": "INFIRMERIE SOPHISTIQUÉE",
+    "Talent.ablativeFieldProjector": "Projecteur de champ ablatif",
+
+    "Talent.ablativeFieldProjector.soloDescription": "Les émetteurs du vaisseau sont combinés à un projecteur de champ ablatif qui permet de partager le champ de gravitons avec un autre vaisseau à proximité. Des complications pourraient impliquer une panne du bouclier ou ubne chute d'énérgie dans les systèmes clés. ",
+
+    "Talent.adaptableEnergyWeapons": "Armement énergétique adaptable",
+
+    "Talent.adaptableEnergyWeapons.soloDescription": "Le système d'armement est amélioré par des émetteurs à multiparticules. Ces émetteurs permettent au vaisseau de modifier les capacités des armes à énergies pendant les tirs.  Cela pourrait creer un avantage certain lors des combats.",
+
+    "Talent.advancedEmergencyCrewHolograms": "Personnel holographique d'urgence avancé",
+
+    "Talent.advancedEmergencyCrewHolograms.soloDescription": "L'interieur du vaisseau est integralement équipé d'émetteurs holographiques, ainsi que certaines zones exterieures critiques, permettant à l'ordinateur de projeter les simulations de personnel durant les urgences. Il ne peuvent pas s'éloigner du vaisseau.",
+
+    "Talent.advancedSickbay": "Infirmerie sophistiquée",
 
     "Talent.advancedSickbay.soloDescription": "L’infirmerie du vaisseau est extrêmement bien équipée, et elle occupe une surface plus importante que de coutume pour un appareil de cette taille. Le vaisseau bénéficie de l’Avantage Infirmerie sophistiquée, qui s’applique à toutes les Tâches entreprises dans l’infirmerie et relevant des domaines médical et biologique. Si le Système Ordinateurs est neutralisé, cet Avantage est perdu.",
 
-    "Talent.advancedResearchFacilities": "ÉQUIPEMENT DE RECHERCHE SOPHISTIQUÉ",
+    "Talent.advancedResearchFacilities": "Equipement de recherche sophistiqué",
 
     "Talent.advancedResearchFacilities.description": "Le vaisseau possède des laboratoires supplémentaires et des infrastructures de recherche pérennes. L’équipage est donc libre d’étudier des phénomènes sur de longues périodes, et fourni ainsi quantité d’informations utiles. Lorsqu’un personnage entreprend une Tâche de recherche à bord, et qu’il est aidé par le vaisseau avec Ordinateurs + Science, il gagne une Impulsion bonus qu’il peut ensuite dépenser pour l’Obtention d’information.",
+    "Talent.advancedResearchFacilities.soloDescription": "Le vaisseau possède des laboratoires supplémentaires et des infrastructures de recherche pérennes. L’équipage est donc libre d’étudier des phénomènes sur de longues périodes, et fourni ainsi quantité d’informations utiles.",
 
-    "Talent.advancedSensorSuites": "DISPOSITIFS DE DÉTECTION AVANCÉS",
+    "Talent.advancedSensorSuites": "Dispositifs de détection avancés",
 
     "Talent.advancedSensorSuites.description": "Le vaisseau est équipé des détecteurs les plus sophistiqués et perfectionnés de la flotte. Lorsqu’un personnage entreprend une Tâche aidé des Détecteurs du navire, il peut réduire sa difficulté de –1, jusqu’à un minimum de 0. Ceci étant, les Détecteurs ne doivent pas être affectés par une Brèche.",
+    "Talent.advancedSensorSuites.soloDescription": "Le vaisseau est équipé des détecteurs les plus sophistiqués et perfectionnés de la flotte.",
 
-    "Talent.advancedShields": "BOUCLIERS AVANCÉS",
+    "Talent.advancedShields": "Boucliers avancés",
 
     "Talent.advancedShields.description": "Le vaisseau est équipé de boucliers de pointe. Ils utilisent une technologie que les autres cultures n’ont pas encore su développer, ou apportent simplement une meilleure protection pour une consommation d’énergie équivalente. La valeur de Boucliers maximale du vaisseau augmente de +5",
+    "Talent.advancedShields.soloDescription": "Le vaisseau est équipé de boucliers de pointe. Ils utilisent une technologie que les autres cultures n’ont pas encore su développer, ou apportent simplement une meilleure protection pour une consommation d’énergie équivalente.",
 
+    "Talent.advancedTransporters": "Transporteurs sophistiqués",
     "Talent.advisor": "CONSEILLER",
 
     "Talent.advisor.description": "Quand vous utilisez votre Commandement pour Aider un autre personnage, celui-ci peut relancer un d20.",

@@ -207,7 +207,7 @@
     "Home.talentsButton": "Visão Geral dos Talentos",
     "Home.tokenCreator": "Tokens",
 
-    "MilestonePage.instruction": "Selecione o tipo de modificação que você deseja aplicar a esse marco de história.",
+    "MilestonePage.instruction": " ",
 
     "MissionPodSelectionPage.text": "Certas estruturas espaciais podem ser equipadas com um único módulo de missão, escolhido da lista abaixo. Os talentos fornecidos pelo módulo não podem ser trocados normalmente, mas o módulo integral da missão (e todos os seus benefícios) pode ser trocado como se fosse um único talento.",
     "MissionPodSelectionPage.errorNoSelection": "Selecione um módulo de missão antes de continuar.",

@@ -13,7 +13,7 @@ const WorldViewThumbnail: React.FC<IWorldViewProperties> = ({world}) => {
             return (<div><img src="/static/img/planet-ClassC.webp" width="125px" height="125px" alt={world.worldClass.description} title={world.worldClass.description} /></div>);
         case WorldClass.D:
             if (world.diameter < 900) {
-                return (<div><img src="/static/img/planet-classD-Small.webp" width="125px" height="125px" alt={world.worldClass.description} title={world.worldClass.description} /></div>);
+                return (<div><img src="/static/img/planet-ClassD-Small.webp" width="125px" height="125px" alt={world.worldClass.description} title={world.worldClass.description} /></div>);
             } else {
                 return (<div><img src="/static/img/planet-classD.webp" width="125px" height="125px" alt={world.worldClass.description} title={world.worldClass.description} /></div>);
             }
