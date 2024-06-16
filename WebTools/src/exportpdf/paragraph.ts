@@ -1,4 +1,4 @@
-import { PDFFont, PDFPage, last } from "@cantoo/pdf-lib";
+import { PDFFont, PDFPage } from "@cantoo/pdf-lib";
 import { Column } from "./column";
 import { SimpleColor } from "../common/colour";
 import { XYLocation } from "../common/xyLocation";
@@ -180,7 +180,7 @@ export class Paragraph {
     }
 
     append(text: string|number, font: FontSpecification, colour?: SimpleColor) {
-        this.lines = this.createLines("" + text, font, new FontSpecification(this.symbolFont, font.size), this.currentLine(), this.page, colour);
+        this.lines = this.createLines("" + text, font, this.currentLine(), this.page, colour);
     }
 
     write(colour: SimpleColor = SimpleColor.from("#000000")) {
@@ -222,7 +222,7 @@ export class Paragraph {
         }
     }
 
-    private createLines(text: string, fontSpec: FontSpecification, symbolStyle: FontSpecification, lines: Line|(Line[]), page: PDFPage, colour?: SimpleColor) {
+    private createLines(text: string, fontSpec: FontSpecification, lines: Line|(Line[]), page: PDFPage, colour?: SimpleColor) {
         let result: Line[] = [];
         if (lines instanceof Line) {
             result.push(lines as Line);
@@ -242,7 +242,7 @@ export class Paragraph {
             let parts = this.containsDelta(word) ? this.separateDeltas(word) : [word];
             let blocks = parts.map(p => {
                 if (p === CHALLENGE_DICE_NOTATION) {
-                    return TextBlock.create("A", symbolStyle, false, colour);
+                    return TextBlock.create("A", new FontSpecification(this.symbolFont, fontSpec.size), false, colour);
                 } else {
                     return TextBlock.create(p, fontSpec, false, colour);
                 }
@@ -259,13 +259,13 @@ export class Paragraph {
                     result.push(line);
 
                     let parts = this.separateDeltas(words[i]); // get the original word without the leading space
-                    line.addAll(parts.map(p => {
+                    parts.map(p => {
                         if (p === CHALLENGE_DICE_NOTATION) {
-                            return TextBlock.create("A", symbolStyle, false, colour);
+                            return TextBlock.create("A", new FontSpecification(this.symbolFont, fontSpec.size), false, colour);
                         } else {
                             return TextBlock.create(p, fontSpec, false, colour);
                         }
-                    }));
+                    }).forEach(p => line.append(p));
                 } else {
                     break;
                 }
