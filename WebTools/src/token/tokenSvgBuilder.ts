@@ -3,7 +3,8 @@ import ExtrasCatalog from "./model/extrasCatalog";
 import { ExtraCategory } from "./model/extrasTypeEnum";
 import EyeBrowCatalog from "./model/eyeBrowCatalog";
 import EyeCatalog from "./model/eyeCatalog";
-import FacialHairCatalog, { FacialHairPlacement } from "./model/facialHairCatalog";
+import FacialHairCatalog from "./model/facialHairCatalog";
+import { FacialHairCategory } from "./model/facialHairEnum";
 import HairCatalog, { HairElement } from "./model/hairCatalog";
 import HeadCatalog from "./model/headCatalog";
 import MouthCatalog from "./model/mouthCatalog";
@@ -52,9 +53,10 @@ export class TokenSvgBuilder {
                             HeadCatalog.instance.getHead(token) +
                             ProstheticCatalog.instance.getProsthetic(token, ProstheticPlacement.BaseHead) +
                             NasoLabialFoldCatalog.instance.getNasoLabialFold(token) +
-                            FacialHairCatalog.instance.getFacialHair(token, FacialHairPlacement.Chin) +
+                            FacialHairCatalog.instance.getFacialHair(token, FacialHairCategory.Shadow) +
+                            FacialHairCatalog.instance.getFacialHair(token, FacialHairCategory.Beard) +
                             MouthCatalog.instance.getMouth(token) +
-                            FacialHairCatalog.instance.getFacialHair(token, FacialHairPlacement.UpperLip) +
+                            FacialHairCatalog.instance.getFacialHair(token, FacialHairCategory.Moustache) +
                             EyeCatalog.instance.getEyes(token) +
                             NoseCatalog.instance.getNose(token) +
                             EyeBrowCatalog.instance.getEyeBrows(token) +

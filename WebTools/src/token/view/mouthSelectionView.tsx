@@ -8,8 +8,8 @@ import store from "../../state/store";
 import { setTokenFacialHairTypes, setTokenLipstickColor, setTokenMouthType } from "../../state/tokenActions";
 import ColorSelection from "./colorSelection";
 import SpeciesRestrictions from "../model/speciesRestrictions";
-import FacialHairCatalog, { FacialHairPlacement } from "../model/facialHairCatalog";
-import { FacialHairType } from "../model/facialHairEnum";
+import FacialHairCatalog from "../model/facialHairCatalog";
+import { FacialHairCategory, FacialHairType } from "../model/facialHairEnum";
 
 interface IMouthSelectionViewProperties extends WithTranslation {
     token: Token;
@@ -45,20 +45,28 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
         const { t, token } = this.props;
         if (SpeciesRestrictions.isFacialHairSupportedFor(token.species)) {
             return (<>
+                <p className="mt-4">{t('TokenCreator.section.mouth.shadow')}:</p>
+                <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
+                {FacialHairCatalog.instance.getSwatches(token, FacialHairCategory.Shadow).map(s => <SwatchButton svg={s.svg} title={s.name}
+                    onClick={() => this.addFacialHairType(token, s.id, FacialHairCategory.Shadow)} active={this.getShadowType(token) === s.id}
+                    token={token}
+                    key={'facial-hair-shadow-swatch-' + s.id }/>)}
+                </div>
+
                 <p className="mt-4">{t('TokenCreator.section.mouth.moustache')}:</p>
                 <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-                {FacialHairCatalog.instance.getSwatches(token, FacialHairPlacement.UpperLip).map(s => <SwatchButton svg={s.svg} title={s.name}
-                    onClick={() => this.addFacialHairType(token, s.id, FacialHairPlacement.UpperLip)} active={this.getMoustacheType(token) === s.id}
+                {FacialHairCatalog.instance.getSwatches(token, FacialHairCategory.Moustache).map(s => <SwatchButton svg={s.svg} title={s.name}
+                    onClick={() => this.addFacialHairType(token, s.id, FacialHairCategory.Moustache)} active={this.getMoustacheType(token) === s.id}
                     token={token}
-                    key={'facial-hair-swatch-' + s.id }/>)}
+                    key={'facial-hair-moustache-swatch-' + s.id }/>)}
                 </div>
 
                 <p className="mt-4">{t('TokenCreator.section.mouth.beard')}:</p>
                 <div className="d-flex flex-wrap" style={{gap: "0.5rem"}}>
-                {FacialHairCatalog.instance.getSwatches(token, FacialHairPlacement.Chin).map(s => <SwatchButton svg={s.svg} title={s.name}
-                    onClick={() => this.addFacialHairType(token, s.id, FacialHairPlacement.Chin)} active={this.getBeardTypes(token).indexOf(s.id) >= 0}
+                {FacialHairCatalog.instance.getSwatches(token, FacialHairCategory.Beard).map(s => <SwatchButton svg={s.svg} title={s.name}
+                    onClick={() => this.addFacialHairType(token, s.id, FacialHairCategory.Beard)} active={this.getBeardTypes(token).indexOf(s.id) >= 0}
                     token={token} size="lg"
-                    key={'facial-hair-swatch-' + s.id }/>)}
+                    key={'facial-hair-beard-swatch-' + s.id }/>)}
                 </div>
             </>);
         } else {
@@ -66,15 +74,18 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
         }
     }
 
-    addFacialHairType(token: Token, type: FacialHairType, placement: FacialHairPlacement) {
+    addFacialHairType(token: Token, type: FacialHairType, category: FacialHairCategory) {
         let newTypes = [];
         if (type !== FacialHairType.None) {
-            placement = FacialHairCatalog.instance.getPlacementFor(type);
+            category = FacialHairCatalog.instance.getCategoryForType(type);
         }
         token.facialHairType.filter(t => {
-            let p = FacialHairCatalog.instance.getPlacementFor(t);
-            return (placement === FacialHairPlacement.UpperLip && p === FacialHairPlacement.Chin) ||
-                (placement === FacialHairPlacement.Chin && p === FacialHairPlacement.UpperLip);
+            let p = FacialHairCatalog.instance.getCategoryForType(t);
+            if (category === FacialHairCategory.MoustacheAndBeard) {
+                return p === FacialHairCategory.Shadow;
+            } else {
+                return p !== category && p !== FacialHairCategory.MoustacheAndBeard;
+            }
         }).forEach(t => newTypes.push(t));
 
         if (type !== FacialHairType.None) {
@@ -83,13 +94,19 @@ class MouthSelectionView extends React.Component<IMouthSelectionViewProperties, 
         store.dispatch(setTokenFacialHairTypes(newTypes));
     }
 
+
+    getShadowType(token: Token) {
+        let type = token.facialHairType.filter(f => FacialHairCatalog.instance.getCategoryForType(f) === FacialHairCategory.Shadow);
+        return type?.length ? type[0] : FacialHairType.None;
+    }
+
     getMoustacheType(token: Token) {
-        let type = token.facialHairType.filter(f => FacialHairCatalog.instance.getPlacementFor(f) === FacialHairPlacement.UpperLip);
+        let type = token.facialHairType.filter(f => FacialHairCatalog.instance.getCategoryForType(f) === FacialHairCategory.Moustache);
         return type?.length ? type[0] : FacialHairType.None;
     }
 
     getBeardTypes(token: Token) {
-        let types = token.facialHairType.filter(f => FacialHairCatalog.instance.getPlacementFor(f) !== FacialHairPlacement.UpperLip);
+        let types = token.facialHairType.filter(f => FacialHairCatalog.instance.getCategoryForType(f) === FacialHairCategory.Beard || FacialHairCatalog.instance.getCategoryForType(f) === FacialHairCategory.MoustacheAndBeard);
         return types?.length ? types : [ FacialHairType.None ];
     }
 
