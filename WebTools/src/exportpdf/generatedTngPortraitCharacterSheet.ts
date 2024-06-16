@@ -1,12 +1,13 @@
 import { PDFDocument, PDFForm, PDFPage } from "@cantoo/pdf-lib";
 import { XYLocation } from "../common/xyLocation";
 import { BaseTNGGeneratedCharacterSheet } from "./baseTngGeneratedCharacterSheet";
-import { Column, SheetTag } from "./icharactersheet";
+import { SheetTag } from "./icharactersheet";
 import { Character } from "../common/character";
 import { SimpleColor } from "../common/colour";
 import i18next from "i18next";
 import { CharacterSerializer } from "../common/characterSerializer";
 import { TalentsHelper } from "../helpers/talents";
+import { Column } from "./column";
 
 export class GeneratedTngPortraitCharacterSheet extends BaseTNGGeneratedCharacterSheet {
 

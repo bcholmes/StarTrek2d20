@@ -1,7 +1,7 @@
 import { PDFDocument, PDFPage } from "@cantoo/pdf-lib";
 import { SimpleColor } from "../common/colour";
 import { XYLocation } from "../common/xyLocation";
-import { Column, SheetTag } from "./icharactersheet";
+import { SheetTag } from "./icharactersheet";
 import i18next from "i18next";
 import { Character } from "../common/character";
 import { Construct } from "../common/construct";
@@ -11,6 +11,7 @@ import { Paragraph } from "./paragraph";
 import { RolesHelper } from "../helpers/roles";
 import { BorgImplants } from "../helpers/borgImplant";
 import { BaseTNGGeneratedCharacterSheet } from "./baseTngGeneratedCharacterSheet";
+import { Column } from "./column";
 
 export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterSheet {
 

@@ -1,7 +1,7 @@
 import { PDFDocument, PDFForm, PDFPage } from "@cantoo/pdf-lib";
 import { SimpleColor } from "../common/colour";
 import { BaseNonForm2eSheet } from "./generated2eBaseSheet";
-import { Column, SheetTag } from "./icharactersheet";
+import { SheetTag } from "./icharactersheet";
 import i18next from "i18next";
 import { makeKey } from "../common/translationKey";
 import { Attribute } from "../helpers/attributes";
@@ -10,6 +10,7 @@ import { Character } from "../common/character";
 import { Paragraph } from "./paragraph";
 import { FontSpecification } from "./fontSpecification";
 import { Construct } from "../common/construct";
+import { Column } from "./column";
 
 export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
 

@@ -19,13 +19,14 @@ import { CareersHelper } from './careers';
 import { TracksHelper } from './tracks';
 import { localizedFocus } from '../components/focusHelper';
 import { XYLocation } from '../common/xyLocation';
-import { Column, ICharacterSheet, SheetTag } from '../exportpdf/icharactersheet';
+import { ICharacterSheet, SheetTag } from '../exportpdf/icharactersheet';
 import { BasicGeneratedHalfPageCharacterSheet } from '../exportpdf/generated2eHalfPageSheet';
 import { FontSpecification } from '../exportpdf/fontSpecification';
 import { Paragraph } from '../exportpdf/paragraph';
 import { LandscapeGeneratedCharacterSheet } from '../exportpdf/landscapeGeneratedCharacterSheet';
 import { Generated2eStarshipSheet } from '../exportpdf/generated2eStarshipSheet';
 import { GeneratedTngPortraitCharacterSheet } from '../exportpdf/generatedTngPortraitCharacterSheet';
+import { Column } from '../exportpdf/column';
 
 
 abstract class BasicSheet implements ICharacterSheet {

@@ -7,7 +7,7 @@ import { BasicGeneratedSheet } from "./generatedsheet";
 import { Skill } from "../helpers/skills";
 import { Attribute } from "../helpers/attributes";
 import { CareerEventsHelper } from "../helpers/careerEvents";
-import { Column } from "./icharactersheet";
+import { Column } from "./column";
 import { XYLocation } from "../common/xyLocation";
 import i18next from "i18next";
 import { getCurrentLanguageCode } from "../i18n/config";

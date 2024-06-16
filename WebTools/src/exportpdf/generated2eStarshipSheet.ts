@@ -5,13 +5,14 @@ import { PDFDocument, PDFForm, PDFPage } from "@cantoo/pdf-lib";
 import { Construct } from "../common/construct";
 import { Starship } from "../common/starship";
 import { XYLocation } from "../common/xyLocation";
-import { Column, SheetTag } from "./icharactersheet";
+import { SheetTag } from "./icharactersheet";
 import { Paragraph } from "./paragraph";
 import { FontSpecification } from "./fontSpecification";
 import { SimpleColor } from "../common/colour";
 import { System } from "../helpers/systems";
 import { Department } from "../helpers/departments";
 import { TALENT_NAME_MISSION_POD, TalentsHelper } from "../helpers/talents";
+import { Column } from "./column";
 
 export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 

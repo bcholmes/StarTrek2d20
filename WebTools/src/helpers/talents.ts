@@ -28,8 +28,6 @@ export const TALENT_NAME_WISDOM_OF_YEARS = "Wisdom of Years";
 export const TALENT_NAME_BRAK_LUL = "Brak’lul";
 export const TALENT_NAME_MISSION_POD = "Mission Pod";
 
-export const CHALLENGE_DICE_NOTATION = "[D]";
-
 enum TalentCategory {
     General,
     Career,

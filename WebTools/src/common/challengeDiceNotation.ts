@@ -1,0 +1,1 @@
+export const CHALLENGE_DICE_NOTATION = "[D]";

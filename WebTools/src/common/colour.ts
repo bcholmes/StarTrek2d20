@@ -61,7 +61,7 @@ export class SimpleColor {
         }
 
         if (hex.length !== 6) {
-            return null;
+            return undefined;
         } else {
             let red = parseInt(hex.substring(0, 2), 16);
             let green = parseInt(hex.substring(2, 4), 16);

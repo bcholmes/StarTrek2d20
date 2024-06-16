@@ -9,6 +9,7 @@ export class TextBlock {
     height: number;
     width: number;
     colour?: SimpleColor;
+    descender: number;
 
     static create(text: string, fontSpec: FontSpecification, descender: boolean|number = false, colour?: SimpleColor) {
 
@@ -30,6 +31,7 @@ export class TextBlock {
         textBlock.font = fontSpec.font;
         textBlock.fontSize = fontSpec.size;
         textBlock.colour = colour;
+        textBlock.descender = weight;
         return textBlock;
     }
 
