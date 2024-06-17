@@ -12,6 +12,14 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240616</b>
+                <ul>
+                    <li>I tracked down a layout bug I would periodically see on the 2e Starship sheet, where the
+                        talents wouldn't quite render correctly.
+                    </li>
+                    <li>Minor token updates</li>
+                    <li>Translations!</li>
+                </ul>
                 <b>v1.240615</b>
                 <ul>
                     <li>A handful of mostly cosmetic changes.</li>
