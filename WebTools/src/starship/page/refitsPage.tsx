@@ -11,6 +11,8 @@ import { addStarshipRefit, deleteStarshipRefit, nextStarshipWorkflowStep } from 
 import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
+import { useTranslation } from "react-i18next";
+import ReactMarkdown from "react-markdown";
 
 interface IRefitPageProperties {
     starship: Starship;
@@ -18,44 +20,42 @@ interface IRefitPageProperties {
     refitCount: number;
 }
 
-class RefitPage extends React.Component<IRefitPageProperties, {}> {
-    render() {
-        return (<div className="page container ms-0">
-            <ShipBuildingBreadcrumbs />
-            <Header>Refits</Header>
-            <p>
-                Ships are improved over time. Every ten years from the date of launch, a ship receives a refit, which
-                improves the ship's systems.
-            </p>
+const RefitPage: React.FC<IRefitPageProperties> = ({starship, refitCount, workflow}) => {
 
-            <p>You have {(this.props.refitCount === 1) ? " one point " : (" " + this.props.refitCount + " points ")} to allocate.</p>
+    const { t } = useTranslation();
 
-            <Refits refits={this.props.starship.refits} points={this.props.refitCount} starship={this.props.starship}
-                        onIncrease={(s) => { this.addRefit(s)} } onDecrease={(s) => { this.removeRefit(s); } }/>
-
-            <div className="text-end">
-                <Button onClick={() => this.nextPage()}>Next</Button>
-            </div>
-        </div>);
-    }
-
-    addRefit(system: System) {
+    const addRefit = (system: System) => {
         store.dispatch(addStarshipRefit(system));
     }
 
-    removeRefit(system: System) {
+    const removeRefit = (system: System) => {
         store.dispatch(deleteStarshipRefit(system));
     }
 
-    nextPage() {
-        if (this.props.starship.refits.length !== this.props.starship.numberOfRefits) {
+    const nextPage = () => {
+        if (starship.refits.length !== starship.numberOfRefits) {
             Dialog.show("Please choose all refits.");
         } else {
-            let step = this.props.workflow.peekNextStep();
+            let step = workflow.peekNextStep();
             store.dispatch(nextStarshipWorkflowStep());
             Navigation.navigateToPage(step.page);
         }
     }
+
+
+    return (<div className="page container ms-0">
+        <ShipBuildingBreadcrumbs />
+        <Header>{t('Construct.other.refits')}</Header>
+
+        <ReactMarkdown>{t('StarshipRefits.instruction_one', {count: refitCount})}</ReactMarkdown>
+
+        <Refits refits={starship.refits} points={refitCount} starship={starship}
+                    onIncrease={(s) => { addRefit(s)} } onDecrease={(s) => { removeRefit(s); } }/>
+
+        <div className="text-end">
+            <Button onClick={() => nextPage()}>{t('Common.button.next')}</Button>
+        </div>
+    </div>);
 }
 
 function mapStateToProps(state, ownProps) {

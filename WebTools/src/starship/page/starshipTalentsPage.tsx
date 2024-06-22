@@ -13,6 +13,7 @@ import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
 import { StarshipTalentSelectionList } from "../view/starshipTalentSelection";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { useTranslation } from "react-i18next";
+import ReactMarkdown from "react-markdown";
 
 interface ISimpleStarshipPageProperties {
     starship: Starship;
@@ -43,7 +44,7 @@ const StarshipTalentsPage: React.FC<ISimpleStarshipPageProperties> = ({starship,
     return (<div className="page container ms-0">
         <ShipBuildingBreadcrumbs />
         <Header>{t('Page.title.starshipTalentSelection')}</Header>
-        <p>Select {starship.freeTalentSlots} {(starship.freeTalentSlots === 1) ? ' talent ' : ' talents '} for your ship.</p>
+        <ReactMarkdown>{t('StarshipTalentSelection.instruction_one', {count: starship.freeTalentSlots})}</ReactMarkdown>
         {starship.freeTalentSlots > 0
             ? (<StarshipTalentSelectionList
                 points={starship.freeTalentSlots}

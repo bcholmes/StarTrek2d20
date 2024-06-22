@@ -21,6 +21,7 @@ import { Track } from "../../helpers/trackEnum";
 import Governments, { Polity } from "../../helpers/governments";
 import { Era } from "../../helpers/eras";
 import AgeHelper from "../../helpers/age";
+import { localizedFocus } from "../../components/focusHelper";
 
 const recreationSkills: { [type: number ]: string[] } = {
 
@@ -447,6 +448,8 @@ export class NpcGenerator {
         let gender = undefined;
         if (specialization.id === Specialization.TalarianOfficer || specialization.id === Specialization.TalarianWarrior) {
             gender = "Male";
+        } else if (specialization.id === Specialization.QowatMilat) {
+            gender = "Female";
         }
 
         let {name, pronouns} = NameGenerator.instance.createName(nameSpecies, gender);
@@ -514,6 +517,8 @@ export class NpcGenerator {
                 if (specialization.id === Specialization.RomulanSenator) {
                     character.type = CharacterType.Civilian;
                     character.educationStep = new EducationStep(Track.PoliticianOrBureaucrat);
+                } else if (specialization.id === Specialization.QowatMilat) {
+                    character.type = CharacterType.Civilian;
                 } else {
                     character.type = CharacterType.AlliedMilitary;
                     character.typeDetails = new AlliedMilitaryDetails(AllyHelper.instance.findOption(AlliedMilitaryType.RomulanStarEmpire), "Romulan");
@@ -547,11 +552,11 @@ export class NpcGenerator {
                 }
                 break;
             case NpcCharacterType.Ferengi:
-                if (specialization.id === Specialization.FerengiMerchant) {
-                    character.type = CharacterType.Civilian;
-            } else {
+                if (specialization.id === Specialization.FerengiDaiMon) {
                     character.type = CharacterType.AlliedMilitary;
                     character.typeDetails = new AlliedMilitaryDetails(AllyHelper.instance.findOption(AlliedMilitaryType.Other), "Ferengi");
+                } else {
+                    character.type = CharacterType.Civilian;
                 }
                 break;
             default:
@@ -715,6 +720,7 @@ export class NpcGenerator {
 
                 if (focuses?.length) {
                     let focus = focuses[Math.floor(Math.random() * focuses.length)];
+                    focus = localizedFocus(focus);
                     if (character.focuses.indexOf(focus) < 0) {
                         character.addFocus(focus);
                         done = true;

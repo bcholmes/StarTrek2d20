@@ -12,6 +12,7 @@ import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
 import { useTranslation } from "react-i18next";
+import ReactMarkdown from "react-markdown";
 
 interface IMissionProfileTalentSelectionPageProperties {
     starship: Starship;
@@ -57,9 +58,7 @@ const MissionProfileTalentSelectionPage: React.FC<IMissionProfileTalentSelection
     return (<div className="page container ms-0">
         <ShipBuildingBreadcrumbs />
         <Header>{t('Page.title.missionProfileTalentSelection')}</Header>
-        <p>
-            Choose 1 talent from the list of talents associated with the mission profile.
-        </p>
+        <ReactMarkdown>{t('MissionProfileTalentSelection.instruction')}</ReactMarkdown>
         <SingleTalentSelectionList
             talents={getTalents()}
             initialSelection={starship.profileTalent}

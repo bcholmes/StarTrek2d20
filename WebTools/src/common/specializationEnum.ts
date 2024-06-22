@@ -27,6 +27,7 @@ export enum Specialization {
     FerengiDaiMon,
     FerengiLiquidator,
     FerengiEliminator,
+    FerengiBartender,
 
     CardassianSoldier,
     CardassianGul,
@@ -34,6 +35,7 @@ export enum Specialization {
     RomulanCenturion,
     RomulanTalShiar,
     RomulanSenator,
+    QowatMilat,
 
     SonaCommandOfficer,
     TalarianWarrior,

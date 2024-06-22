@@ -80,7 +80,7 @@ const FocusCommandRandomTable = () => {
             case 14:
                 return "Rhetoric";
             case 15:
-                return "Starfleet Protocol";
+                return "Starfleet Protocols";
             case 16:
                 return "Station Operations";
             case 17:

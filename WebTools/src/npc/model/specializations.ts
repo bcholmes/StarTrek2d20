@@ -602,6 +602,25 @@ export class Specializations {
                     "I won't preside over the demise of Ferengi civilization! The line has to be drawn here! This far, and no further!",
                     "There's nothing beyond greed! Greed is the purest and most noble of emotions!"
                 ], 1.0),
+            new SpecializationModel(Specialization.FerengiBartender, NpcCharacterType.Ferengi, "Bartender",
+                [Attribute.Control, Attribute.Daring, Attribute.Presence],
+                Skill.Command,
+                [
+                    "Fine Spirits", "Entertaining", "Gambling", "Bartending", "Listening"
+                ],
+                [
+                    "Alcohol interaction with different species", "Rare Vintages", "Alcohol Importing",
+                    "Holosuites", "Accounting"
+                ],
+                [
+                    "I have a dream. A dream that one day all people, Human, Jem'Hadar, Ferengi, Cardassians, will stand together in peace around my dabo tables.",
+                    "I did expand my simple bar in 21 franchises across the Alpha Quadrant, and somehow, I remain humble.",
+                    "If you don't get back to work this instant, you're going to have more time off than you know what to do with.",
+                    "Employees have no right to question the management's decisions.",
+                    "Don't call me barkeep. I'm not a barkeep. I'm your host, the proprietor. A sympathetic ear to the wretched souls who pass through these portals.",
+                    "The bartender's life is a lonely one.",
+                    "Sometimes a person will tell their bartender things they'll never tell their doctor."
+                ], 1.0),
             new SpecializationModel(Specialization.RomulanSenator, NpcCharacterType.RomulanEmpire, "Romulan Senator",
                 [Attribute.Control, Attribute.Reason, Attribute.Insight],
                 Skill.Command,
@@ -664,6 +683,24 @@ export class Specializations {
                     "Silent Minds, Vocal Actions",
                     "Pawns in the Game of Secrets",
                     "Silence! I've been stabbing commanders in the back since before your mother killed her first traitor."
+                ],
+                0.7, [ Species.Romulan ]),
+            new SpecializationModel(Specialization.QowatMilat, NpcCharacterType.RomulanEmpire, "Qowat Milat",
+                [Attribute.Control, Attribute.Fitness, Attribute.Insight],
+                Skill.Security,
+                [
+                    "Acrobatics", "Bladed Weapons", "Hand-to-Hand Combat", "Qowat Milat Teachings", "Vigilance", "Pledges"
+                ],[
+                    "Absolute Candor", "Stealth", "Close Combat Tactics", "Assessing Weakness"
+                ], [
+                    "A promise is a prison, my friend. Do not make yourself another's jailer.",
+                    "I have bound myself to this person as qalankhkai. Anyone who threatens them will be choosing to die!",
+                    "Please, my friend, choose to live...",
+                    "My blade is pledged to defend you.",
+                    "I decline to be released from my pledge.",
+                    "If you find yourself at the wrong end of a Qowat Milat sword, it's pretty easy to see that your current path is over for you. You either move on to a new path and live, or you stay and die.",
+                    "The pledge I made to you is stronger than some diplomatic credential.",
+                    "I won't need a few minutes."
                 ],
                 0.7, [ Species.Romulan ]),
             new SpecializationModel(Specialization.CardassianSoldier, NpcCharacterType.Cardassian, "Cardassian Soldier",
