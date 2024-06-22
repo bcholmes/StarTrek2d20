@@ -57,6 +57,7 @@
 
     "TokenCreator.section.mouth.shape": "Forme de la Bouche",
     "TokenCreator.section.mouth.colour": "Couleur des Lèvres",
+    "TokenCreator.section.mouth.shadow": "Ombrage",
     "TokenCreator.section.mouth.moustache": "Moustache",
     "TokenCreator.section.mouth.beard": "Barbe",
 
@@ -540,6 +541,8 @@
     "Page.title.smallCraftStats": "Navette",
     "Page.title.soloCareerLength": "Durée de carrière",
     "Page.title.soloConstructType": "Selection d'Outil",
+    "Page.title.soloEarlyOutlook": "Jeunesse",
+    "Page.title.soloEarlyOutlookDetails": "Détails de jeunesse",
     "Page.title.soloEducationType": "Type d'éducation",
     "Page.title.soloEducation": "Education",
     "Page.title.soloFinishingTouches": "Touches Finales",
@@ -1225,7 +1228,7 @@
 
     "Spaceframe.ambassador": "Classe Ambassador",
     "Spaceframe.archer": "Classe Archer",
-    "Spaceframe.california": "Class California",
+    "Spaceframe.california": "Classe California",
     "Spaceframe.cardenas": "Classe Cardenas",
     "Spaceframe.centaur": "Classe Centaur",
     "Spaceframe.constellation": "Classe Constellation",
@@ -1289,6 +1292,7 @@
     "Specialization.admiral": "Amiral",
     "Specialization.admin": "Yeoman",
     "Specialization.child": "Enfant",
+    "Specialization.civilianDoctor": "Médecin",
     "Specialization.conn": "Pilote",
     "Specialization.counselor": "Conseiller",
     "Specialization.civilianDoctor": "Médecin",
@@ -1306,6 +1310,7 @@
     "Specialization.medicalDoctor": "Médecin",
     "Specialization.nurse": "Infirmier",
     "Specialization.scienceTech": "Technicien Scientifique",
+    "Specialization.scientist": "Scientifique",
     "Specialization.security": "Sécurité",
     "Specialization.starfleetScientist": "Scientifique",
 
@@ -1781,7 +1786,7 @@
 
     "Talent.interrogation.description": "Au cours d’un conflit social, quand vous réussissez à obliger quelqu’un à vous révéler des informations, vous bénéficiez d’1 point d’Impulsion bonus, que vous ne pourrez dépenser que pour l’Obtention d’informations.",
 
-    "Talent.inTheNickOfTime": "JUSTE À TEMPS",
+    "Talent.inTheNickOfTime": "Juste à temps",
 
     "Talent.inTheNickOfTime.description": "Quand vous réussissez une Tâche d’Ingénierie ou de Science dans le cadre d’une Tâche étendue, vous bénéficiez d’un Effort supplémentaire pour chaque Effet obtenu.",
 
@@ -2020,7 +2025,7 @@
     "UniformEra.ferengi": "Ferengi",
     "UniformEra.enterprise": "Enterprise",
     "UniformEra.jemHadar": "Jem'Hadar",
-    "UniformEra.klingon": "Klingon (armure",
+    "UniformEra.klingon": "Klingon (armure)",
     "UniformEra.lowerDecks": "Lower Decks",
     "UniformEra.monsterMaroon": "La colère de Khan",
     "UniformEra.nextGeneration": "The Next Generation",

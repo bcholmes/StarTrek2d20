@@ -1336,6 +1336,7 @@
     "Specialization.admiral": "Almirante",
     "Specialization.admin": "Terrateniente",
     "Specialization.child": "Niño",
+    "Specialization.civilianDoctor": "Médico",
     "Specialization.conn": "Piloto",
     "Specialization.counselor": "Consejero",
     "Specialization.civilianDoctor": "Médico",
@@ -1353,6 +1354,7 @@
     "Specialization.medicalDoctor": "Médico",
     "Specialization.nurse": "Enfermera",
     "Specialization.scienceTech": "Ténico de Ciencias",
+    "Specialization.scientist": "Científico",
     "Specialization.security": "Seguridad",
     "Specialization.starfleetScientist": "Científico",
 

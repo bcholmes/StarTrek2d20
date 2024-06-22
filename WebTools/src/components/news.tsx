@@ -12,6 +12,10 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240621</b>
+                <ul>
+                    <li>Add translation to a few pages that weren't translating.</li>
+                </ul>
                 <b>v1.240616</b>
                 <ul>
                     <li>I tracked down a layout bug I would periodically see on the 2e Starship sheet, where the
