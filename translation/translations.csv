@@ -250,6 +250,7 @@ MissionPodSelectionPage.text,"Certain spaceframes have the ability to be fitted 
 MissionPodSelectionPage.errorNoSelection,Please select a mission pod before proceeding.,,Bitte wählen Sie ein Missionmodul um fortzufahren.,"Selecciona un módulo de misión antes de continuar, por favor.",Sélectionnez un module de mission avant de continuer SVP,,Selecione um módulo de missão antes de continuar.
 MissionProfileSelectionPage.text,"A mission profile is what makes one starship different from another in her same class. It determines the specialized equipment that is installed before venturing into the unknown, the priority in personnel that Starfleet gives the vessel, and its overall mission goal. All spaceframes have a mission profile.",,"Das Missionsprofil ist der entscheidende Punkt, in dem sich ein Schiff einer Klasse von seinen Schwesterschiffen unterscheidet. Das Profil bestimmt, wie das Raumschiff ausgestattet ist, welche Einrichtungen und welches Personal ihm zugewiesen werden und welche Art von Operationen von dem Schiff erwartet werden. Alle Schiffe haben ein Missionsprofil.","El perfil de misión es lo que diferencia a una nave estelar de otra de su misma clase. Determina el equipo especializado que se instala antes de aventurarse hacia lo desconocido, la prioridad de personal que la Flota Estelar proporciona a la nave y el objetivo general de su misión. Todas las plantillas tienen un perfil de misión.","Un profil de mission est ce qui différencie un vaisseau d'un autre de sa même classe. Il détermine l'équipement spécialisé qui est installé avant de s'aventurer dans l'inconnu, la priorité en termes de personnel que Starfleet accorde au navire et l'objectif global de sa mission. Toutes les vaisseaux ont un profil de mission.",,"Um perfil de missão é o que diferencia uma nave estelar de outra de sua mesma classe. Ele determina o equipamento especializado instalado antes de se aventurar no desconhecido, a prioridade de pessoal que a Frota Estelar concede à nave e o objetivo geral da missão. Todas as estruturas espaciais têm um perfil de missão."
 MissionProfileSelectionPage.errorNoSelection,Please select a mission profile before proceeding.,,Bitte wählen Sie ein Missionsprofil um fortzufahren.,"Selecciona un perfil de misión antes de continuar, por favor.",Selectionnez un profil de mission avant de continuer SVP,,Selecione um perfil de missão antes de continuar.
+MissionProfileTalentSelection.instruction,Choose 1 talent from the list of talents associated with the mission profile.,,,,,,
 ModificationCompletePage.instruction,"The character has been modified. You can view the revised character, or make another modification.
 
 You might want to save the URL for the revised character.",,"Der Charakter wurde geändert. Sie können sich nun den geänderten Charakter ansehen oder eine weitere Änderung vornehmen.
@@ -412,6 +413,12 @@ SpeciesPage.text.select,Either select or roll your Species.,,Bitte wählen oder 
 SpeciesPage.textNoRoll,"To what species do you belong? You may also create a character of mixed species, gaining benefits from both.",,Zu welcher Spezies gehören Sie? Sie können auch einen Charakter von gemischter Herkunft erstellen und Boni von beiden erhalten.,"¿A qué especie perteneces? Puedes crear un personaje mestizo, por lo que ganaría beneficios de ambas especies.","A quelle espèce appartenez-vous ? Vous pouvez également creer un personnage métissé, tirant bénéfice des deux espèces","К какой расе Вы относитесь? Вы также можете создать персонажа смешанной расы, получая выгоду от обеих.","A que espécie você pertence? Você também pode criar uma personagem de espécies miscigenadas, obtendo benefícios de ambas."
 SpeciesPage.mixedSpeciesNote,"Select two species. You will gain Traits from both species and may select from both species' Talents, but only the primary species gives you Attribute bonuses.",,"Wählen Sie zwei Spezies. Sie erhalten Merkmale von beiden Spezies und können auf die Talente beider Spezies zugreifen, erhalten jedoch nur die Attributsboni der primären Spezies.","Selecciona dos especies. Obtendrás Rasgos de ambas especies y podrás seleccionar Talentos de las dos especies, pero solo la principal te proporciona los beneficios de Atributo.","Choisissez deux espèces. vousobtiendrez des Traits et pourrez choisir parmi les talents de chaque espèce, mais seule votre espèce primaire vous accordera un bonus d'Attributs.",Выберите две расы. Вы получите Черты обеих и сможете выбирать Таланты с обеих сторон. Но только первичная раса даёт бонусы к Качествам.,"Selecione duas espécies. Você ganhará Traços de ambas as espécies e poderá selecionar os Talentos de ambas as espécies, mas apenas a espécie primária lhe dará bônus de Atributo."
 SpeciesPage.selectTwoSpeciesError,Please select both a primary and secondary species,,Bitte wähle eine primäre und eine sekundäre Spezies.,"Selecciona la especie primaria y secundaria, por favor.","Choisissez une espèce primaire et une secondaire, SVP",,"Por favor, selecione uma espécie primária e uma secundária"
+StarshipRefits.instruction_one,"Ships are improved over time. Every ten years from the date of launch, a ship receives a refit, which improves the ship's systems.
+
+You have {{count}} point to allocate.",,,,,,
+StarshipRefits.instruction_other,"Ships are improved over time. Every ten years from the date of launch, a ship receives a refit, which improves the ship's systems.
+
+You have {{count}} points to allocate.",,,,,,
 StarshipTalentSelection.instruction_one,Please select {{count}} talent.,,Bitte wähle {{count}} Talent.,"Slecciona {{count}} talento, por favor.",Choisissez {{count}} talent.,,"Por favor, selecione {{count}} talento."
 StarshipTalentSelection.instruction_other,Please select {{count}} talents.,,Bitte wähle {{count}} Talente.,"Slecciona {{count}} talentos, por favor.",Choisissez {{count}} talents.,,"Por favor, selecione {{count}} talentos"
 StarshipToolSelection.instruction,Select an option,,Wählen Sie eine Option,Selecciona una opción,Sélectionnez une option,,Selecione uma opção
@@ -1367,16 +1374,24 @@ Focus.anthropology,Anthropology,,Anthropologie,Antropología,Anthropologie,Ан�
 Focus.art,Art,,,,,,
 Focus.astrometrics,Astrometrics,,Astrometrie,Astrométrica,Astrométrique,Астрометрия,Astrometria
 Focus.astronavigation,Astronavigation,,Astronavigation,Astronavegación,Astronavigation,Астронавигация,Astronavegação
+Focus.astronomy,Astronomy,,,,,,
 Focus.astrophysics,Astrophysics,,Astrophysik,Astrofísica,Astrophysique,Астрофизика,Astrofísica
+Focus.atmosphericFlight,Atmospheric Flight,,,,,,
+Focus.attackRun,Attack Run,,,,,,
 Focus.bargain,Bargain,,,,,,
-Focus.bureaucracy,Bureaucracy,,Bürokratie,Burocracia,Bureaucracie,Бюрократия,Burocracia
 Focus.botany,Botany,,Botanik,Botánica,Botanique,Ботаника,Botânica
+Focus.boatPilotSubmersibles,Boat Pilot / Submersibles,,,,,,
+Focus.bureaucracy,Bureaucracy,,Bürokratie,Burocracia,Bureaucracie,Бюрократия,Burocracia
 Focus.callToAction,Call to Action,,,,,,
+Focus.climbing,Climbing,,,,,,
 Focus.coldReading,Cold Reading,,,,,,
+Focus.combatManeuvers,Combat Maneuvers,,,,,,
+Focus.communicationsSystems,Communications Systems,,,,,,
 Focus.composure,Composure,,Haltung,Autocontrol,Maitrise de soi,Самообладание,Compostura
 Focus.computers,Computers,,Computer,Ordenadores,Informatique,Компьютеры,Computadores
 Focus.coordinatedEfforts,Coordinated Efforts,,,,,,
 Focus.courtingRituals,Courting Rituals,,,,,,
+Focus.coveringAdvance,Covering Advance,,,,,,
 Focus.culturalExpert,Cultural Expert,,,,,,
 Focus.culturalStudies,Cultural Studies,,Kulturwissenschaften,Estudios Culturales,Etudes culturelles,Культурология,Estudos Culturais
 Focus.cybernetics,Cybernetics,,Kybernetik,Cibernética,Cybernetique,Кибернетика,Cibernética
@@ -1387,18 +1402,24 @@ Focus.demolition,Demolition,,Demolierung,Demolición,Démolition,Снос,Demoli
 Focus.diplomacy,Diplomacy,,Diplomtie,Diplomacia,Diplomacie,Дипломатия и политика,Diplomacia
 Focus.disguise,Disguise,,Tarnung,Disfraces,Déguisement,Маскировка,Disfarce
 Focus.disruptors,Disruptors,,Disruptoren,Disruptores,Disrupteurs,Дистрапторы,Disruptores
+Focus.efficientEvasion,Efficient Evasion,,,,,,
 Focus.electroPlasmaPowerSystems,Electro-Plasma Power Systems,,Elektroplasma-Systeme (EPS),Sistemas de Energía de Electroplasma,Systèmes d'Alimentations Electro-Plasmiques,Электро-плазменные силовые установки,Sistemas de Energia de Eletro-Plasma
 Focus.emergencyMedicine,Emergency Medicine,,Notfallmedizin,Medicina de Emergencia,Médecine d'Urgence,Неотложная медицинская помощь,Medicina de Emergência
 Focus.emotionalIntelligence,Emotional Intelligence,,,,,,
 Focus.espionage,Espionage,,Spionage,Espionaje,Espionnage,Шпионаж,Espionagem
 Focus.etiquette,Etiquette,,,,,,
+Focus.evacuationProcedures,Evacuation Procedures,,,,,,
+Focus.evasiveAction,Evasive Action,,Ausweichmanöver,Acción Evasiva,Action d'évasion,Уклонение,Ações Evasivas
 Focus.exoTectonics,Exo-tectonics,,Exotektonik,Exotectónica,Exo-tectonique,Экзо-тектоника,Exo-tectônica
 Focus.extraVehicularActivity,Extra-Vehicular Activity,,Außenbordeinsatz,Actividad Extravehicular,Activités Extra-Vehiculaires ,Внекорабельная деятельность (ВКД),Atividade Extra-Veicular
-Focus.evasiveAction,Evasive Action,,Ausweichmanöver,Acción Evasiva,Action d'évasion,Уклонение,Ações Evasivas
 Focus.finances,Finances,,Finanzen,Finanzas,Finances,Финансы,Finanças
+Focus.flightController,Flight Controller,,,,,,
 Focus.gambling,Gambling,,,,,,
 Focus.genetics,Genetics,,Genetik,Genética,Genetique,Генетика,Genética
 Focus.geology,Geology,,Geologie,Geología,Géologie,Геология,Geologia
+Focus.glancingImpact,Glancing Impact,,,,,,
+Focus.groundVehicles,Ground Vehicles,,,,,,
+Focus.guidanceSystems,Guidance Systems,,,,,,
 Focus.handPhasers,Hand Phasers,,Handphaser,Fásers de Mano, Phaseurs de Poing,Ручные фазеры,Feiseres de Mão
 Focus.handToHandCombat,Hand-to-Hand Combat,,Unbewaffneter Nahkampf,Combate cuerpo a cuerpo,Combat à mains nues,Рукопашный бой,Combate Corpo a Corpo
 Focus.helmOperation,Helm Operation,,Steuerkontrolle,Operar Timón,Timonerie,Рулевое управление,Operações do Leme
@@ -1409,39 +1430,68 @@ Focus.infiltration,Infiltration,,Infiltration,Infiltración,Infiltration,Вне�
 Focus.inspiration,Inspiration,,Inspiration,Inspiración,Inspiration,Вдохновение,Inspiração
 Focus.interrogation,Interrogation,,Vernehmung,Interrogatorio,Interrogation,Допрос,Interrogatório
 Focus.intimidation,Intimidation,,Einschüchterung,Intimidación,Intimidation,Устрашение,Intimidação
+Focus.impulseEngines,Impulse Engines,,,,,,
 Focus.journalism,Journalism,,,,,,
 Focus.law,Law,,Gesetz,Derecho,Droit,Право,Direito
+Focus.leadByExample,Lead by Example,,,,,,
 Focus.linguistics,Linguistics,,Linguistik,Lingüística,Linguistique,Лингвистика,Linguística
 Focus.manufacturing,Manufacturing,,Herstellung,Fabricación,Fabrication,Производство,Manufatura
+Focus.mentalDiscipline,Mental Discipline,,,,,,
 Focus.metallurgy,Metallurgy,,Metallurgie,Metalurgia,Metallurgie,Металлургия,Metalurgia
+Focus.multiDiscipline,Multi-Discipline,,,,,,
+Focus.multiTasking,Multi-Tasking,,,,,,
 Focus.music,Music,,Musik,Música,Musique,Музыка,Música
 Focus.negotiation,Negotiation,,Verhandlung,Negociación,Négotiation,Переговоры,Negociação
 Focus.observation,Observation,,Überwachung,Observación,Observation,Наблюдение,Observação
+Focus.oratory,Oratory,,,,,,
+Focus.pathfinder,Pathfinder,,,,,,
+Focus.performer,Performer,,,,,,
 Focus.persuasion,Persuasion,,Überzeugen,Persuasión,Persuasion,Убеждение,Persuasão
 Focus.philosophy,Philosophy,,Philosophie,Filosofía,Philosophie,Философия,Filosofia
 Focus.physics,Physics,,Physik,Física,Physique,Физика,Física
 Focus.politics,Politics,,Politik,Política,Politique,Политика,Política
+Focus.powerManagement,Power Management,,,,,,
 Focus.powerSystems,Power Systems,,Energiesysteme,Sistemas de Energía,Systèmes d'alimentation,Энергетические системы,Sistemas de Energia
+Focus.precisionManeuvering,Precision Maneuvering,,,,,,
+Focus.primeDirective,Prime Directive,,,,,,
 Focus.psychiatry,Psychiatry,,Psychiatrie,Psiquiatría,Psychiatrie,Психиатрия,Psiquiatria
 Focus.psychology,Psychology,,Psychologie,Psicología,Psychologie,Психология,Psicologia
 Focus.quantumMechanics,Quantum Mechanics,,Quantenmechnaik,Mecánica Cuántica,Mechanique Quantique,Кватновая механика,Mecânica Quântica
 Focus.rapidAnalysis,Rapid Analysis,,Schnelle Analyse,Análisis Rápido,Analyse Rapide,Экстпресс-анализ,Análise Rápida
+Focus.repairsAndMaintenance,Repairs and Maintenance,,,,,,
+Focus.reportingProcedures,Reporting Procedures,,,,,,
+Focus.rhetoric,Rhetoric,,,,,,
 Focus.shipboardTacticalSystems,Shipboard Tactical Systems,,Taktische Raumschiffsysteme,Sistemas Tácticos de a Bordo,Systèmes Tactiques de Bord,Корабельные тактические системы,Sistemas Táticos de Nave
+Focus.shipDesignAndConstruction,Ship Design and Construction,,,,,,
+Focus.shuttlebayManagement,Shuttlebay Management,,,,,,
 Focus.smallCraft,Small Craft,,Shuttles,Vehículos Pequeños,Petit Vaisseau,Малые суда,Veículos Pequenos
+Focus.spaceStationOperations,Space Station Operations,,,,,,
+Focus.spacewalk,Spacewalk,,,,,,
+Focus.starshipExpertPickOne,Starship Expert (pick one),,,,,,
 Focus.starshipRecognition,Starship Recognition,,Raumschiffidentifikation,Reconocimiento de Naves,Reconnaissance des Vaisseaux,Идентификация звездолётов,Reconhecimento de Nave Estelar
 Focus.starfleetProtocols,Starfleet Protocols,,Sternenflotten-Protokoll,Protocolos de la Flota Estelar,Protocoles de Starfleet ,Протокол Звёздного флота,Protocolos da Frota Estelar
+Focus.stationOperations,Station Operations,,,,,,
+Focus.strategyTactics,Strategy/Tactics,,,,,,
+Focus.stellarCartography,Stellar Cartography,,,,,,
+Focus.strafingRun,Strafing Run,,,,,,
 Focus.structuralEngineering,Structural Engineering,,Statik,Ingeniería Estructural,Ingénierie Structurelle,Структурная инженерия,Engenharia Estrutural
 Focus.subspaceCommunications,Subspace Communications,,Subspace-Kommunikation,Comunicaciones Subespaciales,Communications Subspaciales,Подпространственная связь,Comunicações Subespaciais
+Focus.subspaceTheory,Subspace Theory,,,,,,
 Focus.surgery,Surgery,,Chirurgie,Cirugía,Chirurgie,Хирургия,Cirurgia
 Focus.survey,Survey,,Vermessung,Vigilancia,Enquête,Исследование,Pesquisa
 Focus.survival,Survival,,Überlebenstraining,Supervivencia,Survie,Выживание,Sobrevivência
+Focus.teaching,Teaching,,,,,,
 Focus.teamDynamics,Team Dynamics,,Teamdynamik,Dinámicas de Equipo,Dynamique d'équipe,Командная динамика,Dinâmica de Equipes
 Focus.threatAnalysis,Threat Analysis,,Bedrohungsanalyse,Análisis de Amenazas,Analyse des Menaces,Анализ угрозы,Análise de Ameaças
+Focus.timeManagement,Time Management,,,,,,
+Focus.tracking,Tracking,,,,,,
 Focus.traumaSurgery,Trauma Surgery,,Traumachirurgie,Cirugía de Urgencia,Chirurgie Traumatique,Хирургия травматологических повреждений,Cirurgia de Trauma
 Focus.transportersReplicators,Transporters & Replicators,,Transporter und Replikatoren,Transportatores y Replicadores,Transporteurs & Réplicateurs,Транспортеры и репликаторы,Transportadores e Replicadores
 Focus.virology,Virology,,Virologie,Virología,Virologie,Вирусология,Virologia
+Focus.warpDrive,Warp Drive,,,,,,
 Focus.warpFieldDynamics,Warp Field Dynamics,,Warpfeldynamik,Dinámica de Campos de Curvatura,Dynamique des Champs de Distorsion,Динамика варп-полей,Dinâmicas de Campo de Dobra
 Focus.xenobiology,Xenobiology,,Xenobiologie,Xenobiología,Xenobiologie,Ксенобиология,Xenobiologia
+Focus.zeroGCombat,Zero-G Combat,,,,,,
 GovernmentType.name.andorian,Andorian,,Andorianer,Andoriano,Andorien,Андорское,Andoriano
 GovernmentType.name.bajoran,Bajoran,,Bajoraner,Bajorano,Bajoran,Баджорское,Bajoriano
 GovernmentType.name.cardassian,Cardassian,,Cardassianer,Cardassiano,Cardassien,Кардасское,Cardassiano

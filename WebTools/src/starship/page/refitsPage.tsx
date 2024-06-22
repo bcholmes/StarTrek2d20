@@ -47,7 +47,7 @@ const RefitPage: React.FC<IRefitPageProperties> = ({starship, refitCount, workfl
         <ShipBuildingBreadcrumbs />
         <Header>{t('Construct.other.refits')}</Header>
 
-        <ReactMarkdown>{t('StarshipRefits.instruction_one', {count: refitCount})}</ReactMarkdown>
+        <ReactMarkdown>{t('StarshipRefits.instruction', {count: refitCount})}</ReactMarkdown>
 
         <Refits refits={starship.refits} points={refitCount} starship={starship}
                     onIncrease={(s) => { addRefit(s)} } onDecrease={(s) => { removeRefit(s); } }/>

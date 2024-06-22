@@ -48,7 +48,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
             }
             this.writeName(page, name);
         } else {
-            this.writeName(page, "Unnamed Starship");
+            this.writeName(page, i18next.t('ViewPage.unnamedStarship'));
         }
     }
 
