@@ -43,8 +43,8 @@ const NpcView: React.FC<ICharacterPageProperties> = ({character}) => {
                     <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.rank?.localizedName}</div></div>
                 </>) : undefined}
 
-                <div className="col-md-2 view-field-label pb-2">Species:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.speciesName}</div></div>
+                <div className="col-md-2 view-field-label pb-2">{t('Construct.other.species')}:</div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{character.localizedSpeciesName}</div></div>
             </div>
 
             <div className="row" style={{alignItems: "baseline"}}>

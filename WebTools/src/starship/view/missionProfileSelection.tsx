@@ -21,7 +21,7 @@ class MissionProfileSelection extends React.Component<IMissionProfileSelectionPr
         const missionProfiles = MissionProfileHelper.getMissionProfiles(this.props.starship).map((m, i) => {
             const talents = m.talents.map((t, ti) => {
                 if (t.isSourcePrerequisiteFulfilled(starship)) {
-                    return (<div key={ti} style={{ padding: "2px"}}>{t.name}</div>);
+                    return (<div key={ti} style={{ padding: "2px"}}>{t.localizedDisplayName}</div>);
                 } else {
                     return undefined;
                 }

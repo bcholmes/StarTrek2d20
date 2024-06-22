@@ -11,32 +11,17 @@ import { nextStarshipWorkflowStep, setStarshipMissionProfileTalent } from "../..
 import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
+import { useTranslation } from "react-i18next";
 
 interface IMissionProfileTalentSelectionPageProperties {
     starship: Starship;
     workflow: ShipBuildWorkflow;
 }
 
-class MissionProfileTalentSelectionPage extends React.Component<IMissionProfileTalentSelectionPageProperties, {}> {
-    render() {
-        return (<div className="page container ms-0">
-            <ShipBuildingBreadcrumbs />
-            <Header>Mission Profile Talent</Header>
-            <p>
-                Choose 1 talent from the list of talents associated with the mission profile.
-            </p>
-            <SingleTalentSelectionList
-                talents={this.getTalents()}
-                initialSelection={this.props.starship.profileTalent}
-                construct={this.props.starship}
-                onSelection={(talent) => this.saveTalent(talent)} />
-            <div className="text-end mt-4">
-                <Button onClick={() => this.nextPage()}>Next</Button>
-            </div>
-        </div>);
-    }
+const MissionProfileTalentSelectionPage: React.FC<IMissionProfileTalentSelectionPageProperties> = ({starship, workflow}) => {
+    const { t } = useTranslation();
 
-    saveTalent(talent: ITalent) {
+    const saveTalent = (talent: ITalent) => {
         if (talent) {
             let talentModel = TalentsHelper.getTalent(talent.name);
             store.dispatch(setStarshipMissionProfileTalent(talentModel));
@@ -45,29 +30,46 @@ class MissionProfileTalentSelectionPage extends React.Component<IMissionProfileT
         }
     }
 
-    getTalents() {
+    const getTalents = () => {
         let talents: TalentViewModel[] = [];
-        this.props.starship?.missionProfileModel?.talents?.forEach(t => {
-            if (!t.isSourcePrerequisiteFulfilled(this.props.starship)) {
+        starship?.missionProfileModel?.talents?.forEach(t => {
+            if (!t.isSourcePrerequisiteFulfilled(starship)) {
                 // skip it
-            } else if (!this.props.starship.spaceframeModel?.hasTalent(t.name)) {
-                talents.push(ToViewModel(t, 1, this.props.starship?.type));
+            } else if (!starship.spaceframeModel?.hasTalent(t.name)) {
+                talents.push(ToViewModel(t, 1, starship?.type));
             } else if (t.maxRank > 1) {
-                talents.push(ToViewModel(t, 2, this.props.starship?.type));
+                talents.push(ToViewModel(t, 2, starship?.type));
             }
         });
         return talents;
     }
 
-    nextPage() {
-        if (this.props.starship.profileTalent == null) {
+    const nextPage = () => {
+        if (starship.profileTalent == null) {
             Dialog.show("Please select a talent before proceeding.");
         } else {
-            let step = this.props.workflow.peekNextStep();
+            let step = workflow.peekNextStep();
             store.dispatch(nextStarshipWorkflowStep());
             Navigation.navigateToPage(step.page);
         }
     }
+
+    return (<div className="page container ms-0">
+        <ShipBuildingBreadcrumbs />
+        <Header>{t('Page.title.missionProfileTalentSelection')}</Header>
+        <p>
+            Choose 1 talent from the list of talents associated with the mission profile.
+        </p>
+        <SingleTalentSelectionList
+            talents={getTalents()}
+            initialSelection={starship.profileTalent}
+            construct={starship}
+            onSelection={(talent) => saveTalent(talent)} />
+        <div className="text-end mt-4">
+            <Button onClick={() => nextPage()}>{t('Common.button.next')}</Button>
+        </div>
+    </div>);
+
 }
 
 function mapStateToProps(state, ownProps) {

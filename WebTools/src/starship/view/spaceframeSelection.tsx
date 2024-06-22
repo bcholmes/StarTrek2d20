@@ -58,7 +58,7 @@ class SpaceframeSelection extends React.Component<ISpaceframeSelectionProperties
                 }
 
                 return t.talent.isAvailableForServiceYear(this.props.starship) ? (
-                    <div key={ti} style={{ padding: "2px" }}>{t.description}</div>
+                    <div key={ti} style={{ padding: "2px" }}>{t.talent.localizedDisplayName}</div>
                 ) : undefined;
             });
 

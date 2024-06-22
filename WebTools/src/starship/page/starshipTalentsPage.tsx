@@ -12,47 +12,50 @@ import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
 import { StarshipTalentSelectionList } from "../view/starshipTalentSelection";
 import { PageIdentity } from "../../pages/pageIdentity";
+import { useTranslation } from "react-i18next";
 
 interface ISimpleStarshipPageProperties {
     starship: Starship;
     workflow: ShipBuildWorkflow;
 }
 
-class StarshipTalentsPage extends React.Component<ISimpleStarshipPageProperties, {}> {
-    render() {
-        return (<div className="page container ms-0">
-            <ShipBuildingBreadcrumbs />
-            <Header>Talents</Header>
-            <p>Select {this.props.starship.freeTalentSlots} {(this.props.starship.freeTalentSlots === 1) ? ' talent ' : ' talents '} for your ship.</p>
-            {this.props.starship.freeTalentSlots > 0
-                ? (<StarshipTalentSelectionList
-                    points={this.props.starship.freeTalentSlots}
-                    talents={TalentsHelper.getStarshipTalents(this.props.starship)}
-                    construct={this.props.starship}
-                    onSelection={(talents) => store.dispatch(setAdditionalTalents(talents))} />)
-                : null}
-            <div className="text-end mt-3">
-                <Button onClick={() => this.nextPage()}>Next</Button>
-            </div>
-        </div>);
-    }
+const StarshipTalentsPage: React.FC<ISimpleStarshipPageProperties> = ({starship, workflow}) => {
 
-    nextPage() {
-        if (this.props.starship.freeTalentSlots > this.props.starship.additionalTalents.length) {
-            Dialog.show("Please select " + this.props.starship.freeTalentSlots + ((this.props.starship.freeTalentSlots === 1) ? ' talent ' : ' talents ') + " before proceeding.");
-        } else if (this.isExpandedMunitionsPresent()) {
+    const { t } = useTranslation();
+
+    const nextPage = () => {
+        if (starship.freeTalentSlots > starship.additionalTalents.length) {
+            Dialog.show("Please select " + starship.freeTalentSlots + ((starship.freeTalentSlots === 1) ? ' talent ' : ' talents ') + " before proceeding.");
+        } else if (isExpandedMunitionsPresent()) {
             Navigation.navigateToPage(PageIdentity.ExpandedMunitionsWeaponsSelection);
         } else {
             store.dispatch(removeAllStarshipTalentDetailSelection());
-            let step = this.props.workflow.peekNextStep();
+            let step = workflow.peekNextStep();
             store.dispatch(nextStarshipWorkflowStep());
             Navigation.navigateToPage(step.page);
         }
     }
 
-    isExpandedMunitionsPresent() {
-        return this.props.starship.hasNonSpaceframeTalent("Expanded Munitions");
+    const isExpandedMunitionsPresent = () => {
+        return starship.hasNonSpaceframeTalent("Expanded Munitions");
     }
+
+    return (<div className="page container ms-0">
+        <ShipBuildingBreadcrumbs />
+        <Header>{t('Page.title.starshipTalentSelection')}</Header>
+        <p>Select {starship.freeTalentSlots} {(starship.freeTalentSlots === 1) ? ' talent ' : ' talents '} for your ship.</p>
+        {starship.freeTalentSlots > 0
+            ? (<StarshipTalentSelectionList
+                points={starship.freeTalentSlots}
+                talents={TalentsHelper.getStarshipTalents(starship)}
+                construct={starship}
+                onSelection={(talents) => store.dispatch(setAdditionalTalents(talents))} />)
+            : null}
+        <div className="text-end mt-3">
+            <Button onClick={() => nextPage()}>{t('Common.button.next')}</Button>
+        </div>
+    </div>);
+
 }
 
 function mapStateToProps(state, ownProps) {

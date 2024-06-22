@@ -431,7 +431,7 @@ export class NpcGenerator {
         }
         NpcGenerator.assignCharacterType(character, characterType, specialization);
 
-        character.jobAssignment = specialization.name;
+        character.jobAssignment = specialization.localizedName;
         character.speciesStep = new SpeciesStep(species.id);
         if (species.id === Species.CyberneticallyEnhanced) {
             let originalSpecies = SpeciesHelper.generateSpecies(CharacterType.Starfleet);
@@ -761,7 +761,7 @@ export class NpcGenerator {
             let rank = ranks[index];
 
             if (specialization.id === Specialization.MedicalDoctor && rank.id === Rank.Ensign) {
-                character.jobAssignment = specialization.name + " (Resident)";
+                character.jobAssignment = specialization.localizedName + " (Resident)";
             }
             RanksHelper.instance().applyRank(character, rank.id);
         }
