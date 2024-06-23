@@ -40,7 +40,11 @@ const starshipEnterpriseEraNames = [
     "Mandela",
     "Coto",
     "Sagan",
-    "Earhart"
+    "Earhart",
+    "Al-Farabi",
+    "Ibn Sina",
+    "Al-Haytham",
+    "Ibn Zuhr"
 ]
 
 const starshipTosEraName = [
@@ -115,10 +119,16 @@ const starshipTosEraName = [
     "Pearson",
     "Prescod-Weinstein",
     "Zhongjing",
-    "DePass"
+    "DePass",
+    "Shukla",
+    "Nair",
+    "Haipeng",
+    "Yipang",
+    "Zhigang"
 ]
 
 const starshipTngEraNames = [
+    "Louverture",
     "Nogura",
     "Uhura",
     "Shras",
@@ -127,7 +137,9 @@ const starshipTngEraNames = [
     "Pike",
     "Sulu",
     "Drexler",
+    "Dismuke",
     "Korby",
+    "Johnson",
 ]
 
 const chooseOptions = (era: Era) => {

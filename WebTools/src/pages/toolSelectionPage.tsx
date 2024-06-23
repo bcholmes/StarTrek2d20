@@ -21,6 +21,7 @@ const ToolSelectionPage = () => {
     const [ loadingNpc, setLoadingNpc ] = useState(false);
     const [ loadingStarship, setLoadingStarship ] = useState(false);
     const [ loadingSystem, setLoadingSystem ] = useState(false);
+    const [ loadingRandomStarship, setLoadingRandomStarship ] = useState(false);
     const navigate = useNavigate();
 
     const renderSystemGenerationButton = () => {
@@ -65,9 +66,20 @@ const ToolSelectionPage = () => {
         });
     }
 
+    const loadRandomStarshipAndGoToPage = () => {
+        setLoadingRandomStarship(true);
+        PageFactory.instance.loadStarshipFactory(() => {
+            setLoadingRandomStarship(false);
+            goToPage(PageIdentity.RandomStarship);
+        });
+    }
+
+
     const goToPage = (page: PageIdentity) => {
         if (page === PageIdentity.SystemGeneration) {
             navigate("/systemGenerator");
+        } else if (page === PageIdentity.RandomStarship) {
+            navigate("/starship/generate");
         } else {
             Navigation.navigateToPage(page);
         }
@@ -96,6 +108,7 @@ const ToolSelectionPage = () => {
                         </div>
                         <div className="col-md-6 button-column">
                             <LoadingButton onClick={() => { loadNpcAndGoToPage(); } } loading={loadingNpc}>{t('ToolSelection.randomNpc')}</LoadingButton>
+                            <LoadingButton onClick={() => { loadRandomStarshipAndGoToPage(); } } loading={loadingRandomStarship}>{t('ToolSelection.randomStarship')}</LoadingButton>
                         </div>
                     </div>
                 </main>

@@ -63,6 +63,14 @@ const SelectionPage = () => {
                     </div>
                 </div>
                 <section className="col-md-4">
+                    <div className="my-4">
+                        <Header level={2}>Congratulations</Header>
+                        <p>Congratulations to everyone at Modiphius, and to Jim J., Michael D., Josh A., Alison C., and many others,
+                            including designer team Michael C., Roo T., and Jane R. for the Origins nomination for <cite>Captain's Log</cite> {' '}
+                            in the category of Best RPG Core Product.</p>
+                        <p>Even if it wasn't a win, it's still incredible recognition for an excellent product. Well done!</p>
+                    </div>
+
                     {isEnglishDefault() ? undefined : (<LanguageNotice />) }
                 </section>
             </main>

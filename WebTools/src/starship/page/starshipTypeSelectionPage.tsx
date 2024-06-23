@@ -17,6 +17,7 @@ import { BuildPoints } from "../model/buildPoints";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import { withTranslation, WithTranslation } from 'react-i18next';
 import InstructionText from "../../components/instructionText";
+import { ServiceYearSelector } from "../view/serviceYearView";
 
 interface StarshipTypeSelectionPageProperties extends WithTranslation {
     era: Era
@@ -126,21 +127,12 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                     <div>
                         <InstructionText text={t('StarshipTypeSelection.instruction')} />
                     </div>
-                    <div className="d-sm-flex align-items-stretch">
-                        <label htmlFor="campaignYear" className="textinput-label">{t('StarshipTypeSelection.year')}</label>
-                        <input
-                            id="campaignYear"
-                            type="number"
-                            defaultValue={this.state.campaignYear.toString()}
-                            onChange={(e) => {
-                                let value = e.target.value;
-                                this.setState((state) => ({...state, campaignYear: parseInt(value)}))
-                            } }
+                    <ServiceYearSelector
+                            campaignYear={this.state.campaignYear}
+                            onChange={(year) =>
+                                this.setState((state) => ({...state, campaignYear: year}))
+                            }
                             />
-                    </div>
-                    <div className="small text-white mt-2" style={{maxWidth: "365px"}}>
-                        {ServiceYear.instance().getTextHint(this.state.campaignYear)}
-                    </div>
                 </div>);
     }
 }

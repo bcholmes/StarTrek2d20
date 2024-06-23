@@ -274,6 +274,7 @@ NpcConfigurationPage.text,Specify what kind of NPC you're trying to create.,,"Le
 OtherToolsPage.instruction,This section contains a number of miscellaneous additional tools that might be used in your STA game.,,,,Cette section contient divers outils additionnels à utiliser lors de vos parties de STA,Эта категория содержит несколько дополнительных инструментов которые могут быть использованы в вашей игре.,
 OtherToolsPage.safetyChecklist.instruction,"This checklist is a tool which the gamemaster can use to help players in discussing where their personal boundaries for certain themes in this campaign may lie. This list is divided into several categories, each of which includes a number of topics. This online version of the safety checklist can allow GMs or players to review the topics and evaluate how they want those topics handled in-game.",,,,Cette Checklist est un outil permettant au Maitre du Jeu  et à ses joueurs de se mettre d'accord sur les limites personnelles de chacun à ne pas dépasser lors d'une campagne. Cette liste est subdivisée en plusieurs catégories comprenant certains sujets. Cette version en ligne permet au MJ et aux joueurs d'estimer comment traiter ces sujets en jeu. ,"""Согласие"" - представляет собой инструмент, который Мастер может использовать, чтобы помочь игрокам обсудить их личные границы для определенных тем в этой кампании. Этот список разделен на несколько категорий, каждая из которых включает в себя ряд тем. Эта онлайн версия ""списка согласия"" может позволить Мастерам или игрокам обдумать темы и оценить, как они хотят, чтобы эти темы отыгрывались в игре.",
 PromotionPage.instruction,Select a new rank for this character.,,Wählen Sie einen neuen Rang für diesen Charakter,Selecciona un nuevo rango para el personaje.,Selectionnez un nouveau grade pour ce personnage,Выберите новый ранг для персонажа,Selecione uma nova patente para esta personagem.
+RandomStarshipPage.instructions,Specify what kind of starship you're trying to create.,,,,,,
 ReputationChangePage.instruction,Adjust the character's reputation as appropriate.,,"Passen Sie das Ansehen des Charakters an, wenn nötig",Ajusta la reputación del personaje según corresponda.,Ajustez la réputation du personnage le cas échéant,Измените репутацию персонада в соответствии с обстаятельствами.,Ajuste a reputação da personagem conforme apropriado.
 SafetyChecklist.instruction,"This checklist is a tool which the gamemaster can use to help players in discussing where their personal boundaries for certain themes in this campaign may lie.
 
@@ -473,6 +474,7 @@ ToolSelection.supportingCharacter,Supporting Character,,Nebencharakter,Personaje
 ToolSelection.starship,Starship,,Raumschiff,Nave estelar,Vaisseau spatial,Звездолет,Nave Estelar
 ToolSelection.spaceSector,Space Sector,,Raumsektor,Sector espacial,Secteur spatial,Звездный сектор,Setor Espacial
 ToolSelection.randomNpc,Random NPC,,Zufälliger NSC,PNJ Aleatorio,PNJ aléatoire,Рандомный второстепенный персонаж,PdM Aleatório
+ToolSelection.randomStarship,Random Starship,,,,,,
 Common.button.random,Random,,Zufällig,Aleatorio,Aléatoire,Случайный выбор,Aleatório
 Common.button.select,Select,,Auswählen,Seleccionar,Choisir,Выбрать,Selecione
 Common.button.selectAll,Select All,,Alles auswählen,Seleccionar todo,Sélectionner tout,Выбрать все,Selecione Todos
@@ -627,6 +629,7 @@ Page.title.missionPodSelection,Mission Pod Selection,,Auswahl Missionsmodul,Sele
 Page.title.missionProfileSelection,Mission Profile Selection,,Auswahl Missionsprofil,Selección de Perfil de Misión,Selection du Profil de Mission,,Seleção do Perfil da Missão
 Page.title.missionProfileTalentSelection,Mission Profile Talent,,Auswahl Missionsprofil-Talent,Talento de Perfil de Meisión,Talent du Profil de mission,,Talento do Perfil da Missão
 Page.title.otherTools,Other Tools,,,Otras Herramientas,Autres outils,Другие инструменты,
+Page.title.randomStarship,Random Starship Configuration,,,,,,
 Page.title.sectorDetails,Sector Details,,Sektordetails,Detalles del sector,Détails du secteur,Данные сектора,Detalhes do Setor
 Page.title.simpleStarship,Simplified Starship Creation,,Vereinfachte Raumschifferschaffung,Creación Simplificada de Nave Estelar,Creation de Vaisseau Simplifiée,Упрощенное создание звездолетов,Criação Simplificada de Nave Estelar
 Page.title.smallCraftStats,Small Craft Stats,,Shuttle-Werte,Estadísticas de Lanzadera,Navette,Данные малых кораблей,Estatísticas de Veículos Pequenos
@@ -644,6 +647,8 @@ Page.title.spaceframeSelection,Spaceframe,,Schiffsklasse,Plantilla,Modèle de Va
 Page.title.species,Species,,Spezies,Especie,Espèce,Раса,Espécies
 Page.title.speciesDetails,Species Details,,Details über die Spezies,Detalles de Especie,Détail de l'Espèce,Данные расы,Detalhes da Espécie
 Page.title.starshipTalentSelection,Starship Talents,,Raumschiff-Talente,Talentos de Nave Estelar,Talents de Vaisseau,Таланты звездолета,Talentos da Nave Estelar
+Page.title.starshipTypeSelection,Starship Type,,Raumschiff-Typ,Tipo de Nave Estelar,Type de Vaisseau,Тип звездолета,Tipo de Nave Estelar
+Page.title.starshipWeaponsSelection,Starship Weapons,,Raumschiffwaffen,Armas de Nave Estelar,Armes de Vaisseau,Вооружение звездолета,Armas de Nave Estelar
 Page.title.starSystemDetails,Star System Details,,Details zum Sternensystem,Detalles del Sistema Estelar,Détails du système stellaire,Данные звездной системы,Detalhes do Sistema Estelar
 Page.title.starshipToolSelection,Starship Tool Selection,,Auswahl der Raumschiff-Erschaffung,Selección de herramientas de nave estelar,Outils de vaisseau spatial,,Seleção de Ferramentas de Nave Estelar
 Page.title.starshipTraits,Starship Traits,,Raumschiffmerkmale,Rasgos de Nave Estelar,Traits du vaisseau,Черты звездолета,Traços da Nave Estelar
@@ -653,8 +658,6 @@ Page.title.tableList,Table List,,Tabellenliste,Lista de Tabla,Liste des tables,,
 Page.title.talentsOverview,Talents Overview,,Talente im Überblick,Descripción general de talentos,Vue d'ensemble des talents,Обзор талантов,Visão geral dos Talentos
 Page.title.toolSelection,Tool Selection,,Werkzeug-Auswahl,Herramienta de Selección,Selection d'Outil,Выбор инструмента,Seleção de Ferramentas
 Page.title.viewSheet,View Sheet,,Bogen anzeigen,Ver hoja,Voir la feuille,Просмотр листа,Exibir Ficha
-Page.title.starshipTypeSelection,Starship Type,,Raumschiff-Typ,Tipo de Nave Estelar,Type de Vaisseau,Тип звездолета,Tipo de Nave Estelar
-Page.title.starshipWeaponsSelection,Starship Weapons,,Raumschiffwaffen,Armas de Nave Estelar,Armes de Vaisseau,Вооружение звездолета,Armas de Nave Estelar
 Page.title.modificationTypeSelection,Modification Type,,Art der Änderung,Tipo de Modifiación,Type de modification,Тип модификации,Tipo de Modificação
 Page.title.reputationChange,Reputation Change,,Änderung des Ansehens,Cambio de Reputación,Changer la Réputation,Изменение репутации,Mudança de Reputação
 Page.title.promotion,Promotion,,Beförderung,Ascenso,Promotion,Продвижение по службе,Promoção
@@ -1369,59 +1372,75 @@ ExtraType.risanSymbol,Risian Symbol,,Risanisches Symbol,Símbolo Risiano,Symbole
 ExtraType.inuitTattoo,Inuit Tattoo,,Inuit-Tattoo,Tatuaje Unuit,Tatouage Inuit,,Tatuagem Inuit
 ExtraType.zaraniteMask,Zaranite Breather Mask,,Zaranit-Atemmaske,Respirador Zaranita,Respirateur Zaranite,,Máscara de Respiração Zaranite
 ExtraType.ferengiHeadFlap,Ferengi Head Flap,,Ferengi-Kopftuch,Velo Ferengi,Voilette Ferengi,,Capa de Cabeça Ferengi
+Focus.ambushTactics,Ambush Tactics,,,,,,
 Focus.animalHandling,Animal Handling,,Tierführung,Trato con Animales,Comportement animal,Обращение с животными,Manejo de Animais
 Focus.anthropology,Anthropology,,Anthropologie,Antropología,Anthropologie,Антропология,Antropologia
-Focus.art,Art,,,,,,
+Focus.art,Art,,,,Art,,
 Focus.astrometrics,Astrometrics,,Astrometrie,Astrométrica,Astrométrique,Астрометрия,Astrometria
 Focus.astronavigation,Astronavigation,,Astronavigation,Astronavegación,Astronavigation,Астронавигация,Astronavegação
-Focus.astronomy,Astronomy,,,,,,
+Focus.astronomy,Astronomy,,,,Astronomy,,
 Focus.astrophysics,Astrophysics,,Astrophysik,Astrofísica,Astrophysique,Астрофизика,Astrofísica
-Focus.atmosphericFlight,Atmospheric Flight,,,,,,
-Focus.attackRun,Attack Run,,,,,,
-Focus.bargain,Bargain,,,,,,
+Focus.atmosphericFlight,Atmospheric Flight,,,,Vol Atmosphérique,,
+Focus.attackRun,Attack Run,,,,Charge,,
+Focus.bargain,Bargain,,,,Marchandage,,
+Focus.bladeWeapons,Blade Weapons,,,,,,
 Focus.botany,Botany,,Botanik,Botánica,Botanique,Ботаника,Botânica
-Focus.boatPilotSubmersibles,Boat Pilot / Submersibles,,,,,,
+Focus.boatPilotSubmersibles,Boat Pilot / Submersibles,,,,Pilotage de bateau / sous-marin,,
 Focus.bureaucracy,Bureaucracy,,Bürokratie,Burocracia,Bureaucracie,Бюрократия,Burocracia
-Focus.callToAction,Call to Action,,,,,,
-Focus.climbing,Climbing,,,,,,
-Focus.coldReading,Cold Reading,,,,,,
-Focus.combatManeuvers,Combat Maneuvers,,,,,,
-Focus.communicationsSystems,Communications Systems,,,,,,
+Focus.callToAction,Call to Action,,,,Motivation,,
+Focus.camouflage,Camouflage,,,,,,
+Focus.climbing,Climbing,,,,Escalade,,
+Focus.chemicalAndBiologicalWeapons,Chemical and Biological Weapons,,,,,,
+Focus.coldReading,Cold Reading,,,,Lecture à froid,,
+Focus.combatManeuvers,Combat Maneuvers,,,,Manoeuvres de combat,,
+Focus.combatMedic,Combat Medic,,,,,,
+Focus.communicationsSystems,Communications Systems,,,,Systemes de communication,,
 Focus.composure,Composure,,Haltung,Autocontrol,Maitrise de soi,Самообладание,Compostura
 Focus.computers,Computers,,Computer,Ordenadores,Informatique,Компьютеры,Computadores
-Focus.coordinatedEfforts,Coordinated Efforts,,,,,,
-Focus.courtingRituals,Courting Rituals,,,,,,
-Focus.coveringAdvance,Covering Advance,,,,,,
-Focus.culturalExpert,Cultural Expert,,,,,,
+Focus.computerSecuritySystems,Computer Security Systems,,,,,,
+Focus.coordinatedEfforts,Coordinated Efforts,,,,Coordination des efforts,,
+Focus.courtingRituals,Courting Rituals,,,,Rituels de séduction,,
+Focus.coveringAdvance,Covering Advance,,,,Avance de couverture,,
+Focus.criminalMinds,Criminal Minds,,,,,,
+Focus.criminalOrganizations,Criminal Organizations,,,,,,
+Focus.crisisManagement,Crisis Management,,,,,,
+Focus.culturalExpert,Cultural Expert,,,,Expert culturel,,
 Focus.culturalStudies,Cultural Studies,,Kulturwissenschaften,Estudios Culturales,Etudes culturelles,Культурология,Estudos Culturais
 Focus.cybernetics,Cybernetics,,Kybernetik,Cibernética,Cybernetique,Кибернетика,Cibernética
+Focus.deadeyeMarksman,Deadeye Marksman,,,,,,
 Focus.debate,Debate,,Debatte,Debate,Débat,Дебаты,Debate
-Focus.deception,Deception,,,,,,
-Focus.decisiveLeadership,Decisive Leadership,,,,,,
+Focus.deception,Deception,,,,Tromperie,,
+Focus.decisiveLeadership,Decisive Leadership,,,,Commandement décisif,,
+Focus.deflectorOperations,Deflector Operations,,,,,,
 Focus.demolition,Demolition,,Demolierung,Demolición,Démolition,Снос,Demolição
 Focus.diplomacy,Diplomacy,,Diplomtie,Diplomacia,Diplomacie,Дипломатия и политика,Diplomacia
 Focus.disguise,Disguise,,Tarnung,Disfraces,Déguisement,Маскировка,Disfarce
 Focus.disruptors,Disruptors,,Disruptoren,Disruptores,Disrupteurs,Дистрапторы,Disruptores
-Focus.efficientEvasion,Efficient Evasion,,,,,,
+Focus.efficientEvasion,Efficient Evasion,,,,Efficacité d'évasion,,
 Focus.electroPlasmaPowerSystems,Electro-Plasma Power Systems,,Elektroplasma-Systeme (EPS),Sistemas de Energía de Electroplasma,Systèmes d'Alimentations Electro-Plasmiques,Электро-плазменные силовые установки,Sistemas de Energia de Eletro-Plasma
 Focus.emergencyMedicine,Emergency Medicine,,Notfallmedizin,Medicina de Emergencia,Médecine d'Urgence,Неотложная медицинская помощь,Medicina de Emergência
-Focus.emotionalIntelligence,Emotional Intelligence,,,,,,
+Focus.emotionalIntelligence,Emotional Intelligence,,,,Intelligence émotionnelle,,
 Focus.espionage,Espionage,,Spionage,Espionaje,Espionnage,Шпионаж,Espionagem
-Focus.etiquette,Etiquette,,,,,,
-Focus.evacuationProcedures,Evacuation Procedures,,,,,,
+Focus.etiquette,Etiquette,,,,Etiquette,,
+Focus.evacuationProcedures,Evacuation Procedures,,,,Procédures d'évacuation,,
 Focus.evasiveAction,Evasive Action,,Ausweichmanöver,Acción Evasiva,Action d'évasion,Уклонение,Ações Evasivas
 Focus.exoTectonics,Exo-tectonics,,Exotektonik,Exotectónica,Exo-tectonique,Экзо-тектоника,Exo-tectônica
 Focus.extraVehicularActivity,Extra-Vehicular Activity,,Außenbordeinsatz,Actividad Extravehicular,Activités Extra-Vehiculaires ,Внекорабельная деятельность (ВКД),Atividade Extra-Veicular
 Focus.finances,Finances,,Finanzen,Finanzas,Finances,Финансы,Finanças
-Focus.flightController,Flight Controller,,,,,,
-Focus.gambling,Gambling,,,,,,
+Focus.fleetFormations,Fleet Formations,,,,,,
+Focus.flightController,Flight Controller,,,,Contrôleur de vol,,
+Focus.forensics,Forensics,,,,,,
+Focus.forgery,Forgery,,,,,,
+Focus.gambling,Gambling,,,,Pari,,
 Focus.genetics,Genetics,,Genetik,Genética,Genetique,Генетика,Genética
 Focus.geology,Geology,,Geologie,Geología,Géologie,Геология,Geologia
-Focus.glancingImpact,Glancing Impact,,,,,,
-Focus.groundVehicles,Ground Vehicles,,,,,,
-Focus.guidanceSystems,Guidance Systems,,,,,,
-Focus.handPhasers,Hand Phasers,,Handphaser,Fásers de Mano, Phaseurs de Poing,Ручные фазеры,Feiseres de Mão
+Focus.glancingImpact,Glancing Impact,,,,Impact,,
+Focus.groundVehicles,Ground Vehicles,,,,Véhicules terrestres,,
+Focus.guidanceSystems,Guidance Systems,,,,Systèmes de guidage,,
+Focus.handPhasers,Hand Phasers,,Handphaser,Fásers de Mano,Phaseurs de Poing,Ручные фазеры,Feiseres de Mão
 Focus.handToHandCombat,Hand-to-Hand Combat,,Unbewaffneter Nahkampf,Combate cuerpo a cuerpo,Combat à mains nues,Рукопашный бой,Combate Corpo a Corpo
+Focus.hazardousEnvironments,Hazardous Environments,,,,,,
+Focus.heavyCover,Heavy Cover,,,,,,
 Focus.helmOperation,Helm Operation,,Steuerkontrolle,Operar Timón,Timonerie,Рулевое управление,Operações do Leme
 Focus.history,History,,Geschichte,Historia,Histoire,История,História
 Focus.holoprogramming,Holoprogramming,,Holoprogrammierung,Holoprogramación,Holoprogrammation,Голопрограммирование,Holoprogramação
@@ -1430,68 +1449,85 @@ Focus.infiltration,Infiltration,,Infiltration,Infiltración,Infiltration,Вне�
 Focus.inspiration,Inspiration,,Inspiration,Inspiración,Inspiration,Вдохновение,Inspiração
 Focus.interrogation,Interrogation,,Vernehmung,Interrogatorio,Interrogation,Допрос,Interrogatório
 Focus.intimidation,Intimidation,,Einschüchterung,Intimidación,Intimidation,Устрашение,Intimidação
-Focus.impulseEngines,Impulse Engines,,,,,,
-Focus.journalism,Journalism,,,,,,
+Focus.impulseEngines,Impulse Engines,,,,Moteurs a impulsion,,
+Focus.journalism,Journalism,,,,Journalisme,,
+Focus.klingonWeapons,Klingon Weapons,,,,,,
 Focus.law,Law,,Gesetz,Derecho,Droit,Право,Direito
-Focus.leadByExample,Lead by Example,,,,,,
+Focus.lawEnforcement,Law Enforcement,,,,,,
+Focus.leadByExample,Lead by Example,,,,Montrer l'exemple,,
+Focus.leadInvestigator,Lead Investigator,,,,,,
 Focus.linguistics,Linguistics,,Linguistik,Lingüística,Linguistique,Лингвистика,Linguística
 Focus.manufacturing,Manufacturing,,Herstellung,Fabricación,Fabrication,Производство,Manufatura
-Focus.mentalDiscipline,Mental Discipline,,,,,,
+Focus.martialArts,Martial Arts,,,,,,
+Focus.mentalDiscipline,Mental Discipline,,,,Discipline mentale,,
+Focus.mentalResistanceTechniques,Mental Resistance Techniques,,,,,,
 Focus.metallurgy,Metallurgy,,Metallurgie,Metalurgia,Metallurgie,Металлургия,Metalurgia
-Focus.multiDiscipline,Multi-Discipline,,,,,,
-Focus.multiTasking,Multi-Tasking,,,,,,
+Focus.multiDiscipline,Multi-Discipline,,,,Multi-Discipline,,
+Focus.multiTasking,Multi-Tasking,,,,Organisation Multi Tache,,
 Focus.music,Music,,Musik,Música,Musique,Музыка,Música
 Focus.negotiation,Negotiation,,Verhandlung,Negociación,Négotiation,Переговоры,Negociação
 Focus.observation,Observation,,Überwachung,Observación,Observation,Наблюдение,Observação
-Focus.oratory,Oratory,,,,,,
-Focus.pathfinder,Pathfinder,,,,,,
-Focus.performer,Performer,,,,,,
+Focus.organizationalPsychology,Organizational Psychology,,,,,,
+Focus.oratory,Oratory,,,,Orateur,,
+Focus.pathfinder,Pathfinder,,,,Eclaireur,,
+Focus.patrol,Patrol,,,,,,
+Focus.performer,Performer,,,,Artiste de spectacle,,
 Focus.persuasion,Persuasion,,Überzeugen,Persuasión,Persuasion,Убеждение,Persuasão
+Focus.phasers,Phasers,,,,,,
 Focus.philosophy,Philosophy,,Philosophie,Filosofía,Philosophie,Философия,Filosofia
 Focus.physics,Physics,,Physik,Física,Physique,Физика,Física
+Focus.pickpocketing,Pickpocketing,,,,,,
+Focus.planetarySurveys,Planetary Surveys,,,,,,
 Focus.politics,Politics,,Politik,Política,Politique,Политика,Política
-Focus.powerManagement,Power Management,,,,,,
+Focus.powerManagement,Power Management,,,,Gestion de l'énergie,,
 Focus.powerSystems,Power Systems,,Energiesysteme,Sistemas de Energía,Systèmes d'alimentation,Энергетические системы,Sistemas de Energia
-Focus.precisionManeuvering,Precision Maneuvering,,,,,,
-Focus.primeDirective,Prime Directive,,,,,,
+Focus.precisionManeuvering,Precision Maneuvering,,,,Manoeuvres de précision,,
+Focus.precisionTargeting,Precision Targeting,,,,,,
+Focus.primeDirective,Prime Directive,,,,Directive première,,
 Focus.psychiatry,Psychiatry,,Psychiatrie,Psiquiatría,Psychiatrie,Психиатрия,Psiquiatria
 Focus.psychology,Psychology,,Psychologie,Psicología,Psychologie,Психология,Psicologia
 Focus.quantumMechanics,Quantum Mechanics,,Quantenmechnaik,Mecánica Cuántica,Mechanique Quantique,Кватновая механика,Mecânica Quântica
 Focus.rapidAnalysis,Rapid Analysis,,Schnelle Analyse,Análisis Rápido,Analyse Rapide,Экстпресс-анализ,Análise Rápida
-Focus.repairsAndMaintenance,Repairs and Maintenance,,,,,,
-Focus.reportingProcedures,Reporting Procedures,,,,,,
-Focus.rhetoric,Rhetoric,,,,,,
+Focus.repairsAndMaintenance,Repairs and Maintenance,,,,Réparations et maintenance,,
+Focus.reportingProcedures,Reporting Procedures,,,,Procédures d'établissement de rapports,,
+Focus.rhetoric,Rhetoric,,,,Réthorique,,
+Focus.securitySystems,Security Systems,,,,,,
 Focus.shipboardTacticalSystems,Shipboard Tactical Systems,,Taktische Raumschiffsysteme,Sistemas Tácticos de a Bordo,Systèmes Tactiques de Bord,Корабельные тактические системы,Sistemas Táticos de Nave
-Focus.shipDesignAndConstruction,Ship Design and Construction,,,,,,
-Focus.shuttlebayManagement,Shuttlebay Management,,,,,,
+Focus.shipDesignAndConstruction,Ship Design and Construction,,,,Construction et conception de vaisseaux,,
+Focus.shipEngagementTactics,Ship Engagement Tactics,,,,,,
+Focus.shipLockdownProcedures,Ship Lockdown Procedures,,,,,,
+Focus.shuttlebayManagement,Shuttlebay Management,,,,Gestion de hangars à navettes,,
 Focus.smallCraft,Small Craft,,Shuttles,Vehículos Pequeños,Petit Vaisseau,Малые суда,Veículos Pequenos
-Focus.spaceStationOperations,Space Station Operations,,,,,,
-Focus.spacewalk,Spacewalk,,,,,,
-Focus.starshipExpertPickOne,Starship Expert (pick one),,,,,,
+Focus.spaceStationOperations,Space Station Operations,,,,Opérations de stations spatiales,,
+Focus.spacewalk,Spacewalk,,,,Sortie dans l'espace,,
+Focus.starshipExpertPickOne,Starship Expert (pick one),,,,Expert de vaisseau (en choisir un),,
 Focus.starshipRecognition,Starship Recognition,,Raumschiffidentifikation,Reconocimiento de Naves,Reconnaissance des Vaisseaux,Идентификация звездолётов,Reconhecimento de Nave Estelar
 Focus.starfleetProtocols,Starfleet Protocols,,Sternenflotten-Protokoll,Protocolos de la Flota Estelar,Protocoles de Starfleet ,Протокол Звёздного флота,Protocolos da Frota Estelar
-Focus.stationOperations,Station Operations,,,,,,
-Focus.strategyTactics,Strategy/Tactics,,,,,,
-Focus.stellarCartography,Stellar Cartography,,,,,,
-Focus.strafingRun,Strafing Run,,,,,,
+Focus.stationOperations,Station Operations,,,,Opérations de stations,,
+Focus.strategy,Strategy,,,,,,
+Focus.strategyTactics,Strategy/Tactics,,,,Stratégie / Tactique,,
+Focus.stellarCartography,Stellar Cartography,,,,Cartographie stellaire.,,
+Focus.strafingRun,Strafing Run,,,,Mitraillage,,
 Focus.structuralEngineering,Structural Engineering,,Statik,Ingeniería Estructural,Ingénierie Structurelle,Структурная инженерия,Engenharia Estrutural
 Focus.subspaceCommunications,Subspace Communications,,Subspace-Kommunikation,Comunicaciones Subespaciales,Communications Subspaciales,Подпространственная связь,Comunicações Subespaciais
-Focus.subspaceTheory,Subspace Theory,,,,,,
+Focus.subspaceTheory,Subspace Theory,,,,Théorie subspatiale,,
 Focus.surgery,Surgery,,Chirurgie,Cirugía,Chirurgie,Хирургия,Cirurgia
 Focus.survey,Survey,,Vermessung,Vigilancia,Enquête,Исследование,Pesquisa
 Focus.survival,Survival,,Überlebenstraining,Supervivencia,Survie,Выживание,Sobrevivência
-Focus.teaching,Teaching,,,,,,
+Focus.targetingSystems,Targeting Systems,,,,,,
+Focus.teaching,Teaching,,,,Enseignement,,
 Focus.teamDynamics,Team Dynamics,,Teamdynamik,Dinámicas de Equipo,Dynamique d'équipe,Командная динамика,Dinâmica de Equipes
 Focus.threatAnalysis,Threat Analysis,,Bedrohungsanalyse,Análisis de Amenazas,Analyse des Menaces,Анализ угрозы,Análise de Ameaças
-Focus.timeManagement,Time Management,,,,,,
-Focus.tracking,Tracking,,,,,,
+Focus.timeManagement,Time Management,,,,Gestion du temps,,
+Focus.torpedoes,Torpedoes,,,,,,
+Focus.tracking,Tracking,,,,Pistage,,
 Focus.traumaSurgery,Trauma Surgery,,Traumachirurgie,Cirugía de Urgencia,Chirurgie Traumatique,Хирургия травматологических повреждений,Cirurgia de Trauma
 Focus.transportersReplicators,Transporters & Replicators,,Transporter und Replikatoren,Transportatores y Replicadores,Transporteurs & Réplicateurs,Транспортеры и репликаторы,Transportadores e Replicadores
 Focus.virology,Virology,,Virologie,Virología,Virologie,Вирусология,Virologia
-Focus.warpDrive,Warp Drive,,,,,,
+Focus.warpDrive,Warp Drive,,,,Moteurs aà distortion,,
 Focus.warpFieldDynamics,Warp Field Dynamics,,Warpfeldynamik,Dinámica de Campos de Curvatura,Dynamique des Champs de Distorsion,Динамика варп-полей,Dinâmicas de Campo de Dobra
 Focus.xenobiology,Xenobiology,,Xenobiologie,Xenobiología,Xenobiologie,Ксенобиология,Xenobiologia
-Focus.zeroGCombat,Zero-G Combat,,,,,,
+Focus.zeroGCombat,Zero-G Combat,,,,Combat Zéro G,,
 GovernmentType.name.andorian,Andorian,,Andorianer,Andoriano,Andorien,Андорское,Andoriano
 GovernmentType.name.bajoran,Bajoran,,Bajoraner,Bajorano,Bajoran,Баджорское,Bajoriano
 GovernmentType.name.cardassian,Cardassian,,Cardassianer,Cardassiano,Cardassien,Кардасское,Cardassiano
@@ -1762,7 +1798,7 @@ ShipBuildType.starship.name,Starship,,Raumschiff,Nave Estelar,Vaisseau,Звез�
 Source.type.coreBook,Core Rulebooks,,Grundregelwerk,Libros Básicos,Livres de Règles ,Базовые книги правил,Livro de Regras Básico
 Source.type.divisionBook,Division Books,,Abteilungs-Bände,Libros de Divisiones,Livres des Divisions,,Suplmentos de Divisão
 Source.type.quadrantBook,Quadrant Books,,Quadranten-Bände,Libros de Cuadrantes,Livres des Quadrants,,Suplementos de Quadrantes
-Source.type.crewBook,Crew Books,,Spielercharakter-Spielhilfen,Libros de Tripulaciones,Lives d'Equipages,,Suplementos de Tripulação
+Source.type.crewBook,Crew Books,,Spielercharakter-Spielhilfen,Libros de Tripulaciones,Livres d'Equipages,,Suplementos de Tripulação
 Source.type.campaignBook,Campaign Books,,Kampagnenbände,Libros de Campaña,Livres de Campagne,,Suplementos de Campanhas
 Source.type.expansion,Major Expansion Books,,Wichtige Erweiterungsbände,Libros de Expansión,Livres d'Extensions,,Livros de Expansão Principais
 Source.type.misc,Misc/Other Books,,Sonstige Bände,Varios/Otros Libros,Divers/Autres,,Misc/Outros Livros
@@ -2033,7 +2069,7 @@ Species.coridanite.traitDescription,"The Coridanites are known for three things:
 Species.deltan.name,Deltan,,Deltaner,,Deltan,,Deltan
 Species.deltan.soloDescription,"Deltans are beautiful individuals, with powerful empathic abilities and heightened sensuality. The pheromones they excrete are a natural aphrodisiac in most species throughout the Federation, and while serving aboard Starfleet they must be very careful with their natural physiology, using chemical suppressants to cancel the effect.",,,,,,"Os Deltans são indivíduos belos, com poderosas habilidades empáticas e sensualidade exacerbada. Os feromônios que excretam são um afrodisíaco natural na maioria das espécies em toda a Federação e, enquanto servem a bordo da Frota Estelar, eles devem ter muito cuidado com sua fisiologia natural, usando supressores químicos para cancelar o efeito."
 Species.denobulan.name,Denobulan,,Denobulaner,,Dénobulien,Денобуланец,Denobulanos
-Species.denobulan.aboutNames,"Denobulans tend to only have a single name — an individual Denobulan may be part of several overlapping families. Some Denobulans may use the name of one of their spouses as an impromptu surname, however; this is often to indicate association to species that may not understand Denobulan families. Denobulan names tend to be short and hard-sounding, particularly male names.",,,,"Les DÉNOBULIENS ont en général un seul nom, étant donné qu’un individu peut faire partie de plusieurs familles entrecroisées. Certains Dénobuliens accolent le nom de l’un de leurs conjoints et en font une sorte de surnom, mais cette habitude indique souvent une association avec des espèces qui ne comprennent pas le fonctionnement de leur structure familiale. Leurs noms sont en général courts et ils ont des sonorités dures, en particulier les prénoms masculins.","У ДЕНОБУЛАНЦЕВ, как правило, одно имя, так как денобуланец может быть частью нескольких связанных семейств. Однако некоторые денобуланцы могут использовать имя одного из супругов в качестве импровизированной фамилии. Это чаще всего делается, чтобы показать семейную связь видам, которые не понимают родственных отношений денобуланцев. Имена часто короткие и звучные, особенно мужские.","Denobulanos tendem a ter um único nome — um indivíduo denobulano pode ser parte de várias famílias sobrepostas. Entretanto, alguns Denobulanos podem usar o nome de um de seus cônjuges como um sobrenome improvisado; isto frequentemente indica associação para espécies que podem não compreender as famílias denobulanas. Nomes denobulanos tendem a ser curtos e de sonoridade áspera, especialmente nos nomes masculinos."
+Species.denobulan.aboutNames,"Denobulans tend to only have a single name — an individual Denobulan may be part of several overlapping families. Some Denobulans may use the name of one of their spouses as an impromptu surname, however; this is often to indicate association to species that may not understand Denobulan families. Denobulan names tend to be short and hard-sounding, particularly male names.",,,,"Les Dénobuliens ont en général un seul nom, étant donné qu’un individu peut faire partie de plusieurs familles entrecroisées. Certains Dénobuliens accolent le nom de l’un de leurs conjoints et en font une sorte de surnom, mais cette habitude indique souvent une association avec des espèces qui ne comprennent pas le fonctionnement de leur structure familiale. Leurs noms sont en général courts et ils ont des sonorités dures, en particulier les prénoms masculins.","У ДЕНОБУЛАНЦЕВ, как правило, одно имя, так как денобуланец может быть частью нескольких связанных семейств. Однако некоторые денобуланцы могут использовать имя одного из супругов в качестве импровизированной фамилии. Это чаще всего делается, чтобы показать семейную связь видам, которые не понимают родственных отношений денобуланцев. Имена часто короткие и звучные, особенно мужские.","Denobulanos tendem a ter um único nome — um indivíduo denobulano pode ser parte de várias famílias sobrepostas. Entretanto, alguns Denobulanos podem usar o nome de um de seus cônjuges como um sobrenome improvisado; isto frequentemente indica associação para espécies que podem não compreender as famílias denobulanas. Nomes denobulanos tendem a ser curtos e de sonoridade áspera, especialmente nos nomes masculinos."
 Species.denobulan.description,"Hailing from the planet Denobula, Denobulans are a gregarious, inquisitive people who have been allies of Humanity since the 2130s. Though Denobula was not one of the founders of the Federation, the Denobulans joined soon after. Denobulans are a sociable people, with distinctive expressive features, who are used to living in close, communal conditions, and whose extended family groups are large and complex — a Denobulan may have several spouses, each of whom may have several partners of their own, and dozens of children between them. Culturally, they are intellectually curious, perceptive, and interested in a wide range of philosophies, though their scholarly nature, large families, and gregarious nature means that relatively few of them venture far from their homeworld.",,"Denobulaner stammen vom Planeten Denobula und sind ein aufgeschlossenes, wissbegieriges Volk, das seit den 2130er Jahren mit den Menschen verbündet ist. Auch wenn Denobula nicht zu den Begründern der Föderation zählt, schlossen sich ihr die Denobulaner nur wenig später an. Denobulaner sind gesellige Personen mit markanten, ausdrucksstarken Zügen, die es gewohnt sind, in beengten Lebensräumen zu leben, und deren erweiterte Familiengruppen groß und komplex sind – Denobulaner können mehrere Ehepartner haben, die alle wiederum mehrere eigene Partner haben, mit Dutzenden von Kindern innerhalb dieser Gemeinschaft. Ihre Kultur ist von Neugierde, Aufmerksamkeit und einem Interesse für eine Vielzahl von Philosophien geprägt. Ihre akademische Geisteshaltung, ihre Großfamilien und ihre gesellige Natur sorgen aber meist dafür, dass sich eher wenige von ihnen besonders weit von Denobula entfernen.",,"La planète Dénobula est alliée à l’humanité depuis les années 2130 et si elle ne figure pas parmi les fondateurs de la Fédération, elle l’a rejointe peu de temps après. Ce peuple, sociable, grégaire et curieux a des traits expressifs et distinctifs. Il vit traditionnellement dans des communautés étroitement liées, et au sein de larges et complexes groupes familiaux étendus. Un Dénobulien a plusieurs épouses, qui ont elles-mêmes plusieurs partenaires, et qui ont ensemble des douzaines d’enfants. Ils sont culturellement curieux, perspicaces et intéressés par un large éventail de philosophies, mais à cause de leur tempérament studieux, de leurs grandes familles et de leur nature grégaire, ils quittent rarement leur monde natal pour s’aventurer dans l’univers.","Денобуланцы родом с планеты Денобула. Они от природы общительны и любознательны. Союзники человечества с 2130-х годов. Денобула очень быстро присоединилась к Федерации, хоть и не была одной из её основателей. Это социально активный вид с характерными выразительными чертами лица, привыкший к близким общественным отношениям, с большими и сложно устроенными семьями. У денобуланца может быть несколько супругов, у каждого из которых несколько собственных партнёров и десятки общих детей. Они интеллектуальны, любознательны, проницательны и интересуются разными философскими теориями, хотя из-за природной склонности к науке, многодетных семей и общественной направленности немногие из них отваживаются улететь далеко от родной планеты.","Originados do planeta Denobula, Denobulanos são um povo gregário e inquisitivo que tem sido aliado da Humanidade desde os anos 2130. Embora Denobula não seja um dos fundadores da Federação, os Denobulanos se uniram logo após ela. Os Denobulanos são um povo sociável, com características expressivas distintas que são usadas para viver em condições comunais próximas, e cujos grupos familiares extensos são grandes e complexos — um Denobulano pode ter várias esposas, cada uma podendo ter seus vários parceiros, e dúzias de filhos entre eles. Culturalmente, eles são intelectualmente curiosos, perceptivos e interessados em uma ampla gama de filosofias, embora sua natureza estudiosa, grandes famílias e natureza gregária signifique que relativamente poucos deles se aventurem muito longe de seu mundo natal."
 Species.denobulan.exampleValue,Safety in Numbers,,Gemeinsam sind wir stark,,La sécurité dans le nombre.,Безопасность в количестве,Segurança nos Números
 Species.denobulan.soloDescription,"A gregarious, inquisitive people allied with humanity since the 2130s. Often at ease encountering new cultures and collaborating within large social groups. Robust physiology, similar to Humans in appearance, with facial ridges.",,,,,"Общительный, любознательный народ, объединившийся с человечеством с 2130-х годов. Часто легко сходятся с новыми культурами и сотрудничают внутри больших социальных групп. Крепкая физиология, внешне похожа на человека, с гребнями на лице.","Um povo sociável e curioso aliado à humanidade desde a década de 2130. Geralmente se sentem à vontade para conhecer novas culturas e colaborar em grandes grupos sociais. Fisiologia robusta, semelhante à dos Humanos na aparência, com sulcos faciais."

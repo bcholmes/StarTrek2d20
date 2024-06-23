@@ -34,6 +34,7 @@ export enum PageIdentity {
     Finish,
 
     OtherTools,
+    RandomStarship,
 
     CustomSpaceframe,
     MissionProfileTalentSelection,

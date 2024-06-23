@@ -1,3 +1,4 @@
+import { Era } from "../helpers/eras";
 import { Source, SourcesHelper } from "../helpers/sources";
 import { ADD_SOURCE, REMOVE_SOURCE, SET_ALLOW_CROSS_SPECIES_TALENTS, SET_ALLOW_ESOTERIC_TALENTS, SET_ERA, SET_SOURCES } from "./contextActions";
 
@@ -12,7 +13,7 @@ const persistContext = (sources: Source[]) => {
 let initialData = null;
 
 const getInitialData = () => {
-    let base = { sources: [ Source.Core ], era: undefined , allowCrossSpeciesTalents: false, allowEsotericTalents: false };
+    let base = { sources: [ Source.Core ], era: Era.NextGeneration , allowCrossSpeciesTalents: false, allowEsotericTalents: false };
     if (initialData == null) {
         initialData = { ...base };
         try {
