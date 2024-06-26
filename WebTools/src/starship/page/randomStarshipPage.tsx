@@ -28,7 +28,7 @@ const RandomStarshipPage: React.FC<IRandomStarshipProperties> = ({ era }) => {
 
     const createStarship = () => {
         let starship = starshipGenerator({
-            era: Era.NextGeneration,
+            era: era,
             campaignYear: campaignYear
         });
 

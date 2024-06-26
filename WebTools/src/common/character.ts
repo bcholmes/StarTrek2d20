@@ -1239,6 +1239,7 @@ export class Character extends Construct {
         character.additionalTraits = this.additionalTraits;
         character.lineage = this.lineage;
         character.house = this.house;
+        character.era = this.era;
         return character;
     }
 
