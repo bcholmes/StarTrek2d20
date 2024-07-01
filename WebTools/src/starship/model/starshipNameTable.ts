@@ -1,4 +1,5 @@
 import { Era } from "../../helpers/eras"
+import { RandomStarshipCharacterType } from "./randomStarshipCharacterTypes"
 
 
 const starshipEnterpriseEraNames = [
@@ -46,6 +47,54 @@ const starshipEnterpriseEraNames = [
     "Al-Haytham",
     "Ibn Zuhr"
 ]
+
+const klingonEnterpriseEraNames = [
+    "HIv",
+    "Chech",
+    "Horey'So",
+    "Wa' qelI'qam Lengpu'",
+    "Chaj",
+    "yIDoH",
+    "bortaS",
+    "HoSghaj",
+    "'Iw",
+    "vaQ",
+    "SuvwI'",
+    "QeyHa'",
+    "parmaq",
+    "bIHegh",
+    "QeylIS",
+    "bIrchoH",
+    "qo'",
+    "Hoch",
+    "jatlh",
+    "juH qach",
+    "qaqIp",
+    "'ej yIqemchu'meH jIjaH",
+    "may'luch",
+    "ghe''or",
+    "Sub",
+    "ghom'a' qellu'chugh",
+    "HeSraj vavlI'",
+    "toy'wI''a'",
+    "poSrupbe'jaj",
+    "qorDu'ghot HoSghaj",
+    "'ej bortaS",
+    "maw'",
+    "rol taj",
+    "ghev",
+    "may'luch",
+    "SIq",
+    "ngutlh",
+    "qew",
+    "ratlh"
+]
+
+const klingonTngEraNames = [
+    "Korrd",
+    "Azetbur"
+]
+
 
 const starshipTosEraName = [
     "Mayweather",
@@ -142,24 +191,35 @@ const starshipTngEraNames = [
     "Johnson",
 ]
 
-const chooseOptions = (era: Era) => {
-    let result = [...starshipEnterpriseEraNames];
-    switch (era) {
-        case Era.OriginalSeries:
-            Array.prototype.push.apply(result, starshipTosEraName);
-            break;
-        case Era.NextGeneration:
-            Array.prototype.push.apply(result, starshipTosEraName);
-            Array.prototype.push.apply(result, starshipTngEraNames);
-            break;
-        default:
+const chooseOptions = (era: Era, type: RandomStarshipCharacterType) => {
+    if (type === RandomStarshipCharacterType.Klingon) {
+        let result = [...klingonEnterpriseEraNames];
+        switch (era) {
+            case Era.NextGeneration:
+                Array.prototype.push.apply(result, klingonTngEraNames);
+                break;
+            default:
+        }
+        return result;
+    } else {
+        let result = [...starshipEnterpriseEraNames];
+        switch (era) {
+            case Era.OriginalSeries:
+                Array.prototype.push.apply(result, starshipTosEraName);
+                break;
+            case Era.NextGeneration:
+                Array.prototype.push.apply(result, starshipTosEraName);
+                Array.prototype.push.apply(result, starshipTngEraNames);
+                break;
+            default:
+        }
+        return result;
     }
-    return result;
 }
 
-export const StarshipRandomNameTable = (era: Era) => {
+export const StarshipRandomNameTable = (era: Era, type: RandomStarshipCharacterType) => {
 
-    let options = chooseOptions(era);
+    let options = chooseOptions(era, type);
     let index = Math.floor(Math.random() * options.length);
 
     return options[index];

@@ -303,7 +303,7 @@ const FocusEngineeringRandomTable = () => {
             case 5:
                 return "Diagnostics";
             case 6:
-                return "Electro-Plasma Systems";
+                return "Electro-Plasma Power Systems";
             case 7:
                 return "Emergency Repairs";
             case 8:

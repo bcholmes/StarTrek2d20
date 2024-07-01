@@ -29,7 +29,8 @@ const RandomStarshipPage: React.FC<IRandomStarshipProperties> = ({ era }) => {
     const createStarship = () => {
         let starship = starshipGenerator({
             era: era,
-            campaignYear: campaignYear
+            campaignYear: campaignYear,
+            type: type
         });
 
         const value = marshaller.encodeStarship(starship);
@@ -51,7 +52,7 @@ const RandomStarshipPage: React.FC<IRandomStarshipProperties> = ({ era }) => {
                         <ReactMarkdown>{t('RandomStarshipPage.instructions')}</ReactMarkdown>
                         <div className="row">
                             <div className="col-md-6 mt-4">
-                                <Header level={2}>{t('Construct.other.characterType')}</Header>
+                                <Header level={2}>{t('Construct.other.starshipType')}</Header>
 
                                 <div className="my-4">
                                     <DropDownSelect

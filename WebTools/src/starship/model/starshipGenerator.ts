@@ -7,16 +7,38 @@ import { MissionProfileHelper } from "../../helpers/missionProfiles";
 import { SpaceframeHelper } from "../../helpers/spaceframes";
 import { allSystems } from "../../helpers/systems";
 import { TalentsHelper } from "../../helpers/talents";
+import { RandomStarshipCharacterType } from "./randomStarshipCharacterTypes";
 import { StarshipRandomNameTable } from "./starshipNameTable";
 
 export interface IStarshipConfiguration {
     era: Era;
     campaignYear: number;
+    type: RandomStarshipCharacterType;
+}
+
+const convertStarshipType = (type: RandomStarshipCharacterType) => {
+    switch (type) {
+        case RandomStarshipCharacterType.Klingon:
+            return CharacterType.KlingonWarrior;
+        case RandomStarshipCharacterType.Starfleet:
+        default:
+            return CharacterType.Starfleet;
+    }
+}
+
+const determinePrefix = (starship: Starship) => {
+    if (starship.type === CharacterType.Starfleet) {
+        return "USS ";
+    } else if (starship.type === CharacterType.KlingonWarrior) {
+        return "IKS ";
+    } else {
+        return "";
+    }
 }
 
 export const starshipGenerator = (config: IStarshipConfiguration) => {
 
-    let result = Starship.createStandardStarship(config.era);
+    let result = Starship.createStandardStarship(config.era, convertStarshipType(config.type));
     result.serviceYear = config.campaignYear;
     const frames = SpaceframeHelper.instance().getSpaceframes(result, false);
 
@@ -60,7 +82,8 @@ export const starshipGenerator = (config: IStarshipConfiguration) => {
     if (result.type === CharacterType.Starfleet) {
         result.registry = RegistryNumber.generate(result.serviceYear, result.type, result.spaceframeModel);
     }
-    result.name = (result.type === CharacterType.Starfleet ? "USS " : "") + StarshipRandomNameTable(config.era);
+    result.name = determinePrefix(result)
+        + StarshipRandomNameTable(config.era, config.type);
 
     return result;
 }

@@ -21,4 +21,9 @@ describe('testing Camel Case Utility', () => {
         expect(toCamelCase("Faulty capitalization")).toBe("faultyCapitalization");
     });
 
+    test('names including acronyms', () => {
+        expect(toCamelCase("EVA Suits")).toBe("evaSuits");
+    });
+
+
 });

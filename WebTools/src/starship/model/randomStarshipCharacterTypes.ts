@@ -3,7 +3,8 @@ import { Era } from "../../helpers/eras";
 import store from "../../state/store";
 
 export enum RandomStarshipCharacterType {
-    Starfleet
+    Starfleet,
+    Klingon
 }
 
 export class RandomStarshipCharacterTypeModel {
@@ -20,6 +21,8 @@ export class RandomStarshipCharacterTypeModel {
         switch (this.type) {
             case RandomStarshipCharacterType.Starfleet:
                 return i18next.t('CharacterType.name.starfleet');
+            case RandomStarshipCharacterType.Klingon:
+                return i18next.t('AlliedMilitaryType.name.klingonDefenceForce');
             default:
                 return this.name;
         }
@@ -39,11 +42,8 @@ export class RandomStarshipCharacterTypes {
 
     private _types = [
         new RandomStarshipCharacterTypeModel(RandomStarshipCharacterType.Starfleet, "Starfleet"),
+        new RandomStarshipCharacterTypeModel(RandomStarshipCharacterType.Klingon, "Klingon Defense Force"),
     ];
-
-    private isNextGenerationOrLater() {
-        return [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32].indexOf(store.getState().context.era) >= 0;
-    }
 
     get types() {
         return this._types.filter(t => {

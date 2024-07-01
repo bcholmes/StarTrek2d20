@@ -116,9 +116,10 @@ export class Starship extends Construct {
         return result;
     }
 
-    static createStandardStarship(era: Era = Era.NextGeneration) {
+    static createStandardStarship(era: Era = Era.NextGeneration, type: CharacterType = CharacterType.Starfleet) {
         const result = new Starship();
         result.stereotype = Stereotype.Starship;
+        result.type = type;
         result.era = era;
         return result;
     }
@@ -425,7 +426,7 @@ export class Starship extends Construct {
                     if (refitString !== "") {
                         refitString += ", ";
                     }
-                    refitString += "+" + value + " " + System[s];
+                    refitString += "+" + value + " " + i18next.t(makeKey('Construct.system.', System[s]));
                 }
             });
         }
