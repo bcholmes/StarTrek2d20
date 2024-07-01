@@ -1,6 +1,4 @@
 import i18next from "i18next";
-import { Era } from "../../helpers/eras";
-import store from "../../state/store";
 
 export enum RandomStarshipCharacterType {
     Starfleet,

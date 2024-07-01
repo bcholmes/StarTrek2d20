@@ -7,7 +7,6 @@ import { Button } from "../../components/button";
 import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
 import { Header } from "../../components/header";
 import { Era, eraDefaultYear } from "../../helpers/eras";
-import ServiceYear from "../../helpers/serviceYear";
 import { Source } from "../../helpers/sources";
 import { PageIdentity } from "../../pages/pageIdentity";
 import { hasSource } from "../../state/contextFunctions";

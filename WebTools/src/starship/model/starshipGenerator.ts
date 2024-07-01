@@ -1,7 +1,7 @@
 import { CharacterType } from "../../common/characterType";
 import { Starship } from "../../common/starship";
 import RegistryNumber from "../../components/registryNumberGenerator";
-import { Era, eraDefaultYear } from "../../helpers/eras";
+import { Era } from "../../helpers/eras";
 import { MissionPodHelper } from "../../helpers/missionPods";
 import { MissionProfileHelper } from "../../helpers/missionProfiles";
 import { SpaceframeHelper } from "../../helpers/spaceframes";
