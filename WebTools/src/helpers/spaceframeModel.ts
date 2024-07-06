@@ -83,6 +83,14 @@ export class SpaceframeModel {
         return result;
     }
 
+    get isSmallCraft() {
+        return this.scale <= 2;
+    }
+
+    get isCivilian() {
+        return this.name.indexOf("Civilian") || this.id === Spaceframe.JClassYClass;
+    }
+
     get key() {
         if (this.id != null) {
             let key = makeKey('Spaceframe.', Spaceframe[this.id]);

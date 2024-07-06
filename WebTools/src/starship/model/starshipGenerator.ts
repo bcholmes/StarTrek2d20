@@ -40,7 +40,8 @@ export const starshipGenerator = (config: IStarshipConfiguration) => {
 
     let result = Starship.createStandardStarship(config.era, convertStarshipType(config.type));
     result.serviceYear = config.campaignYear;
-    const frames = SpaceframeHelper.instance().getSpaceframes(result, false);
+    const frames = SpaceframeHelper.instance().getSpaceframes(result, false)
+        .filter(s => !s.isCivilian && !s.isSmallCraft);
 
 
     if (frames?.length) {
