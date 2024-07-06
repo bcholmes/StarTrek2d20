@@ -43,7 +43,6 @@ export const starshipGenerator = (config: IStarshipConfiguration) => {
     const frames = SpaceframeHelper.instance().getSpaceframes(result, false)
         .filter(s => !s.isCivilian && !s.isSmallCraft);
 
-
     if (frames?.length) {
         result.spaceframeModel = frames[Math.floor(Math.random() * frames.length)];
     }
@@ -54,7 +53,7 @@ export const starshipGenerator = (config: IStarshipConfiguration) => {
         result.missionProfileModel = missionProfiles[Math.floor(Math.random() * missionProfiles.length)];
 
         const missionProfileTalents = result.missionProfileModel.talents.filter(
-            t => result.spaceframeModel.talents.map(t => t.name).indexOf(t.name) < 0);
+            t => result.spaceframeModel == null || result.spaceframeModel.talents.map(t => t.name).indexOf(t.name) < 0);
         if (missionProfileTalents?.length) {
             result.profileTalent = missionProfileTalents[Math.floor(Math.random() * missionProfileTalents.length)];
         }
