@@ -133,4 +133,11 @@ export enum Spaceframe {
     Friendship,
     Janeway,
     Kirk,
+
+
+
+    // Continuing Mission
+    Loknar,
+    Chandley,
+    Larson,
 }

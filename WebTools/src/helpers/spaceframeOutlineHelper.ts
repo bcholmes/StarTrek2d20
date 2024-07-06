@@ -307,6 +307,8 @@ class SpaceframeOutlineHelper {
             return CENTAUR_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Challenger) {
             return CHALLENGER_CLASS_ELABORATE_OUTLINE;
+        } else if (spaceframe.id === Spaceframe.Chandley) {
+            return CHANDLEY_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Cheyenne) {
             return CHEYENNE_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Constellation || spaceframe.id === Spaceframe.Constellation_UP) {
@@ -351,6 +353,10 @@ class SpaceframeOutlineHelper {
             return JANEWAY_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Kirk) {
             return KIRK_CLASS_ELABORATE_OUTLINE;
+        } else if (spaceframe.id === Spaceframe.Larson) {
+            return this.isMovieEra(starship.serviceYear) ? LARSON_CLASS_MOVIE_ERA_OUTLINE : LARSON_CLASS_TOS_ELABORATE_OUTLINE;
+        } else if (spaceframe.id === Spaceframe.Loknar) {
+            return this.isMovieEra(starship.serviceYear) ? LOKNAR_MOVIE_ERA_OUTLINE : LOKNAR_TOS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Luna || spaceframe.id === Spaceframe.Luna_UP) {
             return LUNA_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Magee) {

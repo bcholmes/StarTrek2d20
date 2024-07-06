@@ -2005,6 +2005,73 @@ export class SpaceframeHelper {
             ],
             [ "Federation Starship" ],
             99999),
+
+
+        [Spaceframe.Loknar]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Loknar,
+            CharacterType.Starfleet,
+            "Loknar Class",
+            2243,
+            [ Source.ContinuingMissions ],
+            [7, 8, 8, 8, 8, 8],
+            [0, 1, 2, 0, 0, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Rapid-Fire Torpedo Launcher"),
+                TalentSelection.selectTalent("Rugged Design"),
+            ],
+            [ "Federation Starship" ],
+            2297),
+        [Spaceframe.Larson]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Larson,
+            CharacterType.Starfleet,
+            "Larson Class",
+            2244,
+            [ Source.ContinuingMissions ],
+            [6, 7, 8, 8, 9, 9],
+            [0, 2, 1, 0, 0, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Reaction Control System"),
+                TalentSelection.selectTalent("Rugged Design"),
+            ],
+            [ "Federation Starship" ],
+            2309),
+        [Spaceframe.Chandley]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Chandley,
+            CharacterType.Starfleet,
+            "Chandley Class",
+            2285,
+            [ Source.ContinuingMissions ],
+            [7, 8, 9, 8, 10, 8],
+            [1, 0, 1, 1, 0, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("Rugged Design"),
+            ],
+            [ "Federation Starship" ],
+            2300),
+
+
+
+
+
         // Klingon Spaceframes
         [Spaceframe.D5]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.D5,
