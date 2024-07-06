@@ -561,6 +561,7 @@ Construct.other.spaceFrame,Space Frame,,Schiffsklasse,Plantilla,Modèle de Vaiss
 Construct.other.specialRules,Special Rules,,Spezialregeln,Reglas Especiales,Règles spéciales,Особые Правила,Regras Especiais
 Construct.other.species,Species,,Spezies,Especie,Espèce,Раса,Espécies
 Construct.other.speciesAbility,Species Ability,,,Habilidad de la Especie,Capacités d'espèce,,
+Construct.other.starshipType,Starship Type,,,,,,
 Construct.other.stats,Stats,,Werte,Estadísticas,Stats,Значения,Estatísticas
 Construct.other.stress,Stress,,Anstrengung,Estrés,Stress,Стресс,Estresse
 Construct.other.systems,Systems,,Systeme,Sistemas,Systèmes,Системы,Sistemas
@@ -1372,10 +1373,12 @@ ExtraType.risanSymbol,Risian Symbol,,Risanisches Symbol,Símbolo Risiano,Symbole
 ExtraType.inuitTattoo,Inuit Tattoo,,Inuit-Tattoo,Tatuaje Unuit,Tatouage Inuit,,Tatuagem Inuit
 ExtraType.zaraniteMask,Zaranite Breather Mask,,Zaranit-Atemmaske,Respirador Zaranita,Respirateur Zaranite,,Máscara de Respiração Zaranite
 ExtraType.ferengiHeadFlap,Ferengi Head Flap,,Ferengi-Kopftuch,Velo Ferengi,Voilette Ferengi,,Capa de Cabeça Ferengi
+Focus.advancedHolograms,Advanced Holograms,,,,,,
 Focus.ambushTactics,Ambush Tactics,,,,,,
 Focus.animalHandling,Animal Handling,,Tierführung,Trato con Animales,Comportement animal,Обращение с животными,Manejo de Animais
 Focus.anthropology,Anthropology,,Anthropologie,Antropología,Anthropologie,Антропология,Antropologia
 Focus.art,Art,,,,Art,,
+Focus.artificialIntelligenceSystems,Artificial Intelligence Systems,,,,,,
 Focus.astrometrics,Astrometrics,,Astrometrie,Astrométrica,Astrométrique,Астрометрия,Astrometria
 Focus.astronavigation,Astronavigation,,Astronavigation,Astronavegación,Astronavigation,Астронавигация,Astronavegação
 Focus.astronomy,Astronomy,,,,Astronomy,,
@@ -1412,20 +1415,25 @@ Focus.debate,Debate,,Debatte,Debate,Débat,Дебаты,Debate
 Focus.deception,Deception,,,,Tromperie,,
 Focus.decisiveLeadership,Decisive Leadership,,,,Commandement décisif,,
 Focus.deflectorOperations,Deflector Operations,,,,,,
+Focus.deflectorSystems,Deflector Systems,,,,,,
 Focus.demolition,Demolition,,Demolierung,Demolición,Démolition,Снос,Demolição
+Focus.diagnostics,Diagnostics,,,,,,
 Focus.diplomacy,Diplomacy,,Diplomtie,Diplomacia,Diplomacie,Дипломатия и политика,Diplomacia
 Focus.disguise,Disguise,,Tarnung,Disfraces,Déguisement,Маскировка,Disfarce
 Focus.disruptors,Disruptors,,Disruptoren,Disruptores,Disrupteurs,Дистрапторы,Disruptores
 Focus.efficientEvasion,Efficient Evasion,,,,Efficacité d'évasion,,
 Focus.electroPlasmaPowerSystems,Electro-Plasma Power Systems,,Elektroplasma-Systeme (EPS),Sistemas de Energía de Electroplasma,Systèmes d'Alimentations Electro-Plasmiques,Электро-плазменные силовые установки,Sistemas de Energia de Eletro-Plasma
 Focus.emergencyMedicine,Emergency Medicine,,Notfallmedizin,Medicina de Emergencia,Médecine d'Urgence,Неотложная медицинская помощь,Medicina de Emergência
+Focus.emergencyRepairs,Emergency Repairs,,,,,,
 Focus.emotionalIntelligence,Emotional Intelligence,,,,Intelligence émotionnelle,,
+Focus.energyWeapons,Energy Weapons,,,,,,
 Focus.espionage,Espionage,,Spionage,Espionaje,Espionnage,Шпионаж,Espionagem
 Focus.etiquette,Etiquette,,,,Etiquette,,
 Focus.evacuationProcedures,Evacuation Procedures,,,,Procédures d'évacuation,,
 Focus.evasiveAction,Evasive Action,,Ausweichmanöver,Acción Evasiva,Action d'évasion,Уклонение,Ações Evasivas
 Focus.exoTectonics,Exo-tectonics,,Exotektonik,Exotectónica,Exo-tectonique,Экзо-тектоника,Exo-tectônica
 Focus.extraVehicularActivity,Extra-Vehicular Activity,,Außenbordeinsatz,Actividad Extravehicular,Activités Extra-Vehiculaires ,Внекорабельная деятельность (ВКД),Atividade Extra-Veicular
+Focus.evaSuits,EVA Suits,,,,,,
 Focus.finances,Finances,,Finanzen,Finanzas,Finances,Финансы,Finanças
 Focus.fleetFormations,Fleet Formations,,,,,,
 Focus.flightController,Flight Controller,,,,Contrôleur de vol,,
@@ -2364,7 +2372,9 @@ Talent.doctorsOrders.description,"When you attempt a Task to coordinate others, 
 Talent.triage,Triage,,,,Triage,Первичный осмотр,
 Talent.triage.description,"When you attempt a Task to identify specific injuries or illnesses, or to determine the severity of a patient’s condition, you may spend one Momentum (Repeatable) to diagnose one additional patient.",,,,"Quand vous effectuez une Tâche pour identifier des blessures ou des maladies précises, ou pour déterminer la gravité de l’état d’un patient, vous pouvez dépenser 1 point d’Impulsion (multiple) pour diagnostiquer un patient de plus.","Выполняя Задачу по определению травм, болезней или тяжести состояния, можно сбросить 1 жетон Импульса (Повторное применение) для диагностики ещё одного пациента.",
 Talent.quickStudy,Quick Study,,,,Etude rapide,Быстрое изучение,
-Talent.quickStudy.description,"You have a way of getting a good impression of a situation with only a moment’s observation. At the start of a scene, you may immediately ask one question, as if you had spent one Momentum on the Obtain Information Momentum spend. The answer can only provide information that you could obtain with your own senses; you cannot gain information from equipment in so short a time.",,,,"Vous savez estimer une situation en un clin d'oeil. Au début d'une scène, vous pouvez immédiatement et gratuitement poser une question, comme si vous aviez dépensé un point d'impulsion. La réponse ne peut vous donner que des informations que vous pourriez obtenir par vospropres sens. Vous ne pouvez obtenir d'information d'un équipement en un si court laps de temps. ",Сложность выполняемой Задачи не возрастает при применении незнакомой вашему персонажу процедуры или при лечении существа неизвестного вида.,
+Talent.quickStudy.description,"When attempting a Task that will involve an unfamiliar medical procedure, or which is to treat an unfamiliar species, ignore any Difficulty increase stemming from your unfamiliarity.",,,,,Сложность выполняемой Задачи не возрастает при применении незнакомой вашему персонажу процедуры или при лечении существа неизвестного вида.,
+Talent.quickSurvey,Quick Survey,,,,,,
+Talent.quickSurvey.description,"You have a way of getting a good impression of a situation with only a moment’s observation. At the start of a scene, you may immediately ask one question, as if you had spent one Momentum on the Obtain Information Momentum spend. The answer can only provide information that you could obtain with your own senses; you cannot gain information from equipment in so short a time.",,,,"Vous savez estimer une situation en un clin d'oeil. Au début d'une scène, vous pouvez immédiatement et gratuitement poser une question, comme si vous aviez dépensé un point d'impulsion. La réponse ne peut vous donner que des informations que vous pourriez obtenir par vospropres sens. Vous ne pouvez obtenir d'information d'un équipement en un si court laps de temps. ",,
 Talent.fieldMedicine,Field Medicine,,Feldchirurg,,Médecine de terrain,Полевая медицина,Medicina de Campo
 Talent.fieldMedicine.description,"When attempting a Medicine Task, you may ignore any increase in Difficulty for working without the proper tools or equipment.",,"Wenn Sie eine Medizin-Aufgabe absolvieren, können Sie eine etwaige Erhöhung der Schwierigkeit aufgrund unvollständiger oder fehlender Ausrüstung ignorieren.",,"Quand vous effectuez une Tâche de Médecine, vous ignorez les augmentations de difficulté dues à l’absence d’instruments ou d’équipement appropriés.","Выполняя Задачу на Медицину, игнорируйте любое увеличение сложности за работу без нужных инструментов или оборудования.","Quando fizer uma Tarefa de Medicina, você pode ignorar qualquer aumento em Dificuldade para trabalhar sem as ferramentas ou equipamentos apropriados."
 Talent.finesseStrikes,Finesse Strikes,,,,Tir acrobatique,,Ataques Refinados
