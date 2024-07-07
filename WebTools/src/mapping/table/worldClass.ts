@@ -4,6 +4,7 @@ export enum WorldClass {
     C,
     D,
     E,
+    F,
     H,
     I,
     J,
@@ -13,7 +14,9 @@ export enum WorldClass {
     N,
     O,
     P,
+    R,
     T,
+    U,
     Y,
     ArtificialPlanet,
 }
@@ -34,10 +37,11 @@ export class WorldClassModel {
 
 export const worldClasses: WorldClassModel[] = [
     new WorldClassModel(WorldClass.AsteroidBelt, "Asteroid Belt"),
-    new WorldClassModel(WorldClass.B, "Geomorphic"),
+    new WorldClassModel(WorldClass.B, "Geomorteus"),
     new WorldClassModel(WorldClass.C, "Icy Geoinactive"),
     new WorldClassModel(WorldClass.D, "Icy/Rocky Barren"),
     new WorldClassModel(WorldClass.E, "Geoplastic"),
+    new WorldClassModel(WorldClass.F, "Geometallic"),
     new WorldClassModel(WorldClass.H, "Desert"),
     new WorldClassModel(WorldClass.I, "Ammonia Clouds/Gas Supergiant"),
     new WorldClassModel(WorldClass.J, "Jovian Gas Giant"),
@@ -47,7 +51,9 @@ export const worldClasses: WorldClassModel[] = [
     new WorldClassModel(WorldClass.N, "Reducing"),
     new WorldClassModel(WorldClass.O, "Pelagic/Ocean"),
     new WorldClassModel(WorldClass.P, "Glaciated"),
+    new WorldClassModel(WorldClass.R, "Rogue"),
     new WorldClassModel(WorldClass.T, "Gas Ultragiants"),
+    new WorldClassModel(WorldClass.U, "Chthonian"),
     new WorldClassModel(WorldClass.Y, "Demon"),
     new WorldClassModel(WorldClass.ArtificialPlanet, "Artificial Planet"),
 ];

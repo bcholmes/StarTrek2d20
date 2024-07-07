@@ -135,9 +135,16 @@ export enum Spaceframe {
     Kirk,
 
 
+    // 2nd Edition
+    Constituion3,
+
+
 
     // Continuing Mission
     Loknar,
     Chandley,
     Larson,
+    Perseus,
+    Pioneer,
+    Ptolemy,
 }

@@ -555,7 +555,10 @@ export class Character extends Construct {
     }
 
     get stress() {
-        let stress = this.attributes[Attribute.Fitness].value + this.skills[Skill.Security].expertise;
+        let stress = this.attributes[Attribute.Fitness].value;
+        if (this.version === 1) {
+            stress +=  + this.skills[Skill.Security].expertise;
+        }
 
         if (this.hasTalent("Resolute")) {
             stress += 3;
@@ -1168,6 +1171,7 @@ export class Character extends Construct {
         character.type = this.type;
         character.stereotype = this.stereotype;
         character.typeDetails = this.typeDetails;
+        character.version = this.version;
         this._attributes.forEach(a => {
             character._attributes[a.attribute].attribute = a.attribute;
             character._attributes[a.attribute].value = a.value;

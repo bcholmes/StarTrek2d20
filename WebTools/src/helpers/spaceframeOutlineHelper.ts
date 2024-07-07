@@ -387,8 +387,14 @@ class SpaceframeOutlineHelper {
             return ODYSSEY_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Olympic || spaceframe.id === Spaceframe.Olympic_UP) {
             return OLYMPIC_CLASS_ELABORATE_OUTLINE;
+        } else if (spaceframe.id === Spaceframe.Perseus) {
+            return PERSEUS_CLASS_ELABORATE_OUTLINE;
+        } else if (spaceframe.id === Spaceframe.Pioneer) {
+            return PIONEER_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Prometheus) {
             return PROMETHEUS_CLASS_ELABORATE_OUTLINE;
+        } else if (spaceframe.id === Spaceframe.Ptolemy) {
+            return PTOLEMY_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Ross) {
             return ROSS_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Saber) {

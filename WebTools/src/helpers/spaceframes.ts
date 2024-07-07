@@ -2047,6 +2047,67 @@ export class SpaceframeHelper {
             ],
             [ "Federation Starship" ],
             2309),
+        [Spaceframe.Perseus]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Perseus,
+            CharacterType.Starfleet,
+            "Perseus Class",
+            2247,
+            [ Source.ContinuingMissions ],
+            [8, 8, 8, 7, 8, 9],
+            [0, 1, 2, 0, 0, 0],
+            3,
+            [
+                "Phaser Banks",
+                "Phaser Cannons",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Fast Targeting Systems"),
+                TalentSelection.selectTalent("Improved Impulse Engines"),
+            ],
+            [ "Federation Starship" ],
+            2280),
+        [Spaceframe.Pioneer]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Pioneer,
+            CharacterType.Starfleet,
+            "Pioneer Class",
+            2238,
+            [ Source.ContinuingMissions ],
+            [8, 7, 7, 7, 8, 7],
+            [0, 0, 0, 1, 1, 1],
+            3,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Hull Integrity"),
+                TalentSelection.selectTalent("Improved Power Systems"),
+            ],
+            [ "Federation Starship" ],
+            2280),
+        [Spaceframe.Ptolemy]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Ptolemy,
+            CharacterType.Starfleet,
+            "Ptolemy Class",
+            2257,
+            [ Source.ContinuingMissions ],
+            [7, 8, 9, 8, 9, 5],
+            [0, 1, 0, 2, 0, 0],
+            3,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Hull Integrity"),
+                TalentSelection.selectTalent("Improved Power Systems"),
+            ],
+            [ "Federation Starship" ],
+            2280),
         [Spaceframe.Chandley]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Chandley,
             CharacterType.Starfleet,

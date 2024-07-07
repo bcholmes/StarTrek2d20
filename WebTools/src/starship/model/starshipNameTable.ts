@@ -45,7 +45,8 @@ const starshipEnterpriseEraNames = [
     "Al-Farabi",
     "Ibn Sina",
     "Al-Haytham",
-    "Ibn Zuhr"
+    "Ibn Zuhr",
+    "Salk"
 ]
 
 const klingonEnterpriseEraNames = [
@@ -189,6 +190,8 @@ const starshipTngEraNames = [
     "Dismuke",
     "Korby",
     "Johnson",
+    "Pollyea",
+    "Spader"
 ]
 
 const chooseOptions = (era: Era, type: RandomStarshipCharacterType) => {
