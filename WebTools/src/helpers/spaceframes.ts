@@ -2064,7 +2064,7 @@ export class SpaceframeHelper {
             ],
             [
                 TalentSelection.selectTalent("Fast Targeting Systems"),
-                TalentSelection.selectTalent("Improved Impulse Engines"),
+                TalentSelection.selectTalent("Improved Impulse Drive"),
             ],
             [ "Federation Starship" ],
             2280),

@@ -102,5 +102,7 @@ export enum PageIdentity {
     EditTable,
 
 
+    TacticalAssets,
+
 
 }

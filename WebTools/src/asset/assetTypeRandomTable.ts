@@ -1,7 +1,7 @@
 import { D20 } from "../common/die"
 import { AssetType, AssetTypes } from "./assetType";
 
-export const assetRandomTable = (numberOfCharacter: number) => {
+export const assetTypeRandomTable = (numberOfCharacters: number) => {
     const roll = D20.roll();
     switch (roll) {
         case 1:
@@ -21,7 +21,7 @@ export const assetRandomTable = (numberOfCharacter: number) => {
         case 8:
         case 9:
         case 10:
-            return numberOfCharacter <= 2 ? AssetTypes.instance.getTypes()[AssetType.Character] : AssetTypes.instance.getTypes()[AssetType.Ship];
+            return numberOfCharacters <= 2 ? AssetTypes.instance.getTypes()[AssetType.Character] : AssetTypes.instance.getTypes()[AssetType.Ship];
         case 16:
         case 17:
         case 18:
