@@ -29,6 +29,9 @@ import { Role, RolesHelper } from './roles';
 import { BorgImplantType, BorgImplants } from './borgImplant';
 import { Specialization, allSpecializations } from '../common/specializationEnum';
 import { Era, ErasHelper } from './eras';
+import { Asset, AssetStat } from '../asset/asset';
+import { AssetType } from '../asset/assetType';
+import { AssetStatType, allAssetStatTypes } from '../asset/assetStat';
 
 class Marshaller {
 
@@ -38,6 +41,18 @@ class Marshaller {
 
     encodeNpc(character: Character) {
         return this.encode(this.encodeSimpleCharacterAsJson("npc", character));
+    }
+
+    encodeAsset(asset: Asset) {
+        let sheet = {
+            "stereotype": "asset",
+            "type": AssetType[asset.type],
+            "name": asset.name,
+            "stats": {}
+        }
+
+        allAssetStatTypes().forEach(t => sheet.stats[AssetStatType[t]] = "" + asset.stats[t].base + "/" + asset.stats[t].critical);
+        return this.encode(sheet);
     }
 
     private encodeSimpleCharacterAsJson(stereotype: string, character: Character) {
@@ -513,6 +528,33 @@ class Marshaller {
             return undefined;
         }
     }
+
+    decodeAsset(s: string): Asset {
+        let json = this.decode(s);
+        let type = null;
+        [AssetType.Character, AssetType.Ship, AssetType.Resource].forEach(a => {
+            if (AssetType[a] === json.type) {
+                type = a;
+            }
+        });
+        let name = json.name;
+        let stats = [null, null, null, null, null];
+        if (json.stats) {
+            allAssetStatTypes().forEach(a => {
+                let statName = AssetStatType[a];
+                let s = json.stats[statName];
+                if (s?.length && s?.indexOf('/') >= 0) {
+                    let base = parseInt(s.substring(0, s.indexOf('/')));
+                    let critical = parseInt(s.substring(s.indexOf('/') + 1));
+
+                    stats[a] = new AssetStat(base, critical);
+                }
+            });
+        }
+
+        return new Asset(type, name, stats);
+    }
+
 
     decodeStarship(s: string) {
         let json = this.decode(s);

@@ -78,6 +78,7 @@
     "TokenCreator.section.extras.forehead": "Forehead",
     "TokenCreator.section.extras.headwear": "Headwear",
 
+    "ViewPage.viewAsset": "View Asset",
     "ViewPage.viewSupportingCharacter": "View Supporting Character",
     "ViewPage.viewNpc": "View NPC",
     "ViewPage.viewMainCharacter": "View Main Character",
@@ -386,6 +387,8 @@
     "SupportingCharacter.numericalValue": "Value",
     "SupportingCharacter.speciesBonus": "Species Bonus",
 
+    "TacticalAssetsPage.instruction": "Add additional assets to your asset list.",
+
     "ToolSelection.instruction": "What do you want to create?",
     "ToolSelection.mainCharacter": "Main Character",
     "ToolSelection.supportingCharacter": "Supporting Character",
@@ -427,6 +430,7 @@
 
     "Common.select.choose": "Choose...",
 
+    "Construct.other.assetType": "Asset Type",
     "Construct.other.assignment": "Assignment",
     "Construct.other.attacks": "Attacks",
     "Construct.other.attribute": "Attribute",
@@ -527,6 +531,12 @@
     "Construct.department.science": "Science",
     "Construct.department.medicine": "Medicine",
 
+    "Construct.assetStat.medical": "Medical",
+    "Construct.assetStat.military": "Military",
+    "Construct.assetStat.personal": "Personal",
+    "Construct.assetStat.science": "Science",
+    "Construct.assetStat.social": "Social",
+
     "Construct.system.comms": "Comms",
     "Construct.system.computer": "Computer",
     "Construct.system.engines": "Engines",
@@ -534,6 +544,7 @@
     "Construct.system.structure": "Structure",
     "Construct.system.weapons": "Weapons",
 
+    "Page.title.tacticalAssets": "Tactical Assets",
     "Page.title.attributesAndDisciplines": "Finishing Touches",
     "Page.title.careerEvent": "Career Event",
     "Page.title.careerEvent1": "Career Event 1",

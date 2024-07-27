@@ -54,6 +54,7 @@ TokenCreator.section.extras.ears,Ears,,Ohren,Orejas,Oreilles,Уши,Orelhas
 TokenCreator.section.extras.face,Face,,Gesicht,Cara,Visage,Лицо,Rosto
 TokenCreator.section.extras.forehead,Forehead,,Stirn,Frente,Front,Лоб,Testa
 TokenCreator.section.extras.headwear,Headwear,,Kopfbedeckung,Accesorios para la  Cabeza,Couvre-Chef,Головной убор,Acessórios de Cabeça
+ViewPage.viewAsset,View Asset,,,,,,
 ViewPage.viewSupportingCharacter,View Supporting Character,,Nebencharakter anzeigen,Ver Personaje de Apoyo,Voir le personnage secondaire,Просмотр Персонажей Поддержки,Ver Personagem Coadjuvante
 ViewPage.viewNpc,View NPC,,NSC anzeigen,Ver PNJ,Voir PNJ,Просмотр НИП,Ver PdM
 ViewPage.viewMainCharacter,View Main Character,,Hauptfigur anzeigen,Ver Personaje Principal,Voir le personnage principal,Просмотр Игрового Персонажа,Ver Personagem Principal
@@ -468,6 +469,7 @@ SupportingCharacter.nameAndRank,Name & Rank,,Name & Rang,Nombre y Rango,Nom & Ra
 SupportingCharacter.nameAndRankInstruction,Give the character an appropriate name and rank. Supporting Characters should never have a rank above Lieutenant and may often be enlisted personnel rather than officers.,,Geben Sie dem Charakter einen passenden Namen und Rang. Nebencharaktere sollten keinen höheren Rang als Lieutenant haben und sind oftmals sogar Mannschaftsdienstgrade anstatt von Offizieren.,Proporciona al personaje un nombre y rango apropiado. Los Personajes de Apoyo nunca deberían tener un rango por encima de Teniente y la mayoría de las veces será personal alistado en vez de oficiales.,Donnez au personnage un nom et un grade approprié. Les personnages secondaires ne peuvent pas avoir un grade supérieur à Lieutenant et sont très sonvant du personnel enrôlé plutôt que des officiers.,"Дайте персонажу соответствующее имя и ранг. Второстепенные персонажи никогда не могут иметь ранг выше Лейтенанта и чаще бывают рядовым составом, чем офицерами.","Dê à personagem um nome e uma patente apropriados. As Personagens Coadjuvantes nunca devem ter uma patente acima de Tenente e, muitas vezes, podem ser alistados em vez de oficiais."
 SupportingCharacter.numericalValue,Value,,Wert,Valor,Valeur,Значение,Valor
 SupportingCharacter.speciesBonus,Species Bonus,,Spezies-Bonus,Bonus de Especie,Bonus d'Espèce,Рассовый бонус,Bônus de Espécie
+TacticalAssetsPage.instruction,Add additional assets to your asset list.,,,,,,
 ToolSelection.instruction,What do you want to create?,,Was soll erschaffen werden?,¿Qué quieres crear?,Que voulez vous créer?,Что вы хотите сгенерировать?,O que você deseja criar?
 ToolSelection.mainCharacter,Main Character,,Hauptfigur,Personaje principal,Personnage principal,Главный персонаж,Personagem Principal
 ToolSelection.supportingCharacter,Supporting Character,,Nebencharakter,Personaje de Apoyo,Personnage secondaire,Персонаж поддержки,Personagem Coadjuvante
@@ -505,6 +507,7 @@ Common.text.yes,Yes,,Ja,Si,Oui,Да,Sim
 Common.text.no,No,,Nein,No,Non,Нет,Não
 Common.text.other,Other,,Andere,Otro,Autre,Другое,Outro
 Common.select.choose,Choose...,,Wählen Sie aus ...,Elegir...,Choisir,Выберите ...,Escolha...
+Construct.other.assetType,Asset Type,,,,,,
 Construct.other.assignment,Assignment,,Position,Asignación,Mission,Назначение,Designação
 Construct.other.attacks,Attacks,,,Ataques,Attaques,Оружие,
 Construct.other.attribute,Attribute,,Attribut,Atributo,Attribut,Качество,Atributo
@@ -582,7 +585,7 @@ Construct.other.yearsOfService_other,{{count}} years of service,,,{{count}} año
 Construct.attribute.control,Control,,Konzentration,Control,Contrôle,Самоконтроль,Controle
 Construct.attribute.daring,Daring,,Wagemut,Osadía,Audace,Решительность,Audácia
 Construct.attribute.fitness,Fitness,,Fitness,Forma Física,Forme Physique,Физподготовка,Físico
-Construct.attribute.insight,Insight,,Gespür,Perspicacia,Perspicacité,Понимание,Intuição
+Construct.attribute.insight,Insight,,Gespür,Perspicacia,Intuition,Понимание,Intuição
 Construct.attribute.presence,Presence,,Ausstrahlung,Presencia,Présence,Харизма,Presença
 Construct.attribute.reason,Reason,,Verstand,Razón,Raison,Здравомыслие,Raciocínio
 Construct.discipline.command,Command,,Kommando,Mando,Commandement,Командование,Comando
@@ -597,12 +600,18 @@ Construct.department.security,Security,,Sicherheit,Seguridad,Sécurité,Служ
 Construct.department.engineering,Engineering,,Technik,Ingeniería,Ingénierie,Инженерная Служба,Engenharia
 Construct.department.science,Science,,Wissenschaft,Ciencia,Science,Научная Служба,Ciência
 Construct.department.medicine,Medicine,,Medizin,Medicina,Médecine,Медицинская Служба,Medicina
+Construct.assetStat.medical,Medical,,,,,,
+Construct.assetStat.military,Military,,,,,,
+Construct.assetStat.personal,Personal,,,,,,
+Construct.assetStat.science,Science,,,,,,
+Construct.assetStat.social,Social,,,,,,
 Construct.system.comms,Comms,,Kommunikation,Comunicaciones,Communications,Связь,Comunicações
 Construct.system.computer,Computer,,Computer,Ordenador,Ordinateur,Компьютеры,Computadores
 Construct.system.engines,Engines,,Antrieb,Motores,Moteur,Двигатели,Motores
 Construct.system.sensors,Sensors,,Sensoren,Sensores,Capteurs,Сенсоры,Sensores
 Construct.system.structure,Structure,,Hülle,Estructura,Structure,Конструкция,Estrutura
 Construct.system.weapons,Weapons,,Waffen,Armas,Armes,Вооружение,Armas
+Page.title.tacticalAssets,Tactical Assets,,,,,,
 Page.title.attributesAndDisciplines,Finishing Touches,,Feinschliff,Retoques Finales,Touches Finales,Заключительные штрихи,Toques Finais
 Page.title.careerEvent,Career Event,,Karriereereignis,Evento de Carrera,Evènement de carrière,Cобытие карьеры,Eventos de Carreira
 Page.title.careerEvent1,Career Event 1,,Karriereereignis 1,Evento de Carrera 1,Evènement de carrière 1,Первое событие карьеры,Evento de Carreira 1
@@ -1373,12 +1382,12 @@ ExtraType.risanSymbol,Risian Symbol,,Risanisches Symbol,Símbolo Risiano,Symbole
 ExtraType.inuitTattoo,Inuit Tattoo,,Inuit-Tattoo,Tatuaje Unuit,Tatouage Inuit,,Tatuagem Inuit
 ExtraType.zaraniteMask,Zaranite Breather Mask,,Zaranit-Atemmaske,Respirador Zaranita,Respirateur Zaranite,,Máscara de Respiração Zaranite
 ExtraType.ferengiHeadFlap,Ferengi Head Flap,,Ferengi-Kopftuch,Velo Ferengi,Voilette Ferengi,,Capa de Cabeça Ferengi
-Focus.advancedHolograms,Advanced Holograms,,,,,,
-Focus.ambushTactics,Ambush Tactics,,,,,,
+Focus.advancedHolograms,Advanced Holograms,,,,Hologrammes avancés,,
+Focus.ambushTactics,Ambush Tactics,,,,Tactiques d'embuscade,,
 Focus.animalHandling,Animal Handling,,Tierführung,Trato con Animales,Comportement animal,Обращение с животными,Manejo de Animais
 Focus.anthropology,Anthropology,,Anthropologie,Antropología,Anthropologie,Антропология,Antropologia
 Focus.art,Art,,,,Art,,
-Focus.artificialIntelligenceSystems,Artificial Intelligence Systems,,,,,,
+Focus.artificialIntelligenceSystems,Artificial Intelligence Systems,,,,Systèmes d'intelligence artificielle,,
 Focus.astrometrics,Astrometrics,,Astrometrie,Astrométrica,Astrométrique,Астрометрия,Astrometria
 Focus.astronavigation,Astronavigation,,Astronavigation,Astronavegación,Astronavigation,Астронавигация,Astronavegação
 Focus.astronomy,Astronomy,,,,Astronomy,,
@@ -1386,59 +1395,59 @@ Focus.astrophysics,Astrophysics,,Astrophysik,Astrofísica,Astrophysique,Астр
 Focus.atmosphericFlight,Atmospheric Flight,,,,Vol Atmosphérique,,
 Focus.attackRun,Attack Run,,,,Charge,,
 Focus.bargain,Bargain,,,,Marchandage,,
-Focus.bladeWeapons,Blade Weapons,,,,,,
+Focus.bladeWeapons,Blade Weapons,,,,Armes tranchantes,,
 Focus.botany,Botany,,Botanik,Botánica,Botanique,Ботаника,Botânica
 Focus.boatPilotSubmersibles,Boat Pilot / Submersibles,,,,Pilotage de bateau / sous-marin,,
 Focus.bureaucracy,Bureaucracy,,Bürokratie,Burocracia,Bureaucracie,Бюрократия,Burocracia
 Focus.callToAction,Call to Action,,,,Motivation,,
-Focus.camouflage,Camouflage,,,,,,
+Focus.camouflage,Camouflage,,,,Camouflage,,
 Focus.climbing,Climbing,,,,Escalade,,
-Focus.chemicalAndBiologicalWeapons,Chemical and Biological Weapons,,,,,,
+Focus.chemicalAndBiologicalWeapons,Chemical and Biological Weapons,,,,Armes Chimiques et Biologiques,,
 Focus.coldReading,Cold Reading,,,,Lecture à froid,,
 Focus.combatManeuvers,Combat Maneuvers,,,,Manoeuvres de combat,,
-Focus.combatMedic,Combat Medic,,,,,,
+Focus.combatMedic,Combat Medic,,,,Medecine de combat,,
 Focus.communicationsSystems,Communications Systems,,,,Systemes de communication,,
 Focus.composure,Composure,,Haltung,Autocontrol,Maitrise de soi,Самообладание,Compostura
 Focus.computers,Computers,,Computer,Ordenadores,Informatique,Компьютеры,Computadores
-Focus.computerSecuritySystems,Computer Security Systems,,,,,,
+Focus.computerSecuritySystems,Computer Security Systems,,,,Systèmes de sécurité informatique,,
 Focus.coordinatedEfforts,Coordinated Efforts,,,,Coordination des efforts,,
 Focus.courtingRituals,Courting Rituals,,,,Rituels de séduction,,
 Focus.coveringAdvance,Covering Advance,,,,Avance de couverture,,
-Focus.criminalMinds,Criminal Minds,,,,,,
-Focus.criminalOrganizations,Criminal Organizations,,,,,,
-Focus.crisisManagement,Crisis Management,,,,,,
+Focus.criminalMinds,Criminal Minds,,,,Esprits criminels,,
+Focus.criminalOrganizations,Criminal Organizations,,,,Organisations criminelles,,
+Focus.crisisManagement,Crisis Management,,,,Gestion de crise,,
 Focus.culturalExpert,Cultural Expert,,,,Expert culturel,,
 Focus.culturalStudies,Cultural Studies,,Kulturwissenschaften,Estudios Culturales,Etudes culturelles,Культурология,Estudos Culturais
 Focus.cybernetics,Cybernetics,,Kybernetik,Cibernética,Cybernetique,Кибернетика,Cibernética
-Focus.deadeyeMarksman,Deadeye Marksman,,,,,,
+Focus.deadeyeMarksman,Deadeye Marksman,,,,Tireur d'élite,,
 Focus.debate,Debate,,Debatte,Debate,Débat,Дебаты,Debate
 Focus.deception,Deception,,,,Tromperie,,
 Focus.decisiveLeadership,Decisive Leadership,,,,Commandement décisif,,
-Focus.deflectorOperations,Deflector Operations,,,,,,
-Focus.deflectorSystems,Deflector Systems,,,,,,
+Focus.deflectorOperations,Deflector Operations,,,,Utilisation des deflecteurs,,
+Focus.deflectorSystems,Deflector Systems,,,,Systèmes déflecteurs,,
 Focus.demolition,Demolition,,Demolierung,Demolición,Démolition,Снос,Demolição
-Focus.diagnostics,Diagnostics,,,,,,
+Focus.diagnostics,Diagnostics,,,,Diagnostics,,
 Focus.diplomacy,Diplomacy,,Diplomtie,Diplomacia,Diplomacie,Дипломатия и политика,Diplomacia
 Focus.disguise,Disguise,,Tarnung,Disfraces,Déguisement,Маскировка,Disfarce
 Focus.disruptors,Disruptors,,Disruptoren,Disruptores,Disrupteurs,Дистрапторы,Disruptores
 Focus.efficientEvasion,Efficient Evasion,,,,Efficacité d'évasion,,
 Focus.electroPlasmaPowerSystems,Electro-Plasma Power Systems,,Elektroplasma-Systeme (EPS),Sistemas de Energía de Electroplasma,Systèmes d'Alimentations Electro-Plasmiques,Электро-плазменные силовые установки,Sistemas de Energia de Eletro-Plasma
 Focus.emergencyMedicine,Emergency Medicine,,Notfallmedizin,Medicina de Emergencia,Médecine d'Urgence,Неотложная медицинская помощь,Medicina de Emergência
-Focus.emergencyRepairs,Emergency Repairs,,,,,,
+Focus.emergencyRepairs,Emergency Repairs,,,,Réparations d'urgence,,
 Focus.emotionalIntelligence,Emotional Intelligence,,,,Intelligence émotionnelle,,
-Focus.energyWeapons,Energy Weapons,,,,,,
+Focus.energyWeapons,Energy Weapons,,,,Armes à énergie,,
 Focus.espionage,Espionage,,Spionage,Espionaje,Espionnage,Шпионаж,Espionagem
 Focus.etiquette,Etiquette,,,,Etiquette,,
 Focus.evacuationProcedures,Evacuation Procedures,,,,Procédures d'évacuation,,
 Focus.evasiveAction,Evasive Action,,Ausweichmanöver,Acción Evasiva,Action d'évasion,Уклонение,Ações Evasivas
 Focus.exoTectonics,Exo-tectonics,,Exotektonik,Exotectónica,Exo-tectonique,Экзо-тектоника,Exo-tectônica
 Focus.extraVehicularActivity,Extra-Vehicular Activity,,Außenbordeinsatz,Actividad Extravehicular,Activités Extra-Vehiculaires ,Внекорабельная деятельность (ВКД),Atividade Extra-Veicular
-Focus.evaSuits,EVA Suits,,,,,,
+Focus.evaSuits,EVA Suits,,,,Combinaisons  Extra-Véhiculaires,,
 Focus.finances,Finances,,Finanzen,Finanzas,Finances,Финансы,Finanças
-Focus.fleetFormations,Fleet Formations,,,,,,
+Focus.fleetFormations,Fleet Formations,,,,Formation en vol,,
 Focus.flightController,Flight Controller,,,,Contrôleur de vol,,
-Focus.forensics,Forensics,,,,,,
-Focus.forgery,Forgery,,,,,,
+Focus.forensics,Forensics,,,,Médecine légale,,
+Focus.forgery,Forgery,,,,Contrefaçon,,
 Focus.gambling,Gambling,,,,Pari,,
 Focus.genetics,Genetics,,Genetik,Genética,Genetique,Генетика,Genética
 Focus.geology,Geology,,Geologie,Geología,Géologie,Геология,Geologia
@@ -1447,8 +1456,8 @@ Focus.groundVehicles,Ground Vehicles,,,,Véhicules terrestres,,
 Focus.guidanceSystems,Guidance Systems,,,,Systèmes de guidage,,
 Focus.handPhasers,Hand Phasers,,Handphaser,Fásers de Mano,Phaseurs de Poing,Ручные фазеры,Feiseres de Mão
 Focus.handToHandCombat,Hand-to-Hand Combat,,Unbewaffneter Nahkampf,Combate cuerpo a cuerpo,Combat à mains nues,Рукопашный бой,Combate Corpo a Corpo
-Focus.hazardousEnvironments,Hazardous Environments,,,,,,
-Focus.heavyCover,Heavy Cover,,,,,,
+Focus.hazardousEnvironments,Hazardous Environments,,,,Environnements dangereux,,
+Focus.heavyCover,Heavy Cover,,,,Couverture lourde,,
 Focus.helmOperation,Helm Operation,,Steuerkontrolle,Operar Timón,Timonerie,Рулевое управление,Operações do Leme
 Focus.history,History,,Geschichte,Historia,Histoire,История,História
 Focus.holoprogramming,Holoprogramming,,Holoprogrammierung,Holoprogramación,Holoprogrammation,Голопрограммирование,Holoprogramação
@@ -1459,38 +1468,38 @@ Focus.interrogation,Interrogation,,Vernehmung,Interrogatorio,Interrogation,До�
 Focus.intimidation,Intimidation,,Einschüchterung,Intimidación,Intimidation,Устрашение,Intimidação
 Focus.impulseEngines,Impulse Engines,,,,Moteurs a impulsion,,
 Focus.journalism,Journalism,,,,Journalisme,,
-Focus.klingonWeapons,Klingon Weapons,,,,,,
+Focus.klingonWeapons,Klingon Weapons,,,,Armes Kilngonnes,,
 Focus.law,Law,,Gesetz,Derecho,Droit,Право,Direito
-Focus.lawEnforcement,Law Enforcement,,,,,,
+Focus.lawEnforcement,Law Enforcement,,,,Application des loi,,
 Focus.leadByExample,Lead by Example,,,,Montrer l'exemple,,
-Focus.leadInvestigator,Lead Investigator,,,,,,
+Focus.leadInvestigator,Lead Investigator,,,,Enquêteur chef,,
 Focus.linguistics,Linguistics,,Linguistik,Lingüística,Linguistique,Лингвистика,Linguística
 Focus.manufacturing,Manufacturing,,Herstellung,Fabricación,Fabrication,Производство,Manufatura
-Focus.martialArts,Martial Arts,,,,,,
+Focus.martialArts,Martial Arts,,,,Arts martiaux,,
 Focus.mentalDiscipline,Mental Discipline,,,,Discipline mentale,,
-Focus.mentalResistanceTechniques,Mental Resistance Techniques,,,,,,
+Focus.mentalResistanceTechniques,Mental Resistance Techniques,,,,Techniques de résistance mentale,,
 Focus.metallurgy,Metallurgy,,Metallurgie,Metalurgia,Metallurgie,Металлургия,Metalurgia
 Focus.multiDiscipline,Multi-Discipline,,,,Multi-Discipline,,
 Focus.multiTasking,Multi-Tasking,,,,Organisation Multi Tache,,
 Focus.music,Music,,Musik,Música,Musique,Музыка,Música
 Focus.negotiation,Negotiation,,Verhandlung,Negociación,Négotiation,Переговоры,Negociação
 Focus.observation,Observation,,Überwachung,Observación,Observation,Наблюдение,Observação
-Focus.organizationalPsychology,Organizational Psychology,,,,,,
+Focus.organizationalPsychology,Organizational Psychology,,,,Psychologie des organisations,,
 Focus.oratory,Oratory,,,,Orateur,,
 Focus.pathfinder,Pathfinder,,,,Eclaireur,,
-Focus.patrol,Patrol,,,,,,
+Focus.patrol,Patrol,,,,Patrouille,,
 Focus.performer,Performer,,,,Artiste de spectacle,,
 Focus.persuasion,Persuasion,,Überzeugen,Persuasión,Persuasion,Убеждение,Persuasão
-Focus.phasers,Phasers,,,,,,
+Focus.phasers,Phasers,,,,Phasers,,
 Focus.philosophy,Philosophy,,Philosophie,Filosofía,Philosophie,Философия,Filosofia
 Focus.physics,Physics,,Physik,Física,Physique,Физика,Física
-Focus.pickpocketing,Pickpocketing,,,,,,
-Focus.planetarySurveys,Planetary Surveys,,,,,,
+Focus.pickpocketing,Pickpocketing,,,,Pickpocket,,
+Focus.planetarySurveys,Planetary Surveys,,,,Etudes des planètes,,
 Focus.politics,Politics,,Politik,Política,Politique,Политика,Política
 Focus.powerManagement,Power Management,,,,Gestion de l'énergie,,
 Focus.powerSystems,Power Systems,,Energiesysteme,Sistemas de Energía,Systèmes d'alimentation,Энергетические системы,Sistemas de Energia
 Focus.precisionManeuvering,Precision Maneuvering,,,,Manoeuvres de précision,,
-Focus.precisionTargeting,Precision Targeting,,,,,,
+Focus.precisionTargeting,Precision Targeting,,,,Ciblage de précision,,
 Focus.primeDirective,Prime Directive,,,,Directive première,,
 Focus.psychiatry,Psychiatry,,Psychiatrie,Psiquiatría,Psychiatrie,Психиатрия,Psiquiatria
 Focus.psychology,Psychology,,Psychologie,Psicología,Psychologie,Психология,Psicologia
@@ -1499,11 +1508,11 @@ Focus.rapidAnalysis,Rapid Analysis,,Schnelle Analyse,Análisis Rápido,Analyse R
 Focus.repairsAndMaintenance,Repairs and Maintenance,,,,Réparations et maintenance,,
 Focus.reportingProcedures,Reporting Procedures,,,,Procédures d'établissement de rapports,,
 Focus.rhetoric,Rhetoric,,,,Réthorique,,
-Focus.securitySystems,Security Systems,,,,,,
+Focus.securitySystems,Security Systems,,,,Systèmes de sécurité ,,
 Focus.shipboardTacticalSystems,Shipboard Tactical Systems,,Taktische Raumschiffsysteme,Sistemas Tácticos de a Bordo,Systèmes Tactiques de Bord,Корабельные тактические системы,Sistemas Táticos de Nave
 Focus.shipDesignAndConstruction,Ship Design and Construction,,,,Construction et conception de vaisseaux,,
-Focus.shipEngagementTactics,Ship Engagement Tactics,,,,,,
-Focus.shipLockdownProcedures,Ship Lockdown Procedures,,,,,,
+Focus.shipEngagementTactics,Ship Engagement Tactics,,,,Tactiques de combat spatial,,
+Focus.shipLockdownProcedures,Ship Lockdown Procedures,,,,Procédures de confinement des vaisseaux,,
 Focus.shuttlebayManagement,Shuttlebay Management,,,,Gestion de hangars à navettes,,
 Focus.smallCraft,Small Craft,,Shuttles,Vehículos Pequeños,Petit Vaisseau,Малые суда,Veículos Pequenos
 Focus.spaceStationOperations,Space Station Operations,,,,Opérations de stations spatiales,,
@@ -1512,7 +1521,7 @@ Focus.starshipExpertPickOne,Starship Expert (pick one),,,,Expert de vaisseau (en
 Focus.starshipRecognition,Starship Recognition,,Raumschiffidentifikation,Reconocimiento de Naves,Reconnaissance des Vaisseaux,Идентификация звездолётов,Reconhecimento de Nave Estelar
 Focus.starfleetProtocols,Starfleet Protocols,,Sternenflotten-Protokoll,Protocolos de la Flota Estelar,Protocoles de Starfleet ,Протокол Звёздного флота,Protocolos da Frota Estelar
 Focus.stationOperations,Station Operations,,,,Opérations de stations,,
-Focus.strategy,Strategy,,,,,,
+Focus.strategy,Strategy,,,,Stratégie,,
 Focus.strategyTactics,Strategy/Tactics,,,,Stratégie / Tactique,,
 Focus.stellarCartography,Stellar Cartography,,,,Cartographie stellaire.,,
 Focus.strafingRun,Strafing Run,,,,Mitraillage,,
@@ -1522,12 +1531,12 @@ Focus.subspaceTheory,Subspace Theory,,,,Théorie subspatiale,,
 Focus.surgery,Surgery,,Chirurgie,Cirugía,Chirurgie,Хирургия,Cirurgia
 Focus.survey,Survey,,Vermessung,Vigilancia,Enquête,Исследование,Pesquisa
 Focus.survival,Survival,,Überlebenstraining,Supervivencia,Survie,Выживание,Sobrevivência
-Focus.targetingSystems,Targeting Systems,,,,,,
+Focus.targetingSystems,Targeting Systems,,,,Systèmes de visée,,
 Focus.teaching,Teaching,,,,Enseignement,,
 Focus.teamDynamics,Team Dynamics,,Teamdynamik,Dinámicas de Equipo,Dynamique d'équipe,Командная динамика,Dinâmica de Equipes
 Focus.threatAnalysis,Threat Analysis,,Bedrohungsanalyse,Análisis de Amenazas,Analyse des Menaces,Анализ угрозы,Análise de Ameaças
 Focus.timeManagement,Time Management,,,,Gestion du temps,,
-Focus.torpedoes,Torpedoes,,,,,,
+Focus.torpedoes,Torpedoes,,,,Torpilles,,
 Focus.tracking,Tracking,,,,Pistage,,
 Focus.traumaSurgery,Trauma Surgery,,Traumachirurgie,Cirugía de Urgencia,Chirurgie Traumatique,Хирургия травматологических повреждений,Cirurgia de Trauma
 Focus.transportersReplicators,Transporters & Replicators,,Transporter und Replikatoren,Transportatores y Replicadores,Transporteurs & Réplicateurs,Транспортеры и репликаторы,Transportadores e Replicadores

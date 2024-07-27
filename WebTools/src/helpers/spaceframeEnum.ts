@@ -139,6 +139,8 @@ export enum Spaceframe {
     Constituion3,
 
 
+    // Tactical
+    HouYi,
 
     // Continuing Mission
     Loknar,

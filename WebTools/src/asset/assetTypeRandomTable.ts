@@ -16,11 +16,11 @@ export const assetTypeRandomTable = (numberOfCharacters: number) => {
         case 9:
         case 10:
             return AssetTypes.instance.getTypes()[AssetType.Ship];
-        case 6:
-        case 7:
-        case 8:
-        case 9:
-        case 10:
+        case 11:
+        case 12:
+        case 13:
+        case 14:
+        case 15:
             return numberOfCharacters <= 2 ? AssetTypes.instance.getTypes()[AssetType.Character] : AssetTypes.instance.getTypes()[AssetType.Ship];
         case 16:
         case 17:

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 import { useNavigate } from "react-router";
 import { useTranslation } from 'react-i18next';
 import StarshipView from "./starshipView"
@@ -11,6 +11,10 @@ import { Construct } from "../common/construct";
 import { Character } from "../common/character";
 import NpcView from "./npcView";
 import SoloCharacterView from "./soloCharacterView";
+import { Asset } from "../asset/asset";
+
+const AssetView = lazy(() => import(/* webpackChunkName: 'asset' */ '../asset/view/assetView'));
+
 
 const ViewSheetPage = () => {
 
@@ -27,6 +31,12 @@ const ViewSheetPage = () => {
         }
     }
 
+    const modifyTitleForAsset = (asset: Asset) => {
+        if (asset.name) {
+            document.title = asset.name + " - STAR TREK ADVENTURES";
+        }
+    }
+
     const renderContents = () => {
         let url = new URL(window.location.href);
         let query = new URLSearchParams(url.search);
@@ -36,6 +46,18 @@ const ViewSheetPage = () => {
 
         if (!json) {
             return (<div className="page text-white">{t('ViewPage.errorMessage')}</div>);
+        } else if (json.stereotype === "asset") {
+            let asset = marshaller.decodeAsset(encodedSheet);
+            modifyTitleForAsset(asset);
+            return (<div className="page container ms-0">
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">{t('ViewPage.viewAsset')}</li>
+                    </ol>
+                </nav>
+                <AssetView asset={asset}/>
+            </div>);
         } else if (json.stereotype === "starship") {
             let starship = marshaller.decodeStarship(encodedSheet);
             modifyTitle(starship);
