@@ -6,6 +6,8 @@ import { AssetType } from "./assetType";
 export const assetRandomTable = (type: AssetType) => {
     if (type === AssetType.Ship) {
         return starshipAssetRandomTable();
+    } else if (type === AssetType.Resource) {
+        return resourceAssetRandomTable();
     } else {
         return characterAssetRandomTable();
     }
@@ -163,5 +165,72 @@ const starshipAssetRandomTable = () => {
             return new Asset(AssetType.Ship, "Classified",
                     [new AssetStat(11, 2), new AssetStat(10, 3), new AssetStat(12, 5), new AssetStat(9, 2), new AssetStat(12, 4)],
                     Spaceframe.Shiva);
+    }
+}
+
+const resourceAssetRandomTable = () => {
+
+    const roll = D20.roll();
+    switch (roll) {
+        case 1:
+            return new Asset(AssetType.Resource, "Federation Diplomatic Pressure",
+                    [new AssetStat(10, 1), new AssetStat(13, 3), new AssetStat(12, 3), new AssetStat(10, 2), new AssetStat(12, 3)]);
+        case 2:
+            return new Asset(AssetType.Resource, "Federation Military Supplies",
+                    [new AssetStat(15, 4), new AssetStat(8, 1), new AssetStat(10, 2), new AssetStat(10, 2), new AssetStat(12, 3)]);
+        case 3:
+            return new Asset(AssetType.Resource, "Cunning Ploy",
+                    [new AssetStat(10, 2), new AssetStat(15, 4), new AssetStat(4, 4), new AssetStat(8, 1), new AssetStat(10, 2)]);
+        case 4:
+            return new Asset(AssetType.Resource, "Local Resistance Group",
+                    [new AssetStat(10, 2), new AssetStat(8, 1), new AssetStat(12, 2), new AssetStat(14, 4), new AssetStat(9, 1)]);
+        case 5:
+            return new Asset(AssetType.Resource, "Diplomatic Aid from Allies",
+                    [new AssetStat(14, 4), new AssetStat(7, 1), new AssetStat(11, 1), new AssetStat(13, 3), new AssetStat(11, 2)]);
+        case 6:
+            return new Asset(AssetType.Resource, "Allied Military Expedition",
+                    [new AssetStat(11, 1), new AssetStat(10, 2), new AssetStat(12, 2), new AssetStat(10, 2), new AssetStat(14, 3)]);
+        case 7:
+            return new Asset(AssetType.Resource, "Prototype Technology",
+                    [new AssetStat(8, 1), new AssetStat(12, 3), new AssetStat(15, 3), new AssetStat(14, 4), new AssetStat(10, 2)]);
+        case 8:
+            return new Asset(AssetType.Resource, "Secret Operations Team",
+                    [new AssetStat(8, 1), new AssetStat(13, 2), new AssetStat(12, 2), new AssetStat(8, 1), new AssetStat(12, 2)]);
+        case 9:
+            return new Asset(AssetType.Resource, "Criminal Contacts",
+                    [new AssetStat(12, 2), new AssetStat(11, 3), new AssetStat(12, 3), new AssetStat(8, 1), new AssetStat(14, 3)]);
+        case 10:
+            return new Asset(AssetType.Resource, "Cutting Edge Scientific Theory",
+                    [new AssetStat(16, 5), new AssetStat(10, 2), new AssetStat(11, 2), new AssetStat(14, 4), new AssetStat(11, 2)]);
+        case 11:
+            return new Asset(AssetType.Resource, "Enterprising Freelancer",
+                    [new AssetStat(10, 2), new AssetStat(11, 2), new AssetStat(13, 2), new AssetStat(14, 3), new AssetStat(12, 2)]);
+        case 12:
+            return new Asset(AssetType.Resource, "Federation Stockpiles",
+                    [new AssetStat(12, 2), new AssetStat(14, 3), new AssetStat(12, 3), new AssetStat(10, 2), new AssetStat(15, 5)]);
+        case 13:
+            return new Asset(AssetType.Resource, "Unexpected Local Hero",
+                    [new AssetStat(11, 1), new AssetStat(10, 2), new AssetStat(14, 2), new AssetStat(15, 5), new AssetStat(16, 4)]);
+        case 14:
+            return new Asset(AssetType.Resource, "Federation Agents",
+                    [new AssetStat(8, 1), new AssetStat(14, 4), new AssetStat(13, 3), new AssetStat(10, 1), new AssetStat(16, 5)]);
+        case 15:
+            return new Asset(AssetType.Resource, "Retired Federation Ship",
+                    [new AssetStat(12, 1), new AssetStat(11, 3), new AssetStat(13, 3), new AssetStat(10, 1), new AssetStat(16, 5)]);
+        case 16:
+            return new Asset(AssetType.Resource, "Federation Diplomatic Talent",
+                    [new AssetStat(10, 1), new AssetStat(12, 2), new AssetStat(12, 2), new AssetStat(10, 1), new AssetStat(17, 5)]);
+        case 17:
+            return new Asset(AssetType.Resource, "Federation Supply Chain",
+                    [new AssetStat(13, 3), new AssetStat(11, 2), new AssetStat(11, 3), new AssetStat(9, 1), new AssetStat(13, 3)]);
+        case 18:
+            return new Asset(AssetType.Resource, "Federation Diplomatic Maneuvers",
+                    [new AssetStat(12, 2), new AssetStat(9, 2), new AssetStat(9, 1), new AssetStat(9, 1), new AssetStat(12, 2)]);
+        case 19:
+            return new Asset(AssetType.Resource, "Surprising Crew Member",
+                    [new AssetStat(10, 2), new AssetStat(11, 2), new AssetStat(17, 5), new AssetStat(14, 3), new AssetStat(15, 5)]);
+        case 20:
+            return new Asset(AssetType.Resource, "Celebrated Officer Out of Retirement for One Last Mission",
+                    [new AssetStat(8, 3), new AssetStat(10, 3), new AssetStat(12, 2), new AssetStat(10, 1), new AssetStat(11, 2)]);
     }
 }

@@ -483,6 +483,7 @@ export class TalentModel implements ITalent {
     category: string;
     aliases: AliasModel[];
     specialRule: boolean;
+    speciesAbility: boolean;
 
     constructor(name: string, desc: string, prerequisites: IConstructPrerequisite<Construct>[], maxRank: number = 1, category?: string, specialRule: boolean = false, ...aliases: AliasModel[]) {
         this.name = name;

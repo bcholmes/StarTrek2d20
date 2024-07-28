@@ -107,14 +107,25 @@ const TacticalAssetsPage = () => {
                         <Header level={2} className="mt-4">{t('TacticalAssetsPage.assets')}</Header>
 
                         {assets?.length ? (<table className="table table-dark mt-4">
+                            <thead>
+                                <tr>
+                                    <th className="bg-black"></th>
+                                    <th className="bg-black d-none d-md-table-cell">{t('Construct.assetStat.medical')}</th>
+                                    <th className="bg-black d-none d-md-table-cell">{t('Construct.assetStat.military')}</th>
+                                    <th className="bg-black d-none d-md-table-cell">{t('Construct.assetStat.personal')}</th>
+                                    <th className="bg-black d-none d-md-table-cell">{t('Construct.assetStat.science')}</th>
+                                    <th className="bg-black d-none d-md-table-cell">{t('Construct.assetStat.social')}</th>
+                                    <th className="bg-black d-none d-md-table-cell"></th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 {assets.map((a, i) => (<tr key={'asset-' + i }>
                                     <td><p>{a.name} {getSpaceframe(a)}</p></td>
-                                    <td className="d-none d-md-table-cell">{a.stats[AssetStatType.Medical].base + '/' + a.stats[AssetStatType.Medical].critical} </td>
-                                    <td className="d-none d-md-table-cell">{a.stats[AssetStatType.Military].base + '/' + a.stats[AssetStatType.Military].critical} </td>
-                                    <td className="d-none d-md-table-cell">{a.stats[AssetStatType.Personal].base + '/' + a.stats[AssetStatType.Personal].critical} </td>
-                                    <td className="d-none d-md-table-cell">{a.stats[AssetStatType.Science].base + '/' + a.stats[AssetStatType.Science].critical} </td>
-                                    <td className="d-none d-md-table-cell">{a.stats[AssetStatType.Social].base + '/' + a.stats[AssetStatType.Social].critical} </td>
+                                    <td className="d-none d-md-table-cell">{a.stats[AssetStatType.Medical].asString} </td>
+                                    <td className="d-none d-md-table-cell">{a.stats[AssetStatType.Military].asString} </td>
+                                    <td className="d-none d-md-table-cell">{a.stats[AssetStatType.Personal].asString} </td>
+                                    <td className="d-none d-md-table-cell">{a.stats[AssetStatType.Science].asString} </td>
+                                    <td className="d-none d-md-table-cell">{a.stats[AssetStatType.Social].asString} </td>
                                     <td className="text-end d-none d-md-table-cell"><Button size="sm" onClick={() => showViewPage(a)}>{t('Common.button.view')}</Button></td>
                                 </tr>))}
                             </tbody>
