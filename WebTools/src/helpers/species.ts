@@ -1908,6 +1908,19 @@ class _Species {
             [TalentsHelper.getTalent("Extra Arms")],
             "",
             []),
+        [Species.Tiburonian]: new SpeciesModel(
+            Species.Tiburonian,
+            "Tiburonian",
+            [Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Source.ContinuingMissions],
+            [],
+            [Attribute.Insight, Attribute.Presence, Attribute.Reason],
+            "Tiburonian",
+            "",
+            "",
+            [TalentsHelper.getTalent("Technological Savvy"), TalentsHelper.getTalent("Tiburonian Charm")],
+            "",
+            []),
 
 
 

@@ -2661,6 +2661,18 @@ export class Talents {
                 [new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(true, Species.Tzenkethi)],
                 1,
                 "Tzenkethi"),
+            new TalentModel(
+                "Technological Savvy",
+                "You were taught at a young age about robotics and machinery. When you perform or assist with a Task where knowledge of robotics or machines would help, you may re- roll a d20.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(true, Species.Tiburonian)],
+                1,
+                "Tiburonian"),
+            new TalentModel(
+                "Tiburonian Charm",
+                "You are able to bring out the best in people with your natural charisma. If you assist someone with your Presence Attribute, if they succeed at the assisted Task, add an extra point of Momentum.",
+                [new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(true, Species.Tiburonian)],
+                1,
+                "Tiburonian"),
 
 
 

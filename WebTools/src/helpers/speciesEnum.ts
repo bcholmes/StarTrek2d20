@@ -143,6 +143,7 @@ export enum Species {
     Yridian,
     Hupyrian,
     Talarian,
+    Tiburonian,
 
 
     // Federation-Klingon War
