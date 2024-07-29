@@ -95,7 +95,7 @@ class Sources {
 
     private _sources: { [id: number]: SourceViewModel } = {
         [Source.Core]: new SourceViewModel(Source.Core, SourceType.CoreBook, "Core"),
-        [Source.Core2ndEdition]: new SourceViewModel(Source.Core2ndEdition, SourceType.CoreBook, "Core (2nd Ed.)", false),
+        [Source.Core2ndEdition]: new SourceViewModel(Source.Core2ndEdition, SourceType.CoreBook, "Core (2nd Ed.)", true),
         [Source.AlphaQuadrant]: new SourceViewModel(Source.AlphaQuadrant, SourceType.QuadrantBook, "Alpha Quadrant"),
         [Source.BetaQuadrant]: new SourceViewModel(Source.BetaQuadrant, SourceType.QuadrantBook, "Beta Quadrant"),
         [Source.GammaQuadrant]: new SourceViewModel(Source.GammaQuadrant, SourceType.QuadrantBook, "Gamma Quadrant"),

@@ -490,6 +490,8 @@
     "Construct.other.yearsOfService_one": "{{count}} año de servicio",
     "Construct.other.yearsOfService_other": "{{count}} años de servicio",
 
+    "Construct.assetStat.science": "Ciencia",
+
     "Construct.attribute.control": "Control",
     "Construct.attribute.daring": "Osadía",
     "Construct.attribute.fitness": "Forma Física",

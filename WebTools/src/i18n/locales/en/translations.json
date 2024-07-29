@@ -201,6 +201,8 @@
 
     "FinishPage.role.instruction": "Select character's role and the ship on which they serve. This choice will be based on your highest discipline(s). The most suitable choice will appear on top, while the other options will be available as well in case you want to create a different character.",
 
+    "FinishPage.pastime.instruction": "You may select a pastime, which represents a hobby or passion the character enjoys when not on duty. This should only be useful occasionally, but it can be a fun roleplaying prompt.",
+
     "FinishPage.values.instruction": "If you did not define your values during character creation, or if you want to change any of them, now is the time to think about the values your character goes by.",
 
     "FinishPage.job.example": "e.g. Junior Engineer",
@@ -388,6 +390,7 @@
     "SupportingCharacter.speciesBonus": "Species Bonus",
 
     "TacticalAssetsPage.instruction": "Add additional assets to your asset list.",
+    "TacticalAssetsPage.assets": "Asset List",
 
     "ToolSelection.instruction": "What do you want to create?",
     "ToolSelection.mainCharacter": "Main Character",
@@ -510,6 +513,12 @@
     "Construct.other.yearsOfService_one": "{{count}} year of service",
     "Construct.other.yearsOfService_other": "{{count}} years of service",
 
+    "Construct.assetStat.medical": "Medical",
+    "Construct.assetStat.military": "Military",
+    "Construct.assetStat.personal": "Personal",
+    "Construct.assetStat.science": "Science",
+    "Construct.assetStat.social": "Social",
+
     "Construct.attribute.control": "Control",
     "Construct.attribute.daring": "Daring",
     "Construct.attribute.fitness": "Fitness",
@@ -531,12 +540,6 @@
     "Construct.department.science": "Science",
     "Construct.department.medicine": "Medicine",
 
-    "Construct.assetStat.medical": "Medical",
-    "Construct.assetStat.military": "Military",
-    "Construct.assetStat.personal": "Personal",
-    "Construct.assetStat.science": "Science",
-    "Construct.assetStat.social": "Social",
-
     "Construct.system.comms": "Comms",
     "Construct.system.computer": "Computer",
     "Construct.system.engines": "Engines",
@@ -546,6 +549,8 @@
 
     "Page.title.tacticalAssets": "Tactical Assets",
     "Page.title.attributesAndDisciplines": "Finishing Touches",
+    "Page.title.career": "Career",
+    "Page.title.careerDetails": "Career Details",
     "Page.title.careerEvent": "Career Event",
     "Page.title.careerEvent1": "Career Event 1",
     "Page.title.careerEvent2": "Career Event 2",
@@ -1709,6 +1714,7 @@
     "Species.andorian.name": "Andorian",
     "Species.andorian.aboutNames": "Andorian names tend to be somewhat harsh-sounding, and have a personal name followed by a clan name. Amongst some Andorians, it’s common to begin the clan name with a gender-specific prefix: 'zh' or 'sh' for females, and 'ch' or 'th' for males. This is placed before the family name, separated by an apostrophe. Longer or more complicated Andorian names are commonly shortened, especially when dealing with other species. Examples: Ishrelia zh’Azonan (female), Atheth th’Zynes(male)",
     "Species.andorian.description": "An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the United Federation of Planets since its foundation, having been firm allies of Humanity for several years beforehand. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor-duels known as Ushaan, using razorsharp ice-mining tools.",
+    "Species.andorian.description2e": "An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the Federation since its foundation. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor-duels known as _Ushaan_, using razor-sharp ice-mining tools.\n\nAndorians have developed powerful traditions of ritual, convention, and personal honor to help direct their intensity and energy towards constructive ends.\n",
     "Species.andorian.soloDescription": "An aggressive, passionate people from a frozen moon. Founding member of the Federation. Blue-skinned, pale-haired in appearance, with antennae. Their antennae aid in balance and spatial awareness; a lost antenna can be debilitating until it regrows. Andorians also have a high metabolism, meaning, among other things, that they tire more quickly than Humans; this also makes them more vulnerable to infection from certain types of injury.",
     "Species.andorian.exampleValue": "Proud Son/Daughter of Andoria",
     "Species.andorian.traitDescription": "This trait may reduce the Difficulty of Tasks to resist extreme cold, or Tasks impacted by extremely low temperatures. Their antennae aid in balance and spatial awareness; a lost antenna can be debilitating until it regrows. Andorians also have a high metabolism, meaning, amongst other things, that they tire more quickly than Humans; this also makes them more vulnerable to infection from certain types of injury. Before the Federation, Andorians and Vulcans had numerous disputes; though these issues are largely considered to be ancient history, Andorians and Vulcans don’t always get along.",
@@ -1920,6 +1926,11 @@
     "Species.tellarite.description": "The stout, hirsute Tellarite species comes from Tellar Prime, a temperate planet in the Alpha Quadrant. Theirs is a culture noted for being abrasive and argumentative, with a stubborn pride, quick tempers, and little patience. However, this is only a superficial view: while Tellarites are argumentative, it comes from a sense of intellectual honesty and rigorous skepticism. To a Tellarite, no idea, concept, or person is beyond challenge or analysis, and any notion that cannot stand up to scrutiny is an unworthy one. Tellarites revel in debates, and tend to greet one another with criticisms, complaints, and even insults; failing to respond in kind is poorly- regarded, as it displays a weakness of character and an unwillingness to confront flaws.",
     "Species.tellarite.exampleValue": "All Ideas must Withstand Scrutiny",
     "Species.tellarite.traitDescription": "Tellarites have a keen sense of smell and a high tolerance for many common drugs, toxins, and inebriants (Tellarites don’t get drunk, just feisty). They also have excellent eyesight, and more acute perception of distance, depth, and dimension than Humans.",
+
+    "Species.tiburonian.name": "Tiburonian",
+    "Species.tiburonian.description": "Tiburonians or Tiburons are from the planet Tiburon, and are members of the Federation. They are from a vastly technological culture, which makes heavy use of robots even for the simplest tasks. They are easy-going and charming, but can also be driven to pursue a single cause. They enjoy scientific research and exploration, and do not turn a blind eye to authoritarianism. They may mark themselves with blue tribal tattoo markings. Their culture is devoted to the pursuit of joy.",
+    "Species.tiburonian.exampleValue": "Life Is Nothing Without the Pursuit of Joy.",
+    "Species.tiburonian.traitDescription": "Tiburonians have very large, intricately-shaped ears. Males tend to be bald. Some males have a row of tiny protrusions that run from their foreheads to the back of their heads, and also down the front of their necks. Females may have greenish skin and long hair, with prominent eyebrows. When they die, they decompose quickly even in the cold, and Tiburonian cremation should take place within 32 hours. Their reliance on technology has weakened the immune systems of some Tiburonians, making it difficult for the afflicted to live without modern medicine and technology.",
 
     "Species.trill.name": "Trill",
     "Species.trill.aboutNames": "Trill names consist of a personal name and a family name, though in the case of a joined Trill, the family name is replaced with the name of the symbiont. Examples: Koria Inazin (female, unjoined), Bejal Okir (male, joined)",

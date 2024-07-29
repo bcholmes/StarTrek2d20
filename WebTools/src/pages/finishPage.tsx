@@ -167,7 +167,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
             return (<div className="col-lg-6 my-5">
                 <Header level={2}>{t('Construct.other.pastimes')}</Header>
                 <p>{t('FinishPage.pastime.instruction')}</p>
-                <InputFieldAndLabel labelName={t('Construct.other.pasttimes')} id="pastimes" onChange={(value) => onPasttimeChanged(value)} value={character.pastime.join(', ') ?? ""} />
+                <InputFieldAndLabel labelName={t('Construct.other.pastimes')} id="pastimes" onChange={(value) => onPasttimeChanged(value)} value={character.pastime.join(', ') ?? ""} />
             </div>);
         } else {
             return undefined;
@@ -319,15 +319,15 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
 
     let extra = null;
     if (character.isKlingon()) {
-        extra = (<div className="my-4">
+        extra = (<div className="col-lg-6 my-5">
             <Header level={2}>LINEAGE and House</Header>
             <div className="row">
                 <div className="col-lg-6 mb-3">
-                    <InputFieldAndLabel labelName="Lineage" id="lineage" onChange={(value) => onLineageChanged(value)} value={character.lineage ?? ""} />
+                    <InputFieldAndLabel labelName={t('Construct.other.lineage')} id="lineage" onChange={(value) => onLineageChanged(value)} value={character.lineage ?? ""} />
                     <div className="text-white mt-1"><small><b>Example: </b> <i>Daughter of Martok</i> or <i>Child of Koloth</i></small></div>
                 </div>
                 <div className="col-lg-6 mb-3">
-                    <InputFieldAndLabel labelName="House" id="house" onChange={(value) => onHouseChanged(value)} value={character.house ?? ""} />
+                    <InputFieldAndLabel labelName={t('Construct.other.house')} id="house" onChange={(value) => onHouseChanged(value)} value={character.house ?? ""} />
                     <div className="text-white mt-1"><small><b>Example: </b> <i>House Duras</i> or <i>House Kor</i></small></div>
                 </div>
             </div>
@@ -340,20 +340,19 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
             <main>
                 <Header>{t('Page.title.finish')}</Header>
                 <ReactMarkdown>{t('FinishPage.instruction')}</ReactMarkdown>
-                <div className="my-4">
-                    <Header level={2}>{t('Construct.other.name')}</Header>
-                    <p>{nameDescription}</p>
-                    <InputFieldAndLabel labelName={t('Construct.other.name')} id="name" onChange={(value) => onNameChanged(value)} value={character.name ?? ""} />
-                    <div className="text-white mt-1"><small><b>{t('Common.text.suggestions')}: </b> <i>{suggestions}</i></small></div>
-
-                    <div className="mt-3">
-                        <InputFieldAndLabel labelName={t('Construct.other.pronouns')} id="pronouns" onChange={(value) => onPronounsChanged(value)} value={character.pronouns ?? ""} />
-                        <div className="text-white mt-1"><small><b>{t('Common.text.suggestions')}: </b> <i>she/her, they/them, etc.</i></small></div>
-                    </div>
-                </div>
-                {extra}
-
                 <div className="row">
+                    <div className="col-lg-6 my-5">
+                        <Header level={2}>{t('Construct.other.name')}</Header>
+                        <p>{nameDescription}</p>
+                        <InputFieldAndLabel labelName={t('Construct.other.name')} id="name" onChange={(value) => onNameChanged(value)} value={character.name ?? ""} />
+                        <div className="text-white mt-1"><small><b>{t('Common.text.suggestions')}: </b> <i>{suggestions}</i></small></div>
+
+                        <div className="mt-3">
+                            <InputFieldAndLabel labelName={t('Construct.other.pronouns')} id="pronouns" onChange={(value) => onPronounsChanged(value)} value={character.pronouns ?? ""} />
+                            <div className="text-white mt-1"><small><b>{t('Common.text.suggestions')}: </b> <i>she/her, they/them, etc.</i></small></div>
+                        </div>
+                    </div>
+                    {extra}
 
                     {renderRank()}
                     <div className="col-lg-6 my-5">

@@ -897,7 +897,7 @@ export class SpaceframeHelper {
         [Spaceframe.Nimrod]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Nimrod,
             CharacterType.Starfleet,
-            "Nimrod",
+            "Nimrod Class",
             2250,
             [ Source.DiscoveryCampaign ],
             [7, 7, 8, 7, 7, 8],
@@ -914,10 +914,30 @@ export class SpaceframeHelper {
             ],
             [ "Federation Starship", "Section 31 Starship" ],
             2299),
+        [Spaceframe.HouYi]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.HouYi,
+            CharacterType.Starfleet,
+            "Hou Yi Class",
+            2250,
+            [ Source.DiscoveryCampaign ],
+            [7, 7, 8, 7, 7, 8],
+            [0, 0, 1, 1, 1, 0],
+            3,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Electronic Warfare Systems"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+            ],
+            [ "Federation Starship", "Section 31 Starship" ],
+            2260),
         [Spaceframe.Shiva]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Shiva,
             CharacterType.Starfleet,
-            "Shiva",
+            "Shiva Class",
             2253,
             [ Source.DiscoveryCampaign ],
             [9, 9, 7, 7, 6, 7],
