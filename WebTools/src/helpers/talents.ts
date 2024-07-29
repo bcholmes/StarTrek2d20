@@ -483,7 +483,6 @@ export class TalentModel implements ITalent {
     category: string;
     aliases: AliasModel[];
     specialRule: boolean;
-    speciesAbility: boolean;
 
     constructor(name: string, desc: string, prerequisites: IConstructPrerequisite<Construct>[], maxRank: number = 1, category?: string, specialRule: boolean = false, ...aliases: AliasModel[]) {
         this.name = name;
@@ -503,6 +502,10 @@ export class TalentModel implements ITalent {
         }
         this.specialRule = specialRule;
         this.aliases = aliases || AliasModel[0];
+    }
+
+    get speciesAbility() {
+        return this.name.indexOf("(Species Ability)") >= 0;
     }
 
     get displayName() {
@@ -2674,6 +2677,16 @@ export class Talents {
                 1,
                 "Tiburonian"),
 
+
+
+
+            // 2nd edition Species Abilities
+            new TalentModel(
+                "Intense (Species Ability)",
+                "When you succeed at a task where you purchased one or more d20s by adding to Threat, you generate 1 bonus Momentum for each d20 purchased. Bonus Momentum may not be saved.",
+                [new SourcePrerequisite(Source.Core2ndEdition), new AnySpeciesPrerequisite(true, Species.Andorian)],
+                1,
+                "Andorian"),
 
 
             // Careers

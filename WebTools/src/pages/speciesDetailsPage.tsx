@@ -22,6 +22,7 @@ import { ICharacterProperties } from '../solo/page/soloCharacterProperties';
 import { SpeciesAttributeController } from '../components/speciesController';
 import { Stereotype } from '../common/construct';
 import { CharacterType } from '../common/characterType';
+import ReactMarkdown from 'react-markdown';
 
 interface ISpeciesDetailsProperties extends ICharacterProperties {
     allowCrossSpeciesTalents: boolean;
@@ -130,7 +131,7 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
                 <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.SpeciesDetails} />
                 <main>
                     <Header>{character.localizedSpeciesName}</Header>
-                    <InstructionText text={species.localizedDescription} />
+                    <ReactMarkdown>{(character.version === 2) ? species.localizedDescription2e : species.localizedDescription}</ReactMarkdown>
 
                     <div className="row">
                         <div className="col-12 col-lg-6 my-4">

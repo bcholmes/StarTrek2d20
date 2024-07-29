@@ -207,7 +207,7 @@ const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
     return (
         <div className="page container ms-0">
-            <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.EducationDetails} />
+            <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.CareerDetails} />
             <Header>{track.localizedName}</Header>
             <InstructionText text={track.localizedDescription} />
             <div className="row">

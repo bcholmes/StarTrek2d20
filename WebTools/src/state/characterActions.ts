@@ -26,6 +26,7 @@ export const SET_CHARACTER_ASSIGNED_SHIP = 'SET_CHARACTER_ASSIGNED_SHIP';
 export const SET_CHARACTER_HOUSE = 'SET_CHARACTER_HOUSE';
 export const SET_CHARACTER_ADDITIONAL_TRAITS = 'SET_CHARACTER_ADDITIONAL_TRAITS';
 export const SET_CHARACTER_NAME = 'SET_CHARACTER_NAME';
+export const SET_CHARACTER_PASTIME = 'SET_CHARACTER_PASTIME';
 export const SET_CHARACTER_RANK = 'SET_CHARACTER_RANK';
 export const SET_CHARACTER_ROLE = 'SET_CHARACTER_ROLE';
 export const SET_CHARACTER_PRONOUNS = 'SET_CHARACTER_PRONOUNS';
@@ -191,6 +192,14 @@ export function setCharacterName(name: string) {
     let payload = { name: name };
     return {
        type: SET_CHARACTER_NAME,
+       payload: payload
+    }
+}
+
+export function setCharacterPastime(pasttime: string) {
+    let payload = { pasttime: pasttime };
+    return {
+       type: SET_CHARACTER_PASTIME,
        payload: payload
     }
 }

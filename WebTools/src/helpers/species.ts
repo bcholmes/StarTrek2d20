@@ -80,7 +80,13 @@ export class SpeciesModel implements ISpecies {
     get localizedDescription() {
         const key = makeKey('Species.', this.speciesKeyName, ".description");
         const localized = i18next.t(key);
-        return key === localized ? this.description : localized;
+        return key === localized ? this.description.join("\n\n") : localized;
+    }
+
+    get localizedDescription2e() {
+        const key = makeKey('Species.', this.speciesKeyName, ".description2e");
+        const localized = i18next.t(key);
+        return key === localized ? this.localizedDescription : localized;
     }
 
     get localizedSoloDescription() {

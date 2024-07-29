@@ -350,7 +350,7 @@ export class Character extends Construct {
     public _focuses: string[];
     public typeDetails: CharacterTypeDetails;
     public pronouns: string = '';
-    public pastimes: string[];
+    public pastime: string[];
 
     // steps
     public educationStep?: EducationStep;
@@ -1244,6 +1244,7 @@ export class Character extends Construct {
         character.lineage = this.lineage;
         character.house = this.house;
         character.era = this.era;
+        character.pastime = this.pastime == null ? [] : [...this.pastime];
         return character;
     }
 
@@ -1288,9 +1289,10 @@ export class Character extends Construct {
         return result;
     }
 
-    public static createMainCharacter(type: CharacterType) {
+    public static createMainCharacter(type: CharacterType, version: 1|2 = 1) {
         let result = new Character();
         result.type = type;
+        result.version = version;
         result.stereotype = Stereotype.MainCharacter;
         return result;
     }

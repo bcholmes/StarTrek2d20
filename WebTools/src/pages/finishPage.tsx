@@ -18,7 +18,7 @@ import { useTranslation } from 'react-i18next';
 import { characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { connect } from 'react-redux';
 import store from '../state/store';
-import { setCharacterAdditionalTraits, setCharacterAssignedShip, setCharacterAssignment, setCharacterHouse, setCharacterLineage, setCharacterName, setCharacterPronouns, setCharacterRank } from '../state/characterActions';
+import { setCharacterAdditionalTraits, setCharacterAssignedShip, setCharacterAssignment, setCharacterHouse, setCharacterLineage, setCharacterName, setCharacterPastime, setCharacterPronouns, setCharacterRank } from '../state/characterActions';
 import AllCharacterValues from '../components/allCharacterValues';
 import { PageIdentity } from './pageIdentity';
 import ReactMarkdown from 'react-markdown';
@@ -162,6 +162,18 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
     }
 
 
+    const renderPastime = () => {
+        if (character.version > 1) {
+            return (<div className="col-lg-6 my-5">
+                <Header level={2}>{t('Construct.other.pastimes')}</Header>
+                <p>{t('FinishPage.pastime.instruction')}</p>
+                <InputFieldAndLabel labelName={t('Construct.other.pasttimes')} id="pastimes" onChange={(value) => onPasttimeChanged(value)} value={character.pastime.join(', ') ?? ""} />
+            </div>);
+        } else {
+            return undefined;
+        }
+    }
+
     const renderRank = () => {
 
         if (character.isCivilian() || character.age.isChild) {
@@ -232,6 +244,10 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
 
     const onNameChanged = (value: string) => {
         store.dispatch(setCharacterName(value));
+    }
+
+    const onPasttimeChanged = (value: string) => {
+        store.dispatch(setCharacterPastime(value));
     }
 
     const onPronounsChanged = (value: string) => {
@@ -351,6 +367,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
                         <InputFieldAndLabel labelName={t('Construct.other.traits')} id="traits" value={character?.additionalTraits ?? ""} onChange={(value) => onTraitsChanged(value)} />
 
                     </div>
+                    {renderPastime()}
                 </div>
                 {renderAssignment(roleList)}
                 <AllCharacterValues />

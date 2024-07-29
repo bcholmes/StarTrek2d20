@@ -57,7 +57,7 @@ class History extends React.Component<IHistoryProperties, {}> {
                 {character?.environmentStep ? this.renderPageTitleLink(PageIdentity.Environment) : undefined}
                 {character?.upbringingStep ? this.renderPageTitleLink(PageIdentity.Upbringing) : undefined}
                 {character?.educationStep
-                    ? (character.type === CharacterType.Child ? this.renderPageTitleLink(PageIdentity.ChildEducationPage) : this.renderPageTitleLink(PageIdentity.Education))
+                    ? (character.type === CharacterType.Child ? this.renderPageTitleLink(PageIdentity.ChildEducationPage) : this.renderPageTitleLink(PageIdentity.Career))
                     : undefined}
                 {character?.careerStep != null ? this.renderPageTitleLink(PageIdentity.CareerLength) : undefined}
                 {character?.careerEvents?.length > 0 ? this.renderPageTitleLink(PageIdentity.CareerEvent1) : undefined}

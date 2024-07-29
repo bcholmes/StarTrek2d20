@@ -47,12 +47,12 @@ const CharacterCreationBreadcrumbs : React.FC<ICharacterBreadcrumbProperties> = 
     }
 
     const renderEducation = () => {
-        if ((character?.careerStep != null && (pageIdentity === PageIdentity.EducationDetails || pageIdentity === PageIdentity.ChildEducationDetailsPage))
-            || pageIdentity === PageIdentity.Education || pageIdentity === PageIdentity.ChildEducationPage) {
-            return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloEducation')}</li>);
+        if ((character?.careerStep != null && (pageIdentity === PageIdentity.CareerDetails || pageIdentity === PageIdentity.ChildEducationDetailsPage))
+            || pageIdentity === PageIdentity.Career || pageIdentity === PageIdentity.ChildEducationPage) {
+            return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.career')}</li>);
         } else if (character?.educationStep) {
-            const page = (character.type === CharacterType.Child) ? PageIdentity.ChildEducationPage : PageIdentity.Education;
-            return (<li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, page)}>{t('Page.title.soloEducation')}</a></li>);
+            const page = (character.type === CharacterType.Child) ? PageIdentity.ChildEducationPage : PageIdentity.Career;
+            return (<li className="breadcrumb-item"><a href="/index.html" onClick={(e) => navigateTo(e, page)}>{t('Page.title.career')}</a></li>);
         } else {
             return undefined;
         }

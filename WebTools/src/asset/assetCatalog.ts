@@ -91,8 +91,8 @@ const starshipAssetRandomTable = () => {
                     Spaceframe.Walker);
         case 2:
             return new Asset(AssetType.Ship, "USS Laika",
-                    [new AssetStat(10, 2), new AssetStat(9, 3), new AssetStat(8, 2), new AssetStat(12, 3), new AssetStat(9, 2)]),
-                    Spaceframe.Shepard;
+                    [new AssetStat(10, 2), new AssetStat(9, 3), new AssetStat(8, 2), new AssetStat(12, 3), new AssetStat(9, 2)],
+                    Spaceframe.Shepard);
         case 3:
             return new Asset(AssetType.Ship, "USS Olds",
                     [new AssetStat(10, 2), new AssetStat(7, 1), new AssetStat(10, 2), new AssetStat(12, 3), new AssetStat(9, 2)],
@@ -159,8 +159,8 @@ const starshipAssetRandomTable = () => {
                     Spaceframe.Antares);
         case 19:
             return new Asset(AssetType.Ship, "Classified",
-                    [new AssetStat(9, 2), new AssetStat(12, 4), new AssetStat(11, 3), new AssetStat(11, 4), new AssetStat(10, 3)]),
-                    Spaceframe.HouYi;
+                    [new AssetStat(9, 2), new AssetStat(12, 4), new AssetStat(11, 3), new AssetStat(11, 4), new AssetStat(10, 3)],
+                    Spaceframe.HouYi);
         case 20:
             return new Asset(AssetType.Ship, "Classified",
                     [new AssetStat(11, 2), new AssetStat(10, 3), new AssetStat(12, 5), new AssetStat(9, 2), new AssetStat(12, 4)],

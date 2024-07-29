@@ -38,7 +38,7 @@ const EducationPage: React.FC<ICharacterProperties> = ({character}) => {
     const selectTrack = (track: TrackModel) => {
         const enlisted = (tab === StarfleetTrackTab.Enlisted);
         store.dispatch(setCharacterEducation(track.id, enlisted));
-        Navigation.navigateToPage(PageIdentity.EducationDetails);
+        Navigation.navigateToPage(PageIdentity.CareerDetails);
     }
 
     const toTableRow = (track: TrackModel, i: number) => {
@@ -68,7 +68,7 @@ const EducationPage: React.FC<ICharacterProperties> = ({character}) => {
 
     return (
         <div className="page container ms-0">
-            <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Education} />
+            <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.Career} />
 
             <main>
                 <Header>{t(makeKey('EducationPage.type.', CharacterType[character.type]))}</Header>

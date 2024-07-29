@@ -49,7 +49,7 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
             if (character.type === CharacterType.Child) {
                 Navigation.navigateToPage(PageIdentity.ChildEducationPage);
             } else {
-                Navigation.navigateToPage(PageIdentity.Education);
+                Navigation.navigateToPage(PageIdentity.Career);
             }
         }
     }

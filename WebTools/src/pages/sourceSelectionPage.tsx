@@ -13,6 +13,7 @@ import { PageFactory } from './pageFactory';
 import { LoadingButton } from '../common/loadingButton';
 import { setCharacter } from '../state/characterActions';
 import { Header } from '../components/header';
+import toast from 'react-hot-toast';
 
 interface ISourceSelectionPageProperties extends WithTranslation {
     sources: Source[]
@@ -34,6 +35,10 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
         this.state = {
             soloLoading: false
         }
+    }
+
+    private secondEditionMessage = () => {
+        toast("Selecting the 2nd Edition turns on the 2nd edition character creation rules.", { "className": "bg-info" })
     }
 
     renderSources() {
@@ -133,6 +138,10 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
         } else if (this.hasSource(source)) {
             store.dispatch(removeSource(source));
         } else {
+            if (source === Source.Core2ndEdition) {
+                this.secondEditionMessage();
+            }
+
             store.dispatch(addSource(source));
         }
     }
@@ -140,6 +149,9 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
     private toggleSources(selectAll: boolean) {
         if (selectAll) {
             let sources = SourcesHelper.getSources().filter(s => s.available).map(s => s.id);
+            if (sources.filter(s => s === Source.Core2ndEdition).length && !this.hasSource(Source.Core2ndEdition)) {
+                this.secondEditionMessage();
+            }
             store.dispatch(setSources(sources));
         } else {
             store.dispatch(setSources([ Source.Core ]));

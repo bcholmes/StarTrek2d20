@@ -32,8 +32,12 @@ const ToolSelectionPage = () => {
         }
     }
 
-    const startStarfleetWorkflow = () => {
-        if (hasSource(Source.KlingonCore) || hasSource(Source.PlayersGuide)) {
+    const startCharacterCreation = () => {
+        if (hasSource(Source.Core2ndEdition)) {
+            let character = Character.createMainCharacter(CharacterType.Starfleet, 2);
+            store.dispatch(setCharacter(character));
+            goToPage(PageIdentity.Species);
+        } else if (hasSource(Source.KlingonCore) || hasSource(Source.PlayersGuide)) {
             goToPage(PageIdentity.CharacterType);
         } else {
             let character = Character.createMainCharacter(CharacterType.Starfleet);
@@ -101,7 +105,7 @@ const ToolSelectionPage = () => {
 
                     <div className="row">
                         <div className="col-md-6 button-column">
-                            <Button className="btn btn-primary mt-4" onClick={() => { startStarfleetWorkflow(); } } >{t('ToolSelection.mainCharacter')}</Button>
+                            <Button className="btn btn-primary mt-4" onClick={() => { startCharacterCreation(); } } >{t('ToolSelection.mainCharacter')}</Button>
                             <Button className="btn btn-primary mt-4" onClick={() => { goToPage(PageIdentity.SupportingCharacter); } } >{t('ToolSelection.supportingCharacter')}</Button>
                             <LoadingButton onClick={() => { loadStarshipAndGoToPage(); } } loading={loadingStarship}>{t('ToolSelection.starship')}</LoadingButton>
                             {renderSystemGenerationButton()}
