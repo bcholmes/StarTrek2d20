@@ -196,8 +196,8 @@ export function setCharacterName(name: string) {
     }
 }
 
-export function setCharacterPastime(pasttime: string) {
-    let payload = { pasttime: pasttime };
+export function setCharacterPastime(pastime: string) {
+    let payload = { pastime: pastime };
     return {
        type: SET_CHARACTER_PASTIME,
        payload: payload

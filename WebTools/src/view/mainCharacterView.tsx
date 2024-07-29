@@ -135,10 +135,12 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
     function renderPastimes() {
         if (character.pastime) {
             let result = character.pastime.map((p, i) => (<div className="text-white view-border-bottom py-2" key={'pastime-' + i}>{p}</div>));
-            return (<>
-                <Header level={2}>{t('Construct.other.pastimes')}</Header>
-                {result}
-            </>);
+            return (
+                <div className="mt-4 mb-3">
+                    <Header level={2}>{t('Construct.other.pastimes')}</Header>
+                    {result}
+                </div>
+            );
         } else {
             return undefined;
         }
@@ -163,6 +165,8 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
                     <div className="col-xl-6 mt-4">
                         <Header level={2}>{t('Construct.other.stress')}</Header>
                         <StressOrShieldsView value={character.stress} />
+
+                        {renderPastimes()}
                     </div>
 
                     <div className="col-xl-6 mt-4">
@@ -170,7 +174,6 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
                         <FocusBlockView character={character} />
                     </div>
 
-                    {renderPastimes()}
                 </div>
 
                 <div>

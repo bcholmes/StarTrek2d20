@@ -195,6 +195,10 @@ class Marshaller {
             }
         }
 
+        if (character.pastime?.length) {
+            sheet["pastime"] = [...character.pastime];
+        }
+
         if (character.careerEvents) {
             sheet["careerEvents"] = character.careerEvents.map(c => {
                 let e = { "id": c.id };
@@ -804,6 +808,9 @@ class Marshaller {
         }
         if (json.house) {
             result.house = json.house;
+        }
+        if (json.pastime) {
+            result.pastime = [...json.pastime];
         }
         if (json.age) {
             let age = AgeHelper.getAge(json.age);
