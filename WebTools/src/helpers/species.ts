@@ -107,6 +107,12 @@ export class SpeciesModel implements ISpecies {
         return key === localized ? this.traitDescription : localized;
     }
 
+    get localizedTraitDescription2e() {
+        const key = makeKey('Species.', this.speciesKeyName, ".traitDescription2e");
+        const localized = i18next.t(key);
+        return key === localized ? this.localizedTraitDescription : localized;
+    }
+
     get localizedExampleValue() {
         const key = makeKey('Species.', this.speciesKeyName, ".exampleValue");
         const localized = i18next.t(key);
@@ -2183,7 +2189,13 @@ class _Species {
             if (species === Species.CardassianExt) {
                 return true;
             }
-            if (species === Species.Ferengi) { // supercede by FerengiAlpha
+            if (species === Species.Ferengi && !hasSource(Source.Core2ndEdition)) { // supercede by FerengiAlpha
+                return true;
+            }
+        }
+
+        if (hasSource(Source.Core2ndEdition)) {
+            if (species === Species.FerengiAlpha) { // supercede by Ferengi
                 return true;
             }
         }

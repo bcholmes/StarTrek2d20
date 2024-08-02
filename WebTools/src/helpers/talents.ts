@@ -2682,7 +2682,7 @@ export class Talents {
 
             // 2nd edition Species Abilities
             new TalentModel(
-                "Intense (Species Ability)",
+                "Andorian: Intense (Species Ability)",
                 "When you succeed at a task where you purchased one or more d20s by adding to Threat, you generate 1 bonus Momentum for each d20 purchased. Bonus Momentum may not be saved.",
                 [new SourcePrerequisite(Source.Core2ndEdition), new AnySpeciesPrerequisite(true, Species.Andorian)],
                 1,
