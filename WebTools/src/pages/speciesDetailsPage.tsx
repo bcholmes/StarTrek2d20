@@ -23,6 +23,7 @@ import { SpeciesAttributeController } from '../components/speciesController';
 import { Stereotype } from '../common/construct';
 import { CharacterType } from '../common/characterType';
 import ReactMarkdown from 'react-markdown';
+import { SpeciesAbilityView } from '../components/speciesAbilityView';
 
 interface ISpeciesDetailsProperties extends ICharacterProperties {
     allowCrossSpeciesTalents: boolean;
@@ -58,7 +59,7 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
         return (<div>
                 <Header level={2}>{t('Construct.other.trait')}</Header>
                 <div className="text-white my-3"><b>{species.localizedTrait}</b></div>
-                <div className="text-white">{character.version > 1 ? mixed.localizedDescription2e :species.localizedTraitDescription}</div>
+                <div className="text-white">{character.version > 1 ? species.localizedDescription2e : species.localizedTraitDescription}</div>
                 {mixedTrait}
             </div>);
     }
@@ -143,6 +144,11 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
                         <div className="col-12 col-lg-6 my-4">
                             {renderTraitSection(species)}
                         </div>
+                        {character.speciesStep?.ability
+                            ? (<div className="col-12 col-lg-6 my-4">
+                                <SpeciesAbilityView character={character}/>
+                            </div>)
+                            : undefined}
                     </div>
                     {renderTalentsSection()}
                     <div className="text-end mt-4">

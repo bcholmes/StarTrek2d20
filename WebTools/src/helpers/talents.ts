@@ -19,6 +19,7 @@ import { hasAnySource } from '../state/contextFunctions';
 import i18next from 'i18next';
 import { toCamelCase } from '../common/camelCaseUtil';
 import { Specialization } from '../common/specializationEnum';
+import { ITalent } from './italent';
 
 export const ADVANCED_TEAM_DYNAMICS = "Advanced Team Dynamics";
 export const TALENT_NAME_BORG_IMPLANTS = "Borg Implants";
@@ -504,10 +505,6 @@ export class TalentModel implements ITalent {
         this.aliases = aliases || AliasModel[0];
     }
 
-    get speciesAbility() {
-        return this.name.indexOf("(Species Ability)") >= 0;
-    }
-
     get displayName() {
         if (this.category) {
             const suffix = " (" + this.category + ")";
@@ -704,10 +701,6 @@ export class TalentModel implements ITalent {
             }
         }
     }
-}
-
-export interface ITalent {
-    readonly name: string;
 }
 
 export class TalentViewModel {
@@ -2676,17 +2669,6 @@ export class Talents {
                 [new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(true, Species.Tiburonian)],
                 1,
                 "Tiburonian"),
-
-
-
-
-            // 2nd edition Species Abilities
-            new TalentModel(
-                "Andorian: Intense (Species Ability)",
-                "When you succeed at a task where you purchased one or more d20s by adding to Threat, you generate 1 bonus Momentum for each d20 purchased. Bonus Momentum may not be saved.",
-                [new SourcePrerequisite(Source.Core2ndEdition), new AnySpeciesPrerequisite(true, Species.Andorian)],
-                1,
-                "Andorian"),
 
 
             // Careers

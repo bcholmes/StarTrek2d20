@@ -5,7 +5,7 @@ import {Environment} from '../helpers/environments';
 import {Species} from '../helpers/speciesEnum';
 import {Track} from '../helpers/trackEnum';
 import {EarlyOutlookModel} from '../helpers/upbringings';
-import {ITalent} from '../helpers/talents';
+import {ITalent} from '../helpers/italent';
 import {CharacterType} from './characterType';
 import { AlliedMilitary, AlliedMilitaryType } from '../helpers/alliedMilitary';
 import { Government, Polity } from '../helpers/governments';
@@ -22,6 +22,7 @@ import { Specialization } from './specializationEnum';
 import { MilestoneType } from '../modify/model/milestoneType';
 import { EquipmentHelper, EquipmentModel, EquipmentType } from '../helpers/equipment';
 import { Era } from '../helpers/eras';
+import { SpeciesAbility } from '../helpers/speciesAbility';
 
 export abstract class CharacterTypeDetails {
 }
@@ -207,10 +208,28 @@ export class SpeciesStep {
     public customSpeciesName: string;
     public attributes: Attribute[];
     public talent?: SelectedTalent;
+    public ability?: SpeciesAbility;
 
     constructor(species: Species) {
         this.species = species;
         this.attributes = [];
+    }
+
+    copy() {
+        let result = new SpeciesStep(this.species);
+        result.mixedSpecies = this.mixedSpecies;
+        result.originalSpecies = this.originalSpecies;
+        result.customSpeciesName = this.customSpeciesName;
+        if (this.attributes?.length) {
+            result.attributes = [...this.attributes];
+        }
+        if (this.talent != null) {
+            result.talent = this.talent.copy();
+        }
+        if (this.ability != null) {
+            result.ability = this.ability;
+        }
+        return result;
     }
 }
 
@@ -1194,16 +1213,7 @@ export class Character extends Construct {
         character.rank = this.rank;
         character.role = this.role;
         if (this.speciesStep) {
-            character.speciesStep = new SpeciesStep(this.speciesStep.species);
-            character.speciesStep.mixedSpecies = this.speciesStep.mixedSpecies;
-            character.speciesStep.originalSpecies = this.speciesStep.originalSpecies;
-            character.speciesStep.customSpeciesName = this.speciesStep.customSpeciesName;
-            if (this.speciesStep.attributes?.length) {
-                character.speciesStep.attributes = [...this.speciesStep.attributes];
-            }
-            if (this.speciesStep.talent != null) {
-                character.speciesStep.talent = this.speciesStep.talent.copy();
-            }
+            character.speciesStep = this.speciesStep.copy();
         }
         if (this.environmentStep) {
             character.environmentStep = new EnvironmentStep(this.environmentStep.environment, this.environmentStep.otherSpecies);

@@ -3,6 +3,7 @@ import { CharacterType } from "../common/characterType";
 import { Stereotype } from "../common/construct";
 import AgeHelper from "../helpers/age";
 import { Skill } from "../helpers/skills";
+import { SpeciesAbilityList } from "../helpers/speciesAbility";
 import { Species } from "../helpers/speciesEnum";
 import { TALENT_NAME_BORG_IMPLANTS } from "../helpers/talents";
 import { Track } from "../helpers/trackEnum";
@@ -80,6 +81,13 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.speciesStep.talent = originalStep.talent?.copy();
                 }
             }
+            if (temp.version > 1) {
+                let ability = SpeciesAbilityList.instance.getBySpecies(temp.speciesStep.species);
+                if (ability) {
+                    temp.speciesStep.ability = ability;
+                }
+            }
+
             temp.speciesStep.mixedSpecies = action.payload.mixedSpecies;
             temp.speciesStep.originalSpecies = action.payload.originalSpecies;
             if (temp.speciesStep.species === Species.Custom && action.payload.customSpeciesName) {

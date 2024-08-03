@@ -56,7 +56,7 @@ const TacticalAssetsPage = () => {
         let asset = null;
         while (asset == null) {
             let assetType = null;
-            if (type == "") {
+            if (type === "") {
                 assetType = assetTypeRandomTable(numberOfCharacters());
             } else {
                 assetType = type as AssetType;

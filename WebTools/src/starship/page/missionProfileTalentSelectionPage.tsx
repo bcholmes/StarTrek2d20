@@ -6,13 +6,14 @@ import { Button } from "../../components/button";
 import { Dialog } from "../../components/dialog";
 import { Header } from "../../components/header";
 import SingleTalentSelectionList from "../../components/singleTalentSelectionList";
-import { ITalent, TalentsHelper, TalentViewModel, ToViewModel } from "../../helpers/talents";
+import { TalentsHelper, TalentViewModel, ToViewModel } from "../../helpers/talents";
 import { nextStarshipWorkflowStep, setStarshipMissionProfileTalent } from "../../state/starshipActions";
 import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
 import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
+import { ITalent } from "../../helpers/italent";
 
 interface IMissionProfileTalentSelectionPageProperties {
     starship: Starship;

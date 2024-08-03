@@ -1,9 +1,10 @@
 ﻿import React from 'react';
 import {CheckBox} from './checkBox';
-import {ITalent, TalentViewModel} from '../helpers/talents';
+import {TalentViewModel} from '../helpers/talents';
 import replaceDiceWithArrowhead from '../common/arrowhead';
 import { Construct } from '../common/construct';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import { ITalent } from '../helpers/italent';
 
 interface ISingleTalentSelectionProperties extends WithTranslation {
     talents: TalentViewModel[]

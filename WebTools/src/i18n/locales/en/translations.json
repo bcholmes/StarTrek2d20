@@ -1990,14 +1990,50 @@
     "Species.xindiInsectoid.name": "Xindi-Insectoid",
 
     "Species.yridian.name": "Yridian",
-    "Species.yridian.traitDescription": "The Yridians are usually bald, but some have dark, curly hair. They have a wrinkly appearance, with rodent-like ears and small eyes and noses. They have a ridge running from their nose, up and over their heads. Most are thumbless and have only four fingers on each hand, but some have thumbs. They are often devious and untrustworthy.",
     "Species.yridian.description": "Yridians are often free agents working with those who share their personal goals, or as hired hands for other species. They are known to be traders, smugglers and information merchants, and are unwilling to part with information without payment. They were believed to be extinct until the mid-2360s until the Federation made first contact. They use disruptor weaponry.",
+    "Species.yridian.traitDescription": "The Yridians are usually bald, but some have dark, curly hair. They have a wrinkly appearance, with rodent-like ears and small eyes and noses. They have a ridge running from their nose, up and over their heads. Most are thumbless and have only four fingers on each hand, but some have thumbs. They are often devious and untrustworthy.",
 
     "Species.zakdorn.name": "Zakdorn",
 
     "Species.mixedSpecies.text": "{{primarySpecies}} / {{secondarySpecies}}",
 
     "Species.formerSpecies.text": "{{primarySpecies}} (originally {{otherSpecies}})",
+
+    "SpeciesAbility.andorian": "Intense",
+
+    "SpeciesAbility.andorian.description": "When you succeed at a task where you purchased one or more d20s by adding to Threat, you generate 1 bonus Momentum for each d20 purchased. Bonus Momentum may not be saved.",
+
+    "SpeciesAbility.aenar": "Telepathic",
+
+    "SpeciesAbility.aenar.description": "Aenar can sense the minds of other living creatures in their vicinity, and can read the thoughts of others, though they have strict taboos about reading a mind without permission. ",
+
+    "SpeciesAbility.bajoran": "The Will of the Prophets",
+
+    "SpeciesAbility.bajoran.description": "You may find strength in the Prophets even when the situation is dire: once per adventure, when the gamemaster spends 3 or more Threat at once, you gain 1 Determination.",
+
+    "SpeciesAbility.betazoid": "Telepathic",
+
+    "SpeciesAbility.betazoid.description": "Betazoids can sense the minds of living creatures in their vicinity and can read the thoughts and emotions of others. Each Betazoid has either *Telepathy* or *Empathy*. Part-Betazoid characters generally have Empathy rather than Telepathy.",
+
+    "SpeciesAbility.cardassian": "Healthy Suspicions",
+
+    "SpeciesAbility.cardassian.description": "You may add 1 Threat when interacting with an NPC to ask the gamemaster if that NPC is lying about something. The gamemaster must answer either Yes or No, and this answer must be accurate, but the gamemaster does not have to specify what the NPC is lying about.",
+
+    "SpeciesAbility.denobulan": "Breadth of Study",
+
+    "SpeciesAbility.denobulan.description": "Denobulans have a robust immune system, but a vulnerability to various forms of radiation poisoning. They are adept climbers. Denobulans do not need to sleep, but must hibernate for several days each year, becoming disoriented if kept awake during this period.",
+
+    "SpeciesAbility.ferengi": "The Great Material Continuum",
+
+    "SpeciesAbility.ferengi.description": "Once per session, when obtaining additional equipment, you may reduce the *Opportunity Cost* of an item by 1, to a minimum of 0.",
+
+    "SpeciesAbility.human": "Faith of the Heart",
+
+    "SpeciesAbility.human.description": "Humans are adaptable and resilient, and their resolve and ambition often allow them to resist great hardship and triumph despite great adversity. However, Humans can also be reckless, stubborn, irrational, and unpredictable.",
+
+    "SpeciesAbility.klingon": "Brak'lul",
+
+    "SpeciesAbility.klingon.description": "You gain 1 Protection which stacks with the benefits of any armor worn. Further, when another character attempts _First Aid_ to heal you, they may re-roll a d20.",
 
     "StarSystem.common.coordinates": "Coordinates",
     "StarSystem.common.innerZone": "Inner Zone",

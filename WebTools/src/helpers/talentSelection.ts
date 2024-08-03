@@ -1,4 +1,5 @@
-import { ITalent, TalentModel, TalentsHelper } from "./talents";
+import { ITalent } from "./italent";
+import { TalentModel, TalentsHelper } from "./talents";
 
 export class TalentSelection implements ITalent {
     readonly talent: TalentModel;
