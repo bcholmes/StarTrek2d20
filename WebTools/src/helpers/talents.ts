@@ -1486,7 +1486,7 @@ export class Talents {
             new TalentModel(
                 "Brak’lul",
                 "Various physiological redundancies mean that wounds that would kill other humanoid species don’t affect Klingons as badly. The character gains +2 Resistance against all Non-lethal attacks. In addition, whenever the Klingon is target of a First Aid Task, reduce the Difficulty of that Task by 1, to a minimum of 1.",
-                [new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore), new NotSourcePrerequisite(Source.Core2ndEdition)],
                 1,
                 "Klingon"),
             new TalentModel(

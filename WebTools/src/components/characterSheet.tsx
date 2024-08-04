@@ -279,6 +279,29 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
 
                                 </div>
                             </div>
+
+                            {c.version > 1 ?
+                            (<>
+                                <div className="col-md-6 mb-2">
+                                    <div className="sheet-panel d-flex">
+                                        <div className="sheet-label-purple text-uppercase">{t('Construct.other.speciesAbility')}</div>
+                                        <div className="sheet-data">
+                                            {c.speciesStep?.ability?.name}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="col-md-6 mb-2">
+                                    <div className="sheet-panel d-flex">
+                                        <div className="sheet-label-purple text-uppercase">{t('Construct.other.pastimes')}</div>
+                                        <div className="sheet-data">
+                                            {c.pastime?.join(", ") ?? ""}
+                                        </div>
+                                    </div>
+                                </div>
+                            </>)
+                            : undefined}
+
                             <div className="col-md-6 mb-2">
                                 <div className="sheet-panel d-flex">
                                     <div className="sheet-label-purple text-uppercase">{t('Construct.other.values')}</div>

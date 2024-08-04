@@ -316,6 +316,8 @@
     "SpaceframeSelectionPage.ignoreEndOfService": "Ignore end-of-service date (GM's decision)",
     "SpaceframeSelectionPage.error": "Please select a spaceframe before proceeding.",
 
+    "SpeciesAbilityView.instruction": "Each species provides a talent in the form of a Species Ability, which reflects some unique aspect of their physiology, psychology, or culture. You automatically receive this talent. Species abilities cannot be selected after character creation. These are distinct from talents which have a particular species as a requirement, which are always optional.",
+
     "SpeciesDetails.options": "Species Options",
     "SpeciesDetails.selectThree": "(Select three)",
     "SpeciesDetails.allowCrossSpecies": "Allow cross-species talents (GM's decision)",
@@ -2013,7 +2015,7 @@
 
     "SpeciesAbility.betazoid": "Telepathic",
 
-    "SpeciesAbility.betazoid.description": "Betazoids can sense the minds of living creatures in their vicinity and can read the thoughts and emotions of others. Each Betazoid has either *Telepathy* or *Empathy*. Part-Betazoid characters generally have Empathy rather than Telepathy.",
+    "SpeciesAbility.betazoid.description": "Betazoids can sense the minds of living creatures in their vicinity and can read the thoughts and emotions of others. Each Betazoid has either **Telepathy** or **Empathy**. Part-Betazoid characters generally have Empathy rather than Telepathy.",
 
     "SpeciesAbility.cardassian": "Healthy Suspicions",
 
@@ -2025,7 +2027,7 @@
 
     "SpeciesAbility.ferengi": "The Great Material Continuum",
 
-    "SpeciesAbility.ferengi.description": "Once per session, when obtaining additional equipment, you may reduce the *Opportunity Cost* of an item by 1, to a minimum of 0.",
+    "SpeciesAbility.ferengi.description": "Once per session, when obtaining additional equipment, you may reduce the **Opportunity Cost** of an item by 1, to a minimum of 0.",
 
     "SpeciesAbility.human": "Faith of the Heart",
 
@@ -2034,6 +2036,26 @@
     "SpeciesAbility.klingon": "Brak'lul",
 
     "SpeciesAbility.klingon.description": "You gain 1 Protection which stacks with the benefits of any armor worn. Further, when another character attempts _First Aid_ to heal you, they may re-roll a d20.",
+
+    "SpeciesAbility.orion": "Never at Face Value",
+
+    "SpeciesAbility.orion.description": "Once per scene, you may add 1 Threat to ask the gamemaster a question about the situation, as if you had spent Momentum to _Obtain Information_.",
+
+    "SpeciesAbility.romulan": "Paranoia",
+
+    "SpeciesAbility.romulan.description": "When an action scene begins, if the gamemaster wishes an adversary to take the first turn, they must spend 1 Threat more than normal.",
+
+    "SpeciesAbility.tellarite": "Sturdy",
+
+    "SpeciesAbility.tellarite.description": "You gain +1 Protection against _Stun Attacks_ only. Further, when you suffer a complication that represents a physical hindrance or being stunned, dazed, or disoriented, you may take 1 Stress to ignore that complication (and remove any associated trait).",
+
+    "SpeciesAbility.trill": "Patient",
+
+    "SpeciesAbility.trill.description": "When you succeed at a task where you purchased one or more d20s by spending Momentum, you generate 1 bonus Momentum for each d20 purchased. Bonus Momentum may not be saved.",
+
+    "SpeciesAbility.vulcan": "Mental Discipline",
+
+    "SpeciesAbility.vulcan.description": "While Vulcans have some psychic capabilities, they require training to use it effectively (see the **Mind Meld** talent). Further, your maximum Stress is based on your Control rather than your Fitness, and you may suffer 2 Stress to avoid suffering any trait that represents an emotional state. However, if you become Fatigued, you increase the Potency of any such emotion-related trait by 1.",
 
     "StarSystem.common.coordinates": "Coordinates",
     "StarSystem.common.innerZone": "Inner Zone",

@@ -195,7 +195,7 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.upbringingStep.discipline = originalStep.discipline;
                 }
                 temp.upbringingStep.focus = originalStep.focus;
-                temp.upbringingStep.talent = temp.upbringingStep.talent?.copy();
+                temp.upbringingStep.talent = originalStep.talent?.copy();
             }
             return {
                 ...state,

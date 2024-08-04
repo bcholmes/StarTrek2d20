@@ -39,7 +39,13 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
     const selectDesc = species.attributes.length > 3 ? t('SpeciesDetails.selectThree') : "";
 
     const isTalentSelectionRequired = () => {
-        return character.stereotype !== Stereotype.SoloCharacter && character.type !== CharacterType.KlingonWarrior;
+        if (character.stereotype !== Stereotype.SoloCharacter) {
+            return false;
+        } else if (character.version === 1 && character.type !== CharacterType.KlingonWarrior) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     const renderTraitSection = (species: SpeciesModel) => {
@@ -78,24 +84,31 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
                     onChanged={() => { store.dispatch(setAllowEsotericTalents(!allowEsotericTalents));  }} />
             </div>) : undefined;
 
-        return talents.length > 0 && isTalentSelectionRequired()
-            ? (<div>
+        if (talents.length > 0 && isTalentSelectionRequired()) {
+            return (<div>
                 <Header level={2}>{t('Construct.other.talents')}</Header>
-                <div>
-                    {renderCrossSpeciesCheckbox()}
-                </div>
-                {esotericTalentOption}
+                {character.version === 1
+                ? (<><div>
+                        {renderCrossSpeciesCheckbox()}
+                    </div>
+                    {esotericTalentOption}
+                </>)
+                : undefined}
                 <SingleTalentSelectionList talents={talents} construct={character}
                     initialSelection={initial}
                     onSelection={talent => onTalentSelected(talent)} />
-            </div>)
-            : (<div>
+            </div>);
+        } else if (character.version === 1) {
+            return (<div>
                 <Header level={2}>{t('SpeciesDetails.options')}</Header>
                 <div>
                     {renderCrossSpeciesCheckbox()}
                 </div>
                 {esotericTalentOption}
               </div>);
+        } else {
+            return undefined;
+        }
     }
 
     const renderCrossSpeciesCheckbox = () => {
@@ -140,15 +153,15 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
                             <AttributeListComponent controller={controller} />
 
                             <InstructionText text={controller.instructions} />
+                            {character.speciesStep?.ability
+                                ? (<div className="mt-5 mt-4">
+                                    <SpeciesAbilityView character={character}/>
+                                </div>)
+                                : undefined}
                         </div>
                         <div className="col-12 col-lg-6 my-4">
                             {renderTraitSection(species)}
                         </div>
-                        {character.speciesStep?.ability
-                            ? (<div className="col-12 col-lg-6 my-4">
-                                <SpeciesAbilityView character={character}/>
-                            </div>)
-                            : undefined}
                     </div>
                     {renderTalentsSection()}
                     <div className="text-end mt-4">

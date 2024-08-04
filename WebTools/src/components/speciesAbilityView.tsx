@@ -14,7 +14,10 @@ export const SpeciesAbilityView: React.FC<ISpeciesAbilityProperties> = ({charact
     if (character?.speciesStep?.ability) {
         return (<>
             <Header level={2}>{t('Construct.other.speciesAbility')}</Header>
-            <ReactMarkdown>{'*' + character.speciesStep?.ability?.name + ":* " + character.speciesStep?.ability?.description}</ReactMarkdown>
+            <ReactMarkdown>{t('SpeciesAbilityView.instruction')}</ReactMarkdown>
+
+            <Header level={3}>{character.speciesStep?.ability?.name}</Header>
+            <ReactMarkdown>{character.speciesStep?.ability?.description}</ReactMarkdown>
         </>);
     } else {
         return undefined;

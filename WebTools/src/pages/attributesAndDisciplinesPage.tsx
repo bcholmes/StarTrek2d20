@@ -76,9 +76,9 @@ const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character
 
     let talents = filterTalentList();
 
-    const talentSelection = character.type === CharacterType.KlingonWarrior
+    const talentSelection = (character.type === CharacterType.KlingonWarrior || character.version > 1)
         ? (<div className="my-4">
-            <Header level={2}>TALENTS</Header>
+            <Header level={2}>{t('Construct.other.talents')}</Header>
             <SingleTalentSelectionList talents={talents} construct={character}
                 onSelection={talent => {
                     store.dispatch(addCharacterTalent(talent, StepContext.FinishingTouches));

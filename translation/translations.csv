@@ -394,6 +394,7 @@ SpaceframeSelectionPage.text,"The Spaceframe is the ship’s basic structure and
 SpaceframeSelectionPage.note,"Note: The Utopia Planitia sourcebook has re-defined the stats for a number of previously-published spaceframes. Those redefined stats are presented, here.",,Hinweis: Das Utopia Planitia Quellenbuch hat die Werte von einigen bereits vorher veröffentlichten Schiffsklassen neu festgelegt. Diese neuen Werte werden hier angezeigt.,Nota: El libro de Utopia Planitia ha redefinido las estadísticas de varias Plantillas publicadas anteriormente. Esas estadísticas redefinidas se muestran aquí.,"Note : Le supplément ""Utopia Planitia"" a redéfini les statistiques de nombreux modèles précédemment publiés. Les données présentées ici ont suivi cette mise à jour.",,"Nota: O livro-fonte Utopia Planitia redefiniu as estatísticas de várias estruturas espaciais publicadas anteriormente. Essas estatísticas redefinidas são apresentadas, aqui."
 SpaceframeSelectionPage.ignoreEndOfService,Ignore end-of-service date (GM's decision),,Das Datum der Außerdienststellung ignorieren (Entscheidung liegt bei der Spielleitung),Ignora fecha de fin de servicio (decisión del DJ),Ignorer la date de fin de service du modèle (en accord avec le MJ),,Ignorar a data de fim de serviço (decisão do MJ)
 SpaceframeSelectionPage.error,Please select a spaceframe before proceeding.,,Bitte wählen Sie eine Schiffsklasse um fortzufahren.,Selecciona una Plantilla antes de continuar.,"Choisissez un modèle avant de continuer, SVP",,Selecione um estrutura espacial antes de continuar.
+SpeciesAbilityView.instruction,"Each species provides a talent in the form of a Species Ability, which reflects some unique aspect of their physiology, psychology, or culture. You automatically receive this talent. Species abilities cannot be selected after character creation. These are distinct from talents which have a particular species as a requirement, which are always optional.",,,,,,
 SpeciesDetails.options,Species Options,,Spezies-Optionen,Opciones de Especie,Option d'espèce,,Opções de Espécies
 SpeciesDetails.selectThree,(Select three),,(Drei auswählen),(Selecciona tres),(Choisir trois),(выберите три),(Selecione três)
 SpeciesDetails.allowCrossSpecies,Allow cross-species talents (GM's decision),,Spezies-übergreifende Talente erlauben (Entscheidung liegt bei der Spielleitung),Permitir talentos inter-especies (decisión del DJ),Autoriser les talents inter-espèces (Decision du GM),Позволить таланты других рас (Решение Мастера),Permitir talentos interespécies (decisão do MJ)
@@ -2319,17 +2320,27 @@ SpeciesAbility.aenar.description,"Aenar can sense the minds of other living crea
 SpeciesAbility.bajoran,The Will of the Prophets,,,,,,
 SpeciesAbility.bajoran.description,"You may find strength in the Prophets even when the situation is dire: once per adventure, when the gamemaster spends 3 or more Threat at once, you gain 1 Determination.",,,,,,
 SpeciesAbility.betazoid,Telepathic,,,,,,
-SpeciesAbility.betazoid.description,Betazoids can sense the minds of living creatures in their vicinity and can read the thoughts and emotions of others. Each Betazoid has either *Telepathy* or *Empathy*. Part-Betazoid characters generally have Empathy rather than Telepathy.,,,,,,
+SpeciesAbility.betazoid.description,Betazoids can sense the minds of living creatures in their vicinity and can read the thoughts and emotions of others. Each Betazoid has either **Telepathy** or **Empathy**. Part-Betazoid characters generally have Empathy rather than Telepathy.,,,,,,
 SpeciesAbility.cardassian,Healthy Suspicions,,,,,,
 SpeciesAbility.cardassian.description,"You may add 1 Threat when interacting with an NPC to ask the gamemaster if that NPC is lying about something. The gamemaster must answer either Yes or No, and this answer must be accurate, but the gamemaster does not have to specify what the NPC is lying about.",,,,,,
 SpeciesAbility.denobulan,Breadth of Study,,,,,,
 SpeciesAbility.denobulan.description,"Denobulans have a robust immune system, but a vulnerability to various forms of radiation poisoning. They are adept climbers. Denobulans do not need to sleep, but must hibernate for several days each year, becoming disoriented if kept awake during this period.",,,,,,
 SpeciesAbility.ferengi,The Great Material Continuum,,,,,,
-SpeciesAbility.ferengi.description,"Once per session, when obtaining additional equipment, you may reduce the *Opportunity Cost* of an item by 1, to a minimum of 0.",,,,,,
+SpeciesAbility.ferengi.description,"Once per session, when obtaining additional equipment, you may reduce the **Opportunity Cost** of an item by 1, to a minimum of 0.",,,,,,
 SpeciesAbility.human,Faith of the Heart,,,,,,
 SpeciesAbility.human.description,"Humans are adaptable and resilient, and their resolve and ambition often allow them to resist great hardship and triumph despite great adversity. However, Humans can also be reckless, stubborn, irrational, and unpredictable.",,,,,,
 SpeciesAbility.klingon,Brak'lul,,,,,,
 SpeciesAbility.klingon.description,"You gain 1 Protection which stacks with the benefits of any armor worn. Further, when another character attempts _First Aid_ to heal you, they may re-roll a d20.",,,,,,
+SpeciesAbility.orion,Never at Face Value,,,,,,
+SpeciesAbility.orion.description,"Once per scene, you may add 1 Threat to ask the gamemaster a question about the situation, as if you had spent Momentum to _Obtain Information_.",,,,,,
+SpeciesAbility.romulan,Paranoia,,,,,,
+SpeciesAbility.romulan.description,"When an action scene begins, if the gamemaster wishes an adversary to take the first turn, they must spend 1 Threat more than normal.",,,,,,
+SpeciesAbility.tellarite,Sturdy,,,,,,
+SpeciesAbility.tellarite.description,"You gain +1 Protection against _Stun Attacks_ only. Further, when you suffer a complication that represents a physical hindrance or being stunned, dazed, or disoriented, you may take 1 Stress to ignore that complication (and remove any associated trait).",,,,,,
+SpeciesAbility.trill,Patient,,,,,,
+SpeciesAbility.trill.description,"When you succeed at a task where you purchased one or more d20s by spending Momentum, you generate 1 bonus Momentum for each d20 purchased. Bonus Momentum may not be saved.",,,,,,
+SpeciesAbility.vulcan,Mental Discipline,,,,,,
+SpeciesAbility.vulcan.description,"While Vulcans have some psychic capabilities, they require training to use it effectively (see the **Mind Meld** talent). Further, your maximum Stress is based on your Control rather than your Fitness, and you may suffer 2 Stress to avoid suffering any trait that represents an emotional state. However, if you become Fatigued, you increase the Potency of any such emotion-related trait by 1.",,,,,,
 StarSystem.common.coordinates,Coordinates,,Koordinaten,Coordenadas,Coordonnées,,Coordenadas
 StarSystem.common.innerZone,Inner Zone,,Innere Zone,Zona Interna,Zone Intérieure,,Zona Interna
 StarSystem.common.ecosphere,Ecosphere,,Ökosphäre,Ecosfera,Ecosphère,,Ecosfera

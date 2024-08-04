@@ -577,6 +577,9 @@ export class Character extends Construct {
         let stress = this.attributes[Attribute.Fitness].value;
         if (this.version === 1) {
             stress +=  + this.skills[Skill.Security].expertise;
+        } else if (this.speciesStep?.species === Species.Vulcan) {
+            // species ability makes stress based on Control
+            stress = this.attributes[Attribute.Control].values;
         }
 
         if (this.hasTalent("Resolute")) {
