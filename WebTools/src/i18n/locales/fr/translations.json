@@ -1756,6 +1756,10 @@
 
     "Talent.diplomaticSuites.soloDescription": "Le vaisseau possède un grand nombre de cabines de luxe destinées aux invités VIP, ainsi que des salles de réunion et tout autre espace lui permettant de faire office de terrain neutre pour les sommets diplomatiques, les négociations commerciales, etc. Lorsque des pourparlers se déroulent à bord, les membres d’équipages peuvent être aidés par le vaisseau avec Ordinateurs + Commandement, ou Structure + Commandement.",
 
+    "Talent.doctorsOrders": "Les ordres du docteur",
+
+    "Talent.doctorsOrders.description": "Quand vous effectuez une Tâche afin de coordonner les autres, ou pour obliger quelqu’un à faire ou ne pas faire une certaine action, vous pouvez utiliser la Discipline Médecine au lieu du Commandement.",
+
     "Talent.dualEnvironment": "Environnement dual",
 
     "Talent.dualEnvironment.soloDescription": "Le vaisseau est équipé de salles à systèmes redondants qui peuvent être remplies de gaz ou de liquides qui permettent aux membre d'équipage nécessitant des conditions atmospheriques différentes de travailler avec le reste de l'équipage. De plus, des passages pouvant être remplis de gaz ou de liquide courent en parallèle des passages classiques, permettant la circulation de ces membres d'équipage.",
@@ -1787,18 +1791,6 @@
     "Talent.firstResponse": "Première réaction",
 
     "Talent.firstResponse.description": "Vous gagnez un d20 bonus quand vous effectuez la Tâche Premiers secours pendant un combat. De plus, vous pouvez toujours obtenir une Réussite mitigée, mais pour chaque Complication que vous subissez la difficulté pour soigner les blessures du patient par la suite augmentera de +1.",
-
-    "Talent.doctorsOrders": "Les ordres du docteur",
-
-    "Talent.doctorsOrders.description": "Quand vous effectuez une Tâche afin de coordonner les autres, ou pour obliger quelqu’un à faire ou ne pas faire une certaine action, vous pouvez utiliser la Discipline Médecine au lieu du Commandement.",
-
-    "Talent.triage": "Triage",
-
-    "Talent.triage.description": "Quand vous effectuez une Tâche pour identifier des blessures ou des maladies précises, ou pour déterminer la gravité de l’état d’un patient, vous pouvez dépenser 1 point d’Impulsion (multiple) pour diagnostiquer un patient de plus.",
-
-    "Talent.quickStudy": "Etude rapide",
-
-    "Talent.quickSurvey.description": "Vous savez estimer une situation en un clin d'oeil. Au début d'une scène, vous pouvez immédiatement et gratuitement poser une question, comme si vous aviez dépensé un point d'impulsion. La réponse ne peut vous donner que des informations que vous pourriez obtenir par vospropres sens. Vous ne pouvez obtenir d'information d'un équipement en un si court laps de temps. ",
 
     "Talent.fieldMedicine": "Médecine de terrain",
 
@@ -1970,6 +1962,10 @@
 
     "Talent.quantumTorpedoes.soloDescription": "Le vaisseau est équipé des dernières munitions vaisseau-à-vaisseau : les torpilles quantiques. Celles-ci viennent s’ajouter aux autres types de torpilles présentes à bord.",
 
+    "Talent.quickStudy": "Etude rapide",
+
+    "Talent.quickSurvey.description": "Vous savez estimer une situation en un clin d'oeil. Au début d'une scène, vous pouvez immédiatement et gratuitement poser une question, comme si vous aviez dépensé un point d'impulsion. La réponse ne peut vous donner que des informations que vous pourriez obtenir par vospropres sens. Vous ne pouvez obtenir d'information d'un équipement en un si court laps de temps. ",
+
     "Talent.quickToAction": "Réaction rapide",
 
     "Talent.quickToAction.description": "Lors du premier round d’un combat, Conserver l’initiative ne coûte rien pour vos alliés et vous.",
@@ -2075,6 +2071,10 @@
     "Talent.tracker": "Traqueur",
 
     "Talent.tracker.description": "Vous savez suivr ela plus ténue de pistes.Lorsque vous tentez une Tache en vue de suivre des animaux, des gens oudesvéhicules terrestres,le pre d20 quevous achetezest gratuit. Si la traque faisait partie d'une tache étendue, le lancer de dé gagne 1 Progression",
+
+    "Talent.triage": "Triage",
+
+    "Talent.triage.description": "Quand vous effectuez une Tâche pour identifier des blessures ou des maladies précises, ou pour déterminer la gravité de l’état d’un patient, vous pouvez dépenser 1 point d’Impulsion (multiple) pour diagnostiquer un patient de plus.",
 
     "Talent.untappedPotential": "Potentiel inexploité",
 

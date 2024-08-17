@@ -538,6 +538,12 @@ export class TalentModel implements ITalent {
         return result === key ? this.description : result;
     }
 
+    get localizedDescription2e() {
+        let key = "Talent." + this.rootKey + ".description2e";
+        let result = i18next.t(key);
+        return result === key ? this.localizedDescription : result;
+    }
+
     get rootKey() {
         return toCamelCase(this.name);
     }
@@ -1336,27 +1342,39 @@ export class Talents {
             new TalentModel(
                 "Orb Experience",
                 "You have received a vision from the Bajoran Prophets, through one of the Orbs. This rare experience, though confusing at first, has shaped your life and outlook. You have one additional Value, reflecting the insights you received from the experience. The first time this Value is Challenged, roll 1[D]; if an Effect is rolled, then some foretold element of the Orb Experience has come to pass, and the Value is not crossed out as it would normally be.",
-                [new SpeciesPrerequisite(Species.Bajoran, true), new EraPrerequisite(Era.NextGeneration)],
+                [new SpeciesPrerequisite(Species.Bajoran, true), new EraPrerequisite(Era.NextGeneration), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "Bajoran"),
             new TalentModel(
                 "Strong Pagh",
                 "You believe profoundly in the Prophets, and rely heavily upon that faith to see you through hardship. Whenever you attempt a Task to resist being coerced or threatened, you reduce the Difficulty of that Task by 1.",
-                [new SpeciesPrerequisite(Species.Bajoran, true), new EraPrerequisite(Era.NextGeneration)],
+                [new SpeciesPrerequisite(Species.Bajoran, true), new EraPrerequisite(Era.NextGeneration), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "Bajoran"),
             new TalentModel(
                 "Empath",
                 "You can sense the emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. You cannot choose not to sense the emotions of those nearby, except for those who are resistant to telepathy. It may require effort and a Task to pick out the emotions of a specific individual in a crowd, or to block out the emotions of those nearby. Increase the Difficulty of this Task if the situation is stressful, if there are a lot of beings present, if the target has resistance to telepathy, and other relevant factors.",
-                [new AnySpeciesPrerequisite(true, Species.Betazoid, Species.Mari, Species.Deltan, Species.Aenar)],
+                [new AnySpeciesPrerequisite(true, Species.Betazoid, Species.Mari, Species.Deltan, Species.Aenar), new NotSourcePrerequisite(Source.Core2ndEdition)],
                 1,
                 "Betazoid/Mari/Deltan"),
             new TalentModel(
+                "Empathy2e",
+                "",
+                [new SourcePrerequisite(Source.Core2ndEdition)],
+                1,
+                "Esoteric"),
+            new TalentModel(
                 "Telepath",
                 "You can sense the surface thoughts and emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. Surface thoughts are whatever a creature is thinking about at that precise moment. The character cannot choose not to sense the emotions or read the surface thoughts of those nearby, except for those who are resistant to telepathy. It will require effort and a Task to pick out the emotions or thoughts of a specific individual in a crowd, to search a creature’s mind for specific thoughts or memories, or to block out the minds of those nearby. Unwilling targets may resist with an Opposed Task.",
-                [new AnySpeciesPrerequisite(true, Species.Betazoid, Species.Aenar), new EraPrerequisite(Era.NextGeneration)],
+                [new AnySpeciesPrerequisite(true, Species.Betazoid, Species.Aenar), new EraPrerequisite(Era.NextGeneration), new NotSourcePrerequisite(Source.Core2ndEdition)],
                 1,
                 "Betazoid"),
+            new TalentModel(
+                "Telepathy2e",
+                "",
+                [new SourcePrerequisite(Source.Core2ndEdition)],
+                1,
+                "Esoteric"),
             new TalentModel(
                 "Cultural Flexibility",
                 "Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",
@@ -1390,7 +1408,7 @@ export class Talents {
             new TalentModel(
                 "Sturdy",
                 "You have a blend of physical resilience and mental fortitude such that you’re difficult to subdue. You reduce the cost to resist being knocked prone by the Knockdown damage effect by one, to a minimum of 0, and gain +1 Resistance against all non-lethal attacks.",
-                [new SpeciesPrerequisite(Species.Tellarite, false), new EraPrerequisite(Era.Enterprise)],
+                [new SpeciesPrerequisite(Species.Tellarite, false), new EraPrerequisite(Era.Enterprise), new NotSourcePrerequisite(Source.Core2ndEdition)],
                 1,
                 "Tellarite"),
             new TalentModel(
@@ -1498,13 +1516,13 @@ export class Talents {
             new TalentModel(
                 "Killer’s Instinct",
                 "You have shed blood, and will not hesitate to do so again. So familiar are you with the intent to kill that you can even see it in others when you look them in the eyes. When you choose to make a lethal attack, you do not add to Threat for doing so. In addition, whenever an enemy you can see attempts to make a lethal attack against you, you may add 1 to Threat to increase the Difficulty of their attack by 1, as you react to their intent.",
-                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new SourcePrerequisite(Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new SourcePrerequisite(Source.KlingonCore, Source.Core2ndEdition)],
                 1,
                 "Klingon"),
             new TalentModel(
                 "Warrior’s Spirit",
                 "You are an exemplar of what it means to be a Klingon warrior, and you will not hesitate to demonstrate your prowess to any who challenge you. When you make a melee attack, or are targeted by a melee attack, and you buy one or more d20s by adding to Threat, you may re-roll the dice pool for the task. Further, you own either a mek’leth or a bat’leth, at your discretion, and do not have to pay an Opportunity Cost to acquire it.",
-                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new SourcePrerequisite(Source.KlingonCore)],
+                [new AnySpeciesPrerequisite(true, Species.Klingon, Species.KlingonQuchHa), new SourcePrerequisite(Source.KlingonCore, Source.Core2ndEdition)],
                 1,
                 "Klingon"),
             new TalentModel(
@@ -2098,7 +2116,7 @@ export class Talents {
             new TalentModel(
                 "That Wasn’t Me",
                 "The Orions are known as one of the most untrustworthy species in the Galaxy next to the Ferengi, and yet people are always willing to do business with them or are continually tricked by them. This is due to the subtle dance of social interactions and the release of pheromones that make the Orion endearing to whom they are dealing with, and can be used to gain their trust. An Orion adds 1 bonus Momentum to their pool when they have successfully completed a task to win a target’s trust.",
-                [new SourcePrerequisite(Source.ShackletonExpanse), new SpeciesPrerequisite(Species.Orion, true)],
+                [new SourcePrerequisite(Source.ShackletonExpanse, Source.Core2ndEdition), new SpeciesPrerequisite(Species.Orion, true)],
                 1,
                 "Orion"),
             new TalentModel(
@@ -2272,13 +2290,13 @@ export class Talents {
             new TalentModel(
                 "Guile and Cunning",
                 "Secrecy is as natural as breathing for you. When you attempt to remain hidden or for your actions to remain unnoticed, you may add 1 to Threat in order to increase the Difficulty of a task to detect you or discern the true nature of your actions.",
-                [new SourcePrerequisite(Source.PicardS1), new SpeciesPrerequisite(Species.Romulan, true)],
+                [new SourcePrerequisite(Source.PicardS1, Source.Core2ndEdition), new SpeciesPrerequisite(Species.Romulan, true)],
                 1,
                 "Romulan"),
             new TalentModel(
                 "Wary",
                 "Danger can come from any quarter, and you will not be caught off-guard. When you attempt a task to notice or detect an enemy or hazard, you may reroll one d20.",
-                [new SourcePrerequisite(Source.PicardS1), new SpeciesPrerequisite(Species.Romulan, true)],
+                [new SourcePrerequisite(Source.PicardS1, Source.Core2ndEdition), new SpeciesPrerequisite(Species.Romulan, true)],
                 1,
                 "Romulan"),
             new TalentModel(
@@ -2482,13 +2500,13 @@ export class Talents {
             new TalentModel(
                 "Acute Senses",
                 "The Aenar have honed their senses to the point that they are able to respond to stimuli just as well as, if not superior to, those who possess the ability to see. When attempting a task to detect something which is hidden from conventional senses, or which would normally be difficult to perceive, the Aenar may re-roll one d20.",
-                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Aenar, true)],
+                [new SourcePrerequisite(Source.FederationKlingonWar, Source.Core2ndEdition), new SpeciesPrerequisite(Species.Aenar, true)],
                 1,
                 "Aenar"),
             new TalentModel(
                 "Chosen Speaker",
                 "Among Aenar communities, leaders and mediators are chosen as and when the need arises, nominating an individual to serve as Speaker. You've been chosen for this role often, and are adept at using your senses and your telepathy to aid communication. When attempting a task to communicate telepathically with a willing being, you may re-roll 1d20.",
-                [new SourcePrerequisite(Source.FederationKlingonWar), new SpeciesPrerequisite(Species.Aenar, true, false)],
+                [new SourcePrerequisite(Source.FederationKlingonWar, Source.Core2ndEdition), new SpeciesPrerequisite(Species.Aenar, true, false)],
                 1,
                 "Aenar"),
             new TalentModel(
@@ -2688,109 +2706,109 @@ export class Talents {
             new TalentModel(
                 "Bold: Command",
                 "Whenever you attempt a Task with Command, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
-                [new NotTalentPrerequisite("Cautious: Command")],
+                [new NotTalentPrerequisite("Cautious: Command"), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Bold: Conn",
                 "Whenever you attempt a Task with Conn, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
-                [new NotTalentPrerequisite("Cautious: Conn")],
+                [new NotTalentPrerequisite("Cautious: Conn"), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Bold: Engineering",
                 "Whenever you attempt a Task with Engineering, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
-                [new NotTalentPrerequisite("Cautious: Engineering")],
+                [new NotTalentPrerequisite("Cautious: Engineering"), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Bold: Security",
                 "Whenever you attempt a Task with Security, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
-                [new NotTalentPrerequisite("Cautious: Security")],
+                [new NotTalentPrerequisite("Cautious: Security"), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Bold: Science",
                 "Whenever you attempt a Task with Science, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
-                [new NotTalentPrerequisite("Cautious: Science")],
+                [new NotTalentPrerequisite("Cautious: Science"), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Bold: Medicine",
                 "Whenever you attempt a Task with Medicine, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
-                [new NotTalentPrerequisite("Cautious: Medicine")],
+                [new NotTalentPrerequisite("Cautious: Medicine"), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Cautious: Command",
                 "Whenever you attempt a Task with Command, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
-                [new NotTalentPrerequisite("Bold: Command")],
+                [new NotTalentPrerequisite("Bold: Command"), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Cautious: Conn",
                 "Whenever you attempt a Task with Conn, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
-                [new NotTalentPrerequisite("Bold: Conn")],
+                [new NotTalentPrerequisite("Bold: Conn"), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Cautious: Engineering",
                 "Whenever you attempt a Task with Engineering, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
-                [new NotTalentPrerequisite("Bold: Engineering")],
+                [new NotTalentPrerequisite("Bold: Engineering"), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Cautious: Security",
                 "Whenever you attempt a Task with Security, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
-                [new NotTalentPrerequisite("Bold: Security")],
+                [new NotTalentPrerequisite("Bold: Security"), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Cautious: Science",
                 "Whenever you attempt a Task with Science, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
-                [new NotTalentPrerequisite("Bold: Science")],
+                [new NotTalentPrerequisite("Bold: Science"), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Cautious: Medicine",
                 "Whenever you attempt a Task with Medicine, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
-                [new NotTalentPrerequisite("Bold: Medicine")],
+                [new NotTalentPrerequisite("Bold: Medicine"), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Collaboration: Command",
                 "Whenever an ally attempts a Task using Command, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",
-                [],
+                [new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Collaboration: Conn",
                 "Whenever an ally attempts a Task using Conn, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",
-                [],
+                [new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Collaboration: Engineering",
                 "Whenever an ally attempts a Task using Engineering, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",
-                [],
+                [new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Collaboration: Security",
                 "Whenever an ally attempts a Task using Security, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",
-                [],
+                [new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Collaboration: Science",
                 "Whenever an ally attempts a Task using Science, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",
-                [],
+                [new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Collaboration: Medicine",
                 "Whenever an ally attempts a Task using Medicine, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",
-                [],
+                [new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
@@ -2802,7 +2820,7 @@ export class Talents {
             new TalentModel(
                 "Dauntless",
                 "Whenever you attempt a Task to resist being intimidated or threatened, you may add a bonus d20 to your dice pool.",
-                [],
+                [new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
@@ -2814,61 +2832,61 @@ export class Talents {
             new TalentModel(
                 "Studious",
                 "Whenever you spend one or more Momentum to Obtain Information, you may ask one additional question (in total, not per Momentum spent on Obtain Information).",
-                [],
+                [new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Technical Expertise",
                 "Whenever you attempt a Task assisted by the ship’s Computers or Sensors, you may re-roll one d20 (which may be the ship’s die).",
-                [],
+                [new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Tough",
                 "Whenever you Avoid an Injury, the cost is reduced by 1, to a minimum of 1.",
-                [],
+                [new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Augmented Ability (Control)",
                 "You gain the Extraordinary Attribute 1 special rule for the Control Attribute. When the character uses this ability, they increase their Complication Range by 2 for that Task.",
-                [new SourcePrerequisite(Source.SciencesDivision)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition)],
                 1,
                 "Enhancement"),
             new TalentModel(
                 "Augmented Ability (Daring)",
                 "You gain the Extraordinary Attribute 1 special rule for the Daring Attribute. When the character uses this ability, they increase their Complication Range by 2 for that Task.",
-                [new SourcePrerequisite(Source.SciencesDivision)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition)],
                 1,
                 "Enhancement"),
             new TalentModel(
                 "Augmented Ability (Fitness)",
                 "You gain the Extraordinary Attribute 1 special rule for the Fitness Attribute. When the character uses this ability, they increase their Complication Range by 2 for that Task.",
-                [new SourcePrerequisite(Source.SciencesDivision)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition)],
                 1,
                 "Enhancement"),
             new TalentModel(
                 "Augmented Ability (Insight)",
                 "You gain the Extraordinary Attribute 1 special rule for the Insight Attribute. When the character uses this ability, they increase their Complication Range by 2 for that Task.",
-                [new SourcePrerequisite(Source.SciencesDivision)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition)],
                 1,
                 "Enhancement"),
             new TalentModel(
                 "Augmented Ability (Presence)",
                 "You gain the Extraordinary Attribute 1 special rule for the Presence Attribute. When the character uses this ability, they increase their Complication Range by 2 for that Task.",
-                [new SourcePrerequisite(Source.SciencesDivision)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition)],
                 1,
                 "Enhancement"),
             new TalentModel(
                 "Augmented Ability (Reason)",
                 "You gain the Extraordinary Attribute 1 special rule for the Reason Attribute. When the character uses this ability, they increase their Complication Range by 2 for that Task.",
-                [new SourcePrerequisite(Source.SciencesDivision)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition)],
                 1,
                 "Enhancement"),
             new TalentModel(
                 "Neural Interface",
                 "The character has had a cybernetic device implanted directly into their brain, allowing them to interface with computers and similar technologies with their thoughts. Initiating or breaking the link between their minds and a computer system takes a Minor Action, and while they are connected they may reroll the d20 gained from using ship’s Systems. However, any time the ship suffers a Breach the character also suffers 3[D] of Stress.",
-                [new SourcePrerequisite(Source.SciencesDivision)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition)],
                 1,
                 "Enhancement"),
             new TalentModel(
@@ -2880,25 +2898,25 @@ export class Talents {
             new TalentModel(
                 "Sensory Replacement",
                 "Due to physical injury or irreparable birth defect, the character has been forced to adopt a cybernetic device that replaces one of their sensory functions – most commonly sight or hearing. The character gains the Artificial Sense Trait, which can be used normally. In addition, when the character is using the Obtain Information Momentum spend, they may ask questions or be given information not normally available with organic senses.",
-                [new SourcePrerequisite(Source.SciencesDivision)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition)],
                 1,
                 "Enhancement"),
             new TalentModel(
                 "Back-Up Plans",
                 "You have plans and contingencies which are set into motion whenever something goes awry. Whenever you or an ally fails a task, you may add 1 point to the group’s Momentum pool.",
-                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Control, 9)],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new AttributePrerequisite(Attribute.Control, 9)],
                 1,
                 "General"),
             new TalentModel(
                 "Calm and Logical",
                 "You are a highly rational individual, with a disciplined mind that can set aside your feelings to view things as objectively as possible. You may still have to deal with those feelings later, however. When you would gain a trait or complication which represents a mood or emotional state, you may immediately remove that trait by adding 1 to Threat.",
-                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Reason, 11)],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new AttributePrerequisite(Attribute.Reason, 11)],
                 1,
                 "General"),
             new TalentModel(
                 "Close-Knit Crew",
                 "You and your crew have bonded through shared adversity, and you all pull together when the situation demands. When a scene begins, if there are fewer points of Momentum in the group pool than there are characters in the scene who possess this talent, immediately add 1 point of Momentum to the group pool.",
-                [new SourcePrerequisite(Source.PlayersGuide), new MainCharacterPrerequisite()],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new MainCharacterPrerequisite()],
                 1,
                 "General"),
             new TalentModel(
@@ -2910,91 +2928,91 @@ export class Talents {
             new TalentModel(
                 "Extra Effort",
                 "You can push yourself to extremes to succeed, but at a cost. When you attempt a task, you may reduce the Difficulty of the task by 1, to a minimum of 0. However, once the task is completed, you reduce your maximum Stress by 2 for the remainder of the current adventure (after which you can rest sufficiently to return your maximum Stress to its normal value).",
-                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Fitness, 9)],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new AttributePrerequisite(Attribute.Fitness, 9)],
                 1,
                 "General"),
             new TalentModel(
                 "Gut Feeling",
                 "You’ve learned to trust your gut when something doesn’t feel right, and your instincts are rarely wrong. When the gamemaster spends one or more Threat to introduce reinforcements or to cause a Reversal, they must spend 2 additional Threat to do so (2 extra Threat in total, not per reinforcement).",
-                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Insight, 11)],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new AttributePrerequisite(Attribute.Insight, 11)],
                 1,
                 "General"),
             new TalentModel(
                 "Indefatigable",
                 "You don’t give up, and you don’t let failure deter you. When you fail a task, and attempt that task again during the same scene, reduce the Difficulty of the second attempt (and any subsequent attempts if you still fail) by 1.",
-                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Fitness, 11)],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new AttributePrerequisite(Attribute.Fitness, 11)],
                 1,
                 "General"),
             new TalentModel(
                 "Methodical Planning",
                 "You have a clear path to achieving your goals and objectives, and you have a thorough understanding of what you and your allies need to do at each step. When an ally attempts a task which benefits from an advantage or other trait you created based on your plans or strategy, you may assist that ally’s task even if you are not present. In combat, this assistance does not require you to use your task to assist that ally.",
-                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Reason, 9)],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new AttributePrerequisite(Attribute.Reason, 9)],
                 1,
                 "General"),
             new TalentModel(
                 "No Hesitation",
                 "You know that responding quickly to dangerous situations can be vital, so you are always the first to act. At the start of any round in an action scene, you may add 1 to Threat to take the first turn, regardless of who would otherwise have acted first.",
-                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Daring, 9)],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new AttributePrerequisite(Attribute.Daring, 9)],
                 1,
                 "General"),
             new TalentModel(
                 "No Pain, No Gain",
                 "You prefer to achieve your goal first, and then deal with the consequences felt along the way. When you fail a task (but not an opposed task) which used your Daring, you may always choose to succeed at a cost.",
-                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Daring, 11)],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new AttributePrerequisite(Attribute.Daring, 11)],
                 1,
                 "General"),
             new TalentModel(
                 "Quick Survey",
                 "You have a way of getting a good impression of a situation with only a moment’s observation. At the start of a scene, you may immediately ask one question, as if you had spent one Momentum on the Obtain Information Momentum spend. The answer can only provide information that you could obtain with your own senses; you cannot gain information from equipment in so short a time.",
-                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Insight, 9)],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new AttributePrerequisite(Attribute.Insight, 9)],
                 1,
                 "General"),
             new TalentModel(
                 "Reassuring",
                 "Your presence is a boon to your comrades, providing them with a little extra confidence when they need it most. When you succeed at a task using your Presence, you may spend Momentum to reassure your allies, so long as they are within communication range of you. It costs 1 Momentum (Repeatable) to reassure an ally, and this effect allows them to ignore a single complication rolled. This cannot be used to ignore complications from succeeding at cost.",
-                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Presence, 9)],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new AttributePrerequisite(Attribute.Presence, 9)],
                 1,
                 "General"),
             new TalentModel(
                 "Second Wind",
                 "You can sometimes draw upon deep reserves of energy and resilience when the situation becomes desperate. You may spend a point of Determination to remove all the Stress you have accumulated. The normal requirements for spending a point of Determination still apply.",
-                [new SourcePrerequisite(Source.PlayersGuide)],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Self-Reliant",
                 "While you understand the value of teamwork, you’re just as capable when you’re forced to rely on your own abilities. Whenever you succeed at a task where you did not purchase additional dice by spending Momentum or adding to Threat, you generate bonus Momentum equal to the task’s Difficulty. Bonus Momentum cannot be saved.",
-                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Control, 11)],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new AttributePrerequisite(Attribute.Control, 11)],
                 1,
                 "General"),
             new TalentModel(
                 "Voice of Authority",
                 "The tone of your voice and the clarity of your words conveys that you are in control, that you are someone who should be listened to. When you assist someone, and use your Presence to do so, you may add 2 to Threat to treat your assistance die as if it had rolled a 1 instead of rolling it.",
-                [new SourcePrerequisite(Source.PlayersGuide), new AttributePrerequisite(Attribute.Presence, 11)],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new AttributePrerequisite(Attribute.Presence, 11)],
                 1,
                 "General"),
             new TalentModel(
                 "Well-Informed",
                 "You have contacts everywhere and you listen for news and rumors from far and wide. At the start of a scene, you may add 1 to Threat to ask the gamemaster two questions about the situation or location, as if you had spent Momentum on the Obtain Information spend. The answers you receive will be knowledge you’ve gained from your contacts and the news and rumors you’ve heard.",
-                [new SourcePrerequisite(Source.PlayersGuide)],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)],
                 1,
                 "General"),
             new TalentModel(
                 "Extra-Sensory Perception",
                 "You have an ability to perceive things beyond the normal limits of humanoid senses, allowing you to gain knowledge of people, places, and objects beyond your ability to sense them conventionally. This is known as Extra-Sensory Perception, or ESP. It is not directly under your control, but instead tends to come in the form of accurate guesses, strong feelings, or flashes of insight. Such sensitivity often leaves you vulnerable to psychic dangers as well. At any point during play, you may ask the gamemaster for hints or insights about the current situation, and the gamemaster may similarly offer you information about the current situation that you would not normally be able to determine. Each hint adds 1 point to Threat, and you may always refuse to accept the hints offered.",
-                [new SourcePrerequisite(Source.PlayersGuide), new GMsDiscretionPrerequisite()],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new GMsDiscretionPrerequisite()],
                 1,
                 "Esoteric"),
             new TalentModel(
                 "Psychokinesis",
                 "You can manipulate and control objects using only the power of the mind, an ability referred to as psychokinesis or telekinesis. You may exert a psychic force upon an object within Close range equivalent to the force that you would normally be able to exert physically, though this takes concentration and cannot be applied suddenly or violently. Greater force may be applied but requires greater effort; you may spend 1 or more Momentum (Immediate) to increase the magnitude of the force you apply, with each Momentum spent counting as an additional person’s worth of force applied (that is, you can move or manipulate objects that would take two people to move or manipulate by spending 1 Momentum). Momentum (Immediate) may also be spent to increase the range: 1 Momentum to affect objects in Medium range, 2 to affect objects at Long range, and gamemaster’s discretion for distances beyond. To apply force violently instead, add 1 point to Threat to make a Control + Security task with a Difficulty of 2 to strike an opponent, inflicting 2+Security[D] Stress with the Knockdown effect (you may apply the Grapple or Shove melee combat options instead).",
-                [new SourcePrerequisite(Source.PlayersGuide), new GMsDiscretionPrerequisite()],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new GMsDiscretionPrerequisite()],
                 1,
                 "Esoteric"),
             new TalentModel(
                 "Telepathic Projection",
                 "Your telepathic ability is more potent than most, and you are quite accustomed to projecting your thoughts into other minds. You can send your thoughts into the minds of other creatures – other than those immune to telepathy – even if those creatures are not telepathic themselves. You can “hear” their responses by reading their minds as normal. You are also capable of using this ability offensively, overwhelming a target’s mind with pain-inducing psychic noise. This requires a Presence + Security task with a Difficulty of 2 (increasing by 1 for each range category beyond Close), and inflicting [D] Stress equal to your Presence, with the Intense effect.",
-                [new SourcePrerequisite(Source.PlayersGuide), new TalentPrerequisite("Telepath", "Telepath (Ocampa)", "Telepathy (Anabaj)"),  new GMsDiscretionPrerequisite()],
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new TalentPrerequisite("Telepath", "Telepath (Ocampa)", "Telepathy (Anabaj)"),  new GMsDiscretionPrerequisite()],
                 1,
                 "Esoteric"),
             new TalentModel(
@@ -3105,6 +3123,38 @@ export class Talents {
                 [new SourcePrerequisite(Source.FederationKlingonWar), new DisciplinePrerequisite(Skill.Security, 3), new DisciplinePrerequisite(Skill.Conn, 2)],
                 1,
                 "General"),
+
+            new TalentModel(
+                "Durability",
+                "",
+                [new SourcePrerequisite(Source.Core2ndEdition)],
+                1,
+                "Enhancement"),
+            new TalentModel(
+                "Open Book",
+                "",
+                [new SourcePrerequisite(Source.Core2ndEdition), new SpeciesPrerequisite(Species.Betazoid, true)],
+                1,
+                "Betazoid"),
+            new TalentModel(
+                "Abrupt Insights",
+                "",
+                [new SourcePrerequisite(Source.Core2ndEdition), new SpeciesPrerequisite(Species.Betazoid, true)],
+                1,
+                "Betazoid"),
+            new TalentModel(
+                "Pheromones",
+                "",
+                [new SourcePrerequisite(Source.Core2ndEdition), new SpeciesPrerequisite(Species.Orion, true)],
+                1,
+                "Orion"),
+            new TalentModel(
+                "Asking the Right Questions",
+                "",
+                [new SourcePrerequisite(Source.Core2ndEdition), new SpeciesPrerequisite(Species.Tellarite, true)],
+                1,
+                "Tellarite"),
+
         ];
 
         private _starshipTalents: TalentModel[] = [
@@ -3866,7 +3916,7 @@ export class Talents {
         new TalentModel(
             "Potent Pheromones",
             "While at Close range, when attempting a Task to negotiate, persuade, or seduce a humanoid creature physically attracted to them, the character adds a bonus d20 to the roll.",
-            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new AnySpeciesPrerequisite(false, Species.Orion)],
+            [new CharacterStereotypePrerequisite(Stereotype.Npc), new SourcePrerequisite(Source.ContinuingMissions), new NotSourcePrerequisite(Source.Core2ndEdition), new AnySpeciesPrerequisite(false, Species.Orion)],
             1,
             "Orion", true),
         new TalentModel(

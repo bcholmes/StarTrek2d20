@@ -57,6 +57,7 @@
 
     "TokenCreator.section.mouth.shape": "Boca",
     "TokenCreator.section.mouth.colour": "Cor do Batom",
+    "TokenCreator.section.mouth.shadow": "Sombra",
     "TokenCreator.section.mouth.moustache": "Bigode",
     "TokenCreator.section.mouth.beard": "Barba",
 
@@ -77,6 +78,7 @@
     "TokenCreator.section.extras.forehead": "Testa",
     "TokenCreator.section.extras.headwear": "Acessórios de Cabeça",
 
+    "ViewPage.viewAsset": "Visualizar Recurso",
     "ViewPage.viewSupportingCharacter": "Ver Personagem Coadjuvante",
     "ViewPage.viewNpc": "Ver PdM",
     "ViewPage.viewMainCharacter": "Ver Personagem Principal",
@@ -184,6 +186,8 @@
 
     "FinalStarshipDetails.name.instruction": "Toda nave estelar precisa de um nome. Não existe uma convenção universal para a nomenclatura de naves, muitas vezes nomeando-as em homenagem a locais, pessoas históricas importantes (normalmente apenas o sobrenome da pessoa), naves antigas, figuras míticas ou até mesmo ideais, virtudes ou conceitos mais abstratos. Em muitos casos, essas convenções vagas de nomenclatura se sobrepõem - um navio pode receber o nome de um navio antigo que, por sua vez, recebeu o nome de um local, por exemplo - mas isso não deve causar problemas.\n\nO ideal é que o nome seja uma única palavra ou, mais raramente, duas.",
 
+    "FinalStarshipDetails.registry.instruction": "Muitas naves têm algum tipo de número de registro para acompanhar o nome. As naves estelares da Federação, por exemplo, têm um número de registro que começa com NCC.",
+
     "FinalStarshipDetails.traits.instruction": "Agora você pode definir Traços adicionais para sua nave estelar. Sua nave já tem esses Traços:",
     "FinalStarshipDetails.traits.note": "O MJ pode permitir que você escolha Traços adicionais que descrevam sua embarcação. Os exemplos incluem: Protótipo, Embarcação Legado, Renomada e Veterana.",
 
@@ -197,6 +201,8 @@
 
     "FinishPage.role.instruction": "Selecione a função da personagem e a nave em que ela serve. Essa escolha será baseada em sua(s) disciplina(s) mais elevada(s). A opção mais adequada aparecerá no topo, enquanto as outras opções também estarão disponíveis, caso você queira criar uma personagem diferente.",
 
+    "FinishPage.pastime.instruction": "Você pode selecionar um passatempo, que representa um hobby ou uma paixão de que a personagem gosta quando não está em serviço. Isso só deve ser útil ocasionalmente, mas pode ser um estímulo divertido para a interpretação de papéis.",
+
     "FinishPage.values.instruction": "Se você não definiu seus valores durante a criação da personagem, ou se deseja alterar algum deles, agora é o momento de pensar nos valores que sua personagem segue.",
 
     "FinishPage.job.example": "ex.: Engenheiro Júnior",
@@ -206,14 +212,17 @@
     "Home.characterButton": "Personagens e Naves Estelares",
     "Home.talentsButton": "Visão Geral dos Talentos",
     "Home.tokenCreator": "Tokens",
+    "Home.otherTools": "Outras Ferramentas",
 
-    "MilestonePage.instruction": " ",
+    "MilestonePage.instruction": "Selecione o tipo de modificação que você deseja aplicar a esse marco.",
 
     "MissionPodSelectionPage.text": "Certas estruturas espaciais podem ser equipadas com um único módulo de missão, escolhido da lista abaixo. Os talentos fornecidos pelo módulo não podem ser trocados normalmente, mas o módulo integral da missão (e todos os seus benefícios) pode ser trocado como se fosse um único talento.",
     "MissionPodSelectionPage.errorNoSelection": "Selecione um módulo de missão antes de continuar.",
 
     "MissionProfileSelectionPage.text": "Um perfil de missão é o que diferencia uma nave estelar de outra de sua mesma classe. Ele determina o equipamento especializado instalado antes de se aventurar no desconhecido, a prioridade de pessoal que a Frota Estelar concede à nave e o objetivo geral da missão. Todas as estruturas espaciais têm um perfil de missão.",
     "MissionProfileSelectionPage.errorNoSelection": "Selecione um perfil de missão antes de continuar.",
+
+    "MissionProfileTalentSelection.instruction": "Escolha 1 talento da lista de talentos associados ao perfil da missão.",
 
     "ModificationCompletePage.instruction": "A personagem foi modificada. Você pode visualizar a personagem revisada ou fazer outra modificação.\n\nTalvez você queira salvar a URL da personagem revisada.",
 
@@ -227,9 +236,17 @@
     "NpcConfigurationPage.specialization": "Especialização",
     "NpcConfigurationPage.text": "Especifique o tipo de PdM que você está tentando criar.",
 
+    "OtherToolsPage.instruction": "Esta seção contém várias ferramentas adicionais diversas que podem ser usadas no seu jogo STA.",
+
+    "OtherToolsPage.safetyChecklist.instruction": "Esta lista de verificação é uma ferramenta que o mestre de jogo pode usar para ajudar os jogadores a discutir onde estão seus limites pessoais para determinados temas desta campanha. Essa lista está dividida em várias categorias, cada uma das quais inclui uma série de tópicos. Essa versão on-line da lista de verificação de segurança pode permitir que os MJs ou jogadores analisem os tópicos e avaliem como desejam que esses tópicos sejam tratados no jogo.",
+
     "PromotionPage.instruction": "Selecione uma nova patente para esta personagem.",
 
+    "RandomStarshipPage.instructions": "Especifique o tipo de nave estelar que está tentando criar.",
+
     "ReputationChangePage.instruction": "Ajuste a reputação da personagem conforme apropriado.",
+
+    "SafetyChecklist.instruction": "Esta lista de verificação é uma ferramenta que o mestre de jogo pode usar para ajudar os jogadores a discutir onde estão seus limites pessoais para determinados temas nesta campanha.\n\n- **Sempre OK**: Isso significa que o jogador sempre se sente confortável com a descrição, a exibição e a representação desse tópico em um jogo.\n\n- **Alerta Amarelo**: Isso significa que o jogador geralmente se sente confortável com a discussão desse tópico em um jogo, mas prefere que as descrições mais vívidas sejam feitas “fora da tela”.\n\n- **Alerta Vermelho**: Isso significa que o jogador não quer que esse assunto seja discutido em um jogo; ele pode ter vários motivos para isso. Alguns motivos podem incluir objeção ao tópico por princípios morais, experiência pessoal traumática, aversão à banalização do tópico em um meio de entretenimento fictício como um jogo e assim por diante. Não pergunte qual é o motivo do jogador que se sente assim; não cabe a ninguém mudar a opinião desse jogador. Simplesmente aceite a posição dele, respeite-a e não inclua o tópico em questão.",
 
     "SoloCareerEvent.instruction": "A carreira de sua personagem é uma tapeçaria de eventos e experiências, mas alguns deles terão sido momentos fundamentais na vida da personagem. Uma personagem define quais momentos de sua vida são importantes em retrospecto, e o que parecia definitivo para um jovem alferes pode ser inconsequente para esse mesmo oficial décadas depois.\n\nSua personagem tem dois eventos definidores de carreira, escolhidos ou determinados aleatoriamente na lista abaixo, e ganha os benefícios que eles proporcionam.\n\nPara as personagens que escolheram a Carreira de Novato, presuma que esses eventos de carreira ocorreram durante o período em que a personagem estava na Academia ou equivalente, talvez durante uma missão de treinamento de campo a bordo de uma nave estelar.",
 
@@ -299,6 +316,8 @@
     "SpaceframeSelectionPage.ignoreEndOfService": "Ignorar a data de fim de serviço (decisão do MJ)",
     "SpaceframeSelectionPage.error": "Selecione um estrutura espacial antes de continuar.",
 
+    "SpeciesAbilityView.instruction": "Cada espécie oferece um talento na forma de uma Habilidade de Espécie, que reflete algum aspecto exclusivo de sua fisiologia, psicologia ou cultura. Você recebe esse talento automaticamente. As Habilidades de Espécie não podem ser selecionadas após a criação do personagem. Elas são diferentes dos talentos que têm uma espécie específica como requisito, que são sempre opcionais.",
+
     "SpeciesDetails.options": "Opções de Espécies",
     "SpeciesDetails.selectThree": "(Selecione três)",
     "SpeciesDetails.allowCrossSpecies": "Permitir talentos interespécies (decisão do MJ)",
@@ -324,6 +343,9 @@
     "SpeciesPage.textNoRoll": "A que espécie você pertence? Você também pode criar uma personagem de espécies miscigenadas, obtendo benefícios de ambas.",
     "SpeciesPage.mixedSpeciesNote": "Selecione duas espécies. Você ganhará Traços de ambas as espécies e poderá selecionar os Talentos de ambas as espécies, mas apenas a espécie primária lhe dará bônus de Atributo.",
     "SpeciesPage.selectTwoSpeciesError": "Por favor, selecione uma espécie primária e uma secundária",
+
+    "StarshipRefits.instruction_one": "As naves são aprimoradas com o tempo. A cada dez anos a partir da data de lançamento, uma nave recebe uma reforma, que melhora os sistemas da nave.\n\nVocê tem {{count}} ponto para alocar.",
+    "StarshipRefits.instruction_other": "As naves são aprimoradas com o tempo. A cada dez anos a partir da data de lançamento, uma nave recebe uma reforma, que melhora os sistemas da nave.\n\nVocê tem {{count}} pontos para alocar.",
 
     "StarshipTalentSelection.instruction_one": "Por favor, selecione {{count}} talento.",
     "StarshipTalentSelection.instruction_other": "Por favor, selecione {{count}} talentos",
@@ -369,12 +391,16 @@
     "SupportingCharacter.numericalValue": "Valor",
     "SupportingCharacter.speciesBonus": "Bônus de Espécie",
 
+    "TacticalAssetsPage.instruction": "Adicione outros recursos à sua lista de recursos.",
+    "TacticalAssetsPage.assets": "Lista de Recursos",
+
     "ToolSelection.instruction": "O que você deseja criar?",
     "ToolSelection.mainCharacter": "Personagem Principal",
     "ToolSelection.supportingCharacter": "Personagem Coadjuvante",
     "ToolSelection.starship": "Nave Estelar",
     "ToolSelection.spaceSector": "Setor Espacial",
     "ToolSelection.randomNpc": "PdM Aleatório",
+    "ToolSelection.randomStarship": "Nave Aleatória",
 
     "Common.button.random": "Aleatório",
     "Common.button.select": "Selecione",
@@ -409,15 +435,25 @@
 
     "Common.select.choose": "Escolha...",
 
+    "Construct.other.assetType": "Tipo de Recurso",
     "Construct.other.assignment": "Designação",
+    "Construct.other.attacks": "Ataques",
     "Construct.other.attribute": "Atributo",
     "Construct.other.attributes": "Atributos",
     "Construct.other.career": "Carreira",
     "Construct.other.careerEvent1": "Evento de Carreira 1",
+
+    "Construct.other.careerEvent1.short": "Evento 1",
+
     "Construct.other.careerEvent2": "Evento de Carreira 2",
+
+    "Construct.other.careerEvent2.short": "Evento 2",
+
     "Construct.other.careerEvents": "Eventos de Carreira",
     "Construct.other.characterType": "Tipo de Personagem",
     "Construct.other.crew": "Tripulação",
+    "Construct.other.crewSupport": "Tripulação de Apoio",
+    "Construct.other.department": "Departamento",
     "Construct.other.departments": "Departamentos",
     "Construct.other.determination": "Determinação",
     "Construct.other.discipline": "Disciplina",
@@ -431,10 +467,20 @@
     "Construct.other.focus2": "Foco 2",
     "Construct.other.focus3": "Foco 3",
     "Construct.other.focuses": "Focos",
+    "Construct.other.house": "Casa",
+    "Construct.other.injuries": "Ferimentos",
     "Construct.other.job": "Trabalho",
+    "Construct.other.launchYear": "Ano de Lançamento",
+    "Construct.other.lineage": "Linhagem",
+    "Construct.other.missionPod": "Módulos de Missão",
     "Construct.other.missionProfile": "Perfil de Missão",
     "Construct.other.name": "Nome",
+    "Construct.other.numberOfRefits_one": "{{count}} reforma",
+    "Construct.other.numberOfRefits_other": "{{count}} reformas",
+    "Construct.other.pastimes": "Passatempos",
+    "Construct.other.personalThreat": "Ameaça Pessoal",
     "Construct.other.pronouns": "Pronomes",
+    "Construct.other.protection": "Proteção",
     "Construct.other.power": "Energia",
     "Construct.other.purpose": "Propósito",
     "Construct.other.rank": "Patente",
@@ -446,16 +492,20 @@
     "Construct.other.scale": "Escala",
     "Construct.other.serviceDate": "Data de Serviço",
     "Construct.other.shields": "Escudos",
+    "Construct.other.ship": "Nave",
     "Construct.other.sources": "Fontes",
     "Construct.other.spaceFrame": "Estrutura Espacial",
     "Construct.other.specialRules": "Regras Especiais",
     "Construct.other.species": "Espécies",
+    "Construct.other.speciesAbility": "Habilidade de Espécie",
+    "Construct.other.starshipType": "Tipo de Nave",
     "Construct.other.stats": "Estatísticas",
     "Construct.other.stress": "Estresse",
     "Construct.other.systems": "Sistemas",
     "Construct.other.talent": "Talento",
     "Construct.other.talents": "Talentos",
     "Construct.other.talentOptions": "Opções de Talento",
+    "Construct.other.timeline": "Linha do Tempo",
     "Construct.other.training": "Treinamento",
     "Construct.other.trait": "Traço",
     "Construct.other.traits": "Traços",
@@ -464,8 +514,14 @@
     "Construct.other.value": "Valor",
     "Construct.other.values": "Valores",
     "Construct.other.weapons": "Armas",
+    "Construct.other.yearsOfService_one": "{{count}} ano de serviço",
+    "Construct.other.yearsOfService_other": "{{count}} anos de serviço",
 
+    "Construct.assetStat.medical": "Médico",
+    "Construct.assetStat.military": "Militar",
+    "Construct.assetStat.personal": "Pessoal",
     "Construct.assetStat.science": "Ciência",
+    "Construct.assetStat.social": "Social",
 
     "Construct.attribute.control": "Controle",
     "Construct.attribute.daring": "Audácia",
@@ -495,7 +551,10 @@
     "Construct.system.structure": "Estrutura",
     "Construct.system.weapons": "Armas",
 
+    "Page.title.tacticalAssets": "Recursos Táticos",
     "Page.title.attributesAndDisciplines": "Toques Finais",
+    "Page.title.career": "Carreira",
+    "Page.title.careerDetails": "Detalhes da Carreira",
     "Page.title.careerEvent": "Eventos de Carreira",
     "Page.title.careerEvent1": "Evento de Carreira 1",
     "Page.title.careerEvent2": "Evento de Carreira 2",
@@ -521,6 +580,8 @@
     "Page.title.missionPodSelection": "Seleção do Módulo de Missão",
     "Page.title.missionProfileSelection": "Seleção do Perfil da Missão",
     "Page.title.missionProfileTalentSelection": "Talento do Perfil da Missão",
+    "Page.title.otherTools": "Outras Ferramentas",
+    "Page.title.randomStarship": "Configuração de Nave Aleatória",
     "Page.title.sectorDetails": "Detalhes do Setor",
     "Page.title.simpleStarship": "Criação Simplificada de Nave Estelar",
     "Page.title.smallCraftStats": "Estatísticas de Veículos Pequenos",
@@ -555,6 +616,7 @@
     "Page.title.normalMilestone": "Marco de História Normal",
     "Page.title.modificationComplete": "Modificação Concluída",
     "Page.title.npcConfiguration": "Configuração de PdM Aleatórios",
+    "Page.title.safetyChecklist": "Lista de Verificação de Segurança",
     "Page.title.tokenCreationPage": "Criação de Token",
     "Page.title.upbringing": "Experiência Inicial",
     "Page.title.upbringingDetails": "Detalhes da Experiência Inicial",
@@ -936,6 +998,16 @@
     "Division.tmp.security": "Segurança",
     "Division.tmp.engineering": "Engenharia",
 
+    "Equipment.uniform": "Uniforme",
+    "Equipment.clothing": "Vestuário",
+    "Equipment.armor": "Armadura",
+    "Equipment.communicator": "Comunicador",
+    "Equipment.tricorder": "Tricorder",
+    "Equipment.medKit": "Kit Médico",
+    "Equipment.engineeringKit": "Kit de Engenharia",
+    "Equipment.orionMultiKey": "Multi-chave Órion",
+    "Equipment.ushaanTor": "Picador de Gelo Ushaan-Tor",
+
     "Era.name.enterprise": "Enterprise (século 22)",
     "Era.name.originalSeries": "Série Original (século 23)",
     "Era.name.nextGeneration": "A Nova Geração (século 24)",
@@ -952,33 +1024,82 @@
     "ExtraType.zaraniteMask": "Máscara de Respiração Zaranite",
     "ExtraType.ferengiHeadFlap": "Capa de Cabeça Ferengi",
 
+    "Focus.advancedHolograms": "Hologramas Avançados",
+    "Focus.ambushTactics": "Táticas de Emboscada",
     "Focus.animalHandling": "Manejo de Animais",
     "Focus.anthropology": "Antropologia",
+    "Focus.art": "Arte",
+    "Focus.artificialIntelligenceSystems": "Sistemas de Inteligência Artificial",
     "Focus.astrometrics": "Astrometria",
     "Focus.astronavigation": "Astronavegação",
+    "Focus.astronomy": "Astronomia",
     "Focus.astrophysics": "Astrofísica",
+    "Focus.atmosphericFlight": "Voo Atmosférico",
+    "Focus.attackRun": "Corrida de Ataque",
+    "Focus.bargain": "Pechinchar",
+    "Focus.bladeWeapons": "Armas de Lâmina",
     "Focus.botany": "Botânica",
+    "Focus.boatPilotSubmersibles": "Piloto de Barco / Submersíveis",
     "Focus.bureaucracy": "Burocracia",
+    "Focus.callToAction": "Chamado à Ação",
+    "Focus.camouflage": "Camuflagem",
+    "Focus.climbing": "Escalada",
+    "Focus.chemicalAndBiologicalWeapons": "Armas Químicas e Biológicas",
+    "Focus.coldReading": "Leitura a Frio",
+    "Focus.combatManeuvers": "Manobras de Combate",
+    "Focus.combatMedic": "Médico de Combate",
+    "Focus.communicationsSystems": "Sistemas de Comunicação",
     "Focus.composure": "Compostura",
     "Focus.computers": "Computadores",
+    "Focus.computerSecuritySystems": "Sistemas de Segurança de Computadores",
+    "Focus.coordinatedEfforts": "Esforços Coordenados",
+    "Focus.courtingRituals": "Rituais de Cortejo",
+    "Focus.coveringAdvance": "Cobertura Avançada",
+    "Focus.criminalMinds": "Mentes Criminosas",
+    "Focus.criminalOrganizations": "Organizações Criminosas",
+    "Focus.crisisManagement": "Gerenciamento de Crises",
+    "Focus.culturalExpert": "Especialista Cultural",
     "Focus.culturalStudies": "Estudos Culturais",
     "Focus.cybernetics": "Cibernética",
+    "Focus.deadeyeMarksman": "Atirador de Elite",
     "Focus.debate": "Debate",
+    "Focus.deception": "Enganação",
+    "Focus.decisiveLeadership": "Liderança Decisiva",
+    "Focus.deflectorOperations": "Operações de Defletores",
+    "Focus.deflectorSystems": "Sistemas de Defletores",
     "Focus.demolition": "Demolição",
+    "Focus.diagnostics": "Diagnósticos",
     "Focus.diplomacy": "Diplomacia",
     "Focus.disguise": "Disfarce",
     "Focus.disruptors": "Disruptores",
+    "Focus.efficientEvasion": "Evasão Eficiente",
     "Focus.electroPlasmaPowerSystems": "Sistemas de Energia de Eletro-Plasma",
     "Focus.emergencyMedicine": "Medicina de Emergência",
+    "Focus.emergencyRepairs": "Reparos de Emergência",
+    "Focus.emotionalIntelligence": "Inteligência Emocional",
+    "Focus.energyWeapons": "Armas de Energia",
     "Focus.espionage": "Espionagem",
+    "Focus.etiquette": "Etiqueta",
+    "Focus.evacuationProcedures": "Procedimentos de Evacuação",
     "Focus.evasiveAction": "Ações Evasivas",
     "Focus.exoTectonics": "Exo-tectônica",
     "Focus.extraVehicularActivity": "Atividade Extra-Veicular",
+    "Focus.evaSuits": "Trajes de Atividade Extraveicular",
     "Focus.finances": "Finanças",
+    "Focus.fleetFormations": "Formações de Frota",
+    "Focus.flightController": "Controlador de Voo",
+    "Focus.forensics": "Ciências Forenses",
+    "Focus.forgery": "Falsificação",
+    "Focus.gambling": "Jogos de Azar",
     "Focus.genetics": "Genética",
     "Focus.geology": "Geologia",
+    "Focus.glancingImpact": "Impacto de Relance",
+    "Focus.groundVehicles": "Veículos Terrestres",
+    "Focus.guidanceSystems": "Sistemas de Orientação",
     "Focus.handPhasers": "Feiseres de Mão",
     "Focus.handToHandCombat": "Combate Corpo a Corpo",
+    "Focus.hazardousEnvironments": "Ambientes Perigosos",
+    "Focus.heavyCover": "Cobertura Pesada",
     "Focus.helmOperation": "Operações do Leme",
     "Focus.history": "História",
     "Focus.holoprogramming": "Holoprogramação",
@@ -987,38 +1108,85 @@
     "Focus.inspiration": "Inspiração",
     "Focus.interrogation": "Interrogatório",
     "Focus.intimidation": "Intimidação",
+    "Focus.impulseEngines": "Motores de Impulso",
+    "Focus.journalism": "Jornalismo",
+    "Focus.klingonWeapons": "Armas Klingon",
     "Focus.law": "Direito",
+    "Focus.lawEnforcement": "Aplicação da Lei",
+    "Focus.leadByExample": "Liderar Pelo Exemplo",
+    "Focus.leadInvestigator": "Investigador Líder",
     "Focus.linguistics": "Linguística",
     "Focus.manufacturing": "Manufatura",
+    "Focus.martialArts": "Artes Marciais",
+    "Focus.mentalDiscipline": "Disciplina Mental",
+    "Focus.mentalResistanceTechniques": "Técnicas de Resistência Mental",
     "Focus.metallurgy": "Metalurgia",
+    "Focus.multiDiscipline": "Multidisciplinaridade",
+    "Focus.multiTasking": "Multitarefa",
     "Focus.music": "Música",
     "Focus.negotiation": "Negociação",
     "Focus.observation": "Observação",
+    "Focus.organizationalPsychology": "Psicologia Organizacional",
+    "Focus.oratory": "Oratória",
+    "Focus.pathfinder": "Desbravador",
+    "Focus.patrol": "Patrulha",
+    "Focus.performer": "Atuador",
     "Focus.persuasion": "Persuasão",
+    "Focus.phasers": "Fêisers",
     "Focus.philosophy": "Filosofia",
     "Focus.physics": "Física",
+    "Focus.pickpocketing": "Batedor de Carteiras",
+    "Focus.planetarySurveys": "Pesquisas Planetárias",
     "Focus.politics": "Política",
+    "Focus.powerManagement": "Gerenciamento de Energia",
     "Focus.powerSystems": "Sistemas de Energia",
+    "Focus.precisionManeuvering": "Manobras Precisas",
+    "Focus.precisionTargeting": "Mira Precisa",
+    "Focus.primeDirective": "Primeira Diretriz",
     "Focus.psychiatry": "Psiquiatria",
     "Focus.psychology": "Psicologia",
     "Focus.quantumMechanics": "Mecânica Quântica",
     "Focus.rapidAnalysis": "Análise Rápida",
+    "Focus.repairsAndMaintenance": "Reparos e Manutenção",
+    "Focus.reportingProcedures": "Procedimentos de Relatórios",
+    "Focus.rhetoric": "Retórica",
+    "Focus.securitySystems": "Sistemas de Segurança",
     "Focus.shipboardTacticalSystems": "Sistemas Táticos de Nave",
+    "Focus.shipDesignAndConstruction": "Projeto e Construção de Naves",
+    "Focus.shipEngagementTactics": "Táticas de Engajamento de Naves",
+    "Focus.shipLockdownProcedures": "Procedimentos de Bloqueio de Naves",
+    "Focus.shuttlebayManagement": "Gerenciamento de Baias de Lançamento",
     "Focus.smallCraft": "Veículos Pequenos",
+    "Focus.spaceStationOperations": "Operações de Estação Espacial",
+    "Focus.spacewalk": "Caminhada Espacial",
+    "Focus.starshipExpertPickOne": "Especialista em Nave Estelar (escolha uma)",
     "Focus.starshipRecognition": "Reconhecimento de Nave Estelar",
     "Focus.starfleetProtocols": "Protocolos da Frota Estelar",
+    "Focus.stationOperations": "Operações da Estação",
+    "Focus.strategy": "Estratégia",
+    "Focus.strategyTactics": "Estratégia/Tática",
+    "Focus.stellarCartography": "Cartografia Estelar",
+    "Focus.strafingRun": "Ataque Aéreo de Baixa Altitude",
     "Focus.structuralEngineering": "Engenharia Estrutural",
     "Focus.subspaceCommunications": "Comunicações Subespaciais",
+    "Focus.subspaceTheory": "Teoria Subespacial",
     "Focus.surgery": "Cirurgia",
     "Focus.survey": "Pesquisa",
     "Focus.survival": "Sobrevivência",
+    "Focus.targetingSystems": "Sistemas de Mira",
+    "Focus.teaching": "Ensino",
     "Focus.teamDynamics": "Dinâmica de Equipes",
     "Focus.threatAnalysis": "Análise de Ameaças",
+    "Focus.timeManagement": "Gerenciamento de Tempo",
+    "Focus.torpedoes": "Torpedos",
+    "Focus.tracking": "Rastreamento",
     "Focus.traumaSurgery": "Cirurgia de Trauma",
     "Focus.transportersReplicators": "Transportadores e Replicadores",
     "Focus.virology": "Virologia",
+    "Focus.warpDrive": "Motor de Dobra",
     "Focus.warpFieldDynamics": "Dinâmicas de Campo de Dobra",
     "Focus.xenobiology": "Xenobiologia",
+    "Focus.zeroGCombat": "Combate em Gravidade Zero",
 
     "GovernmentType.name.andorian": "Andoriano",
     "GovernmentType.name.bajoran": "Bajoriano",
@@ -1157,6 +1325,18 @@
 
     "NpcType.major.name": "PdM Maior",
 
+    "Rank.admiral.name": "Almirante",
+    "Rank.admiral.abbrev": "Alm.",
+
+    "Rank.viceAdmiral.name": "Vice Almirante",
+    "Rank.viceAdmiral.abbrev": "VAlm.",
+
+    "Rank.rearAdmiral.name": "Contra-Almirante",
+    "Rank.rearAdmiral.abbrev": "CAlm.",
+
+    "Rank.commodore.name": "Comodoro",
+    "Rank.commodore.abbrev": "Cmdo.",
+
     "Rank.captain.name": "Capitão",
     "Rank.captain.abbrev": "Cap.",
 
@@ -1206,45 +1386,129 @@
     "Rank.crewman3rdClass.name": "Tripulante de 3ª classe",
     "Rank.crewman3rdClass.abbrev": "Trip.",
 
+    "Rank.sergeant.name": "Sargento",
+    "Rank.sergeant.abbrev": "Sgt.",
+
+    "Rank.corporal.name": "Cabo",
+    "Rank.corporal.abbrev": "Cb.",
+
+    "Rank.private.name": "Soldado",
+    "Rank.private.abbrev": "Sd.",
+
     "Role.commandingOfficer": "Oficial Comandante",
 
     "Role.commandingOfficer.description": "O capitão. Mesmo se o oficial de comando não tiver o posto de capitão, ele será chamado de capitão por seus subordinados. Toda nave precisa ter um oficial comandante.",
+    "Role.commandingOfficer.ability": "O oficial de comando pode gastar um ponto de Determinação para conceder um ponto de Determinação a qualquer outro personagem com o qual possa se comunicar; isso não precisa estar vinculado a um Valor.",
 
     "Role.executiveOfficer": "Oficial Executivo",
 
     "Role.executiveOfficer.description": "Segundo em comando. O oficial executivo é o conselheiro chefe do capitão e quem assume o comando quando o capitão não está apto. Se uma nave não tiver um oficial executivo dedicado, um oficial em outra função deve ser indicado como segundo em comando, mas ele não receberá o benefício dessa função.",
+    "Role.executiveOfficer.ability": "Quando outro personagem em comunicação com o oficial executivo gasta um ponto de Determinação, o oficial executivo pode gastar 3 de Ímpeto (Imediato) para permitir que esse personagem recupere o ponto de Determinação gasto.",
 
     "Role.operationsManager": "Gerente de Operações",
 
     "Role.operationsManager.description": "O gerente de operações administra e supervisiona todas as operações técnicas a bordo ou envolvendo a nave, normalmente da estação de Operações na Ponte de Comando, ou em conjunto com o engenheiro-chefe (em naves menores, um oficial pode ocupar ambas as funções). Isso frequentemente envolve assumir as tarefas de um oficial de ciências, se não houver um oficial de ciências dedicado na equipe sênior.",
+    "Role.operationsManager.ability": "Quando o gerente de operações é bem-sucedido em uma Tarefa auxiliado pelos Computadores ou Sensores da nave, ou usando um tricorder, a personagem gera um Ímpeto de bônus, que só pode ser usado no Gasto de Ímpeto para Obter Informações.",
 
     "Role.chiefEngineer": "Engenheiro-Chefe",
 
     "Role.chiefEngineer.description": "O engenheiro-chefe é responsável por garantir que a nave permaneça operacional e funcional, além de comandar o departamento de engenharia a bordo da nave.",
+    "Role.chiefEngineer.ability": "Quando a bordo da nave, o engenheiro-chefe sempre tem a vantagem “Departamento de Engenharia”, que representa o complemento de engenheiros e técnicos da nave.",
 
     "Role.chiefOfSecurity": "Chefe de Segurança",
 
     "Role.chiefOfSecurity.description": "O chefe de segurança supervisiona o departamento de segurança da nave e é responsável por garantir a segurança da nave e da tripulação durante missões, pela investigação de assuntos disciplinares e criminais e por supervisionar a proteção de pessoas importantes a bordo da nave. Em muitas naves, o chefe de segurança opera a partir da estação Tática na ponte de comando.",
+    "Role.chiefOfSecurity.ability": "Quando a bordo da nave, o chefe de segurança sempre tem a vantagem “Destacamento de Segurança”, que representa a equipe de segurança da nave.",
 
     "Role.chiefMedicalOfficer": "Oficial Médico-Chefe",
 
     "Role.chiefMedicalOfficer.description": "O oficial médico chefe, também conhecido como cirurgião da nave ou médico da nave, é responsável pela saúde e pelo bem-estar da tripulação e das outras pessoas a bordo da nave, chefiando o departamento médico da nave. Um oficial médico chefe pode ordenar e revogar as ordens dos oficiais sêniores em questões de saúde.",
+    "Role.chiefMedicalOfficer.ability": "Quando a bordo da nave, o oficial médico chefe sempre tem a vantagem \"Departamento Médico\", que representa a equipe médica da nave.",
 
     "Role.scienceOfficer": "Oficial de Ciências",
 
     "Role.scienceOfficer.description": "Um oficial de ciências é responsável por aconselhar o oficial comandante sobre todos os assuntos científicos, fornecendo hipóteses em assuntos a respeito do desconhecido. Nem todas as naves têm um oficial de ciências dedicado entre os funcionários seniores, frequentemente tendo o gerente de operações a cargo disso.",
+    "Role.scienceOfficer.ability": "Quando o oficial de ciências é bem-sucedido em uma Tarefa auxiliado pelos Computadores ou Sensores da nave ou usando um tricorder, o personagem gera um Ímpeto de bônus, que só pode ser usado no gasto de Ímpeto de Obter Informações.",
 
     "Role.flightController": "Controlador de Voo",
 
     "Role.flightController.description": "Não sendo uma típica função sênior da equipe, alguns capitães, particularmente aqueles operando em espaço desconhecido, escolha o timoneiro ou oficial de controle de voo mais sênior para servir como funcionário sênior também.",
+    "Role.flightController.ability": "Quando o controlador de voo precisa analisar ou reparar a tecnologia relacionada a voo ou propulsão, ele pode usar a Disciplina Condução em vez de Engenharia.",
 
     "Role.shipsCounselor": "Psicólogo da Nave",
 
     "Role.shipsCounselor.description": "Em naves maiores e bases estelares, é comum ter pessoal dedicado à saúde mental. Alguns capitães os consideram conselheiros valiosos, já que o treinamento deles cobre cultura e psicologia, tornando-os excepcionalmente bons em ler o humor e as intenções dos outros.",
+    "Role.shipsCounselor.ability": "Depois de ser bem-sucedido em uma Tarefa para determinar o estado emocional ou a intenção de outra criatura viva, o conselheiro da nave ganha um Ímpeto de bônus, que só pode ser usado no gasto de Ímpeto para Obter Informações.",
 
     "Role.communicationsOfficer": "Oficial de Comunicações",
 
     "Role.communicationsOfficer.description": "Mais comuns nos primórdios da Frota Estelar, oficiais de comunicações dedicados normalmente são habilidosos em linguística e criptografia e auxiliam com tecnologias avançadas de tradução e decodificação, portanto, são valiosos durante encontros com novas culturas e com povos hostis.",
+    "Role.communicationsOfficer.ability": "Quando uma Tarefa tentada pelo oficial de comunicações tiver sua Dificuldade aumentada devido a um idioma ou criptografia desconhecidos, ignore esse aumento de Dificuldade.",
+
+    "Role.admiral": "Almirante",
+
+    "Role.admiral.description": "Somente Oficiais de Bandeira.",
+    "Role.admiral.ability": "Selecione três Focos adicionais, que reflitam áreas de especialização ou assuntos relacionados à designação do almirante. No início de cada missão, o almirante escolhe um de seus três Focos, e cada Personagem Principal recebe esse foco como um Foco adicional para a missão, devido a instruções adicionais e recursos de instrução.",
+
+    "Role.navigator": "Navegador",
+
+    "Role.navigator.description": "Não é uma função típica de equipe sênior, mas alguns capitães, especialmente os que operam em espaço desconhecido, escolhem o navegador mais sênior para servir também como equipe sênior.",
+    "Role.navigator.ability": "Quando o navegador precisa analisar ou reparar a tecnologia relacionada a voo ou propulsão, ele pode usar a Disciplina Condução em vez de Engenharia.",
+
+    "SafetyEvaluationType.alwaysOk": "Sempre OK",
+    "SafetyEvaluationType.yellowAlert": "Alerta Amarelo",
+    "SafetyEvaluationType.redAlert": "Alerta Vermelho",
+
+    "SafetySection.category.dismemberment": "Descrições de desmembramento",
+    "SafetySection.category.gore": "Descrições de sangue",
+    "SafetySection.category.massDestructionGenocide": "Descrições de destruição em massa ou genocídio",
+    "SafetySection.category.harmToAnimals": "Danos a animais",
+    "SafetySection.category.harmToChildren": "Danos a crianças",
+    "SafetySection.category.hateCrimes": "Danos a grupos minoritários, crimes de ódio direcionados",
+    "SafetySection.category.traitorMechanicsPvP": "Mecanismos de traição / Jogador vs. Jogador (JvJ)",
+    "SafetySection.category.speciesHate": "Ódio direcionado contra outras espécies (por exemplo, klingons, humanos)",
+    "SafetySection.category.homophobia": "Homofobia/transfobia",
+    "SafetySection.category.racism": "Racismo (dentro de sua própria espécie)",
+    "SafetySection.category.religiousIntolerance": "Intolerância religiosa",
+    "SafetySection.category.sexism": "Sexismo",
+    "SafetySection.category.hatefulLanguage": "Linguagem odiosa direcionada",
+    "SafetySection.category.entrapment": "Aprisionamento; ser enterrado no subsolo, etc.",
+    "SafetySection.category.grief": "Luto",
+    "SafetySection.category.imprisonmentRestraint": "Prisão ou restrição",
+    "SafetySection.category.noPersonalAgency": "Falta de agência pessoal ou de capacidade de mudar os eventos",
+    "SafetySection.category.mentalAbuse": "Abuso ou condicionamento mental",
+    "SafetySection.category.stranded": "Encalhado, incapaz de contatar ajuda",
+    "SafetySection.category.biologicalWeapons": "Armas biológicas",
+    "SafetySection.category.desecrationOfBodies": "Profanação de corpos",
+    "SafetySection.category.execution": "Execução",
+    "SafetySection.category.forcedScientificExperiments": "Experimentação científica forçada",
+    "SafetySection.category.murderOfNonCombatants": "Assassinato de não combatentes",
+    "SafetySection.category.torture": "Tortura",
+
+    "SafetySectionType.violence": "Violência",
+    "SafetySectionType.gameplayMechanics": "Mecânica de jogo",
+    "SafetySectionType.hatred": "Ódio",
+    "SafetySectionType.helplessness": "Desamparo",
+    "SafetySectionType.warCrimes": "Crimes de guerra",
+
+    "Sheet.basicGeneratedHalfPageCharacterSheet": "Nova folha de personagem de meia página no estilo da 2ª edição",
+    "Sheet.generatedTngPortraitCharacterSheet": "Folha de personagem de retrato da TNG (letra americana)",
+    "Sheet.halfPageSupportingCharacterSheet": "Ficha de personagem de apoio de meia página",
+    "Sheet.landscapeGeneratedCharacterSheet": "Folha de Personagem TNG Landscape (US-Letter)",
+    "Sheet.standardTngCharacterSheet": "Folha de personagem padrão de TNG (US-Letter)",
+
+    "Sheet.text.title": "Registro de pessoal da Frota Estelar",
+
+    "SheetTag.a4": "A4",
+    "SheetTag.halfPage": "Meia página",
+    "SheetTag.landscape": "Paisagem",
+    "SheetTag.languageSupport": "Suporte a idiomas",
+    "SheetTag.lcars": "LCARS",
+    "SheetTag.portrait": "Retrato",
+    "SheetTag.style2e": "2ª Ed. Estilo",
+    "SheetTag.talentText": "Texto de talento",
+    "SheetTag.twoPage": "2 páginas",
+    "SheetTag.usLetter": "Carta",
 
     "ShipBuildType.pod.name": "Módulo",
 
@@ -1264,6 +1528,7 @@
     "Source.type.unofficial": "Fontes Não-Oficiais",
 
     "Source.book.core": "Básico",
+    "Source.book.core2ndEdition": "Básico 2e",
     "Source.book.alphaQuadrant": "Quadrante Alfa",
     "Source.book.betaQuadrant": "Quadrante Beta",
     "Source.book.gammaQuadrant": "Quadrante Gamma",
@@ -1291,25 +1556,81 @@
     "Source.book.continuingMissions": "Continuing Mission site",
 
     "Spaceframe.akira": "Classe Akira",
+
+    "Spaceframe.akira.description": "Após a Batalha de Wolf 359, a Frota Estelar percebeu a necessidade de uma nave estelar fortemente armada e com capacidade de combate que pudesse realizar missões de patrulha e manter uma presença constante em um setor do espaço para fornecer apoio ou ação direta em missões de combate, mas que ainda pudesse contribuir para o objetivo principal da Frota Estelar de exploração e descoberta. O design que o Gabinete de Design Avançado de Naves Estelares escolheu para esse projeto foi proposto pela primeira vez em meados do século 23, mas limitações tecnológicas impediram sua construção adequada até então. Quando atualizada com as tecnologias mais recentes, a nova U.S.S. Akira foi tão bem-sucedida em suas patrulhas iniciais que a Frota Estelar imediatamente ordenou que a classe fosse amplamente produzida.",
+
     "Spaceframe.ambassador": "Classe Ambassador",
+
+    "Spaceframe.ambassador.description": "A Divisão Exploratória da Frota Estelar e o Conselho Científico da Federação começaram a observar um declínio constante nos retornos científicos das missões no espaço profundo no início do século 24. A Frota Estelar contava com as naves da classe Excelsior e as poucas naves da classe Constitution ainda em serviço para continuar seus objetivos de descoberta, mas, mesmo com as reformas planejadas dessas estruturas espaciais, elas ainda precisavam de visitas a centros logísticos a cada cinco anos, à medida que os sistemas se desgastavam. Os Estaleiros da Frota de Utopia Planitia começaram a desenvolver um novo cruzador de exploração do espaço profundo que abordaria essas preocupações e permitiria que uma estrutura espacial fosse mais fundo no desconhecido. A classe Ambassador foi desenvolvida e lançada em 2335, e muitas das técnicas de engenharia, ideias de projeto e tecnologias criadas para essa nave estelar continuariam a ser refinadas nas décadas seguintes e se tornariam a base para a classe Galaxy.",
+
     "Spaceframe.archer": "Classe Archer",
+
+    "Spaceframe.archer.description": "A classe Archer foi projetada para ser um desbravador de última geração, destinado a missões de reconhecimento de longo alcance e a expandir os limites da Federação mais longe e mais rápido do que qualquer outra classe de nave da Frota Estelar. A equipe de projeto da classe se beneficiou da pesquisa obtida por meio de mais de uma década de avanços tecnológicos instalados nas naves das classes Constitution, Hermes, Ptolemy e Saladin, resultando na classe Archer com alguns dos mais avançados propulsores de impulso e conjuntos de propulsores RCS já instalados em uma nave da Frota Estelar. O projeto da nave é compacto, consistindo em um casco primário de três decks que contém todos os sistemas da nave, exceto as duas naceles de dobra externas conectadas por suportes curtos ao casco primário. As naves da classe Archer continuariam em serviço até meados do século 24, quando os runabouts da classe Danube começaram a assumir as funções que antes ocupavam.",
+
     "Spaceframe.california": "Classe California",
+
+    "Spaceframe.california.description": "À medida que a Federação se espalhava rapidamente pelo Orion Spur na década de 2350, a Frota Estelar estava percebendo a falta de naves capazes de atender a necessidades de todos os tipos dentro das fronteiras da política. A Frota Estelar abriu a possibilidade para que os mundos membros projetassem e construíssem sua própria classe de nave estelar para poder responder a questões que considerassem urgentes para suas próprias colônias e interesses. A Terra apresentou a classe California com base em projetos já padronizados da Frota Estelar, mas com características específicas da Terra, que influenciariam as naves estelares da classe Galaxy da década seguinte. As naves da classe California eram vistas como cavalos de batalha confiáveis, mas nunca foram construídas em números comparáveis às naves das classes Excelsior e Miranda, fazendo com que raramente fossem vistas fora dos volumes da Federação dominados por humanos e cetáceos. Elas continuaram a ser usadas pela Frota Estelar em funções de linha de frente até meados do século 25, quando foram lentamente introduzidas no uso civil.",
+
     "Spaceframe.cardenas": "Classe Cardenas",
+
+    "Spaceframe.cardenas.description": "Os sucessos observados nas outras classes resultantes da Operação Next Step deram ao Almirantado a esperança de que outras ideias propostas nos primeiros anos do projeto pudessem ser ampliadas e totalmente realizadas. Um desses conceitos era uma “fragata de resposta rápida” que tinha as mesmas dimensões dos projetos anteriores da Next Step. Com a rápida expansão da Federação pelo Braço de Órion, o projeto da classe Cardenas passou apenas por uma única fase de revisão, com muitos dos problemas iniciais de engenharia sendo resolvidos à medida que as primeiras estruturas espaciais eram construídas. \n\nA classe Cardenas tornou-se um dos cargos de maior prestígio que uma pessoa poderia obter no início do século 23. A velocidade que ela foi projetada para utilizar não só fez com que a nave fosse despachada para sistemas estelares ao longo das Zonas Neutras Klingon e Romulana para interceptar ou perseguir sombras de sensores, mas a nave também foi usada como exploradora de alta velocidade. Como essa classe era altamente especializada em seus sistemas de propulsão de dobra, o reequipamento da estrutura espacial se mostrou demorado, fazendo com que essa classe passasse quase o dobro do tempo em doca seca em comparação com outras embarcações de deslocamento semelhante. Esse problema se agravou com o desenvolvimento de computadores duotrônicos no início da década de 2240. \n\nEm 2245, a grande maioria das embarcações da classe Cardenas estava fora de serviço ativo e em manutenção ou reforma. O lançamento da nave da classe Constitution traria o fim dessas embarcações, e a Frota Estelar permitiria que as naves espaciais atualmente em reforma continuassem, mas ordenaria que o restante das embarcações fosse desativado. A última nave ativa da classe Cardenas, a U.S.S. Van Allen, foi aposentada em 2263.",
+
     "Spaceframe.centaur": "Classe Centaur",
+
+    "Spaceframe.centaur.description": "Em meados da década de 2280, a Frota Estelar achou que a próxima geração de cruzadores leves deveria começar a ser desenvolvida com base nas novas tecnologias que estavam sendo desenvolvidas em conjunto para a classe Excelsior. As falhas do protótipo dos sistemas transdobra na classe Excelsior significaram atrasos para o cruzador leve, então chamado de classe Centaur. Em meados da década de 2290, foram realizadas extensas reformulações da maioria dos sistemas, com outras embarcações da classe além do protótipo entrando em serviço. Externamente, essa classe se assemelha à classe Excelsior em muitos aspectos, incluindo o compartilhamento do mesmo disco para seu casco principal e naceles alongadas no estilo transdobra. Não tão modular e personalizável quanto a classe Miranda, a classe Centaur só seria produzida em pequenas quantidades e era vista como uma nave especializada em uma época em que as naves multiuso estavam em ascensão no Comando da Frota Estelar.",
+
     "Spaceframe.constellation": "Classe Constellation",
+
+    "Spaceframe.constellation.description": "A classe Constellation foi desenvolvida em meados da década de 2280 como uma resposta à crescente tensão com o Império Klingon e às dificuldades no desenvolvimento do novo sistema transdobra para as naves da classe Excelsior. A nave nunca foi concebida como uma nave de guerra do tipo usado pelo Império, nem tinha tanto armamento quanto uma nave da classe Miranda totalmente armada, mas as naves da classe Constelação foram concebidas para interceptar incursões do Império em altas velocidades de dobra e sobreviver até a chegada de reforços mais pesados. O uso pretendido dessa classe nunca ocorreria, pois os Acordos de Khitomer foram assinados logo após a implantação generalizada da classe. Em vez de serem retiradas de serviço ou reimplantadas, as naves da classe Constellation receberam atribuições diferentes, atuando como unidades de primeira resposta a crises em toda a Federação e nos setores não reclamados que cercam suas fronteiras em lenta expansão.",
+
     "Spaceframe.constitution": "Classe Constitution",
+
+    "Spaceframe.constitution.description": "Símbolo da Frota Estelar em meados do século 23, a classe Constitution se tornaria lendária em Orion Spur devido às suas missões de cinco anos.\n\nA construção das embarcações foi realizada principalmente no sistema Sol, mas depois que o bloco inicial de embarcações foi concluído e as primeiras missões de cinco anos chegaram ao fim, as estruturas espaciais foram fabricadas em outros sistemas do mundo central capazes de lidar com a grande estrutura espacial. A classe Constitution se tornaria o banco de testes de novas tecnologias no início da década de 2270, que foram desenvolvidas a partir das missões de cinco anos das mesmas classes e das lições aprendidas na breve guerra com o Império Klingon. A estrutura espacial continuou em serviço até meados do século 24.",
+
     "Spaceframe.crossfield": "Classe Crossfield",
+
+    "Spaceframe.crossfield.description": "Projetada e produzida em segredo, a classe Crossfield foi produzida exclusivamente para testar o teórico “propulsor de cubo de esporo ativado por deslocamento” desenvolvido pelos doutores Paul Stamets e Justin Straal. O lançamento da U.S.S. Crossfield em 2255 foi um sucesso para a pesquisa e o desenvolvimento de naves estelares para a Frota Estelar, mas os testes iniciais do propulsor de esporos não foram bem-sucedidos. No início de 2256, essas falhas no sistema de propulsão foram corrigidas e as espaçonaves foram lançadas pouco antes do início das hostilidades com o Império Klingon.\n\nCom o número limitado de espaçonaves produzidas e a perda da Glenn e da Discovery devido a falhas de propulsão em 2256 e 2258, respectivamente, apenas a U.S.S. Crossfield permaneceu em serviço, e outras espaçonaves tiveram sua produção cancelada. A própria Crossfield continuaria em serviço com o Corpo de Engenheiros da Frota Estelar até que uma colisão com um pedaço considerável de um asteroide tornou a nave inviável depois de ser rebocada de volta para a espaçonave em 2273. Ela permaneceu lá em uso como um banco de testes para novas tecnologias até ser finalmente desmontada em 2290.",
+
     "Spaceframe.daedalus": "Classe Daedalus",
+
+    "Spaceframe.daedalus.description": "A classe Daedalus serviu à Frota Estelar como sua principal nave de patrulha, apoio a colônias e exploração antes da introdução da classe NX. A rápida expansão da influência da Terra Unida significava que a construção dessas estruturas espaciais tinha de ocorrer em um ritmo acelerado, o que significa que essas embarcações eram construídas com a menor quantidade possível de tecnologia avançada, bem como com sistemas que exigiriam pouca manutenção dos estaleiros. O sucesso dessa classe durante a Guerra Terra-Romulana e sua incrível adaptabilidade fizeram com que ela continuasse a servir ativamente na Frota Estelar até meados do século 23 e em funções de apoio civil até o final do século 24.",
+
     "Spaceframe.defiant": "Classe Defiant",
+
+    "Spaceframe.defiant.description": "Como a Frota Estelar tinha pouca experiência em projetar uma nave de guerra desde o início, o desenvolvimento da classe Defiant começou antes da destruição da frota em Wolf 359 pelos Borg em 2367, e não veria a construção da primeira estrutura espacial até 2371 - e somente depois disso, após atrasos e grandes reformulações, à medida que novas tecnologias eram desenvolvidas para combater os Borg.",
+
     "Spaceframe.engle": "Classe Engle",
+
+    "Spaceframe.engle.description": "A classe Engle chegou ao ponto de ter uma estrutura espacial experimental construída em 2208 e foi finalmente concluída com o advento de novos projetos de bobinas de dobra em 2224. Classes rápidas de naves estelares, como a classe Cardenas, eram úteis, mas exigiam grandes quantidades de material para serem produzidas, além de quantidades significativas de energia para manter um campo de dobra estável. A classe Engle era menor e exigia um núcleo de dobra muito menor para manter altas velocidades e um campo estável.\n\nA estrutura espacial provou ser popular entre os novos mundos membros da Federação que solicitavam à Frota Estelar a construção em seus estaleiros devido à sua velocidade e tamanho. Durante as décadas de 2230 e 40, muitas das primeiras naves da Frota Estelar a serem designadas para um mundo recém-admitido ou colonizado eram Engles.\n\nAs embarcações da classe Engle foram relegadas à Frota Estelar Médica como naves de resposta a emergências e mantidas em serviço ativo nessa função até o final da década de 2290.",
+
     "Spaceframe.excelsior": "Classe Excelsior",
+
+    "Spaceframe.excelsior.description": "Originalmente planejado como um teste para o sistema de propulsão “transdobra” altamente experimental, o “Grande Experimento” foi visto como um desastre após a falha completa dos sistemas de propulsão da Excelsior em 2285. Depois de um reprojeto total realizado em quase todos os sistemas da nave, a propulsão transdobra foi substituída pela propulsão de dobra padrão. A versátil estrutura espacial da Excelsior tornou-se uma visão padrão em toda a Federação e além, e continua a ser fabricada na década de 2390.",
+
+    "Spaceframe.gagarin": "Classe Gagarin",
+
+    "Spaceframe.gagarin.description": "As últimas décadas do século 24 foram tumultuadas. O difícil clima político deu origem a uma facção de falcões na Frota Estelar que insistiam que a dissuasão era uma ferramenta importante. Se uma nova guerra acontecesse, a Frota Estelar precisaria de naves estelares capazes de enfrentar novos adversários. O cruzador de batalha da classe Gagarin é um dos vários projetos encomendados por uma Frota Estelar que está abandonando seu isolacionismo e se preparando para enfrentar um novo século de incertezas.",
+
     "Spaceframe.galaxy": "Classe Galaxy",
+
+    "Spaceframe.galaxy.description": "A classe Galaxy foi projetada para superar qualquer nave de exploração e ciência já desenvolvida pela Frota Estelar, incluindo as tecnologias mais avançadas da década de 2350. Essa estrutura espacial também representou uma filosofia totalmente nova para o bem-estar mental da tripulação em missões de longa duração no espaço profundo, já que a Frota Estelar forneceu instalações e alojamentos para dependentes civis e voluntários. O conceito se concentrava em não separar as famílias dos entes queridos por anos a fio, e o moral nas naves da classe Galaxy era correspondentemente alto.",
+
     "Spaceframe.ganashia": "Classe Ganashia",
     "Spaceframe.hermes": "Classe Hermes",
     "Spaceframe.hiawatha": "Classe Hiawatha",
     "Spaceframe.hoover": "Classe Hoover",
-    "Spaceframe.intrepid": "Classe Intreid",
+    "Spaceframe.intrepid": "Classe Intrepid",
+
+    "Spaceframe.intrepid.description": "Depois de uma década em serviço, a Frota Estelar tinha visto os sucessos e fracassos das naves da classe Galaxy que estavam em serviço. Como essa grande nave estava sendo usada mais como nave diplomática e de comando do que para exploração, a Frota Estelar sentiu que havia a necessidade de um explorador de espaço profundo menor e mais rápido. Contendo a melhor tecnologia do início da década de 2370 e evoluída a partir do design e dos materiais da classe Nova, a nova classe Intrepid era um símbolo da intenção do Conselho Científico da Federação de fazer com que a Frota Estelar retornasse aos seus objetivos declarados de exploração e ciência. A Guerra do Domínio reduziria o número de cascos construídos, mas o fim da guerra - e o retorno da U.S.S. Voyager ao espaço da Federação em 2378 - significou uma paixão renovada por essa estrutura espacial.",
+
+    "Spaceframe.inquiry": "Class Inquiry",
+
+    "Spaceframe.inquiry.description": "O renascimento tecnológico da Federação no final do século 24 produziu avanços gigantescos em quase todos os aspectos da vida de seus cidadãos, e a Frota Estelar viu cada um deles como uma oportunidade de levar adiante sua filosofia de projeto. O sucesso da classe Vesta fez com que a Frota Estelar tentasse construir uma estrutura espacial mais automatizada e adaptável, capaz de usar o slipstream quântico e ser tão modular quanto as classes Nebula e Luna. Foi determinado que a instalação de um QSD exigiria muitos membros da tripulação para operar e, em vez disso, o foco foi colocado na melhoria da velocidade de cruzeiro sustentada da nave. O resultado foi o cruzador de exploração da classe Inquiry, que começou a substituir as naves da classe Miranda quase que imediatamente. A primeira implantação em grande escala dessas naves foi o 1º Esquadrão de Resposta Pesada Devron, sob o comando do Capitão Riker, em 2399.",
+
     "Spaceframe.luna": "Classe Luna",
+
+    "Spaceframe.luna.description": "Com o sucesso do projeto da classe Intrepid, a Frota Estelar iniciou imediatamente o desenvolvimento paralelo de um explorador pesado capaz de realizar todas as mesmas tarefas exploratórias e científicas da classe Intrepid, mas com instalações de pesquisa maiores, mais poder de processamento de computador e maior duração da missão. A classe Luna saiu de sua fase de projeto oito meses depois da classe irmã e, embora tenha havido atrasos na engenharia, a U.S.S. Luna NX-80101 deslizou de sua doca seca sobre Marte no final de 2372. Outros atrasos ocorreram devido à eclosão da guerra entre o Império Klingon e, mais tarde, o Domínio. Embora a classe Luna tenha sido aprovada para produção, outras embarcações não foram lançadas até 2375.",
+
     "Spaceframe.magee": "Classe Magee",
     "Spaceframe.malachowski": "Classe Malachowski",
     "Spaceframe.miranda": "Classe Miranda",
@@ -1322,26 +1643,49 @@
     "Spaceframe.obena": "Classe Obena",
     "Spaceframe.oberth": "Classe Oberth",
     "Spaceframe.olympic": "Classe Olympic",
+    "Spaceframe.odyssey": "Classe Odyssey",
+
+    "Spaceframe.odyssey.description": "Após os encontros com as enormes naves estelares lançadas pelos Borg, Dominion e os Remanos, os planejadores da Frota Estelar ficaram preocupados com o fato de os cruzadores pesados da Federação estarem ficando para trás em termos de capacidade defensiva e ofensiva. Em resposta, o Almirantado decidiu investir em um ambicioso programa de design. O objetivo era criar a própria iteração da Frota Estelar de um enorme “cruzador estelar” que pudesse competir com essas naves estelares de classe supercapital em pé de igualdade. O projeto produziria a U.S.S. Odyssey, a U.S.S. Verity e, por fim, a próxima nave estelar Enterprise, NCC-1701-F. A classe Odyssey carregaria a bandeira da Federação no século 25 como um farol de esperança em uma era tumultuada.",
+
     "Spaceframe.osler": "Classe Osler",
     "Spaceframe.parliament": "Classe Parliament",
+    "Spaceframe.pathfinder": "Classe Pathfinder",
+
+    "Spaceframe.pathfinder.description": "A ordem de batalha da Frota Estelar há muito enfatiza a humilde nave científica, a ponto de muitos planejadores do Almirantado reclamarem regularmente que os recursos da frota estão sendo mal alocados, dado o recente clima político beligerante da Galáxia. Embora a virada do século 25 tenha certamente visto uma mudança na construção de novas naves de pesquisa pura para cruzadores e escoltas, o Almirantado continua a buscar maneiras de construir naves estelares versáteis que sejam úteis como plataformas de defesa, mas que também sejam excelentes em pesquisa e exploração. Um exemplo de sexta geração da nave científica de longo alcance da Frota Estelar, a Pathfinder tem o mesmo nome da missão que ajudou a trazer a U.S.S. Voyager para casa há 40 anos.",
+
+    "Spaceframe.reliant": "Classe Reliant",
+
+    "Spaceframe.reliant.description": "O Almirantado precisava de um substituto para a classe Miranda que pudesse servir como a espinha dorsal do corpo de apoio logístico e operacional da Frota Estelar. Ao contrário da Miranda, que começou como um cruzador de longo alcance e passou a ter funções logísticas e de apoio à medida que foi superada por construções mais novas, a Reliant foi projetada como uma nave de apoio desde o início. A Reliant foi uma das primeiras classes de naves estelares a adotar totalmente a “sexta geração” da tecnologia de naves estelares da Frota Estelar, apresentando mais automação, emissores e sensores de partículas mais versáteis e um projetor de explosão de slipstream quântico rápido, porém limitado.",
+
+    "Spaceframe.ross": "Classe Ross",
     "Spaceframe.saber": "Classe Saber",
     "Spaceframe.shepard": "Classe Shepard",
     "Spaceframe.sovereign": "Classe Sovereign",
     "Spaceframe.steamrunner": "Classe Steamrunner",
+    "Spaceframe.sutherland": "Classe Sutherland",
     "Spaceframe.sydney": "Classe Sydney",
     "Spaceframe.tKalat": "Classe T'Kalat",
     "Spaceframe.walker": "Classe Walker",
 
     "Specialization.admiral": "Almirante",
     "Specialization.admin": "Assistente",
+    "Specialization.bodyguard": "Guarda-costas",
+    "Specialization.bruteForHire": "Bruto de Aluguel",
+    "Specialization.bureaucrat": "Burocrata",
+    "Specialization.child": "Criança",
     "Specialization.civilianDoctor": "Médico",
+    "Specialization.colonist": "Colono",
     "Specialization.conn": "Condução",
     "Specialization.counselor": "Conselheiro",
+    "Specialization.civilianDoctor": "Médico",
     "Specialization.engineer": "Engenheiro",
+    "Specialization.federationAmbassador": "Embaixador da Federação",
     "Specialization.ferengiDaiMon": "DaiMon Ferengi",
     "Specialization.ferengiMerchant": "Comerciante Ferengi",
     "Specialization.firstContactSpecialist": "Especialista em Primeiro Contato",
     "Specialization.hangarDeck": "Convés do Hangar",
+    "Specialization.independentTraderCaptain": "Capitão Comerciante Independente",
+    "Specialization.informationBroker": "Intermediário de Informações",
     "Specialization.intelligenceOfficer": "Oficial de Inteligência",
     "Specialization.jag": "Gabinete do Juiz Auditor Geral",
     "Specialization.klingonWarrior": "Guerreiro Klingon",
@@ -1350,9 +1694,11 @@
     "Specialization.klingonMedic": "Médico Klingon",
     "Specialization.medicalDoctor": "Médico",
     "Specialization.nurse": "Enfermeiro",
+    "Specialization.orionPirate": "Pirata Órion",
     "Specialization.scienceTech": "Técnico de Ciências",
     "Specialization.scientist": "Cientista",
     "Specialization.security": "Segurança",
+    "Specialization.smuggler": "Contrabandista",
     "Specialization.starfleetScientist": "Cientista",
 
     "Species.aenar.name": "Aenar",
@@ -1619,8 +1965,11 @@
     "StarSystem.common.primaryStar": "Estrela Primária",
     "StarSystem.common.companionStar": "Estrela Companheira",
 
+    "Talent.text.rank": "{{talentName}} [Nível: {{rank}}]",
+
     "Talent.ablativeArmor": "Armadura Ablativa",
 
+    "Talent.ablativeArmor.description": "O revestimento do casco da nave possui uma camada ablativa adicional que desintegra lentamente sob temperaturas extremas, como as causadas por armas de energia ou explosões de torpedos, dissipando a energia e protegendo a nave. Esse revestimento é substituído periodicamente. A Resistência da nave aumenta em 2.",
     "Talent.ablativeArmor.soloDescription": "O revestimento do casco da nave possui uma camada ablativa adicional que desintegra lentamente sob temperaturas extremas, como as causadas por armas de energia ou explosões de torpedos, dissipando a energia e protegendo a nave. Esse revestimento é substituído periodicamente.",
 
     "Talent.ablativeFieldProjector": "Projetor de Campo Ablativo",
@@ -1641,14 +1990,17 @@
 
     "Talent.advancedResearchFacilities": "Instalações de Pesquisa Avançada",
 
+    "Talent.advancedResearchFacilities.description": "A astronave é equipada com laboratórios adicionais e instalações de pesquisa a longo prazo, que permite a tripulação estudar fenômenos por um longo período e, dessa forma, gerar uma variedade de informações úteis. Sempre que uma personagem a bordo da nave fizer uma Tarefa para pesquisar e for auxiliado pelo Computadores + Ciência da nave, ele recebe um ponto de Ímpeto extra, que deve ser usado para o Gasto de Ímpeto Obter Informação.",
     "Talent.advancedResearchFacilities.soloDescription": "A nave estelar é equipada com laboratórios adicionais e instalações de pesquisa a longo prazo, que permite a tripulação estudar fenômenos por um longo período e, dessa forma, gerar uma variedade de informações úteis.",
 
     "Talent.advancedSensorSuites": "Conjunto de Sensores Avançados",
 
+    "Talent.advancedSensorSuites.description": "Os sensores da embarcação estão entre os mais avançados e sofisticados na frota. A menos que os Sensores da nave sofram um ou mais Rompimentos, sempre que a personagem fizer uma Tarefa auxiliada pelos Sensores, ele pode reduzir em um a Dificuldade da Tarefa, até um mínimo de 0.",
     "Talent.advancedSensorSuites.soloDescription": "Os sensores da embarcação estão entre os mais avançados\ne sofisticados na frota",
 
     "Talent.advancedShields": "Escudos Avançados",
 
+    "Talent.advancedShields.description": "Os escudos da astronave são de ponta, usando desenvolvimentos que outras culturas ainda não aprenderam a sobrepujar ou que simplesmente fornecendo mais proteção pelo mesmo gasto de energia. Os Escudos máximos da nave\nsão aumentados em 5.",
     "Talent.advancedShields.soloDescription": "Os escudos da nave estelar são de ponta, usando desenvolvimentos que outras culturas ainda não aprenderam a sobrepujar ou que simplesmente fornecendo mais proteção pelo mesmo gasto de energia.",
 
     "Talent.advancedTransporters": "Transportadores Avançados",
@@ -1807,11 +2159,17 @@
 
     "Talent.deluxeGalley.soloDescription": "O refeitório da nave é equipado com sistemas de preparação de alimentos de primeira linha, além de vastos estoques de alimentos não replicados.",
 
+    "Talent.demolitionist": "Demolicionista",
+
     "Talent.demolitionist.description": "Você é hábil na fabricação, instalação e desativação de dispositivos explosivos. Sempre que você tentar uma tarefa de Engenharia para criar, instalar ou desativar um dispositivo explosivo, ou sempre que fizer um ataque com uma arma com a qualidade de arma Granada, o primeiro d20 que você comprar será gratuito. Além disso, você pode ignorar a primeira complicação em uma Tarefa de Engenharia envolvendo explosivos uma vez por cena.",
 
     "Talent.diplomaticSuites": "Suítes Diplomáticas",
 
     "Talent.diplomaticSuites.soloDescription": "A nave têm numerosos aposentos de alta qualidade para abrigar VIPs, assim como salas de instrução e outras instalações para permitir que atue como terreno neutro para reuniões diplomáticas, negociações de comércio e funções similares.",
+
+    "Talent.doctorsOrders": "Ordens Médicas",
+
+    "Talent.doctorsOrders.description": "Quando você tenta realizar uma Tarefa para coordenar outras pessoas ou para coagir alguém a tomar ou abster-se de um curso de ação específico, você pode usar a Disciplina de Medicina em vez de Comando.",
 
     "Talent.dualEnvironment": "Ambiente Duplo",
 
@@ -1840,6 +2198,10 @@
     "Talent.fastTargetingSystems": "Sistemas de Mira Rápida",
 
     "Talent.fastTargetingSystems.soloDescription": "Os sistemas de mira da arma podem travar armas em um alvo muito mais rápido e com mais precisão do que outras naves de sua classe, concedendo-lhe uma vantagem em batalha.",
+
+    "Talent.firstResponse": "Primeiros Socorros Imediatos",
+
+    "Talent.firstResponse.description": "Sempre que tentar a Tarefa de Primeiros Socorros durante o combate, você ganha um d20 de bônus. Além disso, você sempre pode ser Bem-sucedido a um Custo, sendo que cada Complicação sofrida adiciona +1 à Dificuldade de curar a Lesão do paciente posteriormente.",
 
     "Talent.fieldMedicine": "Medicina de Campo",
 
@@ -2011,6 +2373,14 @@
 
     "Talent.quantumTorpedoes.soloDescription": "A embarcação foi equipada com as mais recentes munições nave-a-nave: os torpedos quânticos. A astronave tem torpedos quânticos além de qualquer outra forma de torpedo já carregue.",
 
+    "Talent.quickStudy": "Estudo Rápido",
+
+    "Talent.quickStudy.description": "Ao tentar realizar uma Tarefa que envolva um procedimento médico que não lhe seja familiar ou que trate de uma espécie não familiar, ignore qualquer aumento de Dificuldade decorrente de sua falta de familiaridade.",
+
+    "Talent.quickSurvey": "Pesquisa Rápida",
+
+    "Talent.quickSurvey.description": "Você tem uma maneira de obter uma boa impressão de uma situação com apenas um momento de observação. No início de uma cena, você pode fazer imediatamente uma pergunta, como se tivesse gasto um Ímpeto no gasto de Ímpeto Obter informações. A resposta só pode fornecer informações que você poderia obter com seus próprios sentidos; você não pode obter informações de equipamentos em tão pouco tempo.",
+
     "Talent.quickToAction": "Rápido Para Agir",
 
     "Talent.quickToAction.description": "Durante a primeira rodada de qualquer combate, você e seus aliados podem ignorar o custo normal para Manter a Iniciativa.",
@@ -2117,6 +2487,10 @@
 
     "Talent.tracker.description": "Você pode seguir até mesmo os rastros mais fracos. Quando você tenta uma tarefa para rastrear animais, pessoas ou veículos terrestres, o primeiro d20 que você compra é gratuito. Se o rastreamento foi feito como parte de uma tarefa estendida, a rolagem ganha Progressão 1.",
 
+    "Talent.triage": "Triagem",
+
+    "Talent.triage.description": "Ao tentar uma Tarefa para identificar ferimentos ou doenças específicos ou para determinar a gravidade da condição de um paciente, você pode gastar um Momentum (Repetível) para diagnosticar um paciente adicional.",
+
     "Talent.untappedPotential": "Potencial Intocado",
 
     "Talent.untappedPotential.description": "A personagem é inexperiente, mas talentoso e com um futuro brilhante à frente na Frota Estelar. Ele não pode ter ou incrementar qualquer Atributo acima de 11 nem qualquer Disciplina acima de 4 enquanto tiver este Talento (e pode ter que ajustar Atributos e Disciplinas de acordo ao final da criação de personagem). Sempre que a personagem for bem-sucedido em uma Tarefa para a qual ele comprou dados extras com Ímpeto ou Ameaça, ele pode jogar 1[D]. A personagem recebe Ímpeto extra igual a rolagem, e então adiciona um ponto à Ameaça se obtiver um Efeito. O personagem não pode ter uma patente maior que tenente (graduação júnior) enquanto possuir este Talento.",
@@ -2159,6 +2533,7 @@
     "UniformEra.bynar": "Bynar",
     "UniformEra.cardassian": "Militares Cardassianos",
     "UniformEra.civilian": "Civil",
+    "UniformEra.discovery23": "Discovery (Séc 23)",
     "UniformEra.dominionWar": "Guerra do Domínio",
     "UniformEra.ferengi": "Ferengi",
     "UniformEra.enterprise": "Enterprise",
@@ -2172,6 +2547,7 @@
     "UniformEra.romulan": "Romulano",
     "UniformEra.suliban": "Suliban",
     "UniformEra.strangeNewWorlds": "Strange New Worlds",
+    "UniformEra.theMotionPicture": "O Filme",
     "UniformEra.voyagerDS9": "Voyager/DS9",
 
     "Upbringing.starfleet.militaryOrExploration.name": "Frota Estelar",
@@ -2214,8 +2590,11 @@
 
     "Value.final.text": "A personagem recebe um Valor final. Isso pode refletir os Eventos de Carreira rolados no Passo Seis ou algum outro elemento da personagem. Esse Valor pode ser um relacionamento, conectando a personagem a outro da tripulação ou de alguma forma a outra organização ou cultura.",
 
+    "Weapon.common.melee": "Corporal",
     "Weapon.common.name": "Nome/Tipo",
     "Weapon.common.qualities": "Qualidades",
+    "Weapon.common.ranged": "Distância",
+    "Weapon.common.size": "Tamanho {{hands}}H",
 
     "Weapon.personal.dagger.name": "Adaga",
 
@@ -2244,6 +2623,8 @@
     "Weapon.quality.accurate.name": "Preciso",
 
     "Weapon.quality.area.name": "Área",
+
+    "Weapon.quality.areaOrSpread.name": "Área ou Dispersão",
 
     "Weapon.quality.charge.name": "Carga",
 
@@ -2276,6 +2657,8 @@
     "Weapon.quality.persistentX.name": "Persistente X",
 
     "Weapon.quality.slowing.name": "Lentidão",
+
+    "Weapon.quality.spread.name": "Dispersão",
 
     "Weapon.quality.versatile.name": "Versátil {{rank}}",
 

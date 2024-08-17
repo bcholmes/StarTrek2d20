@@ -2077,6 +2077,14 @@
 
     "Talent.ablativeFieldProjector.soloDescription": "The ship’s shield emitters are combined with an ablative field projector that allows its graviton field to be shared with another target in close range. Complications could mean shield failure or power loss to key systems.",
 
+    "Talent.abruptInsights": "Abrupt Insights",
+
+    "Talent.abruptInsights.description": "Your insight into the minds of others can give you an edge when interacting with them, though not everyone is comfortable having someone else speak their mind. When you attempt a task as part of a social conflict, you can increase the complication range by 1, 2, or 3; if you succeed, you generate bonus Momentum equal to the complication range increase. Bonus Momentum may not be saved.",
+
+    "Talent.acuteSenses": "Acute Senses",
+
+    "Talent.acuteSenses.description2e": "The Aenar have honed their senses to the point that they are able to respond to stimuli just as well as, if not superior to, those who possess the ability to see. When attempting a task to detect something which is hidden from conventional senses, or which would normally be difficult to perceive, you may re-roll 1d20.",
+
     "Talent.adaptableEnergyWeapons": "Adaptable Energy Weapons",
 
     "Talent.adaptableEnergyWeapons.soloDescription": "The ship’s weapon delivery systems are enhanced by multiparticle emitters. These emitters allow for the ship’s energy weapon capabilities to be modified when fired. This could create distinct advantages during a battle.",
@@ -2120,6 +2128,10 @@
 
     "Talent.anAnswerForEverything.description": "You relish intense debate, where you can see your opponent’s argument unfold, then turn it back against them. When you succeed at a task as part of an extended task in a social conflict, you may reroll a number of [D] up to your Command score.",
 
+    "Talent.askingTheRightQuestions": "Asking the Right Questions",
+
+    "Talent.askingTheRightQuestions.description": "When you attempt a task that relates to information you’ve received from Obtain Information questions in the current scene, you may re-roll 1d20.",
+
     "Talent.automatedDefenses": "Automated Defenses",
 
     "Talent.automatedDefenses.soloDescription": "The ship’s weapons systems can automatically lock on to a target and fire even if the crew is incapacitated or unavailable.",
@@ -2127,6 +2139,10 @@
     "Talent.backupEpsConduits": "Backup EPS Conduits",
 
     "Talent.backupEpsConduits.soloDescription": "The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of emergency, keeping it from being lost when the ship is damaged.",
+
+    "Talent.backUpPlans": "Back-Up Plans",
+
+    "Talent.backUpPlans.description2e": "Whenever you or an ally fail a task (so long as you are present in the scene), you may add 1 point to the group’s Momentum pool.",
 
     "Talent.boldCommand": "Bold: Command",
 
@@ -2152,6 +2168,10 @@
 
     "Talent.boldSecurity.description": "Whenever you attempt a Task with Security, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
 
+    "Talent.calmAndLogical": "Calm and Logical",
+
+    "Talent.calmAndLogical.description2e": "When you gain a trait which represents a mood or emotional state, you may suppress that trait (ignoring its effect) for the duration of a single task or a single turn in combat by suffering 1 Stress.",
+
     "Talent.cautiousCommand": "Cautious: Command",
 
     "Talent.cautiousCommand.description": "Whenever you attempt a Task with Command, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
@@ -2175,6 +2195,14 @@
     "Talent.cautiousSecurity": "Cautious: Security",
 
     "Talent.cautiousSecurity.description": "Whenever you attempt a Task with Security, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
+
+    "Talent.chosenSpeaker": "Chosen Speaker",
+
+    "Talent.chosenSpeaker.description2e": "Among Aenar communities, leaders and mediators are chosen as and when the need arises, nominating an individual to serve as Speaker. You’ve been chosen for this role often and are adept at using your senses and your telepathy to aid communication. When attempting a task to communicate telepathically with a willing being, you may re-roll 1d20.",
+
+    "Talent.closeKnitCrew": "Close-Knit Crew",
+
+    "Talent.closeKnitCrew.description2e": "When a scene begins, if there are fewer points of\nMomentum in the group pool than there are characters in the scene who have this talent, immediately add 1 Momentum to the group pool.",
 
     "Talent.collaborationCommand": "Collaboration: Command",
 
@@ -2203,6 +2231,7 @@
     "Talent.constantlyWatching": "Constantly Watching",
 
     "Talent.constantlyWatching.description": "When you attempt a Task to detect danger or hidden enemies, reduce the Difficulty by 1.",
+    "Talent.constantlyWatching.description2e": "At the start of an action scene, the gamemaster must spend an additional 2 Threat to have an NPC take the first turn. You may also re-roll 1d20 on any task attempt- ed to locate a hidden enemy or danger.",
 
     "Talent.captainsYacht": "Captain's Yacht",
 
@@ -2235,10 +2264,12 @@
     "Talent.culturalFlexibility": "Cultural Flexibility",
 
     "Talent.culturalFlexibility.description": "Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",
+    "Talent.culturalFlexibility.description2e": "You are at ease when meeting new cultures, and you adapt to unfamiliar social structures easily. When you attempt a task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you may re-roll 1d20.",
 
     "Talent.dauntless": "Dauntless",
 
     "Talent.dauntless.description": "Whenever you attempt a Task to resist being intimidated or threatened, you may add a bonus d20 to your dice pool.",
+    "Talent.dauntless.description2e": "Whenever another character attempts to intimidate or threaten you, you may suffer 2 Stress to ignore their attempt.",
 
     "Talent.defensiveTrainingMelee": "Defensive Training: Melee",
 
@@ -2268,9 +2299,17 @@
 
     "Talent.diplomaticSuites.soloDescription": "The ship has numerous high-quality staterooms for hosting VIPs, as well as briefing rooms and other facilities that allow the ship to serve as a neutral ground for diplomatic summits, trade negotiations, and similar functions.",
 
+    "Talent.doctorsOrders": "Doctor’s Orders",
+
+    "Talent.doctorsOrders.description": "When you attempt a Task to coordinate others, or to coerce someone into taking or refraining from a specific course of action, you may use your Medicine Discipline instead of Command.",
+
     "Talent.dualEnvironment": "Dual Environment",
 
     "Talent.dualEnvironment.soloDescription": "The ship is outfitted with redundant system rooms that can be filled with gases or liquids that allow crew members requiring different atmospheric conditions to work side by side with the rest of the crew. In addition, passages that can be filled with the necessary liquids or gases run parallel to all passages in the ship, allowing these crew members to move freely throughout.",
+
+    "Talent.durability": "Durability",
+
+    "Talent.durability.description": "Whether through genetic engineering or cybernetic implants, you’re more durable than most people. You gain Protection 2.",
 
     "Talent.electronicWarfareSystems": "Electronic Warfare Systems",
 
@@ -2284,6 +2323,10 @@
 
     "Talent.empath.description": "You can sense the emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. You cannot choose not to sense the emotions of those nearby, except for those who are resistant to telepathy. It may require effort and a Task to pick out the emotions of a specific individual in a crowd, or to block out the emotions of those nearby. Increase the Difficulty of this Task if the situation is stressful, if there are a lot of beings present, if the target has resistance to telepathy, and other relevant factors.",
 
+    "Talent.empathy2e": "Empathy",
+
+    "Talent.empathy2e.description": "You can sense the emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. You cannot choose not to sense the emotions of those nearby, except for those who are resistant to telepathy. It may require effort and a task to pick out the emotions of a specific individual in a crowd, or to block out the emotions of those nearby. Increase the Difficulty of this task if the situation is stressful, if there are a lot of beings present, if the target has resist- ance to telepathy, and other relevant factors.",
+
     "Talent.exploitWeakness": "Exploit Weakness",
 
     "Talent.exploitWeakness.description": "You are trained in surprising your opponent and taking advantage of any weaknesses they have. When you attempt an attack against an unaware enemy, or an enemy suffering from a trait that represents weakness or vulnerability, the attack gains the Piercing 2 effect.",
@@ -2292,6 +2335,14 @@
 
     "Talent.extensiveShuttlebays.soloDescription": "The vessel’s shuttlebays are large, well-supplied, and able to support a larger number of active shuttle missions simultaneously.",
 
+    "Talent.extraEffort": "Extra Effort",
+
+    "Talent.extraEffort.description2e": "When you attempt a task, you may reduce the Difficulty of the task by 1, to a minimum of 0. However, once the task is completed, you immediately take Stress equal to the original Difficulty of the task.",
+
+    "Talent.extraSensoryPerception": "Extrasensory Perception",
+
+    "Talent.extraSensoryPerception.description2e": "You have an ability to perceive things beyond the normal limits of humanoid senses, allowing you to gain knowledge of people, places, and objects beyond your ability to sense them conventionally. This is known as extra- sensory perception, or ESP. It is not directly under your control but instead tends to come in the form of accurate guesses, strong feelings, or flashes of insight. Such sensitivity often leaves you vulnerable to psychic dangers as well. At any point during play, you may ask the gamemaster for hints or insights about the current situation, and the gamemaster may similarly offer you information about the current situation that you would not normally be able to determine. Each hint adds 1 Threat, and you may always refuse to accept the hints offered.",
+
     "Talent.fastTargetingSystems": "Fast Targeting Systems",
 
     "Talent.fastTargetingSystems.soloDescription": "The ship’s targeting systems can lock weapons on target much faster and more accurately than other ships of its class, giving it an edge in battle.",
@@ -2299,22 +2350,6 @@
     "Talent.firstResponse": "First Response",
 
     "Talent.firstResponse.description": "Whenever you attempt the First Aid Task during combat, you gain a bonus d20. Further, you may always Succeed at a Cost, with each Complication you suffer adding +1 to the Difficulty of healing the patient’s Injury subsequently.",
-
-    "Talent.doctorsOrders": "Doctor’s Orders",
-
-    "Talent.doctorsOrders.description": "When you attempt a Task to coordinate others, or to coerce someone into taking or refraining from a specific course of action, you may use your Medicine Discipline instead of Command.",
-
-    "Talent.triage": "Triage",
-
-    "Talent.triage.description": "When you attempt a Task to identify specific injuries or illnesses, or to determine the severity of a patient’s condition, you may spend one Momentum (Repeatable) to diagnose one additional patient.",
-
-    "Talent.quickStudy": "Quick Study",
-
-    "Talent.quickStudy.description": "When attempting a Task that will involve an unfamiliar medical procedure, or which is to treat an unfamiliar species, ignore any Difficulty increase stemming from your unfamiliarity.",
-
-    "Talent.quickSurvey": "Quick Survey",
-
-    "Talent.quickSurvey.description": "You have a way of getting a good impression of a situation with only a moment’s observation. At the start of a scene, you may immediately ask one question, as if you had spent one Momentum on the Obtain Information Momentum spend. The answer can only provide information that you could obtain with your own senses; you cannot gain information from equipment in so short a time.",
 
     "Talent.fieldMedicine": "Field Medicine",
 
@@ -2339,6 +2374,19 @@
     "Talent.formerInitiate": "Former Initiate",
 
     "Talent.formerInitiate.description": "You joined the Initiate Program, hoping to be chosen by the Symbiosis Commission to become Joined. As there are far more Initiates than there are Symbionts, you were one of the many who failed, but the quality of even a failed initiate is enough for Starfleet to recruit you. When you attempt a Task using Control or Reason, and spend Determination to buy a bonus d20 for that Task, you may re-roll your dice pool. Former Initiate cannot be taken if the character has the Joined Talent — they are mutually exclusive.",
+    "Talent.formerInitiate.description2e": "You joined the Initiate Program, hoping to be chosen by the Symbiosis Commission to become Joined. As there are far more Initiates than there are symbionts, you were one of many who failed, but the capabilities of even a failed Initiate are highly sought after by Starfleet and other organizations. When you attempt a task using Control or Reason, and you spend Determination to set a die as a 1, you may also re-roll your dice pool after the roll. You cannot select this talent if you have the Joined talent.",
+
+    "Talent.greedIsEternal": "Greed is Eternal",
+
+    "Talent.greedIsEternal.description2e": "When engaged in negotiations—including in social conflict—that have the potential for you to profit personally, you may add 1 Threat to re-roll your dice pool.",
+
+    "Talent.guileAndCunning": "Guile and Cunning",
+
+    "Talent.guileAndCunning.description2e": "When you attempt to remain hidden or for your actions to remain unnoticed, you may add 1 Threat to add 1\nto the Difficulty of any task to detect you or reveal the nature of your actions.",
+
+    "Talent.gutFeeling": "Gut Feeling",
+
+    "Talent.gutFeeling.description2e": "When the gamemaster spends Threat to introduce re- inforcements or to cause a Reversal, they must spend 2 additional Threat to do so. This is 2 extra Threat in total, not per reinforcement.",
 
     "Talent.highResolutionSensors": "High-Resolution Sensors",
 
@@ -2384,9 +2432,14 @@
 
     "Talent.improvisedWeaponTraining.description": "You are able to turn the most innocuous items into weapons at a moment’s notice. Once per scene, you may use an item such as a rock, crystal, or shard of metal laying around into a melee weapon. This weapon deals 2[D] + Security damage and is removed at the end of the encounter.",
 
+    "Talent.indefatigable": "Indefatigable",
+
+    "Talent.indefatigable.description2e": "When you fail a task, and attempt that task again during the same scene, reduce the Difficulty of the second at- tempt (and any subsequent attempts if you still fail) by 1.",
+
     "Talent.incisiveScrutiny": "Incisive Scrutiny",
 
     "Talent.incisiveScrutiny.description": "You have a knack for finding weak spots in arguments, theories, and machines alike to glean information from them, learning about things by how they respond to pressure against vulnerable points. When you succeed at a Task using Control or Insight, you gain one bonus Momentum, which may only be used for the Obtain Information Momentum Spend.",
+    "Talent.incisiveScrutiny.description2e": "When you succeed at a task using Control or Insight, you may ask one question, as if you had spent Momentum to Obtain Information.",
 
     "Talent.independentPhaserSupply": "Independent Phaser Supply",
 
@@ -2407,14 +2460,20 @@
     "Talent.joined": "Joined",
 
     "Talent.joined.description": "You have a symbiont, with lifetimes of memories to draw upon. Once per mission, you may declare that a former host had expertise in a relevant skill or field of study; you gain a single Focus for the remainder of the scene, as you draw upon those memories. Additionally, you gain a Trait with the name of the Symbiont; this reflects potential advantages of the Joining, the ability to perform rites and rituals to awaken past hosts’ memories, and the vulnerabilities inherent in the connection. Former Initiate cannot be taken if the character has the Joined Talent — they are mutually exclusive.",
+    "Talent.joined.description2e": "You are bonded with a symbiont and have lifetimes of memories to draw upon. You gain an additional character trait, which is the name of the symbiont; this reflects potential advantages of being Joined, as well as the ability to perform rites and rituals to awaken past hosts’ memories, and the vulnerabilities inherent in the connection. Furthermore, up to twice per adventure, you may declare that a past Host had experience or expertise in a particular field: you gain an additional focus when you do this, which remains for the rest of the adventure.",
 
     "Talent.juryRig": "Jury-rig",
 
     "Talent.juryRig.description": "Whenever you attempt an Engineering Task to perform repairs, you may reduce the Difficulty by two, to a minimum of 0. If you do this, however, then the repairs are only temporary and will last only a single scene, plus one additional scene per Momentum spent (Repeatable) before they fail again. Jury-rigged repairs can only be applied once, and the Difficulty to repair a device that has been Jury-rigged increases by 1.",
 
+    "Talent.killersInstinct": "Killer's Instinct",
+
+    "Talent.killersInstinct.description2e": "So familiar are you with the intent to kill that you can even see it in others when you look them in the eyes. When you make a Deadly Attack, reduce the amount you add to Threat to 0. In addition, when an enemy attempts to make a Deadly Attack against you, you may add 1 Threat to increase the Difficulty of their Attack by 1, as you react to their intent.",
+
     "Talent.kolinahr": "Kolinahr",
 
     "Talent.kolinahr.description": "You have undergone the ritual journey to purge all emotion. You reduce the Difficulty of all Tasks to resist coercion, mental intrusion, pain, and other mental attacks by two.",
+    "Talent.kolinahr.description2e": "You have undergone the ritual journey to purge all emotion, allowing you to dispassionately observe and dissect your emotional responses and render them powerless. When you ignore emotions using your Mental Discipline Species Ability, you may avoid emotional traits by taking 1 Stress instead of 2, and you no longer increase the potency of emotional traits when Fatigued.",
 
     "Talent.meanRightHook": "Mean Right Hook",
 
@@ -2422,9 +2481,14 @@
 
     "Talent.meanRightHook.description": "Your Unarmed Strike Attack has the Vicious 1 Damage Effect.",
 
+    "Talent.methodicalPlanning": "Methodical Planning",
+
+    "Talent.methodicalPlanning.description2e": "When an ally attempts a task which benefits from a trait you created which represents your plan or strategy, then you may Assist that ally’s task even if you are not present. In combat, this assistance does not require you to use your task to Assist that ally.",
+
     "Talent.mindMeld": "Mind-Meld",
 
     "Talent.mindMeld.description": "You have undergone training in telepathic techniques that allow the melding of minds through physical contact. This will always require a Task with a Difficulty of at least 1, which can be opposed by an unwilling participant. If successful, you link minds with the participant, sharing thoughts and memories; Momentum may be spent to gain more information, or perform deeper telepathic exchanges. This link goes both ways, and it is a tiring and potentially hazardous process for you. Complications can result in pain, disorientation, or lingering emotional or behavioral difficulties.",
+    "Talent.mindMeld.description2e": "You’ve undergone training in telepathic techniques that allow the melding of minds through physical contact. This always requires a task (normally Control + Sciences) with a Difficulty of at least 1, which can be opposed by an unwilling participant. If successful, you link minds with the participant, sharing thoughts and memories. Momentum may be spent to gain more information or perform deeper telepathic exchanges. This link goes both ways, and it is a tiring and potentially hazardous process. Complications can result in taking Stress, pain, disorientation, or lingering emotional or behavioral difficulties.",
 
     "Talent.modularLaboratories": "Modular Laboratories",
 
@@ -2441,18 +2505,40 @@
     "Talent.nervePinch": "Nerve Pinch",
 
     "Talent.nervePinch.description": "You have learned numerous techniques for the stimulation and control of nerve impulses — collectively called neuropressure. Some applications of neuropressure can be used to swiftly and non-lethally incapacitate assailants. The nerve pinch counts as a melee weapon with 1[D], Size 1H, and the Intense and Non-lethal qualities. You may use Science or Medicine instead of Security when attempting a nerve pinch Attack, and may increase damage by your Science or Medicine Discipline instead of Security.",
+    "Talent.nervePinch.description2e": "You have learned numerous techniques for the stimulation and control of nerve impulses—collectively called neuropressure. Some applications of neuropressure can be used to incapacitate assailants swiftly and non-lethally. The nerve pinch counts as a Melee Attack which inflicts Stun Injuries with a Severity of 3 and the Intense quality. You may use Science or Medicine instead of Security when attempting a Nerve Pinch Attack.",
+
+    "Talent.neuralInterface": "Neural Interface",
+
+    "Talent.neuralInterface.description2e": "You have a cybernetic device implanted directly into your brain, allowing you to interface with computers and similar technologies with their thoughts. Initiating or breaking the link between your mind and a computer system takes a minor action, and while you are connected, you may reroll one d20 on any task using that computer (including a ship’s Computer system). However, if the computer (or the ship containing it) is damaged, you immediately suffer a Deadly 4 Injury with the Piercing quality.",
+
+    "Talent.neverPlaceFriendshipAboveProfit": "Never Place Friendship Above Profit",
+
+    "Talent.neverPlaceFriendshipAboveProfit.description2e": "When you assist someone else (including using the Direct action), and one or more complications occur, you may add 1 Threat to avoid suffering any ill-effect from that complication (other characters involved are affected normally).",
 
     "Talent.nimbleWar": "Nimble",
 
     "Talent.nimbleWar.description": "You are quick on your feet and know how to navigate obstacles around you. When attempting a task to move through difficult terrain or similar physical obstacles, you may reduce the Difficulty of the task by 2. If this reduces the Difficulty to 0, you may move over or around that obstacle as if it wasn’t there.",
 
+    "Talent.noHesitation": "No Hesitation",
+
+    "Talent.noHesitation.description2e": "At the start of any round in an action scene, you may add 1 Threat to take the first turn, regardless of who would otherwise have acted first.",
+
+    "Talent.noPainNoGain": "No Pain, No Gain",
+
+    "Talent.noPainNoGain.description2e": "When you fail a task (but not an opposed task) which used your Daring, you may always choose to Succeed at Cost.",
+
     "Talent.orbExperience": "Orb Experience",
 
     "Talent.orbExperience.description": "You have received a vision from the Bajoran Prophets, through one of the Orbs. This rare experience, though confusing at first, has shaped your life and outlook. You have one additional Value, reflecting the insights you received from the experience. The first time this Value is Challenged, roll 1[D]; if an Effect is rolled, then some foretold element of the Orb Experience has come to pass, and the Value is not crossed out as it would normally be.",
+    "Talent.orbExperience.description2e": "You have received a vision from the Bajoran Prophets, through one of the Orbs. This rare experience, though confusing at first, has shaped your life and outlook. You have one additional value, which represents some prophecy or insight into the future gained from your vision. Furthermore, once per session, when that value is used, you gain twice the normal benefit: if you spend Determination, you may gain two benefits listed, while if you would gain Determination, you gain 2 points instead of 1.",
 
     "Talent.outOfHarmsWay": "Out of Harm's Way",
 
     "Talent.outOfHarmsWay.description": "You are used to balancing the need to keep a patient still and the need to get them somewhere safer. When attempting to carry or restrain another person, you may use Medicine instead of Security, and you ignore the first complication rolled on any such tasks.",
+
+    "Talent.openBook": "Open Book",
+
+    "Talent.openBook.description": "When a character enters a scene, you may spend 1 Momentum (Immediate) to immediately ask the gam- emaster one question about that character’s current emotions or surface thoughts. You cannot do this for characters immune to telepathy.",
 
     "Talent.packTactics": "Pack Tactics",
 
@@ -2461,10 +2547,16 @@
     "Talent.parentFigure": "Parent Figure",
 
     "Talent.parentFigure.description": "You have a large family, with many children, nieces, and nephews, and you’ve learned how to coordinate even the most unruly and fractious of groups when necessary. When attempting or assisting a Task, and two or more other characters are involved in the Task, the first Complication generated on the Task — either by the character attempting the Task, or one of the assistants — may be ignored.",
+    "Talent.parentFigure.description2e": "You have a large family, with many children, nieces, and nephews, and you’ve learned how to coordinate even the most unruly and fractious of groups when necessary. When attempting or assisting a task, and two or more other characters are involved in the task, the first complication generated on the task—either by the character attempting the task, or one of the assistants—may be ignored.",
 
     "Talent.personalEffects": "Personal Effects",
 
     "Talent.personalEffects.description": "The character possesses some significant and uncommon item or device which is not part of Starfleet’s standard issue, but which is nevertheless useful for missions. The character may select one item with an Opportunity Cost of 2, or two items with an Opportunity Cost of 1 each. Neither items may have an Escalation Cost greater than 1.",
+    "Talent.personalEffects.description2e": "You possess some significant and uncommon item or device which is not standard issue, but which is never- theless useful for missions. You may select this talent multiple times, gaining a different item each time.",
+
+    "Talent.pheromones": "Pheromones",
+
+    "Talent.pheromones.description": "You are capable of emitting pheromones which can render Orion males (and others) suggestible. These pheromones affect several other species—including Humans—in a similar way. When dealing with males of a species affected by these pheromones, you gain 2 bonus Momentum on all tasks to persuade or command them. However, female members of species affected often suffer headaches because of the pheromones, increasing the complication range of tasks to interact with them by 1. Vulcans are known to be unaffected, while Denobulans experience a different effect and become drowsy. The gamemaster’s discretion applies as to which species are affected, which are immune, and which suffer unexpected effects, but most species are affected similarly to Humans and Orions.",
 
     "Talent.pointDefenseSystem": "Point Defense System",
 
@@ -2477,6 +2569,11 @@
     "Talent.proudAndHonorable": "Proud and Honorable",
 
     "Talent.proudAndHonorable.description": "Your personal integrity is unimpeachable, and you will not willingly break a promise made. Whenever you attempt a Task to resist being coerced into breaking a promise, betraying your allies, or otherwise acting dishonorably, you reduce the Difficulty by 1.",
+    "Talent.proudAndHonorable.description2e": "Whenever you attempt a task to resist being coerced into breaking a promise, betraying your allies, or otherwise acting dishonorably, you may add Threat to immediately succeed at the task. The amount of Threat you add is equal to the task’s Difficulty.\n",
+
+    "Talent.psychokinesis": "Psychokinesis",
+
+    "Talent.psychokinesis.description2e": "You can manipulate and control objects using only the power of the mind. You may exert a psychic force upon an object within Close range equivalent to the force that you would normally be able to exert physically, though this takes concentration and cannot be done violently.\n\nYou may spend 1 Momentum (Immediate, Repeatable) to increase the magnitude of the force you apply, with each Momentum spent counting as an additional person’s worth of force applied (that is, you can move or manipulate objects that would take two people to move or manipulate by spending 1 Momentum). Momentum (Immediate) may also be spent to increase the range of this: 1 Momentum to affect objects in Medium range, 2 Momentum to affect objects at Long range, and gamemaster’s discretion for distances beyond. To apply force violently instead, add 1 Threat to make a Control + Security task with a Difficulty of 2 to strike an opponent (as a Ranged Attack), inflicting a Stun or Deadly Injury with a Severity of 3.",
 
     "Talent.pushTheLimits": "Push the Limits",
 
@@ -2485,6 +2582,15 @@
     "Talent.quantumTorpedoes": "Quantum Torpedoes",
 
     "Talent.quantumTorpedoes.soloDescription": "The vessel has been equipped with the latest in ship-to-ship munitions: quantum torpedoes. The ship has quantum torpedoes in addition to any other form of torpedo it carries.",
+
+    "Talent.quickStudy": "Quick Study",
+
+    "Talent.quickStudy.description": "When attempting a Task that will involve an unfamiliar medical procedure, or which is to treat an unfamiliar species, ignore any Difficulty increase stemming from your unfamiliarity.",
+
+    "Talent.quickSurvey": "Quick Survey",
+
+    "Talent.quickSurvey.description": "You have a way of getting a good impression of a situation with only a moment’s observation. At the start of a scene, you may immediately ask one question, as if you had spent one Momentum on the Obtain Information Momentum spend. The answer can only provide information that you could obtain with your own senses; you cannot gain information from equipment in so short a time.",
+    "Talent.quickSurvey.description2e": "At the start of a scene, you may immediately ask one question, as if you had spent 1 Momentum on the Obtain Information Momentum Spend. The answer can only provide information that you could obtain with your own senses: you cannot gain information from equipment in such a short time.",
 
     "Talent.quickToAction": "Quick to Action",
 
@@ -2498,13 +2604,22 @@
 
     "Talent.reasonedDiscourse.description": "You are precise and succinct with language, allowing you to convey facts and logical arguments effectively and quickly. When you need to communicate complicated information or argue with logic over emotion, reduce the Difficulty of the task by 1.",
 
+    "Talent.reassuring": "Reassuring",
+
+    "Talent.reassuring.description2e": "When you succeed at a task using your Presence, you may spend Momentum to reassure your allies, so long as they are able to hear you. You may spend 1 Momentum (Repeatable) to allow one ally who can see and hear you to recover 1 Stress. That ally may not recover more than 3 Stress from one use of this talent.",
+
     "Talent.resolute": "Resolute",
 
     "Talent.resolute.description": "You are indomitable, and unwilling to succumb to adversity. You increase your maximum Stress by 3.",
+    "Talent.resolute.description2e": "Your Maximum Stress increases by an amount equal to your Command rating.",
 
     "Talent.regenerativeHull": "Regenerative Hull",
 
     "Talent.regenerativeHull.soloDescription": "The ship’s hull is infused with reverse-engineered Borg nanite technology that seeks out and repairs the hull immediately when it is damaged, often preventing a breach before it can happen.",
+
+    "Talent.regimentedMind": "Regimented Mind",
+
+    "Talent.regimentedMind.description2e": "When you spend Momentum to Obtain Information, you may reduce the Difficulty of one task later in the same scene by 1, so long as that task relates to the information gained.",
 
     "Talent.rousingSpeaker": "Rousing Speaker",
 
@@ -2526,6 +2641,14 @@
 
     "Talent.secondaryReactors.soloDescription": "The ship has additional impulse and fusion reactors, that allow the ship to generate far greater quantities of energy.",
 
+    "Talent.secondWind": "Second Wind",
+
+    "Talent.secondWind.description2e": "You may spend Determination at the start of your turn to remove the Defeated state, and to recover up to half of your maximum Stress. The normal requirements for spending a point of Determination still apply.",
+
+    "Talent.selfReliant": "Self-Reliant",
+
+    "Talent.selfReliant.description2e": "Whenever you succeed at a task where you did not purchase additional dice by spending Momentum or adding to Threat, you generate bonus Momentum equal to the task’s Difficulty. Bonus Momentum cannot be saved.",
+
     "Talent.selfReplicatingMines": "Self-Replicating Mines",
 
     "Talent.selfReplicatingMines.soloDescription": "The ship carries mines that are capable of replicating themselves over time, allowing for a more thorough spread filling the area they’re deployed in. Note that Starfleet does not normally utilize mines.",
@@ -2541,6 +2664,7 @@
     "Talent.spiritOfDiscovery": "Spirit of Discovery",
 
     "Talent.spiritOfDiscovery.description": "You have the drive, spirit, and courage to voyage into the unknown. You may spend one Determination to add three points to the group Momentum pool. The normal conditions for spending Determination still apply.",
+    "Talent.spiritOfDiscovery.description2e": "You have an additional option you may pick when you spend Determination: you may immediately add 3 Momentum to the group pool.",
 
     "Talent.starshipExpert": "Starship Expert",
 
@@ -2549,10 +2673,12 @@
     "Talent.strongPagh": "Strong Pagh",
 
     "Talent.strongPagh.description": "You believe profoundly in the Prophets, and rely heavily upon that faith to see you through hardship. Whenever you attempt a Task to resist being coerced or threatened, you reduce the Difficulty of that Task by 1.",
+    "Talent.strongPagh.description2e": "You believe profoundly in the Prophets, and you rely upon that faith to see you through hardship. Whenever you attempt a task to resist being coerced or threatened, you may take Stress equal to the Difficulty of the task to automatically succeed.",
 
     "Talent.studious": "Studious",
 
     "Talent.studious.description": "Whenever you spend one or more Momentum to Obtain Information, you may ask one additional question (in total, not per Momentum spent on Obtain Information).",
+    "Talent.studious.description2e": "Whenever you spend 1 or more Momentum to Obtain\nInformation, you may ask one additional question (in total, not per Momentum spent on Obtain Information).",
 
     "Talent.sturdy": "Sturdy",
 
@@ -2572,25 +2698,48 @@
 
     "Talent.telepath.description": "You can sense the surface thoughts and emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. Surface thoughts are whatever a creature is thinking about at that precise moment. The character cannot choose not to sense the emotions or read the surface thoughts of those nearby, except for those who are resistant to telepathy. It will require effort and a Task to pick out the emotions or thoughts of a specific individual in a crowd, to search a creature’s mind for specific thoughts or memories, or to block out the minds of those nearby. Unwilling targets may resist with an Opposed Task.",
 
+    "Talent.telepathicProjection": "Telepathic Projection",
+
+    "": "Your telepathic ability is more potent than most, and you are accustomed to projecting your thoughts into other minds. You can send your thoughts into the minds of other creatures—other than those immune to telepathy—even if those creatures are not tele- pathic themselves. You can ‘hear’ their responses by reading their minds. You are also capable of using this ability offensively, overwhelming a target’s mind with pain-inducing psychic noise. This requires a Presence + Security task with a Difficulty of 2 (increasing by 1 for each range category beyond Close); success inflicts a Stun or Deadly Injury with Severity 3 and the Piercing effect.",
+
+    "Talent.telepathy2e": "Telepathy",
+
+    "Talent.telepathy2e.description": "You can sense the surface thoughts and emotions of most living beings nearby, and can communicate tele- pathically with other empaths and telepaths, as well as those with whom you are extremely familiar. You cannot choose not to sense the emotions or read the surface thoughts of those nearby, except for those resistant to telepathy. It requires effort and a task to pick out the emotions or thoughts of a specific individual in a crowd, to search a creature’s mind for specific thoughts or memories, or to block out the minds of those nearby. Increase the Difficulty if the situation is stressful, if there are many beings present, if the target target is resistant to telepathy, etc.",
+
     "Talent.technicalExpertise": "Technical Expertise",
 
     "Talent.technicalExpertise.description": "Whenever you attempt a Task assisted by the ship’s Computers or Sensors, you may re-roll one d20 (which may be the ship’s die).",
+    "Talent.technicalExpertise.description2e": "Whenever you attempt a task assisted by the ship’s\nComputers or Sensors, you may re-roll one d20 in your pool, or you may allow the ship to re-roll its d20.",
 
     "Talent.testingATheory": "Testing a Theory",
 
     "Talent.testingATheory.description": "When you attempt a Task using Engineering or Science, you may roll one additional d20, so long as you succeeded at a previous Task covering the same scientific or technological field earlier in the same adventure.",
 
+    "Talent.thatWasntMe": "That Wasn't Me",
+
+    "Talent.thatWasntMe.description2e": "The Orions are known as one of the most untrustworthy species in the Galaxy, next to the Ferengi, and yet people are willing to do business with them or are often tricked or misled by them. You’ve learned the subtle interplay\nof social interactions, reputations, and plausible denials that allow others to trust you despite what they’ve heard about ‘those other Orions’. When another character at- tempts a task to determine if they can trust you, you may spend 2 Momentum if you are sincere, or add 2 Threat if you’re attempting to deceive them. Either way, the char- acter does not need to make a task roll: you convince them you are trustworthy.",
+
+    "Talent.theEndsJustifyTheMeans": "The Ends Justify the Means",
+
+    "Talent.theEndsJustifyTheMeans.description2e": "When you spend Determination because of a Directive, you may select two of the benefits for spending Determination, rather than one.",
+
     "Talent.theUshaan": "The Ushaan",
 
     "Talent.theUshaan.description": "You are experienced in the tradition of honor-dueling known as the Ushaan, having spilt much blood upon the ice. When you make a melee Attack, or are targeted by a melee Attack, and buy one or more d20s by adding to Threat, you may re-roll the dice pool for the Task. Further, you own an Ushaan-tor, a razor-sharp ice-miner’s tool used in these duels.",
+    "Talent.theUshaan.description2e": "You are experienced in the tradition of honor-dueling known as the Ushaan. When you make a Melee Attack, or are targeted by a Melee Attack, and buy one or more d20s by adding to Threat, you may re-roll any number of dice in your dice pool for the task. Further, you own an Ushaan-tor, a razor-sharp ice-miner’s tool used in these duels. The Ushaan-tor is a blade, and it counts as standard issue for you.",
 
     "Talent.tough": "Tough",
 
     "Talent.tough.description": "Whenever you Avoid an Injury, the cost is reduced by 1, to a minimum of 1.",
+    "Talent.tough.description2e": "Your maximum Stress is increased by 2.",
 
     "Talent.tracker": "Tracker",
 
     "Talent.tracker.description": "You can follow even the faintest of tracks. When you attempt a task to track animals, people, or ground vehicles, the first d20 you buy is free. If the tracking was done as part of an extended task then the roll gains Progression 1.",
+
+    "Talent.triage": "Triage",
+
+    "Talent.triage.description": "When you attempt a Task to identify specific injuries or illnesses, or to determine the severity of a patient’s condition, you may spend one Momentum (Repeatable) to diagnose one additional patient.",
 
     "Talent.untappedPotential": "Untapped Potential",
 
@@ -2607,6 +2756,22 @@
     "Talent.veteran": "Veteran",
 
     "Talent.veteran.description": "The character is wise and experienced, and draws upon inner reserves of willpower and determination in a more measured and considered way. Whenever the character spends a point of Determination, roll 1[D]. If an Effect is rolled, immediately regain that spent point of Determination. The character has a rank of at least Lieutenant Commander.",
+
+    "Talent.voiceOfAuthority": "Voice of Authority",
+
+    "Talent.voiceOfAuthority.description2e": "When you Assist someone, and use your Presence to do so, you may add 2 Threat to treat your assistance die as if it had rolled a 1 instead of rolling it.",
+
+    "Talent.warriorsSpirit": "Warrior's Spirit",
+
+    "Talent.warriorsSpirit.description2e": "When you make a Melee Attack, or are targeted by a Melee Attack, and you buy one or more d20s by adding Threat, you may re-roll the dice pool for your task roll. Further, you own either a mek’leth (a blade) or a bat’leth (a heavy blade) at your discretion, which counts as standard issue for you.",
+
+    "Talent.wary": "Wary",
+
+    "Talent.wary.description2e": "When you attempt a task to detect an enemy or hazard, you may re-roll one d20.",
+
+    "Talent.wellInformed": "Well-Informed",
+
+    "Talent.wellInformed.description2e": "You have contacts everywhere and you listen to news and rumors from far and wide. At the start of a scene, you may add 1 Threat to ask the gamemaster two questions about the situation or location, as if you had spent Momentum on the Obtain Information spend. The answers you receive will be knowledge you’ve gained from your contacts and the news and rumors you’ve heard.",
 
     "Talent.wormholeRelaySystem": "Wormhole Relay System",
 

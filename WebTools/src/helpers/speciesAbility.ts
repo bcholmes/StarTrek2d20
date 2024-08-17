@@ -30,7 +30,7 @@ export class SpeciesAbilityList {
         [Species.Aenar]: new SpeciesAbility(Species.Aenar),
         [Species.Andorian]: new SpeciesAbility(Species.Andorian),
         [Species.Bajoran]: new SpeciesAbility(Species.Bajoran),
-        [Species.Betazoid]: new SpeciesAbility(Species.Betazoid, ["Telepath", "Empath"]),
+        [Species.Betazoid]: new SpeciesAbility(Species.Betazoid, ["Telepathy2e", "Empathy2e"]),
         [Species.Denobulan]: new SpeciesAbility(Species.Denobulan),
         [Species.Ferengi]: new SpeciesAbility(Species.Ferengi),
         [Species.Human]: new SpeciesAbility(Species.Human),

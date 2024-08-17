@@ -2,13 +2,14 @@
 import { DropDownElement, DropDownSelect } from "../components/dropDownInput";
 import { Skill, SkillsHelper } from "../helpers/skills";
 import { TalentModel, TalentsHelper } from "../helpers/talents";
-import { SourcesHelper } from "../helpers/sources";
+import { Source, SourcesHelper } from "../helpers/sources";
 import { SpeciesHelper } from "../helpers/species";
 import replaceDiceWithArrowhead from '../common/arrowhead';
 import { Species } from '../helpers/speciesEnum';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { toCamelCase } from '../common/camelCaseUtil';
+import { hasSource } from '../state/contextFunctions';
 
 class TalentViewModel {
     name: string;
@@ -67,7 +68,9 @@ class TalentViewModel {
             }
         });
 
-        return new TalentViewModel(talent.name, talent.localizedDisplayName, talent.localizedDescription, category, prerequisites, talent);
+        return new TalentViewModel(talent.name, talent.localizedDisplayName,
+            hasSource(Source.Core2ndEdition) ? talent.localizedDescription2e : talent.localizedDescription,
+            category, prerequisites, talent);
     }
 }
 

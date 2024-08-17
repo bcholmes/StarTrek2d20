@@ -126,7 +126,7 @@ class _Species {
             Species.Andorian,
             "Andorian",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [ Source.Core, Source.CaptainsLog ],
+            [ Source.Core, Source.CaptainsLog, Source.Core2ndEdition ],
             ["An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the United Federation of Planets since its foundation, having been firm allies of Humanity for several years beforehand. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor-duels known as Ushaan, using razorsharp ice-mining tools."],
             [Attribute.Control, Attribute.Daring, Attribute.Presence],
             "Andorian",
@@ -143,7 +143,7 @@ class _Species {
             Species.Bajoran,
             "Bajoran",
             [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.Core, Source.CaptainsLog],
+            [Source.Core, Source.CaptainsLog, Source.Core2ndEdition],
             ["A spiritual, dauntless people from the planet Bajor, the Bajorans have lost much after decades of occupation by the Cardassian Union. Many Bajorans were scattered across the Alpha Quadrant during the occupation, while those who remained on Bajor often acted as insurgents or toiled in labor camps under Cardassian rule. The occupation ended a few years ago, but the scars it left will take generations to heal. Bajor is not a member of the Federation, but many Bajorans scattered by the diaspora have found their way into Starfleet. Bajoran culture places a strong belief in the Prophets, celestial beings who are said to have watched over Bajor for millennia; modern religious doctrine states that the Bajoran Wormhole is the Prophets’ Celestial Temple."],
             [Attribute.Control, Attribute.Daring, Attribute.Insight],
             "Bajoran",
@@ -160,13 +160,13 @@ class _Species {
             Species.Betazoid,
             "Betazoid",
             [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.Core, Source.CaptainsLog],
+            [Source.Core, Source.CaptainsLog, Source.Core2ndEdition],
             ["The peaceful Betazoid people hail from the idyllic, verdant world Betazed. The world is a valued member of the Federation, and its people can be found across Federation space, including Starfleet. Betazoids appear almost identical to Humans, but differ in one major way: they are naturally telepathic, developing mental abilities during adolescence. The potency of this ability varies between individuals, but it has resulted in a culture where honesty and directness are fundamental: it is difficult to keep secrets when everyone around you can read minds."],
             [Attribute.Insight, Attribute.Presence, Attribute.Reason],
             "Betazoid",
             "All Betazoids are telepathic to varying degrees, and even when not actively using their abilities, they are highly perceptive of others around them, but also highly sensitive to telepathic disturbances and mental assaults. They have little familiarity with lies and deception, due to their open culture and ability to read the thoughts and emotions of others. As they are sensitive to the minds of other living beings, they tend not to be comfortable around animals, for fear of losing themselves in the minds of wild creatures.",
             "Compassion Through Understanding",
-            [TalentsHelper.getTalent("Empath"), TalentsHelper.getTalent("Telepath")],
+            [TalentsHelper.getTalent("Empath"), TalentsHelper.getTalent("Telepath"), TalentsHelper.getTalent("Open Book"), TalentsHelper.getTalent("Abrupt Insights")],
             "Betazoid names tend to have at least two syllables and a melodic sound, with a personal name followed by a family name; of these, the family name tends to have a harder sound. Betazoids are traditionally matriarchal, with children taking their mother’s family name.",
             [
                 { type: "Female", suggestions: "Deanna, Ania, Kestra, Lwaxanna, Dalera, Gloranna, Abeana, Pekera, Nissila, Lomestra, Ioza, Pegira, Nemenna, Nerira, Lojeea" },
@@ -177,7 +177,7 @@ class _Species {
             Species.Denobulan,
             "Denobulan",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.Core, Source.CaptainsLog],
+            [Source.Core, Source.CaptainsLog, Source.Core2ndEdition],
             ["Hailing from the planet Denobula, Denobulans are a gregarious, inquisitive people who have been allies of Humanity since the 2130s. Though Denobula was not one of the founders of the Federation, the Denobulans joined soon after. Denobulans are a sociable people, with distinctive expressive features, who are used to living in close, communal conditions, and whose extended family groups are large and complex — a Denobulan may have several spouses, each of whom may have several partners of their own, and dozens of children between them. Culturally, they are intellectually curious, perceptive, and interested in a wide range of philosophies, though their scholarly nature, large families, and gregarious nature means that relatively few of them venture far from their homeworld."],
             [Attribute.Fitness, Attribute.Insight, Attribute.Reason],
             "Denobulan",
@@ -193,7 +193,7 @@ class _Species {
             Species.Human,
             "Human",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.Core, Source.CaptainsLog],
+            [Source.Core, Source.CaptainsLog, Source.Core2ndEdition],
             ["Originating on the planet Earth in the Sol system, Humans are a resilient, diverse, and adaptable species, who developed from fractious, warring nations on the brink of mutual annihilation to a united, peaceful society in less than a century, and managed to forge alliances between former enemies within a century of achieving interstellar space flight. Earth is a founder and pivotal member of the United Federation of Planets, and many of the Federation’s institutions can be found on Earth. Humans often exhibit a dichotomy in their nature — being both driven to strong emotion and careful reason — and while they have largely grown beyond their warlike and divisive past, their drive and capacity for aggression are as much a part of their success as their curiosity and analytical minds."],
             [Attribute.Control, Attribute.Daring, Attribute.Fitness, Attribute.Insight, Attribute.Presence, Attribute.Reason],
             "Human",
@@ -207,13 +207,13 @@ class _Species {
             Species.Tellarite,
             "Tellarite",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.Core, Source.CaptainsLog],
+            [Source.Core, Source.CaptainsLog, Source.Core2ndEdition],
             ["The stout, hirsute Tellarite species comes from Tellar Prime, a temperate planet in the Alpha Quadrant. Theirs is a culture noted for being abrasive and argumentative, with a stubborn pride, quick tempers, and little patience. However, this is only a superficial view: while Tellarites are argumentative, it comes from a sense of intellectual honesty and rigorous skepticism. To a Tellarite, no idea, concept, or person is beyond challenge or analysis, and any notion that cannot stand up to scrutiny is an unworthy one. Tellarites revel in debates, and tend to greet one another with criticisms, complaints, and even insults; failing to respond in kind is poorly- regarded, as it displays a weakness of character and an unwillingness to confront flaws."],
             [Attribute.Control, Attribute.Fitness, Attribute.Insight],
             "Tellarite",
             "Tellarites have a keen sense of smell and a high tolerance for many common drugs, toxins, and inebriants (Tellarites don’t get drunk, just feisty). They also have excellent eyesight, and more acute perception of distance, depth, and dimension than Humans.",
             "All Ideas must Withstand Scrutiny",
-            [TalentsHelper.getTalent("Incisive Scrutiny"), TalentsHelper.getTalent("Sturdy")],
+            [TalentsHelper.getTalent("Incisive Scrutiny"), TalentsHelper.getTalent("Sturdy"), TalentsHelper.getTalent("Asking the Right Questions")],
             "Tellarite names have considerable variation, but all tend to be composed of harsh, even guttural sounds. Tellarite names consist of a personal name and a family name, though the family name is often a compound, indicating that the family name is a patronym or matronym (the name of a father or mother, respectively), toponym(derived from a place) or similar — in this way, these prefixes are similar to “O’”, “Mc“, “von”, and similar elements in some Human names. Examples: Pola jav Brin (female), Tuk glasch Khutohk (male)",
             [
                 { type: "Female", suggestions: "Pola, Cherthish, Zhuggaa, Torthem, Neshlel, Verg, Kholo, Fratho, Skig, Vaolli, Glavom, Nihraogh, Ghand, Rensh" },
@@ -225,7 +225,7 @@ class _Species {
             Species.Trill,
             "Trill",
             [Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.Core, Source.CaptainsLog],
+            [Source.Core, Source.CaptainsLog, Source.Core2ndEdition],
             ["The Trill species, from their homeworld of the same name, appear almost identical to Humans, but for rows of spots running down the sides of their bodies, from head to toe. However, this superficial similarity conceals a considerable difference — the Trill are capable of bonding with a symbiotic organism known as a symbiont, creating a distinct being from the two individual creatures. The symbionts can live for many centuries, and are placed with successive hosts, carrying the memories and knowledge of previous hosts into a new joining with each new generation. This fact isn’t widely known outside the Trill themselves, but it isn’t a secret — it simply isn’t widely discussed, and the number of joined Trill is relatively small. The Trill have been part of the Federation for well over a century, with several renowned Trill serving important roles in shaping the Federation. The Trill, as a culture, tend to be focused on intellectual pursuits first and foremost, as learning and wisdom are prized by the symbionts in their hosts."],
             [Attribute.Control, Attribute.Presence, Attribute.Reason],
             "Trill",
@@ -243,7 +243,7 @@ class _Species {
             Species.Vulcan,
             "Vulcan",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.Core, Source.CaptainsLog],
+            [Source.Core, Source.CaptainsLog, Source.Core2ndEdition],
             ["The Vulcans are a stoic, rational people. Widely claimed to be emotionless, in truth the Vulcans feel deeply and intensely, to their own detriment. Their stoicism comes from a culture of logic and self- discipline, where emotions are analyzed and dissected to rob them of their potency, so that they cannot overwhelm or control the individual. Vulcans embrace science and reason, but their lives are not purely devoted to logic: they also have a deeply philosophical side, with art and music as vital to their culture as logic. They are also an intensely private people, with many aspects of their culture — such as the rites of pon farr — which are not discussed amongst outsiders."],
             [Attribute.Control, Attribute.Fitness, Attribute.Reason],
             "Vulcan",
@@ -432,7 +432,7 @@ class _Species {
             Species.Klingon,
             "Klingon",
             [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.BetaQuadrant, Source.KlingonCore, Source.CaptainsLog],
+            [Source.BetaQuadrant, Source.KlingonCore, Source.CaptainsLog, Source.Core2ndEdition],
             ["With its capital at Qo’noS, the Klingon Empire is almost as large as the Federation, and larger than the Romulan Empire. Distinguishable by the sagittal crest over their foreheads and crowns, Klingons are taller and stronger than most humanoid species, something that helps enhance their reputation as warriors. The hardy Klingons have been both allies and enemies throughout their years of contact with the Federation. Now, as staunch allies, this proud people have begun to exchange officers with Starfleet. Not only that but Worf, son of Mogh, created a precedent as the first Klingon to graduate of Starfleet Academy. This has brought more applications from Klingons, especially those of mixed heritage who don’t feel at ease in the Klingon Empire. Klingons embody pride and honor above all. Many dedicate their lives to the warrior ethos for the honor of house and family."],
             [Attribute.Daring, Attribute.Fitness, Attribute.Presence],
             "Klingon",
@@ -590,7 +590,7 @@ class _Species {
             Species.Ferengi,
             "Ferengi",
             [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.DS9, Source.CaptainsLog],
+            [Source.DS9, Source.CaptainsLog, Source.Core2ndEdition],
             ["Ferengi are short, unimposing beings, noted more as merchants than traders than as warriors, scientists, or engineers. Their culture promotes the acquisition of material wealth, and their society is extremely capitalistic, with most routine activities accompanied by the exchange of a precious, nonreplicable substance called latinum (a room-temperature liquid metal, often stored within gold “slips,” “bricks,” or “bars.”) Ferengi discriminate between their genders considerably, with female Ferengi not being permitted to own property or wear clothing; enterprising young female Ferengi invariably find a way around these restrictions."],
             [Attribute.Control, Attribute.Insight, Attribute.Presence],
             "Ferengi",
@@ -636,7 +636,7 @@ class _Species {
             "Orion",
             "Orions thrive in Class-M environments and are well suited to long voyages through space. The Orions are a dimorphic species where the females secrete special pheromones that can stimulate the adrenal systems of other species and make them become fascinated with them, which the Orion women have used to maintain control over not only Orion males but to manipulate other species. The pheromones produced by Orion males can generally make them seem attractive to other humanoids, but not to the same degree as that produced by Orion females.",
             "Everything is a Deal",
-            [TalentsHelper.getTalent("That Wasn't Me"), TalentsHelper.getTalent("Criminal Understanding")],
+            [TalentsHelper.getTalent("That Wasn't Me"), TalentsHelper.getTalent("Criminal Understanding"), TalentsHelper.getTalent("Pheromones")],
             "",
             [
                 { type: "Sample Names", suggestions: "Adreltosh, Brielar, D’Nesh, Kotho, Navaar, Prasad, Savarah, Shretsh" }
@@ -722,7 +722,7 @@ class _Species {
             Species.Cardassian,
             "Cardassian",
             [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.AlphaQuadrant, Source.CaptainsLog],
+            [Source.AlphaQuadrant, Source.CaptainsLog, Source.Core2ndEdition],
             ["There are few species as disliked or mistrusted as Cardassians. While they generate art, music, and poetry to match any other species – Cardassians are known instead for their devotion to the State, aggressive military tactics, and absolute faith in their own superiority. Advancement in Cardassian society is driven by capability and demonstrated success, resulting in an upper class of cunning and strategic individuals who expect complete devotion of their subordinates and families. While they may not be as technologically capable as the Federation, the ruthless efficiency of the Cardassian government and military has resulted in making them evenly matched with Starfleet during engagements over the last few decades."],
             [Attribute.Control, Attribute.Presence, Attribute.Reason],
             "Cardassian",
@@ -1492,7 +1492,7 @@ class _Species {
             Species.Romulan,
             "Romulan",
             [Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.PicardS1, Source.CaptainsLog],
+            [Source.PicardS1, Source.CaptainsLog, Source.Core2ndEdition],
             ["The Romulans are a cultural offshoot of Vulcans, descended from a faction of early Vulcans who left their original homeworld millennia ago. These ancestors, who “marched beneath the Raptor’s wings”, did not adopt the stoicism and logic espoused by the Vulcan leader Surak, and would later settle the twin worlds of Romulus and Remus. The Romulans’ prevailing culture is one of secrecy; anyone could be an enemy, so concealing motives, actions, and vulnerabilities are central to survival. A Romulan only trusts their closest kin, with increasing layers of secrecy, obfuscation, and misdirection as relationships grow more distant. The Romulan Star Empire was long regarded as paranoid, even isolationist, for non-Romulans are trusted less than even the most suspect Romulans.",
             "Physically, Romulans are like Vulcans, differing in numerous small ways, and while many Romulans demonstrate a V-shaped ridge on their foreheads, this is far from a universal trait. The specifics of these differences aren’t well-known by non-Romulans; Romulans do not share information if it can be helped, and the Federation didn’t know the shared origin of Vulcans and Romulans until over a century after first contact between Humans and Romulans."],
             [Attribute.Control, Attribute.Fitness, Attribute.Reason],
@@ -1649,7 +1649,7 @@ class _Species {
             Species.Aenar,
             "Aenar",
             [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
-            [Source.CaptainsLog, Source.ContinuingMissions, Source.FederationKlingonWar],
+            [Source.CaptainsLog, Source.ContinuingMissions, Source.FederationKlingonWar, Source.Core2ndEdition],
             ["The Aenar were a subspecies of Andorians who were on the verge of extinction by the mid-22nd century. They had two antennae and no skin or hair pigmentation. Their most distinctive trait was their telepathic abilities, which included reading minds and psychically projecting themselves into the minds of other humanoids."],
             [Attribute.Control, Attribute.Insight, Attribute.Presence],
             "",
@@ -2167,13 +2167,13 @@ class _Species {
     }
 
     private ignoreSpecies(species: Species) {
-        if (hasAnySource([Source.BetaQuadrant, Source.KlingonCore])) {
+        if (hasAnySource([Source.BetaQuadrant, Source.KlingonCore, Source.Core2ndEdition])) {
             if (species === Species.KlingonExt) {
                 return true;
             }
         }
 
-        if (hasAnySource([Source.DS9, Source.AlphaQuadrant])) {
+        if (hasAnySource([Source.DS9, Source.AlphaQuadrant, Source.Core2ndEdition])) {
             if (species === Species.FerengiExt) {
                 return true;
             }
@@ -2186,10 +2186,13 @@ class _Species {
         }
 
         if (hasSource(Source.AlphaQuadrant)) {
-            if (species === Species.CardassianExt) {
+            if (species === Species.Ferengi && !hasSource(Source.Core2ndEdition)) { // supercede by FerengiAlpha
                 return true;
             }
-            if (species === Species.Ferengi && !hasSource(Source.Core2ndEdition)) { // supercede by FerengiAlpha
+        }
+
+        if (hasSource(Source.AlphaQuadrant) || hasSource(Source.Core2ndEdition)) {
+            if (species === Species.CardassianExt) {
                 return true;
             }
         }
@@ -2206,7 +2209,7 @@ class _Species {
             }
         }
 
-        if (hasSource(Source.PicardS1)) {
+        if (hasSource(Source.PicardS1) || hasSource(Source.Core2ndEdition)) {
             if (species === Species.RomulanExt) {
                 return true;
             }

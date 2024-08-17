@@ -583,7 +583,11 @@ export class Character extends Construct {
         }
 
         if (this.hasTalent("Resolute")) {
-            stress += 3;
+            if (this.version === 1) {
+                stress += 3;
+            } else {
+                stress += this.skills[Skill.Command].skill;
+            }
         }
         return stress;
     }
