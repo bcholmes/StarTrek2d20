@@ -39,12 +39,14 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
     const selectDesc = species.attributes.length > 3 ? t('SpeciesDetails.selectThree') : "";
 
     const isTalentSelectionRequired = () => {
-        if (character.stereotype !== Stereotype.SoloCharacter) {
+        if (character.stereotype === Stereotype.SoloCharacter) {
             return false;
         } else if (character.version === 1 && character.type !== CharacterType.KlingonWarrior) {
             return true;
+        } else if (character.speciesStep?.ability == null) {
+            return true;
         } else {
-            return false;
+            return character.speciesStep.ability.talentNames?.length;
         }
     }
 
@@ -71,6 +73,36 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
     }
 
     const renderTalentsSection = () => {
+        if (character.version === 1) {
+            return renderVersion1TalentsSection();
+        } else {
+            return renderVersion2TalentsSection();
+        }
+    }
+
+    const renderVersion2TalentsSection = () => {
+        let talents = [];
+        if (character.speciesStep?.ability == null) {
+            let species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
+            species.talents.forEach(t => talents.push(t));
+        } else if (character.speciesStep?.ability?.talentNames?.length) {
+            character.speciesStep.ability.talentNames.map(t => TalentsHelper.getTalent(t)).forEach(t => talents.push(t));
+        }
+
+        let initial = character.speciesStep?.talent ? TalentsHelper.getTalent(character.speciesStep?.talent?.talent) : undefined;
+        if (talents.length > 0 && isTalentSelectionRequired()) {
+            return (<div>
+                <Header level={2}>{t('Construct.other.talents')}</Header>
+                <SingleTalentSelectionList talents={talents} construct={character}
+                    initialSelection={initial}
+                    onSelection={talent => onTalentSelected(talent)} />
+            </div>);
+        } else {
+            return undefined;
+        }
+    }
+
+    const renderVersion1TalentsSection = () => {
         let talents = [];
         talents.push(...TalentsHelper.getAllAvailableTalentsForCharacter(character));
 
@@ -87,18 +119,15 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
         if (talents.length > 0 && isTalentSelectionRequired()) {
             return (<div>
                 <Header level={2}>{t('Construct.other.talents')}</Header>
-                {character.version === 1
-                ? (<><div>
-                        {renderCrossSpeciesCheckbox()}
-                    </div>
-                    {esotericTalentOption}
-                </>)
-                : undefined}
+                <div>
+                    {renderCrossSpeciesCheckbox()}
+                </div>
+                {esotericTalentOption}
                 <SingleTalentSelectionList talents={talents} construct={character}
                     initialSelection={initial}
                     onSelection={talent => onTalentSelected(talent)} />
             </div>);
-        } else if (character.version === 1) {
+        } else {
             return (<div>
                 <Header level={2}>{t('SpeciesDetails.options')}</Header>
                 <div>
@@ -106,10 +135,9 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
                 </div>
                 {esotericTalentOption}
               </div>);
-        } else {
-            return undefined;
         }
     }
+
 
     const renderCrossSpeciesCheckbox = () => {
         return (<CheckBox

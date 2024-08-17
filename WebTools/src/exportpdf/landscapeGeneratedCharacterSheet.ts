@@ -216,6 +216,16 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
             }
         }
 
+        if (character.speciesStep?.ability != null) {
+            let ability = character.speciesStep.ability;
+            paragraph.append(ability.name + " (" + i18next.t('Construct.other.speciesAbility') + "): ",
+                new FontSpecification(this.boldFont, 9));
+            paragraph.append(ability.description, new FontSpecification(this.textFont, 9));
+
+            paragraph.write();
+            paragraph = paragraph.nextParagraph();
+        }
+
         for (let t of character.getDistinctTalentNameList()) {
 
             if (paragraph) {

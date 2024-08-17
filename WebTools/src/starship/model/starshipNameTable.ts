@@ -191,6 +191,9 @@ const starshipTngEraNames = [
     "Korby",
     "Johnson",
     "Pollyea",
+    "Campbell",
+    "de Leve",
+    "Pearl",
     "Spader"
 ]
 
