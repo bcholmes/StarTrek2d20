@@ -425,7 +425,7 @@ const speciesSpecificValues: { [species : number ]: string[]} = {
 export class NpcGenerator {
 
     static createNpc(npcType: NpcType, characterType: NpcCharacterType, species: SpeciesModel, specialization: SpecializationModel, era: Era) {
-        let character = Character.createNpcCharacter(era);
+        let character = Character.createNpcCharacter(era, hasSource(Source.Core2ndEdition) ? 2 : 1);
         if (specialization == null) {
             let specializations = Specializations.instance.getSpecializations(characterType);
             specialization = specializations[Math.floor(Math.random() * specializations.length)];

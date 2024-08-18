@@ -589,6 +589,10 @@ export class Character extends Construct {
                 stress += this.skills[Skill.Command].skill;
             }
         }
+
+        if (this.hasTalent("Tough")) {
+            stress += 2;
+        }
         return stress;
     }
 
@@ -610,6 +614,7 @@ export class Character extends Construct {
                     case Role.ChiefOfSecurity:
                     case Role.TacticalOfficer:
                     case Role.CommunicationsOfficer:
+                    case Role.OperationsManager:
                         return Division.Operations;
 
                     case Role.ScienceOfficer:
@@ -1299,10 +1304,11 @@ export class Character extends Construct {
         return result;
     }
 
-    public static createNpcCharacter(era: Era) {
+    public static createNpcCharacter(era: Era, version: 1|2 = 1) {
         let result = new Character();
         result.stereotype = Stereotype.Npc;
         result.era = era;
+        result.version = version;
         return result;
     }
 

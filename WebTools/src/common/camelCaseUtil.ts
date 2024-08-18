@@ -4,7 +4,7 @@ export const toCamelCase = (phrase: string) => {
     let upperCase = false;
     for (let i = 0; i < phrase.length; i++) {
         let c = phrase.charAt(i);
-        if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(c) >= 0) {
+        if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".indexOf(c) >= 0) {
             if (upperCase) {
                 c = c.toLocaleUpperCase();
                 upperCase = false;

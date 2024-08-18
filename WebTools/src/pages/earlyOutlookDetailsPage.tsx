@@ -71,7 +71,7 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
 
     const filterTalentList = () => {
         if (character.type === CharacterType.KlingonWarrior && character.speciesStep?.species === Species.Klingon) {
-            return [ ToViewModel( TalentsHelper.getTalent(TALENT_NAME_BRAK_LUL), 1, character.type ) ];
+            return [ ToViewModel( TalentsHelper.getTalent(TALENT_NAME_BRAK_LUL), 1, character.type, character.version ) ];
         } else {
             return TalentsHelper.getAllAvailableTalentsForCharacter(character).filter(
                 t => !character.hasTalent(t.name) || (character.upbringingStep.talent != null && t.name === character.upbringingStep.talent.talent) || t.rank > 1);

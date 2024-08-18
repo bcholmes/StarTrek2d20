@@ -25,5 +25,9 @@ describe('testing Camel Case Utility', () => {
         expect(toCamelCase("EVA Suits")).toBe("evaSuits");
     });
 
+    test('preserves numbers', () => {
+        expect(toCamelCase("Telepathy2e")).toBe("telepathy2e");
+    });
+
 
 });

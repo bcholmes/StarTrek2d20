@@ -747,12 +747,14 @@ export class TalentViewModel {
     }
 }
 
-export function ToViewModel(talent: TalentModel, rank: number = 1, type: CharacterType): TalentViewModel {
+export function ToViewModel(talent: TalentModel, rank: number = 1, type: CharacterType, version: number = 1): TalentViewModel {
     let name = talent.name;
     if (type === CharacterType.KlingonWarrior) {
         name = talent.nameForSource(Source.KlingonCore);
     }
-    return new TalentViewModel(name, talent.localizedName, rank, talent.maxRank > 1, talent.localizedDescription, undefined, talent.category, talent.prerequisites, talent.specialRule);
+    return new TalentViewModel(name, talent.localizedName, rank, talent.maxRank > 1,
+        version === 1 ? talent.localizedDescription : talent.localizedDescription2e,
+        undefined, talent.category, talent.prerequisites, talent.specialRule);
 }
 
 export class Talents {
@@ -4216,7 +4218,7 @@ export class Talents {
             let rank = character?.hasTalent(talent.name)
                 ? character?.talents[talent.name].rank + 1
                 : 1;
-            return ToViewModel(talent, rank, character?.type ?? CharacterType.Starfleet);
+            return ToViewModel(talent, rank, character?.type ?? CharacterType.Starfleet, character?.version ?? 1);
         } else {
             return null;
         }
@@ -4285,18 +4287,18 @@ export class Talents {
                 if (character.hasTalent(t.name)) {
                     let temp = character.talents[t.name];
                     if (temp != null && temp.rank < t.maxRank) {
-                        return ToViewModel(t, temp.rank + 1, character.type);
+                        return ToViewModel(t, temp.rank + 1, character.type, character.version);
                     } else {
-                        return ToViewModel(t, 1, character.type);
+                        return ToViewModel(t, 1, character.type, character.version);
                     }
                 } else {
-                    return ToViewModel(t, 1, character.type);
+                    return ToViewModel(t, 1, character.type, character.version);
                 }
             });
 
             if (character.stereotype === Stereotype.Npc) {
                 let rules = this._specialRules.filter(t => t.isPrerequisiteFulfilled(character) && !character.hasTalent(t.name));
-                rules.forEach(t => result.push(ToViewModel(t, 1, character.type)));
+                rules.forEach(t => result.push(ToViewModel(t, 1, character.type, character.version)));
             }
 
             result.sort((a, b) => a.name.localeCompare(b.name));
@@ -4332,7 +4334,7 @@ export class Talents {
                         }
                     }
 
-                    talents.push(ToViewModel(talent, rank, starship.type));
+                    talents.push(ToViewModel(talent, rank, starship.type, starship.version));
                 }
             }
         }
